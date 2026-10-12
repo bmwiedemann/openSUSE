@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 11 11:42:49 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 1.4.4:
+  * Fix potential size_t overflow in the memory allocation limit check of
+    calloc_lim
+  * Added new file jxrgluelib/JXRVersion.h
+
+-------------------------------------------------------------------
 Wed Oct  7 08:38:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.4.3:

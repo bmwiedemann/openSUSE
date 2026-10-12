@@ -1,6 +1,7 @@
 #
 # spec file for package jxrlib
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %define sover 0
 Name:           jxrlib
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Open source implementation of jpegxr
 # See JPEGXR_DPK_Spec_1.0.doc. Upstream request for plain text license file at

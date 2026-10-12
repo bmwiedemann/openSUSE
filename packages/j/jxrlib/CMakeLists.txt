@@ -60,7 +60,7 @@ target_link_libraries(JxrDecApp jxrglue)
 install(TARGETS JxrDecApp RUNTIME DESTINATION bin)
 
 # Headers
-install(FILES jxrgluelib/JXRGlue.h jxrgluelib/JXRMeta.h jxrtestlib/JXRTest.h image/sys/windowsmediaphoto.h
+install(FILES jxrgluelib/JXRGlue.h jxrgluelib/JXRMeta.h jxrtestlib/JXRTest.h jxrgluelib/JXRVersion.h image/sys/windowsmediaphoto.h
   DESTINATION include/jxrlib
 )
 install(DIRECTORY common/include/ DESTINATION include/jxrlib
