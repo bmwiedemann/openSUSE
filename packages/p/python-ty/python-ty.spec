@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ty
-Version:        0.0.56
+Version:        0.0.86
 Release:        0
 Summary:        An extremely fast Python type checker and language server, written in Rust
 License:        MIT
