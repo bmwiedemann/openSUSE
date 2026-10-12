@@ -26,7 +26,6 @@ License:        BSD-2-Clause AND BSD-3-Clause AND MIT
 URL:            https://www.blosc.org/
 Source:         https://github.com/Blosc/c-blosc/archive/v%{version}.tar.gz#/c-blosc-%{version}.tar.gz
 BuildRequires:  cmake >= 3.5
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
 BuildRequires:  pkgconfig(liblz4)

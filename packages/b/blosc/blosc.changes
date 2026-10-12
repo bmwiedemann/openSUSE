@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 12 09:31:56 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop BuildRequires gcc-c++: c-blosc is pure C, no C++ compiler
+  is ever invoked in the build
+
+-------------------------------------------------------------------
 Tue Jun  2 12:37:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build with the gnu17 C standard to fix the build on non-x86
