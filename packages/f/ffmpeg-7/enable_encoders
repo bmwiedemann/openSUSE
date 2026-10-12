@@ -23,10 +23,14 @@ alias_pix
 amv
 anull
 apng # libpng
+aptx
+aptx_hd
 ass # trivial
 asv1
 asv2
+av1_amf
 av1_nvenc
+av1_qsv
 av1_vaapi
 ayuv # trival
 bitpacked # trivial
@@ -36,7 +40,9 @@ cljr
 dca
 dfpwm
 dnxhd
+dnxhr
 dpx
+dvbsub
 dvdsub
 dvvideo
 exr
@@ -60,10 +66,14 @@ jpegls
 libaom # libaom
 libaom_av1 # libaom
 libcodec2 # codec2
+libfdk_aac # fdk-aac-free
 libgsm # libgsm
 libgsm_ms # libgsm
+libilbc # ilbc
 libjxl # libjxl
+liblc3 # liblc3
 libmp3lame # lame
+liboapv # openapv
 libopencore_amrnb # opencore-amr
 libopenh264 # passthrough/dlopen
 libopenjpeg # openjpeg

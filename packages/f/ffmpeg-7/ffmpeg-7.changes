@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Oct 12 13:48:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Synchronize codec enablement list from ffmpeg-9
+
+-------------------------------------------------------------------
+Mon Oct 12 10:56:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable RealAudio Lossless, RealVideo 3.0 and 4.0 decoders.
+
+-------------------------------------------------------------------
+Fri Sep 11 12:54:08 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2026-38350_part02_c44d237.patch:
+  Backport c44d237d from upstream, swscale/output: Fix integer
+  overflow with lum/chr/alpha filter.
+  (CVE-2026-38350, bsc#1277370)
+
+-------------------------------------------------------------------
+Fri Sep 11 12:38:21 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2026-38350_part01_aca41d3.patch:
+  Backport aca41d3d from upstream, swscale/output: Fix all bilinear
+  integer overflows.
+  (CVE-2026-38350, bsc#1277370)
+
+-------------------------------------------------------------------
+Fri Sep 11 12:04:54 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-7-CVE-2026-38345.patch:
+  Backport 04fe9848 from upstream, libswscale/utils: prevent division
+  by zero for chroma width 8.
+  (CVE-2026-38345, bsc#1277376)
+
+-------------------------------------------------------------------
 Mon Aug 28 04:47:54 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2026-75146.patch:
@@ -194,6 +228,8 @@ Fri Jul 24 05:34:32 UTC 2026 - Cliff Zhao <qzhao@suse.com>
     (CVE-2026-8461, bsc#1269490)
   * avcodec/magicyuv: Expand the s->interlaced slice-height sanity check.
     (CVE-2026-8461, bsc#1269490)
+  * swscale/alphablend: don't overread alpha plane on subsampled odd size
+    (CVE-2026-38347, bsc#1277373)
 - Drop ffmpeg-7-CVE-2025-22921.patch (merged)
 
 -------------------------------------------------------------------
@@ -205,6 +241,14 @@ Fri May 22 19:11:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     (CVE-2026-30997, bsc#1262047)
   * avcodec/rasc: fix heap use-after-free in decode_move().
     (CVE-2026-12706, bsc#1268595)
+  * avcodec/tdsc: remove double stride adjustment
+    (CVE-2026-18393, bsc#1277377)
+  * swscale/output: Fixes integer overflow in yuv2planeX_8_c.
+    (CVE-2026-38346, bsc#1277375)
+  * swscale/output: Fix integer overflow in alpha in yuv2rgba64_1_c_template()
+    (CVE-2026-38349, bsc#1277369)
+  * swscale/utils: Check *Inc
+    (CVE-2026-38348, bsc#1277368)
 - Drop patches fixed upstream:
   * ffmpeg-7-CVE-2026-40962.patch
 - Rebase patches with quilt.
@@ -400,10 +444,6 @@ Wed Oct  2 08:20:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
     calledbut ff_progress_frame_report() isn't called when a hardware acceleration method is used, so
     a thread for vp9 decoding might get stuck.
     (CVE-2024-36615, bsc#1234017).
-  * avcodec/vp9: Fix race when attaching side-data for show-existing frame. (commit: 0ba0585)
-    (CVE-2024-36615, bsc#1234017)
-  * lavc/vp9: Fix regression introduced in 0ba0585.
-    (CVE-2024-36615, bsc#1234017)
 - Delete patches/ffmpeg-7-fix-crashes.patch,
   0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch (merged)
 

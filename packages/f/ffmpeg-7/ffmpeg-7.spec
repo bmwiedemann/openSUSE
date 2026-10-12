@@ -147,6 +147,9 @@ Patch31:        ffmpeg-7-CVE-2026-75142.patch
 Patch32:        ffmpeg-7-CVE-2026-75143.patch
 Patch33:        ffmpeg-7-CVE-2026-75144.patch
 Patch34:        ffmpeg-7-CVE-2026-75146.patch
+Patch35:        ffmpeg-7-CVE-2026-38345.patch
+Patch36:        ffmpeg-7-CVE-2026-38350_part01_aca41d3.patch
+Patch37:        ffmpeg-7-CVE-2026-38350_part02_c44d237.patch
 # There is another Patch section further below!
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel

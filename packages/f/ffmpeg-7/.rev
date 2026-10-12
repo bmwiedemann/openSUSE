@@ -272,4 +272,12 @@ retry submit due to git-&gt;obs autosync delays</comment>
     <comment>cancel bugrefs (patches were revoked)</comment>
     <requestid>1377029</requestid>
   </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>072458bb9358eacc42be945110437613</srcmd5>
+    <version>7.1.5</version>
+    <time>1791835733</time>
+    <user>dimstar_suse</user>
+    <comment>- Synchronize codec enablement list from ffmpeg-9</comment>
+    <requestid>1384349</requestid>
+  </revision>
 </revisionlist>
