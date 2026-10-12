@@ -1,0 +1,15 @@
+References: CVE-2026-16473 bsc#1272367
+
+diff --git a/sbc/sbc.c b/sbc/sbc.c
+index 2fab366..ffe281a 100644
+--- a/sbc/sbc.c
++++ b/sbc/sbc.c
+@@ -483,7 +483,7 @@ static int sbc_unpack_frame_internal(const uint8_t *data,
+ 
+ 				audio_sample = 0;
+ 				for (bit = 0; bit < bits[ch][sb]; bit++) {
+-					if (consumed > len * 8)
++					if (consumed >= len * 8)
+ 						return -1;
+ 
+ 					if ((data[consumed >> 3] >> (7 - (consumed & 0x7))) & 0x01)

@@ -28,6 +28,7 @@ Group:          Hardware/Mobile
 URL:            https://www.kernel.org/pub/linux/bluetooth
 Source:         https://www.kernel.org/pub/linux/bluetooth/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch1:         Fix-offby1-sbc_unpack_frame_internal.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sndfile)
 
