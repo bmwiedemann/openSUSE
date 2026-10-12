@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Oct 12 06:04:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.17.0
+  * Added {class}pikepdf.ObjectSet, which records the objects that
+    a walk of a PDF's object graph has already visited.
+  * Added {meth}pikepdf.Object.is_same_object_as.
+  * Added {meth}pikepdf.Pdf.content_scopes and
+    {meth}pikepdf.Page.content_scopes
+  * Added {meth}pikepdf.Page.get_resources.
+  * Fixed comparing two objects with == taking exponential time
+    when the objects being compared share children, such as the
+    same file opened twice.  Each pair of objects is now compared
+    once.
+  * Fixed {meth}pikepdf.Pdf.add_pages_from hanging on a page with
+    an action whose /Next actions are shared or form a loop.
+  * Fixed {meth}pikepdf.Pdf.open_outline reading only the first
+    item at each level of an outline whose items are direct
+    objects. Such items are now made indirect when the outline is
+    saved, as the PDF specification requires.
+  * Reading a stream that will not decode now raises
+    {exc}~pikepdf.exceptions.DataDecodingError with the reason,
+    whether the stream's data was read from a file or set from
+    memory. Previously a stream read from a file raised a
+    {exc}~pikepdf.exceptions.PdfError that said only
+    "read_bytes called on unfilterable stream", and the reason was
+    available only from {meth}pikepdf.Pdf.get_warnings.
+    DataDecodingError is a PdfError, so existing handlers are
+    unaffected. {issue}182
+  * An exception raised by a JBIG2 decoder now reaches the caller
+    of {meth}pikepdf.PdfImage.as_pil_image,
+    {meth}pikepdf.PdfImage.extract_to and
+    {meth}pikepdf.PdfImage.read_bytes unchanged, with its own type,
+    message and traceback. Previously, for an image read from a
+    file, it was replaced by a generic DataDecodingError or
+    PdfError. {issue}182
+  * Added {exc}~pikepdf.exceptions.QpdfRuntimeError, raised for
+    errors from qpdf that pikepdf has no more specific exception
+    for. These were previously raised as a bare RuntimeError, which
+    except pikepdf.PikepdfError did not catch. The new exception
+    derives from both {exc}~pikepdf.exceptions.PikepdfError and
+    RuntimeError, so handlers written for RuntimeError still work.
+  * The empty name / is now supported. The PDF 1.7 and 2.0
+    specifications define a lone slash as a valid name made of
+    zero characters, but pikepdf.Name('/') raised ValueError, and
+    dictionaries refused / as a key. This broke
+    {meth}pikepdf.Pdf.add_pages_from on files with an
+    empty-named destination such as /Dests << / 3 0 R >>. Such names
+    can now be created, used as dictionary keys, and migrated during
+    page copying. bool(Name('/')) is False, like an empty
+    {class}pikepdf.String. Name(''), which lacks the leading slash,
+    is still rejected. PDF/A does not forbid empty names, and the
+    PDF/A validator accepts them. {issue}745
+  * AcroFormField.get_inheritable_field_value_as_name() now returns
+    a {class}pikepdf.Name, as documented, instead of a str. When the
+    value is missing or not a name, it returns the empty name
+    Name('/'), which is falsy, instead of ''. Comparisons such as
+    == '/Tx' are unaffected. {issue}748
+  * Fixed an out-of-bounds read when opening a PDF from a Python
+    file object whose readinto() reports more bytes than were
+    requested. This now raises ValueError, as writing to such a
+    stream already did. Non-blocking streams,
+    whose readinto() returns None, now raise ValueError instead
+    of hanging. {issue}747
+  * {func}pikepdf.open reads directly from the file descriptor
+    when given a filename, instead of calling the seek() and
+    readinto() methods of a Python file object for every read.
+    Opening and reading a large file with many objects is about
+    four to five times faster, matching the speed of memory
+    mapping (access_mode=AccessMode.mmap). Streams passed to
+    {func}pikepdf.open, including plain file objects, are read
+    through their methods as before.
+
+-------------------------------------------------------------------
 Wed Sep 30 12:56:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Add Requires to support pikepdf.pdfa
