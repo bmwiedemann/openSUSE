@@ -1,5 +1,4 @@
 <multibuild>
-  <flavor>openQA-devel-test</flavor>
   <flavor>openQA-test</flavor>
   <flavor>openQA-worker-test</flavor>
   <flavor>openQA-client-test</flavor>
