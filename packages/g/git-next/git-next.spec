@@ -17,7 +17,7 @@
 
 
 Name:           git-next
-Version:        2026.5.4
+Version:        2026.10.3
 Release:        0
 Summary:        Trunk-based development manager for a solo developer
 License:        MIT

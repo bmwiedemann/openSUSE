@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 12 04:58:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2026.10.3:
+  CI-only changes
+- Update to version 2026.10.2:
+  CI-only changes
+- Update to version 2026.10.1:
+  * Features
+    - feat(graph): replace shell git log with native git2 graph
+      rendering (cde8a538)
+  * Bug Fixes
+    - fix(clippy): suppress nightly clippy unused_async_trait_impl
+      lint (2f3c4471)
+  * Other Changes
+    - chore(deps): bump kameo to 0.22 and kameo_actors to 0.8
+      (517c1423)
+    - build(docker): update builder and runtime base images
+      (dac2f7b3)
+    - chore: bump version to 2026.8.1 (a0d4e09a)
+    - chore(deps): bump git2 from 0.20 to 0.21 (daf64150)
+
+-------------------------------------------------------------------
 Fri May 29 09:38:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2026.5.4:
