@@ -24,13 +24,14 @@ License:        X11
 URL:            https://github.com/phastmike/tags
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
+BuildRequires:  pkgconfig(gtk4) >= 4.9
+BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 
 %description
 A GNOME text tagger inspired by the TextAnalysisTool.NET tool.
