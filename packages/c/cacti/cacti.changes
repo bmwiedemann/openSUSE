@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Oct 12 14:56:27 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
+
+- Update to version 1.2.31+git485.ed4de904:
+  * Persist table column widths across request actions (#8310)
+  * Update translation files
+  * Consolidate accessibility fixes and standardize Rows filter labels (#8275)
+  * refactor(html): share sortable header state on 1.2.x (#8318)
+  * Common graph drilldown hamburger toggle across all themes (1.2.x) (#8311)
+  * Harmonize DateTimePicker styling with each theme palette (#8288)
+  * fix(plugins): report install failures, grant realms and confine error attribution (#8282)
+  * Cover native account audit actions and actor fallbacks (#8276)
+  * Add and test FPM, master, and TLS poller image health checks (#8272)
+  * Serialize Docker credentials and exclude local secrets from image layers (#8271)
+  * Pin Docker test images and plugin revisions (#8270)
+  * fix(1.2): provide document language and current HTML semantics (#8247)
+  * Add a jQuery rebind() helper and roll it out across the core UI (#8280)
+  * fix(1.2): group authentication fields with valid legends (#8263)
+  * Restore inherited SIGCHLD handling at CLI startup (#8277)
+  * Run Apache test master and TLS poller as www-data (#8273)
+  * Run FPM test fixture as its checkout owner without world-write access (#8274)
+  * Translated using Weblate (Swedish)
+  * log user action (create, delete, locked, ..) (#8257)
+  * ci(deps): bump dessant/lock-threads (#8256)
+  * deps(deps): bump billboard.js from 4.1.0 to 4.1.1 in the npm-1-2-x group (#8253)
+  * ci(deps): bump shivammathur/setup-php (#8255)
+  * fix(1.2): correct theme CSS while preserving layout and fallbacks (#8245)
+  * fix(1.2): declare public visibility without changing legacy APIs (#8244)
+  * fix(1.2): correct client navigation fullscreen and realtime state (#8243)
+  * security(1.2): separate native dependency resolution from locked installation (#8242)
+  * ci(1.2): lock browser tooling and fix dependency caching (#8241)
+  * security(1.2): isolate installer and Midwinter external windows (#8239)
+  * security(1.2): isolate proof workflow dispatch inputs from Bash (#8240)
+  * security: require POST+CSRF for the User Log purge (GHSA-x664-x4hf-p9xh) (#8235)
+  * themes(deepness): harmonize all greens to the emerald palette (#8233)
+  * themes: use a clean green for .deviceUp instead of muddy olive (#8232)
+  * midwinter: colour the graph drilldown action icons from the theme palette (#8228)
+  * themes: match jQuery UI selectmenu, autocomplete + dialog to select2 / html_start_box (all themes) (#8227)
+  * deepness: deep-dark login page + modern filter dialog skin (#8225)
+  * Dark theme: theme-appropriate host status pills (#8222)
+  * deepness: give .ui-corner-all a 4px radius to match select2 (#8218)
+  * deepness: make left-menu glyphs the light text colour always (#8215)
+  * themes: render filter-table checkboxes as toggle switches (text first) (#8213)
+  * fix: The horizontal scroll bar should not be visible unless it has to be (#8211)
+  * Make filter Go buttons submit the form (#8209)
+  * Restore multi-column table sorting lost during filter hardening (#8210)
+  * paper-plane: dark-mode refinements (readable forms/rows, consistent button system) (#8204)
+  * Fix printing of the detailed time graph view (#8177)
+  * Deepness/Midwinter: billboard overload CSS, RRDtool graph colours, and theme refinements (#8205)
+  * Add 'Deepness' dark emerald-green theme (based on Paw) (#8202)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * fix incorrect js - it displays code behind last collapsible row (#8199)
+  * Add a two-year panel to the detailed graph view when retention supports it (#8168)
+
+-------------------------------------------------------------------
 Tue Oct  6 14:54:55 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
 
 - Update to version 1.2.31+git366.c5f9f4f4:

@@ -21,7 +21,7 @@
 %define cacti_dir %{datadir}/cacti
 
 Name:           cacti
-Version:        1.2.31+git366.c5f9f4f4
+Version:        1.2.31+git485.ed4de904
 %global base_version %(echo %{version} | sed 's/+[^+]*//')
 %global next_base_version %(echo %{base_version} | awk -F. -v OFS=. '{$NF++; print}')
 Release:        0

@@ -613,4 +613,12 @@ CVE-2023-51448 boo#1218381
     <comment>1</comment>
     <requestid>1383052</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>518ece3c4b546adbd4fe9674f7343c27</srcmd5>
+    <version>1.2.31+git485.ed4de904</version>
+    <time>1791835776</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384360</requestid>
+  </revision>
 </revisionlist>
