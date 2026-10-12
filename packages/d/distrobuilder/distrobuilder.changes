@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct  8 19:10:51 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 3.4.0:
+  + vm support for openwrt
+  + older Windows compatibility
+  + windows: Stage drivers to be installed on Windows <= 2008
+  + openwrt: fix mounting partitions on loop device
+  + lxc: fix drop-in making paths read-only
+  + windows: Windows 2003 & xp fixes
+  + Update to depend on Incus v7
+  + Fix OpenWrt release selection
+  + more openwrt enhancements
+  + FIX the outdated RPM-GPG-KEY of Oralce Linux
+  + generator: Disable D-Bus AppArmor mediation when policy can't be queried
+  + sources/oraclelinux-http.go: fix the iso name of Oracle Linux 10
+  + Windows: Determine driver version
+  + lxc.generator: Re-enable LoadCredential/ImportCredential
+  + lxc.generator: Update list of masked units
+  + shared: Add loongarch64 gentoo architecture mapping
+  + incus: Add configurable VM boot partition size
+  + sources/busybox: Disable tc applet
+  + Add more support for loongarch64
+  + Small rewording on COPY generator explicitly mentioning the file is copied
+    from the host into the container
+- Switch over to the release tarballs, as they are signed
+
+-------------------------------------------------------------------
 Tue Feb 24 22:05:34 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 3.3.1:

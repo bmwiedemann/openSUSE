@@ -17,13 +17,15 @@
 
 
 Name:           distrobuilder
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        System container image builder for LXC and LXD/Incus
 License:        Apache-2.0
 URL:            https://github.com/lxc/distrobuilder
-Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.zst
+Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
+Source3:        vendor.tar.zst
 Patch0:         pie.patch
 BuildRequires:  debootstrap
 BuildRequires:  git-core
@@ -32,7 +34,7 @@ BuildRequires:  make
 BuildRequires:  rsync
 BuildRequires:  squashfs
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 Requires:       btrfsprogs
 Requires:       bzip2
 Requires:       debootstrap
@@ -59,7 +61,7 @@ Requires:       zstd
 %{summary}.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -a3 -p1
 
 %build
 %make_build

@@ -94,4 +94,34 @@
   * fix an issue with semver &gt;=1 (forwarded request 1334879 from rrahl0)</comment>
     <requestid>1334880</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a4600231152472c4aaa5872e460ccb35</srcmd5>
+    <version>3.4.0</version>
+    <time>1791835531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.0:
+  + vm support for openwrt
+  + older Windows compatibility
+  + windows: Stage drivers to be installed on Windows &lt;= 2008
+  + openwrt: fix mounting partitions on loop device
+  + lxc: fix drop-in making paths read-only
+  + windows: Windows 2003 &amp; xp fixes
+  + Update to depend on Incus v7
+  + Fix OpenWrt release selection
+  + more openwrt enhancements
+  + FIX the outdated RPM-GPG-KEY of Oralce Linux
+  + generator: Disable D-Bus AppArmor mediation when policy can't be queried
+  + sources/oraclelinux-http.go: fix the iso name of Oracle Linux 10
+  + Windows: Determine driver version
+  + lxc.generator: Re-enable LoadCredential/ImportCredential
+  + lxc.generator: Update list of masked units
+  + shared: Add loongarch64 gentoo architecture mapping
+  + incus: Add configurable VM boot partition size
+  + sources/busybox: Disable tc applet
+  + Add more support for loongarch64
+  + Small rewording on COPY generator explicitly mentioning the file is copied
+    from the host into the container
+- Switch over to the release tarballs, as they are signed</comment>
+    <requestid>1384354</requestid>
+  </revision>
 </revisionlist>
