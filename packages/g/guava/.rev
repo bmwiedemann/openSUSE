@@ -119,4 +119,12 @@
     <comment>33.4.8</comment>
     <requestid>1280077</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bb1031ed177cb7aee1831f408f5234ec</srcmd5>
+    <version>33.7.2</version>
+    <time>1791835584</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1284985, CVE-2026-102554</comment>
+    <requestid>1384160</requestid>
+  </revision>
 </revisionlist>

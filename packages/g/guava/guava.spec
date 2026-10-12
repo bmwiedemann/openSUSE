@@ -1,7 +1,7 @@
 #
 # spec file for package guava
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           guava
-Version:        33.4.8
+Version:        33.7.2
 Release:        0
 Summary:        Google Core Libraries for Java
 License:        Apache-2.0 AND CC0-1.0

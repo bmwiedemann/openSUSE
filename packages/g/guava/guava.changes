@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Oct 12 06:25:51 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to guava 33.7.2
+  * Changes of 33.7.2
+    + collect: Changed MapMaker, CompactHashMap, and CompactHashSet
+      deserialization to avoid eagerly allocating as much memory as
+      a serialization payload requests (bsc#1284985,
+      CVE-2026-102554)
+  * Changes of 33.7.1
+    + removes the Multi-Release line from our jar manifest, fixing
+      an issue under Java 9 and 10 that was introduced to guava-jre
+      in version 33.7.0.
+  * Changes of 33.7.0
+    + Guava module-info.class is now present at the root of the jar
+      instead of under a multi-release root. This prevents the jar
+      from containing a file at META-INF/versions/9/OSGI-INF/
+      /MANIFEST.MF, which occasionally causes trouble for some users
+    + collect: Changed some ImmutableMap implementations to create a
+      new, lightweight object on each call to view methods like
+      keySet(), rather than creating and storing that object during
+      the first call for reuse later. This is likely to slightly
+      improve performance for some users, but it could lead to
+      regressions in unusual cases, such as repeatedly calling
+      asMultimap().inverse() on the same ImmutableMap instance.
+    + net: Added HttpHeaders constant for on-prefetch-activation.
+    + net: Added MediaType constants for application/yaml and
+      application/x-pem-file.
+    + util.concurrent: Fixed ExecutionSequencer queue stall when
+      delegate executor throws RejectedExecutionException.
+  * Changes of 33.6.0
+    + Migrated some classes from finalize() to PhantomReference in
+      preparation for the removal of finalization.
+    + cache: Deprecated CacheBuilder APIs that use TimeUnit in favor
+      of those that use Duration.
+    + collect: Added toImmutableSortedMap collectors that use the
+      natural comparator.
+    + collect: Changed ConcurrentHashMultiset, ImmutableMultimap,
+      and TreeMultiset deserialization to avoid mutating final
+      fields. In extremely unlikely scenarios in which an instance
+      of that type contains an object that refers back to that
+      instance, this could lead to a broken instance that throws
+      NullPointerException when used.
+    + graph: Removed @Beta from all APIs in the package.
+    + graph: Added support to Graphs.transitiveClosure() for
+      different strategies for adding self-loops.
+    + graph: Added an asNetwork() view to Graph and ValueGraph.
+    + hash: Added BloomFilter.serializedSize().
+    + net: Added HttpHeaders.CDN_CACHE_CONTROL.
+  * Changes of 33.5.0
+    + For users of guava-gwt: Google has moved off GWT internally.
+      We plan to continue to release guava-gwt for users of GWT and
+      J2CL, but the artifact is no longer tested for GWT-specific
+      issues, and we have limited resources to fix any unexpected
+      issues that might arise. While we do not anticipate any
+      specific problems, we can't guarantee how long support will
+      continue.
+    + Listed the JSpecify annotations as an optional dependency in
+      our OSGi metadata.
+    + cache: Improved the handling of exceptions from compute
+      functions in Cache.asMap(). (We do still recommend using
+      Caffeine rather than com.google.common.cache.)
+    + collect: Improved Iterators.mergeSorted() to preserve
+      stability for equal elements.
+    + math: Added saturatedAbs methods to IntMath and LongMath.
+    + net: Added image/avif to MediaType.
+    + util.concurrent: Added Striped.custom.
+  
+-------------------------------------------------------------------
 Mon May 26 07:45:08 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to guava 33.4.8
