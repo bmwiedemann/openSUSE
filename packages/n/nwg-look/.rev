@@ -31,4 +31,19 @@
     <comment></comment>
     <requestid>1351821</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>437813d74eb2875f4b927238daebdd54</srcmd5>
+    <version>1.1.2</version>
+    <time>1791835535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2:
+  * update copyright
+  * bump to 1.1.2
+  * Update go &amp; dependencies
+  * feat: honor LC_MESSAGES lang variable
+  * Fix spelling mistake &quot;could'nt&quot;
+  * Add langs/ko_KR.json
+</comment>
+    <requestid>1384108</requestid>
+  </revision>
 </revisionlist>

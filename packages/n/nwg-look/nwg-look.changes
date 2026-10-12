@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 30 04:45:43 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.1.2:
+  * update copyright
+  * bump to 1.1.2
+  * Update go & dependencies
+  * feat: honor LC_MESSAGES lang variable
+  * Fix spelling mistake "could'nt"
+  * Add langs/ko_KR.json
+
+-------------------------------------------------------------------
 Fri May 08 08:04:53 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
 
 - Update to version 1.1.1:

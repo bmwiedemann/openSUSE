@@ -16,7 +16,7 @@
 #
 
 Name:           nwg-look
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        GTK3 settings editor adapted to work in sway/wlroots environment
 License:        MIT
@@ -24,6 +24,7 @@ URL:            https://github.com/nwg-piotr/nwg-look
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Patch0:         no-docs.patch
+
 BuildRequires:  golang(API) >= 1.22
 BuildRequires:	pkgconfig
 BuildRequires:	pkgconfig(gio-2.0)
@@ -34,11 +35,13 @@ BuildRequires:	pkgconfig(cairo-gobject)
 BuildRequires:	pkgconfig(gdk-3.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
 
+Requires:       xcur2png
+
 %description
 Nwg-look is a GTK3 settings editor, designed to work properly in wlroots-based Wayland environment. The look and feel is strongly influenced by LXAppearance.
 
 %prep
-%autosetup -a 1 -p0
+%autosetup -a1 -p0
 
 %build
 go build -o bin/nwg-look -mod=vendor -buildmode=pie
