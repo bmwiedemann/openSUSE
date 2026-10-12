@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 10 06:45:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.1
+  * Corrected max retry logic to raise RetriesExhaustedError when
+    max retries is 0.
+
+-------------------------------------------------------------------
 Wed Sep  2 06:06:02 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.4.0
