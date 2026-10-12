@@ -1405,4 +1405,41 @@
   * chore(deps): update dependency @ast-grep/napi to v0.45.2 (#2906)</comment>
     <requestid>1374793</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>8dfd7d9c68db36970bc7392f6588c739</srcmd5>
+    <version>0.50.0</version>
+    <time>1791835678</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.50.0:
+  * 0.50.0 bump version
+  * feat(outline): add Java annotation type and element rules (#2955)
+  * fix(outline): report Java private/protected fields in the outline (#2950)
+  * feat(outline): add Java enum member rule (#2954)
+  * chore(deps): update dependency @types/node to v24.19.1 (#2983)
+  * chore(deps): update dependency dprint to v0.60.1 (#2984)
+  * feat(outline): add Java module declaration rule (#2956)
+  * chore(deps): update rust crate termimad to v0.35.5 (#2925)
+  * chore(deps): update rust crate napi-derive to v3.6.10 (#2936)
+  * chore(deps): update dependency @napi-rs/cli to v3.10.6 (#2922)
+  * chore(deps): update dependency chalk to v6.0.1 (#2979)
+  * chore(deps): update rust crate tokio to v1.53.2 (#2981)
+  * chore(deps): update rust crate thiserror to v2.0.21 (#2966)
+  * chore(deps): update dependency oxlint to v1.86.0 (#2967)
+  * chore(deps): update rust crate smallvec to v1.16.2 (#2968)
+  * feat(outline): add Java wildcard-import outline rules (#2948)
+  * fix(outline): capture C/C++ declarator identifier names (#2946)
+  * feat(cli): add trust and revoke custom language policies (#2972)
+  * refactor(cli): extract custom language policy (#2977)
+  * feat(cli): add custom language loading policy (#2971)
+  * fix(schema): reject null relation fields (#2969)
+  * chore(deps): update rust crate clap_complete to v4.6.11 (#2965)
+  * chore(deps): update rust crate clap to v4.6.7 (#2964)
+  * chore(deps): update rust crate napi to v3.13.0 (#2932)
+  * chore(deps): update dependency @types/node to v24.13.6 (#2941)
+  * feat(language): add Zig support (#2942)
+  * fix: require opt-in for custom language libraries (#2960)
+  * refactor: parse default run through app (#2962)
+  * feat(outline): add Java record_declaration rule (#2945)</comment>
+    <requestid>1384299</requestid>
+  </revision>
 </revisionlist>
