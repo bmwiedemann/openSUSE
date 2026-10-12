@@ -1,17 +1,8 @@
-From ef1e0ceb43a70657478a659e5617fb34f7c7acad Mon Sep 17 00:00:00 2001
-From: phoenix <felix.niederwanger@suse.com>
-Date: Tue, 14 Jul 2026 19:41:14 +0200
-Subject: [PATCH] Modifications
-
----
- Cargo.toml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/Cargo.toml b/Cargo.toml
-index 5292d9cd..bb39bbcf 100644
---- a/Cargo.toml
-+++ b/Cargo.toml
-@@ -113,7 +113,7 @@ required-features = ["subplot"]
+diff --git a/lib/Cargo.toml b/lib/Cargo.toml
+index 5213ead8..254d125b 100644
+--- a/lib/Cargo.toml
++++ b/lib/Cargo.toml
+@@ -56,7 +56,7 @@ tempfile = "3.1"
  
  [features]
  default = [
@@ -20,6 +11,25 @@ index 5292d9cd..bb39bbcf 100644
  ]
  crypto-nettle = ["sequoia-openpgp/crypto-nettle"]
  crypto-openssl = ["sequoia-openpgp/crypto-openssl"]
--- 
-2.55.0
-
+@@ -72,7 +72,7 @@ net = ["dep:sequoia-net", "dep:tokio"]
+ 
+ [target.'cfg(not(windows))'.dev-dependencies]
+ # Enables a crypto backend for the tests:
+-sequoia-openpgp = { version = "2.4", default-features = false, features = ["crypto-nettle", "__implicit-crypto-backend-for-tests"]  }
++sequoia-openpgp = { version = "2.4", default-features = false, features = ["crypto-openssl", "__implicit-crypto-backend-for-tests"]  }
+ 
+ [target.'cfg(windows)'.dev-dependencies]
+ # Enables a crypto backend for the tests:
+diff --git a/tool/Cargo.toml b/tool/Cargo.toml
+index 5c5539eb..e15b97b4 100644
+--- a/tool/Cargo.toml
++++ b/tool/Cargo.toml
+@@ -104,7 +104,7 @@ subplot = ["culpa", "subplot-build", "subplotlib"]
+ 
+ [target.'cfg(not(windows))'.dev-dependencies]
+ # Enables a crypto backend for the tests:
+-sequoia-openpgp = { version = "2", default-features = false, features = ["crypto-nettle", "__implicit-crypto-backend-for-tests"]  }
++sequoia-openpgp = { version = "2", default-features = false, features = ["crypto-openssl", "__implicit-crypto-backend-for-tests"]  }
+ 
+ [target.'cfg(windows)'.dev-dependencies]
+ # Enables a crypto backend for the tests:

@@ -1,4 +1,558 @@
 -------------------------------------------------------------------
+Mon Oct 12 11:49:02 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Use crypto-openssl also for tests
+
+-------------------------------------------------------------------
+Thu Oct  8 12:09:29 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Re-add 0001-Use-openssl.patch for the new workspaces defined in 1.5.0
+
+-------------------------------------------------------------------
+Wed Oct 07 12:01:20 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Remove dependency pinning for v1.4
+- Fix build to account for Rust workspaces
+- Switch back to the default nettle backend
+  * Remove 0001-Use-openssl.patch
+- Update to version 1.5.0:
+  * tool: Release v1.5.0.
+  * tool: Fix link to README.
+  * tool: Set a version for the sqz dependency.
+  * Enable optimizations when building rust-crypto crates.
+  * Update NEWS.
+  * lib: Release v0.1.0.
+  * Update Cargo.lock.
+  * meta: Update link to documentation.
+  * lib: Update README.
+  * lib: Rename the high-level library to sqz.
+  * lib: Fix documentation.
+  * lib: Mention network_search in the lookup functions documentation.
+  * lib: Mention lookup and lookup_by in the certify documentation.
+  * lib: Mention lookup_by sign documentation.
+  * lib: Document that calls don't need to specify secret key material.
+  * lib: Fix docs.rs URL
+  * meta: Add rustfmt.toml that disables formatting
+  * lib: fix type infer error
+  * lib: Pass Paths through as is.
+  * lib: Preprocess the network when listing all bindings.
+  * lib: Upgrade sequoia-wot.
+  * lib: After running cert list, save the signature verification cache.
+  * lib: Parallelize cert list.
+  * lib: Pass the policy when getting the trust root or a shadow CA.
+  * implement dumping of pqc artifacts
+  * lib: Use an iterator instead of a slice.
+  * lib: Avoid monomorphization in signer.
+  * lib: Fix documentation.
+  * tool: Fix documentation.
+  * lib: Drop unnecessary imports in example.
+  * lib: Add required clap features.
+  * lib: Gate network support behind a feature.
+  * Don't conflate inline and cleartext signatures.
+  * lib: Document the signer module.
+  * lib: Add unit tests to the signer module.
+  * lib: Fix get_primary_keys's return type.
+  * lib: Convert get_signing_key, etc. to use the builder pattern.
+  * lib: Move decrypt_key to its own module.
+  * lib: Rename keys module to signer.
+  * lib: Refactor get_keys and associated functions.
+  * lib: Improve prompt's documentation.
+  * lib: Add a default prompt to Sequoia, don't require a prompt.
+  * lib: Loosen Sized constraint.
+  * lib: Make Prompt and PromptFactory Send and Sync.
+  * lib: Change SequoiaBuilder::builder to consume self.
+  * lib: Use explicit lifetimes with Context and Check.
+  * Use more precise lifetimes when referencing Sequoia and Sq.
+  * Replace generic lifetime names with more precise identifiers.
+  * tool: Fix password prompt.
+  * lib: Add PromptFactory.
+  * tool: Drop Sq::local_trust_root.
+  * lib: Change Ca to wrap a Cert instead of an Arc<LazyCert>.
+  * lib: Add functionality for looking up certificates by email address.
+  * lib: Add cert::CertProblem::ParseError.
+  * tool: Don't wrap Sequoia::lookup.
+  * lib: Improve lookup's documentation.
+  * lib: Rename lookup to lookup_all.
+  * lib: Don't write lints to stderr.
+  * lib: Change lookup to use its own error type.
+  * lib: Fix how Binding::cert looks up a certificate.
+  * lib: Add an option to lookup certificates by subkey.
+  * lib: Rename lookup's keyflags parameter to key_capabilities.
+  * lib: Drop lookup's unused or_by_primary parameter.
+  * lib: Fix key flags matching bug in Sequoia::lookup.
+  * tool: Improve displaying possibly revoked certificates.
+  * lib: Change lookup to take a single key handle.
+  * lib: Improve key generate's documentation.
+  * lib: Add unit tests for key generate.
+  * lib: Avoid monomorphization in key generate.
+  * lib: Rename Artifact to Outcome.
+  * lib: Use impl IntoIterator in setters.
+  * lib: Drop duplicated code.
+  * lib: Implement Clone for a few data structures.
+  * lib: Mark UserIDLint as non-exhaustive.
+  * lib: Implement Clone for UserIDLint.
+  * lib: Implement IntoIterator for network::search::Query.
+  * lib: Change network search to return an Outcome on success.
+  * lib: Change function to take an IntoIterator instead of a Vec.
+  * lib: Avoid monomorphization in the network search functionality.
+  * lib: Implement Clone for a few data structures.
+  * lib: Make Response and SourceInfo clonable.
+  * lib: Change cert list to always emit a Report.
+  * lib: Change cert list to return an Outcome on success.
+  * lib: Change cert list's getters to use iterators.
+  * lib: Implement Clone for additional structs and enums.
+  * lib: Change the decrypt functions to return an Outcome on success.
+  * lib: Avoid monomorphization in the decrypt functionality.
+  * lib: Change decrypt's getters to use iterators.
+  * lib: Implement Clone for additional structs and enums.
+  * lib: Change KeyStoreUnreachable to use a more precise error type.
+  * lib: Add some additional unit tests for the verify functionality.
+  * lib: Change the verify functions to return an Outcome on success.
+  * lib: Change verify to avoid monomorphization.
+  * lib: Improve key import's documentation.
+  * lib: Make a parse error an operational error.
+  * lib: Implement Clone for additional structs and enums.
+  * lib: Respect SEQUOIA_HOME by default.
+  * lib: Add import_cert to import a single certificate.
+  * lib: Improve cert list's documentation.
+  * lib: Make a parse error an operational error.
+  * lib: Fix import to emit errors.
+  * lib: Fix cert::import::Builder::import to return an Outcome.
+  * lib: Change cert import's getters and setters to use iterators.
+  * lib: Implement Clone for a few data structures.
+  * lib: Fix Sequoia::trust_roots's cache.
+  * lib: Improve certify's documentation.
+  * lib: Rework certify's error handling.
+  * lib: Add SystemError to pki::certify::{Error,Output}.
+  * lib: Adjust certify::Error::CertificationError.
+  * lib: Refactor how certify populates Outcome.
+  * lib: Use impl IntoIterator in setters.
+  * lib: Improve encrypt's documentation.
+  * lib: Add some unit tests for the encrypt functionality.
+  * lib: Align encrypt's signing error with sign's signing error.
+  * lib: Drop encrypt::output::EncryptionFailed.
+  * lib: Change encrypt to return an Outcome on success.
+  * lib: Rename Encrypted to Report.
+  * lib: Change the encrypt functionality to emit errors.
+  * lib: Change encrypt to use its own error type.
+  * lib: Implement Clone for prompt::Error.
+  * lib: Use impl IntoIterator in setters.
+  * lib: Avoid monomorphization in the encrypt functionality.
+  * lib: Improve sign's documentation.
+  * lib: Add some unit tests for the signing functionality.
+  * lib: Drop sign::output::SigningFailed.
+  * lib: Add missing `non_exhaustive`.
+  * lib: Change the sign functions to return an Outcome on success.
+  * lib: Fix comment.
+  * lib: Rename Signed to Report.
+  * lib: Change the sign functionality to emit errors.
+  * lib: Change sign to use its own error type.
+  * lib: Implement Clone for CertError, CertProblem and its variants.
+  * lib: Avoid monomorphization in the sign functionality.
+  * lib: Use impl IntoIterator in setters.
+  * lib: Mark struct as non-exhaustive.
+  * lib: Move types::Query et al. to cert::list.
+  * lib: Make cert_list's queries parameter optional.
+  * lib: Change list to take self, not &self.
+  * tool: When merging keyrings, preserve the order of the certificates.
+  * lib: Don't fail to generate a key if the shadow CAs are not usable.
+  * lib: Avoid an unnecessary box.
+  * lib: Drop the Sized bound in the impl of Prompt for &P.
+  * lib: Implement Clone for pki::certify's error types.
+  * lib: Change the cert import functions to return more information.
+  * lib: Consider a missing autocrypt header to be an import error.
+  * tool: Don't fail if the input to sq key import is empty.
+  * Update h2.
+  * lib: Improve cert::import::Output::ImportingFailed.
+  * lib: Tighten key import's error reporting.
+  * lib: Tighten cert import's error reporting.
+  * lib: Change the key import functions to return more information.
+  * lib: Change error type for a merged certificate.
+  * lib: Adjust the semantics of key import's return type.
+  * lib: Rework key::import::Builder::import_key.
+  * lib: Rework key import's error handling.
+  * lib: Move Error::StateDisabled to SystemError, drop Error.
+  * lib: Add a function to import Certs.
+  * lib: Add a separate error for emails with autocrypt headers.
+  * lib: Rename import_certs to import_keyring.
+  * lib: Improve cert import's documentation.
+  * lib: Change when cert import returns an error.
+  * lib: Rework cert import's error handling.
+  * lib: Move constructors for high-level methods to a single impl block.
+  * lib: Change verify to not require a stream.
+  * lib: Change sign to not require a stream.
+  * lib: Change pki certify to not require a stream.
+  * lib: Change network search to not require a stream.
+  * lib: Change encrypt to not require a stream.
+  * lib: Change decrypt to not require a stream.
+  * lib: Change cert import to not require a stream.
+  * lib: Make pki certify's output parameter optional.
+  * lib: Change pki::certify to return the certifications.
+  * lib: Change the encrypt method to take a Writer.
+  * lib: Change the sign methods to take a Writer.
+  * lib: Change the decrypt methods to take an OptionalWriter.
+  * lib: Change the verify methods to take an OptionalWriter.
+  * lib: Generalize and dry out the destination output handling.
+  * lib: Make network search's output parameter optional.
+  * Update spin.
+  * Update sequoia-openpgp.
+  * Update crossbeam-epoch.
+  * Forward allow-* crypto features.
+  * Relax rusqlite dependency.
+  * lib: Make key generate's output parameter more ergonomic.
+  * lib: Dry out the Stream trait declarations.
+  * tool: Add more cipher suites.
+  * tool: Use the right sig as the template for a new direct key sig
+  * tool: Add sq key generate --{encryption,signing}-algorithm.
+  * lib: Provide more control over the algorithms used in key generation.
+  * tool: Add type annotation.
+  * Update openssl.
+  * Update anyhow.
+  * lib: Add a method to Binding to return the certificate.
+  * lib: Add more conversion functions for FileStdinOrKeyHandle.
+  * lib: Make Sequoia::cert_store_ private.
+  * lib: Don't export Sequoia::hint or Sequoia::info.
+  * lib: Make the transitional module private.
+  * lib: Improve documentation for the lookup module.
+  * lib: Make the lookup module public.
+  * lib: Add some top-level documentation.
+  * lib: Add some unit tests for the verify functionality.
+  * lib: Change verify and decrypt to always emit a report.
+  * lib: Dry out code.
+  * lib: Tweak example.
+  * lib: Implement Clone for most of verify's structs and enums.
+  * lib: Improve documentation.
+  * lib: Finish convertng verify to emit structured output.
+  * lib: Change verify to also emit errors.
+  * lib: Add a forwarder to verify::Stream for &mut T.
+  * lib: Change verify to use its own error type.
+  * tool: Don't use transitional function from library.
+  * lib: Document network search.
+  * lib: Add some unit tests to network::search.
+  * lib: Always emit a report.
+  * lib: Propagate errors.
+  * lib: Check that the query is valid.
+  * lib: Separate network search's presentation from its implementation.
+  * lib: When configuring key servers, pass in the URI.
+  * lib: Add functions for getting more shadow CAs.
+  * lib: Implement Debug and Clone for Ca.
+  * lib: Inline serialize_keyring.
+  * lib: Inline import_or_emit.
+  * lib: Inline Response::progress_bar.
+  * lib: Inline Response::import_or_emit.
+  * lib: Inline Response::collect.
+  * lib: Change network::search to use its own Error type.
+  * lib: Make the Source data structure public.
+  * lib: Rename Method to Source.
+  * lib: Implement Debug for Query.
+  * lib: Add a source annotation to SystemError::CertStoreError.
+  * lib: Move the op macro to the errors module.
+  * lib: Change Sequoia::cert_store to return a SystemError.
+  * lib: Move search's parameters to the builder.
+  * lib: Change network search et al. to take `Query`s.
+  * lib: Make network::search::Query and a few methods public.
+  * lib: Dry out the network search code.
+  * lib: Change network search functions to be methods.
+  * lib: Make clap attribute feature gated
+  * lib: Export version number from library
+  * typo: cerItified
+  * Move the implementation of sq network search et al. to the library.
+  * Move http_client and related constants to the library.
+  * Move ResourceRecordType to the library.
+  * Move cert_exportable to the library.
+  * lib: Don't export the password_cache field.
+  * lib: Improve interface for setting session keys.
+  * lib: Improve interface for setting secret keys.
+  * lib: Improve interface for setting designated signers.
+  * lib: Improve and fix documentation for decrypt.
+  * lib: Add unit tests for decrypt.
+  * lib: Implement From<openpgp::crypto::SessionKey> for SessionKey.
+  * lib: Extract the correct error type from the decryption helper.
+  * lib: Rename MissingSessionKey to InvalidSessionKey.
+  * lib: Fix typo.
+  * lib: Change decrypt to use its own error type.
+  * lib: Change cert_list to also emit errors on the stream object.
+  * lib: Change cert_store_or_else to return SystemError
+  * lib: Implement Clone for SystemError.
+  * lib: Change cert::list::Builder::list to take &self.
+  * lib: Add SystemError::CertStoreDisabled
+  * lib: Convert Sequoia::lookup et al. to use the builder pattern.
+  * lib: Add documentation for cert_list.
+  * lib: Implement Debug for cert_list's output data structures.
+  * lib: Move output-related data structures to the output module.
+  * lib: Add some unit tests for Sequoia::cert_list.
+  * lib: Mark Query and QueryKind as non-exhaustive.
+  * lib: Add some additional constructors for Query.
+  * Split the Query type, and move the sq-specific part back to sq.
+  * lib: Change cert_list to take an interator instead of a Vec.
+  * lib: Change cert_list to always emit the report.
+  * lib: Change list_cert to not error out if nothing matches.
+  * lib: Change list to use its own error type.
+  * lib: Rename list::Builder::execute to list.
+  * lib: Change Sequoia::list to return a builder.
+  * lib: Remove the non-stream variant of cert_list.
+  * lib: Rename Sequoia::list to Sequoia::cert_list.
+  * lib: Re-initialize the WoT data structures when they are out of date.
+  * lib: Return an Arc<WotStore> instead of a &WotStore.
+  * lib: Add Sequoia::shadow_ca_generated_on.
+  * lib: Add utility function to get the generated on host shadow CA.
+  * lib: Add methods to look up shadow CAs.
+  * lib: Return more information from Sequoia::local_trust_root.
+  * lib: Move Sequoia::local_trust_root to its own module.
+  * lib: Move Sequoia::have_secret_key.
+  * lib: Drop Sequoia::lookup_by_userid.  It's unused.
+  * lib: Fix spelling.
+  * lib: Set default revocable value to true.
+  * lib: Improve control char escaping
+  * lib: Change Builder setters to take `self` instead of `&mut self`.
+  * lib: Make SystemError global.
+  * lib: Add examples to the key generate documentation.
+  * lib: Change Sequoia::key_generate to emit structured output.
+  * lib: Use a wrapper type of the return type.
+  * tool: Include comments in sq cert export
+  * tool: canonicalize Ord and PartialOrd impls for Association
+  * tool: silence clippy error for potentially mutable Map key types
+  * tool: avoid allocating a temporary PathBuf just for a comparison
+  * clippy: silence two false positive unnecessary_to_owned warnings
+  * tool: avoid copying Url as String and convert to &str directly
+  * tool: avoid function calls in `Result::expect` arguments
+  * tool/log: allow for more efficient thread-local value initialization
+  * tool: drop to_string() calls for format! args that implement Display
+  * tool: fix formatting to avoid leaking comments into doc strings
+  * clippy: allow two types with interior mutability for BTreeSet keys
+  * lib: avoid allocating a temporary PathBuf just for a comparison
+  * lib: drop to_string() calls for format! args that implement Display
+  * lib: avoid potentially panicking integer cast
+  * lib/log: allow for more efficient thread-local value initialization
+  * clippy: add default lint configuration
+  * meta: enable MSRV-aware dependency resolver by default
+  * Update nettle-sys to fix building with LLVM / clang 22
+  * meta: Make fabio a committer.
+  * Convert key approvals update into builder pattern
+  * Move key-approvals-update to lib
+  * lib: Convert key approvals list into builder pattern
+  * Move key-approvals-list to lib
+  * lib: Change generate to use its own error type.
+  * lib: Return the linted user ID.
+  * CI: use new registry domain name
+  * lib: Change Sequoia::pki_certify to emit structured output.
+  * lib: Change key_generate to return the generated certificate.
+  * lib: Implement Debug for CertificationDiff.
+  * tool: Skip lint summary subsections when category is empty
+  * tool: Fix output file's permissions.
+  * Mark user IDs added by sq key userid add as authenticated
+  * lib: Convert expire to be a method and use the builder pattern.
+  * Move the implementation of sq key expire to the library.
+  * lib: Extend get_subkeys to allow skipping the primary key.
+  * lib: Extract utility function.
+  * lib: Don't export transitional functions.
+  * lib: Convert key::revoke to be a method and use the builder pattern.
+  * tool: Rename function.
+  * Move the implementation of sq key revoke to the library.
+  * lib: Convert userid::revoke to be a method and use the builder pattern.
+  * Move the implementation of sq key userid revoke to the library.
+  * lib: Convert subkey::revoke to be a method and use the builder pattern.
+  * Move the implementation of sq key subkey revoke to the library.
+  * Move revocation support trait and function to the library.
+  * lib: Convert userid::add to be a method and use the builder pattern.
+  * Move the implementation of sq key userid add to the library.
+  * lib: Convert subkey::add to be a method and use the builder pattern.
+  * Move the implementation of sq key subkey add to the library.
+  * lib: Move PasswordPolicy.
+  * lib: Fix documentation.
+  * Move the sq key generate implementation to the library.
+  * lib: Add CheckNewPassword::optional.
+  * tool: Fix typo.
+  * lib: Mark key::import::Builder::import_key as public.
+  * Move the certify_generated function to the library.
+  * Move the user ID linting functionality to the library.
+  * lib: Rework the certification diff functionality.
+  * lib: Add Expiration::from_operation_duration.
+  * lib: Fix comment.
+  * lib: Implement From<usize> for TrustAmount.
+  * lib: Implement PartialEq and Eq for TrustAmount.
+  * lib: Convert certify to be a method and use the builder pattern.
+  * lib: Make some functions const.
+  * lib: Improve error message when unable to verify a message.
+  * tool: Fix spelling.
+  * Gracefully deal with 404 HTTP result codes
+  * Treat certificates passed by fingerprint as authenticated
+  * Ignore revoked user IDs when updating approvals
+  * When displaying a certificate, sort the subkeys.
+  * tool: Don't panic if write fails
+  * Update keccak.
+  * Fix small documentation issues
+  * meta: Add Malte to the list of authors.
+  * tool: Restrict file permissions on sensitive output
+  * Update bytes.
+  * keystore: Upgrade capnp.
+  * Fix small typo
+  * CI: switch docker-image-push job to use dind
+  * Relax dirs dependency.
+  * tool: Avoid unnecessarily validating a certificate.
+  * tool: Don't panic on not existing cert
+  * lib: Correctly handle listing missing certificates.
+  * lib: Display key expiration time of 0 as 'never'
+  * lib: Display signature expiration time of 0 as 'never'
+  * tool: Fix sq verify's documentation.
+  * Improve temporary file handling.
+  * Update reqwest.
+  * Update sequoia-openpgp and sequoia-policy-config.
+  * meta: Update MSRV to 1.85.
+  * meta: Update signing policy.
+  * Move certification-related fucntionality to the library.
+  * lib: Change Sequoia::key_import to emit structured output.
+  * lib: Add functions to best-effort clone errors.
+  * lib: Fix the implementation of AddAssign for ImportStats.
+  * tool: When printing errors, specially handle more errors.
+  * tools: If the key store is not available, return a clap error.
+  * tool: Allow sq packet {armor,dearmor} to emit secret key material.
+  * Move key import to the library.
+  * lib: Don't export the verification helper.
+  * lib: Don't export the decryption helper.
+  * tool: Drop the packet dumper.  Use the version from the library.
+  * lib: Reenable decryption in the packet dumper.
+  * lib: Resynchronize the packet dumper implementations.
+  * tool: Update indicatif from 0.17 to 0.18
+  * lib: Fix sq inspect to escape control characters in user IDs.
+  * lib: Change Sequoia::import to emit structured output.
+  * lib: Emit a message when a message is malformed.
+  * lib: Implement decrypt::Stream for &mut decrypt::Stream.
+  * lib: Improve decrypt's tracing output.
+  * lib: Fix wording.
+  * lib: The decrypt stream doesn't need to impl the verify stream.
+  * Move certificate importing to the library.
+  * Move import statistics to the library.
+  * Move provenance management to the library.
+  * Move `MyAsRef` to the library.
+  * meta: Add Malte as a committer.
+  * lib: Fix comment.
+  * Move signing to the library, change it to emit structured output.
+  * tool: Add FileOrStdout::create_safe_overwrite.
+  * Move the sign Mode type to the library.
+  * Move PartFileWriter to the library.
+  * lib: Change Sequoia::encrypt to emit structured output.
+  * lib: Implement From<&EncryptPurpose> for KeyFlags.
+  * lib: Don't sign with revoked certificates.
+  * lib: Change Sequoia::get_keys et al. to use structured errors.
+  * Move Sq::get_signer, etc. to the library.
+  * Move encryption to the library.
+  * tool: Modify Prompt to count the passwords.
+  * Move the method Sq::have_secret_key to the library.
+  * Move the CompressionMode type to the library.
+  * Move the EncryptPurpose type to the library.
+  * lib: When inspecting a key, indicate if an algorithm is not supported.
+  * lib: When inspect a key, also show the elliptical curve, if any.
+  * tool: When dumping a key, indicate if an algorithm is not supported.
+  * tool: When dumping a key, also show the elliptical curve, if any.
+  * lib: Change Sequoia::decrypt et al. to emit structured output.
+  * lib: Extend the prompting framework to allow checking the response.
+  * lib: Rename imports.
+  * lib: Improve the semantics of designated signers.
+  * lib: Make decrypt and decrypt_unwrap methods on Sequoia.
+  * Move decryption to the library.
+  * lib: Copy emit_cert to the library.
+  * lib: Implement Debug for PreferredUserID.
+  * lib: Change Sequoia::verify to emit structured output.
+  * lib: Improve the semantics of designated signers.
+  * lib: Rename VHelper to VerificationHelper.
+  * lib: Fix and improve some comments.
+  * lib: Export our own Result type.
+  * lib: Use a getter; don't expose the bare field.
+  * lib: Rename sq to sequoia.
+  * Move signature verification to the library.
+  * lib: Implement Prompt for Box<dyn Prompt> and &Prompt.
+  * lib: Silence new rustc warning about implicit lifetimes.
+  * lib: Silence new rustc warning about unnecessary parentheses.
+  * Move Sequoia::decrypt_key to the library.
+  * lib: Add user prompting to the library.
+  * lib: Add helper function, Sequoia::self_userid.
+  * Move the password cache to the library.
+  * Move the TrustThreshold type to the library.
+  * Move the inspect implementation to the library.
+  * lib: Partially copy the packet dumper to the library.
+  * Move the SessionKey type to the library.
+  * Move the best User ID functionality to the library.
+  * Move the certificate look up functionality to the library.
+  * Move the FileOrStdin and FileStdinOrKeyHandle types to the library.
+  * Copy the StdinWarning type to the library.
+  * Move the PreferredUserID type to the library.
+  * lib: Fix spelling.
+  * lib: Rework how Sequoia::list handles output.
+  * lib: Add a builder for calling Sequoia::list.
+  * Move certificate listing and authentication to the library.
+  * Copy some supporting types and functions to the library.
+  * lib: Move the policy into Config.
+  * lib: Reorganize Config and ConfigFile.
+  * lib: Don't implement PartialEq and Eq for Config.
+  * Move Convert to the library.
+  * Move ca_creation_time to the library.
+  * Move Safe to the library.
+  * Move TrustAmount to the library.
+  * Move Query and QueryKind to the library.
+  * Fix spelling.
+  * lib: Improve Config's and ConfigFile's documentation.
+  * lib: Add function to read the default configuration file.
+  * lib: Remove unused function ConfigFile::verify.
+  * lib: Rework ConfigFile.
+  * lib: Fix ConfigFile::default_config.
+  * lib: Don't take ownership when a reference will do.
+  * lib: Move help augmentations to sq.
+  * lib: Track the source of a configuration value.
+  * lib: Add getters for the configuration key and values.
+  * lib: Add getters for the various configuration settings.
+  * lib: Allow setting pki.vouch.certifier-self to the empty string.
+  * tool: Fix the configuration key for key servers in the help text.
+  * tool: Fix the configuration key for the key generation profile.
+  * lib: Check that the default config file is the default config.
+  * lib: Model the verbosity more precisely.
+  * Fix the help text for the --verbose and --quiet flags.
+  * lib: Fix the version reported in the template.
+  * lib: Rename constants to include a default prefix.
+  * lib: Don't hard code the default for network search dane usage.
+  * lib: Don't hard code the default for network search wkd usage.
+  * lib: Don't hard code the default for network search iterations.
+  * Move the configuration management to the library crate.
+  * Move the Expiration type to the library crate.
+  * Move the Profile wrapper type to the library crate.
+  * Move the CipherSuite wrapper type to the library crate.
+  * Move the Time type to the library crate.
+  * Move the SECONDS_IN_DAY and SECONDS_IN_YEAR consts to the library.
+  * lib: Rename Time to Clock to avoid a name collision.
+  * tool: Explicitly goodlist PreferredAEADCiphersuites for keeping.
+  * lib: Move the key store into struct Sequoia.
+  * tool: Use re-exports from the sequoia crate.
+  * lib: Move the cert store into struct Sequoia.
+  * lib: Move time into struct Sequoia.
+  * lib: Move the policy to struct Sequoia.
+  * tool: Move the policy into struct Sq.
+  * tool: Introduce accessor for the current time.
+  * tool: Remove superfluous attributes.
+  * tool: Remove dead code.
+  * tool: Don't needlessly pass around mutable references to Sq.
+  * lib: Turn comments into documentation.
+  * tool: Remove unused code.
+  * tool: Introduce accessor for the policy.
+  * lib: Fix documentation.
+  * Update optimizations for the RustCrypto crates.
+  * sq: Use sequoia to manage the home directory.
+  * lib: Add basic SequoiaBuilder and Sequoia types.
+  * Add a new workspace for the Sequoia library.
+  * Move most everything to a new workspace.
+  * Fix spelling mistakes.
+  * Add sq toc, which recursively lists all commands.
+  * Use the password cache to unlock keys on the softkey backend.
+  * Change try_decrypt to take a reference to the key.
+  * Use the reference time, not now.
+  * Improve tracing output.
+  * Update example
+  * Update tokio to address RUSTSEC-2025-0023.
+  * Update openssl to address RUSTSEC-2025-0022.
+  * Update crossbeam-channel to avoid yanked version.
+  * tests: Fix locating test artifacts at runtime.
+  * tests: Allow for in-vivo testing.
+
+-------------------------------------------------------------------
 Mon Oct  5 09:39:23 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update dependencies due to bsc#1282203

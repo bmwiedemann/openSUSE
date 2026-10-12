@@ -17,7 +17,7 @@
 
 
 Name:           sequoia-sq
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Command-line frontend for Sequoia
 Group:          Productivity/Security
@@ -89,7 +89,7 @@ mkdir -p .cargo
 %{cargo_test} -- --skip integration::sq_pki::target_cert_expired
 
 %install
-%{cargo_install}
+%{cargo_install -p tool}
 # install man pages
 mkdir -p %{buildroot}/%{_mandir}/man1
 cp -pav target/release/build/%{crate}-*/out/man-pages/sq*.1 %{buildroot}/%{_mandir}/man1/
@@ -101,7 +101,6 @@ install -Dpm 0644 target/release/build/%{crate}-*/out/shell-completions/_sq %{bu
 %files
 %license LICENSE.txt
 %doc README.md
-%doc NEWS
 %{_bindir}/sq
 %{_mandir}/man1/sq*
 
