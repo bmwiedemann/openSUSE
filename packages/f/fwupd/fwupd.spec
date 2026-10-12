@@ -52,6 +52,7 @@ URL:            https://fwupd.org/
 Source:         %{name}-%{version}.tar.xz
 Source99:       fwupd-rpmlintrc
 Patch1:         fwupd-bsc1217138-fallback-shim-path.patch
+Patch2:         polkit-rules.patch
 
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -253,9 +254,6 @@ rm -f %{buildroot}%{_modulesloaddir}/fwupd-i2c.conf
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_datadir}/doc
 
-# Do not ship default polkit .rules - openSUSE overrides them anyway - boo#1125428
-rm %{buildroot}%{_datadir}/polkit-1/rules.d/org.freedesktop.fwupd.rules
-
 # installed-tests are packaged in fwupd-tests subpackage
 
 %if %{without fish_support}
@@ -354,6 +352,7 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_libdir}/fwupd-*/libfwupdutil.so
 %{_datadir}/%{name}/quirks.d/builtin.quirk.gz
 %_sysusersdir/fwupd.conf
+%{_datadir}/polkit-1/rules.d/org.freedesktop.fwupd.rules
 
 %files -n libfwupd%{shlib_sover}
 %{_libdir}/libfwupd.so.*

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  8 09:13:34 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- move Polkit rules into the proper package
+
+-------------------------------------------------------------------
+Wed Oct  7 12:05:22 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- package org.freedesktop.fwupd.rules to allow fwupd-refresh.service to
+  succeed for the "fwupd-refresh" service user (bsc#1279948).
+- add polkit-rules.patch: patch out the "wheel" group part from the Polkit
+  policy, which was the reason for not packaging the rules files previously.
+
+-------------------------------------------------------------------
 Thu Sep 24 11:59:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.1.8:
