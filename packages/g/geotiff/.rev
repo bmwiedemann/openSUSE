@@ -145,4 +145,12 @@
     <comment>1</comment>
     <requestid>1381353</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>e521618c9e654327190a3be372a46574</srcmd5>
+    <version>1.7.4</version>
+    <time>1791835701</time>
+    <user>dimstar_suse</user>
+    <comment>Forward Application:Geo/geotiff gcc-c++ BR drop (SR 1384275); pure C package, branch builds green.</comment>
+    <requestid>1384322</requestid>
+  </revision>
 </revisionlist>

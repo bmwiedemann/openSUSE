@@ -26,7 +26,6 @@ Summary:        Library to handle georeferenced TIFF
 License:        MIT AND SUSE-Public-Domain
 URL:            https://github.com/OSGeo/libgeotiff
 Source0:        https://github.com/OSGeo/libgeotiff/releases/download/%{version}/libgeotiff-%{version}.tar.gz
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libtiff-4)
