@@ -321,4 +321,37 @@
     <comment>1</comment>
     <requestid>1381492</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>adbcf87677e29b8c2a74a3c6c18a949b</srcmd5>
+    <version>1.108.0</version>
+    <time>1791835659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.108.0
+  * Enhancement - Add ECS-Init install pointer for non-Amazon Linux
+    AMIs to README (#5161)
+  * Enhancement - Remove direct docker run instructions from README (#5160)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/config from 1.28.1
+    to 1.33.6 in /ecs-agent, /agent, and /ecs-init (#5159)
+  * Feature - Enable IMDS IAM roles config resolution (#5154)
+  * Enhancement - Bump github.com/containerd/containerd from 1.7.33
+    to 1.7.36 in /agent (#5155)
+  * Enhancement - Bump github.com/containerd/containerd from 1.7.35
+    to 1.7.36 in /ecs-init (#5156)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/service/ec2 from
+    1.195.0 to 1.334.0 in /ecs-agent and /agent (#5148)
+  * Enhancement - Bump google.golang.org/grpc from 1.83.1 to 1.83.2
+    in /ecs-agent, /ecs-agent/daemonimages/csidriver and /agent (#5153)
+    (bsc#1279042, CVE-2026-84445)
+  * Enhancement - Bump go.opentelemetry.io/otel/exporters/otlp/
+    otlptrace/otlptracehttp from 1.43.0 to 1.45.0 in /agent (#5141)
+  * Enhancement - IMDS credential scanner/refresher updates (#5145)
+- Add missing Bugzilla and CVE references for CVE-2026-89090
+
+    from 1.47.3 to 1.65.0 in /agent (#4921) (bsc#1280679, CVE-2026-89090)
+    from 1.63.1 to 1.97.3 in /ecs-init (#4923) (bsc#1280679, CVE-2026-89090)
+    from 1.79.2 to 1.97.3 in /agent (#4924) (bsc#1280679, CVE-2026-89090)
+    from 1.6.10 to 1.7.8 in /agent (#4922) (bsc#1280679, CVE-2026-89090)
+    from 1.6.5 to 1.7.8 in /ecs-init (#4925) (bsc#1280679, CVE-2026-89090) (forwarded request 1384223 from glaubitz)</comment>
+    <requestid>1384291</requestid>
+  </revision>
 </revisionlist>
