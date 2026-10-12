@@ -38,6 +38,9 @@ Patch4:         fix_dashes_in_manpage.patch
 Patch5:         fix_segfault_in_utils_cert_handle_exception.patch
 # PATCH-FIX-OPENSUSE fix_wrong_string_null_terminated.patch
 Patch6:         fix_wrong_string_null_terminated.patch
+# PATCH-FIX-OPENSUSE fix-compatibility-for-nettle-4.patch -- based on arch linux patch
+# https://gitlab.archlinux.org/archlinux/packaging/packages/rdesktop/-/blob/56371adbfacf679d1093937475d1a488113c59af/nettle-4.patch
+Patch7:         fix-compatibility-for-nettle-4.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake

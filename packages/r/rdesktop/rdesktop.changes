@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 10 06:58:04 UTC 2026 - munix9@googlemail.com
+
+- Add fix-compatibility-for-nettle-4.patch
+  * add compatibility for nettle 4.x based on arch linux patch
+
+-------------------------------------------------------------------
 Thu Jan 11 14:24:42 UTC 2024 - Manfred Schwarb <manfred99@gmx.ch>
 
 - add patch fix_C99_issue_in_configure.patch to fix detection of statvfs64

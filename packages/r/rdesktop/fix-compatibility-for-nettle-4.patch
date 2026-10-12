@@ -1,0 +1,45 @@
+diff -ru rdesktop-1.9.0.orig/ssl.c rdesktop-1.9.0/ssl.c
+--- rdesktop-1.9.0.orig/ssl.c	2026-05-01 13:42:46.559285148 +0200
++++ rdesktop-1.9.0/ssl.c	2026-05-01 13:46:48.786564547 +0200
+@@ -25,6 +25,7 @@
+ #include "asn.h"
+ 
+ #include <gnutls/x509.h>
++#include <nettle/version.h>
+ 
+ void
+ rdssl_sha1_init(RDSSL_SHA1 * sha1)
+@@ -41,7 +42,11 @@
+ void
+ rdssl_sha1_final(RDSSL_SHA1 * sha1, uint8 * out_data)
+ {
++#if NETTLE_VERSION_MAJOR > 3
++	sha1_digest(sha1, out_data);
++#else
+ 	sha1_digest(sha1, SHA1_DIGEST_SIZE, out_data);
++#endif
+ }
+ 
+ void
+@@ -59,7 +64,11 @@
+ void
+ rdssl_md5_final(RDSSL_MD5 * md5, uint8 * out_data)
+ {
++#if NETTLE_VERSION_MAJOR > 3
++	md5_digest(md5, out_data);
++#else
+ 	md5_digest(md5, MD5_DIGEST_SIZE, out_data);
++#endif
+ }
+ 
+ void
+@@ -360,5 +369,9 @@
+ 
+ 	hmac_md5_set_key(&ctx, key_len, key);
+ 	hmac_md5_update(&ctx, msg_len, msg);
++#if NETTLE_VERSION_MAJOR > 3
++	hmac_md5_digest(&ctx, md);
++#else
+ 	hmac_md5_digest(&ctx, MD5_DIGEST_SIZE, md);
++#endif
+ }
