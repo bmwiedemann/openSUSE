@@ -1,7 +1,7 @@
 #
 # spec file for package gap-kan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-kan
-Version:        1.37
+Version:        1.38
 Release:        0
 Summary:        GAP: double coset rewriting systems
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       gap-automata >= 1.14
 Requires:       gap-core >= 4.11
-Requires:       gap-gapdoc >= 1.6.2
 Requires:       gap-kbmag >= 1.5.9
 
 %description
