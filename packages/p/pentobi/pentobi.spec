@@ -17,7 +17,7 @@
 
 
 Name:           pentobi
-Version:        30.3
+Version:        31.0
 Release:        0
 Summary:        Program to play the board game Blokus
 License:        GPL-3.0-only
@@ -29,7 +29,7 @@ BuildRequires:  gettext-runtime >= 0.23
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  rsvg-convert
 BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core) >= 6.9
+BuildRequires:  cmake(Qt6Core) >= 6.11
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6QuickControls2)
 BuildRequires:  cmake(Qt6Xml)
