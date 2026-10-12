@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Oct 11 13:50:25 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.23
+  * New -t option makes the map a torus, new -g WIDTHxHEIGHT option
+    sets the map size, -S 0 disables autosave
+  * Save file format bumped to version 3: saved games from earlier
+    releases are rejected as unsupported
+  * Saving uses atomic replacement, restoring is transactional,
+    fix saving of variable-sized maps
+  * Fix an old bug in transport selection not filtered by owner,
+    the fighter landing logic, city placement on custom maps and
+    an off-by-one in the display code
+  * Avoid potential overruns (zoom walkers, input buffer handling)
+  * Further code hardening; docs converted to AsciiDoc
+- Packaging changes for the new upstream Makefile:
+  * Pass PREFIX at install time as the Makefile no longer honors
+    DESTDIR; drop the sed on PREFIX
+  * Build only the binary target, the man page is shipped
+    pre-generated (no asciidoctor build dependency)
+  * Appdata file is now vms-empire.adoc, NEWS is now NEWS.adoc
+  * Add BuildRequires gcc and make, use pkgconfig(ncurses)
+  * Drop obsolete Group tag
+
+-------------------------------------------------------------------
 Mon Apr 20 19:33:14 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 1.20

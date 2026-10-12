@@ -17,15 +17,17 @@
 
 
 Name:           vms-empire
-Version:        1.20
+Version:        1.23
 Release:        0
 Summary:        Simulation of a full-scale war between two emperors
 License:        GPL-2.0-only
-Group:          Amusements/Games/Strategy/Turn Based
 URL:            http://www.catb.org/~esr/vms-empire/
 Source0:        http://www.catb.org/~esr/%{name}/%{name}-%{version}.tar.gz
+BuildRequires:  gcc
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  ncurses-devel
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(ncurses)
 
 %description
 The ancestor of all 4x (expand/explore/exploit/exterminate) games.
@@ -37,19 +39,20 @@ same rules that you do. This game is the ancestor of all the multiplayer
 
 %prep
 %autosetup -p1
-sed -i -e 's|PREFIX      ?= /usr/local|PREFIX      ?= /usr|g' Makefile
 
 %build
-%make_build CFLAGS="%{optflags}"
+# build the binary only: the man page ships pre-generated, no asciidoctor needed
+%make_build vms-empire CFLAGS="%{optflags}"
 
 %install
-%make_install
+# upstream Makefile ignores DESTDIR, install paths derive from PREFIX
+%make_install PREFIX=%{buildroot}%{_prefix}
 
 %files
 %license COPYING
-%doc AUTHORS BUGS HACKING NEWS README.adoc
+%doc AUTHORS BUGS HACKING NEWS.adoc README.adoc
 %{_bindir}/%{name}
-%{_datadir}/appdata/%{name}.xml
+%{_datadir}/appdata/%{name}.adoc
 %{_mandir}/man6/%{name}.6%{?ext_man}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
