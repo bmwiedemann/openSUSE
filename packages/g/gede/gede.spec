@@ -16,7 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Version:        2.22.1
+Version:        2.23.1
 Release:        0
 
 %if "@BUILD_FLAVOR@" == "qt6"
@@ -41,6 +41,10 @@ BuildRequires:  qt6-macros
 %else
 BuildRequires:  libqt5-qtbase-common-devel
 %endif
+
+# Only needed for tests.
+BuildRequires:  ctags
+
 Requires:       /usr/bin/ctags
 Recommends:     gdb
 
@@ -49,6 +53,10 @@ Gede is a graphical frontend (GUI) to GDB written in C++ and using the Qt5 toolk
 Gede supports debugging programs written in Ada, FreeBasic, C++, C, Rust, Fortran and Go.
 %prep
 %setup -q -n gede-%{version}
+#Remove unnecessary files from doc/
+rm -v doc/doxygen.cfg
+find doc -name makefile -print -delete
+
 
 %build
 cd src
@@ -68,8 +76,9 @@ install -pvDm644 %{_sourcedir}/gede.desktop -t %{buildroot}%{_datadir}/applicati
 
 %check
 
-#The other programs in tests/ are samples/debug tools for the embedded highlighter library, not test suites.
-cd tests/ini
+cd tests
+for i in highlightertest ini tagtest ; do
+pushd "$i"
 %if "@BUILD_FLAVOR@" == "qt6"
 %qmake6
 %else
@@ -77,7 +86,13 @@ cd tests/ini
 %endif
 sed -i 's/ -fPIC / /g' Makefile
 %make_jobs
-./test_ini
+popd
+done
+
+#Just run some demo programs on their own source code.
+./highlightertest/hltest ./highlightertest/hltest.cpp
+./ini/test_ini
+./tagtest/tagtest ./tagtest/tagtest.cpp
 
 
 
@@ -88,6 +103,6 @@ sed -i 's/ -fPIC / /g' Makefile
 %{_datadir}/applications/gede.desktop
 %{_datadir}/pixmaps/gede_icon.png
 %license LICENSE
-%doc README.rst
+%doc README.rst doc/
 
 %changelog
