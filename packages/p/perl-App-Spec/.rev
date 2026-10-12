@@ -7,4 +7,17 @@
     <comment>We would like to use this for openQA</comment>
     <requestid>1350775</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e8419bd3cebcb9a8953984814c83dd68</srcmd5>
+    <version>0.16.0</version>
+    <time>1791835773</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.16.0 (v0.16.0)
+   see /usr/share/doc/packages/perl-App-Spec/Changes
+  v0.16.0 2026-10-12 12:39:10+02:00
+      - Add fish completion generator (fish &gt;= 4.0 only) PR#27 @ilmanzo
+      - Support unicode in pod
+      - Make Term::ANSIColor optional</comment>
+    <requestid>1384374</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 12 13:18:43 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.16.0 (v0.16.0)
+   see /usr/share/doc/packages/perl-App-Spec/Changes
+
+  v0.16.0 2026-10-12 12:39:10+02:00
+
+      - Add fish completion generator (fish >= 4.0 only) PR#27 @ilmanzo
+      - Support unicode in pod
+      - Make Term::ANSIColor optional
+
+-------------------------------------------------------------------
 Wed Mar 26 05:33:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.15.0 (v0.15.0)

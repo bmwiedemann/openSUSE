@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-Spec
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name App-Spec
 Name:           perl-App-Spec
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
-# v0.15.0 -> normalize -> 0.15.0
-%define cpan_version v0.15.0
+# v0.16.0 -> normalize -> 0.16.0
+%define cpan_version v0.16.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Specification for commandline app
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,7 +30,7 @@ Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(File::ShareDir::Install) >= 0.06
+BuildRequires:  perl(File::ShareDir::Install) >= 0.60
 BuildRequires:  perl(List::MoreUtils)
 BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Module::Runtime)
@@ -39,7 +39,7 @@ BuildRequires:  perl(Moo::Role)
 BuildRequires:  perl(Ref::Util)
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Text::Table)
-BuildRequires:  perl(YAML::PP) >= 0.15.0
+BuildRequires:  perl(YAML::PP) >= 0.15
 Requires:       perl(List::MoreUtils)
 Requires:       perl(List::Util) >= 1.33
 Requires:       perl(Module::Runtime)
@@ -47,14 +47,14 @@ Requires:       perl(Moo)
 Requires:       perl(Moo::Role)
 Requires:       perl(Ref::Util)
 Requires:       perl(Text::Table)
-Requires:       perl(YAML::PP) >= 0.15.0
+Requires:       perl(YAML::PP) >= 0.15
 %{perl_requires}
 
 %description
 Specification for commandline app
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
