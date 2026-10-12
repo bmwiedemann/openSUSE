@@ -17,7 +17,7 @@
 
 
 %global ver 1.5.7
-%global rev 16
+%global rev 23
 %global uver %{ver}-%{rev}
 Name:           zstd-jni
 Version:        %{ver}.%{rev}
