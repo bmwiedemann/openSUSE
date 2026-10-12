@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 11 14:29:59 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Re-add adapt-to-new-ecal.patch, rebased on 8.0.1: it was dropped
+  as "fixed upstream", but 8.0.1 does not carry the libcamel
+  3.57.1+ API changes (elementary/mail#1023 is still open), so the
+  build failed against evolution-data-server 3.60.2 on Factory
+- Move the >= 3.45.1 floor to pkgconfig(libedataserverui-1.2), the
+  module meson 8.0.1 actually checks it on
+- Spec cleanup: merge the duplicated copyright header, use
+  pkgconfig(vapigen) instead of vala as spec-cleaner expects
+
+-------------------------------------------------------------------
+Sun Dec 21 02:31:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.0.1:
+  * Alias: Do not translate placeholder email address
+  * Drop old Soup support
+  * AttachmentButton: Use Gtk.Gesture
+  * MessageListItem: GTK4 prep
+  * Launcher: add icon for compose action
+- remove patch adapt-to-new-ecal.patch, fixed upstream
+
+-------------------------------------------------------------------
 Wed Oct  1 23:35:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add adapt-to-new-ecal.patch for fixing the breaking changes in

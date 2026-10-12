@@ -16,4 +16,21 @@
   the new ecal version (forwarded request 1308486 from rrahl0)</comment>
     <requestid>1308487</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bf81d87c6e6991558cbffbeb1b4370bb</srcmd5>
+    <version>8.0.1</version>
+    <time>1791835537</time>
+    <user>dimstar_suse</user>
+    <comment>Fix FTBFS of the devel 8.0.1 on Factory (evolution-data-server 3.60.2).
+
+devel 8.0.1 (r6) dropped adapt-to-new-ecal.patch as &quot;fixed upstream&quot;, but upstream 8.0.1 (2025-11-11) does not contain the libcamel 3.57.1+ API changes (elementary/mail PR 1023 still open; PR 1100 for 3.58 opened 2026-10-10). X11:Pantheon/pantheon-mail is red on openSUSE_Factory x86_64+aarch64: camel_folder_thread_messages_get_type undeclared.
+
+- adapt-to-new-ecal.patch re-added, rebased on 8.0.1 (applies at fuzz 0, dropped the stray meson.build.orig the old patch carried)
+- libedataserver &gt;= 3.45.1 floor moved to libedataserverui-1.2 (what meson 8.0.1 checks)
+- spec-cleaner: pkgconfig(vapigen) instead of vala, merged duplicated copyright header
+
+Verified on the branch home:amanzini:branches:X11:Pantheon: Factory x86_64+aarch64 and 16.0 x86_64+aarch64 all succeeded, rpmlint 0 errors / 0 badness (only W: no-%check-section, upstream ships no tests).
+After this lands, 8.0.1 can be forwarded devel -&gt; openSUSE:Factory (Factory still has 8.0.0). (forwarded request 1384103 from amanzini)</comment>
+    <requestid>1384116</requestid>
+  </revision>
 </revisionlist>

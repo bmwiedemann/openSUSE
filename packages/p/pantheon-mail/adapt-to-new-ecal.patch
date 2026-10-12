@@ -1,6 +1,10 @@
-diff -rubN mail-8.0.0/meson.build mail-8.0.0-patched/meson.build
---- mail-8.0.0/meson.build	2024-05-29 20:44:58.000000000 +0200
-+++ mail-8.0.0-patched/meson.build	2025-10-02 01:32:56.105521682 +0200
+# Adapt to the libcamel API changes in evolution-data-server 3.57.1+
+# Taken from https://github.com/elementary/mail/pull/1023 (still open),
+# rebased on 8.0.1
+
+diff -urN a/meson.build b/meson.build
+--- a/meson.build
++++ b/meson.build
 @@ -15,7 +15,12 @@
  granite_dep = dependency('granite', version: '>= 6.0.0')
  gee_dep = dependency('gee-0.8')
@@ -13,105 +17,11 @@ diff -rubN mail-8.0.0/meson.build mail-8.0.0-patched/meson.build
 +    camel_dep = dependency('camel-1.2', version: '>= 3.28')
 +endif
  libedataserver_dep = dependency('libedataserver-1.2', version: '>= 3.28')
- libedataserverui_dep = dependency('libedataserverui-1.2', version: '>= 3.28')
- if libedataserverui_dep.version().version_compare('>=3.45.1')
-diff -rubN mail-8.0.0/meson.build.orig mail-8.0.0-patched/meson.build.orig
---- mail-8.0.0/meson.build.orig	1970-01-01 01:00:00.000000000 +0100
-+++ mail-8.0.0-patched/meson.build.orig	2025-10-02 01:32:47.242006006 +0200
-@@ -0,0 +1,90 @@
-+project(
-+    'io.elementary.mail',
-+    'vala', 'c',
-+    version: '8.0.0',
-+    meson_version: '>=0.58.0'
-+)
-+
-+gnome = import('gnome')
-+i18n = import('i18n')
-+
-+add_project_arguments(['--vapidir', join_paths(meson.current_source_dir(), 'vapi')], language: 'vala')
-+
-+glib_dep = dependency('glib-2.0')
-+gobject_dep = dependency('gobject-2.0')
-+granite_dep = dependency('granite', version: '>= 6.0.0')
-+gee_dep = dependency('gee-0.8')
-+handy_dep = dependency('libhandy-1', version: '>=1.1.90')
-+camel_dep = dependency('camel-1.2', version: '>= 3.28')
-+libedataserver_dep = dependency('libedataserver-1.2', version: '>= 3.28')
-+libedataserverui_dep = dependency('libedataserverui-1.2', version: '>= 3.28')
-+if libedataserverui_dep.version().version_compare('>=3.45.1')
-+    add_project_arguments('--define=HAS_SOUP_3', language: 'vala')
-+    webkit2_dep = dependency('webkit2gtk-4.1')
-+    webkit2_web_extension_dep = dependency('webkit2gtk-web-extension-4.1')
-+else
-+    webkit2_dep = dependency('webkit2gtk-4.0', version: '>=2.28')
-+    webkit2_web_extension_dep = dependency('webkit2gtk-web-extension-4.0', version: '>=2.28')
-+endif
-+libportal_dep = dependency('libportal')
-+libportal_gtk_dep = dependency('libportal-gtk3')
-+folks_dep = dependency('folks')
-+m_dep = meson.get_compiler('c').find_library('m')
-+
-+webkit2_extension_path = join_paths(get_option('prefix'), get_option('libdir'), meson.project_name(), 'webkit2')
-+
-+dependencies = [
-+    glib_dep,
-+    gobject_dep,
-+    granite_dep,
-+    gee_dep,
-+    handy_dep,
-+    camel_dep,
-+    libedataserver_dep,
-+    libedataserverui_dep,
-+    libportal_dep,
-+    libportal_gtk_dep,
-+    webkit2_dep,
-+    folks_dep,
-+    m_dep
-+]
-+
-+asresources = gnome.compile_resources(
-+    'as-resources', 'data/' + meson.project_name() + '.gresource.xml',
-+    source_dir: 'data',
-+    c_name: 'as'
-+)
-+
-+extension_dependencies = [
-+    glib_dep,
-+    gobject_dep,
-+    gee_dep,
-+    webkit2_web_extension_dep
-+]
-+
-+add_global_arguments([
-+        '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
-+        '-DHANDY_USE_UNSTABLE_API'
-+    ],
-+    language:'c'
-+)
-+
-+gnome.post_install(glib_compile_schemas: true)
-+
-+config_data = configuration_data()
-+config_data.set('GETTEXT_PACKAGE', meson.project_name())
-+config_data.set('LOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
-+
-+config_file = configure_file(
-+    input: 'Config.vala.in',
-+    output: '@BASENAME@',
-+    configuration: config_data
-+)
-+
-+subdir('src')
-+subdir('webkit-extension')
-+subdir('data')
-+subdir('po')
-+if get_option('documentation')
-+    subdir('docs')
-+endif
-diff -rubN mail-8.0.0/src/Backend/MoveOperation.vala mail-8.0.0-patched/src/Backend/MoveOperation.vala
---- mail-8.0.0/src/Backend/MoveOperation.vala	2024-05-29 20:44:58.000000000 +0200
-+++ mail-8.0.0-patched/src/Backend/MoveOperation.vala	2025-10-02 01:32:56.105663963 +0200
+ libedataserverui_dep = dependency('libedataserverui-1.2', version: '>=3.45.1')
+ webkit2_dep = dependency('webkit2gtk-4.1')
+diff -urN a/src/Backend/MoveOperation.vala b/src/Backend/MoveOperation.vala
+--- a/src/Backend/MoveOperation.vala
++++ b/src/Backend/MoveOperation.vala
 @@ -189,10 +189,16 @@
              var vee_folder = (Camel.VeeFolder)src_folder;
  
@@ -150,9 +60,9 @@ diff -rubN mail-8.0.0/src/Backend/MoveOperation.vala mail-8.0.0-patched/src/Back
          }
      }
  
-diff -rubN mail-8.0.0/src/ConversationList/ConversationItemModel.vala mail-8.0.0-patched/src/ConversationList/ConversationItemModel.vala
---- mail-8.0.0/src/ConversationList/ConversationItemModel.vala	2024-05-29 20:44:58.000000000 +0200
-+++ mail-8.0.0-patched/src/ConversationList/ConversationItemModel.vala	2025-10-02 01:32:56.105845783 +0200
+diff -urN a/src/ConversationList/ConversationItemModel.vala b/src/ConversationList/ConversationItemModel.vala
+--- a/src/ConversationList/ConversationItemModel.vala
++++ b/src/ConversationList/ConversationItemModel.vala
 @@ -46,7 +46,11 @@
  
              unowned Camel.FolderThreadNode? current_node = node;
@@ -326,9 +236,9 @@ diff -rubN mail-8.0.0/src/ConversationList/ConversationItemModel.vala mail-8.0.0
                  has_flag = has_thread_flag (child, flag);
                  if (has_flag) {
                      break;
-diff -rubN mail-8.0.0/src/ConversationList/ConversationList.vala mail-8.0.0-patched/src/ConversationList/ConversationList.vala
---- mail-8.0.0/src/ConversationList/ConversationList.vala	2024-05-29 20:44:58.000000000 +0200
-+++ mail-8.0.0-patched/src/ConversationList/ConversationList.vala	2025-10-02 01:32:56.106269756 +0200
+diff -urN a/src/ConversationList/ConversationList.vala b/src/ConversationList/ConversationList.vala
+--- a/src/ConversationList/ConversationList.vala
++++ b/src/ConversationList/ConversationList.vala
 @@ -213,11 +213,19 @@
              return;
          }
@@ -537,9 +447,9 @@ diff -rubN mail-8.0.0/src/ConversationList/ConversationList.vala mail-8.0.0-patc
          }
      }
  
-diff -rubN mail-8.0.0/src/MessageList/MessageList.vala mail-8.0.0-patched/src/MessageList/MessageList.vala
---- mail-8.0.0/src/MessageList/MessageList.vala	2024-05-29 20:44:58.000000000 +0200
-+++ mail-8.0.0-patched/src/MessageList/MessageList.vala	2025-10-02 01:32:56.106658738 +0200
+diff -urN a/src/MessageList/MessageList.vala b/src/MessageList/MessageList.vala
+--- a/src/MessageList/MessageList.vala
++++ b/src/MessageList/MessageList.vala
 @@ -179,14 +179,28 @@
           */
          can_move_thread (true);
@@ -610,9 +520,9 @@ diff -rubN mail-8.0.0/src/MessageList/MessageList.vala mail-8.0.0-patched/src/Me
          }
      }
  
-diff -rubN mail-8.0.0/vapi/camel-1.2.vapi mail-8.0.0-patched/vapi/camel-1.2.vapi
---- mail-8.0.0/vapi/camel-1.2.vapi	2024-05-29 20:44:58.000000000 +0200
-+++ mail-8.0.0-patched/vapi/camel-1.2.vapi	2025-10-02 01:32:56.107320253 +0200
+diff -urN a/vapi/camel-1.2.vapi b/vapi/camel-1.2.vapi
+--- a/vapi/camel-1.2.vapi
++++ b/vapi/camel-1.2.vapi
 @@ -95,17 +95,32 @@
  	[CCode (cheader_filename = "camel/camel.h", type_id = "camel_cipher_context_get_type ()")]
  	public class CipherContext : GLib.Object {

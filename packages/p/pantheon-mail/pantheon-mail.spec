@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-mail
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define         appid io.elementary.mail
 Name:           pantheon-mail
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        A lightweight email reader for the Pantheon desktop
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/mail
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM adapt-to-new-ecal.patch https://github.com/elementary/mail/pull/1023 -- adapt to libcamel API changes in evolution-data-server 3.57.1+
 Patch0:         adapt-to-new-ecal.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
@@ -32,7 +33,6 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  vala
 BuildRequires:  valadoc
 BuildRequires:  pkgconfig(camel-1.2)
 BuildRequires:  pkgconfig(folks)
@@ -43,11 +43,13 @@ BuildRequires:  pkgconfig(granite) >= 6.0.0
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libapparmor)
 BuildRequires:  pkgconfig(libedataserver-1.2)
-BuildRequires:  pkgconfig(libedataserverui-1.2)
+BuildRequires:  pkgconfig(libedataserverui-1.2) >= 3.45.1
 BuildRequires:  pkgconfig(libhandy-1) >= 1.1.90
 BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libportal-gtk3)
+BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
+BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1)
 Provides:       elementary-mail = %{version}
 Obsoletes:      elementary-mail < %{version}
 
@@ -60,8 +62,8 @@ discussion without having to click from message to message.
 
 %package apparmor
 Summary:        Apparmor profile for %{name}
-BuildArch:      noarch
 Supplements:    (%{name} and apparmor-abstractions)
+BuildArch:      noarch
 
 %description apparmor
 This package ships only the apparmor profile for %{name}
