@@ -70,6 +70,10 @@ Patch0:         vllm-relax-cpu-requirements.patch
 Patch1:         vllm-cpu-disable-rust-frontend.patch
 # PATCH-FIX-UPSTREAM vllm-thinking-budget-scan-cursor.patch boo#1280982 mpluskal@suse.com -- CVE-2026-92365: resume the thinking-budget marker search from a cursor so a generation is not quadratic in its own length
 Patch2:         vllm-thinking-budget-scan-cursor.patch
+# PATCH-FIX-UPSTREAM fix-CVE-2026-105775.patch https://github.com/vllm-project/vllm/pull/57278 (unmerged as of 2026-10-12, rebased onto 0.30.0) -- CVE-2026-105775: keep the mamba block size a multiple of the chunk size so the "all" write-back reads states off chunk ends; DROP as obsolete when updating past the upstream removal of mamba_cache_mode "all" (#58997)
+Patch3:         fix-CVE-2026-105775.patch
+# PATCH-FIX-UPSTREAM fix-CVE-2026-105922.patch https://github.com/vllm-project/vllm/pull/57762 (open/unmerged as of 2026-10-12, rebased onto 0.30.0) -- CVE-2026-105922: treat prompt-embedding positions as invalid token IDs so penalty kernels do not index stale CPU token buffer contents
+Patch4:         fix-CVE-2026-105922.patch
 BuildRequires:  %{python_module Jinja2}
 # Runtime modules imported eagerly by "import vllm" (needed for the %%check smoke test).
 BuildRequires:  %{python_module cachetools}
@@ -184,7 +188,7 @@ Requires:       python-typing_extensions >= 4.10
 Requires:       python-watchfiles
 Requires:       python-xgrammar >= 0.2.1
 # Limited to the arches python-torch is built for.
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 riscv64
 %if %{with cpu_kernels}
 # The compiled kernels need a C++ toolchain and torch's CMake package config,
 # which ships in the -devel subpackage (find_package(Torch)).
@@ -255,6 +259,9 @@ export ACL_ROOT_DIR="$(readlink -f ../ComputeLibrary-%{acl_version})"
 %else
 export FETCHCONTENT_SOURCE_DIR_ONEDNN="$(readlink -f ../oneDNN-%{onednn_x86_version})"
 %endif
+%ifarch riscv64
+export CMAKE_ARGS=-DVLLM_RVV_VLEN=256
+%endif
 export CMAKE_GENERATOR=Ninja
 export MAX_JOBS=%{?jobs:%{jobs}}%{!?jobs:4}
 # cpu_extension.cmake does a bare find_library(OPEN_MP NAMES gomp REQUIRED),
@@ -307,6 +314,13 @@ export VLLM_TARGET_DEVICE=%{vllm_target_device}
 # Import smoke test validating the package and its metadata load.
 # Full model/serving tests need model weights and are out of scope here.
 %python_expand $python -c "import vllm; print(vllm.__version__)"
+# Regression test for CVE-2026-105775 (CPU-marked, needs only pytest+torch):
+# run it when pytest is already in the build root; no test-only
+# BuildRequires are added for it.
+%python_expand if $python -c "import pytest" 2>/dev/null; then $python -m pytest tests/v1/core/test_mamba_block_size_alignment.py; fi
+# The CUDA penalties test from fix-CVE-2026-105922
+# (tests/v1/worker/test_gpu_penalties.py) is carried-not-run: it needs a
+# CUDA device, which OBS build roots do not have.
 
 %pre
 # Migrate an install that still carries the old update-alternatives symlink.

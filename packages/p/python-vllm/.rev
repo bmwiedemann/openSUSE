@@ -172,4 +172,12 @@ is relaxed to match.
 Built green on aarch64 and x86_64, both flavors.</comment>
     <requestid>1379803</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>489908112111559e91ad75b7102ae94e</srcmd5>
+    <version>0.30.0</version>
+    <time>1791835654</time>
+    <user>dimstar_suse</user>
+    <comment>Security: backport upstream fixes for CVE-2026-105775 (boo#1284279) and CVE-2026-105922 (boo#1284365) on 0.30.0; upstream 0.31.x still vulnerable, no version move.</comment>
+    <requestid>1384276</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 12 08:32:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-105775: Mamba "all"-mode block size not a multiple
+  of the chunk size corrupts the state write-back and takes
+  EngineCore down (boo#1284279)
+  * fix-CVE-2026-105775.patch
+- CVE-2026-105922: prompt-embeds positions fed stale token IDs
+  into the penalty kernels, tripping a device-side assert in
+  EngineCore (boo#1284365)
+  * fix-CVE-2026-105922.patch
+
+-------------------------------------------------------------------
+Thu Sep 24 07:28:25 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Tue Sep 22 21:42:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.30.0:
