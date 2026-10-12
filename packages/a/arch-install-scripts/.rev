@@ -68,4 +68,17 @@ I have made the fixes you requested.</comment>
 </comment>
     <requestid>1329450</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>887e1b3850ac775a02ee5e1537b5e127</srcmd5>
+    <version>32</version>
+    <time>1791835784</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 32
+  * arch-chroot: normalize passed chrootdir
+  * arch-chroot: protect hostname change from propagating to host
+  * arch-chroot: Remove the mountpoint warning in unshare mode
+  * arch-chroot: Fix broken resolv.conf binding in unshare mode
+</comment>
+    <requestid>1384371</requestid>
+  </revision>
 </revisionlist>

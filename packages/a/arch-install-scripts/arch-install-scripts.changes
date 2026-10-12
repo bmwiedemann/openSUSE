@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 12 17:01:54 UTC 2026 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 32
+  * arch-chroot: normalize passed chrootdir
+  * arch-chroot: protect hostname change from propagating to host
+  * arch-chroot: Remove the mountpoint warning in unshare mode
+  * arch-chroot: Fix broken resolv.conf binding in unshare mode
+
+-------------------------------------------------------------------
 Tue Jan 27 09:30:58 UTC 2026 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 30
