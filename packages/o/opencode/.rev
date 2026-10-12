@@ -440,4 +440,12 @@ aarch64, all 5 patches still apply.</comment>
     <comment>Update to 2.0.26, lockstep half 2/2 with opentui 0.5.17 (SR 1383689): exact Requires pin rebased, vendor tree regenerated.</comment>
     <requestid>1383702</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>e5e27c665f67a8283ec19453c091f7af</srcmd5>
+    <version>2.0.26</version>
+    <time>1791835692</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384314</requestid>
+  </revision>
 </revisionlist>
