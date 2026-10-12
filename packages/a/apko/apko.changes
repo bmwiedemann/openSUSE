@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 12 04:45:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.11:
+  * apk: clean up temp files left by failed fetches, and stop tests
+    leaking temp dirs (#2555)
+- Update to version 1.4.10:
+  * expandapk: build on non-unix platforms; tolerate gVisor link
+    counts for unlinked temp files (#2566)
+- Update to version 1.4.9:
+  * apk: filtered, uncached resolvers and verified streaming index
+    reads (#2565)
+  * fix(sbom): compare embedded PURL names case-insensitively
+    (#2541)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.19.2 to
+    5.19.3 (#2557)
+  * build(deps): bump chainguard.dev/sdk from 0.1.326 to 0.1.331
+    (#2558)
+  * build(deps): bump chainguard.dev/sdk from 0.1.321 to 0.1.326
+    (#2556)
+
+-------------------------------------------------------------------
 Tue Oct 06 04:45:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.8:
