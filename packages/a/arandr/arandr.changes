@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 11 17:46:18 UTC 2026 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add arandr-0.1.11-new_setuptools.patch to fix build with
+  setuptools >= 84.0.0
+
+-------------------------------------------------------------------
 Mon Jun 16 16:31:55 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch for normalizing gzip mtime

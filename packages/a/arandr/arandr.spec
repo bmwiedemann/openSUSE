@@ -1,7 +1,7 @@
 #
 # spec file for package arandr
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2013,2019 B1 Systems GmbH, Vohburg, Germany <seife+obs@b1-systems.com>
 #
@@ -28,6 +28,8 @@ URL:            https://christian.amsuess.com/tools/arandr/
 Source:         http://christian.amsuess.com/tools/arandr/files/%{name}-%{version}.tar.gz
 Patch1:         arandr-fix_desktop_icon.patch
 Patch2:         reproducible.patch
+# needed for setuptools 84.0.0
+Patch3:         arandr-0.1.11-new_setuptools.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pip}

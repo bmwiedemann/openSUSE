@@ -1,0 +1,14 @@
+Index: setup.py
+===================================================================
+--- setup.py.orig
++++ setup.py
+@@ -53,7 +53,8 @@ class NoOptionCommand(Command):
+     """Command that doesn't take any options"""
+     user_options = []
+ 
+-    def initialize_options(self): pass
++    def initialize_options(self):
++        self.dry_run = False
+     def finalize_options(self): pass
+ 
+ class update_pot(NoOptionCommand):
