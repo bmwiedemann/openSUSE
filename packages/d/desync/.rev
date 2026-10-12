@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f80567b086d95875ae0822d0fc547af8</srcmd5>
+    <version>1.1.3</version>
+    <time>1791835775</time>
+    <user>dimstar_suse</user>
+    <comment>desync splits a file into content-defined chunks, stores each distinct chunk once, and writes an index listing the chunks that make up the file. A client that already holds an older version reuses the chunks it has and downloads only the ones it is missing. Chunks are ordinary files addressed by their hash, so a chunk store is any static file host: a web server, an S3 bucket, an OCI registry, or a directory on disk. Nothing on the server computes a delta, which means one published copy serves every client no matter which version they are coming from.
+
+It implements the casync format and interoperates with it — same index files, archives and chunk stores — with parallel chunking, more store backends and a Go library API. It is not a drop-in replacement on the command line: the options differ, and desync has commands casync doesn't.</comment>
+    <requestid>1384368</requestid>
+  </revision>
+</revisionlist>
