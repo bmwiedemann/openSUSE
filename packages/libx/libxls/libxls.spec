@@ -1,7 +1,7 @@
 #
 # spec file for package libxls
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libxls
 %define lname libxlsreader8
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Library for Parsing Excel (XLS) Files
 License:        BSD-2-Clause
