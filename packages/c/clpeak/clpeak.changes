@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 12 14:54:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Recommend libonnxruntime1: the ONNX backend dlopens it at run time
+
+-------------------------------------------------------------------
 Mon Oct  5 06:45:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.0.1; the corrected rows no longer compare with 3.0.0.

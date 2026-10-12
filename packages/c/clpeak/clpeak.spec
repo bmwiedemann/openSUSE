@@ -52,6 +52,11 @@ BuildRequires:  shaderc
 BuildRequires:  vulkan-headers
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(vulkan)
+# The ONNX backend dlopens libonnxruntime at run time and degrades
+# gracefully without it; recommend the Factory runtime so the backend
+# works where it is installed. No LiteRT runtime is packaged, so that
+# backend keeps its by-design absent-runtime note.
+Recommends:     libonnxruntime1
 
 %description
 A tool which profiles OpenCL devices to find their peak capacities like

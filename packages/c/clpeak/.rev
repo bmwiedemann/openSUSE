@@ -336,4 +336,12 @@ license=(&quot;Unlicense&quot;), stale for every version since 2023 and not foll
 - No rdeps on either arch; no CVE in this range.</comment>
     <requestid>1382566</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>105fa77b879f511cc8a81e1c1bd16fbf</srcmd5>
+    <version>3.0.1</version>
+    <time>1791835731</time>
+    <user>dimstar_suse</user>
+    <comment>Recommend libonnxruntime1: the ONNX backend dlopens it at run time; LiteRT note stays (no runtime packaged).</comment>
+    <requestid>1384350</requestid>
+  </revision>
 </revisionlist>
