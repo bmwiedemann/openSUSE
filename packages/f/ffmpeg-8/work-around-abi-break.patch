@@ -36,20 +36,20 @@ Do what upstream could not do, and provide some proper verdefs in the .v files.
 for SDL2 which released more often than ffmpeg. -jengelh]
 
 ---
- libavcodec/libavcodec.v       |  214 +++++++++++++
+ libavcodec/libavcodec.v       |  219 +++++++++++++
  libavdevice/libavdevice.v     |   34 +-
- libavfilter/libavfilter.v     |   94 +++++-
- libavformat/libavformat.v     |  178 +++++++++++
- libavutil/libavutil.v         |  657 +++++++++++++++++++++++++++++++++++++++++-
+ libavfilter/libavfilter.v     |   94 +++++
+ libavformat/libavformat.v     |  178 ++++++++++-
+ libavutil/libavutil.v         |  661 +++++++++++++++++++++++++++++++++++++++++-
  libswresample/libswresample.v |   42 ++
  libswscale/libswscale.v       |   63 +++-
- 7 files changed, 1240 insertions(+), 42 deletions(-)
+ 7 files changed, 1249 insertions(+), 42 deletions(-)
 
-Index: ffmpeg-8.1/libavcodec/libavcodec.v
+Index: ffmpeg-8.1.3/libavcodec/libavcodec.v
 ===================================================================
---- ffmpeg-8.1.orig/libavcodec/libavcodec.v
-+++ ffmpeg-8.1/libavcodec/libavcodec.v
-@@ -1,9 +1,207 @@
+--- ffmpeg-8.1.3.orig/libavcodec/libavcodec.v
++++ ffmpeg-8.1.3/libavcodec/libavcodec.v
+@@ -1,9 +1,212 @@
 -LIBAVCODEC_MAJOR {
 -    global:
 -        av_*;
@@ -148,8 +148,6 @@ Index: ffmpeg-8.1/libavcodec/libavcodec.v
 +	av_smpte_436m_anc_iter_next;
 +	av_smpte_436m_coded_anc_payload_size;
 +	av_smpte_436m_coded_anc_validate;
-+	av_vdpau_bind_context;
-+	av_vdpau_get_surface_parameters;
 +	av_vorbis_parse_frame;
 +	av_vorbis_parse_frame_flags;
 +	av_vorbis_parse_free;
@@ -227,6 +225,13 @@ Index: ffmpeg-8.1/libavcodec/libavcodec.v
 +	avsubtitle_free;
  };
 +
++/* Conditionally present */
++LIBAVCODEC_62_VDPAU {
++global:
++	av_vdpau_bind_context;
++	av_vdpau_get_surface_parameters;
++} LIBAVCODEC_62;
++
 +LIBAVCODEC_62.13 {
 +global:
 +	av_exif_clone_ifd;
@@ -265,10 +270,10 @@ Index: ffmpeg-8.1/libavcodec/libavcodec.v
 +local:
 +	*;
 +} LIBAVCODEC_62.22;
-Index: ffmpeg-8.1/libavdevice/libavdevice.v
+Index: ffmpeg-8.1.3/libavdevice/libavdevice.v
 ===================================================================
---- ffmpeg-8.1.orig/libavdevice/libavdevice.v
-+++ ffmpeg-8.1/libavdevice/libavdevice.v
+--- ffmpeg-8.1.3.orig/libavdevice/libavdevice.v
++++ ffmpeg-8.1.3/libavdevice/libavdevice.v
 @@ -1,7 +1,29 @@
 -LIBAVDEVICE_MAJOR {
 -    global:
@@ -305,10 +310,10 @@ Index: ffmpeg-8.1/libavdevice/libavdevice.v
 +local:
 +	*;
 +} LIBAVDEVICE_62;
-Index: ffmpeg-8.1/libavfilter/libavfilter.v
+Index: ffmpeg-8.1.3/libavfilter/libavfilter.v
 ===================================================================
---- ffmpeg-8.1.orig/libavfilter/libavfilter.v
-+++ ffmpeg-8.1/libavfilter/libavfilter.v
+--- ffmpeg-8.1.3.orig/libavfilter/libavfilter.v
++++ ffmpeg-8.1.3/libavfilter/libavfilter.v
 @@ -1,7 +1,89 @@
 -LIBAVFILTER_MAJOR {
 -    global:
@@ -405,10 +410,10 @@ Index: ffmpeg-8.1/libavfilter/libavfilter.v
 +local:
 +	*;
 +} LIBAVFILTER_11.10;
-Index: ffmpeg-8.1/libavformat/libavformat.v
+Index: ffmpeg-8.1.3/libavformat/libavformat.v
 ===================================================================
---- ffmpeg-8.1.orig/libavformat/libavformat.v
-+++ ffmpeg-8.1/libavformat/libavformat.v
+--- ffmpeg-8.1.3.orig/libavformat/libavformat.v
++++ ffmpeg-8.1.3/libavformat/libavformat.v
 @@ -1,6 +1,174 @@
 -LIBAVFORMAT_MAJOR {
 -    global:
@@ -589,11 +594,11 @@ Index: ffmpeg-8.1/libavformat/libavformat.v
 +local:
 +	*;
 +} LIBAVFORMAT_62.12;
-Index: ffmpeg-8.1/libavutil/libavutil.v
+Index: ffmpeg-8.1.3/libavutil/libavutil.v
 ===================================================================
---- ffmpeg-8.1.orig/libavutil/libavutil.v
-+++ ffmpeg-8.1/libavutil/libavutil.v
-@@ -1,6 +1,653 @@
+--- ffmpeg-8.1.3.orig/libavutil/libavutil.v
++++ ffmpeg-8.1.3/libavutil/libavutil.v
+@@ -1,6 +1,657 @@
 -LIBAVUTIL_MAJOR {
 -    global:
 -        av*;
@@ -1232,10 +1237,14 @@ Index: ffmpeg-8.1/libavutil/libavutil.v
 +} LIBAVUTIL_60;
 +
 +LIBAVUTIL_60.20 {
++} LIBAVUTIL_60.14;
++
++/* Conditionally present */
++LIBAVUTIL_60.20_VK {
 +global:
 +	av_vk_get_optional_device_extensions;
 +	av_vk_get_optional_instance_extensions;
-+} LIBAVUTIL_60.14;
++} LIBAVUTIL_60.20;
 +
 +LIBAVUTIL_60.26 {
 +global:
@@ -1252,10 +1261,10 @@ Index: ffmpeg-8.1/libavutil/libavutil.v
 +local:
 +	*;
 +} LIBAVUTIL_60.26;
-Index: ffmpeg-8.1/libswresample/libswresample.v
+Index: ffmpeg-8.1.3/libswresample/libswresample.v
 ===================================================================
---- ffmpeg-8.1.orig/libswresample/libswresample.v
-+++ ffmpeg-8.1/libswresample/libswresample.v
+--- ffmpeg-8.1.3.orig/libswresample/libswresample.v
++++ ffmpeg-8.1.3/libswresample/libswresample.v
 @@ -1,7 +1,37 @@
 -LIBSWRESAMPLE_MAJOR {
 -    global:
@@ -1300,10 +1309,10 @@ Index: ffmpeg-8.1/libswresample/libswresample.v
 +local:
 +	*;
 +} LIBSWRESAMPLE_6;
-Index: ffmpeg-8.1/libswscale/libswscale.v
+Index: ffmpeg-8.1.3/libswscale/libswscale.v
 ===================================================================
---- ffmpeg-8.1.orig/libswscale/libswscale.v
-+++ ffmpeg-8.1/libswscale/libswscale.v
+--- ffmpeg-8.1.3.orig/libswscale/libswscale.v
++++ ffmpeg-8.1.3/libswscale/libswscale.v
 @@ -1,7 +1,58 @@
 -LIBSWSCALE_MAJOR {
 -    global:
