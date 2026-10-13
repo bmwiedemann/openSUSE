@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 13 04:37:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.21.2:
+  This release builds the OPA binary artifacts with the latest
+  version of Go (v1.27.2), its standard library, and the
+  golang.org/x/net dependency (v0.60.0).
+  See these security advisories:
+  - https://groups.google.com/g/golang-announce/c/U2fTuyDJznI
+  - https://groups.google.com/g/golang-announce/c/ZPwCyRUuGBs
+  Furthermore, it addresses a mismatch in how encoded slashes were
+  handled in the input to a basic authorization policy and the Data
+  API (#9323)
+
+-------------------------------------------------------------------
 Thu Oct 01 05:17:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.21.1:
