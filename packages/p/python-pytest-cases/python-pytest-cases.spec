@@ -24,6 +24,8 @@ Summary:        Separate test code from test cases in pytest
 License:        BSD-3-Clause
 URL:            https://github.com/smarie/python-pytest-cases
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cases/pytest_cases-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Do not require pkg_resources
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module decopatch}
 BuildRequires:  %{python_module makefun >= 1.15.1}
 BuildRequires:  %{python_module packaging}
@@ -41,6 +43,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
 Requires:       python-decopatch
 Requires:       python-makefun >= 1.15.1
+Requires:       python-pytest >= 6
 Requires:       python-packaging
 BuildArch:      noarch
 %python_subpackages

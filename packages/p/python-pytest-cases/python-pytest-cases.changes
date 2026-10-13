@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 00:12:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources in setup.py
+
+-------------------------------------------------------------------
 Sun Apr 12 17:29:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.10.1:
