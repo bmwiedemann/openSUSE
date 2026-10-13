@@ -797,4 +797,12 @@
   * Update distro-copyright to be more explicit</comment>
     <requestid>1298082</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>bec53d3049ef14b418d2327458cf5b4f</srcmd5>
+    <version>1.3.0</version>
+    <time>1791906514</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384528</requestid>
+  </revision>
 </revisionlist>

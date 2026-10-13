@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 13 05:45:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.3.0:
+  * Support RPM 4.20 declarative build system preamble elements
+  * Convert well-known paths to rpm macros
+  * Extend bracketing excludes (%conf, autosetup, ldconfig_scriptlets)
+  * Extend python_module check to prefixed_python_module
+  * Drop redundant Recommends on -lang subpackage using %lang_package
+  * Keep version-dependent %global lines below the preamble tags
+  * Preserve and normalize third-party copyright notices (boo#1194504)
+  * Preserve trailing %dnl and # comments on dependencies
+  * Harden the dependency parser against crashes and hangs on
+    ^, %? macros, ? wildcards and empty values
+  * Treat %{?cond:} dependency blocks as conditions
+  * Fix conditional block placement and keep output idempotent
+  * Do not unbrace macros escaped as %%{macro}
+  * Fix ReDoS in the find regex and catch HTTP errors in URL probe
+  * Refresh conversion data from Leap 16.0 and the SPDX license list
+  * Modernize Python floor to 3.11
+
+-------------------------------------------------------------------
 Thu Aug  7 07:23:47 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 1.2.4+2:
