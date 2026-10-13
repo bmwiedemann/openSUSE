@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Oct 12 17:16:08 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- drop libzbarqt0 from baselibs.conf: the Qt subpackages are no
+  longer built, so the stale entry fails source validation
+
+-------------------------------------------------------------------
+Mon Oct 12 14:05:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- drop unused BuildRequires: libtool (meson build, never invoked),
+  pkgconfig(ImageMagick) (GraphicsMagick preferred and used),
+  pkgconfig(ice) and pkgconfig(sm) (never probed or linked by meson)
+- add %check section running the upstream meson test suite
+  under xvfb-run (display tests need an X server)
+- drop the Qt bindings conditional: the %bcond_with qt branch was dead
+  (only active for suse_version < 1600, which no built distro has) and
+  its -Dqt flag logic was inverted, so Qt never built anywhere
+
+-------------------------------------------------------------------
+Mon Oct 12 06:28:47 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.23.95:
+  * fix: undefined behavior (UBSan) warnings in QR decoder and scanner
+  * ci: address some issues for artifact generation
+  * v4l2: prefer video fourcc with maximum fps
+  * add a .editorconfig to define zbar's codingstyle
+  * Add a SECURITY.md file and intended audience to README.md
+  * README: update files now that Windows and MacOS have ImageMagick
+  * INSTALL.md: update build instructions and move Windows ones to here
+  * ci: update github actions after meson changes
+  * ci: add support for running unit tests on Windows and MacOS
+  * ci: build static Windows release executables
+  * build: drop Autoconf pkg-config templates
+  * zbar: add a feature to select between static, dynamic or both lib types
+  * zbar.spec.in: update it from Fedora repository and make it work
+  * qrcode: reserve extra spaces for NUL separators
+  * zbarimg: release image on error paths
+  * zbarimg: fix potential memory leak
+  * zbarcam-qt: fix wayland SIGSEGV at init
+  * zbarcam/zbarcam-gtk: fix compilation against GTK2
+  * python: avoid Py_SIZE on exact integers
+  * java: Fix an obsolete call
+  * Symbol.h: Fix warnings with newer g++/stdlib++
+  * qt/QZBarThread.cpp: handle fourcc the right way
+  * img_scanner: include stddef for ptrdiff_t
+  * sqcode: fix memory leak in _zbar_sq_decode
+  * qrdectxt: Disallow 0x80 in text_is_big5() and make more readable
+  * qrdectxt: Fix Big5 pre-validation
+  * image: minor change to length calculation logic
+  * symbol: Fix base64_encode to correctly encode bytes above 0x7F
+  * qr: preserve edge points to avoid corruption
+  * qr: avoid reading an uninitialized sa[] slot on a malformed S-A index
+  * fix pointer-overflow UB in movedelta causing SIGSEGV
+  * keep the code93 and databar edge sums out of signed shifts
+  * check decode_e() results before shifting them into a signature
+- Remove upstreamed zbar-configure.patch
+- Remove upstreamed zbar-pkgconfig.patch
+ 
+-------------------------------------------------------------------
 Tue Jun  2 18:12:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Correct the License tag to LGPL-2.1-or-later (the sources are

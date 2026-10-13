@@ -19,44 +19,29 @@
 
 %define sover   0
 %define libname lib%{name}%{sover}
-%if 0%{?suse_version} >= 1600
-%bcond_with qt
-%else
-%bcond_without qt
-%endif
 Name:           zbar
-Version:        0.23.93
+Version:        0.23.95
 Release:        0
 Summary:        Bar code reader
 License:        LGPL-2.1-or-later
 URL:            https://github.com/mchehab/zbar
-Source0:        https://linuxtv.org/downloads/%{name}/%{name}-%{version}.tar.bz2
+Source0:        https://github.com/mchehab/zbar/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source98:       baselibs.conf
-# https://github.com/mchehab/zbar/issues/277
-Patch0:         https://github.com/mchehab/zbar/commit/368571ffa1a0f6cc41f708dd0d27f9b6e9409df8.patch#/zbar-pkgconfig.patch
-# https://github.com/mchehab/zbar/issues/277
-Patch1:         https://github.com/mchehab/zbar/commit/a549566ea11eb03622bd4458a1728ffe3f589163.patch#/zbar-configure.patch
-BuildRequires:  automake
+BuildRequires:  GraphicsMagick-devel
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  xmlto
-BuildRequires:  pkgconfig(ImageMagick)
+BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
 %lang_package
-%if %{with qt}
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-%endif
 
 %description
 ZBar reads bar codes from various sources, such as video streams,
@@ -87,22 +72,6 @@ This package contains all necessary include files, libraries,
 configuration files and development tools needed to compile and link
 applications using the zbar library.
 
-%package -n lib%{name}qt0
-Summary:        ZBar Qt bindings
-
-%description -n lib%{name}qt0
-This package provides ZBar Qt bindings.
-
-%package -n lib%{name}qt-devel
-Summary:        Development environment for the ZBar Qt bindings library
-Requires:       lib%{name}-devel = %{version}
-Requires:       lib%{name}qt0 = %{version}
-
-%description -n lib%{name}qt-devel
-This package contains all necessary include files, libraries,
-configuration files and development tools needed to compile and link
-applications using the zbar-qt library.
-
 %package -n python3-zbar
 Summary:        Python3 module for ZBar
 
@@ -113,24 +82,18 @@ This package contains the module to use ZBar from python3.
 %autosetup -p1
 
 %build
-autoreconf -fiv
-%configure \
-  --docdir=%{_docdir}/%{name} \
-  --disable-static \
-  --without-java \
-  --with-python=python3 \
-  --without-gtk \
-%if %{with qt}
-  --with-qt \
-%else
-  --without-qt \
-%endif
+%meson \
+  -Djava=disabled \
+  -Dqt=false \
   %{nil}
 
-%make_build
+%meson_build
+
+%check
+xvfb-run -a /usr/bin/meson test -C %{_vpath_builddir} --print-errorlogs
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -name "*.la"  -or -name "*.a" | xargs rm -f
 rm -rf %{buildroot}%{_datadir}/doc/zbar-%{version}/
 rm -f %{buildroot}%{_docdir}/zbar/{COPYING,LICENSE.md,INSTALL.md}
@@ -140,18 +103,12 @@ rm -f %{buildroot}%{_docdir}/zbar/{COPYING,LICENSE.md,INSTALL.md}
 rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.linuxtv.Zbar.conf
 
 %ldconfig_scriptlets -n %{libname}
-%if %{with qt}
-%ldconfig_scriptlets -n libzbarqt0
-%endif
 
 %files
-%license COPYING LICENSE.md
-%{_defaultdocdir}/%{name}/
+%dir %{_datadir}/doc/zbar
+%{_datadir}/doc/zbar/*
 %{_bindir}/zbarimg
 %{_bindir}/zbarcam
-%if %{with qt}
-%{_bindir}/zbarcam-qt
-%endif
 %{_mandir}/man1/*
 
 %files lang -f %{name}.lang
@@ -175,17 +132,7 @@ rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.linuxtv.Zbar.conf
 %{_libdir}/libzbar.so
 %{_libdir}/pkgconfig/zbar.pc
 
-%if %{with qt}
-%files -n lib%{name}qt0
-%{_libdir}/libzbarqt.so.%{sover}*
-
-%files -n lib%{name}qt-devel
-%{_includedir}/%{name}/QZBar*.h
-%{_libdir}/libzbarqt.so
-%{_libdir}/pkgconfig/zbar-qt.pc
-%endif
-
 %files -n python3-zbar
-%{python3_sitearch}/zbar.so
+%{python3_sitearch}/*.so
 
 %changelog
