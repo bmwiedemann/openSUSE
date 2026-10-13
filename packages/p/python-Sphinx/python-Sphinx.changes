@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 12 12:16:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream cpython-autodoc.patch to fix tests
+
+-------------------------------------------------------------------
 Thu Aug 20 14:45:10 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Apply tests.patch to fix tests with Pygments 2.21.0

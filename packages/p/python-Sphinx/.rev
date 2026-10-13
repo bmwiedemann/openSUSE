@@ -1725,4 +1725,12 @@ IMPORTANT: It would be better to fix/update the test, so if you can fix this ple
     <comment>1</comment>
     <requestid>1372561</requestid>
   </revision>
+  <revision rev="116" vrev="3">
+    <srcmd5>7f4cb3ad2a4cea097e98ab84cc7dae81</srcmd5>
+    <version>9.1.0</version>
+    <time>1791906215</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream cpython-autodoc.patch to fix tests</comment>
+    <requestid>1384297</requestid>
+  </revision>
 </revisionlist>

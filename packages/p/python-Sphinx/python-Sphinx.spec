@@ -48,6 +48,8 @@ Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
 # PATCH-FIX-UPSTREAM fix tests with Pygments 2.21.0 gh#sphinx-doc/sphinx#14611
 Patch0:         tests.patch
+# PATCH-FIX-UPSTREAM Fix failure in test_cfunction with new Python snapshots: "asctime([time_tuple])" != "asctime([tuple])" gh#sphinx-doc/sphinx#14683
+Patch1:         cpython-autodoc.patch
 BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
