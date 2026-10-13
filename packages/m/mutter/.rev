@@ -2536,4 +2536,13 @@ New stable rel</comment>
 - Bump api_major to 10, following upstream changes.</comment>
     <requestid>1383105</requestid>
   </revision>
+  <revision rev="272" vrev="3">
+    <srcmd5>1f9cc9a316e6ef9173fc07fd4f4684c7</srcmd5>
+    <version>50.5</version>
+    <time>1791906192</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop 5370.patch: It fixes emacs, but breaks copy/paste from firefox and
+  others (boo#1284143).</comment>
+    <requestid>1384258</requestid>
+  </revision>
 </revisionlist>
