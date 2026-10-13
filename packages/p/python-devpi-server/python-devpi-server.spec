@@ -53,7 +53,7 @@ Requires:       python-pyramid >= 2
 Requires:       python-repoze.lru >= 0.6
 Requires:       python-requests >= 2.3.0
 Requires:       python-ruamel.yaml
-Requires:       python-setuptools <= 81
+Requires:       python-setuptools
 Requires:       python-strictyaml
 Requires:       python-waitress >= 1.0.1
 %if %{python_version_nodots} >= 313

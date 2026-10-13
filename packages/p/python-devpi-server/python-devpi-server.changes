@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 14:53:30 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Drop the pin on setuptools, packages in question have been fixed
+
+-------------------------------------------------------------------
 Thu Aug 20 09:05:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.20.3:
