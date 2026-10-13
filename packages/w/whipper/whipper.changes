@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:11:14 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build again (boo#1285053)
+
+-------------------------------------------------------------------
+Tue Oct 13 10:52:01 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream commit adab2598 as patch 0001-No-longer-rely-on-pkg_resources.patch 
+  to fix boo#1285053
+
+-------------------------------------------------------------------
 Tue Sep 16 10:44:06 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add python3-setuptools tools as requirement (boo#1249580) 

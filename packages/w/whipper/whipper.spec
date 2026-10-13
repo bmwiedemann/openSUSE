@@ -1,7 +1,7 @@
 #
 # spec file for package whipper
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,12 @@ URL:            https://github.com/whipper-team/whipper
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH_UPSTREAM
 Patch0:         e0942417a1c267781a8b676789730457dcb2e6fa.patch
+Patch1:         0001-No-longer-rely-on-pkg_resources.patch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  libsndfile-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
 BuildRequires:  python3-setuptools
@@ -41,10 +43,13 @@ BuildRequires:  python3-Twisted
 BuildRequires:  python3-discid
 BuildRequires:  python3-musicbrainzngs
 BuildRequires:  python3-mutagen
+BuildRequires:  python3-packaging
+BuildRequires:  python3-pip
 BuildRequires:  python3-pycdio
 BuildRequires:  python3-pytest
 BuildRequires:  python3-ruamel.yaml
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  sox
 # /SECTION
 # nb: there is a difference between cd-paranoia [we want] and
@@ -52,13 +57,6 @@ BuildRequires:  sox
 Requires:       cd-paranoia >= 10.2
 Requires:       cdrdao
 Requires:       flac
-Requires:       python3-discid
-Requires:       python3-gobject
-Requires:       python3-musicbrainzngs
-Requires:       python3-mutagen
-Requires:       python3-pycdio
-Requires:       python3-ruamel.yaml
-Requires:       python3-setuptools
 Requires:       sox
 Conflicts:      morituri
 
@@ -73,10 +71,10 @@ Whipper was forked from the Morituri project, after Morituri development halted.
 
 %build
 echo "Version: %{version}" > PKG-INFO
-%python3_build
+%python3_pyproject_wheel
 
 %install
-%python3_install
+%python3_pyproject_install
 %fdupes %{buildroot}%{python3_sitearch}
 
 %check
@@ -92,7 +90,7 @@ pytest whipper/test/
 %{_bindir}/whipper
 %{python3_sitearch}/whipper
 %{python3_sitearch}/accuraterip.cpython*
-%{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/%{name}-%{version}.dist-info/
 %{_datadir}/metainfo/com.github.whipper_team.Whipper.metainfo.xml
 
 %changelog

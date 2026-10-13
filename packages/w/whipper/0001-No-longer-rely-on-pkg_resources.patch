@@ -1,0 +1,147 @@
+From adab25986f38d1bf5e8766f6b0f301c1acf2ec49 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Katharina=20Dr=C3=B6ge?= <kate@commandmc.de>
+Date: Wed, 24 Sep 2025 21:52:02 +0200
+Subject: [PATCH] No longer rely on `pkg_resources`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Katharina Dröge <kate@commandmc.de>
+---
+ README.md                 |   20 ++------------------
+ whipper/__init__.py       |    8 ++++----
+ whipper/command/main.py   |   21 +--------------------
+ whipper/common/program.py |    5 +++--
+ whipper/result/result.py  |    4 ++--
+ 5 files changed, 12 insertions(+), 46 deletions(-)
+
+--- a/README.md
++++ b/README.md	2026-10-13 10:42:04.992928729 +0000
+@@ -297,24 +297,8 @@ The available plugins can be listed with
+ whipper cd rip -L eac
+ ```
+ 
+-Whipper searches for logger plugins in the following paths:
+-
+-- `$XDG_DATA_HOME/whipper/plugins`
+-- Paths returned by the following Python instruction:
+-
+-  `[x + '/whipper/plugins' for x in site.getsitepackages()]`
+-
+-- If whipper is run in a `virtualenv`, it will use these alternative instructions (from `distutils.sysconfig`):
+-  - `get_python_lib(plat_specific=False, standard_lib=False, prefix='/usr/local') + '/whipper/plugins'`
+-  - `get_python_lib(plat_specific=False, standard_lib=False) + '/whipper/plugins'`
+-
+-On a default Debian/Ubuntu installation, the following paths are searched by whipper:
+-
+-- `$HOME/.local/share/whipper/plugins`
+-- `/usr/local/lib/python3.X/dist-packages/whipper/plugins`
+-- `/usr/lib/python3.X/dist-packages/whipper/plugins`
+-
+-Where `X` stands for the minor version of the Python 3 release available on the system.
++Whipper searches for logger plugins using `importlib.metadata.entry_points`, meaning any package visible to the Python
++interpreter exporting a `whipper.logger` entry point will be loaded.
+ 
+ Please note that locally installed logger plugins won't be recognized when whipper has been installed through the official Docker image.
+ 
+--- a/whipper/__init__.py
++++ b/whipper/__init__.py	2026-10-13 10:42:05.012928371 +0000
+@@ -2,11 +2,11 @@ import logging
+ import os
+ import sys
+ 
+-from pkg_resources import (get_distribution,
+-                           DistributionNotFound, RequirementParseError)
++from importlib.metadata import version, PackageNotFoundError
++
+ try:
+-    __version__ = get_distribution(__name__).version
+-except (DistributionNotFound, RequirementParseError):
++    __version__ = version('whipper')
++except PackageNotFoundError:
+     # not installed as package or is being run from source/git checkout
+     from setuptools_scm import get_version
+     __version__ = get_version()
+--- a/whipper/command/main.py
++++ b/whipper/command/main.py	2026-10-13 10:42:05.024928156 +0000
+@@ -3,14 +3,11 @@
+ 
+ import os
+ import sys
+-import pkg_resources
+ import musicbrainzngs
+-import site
+ import whipper
+-from distutils.sysconfig import get_python_lib
+ from whipper.command import cd, offset, drive, image, accurip, mblookup
+ from whipper.command.basecommand import BaseCommand
+-from whipper.common import common, directory, config
++from whipper.common import common, config
+ from whipper.extern.task import task
+ from whipper.program.utils import eject_device
+ 
+@@ -35,22 +32,6 @@ def main():
+                        "to make it work in whipper.", server['netloc'])
+         musicbrainzngs.set_hostname(server['netloc'])
+ 
+-    # Find whipper's plugins paths (local paths have higher priority)
+-    plugins_p = [directory.data_path('plugins')]  # local path (in $HOME)
+-    if hasattr(sys, 'real_prefix'):  # no getsitepackages() in virtualenv
+-        plugins_p.append(
+-            get_python_lib(plat_specific=False, standard_lib=False,
+-                           prefix='/usr/local') + '/whipper/plugins')
+-        plugins_p.append(get_python_lib(plat_specific=False,
+-                         standard_lib=False) + '/whipper/plugins')
+-    else:
+-        plugins_p += [x + '/whipper/plugins' for x in site.getsitepackages()]
+-
+-    # register plugins with pkg_resources
+-    distributions, _ = pkg_resources.working_set.find_plugins(
+-        pkg_resources.Environment(plugins_p)
+-    )
+-    list(map(pkg_resources.working_set.add, distributions))
+     try:
+         cmd = Whipper(sys.argv[1:], os.path.basename(sys.argv[0]), None)
+         ret = cmd.do()
+--- a/whipper/common/program.py
++++ b/whipper/common/program.py	2026-10-13 10:42:05.036927941 +0000
+@@ -27,6 +27,8 @@ import shutil
+ import time
+ 
+ from tempfile import NamedTemporaryFile
++from packaging.version import Version
++
+ from whipper.common import accurip, checksum, common, mbngs, path
+ from whipper.program import cdrdao, cdparanoia
+ from whipper.result import result
+@@ -98,9 +100,8 @@ class Program:
+ 
+         Also warn about buggy cdrdao versions.
+         """
+-        from pkg_resources import parse_version as V
+         version = cdrdao.version()
+-        if V(version) < V('1.2.3rc2'):
++        if Version(version) < Version('1.2.3rc2'):
+             logger.warning('cdrdao older than 1.2.3 has a pre-gap length bug.'
+                            ' See http://sourceforge.net/tracker/?func=detail&aid=604751&group_id=2171&atid=102171')  # noqa: E501
+ 
+--- a/whipper/result/result.py
++++ b/whipper/result/result.py	2026-10-13 10:42:05.052927655 +0000
+@@ -18,7 +18,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with whipper.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-import pkg_resources
++from importlib.metadata import entry_points
+ import time
+ 
+ 
+@@ -157,7 +157,7 @@ def getLoggers():
+     """
+     d = {}
+ 
+-    pluggables = list(pkg_resources.iter_entry_points("whipper.logger"))
++    pluggables = list(entry_points(group="whipper.logger"))
+     for entrypoint in [EntryPoint(), ] + pluggables:
+         plugin_class = entrypoint.load()
+         d[entrypoint.name] = plugin_class
