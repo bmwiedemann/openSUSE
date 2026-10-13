@@ -1,7 +1,7 @@
-From c9198f2838a0f1f4f31b0423f99379c89a280463 Mon Sep 17 00:00:00 2001
+From 5fa34ed61d511f3fa77f94328d0e2e77ace421eb Mon Sep 17 00:00:00 2001
 From: Ralf Habacker <ralf.habacker@freenet.de>
 Date: Wed, 9 Jul 2025 15:10:41 +0200
-Subject: [PATCH 2/6] cmake: Use the same version for all libraries that can be
+Subject: [PATCH 2/7] cmake: Use the same version for all libraries that can be
  created in shared mode
 
 ---

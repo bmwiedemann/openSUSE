@@ -1,7 +1,7 @@
-From 1c146b0f06e26b8352df82c1a022c9c60363c515 Mon Sep 17 00:00:00 2001
+From a8aa493690a2366fdaea4e6b03bc239ac6ef3970 Mon Sep 17 00:00:00 2001
 From: Jiri Slaby <jslaby@suse.cz>
 Date: Tue, 30 Jun 2026 09:20:51 +0200
-Subject: [PATCH 4/6] disable -pedantic
+Subject: [PATCH 4/7] disable -pedantic
 
 -pedantic generates 3623 warnings at the moment. Disable it for now, so
 that we can see more important warnings.

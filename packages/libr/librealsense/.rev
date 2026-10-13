@@ -207,4 +207,15 @@ D435.</comment>
   https://github.com/realsenseai/librealsense/releases/tag/v2.58.4</comment>
     <requestid>1381594</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7722a28b3ea2415a27f8a70b993770ff</srcmd5>
+    <version>2.59.1</version>
+    <time>1791906365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.59.1
+  * see release notes here:
+    https://github.com/realsenseai/librealsense/releases/tag/v2.59.1
+- add 0007-cmake-use-libcurl-from-system.patch</comment>
+    <requestid>1384496</requestid>
+  </revision>
 </revisionlist>

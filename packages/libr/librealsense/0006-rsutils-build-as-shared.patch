@@ -1,7 +1,7 @@
-From 1a4ca3e7f27c24f8326167f07bea992d09a320e2 Mon Sep 17 00:00:00 2001
+From cf11f346a4731a09270049b56b99de07a17a661a Mon Sep 17 00:00:00 2001
 From: Alessandro de Oliveira Faria <cabelo@opensuse.org>
 Date: Tue, 30 Jun 2026 09:20:54 +0200
-Subject: [PATCH 6/6] rsutils: build as shared
+Subject: [PATCH 6/7] rsutils: build as shared
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

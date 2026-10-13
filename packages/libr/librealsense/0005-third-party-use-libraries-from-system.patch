@@ -1,7 +1,7 @@
-From 0464b2a0558fa545122273f0e44d3b515f7d91e3 Mon Sep 17 00:00:00 2001
+From 7642f7141268d6560331e5e47ad961cc0dd6d5e3 Mon Sep 17 00:00:00 2001
 From: Jiri Slaby <jslaby@suse.cz>
 Date: Mon, 30 Sep 2024 08:42:26 +0200
-Subject: [PATCH 5/6] third-party: use libraries from system
+Subject: [PATCH 5/7] third-party: use libraries from system
 
 ---
  third-party/realsense-file/CMakeLists.txt | 16 +++++-----------

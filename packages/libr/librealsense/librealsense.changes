@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 13 06:14:15 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.59.1
+  * see release notes here:
+    https://github.com/realsenseai/librealsense/releases/tag/v2.59.1
+- add 0007-cmake-use-libcurl-from-system.patch
+
+-------------------------------------------------------------------
 Fri Sep  4 08:54:46 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 2.58.4

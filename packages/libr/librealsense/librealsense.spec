@@ -20,7 +20,7 @@
 %define libver %(echo %version|sed 's@^\\([0-9]*\\)\\.\\([0-9]*\\).*@\\1_\\2@')
 
 Name:           librealsense
-Version:        2.58.4
+Version:        2.59.1
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
@@ -28,6 +28,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/IntelRealSense/librealsense
 Source:         https://github.com/IntelRealSense/librealsense/archive/v%{version}.tar.gz
 Source1:        fastcdr-1.0.25.tar.xz
+Source2:        libdeflate-1.25.tar.xz
 # see https://github.com/IntelRealSense/librealsense/pull/14125
 Patch0:         0001-cmake-add-support-to-build-shared-libraries.patch
 Patch1:         0002-cmake-Use-the-same-version-for-all-libraries-that-ca.patch
@@ -35,6 +36,7 @@ Patch2:         0003-Install-presets-to-usr-share.patch
 Patch3:         0004-disable-pedantic.patch
 Patch4:         0005-third-party-use-libraries-from-system.patch
 Patch5:         0006-rsutils-build-as-shared.patch
+Patch6:         0007-cmake-use-libcurl-from-system.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -45,6 +47,7 @@ BuildRequires:  cmake(glfw3) >= 3.3
 BuildRequires:  cmake(nlohmann_json) >= 3.11.3
 BuildRequires:  cmake(yaml-cpp)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libglvnd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
@@ -80,9 +83,11 @@ Requires:       %{name} = %{version}
 Examples from the librealsense library.
 
 %prep
-%autosetup -p1 -b1
+%setup -q -b1 -b2
+%autopatch -p1
 mkdir -p build/third-party/
 mv ../fastcdr-*/ build/third-party/fastcdr/
+mv ../libdeflate-*/ build/third-party/libdeflate/
 
 %build
 %define __builder ninja
