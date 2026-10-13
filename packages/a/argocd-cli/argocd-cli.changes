@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 13 04:49:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.5.5:
+  No CLI-related changes other than dependency updates
+  * chore(deps): update group golang to v1.26.9 (release-3.5)
+    (#30092)
+  * chore(deps): bump the golang-x group with 3 updates (#29705)
+    (cherry-pick release-3.5) (#30072)
+  * chore(deps): bump oras.land/oras-go/v2 from 2.6.1 to 2.6.2
+    (cherry-pick #28696 for 3.5) (#30057)
+  * chore(deps): bump google.golang.org/grpc from 1.81.1 to 1.84.0
+    (cherry-pick release-3.5) (#30056)
+  * chore(deps): bump go-git dependency- #30013 for v3.5 (#30047)
+
+-------------------------------------------------------------------
 Wed Oct  7 11:53:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix typo in description
