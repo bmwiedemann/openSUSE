@@ -73,4 +73,26 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1276005</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9eb60372e2118d1d17f3289bc5a73b7c</srcmd5>
+    <version>6.2.2</version>
+    <time>1791906274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.2:
+  * Migrate from setup.py to pyproject.toml
+  * Bugfix: sanitize input pointList data for PitchTier and DurationTier
+    creation to avoid generating corrupt output files.
+  * Add TextgridTier.dejitter() method for improving consistency between
+    tiers
+  * Refactored 'audio.py' for maintainability (see UPGRADING.md for details)
+  * Made Textgrid.entries read only; use the available helper methods to
+    modify it.
+  * Bugfix with praatio_scripts.alignBoundariesAcrossTiers
+  * Fuzzy equivalence for timestamps in Intervals and Points
+  * Dropping support for Python &lt; 3.7 (including 2.x)
+  * Textgrid reading now more robust (fix for files created in Elan)
+  * Textgrids can now be written to/read from a json file
+- Ship README in built packages.</comment>
+    <requestid>1384464</requestid>
+  </revision>
 </revisionlist>

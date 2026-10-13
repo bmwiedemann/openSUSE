@@ -1,7 +1,7 @@
 #
 # spec file for package python-praatio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,28 @@
 
 
 Name:           python-praatio
-Version:        4.1.0
+Version:        6.2.2
 Release:        0
 Summary:        A library for working with praat
 License:        MIT
 URL:            https://github.com/timmahrt/praatIO
 Source0:        https://github.com/timmahrt/praatIO/archive/v%{version}.tar.gz#/praatIO-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     praat
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
+Requires:       python-typing_extensions
 BuildArch:      noarch
 %python_subpackages
 
 %package -n %{name}-doc
 Summary:        Documentation files for praatio
-Group:          Documentation/HTML
 Provides:       %{python_module praatio-doc = %{version}}
 
 %description -n %{name}-doc
@@ -65,14 +66,11 @@ chmod a-x examples/files/*.wav
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# The tests create new files, so copying the folder to do not modify
-# anything, bsc#1222349
-cp -rf examples examples-copy
-%pytest examples-copy/test/*.py
-rm -rf examples-copy
+%pytest
 
 %files %{python_files}
 %license LICENSE
+%doc README.md
 %{python_sitelib}/praatio
 %{python_sitelib}/praatio-%{version}.dist-info
 

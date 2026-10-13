@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 13 01:54:35 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.2.2:
+  * Migrate from setup.py to pyproject.toml
+  * Bugfix: sanitize input pointList data for PitchTier and DurationTier
+    creation to avoid generating corrupt output files.
+  * Add TextgridTier.dejitter() method for improving consistency between
+    tiers
+  * Refactored 'audio.py' for maintainability (see UPGRADING.md for details)
+  * Made Textgrid.entries read only; use the available helper methods to
+    modify it.
+  * Bugfix with praatio_scripts.alignBoundariesAcrossTiers
+  * Fuzzy equivalence for timestamps in Intervals and Points
+  * Dropping support for Python < 3.7 (including 2.x)
+  * Textgrid reading now more robust (fix for files created in Elan)
+  * Textgrids can now be written to/read from a json file
+- Ship README in built packages.
+
+-------------------------------------------------------------------
 Fri May  9 05:12:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
