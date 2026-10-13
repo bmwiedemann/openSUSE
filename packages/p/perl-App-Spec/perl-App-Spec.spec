@@ -18,10 +18,10 @@
 
 %define cpan_name App-Spec
 Name:           perl-App-Spec
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
-# v0.16.0 -> normalize -> 0.16.0
-%define cpan_version v0.16.0
+# v0.17.0 -> normalize -> 0.17.0
+%define cpan_version v0.17.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Specification for commandline app
 URL:            https://metacpan.org/release/%{cpan_name}

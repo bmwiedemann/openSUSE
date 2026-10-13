@@ -20,4 +20,15 @@
       - Make Term::ANSIColor optional</comment>
     <requestid>1384374</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bcf7faac217db339cbb01d2e0fa05835</srcmd5>
+    <version>0.17.0</version>
+    <time>1791906272</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.17.0 (v0.17.0)
+   see /usr/share/doc/packages/perl-App-Spec/Changes
+  v0.17.0 2026-10-12 23:14:45+02:00
+      - Fix typo in =encoding pod header</comment>
+    <requestid>1384457</requestid>
+  </revision>
 </revisionlist>

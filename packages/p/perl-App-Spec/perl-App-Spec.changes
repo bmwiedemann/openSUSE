@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 12 21:58:11 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.17.0 (v0.17.0)
+   see /usr/share/doc/packages/perl-App-Spec/Changes
+
+  v0.17.0 2026-10-12 23:14:45+02:00
+
+      - Fix typo in =encoding pod header
+
+-------------------------------------------------------------------
 Mon Oct 12 13:18:43 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.16.0 (v0.16.0)
