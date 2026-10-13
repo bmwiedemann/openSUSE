@@ -1,7 +1,7 @@
 #
 # spec file for package python-traitsui
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-traitsui
 Version:        8.0.0
 Release:        0
@@ -24,9 +23,9 @@ Summary:        Traits-capable windowing framework
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
 License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only AND LGPL-3.0-only
-Group:          Development/Libraries/Python
 URL:            https://github.com/enthought/traitsui
 Source:         https://files.pythonhosted.org/packages/source/t/traitsui/traitsui-%{version}.tar.gz
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyface >= 7.3}
@@ -83,6 +82,6 @@ donttest="test_splitter_prefs_are_restored"
 %doc examples/
 %license LICENSE.txt image_LICENSE*.txt
 %{python_sitelib}/traitsui/
-%{python_sitelib}/traitsui-%{version}*-info
+%{python_sitelib}/traitsui-%{version}.dist-info
 
 %changelog

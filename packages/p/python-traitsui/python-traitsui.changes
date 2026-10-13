@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 04:00:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.resources to fetch files in the testsuite.
+
+-------------------------------------------------------------------
 Fri Nov 17 09:34:27 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 8.0.0:

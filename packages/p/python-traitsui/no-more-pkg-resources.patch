@@ -1,0 +1,92 @@
+Index: traitsui-8.0.0/traitsui/tests/editors/test_animatedGIF_editor.py
+===================================================================
+--- traitsui-8.0.0.orig/traitsui/tests/editors/test_animatedGIF_editor.py
++++ traitsui-8.0.0/traitsui/tests/editors/test_animatedGIF_editor.py
+@@ -11,10 +11,9 @@
+ """ Tests pertaining to the AnimatedGIFEditor
+ """
+ 
++import importlib.resources
+ import unittest
+ 
+-import pkg_resources
+-
+ from traits.api import File, HasTraits
+ from traitsui.api import Item, View
+ from traitsui.tests._tools import (
+@@ -24,9 +23,9 @@ from traitsui.tests._tools import (
+     ToolkitName,
+ )
+ 
+-filename = pkg_resources.resource_filename(
+-    "traitsui", "examples/demo/Extras/images/logo_32x32.gif"
+-)
++filename = str(importlib.resources.files('traitsui').joinpath(
++    "examples/demo/Extras/images/logo_32x32.gif"
++))
+ 
+ 
+ class AnimatedGIF(HasTraits):
+Index: traitsui-8.0.0/traitsui/tests/editors/test_video_editor.py
+===================================================================
+--- traitsui-8.0.0.orig/traitsui/tests/editors/test_video_editor.py
++++ traitsui-8.0.0/traitsui/tests/editors/test_video_editor.py
+@@ -9,6 +9,7 @@
+ # Thanks for using Enthought open source!
+ 
+ import os
++import importlib.resources
+ import unittest
+ import subprocess
+ import sys
+@@ -17,14 +18,13 @@ try:
+     import numpy as np  # noqa: F401
+ except ImportError:
+     raise unittest.SkipTest("Can't import NumPy: skipping")
+-import pkg_resources
+ 
+ from traits.api import Bool, Callable, File, Float, HasTraits, Range, Str
+ from traitsui.api import ContextValue, Item, View
+ from traitsui.editors.video_editor import MediaStatus, PlayerState, VideoEditor
+ from traitsui.tests._tools import BaseTestMixin, create_ui, is_qt5, is_qt6
+ 
+-filename = pkg_resources.resource_filename('traitsui.testing', 'data/test.mp4')
++filename = str(importlib.resources.files('traitsui.testing').joinpath('data/test.mp4'))
+ 
+ 
+ # Is a MacOS machine lacking the standard Metal APIs?
+Index: traitsui-8.0.0/traitsui/tests/editors/test_image_editor.py
+===================================================================
+--- traitsui-8.0.0.orig/traitsui/tests/editors/test_image_editor.py
++++ traitsui-8.0.0/traitsui/tests/editors/test_image_editor.py
+@@ -11,10 +11,9 @@
+ """ Tests pertaining to the ImageEditor
+ """
+ 
++import importlib.resources
+ import unittest
+ 
+-import pkg_resources
+-
+ from pyface.api import Image, ImageResource
+ from traits.api import File, HasTraits
+ from traitsui.api import ImageEditor, Item, View
+@@ -28,12 +27,12 @@ from traitsui.tests._tools import (
+ )
+ 
+ 
+-filename1 = pkg_resources.resource_filename(
+-    "traitsui", "examples/demo/Extras/images/python-logo.png"
+-)
+-filename2 = pkg_resources.resource_filename(
+-    "traitsui", "examples/demo/Extras/images/info.png"
+-)
++filename1 = str(importlib.resources.files('traitsui').joinpath(
++    "examples/demo/Extras/images/python-logo.png"
++))
++filename2 = str(importlib.resources.files('traitsui').joinpath(
++    "examples/demo/Extras/images/info.png"
++))
+ 
+ 
+ class ImageDisplay(HasTraits):

@@ -117,4 +117,13 @@
     versions and current Github infrastructure.</comment>
     <requestid>1127266</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>215db52318189a9cfe98f54cb1c6b67f</srcmd5>
+    <version>8.0.0</version>
+    <time>1791906282</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.resources to fetch files in the testsuite.</comment>
+    <requestid>1384468</requestid>
+  </revision>
 </revisionlist>
