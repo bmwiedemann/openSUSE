@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 04:30:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.12.2:
+  * INS-3021: Nova incorrectly suggests there's new version
+    available if using compatibility flag (#485)
+
+-------------------------------------------------------------------
 Sat Sep 19 07:43:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.12.1:

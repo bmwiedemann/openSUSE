@@ -17,7 +17,7 @@
 
 
 Name:           nova
-Version:        3.12.1
+Version:        3.12.2
 Release:        0
 Summary:        Find outdated or deprecated Helm charts running in your cluster
 License:        Apache-2.0
