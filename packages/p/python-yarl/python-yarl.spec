@@ -18,29 +18,29 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yarl
-Version:        1.24.5
+Version:        1.25.1
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/yarl/
 Source:         https://files.pythonhosted.org/packages/source/y/yarl/yarl-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module expandvars}
-BuildRequires:  %{python_module idna >= 2.0}
-# test requirements
-BuildRequires:  %{python_module multidict >= 4.0}
 BuildRequires:  %{python_module hypothesis >= 6.0}
+BuildRequires:  %{python_module idna >= 2.0}
+BuildRequires:  %{python_module multidict >= 4.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module propcache >= 0.2.0}
+BuildRequires:  %{python_module propcache >= 0.2.1}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-idna >= 2.0
 Requires:       python-multidict >= 4.0
-Requires:       python-propcache >= 0.2.0
+Requires:       python-propcache >= 0.2.1
 %python_subpackages
 
 %description

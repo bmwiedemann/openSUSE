@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 12 10:25:02 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.25.1
+  * Made the C and pure Python quoting implementations reject % in
+    safe or protected when requoting and a space in safe or protected
+    for query strings, since the two implementations disagreed on
+    those configurations
+  * Made the pure Python quoter reject non-ASCII safe and protected
+    characters when it is created, the same way the C extension does
+  * Fixed URL.query returning empty fields and keeping invalid
+    percent-encoded UTF-8 as is
+  * Added query_to_pairs(), a faster replacement for
+    urllib.parse.parse_qsl() with keep_blank_values=True that also
+    takes max_fields and encoding arguments
+
+-------------------------------------------------------------------
 Sat Aug 22 13:46:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.24.5:
