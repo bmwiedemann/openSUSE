@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  7 09:48:15 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update upstream URL to the archived GitHub repository as the project
+  is dead upstream and the original website has been removed.
+- Do not download sources during build.
+
+-------------------------------------------------------------------
+Mon Oct  5 07:52:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- drop obsolete C/CXXFLAGS overwrite (default flags already
+  include stack-protector-strong)
+
+-------------------------------------------------------------------
 Mon Jul  7 10:05:58 UTC 2025 - pgajdos@suse.com
 
 - security update

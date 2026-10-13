@@ -1,7 +1,7 @@
 #
 # spec file for package chmlib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Release:        0
 Summary:        A library for dealing with ITSS/CHM files
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.jedrea.com/chmlib/
-Source0:        http://www.jedrea.com/chmlib/%{name}-%{version}.tar.bz2
+URL:            https://github.com/jedwing/CHMLib
+Source0:        %{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 # backported from upstream
 Patch1:         chmlib-0001-Patch-to-fix-integer-types-problem-by-Goswin-von-Bre.patch
@@ -77,8 +77,6 @@ to convert chm files from command line.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -fstack-protector"
-export CXXFLAGS="$CFLAGS"
 export CXXCPP="g++ -E"
 %configure \
 	--disable-static \
