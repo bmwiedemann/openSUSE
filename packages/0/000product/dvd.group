@@ -3727,6 +3727,7 @@
     <package name="quadrapassel-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="quota" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="quota-nfs" supportstatus="unsupported"/> <!-- reason: dvd:quota-nfs -->
+    <package name="rdesktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="rdma-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="rdma-ndd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="re2c" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
