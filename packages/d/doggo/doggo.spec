@@ -17,7 +17,7 @@
 
 
 Name:           doggo
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        CLI tool and API server DNS client implemented in Go
 License:        GPL-3.0-only
@@ -25,7 +25,7 @@ Group:          Productivity/Networking/DNS/Utilities
 URL:            https://github.com/mr-karan/doggo
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.xz
-BuildRequires:  go1.26 >= 1.26.3
+BuildRequires:  go1.27 >= 1.27.2
 Recommends:     %{name}-bash-completion
 Suggests:       %{name}-fish-completion
 Suggests:       %{name}-zsh-completion

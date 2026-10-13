@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 13 05:37:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.1:
+  * Bug fixes
+    - 6d0b17d: fix(resolvers): cancel family-bound UDP hostname
+      lookups
+  * Others
+    - 5bfc01a: chore: update dependencies and prepare v1.4.1
+    - d1d80e4: docs(trace): document validation and source binding
+    - 3049fbb: have DoQ and DoH respect -6
+    - 34910c8: test(cli): keep failure-test UDP ports reserved
+
+-------------------------------------------------------------------
 Wed Sep 16 05:46:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.0:
