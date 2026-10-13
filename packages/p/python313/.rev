@@ -1402,4 +1402,41 @@ CVE-2026-17084: Don't consider Unicode codepoint attributes
   CVE-2026-15310-bound-zipfile-decompression.patch</comment>
     <requestid>1381538</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e2d082c785b744fad4d6197514a2a2fb</srcmd5>
+    <version>3.13.16</version>
+    <time>1791906201</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.13.16:
+  - Security
+    - gh-158446: Fix a crash or incorrect output that could occur
+      when formatting a float or complex with a precision close
+      to the platform’s INT_MAX. PyOS_double_to_string() now
+      raises ValueError for any precision of that magnitude,
+      regardless of presentation type or value, as the format
+      string parsers already did for precisions above INT_MAX.
+    - gh-157190: Fixed a vulnerability in the tarfile data and
+      tar extraction filters where a crafted archive using a hard
+      link to a symbolic link could change the permissions and
+      modification time of a file outside the destination
+      directory, and expose its contents inside the extracted
+      tree. This addresses CVE 2026-82049. (bsc#1280459,
+      CVE-2026-82049)
+    - gh-156793: asyncio: loop.start_tls() and
+      loop.create_connection() now validate the server_hostname
+      argument if an ssl.SSLContext is passed with check_hostname
+      set to True. (bsc#1283826, CVE-2026-19553)
+    - gh-156793: ssl.SSLContext.wrap_bio() now validates its
+      server_side, server_hostname and session arguments similar
+      to ssl.SSLContext.wrap_socket().
+    - In particular, a context with check_hostname enabled and no
+      server_hostname passed to wrap_bio() now raises ValueError
+      instead of completing a handshake that verified the
+      certificate chain without verifying the peer’s identity,
+      with no indication that the check had been skipped.
+    - gh-157265: In tarfile, when extracting a link falls back to
+      extracting a member of the archive, skip the member when
+      the filter function returns None when called with the</comment>
+    <requestid>1383077</requestid>
+  </revision>
 </revisionlist>

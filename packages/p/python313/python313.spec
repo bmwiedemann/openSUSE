@@ -167,7 +167,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.15
+Version:        3.13.16
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -234,7 +234,7 @@ Patch43:        bsc1243155-sphinx-non-determinism.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch45:        gh139257-Support-docutils-0.22.patch
 # PATCH-FIX-OPENSUSE sphinx9-runtime-node.patch mcepl@suse.com
-# Import Node at runtime because Sphinx 9 evaluates extension annotations.
+# Import extension annotation types at runtime because Sphinx 9 evaluates them.
 Patch46:        sphinx9-runtime-node.patch
 # PATCH-FIX-UPSTREAM pass-test_write_read_limited_history.patch bsc#[0-9]+ mcepl@suse.com
 # Fix readline history truncation when length is reduced
@@ -245,15 +245,6 @@ Patch53:        test_UDPLITE_support.patch
 # PATCH-FIX-UPSTREAM CVE-2025-15366-pop3-ctrl-chars.patch bsc#1257041 mcepl@suse.com
 # Reject control characters in POP3 commands
 Patch55:        CVE-2025-15366-pop3-ctrl-chars.patch
-# PATCH-FIX-UPSTREAM CVE-2026-17084-unicode-rfc3454.patch bsc#1276226 Matej Cepl <mcepl@suse.com>
-# Don't consider Unicode codepoint attributes outside RFC 3454
-Patch56:        CVE-2026-17084-unicode-rfc3454.patch
-# PATCH-FIX-UPSTREAM CVE-2026-19672-tarfile-outside-dirs.patch bsc#1276227 mcepl@suse.com
-# in tarfile, handle a member that leaves the destination and comes back
-Patch57:        CVE-2026-19672-tarfile-outside-dirs.patch
-# PATCH-FIX-UPSTREAM CVE-2026-15310-bound-zipfile-decompression.patch bsc#1277111 mcepl@suse.com
-# Bound zipfile decompression for bzip2/LZMA/Zstandard (gh#python/cpython!156003)
-Patch58:         CVE-2026-15310-bound-zipfile-decompression.patch
 #### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
