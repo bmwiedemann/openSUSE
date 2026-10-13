@@ -1,0 +1,52 @@
+Index: urllib3-1.26.20/changelog/5268.bugfix.rst
+===================================================================
+--- /dev/null
++++ urllib3-1.26.20/changelog/5268.bugfix.rst
+@@ -0,0 +1,2 @@
++Prevented a suppressed :class:`GzipDecoder` decompression error caused by invalid
++trailing data from resurfacing during ``flush()`` on newer Python versions.
+Index: urllib3-1.26.20/src/urllib3/response.py
+===================================================================
+--- urllib3-1.26.20.orig/src/urllib3/response.py
++++ urllib3-1.26.20/src/urllib3/response.py
+@@ -183,6 +183,11 @@ class GzipDecoder(object):
+     def has_unconsumed_tail(self):
+         return bool(self._unconsumed_tail)
+ 
++    def flush(self) -> bytes:
++        if self._state == GzipDecoderState.SWALLOW_DATA:
++            return b""
++        return self._obj.flush()
++
+ 
+ if brotli is not None:
+ 
+Index: urllib3-1.26.20/test/test_response.py
+===================================================================
+--- urllib3-1.26.20.orig/test/test_response.py
++++ urllib3-1.26.20/test/test_response.py
+@@ -31,6 +31,7 @@ from urllib3.exceptions import (
+ from urllib3.packages.six.moves import http_client as httplib
+ from urllib3.response import HTTPResponse, BytesQueueBuffer, brotli
+ from urllib3.response import _MAX_CHUNK_LINE_LENGTH
++from urllib3.response import GzipDecoder
+ from urllib3.util.response import is_fp_closed
+ from urllib3.util.retry import RequestHistory, Retry
+ 
+@@ -244,6 +245,16 @@ class TestResponse(object):
+ 
+         assert ret == b"foofoofoo"
+ 
++    def test_decode_gzip_swallow_garbage_does_not_flush(self) -> None:
++        decoder = GzipDecoder()
++        data = gzip.compress(b"foo") + b"garbage"
++
++        assert decoder.decompress(data) == b"foo"
++        decoder._obj = mock.Mock(flush=mock.Mock(side_effect=zlib.error))
++
++        assert decoder.flush() == b""
++        decoder._obj.flush.assert_not_called()
++
+     def test_chunked_decoding_gzip_swallow_garbage(self):
+         compress = zlib.compressobj(6, zlib.DEFLATED, 16 + zlib.MAX_WBITS)
+         data = compress.compress(b"foo")

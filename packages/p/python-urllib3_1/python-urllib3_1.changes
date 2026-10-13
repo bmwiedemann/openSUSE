@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Oct 13 12:31:43 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix backported patch CVE-2026-97687.2.patch, bsc#1283908
+
+-------------------------------------------------------------------
+Thu Oct  8 10:22:20 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Support Python >= 3.14.8
+  Add upstream patches:
+  * avoid-flushing-swallowed-gzip-trailing-garbage.patch, gh#urllib3/urllib3#5271
+  * pass-server_hostname-in-test_start_closed_socket.patch, gh#urllib3/urllib3#5289
+
+-------------------------------------------------------------------
+Wed Oct  7 09:08:31 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- CVE-2026-97689: denial of service due to unbounded memory allocation
+  in chunk parser (bsc#1283910)
+  Add patch CVE-2026-97689.patch
+
+-------------------------------------------------------------------
+Wed Oct  7 09:02:24 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- CVE-2026-97688: denial of service due to infinite loop during
+  chunked Deflate decoding (bsc#1283909)
+  Add patch CVE-2026-97688.patch
+
+-------------------------------------------------------------------
+Tue Oct  6 09:55:35 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- CVE-2026-97687: traffic interception due to possible HTTPS proxy TLS
+  configuration override (bsc#1283908)
+  - Add upstream patches:
+  * CVE-2026-97687.1.patch, gh#urllib3/urllib3@b6447295fff7
+  * CVE-2026-97687.2.patch, gh#urllib3/urllib3@07408cec79d1
+
+-------------------------------------------------------------------
 Tue Jun 16 09:35:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - skip more testcases with warnings for cryptography >= 49

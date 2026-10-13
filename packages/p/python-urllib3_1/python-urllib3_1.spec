@@ -48,6 +48,18 @@ Patch4:         CVE-2025-66418.patch
 Patch5:         CVE-2026-21441.patch
 # PATCH-FIX-UPSTREAM CVE-2026-44431.patch bsc#1265267
 Patch6:         CVE-2026-44431.patch
+# PATCH-FIX-UPSTREAM CVE-2026-97687.1.patch bsc#1283908 gh#urllib3/urllib3@b6447295fff7
+Patch7:         CVE-2026-97687.1.patch
+# PATCH-FIX-UPSTREAM CVE-2026-97687.2.patch bsc#1283908 gh#urllib3/urllib3@07408cec79d1
+Patch8:         CVE-2026-97687.2.patch
+# PATCH-FIX-UPSTREAM CVE-2026-97688.patch bsc#1283909 gh#urllib3/urllib3@ea2ad7b21a80
+Patch9:         CVE-2026-97688.patch
+# PATCH-FIX-UPSTREAM CVE-2026-97689.patch bsc#1283910 gh#urllib3/urllib3@cd770b059b54
+Patch10:        CVE-2026-97689.patch
+# PATCH-FIX-UPSTREAM avoid-flushing-swallowed-gzip-trailing-garbage.patch gh#urllib3/urllib3#5271
+Patch11:        avoid-flushing-swallowed-gzip-trailing-garbage.patch
+# PATCH-FIX-UPSTREAM pass-server_hostname-in-test_start_closed_socket.patch gh#urllib3/urllib3#5289
+Patch12:        pass-server_hostname-in-test_start_closed_socket.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

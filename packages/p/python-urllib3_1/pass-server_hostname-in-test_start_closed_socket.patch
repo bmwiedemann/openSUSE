@@ -1,0 +1,19 @@
+Index: urllib3-1.26.20/changelog/5289.misc.rst
+===================================================================
+--- /dev/null
++++ urllib3-1.26.20/changelog/5289.misc.rst
+@@ -0,0 +1 @@
++Fixed SSL transport test failures on Python 3.10.22+, 3.11.17+, 3.12.15+, 3.13.16+, and 3.14.8+.
+Index: urllib3-1.26.20/test/test_ssltransport.py
+===================================================================
+--- urllib3-1.26.20.orig/test/test_ssltransport.py
++++ urllib3-1.26.20/test/test_ssltransport.py
+@@ -109,7 +109,7 @@ class SingleTLSLayerTestCase(SocketDummy
+         context = ssl.create_default_context()
+         sock.close()
+         with pytest.raises(OSError):
+-            SSLTransport(sock, context)
++            SSLTransport(sock, context, server_hostname="localhost")
+ 
+     @pytest.mark.timeout(PER_TEST_TIMEOUT)
+     def test_close_after_handshake(self):
