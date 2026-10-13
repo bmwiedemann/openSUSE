@@ -1772,4 +1772,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     GUI interface</comment>
     <requestid>1383690</requestid>
   </revision>
+  <revision rev="169" vrev="3">
+    <srcmd5>9f100cd28385168137ae21699881f4c8</srcmd5>
+    <version>3.0.24</version>
+    <time>1791906199</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pkgconfig(vpl) BuildRequires: Build qsv plugin.</comment>
+    <requestid>1384520</requestid>
+  </revision>
 </revisionlist>

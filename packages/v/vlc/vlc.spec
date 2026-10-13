@@ -160,6 +160,7 @@ BuildRequires:  pkgconfig(twolame)
 %if %{with vdpau}
 BuildRequires:  pkgconfig(vdpau) >= 0.6
 %endif
+BuildRequires:  pkgconfig(vpl)
 BuildRequires:  pkgconfig(xcb) >= 1.6
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-keysyms) >= 0.3.4
@@ -865,6 +866,7 @@ fi
 %{_libdir}/vlc/plugins/codec/liboggspots_plugin.so
 %{_libdir}/vlc/plugins/codec/libopus_plugin.so
 %{_libdir}/vlc/plugins/codec/libpng_plugin.so
+%{_libdir}/vlc/plugins/codec/libqsv_plugin.so
 %{_libdir}/vlc/plugins/codec/librawvideo_plugin.so
 %{_libdir}/vlc/plugins/codec/librtpvideo_plugin.so
 %{_libdir}/vlc/plugins/codec/libscte18_plugin.so
