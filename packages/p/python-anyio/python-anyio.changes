@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:45:10 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add patch tls.patch to fix test failure with recent pythons
+
+-------------------------------------------------------------------
+Fri Oct  9 01:56:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.15.1:
+  * Implemented a compatibility fix for supporting direct access of anyio.*
+    submodules from the main package even when those submodules were not
+    directly imported first
+  * Added support for the newer keyword-only arguments on anyio.Path methods
+    to match the standard library pathlib.Path
+  * Added amap, gather, and as_completed utility functions to simplify common
+    patterns
+  * Added --anyio-mode command-line option as an alternative to the
+    anyio_mode ini setting, and fix the pytest plugin's auto mode detection
+    to recognize the mode when set via either mechanism(e.g: pytest_asyncio).
+  * Added the anyio.Future synchronization primitive which behaves similar to
+    asyncio.Future, allowing tasks to wait for a value (or exception) from
+    another task
+  * Added guidance for managing multiple memory object stream producers and
+    consumers with cloned streams
+  * Added StapledObjectStream.send_nowait() that delegates to the underlying
+    ObjectSendStream, if it implements it
+  * Changed the default name for a task spawned with
+    TaskGroup.create_task(func()) to match the default task name for the
+    analogous task spawned with TaskGroup.start_soon(func) or
+    TaskGroup.start(func) in more situations.
+  * Changed the anyio and anyio.abc modules to lazily import the necessary
+    submodules.
+  * Fixed SpooledTemporaryFile.readinto() and readinto1() reading twice
+    before rollover, so the destination buffer was overwritten by the second
+    read and the file position advanced twice, silently losing data
+  * Fixed anyio.run leaking, or at least, delaying collection of loop and
+    root_task due to the root task being cached in a RunVar.
+  * Fixed UNIXSocketStream.aclose() raising asyncio.InvalidStateError when a
+    concurrent receive or send operation had just been cancelled on the
+    asyncio backend
+  * Fixed the pytest plugin importing the deprecated _pytest.python.CallSpec2
+    alias
+  * Fixed an asyncio worker thread race that could raise RuntimeError when
+    the event loop closed between checking its state and scheduling the
+    worker result
+  * Fixed inconsistencies between Trio and asyncio when target TaskGroup is
+    cancelled before a task created with .start() calls TaskStatus.started()
+  * Fixed TemporaryDirectory not cleaning up when the host task was cancelled
+    while exiting the context manager, as the cleanup now runs in a shielded
+    cancel scope
+- Drop patches:
+  * robust_test_shielded_cancel_sleep_time.patch
+  * fix-uvloop-closed-loop-race.patch
+- Refresh patch extend_timeouts.patch
+
+-------------------------------------------------------------------
 Tue Aug  4 15:57:57 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Instead of using sed make a proper patch extend_timeouts.patch

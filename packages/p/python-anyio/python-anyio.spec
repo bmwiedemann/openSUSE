@@ -26,21 +26,17 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-anyio%{psuffix}
-Version:        4.14.2
+Version:        4.15.1
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
 URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM robust_test_shielded_cancel_sleep_time.patch gh#agronholm/anyio!1264 mcepl@suse.com
-# improve robustness of test_shielded_cancel_sleep_time
-Patch0:         robust_test_shielded_cancel_sleep_time.patch
-# PATCH-FIX-UPSTREAM fix-uvloop-closed-loop-race.patch gh#agronholm/anyio!1266 mcepl@suse.com
-# protect against a race condition in the test_cancel_worker_thread test
-Patch1:         fix-uvloop-closed-loop-race.patch
 # PATCH-FIX-OPENSUSE extend_timeouts.patch mcepl@suse.com
 # increase timeout in test_pytest_plugin module
-Patch2:         extend_timeouts.patch
+Patch0:         extend_timeouts.patch
+# PATCH-FIX-UPSTREAM https://github.com/agronholm/anyio/commit/818e4ac441fa27e9fac893496fc5a4fbe0a58689 Don't pass hostname to TLSStream.wrap() for the server stream
+Patch1:         tls.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 77}
@@ -51,7 +47,6 @@ BuildRequires:  python-rpm-macros >= 20210127.3a18043
 %if %{with test}
 BuildRequires:  %{python_module anyio = %{version}}
 BuildRequires:  %{python_module blockbuster >= 1.5.23}
-BuildRequires:  %{python_module exceptiongroup >= 1.0.2}
 BuildRequires:  %{python_module hypothesis >= 4.18.2}
 BuildRequires:  %{python_module psutil >= 5.9}
 BuildRequires:  %{python_module pytest >= 8.4}
@@ -65,8 +60,9 @@ BuildRequires:  %{python_module uvloop >= 0.22.1}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-idna >= 2.8
-Requires:       (python-exceptiongroup >= 1.0.2 if python-base < 3.11)
-Requires:       (python-typing_extensions >= 4.5 if python-base < 3.13)
+%if 0%{?python_version_nodots} < 315
+Requires:       python-typing_extensions >= 4.16.0
+%endif
 Suggests:       python-trio >= 0.32.0
 BuildArch:      noarch
 %python_subpackages
@@ -113,8 +109,8 @@ donttest+=" or (test_properties and trio)"
 donttest+=" or (test_properties and asyncio)"
 # Flaky test in i586
 donttest+=" or test_keyboardinterrupt_during_test"
-# Fails with pytest 9
-donttest+=" or test_anyio_fixture_adoption_does_not_persist"
+# Builds a virtualenv from first principles
+donttest+=" or test_sourceless_install"
 
 %pytest -m "not network" -k "not (${donttest:4})" -ra
 %endif
