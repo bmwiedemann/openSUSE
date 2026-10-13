@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Oct 13 04:31:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.48.0:
+  * New Features
+    - 6d71362: feat(arch): map ppc64 and ppc64le to Arch Linux
+      POWER names (#1138)
+    - f42c951: feat: Add "force_implicit_dirs" to dir/tree. (#948)
+    - e1c7b33: feat: replace rpmpack with a more complete
+      implementation (#1104)
+  * Security updates
+    - 84adf13: sec(deps): bump golang.org/x/ (#1157)
+  * Bug fixes
+    - c424623: fix(apk): normalize file modes before writing tar
+      headers (#1113)
+    - a72ab8f: fix(ci): Separate PR checks from queue acceptance
+      tests (#1158)
+    - 93cf82d: fix(ipk): normalize file modes before writing tar
+      headers (#1145)
+    - ae346b5: fix(rpm): emit ISA-qualified self provide (#1141)
+    - d20c0c9: fix(rpm): escape % in generated SRPM spec so
+      scriptlets survive rebuild (#1109)
+    - 60154f1: fix(rpm): set file colors on executable ELF files
+      (#1155)
+    - c2b0995: fix: Include optional dependencies in Arch packages
+      (#1131)
+    - db22372: fix: add context to deb and rpm errors (#1088)
+    - 5ec5501: fix: don't panic in Config.Get on an empty override
+      clause (#1114)
+    - ce81cb6: fix: update to go-msix v1.0.0 (#1105)
+  * Dependency updates
+    - 9da52b4: fix(deps): bump alpine from 3.24.0 to 3.24.1 (#1101)
+    - 6e553ae: fix(deps): bump alpine from 3.24.0 to 3.24.1 in
+      /testdata/acceptance (#1102)
+    - 551ed78: fix(deps): bump alpine from 3.24.1 to 3.24.2 (#1143)
+    - f65c6cb: fix(deps): bump alpine from 3.24.1 to 3.24.2 in
+      /testdata/acceptance (#1144)
+    - 886e929: fix(deps): bump fedora from 40 to 44 in
+      /testdata/acceptance (#1084)
+  * Other work
+    - 5794bbd: docs: update cmd docs
+    - 4b02052: docs: update cmd docs
+    - b3fc46b: test(rpm): Stabilize default compression comparison
+      (#1156)
+
+-------------------------------------------------------------------
 Sun Jun 21 16:27:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.47.0:

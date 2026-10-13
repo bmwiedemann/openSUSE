@@ -17,7 +17,7 @@
 
 
 Name:           nfpm
-Version:        2.47.0
+Version:        2.48.0
 Release:        0
 Summary:        Simple deb, rpm, apk and arch linux packager written in Go
 License:        MIT
