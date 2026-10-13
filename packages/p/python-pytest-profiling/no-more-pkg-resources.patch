@@ -1,0 +1,29 @@
+Index: pytest-profiling-1.8.1/tests/integration/test_profile_integration.py
+===================================================================
+--- pytest-profiling-1.8.1.orig/tests/integration/test_profile_integration.py
++++ pytest-profiling-1.8.1/tests/integration/test_profile_integration.py
+@@ -1,7 +1,8 @@
++from importlib.metadata import version
++from importlib.resources import files
+ import shutil
+ import sys
+ 
+-from pkg_resources import resource_filename, get_distribution
+ import pytest
+ 
+ from pytest_virtualenv import VirtualEnv
+@@ -10,11 +11,11 @@ from pytest_virtualenv import VirtualEnv
+ @pytest.fixture(scope="session")
+ def virtualenv():
+     with VirtualEnv() as venv:
+-        test_dir = resource_filename("pytest_profiling", "tests/integration/profile")
++        test_dir = str(files("pytest_profiling").joinpath("tests/integration/profile"))
+         venv.install_package("more-itertools")
+-        venv.install_package("pytest=={}".format(get_distribution("pytest").version))
++        venv.install_package("pytest=={}".format(version("pytest")))
+         venv.install_package("pytest-cov")
+-        venv.install_package(resource_filename("pytest_profiling", "."))
++        venv.install_package(str(files("pytest_profiling")))
+ 
+         pyversion = sys.version_info
+         if (pyversion.major, pyversion.minor) < (3, 8):

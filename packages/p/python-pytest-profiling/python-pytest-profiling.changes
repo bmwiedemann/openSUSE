@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 00:35:10 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.{metadata,resources} in the testsuite.
+
+-------------------------------------------------------------------
 Tue Feb  4 04:06:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.1:

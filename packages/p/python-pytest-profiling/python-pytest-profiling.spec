@@ -25,6 +25,8 @@ URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-profiling/pytest-profiling-%{version}.tar.gz
 # https://github.com/man-group/pytest-plugins/issues/209
 Patch0:         python-pytest-profiling-no-six.patch
+# PATCH-FIX-OPENSUSE Use importlib.{metadata,resources} in the testsuite
+Patch1:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
