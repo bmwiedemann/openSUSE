@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fakeredis
-Version:        2.37.1
+Version:        2.39.0
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
@@ -64,13 +64,9 @@ Fake implementation of redis API for testing purposes.
 %check
 export LANG="en_US.UTF8"
 %{_sbindir}/redis-server --port 6390 --save &
-# Lag is not -1
-donttest="test_zrank_redis7_2 or test_zrevrank_redis7_2"
-donttest+=" or test_xgroup_setid_redis7"
 # Raises unknown command errors
-donttest+=" or (test_save and (StrictRedis2 or StrictRedis3))"
-donttest+=" or (test_raises_valkey_response_error and FakeStrictRedis)"
-donttest+=" or (test_async_lock)"
+donttest="(test_async_lock and fake_resp)"
+donttest+=" or (test_acl_cat and Strict)"
 %pytest -m "not slow" -k "not ($donttest)"
 
 pkill -f redis-server || exit 0

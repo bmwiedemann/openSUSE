@@ -525,4 +525,178 @@
   * Update to redis-py 8.1</comment>
     <requestid>1372919</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c5591efaaeb1eb1aa1ab7ccdd8c221c2</srcmd5>
+    <version>2.39.0</version>
+    <time>1791906216</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip some problematic tests and review the exclusions
+- update to 2.39.0:
+  * feat: support Redis 8.10 commands `LMOVEM`, `BLMOVEM`,
+    `SUNIONCARD`, `SDIFFCARD`, `TS.QUERYLABELS`, `TS.NRANGE`,
+    `TS.NREVRANGE` and `TS.READ`
+  * feat(kividb): add the `kividb` server type, matching KiviDB
+    1.0.4's command surface
+  * feat(streams): `XADD`/`XTRIM` accept the
+    `KEEPREF`/`DELREF`/`ACKED` reference policies
+  * fix: `MOVE`/`SMOVE` invalidate `WATCH` like Redis, add
+    `SORT_RO`, sort unsorted `SORT` results in scripts/`STORE`,
+    and fix `ZSCAN` while deleting
+  * fix(bitmap): `BITOP` pads shorter operands and treats missing
+    keys as empty
+  * fix(geo): `*BYMEMBER`/`FROMMEMBER` searches on a missing
+    member return Redis'/Valkey 9's error instead of crashing
+  * fix(valkey): `from_url` works for `FakeValkey`,
+    `FakeStrictValkey` and `FakeAsyncValkey`
+  * fix(streams): approximate (`~`) trimming drops whole nodes
+    and `XADD`/`XTRIM` options use Redis' errors
+  * fix(streams): `XADD` never reuses deleted IDs and rejects
+    invalid IDs like Redis
+  * fix(streams): `XGROUP SETID`/`CREATE`, `entries-read` and
+    `lag` follow Redis' rules
+  * fix(streams): consumer-group commands on a missing key return
+    Redis' errors
+  * fix(streams): `XRANGE`/`XREVRANGE`/`XPENDING` treat an end ID
+    without sequence as the whole millisecond
+  * fix(tdigest): `TDIGEST.QUANTILE` on a single observation
+    follows Redis 8.10
+  * fix(tcp-server): `TcpFakeServer` answers RESP2 clients in
+    RESP2
+  * fix(model): `ExpiringMembersSet` keeps the member when
+    clearing its TTL
+  * fix(async): `FakeAsyncValkey` raises `valkey` exceptions and
+    async connections report `addr`/`laddr`/`fd`
+  * fix: each connection gets one client ID, and a new one on
+    reconnect
+  * fix: `FakeRedis(version=10)` no longer shares a server with
+    `version=1`
+  * feat: implement Dragonfly's `CL.THROTTLE` rate-limiting
+    command, ported from Dragonfly's own code so
+  * the quirks match — millisecond-ceiling time fields,
+    `remaining` truncating towards zero, and an
+  * over-sized request reporting `retry_after = -1` without
+    writing the key
+  * feat(dragonfly): match its errors, validation and limits —
+    backticked unknown-command errors,
+  * unsigned `numkeys`/`COUNT`, `SCAN COUNT 0` falling back to
+    the default batch size, `SMOVE` checking
+  * its destination type up front, no `LCS` at all, a relative
+    expiry past `2**28-1` seconds clamped
+  * while an absolute one is rejected, hash-field TTLs capped at
+    `2**26` seconds, and strings capped at
+  * 256MB rather than Redis' 512MB
+  * feat(dragonfly): match the replies it sends — doubles from
+    `INCRBYFLOAT`/`HINCRBYFLOAT`, empty arrays
+  * from a timed-out blocking pop and from an
+    `XREAD`/`XREADGROUP` that matched nothing, `ZPOPMIN`/
+  * `ZPOPMAX` always paired under RESP3, flat `WITHSCORES` from
+    `ZUNION`/`ZINTER`, a null
+  * `first-entry`/`last-entry` for an empty stream, `-1` as
+    `XINFO GROUPS`' unknown-lag sentinel,
+  * `XPENDING` looking up the key before the group, and one
+    namespace for shard and plain pub/sub
+  * channels
+  * feat(dragonfly): match its command behaviour — `SORT` without
+    `-&gt;` hash-field patterns and without
+  * Redis' weight tie-break, `COPY` without a `DB` option,
+    `GEORADIUS`/`GEOSEARCH` in geohash order
+  * unless sorted, a watched key dirtied by any write, Lua 5.4
+    scripting (non-integral numbers as
+  * doubles, Redis 6-style error wrapping, admin commands refused
+    inside scripts), and its own JSON
+  * quirks (legacy paths wrapped like JSONPath, no filter
+    expressions)
+  * fix: `redis.call` in a Lua script now returns RESP2 shapes
+    whatever protocol the client negotiated,
+  * matching real Redis, where a script must opt into RESP3.
+    `redis.setresp(2)`/`redis.setresp(3)` are
+  * now supported and reset to RESP2 for each run. Dragonfly has
+    no `redis.setresp`, so fakeredis does
+  * not expose one when emulating it, and a script returning
+    `{double=...}` there answers with an empty
+  * array the way the real server does
+  * fix: `XCLAIM`/`XAUTOCLAIM` now move an entry's pending count
+    to the claiming consumer instead of
+  * leaving it on the previous owner, so a later `XACK` no longer
+    drives that count negative
+  * fix: `XACK` no longer raises a raw Python `KeyError` when a
+    pending entry has no live consumer, and
+  * `XGROUP DELCONSUMER` now removes the entries that consumer
+    owned, returning how many it dropped
+  * (#549)
+  * fix: `XCLAIM` now honours `RETRYCOUNT`, and
+    `XCLAIM`/`XAUTOCLAIM` honour `JUSTID`, when updating an
+  * entry's delivery counter. `RETRYCOUNT` takes precedence over
+    `JUSTID`, and a negative `RETRYCOUNT`
+  * means &quot;not given&quot;
+  * fix: cancelling a blocking async command (`BRPOP`, `BLPOP`,
+    `XREAD BLOCK 0`, ...) no longer leaves
+  * the connection unusable — it went back to the pool with its
+    socket still paused, so every later
+  * command on it hung
+  * fix: `XAUTOCLAIM` now returns the cursor its next scan should
+    start from, and `0-0` once the pending
+  * list is exhausted
+  * fix: `SMOVE` no longer raises `WRONGTYPE` for a wrongly typed
+    destination when the source key is
+  * missing, `BITCOUNT` reports the syntax error before decoding
+    its range arguments on a pre-7.0
+  * server, and `GEORADIUS` returns an unsorted reply in geohash
+    order rather than insertion order
+  * (#553)
+  * fix: reap `TcpFakeServer` handler threads when a client
+    disconnects
+  * fix: honor the `FILTER-EF` (max filtering effort) option in
+    `VSIM` — the value was previously parsed but ignored, so a
+  * low `FILTER-EF` could return filter matches that real Redis
+    skips
+  * fix: `ZPOPMIN`/`ZPOPMAX` in RESP3 now return a flat `[member,
+    score]` pair when no count is given (an array of pairs is
+  * only returned when an explicit count is passed), matching
+    real Redis
+  * fix: `ZPOPMIN`/`ZPOPMAX` now reject a negative count with
+    `value is out of range, must be positive`
+  * fix:
+    `ZPOPMIN`/`ZPOPMAX`/`BZPOPMIN`/`BZPOPMAX`/`ZMPOP`/`BZMPOP`
+    now delete the sorted set key once its last member is
+  * popped
+  * fix: `LTRIM` now signals the key as modified even when the
+    trim is a no-op, so a `WATCH` on that key correctly aborts
+  * the following transaction, matching real Redis
+  * fix: align stream group errors with Redis — `XPENDING` on a
+    missing key or unknown group now raises `NOGROUP` instead
+  * of returning `0`/an empty array, and neither `XPENDING` nor
+    `XINFO GROUPS` creates the key as a side effect
+  * feat: implement connection commands `RESET`, `CLIENT KILL`,
+    `CLIENT UNBLOCK`, `CLIENT REPLY`, `CLIENT PAUSE`,
+  * `CLIENT UNPAUSE`, `CLIENT NO-EVICT` and `CLIENT NO-TOUCH`.
+    `CLIENT PAUSE` validates and records its arguments but does
+  * not actually suspend command processing; the client-side
+    caching commands (`CLIENT TRACKING`, `CLIENT TRACKINGINFO`,
+  * `CLIENT CACHING`, `CLIENT GETREDIR`) remain unsupported
+  * feat: support `INCREX` command (redis 8.8)
+  * feat: support `FPHA` argument in `JSON.SET` to force
+    homogeneous numeric arrays to a floating-point type (redis
+    8.8) (
+  * #523)
+  * feat: support hash field subkey notifications (redis 8.8)
+  * feat: support multiple aggregators in
+    `TS.RANGE`/`TS.REVRANGE`/`TS.MRANGE`/`TS.MREVRANGE` (redis
+    8.8)
+  * feat: support `COUNT` aggregator in
+    `ZUNION`/`ZINTER`/`ZUNIONSTORE`/`ZINTERSTORE` (redis 8.8)
+  * feat: support `CLAIM min-idle-time` option in `XREADGROUP`
+    (redis 8.4)
+  * feat(bitfield): support `#`-prefixed offsets in `BITFIELD`
+  * fix: replace async `can_read` busy-poll with event-based
+    wakeup
+  * fix: enforce `GT`/`LT` conditions in `ZADD` with `INCR`
+  * fix: reject negative `LIMIT` in `SINTERCARD` and `ZINTERCARD`
+  * fix: EXPIRE GT/LT mishandle keys with no existing TTL
+  * fix: restore missing `addr`/`laddr`/`fd` fields in `CLIENT
+    LIST`/`CLIENT INFO`
+  * fix: SORT/SORT_RO BY &lt;constant&gt; must keep natural order
+</comment>
+    <requestid>1384521</requestid>
+  </revision>
 </revisionlist>
