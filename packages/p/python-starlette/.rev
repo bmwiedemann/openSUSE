@@ -526,4 +526,41 @@ https://build.opensuse.org/request/show/1126958
   * Offload large GZip compression</comment>
     <requestid>1373902</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2c07425fbff8fd106d340d2adff1cae2</srcmd5>
+    <version>1.7.0</version>
+    <time>1791906204</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  ## Added
+  * Add experimental OpenTelemetryMiddleware for HTTP server spans, with URL
+    exclusions and custom tracer providers
+  * Expose the matched route through scope[&quot;route&quot;]
+  * Support the QUERY HTTP method in HTTPEndpoint, CORS, and OpenAPI 3.2
+    schema generation
+  * Capture HTTP response trailers in TestClient and expose them through
+    response.extensions[&quot;http.response.trailers&quot;]
+  * Support partitioned cookies in SessionMiddleware
+  * Add partitioned to Response.delete_cookie() on Python 3.14 and later
+  * Support IPv6 hosts in TrustedHostMiddleware and TestClient
+  * Support Python 3.15
+  ## Changed
+  * Require anyio&gt;=4.0.0,&lt;5, dropping support for AnyIO 3
+  * Raise WebSocketDisconnected, a RuntimeError subclass, for disconnected
+    WebSocket operations
+  * Accept Collection[str] in CORSMiddleware configuration annotations,
+    including sets and frozensets
+  ## Fixed
+  * Run background tasks only after the response is sent when using
+    BaseHTTPMiddleware
+  * Return 400 for invalid multipart parser input
+  * Include Vary: Origin on all normal CORS responses and vary preflight
+    responses by all request headers that affect them
+  * Handle malformed Host headers and IPv6 authorities consistently across
+    URL construction, host routing, and redirect middleware
+  * Ignore Range headers when FileResponse has a status other than 200,
+    preserving its status and full body
+  * Handle standalone If-None-Match: * in StaticFiles</comment>
+    <requestid>1383628</requestid>
+  </revision>
 </revisionlist>

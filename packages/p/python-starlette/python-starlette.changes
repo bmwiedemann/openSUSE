@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct  9 03:44:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.0:
+  ## Added
+  * Add experimental OpenTelemetryMiddleware for HTTP server spans, with URL
+    exclusions and custom tracer providers
+  * Expose the matched route through scope["route"]
+  * Support the QUERY HTTP method in HTTPEndpoint, CORS, and OpenAPI 3.2
+    schema generation
+  * Capture HTTP response trailers in TestClient and expose them through
+    response.extensions["http.response.trailers"]
+  * Support partitioned cookies in SessionMiddleware
+  * Add partitioned to Response.delete_cookie() on Python 3.14 and later
+  * Support IPv6 hosts in TrustedHostMiddleware and TestClient
+  * Support Python 3.15
+  ## Changed
+  * Require anyio>=4.0.0,<5, dropping support for AnyIO 3
+  * Raise WebSocketDisconnected, a RuntimeError subclass, for disconnected
+    WebSocket operations
+  * Accept Collection[str] in CORSMiddleware configuration annotations,
+    including sets and frozensets
+  ## Fixed
+  * Run background tasks only after the response is sent when using
+    BaseHTTPMiddleware
+  * Return 400 for invalid multipart parser input
+  * Include Vary: Origin on all normal CORS responses and vary preflight
+    responses by all request headers that affect them
+  * Handle malformed Host headers and IPv6 authorities consistently across
+    URL construction, host routing, and redirect middleware
+  * Ignore Range headers when FileResponse has a status other than 200,
+    preserving its status and full body
+  * Handle standalone If-None-Match: * in StaticFiles
+  * Reject WebSocket requests to StaticFiles without raising an assertion
+    error
+  * Persist session mutations made with popitem() and |=
+  * Handle empty and absent payloads in WebSocketEndpoint.decode()
+  * Implement identity on SimpleUser and UnauthenticatedUser
+  * Allow HTTPException to use non-standard status codes without an explicit
+    detail
+  * Avoid deprecated AnyIO imports in TestClient and add explicit imports in
+    WSGIMiddleware for AnyIO 4.15 compatibility
+
+-------------------------------------------------------------------
 Wed Aug 26 23:16:24 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.6.0:

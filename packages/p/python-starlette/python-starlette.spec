@@ -27,24 +27,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-starlette%{psuffix}
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
 URL:            https://github.com/encode/starlette
 Source:         https://github.com/encode/starlette/archive/refs/tags/%{version}.tar.gz#/starlette-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anyio >= 3.6.2
+Requires:       python-anyio >= 4.0.0
 Requires:       (python-typing_extensions >= 4.10.0 if python-base < 3.13)
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module anyio >= 3.6.2}
 BuildRequires:  %{python_module starlette = %{version}}
-# typing_extensions, see below
 # SECTION [full]
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Jinja2}
@@ -54,13 +52,15 @@ BuildRequires:  %{python_module itsdangerous}
 BuildRequires:  %{python_module python-multipart >= 0.0.18}
 # /SECTION
 # SECTION test
-BuildRequires:  %{python_module exceptiongroup}
+# We need the full fat Python
+BuildRequires:  %{pythons}
 BuildRequires:  %{python_module asyncio}
+BuildRequires:  %{python_module blockbuster >= 1.5.23}
+BuildRequires:  %{python_module opentelemetry-sdk >= 1.44.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trio}
 # testing requires it for all flavors
-BuildRequires:  %{python_module typing_extensions >= 4.10.0}
 BuildRequires:  %{python_module importlib-metadata >= 7.0.1}
 # httpx2[zstd]
 BuildRequires:  python313-backports.zstd
