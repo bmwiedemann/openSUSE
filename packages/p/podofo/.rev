@@ -458,4 +458,12 @@ drop patches upstreamed</comment>
     <comment></comment>
     <requestid>1368655</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a4ded682b8ae5e75e2feb3d42a7a4a1e</srcmd5>
+    <version>1.1.2</version>
+    <time>1791906196</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384324</requestid>
+  </revision>
 </revisionlist>

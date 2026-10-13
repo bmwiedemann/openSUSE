@@ -19,7 +19,7 @@
 
 %define libver 4
 Name:           podofo
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        PDF parsing and creation library
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  graphviz
 BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cppunit)
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libjpeg)
@@ -54,7 +55,6 @@ A cross platform PDF parsing and creation library.
 %package -n libpodofo%{libver}
 Summary:        PDF parsing and creation library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n libpodofo%{libver}
 A cross platform PDF parsing and creation library.
@@ -62,7 +62,6 @@ A cross platform PDF parsing and creation library.
 %package -n libpodofo-devel
 Summary:        Development files for podofo
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/Other
 Requires:       libboost_headers-devel
 Requires:       libpodofo%{libver} = %{version}
 
@@ -70,7 +69,7 @@ Requires:       libpodofo%{libver} = %{version}
 This package contains development files for podofo library.
 
 %prep
-%autosetup -p1
+%autosetup
 dos2unix API-MIGRATION.md
 
 # Remove build time references so build-compare can do its work
@@ -82,7 +81,8 @@ test -x "$(type -p g++-13)" && export CXX=g++-13
 %cmake \
   -DPODOFO_BUILD_STATIC=OFF \
   -DPODOFO_BUILD_TEST=OFF \
-  -DPODOFO_BUILD_UNSUPPORTED_TOOLS=OFF
+  -DPODOFO_BUILD_UNSUPPORTED_TOOLS=OFF \
+  -DPODOFO_DEVENDOR_FMT=ON
 %cmake_build
 
 # Build devel doc

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Oct 11 14:24:49 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.1.2
+  * CodePointSpan: Fixed stack buffer overflow in the constructor
+    with base view plus one code point, reachable through crafted
+    /ToUnicode CMaps during text extraction (GHSA-7vfg-cp83-9rxr)
+  * PdfParser: Parse XRef sections iteratively and garbage collect
+    with a support stack, avoiding stack exhaustion on crafted
+    files; ensure the document has a valid catalog
+  * PdfFontManager: Fixed use-after-free of fonts, cached paths
+    were not cleared in EmbedFonts() and Clear()
+  * FreeTypePrivate: Fixed access of the thread local FT_LibraryPtr
+    after the creating thread quit
+  * Fixed reading arrays with indirect references
+  * PdfRLEFilter: Fixed RunLengthDecode bugs
+  * PdfPage: Fixed rotation handling in text extraction
+  * OpenSSLInternal: Fixed two leaks in signing code, tentative
+    OpenSSL 4.0 support
+  * Upstream kept libpodofo.so.4 although some exported private
+    symbols were removed and PdfTokenizer members changed
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Unbundle fmt: build with system fmt via pkgconfig(fmt) and
+  -DPODOFO_DEVENDOR_FMT=ON
+- Spec cleanup: drop obsolete Group tags
+
+-------------------------------------------------------------------
 Thu Jul 30 14:19:44 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.1.1
