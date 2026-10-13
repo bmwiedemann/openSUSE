@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 12 20:37:47 UTC 2026 - lorenzholzbauer@ikmail.com
+
+- Update to version 1.5.0:
+  * chore: Prepare for 1.5.0 release
+  * feat: vim-style command completion
+  * chore: replace notifications instead of stack
+  * feat: support Vim-style numeric count prefixes for keybindings
+  * chore(deps): bump rand in the cargo group across 1 directory
+  * refactor(auth): Separate ncspot from Spotify login
+  * feat: Add a unified proxy configuration option
+  * chore(deps): bump the cargo group across 1 directory with 5 updates
+  * chore(deps): bump toml in the cargo group
+  * [create-pull-request] automated change
+  * [create-pull-request] automated change
+  * chore(deps): bump log from 0.4.33 to 0.4.34 in the cargo group
+
+-------------------------------------------------------------------
 Tue Sep 08 11:13:16 UTC 2026 - lorenzholzbauer@ikmail.com
 
 - Update to version 1.4.0:
