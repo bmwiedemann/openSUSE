@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 11 15:18:50 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 23.1.2.
+  * Mangle OpUMulExtended builtin arguments as unsigned.
+  * Support new OpTypeVectorIdEXT op with constant instructions in
+    Reader.
+  * Make the error handling kind selectable through TranslatorOpts.
+  * Fix FPRoundingMode decoration handling on mini-float
+    conversions.
+
+-------------------------------------------------------------------
 Sat Sep  5 21:45:31 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 23.1.1.
