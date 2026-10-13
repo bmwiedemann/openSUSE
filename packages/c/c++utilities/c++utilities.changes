@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 12 13:48:44 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 5.37.0:
+  * Add macros for disabling warnings in a standardized way.
+  * Disable compiler warnings using the new macros across various components
+    and tests.
+  * Force use of external iconv by default under Windows.
+  * Fix in-source builds after reconfiguration.
+  * Bump minor version. 
+
+-------------------------------------------------------------------
 Thu Sep 24 23:35:49 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to version 5.36.0

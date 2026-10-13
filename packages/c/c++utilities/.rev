@@ -56,4 +56,18 @@ Packaging this library in Factory enables proper dependency tracking, shared sys
   * Update default C++ version to C++20</comment>
     <requestid>1380736</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2a67e396d61dca59972920c709d8f343</srcmd5>
+    <version>5.37.0</version>
+    <time>1791906274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.37.0:
+  * Add macros for disabling warnings in a standardized way.
+  * Disable compiler warnings using the new macros across various components
+    and tests.
+  * Force use of external iconv by default under Windows.
+  * Fix in-source builds after reconfiguration.
+  * Bump minor version. </comment>
+    <requestid>1384458</requestid>
+  </revision>
 </revisionlist>
