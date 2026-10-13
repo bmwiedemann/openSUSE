@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:15:54 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 3.3.0:
+  * Implement PEP-634 pattern matching and PEP-654 except
+    groups for Python 3.11+.
+  * Add unpacking in comprehensions (PEP-798) for list/set/dict.
+  * Adapt to Python 3.15 Limited API features.
+  * Use new export/import naming scheme for fused C functions.
+  * Use declared container item types in the type system.
+  * Improve type inference for builtins, exceptions, and globals.
+  * Select shared module features at build time; add ``cython
+    generate-shared`` sub-command.
+  * Add ``cython.likely()``/``cython.unlikely()`` for branch hints.
+  * Allow explicit sequence/mapping declaration on ext. types.
+  * Support Py3.15 ``frozendict`` and ``sentinel`` builtins.
+  * Add ``cython.py_int`` etc. for builtin types in C context.
+  * Special-case builtin type comparisons and arithmetic ops.
+  * Support ``<bool>`` casts, ``cdef`` setters, C restrict,
+    and enum-sized C arrays.
+
+- Updated to version 3.2.10:
+  * Fix unpickling of compiled function wrappers. (Github issue
+    :issue:`7846`)
+  * Fix compiler crash with comprehension results in in-place
+    assignments. Patch by AbhinavMir. (Github issue :issue:`7846`)
+  * Fix compiler crash with keyword arguments in C++ class calls.
+    Patch by Vladimir Saraikin. (Github issue :issue:`7206`)
+
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
 Fri Jul 31 17:20:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.9:
