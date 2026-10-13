@@ -3746,4 +3746,12 @@ autoforward-gate ELIGIBLE, no competing Factory SR).</comment>
 </comment>
     <requestid>1382069</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>c1ed15a31f31ad7dc27d8c8637d314d8</srcmd5>
+    <version>0.17.0</version>
+    <time>1791906205</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.17.0. Breaking defaults disclosed: target 3.11, syntax 3.15, DTZ ruleset expansion.</comment>
+    <requestid>1383989</requestid>
+  </revision>
 </revisionlist>

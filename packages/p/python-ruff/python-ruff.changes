@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 10 07:09:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.17.0:
+  * Behavior change: default target-version moves 3.10 -> 3.11 and
+    the syntax-check default 3.14 -> 3.15 when no version is set
+  * Behavior change: default ruleset DTZ expansion - several
+    flake8-datetimez rules leave the default set while F406 joins
+    it; the full output format now shows unsafe fixes
+  * Stabilized rules TID254, TID255 and RUF071; formatter and
+    E501/W505 now ignore trailing pragma comments; Unicode 17
+  * Bug fixes across flake8-builtins, flake8-self, pyflakes,
+    pylint and ruff rules; ruff-lsp support removed upstream
+  * MSRV verified still Rust 1.97, so the spec floor carries
+- Re-vendor the Rust dependencies and re-derive the licence set of
+  the statically linked crates: unchanged at MIT AND MPL-2.0, same
+  three MPL-2.0 crates (colored, option-ext, version-ranges)
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Fri Oct  2 09:16:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.16.10:
