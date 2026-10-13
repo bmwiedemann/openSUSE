@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-sparse
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,26 @@
 #
 
 
-# For license file
-%define tag     c94f8418b6c36c3ff9db4f87e00fc08bd51cfb4b
 Name:           python-scikit-sparse
-Version:        0.4.16
+Version:        0.5.0
 Release:        0
 Summary:        Scikits sparse matrix package
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/scikit-sparse/scikit-sparse/
-Source:         https://files.pythonhosted.org/packages/source/s/scikit-sparse/scikit_sparse-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+Source:         https://github.com/scikit-sparse/scikit-sparse/archive/refs/tags/v%{version}.tar.gz#/scikit_sparse-%{version}.tar.gz
+BuildRequires:  %{python_module Cython >= 3.0}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.23.3}
+BuildRequires:  %{python_module numpy-devel >= 2.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module scipy >= 0.19}
+BuildRequires:  %{python_module scipy >= 1.14}
 BuildRequires:  %{python_module setuptools >= 18.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  suitesparse-devel
-Requires:       python-numpy >= 1.23.3
-Requires:       python-scipy >= 0.18
+Requires:       python-numpy >= 2.0
+Requires:       python-packaging
+Requires:       python-scipy >= 1.14
 ExcludeArch:    %{ix86}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -54,9 +53,7 @@ There is a wrapper for the CHOLMOD library for sparse Cholesky
 decomposition.
 
 %prep
-%autosetup -p1 -n scikit_sparse-%{version}
-# Move the test data to tests
-mv sksparse/test_data tests
+%autosetup -p1 -n scikit-sparse-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -70,7 +67,7 @@ export CFLAGS="%{optflags}"
 %pytest_arch -ra --pyargs tests
 
 %files %{python_files}
-%doc README.md
+%doc README.rst
 %license LICENSE.txt
 %{python_sitearch}/sksparse
 %{python_sitearch}/scikit_sparse-%{version}.dist-info

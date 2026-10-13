@@ -120,4 +120,23 @@
 - skip python 36 build</comment>
     <requestid>1316826</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>76425a6d2767cfd45f27fedbdab8fc34</srcmd5>
+    <version>0.5.0</version>
+    <time>1791906333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * ENH: Create bindings for SuiteSparse BTF module
+  * DEV: Build System and Packaging Update
+  * ENH: Create Bindings for SuiteSparse AMD module
+  * ENH: Create bindings for SuiteSparse COLAMD module
+  * ENH: Create bindings for the SuiteSparse CAMD module
+  * ENH: Create bindings for SuiteSparse CCOLAMD module
+  * ENH: Create interface to UMFPACK
+  * ENH: Refactor CHOLMOD interface
+  * ENH: Create bindings for KLU
+  * ENH: Create bindings for SPQR
+- Switch to GitHub tarball due to tests.</comment>
+    <requestid>1384495</requestid>
+  </revision>
 </revisionlist>

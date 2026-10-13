@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 13 05:49:18 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.0:
+  * ENH: Create bindings for SuiteSparse BTF module
+  * DEV: Build System and Packaging Update
+  * ENH: Create Bindings for SuiteSparse AMD module
+  * ENH: Create bindings for SuiteSparse COLAMD module
+  * ENH: Create bindings for the SuiteSparse CAMD module
+  * ENH: Create bindings for SuiteSparse CCOLAMD module
+  * ENH: Create interface to UMFPACK
+  * ENH: Refactor CHOLMOD interface
+  * ENH: Create bindings for KLU
+  * ENH: Create bindings for SPQR
+- Switch to GitHub tarball due to tests.
+
+-------------------------------------------------------------------
 Mon Nov 10 08:29:18 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.16:
