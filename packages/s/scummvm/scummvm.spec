@@ -16,14 +16,8 @@
 #
 
 
-%if 0%{?suse_version} >= 1600
-%bcond_without faad
-%else
-%bcond_with faad
-%endif
-
 Name:           scummvm
-Version:        2026.3.0
+Version:        2026.4.0
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-3.0-or-later
@@ -34,12 +28,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-%if 0%{?suse_version} > 1500
 BuildRequires:  libieee1284-devel
-%endif
-%if 0%{?suse_version} >= 1600
-BuildRequires:  pkgconfig(libopenmpt) >= 0.7
-%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmpcdec-devel
 BuildRequires:  pkgconfig
@@ -48,6 +37,7 @@ BuildRequires:  pkgconfig(flac) >= 1.0.1
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libmikmod)
+BuildRequires:  pkgconfig(libopenmpt) >= 0.7
 BuildRequires:  pkgconfig(libpng) >= 1.2.8
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(sonivox)
@@ -58,9 +48,7 @@ BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(zlib)
 Suggests:       %{name}-extra
 Suggests:       %{name}-tools
-%if %{with faad}
 BuildRequires:  pkgconfig(faad2)
-%endif
 BuildRequires:  pkgconfig(libmpeg2) >= 0.4.0
 BuildRequires:  pkgconfig(mad)
 %ifarch %{ix86}
@@ -100,11 +88,6 @@ These engines are in a worse state, but allow to play extra games.
 # build the endianness test without optimization otherwise gcc is too smart
 # and optimize everything away, making the test fail
 sed -i '/tmp_endianness_check.cpp/ s/$CXXFLAGS/$CXXFLAGS -fno-lto -O0/' configure
-%if 0%{?suse_version} < 1600
-#allow to use liba52 from svn
-sed -i '/a52_init/s@(0)@()@' configure
-sed -i '/a52_init/s@(0)@()@' audio/decoders/ac3.cpp
-%endif
 
 %build
 # scummvm relies on -gsplit-dwarf which is incompatible with -flto

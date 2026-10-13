@@ -388,4 +388,15 @@ SPDX format - plus it appears as though only one license relevant binary is crea
     <comment></comment>
     <requestid>1363693</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f19a5a62fa1a613b3bebd6265baec522</srcmd5>
+    <version>2026.4.0</version>
+    <time>1791906576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2026.4.0
+  * see https://downloads.scummvm.org/frs/scummvm/2026.4.0/ReleaseNotes.html for notes
+- remove Leap 15.x dependencies in the spec file
+</comment>
+    <requestid>1384618</requestid>
+  </revision>
 </revisionlist>
