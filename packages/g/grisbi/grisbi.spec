@@ -17,14 +17,13 @@
 
 
 Name:           grisbi
-Version:        3.90.1
+Version:        3.92.0
 Release:        0
 Summary:        Personal Accounting Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Finance
 URL:            http://www.grisbi.org
 Source0:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/3.0.x/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/3.0.x/%{version}/%{name}-%{version}.tar.xz.sha256sum
 
 BuildRequires:  fdupes
 BuildRequires:  meson

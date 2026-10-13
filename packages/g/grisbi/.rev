@@ -251,4 +251,15 @@
     <comment></comment>
     <requestid>1325790</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9662b74f506d2b933abc047ab5b48291</srcmd5>
+    <version>3.92.0</version>
+    <time>1791906532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.92.0:
+  * Improve reports HTML output
+  * Bug fixes
+- No longer reference sha256 file: upstream does not provide it anymore.</comment>
+    <requestid>1384578</requestid>
+  </revision>
 </revisionlist>

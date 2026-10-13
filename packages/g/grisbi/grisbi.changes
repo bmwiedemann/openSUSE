@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 12 14:57:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.92.0:
+  * Improve reports HTML output
+  * Bug fixes
+- No longer reference sha256 file: upstream does not provide it anymore.
+
+-------------------------------------------------------------------
 Wed Jan  7 11:37:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.90.1:
