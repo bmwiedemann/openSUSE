@@ -23,8 +23,8 @@ Summary:        Intelligent Archive Extraction Tool
 License:        GPL-3.0-only
 URL:            https://brettcsmith.org/2007/dtrx/
 Source:         https://github.com/dtrx-py/dtrx/releases/download/%{version}/dtrx-%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools >= 75
 BuildRequires:  python3-wheel
@@ -59,13 +59,17 @@ Features:
 sed -i '1{/^#!/d}' dtrx/dtrx.py
 
 %build
-%python3_pyproject_wheel
+%{python3_pyproject_wheel}
 
 %install
-%python3_pyproject_install
+%{python3_pyproject_install}
+# Identical .pyc/.opt-1.pyc pairs waste space (rpmlint files-duplicate)
+%fdupes %{buildroot}%{python3_sitelib}
+# License is shipped via %%license; drop the dist-info copy
+rm -rf %{buildroot}%{python3_sitelib}/dtrx-%{version}.dist-info/licenses
 
 %check
-PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -B -c "import dtrx.dtrx"
+PYTHONPATH=%{buildroot}%{python3_sitelib} %{__python3} -B -c "import dtrx.dtrx"
 
 %files
 %license COPYING

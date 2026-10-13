@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 12 19:13:39 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Fix %check to run the import test with the primary python3
+  interpreter: %python_expand iterates all python flavors,
+  but the package is built for the primary python only, so
+  the check failed for flavors that are not installed
+
+-------------------------------------------------------------------
+Mon Oct 12 08:47:01 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Eliminate files-duplicate findings: fdupes the identical
+  .pyc/.opt-1.pyc pairs, drop the dist-info license copy
+  (license is shipped via %%license)
+- Drop BuildRequires python3-devel: pure Python package, the
+  compiler toolchain it pulls in is never used
+- %check: use %python_expand $python instead of bare python3
+  so the test runs on the versioned interpreter the package
+  was built against
+
+-------------------------------------------------------------------
 Sat Sep 12 14:27:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 8.7.1:
