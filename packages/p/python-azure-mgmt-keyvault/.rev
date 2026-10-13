@@ -330,4 +330,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1343146 from glaubitz)</comment>
     <requestid>1343168</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>abcb7f8189aa635e79dabac77494ada9</srcmd5>
+    <version>14.1.0</version>
+    <time>1791906539</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 14.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1384558 from glaubitz)</comment>
+    <requestid>1384609</requestid>
+  </revision>
 </revisionlist>
