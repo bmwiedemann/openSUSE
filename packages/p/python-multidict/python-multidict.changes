@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:46:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 7.0.0
+  * 7.0.0 is a major release. It makes istr final, adds a
+    public C API for third-party extensions, and makes the C extension
+    substantially faster across the board.
+  * Breaking change: istr can no longer be subclassed,
+    on either backend. Code that subclassed it has to wrap or convert instead.
+    The C extension also started rejecting an argument passed both
+    positionally and by name with TypeError, where it used to silently
+    misbehave.
+  * Public C and Cython API. Other C extensions and Cython modules can now
+    create, read and mutate multidicts through a capsule, without going through
+    the Python-level API. The capsule comes with multidict_capi.h, a
+    cimport-able multidict/__init__.pxd and
+    multidict.get_include(). The API includes MultiDict_ForEach() and
+    a watchers API modeled on CPython's dict watchers. See the C API and
+    Cython API references.
+  * Performance. On CodSpeed's GIL-build benchmarks against 6.9.1, 82
+    C-extension benchmarks got faster and none got slower.
+    The pure-Python backend is unchanged in speed.
+  * Robustness. This release fixed several crashes and leaks in the C
+    extension, including use-after-free bugs when a key's lower() or a
+    value's __eq__ mutated a multidict, a crash at interpreter shutdown,
+    and table and reference leaks on the free-threaded build.
+  * full changelog: https://github.com/aio-libs/multidict/releases/tag/v7.0.0
+- Update to 6.9.1 (fixes CVE-2026-104874 (bsc#1284174))
+  * Fixed a reference leak in the C extension where operand | md.items()
+    and md.items() - operand leaked one key and one value reference per
+    element of operand, letting a large operand grow memory without bound
+    (GHSA-54p9-h82j-f925)
+  * full changelog: https://github.com/aio-libs/multidict/releases/tag/v6.9.1
+- add coverage dependencies as they are needed for subprocess calls
+
+-------------------------------------------------------------------
 Tue Apr  7 22:42:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.7.1:
