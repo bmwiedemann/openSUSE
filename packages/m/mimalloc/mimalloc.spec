@@ -68,7 +68,13 @@ applications that want to make use of mimalloc.
 %setup -q
 
 %build
-%cmake -DMI_INSTALL_TOPLEVEL=ON -DMI_BUILD_OBJECT=OFF -DMI_BUILD_STATIC=OFF
+%cmake \
+%ifarch aarch64
+  -DMI_NO_OPT_ARCH=ON \
+%endif
+  -DMI_INSTALL_TOPLEVEL=ON \
+  -DMI_BUILD_OBJECT=OFF \
+  -DMI_BUILD_STATIC=OFF
 %make_build
 
 %check

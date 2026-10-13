@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 07:34:53 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable overoptimization in mimalloc with -DMI_NO_OPT_ARCH=ON
+  to keep compatibility with armv8.0 baseline on aarch64
+
+-------------------------------------------------------------------
 Mon Jun 29 12:24:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.2:
