@@ -20,7 +20,7 @@ Name:           zoo
 Version:        2.10.1
 Release:        0
 Summary:        Pack Program
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 URL:            https://en.wikipedia.org/wiki/Zoo_(file_format)
 # Upstream 2.10 patchlevel 1 (no newer release; author dead since 1993).
 # Original ftp MASTER_SITES are gone; tarball from a distro mirror,
@@ -63,6 +63,23 @@ install -Dpm 0644 zoo.1 \
   %{buildroot}/%{_mandir}/man1/zoo.1
 install -Dpm 0644 fiz.1 \
   %{buildroot}/%{_mandir}/man1/fiz.1
+
+%check
+# No upstream testsuite (final release is from 1991); smoke-test the
+# built binaries with an archive round-trip instead.
+tmpdir=$(mktemp -d)
+pushd "$tmpdir"
+echo "zoo round-trip test" > testfile.txt
+%{buildroot}%{_bindir}/zoo a testarc testfile.txt
+%{buildroot}%{_bindir}/zoo l testarc.zoo | grep -q testfile.txt
+mkdir extract
+pushd extract
+%{buildroot}%{_bindir}/zoo x ../testarc.zoo
+cmp testfile.txt ../testfile.txt
+popd
+%{buildroot}%{_bindir}/fiz testarc.zoo | grep -q testfile.txt
+popd
+rm -rf "$tmpdir"
 
 %files
 %license Copyright

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 12 17:47:21 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add %check section with an archive round-trip smoke test
+  (create, list, extract and compare a test archive, plus a
+  fiz directory scan); upstream has no testsuite.
+- Modernize License tag to the SPDX LicenseRef form
+  (spec-cleaner).
+
+-------------------------------------------------------------------
 Sun Sep 13 17:13:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.10.1 (upstream 2.10 patchlevel 1).
