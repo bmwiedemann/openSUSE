@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 11 13:34:06 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 6.0.7:
+  * Upstream home page moved to waterlander.net/wcd; the old
+    waterlan.home.xs4all.nl site no longer serves the sources,
+    so URL and Source now point to the new location.
+  * Updated translations of the UI and manuals.
+  * No functional changes; only the URL shown in the program's help
+    output changed.
+- Spec cleanup: replace ncurses-devel with pkgconfig(ncursesw) (the
+  wide-character curses wcd links against), add the missing gcc and
+  make BuildRequires, use the make_build macro, drop the obsolete
+  Group, BuildRoot and defattr entries and the obsolete suse_version
+  1310 conditionals (libunistring-devel and Unicode normalization
+  support are now unconditional).
+
+-------------------------------------------------------------------
 Fri Apr 24 19:52:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.6:

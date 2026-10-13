@@ -18,20 +18,19 @@
 
 %define wcd_docdir %{_defaultdocdir}/%{name}
 Name:           wcd
-Version:        6.0.6
+Version:        6.0.7
 Release:        0
 Summary:        Chdir for DOS and Unix
 License:        GPL-2.0-only
-Group:          Productivity/File utilities
-URL:            http://waterlan.home.xs4all.nl/
-Source:         http://waterlan.home.xs4all.nl/wcd/%{name}-%{version}.tar.gz
+URL:            https://waterlander.net/wcd/
+Source:         https://waterlander.net/wcd/files/%{name}-%{version}.tar.gz
+BuildRequires:  gcc
 BuildRequires:  gettext-runtime
 BuildRequires:  gettext-tools
-BuildRequires:  ncurses-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} >= 1310
 BuildRequires:  libunistring-devel
-%endif
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(ncursesw)
 
 %description
 Wcd.   Directory changer for DOS and Unix.  Another Norton
@@ -49,10 +48,8 @@ with speed search.
 %setup -q
 
 %build
-make -C src %{?_smp_mflags} prefix=%{_prefix} \
-%if 0%{?suse_version} >= 1310
+%make_build -C src prefix=%{_prefix} \
   UNINORM=1 \
-%endif
   UCS=1
 
 %install
@@ -62,8 +59,7 @@ make -C src install-profile DESTDIR=%{buildroot} prefix=%{_prefix} sysconfdir=%{
 %find_lang %{name} --all-name --with-man
 
 %files -f %{name}.lang
-%defattr(-,root,root)
-%doc %{_mandir}/man1/wcd.*
+%{_mandir}/man1/wcd.*
 %doc %lang(de) %dir %{_mandir}/de
 %doc %lang(fr) %dir %{_mandir}/fr
 %doc %lang(nl) %dir %{_mandir}/nl
