@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 13 06:47:58 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.2.1:
+  * chore:i18n update
+  * feat(launcher): add simple layout and tidy launcher settings
+  * chore: i18n update
+  * feat(screenshot): add a configurable modifier to move and resize the zone, no modifier select new zone (#4803)
+  * feat(bluetooth): human readable name for the service in the authorization prompt (#4023)
+  * fix(notifications): emit NotificationReplied signal on inline reply (#4724)
+  * fix(ci): filter project field values safely
+  * fix(ci): correct intake item readback query
+  * ci: add targeted maintainer triage intake
+  * feat(switcher): add scrollwheel support for window switcher (#4810)
+
+-------------------------------------------------------------------
 Thu Sep 10 19:35:44 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 5.1.0

@@ -17,50 +17,50 @@
 
 
 Name:           noctalia
-Version:        5.1.0
+Version:        5.2.1
 Release:        0
 Summary:        A sleek and minimal desktop shell thoughtfully crafted for Wayland.
 License:        MIT
 URL:            https://github.com/noctalia-dev/noctalia
 Source0:        %{name}-%{version}.tar.gz
 
-BuildRequires:  meson
-BuildRequires:  gcc-c++
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(harfbuzz)
-BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsodium)
-BuildRequires:  pkgconfig(sdbus-c++) >= 2.0.0
-BuildRequires:  pkgconfig(libpipewire-0.3)
-BuildRequires:  pkgconfig(wireplumber-0.5)
-BuildRequires:  pkgconfig(pam)
-BuildRequires:  pkgconfig(polkit-gobject-1)
+BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(jemalloc)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libjxl_threads)
-BuildRequires:  pkgconfig(sndfile)
-BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libqalculate)
+BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(libsecret-1)
+BuildRequires:  pkgconfig(libsodium)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(md4c)
-BuildRequires:  pkgconfig(tomlplusplus)
-BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(nlohmann_json)
+BuildRequires:  pkgconfig(pam)
+BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(polkit-gobject-1)
+BuildRequires:  pkgconfig(sdbus-c++) >= 2.0.0
+BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(stb)
-BuildRequires:  pkgconfig(jemalloc)
+BuildRequires:  pkgconfig(tomlplusplus)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wireplumber-0.5)
+BuildRequires:  pkgconfig(xkbcommon)
 
 Requires:       git
 Requires:       qalculate
@@ -107,4 +107,3 @@ find %{buildroot}%{_datadir}/noctalia/assets/templates \
 %{_datadir}/icons/hicolor/scalable/apps/noctalia.svg
 
 %changelog
-

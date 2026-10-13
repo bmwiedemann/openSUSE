@@ -10,5 +10,6 @@ It provides the shell layer around your compositor: bars, widgets, dock, launche
 wallpaper, lock screen, session actions, clipboard history, OSDs, tray integration, and desktop widgets. The project is
 built directly on Wayland and OpenGL ES with no Qt or GTK dependency, so the UI, rendering, configuration, and IPC model
 are designed as one cohesive shell instead of a collection of unrelated panels and scripts.</description>
+  <devel project="X11:Wayland" package="noctalia"/>
   <url>https://github.com/noctalia-dev/noctalia</url>
 </package>
