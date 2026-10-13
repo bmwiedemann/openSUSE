@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  6 04:45:34 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Add Requires tags for checking the grub2 sbat generation at RPM
+  level.
+  Please remember to update the grub_gen generation number in shim
+  spec file when the revoked GRUB2 generation number in the
+  SbatLevel_Variable.txt is modified. (bsc#1278729)
+
+-------------------------------------------------------------------
 Thu Sep 24 14:27:04 UTC 2026 - Michael Matz <matz@suse.com>
 
 - Add shim-objcopy-target.patch to use correct objcopy options.

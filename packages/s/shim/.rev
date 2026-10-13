@@ -1629,4 +1629,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>Add shim-objcopy-target.patch to use correct objcopy options</comment>
     <requestid>1381611</requestid>
   </revision>
+  <revision rev="142" vrev="10">
+    <srcmd5>2b5cbd69204fb68a341adf063aa91917</srcmd5>
+    <version>16.1</version>
+    <time>1791906193</time>
+    <user>dimstar_suse</user>
+    <comment>Add Requires tags for checking the grub2 sbat generation at RPM level. (bsc#1278729)</comment>
+    <requestid>1384274</requestid>
+  </revision>
 </revisionlist>

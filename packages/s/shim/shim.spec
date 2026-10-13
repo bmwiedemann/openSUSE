@@ -25,6 +25,10 @@
 %else
 %define grubplatform %{_target_cpu}-efi
 %endif
+# Please remember to update the grub_gen generation number when
+# the revoked GRUB2 generation number in the SbatLevel_Variable.txt
+# is modified. (bsc#1278729)
+%define grub_gen 5
 %if %{defined sle_version} && 0%{?sle_version} <= 150000
 %define sysefidir      /usr/lib64/efi
 %else
@@ -137,6 +141,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # shim for systemd-boot where shim-install is not actually used.
 # Requires:       grub2-%{grubplatform}
 Requires:       mokutil
+Requires:	(grub2-%{grubplatform}-sbat >= %{grub_gen} if grub2)
+Requires:	(grub2-%{grubplatform}-sbat >= %{grub_gen} if grub2-common)
 ExclusiveArch:  x86_64 aarch64
 
 # subject hash of openSUSE/SLE/devel certificates for identifying devel project
