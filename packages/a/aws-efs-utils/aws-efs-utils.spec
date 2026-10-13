@@ -20,12 +20,14 @@
 
 %if 0%{?suse_version} >= 1600
 %define pythons %{primary_python}
+%define pythonname python3
 %else
 %define pythons python311
+%define pythonname python3.11
 %endif
 %global _sitelibdir %{%{pythons}_sitelib}
 Name:           aws-efs-utils
-Version:        3.2.0
+Version:        3.3.3
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
@@ -37,21 +39,9 @@ Patch0:         disable_mount_efs_test.patch
 Patch1:         harden_amazon-efs-mount-watchdog.service.patch
 Patch2:         skip-styletest.patch
 Patch3:         use_mock_from_unittest.patch
-# PATCH-FIX-UPSTREAM - Support relro in delocator - https://github.com/aws/aws-lc/pull/2455
-Patch4:         support-relro-in-delocator.patch
-# PATCH-FIX-UPSTREAM - Align guard macros for OPENSSL_cpuid_setup - https://github.com/aws/aws-lc/pull/2111
-Patch5:         guard_openssl-cpuid-setup.patch
-# PATCH-FIX-UPSTREAM - Fix fips build for s390x - https://github.com/aws/aws-lc-rs/pull/656
-Patch6:         fix_fips_build_for_s390x.patch
-# PATCH-FIX-UPSTREAM - Fix missing max_align_t for s390x - https://github.com/rust-lang/libc/pull/5389
-Patch7:         fix_missing_max-align-t_s390x.patch
-# PATCH-FIX-OPENSUSE - fix cargo checksums after patching
-Patch8:         fix-cargo-checksums.patch
 BuildRequires:  %{pythons}-botocore >= 1.34.140
 BuildRequires:  %{pythons}-coverage >= 7.6.0
-BuildRequires:  %{pythons}-pbr >= 3.1.1
 BuildRequires:  %{pythons}-pluggy >= 0.13.0
-BuildRequires:  %{pythons}-py >= 1.11.0
 BuildRequires:  %{pythons}-pytest >= 8.2.2
 BuildRequires:  %{pythons}-pytest-cov >= 5.0.0
 BuildRequires:  %{pythons}-pytest-html >= 4.1.1
@@ -74,7 +64,7 @@ BuildRequires:  golang(API) >= 1.24
 BuildRequires:  pkgconfig(systemd)
 Requires:       nfs-utils
 Requires:       stunnel >= 4.56
-ExcludeArch:    %{arm32} %{ix86}
+ExclusiveArch:  aarch64 x86_64
 
 %description
 This package provides utilities for using the EFS file systems.
@@ -85,17 +75,6 @@ This package provides utilities for using the EFS file systems.
 %patch -P 1 -p1
 %patch -P 2
 %patch -P 3 -p1
-%patch -P 4 -p1
-pushd src/proxy/vendor/aws-lc-fips-sys-0.13.16/aws-lc
-%patch -P 5 -p1
-popd
-pushd src/proxy/vendor/aws-lc-fips-sys-0.13.16
-%patch -P 6 -p2
-popd
-pushd src/proxy/vendor/libc-0.2.189
-%patch -P 7 -p1
-popd
-%patch -P 8 -p1
 
 %build
 %if 0%{?suse_version} < 1600
@@ -129,7 +108,7 @@ install -p -m 755 %{_builddir}/efs-utils-v%{version}/src/watchdog/__init__.py %{
 install -p -m 644 %{_builddir}/efs-utils-v%{version}/man/mount.efs.8 %{buildroot}%{_mandir}/man8
 install -p -m 644 %{_builddir}/efs-utils-v%{version}/man/mount.s3files.8 %{buildroot}%{_mandir}/man8
 
-sed -i 's/env python3/python3/' %{buildroot}%{_sbindir}/mount.efs %{buildroot}%{_sbindir}/mount.s3files %{buildroot}%{_bindir}/amazon-efs-mount-watchdog
+sed -i 's/env python3/%{pythonname}/' %{buildroot}%{_sbindir}/mount.efs %{buildroot}%{_sbindir}/mount.s3files %{buildroot}%{_bindir}/amazon-efs-mount-watchdog
 
 mkdir -p %{buildroot}%{python_sitelib}/{efs_utils_common,mount_efs,mount_s3files}
 cp -r %{_builddir}/efs-utils-v%{version}/src/efs_utils_common/*.py %{buildroot}%{python_sitelib}/efs_utils_common

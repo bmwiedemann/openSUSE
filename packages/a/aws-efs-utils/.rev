@@ -347,4 +347,20 @@
     <comment></comment>
     <requestid>1370522</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a30214630339b1283494804ae1aa6d8d</srcmd5>
+    <version>3.3.3</version>
+    <time>1791906219</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.3
+  * Validate credential provider values before use
+  * Validate rolearn and jwtpath mount options
+  * Add optional efs_proxy_worker_threads config item
+    to bound efs-proxy worker threads
+  * Support macOS 27
+  * Fix watchdog LaunchDaemon python3 path on macOS
+  * Add Ubuntu 26.04 to supported distributions
+- Accept the risk for RUSTSEC-2026-0258 (forwarded request 1384352 from glaubitz)</comment>
+    <requestid>1384380</requestid>
+  </revision>
 </revisionlist>

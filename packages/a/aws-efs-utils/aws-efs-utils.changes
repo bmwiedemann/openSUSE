@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Oct 12 15:22:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.3
+  * Validate credential provider values before use
+  * Validate rolearn and jwtpath mount options
+  * Add optional efs_proxy_worker_threads config item
+    to bound efs-proxy worker threads
+  * Support macOS 27
+  * Fix watchdog LaunchDaemon python3 path on macOS
+  * Add Ubuntu 26.04 to supported distributions
+- Accept the risk for RUSTSEC-2026-0258
+
+-------------------------------------------------------------------
+Wed Sep 23 16:46:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.2 (bsc#1281947)
+  * Improve watchdog handling of zombie proxy threads
+  * Fix read_ahead_kb being overwritten on certain distros
+  * Reject empty cafiles on mount
+- from version 3.3.1
+  * Schedule TLS cert refresh from credential expiration
+  * Don't denylist file handles for transient S3 errors on readbypass path
+- from version 3.3.0
+  * Eliminate unnecessary data copies on the readbypass path
+  * Consolidating dependencies
+  * Upgrade AWS-LC-FIPS module to 4.x
+- Drop support-relro-in-delocator.patch, merged upstream
+- Drop guard_openssl-cpuid-setup.patch, merged upstream
+- Drop fix_fips_build_for_s390x.patch, merged upstream
+- Drop fix_missing_max-align-t_s390x.patch, merged upstream
+- Drop fix-cargo-checksums.patch, no longer needed
+- Fix Python interpreter name on SLE-15 (bsc#1263683)
+- Remove python-pbr and python-py from BuildRequires
+- Restrict build to aarch64 and x86_64 (bsc#1275449)
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.2.0
