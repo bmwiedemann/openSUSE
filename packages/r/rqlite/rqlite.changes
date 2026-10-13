@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 12 19:12:36 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.6.0:
+  * API addition: error_v2 may contain numeric SQLite error codes.
+  * addresses a security issue related to Authentication files. A
+    user with no explicit permissions could be grant elevated
+    permissions. Correctly configured users do not suffer from this
+    issue.
+  * multiple implementation changes and bug fixes
+  * Display interactive cluster topology on web console.
+  * Support configurable queued-writes retries
+  * release addresses a gap in the role-based access permissions
+    related to change-data-capture (CDC) handling
+
+-------------------------------------------------------------------
 Sat Sep 26 06:55:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.3.6:
