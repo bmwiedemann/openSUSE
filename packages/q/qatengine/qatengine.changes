@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 11 13:49:13 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.3.0 (also covers 2.2.0):
+  * qatprovider is now the default upstream build; the legacy engine
+    needs --enable-qat_engine, which is passed here so the package
+    keeps shipping qatengine.so (the engine is unsupported on
+    OpenSSL 4.0 and later)
+  * Fixes affecting this build: RSA PKCS#1 v1.5 implicit rejection
+    (Marvin workaround), crash in PRF during DTLS keying-material
+    export, in-tree QATlib 26.02 detection (was taken for FreeBSD's)
+  * Fixes only in code not enabled in this build: HKDF heap
+    out-of-bounds writes, AES-GCM IV reuse on HW/SW dispatch switch
+    and tag verification failure, provider SM3/HMAC leak and double
+    free
+  * Add OpenSSL 4.0 support and ML-KEM/ML-DSA via QAT_SW (provider
+    only, not built here)
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Spec changes:
+  * Pass CPP="gcc -E" to configure: its new engine check never sets
+    up a preprocessor and always fails without one
+  * Add a smoke test loading the built engine (needs openssl)
+  * Add BuildRequires make, use pkgconfig() for libcrypto and zlib
+  * Drop the Group tag
+
+-------------------------------------------------------------------
 Fri May 15 16:51:25 UTC 2026 - Jeffrey Cheung <jcheung@suse.com>
 
 - update to 2.1.0
