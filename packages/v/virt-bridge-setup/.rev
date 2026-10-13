@@ -153,4 +153,12 @@ version 2.0:
     <comment>fix getting source, now get it from github</comment>
     <requestid>1332432</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>478f9cc7384ee24e279230b87e71648e</srcmd5>
+    <version>3.0</version>
+    <time>1791906534</time>
+    <user>dimstar_suse</user>
+    <comment>fix BSC#1284989 virt-bridge-setup add --no-clone-mac option doesn't work</comment>
+    <requestid>1384576</requestid>
+  </revision>
 </revisionlist>

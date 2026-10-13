@@ -1,7 +1,7 @@
 #
 # spec file for package virt-bridge-setup
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 Name:           virt-bridge-setup
-Version:        2.9
+Version:        3.0
 Release:        1%{?dist}
 Summary:        Script to setup virtual bridges
 License:        GPL-2.0-or-later

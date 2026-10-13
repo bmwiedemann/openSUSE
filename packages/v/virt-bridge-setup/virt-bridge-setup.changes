@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:45:14 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+version 3.0:
+  * fix BSC#1284989 virt-bridge-setup add --no-clone-mac option doesn't work
+
+-------------------------------------------------------------------
 Wed Feb 11 09:25:55 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - fix building from github source tarball
