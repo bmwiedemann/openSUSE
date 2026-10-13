@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 11 03:39:53 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.9.0:
+  * go.mod: update golang.org/x dependencies
+
+-------------------------------------------------------------------
 Tue Sep  8 20:52:42 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.8.0:

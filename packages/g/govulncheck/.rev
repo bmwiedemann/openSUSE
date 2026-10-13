@@ -385,4 +385,13 @@
   * all: upgrade go directive to at least 1.26.0 [generated] (forwarded request 1377406 from jfkw)</comment>
     <requestid>1377407</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>97ffe3c30d9b8a824c2899dece9ef32c</srcmd5>
+    <version>1.9.0</version>
+    <time>1791906592</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.0:
+  * go.mod: update golang.org/x dependencies (forwarded request 1384628 from jfkw)</comment>
+    <requestid>1384630</requestid>
+  </revision>
 </revisionlist>
