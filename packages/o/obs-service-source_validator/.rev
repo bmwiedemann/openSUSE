@@ -941,4 +941,17 @@ last submission had wrong tar ball for unknown reason</comment>
   * Allow AGENTS.md in checkouts</comment>
     <requestid>1375606</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>7fec5778e2a525c9e21e6ff302671140</srcmd5>
+    <version>0.48</version>
+    <time>1791906262</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.48:
+  * Fix dirassets check
+  * Improve help output
+  * add help output for moveassets and dirassets
+  * Update 20-files-present-and-referenced
+  * Fix directory assets handling</comment>
+    <requestid>1384455</requestid>
+  </revision>
 </revisionlist>

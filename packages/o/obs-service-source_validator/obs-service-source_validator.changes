@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 12 21:18:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.48:
+  * Fix dirassets check
+  * Improve help output
+  * add help output for moveassets and dirassets
+  * Update 20-files-present-and-referenced
+  * Fix directory assets handling
+
+-------------------------------------------------------------------
 Thu Sep 03 08:15:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.47+1:
