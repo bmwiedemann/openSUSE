@@ -19,7 +19,7 @@
 %define executable_name kargo
 
 Name:           kargo-cli
-Version:        1.12.3
+Version:        1.12.4
 Release:        0
 Summary:        CLI for the Kubernetes application lifecycle orchestration
 License:        Apache-2.0

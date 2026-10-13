@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 04:31:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.4:
+  * chore(deps): bump Go to 1.27.2 and golang.org/x/net to v0.60.0
+    (#7541)
+
+-------------------------------------------------------------------
 Fri Oct 09 05:10:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.3:
