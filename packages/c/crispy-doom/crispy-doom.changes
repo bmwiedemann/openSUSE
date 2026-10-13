@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 13 15:20:19 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2
+  * Expand extended BSP format support and blockmap building to all
+    games.
+  * Allocate texture composites on demand with PU_LEVEL tag, fixing
+    a crash in R_GenerateComposite in all games.
+  * Fully remove the visplanes and drawseg limits in Hexen and
+    Strife.
+  * Added support for the 200 dummy SFX added by DEHEXTRA.
+  * Improve stat counting: stats are now identical for all players
+    in netgames, and monsters resurrected by Arch-Viles or spawned
+    by the Icon of Sin (Nightmare/-respawn) are counted.
+  * Use the new naming scheme for Masterlevels KEX music, and make
+    the Masterlevels KEX detection more robust.
+  * Fix out-of-bounds read when resizing the status bar with a
+    ready weapon that uses no ammo.
+  * Add support for sideloading Deathkings of the Dark Citadel
+    (DKDC), including SNDINFO, CLUSxMSG and WINxMSG.
+
+-------------------------------------------------------------------
 Tue Sep 23 22:52:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.1
