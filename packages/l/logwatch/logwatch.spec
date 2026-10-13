@@ -17,7 +17,7 @@
 
 
 Name:           logwatch
-Version:        7.14
+Version:        7.15
 Release:        0
 Summary:        Tool to analyze and report on system logs
 License:        MIT

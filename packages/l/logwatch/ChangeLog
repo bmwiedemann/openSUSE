@@ -2,6 +2,46 @@
 control logs (e.g. 'git log --oneline v1..v2'), as the Logwatch project does
 not release a change log themselves. ***
 
+==== 7.15 ====
+885f3cd (tag: 7.15) Preparation for release 7.15
+5432382 [logwatch.cron,logwatch.service] Changing executable path to bin.
+09c8f26 Cherry pick updates from Sven Strickroth - MR #90
+a8adbb7 Fixes for new formats for Dovecot 2.4 - from Terry - Ticket #99
+1338cd9 Exit if dnf5 not found - as per request from Andrew Myers - Ticket #98
+01cafd2 [fail2ban] Additional correction to force setting of service variable.
+f87f461 [rsyslogd] Ignore "epoll subsystem signaled EPOLLERR for stream" messages
+c3fe9fb [clam-upddate] Ignore_Outdated now ignores "DNS record is older" messages
+bd8609b [rsyslogd] handle updated not permmitted to talk to peer message; Only add unhandled connection closed messages to generic hash
+3feaa56 [named] Ignore more key messages
+94990a0 [lvm] Handle VDO pools
+53a3ba3 [evtapplication] simplify Application Hang output
+2e175b8 [rsyslogd] Handle "cannot resolve hostname"
+4fa809b [rsyslogd] Add rsyslogd_ignore_connection_closed_error_messages option to ignore more connnection closed error messages
+491b44b [systemd] Ignore reload requested from systemctl
+b42fb68 [system] Ignore Sending signal SIGUSR2 to process message
+2a9b831 [systemd] Ignore sys.module.fuse.device message
+e7308ee [fail2ban] Filtering out prefix (date, service, PID) because prior git commit changes (for journalctl) leaves no 'anchor' for perl expressions. So the prefix gets assigned into first non-optional variable when using standard fail2ban logs (not journalctl).
+844d816 [logwatch] Using /usr/bin rather than /usr/sbin as target directory. Also removed crontabs as required package.
+64b5d47 [freeradius] Ignore "rlm_ldap: libldap vendor:" version message
+94e281a [sshd] Ignore connection resets during writes, per Martijn Pieters
+9f970f5 [systemd] Hide 'unmerged-bin' error if Detail level less than 10, based on report from Daniel
+7c9a4c8 [sshd] Allow for disconnects listed without reason, per Reio Remma
+4f1a92f [dovecot] Update due to dovecot 2.4 that uses "Login aborted", by Martijn Pieters
+d2e5509 [postfix] Corrected typo; submitted by Peter K.
+66e0248 [pam_unix] Simplify regest for gdm session opened, support users with . in names
+7c71e0f named: Do not hide warning that current working directory is not writable
+6a26699 named: Silence some informative messages
+0577480 [named] Update forwarded result NOERROR is not an error
+646da22 Update fail2ban parser to treat loglevel as optional.
+9fab253 [logwatch.pl] [From merge request 77] Improve readability check for logfiles.
+e941c93 [pureftpd] Filtering additional messages, and improving filter for cleartext.
+335f954 Merge /u/zany/logwatch/ branch fix-emerge-syncing into master
+5185da4 Merge /u/utopiabound/logwatch/ branch master into master
+8f9995b Fix usage of (?:) no capture groups
+f6ebfc9 Add emerge Syncing-repository ignore
+125b7f0 [logwatch.spec] Corrected old day-of-week comment.
+7fdbc74 [exim] Account for reformatted authenticator failures
+
 ==== 7.14 ====
 93cb38b (tag: 7.14) Preparation for release 7.14
 787379b Merge /u/opoplawski/logwatch/ branch archives into master

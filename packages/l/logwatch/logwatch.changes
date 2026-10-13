@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Oct 13 06:59:21 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.15
+  * [logwatch.cron,logwatch.service] Changing executable path to bin.
+  * Cherry pick updates from Sven Strickroth - MR #90
+  * Fixes for new formats for Dovecot 2.4 - from Terry - Ticket #99
+  * Exit if dnf5 not found - as per request from Andrew Myers - Ticket #98
+  * [fail2ban] Additional correction to force setting of service variable.
+  * [rsyslogd] Ignore "epoll subsystem signaled EPOLLERR for stream" messages
+  * [clam-upddate] Ignore_Outdated now ignores "DNS record is older" messages
+  * [rsyslogd] handle updated not permmitted to talk to peer message;
+    Only add unhandled connection closed messages to generic hash
+  * [named] Ignore more key messages
+  * [lvm] Handle VDO pools
+  * [evtapplication] simplify Application Hang output
+  * [rsyslogd] Handle "cannot resolve hostname"
+  * [rsyslogd] Add rsyslogd_ignore_connection_closed_error_messages option to ignore more connnection closed error messages
+  * [systemd] Ignore reload requested from systemctl
+  * [system] Ignore Sending signal SIGUSR2 to process message
+  * [systemd] Ignore sys.module.fuse.device message
+  * [fail2ban] Filtering out prefix (date, service, PID) because prior git commit changes (for journalctl)
+    leaves no 'anchor' for perl expressions.
+    So the prefix gets assigned into first non-optional variable when using standard fail2ban logs (not journalctl).
+  * [logwatch] Using /usr/bin rather than /usr/sbin as target directory. Also removed crontabs as required package.
+  * [freeradius] Ignore "rlm_ldap: libldap vendor:" version message
+  * [sshd] Ignore connection resets during writes, per Martijn Pieters
+  * [systemd] Hide 'unmerged-bin' error if Detail level less than 10, based on report from Daniel
+  * [sshd] Allow for disconnects listed without reason, per Reio Remma
+  * [dovecot] Update due to dovecot 2.4 that uses "Login aborted", by Martijn Pieters
+  * [postfix] Corrected typo; submitted by Peter K.
+  * [pam_unix] Simplify regest for gdm session opened, support users with . in names
+  * named: Do not hide warning that current working directory is not writable
+  * named: Silence some informative messages
+  * [named] Update forwarded result NOERROR is not an error
+  * Update fail2ban parser to treat loglevel as optional.
+  * [logwatch.pl] [From merge request 77] Improve readability check for logfiles.
+  * [pureftpd] Filtering additional messages, and improving filter for cleartext.
+  * Merge /u/zany/logwatch/ branch fix-emerge-syncing into master
+  * Merge /u/utopiabound/logwatch/ branch master into master
+  * Fix usage of (?:) no capture groups
+  * Add emerge Syncing-repository ignore
+  * [logwatch.spec] Corrected old day-of-week comment.
+  * [exim] Account for reformatted authenticator failures
+- modified sources
+  * ChangeLog
+
+-------------------------------------------------------------------
 Tue Jun  2 12:18:14 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - Update to 7.14
