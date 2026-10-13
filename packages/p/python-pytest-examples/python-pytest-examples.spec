@@ -24,12 +24,12 @@ Summary:        Pytest plugin for testing examples in docstrings and markdown fi
 License:        MIT
 URL:            https://github.com/pydantic/pytest-examples
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-examples/pytest_examples-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#pydantic/pytest-examples#68 Bump Ruff to 0.12.9, update regexes for new output rendering
-Patch0:         ruff.patch
 # PATCH-FIX-UPSTREAM python314.patch gh#pydantic/pytest-examples#67
 Patch1:         python314.patch
 # PATCH-FIX-UPSTREAM 0001-Make-compatible-with-pytest-9.1.patch gh#pydantic/pytest-examples#79
 Patch2:         0001-Make-compatible-with-pytest-9.1.patch
+# PATCH-FIX-UPSTREAM Based on gh#pydantic/pytest-examples#84
+Patch3:         support-ruff-0.16.patch
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}

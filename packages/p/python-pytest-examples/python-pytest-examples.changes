@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 12 01:53:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch ruff.patch.
+- Add patch support-ruff-0.16.patch, which replaces it:
+  * Support changes for ruff 0.16 and 0.17.
+
+-------------------------------------------------------------------
 Tue Sep 15 11:34:18 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Make it compatible with python3.14 and pytest 9.1

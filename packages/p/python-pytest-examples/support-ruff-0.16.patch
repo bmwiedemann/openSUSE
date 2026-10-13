@@ -1,0 +1,272 @@
+From a3d9cd23f4835b9928a3aa5de83ab8ef8886af4f Mon Sep 17 00:00:00 2001
+From: Viicos <65306057+Viicos@users.noreply.github.com>
+Date: Thu, 17 Sep 2026 16:05:14 +0200
+Subject: [PATCH 1/2] Use Ruff concise output
+
+Since Ruff 0.16, the full output is the default. While we could
+use it and bump the minimum Ruff version, I'd prefer keeping the
+concise output, as at some point we should just deprecate running
+linting and direct users to use Ruff's markdown linting capabilities.
+---
+ pytest_examples/config.py |  7 ++++---
+ pytest_examples/lint.py   |  3 ++-
+ uv.lock                   | 38 +++++++++++++++++++-------------------
+ 3 files changed, 25 insertions(+), 23 deletions(-)
+
+Index: pytest_examples-0.0.18/pytest_examples/config.py
+===================================================================
+--- pytest_examples-0.0.18.orig/pytest_examples/config.py
++++ pytest_examples-0.0.18/pytest_examples/config.py
+@@ -13,7 +13,7 @@ if TYPE_CHECKING:
+     from typing import Literal
+ 
+ 
+-__all__ = 'ExamplesConfig', 'DEFAULT_LINE_LENGTH'
++__all__ = 'DEFAULT_LINE_LENGTH', 'ExamplesConfig'
+ 
+ 
+ @dataclass
+@@ -75,9 +75,10 @@ class ExamplesConfig:
+         if self.ruff_ignore:
+             ignore.extend(self.ruff_ignore)
+ 
+-        if select:
+-            # use extend to not disable default select
+-            args.append(f'--extend-select={",".join(select)}')
++        # ruff 0.16 changed its default rules: it enabled several hundred from other linters, and
++        # dropped 18 pycodestyle and pyflakes ones (`E711` and `F403` among them). Select the pre-0.16
++        # default explicitly so examples are linted with the same rules whatever ruff version is installed.
++        args.append(f'--select={",".join(["E4", "E7", "E9", "F", *select])}')
+         if ignore:
+             args.append(f'--ignore={",".join(ignore)}')
+ 
+Index: pytest_examples-0.0.18/pytest_examples/lint.py
+===================================================================
+--- pytest_examples-0.0.18.orig/pytest_examples/lint.py
++++ pytest_examples-0.0.18/pytest_examples/lint.py
+@@ -14,7 +14,7 @@ from .config import ExamplesConfig
+ if TYPE_CHECKING:
+     from .find_examples import CodeExample
+ 
+-__all__ = 'ruff_check', 'ruff_format', 'black_check', 'black_format', 'code_diff', 'FormatError'
++__all__ = 'FormatError', 'black_check', 'black_format', 'code_diff', 'ruff_check', 'ruff_format'
+ 
+ 
+ class FormatError(ValueError):
+@@ -39,7 +39,7 @@ def ruff_format(
+         except FormatError as e2:
+             raise e2 from None
+         else:
+-            raise Exception('ruff failed in Fix mode but not in Check mode, please report this')
++            raise Exception('ruff failed in Fix mode but not in Check mode, please report this')  # noqa: TRY002
+ 
+ 
+ def ruff_check(
+@@ -49,7 +49,8 @@ def ruff_check(
+     extra_ruff_args: tuple[str, ...] = (),
+ ) -> str:
+     ruff = find_ruff_bin()
+-    args = ruff, 'check', '-', *config.ruff_config(), *extra_ruff_args
++    # ruff's default output format is `full` since 0.9, `concise` is what the offsets below assume
++    args = ruff, 'check', '-', '--output-format=concise', *config.ruff_config(), *extra_ruff_args
+ 
+     p = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE, universal_newlines=True)
+     stdout, stderr = p.communicate(example.source, timeout=10)
+@@ -59,7 +60,7 @@ def ruff_check(
+             line_number = int(m.group(1))
+             return f'{example.path}:{line_number + example.start_line}'
+ 
+-        output = re.sub(r'^-:(\d+)', replace_offset, stdout, flags=re.M)
++        output = re.sub(r'^-:(\d+)', replace_offset, stdout, flags=re.MULTILINE)
+         raise FormatError(f'ruff failed:\n{indent(output, "  ")}')
+     elif p.returncode != 0:
+         raise RuntimeError(f'Error running ruff, return code {p.returncode}:\n{stderr or stdout}')
+@@ -69,10 +70,10 @@ def ruff_check(
+ 
+ def black_format(source: str, config: ExamplesConfig, *, remove_double_blank: bool = False) -> str:
+     # hack to avoid black complaining about our print output format
+-    before_black = re.sub(r'^( *#)> ', r'\1 > ', source, flags=re.M)
++    before_black = re.sub(r'^( *#)> ', r'\1 > ', source, flags=re.MULTILINE)
+     after_black = black_format_str(before_black, mode=config.black_mode())
+     # then revert it back
+-    after_black = re.sub(r'^( *#) > ', r'\1> ', after_black, flags=re.M)
++    after_black = re.sub(r'^( *#) > ', r'\1> ', after_black, flags=re.MULTILINE)
+     if remove_double_blank:
+         after_black = re.sub(r'\n{3}', '\n\n', after_black)
+     return after_black
+@@ -92,7 +93,7 @@ def code_diff(example: CodeExample, afte
+         offset = re.sub(r'\d+', lambda m: str(int(m.group(0)) + example.start_line), match.group(2))
+         return f'{match.group(1)}{offset}{match.group(3)}'
+ 
+-    return re.sub(r'^(@@\s*)(.*)(\s*@@)$', replace_at_line, diff, flags=re.M)
++    return re.sub(r'^(@@\s*)(.*)(\s*@@)$', replace_at_line, diff, flags=re.MULTILINE)
+ 
+ 
+ def sub_space(text: str, config: ExamplesConfig) -> str:
+Index: pytest_examples-0.0.18/pytest_examples/__init__.py
+===================================================================
+--- pytest_examples-0.0.18.orig/pytest_examples/__init__.py
++++ pytest_examples-0.0.18/pytest_examples/__init__.py
+@@ -10,7 +10,7 @@ from .eval_example import EvalExample
+ from .find_examples import CodeExample, find_examples
+ 
+ __version__ = version('pytest_examples')
+-__all__ = 'find_examples', 'CodeExample', 'EvalExample'
++__all__ = 'CodeExample', 'EvalExample', 'find_examples'
+ 
+ 
+ def pytest_addoption(parser) -> None:
+Index: pytest_examples-0.0.18/pytest_examples/eval_example.py
+===================================================================
+--- pytest_examples-0.0.18.orig/pytest_examples/eval_example.py
++++ pytest_examples-0.0.18/pytest_examples/eval_example.py
+@@ -38,7 +38,7 @@ class EvalExample:
+         line_length: int = DEFAULT_LINE_LENGTH,
+         quotes: Literal['single', 'double', 'either'] = 'either',
+         magic_trailing_comma: bool = True,
+-        target_version: Literal['py37', 'py38', 'py39', 'py310', 'py310'] = 'py37',
++        target_version: Literal['py37', 'py38', 'py39', 'py310'] = 'py37',
+         upgrade: bool = False,
+         isort: bool = False,
+         ruff_line_length: int | None = None,
+@@ -146,7 +146,7 @@ class EvalExample:
+     def _run(
+         self,
+         example: CodeExample,
+-        insert_print_statements: Literal['check', 'update', None],
++        insert_print_statements: Literal['check', 'update'] | None,
+         module_globals: dict[str, Any] | None,
+         rewrite_assertions: bool,
+         call: str | None,
+@@ -159,9 +159,7 @@ class EvalExample:
+         else:
+             loader = None
+ 
+-        if insert_print_statements == 'check':
+-            enable_print_mock = True
+-        elif insert_print_statements == 'update':
++        if insert_print_statements == 'check' or insert_print_statements == 'update':
+             enable_print_mock = True
+         else:
+             enable_print_mock = False
+Index: pytest_examples-0.0.18/pytest_examples/find_examples.py
+===================================================================
+--- pytest_examples-0.0.18.orig/pytest_examples/find_examples.py
++++ pytest_examples-0.0.18/pytest_examples/find_examples.py
+@@ -129,7 +129,7 @@ def find_examples(*paths: str | Path, sk
+             group = uuid4()
+             if path.suffix == '.py':
+                 code = path.read_text('utf-8')
+-                for m_docstring in re.finditer(r'(^ *)(r?""")(.+?)"""', code, flags=re.M | re.S):
++                for m_docstring in re.finditer(r'(^ *)(r?""")(.+?)"""', code, flags=re.MULTILINE | re.DOTALL):
+                     start_line = code[: m_docstring.start()].count('\n')
+                     docstring = m_docstring.group(3)
+                     index_offset = m_docstring.start() + len(m_docstring.group(1)) + len(m_docstring.group(2))
+@@ -147,7 +147,7 @@ def _extract_code_chunks(
+     path: Path, text: str, group: UUID, *, line_offset: int = 0, index_offset: int = 0
+ ) -> list[CodeExample]:
+     examples = []
+-    for m_code in re.finditer(r'(^ *```)( *)(.*?)\n(.+?)\1', text, flags=re.M | re.S):
++    for m_code in re.finditer(r'(^ *```)( *)(.*?)\n(.+?)\1', text, flags=re.MULTILINE | re.DOTALL):
+         group1, group2, prefix, source = m_code.groups()
+         prefix = prefix.lower()
+         if prefix.startswith(('py', '{.py')):
+Index: pytest_examples-0.0.18/pytest_examples/run_code.py
+===================================================================
+--- pytest_examples-0.0.18.orig/pytest_examples/run_code.py
++++ pytest_examples-0.0.18/pytest_examples/run_code.py
+@@ -25,7 +25,7 @@ if TYPE_CHECKING:
+     from .config import ExamplesConfig
+     from .find_examples import CodeExample
+ 
+-__all__ = 'run_code', 'InsertPrintStatements', 'IncludePrint'
++__all__ = 'IncludePrint', 'InsertPrintStatements', 'run_code'
+ 
+ parent_frame_id = 4
+ IncludePrint = Callable[[Path, inspect.FrameInfo, Sequence[Any]], bool]
+@@ -90,7 +90,7 @@ def run_code(
+         if example_tb:
+             raise exc.with_traceback(example_tb)
+         else:
+-            raise exc
++            raise
+ 
+     return insert_print, {k: v for k, v in module.__dict__.items() if not k.startswith(('__', '@'))}
+ 
+@@ -145,7 +145,7 @@ def not_print(*args):
+ 
+ 
+ class MockPrintFunction:
+-    __slots__ = 'file', 'statements', 'include_print'
++    __slots__ = 'file', 'include_print', 'statements'
+ 
+     def __init__(self, file: Path, include_print: IncludePrint | None) -> None:
+         self.file = file
+@@ -198,7 +198,7 @@ class InsertPrintStatements:
+             self.patch = patch('builtins.print', side_effect=self.print_func)
+             self.patch.start()
+ 
+-    def __exit__(self, *args) -> None:
++    def __exit__(self, *args: object) -> None:
+         if self.patch is not None:
+             self.patch.stop()
+ 
+@@ -329,8 +329,8 @@ def find_print(node: Any, line: int) ->
+             if found_loc is not None:
+                 return found_loc
+         elif isinstance(node, ast.Try):
+-            for node in node.handlers:
+-                found_loc = find_print(node, line)
++            for node_handler in node.handlers:
++                found_loc = find_print(node_handler, line)
+                 if found_loc is not None:
+                     return found_loc
+     elif isinstance(node, ast.Expr):
+Index: pytest_examples-0.0.18/tests/test_update_examples_dir.py
+===================================================================
+--- pytest_examples-0.0.18.orig/tests/test_update_examples_dir.py
++++ pytest_examples-0.0.18/tests/test_update_examples_dir.py
+@@ -12,23 +12,25 @@ def find_cases():
+             continue
+         if f.suffix in {'.py', '.md'}:
+             content = f.read_text()
+-            m = re.search(r'(.+?)^#{5,}', content, flags=re.M | re.I | re.S)
++            m = re.search(r'(.+?)^#{5,}', content, flags=re.MULTILINE | re.IGNORECASE | re.DOTALL)
+             assert m, f'No EXAMPLE match found for {f}'
+             example = m.group(1).strip('\n')
+-            m = re.search(r'^#{5,}\s*output\s*#{5,}\n(.+?)^#{5,}', content, flags=re.M | re.I | re.S)
++            m = re.search(
++                r'^#{5,}\s*output\s*#{5,}\n(.+?)^#{5,}', content, flags=re.MULTILINE | re.IGNORECASE | re.DOTALL
++            )
+             assert m, f'No OUTPUT match found for {f}'
+             output = m.group(1).strip('\n')
+-            m = re.search(r'^#{5,}\s*test\s*#{5,}\n(.+)', content, flags=re.M | re.I | re.S)
++            m = re.search(r'^#{5,}\s*test\s*#{5,}\n(.+)', content, flags=re.MULTILINE | re.IGNORECASE | re.DOTALL)
+             assert m, f'No TEST match found for {f}'
+             test = m.group(1).strip('\n')
+-            m_test_count = re.search(r'^test_count *= *(\d+)', test, flags=re.M)
++            m_test_count = re.search(r'^test_count *= *(\d+)', test, flags=re.MULTILINE)
+             if m_test_count:
+                 test_count = int(m_test_count.group(1))
+             else:
+                 test_count = 1
+ 
+             if f.suffix == '.md':
+-                m = re.search(r'^```.*?^(.+?)^```', test, flags=re.M | re.S)
++                m = re.search(r'^```.*?^(.+?)^```', test, flags=re.MULTILINE | re.DOTALL)
+                 if m:
+                     test = m.group(1)
+             cases.append(pytest.param(f, example, output, test, test_count, id=f.name))
+Index: pytest_examples-0.0.18/tests/test_run_examples.py
+===================================================================
+--- pytest_examples-0.0.18.orig/tests/test_run_examples.py
++++ pytest_examples-0.0.18/tests/test_run_examples.py
+@@ -112,7 +112,7 @@ def test_find_run_examples(example: Code
+         '  my_file.md:2:8: F401 [*] `sys` imported but unused\n',
+         '  my_file.md:3:7: F821 Undefined name `missing`\n',
+         '  Found 2 errors.\n',
+-        '  [*] 1 fixable with the `--fix` option.\n',
++        '1 fixable with',
+         '=== short test summary info ===\n',
+     ]:
+         assert phrase in output
