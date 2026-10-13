@@ -102,4 +102,16 @@
     <comment>- Update version dependencies according to meson.build.</comment>
     <requestid>1382235</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6359a9a8892fb99581a9a0377239bcb7</srcmd5>
+    <version>50.0+68</version>
+    <time>1791906533</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.0+68:
+  + Videos with partially-missing plugins can now be attempted to
+    be played anyway.
+  + Smaller quality-of-life improvements.
+  + Updated translations.</comment>
+    <requestid>1384579</requestid>
+  </revision>
 </revisionlist>

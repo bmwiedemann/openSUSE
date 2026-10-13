@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  1 18:13:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0+68:
+  + Videos with partially-missing plugins can now be attempted to
+    be played anyway.
+  + Smaller quality-of-life improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep 30 12:30:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update version dependencies according to meson.build.
