@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 17:19:46 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update Requires to new vlc-plugins-desktop, removes installation
+  of GUI, for headless installations, or users that don't actually
+  *use* vlc as a video player, and only want it for the phonon
+  backend. https://build.opensuse.org/request/show/1382584
+
+-------------------------------------------------------------------
 Sun Mar 17 13:43:41 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Make sure installing phonon-vlc-qt6 also recommends installing

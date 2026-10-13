@@ -70,7 +70,13 @@ Provides:       phonon-qt6-backend = %{version}
 # AFAIK locale(pkg:xx) might not work with provides, do it explicitly
 Recommends:     phonon-vlc-lang
 # The plugins are split between non-X11 (vlc-noX) and the others, the vlc backend needs both (boo#1219416)
+%if 0%{?suse_version} >= 1699
+# Tumbleweed
+%requires_eq    vlc-plugins-desktop
+%else
+# Leap 16.0 / 16.1
 %requires_eq    vlc
+%endif
 %requires_eq    vlc-noX
 
 %description
