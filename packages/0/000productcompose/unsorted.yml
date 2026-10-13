@@ -3290,6 +3290,7 @@ unsorted:
   - desktop-translations-devel 
   - desktopfolder 
   - desktopfolder-lang 
+  - desync 
   - deutex 
   - devhelp 
   - devhelp-devel 
@@ -11541,8 +11542,8 @@ unsorted:
   - libOpenImageDenoise2 
   - libOpenImageDenoise_core2_5_1 
   - libOpenImageDenoise_device_cpu2_5_1 
-  - libOpenImageIO3_1 
-  - libOpenImageIO_Util3_1 
+  - libOpenImageIO3_2 
+  - libOpenImageIO_Util3_2 
   - libOpenSceneGraph-devel 
   - libOpenSceneGraph161 
   - libOpenThreads-devel 
@@ -19387,6 +19388,7 @@ unsorted:
   - mmdblookup 
   - mmtf-cpp-devel 
   - mmv 
+  - mnxdom-devel 
   - moarvm 
   - moarvm-devel 
   - mobidict 
@@ -20319,6 +20321,7 @@ unsorted:
   - nnn-fish-completion 
   - nnn-zsh-completion 
   - no-more-secrets 
+  - noctalia 
   - noctalia-qs 
   - noctalia-shell 
   - nodejs-bitwarden-sdk-internal 
@@ -33592,7 +33595,6 @@ unsorted:
   - rcs 
   - rcshist 
   - rdap 
-  - rdesktop 
   - rdfind 
   - rdi-installer 
   - rdi-installer-image-arch-deps 
