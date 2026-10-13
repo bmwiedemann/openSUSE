@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  9 14:43:27 UTC 2026 - malcolmlewis@opensuse.org
+
+- Add pretrans script to rename old html directory which is now
+  a softlink.
+- Add weakremover condition for obsolete shared library.
+
+-------------------------------------------------------------------
 Wed Sep 02 02:56:57 UTC 2026 - malcolmlewis@opensuse.org
 
 - Update to version 3.50.0:

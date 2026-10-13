@@ -63,7 +63,7 @@ HTML documentation for httrack.
 
 %package -n libhttrack%{so_ver}
 Summary:        Shared library for httrack
-Group:          System/Libraries
+Provides:       weakremover(libhttrack2)
 
 %description -n libhttrack%{so_ver}
 This package contains the httrack shared libraries.
@@ -86,6 +86,24 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %fdupes -s %{buildroot}
 
+##Ref: <https://docs.fedoraproject.org/en-US/packaging-guidelines/Directory_Replacement/>
+%pretrans -p <lua>
+-- Define the path to directory being replaced below.
+-- DO NOT add a trailing slash at the end.
+path = "/usr/share/httrack/html"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
+
 %post -n libhttrack%{so_ver} -p /sbin/ldconfig
 %postun -n libhttrack%{so_ver} -p /sbin/ldconfig
 
@@ -103,6 +121,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %exclude %{_datadir}/%{name}/libtest/*.{c,h}
 %{_datadir}/metainfo/com.httrack.WebHTTrack.metainfo.xml
 %{_mandir}/man1/*%{ext_man}
+%ghost %{_datadir}/%{name}/html.rpmmoved
 
 %files devel
 %{_datadir}/%{name}/libtest/*.{c,h}
