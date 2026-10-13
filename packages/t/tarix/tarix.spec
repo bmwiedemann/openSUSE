@@ -21,11 +21,12 @@ Version:        1.0.9
 Release:        0
 Summary:        Simple Indexer for GNU and POSIX Tar Files
 License:        GPL-2.0-only
-Group:          Productivity/Archiving/Backup
 URL:            https://github.com/fastcat/tarix
 Source:         https://github.com/fastcat/tarix/archive/tarix-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM tarix-fuse3.patch boo#1242192 -- port the FUSE filesystem from libfuse2 to libfuse3
 Patch0:         tarix-fuse3.patch
+# PATCH-FIX-UPSTREAM tarix-pax-headers.patch -- keep POSIX pax headers attached to the archive member they describe during extraction
+Patch1:         tarix-pax-headers.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -51,8 +52,7 @@ install -Dpm 0755 bin/fuse_tarix \
   %{buildroot}%{_bindir}/fuse_tarix
 
 %check
-# Test: 08-exclude                     ...FAILED
-make %{?_smp_mflags} CC="cc %{optflags} -std=c99" test ||:
+%make_build CC="cc %{optflags} -std=c99" test
 
 %files
 %license LICENSE

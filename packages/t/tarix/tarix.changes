@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 12 18:33:13 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Extend tarix-fuse3.patch with -D_FILE_OFFSET_BITS=64 for the
+  fuse_tarix build: libfuse3 requires a 64-bit off_t, so the
+  build failed on 32-bit targets (i586, armv7l)
+- Add tarix-pax-headers.patch: keep POSIX pax extended headers
+  attached to the archive member they describe when extracting.
+  They were matched against the file list on their own before,
+  so filtered extractions leaked the headers of excluded
+  members and tar applied them to the wrong member
+- Run the full upstream testsuite in %check: the pax header fix
+  makes 08-exclude pass with the POSIX tar format that openSUSE
+  uses by default, so failures are no longer ignored there
+
+-------------------------------------------------------------------
 Mon Jun 22 11:02:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add tarix-fuse3.patch: port the FUSE filesystem (fuse_tarix) from

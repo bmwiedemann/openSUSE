@@ -1,5 +1,5 @@
---- a/Makefile	2026-06-22 13:13:42.245101145 +0200
-+++ b/Makefile	2026-06-22 13:13:42.313108724 +0200
+--- a/Makefile
++++ b/Makefile
 @@ -8,9 +8,9 @@
  
  # silence-errors doesn't completely silence them
@@ -12,8 +12,17 @@
  LDFLAGS_GLIB:=$(strip $(shell pkg-config glib-2.0 --libs --silence-errors))
  
  # disable fuse if it's not available
---- a/src/fuse_tarix.c	2026-06-22 13:13:42.257102483 +0200
-+++ b/src/fuse_tarix.c	2026-06-22 13:13:42.313108724 +0200
+@@ -67,7 +67,7 @@
+ endif
+ OPTCFLAGS?=
+ CFLAGS=-Wall -Werror -std=gnu99 $(CFLAGS_O) $(OPTCFLAGS)
+-CPPFLAGS_fuse_tarix:= ${CPPFLAGS_FUSE} ${CPPFLAGS_GLIB}
++CPPFLAGS_fuse_tarix:= ${CPPFLAGS_FUSE} ${CPPFLAGS_GLIB} -D_FILE_OFFSET_BITS=64
+ LDFLAGS+=-lz
+ LDFLAGS_fuse_tarix:=${LDFLAGS_FUSE} ${LDFLAGS_GLIB}
+ CC?=gcc
+--- a/src/fuse_tarix.c
++++ b/src/fuse_tarix.c
 @@ -19,7 +19,7 @@
  
  #include "config.h"
@@ -83,8 +92,8 @@
    .utimens = tarix_utimens,
  };
  
---- a/src/fuse_rofs.c	2026-06-22 13:13:42.273104266 +0200
-+++ b/src/fuse_rofs.c	2026-06-22 13:13:42.317109170 +0200
+--- a/src/fuse_rofs.c
++++ b/src/fuse_rofs.c
 @@ -25,26 +25,40 @@
    return -EROFS;
  }

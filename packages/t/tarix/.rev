@@ -15,4 +15,12 @@
     <comment>Port the fuse_tarix FUSE filesystem from libfuse2 to libfuse3 (boo#1242192): add tarix-fuse3.patch (FUSE_USE_VERSION 31, fuse3 getattr/readdir/chmod/chown/truncate/utimens/rename signatures, drop the removed ftruncate op, pkg-config fuse3) and switch BuildRequires to pkgconfig(fuse3). Verified read + EROFS-write in a Tumbleweed container. (forwarded request 1361120 from pluskalm)</comment>
     <requestid>1361121</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6c3ef1be9bcde4214cd9b455935462f3</srcmd5>
+    <version>1.0.9</version>
+    <time>1791906226</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384435</requestid>
+  </revision>
 </revisionlist>

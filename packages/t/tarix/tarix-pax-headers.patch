@@ -1,0 +1,177 @@
+--- a/src/extract_files.c
++++ b/src/extract_files.c
+@@ -46,6 +46,13 @@
+   int zlib_level;
+   t_streamp tsp;
+   int outfd;
++  /* POSIX pax header entries ('x'/'g') held back until the archive
++     member they belong to is decided on; they immediately precede
++     their member and are contiguous, so a range is enough */
++  int have_pending;
++  unsigned long pending_blocknum;
++  off64_t pending_offset;
++  unsigned long pending_blocklength;
+   /* flags to pass to fnmatch, if 0, don't use fnmatch */
+   int glob_flags;
+   /* if set, then matched items are excluded */
+@@ -54,6 +61,55 @@
+   const struct files_list_state *files_list;
+ };
+ 
++/* seek (if needed) to the given record and pass it through to the
++   output; returns 0 on success, nonzero on error like the caller */
++static int copy_blocks(struct extract_files_state *state,
++  unsigned long blocknum, off64_t offset, unsigned long blocklength)
++{
++  /* for the DMSG macro */
++  int debug_messages = state->debug_messages;
++  off64_t destoff;
++  char passbuf[TARBLKSZ];
++
++  /* seek to the record start and then pass the record through */
++  /* don't actually seek if we're already there */
++  if (state->curpos != blocknum)
++  {
++    destoff = state->zlib_level ? offset : blocknum * TARBLKSZ;
++    DMSG("seeking to %lld\n", (long long)destoff);
++    if (ts_seek(state->tsp, destoff) != 0)
++    {
++      fprintf(stderr, "seek error\n");
++      return 1;
++    }
++    state->curpos = blocknum;
++  }
++  DMSG("reading %ld records\n", blocklength);
++  for (unsigned long bnum = 0; bnum < blocklength; ++bnum)
++  {
++    int n;
++    if ((n = ts_read(state->tsp, passbuf, TARBLKSZ)) < TARBLKSZ)
++    {
++      if (n >= 0)
++        perror("partial tarfile read");
++      else
++        ptserror("read tarfile", n, state->tsp);
++      return 2;
++    }
++    DMSG("read a rec, now at %lld, %ld left\n",
++      (long long)state->curpos, blocklength - bnum - 1);
++    ++state->curpos;
++    if ((n = write(state->outfd, passbuf, TARBLKSZ)) < TARBLKSZ)
++    {
++      perror((n > 0) ? "partial tarfile write" : "write tarfile");
++      return 2;
++    }
++    DMSG("wrote rec\n");
++  }
++
++  return 0;
++}
++
+ int extract_files_lineloop_processor(char *line, void *data)
+ {
+   struct extract_files_state *state = (struct extract_files_state*)data;
+@@ -62,8 +118,7 @@
+   size_t i;
+   /* for the DMSG macro */
+   int debug_messages = state->debug_messages;
+-  off64_t destoff;
+-  
++
+   if (!state->gotheader)
+   {
+     if (init_index_parser(&state->ipstate, line) != 0)
+@@ -86,6 +141,26 @@
+     /* comment line */
+     return 0;
+ 
++  if (entry.recordtype == 'x' || entry.recordtype == 'g')
++  {
++    /* a pax header describes the member that follows it, it is not a
++       member of its own: never match it against the file list, hold it
++       until that member's extract decision is made so the two are
++       copied (or dropped) together */
++    if (state->have_pending &&
++        entry.blocknum ==
++          state->pending_blocknum + state->pending_blocklength)
++      state->pending_blocklength += entry.blocklength;
++    else
++    {
++      state->have_pending = 1;
++      state->pending_blocknum = entry.blocknum;
++      state->pending_offset = entry.offset;
++      state->pending_blocklength = entry.blocklength;
++    }
++    return 0;
++  }
++
+   /* take action on the line */
+   for (i = 0; i < files_list->argc; ++i)
+   {
+@@ -124,50 +199,28 @@
+   
+   if (state->exclude_mode)
+     extract = !extract;
+-  
++
+   if (!extract)
+-    return 0;
+-    
+-  char passbuf[TARBLKSZ];
+-  
+-  DMSG("extracting %s\n", entry.filename);
+-  /* seek to the record start and then pass the record through */
+-  /* don't actually seek if we're already there */
+-  if (state->curpos != entry.blocknum)
+   {
+-    destoff = state->zlib_level ? entry.offset : entry.blocknum * TARBLKSZ;
+-    DMSG("seeking to %lld\n", (long long)destoff);
+-    if (ts_seek(state->tsp, destoff) != 0)
+-    {
+-      fprintf(stderr, "seek error\n");
+-      return 1;
+-    }
+-    state->curpos = entry.blocknum;
++    /* the member is skipped, so are its held pax headers */
++    state->have_pending = 0;
++    return 0;
+   }
+-  DMSG("reading %ld records\n", entry.blocklength);
+-  for (unsigned long bnum = 0; bnum < entry.blocklength; ++bnum)
++
++  if (state->have_pending)
+   {
+-    int n;
+-    if ((n = ts_read(state->tsp, passbuf, TARBLKSZ)) < TARBLKSZ)
+-    {
+-      if (n >= 0)
+-        perror("partial tarfile read");
+-      else
+-        ptserror("read tarfile", n, state->tsp);
+-      return 2;
+-    }
+-    DMSG("read a rec, now at %lld, %ld left\n",
+-      (long long)state->curpos, entry.blocklength - bnum - 1);
+-    ++state->curpos;
+-    if ((n = write(state->outfd, passbuf, TARBLKSZ)) < TARBLKSZ)
+-    {
+-      perror((n > 0) ? "partial tarfile write" : "write tarfile");
+-      return 2;
+-    }
+-    DMSG("wrote rec\n");
++    /* the member is extracted: its pax headers go first so they stay
++       attached to it */
++    int ret = copy_blocks(state, state->pending_blocknum,
++      state->pending_offset, state->pending_blocklength);
++    state->have_pending = 0;
++    if (ret != 0)
++      return ret;
+   }
+-  
+-  return 0;
++
++  DMSG("extracting %s\n", entry.filename);
++  return copy_blocks(state, entry.blocknum, entry.offset,
++    entry.blocklength);
+ }
+ 
+ int extract_files(const char *indexfile, const char *tarfile,
