@@ -333,4 +333,12 @@
     restart or shutdown using systemd.</comment>
     <requestid>1342645</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>763eb38c366f79249de6f0e4259ae32b</srcmd5>
+    <version>6.6.4</version>
+    <time>1791906366</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384542</requestid>
+  </revision>
 </revisionlist>

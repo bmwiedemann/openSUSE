@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-session
-Version:        6.6.3
+Version:        6.6.4
 Release:        0
 Summary:        The session manager for the Cinnamon Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,11 +31,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  tcpd-devel
 BuildRequires:  xmlto
 BuildRequires:  xtrans
-BuildRequires:  pkgconfig(cinnamon-desktop)
+BuildRequires:  pkgconfig(cinnamon-desktop) >= 6.0.0
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.37.3
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libsystemd)
@@ -83,5 +83,6 @@ install -Dpm 0644 %{SOURCE1} \
 %{_datadir}/glib-2.0/schemas/org.cinnamon.*
 %{_datadir}/icons/hicolor/*/apps/%{name}-properties.*
 %{_mandir}/man?/%{name}*.?%{?ext_man}
+%{_userunitdir}/cinnamon-session.target
 
 %changelog
