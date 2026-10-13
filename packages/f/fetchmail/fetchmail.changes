@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Oct  5 10:29:41 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update Source URL 
+
+-------------------------------------------------------------------
+Wed Sep 30 11:26:26 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 6.6.8
+  * fetchmail 6.6.8 updates the NEWS file (which you appear to be reading)
+  and the fetchmail-SA-2026-01 security announcement.  There are no code
+  changes since 6.6.7, but we need to prominently get the new documentation
+  out.  fetchmail-SA-2026-01 has been assigned CVE Id CVE-2026-94184.
+  * The Serbian (sr) translation was not installed due to an oversight in the
+  po/LINGUAS file.
+ 
+* CVE-2026-94184: Safeguard internal NTLM buffer handling to avoid a stack
+  buffer overrun if server sends extremely long fields in the challenge.
+  Reported by Tristan Madani, who also pointed out that compilers are free
+  to reorder variables on the stack.
+* The IMAP protocol exchange was made stricter,
+  (1) it will validate tagged responses that we received the right
+  response to make sure fetchmail and the IMAP server are still in synch,
+  (2) it will no longer accept the response words OK, NO, BAD, BYE if
+  there is trailing garbage, and will now reject "OKAY" or "NONE", which
+  would previously be accepted as aliases for OK or NO.
+
+* Handling of escape sequences in the rcfile has been bugfixed to handle
+  all ISO C escape sequences, and handle octal escapes more strictly.
+* The IMAP client, which has always used message indexes for the selected
+  mailbox, did not abort when receiving an EXPUNGE response - which changes
+  message numbers inside the mailbox.  Unlike UIDs, the message numbers are
+  not stable and fetchmail does not have internal interfaces to track which
+  messages are deleted, and adding those to a 6.6.X release would be too
+  risky, and switching to UID is also too big a change, so we have no
+  choice but to abort the session when seeing an EXPUNGE response without
+  our own EXPUNGE request, to avoid marking the wrong message as seen/deleted
+  or skip the wrong one, or assume the wrong message size.
+  Earl Chew reported this versus Yahoo Mail via Gitlab Work Item #91, which
+  automatically expunges messages that are marked with the \Deleted flag.
+
+
+For a full changelog, visit https://www.fetchmail.info/index.html
+
+-------------------------------------------------------------------
 Mon May 11 07:50:57 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
 
 - bsc#1263944 Fix multiple issues caused by fixes for immutable mode jsc#PED-14745 
