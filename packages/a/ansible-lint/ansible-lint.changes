@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 13 04:43:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.10.0:
+  * fix: respect skip_list for yaml[comments] during --fix in #5177
+  * Fix/scorecard security improvements v2 in #5194
+  * fix: correctly match symlinked PATH entries in path_inject() in
+    #5205
+  * fix(security): update dependencies [SECURITY] in #5206
+
+-------------------------------------------------------------------
 Wed Sep 23 04:38:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.9.0:
