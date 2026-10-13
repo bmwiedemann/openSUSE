@@ -78,4 +78,12 @@
     <comment>- Correctly enable apv encoder, encoder is named liboapv.</comment>
     <requestid>1383855</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>255c08d0a36bbc394019a187562e7d5e</srcmd5>
+    <version>9.0.2</version>
+    <time>1791906197</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable RealAudio Lossless, RealVideo 3.0 and 4.0 decoders.</comment>
+    <requestid>1384329</requestid>
+  </revision>
 </revisionlist>
