@@ -2968,4 +2968,41 @@ jsc#PED-15851</comment>
    CVE-2026-17084-stringprep-rfc3454.patch</comment>
     <requestid>1379535</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7712d2ca4dc4395e7e5a1a15f23fd585</srcmd5>
+    <version>3.14.8</version>
+    <time>1791906200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.14.8:
+  - Security
+    - gh-158446: Fix a crash or incorrect output that could occur
+      when formatting a float or complex with a precision close
+      to the platform’s INT_MAX. PyOS_double_to_string() now
+      raises ValueError for any precision of that magnitude,
+      regardless of presentation type or value, as the format
+      string parsers already did for precisions above INT_MAX.
+    - gh-156793: asyncio: loop.start_tls() and
+      loop.create_connection() now validate the server_hostname
+      argument if an ssl.SSLContext is passed with check_hostname
+      set to True. (bsc#1283826, CVE-2026-19553)
+    - gh-156793: ssl.SSLContext.wrap_bio() now validates its
+      server_side, server_hostname and session arguments similar
+      to ssl.SSLContext.wrap_socket().
+    - In particular, a context with check_hostname enabled and no
+      server_hostname passed to wrap_bio() now raises ValueError
+      instead of completing a handshake that verified the
+      certificate chain without verifying the peer’s identity,
+      with no indication that the check had been skipped.
+    - gh-157953: Update bundled libexpat to version 2.8.5.
+    - gh-156002: Bound the amount of data zipfile decompresses
+      per read for members compressed with bzip2, LZMA, or
+      Zstandard, matching the existing limit for deflate. A small
+      archive member could previously expand into an unbounded
+      allocation even when read in small chunks. (bsc#1277111,
+      CVE-2026-15310)
+    - gh-155999: Fix the tarfile tar and data extraction filters
+      creating directories outside the destination for members
+      whose name leaves the destination and returns to it, such</comment>
+    <requestid>1382826</requestid>
+  </revision>
 </revisionlist>
