@@ -29,16 +29,16 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gspell-1)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtksourceview-4)
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.42.0
+BuildRequires:  pkgconfig(gspell-1) >= 0.2.5
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.3
+BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.3
 BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(libpeas-gtk-1.0)
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.12.0
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  pkgconfig(sm)
-BuildRequires:  pkgconfig(xapp)
+BuildRequires:  pkgconfig(xapp) >= 1.9.0
 
 %description
 xed is a text editor designed for the Cinnamon desktop. It has most
