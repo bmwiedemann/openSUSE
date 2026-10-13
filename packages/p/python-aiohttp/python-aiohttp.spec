@@ -19,7 +19,7 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.14.3
+Version:        3.14.5
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
@@ -39,9 +39,9 @@ Requires:       python-aiohappyeyeballs >= 2.5.0
 Requires:       python-aiosignal >= 1.4
 Requires:       python-attrs >= 17.3.0
 Requires:       python-frozenlist >= 1.1.1
-Requires:       (python-charset-normalizer >= 2.0 with python-charset-normalizer < 4)
-Requires:       (python-multidict >= 4.5 with python-multidict < 7)
-Requires:       (python-yarl >= 1.17.0 with python-yarl < 2)
+Requires:       python-propcache >= 0.2.0
+Requires:       (python-multidict >= 4.5 with python-multidict < 8)
+Requires:       (python-yarl >= 1.25.1 with python-yarl < 2)
 Recommends:     python-Brotli >= 1.2
 Recommends:     python-aiodns
 Recommends:     python-cChardet
@@ -59,10 +59,10 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module aiohappyeyeballs >= 2.5.0}
 BuildRequires:  %{python_module aiosignal >= 1.4}
 BuildRequires:  %{python_module attrs >= 17.3.0}
-BuildRequires:  %{python_module charset-normalizer >= 2.0 with %python-charset-normalizer < 4}
 BuildRequires:  %{python_module frozenlist >= 1.1.1}
-BuildRequires:  %{python_module multidict >= 4.5 with %python-multidict < 7}
-BuildRequires:  %{python_module yarl >= 1.17.0 with %python-yarl < 2}
+BuildRequires:  %{python_module multidict >= 4.5 with %python-multidict < 8}
+BuildRequires:  %{python_module propcache >= 0.2.0}
+BuildRequires:  %{python_module yarl >= 1.25.1 with %python-yarl < 2}
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module Brotli >= 1.2}

@@ -935,4 +935,25 @@
     and poisoned it, so the next request reusing the connection failed</comment>
     <requestid>1369672</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>8f43ebc7c5111ef0299861088006e999</srcmd5>
+    <version>3.14.5</version>
+    <time>1791906213</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.14.5
+  * Added :class:`aiohttp.UploadTracker` for observing a client request's
+    upload progress
+  * Switched application/x-www-form-urlencoded parsing in 
+    ~aiohttp.web.BaseRequest.post to the faster yarl.query_to_pairs parser
+    and added the client_max_fields argument to ~aiohttp.web.Application
+    (default 1000)
+  * Added constants to aiohttp.hdrs for widely used headers
+  * Deprecated ClientResponse.output_size and ClientResponse.upload_complete;
+    use aiohttp.UploadTracker instead
+  * Removed the internal writer proxy used for upload progress accounting
+  * Changed Set-Cookie parsing to create exactly one cookie per field, as
+    RFC 6265 and browsers do
+  * many bug fixes and smaller changes</comment>
+    <requestid>1384280</requestid>
+  </revision>
 </revisionlist>

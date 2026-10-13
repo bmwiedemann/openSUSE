@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 12 10:06:02 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.14.5
+  * Added :class:`aiohttp.UploadTracker` for observing a client request's
+    upload progress
+  * Switched application/x-www-form-urlencoded parsing in 
+    ~aiohttp.web.BaseRequest.post to the faster yarl.query_to_pairs parser
+    and added the client_max_fields argument to ~aiohttp.web.Application
+    (default 1000)
+  * Added constants to aiohttp.hdrs for widely used headers
+  * Deprecated ClientResponse.output_size and ClientResponse.upload_complete;
+    use aiohttp.UploadTracker instead
+  * Removed the internal writer proxy used for upload progress accounting
+  * Changed Set-Cookie parsing to create exactly one cookie per field, as
+    RFC 6265 and browsers do
+  * many bug fixes and smaller changes
+
+-------------------------------------------------------------------
 Wed Aug  5 06:46:50 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 Fixes:
