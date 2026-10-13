@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        50.3.1
+Version:        50.4
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -47,14 +47,14 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
 BuildRequires:  pkgconfig(glycin-2) >= 2
 BuildRequires:  pkgconfig(glycin-gtk4-2) >= 2
 BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.84.0
-BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.3.0
-BuildRequires:  pkgconfig(gnome-desktop-4) >= 1.0.0
+BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.4.4
+BuildRequires:  pkgconfig(gnome-desktop-4) >= 43
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 42
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.20.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
-BuildRequires:  pkgconfig(libportal)
-BuildRequires:  pkgconfig(libportal-gtk4)
+BuildRequires:  pkgconfig(libportal) >= 0.7
+BuildRequires:  pkgconfig(libportal-gtk4) >= 0.5
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libselinux) >= 2.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8

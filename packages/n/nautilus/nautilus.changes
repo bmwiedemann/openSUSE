@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 11 08:33:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.4:
+  * Bugfixes:
+    + Fix unwritable file indicator
+    + Focus Replace button by default in conflict dialog
+    + Disable markup syntax on property extension rows
+    + Fix leak in audio/video extension
+    + Fix various leaks and errors without reports
+    + Don't abort on invalid boolean metadata
+    + Fix properties dialog sometimes opening too small
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Sun Sep  6 11:23:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.3.1:
@@ -300,7 +315,7 @@ Fri Aug 29 11:40:41 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
     - Improve extension documentation
     - Copy network addresses in network view
     - Don't open starred on drag and drop hover
-    - Add 'Context Menu' shortcut to help-overlay 
+    - Add 'Context Menu' shortcut to help-overlay
   + Bugfixes:
     - Fix appchooser default focus
     - Fix broken localsearch test
@@ -847,7 +862,7 @@ Sun Aug 27 07:29:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
     - Fix various styling issues
     - Don't allow to resize Properties too small
   + Maintenance: Disable deprecation warnings, fix other warnings
-  + Updated translations. 
+  + Updated translations.
 - Drop fix-Werror-return-type-build-error.patch: Fixed upstream.
 
 -------------------------------------------------------------------
@@ -1700,7 +1715,7 @@ Wed Feb 12 16:45:06 CET 2020 - dimstar@opensuse.org
   + Add support for numeric keypad for zooming.
   + Fix missing filename results when searching.
   + Fix compilation on Wayland-only systems.
-- Changes from SLE version 3.34.3 (bsc#1171506): 
+- Changes from SLE version 3.34.3 (bsc#1171506):
   + Fix crashes often happening when searching.
   + Fix crashes after conflict dialog response.
 

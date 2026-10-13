@@ -1924,4 +1924,26 @@ Hence, recommended to be added to 12.3</comment>
   + Cleanups: Attempt using any sushi version</comment>
     <requestid>1376129</requestid>
   </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>24e0b3f7fca308c5c98987c7d7d6f0d6</srcmd5>
+    <version>50.4</version>
+    <time>1791906192</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.4:
+  * Bugfixes:
+    + Fix unwritable file indicator
+    + Focus Replace button by default in conflict dialog
+    + Disable markup syntax on property extension rows
+    + Fix leak in audio/video extension
+    + Fix various leaks and errors without reports
+    + Don't abort on invalid boolean metadata
+    + Fix properties dialog sometimes opening too small
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+    - Add 'Context Menu' shortcut to help-overlay
+  + Updated translations.
+- Changes from SLE version 3.34.3 (bsc#1171506):</comment>
+    <requestid>1384257</requestid>
+  </revision>
 </revisionlist>
