@@ -1051,4 +1051,12 @@ Bug fixes:
 Supersedes sr#1379248 (16.0.4), which is obsoleted by this release.</comment>
     <requestid>1379269</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>15282f8b3bb138b2702a35bab8c4b9c5</srcmd5>
+    <version>16.0.6</version>
+    <time>1791906400</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384532</requestid>
+  </revision>
 </revisionlist>

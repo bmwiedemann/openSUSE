@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Tue Oct 13 01:14:52 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 16.0.6:
+  - Security bug fixes
+    - PR: - fix: dispatch pull_request_review &
+      pull_request_review_comment from pull request base, not head.
+      Fork pull requests against a repository with Forgejo Action
+      workflows that use the on.pull_request_review and
+      on.pull_request_review_comment event were not correctly
+      identified as forked pull requests. Forgejo Actions treats
+      forked pull requests in special manners, including requiring
+      approval before their workflows are executed, and omiting
+      secrets from their execution context. These protections were
+      disabled on these workflows, which could be triggered on the
+      forked pull request after creation. The vulnerability has
+      been addressed by correcting the identification of these
+      events, and covering all forked pull request event executions
+      with extensive related integration tests to ensure no other
+      events were subject to this error.
+    - PR: - fix: avoid loading unnecessary data during tag creation
+      patch PR. When creating a tag via the release API, the
+      implementation for loading related objects was invoked on an
+      unsaved release object with a 0 ID. This caused unrelated
+      release attachment metadata to be loaded into memory, and in
+      the case of tag creation via the API, returned as part of the
+      API response. The related loading routines have been disabled
+      when the object is unsaved. (This patch was not included in
+      the embargoed security patches from the 2026-10-12 security
+      release, as its security implications were not known at the
+      time it was authored. It is documented here for awareness of
+      the security risk being addressed in this release.)
+    - PR: - fix: prevent reading arbitrary label metadata. The API
+      DELETE
+      /repos/{owner}/{repo}/issues/{index}/labels/{identifier}
+      allows identifiers to be either a label name, or a label
+      unique database identifier (.id field in API responses). The
+      API performs write access checks against the repository, and
+      the unique database identifier can be a label from a
+      different repository. The resulting delete operation is a
+      no-op as an issue on one repository cannot contain a label
+      from another repository, but the label metadata may be leaked
+      by the API response. To fix the issue, labels are queried by
+      the repository of the API invocation.
+    - PR: - fix: prevent deletion of labels from org/repo with
+      mismatched ownership. The APIs DELETE /orgs/{org}/labels/{id}
+      and DELETE /repos/{owner}/{repo}/labels/{id} accessed a
+      common internal function to delete a label within their
+      parent organization or repository. As this common codepath
+      didn't differentiate the owner identity, a common database
+      identifier being used by an organization and a repository
+      could be confused as to the true owner of a label,
+      confounding the permission checks on the owner. The issue has
+      been fixed by separating and distinguising the codepaths.
+    - PR (backported): fix: avoid loading unnecessary data during
+      tag creation
+  - User Interface bug fixes
+    - PR (backported): fix: remove resync_all_hooks task from admin
+      UI
+  - Localization
+    - PR: i18n: backport of translation updates from Codeberg
+      Translate
+  - Bug fixes
+    - PR (backported): fix(auth/basic): return incorrect credential
+      error on non existent email
+    - PR (backported): fix: reduce memory usage during Actions log
+      & artifacts uploads
+    - PR (backported): fix(api): workflow dispatch returns 4xx
+      errors on unknown ref and workflow
+    - PR (backported): fix: only disable scheduled workflows if
+      persistent parsing errors occur
+    - PR (backported): fix: automerge PRs don't merge when
+      originating from other user's fork repos
+    - PR (backported): fix: permit basic auth w/ authorized
+      integration to access PyPI packages
+  - Other changes without a feature or bug label
+    - PR (backported): fix: deleting a user w/ repo-specific access
+      tokens or authorized integrations causes foreign-key
+      violation
+  - Included for completeness but not user-facing (chores, etc.)
+    - PR: Update dependency katex to v0.18.2 [SECURITY]
+      (v16.0/forgejo)
+    - PR: Update module golang.org/x/net to v0.60.0 [SECURITY]
+      (v16.0/forgejo)
+    - PR: Update go toolchain directive to v1.26.9 [SECURITY]
+      (v16.0/forgejo)
+    - PR: Update dependency sharp to v0.35.5 [SECURITY]
+      (v16.0/forgejo)
+    - PR (backported): fix: don't fail when a user is invited to an
+      organization again (#14352)
+    - PR (backported): fix: prevent in-db branch state rollback
+      from concurrent pushes
+    - PR (backported): fix: accept Arch Linux packages with
+      non-zero epoch
+    - PR: refactor(tests): change all remaining
+      tests.CreateDeclarativeRepo to forgery.CreateRepository
+    - PR (backported): fix: improve performance when using API
+      access tokens with real usernames in HTTP basic
+    - PR (backported): fix: Regenerate codeChallenge after
+      ResetOAuth2 in PKCE flow
+    - PR (backported): fix(services/issue/assignee): handle
+      team-only-access
+    - PR (backported): ci: allow to rerun slow parts of of
+      build-release workflow
+
+-------------------------------------------------------------------
 Thu Sep 17 16:30:26 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 16.0.5:
