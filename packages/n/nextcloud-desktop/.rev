@@ -968,4 +968,280 @@
     <comment>1</comment>
     <requestid>1382825</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>76a2ced713e84a428674e922e601e38e</srcmd5>
+    <version>35.0.0</version>
+    <time>1791906511</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1384499 from stacheldrahtje
+
+- Update to version 35.0.0:
+  * Do not run CI for draft pull requests
+    (gh#nextcloud/desktop#10183)
+  * Fix initial menu bar sync status display
+    (gh#nextcloud/desktop#10187)
+  * Unblock the menu bar extra
+    (gh#nextcloud/desktop#10193)
+  * Add support for movable wizard windows
+    (gh#nextcloud/desktop#10188)
+  * Prevent nullptr dereference when VFS mode is unavailable
+    (gh#nextcloud/desktop#10176)
+  * Add guidelines for verifiable claims in contributions
+    (gh#nextcloud/desktop#10200)
+  * Prevent data loss when folders are moved or renamed
+    (gh#nextcloud/desktop#9998)
+  * Fix build errors with OpenSSL 4.0
+    (gh#nextcloud/desktop#10223)
+  * Prevent app nap and silent termination
+    (gh#nextcloud/desktop#10230)
+  * Move logout and remove actions to the settings menu
+    (gh#nextcloud/desktop#10165)
+  * Read OCC_UPDATE_URL only for development builds
+    (gh#nextcloud/desktop#10236)
+  * Remove gap after status messages
+    (gh#nextcloud/desktop#10245)
+  * Improve end-to-end encryption support
+    (gh#nextcloud/desktop#10244)
+  * Support Adobe lock files
+    (gh#nextcloud/desktop#10260)
+  * Confine enumeration logic
+    (gh#nextcloud/desktop#10262)
+  * Bump actions/cache to version 6.1.0
+    (gh#nextcloud/desktop#10273)
+  * Bump actions/cache/restore to version 6.1.0
+    (gh#nextcloud/desktop#10274)
+  * Bump actions/cache/save to version 6.1.0
+    (gh#nextcloud/desktop#10272)
+  * Bump actions/setup-python to version 6.3.0
+    (gh#nextcloud/desktop#10271)
+  * Remove QtWebEngine
+    (gh#nextcloud/desktop#10092)
+  * Print the Qt platform name at startup
+    (gh#nextcloud/desktop#10277)
+  * Do not silently ignore a missing --exclude file
+    (gh#nextcloud/desktop#10283)
+  * Prevent crashes on wake
+    (gh#nextcloud/desktop#10290)
+  * Disable building with Qt WebEngine in craft settings
+    (gh#nextcloud/desktop#10279)
+  * Migrate simple-signup to the standard browser
+    (gh#nextcloud/desktop#9969)
+  * Fix account provisioning
+    (gh#nextcloud/desktop#10304)
+  * Load existing accounts before creating a new one
+    (gh#nextcloud/desktop#10325)
+  * Update translation strings
+    (gh#nextcloud/desktop#10329)
+  * Prevent recursive calls to processEvents
+    (gh#nextcloud/desktop#10314)
+  * Validate E2EE file names
+    (gh#nextcloud/desktop#10238)
+  * Avoid reading exclusion patterns from invalid files
+    (gh#nextcloud/desktop#10335)
+  * Improve tray notification previews and dismiss actions
+    (gh#nextcloud/desktop#10343)
+  * Harden Transifex string catalog handling to prevent data loss
+    (gh#nextcloud/desktop#10344)
+  * Add a search dialog to the new tray menu
+    (gh#nextcloud/desktop#10331)
+  * Prevent scheme changes for push notifications
+    (gh#nextcloud/desktop#10351)
+  * Integrate governance labels
+    (gh#nextcloud/desktop#10100)
+  * Remove unused capability and sharing methods
+    (gh#nextcloud/desktop#10348)
+  * Improve propagation job scheduling performance
+    (gh#nextcloud/desktop#9992)
+  * Improve activity processing performance
+    (gh#nextcloud/desktop#9997)
+  * Revert propagation job scheduling performance changes
+    (gh#nextcloud/desktop#10371)
+  * Update governance API for recent changes
+    (gh#nextcloud/desktop#10378)
+  * Detect upload conflicts using an If-Match precondition
+    (gh#nextcloud/desktop#10393)
+  * Handle AutoCAD lock files in classic sync
+    (gh#nextcloud/desktop#10379)
+  * Ignore events from stale inotify watch descriptors
+    (gh#nextcloud/desktop#10389)
+  * Add context menus to text fields
+    (gh#nextcloud/desktop#10406)
+  * Refactor the activity window into its own folder structure
+    (gh#nextcloud/desktop#10350)
+  * Add a reset button to application settings
+    (gh#nextcloud/desktop#10416)
+  * Various end-to-end encryption fixes
+    (gh#nextcloud/desktop#10414)
+  * Fix search and activity dialogs not being displayed
+    (gh#nextcloud/desktop#10433)
+  * Correctly handle edit-locally URLs with punycode hosts
+    (gh#nextcloud/desktop#10430)
+  * Handle Affinity lock files in classic sync
+    (gh#nextcloud/desktop#10417)
+  * Ensure agents follow proper testing practices
+    (gh#nextcloud/desktop#10447)
+  * Do not drop all remote changes when a folder read fails
+    (gh#nextcloud/desktop#10446)
+  * Bring desktop governance UI closer to the Files web UI
+    (gh#nextcloud/desktop#10428)
+  * Prevent DiscoverySingleLocalDirectoryJob from hanging when
+    the target is a file
+    (gh#nextcloud/desktop#10434)
+  * Eliminate O(N²) work during large-folder enumeration
+    (gh#nextcloud/desktop#10466)
+  * Print file names when file locking checks fail
+    (gh#nextcloud/desktop#10470)
+  * Fix file details menu issues
+    (gh#nextcloud/desktop#10480)
+  * Ensure uploaded file sizes remain unchanged
+    (gh#nextcloud/desktop#9823)
+  * Simplify the disconnected account menu
+    (gh#nextcloud/desktop#10461)
+  * Update SonarCloud settings
+    (gh#nextcloud/desktop#10498)
+  * Move file lock state handling off the GUI thread
+    (gh#nextcloud/desktop#10500)
+  * Defer move item dialogs out of the socket read loop
+    (gh#nextcloud/desktop#10552)
+  * Align reauthentication with account setup
+    (gh#nextcloud/desktop#10459)
+  * Document how to properly acquire desktop client logs
+    (gh#nextcloud/desktop#10598)
+  * Restore pause and resume sync actions
+    (gh#nextcloud/desktop#10529)
+  * Migrate non-interactive configuration to nextcloudcmd
+    (gh#nextcloud/desktop#10468)
+  * Add checks for conventional commits in the PR template
+    (gh#nextcloud/desktop#10637)
+  * Add ~$ to the default exclusion list
+    (gh#nextcloud/desktop#10595)
+  * Improve GNOME and AppIndicator tray compatibility
+    (gh#nextcloud/desktop#10646)
+  * Update Nix flake for the desktop client
+    (gh#nextcloud/desktop#10630)
+  * Avoid printing misleading database warning logs
+    (gh#nextcloud/desktop#10650)
+  * Do not treat “no new notification” as a warning in logs
+    (gh#nextcloud/desktop#10653)
+  * Enable use of QT_NO_KEYWORDS when compiling nextcloudCore
+    (gh#nextcloud/desktop#10657)
+  * Retry failed network requests
+    (gh#nextcloud/desktop#10486)
+  * Clean up logs related to completed propagator items
+    (gh#nextcloud/desktop#10651)
+  * Improve clang-format configuration
+    (gh#nextcloud/desktop#10663)
+  * Fix compilation and clang-format issues
+    (gh#nextcloud/desktop#10689)
+  * Skip unrelated component workflows in CI
+    (gh#nextcloud/desktop#10695)
+  * Reuse Clang builds for clang-tidy
+    (gh#nextcloud/desktop#10696)
+  * Set CMake variable APPLICATION_REV_DOMAIN_INSTALLER
+    (gh#nextcloud/desktop#10699)
+  * Ensure compilation without warnings with GCC 16
+    (gh#nextcloud/desktop#10583)
+  * Add NEXTCLOUD_BULK_UPLOAD override to disable bulk uploads
+    (gh#nextcloud/desktop#10300)
+  * Guide contributors on proper conduct for major features
+    (gh#nextcloud/desktop#10711)
+  * Cancel obsolete pull request workflows
+    (gh#nextcloud/desktop#10715)
+  * Remove redundant conditions from CMake scripts
+    (gh#nextcloud/desktop#10707)
+  * Remove leftover installers during config migration
+    (gh#nextcloud/desktop#10680)
+  * Only acquire shares for the target path
+    (gh#nextcloud/desktop#10721)
+  * Avoid warnings caused by invalid joinPath parameters
+    (gh#nextcloud/desktop#10724)
+  * Revive unified search
+    (gh#nextcloud/desktop#10639)
+  * Improve clang-tidy integration
+    (gh#nextcloud/desktop#10666)
+  * Fix remaining clang-tidy compliance issues
+    (gh#nextcloud/desktop#10742)
+  * Include error messages in update download notifications
+    (gh#nextcloud/desktop#10754)
+  * Add translator hints for search result text
+    (gh#nextcloud/desktop#10756)
+  * Implement full Assistant features in the desktop client
+    (gh#nextcloud/desktop#10345)
+  * Add Flatpak builds to CI
+    (gh#nextcloud/desktop#10759)
+  * Add document translation placeholders
+    (gh#nextcloud/desktop#10770)
+  * Remove obsolete tray window
+    (gh#nextcloud/desktop#10762)
+  * Remove orphaned QML components
+    (gh#nextcloud/desktop#10763)
+  * Remove legacy tray backend
+    (gh#nextcloud/desktop#10767)
+  * Run AppImage and Flatpak builds only for Linux-labeled PRs
+    (gh#nextcloud/desktop#10783)
+  * Match tray menu icons to the current palette
+    (gh#nextcloud/desktop#10703)
+  * Expand terminology and documentation guidance
+    (gh#nextcloud/desktop#10672)
+  * Skip expensive checks for backports
+    (gh#nextcloud/desktop#10791)
+  * Generalize GUI testing guidance
+    (gh#nextcloud/desktop#10794)
+  * Improve migration handling
+    (gh#nextcloud/desktop#9191)
+  * Fix compiler warnings
+    (gh#nextcloud/desktop#10623)
+  * Repair account creation via the command line
+    (gh#nextcloud/desktop#10726)
+  * Use a custom Flatpak build image with KDE 6.11 SDK
+    (gh#nextcloud/desktop#10772)
+  * Handle visited and unvisited directories correctly
+    (gh#nextcloud/desktop#10751)
+  * Wrap mnemonic text in E2EE dialogs
+    (gh#nextcloud/desktop#10792)
+  * Scroll to the top when opening the activity window
+    (gh#nextcloud/desktop#10533)
+  * Enhance settings dialog fallback for Linux systems without
+    tray menus
+    (gh#nextcloud/desktop#10782)
+  * Do not use ENGINE_get_default_RSA
+    (gh#nextcloud/desktop#10819)
+  * Treat 404 responses for items pending deletion as valid
+    (gh#nextcloud/desktop#10771)
+  * Fix deletion of files in read-only sync folders
+    (gh#nextcloud/desktop#10226)
+  * Assign platform-specific code owners
+    (gh#nextcloud/desktop#10853)
+  * Remove unneeded Xcode scheme references
+    (gh#nextcloud/desktop#10861)
+  * Add support for unified sharing
+    (gh#nextcloud/desktop#10307)
+  * Correct debug archive generation instructions
+    (gh#nextcloud/desktop#10863)
+  * Fix no-GUI build option
+    (gh#nextcloud/desktop#10859)
+  * Clarify notification text for zero-minute lock timeouts
+    (gh#nextcloud/desktop#10798)
+  * Clarify short UI string contexts
+    (gh#nextcloud/desktop#10886)
+  * Group command-line help options
+    (gh#nextcloud/desktop#10893)
+  * Use the new craft cache for the stable-35.0 branch
+    (gh#nextcloud/desktop#10875)
+  * Widen the account wizard for localized button labels
+    (gh#nextcloud/desktop#10907)
+  * Fix AppImage builds on AlmaLinux 9
+    (gh#nextcloud/desktop#10905)
+  * Avoid rebuilding AppImage dependencies already included
+    (gh#nextcloud/desktop#10910)
+  * Use a stable Docker tag for the Flatpak CI image
+    (gh#nextcloud/desktop#10916)
+  * Add managed settings support
+    (gh#nextcloud/desktop#10589)
+  * Use smarter eliding for long display names in the system tray
+    (gh#nextcloud/desktop#10915)
+  * Fix invalid filename checks in the filename dialog
+    (gh#nextcloud/desktop#10843)</comment>
+    <requestid>1384516</requestid>
+  </revision>
 </revisionlist>
