@@ -18,7 +18,7 @@
 
 
 Name:           glab
-Version:        1.121.0
+Version:        1.122.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  git
 BuildRequires:  golang >= 1.27
 %else
 BuildRequires:  git-core
-BuildRequires:  go1.27 >= 1.27
+BuildRequires:  go1.27 >= 1.27.2
 BuildRequires:  golang-packaging
 %endif
 

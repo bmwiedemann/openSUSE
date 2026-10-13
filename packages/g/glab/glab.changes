@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Oct 12 04:46:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.122.0:
+  * Features
+    - 107b35dc: feat(api): detect Kiro terminal sessions
+    - daecf6fc: feat(api): support custom placeholder values
+    - b479524a: feat(auth): add JSON output to auth status
+    - 172280be: feat(govern): sync Codex and Cursor sessions
+      through the fallback job
+    - 2568d1e5: feat(mr): move mr note create --draft and mr note
+      publish to mr note draft
+    - ea2f2cfb: feat: add fallback periodic sync via
+      launchd/systemd
+  * Bug Fixes
+    - 16e2204b: fix(deps): bump Go to 1.27.2 and golang.org/x/net
+      to v0.60.0
+    - bb929857: fix(git): validate API-supplied repository URLs
+      before running git
+    - 3d82843c: fix(govern): address review and testing follow-ups
+      for fallback sync
+    - 6acd6ea9: fix(iteration): show the real total in list header
+    - bf5757bd: fix(snippet): keep create usage on a single line
+  * Documentation
+    - c96c824f: docs: update Code of Conduct link in README
+    - 36694fb3: docs: update glab stack docs to clarify concepts
+      and unify terminology
+  * Dependencies
+    - 2b7b1b5c: chore(deps): bump golangci-lint to v2.14.0 and fix
+      new findings
+    - 3b299de3: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.16.0
+    - 12d0ec13: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.16.1
+    - 9e934cea: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.17.0
+  * Maintenance
+    - 688befec: ci: show the docs review environment only when docs
+      change
+
+-------------------------------------------------------------------
 Wed Oct 07 05:01:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.121.0:
