@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Oct  9 16:23:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.0
+  Changed
+  * Use pre-generated PLY lex/parse tables. (#121)
+    Base parser instantiation is now over 20 times faster,
+    and extended parser instantiation is over 50 times faster.
+    In addition, actual parsing is over 50% faster.
+    This change also allows downstream projects
+    to run with Python optimizations enabled.
+  Deprecated
+  * The `debug` parameter, given when instantiating lexers and
+    parsers, is now deprecated and has no effect.
+  * The `debug` parameter will be removed in version 2.0.0.
+    To prepare for the change, remove the parameter from
+    instantiation sites.
+  * The `ExtentedJsonPathParser`, which was renamed in v1.8.0,
+    is now deprecated.
+  * The `ExtentedJsonPathParser` name will be removed in version
+    2.0.0. To prepare for the change, use the name
+    `ExtendedJsonPathParser`.
+  * The `jsonpath_ng.__version__` attribute is now deprecated.
+  * The `__version__` attribute will be removed in version 2.0.0.
+    To prepare for the change, import `importlib.metadata` and use
+    `importlib.metadata.version("jsonpath-ng")` to get the package
+    version.
+- Update to version 1.9.1
+  Fixed
+  * Add requires-python to the project metadata in pyproject.toml.
+- Update to version 1.9.0
+  Added
+  * Support Python 3.15.
+  * Add a py.typed marker.
+  * Support negation of relative existence queries in extended
+    filter expressions (e.g. $[?(!@.field)]).
+  Fixed
+  * Ignore non-mapping values when updating named fields instead
+    of raising TypeError (#104).
+  * Return no matches for negative array indices beyond the start
+    of an array, matching the behavior of out-of-range positive
+    indices (#203).
+  * Fix extended filter equality against an integer literal
+    truncating float values, so [?(@.v = 0)] no longer matches an
+    element with v = 0.6 (#227).
+  * update() with an in-place callback returning None no longer
+    overwrites the field with None (#163)
+  * Fix an AttributeError that occurs when an Index instance is
+    hashed. (#224)
+  * Index.find no longer raises KeyError when applied to a dict
+    (e.g. $.*[0], where * matched a dict value).
+    It now matches nothing, as the docstring promises. (#93)
+  * Fix extended parser handling of field names that start with
+    true or false.
+  * Stop serializing Child paths with surrounding parentheses.
+  * Avoid mutating dictionaries while evaluating extended filter
+    expressions.
+  * str() of an Index with comma-separated indices (e.g. [0,1]) no
+    longer raises TypeError.
+  * Fix broken Slice serialization behavior.
+  * Previously, a slice like [0:] would serialize to [],
+    and a slice like [::2] would serialize to [:2].
+  Removed
+  * Drop support for Python 3.10.
+
+-------------------------------------------------------------------
 Sun Mar 15 19:57:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.0 (bsc#1257048, CVE-2025-56005):

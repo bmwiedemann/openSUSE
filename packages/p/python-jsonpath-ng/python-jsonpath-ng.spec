@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonpath-ng
-Version:        1.8.0
+Version:        1.10.0
 Release:        0
 Summary:        JSONPath for Python
 License:        Apache-2.0
@@ -35,6 +35,7 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -46,7 +47,7 @@ operators and providing clear AST for metaprogramming.
 
 %prep
 %setup -q -n jsonpath-ng-%{version}
-sed -i '1{/^#!/d}' jsonpath_ng/bin/jsonpath.py
+sed -i '1{/^#!/d}' src/jsonpath_ng/bin/jsonpath.py
 
 %build
 %pyproject_wheel
@@ -64,11 +65,12 @@ sed -i '1{/^#!/d}' jsonpath_ng/bin/jsonpath.py
 
 %check
 # flaky
+export HYPOTHESIS_SUPPRESS_HEALTH_CHECK="filter_too_much"
 %pytest -k "not test_roundtrip_extended"
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst History.md
+%doc README.rst
 %python_alternative %{_bindir}/jsonpath_ng
 %{python_sitelib}/jsonpath_ng
 %{python_sitelib}/jsonpath_ng-%{version}.dist-info
