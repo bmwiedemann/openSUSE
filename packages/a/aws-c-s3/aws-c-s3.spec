@@ -16,10 +16,10 @@
 #
 
 
-%define library_version 1.0.0
-%define library_soversion 0unstable
+%define library_version 1.3.1
+%define library_soversion 1.3
 Name:           aws-c-s3
-Version:        0.13.7
+Version:        1.3.1
 Release:        0
 Summary:        AWS Cross-Platform, C99 wrapper for cryptography primitives
 License:        Apache-2.0
@@ -56,13 +56,12 @@ AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for cryptography primi
 
 This package contains the command line utilities.
 
-%package -n lib%{name}-%{library_soversion}
+%package -n lib%{name}1_3
 Summary:        Shared library files for aws-c-s3 library
 Group:          Development/Libraries/C and C++
-Provides:       lib%{name}%{library_soversion} = %{version}
-Obsoletes:      lib%{name}%{library_soversion} < %{version}
+Obsoletes:      lib%{name}-0unstable < %{version}
 
-%description -n lib%{name}-%{library_soversion}
+%description -n lib%{name}1_3
 AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for cryptography primitives.
 
 This package contains the dynamically linked library.
@@ -70,7 +69,7 @@ This package contains the dynamically linked library.
 %package devel
 Summary:        Development files for aws-c-s3 library
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}-%{library_soversion} = %{version}
+Requires:       lib%{name}1_3 = %{version}
 
 %description devel
 AWS Crypto Abstraction Layer: Cross-Platform, C99 wrapper for cryptography primitives.
@@ -83,7 +82,8 @@ This package contains the development files.
 %build
 %define __builder ninja
 %cmake \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_PREFIX_PATH=%{_libdir}/cmake/aws-c-common/modules
 %make_jobs
 
 # Testsuite currently fails
@@ -94,21 +94,22 @@ This package contains the development files.
 %install
 %cmake_install
 
-%post -n lib%{name}-%{library_soversion} -p /sbin/ldconfig
-%postun -n lib%{name}-%{library_soversion} -p /sbin/ldconfig
+%post -n lib%{name}1_3 -p /sbin/ldconfig
+%postun -n lib%{name}1_3 -p /sbin/ldconfig
 
 %files -n %{name}-bin
 %{_bindir}/s3
 
-%files -n lib%{name}-%{library_soversion}
+%files -n lib%{name}1_3
 %doc README.md
 %license LICENSE
-%{_libdir}/*.so.%{library_soversion}
-%{_libdir}/*.so.%{library_version}
+%{_libdir}/lib%{name}.so.%{library_soversion}
+%{_libdir}/lib%{name}.so.%{library_version}
 
 %files devel
 %{_libdir}/cmake/%{name}/
-%{_libdir}/*.so
-%{_includedir}/*
+%{_libdir}/lib%{name}.so
+%dir %{_includedir}/aws/s3
+%{_includedir}/aws/s3/*
 
 %changelog

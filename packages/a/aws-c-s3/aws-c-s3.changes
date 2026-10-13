@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Oct  7 13:54:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.3.1
+  * Full object checksum for round-trip tests by @sbSteveK in (#690)
+  * limit the file io threads by default and make it configurable via
+    environment variable by @TingDaoK in (#694)
+  * Run the tests in parallel by @TingDaoK in (#696)
+- from version 1.3.0
+  * Expected checksum and validation mode changes by @DmitriyMusatkin
+    in (#684)
+  * fix the bug where we delete the file even succeed by @TingDaoK
+    in (#689)
+  * Manual changelog and more validation by @TingDaoK in (#691)
+- from version 1.2.0
+  * Parallel out of order write to file by @TingDaoK in (#679)
+  * Clarify the bit mask logic. by @TingDaoK in (#687)
+- from version 1.1.2
+  * move the check and relax it for the file streaming case
+    by @TingDaoK in (#680)
+- from version 1.1.1
+  * Add S3 Metrics by @sbSteveK in (#674)
+- from version 1.1.0
+  * Sub 10Gbps S3 Throughput Handling by @sbSteveK in (#670)
+  * Retry on 502 504 errors by @sbSteveK in (#671)
+  * Add retry_config to aws_s3_client_config by @sbSteveK in (#672)
+- from version 1.0.0
+  * chore(release): add governance files by @azkrishpy in (#668)
+- Add Obsoletes for previous shared library version
+- Pass installation path of aws-c-common cmake modules in CMAKE_PREFIX_PATH
+- Prefer explicit path and filenames over wildcards in %files section
+
+-------------------------------------------------------------------
 Tue Aug 25 12:59:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.13.7
