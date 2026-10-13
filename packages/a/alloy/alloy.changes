@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Oct  9 12:28:54 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 1.20.1:
+  * Bug fixes:
+    loki: Add the timestamp to batch size calculation
+    loki: Include estimate for stream labels in batch size
+    loki: Make byte counters count uncompressed bytes
+    otelcol.connector.host_info: Fix potential over-count
+    otelcol.receiver.cloudflare: Default max_request_body_size
+                                 to 20MiB
+    prometheus.remote_write: Tolerate unknown WAL record types
+
+- Update to version 1.20.0:
+  * BREAKING CHANGE: discovery.hetzner: no longer exports the
+    __meta_hetzner_datacenter label for targets with role =
+    "hcloud"
+  * BREAKING CHANGE: otelcol.receiver.filelog: top_n now
+    distinguishes an explicit 0 from leaving it unset
+  * Security:
+    CVE-2026-84304: Bump google.golang.org/grpc to version 1.83.2
+                    to fix heap memory exhaustion via HTTP/2 DATA
+                    frame fragmentation (bsc#1279232)
+    CVE-2026-84303: Bump google.golang.org/grpc to version 1.83.2
+                    to prevent bypassing authorization policies
+                    (bsc#1279331)
+    CVE-2026-84445: Bump google.golang.org/grpc to version 1.83.2
+                    to fix DoS via crash due to missing
+                    `:authority` and `Host` headers in gRPC-Go xDS
+                    servers (bsc#1279394)
+    CVE-2026-14362: Bump github.com/hashicorp/memberlist to version
+                    0.6.0 to fix DoS vulnerability (bsc#1271206)
+    CVE-2026-81872: Bump OTel Collector to version 0.161.0 to fix
+                    DoS via attacker-driven log emission
+                    (bsc#1281473)
+    CVE-2026-81871: Bump OTel Collector to version 0.161.0 to fix
+                    TLS certificate bypass (bsc#1281472)
+  * Features:
+    loki.source.podlogs: Add use_apiserver_cache to reduce API
+                         server load
+    loki.write: Add max_streams to limit active streams
+    pyroscope.scrape: Support scraping custom pprof profiles
+  * Enhancements:
+    discovery.kubernetes: Add support for EndpointSlice
+                          filtering by service
+    loki.process: stage.geoip now supports GeoLite2 City database
+  * Bug Fixes:
+    discovery.file: Fix targets not updating on content change
+    prometheus.relabel: Fix metrics getting stuck in NaN state
+
+-------------------------------------------------------------------
 Fri Sep 11 11:20:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to version 1.19.2:
@@ -26,6 +76,10 @@ Fri Sep 11 11:20:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
   * CVE-2026-56854,CVE-2026-78662,CVE-2026-56855: Bump
     golang.org/x/crypto to version 0.55.0 to address authentication
     bypass and deadlocks (bsc#1278671)
+  * CVE-2026-63209: Bump github.com/klauspost/compress to version
+                    1.19.0 to prevent integer overflow or
+                    wraparound and out-of-bounds write
+                    (bsc#1283592)
   * prometheus.enrich: Support multi-label matching
   * prometheus.relabel: Add opt-in TTL cache mode
   * telemetry: Add new metrics for graph connections and
