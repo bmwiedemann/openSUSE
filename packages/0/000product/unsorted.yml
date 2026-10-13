@@ -12411,7 +12411,7 @@ unsorted:
   - libaws-c-http1_0_0 
   - libaws-c-io0unstable 
   - libaws-c-mqtt1_0_0 
-  - libaws-c-s3-0unstable 
+  - libaws-c-s31_3 
   - libaws-c-sdkutils1_0_0 
   - libaws-checksums-devel 
   - libaws-checksums1 
@@ -16155,7 +16155,7 @@ unsorted:
   - librealsense 
   - librealsense-devel 
   - librealsense-examples 
-  - librealsense2_58 
+  - librealsense2_59 
   - librec1 
   - librecad 
   - librecad-parts 
