@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Tue Oct 13 15:31:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.35.3:
+  - 10d9e06fe Fix sandbox breakpoint escape
+  - 4cfab486f Merge remote-tracking branch
+    'nix-ghsa-hf6w-2rg9-v84g/fix-installer-2.35' into
+    mitigations-2.35
+  - 224b720f2 Merge remote-tracking branch
+    'nix-ghsa-jwvx-xq5j-gc56/restrict-repair-flag-to-trusted-users-2.35'
+    into mitigations-2.35
+  - cd9020f77 Merge remote-tracking branch
+    'nix-ghsa-92x5-h528-wrmw/reject-build-users-group-2.35' into
+    mitigations-2.35
+  - 3755b3b73 Merge remote-tracking branch
+    'nix-ghsa-25vp-6h23-hj3g/fix-gen-list-overflows-2.35' into
+    mitigations-2.35
+  - 7e675b31a [Backport 2.35-maintenance] libstore: treat `\r\n` as
+    a single line terminator in build logs (#16599)
+  - c4807b4a1 libstore: treat `\r\n` as a single line terminator in
+    build logs
+  - 623bbfd94 installer: Fix store object ownership in multi-user
+    installs
+  - a3ec144fa [Backport 2.35-maintenance] installer: Fix store
+    mtime in binary tarballs (#16559)
+  - b07ef7c01 installer: Fix store mtime in binary tarballs
+  - f4dd3bda8 tests/installer: Refactor to support custom checks
+    and mirror nix-installer repo
+  - 1a202f9dc tests/installer: Set -u in the tests
+  - 56f147d2e [Backport 2.35-maintenance] gc-closure.sh: avoid
+    SIGPIPE from head (#16557)
+  - c0cb11d58 gc-closure.sh: avoid SIGPIPE from head
+  - 355240b45 libstore: Unpack to temporary location in
+    LocalStore::addToStore
+  - 2252caebf libstore/daemon: Disallow unprivileged repair in
+    AddMultipleToStore/AddToStoreNar/AddToStore
+  - 48d8bc136 Record gid in getPeerInfo when using LOCAL_PEERCRED
+  - 83f4ac399 Merge pull request #16511 from
+    NixOS/backport-16229-to-2.35-maintenance
+  - 0df979fe0 Fix ignored nodiscard results
+  - 1ad4a52d3 Merge pull request #16489 from
+    NixOS/backport-16487-to-2.35-maintenance
+  - 528e705b8 nix flake prefetch-inputs: skip relative path inputs
+  - d7c4344e4 libexpr: Tighten allocBytes with overload that does
+    unsigned overflow detection
+  - 88c2bcc16 Merge pull request #16464 from
+    NixOS/backport-16067-to-2.35-maintenance
+  - a5a93f8e8 libstore: detect Rosetta via runtime file instead of
+    spawning arch
+  - a40dd52cf Merge pull request #16419 from
+    NixOS/backport-16418-to-2.35-maintenance
+  - beed3dd4a fix(packaging): do not add boost fiber patch if
+    duplicate
+  - e69fa58ed Merge pull request #16410 from
+    NixOS/backport-16407-to-2.35-maintenance
+  - 413162760 libexpr-c: allow null primop docs
+  - 8e94a93ec Merge pull request #16405 from
+    NixOS/backport-16403-to-2.35-maintenance
+  - c39e300db Convert stdenv.isLinux to stdenv.hostPlatform.isLinux
+  - 0b726cab9 Merge pull request #16402 from
+    NixOS/backport-16397-to-2.35-maintenance
+  - 878674493 Merge pull request #16401 from
+    NixOS/backport-16391-to-2.35-maintenance
+  - 81dca68c7 libfetchers/git: render submodules as empty dirs in
+    workdir accessor
+  - 9c5d36a0c libfetchers/git: use HEAD as default ref for detached
+    local repos
+  - 553bac087 Merge pull request #16379 from
+    NixOS/backport-16373-to-2.35-maintenance
+  - d6f5cef6c nix flake prefetch-inputs: fix inputs being randomly
+    skipped
+  - 8eb4cf95c Merge pull request #16351 from
+    NixOS/backport-16190-to-2.35-maintenance
+  - b8abc0832 Populate the srcToStore cache when we have a fetcher
+    cache hit
+  - cf5200adb Merge pull request #16350 from
+    NixOS/backport-16295-to-2.35-maintenance
+  - de3a27708 Improve 'sandbox-fallback' diagnostics, disallow
+    fallback with relocated store
+  - c138b869a Merge pull request #16331 from
+    JamieMagee/backport-16325-to-2.35-maintenance
+  - 4284b5768 Validate padding after skipped NAR contents
+  - 939898e5f Merge pull request #16319 from
+    NixOS/backport-fix-16317
+  - 76c15a273 libstore: Merge, don't clobber, colliding `inputDrvs`
+    hashes modulo
+  - b87548075 Merge pull request #16304 from
+    NixOS/backport-16303-to-2.35-maintenance
+  - 1e4f38765 rl-2.35.md: correct meson option to disable mimalloc
+
+-------------------------------------------------------------------
 Wed Aug 12 22:36:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.35.2:
