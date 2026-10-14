@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:00:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-importlib-metadata-6.patch:
+  * Support changes required by importlib.metadata 6.
+
+-------------------------------------------------------------------
 Sun Mar 29 14:43:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.5:

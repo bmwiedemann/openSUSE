@@ -24,8 +24,9 @@ Summary:        Python packages license list
 License:        MIT
 URL:            https://github.com/raimon49/pip-licenses
 Source:         https://files.pythonhosted.org/packages/source/p/pip-licenses/pip_licenses-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support new importlib.metadata requirements
+Patch0:         support-importlib-metadata-6.patch
 BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module importlib_metadata}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
