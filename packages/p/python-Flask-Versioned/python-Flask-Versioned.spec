@@ -25,6 +25,8 @@ Summary:        Add version info to file paths
 License:        BSD-3-Clause
 URL:            http://github.com/pilt/flask-versioned
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Versioned/Flask-Versioned-%{version}-20101221.tar.gz
+# PATCH-FIX-OPENSUSE No namespace packages
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -34,7 +36,6 @@ BuildRequires:  %{python_module Flask}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Flask
-Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,11 +57,7 @@ Add version info to file paths.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -c "from flaskext.versioned import Versioned"
 
 %files %{python_files}
-%{python_sitelib}/Flask_Versioned-%{full_version}-py3.*-nspkg.pth
-%dir %{python_sitelib}/flaskext/
-%dir %{python_sitelib}/flaskext/versioned/
-%{python_sitelib}/flaskext/versioned/__init__.py
-%pycache_only %{python_sitelib}/flaskext/versioned/__pycache__/
+%{python_sitelib}/flaskext/
 %{python_sitelib}/[Ff]lask_[Vv]ersioned-%{full_version}.dist-info
 
 %changelog

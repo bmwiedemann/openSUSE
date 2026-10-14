@@ -1,0 +1,22 @@
+Index: Flask-Versioned-0.9.4-20101221/flaskext/__init__.py
+===================================================================
+--- Flask-Versioned-0.9.4-20101221.orig/flaskext/__init__.py
++++ Flask-Versioned-0.9.4-20101221/flaskext/__init__.py
+@@ -1 +0,0 @@
+-__import__('pkg_resources').declare_namespace(__name__)
+Index: Flask-Versioned-0.9.4-20101221/setup.py
+===================================================================
+--- Flask-Versioned-0.9.4-20101221.orig/setup.py
++++ Flask-Versioned-0.9.4-20101221/setup.py
+@@ -34,11 +34,9 @@ setup(
+         'flaskext',
+         'flaskext.versioned',
+     ],
+-    namespace_packages=['flaskext'],
+     zip_safe=False,
+     platforms='any',
+     install_requires=[
+-        'setuptools',
+         'Flask',
+     ],
+     test_suite='test_versioned',

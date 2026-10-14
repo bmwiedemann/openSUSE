@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 01:43:47 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources to create a namespace package.
+
+-------------------------------------------------------------------
 Fri Jul 17 01:00:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Loosen nspkg.pth glob due to removal of Python 3.11. 
