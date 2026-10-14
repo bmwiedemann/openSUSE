@@ -284,4 +284,18 @@ Forwarded request #1101518 from iznogood
   values in the tests.</comment>
     <requestid>1382958</requestid>
   </revision>
+  <revision rev="29" vrev="25">
+    <srcmd5>1d5bfd02304b988972ee272052c69731</srcmd5>
+    <version>2.74.3</version>
+    <time>1791995646</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-103399: incomplete request body draining in HTTP/1.x
+  early responses can allow HTTP request smuggling (bsc#1283831)
+  * libsoup2-CVE-2026-103399.patch
+
+- CVE-2026-15713: SoupCache: libsoup: HTTP/2 frame window
+  exhaustion remote denial of service via memory leak (bsc#1271448)
+  * libsoup2-CVE-2026-15713.patch</comment>
+    <requestid>1384566</requestid>
+  </revision>
 </revisionlist>

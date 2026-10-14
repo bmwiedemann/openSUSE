@@ -128,6 +128,10 @@ Patch49:        libsoup2-CVE-2026-102556.patch
 Patch50:        libsoup2-CVE-2026-102560.patch
 # PATCH-FIX-UPSTREAM libsoup2-CVE-2026-102557.patch bsc#1283301 bsc#1283303 mgorse@suse.com -- websocket: Cap message reassembly and outgoing frames at the buffer limit.
 Patch51:        libsoup2-CVE-2026-102557.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-15713.patch bsc#1271448 mgorse@suse.com -- cache: Reject caching authenticated responses in shared caches.
+Patch52:        libsoup2-CVE-2026-15713.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-103399.patch bsc#1283831 mgorse@suse.com -- server: Close the connection after an early response to Expect: 100-continue.
+Patch53:        libsoup2-CVE-2026-103399.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50

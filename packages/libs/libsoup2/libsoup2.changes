@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 12 19:09:21 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- CVE-2026-103399: incomplete request body draining in HTTP/1.x
+  early responses can allow HTTP request smuggling (bsc#1283831)
+  * libsoup2-CVE-2026-103399.patch
+
+-------------------------------------------------------------------
+Thu Oct  8 16:15:20 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- CVE-2026-15713: SoupCache: libsoup: HTTP/2 frame window
+  exhaustion remote denial of service via memory leak (bsc#1271448)
+  * libsoup2-CVE-2026-15713.patch
+
+-------------------------------------------------------------------
 Tue Oct  6 19:55:28 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - CVE-2026-15711: WebSocket denial of service via oversized control
