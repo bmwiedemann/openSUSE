@@ -27,6 +27,7 @@
 # if we do not have the version yet for the locked version
 # add it as TODO
 %if %{with use_poetry_for_dependencies}
+%global beautifulsoup4_version        4.13.0
 %global Twisted_version               24.7.0
 %global Jinja2_version                3.1.5
 %global Pillow_version                12.3.0
@@ -64,7 +65,6 @@
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.5.0
 %global Authlib_version               1.6.12
-%global lxml_version                  6.1.0
 # TODO: 2.46.0
 %global sentry_sdk_version            2.39.0
 %global PyJWT_version                 2.6.0
@@ -113,6 +113,7 @@
 %global tornado_version               6.0
 %else
 # some version locks based on pyproject.toml
+%global beautifulsoup4_version        4.13.0
 %global Jinja2_version                3.0
 %global Pillow_version                10.0.1
 %global PyYAML_version                5.3
@@ -150,7 +151,6 @@
 %global psycopg2_version              2.8
 %global pysaml2_version               4.5.0
 %global Authlib_version               1.6.11
-%global lxml_version                  4.8.0
 %global sentry_sdk_version            1.5.11
 %global PyJWT_version                 1.6.4
 %global jaeger_client_version         4.2.0
@@ -231,7 +231,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.162.0
+Version:        1.163.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -369,8 +369,8 @@ BuildRequires:  %{use_python}-pysaml2 >= %{pysaml2_version}
 BuildRequires:  %{use_python}-Authlib >= %{Authlib_version}
 %requires_peq   %{use_python}-Authlib
 %endif
-BuildRequires:  %{use_python}-lxml >= %{lxml_version}
-%requires_peq   %{use_python}-lxml
+BuildRequires:  %{use_python}-beautifulsoup4 >= %{beautifulsoup4_version}
+%requires_peq   %{use_python}-beautifulsoup4
 %if %{with synapse_sentry}
 BuildRequires:  %{use_python}-sentry-sdk >= %{sentry_sdk_version}
 %requires_peq   %{use_python}-sentry-sdk
