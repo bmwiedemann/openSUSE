@@ -1,0 +1,257 @@
+From 155184010d0b6115675dc26ebbdc3039d55069b2 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Fri, 17 Jul 2026 18:03:24 +0200
+Subject: [PATCH] Use system libraries
+
+So many bugs :-(
+
+* depends on cmark-gfm APIs that are not in cmark, but gfm has not had a tag in a long time
+* "Vulkan-Headers" is not a library and linking fails
+* without -DSLANG_ENABLE_GFX=ON, tools/gfx/gfx.slang is not copied to build/RelWithDebInfo/bin/gfx.slang...
+* lua is missing extern "C" wraps
+
+---
+ CMakeLists.txt                             |    8 +++++++
+ external/CMakeLists.txt                    |   20 +++++++++--------
+ source/slang/CMakeLists.txt                |    2 -
+ source/slang/slang-markdown.cpp            |   33 ++++++++++++++++++++++++++++-
+ tools/CMakeLists.txt                       |    5 +++-
+ tools/gfx/vulkan/glslang-module.h          |    2 -
+ tools/gfx/vulkan/vk-shader-program.cpp     |    2 -
+ tools/slang-fiddle/slang-fiddle-lua.cpp    |    1 
+ tools/slang-fiddle/slang-fiddle-scrape.h   |    4 ++-
+ tools/slang-fiddle/slang-fiddle-script.cpp |    8 ++++---
+ tools/slang-fiddle/slang-fiddle-script.h   |    6 +++--
+ 11 files changed, 70 insertions(+), 21 deletions(-)
+
+Index: ql/CMakeLists.txt
+===================================================================
+--- ql.orig/CMakeLists.txt
++++ ql/CMakeLists.txt
+@@ -209,6 +209,7 @@ option(SLANG_ENABLE_REPLAYER "Enable sla
+ 
+ advanced_option(SLANG_USE_SYSTEM_MINIZ "Build using system Miniz library" OFF)
+ advanced_option(SLANG_USE_SYSTEM_LZ4 "Build using system LZ4 library" OFF)
++advanced_option(SLANG_USE_SYSTEM_CMARK "Build using system cmark library" OFF)
+ advanced_option(
+     SLANG_USE_SYSTEM_VULKAN_HEADERS
+     "Build using system Vulkan headers"
+@@ -586,6 +587,13 @@ if(${SLANG_USE_SYSTEM_LZ4})
+     endif()
+ endif()
+ 
++if(${SLANG_USE_SYSTEM_CMARK})
++    find_package(cmark REQUIRED)
++    if(NOT TARGET cmark)
++        add_library(cmark ALIAS cmark::cmark)
++    endif()
++endif()
++
+ if(${SLANG_USE_SYSTEM_VULKAN_HEADERS})
+     find_package(VulkanHeaders REQUIRED)
+ endif()
+Index: ql/external/CMakeLists.txt
+===================================================================
+--- ql.orig/external/CMakeLists.txt
++++ ql/external/CMakeLists.txt
+@@ -129,15 +129,17 @@ set(_prev_BUILD_TESTING ${BUILD_TESTING}
+ set(_prev_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS})
+ set(BUILD_TESTING OFF)
+ set(BUILD_SHARED_LIBS OFF)
+-if(NOT SLANG_OVERRIDE_CMARK_PATH)
+-    add_subdirectory(cmark EXCLUDE_FROM_ALL ${system})
+-else()
+-    add_subdirectory(
+-        ${SLANG_OVERRIDE_CMARK_PATH}/cmark
+-        cmark
+-        EXCLUDE_FROM_ALL
+-        ${system}
+-    )
++if(NOT ${SLANG_USE_SYSTEM_CMARK})
++    if(NOT SLANG_OVERRIDE_CMARK_PATH)
++        add_subdirectory(cmark EXCLUDE_FROM_ALL ${system})
++    else()
++        add_subdirectory(
++            ${SLANG_OVERRIDE_CMARK_PATH}/cmark
++            cmark
++            EXCLUDE_FROM_ALL
++            ${system}
++        )
++    endif()
+ endif()
+ set(BUILD_TESTING ${_prev_BUILD_TESTING})
+ set(BUILD_SHARED_LIBS ${_prev_BUILD_SHARED_LIBS})
+Index: ql/source/slang/CMakeLists.txt
+===================================================================
+--- ql.orig/source/slang/CMakeLists.txt
++++ ql/source/slang/CMakeLists.txt
+@@ -277,7 +277,7 @@ set(slang_link_args
+     slang-fiddle-output
+     slang-lookup-tables
+     SPIRV-Headers::SPIRV-Headers
+-    libcmark-gfm
++    -lcmark
+ )
+ set(slang_interface_args INCLUDE_DIRECTORIES_PUBLIC ${slang_SOURCE_DIR}/include)
+ set(slang_public_lib_args
+Index: ql/source/slang/slang-markdown.cpp
+===================================================================
+--- ql.orig/source/slang/slang-markdown.cpp
++++ ql/source/slang/slang-markdown.cpp
+@@ -2,8 +2,39 @@
+ 
+ #include "core/slang-io.h"
+ 
+-#include <cmark-gfm.h>
++#include <cmark.h>
+ #include <string.h>
++#include <memory>
++
++namespace {
++struct stdlib_delete {
++	void operator()(char *x) const { return free(x); }
++};
++}
++
++static int cmark_node_get_fenced(cmark_node *node, int *length, int *offset, char *character)
++{
++	return 0;
++#if 0
++	if (cmark_node_get_type(node) != CMARK_NODE_CODE_BLOCK)
++		return 0;
++	auto info = cmark_node_get_fence_info(node);
++	if (info == nullptr)
++		return 0;
++	std::unique_ptr<char[], stdlib_delete> xml(cmark_render_xml(node, CMARK_OPT_DEFAULT));
++	// <code_block xml:space="preserve" info="python" fenced="1" length="3">...
++	*length = 0;
++	*offset = 0;
++	*character = '\0';
++	if (xml == nullptr)
++		return -1;
++	auto len_ptr = strstr(xml, " length=\"");
++	*length = len_ptr != nullptr ? strtol(&len_ptr[9]) : 0;
++	*offset = ?
++	*character = ?
++	return 1;
++#endif
++}
+ 
+ namespace Slang
+ {
+Index: ql/tools/CMakeLists.txt
+===================================================================
+--- ql.orig/tools/CMakeLists.txt
++++ ql/tools/CMakeLists.txt
+@@ -2,6 +2,9 @@
+ # Tools used to generate source during the build:
+ #
+ 
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(LUA REQUIRED IMPORTED_TARGET lua)
++
+ # PCH header for tools that use slang core types
+ set(SLANG_TOOLS_PCH ${slang_SOURCE_DIR}/source/core/slang-basic.h)
+ 
+@@ -64,6 +67,7 @@ if(NOT SLANG_OVERRIDE_LUA_PATH)
+         INCLUDE_DIRECTORIES_PUBLIC
+         ${slang_SOURCE_DIR}/external
+     )
++    target_link_libraries(slang-fiddle PRIVATE PkgConfig::LUA)
+ else()
+     generator(
+         slang-fiddle
+@@ -151,7 +155,6 @@ if(SLANG_ENABLE_GFX)
+         LINK_WITH_PRIVATE
+             core
+             slang
+-            Vulkan-Headers
+             metal-cpp
+             stb
+             $<$<BOOL:${SLANG_ENABLE_XLIB}>:X11::X11>
+Index: ql/tools/gfx/vulkan/glslang-module.h
+===================================================================
+--- ql.orig/tools/gfx/vulkan/glslang-module.h
++++ ql/tools/gfx/vulkan/glslang-module.h
+@@ -6,7 +6,7 @@
+ #include "slang-com-ptr.h"
+ #include "slang-glslang/slang-glslang.h"
+ #include "slang.h"
+-#include "spirv-tools/include/spirv-tools/linker.hpp"
++#include <spirv-tools/linker.hpp>
+ 
+ namespace gfx
+ {
+Index: ql/tools/gfx/vulkan/vk-shader-program.cpp
+===================================================================
+--- ql.orig/tools/gfx/vulkan/vk-shader-program.cpp
++++ ql/tools/gfx/vulkan/vk-shader-program.cpp
+@@ -1,7 +1,7 @@
+ // vk-shader-program.cpp
+ #include "vk-shader-program.h"
+ 
+-#include "spirv-tools/include/spirv-tools/linker.hpp"
++#include <spirv-tools/linker.hpp>
+ #include "vk-device.h"
+ #include "vk-util.h"
+ 
+Index: ql/tools/slang-fiddle/slang-fiddle-lua.cpp
+===================================================================
+--- ql.orig/tools/slang-fiddle/slang-fiddle-lua.cpp
++++ ql/tools/slang-fiddle/slang-fiddle-lua.cpp
+@@ -7,4 +7,3 @@
+ #define LUA_USE_POSIX
+ #endif
+ 
+-#include "lua/onelua.c"
+Index: ql/tools/slang-fiddle/slang-fiddle-scrape.h
+===================================================================
+--- ql.orig/tools/slang-fiddle/slang-fiddle-scrape.h
++++ ql/tools/slang-fiddle/slang-fiddle-scrape.h
+@@ -2,7 +2,9 @@
+ #pragma once
+ 
+ #include "compiler-core/slang-lexer.h"
+-#include "lua/lauxlib.h"
++extern "C" {
++#include <lauxlib.h>
++}
+ #include "slang-fiddle-diagnostics.h"
+ 
+ namespace fiddle
+Index: ql/tools/slang-fiddle/slang-fiddle-script.cpp
+===================================================================
+--- ql.orig/tools/slang-fiddle/slang-fiddle-script.cpp
++++ ql/tools/slang-fiddle/slang-fiddle-script.cpp
+@@ -2,9 +2,11 @@
+ #include "slang-fiddle-script.h"
+ 
+ #include "compiler-core/slang-diagnostic-sink.h"
+-#include "lua/lapi.h"
+-#include "lua/lauxlib.h"
+-#include "lua/lualib.h"
++extern "C" {
++#include <lua.h>
++#include <lauxlib.h>
++#include <lualib.h>
++}
+ 
+ #include <cstdio>
+ 
+Index: ql/tools/slang-fiddle/slang-fiddle-script.h
+===================================================================
+--- ql.orig/tools/slang-fiddle/slang-fiddle-script.h
++++ ql/tools/slang-fiddle/slang-fiddle-script.h
+@@ -4,8 +4,10 @@
+ #include "compiler-core/slang-source-loc.h"
+ #include "core/slang-list.h"
+ #include "core/slang-string.h"
+-#include "lua/lapi.h"
+-#include "lua/lauxlib.h"
++extern "C" {
++#include <lua.h>
++#include <lauxlib.h>
++}
+ #include "slang-fiddle-diagnostics.h"
+ #include "slang-fiddle-scrape.h"
+ 

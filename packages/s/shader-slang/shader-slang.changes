@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Sep 29 09:16:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.18.3
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Wed Sep 23 11:55:03 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable build of slangd
+
+-------------------------------------------------------------------
+Tue Sep 22 00:11:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Version 2026.18
+  * glslang deprecated its HLSL frontend, with slang being the
+    designated replacement
+    <https://github.com/KhronosGroup/glslang/issues/4210>
+- Add 0001-system.patch
