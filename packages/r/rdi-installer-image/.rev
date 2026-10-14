@@ -16,4 +16,13 @@
   * image: add rdii version to menu entry</comment>
     <requestid>1383090</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2f812a81a9205558232ca1d801e24f14</srcmd5>
+    <version>unknown</version>
+    <time>1791995709</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20261013.6276d8c:
+  * Remove home:kukuk:mkosi-images key from development</comment>
+    <requestid>1384657</requestid>
+  </revision>
 </revisionlist>
