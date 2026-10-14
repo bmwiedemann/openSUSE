@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:48:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.10.1:
+  * fix: lower cryptography minimum version to 46.0.7 in #5212
+
+-------------------------------------------------------------------
 Tue Oct 13 04:43:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.10.0:

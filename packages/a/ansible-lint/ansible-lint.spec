@@ -39,7 +39,7 @@
 
 %global lib_name ansiblelint
 Name:           ansible-lint
-Version:        26.10.0
+Version:        26.10.1
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -72,7 +72,7 @@ BuildRequires:  %{ansible_python}-ansible-compat >= 26.3.0
 BuildRequires:  %{ansible_python}-black >= 25.2.0
 # indirect dependency of ruamel-yaml
 BuildRequires:  %{ansible_python}-cffi >= 1.15.1
-BuildRequires:  %{ansible_python}-cryptography >= 50
+BuildRequires:  %{ansible_python}-cryptography >= 46.0.7
 BuildRequires:  %{ansible_python}-filelock >= 3.8.2
 BuildRequires:  %{ansible_python}-importlib_metadata >= 8.7.0
 BuildRequires:  %{ansible_python}-jsonschema >= 4.10.0
@@ -93,7 +93,7 @@ Requires:       %{ansible_python}-ansible-compat >= 25.8.2
 Requires:       %{ansible_python}-black >= 25.2.0
 # indirect dependency of ruamel-yaml
 Requires:       %{ansible_python}-cffi >= 1.15.1
-Requires:       %{ansible_python}-cryptography >= 50
+Requires:       %{ansible_python}-cryptography >= 46.0.7
 Requires:       %{ansible_python}-filelock >= 3.8.2
 Requires:       %{ansible_python}-importlib_metadata >= 8.7.0
 Requires:       %{ansible_python}-jsonschema >= 4.10.0
