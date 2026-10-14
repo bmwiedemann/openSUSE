@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 14 14:55:17 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Add zypp-no-recommends
+
+-------------------------------------------------------------------
 Sun Jun  7 15:31:52 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Drop sysextmgr and sysextmgr-tukit-plugin  they break updates

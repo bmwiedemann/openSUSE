@@ -20,7 +20,7 @@
 %bcond_with betatest
 
 Name:           patterns-kalpa
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Patterns for Kalpa Desktop
 License:        MIT
@@ -295,6 +295,7 @@ Requires:       transactional-update
 Requires:       transactional-update-zypp-config
 Requires:       transactional-update-notifier
 Requires:       zypper
+Requires:       zypp-no-recommends
 # zypper ps is useless in transactional mode. It also checks for
 # /run/reboot-needed though which is created by transactional-update
 Requires:       zypper-needs-restarting

@@ -176,4 +176,13 @@
 - Add missed kalpa-themes</comment>
     <requestid>1357790</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5bd71f118dd0e1538c711569f2036f3a</srcmd5>
+    <version>6.1.2</version>
+    <time>1791996558</time>
+    <user>dimstar_suse</user>
+    <comment>- Add zypp-no-recommends
+</comment>
+    <requestid>1384819</requestid>
+  </revision>
 </revisionlist>
