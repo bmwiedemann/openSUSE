@@ -204,6 +204,8 @@ Patch:          0004-loader-linux-measure-initrd-in-place.patch
 Patch:          0005-docs-grub-dev.texi-Document-in-place-verification.patch
 Patch:          0001-disk-i386-pc-biosdisk-Fix-retry-of-CDROM-reads.patch
 Patch:          0001-grub-core-sbat.csv.in-Set-vendor_package_name-to-gru.patch
+Patch:          0001-ieee1275-ofdisk-fix-NULL-deref-and-use-after-free-in.patch
+Patch:          0002-ieee1275-ofdisk-enumerate-all-PCIe-NVMe-namespaces.patch
 Patch:          rename-grub-info-file-to-grub2.patch
 Patch:          grub2-linux.patch
 Patch:          use-grub2-as-a-package-name.patch

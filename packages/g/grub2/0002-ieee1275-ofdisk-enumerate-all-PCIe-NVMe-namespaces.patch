@@ -1,0 +1,149 @@
+From 9ad592cf794f91cdb8e6971bbc00ef5258bb03a3 Mon Sep 17 00:00:00 2001
+From: Avnish Chouhan <avnish@linux.ibm.com>
+Date: Tue, 29 Sep 2026 12:04:09 +0530
+Subject: [PATCH 2/2] ieee1275: ofdisk: enumerate all PCIe NVMe namespaces
+
+Enable PCIe NVMe storage discovery
+
+Signed-off-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Michael Chang <mchang@suse.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/267>
+---
+ grub-core/disk/ieee1275/ofdisk.c | 110 +++++++++++++++++++++++++++++++
+ 1 file changed, 110 insertions(+)
+
+diff --git a/grub-core/disk/ieee1275/ofdisk.c b/grub-core/disk/ieee1275/ofdisk.c
+index bcc3c0c51..cf91ac2a8 100644
+--- a/grub-core/disk/ieee1275/ofdisk.c
++++ b/grub-core/disk/ieee1275/ofdisk.c
+@@ -547,6 +547,106 @@ dev_iterate_fcp_nvmeof (const struct grub_ieee1275_devalias *alias)
+   return;
+ }
+ 
++/* Enumerate all NVMe namespaces via get-namespace-list; fall back to OF children. */
++static void
++dev_iterate_pcie_nvme (const struct grub_ieee1275_devalias *alias)
++{
++  grub_ieee1275_ihandle_t ihandle;
++  grub_uint32_t namespace_index;
++  grub_uint32_t local_ns_table[TABLE_SIZE];
++  grub_uint32_t num_namespaces;
++  char *buf, *bufptr;
++  grub_size_t sz;
++
++  struct nvme_ns_args
++  {
++    struct grub_ieee1275_common_hdr common;
++    grub_ieee1275_cell_t method;
++    grub_ieee1275_cell_t ihandle;
++    grub_ieee1275_cell_t catch_result;
++    grub_ieee1275_cell_t nentries;
++    grub_ieee1275_cell_t table;
++  } args;
++
++  if (grub_add (grub_strlen (alias->path), EXTEND_PATH_512, &sz))
++    {
++      grub_error (GRUB_ERR_OUT_OF_RANGE,
++		  "overflow detected while creating buffer for pcie_nvme");
++      return;
++    }
++
++  buf = grub_malloc (sz);
++  if (!buf)
++    return;
++
++  bufptr = grub_stpcpy (buf, alias->path);
++
++  if (grub_ieee1275_open (alias->path, &ihandle))
++    {
++      grub_dprintf ("ofdisk", "pcie_nvme: open failed for path=%s\n", alias->path);
++      grub_free (buf);
++      return;
++    }
++
++  /* call-method returns catch_result, nentries, and table on the stack. */
++  INIT_IEEE1275_COMMON (&args.common, "call-method", 2, 3);
++  args.method       = (grub_ieee1275_cell_t) "get-namespace-list";
++  args.ihandle      = ihandle;
++  args.catch_result = 0;
++  args.nentries     = 0;
++  args.table        = 0;
++
++  if (IEEE1275_CALL_ENTRY_FN (&args) == -1 || args.catch_result)
++    {
++      grub_dprintf ("ofdisk", "pcie_nvme: get-namespace-list failed, falling back to OF children\n");
++      grub_ieee1275_close (ihandle);
++
++      struct grub_ieee1275_devalias child;
++      FOR_IEEE1275_DEVCHILDREN (alias->path, child)
++	{
++	  if (grub_strcmp (child.type, "block") == 0)
++	    dev_iterate_real (child.path, child.path);
++	}
++
++      grub_free (buf);
++      return;
++    }
++
++  num_namespaces = (grub_uint32_t) args.nentries;
++  if (num_namespaces > TABLE_SIZE)
++    num_namespaces = TABLE_SIZE;
++  for (namespace_index = 0; namespace_index < num_namespaces; namespace_index++)
++    local_ns_table[namespace_index] = ((grub_uint32_t *) args.table)[namespace_index];
++  grub_ieee1275_close (ihandle);
++
++  for (namespace_index = 0; namespace_index < num_namespaces; namespace_index++)
++    {
++      grub_uint32_t nsid = local_ns_table[namespace_index];
++      /* Skip invalid NSID 0 and broadcast/sentinel NSID 0xffffffff. */
++      if (nsid == 0 || nsid == 0xffffffffU)
++	continue;
++      grub_snprintf (bufptr, EXTEND_PATH_512, "/namespace@%" PRIxGRUB_UINT32_T, nsid);
++      grub_dprintf ("ofdisk", "pcie_nvme: registering namespace=%s\n", buf);
++      dev_iterate_real (buf, buf);
++    }
++
++  grub_free (buf);
++}
++
++/*
++ * Returns 1 if alias is a PCIe NVMe controller node.
++ *
++ * The OF device_type for NVMe controllers is normally "nvme", but on IBM POWER
++ * firmware the controller node has been observed to advertise device_type
++ * "nvm-e" instead. Both strings are therefore accepted.
++ */
++static int
++is_pcie_nvme_controller (const struct grub_ieee1275_devalias *alias)
++{
++  return (grub_strcmp (alias->type, "nvme") == 0
++	  || grub_strcmp (alias->type, "nvm-e") == 0);
++}
++
+ static void
+ dev_iterate (const struct grub_ieee1275_devalias *alias)
+ {
+@@ -704,10 +804,20 @@ dev_iterate (const struct grub_ieee1275_devalias *alias)
+       grub_free (table);
+       grub_free (buf);
+     }
++  else if (is_pcie_nvme_controller (alias))
++    {
++      grub_dprintf ("ofdisk", "pcie_nvme: dispatch for path=%s type=%s\n",
++		    alias->path, alias->type);
++      dev_iterate_pcie_nvme (alias);
++      return;
++    }
+ 
+   if (!grub_ieee1275_test_flag (GRUB_IEEE1275_FLAG_NO_TREE_SCANNING_FOR_DISKS)
+       && grub_strcmp (alias->type, "block") == 0)
+     {
++      /* Skip namespace nodes; they are handled by dev_iterate_pcie_nvme() and dev_iterate_fcp_nvmeof(). */
++      if (grub_strcmp (alias->name, "namespace") == 0)
++	return;
+       dev_iterate_real (alias->path, alias->path);
+       return;
+     }
+-- 
+2.55.0
+

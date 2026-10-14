@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 01:21:12 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Fix PowerPC PCIe NVMe disk discovery (bsc#1239799 ltc#211961 bsc#1245357 ltc#214095)
+  * 0001-ieee1275-ofdisk-fix-NULL-deref-and-use-after-free-in.patch
+  * 0002-ieee1275-ofdisk-enumerate-all-PCIe-NVMe-namespaces.patch
+
+-------------------------------------------------------------------
 Thu Oct  8 08:01:44 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Add upstream patch to fix CDROM boot failures (boo#1282614):
@@ -19,7 +26,7 @@ Tue Oct  6 03:45:41 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 Mon Oct  5 01:44:49 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Backport upstream fixes to verify linux initrd in place to avoid
-  the potential OOM (bsc#1275739)
+  the potential OOM (bsc#1275739 bsc#1223982 ltc#206196 jsc#PED-8373)
   * 0001-kern-file-record-file-type-and-track-in-place-verifi.patch
   * 0002-verifiers-support-in-place-verification.patch
   * 0003-tpm-tpcm-mark-TPM-and-TPCM-verifiers-as-in-place-cap.patch

@@ -1,0 +1,91 @@
+From 28027a62b7aadfd0e09fbdc36512c4be456a4b69 Mon Sep 17 00:00:00 2001
+From: Avnish Chouhan <avnish@linux.ibm.com>
+Date: Tue, 25 Aug 2026 19:24:50 +0530
+Subject: [PATCH 1/2] ieee1275: ofdisk: fix NULL deref and use-after-free in
+ ofdisk_hash_add
+
+Fix use-after-free on 'curcan' and NULL dereference on 'pcan' in
+ofdisk_hash_add(), and add a defensive NULL check in
+check_string_removable().
+
+V2:
+Fixed curcan leak issue.
+
+Signed-off-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/233>
+---
+ grub-core/disk/ieee1275/ofdisk.c | 38 +++++++++++++++++++++++---------
+ 1 file changed, 27 insertions(+), 11 deletions(-)
+
+diff --git a/grub-core/disk/ieee1275/ofdisk.c b/grub-core/disk/ieee1275/ofdisk.c
+index 384321cd2..bcc3c0c51 100644
+--- a/grub-core/disk/ieee1275/ofdisk.c
++++ b/grub-core/disk/ieee1275/ofdisk.c
+@@ -151,7 +151,12 @@ ofdisk_hash_add_real (char *devpath)
+ static int
+ check_string_removable (const char *str)
+ {
+-  const char *ptr = grub_strrchr (str, '/');
++  const char *ptr;
++
++  if (!str)
++    return 0;
++
++  ptr = grub_strrchr (str, '/');
+ 
+   if (ptr)
+     ptr++;
+@@ -169,6 +174,12 @@ ofdisk_hash_add (char *devpath, char *curcan)
+ 
+   grub_dprintf ("disk", "devpath = %s, canonical = %s\n", devpath, curcan);
+ 
++  if (!p)
++    {
++      grub_free (curcan);
++      return NULL;
++    }
++
+   if (!curcan)
+     {
+       p->shortest = p->devpath;
+@@ -182,21 +193,26 @@ ofdisk_hash_add (char *devpath, char *curcan)
+   if (!pcan)
+     pcan = ofdisk_hash_add_real (curcan);
+   else
+-    grub_free (curcan);
++    {
++      grub_free (curcan);
++      curcan = NULL;
++    }
++
++  if (!pcan)
++    {
++      grub_free (curcan);
++      grub_errno = GRUB_ERR_NONE;
++      return p;
++    }
+ 
+   if (check_string_removable (devpath) || check_string_removable (curcan))
+     pcan->is_removable = 1;
+ 
+-  if (!pcan)
+-    grub_errno = GRUB_ERR_NONE;
+-  else
++  if (!pcan->shortest
++      || grub_strlen (pcan->shortest) > grub_strlen (devpath))
+     {
+-      if (!pcan->shortest
+-	  || grub_strlen (pcan->shortest) > grub_strlen (devpath))
+-	{
+-	  pcan->shortest = p->devpath;
+-	  pcan->grub_shortest = p->grub_devpath;
+-	}
++      pcan->shortest = p->devpath;
++      pcan->grub_shortest = p->grub_devpath;
+     }
+ 
+   return p;
+-- 
+2.55.0
+
