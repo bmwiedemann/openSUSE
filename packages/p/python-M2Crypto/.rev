@@ -1021,4 +1021,24 @@ Update to 0.36.0:
 - Remove upstreamed 32bit_ASN1_Time.patch</comment>
     <requestid>1382336</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>7cd8a062555a3f547e0a458f2b7906fe</srcmd5>
+    <version>0.50.0</version>
+    <time>1791995603</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.51.0:
+  - CVE-2026-109087: hostname verification vulnerable
+    to subjectAltName injection (bsc#1285047,
+    https://codefloe.com/mcepl/m2crypto/issues/409) SSL.Checker
+    no longer splits the printed subjectAltName on commas. A
+    URI, email or otherName SAN containing &quot;,DNS:&lt;host&gt;&quot; was
+    accepted as a DNS identity for &lt;host&gt;. Hostname checks now
+    use OpenSSL's X509_check_host()/X509_check_ip_asc() on the
+    decoded GeneralNames.
+  - Fix regex injection in TLS hostname verification (no CVE,
+    kindly reported by eGkritsis)
+  - adding the project to the Anthropic OSS Security Scanner
+    (https://github.com/anthropics/oss-scanner/pull/479)</comment>
+    <requestid>1384451</requestid>
+  </revision>
 </revisionlist>
