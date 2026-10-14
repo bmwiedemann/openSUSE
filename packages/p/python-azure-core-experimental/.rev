@@ -25,4 +25,17 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164675 from glaubitz)</comment>
     <requestid>1165072</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>de475fcccbbf14e452c950de690628bb</srcmd5>
+    <version>1.0.0~b4</version>
+    <time>1791996467</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section (forwarded request 1384778 from glaubitz)</comment>
+    <requestid>1384779</requestid>
+  </revision>
 </revisionlist>
