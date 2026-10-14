@@ -29,7 +29,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-dulwich
-Version:        1.2.14
+Version:        1.2.17
 Release:        0
 Summary:        Pure-Python Git Library
 License:        Apache-2.0 OR GPL-2.0-or-later
