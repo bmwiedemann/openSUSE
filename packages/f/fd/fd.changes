@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Tue Oct 13 22:43:55 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- Update to version 10.5.0:
+  * chore: Buimp to version 10.5.0
+  * build(deps): bump actions/attest from 4.2.0 to 4.2.1
+  * build(deps): bump globset from 0.4.18 to 0.4.19
+  * build(deps): bump crossbeam-channel from 0.5.15 to 0.5.16
+  * build(deps): bump ignore from 0.4.26 to 0.4.31
+  * build(deps): bump anyhow from 1.0.102 to 1.0.104
+  * build(deps): bump libc from 0.2.186 to 0.2.189
+  * Reject out-of-range '@' Unix timestamp instead of panicking
+  * Add failing test for out-of-range '@' Unix timestamp
+  * add -u flag to example so it works
+  * build(deps): bump actions/checkout from 7.0.0 to 7.0.1
+  * build(deps): bump actions/attest from 4.1.1 to 4.2.0
+  * fix: New clippy warnings
+  * build(deps): bump softprops/action-gh-release from 3.0.1 to 3.0.2
+  * Fix inconsistent code fence language in README.md
+  * docs: update required Rust version in README (1.77.2 -> 1.90.0, matching Cargo.toml rust-version)
+  * build(deps): bump actions/attest from 4.1.0 to 4.1.1
+  * build(deps): bump jiff from 0.2.27 to 0.2.29
+  * build(deps): bump regex from 1.12.3 to 1.12.4
+  * build(deps): bump ignore from 0.4.25 to 0.4.26
+  * build(deps): bump nix from 0.31.2 to 0.31.3
+  * refactor: Get io error from method
+  * docs(README): use consistent thousands separator
+  * build(deps): bump softprops/action-gh-release from 3.0.0 to 3.0.1
+  * Add tests for search_str_for_entry without base dir
+  * fix: flag path separators in --and patterns, not just the primary pattern
+  * build(deps): bump actions/checkout from 6.0.3 to 7.0.0
+  * build(deps): bump actions/checkout from 6.0.2 to 6.0.3
+  * docs: clarify extension filter scope
+  * build(deps): bump clap_complete from 4.6.2 to 4.6.5
+  * build(deps): bump normpath from 1.5.0 to 1.5.1
+  * build(deps): bump actions/checkout from 6 to 6.0.2
+  * build(deps): bump tikv-jemallocator from 0.6.1 to 0.7.0
+  * build(deps): bump filetime from 0.2.27 to 0.2.29
+  * build(deps): bump jiff from 0.2.24 to 0.2.27
+  * Swap regex and glob, fixing space.
+  * Update src/cli.rs
+  * docs: Remove unnecessary phrase
+  * fix format
+  * improve patch
+  * That period shouldn't have been included
+  * docs: Update Help String
+  * Apply changelog wording suggestion
+  * Treat single dash as search path
+  * docs: drop accidental --full-path edits from extension PR
+  * docs: clarify that -e/--extension matches all entry types
+  * docs: Add --exact to man page
+  * docs: Add --exact to changelog
+  * fix: --exact should conflict with --fix-strings
+  * test: Should not match substring filenames
+  * cleanup
+  * optimize
+  * formatting
+  * apply strict filter
+  * build(deps): bump clap_complete from 4.6.0 to 4.6.2
+  * build(deps): bump clap from 4.6.0 to 4.6.1
+  * build(deps): bump libc from 0.2.183 to 0.2.186
+  * build(deps): bump jiff from 0.2.23 to 0.2.24
+  * formatting
+  * docs: Update suggested non-regex note on regex failure
+  * docs: Add policy for comments
+  * test: Add --exact test cases, add --fixed-string cases too
+  * feat: Add --exact argument to match exact filename
+  * tests: gate forward-slash+full-path test off Windows
+  * test: Fix included files
+  * fix: flag any pattern containing a path separator, not just ones that name a directory
+  * build(deps): bump softprops/action-gh-release from 2.6.1 to 3.0.0
+  * docs: address review feedback
+  * improve patch
+  * docs: document PowerShell placeholder quoting requirement
+  * fix: sanitize escape sequence injection
+  * build(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
+  * docs: Add PR Expectations
+  * feat: add --ignore-parent option to override --no-ignore-parent
+  * docs: fix macOS spelling in BSD ls comment
+  * build(deps): bump clap from 4.5.60 to 4.6.0
+  * build(deps): bump clap_complete from 4.5.66 to 4.6.0
+  * build(deps): bump tempfile from 3.26.0 to 3.27.0
+  * Update README
+  * chore: Update os matrix
+  * fix(ci): Remove unnecessary compression
+  * fix: correct attestation subjects
+  * build(deps): bump softprops/action-gh-release from 2.5.0 to 2.6.1
+  * docs: fix CONTRIBUTING grammar
+  * refactor: Rename cwd as full_path_base
+  * refactor: Avoid unnecessary allocation
+  * docs: clarify --exec positional argument handling
+  * Change --exclude value name from "pattern" to "glob"
+  * chore: remove unrelated planning files
+  * fix: address review comments - use into_os_string() and move changelog to unreleased section
+  * refactor: cache cwd at startup instead of per-entry resolution
+  * ci: retrigger workflow for second validation pass
+  * fix: handle invalid working directories gracefully with --full-path (#1900)
+  * Add a little more automation for the release
+  * Fix completions for alias fdfind in deb package for bash, zsh and fish.
+
+-------------------------------------------------------------------
 Wed Mar 11 01:58:46 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 10.4.2:
