@@ -801,4 +801,19 @@ Updated oiio-detectplatform-others.patch to handle armv6l
       and link compatible with OpenImageIO 3.1.</comment>
     <requestid>1384381</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>6e8b9e1bd35bf0feb95c72893d978798</srcmd5>
+    <version>3.2.1.1</version>
+    <time>1791996533</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply 5519.patch to address some input memory check issues
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/5519
+  Allows us to reduce the memory _constraints to 16G again
+  Manually removed the binary patches for 
+  testsuite/openexr-bomb/big{tile,display}.exr in 5519.patch, that
+  rpmbuild does not support
+- Changed the source of oiio-images to OpenImageIO-images and ref to 
+  dev-3.3</comment>
+    <requestid>1384799</requestid>
+  </revision>
 </revisionlist>

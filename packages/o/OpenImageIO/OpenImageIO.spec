@@ -65,10 +65,12 @@ Group:          Productivity/Graphics/Other
 URL:            https://www.openimageio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenImageIO/releases/download/v%{version}/OpenImageIO-%{version}.tar.gz
 # this contains the actual test images, only used during build
-Source1:        oiio-images-%{images_ts}.tar.xz
+Source1:        OpenImageIO-images-%{images_ts}.tar.xz
 Source2:        series
 # PATCH-FIX-OPENSUSE skip-heif-tests.patch - We can not run heif tests in the official builds
 Patch1:         skip-heif-tests.patch
+# PATCH-FIX-UPSTREAM 5519.patch - apply https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/5519 to address some memory check issues
+Patch2:         5519.patch
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
 BuildRequires:  cmake >= 3.23
@@ -216,7 +218,7 @@ This package contains python bindings for OpenImageIO.
 %autosetup -p1 -b 1
 # CMake looks for images at <CMAKE_BINARY_DIR>/testsuite/oiio-images
 mkdir -p %{__builddir}/testsuite
-ln -sf %{_builddir}/oiio-images-%{images_ts} %{__builddir}/testsuite/oiio-images
+ln -sf %{_builddir}/OpenImageIO-images-%{images_ts} %{__builddir}/testsuite/oiio-images
 
 # Make sure that bundled libraries are not used
 rm -f src/include/pugiconfig.hpp \

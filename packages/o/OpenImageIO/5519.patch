@@ -1,0 +1,344 @@
+From 84149f2ac4c223c5b17f4643dbdd17c11ba4b5bf Mon Sep 17 00:00:00 2001
+From: Larry Gritz <lg@larrygritz.com>
+Date: Mon, 28 Sep 2026 15:41:33 -0700
+Subject: [PATCH 1/2] fix(ImageInput): Reject absurd tile/display sizes, and
+ related fixes
+
+Fixes #5506.
+
+ImageInput::check_open() applied "limits:resolution" only to the data
+window, so a tiny EXR declaring, for example, a 2^28-wide tile or an
+838M-wide display window got through, and later read_tiles() or maketx
+(which pads out to the full window) tried to allocate terabytes. Now
+also apply "limits:resolution" to the full/display window and tile
+dimensions, and "limits:imagesize_MB" to a single tile.
+
+Extras found along the way:
+
+Reshuffle the order of checks in check_open, so that the deterministic
+checks (like resolution) are first, and the "limits:imagesize_MB"
+checks (which depends on physical memory) are last. This helps ensure
+that a corrupt file fails the same way on every machine.
+
+When an ImageBuf allocation did fail, the ImageBuf ctor and reset()
+went on to zero() the missing pixels (assert/segfault), and IBA
+operations wrote through a LOCALBUFFER ImageBuf with no memory. Skip the
+zeroing when there are no pixels, make IBAprep fail with an error for
+such a dst, and have maketx check the top-level allocation.
+
+Have runtest.py pin limits:imagesize_MB=32768 via OPENIMAGEIO_OPTIONS
+unless already set, so the "bomb" tests exercise the format-specific
+compression-ratio checks rather than tripping the memory-dependent
+size limit on low-memory GHA CI runners. Make openexr-copy's
+openexr:core=1 detection tolerate extra options.
+
+Assisted-by: Claude Code / Claude Opus 5.5
+
+Signed-off-by: Larry Gritz <lg@larrygritz.com>
+---
+ src/include/OpenImageIO/imageio.h         |  25 +++++----
+ src/libOpenImageIO/imagebuf.cpp           |   4 +-
+ src/libOpenImageIO/imagebufalgo.cpp       |  20 +++++++
+ src/libOpenImageIO/imageinput.cpp         |  62 +++++++++++++++++-----
+ src/libOpenImageIO/maketexture.cpp        |   9 +++-
+ testsuite/openexr-bomb/ref/out-exr22.txt  |  15 ++++++
+ testsuite/openexr-bomb/ref/out.txt        |  16 ++++++
+ testsuite/openexr-bomb/run.py             |   9 ++++
+ testsuite/openexr-bomb/src/bigdisplay.exr | Bin 0 -> 496 bytes
+ testsuite/openexr-bomb/src/bigtile.exr    | Bin 0 -> 494 bytes
+ testsuite/openexr-copy/run.py             |   2 +-
+ testsuite/runtest.py                      |   8 +++
+ 12 files changed, 142 insertions(+), 28 deletions(-)
+ create mode 100644 testsuite/openexr-bomb/src/bigdisplay.exr
+ create mode 100644 testsuite/openexr-bomb/src/bigtile.exr
+
+diff --git a/src/include/OpenImageIO/imageio.h b/src/include/OpenImageIO/imageio.h
+index 5abaf5902f..6f0da32c52 100644
+--- a/src/include/OpenImageIO/imageio.h
++++ b/src/include/OpenImageIO/imageio.h
+@@ -2307,10 +2307,12 @@ class OIIO_API ImageInput {
+     ///   implied by `range`.
+     /// * Whether the channel count is within the `"limits:channels"` OIIO
+     ///   attribute.
+-    /// * Whether any single dimension (width, height, depth) is within the
++    /// * Whether any single dimension (width, height, depth) of the pixel
++    ///   data window, display window, or tile is within the
+     ///   `"limits:resolution"` OIIO attribute.
+-    /// * The total uncompressed pixel data size is expected to be within the
+-    ///   `"limits:imagesize_MB"` OIIO attribute.
++    /// * The total uncompressed pixel data size, and the size of a single
++    ///   tile, are expected to be within the `"limits:imagesize_MB"` OIIO
++    ///   attribute.
+     /// * The full_{width,height,depth} are valid and within the range.
+     ///
+     bool check_open (const ImageSpec &spec,
+@@ -3975,14 +3977,15 @@ OIIO_API std::string geterror(bool clear = true);
+ /// - `int limits:resolution` (1048576)
+ ///
+ ///    When nonzero, the maximum number of pixels allowed along any single
+-///    dimension (width, height, or depth) of an image. Images whose headers
+-///    indicate a larger dimension might be assumed to be corrupted or
+-///    malicious files. This complements `limits:imagesize_MB` by catching a
+-///    header that is small in one dimension but absurdly large in another,
+-///    which could otherwise slip under the total-size limit. The default is
+-///    1048576 (2^20). In situations when images with a larger single
+-///    dimension are expected to be encountered, you should raise this limit.
+-///    Setting the limit to 0 means having no limit. (Added in version 3.2.)
++///    dimension (width, height, or depth) of an image, its display window, or
++///    its tiles. Images whose headers indicate a larger dimension might be
++///    assumed to be corrupted or malicious files. This complements
++///    `limits:imagesize_MB` by catching a header that is small in one
++///    dimension but absurdly large in another, which could otherwise slip
++///    under the total-size limit. The default is 1048576 (2^20). In
++///    situations when images with a larger single dimension are expected to
++///    be encountered, you should raise this limit. Setting the limit to 0
++///    means having no limit. (Added in version 3.2.)
+ ///
+ /// - `int log_times` (0)
+ ///
+diff --git a/src/libOpenImageIO/imagebuf.cpp b/src/libOpenImageIO/imagebuf.cpp
+index d7fa67ca76..fbf06fdd42 100644
+--- a/src/libOpenImageIO/imagebuf.cpp
++++ b/src/libOpenImageIO/imagebuf.cpp
+@@ -625,7 +625,7 @@ ImageBuf::ImageBuf(const ImageSpec& spec, InitializePixels zero)
+ {
+     m_impl->alloc(spec);
+     // N.B. alloc will set m_bufspan
+-    if (zero == InitializePixels::Yes && !deep())
++    if (zero == InitializePixels::Yes && !deep() && localpixels())
+         ImageBufAlgo::zero(*this);
+ }
+ 
+@@ -995,7 +995,7 @@ void
+ ImageBuf::reset(const ImageSpec& spec, InitializePixels zero)
+ {
+     m_impl->reset("", spec);
+-    if (zero == InitializePixels::Yes && !deep())
++    if (zero == InitializePixels::Yes && !deep() && localpixels())
+         ImageBufAlgo::zero(*this);
+ }
+ 
+diff --git a/src/libOpenImageIO/imagebufalgo.cpp b/src/libOpenImageIO/imagebufalgo.cpp
+index 04b86f8ffa..2fd829acd4 100644
+--- a/src/libOpenImageIO/imagebufalgo.cpp
++++ b/src/libOpenImageIO/imagebufalgo.cpp
+@@ -60,6 +60,22 @@
+ OIIO_NAMESPACE_3_1_BEGIN
+ 
+ 
++// A local-buffer ImageBuf whose allocation failed has no pixel memory, and
++// must not be written to.
++static bool
++has_local_storage(ImageBuf& dst)
++{
++    if (dst.storage() == ImageBuf::LOCALBUFFER && !dst.deep()
++        && !dst.localpixels() && dst.spec().image_bytes()) {
++        if (!dst.has_error())
++            dst.errorfmt("ImageBuf has no allocated pixel memory");
++        return false;
++    }
++    return true;
++}
++
++
++
+ bool
+ ImageBufAlgo::IBAprep(ROI& roi, ImageBuf* dst, const ImageBuf* A,
+                       const ImageBuf* B, const ImageBuf* C,
+@@ -115,6 +131,8 @@ ImageBufAlgo::IBAprep(ROI& roi, ImageBuf* dst, const ImageBuf* A,
+         // to fully read it into allocated memory so that we're able
+         // to write to it subsequently.
+         dst->make_writable(true);
++        if (!has_local_storage(*dst))
++            return false;
+         // Whatever we're about to do to the image, it is almost certain
+         // to make any thumbnail wrong, so just clear it.
+         dst->clear_thumbnail();
+@@ -258,6 +276,8 @@ ImageBufAlgo::IBAprep(ROI& roi, ImageBuf* dst, const ImageBuf* A,
+         dst->reset(spec, (prepflags & IBAprep_FILL_ZERO_ALLOC)
+                              ? InitializePixels::Yes
+                              : InitializePixels::No);
++        if (!has_local_storage(*dst))
++            return false;
+ 
+         // If we just allocated more channels than the caller will write,
+         // clear the extra channels.
+diff --git a/src/libOpenImageIO/imageinput.cpp b/src/libOpenImageIO/imageinput.cpp
+index dc64d32979..5d8c578cdd 100644
+--- a/src/libOpenImageIO/imageinput.cpp
++++ b/src/libOpenImageIO/imageinput.cpp
+@@ -1711,19 +1711,6 @@ ImageInput::check_open(const ImageSpec& spec, ROI range, uint64_t /*flags*/)
+         }
+         return false;
+     }
+-    if (OIIO::pvt::limit_imagesize_MB
+-        && spec.image_bytes(true)
+-               > OIIO::pvt::limit_imagesize_MB * imagesize_t(1024 * 1024)) {
+-        errorfmt(
+-            "Uncompressed image size {:.1f} MB exceeds the {} MB limit.\n"
+-            "Image claimed to be {}x{}, {}-channel {}. Possible corrupt input?\n"
+-            "If this is a valid file, raise the OIIO attribute \"limits:imagesize_MB\".",
+-            float(spec.image_bytes(true)) / float(1024 * 1024),
+-            OIIO::pvt::limit_imagesize_MB, spec.width, spec.height,
+-            spec.nchannels, spec.format);
+-        return false;
+-    }
+-
+     // Check for sensible tile sizes. A tile dimension of 0 means "not
+     // tiled", which is always fine; only reject negative sizes and tile
+     // dimensions that exceed the same per-format ceiling already applied
+@@ -1743,6 +1730,19 @@ ImageInput::check_open(const ImageSpec& spec, ROI range, uint64_t /*flags*/)
+         return false;
+     }
+ 
++    // Also apply the resolution limit to tiles, so a bogus tile size can't
++    // trigger a huge allocation for a modest image.
++    if (spec.tile_width && OIIO::pvt::limit_resolution
++        && (spec.tile_width > OIIO::pvt::limit_resolution
++            || spec.tile_height > OIIO::pvt::limit_resolution
++            || spec.tile_depth > OIIO::pvt::limit_resolution)) {
++        errorfmt(
++            "{} tile size {}x{}x{} exceeds \"limits:resolution\" = {} for a single dimension. Possible corrupt input?\nIf you're sure this is a valid file, raise the OIIO global attribute \"limits:resolution\".",
++            format_name(), spec.tile_width, spec.tile_height, spec.tile_depth,
++            OIIO::pvt::limit_resolution);
++        return false;
++    }
++
+     // Check for invalid full_* values for sensibility
+     if (spec.full_width == 0 && spec.full_height == 0 && spec.full_depth == 0
+         && supports("noimage")) {
+@@ -1768,6 +1768,42 @@ ImageInput::check_open(const ImageSpec& spec, ROI range, uint64_t /*flags*/)
+                 spec.full_height);
+         return false;
+     }
++    if (OIIO::pvt::limit_resolution
++        && (spec.full_width > OIIO::pvt::limit_resolution
++            || spec.full_height > OIIO::pvt::limit_resolution
++            || spec.full_depth > OIIO::pvt::limit_resolution)) {
++        errorfmt(
++            "{} image full/display resolution {}x{}x{} exceeds \"limits:resolution\" = {} for a single dimension. Possible corrupt input?\nIf you're sure this is a valid file, raise the OIIO global attribute \"limits:resolution\".",
++            format_name(), spec.full_width, spec.full_height, spec.full_depth,
++            OIIO::pvt::limit_resolution);
++        return false;
++    }
++
++    // Memory-size checks go last. The default "limits:imagesize_MB" depends
++    // on the machine's physical memory, so doing the deterministic checks
++    // first ensures a corrupt file fails the same way on every machine.
++    if (OIIO::pvt::limit_imagesize_MB
++        && spec.image_bytes(true)
++               > OIIO::pvt::limit_imagesize_MB * imagesize_t(1024 * 1024)) {
++        errorfmt(
++            "Uncompressed image size {:.1f} MB exceeds the {} MB limit.\n"
++            "Image claimed to be {}x{}, {}-channel {}. Possible corrupt input?\n"
++            "If this is a valid file, raise the OIIO attribute \"limits:imagesize_MB\".",
++            float(spec.image_bytes(true)) / float(1024 * 1024),
++            OIIO::pvt::limit_imagesize_MB, spec.width, spec.height,
++            spec.nchannels, spec.format);
++        return false;
++    }
++    if (spec.tile_width && OIIO::pvt::limit_imagesize_MB
++        && spec.tile_bytes(true)
++               > OIIO::pvt::limit_imagesize_MB * imagesize_t(1024 * 1024)) {
++        errorfmt(
++            "{} tile size {}x{}x{}x{} exceeds the {} MB limit. Possible corrupt input?\n"
++            "If this is a valid file, raise the OIIO attribute \"limits:imagesize_MB\".",
++            format_name(), spec.tile_width, spec.tile_height, spec.tile_depth,
++            spec.format, OIIO::pvt::limit_imagesize_MB);
++        return false;
++    }
+     return true;  // all is ok
+ }
+ 
+diff --git a/src/libOpenImageIO/maketexture.cpp b/src/libOpenImageIO/maketexture.cpp
+index 6de0ed6730..e1dd525f8d 100644
+--- a/src/libOpenImageIO/maketexture.cpp
++++ b/src/libOpenImageIO/maketexture.cpp
+@@ -1844,7 +1844,10 @@ make_texture_impl(ImageBufAlgo::MakeTextureMode mode, const ImageBuf* input,
+                         "  Copying for format conversion from {} to {}\n",
+                         src->spec().format, dstspec.format);
+         toplevel.reset(new ImageBuf(dstspec));
+-        toplevel->copy_pixels(*src);
++        if (toplevel->has_error() || !toplevel->copy_pixels(*src)) {
++            errorfmt("{}", toplevel->geterror());
++            return false;
++        }
+     } else {
+         // Resize
+         if (verbose)
+@@ -1854,6 +1857,10 @@ make_texture_impl(ImageBufAlgo::MakeTextureMode mode, const ImageBuf* input,
+         if (Strutil::istarts_with(resize_filter, "unsharp-"))
+             resize_filter = "lanczos3";
+         toplevel.reset(new ImageBuf(dstspec));
++        if (toplevel->has_error()) {
++            errorfmt("{}", toplevel->geterror());
++            return false;
++        }
+         if ((resize_filter == "box" || resize_filter == "triangle")
+             && !orig_was_overscan) {
+             ImageBufAlgo::parallel_image(get_roi(dstspec), nthreads,
+diff --git a/testsuite/openexr-copy/run.py b/testsuite/openexr-copy/run.py
+index 4020cfe9bf..39e6448f1a 100644
+--- a/testsuite/openexr-copy/run.py
++++ b/testsuite/openexr-copy/run.py
+@@ -35,7 +35,7 @@
+ ]
+ 
+ # OpenEXRInputCore is not supported yet. TODO: update this once it's implemented.
+-if os.environ.get("OPENIMAGEIO_OPTIONS") == "openexr:core=1":
++if "openexr:core=1" in os.environ.get("OPENIMAGEIO_OPTIONS", ""):
+     outputs = []
+ 
+ #print "Running this command:\n" + command + "\n"
+diff --git a/testsuite/runtest.py b/testsuite/runtest.py
+index 2dad15ee6d..30e563aa70 100755
+--- a/testsuite/runtest.py
++++ b/testsuite/runtest.py
+@@ -81,6 +81,14 @@ def make_relpath (path: str, start: str=os.curdir) -> str:
+ # Set it back so tests can use it (python-imagebufalgo)
+ os.putenv('OIIO_TESTSUITE_IMAGEDIR', OIIO_TESTSUITE_IMAGEDIR)
+ 
++# The default "limits:imagesize_MB" depends on physical memory. Pin it so
++# that corrupt-file tests fail the same way on every machine, including
++# low-memory CI runners. Tests may still override it.
++_oiio_opts = os.environ.get('OPENIMAGEIO_OPTIONS', '')
++if 'limits:imagesize_MB' not in _oiio_opts :
++    os.environ['OPENIMAGEIO_OPTIONS'] = ','.join(
++        filter(None, [_oiio_opts, 'limits:imagesize_MB=32768']))
++
+ refdir = "ref/"
+ refdirlist = [ refdir ]
+ mytest = os.path.split(os.path.abspath(os.getcwd()))[-1]
+
+From 0492546d1acd1c6ca7320cec186880285076da41 Mon Sep 17 00:00:00 2001
+From: Larry Gritz <lg@larrygritz.com>
+Date: Sun, 4 Oct 2026 12:57:38 -0700
+Subject: [PATCH 2/2] Rearrange some lines for clarity
+
+Signed-off-by: Larry Gritz <lg@larrygritz.com>
+---
+ src/libOpenImageIO/maketexture.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/libOpenImageIO/maketexture.cpp b/src/libOpenImageIO/maketexture.cpp
+index e1dd525f8d..339b4e7ac3 100644
+--- a/src/libOpenImageIO/maketexture.cpp
++++ b/src/libOpenImageIO/maketexture.cpp
+@@ -1853,14 +1853,14 @@ make_texture_impl(ImageBufAlgo::MakeTextureMode mode, const ImageBuf* input,
+         if (verbose)
+             OIIO::print(outstream, "  Resizing image to {} x {}\n",
+                         dstspec.width, dstspec.height);
+-        string_view resize_filter(filtername);
+-        if (Strutil::istarts_with(resize_filter, "unsharp-"))
+-            resize_filter = "lanczos3";
+         toplevel.reset(new ImageBuf(dstspec));
+         if (toplevel->has_error()) {
+             errorfmt("{}", toplevel->geterror());
+             return false;
+         }
++        string_view resize_filter(filtername);
++        if (Strutil::istarts_with(resize_filter, "unsharp-"))
++            resize_filter = "lanczos3";
+         if ((resize_filter == "box" || resize_filter == "triangle")
+             && !orig_was_overscan) {
+             ImageBufAlgo::parallel_image(get_roi(dstspec), nthreads,
