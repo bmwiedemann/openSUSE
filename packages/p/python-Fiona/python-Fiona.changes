@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 13 09:12:01 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Remove the duplicate license copy shipped in the wheel's dist-info
+  metadata; the license tag in the files section already installs
+  the canonical copy
+- Drop the libopenblas_pthreads0 BuildRequires: the BLAS runtime the
+  test suite needs is already pulled in transitively in its serial
+  flavour, which satisfies the libblas.so.3 requirement of the
+  libarmadillo library that libgdal links
+- Document why the gdal and proj BuildRequires are needed by the
+  test suite (GDAL driver templates and PROJ data files)
+- Reword a BuildRequires comment that tripped the macro-in-comment
+  check, and drop the Group tag from the fiona-fio subpackage
+
+-------------------------------------------------------------------
 Sun Jul 19 05:41:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add libopenblas_pthreads0 to BuildRequires so the test suite can

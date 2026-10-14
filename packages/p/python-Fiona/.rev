@@ -57,4 +57,12 @@ Notable dependencies of geopandas includes several commonly used OpenStreetMap l
     <comment>Fix build: libopenblas_pthreads0 BuildRequires (libgdal-&gt;armadillo-&gt;OpenBLAS) and skip GDAL 3.13-incompatible GeoJSON tests</comment>
     <requestid>1366576</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>dc02695edcbd3b143301743747d55bf4</srcmd5>
+    <version>1.10.1</version>
+    <time>1791995717</time>
+    <user>dimstar_suse</user>
+    <comment>Forward Application:Geo/python-Fiona license dedup + BR cleanup (SR 1384561); branch builds green.</comment>
+    <requestid>1384659</requestid>
+  </revision>
 </revisionlist>

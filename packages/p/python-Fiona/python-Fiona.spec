@@ -30,12 +30,12 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+# The test suite needs the GDAL data files (driver templates in
+# /usr/share/gdal, e.g. header.dxf), which ship in the tools package.
 BuildRequires:  gdal
 BuildRequires:  libgdal-devel
-# libgdal pulls in libarmadillo, which links OpenBLAS; the %check imports the
-# GDAL-backed fiona._env extension, so the BLAS runtime must be present in the
-# build root (it is otherwise only a weak dependency and is left out).
-BuildRequires:  libopenblas_pthreads0
+# The test suite needs the PROJ data files (proj.db) at runtime and the
+# proj pkg-config file to locate them; neither is pulled in transitively.
 BuildRequires:  proj
 BuildRequires:  proj-devel
 BuildRequires:  python-rpm-macros
@@ -44,6 +44,7 @@ Requires:       python-certifi
 Requires:       python-click >= 8.0
 Requires:       python-click-plugins
 Requires:       python-cligj >= 0.5
+Recommends:     fiona-fio
 Recommends:     python-Shapely
 Recommends:     python-boto3
 Recommends:     python-pyparsing
@@ -61,7 +62,6 @@ BuildRequires:  %{python_module pyproj}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 # /SECTION
-Recommends:     fiona-fio
 %python_subpackages
 
 %description
@@ -69,7 +69,6 @@ Fiona is OGR's spatial data API for Python programmers.
 
 %package     -n fiona-fio
 Summary:        Program for reading and writing spatial data files
-Group:          Productivity/Scientific/Other
 Requires:       python3-Fiona = %{version}
 Conflicts:      fio
 BuildArch:      noarch
@@ -86,6 +85,9 @@ using OGR's Fiona package.
 
 %install
 %pyproject_install
+# The wheel ships a second copy of the license in dist-info; the canonical
+# copy is the one installed via the license tag in the files section.
+%python_expand rm -r %{buildroot}%{$python_sitearch}/fiona-%{version}.dist-info/licenses
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
