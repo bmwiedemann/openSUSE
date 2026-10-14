@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:48:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.6:
+  * fix(kumactl): warn on preview version mismatch (backport of
+    #19042) (#19043)
+  * chore(deps): bump envoy from 1.38.6 to 1.38.7 (#19143)
+  * chore(deps/dev): bump go from 1.27.1 to 1.27.2 (#19133)
+  * chore(deps): bump envoy from 1.38.4 to 1.38.6 (#19075)
+  * chore(deps): bump golang.org/x/net from 0.58.0 to 0.60.0
+    (#19032)
+
+-------------------------------------------------------------------
 Sat Sep 19 09:22:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.5:
