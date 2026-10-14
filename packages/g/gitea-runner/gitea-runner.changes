@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 14 12:19:27 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 5.1.0:
+  * fix: give each docker proxy its own job label key (#1314)
+  * enhance: report the steps of a task as they run (#1293)
+  * fix: job container, daemon startup, action cache and exec fixes (#1294)
+
+-------------------------------------------------------------------
 Fri Oct 09 12:23:53 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 5.0.0:
