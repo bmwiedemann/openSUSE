@@ -1,7 +1,7 @@
 #
 # spec file for package libupnpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define so_ver  17
 Name:           libupnpp
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Library providing a higher level API over libnpupnp or libupnp
 License:        LGPL-2.1-or-later
@@ -31,7 +31,6 @@ Source2:        %{name}.keyring
 BuildRequires:  c++_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libnpupnp) >= 6.0.0
 

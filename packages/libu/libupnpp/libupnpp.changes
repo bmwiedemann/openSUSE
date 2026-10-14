@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 16:28:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.4:
+  * Build: use internal XML parser instead of expat.
+- Drop pkgconfig(expat) BuildRequires: following upstream changes.
+
+-------------------------------------------------------------------
 Fri Jun  6 17:35:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.0.3:
