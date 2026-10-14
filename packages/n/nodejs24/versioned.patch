@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v24.14.1/Makefile
+Index: node-v24.19.0/Makefile
 ===================================================================
---- node-v24.14.1.orig/Makefile
-+++ node-v24.14.1/Makefile
+--- node-v24.19.0.orig/Makefile
++++ node-v24.19.0/Makefile
 @@ -77,7 +77,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v24.14.1/Makefile
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
  
-Index: node-v24.14.1/tools/install.py
+Index: node-v24.19.0/tools/install.py
 ===================================================================
---- node-v24.14.1.orig/tools/install.py
-+++ node-v24.14.1/tools/install.py
+--- node-v24.19.0.orig/tools/install.py
++++ node-v24.19.0/tools/install.py
 @@ -93,7 +93,7 @@ def uninstall(options, paths, dest):
      try_remove(options, path, dest)
  
@@ -113,10 +113,10 @@ Index: node-v24.14.1/tools/install.py
  
    if sys.platform == 'zos':
      zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
-Index: node-v24.14.1/doc/node.1
+Index: node-v24.19.0/doc/node.1
 ===================================================================
---- node-v24.14.1.orig/doc/node.1
-+++ node-v24.14.1/doc/node.1
+--- node-v24.19.0.orig/doc/node.1
++++ node-v24.19.0/doc/node.1
 @@ -28,24 +28,24 @@
  .Dt NODE 1
  .
@@ -138,7 +138,7 @@ Index: node-v24.14.1/doc/node.1
 -.Nm node
 +.Nm node24
  .Cm inspect
- .Op Fl e Ar string | Ar script.js | Fl | Ar <host>:<port>
+ .Op Ar <program-entry-point> | Fl e Ar string | Ar <host>:<port>
  .Ar ...
  .
 -.Nm node
@@ -146,10 +146,10 @@ Index: node-v24.14.1/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v24.14.1/src/node_main.cc
+Index: node-v24.19.0/src/node_main.cc
 ===================================================================
---- node-v24.14.1.orig/src/node_main.cc
-+++ node-v24.14.1/src/node_main.cc
+--- node-v24.19.0.orig/src/node_main.cc
++++ node-v24.19.0/src/node_main.cc
 @@ -94,6 +94,7 @@ int wmain(int argc, wchar_t* wargv[]) {
  // UNIX
  
@@ -158,10 +158,10 @@ Index: node-v24.14.1/src/node_main.cc
    return node::Start(argc, argv);
  }
  #endif
-Index: node-v24.14.1/tools/test.py
+Index: node-v24.19.0/tools/test.py
 ===================================================================
---- node-v24.14.1.orig/tools/test.py
-+++ node-v24.14.1/tools/test.py
+--- node-v24.19.0.orig/tools/test.py
++++ node-v24.19.0/tools/test.py
 @@ -985,7 +985,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -171,27 +171,29 @@ Index: node-v24.14.1/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v24.14.1/node.gyp
+Index: node-v24.19.0/node.gyp
 ===================================================================
---- node-v24.14.1.orig/node.gyp
-+++ node-v24.14.1/node.gyp
-@@ -6,10 +6,10 @@
-     'v8_enable_31bit_smis_on_64bit_arch%': 0,
+--- node-v24.19.0.orig/node.gyp
++++ node-v24.19.0/node.gyp
+@@ -7,12 +7,12 @@
      'force_dynamic_crt%': 0,
      'node_builtin_modules_path%': '',
+     # `node` executable target name.
 -    'node_core_target_name%': 'node',
 +    'node_core_target_name%': 'node24',
-     'node_enable_v8_vtunejit%': 'false',
-     'node_intermediate_lib_type%': 'static_library',
+     # `libnode` target type, `static_library` if `node_shared` is false and `shared_library` if `node_shared` is true.
+     'node_lib_type%': 'static_library',
+     # `libnode` target name, can be a `static_library` or `shared_library` based on `node_shared`.
+     # NOTE: Gyp will prefix this with `lib` if this name does not start with `lib`.
 -    'node_lib_target_name%': 'libnode',
 +    'node_lib_target_name%': 'libnode24',
      'node_module_version%': '',
      'node_no_browser_globals%': 'false',
      'node_shared_brotli%': 'false',
-Index: node-v24.14.1/test/parallel/test-snapshot-warning.js
+Index: node-v24.19.0/test/parallel/test-snapshot-warning.js
 ===================================================================
---- node-v24.14.1.orig/test/parallel/test-snapshot-warning.js
-+++ node-v24.14.1/test/parallel/test-snapshot-warning.js
+--- node-v24.19.0.orig/test/parallel/test-snapshot-warning.js
++++ node-v24.19.0/test/parallel/test-snapshot-warning.js
 @@ -60,7 +60,7 @@ tmpdir.refresh();
      stderr(output) {
        let match = output.match(/Warning: test warning/g);

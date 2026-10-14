@@ -2,8 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
---- a/test/parallel/test-module-loading-globalpaths.js
-+++ b/test/parallel/test-module-loading-globalpaths.js
+Index: node-v24.21.0/test/parallel/test-module-loading-globalpaths.js
+===================================================================
+--- node-v24.21.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v24.21.0/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -14,8 +16,10 @@ Summary: Fix CI unit tests framework for OBS building
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
---- a/test/parallel/test-tls-passphrase.js
-+++ b/test/parallel/test-tls-passphrase.js
+Index: node-v24.21.0/test/parallel/test-tls-passphrase.js
+===================================================================
+--- node-v24.21.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v24.21.0/test/parallel/test-tls-passphrase.js
 @@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
    }, onSecureConnect());
  })).unref();
@@ -25,8 +29,10 @@ Summary: Fix CI unit tests framework for OBS building
  
  // Missing passphrase
  assert.throws(function() {
---- a/test/parallel/test-repl-envvars.js
-+++ b/test/parallel/test-repl-envvars.js
+Index: node-v24.21.0/test/parallel/test-repl-envvars.js
+===================================================================
+--- node-v24.21.0.orig/test/parallel/test-repl-envvars.js
++++ node-v24.21.0/test/parallel/test-repl-envvars.js
 @@ -3,6 +3,8 @@
  // Flags: --expose-internals
  
@@ -36,8 +42,10 @@ Summary: Fix CI unit tests framework for OBS building
  const stream = require('stream');
  const { describe, test } = require('node:test');
  const REPL = require('internal/repl');
---- a/Makefile
-+++ b/Makefile
+Index: node-v24.21.0/Makefile
+===================================================================
+--- node-v24.21.0.orig/Makefile
++++ node-v24.21.0/Makefile
 @@ -406,7 +406,6 @@ ADDONS_HEADERS_PREREQS := tools/install.
  	$(wildcard deps/uv/include/*/*.h) \
  	$(wildcard deps/v8/include/*.h) \
@@ -64,8 +72,10 @@ Summary: Fix CI unit tests framework for OBS building
  		echo "Skipping tools/doc/node_modules (no crypto and/or no ICU)"; \
  	else \
  		cd tools/doc && $(call available-node,$(run-npm-ci)) \
---- a/tools/test.py
-+++ b/tools/test.py
+Index: node-v24.21.0/tools/test.py
+===================================================================
+--- node-v24.21.0.orig/tools/test.py
++++ node-v24.21.0/tools/test.py
 @@ -1399,7 +1399,7 @@ def BuildOptions():
    result.add_argument("-s", "--suite", help="A test suite",
        default=[], action="append")
@@ -75,20 +85,24 @@ Summary: Fix CI unit tests framework for OBS building
    result.add_argument("--arch", help='The architecture to run tests for',
        default='none')
    result.add_argument("--snapshot", help="Run the tests with snapshot turned on",
---- a/test/parallel/test-crypto-dh.js
-+++ b/test/parallel/test-crypto-dh.js
-@@ -93,7 +93,7 @@ const {
+Index: node-v24.21.0/test/parallel/test-crypto-dh.js
+===================================================================
+--- node-v24.21.0.orig/test/parallel/test-crypto-dh.js
++++ node-v24.21.0/test/parallel/test-crypto-dh.js
+@@ -91,7 +91,7 @@ const {
+   {
+     assert.throws(() => {
        dh3.computeSecret('');
-     }, { message: process.features.openssl_is_boringssl ?
-       'Supplied key is invalid' :
--      'Supplied key is too small' });
-+      /Supplied key is too small|invalid public key/ });
+-    }, { message: 'Supplied key is too small' });
++    }, { message: /Supplied key is too small|invalid public key/ });
    }
  }
  
---- a/test/parallel/test-dns.js
-+++ b/test/parallel/test-dns.js
-@@ -401,7 +401,7 @@ assert.throws(() => {
+Index: node-v24.21.0/test/parallel/test-dns.js
+===================================================================
+--- node-v24.21.0.orig/test/parallel/test-dns.js
++++ node-v24.21.0/test/parallel/test-dns.js
+@@ -439,7 +439,7 @@ assert.throws(() => {
  
    const server = dgram.createSocket('udp4');
  
@@ -97,8 +111,10 @@ Summary: Fix CI unit tests framework for OBS building
      const parsed = dnstools.parseDNSPacket(msg);
      const domain = parsed.questions[0].domain;
      assert.strictEqual(domain, 'example.org');
---- a/test/wpt/test-webcrypto.js
-+++ b/test/wpt/test-webcrypto.js
+Index: node-v24.21.0/test/wpt/test-webcrypto.js
+===================================================================
+--- node-v24.21.0.orig/test/wpt/test-webcrypto.js
++++ node-v24.21.0/test/wpt/test-webcrypto.js
 @@ -1,7 +1,8 @@
  'use strict';
  
@@ -109,8 +125,10 @@ Summary: Fix CI unit tests framework for OBS building
    common.skip('missing crypto');
  
  const { WPTRunner } = require('../common/wpt');
---- a/test/parallel/test-sqlite.js
-+++ b/test/parallel/test-sqlite.js
+Index: node-v24.21.0/test/parallel/test-sqlite.js
+===================================================================
+--- node-v24.21.0.orig/test/parallel/test-sqlite.js
++++ node-v24.21.0/test/parallel/test-sqlite.js
 @@ -243,6 +243,7 @@ suite('SQL APIs enabled at build time',
    });
  
@@ -135,8 +153,10 @@ Summary: Fix CI unit tests framework for OBS building
      const db = new DatabaseSync(':memory:');
      db.exec(`
        CREATE VIRTUAL TABLE t1 USING geopoly(a,b,c);
---- a/test/parallel/test-internal-util-construct-sab.js
-+++ b/test/parallel/test-internal-util-construct-sab.js
+Index: node-v24.21.0/test/parallel/test-internal-util-construct-sab.js
+===================================================================
+--- node-v24.21.0.orig/test/parallel/test-internal-util-construct-sab.js
++++ node-v24.21.0/test/parallel/test-internal-util-construct-sab.js
 @@ -1,7 +1,6 @@
  // Flags: --enable-sharedarraybuffer-per-context --expose-internals
  'use strict';
@@ -145,9 +165,11 @@ Summary: Fix CI unit tests framework for OBS building
  const assert = require('assert');
  const { kMaxLength } = require('buffer');
  const { isSharedArrayBuffer } = require('util/types');
---- a/test/common/index.js
-+++ b/test/common/index.js
-@@ -925,6 +925,7 @@ function sleepSync(ms) {
+Index: node-v24.21.0/test/common/index.js
+===================================================================
+--- node-v24.21.0.orig/test/common/index.js
++++ node-v24.21.0/test/common/index.js
+@@ -956,6 +956,7 @@ function resolveBuiltBinary(binary) {
  
  const common = {
    allowGlobals,
@@ -155,8 +177,10 @@ Summary: Fix CI unit tests framework for OBS building
    buildType,
    canCreateSymLink,
    childShouldThrowAndAbort,
---- a/test/common/index.mjs
-+++ b/test/common/index.mjs
+Index: node-v24.21.0/test/common/index.mjs
+===================================================================
+--- node-v24.21.0.orig/test/common/index.mjs
++++ node-v24.21.0/test/common/index.mjs
 @@ -5,6 +5,7 @@ const common = require('./index.js');
  
  const {

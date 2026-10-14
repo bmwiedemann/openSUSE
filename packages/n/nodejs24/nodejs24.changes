@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Oct 12 08:16:37 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to 24.21.0:
+ - crypto: update root certificates to NSS 3.126
+ - crypto: support loading private keys through STORE loaders
+ - deps: update Undici to 7.29.1
+ - lib,src: improve histogram implementation
+ - net: improve performance of net.BlockList
+ - perf_hooks: add statistical hypothesis testing to histogram
+ - util: add non-throwing MIMEType.parse
+for details see https://nodejs.org/en/blog/release/v24.21.0
+
+- fix_ci_tests.patch: refreshed
+- no_avx2_on_i586.patch: remove AVX2 from i586
+
+-------------------------------------------------------------------
+Fri Sep  4 13:55:24 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to 24.20.0:
+  - async_hooks: add using scopes to AsyncLocalStorage
+  - buffer: add end parameter
+  - doc: add MikeMcC399 as collaborator
+  - lib,permission: add permission.drop
+  - loader: implement package maps
+  - src,permission: add --permission-audit
+  - stream: add node:stream/iter implementation
+  - test_runner: add context.log() and test:log event
+  - test_runner: report entryFile in TestStream events
+  - wasm: enable JSPI
+for details see https://github.com/nodejs/node/releases#release-v24.20.0
+
+- ngtcp2_bsc1262274.patch: dropped, upstreamed
+
+-------------------------------------------------------------------
+Tue Aug 25 10:39:43 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- npm-line-truncation.patch: do not truncate long lines in help output (bsc#1276224)
+
+-------------------------------------------------------------------
+Mon Aug  3 14:12:24 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to 24.19.0:
+  - buffer: implement blob.textStream()
+  - deps: update OpenSSL build config to support compression
+  - doc: update blockList stability status to release candidate
+  - doc: mark stream.compose stable
+  - esm: add --experimental-import-text flag
+  - fs: support caller-supplied readFile() buffers
+  - http: add httpValidation option to configure header value validation
+  - net: support TCP_KEEPINTVL and TCP_KEEPCNT in setKeepAlive
+  - perf_hooks: sample delay per event loop iteration
+  - src: allow empty --experimental-config-file
+  - stream: expose ReadableStreamTee
+  - tls: report negotiated TLS groups
+  - tls: add certificateCompression option
+
+- pacote-bsc1266318.patch: upstreamed, dropped
+- versioned.patch: refreshed
+
+For detailed changes, see https://github.com/nodejs/node/releases#release-v24.19.0
+
+-------------------------------------------------------------------
+Mon Aug  3 13:04:54 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- CVE-2026-54272: ip-address.patch: misclassification of IPv4-mapped/NAT64 IPv6 addresses allows for bypass of SSRF and trust-boundary checks (bsc#1272882)
+
+-------------------------------------------------------------------
 Fri Jul 31 15:47:34 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Update to 24.18.1:

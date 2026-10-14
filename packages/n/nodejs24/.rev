@@ -221,4 +221,41 @@ for details, see https://nodejs.org/en/blog/release/v24.14.0
   - CVE-2026-58044: HTTP parser header truncation can enable request smuggling (bsc#1272951)</comment>
     <requestid>1369028</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a6b913fda77d4c92e2bc99c70cff6416</srcmd5>
+    <version>24.21.0</version>
+    <time>1791995658</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 24.21.0:
+ - crypto: update root certificates to NSS 3.126
+ - crypto: support loading private keys through STORE loaders
+ - deps: update Undici to 7.29.1
+ - lib,src: improve histogram implementation
+ - net: improve performance of net.BlockList
+ - perf_hooks: add statistical hypothesis testing to histogram
+ - util: add non-throwing MIMEType.parse
+for details see https://nodejs.org/en/blog/release/v24.21.0
+- fix_ci_tests.patch: refreshed
+- no_avx2_on_i586.patch: remove AVX2 from i586
+
+- Update to 24.20.0:
+  - async_hooks: add using scopes to AsyncLocalStorage
+  - buffer: add end parameter
+  - doc: add MikeMcC399 as collaborator
+  - lib,permission: add permission.drop
+  - loader: implement package maps
+  - src,permission: add --permission-audit
+  - stream: add node:stream/iter implementation
+  - test_runner: add context.log() and test:log event
+  - test_runner: report entryFile in TestStream events
+  - wasm: enable JSPI
+for details see https://github.com/nodejs/node/releases#release-v24.20.0
+- ngtcp2_bsc1262274.patch: dropped, upstreamed
+
+- npm-line-truncation.patch: do not truncate long lines in help output (bsc#1276224)
+
+- Update to 24.19.0:
+  - buffer: implement blob.textStream()</comment>
+    <requestid>1384624</requestid>
+  </revision>
 </revisionlist>
