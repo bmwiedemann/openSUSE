@@ -104,4 +104,13 @@
   * Added KF6TextAutoCorrectionCore library and development files (forwarded request 1383857 from RN)</comment>
     <requestid>1383978</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>82b598ddd6bd47aa43145a6a0f97db60</srcmd5>
+    <version>2.2.0</version>
+    <time>1791995669</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix ABI break:
+  * 0001-Revert-Remove-default-destructor-which-allows-to-use.patch (forwarded request 1384760 from Vogtinator)</comment>
+    <requestid>1384761</requestid>
+  </revision>
 </revisionlist>

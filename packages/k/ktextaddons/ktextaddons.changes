@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 09:04:35 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix ABI break:
+  * 0001-Revert-Remove-default-destructor-which-allows-to-use.patch
+
+-------------------------------------------------------------------
 Sun Sep 27 17:49:47 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to 2.2.0

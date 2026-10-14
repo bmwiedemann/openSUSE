@@ -1,0 +1,3667 @@
+From b34f3513ff4ee7a4fc1f5bbe5fda50824748c7c6 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 14 Oct 2026 11:09:17 +0200
+Subject: [PATCH] Revert "Remove default destructor which allows to use
+ std::move"
+
+This reverts commit bf7a37ebe31c92249942abe4ddca5034266b24e7.
+---
+ textaddonswidgets/whatsnew/whatsnewinfo.cpp                  | 2 ++
+ textaddonswidgets/whatsnew/whatsnewinfo.h                    | 4 ++++
+ textautogeneratetext/core/textautogeneratesearchmessage.cpp  | 2 ++
+ textautogeneratetext/core/textautogeneratesearchmessage.h    | 4 ++++
+ .../core/tools/textautogeneratetexttoolinternal.cpp          | 2 ++
+ .../core/tools/textautogeneratetexttoolinternal.h            | 3 +++
+ .../modelsmanager/genericnetworkmodelavailableinfos.cpp      | 2 ++
+ .../modelsmanager/genericnetworkmodelavailableinfos.h        | 1 +
+ .../lmstudio/modelsmanager/lmstudiomodelinstalledinfo.cpp    | 2 ++
+ .../lmstudio/modelsmanager/lmstudiomodelinstalledinfo.h      | 1 +
+ .../ollama/modelsmanager/ollamamodelinstalledinfo.cpp        | 2 ++
+ .../plugins/ollama/modelsmanager/ollamamodelinstalledinfo.h  | 1 +
+ .../plugins/ollamacommon/ollamacommonmodelsavalableinfos.cpp | 2 ++
+ .../plugins/ollamacommon/ollamacommonmodelsavalableinfos.h   | 1 +
+ .../plugins/plugincommon/plugincommonmodelinstalledinfo.h    | 5 -----
+ .../widgets/menu/textautogeneratemenutextinfo.cpp            | 2 ++
+ .../widgets/menu/textautogeneratemenutextinfo.h              | 3 +++
+ .../core/common/mcpprotocolsettings.cpp                      | 2 ++
+ .../core/common/mcpprotocolsettings.h                        | 1 +
+ .../core/impl/mcpprotocolannotations.cpp                     | 2 ++
+ .../core/impl/mcpprotocolannotations.h                       | 3 +++
+ .../core/impl/mcpprotocolaudiocontent.cpp                    | 2 ++
+ .../core/impl/mcpprotocolaudiocontent.h                      | 3 +++
+ .../core/impl/mcpprotocolbasemetadata.cpp                    | 2 ++
+ .../core/impl/mcpprotocolbasemetadata.h                      | 3 +++
+ .../core/impl/mcpprotocolblobresourcecontents.cpp            | 2 ++
+ .../core/impl/mcpprotocolblobresourcecontents.h              | 3 +++
+ .../core/impl/mcpprotocolbooleanschema.cpp                   | 2 ++
+ .../core/impl/mcpprotocolbooleanschema.h                     | 3 +++
+ .../core/impl/mcpprotocolcalltoolrequest.cpp                 | 2 ++
+ .../core/impl/mcpprotocolcalltoolrequest.h                   | 3 +++
+ .../core/impl/mcpprotocolcalltoolrequestparams.cpp           | 2 ++
+ .../core/impl/mcpprotocolcalltoolrequestparams.h             | 3 +++
+ .../core/impl/mcpprotocolcalltoolresult.cpp                  | 2 ++
+ .../core/impl/mcpprotocolcalltoolresult.h                    | 3 +++
+ .../core/impl/mcpprotocolcancellednotification.cpp           | 2 ++
+ .../core/impl/mcpprotocolcancellednotification.h             | 3 +++
+ .../core/impl/mcpprotocolcancellednotificationparams.cpp     | 2 ++
+ .../core/impl/mcpprotocolcancellednotificationparams.h       | 3 +++
+ .../core/impl/mcpprotocolcanceltaskrequest.cpp               | 2 ++
+ .../core/impl/mcpprotocolcanceltaskrequest.h                 | 3 +++
+ .../core/impl/mcpprotocolcanceltaskresult.cpp                | 2 ++
+ .../core/impl/mcpprotocolcanceltaskresult.h                  | 3 +++
+ .../core/impl/mcpprotocolcompleterequest.cpp                 | 2 ++
+ .../core/impl/mcpprotocolcompleterequest.h                   | 3 +++
+ .../core/impl/mcpprotocolcompleterequestparams.cpp           | 2 ++
+ .../core/impl/mcpprotocolcompleterequestparams.h             | 3 +++
+ .../core/impl/mcpprotocolcompleteresult.cpp                  | 2 ++
+ .../core/impl/mcpprotocolcompleteresult.h                    | 3 +++
+ .../core/impl/mcpprotocolcreatemessagerequest.cpp            | 2 ++
+ .../core/impl/mcpprotocolcreatemessagerequest.h              | 3 +++
+ .../core/impl/mcpprotocolcreatemessagerequestparams.cpp      | 2 ++
+ .../core/impl/mcpprotocolcreatemessagerequestparams.h        | 3 +++
+ .../core/impl/mcpprotocolcreatemessageresult.cpp             | 2 ++
+ .../core/impl/mcpprotocolcreatemessageresult.h               | 3 +++
+ .../core/impl/mcpprotocolcreatetaskresult.cpp                | 2 ++
+ .../core/impl/mcpprotocolcreatetaskresult.h                  | 3 +++
+ .../core/impl/mcpprotocolelicitationcompletenotification.cpp | 2 ++
+ .../core/impl/mcpprotocolelicitationcompletenotification.h   | 3 +++
+ .../core/impl/mcpprotocolelicitrequest.cpp                   | 2 ++
+ .../core/impl/mcpprotocolelicitrequest.h                     | 3 +++
+ .../core/impl/mcpprotocolelicitrequestformparams.cpp         | 2 ++
+ .../core/impl/mcpprotocolelicitrequestformparams.h           | 3 +++
+ .../core/impl/mcpprotocolelicitrequesturlparams.cpp          | 2 ++
+ .../core/impl/mcpprotocolelicitrequesturlparams.h            | 3 +++
+ .../core/impl/mcpprotocolembeddedresource.cpp                | 2 ++
+ .../core/impl/mcpprotocolembeddedresource.h                  | 3 +++
+ .../core/impl/mcpprotocolgetpromptrequest.cpp                | 2 ++
+ .../core/impl/mcpprotocolgetpromptrequest.h                  | 3 +++
+ .../core/impl/mcpprotocolgetpromptrequestparams.cpp          | 2 ++
+ .../core/impl/mcpprotocolgetpromptrequestparams.h            | 3 +++
+ .../core/impl/mcpprotocolgetpromptresult.cpp                 | 2 ++
+ .../core/impl/mcpprotocolgetpromptresult.h                   | 3 +++
+ .../core/impl/mcpprotocolgettaskpayloadrequest.cpp           | 2 ++
+ .../core/impl/mcpprotocolgettaskpayloadrequest.h             | 3 +++
+ .../core/impl/mcpprotocolgettaskpayloadresult.cpp            | 2 ++
+ .../core/impl/mcpprotocolgettaskpayloadresult.h              | 3 +++
+ .../core/impl/mcpprotocolgettaskrequest.cpp                  | 2 ++
+ .../core/impl/mcpprotocolgettaskrequest.h                    | 3 +++
+ .../core/impl/mcpprotocolgettaskresult.cpp                   | 2 ++
+ .../core/impl/mcpprotocolgettaskresult.h                     | 3 +++
+ .../core/impl/mcpprotocolicon.cpp                            | 2 ++
+ textautogeneratetextmcpprotocol/core/impl/mcpprotocolicon.h  | 3 +++
+ .../core/impl/mcpprotocolimagecontent.cpp                    | 2 ++
+ .../core/impl/mcpprotocolimagecontent.h                      | 3 +++
+ .../core/impl/mcpprotocolimplementation.cpp                  | 2 ++
+ .../core/impl/mcpprotocolimplementation.h                    | 3 +++
+ .../core/impl/mcpprotocolinitializednotification.cpp         | 2 ++
+ .../core/impl/mcpprotocolinitializednotification.h           | 3 +++
+ .../core/impl/mcpprotocolinitializerequest.cpp               | 2 ++
+ .../core/impl/mcpprotocolinitializerequest.h                 | 3 +++
+ .../core/impl/mcpprotocolinitializerequestparams.cpp         | 2 ++
+ .../core/impl/mcpprotocolinitializerequestparams.h           | 3 +++
+ .../core/impl/mcpprotocolinitializeresult.cpp                | 2 ++
+ .../core/impl/mcpprotocolinitializeresult.h                  | 3 +++
+ .../core/impl/mcpprotocoljsonrpcerrorresponse.cpp            | 2 ++
+ .../core/impl/mcpprotocoljsonrpcerrorresponse.h              | 3 +++
+ .../core/impl/mcpprotocoljsonrpcnotification.cpp             | 2 ++
+ .../core/impl/mcpprotocoljsonrpcnotification.h               | 3 +++
+ .../core/impl/mcpprotocoljsonrpcrequest.cpp                  | 2 ++
+ .../core/impl/mcpprotocoljsonrpcrequest.h                    | 3 +++
+ .../core/impl/mcpprotocoljsonrpcresultresponse.cpp           | 2 ++
+ .../core/impl/mcpprotocoljsonrpcresultresponse.h             | 3 +++
+ .../core/impl/mcpprotocollegacytitledenumschema.cpp          | 2 ++
+ .../core/impl/mcpprotocollegacytitledenumschema.h            | 3 +++
+ .../core/impl/mcpprotocollistpromptsrequest.cpp              | 2 ++
+ .../core/impl/mcpprotocollistpromptsrequest.h                | 3 +++
+ .../core/impl/mcpprotocollistpromptsresult.cpp               | 2 ++
+ .../core/impl/mcpprotocollistpromptsresult.h                 | 3 +++
+ .../core/impl/mcpprotocollistresourcesrequest.cpp            | 2 ++
+ .../core/impl/mcpprotocollistresourcesrequest.h              | 3 +++
+ .../core/impl/mcpprotocollistresourcesresult.cpp             | 2 ++
+ .../core/impl/mcpprotocollistresourcesresult.h               | 3 +++
+ .../core/impl/mcpprotocollistresourcetemplatesrequest.cpp    | 2 ++
+ .../core/impl/mcpprotocollistresourcetemplatesrequest.h      | 3 +++
+ .../core/impl/mcpprotocollistresourcetemplatesresult.cpp     | 2 ++
+ .../core/impl/mcpprotocollistresourcetemplatesresult.h       | 3 +++
+ .../core/impl/mcpprotocollistrootsrequest.cpp                | 2 ++
+ .../core/impl/mcpprotocollistrootsrequest.h                  | 3 +++
+ .../core/impl/mcpprotocollistrootsresult.cpp                 | 2 ++
+ .../core/impl/mcpprotocollistrootsresult.h                   | 3 +++
+ .../core/impl/mcpprotocollisttasksrequest.cpp                | 2 ++
+ .../core/impl/mcpprotocollisttasksrequest.h                  | 3 +++
+ .../core/impl/mcpprotocollisttasksresult.cpp                 | 2 ++
+ .../core/impl/mcpprotocollisttasksresult.h                   | 3 +++
+ .../core/impl/mcpprotocollisttoolsrequest.cpp                | 2 ++
+ .../core/impl/mcpprotocollisttoolsrequest.h                  | 3 +++
+ .../core/impl/mcpprotocollisttoolsresult.cpp                 | 2 ++
+ .../core/impl/mcpprotocollisttoolsresult.h                   | 3 +++
+ .../core/impl/mcpprotocolloggingmessagenotification.cpp      | 2 ++
+ .../core/impl/mcpprotocolloggingmessagenotification.h        | 3 +++
+ .../core/impl/mcpprotocolmeta.cpp                            | 2 ++
+ textautogeneratetextmcpprotocol/core/impl/mcpprotocolmeta.h  | 3 +++
+ .../core/impl/mcpprotocolmodelpreferences.cpp                | 2 ++
+ .../core/impl/mcpprotocolmodelpreferences.h                  | 3 +++
+ .../core/impl/mcpprotocolnotificationparams.cpp              | 2 ++
+ .../core/impl/mcpprotocolnotificationparams.h                | 3 +++
+ .../core/impl/mcpprotocolnumberschema.cpp                    | 2 ++
+ .../core/impl/mcpprotocolnumberschema.h                      | 3 +++
+ .../core/impl/mcpprotocolpaginatedrequest.cpp                | 2 ++
+ .../core/impl/mcpprotocolpaginatedrequest.h                  | 3 +++
+ .../core/impl/mcpprotocolpaginatedrequestparams.cpp          | 2 ++
+ .../core/impl/mcpprotocolpaginatedrequestparams.h            | 3 +++
+ .../core/impl/mcpprotocolpaginatedresult.cpp                 | 2 ++
+ .../core/impl/mcpprotocolpaginatedresult.h                   | 3 +++
+ .../core/impl/mcpprotocolpingrequest.cpp                     | 2 ++
+ .../core/impl/mcpprotocolpingrequest.h                       | 3 +++
+ .../core/impl/mcpprotocolprogressnotification.cpp            | 2 ++
+ .../core/impl/mcpprotocolprogressnotification.h              | 3 +++
+ .../core/impl/mcpprotocolprogressnotificationparams.cpp      | 2 ++
+ .../core/impl/mcpprotocolprogressnotificationparams.h        | 3 +++
+ .../core/impl/mcpprotocolprompt.cpp                          | 2 ++
+ .../core/impl/mcpprotocolprompt.h                            | 3 +++
+ .../core/impl/mcpprotocolpromptargument.cpp                  | 2 ++
+ .../core/impl/mcpprotocolpromptargument.h                    | 3 +++
+ .../core/impl/mcpprotocolpromptlistchangednotification.cpp   | 2 ++
+ .../core/impl/mcpprotocolpromptlistchangednotification.h     | 3 +++
+ .../core/impl/mcpprotocolpromptreference.cpp                 | 2 ++
+ .../core/impl/mcpprotocolpromptreference.h                   | 3 +++
+ .../core/impl/mcpprotocolreadresourcerequest.cpp             | 2 ++
+ .../core/impl/mcpprotocolreadresourcerequest.h               | 3 +++
+ .../core/impl/mcpprotocolreadresourcerequestparams.cpp       | 2 ++
+ .../core/impl/mcpprotocolreadresourcerequestparams.h         | 3 +++
+ .../core/impl/mcpprotocolreadresourceresult.cpp              | 2 ++
+ .../core/impl/mcpprotocolreadresourceresult.h                | 3 +++
+ .../core/impl/mcpprotocolrelatedtaskmetadata.cpp             | 2 ++
+ .../core/impl/mcpprotocolrelatedtaskmetadata.h               | 3 +++
+ .../core/impl/mcpprotocolrequestparams.cpp                   | 2 ++
+ .../core/impl/mcpprotocolrequestparams.h                     | 3 +++
+ .../core/impl/mcpprotocolresource.cpp                        | 2 ++
+ .../core/impl/mcpprotocolresource.h                          | 3 +++
+ .../core/impl/mcpprotocolresourcecontents.cpp                | 2 ++
+ .../core/impl/mcpprotocolresourcecontents.h                  | 3 +++
+ .../core/impl/mcpprotocolresourcelink.cpp                    | 2 ++
+ .../core/impl/mcpprotocolresourcelink.h                      | 3 +++
+ .../core/impl/mcpprotocolresourcelistchangednotification.cpp | 2 ++
+ .../core/impl/mcpprotocolresourcelistchangednotification.h   | 3 +++
+ .../core/impl/mcpprotocolresourcetemplate.cpp                | 2 ++
+ .../core/impl/mcpprotocolresourcetemplate.h                  | 3 +++
+ .../core/impl/mcpprotocolresourcetemplatereference.cpp       | 2 ++
+ .../core/impl/mcpprotocolresourcetemplatereference.h         | 3 +++
+ .../core/impl/mcpprotocolresourceupdatednotification.cpp     | 2 ++
+ .../core/impl/mcpprotocolresourceupdatednotification.h       | 3 +++
+ .../impl/mcpprotocolresourceupdatednotificationparams.cpp    | 2 ++
+ .../core/impl/mcpprotocolresourceupdatednotificationparams.h | 3 +++
+ .../core/impl/mcpprotocolresult.cpp                          | 2 ++
+ .../core/impl/mcpprotocolresult.h                            | 3 +++
+ .../core/impl/mcpprotocolroot.cpp                            | 2 ++
+ textautogeneratetextmcpprotocol/core/impl/mcpprotocolroot.h  | 3 +++
+ .../core/impl/mcpprotocolrootslistchangednotification.cpp    | 2 ++
+ .../core/impl/mcpprotocolrootslistchangednotification.h      | 3 +++
+ .../core/impl/mcpprotocolsamplingmessage.cpp                 | 2 ++
+ .../core/impl/mcpprotocolsamplingmessage.h                   | 3 +++
+ .../core/impl/mcpprotocolservercapabilities.cpp              | 2 ++
+ .../core/impl/mcpprotocolservercapabilities.h                | 3 +++
+ .../core/impl/mcpprotocolsetlevelrequest.cpp                 | 2 ++
+ .../core/impl/mcpprotocolsetlevelrequest.h                   | 3 +++
+ .../core/impl/mcpprotocolsetlevelrequestparams.cpp           | 2 ++
+ .../core/impl/mcpprotocolsetlevelrequestparams.h             | 3 +++
+ .../core/impl/mcpprotocolstringschema.cpp                    | 2 ++
+ .../core/impl/mcpprotocolstringschema.h                      | 3 +++
+ .../core/impl/mcpprotocolsubscriberequest.cpp                | 2 ++
+ .../core/impl/mcpprotocolsubscriberequest.h                  | 3 +++
+ .../core/impl/mcpprotocolsubscriberequestparams.cpp          | 2 ++
+ .../core/impl/mcpprotocolsubscriberequestparams.h            | 3 +++
+ .../core/impl/mcpprotocoltask.cpp                            | 2 ++
+ textautogeneratetextmcpprotocol/core/impl/mcpprotocoltask.h  | 3 +++
+ .../core/impl/mcpprotocoltaskaugmentedrequestparams.cpp      | 2 ++
+ .../core/impl/mcpprotocoltaskaugmentedrequestparams.h        | 3 +++
+ .../core/impl/mcpprotocoltaskmetadata.cpp                    | 2 ++
+ .../core/impl/mcpprotocoltaskmetadata.h                      | 3 +++
+ .../core/impl/mcpprotocoltaskstatusnotification.cpp          | 2 ++
+ .../core/impl/mcpprotocoltaskstatusnotification.h            | 3 +++
+ .../core/impl/mcpprotocoltaskstatusnotificationparams.cpp    | 2 ++
+ .../core/impl/mcpprotocoltaskstatusnotificationparams.h      | 3 +++
+ .../core/impl/mcpprotocoltextcontent.cpp                     | 2 ++
+ .../core/impl/mcpprotocoltextcontent.h                       | 3 +++
+ .../core/impl/mcpprotocoltextresourcecontents.cpp            | 2 ++
+ .../core/impl/mcpprotocoltextresourcecontents.h              | 3 +++
+ .../core/impl/mcpprotocoltitledmultiselectenumschema.cpp     | 2 ++
+ .../core/impl/mcpprotocoltitledmultiselectenumschema.h       | 3 +++
+ .../core/impl/mcpprotocoltitledsingleselectenumschema.cpp    | 2 ++
+ .../core/impl/mcpprotocoltitledsingleselectenumschema.h      | 3 +++
+ .../core/impl/mcpprotocoltool.cpp                            | 2 ++
+ textautogeneratetextmcpprotocol/core/impl/mcpprotocoltool.h  | 3 +++
+ .../core/impl/mcpprotocoltoolannotations.cpp                 | 2 ++
+ .../core/impl/mcpprotocoltoolannotations.h                   | 3 +++
+ .../core/impl/mcpprotocoltoollistchangednotification.cpp     | 2 ++
+ .../core/impl/mcpprotocoltoollistchangednotification.h       | 3 +++
+ .../core/impl/mcpprotocoltoolresultcontent.cpp               | 2 ++
+ .../core/impl/mcpprotocoltoolresultcontent.h                 | 3 +++
+ .../core/impl/mcpprotocoltoolusecontent.cpp                  | 2 ++
+ .../core/impl/mcpprotocoltoolusecontent.h                    | 3 +++
+ .../core/impl/mcpprotocolunsubscriberequest.cpp              | 2 ++
+ .../core/impl/mcpprotocolunsubscriberequest.h                | 3 +++
+ .../core/impl/mcpprotocolunsubscriberequestparams.cpp        | 2 ++
+ .../core/impl/mcpprotocolunsubscriberequestparams.h          | 3 +++
+ .../core/impl/mcpprotocoluntitledmultiselectenumschema.cpp   | 2 ++
+ .../core/impl/mcpprotocoluntitledmultiselectenumschema.h     | 3 +++
+ .../core/impl/mcpprotocoluntitledsingleselectenumschema.cpp  | 2 ++
+ .../core/impl/mcpprotocoluntitledsingleselectenumschema.h    | 3 +++
+ .../core/impl/mcpprotocolurlelicitationrequirederror.cpp     | 2 ++
+ .../core/impl/mcpprotocolurlelicitationrequirederror.h       | 3 +++
+ textgrammarcheck/grammalecte/grammalectegrammarerror.cpp     | 2 ++
+ textgrammarcheck/grammalecte/grammalectegrammarerror.h       | 1 +
+ textgrammarcheck/languagetool/languageinfo.cpp               | 2 ++
+ textgrammarcheck/languagetool/languageinfo.h                 | 1 +
+ textgrammarcheck/languagetool/languagetoolgrammarerror.cpp   | 2 ++
+ textgrammarcheck/languagetool/languagetoolgrammarerror.h     | 1 +
+ .../speechtotext/plugins/vosk/voskspeechtotextinfo.cpp       | 2 ++
+ .../speechtotext/plugins/vosk/voskspeechtotextinfo.h         | 1 +
+ texttranslator/translator/plugins/bergamot/translator.cpp    | 2 ++
+ texttranslator/translator/plugins/bergamot/translator.h      | 1 +
+ 253 files changed, 612 insertions(+), 5 deletions(-)
+
+diff --git a/textaddonswidgets/whatsnew/whatsnewinfo.cpp b/textaddonswidgets/whatsnew/whatsnewinfo.cpp
+index ac22bf719..7e57ba7db 100644
+--- a/textaddonswidgets/whatsnew/whatsnewinfo.cpp
++++ b/textaddonswidgets/whatsnew/whatsnewinfo.cpp
+@@ -10,6 +10,8 @@ QT_IMPL_METATYPE_EXTERN_TAGGED(TextAddonsWidgets::WhatsNewInfo, TextAddonsWidget
+ using namespace TextAddonsWidgets;
+ WhatsNewInfo::WhatsNewInfo() = default;
+ 
++WhatsNewInfo::~WhatsNewInfo() = default;
++
+ QStringList WhatsNewInfo::changes() const
+ {
+     return mChanges;
+diff --git a/textaddonswidgets/whatsnew/whatsnewinfo.h b/textaddonswidgets/whatsnew/whatsnewinfo.h
+index 411978c45..dbc608137 100644
+--- a/textaddonswidgets/whatsnew/whatsnewinfo.h
++++ b/textaddonswidgets/whatsnew/whatsnewinfo.h
+@@ -27,6 +27,10 @@ public:
+      * \brief Constructor for WhatsNewInfo
+      */
+     WhatsNewInfo();
++    /*!
++     * \brief Destructor for WhatsNewInfo
++     */
++    ~WhatsNewInfo();
+ 
+     /*!
+      * \brief Returns the list of changes
+diff --git a/textautogeneratetext/core/textautogeneratesearchmessage.cpp b/textautogeneratetext/core/textautogeneratesearchmessage.cpp
+index c43cf431c..10ead3808 100644
+--- a/textautogeneratetext/core/textautogeneratesearchmessage.cpp
++++ b/textautogeneratetext/core/textautogeneratesearchmessage.cpp
+@@ -8,6 +8,8 @@
+ using namespace TextAutoGenerateText;
+ TextAutoGenerateSearchMessage::TextAutoGenerateSearchMessage() = default;
+ 
++TextAutoGenerateSearchMessage::~TextAutoGenerateSearchMessage() = default;
++
+ QDebug operator<<(QDebug d, const TextAutoGenerateText::TextAutoGenerateSearchMessage &t)
+ {
+     d.space() << "chatId:" << t.chatId();
+diff --git a/textautogeneratetext/core/textautogeneratesearchmessage.h b/textautogeneratetext/core/textautogeneratesearchmessage.h
+index 3a43063e8..7cfde5b63 100644
+--- a/textautogeneratetext/core/textautogeneratesearchmessage.h
++++ b/textautogeneratetext/core/textautogeneratesearchmessage.h
+@@ -24,6 +24,10 @@ public:
+      * Constructs a new TextAutoGenerateSearchMessage object.
+      */
+     TextAutoGenerateSearchMessage();
++    /*!
++     * Destroys the TextAutoGenerateSearchMessage object.
++     */
++    ~TextAutoGenerateSearchMessage();
+     /*!
+      * Returns the chat identifier.
+      * \return The chat ID
+diff --git a/textautogeneratetext/core/tools/textautogeneratetexttoolinternal.cpp b/textautogeneratetext/core/tools/textautogeneratetexttoolinternal.cpp
+index 26be2301c..167d56bc5 100644
+--- a/textautogeneratetext/core/tools/textautogeneratetexttoolinternal.cpp
++++ b/textautogeneratetext/core/tools/textautogeneratetexttoolinternal.cpp
+@@ -11,6 +11,8 @@ using namespace TextAutoGenerateText;
+ using namespace Qt::Literals::StringLiterals;
+ TextAutoGenerateTextToolInternal::TextAutoGenerateTextToolInternal() = default;
+ 
++TextAutoGenerateTextToolInternal::~TextAutoGenerateTextToolInternal() = default;
++
+ bool TextAutoGenerateTextToolInternal::operator==(const TextAutoGenerateTextToolInternal &other) const
+ {
+     return mProperties == other.mProperties && mRequired == other.mRequired && mToolNameId == other.mToolNameId && mDescription == other.mDescription;
+diff --git a/textautogeneratetext/core/tools/textautogeneratetexttoolinternal.h b/textautogeneratetext/core/tools/textautogeneratetexttoolinternal.h
+index fafeb55a9..e7f4839ab 100644
+--- a/textautogeneratetext/core/tools/textautogeneratetexttoolinternal.h
++++ b/textautogeneratetext/core/tools/textautogeneratetexttoolinternal.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     TextAutoGenerateTextToolInternal();
++    /*!
++     */
++    ~TextAutoGenerateTextToolInternal();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetext/plugins/genericnetworkplugin/modelsmanager/genericnetworkmodelavailableinfos.cpp b/textautogeneratetext/plugins/genericnetworkplugin/modelsmanager/genericnetworkmodelavailableinfos.cpp
+index b52385a5f..7ddd63a20 100644
+--- a/textautogeneratetext/plugins/genericnetworkplugin/modelsmanager/genericnetworkmodelavailableinfos.cpp
++++ b/textautogeneratetext/plugins/genericnetworkplugin/modelsmanager/genericnetworkmodelavailableinfos.cpp
+@@ -9,6 +9,8 @@
+ 
+ GenericNetworkModelAvailableInfos::GenericNetworkModelAvailableInfos() = default;
+ 
++GenericNetworkModelAvailableInfos::~GenericNetworkModelAvailableInfos() = default;
++
+ void GenericNetworkModelAvailableInfos::parseModelsInfo(const QJsonArray &array)
+ {
+     QList<GenericNetworkModelAvailableInfo> lstInfo;
+diff --git a/textautogeneratetext/plugins/genericnetworkplugin/modelsmanager/genericnetworkmodelavailableinfos.h b/textautogeneratetext/plugins/genericnetworkplugin/modelsmanager/genericnetworkmodelavailableinfos.h
+index 32caea664..258afc83d 100644
+--- a/textautogeneratetext/plugins/genericnetworkplugin/modelsmanager/genericnetworkmodelavailableinfos.h
++++ b/textautogeneratetext/plugins/genericnetworkplugin/modelsmanager/genericnetworkmodelavailableinfos.h
+@@ -12,6 +12,7 @@ class TEXTAUTOGENERATEGENERICNETWORK_TESTS_EXPORT GenericNetworkModelAvailableIn
+ {
+ public:
+     GenericNetworkModelAvailableInfos();
++    ~GenericNetworkModelAvailableInfos();
+ 
+     void parseModelsInfo(const QJsonArray &array);
+ 
+diff --git a/textautogeneratetext/plugins/lmstudio/modelsmanager/lmstudiomodelinstalledinfo.cpp b/textautogeneratetext/plugins/lmstudio/modelsmanager/lmstudiomodelinstalledinfo.cpp
+index 8488b538b..90ee90921 100644
+--- a/textautogeneratetext/plugins/lmstudio/modelsmanager/lmstudiomodelinstalledinfo.cpp
++++ b/textautogeneratetext/plugins/lmstudio/modelsmanager/lmstudiomodelinstalledinfo.cpp
+@@ -13,6 +13,8 @@
+ using namespace Qt::StringLiterals;
+ 
+ LMStudioModelInstalledInfo::LMStudioModelInstalledInfo() = default;
++LMStudioModelInstalledInfo::~LMStudioModelInstalledInfo() = default;
++
+ QString LMStudioModelInstalledInfo::publisher() const
+ {
+     return mPublisher;
+diff --git a/textautogeneratetext/plugins/lmstudio/modelsmanager/lmstudiomodelinstalledinfo.h b/textautogeneratetext/plugins/lmstudio/modelsmanager/lmstudiomodelinstalledinfo.h
+index fe1a13989..0ebf8e9e0 100644
+--- a/textautogeneratetext/plugins/lmstudio/modelsmanager/lmstudiomodelinstalledinfo.h
++++ b/textautogeneratetext/plugins/lmstudio/modelsmanager/lmstudiomodelinstalledinfo.h
+@@ -15,6 +15,7 @@ class TEXTAUTOGENERATELMSTUDIO_EXPORT LMStudioModelInstalledInfo : public Plugin
+ {
+ public:
+     LMStudioModelInstalledInfo();
++    ~LMStudioModelInstalledInfo();
+ 
+     [[nodiscard]] QString publisher() const;
+     void setPublisher(const QString &newPublisher);
+diff --git a/textautogeneratetext/plugins/ollama/modelsmanager/ollamamodelinstalledinfo.cpp b/textautogeneratetext/plugins/ollama/modelsmanager/ollamamodelinstalledinfo.cpp
+index dfe877603..be0151b05 100644
+--- a/textautogeneratetext/plugins/ollama/modelsmanager/ollamamodelinstalledinfo.cpp
++++ b/textautogeneratetext/plugins/ollama/modelsmanager/ollamamodelinstalledinfo.cpp
+@@ -10,6 +10,8 @@
+ using namespace Qt::Literals::StringLiterals;
+ OllamaModelInstalledInfo::OllamaModelInstalledInfo() = default;
+ 
++OllamaModelInstalledInfo::~OllamaModelInstalledInfo() = default;
++
+ void OllamaModelInstalledInfo::parseInfo(const QJsonObject &obj)
+ {
+     mName = obj["name"_L1].toString();
+diff --git a/textautogeneratetext/plugins/ollama/modelsmanager/ollamamodelinstalledinfo.h b/textautogeneratetext/plugins/ollama/modelsmanager/ollamamodelinstalledinfo.h
+index a700e201e..18cc3518f 100644
+--- a/textautogeneratetext/plugins/ollama/modelsmanager/ollamamodelinstalledinfo.h
++++ b/textautogeneratetext/plugins/ollama/modelsmanager/ollamamodelinstalledinfo.h
+@@ -14,6 +14,7 @@ class TEXTAUTOGENERATEOLLAMA_TESTS_EXPORT OllamaModelInstalledInfo : public Plug
+ {
+ public:
+     OllamaModelInstalledInfo();
++    ~OllamaModelInstalledInfo();
+ 
+     [[nodiscard]] QString family() const;
+     void setFamily(const QString &newFamily);
+diff --git a/textautogeneratetext/plugins/ollamacommon/ollamacommonmodelsavalableinfos.cpp b/textautogeneratetext/plugins/ollamacommon/ollamacommonmodelsavalableinfos.cpp
+index 8a69b8237..66dcb6552 100644
+--- a/textautogeneratetext/plugins/ollamacommon/ollamacommonmodelsavalableinfos.cpp
++++ b/textautogeneratetext/plugins/ollamacommon/ollamacommonmodelsavalableinfos.cpp
+@@ -9,6 +9,8 @@
+ using namespace Qt::Literals::StringLiterals;
+ OllamaCommonModelsAvalableInfos::OllamaCommonModelsAvalableInfos() = default;
+ 
++OllamaCommonModelsAvalableInfos::~OllamaCommonModelsAvalableInfos() = default;
++
+ void OllamaCommonModelsAvalableInfos::parseModelsInfo(const QJsonObject &obj)
+ {
+     QList<OllamaCommonModelAvailableInfo> lstInfo;
+diff --git a/textautogeneratetext/plugins/ollamacommon/ollamacommonmodelsavalableinfos.h b/textautogeneratetext/plugins/ollamacommon/ollamacommonmodelsavalableinfos.h
+index e33f69ea3..b691cce45 100644
+--- a/textautogeneratetext/plugins/ollamacommon/ollamacommonmodelsavalableinfos.h
++++ b/textautogeneratetext/plugins/ollamacommon/ollamacommonmodelsavalableinfos.h
+@@ -11,6 +11,7 @@ class TEXTAUTOGENERATEOLLAMACOMMON_EXPORT OllamaCommonModelsAvalableInfos
+ {
+ public:
+     OllamaCommonModelsAvalableInfos();
++    ~OllamaCommonModelsAvalableInfos();
+ 
+     void parseModelsInfo(const QJsonObject &obj);
+ 
+diff --git a/textautogeneratetext/plugins/plugincommon/plugincommonmodelinstalledinfo.h b/textautogeneratetext/plugins/plugincommon/plugincommonmodelinstalledinfo.h
+index 866643096..87465f975 100644
+--- a/textautogeneratetext/plugins/plugincommon/plugincommonmodelinstalledinfo.h
++++ b/textautogeneratetext/plugins/plugincommon/plugincommonmodelinstalledinfo.h
+@@ -13,12 +13,7 @@ class QJsonObject;
+ class TEXTAUTOGENERATEPLUGINCOMMON_EXPORT PluginCommonModelInstalledInfo
+ {
+ public:
+-    PluginCommonModelInstalledInfo() = default;
+     virtual ~PluginCommonModelInstalledInfo() = default;
+-    PluginCommonModelInstalledInfo(const PluginCommonModelInstalledInfo &other) = default;
+-    PluginCommonModelInstalledInfo &operator=(const PluginCommonModelInstalledInfo &other) = default;
+-    PluginCommonModelInstalledInfo(PluginCommonModelInstalledInfo &&other) noexcept = default;
+-    PluginCommonModelInstalledInfo &operator=(PluginCommonModelInstalledInfo &&other) noexcept = default;
+ 
+     [[nodiscard]] QString name() const;
+     void setName(const QString &newName);
+diff --git a/textautogeneratetext/widgets/menu/textautogeneratemenutextinfo.cpp b/textautogeneratetext/widgets/menu/textautogeneratemenutextinfo.cpp
+index 870ed00c2..94b9b0780 100644
+--- a/textautogeneratetext/widgets/menu/textautogeneratemenutextinfo.cpp
++++ b/textautogeneratetext/widgets/menu/textautogeneratemenutextinfo.cpp
+@@ -9,6 +9,8 @@
+ using namespace TextAutoGenerateText;
+ TextAutoGenerateMenuTextInfo::TextAutoGenerateMenuTextInfo() = default;
+ 
++TextAutoGenerateMenuTextInfo::~TextAutoGenerateMenuTextInfo() = default;
++
+ bool TextAutoGenerateMenuTextInfo::enabled() const
+ {
+     return mEnabled;
+diff --git a/textautogeneratetext/widgets/menu/textautogeneratemenutextinfo.h b/textautogeneratetext/widgets/menu/textautogeneratemenutextinfo.h
+index c80028191..03e5ff034 100644
+--- a/textautogeneratetext/widgets/menu/textautogeneratemenutextinfo.h
++++ b/textautogeneratetext/widgets/menu/textautogeneratemenutextinfo.h
+@@ -23,6 +23,9 @@ public:
+     /*!
+      */
+     TextAutoGenerateMenuTextInfo();
++    /*!
++     */
++    ~TextAutoGenerateMenuTextInfo();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/common/mcpprotocolsettings.cpp b/textautogeneratetextmcpprotocol/core/common/mcpprotocolsettings.cpp
+index c37142395..65d165dcb 100644
+--- a/textautogeneratetextmcpprotocol/core/common/mcpprotocolsettings.cpp
++++ b/textautogeneratetextmcpprotocol/core/common/mcpprotocolsettings.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolSettings::McpProtocolSettings() = default;
+ 
++McpProtocolSettings::~McpProtocolSettings() = default;
++
+ QString McpProtocolSettings::command() const
+ {
+     return mCommand;
+diff --git a/textautogeneratetextmcpprotocol/core/common/mcpprotocolsettings.h b/textautogeneratetextmcpprotocol/core/common/mcpprotocolsettings.h
+index 5ac7bbbe8..89e730eef 100644
+--- a/textautogeneratetextmcpprotocol/core/common/mcpprotocolsettings.h
++++ b/textautogeneratetextmcpprotocol/core/common/mcpprotocolsettings.h
+@@ -19,6 +19,7 @@ class TEXTAUTOGENERATETEXTMCPPROTOCOLCORE_EXPORT McpProtocolSettings
+ {
+ public:
+     McpProtocolSettings();
++    ~McpProtocolSettings();
+ 
+     [[nodiscard]] QString command() const;
+     void setCommand(const QString &newCommand);
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolannotations.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolannotations.cpp
+index 634612b5f..c09213fa1 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolannotations.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolannotations.cpp
+@@ -12,6 +12,8 @@ using namespace TextAutoGenerateTextMcpProtocolCore;
+ using namespace Qt::Literals::StringLiterals;
+ McpProtocolAnnotations::McpProtocolAnnotations() = default;
+ 
++McpProtocolAnnotations::~McpProtocolAnnotations() = default;
++
+ bool McpProtocolAnnotations::operator==(const McpProtocolAnnotations &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolAnnotations &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolannotations.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolannotations.h
+index de857930b..3a61dbb8c 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolannotations.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolannotations.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolAnnotations();
++    /*!
++     */
++    ~McpProtocolAnnotations();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolaudiocontent.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolaudiocontent.cpp
+index 36a81e759..3d59a6318 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolaudiocontent.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolaudiocontent.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolAudioContent::McpProtocolAudioContent() = default;
+ 
++McpProtocolAudioContent::~McpProtocolAudioContent() = default;
++
+ QByteArray McpProtocolAudioContent::type()
+ {
+     return "audio"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolaudiocontent.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolaudiocontent.h
+index 4c15ffa0e..2e74e0d1f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolaudiocontent.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolaudiocontent.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolAudioContent();
++    /*!
++     */
++    ~McpProtocolAudioContent();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbasemetadata.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbasemetadata.cpp
+index 3db3ed1c2..8c3dd0939 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbasemetadata.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbasemetadata.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolBaseMetadata::McpProtocolBaseMetadata() = default;
+ 
++McpProtocolBaseMetadata::~McpProtocolBaseMetadata() = default;
++
+ bool McpProtocolBaseMetadata::operator==(const McpProtocolBaseMetadata &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolBaseMetadata &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbasemetadata.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbasemetadata.h
+index 74bba0f8a..a8673ae4a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbasemetadata.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbasemetadata.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolBaseMetadata();
++    /*!
++     */
++    ~McpProtocolBaseMetadata();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolblobresourcecontents.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolblobresourcecontents.cpp
+index 656db9fec..fd688c2c2 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolblobresourcecontents.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolblobresourcecontents.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolBlobResourceContents::McpProtocolBlobResourceContents() = default;
+ 
++McpProtocolBlobResourceContents::~McpProtocolBlobResourceContents() = default;
++
+ bool McpProtocolBlobResourceContents::operator==(const McpProtocolBlobResourceContents &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolBlobResourceContents &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolblobresourcecontents.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolblobresourcecontents.h
+index 994949036..91615419b 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolblobresourcecontents.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolblobresourcecontents.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolBlobResourceContents();
++    /*!
++     */
++    ~McpProtocolBlobResourceContents();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbooleanschema.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbooleanschema.cpp
+index 008e6ec9f..838b27696 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbooleanschema.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbooleanschema.cpp
+@@ -11,6 +11,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolBooleanSchema::McpProtocolBooleanSchema() = default;
+ 
++McpProtocolBooleanSchema::~McpProtocolBooleanSchema() = default;
++
+ bool McpProtocolBooleanSchema::operator==(const McpProtocolBooleanSchema &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolBooleanSchema &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbooleanschema.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbooleanschema.h
+index fa5137c36..e37d40d38 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbooleanschema.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolbooleanschema.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolBooleanSchema();
++    /*!
++     */
++    ~McpProtocolBooleanSchema();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequest.cpp
+index 232fe8152..60a0ca508 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCallToolRequest::McpProtocolCallToolRequest() = default;
+ 
++McpProtocolCallToolRequest::~McpProtocolCallToolRequest() = default;
++
+ QByteArray McpProtocolCallToolRequest::type()
+ {
+     return "tools/call"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequest.h
+index 868a0ad36..f565c3236 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolCallToolRequest();
++    /*!
++     */
++    ~McpProtocolCallToolRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequestparams.cpp
+index c2f3edc3c..66a8b259a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequestparams.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCallToolRequestParams::McpProtocolCallToolRequestParams() = default;
+ 
++McpProtocolCallToolRequestParams::~McpProtocolCallToolRequestParams() = default;
++
+ bool McpProtocolCallToolRequestParams::operator==(const McpProtocolCallToolRequestParams &other) const = default;
+ bool McpProtocolCallToolRequestParams::Meta::operator==(const McpProtocolCallToolRequestParams::Meta &other) const = default;
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequestparams.h
+index 8138d4a33..737291879 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolrequestparams.h
+@@ -34,6 +34,9 @@ public:
+     /*!
+      */
+     McpProtocolCallToolRequestParams();
++    /*!
++     */
++    ~McpProtocolCallToolRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolresult.cpp
+index 0e25ee06f..912e1b25b 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolresult.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCallToolResult::McpProtocolCallToolResult() = default;
+ 
++McpProtocolCallToolResult::~McpProtocolCallToolResult() = default;
++
+ bool McpProtocolCallToolResult::operator==(const McpProtocolCallToolResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolCallToolResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolresult.h
+index ad10ccec0..85908daa4 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcalltoolresult.h
+@@ -24,6 +24,9 @@ public:
+     /*!
+      */
+     McpProtocolCallToolResult();
++    /*!
++     */
++    ~McpProtocolCallToolResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotification.cpp
+index c9dc7ce17..2b797b5a9 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotification.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCancelledNotification::McpProtocolCancelledNotification() = default;
+ 
++McpProtocolCancelledNotification::~McpProtocolCancelledNotification() = default;
++
+ bool McpProtocolCancelledNotification::operator==(const McpProtocolCancelledNotification &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolCancelledNotification &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotification.h
+index 9cabe1427..443e254f0 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotification.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolCancelledNotification();
++    /*!
++     */
++    ~McpProtocolCancelledNotification();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotificationparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotificationparams.cpp
+index 6b64970da..ecb097a8d 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotificationparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotificationparams.cpp
+@@ -11,6 +11,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCancelledNotificationParams::McpProtocolCancelledNotificationParams() = default;
+ 
++McpProtocolCancelledNotificationParams::~McpProtocolCancelledNotificationParams() = default;
++
+ bool McpProtocolCancelledNotificationParams::operator==(const McpProtocolCancelledNotificationParams &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolCancelledNotificationParams &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotificationparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotificationparams.h
+index bb63737c5..001d5344c 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotificationparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcancellednotificationparams.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolCancelledNotificationParams();
++    /*!
++     */
++    ~McpProtocolCancelledNotificationParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskrequest.cpp
+index 2bef41503..58798e0c4 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCancelTaskRequest::McpProtocolCancelTaskRequest() = default;
+ 
++McpProtocolCancelTaskRequest::~McpProtocolCancelTaskRequest() = default;
++
+ QByteArray McpProtocolCancelTaskRequest::type()
+ {
+     return "tasks/cancel"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskrequest.h
+index 79da67a2c..f9b884b80 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskrequest.h
+@@ -27,6 +27,9 @@ public:
+     /*!
+      */
+     McpProtocolCancelTaskRequest();
++    /*!
++     */
++    ~McpProtocolCancelTaskRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskresult.cpp
+index b49893f56..240144c4b 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskresult.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCancelTaskResult::McpProtocolCancelTaskResult() = default;
+ 
++McpProtocolCancelTaskResult::~McpProtocolCancelTaskResult() = default;
++
+ bool McpProtocolCancelTaskResult::operator==(const McpProtocolCancelTaskResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolCancelTaskResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskresult.h
+index 980969385..d3224df5d 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcanceltaskresult.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolCancelTaskResult();
++    /*!
++     */
++    ~McpProtocolCancelTaskResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequest.cpp
+index 9398c3a71..eca27d081 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequest.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCompleteRequest::McpProtocolCompleteRequest() = default;
+ 
++McpProtocolCompleteRequest::~McpProtocolCompleteRequest() = default;
++
+ QByteArray McpProtocolCompleteRequest::type()
+ {
+     return "completion/complete"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequest.h
+index cf0745354..706ab284b 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolCompleteRequest();
++    /*!
++     */
++    ~McpProtocolCompleteRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequestparams.cpp
+index 9e0297ddd..e58b4ae2f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequestparams.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCompleteRequestParams::McpProtocolCompleteRequestParams() = default;
+ 
++McpProtocolCompleteRequestParams::~McpProtocolCompleteRequestParams() = default;
++
+ bool McpProtocolCompleteRequestParams::operator==(const McpProtocolCompleteRequestParams &other) const = default;
+ bool McpProtocolCompleteRequestParams::Meta::operator==(const McpProtocolCompleteRequestParams::Meta &other) const = default;
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequestparams.h
+index f888befd6..265686cf7 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleterequestparams.h
+@@ -66,6 +66,9 @@ public:
+     /*!
+      */
+     McpProtocolCompleteRequestParams();
++    /*!
++     */
++    ~McpProtocolCompleteRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleteresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleteresult.cpp
+index f28fc4275..1d59cebf8 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleteresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleteresult.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCompleteResult::McpProtocolCompleteResult() = default;
+ 
++McpProtocolCompleteResult::~McpProtocolCompleteResult() = default;
++
+ bool McpProtocolCompleteResult::operator==(const McpProtocolCompleteResult &other) const = default;
+ 
+ bool McpProtocolCompleteResult::Completion::operator==(const McpProtocolCompleteResult::Completion &other) const = default;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleteresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleteresult.h
+index 7985666ea..b8a0c2c45 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleteresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcompleteresult.h
+@@ -41,6 +41,9 @@ public:
+     /*!
+      */
+     McpProtocolCompleteResult();
++    /*!
++     */
++    ~McpProtocolCompleteResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequest.cpp
+index b2a4f226b..b67cfba86 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequest.cpp
+@@ -14,6 +14,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCreateMessageRequest::McpProtocolCreateMessageRequest() = default;
+ 
++McpProtocolCreateMessageRequest::~McpProtocolCreateMessageRequest() = default;
++
+ QByteArray McpProtocolCreateMessageRequest::type()
+ {
+     return "sampling/createMessage"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequest.h
+index f7c589e3d..e06321357 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolCreateMessageRequest();
++    /*!
++     */
++    ~McpProtocolCreateMessageRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequestparams.cpp
+index ea6a6bfeb..def12c630 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequestparams.cpp
+@@ -14,6 +14,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCreateMessageRequestParams::McpProtocolCreateMessageRequestParams() = default;
+ 
++McpProtocolCreateMessageRequestParams::~McpProtocolCreateMessageRequestParams() = default;
++
+ bool McpProtocolCreateMessageRequestParams::operator==(const McpProtocolCreateMessageRequestParams &other) const = default;
+ bool McpProtocolCreateMessageRequestParams::Meta::operator==(const McpProtocolCreateMessageRequestParams::Meta &other) const = default;
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequestparams.h
+index 995c5c0ba..baf547d04 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessagerequestparams.h
+@@ -43,6 +43,9 @@ public:
+     /*!
+      */
+     McpProtocolCreateMessageRequestParams();
++    /*!
++     */
++    ~McpProtocolCreateMessageRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessageresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessageresult.cpp
+index 88b10aaf6..d4f3f0da2 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessageresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessageresult.cpp
+@@ -11,6 +11,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCreateMessageResult::McpProtocolCreateMessageResult() = default;
+ 
++McpProtocolCreateMessageResult::~McpProtocolCreateMessageResult() = default;
++
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolCreateMessageResult &t)
+ {
+     d.space() << "meta:" << t.meta();
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessageresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessageresult.h
+index 690dd7964..1ad8a029a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessageresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatemessageresult.h
+@@ -25,6 +25,9 @@ public:
+     /*!
+      */
+     McpProtocolCreateMessageResult();
++    /*!
++     */
++    ~McpProtocolCreateMessageResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatetaskresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatetaskresult.cpp
+index 29080a8f3..92d508b34 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatetaskresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatetaskresult.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolCreateTaskResult::McpProtocolCreateTaskResult() = default;
+ 
++McpProtocolCreateTaskResult::~McpProtocolCreateTaskResult() = default;
++
+ bool McpProtocolCreateTaskResult::operator==(const McpProtocolCreateTaskResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolCreateTaskResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatetaskresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatetaskresult.h
+index 19632c946..4ae6910f8 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatetaskresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolcreatetaskresult.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolCreateTaskResult();
++    /*!
++     */
++    ~McpProtocolCreateTaskResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitationcompletenotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitationcompletenotification.cpp
+index 927ca03f4..6a93a659e 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitationcompletenotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitationcompletenotification.cpp
+@@ -11,6 +11,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolElicitationCompleteNotification::McpProtocolElicitationCompleteNotification() = default;
+ 
++McpProtocolElicitationCompleteNotification::~McpProtocolElicitationCompleteNotification() = default;
++
+ QByteArray McpProtocolElicitationCompleteNotification::type()
+ {
+     return "notifications/elicitation/complete"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitationcompletenotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitationcompletenotification.h
+index 9ca7ed477..75c0249ad 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitationcompletenotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitationcompletenotification.h
+@@ -26,6 +26,9 @@ public:
+     /*!
+      */
+     McpProtocolElicitationCompleteNotification();
++    /*!
++     */
++    ~McpProtocolElicitationCompleteNotification();
+ 
+     [[nodiscard]] static QByteArray type();
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequest.cpp
+index fbd06522f..2e7e55e1b 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolElicitRequest::McpProtocolElicitRequest() = default;
+ 
++McpProtocolElicitRequest::~McpProtocolElicitRequest() = default;
++
+ QByteArray McpProtocolElicitRequest::type()
+ {
+     return "elicitation/create"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequest.h
+index 33bb8b193..d3b577302 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequest.h
+@@ -20,6 +20,9 @@ public:
+     /*!
+      */
+     McpProtocolElicitRequest();
++    /*!
++     */
++    ~McpProtocolElicitRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequestformparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequestformparams.cpp
+index 711c69953..ef1d583e1 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequestformparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequestformparams.cpp
+@@ -12,6 +12,8 @@
+ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolElicitRequestFormParams::McpProtocolElicitRequestFormParams() = default;
++McpProtocolElicitRequestFormParams::~McpProtocolElicitRequestFormParams() = default;
++
+ bool McpProtocolElicitRequestFormParams::operator==(const McpProtocolElicitRequestFormParams &other) const = default;
+ 
+ bool McpProtocolElicitRequestFormParams::Meta::operator==(const McpProtocolElicitRequestFormParams::Meta &other) const = default;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequestformparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequestformparams.h
+index 051d7034b..ffbfaf302 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequestformparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequestformparams.h
+@@ -63,6 +63,9 @@ public:
+     /*!
+      */
+     McpProtocolElicitRequestFormParams();
++    /*!
++     */
++    ~McpProtocolElicitRequestFormParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequesturlparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequesturlparams.cpp
+index 3c104e5db..b4d623846 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequesturlparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequesturlparams.cpp
+@@ -10,6 +10,8 @@
+ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolElicitRequestURLParams::McpProtocolElicitRequestURLParams() = default;
++McpProtocolElicitRequestURLParams::~McpProtocolElicitRequestURLParams() = default;
++
+ McpProtocolElicitRequestURLParams::Meta McpProtocolElicitRequestURLParams::Meta::fromJson(const QJsonObject &obj)
+ {
+     McpProtocolElicitRequestURLParams::Meta meta;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequesturlparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequesturlparams.h
+index 620679158..bac4e9b1a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequesturlparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolelicitrequesturlparams.h
+@@ -33,6 +33,9 @@ public:
+     /*!
+      */
+     McpProtocolElicitRequestURLParams();
++    /*!
++     */
++    ~McpProtocolElicitRequestURLParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolembeddedresource.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolembeddedresource.cpp
+index 2e4a025d0..6116fddd3 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolembeddedresource.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolembeddedresource.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolEmbeddedResource::McpProtocolEmbeddedResource() = default;
+ 
++McpProtocolEmbeddedResource::~McpProtocolEmbeddedResource() = default;
++
+ QByteArray McpProtocolEmbeddedResource::type()
+ {
+     return "resource"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolembeddedresource.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolembeddedresource.h
+index b0bb3ef47..0dcf3821e 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolembeddedresource.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolembeddedresource.h
+@@ -21,6 +21,9 @@ public:
+     /*!
+      */
+     McpProtocolEmbeddedResource();
++    /*!
++     */
++    ~McpProtocolEmbeddedResource();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequest.cpp
+index 19aff9935..fc1e59ba5 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolGetPromptRequest::McpProtocolGetPromptRequest() = default;
+ 
++McpProtocolGetPromptRequest::~McpProtocolGetPromptRequest() = default;
++
+ QByteArray McpProtocolGetPromptRequest::type()
+ {
+     return "prompts/get"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequest.h
+index bd5e8b46a..3107705e4 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolGetPromptRequest();
++    /*!
++     */
++    ~McpProtocolGetPromptRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequestparams.cpp
+index 39316d5e9..16fb52417 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequestparams.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolGetPromptRequestParams::McpProtocolGetPromptRequestParams() = default;
+ 
++McpProtocolGetPromptRequestParams::~McpProtocolGetPromptRequestParams() = default;
++
+ bool McpProtocolGetPromptRequestParams::operator==(const McpProtocolGetPromptRequestParams &other) const = default;
+ 
+ bool McpProtocolGetPromptRequestParams::Meta::operator==(const McpProtocolGetPromptRequestParams::Meta &other) const = default;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequestparams.h
+index 130be4db6..c34df01b5 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptrequestparams.h
+@@ -33,6 +33,9 @@ public:
+     /*!
+      */
+     McpProtocolGetPromptRequestParams();
++    /*!
++     */
++    ~McpProtocolGetPromptRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptresult.cpp
+index b8e1f3a8f..516840acd 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptresult.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolGetPromptResult::McpProtocolGetPromptResult() = default;
+ 
++McpProtocolGetPromptResult::~McpProtocolGetPromptResult() = default;
++
+ bool McpProtocolGetPromptResult::operator==(const McpProtocolGetPromptResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolGetPromptResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptresult.h
+index 53e67d4f3..dbee2332b 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgetpromptresult.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolGetPromptResult();
++    /*!
++     */
++    ~McpProtocolGetPromptResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadrequest.cpp
+index c93c8ca7a..b930aa731 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadrequest.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolGetTaskPayloadRequest::McpProtocolGetTaskPayloadRequest() = default;
+ 
++McpProtocolGetTaskPayloadRequest::~McpProtocolGetTaskPayloadRequest() = default;
++
+ QByteArray McpProtocolGetTaskPayloadRequest::type()
+ {
+     return "tasks/result"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadrequest.h
+index 73f0b4647..f1999d4d1 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadrequest.h
+@@ -35,6 +35,9 @@ public:
+     /*!
+      */
+     McpProtocolGetTaskPayloadRequest();
++    /*!
++     */
++    ~McpProtocolGetTaskPayloadRequest();
+ 
+     [[nodiscard]] static QByteArray type();
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadresult.cpp
+index 0aba088e9..ceaf4e492 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadresult.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolGetTaskPayloadResult::McpProtocolGetTaskPayloadResult() = default;
+ 
++McpProtocolGetTaskPayloadResult::~McpProtocolGetTaskPayloadResult() = default;
++
+ bool McpProtocolGetTaskPayloadResult::operator==(const McpProtocolGetTaskPayloadResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolGetTaskPayloadResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadresult.h
+index caa60a474..7f93cd75d 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskpayloadresult.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolGetTaskPayloadResult();
++    /*!
++     */
++    ~McpProtocolGetTaskPayloadResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskrequest.cpp
+index 412c99c8d..f7679779a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolGetTaskRequest::McpProtocolGetTaskRequest() = default;
+ 
++McpProtocolGetTaskRequest::~McpProtocolGetTaskRequest() = default;
++
+ QByteArray McpProtocolGetTaskRequest::type()
+ {
+     return "tasks/get"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskrequest.h
+index 59ca5b5a7..73e475775 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskrequest.h
+@@ -34,6 +34,9 @@ public:
+     /*!
+      */
+     McpProtocolGetTaskRequest();
++    /*!
++     */
++    ~McpProtocolGetTaskRequest();
+ 
+     [[nodiscard]] static QByteArray type();
+     /*!
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskresult.cpp
+index 2256a4ebf..a85d68030 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskresult.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolGetTaskResult::McpProtocolGetTaskResult() = default;
+ 
++McpProtocolGetTaskResult::~McpProtocolGetTaskResult() = default;
++
+ bool McpProtocolGetTaskResult::operator==(const McpProtocolGetTaskResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolGetTaskResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskresult.h
+index c34f904b2..0234d2728 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolgettaskresult.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolGetTaskResult();
++    /*!
++     */
++    ~McpProtocolGetTaskResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolicon.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolicon.cpp
+index 1f570f0e5..ae232c702 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolicon.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolicon.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolIcon::McpProtocolIcon() = default;
+ 
++McpProtocolIcon::~McpProtocolIcon() = default;
++
+ bool McpProtocolIcon::operator==(const McpProtocolIcon &other) const = default;
+ 
+ std::optional<QString> McpProtocolIcon::mimeType() const
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolicon.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolicon.h
+index 73eeecf12..69009ea67 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolicon.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolicon.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolIcon();
++    /*!
++     */
++    ~McpProtocolIcon();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimagecontent.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimagecontent.cpp
+index 573606f17..97e9b93ee 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimagecontent.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimagecontent.cpp
+@@ -11,6 +11,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolImageContent::McpProtocolImageContent() = default;
+ 
++McpProtocolImageContent::~McpProtocolImageContent() = default;
++
+ QByteArray McpProtocolImageContent::type()
+ {
+     return "image"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimagecontent.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimagecontent.h
+index 1d85edb6a..5c0c3560a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimagecontent.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimagecontent.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolImageContent();
++    /*!
++     */
++    ~McpProtocolImageContent();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimplementation.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimplementation.cpp
+index e9b32460d..2dd128d90 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimplementation.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimplementation.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolImplementation::McpProtocolImplementation() = default;
+ 
++McpProtocolImplementation::~McpProtocolImplementation() = default;
++
+ bool McpProtocolImplementation::operator==(const McpProtocolImplementation &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolImplementation &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimplementation.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimplementation.h
+index 10bd49547..fc2e2e309 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimplementation.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolimplementation.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolImplementation();
++    /*!
++     */
++    ~McpProtocolImplementation();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializednotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializednotification.cpp
+index cb63edffa..3e079ad19 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializednotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializednotification.cpp
+@@ -11,6 +11,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolInitializedNotification::McpProtocolInitializedNotification() = default;
+ 
++McpProtocolInitializedNotification::~McpProtocolInitializedNotification() = default;
++
+ bool McpProtocolInitializedNotification::operator==(const McpProtocolInitializedNotification &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializedNotification &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializednotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializednotification.h
+index e09648907..a156313ff 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializednotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializednotification.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolInitializedNotification();
++    /*!
++     */
++    ~McpProtocolInitializedNotification();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequest.cpp
+index bbb0f1d1c..fb95f7e4c 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolInitializeRequest::McpProtocolInitializeRequest() = default;
+ 
++McpProtocolInitializeRequest::~McpProtocolInitializeRequest() = default;
++
+ QByteArray McpProtocolInitializeRequest::type()
+ {
+     return "initialize"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequest.h
+index 0a54c4da5..b62a8bbe1 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolInitializeRequest();
++    /*!
++     */
++    ~McpProtocolInitializeRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequestparams.cpp
+index 29cf219bc..dcf45d195 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequestparams.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolInitializeRequestParams::McpProtocolInitializeRequestParams() = default;
+ 
++McpProtocolInitializeRequestParams::~McpProtocolInitializeRequestParams() = default;
++
+ bool McpProtocolInitializeRequestParams::operator==(const McpProtocolInitializeRequestParams &other) const = default;
+ bool McpProtocolInitializeRequestParams::Meta::operator==(const McpProtocolInitializeRequestParams::Meta &other) const = default;
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequestparams.h
+index 2d656e257..edbcd0ea4 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializerequestparams.h
+@@ -35,6 +35,9 @@ public:
+     /*!
+      */
+     McpProtocolInitializeRequestParams();
++    /*!
++     */
++    ~McpProtocolInitializeRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializeresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializeresult.cpp
+index b9da5e809..567642fee 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializeresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializeresult.cpp
+@@ -14,6 +14,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolInitializeResult::McpProtocolInitializeResult() = default;
+ 
++McpProtocolInitializeResult::~McpProtocolInitializeResult() = default;
++
+ bool McpProtocolInitializeResult::operator==(const McpProtocolInitializeResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolInitializeResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializeresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializeresult.h
+index 70e60e00f..d4f7241f1 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializeresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolinitializeresult.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolInitializeResult();
++    /*!
++     */
++    ~McpProtocolInitializeResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcerrorresponse.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcerrorresponse.cpp
+index c5be53b6f..e1b975cd7 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcerrorresponse.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcerrorresponse.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolJSONRPCErrorResponse::McpProtocolJSONRPCErrorResponse() = default;
+ 
++McpProtocolJSONRPCErrorResponse::~McpProtocolJSONRPCErrorResponse() = default;
++
+ bool McpProtocolJSONRPCErrorResponse::operator==(const McpProtocolJSONRPCErrorResponse &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolJSONRPCErrorResponse &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcerrorresponse.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcerrorresponse.h
+index ba3af4183..01a62b117 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcerrorresponse.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcerrorresponse.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolJSONRPCErrorResponse();
++    /*!
++     */
++    ~McpProtocolJSONRPCErrorResponse();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcnotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcnotification.cpp
+index f4fad2040..17a619880 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcnotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcnotification.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolJSONRPCNotification::McpProtocolJSONRPCNotification() = default;
+ 
++McpProtocolJSONRPCNotification::~McpProtocolJSONRPCNotification() = default;
++
+ bool McpProtocolJSONRPCNotification::operator==(const McpProtocolJSONRPCNotification &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolJSONRPCNotification &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcnotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcnotification.h
+index 905691e84..cf55ebc0a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcnotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcnotification.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolJSONRPCNotification();
++    /*!
++     */
++    ~McpProtocolJSONRPCNotification();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcrequest.cpp
+index ade55e8cd..deffaafca 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolJSONRPCRequest::McpProtocolJSONRPCRequest() = default;
+ 
++McpProtocolJSONRPCRequest::~McpProtocolJSONRPCRequest() = default;
++
+ bool McpProtocolJSONRPCRequest::operator==(const McpProtocolJSONRPCRequest &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolJSONRPCRequest &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcrequest.h
+index b6c4b2637..e5df98649 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolJSONRPCRequest();
++    /*!
++     */
++    ~McpProtocolJSONRPCRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcresultresponse.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcresultresponse.cpp
+index 440f9469e..0f8409b99 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcresultresponse.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcresultresponse.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolJSONRPCResultResponse::McpProtocolJSONRPCResultResponse() = default;
+ 
++McpProtocolJSONRPCResultResponse::~McpProtocolJSONRPCResultResponse() = default;
++
+ bool McpProtocolJSONRPCResultResponse::operator==(const McpProtocolJSONRPCResultResponse &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolJSONRPCResultResponse &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcresultresponse.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcresultresponse.h
+index aa6ffb24f..480bf7948 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcresultresponse.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoljsonrpcresultresponse.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolJSONRPCResultResponse();
++    /*!
++     */
++    ~McpProtocolJSONRPCResultResponse();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollegacytitledenumschema.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollegacytitledenumschema.cpp
+index df44ef9a6..b9eff4dfe 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollegacytitledenumschema.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollegacytitledenumschema.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolLegacyTitledEnumSchema::McpProtocolLegacyTitledEnumSchema() = default;
+ 
++McpProtocolLegacyTitledEnumSchema::~McpProtocolLegacyTitledEnumSchema() = default;
++
+ bool McpProtocolLegacyTitledEnumSchema::operator==(const McpProtocolLegacyTitledEnumSchema &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolLegacyTitledEnumSchema &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollegacytitledenumschema.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollegacytitledenumschema.h
+index 3bb3ee982..f704b56db 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollegacytitledenumschema.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollegacytitledenumschema.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolLegacyTitledEnumSchema();
++    /*!
++     */
++    ~McpProtocolLegacyTitledEnumSchema();
+ 
+     [[nodiscard]] static QByteArray type();
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsrequest.cpp
+index 13efb055d..0382e37a7 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListPromptsRequest::McpProtocolListPromptsRequest() = default;
+ 
++McpProtocolListPromptsRequest::~McpProtocolListPromptsRequest() = default;
++
+ QByteArray McpProtocolListPromptsRequest::type()
+ {
+     return "prompts/list"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsrequest.h
+index b068974cb..26715239c 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolListPromptsRequest();
++    /*!
++     */
++    ~McpProtocolListPromptsRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsresult.cpp
+index e4efd45b6..c1b7689e8 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsresult.cpp
+@@ -14,6 +14,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListPromptsResult::McpProtocolListPromptsResult() = default;
+ 
++McpProtocolListPromptsResult::~McpProtocolListPromptsResult() = default;
++
+ bool McpProtocolListPromptsResult::operator==(const McpProtocolListPromptsResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolListPromptsResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsresult.h
+index 1e45b8d3c..ab20a2e83 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistpromptsresult.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolListPromptsResult();
++    /*!
++     */
++    ~McpProtocolListPromptsResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesrequest.cpp
+index ed7a18e26..caeebd2d2 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListResourcesRequest::McpProtocolListResourcesRequest() = default;
+ 
++McpProtocolListResourcesRequest::~McpProtocolListResourcesRequest() = default;
++
+ QByteArray McpProtocolListResourcesRequest::type()
+ {
+     return "resources/list"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesrequest.h
+index d3e9ea19e..9f486ba70 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolListResourcesRequest();
++    /*!
++     */
++    ~McpProtocolListResourcesRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesresult.cpp
+index b85a61aa2..5a3559b30 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesresult.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListResourcesResult::McpProtocolListResourcesResult() = default;
+ 
++McpProtocolListResourcesResult::~McpProtocolListResourcesResult() = default;
++
+ bool McpProtocolListResourcesResult::operator==(const McpProtocolListResourcesResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolListResourcesResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesresult.h
+index f9fcdd8b6..f49562899 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcesresult.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolListResourcesResult();
++    /*!
++     */
++    ~McpProtocolListResourcesResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesrequest.cpp
+index 8e9b0ebf9..ea799cd2c 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListResourceTemplatesRequest::McpProtocolListResourceTemplatesRequest() = default;
+ 
++McpProtocolListResourceTemplatesRequest::~McpProtocolListResourceTemplatesRequest() = default;
++
+ QByteArray McpProtocolListResourceTemplatesRequest::type()
+ {
+     return "resources/templates/list"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesrequest.h
+index 13beecc52..f80a0a2eb 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolListResourceTemplatesRequest();
++    /*!
++     */
++    ~McpProtocolListResourceTemplatesRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesresult.cpp
+index bcae3ae13..9eaaccda8 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesresult.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListResourceTemplatesResult::McpProtocolListResourceTemplatesResult() = default;
+ 
++McpProtocolListResourceTemplatesResult::~McpProtocolListResourceTemplatesResult() = default;
++
+ bool McpProtocolListResourceTemplatesResult::operator==(const McpProtocolListResourceTemplatesResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolListResourceTemplatesResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesresult.h
+index de439715b..51d4a4715 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistresourcetemplatesresult.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolListResourceTemplatesResult();
++    /*!
++     */
++    ~McpProtocolListResourceTemplatesResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsrequest.cpp
+index 4eb8af230..b64fea905 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsrequest.cpp
+@@ -14,6 +14,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListRootsRequest::McpProtocolListRootsRequest() = default;
+ 
++McpProtocolListRootsRequest::~McpProtocolListRootsRequest() = default;
++
+ QByteArray McpProtocolListRootsRequest::type()
+ {
+     return "roots/list"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsrequest.h
+index f137b6b6b..240d2e56c 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolListRootsRequest();
++    /*!
++     */
++    ~McpProtocolListRootsRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsresult.cpp
+index fca91a794..723f35d75 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsresult.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListRootsResult::McpProtocolListRootsResult() = default;
+ 
++McpProtocolListRootsResult::~McpProtocolListRootsResult() = default;
++
+ bool McpProtocolListRootsResult::operator==(const McpProtocolListRootsResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolListRootsResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsresult.h
+index 957ea164c..ad99fe755 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollistrootsresult.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolListRootsResult();
++    /*!
++     */
++    ~McpProtocolListRootsResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksrequest.cpp
+index b5e0c8865..f5746089c 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListTasksRequest::McpProtocolListTasksRequest() = default;
+ 
++McpProtocolListTasksRequest::~McpProtocolListTasksRequest() = default;
++
+ QByteArray McpProtocolListTasksRequest::type()
+ {
+     return "tasks/list"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksrequest.h
+index 72a8a6ba8..b1e4801f4 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolListTasksRequest();
++    /*!
++     */
++    ~McpProtocolListTasksRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksresult.cpp
+index 651ae8420..1346385e7 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksresult.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListTasksResult::McpProtocolListTasksResult() = default;
+ 
++McpProtocolListTasksResult::~McpProtocolListTasksResult() = default;
++
+ bool McpProtocolListTasksResult::operator==(const McpProtocolListTasksResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolListTasksResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksresult.h
+index 90168355c..e798c0d2a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttasksresult.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolListTasksResult();
++    /*!
++     */
++    ~McpProtocolListTasksResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsrequest.cpp
+index 7a2c3c6c7..1c38bc59b 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListToolsRequest::McpProtocolListToolsRequest() = default;
+ 
++McpProtocolListToolsRequest::~McpProtocolListToolsRequest() = default;
++
+ QByteArray McpProtocolListToolsRequest::type()
+ {
+     return "tools/list"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsrequest.h
+index f5b2bcec4..fc442ea84 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolListToolsRequest();
++    /*!
++     */
++    ~McpProtocolListToolsRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsresult.cpp
+index 48773e1c8..b9806d860 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsresult.cpp
+@@ -14,6 +14,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolListToolsResult::McpProtocolListToolsResult() = default;
+ 
++McpProtocolListToolsResult::~McpProtocolListToolsResult() = default;
++
+ bool McpProtocolListToolsResult::operator==(const McpProtocolListToolsResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolListToolsResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsresult.h
+index e28690c46..4917d518a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocollisttoolsresult.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolListToolsResult();
++    /*!
++     */
++    ~McpProtocolListToolsResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolloggingmessagenotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolloggingmessagenotification.cpp
+index 4ae7a00ce..d76cd520e 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolloggingmessagenotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolloggingmessagenotification.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolLoggingMessageNotification::McpProtocolLoggingMessageNotification() = default;
+ 
++McpProtocolLoggingMessageNotification::~McpProtocolLoggingMessageNotification() = default;
++
+ bool McpProtocolLoggingMessageNotification::operator==(const McpProtocolLoggingMessageNotification &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolLoggingMessageNotification &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolloggingmessagenotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolloggingmessagenotification.h
+index a7136f8c9..d45eb22db 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolloggingmessagenotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolloggingmessagenotification.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolLoggingMessageNotification();
++    /*!
++     */
++    ~McpProtocolLoggingMessageNotification();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmeta.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmeta.cpp
+index ca89bf6ff..c9ee283f8 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmeta.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmeta.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolMeta::McpProtocolMeta() = default;
+ 
++McpProtocolMeta::~McpProtocolMeta() = default;
++
+ bool McpProtocolMeta::operator==(const McpProtocolMeta &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolMeta &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmeta.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmeta.h
+index 5bca74a42..a9e3025ee 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmeta.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmeta.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolMeta();
++    /*!
++     */
++    ~McpProtocolMeta();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmodelpreferences.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmodelpreferences.cpp
+index 87e151d91..e330b2a4e 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmodelpreferences.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmodelpreferences.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolModelPreferences::McpProtocolModelPreferences() = default;
+ 
++McpProtocolModelPreferences::~McpProtocolModelPreferences() = default;
++
+ bool McpProtocolModelPreferences::operator==(const McpProtocolModelPreferences &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolModelPreferences &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmodelpreferences.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmodelpreferences.h
+index b39fbab64..398bebe23 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmodelpreferences.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolmodelpreferences.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolModelPreferences();
++    /*!
++     */
++    ~McpProtocolModelPreferences();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnotificationparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnotificationparams.cpp
+index 834609949..740196a4d 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnotificationparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnotificationparams.cpp
+@@ -11,6 +11,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolNotificationParams::McpProtocolNotificationParams() = default;
+ 
++McpProtocolNotificationParams::~McpProtocolNotificationParams() = default;
++
+ bool McpProtocolNotificationParams::operator==(const McpProtocolNotificationParams &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolNotificationParams &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnotificationparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnotificationparams.h
+index 59f6b2f18..eb7164f29 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnotificationparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnotificationparams.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolNotificationParams();
++    /*!
++     */
++    ~McpProtocolNotificationParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnumberschema.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnumberschema.cpp
+index 07b2c9e51..f9eac6291 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnumberschema.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnumberschema.cpp
+@@ -11,6 +11,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolNumberSchema::McpProtocolNumberSchema() = default;
+ 
++McpProtocolNumberSchema::~McpProtocolNumberSchema() = default;
++
+ bool McpProtocolNumberSchema::operator==(const McpProtocolNumberSchema &other) const = default;
+ 
+ std::optional<int> McpProtocolNumberSchema::defaultValue() const
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnumberschema.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnumberschema.h
+index 5a8b369a5..55cb45531 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnumberschema.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolnumberschema.h
+@@ -22,6 +22,9 @@ public:
+     /*!
+      */
+     McpProtocolNumberSchema();
++    /*!
++     */
++    ~McpProtocolNumberSchema();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequest.cpp
+index 0244304a1..a7973b698 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolPaginatedRequest::McpProtocolPaginatedRequest() = default;
+ 
++McpProtocolPaginatedRequest::~McpProtocolPaginatedRequest() = default;
++
+ bool McpProtocolPaginatedRequest::operator==(const McpProtocolPaginatedRequest &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolPaginatedRequest &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequest.h
+index 008473f81..a95aa93e2 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolPaginatedRequest();
++    /*!
++     */
++    ~McpProtocolPaginatedRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequestparams.cpp
+index d4df75917..77f667c04 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequestparams.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolPaginatedRequestParams::McpProtocolPaginatedRequestParams() = default;
+ 
++McpProtocolPaginatedRequestParams::~McpProtocolPaginatedRequestParams() = default;
++
+ bool McpProtocolPaginatedRequestParams::operator==(const McpProtocolPaginatedRequestParams &other) const = default;
+ bool McpProtocolPaginatedRequestParams::Meta::operator==(const McpProtocolPaginatedRequestParams::Meta &other) const = default;
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequestparams.h
+index ec2361f23..5d43bfe23 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedrequestparams.h
+@@ -32,6 +32,9 @@ public:
+     /*!
+      */
+     McpProtocolPaginatedRequestParams();
++    /*!
++     */
++    ~McpProtocolPaginatedRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedresult.cpp
+index 787cb2378..75f0812c2 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedresult.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolPaginatedResult::McpProtocolPaginatedResult() = default;
+ 
++McpProtocolPaginatedResult::~McpProtocolPaginatedResult() = default;
++
+ bool McpProtocolPaginatedResult::operator==(const McpProtocolPaginatedResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolPaginatedResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedresult.h
+index 619e04e81..f87770e97 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpaginatedresult.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolPaginatedResult();
++    /*!
++     */
++    ~McpProtocolPaginatedResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpingrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpingrequest.cpp
+index 3a8b916e9..f8a0d9164 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpingrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpingrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolPingRequest::McpProtocolPingRequest() = default;
+ 
++McpProtocolPingRequest::~McpProtocolPingRequest() = default;
++
+ QByteArray McpProtocolPingRequest::type()
+ {
+     return "ping"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpingrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpingrequest.h
+index feab54c10..7dd22c93e 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpingrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpingrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolPingRequest();
++    /*!
++     */
++    ~McpProtocolPingRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotification.cpp
+index 07d23e619..2f2ec03a2 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotification.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolProgressNotification::McpProtocolProgressNotification() = default;
+ 
++McpProtocolProgressNotification::~McpProtocolProgressNotification() = default;
++
+ QByteArray McpProtocolProgressNotification::type()
+ {
+     return "notifications/progress"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotification.h
+index 31e23fcfd..1db04a8d2 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotification.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolProgressNotification();
++    /*!
++     */
++    ~McpProtocolProgressNotification();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotificationparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotificationparams.cpp
+index a966317e3..f1dbcb2c3 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotificationparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotificationparams.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolProgressNotificationParams::McpProtocolProgressNotificationParams() = default;
+ 
++McpProtocolProgressNotificationParams::~McpProtocolProgressNotificationParams() = default;
++
+ bool McpProtocolProgressNotificationParams::operator==(const McpProtocolProgressNotificationParams &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolProgressNotificationParams &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotificationparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotificationparams.h
+index 9505c1ea3..f6622ec63 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotificationparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprogressnotificationparams.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolProgressNotificationParams();
++    /*!
++     */
++    ~McpProtocolProgressNotificationParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprompt.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprompt.cpp
+index 62da49917..cc185a702 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprompt.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprompt.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolPrompt::McpProtocolPrompt() = default;
+ 
++McpProtocolPrompt::~McpProtocolPrompt() = default;
++
+ bool McpProtocolPrompt::operator==(const McpProtocolPrompt &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolPrompt &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprompt.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprompt.h
+index 949df28ee..c7948ad28 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprompt.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolprompt.h
+@@ -20,6 +20,9 @@ public:
+     /*!
+      */
+     McpProtocolPrompt();
++    /*!
++     */
++    ~McpProtocolPrompt();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptargument.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptargument.cpp
+index f1bf96bc2..d4993a2c1 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptargument.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptargument.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolPromptArgument::McpProtocolPromptArgument() = default;
+ 
++McpProtocolPromptArgument::~McpProtocolPromptArgument() = default;
++
+ bool McpProtocolPromptArgument::operator==(const McpProtocolPromptArgument &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolPromptArgument &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptargument.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptargument.h
+index bc5f5dcb6..038da8447 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptargument.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptargument.h
+@@ -16,6 +16,9 @@ public:
+     /*!
+      */
+     McpProtocolPromptArgument();
++    /*!
++     */
++    ~McpProtocolPromptArgument();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptlistchangednotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptlistchangednotification.cpp
+index 85f2fe605..ff9b64da4 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptlistchangednotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptlistchangednotification.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolPromptListChangedNotification::McpProtocolPromptListChangedNotification() = default;
+ 
++McpProtocolPromptListChangedNotification::~McpProtocolPromptListChangedNotification() = default;
++
+ QByteArray McpProtocolPromptListChangedNotification::type()
+ {
+     return "notifications/prompts/list_changed"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptlistchangednotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptlistchangednotification.h
+index 95c8ddafc..4e0882a7a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptlistchangednotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptlistchangednotification.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolPromptListChangedNotification();
++    /*!
++     */
++    ~McpProtocolPromptListChangedNotification();
+ 
+     [[nodiscard]] static QByteArray type();
+     /*!
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptreference.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptreference.cpp
+index 2f82509f0..c4f06039f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptreference.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptreference.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolPromptReference::McpProtocolPromptReference() = default;
+ 
++McpProtocolPromptReference::~McpProtocolPromptReference() = default;
++
+ QByteArray McpProtocolPromptReference::type()
+ {
+     return "ref/prompt"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptreference.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptreference.h
+index 590b5efe7..4439743a8 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptreference.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolpromptreference.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolPromptReference();
++    /*!
++     */
++    ~McpProtocolPromptReference();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequest.cpp
+index 285074e11..bd61a0276 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolReadResourceRequest::McpProtocolReadResourceRequest() = default;
+ 
++McpProtocolReadResourceRequest::~McpProtocolReadResourceRequest() = default;
++
+ QByteArray McpProtocolReadResourceRequest::type()
+ {
+     return "resources/read"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequest.h
+index e92dc6a64..01e837df8 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolReadResourceRequest();
++    /*!
++     */
++    ~McpProtocolReadResourceRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequestparams.cpp
+index ecb96a47d..975c5da8a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequestparams.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolReadResourceRequestParams::McpProtocolReadResourceRequestParams() = default;
+ 
++McpProtocolReadResourceRequestParams::~McpProtocolReadResourceRequestParams() = default;
++
+ bool McpProtocolReadResourceRequestParams::operator==(const McpProtocolReadResourceRequestParams &other) const = default;
+ bool McpProtocolReadResourceRequestParams::Meta::operator==(const McpProtocolReadResourceRequestParams::Meta &other) const = default;
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequestparams.h
+index 708a590a8..d681290f3 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourcerequestparams.h
+@@ -32,6 +32,9 @@ public:
+     /*!
+      */
+     McpProtocolReadResourceRequestParams();
++    /*!
++     */
++    ~McpProtocolReadResourceRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourceresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourceresult.cpp
+index 37c6ce8de..18ca0751f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourceresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourceresult.cpp
+@@ -14,6 +14,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolReadResourceResult::McpProtocolReadResourceResult() = default;
+ 
++McpProtocolReadResourceResult::~McpProtocolReadResourceResult() = default;
++
+ // bool McpProtocolReadResourceResult::operator==(const McpProtocolReadResourceResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolReadResourceResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourceresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourceresult.h
+index 1933e0fc0..e8926f714 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourceresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolreadresourceresult.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolReadResourceResult();
++    /*!
++     */
++    ~McpProtocolReadResourceResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrelatedtaskmetadata.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrelatedtaskmetadata.cpp
+index 231ad2b90..a56f7a6c1 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrelatedtaskmetadata.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrelatedtaskmetadata.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolRelatedTaskMetadata::McpProtocolRelatedTaskMetadata() = default;
+ 
++McpProtocolRelatedTaskMetadata::~McpProtocolRelatedTaskMetadata() = default;
++
+ bool McpProtocolRelatedTaskMetadata::operator==(const McpProtocolRelatedTaskMetadata &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolRelatedTaskMetadata &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrelatedtaskmetadata.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrelatedtaskmetadata.h
+index 02f650981..57eb74eb7 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrelatedtaskmetadata.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrelatedtaskmetadata.h
+@@ -16,6 +16,9 @@ public:
+     /*!
+      */
+     McpProtocolRelatedTaskMetadata();
++    /*!
++     */
++    ~McpProtocolRelatedTaskMetadata();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrequestparams.cpp
+index a45e921dc..668361f45 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrequestparams.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolRequestParams::McpProtocolRequestParams() = default;
+ 
++McpProtocolRequestParams::~McpProtocolRequestParams() = default;
++
+ bool McpProtocolRequestParams::operator==(const McpProtocolRequestParams &other) const = default;
+ bool McpProtocolRequestParams::Meta::operator==(const McpProtocolRequestParams::Meta &other) const = default;
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrequestparams.h
+index c0c816b34..0945858c2 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrequestparams.h
+@@ -32,6 +32,9 @@ public:
+     /*!
+      */
+     McpProtocolRequestParams();
++    /*!
++     */
++    ~McpProtocolRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresource.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresource.cpp
+index 74ef95b66..c33831851 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresource.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresource.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolResource::McpProtocolResource() = default;
+ 
++McpProtocolResource::~McpProtocolResource() = default;
++
+ bool McpProtocolResource::operator==(const McpProtocolResource &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolResource &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresource.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresource.h
+index 68bfa7a27..4043b5ff7 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresource.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresource.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolResource();
++    /*!
++     */
++    ~McpProtocolResource();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcecontents.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcecontents.cpp
+index 7cb894960..e069db544 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcecontents.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcecontents.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolResourceContents::McpProtocolResourceContents() = default;
+ 
++McpProtocolResourceContents::~McpProtocolResourceContents() = default;
++
+ bool McpProtocolResourceContents::operator==(const McpProtocolResourceContents &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolResourceContents &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcecontents.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcecontents.h
+index a657d7e3f..ed7c3cbf4 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcecontents.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcecontents.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolResourceContents();
++    /*!
++     */
++    ~McpProtocolResourceContents();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelink.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelink.cpp
+index eca13e558..9cb202ac3 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelink.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelink.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolResourceLink::McpProtocolResourceLink() = default;
+ 
++McpProtocolResourceLink::~McpProtocolResourceLink() = default;
++
+ bool McpProtocolResourceLink::operator==(const McpProtocolResourceLink &other) const = default;
+ 
+ QByteArray McpProtocolResourceLink::type()
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelink.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelink.h
+index cc8f55b42..376ffcf9e 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelink.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelink.h
+@@ -20,6 +20,9 @@ public:
+     /*!
+      */
+     McpProtocolResourceLink();
++    /*!
++     */
++    ~McpProtocolResourceLink();
+     /*!
+      */
+     [[nodiscard]] bool operator==(const McpProtocolResourceLink &other) const;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelistchangednotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelistchangednotification.cpp
+index 493e2c029..55a24770f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelistchangednotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelistchangednotification.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolResourceListChangedNotification::McpProtocolResourceListChangedNotification() = default;
+ 
++McpProtocolResourceListChangedNotification::~McpProtocolResourceListChangedNotification() = default;
++
+ QByteArray McpProtocolResourceListChangedNotification::type()
+ {
+     return "notifications/resources/list_changed"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelistchangednotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelistchangednotification.h
+index d7c2abc94..e31b74162 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelistchangednotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcelistchangednotification.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolResourceListChangedNotification();
++    /*!
++     */
++    ~McpProtocolResourceListChangedNotification();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplate.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplate.cpp
+index ac5130b37..1aa5d4d5f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplate.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplate.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolResourceTemplate::McpProtocolResourceTemplate() = default;
+ 
++McpProtocolResourceTemplate::~McpProtocolResourceTemplate() = default;
++
+ bool McpProtocolResourceTemplate::operator==(const McpProtocolResourceTemplate &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolResourceTemplate &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplate.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplate.h
+index 075ecfbc2..a658c898d 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplate.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplate.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolResourceTemplate();
++    /*!
++     */
++    ~McpProtocolResourceTemplate();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplatereference.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplatereference.cpp
+index 2a1fc024b..4d7fb664d 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplatereference.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplatereference.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolResourceTemplateReference::McpProtocolResourceTemplateReference() = default;
+ 
++McpProtocolResourceTemplateReference::~McpProtocolResourceTemplateReference() = default;
++
+ QByteArray McpProtocolResourceTemplateReference::type()
+ {
+     return "ref/resource"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplatereference.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplatereference.h
+index b3cdfb9d9..28d085277 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplatereference.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourcetemplatereference.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolResourceTemplateReference();
++    /*!
++     */
++    ~McpProtocolResourceTemplateReference();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotification.cpp
+index eb69c66c6..50b886174 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotification.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolResourceUpdatedNotification::McpProtocolResourceUpdatedNotification() = default;
+ 
++McpProtocolResourceUpdatedNotification::~McpProtocolResourceUpdatedNotification() = default;
++
+ QByteArray McpProtocolResourceUpdatedNotification::type()
+ {
+     return "notifications/resources/updated"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotification.h
+index a7034b474..e76ce0334 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotification.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolResourceUpdatedNotification();
++    /*!
++     */
++    ~McpProtocolResourceUpdatedNotification();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotificationparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotificationparams.cpp
+index ea8b5c723..672a408b1 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotificationparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotificationparams.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolResourceUpdatedNotificationParams::McpProtocolResourceUpdatedNotificationParams() = default;
+ 
++McpProtocolResourceUpdatedNotificationParams::~McpProtocolResourceUpdatedNotificationParams() = default;
++
+ bool McpProtocolResourceUpdatedNotificationParams::operator==(const McpProtocolResourceUpdatedNotificationParams &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolResourceUpdatedNotificationParams &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotificationparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotificationparams.h
+index 97c1941fe..61e42ed0f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotificationparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresourceupdatednotificationparams.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolResourceUpdatedNotificationParams();
++    /*!
++     */
++    ~McpProtocolResourceUpdatedNotificationParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresult.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresult.cpp
+index bcdbf8429..1b9639a33 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresult.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresult.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolResult::McpProtocolResult() = default;
+ 
++McpProtocolResult::~McpProtocolResult() = default;
++
+ bool McpProtocolResult::operator==(const McpProtocolResult &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolResult &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresult.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresult.h
+index 98292e21c..5c44debb8 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresult.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolresult.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolResult();
++    /*!
++     */
++    ~McpProtocolResult();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolroot.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolroot.cpp
+index c07517359..d995778f4 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolroot.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolroot.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolRoot::McpProtocolRoot() = default;
+ 
++McpProtocolRoot::~McpProtocolRoot() = default;
++
+ bool McpProtocolRoot::operator==(const McpProtocolRoot &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolRoot &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolroot.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolroot.h
+index 6730fe703..0e6ae4993 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolroot.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolroot.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolRoot();
++    /*!
++     */
++    ~McpProtocolRoot();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrootslistchangednotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrootslistchangednotification.cpp
+index f18462f0c..aa851a7eb 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrootslistchangednotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrootslistchangednotification.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolRootsListChangedNotification::McpProtocolRootsListChangedNotification() = default;
+ 
++McpProtocolRootsListChangedNotification::~McpProtocolRootsListChangedNotification() = default;
++
+ bool McpProtocolRootsListChangedNotification::operator==(const McpProtocolRootsListChangedNotification &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolRootsListChangedNotification &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrootslistchangednotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrootslistchangednotification.h
+index 223245359..26df95b95 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrootslistchangednotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolrootslistchangednotification.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolRootsListChangedNotification();
++    /*!
++     */
++    ~McpProtocolRootsListChangedNotification();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsamplingmessage.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsamplingmessage.cpp
+index b6e9f6eda..c82bc3b63 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsamplingmessage.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsamplingmessage.cpp
+@@ -11,6 +11,8 @@
+ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolSamplingMessage::McpProtocolSamplingMessage() = default;
++McpProtocolSamplingMessage::~McpProtocolSamplingMessage() = default;
++
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolSamplingMessage &t)
+ {
+     d.space() << "meta:" << t.meta();
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsamplingmessage.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsamplingmessage.h
+index 4d0c38565..546e8382f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsamplingmessage.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsamplingmessage.h
+@@ -24,6 +24,9 @@ public:
+     /*!
+      */
+     McpProtocolSamplingMessage();
++    /*!
++     */
++    ~McpProtocolSamplingMessage();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolservercapabilities.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolservercapabilities.cpp
+index 1598be16c..d2c2c7167 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolservercapabilities.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolservercapabilities.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolServerCapabilities::McpProtocolServerCapabilities() = default;
+ 
++McpProtocolServerCapabilities::~McpProtocolServerCapabilities() = default;
++
+ bool McpProtocolServerCapabilities::operator==(const McpProtocolServerCapabilities &other) const = default;
+ 
+ bool McpProtocolServerCapabilities::Prompts::operator==(const McpProtocolServerCapabilities::Prompts &other) const = default;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolservercapabilities.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolservercapabilities.h
+index 34996a47f..88baf7036 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolservercapabilities.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolservercapabilities.h
+@@ -94,6 +94,9 @@ public:
+     /*!
+      */
+     McpProtocolServerCapabilities();
++    /*!
++     */
++    ~McpProtocolServerCapabilities();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequest.cpp
+index 16d8eae87..0f818ee0b 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolSetLevelRequest::McpProtocolSetLevelRequest() = default;
+ 
++McpProtocolSetLevelRequest::~McpProtocolSetLevelRequest() = default;
++
+ QByteArray McpProtocolSetLevelRequest::type()
+ {
+     return "logging/setLevel"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequest.h
+index 7532750b8..61c0878f5 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolSetLevelRequest();
++    /*!
++     */
++    ~McpProtocolSetLevelRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequestparams.cpp
+index ab419c347..aeadbd62b 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequestparams.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolSetLevelRequestParams::McpProtocolSetLevelRequestParams() = default;
+ 
++McpProtocolSetLevelRequestParams::~McpProtocolSetLevelRequestParams() = default;
++
+ bool McpProtocolSetLevelRequestParams::operator==(const McpProtocolSetLevelRequestParams &other) const = default;
+ bool McpProtocolSetLevelRequestParams::Meta::operator==(const McpProtocolSetLevelRequestParams::Meta &other) const = default;
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequestparams.h
+index fc1ae8c29..a124cb685 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsetlevelrequestparams.h
+@@ -32,6 +32,9 @@ public:
+     /*!
+      */
+     McpProtocolSetLevelRequestParams();
++    /*!
++     */
++    ~McpProtocolSetLevelRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolstringschema.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolstringschema.cpp
+index 748c320a9..6c7df5ad9 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolstringschema.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolstringschema.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolStringSchema::McpProtocolStringSchema() = default;
+ 
++McpProtocolStringSchema::~McpProtocolStringSchema() = default;
++
+ bool McpProtocolStringSchema::operator==(const McpProtocolStringSchema &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolStringSchema &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolstringschema.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolstringschema.h
+index ec09ee89c..71dfd0816 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolstringschema.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolstringschema.h
+@@ -25,6 +25,9 @@ public:
+     /*!
+      */
+     McpProtocolStringSchema();
++    /*!
++     */
++    ~McpProtocolStringSchema();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequest.cpp
+index 2de2ee7ca..b29976da5 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequest.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolSubscribeRequest::McpProtocolSubscribeRequest() = default;
+ 
++McpProtocolSubscribeRequest::~McpProtocolSubscribeRequest() = default;
++
+ QByteArray McpProtocolSubscribeRequest::type()
+ {
+     return "resources/subscribe"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequest.h
+index 0d7749df7..f4843050e 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolSubscribeRequest();
++    /*!
++     */
++    ~McpProtocolSubscribeRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequestparams.cpp
+index e35fc9386..6bf4ef24a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequestparams.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolSubscribeRequestParams::McpProtocolSubscribeRequestParams() = default;
+ 
++McpProtocolSubscribeRequestParams::~McpProtocolSubscribeRequestParams() = default;
++
+ bool McpProtocolSubscribeRequestParams::operator==(const McpProtocolSubscribeRequestParams &other) const = default;
+ bool McpProtocolSubscribeRequestParams::Meta::operator==(const McpProtocolSubscribeRequestParams::Meta &other) const = default;
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequestparams.h
+index cf7ac6bf1..5b3f3199e 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolsubscriberequestparams.h
+@@ -33,6 +33,9 @@ public:
+     /*!
+      */
+     McpProtocolSubscribeRequestParams();
++    /*!
++     */
++    ~McpProtocolSubscribeRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltask.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltask.cpp
+index 7103bd28c..040940bcc 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltask.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltask.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolTask::McpProtocolTask() = default;
+ 
++McpProtocolTask::~McpProtocolTask() = default;
++
+ bool McpProtocolTask::operator==(const McpProtocolTask &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolTask &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltask.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltask.h
+index 89c93187f..300d91c61 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltask.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltask.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolTask();
++    /*!
++     */
++    ~McpProtocolTask();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskaugmentedrequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskaugmentedrequestparams.cpp
+index fab434654..ad4b5e63f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskaugmentedrequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskaugmentedrequestparams.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolTaskAugmentedRequestParams::McpProtocolTaskAugmentedRequestParams() = default;
+ 
++McpProtocolTaskAugmentedRequestParams::~McpProtocolTaskAugmentedRequestParams() = default;
++
+ bool McpProtocolTaskAugmentedRequestParams::operator==(const McpProtocolTaskAugmentedRequestParams &other) const = default;
+ 
+ bool McpProtocolTaskAugmentedRequestParams::Meta::operator==(const McpProtocolTaskAugmentedRequestParams::Meta &other) const = default;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskaugmentedrequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskaugmentedrequestparams.h
+index 6ea1530c6..53856f8cc 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskaugmentedrequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskaugmentedrequestparams.h
+@@ -34,6 +34,9 @@ public:
+     /*!
+      */
+     McpProtocolTaskAugmentedRequestParams();
++    /*!
++     */
++    ~McpProtocolTaskAugmentedRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskmetadata.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskmetadata.cpp
+index 94f2ee828..75ce4777e 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskmetadata.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskmetadata.cpp
+@@ -11,6 +11,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolTaskMetadata::McpProtocolTaskMetadata() = default;
+ 
++McpProtocolTaskMetadata::~McpProtocolTaskMetadata() = default;
++
+ bool McpProtocolTaskMetadata::operator==(const McpProtocolTaskMetadata &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolTaskMetadata &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskmetadata.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskmetadata.h
+index 06d9de283..32ceee7c4 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskmetadata.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskmetadata.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolTaskMetadata();
++    /*!
++     */
++    ~McpProtocolTaskMetadata();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotification.cpp
+index f6b213272..56385a117 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotification.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolTaskStatusNotification::McpProtocolTaskStatusNotification() = default;
+ 
++McpProtocolTaskStatusNotification::~McpProtocolTaskStatusNotification() = default;
++
+ QByteArray McpProtocolTaskStatusNotification::type()
+ {
+     return "notifications/tasks/status"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotification.h
+index efacfa8d9..286d94cc7 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotification.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolTaskStatusNotification();
++    /*!
++     */
++    ~McpProtocolTaskStatusNotification();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotificationparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotificationparams.cpp
+index 470d95457..0473004b0 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotificationparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotificationparams.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolTaskStatusNotificationParams::McpProtocolTaskStatusNotificationParams() = default;
+ 
++McpProtocolTaskStatusNotificationParams::~McpProtocolTaskStatusNotificationParams() = default;
++
+ bool McpProtocolTaskStatusNotificationParams::operator==(const McpProtocolTaskStatusNotificationParams &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolTaskStatusNotificationParams &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotificationparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotificationparams.h
+index 4c77f72ab..373b46a12 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotificationparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltaskstatusnotificationparams.h
+@@ -20,6 +20,9 @@ public:
+     /*!
+      */
+     McpProtocolTaskStatusNotificationParams();
++    /*!
++     */
++    ~McpProtocolTaskStatusNotificationParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextcontent.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextcontent.cpp
+index de67592aa..ec7711c0f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextcontent.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextcontent.cpp
+@@ -14,6 +14,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolTextContent::McpProtocolTextContent() = default;
+ 
++McpProtocolTextContent::~McpProtocolTextContent() = default;
++
+ QByteArray McpProtocolTextContent::type()
+ {
+     return "text"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextcontent.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextcontent.h
+index 7845aba5d..b7e042ca6 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextcontent.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextcontent.h
+@@ -20,6 +20,9 @@ public:
+     /*!
+      */
+     McpProtocolTextContent();
++    /*!
++     */
++    ~McpProtocolTextContent();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextresourcecontents.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextresourcecontents.cpp
+index 5c60c7eb5..b85436f20 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextresourcecontents.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextresourcecontents.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolTextResourceContents::McpProtocolTextResourceContents() = default;
+ 
++McpProtocolTextResourceContents::~McpProtocolTextResourceContents() = default;
++
+ bool McpProtocolTextResourceContents::operator==(const McpProtocolTextResourceContents &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolTextResourceContents &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextresourcecontents.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextresourcecontents.h
+index a74f4ccf6..7e28a1651 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextresourcecontents.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltextresourcecontents.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolTextResourceContents();
++    /*!
++     */
++    ~McpProtocolTextResourceContents();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledmultiselectenumschema.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledmultiselectenumschema.cpp
+index 265138098..e9e58a8a3 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledmultiselectenumschema.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledmultiselectenumschema.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolTitledMultiSelectEnumSchema::McpProtocolTitledMultiSelectEnumSchema() = default;
+ 
++McpProtocolTitledMultiSelectEnumSchema::~McpProtocolTitledMultiSelectEnumSchema() = default;
++
+ bool McpProtocolTitledMultiSelectEnumSchema::operator==(const McpProtocolTitledMultiSelectEnumSchema &other) const = default;
+ 
+ bool McpProtocolTitledMultiSelectEnumSchema::Items::operator==(const McpProtocolTitledMultiSelectEnumSchema::Items &other) const = default;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledmultiselectenumschema.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledmultiselectenumschema.h
+index 7e7331c21..c9c619a9d 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledmultiselectenumschema.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledmultiselectenumschema.h
+@@ -51,6 +51,9 @@ public:
+     /*!
+      */
+     McpProtocolTitledMultiSelectEnumSchema();
++    /*!
++     */
++    ~McpProtocolTitledMultiSelectEnumSchema();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledsingleselectenumschema.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledsingleselectenumschema.cpp
+index 69fc14cd3..8bfde8bbe 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledsingleselectenumschema.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledsingleselectenumschema.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolTitledSingleSelectEnumSchema::McpProtocolTitledSingleSelectEnumSchema() = default;
+ 
++McpProtocolTitledSingleSelectEnumSchema::~McpProtocolTitledSingleSelectEnumSchema() = default;
++
+ bool McpProtocolTitledSingleSelectEnumSchema::operator==(const McpProtocolTitledSingleSelectEnumSchema &other) const = default;
+ 
+ bool McpProtocolTitledSingleSelectEnumSchema::OneOfItem::operator==(const McpProtocolTitledSingleSelectEnumSchema::OneOfItem &other) const = default;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledsingleselectenumschema.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledsingleselectenumschema.h
+index 4738d964f..3e1b0f302 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledsingleselectenumschema.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltitledsingleselectenumschema.h
+@@ -36,6 +36,9 @@ public:
+     /*!
+      */
+     McpProtocolTitledSingleSelectEnumSchema();
++    /*!
++     */
++    ~McpProtocolTitledSingleSelectEnumSchema();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltool.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltool.cpp
+index f66fb03fe..1e4398b5f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltool.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltool.cpp
+@@ -14,6 +14,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolTool::McpProtocolTool() = default;
+ 
++McpProtocolTool::~McpProtocolTool() = default;
++
+ bool McpProtocolTool::operator==(const McpProtocolTool &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolTool &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltool.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltool.h
+index 13748417e..a67d78031 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltool.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltool.h
+@@ -47,6 +47,9 @@ public:
+     /*!
+      */
+     McpProtocolTool();
++    /*!
++     */
++    ~McpProtocolTool();
+ 
+     [[nodiscard]] static QByteArray type();
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolannotations.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolannotations.cpp
+index 3c8a860c0..000c09c1c 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolannotations.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolannotations.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolToolAnnotations::McpProtocolToolAnnotations() = default;
+ 
++McpProtocolToolAnnotations::~McpProtocolToolAnnotations() = default;
++
+ bool McpProtocolToolAnnotations::destructiveHint() const
+ {
+     return mDestructiveHint;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolannotations.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolannotations.h
+index d31df72ae..118dac32c 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolannotations.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolannotations.h
+@@ -17,6 +17,9 @@ public:
+     /*!
+      */
+     McpProtocolToolAnnotations();
++    /*!
++     */
++    ~McpProtocolToolAnnotations();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoollistchangednotification.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoollistchangednotification.cpp
+index 2f0180642..af9ca5106 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoollistchangednotification.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoollistchangednotification.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolToolListChangedNotification::McpProtocolToolListChangedNotification() = default;
+ 
++McpProtocolToolListChangedNotification::~McpProtocolToolListChangedNotification() = default;
++
+ QByteArray McpProtocolToolListChangedNotification::type()
+ {
+     return "notifications/tools/list_changed"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoollistchangednotification.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoollistchangednotification.h
+index bc6fd10de..e36e65852 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoollistchangednotification.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoollistchangednotification.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolToolListChangedNotification();
++    /*!
++     */
++    ~McpProtocolToolListChangedNotification();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolresultcontent.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolresultcontent.cpp
+index 0685265b6..0121cf242 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolresultcontent.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolresultcontent.cpp
+@@ -26,6 +26,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolToolResultContent::McpProtocolToolResultContent() = default;
+ 
++McpProtocolToolResultContent::~McpProtocolToolResultContent() = default;
++
+ QByteArray McpProtocolToolResultContent::type()
+ {
+     return "tool_result"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolresultcontent.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolresultcontent.h
+index 8b22ac9b4..f86cbc46f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolresultcontent.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolresultcontent.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolToolResultContent();
++    /*!
++     */
++    ~McpProtocolToolResultContent();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolusecontent.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolusecontent.cpp
+index 0eb7200d4..0965ac3fc 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolusecontent.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolusecontent.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolToolUseContent::McpProtocolToolUseContent() = default;
+ 
++McpProtocolToolUseContent::~McpProtocolToolUseContent() = default;
++
+ QByteArray McpProtocolToolUseContent::type()
+ {
+     return "tool_use"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolusecontent.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolusecontent.h
+index 21b5b9ccd..6d11f23e8 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolusecontent.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoltoolusecontent.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolToolUseContent();
++    /*!
++     */
++    ~McpProtocolToolUseContent();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequest.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequest.cpp
+index 58acd3d9a..97829035b 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequest.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequest.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolUnsubscribeRequest::McpProtocolUnsubscribeRequest() = default;
+ 
++McpProtocolUnsubscribeRequest::~McpProtocolUnsubscribeRequest() = default;
++
+ QByteArray McpProtocolUnsubscribeRequest::type()
+ {
+     return "resources/unsubscribe"_ba;
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequest.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequest.h
+index 563c5b065..7dbd47159 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequest.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequest.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolUnsubscribeRequest();
++    /*!
++     */
++    ~McpProtocolUnsubscribeRequest();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequestparams.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequestparams.cpp
+index aba670886..ec0bca649 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequestparams.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequestparams.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolUnsubscribeRequestParams::McpProtocolUnsubscribeRequestParams() = default;
+ 
++McpProtocolUnsubscribeRequestParams::~McpProtocolUnsubscribeRequestParams() = default;
++
+ bool McpProtocolUnsubscribeRequestParams::operator==(const McpProtocolUnsubscribeRequestParams &other) const = default;
+ bool McpProtocolUnsubscribeRequestParams::Meta::operator==(const McpProtocolUnsubscribeRequestParams::Meta &other) const = default;
+ 
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequestparams.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequestparams.h
+index a40262344..74da4a41a 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequestparams.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolunsubscriberequestparams.h
+@@ -32,6 +32,9 @@ public:
+     /*!
+      */
+     McpProtocolUnsubscribeRequestParams();
++    /*!
++     */
++    ~McpProtocolUnsubscribeRequestParams();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledmultiselectenumschema.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledmultiselectenumschema.cpp
+index d9190c954..4076e8d77 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledmultiselectenumschema.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledmultiselectenumschema.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolUntitledMultiSelectEnumSchema::McpProtocolUntitledMultiSelectEnumSchema() = default;
+ 
++McpProtocolUntitledMultiSelectEnumSchema::~McpProtocolUntitledMultiSelectEnumSchema() = default;
++
+ bool McpProtocolUntitledMultiSelectEnumSchema::operator==(const McpProtocolUntitledMultiSelectEnumSchema &other) const = default;
+ QStringList McpProtocolUntitledMultiSelectEnumSchema::Items::enumValue() const
+ {
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledmultiselectenumschema.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledmultiselectenumschema.h
+index 9521682e9..fc28f9e93 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledmultiselectenumschema.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledmultiselectenumschema.h
+@@ -32,6 +32,9 @@ public:
+     /*!
+      */
+     McpProtocolUntitledMultiSelectEnumSchema();
++    /*!
++     */
++    ~McpProtocolUntitledMultiSelectEnumSchema();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledsingleselectenumschema.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledsingleselectenumschema.cpp
+index 6b47e5a24..251a52683 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledsingleselectenumschema.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledsingleselectenumschema.cpp
+@@ -12,6 +12,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolUntitledSingleSelectEnumSchema::McpProtocolUntitledSingleSelectEnumSchema() = default;
+ 
++McpProtocolUntitledSingleSelectEnumSchema::~McpProtocolUntitledSingleSelectEnumSchema() = default;
++
+ bool McpProtocolUntitledSingleSelectEnumSchema::operator==(const McpProtocolUntitledSingleSelectEnumSchema &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolUntitledSingleSelectEnumSchema &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledsingleselectenumschema.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledsingleselectenumschema.h
+index dd28b1405..9c2a6cf9f 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledsingleselectenumschema.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocoluntitledsingleselectenumschema.h
+@@ -18,6 +18,9 @@ public:
+     /*!
+      */
+     McpProtocolUntitledSingleSelectEnumSchema();
++    /*!
++     */
++    ~McpProtocolUntitledSingleSelectEnumSchema();
+ 
+     /*!
+      */
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolurlelicitationrequirederror.cpp b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolurlelicitationrequirederror.cpp
+index 38a0e58db..12b051fa5 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolurlelicitationrequirederror.cpp
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolurlelicitationrequirederror.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextAutoGenerateTextMcpProtocolCore;
+ McpProtocolURLElicitationRequiredError::McpProtocolURLElicitationRequiredError() = default;
+ 
++McpProtocolURLElicitationRequiredError::~McpProtocolURLElicitationRequiredError() = default;
++
+ bool McpProtocolURLElicitationRequiredError::operator==(const McpProtocolURLElicitationRequiredError &other) const = default;
+ 
+ QDebug operator<<(QDebug d, const TextAutoGenerateTextMcpProtocolCore::McpProtocolURLElicitationRequiredError &t)
+diff --git a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolurlelicitationrequirederror.h b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolurlelicitationrequirederror.h
+index ebb50768e..f3a265b39 100644
+--- a/textautogeneratetextmcpprotocol/core/impl/mcpprotocolurlelicitationrequirederror.h
++++ b/textautogeneratetextmcpprotocol/core/impl/mcpprotocolurlelicitationrequirederror.h
+@@ -19,6 +19,9 @@ public:
+     /*!
+      */
+     McpProtocolURLElicitationRequiredError();
++    /*!
++     */
++    ~McpProtocolURLElicitationRequiredError();
+ 
+     /*!
+      */
+diff --git a/textgrammarcheck/grammalecte/grammalectegrammarerror.cpp b/textgrammarcheck/grammalecte/grammalectegrammarerror.cpp
+index 6256719af..d40599066 100644
+--- a/textgrammarcheck/grammalecte/grammalectegrammarerror.cpp
++++ b/textgrammarcheck/grammalecte/grammalectegrammarerror.cpp
+@@ -16,6 +16,8 @@ using namespace Qt::Literals::StringLiterals;
+ 
+ GrammalecteGrammarError::GrammalecteGrammarError() = default;
+ 
++GrammalecteGrammarError::~GrammalecteGrammarError() = default;
++
+ QStringList GrammalecteGrammarError::parseSuggestion(const QJsonObject &obj)
+ {
+     QStringList lst;
+diff --git a/textgrammarcheck/grammalecte/grammalectegrammarerror.h b/textgrammarcheck/grammalecte/grammalectegrammarerror.h
+index 2cf4f49d1..7af351bd3 100644
+--- a/textgrammarcheck/grammalecte/grammalectegrammarerror.h
++++ b/textgrammarcheck/grammalecte/grammalectegrammarerror.h
+@@ -14,6 +14,7 @@ class TEXTGRAMMARCHECK_TESTS_EXPORT GrammalecteGrammarError : public GrammarErro
+ {
+ public:
+     GrammalecteGrammarError();
++    ~GrammalecteGrammarError() override;
+     void parse(const QJsonObject &obj, int blockindex) override;
+ 
+ private:
+diff --git a/textgrammarcheck/languagetool/languageinfo.cpp b/textgrammarcheck/languagetool/languageinfo.cpp
+index c586fb016..780b63dff 100644
+--- a/textgrammarcheck/languagetool/languageinfo.cpp
++++ b/textgrammarcheck/languagetool/languageinfo.cpp
+@@ -13,6 +13,8 @@ using namespace Qt::Literals::StringLiterals;
+ 
+ LanguageInfo::LanguageInfo() = default;
+ 
++LanguageInfo::~LanguageInfo() = default;
++
+ QString LanguageInfo::name() const
+ {
+     return mName;
+diff --git a/textgrammarcheck/languagetool/languageinfo.h b/textgrammarcheck/languagetool/languageinfo.h
+index c88577624..2093328a6 100644
+--- a/textgrammarcheck/languagetool/languageinfo.h
++++ b/textgrammarcheck/languagetool/languageinfo.h
+@@ -21,6 +21,7 @@ class TEXTGRAMMARCHECK_EXPORT LanguageInfo
+ {
+ public:
+     LanguageInfo();
++    ~LanguageInfo();
+ 
+     [[nodiscard]] QString name() const;
+     void setName(const QString &name);
+diff --git a/textgrammarcheck/languagetool/languagetoolgrammarerror.cpp b/textgrammarcheck/languagetool/languagetoolgrammarerror.cpp
+index f6830da3e..3ffc754ed 100644
+--- a/textgrammarcheck/languagetool/languagetoolgrammarerror.cpp
++++ b/textgrammarcheck/languagetool/languagetoolgrammarerror.cpp
+@@ -15,6 +15,8 @@ using namespace Qt::Literals::StringLiterals;
+ using namespace TextGrammarCheck;
+ LanguageToolGrammarError::LanguageToolGrammarError() = default;
+ 
++LanguageToolGrammarError::~LanguageToolGrammarError() = default;
++
+ void LanguageToolGrammarError::parse(const QJsonObject &obj, int blockindex)
+ {
+     // We use block id index based on 1 in API
+diff --git a/textgrammarcheck/languagetool/languagetoolgrammarerror.h b/textgrammarcheck/languagetool/languagetoolgrammarerror.h
+index c7f5c5ea7..1f8f8adc5 100644
+--- a/textgrammarcheck/languagetool/languagetoolgrammarerror.h
++++ b/textgrammarcheck/languagetool/languagetoolgrammarerror.h
+@@ -15,6 +15,7 @@ class TEXTGRAMMARCHECK_TESTS_EXPORT LanguageToolGrammarError : public GrammarErr
+ {
+ public:
+     LanguageToolGrammarError();
++    ~LanguageToolGrammarError() override;
+     void parse(const QJsonObject &obj, int blockindex) override;
+     void setTesting(bool b);
+ 
+diff --git a/textspeechtotext/speechtotext/plugins/vosk/voskspeechtotextinfo.cpp b/textspeechtotext/speechtotext/plugins/vosk/voskspeechtotextinfo.cpp
+index 84ba405dc..5314db969 100644
+--- a/textspeechtotext/speechtotext/plugins/vosk/voskspeechtotextinfo.cpp
++++ b/textspeechtotext/speechtotext/plugins/vosk/voskspeechtotextinfo.cpp
+@@ -10,6 +10,8 @@ using namespace Qt::Literals::StringLiterals;
+ 
+ VoskSpeechToTextInfo::VoskSpeechToTextInfo() = default;
+ 
++VoskSpeechToTextInfo::~VoskSpeechToTextInfo() = default;
++
+ bool VoskSpeechToTextInfo::isValid() const
+ {
+     return !mIdentifier.isEmpty() && !mUrl.isEmpty() && !mObsolete && isRecognitionModel();
+diff --git a/textspeechtotext/speechtotext/plugins/vosk/voskspeechtotextinfo.h b/textspeechtotext/speechtotext/plugins/vosk/voskspeechtotextinfo.h
+index e5a44649f..66602501b 100644
+--- a/textspeechtotext/speechtotext/plugins/vosk/voskspeechtotextinfo.h
++++ b/textspeechtotext/speechtotext/plugins/vosk/voskspeechtotextinfo.h
+@@ -13,6 +13,7 @@ class LIBVOSKSPEECHTOTEXT_EXPORT VoskSpeechToTextInfo
+ {
+ public:
+     VoskSpeechToTextInfo();
++    ~VoskSpeechToTextInfo();
+ 
+     [[nodiscard]] bool isValid() const;
+ 
+diff --git a/texttranslator/translator/plugins/bergamot/translator.cpp b/texttranslator/translator/plugins/bergamot/translator.cpp
+index e57590f58..06030ba09 100644
+--- a/texttranslator/translator/plugins/bergamot/translator.cpp
++++ b/texttranslator/translator/plugins/bergamot/translator.cpp
+@@ -9,6 +9,8 @@ using namespace Qt::Literals::StringLiterals;
+ 
+ Translator::Translator() = default;
+ 
++Translator::~Translator() = default;
++
+ void Translator::parse(const QJsonObject &obj, bool remote)
+ {
+     mUrl = obj["url"_L1].toString();
+diff --git a/texttranslator/translator/plugins/bergamot/translator.h b/texttranslator/translator/plugins/bergamot/translator.h
+index 7178576e4..52b3a2ef0 100644
+--- a/texttranslator/translator/plugins/bergamot/translator.h
++++ b/texttranslator/translator/plugins/bergamot/translator.h
+@@ -11,6 +11,7 @@ class LIBBERGAMOT_TESTS_EXPORT Translator
+ {
+ public:
+     Translator();
++    ~Translator();
+ 
+     void parse(const QJsonObject &obj, bool remote = true);
+ 
+-- 
+2.56.0
+

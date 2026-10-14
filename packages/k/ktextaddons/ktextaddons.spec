@@ -32,6 +32,8 @@ Source1:        https://download.kde.org/stable/ktextaddons/%{name}-%{version}.t
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/mlaurent@key1.asc?ref_type=heads
 Source2:        ktextaddons.keyring
 %endif
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Revert-Remove-default-destructor-which-allows-to-use.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
