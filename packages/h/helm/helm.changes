@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 21:18:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to address:
+  * bsc#1285273, CVE-2026-78669: helm: golang.org/x/net/http2:
+    excessive CPU consumption from repeated initial window changes
+
+-------------------------------------------------------------------
 Fri Oct  2 14:41:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to address:
