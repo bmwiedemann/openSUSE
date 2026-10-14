@@ -16,16 +16,16 @@
 #
 
 Name: cockpit-bootloader
-Version: 1
+Version: 2
 Release: 0%{?dist}
 Summary: Cockpit module for editing bootloader settings
 License: LGPL-2.1-or-later
 
 Source:         %{name}-%{version}.tar.gz
 Source10:       package-lock.json
-Source11:       node_modules.spec.inc
+#!CreateArchive
+Source11:       node_modules.tar.gz
 Source12:       update_version.sh
-%include %_sourcedir/node_modules.spec.inc
 BuildArch: noarch
 %if ! 0%{?suse_version}
 ExclusiveArch: %{nodejs_arches} noarch
@@ -48,7 +48,7 @@ BuildRequires: local-npm-registry
 BuildRequires: cockpit-devel >= 337
 
 Requires: cockpit-bridge
-Requires: bootkitd >= 0.4.0
+Requires: bootkitd >= 0.5.0
 
 %description
 Cockpit module for editing bootloader settings
@@ -57,7 +57,7 @@ Cockpit module for editing bootloader settings
 %setup -q -n %{name}-%{version}
 rm -rf node_modules
 rm -f package-lock.json
-local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
+local-npm-registry %{_sourcedir}/node_modules install --include=dev --ignore-scripts
 
 %build
 mkdir -p pkg

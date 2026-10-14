@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 14 08:44:16 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to version 2
+  * Support bootloader agnostic bootkitd API
+    * Systemd-boot is now supported
+  * Translation updates
+
+-------------------------------------------------------------------
 Thu Apr 16 09:43:36 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Update to version 1
