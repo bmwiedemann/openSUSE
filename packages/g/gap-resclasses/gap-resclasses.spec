@@ -1,7 +1,7 @@
 #
 # spec file for package gap-resclasses
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-resclasses
-Version:        4.7.4
+Version:        4.8.0
 Release:        0
 Summary:        GAP: Set-Theoretic Computations with Residue Classes
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            https://gap-packages.github.io/resclasses/
 Source:         https://github.com/gap-packages/resclasses/releases/download/v%version/resclasses-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.8.7
+Requires:       gap-core >= 4.11.1
 Requires:       gap-gapdoc >= 1.5.1
 Requires:       gap-polycyclic >= 2.11
 Requires:       gap-utils >= 0.40
