@@ -19,7 +19,7 @@
 
 
 Name:           giada
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Sampler Audio Tool
 License:        (AGPL-3.0-only OR GPL-2.0-or-later) AND GPL-3.0-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0 AND OFL-1.1 AND Zlib
@@ -56,6 +56,7 @@ BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pangoxft)
 BuildRequires:  pkgconfig(rtmidi) >= 2.1.0
+BuildRequires:  pkgconfig(rubberband)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(wayland-client)

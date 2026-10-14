@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Oct 13 12:23:28 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 1.6.0:
+  * [Packaging, Windows] Ship dynamic Windows build to avoid rubberband static-link restriction
+  * Prepare version 1.6.0
+  * Update mcl-audio-buffer dependency
+  * [Refactor] Sample Editor: hold Data by const reference in child widgets
+  * gdWindow: don't 'raw' delete children, use safer Fl::delete_widget()
+  * CMake: add option for building with AddressSanitizer + UBSan
+  * gdSampleEditor: avoid dangling 'c::sampleEditor::Data' pointer in geWaveTools::rebuild()
+  * Sample Editor, pitch tools: improve some labels in 'Adjust...' menu
+  * New increase/decrease pitch by semitone in Sample Editor
+  * Sample Editor: better spacing between bottom tools
+  * Sample Editor: add horizontal divider + footer adjustments
+  * Sample Editor: compact tools
+  * Sample Editor: group pitch actions into 'Adjust...' button
+  * Add new G_DEFAULT_TIME constant
+  * Sample Editor: refresh 'time' value when spreading to bar/song
+  * Sample Editor: add ability to spread to song/bar both pitch and time
+  * Sample Editor: fix wrong 'to bar' and 'to song' spread functions
+  * gdSampleEditor: de/activate pitch tools based on playback mode
+  * Add new u::gui::setActive() function to de/activate Fl_Widgets
+  * gdSampleEditor: fix playback mode menu
+  * gdSampleEditor: rearrange pitch tools
+  * gdSampleEditor: remove useless tools buttons
+  * gdSampleEditor: remove info box, add proper sub-window
+  * Add new gdInfo window
+  * geBox: add ability to toggle text truncation
+  * [Refactor] gdSampleEditor: make all members private
+  * gdActionEditor: add spacing between Reload and grid buttons
+  * [Refactor] gePitchTool: better member names
+  * gePitchTool: remove dial
+  * [Refactor] Change gePitchTool update()/refresh() logic
+  * Bump version to 1.6.0
+  * Store/load pitch and tempo information in Patch
+  * Update mcl-audio-buffer dep
+  * WaveFactory: use audioFileIO functions for reading and writing audio files
+  * Wave: add new constructor with mcl::AudioBuffer in input
+  * AudioFileIO: add comments
+  * AudioFileIO: add getInfo() utility function
+  * AudioFileIO: fix function name
+  * Add new 'audioFileIO' namespace as a libsndfile wrapper
+  * Stretcher: remove unused methods
+  * Stretcher: update comment
+  * Resampler: update comment
+  * SampleRendering: add defaults to ReadResult struct members
+  * Resampler: log error if src_callback_read fails
+  * Resampler: simplify process() parameters
+  * Resampler: use std::size_t in place of long
+  * Stretcher: fix member types in Result, add defaults
+  * Stretcher: fix math
+  * Stretcher: simplify process() parameters
+  * Update mcl-audio-buffer dep
+  * Revert last mcl-audio-buffer change
+  * Update mcl-audio-buffer dep to use the new getDataView method
+  * Update mcl-audio-buffer dep
+  * Resampler: add 'inputChannelStride' parameter to determine the true channel size of the input buffer
+  * Update mcl-audio-buffer dep
+  * Update mcl-audio-buffer dep
+  * Use new methods from AudioBuffer, not the deprecated ones
+  * Update mcl-audio-buffer dependency, use new method names
+  * Stretcher: add 'inputChannelStride' parameter to determine the true channel size of the input buffer
+  * SampleRendering: use 'finished' flag where needed
+  * Stretcher: add 'finished' flag to Result struct (still not used)
+  * Stretcher: reorganize comments
+  * Stretcher: improve implementation following the API guidelines
+  * SampleRendering: fix broken tests
+  * SampleEditor: add very crude playback mode controls
+  * Add API for changing Channel's playback mode and time
+  * SampleRendering: avoid extra call to readWave() when the tracker has reached range.b
+  * Add Stretcher to ChannelShared object, prepare for usage
+  * Read audio files in planar mode
+  * [Refactor] SampleRendering: pass Sample object around instead of single values
+  * Add Stretcher class
+  * SampleRendering: tidy up variable names
+  * SampleRendering: fix cast type
+  * Make Resampler work with planar AudioBuffer
+  * Use new AudioBuffer in planar mode
+  * Update tests for AudioBuffer without forEach... utility methods
+  * Use new mcl::AudioBuffer class with new accessor methods in place of old operator[]
+  * Resampler: pass 'const float*' as input to process() method
+  * Add rubberband dependency to vcpkg manifest file
+  * Fix formatting
+  * Fixup changelog
+  * Fixup changelog
+
+-------------------------------------------------------------------
 Sun Jul 05 10:49:46 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
 
 - Update to version 1.5.0:
