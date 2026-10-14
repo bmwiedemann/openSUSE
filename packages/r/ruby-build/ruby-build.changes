@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 13 16:10:03 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20261013.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20261013
+  * Added 4.1.0-preview1
+  * JRuby: update obsolete download URLs by @mislav in #2646
+
+-------------------------------------------------------------------
 Thu Sep 24 11:27:49 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20260924.
