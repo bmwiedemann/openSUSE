@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  8 14:59:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Thu Sep 10 06:49:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.4.0:
@@ -502,7 +507,7 @@ Fri Mar 26 01:41:35 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 -------------------------------------------------------------------
 Mon Mar 15 21:24:53 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
-- Add PackageKit-remove-transaction-size-limit.patch: Remove large transaction 
+- Add PackageKit-remove-transaction-size-limit.patch: Remove large transaction
   size sanity check (gh#hughsie/PackageKit/commit#ac5c8660)
 
 -------------------------------------------------------------------
@@ -793,7 +798,7 @@ Sun Sep  1 02:29:07 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 - Add patches to support backend
   + 0001-dnf-Invalidate-the-sack-cache-after-downloading-new-.patch
   + 0001-dnf-Don-t-override-DnfContext-s-release_ver-for-the-.patch
-  + 1001-dnf-Add-openSUSE-Tumbleweed-vendor.patch 
+  + 1001-dnf-Add-openSUSE-Tumbleweed-vendor.patch
   + 1002-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
 - Add patch to improve offline updates with plymouth
   + 0001-offline-update-Use-new-plymouth-system-upgrade-and-r.patch
@@ -2076,7 +2081,7 @@ Wed May  8 15:12:13 UTC 2013 - dimstar@opensuse.org
 Wed Mar 27 12:52:41 UTC 2013 - mike.catanzaro@gmail.com
 
 - Drop fix-policies-opensuse.patch: these settings aren't being
-  used anymore as they're overridden by our settings in the package 
+  used anymore as they're overridden by our settings in the package
   polkit-default-privs.
 
 -------------------------------------------------------------------
@@ -2168,17 +2173,17 @@ Thu Jan 17 16:10:55 UTC 2013 - coolo@suse.com
 -------------------------------------------------------------------
 Thu Jan 17 10:01:11 UTC 2013 - tittiatcoke@gmail.com
 
-- Added patch (fix-policies-opensuse.patch) to be within the 
+- Added patch (fix-policies-opensuse.patch) to be within the
   openSUSE guidelines for PolicyKit files.
 - Removed PackageKit-rpmlintrc due to above mentioned patch
 
 -------------------------------------------------------------------
 Wed Jan 16 19:38:47 UTC 2013 - tittiatcoke@gmail.com
 
-- Update to version 0.8.7: 
+- Update to version 0.8.7:
   + ZYpp Backend:
     - Adjust PK_FILTER_ENUM_NOT_DEVELOPMENT (bnc#770028)
-    - Construct PoolItem from sat::Solvable rather than doing 
+    - Construct PoolItem from sat::Solvable rather than doing
       a search
     - Don't retrieve raw package attributes but use zypp::ResObject
       (bnc#764677)
@@ -2193,11 +2198,11 @@ Wed Jan 16 19:38:47 UTC 2013 - tittiatcoke@gmail.com
     - always solve dependencies with 'IgnoreAlreadyRecommended ON'
       (bnc#747751)
     - check for best architecture and version when looking for the
-      'newest' package 
+      'newest' package
     - finish port of backend to 0.8 API
     - match the patch name to prevent an internal error
     - return package list ordered witht respect to solver policies
-    - TODO is old and outdated, removed 
+    - TODO is old and outdated, removed
   + GLib library:
     - Add a PkItemProgress helper object to remove the workaround
       in PkProgress
@@ -2206,9 +2211,9 @@ Wed Jan 16 19:38:47 UTC 2013 - tittiatcoke@gmail.com
     - Make the updates and obsoletes items in
       Transaction::UpdateDetail actual arrays
     - Make the URL items in Transaction::UpdateDetail actual arrays
-    - Don't update the transaction role to 'unknown' 
-    - Remove support for UpdateSystem() 
-    - Save the transaction flags when removing packages 
+    - Don't update the transaction role to 'unknown'
+    - Remove support for UpdateSystem()
+    - Save the transaction flags when removing packages
     - Ensure remote error is stripped before showing it to the user
     - Add pk_package_sack_to_file() to save the sack to disk
     - Check for failure to copy files when making a service pack

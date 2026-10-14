@@ -72,7 +72,7 @@ BuildRequires:  sqlite-devel
 BuildRequires:  vala
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(jansson) >= 2.8
-BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libsystemd) >= 213
 BuildRequires:  pkgconfig(systemd)
 # We really want a working backend (likely zypp)
 Requires:       %{name}-backend

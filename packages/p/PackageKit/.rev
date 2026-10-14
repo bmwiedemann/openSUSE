@@ -2233,4 +2233,12 @@ Pushing GNOME 45.rc packages</comment>
   PackageKit-zypp-respect-libzypp-package-locks.patch and</comment>
     <requestid>1379427</requestid>
   </revision>
+  <revision rev="250" vrev="2">
+    <srcmd5>96867e949f087a489dbf033d24bbc734</srcmd5>
+    <version>1.4.0</version>
+    <time>1791995647</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version dependencies according to meson.build.</comment>
+    <requestid>1384577</requestid>
+  </revision>
 </revisionlist>
