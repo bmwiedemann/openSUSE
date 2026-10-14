@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 12:23:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.4:
+  * bump containerd to address CVE-2026-53493 and others
+
+-------------------------------------------------------------------
 Wed Sep  9 08:11:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.3:

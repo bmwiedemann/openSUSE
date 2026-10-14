@@ -32,4 +32,13 @@
   * Backport bug fixes</comment>
     <requestid>1376563</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>80e71b9858802c47bd1e64396d565361</srcmd5>
+    <version>3.0.4</version>
+    <time>1791996503</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.4:
+  * bump containerd to address CVE-2026-53493 and others</comment>
+    <requestid>1384789</requestid>
+  </revision>
 </revisionlist>
