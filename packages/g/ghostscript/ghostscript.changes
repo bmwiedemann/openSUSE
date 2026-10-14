@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:41:58 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Ghostscript version 10.08.0 also fixes
+  in particular the following two security issues,
+  see the Ghostscript upstream git repository checkout
+  of its 'ghostpdl-10.08.0' git tag which ends on Sep 8 2026
+  (not its 'gs10.08.0' branch which already ends Aug 18 2026),
+  cf. the current https://ghostscript.com/releases/index.html
+  "The latest release is Ghostscript 10.08.0 (2026-09-08)":
+- CVE-2026-103226
+  "Stack buffer overflow in gdevpsfx.c type1_callsubr():
+   unbounded ipstack push in pdfwrite Type 1->2 font converter"
+  https://bugs.ghostscript.com/show_bug.cgi?id=709672
+  "stack-based buffer overflow in `pdfwrite` via crafted font data"
+  (bsc#1283917)
+- CVE-2026-101258
+  "Heap buffer overflow (OOB write) via array-wrapped
+   shading `/Function` (`base/gsfunc3.c`)"
+  https://bugs.ghostscript.com/show_bug.cgi?id=709462
+  "-dSAFER sandbox bypass via Type 5 shading OOB write
+   and procedure-stream use-after-free"
+  (bsc#1284397)
+- It seems the reason why the below CVE-2026-39919 and
+  the above two CVE-2026-103226 CVE-2026-101258 are not listed
+  in the Ghostscript upstream release notes is that those CVEs
+  came after the Ghostscript 10.08.0 release date (Sep 8 2026)
+  according to what the Ghostscript upstream bug reports show
+  https://bugs.ghostscript.com/show_bug.cgi?id=709666
+  therein CVE-2026-39919 is mentioned on 2026-09-15
+  https://bugs.ghostscript.com/show_bug.cgi?id=709672
+  therein CVE-2026-103226 is mentioned on 2026-10-01
+  https://bugs.ghostscript.com/show_bug.cgi?id=709462
+  therein CVE-2026-101258 is mentioned on 2026-10-07
+
+-------------------------------------------------------------------
 Thu Oct  1 11:22:41 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 10.08.0

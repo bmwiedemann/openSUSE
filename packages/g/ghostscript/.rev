@@ -712,4 +712,12 @@ https://build.opensuse.org/requests/1305216
     <comment>Ghostscript version upgrade to 10.08.0 fixes potential security issues in particular CVE-2026-39919 bsc#1280620 (forwarded request 1381911 from jsmeix)</comment>
     <requestid>1381912</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>ad41b8efee6372aa83381d6ffcfa073e</srcmd5>
+    <version>10.08.0</version>
+    <time>1791995648</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for CVE-2026-103226 bsc#1283917 and CVE-2026-101258 bsc#1284397 in ghostscript and ghostscript-mini (forwarded request 1384603 from jsmeix)</comment>
+    <requestid>1384604</requestid>
+  </revision>
 </revisionlist>
