@@ -18,10 +18,10 @@
 
 %define cpan_name YAML-PP
 Name:           perl-YAML-PP
-Version:        0.40.0
+Version:        0.43.0
 Release:        0
-# v0.40.0 -> normalize -> 0.40.0
-%define cpan_version v0.40.0
+# v0.43.0 -> normalize -> 0.43.0
+%define cpan_version v0.43.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        YAML 1.2 Processor
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -33,7 +33,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Load)
 BuildRequires:  perl(Test::More) >= 0.98
-BuildRequires:  perl(Test::Warn)
+BuildRequires:  perl(Test::Warnings) >= 0.5
 Requires:       perl(Module::Load)
 %{perl_requires}
 
@@ -77,7 +77,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md examples Makefile.dev README.md SECURITY.md
+%doc Changes CONTRIBUTING.md examples README.md SECURITY.md
 %license LICENSE
 
 %changelog

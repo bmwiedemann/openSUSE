@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Oct 13 12:48:16 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.43.0 (v0.43.0)
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  v0.43.0 2026-10-13 11:12:25+02:00
+
+      - Fix YAML::PP::Schema::Imclude: load File::Spec (#62 @schlad)
+
+-------------------------------------------------------------------
+Mon Oct 12 13:20:49 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.42.0 (v0.42.0)
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  v0.42 2026-10-11 17:04:54+02:00
+
+      - Improve startup time a bit by removing unused modules or lazy-load them.
+        Issue #57, PR #60 (original PR #58 @oalders)
+
+-------------------------------------------------------------------
+Thu Jun 18 09:47:09 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.41.0 (v0.41.0)
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  v0.41.0 2026-06-17 22:01:34+02:00
+
+      - tests: replace Test::Warn with Test::Warnings (PR #59, @haarg)
+      - Fix test suite tag data
+
+-------------------------------------------------------------------
 Fri Apr 24 16:10:36 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.40.0 (v0.40.0)

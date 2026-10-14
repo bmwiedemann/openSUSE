@@ -187,4 +187,27 @@
         Set it via new option 'max_depth'.</comment>
     <requestid>1350771</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a1b36378f5b5d7de027b3beca5a29f89</srcmd5>
+    <version>0.43.0</version>
+    <time>1791995660</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.43.0 (v0.43.0)
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+  v0.43.0 2026-10-13 11:12:25+02:00
+      - Fix YAML::PP::Schema::Imclude: load File::Spec (#62 @schlad)
+
+- updated to 0.42.0 (v0.42.0)
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+  v0.42 2026-10-11 17:04:54+02:00
+      - Improve startup time a bit by removing unused modules or lazy-load them.
+        Issue #57, PR #60 (original PR #58 @oalders)
+
+- updated to 0.41.0 (v0.41.0)
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+  v0.41.0 2026-06-17 22:01:34+02:00
+      - tests: replace Test::Warn with Test::Warnings (PR #59, @haarg)
+      - Fix test suite tag data</comment>
+    <requestid>1384648</requestid>
+  </revision>
 </revisionlist>
