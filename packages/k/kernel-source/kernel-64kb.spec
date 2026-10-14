@@ -18,8 +18,8 @@
 
 
 %define srcversion 7.2
-%define patchversion 7.2.9
-%define git_commit 584f68684e0060ffe7a147a737296417414f7157
+%define patchversion 7.2.10
+%define git_commit 2583b2f54a6364a9b367399d90786d25fbe26f04
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-64kb
-Version:        7.2.9
+Version:        7.2.10
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g584f686
+Release:        <RELEASE>.g2583b2f
 %else
 Release:        0
 %endif
@@ -1266,7 +1266,7 @@ if test -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor -a $SHSK_VAL = "n" 
 elif test ! -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor \
 	-o 0%{?ignore_kabi_badness} -ne 0 \
 	-o -e %_sourcedir/IGNORE-KABI-BADNESS ; then
-	CONFIG_SUSE_HAVE_STABLE_KABI="--disable CONFIG_SUSE_HAVE_STABLE_KABI"
+	: # do nothing
 elif test ! -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor -a $SHSK_VAL = "y" ; then
 	# only message, not an error
 	echo "Disable CONFIG_SUSE_HAVE_STABLE_KABI or supply KABI reference data in -%build_flavor."
@@ -1695,6 +1695,8 @@ if [ %CONFIG_MODULES = y ]; then
                 %my_builddir/kabi/%cpu_arch/symtypes-%build_flavor \
                 %my_builddir/symtypes-%build_flavor || true
         %endif
+	# emulate kabi.pl so that kbuild can always find this message when kABI check fails
+	echo KABI: aborting due to kabi changes >&2
 
 	# %ignore_kabi_badness is defined in the Kernel:* projects in the
 	# OBS to be able to build the KOTD in spite of kabi errors
