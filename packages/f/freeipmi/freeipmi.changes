@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 05:37:35 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Update to version 1.6.20
+  * Fix buffer overflow in Fujitsu get-sel-entry-long-text (bsc#1267605)
+    ipmi-oem: guard against a shrinking data length in Fujitsu get-sel-entry-long-text
+
+-------------------------------------------------------------------
 Mon Sep 14 15:19:36 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Update to version 1.6.19 and fix:

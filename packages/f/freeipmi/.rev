@@ -626,4 +626,14 @@
     stack-based buffer overflow when a BMC returns more bytes than requested</comment>
     <requestid>1377984</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>0d834ea66b48a4ee24daafa4d6d372ca</srcmd5>
+    <version>1.6.20</version>
+    <time>1791995648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.20
+  * Fix buffer overflow in Fujitsu get-sel-entry-long-text (bsc#1267605)
+    ipmi-oem: guard against a shrinking data length in Fujitsu get-sel-entry-long-text</comment>
+    <requestid>1384583</requestid>
+  </revision>
 </revisionlist>

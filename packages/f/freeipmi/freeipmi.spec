@@ -37,7 +37,7 @@
 %{!?_initddir: %global _initddir %{_sysconfdir}/init.d}
 
 Name:           freeipmi
-Version:        1.6.19
+Version:        1.6.20
 Release:        0%{release}
 URL:            http://www.gnu.org/software/freeipmi/
 Source0:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz
@@ -177,7 +177,7 @@ Platform Management Interface specification.
 This package contains the libfreeipmi library.
 
 %prep
-%autosetup -n %{name}-%{srcversion}
+%autosetup -n %{name}-%{srcversion} -p1
 
 %build
 # simple .spec expressions for SLE10
