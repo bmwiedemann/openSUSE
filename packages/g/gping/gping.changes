@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 14 11:11:51 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Update version to 1.21.0
+  * Add TCP ping support
+  * Don't attempt a useless resize on all platforms
+  * Fix graph axis
+  * Add options --ymin and --ymax for setting vertical scale
+  * Fix off-by-one that leaves one stale point in the graph buffer
+  * Compute jitter in chronological order, not sorted order
+
+-------------------------------------------------------------------
 Fri Oct 24 14:31:00 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Update version to 1.20.1

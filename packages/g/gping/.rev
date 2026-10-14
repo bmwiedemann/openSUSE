@@ -39,4 +39,19 @@
   * Update documentation</comment>
     <requestid>1313504</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d4173c6647eeeba9624ade9cd8d008d0</srcmd5>
+    <version>1.21.0</version>
+    <time>1791996483</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.21.0
+  * Add TCP ping support
+  * Don't attempt a useless resize on all platforms
+  * Fix graph axis
+  * Add options --ymin and --ymax for setting vertical scale
+  * Fix off-by-one that leaves one stale point in the graph buffer
+  * Compute jitter in chronological order, not sorted order
+</comment>
+    <requestid>1384777</requestid>
+  </revision>
 </revisionlist>
