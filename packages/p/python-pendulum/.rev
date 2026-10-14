@@ -143,4 +143,26 @@
   * Update pyo3 to a new version and regenerate the vendoring.</comment>
     <requestid>1374788</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9bbd9f0cdd539f437b60603ae79206a1</srcmd5>
+    <version>3.3.0</version>
+    <time>1791995605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0:
+  * Added support for PEP 703 free-threaded Python
+  * Make Timezone and FixedTimezone hashable
+  * Added support for Python 3.15
+  * Dropped support for Python 3.9
+  * parse() now raises ParserError for empty string
+  * Fixed type annotation to allow None for exc_tb in Traveller.__exit__
+  * Replaced deprecated utcnow() and utcfromtimestamp() with timezone-aware
+    equivalents
+  * Fixed diff_for_humans crash for zh locale
+  * Removed call-stack inspection from DateTime.__add__
+  * Fixed weekday modifiers after global calendar layout changes
+  * Fixed DateTime pickling when container's timezone was set by copying
+    /etc/localtime
+- Drop patch update-pyo3-to-0.29.patch, no longer required.</comment>
+    <requestid>1384467</requestid>
+  </revision>
 </revisionlist>

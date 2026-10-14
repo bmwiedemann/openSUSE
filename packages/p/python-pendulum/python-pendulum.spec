@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pendulum
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Python datetimes made easy
 License:        MIT
@@ -26,15 +26,13 @@ URL:            https://pendulum.eustace.io
 # https://github.com/sdispater/pendulum/issues/453
 Source0:        https://github.com/sdispater/pendulum/archive/%{version}.tar.gz#/pendulum-%{version}-gh.tar.gz
 Source1:        vendor.tar.zst
-# PATCH-FIX-UPSTREAM Based on gh#python-pendulum/pendulum#978 and regenerate vendor tarball
-Patch0:         update-pyo3-to-0.29.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.6}
 BuildRequires:  %{python_module pytz >= 2022.1}
-# gh#python-pendulum/pendulum#844
-BuildRequires:  %{python_module time-machine >= 2.16.0}
+BuildRequires:  %{python_module time-machine >= 3.0.0}
 BuildRequires:  %{python_module tzdata}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes

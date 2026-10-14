@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 13 03:48:16 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.3.0:
+  * Added support for PEP 703 free-threaded Python
+  * Make Timezone and FixedTimezone hashable
+  * Added support for Python 3.15
+  * Dropped support for Python 3.9
+  * parse() now raises ParserError for empty string
+  * Fixed type annotation to allow None for exc_tb in Traveller.__exit__
+  * Replaced deprecated utcnow() and utcfromtimestamp() with timezone-aware
+    equivalents
+  * Fixed diff_for_humans crash for zh locale
+  * Removed call-stack inspection from DateTime.__add__
+  * Fixed weekday modifiers after global calendar layout changes
+  * Fixed DateTime pickling when container's timezone was set by copying
+    /etc/localtime
+- Drop patch update-pyo3-to-0.29.patch, no longer required.
+
+-------------------------------------------------------------------
 Mon Aug 31 06:27:05 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch update-pyo3-to-0.29.patch:
