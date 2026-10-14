@@ -2582,4 +2582,13 @@ for 12.3</comment>
 </comment>
     <requestid>1383724</requestid>
   </revision>
+  <revision rev="277" vrev="1">
+    <srcmd5>34ec2bbe0e513535aa0f4b0db732faed</srcmd5>
+    <version>1550+20261014.754cdd0</version>
+    <time>1791996551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20261014.754cdd0:
+  * profiles: add noctalia-greeter (bsc#1285400)</comment>
+    <requestid>1384791</requestid>
+  </revision>
 </revisionlist>
