@@ -849,8 +849,8 @@ Index: openssh-10.3p1/readconf.h
 --- openssh-10.3p1.orig/readconf.h
 +++ openssh-10.3p1/readconf.h
 @@ -235,6 +235,7 @@ typedef struct {
- #define SSH_KEYSTROKE_CHAFF_MIN_MS		1024
- #define SSH_KEYSTROKE_CHAFF_RNG_MS		2048
+ #define SSH_KEEPALIVES_TRANSPORT	1
+ #define SSH_KEEPALIVES_ALL		2
  
 +void	 filter_fips_algorithms(Options *o);
  const char *kex_default_pk_alg(void);
@@ -987,7 +987,7 @@ Index: openssh-10.3p1/ssh-keygen.c
  	int first = 0;
  	struct stat st;
 @@ -1025,6 +1040,12 @@ do_gen_all_hostkeys(struct passwd *pw)
- 	char comment[1024], *prv_tmp, *pub_tmp, *prv_file, *pub_file;
+ 	char comment[KEY_COMMENT_MAX], *prv_tmp, *pub_tmp, *prv_file, *pub_file;
  	int i, type, fd, r;
  
 +	if (fips_mode()) {

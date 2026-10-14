@@ -21,7 +21,7 @@ Index: openssh-10.3p1/ssh_config.5
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -rsa-sha2-512,rsa-sha2-256,
--ssh-mldsa44-ed25519@openssh.com
+-ssh-mldsa44-ed25519
 -.Ed
 -.Pp
  If the specified list begins with a
@@ -134,14 +134,14 @@ Index: openssh-10.3p1/ssh_config.5
 -webauthn-sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,
 -rsa-sha2-512-cert-v01@openssh.com,
 -rsa-sha2-256-cert-v01@openssh.com,
--ssh-mldsa44-ed25519-cert-v01@openssh.com,
+-ssh-mldsa44-ed25519-cert,
 -ssh-ed25519,
 -ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -webauthn-sk-ecdsa-sha2-nistp256@openssh.com,
 -rsa-sha2-512,rsa-sha2-256,
--ssh-mldsa44-ed25519@openssh.com
+-ssh-mldsa44-ed25519
 -.Ed
 +at the head of the built-in openssh default set.
  .Pp
@@ -297,14 +297,14 @@ Index: openssh-10.3p1/ssh_config.5
 -webauthn-sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,
 -rsa-sha2-512-cert-v01@openssh.com,
 -rsa-sha2-256-cert-v01@openssh.com,
--ssh-mldsa44-ed25519-cert-v01@openssh.com,
+-ssh-mldsa44-ed25519-cert,
 -ssh-ed25519,
 -ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -webauthn-sk-ecdsa-sha2-nistp256@openssh.com,
 -rsa-sha2-512,rsa-sha2-256,
--ssh-mldsa44-ed25519@openssh.com
+-ssh-mldsa44-ed25519
 -.Ed
 +built-in openssh default set.
  .Pp
@@ -350,7 +350,7 @@ Index: openssh-10.3p1/sshd_config.5
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -rsa-sha2-512,rsa-sha2-256,
--ssh-mldsa44-ed25519@openssh.com
+-ssh-mldsa44-ed25519
 -.Ed
 -.Pp
  If the specified list begins with a
@@ -467,14 +467,14 @@ Index: openssh-10.3p1/sshd_config.5
 -webauthn-sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,
 -rsa-sha2-512-cert-v01@openssh.com,
 -rsa-sha2-256-cert-v01@openssh.com,
--ssh-mldsa44-ed25519-cert-v01@openssh.com,
+-ssh-mldsa44-ed25519-cert,
 -ssh-ed25519,
 -ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -webauthn-sk-ecdsa-sha2-nistp256@openssh.com,
 -rsa-sha2-512,rsa-sha2-256,
--ssh-mldsa44-ed25519@openssh.com
+-ssh-mldsa44-ed2551
 -.Ed
 +the head of the built-in openssh default set.
  .Pp
@@ -503,14 +503,14 @@ Index: openssh-10.3p1/sshd_config.5
 -webauthn-sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,
 -rsa-sha2-512-cert-v01@openssh.com,
 -rsa-sha2-256-cert-v01@openssh.com,
--ssh-mldsa44-ed25519-cert-v01@openssh.com,
+-ssh-mldsa44-ed25519-cert,
 -ssh-ed25519,
 -ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -webauthn-sk-ecdsa-sha2-nistp256@openssh.com,
 -rsa-sha2-512,rsa-sha2-256,
--ssh-mldsa44-ed25519@openssh.com
+-ssh-mldsa44-ed25519
 -.Ed
 -.Pp
  The list of available signature algorithms may also be obtained using
@@ -651,14 +651,14 @@ Index: openssh-10.3p1/sshd_config.5
 -webauthn-sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,
 -rsa-sha2-512-cert-v01@openssh.com,
 -rsa-sha2-256-cert-v01@openssh.com,
--ssh-mldsa44-ed25519-cert-v01@openssh.com,
+-ssh-mldsa44-ed25519-cert,
 -ssh-ed25519,
 -ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,
 -sk-ssh-ed25519@openssh.com,
 -sk-ecdsa-sha2-nistp256@openssh.com,
 -webauthn-sk-ecdsa-sha2-nistp256@openssh.com,
 -rsa-sha2-512,rsa-sha2-256,
--ssh-mldsa44-ed25519@openssh.com
+-ssh-mldsa44-ed25519
 -.Ed
 +built-in openssh default set.
  .Pp

@@ -58,7 +58,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        10.5p1
+Version:        10.6p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -176,10 +176,6 @@ Patch106:       openssh-7.6p1-cleanup-selinux.patch
 Patch107:       openssh-send-extra-term-env.patch
 # PATCH-FIX-SUSE openssh-7.7p1-gssapi-new-unique.patch bsc#1258166 hpj@suse.com -- SSSD non-file ccache: krb5 new_unique
 Patch108:       openssh-7.7p1-gssapi-new-unique.patch
-# PATCH-FIX-UPSTREAM openssh-10.5p1-sync-readpassphrase.patch mindrot#3995 yfjiang@suse.com -- Sync readpassphrase(3) with OpenBSD libc: preserve SIG_IGN so ssh-add no longer spins without a controlling tty
-Patch109:       openssh-10.5p1-sync-readpassphrase.patch
-# PATCH-FIX-UPSTREAM openssh-10.5p1-propagate-restrict-keyword.patch bsc#1275079 -- Propagate the authorized_keys "restrict" flag
-Patch110:       openssh-10.5p1-propagate-restrict-keyword.patch
 # 200..300 -- Patches submitted to upstream
 # 1000..2000 -- Conditional patches
 %if %{with crypto_policies}

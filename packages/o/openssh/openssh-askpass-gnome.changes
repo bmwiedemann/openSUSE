@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  8 17:05:43 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to openssh 10.6p1:
+  * No changes for askpass, see main package changelog for
+    details.
+
+-------------------------------------------------------------------
 Thu Jul 16 22:41:22 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - "Update" to openssh 10.4p1:

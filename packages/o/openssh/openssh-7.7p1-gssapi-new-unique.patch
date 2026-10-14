@@ -458,7 +458,7 @@ Index: openssh-10.3p1/gss-serv.c
 ===================================================================
 --- openssh-10.3p1.orig/gss-serv.c
 +++ openssh-10.3p1/gss-serv.c
-@@ -415,18 +415,20 @@ ssh_gssapi_cleanup_creds(void)
+@@ -415,23 +415,25 @@ ssh_gssapi_cleanup_creds(void)
  }
  
  /* As user */
@@ -466,6 +466,12 @@ Index: openssh-10.3p1/gss-serv.c
 +int
  ssh_gssapi_storecreds(void)
  {
+ 	if (!gssapi_client.userok) {
+ 		debug_f("GSSAPI client was not authorized, doing nothing");
+-		return;
++		return 0;
+ 	}
+ 
  	if (options.gss_deleg_creds == 0) {
  		debug_f("delegate credential is disabled, doing nothing");
 -		return;
@@ -579,8 +585,8 @@ Index: openssh-10.3p1/ssh-gss.h
 -void ssh_gssapi_storecreds(void);
 +int ssh_gssapi_storecreds(void);
  const char *ssh_gssapi_displayname(void);
+ void ssh_gssapi_cleanup_global_client();
  
- char *ssh_gssapi_server_mechanisms(void);
 Index: openssh-10.3p1/sshd-session.c
 ===================================================================
 --- openssh-10.3p1.orig/sshd-session.c

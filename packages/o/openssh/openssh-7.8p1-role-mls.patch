@@ -356,10 +356,10 @@ Index: openssh-10.3p1/openbsd-compat/Makefile.in
  
  .c.o:
  	$(CC) $(CFLAGS_NOPIE) $(PICFLAG) $(CPPFLAGS) -c $<
-Index: openssh-10.3p1/openbsd-compat/port-linux.c
+Index: openssh-10.3p1/openbsd-compat/port-linux-selinux.c
 ===================================================================
---- openssh-10.3p1.orig/openbsd-compat/port-linux.c
-+++ openssh-10.3p1/openbsd-compat/port-linux.c
+--- openssh-10.3p1.orig/openbsd-compat/port-linux-selinux.c
++++ openssh-10.3p1/openbsd-compat/port-linux-selinux.c
 @@ -109,37 +109,6 @@ ssh_selinux_getctxbyname(char *pwname)
  	return sc;
  }

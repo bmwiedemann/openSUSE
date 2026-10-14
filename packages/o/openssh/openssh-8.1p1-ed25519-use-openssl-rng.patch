@@ -19,25 +19,25 @@ index 767ec24..5d506a9 100644
 +
 +#include "log.h"
 +
- #define int8 crypto_int8
- #define uint8 crypto_uint8
- #define int16 crypto_int16
+ /* OpenSSH compatibility glue for the small libsodium API subset below. */
+ #define ACQUIRE_FENCE (void)0
+ #define COMPILER_ASSERT(x) (void)sizeof(char[(x) ? 1 : -1])
 @@ -33,7 +40,15 @@ int crypto_sign_ed25519_keypair(
-   unsigned char seed[32];
-   int r;
+     unsigned char seed[32];
+     int           ret;
  
 +#ifdef WITH_OPENSSL
-+  /* Use FIPS approved RNG */
-+  if (RAND_bytes(seed, 32) <= 0)
-+    fatal("Couldn't obtain random bytes (error 0x%lx)",
-+          (unsigned long)ERR_get_error());
++    /* Use FIPS approved RNG */
++    if (RAND_bytes(seed, sizeof seed) <= 0)
++      fatal("Couldn't obtain random bytes (error 0x%lx)",
++            (unsigned long)ERR_get_error());
 +#else
-   randombytes(seed, 32);
+     arc4random_buf(seed, sizeof seed);
 +#endif
 +
-   r = crypto_sign_ed25519_keypair_from_seed(pk, sk, seed);
-   explicit_bzero(seed, sizeof(seed));
-   return r;
+     ret = crypto_sign_ed25519_seed_keypair(pk, sk, seed);
+     explicit_bzero(seed, sizeof seed);
+ 
 diff --git a/kexc25519.c b/kexc25519.c
 index f13d766..2604eda 100644
 --- a/kexc25519.c
