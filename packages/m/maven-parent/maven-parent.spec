@@ -24,10 +24,10 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/%{name}/%{version}/%{name}-%{version}-source-release.zip
-BuildRequires:  apache-parent
+BuildRequires:  apache-parent >= 40
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
-Requires:       apache-parent
+Requires:       apache-parent >= 40
 Obsoletes:      maven-plugins-pom < %{version}-%{release}
 Provides:       maven-plugins-pom = %{version}-%{release}
 Obsoletes:      maven-shared < %{version}-%{release}

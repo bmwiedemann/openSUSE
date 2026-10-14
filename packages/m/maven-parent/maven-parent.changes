@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 19:32:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Require apache-parent 40+ because of changed version variables
+  for surefire plugins
+
+-------------------------------------------------------------------
 Tue Sep 22 18:13:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to Apache Maven parent POM version 50
