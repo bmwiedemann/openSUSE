@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:47:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.123.0:
+  * Features
+    - 13ee9952: feat(df): fail closed on unparseable in-scope proxy
+      traffic
+    - 2d427c3f: feat(repo): add --exclude-subgroup to group clone
+    - dcd1c99c: feat(skills): install remote orbit skill from the
+      self-updating wrapper
+    - c3151df7: feat(ssh-key): add --replace flag to ssh-key add
+    - 75a80123: feat: time tracking support on issue update
+  * Bug Fixes
+    - 1925cb6c: fix(api): send --input bodies as JSON unless a
+      Content-Type is given
+    - ba969f53: fix(auth): persist registry domains for token
+      logins
+    - 5d6ca7d5: fix(duo): keep missing binary versions empty
+    - b06b06a9: fix(glrepo): skip fork candidates without local
+      remotes
+    - c80f417f: fix(issue): show the real total in the list header
+    - bb4e8108: fix(repo): correct default visibility in repo
+      create help
+  * Documentation
+    - 8358d316: docs(contributing): update squash and merge link
+    - 6f1ec84c: docs: fix dead handbook and docs links in
+      contributor docs
+  * Dependencies
+    - 372ed845: chore(deps): replace mgutz/ansi with local SGR
+      codes
+    - dd610822: chore(deps): update module charm.land/bubbletea/v2
+      to v2.0.10
+    - f758eb8e: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.18.0
+    - 65f7619a: chore(deps): update module golang.org/x/sync to
+      v0.24.0
+    - f2a00e54: chore(deps): update module k8s.io/client-go to
+      v0.37.1
+  * Maintenance
+    - 392ad277: chore: remove redundant "make fix" tools
+
+-------------------------------------------------------------------
 Mon Oct 12 04:46:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.122.0:
