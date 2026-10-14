@@ -2450,4 +2450,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
 - Fix lexical bindings in site-lisp path again (boo#1277717)</comment>
     <requestid>1383279</requestid>
   </revision>
+  <revision rev="227" vrev="6">
+    <srcmd5>f7c42fa9db4eca7ab17005b39aca050b</srcmd5>
+    <version>31.1</version>
+    <time>1791995611</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch emacs-bsc1284345.patch
+  * Fix incomplete fix for CVE-2026-79992 (forwarded request 1384523 from WernerFink)</comment>
+    <requestid>1384524</requestid>
+  </revision>
 </revisionlist>

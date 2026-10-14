@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  8 12:50:35 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch emacs-bsc1284345.patch
+  * Fix incomplete fix for CVE-2026-79992
+
+-------------------------------------------------------------------
 Wed Oct  7 14:11:00 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Disable test41 of tramp as this fails
