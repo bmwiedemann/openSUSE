@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 14 06:01:48 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.8.0
+  * Video external_ids attribute and update method
+  * Update gha and linkcheck
+  * fix(opensubtitlescom): prevent pagination errors from
+    discarding collected results
+  * feat(omdb): backfill missing video title and year from the
+    IMDB id
+  * Add a ProviderResult class to keep track of queries to
+    providers
+  * feat(core): report the providers that failed during a search
+  * Fix using opensubtitlescom hash
+  * Fix test for knowit>=0.7.1 improvement
+  * opensubtitlescom: search episodes
+  * Improve message for ignored videos
+  * Fix gha versions
+
+-------------------------------------------------------------------
 Thu Jul 23 11:51:51 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.7.1

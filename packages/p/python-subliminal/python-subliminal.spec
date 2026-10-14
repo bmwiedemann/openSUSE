@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-subliminal
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        Python library to search and download subtitles
 License:        MIT
