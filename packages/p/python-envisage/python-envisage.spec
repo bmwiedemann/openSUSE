@@ -19,7 +19,7 @@
 %define         X_display         ":98"
 %bcond_without     test
 Name:           python-envisage
-Version:        7.0.4
+Version:        8.0.1
 Release:        0
 Summary:        Extensible application framework for Python
 # Source code is under BSD but images are under different licenses
@@ -28,22 +28,23 @@ License:        BSD-3-Clause AND Python-2.0 AND LGPL-3.0-only AND CC-BY-SA-1.0 A
 URL:            https://github.com/enthought/envisage
 Source:         https://files.pythonhosted.org/packages/source/e/envisage/envisage-%{version}.tar.gz
 BuildRequires:  %{python_module apptools >= 5.3}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyface}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits >= 6.2}
 BuildRequires:  %{python_module traitsui}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module uv-build}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-apptools >= 5.3
 Requires:       python-pyface
-Requires:       python-setuptools
 Requires:       python-traits >= 6.2
 Requires:       python-traitsui
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module configobj}
+BuildRequires:  %{python_module pytest}
 # Only test optional ipykernel where we still have an old version -- gh#enthought/envisage#423
 BuildRequires:  %{python_module ipykernel < 6 if %python-base < 3.7}
 BuildRequires:  xorg-x11-server
@@ -78,11 +79,11 @@ Xvfb %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
 sleep 10
 
-%pyunittest -v
+%pytest
 %endif
 
 %files %{python_files}
-%doc CHANGES.rst README.rst
+%doc README.rst
 %license LICENSE.txt image_LICENSE.txt image_LICENSE_CP.txt
 %{python_sitelib}/envisage/
 %{python_sitelib}/envisage-%{version}.dist-info

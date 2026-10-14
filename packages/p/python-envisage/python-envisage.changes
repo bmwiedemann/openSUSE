@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 14 01:01:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.0.1:
+  * The Python shell view opens again. Pyface 8.0 split widget construction
+    in two, and PythonShellView.create_control never made the second call, so
+    it went on to read the interpreter's namespace off a shell that had none
+    yet.
+  * Build with the uv_build backend in place of setuptools.
+  * Envisage no longer adds a NullHandler to the "envisage" logger.
+  * Drop support for Python 3.8 and 3.9.
+  * Remove the deprecated include and exclude traits of PluginManager, along
+    with the associated plugin-filtering machinery and tests.
+  * HTTPResourceProtocol.file now closes the HTTPError raised by urlopen
+    before converting it to a NoSuchResourceError.
+  * Remove all uses of pkg_resources in favour of importlib.resources.
+- Switch to running the testsuite with pytest.
+
+-------------------------------------------------------------------
 Sun May  3 18:23:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.4:
