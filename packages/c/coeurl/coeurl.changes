@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 20 15:02:19 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Update to v0.3.2
+  * Fix use after free of evbase
+  * Clean up meson files
+  * Upgrade wrap dependencies
+  * Fix missing zlib in hunter deps
+  * Bump hunter dependencies
+
+-------------------------------------------------------------------
 Tue Aug  5 15:00:02 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Add workaround_libcurl8.15_issues.patch again as libcurl 8.15

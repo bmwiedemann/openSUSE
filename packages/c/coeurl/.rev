@@ -43,4 +43,18 @@
   broke it again</comment>
     <requestid>1297774</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c654470cacbddc802e280924df38ee7</srcmd5>
+    <version>0.3.2</version>
+    <time>1791996480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.3.2
+  * Fix use after free of evbase
+  * Clean up meson files
+  * Upgrade wrap dependencies
+  * Fix missing zlib in hunter deps
+  * Bump hunter dependencies
+</comment>
+    <requestid>1384774</requestid>
+  </revision>
 </revisionlist>

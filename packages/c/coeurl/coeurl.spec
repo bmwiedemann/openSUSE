@@ -1,9 +1,7 @@
 #
 # spec file for package coeurl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +18,7 @@
 
 %global libname libcoeurl0_3
 Name:           coeurl
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        A simple async wrapper around CURL for C++
 License:        MIT
