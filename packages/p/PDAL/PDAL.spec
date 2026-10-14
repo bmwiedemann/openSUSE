@@ -42,48 +42,36 @@ Source1:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name
 Patch0:         PDAL_unbundle.patch
 # GDAL headers are located in %%{_includedir}/gdal
 Patch1:         PDAL-fix-gdal-includes.patch
+# PATCH-FIX-UPSTREAM -- find_package(zstd) sets zstd_FOUND, not ZSTD_FOUND; zstd support was silently dropped
+Patch2:         PDAL-fix-zstd-detect.patch
+# PATCH-FIX-UPSTREAM -- build against the system nlohmann_json instead of the vendored copy
+Patch3:         PDAL-system-nlohmann.patch
 BuildRequires:  bash-completion
 BuildRequires:  cmake >= 3.13
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 11
+# The test suite shells out to gdalinfo
 BuildRequires:  gdal >= 3.8
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libboost_program_options-devel
 BuildRequires:  libgdal-devel
-BuildRequires:  libgeos-devel
-# PDAL itself never asks for BLAS, but it is pulled in transitively (via gdal)
-# and the test binaries then link libopenblas.so.0. Only an openblas -devel
-# provides that unflavored soname link -- without it every one of the 143
-# ctest binaries dies with "cannot open shared object file" and, because
-# %%check is non-fatal, the build still goes green with an empty test run.
-BuildRequires:  libopenblas_pthreads-devel
-BuildRequires:  libspatialindex-devel
 BuildRequires:  ninja
 BuildRequires:  nlohmann_json-devel
-BuildRequires:  pkgconfig
+# Provides proj.db, which the test suite needs at runtime
 BuildRequires:  proj
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(GTest)
-BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(eigen3)
-BuildRequires:  pkgconfig(glut)
-BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libcrypto) >= 1.1
 BuildRequires:  pkgconfig(libgeotiff)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libssl) >= 1.1
-BuildRequires:  pkgconfig(libtiff-4)
 # We don't have it yet
 # BuildRequires:  pointcloud-devel
 BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(proj)
-BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 # Needed for documentation but we don't build it (see comment below make_build)
 # BuildRequires:  dblatex
@@ -144,9 +132,6 @@ This package contain the bash completion command for PDAL.
 Summary:        Development files and tools for PDAL applications
 Requires:       cmake
 Requires:       lib%{name}%{soname} = %{version}
-Requires:       libboost_filesystem-devel
-Requires:       libboost_headers-devel
-Requires:       libboost_program_options-devel
 Requires:       pkgconfig(liblzma)
 Requires:       pkgconfig(zlib)
 Provides:       lib%{lname}%{soname}-devel = %{version}
@@ -163,13 +148,15 @@ Summary:        Documentation, examples and demos for PDAL
 BuildArch:      noarch
 
 %description doc
-This package provides the documentation and sources of examples and data demos of
-PDAL algorithms.
+This package provides the documentation and sources of examples and data
+demos of PDAL algorithms.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}-src
 # Remove vendored eigen3 library
 rm -rf vendor/eigen
+# Remove vendored nlohmann-json library
+rm -rf vendor/nlohmann
 # Fix all wrong shebang and move to python3 only
 find . -type f -iname "*.py" -exec sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,' {} +
 
@@ -264,12 +251,19 @@ sed -i 's,%{_prefix}/%{_prefix}/lib64,%{_libdir},g' %{buildroot}/%{_libdir}/cmak
 
 %check
 # Custom 60s timeout: some tests otherwise run to the ~20 minute default.
-# Failures are reported but do not fail the build -- upstream issue 3501
-# still has tests failing on several architectures. The result is read from
-# the log rather than gated, which is why --output-on-failure is on.
+# The suite is fatal: a failing test fails the build. Two tests are
+# excluded because they need network access, which the build service
+# does not provide: pdal_io_stac_reader_test and
+# pdal_io_copc_remote_reader_test. (--exclude-regex is spelled out
+# because the ctest macro's option parser rejects the short -E form.)
+# The run is serial: pdal_io_bpf_base_test and pdal_io_bpf_zlib_test
+# share the fixed temp path tmp.bpf and race when run in parallel.
+# Serial is forced by redefining _smp_mflags to -j1 for this section:
+# the ctest macro passes those flags to ctest, but rejects -j itself.
 # The PG tests stay off (BUILD_PGPOINTCLOUD_TESTS=OFF): they need a live
 # PostgreSQL server, which a build root does not have.
-%ctest --output-on-failure --timeout %{test_timeout} || :
+%define _smp_mflags -j1
+%ctest --timeout %{test_timeout} --exclude-regex 'pdal_io_stac_reader_test|pdal_io_copc_remote_reader_test'
 
 %ldconfig_scriptlets -n lib%{name}%{soname}
 

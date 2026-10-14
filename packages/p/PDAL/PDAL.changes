@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 13 06:28:23 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Fix zstd support being silently disabled: upstream's cmake checks
+  ZSTD_FOUND, but find_package(zstd) in config mode only sets
+  zstd_FOUND, so ZstdCompression was never built and zstd-compressed
+  EPT/COPC data could not be read; add PDAL-fix-zstd-detect.patch
+- Drop BuildRequires that the build never uses:
+  libboost_filesystem-devel, libboost_headers-devel,
+  libboost_program_options-devel, libgeos-devel,
+  libopenblas_pthreads-devel, libspatialindex-devel,
+  python3-devel,
+  pkgconfig(cairo), pkgconfig(cunit), pkgconfig(glut),
+  pkgconfig(jsoncpp), pkgconfig(libtiff-4) and pkgconfig(sqlite3);
+  also drop the boost Requires from the devel subpackage, as no
+  PDAL header uses boost
+- Build against the system nlohmann_json instead of the vendored
+  copy (PDAL-system-nlohmann.patch); the vendored copy is removed
+  in %prep, mirroring the existing eigen3 unbundling
+- Run the test suite fatally in %check instead of reporting failures
+  without failing the build; exclude the two tests that need network
+  access (pdal_io_stac_reader_test, pdal_io_copc_remote_reader_test)
+  and run serially, as pdal_io_bpf_base_test and pdal_io_bpf_zlib_test
+  share the fixed temp path tmp.bpf and race in parallel
+- Rewrap an overlong line in the doc subpackage description
+
+-------------------------------------------------------------------
 Wed Jul 29 07:53:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Spec cleanup:

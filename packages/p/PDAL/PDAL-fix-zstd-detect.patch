@@ -1,0 +1,25 @@
+diff --git i/CMakeLists.txt w/CMakeLists.txt
+--- i/CMakeLists.txt
++++ w/CMakeLists.txt
+@@ -272,7 +272,7 @@
+         ${WINSOCK_LIBRARY}
+ )
+ 
+-if (ZSTD_FOUND)
++if (zstd_FOUND)
+     target_link_libraries(${PDAL_LIB_NAME}
+         PRIVATE
+         zstd::libzstd)
+diff --git i/cmake/zstd.cmake w/cmake/zstd.cmake
+--- i/cmake/zstd.cmake
++++ w/cmake/zstd.cmake
+@@ -7,7 +7,7 @@
+     find_package(zstd CONFIG QUIET)
+     set_package_properties(ZSTD PROPERTIES TYPE
+         PURPOSE "General compression support")
+-    if (ZSTD_FOUND)
++    if (zstd_FOUND)
+         set(PDAL_HAVE_ZSTD 1)
+-    endif(ZSTD_FOUND)
++    endif(zstd_FOUND)
+ endif(WITH_ZSTD)

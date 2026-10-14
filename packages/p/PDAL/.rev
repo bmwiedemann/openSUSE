@@ -223,4 +223,12 @@ converted to pkgconfig() providers per spec-cleaner.
 Built on aarch64: 0 rpmlint badness, 0 warnings, source_validator clean.</comment>
     <requestid>1368319</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>c239d1f599c16dea23703b1497d1f35e</srcmd5>
+    <version>2.10.2</version>
+    <time>1791995710</time>
+    <user>dimstar_suse</user>
+    <comment>Forward Application:Geo/PDAL zstd fix + nlohmann unbundling + fatal %check (SR 1384547); branch builds green.</comment>
+    <requestid>1384658</requestid>
+  </revision>
 </revisionlist>
