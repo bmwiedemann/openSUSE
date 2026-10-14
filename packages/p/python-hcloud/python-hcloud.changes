@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 14 16:40:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.27.0:
+  * Primary IPs, which were previously available exclusively for
+    Servers, are now also available for Load Balancers. When
+    creating a Load Balancer, you can assign an existing Primary
+    IP instead of having an IP address allocated automatically.
+    Currently, you cannot change the Primary IP once the Load
+    Balancer has been created.
+  * allow creating load balancers with primary ips
+  * delete load balancer now returns an action
+  * only send load balancer service health_check properties when
+    defined
+  * add deprecation info to image
+
+-------------------------------------------------------------------
 Fri Aug 21 20:02:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.23.0:
