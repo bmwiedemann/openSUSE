@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct  5 16:25:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Incorrect escaping of `$` and other reserved chars in links
+    (#248).
+  * Fix `` being rendered as `...` (#260).
+  * `HtmlRenderer`: Escape characters in image src.
+  * `MarkdownRenderer`: Fix type annotations (#265, #267).
+  * `JiraRenderer`: Escape pipes in table cells (#270).
+  * `MarkdownRenderer`: Escape pipes in table cells (#274).
+  * `MarkdownRenderer`: Preserve line break before/after HTML
+    span during word-wrap (#275).
+  * Avoid crash on overlapping emphasis delimiters (#271). 🎉
+  * `GithubWiki`: Reduce backtracking in wiki links (#276).
+  * Guard `remove_token()` against duplicate removal (#281).
+  * `HtmlRenderer`: Escape mailto autolink hrefs (#283).
+
+-------------------------------------------------------------------
 Mon Mar 16 21:23:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.1:

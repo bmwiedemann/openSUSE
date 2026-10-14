@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-mistletoe
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        A Markdown parser in pure Python
 License:        MIT
