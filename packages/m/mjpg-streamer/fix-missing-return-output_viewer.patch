@@ -1,0 +1,11 @@
+--- a/mjpg-streamer-experimental/plugins/output_viewer/output_viewer.c
++++ b/mjpg-streamer-experimental/plugins/output_viewer/output_viewer.c
+@@ -428,7 +428,6 @@
+ 
+ int output_cmd()
+ {
+-
+-
++    return 0;
+ }
+ 

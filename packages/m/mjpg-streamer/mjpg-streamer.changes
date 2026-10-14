@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 13 12:51:15 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Convert the hand-rolled cmake call in %build to the %cmake and
+  %cmake_build macros so the package is built with the distro
+  optflags (-O2, -D_FORTIFY_SOURCE=3, -fstack-protector-strong).
+  All binaries were previously built without any hardening flags
+  (missing-fortify and missing-stack-protector on every binary).
+- Add fix-missing-return-output_viewer.patch: add the missing
+  return statement to the empty output_cmd() stub, which the
+  -Werror=return-type in the optflags turns into a build error.
+- Add fix-undefined-symbols-input_uvc.patch: compile utils.c into
+  the input_uvc plugin. It calls parse_resolution_opt() and
+  resolutions_help() from utils.c, which used to be resolved from
+  the main executable at dlopen time; -Wl,--no-undefined makes
+  that a link error.
+- Drop unused BuildRequires: gcc-c++, python3-devel,
+  python3-numpy-devel, python3-opencv. Nothing in the build uses
+  a C++ compiler or Python, and the OpenCV input plugin requires
+  OpenCV 3, so it is never built.
+
+-------------------------------------------------------------------
 Wed May  7 08:17:17 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes

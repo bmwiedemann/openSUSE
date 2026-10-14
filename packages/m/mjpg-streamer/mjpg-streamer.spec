@@ -21,20 +21,17 @@ Version:        1.0.0
 Release:        0
 Summary:        Program for streaming webcam video to HTTP
 License:        GPL-2.0-only
-Group:          Productivity/Multimedia/Video/Players
+URL:            https://github.com/jacksonliam/mjpg-streamer
 Source0:        %{name}-%{version}.tar.xz
 Patch1:         fix-build.patch
 Patch2:         set_group.patch
-URL:            https://github.com/jacksonliam/mjpg-streamer
+Patch3:         fix-missing-return-output_viewer.patch
+Patch4:         fix-undefined-symbols-input_uvc.patch
 BuildRequires:  SDL-devel
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  libgphoto2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  protobuf-c
-BuildRequires:  python3-devel
-BuildRequires:  python3-numpy-devel
-BuildRequires:  python3-opencv
 BuildRequires:  zeromq-devel
 
 %description
@@ -52,16 +49,14 @@ Enable the service by specifing the video device via
 The number reflects /dev/videoX and listening port 808X.
 
 %prep
-%autosetup -p2 -n %{name}-%version/mjpg-streamer-experimental
+%autosetup -p2 -n %{name}-%{version}/mjpg-streamer-experimental
 
 %build
 # Remove cmake4 error due to not setting
 # min cmake version - sflees.de
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DINCLUDE_INSTALL_DIR:PATH=/usr/include -DLIB_INSTALL_DIR:PATH=%_libdir -DSYSCONF_INSTALL_DIR:PATH=/etc -DSHARE_INSTALL_PREFIX:PATH=/usr/share -DCMAKE_INSTALL_LIBDIR:PATH=%_libdir -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
 %cmake_install
@@ -83,12 +78,11 @@ getent passwd mjpg_streamer >/dev/null || %{_sbindir}/useradd -r -G video \
 %service_del_postun mjpg_streamer@.service
 
 %files
-%defattr(-,root,root,-)
 %license LICENSE
 %doc README.md
 %{_bindir}/mjpg_streamer
-/usr/lib/mjpg-streamer
-/usr/share/mjpg-streamer
+%{_prefix}/lib/mjpg-streamer
+%{_datadir}/mjpg-streamer
 %{_unitdir}/mjpg_streamer@.service
 
 %changelog
