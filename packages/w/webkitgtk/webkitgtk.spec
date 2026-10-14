@@ -465,6 +465,7 @@ export PYTHON=%{_bindir}/python3
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
 %ifarch aarch64
   -DUSE_64KB_PAGE_BLOCK=ON \
+  -DMI_NO_OPT_ARCH=ON \
 %endif
   -DUSE_SYSTEM_SYSPROF_CAPTURE=NO \
   -DUSE_FLITE=OFF \

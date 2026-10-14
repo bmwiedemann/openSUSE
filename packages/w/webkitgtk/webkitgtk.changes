@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 12 15:05:43 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable overoptimization in mimalloc with -DMI_NO_OPT_ARCH=ON
+  to keep compatibility with armv8.0 baseline on aarch64
+
+-------------------------------------------------------------------
 Sun Oct  4 08:35:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 30 gigs of memory constraint for aarch64 and x86_64.

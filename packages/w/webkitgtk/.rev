@@ -156,4 +156,13 @@
     <comment>- Add 30 gigs of memory constraint for aarch64 and x86_64.</comment>
     <requestid>1383707</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>8d5092b5b1d2d63f3cb4609a898c1d6f</srcmd5>
+    <version>2.54.1</version>
+    <time>1791995607</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable overoptimization in mimalloc with -DMI_NO_OPT_ARCH=ON
+  to keep compatibility with armv8.0 baseline on aarch64</comment>
+    <requestid>1384515</requestid>
+  </revision>
 </revisionlist>
