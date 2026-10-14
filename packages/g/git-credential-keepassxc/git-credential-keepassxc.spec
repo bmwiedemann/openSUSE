@@ -17,7 +17,7 @@
 
 
 Name:           git-credential-keepassxc
-Version:        0.14.3
+Version:        0.14.4
 Release:        0
 Summary:        Helper that allows Git (and shell scripts) to use KeePassXC as credential store
 License:        GPL-3.0-only

@@ -25,4 +25,14 @@
   * Dependency bumps</comment>
     <requestid>1356310</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>816b187fefd5beadcc7c6f10f84bbf6b</srcmd5>
+    <version>0.14.4</version>
+    <time>1791996521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.4:
+  * Strip UTF8 BOM from inputs
+  * Handle CRLF inputs</comment>
+    <requestid>1384795</requestid>
+  </revision>
 </revisionlist>
