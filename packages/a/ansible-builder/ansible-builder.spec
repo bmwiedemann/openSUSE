@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-builder
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        An Ansible execution environment builder
 License:        Apache-2.0
@@ -46,21 +46,20 @@ URL:            https://github.com/ansible/ansible-builder
 Source:         ansible-builder-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  git-core
-# https://github.com/ansible/ansible-builder/blob/devel/setup.cfg#L41
-BuildRequires:  %{ansible_python}-base >= 3.9
+# https://github.com/ansible/ansible-builder/blob/devel/pyproject.toml#L2
+BuildRequires:  %{ansible_python}-base >= 3.11
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  %{ansible_python}-setuptools_scm
 BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  ansible-core
 BuildRequires:  python-rpm-macros
-# https://github.com/ansible/ansible-builder/blob/devel/requirements.txt
+# https://github.com/ansible/ansible-builder/blob/devel/pyproject.toml#L34
 BuildRequires:  %{ansible_python}-PyYAML
 BuildRequires:  %{ansible_python}-bindep
 BuildRequires:  %{ansible_python}-filelock
 BuildRequires:  %{ansible_python}-jsonschema
 BuildRequires:  %{ansible_python}-packaging
-BuildRequires:  %{ansible_python}-pbr
 #
 # Tests require podman, but also require connectivity to pull container images
 # hence we do not enable this dependency

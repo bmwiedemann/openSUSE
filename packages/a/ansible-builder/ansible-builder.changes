@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 14 05:05:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.2.0:
+  See the porting guide for version 3.2 for more details.
+  https://docs.ansible.com/projects/builder/en/latest/porting_guides/porting_guide_v3.2/
+  * Support for Python 3.15.
+  * Dropped support for Python 3.9 and 3.10. Python 3.11 is now the
+    minimum.
+  * Ability to disable colorized output.
+  * Symlink preservation with additional_build_files file copies.
+  * Ability to detect parse errors from the most recent versions of
+    bindep.
+  * Deprecation of versions 1 and 2 of the execution environment
+    YAML file format.
+
+-------------------------------------------------------------------
 Tue Jan  6 22:31:16 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Fix pytest 9.0.2 compatibility: ignore PytestRemovedIn9Warning
