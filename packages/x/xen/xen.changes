@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 13 06:05:33 MDT 2026 - carnold@suse.com
+
+- bsc#1283315 - VUL-0: CVE-2026-79607: xen: Xenstore: Guests can
+  crash xenstored during Live Update (XSA-514)
+  6aad1183-tools-xenstored-fix-live-update-with-watches-specifying-depth.patch
+- bsc#1283317 - VUL-0: CVE-2026-79608: xen: x86/AMD: ineffectual
+  Zenbleed workaround (XSA-515)
+  6abbdd30-amd-Fix-inverted-condition-in-zenbleed_use_chickenbit.patch
+- bsc#1283321 - VUL-0: CVE-2026-79609: xen: x86: XPTI may break on
+  huge-memory systems (XSA-516)
+  6abbe079-pv-map-each-vCPUs-root-page-table-in-its-per-domain-area.patch
+- bsc#1283322 - VUL-0: CVE-2026-79610: xen: grant-table: double
+  version change race (XSA-517)
+  6abbe20c-gnttab-address-fallout-from-XSA-501.patch
+- bsc#1283323 - VUL-0: CVE-2026-79611: xen: VMX: VMentry failure
+  with branch tracing and blocked states (XSA-518)
+  6abbe28e-vmx-Rework-#DB-intercept-logic-to-fix-VMEntry-failure-with-BTF.patch
+- Upstream bug fixes (bsc#1027519)
+  6aa28713-xen-sched-core-kill-unarmed-timers-on-sched_init_vcpu-failure.patch
+  6abceba2-xen-sched-core-skip-missing-vcpu-slots-in-sched_move_domain.patch
+  6abcebd8-vmx-Handle-TDX-instruction-exit-reasons.patch
+  6abcec00-boot-Force-error-checking-for-reserve_e820_ram.patch
+
+-------------------------------------------------------------------
 Tue Sep  8 06:36:23 MDT 2026 - carnold@suse.com
 
 - bsc#1276838 - VUL-0: CVE-2026-62437: xen: x86: DMs may cause mem

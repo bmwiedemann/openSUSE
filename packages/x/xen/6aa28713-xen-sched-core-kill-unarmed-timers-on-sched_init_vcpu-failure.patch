@@ -1,0 +1,65 @@
+Subject: xen/sched: core: kill unarmed timers on sched_init_vcpu() failure
+From: Furkan Caliskan frn1furkan10@gmail.com Thu Sep 10 12:31:47 2026 +0200
+Date: Thu Sep 10 12:31:47 2026 +0200:
+Git: f692b1badf84233e0bd905778bd284b4df7ff935
+
+sched_init_vcpu() calls init_timer() for a vcpu's periodic_timer,
+singleshot_timer and poll_timer before it can fail -- these
+become live, linked into their target pCPU's per-cpu timer list
+regardless of what happens next. If the sched_alloc_udata() call
+further down then fails, the function frees the sched_unit via
+sched_free_unit() and returns 1, but never unlinks these three
+timers.
+
+The caller, vcpu_create(), makes this worse: on sched_init_vcpu()
+returning nonzero it jumps to fail_wq, skipping fail_sched and
+thus sched_destroy_vcpu() -- the only function on this path that
+calls kill_timer() on them. vcpu_destroy() then frees the vcpu,
+and the three timers embedded in it, while they are still linked
+into that shared list.
+
+This silently corrupts that list. It only shows up later, when
+something else touches a neighboring timer: sched_move_domain()
+crashed with "Assertion 'entry->prev->next == entry' failed" on a
+completely unrelated, valid vcpu's timer.
+
+Call sched_destroy_vcpu() in sched_init_vcpu()'s own failure
+branch instead of sched_free_unit(), so it doesn't depend
+on the caller reaching sched_destroy_vcpu() to undo what it set
+up itself. sched_destroy_vcpu() assumes unit->priv is set, which
+is not the case here, so make it only free the udata and remove
+the unit if unit->priv in non-NULL.
+
+Fixes: d884b1077817 ("Domain creation/destruction cleanups.")
+Signed-off-by: Furkan Caliskan <frn1furkan10@gmail.com>
+Reviewed-by: Juergen Gross <jgross@suse.com>
+master commit: 2565341135f88081535f6830a6256277e2834403
+master date: 2026-09-01 10:02:13 +0200
+
+diff --git a/xen/common/sched/core.c b/xen/common/sched/core.c
+index 9ccf5811bf..67ae5a7968 100644
+--- a/xen/common/sched/core.c
++++ b/xen/common/sched/core.c
+@@ -584,7 +584,7 @@ int sched_init_vcpu(struct vcpu *v)
+     unit->priv = sched_alloc_udata(dom_scheduler(d), unit, d->sched_priv);
+     if ( unit->priv == NULL )
+     {
+-        sched_free_unit(unit, v);
++        sched_destroy_vcpu(v);
+         rcu_read_unlock(&sched_res_rculock);
+         return 1;
+     }
+@@ -864,8 +864,11 @@ void sched_destroy_vcpu(struct vcpu *v)
+     {
+         rcu_read_lock(&sched_res_rculock);
+ 
+-        sched_remove_unit(vcpu_scheduler(v), unit);
+-        sched_free_udata(vcpu_scheduler(v), unit->priv);
++        if ( unit->priv )
++        {
++            sched_remove_unit(vcpu_scheduler(v), unit);
++            sched_free_udata(vcpu_scheduler(v), unit->priv);
++        }
+         sched_free_unit(unit, v);
+ 
+         rcu_read_unlock(&sched_res_rculock);

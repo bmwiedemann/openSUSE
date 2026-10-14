@@ -3206,4 +3206,12 @@
     <comment>Security update for bsc#1276838 CVE-2026-62437 XSA-509, bsc#1276839 CVE-2026-79602 XSA-510, bsc#1276841 CVE-2026-79603 XSA-511</comment>
     <requestid>1376391</requestid>
   </revision>
+  <revision rev="379" vrev="1">
+    <srcmd5>e4c369384706ac2b7ebbbf2a98a66976</srcmd5>
+    <version>4.22.0_06</version>
+    <time>1791995661</time>
+    <user>dimstar_suse</user>
+    <comment>Security and Maintenance Update. Fixes for bsc#1283315 CVE-2026-79607 XSA-514, bsc#1283317 CVE-2026-79608 XSA-515, bsc#1283321 CVE-2026-79609 XSA-516, bsc#1283322 CVE-2026-79610 XSA-517, bsc#1283323 CVE-2026-79611 XSA-518. A few other upstream bug fixes included.</comment>
+    <requestid>1384649</requestid>
+  </revision>
 </revisionlist>

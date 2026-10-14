@@ -1,0 +1,80 @@
+Subject: xen/sched: core: skip missing vcpu slots in sched_move_domain()
+From: Furkan Caliskan frn1furkan10@gmail.com Wed Sep 30 12:59:46 2026 +0200
+Date: Wed Sep 30 12:59:46 2026 +0200:
+Git: 2a797c6d6ec24eb7aa1fd0692a892a21b054bbbc
+
+sched_move_domain() derives the number of units to rebuild from
+d->max_vcpus, which is fixed at domain creation and never rolled
+back if vcpu_create() fails partway through building a domain. So
+d->vcpu[i] can be NULL for some i even though max_vcpus still
+counts it - this happens if sched_alloc_udata() returns NULL.
+
+The per-unit loop doesn't check for this: it sets
+unit->vcpu_list = d->vcpu[unit_id] (NULL) and hands that broken
+unit straight to the destination scheduler's alloc_udata(),
+which assumes vcpu_list is always valid and crashes Xen when
+it is not.
+
+Reproduced by building a domain in a non-default cpupool where
+vcpu creation fails partway through, then destroying it.
+domain_kill() moves the domain back to the default cpupool via
+sched_move_domain() before actually destroying it, crashing
+inside the destination scheduler's alloc_udata() (seen in
+Credit2's csched2_alloc_udata() -> is_idle_unit() -> NULL deref).
+
+Before building a unit in sched_move_domain(), check whether all
+vpcu slots belonging to that unit are populated. If any of its
+vpcus is missing:
+ - For a dying domain, skip the unit allocation.
+ - For an active domain, abort the move and return -EINVAL to
+   prevent running with dropped vCPUs.
+
+Fixes: 70fadc41635b ("xen/cpupool: support moving domain between cpupools with different granularity")
+Signed-off-by: Furkan Caliskan <frn1furkan10@gmail.com>
+Reviewed-by: Juergen Gross <jgross@suse.com>
+master commit: 4835c078e5cf52fbcf842f4e8a2e61808b8ff869
+master date: 2026-09-21 09:54:12 +0200
+
+diff --git a/xen/common/sched/core.c b/xen/common/sched/core.c
+index 67ae5a7968..6de3a13545 100644
+--- a/xen/common/sched/core.c
++++ b/xen/common/sched/core.c
+@@ -740,6 +740,38 @@ int sched_move_domain(struct domain *d, struct cpupool *c)
+ 
+     for ( unit_idx = 0; unit_idx < n_units; unit_idx++ )
+     {
++        /*
++         * A vcpu slot can be missing if creation failed partway
++         * through. A dying domain is being torn down regardless, so
++         * skip the unit -- but a domain that isn't dying still needs
++         * every vcpu it has schedulable, so fail instead of silently
++         * dropping some of them.
++         */
++        bool vcpu_failed = false;
++
++        for ( unsigned int i = 0;
++              i < gran && unit_idx * gran + i < d->max_vcpus; i++ )
++        {
++            if ( !d->vcpu[unit_idx * gran + i] )
++            {
++                vcpu_failed = true;
++                break;
++            }
++        }
++
++        if ( vcpu_failed )
++        {
++            if ( !d->is_dying )
++            {
++                sched_move_domain_cleanup(c->sched, new_units, domdata);
++                rcu_read_unlock(&sched_res_rculock);
++
++                return -EINVAL;
++            }
++
++            continue;
++        }
++
+         unit = sched_alloc_unit_mem();
+         if ( unit )
+         {

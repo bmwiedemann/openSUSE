@@ -1,0 +1,85 @@
+Subject: x86/boot: Force error checking for reserve_e820_ram()
+From: Andrew Cooper andrew.cooper3@citrix.com Wed Sep 30 13:01:20 2026 +0200
+Date: Wed Sep 30 13:01:20 2026 +0200:
+Git: 3703b32f3644f76922499fb2b356adfa48d7dbae
+
+Failing to mark Xen as Reserved in the E820 is catastrophic; RAM regions get
+handed to the physical memory allocator for general use.  Similarly, failure
+to mark the boot modules as reserved is not going to result in a working
+system.
+
+Mark reserve_e820_ram() as __must_check, and panic() on failure.  To avoid
+opencoding the range in every caller, print a general failure message in
+reserve_e820_ram().
+
+Reported-by: Ross Lagerwall <ross.lagerwall@citrix.com>
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Ross Lagerwall <ross.lagerwall@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+master commit: b7c0ac446722e9d3aa05a025a96a5fc901e2881d
+master date: 2026-09-24 20:54:37 +0100
+
+diff --git a/xen/arch/x86/e820.c b/xen/arch/x86/e820.c
+index 872208ab37..f09a01f0c5 100644
+--- a/xen/arch/x86/e820.c
++++ b/xen/arch/x86/e820.c
+@@ -670,7 +670,13 @@ int __init e820_change_range_type(
+ /* Set E820_RAM area (@s,@e) as RESERVED in specified e820 map. */
+ int __init reserve_e820_ram(struct e820map *map, uint64_t s, uint64_t e)
+ {
+-    return e820_change_range_type(map, s, e, E820_RAM, E820_RESERVED);
++    int res = e820_change_range_type(map, s, e, E820_RAM, E820_RESERVED);
++
++    if ( !res )
++        printk("Failed to convert E820 RAM %"PRIx64"-%"PRIx64" to RESERVED\n",
++               s, e);
++
++    return res;
+ }
+ 
+ unsigned long __init init_e820(const char *str, struct e820map *raw)
+diff --git a/xen/arch/x86/include/asm/e820.h b/xen/arch/x86/include/asm/e820.h
+index 8e7644f887..55395f8d8a 100644
+--- a/xen/arch/x86/include/asm/e820.h
++++ b/xen/arch/x86/include/asm/e820.h
+@@ -25,7 +25,8 @@ struct e820map {
+ 
+ extern int sanitize_e820_map(struct e820entry *biosmap, unsigned int *pnr_map);
+ extern int e820_all_mapped(u64 start, u64 end, unsigned type);
+-extern int reserve_e820_ram(struct e820map *map, uint64_t s, uint64_t e);
++extern int __must_check reserve_e820_ram(
++    struct e820map *map, uint64_t s, uint64_t e);
+ extern int e820_change_range_type(
+     struct e820map *map, uint64_t s, uint64_t e,
+     uint32_t orig_type, uint32_t new_type);
+diff --git a/xen/arch/x86/setup.c b/xen/arch/x86/setup.c
+index 7d71fea6c0..23d14aa718 100644
+--- a/xen/arch/x86/setup.c
++++ b/xen/arch/x86/setup.c
+@@ -1648,7 +1648,8 @@ void asmlinkage __init noreturn __start_xen(void)
+     {
+         uint64_t s = bi->mods[i].start, l = bi->mods[i].size;
+ 
+-        reserve_e820_ram(&boot_e820, s, s + PAGE_ALIGN(l));
++        if ( !reserve_e820_ram(&boot_e820, s, s + PAGE_ALIGN(l)) )
++            panic("Failed to reserve boot module %u in E820\n", i);
+     }
+ 
+     if ( !xen_phys_start )
+@@ -1661,11 +1662,13 @@ void asmlinkage __init noreturn __start_xen(void)
+     /* This needs to remain in sync with remove_xen_ranges(). */
+     if ( efi_boot_mem_unused(&eb_start, &eb_end) )
+     {
+-        reserve_e820_ram(&boot_e820, __pa(_stext), __pa(eb_start));
+-        reserve_e820_ram(&boot_e820, __pa(eb_end), __pa(__2M_rwdata_end));
++        if ( !reserve_e820_ram(&boot_e820, __pa(_stext), __pa(eb_start)) ||
++             !reserve_e820_ram(&boot_e820, __pa(eb_end), __pa(__2M_rwdata_end)) )
++            panic("Failed to reserve Xen in E820\n");
+     }
+     else
+-        reserve_e820_ram(&boot_e820, __pa(_stext), __pa(__2M_rwdata_end));
++        if ( !reserve_e820_ram(&boot_e820, __pa(_stext), __pa(__2M_rwdata_end)) )
++            panic("Failed to reserve Xen in E820\n");
+ 
+     /* Late kexec reservation (dynamic start address). */
+     kexec_reserve_area();

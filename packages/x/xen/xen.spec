@@ -126,7 +126,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.22.0_04
+Version:        4.22.0_06
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -164,6 +164,15 @@ Source99:       baselibs.conf
 Patch1:         6a8f18ad-pass-through-disallow-pt_irq_create_bind-on-dying-domains.patch
 Patch2:         6a759f74-emul-cope-with-internal-handlers-returning-X86EMUL_RETRY.patch
 Patch3:         6a71bd97-xen-page_alloc-ensure-TLB-flush-is-done-ahead-of-page-scrubbing.patch
+Patch4:         6aa28713-xen-sched-core-kill-unarmed-timers-on-sched_init_vcpu-failure.patch
+Patch5:         6abceba2-xen-sched-core-skip-missing-vcpu-slots-in-sched_move_domain.patch
+Patch6:         6abcebd8-vmx-Handle-TDX-instruction-exit-reasons.patch
+Patch7:         6abcec00-boot-Force-error-checking-for-reserve_e820_ram.patch
+Patch8:         6aad1183-tools-xenstored-fix-live-update-with-watches-specifying-depth.patch
+Patch9:         6abbdd30-amd-Fix-inverted-condition-in-zenbleed_use_chickenbit.patch
+Patch10:        6abbe079-pv-map-each-vCPUs-root-page-table-in-its-per-domain-area.patch
+Patch11:        6abbe20c-gnttab-address-fallout-from-XSA-501.patch
+Patch12:        6abbe28e-vmx-Rework-#DB-intercept-logic-to-fix-VMEntry-failure-with-BTF.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch

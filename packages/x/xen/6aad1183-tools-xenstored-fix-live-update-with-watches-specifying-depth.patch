@@ -1,0 +1,32 @@
+Subject: tools/xenstored: fix live update with watches specifying depth
+From: Juergen Gross jgross@suse.com Fri Sep 18 12:25:07 2026 +0200
+Date: Tue Oct 13 13:48:17 2026 +0100:
+Git: 1672ef1a5fd48844412928b2a690255846646695
+
+Due to a typo the state record for a watch specifying a depth is
+written only partially. Instead of using the correct length of the
+xs_state_watch_ext structure only the length of the xs_state_watch
+structure was used when writing the data.
+
+Fix that by using the correct length.
+
+This is XSA-514 / CVE-2026-79607
+
+Fixes: db98de120cb8 ("tools/xenstored: add depth information to watches")
+Reported-by: Andrii Sultanov <andriy.sultanov@vates.tech>
+Signed-off-by: Juergen Gross <jgross@suse.com>
+(cherry picked from commit 6b30eca0e388e5aaa4319c647a777d703d7ee752)
+
+diff --git a/tools/xenstored/watch.c b/tools/xenstored/watch.c
+index c143e6fbcf..7097ab0b0d 100644
+--- a/tools/xenstored/watch.c
++++ b/tools/xenstored/watch.c
+@@ -354,7 +354,7 @@ const char *dump_state_watches(FILE *fp, struct connection *conn,
+ 			return "Dump watch state error";
+ 
+ 		if (watch->depth >= 0) {
+-			if (fwrite(&swe, sizeof(sw), 1, fp) != 1)
++			if (fwrite(&swe, sizeof(swe), 1, fp) != 1)
+ 				return "Dump watch state ext error";
+ 		} else {
+ 			if (fwrite(&sw, sizeof(sw), 1, fp) != 1)

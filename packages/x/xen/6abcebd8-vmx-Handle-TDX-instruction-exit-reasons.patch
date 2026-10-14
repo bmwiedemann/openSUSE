@@ -1,0 +1,76 @@
+Subject: vmx: Handle TDX instruction exit reasons
+From: Teddy Astie teddy.astie@vates.tech Wed Sep 30 13:00:40 2026 +0200
+Date: Wed Sep 30 13:00:40 2026 +0200:
+Git: 52d71fc5606c7dc4705c67c5877ef46ebab57129
+
+On hardware that supports TDX, guests can cause VMEXIT related to
+TDX instructions (SEAMCALL and TDCALL) regardless of VMCS configuration.
+
+Currently, that causes the domain to crash when a domain tries to
+use these instructions in kernel-mode, and emit #UD when used in user-mode.
+
+Adjust the behavior so that the guest always gets #UD when trying to
+use these instructions regardless of the privilege level that the vCPU
+is running.
+
+In the nested virtualization case, also reinject the exit reason to L1
+rather than failing on "Unhandled nested vmexit" (leading to a L1 crash
+that can be caused by L2 by executing one of the TDX instructions).
+
+Signed-off-by: Teddy Astie <teddy.astie@vates.tech>
+Acked-by: Jan Beulich <jbeulich@suse.com>
+master commit: 755c9fbbfe4bcd8671a6621ae050f45441300579
+master date: 2026-09-22 09:59:37 +0200
+
+diff --git a/xen/arch/x86/hvm/vmx/vmx.c b/xen/arch/x86/hvm/vmx/vmx.c
+index 269ca56433..afd77b4552 100644
+--- a/xen/arch/x86/hvm/vmx/vmx.c
++++ b/xen/arch/x86/hvm/vmx/vmx.c
+@@ -4681,6 +4681,8 @@ void asmlinkage vmx_vmexit_handler(struct cpu_user_regs *regs)
+     case EXIT_REASON_MWAIT_INSTRUCTION:
+     case EXIT_REASON_MONITOR_INSTRUCTION:
+     case EXIT_REASON_GETSEC:
++    case EXIT_REASON_SEAMCALL:
++    case EXIT_REASON_TDCALL:
+         /*
+          * We should never exit on GETSEC because CR4.SMXE is always 0 when
+          * running in guest context, and the CPU checks that before getting
+diff --git a/xen/arch/x86/hvm/vmx/vvmx.c b/xen/arch/x86/hvm/vmx/vvmx.c
+index e4cdfe55c1..b2ad7db332 100644
+--- a/xen/arch/x86/hvm/vmx/vvmx.c
++++ b/xen/arch/x86/hvm/vmx/vvmx.c
+@@ -2496,6 +2496,8 @@ int nvmx_n2_vmexit_handler(struct cpu_user_regs *regs,
+     case EXIT_REASON_INVEPT:
+     case EXIT_REASON_XSETBV:
+     case EXIT_REASON_INVVPID:
++    case EXIT_REASON_SEAMCALL:
++    case EXIT_REASON_TDCALL:
+         /* inject to L1 */
+         nvcpu->nv_vmexit_pending = 1;
+         break;
+diff --git a/xen/arch/x86/include/asm/hvm/vmx/vmx.h b/xen/arch/x86/include/asm/hvm/vmx/vmx.h
+index da04752e17..b8219e0408 100644
+--- a/xen/arch/x86/include/asm/hvm/vmx/vmx.h
++++ b/xen/arch/x86/include/asm/hvm/vmx/vmx.h
+@@ -201,6 +201,8 @@ static inline void pi_clear_sn(struct pi_desc *pi_desc)
+ #define EXIT_REASON_XRSTORS             64
+ #define EXIT_REASON_BUS_LOCK            74
+ #define EXIT_REASON_NOTIFY              75
++#define EXIT_REASON_SEAMCALL            76
++#define EXIT_REASON_TDCALL              77
+ /* Remember to also update VMX_PERF_EXIT_REASON_SIZE! */
+ 
+ /*
+diff --git a/xen/arch/x86/include/asm/perfc_defn.h b/xen/arch/x86/include/asm/perfc_defn.h
+index ac7439b992..102b9be6ef 100644
+--- a/xen/arch/x86/include/asm/perfc_defn.h
++++ b/xen/arch/x86/include/asm/perfc_defn.h
+@@ -6,7 +6,7 @@ PERFCOUNTER_ARRAY(exceptions,           "exceptions", 32)
+ 
+ #ifdef CONFIG_HVM
+ 
+-#define VMX_PERF_EXIT_REASON_SIZE 76
++#define VMX_PERF_EXIT_REASON_SIZE 78
+ #define VMEXIT_NPF_PERFC 166
+ #define SVM_PERF_EXIT_REASON_SIZE (VMEXIT_NPF_PERFC + 1)
+ PERFCOUNTER_ARRAY(vmexits,              "vmexits",
