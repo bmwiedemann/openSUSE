@@ -17,7 +17,7 @@
 
 
 Name:           gap-ibnp
-Version:        0.18
+Version:        0.19
 Release:        0
 Summary:        GAP: Involutive Bases for Noncommutative Polynomials
 License:        GPL-3.0-or-later
@@ -27,7 +27,7 @@ URL:            https://gap-packages.github.io/ibnp/
 Source:         https://github.com/gap-packages/ibnp/releases/download/v%version/IBNP-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.13
+Requires:       gap-core >= 4.14
 Requires:       gap-gapdoc >= 1.6.1
 Requires:       gap-gbnp >= 1.1.0
 Requires:       gap-utils >= 0.81
