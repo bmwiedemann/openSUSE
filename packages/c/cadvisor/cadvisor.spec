@@ -21,7 +21,7 @@
 Name:           cadvisor
 Version:        0.60.6
 Release:        0
-Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
+Summary:        Analyzes resource usage and performance characteristics of running containers
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/google/cadvisor

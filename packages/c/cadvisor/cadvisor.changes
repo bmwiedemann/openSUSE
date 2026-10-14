@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 14 10:25:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to address:
+  bsc#1285500, cadvisor: golang.org/x/net/http2: excessive CPU
+  consumption from repeated initial window changes
+- fix summary
+
+-------------------------------------------------------------------
 Fri Oct  2 14:23:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.60.6:
