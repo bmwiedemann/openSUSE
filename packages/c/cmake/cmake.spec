@@ -51,7 +51,7 @@
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        4.4.3
+Version:        4.4.4
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -70,7 +70,7 @@ Patch1:         feature-suse-python-interp-search-order.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  rhash-devel
+BuildRequires:  rhash-devel >= 1.4
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(liblzma)
