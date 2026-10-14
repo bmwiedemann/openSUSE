@@ -17,7 +17,7 @@
 
 
 Name:           lefthook
-Version:        2.2.0
+Version:        2.2.2
 Release:        0
 Summary:        Fast and powerful Git hooks manager
 License:        Apache-2.0

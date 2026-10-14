@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:47:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.2:
+  * fix: cleanup only current stash hash (#1597)
+  * refactor(filter): simplify mimetype matching (#1596)
+  * packaging: add support for android (#1591)
+
+-------------------------------------------------------------------
+Fri Oct 09 05:05:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.1:
+  * feat: support php composer (#1583)
+  * fix: generate different patch names when in a worktree (#1582)
+  * refactor: cache paths in wrapper (#1570)
+
+-------------------------------------------------------------------
 Thu Oct 08 05:14:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.0:

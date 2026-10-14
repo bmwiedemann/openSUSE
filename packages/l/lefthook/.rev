@@ -7,4 +7,12 @@
     <comment>new package lefthook: Fast and powerful Git hooks manager for any type of projects</comment>
     <requestid>1383168</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>25d48da8443405aa922fa597677ff174</srcmd5>
+    <version>2.2.2</version>
+    <time>1791995992</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.2.2</comment>
+    <requestid>1384714</requestid>
+  </revision>
 </revisionlist>
