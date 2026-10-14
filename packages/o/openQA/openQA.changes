@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 14 10:31:51 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1791966007.170875a4:
+  * fix(manpages): Remove encoding workaround
+  * chore(deps): bump helm/kind-action (#7943)
+  * chore(deps-dev): bump @humanfs/node from 0.16.7 to 0.16.8
+  * chore(deps): Dependency cron 2026-10-13
+  * feat: allow custom developer mode connection hint per worker
+  * ci(mergify): adjust expected checks after openQA-devel-test move
+  * feat(overview): Avoid redirect when doing special job restarts
+  * feat: highlight deleted primary match needles in webUI
+
+-------------------------------------------------------------------
+Mon Oct 12 17:54:25 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1791822848.9b0ae67e:
+  * feat(ui): Fix filter hydration and add clear filter button
+  * feat: Add RSS feed for job groups
+
+-------------------------------------------------------------------
 Mon Oct 12 07:41:51 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1791790842.db5f7862:
