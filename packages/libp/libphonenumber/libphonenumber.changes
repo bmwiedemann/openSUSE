@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 12 19:28:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.0.41:
+  * Updated phone metadata for region code(s): CN, IR, NG, US
+  * Updated short number metadata for region code(s): CN
+  * Updated carrier data for country calling code(s):
+    27 (en), 30 (en), 60 (en), 98 (en, fa), 234 (en), 852 (en, zh,
+    zh_Hant)
+  * Updated / refreshed time zone meta data
+
+-------------------------------------------------------------------
 Thu Sep 24 18:59:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.0.40:
