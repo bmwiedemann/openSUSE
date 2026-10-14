@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:44:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.71:
+  * General
+    - [Docs] Reference Sistent DESIGN.md in AGENTS.md UI guidelines
+      (#21987)
+    - [Server] Remove the NGINX Service Mesh adapter (#22012)
+    - [Install] Remove the NGINX Service Mesh adapter (#22135)
+    - docs: update Yash Sharma's affiliation to UiPath in Community
+      Maintainers (#22239)
+    - Update Yash Sharma's affiliation to UiPath (#22237)
+    - [Server] Return on GetK8sContext error to prevent event
+      clobbering in DeleteContext (#22169)
+    - [Server] Fix SeedKeys Done-race dropping last key, buffered
+      errors, and panicking-save leak (#22127)
+    - test(server): assert SaveEnvironment refuses the same request
+      with 403 when the provider denies it (#22120)
+    - Add Shiekh Mohammad to MAINTAINERS list (#21989)
+    - Add additional projects for Yi Nuo in MAINTAINERS.md (#21990)
+  * Meshery CLI
+    - [mesheryctl] Fix inverted ErrUnmarshal error call on
+      json.Marshal failure in workspace and environment create
+      (#22269)
+    - [Chore] Remove leftover meshery-osm references (#22163)
+    - [mesheryctl] Align model generate E2E tests with current
+      implementation (#21995)
+    - Refactor clipboard logic and improve tooltip behavior
+      (#21575)
+    - [mesheryctl] Check HTTP status code before unmarshaling
+      GitHub API response in platform.go (#21678)
+    - [Docs] Migrate related reading sections to upstream module
+      (#21759)
+  * Maintenance
+    - docs: align security reporting contact (#22048)
+    - [mesheryctl] Align model generate E2E tests with current
+      implementation (#21995)
+    - Refactor clipboard logic and improve tooltip behavior
+      (#21575)
+    - [CI] Fix PR welcome message not firing due to incorrect event
+      condition (#21979)
+  * Documentation
+    - [Docs] Add UI contributing guide for the extension contract
+      and event bus (#20953)
+    - [Chore] Remove leftover meshery-osm references (#22163)
+    - [Docs] Remove the NGINX Service Mesh adapter documentation
+      (#22124)
+    - fix(server): keep the deep-link query on the post-login
+      redirect (#22157)
+    - [Docs] Fix broken relative links to server and testing guides
+      in UI contributing doc (#22058)
+    - [Server] Report missing keys register column instead of
+      seeding zero keys silently (#22128)
+    - fix(server): keep a SeedKeys goroutine panic from terminating
+      the server at boot (#22121)
+    - [Docs] Remove obsolete Jekyll '_includes/mesheryctl'
+      reference from CLI guide (#22088)
+    - [Docs] Fix invalid --components flag syntax and typos in
+      system command guide (#22057)
+    - [Docs] Fix invalid --adapter flag syntax and hardcoded path
+      in runnin… (#22026)
+    - [Docs] Fix broken mobile responsiveness CSS selector and
+      parameter naming in 'extension-guide' shortcode (#22030)
+    - [Docs] Update CLI command categories in
+      working-with-mesheryctl.md (#21992)
+    - Refactor clipboard logic and improve tooltip behavior
+      (#21575)
+    - docs: add troubleshooting note for REST API auth failures
+      (#21912) (#21928)
+    - [mesheryctl] Check HTTP status code before unmarshaling
+      GitHub API response in platform.go (#21678)
+    - [Docs] Migrate related reading sections to upstream module
+      (#21759)
+  * Security
+    - Updates to security-insights.yml based on new schema (#22270)
+
+-------------------------------------------------------------------
 Sun Sep 20 08:08:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.70:
