@@ -19,4 +19,17 @@
   * Added filter for selecting online images (#24)</comment>
     <requestid>1383089</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>906a9035c7f3f2b67032a8c3cf94747d</srcmd5>
+    <version>1.2.0+git20261013.6276d8c</version>
+    <time>1791995707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0+git20261013.6276d8c:
+  * Release version 1.2.0
+  * Remove outdated todo list
+  * Add &quot;Settings&quot; menu in order to set keymap, image download server and ssh key handling. (#25)
+  * exec_cmd: fix waitpid error handling
+  * Remove home:kukuk:mkosi-images key from development</comment>
+    <requestid>1384656</requestid>
+  </revision>
 </revisionlist>
