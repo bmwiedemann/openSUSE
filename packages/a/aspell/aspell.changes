@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 15:10:09 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-103658: Arbitrary code execution via crafted dictionary file [bsc#1285066]
+  * aspell-CVE-2026-103658.patch
+
+-------------------------------------------------------------------
 Wed Oct  7 16:31:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - drop aspell-strict-aliasing.patch (the iterator must remain

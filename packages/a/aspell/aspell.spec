@@ -20,7 +20,7 @@ Name:           aspell
 Version:        0.60.8.2
 Release:        0
 Summary:        A Spell Checker
-License:        BSD-Mark-Modifications AND GFDL-1.1-or-later AND LGPL-2.1-only AND HPND
+License:        GFDL-1.1-or-later AND SUSE-BSD-Mark-Modifications AND LGPL-2.1-only AND HPND
 Group:          Productivity/Text/Spell
 URL:            http://aspell.net/
 Source0:        https://ftp.gnu.org/gnu/aspell/%{name}-%{version}.tar.gz
@@ -35,6 +35,8 @@ Patch2:         aspell-CVE-2026-75818.patch
 Patch3:         aspell-CVE-2026-75820.patch
 # CVE-2026-75819: out-of-bounds read in `ReadOnlyDict::load()` of `readonly_ws.cpp` can lead to heap memory disclosure or application crash [bsc#1284338]
 Patch4:         aspell-CVE-2026-75819.patch
+# CVE-2026-103658: Arbitrary code execution via crafted dictionary file [bsc#1285066]
+Patch5:         aspell-CVE-2026-103658.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

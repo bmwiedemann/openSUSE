@@ -384,4 +384,12 @@
   causes an infinte loop) (forwarded request 1383091 from dirkmueller)</comment>
     <requestid>1383235</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>fcb1a7692fdbd35a11ffa116a12df964</srcmd5>
+    <version>0.60.8.2</version>
+    <time>1791995658</time>
+    <user>dimstar_suse</user>
+    <comment>[bsc#1285066], CVE-2026-103658</comment>
+    <requestid>1384641</requestid>
+  </revision>
 </revisionlist>
