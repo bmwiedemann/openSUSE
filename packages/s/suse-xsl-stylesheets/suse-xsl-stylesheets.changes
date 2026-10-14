@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 13 07:35:07 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.96.0
+
+- Update to 2.96.0
+  * Raise SUSE header 1.16 -> 1.19 in #822
+  * Introduce new SUSE header variable handling in #823
+  * HTML: Fix release notes breadcrumb link in ui-modifiers.js by @KucharczykL in #824
+  * Tests: Make jing stack size increase effective by @KucharczykL in #825
+  * Adding scroll-padding to html in #826
+  * Add canonical-langs alternate links in #828
+
+-------------------------------------------------------------------
 Wed Sep 23 08:33:36 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.41
 
 - Update to 2.95.41
