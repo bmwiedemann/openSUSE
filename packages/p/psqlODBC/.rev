@@ -346,4 +346,41 @@
 - fix build for SLE-15 by forcing gcc 14</comment>
     <requestid>1339407</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>72432a2042548c69ca88a953f2e788db</srcmd5>
+    <version>18.00.0005</version>
+    <time>1791995724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.00.0005:
+  * https://odbc.postgresql.org/docs/release.html
+  * Fix heap memory corruption when an application binds more than
+    32767 parameters on a single statement. SQLBindParameter now
+    rejects parameter numbers outside 1..32767 with SQLSTATE 07009
+    (CVE-2026-109448, bsc#1285073).
+  * Fix the placeholder cast being truncated from parameter 1000
+    on, which failed with 'type &quot;timestam&quot; does not exist'.
+  * Report the largest column size instead of SQL_NO_TOTAL (-4) as
+    COLUMN_SIZE for bytea in SQLGetTypeInfo, which broke bytea
+    parameters through MSDASQL.
+- Changes in 18.00.0004:
+  * Fix the result-conversions regression test on big-endian
+    systems.
+- Changes in 18.00.0003:
+  * Report SQLSTATE 22003 for out-of-range integer conversions
+    instead of silently returning the wrapped low bits.
+  * Fix statement level rollback (Protocol=7.4-2) discarding the
+    whole transaction on a syntax error.
+  * Do not wrap internal queries in a savepoint at
+    rollback-on-error level 0 (Protocol=7.4-0), which lost
+    transactions on servers without SAVEPOINT support.
+  * Redact the database password (ODBC PWD and libpq pqopt
+    password) in debug logs.
+  * Fix hang on COPY ... FROM STDIN / TO STDOUT: report it as
+    unsupported and keep the connection usable.
+  * Fix 'infinity'/'-infinity' dates being silently returned as
+    today's date.
+  * Document the connection string escaping rules.
+- Changes in 18.00.0002:</comment>
+    <requestid>1384660</requestid>
+  </revision>
 </revisionlist>

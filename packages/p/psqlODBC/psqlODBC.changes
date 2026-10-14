@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Oct 13 14:07:04 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to 18.00.0005:
+  * https://odbc.postgresql.org/docs/release.html
+  * Fix heap memory corruption when an application binds more than
+    32767 parameters on a single statement. SQLBindParameter now
+    rejects parameter numbers outside 1..32767 with SQLSTATE 07009
+    (CVE-2026-109448, bsc#1285073).
+  * Fix the placeholder cast being truncated from parameter 1000
+    on, which failed with 'type "timestam" does not exist'.
+  * Report the largest column size instead of SQL_NO_TOTAL (-4) as
+    COLUMN_SIZE for bytea in SQLGetTypeInfo, which broke bytea
+    parameters through MSDASQL.
+- Changes in 18.00.0004:
+  * Fix the result-conversions regression test on big-endian
+    systems.
+- Changes in 18.00.0003:
+  * Report SQLSTATE 22003 for out-of-range integer conversions
+    instead of silently returning the wrapped low bits.
+  * Fix statement level rollback (Protocol=7.4-2) discarding the
+    whole transaction on a syntax error.
+  * Do not wrap internal queries in a savepoint at
+    rollback-on-error level 0 (Protocol=7.4-0), which lost
+    transactions on servers without SAVEPOINT support.
+  * Redact the database password (ODBC PWD and libpq pqopt
+    password) in debug logs.
+  * Fix hang on COPY ... FROM STDIN / TO STDOUT: report it as
+    unsupported and keep the connection usable.
+  * Fix 'infinity'/'-infinity' dates being silently returned as
+    today's date.
+  * Document the connection string escaping rules.
+- Changes in 18.00.0002:
+  * Use a signed type for the error status.
+  * Redact sensitive connection parameters in the driver logs.
+  * Fix double free / heap corruption during SQLDisconnect
+    cleanup.
+  * Clear PGresults from per-query rollback.
+  * Validate UTF-16 surrogate pairs before combining them.
+  * Pass SQLSetDescRec field values correctly.
+  * Avoid reading before leading string literals.
+  * Detach freed application descriptors from statements.
+  * Reject invalid SQLPutData lengths.
+  * Reject overlong cursor names.
+  * Fix version reporting.
+  * Handle ARD bookmark allocation failure.
+  * Validate percent escapes before decoding connection string
+    values.
+  * Avoid reading past the end of conn_settings.
+  * Fix stack buffer overflow in getPrecisionPart().
+  * Fix SQLPrimaryKeys to exclude INCLUDE columns from the result.
+- Changes in 18.00.0000, 18.00.0001 and 17.00.0010:
+  * No code changes from 17.00.0009.
+- Changes in 17.00.0009:
+  * Fix the test suite for PostgreSQL 19, where
+    standard_conforming_strings is always on.
+  * Upgrade the GitHub Actions workflow: use prebuilt PostgreSQL
+    binaries, parallel matrix builds and a separate release job.
+
+-------------------------------------------------------------------
 Mon Mar 16 14:50:27 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Update to 17.00.0008:
