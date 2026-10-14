@@ -92,6 +92,7 @@ cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} ./
 %cmake \
   -DCMAKE_INSTALL_INCLUDEDIR=include/cfitsio \
   -DUSE_BZIP2=ON \
+  -DUSE_PTHREADS=ON \
   -DTESTS=ON \
   -DUTILS=ON \
 %ifarch x86_64
