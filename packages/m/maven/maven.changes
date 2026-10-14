@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 19:34:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Require maven-parent >= 50 in order to interpolate correctly the
+  versions of default plugins for different lifecycles
+
+-------------------------------------------------------------------
 Thu Oct  1 11:14:21 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 3.10.0

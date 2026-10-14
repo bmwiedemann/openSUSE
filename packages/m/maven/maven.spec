@@ -97,7 +97,7 @@ BuildRequires:  unix2dos
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  xmvn-subst
-BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
+BuildRequires:  mvn(org.apache.maven:maven-parent:pom:) >= 50
 Requires:       %{name}-lib = %{version}-%{release}
 Requires(post): aaa_base
 Requires(postun): aaa_base
