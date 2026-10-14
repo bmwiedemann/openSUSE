@@ -1,0 +1,37 @@
+From 0d2867dfe6f8b5118cae4f749e669df50bc32c78 Mon Sep 17 00:00:00 2001
+From: stiermid <stiermid@users.noreply.github.com>
+Date: Mon, 21 Sep 2026 12:43:28 +0400
+Subject: [PATCH 1/2] Support building with flit_core v4
+
+Fixes #2956.
+
+PEP 621 requires the plural 'authors' key; flit_core v3
+tolerated the singular 'author' but v4 validates strictly and
+raises ConfigError. Widen the build-system pin from <4 to <5
+per the flit v4 changelog guidance for [project]-table users.
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 9cf9b4ad1..3990dc184 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -4,7 +4,7 @@ version = "2.2.1"
+ description = "Simple and extensible admin interface framework for Flask"
+ readme = "README.md"
+ license = { file = "LICENSE.txt" }
+-author = [{ name = "Flask-Admin team" }]
++authors = [{ name = "Flask-Admin team" }]
+ maintainers = [{ name = "Pallets Ecosystem", email = "contact@palletsprojects.com" }]
+ classifiers = [
+     'Development Status :: 5 - Production/Stable',
+@@ -129,7 +129,7 @@ Source = "https://github.com/pallets-eco/flask-admin/"
+ Chat = "https://discord.gg/pallets"
+ 
+ [build-system]
+-requires = ["flit_core<4"]
++requires = ["flit_core<5"]
+ build-backend = "flit_core.buildapi"
+ 
+ [tool.flit.module]

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 01:53:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-flit-core-4.patch:
+  * Support building with flit-core 4.
+
+-------------------------------------------------------------------
 Fri Jun 19 05:40:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.2.0:

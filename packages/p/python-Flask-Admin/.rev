@@ -240,4 +240,13 @@
     reverse proxies)</comment>
     <requestid>1360444</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6e7442d1dcd1c0ae1366e4044a438dfb</srcmd5>
+    <version>2.2.0</version>
+    <time>1791995747</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-flit-core-4.patch:
+  * Support building with flit-core 4.</comment>
+    <requestid>1384695</requestid>
+  </revision>
 </revisionlist>

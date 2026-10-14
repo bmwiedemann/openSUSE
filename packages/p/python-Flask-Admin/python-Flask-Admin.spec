@@ -24,6 +24,8 @@ Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/flask-admin/flask-admin/
 Source:         https://files.pythonhosted.org/packages/source/f/flask_admin/flask_admin-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM One commit of gh#pallets-eco/flask-admin#2957
+Patch0:         support-flit-core-4.patch
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 # Test requirements
