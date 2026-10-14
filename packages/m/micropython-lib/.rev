@@ -105,4 +105,87 @@
     <comment></comment>
     <requestid>1349591</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f2e2866c0080f98d4ac845fc335ebfd3</srcmd5>
+    <version>1.29.0</version>
+    <time>1791996466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.29.0
+  * aiorepl: Optimize sys.stdout.write calls.
+  * aiorepl: Fix Enter key handling in raw terminal mode.
+  * uaiohttpclient: Add basic test for uaiohttpclient.request.
+  * uaiohttpclient: Use &quot;utf8&quot; encoding instead of &quot;latin-1&quot;.
+  * requests: Reuse lowerl for Content-Length matching.
+  * requests: Match response header names case-insensitively.
+  * requests: Document chunked response support.
+  * requests: Test chunked response decoding.
+  * requests: Add chunked response body support.
+  * requests: Add tests for query and anchor in URL.
+  * requests: Add support for query and anchor chars directly after domain.
+  * requests: Support unicode in json and data payloads.
+  * requests: Add support for relative redirect URLs.
+  * requests: Switch to HTTP/1.1 with Content-Length and raw streaming.
+  * requests: Add context manager for response object.
+  * aiohttp: Match response header names case-insensitively.
+  * aioble/security: Only schedule save when needed.
+  * usb/examples: Put timeout=0 in CDCInterface constructor.
+  * usb-device-cdc: Optimise CDCInterface constructor.
+  * usb-device-cdc: Fix default timeout in CDCInterface.init().
+  * tools/ci.sh: Add umqtt.simple mock test to package tests CI.
+  * tools/ci.sh: Add pprint test to CI.
+  * tools/ci.sh: Allow CI tests to run locally.
+  * tools/ci.sh: Use $TMPDIR for temporary storage.
+  * umqtt.simple: Avoid None comparisons in _send_subunsub.
+  * umqtt.simple: Share Remaining Length VBI encoding.
+  * umqtt.simple: Share subscribe/unsubscribe packet encoding.
+  * umqtt.simple: Encode subscribe Remaining Length as VBI.
+  * umqtt.simple: Add call to main() at end of example scripts.
+  * umqtt.simple: Close any old socket on connect.
+  * umqtt.simple: Add example for mqtt tls.
+  * uuid: Make UUID.__repr__ match CPython.
+  * uuid: Add UUID.bytes attribute.
+  * uuid: Use bytes.hex instead of binascii.hexlify.
+  * uuid: Convert test to use unittest.
+  * uuid: Provide UUID class and uuid4() implementation using os.urandom().
+  * colorsys: Add colorsys and test_colorsys from CPython.
+  * ntptime: Use NTPv4.
+  * pprint: Bump version to 0.1.0.
+  * pprint: Fix use of micropython.const.
+  * pprint: Add test_pprint.py.
+  * pprint: Implement depth recursion.
+  * pprint: Refactor implementation and add PrettyPrint class.
+  * pprint: Add simple and partial implementation for depth of 1.
+  * CONTRIBUTING: Clarify some constraints for PR submission.
+  * CONTRIBUTING: Remove references to `black`.
+  * usb-device-keyboard: Add a simpler keyboard example, document releasing.
+  * os: Provide namedtuple response for os.stat().
+  * unittest: Bump minor version due to recent optimisations.
+  * unittest: Optimise to only create a single nop lambda.
+  * unittest: Optimise skipUnless in terms of skipIf.
+  * unittest: Optimise by only formatting msg if needed.
+  * unittest: Optimise calling of _handle_test_exception.
+  * unittest: Optimise by removing support for CPython.
+  * unittest: Optimise by reusing AssertRaisesContext for assertWarns.
+  * unittest: Remove f-strings.
+  * ssd1306: Add I2C protocol example for SSD1306 display.
+  * umqtt.robust: Ease document readability.
+  * umqtt.robust: Document and add examples overriding the connect() method.
+  * umqtt.robust: Let reconnect() call the connect() method of parent class.
+  * pathlib: Add Path.expanduser().
+  * pathlib: Fix glob/rglob to return Path objects rather than strings.
+  * operator: Add mul and some other operators.
+  * unix-ffi/signal: Add SIGALRM constant.
+  * unix-ffi/signal: Add alarm() and pause() functions.
+  * collections-defaultdict: Add items() function.
+  * copy: Provide top-level documentation.
+  * unix-ffi/ffilib: Extend libc versions range.
+  * PR template: Add PR template to micropython-lib.
+  * lora: Fix CRC error IRQ bit mask for sx126x.
+  * unix-ffi/json: Fix json.loads() of a bytes object.
+  * mip: Add an alias for codeberg repos.
+  * usb-device-core: Fix comment describing the signature of done_cb.
+  * usb-device-hid: Enable configuring the bInterval on hid devices.
+</comment>
+    <requestid>1384772</requestid>
+  </revision>
 </revisionlist>
