@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 12 17:55:38 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1791813843.3b85101:
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * style: fix perlcritic sigil and quote warnings
+
+-------------------------------------------------------------------
 Sat Oct 10 12:13:20 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1791634386.2b02af1:
