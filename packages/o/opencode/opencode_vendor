@@ -47,8 +47,11 @@ workspace_packages=(
 # Root files the build or the licence audit needs.
 # .github/TEAM_MEMBERS is not documentation: packages/script/src/index.ts
 # reads it at build time and fails without it.
+# script/native-arch.ts is the build script's own helper: packages/cli's
+# build.ts verifies the compiled binary's embedded arch images through it,
+# so a Source0 without it fails with "Cannot find module" (2.0.28).
 root_files=(package.json bunfig.toml bun.lock tsconfig.json LICENSE README.md
-            .github/TEAM_MEMBERS)
+            .github/TEAM_MEMBERS script/native-arch.ts)
 
 need() { command -v "$1" >/dev/null || { echo "$1 is required" >&2; exit 1; }; }
 need bun; need zstd; need curl; need tar

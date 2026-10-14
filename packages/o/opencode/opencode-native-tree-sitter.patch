@@ -12,12 +12,18 @@ objects through bun:ffi instead. TSNode is passed by value in the C API,
 which bun:ffi cannot receive, so opencode-tsshim.c walks the tree and hands
 over one JSON dump per parse; parser-native.ts turns that into the Node
 subset parse.ts reads. Placeholders @OPENCODE_LIBDIR@ and
-@TREE_SITTER_GRAMMARS@ are filled in by the spec. Distribution-specific,
+@TREE_SITTER_GRAMMARS@ are filled in by the spec. 2.0.28 added three more
+readers of the wasm bundle paths: tool/plugin/shell.ts picks the portable
+scanner when the bash module is missing, plugin/provider/local.ts drops the
+discovery origin, and scan() itself takes an optional wasm bundle defaulting
+to the import. Each probe is only ever true under workerd; the hunks below
+drop them, matching the upstream bun behaviour. Distribution-specific,
 not for upstream.
 
-diff -Naur a/packages/core/src/shell/parser-native.ts b/packages/core/src/shell/parser-native.ts
---- a/packages/core/src/shell/parser-native.ts	1970-01-01 01:00:00.000000000 +0100
-+++ b/packages/core/src/shell/parser-native.ts	2026-09-27 00:00:00.000000000 +0200
+Index: b/packages/core/src/shell/parser-native.ts
+===================================================================
+--- /dev/null
++++ b/packages/core/src/shell/parser-native.ts
 @@ -0,0 +1,95 @@
 +// Native tree-sitter for the shell tool: bun:ffi over the system libtree-sitter,
 +// with a C shim (opencode-tsshim.c) doing the tree walk because TSNode is
@@ -114,8 +120,8 @@ diff -Naur a/packages/core/src/shell/parser-native.ts b/packages/core/src/shell/
 +    shim.symbols.ocshim_parser_delete(this.p)
 +  }
 +}
-
-diff -Naur a/packages/core/src/shell/parse.ts b/packages/core/src/shell/parse.ts
+Index: b/packages/core/src/shell/parse.ts
+===================================================================
 --- a/packages/core/src/shell/parse.ts
 +++ b/packages/core/src/shell/parse.ts
 @@ -1,11 +1,9 @@
@@ -131,7 +137,22 @@ diff -Naur a/packages/core/src/shell/parse.ts b/packages/core/src/shell/parse.ts
  import { ShellSelect } from "./select.js"
  import { lazy } from "../util/lazy.js"
  import { Wildcard } from "../util/wildcard.js"
-@@ -350,24 +348,13 @@
+@@ -165,9 +163,12 @@ export const scan = Effect.fnUntraced(fu
+   command: string,
+   shell: string,
+   cwd: string,
+-  options?: { portable?: boolean; wasm?: typeof shellParserWasm },
++  // The distribution build has no wasm bundle (system libtree-sitter
++  // instead), so without an explicit override the native parsers below
++  // are used; an empty bundle, as workerd ships, still selects portable.
++  options?: { portable?: boolean; wasm?: { runtime: string; bash: string; powershell: string } },
+ ) {
+-  if (options?.portable || (options?.wasm ?? shellParserWasm).bash === "")
++  if (options?.portable || (options?.wasm && options.wasm.bash === ""))
+     return yield* scanPortable(command, shell, cwd)
+   return yield* scanLegacy(command, shell, cwd)
+ })
+@@ -380,24 +381,13 @@ function prefix(tokens: string[]) {
    return tokens.slice(0, 1)
  }
  
@@ -161,3 +182,56 @@ diff -Naur a/packages/core/src/shell/parse.ts b/packages/core/src/shell/parse.ts
 +  const ps = new NativeParser(loadLanguage("@TREE_SITTER_GRAMMARS@/libtree-sitter-powershell.so", "tree_sitter_powershell"))
    return { bash, ps }
  }
+Index: b/packages/core/src/plugin/provider/local.ts
+===================================================================
+--- a/packages/core/src/plugin/provider/local.ts
++++ b/packages/core/src/plugin/provider/local.ts
+@@ -2,7 +2,6 @@ import { define } from "@opencode/plugin
+ import type { Entry } from "@opencode/schema/config"
+ import { Duration, Effect, Option, Schedule, type Schema, Semaphore, Stream } from "effect"
+ import { HttpClient, HttpClientRequest, HttpClientResponse } from "effect/http"
+-import { shellParserWasm } from "#shell-parser-wasm"
+ import { Config } from "../../config.js"
+ import { Environment } from "../../environment/index.js"
+ import { EnvironmentUnavailable } from "../../environment/unavailable.js"
+@@ -43,10 +42,12 @@ export function createLocalProviderPlugi
+         const config = yield* Config.Service
+         const environment = yield* Effect.serviceOption(Environment.Service)
+         const location = yield* Effect.serviceOption(Location.Service)
++        // The wasm bundle this probed is gone in the distribution build
++        // (system libtree-sitter instead, see parser-native.ts); under bun
++        // it is always embedded upstream, hence always false here.
+         const defaultOrigin =
+           origin ??
+-          (shellParserWasm.bash === "" ||
+-          (Option.isSome(location) && location.value.workspaceID !== undefined) ||
++          ((Option.isSome(location) && location.value.workspaceID !== undefined) ||
+           (Option.isSome(environment) && environment.value.spawner === EnvironmentUnavailable.spawner)
+             ? undefined
+             : input.origin)
+Index: b/packages/core/src/tool/plugin/shell.ts
+===================================================================
+--- a/packages/core/src/tool/plugin/shell.ts
++++ b/packages/core/src/tool/plugin/shell.ts
+@@ -15,7 +15,6 @@ import { NonNegativeInt } from "../../sc
+ import { Session } from "../../session.js"
+ import { SessionSchema } from "../../session/schema.js"
+ import { Shell } from "../../shell.js"
+-import { shellParserWasm } from "#shell-parser-wasm"
+ import { ShellParse } from "../../shell/parse.js"
+ import { ShellSelect } from "../../shell/select.js"
+ import { ShellResult } from "../../shell/result.js"
+@@ -123,9 +122,12 @@ export const Plugin = {
+       const target = yield* access.resolve({ path: invocation.cwd, kind: "directory" })
+       invocation.cwd = target.absolute
+       const timeout = invocation.timeout
++      // The distribution build parses with the system libtree-sitter
++      // (see parser-native.ts), so the wasm bundle this probed is gone;
++      // under bun it is always embedded upstream, hence always false here.
+       const portable =
+         Config.latest(yield* config.entries(), "experimental")?.portable_shell_scanner ??
+-        (shellParserWasm.bash === "" || ctx.app.channel === "local" || ctx.app.channel === "dev")
++        (ctx.app.channel === "local" || ctx.app.channel === "dev")
+       const parsed = yield* ShellParse.scan(invocation.command, invocation.shell, target.absolute, { portable })
+       const directories = yield* Effect.forEach(parsed.directories, (directory) =>
+         access.resolve({

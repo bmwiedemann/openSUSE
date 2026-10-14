@@ -31,7 +31,7 @@
 # are required at exactly the version that tree was generated from; %%prep
 # checks the pins.
 %global fff_version 0.10.5
-%global bun_pty_version 0.4.9
+%global bun_pty_version 0.4.11
 %global photon_version 0.3.4
 # The tree-sitter grammars @opentui/core highlights with. The modules come
 # from the tree-sitter-<lang>-wasm packages at these versions (its own
@@ -56,19 +56,18 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        2.0.26
+Version:        2.0.28
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 2.0.26 from the declared license field
-# of all 363 unique packages in the vendor tarball (364 store entries, one of
+# Legal-Review-Notice: rederived for 2.0.28 from the declared license field
+# of all 354 unique packages in the vendor tarball (355 store entries, one of
 # which is the symlink farm and not a package). No copyleft of any kind. The
-# SPDX set is unchanged; this release gained nine MIT store entries (msgpackr
-# and its native extract pair, the @opentunnel client/protocol pair for
-# remote pairing, fast-check with pure-rand, node-gyp-build-optional-packages)
-# and one Apache-2.0 one (detect-libc). @opencode-ai/pty-linux-{arm64,x64}-gnu ship a
+# SPDX set is unchanged; this release drops eight MIT store entries (msgpackr
+# with its native extract trio, fast-check with pure-rand, mime,
+# node-gyp-build-optional-packages) and one Apache-2.0 one (detect-libc). @opencode-ai/pty-linux-{arm64,x64}-gnu ship a
 # prebuilt ELF bin/opencode-pty that ends up embedded in the payload rather
 # than loaded from a package like the rest of the native code; both are MIT
 # and both shipped that way at 2.0.23 too. See README.SUSE-maint "Native code".
@@ -204,10 +203,11 @@ BuildRequires:  tree-sitter-zig-wasm = %{ts_zig_version}
 BuildRequires:  zstd
 # The two native libraries are loaded from their packages at run time;
 # the floor is the tree's version, but newer binaries stay compatible:
-# bun-pty 0.4.11 exports exactly the 0.4.9 cdylib symbols the vendored
-# bun-pty 0.4.9 binds (close, get_exit_code, get_pid, kill, read, resize,
-# spawn, write; verified by export comparison), and every fff_* entry point
-# fff-bun 0.10.5 references resolves in fff 0.11.0's libfff_c.so.
+# the vendored bun-pty 0.4.11 binds exactly the eight cdylib symbols 0.4.9
+# bound (close, get_exit_code, get_pid, kill, read, resize, spawn, write;
+# verified by export comparison against 0.4.11's librust_pty.so), and
+# every fff_* entry point fff-bun 0.10.5 references resolves in fff
+# 0.11.0's libfff_c.so.
 Requires:       bun-pty >= %{bun_pty_version}
 Requires:       fff >= %{fff_version}
 # opencode spawns the git binary (packages/core/src/git.ts), so git-core is the

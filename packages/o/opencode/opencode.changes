@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct 13 17:16:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.28 (the 2.x line publishes no release objects, so
+  this is a summary of the v2.0.26..v2.0.28 tag-to-tag diff)
+  * Providers: GPT-6 Sol and Luna through Codex, Grok 4.7, Vertex
+    Mistral and AI Interactions routes, OpenAI ultrafast tier;
+    CLOUDSDK_CONFIG for Vertex ADC and a larger ChatGPT OAuth context
+  * Credentials are redacted in debug config; provider requests no
+    longer hit Bun's fetch idle timeout; Anthropic cache breakpoints
+    plus Copilot fallback routing fixes
+  * CLI: pair --remote asks before first exposing the server;
+    official WinGet packages; the updater handles unknown installs
+  * TUI: release highlights after updating, session execution errors
+    surfaced, C++ module highlighting, completion only at prompt start
+  * Core: worktree tools moved in, gone directories archived, mixed
+    line endings preserved in edits, plugin credential activation
+  * Many more fixes and improvements; the full list is upstream's
+    v2.0.26..v2.0.28 commit range, which publishes no release notes
+- Requires bun-pty >= 0.4.11 (was 0.4.9) to follow the vendor tree.
+  It stays a floor: 0.4.11 binds exactly the eight cdylib symbols
+  0.4.9 bound (verified by export comparison)
+- Ship script/native-arch.ts in Source0: 2.0.28's build script
+  verifies the binary's embedded arch images through it, and the
+  slimmed source dropped the whole root script/ directory
+- Rebase opencode-native-tree-sitter.patch: 2.0.28 routes two more
+  call sites and scan()'s wasm option through the deleted wasm
+  bundle; the new hunks drop those workerd-only probes
+- Regenerate the vendor tree: 355 of 2293 store entries kept (was
+  364 of 2539). effect moves to 4.0.1, OpenTunnel to 0.4.0 and
+  bun-pty to 0.4.11; msgpackr, fast-check and detect-libc leave
+- Legal review re-derived for the new tree: 354 packages, SPDX
+  licence set unchanged (eight MIT and one Apache-2.0 entries out,
+  no copyleft)
+
+-------------------------------------------------------------------
 Sun Oct 11 20:37:31 UTC 2026 - Robert Munteanu <rombert@apache.org>
 
 - Add opencode-mcp-elicitation-capability.patch 
