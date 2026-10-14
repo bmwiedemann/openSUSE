@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 14 08:01:39 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.6.1
+    - Fix a potential crash when using TalkBack on Android.
+    - Temporarily re-enable RSA signatures with PKCS#1 v1.5 in TLS.
+    - Fix a bug in the detection of beta releases for builds from
+      source tarballs.
+- Drop fix-version-info.patch, fixed upstream
+
+-------------------------------------------------------------------
 Fri Oct  9 08:20:45 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add fix-version-info.patch to fix incorrect version info

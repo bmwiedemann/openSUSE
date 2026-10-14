@@ -17,14 +17,13 @@
 
 
 Name:           AusweisApp
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Official authentication app for German ID cards and residence permits
 License:        EUPL-1.2
 Group:          Productivity/Security
 URL:            https://www.ausweisapp.bund.de
 Source0:        https://github.com/Governikus/AusweisApp2/archive/%{version}.tar.gz
-Patch0:         https://raw.githubusercontent.com/flathub/de.bund.ausweisapp.ausweisapp2/refs/heads/master/version.patch#/fix-version-info.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -64,7 +63,6 @@ reader or compatible NFC smart phone is required.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch -P0 -p1
 
 %build
 export CFLAGS="%{optflags} -fPIC"
