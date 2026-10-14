@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Oct 14 13:53:35 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.70.0:
+  Changes:
+    * libpulse and libddcutil are no longer used on Linux. Package
+      managers should remove them from their fastfetch package
+    * QuickJS format scripting has been removed (deprecated in v2.69.0)
+      Migrate scripts to Lua if necessary. (General)
+    * The Command module option useStdErr has been replaced with
+      useOutput, which selects which of the command's output streams
+      to capture: "stdout", "stderr" or "both"
+      - It defaults to "both", so a command that logs to stderr now
+        has that output captured instead of discarded
+      - Set it to "stdout" or "stderr" to restore the old single-stream
+        behavior. (Command)
+    * The Shell module now reports the shell from the password database
+      (/etc/passwd) instead of the $SHELL environment variable, which
+      may differ when the login shell was changed after the session
+      started. (Title)
+    * The Disk custom format no longer provides {size-available}.
+      {size-free} now reports whichever of the two the disk.useAvailable
+      option selects, and the raw byte counts are available as
+      {bytes-used} and {bytes-total}. (Disk)
+      - This also means {size-free} now changes with disk.useAvailable;
+        it used to always report the file system's free size
+    * The Disk JSON output no longer includes bytes.available and
+      bytes.used. (Disk)
+      - bytes.free and bytes.total are unchanged; the used size can be
+        derived as total - free
+  Features:
+    * Performance improvements & internal cleanups
+    * Added Finnish language support. (General)
+    * Added an ALSA fallback to Sound on Linux, so a machine that runs
+      no sound server reports its output device and volume instead of
+      an error. (Sound, Linux)
+  Bugfixes:
+    * Fixed --config/-c bash completion offering one candidate per word
+      instead of one candidate per file for paths containing spaces.
+      (Completion, Bash)
+    * Fixed external monitors detected via DDC/CI being randomly reported
+      as built-in on Linux. (gh#fastfetch-cli/fastfetch#2615)
+    * Fixed the Vulkan driver name being concatenated with the name of a
+      previously enumerated device on multi-GPU systems. (gh#fastfetch-cli/fastfetch#2619)
+    * Fixed the foot terminal font size not being parsed when written as
+      Font Name-size, e.g. Berkeley Mono-12. (gh#fastfetch-cli/fastfetch#2624)
+    * Fixed /boot being hidden by default on Haiku, where it is the system
+      volume. (Disk, Haiku)
+    * Improved Snapdragon X1/X2 model name detection on Linux.
+      (gh#fastfetch-cli/fastfetch#2625)
+    * Fixed assertion failure when percentage exceeds 100. (Percent)
+  Logos:
+    * Added filled Artix logo (gh#fastfetch-cli/fastfetch#2631)
+    * Renamed PostmarketOS to nura (gh#fastfetch-cli/fastfetch#2626)
+
+-------------------------------------------------------------------
 Sun Sep 27 13:23:59 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.69.0:
