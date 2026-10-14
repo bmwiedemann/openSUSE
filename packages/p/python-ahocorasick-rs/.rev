@@ -29,4 +29,13 @@
   * Guaranteed API stability, and Python 3.14 support.</comment>
     <requestid>1314615</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cf1bd9cf59dff3cffe8b719f48e07f28</srcmd5>
+    <version>1.0.3</version>
+    <time>1791995758</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch update-pyo3-to-0.29.patch:
+  * Update PyO3 to 0.29 and update vendoring.</comment>
+    <requestid>1384700</requestid>
+  </revision>
 </revisionlist>

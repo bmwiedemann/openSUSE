@@ -1,0 +1,59 @@
+From cf8ab76e7e0bb4fd7f11e28cf2ce9ef9a40db2bf Mon Sep 17 00:00:00 2001
+From: Itamar Turner-Trauring <itamar@pythonspeed.com>
+Date: Mon, 20 Oct 2025 10:16:36 -0400
+Subject: [PATCH 2/2] Fix deprecated API usage.
+
+---
+ src/lib.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lib.rs b/src/lib.rs
+index 389c233..5d6b9ac 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -145,7 +145,7 @@ impl PyAhoCorasick {
+         // Convert the `patterns` iterable into an Iterator over Py<PyString>:
+         let mut patterns_iter = patterns.try_iter()?.map_while(|pat| {
+             pat.and_then(|i| {
+-                i.downcast_into::<PyString>()
++                i.cast_into::<PyString>()
+                     .map_err(PyErr::from)
+                     .map(|i| i.unbind())
+             })
+From 9d552f4250aa08f4ae4655d33b96285d258c4903 Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Mon, 10 Aug 2026 12:23:07 +0000
+Subject: [PATCH] Bump pyo3 from 0.28.3 to 0.29.2
+
+Bumps [pyo3](https://github.com/pyo3/pyo3) from 0.28.3 to 0.29.2.
+- [Release notes](https://github.com/pyo3/pyo3/releases)
+- [Changelog](https://github.com/PyO3/pyo3/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/pyo3/pyo3/compare/v0.28.3...v0.29.2)
+
+---
+updated-dependencies:
+- dependency-name: pyo3
+  dependency-version: 0.29.2
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+---
+ Cargo.lock | 21 ++++++++++-----------
+ Cargo.toml |  2 +-
+ 2 files changed, 11 insertions(+), 12 deletions(-)
+
+Index: ahocorasick_rs-1.0.3/Cargo.toml
+===================================================================
+--- ahocorasick_rs-1.0.3.orig/Cargo.toml
++++ ahocorasick_rs-1.0.3/Cargo.toml
+@@ -17,7 +17,7 @@ crate-type = ["cdylib"]
+ [dependencies]
+ aho-corasick = "1"
+ itertools = "0.14.0"
+-pyo3 = { version = "0.26", features = ["py-clone"] }
++pyo3 = { version = "0.29", features = ["py-clone"] }
+ 
+ [features]
+ # The extension-module song and dance is explained here:

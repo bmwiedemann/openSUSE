@@ -1,7 +1,7 @@
 #
 # spec file for package python-ahocorasick-rs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        Apache-2.0
 URL:            https://github.com/G-Research/ahocorasick_rs
 Source:         https://files.pythonhosted.org/packages/source/a/ahocorasick_rs/ahocorasick_rs-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# PATCH-FIX-UPSTREAM Based on gh#G-Research/ahocorasick_rs#144 & gh#G-Research/ahocorasick_rs#182, update vendoring
+Patch0:         update-pyo3-to-0.29.patch
 BuildRequires:  %{python_module maturin >= 1.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging

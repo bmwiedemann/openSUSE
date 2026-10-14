@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 03:46:14 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch update-pyo3-to-0.29.patch:
+  * Update PyO3 to 0.29 and update vendoring.
+
+-------------------------------------------------------------------
 Thu Oct 30 23:58:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.3:
