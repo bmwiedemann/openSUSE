@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  7 13:40:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.37.0
+  * Submodule update -- S3 out of order write to file in parallel
+    by @TingDaoK in (#769)
+- from version 0.36.4
+  * submodule update by @TingDaoK in (#766)
+- from version 0.36.3
+  * S3 Retry Option Bindings by @sbSteveK in (#764)
+  * latest submodules by @sbSteveK in (#765)
+
+-------------------------------------------------------------------
 Thu Sep  3 06:19:13 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.36.2
