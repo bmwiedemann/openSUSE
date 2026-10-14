@@ -1,4 +1,226 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:43:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.9.0:
+  * fix: store posix object keys with Windows-invalid characters
+    under encoded names on Windows
+  * test: more skips removals, more rest/go error checking code
+    cleanup
+  * fix: reject an empty start-after and continuation-token in
+    ListObjects (V1)
+  * docs(netutil): correct the comment on handing sniffed bytes to
+    the handshake
+  * fix: answer plaintext HTTP sent to a TLS listener with a 400
+  * fix: set the CreateBucket location constraint from the S3
+    backend region
+  * fix: match S3 for conditional deletes of missing keys, delete
+    markers and versions
+  * fix: honor the per-object ETag and Size conditions in
+    DeleteObjects
+  * fix: return NextMarker in ListObjects only when a delimiter is
+    set
+  * fix: reject the start-after query in ListObjects (V1)
+  * fix: include the empty `TagKey` in `InvalidTag` errors and
+    match S3 tag validation
+  * fix: echo the full Authorization header in Unsupported
+    Authorization Type errors
+  * fix: unblock govulncheck and staticcheck CI after Go 1.27.2
+    release
+  * feat: add opt-in --fsync to flush new objects before
+    acknowledging them
+  * test: upload a non-empty part in the InvalidPart error fields
+    test
+  * fix: combine bucket policy with ACL so a policy no longer locks
+    the owner out
+  * fix: scope CompleteMultipartUpload retries to the completed
+    upload
+  * test: some skips removals, cleanup, possible log deletion fix
+  * rdma: drop the personal name from copyright notices
+  * rdma: drop Inc. from our copyright notices
+  * rdma: correct the license header on newly authored RC files
+  * fix: echo only the request continuation token in ListObjectsV2
+  * fix: report the upload, part and ETag in InvalidPart for a
+    malformed part ETag
+  * test: parallel logging improvements, teardown improvements,
+    README, env updates
+  * fix: enforce destination If-Match/If-None-Match on CopyObject
+  * fix: reject a ListBuckets bucket-region other than the gateway
+    region
+  * fix: validate and apply the ListBuckets bucket-region query
+  * test: use the upload's own key as key-marker in the truncation
+    test
+  * fix: compute IsTruncated from the absolute index in
+    ListMultipartUploads
+  * fix: reject ListMultipartUploads requests that also carry
+    uploadId
+  * fix: store bucket default retention on each object at write
+    time and support Object Lock fields in browser POST
+  * feat: validate SSE-C headers and reject SSE-C in posix and
+    azure
+  * fix: drop upload-id-marker without key-marker in
+    ListMultipartUploads
+  * fix: report the last upload in ListMultipartUploads next
+    markers on a single page
+  * fix: accept upload-id-marker together with key-marker in
+    ListMultipartUploads
+  * fix: return MalformedXML for a DeleteObjects request without
+    objects
+  * fix: return InvalidURI for a malformed escape in the request
+    path
+  * fix: reload standalone IAM and private-channel mTLS certs on
+    SIGHUP
+  * feat: expose POSIX I/O buffer size to scoutfs options
+  * fix: keep O_DIRECT active for object uploads and reads
+  * fix: stop object annotation, rename and torrent requests from
+    reaching plain object handlers
+  * feat: add helm chart hooks for SPIRE support
+  * fix: report the delete time as the last modified time of delete
+    markers in posix
+  * fix: keep the last modified time of promoted object versions in
+    posix
+  * fix: list only the objects not deleted in DeleteObjects quiet
+    mode
+  * fix: stop sidecar attributes leaking into new and promoted
+    object versions
+  * fix: prevent path traversal via multipart upload IDs and
+    DeleteObjects keys
+  * feat: add directio option for scoutfs backend
+  * fix: return InvalidAccessKeyId for unknown access keys in
+    single, Vault and IPA IAM
+  * fix: return AccessDenied for filesystem permission errors on
+    posix writes
+  * fix: require an integrity check for uploads with Object Lock
+    parameters and authorize every action of anonymous requests
+  * fix: update the example systemd configs with latest options
+  * fix: harden RC device initialization
+  * fix: allow vgwrdma explicit RC GID selection
+  * fix: return Marker when the request omits it
+  * cuobjclient: select GID index 0 on InfiniBand ports in the host
+    client
+  * rdma: address the RC peer by LID on InfiniBand link layers
+  * rdma: add --rc-device to pick the RC data plane's verbs device
+    by name
+  * rdma: dispatch poll_cq/post_send/post_recv through the object's
+    own context
+  * fix: snapshot the replaced object before storing metadata in
+    posix `CompleteMultipartUpload`
+  * fix: authorize multi-action requests per action across bucket
+    and identity policies
+  * fix: require `s3:PutObjectTagging` for tagged browser-based
+    `POST` object uploads
+  * fix: reject DeleteObjects requests with more than 1000 keys
+  * fix: place the null version by its recorded position in posix
+    versioning
+  * fix: authorize browser-based `POST` object uploads against the
+    object ARN
+  * fix: enforce object lock on browser-based `POST` object uploads
+  * fix: keep the object on DeleteObject with a versionId in a
+    never-versioned bucket
+  * fix: align signing region mismatch errors with s3 regional
+    endpoints
+  * fix: strip `aws-chunked` when the request declares no payload
+    type
+  * fix: match S3's `Content-Encoding` error details for
+    aws-chunked with `UNSIGNED-PAYLOAD`
+  * fix(s3api): strip `aws-chunked` only for streaming uploads
+  * fix: strip `aws-chunked` from stored `Content-Encoding`
+  * feat: add webui concurrent uploads with progress tracking
+  * fix: handle the null version id correctly in posix versioning
+  * fix: apply bucket CORS right before auth middleware
+  * fix: hide webui user management when server in single-user mode
+  * fix: remove legacy rdma header descriptors
+  * fix: use content-legnth for PutObject and UploadPart allocation
+    sizes
+  * fix: reject a PutObject whose body ends before Content-Length
+  * fix: return InvalidArgument for an empty website configuration
+  * fix: stop posix rewriting the current version on a copy to
+    itself
+  * fix: stop posix copying data from a delete marker
+  * fix: stop posix mixing up keys that differ only by a trailing
+    slash
+  * fix: stop posix publish lock serializing the same key across
+    buckets
+  * feat: add versioning support for directory objects in posix
+  * fix: clear stale delete-marker metadata on reupload
+  * feat: admin API path prefix, Helm WebUI prefixes and separate
+    IAM storage
+  * fix: treat root-level non-directory entries as non-existing
+    buckets in posix
+  * fix: omit ObjectLockConfiguration Rule when there is no default
+    retention
+  * fix: replace fixed sleep with readiness polling in azurite CI
+  * fix: staticcheck on cuObject stubs
+  * change cors check order ; test
+  * fix: add explicit RDMA build constraints
+  * test: location constraint exception fix
+  * Merge pull request #2389 from
+    dualfroz/fix-illegal-location-constraint
+  * feat: add utils command to convert preexisting posix datasets
+  * feat: add per-provider OIDC discovery URL override
+  * test: website redirect test, multipart upload util cleanup,
+    install updates
+  * fix: avoid nil-pointer panic in mtime
+  * webui: show upload progress in the Explorer
+  * test: mc hotfix
+  * fix: map azure `AuthorizationPermissionMismatch` to
+    `AccessDenied`
+  * fix: object verson mtime
+  * fix: make conditional publish lock modes explicit
+  * posix: add AbsolutePaths option for embedding without chdir
+  * fix: port the cuObjServer wrapper to libcuobjserver 2.0.0
+  * fix: reject empty `versionId` query parameter in object actions
+  * fix: track how the request body ended before closing the
+    connection
+  * fix: return `BucketAlreadyExists` for existing dirs without acl
+    meta attr
+  * fix: restore IPA KRA compatibility and fix JWK parse panic
+  * feat: add s3:if-match and s3:if-none-match policy condition
+    keys
+  * rdma: acquire session admission credit atomically
+  * rdma: gate session admission on audit publication backlog
+  * rdma: cap the session-less publication backlog
+  * rdma: keep sinks outside the publication lock and self-close
+    metrics
+  * rdma: synchronize publication acceptance with the drain
+    boundary
+  * rdma: never run operational sinks on callback threads
+  * rdma: size publications to session capacity and preserve
+    committed PUT facts
+  * rdma: track terminal events held off by an active reservation
+  * rdma: bound publication backpressure and close the reservation
+    window
+  * rdma: keep reaper callbacks off sink threads
+  * rdma: reserve session publication before completion calls
+  * rdma: make the teardown callback the single RC publication
+    owner
+  * rdma: harden RC outcome publication ownership and record
+    fidelity
+  * rdma: close publication gaps for RC pre-session failures
+  * rdma: publish RC transfer outcomes into the gateway operational
+    services
+  * rdma: add terminal notification callback to the RC server ABI
+  * fix: close connections with unread chunked bodies
+  * fix: deprecations in JWK and IPA RSA handling
+  * feat: add storage class to put object flows input
+  * fix: make ListMultipartUploads ordering deterministic and
+    stabilize test timing
+  * tests: build the integration SDK config without the host's AWS
+    setup
+  * s3api: report the bound addresses from the listen hook
+  * feat: add OIDC endpoint relaxations for private/isolated
+    networks
+  * rdma: expose live RC sessions on the admin server
+  * rdma: add a point-in-time session snapshot to the RC C ABI
+  * rdma: carry the session id in the reaped session record
+  * rdma: pin session strings passed to the RC cgo ABI
+  * rdma: resolve the inline-only verbs calls from the provider ops
+    table
+  * rdma: name the deviceless init failures in the RC server
+  * rdma: add a log callback ABI to the RC data plane
+  * rdma: expose the RC data plane resource limits as gateway flags
+  * rdma: install the gateway shutdown wrapper at function entry
+
+-------------------------------------------------------------------
 Sat Sep 19 05:52:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.0:

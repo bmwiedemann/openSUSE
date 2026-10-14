@@ -17,7 +17,7 @@
 
 
 Name:           versitygw
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        High-Performance S3 Translation Service
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source21:       system-user-%{name}.conf
 BuildRequires:  sysuser-tools
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 # shell completions
 BuildRequires:  bash-completion
 BuildRequires:  fish
