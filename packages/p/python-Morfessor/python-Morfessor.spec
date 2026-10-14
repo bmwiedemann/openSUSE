@@ -1,7 +1,7 @@
 #
 # spec file for package python-Morfessor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Unsupervised and semi-supervised morphological segmentation
 License:        BSD-2-Clause
 URL:            https://github.com/aalto-speech/morfessor
 Source:         https://files.pythonhosted.org/packages/source/M/Morfessor/Morfessor-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE We do not require ez_setup
+Patch0:         remove-ez-setup.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -38,7 +40,7 @@ Morfessor is a tool for unsupervised and semi-supervised
 morphological segmentation
 
 %prep
-%setup -q -n Morfessor-%{version}
+%autosetup -p1 -n Morfessor-%{version}
 sed -i -e '/^#!\//, 1d' morfessor/__init__.py
 
 %build

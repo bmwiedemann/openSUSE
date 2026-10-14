@@ -32,4 +32,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1275995</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>99e3ba490ed1d37b094094e8bf6271a7</srcmd5>
+    <version>2.0.6</version>
+    <time>1791995750</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-ez-setup.patch:
+  * We do not require ez_setup.py for bootstrapping.</comment>
+    <requestid>1384693</requestid>
+  </revision>
 </revisionlist>
