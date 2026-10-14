@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Tue Sep  1 08:56:40 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- generate_sbom:
+  * SPDX V3 support
+  * support unpacking of iso files
+- pbuild
+  * also read presets from the _manifest file
+  * support 'obsgit' preset entries
+  * Pass --dist/--configdir/--arch
+  * Support an empty _manifest file
+  * also get container annotations from OBS
+  * bugfixes and refactoring
+  * reuse old container binary data if it matches
+  * Do not use a bind mount for /dev/ptmx
+  * Fix auth for multiple remote registry assets
+- Docker: 
+  * strip --mount and --network from RUN lines
+  * add support for #!FilterBaseContainerPkgs
+  * use BUILD_BUILDTIME in the containerinfo if it is set
+- Kiwi: also support BUILD_BUILDTIME
+- Support the new --orphan-multi build mode
+
+-------------------------------------------------------------------
+Tue Jul 21 09:21:49 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Add diffutils dependency for cmp command
+- RemoteRepo: support more repotype aliases
+- Fix curl/wget option setting
+- Fold debtransformbz2/xz/zip/zstd into debtransformarchive
+- Refactor bininfo generation
+- Add support for DEB_BUILD_OPTIONS/PROFILES via prjconf
+- Improve default name generation for containers
+- Sync TW config 20260703 - No more py3.11
+- Add a --buildtime option to set the build time for reproducible builds
+- Pass BUILD_BUILDTIME to the vm
+- Do not process the creatarchive flag twice
+
+-------------------------------------------------------------------
+Tue Jun 23 11:29:43 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- pbuild:
+  * add --abort-on-fail option
+  * default vm type to podman/docker if kvm is not available
+- Nominate sccache UDS socket
+- Add zstd support for debtransform
+- busybox: Use 'cp -s' instead of 'ln -s' to create the package symlinks
+- various minor cleanups and documention updates
+- update tumbleweed.conf
+
+-------------------------------------------------------------------
+Thu Jun 11 09:26:29 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+#### Incompatible Change:
+- sbom generation returns error when failing now, instead of
+  empty sbom file.
+  => Either disable sbom generation of fix build environment
+
+#### Features
+- debian:
+  * fix obs-build packaging description and recommends
+  * Build: dispatch Build::Deb queries for .ddeb files
+  * Add support for comparing deb packages
+  * dsc: delete _scmsync.obsinfo from BUILD/
+- pbuild: 
+  * Allow YAML for the _pbuild file
+  * Enable autoflush for stdout
+  * support --define, --with, --without
+  * update man page
+  * rename --single-flavor to --buildflavor
+  * Support building in single package source using --orphan
+  * Use json/jsonl for the _reason and _jobhistory files
+  * Add PBuild::Util::appendstr
+  * pbuild: support generated build requires
+- Implement digest verification for git assets
+- Fix --ccache=type parsing and use mode 2
+- Also handle suggests/enhances in repoquery
+- runservice: allow also to run the default/service side services
+- build-vm:
+  * Set personality for cross builds using --vm-type=qemu as well
+  * also use cmdline.obs.guest
+  * Fixing --vm-type=podman support again
+- Download: Add support for the 'notmodifiedok' option
+- Mdkrepo: also parse supplements/enhances
+- Implement zyppers capability parse magic
+- container support
+  * Allow multiple consecutive FromScratch lines
+  * Allow to disable the container support installation
+- asset handling:
+  * Store the etag with the assets
+  * Implement a force_update method to enforce a re-fetch of a mutable asset
+  * Add a --update option for download_assets
+  * Implement --update-assets in pbuild
+  * Detect git repository also in upper directories
+    (project git without submodule)
+
+#### Other
+- various minor bugfixes
+- distribution configuration updates
+
+-------------------------------------------------------------------
 Tue May  5 11:47:16 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Support the quote rpm macro

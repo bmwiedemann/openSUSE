@@ -25,23 +25,27 @@
 %endif
 
 Name:           %{__pkg_name}
-Summary:        A Script to Build SUSE Linux RPMs
+Summary:        Build packages in a reproducible way
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20260505
+Version:        20260901
 Release:        0
+#!CreateArchive
+#!RemoteAsset: git+https://github.com/openSUSE/obs-build#%{version}
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 #!BuildIgnore:  build-mkbaselibs build-mkbaselibs-sle
+
 # Keep the following dependencies in sync with obs-worker package
 Requires:       bash
 Requires:       binutils
+Requires:       diffutils
 Requires:       findutils
 Requires:       perl
 Requires:       tar
-# needed for fuser
 Requires:       psmisc
+
 # just to verify existence of packages
 BuildRequires:  bash
 BuildRequires:  binutils
@@ -107,8 +111,9 @@ BuildRequires:  perl(POSIX)
 Requires:       perl(POSIX)
 
 %description
-This package provides a script for building RPMs for SUSE Linux in a
-chroot environment.
+This package provides tools to build binary packages in a safe and
+reproducible way.  The default is to build in a chroot sandbox, but
+building in a virtual machine is also supported for better security.
 
 
 %if 0%{?suse_version} > 1120 || ! 0%{?suse_version}

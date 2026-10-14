@@ -2123,4 +2123,41 @@ Changes:
 - s390x: recent kernels dropped 32bit support, personality handling fies</comment>
     <requestid>1350958</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>409dcf45a3f6d51b1656f12a1cd4b737</srcmd5>
+    <version>20260901</version>
+    <time>1791997095</time>
+    <user>dimstar_suse</user>
+    <comment>- generate_sbom:
+  * SPDX V3 support
+  * support unpacking of iso files
+- pbuild
+  * also read presets from the _manifest file
+  * support 'obsgit' preset entries
+  * Pass --dist/--configdir/--arch
+  * Support an empty _manifest file
+  * also get container annotations from OBS
+  * bugfixes and refactoring
+  * reuse old container binary data if it matches
+  * Do not use a bind mount for /dev/ptmx
+  * Fix auth for multiple remote registry assets
+- Docker: 
+  * strip --mount and --network from RUN lines
+  * add support for #!FilterBaseContainerPkgs
+  * use BUILD_BUILDTIME in the containerinfo if it is set
+- Kiwi: also support BUILD_BUILDTIME
+- Support the new --orphan-multi build mode
+
+- Add diffutils dependency for cmp command
+- RemoteRepo: support more repotype aliases
+- Fix curl/wget option setting
+- Fold debtransformbz2/xz/zip/zstd into debtransformarchive
+- Refactor bininfo generation
+- Add support for DEB_BUILD_OPTIONS/PROFILES via prjconf
+- Improve default name generation for containers
+- Sync TW config 20260703 - No more py3.11
+- Add a --buildtime option to set the build time for reproducible builds
+- Pass BUILD_BUILDTIME to the vm</comment>
+    <requestid>1384289</requestid>
+  </revision>
 </revisionlist>
