@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 13 12:22:23 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- CVE-2026-106454: allowing nested or otherwise expensive regular
+  expression constructs to cause catastrophic backtracking when
+  matched against mailbox names (bsc#1284420)
+  * added CVE-2026-106454.patch
+
+-------------------------------------------------------------------
 Tue Jun 16 09:10:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add pycryptography-use-csr.patch

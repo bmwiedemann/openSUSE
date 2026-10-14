@@ -48,6 +48,8 @@ Patch2:         no-cython_test_exception_raiser.patch
 Patch3:         remove-dependency-version-upper-bounds.patch
 # PATCH-FIX-UPSTREAM: https://github.com/twisted/twisted/pull/12661
 Patch4:         pycryptography-use-csr.patch
+# PATCH-FIX-UPSTREAM CVE-2026-106454.patch bsc#1284420 gh#twisted/twisted@f570190
+Patch5:         CVE-2026-106454.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
