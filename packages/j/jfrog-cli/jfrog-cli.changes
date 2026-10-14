@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:48:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.127.0:
+  * New Features
+    - [jfrog-cli-security] Add jf xr status command to show
+      artifact download-block status #902
+  * Bug Fixes
+    - [jfrog-cli-security] Fix regression after disable XSC scan
+      graph for all binary #913
+    - [jfrog-cli-security] XRAY-159943 - jf ca anonymous access for
+      Maven, Gradle, Cargo, Npm #914
+    - [jfrog-cli-security] CVE-2026-92892 - Potential command
+      execution on the host running JFrog CLI #918
+  * Other Changes
+    - [jfrog-cli] RTECO-0000 - Run CLI e2e against the latest
+      master commit #3727
+    - [jfrog-cli-security] Pass project to indexer #912
+
+-------------------------------------------------------------------
 Wed Oct  7 11:26:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - description typos
