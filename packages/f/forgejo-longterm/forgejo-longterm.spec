@@ -88,22 +88,22 @@ BuildArch:      noarch
 Conflicts:      forgejo-firewalld
 
 %description firewalld
-This package adds a firewalld service profile to %{name}
+This package adds a firewalld service profile to %{name}.
 
 %if %{with apparmor}
 %package apparmor
-Summary:        Apparmor profile for %{name}
+Summary:        AppArmor profile for %{name}
 BuildArch:      noarch
 Conflicts:      forgejo-apparmor
 Requires:       %{name} = %{version}-%{release}
 
 %description apparmor
-This package adds the Apparmor profile to %{name}
+This package adds the AppArmor profile to %{name}.
 %endif
 
 %if %{with selinux}
 %package selinux
-Summary:        Selinux support for %{name}
+Summary:        SELinux support for %{name}
 Conflicts:      forgejo-selinux
 BuildArch:      noarch
 Requires:       %{name} = %{version}-%{release}
