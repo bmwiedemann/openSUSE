@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 14 10:11:09 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.29.0
+  * validate the encoding argument to str.encode() and bytes.decode()
+  * modsocket: add "sendall" method to socket class
+  * unix_mphal: use TCSANOW for terminal mode switching
+  * coverage: use SIZE_FMT for size_t printf args
+  * README: update the supported targets list
+  * remove MICROPY_FORCE_32BIT flag usage
+  * migrate coverage variant to use c_module() in manifest
+  * don't generate debug info unless needed for final binary
+  * build DEBUG as -ggdb3
+- update to mbedtls 3.6.7 which includes a number of security
+  fixes, see https://github.com/Mbed-TLS/mbedtls/releases/tag/mbedtls-3.6.7
+- run these tests as they got fixed upstream:
+  * tests/float/float_parse.py
+  * tests/float/float_parse_doubleprec.py
+  * tests/thread/stress_schedule.py
+
+-------------------------------------------------------------------
 Thu Apr  9 20:23:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.28:

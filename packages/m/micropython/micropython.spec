@@ -17,37 +17,38 @@
 
 
 %define pythons python3
+# needed if upstream doesn't bundle mbedtls with recent security patches
+%define mbedtls_version 3.6.7
 %{?sle15_python_module_pythons}
-
 Name:           micropython
-Version:        1.28.0
+Version:        1.29.0
 Release:        0
 Summary:        Implementation of Python 3 with very low memory footprint
 License:        MIT
 URL:            https://micropython.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        prepare.sh
-Source2:        https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-3.6.6/mbedtls-3.6.6.tar.bz2#/mbedtls-3.6.6.tar.bz2
+Source2:        https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-%{mbedtls_version}/mbedtls-%{mbedtls_version}.tar.bz2#/mbedtls-%{mbedtls_version}.tar.bz2
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libffi)
-
 Recommends:     micropython-lib
 ExcludeArch:    %{ix86} %{arm} ppc64 ppc64le
 
 %package -n mpremote
 Summary:        MicroPython remote control
-BuildArch:      noarch
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module hatch-requirements-txt}
 BuildRequires:  %{python_module hatchling}
-Requires:       python3-pyserial >= 3.3
-BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python3-platformdirs
+Requires:       python3-pyserial >= 3.3
+BuildArch:      noarch
 
 %package -n mpy-tools
 Summary:        Tools for creating and handling precompiled .mpy files for MicroPython
@@ -68,16 +69,17 @@ Also mpy-tool for inspecting .mpy files.
 %prep
 %autosetup -p1 -a2
 
-sed -i -e "s:/usr/lib/micropython:%{_prefix}/lib/micropython:g" "ports/unix/main.c"
-
 %define make_flags V=1 MICROPY_PY_BTREE=0 MICROPY_PY_USSL=0
 
+# needed if upstream doesn't bundle mbedtls with recent security patches
 rm -rf lib/mbedtls
-mv mbedtls-3.6.6 lib/mbedtls
+mv mbedtls-%{mbedtls_version} lib/mbedtls
 
 %build
 # micropython
-export CFLAGS="%optflags -Wno-dangling-pointer"
+export CFLAGS="%{optflags} -Wno-dangling-pointer"
+pwd
+ls -l
 %make_build -C mpy-cross
 %make_build -C ports/unix STRIP=true
 pushd tools/mpremote
@@ -85,7 +87,7 @@ pushd tools/mpremote
 echo "VERSION = '%{version}'" > version.py
 sed -i -e 's/source = "vcs"/path = "version.py"/' pyproject.toml
 # remove useless shebang lines
-sed -i -e 's_#!/usr/bin/env python3__' mpremote/{__main__,transport,transport_serial}.py
+sed -i -e 's_#!%{_bindir}/env python3__' mpremote/{__main__,transport,transport_serial}.py
 %pyproject_wheel
 popd
 
@@ -105,19 +107,13 @@ popd
 # mpy-tools
 install -m755 -D -v mpy-cross/build/mpy-cross %{buildroot}%{_bindir}/mpy-cross
 install -m755 -D -v tools/mpy-tool.py %{buildroot}%{_bindir}/mpy-tool
-%python3_fix_shebang
+%{python3_fix_shebang}
 
 %check
 %ifnarch x86_64
-# 2 tests fail: float_parse float_parse_doubleprec
-# https://github.com/micropython/micropython/pull/6024
-rm -f tests/float/float_parse.py
-rm -f tests/float/float_parse_doubleprec.py
-# fails on single core systems
-[ "$(grep core.id /proc/cpuinfo | wc -l)" == 1 ] && rm -f tests/thread/stress_schedule.py
 %endif
-export MICROPY_CPYTHON3=python%python_version
-make -C ports/unix PYTHON=%{_bindir}/python%python_version V=1 test
+export MICROPY_CPYTHON3=python%{python_version}
+%make_build -C ports/unix PYTHON=%{_bindir}/python%{python_version} test
 
 %files
 %license LICENSE

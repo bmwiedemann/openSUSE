@@ -359,4 +359,28 @@
     <comment>- Update to 1.23.0 (bsc#1230676, CVE-2024-8947):</comment>
     <requestid>1351154</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2bff36066725e1e1924dcdd5e577d93b</srcmd5>
+    <version>1.29.0</version>
+    <time>1791996458</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.29.0
+  * validate the encoding argument to str.encode() and bytes.decode()
+  * modsocket: add &quot;sendall&quot; method to socket class
+  * unix_mphal: use TCSANOW for terminal mode switching
+  * coverage: use SIZE_FMT for size_t printf args
+  * README: update the supported targets list
+  * remove MICROPY_FORCE_32BIT flag usage
+  * migrate coverage variant to use c_module() in manifest
+  * don't generate debug info unless needed for final binary
+  * build DEBUG as -ggdb3
+- update to mbedtls 3.6.7 which includes a number of security
+  fixes, see https://github.com/Mbed-TLS/mbedtls/releases/tag/mbedtls-3.6.7
+- run these tests as they got fixed upstream:
+  * tests/float/float_parse.py
+  * tests/float/float_parse_doubleprec.py
+  * tests/thread/stress_schedule.py
+</comment>
+    <requestid>1384771</requestid>
+  </revision>
 </revisionlist>
