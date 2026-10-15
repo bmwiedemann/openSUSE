@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 12 18:08:51 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.6.0:
+  * Allow markdown style inline links
+  * Some parsing fixes
+  * Remove monospace font from tasks
+
+-------------------------------------------------------------------
 Fri Sep 12 17:51:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Init komodo

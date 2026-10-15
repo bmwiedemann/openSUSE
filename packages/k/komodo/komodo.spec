@@ -1,7 +1,7 @@
 #
 # spec file for package komodo
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           komodo
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Todo manager that uses todo.txt specification
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/komodo/
-Source0:        https://download.kde.org/stable/komodo/1.5.0/komodo-1.5.0.tar.xz
+Source0:        https://download.kde.org/stable/komodo/%{version}/komodo-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/komodo/1.5.0/komodo-1.5.0.tar.xz.sig
+Source1:        https://download.kde.org/stable/komodo/%{version}/komodo-%{version}.tar.xz.sig
 Source2:        komodo.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -90,6 +90,9 @@ Features
 %{_kf6_bindir}/komodo
 %{_kf6_debugdir}/komodo.categories
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.komodo.svg
+%{_kf6_libdir}/libkomodo_models.so
+%{_kf6_libdir}/libkomodo_ui.so
+%{_kf6_qmldir}/org/kde/komodo/
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/komodo
