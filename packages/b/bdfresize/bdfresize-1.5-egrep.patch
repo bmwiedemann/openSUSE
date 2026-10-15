@@ -1,0 +1,56 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Sat, 19 Sep 2026 14:39:37 +0200
+Subject: Fix build without egrep
+Upstream: don't know
+
+Fixes failures if egrep alias is removed
+
+Index: bdfresize-1.5/configure
+===================================================================
+--- bdfresize-1.5.orig/configure
++++ bdfresize-1.5/configure
+@@ -946,7 +946,7 @@ else
+   yes;
+ #endif
+ EOF
+-if { ac_try='${CC-cc} -E conftest.c'; { (eval echo configure:950: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }; } | egrep yes >/dev/null 2>&1; then
++if { ac_try='${CC-cc} -E conftest.c'; { (eval echo configure:950: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }; } | grep -E yes >/dev/null 2>&1; then
+   ac_cv_prog_gcc=yes
+ else
+   ac_cv_prog_gcc=no
+@@ -1203,7 +1203,7 @@ cat > conftest.$ac_ext <<EOF
+ #include <string.h>
+ EOF
+ if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
+-  egrep "memchr" >/dev/null 2>&1; then
++  grep -E "memchr" >/dev/null 2>&1; then
+   :
+ else
+   rm -rf conftest*
+@@ -1221,7 +1221,7 @@ cat > conftest.$ac_ext <<EOF
+ #include <stdlib.h>
+ EOF
+ if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
+-  egrep "free" >/dev/null 2>&1; then
++  grep -E "free" >/dev/null 2>&1; then
+   :
+ else
+   rm -rf conftest*
+@@ -1402,7 +1402,7 @@ else
+ #endif
+ EOF
+ if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
+-  egrep "(^|[^a-zA-Z_0-9])pid_t[^a-zA-Z_0-9]" >/dev/null 2>&1; then
++  grep -E "(^|[^a-zA-Z_0-9])pid_t[^a-zA-Z_0-9]" >/dev/null 2>&1; then
+   rm -rf conftest*
+   ac_cv_type_pid_t=yes
+ else
+@@ -1435,7 +1435,7 @@ else
+ #endif
+ EOF
+ if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
+-  egrep "(^|[^a-zA-Z_0-9])size_t[^a-zA-Z_0-9]" >/dev/null 2>&1; then
++  grep -E "(^|[^a-zA-Z_0-9])size_t[^a-zA-Z_0-9]" >/dev/null 2>&1; then
+   rm -rf conftest*
+   ac_cv_type_size_t=yes
+ else
