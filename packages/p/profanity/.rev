@@ -843,4 +843,41 @@
   * Add configurable docdir option for documentation (#2174)</comment>
     <requestid>1357932</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>38cde262f081bde220c5b4020596f67d</srcmd5>
+    <version>0.19.0</version>
+    <time>1792077211</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.0:
+  Features:
+  * Add `/mam verify` autocompleter (#2181)
+  * Add `/mucping` command (#2179)
+  * Add end of archive visual indicator (#2181)
+  * Add state management for activity aware selfpings (#2179)
+  * Add support for encrypted file sharing via HTTP upload (#2186, #2175)
+  * Deduplicate user mood notifications (#2189)
+  * Display correct timestamps on historical mentions and triggers (#2181)
+  * Distinguish between MAM and regular MUC message (#2181)
+  * Enable MAM by default
+  * Generalize mam and rsm functions to work on more window types (#2181)
+  * Implement XEP-0410 timer loop (#2179)
+  * Implement ondemand history loading (#2181)
+  * Implement pong handler and autorejoin recovery (#2179)
+  * Implement room-targeted MAM stanza creation (#2181)
+  * Make AES-256-GCM file encryption optional for OX sendfile (#2186)
+  * Print MAM and Silence setting in /prefs chat (#2179)
+  * Print message when voice is requested in MUC (#2216)
+  * Print mucping setting in /prefs conn (#2179)
+  * Strip all unicode bidi control characters in messages (#2217)
+  * Strip terminal control characters in incoming messages (#2217)
+  * Support XMPP URI 'join' query type in `/join` (#2190, #1782)
+  * Suppress duplicate history replay on room join (#2181)
+  * Track MAM support for MUCs (#2181)
+  * Trigger MAM queries on joined MUC rooms (#2181)
+  * Trigger automatic MAM catchup sync on reconnection (#2181)
+  * Update `/mam` command description (#2181)
+  * Update room activity on incoming messages and presence (#2179)
+  * Validate MUC selfping interval and timeout range (#2179)</comment>
+    <requestid>1385033</requestid>
+  </revision>
 </revisionlist>
