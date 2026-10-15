@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gssapi
-Version:        1.11.1
+Version:        1.12.0
 Release:        0
 Summary:        A Python interface to RFC 2743/2744 (plus common extensions)
 License:        ISC
 URL:            https://github.com/pythongssapi/python-gssapi
 Source:         https://files.pythonhosted.org/packages/source/g/gssapi/gssapi-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython >= 3.3.0}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module k5test}
