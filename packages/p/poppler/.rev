@@ -2408,4 +2408,12 @@ New upstream release</comment>
 - Add CVE refs</comment>
     <requestid>1381906</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>8ef41c6e40286ac9149cbbbc584588ba</srcmd5>
+    <version>26.10.0</version>
+    <time>1792081222</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1384830</requestid>
+  </revision>
 </revisionlist>
