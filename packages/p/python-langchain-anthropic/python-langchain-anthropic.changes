@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:53:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.6:
+  * Mid-conversation system-message handling follows the model
+    profile (langchain-core 1.6.10) instead of a hardcoded model
+    name list; warning text updated accordingly
+  * Require langchain-core >= 1.6.10 for the new profile fields
+
+-------------------------------------------------------------------
 Wed Sep 30 08:05:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.5:
