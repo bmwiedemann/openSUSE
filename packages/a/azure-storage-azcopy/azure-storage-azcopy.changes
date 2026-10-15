@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 15 09:03:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update golang.org/x/net to v0.61.0 (bsc#1285377, CVE-2026-78669)
+
+-------------------------------------------------------------------
 Wed Sep  9 06:10:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 10.32.8

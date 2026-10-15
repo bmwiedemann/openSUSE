@@ -184,4 +184,12 @@
     and add related tests (#3506) (forwarded request 1376533 from glaubitz)</comment>
     <requestid>1376902</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>64c8d7d51c1682beb521171da22346e0</srcmd5>
+    <version>10.32.8</version>
+    <time>1792081419</time>
+    <user>anag_factory</user>
+    <comment>- Update golang.org/x/net to v0.61.0 (bsc#1285377, CVE-2026-78669) (forwarded request 1384981 from glaubitz)</comment>
+    <requestid>1385043</requestid>
+  </revision>
 </revisionlist>

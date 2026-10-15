@@ -16,5 +16,6 @@
   </service>
   <service name="go_modules" mode="disabled">
     <param name="archive">azure-storage-azcopy-v10.32.8.tar.gz</param>
+    <param name="replace">golang.org/x/net=golang.org/x/net@v0.61.0</param>
   </service>
 </services>
