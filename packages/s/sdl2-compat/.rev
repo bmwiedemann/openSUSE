@@ -225,4 +225,12 @@ Binary file sdl2-compat-2.32.54.tar.gz.sig (revision 2) deleted</comment>
     <comment>- Update to release 2.32.74</comment>
     <requestid>1382239</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>0c8e54eb7d351ffd475db547129f165c</srcmd5>
+    <version>2.32.74</version>
+    <time>1792081211</time>
+    <user>anag_factory</user>
+    <comment>- Rewrite special SDL3 require to do without an architecture list [boo#1285523]</comment>
+    <requestid>1384785</requestid>
+  </revision>
 </revisionlist>

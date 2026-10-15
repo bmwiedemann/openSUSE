@@ -44,7 +44,7 @@ against SDL 2.0, but it uses SDL 3.0 behind the scenes.
 Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
 Group:          System/Libraries
 # There is a runtime check for an appropraite SDL3 base
-%ifarch %x86_64 %arm64 %loongarch64 %mips64 %power64 %sparc64 %riscv64
+%if "%_lib" == "lib64"
 Requires:       libSDL3.so.0()(64bit) >= 3.2.12
 %else
 Requires:       libSDL3.so.0 >= 3.2.12

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 12:10:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Rewrite special SDL3 require to do without an architecture
+  list [boo#1285523]
+
+-------------------------------------------------------------------
 Sat Oct  3 10:52:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.32.74
