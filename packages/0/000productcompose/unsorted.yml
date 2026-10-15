@@ -201,7 +201,6 @@ unsorted:
   - OpenCSD-devel 
   - OpenCSD-doc 
   - OpenColorIO-devel 
-  - OpenColorIO-doc 
   - OpenColorIO-tools 
   - OpenIPMI 
   - OpenIPMI-devel 
@@ -11530,7 +11529,7 @@ unsorted:
   - libOkteta3 
   - libOpenCL1 
   - libOpenCL1-32bit 
-  - libOpenColorIO2_5 
+  - libOpenColorIO2_6 
   - libOpenEXR-3_4-33-32bit 
   - libOpenEXRCore-3_4-33-32bit 
   - libOpenEXRUtil-3_4-33 
@@ -15745,7 +15744,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler164-32bit 
+  - libpoppler165-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -15780,6 +15779,7 @@ unsorted:
   - libprofanity0 
   - libprofiler0 
   - libproj25 
+  - libprojectM3 
   - libprometheus-cpp1_3 
   - libprotobuf-lite36_2_0-32bit 
   - libprotobuf-lite3_21_12 
@@ -20325,6 +20325,7 @@ unsorted:
   - nnn-zsh-completion 
   - no-more-secrets 
   - noctalia 
+  - noctalia-greeter 
   - noctalia-qs 
   - noctalia-shell 
   - nodejs-bitwarden-sdk-internal 
@@ -34022,6 +34023,7 @@ unsorted:
   - rtla 
   - rtla-rebuild 
   - rtlamr 
+  - rtlsdr-airband 
   - rtmidi-devel 
   - rtorrent 
   - rtr-tools 
