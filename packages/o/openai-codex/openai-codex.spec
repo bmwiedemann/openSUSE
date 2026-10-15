@@ -58,6 +58,15 @@ Summary:        OpenAI Codex coding agent for the terminal
 # 0.162.1 moves no crate at all - Cargo.lock is byte-identical to 0.162.0's
 # and the only source delta is first-party codex code (Apache-2.0) - so the
 # tag above is unchanged by that bump.
+# This re-vendor (no upstream bump) moves gix 0.81.0 -> 0.88.0 with its
+# lockstep gix-* siblings so the lock reaches the fixed gix-pack 0.75.0
+# (boo#1285151), plus knock-ons (fastrand, jiff, autocfg, memmap2,
+# faster-hex, quick-xml 0.41.0 alongside 0.39.4). Re-derived with the same
+# scope the set is unchanged: 760 third-party crates in the codex-cli
+# closure (759 tallied, aws-lc-sys itemised separately as before) -
+# Apache-2.0 526, MIT 181, Unicode-3.0 20, MPL-2.0 12, ISC 9,
+# BSD-3-Clause 9, Zlib 5, BSD-2-Clause 1, CC0-1.0 1,
+# CDLA-Permissive-2.0 1 - so the tag above is unchanged by this re-vendor.
 #  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate
 #    anywhere in the graph offering GPL. Apache-2.0 is elected, so this
 #    package carries no GPL obligation; please do not re-derive it as GPL.
@@ -101,6 +110,10 @@ Patch0:         codex-drop-v8-code-mode.patch
 Patch1:         codex-no-startup-update-check.patch
 # PATCH-FIX-OPENSUSE codex-system-libzstd.patch mpluskal@suse.com -- link zstd-sys against the system libzstd instead of its bundled copy
 Patch2:         codex-system-libzstd.patch
+# PATCH-FIX-OPENSUSE codex-bump-gix-0.88.patch mpluskal@suse.com -- bump gix 0.81.0 -> 0.88.0 so the lockfile reaches the fixed gix-pack 0.75.0 (boo#1285151)
+Patch3:         codex-bump-gix-0.88.patch
+# PATCH-FIX-OPENSUSE codex-gix-error-anyhow.patch mpluskal@suse.com -- adapt codex-git-utils to the gix 0.88 gix-error API (boo#1285151)
+Patch4:         codex-gix-error-anyhow.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging >= 1.2.0
 BuildRequires:  cmake

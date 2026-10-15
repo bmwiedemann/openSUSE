@@ -11,9 +11,14 @@
     feature and leaves the lockfile, hence the vendored set, untouched.
     To regenerate:
 
-      tar xf codex-rust-v0.162.1.tar.gz
-      patch -p1 -d codex-rust-v0.162.1 < codex-drop-v8-code-mode.patch
-      rm -rf codex-rust-v0.162.1/codex-rs/vendor
+       tar xf codex-rust-v0.162.1.tar.gz
+       patch -p1 -d codex-rust-v0.162.1 < codex-drop-v8-code-mode.patch
+       patch -p1 -d codex-rust-v0.162.1 < codex-bump-gix-0.88.patch
+       (plus the Cargo.lock the bump resolves to: run cargo update
+       for gix in codex-rs/ and copy the lock in. The vendored
+       Cargo.lock overwrites the tarball's at build time, so the
+       tarball itself stays pristine.)
+       rm -rf codex-rust-v0.162.1/codex-rs/vendor
       osc service manualrun cargo_vendor
       rm -rf codex-rust-v0.162.1
 

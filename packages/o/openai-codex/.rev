@@ -517,4 +517,12 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
     <comment>Update openai-codex to 0.162.1: two upstream bug fixes (multiline async-question TUI crash, daemon feature-compat startup failure). No Cargo.lock change; vendor tree carried over.</comment>
     <requestid>1383988</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>91ed513050b03ca2364857e0e369e4ce</srcmd5>
+    <version>0.162.1</version>
+    <time>1792059544</time>
+    <user>anag_factory</user>
+    <comment>Security: re-vendor gix-pack 0.68.0-&gt;0.75.0 for CVE-2026-109349/109350/109351 (boo#1285151); gix 0.81-&gt;0.88 lockstep + error-API adapt.</comment>
+    <requestid>1384815</requestid>
+  </revision>
 </revisionlist>

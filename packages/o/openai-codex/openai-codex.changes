@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 14 07:41:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-109349: gix-pack aborts on the header of a crafted
+  pack-version-3 pack file (boo#1285151)
+- CVE-2026-109350: gix-pack misresolves an ofs-delta base distance
+  on crafted input (boo#1285151)
+- CVE-2026-109351: gix-pack can exhaust memory on the header
+  object count of a crafted pack file (boo#1285151)
+- Re-vendor for the above: gix 0.81.0 -> 0.88.0 with its lockstep
+  gix-* siblings so the lock reaches the fixed gix-pack 0.75.0
+  (codex-bump-gix-0.88.patch); adapt codex-git-utils to the gix 0.88
+  error API (codex-gix-error-anyhow.patch); licence set re-derived
+  from the new vendor tree and unchanged.
+
+-------------------------------------------------------------------
 Sat Oct 10 10:49:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.162.1:
