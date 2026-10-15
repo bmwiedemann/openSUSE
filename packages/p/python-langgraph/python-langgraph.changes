@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:52:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.15:
+  * Give every message written to a messages DeltaChannel an id
+  * Save cached node writes like a node that ran
+  * Stop at interrupt_before when a drain is requested before it
+  * Keep exit runs and update_state writes on their own checkpoints
+  * Scope DeltaChannel input read-back and snapshots to own checkpoints
+  * Stop ToolNode swallowing invalid resume values
+  * Stop astream_events dropping control/interrupts on v1/v2
+  * Raise minimum langgraph-checkpoint to >= 4.3.0
+
+-------------------------------------------------------------------
 Thu Oct  8 06:30:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.2.14:

@@ -17,7 +17,7 @@
 
 
 Name:           python-langgraph
-Version:        1.2.14
+Version:        1.2.15
 Release:        0
 Summary:        Library for building stateful, multi-actor applications with LLMs
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-langchain-core >= 1.4.7
 Requires:       python-langgraph-checkpoint < 5
-Requires:       python-langgraph-checkpoint >= 4.1.0
+Requires:       python-langgraph-checkpoint >= 4.3.0
 Requires:       python-langgraph-prebuilt < 1.2
 Requires:       python-langgraph-prebuilt >= 1.1.0
 Requires:       python-langgraph-sdk < 0.5

@@ -102,4 +102,12 @@ Built locally on aarch64: rpmlint 0 errors, 0 warnings, 0 badness.</comment>
     <comment>Update to 1.2.14 (3/3 langgraph train: after SDK 0.4.6 and cli 0.4.33). SDK floor &gt;=0.4.6, no code changes.</comment>
     <requestid>1383220</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1314d61b1c2376f1e9809fbab9dd7d79</srcmd5>
+    <version>1.2.15</version>
+    <time>1792059935</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.2.15: DeltaChannel/message fixes, checkpoint floor &gt;=4.3.0.</comment>
+    <requestid>1384885</requestid>
+  </revision>
 </revisionlist>
