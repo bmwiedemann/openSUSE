@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:58:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.8:
+  * Keep session_id when copying a run tree; fall back to
+    /runs/batch when a run is not found
+  * Harden sandbox token/callback JWT verification with
+    algorithm allowlists; S3 mounts gain KMS encryption option
+
+-------------------------------------------------------------------
 Sat Oct 10 06:38:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.7:

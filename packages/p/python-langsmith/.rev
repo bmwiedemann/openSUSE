@@ -491,4 +491,12 @@ consumer passes the removed arguments.
     <comment>Update python-langsmith to 0.14.7 (via 0.14.6): wrap_anthropic completions fix and sandbox endpoint-prefix normalization. No new runtime dependencies.</comment>
     <requestid>1383992</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>14170b35b3a2aedd561b776336c452f7</srcmd5>
+    <version>0.14.8</version>
+    <time>1792059600</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.14.8: keep session_id on run copy, fall back to /runs/batch when a run is missing; harden sandbox JWT checks.</comment>
+    <requestid>1384905</requestid>
+  </revision>
 </revisionlist>
