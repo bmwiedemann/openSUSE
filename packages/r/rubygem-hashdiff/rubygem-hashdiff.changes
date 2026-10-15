@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 26 15:47:36 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.2.1:
+  * Use HTTPS for the source in the Gemfile (gh#liufengyun/hashdiff#101)
+- Changes from 1.2.0:
+  * Added :preserve_key_order option to maintain original hash key
+    order (gh#liufengyun/hashdiff#99)
+
+-------------------------------------------------------------------
 Mon Feb  3 09:49:32 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## v1.1.2 2024-11-12
