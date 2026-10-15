@@ -468,4 +468,41 @@
   * gopls/internal/cache/methodsets: fix panic on types with generic methods (forwarded request 1365153 from jfkw)</comment>
     <requestid>1365154</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>833366d753c6bbb160e731f85a22ee67</srcmd5>
+    <version>0.24.0</version>
+    <time>1792091355</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.24.0:
+  * gopls: update go.mod for v0.24.0-pre.3
+  * [gopls-release-branch.0.24] gopls: fix v0.24 expected release date
+  * gopls: update go.mod for v0.24.0-pre.2
+  * gopls/doc: escape analyzer titles in Markdown output
+  * gopls/internal: use ImplicitFieldSelections in more places
+  * gopls/internal/golang: quick fixes for go1.28 string(int) error
+  * gopls/internal/golang: use decl over assignment for undeclared var
+  * gopls/doc/release/v0.24.0.md: prepare and polish
+  * gopls/internal/golang: test Create variable in bad contexts
+  * gopls/internal/golang: unexport dragon*Question variables
+  * gopls/internal/golang: call arguments mistreated in inlineAllCalls
+  * gopls: update go.mod for v0.24.0-pre.1
+  * gopls/internal/golang/stubmethods: do not panic when FindByPos fails
+  * gopls/internal/golang: slay the dragon: update questions
+  * all: update codereview.cfg for gopls-release-branch.0.24
+  * gopls/internal/golang: slay the dragon: demo of interactive refactoring
+  * gopls/doc/feature: update screenshots for implement interface
+  * gopls/internal/mcp: modernize roots handling and protocol lifecycle
+  * gopls/doc/release: add release for generic interface support
+  * gopls/internal/server: support multiple questions for the same id
+  * gopls/internal/server: support for dynamic question with better ergonomics
+  * gopls/internal/server: suppress shutdown race when diagnosing orphaned files
+  * gopls/internal/golang: Move Declaration - remove decls from source
+  * gopls/internal/golang: record implicit deps in the decl graph
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.27 matching go.mod
+  * Update to Requires: golang(API) &gt;= 1.27 matching go.mod. This
+    tool requires a go toolchain for its functionality. Using
+    Recommends: or Suggests: instead may also make sense here. (forwarded request 1385047 from jfkw)</comment>
+    <requestid>1385048</requestid>
+  </revision>
 </revisionlist>

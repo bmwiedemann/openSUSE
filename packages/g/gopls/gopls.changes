@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Wed Oct 14 17:42:10 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.24.0:
+  * gopls: update go.mod for v0.24.0-pre.3
+  * [gopls-release-branch.0.24] gopls: fix v0.24 expected release date
+  * gopls: update go.mod for v0.24.0-pre.2
+  * gopls/doc: escape analyzer titles in Markdown output
+  * gopls/internal: use ImplicitFieldSelections in more places
+  * gopls/internal/golang: quick fixes for go1.28 string(int) error
+  * gopls/internal/golang: use decl over assignment for undeclared var
+  * gopls/doc/release/v0.24.0.md: prepare and polish
+  * gopls/internal/golang: test Create variable in bad contexts
+  * gopls/internal/golang: unexport dragon*Question variables
+  * gopls/internal/golang: call arguments mistreated in inlineAllCalls
+  * gopls: update go.mod for v0.24.0-pre.1
+  * gopls/internal/golang/stubmethods: do not panic when FindByPos fails
+  * gopls/internal/golang: slay the dragon: update questions
+  * all: update codereview.cfg for gopls-release-branch.0.24
+  * gopls/internal/golang: slay the dragon: demo of interactive refactoring
+  * gopls/doc/feature: update screenshots for implement interface
+  * gopls/internal/mcp: modernize roots handling and protocol lifecycle
+  * gopls/doc/release: add release for generic interface support
+  * gopls/internal/server: support multiple questions for the same id
+  * gopls/internal/server: support for dynamic question with better ergonomics
+  * gopls/internal/server: suppress shutdown race when diagnosing orphaned files
+  * gopls/internal/golang: Move Declaration - remove decls from source
+  * gopls/internal/golang: record implicit deps in the decl graph
+  * gopls/internal/golang: refactor moving set computation
+  * gopls/internal/golang: MoveDeclaration - rewrite refs to moving declarations
+  * gopls/internal/cache: extend "zero-config" to assembly files
+  * gopls: update mcp sdk to v1.8.0
+  * gopls/internal/golang: MoveDeclaration - add/remove imports
+  * gopls/internal/golang: MoveDeclaration - extract decls to file
+  * gopls/internal/golang: move command resolve functions to feature files
+  * go/packages, gopls: do not treat non-go files as Go packages
+  * gopls/internal/settings: use protocol.FormFieldKind in setting
+  * gopls/internal/golang: move the interactive forms to feature file
+  * gopls/internal/protocol/command: add special error for pending answers
+  * gopls/internal/cache: clear unloadableFiles on workspace reinit
+  * gopls/internal/analysis: use main.go files consistently
+  * gopls/internal/golang: Move Declaration - check validity of move
+  * gopls/internal/vulncheck/scan: pass the pattern after "--"
+  * gopls/internal/golang: MoveDeclaration - handle new file
+  * gopls/internal/golang: update document for command resolve
+  * gopls/internal/golang: MoveDeclaration - determine coupled symbols
+  * gopls/internal/protocol/command: introduce action in command res
+  * gopls/internal/protocol: Add basic resolve_target gopls command
+  * gopls/internal/protocol: move answer method to interactive params
+  * gopls/internal/golang: support inlay hints for partial type arguments
+  * gopls: preserve all missing-module diagnostics
+  * gopls/internal/settings: rename completion related client caps
+  * gopls/internal/golang/completion: report label details for completion items
+  * gopls/internal/golang: reject bad syntax in split/join lines
+  * gopls/internal/golang/completion: report types in unimported completion
+  * gopls: update mvdan/gofumpt dependency
+  * gopls/internal/golang: MoveDeclaration - build symbol reference graph
+  * gopls/internal/golang: Add doc link support for pkg doc comment
+  * gopls/internal/analysis/fillstruct: fix stack overflow
+  * gopls/internal/golang: Hover: show types matching switch cases
+  * gopls/internal/cache: handle multiple legacy build constraints in standalone files
+  * gopls/internal/test/integration/fake: don't poll after a workspace edit
+  * gopls/internal/golang/completion: handle new(expr)
+  * gopls/internal/protocol: trace error messages
+  * gopls/internal/cache: tolerate missing nodes in reachability analysis
+  * gopls/internal/cache/parsego: simplify pos computation in parseStmt
+  * gopls/internal/util/typesutil: clarify TypesWithContext
+  * gopls/internal/test/integration: fix TestSimplifyCompositeLitDiagnostic
+  * gopls/internal/server: add counter for Emacs lsp-mode client
+  * gopls: support assembly References for labels and asm-only symbols
+  * gopls/internal/util/morestrings: use strings.CutLast instead
+  * gopls/internal: use generic methods in some places
+  * gopls/internal: run go fix
+  * gopls: update to go1.27.0
+  * gopls/internal/golang: reject inlining for modified variables
+  * gopls/internal/analysis/ptrtoerror: do not offer a fix for a generic type
+  * gopls/go.mod: update staticcheck to 2026.2.1 (v0.8.1)
+  * gopls/internal/test/marker: do not use go list ... in module mode
+  * gopls/internal/golang: MoveDeclaration - find move target based on cursor
+  * gopls/internal/lsprpc: increase timeout in TestClientLoggingV2
+  * gopls/internal/test/integration: remove CleanModCache.
+  * gopls/internal/golang: align move decl form field id
+  * gopls/cache/parsego: fix pos computation
+  * gopls/internal/util/asm: preserve offsets in CRLF files
+  * gopls/internal/protocol/command: fix struct field name in comment
+  * gopls/internal/golang: normalize instantiated fields before rename
+  * gopls/internal/mcp: report one-based reference line numbers
+  * gopls/internal/golang/completion: avoid SEGV from double deslicing
+  * gopls/internal/protocol/semtok: instructions for modifier/type changes
+  * gopls/internal/golang/definition: find the right unsafe
+  * gopls/internal/test/integration/fake: integrate module cache
+  * gopls: add assembly DocumentHighlight, fix label scoping
+  * gopls/internal/analysis/fillswitch: add missing fmt import
+  * gopls/internal/golang/completion: handle aliased func types in literal completion
+  * gopls/test/completion: fix reported bug in collectCompletions
+  * gopls/internal/analysis/unusedfunc: use non-heuristic std check
+  * gopls/test/completion: construct index explicitly
+  * gopls/internal/analysis/fillswitch: support renamed package imports
+  * gopls/internal/cmd: use localhost:0 to avoid port race
+  * gopls/internal/analysis/simplifycompositelit: preserve comments in fixes
+  * gopls/internal/goasm: add Hover for assembly files
+  * internal/more{maps,slices}: promote from gopls
+  * gopls/test/integration/completion: Fix flaky test
+  * gopls/internal/cmd: set timeout for mcp server start
+  * gopls/internal/protocol: define enum string type for field kinds
+  * gopls/internal/analysis/simplifycompositelit: rewrite using types
+  * gopls/internal/golang: add Move Declaration skeleton
+  * gopls/internal/debug: show Package.Scope symbols
+  * gopls/internal/golang: InlayHint: permit "ignore error" alternatives
+  * gopls/internal/analysis/ptrtoerror: support type assert and instances
+  * gopls: run filecache validation asynchronously in the background
+  * gopls/internal/cmd: revamp CLI flag parsing
+  * gopls/internal/cmd: fix Parent lineage strings on remote subcommands
+  * gopls/internal/cmd: absorb tool package harness into cmd
+  * gopls/internal/tool: rename Application to Command
+  * gopls/internal/cmd: group remote connection flags on Application
+  * gopls/internal/analysis/ptrtoerror: detect inconsistent use of E/*E as error
+  * gopls/internal/completion: fix issue 80268
+  * gopls/internal/golang: fix crash in ExtractToNewFile
+  * gopls/doc/release: semtok ClientCapabilities change release notes
+  * gopls: respect client capabilities for semtok enabled tokens and mods
+  * gopls/internal/golang: freesymbols: use html/template
+  * gopls/doc/release/v0.23.0.md: remove "expected"
+  * gopls/go.mod: update dependencies following the v0.23.0 release
+  * gopls: add CompiledAsmFiles in cache.Package
+  * gopls/internal/test: Completion benchmarks use empty range
+  * gopls/internal/server: modify return of parseAction
+  * gopls/internal/protocol/generate: remove manual rename overwritten
+  * gopls/internal/protocol: use Debug log level
+  * gopls/internal/protocol: update to LSP 3.18
+  * gopls/internal/server: add memoryLimit setting
+  * gopls/internal/test/misc: Fix two flaky tests
+  * gopls/internal/test: have semtok work with gopls@v0.11.0
+  * gopls/internal/licenses: use //go:embed rather than a hand-embedded string
+  * gopls/internal/cache: share objectpath Encoder across batch
+  * gopls/internal/test/integration/fake: retry reads of exclusive-use files
+  * gopls/internal/cache: detect testmain without GOCACHE
+  * gopls/test/integration/mist: Fix flaky test
+  * gopls: two mitigations for "surplus bytes" crash
+  * gopls/internal/cache: delete dead (gob) code
+  * gopls/internal/test: address out of bounds panic in BenchmarkSemanticTokens
+  * gopls/internal/server: fix parsing vulncheck action
+  * gopls/internal/telemetry: skip the telemetry test on Plan 9
+  * gopls/internal/test/integration: respect empty mode filter in runner
+  * gopls/internal/test: attempt to fix BenchmarkSemanticTokens
+  * gopls/internal/protocol: make *UnmarshalError implement error
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.27 matching go.mod
+  * Update to Requires: golang(API) >= 1.27 matching go.mod. This
+    tool requires a go toolchain for its functionality. Using
+    Recommends: or Suggests: instead may also make sense here.
+
+-------------------------------------------------------------------
 Sun Jul 12 19:31:56 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.23.0:
