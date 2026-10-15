@@ -76,4 +76,12 @@ counts exactly 1018 node directories, and no file ships executable.</comment>
 </comment>
     <requestid>1381107</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>111d8dbed76fdfc450f59198400b05b5</srcmd5>
+    <version>0.5.14</version>
+    <time>1792059941</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.5.14: new node docs (CameraAngle, Quiver V2, Vidu Q4, LoRA loaders), Luma retirement notes, de/he/it translations. Builds green.</comment>
+    <requestid>1384889</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:42:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.14:
+  * New node docs: CameraAngle, ClarityAI Crystal Upscale, Kling
+    Virtual Try-On, Quiver V2 SVG, Vidu Q4, Latent Operation Blend
+    with CFG percent window, Load LoRA variants, Flux 3 Image,
+    HeyGen Video 1.0 and Ideogram 4.5 nodes, Nano Banana 2.1
+  * Note the Luma Ray 2 retirement on legacy Luma video pages
+  * New German, Hebrew and Italian translations for all built-in
+    nodes, with heading and Required-column check fixes
+  * Fix localized heading levels, disclaimer links and structure
+    checks; strip leaked translation preambles
+  * Many more fixes and improvements; see upstream release notes
+    for the full list
+
+-------------------------------------------------------------------
 Mon Sep 28 08:00:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.13:
