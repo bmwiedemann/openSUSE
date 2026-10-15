@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:48:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7.3:
+  * Add E2B-compatible MCP gateway support: sandboxes can now be
+    created with an mcp parameter returning an MCP URL and token
+  * Stability and bug fixes: intermittent sandbox network failures,
+    paused sandboxes losing metadata, clone and resource-reclaim
+    races, and template list hangs on large clusters
+- No new runtime dependencies; requires-python stays >= 3.9
+
+-------------------------------------------------------------------
 Sat Aug 29 07:36:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.7.0:

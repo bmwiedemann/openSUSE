@@ -17,7 +17,7 @@
 
 
 Name:           python-cubesandbox
-Version:        0.7.0
+Version:        0.7.3
 Release:        0
 Summary:        Python SDK for CubeSandbox
 License:        Apache-2.0
