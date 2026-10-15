@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:44:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.1 (major 0.x -> 1.x):
+  * BREAKING: rtk proxy is now rtk bypass (old name stays as alias),
+    --ultra-compact is removed, rtk gain excludes oversized outputs
+    from its headline rate
+  * BREAKING: upstream splits a BUSL-1.1 compression engine out of the
+    Apache-2.0 CLI; this package builds the Apache-2.0 rtk-oss edition
+    with --no-default-features, so no BUSL code is shipped and pipelines
+    stay inert as before
+  * New pipeline engine with CLI pipelines, hook gate and llm-proxy,
+    plus the rtk-proxy daemon (not packaged) and agent plugin routing
+  * hook: support OpenCode V2, Desktop and Windows, judge OpenCode
+    against its own permission rules, close permission-gate holes in
+    command segmentation; init fails closed on a missing .claude dir
+  * rewrite: rewrite inner commands of quoted sh/bash/zsh/fish -c wrappers
+  * 0.52.0 fixes across ast-grep, curl stdin, diff usage errors, gh/glab
+    tokenizing, go test summaries, ls tokenizing, mvn goals, pytest ANSI
+    handling and tracking; 1.0.1 fixes gain pipeline-share hints and
+    RTK_PROXY_BIND handling
+  * many more fixes; see upstream's release notes for the full list
+- Rebase rtk-unbundle-sqlite.patch for rusqlite 0.31 -> 0.34 (still needed,
+  upstream keeps bundling as default), including the Cargo.lock hunk that drops
+  the libsqlite3-sys cc edge so --locked cargo builds pass;
+  rtk-no-deny-warnings.patch still applies
+- Refresh the vendored dependencies (243 crates); no licence change on the
+  Apache-2.0 build graph
+- BuildRequires curl: the new curl stdin test shells out to the real curl
+  binary
+
+-------------------------------------------------------------------
 Sat Oct  3 05:43:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.51.0:

@@ -17,21 +17,23 @@
 
 
 Name:           rtk
-Version:        0.51.0
+Version:        1.0.1
 Release:        0
 Summary:        CLI proxy that reduces LLM token consumption of dev commands
 # Legal-Review-Notice: rtk itself is Apache-2.0, but the binary statically links
 # the vendored Rust dependencies, so the tag below covers the whole linked set.
-# Derived on this re-vendor with "cargo tree --offline -p rtk -e normal" over the
-# vendored tree (202 crates vendored, 134 in the linked graph): MPL-2.0 comes
-# from colored and option-ext, Unicode-3.0 from the 19 ICU/zerovec crates, ISC
-# from rustls-webpki and untrusted (and from ring, "Apache-2.0 AND ISC"),
+# Derived on this re-vendor with "cargo tree --offline -p rtk --no-default-features
+# -e normal" over the vendored tree (243 crates vendored, 172 in the linked graph):
+# MPL-2.0 comes from colored and option-ext, Unicode-3.0 from the ICU/zerovec
+# crates, ISC from rustls-webpki and untrusted (and from ring, "Apache-2.0 AND ISC"),
 # CDLA-Permissive-2.0 from webpki-roots, BSD-3-Clause from subtle, and MIT from
-# thirteen MIT-only crates (rusqlite, libsqlite3-sys, which, quick-xml, ...). Every
-# dual/triple "OR" expression in the graph is satisfied by Apache-2.0 or MIT,
+# twenty-five MIT-only crates (rusqlite, libsqlite3-sys, which, quick-xml, ...).
+# Every dual/triple "OR" expression in the graph is satisfied by Apache-2.0 or MIT,
 # both already named. r-efi offers an LGPL-2.1-or-later option but is
 # UEFI-target-only and absent from the Linux graph. MPL-2.0 section 3.2 is
 # satisfied because the complete vendor.tar.zst ships in the src.rpm.
+# Built with --no-default-features (upstream's Apache-2.0 rtk-oss edition):
+# the default engine feature pulls the BUSL-1.1 rtk-engine, which is excluded here.
 License:        Apache-2.0 AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND Unicode-3.0
 URL:            https://github.com/rtk-ai/rtk
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -42,6 +44,8 @@ Patch0:         rtk-unbundle-sqlite.patch
 Patch1:         rtk-no-deny-warnings.patch
 BuildRequires:  cargo >= 1.91
 BuildRequires:  cargo-packaging
+# The curl stdin test shells out to the real curl binary
+BuildRequires:  curl
 BuildRequires:  git-core
 # The hook decision test runs hooks/claude/rtk-rewrite.sh, which
 # declares "Requires: jq"
@@ -68,16 +72,18 @@ passing output through unchanged for anything it does not recognise.
 # Upstream's release profile sets strip = true, which discards the DWARF that
 # find-debuginfo.sh needs to build the -debuginfo/-debugsource packages.
 export CARGO_PROFILE_RELEASE_STRIP=none
-%{cargo_build}
+# --no-default-features builds upstream's Apache-2.0 rtk-oss edition: the default
+# engine feature links the BUSL-1.1 rtk-engine, which Factory cannot ship.
+%{cargo_build} --no-default-features
 
 %install
-%cargo_install
+%{cargo_install} --no-default-features
 
 %check
 # The integration tests create repositories and configuration below $HOME.
 export HOME=%{_builddir}/fakehome
 mkdir -p "$HOME"
-%{cargo_test}
+%{cargo_test} --no-default-features
 
 %files
 %license LICENSE
