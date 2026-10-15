@@ -1,65 +1,65 @@
-Index: ImageMagick-7.1.2-32/config/policy-limited.xml
+Index: ImageMagick-7.1.2-33/config/policy-SUSE.xml
 ===================================================================
---- ImageMagick-7.1.2-32.orig/config/policy-limited.xml
-+++ ImageMagick-7.1.2-32/config/policy-limited.xml
-@@ -95,6 +95,8 @@
-   <!-- <policy domain="path" rights="none" pattern="-"/> -->
-   <!-- don't read sensitive paths. -->
+--- ImageMagick-7.1.2-33.orig/config/policy-SUSE.xml
++++ ImageMagick-7.1.2-33/config/policy-SUSE.xml
+@@ -105,6 +105,8 @@
+ 
+   <!-- Prevent access to sensitive system directories. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
 +  <!-- but allow to read own data. -->
 +  <policy domain="path" rights="read" pattern="/etc/IM*"/>
-   <!-- Indirect reads are not permitted. -->
-   <policy domain="path" rights="none" pattern="@*"/>
-   <!-- These image types are security risks on read, but write is fine -->
-Index: ImageMagick-7.1.2-32/config/policy-open.xml
+ 
+   <!-- Prevent directory traversal via relative paths. -->
+   <policy domain="path" rights="none" pattern="*../*"/>
+Index: ImageMagick-7.1.2-33/config/policy-limited.xml
 ===================================================================
---- ImageMagick-7.1.2-32.orig/config/policy-open.xml
-+++ ImageMagick-7.1.2-32/config/policy-open.xml
-@@ -146,6 +146,8 @@
-   <!-- <policy domain="path" rights="none" pattern="-"/> -->
-   <!-- don't read sensitive paths. -->
+--- ImageMagick-7.1.2-33.orig/config/policy-limited.xml
++++ ImageMagick-7.1.2-33/config/policy-limited.xml
+@@ -108,6 +108,8 @@
+ 
+   <!-- Prevent access to sensitive system configuration files. -->
+   <policy domain="path" rights="none" pattern="/etc/*"/>
++  <!-- but allow to read own data. -->
++  <policy domain="path" rights="read" pattern="/etc/IM*"/>
+ 
+   <!-- Prevent indirect file reads using @filename syntax. -->
+   <policy domain="path" rights="none" pattern="@*"/>
+Index: ImageMagick-7.1.2-33/config/policy-open.xml
+===================================================================
+--- ImageMagick-7.1.2-33.orig/config/policy-open.xml
++++ ImageMagick-7.1.2-33/config/policy-open.xml
+@@ -167,6 +167,8 @@
+ 
+   <!-- Prevent access to sensitive system locations. -->
    <!-- <policy domain="path" rights="none" pattern="/etc/*"/> -->
 +  <!-- but allow to read own data. -->
 +  <!-- <policy domain="path" rights="read" pattern="/etc/IM*"/> -->
-   <!-- Indirect reads are not permitted. -->
+ 
+   <!-- Disable indirect file reads (@filename). -->
    <!-- <policy domain="path" rights="none" pattern="@*"/> -->
-   <!-- These image types are security risks on read, but write is fine -->
-Index: ImageMagick-7.1.2-32/config/policy-secure.xml
+Index: ImageMagick-7.1.2-33/config/policy-secure.xml
 ===================================================================
---- ImageMagick-7.1.2-32.orig/config/policy-secure.xml
-+++ ImageMagick-7.1.2-32/config/policy-secure.xml
-@@ -102,6 +102,8 @@
-   <policy domain="path" rights="none" pattern="[Ff][Dd]:*"/>
-   <!-- Sensitive paths are not permitted. -->
+--- ImageMagick-7.1.2-33.orig/config/policy-secure.xml
++++ ImageMagick-7.1.2-33/config/policy-secure.xml
+@@ -105,6 +105,8 @@
+ 
+   <!-- Prevent access to sensitive system directories. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
 +  <!-- but allow to read own data. -->
 +  <policy domain="path" rights="read" pattern="/etc/IM*"/>
-   <!-- Relative paths are not permitted. -->
+ 
+   <!-- Prevent directory traversal via relative paths. -->
    <policy domain="path" rights="none" pattern="*../*"/>
-   <!-- Indirect reading is not permitted. -->
-Index: ImageMagick-7.1.2-32/config/policy-websafe.xml
+Index: ImageMagick-7.1.2-33/config/policy-websafe.xml
 ===================================================================
---- ImageMagick-7.1.2-32.orig/config/policy-websafe.xml
-+++ ImageMagick-7.1.2-32/config/policy-websafe.xml
-@@ -98,6 +98,8 @@
-   <policy domain="path" rights="none" pattern="[Ff][Dd]:*"/>
-   <!-- Sensitive paths are not permitted. -->
+--- ImageMagick-7.1.2-33.orig/config/policy-websafe.xml
++++ ImageMagick-7.1.2-33/config/policy-websafe.xml
+@@ -99,6 +99,8 @@
+ 
+   <!-- Prevent access to operating system configuration files. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
 +  <!-- but allow to read own data. -->
 +  <policy domain="path" rights="read" pattern="/etc/IM*"/>
-   <!-- Relative paths are not permitted. -->
-   <policy domain="path" rights="none" pattern="*../*"/>
-   <!-- Indirect reading is not permitted. -->
-Index: ImageMagick-7.1.2-32/config/policy-SUSE.xml
-===================================================================
---- ImageMagick-7.1.2-32.orig/config/policy-SUSE.xml
-+++ ImageMagick-7.1.2-32/config/policy-SUSE.xml
-@@ -102,6 +102,8 @@
-   <policy domain="path" rights="none" pattern="[Ff][Dd]:*"/>
-   <!-- Sensitive paths are not permitted. -->
-   <policy domain="path" rights="none" pattern="/etc/*"/>
-+  <!-- but allow to read own data. -->
-+  <policy domain="path" rights="read" pattern="/etc/IM*"/>
-   <!-- Relative paths are not permitted. -->
-   <policy domain="path" rights="none" pattern="*../*"/>
-   <!-- Indirect reading is not permitted. -->
+ 
+   <!-- Prevent access to Linux process and runtime information. -->
+   <policy domain="path" rights="none" pattern="/proc/*"/>

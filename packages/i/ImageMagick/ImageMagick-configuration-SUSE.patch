@@ -1,36 +1,39 @@
-Index: ImageMagick-7.1.2-32/config/policy-SUSE.xml
+Index: ImageMagick-7.1.2-33/config/policy-SUSE.xml
 ===================================================================
---- ImageMagick-7.1.2-32.orig/config/policy-SUSE.xml
-+++ ImageMagick-7.1.2-32/config/policy-SUSE.xml
-@@ -71,7 +71,7 @@
+--- ImageMagick-7.1.2-33.orig/config/policy-SUSE.xml
++++ ImageMagick-7.1.2-33/config/policy-SUSE.xml
+@@ -64,7 +64,7 @@
    <policy domain="resource" name="disk" value="2GiB"/>
-   <!-- Set the maximum length of an image sequence.  When this limit is
-        exceeded, an exception is thrown. -->
+ 
+   <!-- Maximum number of images permitted in a sequence. -->
 -  <policy domain="resource" name="list-length" value="32"/>
 +  <policy domain="resource" name="list-length" value="128"/>
-   <!-- Set the maximum width of an image.  When this limit is exceeded, an
-        exception is thrown. -->
+ 
+   <!-- Maximum permitted image width. -->
    <policy domain="resource" name="width" value="8KP"/>
-@@ -94,11 +94,11 @@
-   <!-- Replace passphrase for secure distributed processing -->
-   <!-- <policy domain="cache" name="shared-secret" value="secret-passphrase" stealth="true"/> -->
-   <!-- Do not permit any delegates to execute. -->
+@@ -92,13 +92,13 @@
+             value="secret-passphrase" stealth="true"/> -->
+ 
+   <!-- Disable execution of all delegates. -->
 -  <policy domain="delegate" rights="none" pattern="*"/>
 +  <!-- <policy domain="delegate" rights="none" pattern="*"/> -->
-   <!-- Do not permit any image filters to load. -->
+ 
+   <!-- Disable loading of all image filters. -->
    <policy domain="filter" rights="none" pattern="*"/>
-   <!-- Don't read/write from/to stdin/stdout. -->
+ 
+   <!-- Prevent reading from stdin and writing to stdout. -->
 -  <policy domain="path" rights="none" pattern="-"/>
 +  <!-- <policy domain="path" rights="none" pattern="-"/> -->
-   <policy domain="path" rights="none" pattern="[Ff][Dd]:*"/>
-   <!-- Sensitive paths are not permitted. -->
-   <policy domain="path" rights="none" pattern="/etc/*"/>
-@@ -120,5 +120,21 @@
-        allocation requests. -->
-   <policy domain="system" name="max-memory-request" value="256MiB"/>
-   <!-- If the basename of path is a symbolic link, the open fails -->
--  <policy domain="system" name="symlink" rights="none" pattern="follow"/>
-+  <policy domain="system" name="symlink" rights="read" pattern="follow"/>
+ 
+   <!-- Prevent access to file descriptors. -->
+   <policy domain="path" rights="none" pattern="[Ff][Dd\]:*"/>
+@@ -135,6 +135,22 @@
+ 
+   <!-- Fail if the target path is a symbolic link. -->
+   <policy domain="system" name="symlink"
+-          rights="none" pattern="follow"/>
++          rights="read" pattern="follow"/>
+ 
 +  <!-- Disable insecure coders by default -->
 +  <policy domain="coder" rights="none" pattern="EPHEMERAL" />
 +  <policy domain="coder" rights="none" pattern="URL" />

@@ -1,7 +1,7 @@
-Index: ImageMagick-7.1.2-32/configure
+Index: ImageMagick-7.1.2-33/configure
 ===================================================================
---- ImageMagick-7.1.2-32.orig/configure
-+++ ImageMagick-7.1.2-32/configure
+--- ImageMagick-7.1.2-33.orig/configure
++++ ImageMagick-7.1.2-33/configure
 @@ -37448,7 +37448,9 @@ fi
  
  
