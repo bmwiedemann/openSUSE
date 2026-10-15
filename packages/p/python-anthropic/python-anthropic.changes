@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:39:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.14.0:
+  * Add OpenTelemetry tracing for API calls, streaming and tool runs
+  * Add telemetry destinations and test endpoint to the Admin API,
+    execution_identity to Managed Agents agents, and the
+    organization_type_not_supported error to spend limit lists
+  * Bug fixes: close dropped streams without waiting for the collector,
+    pass unknown event types through the message stream helpers, stop
+    raising "Unexpected event order" for an event before message_start
+  * Rename telemetry destination test response model
+- Add new runtime dependency opentelemetry-api >= 1.1.0 for the
+  tracing support; requires-python stays >= 3.10
+
+-------------------------------------------------------------------
 Sat Oct 10 06:31:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.13.0:

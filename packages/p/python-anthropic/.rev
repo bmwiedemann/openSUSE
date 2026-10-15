@@ -300,4 +300,12 @@ claude-sonnet-4-5 is deprecated. No new dependencies.
     <comment>Update python-anthropic to 1.13.0: unified analytics metric types, Managed Agents workflows and multiagent config, Skills error codes. No new runtime dependencies.</comment>
     <requestid>1383991</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b322a3059177aa18d960767a718b07e2</srcmd5>
+    <version>1.14.0</version>
+    <time>1792059933</time>
+    <user>anag_factory</user>
+    <comment>Update python-anthropic to 1.14.0: OpenTelemetry tracing, telemetry destinations; add opentelemetry-api dep.</comment>
+    <requestid>1384877</requestid>
+  </revision>
 </revisionlist>
