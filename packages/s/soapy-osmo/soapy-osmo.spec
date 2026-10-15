@@ -22,7 +22,7 @@
 %define soapy_modver 0.8-3
 %bcond_with mod_freesrp
 Name:           soapy-osmo
-Version:        0.2.5
+Version:        0.2.6
 Release:        0
 Summary:        Soapy SDR plugins for Osmo supported SDR devices
 License:        GPL-3.0-or-later
@@ -30,8 +30,7 @@ URL:            https://github.com/pothosware/SoapyOsmo/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyOsmo.git
 Source:         https://github.com/pothosware/SoapyOsmo/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
-Patch0:         soapy_osmosdr_rfspace_disable.patch
-Patch1:         boost.patch
+Patch0:         boost.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel

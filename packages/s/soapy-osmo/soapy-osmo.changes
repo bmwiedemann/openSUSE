@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 11 09:24:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.2.6:
+  * Disable the RFSPACE component by default in favor of SoapyNetSDR
+  * Update internal gr-osmosdr copy to 4d83c60
+  * Update for compat with newer CMake
+  * Drop soapy_osmosdr_rfspace_disable.patch: upstream adopted it
+  * Rebase boost.patch onto the new Boost component list
+
+-------------------------------------------------------------------
 Sun Aug 30 18:19:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Require soapy-sdr from each SoapySDR module subpackage: the generated

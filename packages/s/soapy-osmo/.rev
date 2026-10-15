@@ -127,4 +127,12 @@ Also in this request:
 No version change: 0.2.5 is the current upstream tag.</comment>
     <requestid>1374747</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ef44f1f65c7932b063b4df19cc3838c7</srcmd5>
+    <version>0.2.6</version>
+    <time>1792059538</time>
+    <user>anag_factory</user>
+    <comment>Update soapy-osmo to 0.2.6 (rfspace off by default, gr-osmosdr refresh).</comment>
+    <requestid>1384070</requestid>
+  </revision>
 </revisionlist>

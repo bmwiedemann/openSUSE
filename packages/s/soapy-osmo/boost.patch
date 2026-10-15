@@ -1,10 +1,11 @@
---- SoapyOsmo-soapy-osmo-0.2.5/CMakeLists.txt
-+++ SoapyOsmo-soapy-osmo-0.2.5/CMakeLists.txt
-@@ -101,7 +101,6 @@
+--- SoapyOsmo-soapy-osmo-0.2.6/CMakeLists.txt
++++ SoapyOsmo-soapy-osmo-0.2.6/CMakeLists.txt
+@@ -110,8 +110,7 @@
  # Although not required on my system, some users have linking issues without
  SET(BOOST_REQUIRED_COMPONENTS
      thread
 -    system
+     chrono
  )
  
  if(UNIX AND NOT BOOST_ROOT AND EXISTS "/usr/lib64")
