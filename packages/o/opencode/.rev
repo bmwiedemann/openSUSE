@@ -456,4 +456,12 @@ aarch64, all 5 patches still apply.</comment>
     <comment>Update opencode 2.0.26-&gt;2.0.28 (tag-range summary in .changes; opentui pin stays 0.5.17).</comment>
     <requestid>1384675</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b38cb846aa918b56507b36a44372b6fb</srcmd5>
+    <version>2.0.29</version>
+    <time>1792073541</time>
+    <user>anag_factory</user>
+    <comment>Update opencode 2.0.28-&gt;2.0.29 (tag-range summary in .changes; opentui pin stays 0.5.17, vendor closure unchanged).</comment>
+    <requestid>1384892</requestid>
+  </revision>
 </revisionlist>

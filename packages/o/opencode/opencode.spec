@@ -56,18 +56,17 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        2.0.28
+Version:        2.0.29
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 2.0.28 from the declared license field
+# Legal-Review-Notice: rederived for 2.0.29 from the declared license field
 # of all 354 unique packages in the vendor tarball (355 store entries, one of
 # which is the symlink farm and not a package). No copyleft of any kind. The
-# SPDX set is unchanged; this release drops eight MIT store entries (msgpackr
-# with its native extract trio, fast-check with pure-rand, mime,
-# node-gyp-build-optional-packages) and one Apache-2.0 one (detect-libc). @opencode-ai/pty-linux-{arm64,x64}-gnu ship a
+# SPDX set and the counts are unchanged from 2.0.28 (MIT 199, Apache-2.0 69,
+# ISC 63, BlueOak-1.0.0 9, rest as before); the keep list is byte-identical. @opencode-ai/pty-linux-{arm64,x64}-gnu ship a
 # prebuilt ELF bin/opencode-pty that ends up embedded in the payload rather
 # than loaded from a package like the rest of the native code; both are MIT
 # and both shipped that way at 2.0.23 too. See README.SUSE-maint "Native code".

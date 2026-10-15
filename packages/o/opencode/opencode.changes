@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:51:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.29 (the 2.x line publishes no release objects, so
+  this is a summary of the v2.0.28..v2.0.29 tag-to-tag diff)
+  * Core: responses continue after output token limits; managed
+    configuration takes highest precedence; top-level policies
+    config stabilized
+  * Plugins can assert permissions; each Promise hook rejection stays
+    on its own tool call; Figma plugin peer resolution and Git installs
+  * TUI reports pending session status to the terminal; connect route
+    checks aligned and v1 npm config targets built-in provider routes
+  * OpenTUI stays 0.5.17: upstream tried 0.6.2 then reverted in-range,
+    net zero, so the %prep pin check passes unmodified
+  * Many more fixes and improvements; the full list is upstream's
+    v2.0.28..v2.0.29 commit range, which publishes no release notes
+- Regenerate the vendor tree: 355 of 2185 store entries kept (was
+  355 of 2293). The closure is unchanged; the keep list is byte-identical
+- Legal review re-derived for the new tree: 354 packages, SPDX
+  licence set and counts unchanged, no copyleft
+- All six patches re-test clean against 2.0.29 (offsets only, no
+  rebases); no new mandatory dependencies
+
+-------------------------------------------------------------------
 Tue Oct 13 17:16:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.28 (the 2.x line publishes no release objects, so
