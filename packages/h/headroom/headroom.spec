@@ -20,12 +20,12 @@
 # the distribution primary interpreter.
 %define pythons %{primary_python}
 Name:           headroom
-Version:        0.39.1
+Version:        0.41.0
 Release:        0
 Summary:        Context optimization layer for LLM applications
 # Legal-Review-Notice: headroom-ai is Apache-2.0. The shipped artefact is
 # the maturin cdylib from crates/headroom-py (cargo tree --offline
-# -p headroom-py -e normal, 276 crates over 535 vendored). The only
+# -p headroom-py -e normal, 335 crates over 553 vendored). The only
 # copyleft licence in that graph is MPL-2.0 from option-ext 0.2.0 (via
 # hf-hub -> dirs -> dirs-sys). r-efi offers LGPL-2.1-or-later but is
 # UEFI-target-only and is not in the Linux graph. aws-lc-sys is vendored
@@ -47,6 +47,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich >= 13.0.0}
 BuildRequires:  %{python_module tiktoken >= 0.5.0}
 BuildRequires:  %{python_module tomlkit >= 0.13.0}
+BuildRequires:  %{python_module truststore >= 0.10.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
@@ -64,6 +65,8 @@ Requires:       %{primary_python}-pydantic >= 2.0.0
 Requires:       %{primary_python}-rich >= 13.0.0
 Requires:       %{primary_python}-tiktoken >= 0.5.0
 Requires:       %{primary_python}-tomlkit >= 0.13.0
+# New in 0.40.0: TLS via the OS trust store (certifi fallback).
+Requires:       %{primary_python}-truststore >= 0.10.0
 # ast-grep-cli on PyPI is a wheel wrapping the sg/ast-grep binary; Factory
 # ships the real ast-grep package. Headroom binaries.resolve() searches PATH.
 Requires:       ast-grep

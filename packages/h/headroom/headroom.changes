@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:57:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.41.0 (includes 0.40.0):
+  * Proxy serves on a Unix domain socket (--uds) and routes Gemini
+    plugin traffic through native transforms; per-request context
+    trimming via x-headroom-keep-last-turns
+  * Native spend/savings stats and dashboard in the Rust proxy, with
+    per-agent attribution; new Antigravity IDE and OpenCode 2.x
+    integrations, max_output_tokens route condition
+  * Proxy no longer forwards its token to upstream providers and
+    polls usage with the operator's own credential only; beacon
+    stops logging senders' IP addresses
+  * Memory learner persists pending evidence across restarts; new
+    agy analysis backend; usage reporting is now opt-in
+  * New runtime dependency: python3-truststore for TLS through the
+    OS trust store (certifi fallback)
+  * Vendored Rust tree refreshed (quinn-proto 0.11.19); licence set
+    unchanged (Apache-2.0 AND MPL-2.0)
+
+-------------------------------------------------------------------
 Mon Sep 28 13:08:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.39.1:

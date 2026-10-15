@@ -103,4 +103,12 @@ Built green on aarch64 (rpmlint 0 errors, %check 27 passed) against openSUSE:Tum
 </comment>
     <requestid>1381240</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b4ba74ba5efa99d3bdcd17e2e21f2763</srcmd5>
+    <version>0.41.0</version>
+    <time>1792073551</time>
+    <user>anag_factory</user>
+    <comment>Update headroom to 0.41.0 (includes 0.40.0): proxy on Unix socket, native spend/savings stats, token no longer forwarded upstream. Adds python3-truststore runtime dep (in Factory); vendor tree refreshed, licence unchanged.</comment>
+    <requestid>1384913</requestid>
+  </revision>
 </revisionlist>
