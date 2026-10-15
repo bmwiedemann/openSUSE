@@ -153,4 +153,12 @@
     <comment>Forward Application:Geo/geotiff gcc-c++ BR drop (SR 1384275); pure C package, branch builds green.</comment>
     <requestid>1384322</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>b47f850fabd3348951618bdfdc33f379</srcmd5>
+    <version>1.7.4</version>
+    <time>1792073564</time>
+    <user>anag_factory</user>
+    <comment>Forward Application:Geo/geotiff test suite + license fix (SR 1384965); branch green.</comment>
+    <requestid>1384969</requestid>
+  </revision>
 </revisionlist>

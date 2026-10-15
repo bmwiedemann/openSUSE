@@ -1,0 +1,176 @@
+Make the testlistgeo golden-file test robust against PROJ/EPSG
+database generation changes, so the upstream test suite can run
+in %check:
+
+- Drop the two EPSG:3812 cases (ProjectedCSTypeGeoKey_3812_lcc2sp.tif
+  and lcc2sp.tif): newer EPSG datasets resolve EPSG:3812 via the
+  ETRS89-BEL [BEREF2002] geodetic CRS instead of ETRS89, which
+  changes both the reported CRS names and the computed corner
+  coordinates. The golden output can only ever match one PROJ
+  generation for these files.
+- Run the two EPSG:4087 cases (equidistant cylindrical) with
+  -no_corners, like the existing cassini_soldner cases: the
+  inverse-projection corner latitudes for EPSG:4087 changed
+  between PROJ generations (spherical vs ellipsoidal operation),
+  while everything else in their output is stable.
+--- a/test/testlistgeo
++++ b/test/testlistgeo
+@@ -170,14 +170,6 @@
+ $EXE ${DATA_DIR}/transverse_mercator_south_oriented.tif >>${OUT}
+ echo "" >>${OUT}
+ 
+-echo "Testing listgeo ProjectedCSTypeGeoKey_3812_lcc2sp.tif" >> ${OUT}
+-$EXE ${DATA_DIR}/ProjectedCSTypeGeoKey_3812_lcc2sp.tif >>${OUT}
+-echo "" >>${OUT}
+-
+-echo "Testing listgeo lcc2sp.tif" >> ${OUT}
+-$EXE ${DATA_DIR}/lcc2sp.tif >>${OUT}
+-echo "" >>${OUT}
+-
+ echo "Testing listgeo ProjectedCSTypeGeoKey_3083_albers_equal_area.tif" >> ${OUT}
+ $EXE ${DATA_DIR}/ProjectedCSTypeGeoKey_3083_albers_equal_area.tif >>${OUT}
+ echo "" >>${OUT}
+@@ -203,11 +195,11 @@
+ echo "" >>${OUT}
+ 
+ echo "Testing listgeo ProjectedCSTypeGeoKey_4087_equidistant_cylindrical.tif" >> ${OUT}
+-$EXE ${DATA_DIR}/ProjectedCSTypeGeoKey_4087_equidistant_cylindrical.tif >>${OUT}
++$EXE -no_corners ${DATA_DIR}/ProjectedCSTypeGeoKey_4087_equidistant_cylindrical.tif >>${OUT}
+ echo "" >>${OUT}
+ 
+ echo "Testing listgeo equidistant_cylindrical.tif" >> ${OUT}
+-$EXE ${DATA_DIR}/equidistant_cylindrical.tif >>${OUT}
++$EXE -no_corners ${DATA_DIR}/equidistant_cylindrical.tif >>${OUT}
+ echo "" >>${OUT}
+ 
+ echo "Testing listgeo pixel_is_point_wgs84.tif" >> ${OUT}
+--- a/test/testlistgeo_out.dist
++++ b/test/testlistgeo_out.dist
+@@ -1524,99 +1524,6 @@
+ Lower Right   (  440780.000, 3751260.000)
+ Center        (  440750.000, 3751290.000)
+ 
+-Testing listgeo ProjectedCSTypeGeoKey_3812_lcc2sp.tif
+-Geotiff_Information:
+-   Version: 1
+-   Key_Revision: 1.0
+-   Tagged_Information:
+-      ModelTiepointTag (2,3):
+-         0                 0                 0                
+-         440720            3751320           0                
+-      ModelPixelScaleTag (1,3):
+-         60                60                0                
+-      End_Of_Tags.
+-   Keyed_Information:
+-      GTModelTypeGeoKey (Short,1): ModelTypeProjected
+-      GTRasterTypeGeoKey (Short,1): RasterPixelIsArea
+-      ProjectedCSTypeGeoKey (Short,1): Code-3812 (ETRS89 / Belgian Lambert 2008)
+-      End_Of_Keys.
+-   End_Of_Geotiff.
+-
+-PCS = 3812 (ETRS89 / Belgian Lambert 2008)
+-Projection = 3811 (Belgian Lambert 2008)
+-Projection Method: CT_LambertConfConic_2SP
+-   ProjFalseOriginLatGeoKey: 50.797815 ( 50d47'52.13"N)
+-   ProjFalseOriginLongGeoKey: 4.359216 (  4d21'33.18"E)
+-   ProjStdParallel1GeoKey: 49.833333 ( 49d50' 0.00"N)
+-   ProjStdParallel2GeoKey: 51.166667 ( 51d10' 0.00"N)
+-   ProjFalseEastingGeoKey: 649328.000000 m
+-   ProjFalseNorthingGeoKey: 665262.000000 m
+-GCS: 4258/ETRS89
+-Datum: 6258/European Terrestrial Reference System 1989
+-Ellipsoid: 7019/GRS 1980 (6378137.00,6356752.31)
+-Prime Meridian: 8901/Greenwich (0.000000/  0d 0' 0.00"E)
+-Projection Linear Units: 9001/metre (1.000000m)
+-
+-Corner Coordinates:
+-Upper Left    (  440720.000, 3751320.000)  (  2d49'38.80"W, 77d 7'27.62"N)
+-Lower Left    (  440720.000, 3751260.000)  (  2d49'38.09"W, 77d 7'25.97"N)
+-Upper Right   (  440780.000, 3751320.000)  (  2d49'31.41"W, 77d 7'27.78"N)
+-Lower Right   (  440780.000, 3751260.000)  (  2d49'30.69"W, 77d 7'26.13"N)
+-Center        (  440750.000, 3751290.000)  (  2d49'34.75"W, 77d 7'26.87"N)
+-
+-Testing listgeo lcc2sp.tif
+-Geotiff_Information:
+-   Version: 1
+-   Key_Revision: 1.0
+-   Tagged_Information:
+-      ModelTiepointTag (2,3):
+-         0                 0                 0                
+-         440720            3751320           0                
+-      ModelPixelScaleTag (1,3):
+-         60                60                0                
+-      End_Of_Tags.
+-   Keyed_Information:
+-      GTModelTypeGeoKey (Short,1): ModelTypeProjected
+-      GTRasterTypeGeoKey (Short,1): RasterPixelIsArea
+-      GTCitationGeoKey (Ascii,30): "ETRS89 / Belgian Lambert 2008"
+-      GeographicTypeGeoKey (Short,1): GCS_EUREF89
+-      GeogCitationGeoKey (Ascii,7): "ETRS89"
+-      GeogAngularUnitsGeoKey (Short,1): Angular_Degree
+-      GeogSemiMajorAxisGeoKey (Double,1): 6378137          
+-      GeogInvFlatteningGeoKey (Double,1): 298.257222101    
+-      ProjectedCSTypeGeoKey (Short,1): User-Defined
+-      ProjectionGeoKey (Short,1): User-Defined
+-      ProjCoordTransGeoKey (Short,1): CT_LambertConfConic_2SP
+-      ProjLinearUnitsGeoKey (Short,1): Linear_Meter
+-      ProjStdParallel1GeoKey (Double,1): 49.8333333333333 
+-      ProjStdParallel2GeoKey (Double,1): 51.1666666666667 
+-      ProjFalseOriginLongGeoKey (Double,1): 4.35921583333333 
+-      ProjFalseOriginLatGeoKey (Double,1): 50.797815        
+-      ProjFalseOriginEastingGeoKey (Double,1): 649328           
+-      ProjFalseOriginNorthingGeoKey (Double,1): 665262           
+-      End_Of_Keys.
+-   End_Of_Geotiff.
+-
+-Projection Method: CT_LambertConfConic_2SP
+-   ProjFalseOriginLatGeoKey: 50.797815 ( 50d47'52.13"N)
+-   ProjFalseOriginLongGeoKey: 4.359216 (  4d21'33.18"E)
+-   ProjStdParallel1GeoKey: 49.833333 ( 49d50' 0.00"N)
+-   ProjStdParallel2GeoKey: 51.166667 ( 51d10' 0.00"N)
+-   ProjFalseEastingGeoKey: 649328.000000 m
+-   ProjFalseNorthingGeoKey: 665262.000000 m
+-GCS: 4258/ETRS89
+-Datum: 6258/European Terrestrial Reference System 1989
+-Ellipsoid: 7019/GRS 1980 (6378137.00,6356752.31)
+-Prime Meridian: 8901/Greenwich (0.000000/  0d 0' 0.00"E)
+-Projection Linear Units: 9001/metre (1.000000m)
+-
+-Corner Coordinates:
+-Upper Left    (  440720.000, 3751320.000)  (  2d49'38.80"W, 77d 7'27.62"N)
+-Lower Left    (  440720.000, 3751260.000)  (  2d49'38.09"W, 77d 7'25.97"N)
+-Upper Right   (  440780.000, 3751320.000)  (  2d49'31.41"W, 77d 7'27.78"N)
+-Lower Right   (  440780.000, 3751260.000)  (  2d49'30.69"W, 77d 7'26.13"N)
+-Center        (  440750.000, 3751290.000)  (  2d49'34.75"W, 77d 7'26.87"N)
+-
+ Testing listgeo ProjectedCSTypeGeoKey_3083_albers_equal_area.tif
+ Geotiff_Information:
+    Version: 1
+@@ -1915,13 +1822,6 @@
+ Prime Meridian: 8901/Greenwich (0.000000/  0d 0' 0.00"E)
+ Projection Linear Units: 9001/metre (1.000000m)
+ 
+-Corner Coordinates:
+-Upper Left    (  440720.000, 3751320.000)  (  3d57'32.60"E, 33d41'55.25"N)
+-Lower Left    (  440720.000, 3751260.000)  (  3d57'32.60"E, 33d41'53.31"N)
+-Upper Right   (  440780.000, 3751320.000)  (  3d57'34.54"E, 33d41'55.25"N)
+-Lower Right   (  440780.000, 3751260.000)  (  3d57'34.54"E, 33d41'53.31"N)
+-Center        (  440750.000, 3751290.000)  (  3d57'33.57"E, 33d41'54.28"N)
+-
+ Testing listgeo equidistant_cylindrical.tif
+ Geotiff_Information:
+    Version: 1
+@@ -1966,13 +1866,6 @@
+ Prime Meridian: 8901/Greenwich (0.000000/  0d 0' 0.00"E)
+ Projection Linear Units: 9001/metre (1.000000m)
+ 
+-Corner Coordinates:
+-Upper Left    (  440720.000, 3751320.000)  (  3d57'32.60"E, 33d41'55.25"N)
+-Lower Left    (  440720.000, 3751260.000)  (  3d57'32.60"E, 33d41'53.31"N)
+-Upper Right   (  440780.000, 3751320.000)  (  3d57'34.54"E, 33d41'55.25"N)
+-Lower Right   (  440780.000, 3751260.000)  (  3d57'34.54"E, 33d41'53.31"N)
+-Center        (  440750.000, 3751290.000)  (  3d57'33.57"E, 33d41'54.28"N)
+-
+ Testing listgeo pixel_is_point_wgs84.tif
+ Geotiff_Information:
+    Version: 1

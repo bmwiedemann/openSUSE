@@ -23,10 +23,13 @@ Name:           geotiff
 Version:        1.7.4
 Release:        0
 Summary:        Library to handle georeferenced TIFF
-License:        MIT AND SUSE-Public-Domain
+License:        MIT AND LicenseRef-SUSE-Public-Domain
 URL:            https://github.com/OSGeo/libgeotiff
 Source0:        https://github.com/OSGeo/libgeotiff/releases/download/%{version}/libgeotiff-%{version}.tar.gz
+Patch0:         testlistgeo-proj-version-robust.patch
 BuildRequires:  pkgconfig
+# The test suite needs the PROJ database (proj.db) at check time
+BuildRequires:  proj
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(proj) >= 6.0
@@ -60,22 +63,25 @@ This library is designed to permit the extraction and parsing of the
 GeoTIFF keys in new files.
 
 %prep
-%autosetup -n lib%{name}-%{version}
+%autosetup -p1 -n lib%{name}-%{version}
 
 %build
 export CFLAGS="%{optflags} $CFLAGS -g -fno-strict-aliasing -D _BSD_SOURCE"
 export CXXFLAGS="%{optflags} $CXXFLAGS -g -fno-strict-aliasing"
 %configure \
-	--prefix=%{_prefix} \
-	--includedir=%{_includedir}/lib%{name} \
-	--with-proj \
-	--with-jpeg \
-	--with-zip \
-	--with-pic \
-	--enable-static=no \
-	--enable-debug=yes \
-	%{nil}
+    --prefix=%{_prefix} \
+    --includedir=%{_includedir}/lib%{name} \
+    --with-proj \
+    --with-jpeg \
+    --with-zip \
+    --with-pic \
+    --enable-static=no \
+    --enable-debug=yes \
+    %{nil}
 %make_build
+
+%check
+%make_build check
 
 %install
 %make_install

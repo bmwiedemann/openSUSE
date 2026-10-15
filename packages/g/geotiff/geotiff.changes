@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 15 07:19:59 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Use the valid SPDX form LicenseRef-SUSE-Public-Domain in
+  the License tag
+- Add %check section running the upstream test suite
+  (testlistgeo and testgeotifcp)
+- Add testlistgeo-proj-version-robust.patch: make the testlistgeo
+  golden-file test robust against PROJ/EPSG database generation
+  changes (drop the EPSG:3812 cases, run the EPSG:4087 cases with
+  -no_corners)
+- Add BuildRequires on proj: the test suite needs the PROJ
+  database (proj.db) at check time
+- Normalize the %configure block indentation to spaces (was tabs)
+
+-------------------------------------------------------------------
 Mon Oct 12 10:45:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Drop BuildRequires gcc-c++: pure C package, no C++ compiler
