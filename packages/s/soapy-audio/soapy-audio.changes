@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 11 09:26:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.2:
+  * Fix hamlib rig control for Softrock (hamlib 4.2 FILPATHLEN rename)
+  * Catch exceptions by const reference
+  * Update for compat with newer CMake
+  * Track the upstream release tag instead of a snapshot
+  * Declare the upstream SoapySDR >= 0.4.0 requirement
+
+-------------------------------------------------------------------
 Sun Aug 30 18:32:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.1+git20251009.63b22ec:

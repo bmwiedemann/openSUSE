@@ -21,10 +21,9 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-audio
 Name:           soapy-audio
-# Upstream last tagged 0.1.1 in 2019. Master is that tag plus the two hamlib
-# patches we used to carry, so the snapshot ships patch-free. '+git' keeps it
-# sorting above the tag.
-Version:        0.1.1+git20251009.63b22ec
+# Upstream tags releases again; the 0.1.2 tag ships the hamlib fixes
+# patch-free.
+Version:        0.1.2
 Release:        0
 Summary:        SoapySDR module for audio devices
 # Legal-Review-Notice: cmake/Modules/FindRtAudio.cmake is BSD-3-Clause (Idiap
@@ -43,7 +42,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 # for SoapySDRUtil in %%check
 BuildRequires:  soapy-sdr
-BuildRequires:  pkgconfig(SoapySDR)
+# CMakeLists.txt: find_package(SoapySDR "0.4.0" NO_MODULE REQUIRED)
+BuildRequires:  pkgconfig(SoapySDR) >= 0.4.0
 BuildRequires:  pkgconfig(hamlib)
 BuildRequires:  pkgconfig(libpulse-simple)
 

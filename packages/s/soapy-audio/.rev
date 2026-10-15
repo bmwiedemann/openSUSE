@@ -94,4 +94,12 @@ libSoapySDR.so.0.8-3()(64bit) and soapy-sdr.
 Supersedes SR 1374701.</comment>
     <requestid>1374741</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3e607486237b3fd155ba55fc05b95345</srcmd5>
+    <version>0.1.2</version>
+    <time>1792059540</time>
+    <user>anag_factory</user>
+    <comment>Update soapy-audio to the 0.1.2 release tag (replaces the snapshot).</comment>
+    <requestid>1384073</requestid>
+  </revision>
 </revisionlist>
