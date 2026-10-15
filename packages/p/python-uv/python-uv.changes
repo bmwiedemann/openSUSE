@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:52:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.1:
+  * `uv pip check` and `uv pip install --strict` now ignore
+    Requires-Python upper bounds, consistent with resolution;
+    resolution errors report missing trusted hashes
+  * Managed Python: add CPython 3.16.0a1; atomic sysconfig and
+    version-file updates; faster setup via async I/O
+  * Preview: `uv tool upgrade` upgrades tools with
+    tool-install-locks; preliminary PEP 825 wheel-variant parsing
+  * Smaller binary; faster Simple API and metadata parsing
+  * Fix tool and managed-Python uninstalls deleting unrelated
+    files; restore sdist hard-link and long tar-name support;
+    preserve device files and FIFOs as compile/export targets;
+    fix symlinked-interpreter detection; close concurrent
+    lockfile, cache-clean and tool-install races; reuse
+    environments with Git deps pinned to full hashes
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Refresh the vendored dependencies: astral-ini 0.0.1 replaces
+  configparser for INI parsing, astral-mail-headers 0.0.1 is new,
+  async-compression 0.4.46 -> 0.4.50, tokio-rustls 0.26.5 ->
+  0.26.6, smallvec 1.16.1 -> 1.16.3 and icu 2.1 -> 2.3 are all
+  linked into the binary; the linked graph shrinks to 520 nodes
+  (was 525) and the licence set is unchanged
+- Upstream MSRV is still Rust 1.97, so BuildRequires on cargo is
+  unchanged
+
+-------------------------------------------------------------------
 Sat Oct 10 07:10:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.13.0:
