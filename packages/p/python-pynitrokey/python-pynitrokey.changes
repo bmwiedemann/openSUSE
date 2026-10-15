@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 15 05:05:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 14.0.0:
+  * trussed: Add model and revision to status output in #795
+  * Allow cryptography <53 in #798
+  * Use secrets rather than random to generate secrets in #800
+  * nk3: secret: Make get-password pipe compatible in #801
+  * Fix typo in NetHSM error message in #802
+
+-------------------------------------------------------------------
 Sun Sep 20 11:21:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.0.0:
