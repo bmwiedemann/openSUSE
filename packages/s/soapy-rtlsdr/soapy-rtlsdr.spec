@@ -20,7 +20,7 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-rtlsdr
 Name:           soapy-rtlsdr
-Version:        0.3.3+git20250825.b1f568d
+Version:        0.3.4
 Release:        0
 Summary:        SoapySDR RTL-SDR support module
 License:        MIT

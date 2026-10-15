@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:49:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.4:
+  * Tag folds the Blog V4 snapshot into a release; install
+    prefix follows the SoapySDR root when left at default
+    (OBS passes /usr, no path change)
+  * Drop unused Travis config
+
+-------------------------------------------------------------------
 Mon Aug 31 06:38:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.3+git20250825.b1f568d:

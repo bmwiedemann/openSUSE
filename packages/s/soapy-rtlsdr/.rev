@@ -130,4 +130,12 @@ actually checks for; Source switched to a pinned obs_scm service; URL
 points at the repo rather than the wiki; copyright header.</comment>
     <requestid>1374797</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>005598c49e6ceca406cfecf5bd21fc1f</srcmd5>
+    <version>0.3.4</version>
+    <time>1792059542</time>
+    <user>anag_factory</user>
+    <comment>Update soapy-rtlsdr to the 0.3.4 release tag (folds the Blog V4 snapshot; prefix follows SoapySDR root).</comment>
+    <requestid>1384884</requestid>
+  </revision>
 </revisionlist>
