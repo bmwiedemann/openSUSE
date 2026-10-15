@@ -35,14 +35,15 @@ are included:
   o apfsck: a filesystem integrity checker, for now only useful for testers
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
-make %{?_smp_mflags} -C lib
-make %{?_smp_mflags} -C apfs-label
-make %{?_smp_mflags} -C apfs-snap
-make %{?_smp_mflags} -C apfsck
-make %{?_smp_mflags} -C mkapfs
+%{set_build_flags}
+%make_build -C lib
+%make_build -C apfs-label
+%make_build -C apfs-snap
+%make_build -C apfsck
+%make_build -C mkapfs
 
 %install
 %make_install -C apfs-label BINDIR=%{_sbindir} MANDIR=%{_mandir}

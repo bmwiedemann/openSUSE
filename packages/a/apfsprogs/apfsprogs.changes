@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 13:10:39 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Build with the distribution compiler and linker flags via
+  %set_build_flags; the bare subdir makes previously compiled
+  everything without stack protection or fortification
+
+-------------------------------------------------------------------
 Tue Jun 10 05:50:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.1
