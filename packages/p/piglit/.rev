@@ -7,4 +7,12 @@
     <comment>reintroducing fixed package</comment>
     <requestid>1354645</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7344945e68a67e2a632be9501161f811</srcmd5>
+    <version>1~20260521</version>
+    <time>1792073633</time>
+    <user>anag_factory</user>
+    <comment>Forward benchmark/piglit %check + cleanup (SR 1384990); branch green.</comment>
+    <requestid>1385015</requestid>
+  </revision>
 </revisionlist>

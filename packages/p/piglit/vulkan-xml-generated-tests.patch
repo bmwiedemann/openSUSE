@@ -1,0 +1,36 @@
+From 2f9ce18f7e471d39e2aac2cdd9c6e752cd761a5d Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Wed, 19 Aug 2026 12:54:26 +0200
+Subject: [PATCH] cmake: serialize vulkan.xml after generating Vulkan tests
+
+The vulkan profile walks generated_tests/vulkan/ for .vk_shader_test
+files, but generate-vulkan-xml only depended on static-vkrunner-tests,
+so with parallel make the serializer could run before (or while)
+gen-vulkan-tests produced the generated tests. The resulting
+vulkan.xml.gz then listed a varying subset of the generated tests,
+making the build non-reproducible.
+
+Depend on gen-vulkan-tests like the GL and CL profiles depend on
+gen-gl-tests and gen-cl-tests.
+
+This patch was done while working on reproducible builds for openSUSE.
+---
+ tests/CMakeLists.no_api.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/CMakeLists.no_api.txt b/tests/CMakeLists.no_api.txt
+index b25ee3242..36092e6a3 100644
+--- a/tests/CMakeLists.no_api.txt
++++ b/tests/CMakeLists.no_api.txt
+@@ -79,7 +79,7 @@ piglit_generate_xml(quick_shader.no_isolation quick_shader gen-gl-gen-xml "--no-
+ piglit_generate_xml(no_error no_error gen-gl-gen-xml "" gen-gl-tests static-shader-tests)
+ 
+ add_custom_target(gen-vulkan-xml)
+-piglit_generate_xml(vulkan vulkan gen-vulkan-xml "" static-vkrunner-tests)
++piglit_generate_xml(vulkan vulkan gen-vulkan-xml "" static-vkrunner-tests gen-vulkan-tests)
+ 
+ add_custom_target(gen-cl-xml)
+ piglit_generate_xml(cl cl gen-cl-xml "" gen-cl-tests static-program-tests)
+-- 
+2.55.0
+

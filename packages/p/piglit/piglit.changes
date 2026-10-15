@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 15 09:04:51 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add %check: run the upstream generator unit tests and smoke-run
+  two test programs against Mesa's software renderer on the
+  surfaceless EGL platform
+- Fix the python script interpreters to /usr/bin/python3 and add
+  the missing executable bits to the shipped python scripts
+- Drop unused BuildRequires (glibc-devel, python3-xml,
+  pkgconfig(glu), pkgconfig(libdrm_intel)) and name the wayland,
+  wayland-scanner and gbm pkgconfig requirements the CMake
+  configure probes for explicitly
+- Drop the unused python3-numpy and python3-xml runtime
+  requirements (numpy is build-time only, the xml usage is
+  stdlib-only) and recommend the python modules the replay
+  subcommand needs (Pillow, PyYAML, packaging, requests)
+
+-------------------------------------------------------------------
+Wed Aug 19 17:25:43 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add vulkan-xml-generated-tests.patch to fix a race (boo#1102408)
+- Fix missing percent in .spec
+
+-------------------------------------------------------------------
 Fri May 22 09:02:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1~20260521:
