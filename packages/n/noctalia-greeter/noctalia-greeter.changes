@@ -1,0 +1,196 @@
+-------------------------------------------------------------------
+Tue Oct 06 00:15:02 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.6.0:
+  * chore(meson): bump version
+  * chore(flake): update flake.lock
+  * fix(compositor): handle portable dock output layouts
+  * fix(compositor): honor WLR_LOG verbosity
+  * fix(compositor): disable direct scanout by default
+  * chore(flake): update flake.lock
+  * docs(sync): update nixos sync docs to new passwordlessSync option
+  * fix(keyboard): attempt to load system XKB defaults
+  * feat(input): erase text before cursor with Ctrl+U
+  * fix(output): preserve EDID preferred refresh rate
+  * fix(cursor): warn when configured themes are unavailable
+  * docs(auth): explain serialized fingerprint authentication
+  * fix(appearance): apply wallpaper independently of color scheme
+  * feat(output): support stable identifiers and refresh rates
+  * fix(compositor): prevent unpinned output hotplug loop
+  * fix(sync): increase wallpaper size limits
+  * fixed wrapper?
+  * better test wraped x11 support
+  * docs(greeter): Skip config step on Debian/Ubuntu
+  * test x11 support
+  * feat(nix): add cursorTheme.package option (#124)
+  * fix(greeter): load user avatar at buffer resolution
+  * put mkRenamedOptionModule in nixos module instead of flake
+  * add backwards compatibility
+  * chore(flake): update flake.lock
+  * Fix Documentation
+  * feat(wallpaper): support spanning across greeter outputs
+  * fix(compositor): map cursor to output so absolute input follows transform
+  * fix(nixos): expose configured sessions to greeter
+  * fix flake.nix
+  * update documentaion
+  * disable nixos module
+  * switch config from programs to services.displayManager
+  * fix(greeter): return focus to the password field after a selector menu closes
+
+-------------------------------------------------------------------
+Fri Sep 25 03:30:14 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.5.0:
+  * chore(meson): bump version
+  * docs: good cleanup and restructuration
+  * chore(flake): update flake.lock
+  * docs(greeter): adjust version numbers for passwordless sync
+  * feat(sync): add constrained passwordless appearance sync
+  * fix(ci): convert incomplete pull requests to drafts
+  * ci: enforce pull request template compliance
+  * chore(meson): bump version
+  * fix(auth): harden greetd login handling
+  * fix(compositor): clear outputs before disabling them
+
+-------------------------------------------------------------------
+Wed Sep 02 08:11:35 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.3.1:
+  * chore(meson): bump version
+
+-------------------------------------------------------------------
+Tue Sep 01 04:35:13 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.3.0:
+  * fix(auth): harden greetd login handling
+  * fix(compositor): clear outputs before disabling them
+  * Revert "test sync script" after succesful test
+  * test sync script
+  * docs: greeter now hosts its own documentation
+  * fix(ui): show button tooltips on hover and focus
+  * chore(flake): update flake.lock
+  * Fix dropdown orientation when schemeSelector is configured to show at the bottom
+  * feat(greeter): add config options for power buttons and scheme selector position
+  * fix(greeter): apply corner radius setting to all buttons
+  * style(greeter): fix clang-format violations
+  * fix(keyboard): only enable NumLock when explicitly configured
+  * chore(flake): update flake.lock
+  * fix(compositor): forward wlroots logs to syslog
+  * chore(flake): update flake.lock
+  * fix(wayland): initialize pointer listener safely
+  * feat(config): add syntax error banner & logging
+  * chore(flake): switch nixpkgs tarball from xz to zst
+  * chore(flake): update flake.lock
+
+-------------------------------------------------------------------
+Thu Aug 06 23:19:47 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.2.1:
+  * chore(meson): bump version
+  * fix(compositor): replace nullptr with NULL in C source
+
+-------------------------------------------------------------------
+Thu Aug 06 21:47:32 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.2.0:
+  * chore(meson): bump version
+  * fix(greeter): accept corner_radius_scale=0 from greeter.toml
+  * chore(flake): update flake.lock
+  * fix(compositor): apply synced per-output scales with layout
+
+-------------------------------------------------------------------
+Fri Jul 31 22:17:32 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.1.0:
+  * fix(greeter): resolve session user from state dir ownership
+  * fix(nixos): use tmpfiles L+ symlink instead of C+ for greeter.toml
+  * chore(github): add issue metadata labeling workflow
+  * fix(compositor): honor explicit output layout coordinates
+  * fix(apply-appearance): refuse symlink following in root chmod/chown/write paths
+  * feat(greeter): split declarative greeter.toml from mutable sync.toml
+  * fix(polkit): use absolute path in exec.path annotation
+  * fix(log): route debug logs to stderr
+  * docs(readme): align nixos settings and sync notes with code
+  * docs(greeter): align nixos settings with module (no cursor.package)
+  * fix(compositor): pause drm commits while logind seat inactive
+  * fix(compositor): use selected mode size for auto ui scale
+  * feat(greeter): pass XDG session env via greetd start_session
+  * feat(greeter): apply staged output_transforms to greeter.toml
+  * feat(greeter): apply synced font_family from appearance.json
+  * fix(compositor): ignore keyboard events during teardown
+  * chore(flake): update flake.lock
+  * fix(log): use DBG/INF/WRN/ERR level tags like noctalia
+  * fix(nix): add system header dependencies
+  * refactor(build): Require system json, toml++, and stb
+  * fix(log): use syslog under greetd and park session fds off the VT
+  * docs(tmpfiles): note logs live under /tmp, not the state dir
+  * fix(session): redirect logs to /tmp by default to keep the VT clean
+  * fix(compositor): skip seat updates during display teardown
+  * fix(log): send info to stdout and warnings/errors to stderr
+  * chore(flake): update flake.lock
+  * refactor(log): default to stderr; make file logging opt-in
+  * feat(packaging): ship tmpfiles drop-in and use state-dir log only
+  * fix(greeter): list AccountsService cached users in the picker
+  * fix(compositor): restore keyboard focus after input device churn
+  * fix(appearance): include unordered_map in appearance_config.h
+  * feat(appearance): load per-output synced wallpapers
+  * fix(output): reject truncated transform config tokens
+  * feat(output): per-output DRM transform for portrait monitors
+  * feat(idle): blank greeter outputs after input idle timeout
+  * chore(flake): update flake.lock
+  * fix(compositor): forward touch input to greeter surfaces
+  * feat(input): add support for single touch input
+  * docs: minor changes in openSUSE deps installation
+  * fix(compositor): keep scheduling frames after present
+  * chore(nix): enable accounts-daemon by default
+  * fix(render): harden suspend resume texture recovery
+  * fix(output): warn on invalid or partial width/height config
+  * feat(output): allow greeter.toml width/height mode override
+  * fix(pointer): remove mouse accel
+  * chore(flake): update flake.lock
+  * feat(input): add word-level deletion/navigation and Ctrl+U clear
+  * allows empty passwords via config (#37)
+  * fix(scripts): use fixed-string grep to prevent duplicate PAM module lines
+  * docs(readme): add cursor.path to NixOS example
+  * fix(compositor): prevent layout operations during shutdown
+  * docs: add openSUSE deps to README
+  * feat(build): Add system_tomlplusplus option
+  * fix(scripts): ensure grep does not prepend filename when finding PAM session line
+  * fix(scripts): replace non-standard ripgrep with grep for PAM setup
+
+-------------------------------------------------------------------
+Fri Jul 31 22:17:07 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.0.0:
+  * chore(ci): add AUR package sync workflow
+  * feat(conf): add appearance.hide_logo option to greeter.toml
+  * feat(keyboard): make NumLock locking configurable via greeter.toml
+  * feat: add reveal apssword icon
+  * fix(greeter): re-enable input after failed-login cancel ack
+  * logs
+  * feat(greeter): always allow empty passwords and surface PAM info messages
+
+-------------------------------------------------------------------
+Wed Jul 22 01:42:56 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Add 3 new buildtime deps 
+
+-------------------------------------------------------------------
+Thu Jul  2 16:35:50 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Add 'harfbuzz-devel' to buildtime dep 
+
+-------------------------------------------------------------------
+Sun Jun 21 09:33:17 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Updated _service file, preventing package downgrade on updates
+
+-------------------------------------------------------------------
+Wed Jun 10 17:05:52 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Drop 'wlr-randr' and 'cage' deps and add 'wlroots0.20' as runtime dep
+
+-------------------------------------------------------------------
+Mon Jun  8 19:29:00 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Added 'wlr-randr' as runtime dep 
