@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        34.0.4
+Version:        34.0.5
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -149,7 +149,7 @@ Requires:       %{name} = %{version}
 Requires:       apache2
 Requires:       mod_php_any < 8.6.0
 Requires:       mod_php_any >= 8.3.0
-Supplements:    packageand(apache2:%name)
+Supplements:    (apache2 and %name)
 
 %description apache
 This subpackage contains the Apache configuration files
