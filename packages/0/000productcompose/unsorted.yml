@@ -707,6 +707,7 @@ unsorted:
   - antlr4-maven-plugin 
   - antlr4-tool 
   - anubis 
+  - anura 
   - aom-tools 
   - aop 
   - aopalliance 
@@ -11414,8 +11415,7 @@ unsorted:
   - libIlmThread-3_4-33-32bit 
   - libImath-3_2-30-32bit 
   - libIrrlicht1_8 
-  - libKChart6-3 
-  - libKChart6-3-lang 
+  - libKChart2 
   - libKCompactDisc6-5 
   - libKDb3-4 
   - libKF5Attica5 
@@ -11445,6 +11445,7 @@ unsorted:
   - libKF5Syndication5 
   - libKF5SyntaxHighlighting5 
   - libKF5SyntaxHighlighting5-lang 
+  - libKF5ThreadWeaver5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
   - libKGantt2 
@@ -14513,6 +14514,7 @@ unsorted:
   - libkcddb-devel 
   - libkcddb-lang 
   - libkcddb-qt6-devel 
+  - libkchart-lang 
   - libkcompactdisc-lang 
   - libkcompactdisc-qt6-devel 
   - libkdcraw-devel 
@@ -28353,7 +28355,6 @@ unsorted:
   - python313-transitions 
   - python313-translate-toolkit 
   - python313-translate-toolkit-man 
-  - python313-translation-finder 
   - python313-translationstring 
   - python313-translitcodec 
   - python313-tree-sitter 
@@ -28540,9 +28541,6 @@ unsorted:
   - python313-webassets 
   - python313-webauthn 
   - python313-webcolors 
-  - python313-weblate-fonts 
-  - python313-weblate-language-data 
-  - python313-weblate-schemas 
   - python313-webruntime 
   - python313-websocket-client 
   - python313-websockets 
@@ -32497,7 +32495,6 @@ unsorted:
   - python314-transitions 
   - python314-translate-toolkit 
   - python314-translate-toolkit-man 
-  - python314-translation-finder 
   - python314-translationstring 
   - python314-translitcodec 
   - python314-tree-sitter 
@@ -32684,9 +32681,6 @@ unsorted:
   - python314-webauthn 
   - python314-webcolors 
   - python314-webencodings 
-  - python314-weblate-fonts 
-  - python314-weblate-language-data 
-  - python314-weblate-schemas 
   - python314-webruntime 
   - python314-websocket-client 
   - python314-websockets 

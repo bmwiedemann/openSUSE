@@ -1200,7 +1200,8 @@ packagesets:
    - libImlib2-1 # reason: dvd:patterns-kde-kde
    - libJudy1 # reason: dvd:patterns-server-lamp_server
    - libKCddb5 # reason: dvd:patterns-kde-kde
-   - libKChart2 # reason: dvd:patterns-media-rest_dvd
+   - libKChart6-3 # reason: dvd:patterns-media-rest_dvd
+   - libKChart6-3-lang # reason: dvd:patterns-media-rest_dvd
    - libKDEGames6 # reason: dvd:patterns-kde-kde
    - libKDSoapWSDiscoveryClient0 # reason: dvd:patterns-kde-kde
    - libKDcrawQt6-5 # reason: dvd:patterns-kde-kde
@@ -1249,7 +1250,6 @@ packagesets:
    - libKF5Style5 # reason: dvd:patterns-kde-kde
    - libKF5TextWidgets5 # reason: dvd:patterns-kde-kde
    - libKF5TextWidgets5-lang # reason: dvd:patterns-kde-kde
-   - libKF5ThreadWeaver5 # reason: dvd:patterns-media-rest_dvd
    - libKF5Wallet5 # reason: dvd:patterns-kde-kde
    - libKF5WidgetsAddons5 # reason: dvd:patterns-kde-kde
    - libKF5WidgetsAddons5-lang # reason: dvd:patterns-kde-kde
@@ -2254,7 +2254,6 @@ packagesets:
    - libkbdfile1 # reason: dvd:openSUSE-release
    - libkcddb-qt6 # reason: dvd:patterns-kde-kde
    - libkcddb-qt6-lang # reason: dvd:patterns-kde-kde
-   - libkchart-lang # reason: dvd:patterns-media-rest_dvd
    - libkdcraw-qt6 # reason: dvd:patterns-kde-kde
    - libkdecorations3-6 # reason: dvd:patterns-kde-kde
    - libkdecorations3-6-lang # reason: dvd:patterns-kde-kde
