@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:53:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.31.0:
+  * Enhancements
+    - The typosquat-uses audit now supports pre-commit config
+      inputs (#2437)
+    - The self-hosted-runner audit is now significantly more
+      precise (#2350)
+    - The dangerous-triggers audit now considers the issue_comment
+      trigger fundamentally dangerous (#2396)
+    - zizmor is now aware of the image_version workflow trigger
+      (#2397)
+    - The dangerous-triggers audit now produces more precise
+      finding/diagnostic spans (#2402)
+    - The cache-poisoning audit is now aware of pnpm/setup (#2409)
+    - The unpinned-images audit now produces more precise findings
+      when the user's workflow contains an indirect matrix (#2395)
+    - The cache-poisoning audit is now aware of GitHub's new
+      cache-mode: setting, and will skip any findings that would
+      occur when a job has an effective cache-mode: none (#2418)
+    - The cache-poisoning audit now flags usages of cache-mode:
+      write and cache-mode: write-only with dangerous triggers,
+      i.e. triggers that give an attacker privileged code execution
+      (#2426)
+    - zizmor now uses a tree-sitter grammar for PowerShell that's
+      more precise/capable of capturing more non-trivial PowerShell
+      expressions (#2444)
+  * Bug Fixes
+    - Fixed a class of false positives/imprecisions in
+      adhoc-packages that caused some pnpm and yarn invocations to
+      be misclassified as package installations (#2386)
+    - Fixed a bug where zizmor would fail to honor Git submodules
+      and worktrees when discovering configuration files relative
+      to a repo root (#2390)
+    - Fixed a bug where the ref-version-mismatch audit would crash
+      on unusually placed version comments (#2394)
+    - Fixed a bug where zizmor would fail to handle some pre-commit
+      inputs that use prek extensions to the language_version and
+      default_language_version keys (#2413)
+    - Fixed a bug where the use-trusted-publishing audit would fail
+      to detect certain true-positive patterns inside of PowerShell
+      blocks (#2444)
+  * Dependencies
+    - chore(deps): bump the cargo group with 2 updates (#2440)
+    - chore(deps): bump the github-actions group across 1 directory
+      with 2 updates (#2442)
+    - chore(deps): bump the cargo group with 2 updates (#2434)
+    - chore(deps): bump the cargo group with 3 updates (#2415)
+    - chore(deps): bump the github-actions group with 2 updates
+      (#2416)
+    - chore(deps): bump the cargo group with 3 updates (#2399)
+    - chore(deps): bump the github-actions group with 3 updates
+      (#2400)
+    - chore(deps): bump the cargo group across 1 directory with 7
+      updates (#2369)
+    - chore(deps): bump the github-actions group with 2 updates
+      (#2370)
+
+-------------------------------------------------------------------
 Thu Sep 17 05:17:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.30.1:
