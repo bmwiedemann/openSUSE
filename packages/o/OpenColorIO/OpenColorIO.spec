@@ -19,20 +19,22 @@
 %define build_flavor @BUILD_FLAVOR@%{nil}
 %if "%{build_flavor}" == "ocio_tools"
 %bcond_without ocio_tools
+%bcond_with    ocio_tools_docs
 %else
 %bcond_with    ocio_tools
+%bcond_with    ocio_tools_docs
 %endif
 # Ensure that libyaml-cpp version is the one that is built against
 # See boo#1160171
 %define yamlrequires %(rpm -q --requires yaml-cpp-devel | grep libyaml || echo aaa_base)
-%define so_ver 2_5
+%define so_ver 2_6
 %define pkg_name OpenColorIO
 %if %{without ocio_tools}
 Name:           OpenColorIO
 %else
 Name:           OpenColorIO-tools
 %endif
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        Color Management Solution Geared Towards Motion Picture Production
 License:        BSD-3-Clause
@@ -137,7 +139,11 @@ sed -i 's|DESTINATION lib|DESTINATION %{_lib}|' src/OpenColorIO/CMakeLists.txt
     -DOCIO_USE_SSE=OFF \
 %endif
 %if %{with ocio_tools}
+%if %{with ocio_tools_docs}
     -DOCIO_BUILD_DOCS=ON
+%else
+    -DOCIO_BUILD_DOCS=OFF
+%endif
 %else
     -DOCIO_BUILD_APPS=OFF \
     -DOCIO_BUILD_DOCS=OFF
@@ -160,8 +166,10 @@ rm %{buildroot}%{_datadir}/ocio/setup_ocio.sh
 %if %{without ocio_tools}
 rm -rf %{buildroot}%{_docdir}/%{pkg_name}/
 %else
+%if %{with ocio_tools_docs}
 mv %{buildroot}%{_datadir}/doc/OpenColorIO/html/ %{buildroot}%{_docdir}/%{pkg_name}/
 rmdir %{buildroot}%{_datadir}/doc/OpenColorIO
+%endif
 rm -rf %{buildroot}%{_libdir}
 rm -rf %{buildroot}%{_includedir}
 %endif
@@ -177,8 +185,10 @@ rm -rf %{buildroot}%{_includedir}
 %exclude %{_docdir}/%{pkg_name}/html/
 %{_datadir}/ocio/
 
+%if %{with ocio_tools_docs}
 %files -n %{pkg_name}-doc
 %{_docdir}/%{pkg_name}/html/
+%endif
 %else
 
 %files devel

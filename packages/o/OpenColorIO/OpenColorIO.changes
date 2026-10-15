@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Oct 15 10:34:18 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix a build issue fallout of last change
+
+-------------------------------------------------------------------
+Fri Oct  2 18:40:36 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Temporarily disable ocio_tools doc building: it's broken for
+  our python sphinx environment
+
+-------------------------------------------------------------------
+Thu Oct  1 21:29:40 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.6.0
+  This is the main new feature release for this year and is the
+  base version for the CY2027 VFX Reference Platform (which
+  specifies 2.6.x).
+
+  Ideally, application developers will introduce 2.6.0 into their
+  testing programs now and then update to the latest 2.6.x release
+  available before shipping next year.
+
+  This documentation page explains the new features in this
+  release.
+
+  - Major new features:
+    - PR #2265, Add read/write support for SMPTE ST2136-1 CLF
+    - PR #2344, Config compatibility validation for HDR displays
+    - PR #2345, Add functions to support ASWF color interop ID
+    - PR #2341, Display and view alias support
+    - PR #2353, Add 2.6.0 built-in configs for ACES
+    - PR #2271, Add DirectX 12 GPU unit test backend for Windows
+    - PR #2243, Add Vulkan unit test framework
+  - Bug fixes and minor enhancements:
+    - PR #2197, Alpha channel should be 1 by default, not 0
+    - PR #2342, Fix RGB/Hue curve performance issue on Metal
+    - PR #2343, Add Apple Log 2 built-in transform
+    - PR #2336, Add RGB-to-HMJ FixedFunction
+    - PR #2319, Fix GPU shader correctness surfaced by DXC
+    - PR #2244, Optimizer refactor and debugging output
+    - PR #2310, Have ociocheck check library version first
+    - PR #2318, Avoid possible cycles in transforms
+    - PR #2253, Update Website with LF Trademark Disclaimer
+    - PR #2261, Remove redundant unit test failure declaration
+    - PR #2311, Add CVE number to security text
+    - PR #2323, Fix ocioconvert invalid bit-depth handling
+    - PR #2349, SMPTE CLF no-clamp Range writing
+    - PR #2322, Remove ocioview from main repo (now has its own
+      repo)
+    - PR #2266, Increment library version to 2.6.0 dev
+    - PR #2355, Update notes for 2.6 release
+  - Build process enhancements:
+    - PR #2350, Support Yaml 0.9.0 and other dependency updates
+    - PR #2282, Update CI to VFX 2026
+    - PR #2354, Fix MSVC runtime initialization
+    - PR #2097, Implement ocioview support for Astral uv
+    - PR #2262, Setup debugger env paths for Visual Studio
+    - PR #2302, Improve CMake and Actions settings
+    - PR #2315, Fix 2023.3 Linux container build break
+    - PR #2324, Fix various Actions problems
+
+-------------------------------------------------------------------
 Wed May 13 19:45:36 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.5.2

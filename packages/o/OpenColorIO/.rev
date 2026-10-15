@@ -273,4 +273,41 @@
     <comment></comment>
     <requestid>1353592</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0db56947a1930abc1ea570c8c2143c00</srcmd5>
+    <version>2.6.0</version>
+    <time>1792073590</time>
+    <user>anag_factory</user>
+    <comment>- Fix a build issue fallout of last change
+
+- Temporarily disable ocio_tools doc building: it's broken for
+  our python sphinx environment
+
+- Update to 2.6.0
+  This is the main new feature release for this year and is the
+  base version for the CY2027 VFX Reference Platform (which
+  specifies 2.6.x).
+  Ideally, application developers will introduce 2.6.0 into their
+  testing programs now and then update to the latest 2.6.x release
+  available before shipping next year.
+  This documentation page explains the new features in this
+  release.
+  - Major new features:
+    - PR #2265, Add read/write support for SMPTE ST2136-1 CLF
+    - PR #2344, Config compatibility validation for HDR displays
+    - PR #2345, Add functions to support ASWF color interop ID
+    - PR #2341, Display and view alias support
+    - PR #2353, Add 2.6.0 built-in configs for ACES
+    - PR #2271, Add DirectX 12 GPU unit test backend for Windows
+    - PR #2243, Add Vulkan unit test framework
+  - Bug fixes and minor enhancements:
+    - PR #2197, Alpha channel should be 1 by default, not 0
+    - PR #2342, Fix RGB/Hue curve performance issue on Metal
+    - PR #2343, Add Apple Log 2 built-in transform
+    - PR #2336, Add RGB-to-HMJ FixedFunction
+    - PR #2319, Fix GPU shader correctness surfaced by DXC
+    - PR #2244, Optimizer refactor and debugging output
+    - PR #2310, Have ociocheck check library version first</comment>
+    <requestid>1384996</requestid>
+  </revision>
 </revisionlist>
