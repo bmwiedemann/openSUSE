@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Oct 14 20:15:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- description typo fixes
+
+-------------------------------------------------------------------
+Wed Oct 14 14:14:14 UTC 2026 - olaf@aepfle.de
+
+- Add optional vvenc plugin
+
+-------------------------------------------------------------------
+Tue Oct 13 15:03:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.23.6:
+  * Security fixes:
+    + (GHSA-h4h8-qgvc-m7r2) Memory exhaustion in the OpenJPEG
+      decoder plugin through the tile and component counts of a
+      JPEG 2000 codestream.
+    + (GHSA-fcmw-5764-7rq8) Memory exhaustion in the uncompressed
+      (unci) decoder with generic compression.
+    + (GHSA-6fqc-p7r8-2g36) CPU exhaustion in the unci decoder with
+      generic compression.
+    + (GHSA-q7mw-2fmm-5q94) Heap out-of-bounds read in libsharpyuv
+      through sample values above the bit depth of an image.
+    + (GHSA-vv35-6hxg-95x8) The bit depth that an image handle
+      reports could differ from the bit depth of the decoded image,
+      so that an application reading the planes with the bit depth
+      of the handle read out of bounds.
+    + (GHSA-8p2c-9wv4-rx4p) Null pointer dereference when decoding
+      an image sequence in which a chunk of a visual track
+      references a non-visual sample entry.
+    + (GHSA-86ch-j429-fpr2) With the FFmpeg decoder plugin, the
+      image size limit was not reliably applied before an HEVC
+      bitstream reached FFmpeg, so a file could make the decoder
+      allocate buffers for a much larger picture than its ispe
+      property declares.
+    + (GHSA-3gwx-cjv4-jr74) Reachable assertion when decoding a
+      grid image whose tiles have an alpha plane of more than 16
+      bits, which unci tiles can have since v1.22.0.
+    + (GHSA-hqpw-h8p6-22q9) Heap out-of-bounds read of up to 6
+      bytes in the FFmpeg decoder plugin.
+    + (GHSA-hvwh-xpj6-ph5x) Use after free of an error message in
+      the WebP (since v1.22.1) and raw (since v1.22.0) input
+      loaders of heif-enc.
+    + (GHSA-v5rj-g4wv-j5w3) Decoded images could contain sample
+      values above their declared bit depth.
+  * For hardening, bug fixes and behavior changes, please see:
+    https://github.com/strukturag/libheif/releases/tag/v1.23.6
+
+-------------------------------------------------------------------
+Mon Sep 28 20:17:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix typo
+
+-------------------------------------------------------------------
 Mon Sep 21 19:05:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.23.5:

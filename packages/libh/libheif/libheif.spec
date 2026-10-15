@@ -33,6 +33,7 @@
 %bcond_with openjpeg
 %bcond_with openjph
 %bcond_with svtenc
+%bcond_with vvenc
 %if 0%{?suse_version} > 1500
 %ifarch aarch64 riscv64 x86_64
 %bcond_without svtenc
@@ -47,7 +48,7 @@
 %bcond_with heif_view
 
 Name:           libheif%{?psuffix}
-Version:        1.23.5
+Version:        1.23.6
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        LGPL-3.0-only AND MIT
@@ -84,6 +85,9 @@ BuildRequires:  pkgconfig(openjph)
 BuildRequires:  pkgconfig(rav1e)
 %if %{with svtenc}
 BuildRequires:  pkgconfig(SvtAv1Enc)
+%endif
+%if %{with vvenc}
+BuildRequires:  vvenc-devel
 %endif
 %if %{with x264}
 BuildRequires:  pkgconfig(x264)
@@ -134,7 +138,7 @@ Supplements:    libheif1
 Requires:       libheif1 = %{version}-%{release}
 
 %description dav1d
-This plugin provides the dav1d encoder for AVIF to libheif. Packaged separately
+This plugin provides the dav1d decoder for AVIF to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
 
 %package ffmpeg
@@ -174,8 +178,9 @@ Supplements:    libheif1
 Requires:       libheif1 = %{version}-%{release}
 
 %description openjpeg
-This plugin provides the OpenJPEG J2K encoder and decoder for JPEG to libheif. Packaged separately
-so that the libraries it requires are not pulled in by default by libheif.
+This plugin provides the OpenJPEG J2K encoder and decoder for JPEG-2000 to
+libheif. Packaged separately so that the libraries it requires are not pulled
+in by default by libheif.
 
 %package openh264
 Summary:        Plugin OpenH264 decoder in HEIF
@@ -217,8 +222,18 @@ Requires:       libheif1 = %{version}-%{release}
 This plugin provides the SVT-AV1 encoder for AVIF to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
 
+%package vvenc
+Summary:        Plugin VVC encoder
+Group:          System/Libraries
+Supplements:    libheif1
+Requires:       libheif1 = %{version}-%{release}
+
+%description vvenc
+This plugin provides the VVC encoder for VVIC to libheif. Packaged separately
+so that the libraries it requires are not pulled in by default by libheif.
+
 %package x264
-Summary:        Pluging for X264 encoder
+Summary:        Plugin for X264 encoder
 Group:          System/Libraries
 Supplements:    libheif1
 Requires:       libheif1 = %{version}-%{release}
@@ -235,7 +250,7 @@ Supplements:    libheif1
 Requires:       libheif1 = %{version}-%{release}
 
 %description HEIF
-This plugin provides an decoder and encoder for HEIF to libheif. Packaged separately
+This plugin provides a decoder and encoder for HEIF to libheif. Packaged separately
 so that the libraries it requires are not pulled in by default by libheif.
 
 %package devel
@@ -244,7 +259,7 @@ Group:          Development/Libraries/C and C++
 Requires:       libheif1 = %{version}-%{release}
 
 %description devel
-libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
+libheif is an ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
 This package contains the header files.
 
 %package -n gdk-pixbuf-loader-libheif
@@ -254,7 +269,7 @@ Supplements:    (libheif1 and libgdk_pixbuf-2_0-0)
 Requires:       libheif1 = %{version}-%{release}
 
 %description -n gdk-pixbuf-loader-libheif
-A ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
+An ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
 
 This package contains the GDK PixBuf Loader for %{name}.
 
@@ -264,7 +279,7 @@ Group:          Productivity/Graphics/Other
 Requires:       libheif1 = %{version}-%{release}
 
 %description -n heif-examples
-A ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
+An ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
 
 This package contains example binary programs for %{name}.
 
@@ -275,7 +290,7 @@ Supplements:    libheif1
 Requires:       libheif1 = %{version}-%{release}
 
 %description -n heif-thumbnailer
-Allows to show thumbnail previews of HEIF and AVIF images using %{name}.
+Enables showing thumbnail previews of HEIF and AVIF images using %{name}.
 
 %prep
 %autosetup -p1 -n libheif-%{version}
@@ -349,7 +364,11 @@ sed -i '/add_libheif_test(encode)/d' tests/CMakeLists.txt
 	-DWITH_FFMPEG_DECODER_PLUGIN=ON \
 	-DWITH_UVG266="OFF" \
 	-DWITH_VVDEC="OFF" \
+%if %{with vvenc}
+	-DWITH_VVENC="ON" \
+%else
 	-DWITH_VVENC="OFF" \
+%endif
 	-DCMAKE_SKIP_RPATH=ON \
 	-DBUILD_TESTING=OFF \
 	-DWITH_REDUCED_VISIBILITY=ON \
@@ -367,7 +386,7 @@ sed -i '/add_libheif_test(encode)/d' tests/CMakeLists.txt
 %if %{with test}
 %check
 cd build
-export LD_LIBRARY_PATH=$(pwd)/libheif
+export LD_LIBRARY_PATH=$PWD/libheif
 make test
 %endif
 
@@ -456,6 +475,12 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %files svtenc
 %license COPYING
 %{_libexecdir}/libheif/libheif-svtenc.so
+%endif
+
+%if %{with vvenc}
+%files vvenc
+%license COPYING
+%{_libexecdir}/libheif/libheif-vvenc.so
 %endif
 
 %if %{with x264}
