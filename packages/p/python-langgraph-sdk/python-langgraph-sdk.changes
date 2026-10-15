@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:46:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.7:
+  * End a thread stream run only on a root lifecycle event
+  * Order delta channel replay by task path
+
+-------------------------------------------------------------------
 Thu Oct  8 06:23:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.6:
