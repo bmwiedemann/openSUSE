@@ -117,4 +117,12 @@
 </comment>
     <requestid>1380967</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>de93557c3e0bc7b1f9a4045d847478a8</srcmd5>
+    <version>6.4.1</version>
+    <time>1792059720</time>
+    <user>anag_factory</user>
+    <comment>Update to 6.4.1 (swift-6.4.1-RELEASE): re-tag of the 6.4.0 tree, no source changes. Both distro patches re-tested OK. OBS green, rpmlint 0 errors, soname clean.</comment>
+    <requestid>1384911</requestid>
+  </revision>
 </revisionlist>

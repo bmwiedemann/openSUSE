@@ -18,7 +18,7 @@
 
 %define reltag %{version}-RELEASE
 Name:           libdispatch
-Version:        6.4.0
+Version:        6.4.1
 Release:        0
 Summary:        Apple's Grand Central Dispatch library
 License:        Apache-2.0
