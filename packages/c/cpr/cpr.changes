@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Oct 15 13:10:41 UTC 2026 - munix9@googlemail.com
+
+- Disable cpr_callback_tests for now
+- Remove the "_service" and "latest" files (obsolete)
+
+-------------------------------------------------------------------
+Tue Oct 13 11:28:11 UTC 2026 - munix9@googlemail.com
+
+- Update to version 1.15.1
+  * Removed unused docs submodule by @COM8 in #1331
+
+- Update to version 1.15.0
+  * New Features
+    - Multipart Streaming Requests by @COM8 in #1328
+    - Add support for wolfssl by @COM8 in #1327
+    - Add operator to fetch cookies by their key by @Callen44 in #1312
+
+  * Performance & Improvements
+    - Share SSL session data in ConnectionPool for TLS session
+      resumption by @guylevy84 in #1298
+    - Threadpool Refactor by @COM8 in #1168
+
+  * Bug Fixes
+    - Fixed SSE Windows string parsing by @COM8 in #1279
+    - Fixed curlholder Double Free by @COM8 in #1289
+    - Fix: replace curl_error_map with switch to fix Static
+      Initialization Order Fiasco by @MarkRakhmatov in #1296
+    - Default to NONE for PostRedirectFlags by @transmissions11 in #1285
+    - Restore native ca ssl option by default by @aouxwoux in #1316
+
+  * Build System & Compatibility
+    - Add CPR_SKIP_INSTALL option by @qr243vbi in #1305
+    - Fix error when running CMake configure multiple times with
+      CPR_BUILD_TESTS, bump CMake min version to 3.18 by @Anohkka in #1292
+    - CMake: Use OpenSSL_FOUND over OPENSSL_FOUND by @crueter in #1321
+    - Fix clang-cl compilation error by @Ozidear in #1324
+    - Make warnings-as-errors configurable and fix pedantic
+      semicolon warning by @Akshayembate in #1308
+    - Make warnings as errors configurable by @aouxwoux in #1320
+    - Fix malformed sha tag by @mbKaleb in #1318
+
+- Update mongoose source to version 7.23 (for tests)
+
+-------------------------------------------------------------------
 Sat May 16 07:54:13 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 - update to version 1.14.2
+

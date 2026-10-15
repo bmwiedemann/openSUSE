@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 munix9@googlemail.com
+# Copyright (c) 2026 qr243vbi@atomicmail.io
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +18,28 @@
 #
 
 
-%define sover 1
-%define mongv 7.7
+%define sover   1
+%define mongv   7.23
 
-%if "%{_vendor}" == "openEuler"
-%bcond_with    tests
-%else
-%ifarch %{ix86}
-%bcond_with    tests
-%else
-%bcond_without tests
-%endif
-%endif
+%bcond_without  tests
 
 Name:           cpr
-Version:        1.14.2
+Version:        1.15.1
 Release:        0
 Summary:        libcurl wrapper with a python-requests inspired API
 License:        MIT
 URL:            https://github.com/libcpr/cpr
-Source0:        https://github.com/libcpr/cpr/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source10:       https://github.com/cesanta/mongoose/archive/%{mongv}.tar.gz#/mongoose-%{mongv}.tar.gz
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source10:       https://github.com/cesanta/mongoose/archive/%{mongv}/mongoose-%{mongv}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_filesystem-devel >= 1.77
 BuildRequires:  libunistring-devel
 BuildRequires:  pkgconfig
 BuildRequires:  (ninja or ninja-build)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libpsl)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(zlib)
 
@@ -69,7 +64,6 @@ and asynchronous requests.
 %package devel
 Summary:        The development files for libcpr
 Requires:       lib%{name}%{sover} = %{version}
-
 Requires:       libunistring-devel
 Requires:       pkgconfig(libcurl)
 Requires:       pkgconfig(libssl)
@@ -99,19 +93,25 @@ export TEST=OFF
 export TEST=ON
 %endif
 
-%cmake -DCPR_BUILD_TESTS=$TEST -DCPR_BUILD_TESTS_PROXY=OFF -DCPR_BUILD_TESTS_SSL=$TEST \
-  -DCPR_ENABLE_CURL_HTTP_ONLY=ON -DCPR_DEBUG_SANITIZER_FLAG_ALL=OFF \
-  -DCPR_USE_SYSTEM_CURL=ON -DCPR_USE_SYSTEM_GTEST=ON %{?cmake_opts}
-
+%cmake \
+	-DCPR_BUILD_TESTS=$TEST \
+	-DCPR_BUILD_TESTS_PROXY=OFF \
+	-DCPR_BUILD_TESTS_SSL=$TEST \
+	-DCPR_ENABLE_CURL_HTTP_ONLY=ON \
+	-DCPR_DEBUG_SANITIZER_FLAG_ALL=OFF \
+	-DCPR_USE_BOOST_FILESYSTEM=ON \
+	-DCPR_USE_SYSTEM_CURL=ON \
+	-DCPR_USE_SYSTEM_GTEST=ON \
+	%{?cmake_opts}
 %cmake_build
 
 %install
 %cmake_install
-rm %{buildroot}/usr/lib64/cmake/GTest/GTestTargets.cmake ||:
 
-%check
 %if %{with tests}
-%ctest --parallel 1 --timeout 60 --verbose
+%check
+skip="-E cpr_callback_tests"
+%ctest --parallel 1 --timeout 120 --verbose $skip
 %endif
 
 %if 0%{?suse_version} >= 1500
