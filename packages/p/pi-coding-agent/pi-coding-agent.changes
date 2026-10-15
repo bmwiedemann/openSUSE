@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:47:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.0:
+  * Per-key OpenRouter model lists with the key's context size,
+    max output and prices, including regional endpoints
+  * Published $schema for settings, models, keybindings and
+    themes; theme schema moved and validated on startup
+  * PI_CLIPBOARD_OSC52=1 copies to the remote clipboard over
+    sessions Pi cannot detect
+  * Codemode shows input constraints and run elapsed/total time
+  * before_agent_start also fires for extension-triggered runs;
+    handlers must check event.messageType, and the session counts
+    as busy while a run starts
+  * Changed pi mcp list --json resources report, thinking blocks
+    omitted from serialization, terminal cursor only
+  * Fixed Mistral timeout aborting streams, symlinked AGENTS.md in
+    worktrees, codemode @options/timeout and quadratic text join,
+    print-mode truncation exit, MCP resources and OAuth, plus
+    terminal, keybinding and overlay fixes
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Refresh the vendored node_modules 1.1.0 -> 1.2.0: the six
+  @earendil-works packages move to 1.2.0 and
+  @earendil-works/chord is dropped upstream. 117 shipped modules
+  and the licence union is unchanged
+  * Rebase pi-use-modular-runtime.patch for the removed ./client
+    exports
+
+-------------------------------------------------------------------
 Fri Oct  9 07:00:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.1.0:

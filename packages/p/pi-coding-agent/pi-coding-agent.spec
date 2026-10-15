@@ -23,11 +23,11 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pi-coding-agent
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Minimal terminal coding agent
-# Legal-Review-Notice: pi itself is MIT. The 119 vendored dependencies are
-# MIT (59), Apache-2.0 (36), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2),
+# Legal-Review-Notice: pi itself is MIT. The 117 vendored dependencies are
+# MIT (57), Apache-2.0 (36), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2),
 # Unlicense (1) and 0BSD (1); every dependency declares a license. The tag
 # below is the union of all of them.
 License:        0BSD AND Apache-2.0 AND BSD-3-Clause AND BlueOak-1.0.0 AND ISC AND MIT AND Unlicense
@@ -131,14 +131,11 @@ npm pkg delete devDependencies
 cd %{name}
 # --omit=optional: every optionalDependency in this tree is a per-architecture
 # prebuilt binary, which would make the payload of this noarch package differ
-# between build hosts. Since 0.85.0 @earendil-works/chord pulls in esbuild,
-# whose 26 platform packages are ~11 MB of prebuilt linker each; since 0.99.0
-# the dev-side vite chain adds rolldown, lightningcss and fsevents platform
-# packages to the optional set. Source10 and the vendored archive keep the
-# optional entries; the install below simply skips them. esbuild is reached
-# only from chord/bundler and chord/node, which nothing in the shipped tree
-# imports -- pi's only use of chord is chord root, /context and /delta -- so
-# its JavaScript wrapper is inert here.
+# between build hosts. Since 0.99.0 the dev-side vite chain adds rolldown,
+# lightningcss and fsevents platform packages to the optional set (1.2.0
+# dropped the @earendil-works/chord dependency that used to pull in
+# esbuild's platform packages). Source10 and the vendored archive keep the
+# optional entries; the install below simply skips them.
 local-npm-registry %{_sourcedir} install --omit=dev --omit=optional --ignore-scripts
 rm -f npm-shrinkwrap.json package-lock.json
 
@@ -226,6 +223,7 @@ test "$(node %{buildroot}%{nodejs_sitelib}/%{npm_name}/dist/cli.js --version)" =
 %{nodejs_sitelib}/%{npm_name}/dist
 %{nodejs_sitelib}/%{npm_name}/docs
 %{nodejs_sitelib}/%{npm_name}/node_modules
+%{nodejs_sitelib}/%{npm_name}/schemas
 
 %files examples
 %dir %{nodejs_sitelib}

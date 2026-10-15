@@ -288,4 +288,12 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
     <comment>Update pi-coding-agent to 1.1.0 with re-vendored node_modules (ten @earendil-works siblings to 1.1.0, 119 shipped modules unchanged). Local build green, rpmlint clean, both distro patches still apply.</comment>
     <requestid>1383685</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ff692a6f5457758f126ca4228607404d</srcmd5>
+    <version>1.2.0</version>
+    <time>1792073542</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.2.0: OpenRouter per-key lists, config schemas, OSC52 clipboard, codemode timing, before_agent_start changes, plus fixes. Drops chord.</comment>
+    <requestid>1384897</requestid>
+  </revision>
 </revisionlist>
