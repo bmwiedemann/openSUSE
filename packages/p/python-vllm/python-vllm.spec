@@ -48,7 +48,7 @@
 %define         acl_version 52.6.0
 %bcond_without  libalternatives
 Name:           python-vllm%{psuffix}
-Version:        0.30.0
+Version:        0.31.0
 Release:        0
 Summary:        A high-throughput and memory-efficient inference and serving engine for LLMs
 License:        Apache-2.0
@@ -64,15 +64,15 @@ Source0:        https://files.pythonhosted.org/packages/source/v/vllm/vllm-%{ver
 Source10:       https://github.com/oneapi-src/oneDNN/archive/%{onednn_aarch64_commit}.tar.gz#/oneDNN-%{onednn_aarch64_commit_short}.tar.gz
 Source11:       https://github.com/oneapi-src/oneDNN/archive/refs/tags/v%{onednn_x86_version}.tar.gz#/oneDNN-%{onednn_x86_version}.tar.gz
 Source12:       https://github.com/ARM-software/ComputeLibrary/archive/refs/tags/v%{acl_version}.tar.gz#/ComputeLibrary-%{acl_version}.tar.gz
-# PATCH-FIX-OPENSUSE vllm-relax-cpu-requirements.patch -- relax exact pins to what Factory ships and drop optional torchvision/torchaudio/torchcodec/intel-openmp
+# PATCH-FIX-OPENSUSE vllm-relax-cpu-requirements.patch -- relax exact pins to what Factory ships and drop optional torchvision/torchaudio/torchcodec/intel-openmp/triton-cpu
 Patch0:         vllm-relax-cpu-requirements.patch
 # PATCH-FIX-OPENSUSE vllm-cpu-disable-rust-frontend.patch -- do not build the ~575-crate Rust frontend (unvendorable offline; runtime-optional)
 Patch1:         vllm-cpu-disable-rust-frontend.patch
 # PATCH-FIX-UPSTREAM vllm-thinking-budget-scan-cursor.patch boo#1280982 mpluskal@suse.com -- CVE-2026-92365: resume the thinking-budget marker search from a cursor so a generation is not quadratic in its own length
 Patch2:         vllm-thinking-budget-scan-cursor.patch
-# PATCH-FIX-UPSTREAM fix-CVE-2026-105775.patch https://github.com/vllm-project/vllm/pull/57278 (unmerged as of 2026-10-12, rebased onto 0.30.0) -- CVE-2026-105775: keep the mamba block size a multiple of the chunk size so the "all" write-back reads states off chunk ends; DROP as obsolete when updating past the upstream removal of mamba_cache_mode "all" (#58997)
+# PATCH-FIX-UPSTREAM fix-CVE-2026-105775.patch https://github.com/vllm-project/vllm/pull/57278 (unmerged as of 2026-10-15, rebased onto 0.31.0) -- CVE-2026-105775: keep the mamba block size a multiple of the chunk size so the "all" write-back reads states off chunk ends; DROP as obsolete when updating past the upstream removal of mamba_cache_mode "all" (#58997)
 Patch3:         fix-CVE-2026-105775.patch
-# PATCH-FIX-UPSTREAM fix-CVE-2026-105922.patch https://github.com/vllm-project/vllm/pull/57762 (open/unmerged as of 2026-10-12, rebased onto 0.30.0) -- CVE-2026-105922: treat prompt-embedding positions as invalid token IDs so penalty kernels do not index stale CPU token buffer contents
+# PATCH-FIX-UPSTREAM fix-CVE-2026-105922.patch https://github.com/vllm-project/vllm/pull/57762 (open/unmerged as of 2026-10-15, rebased onto 0.31.0) -- CVE-2026-105922: treat prompt-embedding positions as invalid token IDs so penalty kernels do not index stale CPU token buffer contents
 Patch4:         fix-CVE-2026-105922.patch
 BuildRequires:  %{python_module Jinja2}
 # Runtime modules imported eagerly by "import vllm" (needed for the %%check smoke test).
@@ -145,6 +145,12 @@ Requires:       python-msgspec
 Requires:       python-numba >= 0.65.0
 Requires:       python-numpy
 Requires:       python-openai >= 2.25.0
+# Upstream 0.31.0 asks for oss-harmony >= 0.0.11, a fork shipping the same
+# openai_harmony module with embedded vocabularies.  Factory carries only
+# openai-harmony, which provides that same module, so keep requiring it:
+# vllm-relax-cpu-requirements.patch maps the requirement back in the wheel
+# metadata too, so the installed dist-info does not assert a requirement
+# the RPM cannot satisfy.
 Requires:       python-openai-harmony >= 0.0.3
 Requires:       python-opencv >= 4.13.0
 Requires:       python-opentelemetry-api >= 1.27.0
@@ -246,7 +252,7 @@ tar -xf %{SOURCE11} -C ..
 # Build against whatever torch the build root provides instead of upstream's
 # exact 2.13.0 pin, via vLLM's own helper.  Strips torch/torchvision/torchaudio
 # pins from requirements/*.txt and pyproject.toml.
-%python_expand $python use_existing_torch.py --prefix
+%python_expand $python tools/use_existing_torch.py --prefix
 
 %build
 export VLLM_TARGET_DEVICE=%{vllm_target_device}

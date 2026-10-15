@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:59:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.31.0:
+  * Security: per-request mm_processor/media kwargs need
+    --trust-request-mm-kwargs; prefix-cache keys tagged by source
+    with LoRA path hashed; stale multimodal cache entries fixed
+  * --enable-mamba-fine-grained-prefix-cache renamed to
+    --enable-mamba-shared-prefix-checkpoint
+  * Invalid prompt_embeds rejected with 400; embeds state freed
+    with the request
+  * CPU: pre-built Triton CPU, Diamond Rapids FP8 W8A8, faster
+    Arm paged attention
+  * Breaking: tokenizer_mode="slow" removed; quantization="fp8"
+    is fp8_per_tensor; --enforce-eager skips JIT warmup
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- CVE-2026-105775: Mamba "all"-mode block size not a multiple
+  of the chunk size corrupts the state write-back (boo#1284279)
+  * fix-CVE-2026-105775.patch rebased onto 0.31.0, still
+    unfixed upstream
+- CVE-2026-105922: prompt-embeds positions fed stale token IDs
+  into the penalty kernels (boo#1284365)
+  * fix-CVE-2026-105922.patch rebased onto 0.31.0 for the
+    LogitsProcessor refactor, still unfixed upstream
+- Rebase vllm-relax-cpu-requirements.patch (drop new upper bounds
+  Factory exceeds, oss-harmony to openai-harmony, optional
+  triton-cpu); point %prep at tools/use_existing_torch.py
+
+-------------------------------------------------------------------
 Mon Oct 12 08:32:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - CVE-2026-105775: Mamba "all"-mode block size not a multiple

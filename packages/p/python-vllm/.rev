@@ -180,4 +180,12 @@ Built green on aarch64 and x86_64, both flavors.</comment>
     <comment>Security: backport upstream fixes for CVE-2026-105775 (boo#1284279) and CVE-2026-105922 (boo#1284365) on 0.30.0; upstream 0.31.x still vulnerable, no version move.</comment>
     <requestid>1384276</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>754d3fb2aa0ba075281b8a040d625871</srcmd5>
+    <version>0.31.0</version>
+    <time>1792059587</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.31.0; rebase CVE-2026-105775 (boo#1284279) and CVE-2026-105922 (boo#1284365) patches, both still unfixed upstream.</comment>
+    <requestid>1384940</requestid>
+  </revision>
 </revisionlist>
