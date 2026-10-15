@@ -125,4 +125,41 @@ for bsc#1241187 / CVE-2024-0406 / GHSA-rhh4-rh7c-7r5v (forwarded request 1269571
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1344178</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ccbcf4152299741e39e915d215ea791c</srcmd5>
+    <version>2.17.0</version>
+    <time>1792076933</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.17.0
+  * Added bounded concurrent domain enumeration
+  * Added crtname passive source
+  * Added subdomaincenter passive source
+  * Added Options -match-regex and -filter-regex to filter results with regular expressions
+  * Fixed HIGH CVEs
+  * Fixed response body leaks on error responses and unbounded GitHub rate-limit retries
+  * Fixed dropped subdomains reported with uppercase letters or a trailing dot
+  * Fixed ZoomEye source
+  * Fixed data races between concurrent source runs
+  * Fixed scanmalware statistics races between concurrent runs
+  * Fixed HTTP connection reuse
+  * feat(sources): honor -max-results across paginating sources
+  * fix(extractor): match the target domain literally and reject partial hosts
+  * fix(subscraping): cap untrusted source response bodies with a size limit
+  * fix(subscraping): use DialContext instead of the deprecated Dial
+  * feat: add scanmalware passive source
+  * fix(crtsh): set statement_timeout via SQL query to avoid PgBouncer handshake rejection (#1828)
+  * Added shodanct passive source
+  * Added Option -vR, -virustotal-res for VirusTotal source
+  * Added machine-readable source listing with -ls -oJ
+  * Fixed source leaks
+  * Fixed drain source channels on cancel so source goroutines exit instead of leaking on a blocked send
+  * Fixed crtsh's query
+  * Fixed VirusTotal source
+  * Fixed Anubis source
+  * Added the new Sub.md passive source, plus follow-up hardening for non-200 responses and context-aware error delivery
+  * Fixed Netlas community-tier downloads
+  * Fixed control-flow bugs across Hackertarget, IntelX, Shodan, C99, and Chinaz, including better transport error reporting and safer response validation
+  * Fixed rate-limit handling so global and per-source limits work as expected, preserved per-source durations, and prevented nil map panics (forwarded request 1384987 from dheidler)</comment>
+    <requestid>1385019</requestid>
+  </revision>
 </revisionlist>

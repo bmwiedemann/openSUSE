@@ -17,7 +17,7 @@
 
 
 Name:           subfinder
-Version:        2.13.0
+Version:        2.17.0
 Release:        0
 Summary:        Fast passive subdomain enumeration tool
 License:        MIT
