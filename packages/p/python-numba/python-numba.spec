@@ -57,7 +57,7 @@ ExcludeArch:    s390x ppc64 %ix86 %arm
 %endif
 %endif
 Name:           python-numba%{?psuffix}
-Version:        0.67.0
+Version:        0.68.0
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -75,7 +75,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  (tbb-devel >= 2021)
-Requires:       (python-llvmlite >= 0.49 with python-llvmlite < 0.50)
+Requires:       (python-llvmlite >= 0.50 with python-llvmlite < 0.51)
 Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

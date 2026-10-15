@@ -1,7 +1,8 @@
-diff -Nur a/numba/tests/test_caching.py b/numba/tests/test_caching.py
---- a/numba/tests/test_caching.py	2026-04-01 00:27:58.000000000 +0000
-+++ b/numba/tests/test_caching.py	2026-04-07 09:29:43.176913070 +0000
-@@ -1194,6 +1194,7 @@
+Index: numba-0.68.0/numba/tests/test_caching.py
+===================================================================
+--- numba-0.68.0.orig/numba/tests/test_caching.py
++++ numba-0.68.0/numba/tests/test_caching.py
+@@ -1240,6 +1240,7 @@ class TestLocator(InTreeCacheLocator):
      pass
  
  
@@ -9,18 +10,19 @@ diff -Nur a/numba/tests/test_caching.py b/numba/tests/test_caching.py
  class TestCacheLocatorEnvironmentIntegration(TestCase):
      """Integration tests for environment variable functionality."""
  
-@@ -1258,6 +1259,7 @@
+@@ -1304,6 +1305,7 @@ class TestCacheLocatorEnvironmentIntegra
          self.assertIsInstance(cache._impl.locator, expectedLocator)
  
  
 +@unittest.skip("Not functional in OBS environment")
  class TestInTreeCacheLocatorFsAgnostic(TestCase):
-     """Test _InTreeCacheLocatorFsAgnostic class functionality."""
+     """Test InTreeCacheLocatorFsAgnostic deprecation."""
  
-diff -Nur a/numba/tests/test_cli.py b/numba/tests/test_cli.py
---- a/numba/tests/test_cli.py	2026-04-01 00:27:58.000000000 +0000
-+++ b/numba/tests/test_cli.py	2026-04-07 09:29:43.178094659 +0000
-@@ -264,6 +264,7 @@
+Index: numba-0.68.0/numba/tests/test_cli.py
+===================================================================
+--- numba-0.68.0.orig/numba/tests/test_cli.py
++++ numba-0.68.0/numba/tests/test_cli.py
+@@ -264,6 +264,7 @@ class TestGDBCLIInfoBrokenGdbs(TestCase)
              self.assertIn("No such file or directory", stdout)
              self.assertIn(path, stdout)
  
@@ -28,21 +30,11 @@ diff -Nur a/numba/tests/test_cli.py b/numba/tests/test_cli.py
      def test_nonsense_gdb_binary(self):
          # Tests that a nonsense binary specified as gdb it picked up ok
          env = os.environ.copy()
-diff -Nur a/numba/tests/test_mathlib.py b/numba/tests/test_mathlib.py
---- a/numba/tests/test_mathlib.py	2026-04-01 00:27:58.000000000 +0000
-+++ b/numba/tests/test_mathlib.py	2026-04-07 09:29:43.178246595 +0000
-@@ -555,6 +555,7 @@
-                     float('-inf'), float('inf'), float('nan')]
-         self.run_unary(pyfunc, x_types, x_values, prec='exact')
- 
-+    @unittest.skip("Fails on ppc64le https://github.com/numba/numba/issues/8489")
-     def test_ldexp(self):
-         pyfunc = ldexp
-         cfunc = njit(pyfunc)
-diff -Nur a/numba/tests/test_parfors.py b/numba/tests/test_parfors.py
---- a/numba/tests/test_parfors.py	2026-04-01 00:27:58.000000000 +0000
-+++ b/numba/tests/test_parfors.py	2026-04-07 09:29:43.178889961 +0000
-@@ -1205,6 +1205,7 @@
+Index: numba-0.68.0/numba/tests/test_parfors.py
+===================================================================
+--- numba-0.68.0.orig/numba/tests/test_parfors.py
++++ numba-0.68.0/numba/tests/test_parfors.py
+@@ -1205,6 +1205,7 @@ class TestParforNumPy(TestParforsBase):
          self.check_variants(test_impl2, data_gen)
          self.count_parfors_variants(test_impl2, data_gen)
  
@@ -50,7 +42,7 @@ diff -Nur a/numba/tests/test_parfors.py b/numba/tests/test_parfors.py
      def test_ndarray_fill(self):
          def test_impl(x):
              x.fill(7.0)
-@@ -4726,7 +4727,7 @@
+@@ -4734,7 +4735,7 @@ class TestParforsVectorizer(TestPrangeBa
  
              return asm
  
@@ -59,7 +51,7 @@ diff -Nur a/numba/tests/test_parfors.py b/numba/tests/test_parfors.py
      @TestCase.run_test_in_subprocess
      def test_vectorizer_fastmath_asm(self):
          """ This checks that if fastmath is set and the underlying hardware
-@@ -4767,7 +4768,7 @@
+@@ -4775,7 +4776,7 @@ class TestParforsVectorizer(TestPrangeBa
              # check no zmm addressing is present
              self.assertTrue('zmm' not in v)
  
@@ -68,10 +60,11 @@ diff -Nur a/numba/tests/test_parfors.py b/numba/tests/test_parfors.py
      @TestCase.run_test_in_subprocess(envvars={'NUMBA_BOUNDSCHECK': '0'})
      def test_unsigned_refusal_to_vectorize(self):
          """ This checks that if fastmath is set and the underlying hardware
-diff -Nur a/numba/tests/test_parfors_passes.py b/numba/tests/test_parfors_passes.py
---- a/numba/tests/test_parfors_passes.py	2026-04-01 00:27:58.000000000 +0000
-+++ b/numba/tests/test_parfors_passes.py	2026-04-07 09:29:43.179285848 +0000
-@@ -514,6 +514,7 @@
+Index: numba-0.68.0/numba/tests/test_parfors_passes.py
+===================================================================
+--- numba-0.68.0.orig/numba/tests/test_parfors_passes.py
++++ numba-0.68.0/numba/tests/test_parfors_passes.py
+@@ -514,6 +514,7 @@ class TestConvertLoopPass(BaseTest):
              str(raises.exception),
          )
  
