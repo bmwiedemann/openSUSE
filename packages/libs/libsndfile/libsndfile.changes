@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 14 16:21:27 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Add another fix for CVE-2022-33065:
+  libsndfile-CVE-2022-33065-2.patch
+- Fix misaligned memory access issue in psf_binheader_readf()
+  (bsc#1282670, CVE-2026-88386)
+  libsndfile-CVE-2026-88386.patch
+
+-------------------------------------------------------------------
 Thu May  7 12:36:54 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Fix IMA-ADPCM integer overflow (bsc#1263695, CVE-2026-37555):
