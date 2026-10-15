@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-pineconevectordb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define realversion 1.0.0b2
+%define realversion 1.0.0b4
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-pineconevectordb
-Version:        1.0.0~b2
+Version:        1.0.0~b4
 Release:        0
 Summary:        Microsoft Azure Pineconevectordb Management Client Library for Python
 License:        MIT
