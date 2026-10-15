@@ -165,4 +165,12 @@
     <comment>- Use -std=gnu++17 to compile heaptrack after the robin-map update to 1.4.0</comment>
     <requestid>1311454</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>db43b3545423449f70f9f262d88d8ff2</srcmd5>
+    <version>1.6.0~pre20260904</version>
+    <time>1792059575</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1384855</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package heaptrack
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,45 +18,43 @@
 
 # Needed for Leap, see boo#468748
 %global __requires_exclude GLIBC_PRIVATE
-%bcond_without released
+%bcond_with released
 Name:           heaptrack
-Version:        1.5.0
+Version:        1.6.0~pre20260904
 Release:        0
 Summary:        Heap Memory Allocation Profiler
 License:        LGPL-2.1-or-later
 URL:            https://apps.kde.org/heaptrack/
-Source0:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{version}.tar.xz.sig
-Source2:        heaptrack.keyring
 %endif
-# PATCH-FIX-UPSTREAM -- gcc14 compat
-Patch0:         0001-cmake-Fix-C-compatibility-of-libunwind-probes.patch
-# PATCH-FIX-UPSTREAM -- CMake 4 compat
-Patch1:         0001-Use-system-robin-map.patch
-# PATCH-FIX-UPSTREAM -- boost 1.89 compat
-Patch2:         0001-CMake-Make-the-boost-system-component-optional.patch
-BuildRequires:  extra-cmake-modules
+Source2:        heaptrack.keyring
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Allow-to-use-system-robin-map-instead-of-bundled.patch
+Patch2:         0002-Fix-build-with-boost-1.89.patch
+Patch3:         0003-Raise-Boost-minimum-version-to-1.70.patch
+BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  libboost_container-devel
 BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_headers-devel >= 1.70
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libdwarf-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-BuildRequires:  cmake(KChart) >= 2.6.0
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5ThreadWeaver)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KChart6) >= 2.6.0
+BuildRequires:  cmake(KF6ConfigWidgets)
+BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6I18n)
+BuildRequires:  cmake(KF6IconThemes)
+BuildRequires:  cmake(KF6KIO)
+BuildRequires:  cmake(KF6ThreadWeaver)
+BuildRequires:  cmake(Qt6Core) >= 6.5.0
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(tsl-robin-map)
-BuildRequires:  pkgconfig(libdw) >= 0.158
+BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libzstd)
 Suggests:       heaptrack-gui
 
@@ -76,7 +74,7 @@ Summary:        GUI Frontend for Heaptrack
 Requires:       heaptrack = %{version}
 
 %description gui
-A Qt5/KF5 based GUI for Heaptrack.
+A Qt/KF based GUI for Heaptrack.
 
 %lang_package
 
@@ -86,40 +84,37 @@ A Qt5/KF5 based GUI for Heaptrack.
 # Disable building tests, they're not used and post-build-checks trips over it
 sed -i"" '/add_subdirectory(tests)/d' CMakeLists.txt
 
-# Needed after robin-map update to 1.4.0
-sed -i 's#CMAKE_CXX_STANDARD 14#CMAKE_CXX_STANDARD 17#' CMakeLists.txt
-
 %build
 %if "%{_lib}" == "lib64"
 extra_opts="-DLIB_SUFFIX=64"
 %endif
 
-%cmake_kf5 -d build -- $extra_opts
+%cmake_kf6 -DHEAPTRACK_USE_SYSTEM_ROBINMAP=ON $extra_opts
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
 %doc README.md
-%{_kf5_bindir}/heaptrack
-%{_kf5_bindir}/heaptrack_print
+%{_kf6_bindir}/heaptrack
+%{_kf6_bindir}/heaptrack_print
 %{_libdir}/heaptrack/
 
 %files devel
 %{_includedir}/heaptrack_api.h
 
 %files gui
-%{_kf5_bindir}/heaptrack_gui
-%{_kf5_applicationsdir}/org.kde.heaptrack.desktop
-%{_kf5_appstreamdir}/org.kde.heaptrack.appdata.xml
-%dir %{_kf5_iconsdir}/hicolor/*
-%dir %{_kf5_iconsdir}/hicolor/*/*
-%{_kf5_iconsdir}/*/*/*/*.*
+%{_kf6_bindir}/heaptrack_gui
+%{_kf6_applicationsdir}/org.kde.heaptrack.desktop
+%{_kf6_appstreamdir}/org.kde.heaptrack.appdata.xml
+%dir %{_kf6_iconsdir}/hicolor/*
+%dir %{_kf6_iconsdir}/hicolor/*/*
+%{_kf6_iconsdir}/*/*/*/*.*
 
 %files lang -f %{name}.lang
 
