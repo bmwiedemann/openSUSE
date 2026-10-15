@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 14 08:14:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-109349: gix-pack pack version 3 header assertion
+  failure (boo#1285155)
+- CVE-2026-109350: gix-pack ofs-delta base-distance handling
+  flaw (boo#1285155)
+- CVE-2026-109351: gix-pack header object-count denial of
+  service (boo#1285155)
+- Refresh vendored Rust dependencies (gix 0.83.0 -> 0.88.0,
+  gix-pack 0.70.0 -> 0.75.0, gix-status 0.30.0 -> 0.35.0);
+  re-audited licences (913 external crates in the shipped
+  graph, 1247 vendored); licence set unchanged
+- Add 0003-gix-0.88-compat.patch: adapt xai-fast-worktree to
+  the gix 0.88 API (anyhow Context bound, from_bstr signature)
+
+-------------------------------------------------------------------
 Wed Sep 30 08:24:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to git snapshot 1.0.45+git20260929.2bdd1d6 (upstream

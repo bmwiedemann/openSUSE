@@ -1,0 +1,36 @@
+--- a/crates/codegen/xai-fast-worktree/src/git/index.rs	2026-10-14 10:06:55.970242161 +0200
++++ b/crates/codegen/xai-fast-worktree/src/git/index.rs	2026-10-14 10:07:51.068425406 +0200
+@@ -181,7 +181,9 @@
+         false,
+         Default::default(),
+     )
+-    .context("failed to open git index")?;
++    // gix-error 0.4 (via gix 0.88) no longer implements the anyhow
++    // Context bound, so map into anyhow explicitly.
++    .map_err(|e| anyhow::anyhow!("failed to open git index: {e}"))?;
+ 
+     // Update stat info for each file that was copied
+     let mut updated_count = 0;
+@@ -259,7 +261,8 @@
+     let num_updated = updated_count;
+ 
+     // Write the updated index
+-    index.write(Default::default())?;
++    index.write(Default::default())
++        .map_err(|e| anyhow::anyhow!("failed to write git index: {e}"))?;
+ 
+     tracing::debug!(
+         path = %worktree_path.display(),
+--- a/crates/codegen/xai-fast-worktree/src/git/safety/git_dir.rs	2026-10-14 10:06:55.974242609 +0200
++++ b/crates/codegen/xai-fast-worktree/src/git/safety/git_dir.rs	2026-10-14 10:07:04.767229379 +0200
+@@ -125,7 +125,9 @@
+     let config = repo.config_snapshot();
+     let configured = config
+         .string("lfs.storage")
+-        .map(|storage| gix::path::from_bstr(storage.as_ref()).into_owned());
++    // gix-path 0.13 (via gix 0.88) takes impl Into<Cow<BStr>>, so pass
++    // the value through instead of an ambiguously-typed as_ref().
++        .map(|storage| gix::path::from_bstr(storage).into_owned());
+     match configured {
+         Some(storage) if storage.is_absolute() => storage.join("objects"),
+         Some(storage) => repo.common_dir().join(storage).join("objects"),

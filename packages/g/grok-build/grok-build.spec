@@ -58,6 +58,8 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Patch0:         0001-disable-self-updater.patch
 Patch1:         0002-disable-telemetry-by-default.patch
+# PATCH-FIX-OPENSUSE 0003-gix-0.88-compat.patch mpluskal@suse.com -- adapt xai-fast-worktree to the gix 0.88 API
+Patch2:         0003-gix-0.88-compat.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging >= 1.2.0
 # %%limit_build: cap parallel rustc jobs by available memory (see %%build)

@@ -355,4 +355,12 @@ known invalid-license-exception for Linking-exception).</comment>
 </comment>
     <requestid>1381685</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d3869bdae67132750b51d8ce7f07e4b3</srcmd5>
+    <version>1.0.45+git20260929.2bdd1d6</version>
+    <time>1792059563</time>
+    <user>anag_factory</user>
+    <comment>Security: re-vendor gix-pack 0.70.0-&gt;0.75.0 for CVE-2026-109349/109350/109351 (boo#1285155); gix 0.83-&gt;0.88 lockstep.</comment>
+    <requestid>1384842</requestid>
+  </revision>
 </revisionlist>
