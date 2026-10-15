@@ -198,4 +198,12 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
     <comment>Update python-comfyui-frontend-package to 1.55.16 on the 1.55 line. Fixes layer-editor load and templates-nudge placement; agent/billing fixes are cloud-only.</comment>
     <requestid>1383682</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>726e3c66f00a69103abc7d655a0b83de</srcmd5>
+    <version>1.55.17</version>
+    <time>1792059941</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.55.17: Agent node-output fixes, EXR preview/HDR viewer support. Vendored DOMPurify still 3.4.13. Builds green, rpmlint clean.</comment>
+    <requestid>1384890</requestid>
+  </revision>
 </revisionlist>
