@@ -56,8 +56,6 @@ Patch1:         vlc-allow-deprecated-fribidi.patch
 Patch2:         vlc-lua-5.3.patch
 # PATCH-FIX-UPSTREAM fix-build-with-fdk-2.0.patch -- Fix building vlc with libfdk-aac v2
 Patch4:         fix-build-with-fdk-2.0.patch
-# PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
-Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
 Patch101:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
 Patch102:       libupnp-1.18.patch
@@ -78,7 +76,6 @@ BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gdk-pixbuf-devel
 BuildRequires:  gettext-devel
 BuildRequires:  gtk3-devel
-BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libavc1394-devel >= 0.5.3
 BuildRequires:  libcddb-devel >= 0.9.5
 BuildRequires:  libcdio-devel >= 0.78.2
@@ -112,6 +109,8 @@ BuildRequires:  posix_cc
 BuildRequires:  (lua >= 5.1 with lua < 5.4)
 BuildRequires:  (lua-devel >= 5.1 with lua-devel < 5.4)
 BuildConflicts: lua >= 5.4
+BuildRequires:  qt6-base-private-devel
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  pkgconfig(libudev) >= 142
 BuildRequires:  pkgconfig(smbclient)
 %if 0%{?is_opensuse}
@@ -120,10 +119,10 @@ BuildRequires:  pkgconfig(libplacebo) < 6.292.0
 #BuildRequires:  slang-devel
 BuildRequires:  speex-devel >= 1.0.5
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.5.0
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(aom)
 BuildRequires:  pkgconfig(caca) >= 0.99.beta20
 BuildRequires:  pkgconfig(dbus-1) >= 1.6.0
@@ -191,18 +190,14 @@ BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 %endif
 %if 0%{?suse_version} != 1315 || 0%{?is_opensuse}
-BuildRequires:  pkgconfig(Qt5X11Extras)
 # for some reason libXi-devel is explicitly needed on Leap 42.1, otherwise the build fails...
 BuildRequires:  pkgconfig(xi)
 %endif
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libupnp)
 %ifarch %{ix86} x86_64
-%if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
-BuildRequires:  pkgconfig(libprojectM-qt5) >= 2.0.0
-%else
-BuildRequires:  pkgconfig(libprojectM) >= 2.0.0
-%endif
+# Disabled as it pulls in qt5
+%dnl BuildRequires:  pkgconfig(libprojectM) >= 2.0.0
 %endif
 %endif
 %if 0%{?suse_version} < 1330 && ( 0%{?sle_version} < 120200 || 0%{?is_opensuse} < 1 )
@@ -408,9 +403,6 @@ default when `vlc` is invoked from an X session.
 %setup -q
 %patch -P 1 -p1
 %patch -P 4 -p1
-%if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
-%patch -P 100 -p1
-%endif
 %patch -P 101 -p1
 %patch -P 102 -p1
 
@@ -1182,7 +1174,8 @@ fi
 %{_libdir}/vlc/plugins/visualization/libglspectrum_plugin.so
 %if 0%{?is_opensuse}
 %ifarch %{ix86} x86_64
-%{_libdir}/vlc/plugins/visualization/libprojectm_plugin.so
+# Disabled, pulls in qt5
+%dnl %{_libdir}/vlc/plugins/visualization/libprojectm_plugin.so
 %endif
 %endif
 
