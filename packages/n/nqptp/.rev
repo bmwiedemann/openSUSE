@@ -26,4 +26,12 @@
 - Ship nqptp(8) man page</comment>
     <requestid>1357027</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53d64d1d7df93ac2dd7959b3f7131984</srcmd5>
+    <version>1.2.9</version>
+    <time>1792073548</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.2.9: SMI 11 (needs Shairport Sync 5.6; update+restart NQPTP first), grandmaster handling without smoothing restarts, per-client multi-instance fix. OBS green, rpmlint 0 errors.</comment>
+    <requestid>1384883</requestid>
+  </revision>
 </revisionlist>

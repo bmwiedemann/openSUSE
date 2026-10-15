@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:48:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.9:
+  * Shared Memory Interface is now version 11: update NQPTP
+    first, then Shairport Sync 5.6, restarting both in that
+    order
+  * Improve grandmaster-clock change handling, passing clock
+    differences and correction_field data on without
+    restarting smoothing
+  * Restore per-client handling so multiple instances can
+    share an AirPlay 2 group
+
+-------------------------------------------------------------------
 Wed Jun  3 18:33:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.2.8:

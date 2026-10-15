@@ -17,7 +17,7 @@
 
 
 Name:           nqptp
-Version:        1.2.8
+Version:        1.2.9
 Release:        0
 Summary:        Not Quite PTP
 License:        GPL-2.0-only
