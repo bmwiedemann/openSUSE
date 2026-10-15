@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 14 21:17:32 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add a %check smoke test: upstream ships no testsuite, so create
+  parity volumes with the freshly built binary, delete a data file,
+  recover it from the parity volumes and verify the restored content
+
+-------------------------------------------------------------------
 Tue Jun  2 08:10:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Spec cleanup:

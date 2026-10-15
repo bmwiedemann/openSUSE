@@ -41,6 +41,22 @@ corruption.
 %install
 %make_install
 
+%check
+# Upstream has no testsuite; smoke-test the core function end to end:
+# create parity volumes, delete a data file, recover it, verify content.
+mkdir check-tmp
+pushd check-tmp
+for i in 1 2 3; do
+  head -c 100000 /dev/urandom > data$i.bin
+done
+md5sum data1.bin data2.bin data3.bin > before.md5
+%{buildroot}%{_bindir}/par a -n2 test.par data1.bin data2.bin data3.bin
+%{buildroot}%{_bindir}/par c test.par
+rm data2.bin
+%{buildroot}%{_bindir}/par r test.par
+md5sum -c before.md5
+popd
+
 %files
 %doc README AUTHORS NEWS
 %license COPYING

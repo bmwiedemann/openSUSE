@@ -162,4 +162,12 @@
     <comment>Spec cleanup: add explicit gcc+make BuildRequires, use %make_build, drop obsolete Group tag, https URL</comment>
     <requestid>1356649</requestid>
   </revision>
+  <revision rev="23" vrev="193">
+    <srcmd5>d18e3ad0b1f1a64affb1c3a9531ad600</srcmd5>
+    <version>1.1</version>
+    <time>1792073576</time>
+    <user>anag_factory</user>
+    <comment>Forward Archiving/par %check smoke test (SR 1384950); branch green.</comment>
+    <requestid>1384973</requestid>
+  </revision>
 </revisionlist>
