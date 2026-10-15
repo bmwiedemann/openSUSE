@@ -1,7 +1,7 @@
 #
 # spec file for package freeradius-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,18 +21,17 @@ Version:        1.1.7
 Release:        0
 Summary:        FreeRADIUS Client Software
 License:        BSD-2-Clause
-Group:          Productivity/Networking/Radius/Clients
-URL:            http://www.freeradius.org/freeradius-client/
-Source:         ftp://ftp.freeradius.org/pub/freeradius/%{name}-%{version}.tar.gz
+URL:            https://freeradius.org/sub_projects/
+Source0:        https://www.freeradius.org/ftp/pub/radius/%{name}-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        login.example
 Patch0:         freeradius-client-missing_size_t_definition.patch
-BuildRequires:  libnettle-devel
+Patch1:         freeradius-client-nettle4.patch
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(nettle) >= 2.4
 Obsoletes:      radiusclient
 Obsoletes:      radiusclient-ng
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A portable, easy-to-use and standard compliant library suitable for
@@ -41,14 +40,12 @@ protocol (RFCs 2128 and 2139).
 
 %package libs
 Summary:        Shared library of FreeRADIUS Client
-Group:          Productivity/Networking/Radius/Clients
 
 %description libs
-The package contains the shared library of FreeRADIUS Client
+The package contains the shared library of FreeRADIUS Client.
 
 %package devel
 Summary:        Header files, libraries and development documentation for freeradius-client
-Group:          Productivity/Networking/Radius/Clients
 Requires:       %{name}-libs = %{version}
 Requires:       glibc-devel
 
@@ -72,24 +69,22 @@ autoreconf -fiv
     --enable-shadow \
     --with-nettle \
     --with-secure-path \
-	--disable-static \
-	--with-pic
-make %{?_smp_mflags}
+    --disable-static \
+    --with-pic
+%make_build
 
 %install
-make "DESTDIR=$RPM_BUILD_ROOT" install
-rm -f %{buildroot}/%{_sbindir}/login.radius
+%make_install
+rm -f %{buildroot}%{_sbindir}/login.radius
 rm -f login.radius/Makefile*
 rm -f login.radius/migs/Makefile*
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post libs -p /sbin/ldconfig
-
-%postun libs -p /sbin/ldconfig
+%ldconfig_scriptlets libs
 
 %files
-%defattr(-, root, root)
-%doc BUGS COPYRIGHT README.radexample doc/ChangeLog doc/instop.html doc/login.example
+%license COPYRIGHT
+%doc BUGS README.radexample doc/ChangeLog doc/instop.html doc/login.example
 %doc login.radius README.SUSE
 %dir %{_sysconfdir}/radiusclient
 %{_sysconfdir}/radiusclient/dictionary
@@ -101,11 +96,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_sbindir}/*
 
 %files libs
-%defattr(-, root, root)
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-, root, root)
 %{_libdir}/*.so
 %{_includedir}/*.h
 

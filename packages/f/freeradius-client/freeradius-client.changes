@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 15 13:50:00 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add freeradius-client-nettle4.patch:
+  * Adapt to Nettle 4.0 API (<nettle/md5.h>, struct md5_ctx,
+    md5_init, md5_update, md5_digest).
+  * Maintain conditional compatibility with Nettle 3 and Nettle 4
+    by checking NETTLE_VERSION_MAJOR.
+- Download source from http instead of ftp and update URL.
+- Modernize spec file:
+  * Cleanup of obsolete lines
+  * Use %make_build and %make_install macros.
+  * Use %ldconfig_scriptlets macro for libs subpackage.
+  * Use pkgconfig(nettle) in BuildRequires.
+  * Use %license for COPYRIGHT file.
+
+-------------------------------------------------------------------
 Mon Feb 26 08:22:01 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

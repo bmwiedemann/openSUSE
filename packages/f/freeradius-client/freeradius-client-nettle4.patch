@@ -1,0 +1,41 @@
+Adapt MD5 implementation to Nettle 4.0 API.
+Nettle 4.0 dropped <nettle/md5-compat.h> and RFC 1321 compat functions.
+Use native <nettle/md5.h> API and conditionally handle the md5_digest
+signature change between Nettle 3 and Nettle 4 via NETTLE_VERSION_MAJOR.
+
+--- a/lib/rc-md5.c
++++ b/lib/rc-md5.c
+@@ -15,10 +15,22 @@
+ void rc_md5_calc(unsigned char *output, unsigned char const *input,
+ 		     size_t inlen)
+ {
++#ifdef HAVE_NETTLE
++	struct md5_ctx context;
++
++	md5_init(&context);
++	md5_update(&context, inlen, input);
++#if defined(NETTLE_VERSION_MAJOR) && NETTLE_VERSION_MAJOR >= 4
++	md5_digest(&context, output);
++#else
++	md5_digest(&context, MD5_DIGEST_SIZE, output);
++#endif
++#else
+ 	MD5_CTX	context;
+ 
+ 	MD5Init(&context);
+ 	MD5Update(&context, input, inlen);
+ 	MD5Final(output, &context);
++#endif
+ }
+ 
+--- a/lib/rc-md5.h
++++ b/lib/rc-md5.h
+@@ -14,7 +14,8 @@
+ 
+ #ifdef HAVE_NETTLE
+ 
+-#include <nettle/md5-compat.h>
++#include <nettle/md5.h>
++#include <nettle/version.h>
+ 
+ #else
