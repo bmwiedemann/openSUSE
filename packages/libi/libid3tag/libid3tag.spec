@@ -1,7 +1,7 @@
 #
 # spec file for package libid3tag
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lver 0
 Name:           libid3tag
-Version:        0.16.3
+Version:        0.16.4
 Release:        0
 Summary:        ID3 Tag Manipulation Library
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            https://codeberg.org/tenacityteam/libid3tag
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gperf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
@@ -54,7 +54,7 @@ This package contains the header files and static libraries needed to
 develop applications with libid3tag.
 
 %prep
-%setup -q -n %{name}
+%autosetup -n %{name}
 
 %build
 %cmake
@@ -63,15 +63,14 @@ develop applications with libid3tag.
 %install
 %cmake_install
 
-%post -n %{name}%{lver} -p /sbin/ldconfig
-%postun -n %{name}%{lver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{lver}
 
 %files -n %{name}%{lver}
 %license COPYING COPYRIGHT
 %{_libdir}/libid3tag.so.*
 
 %files devel
-%doc CHANGES CREDITS README
+%doc CHANGES CREDITS README.md
 %{_includedir}/id3tag.h
 %{_libdir}/libid3tag.so
 %{_libdir}/cmake/id3tag
