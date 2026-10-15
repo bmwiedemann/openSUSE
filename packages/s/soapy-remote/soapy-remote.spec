@@ -20,7 +20,7 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-remote
 Name:           soapy-remote
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Remote device support for Soapy SDR
 License:        BSL-1.0
@@ -34,7 +34,8 @@ Patch1:         SoapySDRServer-order-after-avahi.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(SoapySDR) >= 0.4.0
+# CMakeLists.txt: find_package(SoapySDR "0.8.1" NO_MODULE REQUIRED)
+BuildRequires:  pkgconfig(SoapySDR) >= 0.8.1
 # Without this upstream only WARNS and silently builds the no-op MDNS stub,
 # losing mDNS/DNS-SD discovery
 BuildRequires:  pkgconfig(avahi-client)
@@ -114,7 +115,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcSoapySDRServer
 %{_bindir}/SoapySDRServer
 %{_sbindir}/rcSoapySDRServer
 %{_mandir}/man1/SoapySDRServer.1%{?ext_man}
-%{_sysctldir}/SoapySDRServer.conf
+%{_sysctldir}/10-SoapySDRServer.conf
 %{_unitdir}/SoapySDRServer.service
 
 %changelog

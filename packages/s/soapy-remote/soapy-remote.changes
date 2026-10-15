@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 11 09:24:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.3:
+  * Support the ref-clock-rate and IQ-balance-auto APIs
+  * Support more than 31 concurrent client sockets
+  * Report accept() failures instead of failing silently
+  * Fix CS16-CS8 conversion scaling
+  * Modernize cmake: GNU install dirs, numeric sysctl prefix,
+    full bindir in the unit file
+  * Track upstream's sysctl rename to 10-SoapySDRServer.conf in %files
+  * Raise the SoapySDR requirement to 0.8.1
+  * Rebase harden_SoapySDRServer.service.patch onto the new unit file
+
+-------------------------------------------------------------------
 Sun Aug 30 19:36:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build against avahi to enable device discovery over mDNS/DNS-SD:

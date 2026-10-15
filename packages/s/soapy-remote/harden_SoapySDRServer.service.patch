@@ -1,7 +1,7 @@
-Index: SoapyRemote-soapy-remote-0.5.2/system/SoapySDRServer.service.in
+Index: SoapyRemote-soapy-remote-0.5.3/system/SoapySDRServer.service.in
 ===================================================================
---- SoapyRemote-soapy-remote-0.5.2.orig/system/SoapySDRServer.service.in
-+++ SoapyRemote-soapy-remote-0.5.2/system/SoapySDRServer.service.in
+--- SoapyRemote-soapy-remote-0.5.3.orig/system/SoapySDRServer.service.in
++++ SoapyRemote-soapy-remote-0.5.3/system/SoapySDRServer.service.in
 @@ -4,6 +4,17 @@ Wants=network-online.target
  After=network-online.target
  
@@ -17,6 +17,6 @@ Index: SoapyRemote-soapy-remote-0.5.2/system/SoapySDRServer.service.in
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- ExecStart=@CMAKE_INSTALL_PREFIX@/bin/SoapySDRServer --bind
+ ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/SoapySDRServer --bind
  KillMode=process
  Restart=on-failure
