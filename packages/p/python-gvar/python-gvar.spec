@@ -1,7 +1,7 @@
 #
 # spec file for package python-gvar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,26 @@
 
 
 Name:           python-gvar
-Version:        13.1.9
+Version:        13.1.10
 Release:        0
 Summary:        Utilities for manipulating correlated Gaussian random variables
 License:        GPL-3.0-only
 URL:            https://github.com/gplepage/gvar
 Source:         https://files.pythonhosted.org/packages/source/g/gvar/gvar-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Cython >= 3.0}
-BuildRequires:  %{python_module numpy >= 2.0}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 2.0}
+BuildRequires:  %{python_module mpmath}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 1.11}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-mpmath
 Requires:       python-numpy >= 2.0
 Requires:       python-scipy >= 1.11
 %python_subpackages

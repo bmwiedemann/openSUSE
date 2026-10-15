@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1337307</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>62d37ddfabd31e1bb631be5b170dbaf4</srcmd5>
+    <version>13.1.10</version>
+    <time>1792059594</time>
+    <user>anag_factory</user>
+    <comment>- Update to 13.1.10:
+  * Minor changes for compatibility with newer versions of Python, numpy,
+    and Cython.</comment>
+    <requestid>1384949</requestid>
+  </revision>
 </revisionlist>
