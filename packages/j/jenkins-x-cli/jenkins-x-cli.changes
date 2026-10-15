@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:53:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.116:
+  CI-only changes
+- Update to version 3.17.115:
+  CI-only changes
+- Update to version 3.17.114:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.4.21
+- Update to version 3.17.113:
+  * Bug Fixes
+    - pin go version 1.26 for now (Mårten Svantesson)
+  * Chores
+    - deps: upgrade jenkins-x-plugins/jx-gitops to version 1.4.20
+      (root)
+- Update to version 3.17.112:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.4.18
+
+-------------------------------------------------------------------
 Sun Sep 20 05:21:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.17.111:
