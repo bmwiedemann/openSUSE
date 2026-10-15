@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Oct 14 23:09:59 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 54.0:
+  + Live Migration Version Compatibility
+  + VFIO Device Live Migration
+  + Live Migration Cancellation
+  + Event Monitor Improvements
+  + Emulated ARM SMMUv3 (Experimental)
+  + Flat VMDK Disk Image Support
+  + Balloon Statistics
+  + virtio-console Over a Unix Socket
+  + AArch64 Boot Improvements
+  + Faster Memory Prefault
+  + VM Generation ID Device
+  + Snapshot/Restore and Live Migration Improvements
+  + Device and Platform Improvements
+  + New Command-Line and API Options
+  + Nested virtualization is now disabled by default on all architectures
+  + The virtio-net offloads (offload_csum, offload_tso and offload_ufo)
+    are now disabled by default
+  + Disk image type autodetection, deprecated since v52.0, has been removed
+  + The memory_mode option of receive-migration has been removed
+  + The local=on option of send-migration is deprecated in favor of
+    memory_mode=memfds
+  + The per-device iommu=on option is deprecated in favor of iommu=virtio
+  + Security Hardening
+
+-------------------------------------------------------------------
 Fri Jul 31 18:18:22 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 53.0:
