@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:54:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.108:
+  * New template definitions: FishAudio Drama 3 dialogue and
+    directed, Higgsfield motion transfer, Qwen Image 2.1 Turbo
+    image edit plus text to image, and Qwen multiangle
+  * Drop the retired Luma Ray 2 image-to-video and text-to-video
+    definitions; rewrite Quiver SVG, Tripo 3.1 and Wan Animate 2
+    templates and refresh all index files
+  * The bump crosses 0.1.107, which added the six definitions
+    and dropped the Luma pair; 0.1.108 only fixes the Qwen
+    multiangle file name and refreshes the indexes. Described
+    together here as only 0.1.108 is submitted
+- No code or dependency change: the sdist still declares no
+  runtime requirements
+
+-------------------------------------------------------------------
 Thu Oct  8 06:24:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.104: 614 template definitions (was 608),

@@ -245,4 +245,12 @@ entries are re-sorted. Data only, no code or dependency change.</comment>
     <comment>Update to 0.1.104: six new workflow templates plus an index refresh. Local build green, rpmlint clean.</comment>
     <requestid>1383214</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5c0faebfb9a6ab6ac5b0991ba1c5b09f</srcmd5>
+    <version>0.1.108</version>
+    <time>1792059937</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.108: six new template definitions (FishAudio, Higgsfield, Qwen Turbo, multiangle), drop retired Luma pair. Builds green, rpmlint clean.</comment>
+    <requestid>1384886</requestid>
+  </revision>
 </revisionlist>
