@@ -22,7 +22,7 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-airspyhf
 Name:           soapy-airspyhf
-Version:        0.2.0+git20251009.7457d69
+Version:        0.2.1
 Release:        0
 Summary:        SoapySDR AirspyHF+ module
 License:        MIT

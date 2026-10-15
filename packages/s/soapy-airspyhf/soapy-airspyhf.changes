@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 11 09:26:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.2.1:
+  * Detect gain support via airspyhf_set_hf_att availability
+  * Update for compat with newer CMake
+  * Track the upstream release tag instead of a snapshot
+
+-------------------------------------------------------------------
 Sun Aug 30 18:32:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.2.0+git20251009.7457d69:
