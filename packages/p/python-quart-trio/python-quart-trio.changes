@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:26:33 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.13.0:
+  * Update to support Quart 0.23.0
+  * Drop support for Python 3.12, 3.11, 3.10, 3.9.
+
+-------------------------------------------------------------------
 Thu Feb 13 12:04:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.0

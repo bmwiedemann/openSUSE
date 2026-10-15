@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1245673</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f65761a5be497918422839b37d88402</srcmd5>
+    <version>0.13.0</version>
+    <time>1792081200</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.13.0:
+  * Update to support Quart 0.23.0
+  * Drop support for Python 3.12, 3.11, 3.10, 3.9.</comment>
+    <requestid>1384705</requestid>
+  </revision>
 </revisionlist>
