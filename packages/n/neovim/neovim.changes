@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 14 22:49:32 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.12.6:
+  + pos: mutable vim.Pos, vim.Range fields
+  + filetype: empty 'filetype' skips :setfiletype
+  + fuzzy: fuzmatch_str_free() frees the wrong element
+  + health: guard against nil result from vim.system:wait()
+  + health: restore pynvim version lookup
+  + menu: menu_get() cannot tell :noremenu from :menu <script>
+  + mpack: wrong encoding of integers beyond the int32 range
+  + msgpack: out-of-bounds read on a truncated string
+  + scrollbind: window jumps back and forth with tall virt_lines block
+  + snippet: cancel session on <Esc> in Select mode
+  + snippet: cancel session on ESC in insert-mode
+  + statuscolumn: heap buffer overflow with sign/number column
+  + terminal: some keys like S-Del not working
+  + terminal: truecolor SGR with colour space id
+  + treesitter: #has-parent? errors on a node with no parent
+  + treesitter: conceal_lines is not applied to injected trees
+  + tui: don't treat ESC preceding repeat/release as ALT
+
+-------------------------------------------------------------------
 Fri Aug 28 20:02:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.12.5:

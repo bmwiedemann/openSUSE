@@ -1849,4 +1849,29 @@ FIXES (LSP):
   + socket: --listen silently truncates long paths (forwarded request 1374500 from rrahl0)</comment>
     <requestid>1374501</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>ff2706172bc47148a89d6c5ae362e917</srcmd5>
+    <version>0.12.6</version>
+    <time>1792059697</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.12.6:
+  + pos: mutable vim.Pos, vim.Range fields
+  + filetype: empty 'filetype' skips :setfiletype
+  + fuzzy: fuzmatch_str_free() frees the wrong element
+  + health: guard against nil result from vim.system:wait()
+  + health: restore pynvim version lookup
+  + menu: menu_get() cannot tell :noremenu from :menu &lt;script&gt;
+  + mpack: wrong encoding of integers beyond the int32 range
+  + msgpack: out-of-bounds read on a truncated string
+  + scrollbind: window jumps back and forth with tall virt_lines block
+  + snippet: cancel session on &lt;Esc&gt; in Select mode
+  + snippet: cancel session on ESC in insert-mode
+  + statuscolumn: heap buffer overflow with sign/number column
+  + terminal: some keys like S-Del not working
+  + terminal: truecolor SGR with colour space id
+  + treesitter: #has-parent? errors on a node with no parent
+  + treesitter: conceal_lines is not applied to injected trees
+  + tui: don't treat ESC preceding repeat/release as ALT (forwarded request 1384863 from rrahl0)</comment>
+    <requestid>1384864</requestid>
+  </revision>
 </revisionlist>
