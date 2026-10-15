@@ -55,6 +55,8 @@ Mon Oct 12 06:28:47 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
   * check decode_e() results before shifting them into a signature
 - Remove upstreamed zbar-configure.patch
 - Remove upstreamed zbar-pkgconfig.patch
+- fixes CVE-2026-88371 [bsc#1282825]
+        CVE-2026-95516 [bsc#1282391]
  
 -------------------------------------------------------------------
 Tue Jun  2 18:12:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
