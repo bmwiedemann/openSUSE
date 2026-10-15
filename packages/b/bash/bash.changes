@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 09:24:48 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add temporary patch bash-5.3.19-workaround.patch from mailing list
+  * Patch 19 (commit 549639c) changed legal_variable_starter() in general.h
+    to index sh_syntaxtab[] directly, but without the (unsigned char) cast
+    that the sibling macros in syntax.h use (shellmeta, shellbreak, shellquote).
+
+-------------------------------------------------------------------
 Thu Sep 24 12:26:35 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patches

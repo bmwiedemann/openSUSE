@@ -88,6 +88,8 @@ Patch49:        bash-4.3-pathtemp.patch
 Patch50:        quotes-man2html.patch
 # PATCH-UPSTREAM-CHERRY-PICKED
 Patch51:        risc-v.patch
+# PATCH-UPSTREAM-MAILINGLIST
+Patch52:        bash-5.3.19-workaround.patch
 BuildRequires:  autoconf
 # latest bash uses with patch 18 the tag YYEOF
 BuildRequires:  bison
@@ -277,6 +279,7 @@ set -x
 %patch -P49  -b .pthtmp
 %patch -P50  -b .qd
 %patch -P51  -p1 -b .riscv
+%patch -P52  -b .cast
 %patch -P0   -b .p0
 
 # This has to be always the same version as included in the bash its self
@@ -503,6 +506,7 @@ test ${rl1[2]}.${rl2[2]} = %{rl_version} || exit 1
   sed -i -e "s|PO-Revision-Date: .*|PO-Revision-Date: ${REPRO_DATE}\\\\n\"|" po/en@*.po
   %make_build $makeopts documentation
   grep -F '$'\' doc/bash.html %{nil:test for boo#1203091}
+  #'
 
 %check
   SOURCE_DATE_EPOCH="$(date -u -r .source_date_epoch +%%s)"

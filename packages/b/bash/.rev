@@ -2244,4 +2244,12 @@ h. The `umask' builtin now has additional features for full POSIX conformance.</
     lines every time, not just when the screen width decreases.</comment>
     <requestid>1380346</requestid>
   </revision>
+  <revision rev="209" vrev="10">
+    <srcmd5>60f9bed512429f6605882ceff8a62883</srcmd5>
+    <version>5.3.MACRO</version>
+    <time>1792059925</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1384763</requestid>
+  </revision>
 </revisionlist>

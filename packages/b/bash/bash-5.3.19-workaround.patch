@@ -1,0 +1,27 @@
+Patch 19 (commit 549639c) changed legal_variable_starter() in general.h
+to index sh_syntaxtab[] directly, but without the (unsigned char) cast
+that the sibling macros in syntax.h use (shellmeta, shellbreak, shellquote).
+
+The one caller that passes a signed char without pre-casting --
+subst.c:9798 in parameter_brace_expand() -- now reads out of bounds of
+sh_syntaxtab[] for any input byte in 0x80-0xFF.
+
+Abderrahmane Sebban
+
+---
+ general.h |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- general.h
++++ general.h	2026-10-07 09:20:53.702367002 +0000
+@@ -117,8 +117,8 @@ extern char *strcpy (char *, const char
+ #define legal_variable_starter(c) (c < 128 && (ISALPHA(c) || c == '_'))
+ #define legal_variable_char(c)	(c < 128 && (ISALNUM(c) || c == '_'))
+ #else
+-#define legal_variable_starter(c) (sh_syntaxtab[c] & CNAMESTART)
+-#define legal_variable_char(c)	(sh_syntaxtab[c] & CNAME)
++#define legal_variable_starter(c) (sh_syntaxtab[(unsigned char)(c)] & CNAMESTART)
++#define legal_variable_char(c)	(sh_syntaxtab[(unsigned char)(c)] & CNAME)
+ #endif
+ 
+ /* Definitions used in subst.c and by the `read' builtin for field
