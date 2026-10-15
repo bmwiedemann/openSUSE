@@ -194,4 +194,12 @@ Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
 - Fixes for large clusters, VSS, password and -to handling</comment>
     <requestid>1382760</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5c926402124d96170aeaa747cc178145</srcmd5>
+    <version>65.11</version>
+    <time>1792073533</time>
+    <user>anag_factory</user>
+    <comment>Forward Archiving/zpaqfranz license canonicalization (SR 1384951); supersedes 1384899, still evaluating.</comment>
+    <requestid>1384974</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 15 06:26:13 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Canonicalise the public-domain part of the License tag to
+  LicenseRef-SUSE-Public-Domain, the current form of the identifier
+
+-------------------------------------------------------------------
+Thu Oct 15 04:56:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 65.11:
+  * Stronger recovery from damaged archives: x -recover
+    reports each damaged file with offset and byte count
+  * Franzen on multipart archives (backup and testbackup
+    with -franzen), four defects fixed including a rare
+    lost-tail reported as OK, and interrupted updates now
+    open at the previous good state with the next add
+    repairing them
+  * New backup -chunk caps part size; -freeze moves a
+    grown archive away and starts a new one, with -findzpaq
+    for backups and reading
+  * New mc two-panel file manager, the same on every
+    platform, with archive add, list and info from the
+    panels
+  * Upstream notes 65.9 through 65.11 are still
+    stabilizing; test restores before relying on the new
+    features
+  * Many more fixes and improvements; see upstream's
+    release notes for the full list
+
+-------------------------------------------------------------------
 Tue Oct  6 07:18:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 65.8:

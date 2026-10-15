@@ -17,7 +17,7 @@
 
 
 Name:           zpaqfranz
-Version:        65.8
+Version:        65.11
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 # Legal-Review-Notice: zpaqfranz is a single-translation-unit program that
@@ -63,7 +63,7 @@ Summary:        A journaling, incremental, deduplicating archiver
 # -m7 LZAV dropped)"; neither library has a single symbol left in the source,
 # so neither contributes a licence (and LZ4's BSD-2-Clause survives in this
 # tag only through xxHash, entry 14).
-License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND SUSE-Public-Domain AND Zlib AND Unlicense AND Ferguson-Twofish
+License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND LicenseRef-SUSE-Public-Domain AND Zlib AND Unlicense AND Ferguson-Twofish
 URL:            https://github.com/fcorbelli/zpaqfranz
 Source0:        https://github.com/fcorbelli/zpaqfranz/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
