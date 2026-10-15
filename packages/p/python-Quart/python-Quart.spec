@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Quart
-Version:        0.20.0
+Version:        0.23.1
 Release:        0
 Summary:        A Python ASGI web microframework with the same API as Flask
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module Werkzeug >= 3.0}
 BuildRequires:  %{python_module aiofiles}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.13}
 BuildRequires:  %{python_module blinker >= 1.6}
 BuildRequires:  %{python_module click >= 8.0}
 BuildRequires:  %{python_module flit-core}
@@ -90,8 +90,7 @@ Quart is an async Python web microframework. Using Quart you can,
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/pallets/quart/issues/465
-%pytest -k 'not test_cli_blueprints'
+%pytest
 
 %post
 %python_install_alternative quart

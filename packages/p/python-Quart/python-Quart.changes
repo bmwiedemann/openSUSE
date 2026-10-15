@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:25:43 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.23.1:
+  * Provide backpressure to the ASGI server and clean up the
+    request/websocket ASGI handling.
+  * Ensure all teardown functions are called as per Flask.
+  * Merge contexts into a single AppContext as per Flask.
+  * Drop support for Python versions less than 3.13.
+  * Use Quart's logger rather than Hypercorn's in app.run
+  * Bugfix ensure the path is correct when using root_path
+  * Fix non-port-needing URI schemes with app run.
+  * Fix propagating exceptions.
+  * Base Quart's default_config on Flask's
+  * Remove invalid uses of AnyStr.
+  * Improve file type hints.
+  * Support partitioned cookies
+  * Don't apply max_form_parts to non-multipart forms
+
+-------------------------------------------------------------------
 Wed Jun 17 04:56:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a test broken by click.
