@@ -136,4 +136,12 @@ false positive, and &quot;updating&quot; to that tag would be a downgrade.</comm
 - No ABI or soname change; no consumers. boo#1074072 is NOT AFFECTED.</comment>
     <requestid>1382552</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>63762b5efe82f6ca4bf06f64b6480c84</srcmd5>
+    <version>0.4.2</version>
+    <time>1792073639</time>
+    <user>anag_factory</user>
+    <comment>Update soapy-uhd to 0.4.2 (upstream resumed tagging; snapshot + version bump, no code change).</comment>
+    <requestid>1385017</requestid>
+  </revision>
 </revisionlist>

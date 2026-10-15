@@ -20,7 +20,7 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-uhd
 Name:           soapy-uhd
-Version:        0.4.1git20261004
+Version:        0.4.2
 Release:        0
 Summary:        Soapy SDR plugins for UHD supported SDR devices
 # The three built sources carry the deprecated SPDX id GPL-3.0, which maps
