@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 15 05:01:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.80.2:
+  * Bug Fixes
+    - build: report invalid .dockerignore patterns without
+      panicking (#7993) (1e6268e)
+    - deploy: recreate StatefulSet and other custom-validated kinds
+      on immutable field change (#7990) (1a7e9b3)
+- Update to version 2.80.1:
+  * Bug Fixes
+    - build: reduce repeated registry token requests (#7955)
+      (08dd45b)
+- Update to version 2.80.0:
+  * Features
+    - build: collect operations statistics for the whole command
+      run (#7856) (51c0d31)
+
+-------------------------------------------------------------------
 Thu Oct 08 05:27:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.79.2:
