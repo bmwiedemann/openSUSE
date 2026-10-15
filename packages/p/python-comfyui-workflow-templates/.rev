@@ -293,4 +293,12 @@ its own request first.</comment>
     <comment>Update to 0.11.78, a metadata-only pin roll; floors unchanged. Local build green, rpmlint clean.</comment>
     <requestid>1383215</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f2894890eafe004df9703ce6a955fbc9</srcmd5>
+    <version>0.11.82</version>
+    <time>1792059940</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.82: metadata-only, shim code byte-identical. Pins move to core 0.3.373/json 0.1.108, floors unchanged. Builds green, rpmlint clean.</comment>
+    <requestid>1384888</requestid>
+  </revision>
 </revisionlist>
