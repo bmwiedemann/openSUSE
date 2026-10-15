@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:39:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.2.0:
+  * Opt-in NotifyUser progress updates (off by default):
+    [experimental] notify_user or
+    KIMI_CODE_EXPERIMENTAL_NOTIFY_USER=1 shows mid-turn progress
+  * Add `kimi app [path]` to open a new desktop chat in the
+    current or specified directory
+  * Cap waiting for background tasks at 90 seconds; a new message
+    ends the wait immediately
+  * Tower mode: a message sent while the agent runs aborts the turn
+    and runs on its own; deterministic orchestration with
+    TowerRebase and workspace protection
+  * Fullscreen sticky user message summaries; click to jump to the
+    message. Skill prompts highlighted, Ctrl-S to use them
+  * Add KIMI_CODE_TRUST_WORKSPACE to mark the workspace trusted
+  * Fixes: cancel video uploads on interrupted media reads, media
+    reading on first turn after resume, shifted turns with
+    UserPromptSubmit hooks, forked-session cron firing and subagent
+    agent types, goal approval permission switch on v2 engine
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Thu Sep 24 09:26:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.1.1 (includes 2.1.0):

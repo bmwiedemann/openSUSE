@@ -28,7 +28,7 @@
 %define pngjs_version 5.0.0
 %define dijkstrajs_version 1.0.3
 Name:           kimi-code
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Command-line agentic coding assistant powered by Kimi models
 License:        MIT

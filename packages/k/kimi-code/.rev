@@ -186,4 +186,12 @@ satisfy their ranges; ws 8.21.3 is npm latest. No CVE or GHSA in the
     <comment>Update to 2.1.1 (includes 2.1.0): fullscreen TUI; 2.1.1 rolls back overly defensive 2.1.0 changes. Supersedes 1380029.</comment>
     <requestid>1380133</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8d987835fcd41cef9072f12df1eaf386</srcmd5>
+    <version>2.2.0</version>
+    <time>1792073540</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.2.0: NotifyUser progress, kimi app launcher, 90s task cap, tower orchestration, sticky summaries, TRUST_WORKSPACE, plus fixes.</comment>
+    <requestid>1384878</requestid>
+  </revision>
 </revisionlist>
