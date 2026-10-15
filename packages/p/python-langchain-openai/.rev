@@ -187,4 +187,12 @@ The new azure-identity extra is not required: the import is guarded and falls ba
     <comment>Update python-langchain-openai to 1.7.0 (Decisions API, new middleware). Requires langchain-core &gt;= 1.6.8 from SR 1383683 — land that one first.</comment>
     <requestid>1383688</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ee6fab4bcea2074ec3f751baf2b194ec</srcmd5>
+    <version>1.7.2</version>
+    <time>1792059719</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.7.2: gate mid-conversation tool claims on the Responses API, fix Responses streaming output_index pinning; require langchain-core &gt;= 1.6.10.</comment>
+    <requestid>1384904</requestid>
+  </revision>
 </revisionlist>

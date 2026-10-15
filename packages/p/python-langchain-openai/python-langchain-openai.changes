@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:57:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.2:
+  * Follow the new langchain-core model-profile fields:
+    mid-conversation tool claims gated on the Responses API,
+    Azure profiles drop unverified tool claims, Codex chat
+    disables in-place system/tool support (instructions field)
+  * Fix Responses streaming: pin each item to its first
+    output_index so done events land on the right block
+  * Require langchain-core >= 1.6.10
+
+-------------------------------------------------------------------
 Fri Oct  9 07:06:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.7.0:
