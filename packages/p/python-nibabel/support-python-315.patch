@@ -1,0 +1,63 @@
+From 6909843f18b2fe887611dacaedecf5691b2a60db Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 15 Oct 2026 11:41:26 +1100
+Subject: [PATCH] Test: Specify compresslevel for GzipFile
+
+Python 3.15 changed the default compresslevel for GzipFile from 9 to 6,
+which breaks those two tests. Specify it since we rely on it being set
+to 9.
+---
+ nibabel/tests/test_openers.py | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/nibabel/tests/test_openers.py b/nibabel/tests/test_openers.py
+index b0225d189..09e75bb3f 100644
+--- a/nibabel/tests/test_openers.py
++++ b/nibabel/tests/test_openers.py
+@@ -374,7 +374,7 @@ def test_DeterministicGzipFile():
+ 
+         # No filename, no mtime
+         with open('ref.gz', 'wb') as fobj:
+-            with GzipFile(filename='', mode='wb', fileobj=fobj, mtime=0) as gzobj:
++            with GzipFile(filename='', mode='wb', compresslevel=9, fileobj=fobj, mtime=0) as gzobj:
+                 gzobj.write(msg)
+         anon_chksum = md5sum('ref.gz')
+ 
+@@ -390,7 +390,9 @@ def test_DeterministicGzipFile():
+         # No filename, current mtime
+         now = time.time()
+         with open('ref.gz', 'wb') as fobj:
+-            with GzipFile(filename='', mode='wb', fileobj=fobj, mtime=now) as gzobj:
++            with GzipFile(
++                filename='', mode='wb', compresslevel=9, fileobj=fobj, mtime=now
++            ) as gzobj:
+                 gzobj.write(msg)
+         now_chksum = md5sum('ref.gz')
+ 
+@@ -405,7 +407,7 @@ def test_DeterministicGzipFile():
+ 
+             # GzipFile will use time.time()
+             with open('ref.gz', 'wb') as fobj:
+-                with GzipFile(filename='', mode='wb', fileobj=fobj) as gzobj:
++                with GzipFile(filename='', mode='wb', compresslevel=9, fileobj=fobj) as gzobj:
+                     gzobj.write(msg)
+             assert md5sum('ref.gz') == now_chksum
+ 
+@@ -415,7 +417,7 @@ def test_DeterministicGzipFile():
+             assert md5sum('now.gz') == anon_chksum
+ 
+         # GzipFile is filename dependent, DeterministicGzipFile is independent
+-        with GzipFile('filenameA.gz', mode='wb', mtime=0) as gzobj:
++        with GzipFile('filenameA.gz', mode='wb', compresslevel=9, mtime=0) as gzobj:
+             gzobj.write(msg)
+         fnameA_chksum = md5sum('filenameA.gz')
+         assert fnameA_chksum != anon_chksum
+@@ -432,7 +434,7 @@ def test_DeterministicGzipFile_fileobj():
+     with InTemporaryDirectory():
+         msg = b"Hello, I'd like to have an argument."
+         with open('ref.gz', 'wb') as fobj:
+-            with GzipFile(filename='', mode='wb', fileobj=fobj, mtime=0) as gzobj:
++            with GzipFile(filename='', mode='wb', compresslevel=9, fileobj=fobj, mtime=0) as gzobj:
+                 gzobj.write(msg)
+         ref_chksum = md5sum('ref.gz')
+ 

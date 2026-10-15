@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 15 00:51:40 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-315.patch:
+  * Support GzipFile compresslevel changes in 3.15.
+
+-------------------------------------------------------------------
 Wed Apr  8 11:29:04 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.4.2

@@ -214,4 +214,13 @@
     <comment></comment>
     <requestid>1345706</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>5a90c526a62f619ce9cfe56b12703262</srcmd5>
+    <version>5.4.2</version>
+    <time>1792059582</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-315.patch:
+  * Support GzipFile compresslevel changes in 3.15.</comment>
+    <requestid>1384869</requestid>
+  </revision>
 </revisionlist>

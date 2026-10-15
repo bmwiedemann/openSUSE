@@ -30,6 +30,8 @@ License:        MIT
 URL:            https://nipy.org/nibabel
 # SourceRepository: https://github.com/nipy/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#nipy/nibabel#1569
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
