@@ -1125,4 +1125,32 @@
   * nightly that includes gemini-flash-3.8 support</comment>
     <requestid>1382043</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>09cf28815200b03b09d820fbf866c83f</srcmd5>
+    <version>0.63.0</version>
+    <time>1792059555</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.63.0:
+  * fix(cli): display retry progress indicator during connection
+    recovery
+  * fix(cli): distinguish missing MCP enablement config from
+    malformed JSON
+  * fix(cli): restore paused stdin after capability detection
+  * fix(core): bound tool output size and optimize memory
+    lifecycle in long-running agent loops
+  * fix(core): remove invalid diff.external override
+  * fix(core): clean up temporary directory when background shell
+    execution exits
+  * fix(acp): resolve session before config initialization and
+    avoid same-minute filename collisions
+  * fix(core): align policy redirection gates, path validation,
+    and workflow parsing
+  * fix(auth): prevent infinite auth loop from file contention,
+    headless keyring, and supervisor state drops
+  * fix(core): enable autonomous plan execution in non-
+    interactive mode
+  * fix(core): disable truncation when maxChars &lt;= 0 in
+    formatTruncatedToolOutput</comment>
+    <requestid>1384818</requestid>
+  </revision>
 </revisionlist>

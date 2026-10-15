@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct  8 12:13:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.63.0:
+  * fix(cli): display retry progress indicator during connection
+    recovery
+  * fix(cli): distinguish missing MCP enablement config from
+    malformed JSON
+  * fix(cli): restore paused stdin after capability detection
+  * fix(core): bound tool output size and optimize memory
+    lifecycle in long-running agent loops
+  * fix(core): remove invalid diff.external override
+  * fix(core): clean up temporary directory when background shell
+    execution exits
+  * fix(acp): resolve session before config initialization and
+    avoid same-minute filename collisions
+  * fix(core): align policy redirection gates, path validation,
+    and workflow parsing
+  * fix(auth): prevent infinite auth loop from file contention,
+    headless keyring, and supervisor state drops
+  * fix(core): enable autonomous plan execution in non-
+    interactive mode
+  * fix(core): disable truncation when maxChars <= 0 in
+    formatTruncatedToolOutput
+
+-------------------------------------------------------------------
 Fri Oct  2 08:03:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.62.0:
