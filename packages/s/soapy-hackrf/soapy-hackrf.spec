@@ -20,7 +20,7 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-hackrf
 Name:           soapy-hackrf
-Version:        0.3.4+git20251009.143ff5e
+Version:        0.3.5
 Release:        0
 Summary:        SoapySDR HackRF module
 License:        MIT
@@ -30,7 +30,8 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(SoapySDR)
+# CMakeLists.txt: find_package(SoapySDR "0.4.0" NO_MODULE REQUIRED)
+BuildRequires:  pkgconfig(SoapySDR) >= 0.4.0
 BuildRequires:  pkgconfig(libhackrf)
 
 %description

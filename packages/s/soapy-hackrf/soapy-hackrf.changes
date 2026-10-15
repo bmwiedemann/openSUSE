@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 11 09:26:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.5:
+  * Fix automatic filter bandwidth selection
+  * Deactivate the stream on close and honor the amp setting
+  * Update for compat with newer CMake
+  * Track the upstream release tag instead of a snapshot
+  * Declare the upstream SoapySDR >= 0.4.0 requirement
+
+-------------------------------------------------------------------
 Mon Aug 31 06:35:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.4+git20251009.143ff5e:

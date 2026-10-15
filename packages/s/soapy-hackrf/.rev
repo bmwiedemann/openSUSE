@@ -126,4 +126,12 @@ Plus %cmake_build instead of a bare make call and a copyright header
 refresh.</comment>
     <requestid>1374796</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f6356ed282a5bc5a953d783e9dff664c</srcmd5>
+    <version>0.3.5</version>
+    <time>1792059541</time>
+    <user>anag_factory</user>
+    <comment>Update soapy-hackrf to the 0.3.5 release tag (replaces the snapshot).</comment>
+    <requestid>1384075</requestid>
+  </revision>
 </revisionlist>
