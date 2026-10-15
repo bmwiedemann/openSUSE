@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 11 09:23:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.2.1:
+  * Fix broken printf format string
+  * Fix cmake and compiler warnings
+  * Update for compat with newer CMake
+  * Declare the upstream SoapySDR >= 0.4.0 requirement
+
+-------------------------------------------------------------------
 Sun Aug 30 18:48:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add Requires: soapy-sdr - the automatic soname dep covers only

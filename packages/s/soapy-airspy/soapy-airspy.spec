@@ -20,7 +20,7 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-airspy
 Name:           soapy-airspy
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        SoapySDR Airspy module
 License:        MIT
@@ -30,7 +30,8 @@ Source:         https://github.com/pothosware/SoapyAirspy/archive/%{name}-%{vers
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(SoapySDR)
+# CMakeLists.txt: find_package(SoapySDR "0.4.0" NO_MODULE REQUIRED)
+BuildRequires:  pkgconfig(SoapySDR) >= 0.4.0
 BuildRequires:  pkgconfig(libairspy)
 
 %description

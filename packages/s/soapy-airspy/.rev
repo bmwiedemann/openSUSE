@@ -84,4 +84,12 @@ unreleased commits (a debug-log format fix and CMake modernisation), and
 NixOS, FreeBSD and Void all ship 0.2.0, so the tag stands.</comment>
     <requestid>1374752</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4d922864e3e927737086936476709e2b</srcmd5>
+    <version>0.2.1</version>
+    <time>1792059537</time>
+    <user>anag_factory</user>
+    <comment>Update soapy-airspy to 0.2.1 (printf-format fix, cmake warning cleanup).</comment>
+    <requestid>1384069</requestid>
+  </revision>
 </revisionlist>
