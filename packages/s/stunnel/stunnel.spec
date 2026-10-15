@@ -28,8 +28,8 @@ Summary:        Universal TLS Tunnel
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.stunnel.org/
-Source:         https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz
-Source1:        https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz.asc
+Source:         https://www.stunnel.org/archive/5.x/%{name}-%{version}.tar.gz
+Source1:        https://www.stunnel.org/archive/5.x/%{name}-%{version}.tar.gz.asc
 Source2:        https://www.stunnel.org/pgp.asc#/%{name}.keyring
 Source3:        sysconfig.syslog-stunnel
 Source4:        stunnel.rc

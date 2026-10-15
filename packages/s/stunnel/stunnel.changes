@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 15 08:17:09 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Use the permanent archive/5.x/ directory instead of downloads/
+  that only tracks the latest version release. Otherwise, the
+  'osc service' commands will fail on every version update.
+
+-------------------------------------------------------------------
 Wed Oct  7 09:28:57 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 5.82:
