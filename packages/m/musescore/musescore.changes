@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:49:00 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- reenable build of experimental mnx im/export plugin
+  (needed build deps are now in Factory)
+- restrict build of mnx plugin to Tumbleweed for now
+
+-------------------------------------------------------------------
 Sat Oct  3 16:11:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix license string

@@ -18,6 +18,8 @@
 
 # Internal QML imports
 
+# restrict build of mnx plugin to Tumbleweed
+%global with_mnx 0%{?suse_version} >= 1699
 # we do not generate proper provides for those controls and without excluding them from the requires list we can not install the package
 %global __requires_exclude ^.*qml.*(Muse|MuseScore|FileIO).*$
 # Workaround boo#1189991
@@ -107,7 +109,9 @@ BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-#BuildRequires:  cmake(nlohmann_json_schema_validator)
+%if %{with_mnx}
+BuildRequires:  cmake(nlohmann_json_schema_validator)
+%endif
 BuildRequires:  cmake(tinyxml2)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(flac)
@@ -121,7 +125,9 @@ BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libpulse-simple)
-#BuildRequires:  pkgconfig(mnxdom)
+%if %{with_mnx}
+BuildRequires:  pkgconfig(mnxdom)
+%endif
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(portaudio-2.0)
@@ -206,8 +212,14 @@ export LANG=C.UTF-8
        -DMUSE_MODULE_NETWORK_WEBSOCKET:BOOL=ON \
        -DMUE_BUILD_UPDATE_MODULE=OFF \
        -DMUE_BUILD_CRASHPAD_CLIENT=OFF \
+%if %{with_mnx}
+       -DMUE_COMPILE_USE_SYSTEM_MNXDOM=ON \
+       -DMUE_BUILD_IMPORTEXPORT_TESTS=OFF \
+       -DMUE_BUILD_IMPEXP_MNX_MODULE=ON \
+%else
        -DMUE_BUILD_IMPEXP_MNX_MODULE=OFF \
-       -Wno-dev
+%endif
+-Wno-dev
 %cmake_build
 
 %install

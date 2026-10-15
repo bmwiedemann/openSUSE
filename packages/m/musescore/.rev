@@ -721,4 +721,15 @@
   BuildRequires to build with system fdk-aac. In addition remove</comment>
     <requestid>1382256</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>c95c633cefdb15aac5166887756dab34</srcmd5>
+    <version>4.7.5</version>
+    <time>1792073512</time>
+    <user>anag_factory</user>
+    <comment>- reenable build of experimental mnx im/export plugin
+  (needed build deps are now in Factory)
+- restrict build of mnx plugin to Tumbleweed for now
+</comment>
+    <requestid>1384955</requestid>
+  </revision>
 </revisionlist>
