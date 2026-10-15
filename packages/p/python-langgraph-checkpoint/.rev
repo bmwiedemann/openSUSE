@@ -23,4 +23,12 @@
     <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
     <requestid>1371670</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aeb5c6fcba76496534a1f0aadc45af3c</srcmd5>
+    <version>4.3.0</version>
+    <time>1792059933</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.3.0: InMemorySaver delta default, namespace validation, no new deps.</comment>
+    <requestid>1384876</requestid>
+  </revision>
 </revisionlist>

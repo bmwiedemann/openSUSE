@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:40:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.3.0:
+  * Default InMemorySaver delta history to the latest checkpoint
+  * Validate namespace labels before store dispatch
+  * Keep serialized data when an object cannot be rebuilt
+  * Widen Store put value type to Mapping[str, Any]
+
+-------------------------------------------------------------------
 Tue Aug 18 05:37:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Avoid variations from --nocheck: move bytecode recompilation and
