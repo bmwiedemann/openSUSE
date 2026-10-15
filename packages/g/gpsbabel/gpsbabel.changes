@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 15 08:39:28 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Run the upstream testo test suite in %check (72 format tests
+  via CTest)
+- Drop unused BuildRequires: pkgconfig(expat), pkgconfig(libudev),
+  pkgconfig(Qt6Designer), pkgconfig(Qt6Help) and
+  pkgconfig(Qt6UiTools)
+- Declare pkgconfig(Qt6Xml), a required GUI component previously
+  only pulled in transitively, and require pkgconfig(zlib)
+  >= 1.2.9 as declared by upstream
+- Remove the unused translation directory definition; the GUI
+  translations are embedded in the gpsbabelfe binary
+
+-------------------------------------------------------------------
 Tue Jun  2 17:51:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Ship the GUI (gpsbabelfe), its desktop file and icon in the

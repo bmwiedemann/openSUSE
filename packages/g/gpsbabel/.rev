@@ -297,4 +297,12 @@
     <comment>Ship the GUI (gpsbabelfe) in the gpsbabel-gui subpackage so CLI installs no longer pull Qt6 WebEngine; spec cleanup (drop dead gcc12 fallback, desktop scriptlets, Group/BuildRoot/%defattr).</comment>
     <requestid>1356797</requestid>
   </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>010b45ee9bb9784cdfd939580ccbb6c0</srcmd5>
+    <version>1.10.0</version>
+    <time>1792081243</time>
+    <user>anag_factory</user>
+    <comment>Reopen gpsbabel test-suite update (follows 1385040 revoked, 1385006 declined): see my comment to darix on 1385006 — entry checked three ways, no typo found. Resubmitting unchanged.</comment>
+    <requestid>1385041</requestid>
+  </revision>
 </revisionlist>

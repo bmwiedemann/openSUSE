@@ -16,7 +16,6 @@
 #
 
 
-%global translationdir %{_datadir}/qt6/translations
 Name:           gpsbabel
 Version:        1.10.0
 Release:        0
@@ -36,17 +35,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6LinguistTools) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6Core) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6Core5Compat) >= 6.2.0
-BuildRequires:  pkgconfig(Qt6Designer) >= 6.2.0
-BuildRequires:  pkgconfig(Qt6Help) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6SerialPort) >= 6.2.0
-BuildRequires:  pkgconfig(Qt6UiTools) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6WebChannel) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.2.0
-BuildRequires:  pkgconfig(expat)
-BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(Qt6Xml) >= 6.2.0
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(shapelib)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(zlib) >= 1.2.9
 
 %description
 GPSBabel converts waypoints, tracks, and routes from one format to
@@ -106,7 +101,6 @@ install -m 0755 -p gpsbabel %{buildroot}/%{_bindir}
 install -m 0755 -p gui/GPSBabelFE/gpsbabelfe %{buildroot}/%{_bindir}
 install -m 0755 -d %{buildroot}/%{_datadir}/%{name}
 install -m 0644 -p ../gui/gmapbase.html %{buildroot}/%{_datadir}/%{name}/
-install -m 0755 -d %{buildroot}/%{translationdir}
 
 install -m 0755 -d %{buildroot}/%{_datadir}/applications
 install -m 0644 ../gui/gpsbabel.desktop %{buildroot}/%{_datadir}/applications
@@ -115,6 +109,9 @@ install -m 0755 -d            %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 install -m 0644 -p %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/
 
 popd
+
+%check
+%ctest
 
 %files
 %doc AUTHORS README* %{name}.pdf
