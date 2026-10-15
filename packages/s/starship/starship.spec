@@ -27,7 +27,10 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  git-core
+BuildRequires:  timezone
 BuildRequires:  pkgconfig(openssl)
+# required by jiff crate
+Requires:       timezone
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
