@@ -1,7 +1,7 @@
 #
 # spec file for package chromaprint
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define rev aa67c95b9e486884a6d3ee8b0c91207d8c2b0551
 %define sover      1
 Name:           chromaprint
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Audio Fingerprinting Library
 License:        LGPL-2.1-only AND MIT

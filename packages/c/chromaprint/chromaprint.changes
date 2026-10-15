@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 13 14:52:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.1:
+  * Fixed a heap buffer overflow when decoding a fingerprint that has extra
+    data after the encoded values. Applications that decode fingerprints from
+    untrusted sources should update.
+  * Fixed building against FFmpeg 4.x, which had not compiled since the channel
+    layout API changed in 5.1
+  * Audio can now be fed in buffers that do not end on a frame boundary;
+    previously a partial frame at the end of a call was dropped
+  * Fixed an implicit integer conversion warning on LLVM
+  * Fixed installing to absolute paths
+  * Build fpcalc against the system FFmpeg in CI
+
+-------------------------------------------------------------------
 Tue Sep  2 07:34:40 UTC 2025 - pgajdos@suse.com
 
 - version update to 1.6.0
