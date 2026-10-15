@@ -17,7 +17,7 @@
 
 
 Name:           python-langgraph-prebuilt
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        High-level APIs for creating and executing LangGraph agents and tools
 License:        MIT

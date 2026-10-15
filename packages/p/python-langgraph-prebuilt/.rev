@@ -15,4 +15,12 @@
     <comment>Reproducibility fix: move the hash-based bytecode recompilation and fdupes from %check to %install, so the package content no longer varies when built with --nocheck (boo#1227364). Same fix bmwiedemann applied to python-langgraph in sr#1371636.</comment>
     <requestid>1371669</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>07ccd1de287e144c5a204ece84f691d3</srcmd5>
+    <version>1.1.1</version>
+    <time>1792059722</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph-prebuilt 1.1.0-&gt;1.1.1 (ToolNode resume fix).</comment>
+    <requestid>1384967</requestid>
+  </revision>
 </revisionlist>

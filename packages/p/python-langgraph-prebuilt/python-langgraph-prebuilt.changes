@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 15 08:29:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.1.1:
+  * ToolNode no longer swallows invalid resume values
+
+-------------------------------------------------------------------
 Tue Aug 18 05:37:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Avoid variations from --nocheck: move bytecode recompilation and
