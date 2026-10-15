@@ -310,4 +310,12 @@ one warning is a pre-existing hidden-file entry present in 0.36.0 too.</comment>
 - Both patches still apply; Patch1 1-line offset pre-exists on the 0.38.2 tree.</comment>
     <requestid>1382768</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e06231f8294e875046b62a46fd7d524a</srcmd5>
+    <version>0.40.0</version>
+    <time>1792059942</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.40.0: LoRA stack nodes, CameraAngle, asset export API, attention work, Qwen fixes, EXR compression. Tracks frontend 1.55.17/templates 0.11.82. Builds green.</comment>
+    <requestid>1384891</requestid>
+  </revision>
 </revisionlist>

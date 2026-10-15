@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:39:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.40.0:
+  * Native LoRA stack loader nodes; new CameraAngle node with
+    camera_info and shot prompt outputs, CreateCameraInfo node
+  * Assets: local export API, video metadata extraction on ingest
+    and scan, EXR previews for SaveImageAdvanced outputs, scan by
+    file mtime, new --disable-assets flag
+  * Attention stack: AttentionTensorContainer across models, kitchen
+    sol attention in model configs, fused Linear forward paths;
+    LoRAs can replace the per-layer attention config
+  * Qwen 3.5 low-VRAM improvements and MTP embedding offload fix;
+    fix Qwen 2.1 rogues in low VRAM; MiniMax H3 single images decode
+    as first latent of a clip
+  * Save EXR gains compression; fix half-float loading with pyav;
+    faster GLB texture saving; drop the cryptography dependency
+  * New partner nodes: Nano Banana 2.1, Quiver V2 SVG, Vidu Q4,
+    ClarityAI Crystal Upscaler, Kling Virtual Try-On, HeyGen 2k,
+    FishAudio Drama 3, Higgsfield motion transfer
+  * Track upstream pins: frontend-package 1.55.17, workflow-templates
+    0.11.82, embedded-docs 0.5.14, aimdo 0.5.6, kitchen 0.2.37
+  * Many more fixes and improvements; see upstream release notes
+    for the full list
+- Both patches still apply
+
+-------------------------------------------------------------------
 Tue Oct  6 07:15:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.39.0:
