@@ -1423,8 +1423,6 @@ unsorted:
   - bcc-tools 
   - bcel 
   - bcel-javadoc 
-  - bcel5_3 
-  - bcel5_3-javadoc 
   - bcftools 
   - bcg729-devel 
   - bchunk 
@@ -16544,6 +16542,7 @@ unsorted:
   - libsixel1 
   - libskk-devel 
   - libskk0 
+  - libslang0_2026_18_3 
   - libslang2-32bit 
   - libsleef3 
   - libslirp-devel 
@@ -19706,6 +19705,8 @@ unsorted:
   - msitools 
   - msitools-devel 
   - msitools-lang 
+  - mslinks 
+  - mslinks-javadoc 
   - msmtp 
   - msmtp-doc 
   - msmtp-lang 
@@ -25559,7 +25560,6 @@ unsorted:
   - python313-bracex 
   - python313-branca 
   - python313-breathe 
-  - python313-brewer2mpl 
   - python313-bsddb3 
   - python313-bsddb3-devel 
   - python313-bson 
@@ -29629,7 +29629,6 @@ unsorted:
   - python314-bracex 
   - python314-branca 
   - python314-breathe 
-  - python314-brewer2mpl 
   - python314-bsddb3 
   - python314-bsddb3-devel 
   - python314-bson 
@@ -34759,6 +34758,9 @@ unsorted:
   - sgtk-menu 
   - sha1collisiondetection 
   - sha3sum 
+  - shader-slang 
+  - shader-slang-devel 
+  - shader-slang-doc 
   - shaderc 
   - shaderc-devel 
   - shadowsocks-common 

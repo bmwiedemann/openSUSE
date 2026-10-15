@@ -7979,6 +7979,7 @@ packagesets:
    - yakuake # reason: opensuse_kalpa:patterns-kalpa-base
    - yast2-logs # reason: opensuse_kalpa:patterns-kalpa-base
    - zstd # reason: opensuse_kalpa:patterns-kalpa-base
+   - zypp-no-recommends # reason: opensuse_kalpa:patterns-kalpa-base
    - zypp-single-rpmtrans # reason: opensuse_kalpa:patterns-kalpa-base
    - zypper # reason: opensuse_kalpa:patterns-kalpa-base
    - zypper-needs-restarting # reason: opensuse_kalpa:patterns-kalpa-base
