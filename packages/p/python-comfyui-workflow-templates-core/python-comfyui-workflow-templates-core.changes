@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:52:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.373: the manifest now lists 618
+  templates (was 614)
+  * New, all owned by the media-assets-02 bundle: FishAudio Drama
+    3 dialogue and directed, Higgsfield motion transfer, and Qwen
+    Image 2.1 Turbo image edit plus text to image
+  * Drop the retired Luma Ray 2 image-to-video and text-to-video
+    entries from the media-api bundle
+  * The bump crosses 0.3.372, which added the six entries and
+    dropped the Luma pair; 0.3.373 only fixes the Qwen multiangle
+    entry id. Described together here as only 0.3.373 is submitted
+- No code or dependency change: loader.py is byte-identical,
+  the sdist still declares no runtime requirements, and the
+  json >= 0.1.102 and media-assets-02 >= 0.1.9 Requires floors
+  are still satisfied (the six new entries previews need
+  media-assets-02 0.1.14, not packaged yet)
+
+-------------------------------------------------------------------
 Thu Oct  8 06:25:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.369: the manifest now lists 614

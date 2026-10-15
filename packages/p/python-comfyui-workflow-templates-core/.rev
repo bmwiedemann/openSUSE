@@ -280,4 +280,12 @@ checksums. Data only, no code or dependency change.</comment>
     <comment>Update to 0.3.369: manifest grows 608 to 614 templates (all new ones in media-assets-02); Requires floors unchanged.</comment>
     <requestid>1383216</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a05d32a164a9de0731977380fe817e97</srcmd5>
+    <version>0.3.373</version>
+    <time>1792059938</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.3.373: manifest 614-&gt;618 templates (FishAudio, Higgsfield, Qwen Turbo; drop Luma pair). No code change, floors satisfied. Builds green, rpmlint clean.</comment>
+    <requestid>1384887</requestid>
+  </revision>
 </revisionlist>
