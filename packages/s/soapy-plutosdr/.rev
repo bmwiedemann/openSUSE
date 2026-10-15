@@ -64,4 +64,12 @@ libSoapySDR.so.0.8-3()(64bit) and soapy-sdr.
 Supersedes SR 1374737.</comment>
     <requestid>1374739</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ce64b3d66757fb90a805ba8301fabd1</srcmd5>
+    <version>0.2.3</version>
+    <time>1792059541</time>
+    <user>anag_factory</user>
+    <comment>Update soapy-plutosdr to 0.2.3 (TX buffer scaling, bufflen/MTU fixes).</comment>
+    <requestid>1384074</requestid>
+  </revision>
 </revisionlist>

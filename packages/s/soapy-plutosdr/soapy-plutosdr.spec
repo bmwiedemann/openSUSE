@@ -19,7 +19,7 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-plutosdr
 Name:           soapy-plutosdr
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        SoapySDR PlutoSDR module
 # Legal-Review-Notice: LGPL-2.1-only is deliberate. Upstream ships the bare
