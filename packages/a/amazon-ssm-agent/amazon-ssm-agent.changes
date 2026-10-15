@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 15 08:56:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.5538.0
+  * Bug fixes for aws-sdk-go-v2
+  * Upgrade Go version to 1.26.9
+- Raise minimum Go version to 1.26.9 in BuildRequires
+
+-------------------------------------------------------------------
 Fri Sep 18 06:40:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.5390.0
