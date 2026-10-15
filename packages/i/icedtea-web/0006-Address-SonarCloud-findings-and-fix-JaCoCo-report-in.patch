@@ -1,0 +1,168 @@
+From d63bea6070464e1b4f35083e70e78cb3a1f45ad2 Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Tue, 6 Oct 2026 14:48:12 +0200
+Subject: [PATCH 6/8] Address SonarCloud findings and fix JaCoCo report in
+ integration tests
+
+---
+ .sonarcloud.properties                         |  2 ++
+ .../client/policyeditor/PolicyIdentifier.java  | 11 +++++------
+ .../UnsignedAppletTrustConfirmationTest.java   | 18 +++++++++++-------
+ .../classloader/JNLPClassLoaderTest.java       | 14 +++-----------
+ integration/pom.xml                            |  3 ++-
+ .../testing/tools/CodeSignerCreator.java       |  4 +++-
+ 6 files changed, 26 insertions(+), 26 deletions(-)
+ create mode 100644 .sonarcloud.properties
+
+diff --git a/.sonarcloud.properties b/.sonarcloud.properties
+new file mode 100644
+index 000000000..d8cb8d407
+--- /dev/null
++++ b/.sonarcloud.properties
+@@ -0,0 +1,2 @@
++# Copied from OpenJDK, kept close to upstream; its internal duplication is not ours to fix
++sonar.cpd.exclusions=core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyParser.java
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifier.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifier.java
+index 2a178e75b..36d324cca 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifier.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifier.java
+@@ -167,14 +167,13 @@ public class PolicyIdentifier implements Comparable<PolicyIdentifier>, Serializa
+     }
+ 
+     private static <T extends Comparable<T>> int compareComparable(T a, T b) {
+-        if (a == null && b != null) {
++        if (a == b) {
++            return 0;
++        } else if (a == null) {
+             return 1;
+-        } else if (a != null && b == null) {
++        } else if (b == null) {
+             return -1;
+-        } else if (a == b) {
+-            return 0;
+-        } else {
+-            return a.compareTo(b);
+         }
++        return a.compareTo(b);
+     }
+ }
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/appletextendedsecurity/UnsignedAppletTrustConfirmationTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/appletextendedsecurity/UnsignedAppletTrustConfirmationTest.java
+index 55db5e70e..50b240ad9 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/appletextendedsecurity/UnsignedAppletTrustConfirmationTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/appletextendedsecurity/UnsignedAppletTrustConfirmationTest.java
+@@ -98,15 +98,21 @@ public class UnsignedAppletTrustConfirmationTest {
+     };
+     
+     @BeforeClass
+-    public static void initUrl() throws MalformedURLException {
++    public static void setUpClass() throws IOException {
++        backupAppTrust(); // first, so restoreAppTrust works even if URL setup fails
++        initUrl();
++        initUrlsX123();
++        initUrlsY12345678();
++    }
++
++    private static void initUrl() throws MalformedURLException {
+         url=new URL(surl1);
+         url4=new URL(url41+url42);
+     }
+    
+    private static File backup;
+ 
+-    @BeforeClass
+-    public static void backupAppTrust() throws IOException{
++    private static void backupAppTrust() throws IOException{
+         PathsAndFiles.APPLET_TRUST_SETTINGS_USER.getFile().createNewFile();
+         backup = File.createTempFile("appletExtendedSecurity", "itwUnittest");
+         backup.deleteOnExit();
+@@ -205,8 +211,7 @@ public class UnsignedAppletTrustConfirmationTest {
+     private static URL urlY7;
+     private static URL urlY8;
+     
+-    @BeforeClass
+-    public static void initUrlsX123() throws MalformedURLException, IOException {
++    private static void initUrlsX123() throws MalformedURLException, IOException {
+         urlX1 = new URL("http://&#10;does&#32;not&#32;matter&#32;is&#32;ok");
+         try {
+             urlX2 = new URL("http://\ndoes not matter is harmful");
+@@ -218,8 +223,7 @@ public class UnsignedAppletTrustConfirmationTest {
+         }
+     }
+ 
+-    @BeforeClass
+-    public static void initUrlsY12345678() throws MalformedURLException, IOException {
++    private static void initUrlsY12345678() throws MalformedURLException, IOException {
+         try {
+             urlY1 = new URL("http://som\\EeUrl.cz/aa");
+             urlY2 = new URL("http://some\\QUrl.cz/aa");
+diff --git a/core/src/test/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoaderTest.java b/core/src/test/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoaderTest.java
+index 04b60981f..9c4523be5 100644
+--- a/core/src/test/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoaderTest.java
++++ b/core/src/test/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoaderTest.java
+@@ -98,24 +98,16 @@ public class JNLPClassLoaderTest extends NoStdOutErrTest {
+     private static String askUser;
+ 
+     @BeforeClass
+-    public static void setPermissions() {
++    public static void setPermissionsAndNoDialogs() {
+         level = AppletStartupSecuritySettings.getInstance().getSecurityLevel();
+         getConfiguration().setProperty(ConfigurationConstants.KEY_SECURITY_LEVEL, AppletSecurityLevel.ALLOW_UNSIGNED.toChars());
+-    }
+-
+-    @AfterClass
+-    public static void resetPermissions() {
+-        getConfiguration().setProperty(ConfigurationConstants.KEY_SECURITY_LEVEL, level.toChars());
+-    }
+-
+-    @BeforeClass
+-    public static void noDialogs() {
+         askUser = getConfiguration().getProperty(ConfigurationConstants.KEY_SECURITY_PROMPT_USER);
+         getConfiguration().setProperty(ConfigurationConstants.KEY_SECURITY_PROMPT_USER, Boolean.toString(false));
+     }
+ 
+     @AfterClass
+-    public static void restoreDialogs() {
++    public static void resetPermissionsAndDialogs() {
++        getConfiguration().setProperty(ConfigurationConstants.KEY_SECURITY_LEVEL, level.toChars());
+         getConfiguration().setProperty(ConfigurationConstants.KEY_SECURITY_PROMPT_USER, askUser);
+     }
+ 
+diff --git a/integration/pom.xml b/integration/pom.xml
+index 0851cec3d..5a9d02e60 100644
+--- a/integration/pom.xml
++++ b/integration/pom.xml
+@@ -219,7 +219,8 @@
+                     <reuseForks>false</reuseForks>
+                     <!-- limiting memory for travis which uses docker to run builds -->
+                     <!-- if memory is not limited the forked JVMs use too much memory and are killed by the OS -->
+-                    <argLine>@{argLine} ${itw.test.moduleArgs} ${itw.test.smArgs} -Xmx1024m</argLine>
++                    <!-- no @{argLine}: parallel forks corrupt the shared jacoco.exec, and the tested code runs in child JVMs anyway -->
++                    <argLine>${itw.test.moduleArgs} ${itw.test.smArgs} -Xmx1024m</argLine>
+                 </configuration>
+             </plugin>
+ 
+diff --git a/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java b/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java
+index d4afead0e..a930c8ce1 100644
+--- a/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java
++++ b/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java
+@@ -45,6 +45,8 @@ import java.util.Date;
+ 
+ public class CodeSignerCreator {
+ 
++    private static final SecureRandom RANDOM = new SecureRandom();
++
+     /**
+      * Create a self-signed X509 Certificate signed using SHA256withRSA with a 2048 bit key.
+      *
+@@ -72,7 +74,7 @@ public class CodeSignerCreator {
+ 
+         final X500Name name = new X500Name(dname);
+         final Date notAfter = new Date(notBefore.getTime() + validity * 24L * 60L * 60L * 1000L);
+-        final BigInteger serial = BigInteger.valueOf(new SecureRandom().nextInt() & 0x7fffffff);
++        final BigInteger serial = BigInteger.valueOf(RANDOM.nextInt() & 0x7fffffff);
+ 
+         return new JcaX509CertificateConverter().getCertificate(
+                 new JcaX509v3CertificateBuilder(name, serial, notBefore, notAfter, name, keyPair.getPublic())
+-- 
+2.55.0
+

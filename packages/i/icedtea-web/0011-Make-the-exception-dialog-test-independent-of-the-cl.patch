@@ -1,0 +1,46 @@
+From cf9d7f330f71c7bf913a451851d21b2fff04e160 Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Wed, 7 Oct 2026 16:31:38 +0200
+Subject: [PATCH 11/11] Make the exception dialog test independent of the clock
+ minute
+
+---
+ .../parts/JEditorPaneBasedExceptionDialog.java            | 2 +-
+ .../parts/JEditorPaneBasedExceptionDialogTest.java        | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/splashscreen/parts/JEditorPaneBasedExceptionDialog.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/splashscreen/parts/JEditorPaneBasedExceptionDialog.java
+index a1f61e6b6..268fe0c6f 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/splashscreen/parts/JEditorPaneBasedExceptionDialog.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/splashscreen/parts/JEditorPaneBasedExceptionDialog.java
+@@ -89,7 +89,7 @@ public class JEditorPaneBasedExceptionDialog extends JDialog implements Hyperlin
+     // End of components declaration
+     private final String message;
+     private final Throwable exception;
+-    private final Date shown;
++    final Date shown;
+     private final String anotherInfo;
+ 
+     /** Creates new form JEditorPaneBasedExceptionDialog */
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/splashscreen/parts/JEditorPaneBasedExceptionDialogTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/splashscreen/parts/JEditorPaneBasedExceptionDialogTest.java
+index 5f1d90d66..b21838b8a 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/splashscreen/parts/JEditorPaneBasedExceptionDialogTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/splashscreen/parts/JEditorPaneBasedExceptionDialogTest.java
+@@ -126,10 +126,10 @@ public class JEditorPaneBasedExceptionDialogTest {
+         JEditorPaneBasedExceptionDialog d2 = new JEditorPaneBasedExceptionDialog(null, false, ex, ec, null);
+         JEditorPaneBasedExceptionDialog d3 = new JEditorPaneBasedExceptionDialog(null, false, ex, null, ai);
+         JEditorPaneBasedExceptionDialog d4 = new JEditorPaneBasedExceptionDialog(null, false, null, ec, ai);
+-        Assert.assertTrue("message from dialog must be same as pattern", d1.getMessage().equals(s1));
+-        Assert.assertTrue("message from dialog must be same as pattern", d2.getMessage().equals(s2));
+-        Assert.assertTrue("message from dialog must be same as pattern", d3.getMessage().equals(s3));
+-        Assert.assertTrue("message from dialog must be same as pattern", d4.getMessage().equals(s4));
++        Assert.assertEquals("message from dialog must be same as pattern", JEditorPaneBasedExceptionDialog.getText(ex, l, ai, d1.shown), d1.getMessage());
++        Assert.assertEquals("message from dialog must be same as pattern", JEditorPaneBasedExceptionDialog.getText(ex, l, null, d2.shown), d2.getMessage());
++        Assert.assertEquals("message from dialog must be same as pattern", JEditorPaneBasedExceptionDialog.getText(ex, null, ai, d3.shown), d3.getMessage());
++        Assert.assertEquals("message from dialog must be same as pattern", JEditorPaneBasedExceptionDialog.getText(null, l, ai, d4.shown), d4.getMessage());
+ 
+     }
+ 
+-- 
+2.55.0
+

@@ -1,0 +1,154 @@
+From a714291866af7003a66ff6996f7d8333056d1b8f Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Wed, 7 Oct 2026 15:52:22 +0200
+Subject: [PATCH 10/10] Drop modules missing from this JVM from java-vm-args
+ --add-modules on relaunch
+
+---
+ .../adoptopenjdk/icedteaweb/jvm/JvmUtils.java | 62 +++++++++++++++++++
+ .../net/sourceforge/jnlp/ItwJvmLauncher.java  |  3 +-
+ .../icedteaweb/jvm/JvmUtilsTest.java          |  9 +++
+ 3 files changed, 73 insertions(+), 1 deletion(-)
+
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtils.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtils.java
+index 5479042a9..85a49885c 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtils.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtils.java
+@@ -1,5 +1,7 @@
+ package net.adoptopenjdk.icedteaweb.jvm;
+ 
++import net.adoptopenjdk.icedteaweb.logging.Logger;
++import net.adoptopenjdk.icedteaweb.logging.LoggerFactory;
+ import net.adoptopenjdk.icedteaweb.xmlparser.ParseException;
+ import net.sourceforge.jnlp.runtime.JNLPRuntime;
+ 
+@@ -11,6 +13,7 @@ import java.util.LinkedHashMap;
+ import java.util.LinkedHashSet;
+ import java.util.List;
+ import java.util.Map;
++import java.util.Optional;
+ import java.util.Set;
+ 
+ import static java.lang.Character.isWhitespace;
+@@ -25,6 +28,8 @@ import static net.adoptopenjdk.icedteaweb.StringUtils.isBlank;
+ import static net.sourceforge.jnlp.config.ConfigurationConstants.KEY_JVM_ARGS_WHITELIST;
+ 
+ public class JvmUtils {
++
++    private static final Logger LOG = LoggerFactory.getLogger(JvmUtils.class);
+     private static final Set<String> VALID_VM_ARGUMENTS = unmodifiableSet(new HashSet<>(asList(getValidVMArguments())));
+     private static final List<String> VALID_STARTING_ARGUMENTS = unmodifiableList(asList(getValidStartingVMArguments()));
+     private static final List<String> VALID_STARTING_JAVA_MODULES_ARGUMENTS = unmodifiableList(asList(getValidStartingJavaModuleVMArguments()));
+@@ -417,6 +422,63 @@ public class JvmUtils {
+         return new LinkedHashSet<>(asList(args));
+     }
+ 
++    /**
++     * Removes modules this JVM lacks from --add-modules: a missing one aborts JVM startup,
++     * while --add-exports/--add-opens to a missing module only warn.
++     * E.g. JOSM's JNLP asks for javafx.* which plain OpenJDK does not have.
++     */
++    public static List<String> dropMissingModules(final List<String> vmArgs) {
++        final List<String> result = new ArrayList<>();
++        boolean valueFollows = false;
++        for (final String arg : vmArgs) {
++            if (valueFollows) {
++                valueFollows = false;
++                final String kept = presentModules(arg);
++                if (kept.isEmpty()) {
++                    result.remove(result.size() - 1); // the bare --add-modules
++                } else {
++                    result.add(kept);
++                }
++            } else if (arg.equals(ADD_MODULES)) {
++                valueFollows = true;
++                result.add(arg);
++            } else if (arg.startsWith(ADD_MODULES + "=")) {
++                final String kept = presentModules(arg.substring(ADD_MODULES.length() + 1));
++                if (!kept.isEmpty()) {
++                    result.add(ADD_MODULES + "=" + kept);
++                }
++            } else {
++                result.add(arg);
++            }
++        }
++        return result;
++    }
++
++    private static final String ADD_MODULES = "--add-modules";
++
++    private static String presentModules(final String commaList) {
++        final StringBuilder kept = new StringBuilder();
++        for (final String module : commaList.split(",")) {
++            if (module.startsWith("ALL-") || isSystemModule(module)) {
++                kept.append(kept.length() == 0 ? "" : ",").append(module);
++            } else {
++                LOG.warn("Dropping module {} from --add-modules, not present in this JVM", module);
++            }
++        }
++        return kept.toString();
++    }
++
++    // reflection: compiled for Java 8, which has no modules (and no --add-modules either)
++    static boolean isSystemModule(final String name) {
++        try {
++            final Class<?> finderClass = Class.forName("java.lang.module.ModuleFinder");
++            final Object finder = finderClass.getMethod("ofSystem").invoke(null);
++            return ((Optional<?>) finderClass.getMethod("find", String.class).invoke(finder, name)).isPresent();
++        } catch (ReflectiveOperationException e) {
++            return true;
++        }
++    }
++
+     /**
+      * Combines PREDEFINED_JAVA_MODULES_VM_ARGUMENTS with the Java Module VM Args in the input vmargs.
+      * Does not check legality of args, this is done by {@link #checkVMArgs(String)}check
+diff --git a/core/src/main/java/net/sourceforge/jnlp/ItwJvmLauncher.java b/core/src/main/java/net/sourceforge/jnlp/ItwJvmLauncher.java
+index 9cdd0b43c..72fc9c994 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/ItwJvmLauncher.java
++++ b/core/src/main/java/net/sourceforge/jnlp/ItwJvmLauncher.java
+@@ -16,6 +16,7 @@
+ //
+ package net.sourceforge.jnlp;
+ 
++import net.adoptopenjdk.icedteaweb.jvm.JvmUtils;
+ import net.adoptopenjdk.icedteaweb.ProcessUtils;
+ import net.adoptopenjdk.icedteaweb.launch.JvmLauncher;
+ import net.adoptopenjdk.icedteaweb.logging.Logger;
+@@ -57,7 +58,7 @@ public class ItwJvmLauncher implements JvmLauncher {
+         commands.add(pathToItwBinary);
+ 
+         // use -Jargument format to pass arguments to the JVM through the launcher
+-        for (String arg : vmArgs) {
++        for (String arg : JvmUtils.dropMissingModules(vmArgs)) {
+             commands.add("-J" + arg);
+         }
+ 
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtilsTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtilsTest.java
+index 78302cf7a..8a928c794 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtilsTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtilsTest.java
+@@ -17,6 +17,7 @@ import static org.junit.Assert.assertEquals;
+ import static org.junit.Assert.assertFalse;
+ import static org.junit.Assert.assertTrue;
+ import static org.junit.Assert.fail;
++import static org.junit.Assume.assumeFalse;
+ 
+ public class JvmUtilsTest {
+ 
+@@ -276,4 +277,12 @@ public class JvmUtilsTest {
+     public void parsingWrongQuotedArguments() throws ParseException {
+         JvmUtils.parseArguments("  some arguments \"with   Quotes\"AndMissingSpace after quote  ");
+     }
++
++    @Test
++    public void testDropMissingModules() {
++        assumeFalse(JvmUtils.isSystemModule("no.such.mod")); // Java 8: no modules, all count as present
++        assertEquals(Arrays.asList("--add-modules=java.sql,ALL-SYSTEM", "-Xmx1g", "--add-modules", "java.sql"),
++                JvmUtils.dropMissingModules(Arrays.asList("--add-modules=java.sql,no.such.mod,ALL-SYSTEM", "-Xmx1g",
++                        "--add-modules", "java.sql,no.such.mod", "--add-modules=no.such.mod", "--add-modules", "no.such.mod")));
++    }
+ }
+-- 
+2.55.0
+

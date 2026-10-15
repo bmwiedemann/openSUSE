@@ -1,0 +1,309 @@
+From 30739efbb5ddf390527208314c0f278511302604 Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Tue, 6 Oct 2026 11:15:17 +0200
+Subject: [PATCH 2/8] Port to jacoco 0.8.14 and surefire 3.6.0 to be able to
+ run on Java 25
+
+Also includes test adaptations (KeyStoresTest, JNLPFileTest,
+UnsignedAppletTrustConfirmationTest, JNLPPolicy debug log, root pom
+profiles); integration-test fixes (MaxPermSize removal, ItwLauncher
+flags, headless prompt loop fix).
+---
+ .../SecurityDialogMessageHandler.java         |  3 +-
+ .../sourceforge/jnlp/runtime/JNLPPolicy.java  |  4 +++
+ .../UnsignedAppletTrustConfirmationTest.java  | 14 ++++++---
+ .../net/sourceforge/jnlp/JNLPFileTest.java    |  3 +-
+ .../jnlp/security/KeyStoresTest.java          | 20 +++++++++----
+ integration/pom.xml                           |  2 +-
+ .../icedteaweb/integration/ItwLauncher.java   | 25 +++++++++++++++-
+ pom.xml                                       | 30 +++++++++++++++++--
+ 8 files changed, 85 insertions(+), 16 deletions(-)
+
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/SecurityDialogMessageHandler.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/SecurityDialogMessageHandler.java
+index 6be4f0c76..2918ff807 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/SecurityDialogMessageHandler.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/SecurityDialogMessageHandler.java
+@@ -224,8 +224,9 @@ public class SecurityDialogMessageHandler implements Runnable {
+                     LOG.error("Probably wrong value?", eeex);
+                     repeatAll = false;
+                 } catch (Exception ex) {
++                    // retrying would fail the same way forever (e.g. NPE on a panel-less dialog); null response = deny
+                     LOG.error(IcedTeaWebConstants.DEFAULT_ERROR_MESSAGE, ex);
+-                    repeatAll = true;
++                    keepGoing = false;
+                 }
+             } while (keepGoing);
+         } finally {
+diff --git a/core/src/main/java/net/sourceforge/jnlp/runtime/JNLPPolicy.java b/core/src/main/java/net/sourceforge/jnlp/runtime/JNLPPolicy.java
+index fc5c8f465..74cb4fd64 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/runtime/JNLPPolicy.java
++++ b/core/src/main/java/net/sourceforge/jnlp/runtime/JNLPPolicy.java
+@@ -32,6 +32,7 @@ import java.nio.file.Path;
+ import java.nio.file.Paths;
+ import java.security.AllPermission;
+ import java.security.CodeSource;
++import java.security.NoSuchAlgorithmException;
+ import java.security.Permission;
+ import java.security.PermissionCollection;
+ import java.security.Permissions;
+@@ -242,6 +243,9 @@ public class JNLPPolicy extends Policy {
+                     policyUri = new URI(policyLocation.replace("\\", "/"));
+                 }
+                 policy = getInstance("JavaPolicy", new URIParameter(policyUri));
++            } catch (NoSuchAlgorithmException e) {
++                // JDK 24+: no policy support, nothing to enforce it with anyway
++                LOG.debug("Policy files not supported by this JVM, ignoring {}", policyLocation);
+             } catch (Exception e) {
+                 LOG.error("Error while loading the policy from URL " + policyLocation, e);
+             }
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/appletextendedsecurity/UnsignedAppletTrustConfirmationTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/appletextendedsecurity/UnsignedAppletTrustConfirmationTest.java
+index 72c2b9f4e..55db5e70e 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/appletextendedsecurity/UnsignedAppletTrustConfirmationTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/appletextendedsecurity/UnsignedAppletTrustConfirmationTest.java
+@@ -53,6 +53,7 @@ import net.adoptopenjdk.icedteaweb.io.FileUtils;
+ import net.sourceforge.jnlp.util.UrlUtils;
+ import org.junit.AfterClass;
+ import org.junit.Assert;
++import org.junit.Assume;
+ import org.junit.BeforeClass;
+ import org.junit.Test;
+ 
+@@ -219,10 +220,14 @@ public class UnsignedAppletTrustConfirmationTest {
+ 
+     @BeforeClass
+     public static void initUrlsY12345678() throws MalformedURLException, IOException {
+-        urlY1 = new URL("http://som\\EeUrl.cz/aa");
+-        urlY2 = new URL("http://some\\QUrl.cz/aa");
+-        urlY3 = new URL("http://so\\QmeU\\Erl.cz/aa");
+-        urlY4 = new URL("http://so\\EmeU\\Qrl.cz/aa");
++        try {
++            urlY1 = new URL("http://som\\EeUrl.cz/aa");
++            urlY2 = new URL("http://some\\QUrl.cz/aa");
++            urlY3 = new URL("http://so\\QmeU\\Erl.cz/aa");
++            urlY4 = new URL("http://so\\EmeU\\Qrl.cz/aa");
++        } catch (MalformedURLException ex) { // backslash in host rejected by newer JDKs
++            ServerAccess.logException(ex);
++        }
+ 
+         urlY5 = new URL("http://someUrl.cz/aa\\Ebb/cc");
+         urlY6 = new URL("http://someUrl.cz/aa\\Qbb/cc");
+@@ -232,6 +237,7 @@ public class UnsignedAppletTrustConfirmationTest {
+ 
+     @Test
+     public void updateAppletActionTestYQN1234saveAndLoadFine() throws Exception {
++        Assume.assumeNotNull(urlY1);
+         PathsAndFiles.APPLET_TRUST_SETTINGS_USER.getFile().delete(); //clean file to examine later
+         UnsignedAppletTrustConfirmation.updateAppletAction(
+                 new DummyJnlpWithTitleAndUrlsWithOverwrite(urlY1),
+diff --git a/core/src/test/java/net/sourceforge/jnlp/JNLPFileTest.java b/core/src/test/java/net/sourceforge/jnlp/JNLPFileTest.java
+index 4b3bd15eb..7ffeb9248 100644
+--- a/core/src/test/java/net/sourceforge/jnlp/JNLPFileTest.java
++++ b/core/src/test/java/net/sourceforge/jnlp/JNLPFileTest.java
+@@ -39,6 +39,7 @@ import net.adoptopenjdk.icedteaweb.jnlp.element.resource.ResourcesDesc;
+ import net.adoptopenjdk.icedteaweb.jnlp.element.security.ApplicationPermissionLevel;
+ import net.adoptopenjdk.icedteaweb.testing.annotations.Bug;
+ import net.adoptopenjdk.icedteaweb.testing.mock.MockJNLPFile;
++import net.adoptopenjdk.icedteaweb.resources.downloader.PackGzipUnpacker;
+ import net.adoptopenjdk.icedteaweb.xmlparser.ParseException;
+ import net.sourceforge.jnlp.util.logging.NoStdOutErrTest;
+ import org.junit.Assert;
+@@ -188,7 +189,7 @@ public class JNLPFileTest extends NoStdOutErrTest{
+         JNLPFile jnlpFile = new JNLPFile(is, codeBase, new ParserSettings(false,false,false));
+         DownloadOptions downloadOptions = jnlpFile.getDownloadOptions();
+ 
+-        Assert.assertTrue(downloadOptions.useExplicitPack());
++        Assert.assertEquals(PackGzipUnpacker.isSupported(), downloadOptions.useExplicitPack()); // no Pack200 since JDK 14
+         Assert.assertTrue(downloadOptions.useExplicitVersion());
+     }
+ 
+diff --git a/core/src/test/java/net/sourceforge/jnlp/security/KeyStoresTest.java b/core/src/test/java/net/sourceforge/jnlp/security/KeyStoresTest.java
+index 2f4475fda..3e24155aa 100644
+--- a/core/src/test/java/net/sourceforge/jnlp/security/KeyStoresTest.java
++++ b/core/src/test/java/net/sourceforge/jnlp/security/KeyStoresTest.java
+@@ -37,6 +37,7 @@ import net.sourceforge.jnlp.config.InfrastructureFileDescriptor;
+ import net.sourceforge.jnlp.config.PathsAndFiles;
+ import org.junit.AfterClass;
+ import org.junit.Assert;
++import org.junit.Assume;
+ import org.junit.Test;
+ 
+ import java.security.Permission;
+@@ -53,15 +54,24 @@ public class KeyStoresTest {
+ 
+     }
+ 
++    // JDK 24+ (or 18-23 without -Djava.security.manager=allow) refuse any SecurityManager change
++    private static void setSecurityManager(SecurityManager sm) {
++        try {
++            System.setSecurityManager(sm);
++        } catch (UnsupportedOperationException e) {
++            Assume.assumeTrue("SecurityManager not supported", sm == null);
++        }
++    }
++
+     @AfterClass
+     public static void removeClassLoader() {
+-        System.setSecurityManager(null);
++        setSecurityManager(null);
+     }
+ 
+     @Test
+     public void getKeyStoreUserLocationTest() {
+         InfrastructureFileDescriptor s;
+-        System.setSecurityManager(null);
++        setSecurityManager(null);
+         s = KeyStores.getKeyStoreLocation(KeyStores.Level.USER, KeyStores.Type.CA_CERTS);
+         Assert.assertEquals(s.getFile(), PathsAndFiles.USER_CACERTS.getFile());
+         s = KeyStores.getKeyStoreLocation(KeyStores.Level.USER, KeyStores.Type.CERTS);
+@@ -77,7 +87,7 @@ public class KeyStoresTest {
+     @Test
+     public void getKeyStoreSystemLocationTest() {
+         InfrastructureFileDescriptor s;
+-        System.setSecurityManager(null);
++        setSecurityManager(null);
+         s = KeyStores.getKeyStoreLocation(KeyStores.Level.SYSTEM, KeyStores.Type.CA_CERTS);
+         Assert.assertEquals(s.getFile(), PathsAndFiles.SYS_CACERT.getFile());
+         s = KeyStores.getKeyStoreLocation(KeyStores.Level.SYSTEM, KeyStores.Type.CERTS);
+@@ -93,7 +103,7 @@ public class KeyStoresTest {
+     @Test
+     public void getKeyStoreUserLocationTestSM() {
+         DummySM dm = new DummySM();
+-        System.setSecurityManager(dm);
++        setSecurityManager(dm);
+         InfrastructureFileDescriptor s;
+         s = KeyStores.getKeyStoreLocation(KeyStores.Level.USER, KeyStores.Type.CA_CERTS);
+         Assert.assertEquals(s.getFile(), PathsAndFiles.USER_CACERTS.getFile());
+@@ -111,7 +121,7 @@ public class KeyStoresTest {
+     @Test
+     public void getKeyStoreSystemLocationTestSM() {
+         DummySM dm = new DummySM();
+-        System.setSecurityManager(dm);
++        setSecurityManager(dm);
+         InfrastructureFileDescriptor s;
+         s = KeyStores.getKeyStoreLocation(KeyStores.Level.SYSTEM, KeyStores.Type.CA_CERTS);
+         Assert.assertEquals(s.getFile(), PathsAndFiles.SYS_CACERT.getFile());
+diff --git a/integration/pom.xml b/integration/pom.xml
+index 514c223f3..0851cec3d 100644
+--- a/integration/pom.xml
++++ b/integration/pom.xml
+@@ -219,7 +219,7 @@
+                     <reuseForks>false</reuseForks>
+                     <!-- limiting memory for travis which uses docker to run builds -->
+                     <!-- if memory is not limited the forked JVMs use too much memory and are killed by the OS -->
+-                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
++                    <argLine>@{argLine} ${itw.test.moduleArgs} ${itw.test.smArgs} -Xmx1024m</argLine>
+                 </configuration>
+             </plugin>
+ 
+diff --git a/integration/src/main/java/net/adoptopenjdk/icedteaweb/integration/ItwLauncher.java b/integration/src/main/java/net/adoptopenjdk/icedteaweb/integration/ItwLauncher.java
+index 19a02a3d2..965238213 100644
+--- a/integration/src/main/java/net/adoptopenjdk/icedteaweb/integration/ItwLauncher.java
++++ b/integration/src/main/java/net/adoptopenjdk/icedteaweb/integration/ItwLauncher.java
+@@ -6,14 +6,17 @@ import net.adoptopenjdk.icedteaweb.commandline.CommandLineOptions;
+ import net.sourceforge.jnlp.runtime.Boot;
+ 
+ import java.io.File;
++import java.lang.management.ManagementFactory;
+ import java.util.ArrayList;
+ import java.util.Arrays;
+ import java.util.Collections;
+ import java.util.LinkedList;
+ import java.util.List;
++import java.util.stream.Collectors;
+ 
+ import static net.adoptopenjdk.icedteaweb.commandline.CommandLineOptions.HEADLESS;
+ import static net.adoptopenjdk.icedteaweb.commandline.CommandLineOptions.NOFORK;
++import static net.adoptopenjdk.icedteaweb.commandline.CommandLineOptions.NOSEC;
+ import static net.adoptopenjdk.icedteaweb.commandline.CommandLineOptions.VERBOSE;
+ 
+ /**
+@@ -39,10 +42,30 @@ public class ItwLauncher {
+         args.add("-jnlp");
+         args.add(jnlpUrl);
+         additionalArgs.stream().map(CommandLineOptions::getOption).forEach(args::add);
++        if (javaMajorVersion() >= 24) {
++            // no SecurityManager: test apps are unsigned and would be refused
++            args.add(NOSEC.getOption());
++        }
+         Collections.addAll(args, arguments);
+ 
+ 
+-        return launchExternal(pathToJavaBinary, pathToJavawsJar, Collections.emptyList(), args);
++        return launchExternal(pathToJavaBinary, pathToJavawsJar, launcherVmArgs(), args);
++    }
++
++    private static int javaMajorVersion() {
++        final String[] parts = JavaSystemProperties.getJavaVersion().split("[^0-9]+");
++        final int major = Integer.parseInt(parts[0]);
++        return major == 1 ? Integer.parseInt(parts[1]) : major;
++    }
++
++    /**
++     * Module and SecurityManager flags the real launchers add; taken from this (surefire) JVM,
++     * which gets them from the parent pom's JDK profiles.
++     */
++    private static List<String> launcherVmArgs() {
++        return ManagementFactory.getRuntimeMXBean().getInputArguments().stream()
++                .filter(a -> a.startsWith("--add-") || a.startsWith("-Djava.security.manager"))
++                .collect(Collectors.toList());
+     }
+ 
+     /**
+diff --git a/pom.xml b/pom.xml
+index d2601660b..3fc450153 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -26,15 +26,39 @@
+ 
+         <maven-jar-plugin.version>3.1.2</maven-jar-plugin.version>
+         <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
+-        <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
+-        <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
++        <maven-surefire-plugin.version>3.6.0</maven-surefire-plugin.version>
++        <jacoco-maven-plugin.version>0.8.14</jacoco-maven-plugin.version>
+         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+         <maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
+ 
+         <skip.javadoc>true</skip.javadoc>
++        <!-- set by jacoco prepare-agent; empty for modules without it -->
++        <argLine></argLine>
++        <!-- extra test JVM args, set by JDK profiles below -->
++        <itw.test.moduleArgs></itw.test.moduleArgs>
++        <itw.test.smArgs></itw.test.smArgs>
+     </properties>
+ 
+     <profiles>
++        <profile>
++            <id>jdk9+</id>
++            <activation>
++                <jdk>[9,)</jdk>
++            </activation>
++            <properties>
++                <!-- runtime exports as in the launchers, plus internals used by tests only -->
++                <itw.test.moduleArgs>@${maven.multiModuleProjectDirectory}/launchers/itw-modularjdk.args --add-exports=java.base/sun.security.tools.keytool=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</itw.test.moduleArgs>
++            </properties>
++        </profile>
++        <profile>
++            <id>jdk18-23</id>
++            <activation>
++                <jdk>[18,24)</jdk>
++            </activation>
++            <properties>
++                <itw.test.smArgs>-Djava.security.manager=allow</itw.test.smArgs>
++            </properties>
++        </profile>
+         <profile>
+             <id>javaDoc</id>
+             <properties>
+@@ -111,7 +135,7 @@
+                     <artifactId>maven-surefire-plugin</artifactId>
+                     <version>${maven-surefire-plugin.version}</version>
+                     <configuration>
+-                        <argLine>-Dfile.encoding=${project.build.sourceEncoding} -Duser.language=en</argLine>
++                        <argLine>@{argLine} ${itw.test.moduleArgs} ${itw.test.smArgs} -Dfile.encoding=${project.build.sourceEncoding} -Duser.language=en</argLine>
+                         <environmentVariables>
+                             <ICEDTEA_WEB_SPLASH>DEFAULT</ICEDTEA_WEB_SPLASH>
+                         </environmentVariables>
+-- 
+2.55.0
+

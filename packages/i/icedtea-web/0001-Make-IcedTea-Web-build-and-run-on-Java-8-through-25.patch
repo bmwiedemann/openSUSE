@@ -1,0 +1,2316 @@
+From 6260438c58228daa86a73e7d85aa4da5c14fa719 Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Tue, 6 Oct 2026 10:55:46 +0200
+Subject: [PATCH 1/8] Make IcedTea-Web build and run on Java 8 through 25
+
+---
+ .github/workflows/maven.yml                   |   12 +-
+ .../security/TemporaryPermissionsButton.java  |    2 +-
+ .../policyeditor/CustomPolicyViewer.java      |    1 -
+ .../client/policyeditor/PolicyEditor.java     |    1 -
+ .../policyeditor/PolicyEditorController.java  |    1 -
+ .../policyeditor/PolicyEditorPermissions.java |    1 -
+ .../client/policyeditor/PolicyEntry.java      |    1 -
+ .../client/policyeditor/PolicyFileModel.java  |    7 +-
+ .../client/policyeditor/PolicyIdentifier.java |    1 -
+ .../client/policyeditor/PolicyParser.java     | 1370 +++++++++++++++++
+ .../JnlpDownloadProtocolConstants.java        |    4 +-
+ .../downloader/PackGzipUnpacker.java          |   36 +-
+ .../java/net/sourceforge/jnlp/JNLPFile.java   |   12 +-
+ .../jnlp/runtime/CachedJarFileCallback.java   |   31 +-
+ .../sourceforge/jnlp/runtime/JNLPRuntime.java |   24 +-
+ .../runtime/classloader/JNLPClassLoader.java  |   18 +-
+ .../formatters/PlainTextFormatter.java        |    2 +-
+ .../policyeditor/CustomPolicyViewerTest.java  |    1 -
+ .../PolicyEditorControllerTest.java           |    1 -
+ .../policyeditor/PolicyEditorParsingTest.java |    1 -
+ .../client/policyeditor/PolicyEditorTest.java |    1 -
+ .../client/policyeditor/PolicyEntryTest.java  |    1 -
+ .../policyeditor/PolicyFileModelTest.java     |    1 -
+ .../policyeditor/PolicyIdentifierTest.java    |    1 -
+ .../resources/ResourceHandlerTest.java        |   11 +-
+ .../classloader/JNLPClassLoaderTest.java      |    4 +-
+ launchers/rust-launcher/src/main.rs           |   59 +-
+ launchers/shell-launcher/launchers.bat.in     |    4 +
+ launchers/shell-launcher/launchers.sh.in      |    5 +
+ .../testing/tools/CodeSignerCreator.java      |   89 +-
+ 30 files changed, 1539 insertions(+), 164 deletions(-)
+ create mode 100644 core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyParser.java
+
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+index 429376783..f3cbc4ff2 100644
+--- a/.github/workflows/maven.yml
++++ b/.github/workflows/maven.yml
+@@ -13,14 +13,20 @@ jobs:
+   build:
+ 
+     runs-on: ubuntu-latest
++    strategy:
++      fail-fast: false
++      matrix:
++        java: [ 8, 11, 17, 21, 25 ]
+ 
+     steps:
+     - name: Checkout Project
+       uses: actions/checkout@v2
+-    - name: Set up JDK 1.8
+-      uses: actions/setup-java@v1
++    - name: Set up JDK ${{ matrix.java }}
++      uses: actions/setup-java@v4
+       with:
+-        java-version: 1.8
++        distribution: temurin
++        java-version: ${{ matrix.java }}
++        cache: maven
+     - name: Build with Maven
+       uses: GabrielBB/xvfb-action@v1
+       with:
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/TemporaryPermissionsButton.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/TemporaryPermissionsButton.java
+index 4e2b55bd9..1a7678893 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/TemporaryPermissionsButton.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/TemporaryPermissionsButton.java
+@@ -36,12 +36,12 @@ package net.adoptopenjdk.icedteaweb.client.parts.dialogs.security;
+ import net.adoptopenjdk.icedteaweb.client.policyeditor.PolicyEditor;
+ import net.adoptopenjdk.icedteaweb.client.policyeditor.PolicyEditorPermissions;
+ import net.adoptopenjdk.icedteaweb.client.policyeditor.PolicyIdentifier;
++import net.adoptopenjdk.icedteaweb.client.policyeditor.PolicyParser;
+ import net.adoptopenjdk.icedteaweb.logging.Logger;
+ import net.adoptopenjdk.icedteaweb.logging.LoggerFactory;
+ import net.sourceforge.jnlp.JNLPFile;
+ import net.sourceforge.jnlp.config.PathsAndFiles;
+ import net.sourceforge.jnlp.runtime.classloader.SecurityDelegate;
+-import sun.security.provider.PolicyParser;
+ 
+ import javax.swing.AbstractButton;
+ import javax.swing.JButton;
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/CustomPolicyViewer.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/CustomPolicyViewer.java
+index fa074a5d2..3b0f8bff8 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/CustomPolicyViewer.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/CustomPolicyViewer.java
+@@ -33,7 +33,6 @@ statement from your version.
+ 
+ package net.adoptopenjdk.icedteaweb.client.policyeditor;
+ 
+-import sun.security.provider.PolicyParser;
+ 
+ import javax.swing.DefaultListModel;
+ import javax.swing.JButton;
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditor.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditor.java
+index ad9b23703..dc9ab1e36 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditor.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditor.java
+@@ -53,7 +53,6 @@ import net.sourceforge.jnlp.util.docprovider.PolicyEditorTextsProvider;
+ import net.sourceforge.jnlp.util.docprovider.TextsProvider;
+ import net.sourceforge.jnlp.util.docprovider.formatters.formatters.PlainTextFormatter;
+ import net.sourceforge.jnlp.util.logging.OutputController;
+-import sun.security.provider.PolicyParser;
+ 
+ import javax.swing.AbstractAction;
+ import javax.swing.AbstractButton;
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorController.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorController.java
+index 77adfbe10..8f5c6ce96 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorController.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorController.java
+@@ -46,7 +46,6 @@ import java.util.Map;
+ import java.util.Set;
+ import java.util.SortedSet;
+ import java.util.TreeSet;
+-import sun.security.provider.PolicyParser;
+ 
+ public class PolicyEditorController {
+ 
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorPermissions.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorPermissions.java
+index 7c38a5cfa..5ce96db95 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorPermissions.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorPermissions.java
+@@ -33,7 +33,6 @@ statement from your version.
+ 
+ package net.adoptopenjdk.icedteaweb.client.policyeditor;
+ 
+-import sun.security.provider.PolicyParser;
+ 
+ import javax.swing.JCheckBox;
+ import java.io.Serializable;
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEntry.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEntry.java
+index 71196bca5..bbeac223a 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEntry.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEntry.java
+@@ -33,7 +33,6 @@ statement from your version.
+ 
+ package net.adoptopenjdk.icedteaweb.client.policyeditor;
+ 
+-import sun.security.provider.PolicyParser;
+ 
+ import java.awt.datatransfer.DataFlavor;
+ import java.awt.datatransfer.Transferable;
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyFileModel.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyFileModel.java
+index 4f893c492..061371a6c 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyFileModel.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyFileModel.java
+@@ -38,7 +38,6 @@ import net.adoptopenjdk.icedteaweb.logging.Logger;
+ import net.adoptopenjdk.icedteaweb.logging.LoggerFactory;
+ import net.adoptopenjdk.icedteaweb.io.FileUtils;
+ import net.sourceforge.jnlp.util.MD5SumWatcher;
+-import sun.security.provider.PolicyParser;
+ 
+ import java.io.BufferedReader;
+ import java.io.BufferedWriter;
+@@ -75,7 +74,7 @@ public class PolicyFileModel {
+ 
+     private KeystoreInfo keystoreInfo = new KeystoreInfo(null, null, null, null);
+     private MD5SumWatcher fileWatcher;
+-    private PolicyParser parser = new PolicyParser(false);
++    private PolicyParser parser = new PolicyParser();
+ 
+     PolicyFileModel(final String filepath) {
+         this(new File(filepath));
+@@ -107,7 +106,7 @@ public class PolicyFileModel {
+      * "-file" command line flag, or if none given, comes from DeploymentConfiguration.
+      */
+      synchronized void openAndParsePolicyFile() throws IOException, PolicyParser.ParsingException {
+-        parser = new PolicyParser(false);
++        parser = new PolicyParser();
+         fileWatcher = new MD5SumWatcher(file);
+         fileWatcher.update();
+         clearPermissions();
+@@ -149,7 +148,7 @@ public class PolicyFileModel {
+      * Save the policy model into the file pointed to by the filePath field.
+      */
+     synchronized void savePolicyFile() throws IOException {
+-        parser = new PolicyParser(false);
++        parser = new PolicyParser();
+         FileLock fileLock = null;
+         try {
+             fileLock = FileUtils.getFileLock(file.getAbsolutePath(), false, true);
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifier.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifier.java
+index 5d6ce249a..2a178e75b 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifier.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifier.java
+@@ -34,7 +34,6 @@ statement from your version.
+ package net.adoptopenjdk.icedteaweb.client.policyeditor;
+ 
+ import net.adoptopenjdk.icedteaweb.i18n.Translator;
+-import sun.security.provider.PolicyParser;
+ 
+ import java.io.Serializable;
+ import java.util.ArrayList;
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyParser.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyParser.java
+new file mode 100644
+index 000000000..287dabacf
+--- /dev/null
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyParser.java
+@@ -0,0 +1,1370 @@
++/*
++ * Copyright (c) 1997, 2022, Oracle and/or its affiliates. All rights reserved.
++ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
++ *
++ * This code is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License version 2 only, as
++ * published by the Free Software Foundation.  Oracle designates this
++ * particular file as subject to the "Classpath" exception as provided
++ * by Oracle in the LICENSE file that accompanied this code.
++ *
++ * This code is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
++ * version 2 for more details (a copy is included in the LICENSE file that
++ * accompanied this code).
++ *
++ * You should have received a copy of the GNU General Public License version
++ * 2 along with this work; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
++ * or visit www.oracle.com if you need additional information or have any
++ * questions.
++ */
++
++package net.adoptopenjdk.icedteaweb.client.policyeditor;
++
++import java.io.*;
++import java.security.GeneralSecurityException;
++import java.security.Principal;
++import java.util.*;
++import javax.security.auth.x500.X500Principal;
++
++
++/**
++ * The policy for a Java runtime (specifying
++ * which permissions are available for code from various principals)
++ * is represented as a separate
++ * persistent configuration.  The configuration may be stored as a
++ * flat ASCII file, as a serialized binary file of
++ * the Policy class, or as a database.
++ *
++ * <p>The Java runtime creates one global Policy object, which is used to
++ * represent the static policy configuration file.  It is consulted by
++ * a ProtectionDomain when the protection domain initializes its set of
++ * permissions.
++ *
++ * <p>The Policy <code>init</code> method parses the policy
++ * configuration file, and then
++ * populates the Policy object.  The Policy object is agnostic in that
++ * it is not involved in making policy decisions.  It is merely the
++ * Java runtime representation of the persistent policy configuration
++ * file.
++ *
++ * <p>When a protection domain needs to initialize its set of
++ * permissions, it executes code such as the following
++ * to ask the global Policy object to populate a
++ * Permissions object with the appropriate permissions:
++ * <pre>
++ *  policy = Policy.getPolicy();
++ *  Permissions perms = policy.getPermissions(protectiondomain)
++ * </pre>
++ *
++ * <p>The protection domain contains a CodeSource
++ * object, which encapsulates its codebase (URL) and public key attributes.
++ * It also contains the principals associated with the domain.
++ * The Policy object evaluates the global policy in light of whom the
++ * principal is and what the code source is and returns an appropriate
++ * Permissions object.
++ *
++ * @author Roland Schemers
++ * @author Ram Marti
++ *
++ * @since 1.2
++ *
++ * Copy of OpenJDK 21 sun.security.provider.PolicyParser (removed in JDK 24),
++ * openjdk/jdk21u bb6b279495ceff8442dbd0225756b92d466d5309,
++ * minus property expansion and debug output.
++ */
++
++public class PolicyParser {
++
++    private final Vector<GrantEntry> grantEntries;
++    private Map<String, DomainEntry> domainEntries;
++
++    // Convenience variables for parsing
++    private StreamTokenizer st;
++    private int lookahead;
++    private String keyStoreUrlString = null; // unexpanded
++    private String keyStoreType = null;
++    private String keyStoreProvider = null;
++    private String storePassURL = null;
++
++    // ITW never expands properties; ExpandException kept so the parsing code stays as in OpenJDK
++    private String expand(String value) throws PropertyExpander.ExpandException {
++        return value;
++    }
++
++    private String expand(String value, boolean encodeURL) throws PropertyExpander.ExpandException {
++        return value;
++    }
++
++    /**
++     * Creates a PolicyParser object.
++     */
++
++    public PolicyParser() {
++        grantEntries = new Vector<>();
++    }
++
++    /**
++     * Reads a policy configuration into the Policy object using a
++     * Reader object. <p>
++     *
++     * @param policy the policy Reader object.
++     *
++     * @exception ParsingException if the policy configuration contains
++     *          a syntax error.
++     *
++     * @exception IOException if an error occurs while reading the policy
++     *          configuration.
++     */
++
++    public void read(Reader policy)
++        throws ParsingException, IOException
++    {
++        if (!(policy instanceof BufferedReader)) {
++            policy = new BufferedReader(policy);
++        }
++
++        /*
++         * Configure the stream tokenizer:
++         *      Recognize strings between "..."
++         *      Don't convert words to lowercase
++         *      Recognize both C-style and C++-style comments
++         *      Treat end-of-line as white space, not as a token
++         */
++        st   = new StreamTokenizer(policy);
++
++        st.resetSyntax();
++        st.wordChars('a', 'z');
++        st.wordChars('A', 'Z');
++        st.wordChars('.', '.');
++        st.wordChars('0', '9');
++        st.wordChars('_', '_');
++        st.wordChars('$', '$');
++        st.wordChars(128 + 32, 255);
++        st.whitespaceChars(0, ' ');
++        st.commentChar('/');
++        st.quoteChar('\'');
++        st.quoteChar('"');
++        st.lowerCaseMode(false);
++        st.ordinaryChar('/');
++        st.slashSlashComments(true);
++        st.slashStarComments(true);
++
++        /*
++         * The main parsing loop.  The loop is executed once
++         * for each entry in the config file.      The entries
++         * are delimited by semicolons.   Once we've read in
++         * the information for an entry, go ahead and try to
++         * add it to the policy vector.
++         *
++         */
++
++        lookahead = st.nextToken();
++        GrantEntry ge = null;
++        while (lookahead != StreamTokenizer.TT_EOF) {
++            if (peek("grant")) {
++                ge = parseGrantEntry();
++                // could be null if we couldn't expand a property
++                if (ge != null)
++                    add(ge);
++            } else if (peek("keystore") && keyStoreUrlString==null) {
++                // only one keystore entry per policy file, others will be
++                // ignored
++                parseKeyStoreEntry();
++            } else if (peek("keystorePasswordURL") && storePassURL==null) {
++                // only one keystore passwordURL per policy file, others will be
++                // ignored
++                parseStorePassURL();
++            } else if (ge == null && keyStoreUrlString == null &&
++                storePassURL == null && peek("domain")) {
++                if (domainEntries == null) {
++                    domainEntries = new TreeMap<>();
++                }
++                DomainEntry de = parseDomainEntry();
++                String domainName = de.getName();
++                if (domainEntries.putIfAbsent(domainName, de) != null) {
++                    LocalizedMessage localizedMsg = new LocalizedMessage(
++                        "duplicate.keystore.domain.name");
++                    Object[] source = {domainName};
++                    String msg = "duplicate keystore domain name: " +
++                                 domainName;
++                    throw new ParsingException(msg, localizedMsg, source);
++                }
++            } else {
++                // error?
++            }
++            match(";");
++        }
++
++        if (keyStoreUrlString == null && storePassURL != null) {
++            throw new ParsingException(LocalizedMessage.getNonlocalized
++                ("keystorePasswordURL.can.not.be.specified.without.also.specifying.keystore"));
++        }
++    }
++
++    public void add(GrantEntry ge)
++    {
++        grantEntries.addElement(ge);
++    }
++
++    public void replace(GrantEntry origGe, GrantEntry newGe)
++    {
++        grantEntries.setElementAt(newGe, grantEntries.indexOf(origGe));
++    }
++
++    public boolean remove(GrantEntry ge)
++    {
++        return grantEntries.removeElement(ge);
++    }
++
++    /**
++     * Returns the (possibly expanded) keystore location, or null if the
++     * expansion fails.
++     */
++    public String getKeyStoreUrl() {
++        try {
++            if (keyStoreUrlString!=null && keyStoreUrlString.length()!=0) {
++                return expand(keyStoreUrlString, true).replace
++                                                (File.separatorChar, '/');
++            }
++        } catch (PropertyExpander.ExpandException peee) {
++            return null;
++        }
++        return null;
++    }
++
++    public void setKeyStoreUrl(String url) {
++        keyStoreUrlString = url;
++    }
++
++    public String getKeyStoreType() {
++        return keyStoreType;
++    }
++
++    public void setKeyStoreType(String type) {
++        keyStoreType = type;
++    }
++
++    public String getKeyStoreProvider() {
++        return keyStoreProvider;
++    }
++
++    public void setKeyStoreProvider(String provider) {
++        keyStoreProvider = provider;
++    }
++
++    public String getStorePassURL() {
++        try {
++            if (storePassURL!=null && storePassURL.length()!=0) {
++                return expand(storePassURL, true).replace
++                                                (File.separatorChar, '/');
++            }
++        } catch (PropertyExpander.ExpandException peee) {
++            return null;
++        }
++        return null;
++    }
++
++    public void setStorePassURL(String storePassURL) {
++        this.storePassURL = storePassURL;
++    }
++
++    /**
++     * Enumerate all the entries in the global policy object.
++     * This method is used by policy admin tools.   The tools
++     * should use the Enumeration methods on the returned object
++     * to fetch the elements sequentially.
++     */
++    public Enumeration<GrantEntry> grantElements(){
++        return grantEntries.elements();
++    }
++
++    public Collection<DomainEntry> getDomainEntries() {
++        return domainEntries.values();
++    }
++
++    /**
++     * write out the policy
++     */
++
++    public void write(Writer policy)
++    {
++        PrintWriter out = new PrintWriter(new BufferedWriter(policy));
++
++        out.println("/* AUTOMATICALLY GENERATED ON "+
++                    (new java.util.Date()) + "*/");
++        out.println("/* DO NOT EDIT */");
++        out.println();
++
++        // write the (unexpanded) keystore entry as the first entry of the
++        // policy file
++        if (keyStoreUrlString != null) {
++            writeKeyStoreEntry(out);
++        }
++        if (storePassURL != null) {
++            writeStorePassURL(out);
++        }
++
++        // write "grant" entries
++        for (GrantEntry ge : grantEntries) {
++            ge.write(out);
++            out.println();
++        }
++        out.flush();
++    }
++
++    /**
++     * parses a keystore entry
++     */
++    private void parseKeyStoreEntry() throws ParsingException, IOException {
++        match("keystore");
++        keyStoreUrlString = match("quoted string");
++
++        // parse keystore type
++        if (!peek(",")) {
++            return; // default type
++        }
++        match(",");
++
++        if (peek("\"")) {
++            keyStoreType = match("quoted string");
++        } else {
++            throw new ParsingException(st.lineno(),
++                LocalizedMessage.getNonlocalized("expected.keystore.type"));
++        }
++
++        // parse keystore provider
++        if (!peek(",")) {
++            return; // provider optional
++        }
++        match(",");
++
++        if (peek("\"")) {
++            keyStoreProvider = match("quoted string");
++        } else {
++            throw new ParsingException(st.lineno(),
++                LocalizedMessage.getNonlocalized("expected.keystore.provider"));
++        }
++    }
++
++    private void parseStorePassURL() throws ParsingException, IOException {
++        match("keyStorePasswordURL");
++        storePassURL = match("quoted string");
++    }
++
++    /**
++     * writes the (unexpanded) keystore entry
++     */
++    private void writeKeyStoreEntry(PrintWriter out) {
++        out.print("keystore \"");
++        out.print(keyStoreUrlString);
++        out.print('"');
++        if (keyStoreType != null && !keyStoreType.isEmpty())
++            out.print(", \"" + keyStoreType + "\"");
++        if (keyStoreProvider != null && !keyStoreProvider.isEmpty())
++            out.print(", \"" + keyStoreProvider + "\"");
++        out.println(";");
++        out.println();
++    }
++
++    private void writeStorePassURL(PrintWriter out) {
++        out.print("keystorePasswordURL \"");
++        out.print(storePassURL);
++        out.print('"');
++        out.println(";");
++        out.println();
++    }
++
++    /**
++     * parse a Grant entry
++     */
++    private GrantEntry parseGrantEntry()
++        throws ParsingException, IOException
++    {
++        GrantEntry e = new GrantEntry();
++        LinkedList<PrincipalEntry> principals = null;
++        boolean ignoreEntry = false;
++
++        match("grant");
++
++        while(!peek("{")) {
++
++            if (peekAndMatch("Codebase")) {
++                if (e.codeBase != null)
++                    throw new ParsingException(
++                            st.lineno(),
++                            LocalizedMessage.getNonlocalized
++                                ("multiple.Codebase.expressions"));
++                e.codeBase = match("quoted string");
++                peekAndMatch(",");
++            } else if (peekAndMatch("SignedBy")) {
++                if (e.signedBy != null)
++                    throw new ParsingException(
++                            st.lineno(),
++                            LocalizedMessage.getNonlocalized
++                                ("multiple.SignedBy.expressions"));
++                e.signedBy = match("quoted string");
++
++                // verify syntax of the aliases
++                StringTokenizer aliases = new StringTokenizer(e.signedBy,
++                                                              ",", true);
++                int actr = 0;
++                int cctr = 0;
++                while (aliases.hasMoreTokens()) {
++                    String alias = aliases.nextToken().trim();
++                    if (alias.equals(","))
++                        cctr++;
++                    else if (!alias.isEmpty())
++                        actr++;
++                }
++                if (actr <= cctr)
++                    throw new ParsingException(
++                            st.lineno(),
++                            LocalizedMessage.getNonlocalized
++                                ("SignedBy.has.empty.alias"));
++
++                peekAndMatch(",");
++            } else if (peekAndMatch("Principal")) {
++                if (principals == null) {
++                    principals = new LinkedList<>();
++                }
++
++                String principalClass;
++                String principalName;
++
++                if (peek("\"")) {
++                    // both the principalClass and principalName
++                    // will be replaced later
++                    principalClass = PrincipalEntry.REPLACE_NAME;
++                    principalName = match("principal type");
++                } else {
++                    // check for principalClass wildcard
++                    if (peek("*")) {
++                        match("*");
++                        principalClass = PrincipalEntry.WILDCARD_CLASS;
++                    } else {
++                        principalClass = match("principal type");
++                    }
++
++                    // check for principalName wildcard
++                    if (peek("*")) {
++                        match("*");
++                        principalName = PrincipalEntry.WILDCARD_NAME;
++                    } else {
++                        principalName = match("quoted string");
++                    }
++
++                    // disallow WILDCARD_CLASS && actual name
++                    if (principalClass.equals(PrincipalEntry.WILDCARD_CLASS) &&
++                        !principalName.equals(PrincipalEntry.WILDCARD_NAME)) {
++                        throw new ParsingException
++                                (st.lineno(),
++                                LocalizedMessage.getNonlocalized
++                                    ("can.not.specify.Principal.with.a.wildcard.class.without.a.wildcard.name"));
++                    }
++                }
++
++                try {
++                    principalName = expand(principalName);
++
++                    if (principalClass.equals
++                                ("javax.security.auth.x500.X500Principal") &&
++                        !principalName.equals(PrincipalEntry.WILDCARD_NAME)) {
++
++                        // 4702543:  X500 names with an EmailAddress
++                        // were encoded incorrectly.  construct a new
++                        // X500Principal with correct encoding.
++
++                        X500Principal p = new X500Principal
++                                ((new X500Principal(principalName)).toString());
++                        principalName = p.getName();
++                    }
++
++                    principals.add
++                        (new PrincipalEntry(principalClass, principalName));
++                } catch (PropertyExpander.ExpandException peee) {
++                    // ignore the entire policy entry
++                    // but continue parsing all the info
++                    // so we can get to the next entry
++                    ignoreEntry = true;
++                }
++                peekAndMatch(",");
++
++            } else {
++                throw new ParsingException(st.lineno(),
++                    LocalizedMessage.getNonlocalized
++                        ("expected.codeBase.or.SignedBy.or.Principal"));
++            }
++        }
++
++        if (principals != null) e.principals = principals;
++        match("{");
++
++        while(!peek("}")) {
++            if (peek("Permission")) {
++                try {
++                    PermissionEntry pe = parsePermissionEntry();
++                    e.add(pe);
++                } catch (PropertyExpander.ExpandException peee) {
++                    // ignore. The add never happened
++                    skipEntry();  // BugId 4219343
++                }
++                match(";");
++            } else {
++                throw new
++                    ParsingException(st.lineno(),
++                        LocalizedMessage.getNonlocalized
++                            ("expected.permission.entry"));
++            }
++        }
++        match("}");
++
++        try {
++            if (e.signedBy != null) e.signedBy = expand(e.signedBy);
++            if (e.codeBase != null) {
++                e.codeBase = expand(e.codeBase, true).replace
++                                    (File.separatorChar, '/');
++            }
++        } catch (PropertyExpander.ExpandException peee) {
++            return null;
++        }
++
++        return (ignoreEntry) ? null : e;
++    }
++
++    /**
++     * parse a Permission entry
++     */
++    private PermissionEntry parsePermissionEntry()
++        throws ParsingException, IOException, PropertyExpander.ExpandException
++    {
++        PermissionEntry e = new PermissionEntry();
++
++        // Permission
++        match("Permission");
++        e.permission = match("permission type");
++
++        if (peek("\"")) {
++            // Permission name
++            e.name = expand(match("quoted string"));
++        }
++
++        if (!peek(",")) {
++            return e;
++        }
++        match(",");
++
++        if (peek("\"")) {
++                e.action = expand(match("quoted string"));
++                if (!peek(",")) {
++                    return e;
++                }
++                match(",");
++        }
++
++        if (peekAndMatch("SignedBy")) {
++            e.signedBy = expand(match("quoted string"));
++        }
++        return e;
++    }
++
++    /**
++     * parse a domain entry
++     */
++    private DomainEntry parseDomainEntry()
++        throws ParsingException, IOException
++    {
++        DomainEntry domainEntry;
++        String name;
++        Map<String, String> properties = new HashMap<>();
++
++        match("domain");
++        name = match("domain name");
++
++        while(!peek("{")) {
++            // get the domain properties
++            properties = parseProperties("{");
++        }
++        match("{");
++        domainEntry = new DomainEntry(name, properties);
++
++        while(!peek("}")) {
++
++            match("keystore");
++            name = match("keystore name");
++            // get the keystore properties
++            if (!peek("}")) {
++                properties = parseProperties(";");
++            }
++            match(";");
++            domainEntry.add(new KeyStoreEntry(name, properties));
++        }
++        match("}");
++
++        return domainEntry;
++    }
++
++    /*
++     * Return a collection of domain properties or keystore properties.
++     */
++    private Map<String, String> parseProperties(String terminator)
++        throws ParsingException, IOException {
++
++        Map<String, String> properties = new HashMap<>();
++        String key;
++        String value;
++        while (!peek(terminator)) {
++            key = match("property name");
++            match("=");
++
++            try {
++                value = expand(match("quoted string"));
++            } catch (PropertyExpander.ExpandException peee) {
++                throw new IOException(peee.getLocalizedMessage());
++            }
++            properties.put(key.toLowerCase(Locale.ENGLISH), value);
++        }
++
++        return properties;
++    }
++
++    private boolean peekAndMatch(String expect)
++        throws ParsingException, IOException
++    {
++        if (peek(expect)) {
++            match(expect);
++            return true;
++        } else {
++            return false;
++        }
++    }
++
++    private boolean peek(String expect) {
++        boolean found = false;
++
++        switch (lookahead) {
++
++        case StreamTokenizer.TT_WORD:
++            if (expect.equalsIgnoreCase(st.sval))
++                found = true;
++            break;
++        case ',':
++            if (expect.equalsIgnoreCase(","))
++                found = true;
++            break;
++        case '{':
++            if (expect.equalsIgnoreCase("{"))
++                found = true;
++            break;
++        case '}':
++            if (expect.equalsIgnoreCase("}"))
++                found = true;
++            break;
++        case '"':
++            if (expect.equalsIgnoreCase("\""))
++                found = true;
++            break;
++        case '*':
++            if (expect.equalsIgnoreCase("*"))
++                found = true;
++            break;
++        case ';':
++            if (expect.equalsIgnoreCase(";"))
++                found = true;
++            break;
++        default:
++
++        }
++        return found;
++    }
++
++    private String match(String expect)
++        throws ParsingException, IOException
++    {
++        String value = null;
++
++        switch (lookahead) {
++        case StreamTokenizer.TT_NUMBER:
++            throw new ParsingException(st.lineno(), expect,
++                LocalizedMessage.getNonlocalized("number.") + st.nval);
++        case StreamTokenizer.TT_EOF:
++            LocalizedMessage localizedMsg = new LocalizedMessage
++                ("expected.expect.read.end.of.file.");
++            Object[] source = {expect};
++            String msg = "expected [" + expect + "], read [end of file]";
++            throw new ParsingException(msg, localizedMsg, source);
++        case StreamTokenizer.TT_WORD:
++            if (expect.equalsIgnoreCase(st.sval)) {
++                lookahead = st.nextToken();
++            } else if (expect.equalsIgnoreCase("permission type")) {
++                value = st.sval;
++                lookahead = st.nextToken();
++            } else if (expect.equalsIgnoreCase("principal type")) {
++                value = st.sval;
++                lookahead = st.nextToken();
++            } else if (expect.equalsIgnoreCase("domain name") ||
++                       expect.equalsIgnoreCase("keystore name") ||
++                       expect.equalsIgnoreCase("property name")) {
++                value = st.sval;
++                lookahead = st.nextToken();
++            } else {
++                 throw new ParsingException(st.lineno(), expect,
++                                            st.sval);
++            }
++            break;
++        case '"':
++            if (expect.equalsIgnoreCase("quoted string")) {
++                value = st.sval;
++                lookahead = st.nextToken();
++            } else if (expect.equalsIgnoreCase("permission type")) {
++                value = st.sval;
++                lookahead = st.nextToken();
++            } else if (expect.equalsIgnoreCase("principal type")) {
++                value = st.sval;
++                lookahead = st.nextToken();
++            } else {
++                throw new ParsingException(st.lineno(), expect, st.sval);
++            }
++            break;
++        case ',':
++            if (expect.equalsIgnoreCase(","))
++                lookahead = st.nextToken();
++            else
++                throw new ParsingException(st.lineno(), expect, ",");
++            break;
++        case '{':
++            if (expect.equalsIgnoreCase("{"))
++                lookahead = st.nextToken();
++            else
++                throw new ParsingException(st.lineno(), expect, "{");
++            break;
++        case '}':
++            if (expect.equalsIgnoreCase("}"))
++                lookahead = st.nextToken();
++            else
++                throw new ParsingException(st.lineno(), expect, "}");
++            break;
++        case ';':
++            if (expect.equalsIgnoreCase(";"))
++                lookahead = st.nextToken();
++            else
++                throw new ParsingException(st.lineno(), expect, ";");
++            break;
++        case '*':
++            if (expect.equalsIgnoreCase("*"))
++                lookahead = st.nextToken();
++            else
++                throw new ParsingException(st.lineno(), expect, "*");
++            break;
++        case '=':
++            if (expect.equalsIgnoreCase("="))
++                lookahead = st.nextToken();
++            else
++                throw new ParsingException(st.lineno(), expect, "=");
++            break;
++        default:
++            throw new ParsingException(st.lineno(), expect,
++                               String.valueOf((char)lookahead));
++        }
++        return value;
++    }
++
++    /**
++     * skip all tokens for this entry leaving the delimiter ";"
++     * in the stream.
++     */
++    private void skipEntry() throws ParsingException, IOException {
++        while(lookahead != ';') {
++            switch (lookahead) {
++            case StreamTokenizer.TT_NUMBER:
++                throw new ParsingException(st.lineno(), ";",
++                        LocalizedMessage.getNonlocalized("number.") + st.nval);
++            case StreamTokenizer.TT_EOF:
++                throw new ParsingException(LocalizedMessage.getNonlocalized
++                        ("expected.read.end.of.file."));
++            default:
++                lookahead = st.nextToken();
++            }
++        }
++    }
++
++    /**
++     * Each grant entry in the policy configuration file is
++     * represented by a GrantEntry object.
++     *
++     * <p>
++     * For example, the entry
++     * <pre>
++     *      grant signedBy "Duke" {
++     *          permission java.io.FilePermission "/tmp", "read,write";
++     *      };
++     *
++     * </pre>
++     * is represented internally
++     * <pre>
++     *
++     * pe = new PermissionEntry("java.io.FilePermission",
++     *                           "/tmp", "read,write");
++     *
++     * ge = new GrantEntry("Duke", null);
++     *
++     * ge.add(pe);
++     *
++     * </pre>
++     *
++     * @author Roland Schemers
++     *
++     * version 1.19, 05/21/98
++     */
++
++    public static class GrantEntry {
++
++        public String signedBy;
++        public String codeBase;
++        public LinkedList<PrincipalEntry> principals;
++        public Vector<PermissionEntry> permissionEntries;
++
++        public GrantEntry() {
++            principals = new LinkedList<>();
++            permissionEntries = new Vector<>();
++        }
++
++        public GrantEntry(String signedBy, String codeBase) {
++            this.codeBase = codeBase;
++            this.signedBy = signedBy;
++            principals = new LinkedList<>();
++            permissionEntries = new Vector<>();
++        }
++
++        public void add(PermissionEntry pe)
++        {
++            permissionEntries.addElement(pe);
++        }
++
++        public boolean remove(PrincipalEntry pe)
++        {
++            return principals.remove(pe);
++        }
++
++        public boolean remove(PermissionEntry pe)
++        {
++            return permissionEntries.removeElement(pe);
++        }
++
++        public boolean contains(PrincipalEntry pe)
++        {
++            return principals.contains(pe);
++        }
++
++        public boolean contains(PermissionEntry pe)
++        {
++            return permissionEntries.contains(pe);
++        }
++
++        /**
++         * Enumerate all the permission entries in this GrantEntry.
++         */
++        public Enumeration<PermissionEntry> permissionElements(){
++            return permissionEntries.elements();
++        }
++
++
++        public void write(PrintWriter out) {
++            out.print("grant");
++            if (signedBy != null) {
++                out.print(" signedBy \"");
++                out.print(signedBy);
++                out.print('"');
++                if (codeBase != null)
++                    out.print(", ");
++            }
++            if (codeBase != null) {
++                out.print(" codeBase \"");
++                out.print(codeBase);
++                out.print('"');
++                if (principals != null && principals.size() > 0)
++                    out.print(",\n");
++            }
++            if (principals != null && principals.size() > 0) {
++                Iterator<PrincipalEntry> pli = principals.iterator();
++                while (pli.hasNext()) {
++                    out.print("      ");
++                    PrincipalEntry pe = pli.next();
++                    pe.write(out);
++                    if (pli.hasNext())
++                        out.print(",\n");
++                }
++            }
++            out.println(" {");
++            for (PermissionEntry pe : permissionEntries) {
++                out.write("  ");
++                pe.write(out);
++            }
++            out.println("};");
++        }
++
++        public Object clone() {
++            GrantEntry ge = new GrantEntry();
++            ge.codeBase = this.codeBase;
++            ge.signedBy = this.signedBy;
++            ge.principals = new LinkedList<>(this.principals);
++            ge.permissionEntries = new Vector<>(this.permissionEntries);
++            return ge;
++        }
++    }
++
++    /**
++     * Principal info (class and name) in a grant entry
++     */
++    public static class PrincipalEntry implements Principal {
++
++        public static final String WILDCARD_CLASS = "WILDCARD_PRINCIPAL_CLASS";
++        public static final String WILDCARD_NAME = "WILDCARD_PRINCIPAL_NAME";
++        public static final String REPLACE_NAME = "PolicyParser.REPLACE_NAME";
++
++        String principalClass;
++        String principalName;
++
++        /**
++         * A PrincipalEntry consists of the Principal class and Principal name.
++         *
++         * @param principalClass the Principal class
++         * @param principalName the Principal name
++         * @throws NullPointerException if principalClass or principalName
++         *                              are null
++         */
++        public PrincipalEntry(String principalClass, String principalName) {
++            if (principalClass == null || principalName == null)
++                throw new NullPointerException(LocalizedMessage.getNonlocalized
++                    ("null.principalClass.or.principalName"));
++            this.principalClass = principalClass;
++            this.principalName = principalName;
++        }
++
++        boolean isWildcardName() {
++            return principalName.equals(WILDCARD_NAME);
++        }
++
++        boolean isWildcardClass() {
++            return principalClass.equals(WILDCARD_CLASS);
++        }
++
++        boolean isReplaceName() {
++            return principalClass.equals(REPLACE_NAME);
++        }
++
++        public String getPrincipalClass() {
++            return principalClass;
++        }
++
++        public String getPrincipalName() {
++            return principalName;
++        }
++
++        public String getDisplayClass() {
++            if (isWildcardClass()) {
++                return "*";
++            } else if (isReplaceName()) {
++                return "";
++            }
++            else return principalClass;
++        }
++
++        public String getDisplayName() {
++            return getDisplayName(false);
++        }
++
++        public String getDisplayName(boolean addQuote) {
++            if (isWildcardName()) {
++                return "*";
++            }
++            else {
++                if (addQuote) return "\"" + principalName + "\"";
++                else return principalName;
++            }
++        }
++
++        @Override
++        public String getName() {
++            return principalName;
++        }
++
++        @Override
++        public String toString() {
++            if (!isReplaceName()) {
++                return getDisplayClass() + "/" + getDisplayName();
++            } else {
++                return getDisplayName();
++            }
++        }
++
++        /**
++         * Test for equality between the specified object and this object.
++         * Two PrincipalEntries are equal if their class and name values
++         * are equal.
++         *
++         * @param obj the object to test for equality with this object
++         * @return true if the objects are equal, false otherwise
++         */
++        @Override
++        public boolean equals(Object obj) {
++            if (this == obj)
++                return true;
++
++            if (!(obj instanceof PrincipalEntry))
++                return false;
++            PrincipalEntry that = (PrincipalEntry) obj;
++
++            return (principalClass.equals(that.principalClass) &&
++                    principalName.equals(that.principalName));
++        }
++
++        /**
++         * Return a hashcode for this PrincipalEntry.
++         *
++         * @return a hashcode for this PrincipalEntry
++         */
++        @Override
++        public int hashCode() {
++            return principalClass.hashCode();
++        }
++
++        public void write(PrintWriter out) {
++            out.print("principal " + getDisplayClass() + " " +
++                      getDisplayName(true));
++        }
++    }
++
++    /**
++     * Each permission entry in the policy configuration file is
++     * represented by a
++     * PermissionEntry object.
++     *
++     * <p>
++     * For example, the entry
++     * <pre>
++     *          permission java.io.FilePermission "/tmp", "read,write";
++     * </pre>
++     * is represented internally
++     * <pre>
++     *
++     * pe = new PermissionEntry("java.io.FilePermission",
++     *                           "/tmp", "read,write");
++     * </pre>
++     *
++     * @author Roland Schemers
++     *
++     * version 1.19, 05/21/98
++     */
++
++    public static class PermissionEntry {
++
++        public String permission;
++        public String name;
++        public String action;
++        public String signedBy;
++
++        public PermissionEntry() {
++        }
++
++        public PermissionEntry(String permission,
++                        String name,
++                        String action) {
++            this.permission = permission;
++            this.name = name;
++            this.action = action;
++        }
++
++        /**
++         * Calculates a hash code value for the object.  Objects
++         * which are equal will also have the same hashcode.
++         */
++        @Override
++        public int hashCode() {
++            int retval = permission.hashCode();
++            if (name != null) retval ^= name.hashCode();
++            if (action != null) retval ^= action.hashCode();
++            return retval;
++        }
++
++        @Override
++        public boolean equals(Object obj) {
++            if (obj == this)
++                return true;
++
++            if (!(obj instanceof PermissionEntry))
++                return false;
++            PermissionEntry that = (PermissionEntry) obj;
++
++            if (this.permission == null) {
++                if (that.permission != null) return false;
++            } else {
++                if (!this.permission.equals(that.permission)) return false;
++            }
++
++            if (this.name == null) {
++                if (that.name != null) return false;
++            } else {
++                if (!this.name.equals(that.name)) return false;
++            }
++
++            if (this.action == null) {
++                if (that.action != null) return false;
++            } else {
++                if (!this.action.equals(that.action)) return false;
++            }
++
++            if (this.signedBy == null) {
++                return that.signedBy == null;
++            } else {
++                return this.signedBy.equals(that.signedBy);
++            }
++        }
++
++        public void write(PrintWriter out) {
++            out.print("permission ");
++            out.print(permission);
++            if (name != null) {
++                out.print(" \"");
++
++                // ATTENTION: regex with double escaping,
++                // the normal forms look like:
++                // $name =~ s/\\/\\\\/g; and
++                // $name =~ s/\"/\\\"/g;
++                // and then in a java string, it's escaped again
++
++                out.print(name.replaceAll("\\\\", "\\\\\\\\").replaceAll("\"", "\\\\\\\""));
++                out.print('"');
++            }
++            if (action != null) {
++                out.print(", \"");
++                out.print(action);
++                out.print('"');
++            }
++            if (signedBy != null) {
++                out.print(", signedBy \"");
++                out.print(signedBy);
++                out.print('"');
++            }
++            out.println(";");
++        }
++    }
++
++    /**
++     * Each domain entry in the keystore domain configuration file is
++     * represented by a DomainEntry object.
++     */
++    static class DomainEntry {
++        private final String name;
++        private final Map<String, String> properties;
++        private final Map<String, KeyStoreEntry> entries;
++
++        DomainEntry(String name, Map<String, String> properties) {
++            this.name = name;
++            this.properties = properties;
++            entries = new HashMap<>();
++        }
++
++        String getName() {
++            return name;
++        }
++
++        Map<String, String> getProperties() {
++            return properties;
++        }
++
++        Collection<KeyStoreEntry> getEntries() {
++            return entries.values();
++        }
++
++        void add(KeyStoreEntry entry) throws ParsingException {
++            String keystoreName = entry.getName();
++            if (!entries.containsKey(keystoreName)) {
++                entries.put(keystoreName, entry);
++            } else {
++                LocalizedMessage localizedMsg = new LocalizedMessage
++                    ("duplicate.keystore.name");
++                Object[] source = {keystoreName};
++                String msg = "duplicate keystore name: " + keystoreName;
++                throw new ParsingException(msg, localizedMsg, source);
++            }
++        }
++
++        @Override
++        public String toString() {
++            StringBuilder s =
++                new StringBuilder("\ndomain ").append(name);
++
++            if (properties != null) {
++                for (Map.Entry<String, String> property :
++                    properties.entrySet()) {
++                    s.append("\n        ").append(property.getKey()).append('=')
++                        .append(property.getValue());
++                }
++            }
++            s.append(" {\n");
++
++            for (KeyStoreEntry entry : entries.values()) {
++                s.append(entry).append("\n");
++            }
++            s.append("}");
++
++            return s.toString();
++        }
++    }
++
++    /**
++     * Each keystore entry in the keystore domain configuration file is
++     * represented by a KeyStoreEntry object.
++     */
++
++    static class KeyStoreEntry {
++        private final String name;
++        private final Map<String, String> properties;
++
++        KeyStoreEntry(String name, Map<String, String> properties) {
++            this.name = name;
++            this.properties = properties;
++        }
++
++        String getName() {
++            return name;
++        }
++
++        Map<String, String>  getProperties() {
++            return properties;
++        }
++
++        @Override
++        public String toString() {
++            StringBuilder s = new StringBuilder("\n    keystore ").append(name);
++            if (properties != null) {
++                for (Map.Entry<String, String> property :
++                    properties.entrySet()) {
++                    s.append("\n        ").append(property.getKey()).append('=')
++                        .append(property.getValue());
++                }
++            }
++            s.append(";");
++
++            return s.toString();
++        }
++    }
++
++    public static class ParsingException extends GeneralSecurityException {
++
++                private static final long serialVersionUID = -4330692689482574072L;
++
++        private String i18nMessage;
++        @SuppressWarnings("serial") // Not statically typed as Serializable
++        private LocalizedMessage localizedMsg;
++        @SuppressWarnings("serial") // Not statically typed as Serializable
++        private Object[] source;
++
++        /**
++         * Constructs a ParsingException with the specified
++         * detail message. A detail message is a String that describes
++         * this particular exception, which may, for example, specify which
++         * algorithm is not available.
++         *
++         * @param msg the detail message.
++         */
++        public ParsingException(String msg) {
++            super(msg);
++            i18nMessage = msg;
++        }
++
++        public ParsingException(String msg, LocalizedMessage localizedMsg,
++                                Object[] source) {
++            super(msg);
++            this.localizedMsg = localizedMsg;
++            this.source = source;
++        }
++
++        public ParsingException(int line, String msg) {
++            super("line " + line + ": " + msg);
++            localizedMsg = new LocalizedMessage("line.number.msg");
++            source = new Object[] {line, msg};
++        }
++
++        public ParsingException(int line, String expect, String actual) {
++            super("line " + line + ": expected [" + expect +
++                "], found [" + actual + "]");
++            localizedMsg = new LocalizedMessage
++                ("line.number.expected.expect.found.actual.");
++            source = new Object[] {line, expect, actual};
++        }
++
++        public String getNonlocalizedMessage() {
++            return i18nMessage != null ? i18nMessage :
++                localizedMsg.formatNonlocalized(source);
++        }
++    }
++
++
++    private static final class PropertyExpander {
++        static class ExpandException extends GeneralSecurityException {
++            private static final long serialVersionUID = -7941948581406161702L;
++        }
++    }
++
++    // English subset of sun.security.util.Resources
++    private static final class LocalizedMessage {
++        private static final Map<String, String> RESOURCES = new HashMap<>();
++
++        static {
++            final String[][] contents = {
++                {"keystorePasswordURL.can.not.be.specified.without.also.specifying.keystore",
++                        "keystorePasswordURL can not be specified without also specifying keystore"},
++                {"expected.keystore.type", "expected keystore type"},
++                {"expected.keystore.provider", "expected keystore provider"},
++                {"multiple.Codebase.expressions",
++                        "multiple Codebase expressions"},
++                {"multiple.SignedBy.expressions","multiple SignedBy expressions"},
++                {"duplicate.keystore.domain.name","duplicate keystore domain name: {0}"},
++                {"duplicate.keystore.name","duplicate keystore name: {0}"},
++                {"SignedBy.has.empty.alias","SignedBy has empty alias"},
++                {"can.not.specify.Principal.with.a.wildcard.class.without.a.wildcard.name",
++                        "can not specify Principal with a wildcard class without a wildcard name"},
++                {"expected.codeBase.or.SignedBy.or.Principal",
++                        "expected codeBase or SignedBy or Principal"},
++                {"expected.permission.entry", "expected permission entry"},
++                {"number.", "number "},
++                {"expected.expect.read.end.of.file.",
++                        "expected [{0}], read [end of file]"},
++                {"expected.read.end.of.file.",
++                        "expected [;], read [end of file]"},
++                {"line.number.msg", "line {0}: {1}"},
++                {"line.number.expected.expect.found.actual.",
++                        "line {0}: expected [{1}], found [{2}]"},
++                {"null.principalClass.or.principalName",
++                        "null principalClass or principalName"},
++            };
++            for (String[] entry : contents) {
++                RESOURCES.put(entry[0], entry[1]);
++            }
++        }
++
++        private final String key;
++
++        LocalizedMessage(String key) {
++            this.key = key;
++        }
++
++        String formatNonlocalized(Object... arguments) {
++            return getNonlocalized(key, arguments);
++        }
++
++        static String getNonlocalized(String key, Object... arguments) {
++            String value = RESOURCES.get(key);
++            for (int i = 0; i < arguments.length; i++) {
++                value = value.replace("{" + i + "}", String.valueOf(arguments[i]));
++            }
++            return value;
++        }
++    }
++}
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/JnlpDownloadProtocolConstants.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/JnlpDownloadProtocolConstants.java
+index 18ff9aa74..899b7e09c 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/JnlpDownloadProtocolConstants.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/JnlpDownloadProtocolConstants.java
+@@ -1,5 +1,7 @@
+ package net.adoptopenjdk.icedteaweb.resources;
+ 
++import net.adoptopenjdk.icedteaweb.resources.downloader.PackGzipUnpacker;
++
+ /**
+  * ...
+  */
+@@ -14,7 +16,7 @@ public interface JnlpDownloadProtocolConstants {
+     String ERROR_MIME_TYPE = "application/x-java-jnlp-error";
+     String JAR_DIFF_MIME_TYPE = "application/x-java-archive-dif";
+ 
+-    String PACK_200_OR_GZIP = "pack200-gzip, gzip";
++    String PACK_200_OR_GZIP = PackGzipUnpacker.isSupported() ? "pack200-gzip, gzip" : "gzip";
+     String INVALID_HTTP_RESPONSE = "Invalid Http response";
+ 
+     String VERSION_ID_QUERY_PARAM = "version-id";
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/downloader/PackGzipUnpacker.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/downloader/PackGzipUnpacker.java
+index b2c8913c4..b361288f9 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/downloader/PackGzipUnpacker.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/downloader/PackGzipUnpacker.java
+@@ -20,19 +20,51 @@ import java.io.ByteArrayInputStream;
+ import java.io.ByteArrayOutputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.lang.reflect.InvocationTargetException;
++import java.lang.reflect.Method;
+ import java.util.jar.JarOutputStream;
+-import java.util.jar.Pack200;
+ import java.util.zip.GZIPInputStream;
+ 
+ /**
+  * Unpacker for PACK200 and Gzip streams.
++ * java.util.jar.Pack200 was removed in JDK 14, hence reflection.
+  */
+ public class PackGzipUnpacker implements StreamUnpacker {
++
++    private static final Method NEW_UNPACKER;
++    private static final Method UNPACK;
++
++    static {
++        Method newUnpacker = null;
++        Method unpack = null;
++        try {
++            newUnpacker = Class.forName("java.util.jar.Pack200").getMethod("newUnpacker");
++            unpack = Class.forName("java.util.jar.Pack200$Unpacker").getMethod("unpack", InputStream.class, JarOutputStream.class);
++        } catch (ReflectiveOperationException ignored) {
++        }
++        NEW_UNPACKER = newUnpacker;
++        UNPACK = unpack;
++    }
++
++    public static boolean isSupported() {
++        return UNPACK != null;
++    }
++
+     @Override
+     public InputStream unpack(InputStream input) throws IOException {
++        if (!isSupported()) {
++            throw new IOException("pack200 is not supported by this JVM");
++        }
+         final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+         try (final JarOutputStream outputStream = new JarOutputStream(buffer)) {
+-            Pack200.newUnpacker().unpack(new GZIPInputStream(input), outputStream);
++            UNPACK.invoke(NEW_UNPACKER.invoke(null), new GZIPInputStream(input), outputStream);
++        } catch (IllegalAccessException e) {
++            throw new IOException(e);
++        } catch (InvocationTargetException e) {
++            if (e.getCause() instanceof IOException) {
++                throw (IOException) e.getCause();
++            }
++            throw new IOException(e.getCause());
+         }
+         return new ByteArrayInputStream(buffer.toByteArray());
+     }
+diff --git a/core/src/main/java/net/sourceforge/jnlp/JNLPFile.java b/core/src/main/java/net/sourceforge/jnlp/JNLPFile.java
+index 3a2f0e59c..4a7f495b8 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/JNLPFile.java
++++ b/core/src/main/java/net/sourceforge/jnlp/JNLPFile.java
+@@ -39,6 +39,7 @@ import net.adoptopenjdk.icedteaweb.jnlp.version.VersionString;
+ import net.adoptopenjdk.icedteaweb.logging.Logger;
+ import net.adoptopenjdk.icedteaweb.logging.LoggerFactory;
+ import net.adoptopenjdk.icedteaweb.manifest.ManifestAttributesReader;
++import net.adoptopenjdk.icedteaweb.resources.downloader.PackGzipUnpacker;
+ import net.adoptopenjdk.icedteaweb.xmlparser.ParseException;
+ import net.adoptopenjdk.icedteaweb.xmlparser.XMLParser;
+ import net.adoptopenjdk.icedteaweb.xmlparser.XmlNode;
+@@ -827,20 +828,11 @@ public class JNLPFile {
+      */
+     public DownloadOptions getDownloadOptions() {
+         final ResourcesDesc desc = getResources();
+-        final boolean usePack = parseBoolean(desc.getPropertiesMap().get("jnlp.packEnabled")) && packIsSupportedByCurrentJvm();
++        final boolean usePack = parseBoolean(desc.getPropertiesMap().get("jnlp.packEnabled")) && PackGzipUnpacker.isSupported();
+         final boolean useVersion = parseBoolean(desc.getPropertiesMap().get("jnlp.versionEnabled"));
+         return new DownloadOptions(usePack, useVersion);
+     }
+ 
+-    private boolean packIsSupportedByCurrentJvm() {
+-        try {
+-            final Class<?> c = ClassLoader.getSystemClassLoader().loadClass("java.util.jar.Pack200");
+-            return  c != null;
+-        } catch (Exception | Error e) {
+-            return false;
+-        }
+-    }
+-
+     /**
+      * Returns a boolean after determining if a signed JNLP warning should be
+      * displayed in the 'More Information' panel.
+diff --git a/core/src/main/java/net/sourceforge/jnlp/runtime/CachedJarFileCallback.java b/core/src/main/java/net/sourceforge/jnlp/runtime/CachedJarFileCallback.java
+index 68c5ba95f..48a86da48 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/runtime/CachedJarFileCallback.java
++++ b/core/src/main/java/net/sourceforge/jnlp/runtime/CachedJarFileCallback.java
+@@ -42,14 +42,13 @@ import net.adoptopenjdk.icedteaweb.logging.LoggerFactory;
+ import net.sourceforge.jnlp.util.JarFile;
+ import net.sourceforge.jnlp.util.UrlKey;
+ import net.sourceforge.jnlp.util.UrlUtils;
+-import sun.net.www.protocol.jar.URLJarFile;
+-import sun.net.www.protocol.jar.URLJarFileCallBack;
+ 
+ import java.io.File;
+ import java.io.FileOutputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.io.OutputStream;
++import java.lang.reflect.Proxy;
+ import java.net.URL;
+ import java.security.AccessController;
+ import java.security.PrivilegedActionException;
+@@ -62,8 +61,9 @@ import java.util.jar.Attributes;
+  * Invoked by URLJarFile to get a JarFile corresponding to a URL.
+  *
+  * Large parts of this class are based on JarFileFactory and URLJarFile.
++ * Hooked in reflectively: sun.net.www.protocol.jar.URLJarFileCallBack is gone in newer JDKs.
+  */
+-public final class CachedJarFileCallback implements URLJarFileCallBack {
++public final class CachedJarFileCallback {
+ 
+     private final static Logger LOG = LoggerFactory.getLogger(CachedJarFileCallback.class);
+ 
+@@ -85,7 +85,28 @@ public final class CachedJarFileCallback implements URLJarFileCallBack {
+         mapping.put(new UrlKey(remoteUrl), localUrl);
+     }
+ 
+-    @Override
++    /**
++     * Registers this as URLJarFile callback. No-op on JDKs without URLJarFileCallBack;
++     * remote jar: URLs are then fetched by the JDK itself, bypassing the ITW cache.
++     */
++    public static void register() {
++        try {
++            final Class<?> callBackClass = Class.forName("sun.net.www.protocol.jar.URLJarFileCallBack");
++            final Object callBack = Proxy.newProxyInstance(CachedJarFileCallback.class.getClassLoader(), new Class<?>[]{callBackClass},
++                    (proxy, method, args) -> {
++                        switch (method.getName()) {
++                            case "retrieve": return INSTANCE.retrieve((URL) args[0]);
++                            case "equals": return proxy == args[0];
++                            case "hashCode": return System.identityHashCode(proxy);
++                            default: return CachedJarFileCallback.class.getName();
++                        }
++                    });
++            Class.forName("sun.net.www.protocol.jar.URLJarFile").getMethod("setCallBack", callBackClass).invoke(null, callBack);
++        } catch (ReflectiveOperationException | RuntimeException e) {
++            LOG.info("URLJarFile callback not available, jar: URLs will bypass the cache: {}", e.toString());
++        }
++    }
++
+     public java.util.jar.JarFile retrieve(URL url) throws IOException {
+         URL localUrl = mapping.get(new UrlKey(url));
+         if (localUrl == null) {
+@@ -157,7 +178,7 @@ public final class CachedJarFileCallback implements URLJarFileCallBack {
+                                 }
+                                 out.close();
+                                 out = null;
+-                                return new URLJarFile(tmpFile, null);
++                                return new java.util.jar.JarFile(tmpFile);
+                             } catch (IOException e) {
+                                 if (tmpFile != null) {
+                                     tmpFile.delete();
+diff --git a/core/src/main/java/net/sourceforge/jnlp/runtime/JNLPRuntime.java b/core/src/main/java/net/sourceforge/jnlp/runtime/JNLPRuntime.java
+index d8ee7c6cb..e3cca0586 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/runtime/JNLPRuntime.java
++++ b/core/src/main/java/net/sourceforge/jnlp/runtime/JNLPRuntime.java
+@@ -41,7 +41,6 @@ import net.sourceforge.jnlp.services.XServiceManagerStub;
+ import net.sourceforge.jnlp.util.RestrictedFileUtils;
+ import net.sourceforge.jnlp.util.logging.LogConfig;
+ import net.sourceforge.jnlp.util.logging.OutputController;
+-import sun.net.www.protocol.jar.URLJarFile;
+ 
+ import javax.jnlp.ServiceManager;
+ import javax.naming.ConfigurationException;
+@@ -145,6 +144,9 @@ public class JNLPRuntime {
+     /** whether the runtime uses security */
+     private static boolean securityEnabled = true;
+ 
++    /** set when the JVM refused our SecurityManager */
++    private static boolean sandboxUnsupported = false;
++
+     /** whether debug mode is on */
+     private static boolean debug = false;
+ 
+@@ -269,8 +271,14 @@ public class JNLPRuntime {
+         setSecurityEnabled(!(deploymentNosecurity || cmdlineNosecurity));
+         LOG.debug("SecurityEnabled = {} cmdLine nosecurity = {} deployment nosecurity = {}", isSecurityEnabled(), cmdlineNosecurity, deploymentNosecurity);
+         if (isSecurityEnabled() && forkingStrategy.mayRunManagedApplication()) {
+-            Policy.setPolicy(policy); // do first b/c our SM blocks setPolicy
+-            System.setSecurityManager(security);
++            try {
++                Policy.setPolicy(policy); // do first b/c our SM blocks setPolicy
++                System.setSecurityManager(security);
++            } catch (UnsupportedOperationException e) {
++                // JDK 24+, or JDK 18-23 without -Djava.security.manager=allow
++                sandboxUnsupported = true;
++                LOG.warn("Security Manager not supported by this JVM ({}), only fully trusted applications can run", e.getMessage());
++            }
+         }
+ 
+         securityDialogMessageHandler = startSecurityThreads();
+@@ -301,7 +309,7 @@ public class JNLPRuntime {
+         Security.setProperty("package.access",
+                              Security.getProperty("package.access")+",net.sourceforge.jnlp");
+ 
+-        URLJarFile.setCallBack(CachedJarFileCallback.getInstance());
++        CachedJarFileCallback.register();
+ 
+         initialized = true;
+         LOG.debug("End JNLPRuntime.initialize()");
+@@ -553,6 +561,14 @@ public class JNLPRuntime {
+         return securityEnabled;
+     }
+ 
++    /**
++     * @return true if security is enabled but the JVM cannot enforce it (no SecurityManager);
++     * restricted applications must then be refused
++     */
++    public static boolean isSandboxUnsupported() {
++        return securityEnabled && sandboxUnsupported;
++    }
++
+     /**
+      * Sets whether to enable the secure runtime environment.
+      * Disabling security can increase performance for some
+diff --git a/core/src/main/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoader.java b/core/src/main/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoader.java
+index dd3056a1b..bb12b020c 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoader.java
++++ b/core/src/main/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoader.java
+@@ -14,6 +14,7 @@
+ // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ package net.sourceforge.jnlp.runtime.classloader;
+ 
++import net.adoptopenjdk.icedteaweb.JavaSystemProperties;
+ import net.adoptopenjdk.icedteaweb.commandline.CommandLineOptions;
+ import net.adoptopenjdk.icedteaweb.http.CloseableConnection;
+ import net.adoptopenjdk.icedteaweb.http.ConnectionFactory;
+@@ -386,7 +387,20 @@ public class JNLPClassLoader extends URLClassLoader {
+ 
+     private void setSecurity() throws LaunchException {
+         URL codebase = UrlUtils.guessCodeBase(file);
+-        this.security = securityDelegate.getClassLoaderSecurity(codebase);
++        this.security = checkEnforceable(securityDelegate.getClassLoaderSecurity(codebase));
++    }
++
++    /**
++     * Without a SecurityManager every permission set is effectively AllPermission,
++     * so anything less than all-permissions cannot be honoured.
++     */
++    private SecurityDesc checkEnforceable(final SecurityDesc desc) throws LaunchException {
++        if (JNLPRuntime.isSandboxUnsupported() && !SecurityDesc.ALL_PERMISSIONS.equals(desc.getSecurityType())) {
++            throw new LaunchException(file, null, FATAL, "Security Error", "Cannot run restricted application on this JVM.",
++                    "The application does not have all-permissions and this JVM (" + JavaSystemProperties.getJavaVersion()
++                            + ") has no Security Manager to sandbox it. Use Java 23 or older, or disable security (-nosecurity or deployment.nosecurity=true) if you trust it.");
++        }
++        return desc;
+     }
+ 
+     /**
+@@ -823,7 +837,7 @@ public class JNLPClassLoader extends URLClassLoader {
+ 
+         for (JARDesc jarDesc : validJars) {
+             final URL codebase = getJnlpFileCodebase();
+-            final SecurityDesc jarSecurity = securityDelegate.getCodebaseSecurityDesc(jarDesc, codebase);
++            final SecurityDesc jarSecurity = checkEnforceable(securityDelegate.getCodebaseSecurityDesc(jarDesc, codebase));
+             jarLocationSecurityMap.put(new UrlKey(jarDesc.getLocation()), jarSecurity);
+         }
+ 
+diff --git a/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/PlainTextFormatter.java b/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/PlainTextFormatter.java
+index 171189736..70f62041f 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/PlainTextFormatter.java
++++ b/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/PlainTextFormatter.java
+@@ -53,7 +53,7 @@ public class PlainTextFormatter extends ReplacingTextFormatter {
+     
+     public static String getLineSeparator() {
+         return java.security.AccessController.doPrivileged(
+-                new sun.security.action.GetPropertyAction(JavaSystemPropertiesConstants.LINE_SEPARATOR));
++                (java.security.PrivilegedAction<String>) () -> System.getProperty(JavaSystemPropertiesConstants.LINE_SEPARATOR));
+     }
+ 
+     private final String paragraphIndentation;
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/CustomPolicyViewerTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/CustomPolicyViewerTest.java
+index 8c0b46903..c1c34ab3e 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/CustomPolicyViewerTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/CustomPolicyViewerTest.java
+@@ -36,7 +36,6 @@ package net.adoptopenjdk.icedteaweb.client.policyeditor;
+ import java.util.Collection;
+ import org.junit.Before;
+ import org.junit.Test;
+-import sun.security.provider.PolicyParser;
+ 
+ import static org.junit.Assert.assertEquals;
+ import static org.junit.Assert.assertFalse;
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorControllerTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorControllerTest.java
+index 14cc916d3..9ac5f95b0 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorControllerTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorControllerTest.java
+@@ -37,7 +37,6 @@ import net.adoptopenjdk.icedteaweb.JavaSystemProperties;
+ import net.adoptopenjdk.icedteaweb.io.FileUtils;
+ import org.junit.Before;
+ import org.junit.Test;
+-import sun.security.provider.PolicyParser;
+ 
+ import java.io.File;
+ import java.util.Arrays;
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorParsingTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorParsingTest.java
+index 4219b83cb..980508d0c 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorParsingTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorParsingTest.java
+@@ -36,7 +36,6 @@ import net.adoptopenjdk.icedteaweb.io.FileUtils;
+ import net.sourceforge.jnlp.util.docprovider.formatters.formatters.PlainTextFormatter;
+ import org.junit.Before;
+ import org.junit.Test;
+-import sun.security.provider.PolicyParser;
+ 
+ import java.io.File;
+ import java.util.Collection;
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorTest.java
+index 003c14f4b..f7c3dcb39 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEditorTest.java
+@@ -44,7 +44,6 @@ import net.adoptopenjdk.icedteaweb.commandline.UnevenParameterException;
+ import net.sourceforge.jnlp.config.PathsAndFiles;
+ import org.junit.Before;
+ import org.junit.Test;
+-import sun.security.provider.PolicyParser;
+ 
+ import static net.adoptopenjdk.icedteaweb.client.policyeditor.PolicyEditor.getCodebaseArgument;
+ import static net.adoptopenjdk.icedteaweb.client.policyeditor.PolicyEditor.getFilePathArgument;
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEntryTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEntryTest.java
+index b2242494b..69bf7f26f 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEntryTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyEntryTest.java
+@@ -34,7 +34,6 @@ statement from your version.
+ package net.adoptopenjdk.icedteaweb.client.policyeditor;
+ 
+ import org.junit.Test;
+-import sun.security.provider.PolicyParser;
+ 
+ import java.util.Collections;
+ import java.util.HashSet;
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyFileModelTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyFileModelTest.java
+index e80e4c18e..a8ef2e307 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyFileModelTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyFileModelTest.java
+@@ -37,7 +37,6 @@ import net.adoptopenjdk.icedteaweb.JavaSystemProperties;
+ import net.adoptopenjdk.icedteaweb.io.FileUtils;
+ import org.junit.Before;
+ import org.junit.Test;
+-import sun.security.provider.PolicyParser;
+ 
+ import java.io.File;
+ import java.util.Collection;
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifierTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifierTest.java
+index 843e93ef2..c3a3cb024 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifierTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/policyeditor/PolicyIdentifierTest.java
+@@ -34,7 +34,6 @@ statement from your version.
+ package net.adoptopenjdk.icedteaweb.client.policyeditor;
+ 
+ import org.junit.Test;
+-import sun.security.provider.PolicyParser;
+ 
+ import java.util.Arrays;
+ import java.util.Collections;
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/resources/ResourceHandlerTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/resources/ResourceHandlerTest.java
+index 0dfb8c60f..6db57116e 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/resources/ResourceHandlerTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/resources/ResourceHandlerTest.java
+@@ -1,6 +1,7 @@
+ package net.adoptopenjdk.icedteaweb.resources;
+ 
+ import net.adoptopenjdk.icedteaweb.jnlp.version.VersionString;
++import net.adoptopenjdk.icedteaweb.resources.downloader.PackGzipUnpacker;
+ import net.adoptopenjdk.icedteaweb.testing.ServerAccess;
+ import net.adoptopenjdk.icedteaweb.testing.ServerLauncher;
+ import net.jcip.annotations.NotThreadSafe;
+@@ -12,6 +13,7 @@ import net.sourceforge.jnlp.util.logging.NoStdOutErrTest;
+ import net.sourceforge.jnlp.util.logging.OutputController;
+ import net.sourceforge.jnlp.util.logging.StdInOutErrController;
+ import org.junit.After;
++import org.junit.Assume;
+ import org.junit.AfterClass;
+ import org.junit.Before;
+ import org.junit.BeforeClass;
+@@ -22,13 +24,13 @@ import org.junit.rules.TemporaryFolder;
+ import java.io.ByteArrayOutputStream;
+ import java.io.File;
+ import java.io.FileOutputStream;
++import java.io.OutputStream;
+ import java.net.URL;
+ import java.nio.file.Files;
+ import java.util.concurrent.ExecutorService;
+ import java.util.jar.Attributes;
+ import java.util.jar.JarOutputStream;
+ import java.util.jar.Manifest;
+-import java.util.jar.Pack200;
+ import java.util.zip.GZIPOutputStream;
+ 
+ import static java.nio.charset.StandardCharsets.UTF_8;
+@@ -209,8 +211,11 @@ public class ResourceHandlerTest extends NoStdOutErrTest {
+ 
+         final JarFile jarFile = new JarFile(jar.getAbsolutePath());
+         final FileOutputStream fos = new FileOutputStream(pack);
+-        final Pack200.Packer p = Pack200.newPacker();
+-        p.pack(jarFile.getNative(), fos);
++        // Pack200 removed in JDK 14
++        Assume.assumeTrue(PackGzipUnpacker.isSupported());
++        final Object packer = Class.forName("java.util.jar.Pack200").getMethod("newPacker").invoke(null);
++        Class.forName("java.util.jar.Pack200$Packer").getMethod("pack", java.util.jar.JarFile.class, OutputStream.class)
++                .invoke(packer, jarFile.getNative(), fos);
+         fos.close();
+ 
+         final File packgz = new File(downloadDir, fileName + ".jar.pack.gz");
+diff --git a/core/src/test/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoaderTest.java b/core/src/test/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoaderTest.java
+index e2ef884e7..04b60981f 100644
+--- a/core/src/test/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoaderTest.java
++++ b/core/src/test/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoaderTest.java
+@@ -58,7 +58,6 @@ import org.junit.Ignore;
+ import org.junit.Rule;
+ import org.junit.Test;
+ import org.junit.rules.TemporaryFolder;
+-import sun.net.www.protocol.jar.URLJarFile;
+ 
+ import java.io.File;
+ import java.io.FileOutputStream;
+@@ -555,7 +554,7 @@ public class JNLPClassLoaderTest extends NoStdOutErrTest {
+         JNLPRuntime.setSecurityEnabled(false);
+         JNLPRuntime.setDebug(true);
+         getConfiguration().setProperty(ConfigurationConstants.KEY_ENABLE_MANIFEST_ATTRIBUTES_CHECK, "NONE");
+-        URLJarFile.setCallBack(CachedJarFileCallback.getInstance());
++        CachedJarFileCallback.register();
+ 
+         final ServerLauncher as = ServerAccess.getIndependentInstance(jnlp.getParent(), port);
+         try {
+@@ -569,7 +568,6 @@ public class JNLPClassLoaderTest extends NoStdOutErrTest {
+             JNLPRuntime.setSecurityEnabled(securityBackup);
+             JNLPRuntime.setDebug(verbose);
+             getConfiguration().setProperty(ConfigurationConstants.KEY_ENABLE_MANIFEST_ATTRIBUTES_CHECK, manifestAttsBackup);
+-            URLJarFile.setCallBack(null);
+             as.stop();
+ 
+             clearCache();
+diff --git a/launchers/rust-launcher/src/main.rs b/launchers/rust-launcher/src/main.rs
+index 54081979c..2c56be318 100644
+--- a/launchers/rust-launcher/src/main.rs
++++ b/launchers/rust-launcher/src/main.rs
+@@ -200,9 +200,15 @@ fn compose_arguments(java_dir: &std::path::PathBuf, original_args: &std::vec::Ve
+         native_debug_config = String::from("");
+     }
+ 
+-    if is_modular_jdk(os, &java_dir) {
++    let jdk = jdk_version(os, &java_dir);
++    if jdk > 8 {
++        os.log("itw-rust-debug: modular jdk");
+         all_args.push(resolve_argsfile(os));
+     }
++    // JDK 18-23 refuse System.setSecurityManager unless allowed at startup; 9-11 and 24+ do not start with it
++    if jdk >= 18 && jdk <= 23 {
++        all_args.push(String::from("-Djava.security.manager=allow"));
++    }
+     all_args.push(bootcp);
+     all_args.push(String::from("-classpath"));
+     all_args.push(cp);
+@@ -219,16 +225,6 @@ fn compose_arguments(java_dir: &std::path::PathBuf, original_args: &std::vec::Ve
+     all_args
+ }
+ 
+-fn is_modular_jdk(os: &os_access::Os, jre_dir: &std::path::PathBuf) -> bool {
+-    if jdk_version(os, jre_dir) > 8 {
+-        os.log("itw-rust-debug: modular jdk");
+-        true
+-    } else {
+-        os.log("itw-rust-debug: non-modular jdk");
+-        false
+-    }
+-}
+-
+ fn jdk_version(os: &os_access::Os, jre_dir: &std::path::PathBuf) -> i32 {
+     let vec = vec!["-version".to_string()];
+     //this of  course fails during tests
+@@ -236,20 +232,10 @@ fn jdk_version(os: &os_access::Os, jre_dir: &std::path::PathBuf) -> i32 {
+     match output_result {
+         Ok(output) => {
+             for line in String::from_utf8(output.stderr).expect("java version was supopsed to return output").lines() {
+-                if line.contains("version")
+-                    && (line.contains("\"1")
+-                    || line.contains("\"2")
+-                    || line.contains("\"3")) {
+-                    if line.contains("\"1.7.0") || line.contains("\"1.7.1") {
+-                        os.log("itw-rust-debug: detected jdk 7");
+-                        return 7
+-                    } else if line.contains("\"1.8.0") {
+-                        os.log("itw-rust-debug: detected jdk 8");
+-                        return 8
+-                    } else {
+-                        //currently this serves only to determine module/non modular jdk
+-                        os.log("itw-rust-debug: detected jdk 9 or up");
+-                        return 9
++                if line.contains("version") {
++                    if let Some(v) = parse_jdk_version(line) {
++                        os.log(&format!("itw-rust-debug: detected jdk {}", v));
++                        return v;
+                     }
+                 }
+             }
+@@ -263,6 +249,18 @@ fn jdk_version(os: &os_access::Os, jre_dir: &std::path::PathBuf) -> i32 {
+     }
+ }
+ 
++// major version from e.g. `openjdk version "1.8.0_412"`, `"21.0.3" 2024-04-16`, `"25-ea"`
++fn parse_jdk_version(line: &str) -> Option<i32> {
++    let quoted = line.split('"').nth(1)?;
++    let mut parts = quoted.split(|c: char| !c.is_ascii_digit());
++    let major: i32 = parts.next()?.parse().ok()?;
++    if major == 1 {
++        parts.next()?.parse().ok()
++    } else {
++        Some(major)
++    }
++}
++
+ fn resolve_argsfile(os: &os_access::Os) -> String {
+     let args_location = dirs_paths_helper::path_to_string(&jars_helper::resolve_argsfile(os));
+     let mut owned_string: String = args_location.to_owned();
+@@ -540,6 +538,13 @@ pub mod tests_main {
+         super::include_dashJs_values(&switches, &mut result, &tu::TestLogger::create_new());
+         assert_eq!(ex, result);
+     }
+-}
+-
+ 
++    #[test]
++    fn parse_jdk_version_test() {
++        assert_eq!(super::parse_jdk_version("openjdk version \"1.8.0_412\""), Some(8));
++        assert_eq!(super::parse_jdk_version("openjdk version \"21.0.3\" 2024-04-16"), Some(21));
++        assert_eq!(super::parse_jdk_version("openjdk version \"25-ea\" 2025-09-16"), Some(25));
++        assert_eq!(super::parse_jdk_version("java version \"9\""), Some(9));
++        assert_eq!(super::parse_jdk_version("garbage"), None);
++    }
++}
+diff --git a/launchers/shell-launcher/launchers.bat.in b/launchers/shell-launcher/launchers.bat.in
+index 32ae08cb9..8a4a5aa9e 100644
+--- a/launchers/shell-launcher/launchers.bat.in
++++ b/launchers/shell-launcher/launchers.bat.in
+@@ -154,6 +154,9 @@ for /f "tokens=*" %%a in ('"%JAVA%" -version 2^>^&1 1^>con:') do (
+ if %fullversion% GEQ 9 (
+   set "MODULAR_JDK=YES"
+ )
++rem JDK 18-23 refuse System.setSecurityManager unless allowed at startup; 9-11 and 24+ do not start with it
++set "SM_ARGS="
++if %fullversion% GEQ 18 if %fullversion% LEQ 23 set "SM_ARGS=-Djava.security.manager=allow"
+ set "_versionLine=" & set "_unquoted=" & set "fullversion="
+ 
+ set "MODULAR_ARGS="
+@@ -168,6 +171,7 @@ if "%MODULAR_JDK%" == "YES" (
+   )
+   rem add JDK9+ arg file:
+   set "MODULAR_ARGS=!MODULAR_ARGS! "@%RUN_ARGS_LOCATION%""
++  set "MODULAR_ARGS=!MODULAR_ARGS! !SM_ARGS!"
+ )
+ 
+ 
+diff --git a/launchers/shell-launcher/launchers.sh.in b/launchers/shell-launcher/launchers.sh.in
+index e27988f4f..bee618b81 100644
+--- a/launchers/shell-launcher/launchers.sh.in
++++ b/launchers/shell-launcher/launchers.sh.in
+@@ -211,6 +211,11 @@ if [ "x$MODULAR_JDK" == "xYES" ] ; then
+   COMMAND[k]="@$RUN_ARGS_LOCATION"
+   k=$((k+1))
+ fi
++# JDK 18-23 refuse System.setSecurityManager unless allowed at startup; 9-11 and 24+ do not start with it
++if [ "$version" -ge "18" -a "$version" -le "23" ] ; then
++  COMMAND[k]="-Djava.security.manager=allow"
++  k=$((k+1))
++fi
+ 
+ 
+ i=0
+diff --git a/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java b/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java
+index 0dc370b21..85e8f1ee3 100644
+--- a/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java
++++ b/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java
+@@ -25,23 +25,12 @@
+ 
+ package net.adoptopenjdk.icedteaweb.testing.tools;
+ 
+-import net.adoptopenjdk.icedteaweb.JavaSystemProperties;
+-import sun.security.x509.AlgorithmId;
+-import sun.security.x509.CertificateAlgorithmId;
+-import sun.security.x509.CertificateIssuerName;
+-import sun.security.x509.CertificateSerialNumber;
+-import sun.security.x509.CertificateSubjectName;
+-import sun.security.x509.CertificateValidity;
+-import sun.security.x509.CertificateVersion;
+ import sun.security.x509.X500Name;
+-import sun.security.x509.X509CertImpl;
+-import sun.security.x509.X509CertInfo;
+ 
+ import java.lang.reflect.Constructor;
+ import java.lang.reflect.InvocationTargetException;
+ import java.lang.reflect.Method;
+ import java.security.CodeSigner;
+-import java.security.PrivateKey;
+ import java.security.Timestamp;
+ import java.security.cert.CertPath;
+ import java.security.cert.CertificateFactory;
+@@ -77,55 +66,9 @@ public class CodeSignerCreator {
+             throw new Exception("Required validity is negative. Please specify the number of days for which the cert is valid after the start date.");
+         }
+ 
+-        // KeyTool#doGenKeyPair
+-        final X500Name x500Name = new X500Name(dname);
+-
++        // CertAndKeyGen self-signs with given validity and random serial; no need to patch X509CertInfo (API changed in 21)
+         final KeyPair keyPair = new KeyPair(keyAlgName, sigAlgName, keysize);
+-        final PrivateKey privKey = keyPair.getPrivateKey();
+-
+-        final X509Certificate oldCert = keyPair.getSelfCertificate(x500Name, notBefore, validity);
+-
+-        // KeyTool#doSelfCert
+-        final byte[] encoded = oldCert.getEncoded();
+-        final X509CertImpl certImpl = new X509CertImpl(encoded);
+-        final X509CertInfo certInfo = (X509CertInfo) certImpl.get(X509CertImpl.NAME
+-                + "." + X509CertImpl.INFO);
+-
+-        final Date notAfter = new Date(notBefore.getTime() + validity * 1000L * 24L * 60L * 60L);
+-
+-        final CertificateValidity interval = new CertificateValidity(notBefore,
+-                notAfter);
+-
+-        certInfo.set(X509CertInfo.VALIDITY, interval);
+-        certInfo.set(X509CertInfo.SERIAL_NUMBER, new CertificateSerialNumber(
+-                new java.util.Random().nextInt() & 0x7fffffff));
+-        certInfo.set(X509CertInfo.SUBJECT + "." + CertificateSubjectName.DN_NAME, x500Name);
+-        certInfo.set(X509CertInfo.ISSUER + "." + CertificateIssuerName.DN_NAME, x500Name);
+-
+-        // The inner and outer signature algorithms have to match.
+-        // The way we achieve that is really ugly, but there seems to be no
+-        // other solution: We first sign the cert, then retrieve the
+-        // outer sigalg and use it to set the inner sigalg
+-        final X509CertImpl newCert = new X509CertImpl(certInfo);
+-        newCert.sign(privKey, sigAlgName);
+-        final AlgorithmId sigAlgid = (AlgorithmId) newCert.get(X509CertImpl.SIG_ALG);
+-        certInfo.set(CertificateAlgorithmId.NAME + "." + CertificateAlgorithmId.ALGORITHM, sigAlgid);
+-
+-        certInfo.set(X509CertInfo.VERSION, new CertificateVersion(CertificateVersion.V3));
+-
+-        // FIXME Figure out extensions
+-//        CertificateExtensions ext = createV3Extensions(
+-//                null,
+-//                (CertificateExtensions)certInfo.get(X509CertInfo.EXTENSIONS),
+-//                v3ext,
+-//                oldCert.getPublicKey(),
+-//                null);
+-//        certInfo.set(X509CertInfo.EXTENSIONS, ext);
+-
+-        final X509CertImpl finalCert = new X509CertImpl(certInfo);
+-        finalCert.sign(privKey, sigAlgName);
+-
+-        return finalCert;
++        return keyPair.getSelfCertificate(new X500Name(dname), notBefore, validity);
+     }
+ 
+     /**
+@@ -152,8 +95,7 @@ public class CodeSignerCreator {
+     /**
+      * A wrapper over JDK-internal CertAndKeyGen Class.
+      * <p>
+-     * This is an internal class whose package changed between OpenJDK 7 and 8.
+-     * Use reflection to access the right thing.
++     * Reflection: not exported, keeps compile independent of JDK version.
+      */
+     public static class KeyPair {
+ 
+@@ -162,7 +104,7 @@ public class CodeSignerCreator {
+         public KeyPair(final String keyAlgName, final String sigAlgName, final int keySize) {
+             try {
+                 // keyPair = new CertAndKeyGen(keyAlgName, sigAlgName);
+-                final Class<?> certAndKeyGenClass = Class.forName(getCertAndKeyGenClass());
++                final Class<?> certAndKeyGenClass = Class.forName("sun.security.tools.keytool.CertAndKeyGen");
+                 final Constructor<?> constructor = certAndKeyGenClass.getDeclaredConstructor(String.class, String.class);
+                 keyPair = constructor.newInstance(keyAlgName, sigAlgName);
+ 
+@@ -175,17 +117,6 @@ public class CodeSignerCreator {
+             }
+         }
+ 
+-        public PrivateKey getPrivateKey() {
+-            try {
+-                // return keyPair.getPrivateKey();
+-                final Class<?> klass = keyPair.getClass();
+-                final Method method = klass.getMethod("getPrivateKey");
+-                return (PrivateKey) method.invoke(keyPair);
+-            } catch (final NoSuchMethodException | IllegalAccessException | IllegalArgumentException | InvocationTargetException error) {
+-                throw new AssertionError(error);
+-            }
+-        }
+-
+         public X509Certificate getSelfCertificate(final X500Name name, final Date notBefore, final long validityInDays) {
+             try {
+                 // return keyPair.getSelfCertificate(name, notBefore, validityInDays * 24L * 60L * 60L);
+@@ -198,17 +129,5 @@ public class CodeSignerCreator {
+                 throw new AssertionError(error);
+             }
+         }
+-
+-        private String getCertAndKeyGenClass() {
+-            final String javaVersion = JavaSystemProperties.getJavaVersion();
+-            if (javaVersion.startsWith("1.7")) {
+-                return "sun.security.x509.CertAndKeyGen";
+-            } else if (javaVersion.startsWith("1.8") ||
+-                       javaVersion.matches("^(9|1[0-3])\\..*")) {
+-                return "sun.security.tools.keytool.CertAndKeyGen";
+-            } else {
+-                throw new AssertionError("Unrecognized Java Version");
+-            }
+-        }
+     }
+ }
+-- 
+2.55.0
+

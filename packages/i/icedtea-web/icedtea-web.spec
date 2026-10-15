@@ -16,46 +16,39 @@
 #
 
 
-%{!?make_build:%global make_build make %{?_smp_mflags} V=1}
-%bcond_without pack200
 Name:           icedtea-web
-Version:        1.8.8
+Version:        2.0.0~alpha36
 Release:        0
 Summary:        Java Web Start implementation
 License:        GPL-2.0-only WITH Classpath-exception-2.0
 Group:          Development/Languages/Java
 URL:            https://github.com/AdoptOpenJDK/IcedTea-Web
 Source0:        %{name}-%{version}.tar.xz
+Source1:        icedtea-web.conf
 Patch0:         icedtea-web-suse-desktop-files.patch
-Patch1:         more-java-versions.patch
-Patch2:         reproducible-timestamps.patch
-Patch3:         commons-compress-pack200.patch
-Patch4:         remove-pack200-support.patch
-Patch5:         java17.patch
-Patch6:         java21.patch
-Patch7:         javaws-policy.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  bc
+Patch1:         0001-Make-IcedTea-Web-build-and-run-on-Java-8-through-25.patch
+Patch2:         0002-Port-to-jacoco-0.8.14-and-surefire-3.6.0-to-be-able-.patch
+Patch3:         0003-Bring-back-Pack200-support-on-newer-Java-using-commo.patch
+Patch4:         0004-Grey-out-the-advanced-policy-editor-button-when-poli.patch
+Patch5:         0005-Stop-relying-on-hidden-JDK-certificate-classes-where.patch
+Patch6:         0006-Address-SonarCloud-findings-and-fix-JaCoCo-report-in.patch
+Patch7:         0007-Stop-opening-JDK-packages-that-no-longer-exist-or-ar.patch
+Patch8:         0008-Fix-the-shell-launchers-silently-failing-when-java-c.patch
+Patch9:         0009-Ignore-an-invalid-JNLP-file-version-instead-of-refus.patch
+Patch10:        0010-Drop-modules-missing-from-this-JVM-from-java-vm-args.patch
+Patch11:        0011-Make-the-exception-dialog-test-independent-of-the-cl.patch
+Patch100:       reproducible-timestamps.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  hamcrest
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-tools
-BuildRequires:  junit
-BuildRequires:  libtool
-BuildRequires:  pkgconfig >= 0.9.0
-BuildRequires:  procps
-BuildRequires:  rhino
-BuildRequires:  tagsoup
-BuildRequires:  zip
-BuildConflicts: java >= 22
-BuildConflicts: java-devel >= 22
-BuildConflicts: java-headless >= 22
+BuildRequires:  maven-local
+BuildRequires:  mvn(com.github.seancfoley:ipaddress)
+BuildRequires:  mvn(com.github.vatbub:mslinks)
+BuildRequires:  mvn(org.apache.commons:commons-compress)
+BuildRequires:  mvn(org.ccil.cowan.tagsoup:tagsoup)
+BuildRequires:  mvn(org.mozilla:rhino)
 Requires:       java >= 1.8
-Requires:       rhino
-Requires:       tagsoup
-Suggests:       %{name}-javadoc
+Requires:       javapackages-tools
 Obsoletes:      java-1_6_0-openjdk-plugin < %{version}-%{release}
 Obsoletes:      java-1_7_0-openjdk-plugin < %{version}-%{release}
 Obsoletes:      java-1_8_0-openjdk-plugin < %{version}-%{release}
@@ -67,10 +60,6 @@ Provides:       java-1_8_0-openjdk-plugin = %{version}-%{release}
 Provides:       java-1_9_0-openjdk-plugin = %{version}-%{release}
 Provides:       java-plugin = 1.8.0
 BuildArch:      noarch
-%if %{with pack200}
-BuildRequires:  apache-commons-compress
-Requires:       apache-commons-compress
-%endif
 
 %description
 The IcedTea-Web project provides a Free Software web browser plugin running
@@ -89,64 +78,60 @@ This package contains API documentation for the %{name} Java Web Start
 and plugin implementation.
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
-%if %{with pack200}
-%patch -P 3 -p1
-%else
-%patch -P 4 -p1
-%endif
-%patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
+%autosetup -p1
 
-rm -rf netx/net/sourceforge/jnlp/NetxPanel.java netx/sun
+%pom_remove_plugin -r :jacoco-maven-plugin
+%pom_remove_plugin -r :buildnumber-maven-plugin
+%pom_remove_plugin -r :maven-source-plugin
+%pom_remove_plugin -r :maven-javadoc-plugin
+%pom_remove_plugin -r :maven-shade-plugin
 
-rm -f netx/net/sourceforge/jnlp/util/WindowsDesktopEntry.java
+%pom_disable_module test-extensions
+%pom_disable_module artifact-no-dependencies
+%pom_disable_module artifact-all-dependencies
+%pom_disable_module integration
 
 %build
-autoreconf -fiv
-export bashcompdir=%{_datadir}/bash-completion/completions
-%configure \
-    --with-jdk-home=${JAVA_HOME} \
-    --bindir=%{_datadir}/%{name} \
-    --disable-native-plugin \
-    --disable-pluginjar \
-    --docdir=%{_javadocdir}/%{name} \
-    --enable-docs \
-    --enable-shell-launchers \
-    --with-itw-libs=BUNDLED \
-    --with-modularjdk-file=%{_datadir}/%{name}
+%{mvn_build} -f
 
-%make_build
+itw_cp=$(ls {jnlp-api,common,xml-parser,core}/target/*.jar | grep -v -e sources -e javadoc | tr '\n' :)
+itw_cp=${itw_cp%:}:$(build-classpath rhino tagsoup IPAddress commons-compress commons-io commons-lang3)
 
-%install
-%make_install
+# WARN/ERROR go to syslog via util-linux `logger`, absent from Factory build root
+export XDG_CONFIG_HOME=$PWD/gen/config
+mkdir -p $XDG_CONFIG_HOME/icedtea-web
+echo deployment.log.system=false > $XDG_CONFIG_HOME/icedtea-web/deployment.properties
 
-# Install desktop files.
-install -dm 0755 %{buildroot}%{_datadir}/applications
-desktop-file-install --vendor ''\
-  --dir %{buildroot}%{_datadir}/applications javaws.desktop
-desktop-file-install --vendor ''\
-  --dir %{buildroot}%{_datadir}/applications itweb-settings.desktop
-desktop-file-install --vendor ''\
-  --dir %{buildroot}%{_datadir}/applications policyeditor.desktop
-
-# Symlink the scripts to bin directory
-install -dm 0755 %{buildroot}%{_bindir}
-for i in javaws itweb-settings policyeditor; do
-  ln -sf %{_datadir}/%{name}/${i}.sh %{buildroot}%{_bindir}/${i}
+mkdir -p gen/completions gen/man
+for n in javaws itweb-settings policyeditor ; do
+  sed "s/@OPTIONS@/$(java -cp $itw_cp net.adoptopenjdk.icedteaweb.commandline.CommandLineOptionsDefinition $n)/" \
+    launchers/completion.in/$n.bash.in > gen/completions/$n.bash
+  sed "s#PATH_TO_$(echo $n | tr a-z- A-Z_)#%{_bindir}/$n#" \
+    launchers/xdesktop.in/$n.desktop.in > gen/$n.desktop
+done
+# user.language instead of LANG: works without glibc locales in the build root
+for l in en_US cs_CZ de_DE pl_PL ; do
+  d=gen/man/${l%%_*}/man1 ; [ $l = en_US ] && d=gen/man/man1
+  mkdir -p $d
+  java -Duser.language=${l%%_*} -Duser.country=${l##*_} -Dfile.encoding=UTF-8 -cp $itw_cp \
+    net.sourceforge.jnlp.util.docprovider.TextsProvider man UTF-8 $d false %{version} \
+    "-authorString=https://github.com/AdoptOpenJDK/icedtea-web/graphs/contributors"
 done
 
-# Default security policy file
-install -dm 0755 %{buildroot}%{_sysconfdir}/%{name}
-install -pm 0644 javaws.policy %{buildroot}%{_sysconfdir}/%{name}/
+%install
+%mvn_install
+%fdupes -s %{buildroot}%{_javadocdir}
 
-%fdupes %{buildroot}%{_javadocdir}/%{name}
-
-rm -rf %{buildroot}%{_mandir}/*/man1
+%jpackage_script net.sourceforge.jnlp.runtime.Boot "" "" icedtea-web javaws true
+%jpackage_script net.adoptopenjdk.icedteaweb.client.commandline.CommandLine "" "" icedtea-web itweb-settings true
+%jpackage_script net.adoptopenjdk.icedteaweb.client.policyeditor.PolicyEditor "" "" icedtea-web policyeditor true
+install -Dpm 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/java/icedtea-web.conf
+install -Dpm 644 -t %{buildroot}%{_datadir}/icedtea-web launchers/itw-modularjdk.args core/src/main/resources/javaws_splash.png
+install -Dpm 644 -t %{buildroot}%{_datadir}/applications gen/*.desktop
+install -Dpm 644 -t %{buildroot}%{_datadir}/bash-completion/completions gen/completions/*.bash
+install -Dpm 644 launchers/javaws.png %{buildroot}%{_datadir}/pixmaps/javaws.png
+install -dm 755 %{buildroot}%{_mandir}
+cp -r gen/man/* %{buildroot}%{_mandir}/
 
 %posttrans
 update-desktop-database &> /dev/null || :
@@ -157,22 +142,23 @@ update-desktop-database &> /dev/null || :
 exit 0
 
 %files
-%{_bindir}/itweb-settings*
-%{_bindir}/javaws*
-%{_bindir}/policyeditor*
-%{_mandir}/man1/*
-%{_datadir}/applications/itweb-settings.desktop
-%{_datadir}/applications/javaws.desktop
-%{_datadir}/applications/policyeditor.desktop
-%dir %{_sysconfdir}/%{name}
-%config %{_sysconfdir}/%{name}/*
-%{_datadir}/%{name}
+
+%files -f .mfiles
+%{_bindir}/javaws
+%{_bindir}/itweb-settings
+%{_bindir}/policyeditor
+%config(noreplace) %{_sysconfdir}/java/icedtea-web.conf
+%{_datadir}/icedtea-web
+%{_datadir}/applications/*.desktop
+%{_datadir}/bash-completion/completions/*.bash
 %{_datadir}/pixmaps/javaws.png
-%{_datadir}/bash-completion/completions
+%{_mandir}/man1/*
+%{_mandir}/*/man1/*
+%license LICENSE
+%doc LICENCE_DETAILS.md README.md
 
 %files javadoc
-%license COPYING
-%doc NEWS README
+%license LICENSE
 %{_javadocdir}/%{name}
 
 %changelog

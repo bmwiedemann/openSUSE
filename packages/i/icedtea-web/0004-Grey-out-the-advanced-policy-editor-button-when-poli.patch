@@ -1,0 +1,56 @@
+From 448285ace570372bdd00c963f75494ff6371de36 Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Tue, 6 Oct 2026 13:26:24 +0200
+Subject: [PATCH 4/8] Grey out the advanced policy editor button when
+ policytool is missing
+
+---
+ .../controlpanel/panels/PolicyPanel.java       | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/controlpanel/panels/PolicyPanel.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/controlpanel/panels/PolicyPanel.java
+index 944e1602f..3089191c3 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/controlpanel/panels/PolicyPanel.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/controlpanel/panels/PolicyPanel.java
+@@ -40,6 +40,7 @@ import net.adoptopenjdk.icedteaweb.client.parts.dialogs.FileDialogFactory;
+ import net.adoptopenjdk.icedteaweb.client.policyeditor.PolicyEditor;
+ import net.adoptopenjdk.icedteaweb.client.policyeditor.PolicyEditor.PolicyEditorWindow;
+ import net.adoptopenjdk.icedteaweb.io.FileUtils;
++import net.adoptopenjdk.icedteaweb.jvm.JvmUtils;
+ import net.adoptopenjdk.icedteaweb.io.FileUtils.OpenFileResult;
+ import net.adoptopenjdk.icedteaweb.logging.Logger;
+ import net.adoptopenjdk.icedteaweb.logging.LoggerFactory;
+@@ -90,6 +91,11 @@ public class PolicyPanel extends NamedBorderPanel {
+ 
+         final JButton advancedEditorButton = new JButton(R("CPButAdvancedEditor"));
+         advancedEditorButton.addActionListener(new LaunchPolicyToolAction(fileUrlString));
++        if (!isPolicyToolAvailable()) {
++            // policytool removed in JDK 10
++            advancedEditorButton.setEnabled(false);
++            advancedEditorButton.setToolTipText(R("CPPolicyEditorNotFound"));
++        }
+ 
+         final String pathPart = localFilePathFromUrlString(fileUrlString);
+         simpleEditorButton.setToolTipText(R("CPPolicyTooltip", FileUtils.displayablePath(pathPart, 60)));
+@@ -229,6 +235,18 @@ public class PolicyPanel extends NamedBorderPanel {
+         main.invoke(null, (Object) args);
+     }
+ 
++    private static boolean isPolicyToolAvailable() {
++        if (JvmUtils.findOnPath(new String[]{"policytool", "policytool.exe"}) != null) {
++            return true;
++        }
++        try {
++            Class.forName("sun.security.tools.policytool.PolicyTool");
++            return true;
++        } catch (ClassNotFoundException e) {
++            return false;
++        }
++    }
++
+     /**
+      * Loosely attempt to get the path part of a file URL string. If this fails,
+      * simply return back the input. This is only intended to be used for displaying
+-- 
+2.55.0
+

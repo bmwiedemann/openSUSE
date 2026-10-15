@@ -1,0 +1,449 @@
+From 4ae2a63755a253957e6ae46d7e48dc1121fdd0b4 Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Tue, 6 Oct 2026 13:16:02 +0200
+Subject: [PATCH 3/8] Bring back Pack200 support on newer Java using
+ commons-compress
+
+---
+ artifact-all-dependencies/pom.xml             |  4 ++
+ core/pom.xml                                  | 19 +++++++++
+ .../JnlpDownloadProtocolConstants.java        |  4 +-
+ .../downloader/PackGzipUnpacker.java          | 41 ++++---------------
+ .../java/net/sourceforge/jnlp/JNLPFile.java   |  3 +-
+ .../resources/ResourceHandlerTest.java        | 10 +----
+ .../net/sourceforge/jnlp/JNLPFileTest.java    |  3 +-
+ launchers/configure.sh                        | 27 +++++++++---
+ .../rust-launcher/src/hardcoded_paths.rs      |  6 +++
+ launchers/rust-launcher/src/jars_helper.rs    |  3 ++
+ launchers/shell-launcher/launchers.bat.in     | 11 ++++-
+ launchers/shell-launcher/launchers.sh.in      | 11 ++++-
+ launchers/utils.sh                            |  6 +++
+ 13 files changed, 92 insertions(+), 56 deletions(-)
+
+diff --git a/artifact-all-dependencies/pom.xml b/artifact-all-dependencies/pom.xml
+index c2f1a96ba..668c1c159 100644
+--- a/artifact-all-dependencies/pom.xml
++++ b/artifact-all-dependencies/pom.xml
+@@ -53,6 +53,10 @@
+                                     <pattern>org.ccil.cowan.tagsoup</pattern>
+                                     <shadedPattern>net.adoptopenjdk.icedteaweb.shaded.tagsoup</shadedPattern>
+                                 </relocation>
++                                <relocation>
++                                    <pattern>org.apache.commons</pattern>
++                                    <shadedPattern>net.adoptopenjdk.icedteaweb.shaded.apache.commons</shadedPattern>
++                                </relocation>
+                                 <relocation>
+                                     <pattern>mslinks</pattern>
+                                     <shadedPattern>net.adoptopenjdk.icedteaweb.shaded.mslinks</shadedPattern>
+diff --git a/core/pom.xml b/core/pom.xml
+index 1672ee94e..4de58593f 100644
+--- a/core/pom.xml
++++ b/core/pom.xml
+@@ -49,6 +49,18 @@
+             <artifactId>rhino</artifactId>
+             <version>1.7.15.1</version>
+         </dependency>
++        <!-- Pack200 (removed from JDK 14) -->
++        <dependency>
++            <groupId>org.apache.commons</groupId>
++            <artifactId>commons-compress</artifactId>
++            <version>1.28.0</version>
++            <exclusions>
++                <exclusion>
++                    <groupId>commons-codec</groupId>
++                    <artifactId>commons-codec</artifactId>
++                </exclusion>
++            </exclusions>
++        </dependency>
+ 
+         <dependency>
+             <groupId>${project.groupId}</groupId>
+@@ -56,6 +68,13 @@
+             <version>${project.version}</version>
+             <scope>test</scope>
+         </dependency>
++        <!-- commons-compress Pack200 packer (tests only; unpacking needs no ASM) -->
++        <dependency>
++            <groupId>org.ow2.asm</groupId>
++            <artifactId>asm</artifactId>
++            <version>9.10.1</version>
++            <scope>test</scope>
++        </dependency>
+     </dependencies>
+ 
+     <build>
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/JnlpDownloadProtocolConstants.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/JnlpDownloadProtocolConstants.java
+index 899b7e09c..18ff9aa74 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/JnlpDownloadProtocolConstants.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/JnlpDownloadProtocolConstants.java
+@@ -1,7 +1,5 @@
+ package net.adoptopenjdk.icedteaweb.resources;
+ 
+-import net.adoptopenjdk.icedteaweb.resources.downloader.PackGzipUnpacker;
+-
+ /**
+  * ...
+  */
+@@ -16,7 +14,7 @@ public interface JnlpDownloadProtocolConstants {
+     String ERROR_MIME_TYPE = "application/x-java-jnlp-error";
+     String JAR_DIFF_MIME_TYPE = "application/x-java-archive-dif";
+ 
+-    String PACK_200_OR_GZIP = PackGzipUnpacker.isSupported() ? "pack200-gzip, gzip" : "gzip";
++    String PACK_200_OR_GZIP = "pack200-gzip, gzip";
+     String INVALID_HTTP_RESPONSE = "Invalid Http response";
+ 
+     String VERSION_ID_QUERY_PARAM = "version-id";
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/downloader/PackGzipUnpacker.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/downloader/PackGzipUnpacker.java
+index b361288f9..b62c47ec2 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/downloader/PackGzipUnpacker.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/resources/downloader/PackGzipUnpacker.java
+@@ -16,55 +16,28 @@
+ 
+ package net.adoptopenjdk.icedteaweb.resources.downloader;
+ 
++import org.apache.commons.compress.java.util.jar.Pack200;
++import org.apache.commons.io.IOUtils;
++
+ import java.io.ByteArrayInputStream;
+ import java.io.ByteArrayOutputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
+-import java.lang.reflect.InvocationTargetException;
+-import java.lang.reflect.Method;
+ import java.util.jar.JarOutputStream;
+ import java.util.zip.GZIPInputStream;
+ 
+ /**
+  * Unpacker for PACK200 and Gzip streams.
+- * java.util.jar.Pack200 was removed in JDK 14, hence reflection.
++ * Pack200 from commons-compress: java.util.jar.Pack200 was removed in JDK 14.
+  */
+ public class PackGzipUnpacker implements StreamUnpacker {
+-
+-    private static final Method NEW_UNPACKER;
+-    private static final Method UNPACK;
+-
+-    static {
+-        Method newUnpacker = null;
+-        Method unpack = null;
+-        try {
+-            newUnpacker = Class.forName("java.util.jar.Pack200").getMethod("newUnpacker");
+-            unpack = Class.forName("java.util.jar.Pack200$Unpacker").getMethod("unpack", InputStream.class, JarOutputStream.class);
+-        } catch (ReflectiveOperationException ignored) {
+-        }
+-        NEW_UNPACKER = newUnpacker;
+-        UNPACK = unpack;
+-    }
+-
+-    public static boolean isSupported() {
+-        return UNPACK != null;
+-    }
+-
+     @Override
+     public InputStream unpack(InputStream input) throws IOException {
+-        if (!isSupported()) {
+-            throw new IOException("pack200 is not supported by this JVM");
+-        }
+         final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+         try (final JarOutputStream outputStream = new JarOutputStream(buffer)) {
+-            UNPACK.invoke(NEW_UNPACKER.invoke(null), new GZIPInputStream(input), outputStream);
+-        } catch (IllegalAccessException e) {
+-            throw new IOException(e);
+-        } catch (InvocationTargetException e) {
+-            if (e.getCause() instanceof IOException) {
+-                throw (IOException) e.getCause();
+-            }
+-            throw new IOException(e.getCause());
++            // not a FilterInputStream: unpacker would reflectively unwrap it, denied on JDK 17+
++            final InputStream packed = new ByteArrayInputStream(IOUtils.toByteArray(new GZIPInputStream(input)));
++            Pack200.newUnpacker().unpack(packed, outputStream);
+         }
+         return new ByteArrayInputStream(buffer.toByteArray());
+     }
+diff --git a/core/src/main/java/net/sourceforge/jnlp/JNLPFile.java b/core/src/main/java/net/sourceforge/jnlp/JNLPFile.java
+index 4a7f495b8..125d3b17b 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/JNLPFile.java
++++ b/core/src/main/java/net/sourceforge/jnlp/JNLPFile.java
+@@ -39,7 +39,6 @@ import net.adoptopenjdk.icedteaweb.jnlp.version.VersionString;
+ import net.adoptopenjdk.icedteaweb.logging.Logger;
+ import net.adoptopenjdk.icedteaweb.logging.LoggerFactory;
+ import net.adoptopenjdk.icedteaweb.manifest.ManifestAttributesReader;
+-import net.adoptopenjdk.icedteaweb.resources.downloader.PackGzipUnpacker;
+ import net.adoptopenjdk.icedteaweb.xmlparser.ParseException;
+ import net.adoptopenjdk.icedteaweb.xmlparser.XMLParser;
+ import net.adoptopenjdk.icedteaweb.xmlparser.XmlNode;
+@@ -828,7 +827,7 @@ public class JNLPFile {
+      */
+     public DownloadOptions getDownloadOptions() {
+         final ResourcesDesc desc = getResources();
+-        final boolean usePack = parseBoolean(desc.getPropertiesMap().get("jnlp.packEnabled")) && PackGzipUnpacker.isSupported();
++        final boolean usePack = parseBoolean(desc.getPropertiesMap().get("jnlp.packEnabled"));
+         final boolean useVersion = parseBoolean(desc.getPropertiesMap().get("jnlp.versionEnabled"));
+         return new DownloadOptions(usePack, useVersion);
+     }
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/resources/ResourceHandlerTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/resources/ResourceHandlerTest.java
+index 6db57116e..c1cc28f61 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/resources/ResourceHandlerTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/resources/ResourceHandlerTest.java
+@@ -1,7 +1,6 @@
+ package net.adoptopenjdk.icedteaweb.resources;
+ 
+ import net.adoptopenjdk.icedteaweb.jnlp.version.VersionString;
+-import net.adoptopenjdk.icedteaweb.resources.downloader.PackGzipUnpacker;
+ import net.adoptopenjdk.icedteaweb.testing.ServerAccess;
+ import net.adoptopenjdk.icedteaweb.testing.ServerLauncher;
+ import net.jcip.annotations.NotThreadSafe;
+@@ -12,8 +11,8 @@ import net.sourceforge.jnlp.util.JarFile;
+ import net.sourceforge.jnlp.util.logging.NoStdOutErrTest;
+ import net.sourceforge.jnlp.util.logging.OutputController;
+ import net.sourceforge.jnlp.util.logging.StdInOutErrController;
++import org.apache.commons.compress.java.util.jar.Pack200;
+ import org.junit.After;
+-import org.junit.Assume;
+ import org.junit.AfterClass;
+ import org.junit.Before;
+ import org.junit.BeforeClass;
+@@ -24,7 +23,6 @@ import org.junit.rules.TemporaryFolder;
+ import java.io.ByteArrayOutputStream;
+ import java.io.File;
+ import java.io.FileOutputStream;
+-import java.io.OutputStream;
+ import java.net.URL;
+ import java.nio.file.Files;
+ import java.util.concurrent.ExecutorService;
+@@ -211,11 +209,7 @@ public class ResourceHandlerTest extends NoStdOutErrTest {
+ 
+         final JarFile jarFile = new JarFile(jar.getAbsolutePath());
+         final FileOutputStream fos = new FileOutputStream(pack);
+-        // Pack200 removed in JDK 14
+-        Assume.assumeTrue(PackGzipUnpacker.isSupported());
+-        final Object packer = Class.forName("java.util.jar.Pack200").getMethod("newPacker").invoke(null);
+-        Class.forName("java.util.jar.Pack200$Packer").getMethod("pack", java.util.jar.JarFile.class, OutputStream.class)
+-                .invoke(packer, jarFile.getNative(), fos);
++        Pack200.newPacker().pack(jarFile.getNative(), fos);
+         fos.close();
+ 
+         final File packgz = new File(downloadDir, fileName + ".jar.pack.gz");
+diff --git a/core/src/test/java/net/sourceforge/jnlp/JNLPFileTest.java b/core/src/test/java/net/sourceforge/jnlp/JNLPFileTest.java
+index 7ffeb9248..4b3bd15eb 100644
+--- a/core/src/test/java/net/sourceforge/jnlp/JNLPFileTest.java
++++ b/core/src/test/java/net/sourceforge/jnlp/JNLPFileTest.java
+@@ -39,7 +39,6 @@ import net.adoptopenjdk.icedteaweb.jnlp.element.resource.ResourcesDesc;
+ import net.adoptopenjdk.icedteaweb.jnlp.element.security.ApplicationPermissionLevel;
+ import net.adoptopenjdk.icedteaweb.testing.annotations.Bug;
+ import net.adoptopenjdk.icedteaweb.testing.mock.MockJNLPFile;
+-import net.adoptopenjdk.icedteaweb.resources.downloader.PackGzipUnpacker;
+ import net.adoptopenjdk.icedteaweb.xmlparser.ParseException;
+ import net.sourceforge.jnlp.util.logging.NoStdOutErrTest;
+ import org.junit.Assert;
+@@ -189,7 +188,7 @@ public class JNLPFileTest extends NoStdOutErrTest{
+         JNLPFile jnlpFile = new JNLPFile(is, codeBase, new ParserSettings(false,false,false));
+         DownloadOptions downloadOptions = jnlpFile.getDownloadOptions();
+ 
+-        Assert.assertEquals(PackGzipUnpacker.isSupported(), downloadOptions.useExplicitPack()); // no Pack200 since JDK 14
++        Assert.assertTrue(downloadOptions.useExplicitPack());
+         Assert.assertTrue(downloadOptions.useExplicitVersion());
+     }
+ 
+diff --git a/launchers/configure.sh b/launchers/configure.sh
+index a188d0097..2794aba24 100644
+--- a/launchers/configure.sh
++++ b/launchers/configure.sh
+@@ -94,9 +94,11 @@ function findJar() {
+ }
+ 
+ 
++# $1 jar name, $2 maven groupId:artifactId
+ function getJar() {
+   if [ "x$ITW_LIBS" == "xDISTRIBUTION" ] ; then
+-    findJar "$SYSTEM_JARS"  "$1"
++    # javapackages-tools knows the canonical jar (coordinates need xmvn-resolve); plain find may hit private copies (e.g. xmvn's)
++    find-jar "$2" 2>/dev/null || find-jar "$1" 2>/dev/null || findJar "$SYSTEM_JARS"  "$1"
+   else
+     # Dependent jars for non distribution builds have no sense with fat javaws.jar
+     echo ""
+@@ -104,25 +106,40 @@ function getJar() {
+ }
+ 
+ if [ "x$RHINO_SRC" == "x" ] ; then
+-  readonly RHINO_SRC=`getJar "rhino"`
++  readonly RHINO_SRC=`getJar "rhino" "org.mozilla:rhino"`
+ else
+   readonly RHINO_SRC=$RHINO_SRC
+ fi
+ if [ "x$TAGSOUP_SRC" == "x" ] ; then
+-  readonly TAGSOUP_SRC=`getJar "tagsoup"`
++  readonly TAGSOUP_SRC=`getJar "tagsoup" "org.ccil.cowan.tagsoup:tagsoup"`
+ else
+   readonly TAGSOUP_SRC=$TAGSOUP_SRC
+ fi
+ if [ "x$MSLINKS_SRC" == "x" ] ; then
+-  readonly MSLINKS_SRC=`getJar "mslinks"`
++  readonly MSLINKS_SRC=`getJar "mslinks" "com.github.vatbub:mslinks"`
+ else
+   readonly MSLINKS_SRC=$MSLINKS_SRC
+ fi
+ if [ "x$IPADDRESS_SRC" == "x" ] ; then
+-  readonly IPADDRESS_SRC=`getJar "ipaddress"`
++  readonly IPADDRESS_SRC=`getJar "ipaddress" "com.github.seancfoley:ipaddress"`
+ else
+   readonly IPADDRESS_SRC=$IPADDRESS_SRC
+ fi
++if [ "x$COMMONS_COMPRESS_SRC" == "x" ] ; then
++  readonly COMMONS_COMPRESS_SRC=`getJar "commons-compress" "org.apache.commons:commons-compress"`
++else
++  readonly COMMONS_COMPRESS_SRC=$COMMONS_COMPRESS_SRC
++fi
++if [ "x$COMMONS_IO_SRC" == "x" ] ; then
++  readonly COMMONS_IO_SRC=`getJar "commons-io" "commons-io:commons-io"`
++else
++  readonly COMMONS_IO_SRC=$COMMONS_IO_SRC
++fi
++if [ "x$COMMONS_LANG3_SRC" == "x" ] ; then
++  readonly COMMONS_LANG3_SRC=`getJar "commons-lang3" "org.apache.commons:commons-lang3"`
++else
++  readonly COMMONS_LANG3_SRC=$COMMONS_LANG3_SRC
++fi
+ 
+ 
+ readonly SPLASH_PNG_SRC=`find $PROJECT_TOP/core/src |  grep /javaws_splash.png$`
+diff --git a/launchers/rust-launcher/src/hardcoded_paths.rs b/launchers/rust-launcher/src/hardcoded_paths.rs
+index adffdf206..0e5f1df84 100644
+--- a/launchers/rust-launcher/src/hardcoded_paths.rs
++++ b/launchers/rust-launcher/src/hardcoded_paths.rs
+@@ -15,6 +15,9 @@ const ITW_LIBS: Option<&'static str> = option_env!("ITW_LIBS");
+ const MODULARJDK_ARGS_LOCATION: Option<&'static str> = option_env!("MODULARJDK_ARGS_LOCATION");
+ const MSLINKS_JAR: Option<&'static str> = option_env!("MSLINKS_JAR");
+ const IPADDRESS_JAR: Option<&'static str> = option_env!("IPADDRESS_JAR");
++const COMMONS_COMPRESS_JAR: Option<&'static str> = option_env!("COMMONS_COMPRESS_JAR");
++const COMMONS_IO_JAR: Option<&'static str> = option_env!("COMMONS_IO_JAR");
++const COMMONS_LANG3_JAR: Option<&'static str> = option_env!("COMMONS_LANG3_JAR");
+ 
+ 
+ pub fn get_jre() -> &'static str {
+@@ -40,6 +43,9 @@ pub fn get_rhino() -> Option<&'static str> { sanitize(RHINO_JAR) }
+ pub fn get_mslinks() -> Option<&'static str> { sanitize(MSLINKS_JAR) }
+ 
+ pub fn get_ipaddress() -> Option<&'static str> { sanitize(IPADDRESS_JAR) }
++pub fn get_commons_compress() -> Option<&'static str> { sanitize(COMMONS_COMPRESS_JAR) }
++pub fn get_commons_io() -> Option<&'static str> { sanitize(COMMONS_IO_JAR) }
++pub fn get_commons_lang3() -> Option<&'static str> { sanitize(COMMONS_LANG3_JAR) }
+ 
+ pub fn get_argsfile() -> &'static str {
+     MODULARJDK_ARGS_LOCATION.unwrap_or("MODULARJDK_ARGS_LOCATION-dev-unspecified")
+diff --git a/launchers/rust-launcher/src/jars_helper.rs b/launchers/rust-launcher/src/jars_helper.rs
+index 8de8c5eb6..1c61b8de1 100644
+--- a/launchers/rust-launcher/src/jars_helper.rs
++++ b/launchers/rust-launcher/src/jars_helper.rs
+@@ -154,6 +154,9 @@ fn get_bootcp_members(jre_path: &std::path::PathBuf, os: &os_access::Os) -> Vec<
+     append_if_exists(hardcoded_paths::get_tagsoup(), os, &mut cp_parts);
+     append_if_exists(hardcoded_paths::get_mslinks(), os, &mut cp_parts);
+     append_if_exists(hardcoded_paths::get_ipaddress(), os, &mut cp_parts);
++    append_if_exists(hardcoded_paths::get_commons_compress(), os, &mut cp_parts);
++    append_if_exists(hardcoded_paths::get_commons_io(), os, &mut cp_parts);
++    append_if_exists(hardcoded_paths::get_commons_lang3(), os, &mut cp_parts);
+     let mut nashorn_jar = jre_path.clone();
+     nashorn_jar.push("lib");
+     nashorn_jar.push("ext");
+diff --git a/launchers/shell-launcher/launchers.bat.in b/launchers/shell-launcher/launchers.bat.in
+index 8a4a5aa9e..4d828a938 100644
+--- a/launchers/shell-launcher/launchers.bat.in
++++ b/launchers/shell-launcher/launchers.bat.in
+@@ -30,6 +30,9 @@ set "TAGSOUP_SRC=@TAGSOUP_JAR@"
+ set "RHINO_SRC=@RHINO_JAR@"
+ set "MSLINKS_SRC=@MSLINKS_JAR@"
+ set "IPADDRESS_SRC=@IPADDRESS_JAR@"
++set "COMMONS_COMPRESS_SRC=@COMMONS_COMPRESS_JAR@"
++set "COMMONS_IO_SRC=@COMMONS_IO_JAR@"
++set "COMMONS_LANG3_SRC=@COMMONS_LANG3_JAR@"
+ 
+ 
+ rem resolve folder of this script:
+@@ -108,6 +111,9 @@ if "%ITW_LIBS%" == "BUNDLED" (
+   set "TAGSOUP_JAR="
+   set "MSLINKS_JAR="
+   set "IPADDRESS_JAR="
++  set "COMMONS_COMPRESS_JAR="
++  set "COMMONS_IO_JAR="
++  set "COMMONS_LANG3_JAR="
+ ) else (
+   set "JAVAWS_JAR=!JAVAWS_SRC!"
+ 
+@@ -115,8 +121,11 @@ if "%ITW_LIBS%" == "BUNDLED" (
+   set "TAGSOUP_JAR=!TAGSOUP_SRC!"
+   set "MSLINKS_JAR=!MSLINKS_SRC!"
+   set "IPADDRESS_JAR=!IPADDRESS_SRC!"
++  set "COMMONS_COMPRESS_JAR=!COMMONS_COMPRESS_SRC!"
++  set "COMMONS_IO_JAR=!COMMONS_IO_SRC!"
++  set "COMMONS_LANG3_JAR=!COMMONS_LANG3_SRC!"
+ )
+-set "LAUNCHER_BOOTCLASSPATH=-Xbootclasspath/a:%JAVAWS_JAR%;%RHINO_JAR%;%TAGSOUP_JAR%;%MSLINKS_JAR%;%IPADDRESS_JAR%"
++set "LAUNCHER_BOOTCLASSPATH=-Xbootclasspath/a:%JAVAWS_JAR%;%RHINO_JAR%;%TAGSOUP_JAR%;%MSLINKS_JAR%;%IPADDRESS_JAR%;%COMMONS_COMPRESS_JAR%;%COMMONS_IO_JAR%;%COMMONS_LANG3_JAR%"
+ 
+ 
+ rem Fix classpaths for custom JRE:
+diff --git a/launchers/shell-launcher/launchers.sh.in b/launchers/shell-launcher/launchers.sh.in
+index bee618b81..617bc86ad 100644
+--- a/launchers/shell-launcher/launchers.sh.in
++++ b/launchers/shell-launcher/launchers.sh.in
+@@ -21,6 +21,9 @@ readonly JAVAWS_SRC=@JAVAWS_JAR@
+ readonly TAGSOUP_SRC=@TAGSOUP_JAR@
+ readonly RHINO_SRC=@RHINO_JAR@
+ readonly IPADDRESS_SRC=@IPADDRESS_JAR@
++readonly COMMONS_COMPRESS_SRC=@COMMONS_COMPRESS_JAR@
++readonly COMMONS_IO_SRC=@COMMONS_IO_JAR@
++readonly COMMONS_LANG3_SRC=@COMMONS_LANG3_JAR@
+ # windows only: (cywin usage?); need to declare it anyway
+ readonly MSLINKS_SRC=@MSLINKS_JAR@
+ 
+@@ -110,6 +113,9 @@ if [ "x$ITW_LIBS" == "xBUNDLED" -o ! "x$ITW_HOME" = "x" ] ; then
+   readonly TAGSOUP_JAR=""
+   readonly MSLINKS_JAR=""
+   readonly IPADDRESS_JAR=""
++  readonly COMMONS_COMPRESS_JAR=""
++  readonly COMMONS_IO_JAR=""
++  readonly COMMONS_LANG3_JAR=""
+   echo "warning, using portable itw from $ITW_HOME"
+ else
+   readonly JAVAWS_JAR="$JAVAWS_SRC"
+@@ -118,9 +124,12 @@ else
+   readonly TAGSOUP_JAR="$TAGSOUP_SRC"
+   readonly MSLINKS_JAR="$MSLINKS_SRC"
+   readonly IPADDRESS_JAR="$IPADDRESS_SRC"
++  readonly COMMONS_COMPRESS_JAR="$COMMONS_COMPRESS_SRC"
++  readonly COMMONS_IO_JAR="$COMMONS_IO_SRC"
++  readonly COMMONS_LANG3_JAR="$COMMONS_LANG3_SRC"
+ fi
+ set -u
+-LAUNCHER_BOOTCLASSPATH="-Xbootclasspath/a:$JAVAWS_JAR:$TAGSOUP_JAR:$RHINO_JAR:$MSLINKS_JAR:$IPADDRESS_JAR"
++LAUNCHER_BOOTCLASSPATH="-Xbootclasspath/a:$JAVAWS_JAR:$TAGSOUP_JAR:$RHINO_JAR:$MSLINKS_JAR:$IPADDRESS_JAR:$COMMONS_COMPRESS_JAR:$COMMONS_IO_JAR:$COMMONS_LANG3_JAR"
+ 
+ # Fix classpaths for custom JRE:
+ if [ "x$CUSTOM_JRE" != "x" ] ; then
+diff --git a/launchers/utils.sh b/launchers/utils.sh
+index ef773997b..79c495179 100644
+--- a/launchers/utils.sh
++++ b/launchers/utils.sh
+@@ -23,6 +23,9 @@ function build() {
+     export RHINO_JAR=$RHINO_SRC
+     export MSLINKS_JAR=$MSLINKS_SRC
+     export IPADDRESS_JAR=$IPADDRESS_SRC
++    export COMMONS_COMPRESS_JAR=$COMMONS_COMPRESS_SRC
++    export COMMONS_IO_JAR=$COMMONS_IO_SRC
++    export COMMONS_LANG3_JAR=$COMMONS_LANG3_SRC
+   fi
+   export JRE
+   export ITW_LIBS
+@@ -55,6 +58,9 @@ function build() {
+         -e "s|[@]RHINO_JAR[@]|$RHINO_JAR|g" \
+         -e "s|[@]MSLINKS_JAR[@]|$MSLINKS_JAR|g" \
+         -e "s|[@]IPADDRESS_JAR[@]|$IPADDRESS_JAR|g" \
++        -e "s|[@]COMMONS_COMPRESS_JAR[@]|$COMMONS_COMPRESS_JAR|g" \
++        -e "s|[@]COMMONS_IO_JAR[@]|$COMMONS_IO_JAR|g" \
++        -e "s|[@]COMMONS_LANG3_JAR[@]|$COMMONS_LANG3_JAR|g" \
+         -e "s|[@]JAVAWS_JAR[@]|$JAVAWS_JAR|g" \
+         -e "s|[@]SPLASH_PNG[@]|$SPLASH_PNG|g" \
+         -e "s|[@]MODULARJDK_ARGS_LOCATION[@]|$MODULARJDK_ARGS_LOCATION|g" \
+-- 
+2.55.0
+

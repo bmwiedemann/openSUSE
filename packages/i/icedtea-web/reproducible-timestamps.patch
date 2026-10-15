@@ -1,34 +1,67 @@
---- icedtea-web-1.8.8/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java	2025-06-19 10:58:20.778943754 +0200
-+++ icedtea-web-1.8.8/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java	2025-06-19 10:58:35.151598324 +0200
-@@ -95,6 +95,10 @@
-         if (includeXmlHeader) {
-             xml = "<?xml version=\"1.0\" encoding=\"" + encoding + "\"?>\n";
-         }
-+        Date now = new Date();
-+        if (System.getenv("SOURCE_DATE_EPOCH") != null) {
-+            now = new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
-+        }
-         return xml + "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n"
-                 + "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n"
-                 + "  <head>\n"
-@@ -102,7 +106,7 @@
+diff --git a/artifact-all-dependencies/pom.xml b/artifact-all-dependencies/pom.xml
+index 73236c6e5..ae0a65d74 100644
+--- a/artifact-all-dependencies/pom.xml
++++ b/artifact-all-dependencies/pom.xml
+@@ -82,7 +82,7 @@
+                                     <mainClass>net.adoptopenjdk.icedteaweb.client.commandline.CommandLine</mainClass>
+                                     <manifestEntries>
+                                         <Scm-Commit>${buildNumber}</Scm-Commit>
+-                                        <Build-Time>${maven.build.timestamp}</Build-Time>
++                                        <Build-Time>${project.build.outputTimestamp}</Build-Time>
+                                     </manifestEntries>
+                                 </transformer>
+                             </transformers>
+diff --git a/artifact-no-dependencies/pom.xml b/artifact-no-dependencies/pom.xml
+index 50a1db3d5..74a701b94 100644
+--- a/artifact-no-dependencies/pom.xml
++++ b/artifact-no-dependencies/pom.xml
+@@ -52,7 +52,7 @@
+                                     <mainClass>net.adoptopenjdk.icedteaweb.client.commandline.CommandLine</mainClass>
+                                     <manifestEntries>
+                                         <Scm-Commit>${buildNumber}</Scm-Commit>
+-                                        <Build-Time>${maven.build.timestamp}</Build-Time>
++                                        <Build-Time>${project.build.outputTimestamp}</Build-Time>
+                                     </manifestEntries>
+                                 </transformer>
+                             </transformers>
+diff --git a/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java b/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java
+index c98f335ee..83cb41a24 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java
++++ b/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/HtmlFormatter.java
+@@ -36,7 +36,6 @@ package net.sourceforge.jnlp.util.docprovider.formatters.formatters;
+ import net.sourceforge.jnlp.runtime.JNLPRuntime;
+ 
+ import java.nio.charset.Charset;
+-import java.util.Date;
+ import java.util.Map;
+ import java.util.Set;
+ import java.util.TreeMap;
+@@ -99,7 +98,7 @@ public class HtmlFormatter extends ReplacingTextFormatter {
                  + "    <meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=" + encoding + "\" />\n"
                  + "  </head>\n"
                  + "  <body>\n"
 -                + "    <H5  align=\"right\">" + id + ": " + getVersion() + ", " + JNLPRuntime.getLocalisedTimeStamp(new Date()) + "</H5>";
-+                + "    <H5  align=\"right\">" + id + ": " + getVersion() + ", " + JNLPRuntime.getLocalisedTimeStamp(now) + "</H5>";
++                + "    <H5  align=\"right\">" + id + ": " + getVersion() + ", " + JNLPRuntime.getLocalisedTimeStamp(ManFormatter.buildDate()) + "</H5>";
      }
  
      @Override
---- icedtea-web-1.8.8/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java	2025-06-19 10:58:20.778977773 +0200
-+++ icedtea-web-1.8.8/netx/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java	2025-06-19 10:58:35.152120367 +0200
-@@ -118,6 +118,9 @@
+diff --git a/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java b/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java
+index f0de85ea6..6ad06e594 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java
++++ b/core/src/main/java/net/sourceforge/jnlp/util/docprovider/formatters/formatters/ManFormatter.java
+@@ -108,8 +108,14 @@ public class ManFormatter extends ReplacingTextFormatter {
+         return "";
+     }
  
-     private String getManPageDate(boolean localize) {
-         Date now = new Date();
-+        if (System.getenv("SOURCE_DATE_EPOCH") != null) {
-+            now = new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
-+        }
-         Calendar c = Calendar.getInstance();
++    /** SOURCE_DATE_EPOCH if set, for reproducible docs */
++    static Date buildDate() {
++        final String epoch = System.getenv("SOURCE_DATE_EPOCH");
++        return epoch == null ? new Date() : new Date(1000L * Long.parseLong(epoch.trim()));
++    }
++
+     private String getManPageDate() {
+-        final Date now = new Date();
++        final Date now = buildDate();
+         final Calendar c = Calendar.getInstance();
          c.setTime(now);
-         int day = c.get(Calendar.DAY_OF_MONTH);
+         final int day = c.get(Calendar.DAY_OF_MONTH);

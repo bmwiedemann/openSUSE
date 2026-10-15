@@ -1,0 +1,241 @@
+From 35b7561aec427b04f6723287bdd8cd3b50228e94 Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Tue, 6 Oct 2026 16:20:18 +0200
+Subject: [PATCH 7/8] Stop opening JDK packages that no longer exist or are not
+ used
+
+Drop Java 8 era nashorn, rt.jar and jfxrt.jar paths from the launchers
+---
+ .../adoptopenjdk/icedteaweb/jvm/JvmUtils.java |  4 ---
+ .../icedteaweb/jvm/JvmUtilsTest.java          |  2 +-
+ launchers/itw-modularjdk.args                 |  5 ----
+ launchers/rust-launcher/src/jars_helper.rs    | 29 ++++---------------
+ launchers/rust-launcher/src/main.rs           |  4 +--
+ launchers/shell-launcher/launchers.bat.in     |  9 ++----
+ launchers/shell-launcher/launchers.sh.in      | 11 ++-----
+ 7 files changed, 14 insertions(+), 50 deletions(-)
+
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtils.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtils.java
+index d40b400ee..5479042a9 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtils.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtils.java
+@@ -399,11 +399,8 @@ public class JvmUtils {
+             put("--add-reads=java.naming", moduleArgs("ALL-UNNAMED", "java.desktop"));
+ 
+             put("--add-exports=java.desktop/sun.awt", moduleArgs("ALL-UNNAMED", "java.desktop"));
+-            put("--add-exports=java.desktop/javax.jnlp", moduleArgs("ALL-UNNAMED", "java.desktop"));
+ 
+-            put("--add-exports=java.base/com.sun.net.ssl.internal.ssl", moduleArgs("ALL-UNNAMED", "java.desktop"));
+             put("--add-exports=java.base/sun.net.www.protocol.jar", moduleArgs("ALL-UNNAMED", "java.desktop"));
+-            put("--add-exports=java.base/sun.security.action", moduleArgs("ALL-UNNAMED", "java.desktop"));
+             put("--add-exports=java.base/sun.security.provider", moduleArgs("ALL-UNNAMED", "java.desktop"));
+             put("--add-exports=java.base/sun.security.util", moduleArgs("ALL-UNNAMED", "java.desktop"));
+             put("--add-exports=java.base/sun.security.validator", moduleArgs("ALL-UNNAMED", "java.desktop"));
+@@ -412,7 +409,6 @@ public class JvmUtils {
+             put("--add-exports=java.base/sun.net.www.protocol.http", moduleArgs("ALL-UNNAMED", "java.desktop"));
+ 
+             put("--add-exports=java.desktop/sun.awt.X11", moduleArgs("ALL-UNNAMED", "java.desktop"));
+-            put("--add-exports=java.desktop/sun.applet", moduleArgs("ALL-UNNAMED", "java.desktop", "jdk.jsobject"));
+             put("--add-exports=java.naming/com.sun.jndi.toolkit.url", moduleArgs("ALL-UNNAMED", "java.desktop"));
+         }};
+     }
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtilsTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtilsTest.java
+index a19d6f8ba..78302cf7a 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtilsTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/jvm/JvmUtilsTest.java
+@@ -144,7 +144,7 @@ public class JvmUtilsTest {
+ 
+         assertEquals(JvmUtils.getPredefinedJavaModulesVMArgumentsMap().size(), result.size());
+         assertTrue(result.contains("--add-reads=java.base=ALL-UNNAMED,java.desktop"));
+-        assertTrue(result.contains("--add-exports=java.desktop/sun.applet=ALL-UNNAMED,java.desktop,jdk.jsobject"));
++        assertTrue(result.contains("--add-exports=java.desktop/sun.awt=ALL-UNNAMED,java.desktop"));
+     }
+ 
+     @Test
+diff --git a/launchers/itw-modularjdk.args b/launchers/itw-modularjdk.args
+index aad01485c..065b27bce 100644
+--- a/launchers/itw-modularjdk.args
++++ b/launchers/itw-modularjdk.args
+@@ -7,11 +7,8 @@
+ --add-reads=java.naming=ALL-UNNAMED,java.desktop
+ 
+ --add-exports=java.desktop/sun.awt=ALL-UNNAMED,java.desktop
+---add-exports=java.desktop/javax.jnlp=ALL-UNNAMED,java.desktop
+ 
+---add-exports=java.base/com.sun.net.ssl.internal.ssl=ALL-UNNAMED,java.desktop
+ --add-exports=java.base/sun.net.www.protocol.jar=ALL-UNNAMED,java.desktop
+---add-exports=java.base/sun.security.action=ALL-UNNAMED,java.desktop
+ --add-exports=java.base/sun.security.provider=ALL-UNNAMED,java.desktop
+ --add-exports=java.base/sun.security.util=ALL-UNNAMED,java.desktop
+ --add-exports=java.base/sun.security.validator=ALL-UNNAMED,java.desktop
+@@ -20,8 +17,6 @@
+ --add-exports=java.base/sun.net.www.protocol.http=ALL-UNNAMED,java.desktop
+ 
+ --add-exports=java.desktop/sun.awt.X11=ALL-UNNAMED,java.desktop
+---add-exports=java.desktop/sun.applet=ALL-UNNAMED,java.desktop
+---add-exports=java.desktop/sun.applet=ALL-UNNAMED,jdk.jsobject
+ 
+ --add-exports=java.naming/com.sun.jndi.toolkit.url=ALL-UNNAMED,java.desktop
+ 
+diff --git a/launchers/rust-launcher/src/jars_helper.rs b/launchers/rust-launcher/src/jars_helper.rs
+index 1c61b8de1..1fb7c3611 100644
+--- a/launchers/rust-launcher/src/jars_helper.rs
++++ b/launchers/rust-launcher/src/jars_helper.rs
+@@ -146,8 +146,7 @@ fn filter_in_key(key: &str, os: &os_access::Os, vec: &mut Vec<std::path::PathBuf
+     filter_in_val(val, vec)
+ }
+ 
+-//TODO what to do with rt.jar, nashorn and javafx.jar with jdk11 and up?
+-fn get_bootcp_members(jre_path: &std::path::PathBuf, os: &os_access::Os) -> Vec<std::path::PathBuf> {
++fn get_bootcp_members(os: &os_access::Os) -> Vec<std::path::PathBuf> {
+     let mut cp_parts = Vec::new();
+     cp_parts.push(resolve_jar(hardcoded_paths::get_javaws(), os));
+     append_if_exists(hardcoded_paths::get_rhino(), os, &mut cp_parts);
+@@ -157,29 +156,13 @@ fn get_bootcp_members(jre_path: &std::path::PathBuf, os: &os_access::Os) -> Vec<
+     append_if_exists(hardcoded_paths::get_commons_compress(), os, &mut cp_parts);
+     append_if_exists(hardcoded_paths::get_commons_io(), os, &mut cp_parts);
+     append_if_exists(hardcoded_paths::get_commons_lang3(), os, &mut cp_parts);
+-    let mut nashorn_jar = jre_path.clone();
+-    nashorn_jar.push("lib");
+-    nashorn_jar.push("ext");
+-    nashorn_jar.push("nashorn.jar");
+-    cp_parts.push(nashorn_jar);
+     filter_out_key("deployment.launcher.rust.bootcp.remove", os, &mut cp_parts, );
+     filter_in_key("deployment.launcher.rust.bootcp.add", os, &mut cp_parts);
+     cp_parts
+ }
+ 
+-//can this be buggy? Shouldnt jfxrt.jar be in boot classapth? Copied from shell launchers...
+-//see eg: http://mail.openjdk.java.net/pipermail/distro-pkg-dev/2018-November/040492.html
+-fn get_cp_members(jre_path: &std::path::PathBuf, os: &os_access::Os) -> Vec<std::path::PathBuf> {
++fn get_cp_members(os: &os_access::Os) -> Vec<std::path::PathBuf> {
+     let mut cp_parts = Vec::new();
+-    let mut rt_jar = jre_path.clone();
+-    rt_jar.push("lib");
+-    rt_jar.push("rt.jar");
+-    cp_parts.push(rt_jar);
+-    let mut jfxrt_jar = jre_path.clone();
+-    jfxrt_jar.push("lib");
+-    jfxrt_jar.push("ext");
+-    jfxrt_jar.push("jfxrt.jar");
+-    cp_parts.push(jfxrt_jar);
+     filter_out_key("deployment.launcher.rust.cp.remove", os, &mut cp_parts, );
+     filter_in_key("deployment.launcher.rust.cp.add", os, &mut cp_parts);
+     cp_parts
+@@ -196,13 +179,13 @@ fn compose_class_path(members: Vec<std::path::PathBuf>, os: &os_access::Os) -> S
+     result
+ }
+ 
+-pub fn get_classpath(jre_path: &std::path::PathBuf, os: &os_access::Os) -> String {
+-    compose_class_path(get_cp_members(jre_path, os), os)
++pub fn get_classpath(os: &os_access::Os) -> String {
++    compose_class_path(get_cp_members(os), os)
+ }
+ 
+-pub fn get_bootclasspath(jre_path: &std::path::PathBuf, os: &os_access::Os) -> String {
++pub fn get_bootclasspath(os: &os_access::Os) -> String {
+     let mut result = String::from("-Xbootclasspath/a:");
+-    result.push_str(&compose_class_path(get_bootcp_members(jre_path, os), os));
++    result.push_str(&compose_class_path(get_bootcp_members(os), os));
+     result
+ }
+ 
+diff --git a/launchers/rust-launcher/src/main.rs b/launchers/rust-launcher/src/main.rs
+index 2c56be318..b21f92b34 100644
+--- a/launchers/rust-launcher/src/main.rs
++++ b/launchers/rust-launcher/src/main.rs
+@@ -136,8 +136,8 @@ fn main() {
+ }
+ 
+ fn compose_arguments(java_dir: &std::path::PathBuf, original_args: &std::vec::Vec<String>, os: &os_access::Os) -> Vec<String> {
+-    let bootcp = jars_helper::get_bootclasspath(&java_dir, os);
+-    let cp = jars_helper::get_classpath(&java_dir, os);
++    let bootcp = jars_helper::get_bootclasspath(os);
++    let cp = jars_helper::get_classpath(os);
+     let current_name = dirs_paths_helper::current_program_name();
+     let current_bin = dirs_paths_helper::current_program();
+     let mut info2 = String::new();
+diff --git a/launchers/shell-launcher/launchers.bat.in b/launchers/shell-launcher/launchers.bat.in
+index 4d828a938..cc9ed5893 100644
+--- a/launchers/shell-launcher/launchers.bat.in
++++ b/launchers/shell-launcher/launchers.bat.in
+@@ -15,7 +15,6 @@ rem maybe set "VAR=value" is working better?
+ rem Warning for if blocks: variables using %my_var% do not work (interpreter), use !my_var! with ENABLEDELAYEDEXPANSION instead
+ rem convention to use for temporary variables use '_' prefix
+ 
+-set "NASHORN=lib/ext/nashorn.jar"
+ set "JRE=@JRE@"
+ set "LAUNCHER_FLAGS=-Xms8m"
+ set "MAIN_CLASS=@MAIN_CLASS@"
+@@ -128,15 +127,11 @@ if "%ITW_LIBS%" == "BUNDLED" (
+ set "LAUNCHER_BOOTCLASSPATH=-Xbootclasspath/a:%JAVAWS_JAR%;%RHINO_JAR%;%TAGSOUP_JAR%;%MSLINKS_JAR%;%IPADDRESS_JAR%;%COMMONS_COMPRESS_JAR%;%COMMONS_IO_JAR%;%COMMONS_LANG3_JAR%"
+ 
+ 
+-rem Fix classpaths for custom JRE:
++rem Select java (custom JRE or default):
+ if not "%CUSTOM_JRE%" == "" (
+   set "JAVA=%CUSTOM_JRE%/bin/java"
+-  set "CP=%CUSTOM_JRE%/lib/rt.jar;%CUSTOM_JRE%/lib/ext/jfxrt.jar"
+-  set "LAUNCHER_BOOTCLASSPATH=%LAUNCHER_BOOTCLASSPATH%;%CUSTOM_JRE%/%NASHORN%"
+ ) else (
+   set "JAVA=%JRE%/bin/java"
+-  set "CP=%JRE%/lib/rt.jar;%JRE%/lib/ext/jfxrt.jar"
+-  set "LAUNCHER_BOOTCLASSPATH=%LAUNCHER_BOOTCLASSPATH%;%JRE%/%NASHORN%"
+ )
+ 
+ 
+@@ -232,7 +227,7 @@ if "%SPLASH%" == "true" (
+   set "SPLASH="
+ )
+ 
+-"%JAVA%" %SPLASH% "%LAUNCHER_BOOTCLASSPATH%" %LAUNCHER_FLAGS% %MODULAR_ARGS% %JAVAWS_J_OPTIONS% %JAVA_ARGS% -classpath "%CP%" "-Dicedtea-web.bin.name=%PROGRAM_NAME%" "-Dicedtea-web.bin.location=%BINARY_LOCATION%" %NATIVE_DEBUG% "%MAIN_CLASS%" %ARGS%
++"%JAVA%" %SPLASH% "%LAUNCHER_BOOTCLASSPATH%" %LAUNCHER_FLAGS% %MODULAR_ARGS% %JAVAWS_J_OPTIONS% %JAVA_ARGS% -classpath "" "-Dicedtea-web.bin.name=%PROGRAM_NAME%" "-Dicedtea-web.bin.location=%BINARY_LOCATION%" %NATIVE_DEBUG% "%MAIN_CLASS%" %ARGS%
+ 
+ SET "errno=%ERRORLEVEL%"
+ 
+diff --git a/launchers/shell-launcher/launchers.sh.in b/launchers/shell-launcher/launchers.sh.in
+index 617bc86ad..18c27be04 100644
+--- a/launchers/shell-launcher/launchers.sh.in
++++ b/launchers/shell-launcher/launchers.sh.in
+@@ -8,7 +8,6 @@ if echo "'$*'" | grep -e "-verbose" ; then
+   set -x
+ fi
+ 
+-NASHORN=lib/ext/nashorn.jar
+ JRE=@JRE@
+ LAUNCHER_FLAGS=-Xms8m
+ MAIN_CLASS=@MAIN_CLASS@
+@@ -131,19 +130,15 @@ fi
+ set -u
+ LAUNCHER_BOOTCLASSPATH="-Xbootclasspath/a:$JAVAWS_JAR:$TAGSOUP_JAR:$RHINO_JAR:$MSLINKS_JAR:$IPADDRESS_JAR:$COMMONS_COMPRESS_JAR:$COMMONS_IO_JAR:$COMMONS_LANG3_JAR"
+ 
+-# Fix classpaths for custom JRE:
++# Select java (custom JRE or default):
+ if [ "x$CUSTOM_JRE" != "x" ] ; then
+   if [ -e "$CUSTOM_JRE" -a -e "$CUSTOM_JRE/bin/java" ] ; then
+     JAVA=$CUSTOM_JRE/bin/java
+-    CP=$CUSTOM_JRE/lib/rt.jar:$CUSTOM_JRE/lib/ext/jfxrt.jar
+-    LAUNCHER_BOOTCLASSPATH=$LAUNCHER_BOOTCLASSPATH:$CUSTOM_JRE/$NASHORN
+   else
+-    echo "Your custom JRE $CUSTOM_JRE read from deployment.properties under key $PROPERTY_NAME as $CUSTOM_JRE is not valid. Using default ($JRE, $CP) in attempt to start. Please fix this."
++    echo "Your custom JRE $CUSTOM_JRE read from deployment.properties under key $PROPERTY_NAME as $CUSTOM_JRE is not valid. Using default ($JRE) in attempt to start. Please fix this."
+   fi
+ else
+   JAVA=$JRE/bin/java
+-  CP=$JRE/lib/rt.jar:$JRE/lib/ext/jfxrt.jar
+-  LAUNCHER_BOOTCLASSPATH="$LAUNCHER_BOOTCLASSPATH:$JRE/$NASHORN"
+ fi;
+ 
+ 
+@@ -236,7 +231,7 @@ done
+ 
+ COMMAND[k]="-classpath"
+ k=$((k+1))
+-COMMAND[k]="${CP}"
++COMMAND[k]=""
+ k=$((k+1))
+ 
+ COMMAND[k]="-Dicedtea-web.bin.name=`basename $SCRIPT_SOURCE`"
+-- 
+2.55.0
+

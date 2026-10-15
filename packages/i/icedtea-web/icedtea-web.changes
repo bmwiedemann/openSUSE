@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Oct  7 12:36:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.0-alpha36
+  * no structured changelog provided
+  * the 2.0.0 code-stream is built using maven now
+- Removed patches:
+  * commons-compress-pack200.patch
+  * java17.patch
+  * java21.patch
+  * javaws-policy.patch
+  * more-java-versions.patch
+  * remove-pack200-support.patch
+    + not necessary or reimplemented differently
+- Modified patches:
+  * icedtea-web-suse-desktop-files.patch
+  * reproducible-timestamps.patch
+    + rediff to the new context
+- Added patches:
+  * 0001-Make-IcedTea-Web-build-and-run-on-Java-8-through-25.patch
+  * 0002-Port-to-jacoco-0.8.14-and-surefire-3.6.0-to-be-able-.patch
+  * 0003-Bring-back-Pack200-support-on-newer-Java-using-commo.patch
+  * 0004-Grey-out-the-advanced-policy-editor-button-when-poli.patch
+  * 0005-Stop-relying-on-hidden-JDK-certificate-classes-where.patch
+  * 0006-Address-SonarCloud-findings-and-fix-JaCoCo-report-in.patch
+  * 0007-Stop-opening-JDK-packages-that-no-longer-exist-or-ar.patch
+  * 0008-Fix-the-shell-launchers-silently-failing-when-java-c.patch
+  * 0009-Ignore-an-invalid-JNLP-file-version-instead-of-refus.patch
+  * 0010-Drop-modules-missing-from-this-JVM-from-java-vm-args.patch
+  * 0011-Make-the-exception-dialog-test-independent-of-the-cl.patch
+    + commits of our pull request porting the IcedTea-Web to run
+      with Javas from 8 to 25
+
+-------------------------------------------------------------------
 Mon Jul 20 11:09:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

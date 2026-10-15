@@ -1,15 +1,19 @@
---- icedtea-web-1.8.8/itweb-settings.desktop.in	2025-06-19 09:02:33.535860174 +0200
-+++ icedtea-web-1.8.8/itweb-settings.desktop.in	2025-06-19 09:03:04.077944330 +0200
-@@ -12,5 +12,5 @@
+diff --git a/launchers/xdesktop.in/itweb-settings.desktop.in b/launchers/xdesktop.in/itweb-settings.desktop.in
+index 31d519181..feebcfee1 100644
+--- a/launchers/xdesktop.in/itweb-settings.desktop.in
++++ b/launchers/xdesktop.in/itweb-settings.desktop.in
+@@ -12,5 +12,5 @@ Exec=PATH_TO_ITWEB_SETTINGS
  Icon=javaws
  Terminal=false
  Type=Application
 -Categories=Settings;
 +Categories=Settings;DesktopSettings;X-GNOME-DesktopSettings;X-GNOME-Sundry;
  Keywords=IcedTea;IcedTea-Web;java;javaws;web;start;webstart;jnlp;
---- icedtea-web-1.8.8/policyeditor.desktop.in	2025-06-19 09:02:33.558286892 +0200
-+++ icedtea-web-1.8.8/policyeditor.desktop.in	2025-06-19 09:03:04.078136016 +0200
-@@ -6,5 +6,5 @@
+diff --git a/launchers/xdesktop.in/policyeditor.desktop.in b/launchers/xdesktop.in/policyeditor.desktop.in
+index 0155da6f6..38e554f0b 100644
+--- a/launchers/xdesktop.in/policyeditor.desktop.in
++++ b/launchers/xdesktop.in/policyeditor.desktop.in
+@@ -6,5 +6,5 @@ Exec=PATH_TO_POLICYEDITOR
  Icon=javaws
  Terminal=false
  Type=Application

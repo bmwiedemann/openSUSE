@@ -1,0 +1,548 @@
+From 09fd5844eb46f75e278fa0e616c5f05f6f9f7b94 Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Tue, 6 Oct 2026 13:45:40 +0200
+Subject: [PATCH 5/8] Stop relying on hidden JDK certificate classes where the
+ public Java API does the job
+
+---
+ .../parts/dialogs/security/CertsInfoPane.java | 42 +++--------
+ .../jnlp/element/security/SecurityDesc.java   |  6 +-
+ .../proxy/pac/RhinoBasedPacEvaluator.java     |  4 +-
+ .../runtime/classloader/JNLPClassLoader.java  |  4 +-
+ .../jnlp/security/HttpsCertVerifier.java      | 29 +++++---
+ .../jnlp/tools/JarCertVerifier.java           | 47 ++++--------
+ .../dialogs/security/CertsInfoPaneTest.java   | 17 +++++
+ .../security/TemporaryPermissionsTest.java    |  6 +-
+ .../jnlp/security/HttpsCertVerifierTest.java  | 23 ++++++
+ .../jnlp/tools/JarCertVerifierTest.java       | 12 +++
+ pom.xml                                       |  2 +-
+ test-extensions/pom.xml                       |  6 ++
+ .../testing/tools/CodeSignerCreator.java      | 73 ++++++-------------
+ 13 files changed, 141 insertions(+), 130 deletions(-)
+ create mode 100644 core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/CertsInfoPaneTest.java
+ create mode 100644 core/src/test/java/net/sourceforge/jnlp/security/HttpsCertVerifierTest.java
+
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/CertsInfoPane.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/CertsInfoPane.java
+index 6d1f5b328..db7e44ba4 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/CertsInfoPane.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/CertsInfoPane.java
+@@ -40,7 +40,6 @@ import net.adoptopenjdk.icedteaweb.ui.swing.dialogresults.DialogResult;
+ import net.adoptopenjdk.icedteaweb.ui.swing.dialogresults.Yes;
+ import net.sourceforge.jnlp.security.CertVerifier;
+ import net.sourceforge.jnlp.security.SecurityUtil;
+-import sun.security.x509.CertificateValidity;
+ 
+ import javax.swing.BorderFactory;
+ import javax.swing.JButton;
+@@ -66,7 +65,6 @@ import java.awt.datatransfer.Clipboard;
+ import java.awt.datatransfer.StringSelection;
+ import java.awt.event.ActionEvent;
+ import java.awt.event.ActionListener;
+-import java.lang.reflect.Method;
+ import java.security.MessageDigest;
+ import java.security.cert.CertPath;
+ import java.security.cert.Certificate;
+@@ -170,11 +168,11 @@ public class CertsInfoPane extends SecurityDialogPanel {
+         String serialNumber = c.getSerialNumber().toString();
+         String signatureAlg = c.getSigAlgName();
+         String issuer = c.getIssuerX500Principal().toString();
+-        String validity = new CertificateValidity(c.getNotBefore(),
+-                            c.getNotAfter()).toString();
++        // same text as sun.security.x509.CertificateValidity
++        String validity = "Validity: [From: " + c.getNotBefore() + ",\n               To: " + c.getNotAfter() + "]";
+         String subject = c.getSubjectX500Principal().toString();
+ 
+-        String signature = jdkIndependentHexEncoder(c.getSignature());
++        String signature = hexDump(c.getSignature());
+ 
+         String md5Hash = "";
+         String sha1Hash = "";
+@@ -203,32 +201,16 @@ public class CertsInfoPane extends SecurityDialogPanel {
+         return cert;
+     }
+ 
+-     private String jdkIndependentHexEncoder(byte[] signature) {
+-        try {
+-            return jdkIndependentHexEncoderImpl(signature);
+-        } catch (Exception ex) {
+-            String s = "Failed to encode signature: " + ex.toString();
+-            LOG.error("Failed to encode signature", ex);
+-            return s;
+-        }
+-    }
+-
+-    private String jdkIndependentHexEncoderImpl(byte[] signature) throws Exception {
+-        try {
+-            LOG.debug("trying jdk9's HexDumpEncoder");
+-            Class clazz = Class.forName("sun.security.util.HexDumpEncoder");
+-            Object encoder = clazz.newInstance();
+-            Method m = clazz.getDeclaredMethod("encodeBuffer", byte[].class);
+-            //convert our signature into a nice human-readable form.
+-            return (String) m.invoke(encoder, signature);
+-        } catch (Exception ex) {
+-                LOG.debug("trying jdk8's HexDumpEncoder");
+-                Class clazz = Class.forName("sun.misc.HexDumpEncoder");
+-                Object encoder = clazz.newInstance();
+-                Method m = clazz.getMethod("encode", byte[].class);
+-                //convert our signature into a nice human-readable form.
+-                return (String) m.invoke(encoder, signature);
++    /** 16 bytes per line, offset prefixed; like the JDK-internal HexDumpEncoder minus the ASCII column */
++    static String hexDump(final byte[] bytes) {
++        final StringBuilder sb = new StringBuilder();
++        for (int i = 0; i < bytes.length; i++) {
++            if (i % 16 == 0) {
++                sb.append(i == 0 ? "" : "\n").append(String.format("%04X:", i));
++            }
++            sb.append(String.format(" %02X", bytes[i] & 0xFF));
+         }
++        return sb.toString();
+     }
+ 
+     /**
+diff --git a/core/src/main/java/net/adoptopenjdk/icedteaweb/jnlp/element/security/SecurityDesc.java b/core/src/main/java/net/adoptopenjdk/icedteaweb/jnlp/element/security/SecurityDesc.java
+index 3cf7bef31..d8aed6f16 100644
+--- a/core/src/main/java/net/adoptopenjdk/icedteaweb/jnlp/element/security/SecurityDesc.java
++++ b/core/src/main/java/net/adoptopenjdk/icedteaweb/jnlp/element/security/SecurityDesc.java
+@@ -91,8 +91,6 @@ import static net.adoptopenjdk.icedteaweb.JavaSystemPropertiesConstants.VM_VENDO
+ import static net.adoptopenjdk.icedteaweb.JavaSystemPropertiesConstants.VM_VERSION;
+ import static net.adoptopenjdk.icedteaweb.JavaSystemPropertiesConstants.WEBSTART_JAUTHENTICATOR;
+ import static net.adoptopenjdk.icedteaweb.JavaSystemPropertiesConstants.WEBSTART_VERSION;
+-import static sun.security.util.SecurityConstants.PROPERTY_READ_ACTION;
+-import static sun.security.util.SecurityConstants.PROPERTY_RW_ACTION;
+ 
+ /**
+  * The security element.
+@@ -101,6 +99,10 @@ import static sun.security.util.SecurityConstants.PROPERTY_RW_ACTION;
+  * @version $Revision: 1.7 $
+  */
+ public class SecurityDesc {
++
++    // values of sun.security.util.SecurityConstants
++    private static final String PROPERTY_READ_ACTION = "read";
++    private static final String PROPERTY_RW_ACTION = "read,write";
+     private final static Logger LOG = LoggerFactory.getLogger(SecurityDesc.class);
+ 
+     public static final String SECURITY_ELEMENT = "security";
+diff --git a/core/src/main/java/net/sourceforge/jnlp/proxy/pac/RhinoBasedPacEvaluator.java b/core/src/main/java/net/sourceforge/jnlp/proxy/pac/RhinoBasedPacEvaluator.java
+index 11cedc335..1b2d1a6b1 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/proxy/pac/RhinoBasedPacEvaluator.java
++++ b/core/src/main/java/net/sourceforge/jnlp/proxy/pac/RhinoBasedPacEvaluator.java
+@@ -56,7 +56,6 @@ import java.security.ProtectionDomain;
+ import java.util.PropertyPermission;
+ 
+ import static net.adoptopenjdk.icedteaweb.JavaSystemPropertiesConstants.VM_NAME;
+-import static sun.security.util.SecurityConstants.PROPERTY_READ_ACTION;
+ 
+ /**
+  * Represents a Proxy Auto Config file. This object can be used to evaluate the
+@@ -66,6 +65,9 @@ import static sun.security.util.SecurityConstants.PROPERTY_READ_ACTION;
+  */
+ public class RhinoBasedPacEvaluator implements PacEvaluator {
+ 
++    // values of sun.security.util.SecurityConstants
++    private static final String PROPERTY_READ_ACTION = "read";
++
+     private final static Logger LOG = LoggerFactory.getLogger(RhinoBasedPacEvaluator.class);
+ 
+     private final String pacHelperFunctionContents;
+diff --git a/core/src/main/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoader.java b/core/src/main/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoader.java
+index bb12b020c..de2a7e68e 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoader.java
++++ b/core/src/main/java/net/sourceforge/jnlp/runtime/classloader/JNLPClassLoader.java
+@@ -103,7 +103,6 @@ import static net.sourceforge.jnlp.LaunchException.FATAL;
+ import static net.sourceforge.jnlp.cache.NativeLibraryStorage.NATIVE_LIB_EXT_DYLIB;
+ import static net.sourceforge.jnlp.cache.NativeLibraryStorage.NATIVE_LIB_EXT_JNILIB;
+ import static net.sourceforge.jnlp.util.UrlUtils.FILE_PROTOCOL;
+-import static sun.security.util.SecurityConstants.FILE_READ_ACTION;
+ 
+ /**
+  * Classloader that takes it's resources from a JNLP file. If the JNLP file
+@@ -117,6 +116,9 @@ import static sun.security.util.SecurityConstants.FILE_READ_ACTION;
+  */
+ public class JNLPClassLoader extends URLClassLoader {
+ 
++    // values of sun.security.util.SecurityConstants
++    private static final String FILE_READ_ACTION = "read";
++
+     private static final Logger LOG = LoggerFactory.getLogger(JNLPClassLoader.class);
+ 
+     // todo: initializePermissions should get the permissions from
+diff --git a/core/src/main/java/net/sourceforge/jnlp/security/HttpsCertVerifier.java b/core/src/main/java/net/sourceforge/jnlp/security/HttpsCertVerifier.java
+index 59f6c1b17..b5b9f4ff6 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/security/HttpsCertVerifier.java
++++ b/core/src/main/java/net/sourceforge/jnlp/security/HttpsCertVerifier.java
+@@ -36,10 +36,10 @@ package net.sourceforge.jnlp.security;
+ 
+ import net.adoptopenjdk.icedteaweb.logging.Logger;
+ import net.adoptopenjdk.icedteaweb.logging.LoggerFactory;
+-import sun.security.util.DerValue;
+-import sun.security.util.HostnameChecker;
+-import sun.security.x509.X500Name;
+ 
++import javax.naming.InvalidNameException;
++import javax.naming.ldap.LdapName;
++import javax.naming.ldap.Rdn;
+ import java.security.KeyStore;
+ import java.security.cert.CertPath;
+ import java.security.cert.Certificate;
+@@ -137,6 +137,20 @@ public class HttpsCertVerifier implements CertVerifier {
+         return details;
+     }
+ 
++    /**
++     * @return the last (most specific) CN of the subject, or null
++     */
++    static String getMostSpecificCommonName(final X509Certificate c) throws InvalidNameException {
++        String commonName = null;
++        // getRdns() is ordered least to most specific
++        for (final Rdn rdn : new LdapName(c.getSubjectX500Principal().getName()).getRdns()) {
++            if ("CN".equalsIgnoreCase(rdn.getType()) && rdn.getValue() instanceof String) {
++                commonName = (String) rdn.getValue();
++            }
++        }
++        return commonName;
++    }
++
+     private String getNamesForCert(final X509Certificate c) {
+ 
+         final List<String> names = new ArrayList<>();
+@@ -148,12 +162,9 @@ public class HttpsCertVerifier implements CertVerifier {
+         final int ALTNAME_IP = 7;
+ 
+         try {
+-            final X500Name subjectName = HostnameChecker.getSubjectX500Name(c);
+-            if (subjectName != null) {
+-                final DerValue derValue = subjectName.findMostSpecificAttribute(X500Name.commonName_oid);
+-                if (derValue != null) {
+-                    names.add(derValue.getAsString());
+-                }
++            final String commonName = getMostSpecificCommonName(c);
++            if (commonName != null) {
++                names.add(commonName);
+             }
+ 
+             final Collection<List<?>> subjAltNames = c.getSubjectAlternativeNames();
+diff --git a/core/src/main/java/net/sourceforge/jnlp/tools/JarCertVerifier.java b/core/src/main/java/net/sourceforge/jnlp/tools/JarCertVerifier.java
+index 2ef1eae2e..f004cc576 100644
+--- a/core/src/main/java/net/sourceforge/jnlp/tools/JarCertVerifier.java
++++ b/core/src/main/java/net/sourceforge/jnlp/tools/JarCertVerifier.java
+@@ -37,14 +37,9 @@ import net.sourceforge.jnlp.security.CertVerifier;
+ import net.sourceforge.jnlp.security.CertificateUtils;
+ import net.sourceforge.jnlp.security.KeyStores;
+ import net.sourceforge.jnlp.util.JarFile;
+-import sun.security.util.DerInputStream;
+-import sun.security.util.DerValue;
+-import sun.security.x509.NetscapeCertTypeExtension;
+ 
+ import java.io.File;
+-import java.io.IOException;
+ import java.io.InputStream;
+-import java.lang.reflect.Method;
+ import java.security.CodeSigner;
+ import java.security.InvalidAlgorithmParameterException;
+ import java.security.KeyStore;
+@@ -74,7 +69,6 @@ import java.util.jar.JarEntry;
+ import java.util.regex.Pattern;
+ import java.util.zip.ZipException;
+ 
+-import static java.lang.Boolean.TRUE;
+ import static java.time.temporal.ChronoUnit.MONTHS;
+ 
+ /**
+@@ -648,35 +642,24 @@ public class JarCertVerifier implements CertVerifier {
+             // shouldn't happen
+         }
+ 
+-        try {
+-            // OID_NETSCAPE_CERT_TYPE
+-            final byte[] netscapeEx = userCert.getExtensionValue("2.16.840.1.113730.1.1");
+-            if (netscapeEx != null) {
+-                final DerInputStream in = new DerInputStream(netscapeEx);
+-                final byte[] raw = in.getOctetString();
+-                final byte[] encoded = new DerValue(raw).getUnalignedBitString().toByteArray();
+-
+-                final NetscapeCertTypeExtension extn = new NetscapeCertTypeExtension(encoded);
+-
+-                if (!hasObjectSigningExtension(extn)) {
+-                    certs.get(certPath).setBadNetscapeCertType();
+-                }
+-            }
+-        } catch (IOException e) {
+-            //
++        // OID_NETSCAPE_CERT_TYPE
++        final byte[] netscapeEx = userCert.getExtensionValue("2.16.840.1.113730.1.1");
++        if (netscapeEx != null && !hasObjectSigningBit(netscapeEx)) {
++            certs.get(certPath).setBadNetscapeCertType();
+         }
+     }
+ 
+-    private static boolean hasObjectSigningExtension(NetscapeCertTypeExtension extn) throws IOException {
+-        // method return type of "NetscapeCertTypeExtension.get()" has changed from Boolean to boolean with Java 21
+-        try {
+-            final Method getMethod = NetscapeCertTypeExtension.class.getDeclaredMethod("get", String.class);
+-            final Object result = getMethod.invoke(extn, NetscapeCertTypeExtension.OBJECT_SIGNING);
+-            return result == TRUE;
+-        } catch (Exception e) {
+-            LOG.error("Failed to get object_signing from extension", e);
+-            return false;
+-        }
++    /**
++     * @param netscapeEx DER value of the Netscape cert type extension: OCTET STRING { BIT STRING }
++     * @return whether bit 3 (object signing) is set; false if malformed
++     */
++    static boolean hasObjectSigningBit(final byte[] netscapeEx) {
++        // lengths are always short form here: a few bits at most
++        return netscapeEx.length >= 6
++                && netscapeEx[0] == 0x04  // OCTET STRING
++                && netscapeEx[2] == 0x03  // BIT STRING
++                && netscapeEx[3] >= 2     // unused-bits byte + at least one content byte
++                && (netscapeEx[5] & 0x10) != 0;
+     }
+ 
+     /**
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/CertsInfoPaneTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/CertsInfoPaneTest.java
+new file mode 100644
+index 000000000..57b364444
+--- /dev/null
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/CertsInfoPaneTest.java
+@@ -0,0 +1,17 @@
++package net.adoptopenjdk.icedteaweb.client.parts.dialogs.security;
++
++import org.junit.Test;
++
++import static org.junit.Assert.assertEquals;
++
++public class CertsInfoPaneTest {
++
++    @Test
++    public void hexDump() {
++        assertEquals("", CertsInfoPane.hexDump(new byte[0]));
++        assertEquals("0000: 0A FF", CertsInfoPane.hexDump(new byte[]{0x0A, (byte) 0xFF}));
++        final byte[] seventeen = new byte[17];
++        seventeen[16] = 0x01;
++        assertEquals("0000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n0010: 01", CertsInfoPane.hexDump(seventeen));
++    }
++}
+diff --git a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/TemporaryPermissionsTest.java b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/TemporaryPermissionsTest.java
+index 7ba11736a..fe65b116c 100644
+--- a/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/TemporaryPermissionsTest.java
++++ b/core/src/test/java/net/adoptopenjdk/icedteaweb/client/parts/dialogs/security/TemporaryPermissionsTest.java
+@@ -47,11 +47,13 @@ import java.util.HashSet;
+ import java.util.Set;
+ 
+ import static org.junit.Assert.assertEquals;
+-import static sun.security.util.SecurityConstants.FILE_READ_ACTION;
+-import static sun.security.util.SecurityConstants.FILE_WRITE_ACTION;
+ 
+ public class TemporaryPermissionsTest {
+ 
++    // values of sun.security.util.SecurityConstants
++    private static final String FILE_READ_ACTION = "read";
++    private static final String FILE_WRITE_ACTION = "write";
++
+     @Test
+     public void testGetPermission() throws Exception {
+         final Permission expected = new FilePermission(JavaSystemProperties.getJavaTempDir(), FILE_READ_ACTION);
+diff --git a/core/src/test/java/net/sourceforge/jnlp/security/HttpsCertVerifierTest.java b/core/src/test/java/net/sourceforge/jnlp/security/HttpsCertVerifierTest.java
+new file mode 100644
+index 000000000..e2b2f03c5
+--- /dev/null
++++ b/core/src/test/java/net/sourceforge/jnlp/security/HttpsCertVerifierTest.java
+@@ -0,0 +1,23 @@
++package net.sourceforge.jnlp.security;
++
++import net.adoptopenjdk.icedteaweb.testing.tools.CodeSignerCreator;
++import org.junit.Test;
++
++import java.util.Date;
++
++import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertNull;
++
++public class HttpsCertVerifierTest {
++
++    @Test
++    public void mostSpecificCommonNameIsLastInDerOrder() throws Exception {
++        // BC keeps the written order as DER order; the last CN is the most specific
++        assertEquals("inner", HttpsCertVerifier.getMostSpecificCommonName(
++                CodeSignerCreator.createCert("C=CZ, O=Org, CN=outer, CN=inner", new Date(), 1)));
++        assertEquals("example.com", HttpsCertVerifier.getMostSpecificCommonName(
++                CodeSignerCreator.createCert("CN=example.com, O=Org", new Date(), 1)));
++        assertNull(HttpsCertVerifier.getMostSpecificCommonName(
++                CodeSignerCreator.createCert("O=Org", new Date(), 1)));
++    }
++}
+diff --git a/core/src/test/java/net/sourceforge/jnlp/tools/JarCertVerifierTest.java b/core/src/test/java/net/sourceforge/jnlp/tools/JarCertVerifierTest.java
+index 0ab30325a..72eb6a1d5 100644
+--- a/core/src/test/java/net/sourceforge/jnlp/tools/JarCertVerifierTest.java
++++ b/core/src/test/java/net/sourceforge/jnlp/tools/JarCertVerifierTest.java
+@@ -42,6 +42,8 @@ import java.util.jar.JarEntry;
+ import net.adoptopenjdk.icedteaweb.jnlp.element.resource.JARDesc;
+ import net.adoptopenjdk.icedteaweb.testing.tools.CodeSignerCreator;
+ import net.sourceforge.jnlp.tools.JarCertVerifier.VerifyResult;
++import org.bouncycastle.asn1.DEROctetString;
++import org.bouncycastle.asn1.misc.NetscapeCertType;
+ import org.junit.Assert;
+ import org.junit.BeforeClass;
+ import org.junit.Test;
+@@ -526,4 +528,14 @@ public class JarCertVerifierTest {
+                 jcv.getCertsList().contains(alphaSigner.getSignerCertPath()));
+     }
+ 
++    @Test
++    public void testHasObjectSigningBit() throws Exception {
++        // extension values as found in certificates: OCTET STRING { BIT STRING }, encoded by BC
++        final byte[] objectSigning = new DEROctetString(new NetscapeCertType(NetscapeCertType.objectSigning | NetscapeCertType.sslClient)).getEncoded();
++        final byte[] sslServerOnly = new DEROctetString(new NetscapeCertType(NetscapeCertType.sslServer)).getEncoded();
++        assertTrue(JarCertVerifier.hasObjectSigningBit(objectSigning));
++        assertFalse(JarCertVerifier.hasObjectSigningBit(sslServerOnly));
++        assertFalse(JarCertVerifier.hasObjectSigningBit(new byte[]{0x04, 0x02, 0x03, 0x01}));
++        assertFalse(JarCertVerifier.hasObjectSigningBit(new byte[0]));
++    }
+ }
+diff --git a/pom.xml b/pom.xml
+index 3fc450153..25c1dbf01 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -47,7 +47,7 @@
+             </activation>
+             <properties>
+                 <!-- runtime exports as in the launchers, plus internals used by tests only -->
+-                <itw.test.moduleArgs>@${maven.multiModuleProjectDirectory}/launchers/itw-modularjdk.args --add-exports=java.base/sun.security.tools.keytool=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</itw.test.moduleArgs>
++                <itw.test.moduleArgs>@${maven.multiModuleProjectDirectory}/launchers/itw-modularjdk.args --add-opens=java.base/java.util=ALL-UNNAMED</itw.test.moduleArgs>
+             </properties>
+         </profile>
+         <profile>
+diff --git a/test-extensions/pom.xml b/test-extensions/pom.xml
+index c608dcdb5..8c63bf16f 100644
+--- a/test-extensions/pom.xml
++++ b/test-extensions/pom.xml
+@@ -16,6 +16,12 @@
+     <description>This module contains common classes that are used in unit and integration tests.</description>
+ 
+     <dependencies>
++        <!-- test certificates without JDK-internal CertAndKeyGen -->
++        <dependency>
++            <groupId>org.bouncycastle</groupId>
++            <artifactId>bcpkix-jdk18on</artifactId>
++            <version>1.86</version>
++        </dependency>
+         <dependency>
+             <groupId>${project.groupId}</groupId>
+             <artifactId>icedtea-web-common</artifactId>
+diff --git a/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java b/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java
+index 85e8f1ee3..d4afead0e 100644
+--- a/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java
++++ b/test-extensions/src/main/java/net/adoptopenjdk/icedteaweb/testing/tools/CodeSignerCreator.java
+@@ -25,12 +25,16 @@
+ 
+ package net.adoptopenjdk.icedteaweb.testing.tools;
+ 
+-import sun.security.x509.X500Name;
++import org.bouncycastle.asn1.x500.X500Name;
++import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
++import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder;
++import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
+ 
+-import java.lang.reflect.Constructor;
+-import java.lang.reflect.InvocationTargetException;
+-import java.lang.reflect.Method;
++import java.math.BigInteger;
+ import java.security.CodeSigner;
++import java.security.KeyPair;
++import java.security.KeyPairGenerator;
++import java.security.SecureRandom;
+ import java.security.Timestamp;
+ import java.security.cert.CertPath;
+ import java.security.cert.CertificateFactory;
+@@ -42,7 +46,7 @@ import java.util.Date;
+ public class CodeSignerCreator {
+ 
+     /**
+-     * Create an X509 Certificate signed using SHA1withRSA with a 2048 bit key.
++     * Create a self-signed X509 Certificate signed using SHA256withRSA with a 2048 bit key.
+      *
+      * @param dname     Domain Name to represent the certificate
+      * @param notBefore The date by which the certificate starts being valid. Cannot be null.
+@@ -50,12 +54,8 @@ public class CodeSignerCreator {
+      * @return An X509 certificate setup with properties using the specified parameters.
+      * @throws Exception
+      */
+-    private static X509Certificate createCert(final String dname, final Date notBefore, final int validity)
++    public static X509Certificate createCert(final String dname, final Date notBefore, final int validity)
+             throws Exception {
+-        final int keysize = 2048;
+-        final String keyAlgName = "RSA";
+-        final String sigAlgName = "SHA1withRSA";
+-
+         if (dname == null) {
+             throw new Exception("Required DN is null. Please specify cert Domain Name via dname");
+         }
+@@ -66,9 +66,17 @@ public class CodeSignerCreator {
+             throw new Exception("Required validity is negative. Please specify the number of days for which the cert is valid after the start date.");
+         }
+ 
+-        // CertAndKeyGen self-signs with given validity and random serial; no need to patch X509CertInfo (API changed in 21)
+-        final KeyPair keyPair = new KeyPair(keyAlgName, sigAlgName, keysize);
+-        return keyPair.getSelfCertificate(new X500Name(dname), notBefore, validity);
++        final KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
++        generator.initialize(2048);
++        final KeyPair keyPair = generator.generateKeyPair();
++
++        final X500Name name = new X500Name(dname);
++        final Date notAfter = new Date(notBefore.getTime() + validity * 24L * 60L * 60L * 1000L);
++        final BigInteger serial = BigInteger.valueOf(new SecureRandom().nextInt() & 0x7fffffff);
++
++        return new JcaX509CertificateConverter().getCertificate(
++                new JcaX509v3CertificateBuilder(name, serial, notBefore, notAfter, name, keyPair.getPublic())
++                        .build(new JcaContentSignerBuilder("SHA256withRSA").build(keyPair.getPrivate())));
+     }
+ 
+     /**
+@@ -91,43 +99,4 @@ public class CodeSignerCreator {
+         final Timestamp certTimestamp = new Timestamp(jarEntryCert.getNotBefore(), certPath);
+         return new CodeSigner(certPath, certTimestamp);
+     }
+-
+-    /**
+-     * A wrapper over JDK-internal CertAndKeyGen Class.
+-     * <p>
+-     * Reflection: not exported, keeps compile independent of JDK version.
+-     */
+-    public static class KeyPair {
+-
+-        private /* CertAndKeyGen */ Object keyPair;
+-
+-        public KeyPair(final String keyAlgName, final String sigAlgName, final int keySize) {
+-            try {
+-                // keyPair = new CertAndKeyGen(keyAlgName, sigAlgName);
+-                final Class<?> certAndKeyGenClass = Class.forName("sun.security.tools.keytool.CertAndKeyGen");
+-                final Constructor<?> constructor = certAndKeyGenClass.getDeclaredConstructor(String.class, String.class);
+-                keyPair = constructor.newInstance(keyAlgName, sigAlgName);
+-
+-                // keyPair.generate(keySize);
+-                final Method generate = certAndKeyGenClass.getMethod("generate", int.class);
+-                generate.invoke(keyPair, keySize);
+-            } catch (final ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException |
+-                    IllegalAccessException | IllegalArgumentException | InvocationTargetException certAndKeyGenClassError) {
+-                throw new AssertionError("Unable to use CertAndKeyGen class", certAndKeyGenClassError);
+-            }
+-        }
+-
+-        public X509Certificate getSelfCertificate(final X500Name name, final Date notBefore, final long validityInDays) {
+-            try {
+-                // return keyPair.getSelfCertificate(name, notBefore, validityInDays * 24L * 60L * 60L);
+-                final Class<?> klass = keyPair.getClass();
+-                final Method method = klass.getMethod("getSelfCertificate", X500Name.class, Date.class, long.class);
+-                return (X509Certificate) method.invoke(keyPair, name, notBefore, validityInDays * 24L * 60L * 60L);
+-            } catch (final InvocationTargetException ite) {
+-                throw new RuntimeException(ite.getCause());
+-            } catch (final NoSuchMethodException | IllegalAccessException | IllegalArgumentException error) {
+-                throw new AssertionError(error);
+-            }
+-        }
+-    }
+ }
+-- 
+2.55.0
+
