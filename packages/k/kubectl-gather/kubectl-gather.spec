@@ -17,14 +17,14 @@
 
 
 Name:           kubectl-gather
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Kubectl plugin to gather data about your cluster
 License:        Apache-2.0
 URL:            https://github.com/nirs/kubectl-gather
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  go1.27 >= 1.27.2
 
 %description
 This is a kubectl plugin for gathering data about your cluster that may help to

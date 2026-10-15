@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:55:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.0:
+  * build: drop version from release asset name
+  * docs: document --insecure-secrets flag
+  * test: verify InsecureSecrets skips sanitization
+  * e2e: test --insecure-secrets disables sanitization
+  * gather: add --insecure-secrets flag
+  * go: Update go to 1.26.0 and toolchain to 1.27.2
+  * e2e: make commands.Run() more useful
+  * Use --output-dir in gather script
+  * cmd: make output directory flags mutually exclusive
+  * cmd: replace directory flag with output-dir
+  * README:Harden Linux/macOS install snippet in README
+  * go: Update toolchain to go1.26.5
+  * lint: Add golines formatter and make fmt target
+  * Add spell checking using codespell
+
+-------------------------------------------------------------------
 Thu Jul 30 05:37:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.14.0:
