@@ -31,4 +31,12 @@
     <comment>Update to 0.4.33 (2/3 langgraph train: after SDK, before langgraph). New deploy flags, credential fix, switch to libalternatives.</comment>
     <requestid>1383218</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b199b29c831d17b32f6e3f85bfc85ee8</srcmd5>
+    <version>0.4.35</version>
+    <time>1792059936</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.4.35: deploy listeners --json, private registry auth, keep failed logs.</comment>
+    <requestid>1384894</requestid>
+  </revision>
 </revisionlist>

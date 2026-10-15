@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:56:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.35:
+  * Add --json to deploy listeners list (0.4.34)
+  * Add --image-pull-secret for private registries
+  * Log in with the registry username the control plane returns
+  * Preserve failed deployment build logs
+
+-------------------------------------------------------------------
 Thu Oct  8 06:27:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.33:
