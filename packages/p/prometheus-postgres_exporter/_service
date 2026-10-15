@@ -1,21 +1,21 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/prometheus-community/postgres_exporter.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">0.10.1</param>
-    <param name="revision">v0.10.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">postgres_exporter-*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="set_version" mode="disabled">
-    <param name="basename">postgres_exporter</param>
+  <service mode="manual" name="go_modules">
+    <param name="archive">postgres_exporter-*.tar.gz</param>
+    <param name="compression">gz</param>
   </service>
-  <service name="go_modules" mode="manual">
-    <param name="archive">postgres_exporter-0.10.1.tar.gz</param>
-    <param name="replace">github.com/prometheus/client_golang=github.com/prometheus/client_golang@v1.11.1</param>
-    <param name="replace">github.com/prometheus/exporter-toolkit=github.com/prometheus/exporter-toolkit@v0.7.3</param>
+  <service name="set_version" mode="manual">
+    <param name="basename">postgres_exporter</param>
   </service>
 </services>

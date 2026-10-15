@@ -39,7 +39,7 @@
 
 %define project github.com/prometheus-community/postgres_exporter
 Name:           prometheus-postgres_exporter
-Version:        0.10.1
+Version:        0.20.1
 Release:        0
 Obsoletes:      golang-github-wrouesnel-postgres_exporter < %version-%release
 Provides:       golang-github-wrouesnel-postgres_exporter = %version-%release
