@@ -234,4 +234,12 @@ No dependency floor changes.
     <comment>Update python-langchain-aws to 1.8.1 (raises langchain-core floor to &gt;= 1.6.7). Requires SR 1383213 (python-langchain-core 1.6.7) first — submit in order.</comment>
     <requestid>1383222</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7231f935234942fac149d3b8e1ab4136</srcmd5>
+    <version>1.8.2</version>
+    <time>1792059716</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.8.2: follow the new langchain-core model-profile fields, fix tool-input parsing and Responses gating; require langchain-core &gt;= 1.6.10.</comment>
+    <requestid>1384901</requestid>
+  </revision>
 </revisionlist>
