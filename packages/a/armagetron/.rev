@@ -296,4 +296,14 @@
     <comment></comment>
     <requestid>1349879</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ea619c9289e3ab350c8c74badf6662ad</srcmd5>
+    <version>0.2.9.3.1</version>
+    <time>1792073577</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.9.3.1
+  * Security fix, users were able to delete objects owned by other
+    clients. (forwarded request 1384016 from Kieltux)</comment>
+    <requestid>1384980</requestid>
+  </revision>
 </revisionlist>

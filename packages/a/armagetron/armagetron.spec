@@ -19,7 +19,7 @@
 %define series 0.2.9
 %define src_name %{name}ad
 Name:           armagetron
-Version:        %{series}.3.0
+Version:        %{series}.3.1
 Release:        0
 Summary:        OpenGL Game Similar to the Film Tron
 License:        GPL-2.0-or-later

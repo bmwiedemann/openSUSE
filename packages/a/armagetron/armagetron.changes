@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 10 15:33:37 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.2.9.3.1
+  * Security fix, users were able to delete objects owned by other
+    clients. 
+
+-------------------------------------------------------------------
 Sat Apr 18 15:26:46 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.2.9.3.0 
