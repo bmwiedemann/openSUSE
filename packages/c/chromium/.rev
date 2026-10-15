@@ -6758,4 +6758,12 @@ v2: with CVEs in .changes</comment>
     <comment>Chromium 155 promoted to stable - 155.0.8059.39 (boo#1284354)</comment>
     <requestid>1382961</requestid>
   </revision>
+  <revision rev="554" vrev="1">
+    <srcmd5>9b768ada46a3892726856a1ab40724f1</srcmd5>
+    <version>155.0.8059.79</version>
+    <time>1792059542</time>
+    <user>anag_factory</user>
+    <comment>Chromium 155.0.8059.79 (boo#1285401)</comment>
+    <requestid>1384725</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Oct 14 05:34:32 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 155.0.8059.79 (boo#1285401):
+  * CVE-2026-110152: Buffer overflow in ANGLE
+  * CVE-2026-110149: Use after free in Browser
+  * CVE-2026-110136: Use after free in PDF
+  * CVE-2026-110161: Use after free in Network
+  * CVE-2026-110165: Use after free in Core
+  * CVE-2026-110148: Use after free in SVG
+  * CVE-2026-110151: Use after free in Media
+  * CVE-2026-110162: Use after free in Desktop
+  * CVE-2026-110170: Use after free in Bindings
+  * CVE-2026-110160: Missing authorization in ReadingMode
+  * CVE-2026-110143: Use of uninitialized variable in ThirdParty lmza_sdk
+  * CVE-2026-110146: Information leak in Passwords
+  * CVE-2026-110150: Privilege elevation in Installer
+  * CVE-2026-110156: Incorrect reference resolution in Extensions
+  * CVE-2026-110137: Use after free in WebRTC
+  * CVE-2026-110140: Type confusion in V8
+  * CVE-2026-110158: Use after free in Passwords
+  * CVE-2026-110145: Use after free in Passwords
+  * CVE-2026-110159: Incorrect authorization in Updater
+  * CVE-2026-110144: Incorrect authorization in Mojo
+  * CVE-2026-110153: Use after free in Media
+  * CVE-2026-110166: Buffer overflow in Animation
+  * CVE-2026-110169: Use after free in V8
+  * CVE-2026-110168: Use after free in V8
+  * CVE-2026-110139: Use after free in Media
+  * CVE-2026-110172: Use after free in Media
+  * CVE-2026-110164: Use after free in DOM
+  * CVE-2026-110163: Use after free in DOM
+  * CVE-2026-110141: Observable discrepancy in Media
+  * CVE-2026-110138: Use after free in ShapeDetection
+  * CVE-2026-110157: Use after free in SVG
+  * CVE-2026-110147: Use after free in PDF
+  * CVE-2026-110154: Use after free in Canvas
+  * CVE-2026-110155: Buffer overflow in PDFium
+  * CVE-2026-110167: Use after free in Media
+  * CVE-2026-110171: Use after free in Media
+  * CVE-2026-110142: Use after free in FileSystem
+
+-------------------------------------------------------------------
 Tue Oct  6 17:57:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 155 promoted to stable - 155.0.8059.39 (boo#1284354):
