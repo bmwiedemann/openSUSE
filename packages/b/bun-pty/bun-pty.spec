@@ -17,7 +17,7 @@
 
 
 Name:           bun-pty
-Version:        0.4.11
+Version:        0.5.1
 Release:        0
 Summary:        Pseudo-terminal library for Bun FFI consumers
 License:        MIT

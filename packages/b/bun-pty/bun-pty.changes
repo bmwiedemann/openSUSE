@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 15 05:02:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.1:
+  * Breaking: env is the child's whole environment as in node-pty,
+    no longer merged over the parent's (#48); spread process.env
+    to keep inherited variables
+  * Build the child environment as node-pty builds it: TERM from
+    name, PWD from cwd; drop tmux/COLUMNS/LINES on inherit (#49)
+  * Leave src/*.test.ts out of the npm package (#50)
+  * Linux ABI unchanged: same eight dlsym entry points, same
+    private librust_pty.so path; no consumer rebuild needed
+  * Refresh the vendored dependencies
+
+-------------------------------------------------------------------
 Wed Sep 30 08:02:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.4.11:

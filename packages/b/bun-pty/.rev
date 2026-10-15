@@ -26,4 +26,12 @@ Maintainer: pluskalm (package-level role set in devel:tools _meta).</comment>
 </comment>
     <requestid>1381675</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6b41d30c23dd106473cbdda6c0230b9f</srcmd5>
+    <version>0.5.1</version>
+    <time>1792073551</time>
+    <user>anag_factory</user>
+    <comment>Update bun-pty to 0.5.1: node-pty env semantics, TERM/PWD handling, drop test files. ABI unchanged, Tumbleweed green.</comment>
+    <requestid>1384903</requestid>
+  </revision>
 </revisionlist>
