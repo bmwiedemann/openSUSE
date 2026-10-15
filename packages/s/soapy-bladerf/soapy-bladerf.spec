@@ -20,7 +20,7 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-bladerf
 Name:           soapy-bladerf
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        SoapySDR BladeRF module
 License:        LGPL-2.1-or-later
@@ -30,7 +30,7 @@ Source:         https://github.com/pothosware/SoapyBladeRF/archive/%{name}-%{ver
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(SoapySDR) >= 0.4
+BuildRequires:  pkgconfig(SoapySDR) >= 0.4.0
 BuildRequires:  pkgconfig(libbladeRF)
 
 %description

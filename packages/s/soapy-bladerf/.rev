@@ -103,4 +103,12 @@ Built locally on Tumbleweed/aarch64; rpmlint reports 0 errors, 0 warnings,
 added dependency.</comment>
     <requestid>1374755</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9f0adba344ab24ff14a91874af8f1361</srcmd5>
+    <version>0.4.3</version>
+    <time>1792059536</time>
+    <user>anag_factory</user>
+    <comment>Update soapy-bladerf to 0.4.3 (RX2/TX2-alone support, stream-args fix).</comment>
+    <requestid>1384068</requestid>
+  </revision>
 </revisionlist>
