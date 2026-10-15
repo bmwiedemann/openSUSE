@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 14 14:39:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2026.10.13:
+  * Updated the "H263plusVideoRTPSource" code to protect against a
+    malicious series of incoming packets possibly overflowing a
+    buffer.
+
+-------------------------------------------------------------------
 Thu Sep 10 10:57:16 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2026.08.25:
