@@ -62,6 +62,7 @@ Source1:        qt-creator-rpmlintrc
 # Patches 11-20 are openSUSE changes
 Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
+Patch13:        32bit_build_fix.patch
 ##
 BuildRequires:  cmake
 BuildRequires:  clang-devel >= 10.0

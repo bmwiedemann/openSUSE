@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 18:35:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Pick Debian patch to fix build on 32bit archs
+  * 32bit_build_fix.patch
+
+-------------------------------------------------------------------
 Sun Sep 27 07:28:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 20.0.2:

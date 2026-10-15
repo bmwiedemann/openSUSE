@@ -513,4 +513,13 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
   https://www.qt.io/blog/qt-creator-20.0.2-released</comment>
     <requestid>1380944</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>c2fa5ba54d9ad64dfb73836e3b0e0e5d</srcmd5>
+    <version>20.0.2</version>
+    <time>1792059571</time>
+    <user>anag_factory</user>
+    <comment>- Pick Debian patch to fix build on 32bit archs
+  * 32bit_build_fix.patch</comment>
+    <requestid>1384852</requestid>
+  </revision>
 </revisionlist>
