@@ -63,4 +63,12 @@ libSoapySDR.so.0.8-3()(64bit) and soapy-sdr.
 Supersedes SR 1374695.</comment>
     <requestid>1374740</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>83392a7f8f192cabf2ff15efc5440b1f</srcmd5>
+    <version>0.1.2</version>
+    <time>1792059539</time>
+    <user>anag_factory</user>
+    <comment>Update soapy-redpitaya to 0.1.2 (cmake compat, drops the adopted downstream patch).</comment>
+    <requestid>1384071</requestid>
+  </revision>
 </revisionlist>

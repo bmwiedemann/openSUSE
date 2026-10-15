@@ -20,15 +20,13 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-redpitaya
 Name:           soapy-redpitaya
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        SoapySDR RedPitaya module
 License:        GPL-3.0-or-later
 URL:            https://github.com/pothosware/SoapyRedPitaya/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyRedPitaya.git
 Source:         https://github.com/pothosware/SoapyRedPitaya/archive/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-Update-for-compat-with-newer-CMake.patch pothosware/SoapyRedPitaya@0702140 -- cmake_minimum_required range form; cmake 4 rejects a bare pre-3.5 minimum
-Patch0:         0001-Update-for-compat-with-newer-CMake.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  cmake(SoapySDR)
@@ -48,7 +46,7 @@ Soapy RedPitaya - RedPitaya device support for Soapy SDR.
 A Soapy module that supports RedPitaya devices within the Soapy API.
 
 %prep
-%autosetup -p1 -n SoapyRedPitaya-%{name}-%{version}
+%autosetup -n SoapyRedPitaya-%{name}-%{version}
 
 %build
 %cmake

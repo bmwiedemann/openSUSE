@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 11 09:24:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.2:
+  * Update for compat with newer CMake
+  * Drop 0001-Update-for-compat-with-newer-CMake.patch: upstream adopted it
+
+-------------------------------------------------------------------
 Sun Aug 30 18:32:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add 0001-Update-for-compat-with-newer-CMake.patch: upstream's only
