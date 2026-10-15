@@ -1,0 +1,28 @@
+<services>
+  <service name="tar_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/anura-engine/anura.git</param>
+    <param name="filename">anura</param>
+    <param name="revision">trunk</param>
+    <param name="versionformat">@PARENT_TAG@~git%cd</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <!-- anura wants to download imgui 1.89.7 while configuring, which is not
+       possible on a build host without network access. The build uses this
+       tarball through -D ANURA_IMGUI_DIR= instead. -->
+  <service name="download_url" mode="localonly">
+    <param name="protocol">https</param>
+    <param name="host">codeload.github.com</param>
+    <param name="path">/ocornut/imgui/tar.gz/refs/tags/v1.89.7</param>
+    <param name="filename">imgui-1.89.7.tar.gz</param>
+  </service>
+  <service name="recompress" mode="localonly">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="localonly">
+    <param name="basename">anura</param>
+  </service>
+  <service name="format_spec_file" mode="localonly"/>
+</services>

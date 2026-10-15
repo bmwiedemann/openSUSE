@@ -1,0 +1,206 @@
+From 6d1c7f83b9a5e4d3c2b1a0f9e8d7c6b5a4f31209 Mon Sep 17 00:00:00 2001
+From: Guo Yunhe <i@guoyunhe.me>
+Date: Tue, 22 Sep 2026 19:50:00 +0800
+Subject: [PATCH] Fix the build with Boost 1.91
+
+Boost 1.91 trimmed a lot of includes which used to come in transitively:
+
+ * boost/asio.hpp does not include deadline_timer.hpp any more and the
+   deprecated deadline_timer/expires_from_now are gone from the default API.
+   The timers are ported to steady_timer with expires_after and std::chrono
+   types - the same shape as the system_timer which the Boost deprecation
+   notice suggests, but with a monotonic clock, which is what a timeout wants.
+ * tbs_web_server.cpp used boost::shared_ptr without including
+   <boost/shared_ptr.hpp>.
+ * tbs_web_server.hpp names boost::interprocess::named_semaphore in a member
+   declaration without including it.
+
+Seven timer declarations and eleven expires_from_now() calls are affected.
+
+--- a/src/module_web_server.cpp
++++ b/src/module_web_server.cpp
+@@ -72,7 +72,7 @@
+ 
+ void ModuleWebServer::heartbeat()
+ {
+-	timer_.expires_from_now(boost::posix_time::seconds(1));
++	timer_.expires_after(std::chrono::seconds(1));
+ 	timer_.async_wait(std::bind(&ModuleWebServer::heartbeat, this));
+ }
+ 
+--- a/src/module_web_server.hpp
++++ b/src/module_web_server.hpp
+@@ -43,7 +43,7 @@
+ 	std::string getChunkPath(const std::string& chunk_id) const;
+ 	void add_chunks_to_manifest(const std::string& data_path, variant manifest) const;
+ 
+-	boost::asio::deadline_timer timer_;
++	boost::asio::steady_timer timer_;
+ 	int nheartbeat_;
+ 
+ 	std::string getDataFilePath() const;
+--- a/src/stats_web_server.cpp
++++ b/src/stats_web_server.cpp
+@@ -144,6 +144,6 @@
+ 		LOG_INFO("WROTE STATS IN " << time_us << "us");
+ 	}
+ 
+-	timer_.expires_from_now(boost::posix_time::seconds(1));
++	timer_.expires_after(std::chrono::seconds(1));
+ 	timer_.async_wait(std::bind(&web_server::heartbeat, this));
+ }
+--- a/src/stats_web_server.hpp
++++ b/src/stats_web_server.hpp
+@@ -35,7 +35,7 @@
+ 	virtual void handlePost(socket_ptr socket, variant doc, const http::environment& env, const std::string& raw_msg) override;
+ 	virtual void handleGet(socket_ptr socket, const std::string& url, const std::map<std::string, std::string>& args) override;
+ 
+-	boost::asio::deadline_timer timer_;
++	boost::asio::steady_timer timer_;
+ 	int nheartbeat_;
+ };
+ 
+--- a/src/tbs_bot.cpp
++++ b/src/tbs_bot.cpp
+@@ -74,7 +74,7 @@
+ 	{
+ 		LOG_DEBUG("YYY: create_bot: " << intptr_t(this) << ", (" << v["on_create"].write_json() << ") -> " << intptr_t(on_create_.get()));
+ 
+-		timer_.expires_from_now(boost::posix_time::milliseconds(g_tbs_bot_delay_ms));
++		timer_.expires_after(std::chrono::milliseconds(g_tbs_bot_delay_ms));
+ 
+ 		timer_proxy_ = new tbs_bot_timer_proxy(this);
+ 		timer_.async_wait(std::bind(&tbs_bot_timer_proxy::signal, timer_proxy_, std::placeholders::_1));
+@@ -140,7 +140,7 @@
+ 			}
+ 		}
+ 
+-		timer_.expires_from_now(boost::posix_time::milliseconds(g_tbs_bot_delay_ms));
++		timer_.expires_after(std::chrono::milliseconds(g_tbs_bot_delay_ms));
+ 		timer_proxy_ = new tbs_bot_timer_proxy(this);
+ 		timer_.async_wait(std::bind(&tbs_bot_timer_proxy::signal, timer_proxy_, std::placeholders::_1));
+ 	}
+--- a/src/tbs_bot.hpp
++++ b/src/tbs_bot.hpp
+@@ -68,7 +68,7 @@
+ 		ffl::IntrusivePtr<ipc_client> ipc_client_;
+ 
+ 		boost::asio::io_context& context_;
+-		boost::asio::deadline_timer timer_;
++		boost::asio::steady_timer timer_;
+ 
+ 		game_logic::FormulaPtr on_create_, on_message_;
+ 
+--- a/src/tbs_matchmaking_server.cpp
++++ b/src/tbs_matchmaking_server.cpp
+@@ -277,10 +277,10 @@
+ 			this->gen_game_id_ = user_info.as_int(1);
+ 		});
+ 
+-		db_timer_.expires_from_now(boost::posix_time::milliseconds(10));
++		db_timer_.expires_after(std::chrono::milliseconds(10));
+ 		db_timer_.async_wait(std::bind(&matchmaking_server::db_process, this, std::placeholders::_1));
+ 
+-		timer_.expires_from_now(boost::posix_time::milliseconds(1000));
++		timer_.expires_after(std::chrono::milliseconds(1000));
+ 		timer_.async_wait(std::bind(&matchmaking_server::heartbeat, this, std::placeholders::_1));
+ 
+ 		for(int i = 0; i != 256; ++i) {
+@@ -304,7 +304,7 @@
+ 
+ 	void db_process(const boost::system::error_code& error)
+ 	{
+-		db_timer_.expires_from_now(boost::posix_time::milliseconds(10));
++		db_timer_.expires_after(std::chrono::milliseconds(10));
+ 		db_timer_.async_wait(std::bind(&matchmaking_server::db_process, this, std::placeholders::_1));
+ 
+ 		db_client_->process(1000);
+@@ -441,7 +441,7 @@
+ 			next_stats_write_ = cur_time + 300;
+ 		}
+ 
+-		timer_.expires_from_now(boost::posix_time::milliseconds(g_matchmaking_heartbeat_ms));
++		timer_.expires_after(std::chrono::milliseconds(g_matchmaking_heartbeat_ms));
+ 		timer_.async_wait(std::bind(&matchmaking_server::heartbeat, this, std::placeholders::_1));
+ 	}
+ 
+@@ -2279,8 +2279,8 @@
+ 
+ 	boost::asio::io_context& io_context_;
+ 	int port_;
+-	boost::asio::deadline_timer timer_;
+-	boost::asio::deadline_timer db_timer_;
++	boost::asio::steady_timer timer_;
++	boost::asio::steady_timer db_timer_;
+ 
+ 
+ 	DbClientPtr db_client_, registration_db_client_;
+--- a/src/tbs_server_base.cpp
++++ b/src/tbs_server_base.cpp
+@@ -418,7 +418,7 @@
+ 			LOG_INFO("tbs_server::heartbeat cancelled");
+ 			return;
+ 		}
+-		timer_.expires_from_now(boost::posix_time::milliseconds(g_tbs_server_delay_ms));
++		timer_.expires_after(std::chrono::milliseconds(g_tbs_server_delay_ms));
+ 		timer_.async_wait(std::bind(&server_base::heartbeat, this, std::placeholders::_1));
+ 
+ 		for(game_info_ptr g : games_) {
+--- a/src/tbs_server_base.hpp
++++ b/src/tbs_server_base.hpp
+@@ -117,7 +117,7 @@
+ 		std::map<int, client_info> clients_;
+ 		std::vector<game_info_ptr> games_;
+ 
+-		boost::asio::deadline_timer timer_;
++		boost::asio::steady_timer timer_;
+ 
+ 		// send_fn's waiting on status info.
+ 		std::vector<send_function> status_fns_;
+--- a/src/tbs_web_server.cpp
++++ b/src/tbs_web_server.cpp
+@@ -24,6 +24,7 @@
+ #include <algorithm>
+ #include <boost/algorithm/string/replace.hpp>
+ #include <boost/interprocess/sync/named_semaphore.hpp>
++#include <boost/shared_ptr.hpp>
+ #include <iostream>
+ 
+ #include "asserts.hpp"
+@@ -81,7 +82,7 @@
+ 		: http::web_server(io_context, port), server_(serv), timer_(io_context)
+ 	{
+ 		web_server_instance = this;
+-		timer_.expires_from_now(boost::posix_time::milliseconds(1000));
++		timer_.expires_after(std::chrono::milliseconds(1000));
+ 		timer_.async_wait(std::bind(&web_server::heartbeat, this, std::placeholders::_1));
+ 	}
+ 
+@@ -169,7 +170,7 @@
+ 
+ 		}
+ 		debug_state_sockets.clear();
+-		timer_.expires_from_now(boost::posix_time::milliseconds(1000));
++		timer_.expires_after(std::chrono::milliseconds(1000));
+ 		timer_.async_wait(std::bind(&web_server::heartbeat, this, std::placeholders::_1));
+ 	}
+ 
+--- a/src/tbs_web_server.hpp
++++ b/src/tbs_web_server.hpp
+@@ -23,6 +23,8 @@
+ 
+ #pragma once
+ 
++#include <boost/interprocess/sync/named_semaphore.hpp>
++
+ #include "http_server.hpp"
+ 
+ namespace tbs
+@@ -51,6 +53,6 @@
+ 		void heartbeat(const boost::system::error_code& error);
+ 
+ 		server& server_;
+-		boost::asio::deadline_timer timer_;
++		boost::asio::steady_timer timer_;
+ 	};
+ }

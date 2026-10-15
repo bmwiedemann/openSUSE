@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Tue Sep 22 12:50:57 UTC 2026 - Yunhe Guo <i@guoyunhe.me>
+
+- Initial package of the anura engine, version 4.0.0~git20260430, split
+  out of frogatto
+- Install the engine's own game data (data, images, music) and the
+  modules it bundles (gui, icons, lib_2d) below /usr/share/anura
+- Add an /usr/bin/anura wrapper: the engine resolves data/, images/ and
+  modules/ relative to the current directory and uses that directory as
+  its built-in "core" module, so it has to be started from the data
+  directory.  The engine binary itself moved to /usr/libexec/anura/anura
+

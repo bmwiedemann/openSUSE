@@ -1,0 +1,8 @@
+<package name="anura" project="openSUSE:Factory">
+  <title>Anura Engine</title>
+  <description>Anura is the tech behind the spectacular Frogatto &amp; Friends. It is a fully-featured game engine, free for commercial and non-commercial use.
+
+To compile Anura for Argentum Age (formerly Citadel), use the argentum-age branch.
+
+At the time of writing (2023-08), Anura is only committed to supporting explicitly one module / game: Frogatto. For anything else (like Argentum Age above) you are on your own.</description>
+</package>

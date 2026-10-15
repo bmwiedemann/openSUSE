@@ -1,0 +1,41 @@
+From 3f9c1d2a7b6e5f4c3d2b1a09f8e7d6c5b4a39281 Mon Sep 17 00:00:00 2001
+From: Guo Yunhe <i@guoyunhe.me>
+Date: Tue, 22 Sep 2026 19:00:00 +0800
+Subject: [PATCH] Silence -Wunused-but-set-variable for the whole GCC build
+
+GCC 16 also reports variables which are only ever set, for example by
+incrementing them, and never read. That is more than the per file list in
+03-all/gcc/06-unused-but-set-variable was written for, so the build with
+warnings as errors now fails on eight more files:
+
+    src/auto_update_window.cpp          nupdate_cycle
+    src/formula.cpp                     num_where, num_opt_where, nline, sum
+    src/formula_garbage_collector.cpp   save_count
+    src/kre/TextureOGL.cpp              colors_mapped
+    src/level_object.cpp                count
+    src/particle_system.cpp             row
+    src/tile_map.cpp                    total_time
+    src/utility_object_compiler.cpp     row_width
+
+All of those are dead code, they could be removed as well, but silencing the
+warning for the whole build keeps this working for files which have not been
+looked at yet. 04-extra/CMakeLists.txt already does the same thing for
+-Wno-maybe-uninitialized.
+
+--- a/buildsystem/cmake-includes/silence-warnings/03-all/gcc/06-unused-but-set-variable/CMakeLists.txt
++++ b/buildsystem/cmake-includes/silence-warnings/03-all/gcc/06-unused-but-set-variable/CMakeLists.txt
+@@ -1,6 +1,11 @@
+ # In an optimal state, this file does not exist
+ # XXX - The leading spaces in this file are meaningful for string concatenation!
+ 
++# GCC 16 also reports variables which are only ever set, for example by
++# incrementing them, and never read. That covers more files than the list below,
++# so silence the warning for the whole build instead of listing every file.
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-but-set-variable")
++
+ set_property(
+     SOURCE "${CMAKE_SOURCE_DIR}/../../src/custom_object.cpp"
+     APPEND_STRING
+-- 
+2.51.0
+

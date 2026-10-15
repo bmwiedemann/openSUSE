@@ -1,0 +1,36 @@
+From 8b6e0af5f8e8c8f0e4b4a4f2a2b0f5b1a1d2c3e4 Mon Sep 17 00:00:00 2001
+From: Guo Yunhe <i@guoyunhe.me>
+Date: Tue, 22 Sep 2026 18:50:00 +0800
+Subject: [PATCH] Link the GLEW imported target instead of GLEW_LIBRARIES
+
+CMake's FindGLEW module prefers GLEW's own CMake package when the distribution
+ships one, which openSUSE does. With CMake 4 that path reads Windows only
+imported properties (IMPORTED_IMPLIB_*), so the legacy GLEW_LIBRARIES variable
+ends up as the literal "GLEW_LIBRARY-NOTFOUND" and generation then fails with:
+
+    The following variables are used in this project, but they are set to NOTFOUND.
+    Please set them or make sure they are set and tested correctly in the CMake files:
+    GLEW_LIBRARY
+        linked by target "anura" in directory ...
+
+The GLEW::GLEW imported target is right in both cases, GLEW's own CMake package
+provides it and FindGLEW creates it as well when it has to search for the
+libraries itself, so link that instead. The linux-steam build already does it
+this way.
+
+--- a/buildsystem/linux-dynamic/CMakeLists.txt
++++ b/buildsystem/linux-dynamic/CMakeLists.txt
+@@ -239,7 +239,9 @@
+     "${Boost_LIBRARIES}"
+     "${ZLIB_LIBRARIES}"
+     "${OPENGL_LIBRARIES}"
+-    "${GLEW_LIBRARIES}"
++    # GLEW::GLEW is the imported target, "${GLEW_LIBRARIES}" is set to a
++    # NOTFOUND value when GLEW provides its own CMake package
++    GLEW::GLEW
+     "${FREETYPE_LIBRARIES}"
+     "${SDL2_LIBRARY}"
+     "${SDL2_IMAGE_LIBRARIES}"
+-- 
+2.51.0
+
