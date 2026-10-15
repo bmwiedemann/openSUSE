@@ -5856,4 +5856,14 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1383726</requestid>
   </revision>
+  <revision rev="553" vrev="1">
+    <srcmd5>3c0fb9fd88b45b1860e39fadb167baed</srcmd5>
+    <version>2.10.0+git20261012.78649473</version>
+    <time>1792059534</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.0+git20261012.78649473:
+  * sysctl-whitelist: adjust soapy-remote entry (bsc#1284976)
+</comment>
+    <requestid>1384501</requestid>
+  </revision>
 </revisionlist>
