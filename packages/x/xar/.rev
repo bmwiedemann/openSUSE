@@ -109,4 +109,12 @@
     <comment>Switch xar to the maintained Apple lineage (1.8.0.0.503); fixes CVE-2017-11124, CVE-2017-11125, CVE-2018-17093, CVE-2018-17094. Each added/removed patch is now named in the changelog.</comment>
     <requestid>1361014</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9b9e35f625254fb818a936c8957277e8</srcmd5>
+    <version>1.8.0.0.503</version>
+    <time>1792073575</time>
+    <user>anag_factory</user>
+    <comment>Forward Archiving/xar %check smoke + subpackage summaries (SR 1384953); branch green.</comment>
+    <requestid>1384971</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 14 21:20:22 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add a %check section: a smoke test that round-trips an archive
+  with the just-built binary (create, list, extract, byte-compare)
+  for the default and bzip2 encodings
+- Give libxar1 and libxar-devel their own summaries and
+  descriptions instead of repeating the main package text, and fix
+  the "Extensive" typo in the library summary
+
+-------------------------------------------------------------------
 Mon Jun 22 07:33:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Switch to the maintained Apple xar lineage (build 503, versioned

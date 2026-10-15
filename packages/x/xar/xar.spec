@@ -67,31 +67,19 @@ files in both compressed and uncompressed form, and the ability to query the
 table of content's rich meta-data.
 
 %package -n libxar%{sover}
-Summary:        Extensive Archive Format Library
+Summary:        Extensible Archive Format Library
 
 %description -n libxar%{sover}
-The XAR project aims to provide an easily extensible archive format. Important
-design decisions include an easily extensible XML table of contents for random
-access to archived files, storing the toc at the beginning of the archive to
-allow for efficient handling of streamed archives, the ability to handle files
-of arbitrarily large sizes, the ability to choose independent encodings for
-individual files in the archive, the ability to store checksums for individual
-files in both compressed and uncompressed form, and the ability to query the
-table of content's rich meta-data.
+This package contains the shared library for creating, reading and
+extracting XAR (Extensible Archive Format) archives.
 
 %package -n libxar-devel
-Summary:        Extensive Archive Format Library
+Summary:        Development files for the XAR archive format library
 Requires:       libxar%{sover} = %{version}
 
 %description -n libxar-devel
-The XAR project aims to provide an easily extensible archive format. Important
-design decisions include an easily extensible XML table of contents for random
-access to archived files, storing the toc at the beginning of the archive to
-allow for efficient handling of streamed archives, the ability to handle files
-of arbitrarily large sizes, the ability to choose independent encodings for
-individual files in the archive, the ability to store checksums for individual
-files in both compressed and uncompressed form, and the ability to query the
-table of content's rich meta-data.
+This package contains the header files and libraries needed to
+develop programs that use libxar.
 
 %prep
 %setup -q -n %{name}-%{name}-%{apple}
@@ -120,8 +108,27 @@ pushd xar
 ./autogen.sh --noconfigure
 export LIBS="$(pkg-config --libs openssl)"
 export CFLAGS="%{optflags} -Wno-unused-result"
+# lzma compression is not enabled: the bundled lzma codec targets the pre-release liblzma 4.42 API that was removed in liblzma 5.x.
 %configure --disable-static
 %make_build
+popd
+
+%check
+pushd xar
+mkdir -p smoke/tree/sub smoke/out smoke/out2
+printf 'xar smoke test payload\n' > smoke/tree/sub/data.txt
+cp LICENSE smoke/tree/
+export LD_LIBRARY_PATH="$PWD/lib"
+# round-trip with the default encoding, verifying the extracted files
+src/xar -c -f smoke/default.xar smoke/tree
+src/xar -t -f smoke/default.xar | grep -qx smoke/tree/sub/data.txt
+src/xar -x -f smoke/default.xar -C smoke/out
+cmp smoke/tree/sub/data.txt smoke/out/smoke/tree/sub/data.txt
+cmp smoke/tree/LICENSE smoke/out/smoke/tree/LICENSE
+# the bzip2 encoding exercises a different compression backend
+src/xar -c --compression bzip2 -f smoke/bzip2.xar smoke/tree
+src/xar -x -f smoke/bzip2.xar -C smoke/out2
+cmp smoke/tree/sub/data.txt smoke/out2/smoke/tree/sub/data.txt
 popd
 
 %install
