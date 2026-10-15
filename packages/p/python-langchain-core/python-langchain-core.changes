@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 15 04:55:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.10:
+  * Model profiles gain mid_conversation_system_messages and
+    mid_conversation_tools capability flags so chat models
+    stop hardcoding per-model system/tool behavior
+
+-------------------------------------------------------------------
 Fri Oct  9 06:55:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.6.9:

@@ -221,4 +221,12 @@ Built and checked locally on aarch64: 2076 tests pass under python3.13 and
     <comment>Update python-langchain-core to 1.6.9 (IPv6 SSRF hardening, callable with_retry).</comment>
     <requestid>1383683</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1b93f9f1454af390b69ba5aef845b0d0</srcmd5>
+    <version>1.6.10</version>
+    <time>1792059716</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.6.10: model profiles gain mid_conversation_system_messages and mid_conversation_tools capability flags.</comment>
+    <requestid>1384902</requestid>
+  </revision>
 </revisionlist>
