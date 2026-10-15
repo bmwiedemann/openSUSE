@@ -18,25 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-wcwidth
-Version:        0.8.4
+Version:        0.9.2
 Release:        0
 Summary:        Number of Terminal column cells of wide-character codes
 License:        MIT
 URL:            https://github.com/jquast/wcwidth
 Source:         https://github.com/jquast/wcwidth/archive/%{version}.tar.gz#/wcwidth-%{version}.tar.gz
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 %python_subpackages
 
 %description
 This API is mainly for Terminal Emulator implementors -- any python
 program that attempts to determine the printable width of a string on
-a Terminal. It is implemented in python (no C library calls) and has
-no 3rd-party dependencies.
+a Terminal.
 
 It is certainly possible to use your Operating System's wcwidth(3)
 and wcswidth(3) calls if it is POSIX-conforming, but this would not
@@ -56,15 +56,17 @@ sed -i 's/looponfailroots.*//' tox.ini
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest tests
+mv wcwidth do-not-use-wcswidth
+%pytest_arch tests
+mv do-not-use-wcswidth wcwidth
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst docs/intro.rst
-%{python_sitelib}/wcwidth
-%{python_sitelib}/wcwidth-%{version}.dist-info
+%{python_sitearch}/wcwidth
+%{python_sitearch}/wcwidth-%{version}.dist-info
 
 %changelog

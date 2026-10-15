@@ -342,4 +342,12 @@ add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment
   * bugfix: clip() should behave like propagate_sgr()</comment>
     <requestid>1379828</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1fb06e220fa65cf1ccb9937054f22c26</srcmd5>
+    <version>0.9.2</version>
+    <time>1792081201</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1384709</requestid>
+  </revision>
 </revisionlist>

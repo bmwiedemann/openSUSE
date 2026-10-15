@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  7 04:39:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.9.2:
+  * simplify wcwidth_decode_u32_heap()
+  * bugfix correction table use for flag emojis
+  * bugfix clip() w/tabsize=0
+  * wrap() should omit an empty line as output
+  * bugfix width() value for very long CSI sequences
+  * Improve performance by kwarg parsing
+  * Use Python extension with libwcwidth
+  * Measure hyphen break positions by display width
+- As a consequence of the new C extension, switch to our new home in
+  sitearch, and make this package arch-dependent.
+
+-------------------------------------------------------------------
 Wed Sep 23 05:04:27 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.8.4:
