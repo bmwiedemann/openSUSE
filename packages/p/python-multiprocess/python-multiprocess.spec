@@ -43,6 +43,8 @@ Better multiprocessing and multithreading in Python
 
 %prep
 %autosetup -p1 -n multiprocess-%{version}
+# init the py3.15/_multiprocess dir to ensure the same packaging on all Python versions
+mkdir py3.15/_multiprocess; cp py3.14/_multiprocess/__init__.py py3.15/_multiprocess/
 
 %build
 # We need to build this multiple times, for each version of Python, as opposed
