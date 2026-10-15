@@ -1,0 +1,7 @@
+<package name="rtlsdr-airband" project="openSUSE:Factory">
+  <title>RTLSDR AM demodulator, support multiple channels per dongle</title>
+  <description>RTLSDR AM demodulator, support multiple channels per dongle.
+
+</description>
+  <url>https://github.com/szpajder/RTLSDR-Airband</url>
+</package>

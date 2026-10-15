@@ -1,0 +1,308 @@
+-------------------------------------------------------------------
+Wed Oct 14 18:57:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.1.0
+  * Fix byte/sample confusion in stereo UDP output in #578
+  * Add configurable stats_update_interval in #579
+
+-------------------------------------------------------------------
+Mon Oct 12 14:08:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.0.0
+  * Update config tls parsing to throw errors if not
+    LIBSHOUT_HAS_TLS.
+
+-------------------------------------------------------------------
+Wed Sep 23 15:28:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.4.0
+  * Make split_min_file_time, split_max_file_time, and
+    split_max_idle_time configurable. #569
+
+-------------------------------------------------------------------
+Wed Sep  2 11:09:44 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.3.0
+  * system_tests updates. #566
+
+-------------------------------------------------------------------
+Fri May 22 09:29:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.2.0
+  * Delay initialization of lame (mp3) context until after config
+    parsing is complete.
+  * Add comment to systemd file about network.target vs
+    network-online.target.
+  * Add label to scan activity message.
+  * stablize system tests and fix bugs.
+  * Remove bcm_host dependency and add BCM builds.
+
+-------------------------------------------------------------------
+Sat Feb 14 09:31:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.1.4
+  * CI-related changes
+- Update to version 5.1.3
+  * CI-related changes
+- Update to version 5.1.2
+  * fix: bump allowed cmake version range
+
+-------------------------------------------------------------------
+Thu Mar 27 19:12:37 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.1.1
+  * Delay initialization of lame (mp3) context until after config
+    parsing is complete.
+- Update to version 5.1.0
+  * Fix MP3 output corruption.
+  * URL and License updates.
+- Update to version 5.0.0
+  * enable a series of compile warnings and cleanup code
+  * remove SSE specific code - let the compiler "do the right thing"
+  * fix CTCSS bug that could miss a tone when multiple tones have
+    the same power (happens with less accurate floating point
+    operations, ie i386)
+- Update to version 4.2.0
+  * Add support for building with libshout v2.4.6
+  * Add error checking for lowpass <= highpass.
+  * Remove limit on count of mixer inputs.
+  * Add dated_subdirectories config option for output files.
+
+-------------------------------------------------------------------
+Sun Aug 27 14:19:59 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.1
+  * Fix build issues when using VideoCore GPU.
+- Update to version 4.1.0
+  * Add channel_squelch_level to stats file.
+  * Support "default" values in lists for squelch_snr_threshold
+    and notch_q.
+  * Set cmake ENABLE_EXPORTS property.
+
+-------------------------------------------------------------------
+Thu Jan 12 10:13:01 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.3
+  * Add channel_squelch_level to stats file.
+  * Support "default" values in lists for squelch_snr_threshold
+    and notch_q.
+  * Set cmake ENABLE_EXPORTS property.
+
+-------------------------------------------------------------------
+Mon Dec 27 10:52:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.2
+  * Bugfix release
+
+-------------------------------------------------------------------
+Sun Nov 14 20:36:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.1
+  * Fix some compilation warnings
+
+-------------------------------------------------------------------
+Fri Oct 22 19:24:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.0
+  * RTLSDR-Airband is now built with CMake.
+  * New output type udp_stream for sending uncompressed audio to
+    another host via UDP/IP (thx @charlie-foxtrot).
+  * Added multiple_output_threads global option. When set to true,
+    a separate output thread is spawned for each device.
+  * Modulation in scan mode is now configurable per channel.
+  * SoapySDR errors like TIMEOUT or OVERFLOW are no longer
+    treated as fatal. They often appear intermittently, especially
+    when the CPU usage is high. There is no point in failing the
+    input in this case.
+  * Added .tmp suffix to the names of the output files currently
+    being written to. The suffix is removed when the file is
+    closed. External applications that consume recorded files can
+    now figure out which files are not yet complete.
+  * Added logging and statistics for output thread overruns and
+    mixer input/output overruns (thx @charlie-foxtrot).
+  * Miscellaneous bug fixes and code cleanups.
+  BACKWARDS-INCOMPATIBLE CHANGES:
+  * Improved squelch algorithm with new configuration parameters.
+    squelch keyword has been replaced with squelch_threshold which
+    takes an absolute signal value in dBFS as an argument.
+    Alternatively, a minimum signal-to-noise ratio (in dB) that
+    should trigger the squelch might be configured using
+    squelch_snr_threshold option (thx @charlie-foxtrot).
+  * include_freq config option for file outputs now causes the
+    frequency to be appended after the timestamp rather than before
+    it. This feature now works correctly in scan mode, when
+    split_on_transmission feature is enabled.
+  * sample format in files produced by rawfile outputs has been
+    changed from CS16 to CF32. File name suffix is now .cf32.
+  * Improved squelch indicator in the textual waterfalls. In
+    addition to the * character indicating that the squelch is
+    open, there is also a ~ character indicating that the channel
+    has a signal that is being suppressed because it is outside
+    the band of the channel filter.
+- Drop patch:
+  * rtlsdr-airband-fix-makefile.diff
+- Add patch:
+  * rtlsdr-airband-set-config-path.patch
+
+-------------------------------------------------------------------
+Sat Nov 14 16:12:03 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.1
+  * Fixed a compile error when using libshout older than 2.4.0
+
+-------------------------------------------------------------------
+Mon Nov  9 09:40:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.0
+  * Added split_per_transmission output file option which allows
+    creating a new file for every transmission on the channel.
+  * Added include_freq output file option, which causes the
+    channel frequency to be appended to the file name.
+  * Added support for notch filters for eliminating narrowband
+    interference, like CTCSS tones.
+  * Added bandwidth channel option which causes the channelized
+    I/Q signal to be lowpass-filtered before demodulation. This
+    might help in situations where neighboring channels are
+    closely spaced and interfere with the channel of interest. It
+    also reduces the bandwidth of the resulting audio signal, and
+    thus eliminates the high-frequency noise.
+  * Added support for multithreaded demodulation. Each device can
+    now have its own demodulation thread. This allows spreading
+    the demodulation work across multiple CPU cores. Enable with
+    multiple_demod_threads global option.
+  * Added support for highpass/lowpass MP3 filters for mixers.
+  * Added support for frequency usage statistics.
+  * Workaround for Fitipower tuner problem of not honoring the
+    first gain setting when the device is first used.
+  * Finalize the MP3 file properly before opening a new one.
+  * Close the RTL device properly on program exit.
+  * Updated the SoapySDR input driver to reflect changes in
+    SoapySDR library API.
+  * Minor cleanups.
+-------------------------------------------------------------------
+Mon Jan 20 15:16:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1.0
+  * SoapySDR: added support for complex float 32-bit samples
+  * SoapySDR: allow using AGC if the device supports it. Gain
+    setting for soapy devices is now optional - if it's not
+    specified, the program will try to enable AGC.
+  * Use lowpass/highpass filters provided by LAME library to
+    improve audio quality of MP3 streams. Filter cutoff frequencies
+    may be configured per output, using highpass and lowpass config
+    options.
+  * Added log_scan_activity global config option. When set to true,
+    a log message is written whenever a squelch opens on a scanned
+    channel, effectively producing a channel activity log.
+  * Improved squelch behaviour in some corner cases.
+  * Fix for incorrect naming of pulseaudio context. Name set in
+    the config was not used as it should.
+  * Don't fail when the configured gain value is negative. Some
+    SDRs support this (eg. FC0012-based dongles).
+  * Fix a bug which in some cases could prevent the icecast output
+    from reconnecting with the Icecast server after the connection
+    has failed.
+
+-------------------------------------------------------------------
+Fri Feb 16 20:14:42 UTC 2018 - mardnh@gmx.de
+
+- Update to version 3.0.1
+  * Fix for squelch staying constantly open when configured manually
+    with NFM=off (#84)
+
+- Update to version 3.0.0
+  * Major overhaul of the SDR input code - now it's modular and
+    hardware-agnostic (no longer tightly coupled with librtlsdr).
+  * Support for SoapySDR vendor-neutral SDR library - any SDR which has
+    a plugin for SoapySDR shall now work in RTLSDR-Airband.
+  * Support for Mirics DVB-T dongles via libmirisdr-4 library.
+  * Support for RTLSDR is now optional and can be disabled at compilation
+    stage.
+  * Removed the 8-channels-per-device limit in multichannel mode.
+  * Configurable per-device sampling rate.
+  * Configurable FFT size.
+  * Support for multibyte input samples.
+  * Support for rawfile outputs (ie. writing raw I/Q data from a
+    narrowband channel to a file for processing with other programs,
+    line GNUradio or csdr).
+  * INCOMPATIBLE CHANGE: removed `rtlsdr_buffers` global configuration
+    option; buffer count can now be adjusted with a per-device
+    "buffers" option.
+  * INCOMPATIBLE CHANGE: removed `syslog` global configuration option;
+    syslog logging is now enabled by default, both in foreground and
+    background mode. To force logging to standard error, use -e command
+    line option.
+  * Added -F command line option for better cooperation with systemd.
+    Runs the program in foreground, but without textual waterfalls.
+    Together with -e it allows running rtl_airband as a service of type
+    "simple" under systemd. Example rtl_airband.service file has been
+    adjusted to reflect this change.
+  * Added `type` device configuration option. It sets the device type
+    (ie. the input driver which shall be used to talk to the device).
+    "rtlsdr" is assumed as a default type for backward compatibility.
+    If RTLSDR support has been disabled at compilation stage, then
+    there is no default type - it must be set manually, or the program
+    will throw an error on startup.
+  * Frequencies in the config can now be expressed in Hz, kHz, MHz or GHz
+    for improved readability.
+  * Lots of bugfixes.
+
+- Update to version 2.4.0
+  * Support for PulseAudio output via new output type `pulse`. With this
+    feature you can eg. play the sound via the soundcard of the Raspberry
+    Pi you run RTLSDR-Airband on (you need to install and run pulseaudio
+    daemon on it, though). Or you can stream the audio from a Pi located
+    near the antenna (eg. in the attic) to speakers connected to the desktop
+    PC you are sitting at, without launching a local Icecast server,
+    as before. Because the audio stream is sent uncompressed, it is
+    not recommended to run it across the Internet - jitter or packet loss
+    will easily cause the audio to become choppy. However in a local network
+    PulseAudio is a good choice. And it gives much lower latency as compared
+    to Icecast (typically under 0.5 seconds). Thanks to Marcus Ströbel
+    for the idea and initial implementation.
+  * Support for referring to RTL devices by their serial numbers in the
+    config file. Instead of `index = <dongle_index>` parameter, use `serial =
+    <dongle_serial_number>` to get consistent behavior across reboots
+    and hardware reconfigurations.
+  * Set RTL gain to the nearest gain value supported by the device. This is
+    required for E4000 tuners, which do not round the given gain value to
+    the nearest supported setting, which causes the gain setting operation
+    to fail.
+  * Improved squelch operation in scan mode. All squelch-related variables
+    (noise floor, AGC coefficients, etc) are now calculated and stored
+    separately for each scanned channel. Earlier their values were common
+    to all channels, which caused squelch problems in case when noise floor
+    varied considerably between channels. Thanks to @strix-technica.
+  * Added build target for FreeBSD on x86. Use `PLATFORM=x86-freebsd` to
+    compile and `PLATFORM=x86-freebsd gmake install` to install. Thanks
+    to @nyammy.
+  * Display squelch setting in waterfall in place of noise floor value when
+    squelch is set manually.
+  * Bug fixes, performance improvements.
+  * Decluttered and more understandable documentation.
+- Run spec-cleaner
+- Build with support for soapysdr
+- Rebase patch:
+  * rtlsdr-airband-fix-makefile.diff
+
+-------------------------------------------------------------------
+Fri Apr 28 15:54:18 UTC 2017 - mardnh@gmx.de
+
+- Update to version 2.3.0 (tagged release)
+- Add patch: rtlsdr-airband-fix-makefile.diff
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Sat Feb 20 14:02:50 UTC 2016 - mardnh@gmx.de
+
+- Update to version 2.0.0.git1453651264.35d0443:
+  + Fix a typo in the default config file
+  + Initialize output structs to avoid surprises
+  + Bump version to 2.0.1
+  + Updated NEWS file
+
+-------------------------------------------------------------------
+Mon Dec 28 11:06:49 UTC 2015 - mardnh@gmx.de
+
+- initial package, version 2.0.0
+

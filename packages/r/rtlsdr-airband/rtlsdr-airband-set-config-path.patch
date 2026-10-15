@@ -1,0 +1,13 @@
+diff --git a/src/rtl_airband.h b/src/rtl_airband.h
+index 4563e34..ed2d50d 100644
+--- a/src/rtl_airband.h
++++ b/src/rtl_airband.h
+@@ -55,7 +55,7 @@
+ #define GOTOXY(x, y) printf("%c[%d;%df", 0x1B, y, x)
+ 
+ #ifndef SYSCONFDIR
+-#define SYSCONFDIR "/usr/local/etc"
++#define SYSCONFDIR "/etc/rtl_airband"
+ #endif /* SYSCONFDIR */
+ 
+ #define CFGFILE SYSCONFDIR "/rtl_airband.conf"
