@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 15 09:30:58 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.4
+  * Document Rust 1.94.1 as the minimum build version
+  * Improve state file recovery when mounts die
+
+-------------------------------------------------------------------
 Mon Oct 12 15:22:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.3

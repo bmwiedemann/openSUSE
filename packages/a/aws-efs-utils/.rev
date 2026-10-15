@@ -363,4 +363,14 @@
 - Accept the risk for RUSTSEC-2026-0258 (forwarded request 1384352 from glaubitz)</comment>
     <requestid>1384380</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>106f959d4b97021965906a35abf05cf4</srcmd5>
+    <version>3.3.4</version>
+    <time>1792081236</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.4
+  * Document Rust 1.94.1 as the minimum build version
+  * Improve state file recovery when mounts die (forwarded request 1384985 from glaubitz)</comment>
+    <requestid>1385022</requestid>
+  </revision>
 </revisionlist>
