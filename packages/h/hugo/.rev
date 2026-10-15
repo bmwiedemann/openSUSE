@@ -2104,4 +2104,40 @@
   * Update to BuildRequires: golang(API) &gt;= 1.27 matching go.mod (forwarded request 1376747 from jfkw)</comment>
     <requestid>1376748</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>8227f9d5679a9b4430c091493e5e3d60</srcmd5>
+    <version>0.168.0</version>
+    <time>1792059579</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.168.0:
+  * releaser: Bump versions for release of 0.168.0
+  * circleci: Update config.yml to version 2.1
+  * build(deps): bump golang.org/x/image from 0.46.0 to 0.47.0
+  * build(deps): bump golang.org/x/mod from 0.41.0 to 0.42.0
+  * warpc: Upgrade libavif, AOM, dav1d versions
+  * warpc: Upgrade to javy 9.1.0
+  * warpc: Upgrade to wasi-sdk-34
+  * build(deps): bump golang.org/x/net from 0.59.0 to 0.61.0
+  * ci: Drop extended build tag on Windows tests
+  * Add imaging.firstFrameOnly and some animation performance improvements
+  * build(deps): bump github.com/bits-and-blooms/bitset
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.17 to 2.24.19
+  * js, css: Add charset option to js.Build and css.Build
+  * Add ImageResource.FrameCount
+  * Add Translate and Format* methods to Language
+  * Squashed 'docs/' changes from 30306d771..b732eba6c
+  * Fix PAGE.IsNode warning in jsonify
+  * Add basic support for OSC 7501 program status
+  * modules: Ignore module.replacements defined in themes
+  * Upgrade to Go 1.27.2
+  * ci: Add temporary workaround for staticcheck vs Go 1.27.2
+  * hugolib: Fix rebuild when content is also mounted as assets
+  * transform/metainject: Inject Hugo generator tag last in &lt;head&gt;
+  * Make tests run on GOARCH 386
+  * snap: Update base to core26
+  * Fix deprecation issues in tests
+  * Update vulnerability reporting instructions
+  * releaser: Prepare repository for 0.168.0-DEV (forwarded request 1384860 from jfkw)</comment>
+    <requestid>1384862</requestid>
+  </revision>
 </revisionlist>

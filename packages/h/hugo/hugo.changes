@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue Oct 13 17:21:51 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.168.0:
+  * releaser: Bump versions for release of 0.168.0
+  * circleci: Update config.yml to version 2.1
+  * build(deps): bump golang.org/x/image from 0.46.0 to 0.47.0
+  * build(deps): bump golang.org/x/mod from 0.41.0 to 0.42.0
+  * warpc: Upgrade libavif, AOM, dav1d versions
+  * warpc: Upgrade to javy 9.1.0
+  * warpc: Upgrade to wasi-sdk-34
+  * build(deps): bump golang.org/x/net from 0.59.0 to 0.61.0
+  * ci: Drop extended build tag on Windows tests
+  * Add imaging.firstFrameOnly and some animation performance improvements
+  * build(deps): bump github.com/bits-and-blooms/bitset
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.17 to 2.24.19
+  * js, css: Add charset option to js.Build and css.Build
+  * Add ImageResource.FrameCount
+  * Add Translate and Format* methods to Language
+  * Squashed 'docs/' changes from 30306d771..b732eba6c
+  * Fix PAGE.IsNode warning in jsonify
+  * Add basic support for OSC 7501 program status
+  * modules: Ignore module.replacements defined in themes
+  * Upgrade to Go 1.27.2
+  * ci: Add temporary workaround for staticcheck vs Go 1.27.2
+  * hugolib: Fix rebuild when content is also mounted as assets
+  * transform/metainject: Inject Hugo generator tag last in <head>
+  * Make tests run on GOARCH 386
+  * snap: Update base to core26
+  * Fix deprecation issues in tests
+  * Update vulnerability reporting instructions
+  * releaser: Prepare repository for 0.168.0-DEV
+
+-------------------------------------------------------------------
+Mon Sep 28 15:12:49 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.167.0:
+  * releaser: Bump versions for release of 0.167.0
+  * Update .gitignore
+  * tocss: Confine Sass import fallbacks to the allowed read paths
+  * js: Confine ESBuild's fallback resolver to the allowed read paths
+  * commands: Allow building without a config file
+  * collections: Preserve slice type when appending an empty slice
+  * tpl/tplimpl: Prefer user table render hook over embedded
+  * hugolib: Fix failing integration test
+  * Avoid allocating in SitesMatrix.MatchSiteVector
+  * Add slug support for section, taxonomy and term pages
+  * Make default baseURL https://example.org/ (#15384) (note)
+  * tpl: Avoid reflect.Value.Call for common signatures
+  * ci: Disable vet when running tests
+  * Squashed 'docs/' changes from 237e4cdf7..30306d771
+  * tpl/partials: Support relative partial paths from within partials (#15376)
+  * config: Add build.cleanDestinationDir config
+  * build(deps): bump github.com/olekukonko/tablewriter from 1.1.4 to 1.1.5
+  * build(deps): bump github.com/dustin/go-humanize from 1.0.1 to 1.1.0
+  * build(deps): bump golang.org/x/tools from 0.49.0 to 0.50.0
+  * build(deps): bump golang.org/x/image from 0.45.0 to 0.46.0
+  * build(deps): bump golang.org/x/text from 0.41.0 to 0.42.0
+  * commands: Make testscripts/commands/hugo__clean_destination_dir.txt portable
+  * commands: Handle missing staticDir in cleanDestinationDir
+  * hugofs: Cache symlink checks
+  * hugofs: Drop symlinks in virtual ancestor dirs of nested mounts
+  * markup/tableofcontents: Escape heading IDs in ToC HTML
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.44.0 to 1.45.0
+  * Fix build with Go 1.26 on Fedora 44 Beta
+  * Fix smartcrop with rotation (#15371)
+  * hugofs: Allow symlinked mount roots in the main project
+  * Expand and consolidate BOM trimming
+  * readme: Bump minimum Go version
+  * tpl/collections: Compare numbers exactly in set operations and where
+  * ci: Fix broken magefile
+  * ci: Skip vet on Windows
+  * Revert "parser/metadecoders: Strip BOM from data prior to unmarshalling"
+  * parser/metadecoders: Strip BOM from data prior to unmarshalling
+  * tpl: Reformat templates with new formatter version
+  * resources/page: Balance container tags in automatic summaries
+  * deps: Bump github.com/bep/imagemeta from 1.0.0 to 1.0.1 (#15338)
+  * config/security: Add an integration test
+  * Update release image to Go 1.27.1 (#15342)
+  * tpl/collections: Fix union of slices with different numeric element types
+  * tpl/compare:  Consolidate numeric comparisions
+  * Fix stale page content when several files in the same dir change in one batch
+  * tpl/strings: Add a strings.FirstLower function
+  * Update brevity guideline in AGENTS.md
+  * releaser: Prepare repository for 0.167.0-DEV
+
+-------------------------------------------------------------------
 Wed Sep 09 18:36:23 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.166.0:
