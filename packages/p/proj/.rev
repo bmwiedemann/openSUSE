@@ -546,4 +546,12 @@ This package is included in Debian.
     <comment>1</comment>
     <requestid>1384365</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>a1748a53b486efe50a7778deae8117b9</srcmd5>
+    <version>9.9.0</version>
+    <time>1792073616</time>
+    <user>anag_factory</user>
+    <comment>Forward Application:Geo/proj full test suite + man symlinks (SR 1384968); branch green.</comment>
+    <requestid>1385007</requestid>
+  </revision>
 </revisionlist>

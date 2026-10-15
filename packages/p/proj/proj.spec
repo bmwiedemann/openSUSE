@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(sqlite3) >= 3.11
+BuildRequires:  python3-PyYAML
 Provides:       libproj = %{version}
 
 %description
@@ -118,15 +119,22 @@ Supplements:  proj\
 %autosetup -p1
 
 %build
-%cmake
+# The external GTest is not picked up by default: FindGTest reports an
+# empty version for the system gtest, which upstream treats as too old
+# and silently skips the whole unit test suite
+%cmake \
+    -DUSE_EXTERNAL_GTEST=ON
 %cmake_build
 
 %install
 %cmake_install
 tar -C %{buildroot}%{_datadir}/%{name} -xf %{SOURCE1}
 find %{buildroot} -type f -name "*.la" -delete -print
-# Drop the doc dir cmake installs; COPYING is shipped via %license below
+# Drop the doc dir cmake installs; COPYING is shipped via the license tag
 rm -rf %{buildroot}%{_docdir}/%{name}
+# invproj and invgeod are symlinks to proj and geod; alias their man pages
+ln -s proj.1 %{buildroot}%{_mandir}/man1/invproj.1
+ln -s geod.1 %{buildroot}%{_mandir}/man1/invgeod.1
 
 %check
 # Tests dont work on i586 and noone cares
@@ -151,7 +159,9 @@ rm -rf %{buildroot}%{_docdir}/%{name}
 %defattr(0644,root,root)
 %{_mandir}/man1/cs2cs.1%{?ext_man}
 %{_mandir}/man1/geod.1%{?ext_man}
+%{_mandir}/man1/invgeod.1%{?ext_man}
 %{_mandir}/man1/proj.1%{?ext_man}
+%{_mandir}/man1/invproj.1%{?ext_man}
 %{_mandir}/man1/cct.1%{?ext_man}
 %{_mandir}/man1/gie.1%{?ext_man}
 %{_mandir}/man1/projinfo.1%{?ext_man}

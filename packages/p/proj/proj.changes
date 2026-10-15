@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 15 08:08:09 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Run the full upstream test suite in %check:
+  * Pass -DUSE_EXTERNAL_GTEST=ON to cmake: FindGTest reports an
+    empty version for the system gtest, so upstream treated it as
+    too old and silently skipped all GTest unit tests
+  * Add python3-PyYAML BuildRequires so the YAML command-line
+    interface tests run as well
+- Add man page symlinks for the invproj and invgeod binaries
+
+-------------------------------------------------------------------
 Mon Oct 12 15:35:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - drop orphaned License tag polluting the devel package description
