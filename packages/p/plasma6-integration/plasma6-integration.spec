@@ -29,7 +29,7 @@
 %endif
 %define rname plasma-integration
 Name:           plasma6-integration
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -38,30 +38,27 @@ Release:        0
 Summary:        Plugins responsible for better integration of Qt applications in KDE Workspace
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(Breeze) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
-BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
-BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
-BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KWayland) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6GuiPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
@@ -69,7 +66,6 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{qt5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
-BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5GuiAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
@@ -77,7 +73,6 @@ BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
-BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
 BuildRequires:  cmake(Qt5QuickControls2) >= %{qt5_version}
 BuildRequires:  cmake(Qt5ThemeSupport) >= %{qt5_version}
