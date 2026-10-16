@@ -1,4 +1,224 @@
 -------------------------------------------------------------------
+Fri Oct 16 07:27:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix initial config.json
+
+-------------------------------------------------------------------
+Fri Oct 16 01:51:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.81.1
+  - [client] Keep interface discovery out of the bind open path
+    (#8226) (#8227)
+
+-------------------------------------------------------------------
+Thu Oct 15 14:52:08 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.81.0
+  - Highlights
+    - Certificate Posture Checks
+      - A new Certificate posture check requires peers to hold a
+        device certificate issued by your own CA, and to prove they
+        still have the private key by signing a challenge from
+        management. A copied certificate without its key fails the
+        check. Management repeats the challenge every 4 hours while
+        the peer is connected, so a removed key or an expired
+        certificate closes access within that window.
+    - 🔗 nblink: forward into your network without root
+      - nblink is a new standalone binary that forwards local ports
+        into your NetBird network from an ordinary, unprivileged
+        process. It runs the client in userspace mode, so there is
+        no TUN device, no root, no installer, and /etc/resolv.conf
+        is never touched. Names on the upstream side resolve inside
+        the tunnel. It is built for places the regular agent cannot
+        run: managed laptops without admin rights, rootless
+        containers on OpenShift and Podman, CI jobs, MCP servers
+        and local AI agents that need an internal API, and sidecars
+        for apps that hardcode an HTTP endpoint.
+    - 📋 Duplicate Policies
+      - Access Control and Agent Network policies now have a
+        Duplicate action in the row menu. It opens the create
+        wizard pre-filled with every setting of the source policy,
+        named <name> (copy), and nothing is saved until you click
+        Add Policy. Groups, posture checks, resources, providers
+        and guardrails are reused rather than cloned.
+    - 📖 Managing Policies · dashboard#841
+      - 🛣️ Path-based access control for Reverse Proxy services
+        - HTTP targets of a Reverse Proxy service can now override
+          the service's authentication for their path. Under a
+          target's Optional Settings, choose an Access action: Use
+          service authentication, Bypass authentication, Block
+          access.
+  - What's New
+    - 🔒 Security and Access Control
+      - Added the Certificate posture check, with a hardened
+        client, fresh challenge nonces, recovery from stuck proof
+        collections, and fixes for remaining edge cases. #7535,
+        #8052, #7890, #8174
+      - Used single-use codes for the OIDC session handoff between
+        management and the proxy, and renamed the session code
+        query parameter. #7635, #7981
+      - Enforced strict base64url decoding for JWT validation in
+        management and the proxy. #7554
+      - Refactored the PKCE verifier store into a reusable
+        single-use store. #7634
+      - Added a revocation guard hook to the proxy token API. #7732
+      - Returned a permission-denied error when a setup key is
+        expired or invalid, instead of a generic failure. #8086
+    - 🖥️ Client Improvements
+      - Added nblink, an unprivileged forwarder into the network.
+        #7955
+      - Replaced the eBPF WireGuard proxy with loopback endpoint
+        addressing, removing the eBPF dependency for kernel-mode
+        relayed connections. #7316
+      - Stopped one unreachable relay from churning connections on
+        the others, and stopped offering to every peer when the
+        relay transport drops. #8098, #7092
+      - Kept the advertised ICE session ID when following a remote
+        restart, avoiding unnecessary reconnects. #7814
+      - Cached the box shared key per remote peer in the Signal
+        client, and cached the interface check shared by ICE
+        agents. #7807, #8001
+      - Configured the userspace device through its typed API and
+        reused one wgctrl client in the kernel configurer. #7937,
+        #7912
+      - Discovered interfaces lazily in stdnet instead of at
+        construction. #7346
+      - Forced interactive login when extending the auth session,
+        evaluated the session deadline against the wall clock, and
+        dropped the pending login flow when a login switches
+        profile. #7216, #7959, #7882
+      - Kept the updater silent until management decides the update
+        mode. #7455
+      - Gated settings updates on value, not on field presence.
+        #7398
+      - Added debug cpu start and stop commands for CPU profiling.
+        #7749
+      - Classified Windows local accounts by NetBIOS name. #7628
+      - Fixed the Windows UI exiting on first launch, and closed
+        the UI before InstallValidate in the MSI. #8138, #7395
+      - Fixed the browser login popup shown from the daemon, and
+        kept the delete-profile dialog open until the delete
+        finishes. #7408, #7752
+      - Added RTL layout support and Galician (gl) localization to
+        the desktop UI, warned on missing translations, and only
+        offered locales listed in _index.json. #8076, #7041, #8090,
+        #8091
+    - 📱 Mobile
+      - Coalesced peer list change notifications to the Android and
+        iOS listener. #7546
+      - Generated the Android debug bundle to a file. #7528
+      - Resolved the Android network route peer by HA unique ID
+        instead of scanning the full status. #7705
+      - Skipped late session warnings on desktop and scheduled them
+        in the app on Android. #7548
+    - ⚙️ Management Improvements
+      - Exposed peer MAC addresses and made peers searchable by
+        MAC. #6553
+      - Added an account setting to return an error on peer name
+        collision during AddPeer. #8154
+      - Refreshed only affected peers on DNS zone, DNS record and
+        IPv6 settings changes. #8050, #8051
+      - Emitted activity events for batch group operations. #8180
+      - Added a MySQL to PostgreSQL migration tool. #8095
+      - Made the Let's Encrypt challenge listener address
+        configurable for management and signal. #7706
+      - Tore down only the peer session that owns the stream. #8057
+      - Updated proxy mappings on peer IP change and the reserved
+        IP exclusion when generating peer IPs. #8139, #8144
+      - Expanded loaded snapshots in place, reducing allocations on
+        network map computation. #8177
+      - Cleaned up Agent Network configuration on account deletion
+        and added a disabled state to the managed Agent Network
+        proxy API. #7812, #7744
+      - Switched to libopenapi for managing the OpenAPI-based API,
+        and added the tenant delete endpoint to the spec. #8056,
+        #8054
+      - Improved Base62 encoding and decoding performance and
+        robustness. #3391
+      - Removed ingress ports. #8062
+      - Extracted a shared database connection and data repository,
+        and handled connection close on error. #7649, #7740
+      - Fixed the login filter, created HttpConfig before applying
+        TLS flag overrides, and moved the child-account check.
+        #7739, #8168, #8195
+    - 🔀 Reverse Proxy
+      - Added per-target HTTP access actions (use service
+        authentication, bypass, block), backed by middleware
+        snapshot revisions and container E2E coverage. #8114,
+        #8115, #8116, #8117
+      - Required a private proxy cluster for cluster and direct
+        upstream targets. #7984
+      - Added an option to refuse private addresses on
+        direct-upstream dials. #7913
+      - Fell back to the IdP for the proxy session email when the
+        token does not carry one. #8112
+    - 📡 Signal and Relay
+      - Fixed a race in Relay server shutdown. #7607
+      - Stopped Signal with an error when a server fails, instead
+        of continuing half-started. #8105
+    - 🏗️ Infrastructure and CI
+      - Added release-wired Red Hat UBI image variants for
+        management, signal, relay and the combined server, sharing
+        one license collection script. #8167, #7458, #7457, #7953,
+        #8055
+      - Fixed Red Hat certification preflight artifact handling.
+        #7947, #8111
+      - Fixed Traefik versioning and updated CrowdSec in the
+        self-hosted setup. #8152
+      - Replaced the which dependency with command in configure.sh.
+        #8007
+      - Added a Homebrew cask e2e test, moved the FreeBSD port test
+        to 15.1, and reported both peers' state when the connect
+        test times out. #7618, #7999, #7944
+      - Exempted Crowdin service PRs from title and docs checks.
+        #7170
+      - Test fixes for the update message tests, peer IP
+        allocation, and mysql-migrate container tests. #8000,
+        #8173, #8121, #8128
+    - 📝 Misc
+      - Used ASCII hyphens in the LICENSE header and extended the
+        copyright year to 2026. #8065, #8169
+    - Dashboard (v2.95.0)
+      - Added the Certificate posture check with CA validation,
+        SHA-256 fingerprints, and a mobile-unsupported warning.
+        dashboard#798
+      - Added Duplicate to the Access Control and Agent Network
+        policy row menus. dashboard#841
+      - Added per-target HTTP access controls for Reverse Proxy
+        services, with access badges in target lists. dashboard#823
+      - Added a setting to fail on peer name collision.
+        dashboard#851
+      - Added peer search by MAC address. dashboard#683
+      - Added OpenCode and Pi to Connect Agent with a provider and
+        model picker, and showed which models "All Models" covers.
+        dashboard#856, dashboard#816
+      - Streamlined Agent Network onboarding, adjusted it for
+        existing empty accounts, and made sure it adds the user to
+        Users. dashboard#822, dashboard#839, dashboard#840
+      - Drew the user view's agent policies from its peers.
+        dashboard#820
+      - Prevented duplicate routing peers and fixed live routing
+        peer creation in the Control Center. dashboard#836
+      - Showed enable and disable events for EDR and IdP sync
+        integrations. dashboard#849
+      - Fixed searching group peers by owner and sortable column
+        headers for Name, Metric and Domain. dashboard#818,
+        dashboard#681
+      - Blocked search engines by default with robots.txt.
+        dashboard#827
+      - Added a Red Hat UBI image variant (-ubi). dashboard#829
+      - Added Storybook with a visual regression check, and let the
+        e2e suite run against a deployed dashboard. dashboard#843,
+        dashboard#842
+      - Pointed bug reports and feature requests to Discussions,
+        made Manage Plan a primary button, and updated
+        announcements. dashboard#824, dashboard#828, dashboard#830,
+        dashboard#848
+- refreshed patches
+  service-install-cli-change.patch
+  skip-ui.patch
+
+-------------------------------------------------------------------
 Thu Oct  1 21:51:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.80.0
@@ -753,7 +973,7 @@ Thu Jul 30 00:20:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
   GUI installs, so if you manage devices through MDM, the
   disableAutostart setting is enforced on every launch to keep that
   under your control.
-  
+
   - Rebuilt the desktop client as a Wails v3 application with a
     React + TypeScript frontend, replacing the Fyne UI. #6473
   - Added internationalization with 10 locales (English, German,
@@ -782,7 +1002,7 @@ Thu Jul 30 00:20:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
   - Profiles: https://docs.netbird.io/client/profiles
   - Deep dive on the new app:
     https://netbird.io/knowledge-hub/netbird-v0-75-new-desktop-app
-    
+
   - What's Changed
     - Desktop Client Improvements
       - Made the client connect immediately on profile selection,
@@ -1934,7 +2154,7 @@ Tue Feb 24 18:48:57 UTC 2026 - Holden Fried <holden@opensuse.org>
 Tue Feb 24 16:43:33 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Update to 0.66.0:
-  
+
   New Feature: netbird expose
   * We're excited to introduce netbird expose --- a simple and
   secure way to expose your local services through the NetBird
@@ -1944,22 +2164,22 @@ Tue Feb 24 16:43:33 UTC 2026 - Holden Fried <holden@opensuse.org>
   - `netbird expose 8080`
   - This instantly publishes your local service via NetBird's
     reverse proxy.
-  
+
   You can enhance the exposure with built-in protection and
   customization:
   With PIN protection (6 digits)
   - `netbird expose 3000 --with-pin 123456`
-  
+
   With password protection and name prefix:
   - `netbird expose 8080 --with-password my-secret
     --with-name-prefix my-app`
-  
+
   Restrict by SSO user groups:
   - `netbird expose 8080 --with-user-groups engineering,devops`
-  
+
   Use a custom domain (pre-configured in your account):
   - `netbird expose 8080 --with-custom-domain app.example.com`
-  
+
   Supported Flags:
   - `--with-pin <string>` --- Protect the exposed service with a
     6-digit PIN
@@ -1971,7 +2191,7 @@ Tue Feb 24 16:43:33 UTC 2026 - Holden Fried <holden@opensuse.org>
     name
   - `--protocol <string>` --- Protocol to use (http or https,
     default http)
-  
+
   Client Improvements:
   - Stopped upstream retry loop immediately on context
     cancellation.
@@ -2972,7 +3192,7 @@ Thu Oct  2 14:35:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
     To use the browser client with self-hosted deployments, you need
     to upgrade your Management, Signal, Dashboard, and Relay
     containers.
-    
+
     Learn more here:
 
     Self-Hosted Quickstart – Support Browser Clients

@@ -554,4 +554,41 @@
     <comment>1</comment>
     <requestid>1382251</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>9d3979d4b34b76a46aa598496780345c</srcmd5>
+    <version>0.81.1</version>
+    <time>1792174135</time>
+    <user>anag_factory</user>
+    <comment>- fix initial config.json
+
+- Update to 0.81.1
+  - [client] Keep interface discovery out of the bind open path
+    (#8226) (#8227)
+
+- Update to 0.81.0
+  - Highlights
+    - Certificate Posture Checks
+      - A new Certificate posture check requires peers to hold a
+        device certificate issued by your own CA, and to prove they
+        still have the private key by signing a challenge from
+        management. A copied certificate without its key fails the
+        check. Management repeats the challenge every 4 hours while
+        the peer is connected, so a removed key or an expired
+        certificate closes access within that window.
+    - 🔗 nblink: forward into your network without root
+      - nblink is a new standalone binary that forwards local ports
+        into your NetBird network from an ordinary, unprivileged
+        process. It runs the client in userspace mode, so there is
+        no TUN device, no root, no installer, and /etc/resolv.conf
+        is never touched. Names on the upstream side resolve inside
+        the tunnel. It is built for places the regular agent cannot
+        run: managed laptops without admin rights, rootless
+        containers on OpenShift and Podman, CI jobs, MCP servers
+        and local AI agents that need an internal API, and sidecars
+        for apps that hardcode an HTTP endpoint.
+    - 📋 Duplicate Policies
+      - Access Control and Agent Network policies now have a
+        Duplicate action in the row menu. It opens the create</comment>
+    <requestid>1385142</requestid>
+  </revision>
 </revisionlist>

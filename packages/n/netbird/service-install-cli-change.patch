@@ -2,7 +2,7 @@ Index: netbird/client/cmd/login.go
 ===================================================================
 --- netbird.orig/client/cmd/login.go
 +++ netbird/client/cmd/login.go
-@@ -103,9 +103,16 @@ func doDaemonLogin(ctx context.Context,
+@@ -100,9 +100,16 @@ func doDaemonLogin(ctx context.Context,
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
  		//nolint
@@ -26,7 +26,7 @@ Index: netbird/client/cmd/root.go
 ===================================================================
 --- netbird.orig/client/cmd/root.go
 +++ netbird/client/cmd/root.go
-@@ -439,9 +439,16 @@ func getClient(cmd *cobra.Command) (*grp
+@@ -485,9 +485,16 @@ func getClient(cmd *cobra.Command) (*grp
  	conn, err := DialClientGRPCServer(cmd.Context(), daemonAddr)
  	if err != nil {
  		//nolint
@@ -248,7 +248,7 @@ Index: netbird/client/cmd/up.go
 ===================================================================
 --- netbird.orig/client/cmd/up.go
 +++ netbird/client/cmd/up.go
-@@ -281,9 +281,16 @@ func runInDaemonMode(ctx context.Context
+@@ -292,9 +292,16 @@ func runInDaemonMode(ctx context.Context
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
  		//nolint

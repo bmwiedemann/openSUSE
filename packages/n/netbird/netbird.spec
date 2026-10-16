@@ -32,7 +32,7 @@
 %bcond_with stub_config
 
 Name:           netbird
-Version:        0.80.0
+Version:        0.81.1
 Release:        0
 Summary:        Mesh VPN based on WireGuard
 License:        AGPL-3.0-only AND BSD-3-Clause
@@ -102,7 +102,7 @@ comprise a full netbird backend server, and is merely built for convenience.
 Management/signal/relay are not required for the netbird client application.
 
 %package relay
-Summary:        Backend signal portion for %{name} server
+Summary:        Backend relay portion for %{name} server
 
 %description relay
 Optional new relay component for %{name}. Please note that this does not
@@ -177,7 +177,7 @@ Supplements:    (%{name}-signal and bash-completion)
 BuildArch:      noarch
 
 %description signal-bash-completion
-Bash command line completion support for %{name}-signal.
+Bash command line completion support for %{name}-management.
 
 %package signal-fish-completion
 Summary:        Fish Completion for %{name}-signal
@@ -264,7 +264,7 @@ install -Dm644 %{SOURCE4} %{buildroot}%{_unitdir}/%{name}-signal.service
 install -d %{buildroot}%{_sysconfdir}/%{name}
 
 %if %{with stub_config}
-echo <<EOF > %{buildroot}/etc/netbird/config.json
+cat <<EOF > %{buildroot}/etc/netbird/config.json
 ##
 ## To add this machine to your netbird instance run:
 ##
@@ -333,7 +333,24 @@ failing_tests=(
   TestICEBind_HandlesConcurrentMixedTraffic
   TestRedirectAs_\*
   TestSSHProxy_CommandQuoting
-  TestJWTCache*
+  TestJWTCache_ServesTheOwner
+  TestJWTCache_RefusesAnotherLocalUser
+  TestJWTCache_EmptyCacheMatchesNobody
+  TestJWTCache_UnownedEntryMatchesNobody
+  TestJWTCache_ElevationDoesNotChangeTheOwner
+  TestJWTCache_Expiry
+  TestJWTCache_ClearDropsTheEntry
+  TestJWTCache_StoreFromAnEndedSessionIsDropped
+  TestJWTCache_StoreWorksAgainAfterClear
+  TestJWTCache_StoreReplacesThePreviousOwner
+  TestCachedJWT_ServesTheOwner
+  TestCachedJWT_RefusesAnotherCaller
+  TestCachedJWT_WithoutCallerIdentity
+  TestSwitchProfile_ClearsJWTCache
+  TestCleanupConnection_KeepsJWTCache
+  TestWaitJWTToken_DropsTokenFromASessionThatEndedBeforeTheWait
+  TestLogin_ProfileSwitchRejectsJWTObtainedUnderPreviousConfig
+  TestExchangeWithFallback_TCPTruncatesToClientSize
 )
 # Assemble skip string by replacing spaces with a pipe.
 disable=$(echo ${failing_tests[*]} | sed 's/ /|/g')

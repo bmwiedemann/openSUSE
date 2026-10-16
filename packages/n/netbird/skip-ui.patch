@@ -2,7 +2,7 @@ Index: netbird/go.mod
 ===================================================================
 --- netbird.orig/go.mod
 +++ netbird/go.mod
-@@ -114,7 +114,6 @@ require (
+@@ -120,7 +120,6 @@ require (
  	github.com/ti-mo/conntrack v0.5.1
  	github.com/ti-mo/netfilter v0.5.2
  	github.com/vmihailenco/msgpack/v5 v5.4.1
@@ -10,7 +10,7 @@ Index: netbird/go.mod
  	github.com/yusufpapurcu/wmi v1.2.4
  	github.com/zcalusic/sysinfo v1.1.3
  	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.67.0
-@@ -323,6 +322,15 @@ require (
+@@ -365,6 +364,15 @@ require (
  	rsc.io/qr v0.2.0 // indirect
  )
  
