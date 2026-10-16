@@ -288,4 +288,12 @@ checksums. Data only, no code or dependency change.</comment>
     <comment>Update to 0.3.373: manifest 614-&gt;618 templates (FishAudio, Higgsfield, Qwen Turbo; drop Luma pair). No code change, floors satisfied. Builds green, rpmlint clean.</comment>
     <requestid>1384887</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>982ff2c341e7d096ee61d7137c0dd94b</srcmd5>
+    <version>0.3.376</version>
+    <time>1792174130</time>
+    <user>anag_factory</user>
+    <comment>Forward python-comfyui-workflow-templates-core update to Factory.</comment>
+    <requestid>1385059</requestid>
+  </revision>
 </revisionlist>

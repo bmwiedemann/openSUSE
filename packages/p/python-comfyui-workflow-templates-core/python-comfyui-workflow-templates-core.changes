@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 15 16:36:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.376: the manifest now lists 624
+  templates (was 618)
+  * New, all owned by the media-assets-02 bundle: Flux.3 Image
+    Klein text-to-image, image edit and distilled variants, Krea 3
+    text-to-image and image edit
+  * Fix minComfyUIVersion for the Quiver templates
+  * The six new entries resolve against media-assets-02 0.1.15 or
+    newer, not yet in Factory; the floor stays at 0.1.9 until that
+    bundle lands
+
+-------------------------------------------------------------------
 Thu Oct 15 04:52:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.373: the manifest now lists 618
