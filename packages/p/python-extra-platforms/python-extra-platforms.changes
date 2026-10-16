@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 16 05:00:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.12.0:
+  * Generate the docstring of a trait or group on its first read
+    instead of building all of them when the package is imported,
+    which halves the import time.
+  * Import subprocess and shutil only in the two detection paths
+    that spawn a process.
+  * Fix generate_docstring() raising ModuleNotFoundError on a trait
+    or group whose class is defined outside the package.
+
+-------------------------------------------------------------------
 Sun Oct  4 18:05:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.11.0:
