@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 16 11:19:42 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Update to version 2.7.2+git.1792148770.648dcddb:
+  * CI/CD: update the make-sle16-compatible.patch correspondingly
+  * Doc: update sles doc urls
+
+-------------------------------------------------------------------
 Thu Sep 17 09:30:49 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Update to version 2.7.2+git.1789128469.a738abc1 (bsc#1267909):
@@ -28,8 +35,24 @@ Wed Aug 26 13:21:01 UTC 2026 - aburlakov@suse.com
 -------------------------------------------------------------------
 Tue Aug  4 09:12:46 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
-- bump rails stack v8.1.3.1, net-imap v0.6.6 and other gems (bsc#1268996,bsc#1273348,
-        bsc#1268996,bsc#1275179,bsc#1275183,bsc#1275188,bsc#1275200,bsc#1275213):
+- bump rails stack v8.1.3.1, net-imap v0.6.6 and other gems (
+    bsc#1268996 VUL-0: CVE-2026-42246: hawk2: net-imap: MITM attacker
+      can cause Net::IMAP#starttls to return successfully, without starting TLS
+    bsc#1273348 VUL-0: CVE-2026-66066: hawk2,rubygem-activestorage-8.0,
+      rubygem-activestorage-5.2: unsafe image processing operations on untrusted
+      uploads can allow arbitrary file reading and remote code execution
+    bsc#1275179 VUL-0: CVE-2026-73490: hawk2: loofah: improper handling of SVG
+      attributes in the HTML5 sanitizer allows bypass of local-reference restrictions
+    bsc#1275183 VUL-0: CVE-2026-73491: hawk2: loofah: improper
+      handling of javascript: URIs can lead to XSS
+    bsc#1275188 VUL-0: CVE-2026-73492: hawk2: loofah: improper
+      handling of javascript: and vbscript: URIs can lead to XSS
+    bsc#1275200 VUL-0: CVE-2026-73648: hawk2: rails-html-sanitizer:
+      cross-site scripting is possible when the sanitizer is configured
+      to allow certain SVG reference elements
+    bsc#1275213 VUL-0: CVE-2026-71847: hawk2: json: heap use-after free in
+      JSON::ResumableParser partial_value can lead to crash on truncated
+      duplicate-key streams):
   * actioncable-8.1.3.1.gem
   * actionmailbox-8.1.3.1.gem
   * actionmailer-8.1.3.1.gem
