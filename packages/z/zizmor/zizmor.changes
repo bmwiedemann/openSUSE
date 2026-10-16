@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 16 04:43:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.31.1:
+  * Bug Fixes
+    - Fixed a regression in 1.31.0 where some ignore
+      comments/configurations would no longer apply to the
+      dangerous-triggers audit (#2450)
+
+-------------------------------------------------------------------
 Thu Oct 15 04:53:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.31.0:
