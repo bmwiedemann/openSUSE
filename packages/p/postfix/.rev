@@ -2804,4 +2804,16 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment>1</comment>
     <requestid>1376583</requestid>
   </revision>
+  <revision rev="279" vrev="2">
+    <srcmd5>156dc98ff89fd17804854bd8ddd28494</srcmd5>
+    <version>3.11.7</version>
+    <time>1792174004</time>
+    <user>anag_factory</user>
+    <comment>- (bsc#1284216) New: postfix.service prints a warning if SELinux is not installed
+  * Test if /sbin/restorecon does exist. 
+
+- (bsc#1284216) postfix.service prints a warning if SELinux is not installed
+  * Test if /sbin/restorecon does exist.</comment>
+    <requestid>1384923</requestid>
+  </revision>
 </revisionlist>

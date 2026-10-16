@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 09:07:33 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- (bsc#1284216) New: postfix.service prints a warning if SELinux is not installed
+  * Test if /sbin/restorecon does exist. 
+
+-------------------------------------------------------------------
 Tue Sep  8 17:47:46 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.11.7
