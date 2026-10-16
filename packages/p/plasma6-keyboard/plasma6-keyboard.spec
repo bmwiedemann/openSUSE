@@ -30,14 +30,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-keyboard
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        Virtual Keyboard for Qt based desktops
 License:        GPL-2.0-or-later AND GPL-3.0-only
 URL:            https://invent.kde.org/plasma/plasma-keyboard
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 
@@ -90,6 +90,7 @@ KCM for plasmakeyboard, for systemsettings integration
 %build
 %cmake_kf6 \
   -DQT_QML_NO_CACHEGEN:BOOL=TRUE
+
 %kf6_build
 
 %install
@@ -112,6 +113,7 @@ desktop-file-validate %{buildroot}%{_kf6_applicationsdir}/org.kde.plasma.keyboar
 %{_kf6_qmldir}/QtQuick/VirtualKeyboard/Styles/Breeze/
 %dir %{_kf6_qmldir}/org/kde/plasma
 %{_kf6_bindir}/%{rname}
+%{_kf6_configkcfgdir}/plasmakeyboardsettings.kcfg
 %{_kf6_qmldir}/org/kde/plasma/keyboard/
 %{_kf6_applicationsdir}/org.kde.plasma.keyboard.desktop
 %{_kf6_appstreamdir}/org.kde.plasma.keyboard.metainfo.xml
