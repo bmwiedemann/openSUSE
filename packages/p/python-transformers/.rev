@@ -138,4 +138,12 @@ also lifts the 2.0 ceiling that left 5.17.0 unimportable.</comment>
     <comment>Update to 5.19.0: EmbeddingGemma2, paged| deprecation plus MoE router_logits and Owlv2 breaking changes per entry. Floors unchanged with Factory hub/tokenizers/torch in range, no CVE.</comment>
     <requestid>1382968</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a985c16bc63735a7241567bb0c498b19</srcmd5>
+    <version>5.20.0</version>
+    <time>1792174182</time>
+    <user>anag_factory</user>
+    <comment>Update python-transformers to 5.20.0 (version and tarball only, no new dependencies).</comment>
+    <requestid>1385128</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 16 06:06:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.20.0:
+  * Add Muse Spark Open, Ling 3.0 Flash, Kolibri 1, MiniCPM-V
+    4.7, UnlimitedOcr, UltraBERT and MOSS-Transcribe-Diarize
+    models, plus Molmo2 and PP-DocLayoutV4 support
+  * Breaking: remove deprecated cache utility methods and
+    cross-model imports, centralize sub-config init via
+    SubConfigSpec; LUKE entity tokens are special tokens now
+  * Exporters gain a unified quantization API across Dynamo,
+    ONNX, OpenVINO and ExecuTorch
+  * Image decoding moves to torchcodec; chat inputs are
+    sanitized against smuggled special tokens
+  * Fix static-cache generate() with host-side inputs and
+    under tensor parallelism, Whisper batch timestamp
+    decoding and TPU generation stalls
+  * No dependency changes: upstream floors and caps are
+    identical to 5.19.0
+
+-------------------------------------------------------------------
 Wed Oct  7 07:39:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.19.0:
