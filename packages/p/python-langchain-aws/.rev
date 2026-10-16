@@ -242,4 +242,12 @@ No dependency floor changes.
     <comment>Update to 1.8.2: follow the new langchain-core model-profile fields, fix tool-input parsing and Responses gating; require langchain-core &gt;= 1.6.10.</comment>
     <requestid>1384901</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>be1585d1371b9a8ca347b8b4a48b8b0b</srcmd5>
+    <version>1.9.0</version>
+    <time>1792174178</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-aws to 1.9.0.</comment>
+    <requestid>1385124</requestid>
+  </revision>
 </revisionlist>

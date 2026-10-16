@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 16 06:08:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.9.0:
+  * ChatBedrock usage_metadata input_tokens now include cache read
+    and write tokens, matching ChatBedrockConverse behavior
+  * ChatBedrockConverse no longer fails on plain-text MIME content
+    and reports Converse thinking tokens in usage_metadata
+  * Add missing reasoning_effort_levels to model profiles and
+    refresh the bundled Bedrock model profile data
+  * Tag non-boto chat classes with a langchain-aws source marker
+
+-------------------------------------------------------------------
 Thu Oct 15 04:54:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.8.2:
