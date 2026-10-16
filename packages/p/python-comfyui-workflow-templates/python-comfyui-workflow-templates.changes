@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 15 16:36:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.85: metadata-only release, the re-export
+  shim code is byte-identical to 0.11.82
+  * Upstream release-train pins move to core 0.3.376, json 0.1.111
+    and media-assets-02 0.1.16
+  * New templates in the train: Flux.3 Image Klein text-to-image,
+    image edit and distilled variants, Krea 3 text-to-image and
+    image edit
+  * Fix minComfyUIVersion for the Quiver templates
+
+-------------------------------------------------------------------
 Thu Oct 15 04:49:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.82: metadata-only release, the re-export
