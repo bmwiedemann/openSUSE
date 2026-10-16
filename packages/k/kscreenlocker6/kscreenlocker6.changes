@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:27 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+  * Remove attemptCount in KSldApp::lock()
+  * Always send DBus replies immediately (kde#525900)
+  * Fix screenlocker showing up when switching users (kde#525765)
+
+-------------------------------------------------------------------
+Fri Sep 25 07:19:18 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * Adding "Switch to Last-Used Keyboard Layout" to the shortcut exceptions list.
+  * greeter: allow dumping when debugging is enabled
+  * prctls: set dumpable as long
+  * prctls: drop unused include
+  * worker: set dumpable prctl
+  * cmake: drop unused header checks
+  * greeter: use new prctls.h and make it a namespace
+  * diewithparent: rename to prctls
+  * greeter: tighten fingerprint setup conditions
+  * worker: break apart main a bit
+  * diewithparent: change conditions around
+  * worker: use out_ptr
+  * worker: harden against unexpected stdin problems
+  * worker: exit if we are orphaned at startup
+  * worker: exit if dieWithParent doesn't work
+  * Drop obsolete Wayland dependencies
+
+-------------------------------------------------------------------
+Sat Sep 12 19:30:31 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  8 12:07:57 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
