@@ -1,0 +1,83 @@
+From 3e0d7b778ae390e1865101b7a68131bb8195e6df Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Wed, 24 Jun 2026 08:45:37 +0200
+Subject: [PATCH] tree-optimization/125953 - ICE with vector pattern stmts
+ range query
+To: gcc-patches@gcc.gnu.org
+
+Vectorizer pattern recog eventually feeds range_of_expr with both
+pattern def expressions and pattern context stmts.  While that's
+IMO not OK the ranger code has some existing defenses against
+defs that do not reside in the IL.  Just those are incomplete.
+
+The following makes them more robust.  I will cleanup the vectorizer
+side of things on trunk.
+
+I have documented gimple_ranger::range_of_expr as to how I understand
+it works (the different range_of_* APIs seem to behave slightly
+different - I find this confusing).  Esp. range_of_expr requires
+a valid 'r' input range and the return value isn't always reflecting
+that something was done.
+
+	PR tree-optimization/125953
+	* gimple-range.cc (gimple_ranger::range_of_expr): Document.
+	Fall back to global ranges if 'stmt' is not in the IL.
+
+	* gcc.dg/torture/pr125953.c: New testcase.
+
+(cherry picked from commit 79496eefdaa77840d59571cd03bccf82d2704046)
+---
+ gcc/gimple-range.cc                     |  8 ++++++--
+ gcc/testsuite/gcc.dg/torture/pr125953.c | 14 ++++++++++++++
+ 2 files changed, 20 insertions(+), 2 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.dg/torture/pr125953.c
+
+diff --git a/gcc/gimple-range.cc b/gcc/gimple-range.cc
+index 6b7d4da9800..3fcbb03c5f4 100644
+--- a/gcc/gimple-range.cc
++++ b/gcc/gimple-range.cc
+@@ -78,6 +78,9 @@ gimple_ranger::const_query ()
+   return m_cache.const_query ();
+ }
+ 
++// Implement range of EXPR on stmt S, and return it in R.
++// Return false if no range can be calculated.
++
+ bool
+ gimple_ranger::range_of_expr (vrange &r, tree expr, gimple *stmt)
+ {
+@@ -98,8 +101,9 @@ gimple_ranger::range_of_expr (vrange &r, tree expr, gimple *stmt)
+ 	fputs ("\n", dump_file);
+     }
+ 
+-  // If there is no statement, just get the global value.
+-  if (!stmt)
++  // If there is no statement or stmt happens to be not in the IL,
++  // just get the global value.
++  if (!stmt || !gimple_bb (stmt))
+     {
+       value_range tmp (TREE_TYPE (expr));
+       // If there is no global range for EXPR yet, try to evaluate it.
+diff --git a/gcc/testsuite/gcc.dg/torture/pr125953.c b/gcc/testsuite/gcc.dg/torture/pr125953.c
+new file mode 100644
+index 00000000000..3a34bc3d676
+--- /dev/null
++++ b/gcc/testsuite/gcc.dg/torture/pr125953.c
+@@ -0,0 +1,14 @@
++/* { dg-do compile } */
++/* { dg-additional-options "-march=armv8.3-a+sve2" { target aarch64-*-* } } */
++
++unsigned char *begin(unsigned char *out)
++{
++  int size_0_0_0;
++  unsigned char *kRow = begin(out);
++  unsigned char *currentRow = kRow;
++  for (int x = 0; x < size_0_0_0; ++x) {
++    char k = kRow ? kRow[x] : 5;
++    out[2] = currentRow[2] * k / 255;
++  }
++  return out;
++}
+-- 
+2.51.0
+

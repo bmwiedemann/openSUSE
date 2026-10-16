@@ -276,4 +276,13 @@ since we bumped libgo SONAME as well for 15</comment>
 - Make build recipe compatible with POSIX sh</comment>
     <requestid>1382728</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>78b80d5621dcfa30585812944076ce33</srcmd5>
+    <version>15.3.0+git11272</version>
+    <time>1792174008</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc15-pr125953.patch to fix ICE during MozillaFirefox build
+  on aarch64.  [gcc#125953]</comment>
+    <requestid>1384961</requestid>
+  </revision>
 </revisionlist>

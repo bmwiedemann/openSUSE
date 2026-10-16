@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 07:05:38 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add gcc15-pr125953.patch to fix ICE during MozillaFirefox build
+  on aarch64.  [gcc#125953]
+
+-------------------------------------------------------------------
 Tue Oct  6 08:06:04 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Add gcc15-pr127656.patch to fix use-after-free in
