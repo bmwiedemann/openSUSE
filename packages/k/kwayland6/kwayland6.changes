@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:29 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+
+-------------------------------------------------------------------
+Fri Sep 25 07:19:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+
+-------------------------------------------------------------------
+Sat Sep 12 19:30:45 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Changes since 6.7.5:
+  * cmake: bump plasma-wayland-protocols dep to 1.22.0
+  * Update version for new release 6.7.90
+  * Bump required libwayland version
+  * Add support for wl_fixes.ack_global_remove
+  * Fix cmake using --warn-uninitialized -Werror=dev
+  * Remove obsolete doxygen file
+  * Enable LSAN in CI
+  * CI: Require all tests to pass
+  * Update version for new release 6.7.80
+  * Does not build without PlasmaWaylandProtocols 1.21.0
+
+-------------------------------------------------------------------
 Tue Sep  8 12:08:03 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
