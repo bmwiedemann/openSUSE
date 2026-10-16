@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 14 09:20:52 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.11.1:
+  * Fixed:
+    + Update serializer to be non-recursive (#1644).
+    + Improve ancestor handling in the inline Treeprocessor
+      (#1646).
+    + Keep a raw HTML comment inside an inline HTML element
+      that closes in the same paragraph, instead of splitting
+      the paragraph around it (#1643).
+    + Fix issue where inline HTML attributes were rejected if
+      they had < or > in the attribute (#1647).
+    + Fix issue where an unterminated end tag (</foo) could
+      cause all remaining content to be dropped (#1651).
+    + Complete rework of emphasis handling to improve nested
+      emphasis handling better (#1632).
+
+-------------------------------------------------------------------
 Sat Sep 26 18:43:46 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.11:
