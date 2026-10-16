@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:03 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+  * page/EditablePage: round heightForContent down
+  * Fix cache clean up with ComponentCacheModel (kde#525978)
+
+-------------------------------------------------------------------
+Fri Sep 25 07:20:17 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+
+-------------------------------------------------------------------
+Sat Sep 12 19:33:20 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Changes since 6.7.5:
+  * Update version for new release 6.7.90
+  * Fix process termination when used in RtL language (kde#522233)
+  * Fix type name in kcfg file
+  * Install kcfg file
+  * Add UI to set CPU affinity
+  * table: Set focus to search field of ColumnConfigurationDialog
+  * table: Change ColumnConfigDialog search filter to filter on text edit
+  * table: Port ColumnConfigurationDialog from Dialog to Window (kde#517723)
+  * processtable: Remove unnecessary separator
+  * table: Hide the icon for processes in tree mode if it is empty (kde#442095)
+  * table: Do nothing if data() functions are passed an invalid index
+  * table: Make sure to cleanup sorted columns when using "hide column" on table
+  * table: Explicitly remove duplicate entries from sortedColumns in ColumnSFModel (kde#518073)
+  * Replace "applications-all" with "applications-all-symbolic"
+  * Use similar capitalization as sibling menu items for "Edit or Remove Pages…"
+  * Fix initial page from commandline
+  * Enable LSAN in CI
+  * Framework 'Kquickcharts' is required for graphs to work
+  * CI: Require all tests to pass
+  * Update version for new release 6.7.80
+
+-------------------------------------------------------------------
 Tue Sep  8 12:09:00 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
