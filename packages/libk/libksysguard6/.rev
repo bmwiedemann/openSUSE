@@ -391,4 +391,14 @@
     <comment>Plasma 6.7.5 (forwarded request 1376397 from Vogtinator)</comment>
     <requestid>1376448</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f4ad951630fd4ac508e49e07bc3de6ad</srcmd5>
+    <version>6.8.0</version>
+    <time>1792174086</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to disable one-shot rescheduling for now, security review
+  not complete yet (boo#1281596):
+  * 0001-Drop-org.kde.ksysguard.processlisthelper.applyschedu.patch (forwarded request 1385031 from Vogtinator)</comment>
+    <requestid>1385032</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,86 @@
+From 8353b3f1c7a921161f4a8de6bb0fd3722264bb6e Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 15 Oct 2026 16:02:28 +0200
+Subject: [PATCH] Drop org.kde.ksysguard.processlisthelper.applyscheduling for
+ now
+
+Security review not completed yet.
+---
+ processcore/actions.actions | 64 -------------------------------------
+ 1 file changed, 64 deletions(-)
+
+diff --git a/processcore/actions.actions b/processcore/actions.actions
+index ad0668c6..f1fdb563 100644
+--- a/processcore/actions.actions
++++ b/processcore/actions.actions
+@@ -614,67 +614,3 @@ Description[wa]=Candjî ké programeu d' CPU doet programer l' enondaedje d' o
+ Description[zh_CN]=更改指定进程的 CPU 调度器
+ Description[zh_TW]=變更要使用哪個 CPU 排程器來排程指定的行程
+ Policy=auth_admin
+-
+-
+-[org.kde.ksysguard.processlisthelper.applyscheduling]
+-Name=Change process scheduling
+-Name[ar]=غيّر جدولة العملية
+-Name[bg]=Промяна на планирането на процеса
+-Name[ca]=Canvia la planificació de procés
+-Name[ca@valencia]=Canvia la planificació de procés
+-Name[de]=Prozessplanung ändern
+-Name[es]=Cambiar planificación del proceso
+-Name[eu]=Prozesu-antolaketa aldatu
+-Name[fi]=Muuta prosessin aikataulutusta
+-Name[fr]=Modifier la planification du processus
+-Name[he]=שינוי תזמון תהליך
+-Name[ia]=Modifica le planification de processo
+-Name[it]=Modifica lo scheduling dei processi
+-Name[ka]=პროცესების დაგეგმვის შეცვლა
+-Name[ko]=프로세스 스케줄 변경
+-Name[lt]=Keisti proceso planavimą
+-Name[nl]=Procesplanning wijzigen
+-Name[pt_BR]=Alterar o agendamento do processo
+-Name[ru]=Изменение приоритета и планирования процесса
+-Name[sk]=Zmeniť plánovanie procesu
+-Name[sl]=Spremeni razporejanje procesov
+-Name[sr]=Промени распоређивање процеса
+-Name[sr@ijekavian]=Промијени распоређивање процеса
+-Name[sr@ijekavianlatin]=Promijeni raspoređivanje procesa
+-Name[sr@latin]=Promeni raspoređivanje procesa
+-Name[sv]=Ändra processchemaläggning
+-Name[tr]=Süreç Zamanlamasını Değiştir
+-Name[uk]=Змінити планування процесів
+-Name[zh_CN]=更改进程调度
+-Name[zh_TW]=變更行程排程
+-Description=Change the niceness, CPU scheduler and IO scheduler of a given process in one operation
+-Description[ar]=غيّر درجة اللطف، ومجدول وحدة المعالجة المركزية (CPU)، ومجدول عمليات الإدخال/الإخراج (IO) لعملية معينة في عملية واحدة
+-Description[bg]=Промяна на приоритета, планировчика на процесора и планировчика на IO операции на даден процес в една операция
+-Description[ca]=Canvia la «niceness», el planificador de la CPU i el planificador d'E/S d'un procés indicat en una operació
+-Description[ca@valencia]=Canvia la «niceness», el planificador de la CPU i el planificador d'E/S d'un procés indicat en una operació
+-Description[de]=Die Priorität (nice) und den CPU- und E/A-Planer für einen bestimmten Prozess in einem Schritt ändern
+-Description[es]=Cambiar la prioridad, el planificador de CPU y el planificador de E/S de un determinado proceso en una operación
+-Description[eu]=Aldatu prozesu jakin baten `nice` balioa, PUZ-antolatzailea eta S/I antolatzailea eragiketa bakarrean
+-Description[fi]=Muuta annetun prosessin prosessi- (”niceness”), suoritin- ja I/O-ajastusta yhtenä toimenpiteenä
+-Description[fr]=Modifier la qualité, l'ordonnanceur de processeurs et l'ordonnanceur d'Entrées / Sorties d'un processus donné en une seule opération
+-Description[he]=שינוי ה־niceness, תזמון המעבד ותזמון קלט/פלט של תהליך נבחר בפעולה אחת
+-Description[ia]=Cambia le prioritate (niceness), le planificator de CPU e le planificator de IO de un date processo in un operation 
+-Description[it]=Modifica la niceness, lo scheduler della CPU e lo scheduler I/O di un determinato processo in un'unica operazione
+-Description[ka]=მოცემული პროცესის პრიორიტეტის, CPU-ის დამგეგმავის და IO დამგეგმავის შეცვლა ერთი ოპერაციით
+-Description[ko]=지정한 프로세스의 nice 값, CPU 스케줄러, I/O 스케줄러를 한 번에 바꾸기
+-Description[lt]=Keisti viena operacija nurodyto proceso nice reikšmę, procesoriaus planuoklę ir IO planuoklę
+-Description[nl]=Wijzig de nice, CPU-planner en I/O-planner van een bepaald proces in één enkele bewerking.
+-Description[pt_BR]=Alterar a prioridade, o escalonador de CPU e o escalonador de E/S de um determinado processo em uma única operação
+-Description[ru]=Изменение приоритета nice, планировщика процессора и планировщика ввода-вывода выбранного процесса за одну операцию
+-Description[sk]=Zmeniť prioritu, plánovač CPU a plánovač V/V daného procesu v jednej operácii
+-Description[sl]=Spremenite parameter "nice", razporejevalnik CPU in razporejevalnik V/I danega procesa v eni operaciji
+-Description[sr]=Мења одједном финоћу, распоређивач ЦПУ‑а и распоређивач У/И‑ја датог процеса
+-Description[sr@ijekavian]=Мијења одједном финоћу, распоређивач ЦПУ‑а и распоређивач У/И‑ја датог процеса
+-Description[sr@ijekavianlatin]=Mijenja odjednom finoću, raspoređivač CPU‑a i raspoređivač U/I‑ja datog procesa
+-Description[sr@latin]=Menja odjednom finoću, raspoređivač CPU‑a i raspoređivač U/I‑ja datog procesa
+-Description[sv]=Ändra prioritetsvärdet, processorschemaläggare, samt in- och utmatningsschemaläggare för en given process på en gång
+-Description[tr]=Bir işlemde verilen bir sürecin önceliğini, CPU ve girdi–çıktı zamanlayıcısını değiştirin
+-Description[uk]=Змінити пріоритетність, планування часу процесора та планування введення-виведення вказаного процесу за одну дію
+-Description[zh_CN]=通过一次操作更改指定进程的优先级、CPU 调度器和 I/O 调度器
+-Description[zh_TW]=一次改變指定行程的 nice 值、CPU 排程器、及 IO 排程器
+-Policy=auth_admin
+-- 
+2.56.0
+
