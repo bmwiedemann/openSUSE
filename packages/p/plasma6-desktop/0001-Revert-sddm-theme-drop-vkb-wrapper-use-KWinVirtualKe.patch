@@ -1,0 +1,104 @@
+From fe46004a5695d9a683d1a635d2c5f9bee746b0c8 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sun, 13 Sep 2026 18:09:05 +0200
+Subject: [PATCH] Revert "sddm-theme: drop vkb wrapper, use KWinVirtualKeyboard
+ directly"
+
+This reverts commit b1eed7f756c156eebb9f79463bdb09ed641cc81d.
+
+SDDM may still use X11.
+---
+ sddm-theme/Main.qml | 34 ++++++++++++++++++++--------------
+ 1 file changed, 20 insertions(+), 14 deletions(-)
+
+diff --git a/sddm-theme/Main.qml b/sddm-theme/Main.qml
+index ab75d3db99..210ac01667 100644
+--- a/sddm-theme/Main.qml
++++ b/sddm-theme/Main.qml
+@@ -1,6 +1,5 @@
+ /*
+     SPDX-FileCopyrightText: 2016 David Edmundson <davidedmundson@kde.org>
+-    SPDX-FileCopyrightText: 2026 Kristen McWilliam <kristen@kde.org>
+ 
+     SPDX-License-Identifier: LGPL-2.0-or-later
+ */
+@@ -12,7 +11,6 @@ import Qt5Compat.GraphicalEffects
+ 
+ import org.kde.plasma.components as PlasmaComponents3
+ import org.kde.plasma.private.keyboardindicator as KeyboardIndicator
+-import org.kde.plasma.workspace.keyboardlayout as Keyboards
+ import org.kde.kirigami as Kirigami
+ 
+ import org.kde.breeze.components
+@@ -65,7 +63,7 @@ Item {
+         anchors.fill: parent
+ 
+         property bool uiVisible: true
+-        property bool blockUI: mainStack.depth > 1 || userListComponent.mainPasswordBox.text.length > 0 || Keyboards.KWinVirtualKeyboard.visible || config.type !== "image"
++        property bool blockUI: mainStack.depth > 1 || userListComponent.mainPasswordBox.text.length > 0 || inputPanel.keyboardActive || config.type !== "image"
+ 
+         hoverEnabled: true
+         drag.filterChildren: true
+@@ -207,7 +205,7 @@ Item {
+                     return parts.join(" • ");
+                 }
+ 
+-                actionItemsVisible: !Keyboards.KWinVirtualKeyboard.visible
++                actionItemsVisible: !inputPanel.keyboardActive
+                 actionItems: [
+                     ActionButton {
+                         icon.name: "system-hibernate"
+@@ -315,6 +313,17 @@ Item {
+             }
+         }
+ 
++        VirtualKeyboardLoader {
++            id: inputPanel
++
++            z: 1
++
++            screenRoot: root
++            mainStack: mainStack
++            mainBlock: userListComponent
++            passwordField: userListComponent.mainPasswordBox
++        }
++
+         Component {
+             id: userPromptComponent
+             Login {
+@@ -341,7 +350,7 @@ Item {
+                     sddm.login(username, password, sessionButton.currentIndex)
+                 }
+ 
+-                actionItemsVisible: !Keyboards.KWinVirtualKeyboard.visible
++                actionItemsVisible: !inputPanel.keyboardActive
+                 actionItems: [
+                     ActionButton {
+                         icon.name: "system-suspend"
+@@ -438,17 +447,14 @@ Item {
+                 id: virtualKeyboardButton
+ 
+                 text: i18ndc("plasma-desktop-sddm-theme", "Button to show/hide virtual keyboard", "Virtual Keyboard")
+-                icon.name: Keyboards.KWinVirtualKeyboard.visible ? "input-keyboard-virtual-on" : "input-keyboard-virtual-off"
++                icon.name: inputPanel.keyboardActive ? "input-keyboard-virtual-on" : "input-keyboard-virtual-off"
+                 onClicked: {
+-                    if (Keyboards.KWinVirtualKeyboard.visible) {
+-                        Keyboards.KWinVirtualKeyboard.active = false;
+-                    } else {
+-                        // Otherwise the password field loses focus and on-screen keyboard
+-                        // keystrokes get eaten
+-                        userListComponent.mainPasswordBox.forceActiveFocus();
+-                        Keyboards.KWinVirtualKeyboard.forceActivate();
+-                    }
++                    // Otherwise the password field loses focus and virtual keyboard
++                    // keystrokes get eaten
++                    userListComponent.mainPasswordBox.forceActiveFocus();
++                    inputPanel.showHide()
+                 }
++                visible: inputPanel.status === Loader.Ready
+ 
+                 Layout.fillHeight: true
+                 containmentMask: Item {
+-- 
+2.54.0
+

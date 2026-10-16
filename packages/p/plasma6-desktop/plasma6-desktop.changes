@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:51 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * kcms/tablet: Clean up canberra context
+  * Update version for new release 6.8.0
+  * kcms/dateandtime: Auth manually before issuing calls to timedate1
+  * kcms/dateandtime: Calculate timeDiff before doing blocking things
+  * Positioner: Fix off by one when checking whether an item fits
+  * panel: Factor in vkbd state for floating panel state
+  * applets/taskmanager: avoid ReleaseWithinBounds for TapHandler
+  * kcms/tablet: Minor fixups to other refreshInputSequence calls
+  * kcms/tablet: fix setting of stylus and pad buttons
+  * Ask for bash in 50-krunner-activate-typing.sh
+  * containments/desktop: Watch for KRunner with QDBusServiceWatcher
+  * kcms/touchpad: Load name and sysName properties (kde#521800)
+  * fix systemsettings ui font color
+  * applets/taskManager: don't hide tooltip when mute clicked
+  * applets/window-list: qualify parent names
+  * applets/window-list: simplify delegate keyboard activation
+  * applets/window-list: explicitly unset focus after click
+  * applets/window-list: remove MenuButton mnemonic
+  * applets/window-list: fix glitch when closing
+
+-------------------------------------------------------------------
+Fri Sep 25 07:19:53 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * Emojier: Fix incorrect buttons/placeholder when search gives no results
+  * kcm_keys: fix layouting issues (kde#525725)
+  * desktopppackage/configuration: fix GridViewKCM detection
+  * lockscreenui: only show prompt when authenticator needs it
+  * applets/kicker: don't set anchors.fill on PlasmoidItem
+  * Panel: take into account the add widgets button for minimum width (kde#525826)
+  * Containments/FolderView: fix isUiReady never going true
+  * RenameEditor: Match text color to the custom background (kde#525319)
+  * Revert "Port lockscreen/SDDM footer to a reuseable component"
+  * Revert "lockscreen: pass new footer to WallpaperFader"
+- Drop patches, now upstream:
+  * 0001-Revert-lockscreen-pass-new-footer-to-WallpaperFader.patch
+  * 0002-Revert-Port-lockscreen-SDDM-footer-to-a-reuseable-co.patch
+
+-------------------------------------------------------------------
+Sat Sep 12 19:32:05 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Too many changes to list here
+- Add patches to fix login with SDDM:
+  * 0001-Revert-lockscreen-pass-new-footer-to-WallpaperFader.patch
+  * 0002-Revert-Port-lockscreen-SDDM-footer-to-a-reuseable-co.patch
+- Add patch to fix virtual keyboard behaviour in SDDM:
+  * 0001-Revert-sddm-theme-drop-vkb-wrapper-use-KWinVirtualKe.patch
+
+-------------------------------------------------------------------
 Tue Sep  8 12:08:39 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:

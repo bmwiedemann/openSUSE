@@ -28,22 +28,21 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
-%if 0%{?suse_version} == 1500
-%bcond_without scim
-%endif
 Name:           plasma6-desktop
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Apply-branding-to-default-favorites.patch
+# PATCH-FIX-OPENSUSE
+Patch101:       0001-Revert-sddm-theme-drop-vkb-wrapper-use-KWinVirtualKe.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # Due to KWinDBusInterface not having a cmake version config file, we need to BR kwin6-devel instead
@@ -52,7 +51,6 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # BuildRequires:  cmake(ScreenSaverDBusInterface) >= %%{_plasma6_bugfix}
 BuildRequires:  kscreenlocker6-devel >= %{_plasma6_bugfix}
 BuildRequires:  kwin6-devel >= %{_plasma6_bugfix}
-BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KAccounts6)
 BuildRequires:  cmake(KF6Attica) >= %{kf6_version}
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
@@ -71,7 +69,8 @@ BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KDED) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
-BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
@@ -83,7 +82,6 @@ BuildRequires:  cmake(KF6Svg) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
-BuildRequires:  cmake(KNightTime) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KRunnerAppDBusInterface) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KSMServerDBusInterface) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KSysGuard) >= %{_plasma6_bugfix}
@@ -96,10 +94,11 @@ BuildRequires:  cmake(Plasma5Support) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaActivities) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaActivitiesStats) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaQuick) >= %{_plasma6_bugfix}
-BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.10.0
+BuildRequires:  cmake(PolkitQt6-1)
 BuildRequires:  cmake(Qt6Concurrent)  >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6GuiPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
@@ -117,30 +116,20 @@ BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwacom)
-%if %{with scim}
-BuildRequires:  pkgconfig(scim)
-%endif
 BuildRequires:  pkgconfig(signon-oauth2plugin)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.44
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-atom)
 BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-keysyms)
-BuildRequires:  pkgconfig(xcb-record)
 BuildRequires:  pkgconfig(xcb-shm)
-BuildRequires:  pkgconfig(xcb-xinput)
-BuildRequires:  pkgconfig(xcursor)
-BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xkbregistry)
 %ifnarch s390x
 BuildRequires:  pkgconfig(xorg-evdev)
-BuildRequires:  pkgconfig(xorg-libinput)
-BuildRequires:  pkgconfig(xorg-server)
 %endif
 BuildRequires:  xkeyboard-config
 Requires:       plasma6-desktop-branding = %{version}
@@ -197,12 +186,6 @@ Obsoletes:      plasma5-addons-kimpanel < %{version}
 Provides:       plasma5-desktop-kimpanel = %{version}
 Obsoletes:      plasma5-desktop-kimpanel < %{version}
 Requires:       (plasma6-kimpanel-ibus if ibus)
-%if %{with scim}
-Requires:       (plasma6-kimpanel-scim if scim)
-%endif
-
-%global have_gamecontroller_kcm %{pkg_vcmp cmake(sdl2) >= 2.0.16}
-%global have_gamecontroller_kcm 1
 
 %description
 This package contains the basic packages for a Plasma workspace.
@@ -225,34 +208,18 @@ Requires:       %{name} = %{version}
 %description -n plasma6-kimpanel-ibus
 Plasma 6 Input Method Backend for IBus support.
 
-%if %{with scim}
-%package -n plasma6-kimpanel-scim
-Summary:        Plasma 6 SCIM Configuration
-Requires:       %{name} = %{version}
-
-%description -n plasma6-kimpanel-scim
-Plasma 6 Input Method Backend for SCIM (Smart Chinese/Common Input Method) support.
-%endif
-
 %lang_package
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 \
-%ifarch s390x
-  -DBUILD_KCM_TOUCHPAD_X11:BOOL=FALSE \
-  -DBUILD_KCM_MOUSE_X11=OFF
-%endif
+%cmake_kf6
 
 %kf6_build
 
 %install
 %kf6_install
-
-# no devel files needed here
-rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 
 %find_lang %{name} --all-name --with-html
 
@@ -278,9 +245,7 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_applicationsdir}/kcm_baloofile.desktop
 %{_kf6_applicationsdir}/kcm_clock.desktop
 %{_kf6_applicationsdir}/kcm_desktoppaths.desktop
-%if %{have_gamecontroller_kcm}
 %{_kf6_applicationsdir}/kcm_gamecontroller.desktop
-%endif
 %{_kf6_applicationsdir}/kcm_kded.desktop
 %{_kf6_applicationsdir}/kcm_keyboard.desktop
 %{_kf6_applicationsdir}/kcm_keys.desktop
@@ -295,10 +260,10 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_applicationsdir}/kcm_tablet.desktop
 %{_kf6_applicationsdir}/kcm_touchscreen.desktop
 %{_kf6_applicationsdir}/kcm_workspace.desktop
-%{_kf6_applicationsdir}/kcmspellchecking.desktop
 %{_kf6_applicationsdir}/kde-mimeapps.list
 %{_kf6_applicationsdir}/org.kde.knetattach.desktop
 %{_kf6_applicationsdir}/kcm_mouse.desktop
+%{_kf6_applicationsdir}/kcm_spellchecking.desktop
 %{_kf6_applicationsdir}/kcm_touchpad.desktop
 %{_kf6_appstreamdir}/*.xml
 %{_kf6_bindir}/kaccess
@@ -319,9 +284,9 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_plasmadir}/shells/
 %{_kf6_plugindir}/attica_kde.so
 %{_kf6_plugindir}/kf6/kded/device_automounter.so
-%{_kf6_plugindir}/kf6/kded/keyboard.so
-%{_kf6_plugindir}/kf6/kded/kded_touchpad.so
+%{_kf6_plugindir}/kf6/kded/screenreader.so
 %{_kf6_plugindir}/kf6/krunner/
+%{_kf6_plugindir}/plasma/applets/org.kde.plasma.dwellclicker.so
 %{_kf6_plugindir}/plasma/applets/org.kde.panel.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.keyboardlayout.so
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.kicker.so
@@ -339,12 +304,7 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_activities.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_baloofile.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_desktoppaths.so
-%if %{have_gamecontroller_kcm}
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_gamecontroller.so
-%endif
-%dir %{_kf6_plugindir}/plasma/kcminit
-%{_kf6_plugindir}/plasma/kcminit/kcm_mouse_init.so
-%{_kf6_plugindir}/plasma/kcminit/kcm_touchpad_init.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mouse.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_touchpad.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_kded.so
@@ -362,7 +322,7 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_qtquicksettings.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_recentFiles.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_solid_actions.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcmspellchecking.so
+%{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_spellchecking.so
 %{_kf6_qmldir}/org/kde/plasma/
 %{_kf6_qmldir}/org/kde/private/
 %dir %{_kf6_sharedir}/accounts/
@@ -378,6 +338,7 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_sharedir}/kconf_update/50-krunner-activate-typing.sh
 %{_kf6_sharedir}/kconf_update/50-krunner-activate-typing.upd
 %{_kf6_sharedir}/kglobalaccel/org.kde.touchpadshortcuts.desktop
+%{_kf6_sharedir}/kglobalaccel/org.kde.screenreader.desktop
 %dir %{_kf6_sharedir}/sddm
 %dir %{_kf6_sharedir}/sddm/themes
 %{_kf6_sharedir}/sddm/themes/breeze/
@@ -385,10 +346,6 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_iconsdir}/hicolor/*/devices/input-touchpad.*
 %{_kf6_sharedir}/kcmmouse/
 %exclude %{_kf6_plasmadir}/emoji/
-%ifnarch s390 s390x
-%{_kf6_bindir}/kapplymousetheme
-%{_kf6_bindir}/kcm-touchpad-list-devices
-%endif
 %{_userunitdir}/plasma-kaccess.service
 
 %files emojier
@@ -400,11 +357,6 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %files -n plasma6-kimpanel-ibus
 %{_libexecdir}/kimpanel-ibus-panel
 %{_libexecdir}/kimpanel-ibus-panel-launcher
-
-%if %{with scim}
-%files -n plasma6-kimpanel-scim
-%{_libexecdir}/kimpanel-scim-panel
-%endif
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en
