@@ -466,4 +466,13 @@
     <comment>Plasma 6.7.5 (forwarded request 1376397 from Vogtinator)</comment>
     <requestid>1376444</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>03cefe20d9bf53ddd39ca19c54ddaf12</srcmd5>
+    <version>6.8.0</version>
+    <time>1792174086</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to fix some alpha compositing issues:
+  * 0001-opengl-gltexture-use-swizzles-to-ignore-non-existent.patch (forwarded request 1385219 from Vogtinator)</comment>
+    <requestid>1385221</requestid>
+  </revision>
 </revisionlist>

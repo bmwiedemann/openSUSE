@@ -29,7 +29,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -39,17 +39,12 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/kwin/-/merge_requests/10128, but amended a bit
+Patch1:         0001-opengl-gltexture-use-swizzles-to-ignore-non-existent.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-# GCC 15 needed for structured bindings
-%if 0%{?suse_version} < 1699
-BuildRequires:  gcc15-PIE
-BuildRequires:  gcc15-c++
-%endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel >= %{qt6_version}
-BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(Breeze) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KDecoration3) >= %{_plasma6_bugfix}
@@ -86,32 +81,31 @@ BuildRequires:  cmake(QAccessibilityClient6)
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6CorePrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6GuiPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-BuildRequires:  cmake(VulkanHeaders) >= 1.4
 BuildRequires:  pkgconfig(epoxy) >= 1.3
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info) >= 0.2.0
-BuildRequires:  pkgconfig(libdrm) >= 2.4.116
+BuildRequires:  pkgconfig(libdrm) >= 2.4.127
 BuildRequires:  pkgconfig(libeis-1.0)
 BuildRequires:  pkgconfig(libinput) >= 1.26
-%if 0%{?suse_version} > 1500
-# Leap 15 version is too old
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 1.2.0
-%endif
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 1.4.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libxcvt)
-BuildRequires:  pkgconfig(wayland-cursor) >= 1.22
+BuildRequires:  pkgconfig(wayland-cursor) >= 1.26.0
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.38
 BuildRequires:  pkgconfig(x11)
@@ -137,6 +131,8 @@ BuildRequires:  pkgconfig(xcb-xinput) >= 1.10
 BuildRequires:  pkgconfig(xcb-xkb) >= 1.10
 BuildRequires:  pkgconfig(xkbcommon) >= 0.7.0
 BuildRequires:  pkgconfig(xkbcommon-x11)
+# Needs setcap
+BuildRequires:  libcap-progs
 Requires:       breeze6-decoration >= %{_plasma6_bugfix}
 # Needed to show dialogs
 Requires:       kdialog
@@ -184,7 +180,7 @@ Summary:        KDE Window Manager - development files
 Requires:       kdecoration6-devel >= %{_plasma6_bugfix}
 Requires:       libkwin6 = %{version}
 Requires:       pkgconfig(epoxy)
-Requires:       pkgconfig(libdrm) >= 2.4.116
+Requires:       pkgconfig(libdrm) >= 2.4.127
 Provides:       kwin5-devel = %{version}
 Obsoletes:      kwin5-devel < %{version}
 
@@ -198,12 +194,7 @@ This package provides development files.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 \
-%if 0%{?suse_version} < 1699
-  -DCMAKE_C_COMPILER:STRING=gcc-15 \
-  -DCMAKE_CXX_COMPILER:STRING=g++-15
-%endif
-%{nil}
+%cmake_kf6
 
 %kf6_build
 
@@ -253,6 +244,7 @@ This package provides development files.
 %{_kf6_applicationsdir}/org.kde.kwin.killer.desktop
 %{_kf6_bindir}/kwin_wayland_wrapper
 %{_kf6_bindir}/kwindowprop
+%{_kf6_configdir}/kwinrulesrc
 %{_kf6_configkcfgdir}/*
 %{_kf6_debugdir}/org_kde_kwin.categories
 %{_kf6_iconsdir}/hicolor/*/apps/kwin.png
@@ -263,7 +255,6 @@ This package provides development files.
 %{_kf6_libdir}/kconf_update_bin/kwin-6.0-reset-active-mouse-screen
 %{_kf6_libdir}/kconf_update_bin/kwin-6.1-remove-gridview-expose-shortcuts
 %{_kf6_libdir}/kconf_update_bin/kwin-6.5-showpaint-changes
-%{_kf6_libdir}/kconf_update_bin/kwin5_update_default_rules
 %{_kf6_libdir}/libkcmkwincommon.so.*
 %{_kf6_notificationsdir}/kwin.notifyrc
 %dir %{_kf6_plugindir}/kwin
@@ -314,7 +305,7 @@ This package provides development files.
 %{_kf6_qmldir}/org/kde/kwin/private/
 %{_kf6_sharedir}/kconf_update/kwin.upd
 %{_kf6_sharedir}/krunner/dbusplugins/kwin-runner-windows.desktop
-%{_kf6_sharedir}/kwin-wayland/
+%{_kf6_sharedir}/kwin/
 %{_libexecdir}/kwin_dialog_helper
 %{_libexecdir}/kwin_killer_helper
 %{_libexecdir}/kwin-applywindowdecoration

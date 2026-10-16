@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:13:53 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix some alpha compositing issues:
+  * 0001-opengl-gltexture-use-swizzles-to-ignore-non-existent.patch
+
+-------------------------------------------------------------------
+Thu Oct  8 16:54:34 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * wayland/seat: actually update the effective pointer focus surface
+  * wayland/seat: fix implicit pointer grabs on subsurfaces
+  * autotests/integration: add test cases for implicit pointer grabs
+  * plugins/slowkeys: Remove unused KF6::WindowSystem dependency
+  * plugins/slowkeys: Cleanup includes
+  * plugins/slowkeys: Fix sending the released events (kde#523419)
+  * plugins/slowkeys: Use Q_UNREACHABLE_RETURN
+  * wayland/pointerconstraints_v1: don't require a commit for locking or unlocking (kde#526010)
+  * autotests/integration: add an autotest for pointer warping with pointer locks
+  * Add KWIN_WAYLAND_SUPPORT_COMMIT_TIMING_V1 environment variable
+  * Update version for new release 6.8.0
+  * xwayland: Ensure that we always reset Selection::m_waylandSource
+  * wayland/pointerwarp: also set the locked pointer position to the warp request (kde#524804)
+  * plugins/screencast: Fix crash in OutputScreenCastSource::render() and RegionScreenCastSource::render()
+  * plugins/screenshot: Make opengl context current in ScreenshotLayer::beginFrame()
+  * plugins/screenshot: Fix a crash in CaptureScreen()
+  * utils/svgcursorreader: Render at device resolution to avoid blurry filtered cursors (kde#526691)
+  * backends/drm: don't use 3x4 Matrix for YUV conversions yet
+  * backends/drm: fix BT2020 fixed matrix enum strings
+  * backends/drm: add support for YCbCr->RGB conversion in color pipelines
+  * helpers/dialoghelper: Fix build without XCB
+  * helpers/killer: Fix build without XCB
+  * Remove xcb/xcb.h include in shadow.h (kde#526689)
+  * qpa: use a single persistent OpenGL context for Qt (kde#522424)
+  * screencast: Avoid plasmashell windows from being hidden
+  * Remove stray xcb/xcb.h include (kde#526250)
+  * core/udmabufallocator: pad buffer sizes to 64 pixels
+  * effectloader: Warn when an effect was built for another KWin version
+  * opengl/eglbackend: don't limit format+modifiers of the main GPU to Vulkan
+  * Fix QTP0004 warnings
+  * Port away from JSON_ keywords in ecm_setup_qtplugin_macro_names()
+  * Use QT_NO_PLUGIN with ecm_add_qml_module()
+  * Set CMP0127 policy
+  * Fix leaking EI events
+  * helpers/wayland_wrapper: skip wayland-0
+  * xkb: Manage compose table using unique_ptr
+  * xkb: Use unique_ptr to manage state
+  * xkb: Use unique_ptr to manage keymaps
+  * wayland: Implement kde-output-device-v2 v26 (kde#525314)
+  * plugins/screenshot: make the context current after prePaint (kde#524840)
+  * Revert "Enable ASAN"
+  * plugins/screencast: don't hide the portal's windows from the screencast
+  * opengl/eglcontext: request realtime priority when possible
+  * Revert "backends/drm,virtual: don't render on virtual outputs for screencasts"
+  * Revert "wayland: destroy mode resources when the output device resource is released"
+  * Enable ASAN
+
+-------------------------------------------------------------------
+Fri Sep 25 07:01:05 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Sep 12 19:28:18 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  8 12:08:07 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
