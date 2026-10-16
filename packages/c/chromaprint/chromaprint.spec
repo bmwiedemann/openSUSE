@@ -20,7 +20,7 @@
 %define rev aa67c95b9e486884a6d3ee8b0c91207d8c2b0551
 %define sover      1
 Name:           chromaprint
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Audio Fingerprinting Library
 License:        LGPL-2.1-only AND MIT
