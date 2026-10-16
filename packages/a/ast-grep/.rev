@@ -1442,4 +1442,28 @@
   * feat(outline): add Java record_declaration rule (#2945)</comment>
     <requestid>1384299</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>d84fab60e1f26f2ea329b42c087a47fc</srcmd5>
+    <version>0.51.0</version>
+    <time>1792174193</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.51.0:
+  * 0.51.0 bump version
+  * fix(cli): use `ast-grep` name in project setup hint (#3001)
+  * Revise security policy for clarity and updates
+  * fix: replace deprecated serde_yaml with serde-saphyr (#2999)
+  * fix(deps): update rust crate tree-sitter-haskell to 0.24.0 (#2988)
+  * fix(cli): preserve files when update-all writes fail (#2995)
+  * fix: update wasm linting
+- Drop because tree-sitter-haskell got updated to 0.24.0:
+  * tree-sitter-haskell-fix-heap-corruption-checksum.patch
+  * tree-sitter-haskell-fix-heap-corruption.patch
+
+- Fix heap corruption (&quot;corrupted size vs. prev_size&quot;) in the vendored
+  Haskell parser caused by strict-aliasing UB in tree_sitter/array.h
+  (tree-sitter/tree-sitter-haskell#158, upstream fix from PR #157):
+  * tree-sitter-haskell-fix-heap-corruption.patch
+  * tree-sitter-haskell-fix-heap-corruption-checksum.patch</comment>
+    <requestid>1385156</requestid>
+  </revision>
 </revisionlist>
