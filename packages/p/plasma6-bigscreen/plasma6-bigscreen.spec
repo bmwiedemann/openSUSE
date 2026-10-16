@@ -29,19 +29,20 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-bigscreen
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        Plasma shell for TVs
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source0:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source0:        %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6BluezQt) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
@@ -70,9 +71,9 @@ BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineCore) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineQuick) >= %{qt6_version}
-BuildRequires:  pkgconfig(libcec)
 BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  qt6qmlimport(org.kde.kdeconnect)
 Requires:       systemsettings6
 Requires:       qt6qmlimport(org.kde.bluezqt) >= %{kf6_version}
 Requires:       qt6qmlimport(org.kde.kdeconnect)
@@ -119,6 +120,7 @@ rm %{buildroot}%{_libdir}/udev/rules.d/40-uinput.rules
 %{_kf6_applicationsdir}/kcm_mediacenter_webapps.desktop
 %{_kf6_applicationsdir}/kcm_mediacenter_wifi.desktop
 %{_kf6_applicationsdir}/org.kde.plasma.bigscreen.inputhandler.desktop
+%{_kf6_applicationsdir}/org.kde.plasma.bigscreen.settings.desktop
 %{_kf6_applicationsdir}/org.kde.plasma.bigscreen.uvcviewer.desktop
 %{_kf6_applicationsdir}/plasma-bigscreen-swap-session.desktop
 %{_kf6_appstreamdir}/org.kde.plasma.bigscreen.metainfo.xml
