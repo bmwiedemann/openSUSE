@@ -27,14 +27,14 @@ Name:           drkonqi6
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        Helper for debugging and reporting crashes
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IdleTime) >= %{kf6_version}
 BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
@@ -139,6 +140,7 @@ install -p -D -m755 src/doc/examples/installdbgsymbols_suse.sh \
 # Not optional anymore but opt-in
 %{_kf6_bindir}/drkonqi-sentry-data
 %{_kf6_bindir}/installdbgsymbols.sh
+%{_kf6_configkcfgdir}/drkonqi.kcfg
 %{_kf6_debugdir}/drkonqi.categories
 %{_kf6_libexecdir}/drkonqi-polkit-helper
 %{_kf6_notificationsdir}/drkonqi-coredump-launcher.notifyrc
@@ -162,18 +164,13 @@ install -p -D -m755 src/doc/examples/installdbgsymbols_suse.sh \
 %{_userunitdir}/drkonqi-sentry-postman.path
 %{_userunitdir}/drkonqi-sentry-postman.service
 %{_userunitdir}/drkonqi-sentry-postman.timer
-%dir %{_userunitdir}/default.target.wants
-%{_userunitdir}/default.target.wants/drkonqi-coredump-cleanup.service
-%{_userunitdir}/default.target.wants/drkonqi-sentry-postman.path
 %dir %{_userunitdir}/plasma-core.target.wants
+%{_userunitdir}/plasma-core.target.wants/drkonqi-coredump-cleanup.service
+%{_userunitdir}/plasma-core.target.wants/drkonqi-coredump-cleanup.timer
+%{_userunitdir}/plasma-core.target.wants/drkonqi-coredump-launcher.socket
 %{_userunitdir}/plasma-core.target.wants/drkonqi-coredump-pickup.service
 %{_userunitdir}/plasma-core.target.wants/drkonqi-sentry-postman.path
 %{_userunitdir}/plasma-core.target.wants/drkonqi-sentry-postman.timer
-%dir %{_userunitdir}/sockets.target.wants
-%{_userunitdir}/sockets.target.wants/drkonqi-coredump-launcher.socket
-%dir %{_userunitdir}/timers.target.wants
-%{_userunitdir}/timers.target.wants/drkonqi-coredump-cleanup.timer
-%{_userunitdir}/timers.target.wants/drkonqi-sentry-postman.timer
 
 %files lang -f drkonqi.lang
 

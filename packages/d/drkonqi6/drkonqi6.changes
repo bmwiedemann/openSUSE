@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:17 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+
+-------------------------------------------------------------------
+Fri Sep 25 07:18:55 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * bugreportaddress: drop unused functions
+  * globals: drop
+  * bugreportaddress: throw away moot inlining
+  * bugreportaddress: add warning when dealing with non-kde addresses
+  * bugreportaddress: make KDE detection more flexible
+  * globals: trim
+
+-------------------------------------------------------------------
+Sat Sep 12 19:29:26 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  8 12:07:20 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
