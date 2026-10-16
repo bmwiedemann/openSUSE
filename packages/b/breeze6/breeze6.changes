@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:11 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+  * kdecoration: Remove corner radius when tiled (kde#490716)
+
+-------------------------------------------------------------------
+Fri Sep 25 07:18:49 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * kdecoration: updateButtonsGeometry() when borders change
+
+-------------------------------------------------------------------
+Sat Sep 12 19:29:10 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Changes since 6.7.5:
+  * Update version for new release 6.7.90
+  * Replace Waterfall wallpaper with Hanabi
+  * Use font metrics to only inset where the text can spare it (kde#523118)
+  * Use ubuntu image for Qt5 CI
+  * Remove warning (found by cmake --warn-uninitialized -Werror=dev )
+  * Install kcfg files
+  * kdecoration: Add support for shadow only decorations
+  * kdecoration: Change the way top corners are rounded when titlebar is hidden
+  * breezehelper: Fix asymmetric separators on immutable tabs
+  * kdecoration: add 'resize' margin for top border
+  * Fix crash in WindowManager::registerQuickItem (kde#491000)
+  * BreezeStyle: Fix ViewItemDecoration/Indicator adjustment on RTL style (kde#518835,kde#518837)
+  * BreezeHelper: Use brush instead of color for renderFocusRect
+  * CI: Require passing tests
+  * Move old wallpaper, add new one, update previews
+  * Skip kcm smoke tests with kcmutils < 6.27.0
+  * Update version for new release 6.7.80
+
+-------------------------------------------------------------------
 Tue Sep  8 12:07:12 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
