@@ -525,4 +525,12 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
     <comment>Security: re-vendor gix-pack 0.68.0-&gt;0.75.0 for CVE-2026-109349/109350/109351 (boo#1285151); gix 0.81-&gt;0.88 lockstep + error-API adapt.</comment>
     <requestid>1384815</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6d7380efdb36e1f02ef7851be1780e88</srcmd5>
+    <version>0.163.0</version>
+    <time>1792174223</time>
+    <user>anag_factory</user>
+    <comment>Update openai-codex to 0.163.0.</comment>
+    <requestid>1385182</requestid>
+  </revision>
 </revisionlist>

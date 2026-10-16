@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.162.1
+Version:        0.163.0
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
@@ -67,6 +67,16 @@ Summary:        OpenAI Codex coding agent for the terminal
 # Apache-2.0 526, MIT 181, Unicode-3.0 20, MPL-2.0 12, ISC 9,
 # BSD-3-Clause 9, Zlib 5, BSD-2-Clause 1, CC0-1.0 1,
 # CDLA-Permissive-2.0 1 - so the tag above is unchanged by this re-vendor.
+# 0.163.0 moves quinn-proto 0.11.15 -> 0.11.18 (MIT OR Apache-2.0) and
+# rmcp 3.3.0 -> 3.5.1 (Apache-2.0), adds linkify 0.11.0 and rand_pcg
+# 0.10.2 (both MIT OR Apache-2.0), and drops the codex-shell-escalation
+# workspace member; the gix 0.88.0 carry-forward keeps gix-pack at
+# 0.75.0 (upstream still ships 0.81.0/0.68.0). Re-derived with the same
+# scope the set is unchanged: 762 third-party crates in the codex-cli
+# closure (761 tallied, aws-lc-sys itemised separately as before) -
+# Apache-2.0 528, MIT 181, Unicode-3.0 20, MPL-2.0 12, ISC 9,
+# BSD-3-Clause 9, Zlib 5, BSD-2-Clause 1, CC0-1.0 1,
+# CDLA-Permissive-2.0 1 - so the tag above is unchanged by this bump.
 #  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate
 #    anywhere in the graph offering GPL. Apache-2.0 is elected, so this
 #    package carries no GPL obligation; please do not re-derive it as GPL.

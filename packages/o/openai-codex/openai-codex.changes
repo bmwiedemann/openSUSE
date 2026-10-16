@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 16 06:14:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.163.0:
+  * Search preferences in /config and change supported settings
+    immediately; configure a leader key in /keymap
+  * Steer Codex with a follow-up while it is still responding;
+    interrupting a turn also stops active Code Mode cells
+  * Restart a managed background server from /daemon with
+    automatic reconnect; independent read-only skill, memory
+    and history lookups run in parallel; Daybreak on by default
+  * Resuming a thread restores its permissions and network
+    approvals; the network proxy now authorises DNS lookups,
+    rejects duplicate Host headers and closes a credential-alias
+    inspection bypass
+  * Fixes for /side navigation, Windows/WSL clipboard handling,
+    late command output and repeated exec diffs
+  * No more bundled patched zsh; release binaries are stripped
+    for smaller packages
+- Re-vendor to upstream's new lock (quinn-proto 0.11.15 -> 0.11.18,
+  rmcp 3.3.0 -> 3.5.1) with the gix 0.88.0 carry-forward for
+  boo#1285151 retained, as upstream still ships gix 0.81.0;
+  licence set re-derived from the new vendor tree and unchanged
+
+-------------------------------------------------------------------
 Wed Oct 14 07:41:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - CVE-2026-109349: gix-pack aborts on the header of a crafted
