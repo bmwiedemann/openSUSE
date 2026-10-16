@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 16 06:30:10 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792132198.63d05d40:
+  * refactor(ui): Initialise host previous jobs table directly
+  * fix(ui): Sort host previous jobs slot by worker instance
+  * fix(ui): Align previous jobs sort columns for host
+  * chore(deps): Dependency cron 2026-10-16
+  * feat(systemd): Ignore try-reload-or-restart fails for workers
+  * chore(deps-dev): bump brace-expansion from 5.0.7 to 5.0.12 (#7949)
+  * chore(deps): bump source-map-js from 1.2.1 to 1.2.2 (#7948)
+  * chore(deps): bump postcss-selector-parser from 7.1.4 to 7.1.6 (#7947)
+  * fix(worker): Avoid concurrent result uploads
+
+-------------------------------------------------------------------
+Thu Oct 15 05:07:03 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792040810.42404b37:
+  * chore(deps): Dependency cron 2026-10-15
+
+-------------------------------------------------------------------
 Wed Oct 14 22:27:35 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1792016843.dbd2549e:
