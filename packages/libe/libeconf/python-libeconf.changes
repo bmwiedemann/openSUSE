@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 15 12:44:55 UTC 2026 - schubi@suse.com
+
+- Update to version 0.8.6:
+  * Add new option DEFAULT_QUOTES for econf_newKeyFile_with_options.
+  * NEW API calls: econf_hasQuotes, econf_setQuotes
+
+-------------------------------------------------------------------
 Tue Oct 06 14:07:57 UTC 2026 - schubi@suse.com
 
 - Update to version 0.8.5:
