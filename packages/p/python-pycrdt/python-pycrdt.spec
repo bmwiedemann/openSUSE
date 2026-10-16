@@ -17,28 +17,24 @@
 
 
 Name:           python-pycrdt
-Version:        0.12.50
+Version:        0.14.9
 Release:        0
 Summary:        Python bindings for Yrs
 License:        MIT
 URL:            https://github.com/y-crdt/pycrdt
 Source0:        pycrdt-%{version}.tar.xz
 Source1:        vendor.tar.xz
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module maturin >= 1.4.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-anyio >= 4.4 with python-anyio < 5)
-Requires:       (python-exceptiongroup >= 4.14.0 if python-base < 3.11)
-Requires:       (python-typing_extensions >= 4.14.0 if python-base < 3.11)
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 8.3.5}
 BuildRequires:  %{python_module anyio >= 4.4.0 with %python-anyio < 5}
-BuildRequires:  %{python_module exceptiongroup if %python-base < 3.11}
-BuildRequires:  %{python_module trio >= 0.25.1 with %python-trio < 0.34}
-BuildRequires:  %{python_module typing_extensions >= 4.14.0 if %python-base < 3.11}
+BuildRequires:  %{python_module trio >= 0.25.1 with %python-trio < 0.35}
 # /SECTION
 %python_subpackages
 

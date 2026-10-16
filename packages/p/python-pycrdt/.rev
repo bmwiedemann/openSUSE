@@ -238,4 +238,28 @@
     group.</comment>
     <requestid>1341871</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a7633b65b4c97e37569370376eda5d3b</srcmd5>
+    <version>0.14.9</version>
+    <time>1792174144</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.14.9:
+  * Drop Python 3.10 and add Python 3.15.
+  * Bump yrs to v0.28.0.
+  * Cache node IDs to fix deleted XML children.
+  * Improve XML children iteration performances.
+  * Support undo manager origins.
+  * Allow passing a guid to Doc.
+  * Allow embedding Array, Map and Text shared types in a Text via
+    insert_embed().
+  * Return pycrdt types from Text and XmlText diff() for embeds.
+  * Remove futures-lite dependency and bump other Rust dependencies.
+  * Add IdMap, ContentAttribute and AttrRange.
+  * Remove Array.move method.
+  * UndoManager doesn't accept a doc anymore.
+  * Add insert_xmltext_prelim and insert_xmlelement_prelim to XmlText.
+  * Add transaction attribute to event.
+  * Bump pyo3 to v0.28.3.</comment>
+    <requestid>1385076</requestid>
+  </revision>
 </revisionlist>

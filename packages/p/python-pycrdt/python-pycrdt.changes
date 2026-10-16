@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 16 00:17:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.14.9:
+  * Drop Python 3.10 and add Python 3.15.
+  * Bump yrs to v0.28.0.
+  * Cache node IDs to fix deleted XML children.
+  * Improve XML children iteration performances.
+  * Support undo manager origins.
+  * Allow passing a guid to Doc.
+  * Allow embedding Array, Map and Text shared types in a Text via
+    insert_embed().
+  * Return pycrdt types from Text and XmlText diff() for embeds.
+  * Remove futures-lite dependency and bump other Rust dependencies.
+  * Add IdMap, ContentAttribute and AttrRange.
+  * Remove Array.move method.
+  * UndoManager doesn't accept a doc anymore.
+  * Add insert_xmltext_prelim and insert_xmlelement_prelim to XmlText.
+  * Add transaction attribute to event.
+  * Bump pyo3 to v0.28.3.
+
+-------------------------------------------------------------------
 Sun Mar 22 16:41:48 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.50
