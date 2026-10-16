@@ -124,4 +124,14 @@
     (boo#1281665, CVE-2026-94286)</comment>
     <requestid>1380034</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>7cd29b60d897c1638929a5dfbe12e77f</srcmd5>
+    <version>1.2.5</version>
+    <time>1792174024</time>
+    <user>anag_factory</user>
+    <comment>- boo1285083_CVE-2026-109088_parse_reply_call_callback-reject-zero-progress-RECOR.patch
+  * libXtst RECORD EnableContext Reply Endless Loop
+    (boo#1285083, CVE-2026-109088)</comment>
+    <requestid>1384975</requestid>
+  </revision>
 </revisionlist>
