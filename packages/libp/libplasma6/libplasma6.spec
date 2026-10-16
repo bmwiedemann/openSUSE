@@ -20,31 +20,30 @@
 %define qt6_version 6.10.0
 
 %define rname libplasma
-%define sover 7
+%define sover 8
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libplasma6
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF6 and Qt6
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
-BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
@@ -52,40 +51,28 @@ BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
-BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Package) >= %{kf6_version}
 BuildRequires:  cmake(KF6Svg) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
-BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(PlasmaActivities) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.10.0
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6GuiPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
-BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(gl)
-%ifarch %{arm} aarch64
-BuildRequires:  pkgconfig(glesv2)
-%endif
 BuildRequires:  pkgconfig(wayland-client) >= 1.9
 BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xcb)
-BuildRequires:  pkgconfig(xcb-composite)
-BuildRequires:  pkgconfig(xcb-damage)
-BuildRequires:  pkgconfig(xcb-render)
-BuildRequires:  pkgconfig(xcb-shape)
-BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  qt6qmlimport(Qt5Compat.GraphicalEffects)
 BuildRequires:  qt6qmlimport(org.kde.config)
+BuildRequires:  qt6qmlimport(org.kde.kirigami)
 BuildRequires:  qt6qmlimport(org.kde.ksvg)
 
 %description
@@ -138,6 +125,7 @@ Summary:        Plasma library and runtime components
 Requires:       libPlasma%{sover} = %{version}
 Requires:       plasma6-framework >= %{version}
 Requires:       plasma6-framework-components = %{version}
+Requires:       cmake(KF6Config) >= %{kf6_version}
 Requires:       cmake(KF6Kirigami) >= %{kf6_version}
 Requires:       cmake(KF6Package) >= %{kf6_version}
 Requires:       cmake(KF6WindowSystem) >= %{kf6_version}
@@ -238,6 +226,8 @@ fi
 %{_kf6_libdir}/libPlasma.so
 %{_kf6_libdir}/libPlasmaQuick.so
 %{_kf6_sharedir}/kdevappwizard/
+%{_qt6_metatypesdir}/qt6plasma_metatypes.json
+%{_qt6_metatypesdir}/qt6plasmaquick_metatypes.json
 
 %files -n libPlasma6-lang -f libplasma6.lang
 
