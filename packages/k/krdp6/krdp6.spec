@@ -27,19 +27,18 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           krdp6
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        RDP Server for Plasma
 License:        LGPL-2.1-or-later
 URL:            https://invent.kde.org/plasma/krdp
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(FreeRDP) >= 3.1
 BuildRequires:  cmake(FreeRDP-Server) >= 3.1
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
@@ -51,16 +50,20 @@ BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
 BuildRequires:  cmake(KPipeWire) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaWaylandProtocols)
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6GuiPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Keychain)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6WaylandClient)
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(WinPR) >= 3.1
+BuildRequires:  pkgconfig(libei-1.0) >= 1.6
 BuildRequires:  pkgconfig(pam)
+BuildRequires:  pkgconfig(systemd) >= 254
 BuildRequires:  qt6qmlimport(org.kde.kirigamiaddons.formcard)
 
 %description
@@ -102,6 +105,7 @@ rm -r %{buildroot}%{_kf6_cmakedir}
 %{_kf6_libdir}/libKRdp.so.*
 %{_kf6_applicationsdir}/kcm_krdpserver.desktop
 %{_kf6_applicationsdir}/org.kde.krdpserver.desktop
+%{_kf6_configkcfgdir}/krdpserversettings.kcfg
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_krdpserver.so
 %{_kf6_debugdir}/kcm_krdpserver.categories
 %{_kf6_debugdir}/krdp.categories
