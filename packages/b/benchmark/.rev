@@ -540,4 +540,12 @@
     <comment></comment>
     <requestid>1356420</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>cc97b67d39f26bceb0c098a853fd72d9</srcmd5>
+    <version>1.10.0</version>
+    <time>1792174002</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.10.0: BENCHMARK_NAMED, ScopedPauseTiming, barrier/timing fixes, PMU counters, cmake 3.13 floor. Drop gcc16.patch (upstream). Tests 73/73, rpmlint has 2 pre-existing script-mode errors.</comment>
+    <requestid>1384914</requestid>
+  </revision>
 </revisionlist>

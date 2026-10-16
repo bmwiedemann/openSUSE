@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct 15 05:14:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.10.0:
+  * New BENCHMARK_NAMED macro for named benchmarks without
+    a lambda, and a ScopedPauseTiming RAII helper
+  * DoNotOptimize now works on types with const members;
+    counters gain stringified exponents and ThreadRange a
+    custom multiplier
+  * Fixes: Barrier teardown race, resumed timing in pause
+    scopes on skipped benchmarks, result.rms division by
+    zero, two GCC 16 build issues, and invalid
+    PauseTiming/ResumeTiming calls are now diagnosed
+  * PerfCounters replicate generic hardware events on all
+    CPU PMUs; errored runs are skipped in repetition
+    statistics
+  * CMake caches HAVE_* checks between re-runs; the
+    documented minimum is now 3.13
+  * pkg-config fixes: -lpfm in Libs.private with libpfm,
+    and absolute install-dir paths
+  * Many more fixes and improvements; see upstream's
+    release notes for the full list
+- Drop gcc16.patch: upstream adopted the BENCHMARK_UNUSED
+  fix for the GCC 16 unused-variable errors
+- Raise the cmake BuildRequires floor to >= 3.13, matching
+  upstream cmake_minimum_required
+
+-------------------------------------------------------------------
 Mon Jun  1 10:09:28 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
 - Add gcc16.patch to fix the broken build with GCC 16 

@@ -19,14 +19,13 @@
 %define soname  lib%{name}
 %define sover   1
 Name:           benchmark
-Version:        1.9.5
+Version:        1.10.0
 Release:        0
 Summary:        A microbenchmark support library
 License:        Apache-2.0
 URL:            https://github.com/google/benchmark
 Source:         %{name}-%{version}.tar.gz
-Patch0:         gcc16.patch
-BuildRequires:  cmake >= 3.5.1
+BuildRequires:  cmake >= 3.13
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  gmock
