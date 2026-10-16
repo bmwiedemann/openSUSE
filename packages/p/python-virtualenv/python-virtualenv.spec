@@ -85,11 +85,11 @@ Or more generally, what if you want to install an application and leave it be?
 If an application works, any change in its libraries or the versions of those
 libraries can break the application.
 
-Also, what if you cant install packages into the global site-packages
+Also, what if you can not install packages into the global site-packages
 directory? For instance, on a shared host.
 
 In all these cases, virtualenv can help you. It creates an environment that
-has its own installation directories, that doesnt share libraries with other
+has its own installation directories, that does not share libraries with other
 virtualenv environments (and optionally doesnt use the globally installed
 libraries either).
 

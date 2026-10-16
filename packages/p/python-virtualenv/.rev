@@ -1729,4 +1729,12 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
 </comment>
     <requestid>1381896</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>d6786b9d664b1bdc86c946e3051bf820</srcmd5>
+    <version>21.14.2</version>
+    <time>1792174001</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1384861</requestid>
+  </revision>
 </revisionlist>
