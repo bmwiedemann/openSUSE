@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 21:07:06 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add a %check section running the upstream CTest testsuite
+- Reword the description to avoid a spelling error reported by rpmlint
+
+-------------------------------------------------------------------
 Tue Jun  2 08:31:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Spec cleanup:

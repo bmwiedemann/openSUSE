@@ -29,7 +29,7 @@ BuildRequires:  gcc
 %description
 LZFSE is a Lempel-Ziv style data compression algorithm using Finite State
 Entropy coding. It targets similar compression rates at higher compression
-and decompression speed compared to deflate using zlib.
+and decompression speed compared to deflate.
 
 %package devel
 Summary:        Reference C implementation of the Lempel-Ziv Finite State Entropy compressor
@@ -39,7 +39,7 @@ BuildArch:      noarch
 %description devel
 LZFSE is a Lempel-Ziv style data compression algorithm using Finite State
 Entropy coding. It targets similar compression rates at higher compression
-and decompression speed compared to deflate using zlib.
+and decompression speed compared to deflate.
 
 This package contains devel files.
 
@@ -53,6 +53,9 @@ This package contains devel files.
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %doc README.md

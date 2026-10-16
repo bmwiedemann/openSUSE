@@ -57,4 +57,12 @@
     <comment>Spec cleanup: build header-only devel as noarch (fix no-binary), add gcc BR, use %autosetup, reword summary, drop Group tags</comment>
     <requestid>1356656</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b05b9e43970e3320bcf9dc0cf57ab1c3</srcmd5>
+    <version>1.0</version>
+    <time>1792174010</time>
+    <user>anag_factory</user>
+    <comment>Forward Archiving/lzfse CTest %check + description fix (SR 1384948); branch green.</comment>
+    <requestid>1384970</requestid>
+  </revision>
 </revisionlist>
