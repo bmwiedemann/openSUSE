@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 15 07:36:56 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20261014:
+  * Allow account-utils domains to getattr/setattr their sockets (bsc#1284992)
+  * Allow wtmpdb to getattr/setattr its sockets (bsc#1284992)
+  * Allow rebootmgr send over varlink to systemd_report_t (bsc#1284659)
+  * Introduce systemd_report_t domain (bsc#1284659)
+  * Extend CI for SLE 16.1
+
+-------------------------------------------------------------------
 Tue Oct 06 07:54:00 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20261006:
