@@ -18,7 +18,7 @@
 
 %{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 Name:           oath-toolkit
-Version:        2.6.14
+Version:        2.6.15
 Release:        0
 Summary:        Toolkit for one-time password authentication systems
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

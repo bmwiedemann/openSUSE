@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 14 18:51:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.15
+  * oathtool: Add --hex which correspond to the long-time default
+    behaviour.
+  * oathtool: Reject --hotp --totp instead of treating it as --totp.
+  * oathtool: Reject further nonsense parameter combinations.
+    Combining --hotp with --time-step-size, --start-time, or --now
+    does not make sense. Combining --totp with --counter does not
+    make sense. All these are now rejected as user errors.
+  * libpskc: Fix PSKC signature verification bypass.
+    See https://oath-toolkit.codeberg.page/CVE-2026-109117.html
+
+-------------------------------------------------------------------
 Tue Feb  3 08:23:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.14
