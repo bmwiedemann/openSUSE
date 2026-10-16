@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Oct 16 04:51:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.31.2:
+  * Envoy CVEs
+    - GHSA-8vc2-jrm4-835w: (CVSS score 7.5): Fixed an
+      unauthenticated remote crash in the OAuth2 HTTP filter on a
+      CONNECT request without a :path header.
+    - GHSA-47vj-9r25-wv5j: (CVSS score 6.5): Fixed a crash in the
+      api_key_auth HTTP filter on a CONNECT request without a :path
+      header.
+  * Istio CVEs
+    - GHSA-w44g-8m76-8gc5 (CVSS score 7.4, High):
+      AuthorizationPolicy method rules are bypassed over HTTP/2 by
+      changing the case of the method. Credit: This vulnerability
+      was discovered and reported by izzy0101010101.
+    - GHSA-7p2q-4xvg-vxc6 (CVSS score 7.7, High): istiod crashes in
+      ambient mode when a ServiceEntry or other service claims the
+      address of an IP-addressed waypoint. Credit: This
+      vulnerability was discovered and reported by yshch.
+  * Other Istio Security Fixes
+    - Fixed istioctl skipping verification of the istiod
+      certificate when connecting to XDS with a service account
+      token (istioctl proxy-status, istioctl x internal-debug, and
+      --xds-address in general). istioctl now verifies the server
+      against the Istio root certificate from the
+      istio-ca-root-cert configmap and the expected server name:
+      --authority if set, the host of --xds-address if it is a DNS
+      name, or istiod.<istio-namespace>.svc when connecting to an
+      IP address or localhost. Pass --insecure (or set
+      ISTIOCTL_INSECURE=true) to explicitly skip verification.
+      Credit: This issue was reported by Leon Zlobecki. (Issue
+      #41937)
+    - Fixed istioctl manifest translate writing unquoted values
+      from IstioOperator input (such as namespace and release name)
+      into generated install shell scripts. Crafted values could
+      inject additional shell commands when those scripts were run.
+      Arguments are now escaped with shellescape.Quote. Credit:
+      This vulnerability was discovered and reported by OpenSec
+      Intelligence.
+
+-------------------------------------------------------------------
 Tue Sep 22 04:43:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.31.1:
