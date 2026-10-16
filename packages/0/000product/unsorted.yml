@@ -201,7 +201,6 @@ unsorted:
   - OpenCSD-devel 
   - OpenCSD-doc 
   - OpenColorIO-devel 
-  - OpenColorIO-doc 
   - OpenColorIO-tools 
   - OpenIPMI 
   - OpenIPMI-devel 
@@ -707,6 +706,7 @@ unsorted:
   - antlr4-maven-plugin 
   - antlr4-tool 
   - anubis 
+  - anura 
   - aom-tools 
   - aop 
   - aopalliance 
@@ -11414,8 +11414,7 @@ unsorted:
   - libIlmThread-3_4-33-32bit 
   - libImath-3_2-30-32bit 
   - libIrrlicht1_8 
-  - libKChart6-3 
-  - libKChart6-3-lang 
+  - libKChart2 
   - libKCompactDisc6-5 
   - libKDb3-4 
   - libKF5Attica5 
@@ -11445,6 +11444,7 @@ unsorted:
   - libKF5Syndication5 
   - libKF5SyntaxHighlighting5 
   - libKF5SyntaxHighlighting5-lang 
+  - libKF5ThreadWeaver5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
   - libKGantt2 
@@ -11529,7 +11529,7 @@ unsorted:
   - libOkteta3 
   - libOpenCL1 
   - libOpenCL1-32bit 
-  - libOpenColorIO2_5 
+  - libOpenColorIO2_6 
   - libOpenEXR-3_4-33-32bit 
   - libOpenEXRCore-3_4-33-32bit 
   - libOpenEXRUtil-3_4-33 
@@ -14513,6 +14513,7 @@ unsorted:
   - libkcddb-devel 
   - libkcddb-lang 
   - libkcddb-qt6-devel 
+  - libkchart-lang 
   - libkcompactdisc-lang 
   - libkcompactdisc-qt6-devel 
   - libkdcraw-devel 
@@ -15743,7 +15744,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler164-32bit 
+  - libpoppler165-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -15778,6 +15779,7 @@ unsorted:
   - libprofanity0 
   - libprofiler0 
   - libproj25 
+  - libprojectM3 
   - libprometheus-cpp1_3 
   - libprotobuf-lite36_2_0-32bit 
   - libprotobuf-lite3_21_12 
@@ -20323,6 +20325,7 @@ unsorted:
   - nnn-zsh-completion 
   - no-more-secrets 
   - noctalia 
+  - noctalia-greeter 
   - noctalia-qs 
   - noctalia-shell 
   - nodejs-bitwarden-sdk-internal 
@@ -28353,7 +28356,6 @@ unsorted:
   - python313-transitions 
   - python313-translate-toolkit 
   - python313-translate-toolkit-man 
-  - python313-translation-finder 
   - python313-translationstring 
   - python313-translitcodec 
   - python313-tree-sitter 
@@ -28540,9 +28542,6 @@ unsorted:
   - python313-webassets 
   - python313-webauthn 
   - python313-webcolors 
-  - python313-weblate-fonts 
-  - python313-weblate-language-data 
-  - python313-weblate-schemas 
   - python313-webruntime 
   - python313-websocket-client 
   - python313-websockets 
@@ -32497,7 +32496,6 @@ unsorted:
   - python314-transitions 
   - python314-translate-toolkit 
   - python314-translate-toolkit-man 
-  - python314-translation-finder 
   - python314-translationstring 
   - python314-translitcodec 
   - python314-tree-sitter 
@@ -32684,9 +32682,6 @@ unsorted:
   - python314-webauthn 
   - python314-webcolors 
   - python314-webencodings 
-  - python314-weblate-fonts 
-  - python314-weblate-language-data 
-  - python314-weblate-schemas 
   - python314-webruntime 
   - python314-websocket-client 
   - python314-websockets 
@@ -34028,6 +34023,7 @@ unsorted:
   - rtla 
   - rtla-rebuild 
   - rtlamr 
+  - rtlsdr-airband 
   - rtmidi-devel 
   - rtorrent 
   - rtr-tools 
