@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 15 23:37:09 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to 2.22.4 "Hotfix #4"
+  * fix: Don't try to chmod native Linux/macOS binaries on exit by @CommandMC
+    in #5918
+  * Add support for building ARM64 flatpak by @matte-schwartz in #5891
+  * [FIX] Unset custom user agent to fix GOG login cloudflare check by @arielj
+    in #5979
+  * fix: Don't trust isUmuSupported's return value if we're running a native
+    game by @CommandMC in #5915
+  * [i18n] Updated Translations by @weblate in #5960 
+
+-------------------------------------------------------------------
 Fri Sep 18 23:07:12 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to 2.22.3 "Hotifix #3"

@@ -40,6 +40,7 @@ jq --indent 2 \
 | .dependencies["ajv"] = "^8.17.1"
 | .dependencies["ajv-formats"] = "^2.1.1"
 | .dependencies["builder-util-runtime"] = "^9.2.4"
+| .dependencies["yocto-queue"] = "^1.1.0"
 
 | .dependencies = (.dependencies // {})
 | .devDependencies = (.devDependencies // {})
@@ -107,7 +108,8 @@ jq --indent 2 \
         "ws@^7.0.0": "7.5.11",
         "ws@^8.0.0": "8.21.0",
         "axios": "^1.18.0",
-        "browserslist": "^4.28.7"
+        "browserslist": "^4.28.7",
+        "simple-git": "^4.0.0"
       }
   )
 ' package.json > temp.json && mv temp.json package.json
