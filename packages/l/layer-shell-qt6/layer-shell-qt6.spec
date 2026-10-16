@@ -27,23 +27,22 @@
 %define rname layer-shell-qt
 %bcond_without released
 Name:           layer-shell-qt6
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        wlr-layer-shell integration for Qt
 License:        LGPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-wayland-private-devel >= %{qt6_version}
-BuildRequires:  qt6-waylandclient-private-devel >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClientPrivate) >= %{qt6_version}
 BuildRequires:  pkgconfig(wayland-client) >= 1.3.0
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server) >= 1.3.0
