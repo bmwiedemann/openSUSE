@@ -1148,4 +1148,12 @@
     <comment>Plasma 6.7.5 (forwarded request 1376397 from Vogtinator)</comment>
     <requestid>1376482</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>5e074b1c2c916e333ffa84d6abe49526</srcmd5>
+    <version>6.8.0</version>
+    <time>1792174082</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.8.0 preliminary tars, so far untested. K:F already publish disabled. (forwarded request 1383812 from Vogtinator)</comment>
+    <requestid>1384253</requestid>
+  </revision>
 </revisionlist>

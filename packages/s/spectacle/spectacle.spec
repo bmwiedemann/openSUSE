@@ -25,20 +25,19 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           spectacle
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        Screen Capture Program
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://apps.kde.org/spectacle
-Source0:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source0:        %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  kquickimageeditor6-devel >= 0.6.0
+BuildRequires:  kquickimageeditor6-devel >= 0.7
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -65,6 +64,7 @@ BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6GuiPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
@@ -74,7 +74,6 @@ BuildRequires:  cmake(Qt6QuickTemplates2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-BuildRequires:  cmake(ZXing) >= 1.2.0
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(tesseract)
 BuildRequires:  pkgconfig(wayland-client)
@@ -131,6 +130,7 @@ screenshot capture program by KDE.
 %{_kf6_applicationsdir}/org.kde.spectacle.desktop
 %{_kf6_appstreamdir}/org.kde.spectacle.appdata.xml
 %{_kf6_bindir}/spectacle
+%{_kf6_configkcfgdir}/spectacle.kcfg
 %{_kf6_dbusinterfacesdir}/org.kde.Spectacle.xml
 %{_kf6_debugdir}/spectacle.categories
 %{_kf6_iconsdir}/hicolor/scalable/apps/spectacle.svg
