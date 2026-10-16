@@ -4,13 +4,13 @@ Date: Sun, 9 Jul 2023 00:06:52 +0200
 Subject: [PATCH] Use qdbus6
 
 ---
- startkde/startplasma-wayland.cpp | 2 +-
+ startkde/startplasma.cpp | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: plasma-workspace-6.1.80git.20260105T020024~1b657a4813/startkde/startplasma-wayland.cpp
+Index: plasma-workspace-6.1.80git.20260105T020024~1b657a4813/startkde/startplasma.cpp
 ===================================================================
---- plasma-workspace-6.1.80git.20260105T020024~1b657a4813.orig/startkde/startplasma-wayland.cpp
-+++ plasma-workspace-6.1.80git.20260105T020024~1b657a4813/startkde/startplasma-wayland.cpp
+--- plasma-workspace-6.1.80git.20260105T020024~1b657a4813.orig/startkde/startplasma.cpp
++++ plasma-workspace-6.1.80git.20260105T020024~1b657a4813/startkde/startplasma.cpp
 @@ -66,7 +66,7 @@ int main(int argc, char **argv)
      runEnvironmentScripts();
  

@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:09 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+  * klipper/declarative: better starting listview position
+  * klipper/declarative: handle arrow nav w/o starred items better
+  * Klipper: Block hover after keyboard navigation
+  * klipper/declarative: always show full delegate with arrow nav
+  * component/containmentlayoutmanager: avoid startup completion checks
+  * krunner/RunCommand: rotate expander when expanded
+  * krunner/RunCommand: fix break tab navigation with non-default history
+  * krunner: allow switching to "Enable suggestions" during runtime
+  * krunner/RunCommand: close on Escape even from buttons
+  * krunner/RunCommand: allow arrow key navigation to buttons
+  * krunner/RunCommand: allow arrow navigation from list to SearchField
+  * libnotificationmanager: Add parent to NotificationFilterProxyModel
+  * applets/kicker: fix ComputerModel system apps (kde#526297)
+  * Klipper: Unset default shortcut instead of deleting its action
+  * Klipper: Remember who gets actions on selection
+  * applets/notifications: explicitly allow copy/link actions (kde#508520)
+  * devicenotifications: Don't notify when all screens go away or reappear
+  * libnotificationmanager: When processed items is zero, only show total
+  * Klipper: Do not set minimum config window size (kde#457837)
+  * Klipper: Keep the buttons of tall entries at the top again
+  * applets/systemtray: Fix plasmoids not appearing in system tray model
+  * kcms/region_language: explain the "C" locale
+  * devicenotifications: Add support for kde-output-device-mode-v2 v26
+  * Klipper: Restore the action popup for copied files
+  * applets/systemtray: Refine click feedback
+  * devicenotifications: Don't notify for internal screen being removed
+  * Fix the window mapping again (kde#506562)
+  * klipper/declarative: don't switch tabs without tabs (kde#526385)
+  * cmake: use correct version for union
+  * Klipper: Fix search behaviour (kde#452176)
+  * Klipper: Guard against characters with high surrogates at 100th position (kde#508224)
+  * Klipper: Use in-code function instead of kconf_update
+  * kfontinst: Fix finished message being cut off
+  * applets/systemtray: Handle applets without a configure action
+  * notificationmanager: fix typo in property name
+  * plasma-shutdown: Guard against concurrent logout/reboot/shutdown requests (kde#525911)
+  * klipper: Set barcode as drag pixmap
+  * klipper: Port away from nested event loops (kde#526007)
+  * Fix compilation with qtbase >= 1a000288b81a57fcd380522b6a0497674dbe91bb (kde#526210)
+  * klipper/declarative: always go to first entry from TabBar
+
+-------------------------------------------------------------------
+Fri Sep 25 07:20:25 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * geotimezoned: Don't show time zone OSD when clock didn't actually change
+  * runners/services: Truncate to fit in assigned bitap space (kde#525983,kde#[numberofthebugreport])
+  * Fix translation in virtualkeyboard to loginlockscreen
+  * systemtray: Port away from Animator (kde#487699)
+  * systemtray: Fix potential crash
+  * systemtray: drop X11 leftovers
+  * shell: Disable Qt RHI pipeline cache
+  * When the map is initiallised the map items are initialise at the given zoom level and visible map in the window. When the window is enlarged the items are not resized so they only fill the original area.
+  * geotimezoned: Remember connection when time zone did not change
+  * klipper/configdialog: Add i18n context
+  * ShellCorona: track uiReady in a more robust way (kde#525327)
+  * Klipper: Make the applet icon show in a panel thicker than 105 pixels
+  * 🍒components/loginlockscreen: Make the virtual keyboard button follow HIG
+
+-------------------------------------------------------------------
+Sat Sep 12 19:33:40 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Too many changes to list here
+- Refresh 0001-Use-qdbus6.patch
+- Add patch to fix Virtual Keyboard in SDDM:
+  * 0001-Revert-lookandfeel-Drop-VirtualKeyboardLoader.patch
+
+-------------------------------------------------------------------
 Tue Sep  8 12:09:09 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:

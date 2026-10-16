@@ -1,0 +1,269 @@
+From afb36ee23148feeb1b12c06a7359f18f18daf9c4 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sun, 13 Sep 2026 20:55:07 +0200
+Subject: [PATCH] Revert "lookandfeel: Drop VirtualKeyboardLoader"
+
+This reverts commit f1c83d153768faf16a35993465957f3902534e3e.
+
+SDDM may still run on X11.
+---
+ lookandfeel/CMakeLists.txt                    |   3 +
+ lookandfeel/components/VirtualKeyboard.qml    |  69 ++++++++++
+ .../components/VirtualKeyboardLoader.qml      | 122 ++++++++++++++++++
+ .../components/VirtualKeyboard_wayland.qml    |  25 ++++
+ 4 files changed, 219 insertions(+)
+ create mode 100644 lookandfeel/components/VirtualKeyboard.qml
+ create mode 100644 lookandfeel/components/VirtualKeyboardLoader.qml
+ create mode 100644 lookandfeel/components/VirtualKeyboard_wayland.qml
+
+diff --git a/lookandfeel/CMakeLists.txt b/lookandfeel/CMakeLists.txt
+index 822004bb18..1b76309531 100644
+--- a/lookandfeel/CMakeLists.txt
++++ b/lookandfeel/CMakeLists.txt
+@@ -12,6 +12,9 @@ ecm_target_qml_sources(components SOURCES
+     components/SessionManagementScreen.qml
+     components/UserDelegate.qml
+     components/UserList.qml
++    components/VirtualKeyboard.qml
++    components/VirtualKeyboard_wayland.qml
++    components/VirtualKeyboardLoader.qml
+     components/WallpaperFader.qml
+ )
+ target_sources(components PRIVATE components/componentsplugin.cpp)
+diff --git a/lookandfeel/components/VirtualKeyboard.qml b/lookandfeel/components/VirtualKeyboard.qml
+new file mode 100644
+index 0000000000..73f46ab05b
+--- /dev/null
++++ b/lookandfeel/components/VirtualKeyboard.qml
+@@ -0,0 +1,69 @@
++/*
++    SPDX-FileCopyrightText: 2017 Martin Gräßlin <mgraesslin@kde.org>
++
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++import QtQuick
++import QtQuick.VirtualKeyboard as QtVK
++
++import org.kde.kirigami as Kirigami
++
++QtVK.InputPanel {
++    id: inputPanel
++    property bool activated: false
++    active: activated && InputMethod.visible
++    width: parent.width
++
++    states: [
++        State {
++            name: "visible"
++            when: inputPanel.active
++            PropertyChanges {
++                inputPanel.y: inputPanel.parent.height - inputPanel.height
++                inputPanel.opacity: 1
++                inputPanel.visible: true
++            }
++        },
++        State {
++            name: "hidden"
++            when: !inputPanel.active
++            PropertyChanges {
++                inputPanel.y: inputPanel.parent.height
++                inputPanel.opacity: 0
++                inputPanel.visible:false
++            }
++        }
++    ]
++
++    transitions: [
++        Transition {
++            to: "visible"
++            ParallelAnimation {
++                YAnimator {
++                    // NOTE this is necessary as otherwise the keyboard always starts the transition with Y as 0, due to the internal reparenting happening when becomes active
++                    from: inputPanel.parent.height
++                    duration: Kirigami.Units.longDuration
++                    easing.type: Easing.OutQuad
++                }
++                OpacityAnimator {
++                    duration: Kirigami.Units.longDuration
++                    easing.type: Easing.OutQuad
++                }
++            }
++        },
++        Transition {
++            to: "hidden"
++            ParallelAnimation {
++                YAnimator {
++                    duration: Kirigami.Units.longDuration
++                    easing.type: Easing.InQuad
++                }
++                OpacityAnimator {
++                    duration: Kirigami.Units.longDuration
++                    easing.type: Easing.InQuad
++                }
++            }
++        }
++    ]
++}
+diff --git a/lookandfeel/components/VirtualKeyboardLoader.qml b/lookandfeel/components/VirtualKeyboardLoader.qml
+new file mode 100644
+index 0000000000..139603f973
+--- /dev/null
++++ b/lookandfeel/components/VirtualKeyboardLoader.qml
+@@ -0,0 +1,122 @@
++/*
++    SPDX-FileCopyrightText: 2016 David Edmundson <davidedmundson@kde.org>
++    SPDX-FileCopyrightText: 2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
++    SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
++
++    SPDX-License-Identifier: LGPL-2.0-or-later
++*/
++
++import QtQuick
++import QtQuick.Templates as T
++import org.kde.kirigami as Kirigami
++
++Loader {
++    id: loader
++
++    required property Item screenRoot
++    required property T.StackView mainStack
++    required property /* MainBlock | Login */ Item mainBlock
++    required property T.TextField passwordField
++
++    readonly property bool keyboardActive: item?.active ?? false
++
++    function showHide() {
++        state = state === "hidden" ? "visible" : "hidden";
++    }
++
++    source: Qt.platform.pluginName.includes("wayland")
++        ? Qt.resolvedUrl("./VirtualKeyboard_wayland.qml")
++        : Qt.resolvedUrl("./VirtualKeyboard.qml")
++
++    onKeyboardActiveChanged: {
++        if (keyboardActive) {
++            state = "visible";
++            // Otherwise the password field loses focus and virtual keyboard
++            // keystrokes get eaten
++            passwordField.forceActiveFocus();
++        } else {
++            state = "hidden";
++        }
++    }
++
++    // Usually, anchors on a top-level component is a bad idea, but this is a
++    // tightly integrated component shared only between lock screen and SDDM
++    anchors {
++        left: parent.left
++        right: parent.right
++    }
++
++    state: "hidden"
++
++    states: [
++        State {
++            name: "visible"
++            PropertyChanges {
++                mainStack.y: Math.min(0, screenRoot.height - loader.height - mainBlock.visibleBoundary)
++                loader.y: screenRoot.height - loader.height
++            }
++        },
++        State {
++            name: "hidden"
++            PropertyChanges {
++                mainStack.y: 0
++                loader.y: screenRoot.height * 0.75
++            }
++        }
++    ]
++
++    transitions: [
++        Transition {
++            from: "hidden"
++            to: "visible"
++            SequentialAnimation {
++                ScriptAction {
++                    script: {
++                        loader.item.activated = true;
++                        Qt.inputMethod.show();
++                    }
++                }
++                ParallelAnimation {
++                    NumberAnimation {
++                        target: loader.mainStack
++                        property: "y"
++                        duration: Kirigami.Units.longDuration
++                        easing.type: Easing.InOutQuad
++                    }
++                    NumberAnimation {
++                        target: loader
++                        property: "y"
++                        duration: Kirigami.Units.longDuration
++                        easing.type: Easing.OutQuad
++                    }
++                }
++            }
++        },
++        Transition {
++            from: "visible"
++            to: "hidden"
++            SequentialAnimation {
++                ParallelAnimation {
++                    NumberAnimation {
++                        target: loader.mainStack
++                        property: "y"
++                        duration: Kirigami.Units.longDuration
++                        easing.type: Easing.InOutQuad
++                    }
++                    NumberAnimation {
++                        target: loader
++                        property: "y"
++                        duration: Kirigami.Units.longDuration
++                        easing.type: Easing.InQuad
++                    }
++                }
++                ScriptAction {
++                    script: {
++                        loader.item.activated = false;
++                        Qt.inputMethod.hide();
++                    }
++                }
++            }
++        }
++    ]
++}
+diff --git a/lookandfeel/components/VirtualKeyboard_wayland.qml b/lookandfeel/components/VirtualKeyboard_wayland.qml
+new file mode 100644
+index 0000000000..5dec27f740
+--- /dev/null
++++ b/lookandfeel/components/VirtualKeyboard_wayland.qml
+@@ -0,0 +1,25 @@
++/*
++    SPDX-FileCopyrightText: 2021 Aleix Pol Gonzalez <aleixpol@kde.org>
++
++    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
++*/
++
++import QtQuick
++
++import org.kde.plasma.workspace.keyboardlayout as Keyboards
++
++Item {
++    id: inputPanel
++    readonly property bool active: Keyboards.KWinVirtualKeyboard.visible
++    property bool activated: false
++    visible: Keyboards.KWinVirtualKeyboard.visible
++
++    x: InputMethod.keyboardRectangle.x
++    y: InputMethod.keyboardRectangle.y
++    height: InputMethod.keyboardRectangle.height
++    width: InputMethod.keyboardRectangle.width
++
++    onActivatedChanged: if (activated) {
++        Keyboards.KWinVirtualKeyboard.enabled = true
++    }
++}
+-- 
+2.54.0
+

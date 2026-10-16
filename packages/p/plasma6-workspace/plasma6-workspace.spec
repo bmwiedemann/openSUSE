@@ -30,14 +30,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        sddm.conf
@@ -49,6 +49,8 @@ Patch502:       0001-Ignore-default-sddm-face-icons.patch
 Patch503:       dont-show-yast-modules-in-the-applications-menu.patch
 # As long as migration from Leap < 15.4 is still relevant, breaks openQA otherwise.
 Patch504:       0001-Revert-krunner-Remove-kconf_update-code.patch
+# SDDM may still use X11
+Patch505:       0001-Revert-lookandfeel-Drop-VirtualKeyboardLoader.patch
 # PATCH-FEATURE-OPENSUSE
 Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
 BuildRequires:  fdupes
@@ -58,8 +60,6 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # BuildRequires:  cmake(KWinDBusInterface) >= %%{_plasma6_bugfix}
 BuildRequires:  kwin6-devel >= %{_plasma6_bugfix}
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
-BuildRequires:  qt6-waylandclient-private-devel >= %{qt6_version}
 BuildRequires:  cmake(AppStreamQt) >= 1.0
 BuildRequires:  cmake(Breeze) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KExiv2Qt6)
@@ -101,7 +101,6 @@ BuildRequires:  cmake(KF6UserFeedback) >= %{kf6_version}
 BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
 BuildRequires:  cmake(KNightTime) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KPipeWire) >= %{_plasma6_bugfix}
-BuildRequires:  cmake(KScreenLocker) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KSysGuard) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(KWayland) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(LayerShellQt) >= %{_plasma6_bugfix}
@@ -117,6 +116,7 @@ BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6GuiPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Location) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Positioning) >= %{qt6_version}
@@ -130,9 +130,11 @@ BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClientPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandCompositor) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(ScreenSaverDBusInterface) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(Union) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(packagekitqt6)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(icu-i18n)
@@ -314,19 +316,6 @@ BuildArch:      noarch
 This package contains the startup scripts necessary to start a KDE
 Plasma 6 session.
 
-%package -n plasma6-session-x11
-Summary:        KDE Plasma 6 Session on X11
-Requires:       kwin6-x11 >= %{_plasma6_bugfix}
-Requires:       plasma6-session = %{version}
-Requires:       xf86-input-libinput
-Requires:       xorg-x11-server
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-
-%description -n plasma6-session-x11
-This package contains the startup scripts and programs necessary to
-start a KDE Plasma 6 session on X11.
-
 %package -n sddm-qt6-branding-openSUSE
 Summary:        Plasma 6 branding for SDDM
 Requires:       plasma6-sddm-theme-openSUSE
@@ -344,8 +333,7 @@ This package confirms defaults for SDDM suitable for Plasma 6.
 %build
 %cmake_kf6 \
   -DGLIBC_LOCALE_GENERATED:BOOL=TRUE \
-  -DGLIBC_LOCALE_GEN:BOOL=FALSE \
-  -DWITH_X11_SESSION=ON
+  -DGLIBC_LOCALE_GEN:BOOL=FALSE
 
 %kf6_build
 
@@ -359,15 +347,7 @@ mkdir -p %{buildroot}%{_kf6_iconsdir}/hicolor/32x32/apps/
 cp %{_kf6_iconsdir}/breeze/preferences/32/preferences-desktop-color.svg %{buildroot}%{_kf6_iconsdir}/hicolor/32x32/apps/
 
 # Rename upstream session files to oS locations, to keep DM configs and user state working
-mv %{buildroot}%{_kf6_sharedir}/xsessions/{plasmax11,plasma6}.desktop
 mv %{buildroot}%{_kf6_sharedir}/wayland-sessions/{plasma,plasmawayland}.desktop
-
-# Install compatibility symlink
-ln -s %{_kf6_sharedir}/xsessions/plasma6.desktop %{buildroot}%{_kf6_sharedir}/xsessions/kde-plasma.desktop
-
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
-ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
 install -Dm 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-plasma.conf
 install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.service.d/waitforkded.conf
@@ -376,33 +356,25 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 
 %post
 %ldconfig
-%{systemd_user_post plasma-gmenudbusmenuproxy.service plasma-kcminit-phase1.service plasma-kcminit.service \
+%{systemd_user_post plasma-gmenudbusmenuproxy.service \
   plasma-krunner.service plasma-ksmserver.service plasma-plasmashell.service \
   plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service plasma-ksplash.service \
   plasma-startupsound.service}
 
 %preun
-%{systemd_user_preun plasma-gmenudbusmenuproxy.service plasma-kcminit-phase1.service plasma-kcminit.service \
+%{systemd_user_preun plasma-gmenudbusmenuproxy.service \
   plasma-krunner.service plasma-ksmserver.service plasma-plasmashell.service \
   plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service plasma-ksplash.service \
   plasma-startupsound.service}
 
 %postun
 %ldconfig
-%{systemd_user_postun plasma-gmenudbusmenuproxy.service plasma-kcminit-phase1.service plasma-kcminit.service \
+%{systemd_user_postun plasma-gmenudbusmenuproxy.service \
   plasma-krunner.service plasma-ksmserver.service plasma-plasmashell.service \
   plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service plasma-ksplash.service \
   plasma-startupsound.service}
 
 %ldconfig_scriptlets libs
-
-%post -n plasma6-session-x11
-%{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
-  default-xsession.desktop %{_datadir}/xsessions/plasma6.desktop 25
-
-%postun -n plasma6-session-x11
-[ -f %{_datadir}/xsessions/plasma6.desktop ] || %{_sbindir}/update-alternatives \
-  --remove default-xsession.desktop %{_datadir}/xsessions/plasma6.desktop
 
 %files
 %license LICENSES/*
@@ -447,8 +419,6 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_applicationsdir}/org.kde.plasmawindowed.desktop
 %{_kf6_applicationsdir}/org.kde.secretprompter.desktop
 %{_kf6_bindir}/gmenudbusmenuproxy
-%{_kf6_bindir}/kcminit
-%{_kf6_bindir}/kcminit_startup
 %{_kf6_bindir}/kcolorschemeeditor
 %{_kf6_bindir}/kde-systemd-start-condition
 %{_kf6_bindir}/kfontinst
@@ -483,6 +453,19 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_configkcfgdir}/launchfeedbacksettings.kcfg
 %{_kf6_configkcfgdir}/lookandfeelsettings.kcfg
 %{_kf6_configkcfgdir}/stylesettings.kcfg
+%{_kf6_configkcfgdir}/desktopthemesettings.kcfg
+%{_kf6_configkcfgdir}/klipper.kcfg
+%{_kf6_configkcfgdir}/nighttimesettings.kcfg
+%{_kf6_configkcfgdir}/notifications_badgesettings.kcfg
+%{_kf6_configkcfgdir}/notifications_behaviorsettings.kcfg
+%{_kf6_configkcfgdir}/notifications_donotdisturbsettings.kcfg
+%{_kf6_configkcfgdir}/notifications_eventsettings.kcfg
+%{_kf6_configkcfgdir}/notifications_jobsettings.kcfg
+%{_kf6_configkcfgdir}/notificationsettings.kcfg
+%{_kf6_configkcfgdir}/regionandlangsettingsbase.kcfg
+%{_kf6_configkcfgdir}/smserversettings.kcfg
+%{_kf6_configkcfgdir}/soundthemesettings.kcfg
+%{_kf6_configkcfgdir}/terminal_settings.kcfg
 %{_kf6_debugdir}/*.categories
 %{_kf6_iconsdir}/hicolor/*/apps/kfontview.png
 %{_kf6_iconsdir}/hicolor/*/mimetypes/fonts-package.png
@@ -507,6 +490,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_libdir}/kconf_update_bin/plasma6.0-remove-old-shortcuts
 %{_kf6_libdir}/kconf_update_bin/plasma6.3-update-clipboard-database-2-to-3
 %{_kf6_libdir}/kconf_update_bin/plasma6.4-migrate-fullscreen-notifications-to-dnd
+%{_kf6_libdir}/kconf_update_bin/plasma6.8-remove-action-menu-shortcut
 %{_kf6_libdir}/kconf_update_bin/plasmashell-6.0-keep-custom-position-of-panels
 %{_kf6_libdir}/kconf_update_bin/plasmashell-6.0-keep-default-floating-setting-for-plasma-5-panels
 %{_kf6_libdir}/kconf_update_bin/plasmashell-6.5-remove-stop-activity-shortcut
@@ -575,12 +559,11 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_libexecdir}/plasma-dbus-run-session-if-needed
 %{_libexecdir}/plasma-fallback-session-restore
 %{_libexecdir}/plasma-fallback-session-save
+%{_libexecdir}/plasma-setup-xwayland
 %{_libexecdir}/plasma-sourceenv.sh
 %{_userunitdir}/plasma-baloorunner.service
 %{_userunitdir}/plasma-core.target
 %{_userunitdir}/plasma-gmenudbusmenuproxy.service
-%{_userunitdir}/plasma-kcminit-phase1.service
-%{_userunitdir}/plasma-kcminit.service
 %{_userunitdir}/plasma-krunner.service
 %{_userunitdir}/plasma-ksmserver.service
 %{_userunitdir}/plasma-ksplash.service
@@ -599,7 +582,6 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_libdir}/libklipper.so.*
 %{_kf6_libdir}/libklookandfeel.so.*
 %{_kf6_libdir}/libkmpris.so.*
-%{_kf6_libdir}/libkrdb.so
 %{_kf6_libdir}/libkworkspace6.so.*
 %{_kf6_libdir}/libnotificationmanager.so.*
 %{_kf6_libdir}/libtaskmanager.so.*
@@ -607,11 +589,9 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %files devel
 %license LICENSES/*
 %{_includedir}/klookandfeel/
-%{_includedir}/krdb/
 %{_includedir}/kworkspace6/
 %{_includedir}/notificationmanager/
 %{_includedir}/taskmanager/
-%{_kf6_libdir}/cmake/Krdb/
 %{_kf6_libdir}/cmake/KRunnerAppDBusInterface/
 %{_kf6_libdir}/cmake/KSMServerDBusInterface/
 %{_kf6_libdir}/cmake/LibKLookAndFeel/
@@ -630,13 +610,6 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %license LICENSES/*
 %dir %{_datadir}/wayland-sessions/
 %{_kf6_sharedir}/wayland-sessions/plasmawayland.desktop
-
-%files -n plasma6-session-x11
-%{_kf6_bindir}/startplasma-x11
-%ghost %{_sysconfdir}/alternatives/default-xsession.desktop
-%{_kf6_sharedir}/xsessions/default.desktop
-%{_kf6_sharedir}/xsessions/kde-plasma.desktop
-%{_kf6_sharedir}/xsessions/plasma6.desktop
 
 %files -n sddm-qt6-branding-openSUSE
 %dir %{_prefix}/lib/sddm/
