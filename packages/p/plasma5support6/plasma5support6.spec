@@ -26,20 +26,19 @@
 %bcond_without released
 # Note: despite being in the plasma namespace upstream, the build system follows the frameworks conventions
 Name:           plasma5support6
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        KF6 Porting aid
 License:        LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_bugfix_version}
@@ -63,7 +62,6 @@ BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libgps)
-BuildRequires:  pkgconfig(x11)
 
 %description
 Support components for porting from KF5/Qt5 to KF6/Qt6.
