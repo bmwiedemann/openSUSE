@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:36 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+  * test: Give config operation time to finish
+  * backends/kwayland: Implement kde_output_device_mode_v2
+
+-------------------------------------------------------------------
+Fri Sep 25 07:19:29 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * Remove XcbDpmsHelper and XCB::DPMS dependency
+  * Make XCB a required dependency
+  * Drop obsolete libxcb-randr dependency
+
+-------------------------------------------------------------------
+Sat Sep 12 19:31:01 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  8 12:08:15 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:

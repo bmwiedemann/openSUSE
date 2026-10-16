@@ -23,7 +23,7 @@
 %define rname libkscreen
 %define sover   8
 Name:           libkscreen6
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -32,28 +32,25 @@ Release:        0
 Summary:        Plasma screen management library
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KWayland) >= %{_plasma6_bugfix}
-BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.10.0
+BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.21.0
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6GuiPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
-BuildRequires:  pkgconfig(xcb)
-BuildRequires:  pkgconfig(xcb-randr)
 
 %description
 Dynamic display management library for KDE
@@ -123,11 +120,7 @@ Shared library for dynamic display management in Plasma
 
 %files plugin
 %{_kf6_bindir}/kscreen-doctor
-%{_kf6_plugindir}/kf6/kscreen/
-%{_kf6_libexecdir}/kscreen_backend_launcher
-%{_kf6_sharedir}/dbus-1/services/org.kde.kscreen.service
 %{_kf6_debugdir}/libkscreen.categories
-%{_userunitdir}/plasma-kscreen.service
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_kscreen-doctor
