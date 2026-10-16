@@ -11,5 +11,7 @@
   <service mode="disabled" name="set_version">
   </service>
   <service name="go_modules" mode="manual">
+    <!-- CVE-2026-84304: pins grpc, not a floor - drop once upstream go.mod has >= 1.83.1 -->
+    <param name="require">google.golang.org/grpc@v1.83.1</param>
   </service>
 </services>

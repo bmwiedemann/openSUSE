@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 16 05:37:57 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Bump vendored google.golang.org/grpc from 1.83.0 to 1.83.1:
+  * CVE-2026-84304: heap memory exhaustion via HTTP/2 DATA frame
+    fragmentation in the gRPC transport (boo#1279216)
+  * Done through the go_modules "require" parameter in _service
+
+-------------------------------------------------------------------
 Fri Aug 28 15:47:32 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update license tag to Apache-2.0 AND MPL-2.0
