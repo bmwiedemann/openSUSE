@@ -323,4 +323,13 @@
     <comment>- Update to release 2.2.1.5:</comment>
     <requestid>1374871</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>bdeacaa66e61b60b95a817b07339a5a7</srcmd5>
+    <version>2.2.1.5</version>
+    <time>1792174186</time>
+    <user>anag_factory</user>
+    <comment>- add libdxfrw-fix-OOB-read-in-dwgReader18-readFileHeader.patch (bsc#1285638
+  CVE-2026-110606)</comment>
+    <requestid>1385145</requestid>
+  </revision>
 </revisionlist>

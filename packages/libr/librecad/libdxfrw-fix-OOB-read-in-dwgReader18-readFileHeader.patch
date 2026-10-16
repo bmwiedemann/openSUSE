@@ -1,0 +1,50 @@
+From: Jiri Slaby <jirislaby@gmail.com>
+Date: Fri, 16 Oct 2026 08:19:52 +0200
+Subject: libdxfrw: fix OOB read in dwgReader18::readFileHeader()
+References: bsc#1285638 CVE-2026-110606
+Patch-mainline: yes
+
+This is to fix CVE-2026-110606.
+
+In upstream, this was fixed as a part of a huge commit abd1f4a8e32d
+("DWG: round 9: DWG/DXF interoperability support (#2790)"). This
+version fixes just the CVE.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ libraries/libdxfrw/src/intern/dwgreader18.cpp | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/libraries/libdxfrw/src/intern/dwgreader18.cpp b/libraries/libdxfrw/src/intern/dwgreader18.cpp
+index 78fa9b1da229..9d2fe10546ff 100644
+--- a/libraries/libdxfrw/src/intern/dwgreader18.cpp
++++ b/libraries/libdxfrw/src/intern/dwgreader18.cpp
+@@ -10,6 +10,8 @@
+ **  along with this program.  If not, see <http://www.gnu.org/licenses/>.    **
+ ******************************************************************************/
+ 
++#include <algorithm>
++#include <cstdint>
+ #include <cstdlib>
+ #include <iostream>
+ #include <fstream>
+@@ -382,9 +384,13 @@ bool dwgReader18::readFileHeader() {
+         secInfo.encrypted = buff3.getRawLong32();
+         //encrypted (doc: 0 no, 1 yes, 2 unkn) on read: objects 0 and encrypted yes
+         DRW_DBG("\nEncrypted= "); DRW_DBGH(secInfo.encrypted);
+-        duint8 nameCStr[64];
+-        buff3.getBytes(nameCStr, 64);
+-        secInfo.name = reinterpret_cast<char*>(nameCStr);
++        std::uint8_t nameCStr[64]{};
++        if (!buff3.getBytes(nameCStr, 64))
++            return false;
++        const auto nameEnd = std::find(std::begin(nameCStr),
++                                       std::end(nameCStr), std::uint8_t{0});
++        secInfo.name.assign(reinterpret_cast<const char*>(nameCStr),
++                            static_cast<std::size_t>(nameEnd - nameCStr));
+         DRW_DBG("\nSection std::Name= "); DRW_DBG( secInfo.name.c_str() ); DRW_DBG("\n");
+         for (unsigned int i = 0; i < secInfo.pageCount; i++){
+             duint32 pn = buff3.getRawLong32();
+-- 
+2.56.0
+

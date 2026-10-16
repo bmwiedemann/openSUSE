@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 16 06:25:03 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- add libdxfrw-fix-OOB-read-in-dwgReader18-readFileHeader.patch (bsc#1285638
+  CVE-2026-110606)
+
+-------------------------------------------------------------------
 Mon Aug 31 07:10:52 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to release 2.2.1.5:

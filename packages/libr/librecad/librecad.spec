@@ -33,6 +33,7 @@ Source3:        https://dokuwiki.librecad.org/lib/exe/fetch.php/partlibs:electro
 Source4:        https://dokuwiki.librecad.org/lib/exe/fetch.php/partlibs:electrical1-lcad.zip#/electrical1-lcad.zip
 Source10:       ttf2lff.1
 Source20:       %name-rpmlintrc
+Patch0:         libdxfrw-fix-OOB-read-in-dwgReader18-readFileHeader.patch
 Patch4:         librecad-no-date.diff
 Patch6:         librecad-install.diff
 Patch7:         librecad-plugindir.diff
