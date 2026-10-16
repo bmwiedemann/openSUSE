@@ -1,7 +1,7 @@
 #
 # spec file for package rr
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Anreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,13 @@
 
 
 Name:           rr
-Version:        5.9.0
+Version:        5.10.0
 Release:        0
 Summary:        Records nondeterministic executions and debugs them deterministically
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://rr-project.org/
 Source:         https://github.com/mozilla/%{name}/archive/%{version}.tar.gz
-# https://github.com/rr-debugger/rr/issues/3995
-Patch0:         rr-5.9.0-fix-glibc-2-42.patch
 BuildRequires:  capnproto
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++

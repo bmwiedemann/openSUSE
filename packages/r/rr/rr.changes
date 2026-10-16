@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 16 09:06:59 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.10.0:
+  * Lots of small improvements and bugfixes
+  * rr now works properly with kernel configuration
+    CONFIG_PROC_MEM_FORCE_PTRACE=y (e.g. Debian 13 kernels)
+  * On Intel hybrid CPUs, rr prefers P-cores but can use E-cores correctly as
+    well.
+- Drop rr-5.9.0-fix-glibc-2-42.patch
+
+-------------------------------------------------------------------
 Tue Sep  9 21:02:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build, add rr-5.9.0-fix-glibc-2-42.patch from upstream
