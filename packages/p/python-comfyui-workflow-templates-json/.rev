@@ -253,4 +253,12 @@ entries are re-sorted. Data only, no code or dependency change.</comment>
     <comment>Update to 0.1.108: six new template definitions (FishAudio, Higgsfield, Qwen Turbo, multiangle), drop retired Luma pair. Builds green, rpmlint clean.</comment>
     <requestid>1384886</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7c98fcabfa16ff379c02d3f48cf75b0d</srcmd5>
+    <version>0.1.111</version>
+    <time>1792174131</time>
+    <user>anag_factory</user>
+    <comment>Forward python-comfyui-workflow-templates-json update to Factory.</comment>
+    <requestid>1385060</requestid>
+  </revision>
 </revisionlist>
