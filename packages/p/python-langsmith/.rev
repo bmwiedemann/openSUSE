@@ -499,4 +499,12 @@ consumer passes the removed arguments.
     <comment>Update to 0.14.8: keep session_id on run copy, fall back to /runs/batch when a run is missing; harden sandbox JWT checks.</comment>
     <requestid>1384905</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1634c38d6dc96150a85926dfb10a858b</srcmd5>
+    <version>0.14.9</version>
+    <time>1792174127</time>
+    <user>anag_factory</user>
+    <comment>Forward python-langsmith update to Factory.</comment>
+    <requestid>1385057</requestid>
+  </revision>
 </revisionlist>

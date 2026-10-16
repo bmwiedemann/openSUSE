@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 15 16:30:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.9:
+  * Stop sandbox run() from waiting 100ms for the server's TCP close
+  * Send OTLP traces to an Agent environment
+  * Fix comparative evaluator scores when randomizing concurrent runs
+  * AgentAddress is now a TypedDict instead of a dataclass for
+    simpler serialization
+  * No new runtime dependencies; requires-python stays >= 3.10
+
+-------------------------------------------------------------------
 Thu Oct 15 04:58:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.8:
