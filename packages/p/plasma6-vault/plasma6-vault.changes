@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:04 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+
+-------------------------------------------------------------------
+Fri Sep 25 07:20:21 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+
+-------------------------------------------------------------------
+Sat Sep 12 19:33:29 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Changes since 6.7.5:
+  * Update version for new release 6.7.90
+  * Rename is-networking-disabled config parameter to is-networking-inhibited
+  * Apply Nate's suggestion (for now)
+  * Apply 2 suggestion(s) to 1 file(s)
+  * Merge checking airplane mode to PlasmaVaultService::PlasmaVaultService()
+  * Remove unnecessary comment
+  * redundant
+  * Apply 1 suggestion(s) to 1 file(s)
+  * Restore vaultapplet.h from official repo
+  * Delete vaultapplet.h
+  * Cleanup
+  * Apply 1 suggestion(s) to 1 file(s)
+  * Cleanup
+  * Port changes from applet component to service.cpp
+  * Remove unnecessary Plasma::Plasma
+  * Missing semicolon
+  * Check whether airplane mode is on
+  * Make "is-networking-disabled" changes in config use KSharedConfig::openStateConfig() instead of openConfig()
+  * Allow changes to config file be made after the change in the NetworkManager have been done
+  * "is-networking-disabled" should be always defaulted to false while reading
+  * Update 6 files
+  * package: fix BugReportUrl
+  * uninitialized variable 'CMAKE_MODULE_PATH' found by cmake --warn-uninitialized -Werror=dev
+  * Enable LSAN in CI
+  * Update version for new release 6.7.80
+
+-------------------------------------------------------------------
 Tue Sep  8 12:09:04 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
