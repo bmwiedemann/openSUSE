@@ -27,24 +27,24 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kpipewire6
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        PipeWire integration for KDE Plasma
 License:        LGPL-2.0-only AND LGPL-3.0-only
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KWayland) >= %{_plasma6_version}
 BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6GuiPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6OpenGL) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QmlIntegration) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
@@ -88,10 +88,18 @@ Summary:        PipeWire integration for KDE Plasma - DMA-BUF support
 KPipeWire provides PipeWire integration for the Plasma desktop and mobile shells.
 This package provides a helper for downloading DMA-BUF textures for CPU processing.
 
+%package -n libKPipeWireMonitor%{_sover}
+Summary:        PipeWire integration for KDE Plasma - Stream monitor support
+
+%description -n libKPipeWireMonitor%{_sover}
+KPipeWire provides PipeWire integration for the Plasma desktop and mobile shells.
+This package provides a helper for monitoring media streams.
+
 %package imports
 Summary:        QtQuick bindings for kpipewire6
 Requires:       libKPipeWire%{_sover} = %{version}
 Requires:       libKPipeWireDmaBuf%{_sover} = %{version}
+Requires:       libKPipeWireMonitor%{_sover} = %{version}
 Requires:       libKPipeWireRecord%{_sover} = %{version}
 
 %description imports
@@ -103,6 +111,7 @@ Summary:        Development files for kpipewire6
 Requires:       kpipewire6-imports = %{version}
 Requires:       libKPipeWire%{_sover} = %{version}
 Requires:       libKPipeWireDmaBuf%{_sover} = %{version}
+Requires:       libKPipeWireMonitor%{_sover} = %{version}
 Requires:       libKPipeWireRecord%{_sover} = %{version}
 Requires:       cmake(Qt6QmlIntegration) >= %{qt6_version}
 Requires:       pkgconfig(epoxy)
@@ -136,6 +145,7 @@ which use KPipeWire.
 %ldconfig_scriptlets -n libKPipeWire%{_sover}
 %ldconfig_scriptlets -n libKPipeWireRecord%{_sover}
 %ldconfig_scriptlets -n libKPipeWireDmaBuf%{_sover}
+%ldconfig_scriptlets -n libKPipeWireMonitor%{_sover}
 
 %files -n libKPipeWire%{_sover}
 %license LICENSES/*
@@ -150,6 +160,9 @@ which use KPipeWire.
 %files -n libKPipeWireDmaBuf%{_sover}
 %{_kf6_libdir}/libKPipeWireDmaBuf.so.*
 
+%files -n libKPipeWireMonitor%{_sover}
+%{_kf6_libdir}/libKPipeWireMonitor.so.*
+
 %files imports
 %{_kf6_qmldir}/org/kde/pipewire/
 
@@ -159,6 +172,7 @@ which use KPipeWire.
 %{_kf6_libdir}/libKPipeWire.so
 %{_kf6_libdir}/libKPipeWireRecord.so
 %{_kf6_libdir}/libKPipeWireDmaBuf.so
+%{_kf6_libdir}/libKPipeWireMonitor.so
 
 %files -n libKPipeWire%{_sover}-lang -f kpipewire6.lang
 
