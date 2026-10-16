@@ -35,6 +35,10 @@ Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3
 # https://github.com/urllib3/urllib3/issues/3334
 %define hypercorn_commit d1719f8c1570cbd8e6a3719ffdb14a4d72880abb
 Source1:        https://github.com/urllib3/hypercorn/archive/%{hypercorn_commit}/hypercorn-%{hypercorn_commit}.tar.gz
+# PATCH-FIX-UPSTREAM gzip-tests.patch gh#urllib3/urllib3@48113e7
+Patch0:         gzip-tests.patch
+# PATCH-FIX-UPSTREAM ssl-test.patch gh#urllib3/urllib3@be5a3f3
+Patch1:         ssl-test.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}

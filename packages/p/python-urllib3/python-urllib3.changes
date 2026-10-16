@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 16 08:49:45 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- add gzip-tests.patch and ssl-test.patch to fix tests
+
+-------------------------------------------------------------------
 Fri Oct  2 06:38:18 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.8.0:

@@ -1,0 +1,33 @@
+From be5a3f30aae8e0ee89759083b8ec01cfe8d60195 Mon Sep 17 00:00:00 2001
+From: Rodrigo Stachlewski Palma
+ <86628053+Rodrigo-Palma@users.noreply.github.com>
+Date: Fri, 2 Oct 2026 18:49:44 -0300
+Subject: [PATCH] Pass server_hostname in test_start_closed_socket (#5289)
+
+Co-authored-by: Illia Volochii <illia.volochii@gmail.com>
+---
+ changelog/5289.misc.rst   | 1 +
+ test/test_ssltransport.py | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 changelog/5289.misc.rst
+
+diff --git a/changelog/5289.misc.rst b/changelog/5289.misc.rst
+new file mode 100644
+index 0000000000..51e28999e8
+--- /dev/null
++++ b/changelog/5289.misc.rst
+@@ -0,0 +1 @@
++Fixed SSL transport test failures on Python 3.10.22+, 3.11.17+, 3.12.15+, 3.13.16+, and 3.14.8+.
+diff --git a/test/test_ssltransport.py b/test/test_ssltransport.py
+index 7a7d8ed820..103bf8f441 100644
+--- a/test/test_ssltransport.py
++++ b/test/test_ssltransport.py
+@@ -136,7 +136,7 @@ def test_start_closed_socket(self) -> None:
+         context = ssl.create_default_context()
+         sock.close()
+         with pytest.raises(OSError):
+-            SSLTransport(sock, context)
++            SSLTransport(sock, context, server_hostname="localhost")
+ 
+     @pytest.mark.timeout(PER_TEST_TIMEOUT)
+     def test_close_after_handshake(self) -> None:

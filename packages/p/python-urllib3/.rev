@@ -1034,4 +1034,12 @@
     lines (`obs-fold`) with spaces in accordance with RFC 9112,</comment>
     <requestid>1382029</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>3fba378cae2a115389175d901667113b</srcmd5>
+    <version>2.8.0</version>
+    <time>1792174029</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1385157</requestid>
+  </revision>
 </revisionlist>

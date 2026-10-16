@@ -1,0 +1,63 @@
+From 48113e7a5fa3b98a61467afa6bcbb0f9b7ca7207 Mon Sep 17 00:00:00 2001
+From: "Mohamed A. Ali" <133538288+Mohamedajab@users.noreply.github.com>
+Date: Thu, 24 Sep 2026 15:51:13 +0100
+Subject: [PATCH] Keep gzip flush from resurfacing ignored errors on newer
+ Python (#5271)
+
+---
+ changelog/5268.bugfix.rst |  2 ++
+ src/urllib3/response.py   |  2 ++
+ test/test_response.py     | 11 +++++++++++
+ 3 files changed, 15 insertions(+)
+ create mode 100644 changelog/5268.bugfix.rst
+
+diff --git a/changelog/5268.bugfix.rst b/changelog/5268.bugfix.rst
+new file mode 100644
+index 0000000000..285f45487a
+--- /dev/null
++++ b/changelog/5268.bugfix.rst
+@@ -0,0 +1,2 @@
++Prevented a suppressed :class:`GzipDecoder` decompression error caused by invalid
++trailing data from resurfacing during ``flush()`` on newer Python versions.
+diff --git a/src/urllib3/response.py b/src/urllib3/response.py
+index ec7d308330..3464cf91e3 100644
+--- a/src/urllib3/response.py
++++ b/src/urllib3/response.py
+@@ -205,6 +205,8 @@ def has_unconsumed_tail(self) -> bool:
+         return bool(self._unconsumed_tail)
+ 
+     def flush(self) -> bytes:
++        if self._state == GzipDecoderState.SWALLOW_DATA:
++            return b""
+         return self._obj.flush()
+ 
+ 
+diff --git a/test/test_response.py b/test/test_response.py
+index 24118f6528..287bdc59de 100644
+--- a/test/test_response.py
++++ b/test/test_response.py
+@@ -30,6 +30,7 @@
+     _MAX_CHUNK_LINE_LENGTH,
+     BaseHTTPResponse,
+     BytesQueueBuffer,
++    GzipDecoder,
+     HTTPResponse,
+     brotli,
+ )
+@@ -495,6 +496,16 @@ def test_decode_gzip_swallow_garbage(self) -> None:
+ 
+         assert ret == b"foofoofoo"
+ 
++    def test_decode_gzip_swallow_garbage_does_not_flush(self) -> None:
++        decoder = GzipDecoder()
++        data = gzip.compress(b"foo") + b"garbage"
++
++        assert decoder.decompress(data) == b"foo"
++        decoder._obj = mock.Mock(flush=mock.Mock(side_effect=zlib.error))
++
++        assert decoder.flush() == b""
++        decoder._obj.flush.assert_not_called()
++
+     def test_chunked_decoding_gzip_swallow_garbage(self) -> None:
+         compress = zlib.compressobj(6, zlib.DEFLATED, 16 + zlib.MAX_WBITS)
+         data = compress.compress(b"foo")
