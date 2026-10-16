@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 16 06:05:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.15.0:
+  * Add the speed parameter and usage.speed to Messages
+  * Add between_tools to thinking types in model capabilities
+  * Return a Console organization's usage-tier spend cap as a
+    read-only spend limit
+  * Retry a rate-limited fast fallback at standard speed
+
+-------------------------------------------------------------------
 Thu Oct 15 04:39:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.14.0:

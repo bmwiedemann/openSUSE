@@ -308,4 +308,12 @@ claude-sonnet-4-5 is deprecated. No new dependencies.
     <comment>Update python-anthropic to 1.14.0: OpenTelemetry tracing, telemetry destinations; add opentelemetry-api dep.</comment>
     <requestid>1384877</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a605de681b53f0e85b5bc407059fd781</srcmd5>
+    <version>1.15.0</version>
+    <time>1792174177</time>
+    <user>anag_factory</user>
+    <comment>Update python-anthropic to 1.15.0 (forward from devel:languages:python).</comment>
+    <requestid>1385114</requestid>
+  </revision>
 </revisionlist>
