@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 15 16:33:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.17.1:
+  * Preview: pycodestyle no longer treats None, True or False
+    as keywords (E271-E274)
+  * Bug fixes: dedent with multiple leading comments; flake8-pyi
+    detects legacy positional-only parameters in __new__ (PYI063)
+    and fixes quoted-annotation false positives (PYI036); perflint
+    avoids invalid comprehension suggestions (PERF401, PERF403)
+  * Rule change: more collections and weakref containers treated
+    as mutable
+  * Docs: flake8-import-conventions default and example aliases
+    updated
+- Re-vendored Rust dependencies; licence set unchanged
+  (MIT AND MPL-2.0)
+
+-------------------------------------------------------------------
 Sat Oct 10 07:09:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.17.0:

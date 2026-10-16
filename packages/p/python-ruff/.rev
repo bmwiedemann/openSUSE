@@ -3754,4 +3754,12 @@ autoforward-gate ELIGIBLE, no competing Factory SR).</comment>
     <comment>Update to 0.17.0. Breaking defaults disclosed: target 3.11, syntax 3.15, DTZ ruleset expansion.</comment>
     <requestid>1383989</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>93bf3b964c5d147f56b3ed6b7cb225c0</srcmd5>
+    <version>0.17.1</version>
+    <time>1792174021</time>
+    <user>anag_factory</user>
+    <comment>Update python-ruff to 0.17.1: bugfix release, no security signal in upstream notes. VUL-bug cross-check not done (no bugwarden access).</comment>
+    <requestid>1385066</requestid>
+  </revision>
 </revisionlist>
