@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:05 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+
+-------------------------------------------------------------------
+Fri Sep 25 07:20:22 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * pages/Welcome: Add 30th anniversary Konqi for 6.8
+
+-------------------------------------------------------------------
+Sat Sep 12 19:33:34 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Changes since 6.7.5:
+  * Update version for new release 6.7.90
+  * update version for new release
+  * Footer: Use ToolBar for the footer, and make it act like a header
+  * Fix memory leaks
+  * update version for new release
+  * Fix kcfg syntax
+  * Add name to kcfg file
+  * Install kcfg file
+  * MockKRunner: Swap help and configure icons
+  * MetaKey: Use StackView for key transition
+  * update version for new release
+  * enjoy: Fix supporters by properly escaping names
+  * enjoy/Supporters: Update supporters
+  * update version for new release
+  * Fix i18n error (kde#522147)
+  * Use an inline link to prompt the user to report a bug
+  * update version for new release
+  * main.cpp do not use https://fhek.gitlab.io.com as it does not exist
+  * update version for new release
+  * main.cpp the compiled plasma-welcome can also be used under GPL_V3
+  * Add self-test
+  * pages: do not show network page on devleopment version
+  * CI: Require all tests to pass
+  * FooterDefault: Ensure consistent width for navigation buttons
+  * Update version for new release 6.7.80
+
+-------------------------------------------------------------------
 Tue Sep  8 12:09:06 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
