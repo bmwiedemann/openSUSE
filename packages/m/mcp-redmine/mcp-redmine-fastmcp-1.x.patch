@@ -1,17 +1,26 @@
---- a/mcp_redmine/server.py	2026-09-08 11:31:59.728737460 +0200
-+++ b/mcp_redmine/server.py	2026-09-08 11:31:59.732737911 +0200
+--- a/mcp_redmine/server.py	2026-10-15 20:49:09.000000000 +0200
++++ b/mcp_redmine/server.py	2026-10-16 00:00:00.000000000 +0200
 @@ -2,8 +2,8 @@
  from urllib.parse import urljoin
  
  import httpx
--from mcp.server.mcpserver import MCPServer, Image
+-from mcp.server.mcpserver import MCPServer, Image, Context
 -from mcp.server.mcpserver.utilities.logging import get_logger
-+from mcp.server.fastmcp import FastMCP, Image
++from mcp.server.fastmcp import FastMCP, Image, Context
 +from mcp.server.fastmcp.utilities.logging import get_logger
  
  ### Constants ###
  
-@@ -160,7 +160,7 @@
+@@ -78,7 +78,7 @@
+ 
+     # On HTTP transports a client can send its own key per request, so a shared server acts
+     # as the calling user instead of one service account (#49). Env key is the fallback.
+-    headers = {} if ctx is None or ctx.headers is None else ctx.headers  # no headers on stdio
++    headers = {} if ctx is None or getattr(ctx, "headers", None) is None else ctx.headers  # no headers on stdio / SDK 1.x
+     key = headers.get('x-redmine-api-key') or REDMINE_API_KEY
+     if not key:
+         return {"status_code": 0, "body": None,
+@@ -194,7 +194,7 @@
  
  
  # Tools
@@ -20,16 +29,16 @@
  get_logger(__name__).info(f"Starting MCP Redmine version {VERSION}")
  
  @mcp.tool(description="""
-@@ -288,7 +288,7 @@
+@@ -327,7 +327,7 @@
  ATTACHMENT_IMAGE_MAX_BYTES = 5 * 1024 * 1024
  
  @mcp.tool()
--def redmine_attachment_image(attachment_id: int) -> Image | str:
-+def redmine_attachment_image(attachment_id: int):
+-def redmine_attachment_image(attachment_id: int, ctx: Context = None) -> Image | str:
++def redmine_attachment_image(attachment_id: int, ctx: Context = None):
      """
      Fetch an image attachment (e.g. an inline screenshot like !screenshot.png!) and return it as viewable
      image content. Use redmine_request on '/issues/{id}.json' with params {'include': 'attachments'} to find
-@@ -338,10 +338,11 @@
+@@ -390,10 +390,11 @@
      parser.add_argument("--port", type=int, default=8000, help="Port for HTTP transports (default: 8000)")
      args = parser.parse_args()
  
@@ -45,3 +54,83 @@
  
  if __name__ == "__main__":
      main()
+--- a/tests/test_server.py	2026-10-15 20:49:09.000000000 +0200
++++ b/tests/test_server.py	2026-10-16 00:00:00.000000000 +0200
+@@ -243,33 +243,63 @@
+ 
+ def _call(tool, args):
+     import anyio
+-    from mcp.client import Client
+-
+-    async def go():
+-        async with Client(server.mcp) as client:
+-            return await client.call_tool(tool, args)
+-    return anyio.run(go)
++    try:
++        from mcp.client import Client
++    except ImportError:
++        Client = None
++
++    if Client is not None:
++        async def go():
++            async with Client(server.mcp) as client:
++                return await client.call_tool(tool, args)
++        return anyio.run(go)
++
++    # Factory python-mcp 1.x has no in-memory Client: use a memory session
++    from mcp.shared.memory import create_connected_server_and_client_session
++
++    async def go_legacy():
++        async with create_connected_server_and_client_session(server.mcp) as session:
++            return await session.call_tool(tool, args)
++    return anyio.run(go_legacy)
++
++
++def _is_error(result):
++    # CallToolResult is is_error in SDK 2.x, isError in 1.x
++    return getattr(result, "is_error", getattr(result, "isError", False))
+ 
+ 
+ def test_misspelled_argument_is_rejected(capture_requests):
+     result = _call("redmine_request", {"path": "/issues/1.json", "method": "put", "body": {"issue": {}}})
+-    assert result.is_error
++    assert _is_error(result)
+     assert "body" in result.content[0].text
+     assert capture_requests == []  # nothing was sent
+ 
+ 
+ def test_schema_forbids_additional_properties():
+     import anyio
+-    from mcp.client import Client
+-
+-    async def go():
+-        async with Client(server.mcp) as client:
+-            return {t.name: t.input_schema.get("additionalProperties") for t in (await client.list_tools()).tools}
+-    assert all(v is False for v in anyio.run(go).values())
++    try:
++        from mcp.client import Client
++    except ImportError:
++        Client = None
++
++    if Client is not None:
++        async def go():
++            async with Client(server.mcp) as client:
++                return {t.name: t.input_schema.get("additionalProperties") for t in (await client.list_tools()).tools}
++        schemas = anyio.run(go)
++    else:
++        # Factory python-mcp 1.x: same check through a memory session
++        from mcp.shared.memory import create_connected_server_and_client_session
++
++        async def go_legacy():
++            async with create_connected_server_and_client_session(server.mcp) as session:
++                return {t.name: t.inputSchema.get("additionalProperties") for t in (await session.list_tools()).tools}
++        schemas = anyio.run(go_legacy)
++    assert all(v is False for v in schemas.values())
+ 
+ 
+ def test_known_arguments_still_work(capture_requests):
+     result = _call("redmine_request", {"path": "/checklists/7.json", "method": "put",
+                                        "data": {"checklist": {"is_done": 1}}})
+-    assert not result.is_error
++    assert not _is_error(result)
+     assert capture_requests[0]["json"] == {"checklist": {"is_done": 1}}

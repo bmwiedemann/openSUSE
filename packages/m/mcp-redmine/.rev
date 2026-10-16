@@ -48,4 +48,12 @@ SR 1369199.</comment>
   fail redmine_download with TypeError (request gains a raw flag)</comment>
     <requestid>1376988</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7f6988b55f0befc0b9897ef31bbd48fd</srcmd5>
+    <version>2026.10.15.204909</version>
+    <time>1792174181</time>
+    <user>anag_factory</user>
+    <comment>Update mcp-redmine to 2026.10.15 (per-connection API key, credential redaction, mcp 1.28 compat patch).</comment>
+    <requestid>1385130</requestid>
+  </revision>
 </revisionlist>

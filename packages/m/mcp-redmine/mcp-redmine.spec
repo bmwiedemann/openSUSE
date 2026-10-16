@@ -20,13 +20,13 @@
 # it against the distribution's primary Python flavour.
 %define pythons %{primary_python}
 Name:           mcp-redmine
-Version:        2026.9.10.84818
+Version:        2026.10.15.204909
 Release:        0
 Summary:        Model Context Protocol server for Redmine
 License:        MPL-2.0
 URL:            https://github.com/runekaagaard/mcp-redmine
 Source:         https://files.pythonhosted.org/packages/source/m/mcp_redmine/mcp_redmine-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE mcp-redmine-fastmcp-1.x.patch mpluskal@suse.com -- Factory python-mcp is still 1.28 FastMCP
+# PATCH-FIX-OPENSUSE mcp-redmine-fastmcp-1.x.patch mpluskal@suse.com -- Factory python-mcp is still 1.28 FastMCP (MCPServer, ctx.headers and test Client are 2.x SDK)
 Patch0:         mcp-redmine-fastmcp-1.x.patch
 BuildRequires:  %{primary_python}-PyYAML >= 6.0.2
 BuildRequires:  %{primary_python}-hatchling

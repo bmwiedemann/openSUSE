@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 16 06:09:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.10.15.204909:
+  * Per-connection API key via X-Redmine-API-Key header;
+    REDMINE_API_KEY is now an optional fallback
+  * Redact api_key fields from tool results and scrub the
+    configured key from outgoing text and logs
+  * Reject unknown tool arguments instead of silently dropping
+    them (schemas now set additionalProperties: false)
+  * Bump MCP SDK requirement to 2.3.0
+- Rebase mcp-redmine-fastmcp-1.x.patch for the new sources
+  (Context import, ctx parameter, header lookup and test
+  client); Factory python-mcp is still 1.28, where the
+  per-request header is inert and the env key is used
+
+-------------------------------------------------------------------
 Thu Sep 10 18:28:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2026.9.10.84818:
