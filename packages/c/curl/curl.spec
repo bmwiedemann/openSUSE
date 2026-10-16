@@ -36,7 +36,7 @@
 %endif
 
 Name:           curl%{?psuffix}
-Version:        8.22.0
+Version:        8.23.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -196,7 +196,6 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --disable-smtp \
     --disable-telnet \
     --disable-tftp \
-    --disable-tls-srp \
     --disable-websockets \
     --without-brotli \
     --without-libssh \

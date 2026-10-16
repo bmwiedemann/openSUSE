@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Thu Oct 15 08:59:18 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.23.0:
+  * Security fixes:
+    - CVE-2026-92388: FTP wildcard write callback mixup (bsc#1285016)
+    - CVE-2026-92389: TFTP direction confusion (bsc#1285015)
+    - CVE-2026-87866: wolfSSL public-key pinning bypass (bsc#1285019)
+    - CVE-2026-87862: HSTS cache import drops longer-lived child (bsc#1285023)
+    - CVE-2026-87861: cross-origin reuse of a Negotiate connection (bsc#1285024)
+    - CVE-2026-87864: IMAP APPEND plus CRLF conversion command injection (bsc#1285021)
+    - CVE-2026-87863: HSTS response erases persisted entries (bsc#1285022)
+    - CVE-2026-86410: redirect to SFTP or SCP bypasses host verification (bsc#1285030)
+    - CVE-2026-87865: knownhost callback mismatches key as missing (bsc#1285020)
+    - CVE-2026-92387: never-ending loop via server response omission (bsc#1285017)
+    - CVE-2026-92386: server-set cookie aborts cookie jar load (bsc#1285018)
+    - CVE-2026-86412: server-set cookie erases cookie jar (bsc#1285028)
+    - CVE-2026-86413: Negotiate credentials sent to redirected origin (bsc#1285027)
+    - CVE-2026-86414: leaking host credentials to HTTP proxy (bsc#1285026)
+    - CVE-2026-92392: HTTP/2 upload Use-After-Free (bsc#1285012)
+    - CVE-2026-94266: password leak in CURLINFO_EFFECTIVE_URL (bsc#1285010)
+    - CVE-2026-92391: curl_mime_free stack overflow by recursion (bsc#1285013)
+    - CVE-2026-92390: -J no-clobber guarantee bypassed with 103 early hints (bsc#1285014)
+    - CVE-2026-107929: local interface connection reuse mixup (bsc#1285008)
+    - CVE-2026-107928: info leak uploading over WebSockets with GnuTLS (bsc#1285009)
+    - CVE-2026-94265: Authorization: Negotiate sent to foreign origin (bsc#1285011)
+    - CVE-2026-86409: stale SigV4 headers sent unintended (bsc#1285031)
+    - CVE-2026-86411: FTP connection reuse inherits client-certificate (bsc#1285029)
+  * Changes:
+    - lib: CURL_GLOBAL_WIN32 -> CURL_GLOBAL_WINSOCK
+    - SMB: drop support
+    - tool_cb_wrt: inject the no-clobber number before the extension
+    - tool_cb_wrt: try up to .9999 when no-clobbering
+  * Bugfixes:
+    - conncache: never discard a connection still in use
+    - curl-openssl.m4: sync LibreSSL detection method with rest of forks
+    - cw-out: avoid O(n^2) work while buffering paused output
+    - cw-pause: fix O(N^2) list traversal in cw_pause_flush
+    - DEPRECATE: Common Name support in TLS certificates for OpenSSL
+    - ftp: require TLS on the data connection for implicit FTPS
+    - ftp: tighten use_ssl check for conn reuse
+    - global_init: tidy up, simplify, fix issues
+    - GnuTLS: remove our own OCSP signature verification
+    - gtls: no early return on verify fail
+    - headers: avoid O(n^2) rescans in curl_easy_nextheader()
+    - hsts: cap max-age to two years
+    - HTTP-CONNECT: do not react to 401 responses
+    - http2: don't send a CURLE_SEND_ERROR after a valid http2 response
+    - http2: fix reset after 1xx response
+    - http2: initialize URL handle for server pushes
+    - http2: limit trailers and headers count
+    - http: abide to close-rules when transfer-encoding off
+    - http: ignore Proxy-Authenticate unless the response comes from a proxy
+    - http: only enable Negotiate/NTLM to allowed origins
+    - http: reject empty header names
+    - http: reject resumed uploads
+    - http_aws_sigv4: fix the s3express service name
+    - if2ip: check interface name case sensitive
+    - imap: compare selected mailbox names case-sensitively
+    - libssh2: match hashed known_hosts entries by host
+    - libssh2: skip repeat checkp() for already-absent hashed key types
+    - libssh: work with empty priv_key
+    - openssl/gtls: reject CRLfile with native CA store, matching rustls
+    - openssl: fix OpenSSL v4.1 no-deprecated build
+    - openssl: support X509 store caching when CApath is configured
+    - openssl: use non-deprecated API for MD5/MD4
+    - ossl_verifyhost: remove assumption of null-termination of ASN1_STRING.
+    - peer: compare zoneid case sensitive
+    - peer: parsing a zoneid as number fix
+    - peer: preserve ipv6 props from "connect-to"
+    - pingpong: schedule server response timeouts for the socket API
+    - rtsp: do not send a learned session id to another origin
+    - rustls: break recv loop on empty plain text
+    - rustls: consume CURLOPT_SSLCERT_BLOB / CURLOPT_SSLKEY_BLOB
+    - schannel: retain close_notify records across send retries
+    - socks: support CURLAUTH_ONLY in CURLOPT_SOCKS5_AUTH
+    - socks: track SOCKS5 authentication per socket, not per connection
+    - sws: fix connection-monitor for connections closed before a request
+    - telnet: make it work through proxy tunnels
+    - tool: (re)set SSL verification in --libcurl output
+    - tool_getparam: restore --socks5-gssapi-service
+    - url: match connections without force reuse and candidates
+    - url: ntlm/negotiate, prohibit connection reuse on follows
+    - vtls_scache: remember lock state locally
+  * Remove now unrecognized option: --disable-tls-srp
+  * Rebase libcurl-ocloexec.patch
+
+-------------------------------------------------------------------
 Thu Sep  3 08:00:09 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.22.0:
@@ -9,7 +96,7 @@ Thu Sep  3 08:00:09 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
     - CVE-2026-80229: OpenSSL provider use-after-free (bsc#1277479)
     - CVE-2026-80230: OpenSSL pinning bypass (bsc#1277480)
     - CVE-2026-80255: secure cookie attribute bypass with tab (bsc#1277482)
-    - CVE-2026-82209: curl: domain-scoped PSL domain cookie (bsc#1278173)
+    - CVE-2026-82209: domain-scoped PSL domain cookie (bsc#1278173)
   * Changes:
     - gssapi: add support for Apple GSS Framework
     - hardening: add API guards
@@ -3175,9 +3262,9 @@ Wed Mar 31 08:40:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 - Update to 7.76.0
   * Security fixes:
     - [bsc#1183933, CVE-2021-22876]: strip credentials from the
-	    auto-referer header field
+      auto-referer header field
     - [bsc#1183934, CVE-2021-22890]: add 'isproxy' argument to
-	    Curl_ssl_get/addsessionid()
+      Curl_ssl_get/addsessionid()
   * Changes:
     - cookies: Support multiple -b parameters
     - curl: add --fail-with-body
@@ -6883,7 +6970,7 @@ Sat Apr  9 20:42:27 UTC 2011 - crrodriguez@opensuse.org
 Fri Oct 22 16:37:03 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - Update to version  7.21.2
-	* curl -T: ignore file size of special files
+    * curl -T: ignore file size of special files
     * Added GOPHER protocol support
     * Added mk-ca-bundle.vbs script
     * c-ares build now requires c-ares >= 1.6.0
@@ -6899,21 +6986,21 @@ Fri Oct 22 16:37:03 UTC 2010 - cristian.rodriguez@opensuse.org
     * progress: callback for POSTs less than MAX_INITIAL_POST_SIZE
     * Link curl and the test apps with -lrt explicitly when necessary
     * chunky parser: only rewind stream internally if needed
-	* remote-header-name: don't output filename when NULL
+    * remote-header-name: don't output filename when NULL
     * Curl_timeleft: avoid returning "no timeout" by mistake
     * timeout: use the correct start value as offset
     * FTP: fix wrong timeout trigger
     * rtsp: avoid SIGSEGV on malformed header
-	* LDAP: Support for tunnelling queries through HTTP proxy
+    * LDAP: Support for tunnelling queries through HTTP proxy
     * curl_easy_duphandle: clone the c-ares handle correctly
     * support URL containing colon without trailing port number
     * parsedate: allow time specified without seconds
     * curl_easy_escape: don't escape "unreserved" characters
     * SFTP: avoid downloading negative sizes
-	* Lots of GSS/KRB FTP fixes
-	* TFTP: Work around tftpd-hpa upload bug
-	* libcurl.m4: several fixes
-	* HTTP: remove special case for 416
+    * Lots of GSS/KRB FTP fixes
+    * TFTP: Work around tftpd-hpa upload bug
+    * libcurl.m4: several fixes
+    * HTTP: remove special case for 416
     * globbing: fix crash on unballanced open brace
 
 -------------------------------------------------------------------

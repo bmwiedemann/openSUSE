@@ -7,11 +7,11 @@ To make it portable you have to test O_CLOEXEC support at *runtime*
 compile time is not enough.
 
 
-Index: curl-8.20.0/lib/file.c
+Index: curl-8.23.0/lib/file.c
 ===================================================================
---- curl-8.20.0.orig/lib/file.c
-+++ curl-8.20.0/lib/file.c
-@@ -230,7 +230,7 @@ static CURLcode file_connect(struct Curl
+--- curl-8.23.0.orig/lib/file.c
++++ curl-8.23.0/lib/file.c
+@@ -262,7 +262,7 @@ static CURLcode file_connect(struct Curl
      }
    }
  #else
@@ -20,22 +20,19 @@ Index: curl-8.20.0/lib/file.c
    file->path = real_path;
  #endif
  #endif
-@@ -298,9 +298,9 @@ static CURLcode file_upload(struct Curl_
-                   data->set.new_file_perms & (_S_IREAD | _S_IWRITE));
- #elif (defined(ANDROID) || defined(__ANDROID__)) && \
-   (defined(__i386__) || defined(__arm__))
--  fd = curlx_open(file->path, mode, (mode_t)data->set.new_file_perms);
-+  fd = curlx_open(file->path, mode|O_CLOEXEC, (mode_t)data->set.new_file_perms);
+@@ -331,7 +331,7 @@ static CURLcode file_upload(struct Curl_
+   else
+     mode |= O_TRUNC;
+ 
+-  fd = curlx_open(file->path, mode,
++  fd = curlx_open(file->path, mode|O_CLOEXEC,
+ #ifdef _WIN32
+                   data->set.new_file_perms & (_S_IREAD | _S_IWRITE)
  #else
--  fd = curlx_open(file->path, mode, data->set.new_file_perms);
-+  fd = curlx_open(file->path, mode|O_CLOEXEC, data->set.new_file_perms);
- #endif
-   if(fd < 0) {
-     failf(data, "cannot open %s for writing", file->path);
-Index: curl-8.20.0/lib/if2ip.c
+Index: curl-8.23.0/lib/if2ip.c
 ===================================================================
---- curl-8.20.0.orig/lib/if2ip.c
-+++ curl-8.20.0/lib/if2ip.c
+--- curl-8.23.0.orig/lib/if2ip.c
++++ curl-8.23.0/lib/if2ip.c
 @@ -202,7 +202,7 @@ if2ip_result_t Curl_if2ip(int af,
    if(len >= sizeof(req.ifr_name))
      return IF2IP_NOT_FOUND;
@@ -45,11 +42,11 @@ Index: curl-8.20.0/lib/if2ip.c
    if(dummy == CURL_SOCKET_BAD)
      return IF2IP_NOT_FOUND;
  
-Index: curl-8.20.0/configure.ac
+Index: curl-8.23.0/configure.ac
 ===================================================================
---- curl-8.20.0.orig/configure.ac
-+++ curl-8.20.0/configure.ac
-@@ -509,6 +509,8 @@ AC_DEFINE_UNQUOTED(CURL_OS, "${host}", [
+--- curl-8.23.0.orig/configure.ac
++++ curl-8.23.0/configure.ac
+@@ -548,6 +548,8 @@ AC_DEFINE_UNQUOTED(CURL_OS, "${host}", [
  dnl Silence warning: ar: 'u' modifier ignored since 'D' is the default
  AC_SUBST(AR_FLAGS, [cr])
  
@@ -58,10 +55,10 @@ Index: curl-8.20.0/configure.ac
  dnl This defines _ALL_SOURCE for AIX
  CURL_CHECK_AIX_ALL_SOURCE
  
-Index: curl-8.20.0/lib/vdns/hostip.c
+Index: curl-8.23.0/lib/vdns/hostip.c
 ===================================================================
---- curl-8.20.0.orig/lib/vdns/hostip.c
-+++ curl-8.20.0/lib/vdns/hostip.c
+--- curl-8.23.0.orig/lib/vdns/hostip.c
++++ curl-8.23.0/lib/vdns/hostip.c
 @@ -43,6 +43,7 @@
  #include <setjmp.h>  /* for sigjmp_buf, sigsetjmp() */
  #include <signal.h>
@@ -70,7 +67,7 @@ Index: curl-8.20.0/lib/vdns/hostip.c
  #include "urldata.h"
  #include "curl_addrinfo.h"
  #include "curl_trc.h"
-@@ -293,7 +294,7 @@ static struct Curl_addrinfo *get_localho
+@@ -289,7 +290,7 @@ static struct Curl_addrinfo *get_localho
  CURLcode Curl_probeipv6(struct Curl_multi *multi)
  {
    /* probe to see if we have a working IPv6 stack */
@@ -79,11 +76,11 @@ Index: curl-8.20.0/lib/vdns/hostip.c
    multi->ipv6_works = FALSE;
    if(s == CURL_SOCKET_BAD) {
      if(SOCKERRNO == SOCKENOMEM)
-Index: curl-8.20.0/lib/cf-socket.c
+Index: curl-8.23.0/lib/cf-socket.c
 ===================================================================
---- curl-8.20.0.orig/lib/cf-socket.c
-+++ curl-8.20.0/lib/cf-socket.c
-@@ -338,7 +338,8 @@ static CURLcode socket_open(struct Curl_
+--- curl-8.23.0.orig/lib/cf-socket.c
++++ curl-8.23.0/lib/cf-socket.c
+@@ -462,7 +462,8 @@ static CURLcode socket_open(struct Curl_
        return CURLE_COULDNT_CONNECT;
      }
  #endif
