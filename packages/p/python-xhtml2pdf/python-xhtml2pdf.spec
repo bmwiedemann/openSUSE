@@ -1,7 +1,7 @@
 #
 # spec file for package python-xhtml2pdf
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xhtml2pdf
-Version:        0.2.17
+Version:        0.2.24
 Release:        0
 Summary:        PDF Generator Using HTML and CSS
 License:        Apache-2.0
 URL:            https://github.com/xhtml2pdf/xhtml2pdf
 Source:         https://github.com/xhtml2pdf/xhtml2pdf/archive/refs/tags/v%{version}.tar.gz#/xhtml2pdf-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -32,10 +32,10 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 8.1.1
 Requires:       python-arabic-reshaper >= 3.0.0
 Requires:       python-html5lib >= 1.1
-Requires:       python-pyHanko >= 0.19.5
+Requires:       python-pyHanko >= 0.36.0
+Requires:       python-pyhanko-certvalidator >= 0.30.0
 Requires:       python-pypdf >= 3.1.0
-Requires:       python-python-bidi >= 0.5.0
-Requires:       python-reportlab >= 4.0.4
+Requires:       python-reportlab >= 4.4.9
 Requires:       python-svglib >= 1.2.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -45,11 +45,11 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pillow >= 8.1.1}
 BuildRequires:  %{python_module arabic-reshaper >= 3.0.0}
 BuildRequires:  %{python_module html5lib >= 1.1}
-BuildRequires:  %{python_module pyHanko >= 0.19.5}
+BuildRequires:  %{python_module pyHanko >= 0.36.0}
+BuildRequires:  %{python_module pyhanko-certvalidator >= 0.30.0}
 BuildRequires:  %{python_module pypdf >= 3.1.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-bidi >= 0.5.0}
-BuildRequires:  %{python_module reportlab >= 4.0.4}
+BuildRequires:  %{python_module reportlab >= 4.4.9}
 BuildRequires:  %{python_module svglib >= 1.2.1}
 # /SECTION
 %python_subpackages

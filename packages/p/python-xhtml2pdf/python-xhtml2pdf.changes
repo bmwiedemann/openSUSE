@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Oct 16 01:12:37 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.2.24:
+  * Parentheses, brackets face the right way in right-to-left text.
+  * A simple signature with a ca_chain signs.
+  * A long table in a document with pdf:pagecount or pdf:toc no longer keeps
+    every part of it already drawn until the end.
+  * Right-to-left text is put in the order it is drawn one line at a time,
+    after the lines are broken, instead of one fragment at a time before.
+  * Dashed and dotted borders on table cells are drawn dashed and dotted.
+  * CSS custom properties.
+  * Safer rendering of untrusted HTML. ResourceAccessPolicy.server() turns on
+    a full set of limits in one call
+  * display: flex lays the element's children out in a row or a column,
+    following CSS Flexible Box Layout Module Level 1
+  * Flex containers break across pages.
+  * A font-family list is matched per character, as CSS says it is.
+  * No longer use os.system to run "open" or "xdg-open".
+    (CVE-2026-110642, bsc#1285637)
+  * The document language reaches the PDF catalog as /Lang
+  * Retain metadata on applying watermark
+  * Several fixes to background processing
+  * @page name:left / @page name:right now work.
+  * Temporary files are no longer shared between threads.
+  * The WSGI middleware produces PDFs.
+  * pisaPDF.addFromString() works.
+  * data: URIs are parsed per RFC 2397. The percent-encoded form, which is
+    the usual way inline SVG is written, was rejected outright.
+  * HTTP responses follow redirects (bounded to 5 hops), accept any 2xx
+    status rather than the literal "200 OK" reason phrase.
+  * Plain HTTP requests honour the configured http_timeout; it was only
+    applied to HTTPS connections.
+  * Temporary files are registered with the cleanup registry even when the
+    resource is empty.
+  * Paragraph.getPlainText() works; a misplaced bracket made it join a
+    sequence of one-element lists and raise TypeError on every call.
+  * Filter.should_filter is abstract instead of printing headers to stdout
+    and returning None.
+  * The memoization cache in xhtml2pdf.util is bounded and cleared after each
+    render; its keys come from CSS in the rendered document.
+  * The suite no longer reaches the public internet; fixtures are served from
+    tests/httpserver.py on localhost.
+
+-------------------------------------------------------------------
 Fri Sep  5 11:30:19 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - python-pyhanko-cert-validator is included in python-pyHanko now

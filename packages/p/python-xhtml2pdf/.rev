@@ -118,4 +118,41 @@
     <comment>- python-pyhanko-cert-validator is included in python-pyHanko now</comment>
     <requestid>1302922</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>434bfc4533b979c2a2c5b2b186fc4a4d</srcmd5>
+    <version>0.2.24</version>
+    <time>1792174145</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2.24:
+  * Parentheses, brackets face the right way in right-to-left text.
+  * A simple signature with a ca_chain signs.
+  * A long table in a document with pdf:pagecount or pdf:toc no longer keeps
+    every part of it already drawn until the end.
+  * Right-to-left text is put in the order it is drawn one line at a time,
+    after the lines are broken, instead of one fragment at a time before.
+  * Dashed and dotted borders on table cells are drawn dashed and dotted.
+  * CSS custom properties.
+  * Safer rendering of untrusted HTML. ResourceAccessPolicy.server() turns on
+    a full set of limits in one call
+  * display: flex lays the element's children out in a row or a column,
+    following CSS Flexible Box Layout Module Level 1
+  * Flex containers break across pages.
+  * A font-family list is matched per character, as CSS says it is.
+  * No longer use os.system to run &quot;open&quot; or &quot;xdg-open&quot;.
+    (CVE-2026-110642, bsc#1285637)
+  * The document language reaches the PDF catalog as /Lang
+  * Retain metadata on applying watermark
+  * Several fixes to background processing
+  * @page name:left / @page name:right now work.
+  * Temporary files are no longer shared between threads.
+  * The WSGI middleware produces PDFs.
+  * pisaPDF.addFromString() works.
+  * data: URIs are parsed per RFC 2397. The percent-encoded form, which is
+    the usual way inline SVG is written, was rejected outright.
+  * HTTP responses follow redirects (bounded to 5 hops), accept any 2xx
+    status rather than the literal &quot;200 OK&quot; reason phrase.
+  * Plain HTTP requests honour the configured http_timeout; it was only
+    applied to HTTPS connections.</comment>
+    <requestid>1385081</requestid>
+  </revision>
 </revisionlist>
