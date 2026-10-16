@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:39 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+  * desktoptheme: Alleviate subpar visibility of minimized tasks in Air and Oxygen
+  * desktoptheme: Fix Oxygen's panel glow not starting from the bottom in floating mode
+
+-------------------------------------------------------------------
+Fri Sep 25 07:19:38 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * desktoptheme: Fix Air & Oxygen selection text color by restoring foreground values
+  * Better corners for lineedit focus and hover objects
+  * kstyle: Fix misproportionate default scrollbar width
+
+-------------------------------------------------------------------
+Sat Sep 12 19:31:28 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Changes since 6.7.5:
+  * Update version for new release 6.7.90
+  * Fix choppy cached pixmap/icon rendering under fractional Wayland scaling (kde#483239,kde#522737)
+  * Update file slider.svg
+  * [desktoptheme] Improve appearance of Air's buttons
+  * [desktoptheme] Enable accent color colorization in Air and Oxygen desktop themes
+  * [desktoptheme] Make all of the blue glows in Air and Oxygen follow accent color (kde#523664)
+  * Make window glow use accent color by default
+  * Fix broken CI configuration
+  * Reimplement window decoration background gradient toggle (kde#522092)
+  * feat(cursors): adapt help glyph contrast by theme brightness
+  * feat(cursors): regenerate busy and half-busy Oxygen cursors
+  * chore(git): ignore build directory
+  * chore: exclude local generator scripts from tracked changes
+  * feat(cursors): regenerate busy/half-busy animations and update theme build config
+  * desktop theme: Fix Air's off-center clock hands (kde#521715)
+  * kstyle: Work around bad looks of Dolphin's small statusbar
+  * kdecoration: Fix missing windeco buttons (app menu & hide from screencast) (kde#384301)
+  * Enable LSAN in CI
+  * Add smoke test for KCMs
+  * Enable testing
+  * CI: Require all tests to pass
+  * kstyle: Don't draw a separator below settings windows headers (kde#236350)
+  * Update version for new release 6.7.80
+
+-------------------------------------------------------------------
 Tue Sep  8 12:08:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
