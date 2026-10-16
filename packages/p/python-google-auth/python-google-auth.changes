@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 11:11:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.62.0
+  * **auth:** enable bound ID tokens by default on Cloud Run (#18635)
+
+-------------------------------------------------------------------
 Thu Oct  8 11:09:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.61.0
