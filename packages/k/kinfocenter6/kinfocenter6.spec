@@ -28,14 +28,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           kinfocenter6
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -54,7 +54,9 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
 BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Graphs) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickShapes) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
@@ -136,6 +138,7 @@ KDE Utility that provides information about a computer system.
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_samba.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_sensors.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_usb.so
+%{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_vaapi.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_vulkan.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_wayland.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_xserver.so
@@ -152,7 +155,7 @@ KDE Utility that provides information about a computer system.
 %{_kf6_sharedir}/kinfocenter/firmware_security/
 %{_kf6_sharedir}/polkit-1/actions/org.kde.kinfocenter.dmidecode.policy
 %{_kf6_libexecdir}/kauth/kinfocenter-dmidecode-helper
-%{_libexecdir}/kinfocenter-opengl-helper
+%{_libexecdir}/kinfocenter-egl-helper
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en
