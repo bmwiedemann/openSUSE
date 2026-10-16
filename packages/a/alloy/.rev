@@ -335,4 +335,13 @@
     <comment>1</comment>
     <requestid>1384615</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>741a0c686102b017f3747d94f26f4d98</srcmd5>
+    <version>1.20.1</version>
+    <time>1792174203</time>
+    <user>anag_factory</user>
+    <comment>- Increase required memory in constraints
+</comment>
+    <requestid>1385160</requestid>
+  </revision>
 </revisionlist>
