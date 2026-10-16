@@ -364,4 +364,13 @@ boo#1277713</comment>
     <comment>pcre2 10.49 boo#1283020 (forwarded request 1381237 from AndreasStieger)</comment>
     <requestid>1381238</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>a91ff51596d24f4e8da3ab3217f9f9ac</srcmd5>
+    <version>10.49</version>
+    <time>1792174273</time>
+    <user>anag_factory</user>
+    <comment>    large stack allocations (GHSA-r9hj-j2rw-4q3m, boo#1283020,
+    bsc#1283342, CVE-2026-103111)</comment>
+    <requestid>1385166</requestid>
+  </revision>
 </revisionlist>
