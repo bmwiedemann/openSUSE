@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:55 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+  * taskswitcher: Fix was-in-active-task condition
+  * taskswitcher: Disable view caching for now
+  * Add config for oneplus 6T
+  * shell: Fix splash not being set, and avoid setting explicit background
+  * shell: Split bindings to workaround Qt bug (kde#526454)
+  * panel: Ensure touch area is updated when width changes
+  * folio: Make app drawer pill smaller, and fix focus
+
+-------------------------------------------------------------------
+Fri Sep 25 07:20:05 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * folio: Fix app drawer search backspace after key nav
+  * devices: Add Fairphone Gen 6
+  * MarqueeLabel: Avoid masking/effects if text doesn't need marquee
+  * quicksettings: Ensure MarqueeLabel is off when panel is hidden
+  * homescreen: Add X-KDE-PlasmaMobileName to specify Plasma Mobile .desktop application name
+
+-------------------------------------------------------------------
+Sat Sep 12 19:32:42 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  8 12:08:47 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:

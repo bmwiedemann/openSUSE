@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-mobile
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -39,14 +39,13 @@ Release:        0
 Summary:        Plasma shell for mobile devices
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
-BuildRequires:  kf6-extra-cmake-modules
-BuildRequires:  qt6-waylandclient-private-devel
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
@@ -79,6 +78,7 @@ BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sensors) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClientPrivate) >= %{qt6_version}
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -172,6 +172,7 @@ echo > quicksettings/flashlight/kauth/CMakeLists.txt
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.battery/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.bluetooth/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.caffeine/
+%{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.darkmode/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.docked/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.donotdisturb/
 %{_kf6_plasmadir}/quicksettings/org.kde.plasma.quicksetting.flashlight/
