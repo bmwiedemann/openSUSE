@@ -322,4 +322,19 @@
   * Wait for network-online.target</comment>
     <requestid>1327686</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>60aea2811125627f05d4560bc294beec</srcmd5>
+    <version>1.6</version>
+    <time>1792174017</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.6:
+  * Write /etc/.combustion-result.json on completion
+  * CI: Validate that combustion created a snapshot
+  * Implement support for separate /etc snapshots
+  * CI: Enable SELinux
+  * CI: Deduplicate common kernel args
+  * CI: Replace remaining spaces with tabs
+  * CI: Use GH actions/checkout@v7</comment>
+    <requestid>1385026</requestid>
+  </revision>
 </revisionlist>

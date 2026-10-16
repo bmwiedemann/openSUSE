@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 15 13:43:10 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.6:
+  * Write /etc/.combustion-result.json on completion
+  * CI: Validate that combustion created a snapshot
+  * Implement support for separate /etc snapshots
+  * CI: Enable SELinux
+  * CI: Deduplicate common kernel args
+  * CI: Replace remaining spaces with tabs
+  * CI: Use GH actions/checkout@v7
+
+-------------------------------------------------------------------
 Fri Jan 16 14:05:03 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.5+git8:
