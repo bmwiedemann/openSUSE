@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+  * applets/weather: remove wetter.com ion
+  * wallpapers/potd: remove epod (kde#526633)
+  * applets/weather: show tooltip if no data available
+  * applets/weather: finish envcan forecast request on lookup failure
+  * applets/weather: fix crash in EnvCan when forecast file is missing (kde#512054)
+  * applets/dict: make it look more plasma-style
+  * applets/comic: avoid infinite reload loop (kde#525856)
+  * applets/mediaframe, dictionary: add separators around config views
+
+-------------------------------------------------------------------
+Fri Sep 25 07:19:04 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * applets/dict: fix desktop widget at minimum sizes
+  * applets/weather: fix Wetter.com forecast timestamps (kde#520315)
+  * applets/weather: fix bbcukmet location search cancellation
+
+-------------------------------------------------------------------
+Sat Sep 12 19:29:50 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Too many changes to list here
+- Update vendor.tar.zst
+
+-------------------------------------------------------------------
 Tue Sep  8 12:07:34 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
