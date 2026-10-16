@@ -257,4 +257,17 @@
   * Out-of-bounds read in libXi's XI2 enter/leave/focus cookie conversio (boo#1281651, CVE-2026-94282)</comment>
     <requestid>1379999</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>7ec5f4458f2bb6d0577afe61eff35542</srcmd5>
+    <version>1.8.3</version>
+    <time>1792174025</time>
+    <user>anag_factory</user>
+    <comment>- boo1285084_CVE-2026-109089_XGetDeviceControl-require-reply-control-to-match-the.patch
+  * XGetDeviceControl Control Type Mismatch Heap Buffer Overflow
+    (bsc#1285084, CVE-2026-109089)
+- boo1285085_CVE-2026-109090_XGetDeviceControl-size-DEVICE_ENABLE-replies-for-XDe.patch
+  * XGetDeviceControl DEVICE_ENABLE Heap Buffer Overflow
+    (bsc#1285085, CVE-2026-109090)</comment>
+    <requestid>1385038</requestid>
+  </revision>
 </revisionlist>

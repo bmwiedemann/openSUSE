@@ -27,7 +27,7 @@ URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXi
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXi/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
+Source:         http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 Patch1:         0001-boo1281605_CVE-2026-93541_XQueryDeviceState-check-ValuatorClass-num_valuators-.patch
 Patch2:         0002-boo1281606_CVE-2026-93542_size_classes-copy_classes-bound-XI2-class-lengths-to.patch
@@ -36,6 +36,8 @@ Patch4:         0004-boo1281609_CVE-2026-93544_XIQueryDevice-keep-padded-name-an
 Patch5:         0005-boo1281612_CVE-2026-93545_XListInputDevices-validate-device-name-lengths-again.patch
 Patch6:         0006-boo1281615_CVE-2026-94281_XListInputDevices-validate-class-lengths-cumulativel.patch
 Patch7:         0007-boo1281651_CVE-2026-94282_wireToEnterLeave-validate-buttons_len-against-the-re.patch
+Patch8:         boo1285084_CVE-2026-109089_XGetDeviceControl-require-reply-control-to-match-the.patch
+Patch9:         boo1285085_CVE-2026-109090_XGetDeviceControl-size-DEVICE_ENABLE-replies-for-XDe.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  fdupes

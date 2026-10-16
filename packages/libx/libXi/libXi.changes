@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 15 14:03:37 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- boo1285084_CVE-2026-109089_XGetDeviceControl-require-reply-control-to-match-the.patch
+  * XGetDeviceControl Control Type Mismatch Heap Buffer Overflow
+    (bsc#1285084, CVE-2026-109089)
+- boo1285085_CVE-2026-109090_XGetDeviceControl-size-DEVICE_ENABLE-replies-for-XDe.patch
+  * XGetDeviceControl DEVICE_ENABLE Heap Buffer Overflow
+    (bsc#1285085, CVE-2026-109090)
+
+-------------------------------------------------------------------
 Wed Sep 23 16:16:29 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - 0001-boo1281605_CVE-2026-93541_XQueryDeviceState-check-ValuatorClass-num_valuators-.patch
