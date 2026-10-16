@@ -276,4 +276,13 @@ of Markdown.</comment>
   * [pull #681] Forbid square brackets in reference link IDs</comment>
     <requestid>1343458</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3ed4e69228c26663ee757e70005f848b</srcmd5>
+    <version>2.5.5</version>
+    <time>1792174185</time>
+    <user>anag_factory</user>
+    <comment>- add 0001-Avoid-overlapping-regex-matches-that-trigger-excessi.patch
+  (bsc#1285724, CVE-2026-88753)</comment>
+    <requestid>1385152</requestid>
+  </revision>
 </revisionlist>

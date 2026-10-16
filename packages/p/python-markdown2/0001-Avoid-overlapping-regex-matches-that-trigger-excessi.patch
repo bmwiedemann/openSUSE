@@ -1,0 +1,159 @@
+From b0885d4e845ec9c6453ac0b0c7c2928b5f74eb27 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dirk=20M=C3=BCller?= <dirk@dmllr.de>
+Date: Fri, 16 Oct 2026 09:52:17 +0200
+Subject: [PATCH] Avoid overlapping regex matches that trigger excessive
+ backtracking
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Constrained the metadata key definition to r'[ \t]*[^\s:\r\n][^:\r\n]*', ensuring keys cannot match colons or newlines and cannot backtrack across key/value
+delimiters.
+Kept simple single-line values bounded by [^\n]*\n?.
+Simplified to r"^-[ \t]*([^\n]*)(?:\n((?:[ \t]+[^\n]+\n?)+))?", removing the overlapping space quantifiers before [:-].
+Updated parse_structured_value to support both 2-tuple and 3-tuple matches for full backward compatibility.
+
+Added tests
+
+Verification:
+
+  ┌────────────┬────────────┬───────────┐
+  │ Input Size │ Before Fix │ After Fix │
+  ├────────────┼────────────┼───────────┤
+  │ 8 KB       │ ~0.4 s     │ ~0.003 s  │
+  │ 16 KB      │ ~1.6 s     │ ~0.0003 s │
+  │ 32 KB      │ ~6.2 s     │ ~0.0005 s │
+  │ 64 KB      │ ~24.0 s    │ ~0.0008 s │
+  │ 128 KB     │ ~91.0 s    │ ~0.0015 s │
+  └────────────┴────────────┴───────────┘
+---
+ lib/markdown2.py       | 42 ++++++++++++++++++++++++------------------
+ test/test_markdown2.py | 18 ++++++++++++++++++
+ test/test_redos.py     | 10 ++++++++++
+ 3 files changed, 52 insertions(+), 18 deletions(-)
+
+Index: markdown2-2.5.5/lib/markdown2.py
+===================================================================
+--- markdown2-2.5.5.orig/lib/markdown2.py
++++ markdown2-2.5.5/lib/markdown2.py
+@@ -608,17 +608,16 @@ class Markdown:
+             (?:
+                 {1}:(?:\n+[ \t]+.*)+  # indented lists
+             )|(?:
+-                (?:{1}:\s+>(?:\n\s+.*)+?)  # multiline long descriptions
+-                (?=\n{1}:\s*.*\n|\s*\Z)  # match up until the start of the next key:value definition or the end of the input text
++                {1}:\s+>(?:\n+[ \t]+.*)+  # multiline long descriptions
+             )|(?:
+-                {1}:(?! >).*\n?  # simple key:value pair, leading spaces allowed
++                {1}:[^\n]*\n?  # simple key:value pair, leading spaces allowed
+             )
+         ){0}  # optional closing fence
+-        '''.format(r'(?:---[\ \t]*\n)?', r'[\S \t]*\w[\S \t]*\s*'), re.MULTILINE | re.VERBOSE
++        '''.format(r'(?:---[\ \t]*\n)?', r'[ \t]*[^\s:\r\n][^:\r\n]*'), re.MULTILINE | re.VERBOSE
+     )
+ 
+     _key_val_list_pat = re.compile(
+-        r"^-(?:[ \t]*([^\n]*)(?:[ \t]*[:-][ \t]*(\S+))?)(?:\n((?:[ \t]+[^\n]+\n?)+))?",
++        r"^-[ \t]*([^\n]*)(?:\n((?:[ \t]+[^\n]+\n?)+))?",
+         re.MULTILINE,
+     )
+     _key_val_dict_pat = re.compile(
+@@ -650,21 +649,28 @@ class Markdown:
+             # List
+             if vs.startswith("-"):
+                 r: list[Any] = []
+-                # the regex used has multiple capturing groups, so
+-                # returned type from findall will be List[List[str]]
+-                match: list[str]
++                # returned type from findall will be list[tuple[str, ...]]
+                 for match in re.findall(self._key_val_list_pat, vs):
+-                    if match[0] and not match[1] and not match[2]:
+-                        r.append(match[0].strip())
+-                    elif match[0] == ">" and not match[1] and match[2]:
+-                        r.append(match[2].strip())
+-                    elif match[0] and match[1]:
+-                        r.append({match[0].strip(): match[1].strip()})
+-                    elif not match[0] and not match[1] and match[2]:
+-                        r.append(parse_structured_value(match[2]))
++                    if len(match) == 2:
++                        val, block = match[0], match[1]
++                        if val and not block:
++                            r.append(val.strip())
++                        elif val == ">" and block:
++                            r.append(block.strip())
++                        elif not val and block:
++                            r.append(parse_structured_value(block))
+                     else:
+-                        # Broken case
+-                        pass
++                        if match[0] and not match[1] and not match[2]:
++                            r.append(match[0].strip())
++                        elif match[0] == ">" and not match[1] and match[2]:
++                            r.append(match[2].strip())
++                        elif match[0] and match[1]:
++                            r.append({match[0].strip(): match[1].strip()})
++                        elif not match[0] and not match[1] and match[2]:
++                            r.append(parse_structured_value(match[2]))
++                        else:
++                            # Broken case
++                            pass
+ 
+                 return r
+ 
+Index: markdown2-2.5.5/test/test_markdown2.py
+===================================================================
+--- markdown2-2.5.5.orig/test/test_markdown2.py
++++ markdown2-2.5.5/test/test_markdown2.py
+@@ -267,6 +267,24 @@ versions of markdown2.py this was pathol
+             '<h2>%s</h2>\n' % ko)
+     test_russian.tags = ["unicode", "issue3"]
+ 
++    def test_metadata_redos_resilience(self):
++        import time
++        doc = "---\nkey: -" + " " * 32000 + "\n---\n\n# hello\n"
++        t = time.time()
++        result = markdown2.markdown(doc, extras=['metadata'])
++        self.assertLess(time.time() - t, 1.0)
++        self.assertEqual(result.metadata, {'key': '-'})
++    test_metadata_redos_resilience.tags = ["metadata", "redos"]
++
++    def test_metadata_list_redos_resilience(self):
++        import time
++        doc = "---\nitems:\n  - item" + " " * 32000 + "\n---\n\n# hello\n"
++        t = time.time()
++        result = markdown2.markdown(doc, extras=['metadata'])
++        self.assertLess(time.time() - t, 1.0)
++        self.assertEqual(result.metadata, {'items': ['item']})
++    test_metadata_list_redos_resilience.tags = ["metadata", "redos"]
++
+     def test_toc_with_persistent_object(self):
+         """
+         Tests that the toc is the same every time it's run on HTML, even if the Markdown object isn't disposed of.
+Index: markdown2-2.5.5/test/test_redos.py
+===================================================================
+--- markdown2-2.5.5.orig/test/test_redos.py
++++ markdown2-2.5.5/test/test_redos.py
+@@ -43,6 +43,14 @@ def issue_668():
+     return 'a_b **x***y* c_d'
+ 
+ 
++def issue_metadata_redos():
++    return "---\nkey: -" + " " * 32000 + "\n---\n\n# hello\n"
++
++
++def issue_metadata_list_redos():
++    return "---\nitems:\n  - " + " " * 32000 + "\n---\n\n# hello\n"
++
++
+ # whack everything in a dict for easy lookup later on
+ CASES = {
+     fn.__name__: (fn, extras)
+@@ -54,6 +62,8 @@ CASES = {
+         (issue493, None),
+         (issue_633, None),
+         (issue_668, ['code-friendly']),
++        (issue_metadata_redos, ['metadata']),
++        (issue_metadata_list_redos, ['metadata']),
+     ]
+ }
+ 

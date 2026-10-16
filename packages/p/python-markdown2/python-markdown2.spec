@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/trentm/python-markdown2
 Source:         https://files.pythonhosted.org/packages/source/m/markdown2/markdown2-%{version}.tar.gz
+Patch1:         0001-Avoid-overlapping-regex-matches-that-trigger-excessi.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module setuptools}
