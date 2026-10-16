@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:28 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+
+-------------------------------------------------------------------
+Fri Sep 25 07:19:21 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * Remove unused variable in Xe Plugin
+
+-------------------------------------------------------------------
+Sat Sep 12 19:30:40 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Changes since 6.7.5:
+  * Update version for new release 6.7.90
+  * Fix i915 PMU path for discrete Intel GPUs (kde#517334)
+  * osinfo: Provide some fallbacks for the version property (kde#523727)
+  * Fix crashes in KSysGuard::SensorObject::id()
+  * CMake: Provide explicit WITH_NM option for KF6NetworkManagerQt dep
+  * Updated variable naming to be correct!
+  * Add VRAM percentage sensors.
+  * Guard ksystemstats_intel_helper against path traversal
+  * Enable LSAN in CI
+  * CI: Require all tests to pass
+  * Harden Xe GPU plugin and adapt to PCI-based GPU enumeration
+  * Address David's review feedback on Xe GPU support
+  * Add fan, VRAM temperature, and power sensors for Xe GPUs
+  * Move VRAM querying from Xe helper to LinuxXeGpu
+  * Add Intel Xe GPU driver support (kde#512866)
+  * Update version for new release 6.7.80
+
+-------------------------------------------------------------------
 Tue Sep  8 12:08:01 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:

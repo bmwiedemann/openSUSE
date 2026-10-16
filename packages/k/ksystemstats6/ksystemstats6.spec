@@ -20,10 +20,13 @@
 %define kf6_version 6.26.0
 %define qt6_version 6.10.0
 
+# Leap 16.0 lacks xe_drm.h (boo#1280112)
+%global have_xe_drm_h (0%{?suse_version} >= 1699)
+
 %define rname ksystemstats
 %bcond_without released
 Name:           ksystemstats6
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -33,9 +36,9 @@ Summary:        Plugin based system monitoring daemon
 # Actually (GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL) AND CC0-1.0 AND BSD-3-Clause AND BSD-2-Clause
 License:        BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -95,6 +98,10 @@ dbus-run-session /usr/bin/ctest --output-on-failure --test-dir build %{?excluded
 
 %post
 %set_permissions %{_libexecdir}/ksystemstats_intel_helper
+%if %{have_xe_drm_h}
+# Audit pending (boo#1280113)
+%set_permissions %{_libexecdir}/ksystemstats_xe_helper
+%endif
 %{systemd_user_post plasma-ksystemstats.service}
 
 %postun
@@ -102,6 +109,9 @@ dbus-run-session /usr/bin/ctest --output-on-failure --test-dir build %{?excluded
 
 %verifyscript
 %verify_permissions -e %{_libexecdir}/ksystemstats_intel_helper
+%if %{have_xe_drm_h}
+%verify_permissions -e %{_libexecdir}/ksystemstats_xe_helper
+%endif
 
 %files
 %license LICENSES/*
@@ -112,6 +122,9 @@ dbus-run-session /usr/bin/ctest --output-on-failure --test-dir build %{?excluded
 %{_kf6_plugindir}/ksystemstats/ksystemstats_plugin_{cpu,disk,gpu,lmsensors,memory,network,osinfo,power,pressure}.so
 %{_kf6_sharedir}/dbus-1/services/org.kde.ksystemstats1.service
 %verify(not caps) %{_libexecdir}/ksystemstats_intel_helper
+%if %{have_xe_drm_h}
+%verify(not caps) %{_libexecdir}/ksystemstats_xe_helper
+%endif
 %{_userunitdir}/plasma-ksystemstats.service
 
 %files lang -f %{name}.lang
