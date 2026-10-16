@@ -464,4 +464,12 @@ aarch64, all 5 patches still apply.</comment>
     <comment>Update opencode 2.0.28-&gt;2.0.29 (tag-range summary in .changes; opentui pin stays 0.5.17, vendor closure unchanged).</comment>
     <requestid>1384892</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7255a97eb26672129af33adc7819c643</srcmd5>
+    <version>2.0.30</version>
+    <time>1792174182</time>
+    <user>anag_factory</user>
+    <comment>Update opencode to 2.0.30: elicitation patch now in-tree (dropped), re-vendored, licences re-derived, no copyleft.</comment>
+    <requestid>1385135</requestid>
+  </revision>
 </revisionlist>

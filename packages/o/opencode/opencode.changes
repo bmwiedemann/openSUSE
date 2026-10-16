@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Oct 16 06:19:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.30 (the 2.x line publishes no release objects, so
+  this is a summary of the v2.0.29..v2.0.30 tag-to-tag diff)
+  * TUI: diff side panel opens by default with responsive layouts;
+    diffs render in plugin panel slots; dialogs share one layout
+    with label-first actions
+  * Core: MCP capability handshake is spec-shaped, list calls are
+    skipped for unadvertised capabilities and tool input travels
+    as permission metadata; *.localhost counts as loopback for
+    MCP OAuth endpoints
+  * Core: loads configured instructions, treats empty provider and
+    model names as omitted, fits the compaction output limit to
+    the request sent and honors OPENCODE_DISABLE_CLAUDE_CODE
+  * AI uses protocol-specific inference endpoints; config schema
+    accepts V1 and V2 shapes
+  * OpenTUI stays 0.5.17: the tag pins it, so the %prep pin check
+    passes unmodified; no new mandatory dependencies
+  * Many more fixes and improvements; the full list is upstream's
+    v2.0.29..v2.0.30 commit range, which publishes no release notes
+- Drop opencode-mcp-elicitation-capability.patch: upstream's #53196
+  ships the spec-shaped capability, so the patch no longer applies
+- Regenerate the vendor tree: 355 of 2176 store entries kept (was
+  355 of 2185). The closure is unchanged; the keep list is
+  byte-identical
+- Legal review re-derived for the new tree: 354 packages, SPDX
+  licence set and counts unchanged, no copyleft
+- All five remaining patches apply clean against 2.0.30 (offsets
+  only, no rebases)
+
+-------------------------------------------------------------------
 Thu Oct 15 04:51:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.29 (the 2.x line publishes no release objects, so
