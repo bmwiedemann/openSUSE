@@ -87,4 +87,12 @@ Meson clean up and fixes regression on Leap 15.6.</comment>
     <comment>- Update to version 0.27.0</comment>
     <requestid>1378661</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>174cb5db317e9ec4a0daed9766b3b4f8</srcmd5>
+    <version>0.27.1</version>
+    <time>1792174142</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.27.1</comment>
+    <requestid>1385075</requestid>
+  </revision>
 </revisionlist>
