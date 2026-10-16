@@ -65,6 +65,8 @@ Source35:       alsa.keyring
 # upstream fixes
 Patch1:         0001-Fix-theoretical-one-byte-buffer-overrun.patch
 Patch2:         0002-control-ctlparse-another-fix-for-one-byte-overrrun-i.patch
+Patch3:         0003-topology-fix-uint32_t-overflow-in-control-decoder-si.patch
+Patch4:         0004-pcm-replace-multi-plugin-binding-asserts-with-EINVAL.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
