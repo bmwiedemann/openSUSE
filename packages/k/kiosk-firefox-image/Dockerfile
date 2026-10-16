@@ -26,7 +26,7 @@ COPY --from=target / /target
 
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends MozillaFirefox MozillaFirefox-branding-openSUSE libavcodec58_134 libpulse0 noto-sans-cjk-fonts xorg-x11-fonts
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends MozillaFirefox MozillaFirefox-branding-openSUSE libavcodec61 libpulse0 noto-sans-cjk-fonts xorg-x11-fonts
 RUN set -euo pipefail; useradd -m -u 1000 -U user
 RUN set -euo pipefail; mkdir -p /home/user/.mozilla/firefox
 RUN set -euo pipefail; chown -R user:user /home/user/.mozilla
