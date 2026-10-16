@@ -123,4 +123,25 @@
   + Misc. bug fixes and cleanups.</comment>
     <requestid>1380188</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2bc9ead43001d259ff7c04fc0bc4ef21</srcmd5>
+    <version>9.3.0</version>
+    <time>1792174006</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 9.3.0:
+  * benchmarks: guard atomic base64 calls with SIMDUTF_ATOMIC_REF
+  * Port GetPointerToFirstInvalidByte from SimdUnicode
+  * icelake: make convert_valid_utf8_to_utf16 faster than the validating
+    conversion
+  * Utf8 to utf16 with replacement
+  * icelake: finish the counting and length functions with masked loads
+  * icelake: convert the end of UTF-16 to UTF-32 with a masked block
+  * generic: convert the ASCII end of UTF-8 inputs with SIMD code
+  * base64 encode: smooth small-input cliffs on AVX2 and NEON
+  * haswell: count base64 characters with a byte accumulator
+  * westmere: count base64 characters with a byte accumulator
+  * perf: Clear upper vector state before calling scalar code from AVX2/AVX-512
+    kernels</comment>
+    <requestid>1384945</requestid>
+  </revision>
 </revisionlist>
