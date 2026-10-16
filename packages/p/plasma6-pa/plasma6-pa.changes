@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:00 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+
+-------------------------------------------------------------------
+Fri Sep 25 07:20:10 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+
+-------------------------------------------------------------------
+Sat Sep 12 19:32:59 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Changes since 6.7.5:
+  * Update version for new release 6.7.90
+  * VolumeFeedback: overlap chiming instead of hard-cancelling
+  * KCM: Silence spurious warnings in Rename Devices dialog
+  * kcm: Also make rename delegate for source items fill width
+  * kcm: keep the Rename Devices Save Button visible while disabled (kde# 508211)
+  * Initialize preferred audio devices on construction (kde#500828,kde#521973)
+  * Improve presentation of PulseAudio errors and their translations
+  * applet: set a sensible default size
+  * Use the source's native sample rate for the microphone test (kde#523693)
+  * microphoneindicator: Show correct information in OSD when using to toggle mute (kde#472107)
+  * Install kcfg file
+  * Fix use of active port when there are no ports at all.
+  * Port to declarative type registration
+  * Update version for new release 6.7.80
+  * Fix kirigami-addons cmake find call
+
+-------------------------------------------------------------------
 Tue Sep  8 12:08:53 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
