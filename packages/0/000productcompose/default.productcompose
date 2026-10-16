@@ -1137,6 +1137,7 @@ packagesets:
    - kscreen6 # reason: dvd:patterns-kde-kde
    - kscreen6-lang # reason: dvd:patterns-kde-kde
    - kscreenlocker6 # reason: dvd:patterns-kde-kde
+   - kscreenlocker6-imports # reason: dvd:patterns-kde-kde
    - kscreenlocker6-lang # reason: dvd:patterns-kde-kde
    - kservice # reason: dvd:patterns-kde-kde
    - kservice-lang # reason: dvd:patterns-kde-kde
@@ -1442,6 +1443,7 @@ packagesets:
    - libKPipeWire6 # reason: dvd:patterns-kde-kde
    - libKPipeWire6-lang # reason: dvd:patterns-kde-kde
    - libKPipeWireDmaBuf6 # reason: dvd:patterns-kde-kde
+   - libKPipeWireMonitor6 # reason: dvd:patterns-kde-kde
    - libKPipeWireRecord6 # reason: dvd:patterns-kde-kde
    - libKQuickImageEditor1 # reason: dvd:patterns-kde-kde
    - libKSaneCore6-1 # reason: dvd:patterns-kde-kde
@@ -1466,7 +1468,7 @@ packagesets:
    - libPlasma5Support6 # reason: dvd:patterns-kde-kde
    - libPlasma5Support6-lang # reason: dvd:patterns-kde-kde
    - libPlasma6-lang # reason: dvd:patterns-kde-kde
-   - libPlasma7 # reason: dvd:patterns-kde-kde
+   - libPlasma8 # reason: dvd:patterns-kde-kde
    - libPlasmaActivities7 # reason: dvd:patterns-kde-kde
    - libPlasmaActivitiesStats1 # reason: dvd:patterns-kde-kde
    - libQCoro6Core0 # reason: dvd:patterns-kde-kde
@@ -1865,6 +1867,7 @@ packagesets:
    - libcupsfilters2 # reason: dvd:patterns-gnome-gnome
    - libcupsimage2 # reason: dvd:patterns-gnome-gnome
    - libcurl4 # reason: dvd:openSUSE-release
+   - libcxx-rust-cssparser1 # reason: dvd:patterns-kde-kde
    - libdaemon0 # reason: dvd:patterns-kde-kde
    - libdatrie1 # reason: dvd:openSUSE-release
    - libdav1d7 # reason: dvd:openSUSE-release
@@ -2466,7 +2469,6 @@ packagesets:
    - libopenconnect5 # reason: dvd:patterns-gnome-gnome
    - libopencore-amrnb0 # reason: dvd:openSUSE-release
    - libopencore-amrwb0 # reason: dvd:openSUSE-release
-   - libopencv413 # reason: dvd:patterns-kde-kde
    - libopenh264-8 # reason: dvd:openSUSE-release
    - libopeniscsiusr0 # reason: dvd:patterns-media-rest_cd_core
    - libopenjp2-7 # reason: dvd:openSUSE-release
@@ -2685,7 +2687,7 @@ packagesets:
    - libsigc-2_0-0 # reason: dvd:openSUSE-release
    - libsigc-3_0-0 # reason: dvd:patterns-gnome-gnome
    - libsignon-qt6-1 # reason: dvd:patterns-kde-kde
-   - libsimdutf36 # reason: dvd:patterns-gnome-gnome
+   - libsimdutf37 # reason: dvd:patterns-gnome-gnome
    - libslang2 # reason: dvd:patterns-kde-kde
    - libslirp0 # reason: dvd:patterns-media-rest_dvd
    - libslp1 # reason: dvd:patterns-kde-kde
@@ -2765,7 +2767,6 @@ packagesets:
    - libtalloc2-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libtasn1-6 # reason: dvd:openSUSE-release
    - libtasn1-6-32bit # reason: dvd:patterns-media-rest_dvd
-   - libtbb12 # reason: dvd:patterns-kde-kde
    - libtdb1 # reason: dvd:patterns-gnome-gnome
    - libtdb1-32bit # reason: dvd:patterns-media-rest_dvd
    - libtesseract5 # reason: dvd:patterns-kde-kde
@@ -2920,7 +2921,6 @@ packagesets:
    - libxcb-composite0 # reason: dvd:patterns-kde-kde
    - libxcb-cursor0 # reason: dvd:openSUSE-release
    - libxcb-damage0 # reason: dvd:patterns-kde-kde
-   - libxcb-dpms0 # reason: dvd:patterns-kde-kde
    - libxcb-dri2-0 # reason: dvd:patterns-media-rest_cd_core
    - libxcb-dri3-0 # reason: dvd:openSUSE-release
    - libxcb-glx0 # reason: dvd:openSUSE-release
@@ -4162,6 +4162,7 @@ packagesets:
    - unar # reason: dvd:patterns-kde-kde
    - unbound # reason: dvd:patterns-media-rest_dvd
    - unbound-anchor # reason: dvd:patterns-media-rest_dvd
+   - union6 # reason: dvd:patterns-kde-kde
    - unison # reason: dvd:patterns-media-rest_dvd
    - unrar_wrapper # reason: dvd:patterns-server-mail_server
    - unzip # reason: dvd:patterns-gnome-gnome
@@ -4989,6 +4990,7 @@ packagesets:
    - krb5 # reason: opensuse_microos:patterns-containers-runtime_podman
    - kscreen6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kscreenlocker6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - kscreenlocker6-imports # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - kservice # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - ksshaskpass6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - ksysguardsystemstats6-data # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5120,6 +5122,7 @@ packagesets:
    - libKPim6GAPIDrive6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libKPipeWire6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libKPipeWireDmaBuf6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libKPipeWireMonitor6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libKPipeWireRecord6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libKQuickImageEditor1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libKScreenLocker6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5135,7 +5138,7 @@ packagesets:
    - libOpenEXR-3_4-33 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libOpenEXRCore-3_4-33 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libPlasma5Support6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libPlasma7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libPlasma8 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libPlasmaActivities7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libPlasmaActivitiesStats1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libQCoro6Core0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5411,6 +5414,7 @@ packagesets:
    - libcupsfilters2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcupsimage2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcurl4 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libcxx-rust-cssparser1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libdaemon0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libdatrie1 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libdav1d7 # reason: opensuse_microos:patterns-microos-onlyDVD
@@ -5658,7 +5662,6 @@ packagesets:
    - libopenconnect5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopencore-amrnb0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopencore-amrwb0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libopencv413 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopenh264-8 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopeniscsiusr0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libopenjp2-7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5787,7 +5790,6 @@ packagesets:
    - libtag2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libtalloc2 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libtasn1-6 # reason: opensuse_microos:patterns-containers-runtime_podman
-   - libtbb12 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libtdb1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libtesseract5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libtevent0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
@@ -5864,7 +5866,6 @@ packagesets:
    - libxcb-composite0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxcb-cursor0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxcb-damage0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libxcb-dpms0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxcb-dri3-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxcb-glx0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxcb-icccm4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5872,7 +5873,6 @@ packagesets:
    - libxcb-keysyms1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxcb-present0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxcb-randr0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libxcb-record0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxcb-render-util0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxcb-render0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libxcb-res0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6266,6 +6266,7 @@ packagesets:
    - udev # reason: opensuse_microos:patterns-base-hardware
    - udev-configure-printer # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - udisks2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - union6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - unzip # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - update-alternatives # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - update-bootloader # reason: opensuse_microos:patterns-containers-runtime_podman
@@ -6798,6 +6799,7 @@ packagesets:
    - krb5 # reason: opensuse_kalpa:patterns-kalpa-base
    - kscreen6 # reason: opensuse_kalpa:patterns-kalpa-base
    - kscreenlocker6 # reason: opensuse_kalpa:patterns-kalpa-base
+   - kscreenlocker6-imports # reason: opensuse_kalpa:patterns-kalpa-base
    - ksshaskpass6 # reason: opensuse_kalpa:patterns-kalpa-base
    - ksysguardsystemstats6-data # reason: opensuse_kalpa:patterns-kalpa-base
    - ksystemstats6 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -6900,6 +6902,7 @@ packagesets:
    - libKPim6GAPIDrive6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libKPipeWire6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libKPipeWireDmaBuf6 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libKPipeWireMonitor6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libKPipeWireRecord6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libKQuickImageEditor1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libKScreenLocker6 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -6916,7 +6919,7 @@ packagesets:
    - libOpenEXR-3_4-33 # reason: opensuse_kalpa:patterns-kalpa-base
    - libOpenEXRCore-3_4-33 # reason: opensuse_kalpa:patterns-kalpa-base
    - libPlasma5Support6 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libPlasma7 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libPlasma8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libPlasmaActivities7 # reason: opensuse_kalpa:patterns-kalpa-base
    - libPlasmaActivitiesStats1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libQCoro6Core0 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7173,6 +7176,7 @@ packagesets:
    - libcupsfilters2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcupsimage2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcurl4 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libcxx-rust-cssparser1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libdaemon0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libdatrie1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libdav1d7 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7407,7 +7411,6 @@ packagesets:
    - libopenconnect5 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopencore-amrnb0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopencore-amrwb0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libopencv413 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenh264-8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenjp2-7 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenjph0_32 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7526,7 +7529,6 @@ packagesets:
    - libtag2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libtalloc2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libtasn1-6 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libtbb12 # reason: opensuse_kalpa:patterns-kalpa-base
    - libtdb1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libtesseract5 # reason: opensuse_kalpa:patterns-kalpa-base
    - libtevent0 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7608,7 +7610,6 @@ packagesets:
    - libxcb-composite0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxcb-cursor0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxcb-damage0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libxcb-dpms0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxcb-dri3-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxcb-glx0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxcb-icccm4 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7616,7 +7617,6 @@ packagesets:
    - libxcb-keysyms1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxcb-present0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxcb-randr0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libxcb-record0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxcb-render-util0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxcb-render0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxcb-res0 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7916,6 +7916,7 @@ packagesets:
    - udev-configure-printer # reason: opensuse_kalpa:patterns-kalpa-base
    - udisks2 # reason: opensuse_kalpa:patterns-kalpa-base
    - uefi_mbr # reason: opensuse_kalpa:patterns-kalpa-base
+   - union6 # reason: opensuse_kalpa:patterns-kalpa-base
    - unzip # reason: opensuse_kalpa:patterns-kalpa-base
    - update-alternatives # reason: opensuse_kalpa:patterns-kalpa-base
    - update-bootloader # reason: opensuse_kalpa:patterns-kalpa-base
