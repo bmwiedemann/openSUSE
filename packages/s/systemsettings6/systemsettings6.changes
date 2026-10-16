@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:15 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+
+-------------------------------------------------------------------
+Fri Sep 25 07:20:45 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+
+-------------------------------------------------------------------
+Sat Sep 12 19:34:52 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Changes since 6.7.5:
+  * Update version for new release 6.7.90
+  * runner: remove soft hyphens in keywords used for searching
+  * runner: support for translated keywords
+  * Fix loadModule not resetting subCategoryModel parent for modules w/o a submenu (kde#524340,kde#514006)
+  * Use KConfigXT for settings
+  * systemsettings.desktop: add Plasma 7 TODO notice for kcm_powerdevil
+  * SettingsBase: add an exception for external kcms
+  * chore: add default merge request template
+  * Don't call activateWindow() from the constructor
+  * CI: Require all tests to pass
+  * Update version for new release 6.7.80
+  * ci: depend on @same plasma-activities version
+
+-------------------------------------------------------------------
 Tue Sep  8 12:09:28 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
