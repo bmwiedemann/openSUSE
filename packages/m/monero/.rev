@@ -34,4 +34,12 @@
 - No CVE id applies to this range, so none is cited</comment>
     <requestid>1382551</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>88f9f9aef734419327ab61689f60905c</srcmd5>
+    <version>0.18.5.4</version>
+    <time>1792174134</time>
+    <user>anag_factory</user>
+    <comment>Update monero to 0.18.5.4. Devel builds green on Factory x86_64/aarch64/ppc64le (no ccache infra failure); s390x still building. Note: VUL sweep not done, no bugwarden in this env.</comment>
+    <requestid>1385068</requestid>
+  </revision>
 </revisionlist>
