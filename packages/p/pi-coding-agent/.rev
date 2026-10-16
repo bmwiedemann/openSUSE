@@ -296,4 +296,12 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
     <comment>Update to 1.2.0: OpenRouter per-key lists, config schemas, OSC52 clipboard, codemode timing, before_agent_start changes, plus fixes. Drops chord.</comment>
     <requestid>1384897</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>01a8acbd59d9452e4384fd5bc25cb3e6</srcmd5>
+    <version>1.3.0</version>
+    <time>1792174180</time>
+    <user>anag_factory</user>
+    <comment>Update pi-coding-agent to 1.3.0. Upstream release with pinned dependency refresh, no new Factory deps.</comment>
+    <requestid>1385122</requestid>
+  </revision>
 </revisionlist>
