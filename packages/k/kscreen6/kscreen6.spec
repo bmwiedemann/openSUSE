@@ -24,7 +24,7 @@
 %define rname kscreen
 %bcond_without released
 Name:           kscreen6
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -33,16 +33,14 @@ Release:        0
 Summary:        Screen management software by KDE
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
-BuildRequires:  qt6-waylandclient-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
@@ -56,15 +54,14 @@ BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(LayerShellQt) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(Plasma) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(PlasmaQuick) >= %{_plasma6_bugfix}
+BuildRequires:  cmake(Qt6GuiPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sensors) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClientPrivate) >= %{qt6_version}
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.41
-BuildRequires:  pkgconfig(xcb-atom)
-BuildRequires:  pkgconfig(xi)
 BuildRequires:  qt6qmlimport(org.kde.kitemmodels)
 BuildRequires:  qt6qmlimport(org.kde.plasma.plasma5support)
-Requires:       kf6-kded
 Requires:       libkscreen6-plugin >= %{_plasma6_bugfix}
 # For graz.avif
 Requires:       kf6-kimageformats
@@ -108,12 +105,18 @@ KScreen handles screen management for both X11 and Wayland sessions, including r
 %{_kf6_applicationsdir}/kcm_kscreen.desktop
 %{_kf6_bindir}/hdrcalibrator
 %{_kf6_bindir}/kscreen-console
+%{_kf6_bindir}/kscreenctl
 %{_kf6_debugdir}/kscreen.categories
-%{_kf6_plugindir}/kf6/kded/kscreen.so
 %{_kf6_plugindir}/plasma/applets/org.kde.kscreen.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_kscreen.so
 %{_kf6_sharedir}/dbus-1/services/org.kde.kscreen.osdService.service
+%dir %{_kf6_sharedir}/fish/
+%dir %{_kf6_sharedir}/fish/vendor_completions.d/
+%{_kf6_sharedir}/fish/vendor_completions.d/kscreenctl.fish
 %{_kf6_sharedir}/kglobalaccel/org.kde.kscreen.desktop
+%dir %{_kf6_sharedir}/zsh/
+%dir %{_kf6_sharedir}/zsh/site-functions/
+%{_kf6_sharedir}/zsh/site-functions/_kscreenctl
 %{_libexecdir}/kscreen_osd_service
 %{_userunitdir}/plasma-kscreen-osd.service
 
