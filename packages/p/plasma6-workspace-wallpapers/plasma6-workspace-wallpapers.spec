@@ -22,18 +22,19 @@
 
 %bcond_without released
 Name:           plasma6-workspace-wallpapers
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        Additional Plasma Wallpapers
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core)
 Provides:       plasma5-workspace-wallpapers = %{version}
 Obsoletes:      plasma5-workspace-wallpapers < %{version}
 BuildArch:      noarch
