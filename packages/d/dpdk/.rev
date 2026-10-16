@@ -813,4 +813,39 @@
   * Full changelog https://doc.dpdk.org/guides-25.11/rel_notes/release_25_11.html#id4</comment>
     <requestid>1373765</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>81ae0eaf18945f4bcc437b1960ee46bc</srcmd5>
+    <version>25.11.4</version>
+    <time>1792174027</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.11.4
+ * Full changelog https://doc.dpdk.org/guides-25.11/rel_notes/release_25_11.html#id7
+   * GSO library heap out-of-bounds read/write with small mbuf pools
+     (CVE-2026-100236, bsc#1285679)
+   * stack and heap buffer overflow in nfp vDPA driver (CVE-2026-86856,
+     bsc#1285659)
+   * integer overflow and missing validation in vhost-crypto request handling
+     (CVE-2026-86849, bsc#1285658)
+   * use-after-free and type confusion in vhost-crypto session handling
+     (CVE-2026-86845, bsc#1285666)
+   * vhost-crypto TOCTOU out-of-bounds write in finalize path (CVE-2026-86846,
+     bsc#1285664, CVE-2026-86848, bsc#1285657)
+   * infinite cleanup loop in vhost-crypto writeback chain (CVE-2026-86847,
+     bsc#1285663)
+   * double-fetch leading to heap buffer overflow in virtio_net_ctrl_pop
+     (VDUSE) (CVE-2026-86562, bsc#1285677)
+   * copy length underflow in vhost enqueue (mbuf_to_desc) (CVE-2026-86566,
+     bsc#1285671 )
+   * indirect descriptor table double-fetch (TOCTOU) (CVE-2026-93683,
+     bsc#1285660)
+   * split-ring inflight descriptor table overflow (CVE-2026-86565,
+     bsc#1285672)
+   * double offset bug in vhost log mapping calculation (CVE-2026-86563,
+     bsc#1285676)
+   * missing memory size validation before mmap in vhost memory region setup
+     (CVE-2026-86561, bsc#1285678)
+   * VDUSE vring stale pointer rebinding (use-after-unmap) (CVE-2026-86567,
+     bsc#1285670)</comment>
+    <requestid>1385153</requestid>
+  </revision>
 </revisionlist>
