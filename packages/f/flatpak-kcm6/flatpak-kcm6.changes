@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:18 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- No code changes since 6.7.91
+
+-------------------------------------------------------------------
+Fri Sep 25 07:18:56 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Show settings for host apps if permission is set
+
+-------------------------------------------------------------------
+Sat Sep 12 19:29:31 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Changes since 6.7.5:
+  * Add missing Qt::Qml link
+  * KCM: Port the permissions page to the new Forms
+  * ui/FlatpakPermissions: make env var label and textfield equal width
+  * ui/FlatpakComponent: fix ListView Accessible.description
+  * kcm_app-permissions.json: fix BugReportUrl
+  * Remove xcb session warning
+  * CI: Require all tests to pass
+  * Skip kcm_smoketest with kcmutils < 6.27.0
+
+-------------------------------------------------------------------
 Tue Sep  8 12:07:22 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
