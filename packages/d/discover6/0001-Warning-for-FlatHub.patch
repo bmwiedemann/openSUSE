@@ -8,7 +8,7 @@ Subject: [PATCH] Warning for FlatHub
  1 file changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp b/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
-index cee00f2ec..9b44c5089 100644
+index 403163e9e..b9e6e70fb 100644
 --- a/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
 +++ b/libdiscover/backends/FlatpakBackend/FlatpakSourcesBackend.cpp
 @@ -18,6 +18,8 @@
@@ -19,8 +19,8 @@ index cee00f2ec..9b44c5089 100644
 +#include <QMessageBox>
  #include <glib.h>
  #include <resources/DiscoverAction.h>
- #include <resources/StoredResultsStream.h>
-@@ -105,7 +107,17 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
+ #include <resources/ResourcesModel.h>
+@@ -106,7 +108,17 @@ FlatpakSourcesBackend::FlatpakSourcesBackend(const QVector<FlatpakInstallation *
      m_flathubAction->setObjectName(QStringLiteral("flathub"));
      m_flathubAction->setToolTip(i18n("Makes it possible to easily install the applications listed in https://flathub.org"));
      connect(m_flathubAction, &DiscoverAction::triggered, this, [this]() {
@@ -40,5 +40,5 @@ index cee00f2ec..9b44c5089 100644
  
      m_noSourcesItem->setEnabled(false);
 -- 
-2.51.0
+2.55.0
 

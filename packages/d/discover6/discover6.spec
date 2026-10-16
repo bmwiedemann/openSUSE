@@ -20,18 +20,18 @@
 %define qt6_version 6.10.0
 %define rname discover
 %bcond_without released
-# Version in Leap 15 < 15.6 is too old
-%global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600)
+# Version in Leap >= 16.0 is recent enough
+%global have_fwupd (0%{?suse_version} >= 1600)
 
 Name:           discover6
-Version:        6.7.5
+Version:        6.8.0
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 URL:            https://apps.kde.org/discover/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -45,7 +45,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  cmake(AppStreamQt) >= 1.0.0
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Attica) >= %{kf6_version}
-BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
@@ -77,13 +76,11 @@ BuildRequires:  cmake(Qt6WebView) >= %{qt6_version}
 %endif
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
-BuildRequires:  cmake(packagekitqt6) >= 1.1.3
+BuildRequires:  cmake(packagekitqt6) >= 1.0.1
 %if %{have_fwupd}
-BuildRequires:  pkgconfig(fwupd) >= 1.9.4
+BuildRequires:  pkgconfig(fwupd) >= 2.1.1
 %endif
-%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libmarkdown) >= 3.0
-%endif
 Requires:       kf6-kdeclarative-imports >= %{kf6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-kuserfeedback-imports >= %{kf6_version}
@@ -180,15 +177,22 @@ rm %{buildroot}%{_kf6_applicationsdir}/org.kde.discover.snap.desktop
 %license LICENSES/*
 %dir %{_kf6_plugindir}/discover/
 %{_kf6_applicationsdir}/org.kde.discover.desktop
+%{_kf6_applicationsdir}/org.kde.discover.appstreampreview.desktop
 %{_kf6_applicationsdir}/org.kde.discover.urlhandler.desktop
 %{_kf6_appstreamdir}/org.kde.discover.appdata.xml
+%{_kf6_appstreamdir}/org.kde.discover.appstreampreview.metainfo.xml
 %{_kf6_bindir}/plasma-discover
+%{_kf6_configkcfgdir}/discover-appstream-settings.kcfg
+%{_kf6_configkcfgdir}/discover-updates.kcfg
+%{_kf6_configkcfgdir}/discoversettings-kcm.kcfg
+%{_kf6_configkcfgdir}/discoversettings.kcfg
 %{_kf6_debugdir}/discover.categories
 %{_kf6_iconsdir}/hicolor/*/apps/plasmadiscover.*
 %{_kf6_kxmlguidir}/plasmadiscover/
 %{_kf6_libdir}/plasma-discover/
 %{_kf6_notificationsdir}/discoverabstractnotifier.notifyrc
 %{_kf6_plugindir}/discover/kns-backend.so
+%{_kf6_plugindir}/discover/appstream-preview-backend.so
 %dir %{_kf6_sharedir}/libdiscover
 %dir %{_kf6_sharedir}/libdiscover/categories
 

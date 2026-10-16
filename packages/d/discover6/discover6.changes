@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:54:16 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Prepare ResourcesUpdatesModel before running headless updates (kde#519082)
+  * Update version for new release 6.8.0
+  * DiscoverDrawer: Set selected state on busy icon
+  * Fix updates progress bar alignment on mobile (kde#526718)
+  * Make the distro error message selectable and fix the "Report this issue" link (kde#518350)
+
+-------------------------------------------------------------------
+Fri Sep 25 07:18:53 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+
+-------------------------------------------------------------------
+Sat Sep 12 19:29:18 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Too many changes to list here
+- Refresh 0001-Warning-for-FlatHub.patch
+
+-------------------------------------------------------------------
 Tue Sep  8 12:07:18 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
