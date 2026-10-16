@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %{?sle15_python_module_pythons}
 Name:           python-ormsgpack
-Version:        1.12.2
+Version:        1.13.0
 Release:        0
 Summary:        Fast Python msgpack library supporting dataclasses, datetimes, and numpy
 License:        Apache-2.0 OR MIT
