@@ -7,4 +7,12 @@
     <comment>PortProtonQt is a GUI for managing and launching games from PortProton and Steam.This package is an alternative Lutris,Bottles,Heroic Games Launcher,etc. </comment>
     <requestid>1381518</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2c4dff8a05aa45cd3cdbeb8ad0aad38b</srcmd5>
+    <version>1.5.0</version>
+    <time>1792174132</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.5.0</comment>
+    <requestid>1385070</requestid>
+  </revision>
 </revisionlist>

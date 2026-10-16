@@ -19,16 +19,15 @@
 %define zsh_completions_dir  %{_datadir}/zsh/site-functions
 %define _metainfodir         %{_datadir}/metainfo
 %global pypi_name portprotonqt
-%global pypi_version 1.4.1
+%global pypi_version 1.5.0
 %global oname PortProtonQt
 %global _python_no_extras_requires 1
 
 Name:           %{pypi_name}
 Version:        %{pypi_version}
 Release:        0
-Summary:        GUI for managing and launching games from PortProton and Steam
-#Source URL     https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt/archive/v%%{pypi_version}
-Source0:        %{oname}-v%{pypi_version}.tar.gz
+Summary:        Game library manager and launcher for Linux
+Source0:        https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt/archive/v%{pypi_version}.tar.gz
 License:        GPL-3.0
 URL:            https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt
 ExclusiveArch:  x86_64 
@@ -94,7 +93,7 @@ Recommends:     python3-qrcode
 Recommends:     squashfs
 
 %description
-A GUI for managing and launching games from PortProton and Steam. Combines libraries in one place and simplifies running Windows games on Linux.
+An application for managing a game library and launching games on Linux. It brings games from different sources together in one place.
 
 %package        bash-completion
 Summary:        Bash Completion for %{pypi_name}      

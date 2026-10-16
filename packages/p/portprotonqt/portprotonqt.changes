@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Oct 15 15:06:22 UTC 2026 - Stas Stanila <soyu7658@gmail.com>
+
+- Update to 1.5.0
+  * Added keyboard search for game settings without requiring prior focus on the search field.
+  * Added gamepad navigation to buttons located below tables.
+  * Added a setting to hide the cursor in fullscreen mode, enabled by default.
+  * Added a setting to disable scanning for installed Proton versions in Steam for version selection lists and the WINE/Proton management window.
+  * Added support for loading WebM intro videos from themes when entering fullscreen, including automatic transition upon gamepad connection.
+  * Added direct access to Wine/Proton downloads from the version list in game settings.
+  * Added DLC selection and installation during GOG game setup.
+  * Added automatic import, file verification, and downloading of missing or corrupted files when installing GOG games into an existing game folder.
+  * Added ability to pause and resume running games via the system tray.
+  * Added a setting to force English language usage.
+  * Added ability to edit GOG game titles and covers by ID.
+  * Added EGS integration.
+  * Added support for CachyOS WineLand Proton builds.
+  * Added a "Return to Desktop" button in the System tab when PORTPROTONQT_RETURN_TO_DESKTOP_SCRIPT is defined.
+  * Added horizontal and horizontal_top library modes with cyclic navigation and full grid tile expansion in top mode.
+  * Added grid type selector to the library panel.
+  * Added horizontal orientation support for the disappearing scrollbar widget.
+  * Added vertical library mode with tabular display of title, last played time, playtime, and game source.
+  * Added option to delete card or specify new executable when opening a card with a missing executable file.
+  * Added dedicated MangoHud font settings section with scale, size, and font family selection.
+  * Added graphical editor for global game settings from user.conf.
+  * Added D7VK support in PW_USE_SUPPLIED_DXVK_VKD3D mode for Proton builds.
+  * WINE_FULLSCREEN_FSR setting is now disabled by default.
+  * Wine/Proton manager buttons unified to match app style and enhanced with icons.
+  * DLL and font lists in Winetricks are now sorted alphabetically.
+  * Winetricks UI restyled to match overall application theme.
+  * Second .exe / wrapper launch field now allows specifying the same executable as the primary one.
+  * Library card resizing performance improved.
+  * GDK Proton removed from available build list.
+  * Parameter descriptions in game settings improved: displayed under parameter name with current value highlighted by border.
+  * System notification shown upon download completion; result row opens game card via mouse click or gamepad A button.
+  * Game crash detection improved: considers Wine/Proton exit codes and runtime duration of game processes (including child engine), excluding launcher script termination time.
+  * User data directories migrated to unified source-ID format.
+  * Minimum supported Python version raised from 3.10 to 3.11.
+  * Library search now matches substrings anywhere in title and displays identically named games from different sources.
+  * Theme changes now apply without application restart.
+  * Update translations.
+  * Automatic PPDB download from linux-gaming.ru now disabled by default.
+  * MDS image MIME-type changed to application/x-mds (libMirage standard).
+  * Card opening and silent launch behaviors unified.
+  * 'minazuki' added to GameMode process conflict list.
+  * Built-in terminal remains open after errors; closes via Enter key or gamepad A button.
+  * "Disable Optiscaler" added to crash troubleshooting tips.
+  * DXVK and VKD3D-Proton now downloaded only for selected Vulkan mode; D7VK downloaded only when explicitly enabled.
+  * Fixed MANGOHUD_CONFIG being written to .ppdb when MangoHud is disabled.
+  * Fixed false installation status and incorrect card opening for Rockstar Games Launcher when launcher.exe names collide.
+  * Fixed second .exe launch via PW_RUN_AFTER_EXE failing with Cyrillic characters in path.
+  * Fixed grid flickering and card highlight delay on library open.
+  * Fixed grid refresh via Guide + Select combination.
+  * Fixed .desktop file creation/restoration with line breaks in game titles.
+  * Fixed duplicate card creation during addition and post-installation.
+  * Fixed new .exe files not appearing in library search until grid refresh.
+  * Fixed title not updating on detail page after shortcut edit without reopening page.
+  * Fixed GOG expansions and packs displaying as separate games in library.
+  * Fixed missing installed demos, mods, applications, and Steam beta versions in library.
+  * Fixed syntax error in functions_helper preventing PortProton launch on Bash 5.1.
+  * Fixed interface control issues with multiple simultaneous gamepads.
+  * Fixed user data collision for auto-installs with identical source executable names.
+  * Fixed missing icon on built-in terminal window.
+  * Fixed loss of final output on built-in terminal error.
+  * Fixed GOG card opening via URI at application startup.
+  * Fixed log recording button state reset when switching detail page to compact mode.
+  * Fixed PortProtonQt tray icon display during slow initialization.
+  * Fixed missing Wi-Fi and Bluetooth tabs when launched before system adapter initialization.
+  * Fixed settings search failure when no MangoHud or Gamescope parameters available.
+  * Installed games filter now toggles without reloading library.
+  * Invalid Steam cache images now skipped during cover art search.
+  * Fixed .ppdb opening on partitions with execute bit set for all files.
+  * Fixed prefix backup creation with libarchive-c 5.1.
+  * Fixed application termination during active background operations.
+  * Fixed automatic NVAPI, DLSS, and ray tracing enablement for NVIDIA RTX GPUs.
+  * Fixed forced language application in Steam emulator configurations.
+  
+-------------------------------------------------------------------
 Wed Aug 26 09:59:02 UTC 2026 - Stas Stanila <soyu7658@gmail.com>
 
 - Update to 1.4.1
