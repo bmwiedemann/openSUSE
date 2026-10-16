@@ -522,4 +522,14 @@
   * Move man-online to an own sub-package</comment>
     <requestid>1371693</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>f33b711d12290d65bd9f7bf082e8b4fb</srcmd5>
+    <version>4.0+git31</version>
+    <time>1792174013</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.0+git31:
+  * Make sure $ROOT_SELINUX/etc is read-write
+  * import-pubring: use temp dir and kill agents afterwards</comment>
+    <requestid>1384999</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 15 11:13:46 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.0+git31:
+  * Make sure $ROOT_SELINUX/etc is read-write
+  * import-pubring: use temp dir and kill agents afterwards
+
+-------------------------------------------------------------------
 Tue Aug 18 08:37:37 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 4.0+git29:
