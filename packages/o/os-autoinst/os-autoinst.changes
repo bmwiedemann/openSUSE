@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 15 15:18:41 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792077508.50bc19e:
+  * feat(setup-mm): Improve CLI and default behavior
+
+-------------------------------------------------------------------
+Wed Oct 14 08:56:42 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1791893714.eb5a713:
+  * build(deps): bump actions/upload-artifact (#3123)
+
+-------------------------------------------------------------------
 Mon Oct 12 17:55:38 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1791813843.3b85101:
