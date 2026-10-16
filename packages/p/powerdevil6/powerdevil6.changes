@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:13 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+  * daemon: Treat a keyboard backlight maximum of 0 as unsupported (kde#525916)
+  * applets/brightness: Don't query kameleon when it isn't installed
+  * applets/brightness: improve screen reader a11y (kde#519226,kde#508485)
+  * applets/brightness: improve keyboard navigation
+
+-------------------------------------------------------------------
+Fri Sep 25 07:20:37 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.91
+- Changes since 6.7.90:
+  * Update version for new release 6.7.91
+  * applets/brightness: fix Slider binding issues (kde#523281)
+  * Brightness Applet: avoid binding loops (kde#525216)
+  * applets/brightness: Fix displaying transition times when night light is always on
+
+-------------------------------------------------------------------
+Sat Sep 12 19:34:32 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  8 12:09:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.5:
