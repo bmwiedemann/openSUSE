@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:23:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.12:
+  * Trace to a beta agent address: tracing(), LangChainTracer
+    and the callback manager accept an AgentAddress
+    destination (needs langsmith >= 0.14.9)
+  * Compat bridge keeps block extras and ids on text and
+    reasoning skeletons
+  * Tracer run construction goes through a _get_run_kwargs hook
+
+-------------------------------------------------------------------
 Thu Oct 15 04:55:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.10:

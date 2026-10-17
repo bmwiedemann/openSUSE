@@ -229,4 +229,12 @@ Built and checked locally on aarch64: 2076 tests pass under python3.13 and
     <comment>Update to 1.6.10: model profiles gain mid_conversation_system_messages and mid_conversation_tools capability flags.</comment>
     <requestid>1384902</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5c8efdac894a437864dd34c8ffc1c3ee</srcmd5>
+    <version>1.6.12</version>
+    <time>1792265217</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-langchain-core to 1.6.12</comment>
+    <requestid>1385352</requestid>
+  </revision>
 </revisionlist>
