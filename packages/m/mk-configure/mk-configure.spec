@@ -17,17 +17,16 @@
 
 
 Name:           mk-configure
-Version:        0.40.0
+Version:        0.40.1
 Release:        0
 Summary:        A build system on top of bmake
 License:        BSD-2-Clause AND MIT AND ISC
-Group:          Development/Tools/Building
 URL:            https://github.com/cheusov/mk-configure/
 Source:         https://github.com/cheusov/mk-configure/archive/refs/tags/mk-configure-%{version}/%{name}-%{name}-%{version}.tar.gz
 Source1:        mkcmake.macros
 Source9:        mk-configure-rpmlintrc
-# PATCH-FIX-UPSTREAM gcc16-compatibility.patch -- based on commit e7bbef7aabb9e7d2b715fb829771c7016aee9359
-Patch0:         gcc16-compatibility.patch
+# PATCH-FIX-OPENSUSE bmake-error-location-format.patch -- tests and test helper know only bmake's old diagnostic location format
+Patch0:         bmake-error-location-format.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -58,7 +57,6 @@ development and software building.
 
 %package doc
 Summary:        Mk-configure documentation
-Group:          Documentation/Other
 Requires:       %{name}
 
 %description doc

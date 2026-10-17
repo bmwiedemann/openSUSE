@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 16 17:01:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.40.1:
+  * Remove the .res file when the compiler check fails, so mkcmake can
+    be rerun after fixing PATH, CC or CXX
+  * USE_FORT: undefine _FORTIFY_SOURCE before setting it to 2
+  * posix_getopt: fix memory leak
+  * New example/test: efun2
+- Drop gcc16-compatibility.patch: upstream replaced the strstr(3)
+  prototype tests with execve(2) in this release
+- Add bmake-error-location-format.patch: the tests and their helper knew
+  only bmake's old diagnostic location format, so the check failed from
+  bmake 20260824 on
+
+-------------------------------------------------------------------
 Tue May  5 17:44:28 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - update to 0.40.0
