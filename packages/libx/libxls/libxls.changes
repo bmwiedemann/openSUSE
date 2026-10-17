@@ -2,8 +2,10 @@
 Mon Oct 12 12:55:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.4
-  * Fix use of uninitialized memory in OLE parsing (CVE-2026-26825)
-  * Fix use of uninitialized memory in read_MSAT (CVE-2026-26824)
+  * Fix use of uninitialized memory in OLE parsing
+    [boo#1267687, CVE-2026-26825]
+  * Fix use of uninitialized memory in read_MSAT
+    [boo#1267608, CVE-2026-26824]
   * Fix use of uninitialized memory in xls_parseWorkBook
   * Fix out-of-bounds reads in the formula dumper
   * Handle allocation failures in OLE, workbook and string code
