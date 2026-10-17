@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 16 18:01:01 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.26.1
+  * Fixed aliasing problem with sinc interpolation in v2.25.
+
+-------------------------------------------------------------------
 Fri Oct  2 18:42:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.25
