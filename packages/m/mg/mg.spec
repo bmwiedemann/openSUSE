@@ -17,12 +17,14 @@
 
 
 Name:           mg
-Version:        4.1
+Version:        4.4
 Release:        0
 Summary:        Micro GNU Emacs clone
 License:        Unlicense
 URL:            https://man.troglobit.com/man1/mg.1.html
 Source0:        https://github.com/troglobit/mg/releases/download/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM mg-keyseqname-ncurses-clash.patch https://github.com/troglobit/mg/commit/a62108264e mpluskal@suse.com -- 4.4's keyname() clashes with the one ncurses declares in curses.h
+Patch1:         mg-keyseqname-ncurses-clash.patch
 BuildRequires:  gcc
 BuildRequires:  gzip
 BuildRequires:  make

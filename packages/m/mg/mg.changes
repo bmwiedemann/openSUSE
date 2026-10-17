@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Oct 16 16:44:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.4:
+  * New comment-dwim on M-;, sort-lines, reverse-region,
+    delete-duplicate-lines, transpose-lines, whitespace-cleanup,
+    fill-region, tabify/untabify and delete-trailing-whitespace
+  * New previous-buffer/next-buffer on C-x and the arrow keys,
+    kill-current-buffer, rename-buffer and minibuffer history per
+    prompt kind; the minibuffer now reads keys through the editor
+    keymap, so word motions work there too
+  * New display-line-numbers-mode, m4-mode and cmake-mode;
+    makefile-mode highlights automake conditionals
+  * New delete-selection-mode and ido-mode substring completion at
+    prompts, both on by default
+  * New auto-revert-mode (on by default) and auto-revert-tail-mode
+    to follow a log like tail -f; revert-buffer keeps the line in
+    every window showing the buffer
+  * New sentence commands M-a/M-e/M-k and C-x DEL,
+    recenter-top-bottom on C-l, move-to-window-line-top-bottom on
+    M-r, where-is and describe-key on C-h w/k, and the IBM CUA
+    S-Delete/C-Insert/S-Insert cut, copy and paste keys
+  * New secure mode (-S) and single-file mode (-s) for restricted
+    shells; --with-modes, --disable-syntax, --disable-help and
+    --disable-autorevert to cut features for small builds
+  * Fix shell command injection when opening a .gz file whose name
+    contains shell metacharacters
+  * Fix query-replace, replace-string and the regexp replace
+    commands corrupting UTF-8 text, and isearch missing matches
+    when the pattern has non-ASCII letters
+  * Fix M-d/M-DEL and upcase-word undo on words with non-ASCII
+    letters; words are now split by Unicode class
+  * Fix shift, control and Meta with the arrow keys, Home, End,
+    PgUp/PgDn, Insert and Delete in rxvt and urxvt
+  * Fix a line over 127 bytes in ~/.mg silently ending the load
+  * Fix C-x C-k to C-x C-x bindings shifted by one in builds
+    without dired, and --disable-ctags ignored while cscope was on
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+- Apply mg-keyseqname-ncurses-clash.patch: the keyname() helper
+  4.4 added for where-is clashes with the keyname(int) that ncurses
+  declares in curses.h, so the build fails wherever configure finds
+  ncurses/curses.h; upstream fixed this the same way right after
+  tagging 4.4
+
+-------------------------------------------------------------------
 Wed Sep 16 17:34:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.1:
