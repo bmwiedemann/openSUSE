@@ -875,4 +875,12 @@ Security Update, [bsc#1228900]  [bsc#1228901]</comment>
     <comment></comment>
     <requestid>1355387</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>7f19e673aba0d174609c81bb2d636a39</srcmd5>
+    <version>1.6.19</version>
+    <time>1792265167</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385283</requestid>
+  </revision>
 </revisionlist>
