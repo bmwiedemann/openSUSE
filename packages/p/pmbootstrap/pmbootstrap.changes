@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:25:20 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 3.12.1 (hotfix release):
+  * Fix install failure when the locale requires additional XKB
+    configuration.
+  * Avoid updating all package indexes when building with
+    arch=None.
+
+-------------------------------------------------------------------
 Fri Oct  9 17:26:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.12.0
