@@ -1,7 +1,7 @@
 #
 # spec file for package libsoundio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define sover   2
 Name:           libsoundio
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        A C99 library for realtime audio input/output
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://libsound.io/
-Source:         https://github.com/andrewrk/libsoundio/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Upstream tags this release as 2.0.1-7 (zig packaging revision; CMake still 2.0.0)
+Source:         https://github.com/andrewrk/libsoundio/archive/%{version}-7.tar.gz#/%{name}-%{version}-7.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
@@ -39,27 +39,25 @@ the former. Features that only exist in some sound backends are exposed.
 
 %package -n     libsoundio%{sover}
 Summary:        A C99 library for realtime audio input/output
-Group:          System/Libraries
 
 %description -n libsoundio%{sover}
-This appropriate for games, music players, digital audio workstations, and
+This is appropriate for games, music players, digital audio workstations, and
 various utilities.
 
 This package contains the shared library.
 
 %package devel
 Summary:        Development files for libsoundio
-Group:          Development/Libraries/C and C++
 Requires:       libsoundio%{sover} = %{version}
 
 %description devel
 A C99 library for realtime audio input/output.
 
 This package contains header files and libraries needed to develop
-application that use libsoundio.
+applications that use libsoundio.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-7
 
 %build
 %cmake \
@@ -74,8 +72,7 @@ application that use libsoundio.
 %install
 %cmake_install
 
-%post -n libsoundio%{sover} -p /sbin/ldconfig
-%postun -n libsoundio%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsoundio%{sover}
 
 %files -n libsoundio%{sover}
 %license LICENSE

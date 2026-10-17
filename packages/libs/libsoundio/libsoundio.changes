@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 17 09:09:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix description
+
+-------------------------------------------------------------------
+Fri Oct 16 12:52:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.1 (upstream tag 2.0.1-7):
+  * PulseAudio: set PA_STREAM_ADJUST_LATENCY on playback and record
+    streams for correct latency handling
+  * WASAPI: switch to event-driven callbacks, fix a memory leak and
+    hardcode GUIDs when compiling as C (Windows-only)
+  * SOVERSION unchanged, no API changes
+- Spec cleanup: drop Group tags, use %ldconfig_scriptlets
+
+-------------------------------------------------------------------
 Wed Sep 23 19:52:41 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.0

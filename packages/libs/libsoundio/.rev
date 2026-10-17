@@ -7,4 +7,20 @@
     <comment>I want to maintain libsoundio in Factory</comment>
     <requestid>837215</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>37f4557062c269d88d71b53fdf040d82</srcmd5>
+    <version>2.0.1</version>
+    <time>1792265076</time>
+    <user>dimstar_suse</user>
+    <comment>- fix description
+
+- Update to version 2.0.1 (upstream tag 2.0.1-7):
+  * PulseAudio: set PA_STREAM_ADJUST_LATENCY on playback and record
+    streams for correct latency handling
+  * WASAPI: switch to event-driven callbacks, fix a memory leak and
+    hardcode GUIDs when compiling as C (Windows-only)
+  * SOVERSION unchanged, no API changes
+- Spec cleanup: drop Group tags, use %ldconfig_scriptlets</comment>
+    <requestid>1385374</requestid>
+  </revision>
 </revisionlist>
