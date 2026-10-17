@@ -303,4 +303,36 @@
     <comment>Fix changelog (forwarded request 1373440 from dimstar)</comment>
     <requestid>1373441</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e4877247d51a552681f86367ca04342e</srcmd5>
+    <version>2.5.0</version>
+    <time>1792265276</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0
+  Game
+  * Add mission briefing menu in pause menu.
+  * Add particle effects for status effects.
+  * Add hat loss effect when taking damage.
+  * Add player name tags when &gt;2 players present.
+  * Add dust particles when sliding.
+  * Fix crash and rendering glitches when the resolution changes at
+    runtime.
+  * Fix muzzle flashes not being parented properly.
+  * Fix doors kept open by bullets.
+  * Fix actor bark interrupts.
+  * Fix muzzle flashes not shown when below door.
+  * Fix actors not animating in live background.
+  * Improve continue campaign option by showing campaign name.
+  * Improve player template selection menu with live preview of
+    character.
+  * Improve button prompts with button icons.
+  * Improve pause menu by muting music.
+  * Improve character shuffling by reducing excessive variations.
+  * Improve map object sprites by adding some variations.
+  Misc
+  * fix: remove unsafe exec() in mainmenu.c
+- Drop patch:
+  * cdogs-sdl-gcc16.patch (no longer needed).</comment>
+    <requestid>1385563</requestid>
+  </revision>
 </revisionlist>

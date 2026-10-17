@@ -17,7 +17,7 @@
 
 
 Name:           cdogs-sdl
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Classic overhead run-and-gun game
 License:        BSD-2-Clause AND GPL-2.0-only AND CC-BY-3.0 AND CC-BY-SA-3.0
@@ -27,8 +27,6 @@ Source1:        cdogs-sdl.rpmlintrc
 Patch0:         fix-build.patch
 Patch1:         fix-env-script-interpreter.patch
 Patch2:         fix-sound.patch
-# PATCH-FIX-UPSTREAM cdogs-sdl-gcc16.patch -- fix unused-but-set-variable errors with GCC 16
-Patch3:         cdogs-sdl-gcc16.patch
 # PATCH-FIX-UPSTREAM cdogs-sdl-test-tmpfile-race.patch -- stop autosave_test and config_test sharing one scratch file
 Patch4:         cdogs-sdl-test-tmpfile-race.patch
 BuildRequires:  cmake >= 3.5
