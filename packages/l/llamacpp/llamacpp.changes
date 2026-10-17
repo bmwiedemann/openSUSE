@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 00:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.7.0
+  * Add LiliCorr speculative decoding and MTP for GLM5-Next.
+  * Add MoE expert GPU cache (--moe-cache-mib) with multi-GPU
+    cache sharing.
+  * Add new model support: K2 Horizon, Prism Bonsai 2,
+    EmbeddingGemma-2, LiquidAI d1/d1-omni, and vLLM decision models.
+  * Refactor server chat layer around common_chat_session and change
+    default listening port to 9931.
+  * Web UI gains full models manager; include b11669 Web UI asset.
+  * Update bundled GGML library to version 0.27.0.
+
+-------------------------------------------------------------------
 Tue Oct 06 00:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.6.0
