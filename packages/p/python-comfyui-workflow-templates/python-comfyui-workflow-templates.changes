@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:17:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.87: metadata-only release, the
+  re-export shim code is byte-identical to 0.11.85
+  * Upstream release-train pins move to core 0.3.378 and json
+    0.1.113; all media pins and the floors here are unchanged
+  * The bump crosses 0.11.86: FLUX.2 and FLUX 3 display
+    branding aligned with Black Forest Labs, FLUX 3 Klein T2I
+    and image edit move to the base model with w4a8 upsampler,
+    and the gated FLUX 3 benchmark workflow is removed
+  * 0.11.87 only updates FLUX 3 Klein model file names and notes
+
+-------------------------------------------------------------------
 Thu Oct 15 16:36:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.85: metadata-only release, the re-export
