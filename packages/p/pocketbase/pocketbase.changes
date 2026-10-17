@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:32:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.40.5:
+  * Fixed migration deadlock when a logs db write lands
+    mid-migration
+  * JSVM migration errors now carry the recovered panic stack
+    trace and the failing migration filename
+  * Updated modernc.org/sqlite to 1.60.1 and the golang.org/x/*
+    dependencies
+  * Bumped minimum Go to 1.27.2 for its net/http security fixes,
+    including a potential DoS affecting PocketBase applications
+  * Fixed collection index parsing and validator edge cases,
+    nested cascade delete of self-referenced relations, and
+    minor UI fixes
+  * Package is not affected by CVE-2025-47911 (boo#1251394) and
+    CVE-2025-58190 (boo#1251590): vendored golang.org/x/net is
+    v0.59.0, above the v0.45.0 fix
+  * Package is not affected by CVE-2026-44166 (boo#1265187):
+    fixed upstream in 0.37.4, before the previously packaged
+    0.40.1
+
+-------------------------------------------------------------------
 Mon Aug 31 15:49:55 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.40.1:
