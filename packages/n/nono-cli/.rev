@@ -67,4 +67,12 @@ Local build green on openSUSE_Tumbleweed/aarch64, rpmlint 0 errors / 0 warnings.
   * Fail closed when upstream DNS returns no addresses</comment>
     <requestid>1380978</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>84ab6e7a5349e24e33468553788684bb</srcmd5>
+    <version>0.80.0</version>
+    <time>1792265085</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385249</requestid>
+  </revision>
 </revisionlist>

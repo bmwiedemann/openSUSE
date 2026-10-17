@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:37:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.80.0 (skips 0.79.0):
+  * Security advisory GHSA-q7m6-rr8w-vjff: filesystem denials
+    now apply to sockets as well as regular files
+  * Features: launch and attach to remote agent sessions;
+    standalone Snap runtime group; per-command aws_auth;
+    SHA-256 executable pinning; macOS command-level
+    keychain_access grant; diagnostics.redaction.extra_env_vars
+  * Fixes: isolate tool-sandbox network policy by effective
+    command scope; separate network-denial throttling from policy
+    enforcement; honour Linux open ports in proxy fallback;
+    serverAuth EKU on minted TLS intercept certificates; keep
+    Claude Code on its default Keychain service; accept
+    keyring:// credential URIs; allow man pages, font-config
+    and MIME reads on Linux
+  * Breaking: remove legacy Claude hook cleanup
+- Regenerate vendor.tar.zst for the new sources
+- Correct License: re-derived from the statically linked crates
+  (adds Zlib via foldhash, the default hasher) and update the
+  Legal-Review-Notice counts
+
+-------------------------------------------------------------------
 Sun Sep 27 17:54:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.78.0:
