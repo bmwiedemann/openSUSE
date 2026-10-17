@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 16 08:58:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2:
+  * Code gardening: A lot of work has been done to improve small library
+    details, for consistency and coherence. Many comments have been reviewed,
+    some function parameters have been renamed with more clear naming, some
+    pointers reviewed for const-correctness, functions reordered in the API for
+    more clarity and also several functions have been completely redesigned.
+  * REDESIGNED: Image drawing API more alignment with Screen drawing API: Image
+    API has been reviewed to be aligned with Texture API, now most
+    Texture-based functions (GPU accelerated) have a counter-part to work over
+    Image structures (CPU), also following same parameters order
+  * REDESIGNED: File API using more standard return result values: File API
+    return values have been unified to follow C conventions, returning 0 if
+    everything worked as expected and other values for potential issues on the
+    file processes.
+  * REVIEWED: Multiple security concerns reported by ROS (Radically Open
+    Security): Recently raylib went through a professional security audit by
+    Radically Open Security, most of the reported security concerns have been
+    addressed.
+
+-------------------------------------------------------------------
 Fri Apr 24 07:02:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.0:

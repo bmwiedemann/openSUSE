@@ -17,12 +17,12 @@
 
 
 Name:           raylib
-Version:        6.0
+Version:        6.2
 Release:        0
 Summary:        C library for learning video game programming
 License:        Zlib
 Group:          Development/Libraries/C and C++
-# Legal-Review-Notice: exmaples containing files under CC BY-NC 4.0 are not distributed
+# Legal-Review-Notice: examples containing files under CC BY-NC 4.0 are not distributed
 URL:            https://www.raylib.com
 Source:         raylib-%{version}.tar.xz
 BuildRequires:  Mesa-libGL-devel
@@ -44,17 +44,17 @@ raylib is inspired by the Borland BGI graphics library and by the XNA framework.
 %package -n raylib-devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       libraylib600 = %{version}
+Requires:       libraylib620 = %{version}
 Requires:       openal-soft-devel
 
 %description -n raylib-devel
 Development files and headers for %{name}.
 
-%package -n libraylib600
+%package -n libraylib620
 Summary:        C library for learning video game programming
 Group:          System/Libraries
 
-%description -n libraylib600
+%description -n libraylib620
 A C library for learning video game programming.
 
 %prep
@@ -72,10 +72,10 @@ A C library for learning video game programming.
 %install
 %cmake_install
 
-%post -n libraylib600 -p /sbin/ldconfig
-%postun -n libraylib600 -p /sbin/ldconfig
+%post -n libraylib620 -p /sbin/ldconfig
+%postun -n libraylib620 -p /sbin/ldconfig
 
-%files -n libraylib600
+%files -n libraylib620
 %license LICENSE
 %{_libdir}/libraylib.so.*
 

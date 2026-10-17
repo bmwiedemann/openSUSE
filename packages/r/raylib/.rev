@@ -360,4 +360,29 @@
 - Drop raylib-CVE-2025-15533-CVE-2025-15534.patch</comment>
     <requestid>1349084</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0691a16364d7f4e9a8b20d3d12a70294</srcmd5>
+    <version>6.2</version>
+    <time>1792265042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2:
+  * Code gardening: A lot of work has been done to improve small library
+    details, for consistency and coherence. Many comments have been reviewed,
+    some function parameters have been renamed with more clear naming, some
+    pointers reviewed for const-correctness, functions reordered in the API for
+    more clarity and also several functions have been completely redesigned.
+  * REDESIGNED: Image drawing API more alignment with Screen drawing API: Image
+    API has been reviewed to be aligned with Texture API, now most
+    Texture-based functions (GPU accelerated) have a counter-part to work over
+    Image structures (CPU), also following same parameters order
+  * REDESIGNED: File API using more standard return result values: File API
+    return values have been unified to follow C conventions, returning 0 if
+    everything worked as expected and other values for potential issues on the
+    file processes.
+  * REVIEWED: Multiple security concerns reported by ROS (Radically Open
+    Security): Recently raylib went through a professional security audit by
+    Radically Open Security, most of the reported security concerns have been
+    addressed.</comment>
+    <requestid>1385343</requestid>
+  </revision>
 </revisionlist>
