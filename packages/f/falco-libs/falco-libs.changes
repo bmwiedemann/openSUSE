@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:15:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.26.1:
+  * libsinsp: report real event deltatime values in JSON output;
+    proc.ppid.duration now returns NULL when ancestor data
+    is missing
+  * libscap: clear fd records before savefile parsing
+  * Driver API 11.0.1 with modern-BPF fixes (no d_path on remote
+    task paths, BPF_CORE siginfo read); minimum accepted driver
+    unchanged (API 11.0.0, schema 4.3.0)
+  * Default container plugin upgraded to 0.7.5
+  * Keep support-bshoshany-thread-pool-v5.patch (still applies
+    cleanly, upstream keeps the v4-only spelling)
+
+-------------------------------------------------------------------
 Tue Sep 15 10:11:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.26.0:

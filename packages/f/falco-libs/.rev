@@ -27,4 +27,12 @@ Note: shlib rename libscap0/libsinsp0 -&gt; libscap0_26/libsinsp0_26 (upstream S
 </comment>
     <requestid>1378146</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>be83bc19a3047c02c2116a6a5a3e19f7</srcmd5>
+    <version>0.26.1</version>
+    <time>1792265220</time>
+    <user>dimstar_suse</user>
+    <comment>Update falco-libs to 0.26.1 with bumped driver API</comment>
+    <requestid>1385350</requestid>
+  </revision>
 </revisionlist>

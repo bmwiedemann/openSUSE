@@ -21,7 +21,7 @@
 # Library Policy: libscap0_26, libsinsp0_26.
 %define sover 0_26
 Name:           falco-libs
-Version:        0.26.0
+Version:        0.26.1
 Release:        0
 Summary:        Libraries for system inspection (libscap and libsinsp)
 License:        Apache-2.0
