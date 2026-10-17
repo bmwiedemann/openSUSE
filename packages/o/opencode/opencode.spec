@@ -56,13 +56,13 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        2.0.30
+Version:        2.0.31
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 2.0.30 from the declared license field
+# Legal-Review-Notice: rederived for 2.0.31 from the declared license field
 # of all 354 unique packages in the vendor tarball (355 store entries, one of
 # which is the symlink farm and not a package). No copyleft of any kind. The
 # SPDX set and the counts are unchanged from 2.0.28 (MIT 199, Apache-2.0 69,

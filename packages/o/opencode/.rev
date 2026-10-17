@@ -472,4 +472,12 @@ aarch64, all 5 patches still apply.</comment>
     <comment>Update opencode to 2.0.30: elicitation patch now in-tree (dropped), re-vendored, licences re-derived, no copyleft.</comment>
     <requestid>1385135</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e1a37f202d63bb6835e661a92dae1709</srcmd5>
+    <version>2.0.31</version>
+    <time>1792265221</time>
+    <user>dimstar_suse</user>
+    <comment>Forward opencode 2.0.31 to Factory (Bedrock cache fix, TUI dialog rework; OpenTUI stays 0.5.17, vendor closure unchanged)</comment>
+    <requestid>1385368</requestid>
+  </revision>
 </revisionlist>

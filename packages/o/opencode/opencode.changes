@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:18:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.31 (the 2.x line publishes no release objects, so
+  this is a summary of the v2.0.30..v2.0.31 tag-to-tag diff)
+  * Core: Bedrock prompt caching honors the declared cache format
+    instead of matching on the model id alone
+  * TUI: reworked dialog, select and prompt layouts; new built-in
+    opencode2 theme behind the new-designs experiment
+  * CLI: fixed the MCP auth example config nesting; the background
+    service inherits the configured environment on startup
+  * OpenTUI stays 0.5.17: the tag pins it, so the %prep pin check
+    passes unmodified; no new mandatory dependencies
+  * Many more fixes and improvements; the full list is the
+    v2.0.30..v2.0.31 commit range, which publishes no release notes
+- Regenerate the vendor tree: 355 of 2176 store entries kept, keep
+  list byte-identical to 2.0.30, so the closure is unchanged
+- Legal review re-derived for the new tree: 354 packages, SPDX
+  licence set and counts unchanged, no copyleft
+- All five patches apply clean against 2.0.31 (offsets only, no
+  rebases)
+
+-------------------------------------------------------------------
 Fri Oct 16 06:19:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.30 (the 2.x line publishes no release objects, so
