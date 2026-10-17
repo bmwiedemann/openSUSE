@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:30:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.36:
+  * Deploy honors the active Docker context endpoint unless
+    DOCKER_HOST is set
+
+-------------------------------------------------------------------
 Thu Oct 15 04:56:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.35:
