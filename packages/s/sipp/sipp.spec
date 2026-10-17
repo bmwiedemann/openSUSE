@@ -17,7 +17,7 @@
 
 
 Name:           sipp
-Version:        3.7.9
+Version:        3.8.0
 Release:        0
 Summary:        A SIP protocol testing tool
 License:        GPL-2.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(pugixml)
 %description
 Sipp is a performance testing tool for the SIP protocol. Its main features are
 basic SIPStone scenarios, TCP/UDP transport, customizable (xml based) scenarios,
-dynamic adjustement of call-rate and a comprehensive set of real-time
+dynamic adjustment of call-rate and a comprehensive set of real-time
 statistics.
 
 %prep

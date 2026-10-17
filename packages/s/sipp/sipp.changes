@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sat Oct 17 09:10:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix description
+
+-------------------------------------------------------------------
+Tue Oct 13 16:24:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.8.0
+  Performance
+  * 3.7 had raised memory and CPU per call far above 3.6. 3.8.0
+    brings them well below both:
+    + At 12000 calls/s, the built-in UAS peaks at 148 MB (1240 MB
+      in 3.7.8, 242 MB in 3.6.1).
+    + The built-in UAC and UAS keep up with 18000 calls/s on 2 cores.
+      3.6.1 starts losing calls at 7000 calls/s, and 3.7.8 at 5000.
+    + 2000 calls playing media take 16 MB (54 MB in 3.7.8).
+    + SRTP takes a sixth less CPU and a third less memory.
+    + pcap play runs in the RTP playback threads instead of one
+      thread per play, and audio and video play at the same time.
+   New
+   * Several dialogs in one call (dialog="N") and server
+     transactions (start_txn / response_txn).
+   * SIP over WebSocket (RFC 7118): -t w1/wn, and x1/xn over TLS.
+   * Lua scripting: -lua_file and <exec lua="...">.
+   * DNS NAPTR/SRV lookup of the remote host (RFC 3263), and
+     -round_robin across its addresses.
+   * Digest SHA-256, SHA-512-256 and the -sess variants (RFC 7616),
+     and the AES_192_CM and AES_256_CM SRTP suites
+   * Media: rtp_stream over SRTP, <exec rtp_stream="wait"/>,
+     play_pcap_text (RFC 4103), and <rtp_stats> and <rtp_dtmf> to
+     check what a call received
+   * Scenarios: <xi:include href>, <exec verify>, keywords in
+     <recv timeout> and inside other keywords' parameters, and
+     [last_Header.value].
+   * Failover: with -max_reconnect and -reconnect_close false, a
+     call goes on over the new connection, and a response goes
+     where its request came from.
+   * Python tools in tools/: a CI threshold report, Prometheus and
+     OpenTelemetry exporters, an HTTP API for the control socket,
+     an RTP impairment proxy, a QoS/MOS analyzer, and STUN/ICE/TURN
+     and DTLS-SRTP probes.
+   Breaking changes
+   * Numbers are decimal, or hex with 0x. A leading 0 no longer
+     means octal. Empty, malformed or out-of-range values are
+     errors instead of 0.
+   * <ereg search_in="hdr"> matches a header name only at the start
+     of a line: header="To" no longer finds X-Forward-To:.
+   * A fatal error before the scenario loads, such as a bad option,
+     exits with 255, as documented, not 1.
+   * AKAv1-MD5 checks the MAC over the AMF of the challenge.
+     aka_AMF is ignored.
+   * The -trace_stat file has periodic (P) and cumulative (C)
+     columns for each repartition range. Parsers of this file
+     need updating. -periodic_rtd is ignored.
+   * The built-in scenarios put [media_ip] in SDP o=, so it carries
+     the -mi address, not the -i one.
+   Fixes
+   * Over 230 fixes. They cover crashes and memory errors, TCP, TLS,
+     SCTP, UDP and 3PCC transport bugs, RTP echo, SRTP and pcap
+     play, statistics, and option and scenario parsing.
+
+-------------------------------------------------------------------
 Wed Sep 30 15:46:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.7.9

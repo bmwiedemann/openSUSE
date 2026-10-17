@@ -79,4 +79,41 @@
     <comment>1</comment>
     <requestid>1381716</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8a81a151c44286a356c6bdb311d6958e</srcmd5>
+    <version>3.8.0</version>
+    <time>1792265115</time>
+    <user>dimstar_suse</user>
+    <comment>- fix description
+
+- Update to version 3.8.0
+  Performance
+  * 3.7 had raised memory and CPU per call far above 3.6. 3.8.0
+    brings them well below both:
+    + At 12000 calls/s, the built-in UAS peaks at 148 MB (1240 MB
+      in 3.7.8, 242 MB in 3.6.1).
+    + The built-in UAC and UAS keep up with 18000 calls/s on 2 cores.
+      3.6.1 starts losing calls at 7000 calls/s, and 3.7.8 at 5000.
+    + 2000 calls playing media take 16 MB (54 MB in 3.7.8).
+    + SRTP takes a sixth less CPU and a third less memory.
+    + pcap play runs in the RTP playback threads instead of one
+      thread per play, and audio and video play at the same time.
+   New
+   * Several dialogs in one call (dialog=&quot;N&quot;) and server
+     transactions (start_txn / response_txn).
+   * SIP over WebSocket (RFC 7118): -t w1/wn, and x1/xn over TLS.
+   * Lua scripting: -lua_file and &lt;exec lua=&quot;...&quot;&gt;.
+   * DNS NAPTR/SRV lookup of the remote host (RFC 3263), and
+     -round_robin across its addresses.
+   * Digest SHA-256, SHA-512-256 and the -sess variants (RFC 7616),
+     and the AES_192_CM and AES_256_CM SRTP suites
+   * Media: rtp_stream over SRTP, &lt;exec rtp_stream=&quot;wait&quot;/&gt;,
+     play_pcap_text (RFC 4103), and &lt;rtp_stats&gt; and &lt;rtp_dtmf&gt; to
+     check what a call received
+   * Scenarios: &lt;xi:include href&gt;, &lt;exec verify&gt;, keywords in
+     &lt;recv timeout&gt; and inside other keywords' parameters, and
+     [last_Header.value].
+   * Failover: with -max_reconnect and -reconnect_close false, a</comment>
+    <requestid>1385375</requestid>
+  </revision>
 </revisionlist>
