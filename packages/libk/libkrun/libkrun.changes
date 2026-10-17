@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Oct 15 05:07:13 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- Update to version 1.19.6:
+  * Bump version to 1.19.6
+  * libkrun: implement an API to set render server fd
+  * Bump version to 1.19.5
+  * virtio/fs: return ENOTTY for unsupported ioctl commands
+  * ci: adopt new libkrunfw tarball distribution
+  * Makefile: update FreeBSD test image to 14.5
+  * CI: Use setup-homebrew@main instead of legacy master
+  * virtio/vsock: release proxies after clean shutdown
+  * kvm: disable missed PIT tick reinjection
+  * vmm: aarch64: expose SVE to the guest when the host supports it
+  * virtio/fs/macos: handle absent capability xattrs correctly
+  * include: fix a "/*" within a comment in libkrun.h
+  * arch/x86_64: keep initrd below the MMIO gap
+  * display/edid: fix aspect ratio and refresh rate encoding
+  * display/edid: limit standard timings to configured resolution
+  * tests: add regression test for refused host-initiated vsock connect
+  * virtio/vsock: remove refused connections without waiting for the reaper
+  * virtio/vsock: drop the proxy_map guard before removing a proxy
+  * lib: create shutdown eventfd on demand
+  * virtio/gpu: reject out-of-range and wrapping blob map offsets
+  * include: fix const-correctness for `krun_add_net_tap`
+  * fs/macos: strip com.apple.* xattrs invalid in Linux guests
+  * virtio-blk: surface krun_add_disk2 block_id as device ID/serial
+  * macos: support VMs with more than 64GB of RAM
+  * init: Added GID and UID parsing
+  * vmm/builder: fix clippy byte_char_slices in bz2 magic check
+  * virtio/input: fix clippy redundant_reference in debug! arg
+  * rutabaga_gfx: fix clippy byte_char_slices in DRM format constants
+  * Bump patch version to 1.19.4
+  * virtio/fs/macos: secctx must succeed with 0444
+  * Bump patch version to 1.19.3
+  * libkrun: implement krun_add_virtiofs4
+  * virtio/fs: if simplified disable attribute caching
+  * virtio/fs: support disabling allow_idmap
+  * virtio/fs/macos: support different perm semantics
+  * virtio/fs/macos: propagate context to stat_common
+  * Revert "virtio-fs: map host process UID/GID to root in guest on macOS"
+  * Bump patch version to 1.19.2
+  * Revert "virtio/console: fix TX data loss race on shutdown"
+  * Bump patch version to 1.19.1
+  * ci: switch to ubuntu-26.04 runners
+  * CI: Check for improper AI atribution
+  * cpuid: advertise the TSC-deadline timer on AMD hosts
+  * virtio/console: fix TX data loss race on shutdown
+  * tests/virtiofs-misc: add UID/GID mapping subtests
+  * virtio-fs: map host process UID/GID to root in guest on macOS
+  * virtio-fs: add a regression test for scoped_cred restore
+  * virtio-fs: restore the original thread credentials, not euid/egid 0
+  * vmm: properly gate edk2 import, fix crate.io build
+  * init_blob: fix build from crates.io by making the crate self-contained
+  * deps: fix vm-memory version conflict when used as a Rust dependency
+  * ci: trust libkrun/krun tap before installing formulae on macOS
+
+-------------------------------------------------------------------
 Fri Jun 12 11:02:48 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to version 1.19.0:
