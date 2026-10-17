@@ -45,6 +45,7 @@ Requires:       systemd
 Conflicts:      bbswitch
 Conflicts:      bumblebee
 Conflicts:      bumblebee-status-module-nvidia-optimus-manager
+Conflicts:      cardwire
 Conflicts:      suse-prime
 Conflicts:      system76-power
 
