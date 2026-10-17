@@ -54,6 +54,9 @@ BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libre) >= 4.0.0
 BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libv4l2)
+BuildRequires:  pkgconfig(opencore-amrnb)
+BuildRequires:  pkgconfig(opencore-amrwb)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(sdl2)
@@ -62,8 +65,6 @@ BuildRequires:  pkgconfig(spandsp)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(twolame)
 BuildRequires:  pkgconfig(vpx)
-BuildRequires:  pkgconfig(webrtc-audio-processing)
-Recommends:     baresip-devel
 Recommends:     baresip-video
 
 %description
@@ -156,6 +157,7 @@ sed 's|%{_prefix}/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/aac.so
 %{_libdir}/baresip/modules/account.so
 %{_libdir}/baresip/modules/alsa.so
+%{_libdir}/baresip/modules/amr.so
 %{_libdir}/baresip/modules/aubridge.so
 %{_libdir}/baresip/modules/auconv.so
 %{_libdir}/baresip/modules/aufile.so
@@ -228,6 +230,7 @@ sed 's|%{_prefix}/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/sdl.so
 %{_libdir}/baresip/modules/selfview.so
 %{_libdir}/baresip/modules/swscale.so
+%{_libdir}/baresip/modules/v4l2.so
 %{_libdir}/baresip/modules/vidbridge.so
 %{_libdir}/baresip/modules/vidinfo.so
 %{_libdir}/baresip/modules/vp8.so

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 17 05:55:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Remove baresip-devel Recommends from main package, installing
+  baresip application should not pull in the devel package on
+  end-users machines.
+
+-------------------------------------------------------------------
+Fri Oct 16 15:55:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(libv4l2), pkgconfig(opencore-amrnb) and
+  pkgconfig(opencore-amrwb) BuildRequires: Build v4l2 and amr codec
+  support.
+- Drop pkgconfig(webrtc-audio-processing) BuildRequires, sadly the
+  webrtc package we have does not support the Acoustic Echo
+  Cancellation (AEC) baresip needs.
+
+-------------------------------------------------------------------
 Wed Sep 30 18:03:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.12.0
