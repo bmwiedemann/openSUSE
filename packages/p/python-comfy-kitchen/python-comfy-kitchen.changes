@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:16:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.38:
+  * Eager backend: the W4A8/INT8 path shares its pack/unpack
+    helpers with the new tensor/w4a8_packed module and gains
+    SiTU input-activation support in the INT8 ConvRot quantizer
+  * New 3D mesh remeshing operations (Delaunay3D, edge collapse,
+    mesh BVH, min-cut, connected components) and Qwen 3.x LLM
+    performance improvements, all CUDA-kernel work not compiled
+    in this CPU-only build
+  * Remainder of the release is CUDA and HIP kernel work (sm100
+    Windows builds, HIP rope split-half rounding and fp8 NaN
+    fixes, int8 attention for Ampere), likewise not compiled here
+
+-------------------------------------------------------------------
 Sun Oct  4 06:35:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.37:
