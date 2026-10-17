@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Oct 17 01:13:34 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.13.1:
+  * chore: release v17.13.1 (#2426)
+  * chore(deps): lock file maintenance (#2425)
+
+-------------------------------------------------------------------
+Fri Oct 16 16:30:29 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.13.0:
+  * chore: release v17.13.0 (#2414)
+  * chore(deps): update rust to v1.99.1 (#2418)
+  * fix(bin): forward --yes to bin update (#2423)
+  * feat(linux): allow bootc on unrecognised distros (#2416)
+  * fix: create the config directory before writing the example config (#2413)
+  * chore(deps): update github/codeql-action action to v4.38.3 (#2403)
+  * chore(deps): update release-plz/action action to v0.5.142 (#2402)
+  * chore(deps): update actions/download-artifact action to v8.0.2 (#2400)
+  * chore(deps): update actions/upload-artifact action to v7.0.2 (#2401)
+  * chore(deps): update dtolnay/rust-toolchain digest to e2a55d2 (#2405)
+  * chore(deps): update ossf/scorecard-action action to v2.5.0 (#2409)
+  * chore(pre-commit): autoupdate (#2411)
+  * feat(locale): add Korean translations (#2412)
+  * chore(deps): lock file maintenance (#2408)
+  * fix: move falconf to end in step order (#2406)
+  * feat(opencode): perform v2 plugin updates (#2398)
+  * fix(shell): quote sourced command paths (#2141)
+  * fix(which): ignore mise shims without global default version (#2343)
+  * chore(deps): update dtolnay/rust-toolchain digest to 7e38f4b (#2390)
+  * fix(locales): correct mistranslations and command names
+  * style: align step names and separators with upstream branding
+  * fix: align summary names with step separators
+  * chore(locales): drop dead locale blocks
+  * fix(flatpak): translate the user packages separator
+  * chore: fix comment typos
+  * build: drop stale breaking-changes exclude from Cargo.toml
+  * docs: fix stale links and casing, drop breaking-changes section
+  * fix(locales): fix stray zh_CH key on PATH lookup message
+  * fix(containers): close unclosed backtick in error messages
+  * fix(steps): fix grammar and casing in step messages
+  * docs: add sponsor button (#2394)
+  * chore(deps): lock file maintenance (#2392)
+
+-------------------------------------------------------------------
 Thu Oct 08 08:12:12 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.12.3:
