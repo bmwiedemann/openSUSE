@@ -18,15 +18,15 @@
 
 
 Name:           lrzip
-# Upstream renumbered 0.660 -> 0.7.2, which sorts older in rpmvercmp;
-# Epoch is forbidden per review, so map upstream 0.7.2 -> 0.702
-# (7*100+2): sorts above 0.660, stays ordered for 0.7.x/0.8.x/0.10.x.
-Version:        0.702
+# Upstream renumbered 0.660 -> 0.7.x, which sorts older in rpmvercmp;
+# Epoch is forbidden per review, so map upstream 0.7.3 -> 0.703
+# (7*100+3): sorts above 0.660, stays ordered for 0.7.x/0.8.x/0.10.x.
+Version:        0.703
 Release:        0
 Summary:        Very High Ratio and Speed Compression Designed for Large Files
 License:        GPL-2.0-only
 URL:            http://ck.kolivas.org/apps/lrzip/
-Source:         https://github.com/ckolivas/lrzip/releases/download/v0.7.2/lrzip-0.7.2.tar.gz
+Source:         https://github.com/ckolivas/lrzip/releases/download/v0.7.3/lrzip-0.7.3.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  perl
 BuildRequires:  pkgconfig
@@ -34,6 +34,11 @@ BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(zlib)
+# the regression suite embeds a python3 (stdlib-only) AEAD test
+BuildRequires:  python3-base
+# Upstream 0.7.x removed all 32-bit code paths and hard-errors
+# (#error/_Static_assert) on pointers < 8 bytes, so exclude 32-bit arches.
+ExcludeArch:    %{ix86} %{arm}
 Conflicts:      rzsz
 
 %description
@@ -46,7 +51,7 @@ speed optimizations allows for either better compression than even lzma can
 provide, or better speed than gzip, but with bzip2 sized compression levels.
 
 %prep
-%autosetup -p1 -n lrzip-0.7.2
+%autosetup -p1 -n lrzip-0.7.3
 
 %build
 %configure

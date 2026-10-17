@@ -31,4 +31,12 @@
     <comment>Forward lrzip 0.702 to Factory (replaces declined 1377560 which used forbidden Epoch:1). Upstream renumbered 0.660-&gt;0.7.2 which sorts lower in rpmvercmp, so Version 0.702 = 7*100+2 with mapping comment in spec; verified 0.660&lt;0.702 and future 0.703/0.800/0.1000 sort correctly. No Epoch. Native aarch64 build green, %check 93/93.</comment>
     <requestid>1377595</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78b7530fd071ac037fb49d58b5846ae2</srcmd5>
+    <version>0.703</version>
+    <time>1792265250</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385507</requestid>
+  </revision>
 </revisionlist>

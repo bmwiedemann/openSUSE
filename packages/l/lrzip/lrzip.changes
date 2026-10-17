@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:44:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.703 (upstream 0.7.3):
+  * Numerous performance speedups: batched AES-GCM/GHASH, hardware
+    AES rounds where supported, overlapped compression and MD5,
+    cached sliding-window history
+  * Fix decompression of archives made by lrzip <= 0.4 (bounded
+    token length)
+- Exclude 32-bit arches: upstream 0.7.x removed all 32-bit code
+  paths and refuses to compile where pointers are < 8 bytes
+- Add python3-base BuildRequires: the 0.7.3 regression suite embeds
+  a stdlib-only python3 AEAD pipeline test in %check
+
+-------------------------------------------------------------------
 Sat Sep 12 19:28:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Rework to version 0.702 with no Epoch (Epoch forbidden per review):
