@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 16 16:58:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.2:
+  * Follow the system-wide dark theme preference (GTK 4.20 and newer),
+    overridable with the new `theme` configuration option
+  * Fix line wrapping not being enabled automatically for files wider
+    than the `text_view_max_chars` option
+- Package the AppStream file under its upstream name
+  (io.otsaloma.nfoview.metainfo.xml), require GTK 4.12 and PyGObject 3.40
+  as upstream now states, and stop passing PREFIX to the build, which
+  upstream's Makefile uses only at install time
+
+-------------------------------------------------------------------
 Wed Sep 16 17:36:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.1:

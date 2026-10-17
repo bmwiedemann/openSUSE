@@ -103,4 +103,12 @@
 - Use /usr/bin/python3 shebang instead of env</comment>
     <requestid>1378425</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ef6152fb6183e420b469e9832a5c46f4</srcmd5>
+    <version>2.2</version>
+    <time>1792265117</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385263</requestid>
+  </revision>
 </revisionlist>

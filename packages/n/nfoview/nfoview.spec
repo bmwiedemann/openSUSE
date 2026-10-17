@@ -17,7 +17,7 @@
 
 
 Name:           nfoview
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Simple Viewer for NFO Files
 License:        GPL-3.0-or-later
@@ -28,9 +28,10 @@ BuildRequires:  gettext
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  make
 BuildRequires:  python3-base
+Requires:       gtk4 >= 4.12
 Requires:       python3
 Requires:       python3-cairo
-Requires:       python3-gobject-Gdk
+Requires:       python3-gobject-Gdk >= 3.40
 Requires:       typelib(Gtk) = 4.0
 Requires:       typelib(Pango) = 1.0
 Requires:       typelib(PangoCairo) = 1.0
@@ -49,7 +50,7 @@ clickable hyperlinks.
 %autosetup -p1
 
 %build
-%make_build PREFIX=%{_prefix}
+%make_build
 
 %install
 %make_install PREFIX=%{_prefix}
@@ -71,7 +72,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.otsaloma.nfoview.d
 %license COPYING
 %{_bindir}/%{name}
 %{_datadir}/%{name}
-%{_datadir}/metainfo/io.otsaloma.nfoview.appdata.xml
+%{_datadir}/metainfo/io.otsaloma.nfoview.metainfo.xml
 %{_datadir}/applications/io.otsaloma.nfoview.desktop
 %{_datadir}/icons/hicolor/*/apps/io.otsaloma.nfoview*.svg
 %{_mandir}/man1/%{name}.1%{?ext_man}
