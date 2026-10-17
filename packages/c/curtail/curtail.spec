@@ -17,7 +17,7 @@
 
 
 Name:           curtail
-Version:        1.16.1
+Version:        1.17.0
 Release:        0
 Summary:        A simple and useful image compressor
 License:        GPL-3.0-or-later
@@ -26,12 +26,13 @@ Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.t
 Source1:        %{name}-rpmlintrc
 BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
-BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk4-tools
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 1.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gobject-introspection-no-export-1.0)
 # Note: Needs libadwaita's ShortcutsDialog which is only available from version 1.8
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 Requires:       jpegoptim
