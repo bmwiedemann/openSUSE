@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 16 17:44:24 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792169851.d54cd4e4:
+  * chore(deps-dev): bump globby from 16.2.2 to 16.2.4 (#7961)
+
+-------------------------------------------------------------------
+Fri Oct 16 14:31:16 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792155122.83ee034b:
+  * feat: filter jobs by minimum number of restarts
+
+-------------------------------------------------------------------
 Fri Oct 16 06:30:10 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1792132198.63d05d40:
