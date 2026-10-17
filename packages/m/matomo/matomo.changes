@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 16 20:25:07 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.14.1
+
+- Update to 5.14.1
+  * Core improvements
+    - #25282 Update the add to cart modal CTA footer.
+    - #25300 Fix a race condition in nonce validation.
+    - #25337 Send temperature only to Bedrock models that support it.
+    - #25365 Fix goal recommendation UI issues and reload the page after goal creation.
+    - #25395, #25369 Refresh Marketplace lists in the background instead of hourly.
+    - #25397 Redesign the Marketplace and give plugin details their own page.
+    - #25398 Add trigger-based in-app promotions.
+
+-------------------------------------------------------------------
 Tue Sep 22 10:13:29 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.14.0
 
 - Update to 5.14.0
