@@ -1,8 +1,22 @@
-Index: percona-toolkit-3.7.1/src/go/Makefile
+Index: percona-toolkit-3.7.1-4/Makefile.PL
 ===================================================================
---- percona-toolkit-3.7.1.orig/src/go/Makefile
-+++ percona-toolkit-3.7.1/src/go/Makefile
-@@ -159,9 +159,8 @@ darwin-arm64:               ## Build Go
+--- percona-toolkit-3.7.1-4.orig/Makefile.PL	2026-07-03 17:01:03.000000000 +0200
++++ percona-toolkit-3.7.1-4/Makefile.PL	2026-10-17 17:33:05.996984171 +0200
+@@ -6,7 +6,7 @@
+ pkgs = $(shell find src/go -type d -name "pt-*" -exec basename {} \;)
+ 
+ gotools:
+-	cd src/go && VERSION=$(VERSION) $(MAKE) build
++	cd src/go && $(MAKE) build VERSION=$(VERSION) BUILD_DATE=$(BUILD_DATE) COMMIT=$(COMMIT) V=1
+ 	@$(foreach pkg,$(pkgs),cp bin/$(pkg) $(INST_BIN);)
+ 
+ goclean:
+
+Index: percona-toolkit-3.7.1-4/src/go/Makefile
+===================================================================
+--- percona-toolkit-3.7.1-4.orig/src/go/Makefile	2026-07-03 17:01:03.000000000 +0200
++++ percona-toolkit-3.7.1-4/src/go/Makefile	2026-10-17 17:41:10.803439330 +0200
+@@ -159,9 +159,8 @@
  
  build:						## Build Go tools for current platform
  	@echo "Building binaries in ${BIN_DIR} as version ${VERSION}"
@@ -13,16 +27,3 @@ Index: percona-toolkit-3.7.1/src/go/Makefile
  
  style:						## Check code style
  	@echo ">> checking code style"
-Index: percona-toolkit-3.7.1/Makefile.PL
-===================================================================
---- percona-toolkit-3.7.1.orig/Makefile.PL
-+++ percona-toolkit-3.7.1/Makefile.PL
-@@ -4,7 +4,7 @@ use ExtUtils::MY;
- sub MY::postamble {
-     return <<'MAKE_GOTOOLS';
- gotools:
--	cd src/go && $(MAKE) build
-+	cd src/go && $(MAKE) build VERSION=$(VERSION) BUILD_DATE=$(BUILD_DATE) COMMIT=$(COMMIT) V=1
- 
- MAKE_GOTOOLS
- }

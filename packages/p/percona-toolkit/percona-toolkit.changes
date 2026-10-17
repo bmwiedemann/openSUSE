@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:34:33 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 3.7.1-4 (packaged as 3.7.1.4, RPM forbids '-' in
+  Version):
+  * Go library security refresh (PT-2546): CVE-2026-25680,
+    CVE-2026-25681, CVE-2026-27136, CVE-2026-33811,
+    CVE-2026-39820, CVE-2026-39827, CVE-2026-39828,
+    CVE-2026-39829, CVE-2026-39830, CVE-2026-39832,
+    CVE-2026-39835, CVE-2026-39836, CVE-2026-42499,
+    CVE-2026-42502, CVE-2026-42504, CVE-2026-42508,
+    CVE-2026-46595, CVE-2026-46597
+  * CVE-2026-39821: golang.org/x/net/idna ASCII-only Punycode
+    validation bypass via vendored x/net 0.53.0 -> 0.55.0
+    (boo#1266791)
+  * The shipped vendor tree is not affected by CVE-2026-33814
+    (boo#1265917): x/net 0.53.0 already carries the upstream
+    SETTINGS-frame guard
+  * The shipped vendor tree is not affected by CVE-2022-28948
+    (boo#1248544): vendored gopkg.in/yaml.v3 is 3.0.1, the fixed
+    version
+  * Replace data-dir validation logic in pt-online-schema-change
+  * Build Go tools against the vendored module tree, drop the
+    network-dependent `go get` step (offline builds)
+  * Drop the redundant ELF-binary copy from %install: upstream
+    installs the Go tools into INST_BIN itself now
+- Drop the x/net v0.53.0 replace pin from _service: upstream now
+  requires x/net v0.55.0 itself, the override would downgrade it
+- Refresh vendor.tar.zst, percona-toolkit-3.7.1.tar.gz replaced
+  by percona-toolkit-3.7.1-4.tar.gz, rebase go-build.patch
+
+-------------------------------------------------------------------
 Mon Jun  8 12:46:32 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on non x86_64 archs

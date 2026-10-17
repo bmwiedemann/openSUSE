@@ -16,20 +16,22 @@
 #
 
 
-%define revision v%{version}
-
+%define upstream_version 3.7.1-4
+%define revision v%{upstream_version}
 Name:           percona-toolkit
-Version:        3.7.1
+Version:        3.7.1.4
 Release:        0
 Summary:        Advanced MySQL and system command-line tools
 License:        GPL-2.0-only
-Group:          Productivity/Databases/Tools
 URL:            https://www.percona.com/software/percona-toolkit/
-Source:         https://github.com/percona/percona-toolkit/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/percona/percona-toolkit/archive/refs/tags/v%{upstream_version}.tar.gz#/%{name}-%{upstream_version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        %{name}.conf
 Source9:        series
 Patch1:         go-build.patch
+BuildRequires:  golang-packaging
+BuildRequires:  zstd
+BuildRequires:  golang(API)
 BuildRequires:  perl(DBD::mysql) >= 3
 BuildRequires:  perl(DBI) >= 1.46
 BuildRequires:  perl(IO::Socket::SSL)
@@ -42,9 +44,6 @@ Requires:       perl(Term::ReadKey) >= 2.10
 Requires:       perl(Time::HiRes)
 Provides:       maatkit = 7410.%{version}
 Obsoletes:      maatkit < 7410
-BuildRequires:  golang-packaging
-BuildRequires:  zstd
-BuildRequires:  golang(API)
 %{perl_requires}
 
 %description
@@ -64,14 +63,14 @@ visit http://www.percona.com/software/.
 This collection was formerly known as Maatkit.
 
 %prep
-%autosetup -p1 -a 1
+%autosetup -p1 -n %{name}-%{upstream_version} -a 1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor < /dev/null
 sed -i 's|%{_bindir}/env perl|%{_bindir}/perl|' bin/*
 sed -i 's|%{_bindir}/env bash|%{_bindir}/bash|' bin/*
 %make_build \
-  VERSION=%{version} \
+  VERSION=%{upstream_version} \
   BUILD_DATE=$(date -u '+%FT%T%z' -d @${SOURCE_DATE_EPOCH}) \
   COMMIT=%{revision} \
   V=1
@@ -86,7 +85,6 @@ rm -rf %{buildroot}%{_localstatedir}/adm/perl-modules/%{name}
 # a blank configuration file
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/
-cp -a $(file bin/* | awk -F ':' '/ELF/ {print $1}') %{buildroot}%{_bindir}/
 
 %files
 %license COPYING
