@@ -2140,4 +2140,17 @@
   * releaser: Prepare repository for 0.168.0-DEV (forwarded request 1384860 from jfkw)</comment>
     <requestid>1384862</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>eddbac778c5efb484e887238254ec643</srcmd5>
+    <version>0.168.0</version>
+    <time>1792265066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.166.0 (bsc#1285804, CVE-2026-100351,
+    bsc#1285810, CVE-2026-100352):
+- Update to version 0.165.0 (bsc#1285795, CVE-2026-100349,
+    bsc#1285799, CVE-2026-100350,
+    bsc#1285791, CVE-2026-100348,
+    bsc#1285787, CVE-2026-100347):</comment>
+    <requestid>1385227</requestid>
+  </revision>
 </revisionlist>

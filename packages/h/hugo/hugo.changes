@@ -87,7 +87,8 @@ Mon Sep 28 15:12:49 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 -------------------------------------------------------------------
 Wed Sep 09 18:36:23 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
-- Update to version 0.166.0:
+- Update to version 0.166.0 (bsc#1285804, CVE-2026-100351,
+    bsc#1285810, CVE-2026-100352):
   * releaser: Bump versions for release of 0.166.0
   * build(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2
   * build(deps): bump golang.org/x/sync from 0.22.0 to 0.23.0
@@ -154,7 +155,10 @@ Wed Sep 09 18:36:23 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 -------------------------------------------------------------------
 Wed Aug 12 16:37:44 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
-- Update to version 0.165.0:
+- Update to version 0.165.0 (bsc#1285795, CVE-2026-100349,
+    bsc#1285799, CVE-2026-100350,
+    bsc#1285791, CVE-2026-100348,
+    bsc#1285787, CVE-2026-100347):
   * releaser: Bump versions for release of 0.165.0
   * build(deps): bump github.com/bep/imagemeta from 0.17.3 to 1.0.0
   * build(deps): bump github.com/evanw/esbuild from 0.28.1 to 0.28.2
