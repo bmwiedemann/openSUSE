@@ -15,4 +15,12 @@
     <comment>Update to 0.9.67: PYTHONHASHSEED re-exec fix, PHP closures, absolute import resolution.</comment>
     <requestid>1380136</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7616318b1abc80626e7d670580f62931</srcmd5>
+    <version>0.9.91</version>
+    <time>1792265131</time>
+    <user>dimstar_suse</user>
+    <comment>Update graphifyy to 0.9.91, fixing arbitrary file reads via Fortran sources and shell interpolation in watch mode</comment>
+    <requestid>1385274</requestid>
+  </revision>
 </revisionlist>

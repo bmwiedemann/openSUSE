@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:25:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.91:
+  * Security: Fortran capital-F sources no longer feed
+    #include directives to cpp, closing arbitrary host-file
+    reads into graph.json and LLM context
+  * Security: --watch snippets read the trusted scan-root
+    file instead of interpolating INPUT_PATH into shell;
+    Terraform secret redaction covers variable/output values
+  * Language coverage: new EJS and Jinja extractors; SQL
+    triggers, Groovy enums, OCaml/Elixir/Fortran/Julia/Kotlin
+    structural depth; cross-repo member-call resolution
+  * Resolution accuracy: self/this/super bind to the caller's
+    own class chain; unqualified calls prefer own-class scope
+  * Deterministic, portable graph.json: node ids no longer
+    leak checkout path, username, or line endings
+  * MCP retrieval much faster (cached traversal graphs);
+    query/explain exit codes and truncation hints; hook-guard
+    for Pi, OpenCode 2 plugin support, automatic stale-skill
+    refresh
+  * Raise python-tree-sitter runtime floor to >= 0.25 for
+    ABI 15 grammars
+  * %check: skip tests needing newer tree-sitter grammars
+    than Factory ships (JS tagged-template clash file, one
+    PHP blanking test that segfaults the older parser)
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Thu Sep 24 09:43:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.67:

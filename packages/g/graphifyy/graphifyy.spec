@@ -20,7 +20,7 @@
 # (successor of the python-graphifyy multibuild package).
 %define pythons %{primary_python}
 Name:           graphifyy
-Version:        0.9.67
+Version:        0.9.91
 Release:        0
 Summary:        Code knowledge graph builder and query CLI for AI assistants
 License:        Apache-2.0 AND MIT
@@ -46,7 +46,7 @@ BuildRequires:  %{primary_python}-setuptools >= 77
 # HTTP MCP tests import starlette; extra floor is 1.3.1 (CVE-2026-48818 /
 # CVE-2026-54283)
 BuildRequires:  %{primary_python}-starlette >= 1.3.1
-BuildRequires:  %{primary_python}-tree-sitter >= 0.23
+BuildRequires:  %{primary_python}-tree-sitter >= 0.25
 BuildRequires:  %{primary_python}-tree-sitter-bash >= 0.23
 BuildRequires:  %{primary_python}-tree-sitter-c >= 0.23
 BuildRequires:  %{primary_python}-tree-sitter-c-sharp >= 0.23
@@ -111,7 +111,7 @@ Requires:       %{primary_python}-networkx >= 3.4
 Requires:       %{primary_python}-numpy >= 1.21
 Requires:       %{primary_python}-rapidfuzz >= 3.0
 Recommends:     %{primary_python}-robotframework >= 4.0
-Recommends:     %{primary_python}-tree-sitter >= 0.23
+Recommends:     %{primary_python}-tree-sitter >= 0.25
 Recommends:     %{primary_python}-tree-sitter-bash >= 0.23
 Recommends:     %{primary_python}-tree-sitter-c >= 0.23
 Recommends:     %{primary_python}-tree-sitter-c-sharp >= 0.23
@@ -227,10 +227,16 @@ python%{python_version} -m compileall -q -f -o 0 -o 1 --invalidation-mode unchec
 # concurrently (max_concurrency=4), so the observed order is racy
 # test_built_wheel_ships_the_full_skill_payload runs python -m build;
 # OBS python3.14 has a conflicting build package without __main__
+# test_ext_tagged_id_clash.py pins JS tagged-template const extraction
+# from tree-sitter-javascript 0.25 (upstream lockfile); Factory ships
+# 0.23.1, so the sibling-extension nodes never materialize
+# test_strings_and_comments_are_never_blanked segfaults the native
+# parser with Factory's php grammar 0.23.9 + runtime 0.26 (upstream
+# lockfile: php 0.24.1 + runtime 0.25.2)
 # PYTEST_ADDOPTS --basetemp avoids pytest-of-abuild: two query CLI
 # tests assert "build" not in the output, which matches the OBS user
 export PYTEST_ADDOPTS="--basetemp=%{_tmppath}/gfytmp"
-%pytest --ignore tests/test_skillgen.py --ignore tests/test_hooks.py --ignore tests/test_terraform.py --ignore tests/test_terraform_modules.py --ignore tests/test_security.py --ignore tests/test_home_sandbox.py --ignore tests/test_manifest_ingest.py --ignore tests/test_llm_backends.py --ignore tests/test_install_strings.py --ignore tests/test_detect.py --ignore tests/test_erlang_extractor.py --ignore tests/test_r_extractor.py --ignore tests/test_solidity_extractor.py --ignore tests/test_vbnet_extractor.py -k "not (anthropic or openai or gemini or bedrock or ollama or test_label_communities_batches_when_over_batch_size or test_built_wheel_ships_the_full_skill_payload)"
+%pytest --ignore tests/test_skillgen.py --ignore tests/test_hooks.py --ignore tests/test_terraform.py --ignore tests/test_terraform_modules.py --ignore tests/test_security.py --ignore tests/test_home_sandbox.py --ignore tests/test_manifest_ingest.py --ignore tests/test_llm_backends.py --ignore tests/test_install_strings.py --ignore tests/test_detect.py --ignore tests/test_erlang_extractor.py --ignore tests/test_r_extractor.py --ignore tests/test_solidity_extractor.py --ignore tests/test_vbnet_extractor.py --ignore tests/test_ext_tagged_id_clash.py -k "not (anthropic or openai or gemini or bedrock or ollama or test_label_communities_batches_when_over_batch_size or test_built_wheel_ships_the_full_skill_payload or test_strings_and_comments_are_never_blanked)"
 
 %files
 %doc README.md
