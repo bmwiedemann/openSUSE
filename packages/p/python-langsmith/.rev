@@ -507,4 +507,12 @@ consumer passes the removed arguments.
     <comment>Forward python-langsmith update to Factory.</comment>
     <requestid>1385057</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>05651cbf3c8790cc9297301f61017e63</srcmd5>
+    <version>0.14.11</version>
+    <time>1792265226</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-langsmith to 0.14.11</comment>
+    <requestid>1385351</requestid>
+  </revision>
 </revisionlist>

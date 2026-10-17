@@ -17,7 +17,7 @@
 
 
 Name:           python-langsmith
-Version:        0.14.9
+Version:        0.14.11
 Release:        0
 Summary:        Client library for the LangSmith LLM tracing and evaluation platform
 License:        MIT
@@ -25,6 +25,7 @@ URL:            https://github.com/langchain-ai/langsmith-sdk
 Source:         https://files.pythonhosted.org/packages/source/l/langsmith/langsmith-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM langsmith-python314-iscoroutinefunction.patch mpluskal@suse.com -- use inspect.iscoroutinefunction(), the asyncio alias is deprecated in Python 3.14, gh#langchain-ai/langsmith-sdk#3347
 Patch0:         langsmith-python314-iscoroutinefunction.patch
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -38,7 +39,7 @@ Requires:       python-pydantic >= 2
 Requires:       python-requests >= 2.0.0
 Requires:       python-requests-toolbelt >= 1.0.0
 Requires:       python-sniffio >= 1.1
-Requires:       python-typing_extensions >= 4.0.0
+Requires:       python-typing_extensions >= 4.14
 Requires:       python-uuid-utils >= 0.12.0
 Requires:       python-websockets >= 15.0
 Requires:       python-xxhash >= 3.0.0
@@ -57,6 +58,7 @@ BuildRequires:  %{python_module multipart}
 # imports all five names in one try block, so without it every case raises
 # ImportError instead of testing the endpoint resolution.
 BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-http >= 1.30.0}
+BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module opentelemetry-sdk >= 1.30.0}
 BuildRequires:  %{python_module orjson >= 3.9.14}
 BuildRequires:  %{python_module packaging >= 23.2}
@@ -64,12 +66,13 @@ BuildRequires:  %{python_module pydantic >= 2}
 BuildRequires:  %{python_module pytest-asyncio}
 # socket_enabled fixture for tests/unit_tests/test_multipart_retry_matrix.py
 BuildRequires:  %{python_module pytest-socket}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.0.0}
 BuildRequires:  %{python_module requests-toolbelt >= 1.0.0}
 BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module sniffio >= 1.1}
-BuildRequires:  %{python_module typing_extensions >= 4.0.0}
+BuildRequires:  %{python_module typing_extensions >= 4.14}
 BuildRequires:  %{python_module uuid-utils >= 0.12.0}
 BuildRequires:  %{python_module websockets >= 15.0}
 BuildRequires:  %{python_module xxhash >= 3.0.0}
@@ -84,8 +87,6 @@ integration with the LangChain Python and LangChain JS open source libraries.
 
 %prep
 %autosetup -p1 -n langsmith-%{version}
-# Drop the doctest conftest that pulls in vcrpy and patches network libraries
-rm -f conftest.py
 
 %build
 %pyproject_wheel
@@ -104,6 +105,8 @@ export LANGSMITH_TRACING=false
 # optional providers (LLM wrappers, sandbox websockets client, CLI) or
 # langchain-core (which depends on langsmith -> build cycle);
 # test_hybrid_tracing.py carries an upstream module-level pytest.skip.
+# test_background_thread.py imports the git-only bench/ helper, which
+# upstream does not ship in the sdist.
 # Two upstream tests are deselected: test_admission_under_concurrency
 # over-specifies - it asserts the first replica always claims the next
 # frame, but a concurrent drain can reset between the two writes of one
@@ -113,7 +116,7 @@ export LANGSMITH_TRACING=false
 # test_langchain_tool_attributes_reach_otel_spans imports langchain_core
 # inside the test body with no importorskip; every other langchain_core test
 # lives in an --ignore'd file, so this is the one that needs deselecting.
-%pytest tests/unit_tests -p no:langsmith_plugin --ignore tests/unit_tests/wrappers --ignore tests/unit_tests/sandbox --ignore tests/unit_tests/cli --ignore tests/unit_tests/evaluation --ignore tests/unit_tests/test_async_client.py --ignore tests/unit_tests/test_client.py --ignore tests/unit_tests/test_run_helpers.py --ignore tests/unit_tests/test_hybrid_tracing.py -k 'not test_client_gc and not test_git_info and not test_as_runnable and not test_admission_under_concurrency and not test_extract_string_nodes_scales_linearly and not test_langchain_tool_attributes_reach_otel_spans'
+%pytest tests/unit_tests -p no:langsmith_plugin --ignore tests/unit_tests/wrappers --ignore tests/unit_tests/sandbox --ignore tests/unit_tests/cli --ignore tests/unit_tests/evaluation --ignore tests/unit_tests/test_async_client.py --ignore tests/unit_tests/test_client.py --ignore tests/unit_tests/test_run_helpers.py --ignore tests/unit_tests/test_hybrid_tracing.py --ignore tests/unit_tests/test_background_thread.py -k 'not test_client_gc and not test_git_info and not test_as_runnable and not test_admission_under_concurrency and not test_extract_string_nodes_scales_linearly and not test_langchain_tool_attributes_reach_otel_spans'
 
 %files %{python_files}
 %doc README.md

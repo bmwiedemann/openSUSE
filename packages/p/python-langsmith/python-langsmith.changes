@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:11:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.11:
+  * No user-visible changes; 0.14.10 and 0.14.11 are
+    release-tooling chores only
+  * Rebase langsmith-python314-iscoroutinefunction.patch onto
+    the new src/ layout
+  * Raise typing_extensions floor to >= 4.14 per upstream
+
+-------------------------------------------------------------------
 Thu Oct 15 16:30:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.9:

@@ -12,8 +12,8 @@ inspect.iscoroutinefunction() unwraps functools.partial the same way, so
 this is a drop-in replacement on every Python this package supports
 (>= 3.10).
 
---- langsmith-0.10.15.orig/langsmith/_internal/_beta_decorator.py
-+++ langsmith-0.10.15/langsmith/_internal/_beta_decorator.py
+--- langsmith-0.14.11.orig/src/langsmith/_internal/_beta_decorator.py
++++ langsmith-0.14.11/src/langsmith/_internal/_beta_decorator.py
 @@ -1,7 +1,7 @@
 -import asyncio
  import contextlib
