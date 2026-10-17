@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:21:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.55.0:
+  * AIgateway declarative provider, and live OpenAI model metadata
+    for reasoning with a preference for the Responses API
+  * W3C trace context propagates from ACP prompts to MCP tool calls,
+    and the provider x-request-id is surfaced on responses and errors
+  * auto-compaction is capped at 225k tokens by default, and vision
+    support declared on custom provider models is honored
+  * malformed GOOSE_MODE is rejected across ACP providers, Bedrock no
+    longer retries non-context ValidationExceptions, and OpenRouter no
+    longer sets the transforms field unconditionally
+  * long-context price tiers apply to cost estimates, pending tools
+    finish before max turns are enforced, and unknown Anthropic
+    request_params are forwarded to the wire
+  * subagents are bound by their parent's hooks, mode and approvals,
+    Stop ends the run promptly, and the legacy agent loop with the
+    background subagents and orchestrator is removed
+- Refresh the vendored dependencies (1305 crates vendored, 489
+  third-party crates in the linked set); re-derive the License tag
+  from the new graph, unchanged at 12 SPDX identifiers
+- Bump the bundled(aws-lc) Provides to 5.11.0 with the new vendoring;
+  libzstd, oniguruma and sqlite3 keep their versions
+
+-------------------------------------------------------------------
 Fri Oct  9 08:06:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.54.0:

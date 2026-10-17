@@ -18,7 +18,7 @@
 
 %global goose_features aws-providers,otel,rustls-tls,system-keyring,disable-update
 Name:           goose
-Version:        1.54.0
+Version:        1.55.0
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
 # Legal-Review-Notice: goose itself is Apache-2.0, but the shipped binary
@@ -26,7 +26,7 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # whole linked set. Derived on this vendoring with
 # "cargo tree --offline -p goose-cli -e normal --no-default-features
 #  --features %%{goose_features}" over the vendored tree
-# (1306 crates vendored, 490 third-party crates in the linked graph plus the
+# (1305 crates vendored, 489 third-party crates in the linked graph plus the
 # nine goose workspace crates -- the code-mode and
 # local-inference branches, and with them v8/candle/llama-cpp, are not built,
 # and neither is the cuda branch, so the cudaforge git dependency is unused),
@@ -97,7 +97,7 @@ BuildRequires:  pkgconfig(dbus-1) >= 1.6
 # pkg-config behind a feature/env switch neither sqlx nor bat sets; aws-lc-sys
 # (pulled in by rustls) has no system-library mode at all. Declare them so the
 # bundled CVE surface is visible to the distribution.
-Provides:       bundled(aws-lc) = 5.7.0
+Provides:       bundled(aws-lc) = 5.11.0
 Provides:       bundled(libzstd) = 1.5.7
 Provides:       bundled(oniguruma) = 6.9.10
 Provides:       bundled(sqlite3) = 3.51.3

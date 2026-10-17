@@ -213,4 +213,12 @@ all changelog gates clean.
     <comment>Update goose to 1.54.0: mode prompt on first configure, HTML session export, Copilot/thinking/cache fixes; nostr feature removed upstream (spec follows), licences re-derived (CC0-1.0 out).</comment>
     <requestid>1383698</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bb7e6e3926e417431aa27ad7456799a5</srcmd5>
+    <version>1.55.0</version>
+    <time>1792265229</time>
+    <user>dimstar_suse</user>
+    <comment>Update goose to 1.55.0</comment>
+    <requestid>1385356</requestid>
+  </revision>
 </revisionlist>
