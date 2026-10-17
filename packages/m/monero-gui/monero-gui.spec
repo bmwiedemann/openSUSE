@@ -17,7 +17,7 @@
 
 
 Name:           monero-gui
-Version:        0.18.5.3
+Version:        0.18.5.4
 Release:        0
 Summary:        The official GUI app for the Monero cryptocurrency
 License:        BSD-3-Clause
@@ -36,7 +36,6 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_thread-devel
-BuildRequires:  libgcrypt-devel
 # provides the Qt5LinguistTools cmake module / lrelease, needed to
 # compile the .ts translations
 BuildRequires:  libqt5-linguist-devel
@@ -53,6 +52,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(hidapi-libusb)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(libunbound)
 BuildRequires:  pkgconfig(libunwind)

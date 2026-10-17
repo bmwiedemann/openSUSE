@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:05:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.5.4:
+  * Fix reopening testnet and stagenet wallets (#4737)
+- Spec cleanup: convert libgcrypt-devel to pkgconfig(libgcrypt)
+
+-------------------------------------------------------------------
 Wed Oct  7 07:30:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.18.5.3:
