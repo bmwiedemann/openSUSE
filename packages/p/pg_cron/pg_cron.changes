@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  8 15:37:56 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.6.8
+  https://github.com/citusdata/pg_cron/releases/tag/v1.6.8
+- revert previous llvm/clang fix as it is now properly fixed in
+  postgresqlXY
+
+-------------------------------------------------------------------
+Wed Aug 19 09:55:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire llvm and clang to enable llvm/jit bitcode
+  generation. LLVM packaging no longer handles /usr/bin/llvm by
+  update-alternatives, and pgxs.mk strictly checks for
+  /usr/bin/clang and /usr/bin/llvm-lto.
+
+-------------------------------------------------------------------
 Wed May  6 09:28:14 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Disable pg13
