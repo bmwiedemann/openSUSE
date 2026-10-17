@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 16 12:51:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.12.4 (no upstream release notes published
+  for 1.12.4; changes mined from the v1.12.2...v1.12.4 range):
+  * 1.12.3: fix a potential overflow in the HTTP chunk-size
+    parser that let a malicious server crash a client
+    (gh#nanomsg/nng#2284).
+  * 1.12.3: refuse unreasonable allocation sizes instead of
+    attempting them.
+  * 1.12.3: harden WebSocket against sender-driven
+    allocations: cap allocations and frame counts to avoid
+    quadratic compute growth from many small or empty frames.
+  * 1.12.4: reject unsafe HTTP request targets.
+  * 1.12.4: validate directory handler paths, further
+    hardening the directory serving fixed in 1.12.2.
+  * No CVE has been assigned to any of these fixes, and no
+    open VUL bug exists for nng. The ABI soversion is
+    unchanged at 1.
+
+-------------------------------------------------------------------
 Mon Aug 31 09:06:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.12.2
