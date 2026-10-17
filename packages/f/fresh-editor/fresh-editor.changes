@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 16 17:00:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version v0.5.3:
+  * Find Next selects and highlights the whole match
+  * Theme colors take text attributes, and colors a theme omits are
+    derived from its own
+  * Settings UI fully translated, schema labels included
+  * Import Claude and Codex sessions running outside the editor
+    into the dock; move workspaces or sessions into folders
+  * File Explorer: drag and drop to move, rename by path, refresh,
+    and a confirmation before a move
+  * Kotlin defaults to JetBrains' kotlin-lsp (set
+    lsp.kotlin.command to keep kotlin-language-server)
+  * AutoOpenDock gains auto/always/never and survives restarts;
+    console and multi-terminal sessions start faster, size
+    correctly and get the GPM mouse working again
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Correct the License tag: upstream is GPL-3.0-or-later, MPL-2.0
+  comes from the vendored option-ext linked into fresh
+- cargo_vendor: vendor the lockfile instead of updating it, since
+  crates.io yanked every zip 2.x that upstream still requires
+
+-------------------------------------------------------------------
 Wed Sep 30 13:57:22 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version v0.5.2:
