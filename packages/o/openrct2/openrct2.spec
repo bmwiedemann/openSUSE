@@ -24,12 +24,12 @@
 %define lib_suffix 64
 %endif
 
-%define title_version 0.4.26
+%define title_version 0.5.6
 %define title_version_url %{title_version}
-%define objects_version 1.7.11
+%define objects_version 1.8.0
 %define openmusic_version 1.6.1
 %define opensound_version 1.0.6
-%define openrct2_version 0.5.5
+%define openrct2_version 0.5.6
 
 Name:           openrct2
 Version:        %{openrct2_version}
