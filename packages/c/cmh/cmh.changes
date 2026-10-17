@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 17 08:59:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix description of libcmh0 subpackage
+
+-------------------------------------------------------------------
+Fri Oct 16 14:14:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.2
+  * Adapted to PARI memory requirements
+- Drop 0001-Resolve-a-testsuite-failure.patch (merged)
+
+-------------------------------------------------------------------
 Mon Oct  5 23:24:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Resolve-a-testsuite-failure.patch

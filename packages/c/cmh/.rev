@@ -40,4 +40,12 @@
     <comment>- Add 0001-Resolve-a-testsuite-failure.patch</comment>
     <requestid>1382632</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>43eaee78c9ac4b9c6cd080bfc4e00363</srcmd5>
+    <version>1.1.2</version>
+    <time>1792265066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.2</comment>
+    <requestid>1385382</requestid>
+  </revision>
 </revisionlist>

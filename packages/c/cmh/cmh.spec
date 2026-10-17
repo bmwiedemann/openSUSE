@@ -18,7 +18,7 @@
 
 Name:           cmh
 %define lname   libcmh0
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Igusa (genus 2) class polynomial computation
 License:        GPL-3.0-or-later
@@ -27,7 +27,6 @@ URL:            http://www.multiprecision.org/cmh/
 Source:         http://www.multiprecision.org/downloads/%name-%version.tar.gz
 #Source2:        http://www.multiprecision.org/downloads/name-version.tar.gz.asc http 500
 Source3:        %name.keyring
-Patch1:         0001-Resolve-a-testsuite-failure.patch
 BuildRequires:  automake
 BuildRequires:  fplll-devel >= 4
 BuildRequires:  gcc-c++
@@ -58,7 +57,6 @@ which parameterise the CM points in the moduli space of 2-dimensional
 abelian varieties, i.e. Jacobians of hyperelliptic curves.
 
 It includes libraries that can be called from within a C program.
-This subpackage provides the development headers for CM.
 
 %package devel
 Summary:        Development files for the cmh library
