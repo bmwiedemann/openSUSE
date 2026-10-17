@@ -591,4 +591,12 @@
     openssl-CVE-2026-63075.patch openssl-CVE-2026-63076.patch (forwarded request 1373818 from lmulling)</comment>
     <requestid>1373819</requestid>
   </revision>
+  <revision rev="54" vrev="9">
+    <srcmd5>bfd3c98b44646c524f23d8890788458f</srcmd5>
+    <version>3.5.3</version>
+    <time>1792265028</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385176</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 15 17:06:42 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Build with enable-sslkeylog to support the SSLKEYLOGFILE
+  environment variable usage. (jsc#PED-17079)
+
+-------------------------------------------------------------------
 Mon Aug 24 10:15:53 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix:

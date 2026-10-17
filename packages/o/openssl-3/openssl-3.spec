@@ -338,6 +338,7 @@ export MACHINE=armv6l
     enable-fips \
     enable-fips-jitter \
     enable-jitter \
+    enable-sslkeylog \
     enable-ktls \
     enable-pie \
     enable-rfc3779 \
