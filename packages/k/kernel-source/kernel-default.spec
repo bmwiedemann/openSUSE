@@ -18,8 +18,8 @@
 
 
 %define srcversion 7.2
-%define patchversion 7.2.10
-%define git_commit 2583b2f54a6364a9b367399d90786d25fbe26f04
+%define patchversion 7.2.11
+%define git_commit 308af374c94a857bda9256ffe85bcdb72b1f7780
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-default
-Version:        7.2.10
+Version:        7.2.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g2583b2f
+Release:        <RELEASE>.g308af37
 %else
 Release:        0
 %endif
