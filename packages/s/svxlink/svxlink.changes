@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 16 12:50:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 26.05.2: security bugfix release with no
+  assigned CVE IDs (GHSA-m4q5-8r78-5gqg, GHSA-2m63-p9h9-p5rf,
+  GHSA-6w9x-486p-ggrj)
+  * SvxLink server 1.10.2: harden ModuleMetarInfo against
+    malformed METAR crashes and a cloud-token hang, fix
+    Reflector broadcast iterator invalidation
+  * EchoLib 1.3.8 (ModuleEchoLink 1.6.3): bound-check NDATA
+    packets, sanitize SDES callsigns against TCL injection,
+    fix proxy buffering and APRS UDP overflows
+
+-------------------------------------------------------------------
 Tue Aug  4 15:01:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 26.05.1 (from 19.09.2), with the component

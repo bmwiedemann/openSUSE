@@ -18,16 +18,16 @@
 
 %define QTEL			1.3.0
 # Version for the EchoLib library
-%define ECHOLIB			1.3.7
+%define ECHOLIB			1.3.8
 # Version for the Async library
 %define LIBASYNC		1.9.1
 # SvxLink versions
-%define SVXLINK			1.10.1
+%define SVXLINK			1.10.2
 %define REMOTERX		1.6.1
 # Sounds version
 %define SOUNDS			25.05
 Name:           svxlink
-Version:        26.05.1
+Version:        26.05.2
 Release:        0
 Summary:        Multi purpose voice services system for ham radio
 License:        GPL-2.0-only

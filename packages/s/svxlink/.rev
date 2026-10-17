@@ -80,4 +80,12 @@ Built and verified on aarch64: 13 RPMs, rpmlint 0 errors / 4 warnings / 0
 badness, source_validator now clean.</comment>
     <requestid>1370181</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3bb0348162e8183dd8d83bfdf7b6eb5d</srcmd5>
+    <version>unknown</version>
+    <time>1792265095</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385259</requestid>
+  </revision>
 </revisionlist>
