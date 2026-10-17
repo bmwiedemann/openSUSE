@@ -1,7 +1,7 @@
 #
 # spec file for package vpcs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vpcs
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        Virtual PC Simulator
 License:        BSD-2-Clause
@@ -44,17 +44,16 @@ the packets via udp. In the ether mode, via /dev/tap, not support on the Windows
 %build
 cd src
 rm getopt.*
-export CFLAGS="%{optflags} -D_GNU_SOURCE -fno-strict-aliasing -fcommon"
-%make_build -f Makefile.linux CPUTYPE=%_target_cpu
+export CFLAGS="%{optflags}"
+%make_build -f Makefile.linux CPUTYPE=%{_target_cpu}
 
 %install
-install -D -m0755 src/vpcs %{buildroot}%{_bindir}/vpcs
-install -D -m0644 man/vpcs.1 %{buildroot}%{_mandir}/man1/vpcs.1
+%make_install BINDIR=%{_bindir} MANDIR=%{_mandir}
 
 %files
 %license COPYING
 %doc readme.txt
 %{_bindir}/vpcs
-%{_mandir}/man1/vpcs.1%{ext_man}
+%{_mandir}/man1/vpcs.1%{?ext_man}
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 12 14:43:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.5
+  * Fixed the DNS parser to accept responses from non-recursive
+    servers.
+  * Tap mode: add -n flag, activate interface on open, fix
+    build/install.
+  * Fix crash when sending or receiving fragmented packets.
+  * Enable custom CFLAGS and LDFLAGS in Makefile.linux.
+  * Install man page.
+
+-------------------------------------------------------------------
 Thu Aug  6 12:15:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.4
