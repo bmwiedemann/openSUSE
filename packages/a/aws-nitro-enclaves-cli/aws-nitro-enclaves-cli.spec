@@ -20,7 +20,7 @@
 %define ne_rundir %_rundir/nitro_enclaves
 
 Name:           aws-nitro-enclaves-cli
-Version:        1.5.0~git0.2950b36
+Version:        1.5.2~git0.1c496ed
 Release:        0
 Summary:        Tools for managing enclaves
 License:        Apache-2.0
