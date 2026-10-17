@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:12:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.20.1:
+  * Add Beam model from Reflection AI, a token-efficient
+    frontier-scale model for coding and agentic use cases
+  * Fix HunYuan-VL image assignment during batched generation
+  * Fix DeepGEMM Mega MoE under expert parallelism
+  * Fix from_pretrained with distributed checkpointing on
+    torch 2.7 by requiring torch>=2.8 for it, and make
+    DtensorShardOperation work on torch 2.6 and 2.7
+  * Fix small bug in auto mappings
+  * No dependency changes: upstream floors and caps are
+    identical to 5.20.0
+
+-------------------------------------------------------------------
 Fri Oct 16 06:06:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.20.0:

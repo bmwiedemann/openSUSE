@@ -146,4 +146,12 @@ also lifts the 2.0 ceiling that left 5.17.0 unimportable.</comment>
     <comment>Update python-transformers to 5.20.0 (version and tarball only, no new dependencies).</comment>
     <requestid>1385128</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>07570555d64e5debf85ffa3dd2e5802e</srcmd5>
+    <version>5.20.1</version>
+    <time>1792265223</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-transformers to 5.20.1 with Beam model support</comment>
+    <requestid>1385345</requestid>
+  </revision>
 </revisionlist>
