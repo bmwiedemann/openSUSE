@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:26:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.64.0:
+  * A2A server: implement V1 to V2 settings migration
+  * ACP: bridge PromptResponse usage and emit usage_update
+    notifications; resolve sessions by exact id with listener
+    cleanup on failure
+  * CLI: propagate resolved folder trust state in headless mode
+  * CLI: persist state atomically and recover from backup on
+    corruption; ensure Ctrl+C abort reaches handlers during
+    active operations
+  * CLI: resolve @file:line references; fix CPU hang and quote
+    swallowing on @ in code; preserve scroll position and
+    confirm selection lists with Enter/Space reliably
+  * Core: serialize file tool operations with atomic writes;
+    append-only delta patching and bounded history windowing
+    in ChatRecordingService
+  * UI: forward IME cursor position on Windows ConPTY; retry
+    directory removal on Windows locking errors
+
+-------------------------------------------------------------------
 Thu Oct  8 12:13:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.63.0:
