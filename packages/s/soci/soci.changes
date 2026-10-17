@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:31:00 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 4.1.4:
+  * SONAME change 4.0 -> 4 (upstream now versions shared
+    libraries by major only); shlib packages renamed from
+    *4_0 to *4
+  * Incompatible source-level changes since 4.0: C++14 compiler
+    now required; soci::use() no longer accepts temporaries
+  * Integer type support revamped: new db_xxx constants replace
+    the dt_xxx enum; safer rowset handling
+  * Backend error reporting with error categories; consistent
+    BLOB support across backends
+  * SQLite3 sources now bundled and always available, with a new
+    "nocreate" option; PostgreSQL network address types and
+    "tracefile" parameter; ODBC wide string support
+  * Many crash, connection handling and build fixes, including
+    glibc where SIGSTKSZ is not constant
+  * Fixes the 4.1.3 PostgreSQL integer parsing regression and
+    restores rowset_iterator postfix increment
+- Drop fix-build-when-SIGSTKSZ-is-no-longer-a-constant.patch:
+  fixed upstream
+- Port spec to the modernized CMake build: SOCI_* backend and
+  SOCI_TESTS options replace WITH_* and SOCI_TEST; build against
+  system fmt and SQLite3 (bundled copies disabled); cmake config
+  moved to cmake/soci-4.1.4; drop obsolete SOCI_CXX11,
+  SOCI_STATIC and the -Werror sed
+- Spec cleanup: drop Group tags
+
+-------------------------------------------------------------------
 Mon Feb 26 13:39:34 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
