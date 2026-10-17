@@ -18,17 +18,17 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.40.0
+%define lversion 7.42.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.40.0
+%define lversion_pp 7.42.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 %bcond_without rtaudio
 Name:           %{libname}
-Version:        7.40.0
+Version:        7.42.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
@@ -64,6 +64,7 @@ BuildRequires:  pkgconfig(libavformat) >= 58
 BuildRequires:  pkgconfig(libavutil) >= 56
 BuildRequires:  pkgconfig(libebur128)
 BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(libplacebo) >= 5.229
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libswresample) >= 3
 BuildRequires:  pkgconfig(libswscale) >= 5

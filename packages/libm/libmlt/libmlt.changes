@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:07:47 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 7.42.0:
+  * Framework: list-based image-conversion callback dispatch
+    (convert_image is now read-only); fx_cut applies filters
+    below it; default audio sample format changed to float32;
+    per-track audio-level metadata propagation
+  * New placebo GPU module using libplacebo (scaling, debanding,
+    dithering, tonemapping, mpv-style shaders)
+  * FFmpeg 9 support; fixed 10-bit hevc_vaapi encoding; decklink
+    pause/seek deadlock fix; movit rgba64 input support
+  * Mix transition ducking; new dynamictext/frame keywords;
+    avformat finish logging; rnnoise at any sample rate
+  * Fix file-name buffer overflows in gpsgraphic and gpstext,
+    a double-free in the xml producer and an sdl2_audio hang
+  * melt prints progress and exits non-zero when interrupted
+
+-------------------------------------------------------------------
 Sat Aug  1 07:56:51 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 7.40.0
