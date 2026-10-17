@@ -17,7 +17,7 @@
 
 
 Name:           golangci-lint
-Version:        2.14.0
+Version:        2.15.0
 Release:        0
 Summary:        A fast Go linters runner
 License:        GPL-3.0-only
@@ -35,7 +35,7 @@ dozens of linters included.
 %autosetup -a 1
 
 %build
-%ifnarch ppc64
+%ifnarch ppc64le
 export GOFLAGS="-buildmode=pie -trimpath"
 %endif
 export BUILDDATE=$(date -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%Y-%m-%d)
