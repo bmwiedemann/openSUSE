@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20261015" schemaversion="4.1">
+<image name="OBS__MicroOS___20261016" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20261015</productvar>
+      <productvar name="VERSION">20261016</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20261015,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20261016,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20261015/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20261016/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -443,6 +443,7 @@
       <repopackage name="krb5"/>
       <repopackage name="kscreen6"/>
       <repopackage name="kscreenlocker6"/>
+      <repopackage name="kscreenlocker6-imports"/>
       <repopackage name="kservice"/>
       <repopackage name="ksshaskpass6"/>
       <repopackage name="ksysguardsystemstats6-data"/>
@@ -598,6 +599,7 @@
       <repopackage name="libcupsfilters2"/>
       <repopackage name="libcupsimage2"/>
       <repopackage name="libcurl4"/>
+      <repopackage name="libcxx-rust-cssparser1"/>
       <repopackage name="libdaemon0"/>
       <repopackage name="libdatrie1"/>
       <repopackage name="libdav1d7"/>
@@ -884,6 +886,7 @@
       <repopackage name="libKPim6GAPIDrive6"/>
       <repopackage name="libKPipeWire6"/>
       <repopackage name="libKPipeWireDmaBuf6"/>
+      <repopackage name="libKPipeWireMonitor6"/>
       <repopackage name="libKPipeWireRecord6"/>
       <repopackage name="libkpmcore13"/>
       <repopackage name="libKQuickImageEditor1"/>
@@ -973,7 +976,6 @@
       <repopackage name="libopenconnect5"/>
       <repopackage name="libopencore-amrnb0"/>
       <repopackage name="libopencore-amrwb0"/>
-      <repopackage name="libopencv413"/>
       <repopackage name="libOpenEXR-3_4-33"/>
       <repopackage name="libOpenEXRCore-3_4-33"/>
       <repopackage name="libopenh264-8"/>
@@ -1009,7 +1011,7 @@
       <repopackage name="libPlasma5Support6"/>
       <repopackage name="libplasma6-components"/>
       <repopackage name="libplasma6-desktoptheme"/>
-      <repopackage name="libPlasma7"/>
+      <repopackage name="libPlasma8"/>
       <repopackage name="libPlasmaActivities7"/>
       <repopackage name="libPlasmaActivitiesStats1"/>
       <repopackage name="libplist-2_0-4"/>
@@ -1213,7 +1215,6 @@
       <repopackage name="libtag2"/>
       <repopackage name="libtalloc2"/>
       <repopackage name="libtasn1-6"/>
-      <repopackage name="libtbb12"/>
       <repopackage name="libtdb1"/>
       <repopackage name="libtesseract5"/>
       <repopackage name="libtevent0"/>
@@ -1296,7 +1297,6 @@
       <repopackage name="libxcb-composite0"/>
       <repopackage name="libxcb-cursor0"/>
       <repopackage name="libxcb-damage0"/>
-      <repopackage name="libxcb-dpms0"/>
       <repopackage name="libxcb-dri3-0"/>
       <repopackage name="libxcb-glx0"/>
       <repopackage name="libxcb-icccm4"/>
@@ -1304,7 +1304,6 @@
       <repopackage name="libxcb-keysyms1"/>
       <repopackage name="libxcb-present0"/>
       <repopackage name="libxcb-randr0"/>
-      <repopackage name="libxcb-record0"/>
       <repopackage name="libxcb-render-util0"/>
       <repopackage name="libxcb-render0"/>
       <repopackage name="libxcb-res0"/>
@@ -1741,6 +1740,7 @@
       <repopackage name="udev"/>
       <repopackage name="udev-configure-printer"/>
       <repopackage name="udisks2"/>
+      <repopackage name="union6"/>
       <repopackage name="unzip"/>
       <repopackage name="update-alternatives"/>
       <repopackage name="update-bootloader"/>

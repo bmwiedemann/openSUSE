@@ -1089,6 +1089,7 @@
     <package name="kscreen6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kscreen6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kscreenlocker6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kscreenlocker6-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kscreenlocker6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kservice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kservice-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1394,6 +1395,7 @@
     <package name="libKPipeWire6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPipeWire6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPipeWireDmaBuf6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPipeWireMonitor6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPipeWireRecord6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKQuickImageEditor1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKSaneCore6-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1418,7 +1420,7 @@
     <package name="libPlasma5Support6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma5Support6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libPlasma7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libPlasma8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasmaActivities7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasmaActivitiesStats1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQCoro6Core0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1817,6 +1819,7 @@
     <package name="libcupsfilters2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcupsimage2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcurl4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libcxx-rust-cssparser1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdaemon0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdatrie1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdav1d7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2418,7 +2421,6 @@
     <package name="libopenconnect5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopencore-amrnb0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopencore-amrwb0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libopencv413" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libopenh264-8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopeniscsiusr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libopenjp2-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2637,7 +2639,7 @@
     <package name="libsigc-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsigc-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsignon-qt6-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libsimdutf36" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libsimdutf37" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libslang2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libslirp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libslp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2717,7 +2719,6 @@
     <package name="libtalloc2-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libtasn1-6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libtasn1-6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libtbb12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libtdb1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtdb1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libtesseract5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2872,7 +2873,6 @@
     <package name="libxcb-composite0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxcb-cursor0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxcb-damage0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libxcb-dpms0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxcb-dri2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libxcb-dri3-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libxcb-glx0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4114,6 +4114,7 @@
     <package name="unar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="unbound" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="unbound-anchor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="union6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="unison" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="unrar_wrapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="unzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

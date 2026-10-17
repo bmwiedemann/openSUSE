@@ -10977,9 +10977,6 @@ unsorted:
   - kwidgetsaddons-devel 
   - kwikdisk 
   - kwin6-devel 
-  - kwin6-x11 
-  - kwin6-x11-devel 
-  - kwin6-x11-lang 
   - kwindowsystem-devel 
   - kwrite 
   - kxml 
@@ -13068,7 +13065,6 @@ unsorted:
   - libcxx-gtk-utils-3-devel 
   - libcxx-gtk-utils-4-2_2-0 
   - libcxx-gtk-utils-4-devel 
-  - libcxx-rust-cssparser1 
   - libcxxtools-bin10 
   - libcxxtools-http10 
   - libcxxtools-json10 
@@ -14619,7 +14615,6 @@ unsorted:
   - libksysguard6-devel 
   - libktoblzcheck1 
   - libktorrent-devel 
-  - libkwin-x11-6 
   - libkyotocabinet-devel 
   - liblagraph1 
   - liblagraphx1 
@@ -15414,6 +15409,7 @@ unsorted:
   - libopencsd1 
   - libopencsd_c_api1 
   - libopencsg1 
+  - libopencv413 
   - libopencv_aruco413 
   - libopencv_face413 
   - libopencv_gapi413 
@@ -16862,6 +16858,7 @@ unsorted:
   - libtasn1-tools 
   - libtatsu-devel 
   - libtatsu0 
+  - libtbb12 
   - libtbbbind_2_5-3 
   - libtbbmalloc2 
   - libtcmalloc4 
@@ -17525,6 +17522,7 @@ unsorted:
   - libxcb-devel 
   - libxcb-devel-32bit 
   - libxcb-devel-doc 
+  - libxcb-dpms0 
   - libxcb-dpms0-32bit 
   - libxcb-dri2-0-32bit 
   - libxcb-dri3-0-32bit 
@@ -23513,7 +23511,6 @@ unsorted:
   - plasma6-nm-strongswan 
   - plasma6-sdk 
   - plasma6-sdk-lang 
-  - plasma6-session-x11 
   - plasma6-vault 
   - plasma6-vault-backend-cryfs 
   - plasma6-vault-backend-encfs 
@@ -45728,6 +45725,8 @@ unsorted:
   - timeshift 
   - timeshift-lang 
   - timewarrior 
+  - timezone-icu-bedata 
+  - timezone-icu-ledata 
   - timezonemap-devel 
   - timg 
   - timidity 
@@ -46722,7 +46721,6 @@ unsorted:
   - unified-runtime 
   - unified-runtime-devel 
   - unifraktur-fonts 
-  - union6 
   - union6-devel 
   - unionfs-fuse 
   - unique-factory-devel 

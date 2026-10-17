@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20261015" schemaversion="4.1">
+<image name="OBS__openSUSE___20261016" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20261015</productvar>
+      <productvar name="VERSION">20261016</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261015,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261016,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261015/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261016/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1091,6 +1091,7 @@
       <repopackage name="kscreen6"/>
       <repopackage name="kscreen6-lang"/>
       <repopackage name="kscreenlocker6"/>
+      <repopackage name="kscreenlocker6-imports"/>
       <repopackage name="kscreenlocker6-lang"/>
       <repopackage name="kservice"/>
       <repopackage name="kservice-lang"/>
@@ -1389,6 +1390,7 @@
       <repopackage name="libcupsfilters2"/>
       <repopackage name="libcupsimage2"/>
       <repopackage name="libcurl4"/>
+      <repopackage name="libcxx-rust-cssparser1"/>
       <repopackage name="libdaemon0"/>
       <repopackage name="libdatrie1"/>
       <repopackage name="libdav1d7"/>
@@ -2070,6 +2072,7 @@
       <repopackage name="libKPipeWire6"/>
       <repopackage name="libKPipeWire6-lang"/>
       <repopackage name="libKPipeWireDmaBuf6"/>
+      <repopackage name="libKPipeWireMonitor6"/>
       <repopackage name="libKPipeWireRecord6"/>
       <repopackage name="libKQuickImageEditor1"/>
       <repopackage name="libksane-icons"/>
@@ -2265,7 +2268,6 @@
       <repopackage name="libopenconnect5"/>
       <repopackage name="libopencore-amrnb0"/>
       <repopackage name="libopencore-amrwb0"/>
-      <repopackage name="libopencv413"/>
       <repopackage name="libOpenEXR-3_4-33"/>
       <repopackage name="libOpenEXR-3_4-33-x86-64-v3"/>
       <repopackage name="libOpenEXRCore-3_4-33"/>
@@ -2342,7 +2344,7 @@
       <repopackage name="libplasma6-components"/>
       <repopackage name="libplasma6-desktoptheme"/>
       <repopackage name="libPlasma6-lang"/>
-      <repopackage name="libPlasma7"/>
+      <repopackage name="libPlasma8"/>
       <repopackage name="libPlasmaActivities7"/>
       <repopackage name="libPlasmaActivitiesStats1"/>
       <repopackage name="libplist-2_0-4"/>
@@ -2603,7 +2605,7 @@
       <repopackage name="libsigc-2_0-0"/>
       <repopackage name="libsigc-3_0-0"/>
       <repopackage name="libsignon-qt6-1"/>
-      <repopackage name="libsimdutf36"/>
+      <repopackage name="libsimdutf37"/>
       <repopackage name="libslang2"/>
       <repopackage name="libslirp0"/>
       <repopackage name="libslp1"/>
@@ -2687,7 +2689,6 @@
       <repopackage name="libtalloc2-x86-64-v3"/>
       <repopackage name="libtasn1-6"/>
       <repopackage name="libtasn1-6-32bit"/>
-      <repopackage name="libtbb12"/>
       <repopackage name="libtdb1"/>
       <repopackage name="libtdb1-32bit"/>
       <repopackage name="libtesseract5"/>
@@ -2848,7 +2849,6 @@
       <repopackage name="libxcb-composite0"/>
       <repopackage name="libxcb-cursor0"/>
       <repopackage name="libxcb-damage0"/>
-      <repopackage name="libxcb-dpms0"/>
       <repopackage name="libxcb-dri2-0"/>
       <repopackage name="libxcb-dri3-0"/>
       <repopackage name="libxcb-glx0"/>
@@ -4161,6 +4161,7 @@
       <repopackage name="unar"/>
       <repopackage name="unbound"/>
       <repopackage name="unbound-anchor"/>
+      <repopackage name="union6"/>
       <repopackage name="unison"/>
       <repopackage name="unrar_wrapper"/>
       <repopackage name="unzip"/>
