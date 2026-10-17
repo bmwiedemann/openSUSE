@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 17 07:27:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.14.4:
+  * Dependency Changes
+    - github.com/siderolabs/pkgs v1.14.0-42-g5fa47d1 ->
+      v1.14.0-44-g2ec10eb
+
+-------------------------------------------------------------------
 Fri Oct 16 04:53:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.14.3:
