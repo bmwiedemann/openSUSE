@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Oct 10 13:24:08 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Update to 3.8.3
+  * Fix: auth: clear rights/user_groups before conditional set depending on group_type/auth_type
+    * credits to @d3do-23 reporting this as FO-RAD-2026-001 incl. suggestion for a fix
+  * Fix: [group] htgroup: fix not working htgroup_cache=True
+    * credits to @d3do-23 reporting this as FO-RAD-2026-002 incl. suggestion for a fix 
+
+-------------------------------------------------------------------
+Tue Oct  6 07:16:35 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Update to 3.8.2
+  * Add: read-only free/busy view via GET ?view=freebusy
+  * Add: sharing/token: plain GET and HEAD serve free/busy when Actions config view is freebusy
+  * Add: WebUI read-only free/busy calendar URL under each calendar
+  * Add: rights permission f to read free-busy time without event details
+  * Add: sharing/bday-conversion: X-RADICALE-NAME to generated bday items
+  * Improve: storage hook: avoid using preexc_fn, use process_group
+  * Performance: guard expensive logging with isEnabledFor (where missed)
+  * Performance: use lazy formatting for logger calls (where missed)
+  * Fix: free-busy REPORT returns one VFREEBUSY with FREEBUSY periods and no event details (RFC 4791)
+  * Fix: free-busy REPORT does not expand transparent recurrences
+  * Fix: sharing/bday-conversion: add proper RRULE and RECURRENCE-ID in case of "age" support is triggered
+  * Fix: sharing/bday-conversion: do not serve item.vcf in parallel of item.ics
+  * Fix: sharing/bday-conversion: adjust etag depending on template (item) or content (collection)
+  * Fix: sharing/propfind: remove unexpected additional shares listed in case of request on collection with HTTP_DEPTH=1
+  * Fix: sharing/propfind: suppress (resolved) shares having same URI as native ones
+  * Fix: sharing/mkcol+mkcalendar: detect conflict with existing resolved shares
+  * Fix: WebUI/sharing: display permissions and share-by-group
+  * Fix: delete/sharing: neither allow resolved share nor still mapped collections to be deleted
+  * Fix: sharing: resolved share resulting in same path as original requested will not have precedence
+
+-------------------------------------------------------------------
+Sun Oct  4 12:24:20 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Update to 3.8.1
+  * Add: tests: optional caldav-server-tester based CalDAV compatibility test suite (caldav_compat_tests)
+  * Add: support for /.mobileconfig for authenticated user
+  * Fix: sharing/bday-conversion: add missing support for comma separated text components in vcard field N (name)
+  * Fix: sharing: fix logic of permit/deny permissions for map (mM) and token (tT)
+  * Fix: WebUI sharing/propatch issue
+  * Fix: storage/sharing close unguarded os.scandir() iterators
+  * Improvement: rights/from_file: extend detection of conflicting/unsupported permissions on startup
+- Update to 3.8.0
+  * Feature: [sharing] add sharing-by-group/realm
+  * Feature: [group] with type "htgroup", "none", "from_auth" (NEW)
+  * In case [auth] type=ldap and LDAP groups should be continued to be used, extend config with [group] type=from_auth
+  * Fix: storage/multifilesystem: depth:1 PROPFIND no longer re-runs the filesystem collision check (path_to_filesystem) for every item in a collection; this made listing large collections O(n^2) on file systems not detected as collision-free
+  * Fix: pathutils: detect missing permission to create symbolic link on Microsoft Windows
+  * Fix: sharing-by-token: requests to dedicated items
+  * Improve: storage/multifilesystem: avoid redundant stat() calls per item in get/upload when use_mtime_and_size_for_item_cache is enabled
+  * Extension: [auth] type "pam": set groups of user to be used later
+  * Extension: [hook] add option for "smtp_password_file"
+  * Add: [group] group_collections_folder replacing hardcoded "GROUPS"
+  * Adjustment: reject usernames starting or ending with "@" or having more than one "@"
+  * Adjustment: reject usernames containing ":" or ","
+
+-------------------------------------------------------------------
 Sat Aug 22 08:58:49 UTC 2026 - Ákos Szőts <akos@szots.dev>
 
 - Warning: upcoming 3.8.0 will be enhanced with sharing-by-group/realm feature, internal technical limitations leads to required enhanced username syntax check, following (unusual) usernames will be no longer supported:
@@ -60,7 +118,7 @@ Thu Jun 11 10:01:07 UTC 2026 - Ákos Szőts <akos@szots.dev>
   * Fix: sharing: PROPFIND response related to C:supported-calendar-component-set
   * Fix: user/path validation related to 'unicode-letter'
   * Extension: expose RADICALE:version for authenticated users via PROPFIND
-  * Feature: conditional log of request/response header/content by new options *_on_notice_condition 
+  * Feature: conditional log of request/response header/content by new options *_on_notice_condition
 
 -------------------------------------------------------------------
 Sun May 10 15:43:09 UTC 2026 - Ákos Szőts <akos@szots.dev>
@@ -79,7 +137,7 @@ Sun May 10 15:43:09 UTC 2026 - Ákos Szőts <akos@szots.dev>
   * Extension: tox with new optional test cases to test with LinuxOS vfat, hfsplus, ntfs filesystems
   * Extension: sharing: add ICAL:calendar-order to property overlay whitelist
   * Extension: extend hook data with 'actor' to keep original 'user' before mapping a share
-  * Add: [server] new options validate_user_value/validate_path_value for ability to block unwanted values (autoenable "strict" on non-unicode filesystem) 
+  * Add: [server] new options validate_user_value/validate_path_value for ability to block unwanted values (autoenable "strict" on non-unicode filesystem)
 
 -------------------------------------------------------------------
 Sun Apr 12 06:33:27 UTC 2026 - Ákos Szőts <akos@szots.dev>

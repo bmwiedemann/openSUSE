@@ -28,7 +28,7 @@
 %define py_min_ver 3.9
 %define vo_min_ver 0.9.6
 Name:           Radicale
-Version:        3.7.8
+Version:        3.8.3
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
@@ -50,6 +50,9 @@ BuildRequires:  python3-ldap3
 BuildRequires:  python3-passlib
 BuildRequires:  python3-pika >= %{pk_min_ver}
 BuildRequires:  python3-pytest >= %{pt_min_ver}
+BuildRequires:  python3-pytest-cov
+BuildRequires:  python3-python-pam
+BuildRequires:  python3-requests
 BuildRequires:  python3-setuptools >= %{st_min_ver}
 BuildRequires:  python3-vobject >= %{vo_min_ver}
 BuildRequires:  python3-waitress
@@ -66,8 +69,14 @@ Recommends:     apache2-utils
 Recommends:     python3-argon2-cffi
 Recommends:     python3-bcrypt
 Recommends:     python3-ldap3
+Recommends:     python3-python-pam
 BuildArch:      noarch
 %sysusers_requires
+%if 0%{?suse_version} <= 1610
+# python3-python-pam <= 2.1.0: https://github.com/FirefighterBlu3/python-pam/issues/41
+BuildRequires:  python3-six
+Recommends:     python3-six
+%endif
 
 %description
 Radicale is a server for CalDAV (calendars, to-do lists) and CardDAV (contacts).
