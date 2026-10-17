@@ -23,4 +23,13 @@
     <comment>- Provide a module autoloading config fragment</comment>
     <requestid>1284815</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6c1631918e32d2a4c308d350ec68a0b8</srcmd5>
+    <version>0.90.9</version>
+    <time>1792265189</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to myguard-labs's fork/continuation of zstd-nginx-module [boo#1274862]
+- Update to release 0.90.9</comment>
+    <requestid>1385301</requestid>
+  </revision>
 </revisionlist>

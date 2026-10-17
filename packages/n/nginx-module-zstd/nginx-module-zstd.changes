@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct 16 10:34:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch to myguard-labs's fork/continuation of zstd-nginx-module
+  [boo#1274862]
+- Update to release 0.90.9
+  * New Directives & Features:
+  * zstd_long: Enable long-distance matching to achieve ~2:1
+    compression improvement on large repetitive bodies
+    (concatenated JSON, HTML boilerplate, logs) with configurable
+    memory ceiling via zstd_window_log.
+  * zstd_bypass: Per-request compression opt-out via nginx
+    predicates for BREACH mitigation (exclude endpoints mixing
+    secrets with user-controlled input; requires application-level
+    defenses).
+  * zstd_static startup warning: Warn operators at nginx startup if
+    zstd_static enabled without gzip_vary to prevent CDN cache
+    collision issues.
+  * Comprehensive debug logging: Added ngx_log_debug diagnostic
+    logging for all 8 header-filter rejection reasons, buffer
+    decisions, compression state, and emit decisions (zero cost in
+    release builds, visible with error_log debug).
+  * zstd_max_length on chunked: Extended zstd_max_length
+    enforcement to track running input total on chunked responses
+    (no Content-Length) to prevent DoS from unbounded upstreams.
+  * Fixes:
+  * Truncation/abort with proxy_buffering off (the “bug B” saga)
+  * Various fixes for overflows and crashes.
+
+-------------------------------------------------------------------
 Thu May 15 07:15:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Provide a module autoloading config fragment
