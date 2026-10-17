@@ -15,19 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-#!BcntSyncTag: ollama
 
-# We require too much memory atm.
-# these jobs work on all supported
 %ifarch x86_64
 %global jobs 3
 %else
 %global jobs 4
 %endif
 
-%global llama_cpp_version b10630
-%global mlx_version c793734eb715dbcfdb1ced58e348ec53c2d7ed85
-%global mlx_c_version fba4470b89073180056c9ea46c443051375f7399
+%global llama_cpp_version b11669
+%global mlx_version bebd6422f8db88d56e6220520a35bcd146f823f8
+%global mlx_c_version a341b4925024b88b2c593468f16e12f5e17315da
 
 %{bcond_with rocm}
 %{bcond_with cuda}
@@ -51,7 +48,9 @@ ExclusiveArch:  SKIP_IT
 
 %if "%{flavor}" == "rocm"
 %global preset_flavor rocm_v7_2_linux
-%if %{with rocm}
+%if 0%{?suse_version} >= 1699
+%{bcond_without rocm}
+# ROCm is only available for x86_64
 ExclusiveArch:  x86_64
 %else
 ExclusiveArch:  SKIP_IT
@@ -74,11 +73,11 @@ ExclusiveArch:  SKIP_IT
 %endif
 
 %define cuda_version_major 13
-%define cuda_version_minor 3
+%define cuda_version_minor 4
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.33.1
+Version:        0.40.5
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -104,7 +103,6 @@ Source11:       mlx-main.tar.xz
 #!CreateArchive
 Source12:       mlx-c-main.tar.xz
 
-Patch0:         fix-mlxrunner-tests.diff
 Patch1:         disable-llama.cpp-ui.patch
 BuildRequires:  ccache
 BuildRequires:  cmake >= 3.24
@@ -163,6 +161,8 @@ BuildRequires:  rocm-rpm-macros
 BuildRequires:  rocm-runtime-devel
 BuildRequires:  rocminfo
 %endif
+
+Requires(pre):  %fillup_prereq
 
 %systemd_ordering
 # 32bit seems not to be supported anymore while riscv isn't yet.
@@ -279,6 +279,7 @@ export OLLAMA_MLX_C_SOURCE=$PWD/git-modules/mlx-c
     -DOLLAMA_BUILD_PARALLEL=%jobs \
     -DFETCHCONTENT_SOURCE_DIR_LLAMA_CPP=$PWD/../git-modules/llama.cpp \
     -DOLLAMA_MLX_BACKENDS="" \
+    -DGGML_INTERNAL_SME=OFF \
 %if "%{?flavor}" == "cuda"
     -DCMAKE_CUDA_COMPILER=/usr/local/cuda-%{cuda_version_major}.%{cuda_version_minor}/bin/nvcc \
     -DOLLAMA_MLX_BACKENDS=cuda_v13 \
@@ -292,17 +293,6 @@ export OLLAMA_MLX_C_SOURCE=$PWD/git-modules/mlx-c
     -DARG_RUNNER_DIR=%preset_flavor \
 %endif
     %{nil}
-
-#
-# Main package
-#
-%if "%{?flavor}" == ""
-%cmake_build -j %jobs
-
-cd ..
-go build -ldflags="-X github.com/ollama/ollama/version.Version=%version" -trimpath -o %{name} .
-exit 0
-%endif
 
 #
 # Cuda Flavor
@@ -321,9 +311,21 @@ cmake --build build/llama-server-cuda_v13 -- -l %{jobs}
 exit 0
 %endif
 
+%if "%{?flavor}" == ""
+#
+# Main package
+#
+
+%cmake_build -j %jobs
+
+cd ..
+go build -ldflags="-X github.com/ollama/ollama/version.Version=%version" -trimpath -o %{name} .
+
+%else
 #
 # Flavor package (vulkan/rocm)
 #
+
 cd ..
 export OLLAMA_SKIP_CPU_GENERATE="1"
 cmake -S llama/server --preset %preset_flavor \
@@ -335,7 +337,7 @@ cmake -S llama/server --preset %preset_flavor \
 
 local_directory=build/llama-server-%preset_flavor
 cmake --build ${local_directory%_linux} -- -l %{jobs}
-
+%endif
 
 %install
 %if "%{?flavor}" == "test"
@@ -432,6 +434,7 @@ exit 0
 
 %post
 %service_add_post %{name}.service
+%fillup_only
 
 %preun
 %service_del_preun %{name}.service
@@ -458,7 +461,7 @@ exit 0
 %{_libdir}/ollama/libggml-hip.so
 %endif
 
-%if "%{flavor}" == "" && "%{flavor}" != "test"
+%if "%{flavor}" == ""
 %files
 %doc README.md
 %license LICENSE

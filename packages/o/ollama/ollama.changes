@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Fri Oct 16 07:20:59 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.5
+  * NVIDIA Nemotron 3.5 Super available (vision-language model for
+    coding, reasoning, tool use, and document understanding)
+  * Compact Nemotron 3.5 Bolt sibling released (74B parameters)
+  * Decision models now available on cloud via clef:cloud
+  * Continue OpenAI-compatible Responses conversations with custom
+    tool calls without errors
+  * Clearer error messages for cloud access failures
+  * Updated llama.cpp with Nemotron 3.5 support and MLX update
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Wed Oct 14 15:05:32 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.4
+  * Decision models can now be used directly from the terminal with
+    `ollama run`
+  * Kev decision models are now supported by the MLX runner on Apple
+    silicon
+  * ollama launch can now be used with usage credits without upgrading
+    to a paid plan
+  * ollama launch codex includes locally installed Ollama models in its
+    picker
+  * Improved inference performance by reusing verified manifests and
+    loaded models
+  * Added support for multimodal embeddings through llama-server
+  * Fixed loading multimodal embedding models with small context windows
+  * Improved Gemma 4 prefill performance on NVIDIA GPUs with the MLX
+    runner
+  * MLX runner now clips long Laya states instead of rejecting them
+  * Improved speculative decoding reliability in the MLX runner
+  * Updated llama.cpp with native decision model support
+  * Updated README and documentation with clearer privacy and
+    cloud-services wording
+- Update generated using pbuild-ai
+- added support for ccache builds (rocm goes down from 1.5h to 3 minutes)
+
+-------------------------------------------------------------------
+Mon Oct 12 09:51:38 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.3
+  * `ollama launch claude` no longer shows a warning about Claude
+    connectors
+  * `ollama launch codex` no longer warns about service tiers
+  * Paused background model upgrade for embedding and other request
+    performance
+- Updated to version 0.40.2
+  * Models downloaded with earlier versions are upgraded in the
+    background on first run
+  * `ollama list` no longer shows duplicate entries for upgraded
+    models
+  * `ollama launch claude` uses full context length
+- Updated to version 0.40.1
+  * Proxy cloud usage and balance APIs
+  * Fix clef head reads past 2GiB on Windows
+  * Remove account step from CLI onboarding
+  * Avoid symlinks on Windows
+  * Drop carried metal residency patch now that it is upstream
+- Updated to version 0.40.0
+  * Models run on MLX on Apple Silicon by default
+  * New embedding model: embeddinggemma-2
+  * Decision models available on MLX (Nimble, Tev1, Clef)
+- Updated to version 0.35.1
+  * Web search up to ten searches per response
+  * Modelfiles support `CAPABILITY` declarations
+  * `ollama show` reports only `decision` capability for decision
+    models
+- Updated to version 0.35.0
+  * Support decision models through `/v1/systemone` (Nimble, Tev1)
+- Updated to version 0.34.4
+  * Structured outputs on thinking models apply in a single pass
+  * Fixed intermittent "model not found" errors with a large local
+    library
+  * Fixed macOS app becoming unresponsive when checking ChatGPT/Codex
+    status
+  * Qwen 3.8 prompt processing faster on Apple Silicon
+  * Gemma 4 on Apple Silicon picks best image resolution per image
+- Update generated using pbuild-ai
+- obsoletes fix-mlxrunner-tests.diff
+
+-------------------------------------------------------------------
+Wed Oct  7 18:55:55 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Enable ROCm builds for Tumbleweed
+
+-------------------------------------------------------------------
+Tue Sep 29 10:00:00 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.34.3
+  * 0.34.1: MLX safetensors ollama create no longer experimental.
+            GGUF model creation now requires using llama.cpp tooling
+            for safe
+  * 0.34.1: Improved MLX memory handling on Apple Silicon
+  * 0.34.2: Added first-run setup when running ollama, with options to sign
+            in or continue locally. Setup completion is shared with
+  * 0.34.2: Added ollama://apps to open the desktop app’s Apps page
+            directly on macOS and Windows.
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Mon Sep 28 06:04:47 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Bump CUDA to 13.4
+- Fix fillups
+
+-------------------------------------------------------------------
+Wed Sep 23 07:45:14 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.34.0
+  * Ollama models can now be used directly in ChatGPT Desktop
+    on macOS
+  * Improved structured output performance on Apple Silicon
+  * OpenAI-compatible client tool search support
+  * OpenAI-compatible client response compaction support
+- Updated to version 0.33.3
+  * gemma4 now supports images and audio on MLX engine
+  * Report cached prompt tokens
+  * Honor GGUF model defined default parameters
+  * MLX, MLX-C, and llama.cpp updates
+- Updated to version 0.33.2
+  * Ollama's app now follows the system appearance again
+  * Fixed the macOS app to properly hand off to an already-running
+    instance instead of starting a second one
+  * The Claude Desktop proxy no longer interrupts in-flight
+    requests when the model catalog updates
+
+-------------------------------------------------------------------
 Thu Aug 27 04:51:49 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to 0.33.1
@@ -6,7 +135,8 @@ Thu Aug 27 04:51:49 UTC 2026 - Adrian Schröter <adrian@suse.de>
   * cmake: make external compat patches idempotent
   * MLX and llama.cpp update
   * mlxrunner: add structured output support
-  * mlxrunner: avoid Metal GPU timeouts when loading models from slow storage
+  * mlxrunner: avoid Metal GPU timeouts when loading models from
+    slow storage
 
 -------------------------------------------------------------------
 Wed Aug 26 09:17:50 UTC 2026 - Adrian Schröter <adrian@suse.de>
@@ -121,12 +251,6 @@ Thu Jul  9 05:53:42 UTC 2026 - Adrian Schröter <adrian@suse.de>
   * ollama launch for Claude Code now disables telemetry by default
   * Fixed loading models on paths with non-UTF-8 characters
   * Updated the MLX and llama.cpp engines
-
--------------------------------------------------------------------
-Tue Jul  7 15:20:44 UTC 2026 - Adrian Schröter <adrian@suse.de>
-
-- Define a build counter sync tag, to ensure all flavors have
-  the same build number
 
 -------------------------------------------------------------------
 Tue Jul  7 15:20:44 UTC 2026 - Adrian Schröter <adrian@suse.de>

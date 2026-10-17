@@ -952,4 +952,41 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * Made ollama run kimi-k3 offer kimi-k3:cloud for cloud models.</comment>
     <requestid>1375542</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>eeda8d6874c414d915f03b583bbc12ab</srcmd5>
+    <version>0.40.5</version>
+    <time>1792265049</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 0.40.5
+  * NVIDIA Nemotron 3.5 Super available (vision-language model for
+    coding, reasoning, tool use, and document understanding)
+  * Compact Nemotron 3.5 Bolt sibling released (74B parameters)
+  * Decision models now available on cloud via clef:cloud
+  * Continue OpenAI-compatible Responses conversations with custom
+    tool calls without errors
+  * Clearer error messages for cloud access failures
+  * Updated llama.cpp with Nemotron 3.5 support and MLX update
+- Update generated using pbuild-ai
+
+- Updated to version 0.40.4
+  * Decision models can now be used directly from the terminal with
+    `ollama run`
+  * Kev decision models are now supported by the MLX runner on Apple
+    silicon
+  * ollama launch can now be used with usage credits without upgrading
+    to a paid plan
+  * ollama launch codex includes locally installed Ollama models in its
+    picker
+  * Improved inference performance by reusing verified manifests and
+    loaded models
+  * Added support for multimodal embeddings through llama-server
+  * Fixed loading multimodal embedding models with small context windows
+  * Improved Gemma 4 prefill performance on NVIDIA GPUs with the MLX
+    runner
+  * MLX runner now clips long Laya states instead of rejecting them
+  * Improved speculative decoding reliability in the MLX runner
+  * Updated llama.cpp with native decision model support
+  * Updated README and documentation with clearer privacy and</comment>
+    <requestid>1385170</requestid>
+  </revision>
 </revisionlist>
