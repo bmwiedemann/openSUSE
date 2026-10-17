@@ -21,13 +21,11 @@
 %if 0%{?fedora_version}
 %global debug_package %{nil}
 %endif
-
 Name:           bmake
-Version:        20260824
+Version:        20260912
 Release:        0
 Summary:        The NetBSD make(1) tool
 License:        BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause
-Group:          Development/Tools/Building
 URL:            https://ftp.NetBSD.org/pub/NetBSD/misc/sjg/
 Source0:        https://ftp.NetBSD.org/pub/NetBSD/misc/sjg/bmake-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE allow-overriding-compiler-variables.patch -- Based on Linux.sys.mk which was previously shipped with this package

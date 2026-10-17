@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 16 16:26:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 20260912:
+  * Documentation-only release, no code changes
+  * make(1): .INCLUDEDFROMFILE holds the basename and
+    .INCLUDEDFROMDIR the directory name; both are set only while
+    makefiles are parsed, so retain them with assignment (:=)
+- Spec cleanup:
+  * Drop obsolete Group tag
+
+-------------------------------------------------------------------
 Sun Sep 13 06:20:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 20260824:
