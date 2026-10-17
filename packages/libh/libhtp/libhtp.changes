@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:54:51 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Disable upstream stack protector append via NO_STACK_PROTECTOR=true (would add -fstack-protector basic, downgrading -fstack-protector-strong from distro optflags)
+
+-------------------------------------------------------------------
 Sat Aug 22 16:21:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.53:

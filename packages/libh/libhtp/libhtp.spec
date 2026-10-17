@@ -66,6 +66,9 @@ sed -i 's/\r$//' ChangeLog
 
 %build
 autoreconf -fiv
+# NO_STACK_PROTECTOR: upstream configure would append -fstack-protector (basic),
+# downgrading -fstack-protector-strong from %{optflags}
+export NO_STACK_PROTECTOR=true
 %configure \
 	--disable-static
 %make_build
