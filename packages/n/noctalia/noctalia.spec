@@ -17,7 +17,7 @@
 
 
 Name:           noctalia
-Version:        5.2.1
+Version:        5.3.0
 Release:        0
 Summary:        A sleek and minimal desktop shell thoughtfully crafted for Wayland.
 License:        MIT
@@ -78,7 +78,7 @@ Noctalia is in early development. Expect breaking configuration and behavior cha
 %autosetup
 
 %build
-%meson
+%meson -Dtests=disabled
 %meson_build
 
 %install

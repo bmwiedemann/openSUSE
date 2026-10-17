@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct 16 07:24:02 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.3.0:
+  * feat(umbriel): provide shared audio spectrum to effects (#4860)
+  * scripting: update vendored luau to 0.742
+  * fix libcxx-23 build errors (#4870)
+  * fix(pipewire): clear spectrum when rebuilding capture (#4871)
+  * fix(settings): missing icon in calendar/add-account
+  * chore(version): bump
+  * fix(launcher): select the clicked category in 'simple' layout
+  * chore: i18n update
+  * fix(launcher): disable calculator functions that run programs or touch files (#4853)
+  * docs(plugins): tag plugin_api 33 and 34 as v5.3.0
+  * feat(plugins): add hover_highlight widget entry option (#4760)
+  * fix(launcher): preserve clicks on partially visible pinned apps
+  * fix(workspaces): apply hover color to minimal labels
+  * feat(lockscreen): add a toggle to hide the password reveal button (#4784)
+  * feat(taskbar): add show_running option for pinned-only strip (#4834)
+  * fix(session): clear menu before lockscreen capture
+  * feat(settings): add palette inspector with terminal indices
+  * feat(theme): add sync_color_scheme to own the GNOME color-scheme preference
+  * fix(lockscreen): prevent desktop replay after screen-off
+  * fix(lockscreen): wait for revealed frames before suspend
+  * fix(brightness): retry failed DDC discovery
+  * fix(idle): preserve idle actions and timers when locking
+  * docs: update openSUSE installation guides (#4831)
+  * fix(screen-time): resolve active app through CompositorPlatform on KDE (#4135)
+  * fix(desktop-entry): stop watch rebuilds from retriggering a rescan (#4848)
+  * fix(notification): validate image-data size before persisting history (#4826)
+  * fix(weather): speed up the Stars effect so it's more appealing.
+  * fix(effects): correct program index for the stars weather effect (#4828)
+  * fix(weather): render weather effects on light themes (#4838)
+  * tray: resolve status SVGs at logical size within their owning theme (#4579)
+  * bar: make pointer auto-hide delay configurable (#4782)
+  * fix(radios): allow backend activation despite reported rfkill hard block (#4182)
+  * ci: remove one-off triage card migration
+  * ci: skip triage cards whose content the App cannot see
+  * ci: pace the triage card migration and stop if a card is lost
+  * ci: one-off migration of hidden Noctalia-CI triage cards to the Automation App
+  * ci: authenticate maintainer automation as the Noctalia Automation GitHub App
+  * ci(enforcer): use the built-in token so explanation comments stay visible
+
+-------------------------------------------------------------------
 Tue Oct 13 06:47:58 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 5.2.1:
