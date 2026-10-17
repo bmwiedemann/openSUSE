@@ -75,4 +75,12 @@ Built and checked locally on aarch64: 510 tests pass, rpmlint 0 errors,
     <comment>Update to 0.4.7: thread stream ends on root event, delta replay ordered.</comment>
     <requestid>1384882</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>039e3ad4c5bad365ecd26a05f16bfce9</srcmd5>
+    <version>0.4.8</version>
+    <time>1792265219</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-langgraph-sdk to 0.4.8</comment>
+    <requestid>1385355</requestid>
+  </revision>
 </revisionlist>

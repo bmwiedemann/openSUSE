@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:32:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.8:
+  * Thread-stream protocol error frames surface as errors
+    instead of silent closes
+  * Lifecycle watcher starts with run.start and is guarded
+    against races
+
+-------------------------------------------------------------------
 Thu Oct 15 04:46:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.7:
