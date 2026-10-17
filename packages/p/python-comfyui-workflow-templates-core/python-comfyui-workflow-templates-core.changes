@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:17:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.378: the manifest still lists 624
+  templates, with no added or removed entries
+  * The bump crosses 0.3.377, which refreshes 31 asset hashes
+    for the FLUX rebranding wave (FLUX.2 and FLUX 3 display
+    names, base model with w4a8 upsampler); 0.3.378 refreshes
+    5 more for the FLUX 3 Klein model file names and notes
+  * The floors here stay unchanged: no entry changes owner,
+    so json 0.1.102 and media-assets-02 0.1.9 still resolve
+    every entry they resolved before
+
+-------------------------------------------------------------------
 Thu Oct 15 16:36:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.376: the manifest now lists 624

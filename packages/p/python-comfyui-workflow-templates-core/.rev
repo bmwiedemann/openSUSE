@@ -296,4 +296,12 @@ checksums. Data only, no code or dependency change.</comment>
     <comment>Forward python-comfyui-workflow-templates-core update to Factory.</comment>
     <requestid>1385059</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4a1a31b44898bbf98db1a45050ca0169</srcmd5>
+    <version>0.3.378</version>
+    <time>1792265225</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.378</comment>
+    <requestid>1385348</requestid>
+  </revision>
 </revisionlist>
