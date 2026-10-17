@@ -142,4 +142,41 @@
     <comment></comment>
     <requestid>1366330</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7d28c2d3f1479996a5e048991755ca96</srcmd5>
+    <version>2.10.0</version>
+    <time>1792265105</time>
+    <user>dimstar_suse</user>
+    <comment>- fix requirements
+
+- Update to version 2.10.0
+  Breaking Changes
+  * Python 3.11 or newer is required. Python 3.10 is EoL since
+    2026-10-01.
+  * dnspython 2.9.0 or newer is required. dnspython now does DoH
+    through httpx2 instead of httpx. This changes the dependencies
+    to dnspython[doh,doq] and httpx2. The dependency on httpx, h2
+    and aioquic is therefore removed.
+  * DoH verifies server certificates against the OS trust store,
+    instead of certificates that are bundled with certifi. This
+    means you will need to have system CA certificates installed
+    (for example the ca-certificates package) on Linux.
+  Security
+  * dnspython 2.9.0 limits DNS name decompression chains, so a
+    crafted response can no longer make name parsing use excessive
+    CPU (GHSA-45c3-73f7-pv4m). This also impacts dnsdiag, since it
+    parses responses from arbitrary servers.
+  New Features
+  * Added Python 3.15 support
+  Bug Fixes
+  * Fixed DoH and DoQ in the binary packages. In 2.9.4, --doh
+    reported &quot;python httpx module not available&quot; and --quic crashed,
+    because the packages did not include the package metadata
+    dnspython checks before enabling these protocols.
+  * Fixed a crash in dnsping -v on EDNS options that dnspython
+    parses into typed classes, such as Report-Channel and the EDE
+    language and filtering options added in dnspython 2.9.
+  * dnsping now prints &quot;Malformed response&quot; and counts the query as</comment>
+    <requestid>1385376</requestid>
+  </revision>
 </revisionlist>

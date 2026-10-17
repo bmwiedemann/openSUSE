@@ -20,7 +20,7 @@
 %define pythons python3
 %bcond_with test
 Name:           dnsdiag
-Version:        2.9.4
+Version:        2.10.0
 Release:        0
 Summary:        DNS request auditing toolset
 License:        BSD-3-Clause
@@ -32,19 +32,17 @@ Source1:        dnseval.1
 Source2:        dnsping.1
 Source3:        dnstraceroute.1
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python3-aioquic >= 1.2.0
 Requires:       python3-cryptography >= 42.0.5
 Requires:       python3-cymruwhois >= 1.6
-Requires:       python3-dnspython >= 2.8.0
-Requires:       python3-h2 >= 4.1.0
-Requires:       python3-httpx >= 0.27.0
+Requires:       python3-dnspython >= 2.9.0
+Requires:       python3-httpx2 >= 2.13.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  python3-cymruwhois >= 1.6
-BuildRequires:  python3-dnspython >= 2.6.1
+BuildRequires:  python3-dnspython >= 2.9.0
 BuildRequires:  python3-pytest
 %endif
 
@@ -59,9 +57,9 @@ Dnstraceroute can be used to trace the path a DNS request takes to
 its destination. Its purpose is to detect whether a request is
 redirected or hijacked. This can be done by comparing different DNS
 queries being sent to the same DNS server using dnstraceroute and
-observe if there is any difference between the path.
+observe if there is any difference between the paths.
 
-dnseval evaluates multiple DNS resolvers and helps choosing the best
+dnseval evaluates multiple DNS resolvers and helps in choosing the best
 DNS server for the network. It is recommended to use one's own DNS
 resolver as opposed to a third-party DNS server. dnseval can compare
 different DNS servers from a performance (latency) and reliability
