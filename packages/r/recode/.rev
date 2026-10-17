@@ -131,4 +131,32 @@
 </comment>
     <requestid>1266591</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9cea511484ef881535ff6b308646f17c</srcmd5>
+    <version>3.7.17</version>
+    <time>1792265257</time>
+    <user>dimstar_suse</user>
+    <comment>- drop SLE 15 repos
+- get rid of python selection code. Did not work for 16.0.
+- update to 3.7.17
+  * Workaround for macOS: tolerate duplicate aliases for charsets from iconv.
+- update to 3.7.16
+  * Remove the pipe mode of operation. This was a nice idea, but added
+    complexity and created problems.
+  * Add tests for multiple encoding levels in HTML (from Benjamin
+    Riefenstahl).
+  * Bug fix from @oreo639: fix input stream ownership check.
+  * Various minor fixes to the build system.
+  * Bug fix from @hanjinpeng: fix a double free in recode_format_table.
+  * Bug fix from @hanjinpeng: fix UTF-7 encoding of `+': recognize `+-' as
+    encoding `+', and emit that encoding rather than a longer-winded one.
+  * Bug fix from @hanjinpeng: fix recode_get_bytes when reading from memory.
+  * Bug fix from @hanjinpeng: fix an error path in recode_declare_single on
+    allocation failure.
+  * Bug fix from @hanjinpeng: don’t print a NULL charset name when reporting
+    an unknown charset.
+  * Bug fix from @hanjinpeng: fix various documentation typos.
+</comment>
+    <requestid>1385583</requestid>
+  </revision>
 </revisionlist>

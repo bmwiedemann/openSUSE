@@ -19,7 +19,7 @@
 
 %define         libname lib%{name}3
 Name:           recode
-Version:        3.7.15
+Version:        3.7.17
 Release:        0
 Summary:        Character Set Converter
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -28,13 +28,9 @@ URL:            https://github.com/rrthomas/recode
 Source:         %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
 
-# Need python >= 3.8, SLE/Leap15 has 3.6 as default
-%if 0%{?suse_version} > 1500
 %global pythons %{primary_python}
-%else
-%global pythons python311
-%endif
 
+BuildRequires:  /usr/bin/python3
 BuildRequires:  %{pythons}
 BuildRequires:  %{pythons}-Cython
 BuildRequires:  %{pythons}-setuptools
