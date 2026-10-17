@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 16 18:32:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.24.0:
+  * Polish the TUI: one visual language across views (#164).
+  * Fix correlation, rate-limit, ASN prefix and replay bugs (#163).
+  * Improve TUI selection contrast and calm healthy probe history.
+  * Keep queued TUI input responsive and make Ctrl-C global (#152).
+  * Keep TUI layouts readable and selections visible in small
+    terminals (#151).
+  * Correlate ICMPv6 Parameter Problem replies (#160).
+  * Include ICMP interface and MPLS details in text reports (#146).
+  * Show extension indicators and keep hop details readable (#145).
+  * Require destination confirmation before reporting a path MTU.
+  * Handle fragmented HTTP requests on the metrics endpoint (#150).
+  * Prevent enrichment starvation and cancel stalled lookup batches
+  * Keep the add-target input cursor visible for long names (#149).
+  * Validate ICMP extension checksums before parsing metadata.
+  * Fix MPLS parsing when ICMP lengths omit quote padding (#144).
+  * Save files atomically and allow larger trusted replay
+    recordings (#157).
+  * Avoid retaining unused replay events in headless runs (#155).
+  * Reject conflicting output modes and ignored replay options
+    (#148).
+  * chore(deps): rustls 0.23.46 + quinn-proto 0.11.19 advisories,
+    supersede #142 (#143).
+
+-------------------------------------------------------------------
 Fri Sep 18 05:54:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.23.0:
