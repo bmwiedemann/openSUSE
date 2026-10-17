@@ -21,7 +21,7 @@
 # %%{primary_python} so it stays correct as the primary interpreter moves.
 %define pythons %{primary_python}
 Name:           skillspector
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 Summary:        Security scanner for AI agent skills
 License:        Apache-2.0
@@ -65,6 +65,9 @@ BuildRequires:  %{python_module typer >= 0.16.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module yara >= 4.5.0}
 BuildRequires:  fdupes
+# New 2.13.0 credential-isolation test shells out to the git binary
+# (offline-local init/config only, no network).
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 # Runtime stack
 Requires:       %{primary_python}-PyYAML >= 6.0.1
@@ -143,6 +146,9 @@ cp -a .skillspector-baseline.example.yaml skillspector-baseline.example.yaml
 #     carries no .dist-info, so it dies with PackageNotFoundError. Its
 #     assertion is covered in-process by
 #     test_build_server_registers_scan_skill.
+#   * 2.13.0's test_stdio_mcp_preserves_compact_verdicts... is the same
+#     re-exec shape (PYTHONPATH=src/, no .dist-info), dying the same way
+#     with McpError: Connection closed.
 #   * the four in test_bundled_execution_surface_acceptance.py resolve
 #     Path(sys.executable).with_name("skillspector") and get
 #     FileNotFoundError. The remaining eight tests in that file drive the same
@@ -189,7 +195,7 @@ cp -a .skillspector-baseline.example.yaml skillspector-baseline.example.yaml
 # test_static_runtime_limit_is_reported_as_partial,
 # test_static_output_limit_is_reported_as_partial, and the build_context
 # deadline tests), and those do run.
-%pytest --deselect tests/unit/test_mcp_server.py::test_mcp_stdio_initialize_registers_scan_skill --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_github_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_gitlab_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_raw_githubusercontent_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_download_does_not_follow_redirects --deselect tests/unit/test_input_handler.py::test_validate_url_host_scp_extracts_github --deselect tests/unit/test_input_handler.py::test_scp_valid_host_clones --deselect tests/unit/test_input_handler.py::test_https_url_unchanged --deselect "tests/nodes/analyzers/test_bundled_execution_surface.py::test_discovery_parser_bounds_and_ledger_table[malformed_schema]" --deselect tests/test_bundled_execution_surface_acceptance.py::test_public_cli_exit_contract --deselect tests/test_bundled_execution_surface_acceptance.py::test_recursive_single_child_routes_execution_surfaces_from_child_root --deselect tests/test_bundled_execution_surface_acceptance.py::test_cli_fail_on_incomplete_is_opt_in --deselect tests/nodes/test_security_end_to_end.py::test_rd04_large_file_pair_detects_start_boundary_and_end --deselect tests/nodes/test_security_end_to_end.py::test_nine_case_contract_across_public_surfaces --deselect tests/nodes/test_security_remediation.py::test_five_megabyte_normalized_static_scan_stays_below_memory_ceiling --deselect tests/nodes/test_security_end_to_end.py::test_cross_window_separator_pair_across_public_surfaces --deselect tests/unit/test_patterns.py::TestPrivilegeEscalation::test_pe3_repeated_nouns_have_bounded_qualifier_cost
+%pytest --deselect tests/unit/test_mcp_server.py::test_mcp_stdio_initialize_registers_scan_skill --deselect tests/unit/test_baseline_mcp.py::test_stdio_mcp_preserves_compact_verdicts_and_ignores_shipped_baseline --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_github_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_gitlab_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_raw_githubusercontent_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_download_does_not_follow_redirects --deselect tests/unit/test_input_handler.py::test_validate_url_host_scp_extracts_github --deselect tests/unit/test_input_handler.py::test_scp_valid_host_clones --deselect tests/unit/test_input_handler.py::test_https_url_unchanged --deselect "tests/nodes/analyzers/test_bundled_execution_surface.py::test_discovery_parser_bounds_and_ledger_table[malformed_schema]" --deselect tests/test_bundled_execution_surface_acceptance.py::test_public_cli_exit_contract --deselect tests/test_bundled_execution_surface_acceptance.py::test_recursive_single_child_routes_execution_surfaces_from_child_root --deselect tests/test_bundled_execution_surface_acceptance.py::test_cli_fail_on_incomplete_is_opt_in --deselect tests/nodes/test_security_end_to_end.py::test_rd04_large_file_pair_detects_start_boundary_and_end --deselect tests/nodes/test_security_end_to_end.py::test_nine_case_contract_across_public_surfaces --deselect tests/nodes/test_security_remediation.py::test_five_megabyte_normalized_static_scan_stays_below_memory_ceiling --deselect tests/nodes/test_security_end_to_end.py::test_cross_window_separator_pair_across_public_surfaces --deselect tests/unit/test_patterns.py::TestPrivilegeEscalation::test_pe3_repeated_nouns_have_bounded_qualifier_cost
 
 %files
 %license LICENSE

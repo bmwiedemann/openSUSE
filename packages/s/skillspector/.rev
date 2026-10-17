@@ -181,4 +181,12 @@ pywhatwgurl 0.1.2 parses two invalid punycode hosts upstream's pinned
     <comment>Update to 2.12.0.</comment>
     <requestid>1380721</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>db622e56d318d866a5cf38e43a08f850</srcmd5>
+    <version>2.13.0</version>
+    <time>1792265220</time>
+    <user>dimstar_suse</user>
+    <comment>Update skillspector to 2.13.0</comment>
+    <requestid>1385357</requestid>
+  </revision>
 </revisionlist>

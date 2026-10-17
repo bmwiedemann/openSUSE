@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 17 06:11:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.13.0:
+  * Security-hardening backport: decode-and-execute chain detection,
+    constructed sensitive-path and secret-flow detection, BiDi control
+    checks in bundled scripts, executable-Python and TypeScript
+    declaration inspection, risky bundled-settings/MCP flags
+  * Fail closed more often: malformed LLM responses, unloadable YARA
+    rules and skipped linked skills now report incomplete coverage;
+    archive-member/disk-path collisions keep the real content
+  * MCP HTTP listeners restricted to loopback, Git credentials isolated
+    for HTTP scans, Codex CLI provider disabled (unsafe sandbox),
+    release workflow pinned, report-output overwrite guards
+  * NVIDIA Build default moves to GLM-5.3, agent CLI environment
+    allowlisted, per-skill batch timeouts, scan-hang fixes
+  * Many more fixes and improvements; see upstream release notes
+    for the full list
+- Require git-core for %check (new credential-isolation test shells
+  out to git) and deselect one MCP re-exec test that needs an
+  installed dist-info.
+
+-------------------------------------------------------------------
 Fri Sep 25 19:24:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add skillspector-fifo-timeout.patch: raise the fifo-swap
