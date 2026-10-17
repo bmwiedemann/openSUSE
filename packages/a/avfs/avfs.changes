@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:44:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.0:
+  * system zlib is now used by default when available, with fast
+    random access; fixed a possible deadlock in zlib archive access
+  * fuse 3 support is now upstream (fuse >= 3.17 required); drop
+    avfs-fuse3-support.patch as upstreamed
+  * avfsd gained --dir-for-archive option exposing archives as
+    browsable directories
+  * nanosecond-precision timestamps: new API setter, stat fields
+    now actually populated
+- Add pkgconfig(zlib) >= 1.2.3 floor matching configure
+- Drop %{_includedir}/avfs.h from devel: upstream no longer installs
+  it, only virtual.h remains public
+
+-------------------------------------------------------------------
 Fri Jan  9 06:18:32 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix openSUSE Leap build, using fuse 2 (boo#1256109)

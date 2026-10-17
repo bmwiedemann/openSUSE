@@ -25,7 +25,7 @@
 %define fuse_version 2
 %endif
 Name:           avfs
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        AVFS - an archive look-inside filesystem
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -33,14 +33,13 @@ URL:            https://avf.sourceforge.net/
 Source0:        https://downloads.sf.net/avf/%{name}-%{version}.tar.bz2
 Source1:        https://downloads.sf.net/avf/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
-Patch0:         %{name}-fuse3-support.patch
 BuildRequires:  lzlib-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(neon)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(zlib) >= 1.2.3
 %if %{fuse_version} == 3
 BuildRequires:  pkgconfig(fuse3) >= 3.17.1
 %else
@@ -116,7 +115,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files devel
 %license COPYING
 %{_bindir}/avfs-config
-%{_includedir}/avfs.h
 %{_includedir}/virtual.h
 %{_libdir}/libavfs.so
 %{_libdir}/pkgconfig/avfs.pc
