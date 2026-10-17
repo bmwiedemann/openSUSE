@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Oct 17 08:07:48 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.8.2:
+  * fix: support escaped commas in --state-values-set by @ban11111
+    in #2813
+  * add trackLogsUntilReady flag by @pznamensky in #2814
+  * feat: dir= selector for path-based release filtering and
+    traversal skip by @dschmidt in #2609
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.113.4 to 1.114.0 by @dependabot[bot] in #2818
+  * build(deps): bump github.com/sashabaranov/go-openai from 1.42.1
+    to 1.43.0 by @dependabot[bot] in #2819
+  * build(deps): bump go.opentelemetry.io/otel/sdk/metric from
+    1.46.0 to 1.47.0 by @dependabot[bot] in #2815
+  * build(deps): bump gitpython from 3.1.59 to 3.1.62 in /docs by
+    @dependabot[bot] in #2820
+  * build(deps): bump golang.org/x/sync from 0.23.0 to 0.24.0 by
+    @dependabot[bot] in #2827
+  * add trackLogsInterval option by @pznamensky in #2825
+  * build(deps): bump github.com/hashicorp/go-getter/v2 from 2.2.4
+    to 2.2.5 by @dependabot[bot] in #2821
+  * build(deps): bump go.opentelemetry.io/proto/otlp from 1.11.0 to
+    1.11.1 by @dependabot[bot] in #2822
+  * build(deps): bump go.opentelemetry.io/contrib/exporters/autoexport
+    from 0.71.0 to 0.72.0 by @dependabot[bot] in #2823
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.114.0 to 1.114.3 by @dependabot[bot] in #2828
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.30 to
+    0.0.31 by @dependabot[bot] in #2829
+  * build(deps): bump golang.org/x/term from 0.46.0 to 0.47.0 by
+    @dependabot[bot] in #2830
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.6 to 1.33.9 by @dependabot[bot] in #2831
+  * build(deps): bump github.com/gookit/color from 1.6.1 to 1.6.2
+    by @dependabot[bot] in #2833
+  * fix: skip recreatePods on Helm 4, which removed --recreate-pods
+    by @Cayan in #2832
+  * chore: bump Helm to v3.22.1 and v4.3.1 by @yxxhero in #2834
+  * fix: propagate --oci-plain-http to chartify for all
+    chart-preparing commands by @yxxhero in #2826
+
+-------------------------------------------------------------------
 Thu Oct  1 07:19:17 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.8.1:
