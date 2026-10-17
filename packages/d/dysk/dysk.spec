@@ -17,7 +17,7 @@
 
 
 Name:           dysk
-Version:        3.7.1
+Version:        3.8.0
 Release:        0
 Summary:        Get information on filesystems, like df but better
 License:        MIT
