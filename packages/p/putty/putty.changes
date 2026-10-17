@@ -18,11 +18,14 @@ Mon May 25 15:33:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.84
   * Fixed a remotely triggerable double-free in RSA key exchange.
+    [boo#1266375, CVE-2026-48850]
   * Fixed a remotely triggerable crash (assertion failure - program
     termination) in NIST ECDSA signature verification.
+    [boo#1266373, CVE-2026-48852]
   * Fixed marking of Telnet and Rlogin session data with a trust
     sigil after you authenticated to a proxy (possibly allowing a
     server to spoof a repeat proxy password prompt).
+    [boo#1266374, CVE-2026-48851]
   * New ability to run a specified command before starting the
     connection, e.g. to perform wake-on-LAN or a port knock.
   * Display 'pre-edit text', showing the progress of using multiple
