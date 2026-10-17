@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Oct 10 16:45:36 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.68.1:
+  * project: don't plan a stateless prune without a worktree
+  * sync: skip the bloat check for projects without a worktree
+  * project: don't rerun git status after a failed snapshot
+  * Fix fail in test_repo_trace if trace is disabled
+  * info: reuse branch snapshots and combine history walks
+  * project: avoid unnecessary sync revision enumeration
+  * project: make fast-forward merges explicit
+  * project: fold normal stash detection into status
+  * sync: reuse status HEAD in the bloat scan
+  * project: render worktree status from one snapshot
+  * project: use one status snapshot for dirty checks
+  * git_status: parse one porcelain v2 worktree snapshot
+  * git_command: allow lossless capture of machine output
+  * project: pass --no-filter and --no-tags in DownloadPatchSet
+  * project: rename UncommitedFiles to UncommittedFiles
+  * command: preserve project filters in regex selection
+  * tests: avoid losing trace2 socket readiness signal
+  * sync: keep generated jobs-checkout help host-independent
+  * sync: implement reprojectcmd for the local half
+  * project: report why refreshing the index failed
+  * command: fix group selection across submanifests
+  * release: update-manpages: restore __main__ guard
+  * manifest_xml: Improve error message on base check fail
+  * upload: bypass branch editor with explicit branch and -y
+
+-------------------------------------------------------------------
 Wed Sep 09 07:10:49 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.67:
