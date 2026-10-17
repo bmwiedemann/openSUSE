@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Oct 16 15:10:22 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.102.0, fixing four security issues
+  (GHSA-39wj-f2f4-978v, GHSA-4mq3-hpgx-9cx8, GHSA-qcwj-mr2r-2cx7,
+  GHSA-wjmr-j3rp-mh2g):
+  * gh release/run/attestation download and repo read-file --output
+    could write to an unintended file through symbolic links
+  * gh attestation verify compared --source-ref case-insensitively
+  * gh attestation verify matched --signer-workflow only by prefix
+  * gh skill search could inject options into gh skill install
+  * Copy auth codes to the clipboard by default (gh config set
+    clipboard disabled to opt out)
+  * Remove the gh repo garden command and the multi-account migration
+  * Use API SSH URLs for repository clones
+  * Validate repository names during interactive creation
+  * Fix remote branch deletion on owner case mismatch
+  * Propagate the gh path to extensions
+  * Allow ghu_ tokens to attach files
+  * Allow gh repo set-default --unset without an argument
+  * Bump go-gh to 2.16.1, golang.org/x/crypto to 0.57.0,
+    github.com/klauspost/compress to 1.20.1 and Go to 1.27.1
+- Add gh-bump-x-net.patch: update golang.org/x/net to 0.60.0 to fix
+  excessive CPU consumption on repeated HTTP/2 initial window
+  changes (CVE-2026-78669, bsc#1285291).
+- Require golang(API) >= 1.27 as upstream moved to Go 1.27.
+- Not affected, vendored dependencies are above the fixed version:
+  * CVE-2026-84445 (bsc#1278962): grpc is 1.83.2, fixed in 1.83.2
+  * CVE-2026-84304 (bsc#1279208), CVE-2026-84303 (bsc#1279310):
+    grpc is 1.83.2, fixed in 1.83.1
+  * CVE-2026-41178 (bsc#1276707): otel/baggage is 1.44.0, fixed in
+    1.44.0
+  * CVE-2026-63209 (bsc#1283727): klauspost/compress is 1.20.1,
+    contains the fix of 1.18.7
+  * CVE-2026-72924 (bsc#1276755): gh is above 2.98.0, the fixed
+    version
+  * CVE-2026-59831 (bsc#1271215): gh is above 2.95.0, the last
+    affected version
+
+-------------------------------------------------------------------
 Fri Sep 04 10:13:41 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.100.0, fixing two deadlock issues in the vendored
