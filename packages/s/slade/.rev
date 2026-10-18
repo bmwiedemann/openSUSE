@@ -187,4 +187,12 @@
     <comment>- Update to release 3.2.11</comment>
     <requestid>1327890</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b48dd27d938c21cf4f608966bf01fb44</srcmd5>
+    <version>3.2.12</version>
+    <time>1792344318</time>
+    <user>dimstar_suse</user>
+    <comment>Update slade to 3.2.12</comment>
+    <requestid>1385771</requestid>
+  </revision>
 </revisionlist>

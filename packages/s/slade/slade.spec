@@ -17,7 +17,7 @@
 
 
 Name:           slade
-Version:        3.2.11
+Version:        3.2.12
 Release:        0
 Summary:        An editor for DOOM maps and WAD/PK3 archives
 License:        GPL-2.0-or-later

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 21 09:13:06 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.12
+  * Fixed a crash on exit.
+  * Formats: `DEMOLOOP` entries are now recognised as JSON text.
+  * Formats: Fixed detection of certain Quake II wall textures in
+    the 2023 remaster.
+  * Resource editor: Fixed transparency being removed when
+    exporting/converting multiple PNGs at once.
+  * Text editor: Fixed loading of custom text style sets.
+  * Map editor: Fixed an issue with the wrong texture being used in
+    certain cases with texture resource WADs/PK3s loaded.
+
+-------------------------------------------------------------------
 Sat Jan 17 17:38:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.11
