@@ -1,7 +1,7 @@
 #
 # spec file for package gifsicle
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,23 @@
 #
 
 
+%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
+%define ext_man .gz
+BuildRequires:  perl-Time-HiRes
+%endif
 Name:           gifsicle
-Version:        1.96
+Version:        1.98
 Release:        0
 Summary:        Creating and editing GIF images and animations
 License:        GPL-2.0-only
-Group:          Productivity/Graphics/Other
 URL:            https://www.lcdf.org/gifsicle/
 Source:         https://www.lcdf.org/gifsicle/%{name}-%{version}.tar.gz
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 Obsoletes:      ungifsicle < %{version}-%{release}
 Provides:       ungifsicle = %{version}-%{release}
-%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
-BuildRequires:  perl-Time-HiRes
-%define ext_man .gz
-%endif
 
 %description
 Gifsicle manipulates GIF image files on the

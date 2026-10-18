@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:56:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.98:
+  * Add --max-screen option limiting logical screen size to avoid
+    memory exhaustion (default 16384x16384; --no-max-screen removes it)
+  * Gifsicle and gifdiff now always treat the background as transparent,
+    as browsers do
+  * Improve warnings and invalid GIF handling: warn when growing the
+    logical screen for the first frame or on imageless output, report
+    truncated GIFs, no longer write previously-warned compressed data
+  * Bug fixes in --crop, --resize (incl. geometry flags ^< and ^>,
+    --resize-colors, --resize-method=box), --flip, --rotate, --lossy,
+    --dither=atkinson, --gray, --careful, frame --insert-before/--replace,
+    and unoptimization
+  * Fix memory-safety bugs found by auditing and fuzzing, including
+    use-after-free bugs; stricter argument parsing; new fuzz test harness
+- Add explicit BuildRequires on gcc and make (no longer implicit)
+- Update to version 1.97:
+  * --use-exact-colormap now works with -O
+  * Fix encoder handling of EOI at code size boundaries and improve
+    lossy encoder run length measurement
+  * Fix interactions between frame selections and frame changes
+
+-------------------------------------------------------------------
 Thu Feb 27 10:45:48 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 1.96:
