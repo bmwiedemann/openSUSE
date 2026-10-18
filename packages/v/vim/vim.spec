@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.2
-%define patchlevel 1161
+%define patchlevel 1202
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim92
 %define site_runtimepath %{_datadir}/vim/site
@@ -281,7 +281,7 @@ export NOGUI_OPTIONS="\
     "
 
 pushd src
-make autoconf
+%make_build autoconf
 popd
 
 # build smaller vim

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 16 16:57:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 9.2.1202:
+  * Arbitrary code execution via Ruby omni-completion, Rmd syntax
+    highlighting and Cargo quickfix hooks
+    (GHSA-4xgr-vqh2-xfx8, GHSA-x2w5-pj55-7hpc, GHSA-4vf6-278g-hq7j)
+  * Revert the experimental ":source ++dryrun" feature
+  * Fix cursor position with 'linebreak' and a large 'tabstop';
+    gj/gk no longer lose a column with virtual text above a line
+  * Fix regexp matches ending inside a UTF-8 character and missed
+    case-folded literal matches
+  * Fix Vim9 crashes (long "implements" lists, lambdas split over
+    lines or assigning to an enclosing argument, object method
+    calls, long tuple types) and memory leaks on sixel quantize
+    errors and with 'quickfixtextfunc'
+  * Fix fixed-size windows growing when others close, :autocmd
+    completion after ++args, CTRL-W with a pending CursorHold, the
+    message pager dropping blank separators, unstable fuzzy
+    completion order, and setreg() widths for unprintable chars
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Spec cleanup:
+  * Use %make_build for the autoconf regeneration step
+
+-------------------------------------------------------------------
 Fri Oct  2 14:57:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - do not downgrade fortify level (we're anyway at 3 now which

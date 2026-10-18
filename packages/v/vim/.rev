@@ -8609,4 +8609,12 @@ always built-in because vim has direct perl dependencies anyway.
     <comment>1</comment>
     <requestid>1382320</requestid>
   </revision>
+  <revision rev="409" vrev="1">
+    <srcmd5>7db8dc32f0b8b80e2c1912611a563b47</srcmd5>
+    <version>9.2.1202</version>
+    <time>1792356848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385247</requestid>
+  </revision>
 </revisionlist>
