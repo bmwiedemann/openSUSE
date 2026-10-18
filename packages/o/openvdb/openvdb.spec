@@ -17,6 +17,11 @@
 #
 
 
+%define libname libopenvdb13_1
+%if 0%{?suse_version} <= 1500
+# force a recent gcc version on 15.X, default would be gcc7 which is too old
+%define gcc_major 14
+%endif
 %bcond_without nanovdb
 # whines about LLVM apis
 %bcond_with    openvdb_ax
@@ -24,53 +29,43 @@
 %bcond_with    pyopenvdb
 #
 %bcond_without openvdb_tool
-
-%define libname libopenvdb13_0
-%if 0%{suse_version} <= 1500
-# force a recent gcc version on 15.X, default would be gcc7 which is too old
-%define gcc_major 14
-%endif
-
 Name:           openvdb
-Version:        13.0.0
+Version:        13.1.0
 Release:        0
 Summary:        Sparse volume data structure and tools
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://www.openvdb.org
 Source:         https://github.com/AcademySoftwareFoundation/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         openvdb-boost-static-assert-include.patch
-Patch1:         fix-tool-building.patch
-# PATCH-FIX-UPSTREAM 2200.patch https://github.com/AcademySoftwareFoundation/openvdb/pull/2200 hpj@urpla.net - fix build with tbb 2023+
-Patch2:         2200.patch
-BuildRequires:  cmake >= 3.12
-BuildRequires:  gcc%{?gcc_major}-c++ >= 9.3.1
-BuildRequires:  libboost_iostreams-devel-impl >= 1.80
+Patch0:         fix-tool-building.patch
+BuildRequires:  cmake >= 3.24
+BuildRequires:  gcc%{?gcc_major}-c++ >= 11
+BuildRequires:  libboost_iostreams-devel-impl >= 1.82
 BuildRequires:  memory-constraints
-%if %{with openvdb_ax}
-BuildRequires:  cmake(LLVM) < 16
-%endif
-%if %{with pyopenvdb}
-BuildRequires:  python3-devel
-%endif
 BuildRequires:  pkgconfig
-BuildRequires:  tbb-devel >= 2020.3
-BuildRequires:  pkgconfig(Imath)
-BuildRequires:  pkgconfig(OpenEXR) >= 3
-BuildRequires:  pkgconfig(blosc)
+BuildRequires:  pkgconfig(Imath) >= 3.2
+BuildRequires:  pkgconfig(OpenEXR) >= 3.2
+BuildRequires:  pkgconfig(blosc) >= 1.17.0
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glfw3)
+BuildRequires:  pkgconfig(glfw3) >= 3.3
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(jemalloc)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(log4cpp)
+BuildRequires:  pkgconfig(tbb) >= 2020.3
+# 32-bit: linker errors
+ExcludeArch:    %{ix86} %{arm32}
+%if %{with openvdb_ax}
+BuildRequires:  cmake(LLVM) < 16
+%endif
+%if %{with pyopenvdb}
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(python3-embed)
+%endif
 %if %{with openvdb_tool}
 BuildRequires:  cmake(Alembic) >= 1.8.8
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(tinfo)
 %endif
-# 32-bit: linker errors
-ExcludeArch:    %ix86 %arm32
 
 %description
 OpenVDB is a C++ library comprising a hierarchical data structure and
@@ -79,7 +74,6 @@ sparse volumetric data discretized on three-dimensional grids.
 
 %package -n %{libname}
 Summary:        Sparse volume data structure library
-Group:          System/Libraries
 
 %description -n %{libname}
 OpenVDB is a C++ library comprising a hierarchical data structure and
@@ -88,7 +82,6 @@ sparse volumetric data discretized on three-dimensional grids.
 
 %package devel
 Summary:        Development files for openvdb
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       libboost_headers-devel-impl
 
@@ -99,7 +92,6 @@ you will need to install %{name}-devel.
 
 %package tools
 Summary:        OpenVDB command line tools
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description tools
@@ -153,8 +145,7 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
 %install
 %cmake_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE

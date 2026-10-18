@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:57:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 13.1.0
+  * Core: new SIMD framework for targeted ISA vectorization (optional
+    VCL support on x86); vectorized points::rasterizeSdf and
+    points::pca, up to 2x faster on x86
+  * Core fixes: restored file format 221 reading, fixed
+    math::Histogram heap overflow and CheckLevelSet false
+    positive; TBB 2023 build support
+  * NanoVDB: improved CUDA resource management, faster kernels
+    and correctness fixes; new GPU MeshToGrid and VoxelBVH
+  * vdb_tool: new -diagnose, -stats, -histogram, math, mesh and
+    expression actions; -print is now a columnar table, value
+    info moved to -stats
+  * Dropped upstreamed 2200.patch (TBB 2023 fix) and obsolete
+    openvdb-boost-static-assert-include.patch
+  * Soname 13.0 to 13.1: libopenvdb13_0 renamed to libopenvdb13_1
+  * Spec cleanup: use %ldconfig_scriptlets, drop Group tags, mirror
+    upstream dependency floors (cmake 3.24, gcc 11, boost 1.82,
+    OpenEXR/Imath 3.2, blosc 1.17.0, glfw 3.3)
+
+-------------------------------------------------------------------
 Mon Jul 13 10:27:48 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Apply upstream patch 2200.patch to fix build with tbb 2023+
