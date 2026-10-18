@@ -196,4 +196,13 @@
     <comment></comment>
     <requestid>1286850</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>64759e6ca31e095c5275606443daeb4c</srcmd5>
+    <version>1.8.3</version>
+    <time>1792344401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.3:
+  * Fix build error with gcc 15 (fixed upstream, drop alevt-gcc15.patch)</comment>
+    <requestid>1385981</requestid>
+  </revision>
 </revisionlist>
