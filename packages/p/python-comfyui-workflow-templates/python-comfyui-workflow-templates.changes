@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 18 17:28:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.89: release-train pin roll, the
+  re-export shim code is unchanged
+  * 0.11.88 moves the media-assets-02 pin to 0.1.17 alongside
+    core 0.3.379 and json 0.1.114; 0.11.89 follows with core
+    0.3.380 and json 0.1.115
+  * The floors in this package already cover all of those pins
+
+-------------------------------------------------------------------
 Sat Oct 17 06:17:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.87: metadata-only release, the
