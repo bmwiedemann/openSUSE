@@ -16127,7 +16127,7 @@ unsorted:
   - libraw1394-devel-32bit 
   - libraw1394-tools 
   - libraw25-32bit 
-  - libraylib600 
+  - libraylib620 
   - librbd-devel 
   - librbio4 
   - librbl1 
@@ -16575,12 +16575,12 @@ unsorted:
   - libsoc-common 
   - libsoc-devel 
   - libsoc2 
-  - libsoci_core4_0 
-  - libsoci_empty4_0 
-  - libsoci_mysql4_0 
-  - libsoci_odbc4_0 
-  - libsoci_postgresql4_0 
-  - libsoci_sqlite3-4_0 
+  - libsoci_core4 
+  - libsoci_empty4 
+  - libsoci_mysql4 
+  - libsoci_odbc4 
+  - libsoci_postgresql4 
+  - libsoci_sqlite3-4 
   - libsocket_wrapper_noop-devel 
   - libsocket_wrapper_noop0 
   - libsocketcan-devel 
@@ -20823,6 +20823,7 @@ unsorted:
   - okular-mobile 
   - okular-spectre 
   - ollama 
+  - ollama-rocm 
   - ollama-vulkan 
   - olm-devel 
   - olm-doc 
