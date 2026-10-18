@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 16 16:42:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.12.0:
+  + Fixed root marker matching in lspconfig.util: it compared
+    against an undefined variable, so the full field list never
+    applied
+  + Use vim.uv for fs_stat instead of the deprecated vim.loop
+  + lspconfig.util is required lazily now and the legacy-only code
+    sits below the version check, so Nvim 0.11+ startup skips it
+  + New server configs upstream (pkl, clice, tsc, jetls,
+    symfony_lsp, php_lsp, armls, sysml_lsp, agentscript,
+    ms_terraform_lsp, rust_glancer, laravel_lsp); they live in lsp/,
+    which this package does not install - it ships only the
+    deprecated lua/lspconfig configs
+  + Corrected the astro language server documentation URLs and
+    refreshed the generated annotations and config docs
+- Require neovim >= 0.11.3, upstream's stated minimum
+
+-------------------------------------------------------------------
 Thu Jul 30 04:25:18 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 2.11.0:

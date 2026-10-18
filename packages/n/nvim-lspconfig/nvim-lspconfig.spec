@@ -17,15 +17,15 @@
 
 
 Name:           nvim-lspconfig
-Version:        2.11.0
+Version:        2.12.0
 Release:        0
 Summary:        Quickstart configs for Nvim LSP
 License:        Apache-2.0
 URL:            https://github.com/neovim/nvim-lspconfig
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  neovim >= 0.11
-Requires:       neovim >= 0.11
+BuildRequires:  neovim >= 0.11.3
+Requires:       neovim >= 0.11.3
 BuildArch:      noarch
 
 %description
