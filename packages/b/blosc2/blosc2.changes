@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:41:37 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 3.3.5 (bugfix and security-hardening release, no API
+  or format changes):
+  * Fixed integer overflow in BloscLZ match-length accumulation
+    that could lead to heap-buffer-overflow on crafted input
+  * Fixed heap-buffer-overflow in ZFP decompression paths from
+    missing input size validation
+  * Fixed division by zero in frame chunk handling on crafted
+    frames with zero chunksize
+
+-------------------------------------------------------------------
 Mon Sep 14 10:50:24 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.3.4:
