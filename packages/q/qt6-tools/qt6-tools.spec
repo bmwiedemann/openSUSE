@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.11.2
-%define short_version 6.11
+%define real_version 6.12.0
+%define short_version 6.12
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\(qtexamples.*
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.11.2
+Version:        6.12.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # Legal:
@@ -48,20 +48,7 @@ Source13:       org.qt.assistant6.desktop
 # The 48x48 icon was removed from qttools
 Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
-# PATCH-FIX-UPSTREAM -- llvm 22 support
-Patch0:         0001-QDoc-Add-LLVM-22-implementation-to-QualTypeNames-for.patch
-Patch1:         0002-CMake-Add-LLVM-22-to-supported-QDoc-Clang-versions.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-QDoc-Use-deterministic-tiebreaker-for-shared-notifie.patch
-# PATCH-FIX-UPSTREAM -- llvm 23 support
-Patch3:         0003-CMake-Add-LLVM-23-to-supported-QDoc-Clang-versions.patch
-# clang-devel in Leap 15 points to clang7...
-%if 0%{?suse_version} == 1500
-# Leap 15.6 has llvm 19 since 2025-02-12, we need to use it to avoid doc build issues
-BuildRequires:  clang19-devel
-%else
 BuildRequires:  clang-devel >= 17
-%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
@@ -162,6 +149,7 @@ This package contains the Qt 6 Help library.
 %package -n qt6-help-devel
 Summary:        Qt 6 Help library - Development files
 Requires:       libQt6Help6 = %{version}
+Requires:       cmake(Qt6Concurrent) = %{real_version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Network) = %{real_version}
 Requires:       cmake(Qt6Sql) = %{real_version}

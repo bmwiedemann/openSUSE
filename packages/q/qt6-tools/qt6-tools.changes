@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:16:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  https://www.qt.io/blog/qt-6.12-released
+- Drop patches:
+  * 0001-QDoc-Add-LLVM-22-implementation-to-QualTypeNames-for.patch
+  * 0002-CMake-Add-LLVM-22-to-supported-QDoc-Clang-versions.patch
+  * 0001-QDoc-Use-deterministic-tiebreaker-for-shared-notifie.patch
+  * 0003-CMake-Add-LLVM-23-to-supported-QDoc-Clang-versions.patch
+
+-------------------------------------------------------------------
 Sat Aug 29 21:04:51 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add 0003-CMake-Add-LLVM-23-to-supported-QDoc-Clang-versions.patch.

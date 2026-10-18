@@ -494,4 +494,12 @@
     <comment>- Add 0003-CMake-Add-LLVM-23-to-supported-QDoc-Clang-versions.patch. (forwarded request 1375199 from aaronpuchert)</comment>
     <requestid>1375214</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0f13dac471eb48a494757f7bb6e1d018</srcmd5>
+    <version>6.12.0</version>
+    <time>1792344128</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.12.0</comment>
+    <requestid>1384607</requestid>
+  </revision>
 </revisionlist>
