@@ -1,7 +1,7 @@
 #
 # spec file for package ffado
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,12 @@
 %define sover 2
 %define tname libffado
 Name:           ffado%{mflavor}
-Version:        2.4.9
+Version:        2.5.0
 Release:        0
 Summary:        FireWire 1394 support for audio devices
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Other
-URL:            http://www.ffado.org/
-Source0:        http://www.ffado.org/files/%{tname}-%{version}.tgz
+URL:            https://www.ffado.org/
+Source0:        https://www.ffado.org/files/%{tname}-%{version}.tgz
 Source1:        baselibs.conf
 # No current date and time allowed.
 Patch0:         libffado-date_time.patch
@@ -41,7 +40,7 @@ Patch4:         ffado-nosys.patch
 Patch5:         reproducible.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-c++-1)
 BuildRequires:  pkgconfig(dbus-python)
@@ -69,11 +68,11 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xdg-utils
 BuildRequires:  xorg-x11-fonts
 BuildRequires:  pkgconfig(libffado) = %{version}
+Requires:       ffado = %{version}
+BuildArch:      noarch
 %if 0%{?suse_version} == 1600 && !0%{?is_opensuse}
 ExclusiveArch:  do_not_build
 %endif
-Requires:       ffado = %{version}
-BuildArch:      noarch
 %endif
 
 %description
@@ -95,7 +94,6 @@ on-board mixer, phantom power control, mode switches and so on.
 
 %package -n ffado-devel
 Summary:        Development files for ffado
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libffado%{sover} = %{version}
 Requires:       pkgconfig(dbus-c++-1)
@@ -109,7 +107,6 @@ applications that use the FFADO libraries and API.
 
 %package -n libffado%{sover}
 Summary:        FireWire 1394 support for audio devices
-Group:          System/Libraries
 
 %description -n libffado%{sover}
 This package provides the libffado shared library that
@@ -128,19 +125,19 @@ supported devices).
 %prep
 %autosetup -n %{tname}-%{version} -p0
 
-for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
-for i in `grep -rl "/usr/bin/python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+for i in `grep -rl "%{_bindir}/python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 
 %build
 export EXTRA_FLAGS="-Wno-deprecated-declarations -fpermissive --std=gnu++11"
 %if 0%{?gcc_version} > 5
 export EXTRA_FLAGS="${EXTRA_FLAGS}  -Werror=date-time"
 %endif
-%ifarch %arm
+%ifarch %{arm}
 export EXTRA_FLAGS="${EXTRA_FLAGS} -fPIC"
 %endif
 #export DBUS1_FLAGS="$DBUS1_FLAGS -lpthread"
-scons %{_smp_mflags} \
+scons %{?_smp_mflags} \
   PREFIX=%{_prefix} \
   LIBDIR=%{_libdir} \
   MANDIR=%{_mandir} \
@@ -172,7 +169,7 @@ scons %{_smp_mflags} \
 mkdir -p %{buildroot}%{python3_sitelib}
 # WARNING: the install scons statement must be identical to the build one otherwise a complete rebuild is executed.
 export EXTRA_FLAGS="-Wno-deprecated-declarations -fpermissive --std=gnu++11"
-%ifarch %arm
+%ifarch %{arm}
 export EXTRA_FLAGS="${EXTRA_FLAGS} -fPIC"
 %endif
 #export DBUS1_FLAGS="$DBUS1_FLAGS -lpthread"
@@ -209,7 +206,7 @@ rm -Rfv %{buildroot}%{_libdir}/libffado
 %endif
 
 %if "%{flavor}" == "mixer"
-rm -Rfv %{buildroot}/%{_libdir}/%tname.* %{buildroot}/%{_includedir}/libffado \
+rm -Rfv %{buildroot}/%{_libdir}/%{tname}.* %{buildroot}/%{_includedir}/libffado \
 	%{buildroot}/%{_libdir}/pkgconfig
 
 # Remove the useless udev rules and man pages on the mixer package
@@ -230,7 +227,7 @@ find ./ -empty -delete
 %endif
 
 %fdupes -s %{buildroot}%{_datadir}
-%python3_fix_shebang
+%{python3_fix_shebang}
 
 %ldconfig_scriptlets -n libffado%{sover}
 
@@ -268,11 +265,11 @@ find ./ -empty -delete
 %{_datadir}/dbus-1/services/org.ffado.Control.service
 %{_bindir}/ffado*
 %{_datadir}/%{tname}
-%{_mandir}/man1/ffado-bridgeco-downloader.1.gz
-%{_mandir}/man1/ffado-dbus-server.1.gz
-%{_mandir}/man1/ffado-diag.1.gz
-%{_mandir}/man1/ffado-dice-firmware.1.gz
-%{_mandir}/man1/ffado-fireworks-downloader.1.gz
+%{_mandir}/man1/ffado-bridgeco-downloader.1%{?ext_man}
+%{_mandir}/man1/ffado-dbus-server.1%{?ext_man}
+%{_mandir}/man1/ffado-diag.1%{?ext_man}
+%{_mandir}/man1/ffado-dice-firmware.1%{?ext_man}
+%{_mandir}/man1/ffado-fireworks-downloader.1%{?ext_man}
 %endif
 %if "%{flavor}" == "mixer"
 %{_bindir}/ffado-mixer
@@ -280,7 +277,7 @@ find ./ -empty -delete
 %{_datadir}/icons/*
 %{_datadir}/pixmaps/ffadomixer.png
 %{_datadir}/applications/*
-%{python3_sitelib}/*
+%{python3_sitelib}/ffado
 %{_datadir}/metainfo/org.ffado.FfadoMixer.metainfo.xml
 %endif
 
