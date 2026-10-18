@@ -235,4 +235,12 @@
     <comment></comment>
     <requestid>1287851</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c9b8564881584e159f7122bd30a14ceb</srcmd5>
+    <version>4.3.8</version>
+    <time>1792344396</time>
+    <user>dimstar_suse</user>
+    <comment>Update xaos to 4.3.8 (forwarded request 1385807 from pluskalm)</comment>
+    <requestid>1385987</requestid>
+  </revision>
 </revisionlist>
