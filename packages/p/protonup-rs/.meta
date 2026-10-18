@@ -1,0 +1,5 @@
+<package name="protonup-rs" project="openSUSE:Factory">
+  <title>protonup-rs</title>
+  <description>A Rust app to automate the installation and update of Linux Gaming Compatibility tools.</description>
+  <url>https://github.com/auyer/Protonup-rs</url>
+</package>
