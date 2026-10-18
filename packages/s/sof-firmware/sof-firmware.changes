@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:04:17 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 2026.09.2:
+  * Updated v2.15.1 topology binaries for Intel targets, fixing
+    SoundWire digital microphones
+  * New topology sof-cht-rt5677.tplg
+
+-------------------------------------------------------------------
 Thu Sep 24 12:25:33 UTC 2026 - Michal Hlavac <miso@hlavki.eu>
 
 - Update to version 2026.09.1:
