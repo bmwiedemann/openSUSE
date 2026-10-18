@@ -1,0 +1,24 @@
+From a910d21a2705ef4cd16d91f29cdc8da1ab1a7221 Mon Sep 17 00:00:00 2001
+From: PaulBoersma <paul.boersma@uva.nl>
+Date: Tue, 13 Oct 2026 11:18:38 +0200
+Subject: [PATCH] quick fix for issue #3348 (should update whisper.cpp instead)
+
+---
+ external/whispercpp/whisper.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/external/whispercpp/whisper.cpp b/external/whispercpp/whisper.cpp
+index 9acb4fc9c..76646b0cf 100644
+--- a/external/whispercpp/whisper.cpp
++++ b/external/whispercpp/whisper.cpp
+@@ -1872,6 +1872,10 @@ static bool whisper_model_load(struct whisper_model_loader * loader, whisper_con
+             int32_t ttype;
+ 
+             read_safe(loader, n_dims);
++            if (n_dims < 0 || n_dims > 4) {   // quick fix for issue #3348 (real fix is to update whisper.cpp)
++                WHISPER_LOG_ERROR("%s: invalid number of dimensions (should be between 0 and 4): %d\n", __func__, n_dims);
++                return false;
++            }
+             read_safe(loader, length);
+             read_safe(loader, ttype);
+ 

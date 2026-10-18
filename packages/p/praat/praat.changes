@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:08:39 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- CVE-2026-110698: praat: improper n_dims argument validation in
+  whisper model loader can cause heap out-of-bounds write
+  (bsc#1285761)
+  * praat-improper-n_dims-argument-validation.patch
+
+-------------------------------------------------------------------
 Sun Aug 30 17:00:03 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.0.02:

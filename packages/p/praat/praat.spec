@@ -29,6 +29,8 @@ Source1:        %{name}.rpmlintrc
 Patch1:         praat-use_system_libs.patch
 # PATCH-FIX-OPENSUSE praat-no-return-in-nonvoid.patch -- make the compiler happy
 Patch2:         praat-no-return-in-nonvoid.patch
+# PATCH-FIX-UPSTREAM praat-improper-n_dims-argument-validation.patch bsc#1285761 badshah400@gmail.com -- CVE-2026-110698: praat: improper n_dims argument validation in whisper model loader can cause heap out-of-bounds write
+Patch3:         https://github.com/praat/praat.github.io/commit/a910d21a2705ef4cd16d91f29cdc8da1ab1a7221.patch#/praat-improper-n_dims-argument-validation.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glpk-devel
 BuildRequires:  hicolor-icon-theme

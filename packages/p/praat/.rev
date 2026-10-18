@@ -661,4 +661,14 @@
     <comment>1</comment>
     <requestid>1375759</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>1d9002c0cfd96f605dd62caebd85cb25</srcmd5>
+    <version>7.0.02</version>
+    <time>1792344298</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1385735 from badshah400
+
+CVE-2026-110698: praat: improper n_dims argument validation in whisper model loader can cause heap out-of-bounds write (bsc#1285761) * praat-improper-n_dims-argument-validation.patch</comment>
+    <requestid>1385739</requestid>
+  </revision>
 </revisionlist>
