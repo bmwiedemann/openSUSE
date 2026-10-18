@@ -24,20 +24,17 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
-
 %{?sle15_python_module_pythons}
 Name:           python-jupyter-server%{psuffix}
-Version:        2.20.0
+Version:        2.21.1
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://jupyter-server.readthedocs.io
 # SourceRepository: https://github.com/jupyter-server/jupyter_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_server/jupyter_server-%{version}.tar.gz
@@ -96,7 +93,6 @@ languages, sharing, and interactive widgets.
 
 %package test
 Summary:        The backend to Jupyter web applications - test requirements
-Group:          Development/Languages/Python
 Requires:       python-flaky
 Requires:       python-ipykernel
 Requires:       python-jupyter-server = %{version}

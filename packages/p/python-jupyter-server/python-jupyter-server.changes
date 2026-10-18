@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:17:15 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 2.21.1:
+  * Fix compatibility with Tornado 6.5.9 and newer
+
+-------------------------------------------------------------------
 Tue Jun 30 06:53:27 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.20.0 (CVE-2026-44727, bsc#1269630):
