@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Oct 18 08:59:45 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.20.1
+  ## pyqt-qt-wheel
+  * The --package-version option was added to allow the package
+    version to be set explicitly rather than defaulting to the Qt
+    version.
+  * The newer QtLabs libraries are now included in the PyQt6-Qt6
+    wheel.
+  * The QtGraphs2DImpl library is now included in the
+    PyQt6-Graphs-Qt6 wheel.
+  * The QtCanvas2D library is now included in the
+    PyQt6-CanvasPainter-Qt6 wheel.
+- Release v1.20.0
+  ## Support for Qt v6.12
+  * The minimum MacOS version for Qt v6.12 is v14.0.
+  * Updated QtMultimedia for the new versions of support libraries.
+  * The QtPdf and QtPdfWidgets modules and the qtwebview_webengine
+    plugin have been moved from PyQt6 to PyQt6-WebEngine.
+  * Added the PyQt6-CanvasPainter package.
+  ## Module API
+  * Added PyQtProject.get_version_tag() to allow version tags to be
+    independent of the Qt version.
+  ## Updated minimum ABI versions
+  * The minimum ABI versions have been updated to v12.20 and
+    v13.13.
+  ## Bug fixes
+  * Bundle the missing QtQmlCore library.
+
+-------------------------------------------------------------------
 Sun Aug 30 10:40:58 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.19.1
