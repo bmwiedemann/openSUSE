@@ -50,4 +50,12 @@
   * Fix a crash when loading files with a malformed &quot;smpl&quot; chunk (forwarded request 1339630 from rrahl0)</comment>
     <requestid>1339631</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aded731fa1881329ea31f7f39b11b67c</srcmd5>
+    <version>20260901</version>
+    <time>1792344291</time>
+    <user>dimstar_suse</user>
+    <comment>Update dr_libs to 20260901 snapshot (forwarded request 1385650 from pluskalm)</comment>
+    <requestid>1385714</requestid>
+  </revision>
 </revisionlist>

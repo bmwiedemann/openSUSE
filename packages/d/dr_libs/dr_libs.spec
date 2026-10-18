@@ -16,11 +16,11 @@
 #
 
 
-%define         flacversion 0.13.3
-%define         mp3version 0.7.3
-%define         wavversion 0.14.5
+%define         flacversion 0.13.4
+%define         mp3version 0.7.4
+%define         wavversion 0.14.6
 Name:           dr_libs
-Version:        20260315
+Version:        20260901
 Release:        0
 Summary:        Audio decoding libraries for C/C++, each in a single source file
 License:        MIT-0 OR Unlicense
@@ -30,6 +30,7 @@ Patch0:         fix-headers.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  miniaudio-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(sndfile)
 
@@ -38,10 +39,10 @@ Public domain, single file audio decoding libraries for C and C++.
 
 %package devel
 Summary:        Development files for %{name}
-BuildArch:      noarch
 Provides:       dr_flac = %{flacversion}
 Provides:       dr_mp3 = %{mp3version}
 Provides:       dr_wav = %{wavversion}
+BuildArch:      noarch
 
 %description devel
 %{summary}.

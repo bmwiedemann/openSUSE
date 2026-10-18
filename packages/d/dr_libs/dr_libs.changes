@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:05:54 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 20260901:
+  * Harden dr_wav, dr_flac and dr_mp3 against malformed files:
+    bounds checks for metadata, chunk and tag parsing.
+  * Fix uncontrolled memory allocation when parsing FLAC PICTURE
+    metadata (boo#1259811, CVE-2026-32836).
+  * Fix heap buffer overflow when parsing WAV files with a malformed
+    "smpl" chunk (boo#1259174, CVE-2026-29022).
+  * dr_flac 0.13.4, dr_mp3 0.7.4, dr_wav 0.14.6.
+  * Rebase fix-headers.patch against the restructured tests.
+
+-------------------------------------------------------------------
 Tue Mar 17 13:35:21 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 20260315:

@@ -6,7 +6,7 @@ index 4410b85..eac2ba5 100644
  #define MA_NO_DECODING
  #define MA_NO_ENCODING
  #define MA_IMPLEMENTATION
--#include "../../../miniaudio/miniaudio.h"
+-#include "../external/miniaudio/miniaudio.h"
 +#include <miniaudio/miniaudio.h>
  
  #define DR_WAV_IMPLEMENTATION
