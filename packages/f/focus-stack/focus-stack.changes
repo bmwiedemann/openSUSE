@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:54:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5:
+  * Add --no-align option to skip the alignment step completely
+  * Add --no-transform option to skip image transform alignment
+  * Add --align-keep-size option to keep original image size
+  * Reduce blur in findTransformECC alignment
+  * Fix integer rounding in Task_Merge denoising
+  * Fix build warnings and update OpenCV include paths
+  * Add CMakeLists.txt build support
+- Rebase fix-version.patch for the updated version string
+- Spec file cleanup via spec-cleaner
+
+-------------------------------------------------------------------
 Mon Feb 12 10:23:35 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Initial OBS release.

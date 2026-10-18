@@ -1,7 +1,6 @@
-Only in mod: build
-diff -ru focus-stack-1.4/Makefile mod/Makefile
---- focus-stack-1.4/Makefile	2022-05-20 09:12:58.000000000 +0200
-+++ mod/Makefile	2024-02-12 15:06:29.478884758 +0100
+diff -ru orig/Makefile mod/Makefile
+--- focus-stack-1.5/Makefile	2026-01-11 19:49:22.000000000 +0100
++++ mod/Makefile	2026-10-18 07:53:48.257435239 +0200
 @@ -6,6 +6,7 @@
  CXXFLAGS ?= -O2 -g3 -ggdb -Wall -Wextra -Wno-sign-compare
  DESTDIR ?=
@@ -19,9 +18,9 @@ diff -ru focus-stack-1.4/Makefile mod/Makefile
  
  # List of source code files
  CXXSRCS += focusstack.cc worker.cc options.cc logger.cc
-diff -ru focus-stack-1.4/src/main.cc mod/src/main.cc
---- focus-stack-1.4/src/main.cc	2022-05-20 09:12:58.000000000 +0200
-+++ mod/src/main.cc	2024-02-12 15:12:20.857548227 +0100
+diff -ru orig/src/main.cc mod/src/main.cc
+--- focus-stack-1.5/src/main.cc	2026-01-11 19:49:22.000000000 +0100
++++ mod/src/main.cc	2026-10-18 07:53:48.261435687 +0200
 @@ -3,10 +3,6 @@
  #include "focusstack.hh"
  #include <opencv2/core.hpp>
@@ -37,7 +36,7 @@ diff -ru focus-stack-1.4/src/main.cc mod/src/main.cc
  
    if (options.has_flag("--version"))
    {
--    std::cerr << "focus-stack 1.0, git version " GIT_VERSION ", built " __DATE__ " " __TIME__ "\n"
+-    std::cerr << "focus-stack " GIT_VERSION ", built " __DATE__ " " __TIME__ "\n"
 +    std::cerr << "focus-stack v" << RPM_VERSION << ", built " __DATE__ " " __TIME__ "\n"
                   "Compiled with OpenCV version " CV_VERSION "\n"
                   "Copyright (c) 2019 Petteri Aimonen\n\n"

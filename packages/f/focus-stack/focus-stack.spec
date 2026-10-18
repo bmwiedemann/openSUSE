@@ -1,7 +1,7 @@
 #
 # spec file for package focus-stack
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           focus-stack
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Fast and easy focus stacking
 License:        MIT
-URL:            https://github.com/PetteriAimonen/focus-stack 
+URL:            https://github.com/PetteriAimonen/focus-stack
 Source:         https://github.com/PetteriAimonen/focus-stack/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix-version.patch
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(opencv4)
 
 %description
@@ -45,6 +46,6 @@ combines them so that the complete subject is in focus.
 %license LICENSE.md
 %doc README.md
 %{_bindir}/focus-stack
-%{_mandir}/man1/focus-stack.1%{ext_man}
+%{_mandir}/man1/focus-stack.1%{?ext_man}
 
 %changelog
