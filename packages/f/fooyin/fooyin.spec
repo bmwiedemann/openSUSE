@@ -17,21 +17,12 @@
 
 
 Name:           fooyin
-Version:        0.9.2
+Version:        0.13.1
 Release:        0
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
 URL:            https://www.fooyin.org/
 Source0:        https://github.com/fooyin/fooyin/archive/v%{version}/%{name}-%{version}.tar.gz
-# Patch0 fixes build with QT 6.10.1 in fooyin 0.9.2
-# see https://github.com/fooyin/fooyin/issues/779
-# fixed upstream in master-branch, can be removed in the next version
-Patch0:         Fix-compatibility-with-Qt-6.10.1.patch
-# Patch1 fixes build with QT 6.10.1 in fooyin 0.9.2
-# see https://github.com/fooyin/fooyin/pull/725
-# fixed upstream in master-branch, can be removed in the next version
-Patch1:         Add-missing-header-include-for-QElapsedTimer-class.patch
-Patch2:         delete-extra-deps.patch
 BuildRequires:  c++_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -39,6 +30,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  ninja
 BuildRequires:  qt6-base-devel
 BuildRequires:  cmake(KDSingleApplication-qt6)
+BuildRequires:  cmake(QCoro6)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Linguist)
@@ -52,6 +44,8 @@ BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libcdio)
+BuildRequires:  pkgconfig(libcdio_paranoia)
 BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libswresample)
@@ -60,6 +54,7 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(zlib)
 
 Requires:       qt6-sql-sqlite
 
