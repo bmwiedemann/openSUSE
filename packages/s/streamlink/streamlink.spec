@@ -18,7 +18,7 @@
 
 %define         pythons %{primary_python}
 Name:           streamlink
-Version:        8.6.1
+Version:        8.6.2
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause

@@ -343,4 +343,12 @@
     - okru: fixed metadata schema (forwarded request 1379129 from rrahl0)</comment>
     <requestid>1379130</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4ae037605eeb90f4c16ef488bd26781e</srcmd5>
+    <version>8.6.2</version>
+    <time>1792344289</time>
+    <user>dimstar_suse</user>
+    <comment>Update streamlink to 8.6.2 (forwarded request 1385610 from pluskalm)</comment>
+    <requestid>1385713</requestid>
+  </revision>
 </revisionlist>
