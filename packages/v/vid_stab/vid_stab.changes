@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:03:38 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 1.1.2:
+  * Fix asymmetry between writing and reading of the binary
+    transformation file, which corrupted subsequent reads
+  * Drop remaining ORC references
+  * ARM support via sse2neon; fix serialisation on Darwin PPC and
+    on architectures with unsigned char by default
+  * Fix build with CMake 4 and respect CMAKE_OSX_ARCHITECTURES
+
+-------------------------------------------------------------------
 Fri Mar 21 23:31:52 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

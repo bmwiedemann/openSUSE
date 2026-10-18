@@ -1,7 +1,7 @@
 #
 # spec file for package vid_stab
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define soname 1_2
 
 Name:           vid_stab
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Video stabilizer
 License:        GPL-2.0-or-later
 URL:            http://public.hronopik.de/vid.stab/
-Source0:        https://github.com/georgmartius/vid.stab/archive/refs/tags/v1.1.1.tar.gz
+Source0:        https://github.com/georgmartius/vid.stab/archive/refs/tags/v%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++

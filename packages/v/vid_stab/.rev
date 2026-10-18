@@ -41,4 +41,18 @@
     <comment></comment>
     <requestid>1255350</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>51177f9f630630eb50603046de27b251</srcmd5>
+    <version>1.1.2</version>
+    <time>1792344157</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2:
+  * Fix asymmetry between writing and reading of the binary
+    transformation file, which corrupted subsequent reads
+  * Drop remaining ORC references
+  * ARM support via sse2neon; fix serialisation on Darwin PPC and
+    on architectures with unsigned char by default
+  * Fix build with CMake 4 and respect CMAKE_OSX_ARCHITECTURES</comment>
+    <requestid>1385675</requestid>
+  </revision>
 </revisionlist>
