@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:42:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.482:
+  * 1.480: rebuilt from UFO sources with a fontmake/otfautohint
+    pipeline; ss05 noteheads merged into ss08; Bravura Text
+    combining ligatures moved into Plane 15 PUA-A; metadata and
+    version-number fixes.
+  * 1.481: rescaled time-signature slash, corrected Sagittal
+    accidentals, barline metadata alignment, larger diamond
+    noteheads and further glyph corrections.
+  * 1.482: fix Bravura Text tall-bracket/slash scaling, smaller
+    diamond noteheads, Extended Helmholtz-Ellis accidentals
+    class and optional-glyph range documentation.
+
+-------------------------------------------------------------------
 Sat Aug 28 13:52:01 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.392

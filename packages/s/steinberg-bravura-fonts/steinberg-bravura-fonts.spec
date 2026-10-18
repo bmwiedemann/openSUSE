@@ -1,7 +1,7 @@
 #
 # spec file for package steinberg-bravura-fonts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           steinberg-bravura-fonts
-Version:        1.392
+Version:        1.482
 Release:        0
 Summary:        A complete, SMuFL compliant music font
 License:        OFL-1.1
-Group:          System/X11/Fonts
 URL:            https://www.smufl.org/fonts/
 Source:         bravura-%{version}.tar.xz
 BuildRequires:  fontpackages-devel
