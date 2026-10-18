@@ -21,17 +21,18 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-PyQt6-%{qtlib}
-Version:        6.11.0
+Version:        6.12.0
 Release:        0
 Summary:        Python bindings for the Qt Charts library
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtchart
-Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/pyqt6_charts-%{version}.tar.gz
-BuildRequires:  %{python_module PyQt6-devel >= 6.2}
+Source:         https://www.riverbankcomputing.com/pypi/packages/pyqt6-charts/pyqt6_charts-%{version}.tar.gz
+#Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%%{qtlib}/pyqt6_charts-%%{version}.tar.gz
+BuildRequires:  %{python_module PyQt6-devel >= 6.12}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pyqt-builder >= 1.17 with %python-pyqt-builder < 2}
-BuildRequires:  %{python_module sip-devel >= 6.9 with %python-sip-devel < 7}
+BuildRequires:  %{python_module pyqt-builder >= 1.20 with %python-pyqt-builder < 2}
+BuildRequires:  %{python_module sip-devel >= 6.17 with %python-sip-devel < 7}
 BuildRequires:  fdupes
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
