@@ -2,6 +2,7 @@
 # spec file for package zswap-cli
 #
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %bcond_without systemd
 Name:           zswap-cli
-Version:        1.2.0
+Version:        2.0.0
 Release:        0
 Summary:        Command-line tool to control the zswap kernel module options
 License:        MIT
@@ -77,13 +78,17 @@ compressed cache is much faster than reading from a swap device.
 
 %files
 %license LICENSE
-%doc README.md docs/*
+%doc README.md docs/configuration-files.md docs/environment-options.md
+%doc docs/features.md docs/installation.md docs/maintainers.md
+%doc docs/using-application.md
 %{_bindir}/zswap-cli
 %{_mandir}/man1/*.1%{?ext_man}
 %if %{with systemd}
 %dir %{_sysconfdir}/zswap-cli
-%config(noreplace) %{_sysconfdir}/zswap-cli/zswap-cli.conf
-%{_prefix}/lib/systemd/system/zswap-cli.service
+%ghost %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/zswap-cli/system.conf
+%dir %{_datadir}/zswap-cli
+%{_datadir}/zswap-cli/system.conf
+%{_unitdir}/zswap-cli.service
 %endif
 %{_datadir}/bash-completion/completions/zswap-cli
 %{_datadir}/metainfo/org.easycoding.zswap-cli.metainfo.xml

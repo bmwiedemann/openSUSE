@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:53:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.0:
+  * Breaking: default config moved from /etc/zswap-cli/zswap-cli.conf
+    to /usr/share/zswap-cli/system.conf; user overrides now live in
+    /etc/zswap-cli/system.conf (renamed to system.conf).
+  * Breaking: short CLI options removed; use the long option names.
+  * New --system option loads ZSwap options from the installed config
+    file; systemd unit now uses it.
+  * --stats works without super-user privileges where debugfs allows.
+
+-------------------------------------------------------------------
 Sun Jul  5 19:28:17 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.2.0:
