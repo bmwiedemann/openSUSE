@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.11.2
-%define short_version 6.11
+%define real_version 6.12.0
+%define short_version 6.12
 %define tar_name qtspeech-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -26,21 +26,15 @@
 %define pkg_suffix -docs
 %endif
 #
-# Not available in Leap 15
-%if 0%{?suse_version} > 1500
-%bcond_without flite
-%endif
 Name:           qt6-speech%{?pkg_suffix}
-Version:        6.11.2
+Version:        6.12.0
 Release:        0
 Summary:        Qt 6 TextToSpeech Library and Plugin
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
-%if %{with flite}
 # Flite is built without Alsa, adding it to BuildRequires isn't needed
 BuildRequires:  flite-devel > 2.0
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
@@ -116,9 +110,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 %files -n qt6-texttospeech
 %dir %{_qt6_pluginsdir}/texttospeech/
-%if %{with flite}
 %{_qt6_pluginsdir}/texttospeech/libqtexttospeech_flite.so
-%endif
 %{_qt6_pluginsdir}/texttospeech/libqtexttospeech_mock.so
 %{_qt6_pluginsdir}/texttospeech/libqtexttospeech_speechd.so
 %{_qt6_qmldir}/QtTextToSpeech/
