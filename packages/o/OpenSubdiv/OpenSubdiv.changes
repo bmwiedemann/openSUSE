@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:56:25 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 3.7.0:
+  * Relicensed to the Tomorrow Open Source Technology License 1.0:
+    upstream states the terms are unchanged from the previous
+    Apache-2.0 grant, only Section 6 (Trademarks) differs.
+  * Osd OpenGL-interfacing classes no longer include platform
+    OpenGL headers; local type aliases are used instead.
+  * opensubdiv/osd/opengl.h is deprecated and may be removed
+    in a future release.
+  * Improved Bfr::Parameterization conversions to sub-face
+    coordinates and minimal Bfr::Tessellation patterns for quads.
+  * Fixed build errors on some platforms from GL types in headers;
+    build_osd.py is compatible with recent CMake and Python.
+  * Library SONAME moves with the version as before: lib subpackage
+    renamed libosdCPU3_6_1 -> libosdCPU3_7_0.
+- Build system changes:
+  * Require cmake >= 3.14 per upstream minimum.
+  * TBB is now found in CMake config mode; depend on pkgconfig(tbb).
+
+-------------------------------------------------------------------
 Sat Aug  2 00:49:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - convert patch to apply with -p1 remove-rpath-fiddling.diff

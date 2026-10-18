@@ -1,8 +1,7 @@
 #
 # spec file for package OpenSubdiv
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,25 +17,30 @@
 #
 
 
-%define pkgver 3_6_1
+%define pkgver 3_7_0
 %define libname libosdCPU%{pkgver}
 Name:           OpenSubdiv
-Version:        3.6.1
+Version:        3.7.0
 Release:        0
 Summary:        Subdivision surface evaluation library
+# Legal-Review-Notice: upstream relicensed 3.7.0 from Apache-2.0
+# (with modified trademark section) to the "Tomorrow Open Source Technology
+# License 1.0", which upstream states carries the same terms and conditions
+# under a new name (only Section 6 "Trademarks" differs from Apache-2.0).
+# No SPDX identifier exists for TOST-1.0 yet, so the License tag stays
+# Apache-2.0 until legal-review assigns one.
 License:        Apache-2.0
-Group:          Productivity/Graphics/Visualization/Raytracers
 URL:            https://graphics.pixar.com/opensubdiv/docs/intro.html
 Source:         https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v%{pkgver}.tar.gz#/%{name}-%{pkgver}.tar.gz
 Patch0:         remove-rpath-fiddling.diff
 Patch1:         no-static.patch
-BuildRequires:  cmake >= 2.8.6
+BuildRequires:  cmake >= 3.14
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(tbb) >= 2018
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
@@ -49,7 +53,6 @@ BuildRequires:  pkgconfig(xxf86vm)
 
 %package -n %{libname}
 Summary:        Subdivision surface evaluation library
-Group:          System/Libraries
 
 %description -n %{libname}
 %{name} is a set of libraries that implement subdivision surface
@@ -63,7 +66,6 @@ to create digital assets.
 
 %package devel
 Summary:        Development files for OpenSubdiv
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
