@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:29:16 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 1.5.0:
+  * SONAME bump 1.3.0 -> 1.5.0; shlib package renamed from
+    libhiredis1_3_0 to libhiredis1_5_0
+  * Security hardening (no CVE ids assigned upstream): cap nesting
+    depth of aggregate replies against stack overflow and validate
+    map element counts; new maxdepth redisReader option
+  * Breaking: opt-in TLS peer certificate name verification via
+    verify_name in redisSSLOptions
+  * Parse RESP3 doubles with ffc instead of strtod
+  * Set FD_CLOEXEC on sockets, NULL check in redisReconnect, drain
+    the socket error queue after nonblocking TCP connect
+  * Allow extra build flags via HIREDIS_CFLAGS/HIREDIS_LDFLAGS
+- Spec cleanup: drop Group tags
+
+-------------------------------------------------------------------
 Sun May 18 06:42:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - hiredis 1.3.0:

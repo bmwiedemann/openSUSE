@@ -1,7 +1,7 @@
 #
 # spec file for package hiredis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,13 +17,12 @@
 #
 
 
-%global libname lib%{name}1_3_0
 Name:           hiredis
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
+%global libname lib%{name}1_5_0
 Summary:        Minimalistic C client for Redis
 License:        BSD-3-Clause
-Group:          Productivity/Databases/Clients
 URL:            https://github.com/redis/hiredis
 Source0:        https://github.com/redis/hiredis/archive/v%{version}.tar.gz
 Patch0:         relocatable_executable.patch
@@ -37,7 +36,6 @@ Redis database.
 
 %package devel
 Summary:        Header files and libraries for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -46,7 +44,6 @@ libraries for Redis database.
 
 %package -n %{libname}
 Summary:        Shared library for %{name}
-Group:          Productivity/Databases/Clients
 
 %description -n %{libname}
 Shared library for %{name}. The %{name}-example and
