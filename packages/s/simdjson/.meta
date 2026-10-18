@@ -1,0 +1,4 @@
+<package name="simdjson" project="openSUSE:Factory">
+  <title>Parsing gigabytes of JSON per second</title>
+  <description>simdjson shared library for Factory (target devel:libraries:c_c++), for science/apache-arrow SYSTEM source.</description>
+</package>
