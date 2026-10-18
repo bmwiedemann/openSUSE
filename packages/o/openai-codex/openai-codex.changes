@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 13:25:42 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Ship a complete Codex package so the daemon, started by default
+  since 0.157.0, works instead of failing with "this CLI has no
+  complete local package" (gh#openai/codex#48050):
+  * install the binary, codex-package.json and the rg/bwrap helpers
+    below /usr/libexec/codex, with /usr/bin/codex a symlink to it
+  * codex-disable-daemon-auto-update.patch: the daemon does not
+    replace the packaged binary with an upstream download by default
+
+-------------------------------------------------------------------
 Fri Oct 16 06:14:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.163.0:

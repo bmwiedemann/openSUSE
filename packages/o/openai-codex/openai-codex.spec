@@ -124,6 +124,8 @@ Patch2:         codex-system-libzstd.patch
 Patch3:         codex-bump-gix-0.88.patch
 # PATCH-FIX-OPENSUSE codex-gix-error-anyhow.patch mpluskal@suse.com -- adapt codex-git-utils to the gix 0.88 gix-error API (boo#1285151)
 Patch4:         codex-gix-error-anyhow.patch
+# PATCH-FIX-OPENSUSE codex-disable-daemon-auto-update.patch mpluskal@suse.com -- distribution policy: the managed daemon must not replace the packaged binary with an upstream download
+Patch5:         codex-disable-daemon-auto-update.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging >= 1.2.0
 BuildRequires:  cmake
@@ -277,13 +279,39 @@ if test -z "$targetdir"; then
     echo "cannot find the built codex binary" >&2
     exit 1
 fi
-install -D -m 0755 "$targetdir/release/codex" %{buildroot}%{_bindir}/codex
+# The daemon (daemon_auto_start, on by default) needs a complete Codex package:
+# codex-package.json beside bin/, codex-resources/ and codex-path/ (see
+# scripts/codex_package/layout.py, app-server-daemon/src/prepare_install.rs).
+# rg and bwrap must be real files inside it, so they wrap the system binaries;
+# codex-code-mode-host is not built (Patch0 drops v8) but the layout requires it.
+pkgdir=%{_libexecdir}/codex
+install -D -m 0755 "$targetdir/release/codex" %{buildroot}$pkgdir/bin/codex
+install -d %{buildroot}$pkgdir/codex-resources %{buildroot}$pkgdir/codex-path
+printf '#!/bin/sh\necho "codex-code-mode-host is not built in this package" >&2\nexit 1\n' > %{buildroot}$pkgdir/bin/codex-code-mode-host
+printf '#!/bin/sh\nexec %{_bindir}/bwrap "$@"\n' > %{buildroot}$pkgdir/codex-resources/bwrap
+printf '#!/bin/sh\nexec %{_bindir}/rg "$@"\n' > %{buildroot}$pkgdir/codex-path/rg
+chmod 0755 %{buildroot}$pkgdir/bin/codex-code-mode-host %{buildroot}$pkgdir/codex-resources/bwrap %{buildroot}$pkgdir/codex-path/rg
+# The target must equal the daemon's platform_target(): the compiler's host triple.
+target=$(rustc -vV | sed -n 's/^host: //p')
+cat > %{buildroot}$pkgdir/codex-package.json <<EOF
+{
+  "layoutVersion": 1,
+  "version": "%{version}",
+  "target": "$target",
+  "variant": "codex",
+  "entrypoint": "bin/codex",
+  "resourcesDir": "codex-resources",
+  "pathDir": "codex-path"
+}
+EOF
+install -d %{buildroot}%{_bindir}
+ln -s ../libexec/codex/bin/codex %{buildroot}%{_bindir}/codex
 
 # The unbundling is silent when it regresses: bzip2-sys falls back to its own
 # copy when pkg-config fails, and the two env vars in %%build are easy to lose.
 # Fail the build instead.
 for lib in libbz2.so libzstd.so libonig.so libsqlite3.so; do
-    readelf -d %{buildroot}%{_bindir}/codex | grep -q "NEEDED.*$lib" || {
+    readelf -d %{buildroot}$pkgdir/bin/codex | grep -q "NEEDED.*$lib" || {
         echo "ERROR: $lib is not a DT_NEEDED of codex - it got bundled again" >&2
         exit 1
     }
@@ -330,6 +358,7 @@ cd codex-rs
 %license LICENSE NOTICE
 %doc README.md CHANGELOG.md docs/
 %{_bindir}/codex
+%{_libexecdir}/codex/
 
 %files bash-completion
 %dir %{_datadir}/bash-completion

@@ -1,0 +1,33 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: Do not self-update the managed daemon from chatgpt.com by default
+
+The packaged app-server daemon (daemon_auto_start, on by default since 0.157.0)
+spawns an updater that, five minutes after start and then hourly, downloads
+https://chatgpt.com/codex/install.sh, runs it, and swaps the RPM-installed
+binary for an upstream prebuilt in ~/.codex/packages/app-server-daemon.  Updates
+come from the package manager here, so default the daemon updater to off; users
+who want it can set updater.autoUpdateEnabled = true in
+~/.codex/app-server-daemon/settings.json.
+
+Downstream-only distribution policy, not suitable for upstream submission.
+
+--- a/codex-rs/app-server-daemon/src/settings.rs
++++ b/codex-rs/app-server-daemon/src/settings.rs
+@@ -29,7 +29,7 @@
+         Self {
+             remote_control_enabled: false,
+             feature_overrides: BTreeMap::new(),
+-            auto_update_enabled: true,
++            auto_update_enabled: false,
+             update_interval_minutes: DEFAULT_UPDATE_INTERVAL_MINUTES,
+             shutdown_grace_seconds: DEFAULT_SHUTDOWN_GRACE_SECONDS,
+         }
+@@ -85,7 +85,7 @@
+ }
+ 
+ fn default_auto_update_enabled() -> bool {
+-    true
++    false
+ }
+ 
+ fn default_update_interval_minutes() -> u32 {
