@@ -270,4 +270,25 @@
     (bsc#1285085, CVE-2026-109090)</comment>
     <requestid>1385038</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>001085a7b7018f96225b9d049ee9487d</srcmd5>
+    <version>1.8.4</version>
+    <time>1792344148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.4
+  * This release includes the fixes for the issues listed in
+    https://lists.x.org/archives/xorg-announce/2026-October/003752.html
+    as well as additional hardening and bug fixes.
+- supersedes the following patches:
+  * 0001-boo1281605_CVE-2026-93541_XQueryDeviceState-check-ValuatorClass-num_valuators-.patch
+  * 0002-boo1281606_CVE-2026-93542_size_classes-copy_classes-bound-XI2-class-lengths-to.patch
+  * 0003-boo1281608_CVE-2026-93543_size_classes-copy_classes-enforce-XI2-per-type-class.patch
+  * 0004-boo1281609_CVE-2026-93544_XIQueryDevice-keep-padded-name-and-class-bytes-withi.patch
+  * 0005-boo1281612_CVE-2026-93545_XListInputDevices-validate-device-name-lengths-again.patch
+  * 0006-boo1281615_CVE-2026-94281_XListInputDevices-validate-class-lengths-cumulativel.patch
+  * 0007-boo1281651_CVE-2026-94282_wireToEnterLeave-validate-buttons_len-against-the-re.patch
+  * boo1285084_CVE-2026-109089_XGetDeviceControl-require-reply-control-to-match-the.patch
+  * boo1285085_CVE-2026-109090_XGetDeviceControl-size-DEVICE_ENABLE-replies-for-XDe.patch</comment>
+    <requestid>1385478</requestid>
+  </revision>
 </revisionlist>
