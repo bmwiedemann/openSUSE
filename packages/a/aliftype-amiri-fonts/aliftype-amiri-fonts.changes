@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:42:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.003:
+  * 1.003: restore Latin kerning that was broken since 1.001.
+  * 1.002: improve sukun/jamz mark positioning, no kerning of
+    tabular numbers, fix wrong glyph class for ringcomb in bold.
+  * 1.001: fix mark positioning in some Adobe InDesign versions,
+    fix double kashida insertion before ain, use rlig instead of
+    calt for the required contextual substitutions.
+
+-------------------------------------------------------------------
 Tue Dec 20 00:37:05 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 0.117 -> 1.000

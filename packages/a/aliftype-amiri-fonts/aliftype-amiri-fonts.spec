@@ -1,7 +1,7 @@
 #
 # spec file for package aliftype-amiri-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           aliftype-amiri-fonts
-Version:        1.000
+Version:        1.003
 Release:        0
 Summary:        Amiri is a body text Naskh typeface
 License:        OFL-1.1
-Group:          System/X11/Fonts
 URL:            https://github.com/aliftype/amiri
 Source0:        https://github.com/aliftype/amiri/releases/download/%{version}/Amiri-%{version}.zip
 BuildRequires:  fontpackages-devel

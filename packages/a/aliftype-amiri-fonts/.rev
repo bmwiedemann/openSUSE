@@ -23,4 +23,12 @@
 - Make medial hamza work with lam-alef ligature.</comment>
     <requestid>1043838</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>096d0bc3535c675c100042c82654f4b8</srcmd5>
+    <version>1.003</version>
+    <time>1792344192</time>
+    <user>dimstar_suse</user>
+    <comment>Update aliftype-amiri-fonts to 1.003 (forwarded request 1385625 from pluskalm)</comment>
+    <requestid>1385703</requestid>
+  </revision>
 </revisionlist>
