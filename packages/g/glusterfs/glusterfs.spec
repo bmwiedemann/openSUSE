@@ -1,7 +1,7 @@
 #
 # spec file for package glusterfs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,16 @@
 
 
 Name:           glusterfs
-Version:        11.1
+Version:        11.2
 Release:        0
 Summary:        Aggregating distributed file system
 License:        GPL-2.0-only OR LGPL-3.0-or-later
 Group:          System/Filesystems
 URL:            https://www.gluster.org/
-
 #Git-Clone:	https://github.com/gluster/glusterfs
 #Git-Clone:	https://github.com/fvzwieten/lsgvt
 #Changelog:     https://docs.gluster.org/en/latest/release-notes/
-Source:         https://download.gluster.org/pub/gluster/glusterfs/11/%version/glusterfs-%version.tar.gz
-Patch2:         0001-glusterfs-fix-heap-buffer-overflow-on-startup.patch
+Source:         https://github.com/gluster/glusterfs/archive/refs/tags/v%version.tar.gz
 BuildRequires:  acl-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -59,6 +57,9 @@ Requires:       libgfchangelog0 = %version
 Requires:       libgfrpc0 = %version
 Requires:       libgfxdr0 = %version
 Requires:       libglusterfs0 = %version
+# glusterfs uses liburcu atomics. liburcu does not support 64-bit atomics on
+# 32-bit though (even if the compiler itself does).
+ExcludeArch:    %arm32 %ix86 %mips32 sparc sparcv8 sparcv9 sparcv9v %riscv32
 %{?systemd_ordering}
 
 %description
