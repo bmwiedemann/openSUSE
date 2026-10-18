@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 18 06:14:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.939:
+  * Server hardening: reject plugin data from unauthenticated
+    clients, limit receivers in plugin data transmissions, drop
+    messages from rejected connections, harden authentication
+    against repeated attempts, and fix a potential deadlock
+  * Fix overly permissive CIDR ban matching for prefix lengths
+    that are not a multiple of 8
+  * Client: honor "Force TCP Mode" for UDP pings, so voice
+    traffic is not routed back over UDP
+  * Server: use the full password alphabet when generating the
+    initial SuperUser password
+  * Client: unload libraries after a failed load; QoS (qWAVE)
+    delay-load, IPv6 and loopback fixes
+  * Fix build failure with newer compilers (missing <climits>
+    include for CHAR_BIT)
+  * Protocol: handle and propagate protobuf serialization failures
+  * Updated translations
+  * Spec cleanup: drop obsolete Group: tags, use pkgconfig()
+    build requirements
+  * Rebase mumble-unbundle-tracy.patch for the new upstream
+    sources (msgPluginDataTransmission gained hardening
+    guards upstream)
+
+-------------------------------------------------------------------
 Sun Sep 20 17:00:06 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add mumble-fix-pluginupdater-init.patch, fix Tumbleweed building

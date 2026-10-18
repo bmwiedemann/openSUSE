@@ -357,7 +357,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  #define RATELIMIT(user)                   \
  	if (user->leakyBucket.ratelimit(1)) { \
  		return;                           \
-@@ -163,8 +161,6 @@ bool isChannelEnterRestricted(Channel *c
+@@ -163,8 +161,6 @@
  }
  
  void Server::msgAuthenticate(ServerUser *uSource, MumbleProto::Authenticate &msg) {
@@ -366,7 +366,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	if (uSource->sState == ServerUser::Authenticated && (msg.tokens_size() > 0 || !uSource->qslAccessTokens.empty())) {
  		// Process a change in access tokens for already authenticated users
  		QStringList qsl;
-@@ -651,8 +647,6 @@ void Server::msgAuthenticate(ServerUser
+@@ -661,8 +657,6 @@
  }
  
  void Server::msgBanList(ServerUser *uSource, MumbleProto::BanList &msg) {
@@ -375,7 +375,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	QSet< Ban > previousBans, newBans;
-@@ -733,8 +727,6 @@ void Server::msgUDPTunnel(ServerUser *,
+@@ -743,8 +737,6 @@
  }
  
  void Server::msgUserState(ServerUser *uSource, MumbleProto::UserState &msg) {
@@ -384,7 +384,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  	VICTIM_SETUP;
  
-@@ -1193,8 +1185,6 @@ void Server::msgUserState(ServerUser *uS
+@@ -1203,8 +1195,6 @@
  }
  
  void Server::msgUserRemove(ServerUser *uSource, MumbleProto::UserRemove &msg) {
@@ -393,7 +393,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  	VICTIM_SETUP;
  
-@@ -1232,8 +1222,6 @@ void Server::msgUserRemove(ServerUser *u
+@@ -1242,8 +1232,6 @@
  }
  
  void Server::msgChannelState(ServerUser *uSource, MumbleProto::ChannelState &msg) {
@@ -402,7 +402,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	Channel *c = nullptr;
-@@ -1518,8 +1506,6 @@ void Server::msgChannelState(ServerUser
+@@ -1528,8 +1516,6 @@
  }
  
  void Server::msgChannelRemove(ServerUser *uSource, MumbleProto::ChannelRemove &msg) {
@@ -411,7 +411,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	Channel *c = qhChannels.value(msg.channel_id());
-@@ -1537,8 +1523,6 @@ void Server::msgChannelRemove(ServerUser
+@@ -1547,8 +1533,6 @@
  }
  
  void Server::msgTextMessage(ServerUser *uSource, MumbleProto::TextMessage &msg) {
@@ -420,7 +420,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  	QMutexLocker qml(&qmCache);
  
-@@ -1748,8 +1732,6 @@ void logACLs(Server *server, const Chann
+@@ -1758,8 +1742,6 @@
  
  
  void Server::msgACL(ServerUser *uSource, MumbleProto::ACL &msg) {
@@ -429,7 +429,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	Channel *c = qhChannels.value(msg.channel_id());
-@@ -1968,8 +1950,6 @@ void Server::msgACL(ServerUser *uSource,
+@@ -1978,8 +1960,6 @@
  }
  
  void Server::msgQueryUsers(ServerUser *uSource, MumbleProto::QueryUsers &msg) {
@@ -438,7 +438,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	// User needs Write permission on at least one channel in the tree
-@@ -2010,8 +1990,6 @@ void Server::msgQueryUsers(ServerUser *u
+@@ -2020,8 +2000,6 @@
  }
  
  void Server::msgPing(ServerUser *uSource, MumbleProto::Ping &msg) {
@@ -447,7 +447,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  
  	QMutexLocker l(&uSource->qmCrypt);
-@@ -2041,8 +2019,6 @@ void Server::msgPing(ServerUser *uSource
+@@ -2051,8 +2029,6 @@
  }
  
  void Server::msgCryptSetup(ServerUser *uSource, MumbleProto::CryptSetup &msg) {
@@ -456,7 +456,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  
  	QMutexLocker l(&uSource->qmCrypt);
-@@ -2064,8 +2040,6 @@ void Server::msgContextActionModify(Serv
+@@ -2074,8 +2050,6 @@
  }
  
  void Server::msgContextAction(ServerUser *uSource, MumbleProto::ContextAction &msg) {
@@ -465,7 +465,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	unsigned int session = msg.has_session() ? msg.session() : 0;
-@@ -2092,8 +2066,6 @@ QString convertWithSizeRestriction(const
+@@ -2102,8 +2076,6 @@
  }
  
  void Server::msgVersion(ServerUser *uSource, MumbleProto::Version &msg) {
@@ -474,7 +474,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	RATELIMIT(uSource);
  
  	uSource->m_version = MumbleProto::getVersion(msg);
-@@ -2116,8 +2088,6 @@ void Server::msgVersion(ServerUser *uSou
+@@ -2126,8 +2098,6 @@
  }
  
  void Server::msgUserList(ServerUser *uSource, MumbleProto::UserList &msg) {
@@ -483,7 +483,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP(ServerUser::Authenticated);
  
  	// The register permission is required on the root channel to be allowed to
-@@ -2193,8 +2163,6 @@ void Server::msgUserList(ServerUser *uSo
+@@ -2203,8 +2173,6 @@
  }
  
  void Server::msgVoiceTarget(ServerUser *uSource, MumbleProto::VoiceTarget &msg) {
@@ -492,7 +492,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  
  	int target = static_cast< int >(msg.id());
-@@ -2242,8 +2210,6 @@ void Server::msgVoiceTarget(ServerUser *
+@@ -2252,8 +2220,6 @@
  }
  
  void Server::msgPermissionQuery(ServerUser *uSource, MumbleProto::PermissionQuery &msg) {
@@ -501,7 +501,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  
  	Channel *c = qhChannels.value(msg.channel_id());
-@@ -2257,8 +2223,6 @@ void Server::msgCodecVersion(ServerUser
+@@ -2267,8 +2233,6 @@
  }
  
  void Server::msgUserStats(ServerUser *uSource, MumbleProto::UserStats &msg) {
@@ -510,7 +510,7 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  	VICTIM_SETUP;
  	const BandwidthRecord &bwr            = pDstServerUser->bwr;
-@@ -2346,8 +2310,6 @@ void Server::msgUserStats(ServerUser *uS
+@@ -2356,8 +2320,6 @@
  }
  
  void Server::msgRequestBlob(ServerUser *uSource, MumbleProto::RequestBlob &msg) {
@@ -519,12 +519,12 @@ Index: mumble-1.5.901/src/murmur/Messages.cpp
  	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  
  	int ntextures     = msg.session_texture_size();
-@@ -2398,8 +2360,6 @@ void Server::msgSuggestConfig(ServerUser
+@@ -2408,8 +2370,6 @@
  }
  
- void Server::msgPluginDataTransmission(ServerUser *sender, MumbleProto::PluginDataTransmission &msg) {
+ void Server::msgPluginDataTransmission(ServerUser *uSource, MumbleProto::PluginDataTransmission &msg) {
 -	ZoneScoped;
 -
- 	// A client's plugin has sent us a message that we shall delegate to its receivers
+ 	MSG_SETUP_NO_UNIDLE(ServerUser::Authenticated);
  
- 	if (sender->m_pluginMessageBucket.ratelimit(1)) {
+ 	// A client's plugin has sent us a message that we shall delegate to its receivers

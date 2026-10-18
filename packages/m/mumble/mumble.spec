@@ -26,7 +26,7 @@
 %endif
 %bcond_without server
 Name:           mumble
-Version:        1.5.915
+Version:        1.5.939
 Release:        0
 Summary:        Voice Communication Client for Gamers
 # Most files are BSD-3-Clause
@@ -34,7 +34,6 @@ Summary:        Voice Communication Client for Gamers
 # 3rdparty/SPSCQueue: MIT
 # 3rdparty/flag-icons: MIT
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
-Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://www.mumble.info/
 Source:         %{name}-%{version}.tar.xz
 Source6:        baselibs.conf
@@ -87,14 +86,16 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  pkgconfig(libcap)
 %endif
 %if 0%{?suse_version} <= 1550
-BuildRequires:  protobuf-devel
+BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(protobuf-lite)
+BuildRequires:  pkgconfig(utf8_range)
 %else
 BuildRequires:  cmake(protobuf)
 %endif
 %if 0%{?suse_version} > 1600
 BuildRequires:  cmake(SndFile)
 %else
-BuildRequires:  libsndfile-devel
+BuildRequires:  pkgconfig(sndfile)
 %endif
 %ifarch x86_64
 BuildRequires:  gcc-c++-32bit
@@ -115,7 +116,6 @@ won't be audible to other players.
 %if %{with server}
 %package server
 Summary:        Voice Communication Server for Gamers
-Group:          Productivity/Multimedia/Sound/Utilities
 Requires:       lsb-release
 Recommends:     libQt5Sql5-mysql
 Recommends:     libQt5Sql5-postgresql
