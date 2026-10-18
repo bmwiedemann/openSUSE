@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:34:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to TSR 20240920 and daemon 20240916 (upstream ships
+  them as separate artifacts now, replacing ethflop-20191003.zip
+  with ethflop-20240920.zip and ethflopd-20240916-src.tar.gz):
+  * TSR: phantom-drive check, drive-letter signaling to server,
+    stack health check, configurable stack size, improved answer
+    validation
+  * Daemon: thin-provisioned large images, client mode, UDP
+    control socket replacing the lock file, cached answer replay,
+    DMF image support, syslog logging
+  * Relicensed from ISC to MIT
+- Drop the dos_tsr bcond: TSR sources are no longer in the release
+  artifacts, the prebuilt ETHFLOP.COM is used (as before by default)
+
+-------------------------------------------------------------------
 Mon Nov 20 22:03:46 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0~20191003
