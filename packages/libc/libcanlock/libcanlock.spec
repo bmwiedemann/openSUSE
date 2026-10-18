@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 
 %description
 Cancel locks are used by Usenet article posters to authenticate their
-authorship of an article. It may then by used by servers to prevent
+authorship of an article. It may then be used by servers to prevent
 cancel and supersede abuse. The use of this feature remains the
 newsmaster's decision.
 
@@ -49,7 +49,7 @@ libcanlock is a library for creating and verifying RFC 8315 Netnews
 Cancel-Locks. This implementation uses the recommended algorithm from
 Section 4 with HMAC based on the same hash function as <scheme>.
 
-This subpackage contains shared library part of libcanlock.
+This subpackage contains the shared library part of libcanlock.
 
 %package devel
 Summary:        Development files for Usenet cancel lock library
@@ -70,7 +70,7 @@ Group:          Productivity/Networking/News/Utilities
 
 %description -n canlock
 Cancel locks are used by Usenet article posters to authenticate their
-authorship of an article. It may then by used by servers to prevent
+authorship of an article. It may then be used by servers to prevent
 cancel and supersede abuse. The use of this feature remains the
 newsmaster's decision.
 
