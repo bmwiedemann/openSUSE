@@ -1,7 +1,7 @@
 #
 # spec file for package noson
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           noson
-Version:        2.10.2
+Version:        2.14.1
 Release:        0
 Summary:        C++ library for accessing sonos devices
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/janbar/noson
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM noson-include-time.h.patch gh#janbar/noson#16 -- Fix build with gcc 12.1
-Patch0:         noson-include-time.h.patch
-# PATCH-FIX-UPSTREAM noson-fix-missing-include.patch -- Add missing include <cstdint>
-Patch1:         noson-fix-missing-include.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flac-devel
