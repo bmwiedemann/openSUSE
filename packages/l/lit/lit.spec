@@ -20,7 +20,7 @@
 %bcond_with libalternatives
 %endif
 Name:           lit
-Version:        23.1.1
+Version:        23.1.3
 Release:        0
 Summary:        A portable tool for executing test suites
 License:        Apache-2.0 WITH LLVM-exception

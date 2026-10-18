@@ -64,4 +64,12 @@
     <comment>Forward lit 23.1.1 to Factory (accepted devel SR 1377684; LLVM 23.1 test-suite runner; local aarch64 build green, source_validator clean)</comment>
     <requestid>1377688</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>238a95b229313827828b91851274939f</srcmd5>
+    <version>23.1.3</version>
+    <time>1792344414</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1386002</requestid>
+  </revision>
 </revisionlist>
