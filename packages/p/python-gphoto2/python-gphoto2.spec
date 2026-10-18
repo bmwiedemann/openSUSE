@@ -1,7 +1,7 @@
 #
 # spec file for package python-gphoto2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-gphoto2
-Version:        2.5.1
+Version:        2.6.4
 Release:        0
 Summary:        Python interface to libgphoto2
 License:        LGPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libgphoto2)
+BuildRequires:  pkgconfig(libgphoto2) >= 2.5.10
 %python_subpackages
 
 %description

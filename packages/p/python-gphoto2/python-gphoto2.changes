@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:55:57 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 2.6.4:
+  * CameraWidget supports len() and indexing to access child
+    widgets.
+  * Passing a CameraFile object to gp_camera_file_get and
+    gp_camera_capture_preview is deprecated.
+  * CameraList iterator reinstated in 2.6.1 but deprecated, use
+    items() instead.
+  * Numerous small cleanups and SWIG compatibility fixes.
+- Add versioned BuildRequires on libgphoto2 >= 2.5.10, matching
+  upstream's stated minimum.
+
+-------------------------------------------------------------------
 Mon Jan 13 01:59:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.5.1:
