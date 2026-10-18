@@ -56,13 +56,13 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        2.0.31
+Version:        2.0.32
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 2.0.31 from the declared license field
+# Legal-Review-Notice: rederived for 2.0.32 from the declared license field
 # of all 354 unique packages in the vendor tarball (355 store entries, one of
 # which is the symlink farm and not a package). No copyleft of any kind. The
 # SPDX set and the counts are unchanged from 2.0.28 (MIT 199, Apache-2.0 69,
@@ -123,6 +123,7 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  nodejs26-devel
 BuildRequires:  photon-node = %{photon_version}
+BuildRequires:  pkgconfig
 # %%prep reads the @opentui/core pin out of package.json.
 BuildRequires:  python3-base
 # Only for %%check, which loads every system grammar module with its
@@ -142,7 +143,6 @@ BuildRequires:  tree-sitter-cpp-queries
 BuildRequires:  tree-sitter-cpp-wasm
 BuildRequires:  tree-sitter-css-queries
 BuildRequires:  tree-sitter-css-wasm
-BuildRequires:  tree-sitter-devel
 BuildRequires:  tree-sitter-diff-queries
 BuildRequires:  tree-sitter-diff-wasm
 BuildRequires:  tree-sitter-elixir-queries
@@ -197,6 +197,7 @@ BuildRequires:  tree-sitter-yaml-queries
 BuildRequires:  tree-sitter-yaml-wasm
 BuildRequires:  tree-sitter-zig-wasm = %{ts_zig_version}
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(tree-sitter)
 # The two native libraries are loaded from their packages at run time;
 # the floor is the tree's version, but newer binaries stay compatible:
 # the vendored bun-pty 0.4.11 binds exactly the eight cdylib symbols 0.4.9

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 18 17:52:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.32 (the 2.x line publishes no release objects, so
+  this is a summary of the v2.0.31..v2.0.32 tag-to-tag diff)
+  * TUI: /copy copies the last assistant message, including the
+    compaction summary instead of the compaction prompt
+  * Server: new experimental voice session endpoint
+  * CLI: no longer crashes the auth login when no browser opener
+    is available
+  * AI: retries Gemini MALFORMED_RESPONSE finishes; snapshot
+    capture retries when concurrent Git writes collide on Windows
+  * Core: refreshed bundled models.dev snapshot
+  * OpenTUI stays 0.5.17, fff 0.10.5, bun-pty 0.4.11, photon 0.3.4,
+    parcel-watcher 2.5.1: the tag pins them all, so the %prep pin
+    checks pass unmodified; no new mandatory dependencies
+  * Many more fixes and improvements; the full list is the
+    v2.0.31..v2.0.32 commit range, which publishes no release notes
+- Regenerate the vendor tree: 355 of 2176 store entries kept, keep
+  list byte-identical to 2.0.31, so the closure is unchanged
+- Legal review re-derived for the new tree: licence set identical
+  to 2.0.31 by the same enumeration, no copyleft
+- All five patches apply clean against 2.0.32 (offsets only, no
+  rebases)
+
+-------------------------------------------------------------------
 Sat Oct 17 06:18:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.31 (the 2.x line publishes no release objects, so
