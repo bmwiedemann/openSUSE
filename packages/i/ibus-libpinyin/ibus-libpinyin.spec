@@ -23,44 +23,40 @@
 %bcond_without lua
 %bcond_with    boost
 %endif
-
 %if !0%{?is_opensuse}
 %bcond_with cloud_input
 %bcond_with lua
 %bcond_with opencc
 %bcond_with boost
 %endif
-
 Name:           ibus-libpinyin
-Version:        1.16.5
+Version:        1.16.6
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
 License:        GPL-3.0-or-later
-Group:          System/I18n/Chinese
 URL:            https://github.com/libpinyin/ibus-libpinyin
-Source:         https://github.com/libpinyin/ibus-libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM PYPEnglishCandidates-fix-vector-iterator-invalidation.patch hillwood@opensuse.org
-# Fix a crash bug (boo#1257531, gh#libpinyin/ibus-libpinyin#549)
-Patch0:         PYPEnglishCandidates-fix-vector-iterator-invalidation.patch
+Source:         https://github.com/libpinyin/ibus-libpinyin/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  gnome-common
-BuildRequires:  ibus-devel >= 1.5.11
 BuildRequires:  intltool
 BuildRequires:  libtool
-BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sqlite3
-BuildRequires:  sqlite3-devel
 BuildRequires:  pkgconfig(gdk-3.0)
+BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.11
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpinyin) >= 2.9.92
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(uuid)
+Provides:       locale(ibus:zh_CN;zh_SG)
+%{ibus_requires}
 %if %{with lua}
 BuildRequires:  pkgconfig(lua)
 %endif
 %if %{with opencc}
-BuildRequires:  opencc-devel >= 1.0.0
+BuildRequires:  pkgconfig(opencc) >= 1.0.0
 %endif
 %if %{with cloud_input}
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0
@@ -75,8 +71,6 @@ BuildRequires:  python3-base
 Requires:       python3-base
 Requires:       python3-gobject-Gdk
 %endif
-Provides:       locale(ibus:zh_CN;zh_SG)
-%{ibus_requires}
 
 %description
 It includes a Chinese Pinyin input method and a Chinese ZhuYin (Bopomofo) input
@@ -118,7 +112,7 @@ NOCONFIGURE=1 ./autogen.sh
            --datadir=%{_datadir} \
            --disable-static
 
-%make_build %{?_smp_mflags}
+%make_build
 
 %install
 %make_install %{?_smp_mflags}
@@ -129,7 +123,6 @@ NOCONFIGURE=1 ./autogen.sh
 %fdupes %{buildroot}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %license COPYING
 %doc AUTHORS README NEWS
 %{_ibus_libexecdir}/ibus-engine-libpinyin

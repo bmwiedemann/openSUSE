@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:03:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.16.6:
+  * Fix a crash issue (gh#libpinyin/ibus-libpinyin#549).
+  * Update built-in Chinese and English dictionaries.
+  * Translation updates.
+- Drop PYPEnglishCandidates-fix-vector-iterator-invalidation.patch:
+  fixed upstream.
+- Track upstream tag rename: release assets moved under v-prefixed
+  tag, adjust Source URL.
+
+-------------------------------------------------------------------
 Sun Feb  1 14:02:56 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add PYPEnglishCandidates-fix-vector-iterator-invalidation.patch, fix a

@@ -453,4 +453,12 @@
   crash bug (boo#1257531, gh#libpinyin/ibus-libpinyin#549) (forwarded request 1330255 from hillwood)</comment>
     <requestid>1330256</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>33c519a840195a6406f5adf380ded36d</srcmd5>
+    <version>1.16.6</version>
+    <time>1792344366</time>
+    <user>dimstar_suse</user>
+    <comment>Update ibus-libpinyin to 1.16.6 (forwarded request 1385553 from pluskalm)</comment>
+    <requestid>1385969</requestid>
+  </revision>
 </revisionlist>
