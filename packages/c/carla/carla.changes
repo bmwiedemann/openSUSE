@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:50:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.10:
+  * Compatibility with pyliblo3 for Carla-Control
+  * Fix alignment of LV2 Atom buffers
+  * Fix broken MIDI program and bank messages for experimental
+    JACK applications
+  * Fix use of JackPortIsCV
+  * Fix a few compiler warnings, remove false tooltips
+
+-------------------------------------------------------------------
 Sun Dec 01 15:36:52 UTC 2024 - davejplater@gmail.com
 
 - Update to version 2.5.9:

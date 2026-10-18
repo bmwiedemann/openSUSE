@@ -322,4 +322,19 @@
     <comment></comment>
     <requestid>1227615</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>812d361fcd618687bfead8165845c49e</srcmd5>
+    <version>2.5.10</version>
+    <time>1792344342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.10:
+  * Compatibility with pyliblo3 for Carla-Control
+  * Fix alignment of LV2 Atom buffers
+  * Fix broken MIDI program and bank messages for experimental
+    JACK applications
+  * Fix use of JackPortIsCV
+  * Fix a few compiler warnings, remove false tooltips
+</comment>
+    <requestid>1385848</requestid>
+  </revision>
 </revisionlist>

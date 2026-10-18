@@ -1,7 +1,7 @@
 #
 # spec file for package carla
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+#carla doesn't produce debug rpms unless a debugbuild is defined as 1
+%define debugbuild 0
+%define __provides_exclude_from ^%{_libdir}/carla/jack/.*.so.0$
 %if 0%{?suse_version} >= 1550
 %bcond_with liblo
 %bcond_with vst
@@ -28,19 +31,14 @@
 %bcond_with liblo
 %endif
 %endif
-#carla doesn't produce debug rpms unless a debugbuild is defined as 1
-%define debugbuild 0
-
-%define __provides_exclude_from ^%{_libdir}/carla/jack/.*.so.0$
 Name:           carla
 #NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param>
 # to the version that you want and execute "osc service runall"
 # It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
-Version:        2.5.9
+Version:        2.5.10
 Release:        0
 Summary:        An audio plugin host
 License:        BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause
-Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://kx.studio/Applications:Carla
 Source0:        %{name}-%{version}.tar.xz
 Source1:        carla-warning
@@ -52,31 +50,37 @@ Patch1:         0002-Remove-rpath-from-.pc-files.patch
 # PATCH-FIX-OPENSUSE -- Use the correct plugin paths for openSUSE sflees@suse.de
 Patch2:         0003-Use-correct-plugin-paths-for-openSUSE.patch
 BuildRequires:  fdupes
-BuildRequires:  file-devel
+BuildRequires:  freetype2-devel-32bit
+BuildRequires:  gcc-32bit
+BuildRequires:  gcc-c++-32bit
+BuildRequires:  glibc-devel-32bit
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libX11-devel-32bit
+BuildRequires:  libXcursor-devel-32bit
+BuildRequires:  libXext-devel-32bit
 BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libstdc++-devel-32bit
 # for extra native plugins
 BuildRequires:  non-ntk-fluid
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-rdflib
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(flac)
-BuildRequires:  pkgconfig(freetype2)
 # for extra samplers support
 BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 # for plugin GUIs
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-%if %{with liblo}
-BuildRequires:  pkgconfig(liblo)
-%endif
+BuildRequires:  pkgconfig(libmagic)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(mxml)
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(python3-embed)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(vorbisenc)
@@ -86,14 +90,14 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(zlib)
 #Wine
 #!BuildIgnore:  sane-backends-32bit
-BuildRequires:  freetype2-devel-32bit
-BuildRequires:  gcc-32bit
-BuildRequires:  gcc-c++-32bit
-BuildRequires:  glibc-devel-32bit
-BuildRequires:  libX11-devel-32bit
-BuildRequires:  libXcursor-devel-32bit
-BuildRequires:  libXext-devel-32bit
-BuildRequires:  libstdc++-devel-32bit
+#End wine
+Requires:       python3-base
+Requires:       python3-qt5
+Requires:       python3-rdflib
+ExclusiveArch:  x86_64
+%if %{with liblo}
+BuildRequires:  pkgconfig(liblo)
+%endif
 %if %{with vst}
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw32-cross-gcc-c++
@@ -104,14 +108,9 @@ BuildRequires:  wine-devel
 BuildRequires:  wine-devel-32bit
 Suggests:       %{name}-vst = %{version}
 %endif
-#End wine
-Requires:       python3-base
-Requires:       python3-qt5
-Requires:       python3-rdflib
 %if %{with liblo}
 Requires:       python3-pyliblo
 %endif
-ExclusiveArch:  x86_64
 
 %description
 Carla is an audio plugin host, with support for many audio drivers
@@ -122,7 +121,6 @@ It futher supports bridging Window plugins using Wine.
 
 %package devel
 Summary:        Header files to access Carla's API
-Group:          Development/Libraries/C and C++
 Requires:       carla = %{version}
 Requires:       pkgconfig
 
@@ -132,7 +130,6 @@ Carla's several APIs.
 
 %package vst
 Summary:        CarlaRack and CarlaPatchbay VST plugins
-Group:          Productivity/Multimedia/Sound/Utilities
 Requires:       %{name} = %{version}
 
 %description vst
@@ -153,34 +150,34 @@ export CFLAGS="%{optflags}"
 export DEBUG=true
 %endif
 # list build configuration, no need for optflags or -j
-make features
+%make_build features
 
-make %{_smp_mflags} \
+%make_build \
 %ifnarch %{ix86} x86_64
 	BASE_OPTS= \
 %endif
 	--trace
 #Makes 32bit plugin capabilities
-make posix32
+%make_build posix32
 #missing /usr/lib64/gcc/i686-w64-mingw32/9.2.0/libssp.a
 %if %{with vst}
 export CFLAGS=`echo $CFLAGS | sed s/\-flto=auto//`
 export CXXFLAGS=`echo $CXXFLAGS | sed s/\-flto=auto//`
 echo $CFLAGS
 echo $CXXFLAGS
-make --trace win32 CC=i686-w64-mingw32-gcc CXX=i686-w64-mingw32-g++ LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-Wl,--no-insert-timestamp"
-make --trace win64 CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-Wl,--no-insert-timestamp"
-make --trace wine32 LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-L/usr/lib/wine"
-make --trace wine64 LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-L%{_libdir}/wine"
+%make_build --trace win32 CC=i686-w64-mingw32-gcc CXX=i686-w64-mingw32-g++ LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-Wl,--no-insert-timestamp"
+%make_build --trace win64 CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-Wl,--no-insert-timestamp"
+%make_build --trace wine32 LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-L/usr/lib/wine"
+%make_build --trace wine64 LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-L%{_libdir}/wine"
 %endif
 
 %install
 make install DESTDIR=%{buildroot} PREFIX="%{_prefix}" LIBDIR="%{_libdir}"
 
 pushd %{buildroot}
-for i in `grep -rl "/usr/bin/env python"`;do $(sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i}; chmod +x ${i}) ;done
-for i in `grep -rl "/usr/bin/env python3"`;do $(sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i}; chmod +x ${i}) ;done
-for i in `grep -rl "/usr/bin/python3"`;do chmod +x ${i} ;done
+for i in `grep -rl "%{_bindir}/env python"`;do $(sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i}; chmod +x ${i}) ;done
+for i in `grep -rl "%{_bindir}/env python3"`;do $(sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i}; chmod +x ${i}) ;done
+for i in `grep -rl "%{_bindir}/python3"`;do chmod +x ${i} ;done
 popd
 
 cp -v source/modules/lilv/serd-0.24.0/tests/TurtleTests/LICENSE LICENSE.TurtleTests
@@ -203,8 +200,8 @@ popd
 %endif
 mkdir -p %{buildroot}%{_localstatedir}/adm/update-messages/
 #%%{name}-warning
-cp %{S:1}  %{buildroot}%{_localstatedir}/adm/update-messages/
-cp %{S:2} .
+cp %{SOURCE1}  %{buildroot}%{_localstatedir}/adm/update-messages/
+cp %{SOURCE2} .
 
 %files
 %license doc/GPL.txt doc/LGPL.txt LICENSE.TurtleTests bsd-2-clause.txt
