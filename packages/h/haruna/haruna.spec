@@ -59,7 +59,6 @@ BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil) >= 58.29.100
-BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(mpv)
 Requires:       kf6-breeze-icons

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 18 08:46:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(libpostproc) BuildRequires: Not stricly needed,
+  nor provided by newer versions of ffmpeg.
+
+-------------------------------------------------------------------
 Wed May 20 08:16:28 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.8.1
