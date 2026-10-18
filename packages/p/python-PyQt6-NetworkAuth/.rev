@@ -140,4 +140,14 @@
     <comment> (forwarded request 1350683 from alarrosa)</comment>
     <requestid>1350692</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1e97c35f2443b7b996309589105dfdee</srcmd5>
+    <version>6.12.0</version>
+    <time>1792344173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.12.0
+  * Added support for Qt v6.12.
+</comment>
+    <requestid>1385952</requestid>
+  </revision>
 </revisionlist>
