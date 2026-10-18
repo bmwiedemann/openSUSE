@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 18 14:16:47 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20261016:
+  * dm32uv: Add Baofeng DM-32UV driver
+  * tk8160: Various fixes and improvements
+  * gmrsv2, mursv1: Set duplex on MURS channels instead of
+    comparing it
+  * tk8160: Fix the Selcall key function code
+  * ft4: Fix busy LED, pager codes and empty P key channels
+  * th9000: Detect Plus radios by PROGRA: interrogate
+  * Update Italian Translation
+  * Added aliases for brands Philco and Microlab
+
+-------------------------------------------------------------------
 Mon Oct 05 20:41:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20261002:
