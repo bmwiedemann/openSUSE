@@ -2591,4 +2591,13 @@ for 12.3</comment>
   * profiles: add noctalia-greeter (bsc#1285400)</comment>
     <requestid>1384791</requestid>
   </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>689df98de5068131ea0d27d3310f854d</srcmd5>
+    <version>1550+20261016.b8e1631</version>
+    <time>1792356752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20261016.b8e1631:
+  * profiles: add &quot;meta&quot; action for ksysguard processlisthelper (bsc#1281596)</comment>
+    <requestid>1385164</requestid>
+  </revision>
 </revisionlist>

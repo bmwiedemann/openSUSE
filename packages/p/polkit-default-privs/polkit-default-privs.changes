@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 16 09:08:22 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 1550+20261016.b8e1631:
+  * profiles: add "meta" action for ksysguard processlisthelper (bsc#1281596)
+
+-------------------------------------------------------------------
 Wed Oct 14 12:26:52 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 1550+20261014.754cdd0:
