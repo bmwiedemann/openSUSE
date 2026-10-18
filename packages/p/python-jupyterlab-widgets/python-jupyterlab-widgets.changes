@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:17:15 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 3.0.17:
+  * Fix Output capture from background threads
+  * Retry fetching the model from the backend in get_model
+- Drop stray .gitignore shipped inside the installed package
+
+-------------------------------------------------------------------
+Sat Dec 13 14:12:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.16:
+  * python 3.12/3.13 support
+
+-------------------------------------------------------------------
 Sat Aug  2 16:20:11 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.15
@@ -14,7 +28,7 @@ Sat Aug  2 16:20:11 UTC 2025 - Ben Greiner <code@bnavigator.de>
     @martinRenou in #3945
   * Include sourcemaps in npm tarballs by @manzt in #3978
   * Fix deprecation warning when importing the backend_inline by
-    @emolinlu in #3984  
+    @emolinlu in #3984
 
 -------------------------------------------------------------------
 Thu Feb 27 12:42:27 UTC 2025 - ecsos <ecsos@opensuse.org>

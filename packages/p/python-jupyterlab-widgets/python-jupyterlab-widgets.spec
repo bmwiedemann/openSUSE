@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab-widgets
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define pyver 3.0.15
-%define jupver 5.0.15
+%define pyver 3.0.17
+%define jupver 5.0.16
 %{?sle15_python_module_pythons}
 Name:           python-jupyterlab-widgets
 Version:        %{pyver}
@@ -47,10 +47,10 @@ A JupyterLab 3.0 extension for Jupyter/IPython widgets
 Version:        %{pyver}
 Summary:        A JupyterLab extension for Jupyter/IPython widgets - Jupyter JS files
 Requires:       jupyter-jupyterlab-filesystem
-Provides:       jupyter-jupyter-widgets-jupyterlab-manager = %{jupver}-%{release}
-Provides:       jupyter-jupyterlab_widgets = %{jupver}-%{release}
 Requires:       python3dist(jupyterlab-widgets) = %{pyver}
 Suggests:       python3-jupyterlab-widgets
+Provides:       jupyter-jupyter-widgets-jupyterlab-manager = %{jupver}-%{release}
+Provides:       jupyter-jupyterlab_widgets = %{jupver}-%{release}
 
 %description -n jupyter-jupyterlab-widgets
 A JupyterLab 3.0 extension for Jupyter/IPython widgets - Jupyterlab-manager JS files
@@ -63,6 +63,8 @@ A JupyterLab 3.0 extension for Jupyter/IPython widgets - Jupyterlab-manager JS f
 
 %install
 %pyproject_install
+# Stray file inside the installed package; keep it out of the RPM
+%python_expand rm %{buildroot}%{$python_sitelib}/jupyterlab_widgets/.gitignore
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
