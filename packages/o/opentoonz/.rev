@@ -254,4 +254,12 @@
     <comment>- define C and CXX standard to fix build with GCC 15</comment>
     <requestid>1292477</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6d10bda0a20f57fbd1bb9c4554c94070</srcmd5>
+    <version>1.8.0</version>
+    <time>1792344320</time>
+    <user>dimstar_suse</user>
+    <comment>Update opentoonz to 1.8.0 (forwarded request 1385810 from pluskalm)</comment>
+    <requestid>1385814</requestid>
+  </revision>
 </revisionlist>

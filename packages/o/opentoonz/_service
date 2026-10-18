@@ -2,13 +2,13 @@
     <service name="tar_scm" mode="disabled">
         <param name="scm">git</param>
         <param name="url">https://github.com/opentoonz/opentoonz</param>
-        <param name="revision">v1.7.1</param>
-        <param name="versionformat">1.7.1</param>
+        <param name="revision">v1.8.0</param>
+        <param name="versionformat">1.8.0</param>
         <param name="exclude">thirdparty/openblas</param>
         <param name="exclude">thirdparty/Lz4</param>
         <param name="exclude">thirdparty/glew</param>
         <param name="exclude">thirdparty/glut</param>
-        <param name="exclude">thirdparty/kiss_fft130</param>
+        <param name="exclude">thirdparty/kiss_fft</param>
         <param name="exclude">thirdparty/libjpeg-turbo</param>
         <param name="exclude">thirdparty/libmypaint</param>
         <param name="exclude">thirdparty/libpng-1.6.21</param>

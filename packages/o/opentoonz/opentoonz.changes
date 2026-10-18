@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:58:37 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 1.8.0:
+  * Drawing tools: improved Assistant, Brush, Paintbrush, Fill, Finger,
+    Geometric and Tape tools; new stroke replication in Brush tool
+  * New Screentones feature
+  * New effects: Smoother Fx Iwa and naru lazy brush fx; draggable cage
+    controls for corner pin fx
+  * Xsheet: cell dragging and visibility switching improvements,
+    sub-Xsheet navigation bar, select cell ranges via sidebar
+  * File handling: new OCA import, XDTS I/O and symbol unification,
+    save default image adjust parameters for camera capture
+  * UI: custom panel editor, viewer navigation tools and view check
+    indicators, icon and color improvements
+  * New and updated translations (Chinese, Japanese, Spanish)
+  * Drop upstreamed 0001-Fix-build-with-Werror-return-type.patch and
+    opentoonz-cmake4.patch; rebase 0001-Use-system-stdfx.patch for the
+    renamed bundled kiss_fft sources (also tracked in _service)
+  * Drop obsolete CMAKE_POLICY_VERSION_MINIMUM workaround (upstream
+    now requires CMake 3.10); use pkgconfig() BuildRequires style
+    for glut, libtiff and superlu
+  * Add opentoonz-stylepicker-return-type.patch to fix build with
+    -Werror=return-type (missing return in onPropertyChanged)
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Sun Jul 13 07:45:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - define C and CXX standard to fix build with GCC 15

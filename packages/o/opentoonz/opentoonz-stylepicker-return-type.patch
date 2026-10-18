@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Martin Pluskal <martin@pluskal.org>
+Date: Sun, 18 Oct 2026 08:40:00 +0000
+Subject: [PATCH] Fix build with -Werror=return-type in StylePickerTool
+
+StylePickerTool::onPropertyChanged() falls off the end without
+returning a value when the property matches neither of the two
+handled names. Restore the trailing `return true` 1.7.1 had.
+
+---
+ toonz/sources/tnztools/stylepickertool.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/toonz/sources/tnztools/stylepickertool.cpp
++++ b/toonz/sources/tnztools/stylepickertool.cpp
+@@ -321,6 +321,7 @@
+     }
+     return true;
+   }
++  return true;
+ }
+ 
+ /* Check if the organizing operation is available */
+
+-- 
+2.49.0

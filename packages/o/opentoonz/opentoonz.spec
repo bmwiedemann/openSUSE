@@ -1,7 +1,7 @@
 #
 # spec file for package opentoonz
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,38 +17,32 @@
 
 
 Name:           opentoonz
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        2D animation software
 License:        BSD-2-Clause
-Group:          Productivity/Graphics/Other
 URL:            https://opentoonz.github.io/e/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-linker-errors-on-Linux.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-with-Werror-return-type.patch
 # Use system libraries when possible
 Patch2:         0001-Use-system-stdfx.patch
 # PATCH-FIX-OPENSUSE
 Patch3:         opentoonz-glew_config_compat.patch
 # PATCH-FIX-UPSTREAM -- Use system TIFF
 Patch4:         0001-Use-system-TIFF.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         opentoonz-cmake4.patch
+# PATCH-FIX-UPSTREAM -- StylePickerTool::onPropertyChanged falls off the end
+Patch5:         opentoonz-stylepicker-return-type.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
-BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
-BuildRequires:  libtiff-devel
 BuildRequires:  openblas-devel
 BuildRequires:  pkgconfig
 # needed to setup startup script paths
 BuildRequires:  sed
-BuildRequires:  superlu-devel
 BuildRequires:  cmake(OpenCV)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
@@ -66,14 +60,17 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(kissfft)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(glut)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libmypaint)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(mypaint-brushes-1.0) >= 1.3
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(superlu)
 BuildRequires:  pkgconfig(zlib)
 Requires:       mypaint-brushes1
 # build fails on ARM (conflicting declaration between glew and gles)
@@ -92,14 +89,12 @@ ExclusiveArch:  %{ix86} x86_64 ppc64 ppc64le %{riscv}
 cd toonz
 %define __sourcedir sources
 
-# -DCMAKE_POLICY_VERSION_MINIMUM=3.5 is temporarily needed until dependencies build with cmake 4 (e.g. kissfft)
 # -DCMAKE_C*_STANDARD is needed to build with GCC 15
 %cmake \
   -DCMAKE_SKIP_RPATH:BOOL=ON \
   -DWITH_SYSTEM_LZO:BOOL=ON \
   -DWITH_SYSTEM_SUPERLU:BOOL=ON \
   -DWITH_TRANSLATION:BOOL=OFF \
-  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
   -DCMAKE_CXX_STANDARD=17 \
   -DCMAKE_C_STANDARD=99
 
