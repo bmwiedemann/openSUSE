@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:56:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.4.16:
+  * 3.4.16 fixes unreadable DWAB output and BytesAttribute
+    undefined-behavior warnings; 3.4.15 bounds IDManifest parse
+    memory on corrupt or malicious files.
+  * 3.4.14 security release, 17 CVEs via crafted EXR files:
+  * CVE-2026-68516: HTJ2K tile-grid stack OOB write (boo#1276429)
+  * CVE-2026-68514: PyOpenEXR deep RGB heap overflow (boo#1276846)
+  * CVE-2026-68515: exrmultiview heap OOB write (boo#1276848)
+  * CVE-2026-68513: PyOpenEXR RGB slice heap overflow (boo#1276845)
+  * CVE-2026-62986: PyOpenEXR stale heap disclosure (boo#1276861)
+  * CVE-2026-61703: PyOpenEXR deep mixed RGB heap overflow
+  * CVE-2026-61555: empty multiView channel crash (boo#1276859)
+  * CVE-2026-59985: ILP32 RLE decode heap OOB read (boo#1276858)
+  * CVE-2026-59984: ILP32 B44 scratch buffer overflow (boo#1276857)
+  * CVE-2026-59983: ILP32 deep tile count OOB read (boo#1276856)
+  * CVE-2026-59982: ILP32 DWAA buffer overflow (boo#1276853)
+  * CVE-2026-59981: SampleCountChannel row OOB read (boo#1276862)
+  * CVE-2026-59189: DeepImageChannel row OOB read (boo#1276855)
+  * CVE-2026-59187: exrmetrics deep pixel overflow (boo#1276851)
+  * CVE-2026-59186: ILP32 tiled RGBA OOB write (boo#1276850)
+  * CVE-2026-59184: FlatImageChannel row OOB write (boo#1276849)
+  * CVE-2026-59183: deep tile overflow OOB access (boo#1276428)
+
+-------------------------------------------------------------------
 Mon Sep 28 13:39:28 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Build with new scikit-build-core:

@@ -18,12 +18,12 @@
 
 %define         modname openexr
 Name:           python-OpenEXR
-Version:        3.4.13
+Version:        3.4.16
 Release:        0
 Summary:        Python bindings for the OpenEXR image file format
 License:        BSD-3-Clause
 URL:            https://github.com/AcademySoftwareFoundation/OpenEXR
-Source0:        https://files.pythonhosted.org/packages/source/O/OpenEXR/%{modname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/openexr/%{modname}-%{version}.tar.gz
 Patch0:         force-system-dependencies.patch
 Patch1:         remove-rpath.patch
 Patch2:         new_scikit-build-core.patch
