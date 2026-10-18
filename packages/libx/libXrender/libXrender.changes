@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 17 12:54:14 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.9.13
+  * This release fixes CVE-2026-88807.  For more information, see the advisory:
+    https://lists.x.org/archives/xorg-announce/2026-October/003752.html
+- supersedes u_Check-numSubpixel-against-numScreens-to-avoid-OOB-wr.patch
+
+-------------------------------------------------------------------
 Fri Sep 18 12:56:42 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_Check-numSubpixel-against-numScreens-to-avoid-OOB-wr.patch

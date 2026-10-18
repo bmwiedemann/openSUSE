@@ -145,4 +145,15 @@
     numScreens (CVE-2026-88807, ZDI-CAN-32093, bsc#1280911)</comment>
     <requestid>1378816</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>788bc434058e689e1f020d7b8c02c68a</srcmd5>
+    <version>0.9.13</version>
+    <time>1792344150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.13
+  * This release fixes CVE-2026-88807.  For more information, see the advisory:
+    https://lists.x.org/archives/xorg-announce/2026-October/003752.html
+- supersedes u_Check-numSubpixel-against-numScreens-to-avoid-OOB-wr.patch</comment>
+    <requestid>1385480</requestid>
+  </revision>
 </revisionlist>

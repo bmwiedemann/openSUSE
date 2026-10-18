@@ -18,7 +18,7 @@
 
 Name:           libXrender
 %define lname	libXrender1
-Version:        0.9.12
+Version:        0.9.13
 Release:        0
 Summary:        X Rendering Extension library
 License:        MIT
@@ -29,7 +29,6 @@ URL:            http://cgit.freedesktop.org/xorg/lib/libXrender/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXrender/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch1280911:   u_Check-numSubpixel-against-numScreens-to-avoid-OOB-wr.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
@@ -69,7 +68,6 @@ in %lname.
 
 %prep
 %setup -q
-%patch -P 1280911 -p1
 
 %build
 %configure --docdir=%_docdir/%name --disable-static
