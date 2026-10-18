@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:30:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.15.0
+  * ftdump: improve glyph counting and report errors to stderr
+  * Windows/MSVC build fixes
+
+-------------------------------------------------------------------
 Thu Jul  9 17:28:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - update to 2.14.3

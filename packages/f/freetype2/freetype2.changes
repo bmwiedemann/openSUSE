@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:30:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.15.0
+- Important changes
+  * Support for the ISO Open Font Format, Edition 5, including
+    the new 'VARC' table and mixed cubic and conic outline segments
+  * OpenType fonts with more than 65536 glyphs can now be handled
+  * The anti-aliased rasterizer now uses dynamic heap memory for
+    large glyphs, improving performance at sizes above 40 ppem
+  * TrueType version 40 interpreter ClearType rendering improvements
+- Important security fixes
+  * CVE-2026-27171, bsc#1258392: apply the upstream zlib security
+    fix to the internal gzip code (upstream issue #1468)
+  * More bugs with potential security implications were found and
+    fixed, all users should update
+- Dropped patches (fixed upstream)
+  * freetype-CVE-2026-50811.patch
+
+-------------------------------------------------------------------
 Thu Jul  9 17:28:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - update to 2.14.3

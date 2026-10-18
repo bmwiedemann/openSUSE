@@ -16,14 +16,14 @@
 #
 
 
-%global freetype_version 2.14.3
+%global freetype_version 2.15.0
 %if 0%{?suse_version} < 1600
 %global qt_version 5
 %else
 %global qt_version 6
 %endif
 Name:           ft2demos
-Version:        2.14.3
+Version:        2.15.0
 Release:        0
 Summary:        Freetype2 Utilities and Demo Programs
 License:        GPL-2.0-or-later
