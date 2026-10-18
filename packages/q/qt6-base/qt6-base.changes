@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 13 12:14:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 6.12.0_Fix_touchpad_scrolling.patch
+  * build_with_md4c_0_6_0.patch
+
+-------------------------------------------------------------------
+Wed Sep 30 16:08:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.12.0
+  https://www.qt.io/blog/qt-6.12-released
+- Drop patches:
+  * 0001-CMake-Handle-generated-headers-in-syncqt-scan-all-mo.patch
+  * 0001-QIconLoader-Don-t-consider-fallbackThemeName-in-them.patch
+  * 0001-Use-newer-GCC-on-Leap.patch
+
+-------------------------------------------------------------------
 Tue Aug 25 08:14:46 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix a regression in icon loading (kde#=524657, QTBUG-149431):

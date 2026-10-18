@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.11.2
-%define short_version 6.11
+%define real_version 6.12.0
+%define short_version 6.12
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -29,11 +29,8 @@
 %ifarch %{arm} aarch64
 %global with_gles 1
 %endif
-%if 0%{?suse_version} > 1500
-%bcond_without system_md4c
-%endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.11.2
+Version:        6.12.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -42,8 +39,8 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-CMake-Handle-generated-headers-in-syncqt-scan-all-mo.patch
-Patch1:         0001-QIconLoader-Don-t-consider-fallbackThemeName-in-them.patch
+Patch0:         build_with_md4c_0_6_0.patch
+Patch1:         6.12.0_Fix_touchpad_scrolling.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
@@ -51,16 +48,10 @@ Patch101:       0001-Don-t-strip-binaries-when-building-with-qmake.patch
 # Change a couple default build system settings
 Patch102:       0001-Change-default-settings-for-Qt-packages.patch
 # Conditional patches depending on the leap version
-Patch201:       0001-Use-newer-GCC-on-Leap.patch
-Patch202:       0001-Use-newer-GCC-on-Leap-16.patch
+Patch201:       0001-Use-newer-GCC-on-Leap-16.patch
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
-# The default GCC version in Leap 15 is too old
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc14-PIE
-BuildRequires:  gcc14-c++
-%endif
 %if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
 BuildRequires:  gcc15-PIE
 BuildRequires:  gcc15-c++
@@ -77,15 +68,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  qt6-macros >= 20260508
 %ifnarch ppc64le s390x
 %if 0%{?suse_version} >= 1699
-# Not available in Leap 15 nor 16, and fails to build for ppc and s390x
+# Not available in Leap 16, and fails to build for ppc and s390x
 BuildRequires:  renderdoc-devel
 %endif
 %endif
 BuildRequires:  xmlstarlet
 BuildRequires:  cmake(double-conversion)
-%if %{with system_md4c}
 BuildRequires:  cmake(md4c)
-%endif
 BuildRequires:  pkgconfig(atspi-2)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(egl)
@@ -253,11 +242,6 @@ The Qt 6 Core library. It adds these features to C++:
 Summary:        Development files for the Qt 6 Core library
 Requires:       libQt6Core6 = %{version}
 Requires:       qt6-base-common-devel = %{version}
-# Some KDE packages start using gcc features not available in gcc < 14
-%if 0%{?suse_version} == 1500
-Requires:       gcc14-PIE
-Requires:       gcc14-c++
-%endif
 %if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
 Requires:       gcc15-PIE
 Requires:       gcc15-c++
@@ -808,11 +792,8 @@ Qt 6 wayland plugins.
 %prep
 %setup -q -n %{tar_name}-%{real_version}%{tar_suffix}
 %autopatch -p1 -m 0 -M 200
-%if 0%{?suse_version} == 1500
-%patch -p1 -P 201
-%endif
 %if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
-%patch -p1 -P 202
+%patch -p1 -P 201
 %endif
 
 # Copy the freetype license file to prevent errors when building docs
@@ -823,10 +804,8 @@ sed -i 's#../../3rdparty/freetype/LICENSE.txt#FREETYPE_LICENSE.txt#' src/gui/pai
 sed -i '/\/3rdparty\/blake2/d' src/corelib/CMakeLists.txt
 
 # We don't want to use these 3rdparty libraries
-rm -r src/3rdparty/{blake2,double-conversion,freetype,harfbuzz-ng,libjpeg,libpng,pcre2,sqlite,xcb,zlib}
-%if %{with system_md4c}
-rm -r src/3rdparty/md4c
-%endif
+rm -r src/3rdparty/{blake2,double-conversion,freetype,harfbuzz-ng,libjpeg,libpng,md4c,pcre2,sqlite,xcb,zlib}
+
 # Remove license files symlinked to deleted 3rdparty libraries
 rm LICENSES/{FTL.txt,IJG.txt,libpng-2.0.txt,Zlib.txt}
 
@@ -944,6 +923,8 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %dir %{_qt6_mkspecsdir}/modules
 %{_bindir}/androiddeployqt6
 %{_bindir}/androidtestrunner6
+%{_bindir}/harmonydeployqt6
+%{_bindir}/harmonyostestrunner6
 %{_bindir}/qdbuscpp2xml6
 %{_bindir}/qdbusxml2cpp6
 %{_bindir}/qmake6
@@ -954,6 +935,8 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_bindir}/wasmdeployqt6
 %{_qt6_bindir}/androiddeployqt
 %{_qt6_bindir}/androidtestrunner
+%{_qt6_bindir}/harmonydeployqt
+%{_qt6_bindir}/harmonyostestrunner
 %{_qt6_bindir}/qdbuscpp2xml
 %{_qt6_bindir}/qdbusxml2cpp
 %{_qt6_bindir}/qmake
