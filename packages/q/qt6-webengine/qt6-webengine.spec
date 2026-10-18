@@ -16,10 +16,16 @@
 #
 
 
-%define real_version 6.11.2
+# After Qt 6.12 release, QtWebEngine has a different version scheme that includes the Chromium base version
+# (https://www.qt.io/blog/qt-webengine-will-release-separate)
+%define tar_version 6.11.2
 %define short_version 6.11
+#
+%define real_version 6.12.0
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
+# QtWebengine supports building against the latest Qt LTS release
+%global lts_version 6.8.0
 #
 %global qt6_flavor @BUILD_FLAVOR@%{nil}
 %define no_flavor ("%qt6_flavor" == "")
@@ -31,31 +37,9 @@
 # Private QML imports
 %global __requires_exclude qt6qmlimport\\((BrowserUtils|frequencymonitor|FrequencyMonitor|LifecycleUtils|performancemonitor).*
 #
-%if 0%{?suse_version} > 1500
-# The antique version in Leap 15 is too old for building chromium
-%bcond_without system_harfbuzz
-# The ICU version is also too old incrementExact() appeared in ICU 71
-%bcond_without system_icu
-# and so is tiff...
-%bcond_without system_tiff
-# Leap 15's ffmpeg is too old since 6.8.0
-%bcond_without system_ffmpeg
-# openjpeg2 is too old and doesn't know opj_decoder_set_strict_mode
-%bcond_without system_openjpeg2
-# and python 3.6 is also too old for this QtWE version
-%define pyver python3
-%else
-%{?sle15_python_module_pythons}
-%define pyver python311
-%endif
 %if 0%{?suse_version} >= 1699
 %bcond_without system_openh264
 %endif
-#
-# Note about required versions:
-# qtwebengine supports building against the latest LTS release. This (potentially) allows submitting
-# updates to Leap
-%global lts_version 6.8.0
 #
 Name:           qt6-webengine%{?pkg_suffix}
 Version:        6.11.2
@@ -63,7 +47,7 @@ Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
 URL:            https://www.qt.io
-Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source0:        https://download.qt.io/official_releases/qt/%{short_version}/6.11.2%{tar_suffix}/submodules/%{tar_name}-%{tar_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
 Patch0:         Fix-renderer-crash-when-registering-ICU-encoding-names.patch
@@ -71,13 +55,14 @@ Patch1:         enable-memory-barriers.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
-BuildRequires:  %{pyver}
-BuildRequires:  %{pyver}-devel
-BuildRequires:  %{pyver}-html5lib
-BuildRequires:  %{pyver}-importlib-metadata
+BuildRequires:  python3
+BuildRequires:  python3-devel
+BuildRequires:  python3-html5lib
+BuildRequires:  python3-importlib-metadata
 BuildRequires:  Mesa-KHR-devel
 BuildRequires:  bison
-# Not pulled automatically on Leap
+BuildRequires:  clang
+BuildRequires:  clang-devel
 BuildRequires:  cups-config
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
@@ -86,10 +71,13 @@ BuildRequires:  gperf
 BuildRequires:  krb5-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel >= 1.6.0
+BuildRequires:  llvm-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nodejs-default
 BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
+BuildRequires:  rust
+BuildRequires:  rust-bindgen
 BuildRequires:  qt6-core-private-devel >= %{lts_version}
 BuildRequires:  qt6-gui-private-devel >= %{lts_version}
 BuildRequires:  qt6-quick-private-devel >= %{lts_version}
@@ -122,29 +110,19 @@ BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glproto)
-%if %{with system_harfbuzz}
 BuildRequires:  pkgconfig(harfbuzz) >= 4.3.0
 BuildRequires:  pkgconfig(harfbuzz-subset) >= 4.3.0
-%endif
-%if %{with system_icu}
 BuildRequires:  pkgconfig(icu-i18n) >= 71
 BuildRequires:  pkgconfig(icu-uc) >= 71
-%endif
 BuildRequires:  pkgconfig(lcms2)
-%if %{with system_ffmpeg}
 BuildRequires:  pkgconfig(libavcodec) >= 60.31.102
 BuildRequires:  pkgconfig(libavformat) >= 60.16.100
 BuildRequires:  pkgconfig(libavutil) >= 58.29.100
-%endif
 BuildRequires:  pkgconfig(libdrm)
-%if %{with system_openjpeg2}
 BuildRequires:  pkgconfig(libopenjp2)
-%endif
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.10
-%if %{with system_tiff}
 BuildRequires:  pkgconfig(libtiff-4) >= 4.5.0
-%endif
 BuildRequires:  pkgconfig(libva) >= 1.14
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpdemux)
@@ -157,9 +135,7 @@ BuildRequires:  pkgconfig(nss) >= 3.26
 BuildRequires:  pkgconfig(openh264) >= 2.4.1
 %endif
 BuildRequires:  pkgconfig(opus) >= 1.3.1
-%if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(re2) >= 11
-%endif
 BuildRequires:  pkgconfig(vpx) >= 1.10.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
@@ -172,7 +148,7 @@ BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
 # Chromium/blink don't support PowerPC and zSystems and build fails on
-# 32 bits archs (https://bugreports.qt.io/browse/QTBUG-102143)
+# 32 bits archs (QTBUG-102143)
 ExclusiveArch:  aarch64 x86_64 %{x86_64} riscv64
 
 %if "%{qt6_flavor}" == "docs"
@@ -362,7 +338,7 @@ ABI or API guarantees.
 %endif
 
 %prep
-%autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
+%autosetup -p1 -n %{tar_name}-%{tar_version}%{tar_suffix}
 
 %build
 %if %{no_flavor}
@@ -382,9 +358,6 @@ sed -e 's/cflags = \[\]/cflags = \[ \"-mno-outline-atomics\" \]/' -i ./src/3rdpa
 
 %cmake_qt6 \
   -DCMAKE_TOOLCHAIN_FILE:STRING="%{_qt6_cmakedir}/Qt6/qt.toolchain.cmake" \
-%if 0%{?suse_version} == 1500
-  -DPython3_EXECUTABLE=%{_bindir}/python3.11 \
-%endif
   -DFEATURE_qtpdf_build:BOOL=TRUE \
   -DFEATURE_webengine_developer_build:BOOL=FALSE \
   -DFEATURE_webengine_embedded_build:BOOL=FALSE \
@@ -393,25 +366,13 @@ sed -e 's/cflags = \[\]/cflags = \[ \"-mno-outline-atomics\" \]/' -i ./src/3rdpa
   -DFEATURE_webengine_native_spellchecker:BOOL=FALSE \
   -DFEATURE_webengine_printing_and_pdf:BOOL=TRUE \
   -DFEATURE_webengine_proprietary_codecs:BOOL=TRUE \
-%if %{with system_ffmpeg}
   -DFEATURE_webengine_system_ffmpeg:BOOL=TRUE \
-%else
-  -DFEATURE_webengine_system_ffmpeg:BOOL=FALSE \
-%endif
-%if %{without system_harfbuzz}
-  -DFEATURE_webengine_system_harfbuzz:BOOL=FALSE \
-%endif
-%if %{with system_icu}
   -DFEATURE_webengine_system_icu:BOOL=TRUE \
-%else
-  -DFEATURE_webengine_system_icu:BOOL=FALSE \
-%endif
-%if %{without system_openjpeg2}
-  -DFEATURE_webengine_system_libopenjpeg2:BOOL=FALSE \
-%endif
+  -DFEATURE_webengine_system_libvpx:BOOL=TRUE \
 %if %{with system_openh264}
   -DFEATURE_webengine_system_openh264:BOOL=TRUE \
 %endif
+  -DFEATURE_webengine_system_re2:BOOL=TRUE \
   -DFEATURE_webengine_webrtc:BOOL=TRUE \
   -DFEATURE_webengine_webrtc_pipewire:BOOL=TRUE \
   -DQT_BUILD_EXAMPLES:BOOL=TRUE \
