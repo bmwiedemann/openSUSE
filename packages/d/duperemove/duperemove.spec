@@ -1,7 +1,7 @@
 #
 # spec file for package duperemove
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,23 +23,22 @@
 %define req_gcc_ver %{nil}
 %endif
 Name:           duperemove
-Version:        0.15
+Version:        0.15.2
 Release:        0
 Summary:        Software to find duplicate extents in files and remove them
 License:        GPL-2.0-only
-Group:          System/Filesystems
 URL:            https://github.com/markfasheh/duperemove
 Source:         https://github.com/markfasheh/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mvetter@suse.com gh#markfasheh/duperemove#367
-Patch:          duperemove-0.15-buildfail.patch
 BuildRequires:  gcc%{req_gcc_ver}
+BuildRequires:  gcc%{req_gcc_ver}-PIE
 BuildRequires:  gcc%{req_gcc_ver}-c++
-BuildRequires:  libblkid-devel
-BuildRequires:  libbsd-devel
-BuildRequires:  libmount-devel
 BuildRequires:  pkgconfig
-BuildRequires:  xxhash-devel
+BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(libbsd)
+BuildRequires:  pkgconfig(libbsd-overlay)
+BuildRequires:  pkgconfig(libxxhash)
+BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uuid)
 
@@ -50,14 +49,12 @@ systems which support the Linux extent-same ioctl.
 
 %package -n %{samename}
 Summary:        Debug/Test tool to exercise the btrfs out-of-band deduplication ioctl
-Group:          System/Filesystems
 
 %description -n %{samename}
 Debug/Test tool to exercise a btrfs ioctl for deduplicating file regions.
 
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
 Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
