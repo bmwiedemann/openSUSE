@@ -481,4 +481,16 @@
     Bump net to 0.57.0</comment>
     <requestid>1367927</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a4d8270cca29327e2b9eb938f35775a8</srcmd5>
+    <version>0.17.1</version>
+    <time>1792346950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.1:
+  * Add support for XEP-0515: TLS Channel-Binding Downgrade Protection (via
+    go-xmpp &gt;= v0.4.0).
+  * Changed SCRAM behavior to better follow XEP-0440: SASL Channel-Binding Type
+    Capability (via go-xmpp &gt;= v0.4.0).</comment>
+    <requestid>1386015</requestid>
+  </revision>
 </revisionlist>

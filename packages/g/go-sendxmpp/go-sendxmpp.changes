@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 18 17:31:39 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.1:
+  * Add support for XEP-0515: TLS Channel-Binding Downgrade Protection (via
+    go-xmpp >= v0.4.0).
+  * Changed SCRAM behavior to better follow XEP-0440: SASL Channel-Binding Type
+    Capability (via go-xmpp >= v0.4.0).
+
+-------------------------------------------------------------------
 Mon Jul 27 07:01:18 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.0:
