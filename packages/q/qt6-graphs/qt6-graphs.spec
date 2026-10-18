@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.11.2
-%define short_version 6.11
+%define real_version 6.12.0
+%define short_version 6.12
 %define tar_name qtgraphs-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\((AerospaceHubExample|AxisHandlingExample|SurfaceGalleryExample)\\)
 #
 Name:           qt6-graphs%{?pkg_suffix}
-Version:        6.11.2
+Version:        6.12.0
 Release:        0
 Summary:        3D visualization module
 License:        GPL-3.0-only
@@ -116,10 +116,10 @@ ABI or API guarantees.
 %cmake_qt6 \
   -DQT_GENERATE_SBOM:BOOL=FALSE
 
-%{qt6_build}
+%qt6_build
 
 %install
-%{qt6_install}
+%qt6_install
 
 %if !%{qt6_docs_flavor}
 
@@ -130,29 +130,39 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 %files imports
 %{_qt6_qmldir}/QtGraphs/
+%{_qt6_qmldir}/QtGraphs2D/
 
 %files -n libQt6Graphs6
 %license LICENSES/*
 %{_qt6_libdir}/libQt6Graphs.so.*
+%{_qt6_libdir}/libQt6Graphs2DImpl.so.*
 %{_qt6_libdir}/libQt6GraphsWidgets.so.*
 
 %files -n qt6-graphs-devel
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtGraphsTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Graphs/
+%{_qt6_cmakedir}/Qt6Graphs2DImpl/
 %{_qt6_cmakedir}/Qt6GraphsWidgets/
 %{_qt6_descriptionsdir}/Graphs.json
+%{_qt6_descriptionsdir}/Graphs2DImpl.json
 %{_qt6_descriptionsdir}/GraphsWidgets.json
 %{_qt6_includedir}/QtGraphs/
+%{_qt6_includedir}/QtGraphs2DImpl/
 %{_qt6_includedir}/QtGraphsWidgets/
 %{_qt6_libdir}/libQt6Graphs.prl
 %{_qt6_libdir}/libQt6Graphs.so
+%{_qt6_libdir}/libQt6Graphs2DImpl.prl
+%{_qt6_libdir}/libQt6Graphs2DImpl.so
 %{_qt6_libdir}/libQt6GraphsWidgets.prl
 %{_qt6_libdir}/libQt6GraphsWidgets.so
 %{_qt6_metatypesdir}/qt6graphs_metatypes.json
+%{_qt6_metatypesdir}/qt6graphs2dimpl_metatypes.json
 %{_qt6_metatypesdir}/qt6graphswidgets_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_graphs.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_graphs2dimpl.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_graphswidgets.pri
 %{_qt6_pkgconfigdir}/Qt6Graphs.pc
+%{_qt6_pkgconfigdir}/Qt6Graphs2DImpl.pc
 %{_qt6_pkgconfigdir}/Qt6GraphsWidgets.pc
 %exclude %{_qt6_includedir}/QtGraphs/%{real_version}
 %exclude %{_qt6_includedir}/QtGraphsWidgets/%{real_version}
