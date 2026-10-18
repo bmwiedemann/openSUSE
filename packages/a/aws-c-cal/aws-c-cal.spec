@@ -17,16 +17,16 @@
 
 
 %define library_version 1.0.0
-%define library_soversion 0unstable
+%define library_pkg 1_0
+%define library_soversion 1.0
 Name:           aws-c-cal
-Version:        0.9.15
+Version:        1.0.0
 Release:        0
 Summary:        AWS C99 wrapper for cryptography primitives
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-cal
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         acc_add-so-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja
@@ -39,11 +39,13 @@ BuildRequires:  pkgconfig(libcrypto)
 %description
 AWS Crypto Abstraction Layer is a C99 wrapper for cryptography primitives.
 
-%package -n lib%{name}%{library_soversion}
+%package -n lib%{name}%{library_pkg}
 Summary:        AWS C99 wrapper for cryptography primitives
 Group:          System/Libraries
+Provides:       lib%{name}0unstable = %{version}
+Obsoletes:      lib%{name}0unstable < %{version}
 
-%description -n lib%{name}%{library_soversion}
+%description -n lib%{name}%{library_pkg}
 AWS Crypto Abstraction Layer is a C99 wrapper for cryptography primitives.
 
 This package contains the dynamically linked library.
@@ -51,7 +53,7 @@ This package contains the dynamically linked library.
 %package devel
 Summary:        Development files for aws-c-cal library
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{library_soversion} = %{version}
+Requires:       lib%{name}%{library_pkg} = %{version}
 
 %description devel
 AWS Crypto Abstraction Layer, a C99 wrapper for cryptography primitives.
@@ -64,7 +66,8 @@ This package contains the development files.
 %build
 %define __builder ninja
 %cmake \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_PREFIX_PATH=%{_libdir}/cmake/aws-c-common/modules
 %make_jobs
 
 %check
@@ -74,18 +77,20 @@ export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
 %install
 %cmake_install
 
-%post -n lib%{name}%{library_soversion} -p /sbin/ldconfig
-%postun -n lib%{name}%{library_soversion} -p /sbin/ldconfig
+%post -n lib%{name}%{library_pkg} -p /sbin/ldconfig
+%postun -n lib%{name}%{library_pkg} -p /sbin/ldconfig
 
-%files -n lib%{name}%{library_soversion}
+%files -n lib%{name}%{library_pkg}
 %doc README.md
 %license LICENSE
-%{_libdir}/*.so.%{library_soversion}
-%{_libdir}/*.so.%{library_version}
+%{_libdir}/lib%{name}.so.%{library_soversion}
+%{_libdir}/lib%{name}.so.%{library_version}
+%{_libdir}/lib%{name}.so.1.0
 
 %files devel
-%{_libdir}/cmake/
-%{_libdir}/*.so
-%{_includedir}/*
+%{_libdir}/cmake/%{name}/
+%{_libdir}/lib%{name}.so
+%dir %{_includedir}/aws/cal
+%{_includedir}/aws/cal/*
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:53:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.0.0
+  * Use latest as aws-crt-builder version by @sfod in (#252)
+  * ECC Validation Test by @sbSteveK in (#253)
+  * Expand ecc validation test by @sbSteveK in (#254)
+  * CI/CD improvements by @azkrishpy in (#256)
+  * Clean up docs by @azkrishpy in (#255)
+  * chore(release): add governance files by @azkrishpy in (#257)
+- Add Provides and Obsoletes for previous shared library version
+- Drop acc_add-so-version.patch, fixed upstream
+- Pass installation path of aws-c-common cmake modules in CMAKE_PREFIX_PATH
+- Prefer explicit path and filenames over wildcards in %files section
+
+-------------------------------------------------------------------
 Tue Aug  4 11:08:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.15
