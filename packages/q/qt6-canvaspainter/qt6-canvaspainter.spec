@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.11.2
-%define short_version 6.11
+%define real_version 6.12.0
+%define short_version 6.12
 %define short_name qtcanvaspainter
 %define tar_name qtcanvaspainter-everywhere-src
 %define tar_suffix %{nil}
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\(GalleryExample\\)
 #
 Name:           qt6-canvaspainter%{?pkg_suffix}
-Version:        6.11.2
+Version:        6.12.0
 Release:        0
 Summary:        Accelerated 2D painting solution for Qt Quick and QRhi-based render targets
 License:        GPL-3.0-only
@@ -58,6 +58,12 @@ BuildRequires:  qt6-tools
 Accelerated 2D painting solution for Qt Quick and QRhi-based render targets.
 
 %if !%{qt6_docs_flavor}
+
+%package -n qt6-canvas2d-imports
+Summary:        Qt Canvas2D component for Qt Quick
+
+%description -n qt6-canvas2d-imports
+Qt Canvas2D component for Qt Quick.
 
 %package -n libQt6CanvasPainter6
 Summary:        Qt 6 CanvasPainter library
@@ -103,10 +109,24 @@ any ABI or API guarantees.
 
 %if !%{qt6_docs_flavor}
 
-# FIXME ? Needed ?
-# %%qt6_link_executables
+# CMake files are not needed for plugins
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
+
+# Internal
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Canvas2DPrivate
+rm -r %{buildroot}%{_qt6_includedir}/QtCanvas2D
+rm %{buildroot}%{_qt6_libdir}/libQt6Canvas2D.prl
+rm %{buildroot}%{_qt6_libdir}/libQt6Canvas2D.so
+rm %{buildroot}%{_qt6_descriptionsdir}/Canvas2DPrivate.json
+rm %{buildroot}%{_qt6_metatypesdir}/qt6canvas2dprivate_metatypes.json
+rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_canvas2d_private.pri
 
 %ldconfig_scriptlets -n libQt6CanvasPainter6
+%ldconfig_scriptlets -n qt6-canvas2d-imports
+
+%files -n qt6-canvas2d-imports
+%{_qt6_libdir}/libQt6Canvas2D.so.*
+%{_qt6_qmldir}/QtCanvas2D/
 
 %files -n libQt6CanvasPainter6
 %license LICENSES/*
