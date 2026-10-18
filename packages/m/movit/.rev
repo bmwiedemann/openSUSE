@@ -177,4 +177,12 @@
   that could cause errors with certain shader compilers.</comment>
     <requestid>1100170</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ca37c79ea57537bc2186e2fb9ed42581</srcmd5>
+    <version>1.7.2</version>
+    <time>1792344344</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385868</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:02:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.7.2:
+  * Fix compatibility with newer Google Test.
+- Switch to upstream release tarball.
+- Ship COPYING as Source1 (missing from the 1.7.2 tarball).
+- Drop obsolete Group tags.
+
+-------------------------------------------------------------------
 Sat Jul 22 20:36:21 UTC 2023 - antoine.belvire@opensuse.org
 
 - Update to version 1.7.1: Fix a bug when compiling in shaders,

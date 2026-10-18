@@ -1,7 +1,7 @@
 #
 # spec file for package movit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %define _sonum  8
 Name:           movit
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        GPU video filter library
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://movit.sesse.net
 Source0:        %{name}-%{version}.tar.xz
+# Upstream 1.7.2 release tarball misses COPYING (present in git); fetch it
+# from the 1.7.1 service-generated tarball (identical GPL-2.0 text).
+Source1:        COPYING
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
@@ -47,7 +49,6 @@ transitions, facilitating real-time HD video editing.
 
 %package -n libmovit%{_sonum}
 Summary:        GPU video filter library
-Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 # Shaders used to be split; Ensure upgrade path until Leap 15.5 EOL (Dec. 2024).
@@ -63,7 +64,6 @@ This package contains the Movit shared library.
 
 %package        devel
 Summary:        Development files for the Movit GPU video filter library
-Group:          Development/Libraries/C and C++
 Requires:       libmovit%{_sonum} = %{version}
 
 %description    devel
@@ -84,22 +84,23 @@ test -x "$(type -p g++-7)" && export CXX=g++-7
 ./autogen.sh
 %configure --disable-static
 
-make %{?_smp_mflags} TESTS=
+%make_build TESTS=
 
 %install
 %make_install
 rm %{buildroot}%{_libdir}/libmovit.la
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_licensedir}/libmovit%{_sonum}/COPYING
 
 %post -n libmovit%{_sonum} -p /sbin/ldconfig
 %postun -n libmovit%{_sonum} -p /sbin/ldconfig
 
 %files -n libmovit%{_sonum}
-%license COPYING
+%license %{_licensedir}/libmovit%{_sonum}/COPYING
+%dir %{_licensedir}/libmovit%{_sonum}
 %doc README NEWS
 %{_libdir}/libmovit.so.*
 
 %files devel
-%license COPYING
 %{_libdir}/libmovit.so
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
