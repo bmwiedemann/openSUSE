@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:34:01 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 20260614:
+  * Upstream moved off the dead sourceforge tree to a maintained
+    rewrite (fuse3 and meson build system).
+  * Fixes integer overflow (CVE-2015-8836) and buffer overflow
+    (CVE-2015-8837), plus several other overflow and wrapping errors.
+  * Fix iconv errors on non-glibc, infinite loop parsing line options
+    on arm, symlink size reporting, fuse options placed before
+    arguments, and block count calculation.
+- Drop fuseiso-fuse3.patch: upstream ported to fuse3 natively and
+  removed the autotools build the patch targeted.
+- Port build to meson (%meson/%meson_build/%meson_install); drop
+  libtool and autoreconf. Add versioned fuse3 >= 3.14 and
+  glib-2.0 >= 2.2 floors from upstream meson.build.
+- License re-verified as GPL-2.0-or-later from the source headers.
+
+-------------------------------------------------------------------
 Tue May 13 12:05:50 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Added fuseiso-fuse3.patch to fuse3 support (boo#1242092).

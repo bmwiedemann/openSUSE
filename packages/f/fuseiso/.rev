@@ -150,4 +150,12 @@
   * Removed fuseiso-20061017.patch (included).</comment>
     <requestid>1277123</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8e71dd69f8dd8a395292c43eb61464ac</srcmd5>
+    <version>20260614</version>
+    <time>1792344315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385800</requestid>
+  </revision>
 </revisionlist>
