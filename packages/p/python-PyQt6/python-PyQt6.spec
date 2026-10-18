@@ -19,58 +19,35 @@
 %define plainpython python
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
-%global flavor @BUILD_FLAVOR@%{nil}
 
-%if "%{flavor}" == "qt6pdf"
-%define pkg_suffix -qt6pdf
-%bcond_without qt6pdf
-
-%if (0%{suse_version} >= 1600 && 0%{suse_version} < 1699 && !0%{?is_opensuse}) || 0%{?suse_version} < 1600
-# SLFO and SLE15 don't have cmake(Qt6Pdf)
-ExclusiveArch:  do_not_build
-%endif
-%ifnarch aarch64 x86_64 riscv64
-# qt6-pdf-devel is built in qt6-webengine with ExclusiveArch
-ExclusiveArch:  do_not_build
-%endif
-
-%else
-%bcond_with qt6pdf
-%endif
 
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}%{?pkg_suffix}
-Version:        6.11.0
+Version:        6.12.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt
-Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/pyqt6-%{version}.tar.gz
+Source:         https://www.riverbankcomputing.com/pypi/packages/pyqt6/pyqt6-%{version}.tar.gz
+#Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/pyqt6-%%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - disable-rpaths.diff - Disable RPATH when building PyQt6.
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
 Patch1:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
-# PATCH-FIX-UPSTREAM fix-build-without-qtcore.patch -- Allow building only the Qt6Pdf bindings
-Patch3:         fix-build-without-qtcore.patch
-BuildRequires:  %{python_module PyQt6-sip >= 13.8}
+BuildRequires:  %{python_module PyQt6-sip >= 13.13}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
 BuildRequires:  %{python_module devel >= 3.10}
-BuildRequires:  %{python_module pyqt-builder >= 1.17}
-BuildRequires:  %{python_module sip-devel >= 6.12}
+BuildRequires:  %{python_module pyqt-builder >= 1.20}
+BuildRequires:  %{python_module sip-devel >= 6.17}
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gdb
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
-BuildRequires:  qt6-base-devel
+BuildRequires:  qt6-base-devel >= 6.12
 BuildRequires:  qt6-macros
-%if %{with qt6pdf}
-BuildRequires:  cmake(Qt6Pdf)
-BuildRequires:  cmake(Qt6PdfWidgets)
-BuildRequires:  %{python_module PyQt6-devel}
-%else
 BuildRequires:  cmake(Qt6Bluetooth)
 BuildRequires:  cmake(Qt6Designer)
 BuildRequires:  cmake(Qt6DBus)
@@ -108,15 +85,9 @@ BuildRequires:  cmake(Qt6WebChannel)
 BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-%endif
 Requires:       python-PyQt6-sip >= %(rpm -q --whatprovides python-PyQt6-sip --qf "%%{version}")
 Requires:       python-dbus-python >= %(rpm -q --whatprovides python-dbus-python --qf "%%{version}")
-%if %{with qt6pdf}
-Requires:       python-PyQt6
-%else
-Recommends:     python-PyQt6-qt6pdf
 Provides:       python-qt6 = %{version}-%{release}
-%endif
 %python_subpackages
 
 %description
@@ -130,10 +101,6 @@ Requires:       python-dbus-python-devel >= 0.8
 Requires:       python-devel
 Requires:       qt6-base-devel
 Requires:       qt6-macros
-%if %{with qt6pdf}
-Requires:       cmake(Qt6Pdf)
-Requires:       cmake(Qt6PdfWidgets)
-%else
 Requires:       cmake(Qt6Bluetooth)
 Requires:       cmake(Qt6Designer)
 Requires:       cmake(Qt6DBus)
@@ -170,19 +137,14 @@ Requires:       cmake(Qt6WebChannel)
 Requires:       cmake(Qt6WebSockets)
 Requires:       cmake(Qt6Widgets)
 Requires:       cmake(Qt6Xml)
-%endif
 Requires:       %plainpython(abi) = %{python_version}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # If and which version of sip is required depends on the project trying
 # to build against PyQt6.
-%if %{with qt6pdf}
-Requires:       python-PyQt6-devel
-%else
 Recommends:     python-sip-devel
 Recommends:     python-qscintilla-qt6
 Provides:       python-qt6-devel = %{version}-%{release}
-%endif
 
 %description devel
 PyQt is a set of Python bindings for the Qt framework.
@@ -222,40 +184,19 @@ dos2unix examples/multimedia*/*/*.ui
                --confirm-license \
                --qt-shared \
                --qmake-setting 'QMAKE_CXXFLAGS_RELEASE=%{flags} -DQT_NO_INT128'\
-%if %{with qt6pdf}
-               --enable QtPdf \
-%endif
                %{nil}
 }}
 
 %install
 %pyqt_install
-%if %{without qt6pdf}
 %pyqt_install_examples %mname
 
 %python_clone -a %{buildroot}%{_bindir}/pyuic6
 %python_clone -a %{buildroot}%{_bindir}/pylupdate6
-%else
-# We have to remove installed files that aren't part of qt6pdf
-rm %{buildroot}%{_bindir}/pyuic6 \
-   %{buildroot}%{_bindir}/pylupdate6
-rm -Rf %{buildroot}%{_qt6_datadir}/qsci
-%{python_expand 
-rm -Rf %{buildroot}%{$python_sitelib}/dbus \
-   %{buildroot}%{$python_sitearch}/PyQt6/uic \
-   %{buildroot}%{$python_sitearch}/PyQt6/lupdate \
-   %{buildroot}%{$python_sitearch}/[Pp]y[Qq]t6-%{version}.dist-info
-rm %{buildroot}%{$python_sitearch}/PyQt6/__init__.py \
-   %{buildroot}%{$python_sitearch}/PyQt6/dbus_mainloop.abi3.so \
-   %{buildroot}%{$python_sitearch}/PyQt6/py.typed \
-   %{buildroot}%{$python_sitearch}/PyQt6/sip.pyi
-}
-%endif
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 
-%if %{without qt6pdf}
 
 %check
 export PYTHONDONTWRITEBYTECODE=1 # boo#1047218
@@ -270,11 +211,9 @@ $python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{versi
 %postun devel
 %python_uninstall_alternative pyuic6
 
-%endif
 
 %files %{python_files}
 %license LICENSE
-%if %{without qt6pdf}
 %doc README.md NEWS ChangeLog
 %{python_sitearch}/PyQt6/
 %{python_sitearch}/[Pp]y[Qq]t6-%{version}.dist-info/
@@ -284,15 +223,10 @@ $python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{versi
 %dir %{_qt6_pluginsdir}/PyQt6/
 %{_qt6_pluginsdir}/PyQt6/libpy%{python_bin_suffix}qt6qmlplugin.so
 %exclude %pyqt6_sipdir
-%exclude %{python_sitearch}/PyQt6/QtPdf.*
-%else
-%{python_sitearch}/PyQt6/QtPdf.*
-%endif
 
 %files %{python_files devel}
 %license LICENSE
 %pyqt6_sipdir
-%if %{without qt6pdf}
 %python_alternative %{_bindir}/pyuic6
 %python_alternative %{_bindir}/pylupdate6
 %dir %{_qt6_pluginsdir}/designer/
@@ -308,6 +242,5 @@ $python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{versi
 %exclude %{_docdir}/%{python_prefix}-%{mname}/README.md
 %exclude %{_docdir}/%{python_prefix}-%{mname}/NEWS
 %exclude %{_docdir}/%{python_prefix}-%{mname}/ChangeLog
-%endif
 
 %changelog

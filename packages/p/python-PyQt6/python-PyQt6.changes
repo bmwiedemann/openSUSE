@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:11:33 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.12.0
+  - Added support for Qt v6.12.
+  - The QtPdf and QtPdfWidgets modules are now part of the
+    PyQt6-WebEngine package.
+  - The package can now be built with Python v3.15 (where the
+    limited ABI version targeted will be v3.13).
+  - `pyqtProperty` is now definined in `QtCore.pyi` (thanks to
+    Kovid Goyal).
+  - Fixed a problem detecting when `QObject` instances created by
+    Qt were destroyed after a `QCoreApplication` was destroyed and
+    then recreated.
+  - Fixed the typing return type of the `QObject.findChild()`
+    overloads.
+  - The `QAudioOutput` ctors now release the GIL to avoid a
+    deadlock on certain Linux configurations.
+  - The base type for the `QSql.TableType` enum is now `enum.Flag`.
+- Remove multibuild: QtPdf now at WebEngine
+  * remove fix-build-without-qtcore.patch
+
+-------------------------------------------------------------------
 Tue Jun  2 15:08:25 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
 - Force -std=gnu++17 to fix the broken build with GCC 16 
