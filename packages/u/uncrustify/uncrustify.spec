@@ -17,11 +17,10 @@
 
 
 Name:           uncrustify
-Version:        0.82.0
+Version:        0.83.0
 Release:        0
 Summary:        Source Code Beautifier for C, C++, C#, ObjectiveC, D
 License:        GPL-2.0-or-later
-Group:          Development/Languages/C and C++
 URL:            https://github.com/uncrustify/uncrustify
 Source:         https://github.com/%{name}/%{name}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  cmake

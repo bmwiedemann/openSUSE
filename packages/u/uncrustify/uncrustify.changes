@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:29:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 0.83.0: 44 new options, no removed ones:
+  * Added : align_var_def/class/struct_span_num_{pp,cmt,empty}_lines
+  * Added : align_func_proto_span_num_{pp,cmt,empty}_lines
+  * Added : align_assign/enum_equ_span_num_{pp,cmt,empty}_lines
+  * Added : align_func_params/typedef_span_num_{pp,cmt,empty}_lines
+  * Added : align_constr_value_span_num_{pp,cmt,empty}_lines
+  * Added : align_same_func_call_params_span_num_{pp,cmt,empty}_lines
+  * Added : global_span_num_{pp,cmt,empty}_lines
+  * Added : nl_collapse_{do,switch,if,for,while}_one_liner
+  * Added : sp_paren_deref, sp_after/before_ref_qualifier,
+    sp_deduction_guide_{paren,paren_empty,arrow}
+- Spec cleanup: drop Group tag
+
+-------------------------------------------------------------------
 Sat Jan  3 16:35:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.82.0:
