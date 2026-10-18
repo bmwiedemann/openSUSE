@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Oct 16 04:50:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.7.0:
+  * Additions
+    - (!587 !638) Commands to manage issue dependencies
+    - (!619) --page and --all options for fj pr search and fj issue
+      search
+    - (!648) fj milestone
+    - (!642 !659) Localization updates
+    - (!654) [experimental] Support for creating SHA256 repos.
+      Requires building with the unstable-sha256 feature
+    - (!662) Add fast-forward-only as a merge method option to fj
+      pr merge
+    - (!705) fj auth login support for openlat.dev
+    - (!730) fj pr review request
+  * Changes
+    - (!611) fj repo edit's --avatar option now uses -A as its
+      short form, instead of -a, to not conflict with --archived
+    - (!697) Don't print directional isolate characters in non-tts
+      contexts
+    - (!736) Don't print notice about the keys file not existing
+  * Fixes
+    - (!617) Use the default SIGPIPE handler on unix systems
+    - (!626) Warnings when loading the keys file are now printed to
+      stderr
+    - (!606 !607 !608 !663 !674 !712 !713) Fixes to localization
+      strings.
+    - (!723) fj pr status no longer gets the status of the first
+      commit immediately after force-pushing
+  * Removed
+    - (!700) All help commands, to not conflict with positional
+      parameters. Use --help instead.
+
+-------------------------------------------------------------------
 Mon Aug 17 07:18:23 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update vendored bytes crate to 1.12.1, fixing an integer overflow

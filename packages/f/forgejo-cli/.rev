@@ -134,4 +134,12 @@
     <comment>Bump vendored bytes crate to 1.12.1, fixing CVE-2026-25541 (boo#1274529) (forwarded request 1371518 from pdostal)</comment>
     <requestid>1371569</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>69bbf0e9ee97b8d25ed818e5fd193e2c</srcmd5>
+    <version>0.7.0</version>
+    <time>1792344202</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.7.0 (forwarded request 1385093 from ojkastl_buildservice)</comment>
+    <requestid>1385717</requestid>
+  </revision>
 </revisionlist>
