@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct 16 17:57:14 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.34
+  * cosmetic c271950
+  * eliminate compiler warning f03eacf
+  * eliminate compiler warning cf01b29
+  * https://github.com/ImageMagick/ImageMagick/issues/9011 2c1021b
+  * Added check for libraw version 0.21 and raise warning when dng:read-thumbnails is used. 1937e00
+  * Hide convert warning from test output. b88a07b
+  * Improved the filter even more. 1741715
+  * Improved filter even more. d7d6a1d
+  * Fix Q8 connected-components validation input 7e57af2
+  * https://github.com/ImageMagick/ImageMagick/issues/9015 081827b
+  * Preserve source depth when decoding HEIC sequences 1e2e12e
+  * Fix HEIC source selection and primary image lookup c2ba621
+  * Read available ICC profiles for each HEIC sequence frame 28f1f93
+  * Add an option to read only the HEIC primary image 165faf2
+  * Select image-sequence tracks when reading HEIC animations f1d8c90
+  * Prefer primary images for HEIC and HEIF still-image brands 5f543cd
+  * Silence warning a0dd832
+  * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-x48p-6655-8qgv 270f70f
+  * Allow two tests to pass when a security policy blocks it. e2ddd0d
+  * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-vmj6-qx38-9gf5 11977ca
+  * Also use the pre-build dependencies for the daily linux build. 59b8722
+  * Updated dependencies. c9932b6
+  * Also run daily when the configure or dependencies are updated. d9a987d
+  * support ShuffleImages() 3d7aaa6
+  * support ShuffleImages() 04cf4f7
+  * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-g5j8-ff59-wp88 5f6b60f
+  * eliminate compiler warning 7145ceb
+  * Silence warnings. 581f921
+  * Silence warning. 43154d4
+  * Corrected compiler flag in the daily build. 8920906
+  * support shuffle type 66ade98
+  * Corrected settings for the daily build. 06d1730
+  * Made the build file executable. c5d4ca8
+
+-------------------------------------------------------------------
+Wed Oct 14 16:28:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- typo fixes
+
+-------------------------------------------------------------------
 Wed Oct 14 07:52:36 UTC 2026 - Petr Gajdos <pgajdos@suse.com> + gemini
 
 - version update to 7.1.2.33
@@ -92,6 +135,8 @@ Wed Oct 14 07:52:36 UTC 2026 - Petr Gajdos <pgajdos@suse.com> + gemini
   * ImageMagick-configuration-SUSE.patch (refreshed)
   * ImageMagick-library-installable-in-parallel.patch (refreshed)
   * ImageMagick_policy_etc.patch (refreshed)
+- fixes CVE-2026-109964 [bsc#1285426]
+        CVE-2026-105081 [bsc#1285069]
 
 -------------------------------------------------------------------
 Tue Oct 13 10:41:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -275,6 +320,25 @@ Wed Oct  7 12:54:24 UTC 2026 - Petr Gajdos <pgajdos@suse.com> + gemini
         CVE-2026-106568 [bsc#1284665]
         CVE-2026-106569 [bsc#1284666]
         CVE-2026-106570 [bsc#1284667]
+        CVE-2026-109258 [bsc#1285071]
+        CVE-2026-109259
+        CVE-2026-109260
+        CVE-2026-109261
+        CVE-2026-109262
+        CVE-2026-109263
+        CVE-2026-109264
+        CVE-2026-109265
+        CVE-2026-109266
+        CVE-2026-109268
+        CVE-2026-109269
+        CVE-2026-109270
+        CVE-2026-109271
+        CVE-2026-109273
+        CVE-2026-109274
+        CVE-2026-109275
+        CVE-2026-109276
+        CVE-2026-109277
+        CVE-2026-109278
 
 -------------------------------------------------------------------
 Tue Sep 15 11:47:56 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -1118,7 +1182,7 @@ Mon Feb 23 21:16:44 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
         CVE-2026-56362 [bsc#1271100]
         CVE-2026-56373 [bsc#1271315]
         GHSA-hc76-7mpc-qjqh [bsc#1272579]
-- actually patch SUSE default security policy 
+- actually patch SUSE default security policy
   * modified ImageMagick-configuration-SUSE.patch
 
 -------------------------------------------------------------------

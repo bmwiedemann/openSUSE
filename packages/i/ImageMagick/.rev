@@ -4700,4 +4700,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>GHSA-2wwj-grp2-3fp5, GHSA-4wfv-467j-fqh9, GHSA-5222-mhv9-26rg, GHSA-528x-2384-jmxp, GHSA-5jf2-9gcp-q234, GHSA-6p6q-wfrv-ffhh, GHSA-7438-vh5v-v52h, GHSA-79p5-w6jv-r997, GHSA-7r5g-p7ff-jgcp, GHSA-83w9-w85j-h9jc, GHSA-8ghq-p369-g395, GHSA-8w9c-hj38-8pf9, GHSA-c2qq-jqw7-q4mx, GHSA-fp46-842c-2v83, GHSA-h3qx-937j-245g, GHSA-h9g3-4qvr-rx8h, GHSA-j2rp-5r6m-f7x8, GHSA-j657-rmv3-4m94, GHSA-m938-565c-h9qf, GHSA-mqmp-r5jh-jx7w, GHSA-pj4h-g4pf-66v3, GHSA-pwpf-8799-94cj, GHSA-qq8x-fq3x-43h4, GHSA-rm4p-xqw3-f45f, GHSA-v5f5-4v9x-p3f2, GHSA-v9q4-cm37-q2jm, GHSA-vj7g-384h-64fv, GHSA-vm77-q83h-5fhg, GHSA-x258-xjqf-6j3f</comment>
     <requestid>1384757</requestid>
   </revision>
+  <revision rev="354" vrev="1">
+    <srcmd5>09e137092219306f02e07b620441829b</srcmd5>
+    <version>7.1.2.34</version>
+    <time>1792344142</time>
+    <user>dimstar_suse</user>
+    <comment>GHSA-g5j8-ff59-wp88, GHSA-vmj6-qx38-9gf5, GHSA-x48p-6655-8qgv</comment>
+    <requestid>1385275</requestid>
+  </revision>
 </revisionlist>

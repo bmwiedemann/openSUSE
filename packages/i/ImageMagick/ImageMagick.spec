@@ -21,7 +21,7 @@
 %define debug_build    0
 %define asan_build     0
 %define mfr_version    7.1.2
-%define mfr_revision   33
+%define mfr_revision   34
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -125,7 +125,7 @@ Requires:       libMagickCore%{libspec}%{clibver} = %{version}
 Requires:       perl = %{perl_version}
 
 %description -n perl-PerlMagick
-PerlMagick is an objected-oriented Perl interface to ImageMagick. Use
+PerlMagick is an object-oriented Perl interface to ImageMagick. Use
 the module to read, manipulate, or write an image or image sequence
 from within a Perl script. This makes it suitable for Web CGI scripts.
 
@@ -263,7 +263,7 @@ BuildArch:      noarch
 
 %description config-7-SUSE
 ImageMagick configuration as provided by SUSE. It is upstream 'secure'
-policy plus disable few other coders for reading and/or writing.
+policy plus disable a few other coders for reading and/or writing.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
@@ -336,12 +336,11 @@ sed -i -e 's/\(^CFLAGS.*\)/\1 -fsanitize=address/' \
 %make_build all
 %make_build -j1 perl-build
 # mostly because */demo is used later with %%check
-# polutting dir with .libs etc.
+# polluting dir with .libs etc.
 cp -r Magick++/demo Magick++/examples
 cp -r PerlMagick/demo PerlMagick/examples
 # other improvements
 chmod -x PerlMagick/demo/*.pl
-exit 0
 
 %check
 %ifarch i586
@@ -379,10 +378,10 @@ ln -s ./MagickWand %{buildroot}%{_includedir}/ImageMagick-7/wand
 rm -r %{buildroot}%{_datadir}/doc/ImageMagick-7/
 rm %{buildroot}%{_libdir}/*.la
 # remove RPATH from perl module
-perl_module=$(find %{buildroot}%{_prefix}/lib/perl5 -name '*.so')
-chmod 755 $perl_module
-chrpath -d $perl_module
-chmod 555 $perl_module
+perl_module="$(find %{buildroot}%{_prefix}/lib/perl5 -name '*.so')"
+chmod 755 "$perl_module"
+chrpath -d "$perl_module"
+chmod 555 "$perl_module"
 # remove %%{buildroot} from distributed file
 sed -i 's:%{buildroot}::' %{buildroot}/%{_libdir}/ImageMagick-%{mfr_version}/config%{libspec}%{clibver}/configure.xml
 #remove duplicates
