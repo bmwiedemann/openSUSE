@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 16 15:04:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.8.2:
+  * Fix build with configure checks disabled
+  * Fix handling of invalid ring size parameters
+  * Fix potential out of bounds access on error
+- Drop unneeded cmake BuildRequires.
+- Use autosetup and ldconfig_scriptlets macros.
+
+-------------------------------------------------------------------
 Wed Dec 10 08:36:37 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 0.8.0

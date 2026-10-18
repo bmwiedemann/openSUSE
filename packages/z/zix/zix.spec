@@ -1,7 +1,7 @@
 #
 # spec file for package zix
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %define sover 0
 Name:           zix
-Version:        0.8.0
+Version:        0.8.2
 Release:        0
 Summary:        A lightweight C library of portability wrappers and data structures
 License:        ISC
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.com/drobilla/zix
-Source0:        https://gitlab.com/drobilla/zix/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+Source0:        %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 Source99:       baselibs.conf
-BuildRequires:  cmake
+
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
@@ -68,7 +68,7 @@ Threading
 File System
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -n %{name}-v%{version}
 
 %build
 %meson -Ddocs=disabled
@@ -77,8 +77,7 @@ File System
 %install
 %meson_install
 
-%post -n libzix-0-%{sover} -p /sbin/ldconfig
-%postun -n libzix-0-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libzix-0-%{sover}
 
 %files -n libzix-0-%{sover}
 %{_libdir}/libzix-0.so.%{sover}
