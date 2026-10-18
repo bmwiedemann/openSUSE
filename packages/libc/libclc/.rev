@@ -451,4 +451,165 @@
     <comment>1</comment>
     <requestid>1373932</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b172deac8f0daafb14057180b25c3cfa</srcmd5>
+    <version>0.2.0+llvm23.1.0</version>
+    <time>1792356756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 23.1.0.
+  * Compile w/o linking builtins with SPIRV backend
+  * Rework libclc naming convention to use the triple
+  * Make output filename configurable; rename top-level targets
+  * Bring back fma for clspv
+  * Stop building amdgpu targets all as tahiti
+  * Fix broken symlinks
+  * Fix memory_scope and memory_order of *mem_fence builtins
+  * Add __clc_issubnormal
+  * Remove r600 support
+  * Enable -ffp-contract=fast-honor-pragmas globally
+  * Compile with -fdenormal-fp-math=dynamic
+  * Add subnormals back to clspv
+  * Reimplement amdhsa workitem functions
+  * Fix checking for arch including OS in wrong place
+  * Implement address space qualifier functions for amdgpu
+  * Implement get_enqueued_local_size
+  * Reimplement amdhsa dispatch size functions
+  * Define work_group_barrier
+  * Add atomic_work_item_fence
+  * Add amdgpu subgroup functions
+  * Add sub_group_broadcast
+  * Reimplement amdhsa get_num_groups
+  * Implement get_global_linear_id and get_local_linear_id
+  * Avoid duplicated get_local_size/get_global_size functions
+  * Fix amdgpu get_enqueued_local_size
+  * Add amdgpu wait_group_events
+  * Remove target definitions of opencl workitem functions
+  * Add __printf_alloc implementation
+  * Move get_global_id into clc
+  * Use enqueued local size to implement get_global_id
+  * Use separate acquire and release fences in work_group_barrier
+  * Remove target opencl copies of mem_fence
+  * Move sub_group_barrier to clc
+  * Rename sub_group_broadcast header
+  * Move subgroup functions into clc
+  * Add work_group_any/work_group_all implementation
+  * Add work_group_broadcast
+  * Fix wait_group_events build for targets without generic
+  * Add uintptr_t overloads of atomic_fetch_add and sub
+  * Correctly declare __clc_get_max_sub_group_size as taking no
+    arguments
+  * Add sub_group_reduce_* functions
+  * Fix logic for fence ordering based on mem flags
+  * Add work_group_reduce_* functions
+  * Remove old mesa amdgcn targets
+  * Replace last of `opencl` atomics with `__scoped_` versions
+  * Merge amdgpu and amdgcn directories
+  * Remove amdgpu sqrt override
+  * Use elementwise exp for exp functions
+  * Fix missing clc prefixes on some clc files
+  * Remove unused and incorrect pkgconf file
+  * Add div_cr utility function
+  * Add sqrt_cr utility
+  * Add fast version utility functions for div, sqrt and reciprocal
+  * Use frexp builtins to implement frexp for amdgpu
+  * Add gentype infinity macro
+  * Add frexp_exp utility function
+  * Update hypot, ilogb, logb implementation
+  * Add ep utility
+  * Update f64 log implementations
+  * Replace fmod implementation with elementwise builtin
+  * Replace nextafter implementation
+  * Improve fdim handling
+  * Improve minmag and maxmag
+  * Fix mismatch in declared and defined function name
+  * Disable contract in trig reductions
+  * Remove attempt at subnormal flush from trig functions
+  * Add generic clc_mem_fence instruction
+  * Fix compiler check with --target=spirv64 and
+    -disable-llvm-passes
+  * Use struct for ep pair
+  * Use fshr builtin in sincos helpers
+  * Move edge case handling of trig functions
+  * Update pow functions
+  * Use frexp and ldexp in trig reduction instead of bit hacking
+  * Use small trig reduction for nan
+  * Improve large float trig reduction
+  * Use select function instead of ?: for some fp selects
+  * Clean up sincos macro usage
+  * Improve float trig function handling
+  * Fix vector float tan
+  * Move FLT_MIN gentype macros
+  * Move subnormal config file to clc
+  * Invert subnormal checks
+  * Really implement denormal config checks
+  * Update f64 trig functions
+  * Add canonicalize utility functions
+  * Fix nextafter with -cl-denorms-are-zero
+  * Stop implementing sincos as separate sin and cos
+  * Really implement half trig functions
+  * Restore previous generic fmod implementation
+  * Replace flush_if_daz implementation
+  * Implement sin and cos with sincos
+  * Update trigpi functions
+  * Rewrite log implementation as gentype inc file
+  * Use log intrinsic for half and float cases for amdgpu
+  * Override cbrt for AMDGPU
+  * Update acos, remquo, asin, atan
+  * Implement remainder with remquo
+  * Simplify rtz conversion
+  * Use nextup and nextdown in place of nextafter
+  * Fix -cl-denorms-are-zero for rtp and rtn conversions
+  * Update log1p, lgamma_r
+  * Improve tgamma handling
+  * Update expm1, sinh, cosh, tanh, asinh, acosh, atanh, atanpi,
+    asinpi, acospi
+  * Unify fast FMA controls
+  * Force assuming fast float fma for AMDGPU
+  * clspv does not need workaround for flush_if_daz
+  * Fix amdgpu subgroup reduce for max u64
+  * Fix amdgpu sub_group_broadcast for double
+  * Fix directly adding vector booleans
+  * Use prefetch builtin to implement default prefetch
+  * Update erf, erfc, atan2, atan2pi
+  * Implement get_sub_group_id with get_local_linear_id
+  * Fix missing overloads for atomic_fetch_add/sub
+  * Add subgroup scan functions
+  * Add work group scan functions
+  * Partially implement nonuniform subgroup reduce functions
+  * Simplify fract implementation
+  * Use special division for atan2 for DAZ
+  * Refine generic __clc_get_sub_group_size with fast full
+    sub-group path
+  * Fix atomic_fetch_add/sub overloads for uintptr_t
+  * Allow testing unresolved symbols on multiple libraries
+  * Consolidate `amdgpu` and `amdgcn` architectures consistently
+  * Create a static `.a` file in addition to the `.bc` file
+  * Apply hidden visibility to amdgpu / nvptx builds
+  * Add optimized DPP scan functions for AMDGPU
+  * Move sources collection into libclc_add_builtin_library, merge
+    opencl library creation into libclc_add_library
+  * Fix .cl tests in standalone build
+  * Optimize and vectorize signbit
+  * Use float sw_fma for spirv*-mesa-mesa3d targets
+  * Use generic spirv*-unknown-unknown clang triple for SPIR-V
+    targets
+  * Improve performance and precision of reciprocal functions
+  * Use FMA for the pi reconstruction in acos / atan
+  * Use __CLC_SCALAR instead of nonexistant __CLC_SCALAR1 for sin
+  * Use unchecked division for f64 AMDGPU reciprocal
+  * Delete wrong implementation nvptx clc_isinf
+- Produce the library for spirv32/spirv64, as required for Mesa.
+- No longer provide libclc(llvmN), because we no longer ship LLVM
+  bit code (only SPIR-V).
+- Always pin compiler to matching version.
+- Disabling LTO no longer needed, C/C++ flags are ignored anyway.
+- Drop rpmlintrc that is no longer needed.
+- Drop obsolete patches:
+  * fix-subnormal-build.patch
+  * mark-clc-flush-denormal-if-not-supported-as-static.patch
+- Rebase cmake-use-imported-targets.patch.
+
+- require llvm23 also for sle16</comment>
+    <requestid>1385169</requestid>
+  </revision>
 </revisionlist>

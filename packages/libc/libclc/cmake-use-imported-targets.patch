@@ -3,37 +3,29 @@ these are versioned binaries, but the CMake package definitions knows
 where to find them.
 
 diff --git a/libclc/CMakeLists.txt b/libclc/CMakeLists.txt
-index c17b350..9a28d58 100644
+index 5829bd9..d805737 100644
 --- a/libclc/CMakeLists.txt
 +++ b/libclc/CMakeLists.txt
-@@ -63,6 +63,7 @@ if( LIBCLC_STANDALONE_BUILD OR CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DI
-   set( LIBCLC_STANDALONE_BUILD TRUE )
- 
-   find_package(LLVM REQUIRED HINTS "${LLVM_CMAKE_DIR}")
-+  find_package(Clang REQUIRED)
+@@ -59,8 +59,7 @@ if( LIBCLC_STANDALONE_BUILD OR CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DI
    include(AddLLVM)
  
-   message( STATUS "libclc LLVM version: ${LLVM_PACKAGE_VERSION}" )
-@@ -74,8 +75,7 @@ if( LIBCLC_STANDALONE_BUILD OR CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DI
-   # Import required tools
-   if( NOT EXISTS ${LIBCLC_CUSTOM_LLVM_TOOLS_BINARY_DIR} )
-     foreach( tool IN ITEMS clang llvm-as llvm-link opt )
--      find_program( LLVM_TOOL_${tool} ${tool} PATHS ${LLVM_TOOLS_BINARY_DIR} NO_DEFAULT_PATH )
--      set( ${tool}_exe ${LLVM_TOOL_${tool}} )
-+      set( ${tool}_exe ${tool} )
-       set( ${tool}_target )
-     endforeach()
-   endif()
-@@ -134,12 +134,6 @@ if( EXISTS ${LIBCLC_CUSTOM_LLVM_TOOLS_BINARY_DIR} )
+   foreach( tool IN ITEMS llvm-link opt )
+-    find_program( LLVM_TOOL_${tool} ${tool} PATHS ${LLVM_TOOLS_BINARY_DIR} NO_DEFAULT_PATH )
+-    set( ${tool}_exe ${LLVM_TOOL_${tool}} )
++    set( ${tool}_exe ${tool} )
+     set( ${tool}_target )
    endforeach()
+ 
+@@ -124,12 +123,6 @@ if(LIBCLC_TARGET_ARCH IN_LIST LIBCLC_ARCHS_SPIRV)
+   endif()
  endif()
  
--foreach( tool IN ITEMS clang opt llvm-as llvm-link )
+-foreach( tool IN ITEMS opt llvm-link )
 -  if( NOT EXISTS "${${tool}_exe}" AND "${${tool}_target}" STREQUAL "" )
 -    message( FATAL_ERROR "libclc toolchain incomplete - missing tool ${tool}!" )
 -  endif()
 -endforeach()
 -
- if( NOT LIBCLC_USE_SPIRV_BACKEND )
-   # llvm-spirv is an optional dependency, used to build spirv-* targets when
-   # the SPIR-V backend hasn't been requested. It may be provided in-tree or
+ # Determine the clang target triple.
+ set(clang_triple ${LIBCLC_TARGET})
+ 

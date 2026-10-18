@@ -16,13 +16,12 @@
 #
 
 
-%define _libclc_llvm_ver 22.1.0
-%define _version %_libclc_llvm_ver%{?_rc:rc%_rc}
-%define _tagver %_libclc_llvm_ver%{?_rc:-rc%_rc}
+%global _libclc_llvm 23
+%global _libclc_llvm_ver %{_libclc_llvm}.1.0
+%global _version %_libclc_llvm_ver%{?_rc:rc%_rc}
+%global _tagver %_libclc_llvm_ver%{?_rc:-rc%_rc}
 
-%if 0%{?suse_version} < 1699
-%global _clang_version 22
-%endif
+%global _libclc_targets spirv{32,64}-unknown-unknown
 
 Name:           libclc
 Version:        0.2.0+llvm%{_libclc_llvm_ver}%{?_rc:~rc%_rc}
@@ -34,17 +33,12 @@ URL:            https://libclc.llvm.org/
 # Built manually via "git archive --prefix=%{name}-%{_version}.src/ llvmorg-%{_tagver} .
 # | xz -T0 >../%{name}-%{_version}.src.tar.xz" until upstream provides tarballs again.
 Source0:        %{name}-%{_version}.src.tar.xz
-Source100:      %{name}-rpmlintrc
-Source101:      https://releases.llvm.org/release-keys.asc#/%{name}.keyring
-Patch1:         fix-subnormal-build.patch
-Patch2:         mark-clc-flush-denormal-if-not-supported-as-static.patch
-Patch3:         cmake-use-imported-targets.patch
-BuildRequires:  clang%{?_clang_version}-devel
+Patch1:         cmake-use-imported-targets.patch
+BuildRequires:  clang%{_libclc_llvm}-devel
 BuildRequires:  cmake
-BuildRequires:  llvm%{?_clang_version}-devel
+BuildRequires:  llvm%{_libclc_llvm}-devel
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(LLVMSPIRVLib)
-Provides:       libclc(llvm%{_llvm_sonum})
 BuildArch:      noarch
 
 %description
@@ -55,24 +49,28 @@ Library requirements of the OpenCL C programming language.
 %autopatch -p2
 
 %build
-# The libraries are bitcode files, so LTO is neither supported nor does it help.
-%define _lto_cflags %{nil}
-
-%cmake \
-  -DCMAKE_C_COMPILER=clang%{?_clang_version:-%{_clang_version}} \
-  -DCMAKE_CXX_COMPILER=clang++%{?_clang_version:-%{_clang_version}} \
-%if 0%{?suse_version} < 1550
-  -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;amdgcn-amd-amdhsa;amdgcn-mesa-mesa3d;r600--;nvptx64--;nvptx64--nvidiacl;nvptx64-nvidia-cuda" \
-%endif
-  -DENABLE_RUNTIME_SUBNORMAL:BOOL=ON
-%cmake_build
+%define __builddir build-${target}
+for target in %{_libclc_targets}
+do
+  pushd .
+  %cmake \
+    -DCMAKE_C_COMPILER=clang-%{_libclc_llvm} \
+    -DCMAKE_CXX_COMPILER=clang++-%{_libclc_llvm} \
+    -DLLVM_DEFAULT_TARGET_TRIPLE=${target}
+  %cmake_build
+  popd
+done
 
 %install
-%cmake_install
+for target in %{_libclc_targets}
+do
+  %cmake_install
+  # We don't need the static library.
+  rm %{buildroot}%{_datadir}/clc/${target}/libclc.a
+done
 
 %files
 %license LICENSE.TXT
 %{_datadir}/clc
-%{_datadir}/pkgconfig/libclc.pc
 
 %changelog
