@@ -18,7 +18,7 @@
 
 Name:           libXtst
 %define lname	libXtst6
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        Xlib-based client API for the XTEST and RECORD extensions
 License:        MIT
@@ -29,8 +29,6 @@ URL:            http://xorg.freedesktop.org/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXtst/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch1:         0001-boo1281665_CVE-2026-94286_parse_reply_call_callback-check-element-size-against.patch
-Patch2:         boo1285083_CVE-2026-109088_parse_reply_call_callback-reject-zero-progress-RECOR.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  fdupes

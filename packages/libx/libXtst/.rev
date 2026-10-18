@@ -134,4 +134,16 @@
     (boo#1285083, CVE-2026-109088)</comment>
     <requestid>1384975</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1ac3a04c06f7e78c2ef3da24366faace</srcmd5>
+    <version>1.2.6</version>
+    <time>1792344150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.6
+  * This release provides fixes for CVE-2026-94286 &amp; CVE-2026-109088
+- supersedes the following patches:
+  * 0001-boo1281665_CVE-2026-94286_parse_reply_call_callback-check-element-size-against.patch
+  * boo1285083_CVE-2026-109088_parse_reply_call_callback-reject-zero-progress-RECOR.patch</comment>
+    <requestid>1385481</requestid>
+  </revision>
 </revisionlist>
