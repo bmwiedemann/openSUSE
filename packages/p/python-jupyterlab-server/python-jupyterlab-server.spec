@@ -26,10 +26,9 @@
 %endif
 # Disabled because openapi move to 0.19
 %bcond_with openapi
-
 %{?sle15_python_module_pythons}
 Name:           python-jupyterlab-server%{psuffix}
-Version:        2.28.0
+Version:        2.28.1
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
@@ -37,7 +36,7 @@ URL:            https://github.com/jupyterlab/jupyterlab_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_server/jupyterlab_server-%{version}.tar.gz
 Source100:      python-jupyterlab-server-rpmlintrc
 Patch1:         openapi-remove-cap.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling >= 1.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -49,9 +48,6 @@ Requires:       python-jsonschema >= 4.18
 Requires:       python-packaging >= 21.3
 Requires:       python-requests >= 2.31
 Requires:       (python-jupyter-server >= 1.21 with python-jupyter-server < 3)
-%if 0%{?python_version_nodots} < 310
-Requires:       python-importlib-metadata >= 4.8.3
-%endif
 Provides:       python-jupyterlab_server = %{version}-%{release}
 Obsoletes:      python-jupyterlab_server < %{version}-%{release}
 Provides:       python-jupyter-jupyterlab-server = %{version}-%{release}
@@ -61,6 +57,9 @@ Obsoletes:      python-jupyter_jupyterlab_server < %{version}-%{release}
 Provides:       python-jupyter_jupyterlab_launcher = %{version}-%{release}
 Obsoletes:      python-jupyter_jupyterlab_launcher < %{version}-%{release}
 BuildArch:      noarch
+%if 0%{?python_version_nodots} < 310
+Requires:       python-importlib-metadata >= 4.8.3
+%endif
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       jupyter-jupyterlab-launcher = %{version}-%{release}
 Obsoletes:      jupyter-jupyterlab-launcher < %{version}-%{release}
@@ -89,17 +88,17 @@ limited scope.
 Summary:        The jupyterlab_server[test] requirements
 Requires:       python-Werkzeug
 Requires:       python-ipykernel
+Requires:       python-jupyterlab-server = %{version}
+# upper limit removed to allow newer versions than what upstream permits
+Requires:       python-openapi-spec-validator >= 0.6
 Requires:       python-pytest >= 7
 Requires:       python-pytest-console-scripts
 Requires:       python-pytest-jupyter-server >= 0.6.2
 Requires:       python-pytest-timeout
 Requires:       python-requests-mock
-# upper limit removed to allow newer versions than what upstream permits
-Requires:       python-openapi-spec-validator >= 0.6
+Requires:       python-ruamel.yaml
 #Requires:       python-sphinxcontrib-spelling
 Requires:       python-strict-rfc3339
-Requires:       python-jupyterlab-server = %{version}
-Requires:       python-ruamel.yaml
 %if %{with openapi}
 Requires:       (python-openapi-core >= 0.18 with python-openapi-core < 0.19)
 %endif

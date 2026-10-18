@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:17:15 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 2.28.1:
+  * Fix develop-extensions feature with Tornado 6.5.9 and newer
+  * Require Python 3.10 and newer
+  * Add regression test for serving symlinked labextensions
+
+-------------------------------------------------------------------
 Thu Mar 19 08:45:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add openapi-remove-cap.patch
