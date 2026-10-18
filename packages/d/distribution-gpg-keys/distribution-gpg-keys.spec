@@ -1,7 +1,7 @@
 #
 # spec file for package distribution-gpg-keys
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021 Nicolas FORMICHELLA <stigpro@outlook.fr>
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>.
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
@@ -20,10 +20,9 @@
 
 
 Name:           distribution-gpg-keys
-Version:        1.122
+Version:        1.123
 Release:        0
 Summary:        GPG keys of various Linux distributions
-Group:          System/Packages
 License:        CC0-1.0
 URL:            https://github.com/rpm-software-management/distribution-gpg-keys
 Source0:        %{name}-%{version}.tar.xz

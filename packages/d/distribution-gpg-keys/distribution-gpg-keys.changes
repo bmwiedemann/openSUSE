@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:55:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.123:
+  * update copr keys
+  * update Google key block
+  * add: ultramarine 45 repository keys
+  * add: terra45 repository keys
+- Spec cleanup: drop obsolete Group tag
+
+-------------------------------------------------------------------
 Fri Sep 11 09:51:53 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.122:
