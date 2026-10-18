@@ -1,0 +1,47 @@
+From 8acc267d5f4049d8438456821137ae56e91baea9 Mon Sep 17 00:00:00 2001
+From: Zdenek Dohnal <zdohnal@redhat.com>
+Date: Mon, 14 Jul 2025 10:02:34 +0200
+Subject: [PATCH] sanei_thread.c: Use deferred cancellation mode
+
+The change prevents hangs in projects who run scanimage in their unit
+tests in rapid speeds, such as perl-Image-Sane.
+
+Without the patch, you can reproduce the issue with this command:
+
+`while true; do scanimage --verbose --device=test --batch-count=2; done`
+
+The command hangs after several iterations.
+---
+ sanei/sanei_thread.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/sanei/sanei_thread.c b/sanei/sanei_thread.c
+index a5dcae154..c7f408b67 100644
+--- a/sanei/sanei_thread.c
++++ b/sanei/sanei_thread.c
+@@ -333,6 +333,10 @@ local_thread( void *arg )
+ 	static int     status;
+ 	pThreadDataDef ltd = (pThreadDataDef)arg;
+ 
++	/* Set signal handlers for Mac and Mach. On other systems,
++	 * thread cancellation is enabled in deferred mode,
++	 * which is glibc default.
++	 */
+ #if defined (__APPLE__) && defined (__MACH__)
+ 	struct sigaction act;
+ 
+@@ -340,11 +344,6 @@ local_thread( void *arg )
+ 	act.sa_flags   = 0;
+ 	act.sa_handler = thread_exit_handler;
+ 	sigaction( SIGUSR2, &act, 0 );
+-#else
+-	int old;
+-
+-	pthread_setcancelstate( PTHREAD_CANCEL_ENABLE, &old );
+-	pthread_setcanceltype ( PTHREAD_CANCEL_ASYNCHRONOUS, &old );
+ #endif
+ 
+ 	DBG( 2, "thread started, calling func() now...\n" );
+-- 
+GitLab
+

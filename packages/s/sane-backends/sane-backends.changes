@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:57:39 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 1.4.0:
+  * avision: support Xerox Book Scanner 4167 (rebadged FB6080E)
+  * canon_dr: new function-number option for Canon DR-3010
+  * escl: validate Brother MFC-J453DW, Epson XP-4200, Canon PIXMA TS5100;
+    fix Kyocera reset-to-idle, Canon GX6050 SSL/TLS and HTTP2 header
+    case issues; lineart mode for ADF source
+  * hp5590: fix algorithmic error misreported as buffer size issue
+  * magicolor: support Toshiba TEC e-STUDIO2323AM plus ESTUDIO fixes
+  * pixma: support new PIXMA TS/G/E and imageClass MF4500w models;
+    fix buffer overflow for networked scanners
+  * rts8891: support Umax Astra 4400/4450
+  * saned: network scanner relay (-n/--allow-network) and child
+    process lifecycle fixes
+  * Build fixes for MacOS/clang16 and the sm3600 C23 bool typedef;
+    Turkish translations added
+- Drop remove_unnecessary_unicode_character.patch and c23-keywords.patch,
+  both fixed upstream
+- Spec cleanup (spec-cleaner normalization); drop the now-redundant
+  libsane.la removal already covered by the .la cleanup
+
+-------------------------------------------------------------------
+Fri Oct 16 07:42:37 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add upstream sanei_thread-deferred-cancellation.patch
+  to to avoid stuck tests in perl-Image-Sane in 1-core-VM (boo#1170639)
+
+-------------------------------------------------------------------
 Tue Apr 22 19:54:19 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add c23-keywords.patch from upstream to fix gcc15 compile error
@@ -2288,8 +2317,6 @@ Wed Feb  4 14:53:43 MET 1998 - mb@suse.de
 - added support for various scanners, such as agfa, microtek etc.
 - bugfixing for umax scanners
 -------------------------------------------
-
 Sun Sep 21 21:17:00 MEST 1997 - mb@suse.de
 
 Initial version 0.63
--------------------------------------------
