@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:54:58 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 2.4.5:
+  * Security: heap buffer overflow (write) in jpeg_stream_reader::decode
+    when a later scan uses a different interleave mode than the first
+    one (GHSA-vx55-856r-qqxw). No CVE assigned.
+  * Security: enforce upper bound of 100000 pixels on image width and
+    height, fixing an out-of-bounds memory access in the decoder via a
+    crafted oversize_image_dimension marker (GHSA-mqrg-gfc8-73ff).
+    No CVE assigned.
+  * Fixed #365: non-conforming padding before EOI prevented decoding.
+  * Fixed endless loop when the encoded bit stream ends in the middle
+    of a unary code.
+- Drop obsolete Group: tags.
+
+-------------------------------------------------------------------
 Sun Jul 16 18:47:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.2:

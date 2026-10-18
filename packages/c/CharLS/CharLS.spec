@@ -1,7 +1,7 @@
 #
 # spec file for package CharLS
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %define so_ver 2
 Name:           CharLS
-Version:        2.4.2
+Version:        2.4.5
 Release:        0
 Summary:        A JPEG-LS library
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/team-charls/charls/
 Source0:        https://github.com/team-charls/charls/archive/refs/tags/%{version}.tar.gz#/charls-%{version}.tar.gz
 BuildRequires:  cmake
@@ -37,7 +36,6 @@ open source and commercial JPEG LS implementations.
 
 %package devel
 Summary:        Libraries and headers for CharLS
-Group:          Development/Libraries/C and C++
 Requires:       libcharls%{so_ver} = %{version}
 
 %description devel
@@ -45,7 +43,6 @@ This package contains libraries and headers for CharLS.
 
 %package -n libcharls%{so_ver}
 Summary:        A JPEG-LS library
-Group:          System/Libraries
 
 %description -n libcharls%{so_ver}
 An optimized implementation of the JPEG-LS standard for lossless and
