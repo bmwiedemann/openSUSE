@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:00:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 26.10:
+  * FACT: initial support for XACT 3.0 wave event variations
+  * F3DAudio: float accuracy fixes (FLT_EPSILON, DopplerFactor
+    edge cases)
+  * Fix resample taps exceeding the total resample count, which
+    crashed small buffer updates
+  * Fix possible race when destroying voices with custom sends
+    and a possible divide-by-zero for WMA voices
+  * FACT: relaxed requirements for streaming WaveBank content
+  * Static struct alignment fix for Apple's linker
+- Changes in 26.09:
+  * FACT: fix Cue replacement search for per-Cue instance limits
+  * Wine/Win32: create the WMA decoder without using COM
+
+-------------------------------------------------------------------
 Sat Aug  8 11:01:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to release 26.08:
