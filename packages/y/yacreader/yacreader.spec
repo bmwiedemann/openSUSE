@@ -2,7 +2,7 @@
 # spec file for package yacreader
 #
 # Copyright (c) 2026 mantarimay
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Xu Zhao (i@xuzhao.net).
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,31 +20,30 @@
 
 %define gitlink https://github.com/YACReader/yacreader
 Name:           yacreader
-Version:        10.0.0
+Version:        10.4.0
 Release:        0
 Summary:        The best way for reading your comics
 License:        GPL-3.0-or-later
-Group:          Productivity/Graphics/Viewers
 URL:            https://www.yacreader.com
 Source0:        %{gitlink}/releases/download/%{version}/%{name}-%{version}-src.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  glu-devel
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libarchive-devel
 BuildRequires:  libpoppler-qt6-devel
 BuildRequires:  mozilla-nss
-BuildRequires:  qt6-base-devel
+BuildRequires:  qt6-base-devel >= 6.9
 BuildRequires:  qt6-base-private-devel
 BuildRequires:  qt6-declarative-devel
 BuildRequires:  qt6-linguist-devel
 BuildRequires:  qt6-multimedia-devel
-BuildRequires:  qt6-shadertools-devel
-BuildRequires:  qt6-texttospeech-devel
 BuildRequires:  qt6-qml-devel
 BuildRequires:  qt6-qt5compat-devel
 BuildRequires:  qt6-quickcontrols2-devel
+BuildRequires:  qt6-shadertools-devel
 BuildRequires:  qt6-sql-devel
 BuildRequires:  qt6-svg-devel
-BuildRequires:  libarchive-devel
+BuildRequires:  qt6-texttospeech-devel
 BuildRequires:  zstd
 Requires:       kf6-kimageformats
 

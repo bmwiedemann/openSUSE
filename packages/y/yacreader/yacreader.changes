@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:48:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 10.4.0:
+  * Reader: fold shadow in double page mode, no duplicated images
+    after layout adjustment, extract/save page improvements and
+    Escape-key behavior setting
+  * Library: repair function, automatic database backups with
+    repair/restore on corruption, grid browsing unification, folder
+    renaming and metadata-based organizing
+  * Server: repair/backup/restore commands, remote read/unread and
+    type management from clients and WebUI
+  * WebUI: new design, content browser, per-library search and
+    read/unread actions
+  * Requires Qt 6.9 or newer
+
+-------------------------------------------------------------------
 Wed May 27 00:17:14 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 10.0.0
