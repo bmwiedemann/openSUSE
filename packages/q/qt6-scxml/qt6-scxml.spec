@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.11.2
-%define short_version 6.11
+%define real_version 6.12.0
+%define short_version 6.12
 %define short_name qtscxml
 %define tar_name qtscxml-everywhere-src
 %define tar_suffix %{nil}
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((Calculator|InvokeExample|Mediaplayer|TrafficLightApplication)\\)
 #
 Name:           qt6-scxml%{?pkg_suffix}
-Version:        6.11.2
+Version:        6.12.0
 Release:        0
 Summary:        SCXML (state machine notation) compiler and related tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
