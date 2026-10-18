@@ -188,4 +188,12 @@ Built green on aarch64 and x86_64, both flavors.</comment>
     <comment>Update to 0.31.0; rebase CVE-2026-105775 (boo#1284279) and CVE-2026-105922 (boo#1284365) patches, both still unfixed upstream.</comment>
     <requestid>1384940</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2c1f09b8c5249bcb60ec5e76bfba6f0c</srcmd5>
+    <version>0.32.0</version>
+    <time>1792356866</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-vllm to 0.32.0</comment>
+    <requestid>1386032</requestid>
+  </revision>
 </revisionlist>

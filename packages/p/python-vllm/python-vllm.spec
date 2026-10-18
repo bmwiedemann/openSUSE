@@ -48,7 +48,7 @@
 %define         acl_version 52.6.0
 %bcond_without  libalternatives
 Name:           python-vllm%{psuffix}
-Version:        0.31.0
+Version:        0.32.0
 Release:        0
 Summary:        A high-throughput and memory-efficient inference and serving engine for LLMs
 License:        Apache-2.0
@@ -70,10 +70,8 @@ Patch0:         vllm-relax-cpu-requirements.patch
 Patch1:         vllm-cpu-disable-rust-frontend.patch
 # PATCH-FIX-UPSTREAM vllm-thinking-budget-scan-cursor.patch boo#1280982 mpluskal@suse.com -- CVE-2026-92365: resume the thinking-budget marker search from a cursor so a generation is not quadratic in its own length
 Patch2:         vllm-thinking-budget-scan-cursor.patch
-# PATCH-FIX-UPSTREAM fix-CVE-2026-105775.patch https://github.com/vllm-project/vllm/pull/57278 (unmerged as of 2026-10-15, rebased onto 0.31.0) -- CVE-2026-105775: keep the mamba block size a multiple of the chunk size so the "all" write-back reads states off chunk ends; DROP as obsolete when updating past the upstream removal of mamba_cache_mode "all" (#58997)
-Patch3:         fix-CVE-2026-105775.patch
-# PATCH-FIX-UPSTREAM fix-CVE-2026-105922.patch https://github.com/vllm-project/vllm/pull/57762 (open/unmerged as of 2026-10-15, rebased onto 0.31.0) -- CVE-2026-105922: treat prompt-embedding positions as invalid token IDs so penalty kernels do not index stale CPU token buffer contents
-Patch4:         fix-CVE-2026-105922.patch
+# PATCH-FIX-UPSTREAM fix-CVE-2026-105922.patch https://github.com/vllm-project/vllm/pull/57762 (open/unmerged as of 2026-10-18, rebased onto 0.32.0) -- CVE-2026-105922: treat prompt-embedding positions as invalid token IDs so penalty kernels do not index stale CPU token buffer contents
+Patch3:         fix-CVE-2026-105922.patch
 BuildRequires:  %{python_module Jinja2}
 # Runtime modules imported eagerly by "import vllm" (needed for the %%check smoke test).
 BuildRequires:  %{python_module cachetools}
@@ -83,7 +81,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyproject-metadata}
 BuildRequires:  %{python_module regex}
-BuildRequires:  %{python_module setuptools >= 77.0.3}
+BuildRequires:  %{python_module setuptools >= 78.1.1}
 # setup.py imports setuptools_rust unconditionally at module top even though the
 # Rust frontend build itself is disabled (see vllm-cpu-disable-rust-frontend.patch).
 BuildRequires:  %{python_module setuptools-rust >= 1.9.0}
@@ -106,9 +104,9 @@ Requires:       alts
 # the target project.  Carry floors at the version upstream actually asks for
 # instead; vllm-relax-cpu-requirements.patch relaxes the same pins in the wheel
 # metadata so the RPM dependencies and the dist-info agree.
-Requires:       python-Pillow
+Requires:       python-Pillow >= 12.3.0
 Requires:       python-PyYAML
-Requires:       python-aiohttp >= 3.13.3
+Requires:       python-aiohttp >= 3.14.3
 Requires:       python-anthropic >= 0.71.0
 Requires:       python-blake3
 Requires:       python-cachetools
@@ -124,7 +122,7 @@ Requires:       python-compressed-tensors >= 0.17.1
 Requires:       python-depyf >= 0.20.0
 Requires:       python-einops
 Requires:       python-fastapi >= 0.133.0
-Requires:       python-filelock >= 3.16.1
+Requires:       python-filelock >= 3.20.3
 Requires:       python-huggingface-hub >= 1.31.0
 Requires:       python-ijson
 Requires:       python-jsonschema >= 4.23.0
@@ -173,14 +171,14 @@ Requires:       python-pydantic-extra-types
 Requires:       python-python-json-logger
 Requires:       python-pyzmq >= 25.0.0
 Requires:       python-regex
-Requires:       python-requests >= 2.26.0
+Requires:       python-requests >= 2.33.0
 Requires:       python-safetensors >= 0.6.2
 Requires:       python-sentencepiece
 Requires:       python-setproctitle
 Requires:       python-six >= 1.16.0
 Requires:       python-starlette >= 1.0.1
 Requires:       python-tiktoken >= 0.6.0
-Requires:       python-tokenizers >= 0.21.1
+Requires:       python-tokenizers >= 0.23.2
 # The default flavour is pure Python and only uses torch's Python API.  The cpu
 # flavour additionally links the compiled kernels against libtorch, and that
 # coupling is already expressed by the automatic libtorch.so / libtorch_cpu.so /
@@ -189,7 +187,7 @@ Requires:       python-tokenizers >= 0.21.1
 # there and only makes the package uninstallable until it is bumped by hand.
 Requires:       python-torch >= 2.12.0
 Requires:       python-tqdm
-Requires:       python-transformers >= 5.10.4
+Requires:       python-transformers >= 5.16.1
 Requires:       python-typing_extensions >= 4.10
 Requires:       python-watchfiles
 Requires:       python-xgrammar >= 0.2.1
@@ -201,8 +199,8 @@ ExclusiveArch:  x86_64 aarch64 riscv64
 BuildRequires:  %{python_module torch-devel >= 2.12.0}
 BuildRequires:  cmake >= 3.26
 BuildRequires:  gcc-c++
-BuildRequires:  libnuma-devel
 BuildRequires:  ninja
+BuildRequires:  pkgconfig(numa)
 # torch's own Caffe2Config.cmake does find_package(Protobuf) and hard-fails
 # without it, so find_package(Torch) needs protobuf present at build time.
 BuildRequires:  pkgconfig(protobuf)
@@ -320,10 +318,6 @@ export VLLM_TARGET_DEVICE=%{vllm_target_device}
 # Import smoke test validating the package and its metadata load.
 # Full model/serving tests need model weights and are out of scope here.
 %python_expand $python -c "import vllm; print(vllm.__version__)"
-# Regression test for CVE-2026-105775 (CPU-marked, needs only pytest+torch):
-# run it when pytest is already in the build root; no test-only
-# BuildRequires are added for it.
-%python_expand if $python -c "import pytest" 2>/dev/null; then $python -m pytest tests/v1/core/test_mamba_block_size_alignment.py; fi
 # The CUDA penalties test from fix-CVE-2026-105922
 # (tests/v1/worker/test_gpu_penalties.py) is carried-not-run: it needs a
 # CUDA device, which OBS build roots do not have.

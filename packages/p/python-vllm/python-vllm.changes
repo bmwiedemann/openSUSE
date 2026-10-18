@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 18 17:29:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.32.0:
+  * New POST /v1/systemone endpoint for structured decisions;
+    generic hf tool-call and reasoning parsers
+  * NVFP4/FP8 KV cache on more GPUs; Model Runner V2 default
+    on ROCm; new models EmbeddingGemma 2, MiniCPM-V 4.7,
+    Nemotron 3.5 ASR
+  * CVE-2026-73560: chat-template resource exhaustion, now
+    bounded by VLLM_CHAT_TEMPLATE_RENDER_TIMEOUT
+    (GHSA-4hhp-h66f-j5j7); tokenizer max_token_id and P2P ZMQ
+    fixes (GHSA-q97c-p368-75c4, GHSA-frvg-qw88-hww9)
+  * Breaking: Python 3.10 dropped; CORS origins restricted;
+    transformers>=5.16.1,<5.20.0, tokenizers>=0.23.2;
+    mamba_cache_mode "all" and cascade attention removed
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Drop fix-CVE-2026-105775.patch as obsolete: upstream removed
+  mamba_cache_mode "all" (#58997); keep carrying
+  fix-CVE-2026-105922.patch (upstream PR #57762 still open)
+- Dependency floors follow upstream: setuptools>=78.1.1,
+  transformers>=5.16.1, tokenizers>=0.23.2, aiohttp>=3.14.3,
+  pillow>=12.3.0, requests>=2.33.0, filelock>=3.20.3
+
+-------------------------------------------------------------------
 Thu Oct 15 04:59:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.31.0:

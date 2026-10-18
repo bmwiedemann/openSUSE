@@ -1,11 +1,11 @@
 --- a/requirements/cpu.txt
 +++ b/requirements/cpu.txt
-@@ -1,30 +1,13 @@
+@@ -1,29 +1,13 @@
  # Common dependencies
  -r common.txt
  
--setuptools==77.0.3 # this version can reuse CMake build dir
-+setuptools>=77.0.3 # this version can reuse CMake build dir
+-setuptools==78.1.1 # this version can reuse CMake build dir; >=78.1.1 for GHSA-5rjg-fvgr-3xxf
++setuptools>=78.1.1 # this version can reuse CMake build dir; >=78.1.1 for GHSA-5rjg-fvgr-3xxf
  
 -numba == 0.65.0 # Required for N-gram speculative decoding
 +numba >= 0.65.0 # Required for N-gram speculative decoding
@@ -27,7 +27,6 @@
 -intel-openmp==2024.2.1; platform_machine == "x86_64"
 -
 -# triton-cpu, only for x86_64 CPUs
--triton @ https://github.com/triton-lang/triton-cpu/releases/download/v3.8.0/triton-3.8.0+cpu-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl ; platform_machine == "x86_64" and python_version == "3.10"
 -triton @ https://github.com/triton-lang/triton-cpu/releases/download/v3.8.0/triton-3.8.0+cpu-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl ; platform_machine == "x86_64" and python_version == "3.11"
 -triton @ https://github.com/triton-lang/triton-cpu/releases/download/v3.8.0/triton-3.8.0+cpu-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl ; platform_machine == "x86_64" and python_version >= "3.12"
 +torch>=2.12.0; platform_machine == "x86_64" or platform_machine == "s390x" or platform_machine == "aarch64"
@@ -41,20 +40,20 @@
  tqdm
  blake3
  py-cpuinfo
--transformers >= 5.10.4, < 5.18.0
-+transformers >= 5.10.4
+-transformers >= 5.16.1, < 5.20.0
++transformers >= 5.16.1
  huggingface_hub >= 1.31.0  # Required for the `huggingface_hub.utils.httpx` re-export
- tokenizers >= 0.21.1  # Required for fast incremental detokenization.
+ tokenizers >= 0.23.2  # Required for fast incremental detokenization.
  safetensors >= 0.6.2  # MXFP4/MXFP6 dtype support (F8_E8M0, F4) added in 0.6.0: https://github.com/huggingface/safetensors/pull/611
  protobuf >= 5.29.6, !=6.30.*, !=6.31.*, !=6.32.*, !=6.33.0.*, !=6.33.1.*, !=6.33.2.*, !=6.33.3.*, !=6.33.4.*; platform_machine != "s390x"
  protobuf == 7.36.1; platform_machine == "s390x"
 -fastapi[standard] >= 0.133.0, < 0.137.0 # First version supporting Starlette 1.0; < 0.137.0 avoids route-tree change that breaks model-hosting-container-standards handler overrides.
 +fastapi[standard] >= 0.133.0 # First version supporting Starlette 1.0.
  starlette >= 1.0.1 # CVE-2026-48710: Host header injection in < 1.0.1
- aiohttp >= 3.13.3
+ aiohttp >= 3.14.3
  openai >= 2.25.0  # For Responses API with namespace tools
 @@ -22,11 +22,11 @@
- pillow  # Required for image processing
+ pillow >= 12.3.0  # Required for image processing
  prometheus-fastapi-instrumentator >= 8.0.0 # v8 unblocks starlette >= 1.0
  tiktoken >= 0.6.0  # Required for DBRX tokenizer
 -lm-format-enforcer == 0.11.3
@@ -62,16 +61,16 @@
  llguidance >= 1.7.0, < 1.8.0; platform_machine == "x86_64" or platform_machine == "arm64" or platform_machine == "aarch64" or platform_machine == "ppc64le" or platform_machine == "s390x"
 -outlines_core == 0.2.14
 -lark == 1.2.2
--xgrammar == 0.2.7; platform_machine == "x86_64" or platform_machine == "aarch64" or platform_machine == "arm64" or platform_machine == "s390x" or platform_machine == "ppc64le"
+-xgrammar == 0.2.8; platform_machine == "x86_64" or platform_machine == "aarch64" or platform_machine == "arm64" or platform_machine == "s390x" or platform_machine == "ppc64le"
 +outlines_core >= 0.2.14
 +lark >= 1.2.2
 +xgrammar >= 0.2.1; platform_machine == "x86_64" or platform_machine == "aarch64" or platform_machine == "arm64" or platform_machine == "s390x" or platform_machine == "ppc64le"
  typing_extensions >= 4.10
- filelock >= 3.16.1 # need to contain https://github.com/tox-dev/filelock/pull/317
+ filelock >= 3.20.3 # need to contain https://github.com/tox-dev/filelock/pull/317; GHSA floor
  partial-json-parser # used for parsing partial JSON outputs
 @@ -39,8 +39,8 @@
  six>=1.16.0; python_version > '3.11' # transitive dependency of pandas that needs to be the latest version for python 3.12
- setuptools>=77.0.3,<81.0.0; python_version > '3.11' # Setuptools is used by triton, we need to ensure a modern version is installed for 3.12+ so that it does not try to import distutils, which was removed in 3.12
+ setuptools>=78.1.1,<81.0.0; python_version > '3.11' # used by triton; >=78.1.1 for GHSA-5rjg-fvgr-3xxf (83.x needed for GHSA-h35f-9h28-mq5c deferred)
  einops # Required for Qwen2-VL.
 -compressed-tensors == 0.17.0 # required for compressed-tensors
 -depyf==0.20.0 # required for profiling and debugging with compilation config
