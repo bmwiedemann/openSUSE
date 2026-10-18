@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 16 13:40:25 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.76.0+git20261016.cab5ed0:
+  * Try first varlink to get soft_reboots_count, increase count size
+  * Use DefaultDependencies=no [bsc#1284234]
+
+-------------------------------------------------------------------
 Thu Jul 30 13:05:50 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.76.0+git20260730.89c0861:

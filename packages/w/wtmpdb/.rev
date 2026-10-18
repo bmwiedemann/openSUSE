@@ -299,4 +299,14 @@
   * ignore absense of dbus</comment>
     <requestid>1368614</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cc5b59c710c80ef8b33e0b5976dd6503</srcmd5>
+    <version>0.76.0+git20261016.cab5ed0</version>
+    <time>1792356846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.76.0+git20261016.cab5ed0:
+  * Try first varlink to get soft_reboots_count, increase count size
+  * Use DefaultDependencies=no [bsc#1284234]</comment>
+    <requestid>1385200</requestid>
+  </revision>
 </revisionlist>
