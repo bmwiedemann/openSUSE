@@ -367,4 +367,12 @@
     <comment>Fix the abort at exit on every run (boo#1282863): the CVE-2026-88053 backport dropped upstream's in-class init, leaving pointer arrays uninitialised; null them explicitly as 5.5.3 and upstream b27e1bd6 do.</comment>
     <requestid>1381200</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>04f7c5fb8bb2458f11e9387033c4fc6d</srcmd5>
+    <version>5.5.3</version>
+    <time>1792356845</time>
+    <user>dimstar_suse</user>
+    <comment>Remove unused BuildRequires: libxslt-tools, plantuml, pkgconfig(fontconfig).</comment>
+    <requestid>1385188</requestid>
+  </revision>
 </revisionlist>

@@ -48,11 +48,8 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig >= 0.9.0
-BuildRequires:  plantuml
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(icu-i18n) >= 52.1
 BuildRequires:  pkgconfig(icu-uc) >= 52.1
 BuildRequires:  pkgconfig(lept) >= 1.74
@@ -72,8 +69,8 @@ open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
 
 %package common
 Summary:        Tesseract Open Source OCR Engine Common files
-Requires:       tesseract-ocr-traineddata-provider
 Requires:       (%{name} = %{version} or %{lname} = %{version})
+Requires:       tesseract-ocr-traineddata-provider
 Recommends:     tesseract-ocr-traineddata-eng
 BuildArch:      noarch
 

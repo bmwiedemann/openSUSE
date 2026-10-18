@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 16 11:05:56 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Remove unused BuildRequires: libxslt-tools, plantuml and
+  pkgconfig(fontconfig) are not used by the build (fontconfig is
+  pulled in via pkgconfig(pangoft2) anyway); verified by a full
+  rebuild without them
+
+-------------------------------------------------------------------
 Mon Sep 28 15:07:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update tesseract-CVE-2026-88053.patch to null the adaptive
