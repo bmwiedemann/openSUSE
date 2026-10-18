@@ -286,6 +286,8 @@ Summary:        Modules For PipeWire, A Multimedia Framework
 Group:          Productivity/Multimedia/Other
 Provides:       %{name}-modules = %{version}
 Obsoletes:      %{name}-modules < %{version}
+# Pull in alsa-ucm-conf by default
+Recommends:     alsa-ucm-conf
 
 %description modules-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
