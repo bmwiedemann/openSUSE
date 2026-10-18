@@ -6766,4 +6766,14 @@ v2: with CVEs in .changes</comment>
     <comment>Chromium 155.0.8059.79 (boo#1285401)</comment>
     <requestid>1384725</requestid>
   </revision>
+  <revision rev="555" vrev="1">
+    <srcmd5>d1d77870d96ba60a20264d4c0fe7cba4</srcmd5>
+    <version>155.0.8059.84</version>
+    <time>1792344174</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 155.0.8059.84 (boo#1285733)
+
+v2: Remove ccache configuration and stat printing</comment>
+    <requestid>1385470</requestid>
+  </revision>
 </revisionlist>

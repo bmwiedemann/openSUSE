@@ -139,7 +139,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        155.0.8059.79
+Version:        155.0.8059.84
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -677,22 +677,6 @@ popd
 %endif
 
 %build
-# ccache experiment
-mkdir -p $HOME/.config/ccache
-cat << EOF > $HOME/.config/ccache/ccache.conf
-compression = true
-cache_dir = /.ccache
-sloppiness = gcno_cwd
-EOF
-export CCACHE_CONFIGPATH=$HOME/.config/ccache/ccache.conf
-# show what we get
-ccache --show-config
-#
-# Zero out the hit/miss stats from previous runs to have data from this build
-ccache --zero-stats
-# show how much cache we are starting with
-ccache --show-stats
-
 # esbuild
 rm third_party/devtools-frontend/src/third_party/esbuild/esbuild
 tar -xf %{SOURCE1}
@@ -1399,10 +1383,6 @@ install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/app
 ln -sf chromium-browser.1%{?ext_man} %{buildroot}%{_mandir}/man1/chromium.1%{?ext_man}
 
 %fdupes -s %{buildroot}
-
-# ccache experiment
-# show the ccache hit/miss stats
-ccache --show-stats
 
 %files
 %license LICENSE
