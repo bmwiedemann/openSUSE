@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 13 09:32:29 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.43.9
+  * Update submodules by @azkrishpy in (#904)
+- from version 0.43.8
+  * update Schedule API to return a task handle by @sbiscigl in (#911)
+- from version 0.43.7
+  * add access to schedule directly on event loop group from io
+    bootstrap by @sbiscigl in (#909)
+
+-------------------------------------------------------------------
 Fri Sep 11 07:06:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.43.6
