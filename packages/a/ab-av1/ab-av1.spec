@@ -17,10 +17,11 @@
 
 
 Name:           ab-av1
-Version:        0.11.0
+Version:        0.11.7
 Release:        0
 Summary:        An AV1 video encoding wrapper
-License:        MIT
+# dirs -> dirs-sys -> option-ext (MPL-2.0) is linked into the binary
+License:        MIT AND MPL-2.0
 URL:            https://github.com/alexheretic/ab-av1
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
@@ -40,7 +41,7 @@ calculation. It uses ffmpeg and SVT-AV1.
 %{cargo_build}
 
 %install
-%{cargo_install}
+%cargo_install
 mkdir -p shell-completion
 %{buildroot}/%{_bindir}/%{name} print-completions bash > shell-completion/bash
 %{buildroot}/%{_bindir}/%{name} print-completions fish > shell-completion/fish

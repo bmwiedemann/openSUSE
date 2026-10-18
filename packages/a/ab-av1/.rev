@@ -37,4 +37,28 @@ Now includes shell completions in the main package.</comment>
     `--crf-increment` values above 1.</comment>
     <requestid>1334186</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3ce9c404a3f1d7e09332f820c2c2448d</srcmd5>
+    <version>0.11.7</version>
+    <time>1792344188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11.7:
+  * New encode and auto-encode --verify/--fail-fast options (plus
+    --verify-decode and --verify-duration) to catch damaged or cut
+    results and input decode errors
+  * crf-search --stdout-format json; sample-encode json output gains
+    type, crf and from_cache keys
+  * Encode to a temporary file, then atomically rename to the
+    destination; fix auto-encode --keep
+  * Sample-encode can compute XPSNR and VMAF together
+    (--xpsnr --and-vmaf); new --xpsnr-pix-format option
+  * svt-av1: quarter crf steps by default, wider crf search range,
+    version detection via ffmpeg
+  * libx265: default --enc tag:v=hvc1 for better compatibility
+  * Correct License tag to MIT AND MPL-2.0 (vendored option-ext,
+    pulled in via dirs-sys, is MPL-2.0 and linked into the binary)
+  * CVE-2025-55159 (boo#1248057): vendored slab is 0.4.12, above
+    the 0.4.11 fix</comment>
+    <requestid>1385687</requestid>
+  </revision>
 </revisionlist>

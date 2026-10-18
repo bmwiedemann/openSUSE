@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:52:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.7:
+  * New encode and auto-encode --verify/--fail-fast options (plus
+    --verify-decode and --verify-duration) to catch damaged or cut
+    results and input decode errors
+  * crf-search --stdout-format json; sample-encode json output gains
+    type, crf and from_cache keys
+  * Encode to a temporary file, then atomically rename to the
+    destination; fix auto-encode --keep
+  * Sample-encode can compute XPSNR and VMAF together
+    (--xpsnr --and-vmaf); new --xpsnr-pix-format option
+  * svt-av1: quarter crf steps by default, wider crf search range,
+    version detection via ffmpeg
+  * libx265: default --enc tag:v=hvc1 for better compatibility
+  * Correct License tag to MIT AND MPL-2.0 (vendored option-ext,
+    pulled in via dirs-sys, is MPL-2.0 and linked into the binary)
+  * CVE-2025-55159 (boo#1248057): vendored slab is 0.4.12, above
+    the 0.4.11 fix
+
+-------------------------------------------------------------------
 Fri Feb 20 12:53:05 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 0.11.0:
