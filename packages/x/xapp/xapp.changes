@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 18 15:43:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * sn-item.c: Address status notifier items by their registered
+    bus name.
+  * xapp-sn-watcher.c: Fix dbus invocation return value.
+
+-------------------------------------------------------------------
 Sat Apr 11 21:05:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.2:
