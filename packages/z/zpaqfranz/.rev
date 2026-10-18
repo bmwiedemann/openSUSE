@@ -202,4 +202,12 @@ Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
     <comment>Forward Archiving/zpaqfranz license canonicalization (SR 1384951); supersedes 1384899, still evaluating.</comment>
     <requestid>1384974</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e37379f6a7697a6c6f13e86c91e7d545</srcmd5>
+    <version>65.12</version>
+    <time>1792356872</time>
+    <user>dimstar_suse</user>
+    <comment>Update zpaqfranz to 65.12</comment>
+    <requestid>1386058</requestid>
+  </revision>
 </revisionlist>

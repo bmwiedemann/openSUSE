@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 18 17:23:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.12 (upstream notes this release is still to be
+  stabilized, not for production use yet):
+  * Reading an archive takes far less memory (8 GB down to about
+    260 MB on a 1,300-version archive) and a damaged archive now
+    reports which versions and blocks are missing
+  * New 'a -fastadd': updates reuse a state stored in the archive
+    instead of reading the whole index again
+  * 't' on a damaged archive now reports CORRUPTED with exit code 2
+    instead of OK
+  * Revised '-comment' handling, revised 'dump' output, plain
+    'zpaqfranz archive.zpaq' opens the tui, new 'work fat32' and
+    'work poke' commands, and a leveled 'autotest -all -to'
+
+-------------------------------------------------------------------
 Thu Oct 15 06:26:13 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Canonicalise the public-domain part of the License tag to
