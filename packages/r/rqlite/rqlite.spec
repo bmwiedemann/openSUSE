@@ -2,6 +2,7 @@
 # spec file for package rqlite
 #
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           rqlite
-Version:        10.6.0
+Version:        10.6.1
 Release:        0
 Summary:        Distributed relational database built on SQLite
 License:        MIT

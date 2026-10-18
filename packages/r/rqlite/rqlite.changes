@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:32:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 10.6.1:
+  * Use constant-time comparison when comparing passwords
+  * Conditionally rewrite SQL during queued writes and fix
+    rewriting of CURRENT_TIMESTAMP and related tokens
+  * More robust Leader stepdown node ID detection, reap checks,
+    and SQL analyze start-time recording
+  * CDC fixes: encode non-finite floats, always release flush
+    waiters, and make the HTTP sink follow redirects
+  * Converted _service from mode=disabled to mode=manual (legacy
+    leftover; services are run by hand via osc service manualrun)
+  * Package is not affected by CVE-2026-84445 (boo#1278793),
+    CVE-2026-84304 (boo#1279102), CVE-2026-84303 (boo#1279253):
+    vendored grpc is v1.84.0, above the v1.83.1/v1.83.2 fixes
+  * Package is not affected by CVE-2026-89090 (boo#1280657):
+    vendored eventstream is v1.7.20, above the v1.7.8 fix
+  * Package is not affected by CVE-2026-63209 (boo#1283555):
+    vendored klauspost/compress is v1.20.1, above the v1.18.7
+    fix
+  * Package is not affected by CVE-2026-39821 (boo#1266544):
+    vendored golang.org/x/net is v0.59.0, above the v0.55.0
+    fix
+
+-------------------------------------------------------------------
 Mon Oct 12 19:12:36 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.6.0:
