@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.11.2
-%define short_version 6.11
+%define real_version 6.12.0
+%define short_version 6.12
 %define short_name qtdatavis3d
 %define tar_name qtdatavis3d-everywhere-src
 %define tar_suffix %{nil}
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((AxisHandling|SurfaceGallery)\\)
 #
 Name:           qt6-datavis3d%{?pkg_suffix}
-Version:        6.11.2
+Version:        6.12.0
 Release:        0
 Summary:        Qt 6 data visualization framework
 License:        GPL-3.0-or-later
@@ -126,10 +126,10 @@ ABI or API guarantees.
   -DQT_GENERATE_SBOM:BOOL=FALSE \
   -DQT_QML_NO_CACHEGEN:BOOL=TRUE
 
-%{qt6_build}
+%qt6_build
 
 %install
-%{qt6_install}
+%qt6_install
 
 %if !%{qt6_docs_flavor}
 
