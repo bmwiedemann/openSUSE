@@ -336,4 +336,12 @@
     <comment>Qt 6.11.2 (forwarded request 1372096 from krop)</comment>
     <requestid>1372268</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f7ef1126f745c1e948d1f3454f6d1222</srcmd5>
+    <version>6.12.0</version>
+    <time>1792344101</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.12.0 (forwarded request 1384293 from krop)</comment>
+    <requestid>1384419</requestid>
+  </revision>
 </revisionlist>
