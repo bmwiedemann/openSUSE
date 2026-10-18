@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:01:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.11.5:
+  - New "Break in quiet-mode" option: micro-break timer keeps running
+    without automatic reminders while rest-break reminders stay enabled
+  - Support for GNOME Shell 51
+  - New option to hide the status window from the taskbar and window
+    switcher, enabled by default
+  - Windows: shutdown, sleep and hibernate options in the rest-break
+    window; /NOLAUNCH installer flag to skip auto-launch
+  - Bug fixes: reading-mode timers stuck paused after suspend; empty
+    tray menus; GNOME Shell menu not appearing; system language ignored
+    when none selected; panel applet crashes on missing settings;
+    tray menu light/dark mode; sound theme display; preferences window
+    popping up on tray menu dismiss
+
+-------------------------------------------------------------------
 Sun Sep 27 06:06:42 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 1.11.4:

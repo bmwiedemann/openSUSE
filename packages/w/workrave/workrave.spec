@@ -16,9 +16,9 @@
 #
 
 
-%define upstream_version    1_11_4
+%define upstream_version    1_11_5
 Name:           workrave
-Version:        1.11.4
+Version:        1.11.5
 Release:        0
 Summary:        Recovery and prevention of Repetitive Strain Injury program
 License:        GPL-3.0-or-later AND LGPL-2.0-or-later AND HPND
