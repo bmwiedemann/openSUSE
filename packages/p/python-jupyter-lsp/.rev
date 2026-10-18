@@ -96,4 +96,12 @@
     <comment>- Fix test suite: asyncio no longer skipped automatically</comment>
     <requestid>1310974</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>a35a9c72f94e0f6966e86b9b26fb0822</srcmd5>
+    <version>unknown</version>
+    <time>1792344330</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385850</requestid>
+  </revision>
 </revisionlist>

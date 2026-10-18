@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:17:15 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 2.3.1 with jupyterlab-lsp 5.3.0:
+  * Add auto-detection of pyrefly and basedpyright language
+    servers (2.3.0)
+  * Updated config schema for pylsp, including ruff plugin
+    (python-lsp-ruff)
+
+-------------------------------------------------------------------
 Wed Aug 20 15:32:14 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Fix test suite: asyncio no longer skipped automatically
