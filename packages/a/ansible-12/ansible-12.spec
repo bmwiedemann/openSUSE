@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-12
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,6 @@
 %define ansible_community_major_version 12
 %define required_ansible_core_version 2.19.5
 %define next_ansible_core_version 2.20.0
-
 
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
@@ -50,10 +49,10 @@ License:        GPL-3.0-or-later
 URL:            https://ansible.com/
 Source:         https://files.pythonhosted.org/packages/source/a/ansible/ansible-%{version}.tar.gz
 Source99:       ansible-12-rpmlintrc
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 
 # required to fix the azure collection line endings
 BuildRequires:  dos2unix
@@ -68,6 +67,8 @@ Requires:       (ansible-core >= %{required_ansible_core_version} with ansible-c
 # Conflicts with lower or higher ansible major versions
 Conflicts:      ansible < %{ansible_community_major_version}
 Conflicts:      ansible > %{ansible_community_major_version}
+# Satisfy collection packages requiring "ansible >= N"
+Provides:       ansible = %{version}
 
 # Do not check any files in collections for requires
 %global __requires_exclude_from ^%{ansible_python_sitelib}/.*$
