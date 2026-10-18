@@ -22,9 +22,8 @@
 %bcond_with libalternatives
 %endif
 %{?sle15_python_module_pythons}
-%global skip_python311 1
 Name:           python-zarr
-Version:        3.2.1
+Version:        3.4.1
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT
@@ -41,10 +40,11 @@ BuildRequires:  python-rpm-macros
 Requires:       python >= 3.12
 Requires:       python-donfig >= 0.8
 Requires:       python-google-crc32c >= 1.5
-Requires:       python-numcodecs >= 0.14
+Requires:       python-msgspec >= 0.19
+Requires:       python-numcodecs >= 0.16
 Requires:       python-numpy >= 2.0
 Requires:       python-packaging >= 22
-Requires:       python-typing_extensions >= 4.13
+Requires:       python-typing_extensions >= 4.14
 Suggests:       python-dbm
 Suggests:       python-ipytree
 BuildArch:      noarch
@@ -60,7 +60,8 @@ BuildRequires:  %{python_module packaging >= 22}
 BuildRequires:  %{python_module donfig >= 0.8}
 BuildRequires:  %{python_module google-crc32c >= 1.5}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module numcodecs >= 0.14}
+BuildRequires:  %{python_module msgspec >= 0.19}
+BuildRequires:  %{python_module numcodecs >= 0.16}
 BuildRequires:  %{python_module numpy >= 2.0}
 BuildRequires:  %{python_module numpydoc}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -68,7 +69,7 @@ BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomlkit}
-BuildRequires:  %{python_module typing_extensions >= 4.13}
+BuildRequires:  %{python_module typing_extensions >= 4.14}
 # /SECTION
 %python_subpackages
 
@@ -90,19 +91,18 @@ An implementation of chunked, compressed, N-dimensional arrays for Python.
 rm -v tests/test_examples.py
 # https://pytest-xdist.readthedocs.io/en/stable/known-limitations.html
 donttestparallel="test_docstring_consistent_parameters"
-# avoid broken tests in s390x, gh#zarr-developers/zarr-python#1375
-%if "%_arch" == "s390x"
-donttest+=" or test_hexdigest or test_nbytes_stored"
-donttest+=" or test_array_1d or test_array_1d_fill_value or test_array_1d_selections"
-donttest+=" or test_array_2d or test_array_2d_edge_case or test_array_order"
-donttest+=" or test_resize_2d or test_append_2d or test_append_2d_axis"
-donttest+=" or test_np_ufuncs or test_iter or test_islice or test_non_cont"
-donttest+=" or test_read_nitems_less_than_blocksize_from_multiple_chunks"
-donttest+=" or test_read_from_all_blocks"
-donttest+=" or test_format_compatibility"
-%endif
-%pytest -n auto -k "not ($donttestparallel $donttest)"
-%pytest -k "$donttestparallel"
+# 32-bit failures in tests: not able to allocate that much memory
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+  donttest+=" or (test_e2e and (test_read_array or test_write_array) and batched)"
+  donttest+=" or test_sparse_selections_on_arrays_with_many_chunks"
+  donttest+=" or test_sparse_indexer_projection_reconstructs_coordinates"
+  donttest+=" or test_coordinate_indexer_many_chunks"
+fi
+# these take long
+donttest+=" or (test_indexing and test_sharded_morton and memory)"
+donttest+=" or test_basic_indexing_complex_rectilinear"
+%pytest -n auto -k "not ($donttestparallel $donttest)" --ignore src/zarr
+%pytest -k "$donttestparallel" --ignore src/zarr
 
 %pre
 %python_libalternatives_reset_alternative zarr

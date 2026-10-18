@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Sun Oct 18 13:05:22 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Skip big memory tests on 32bit
+
+-------------------------------------------------------------------
+Thu Oct 15 04:51:43 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.4.1:
+  * perf: cut the fill_value check on the chunk write path
+  * fix(dtype): accept any byte order for byte-order-irrelevant v2 dtype
+    names
+  * fix(ci): run zarr-indexing tests on the matrix interpreter
+  * fix(sharding): reject variable-size codecs in index_codecs
+  * fix(dtype): fix nested v2 round trips and detect unsupported field
+    conversions
+  * fix(dtype): resolve struct fields with the registry that resolves the
+    struct
+  * fix(store): run every LocalStore filesystem call off the event loop
+  * fix(storage): yield only direct children from FsspecStore.list_dir
+  * fix(dtype): preserve scaled generic time units and normalize the us alias
+  * fix(array): reject unknown keys in ArrayConfig.from_dict
+  * fix(indexing): avoid full-grid allocations for sparse selections
+  * fix: byte-order bugs and little-endian test assumptions on big-endian
+    hosts
+  * fix: honor storage_options in save and save_group
+  * fix: minor correctness and hygiene fixes from the sync-pipeline audit
+  * fix: reject malformed chunk keys in DefaultChunkKeyEncoding
+  * fix: make consolidated metadata nesting independent of persisted key
+    order
+  * fix: preserve non-JSON-serializable storage options in _make_async
+  * fix: accept numpy integers as chunk sizes
+  * Add unified JSON metadata validation via msgspec
+  * fix: accept universal-pathlib UPath as a StoreLike value
+  * feat: name packages that provide a codec zarr cannot find
+  * Fix infinite loop in _guess_num_chunks_per_axis_shard for 0-dimensional
+    arrays
+  * BUG: Fix empty Group nodes lacking a "consolidated_metadata" field
+  * fix(zarr-metadata): model stored metadata more closely
+  * fix: allow writing to 0-dimensional arrays with sharding
+  * perf: cache default ArraySpec for regular chunk grids
+  * refactor(sharding): store chunks_per_shard explicitly in _ShardIndex
+  * Optimize partial shard reads
+  * Widen ChunksLike type alias
+  * prune old string dtype class
+  * fix: compare metadata objects
+  * fix(FsspecStore): close owned async filesystem on store.close()
+  * fix: make xarray downstream tests work
+  * chore: indexing test cleanup
+  * Modify custom dtype example to use only public API
+  * fix: copy attributes passed from the user to avoid mutation
+  * perf: cache lexicographic chunk coords in sharding codec
+  * deprecate more enums
+  * Control sharding codec read coalescing with ArrayConfig and runtime
+    config options
+  * feat![zarr-metadata]: extensive top-level exports
+  * Remove struct unstable warning
+  * Fix save/load for scalar arrays
+  * fix: skip object store prefix markers in list_dir
+  * fix: byte-order handling for structured dtypes in the bytes codec
+  * Fix/memorystore buffer aliasing
+  * feat(zarr-metadata): Zarr metadata model layer
+  * fix: let open_like create arrays by default
+  * fix: keep FusedCodecPipeline compute off the event-loop thread
+  * fix(ArraySpec): proper and robust equality semantics for ArraySpec by
+    checking fill_value for byte-identicality
+  * perf(indexing): speed up sorted 1-D coordinate selections
+  * fix: FusedCodecPipeline falls back to async path for sharded arrays with
+    async-only inner codecs
+  * fix: fused pipeline falls back for partial-mixin codecs without sync
+    partial methods
+  * fix: ManagedMemoryStore sync methods must respect the path prefix
+  * fix: minor correctness and hygiene fixes from the sync-pipeline audit
+  * fix: reject malformed chunk keys in DefaultChunkKeyEncoding
+
+-------------------------------------------------------------------
 Tue May 19 20:50:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:

@@ -402,4 +402,41 @@
   * perf/chunktransform</comment>
     <requestid>1354104</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8a7130e69fb18a4275646065a880699b</srcmd5>
+    <version>3.4.1</version>
+    <time>1792344367</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip big memory tests on 32bit
+
+- Update to 3.4.1:
+  * perf: cut the fill_value check on the chunk write path
+  * fix(dtype): accept any byte order for byte-order-irrelevant v2 dtype
+    names
+  * fix(ci): run zarr-indexing tests on the matrix interpreter
+  * fix(sharding): reject variable-size codecs in index_codecs
+  * fix(dtype): fix nested v2 round trips and detect unsupported field
+    conversions
+  * fix(dtype): resolve struct fields with the registry that resolves the
+    struct
+  * fix(store): run every LocalStore filesystem call off the event loop
+  * fix(storage): yield only direct children from FsspecStore.list_dir
+  * fix(dtype): preserve scaled generic time units and normalize the us alias
+  * fix(array): reject unknown keys in ArrayConfig.from_dict
+  * fix(indexing): avoid full-grid allocations for sparse selections
+  * fix: byte-order bugs and little-endian test assumptions on big-endian
+    hosts
+  * fix: honor storage_options in save and save_group
+  * fix: minor correctness and hygiene fixes from the sync-pipeline audit
+  * fix: reject malformed chunk keys in DefaultChunkKeyEncoding
+  * fix: make consolidated metadata nesting independent of persisted key
+    order
+  * fix: preserve non-JSON-serializable storage options in _make_async
+  * fix: accept numpy integers as chunk sizes
+  * Add unified JSON metadata validation via msgspec
+  * fix: accept universal-pathlib UPath as a StoreLike value
+  * feat: name packages that provide a codec zarr cannot find
+  * Fix infinite loop in _guess_num_chunks_per_axis_shard for 0-dimensional</comment>
+    <requestid>1385968</requestid>
+  </revision>
 </revisionlist>
