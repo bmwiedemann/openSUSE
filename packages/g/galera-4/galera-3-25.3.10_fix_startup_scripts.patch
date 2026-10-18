@@ -1,36 +1,39 @@
-Index: galera-4-26.4.6/garb/files/garb.service
+Index: galera-4-26.4.28/garb/files/garb.service
 ===================================================================
---- galera-4-26.4.6.orig/garb/files/garb.service
-+++ galera-4-26.4.6/garb/files/garb.service
-@@ -11,7 +11,8 @@ WantedBy=multi-user.target
+--- a/garb/files/garb.service	2026-10-17 17:27:40.180396724 +0200
++++ b/garb/files/garb.service	2026-10-17 17:28:51.528404062 +0200
+@@ -12,8 +12,9 @@
  Alias=garbd.service
  
  [Service]
 -User=nobody
+-ExecStart=/usr/bin/garb-systemd start
 +User=garb
 +Group=garb
- ExecStart=/usr/bin/garb-systemd start
++ExecStart=/usr/libexec/garb-systemd start
  
  # Use SIGINT because with the default SIGTERM
-Index: galera-4-26.4.6/garb/files/garb.sh
+ # garbd fails to reliably transition to 'destroyed' state
+
+Index: galera-4-26.4.28/garb/files/garb.sh
 ===================================================================
---- galera-4-26.4.6.orig/garb/files/garb.sh
-+++ galera-4-26.4.6/garb/files/garb.sh
-@@ -49,7 +49,7 @@ program_start() {
- 	local rcode
- 	if [ -f /etc/redhat-release ]; then
- 		echo -n $"Starting $prog: "
--		daemon --user nobody $prog "$@" >/dev/null
-+		daemon --user garb $prog "$@" >/dev/null
- 		rcode=$?
- 		if [ $rcode -eq 0 ]; then
- 			pidof $prog > $PIDFILE || rcode=$?
-@@ -58,7 +58,7 @@ program_start() {
- 		echo
- 	else
- 		log_daemon_msg "Starting $prog: "
--		start-stop-daemon --start --quiet -c nobody --background \
-+		start-stop-daemon --start --quiet -c garb --background \
- 		                  --exec $prog -- "$@"
- 		rcode=$?
- 		# Hack: sleep a bit to give garbd some time to fork
+--- a/garb/files/garb.sh	2026-10-17 17:27:40.180396724 +0200
++++ b/garb/files/garb.sh	2026-10-17 17:28:51.528404062 +0200
+@@ -49,7 +49,7 @@
+     local rcode
+     if [ -f /etc/redhat-release ]; then
+ 	echo -n $"Starting $prog: "
+-	daemon --user nobody $prog "$@" >/dev/null
++	daemon --user garb $prog "$@" >/dev/null
+ 	rcode=$?
+ 	if [ $rcode -eq 0 ]; then
+ 	    pidof $prog > $PIDFILE || rcode=$?
+@@ -58,7 +58,7 @@
+ 	echo
+     else
+ 	log_daemon_msg "Starting $prog: "
+-	start-stop-daemon --start --quiet -c nobody --background \
++	start-stop-daemon --start --quiet -c garb --background \
+ 		          --exec $prog -- "$@"
+ 	rcode=$?
+ 	# Hack: sleep a bit to give garbd some time to fork

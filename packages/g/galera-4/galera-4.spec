@@ -1,7 +1,7 @@
 #
 # spec file for package galera-4
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,52 +25,50 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           galera-4
-Version:        26.4.22
+Version:        26.4.28
 Release:        0
 Summary:        Galera: a synchronous multi-master wsrep provider (replication engine)
 License:        GPL-2.0-only
-Group:          Productivity/Databases/Tools
 URL:            https://galeracluster.com/
 Source:         galera-%{version}.tar.xz
 Source2:        garb-user.conf
 Patch0:         galera-3-25.3.10_fix_startup_scripts.patch
-%if 0%{?suse_version} >= 1600
-Patch1:         galera-boost.patch
-%endif
-Patch2:         fix-cmake-install.patch
-BuildRequires:  boost-devel
-BuildRequires:  check-devel
+BuildRequires:  boost-devel >= 1.41
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 # for fileownership of galeradir
 BuildRequires:  mariadb >= %{mariadb_version}
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
-%sysusers_requires
+BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(systemd)
 Requires:       %{name}-wsrep-provider
+Requires(post): %fillup_prereq
 Conflicts:      galera-3
+%sysusers_requires
 %if 0%{?suse_version} >= 1500
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_filesystem-devel >= 1.41
+BuildRequires:  libboost_program_options-devel >= 1.41
 %if 0%{?suse_version} < 1600
 BuildRequires:  libboost_system-devel
 %endif
 %endif
-BuildRequires:  cmake
 # for fileownership of galeradir
 %if %{with split_package}
 BuildRequires:  mysql-server
 %endif
 %if 0%{?suse_version} >= 1500
-BuildRequires:  libopenssl-devel
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libopenssl)
+BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(openssl)
 %else
 BuildRequires:  openssl-devel
 %endif
 %if %{defined fedora}
 BuildRequires:  python
 %endif
-Requires(post): %fillup_prereq
 
 %description
 Galera is a fast synchronous multimaster wsrep provider (replication engine)
@@ -85,7 +83,6 @@ and you are welcome to modify and redistribute it under the GPLv2 license.
 
 %package wsrep-provider
 Summary:        Galera support library
-Group:          Productivity/Databases/Tools
 URL:            https://galeracluster.com/
 Requires:       mariadb-galera >= 10.4
 # already required in mariadb-galera
@@ -114,9 +111,14 @@ export CXXFLAGS="%{optflags}"
 export CFLAGS="$CFLAGS -Wno-implicit-fallthrough"
 export CXXFLAGS="$CXXFLAGS -Wno-implicit-fallthrough"
 %endif
-%cmake -DGALERA_SYSTEMD_UNITDIR:PATH=%{_unitdir} \
-       -DCMAKE_INSTALL_LIBEXECDIR:PATH=%{_libexecdir} \
-       -DCMAKE_INSTALL_DOCDIR:PATH=%{_datarootdir}/doc/packages/%{name}
+%cmake \
+  -DINSTALL_LIBDIR=%{_lib} \
+  -DINSTALL_GARBD=bin \
+  -DINSTALL_GARBD_SYSTEMD=libexec \
+  -DINSTALL_GARBD_SERVICE=lib/systemd/system \
+  -DINSTALL_GARBD_CONFIGURATION=etc \
+  -DINSTALL_MANPAGE=share/man/man8 \
+  -DINSTALL_DOCDIR=share/doc/packages/%{name}
 %cmake_build
 
 %install
@@ -137,7 +139,10 @@ cat > %{buildroot}%{_sysconfdir}/my.cnf.d/51-%{name}-wsrep-provider.cnf <<EOF
 wsrep_provider=%{_libdir}/libgalera_smm.so
 EOF
 
-sed -e 's;/usr/libexec;%{_libexecdir};' -i %{buildroot}%{_unitdir}/garb.service
+sed -e 's;%{_prefix}/libexec;%{_libexecdir};' -i %{buildroot}%{_unitdir}/garb.service
+# Upstream installs garb-systemd via install(FILES) (MGL-163), losing the
+# executable bit the old install(PROGRAMS) gave it; systemd ExecStarts it.
+chmod 0755 %{buildroot}%{_libexecdir}/garb-systemd
 
 %files
 # common

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:29:52 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 26.4.28:
+  * Make the stateless/arbitrator node flag configurable
+  * Speed up group leave by sending a message on EVS close, fix
+    pending-message send on gcomm shutdown
+  * Support CMake 4.0
+  * Update wsrep API and implement config service v2
+  * Add option to disable the application-level protocol check
+    (MGL-30)
+  * Fix processing of configuration changes contained in SST
+    (MDEV-35964) and a wrong variable name that could trigger a
+    full SST on restart (MDEV-31517)
+  * Many coverity fixes: resource, file-handle and memory leaks,
+    integer overflows in fragment-size calculation
+  * Fix rogue JOIN message prematurely joining a donor
+    (MDEV-22124) and a crash with non-zero gcomm thread priority
+    (MENT-2489)
+  * Fix garb service startup (MGL-165) and link rt only when
+    needed (MGL-166)
+  * Fix IST failure (MDEV-36621) and a crash when a socket is
+    closed concurrently in set_fd_options() (MDEV-40281)
+  * Harden EVS install/inactive timeout relations (MDEV-38920)
+  * Compatible with OpenSSL 4.0
+- Drop galera-boost.patch: upstream made the boost_system
+  component optional
+- Drop fix-cmake-install.patch: upstream made all install
+  destinations configurable (MGL-163), pass INSTALL_* instead
+- Refresh galera-3-25.3.10_fix_startup_scripts.patch for the new
+  sources
+- Restore the executable bit on garb-systemd (upstream MGL-163
+  switched it to install(FILES); systemd ExecStarts it)
+- Encode the upstream Boost >= 1.41 minimum in BuildRequires
+
+-------------------------------------------------------------------
 Sat Sep 20 11:45:20 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - libboost_system was removed upstream, fixes boo#1249900
