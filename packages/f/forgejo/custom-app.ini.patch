@@ -1,8 +1,8 @@
-diff --git a/custom/conf/app.example.ini b/custom/conf/app.example.ini
-index c0f007d601..5df2cb42ce 100644
---- a/custom/conf/app.example.ini
-+++ b/custom/conf/app.example.ini
-@@ -51,7 +51,7 @@ APP_NAME = ; Forgejo: Beyond coding. We Forge.
+Index: forgejo-src-17.0.0/custom/conf/app.example.ini
+===================================================================
+--- forgejo-src-17.0.0.orig/custom/conf/app.example.ini
++++ forgejo-src-17.0.0/custom/conf/app.example.ini
+@@ -51,7 +51,7 @@ APP_NAME = ; Forgejo: Beyond coding. We
  ;APP_DISPLAY_NAME_FORMAT = {APP_NAME}: {APP_SLOGAN}
  ;;
  ;; RUN_USER will automatically detect the current user - but you can set it here change it if you run locally
@@ -11,7 +11,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; Application run mode, affects performance and debugging: "dev" or "prod", default is "prod"
  ;; Mode "dev" makes Forgejo easier to develop and debug, values other than "dev" are treated as "prod" which is for production use.
-@@ -284,15 +284,15 @@ RUN_USER = ; git
+@@ -294,15 +294,15 @@ RUN_USER = ; git
  ;; $ openssl pkcs12 -in cert.pfx -out cert.pem -nokeys
  ;; $ openssl pkcs12 -in cert.pfx -out key.pem -nocerts -nodes
  ;; Paths are relative to CUSTOM_PATH
@@ -31,7 +31,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; Enable gzip compression for runtime-generated content, static resources excluded
  ;ENABLE_GZIP = false
-@@ -303,7 +303,7 @@ RUN_USER = ; git
+@@ -313,7 +313,7 @@ RUN_USER = ; git
  ;ENABLE_PPROF = false
  ;;
  ;; PPROF_DATA_PATH, use an absolute path when you start Forgejo as service
@@ -40,7 +40,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; Landing page, can be "home", "explore", "organizations", "login", or any URL such as "/org/repo" or even "https://anotherwebsite.com"
  ;; The "login" choice is not a security measure but just a UI flow change, use REQUIRE_SIGNIN_VIEW to force users to log in.
-@@ -373,7 +373,7 @@ DB_TYPE = sqlite3
+@@ -383,7 +383,7 @@ DB_TYPE = sqlite3
  ;;
  ;DB_TYPE = mysql
  ;HOST = 127.0.0.1:3306 ; can use socket e.g. /var/run/mysqld/mysqld.sock
@@ -49,7 +49,7 @@ index c0f007d601..5df2cb42ce 100644
  ;USER = root
  ;PASSWD = ;Use PASSWD = `your password` for quoting if you use special characters in the password.
  ;; Alternative location to specify mysql password. You cannot specify both this and PASSWD, and must pick one
-@@ -387,7 +387,7 @@ DB_TYPE = sqlite3
+@@ -397,7 +397,7 @@ DB_TYPE = sqlite3
  ;;
  ;DB_TYPE = postgres
  ;HOST = 127.0.0.1:5432 ; can use socket e.g. /var/run/postgresql/
@@ -58,7 +58,7 @@ index c0f007d601..5df2cb42ce 100644
  ;USER = root
  ;PASSWD =
  ;; Alternative location to specify postgres password. You cannot specify both this and PASSWD, and must pick one
-@@ -581,14 +581,14 @@ ENABLED = true
+@@ -599,14 +599,14 @@ ENABLED = true
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; Root path for the log files - defaults to %(GITEA_WORK_DIR)/log
@@ -75,7 +75,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; Either "Trace", "Debug", "Info", "Warn", "Error" or "None", default is "Info"
  LEVEL = Info
-@@ -959,7 +959,7 @@ LEVEL = Info
+@@ -981,7 +981,7 @@ LEVEL = Info
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; Root path for storing all repository data. By default, it is set to %(APP_DATA_PATH)s/gitea-repositories.
  ;; A relative path is interpreted as _`AppWorkPath`_/%(ROOT)s
@@ -84,7 +84,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; The script type this server supports. Usually this is `bash`, but some users report that only `sh` is available.
  ;SCRIPT_TYPE = bash
-@@ -1085,7 +1085,7 @@ LEVEL = Info
+@@ -1107,7 +1107,7 @@ LEVEL = Info
  ;ENABLED = true
  ;;
  ;; Path for uploads. Defaults to `data/tmp/uploads` (content gets deleted on Forgejo restart)
@@ -93,7 +93,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; Comma-separated list of allowed file extensions (`.zip`), mime types (`text/plain`) or wildcard type (`image/*`, `audio/*`, `video/*`). Empty value or `*/*` allows all types.
  ;ALLOWED_TYPES =
-@@ -1461,7 +1461,7 @@ LEVEL = Info
+@@ -1483,7 +1483,7 @@ LEVEL = Info
  ;ISSUE_INDEXER_TYPE = bleve
  ;;
  ;; Issue indexer storage path, available when ISSUE_INDEXER_TYPE is bleve
@@ -101,8 +101,8 @@ index c0f007d601..5df2cb42ce 100644
 +ISSUE_INDEXER_PATH = /var/lib/forgejo/indexers/issues.bleve
  ;;
  ;; Issue indexer connection string, available when ISSUE_INDEXER_TYPE is elasticsearch (e.g. http://elastic:password@localhost:9200) or meilisearch (e.g. http://:apikey@localhost:7700)
- ;ISSUE_INDEXER_CONN_STR =
-@@ -1489,6 +1489,7 @@ LEVEL = Info
+ ;; cannot be used alongside ISSUE_INDEXER_PROTOCOL, ISSUE_INDEXER_HOST, ISSUE_INDEXER_PORT, ISSUE_INDEXER_USER, ISSUE_INDEXER_PASSWD
+@@ -1530,6 +1530,7 @@ LEVEL = Info
  ;;
  ;; Index file used for code search. available when `REPO_INDEXER_TYPE` is bleve or zoekt
  ;REPO_INDEXER_PATH = indexers/repos.bleve
@@ -110,7 +110,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; Code indexer connection string, available when `REPO_INDEXER_TYPE` is elasticsearch. i.e. http://elastic:changeme@localhost:9200
  ;REPO_INDEXER_CONN_STR =
-@@ -1526,7 +1527,7 @@ LEVEL = Info
+@@ -1567,7 +1568,7 @@ LEVEL = Info
  ;TYPE = persistable-channel
  ;;
  ;; data-dir for storing persistable queues and level queues, individual queues will default to `queues/common` meaning the queue is shared.
@@ -119,7 +119,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; Default queue length before a channel queue will block
  ;LENGTH = 100000
-@@ -1895,7 +1896,7 @@ LEVEL = Info
+@@ -1936,7 +1937,7 @@ LEVEL = Info
  ;; file: session file path, e.g. `data/sessions`
  ;; redis: `redis://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s` (or `redis+cluster://127.0.0.1:6379/0?pool_size=100&idle_timeout=180s` for a Redis cluster)
  ;; mysql: go-sql-driver/mysql dsn config string, e.g. `root:password@/session_table`
@@ -128,7 +128,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; Session cookie name
  ;COOKIE_NAME = session
-@@ -1982,7 +1983,7 @@ LEVEL = Info
+@@ -2023,7 +2024,7 @@ LEVEL = Info
  ;;
  ;; Path for attachments. Defaults to `attachments`. Only available when STORAGE_TYPE is `local`
  ;; Relative paths will be resolved to `${AppDataPath}/${attachment.PATH}`
@@ -137,7 +137,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; Minio endpoint to connect only available when STORAGE_TYPE is `minio`
  ;MINIO_ENDPOINT = localhost:9000
-@@ -2008,7 +2009,7 @@ LEVEL = Info
+@@ -2049,7 +2050,7 @@ LEVEL = Info
  ;MINIO_LOCATION = us-east-1
  ;;
  ;; Minio base path on the bucket only available when STORAGE_TYPE is `minio`
@@ -146,7 +146,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; Minio enabled ssl only available when STORAGE_TYPE is `minio`
  ;MINIO_USE_SSL = false
-@@ -2601,10 +2602,10 @@ LEVEL = Info
+@@ -2675,10 +2676,10 @@ LEVEL = Info
  ;;
  ;STORAGE_TYPE = local
  ;; override the minio base path if storage type is minio
@@ -159,7 +159,7 @@ index c0f007d601..5df2cb42ce 100644
  ;;
  ;; Maximum count of package versions a single owner can have (`-1` means no limits)
  ;LIMIT_TOTAL_OWNER_COUNT = -1
-@@ -2673,10 +2674,10 @@ LEVEL = Info
+@@ -2747,10 +2748,10 @@ LEVEL = Info
  ;STORAGE_TYPE = local
  ;;
  ;; Where your lfs files reside, default is data/lfs.
@@ -172,7 +172,7 @@ index c0f007d601..5df2cb42ce 100644
  
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-@@ -2696,10 +2697,10 @@ LEVEL = Info
+@@ -2770,10 +2771,10 @@ LEVEL = Info
  ;STORAGE_TYPE = local
  ;;
  ;; Where your lfs files reside, default is data/lfs.
@@ -185,6 +185,3 @@ index c0f007d601..5df2cb42ce 100644
  
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
--- 
-2.54.0
-

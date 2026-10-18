@@ -1,4 +1,929 @@
 -------------------------------------------------------------------
+Thu Oct 15 17:06:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- refreshed custom-app.ini.patch
+- update to 17.0.0:
+  - Security bug fixes
+    - PR (backported): fix: avoid loading unnecessary data during
+      tag creation
+    - PR (backported): forward-port: test disabled hooks during
+      diff patch
+  - Security features
+    - PR: don't render large compare diff
+  - Breaking features
+    - PR: always parse duration strictly in config
+    - PR: chore(branding): default logfile to forgejo.log with a
+      symlink to gitea.log for backward compatibility
+  - Breaking bug fixes
+    - PR: Fixes markdown rendering in repositories for absolute
+      links (those starting with /) in rendered content (comments,
+      issues, markdown, orgmode), they are now resolved relative to
+      the repository root. Content nested in a directory is no
+      longer resolved relative to that directory unless you use ./
+      instead of /.
+  - User Interface features
+    - PR (backported): fix: sort user repositories in package
+      linking, make input searchable
+    - PR: feat(lfs): improve 'not found' message appearance
+    - PR: feat(lfs): move submenus to navbar
+    - PR: feat(ui): add focus outline to buttons
+    - PR: improve the issue search syntax modal, make it work w/o
+      JS
+    - PR: improve modal dialogs in combined MDEs
+    - PR: show organization avatars in dashboard list
+    - PR: make the "Sign out" item work without JS
+    - PR: improve space-efficiency of emoji data
+    - PR: better keyboard focus indicators for switch component
+    - PR: feat(ui): convert user blocking modal to modern dialog
+    - PR: feat(admin): Add option to delete user from the user's
+      page
+    - PR: ui: show registry setup CLI commands for composer and npm
+      packages
+    - PR: add suggestions for issues
+    - PR: Display repo/user/org funding options from FUNDING.yml
+    - PR: feat(lfs/find): improve ui appearance
+    - PR: feat(ui): convert comment context menu to JSless
+      dropdown, fix tippy target
+    - PR: feat(funding): display FUNDING.yml parse errors in the
+      web UI
+    - PR: feat(ui): polish elements near collaboration dropdown
+    - PR: migrate collaborations to js-less dropdown, add
+      placeholder
+    - PR: Display error message in the UI if SSH key management is
+      disabled
+    - PR: Don't show LFS size if 0 and LFS is disabled
+    - PR: add repositories section in the organization settings
+    - PR: feat(ui): improve markup attention colors. Note: CSS
+      variables were changed, custom themes may need to be updated
+      accordingly
+    - PR: feat(admin): add option to sort packages by size
+    - PR: feat(packages): display OCI manifest annotations in
+      container package UI
+    - PR: The release assets are now listed before the source code
+      archives on the release page.
+    - PR: feat(ui): show release attachments' uploaded time on
+      release edit page
+    - PR: OSC 8 hyperlink escape sequences emitted by Forgejo
+      Actions jobs are rendered as clickable links in the job log.
+    - PR: feat(issues): Add Copy Markdown Button
+  - User Interface bug fixes
+    - PR: fix(ui): make repo lfs settings tables more flexible
+    - PR: make the UI and API consistent on team visibility rules
+    - PR (backported): fix: remove resync_all_hooks task from admin
+      UI
+    - PR: preserve filters during pagination in subscriptions list
+    - PR: user mentions in comment preview
+    - PR: perf: avoid emitting codemirror in index.js
+    - PR: Don't auto-focus "Repository name" text field in Settings
+    - PR: Improve English strings
+    - PR: ensure scrollability of modals in tiny viewports
+    - PR: remove role=button of 'New pull request' link
+    - PR: capitalize projects board headers to be consistent with
+      other UI headers
+    - PR: fix(ui): render titles in runs list properly
+    - PR: fix(dropdown): a11y: add tooltip to opener in Actions, +
+      ui: fix rounding, + improve demos
+    - PR: fix(ui): blame displays a placeholder if the commit
+      message is empty
+    - PR: fix(ui): in the admin config panel do not report a cache
+      taking more than 100 microseconds as slow
+  - Localization
+    - Translations updates from Codeberg Translate: !13467, !13166,
+      !13953, !14133, !14798 (backport of !14384)
+  - Features
+    - PR: Download repository avatar when migrating from Gogs,
+      Gitlab, Gitea, or Forgejo
+    - PR: expiration of invitations to teams
+    - PR: Repositories can now be migrated from Bitbucket Data
+      Center (Bitbucket Cloud uses a different API and is not
+      covered), including pull requests with their reviews and
+      comments (Bitbucket Data Center has no issues, wiki,
+      milestones or releases). Authentication uses an HTTP access
+      token (personal, project or repository access token), and the
+      Bitbucket instance must have HTTP(S) SCM hosting enabled for
+      the git clone to succeed.
+    - PR (backported): enh: add org members to other teams without
+      invitation
+    - PR:  let users decline invitations
+    - PR: webhooks for workflow jobs
+    - PR: fine-grained event triggers for workflow run webhooks
+    - PR: Add USERNAME_PREFIX setting to force a prefix on
+      non-admin usernames
+    - PR: add support in Forgejo's update checker for LTS and
+      multiple releases
+    - PR: use setting.AppName in ssh auth message
+    - PR: Upload and persist TaskStepSummaries and display them in
+      the ActionView
+    - PR:  show pending invitation on org home page
+    - PR: feat(packages): Allow cleaning based on last download
+      timestamp.
+    - PR: feat(api): add ?format=ndjson NDJSON output to the
+      job-logs endpoint
+    - PR: feat(api): add ?q= and ?qi= substring filter to the
+      job-logs endpoint
+    - PR: feat(api): add GET
+      /repos/{owner}/{repo}/actions/jobs/{job_id} and reintroduce
+      ?step= on the logs endpoint
+    - PR: feat(api): add action API endpoints to rerun workflows
+      and specific jobs
+    - PR: granular settings for watched repo units
+    - PR: add rss/atom feeds for issue and pull request discussions
+    - PR: no longer download PR patches during migration. Migration
+      guide is available in Admin docs.
+    - PR: add API endpoint to lock/unlock issues/pull requests
+    - PR: populate time property for NPM package
+    - PR: search authorized key via fingerprint
+    - PR: extend status diagnostics of Actions jobs
+    - PR: use Go's default values for TLS server
+    - PR: make delete repository transcation READ COMMITTED
+    - PR: minioClient can use the web proxy
+    - PR: enh(issue-search): treat terms in query strings with no
+      explicit operator as MUST
+    - PR: feat(actions): add support for using workflow run-name as
+      run title
+    - PR: Adds "actor" as a protected / forbidden username.
+  - Bug fixes
+    - PR: add thead to the lfs files table
+    - PR (backported): fix: branches with pipe character can't
+      display commit graph
+    - PR (backported): fix: report errors to users when evaluating
+      'if' from actions
+    - PR (backported): fix(auth/basic): return incorrect credential
+      error on non existent email
+    - PR (backported): fix: show error message when non-existent
+      user is being added to org
+    - PR (backported): fix: reduce memory usage during Actions log
+      & artifacts uploads
+    - PR (backported): fix(api): workflow dispatch returns 4xx
+      errors on unknown ref and workflow
+    - PR (backported): fix: Slack PR notifications using wrong link
+      format
+    - PR (backported): fix: set Content-Length header when serving
+      package files
+    - PR (backported): fix: filter issues by enabled repo units
+      when populating dashboard lists
+    - PR: serialize run's started, stopped to null when zero
+    - PR: use correct link in email notification for issue closed
+      by merge in another repo
+    - PR: various accessibility improvements
+    - PR: chore(docs): clarify the bootstrap fatal error message
+      displayed when no config is found
+  - Other changes without a feature or bug label
+    - PR: Add generic "[pfx]KEYS_ACCEPTED = :[|] ..." configuration
+      to configure accepted keys for JWT validation and activate it
+      for [oauth2] as JWT_KEYS_ACCEPTED. Require exp claim by
+      default for JWTs.
+    - PR: chore: deprecate action run webhook events
+    - PR: send notifications on job failure, not run failure
+    - PR: add line wrapping to webhook ms teams card
+    - PR: chore: remove run recovery notifications
+    - PR: chore: remove reference to a defunct avatar service
+  - Included for completeness but not user-facing (chores, etc.)
+    - PR (backported): fix: Actions logs are not transferred to
+      object storage when last UpdateLog has no rows
+    - PR (backported): Fix config.ini duration default values / fix
+      SENDMAIL_TIMEOUT default
+    - PR (backported): Update module github.com/go-co-op/gocron to
+      v2 (forgejo)
+    - PR: ci: allow to rerun slow parts of of build-release
+      workflow
+    - PR: fix(services/issue/assignee): handle team-only-access
+    - PR: Regenerate codeChallenge after ResetOAuth2 in PKCE flow
+    - PR: improve performance when using API access tokens with
+      real usernames in HTTP basic
+    - PR: don't fail when a user is invited to an organization
+      again
+    - PR (backported): fix: more correct empty check for PRs using
+      git-merge-tree
+    - PR: chore: Polish actions_test.go
+    - PR: feat(ui/diff): condense Git LFS label
+    - PR: fix(ui): remove extra attached segment wrap in lfs
+      settings
+    - PR: chore(i18n): move ~126 strings to JSON
+    - PR (backported): fix: pass merge commit messages to git via
+      stdin
+    - PR (backported): fix: don't send like activities for
+      unfederated repos
+    - PR (backported): fix: bug in rendering links in other places
+      such as issues/pr/releases that made root links inconsistent
+      and unintended rendering
+    - PR (backported): fix(CLI): settings not loaded for
+      create-authorized-integration
+    - PR: Update module golang.org/x/net to v0.60.0 [SECURITY]
+      (v17.0/forgejo)
+    - PR: Some cleanup/refactoring on crypto key management
+    - PR: Update go toolchain directive to v1.26.9 [SECURITY]
+      (v17.0/forgejo)
+    - PR (backported): fix(ui): proper use of modern components in
+      org teams ui
+    - PR: Update dependency sharp to v0.35.5 [SECURITY]
+      (v17.0/forgejo)
+    - PR (backported): fix(ui): stop buttons breaking on hover
+    - PR: improve dynamic group mappings for OIDC
+    - PR (backported): fix: unblock concurrency group job if
+      previous run finished by server-side evaluation
+    - PR (backported): fix: prevent in-db branch state rollback
+      from concurrent pushes
+    - PR: feat(lfs): server: add documentation_url to response
+    - PR (backported): refactor(tests): change all remaining
+      tests.CreateDeclarativeRepo to forgery.CreateRepository
+    - PR (backported): fix: accept Arch Linux packages with
+      non-zero epoch
+    - PR (backported): fix: avoid unconditional UPDATE query in
+      diff view style preference
+    - PR (backported): fix: prevent off by one by excluding size ==
+      1024 in BlobsLessThan1024...
+    - PR: nit(lfs): export & use blob size cutoff const
+    - PR: Update https://codeberg.org/clouds666/unkai action to
+      v0.2.15 (forgejo)
+    - PR (backported): test: fix intermittent test failure in
+      TestAPIAuthWithAuthorizedIntegration
+    - PR: Allow pushing to AGit refs
+    - PR: fix(federation): fix hostmatcher patterns
+    - PR: chore: improve robustness of TestSearchPointerBlobs
+    - PR: tighten JWK parsing and encoding for ECDSA curves
+    - PR: Update dependency webpack to v5.111.1 (forgejo)
+    - PR: Project API Refactorings
+    - PR: chore: remove repository from job webhooks payload
+    - PR: use DateUtils.FullTime instead of legacy DateTime "full"
+      in admin_new_user.tmpl
+    - PR: modules/setting: Make config file errors obvious, remove
+      harmful clutter
+    - PR: Update module golang.org/x/image to v0.46.0 (forgejo) -
+      autoclosed
+    - PR: run typescript unit tests
+    - PR: Update module golang.org/x/oauth2 to v0.37.0 (forgejo)
+    - PR: Update module github.com/vektra/mockery/v3 to v3.8.0
+      (forgejo)
+    - PR: Update module github.com/dustin/go-humanize to v1.1.0
+      (forgejo)
+    - PR: Update dependency eslint-plugin-regexp to v3.3.1
+      (forgejo)
+    - PR: Update module github.com/go-openapi/spec to v1 (forgejo)
+      - autoclosed
+    - PR: Update dependency eslint-plugin-toml to v1 (forgejo) -
+      autoclosed
+    - PR: Update module
+      github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker
+      to v4 (forgejo)
+    - PR: Update dependency stylelint to v17 (forgejo)
+    - PR: Update module github.com/jackc/pgx/v5 to v5.11.0
+      (forgejo) - autoclosed
+    - PR: Update module github.com/yuin/goldmark to v1.8.6
+      (forgejo) - autoclosed
+    - PR: Update x/tools to v0.50.0 (forgejo)
+    - PR: Update dependency @vitejs/plugin-vue to v6.0.9 (forgejo)
+    - PR: Update module
+      github.com/editorconfig/editorconfig-core-go/v2 to v2.6.5
+      (forgejo) - autoclosed
+    - PR: Update module mvdan.cc/gofumpt to v0.12.0 (forgejo)
+    - PR: chore: use Webpack's native CSS parser
+    - PR: jwtx/verifier: Fix two own bugs in AddKey()
+    - PR: Update Node.js to v24.21.0 (forgejo)
+    - PR: Update CodeMirror (forgejo) - autoclosed
+    - PR: use the current version instead of "latest" for Forgejo
+      Docs links
+    - PR: Update dependency eslint-plugin-sonarjs to v4 (forgejo)
+    - PR: improve overflow behaviour of issue attachment name [skip
+      ci]
+    - PR: Update module github.com/mattn/go-sqlite3 to v1.14.52
+      (forgejo)
+    - PR: Update dependency postcss-html to v2 (forgejo)
+    - PR: consolidate construction of Forgejo docs URLs in UI text
+    - PR: chore: migrate to definedConfig for eslint
+    - PR: Update dependency eslint-plugin-no-jquery to v6 (forgejo)
+    - PR: Update module github.com/klauspost/compress to v1.20.0
+      (forgejo)
+    - PR: Update linters (forgejo)
+    - PR: Update dependency swagger-ui-dist to v5.33.0 (forgejo)
+    - PR: Update dependency webpack to v5.111.0 (forgejo)
+    - PR: Update module code.forgejo.org/forgejo/runner/v13 to
+      v13.2.0 (forgejo) - autoclosed
+    - PR: Update vitest monorepo to v5 (forgejo) - autoclosed
+    - PR: Update dependency markdownlint-cli to v0.49.1 (forgejo)
+    - PR: Update dependency eslint-plugin-vue-scoped-css to v3
+      (forgejo)
+    - PR: Update dependency @stoplight/spectral-cli to v6.16.3
+      (forgejo)
+    - PR: improve invite view page
+    - PR: Update module github.com/go-sql-driver/mysql to v1.10.1
+      (forgejo) - autoclosed
+    - PR: nit(lfs): add 'Pointer files' title to page
+    - PR: chore(release-notes): Forgejo v16.0.5 [skip ci]
+    - PR: chore(release-notes): Forgejo v15.0.9 [skip ci]
+    - PR: nit(lfs): fix function names in ctx error messages
+    - PR: Update dependency webpack-cli to v7.2.3 (forgejo) -
+      autoclosed
+    - PR: Update https://codeberg.org/clouds666/unkai action to
+      v0.2.14 (forgejo) - autoclosed
+    - PR: Update https://data.forgejo.org/actions/setup-forgejo
+      action to v3.2.5 (forgejo)
+    - PR: full plural for funding.yaml_error.n_too_many_providers
+    - PR: Update dependency swagger-ui-dist to v5.32.15 (forgejo) -
+      autoclosed
+    - PR: Update dependency postcss to v8.5.28 (forgejo) -
+      autoclosed
+    - PR: Update dependency vue to v3.5.42 (forgejo)
+    - PR: fix(tests): make JS sleep test not flaky
+    - PR: do not mark active run as completed
+    - PR: Optimize PNG images losslessly: 414 → 283 KiB (−32%)
+    - PR: exclude zoekt on OpenBSD to enable compilation
+    - PR: chore: remove OpenID from Forgejo's initial setup page
+    - PR: chore(routers/web/repo/setting/lfs): improve/fix logMsg
+      func mentions
+    - PR:  visual feedback when inviting a user via the members
+      page
+    - PR: Update dependency css-loader to v7.1.5 (forgejo)
+    - PR: Update dependency mermaid to v11.17.2 (forgejo)
+    - PR: Update dependency katex to v0.18.7 (forgejo)
+    - PR: Update dependency sharp to v0.35.4 [SECURITY] (forgejo)
+    - PR: Revert "Pin
+      https://data.forgejo.org/forgejo/upload-artifact action to
+      v4.3.1 (forgejo) (#14274)" and document the hack
+    - PR: chore(release-notes): Forgejo v16.0.4 [skip ci]
+    - PR: chore(release-notes): Forgejo v15.0.8 [skip ci]
+    - PR: initMarkupContent in RepoActionView when new summaries
+      arrive
+    - PR: chore: remove notifier method ActionRunNowDone
+    - PR: refactor: trigger run notifications explicitly
+    - PR: Pin https://data.forgejo.org/forgejo/upload-artifact
+      action to v4.3.1 (forgejo)
+    - PR: Update dependency @codemirror/state to v6.7.4 (forgejo)
+    - PR: unclosed <div> tag in org members list
+    - PR: feat(ui): add colors to pull request list status icons
+    - PR: Update renovate Docker tag to v44.65.5 (forgejo)
+    - PR: Lock file maintenance (forgejo)
+    - PR: Update CodeMirror (forgejo)
+    - PR: chore(ci): allow tests using the coverage helper to run
+      for at most 2h
+    - PR: fix(dev): update gitignore e2e for new branding
+    - PR: chore(branding): in tests gitea root/conf really is
+      project root/conf
+    - PR: chore: remove legacy generateRepoCommit
+    - PR: Update https://codeberg.org/clouds666/unkai action to
+      v0.2.13 (forgejo)
+    - PR: simplify concurrency in GetContributorStats
+    - PR: chore(ci): add or update a comment with Go code coverage
+      report to pull requests
+    - PR: set org membership visibility when accepting an
+      invitation
+    - PR: chore(tests): /user/events notifications shows in the UI
+    - PR: fix(ui): CSS overflow issue in view_file.tmpl
+    - PR: SQL query optimizations
+    - PR: refactor: use methods instead of events for run
+      notifications
+    - PR: chore: emit notifications for job status changes
+    - PR: Update module golang.org/x/crypto to v0.56.0 [SECURITY]
+      (forgejo)
+    - PR: chore: improve reliability of
+      TestPullRequestCommentPlacement on force push tests
+    - PR: Update https://codeberg.org/clouds666/unkai action to
+      v0.2.9 (forgejo)
+    - PR: additional permission checks and tests for PATCH
+      /repos/{owner}/{repo}/issues/{index}
+    - PR: feat(packages): Add last-downloaded timeStamp.
+    - PR: Update go toolchain directive to v1.26.8 (forgejo)
+    - PR: Update renovate Docker tag to v44.56.1 (forgejo)
+    - PR: allow matrix reusable workflows to distinguish between
+      internal jobs
+    - PR: chore: disable constant rebasing on any renovate PR w/
+      automerge enabled
+    - PR: chore: retry diff page load on
+      TestPullRequestCommentPlacement when expected commit isn't
+      matched
+    - PR: fix(ui): show divider in projects filter only if there
+      are projects [skip ci]
+    - PR: Update module code.forgejo.org/forgejo/runner/v13 to
+      v13.1.0 (forgejo)
+    - PR: chore(refactor): REST API remove or add team repo use the
+      reqAdmin middleware
+    - PR: add empty list placeholder for empty member lists
+    - PR: Update module github.com/blevesearch/bleve/v2 to v2.6.1
+      (forgejo)
+    - PR: fix(ui): allow to open menu of a comment in the field
+      changed view without reloading
+    - PR: Update module code.forgejo.org/forgejo/actions-proto to
+      v0.8.0 (forgejo)
+    - PR: chore: remove dead code from DELETE
+      /repos/{owner}/{repo}/branches/{branch}
+    - PR: feat(api): add GET /user/actions/secrets
+    - PR: Update module github.com/PuerkitoBio/goquery to v1.13.0
+      (forgejo)
+    - PR: Update module code.forgejo.org/go-chi/session to v1.1.0
+      (forgejo)
+    - PR: Update linters (forgejo)
+    - PR: Update dependency @axe-core/playwright to v4.13.0
+      (forgejo)
+    - PR: Update dependency @playwright/test to v1.62.1 (forgejo)
+    - PR: Split indexer connection strings into seperate config
+      keys
+    - PR: Update vitest monorepo to v4.1.11 (forgejo)
+    - PR: chore(refactor): do not define Is method for errors that
+      are types
+    - PR: chore(ui): move shared variable/secrets list template
+      files
+    - PR: Update dependency svgo to v4.1.0 (forgejo)
+    - PR: feat(funding): parse app.ini for funding providers, with
+      a set of default ones
+    - PR: Update dependency mermaid to v11.17.1 (forgejo)
+    - PR: chore(refactor): move CanCreateOrganization() permissions
+      check to a middleware
+    - PR: Update Node.js to v24.20.0 (forgejo)
+    - PR: Update module github.com/vektra/mockery/v3 to v3.7.4
+      (forgejo)
+    - PR: chore(tests): increase doRepoWikiGitOperationInner from 2
+      to 60 seconds
+    - PR: chore: add coverage for REST API fork destination
+      permission check
+    - PR: chore(tests): be more generous with TestBleveDeleteIssue
+      and TestRepoStatsIndex timeout
+    - PR: Update CodeMirror (forgejo)
+    - PR: fix(ci): semgrep duplicate id
+    - PR: fix(funding): HTTP 500 when repo funding config contains
+      invalid YAML
+    - PR: Update module github.com/go-openapi/spec to v0.22.11
+      (forgejo)
+    - PR: chore(ci): use oci/ci:3 instead of oci/playwright:latest
+      for e2e
+    - PR: chore: only run tj-actions/changed-files on pull requests
+    - PR: custom funding entry title consistency
+    - PR: remove Gitea name reference in default Git user info
+    - PR: feat(pr): accept abbreviated commit IDs in manual merge
+    - PR: checkboxes in Firefox high contrast mode
+    - PR: fix(adopt): Convert all strings to lowercase
+    - PR: chore(ci): use oci/ci:3 instead of oci/playwright:latest
+      for coverage
+    - PR: feat(funding): modules for finding and parsing the repo
+      funding config file
+    - PR: Update data.forgejo.org/oci/ci Docker tag to v3 (forgejo)
+    - PR: improve buttons demo page
+    - PR: refactor: unify access to git cat-file --batch, remove
+      unused WriteCloserError
+    - PR: Update https://codeberg.org/clouds666/unkai action to
+      v0.2.8 (forgejo)
+    - PR: Update renovate Docker tag to v44.39.3 (forgejo)
+    - PR: Update module github.com/redis/go-redis/v9 to v9.22.0
+      (forgejo)
+    - PR: feat(lfs): GetRawFile & GetRawFileOrLFS: remove empty
+      repo check
+    - PR: Update dependency swagger-ui-dist to v5.32.14 (forgejo) -
+      autoclosed
+    - PR: docs: added a shebang to the example envrc
+    - PR: Change formatter nixfmt-rfc-style -> nixfmt
+    - PR: migrate confirm modals to native dialog
+    - PR: sort secrets alphabetically in settings UI
+    - PR: Update dependency wrap-ansi to v10.0.1 (forgejo) -
+      autoclosed
+    - PR: chore(ui): Move repo topic selector to tom-select
+    - PR: Update module code.forgejo.org/xorm/xorm to v1.4.1
+      (forgejo)
+    - PR: Update dependency dayjs to v1.11.23 (forgejo)
+    - PR: Update module github.com/stretchr/testify to v1.12.1
+      (forgejo)
+    - PR: Upgrade to the latest go-gitlab in 1.x releases
+    - PR: 2026-08-20 security patches
+    - PR: chore(release-notes): Forgejo v16.0.3 [skip ci]
+    - PR: chore(release-notes): Forgejo v15.0.7 [skip ci]
+    - PR: Update go toolchain directive to v1.26.7 (forgejo)
+    - PR: fix(lfs/overview): add missing to template
+    - PR: refactor: make CatFileBatch & CatFileBatchCheck protect
+      against subprocess reuse after error
+    - PR: doc: add funding section to app.example.ini
+    - PR: chore: remove code.forgejo.org/gof3 until it is ready
+    - PR: Update module github.com/stretchr/testify to v1.12.0
+      (forgejo)
+    - PR: Update module github.com/mattn/go-sqlite3 to v1.14.50
+      (forgejo)
+    - PR: Update module golang.org/x/tools/cmd/deadcode to v0.49.0
+      (forgejo)
+    - PR: Update renovate Docker tag to v44.31.0 (forgejo)
+    - PR: Update dependency swagger-ui-dist to v5.32.13 (forgejo) -
+      autoclosed
+    - PR: Update dependency globals to v17.11.0 (forgejo) -
+      autoclosed
+    - PR: Update https://codeberg.org/clouds666/unkai action to
+      v0.2.7 (forgejo)
+    - PR: bug: make fmt happy
+    - PR: Update module
+      github.com/go-swagger/go-swagger/cmd/swagger to v0.36.4
+      (forgejo)
+    - PR: chore(ci): run e2e tests and collect coverage (followup)
+    - PR: chore(ci): run e2e tests and collect coverage (followup)
+    - PR: chore(ci): run e2e tests and collect coverage
+    - PR: Update dependency katex to v0.18.4 (forgejo)
+    - PR: Update module github.com/vektra/mockery/v3 to v3.7.3
+      (forgejo)
+    - PR: Update golang.org/x/mod (indirect) to v0.40.0 [SECURITY]
+      (forgejo)
+    - PR: chore(ci): TestBleveDeleteIssue populate may race with
+      delete
+    - PR: Update go toolchain directive to v1.26.6 (forgejo)
+    - PR: Update module mvdan.cc/gofumpt to v0.11.0 (forgejo)
+    - PR: Update dependency @axe-core/playwright to v4.12.1
+      (forgejo)
+    - PR: Update dependency happy-dom to v20.11.2 (forgejo)
+    - PR: Update linters (forgejo)
+    - PR: Update https://data.forgejo.org/actions/setup-go action
+      to v7 (forgejo)
+    - PR: Update https://data.forgejo.org/actions/setup-node action
+      to v7 (forgejo)
+    - PR: Update module google.golang.org/protobuf to v1.36.12
+      (forgejo)
+    - PR: Update dependency katex to v0.18.2 (forgejo)
+    - PR: Update module golang.org/x/crypto to v0.55.0 (forgejo) -
+      autoclosed
+    - PR: Update module golang.org/x/image to v0.45.0 (forgejo)
+    - PR: panic when Actions jobs with reusable workflows >4k in
+      size are scheduled
+    - PR: chore: remove deadcode ToConds with empty column name
+    - PR: feat(action): use queues for delivering notifications
+    - PR: build: Honor GOFLAGS and EXTRA_GOFLAGS for install
+      target.
+    - PR: chore: add forgejo-cascading-pr to AI agreement exemption
+    - PR: chore(tests): remove the fixtureUnlockIssue function
+      deadcode
+    - PR: Update dependency postcss to v8.5.26 (forgejo) -
+      autoclosed
+    - PR: Update renovate Docker tag to v44 (forgejo)
+    - PR: chore: require AI Agreement conformance statement for PRs
+    - PR: Update https://codeberg.org/clouds666/unkai action to
+      v0.2.6 (forgejo)
+    - PR: chore(refactor): refactor and test coverage for API
+      locked issue permissions check
+    - PR: build error from soft conflict between #13830 and #13513
+    - PR: silence unwarranted error logging
+    - PR: Fix TestCannotCreatePrivateKey in Guix container.
+    - PR: Update module
+      github.com/go-swagger/go-swagger/cmd/swagger to v0.36.2
+      (forgejo)
+    - PR: Update CodeMirror (forgejo)
+    - PR: Update data.forgejo.org/oci/alpine Docker tag to v3.24
+      (forgejo)
+    - PR: chore: add more diagnostic output to
+      TestPullRequestCommentPlacement
+    - PR: chore: remove duplicated effort - ExclusivePool vs.
+      MutexMap
+    - PR: feat(migration): set a custom User-Agent for the
+      migration service
+    - PR: Update dependency katex to v0.18.1 (forgejo)
+    - PR: Update module github.com/santhosh-tekuri/jsonschema/v6 to
+      v6.0.3 (forgejo)
+    - PR: Update dependency swagger-ui-dist to v5.32.12 (forgejo)
+    - PR: Update dependency mermaid to v11.16.1 [SECURITY]
+      (forgejo)
+    - PR: Update module github.com/klauspost/compress to v1.19.2
+      (forgejo)
+    - PR: Update dependency globals to v17.9.0 (forgejo)
+    - PR: chore: fix some links, resolve redirects to categorized
+      documentation
+    - PR: Update renovate Docker tag to v43.286.1 (forgejo)
+    - PR: docs: Make it clear when NOT to send a PR (translations)
+    - PR: Update x/tools to v0.48.0 (forgejo)
+    - PR: Update Node.js to v24.19.0 (forgejo)
+    - PR: Update dependency webpack-cli to v7.2.2 (forgejo) -
+      autoclosed
+    - PR: Update dependency postcss to v8.5.25 (forgejo) -
+      autoclosed
+    - PR: Update module code.forgejo.org/forgejo/runner/v12 to v13
+      (forgejo)
+    - PR: fix(convert/activitypub): load comment before access
+    - PR: Update dependency minimatch to v10.2.6 (forgejo) -
+      autoclosed
+    - PR: Update module go.yaml.in/yaml/v3 to v3.0.5 (forgejo) -
+      autoclosed
+    - PR: Update dependency @codemirror/view to v6.43.7 (forgejo) -
+      autoclosed
+    - PR: Update https://data.forgejo.org/actions/git-backporting
+      action to v4.10.0 (forgejo) - autoclosed
+    - PR: chore: add diagnostic logging to
+      TestPullRequestCommentPlacement
+    - PR: Update dependency webpack to v5.109.2 (forgejo)
+    - PR: Update module
+      github.com/go-swagger/go-swagger/cmd/swagger to v0.36.1
+      (forgejo)
+    - PR: chore(models/user/list.go): improve coverage of
+      loadTwoFactorStatus and enable nilnil lint in
+      models/user/list.go and modules/git/foreachref/parser.go
+    - PR: Update module github.com/mattn/go-sqlite3 to v1.14.49
+      (forgejo)
+    - PR: 2026-07-30 security patches
+    - PR: chore(release-notes): Forgejo v16.0.2 [skip ci]
+    - PR: chore(release-notes): Forgejo v15.0.6 [skip ci]
+    - PR: Update https://codeberg.org/clouds666/unkai action to
+      v0.2.5 (forgejo)
+    - PR: Update https://codeberg.org/clouds666/unkai action to
+      v0.2.4 (forgejo)
+    - PR: fix(feed): don't init test queue multiple times
+    - PR: chore(ci): workflow showing Go coverage of a pull request
+      (followup)
+    - PR: chore(ci): workflow showing Go coverage of a pull request
+    - PR: Update module github.com/go-ldap/ldap/v3 to v3.4.14
+      (forgejo)
+    - PR: Pin https://codeberg.org/clouds666/unkai action to
+      6c54437 (forgejo)
+    - PR: Update dependency globals to v17.8.0 (forgejo)
+    - PR: feat(perf): speedup available jobs query for user/org
+      runner
+    - PR: Update https://codeberg.org/clouds666/unkai action to
+      v0.2.3 (forgejo)
+    - PR: Update postcss (forgejo)
+    - PR: Update module github.com/go-openapi/spec to v0.22.9
+      (forgejo)
+    - PR: Update module github.com/yuin/goldmark to v1.8.5
+      (forgejo) - autoclosed
+    - PR: Update https://codeberg.org/clouds666/unkai action to
+      v0.2.2 (forgejo)
+    - PR: Update renovate Docker tag to v43.281.1 (forgejo)
+    - PR: Update module github.com/vektra/mockery/v3 to v3.7.2
+      (forgejo)
+    - PR: add forgejo and pagure to the swagger api definition
+    - PR: Update module github.com/ulikunitz/xz to v0.5.16
+      (forgejo)
+    - PR: terminate git (& other) subcommands gracefully on context
+      timeout/cancellation
+    - PR: chore(ci): workflow showing Go coverage of a pull request
+      (followup)
+    - PR: Update https://data.forgejo.org/actions/checkout action
+      to v7.0.1 (forgejo)
+    - PR: Update module github.com/klauspost/compress to v1.19.1
+      (forgejo)
+    - PR: Update module github.com/mattn/go-isatty to v0.0.24
+      (forgejo) - autoclosed
+    - PR: Pin https://codeberg.org/clouds666/unkai action to
+      aea908d (forgejo)
+    - PR: chore(lint): make code slicesbackward compliant and
+      update golangci-lint version
+    - PR: Update module github.com/go-chi/chi/v5 to v5.3.0
+      (forgejo)
+    - PR: Update dependency swagger-ui-dist to v5.32.11 (forgejo) -
+      autoclosed
+    - PR: Update https://data.forgejo.org/actions/setup-forgejo
+      action to v3.2.4 (forgejo) - autoclosed
+    - PR: Update https://data.forgejo.org/actions/checkout action
+      to v7.0.1 (forgejo) - autoclosed
+    - PR: Update dependency postcss to v8.5.22 (forgejo)
+    - PR: allow action logs to be searched by browser within
+      collapsed groups
+    - PR: fix(perf): improve performance of viewing long actions
+      logs
+    - PR: Update google.golang.org/grpc (indirect) to v1.82.1
+      [SECURITY] (forgejo) - autoclosed
+    - PR: Update module code.forgejo.org/forgejo/runner/v12 to
+      v12.13.2 (forgejo)
+    - PR: chore: document SSH_ALLOW_UNEXPECTED_AUTHORIZED_KEYS
+    - PR: Update dependency sharp to v0.35.3 (forgejo)
+    - PR: Update renovate Docker tag to v43.272.6 (forgejo)
+    - PR: chore(release-notes): Forgejo v16.0.1 [skip ci]
+    - PR: Update https://data.forgejo.org/actions/setup-node action
+      to v6.5.0 (forgejo)
+    - PR: Update dependency @codemirror/lang-markdown to v6.5.1
+      (forgejo)
+    - PR: prevent mirroring & migrations on unencrypted URL schemes
+      (http://, git://)
+    - PR: Update module code.forgejo.org/forgejo/runner/v12 to
+      v12.13.1 (forgejo)
+    - PR: Update module golang.org/x/net to v0.57.0 (forgejo)
+    - PR: Update module golang.org/x/image to v0.44.0 (forgejo)
+    - PR: chore: Update link to policy in security.txt
+    - PR: remove stale form-fetch-action loader on page navigation
+      using bfcache [skip ci]
+    - PR: fix(install): update docker docs link
+    - PR: Update dependency postcss to v8.5.19 (forgejo) -
+      autoclosed
+    - PR: Update module golang.org/x/crypto to v0.54.0 (forgejo)
+    - PR: chore(release-notes): Forgejo v16.0.0 [skip ci]
+    - PR: chore(release): v11 is EoL (on 2026-07-16) [skip ci]
+    - PR: chore(tests): TestPackageContainer verifies Web UI
+      template rendering
+    - PR: add forgejo_runtime_token to actions context
+    - PR: Update module code.forgejo.org/forgejo/runner/v12 to
+      v12.13.0 (forgejo)
+    - PR: chore(release-notes): Forgejo v15.0.5 [skip ci]
+    - PR: Update module github.com/klauspost/compress to v1.19.0
+      (forgejo)
+    - PR: Update module github.com/buildkite/terminal-to-html/v3 to
+      v3.17.1 (forgejo)
+    - PR: chore(tests): make testData in
+      routers/api/v1/permissions/tests easier to understand
+    - PR: Update dependency webpack-cli to v7.2.1 (forgejo)
+    - PR: Update module code.forgejo.org/go-chi/captcha to v1.0.3
+      (forgejo)
+    - PR: Update dependency svgo to v4.0.2 (forgejo)
+    - PR: Update dependency postcss to v8.5.17 (forgejo)
+    - PR: Update dependency mermaid to v11.16.0 (forgejo)
+    - PR: Update dependency asciinema-player to v3.17.0 (forgejo) -
+      autoclosed
+    - PR: Update module github.com/go-openapi/spec to v0.22.6
+      (forgejo)
+    - PR: Update module github.com/yuin/goldmark to v1.8.4
+      (forgejo)
+    - PR: Update module github.com/mattn/go-sqlite3 to v1.14.48
+      (forgejo)
+    - PR: chore: improve VSCodium config
+    - PR: Update module github.com/go-chi/chi/v5 to v5.3.1
+      (forgejo) - autoclosed
+    - PR: Update dependency vue-chartjs to v5.3.4 (forgejo)
+    - PR: add forgejo_default_actions_url to actions context
+    - PR: Update dependency tom-select to v2.6.2 (forgejo) -
+      autoclosed
+    - PR: Update dependency webpack to v5.108.4 (forgejo)
+    - PR: Update renovate Docker tag to v43.260.2 (forgejo)
+    - PR: Update CodeMirror (forgejo)
+    - PR: chore: have stylelint lint CSS in tmpl files to enforce
+      RTL-friendly logical properties
+    - PR: federation: protect against SSRF attacks
+    - PR: activitypub: restrict HTTP redirects
+    - PR: fix(ui): allow dragging up for a multi-line comment
+    - PR: REQUIRE_SIGNIN_VIEW caches setting before setting
+      initialization
+    - PR: intermittent test failure in process cancellation
+    - PR: ignore migrated commit without a patch
+    - PR: add extraLinesCount to reply template
+    - PR: Update data.forgejo.org/forgejo/forgejo Docker tag to
+      v11.0.16 (forgejo)
+    - PR: Test skip-to behavior for regression testing
+    - PR: Update github.com/google/pprof digest to e2ebcbe
+      (forgejo) - autoclosed
+    - PR: Update dependency clippie to v4.2.1 (forgejo)
+    - PR: Update module github.com/redis/go-redis/v9 to v9.21.0
+      (forgejo)
+    - PR: chore(release-notes): Forgejo v15.0.4 [skip ci]
+    - PR: chore(release-notes): Forgejo v11.0.16 [skip ci]
+    - PR: don't cache write permission on first pushed git
+      reference
+    - PR: chore(renovate): enable go toolchain patch updates
+    - PR: Update go toolchain directive to v1.26.5 (forgejo)
+    - PR: chore: fix build after #13338 merge caused compile error
+    - PR: tests: minioClient web proxy
+    - PR: enh(ui): give hint about .profile repo for advanced
+      customization and verification links
+    - PR: chore(refactor): clarify REST API permissions tests
+    - PR: cascade deletion of a user to their authorized
+      integrations
+    - PR: Update https://data.forgejo.org/actions/checkout action
+      to v7 (forgejo)
+    - PR: Update dependency postcss to v8.5.16 (forgejo)
+    - PR: Update https://data.forgejo.org/actions/setup-go action
+      to v6.5.0 (forgejo)
+    - PR: chore: improve CompareDiff
+    - PR: Update dependency @codemirror/view to v6.43.4 (forgejo)
+    - PR: chore: add permissions.Context methods to
+      lint-single-response
+    - PR: Update dependency webpack to v5.108.1 (forgejo)
+    - PR: Update actions/cache (forgejo)
+    - PR: 12975: Fix HTMX attributes in watch, star, and
+      notification buttons
+    - PR: chore(documentation): explain the purpose of
+      routers/api/v1/permissions
+    - PR: build: enable go toolchain download on docker images
+    - PR: chore(docs): update test instructions in
+      routers/api/v1/permissions/tests
+    - PR: chore(refactor): remove GetX redundant accessors and use
+      X in services/context/api.go
+    - PR: Update dependency swagger-ui-dist to v5.32.8 (forgejo)
+    - PR: Update module github.com/caddyserver/certmagic to v0.25.4
+      (forgejo)
+    - PR: chore(coverage): split integration coverage targets in
+      two
+    - PR: ensure runners either belong to owner or repo when
+      updated
+    - PR: Update https://data.forgejo.org/actions/cache action to
+      v6 (forgejo)
+    - PR: Update dependency tom-select to v2.6.1 (forgejo)
+    - PR: chore: fix compile errors from merge of #13151
+    - PR: Update
+      https://data.forgejo.org/forgejo/forgejo-build-publish action
+      to v5.7.3 (forgejo)
+    - PR: chore(refactor): add getter/setter to APIContext data
+      members
+    - PR: Update dependency asciinema-player to v3.16.0 (forgejo)
+    - PR: add internal APIs for reactions notifications
+    - PR: Update dependency license-checker-rseidelsohn to v5
+      (forgejo)
+    - PR: restore Forgejo's capability to build on non-Linux UNIX
+      platforms
+    - PR: fix(ci): allow for empty redis passwords in the
+      coverage.yml workflow
+    - PR: Update CodeMirror (forgejo)
+    - PR: Update dependency webpack-cli to v7.1.0 (forgejo)
+    - PR: chore(nilnil lint): resolve low-hanging fruit nilnil lint
+      violations
+    - PR: Update dependency esbuild-loader to v4.5.0 (forgejo)
+    - PR: prevent server error when multiple runners fetch same job
+      concurrently on MariaDB 11.8+
+    - PR: chore(services/actions/{trust,context}.go): increase
+      coverage of mustGetIssuePoster and enable nilnil lint
+    - PR: Update module github.com/mattn/go-sqlite3 to v1.14.47
+      (forgejo)
+    - PR: chore: run renovate on v16 branch
+    - PR: Update dependency globals to v17.7.0 (forgejo)
+    - PR: Update renovate Docker tag to v43.247.0 (forgejo)
+    - Already announced in the release notes of an older stable
+      release
+    - PR (backported): fix: deleting a user w/ repo-specific access
+      tokens or authorized integrations causes foreign-key
+      violation
+    - PR: Users with only read permission on a repository
+      (including unauthenticated callers on public repositories)
+      could retrieve the metadata and the full contents of
+      attachments belonging to draft releases, even though draft
+      releases are hidden from them. The GetReleaseAttachment API
+      endpoint and the web attachment download route
+      (ServeAttachment) did not check whether the release is a
+      draft, while GetRelease and ListReleaseAttachments already
+      do. This is the same class of issue fixed upstream by Gitea
+      in CVE-2026-27660 and GHSA-q9pg-jj6x-j9p6.
+    - PR: 2026-10-12 security patches
+    - PR: 2026-09-17 security patches
+    - PR: 2026-09-10 security patches
+    - PR: permit basic auth w/ authorized integration to access
+      PyPI packages
+    - PR: automerge PRs don't merge when originating from other
+      user's fork repos
+    - PR: only disable scheduled workflows if persistent parsing
+      errors occur
+    - PR: fix(ui): hashbox alignment
+    - PR: adjust checks for Arch Linux package names and versions
+      corresponding to specs
+    - PR: PATCH /orgs/{org} responds with 200 but discards
+      visibility public
+    - PR: PATCH /orgs/{org} would reset all unset attributes to
+      their default values
+    - PR: prevent rollback of git commits during push mirror
+      operations
+    - PR: webhook(matrix): fix stateKey collision swallowing
+      messages
+    - PR: organization team set as 'admin' is granted 'owner'
+      permission over related repositories
+    - PR: centralize recalculation of 'access' table, fix
+      restricted user inconsistencies
+    - PR: fix(quota): avoid double-counting package blobs
+    - PR: show job logs if there are any
+    - PR: fix(ui): fix hashbox design in commit based review
+    - PR: codepaths where git repos are not closed correctly, may
+      relate to leaking git cat-file --batch[-check] commands
+    - PR: Add title and org name to org project header
+    - PR: send 401 responses when accessing endpoints that don't
+      support session auth
+    - PR: bad quoting in hook scripts allow word splitting, leading
+      to hook script errors
+    - PR: fix(api): mark fields for issue dependencies/blocks as
+      required
+    - PR: fix(package/pypi): response header based on PEP691
+    - PR: fix(conda): parse null dependencies as empty array
+    - PR: error when replying to comments on removed lines-of-code
+      in review
+    - PR: prevent panic by returning error if dbfs file does not
+      exist
+    - PR: do not read past the last line when formatting zoekt
+      search results
+    - PR: adopt repositories from user settings
+    - PR: exclude deleted artifacts when calculating storage
+      consumption
+    - PR: fix(api): unblock fall-through to urlencoded names in
+      wiki
+    - PR: expire task logs even if there is no log file
+    - PR: trigger Actions for original commits
+    - PR: prevent Actions trigger pull_request from drifting
+    - PR: use HTML link for pull request webhook
+    - PR: bump minimum version to use git-replay on
+    - PR: add CGNAT (100.64.0.0/10) to 'private' hostmatcher rule
+    - PR: only look for jobs in repositories where Actions are
+      enabled
+    - PR: prevent stuck runner jobs when FetchTask performance is
+      slower than client-side timeout
+    - PR: multiple session middlewares have independent in-memory
+      state
+    - PR: allow OAuth access tokens to access LFS endpoints
+    - PR: enable reverse-proxy authentication on git routes
+    - PR: Initialize oauth2 only if enabled
+    - PR: fix oauth2: Initialize gothic even if oauth2 is disabled
+    - PR: suppress git subcommand errors caused by context
+      cancellation involving SIGTERM
+    - PR: fix(ui): be able to edit a comment if attachment is
+      disabled
+    - PR: query the correct form for wiki editing
+    - PR: make assignment of projects to issues consistent
+    - PR: fix(ui): use rtl alignment for options dropdown in
+      actions list
+    - PR: corrected listener for integrated ACME when using IPv6
+    - PR: honor format="duration" on
+    - PR: detect schedules after merge if merged branch remains
+    - PR: don't terminate subprocesses when SSH connection is
+      closed (internal SSH)
+    - PR: fix(api): return empty slice instead of null from the
+      branches API if the repository is empty
+    - PR: stop condition for github issue pagination
+    - PR: fix(ui): fix markdown editor monospace preference in
+      pages with multiple editors
+    - PR: only expand recognized variables when generating repo
+    - PR: ensure migrations allow/deny host lists are applied to
+      onedev, pagure, and codebase migrators
+    - PR: archiver: also check valid commit ids for existence
+    - PR: Update swift package registry to use the metadata schema
+      from the official Swift docs
+
+-------------------------------------------------------------------
 Tue Oct 13 01:14:52 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 16.0.6:
