@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 00:36:49 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Add "Provides: ansible = %{version}", so that collection packages
+  requiring "ansible >= N" (ansible-linux-system-roles, ansible-sap-*)
+  can be installed together with this versioned package
+
+-------------------------------------------------------------------
 Thu Dec 11 08:14:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 11.13.0:

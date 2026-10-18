@@ -23,4 +23,12 @@
     <comment>update to 11.13.0</comment>
     <requestid>1322166</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6baeb2b4b008baed594da854eb3cc0e5</srcmd5>
+    <version>11.13.0</version>
+    <time>1792344325</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385823</requestid>
+  </revision>
 </revisionlist>

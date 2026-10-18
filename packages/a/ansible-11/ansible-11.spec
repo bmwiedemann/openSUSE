@@ -68,6 +68,8 @@ Requires:       (ansible-core >= %{required_ansible_core_version} with ansible-c
 # Conflicts with lower or higher ansible major versions
 Conflicts:      ansible < %{ansible_community_major_version}
 Conflicts:      ansible > %{ansible_community_major_version}
+# Satisfy collection packages requiring "ansible >= N"
+Provides:       ansible = %{version}
 
 # Do not check any files in collections for requires
 %global __requires_exclude_from ^%{ansible_python_sitelib}/.*$
