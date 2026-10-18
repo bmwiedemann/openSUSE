@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Oct 18 15:22:57 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 103.0
+  New features and enhancements:
+  * mkvmerge: AVC/H.264: the stereo mode is now set from the
+    frame packing arrangement SEI message in the video stream if
+    neither the command line nor the container specifies one.
+    This works for MP4, Matroska, AVC elementary stream and MPEG
+    transport stream input and is already known during file
+    identification.
+  * mkvmerge: HEVC/H.265: the stereo mode is now set from the
+    frame packing arrangement SEI message in the video stream if
+    neither the command line nor the container specifies one.
+    This works for MP4, Matroska, HEVC elementary stream and MPEG
+    transport stream input and is already known during file
+    identification.
+  * MKVToolNix GUI: multiplexer: added new actions to the tracks
+    context menu for enabling/disabling all items belonging to
+    the same source file as the selected item.
+  Bug fixes:
+  * mkvmerge: MP4 reader: fixed losing video frames at the end
+    of the file due to flushing the packetizers too early (when
+    the first track ends instead of only when all tracks in the
+    file have ended). Another byproduct is that `BlockDuration`
+    attributes aren't set for the last frame when they aren't
+    needed anymore.
+  * MKVToolNix GUI: multiplexer: when identification fails due
+    to an unrecognized or unsupported format, clicking the
+    "Cancel" button in the error dialog shown no longer locks
+    up the GUI in the state of "identification is still running",
+    which disabled most elements.
+  * MKVToolNix GUI: chapter editor: when adding chapters
+    mandatory elements set to their default values are removed in
+    the underlying data structures. This restores consistency to
+    how the chapter editor worked when copying values from the UI
+    into them for the selected chapter. The result is that those
+    elements won't show up in saved XML/Matroska files even if
+    they have never been selected in the UI.
+
+-------------------------------------------------------------------
 Mon Sep 14 15:30:53 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 102.0
