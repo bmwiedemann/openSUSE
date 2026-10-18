@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:24:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Use static python3-FOO runtime Requires: bare python-FOO
+  names are never translated without python_subpackages and left
+  the package uninstallable (declined SR 1378861)
+- Fix Summary style (capitalized, no trailing dot)
+
+-------------------------------------------------------------------
+Sun Sep 13 12:02:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Major update to version 3.1.0:
+  * requires securesystemslib >= 1.0, drops deprecated legacy
+    key arguments and legacy securesystemslib integration
+  * upstream removed the in-toto-keygen CLI, use standard
+    key formats with --signing-key/--verification-keys
+  * new --run-timeout and --inspection-timeout arguments
+  * CVE-2023-32076 (boo#1211293): fixed since 2.0.0, still fixed here
+- Drop stale BuildRequires (poetry, setuptools, wheel,
+  sphinx/recommonmark): hatchling build backend only
+- Run upstream test suite in %check, dedupe with %fdupes
+- Tighten %files to the in_toto module and dist-info
+
+-------------------------------------------------------------------
+Tue Jun 27 09:33:03 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to version 2.0.0
+  https://github.com/in-toto/in-toto/releases/tag/v2.0.0
+
+-------------------------------------------------------------------
 Wed Mar 23 13:48:27 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - update to version 1.2.0
