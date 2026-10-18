@@ -2125,4 +2125,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1383351</requestid>
   </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>727711dae3eed41f6283a6a85ab57bc5</srcmd5>
+    <version>3.4.7+git0.8872a2604</version>
+    <time>1792344374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.7+git0.8872a2604: (boo#1285046)</comment>
+    <requestid>1385959</requestid>
+  </revision>
 </revisionlist>

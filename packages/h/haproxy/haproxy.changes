@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Oct 14 14:19:11 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 3.4.7+git0.8872a2604: (boo#1285046)
+  * [RELEASE] Released version 3.4.7
+  * BUG/MAJOR: h1-htx: report an error on a too long chunk-size line (bsc#1285046)
+  * BUG/MAJOR: mux-h2: properly handle short reads on PING frames
+  * BUG/MINOR: cfgparse-global: only warn when "localpeer" is set together with -L
+  * REGTEST: ssl: require OpenSSL 1.1.1 for crt-list ciphersuites tests
+  * REGTESTS: http-messaging: Fix http_fail_cnt_body to succeed with small timeouts
+  * BUG/MEDIUM: mux-h1: only accept the H2 preface on the first request
+  * BUG/MINOR: http-fetch: don't report pseudo-headers in TCP mode
+  * BUG/MEDIUM: mux-h1: also release the embryonic stream when the error is empty
+  * BUG/MEDIUM: mux-h2: fix a possible crash on rxbuf allocation failure
+  * BUG/MEDIUM: mux-h2: report a dead rhttp connection in h2_wake()
+  * BUG/MEDIUM: mux-h1: don't pass an upgraded connection to traces in h1s_destroy()
+  * BUG/MEDIUM: mux-fcgi: don't return a freed tasklet from fcgi_deferred_shut()
+  * BUG/MEDIUM: mux-h2: don't return a freed tasklet from h2_deferred_shut()
+  * BUG/MINOR: hlua: assume proxy_find_by_id() may return NULL on previously existing server
+  * BUG/MINOR: spoe: Fix the message list splice with an empty list
+  * REGTESTS: log: check that a log-forward TCP session ends on client close
+  * BUG/MEDIUM: log: do not ignore the peer's shutdown in the syslog applet
+  * REGTESTS: cli: test a command line of exactly tune.bufsize bytes
+  * BUG/MEDIUM: cli: fix the last command detection on a full command line
+  * BUG/MINOR: cfgparse-listen: complete the list of options for the suggestions
+  * BUG/MINOR: proxy: also look for the closest option among cfg_opts3
+  * BUG/MINOR: cfgparse-listen: properly reject extra args in a backend section
+  * BUG/MINOR: cfgparse-listen: fix quoting of the condition conflict warning
+  * BUG/MINOR: cfgparse-listen: fix the argument checked by "email-alert"
+  * BUG/MINOR: cfgparse-listen: release the previous description of the proxy
+  * BUG/MINOR: cfgparse-global: add missing calloc() check for the global description
+  * BUG/MINOR: cfgparse-global: add missing gotos to error label in max-spread-checks
+  * BUG/MAJOR: cfgparse: properly check userlist section when scanning keywords
+  * MINOR: doc: elaborate on diagnostic mode behavior
+  * BUG/MINOR: ssl: Fix potential NULL-deref in "dump ssl cert" with AWS-LC
+  * BUG/MINOR: h3: reject RS/SS for QPACK uni streams
+  * BUG/MINOR: h3: close connection on GOAWAY frame too long
+  * BUG/MINOR: h3: reject frames with truncated header
+  * BUG/MINOR: mux_quic: extend FINAL_SIZE_ERROR detection on stream
+  * BUG/MINOR: ssl: use standard names for X25519 and X448 groups
+  * BUG/MEDIUM: listener: Consider maxconn before waking listeners
+  * BUG/MEDIUM: ssl: crt-list curves ignored with AWS-LC
+  * BUG/MEDIUM: ssl: crt-list ciphers ignored with AWS-LC
+  * BUG/MINOR: ssl: fix trace crash on BE conn release in io cb
+  * BUG/MINOR: ssl: fix trace crash on FE conn release in io cb
+  * BUG/MINOR: hq-interop: prevent double EOM on request with standalone FIN
+  * BUG/MINOR: log: fix erroneous error message in log-steps parser
+  * MINOR: http-ana: automatically enable http-no-delay for streaming events (SSE)
+  * BUG/MINOR: cli: update wait help usage
+  * BUG/MINOR: server: fix "del server" description
+  * BUG/MINOR: proxy: add PR_CAP_LB for dynamically added backend
+  * DOC: config: mention that url_ip and url_port fail when passed a name
+  * DOC: config: fix doc for hex2i() converter on unparsable input
+  * DOC: config: mention other responses not blocked by option checkcache
+  * BUG/MINOR: sample: return the decoded JWT part when no path is given
+  * BUG/MEDIUM: tcpcheck: do not run a regex on an unallocated buffer
+  * BUG/MINOR: http-fetch: do not count Set-Cookie attributes as cookies
+  * BUG/MINOR: payload: always report a boolean from req.ssl_ec_ext
+  * BUG/MINOR: stick-table: do not count the lookup itself in table_trackers()
+  * BUG/MINOR: http-ana: return a 502 when checkcache blocks a response
+  * BUG/MINOR: sample: make quic_enabled() always succeed
+  * BUG/MINOR: sample: zero-pad the fractional part emitted by http_date()
+  * BUG/MINOR: sample: apply the ms_/us_ time offsets in the input unit
+  * BUG/MINOR: http: do not consume the delimiter of a truncated q-factor
+  * BUG/MINOR: jwe: Avoid buffer overflow in fake cek (RSA1.5)
+  * BUG/MINOR: jwe: Buffer overflow when filling fake cek in case of RSA1.5
+  * BUG/MEDIUM: pattern: don't dereference static_pattern's data when not filling it
+  * BUG/MEDIUM: stick-table: restrict key sizes to what fits in a buffer
+  * MINOR: stick-table: calculate the on-wire size of each key
+  * MINOR: stick-table: provide a function to estimate on-wire data size
+  * BUILD: haring: fix compile issue due to nop warning.
+  * MINOR: stconn: prefer to replace endpoints rather than detaching them
+  * BUG/MINOR: flt-http-comp: Rely on htx_set_eom() to restore EOM flag
+  * BUG/MEDIUM: flt-http-comp: Block HTX_FL_EOM flag till the end of compression
+  * MINOR: quic: implement the AEAD integrity limit
+
+-------------------------------------------------------------------
 Thu Oct 01 15:49:07 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.3.0+git2.b031728:
