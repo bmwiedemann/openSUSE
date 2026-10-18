@@ -19,10 +19,10 @@
 
 %bcond_with test
 Name:           waylyrics
-Version:        0.4.0
+Version:        0.4.6
 Release:        0
 Summary:        The furry way to show desktop lyrics
-License:        GPL-3.0-or-later AND MIT AND MPL-2.0
+License:        GPL-2.0-or-later AND MIT AND MPL-2.0
 URL:            https://github.com/waylyrics/waylyrics
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -42,8 +42,8 @@ The furry way to show desktop lyrics, and simple universal desktop lyrics made w
 
 %prep
 %autosetup -a1 -p0
-# fix trait GTK for macro @implements
-sed -i -E 's/gtk::Accessible, //g' src/app/search_window/mod.rs src/app/window/mod.rs
+# gtk4-rs 0.11.5 requires gtk::Accessible in @implements (removed again
+# would break the build); only the Buildable path still needs fixing
 sed -i -E 's/gtk4::Buildable/gtk::Buildable/g' src/app/search_window/mod.rs src/app/window/mod.rs
 
 %build
