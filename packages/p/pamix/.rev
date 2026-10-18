@@ -16,4 +16,24 @@
 </comment>
     <requestid>560952</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>326657073f7312668e42ec1e1d8a9c37</srcmd5>
+    <version>2.1</version>
+    <time>1792344180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1:
+  * Complete rewrite in C (was C++); build now only needs a C
+    compiler
+  * Tab cycling between views; arrow keys in the default config;
+    25 ms escape delay so cursor keys no longer freeze the UI
+  * Handle terminal resize, fix background drawing and reject
+    bindings of unknown commands with an error
+  * Fix volume under/overflow in add-volume and a crash on empty
+    port lists; check the port index before printing
+- Add pamix-install-man-to-man1.patch to install the man page
+  into the man1 subdir
+- Drop gcc-c++ BuildRequires: No longer needed nor used.
+</comment>
+    <requestid>1385672</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:05:32 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 2.1:
+  * Complete rewrite in C (was C++); build now only needs a C
+    compiler
+  * Tab cycling between views; arrow keys in the default config;
+    25 ms escape delay so cursor keys no longer freeze the UI
+  * Handle terminal resize, fix background drawing and reject
+    bindings of unknown commands with an error
+  * Fix volume under/overflow in add-volume and a crash on empty
+    port lists; check the port index before printing
+- Add pamix-install-man-to-man1.patch to install the man page
+  into the man1 subdir
+- Drop gcc-c++ BuildRequires: No longer needed nor used.
+
+-------------------------------------------------------------------
 Mon Jan  1 06:42:50 UTC 2018 - avindra@opensuse.org
 
 - PAmix -> pamix (lowercase per factory rules)

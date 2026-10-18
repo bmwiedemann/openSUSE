@@ -1,0 +1,8 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,5 +19,5 @@
+ add_executable(pamix ${pamix_SRC})
+ install(FILES pamix.conf DESTINATION /etc/xdg)
+ install(TARGETS pamix DESTINATION bin)
+-install(FILES man/pamix.1 TYPE MAN)
++install(FILES man/pamix.1 DESTINATION share/man/man1)
