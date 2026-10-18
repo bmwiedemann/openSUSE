@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 12:32:10 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 3.5.20
+  * This release fixes CVE-2026-94287.  For more information, see the advisory:
+    https://lists.x.org/archives/xorg-announce/2026-October/003752.html
+- supersedes the following patches
+  * 0001-boo1281669_CVE-2026-94287_ParsePixels-reject-zero-dimension-XPM-images.patch
+  * 0001-Fix-CVE-2026-4367-Out-of-bounds-read-in-xpmNextWord.patch
+
+-------------------------------------------------------------------
 Wed Sep 23 20:46:07 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - 0001-boo1281669_CVE-2026-94287_ParsePixels-reject-zero-dimension-XPM-images.patch

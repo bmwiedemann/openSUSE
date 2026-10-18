@@ -284,4 +284,17 @@
     (boo#1281669, CVE-2026-94287)</comment>
     <requestid>1380040</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>036fe0eb031a15d6c730ea042b4a674c</srcmd5>
+    <version>3.5.20</version>
+    <time>1792344149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.20
+  * This release fixes CVE-2026-94287.  For more information, see the advisory:
+    https://lists.x.org/archives/xorg-announce/2026-October/003752.html
+- supersedes the following patches
+  * 0001-boo1281669_CVE-2026-94287_ParsePixels-reject-zero-dimension-XPM-images.patch
+  * 0001-Fix-CVE-2026-4367-Out-of-bounds-read-in-xpmNextWord.patch</comment>
+    <requestid>1385479</requestid>
+  </revision>
 </revisionlist>
