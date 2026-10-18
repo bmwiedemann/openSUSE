@@ -1,0 +1,25 @@
+From 2d3a187be524b41449fb6b9fdf928158d3d6f3cd Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Mon, 12 Oct 2026 12:03:26 +0200
+Subject: [PATCH] Fix build on 32bit archs
+
+---
+ sources/shiboken6_generator/ApiExtractor/typesystemparser.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sources/shiboken6_generator/ApiExtractor/typesystemparser.cpp b/sources/shiboken6_generator/ApiExtractor/typesystemparser.cpp
+index 4356a43..e5377e0 100644
+--- a/sources/shiboken6_generator/ApiExtractor/typesystemparser.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/typesystemparser.cpp
+@@ -197,7 +197,7 @@ struct EnumLookup
+     EnumType value;
+ };
+ 
+-template <Qt::CaseSensitivity cs, class EnumType, long unsigned N>
++template <Qt::CaseSensitivity cs, class EnumType, std::size_t N>
+ static std::optional<EnumType>
+     lookupEnum(const std::array<EnumLookup<EnumType>, N> &haystack, QStringView needle)
+ {
+-- 
+2.55.0
+

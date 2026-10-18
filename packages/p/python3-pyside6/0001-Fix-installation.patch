@@ -1,4 +1,4 @@
-From 50ee387c948a0464c902c09a737d3e3787959e84 Mon Sep 17 00:00:00 2001
+From 18c48e953361aa4ce902245513eb453bc7b553d3 Mon Sep 17 00:00:00 2001
 From: Christophe Marin <christophe@krop.fr>
 Date: Tue, 7 Oct 2025 15:54:32 +0200
 Subject: [PATCH] Fix installation
@@ -6,13 +6,13 @@ Subject: [PATCH] Fix installation
 Upstream decided to install files in non-standard locations.
 ---
  sources/pyside6/CMakeLists.txt                       | 2 +-
- sources/pyside6/libpyside/CMakeLists.txt             | 2 +-
- sources/shiboken6/libshiboken/CMakeLists.txt         | 2 +-
+ sources/pyside6/libpyside/CMakeLists.txt             | 4 ++--
+ sources/shiboken6/libshiboken/CMakeLists.txt         | 4 ++--
  sources/shiboken6_generator/generator/CMakeLists.txt | 4 ++--
- 4 files changed, 5 insertions(+), 5 deletions(-)
+ 4 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/sources/pyside6/CMakeLists.txt b/sources/pyside6/CMakeLists.txt
-index bfe3956..b3f9946 100644
+index bf5a060..3a36acb 100644
 --- a/sources/pyside6/CMakeLists.txt
 +++ b/sources/pyside6/CMakeLists.txt
 @@ -40,7 +40,7 @@ install(EXPORT PySide6Targets
@@ -25,11 +25,15 @@ index bfe3956..b3f9946 100644
  endif()
  
 diff --git a/sources/pyside6/libpyside/CMakeLists.txt b/sources/pyside6/libpyside/CMakeLists.txt
-index ea3c304..8456dbc 100644
+index 7e5b126..7b29f05 100644
 --- a/sources/pyside6/libpyside/CMakeLists.txt
 +++ b/sources/pyside6/libpyside/CMakeLists.txt
-@@ -210,7 +210,7 @@ if(NOT is_pyside6_superproject_build)
-                             RUNTIME DESTINATION "PySide6")
+@@ -221,10 +221,10 @@ if(NOT is_pyside6_superproject_build)
+                             LIBRARY DESTINATION "PySide6"
+                             ARCHIVE DESTINATION "PySide6"
+                             RUNTIME DESTINATION "PySide6"
+-                            INCLUDES DESTINATION "PySide6/include/PySide6")
++                            INCLUDES DESTINATION "include/PySide6")
  
      install(FILES "${CMAKE_CURRENT_BINARY_DIR}/wheel/PySide6Config${SHIBOKEN_PYTHON_CONFIG_SUFFIX}.cmake"
 -            DESTINATION "${LIB_INSTALL_DIR}/wheels/cmake/PySide6")
@@ -38,10 +42,15 @@ index ea3c304..8456dbc 100644
  
  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/pyside6${pyside6_SUFFIX}.pc"
 diff --git a/sources/shiboken6/libshiboken/CMakeLists.txt b/sources/shiboken6/libshiboken/CMakeLists.txt
-index c3fc499..9ae5577 100644
+index 75950e5..712a30e 100644
 --- a/sources/shiboken6/libshiboken/CMakeLists.txt
 +++ b/sources/shiboken6/libshiboken/CMakeLists.txt
-@@ -224,6 +224,6 @@ if(NOT is_pyside6_superproject_build)
+@@ -246,10 +246,10 @@ if(NOT is_pyside6_superproject_build)
+             LIBRARY DESTINATION "shiboken6"
+             ARCHIVE DESTINATION "shiboken6"
+             RUNTIME DESTINATION "shiboken6"
+-            INCLUDES DESTINATION "shiboken6/include/shiboken6")
++            INCLUDES DESTINATION "include/shiboken6")
  
      install(EXPORT Shiboken6WheelTargets
              NAMESPACE Shiboken6::
@@ -50,10 +59,10 @@ index c3fc499..9ae5577 100644
              FILE Shiboken6Targets.cmake)
  endif()
 diff --git a/sources/shiboken6_generator/generator/CMakeLists.txt b/sources/shiboken6_generator/generator/CMakeLists.txt
-index 33bb413..fd2a9f3 100644
+index f994408..eaac290 100644
 --- a/sources/shiboken6_generator/generator/CMakeLists.txt
 +++ b/sources/shiboken6_generator/generator/CMakeLists.txt
-@@ -72,11 +72,11 @@ install(EXPORT "${package_name}Targets"
+@@ -70,11 +70,11 @@ install(EXPORT "${package_name}Targets"
  if(NOT is_pyside6_superproject_build)
      install(TARGETS shiboken6
              EXPORT "${package_name}WheelTargets"
@@ -68,5 +77,5 @@ index 33bb413..fd2a9f3 100644
  endif()
  
 -- 
-2.54.0
+2.55.0
 

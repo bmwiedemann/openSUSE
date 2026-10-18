@@ -17,7 +17,7 @@
 
 
 %define tar_name pyside-setup-everywhere-src
-%define tar_version 6.11.2
+%define tar_version 6.12.0
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -29,21 +29,15 @@ BuildRequires:  no-build-without-multibuild-flavor
 ExclusiveArch:  donotbuild
 %else
 %global pyside_flavor %flavor
-%if 0%{suse_version} > 1500
 # This builds only for the primary python flavor, it provides the python3 flavor
 %define pythons %{primary_python}
-%else
-# This only works with the SLE15 python module for a more modern python than 3.6.
-# The build will stay unresolvable for regular python3 = 3.6
-%{?sle15_python_module_pythons}
-%endif
 %define mypython %pythons
 %define __mypython %{expand:%%__%{mypython}}
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.11.2
+Version:        6.12.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        (GPL-2.0-only AND (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-3.0-only WITH Qt-GPL-exception-1.0) OR LGPL-3.0-only
@@ -52,11 +46,9 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Revert-Modify-headers-installation-for-CMake-builds.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-installation.patch
-# PATCH-FIX-OPENSUSE -- add elaborated type for clang 22
-Patch21:        0011-QNativeInterface-QX11Application-display-type.patch
+Patch1:         0001-Fix-installation.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0001-Fix-build-on-32bit-archs.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  %{mypython}-Sphinx
@@ -183,16 +175,17 @@ BuildRequires:  cmake(Qt6UiToolsPrivate) >= %{version}
 BuildRequires:  cmake(Qt6WebChannel) >= %{version}
 BuildRequires:  cmake(Qt6WebChannelPrivate) >= %{version}
 %ifarch x86_64 %{x86_64} aarch64 riscv64
-BuildRequires:  cmake(Qt6Pdf) >= %{version}
-BuildRequires:  cmake(Qt6PdfPrivate) >= %{version}
-BuildRequires:  cmake(Qt6PdfWidgets) >= %{version}
-BuildRequires:  cmake(Qt6PdfWidgetsPrivate) >= %{version}
-BuildRequires:  cmake(Qt6WebEngineCore) >= %{version}
-BuildRequires:  cmake(Qt6WebEngineCorePrivate) >= %{version}
-BuildRequires:  cmake(Qt6WebEngineQuick) >= %{version}
-BuildRequires:  cmake(Qt6WebEngineQuickPrivate) >= %{version}
-BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{version}
-BuildRequires:  cmake(Qt6WebEngineWidgetsPrivate) >= %{version}
+# qtwebengine has a different version after Qt 6.12 release. Use unversioned Buildrequires
+BuildRequires:  cmake(Qt6Pdf)
+BuildRequires:  cmake(Qt6PdfPrivate)
+BuildRequires:  cmake(Qt6PdfWidgets)
+BuildRequires:  cmake(Qt6PdfWidgetsPrivate)
+BuildRequires:  cmake(Qt6WebEngineCore)
+BuildRequires:  cmake(Qt6WebEngineCorePrivate)
+BuildRequires:  cmake(Qt6WebEngineQuick)
+BuildRequires:  cmake(Qt6WebEngineQuickPrivate)
+BuildRequires:  cmake(Qt6WebEngineWidgets)
+BuildRequires:  cmake(Qt6WebEngineWidgetsPrivate)
 BuildRequires:  cmake(Qt6WebView) >= %{version}
 BuildRequires:  cmake(Qt6WebViewPrivate) >= %{version}
 BuildRequires:  cmake(Qt6WebViewQuick) >= %{version}
@@ -203,10 +196,8 @@ BuildRequires:  cmake(Qt6WebSocketsPrivate) >= %{version}
 # /SECTION
 Requires:       %{mypython}-shiboken6
 %endif
-%if 0%{?suse_version} > 1500
 Provides:       python3-%{pyside_flavor} = %{version}-%{release}
 Obsoletes:      python3-%{pyside_flavor} < %{version}-%{release}
-%endif
 
 %description
 Python bindings for the Qt cross-platform application and UI framework.
@@ -218,10 +209,8 @@ Requires:       %{name} = %{version}
 # Shiboken runs llvm-config to find Clang's built-in include directory
 Requires:       llvm%{_llvm_sonum}-devel
 %endif
-%if 0%{?suse_version} > 1500
 Provides:       python3-%{pyside_flavor}-devel = %{version}-%{release}
 Obsoletes:      python3-%{pyside_flavor}-devel < %{version}-%{release}
-%endif
 
 %description devel
 Python bindings for the Qt cross-platform application and UI framework
