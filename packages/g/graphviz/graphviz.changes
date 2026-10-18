@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  6 10:00:00 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Update to 16.1.0 (see /usr/share/doc/packages/graphviz/ChangeLog for full
+  Changelog)
+  * cgraph_soversion 8 -> 10
+  * xdot_soversion 4 -> 5
+  **Breaking**: The `agmemconcat` function has been removed.
+  **Breaking**: Support for the undocumented `postaction` attribute has been
+    removed.
+  **Breaking**: The `gvmap` options `-g`, `-l`,  and `-p` have been removed.
+    Their functionality was never implemented and passing these had no effect.
+  **Breaking**: `xdot_linear_grad.n_stops` and `xdot_radial_grad.n_stops` are
+    now of type `unsigned`.
+
+-------------------------------------------------------------------
 Thu Jun 25 10:00:00 UTC 2026 - olaf@aepfle.de
 
 - Remove stale ocaml support, fix disable java support

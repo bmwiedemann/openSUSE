@@ -38,6 +38,7 @@
 %define gxx g++
 %define pyversion 3
 %define pyversion_nodot 3
+
 %endif
 %if "%{flavor}" == "addons"
 %define phpconf_dir %{_sysconfdir}/php%{php_version}/conf.d
@@ -51,16 +52,16 @@
 %endif
 %endif
 %define cdt_soversion 6
-%define cgraph_soversion 8
+%define cgraph_soversion 10
 %define gvc_soversion 7
 %define gvpr_soversion 2
 %define lab_gamut_soversion 1
 %define pathplan_soversion 4
-%define xdot_soversion 4
+%define xdot_soversion 5
 # Java is not in ring1.
 %bcond_with     graphviz_java
 Name:           graphviz%{psuffix}
-Version:        15.0.0
+Version:        16.1.0
 Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-2.0
