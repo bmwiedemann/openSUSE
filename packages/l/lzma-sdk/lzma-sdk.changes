@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:47:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 26.04
+  * Some bugs and vulnerabilities were fixed; upstream published
+    no CVE ids for this release.
+  * Multithreaded XZ decoder no longer multiplies into a possible
+    overflow when checking the memory-use limit.
+
+-------------------------------------------------------------------
 Sat Sep 12 14:20:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to release 26.03

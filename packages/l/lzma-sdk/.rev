@@ -282,4 +282,12 @@
     <comment>- Update to release 26.03</comment>
     <requestid>1377589</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5b69d817ea589f84474b0b5e4adf113f</srcmd5>
+    <version>26.04</version>
+    <time>1792344189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 26.04</comment>
+    <requestid>1385695</requestid>
+  </revision>
 </revisionlist>
