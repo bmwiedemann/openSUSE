@@ -667,4 +667,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
   * 0002-CVE-2026-33186-containerd-google.golang.org-grpc-aut.patch</comment>
     <requestid>1361077</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>944dc292f3c0aac8aaa9b2d5f1fabe8b</srcmd5>
+    <version>2.3.3</version>
+    <time>1792344140</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1381592</requestid>
+  </revision>
 </revisionlist>

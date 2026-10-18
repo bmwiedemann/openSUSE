@@ -23,14 +23,14 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version e8b1a9bc270f9952197c470b8bad573b03a3a608
-%define git_short   e8b1a9bc2
+%define git_version aad11006b869517fcd3009450b6f82da282e1a9b
+%define git_short   aad11006b
 
 %global provider_prefix github.com/containerd/containerd
-%global import_path %{provider_prefix}
+%global import_path %{provider_prefix}/v2
 
 Name:           containerd
-Version:        1.7.33
+Version:        2.3.3
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
@@ -41,12 +41,9 @@ Source1:        %{name}-rpmlintrc
 Source2:        %{name}.service
 # UPSTREAM: Revert <https://github.com/containerd/containerd/pull/7933> to fix build on SLE-12.
 Patch1:         0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
-Patch2:         0002-CVE-2026-33186-containerd-google.golang.org-grpc-aut.patch
-Patch4:         0004-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch
-Patch5:         0005-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.26
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  libbtrfs-devel >= 3.8
@@ -106,9 +103,6 @@ reference the following Go import paths: github.com/containerd/containerd
 %if 0%{?sle_version} == 120000
 %patch -P 1 -p1
 %endif
-%patch -P 2 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
 
 %build
 %goprep %{import_path}
@@ -183,6 +177,7 @@ mv %{buildroot}/%{_mandir}/man8/{ctr.8,%{name}-ctr.8}
 %license LICENSE
 %dir %{go_contribsrcdir}/github.com
 %dir %{go_contribsrcdir}/github.com/containerd
+%dir %{go_contribsrcdir}/%{provider_prefix}
 %{go_contribsrcdir}/%{import_path}
 
 %changelog

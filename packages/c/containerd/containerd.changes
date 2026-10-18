@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Jul 31 10:31:22 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to containerd v2.3.3, a major version upgrade from 1.7.33:
+  * https://github.com/containerd/containerd/releases/tag/v2.3.3
+
+- Bump minimum Go version to 1.26, required by upstream go.mod (go 1.26.3)
+
+- Update Go import path to github.com/containerd/containerd/v2 to match
+  the module path change in containerd 2.x, and own the resulting
+  intermediate go_contribsrcdir directory in the devel package
+
+- Drop 0002-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch and
+  0003-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch: both
+  fixes are already included upstream in v2.3.3 (golang.org/x/net is
+  pinned to the fixed v0.55.0, and the required go 1.26.3 toolchain
+  carries the http2 stdlib fix)
+
+- Rebase patches:
+  * 0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
+
+-------------------------------------------------------------------
+Thu Jul 16 09:45:53 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Remove invalid patch
+  * 0002-CVE-2026-33186-containerd-google.golang.org-grpc-aut.patch
+
+- Add patches
+  * 0002-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch
+  * 0003-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
+
+- Drop patches
+  * 0004-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch
+  * 0005-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
+
+-------------------------------------------------------------------
 Mon Jun 22 10:50:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.33 (bsc#1262266, CVE-2026-35469,
