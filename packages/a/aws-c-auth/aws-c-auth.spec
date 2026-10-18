@@ -17,10 +17,10 @@
 
 
 %define library_version 1.0.0
-%define library_pkg 1_0_0
+%define library_pkg 1_0
 %define library_soversion 1
 Name:           aws-c-auth
-Version:        0.10.5
+Version:        1.0.0
 Release:        0
 Summary:        AWS C99 library implementation of AWS client-side authentication
 License:        Apache-2.0
@@ -50,8 +50,8 @@ should be considered constant time.
 %package -n lib%{name}%{library_pkg}
 Summary:        Shared library files for aws-c-auth library
 Group:          Development/Libraries/C and C++
-Provides:       lib%{name}%{library_soversion} = %{version}
-Obsoletes:      lib%{name}%{library_soversion} <= %{version}
+Provides:       lib%{name}1_0_0 = %{version}
+Obsoletes:      lib%{name}1_0_0 < %{version}
 
 %description -n lib%{name}%{library_pkg}
 AWS C99 library implementation of AWS client-side authentication:
@@ -76,7 +76,8 @@ This package contains the development files.
 %build
 %define __builder ninja
 %cmake \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_PREFIX_PATH=%{_libdir}/cmake/aws-c-common/modules
 %make_jobs
 
 # Testsuite currently hangs
@@ -95,12 +96,14 @@ ln -s lib%{name}.so.%{library_version} %{buildroot}%{_libdir}/lib%{name}.so.%{li
 %files -n lib%{name}%{library_pkg}
 %doc README.md
 %license LICENSE
-%{_libdir}/*.so.%{library_soversion}
-%{_libdir}/*.so.%{library_version}
+%{_libdir}/lib%{name}.so.%{library_soversion}
+%{_libdir}/lib%{name}.so.%{library_version}
+%{_libdir}/lib%{name}.so.1.0
 
 %files devel
 %{_libdir}/cmake/%{name}/
-%{_libdir}/*.so
-%{_includedir}/*
+%{_libdir}/lib%{name}.so
+%dir %{_includedir}/aws/auth
+%{_includedir}/aws/auth/*
 
 %changelog

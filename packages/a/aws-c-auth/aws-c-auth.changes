@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:15:54 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.0.0
+  * Clean up docs by @azkrishpy in (#301)
+  * chore(release): add governance files by @azkrishpy in (#303)
+- Add Provides and Obsoletes for previous shared library version
+- Pass installation path of aws-c-common cmake modules in CMAKE_PREFIX_PATH
+- Prefer explicit path and filenames over wildcards in %files section
+
+-------------------------------------------------------------------
 Tue Aug 25 16:13:36 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.5
