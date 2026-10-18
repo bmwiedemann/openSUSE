@@ -304,4 +304,12 @@ checksums. Data only, no code or dependency change.</comment>
     <comment>Update python-comfyui-workflow-templates-core to 0.3.378</comment>
     <requestid>1385348</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c0f88ecec57412a630a7a1ce0a927526</srcmd5>
+    <version>0.3.380</version>
+    <time>1792356865</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.380</comment>
+    <requestid>1386030</requestid>
+  </revision>
 </revisionlist>

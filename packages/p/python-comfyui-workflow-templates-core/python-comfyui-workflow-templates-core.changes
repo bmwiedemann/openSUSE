@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 18 17:28:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.380: the manifest grows from 624 to 628
+  templates
+  * 0.3.379 adds four moss-image text-to-image templates (base
+    and standard, each with a bounding-box variant) and refreshes
+    the image_flux3_klein templates and the localized index files
+  * 0.3.380 carries follow-up fixes to those four moss-image
+    entries
+
+-------------------------------------------------------------------
 Sat Oct 17 06:17:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.378: the manifest still lists 624
