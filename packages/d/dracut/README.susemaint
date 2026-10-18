@@ -16,10 +16,11 @@ branch. Currently, these active maintenance branches are:
     - SL-Micro-6.0_Update   -> SL Micro 6.0
     - SL-Micro-6.1_Update   -> SL Micro 6.1
     - SLES-16.0_Update      -> SLES 16.0 and SL Micro 6.2 (both share the same code)
-    - SLFO_Main             -> SUSE Linux Framework One
+    - SLES-16.1_Update      -> SLES 16.1
 
 - https://github.com/openSUSE/dracut-ng
-    - SUSE/110              -> Tumbleweed
+    - SUSE/112              -> openSUSE Tumbleweed
+    - SLFO_Main             -> SUSE Linux Framework One
 
 Rules:
 

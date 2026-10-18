@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:53:06 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 112+suse.57.g23bbfee:
+  * test(FULL-SYSTEMD): remove unnecessary checks for openSUSE
+  * test: prefer test_marker_check over check_qemu_log
+  * fix: replace /boot/dracut with /var/lib/dracut/images in dracut-rpm-tmpfiles.conf
+
+-------------------------------------------------------------------
 Fri Oct 09 09:13:44 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 112+suse.54.g5c7a104:
