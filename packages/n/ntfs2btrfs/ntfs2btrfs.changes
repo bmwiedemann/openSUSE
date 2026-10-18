@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:33:52 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 20260810:
+  * Drop dependency on libfmt: code ported to C++23 modules
+  * Fix handling of large cluster sizes and checksum progress accounting
+  * Protect first megabyte of device; refuse cluster sizes over 1MB
+  * Fix infinite loop on empty mapping runs and add mapping bounds checks
+  * Image subvolume is now created readonly
+  * Build now requires CMake 3.28 and Ninja (C++23 modules)
+- Drop BuildRequires fmt-devel (no longer needed upstream)
+- Drop 0001-ntfs.h-include-memory.patch: adopted upstream
+
+-------------------------------------------------------------------
 Fri Nov  8 00:00:00 CET 2024 - dsterba@suse.cz
 
 - fix build problems

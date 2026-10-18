@@ -1,7 +1,7 @@
 #
 # spec file for package ntfs2btrfs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,22 @@
 #
 
 
+# C++23 modules need the Ninja generator (Unix Makefiles can't scan them)
+%define __builder ninja
 Name:           ntfs2btrfs
-Version:        20240115
+Version:        20260810
 Release:        0
 Summary:        In-place conversion tool from NTFS to BTRFS
 License:        GPL-2.0-only
 URL:            https://github.com/maharmstone/ntfs2btrfs
 Source:         https://github.com/maharmstone/ntfs2btrfs/archive/refs/tags/%{version}.tar.gz
-Patch1:         0001-ntfs.h-include-memory.patch
 BuildRequires:  cmake
-BuildRequires:  fmt-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libzstd-devel
-BuildRequires:  lzo-devel
-BuildRequires:  zlib-devel
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(lzo2)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Ntfs2btrfs is a tool which does in-place conversion of Microsoft's NTFS

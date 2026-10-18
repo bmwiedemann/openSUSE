@@ -31,4 +31,12 @@
     <comment>- fix build problems (forwarded request 1222610 from dsterba)</comment>
     <requestid>1222612</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d7d7eeb25d0973255b53380ef99bc6c8</srcmd5>
+    <version>20260810</version>
+    <time>1792344410</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385994</requestid>
+  </revision>
 </revisionlist>
