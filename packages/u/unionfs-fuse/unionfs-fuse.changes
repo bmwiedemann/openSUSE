@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:33:56 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 3.8:
+  * fix data corruption when copying files larger than 8 MiB
+    concurrently in cow mode
+  * fix "bad address" error when setting a debug file with
+    unionfsctl -p
+  * fix creating unix sockets on macos
+  * mount.unionfs helper no longer requires bash and accepts
+    multiple -o options
+
+-------------------------------------------------------------------
 Wed Dec 24 10:54:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.7:

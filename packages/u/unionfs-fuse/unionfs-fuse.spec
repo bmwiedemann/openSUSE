@@ -1,7 +1,7 @@
 #
 # spec file for package unionfs-fuse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           unionfs-fuse
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Userspace Unionfs File System
 License:        BSD-3-Clause
@@ -28,12 +28,8 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fuse3)
-Requires:       fuse3
-%if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(libattr)
-%else
-BuildRequires:  libattr-devel
-%endif
+Requires:       fuse3
 
 %description
 unionfs-fuse overlays several directory into one single mount point
