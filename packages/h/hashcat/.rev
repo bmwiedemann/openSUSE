@@ -105,4 +105,14 @@
     <comment>- Update to release 7.1.2</comment>
     <requestid>1301137</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ac262d87b346c1a9cab489ff42373255</srcmd5>
+    <version>7.1.2+git942</version>
+    <time>1792344292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot v7.1.2-942-gef3508ed8
+  * Addressed CVE-2026-68768 [boo#1276256],
+    CVE-2026-68767 [boo#1276255], CVE-2026-68766 [boo#1276254]</comment>
+    <requestid>1385721</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 16 09:41:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot v7.1.2-942-gef3508ed8
+  * Addressed CVE-2026-68768 [boo#1276256],
+    CVE-2026-68767 [boo#1276255], CVE-2026-68766 [boo#1276254]
+  * Feed plugins and attack-mode 8
+  * Probability-ordered PCFG and targeted hints in attack-mode 4
+  * Device-accelerated table attacks in attack-mode 5
+  * Wordlists inside masks with attack-mode 12
+  * Account-aware association in attack-mode 9
+  * Seekable wordlists and one cache location
+  * A brain server built for large sessions
+  * Rules in every attack-mode
+  * A Python bridge that uses every CPU thread
+- Rebase and rename system-libs.patch to cflags.patch
+
+-------------------------------------------------------------------
 Sun Aug 24 12:58:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.1.2

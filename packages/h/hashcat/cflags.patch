@@ -1,0 +1,51 @@
+---
+ src/Makefile |   12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+Index: hashcat-1d25df16cc46d67a2a8207ac285338bced263150/src/Makefile
+===================================================================
+--- hashcat-1d25df16cc46d67a2a8207ac285338bced263150.orig/src/Makefile
++++ hashcat-1d25df16cc46d67a2a8207ac285338bced263150/src/Makefile
+@@ -74,7 +74,7 @@ endif
+ ##
+ 
+ ifeq (,$(filter $(UNAME),Linux Darwin))
+-SHARED                  ?= 0
++SHARED                  ?= 1
+ else
+ SHARED                  ?= 1
+ endif
+@@ -321,12 +321,13 @@ VERSION_MAJOR           := $(firstword $
+ ##
+ 
+ DESTDIR                 ?=
+-PREFIX                  ?= /usr/local
++PREFIX                  ?= /usr
+ 
+ INSTALL_FOLDER          ?= $(PREFIX)/bin
+-SHARED_ROOT_FOLDER      ?= $(PREFIX)/share
++# why the f are you putting arch-dependent files in SHARED_FOLDER!
++SHARED_ROOT_FOLDER      ?= $(LIBRARY_FOLDER)
+ SHARED_FOLDER           ?= $(SHARED_ROOT_FOLDER)/hashcat
+-DOCUMENT_FOLDER         ?= $(SHARED_ROOT_FOLDER)/doc/hashcat
++DOCUMENT_FOLDER         ?= $(PREFIX)/share/doc/hashcat
+ LIBRARY_FOLDER          ?= $(PREFIX)/lib
+ LIBRARY_DEV_ROOT_FOLDER ?= $(PREFIX)/include
+ LIBRARY_DEV_FOLDER      ?= $(LIBRARY_DEV_ROOT_FOLDER)/hashcat
+@@ -557,6 +558,7 @@ endif
+ CFLAGS                  += $(CFLAGS_HOST_ONLY)
+ LFLAGS                  += $(LFLAGS_HOST_ONLY)
+ 
++CFLAGS += $(our_CFLAGS)
+ ifeq ($(PRODUCTION),0)
+ CFLAGS                  += -W
+ CFLAGS                  += -Wall
+@@ -575,7 +577,7 @@ ifeq ($(and $(filter MSYS2,$(UNAME)),$(f
+ CFLAGS                  += -fno-plt
+ endif
+ ifeq ($(and $(filter DragonFly,$(UNAME)),$(filter 1,$(CC_NATIVE_CLANG))),)
+-LFLAGS                  += -s
++LFLAGS                  +=
+ endif
+ endif
+ else
