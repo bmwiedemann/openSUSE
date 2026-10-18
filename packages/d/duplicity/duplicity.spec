@@ -26,7 +26,7 @@
 %define _python3_version %{?python311_version}
 %endif
 Name:           duplicity
-Version:        3.2.0.2
+Version:        3.2.2
 Release:        0
 Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later

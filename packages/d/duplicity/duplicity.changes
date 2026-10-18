@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:43:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.2.2:
+  * Privacy hardening: backend logs and error messages now sanitize
+    credentials and sensitive query parameters from URLs.
+  * New --ignore-mdc-error option restores legacy archives created
+    without GPG MDC on newer GPG versions.
+  * Backend stability: fixed exception handling and missing imports
+    across CloudFiles, Xorriso, JottaCloud, IMAP, MediaFire and Hubic
+    backends; more robust manifest and volume parsing.
+  * Quieter logging (temp file notices moved to Debug) and Python 3.15
+    support.
+- Changes from skipped version 3.2.1:
+  * Fixed hung GPG child processes on verify; restored the dedicated
+    gpginterface module.
+  * rsync backend creates remote subpaths on rsyncd daemons; uniform
+    error handling across Box, OneDrive, WebDAV, B2 and par2 backends.
+  * New flags: --check-remote, --files-changed, --print-statistics,
+    --compression/--encryption, --restore-ownership and --help-* topics.
+  * Deprecated CloudFiles, Pyrax and Hubic backends; Python 3.10+
+    required, test suite moved to pytest.
+
+-------------------------------------------------------------------
 Sat Sep 12 15:45:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.2.0.2:
