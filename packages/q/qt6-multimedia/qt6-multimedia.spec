@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.11.2
-%define short_version 6.11
+%define real_version 6.12.0
+%define short_version 6.12
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
 %define tar_suffix %{nil}
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((FrequencyMonitor|frequencymonitor|performancemonitor).*
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.11.2
+Version:        6.12.0
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-only
@@ -368,25 +368,31 @@ rm -r %{buildroot}%{_qt6_includedir}/QtFFmpegMediaPluginImpl
 %{_qt6_libdir}/libQt6MultimediaQuick.so.*
 
 %files -n qt6-multimediaquick-private-devel
+%{_qt6_cmakedir}/Qt6MultimediaQuick/
 %{_qt6_cmakedir}/Qt6MultimediaQuickPrivate/
-%{_qt6_descriptionsdir}/MultimediaQuickPrivate.json
+%{_qt6_descriptionsdir}/MultimediaQuick.json
 %{_qt6_includedir}/QtMultimediaQuick/
 %{_qt6_libdir}/libQt6MultimediaQuick.prl
 %{_qt6_libdir}/libQt6MultimediaQuick.so
-%{_qt6_metatypesdir}/qt6multimediaquickprivate_metatypes.json
+%{_qt6_metatypesdir}/qt6multimediaquick_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_multimediaquick.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_multimediaquick_private.pri
+%{_qt6_pkgconfigdir}/Qt6MultimediaQuick.pc
 
 %files -n libQt6Quick3DSpatialAudio6
 %{_qt6_libdir}/libQt6Quick3DSpatialAudio.so.*
 
 %files -n qt6-quick3dspatialaudio-private-devel
+%{_qt6_cmakedir}/Qt6Quick3DSpatialAudio/
 %{_qt6_cmakedir}/Qt6Quick3DSpatialAudioPrivate/
-%{_qt6_descriptionsdir}/Quick3DSpatialAudioPrivate.json
+%{_qt6_descriptionsdir}/Quick3DSpatialAudio.json
 %{_qt6_includedir}/QtQuick3DSpatialAudio/
 %{_qt6_libdir}/libQt6Quick3DSpatialAudio.prl
 %{_qt6_libdir}/libQt6Quick3DSpatialAudio.so
-%{_qt6_metatypesdir}/qt6quick3dspatialaudioprivate_metatypes.json
+%{_qt6_metatypesdir}/qt6quick3dspatialaudio_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_quick3dspatialaudio.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dspatialaudio_private.pri
+%{_qt6_pkgconfigdir}/Qt6Quick3DSpatialAudio.pc
 
 ### Static libraries ###
 
