@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Oct 18 08:38:52 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792312714.72310e70:
+  * Revert "chore(deps): bump @fortawesome/fontawesome-free from 6.7.2 to 7.3.1 (…"
+  * chore(deps): bump @fortawesome/fontawesome-free from 6.7.2 to 7.3.1 (#7963)
+
+-------------------------------------------------------------------
+Sat Oct 17 16:18:39 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792253904.15891dd2:
+  * chore(deps-dev): bump nanoid from 3.3.16 to 3.3.20 (#7962)
+
+-------------------------------------------------------------------
+Sat Oct 17 00:22:59 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792192473.2519a8cf:
+  * feat: Add prepare-node-env target for npm tools
+
+-------------------------------------------------------------------
+Fri Oct 16 21:54:22 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792179051.8cc81679:
+  * chore(deps-dev): bump stylelint-config-recommended-scss (#7360)
+  * chore(deps): bump robust-predicates from 3.0.2 to 3.0.3 (#7240)
+  * feat: Improve OVS health check for workers with `tap` class
+
+-------------------------------------------------------------------
 Fri Oct 16 17:44:24 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1792169851.d54cd4e4:
