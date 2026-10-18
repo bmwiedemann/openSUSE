@@ -1,13 +1,22 @@
-Index: Stockfish-sf_18/src/Makefile
+Index: Stockfish-sf_19/src/Makefile
 ===================================================================
---- Stockfish-sf_18.orig/src/Makefile
-+++ Stockfish-sf_18/src/Makefile
-@@ -972,20 +972,20 @@ ifneq ($(SUPPORTED_ARCH), true)
+--- Stockfish-sf_19.orig/src/Makefile	2026-09-05 10:02:59.000000000 +0200
++++ Stockfish-sf_19/src/Makefile	2026-10-18 11:19:02.741754910 +0200
+@@ -926,7 +926,7 @@
+ 	fi)
+ endef
+ 
+-ifneq ($(filter $(MAKECMDGOALS),help strip install clean net objclean profileclean format config-sanity),$(MAKECMDGOALS))
++ifneq ($(filter $(MAKECMDGOALS),help strip install clean objclean profileclean format config-sanity),$(MAKECMDGOALS))
+ _ := $(call cache_file_contents,$(BUILD_SHA_FILE),$(GIT_SHA))
+ _ := $(call cache_file_contents,$(BUILD_DATE_FILE),$(BUILD_DATE))
+ _ := $(call cache_file_contents,$(BUILD_DIFFINDEX_FILE),$(BUILD_DIFFINDEX))
+@@ -1086,21 +1086,21 @@
  endif
  
  
--.PHONY: help analyze build profile-build strip install clean net \
-+.PHONY: help analyze build profile-build strip install clean \
+-.PHONY: help analyze build profile-build macos-lipo strip install clean net \
++.PHONY: help analyze build profile-build macos-lipo strip install clean \
  	objclean profileclean config-sanity \
  	icx-profile-use icx-profile-make \
  	gcc-profile-use gcc-profile-make \
@@ -18,6 +27,7 @@ Index: Stockfish-sf_18/src/Makefile
 +analyze: config-sanity objclean
  	$(MAKE) -k ARCH=$(ARCH) COMP=$(COMP) $(OBJS)
  
+ ifeq ($(UNIVERSAL_BUILD),false)
 -build: net config-sanity
 +build: config-sanity
  	$(MAKE) ARCH=$(ARCH) COMP=$(COMP) all
@@ -27,7 +37,7 @@ Index: Stockfish-sf_18/src/Makefile
  	@echo ""
  	@echo "Step 1/4. Building instrumented executable ..."
  	$(MAKE) ARCH=$(ARCH) COMP=$(COMP) $(profile_make)
-@@ -1040,7 +1040,7 @@ format:
+@@ -1240,7 +1240,7 @@
  
  all: $(EXE) .depend
  
@@ -36,11 +46,12 @@ Index: Stockfish-sf_18/src/Makefile
  	@echo ""
  	@echo "Config:" && \
  	echo "debug: '$(debug)'" && \
-@@ -1159,6 +1159,6 @@ icx-profile-use:
+@@ -1364,7 +1364,7 @@
  .depend: $(SRCS)
  	-@$(CXX) $(DEPENDFLAGS) -MM $(SRCS) > $@ 2> /dev/null
  
 -ifeq (, $(filter $(MAKECMDGOALS), help strip install clean net objclean profileclean format config-sanity))
 +ifeq (, $(filter $(MAKECMDGOALS), help strip install clean objclean profileclean format config-sanity))
+ ifeq ($(UNIVERSAL_BUILD),false)
  -include .depend
  endif

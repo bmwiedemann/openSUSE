@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:20:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 19:
+  * Up to 44 Elo stronger than 18, winning more than three
+    times as many game pairs.
+  * Universal binaries that detect CPU features at runtime,
+    no manual AVX2/AVX-512 choice needed.
+  * New SFNNv16 network architecture with pawn-pair features;
+    the secondary small network is retired.
+  * Native RISC-V (RVV) and LoongArch (LSX/LASX) support,
+    1GB Linux huge pages, WebAssembly targets and overhauled
+    shared-memory implementation.
+  * Stricter validation of board positions, FEN strings and
+    UCI commands.
+- Replace NNUE nets nn-37f18f62d772.nnue and
+  nn-c288c895ea92.nnue with single net nn-1a298aa575a0.nnue.
+- Refresh date.patch and stockfish-remove-net.patch for the
+  new sources (net handling moved to universal-build targets).
+- Use %make_build and add explicit BuildRequires: make.
+
+-------------------------------------------------------------------
 Sun Feb  1 21:35:24 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 18:

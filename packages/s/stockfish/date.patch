@@ -1,8 +1,8 @@
-Index: Stockfish-sf_17/src/misc.cpp
+Index: Stockfish-sf_19/src/misc.cpp
 ===================================================================
---- Stockfish-sf_17.orig/src/misc.cpp
-+++ Stockfish-sf_17/src/misc.cpp
-@@ -131,15 +131,6 @@ std::string engine_info(bool to_uci) {
+--- Stockfish-sf_19.orig/src/misc.cpp	2026-09-05 10:02:59.000000000 +0200
++++ Stockfish-sf_19/src/misc.cpp	2026-10-18 11:18:47.928095346 +0200
+@@ -147,15 +147,6 @@
          ss << "-";
  #ifdef GIT_DATE
          ss << stringify(GIT_DATE);
@@ -17,4 +17,4 @@ Index: Stockfish-sf_17/src/misc.cpp
 -           << std::setw(2) << std::setfill('0') << day;
  #endif
  
-         ss << "-";
+ #ifdef GIT_DIFFINDEX

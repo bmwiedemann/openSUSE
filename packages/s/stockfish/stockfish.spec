@@ -16,19 +16,16 @@
 #
 
 
-# See evaluate.h > EvalFileDefaultName
-
-%define nnuenetS nn-37f18f62d772.nnue
-%define nnuenetB nn-c288c895ea92.nnue
+# See evaluate.h > EvalFileDefaultName (SFNNv16 single net)
+%define nnuenet nn-1a298aa575a0.nnue
 Name:           stockfish
-Version:        18
+Version:        19
 Release:        0
 Summary:        Chess engine
 License:        GPL-3.0-or-later
 URL:            https://stockfishchess.org
 Source0:        https://github.com/official-stockfish/Stockfish/archive/sf_%{version}.tar.gz#/Stockfish-sf_%{version}.tar.gz
-Source1:        https://tests.stockfishchess.org/api/nn/%{nnuenetS}
-Source2:        https://tests.stockfishchess.org/api/nn/%{nnuenetB}
+Source1:        https://tests.stockfishchess.org/api/nn/%{nnuenet}
 # steal some documentation from ubuntu
 Source10:       %{name}-interface.txt
 Source11:       %{name}.6-20091204230329-yljoyxocuxhxg1ot-76/%{name}.6
@@ -38,6 +35,7 @@ Patch0:         date.patch
 Patch1:         stockfish-remove-net.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
+BuildRequires:  make
 BuildRequires:  xz
 Recommends:     xboard
 Provides:       chess_backend
@@ -56,7 +54,6 @@ information about how to use Stockfish with your GUI.
 %prep
 %autosetup -p1 -n Stockfish-sf_%{version}
 cp %{SOURCE1} src/
-cp %{SOURCE2} src/
 cp -p %{SOURCE10} %{SOURCE11} .
 
 dos2unix %{name}-interface.txt
@@ -65,16 +62,16 @@ dos2unix Copying.txt
 %build
 cd src
 %ifarch x86_64
-make %{?_smp_mflags} build ARCH=x86-64
+%make_build build ARCH=x86-64
 %else
 %ifarch %{power_64}
-make %{?_smp_mflags} build ARCH=ppc-64
+%make_build build ARCH=ppc-64
 %else
 %ifarch armv7l armv7hl armv7hnl
-make %{?_smp_mflags} build ARCH=armv7
+%make_build build ARCH=armv7
 %else
 #ix86
-make %{?_smp_mflags} build ARCH=general-32
+%make_build build ARCH=general-32
 %endif
 %endif
 %endif
