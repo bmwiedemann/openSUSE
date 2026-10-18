@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 16 05:22:38 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Security fix for CVE-2026-89091 (bsc#1284847): path traversal in
+  ansible-galaxy collection install; a crafted collection tarball
+  could create directories or write files outside the collection
+  directory. Check directory members against the collection path and
+  normalise paths before the containment check. Backport of
+  gh#ansible/ansible#87660 (stable-2.20 gh#ansible/ansible#87668, commit 0eb9be1c).
+  * add ansible-core-CVE-2026-89091.patch
+
+-------------------------------------------------------------------
 Thu Oct  8 06:03:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.20.10:
