@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
-%bcond_without test
 %define skip_python39 1
+%bcond_without test
 %else
 %define psuffix %{nil}
 %bcond_with test
@@ -30,11 +30,9 @@
 %else
 %bcond_with libalternatives
 %endif
-
 %{?sle15_python_module_pythons}
-
 Name:           python-nbclient%{psuffix}
-Version:        0.10.4
+Version:        0.11.0
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
@@ -45,10 +43,10 @@ BuildRequires:  %{python_module hatchling >= 1.10.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jupyter-client >= 6.1.12
-Requires:       python-nbformat >= 5.1.3
-Requires:       python-traitlets >= 5.4
-Requires:       ((python-jupyter-core >= 4.12 with python-jupyter-core < 5) or python-jupyter-core >= 5.1)
+Requires:       python-jupyter-client >= 7.0.0
+Requires:       python-jupyter-core >= 5.4.0
+Requires:       python-nbformat >= 5.2.0
+Requires:       python-traitlets >= 5.13
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
