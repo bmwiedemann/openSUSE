@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 16 05:22:38 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Security fix for CVE-2026-89091 (bsc#1284847): path traversal in
+  ansible-galaxy collection install; a crafted collection tarball
+  could create directories or write files outside the collection
+  directory. Check directory members against the collection path and
+  normalise paths before the containment check. Backport of
+  gh#ansible/ansible#87660 (devel commit ed42c495 rebased onto 2.18.19,
+  as upstream closed the stable-2.18 backport gh#ansible/ansible#87670
+  unmerged).
+  * add ansible-core-CVE-2026-89091.patch
+- Fix test_Request username unit tests failing in %check on Python
+  3.13.16+, which includes the scheme in urllib password manager keys
+  (cpython#155694). Backport of gh#ansible/ansible#87486 (stable-2.18).
+  * add da910e7ffdb4005093f446f72001f7f700a60a53.patch
+
+-------------------------------------------------------------------
 Thu Sep 10 17:59:48 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Security fix for CVE-2026-16493 (bsc#1272369): argument injection in

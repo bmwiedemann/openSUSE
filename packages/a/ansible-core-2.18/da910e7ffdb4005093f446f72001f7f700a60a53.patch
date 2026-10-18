@@ -1,0 +1,50 @@
+From da910e7ffdb4005093f446f72001f7f700a60a53 Mon Sep 17 00:00:00 2001
+From: Matt Clay <matt@mystile.com>
+Date: Fri, 11 Sep 2026 15:59:50 -0700
+Subject: [PATCH] [stable-2.18] Update module_utils urls unit tests (#87483)
+ (#87486)
+
+Update the tests to work on newer Python versions which contain
+fixes for https://github.com/python/cpython/issues/155694.
+(cherry picked from commit 5ba4572)
+---
+ test/units/module_utils/urls/test_Request.py | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/test/units/module_utils/urls/test_Request.py b/test/units/module_utils/urls/test_Request.py
+index f5f0edeb9e1510..6fbf533fc4e075 100644
+--- a/test/units/module_utils/urls/test_Request.py
++++ b/test/units/module_utils/urls/test_Request.py
+@@ -192,7 +192,15 @@ def test_Request_open_username(urlopen_mock, install_opener_mock):
+         if isinstance(handler, expected_handlers):
+             found_handlers.append(handler)
+     assert len(found_handlers) == 2
+-    assert found_handlers[0].passwd.passwd[None] == {(('ansible.com', '/'),): ('user', None)}
++
++    expected = ('user', None)
++    result = found_handlers[0].passwd.passwd[None]
++
++    assert (
++        # see https://github.com/python/cpython/issues/155694
++        result == {(('ansible.com', '/'),): expected} or  # before fix
++        result == {((None, 'ansible.com', '/'),): expected}  # after fix
++    )
+ 
+ 
+ @pytest.mark.parametrize('url, expected', (
+@@ -215,7 +223,14 @@ def test_Request_open_username_in_url(url, expected, urlopen_mock, install_opene
+     for handler in handlers:
+         if isinstance(handler, expected_handlers):
+             found_handlers.append(handler)
+-    assert found_handlers[0].passwd.passwd[None] == {(('ansible.com', '/'),): expected}
++
++    result = found_handlers[0].passwd.passwd[None]
++
++    assert (
++        # see https://github.com/python/cpython/issues/155694
++        result == {(('ansible.com', '/'),): expected} or  # before fix
++        result == {((None, 'ansible.com', '/'),): expected}  # after fix
++    )
+ 
+ 
+ def test_Request_open_username_force_basic(urlopen_mock, install_opener_mock):

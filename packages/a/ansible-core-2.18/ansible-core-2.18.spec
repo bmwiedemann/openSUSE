@@ -61,6 +61,10 @@ Patch2:         unarchive-test-fix.patch
 Patch3:         suse-distribution-fix.patch
 # CVE-2026-16493 (bsc#1272369)
 Patch4:         ansible-core-CVE-2026-16493.patch
+# CVE-2026-89091 (bsc#1284847)
+Patch5:         ansible-core-CVE-2026-89091.patch
+# PATCH-FIX-UPSTREAM fix urls unit tests on Python with the cpython#155694 fix (gh#ansible/ansible#87486)
+Patch6:         https://github.com/ansible/ansible/commit/da910e7ffdb4005093f446f72001f7f700a60a53.patch
 BuildArch:      noarch
 
 Provides:       ansible-core = %{version}
