@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 18:19:17 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 2.1.5
+  * [AMD]
+    - [Zen] Fix XFR ratio rounding calculation from HSMP registers
+    - Adding the 400 Series (Gorgon Point)
+    - Adding the Ryzen 5 3501U and Ryzen 3 3100U processors (Picasso)
+    - Adding the Ryzen 5 7525U processor (Van Gogh / Laptop)
+    - Adding the AMD Ryzen 7 H 449 processor (Gorgon Point)
+
+-------------------------------------------------------------------
 Wed Sep  9 13:34:49 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix build for kernel-longterm (boo#1217824)
