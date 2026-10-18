@@ -1,7 +1,7 @@
 #
 # spec file for package dssim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,16 @@
 
 
 Name:           dssim
-Version:        3.2.3
+Version:        3.5.1
 Release:        0
 Summary:        This tool computes (dis)similarity between two (or more) PNG images
-License:        AGPL-3.0-only and (BSD-2-Clause AND AOMPL-1.0) and Apache-2.0 and BSD-2-Clause and (MIT or Apache2) and MIT and VP8 and MPL-2.0 and Apache-2.0 WITH LLVM-exception
-Group:          Productivity/Graphics/Other
+License:        AGPL-3.0-only AND Apache-2.0 AND BSD-3-Clause AND MIT AND Zlib
 URL:            https://kornel.ski/dssim
-Source:         https://github.com/pornel/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://static.crates.io/crates/%{name}/%{name}-%{version}.crate#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  rust >= 1.90
 
 %description
 This tool computes (dis)similarity between two PNG images using
@@ -39,10 +39,12 @@ mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
+# Upstream's release profile sets strip=true; keep DWARF for debuginfo packages.
+export CARGO_PROFILE_RELEASE_STRIP=none
 %{cargo_build}
 
 %install
-%{cargo_install}
+%cargo_install
 
 %files
 %license LICENSE

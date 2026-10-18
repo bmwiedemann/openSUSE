@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:59:09 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 3.5.1:
+  * Faster SSIM: separable 5-tap blur with fused multiply,
+    unrolled 3-channel combine and parallel cross-blur
+  * Deterministic ssim_maps ordering and score accumulation
+  * Improved async error handling in the CLI
+  * Fixed build under --no-default-features
+  * New optional cargo features for MozJPEG/WebP/AVIF input
+    (not enabled in this build)
+  * Upstream publishes 3.5.1 to crates.io only (no git tag), so
+    switch Source to the crates.io tarball
+  * CVE-2023-4863 (boo#1215349): dssim is not affected, WebP
+    support is an opt-in cargo feature this package does not
+    enable, so no libwebp code is linked into the binary
+- Re-derive the License tag from the re-vendored dependency
+  tree (AGPL-3.0-only AND Apache-2.0 AND BSD-3-Clause AND MIT
+  AND Zlib)
+- Spec cleanup: drop the Group tag, require rust >= 1.90 per
+  upstream rust-version, neutralize upstream strip=true so
+  debuginfo packages keep working
+
+-------------------------------------------------------------------
 Thu Sep 14 07:05:51 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update license based on the recent legaldb review 
