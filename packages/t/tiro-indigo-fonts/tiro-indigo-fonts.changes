@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:42:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.65:
+  * Bangla, Marathi and Sanskrit reworked with VOLT OpenType layout;
+    critical Telugu glyph-shape fixes
+  * Fix CFF blue-zone behaviour affecting display at some sizes
+  * Add encodings for Latin transcription diacritics U+1E38 and U+1E39
+- Switch to upstream fonts.zip release asset; drop obs_scm service
+- Drop obsolete Group tags
+
+-------------------------------------------------------------------
 Mon Apr  1 01:41:32 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
 
 - Use zstd instead of xz for compression

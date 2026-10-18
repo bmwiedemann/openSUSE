@@ -15,4 +15,12 @@
     <comment>- Use zstd instead of xz for compression</comment>
     <requestid>1163822</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>34298bb9e96a7d89d77a5bd59fde36f3</srcmd5>
+    <version>1.65</version>
+    <time>1792344190</time>
+    <user>dimstar_suse</user>
+    <comment>Update tiro-indigo-fonts to 1.65 (forwarded request 1385624 from pluskalm)</comment>
+    <requestid>1385702</requestid>
+  </revision>
 </revisionlist>

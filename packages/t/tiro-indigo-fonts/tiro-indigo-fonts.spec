@@ -1,7 +1,7 @@
 #
 # spec file for package tiro-indigo-fonts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           tiro-indigo-fonts
-Version:        1.52
+Version:        1.65
 Release:        0
 Summary:        Tiro Fonts for some of the major Indian writing systems
 License:        OFL-1.1
-Group:          System/X11/Fonts
 URL:            https://github.com/TiroTypeworks/Indigo
-Source0:        Indigo-%{version}.tar.zst
+Source0:        https://github.com/TiroTypeworks/Indigo/releases/download/v%{version}/fonts.zip#/Indigo-%{version}.zip
 BuildRequires:  fontpackages-devel
-BuildRequires:  zstd
+BuildRequires:  unzip
 Requires:       tiro-bangla-fonts
 Requires:       tiro-devahindi-fonts
 Requires:       tiro-devamarathi-fonts
@@ -44,7 +43,6 @@ but also made with the needs of today’s multiple print and screen media in min
 
 %package -n tiro-bangla-fonts
 Summary:        Tiro Bangla Fonts
-Group:          System/X11/Fonts
 %reconfigure_fonts_prereq
 
 %description -n tiro-bangla-fonts
@@ -55,7 +53,6 @@ multiple print and screen media in mind.
 
 %package -n tiro-devahindi-fonts
 Summary:        Tiro Devanagari Hindi Fonts
-Group:          System/X11/Fonts
 %reconfigure_fonts_prereq
 
 %description -n tiro-devahindi-fonts
@@ -66,7 +63,6 @@ multiple print and screen media in mind.
 
 %package -n tiro-devamarathi-fonts
 Summary:        Tiro Devanagari Marathi Fonts
-Group:          System/X11/Fonts
 %reconfigure_fonts_prereq
 
 %description -n tiro-devamarathi-fonts
@@ -77,7 +73,6 @@ multiple print and screen media in mind.
 
 %package -n tiro-devasanskrit-fonts
 Summary:        Tiro Devanagari Sanskrit Fonts
-Group:          System/X11/Fonts
 %reconfigure_fonts_prereq
 
 %description -n tiro-devasanskrit-fonts
@@ -88,7 +83,6 @@ multiple print and screen media in mind.
 
 %package -n tiro-gurmukhi-fonts
 Summary:        Tiro Gurmukhi Fonts
-Group:          System/X11/Fonts
 %reconfigure_fonts_prereq
 
 %description -n tiro-gurmukhi-fonts
@@ -99,7 +93,6 @@ multiple print and screen media in mind.
 
 %package -n tiro-kannada-fonts
 Summary:        Tiro Kannada Fonts
-Group:          System/X11/Fonts
 %reconfigure_fonts_prereq
 
 %description -n tiro-kannada-fonts
@@ -110,7 +103,6 @@ multiple print and screen media in mind.
 
 %package -n tiro-tamil-fonts
 Summary:        Tiro Tamil Fonts
-Group:          System/X11/Fonts
 %reconfigure_fonts_prereq
 
 %description -n tiro-tamil-fonts
@@ -121,7 +113,6 @@ multiple print and screen media in mind.
 
 %package -n tiro-telugu-fonts
 Summary:        Tiro Telugu Fonts
-Group:          System/X11/Fonts
 %reconfigure_fonts_prereq
 
 %description -n tiro-telugu-fonts
@@ -131,12 +122,12 @@ traditional literary publishing but also made with the needs of today’s
 multiple print and screen media in mind.
 
 %prep
-%autosetup -n Indigo-%{version}
+%autosetup -n fonts
 
 %build
 
 %install
-install -Dm 644 -t %{buildroot}%{_ttfontsdir} fonts/*/OTF/*.otf
+install -Dm 644 -t %{buildroot}%{_ttfontsdir} */OTF/*.otf
 
 %reconfigure_fonts_scriptlets -n tiro-bangla-fonts
 
@@ -160,49 +151,49 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} fonts/*/OTF/*.otf
 
 %files -n tiro-bangla-fonts
 %defattr(0644,root,root,755)
-%license fonts/OFL.txt
+%license OFL.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/TiroBangla-*.otf
 
 %files -n tiro-devahindi-fonts
 %defattr(0644,root,root,755)
-%license fonts/OFL.txt
+%license OFL.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/TiroDevaHindi-*.otf
 
 %files -n tiro-devamarathi-fonts
 %defattr(0644,root,root,755)
-%license fonts/OFL.txt
+%license OFL.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/TiroDevaMarathi-*.otf
 
 %files -n tiro-devasanskrit-fonts
 %defattr(0644,root,root,755)
-%license fonts/OFL.txt
+%license OFL.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/TiroDevaSanskrit-*.otf
 
 %files -n tiro-gurmukhi-fonts
 %defattr(0644,root,root,755)
-%license fonts/OFL.txt
+%license OFL.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/TiroGurmukhi-*.otf
 
 %files -n tiro-kannada-fonts
 %defattr(0644,root,root,755)
-%license fonts/OFL.txt
+%license OFL.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/TiroKannada-*.otf
 
 %files -n tiro-tamil-fonts
 %defattr(0644,root,root,755)
-%license fonts/OFL.txt
+%license OFL.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/TiroTamil-*.otf
 
 %files -n tiro-telugu-fonts
 %defattr(0644,root,root,755)
-%license fonts/OFL.txt
+%license OFL.txt
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/TiroTelugu-*.otf
 
