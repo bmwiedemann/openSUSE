@@ -16,12 +16,13 @@
 #
 
 Name:           legendary
-Version:        0.21.0
+Version:        0.21.1
 Release:        0
 Summary:        An Epic Games Launcher alternative
 License:        GPL-3.0-only
 URL:            https://github.com/legendary-gl/legendary.git
 Source:         %{name}-%{version}.tar.gz
+Patch0:         relax-uv-build-upper-bound.patch
 BuildRequires:  fdupes
 BuildRequires:  python3-build
 BuildRequires:  python3-installer

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 18 06:13:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.21.1 Lowlife (hotfix release)
+  * Smaller Linux binaries (~13 MiB -> ~3 MiB, dev dependencies excluded
+  from zipapp packaging)
+  * Restore Wrapper EXE support, fixing titles expecting
+  "EpicGamesLauncher.exe" as parent process (e.g. Rockstar titles)
+  * Fix launching third-party-launcher games (Ubisoft Connect / EA App)
+  from Flatpak or /usr installs with umu/Proton, incl. CWD for EA app
+  launches
+  * macOS: support symlinks used by some native games
+- Add relax-uv-build-upper-bound.patch: drop upstream's uv_build<0.12
+  build-system pin so the build uses the distro backend (0.13.x)
+
+-------------------------------------------------------------------
 Sat Aug 22 19:36:35 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to 0.21.0 - Lowlife

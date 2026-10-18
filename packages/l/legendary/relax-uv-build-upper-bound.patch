@@ -1,0 +1,15 @@
+Allow building with system uv_build >= 0.12 (e.g. 0.13.x in Factory):
+upstream pins build-system.requires to uv_build>=0.11.4,<0.12, which
+fails the PEP 517 dependency check under --no-isolation as soon as the
+distro ships a newer backend. The backend interface is stable, so drop
+the upper bound and use whatever the distro provides.
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["uv_build>=0.11.4,<0.12"]
++requires = ["uv_build>=0.11.4"]
+ build-backend = "uv_build"
+ 
+ [project]
