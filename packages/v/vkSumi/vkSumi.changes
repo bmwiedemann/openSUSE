@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:07:29 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 0.1.0:
+  * Update project version from 0.0.7 to 0.1.0 in meson.build.
+  * Refactor instance and device dispatch lookup handling in layer.cpp.
+  * Optimize queue presentation by using thread_local for semaphore tracking.
+  * Fix hijacked swapchain logic and wait semaphores handling in
+    QueuePresentKHR.
+  * Cleanup instance dispatch table lookups in extension enumeration and
+    GetInstanceProcAddr. 
+
+-------------------------------------------------------------------
 Tue Jun 30 23:32:25 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to v0.0.7:

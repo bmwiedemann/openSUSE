@@ -16,7 +16,7 @@
 #
 
 Name:           vkSumi
-Version:        0.0.7
+Version:        0.1.0
 Release:        0
 Summary:        Vulkan layer for runtime color grading on Linux
 License:        MIT

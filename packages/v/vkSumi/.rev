@@ -27,4 +27,19 @@ It is also one of the add-ons used in Goverlay that are missing in the distro.</
     %build/%install.</comment>
     <requestid>1362747</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6c47e4efafac03e9be116e401d437e5a</srcmd5>
+    <version>0.1.0</version>
+    <time>1792344194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.0:
+  * Update project version from 0.0.7 to 0.1.0 in meson.build.
+  * Refactor instance and device dispatch lookup handling in layer.cpp.
+  * Optimize queue presentation by using thread_local for semaphore tracking.
+  * Fix hijacked swapchain logic and wait semaphores handling in
+    QueuePresentKHR.
+  * Cleanup instance dispatch table lookups in extension enumeration and
+    GetInstanceProcAddr. </comment>
+    <requestid>1385708</requestid>
+  </revision>
 </revisionlist>
