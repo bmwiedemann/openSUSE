@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:16:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.2:
+  * Avoid float division rounding errors that caused center hopping
+  * Fix division by zero in latlon2zoom for zero latitude/longitude distance
+  * Floor tile origin for negative map-x so overlays stay aligned
+  * Fix insert_point double-free and hold the map until tile downloads
+    complete so finished callbacks cannot touch freed tile state
+  * Fix map redraw using width as height; show the drawing in examples
+  * Add optional (off by default) Glade catalog installation support
+  * Correctly support LFS
+  * Spec cleanup: drop obsolete Group tags, https URL, pkgconfig-style
+    build dependencies
+
+-------------------------------------------------------------------
 Mon Sep 14 10:37:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.1:

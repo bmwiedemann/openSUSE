@@ -18,22 +18,29 @@
 
 
 Name:           osm-gps-map
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        A Gtk+ Widget for Displaying OpenStreetMap tiles
 License:        GPL-2.0-or-later
-Group:          Productivity/Other
-URL:            http://nzjrs.github.io/osm-gps-map/
+URL:            https://nzjrs.github.io/osm-gps-map/
 Source0:        %{name}-%{version}.tar.xz
-
-BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
-BuildRequires:  gtk-doc
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  perl(Autom4te::C4che)
+BuildRequires:  perl(Autom4te::ChannelDefs)
+BuildRequires:  perl(Autom4te::Channels)
+BuildRequires:  perl(Autom4te::Config)
+BuildRequires:  perl(Autom4te::Configure_ac)
+BuildRequires:  perl(Autom4te::FileUtils)
+BuildRequires:  perl(Autom4te::General)
+BuildRequires:  perl(Autom4te::Getopt)
+BuildRequires:  perl(Autom4te::Request)
+BuildRequires:  perl(Autom4te::XFile)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libsoup-3.0)
 
 %description
@@ -46,7 +53,6 @@ Gtk+ and Maemo applications.
 
 %package -n libosmgpsmap-1_0-1
 Summary:        A Gtk+ Widget for Displaying OpenStreetMap tiles
-Group:          System/Libraries
 
 %description -n libosmgpsmap-1_0-1
 A Gtk+ widget (and Python bindings) that when given GPS co-ordinates, draws a GPS track,
@@ -58,7 +64,6 @@ Gtk+ and Maemo applications.
 
 %package -n typelib-1_0-OsmGpsMap-1_0
 Summary:        A Gtk+ Widget for Displaying OpenStreetMap tiles
-Group:          System/Libraries
 
 %description -n typelib-1_0-OsmGpsMap-1_0
 A Gtk+ widget (and Python bindings) that when given GPS co-ordinates, draws a GPS track,
@@ -70,7 +75,6 @@ Gtk+ and Maemo applications.
 
 %package -n libosmgpsmap-devel
 Summary:        A Gtk+ Widget for Displaying OpenStreetMap tiles - Development files
-Group:          Development/Languages/C and C++
 Requires:       libosmgpsmap-1_0-1 = %{version}
 Requires:       typelib-1_0-OsmGpsMap-1_0 = %{version}
 

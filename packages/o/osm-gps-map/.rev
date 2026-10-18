@@ -72,4 +72,12 @@
   + Fix unit test PixbufLoader failure.</comment>
     <requestid>1377867</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1ce3472a2087a1dad2f807a1a7330607</srcmd5>
+    <version>1.2.2</version>
+    <time>1792344197</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1385710</requestid>
+  </revision>
 </revisionlist>
