@@ -1,8 +1,8 @@
 #
-# spec file for package libkeyfinder
+# spec file for package keyfinder-cli
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 Ákos Szőts <akos+rpm@szots.dev>
+# Copyright (c) 2025-2026 Ákos Szőts <akos@szots.dev>
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           keyfinder-cli
-Version:        1.1.4
+Version:        1.2.0
 Release:        0
 Summary:        Utility to estimate the musical key of many different audio file formats
 License:        GPL-3.0-only
@@ -54,6 +54,6 @@ keyfinder-cli is a utility to estimate the musical key of many different audio f
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_mandir}/%{name}.1
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

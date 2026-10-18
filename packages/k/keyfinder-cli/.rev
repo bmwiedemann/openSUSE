@@ -7,4 +7,12 @@
     <comment>New package: keyfinder-cli. See https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/JKDOWS5IENTCFRLHDJOW27W4KZ3TLITT/ for details.</comment>
     <requestid>1337536</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f823c4f11df73ad36f3f7f26dac6a344</srcmd5>
+    <version>1.2.0</version>
+    <time>1792344177</time>
+    <user>dimstar_suse</user>
+    <comment>Update keyfinder-cli to 1.2.0</comment>
+    <requestid>1385620</requestid>
+  </revision>
 </revisionlist>
