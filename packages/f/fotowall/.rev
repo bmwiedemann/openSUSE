@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>811680</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5a58d6974b9625384b4b3d0f00798e87</srcmd5>
+    <version>1.1.4</version>
+    <time>1792344393</time>
+    <user>dimstar_suse</user>
+    <comment>Update fotowall to 1.1.4 (forwarded request 1385765 from pluskalm)</comment>
+    <requestid>1385982</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:55:39 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 1.1.4
+  * Project revival: Qt 6 support added (Qt 5 still supported),
+    CMake build system alongside qmake
+  * Undo/redo rework on QUndoStack with per-canvas command
+    stack, rotation and perspective support
+  * Fixed wordcloud generation and random number compatibility
+  * Fixed build with Qt 5.15 (qrand removal, deprecated API)
+  * Graceful handling of SIGINT/SIGTERM
+  * New and updated translations (Russian, Traditional Chinese,
+    Greek)
+- Packaging changes:
+  * Upstream moved to the fotowall organisation: update URL
+    and Source0 accordingly
+  * Drop patches adopted upstream:
+    fotowall-1.0-fix-build-against-qt-5.11.0.patch
+    0001-Fix-build-with-Qt-5.15.patch
+  * README.markdown renamed to README.md upstream
+  * Drop obsolete Group tag, add explicit gcc and make
+    BuildRequires
+
+-------------------------------------------------------------------
 Thu Jun  4 19:41:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with Qt 5.15:

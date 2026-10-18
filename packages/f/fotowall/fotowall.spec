@@ -1,7 +1,7 @@
 #
 # spec file for package fotowall
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2007-2014 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,15 @@
 
 
 Name:           fotowall
-Version:        1.0
+Version:        1.1.4
 Release:        0
 Summary:        A wallpaper generator
 # fotowall is GPL-2.0+, everything else regards 3rdparty modules
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND BSD-2-Clause
-Group:          Productivity/Graphics/Other
-URL:            https://www.enricoros.com/opensource/fotowall
-Source0:        https://github.com/enricoros/fotowall/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/enricoros/fotowall/issues/20
-Patch0:         fotowall-1.0-fix-build-against-qt-5.11.0.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-with-Qt-5.15.patch
+License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
+URL:            https://github.com/fotowall/fotowall
+Source0:        https://github.com/fotowall/fotowall/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
@@ -63,7 +60,7 @@ The interface offers functionality such as:
 %suse_update_desktop_file -r %{name} Graphics RasterGraphics
 
 %files
-%doc README.markdown
+%doc README.md
 %license GPL_V2
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
