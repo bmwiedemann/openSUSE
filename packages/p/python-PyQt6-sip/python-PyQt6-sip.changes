@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:02:11 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to ABI 13.13
+  * A new plugin API has been added. This allows bindings authors
+    to extend SIP, for example by adding new directives and
+    annotations.
+  * As a consequence all hard-coded support for PyQt has been
+    removed.
+  * see also python-sip6 package
+
+-------------------------------------------------------------------
 Sun Aug 30 10:20:27 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to ABI 13.12

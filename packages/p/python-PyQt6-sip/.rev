@@ -176,4 +176,19 @@
 </comment>
     <requestid>1374682</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9869a48c37fc8bd8f3de363353ac6078</srcmd5>
+    <version>13.13.0</version>
+    <time>1792344137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ABI 13.13
+  * A new plugin API has been added. This allows bindings authors
+    to extend SIP, for example by adding new directives and
+    annotations.
+  * As a consequence all hard-coded support for PyQt has been
+    removed.
+  * see also python-sip6 package
+</comment>
+    <requestid>1385949</requestid>
+  </revision>
 </revisionlist>
