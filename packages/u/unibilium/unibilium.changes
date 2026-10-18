@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 18 15:16:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.4:
+  * Add minimal Zig build scripts (compile and install lib)
+  * Fix and extend CMake build scripts
+  * Support terminfo files larger than 4K (#33)
+  * Align terminfo search logic with ncurses (#31)
+
+-------------------------------------------------------------------
 Wed Mar 26 21:03:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.1.2:
@@ -26,7 +35,7 @@ Fri Sep 11 21:09:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   - Makefile: use -Og with DEBUG=1 (#7)
   - unibi_from_mem: fix [clang-analyzer-deadcode.DeadStores] (#8)
   - Makefile: revisit regenerate-tests rule (#6)
-  - unibi_from_term: handle $TERMINFO as curses does #2 
+  - unibi_from_term: handle $TERMINFO as curses does #2
 
 -------------------------------------------------------------------
 Tue Mar 27 00:10:35 UTC 2018 - jengelh@inai.de

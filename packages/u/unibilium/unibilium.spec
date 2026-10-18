@@ -1,7 +1,7 @@
 #
 # spec file for package unibilium
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 4
 Name:           unibilium
-Version:        2.1.2
+Version:        2.1.4
 Release:        0
 Summary:        A terminfo parsing library
 License:        LGPL-3.0-or-later
