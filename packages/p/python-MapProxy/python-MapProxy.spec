@@ -22,15 +22,14 @@
 %else
 %{?sle15_python_module_pythons}
 %endif
-
+%bcond_without libalternatives
 Name:           python-MapProxy
-Version:        6.0.1
+Version:        7.0.0
 Release:        0
 Summary:        Proxy for geospatial data
 License:        Apache-2.0
-URL:            http://mapproxy.org/
-Group:          Development/Languages/Python
-Source0:        https://files.pythonhosted.org/packages/source/M/MapProxy/mapproxy-%{version}.tar.gz
+URL:            https://mapproxy.org/
+Source0:        https://files.pythonhosted.org/packages/source/m/mapproxy/mapproxy-%{version}.tar.gz
 # test files missing in the sdist
 Source1:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/system/fixture/cache.gpkg
 Source2:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/unit/polygons/polygons.geojson
@@ -38,44 +37,48 @@ Source3:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/tes
 Source4:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/schemas/ogcapi/ogcapi-tiles-1.bundled.json
 Source5:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/schemas/openapi/openapi-3.0.x.json
 Source99:       python-MapProxy-rpmlintrc
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION install_requires
-BuildRequires:  proj
 BuildRequires:  %{python_module Babel}
-BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module Pillow >= 11}
 BuildRequires:  %{python_module PyYAML >= 3.0}
 BuildRequires:  %{python_module Werkzeug < 4}
 BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module jsonschema >= 4}
 BuildRequires:  %{python_module lxml >= 6}
+BuildRequires:  %{python_module multiprocess}
 BuildRequires:  %{python_module pyproj >= 2}
 BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module shapely >= 2}
 BuildRequires:  gdal
 BuildRequires:  geos
-#/SECTION
-Requires:       proj
+BuildRequires:  proj
+Requires:       alts
 Requires:       gdal
 Requires:       geos
+#/SECTION
+Requires:       proj
 Requires:       python-Babel
-Requires:       python-Pillow
+Requires:       python-Pillow >= 11
 Requires:       python-PyYAML >= 3.0
 Requires:       python-Werkzeug < 4
 Requires:       python-jinja2
 Requires:       python-jsonschema >= 4
 Requires:       python-lxml >= 6
+Requires:       python-multiprocess
 Requires:       python-pyproj >= 2
 Requires:       python-python-dateutil
+Requires:       python-requests
 Requires:       python-shapely >= 2
 Provides:       python-mapproxy = %{version}-%{release}
 BuildArch:      noarch
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # SECTION test
 BuildRequires:  %{python_module Paste}
 BuildRequires:  %{python_module WebTest}
@@ -140,11 +143,9 @@ donttest="$donttest or TestMapServerCGI"
 donttest="$donttest or TestCGIClient"
 %pytest mapproxy -ra -k "not ($donttest)"
 
-%post
-%python_install_alternative mapproxy-seed mapproxy-util
-
-%postun
-%python_uninstall_alternative mapproxy-seed
+%pre
+%python_libalternatives_reset_alternative mapproxy-seed
+%python_libalternatives_reset_alternative mapproxy-util
 
 %files %{python_files}
 %doc CHANGES.txt README.md

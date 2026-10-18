@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:19:17 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 7.0.0:
+  * Breaking security fix: avoid path traversals through the
+    dimensions parameter. In rare cases, existing cache
+    directories will not be reused and are created anew with
+    safe directory names.
+  * Fix error with transparent PNGs in mixed format.
+  * Changes in 6.1.1: OGC API bug fixes, WMTS demo resolution
+    detection, ``ImageResult.as_buffer`` rgba mode, restore
+    context manager protocol on ``ProxyConfiguration``.
+  * Changes in 6.1.0: drop support for Python 3.9 (EOL);
+    add json GFI format, improved configuration validation,
+    reverse proxy improvements, environment variables in yaml
+    files for sensitive data; handle XML/HTML errors in GFI
+    requests leniently (log a warning, return safe empty
+    defaults); fix seeding worker crash on incomplete HTTP
+    responses, catch sqlite3.DatabaseErrors, retry LockFile
+    on race.
+  * Packaging: add new mandatory dependencies python-requests
+    and python-multiprocess; require Pillow >= 11; raise
+    Python floor to 3.10; switch from update-alternatives to
+    libalternatives.
+
+-------------------------------------------------------------------
 Sun Mar 15 10:44:14 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.0.1
