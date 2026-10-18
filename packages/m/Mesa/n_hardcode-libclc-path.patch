@@ -1,0 +1,41 @@
+libclc 23 removed libclc.pc, so we hardcode the path for now.
+
+diff --git a/meson.build b/meson.build
+index ee207a97e7a..72030fb67b5 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1048,17 +1048,6 @@ with_poly = [
+   with_kosmickrisp_vk,
+ ].contains(true)
+ 
+-dep_clc = null_dep
+-if with_gallium_rusticl or with_microsoft_clc
+-  dep_clc = dependency('mesa-libclc', required : false,
+-    not_found_message :
+-    'mesa-libclc not found. Build will fall back to upstream libclc, however ' +
+-    'this is not recommended for most use cases.')
+-  if not dep_clc.found()
+-    dep_clc = dependency('libclc')
+-  endif
+-endif
+-
+ with_gfx_compute = [
+   with_any_opengl,
+   with_any_vk,
+diff --git a/src/compiler/clc/meson.build b/src/compiler/clc/meson.build
+index 249fd31f478..e86da476cca 100644
+--- a/src/compiler/clc/meson.build
++++ b/src/compiler/clc/meson.build
+@@ -40,10 +40,10 @@ if not _shared_llvm or \
+   _libmesaclc_cpp_args += ['-DUSE_STATIC_OPENCL_C_H=1']
+ endif
+ 
+-if dep_clc.found()
++if true
+   files_libmesaclc += 'nir_load_libclc.c'
+ 
+-  _basedir = dep_clc.get_variable(pkgconfig : 'libexecdir')
++  _basedir = '/usr/share/clc'
+ 
+   _static_libclc = get_option('static-libclc')
+   if _static_libclc.length() > 0

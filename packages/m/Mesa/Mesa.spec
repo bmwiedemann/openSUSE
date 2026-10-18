@@ -151,9 +151,9 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.2.4
+Version:        26.2.5
 Release:        0
-%define pkg_version 26.2.4
+%define pkg_version 26.2.5
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
@@ -184,6 +184,10 @@ Source12:       README-suse-maintenance.md
 # download with 'osc service runall download_files'; github tarballs have different checksums!
 Source22:       http://static.crates.io/crates/rustc-hash/rustc-hash-%{_rustc_hash_crate_ver}.crate#/rustc-hash-%{_rustc_hash_crate_ver}.tar.gz
 Patch2:         n_add-Mesa-headers-again.patch
+Patch3:         n_hardcode-libclc-path.patch
+Patch4:         U_nir-load_libclc-do-not-compare-sys_path-against-NULL.patch
+Patch5:         U_nir-load_libclc-turn-sys_path-into-an-array.patch
+Patch6:         U_nir-load_libclc-add-llvm-23-libclc-paths.patch
 Patch17:        tlsdesc_test.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
@@ -615,11 +619,7 @@ programs against the GBM library.
 %package -n Mesa-libRusticlOpenCL
 Summary:        Mesa OpenCL implementation (Rusticl)
 Group:          System/Libraries
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
-Requires:       libclc(llvm%{_llvm_sonum})
-%else
 Requires:       libclc
-%endif
 
 %description -n Mesa-libRusticlOpenCL
 This package contains the Mesa Rust-written OpenCL implementation.
@@ -789,6 +789,10 @@ cp %{SOURCE22} subprojects/packagecache/
 %if %provide_gl_headers_for_mesa == 0
 %patch -P 2 -p1
 %endif
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
 %patch -P 17 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550

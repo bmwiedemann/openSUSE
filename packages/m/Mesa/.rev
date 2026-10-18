@@ -6933,4 +6933,23 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - require llvm23 also for sle16</comment>
     <requestid>1381925</requestid>
   </revision>
+  <revision rev="591" vrev="1">
+    <srcmd5>178509e5074830bb945e35ec001b50bb</srcmd5>
+    <version>26.2.5</version>
+    <time>1792356853</time>
+    <user>dimstar_suse</user>
+    <comment>- Mesa-libRusticlOpenCL: no longer require libclc(llvmN); see
+  changes during update of libclc to version 23.1.0 ...
+
+- Update to 26.2.5 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.2.5
+
+- Add n_hardcode-libclc-path.patch to work around missing libclc.pc
+  with libclc 23. Upstream might solve this via config option.
+- Downport upstream patches so that we find newer libclc files:
+  * U_nir-load_libclc-do-not-compare-sys_path-against-NULL.patch
+  * U_nir-load_libclc-turn-sys_path-into-an-array.patch
+  * U_nir-load_libclc-add-llvm-23-libclc-paths.patch</comment>
+    <requestid>1385476</requestid>
+  </revision>
 </revisionlist>

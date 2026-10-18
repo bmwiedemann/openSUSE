@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 17 11:56:57 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Mesa-libRusticlOpenCL: no longer require libclc(llvmN); see
+  changes during update of libclc to version 23.1.0 ...
+
+-------------------------------------------------------------------
+Fri Oct 16 07:41:39 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 26.2.5 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.2.5
+
+-------------------------------------------------------------------
+Thu Oct 15 21:10:24 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add n_hardcode-libclc-path.patch to work around missing libclc.pc
+  with libclc 23. Upstream might solve this via config option.
+- Downport upstream patches so that we find newer libclc files:
+  * U_nir-load_libclc-do-not-compare-sys_path-against-NULL.patch
+  * U_nir-load_libclc-turn-sys_path-into-an-array.patch
+  * U_nir-load_libclc-add-llvm-23-libclc-paths.patch
+
+-------------------------------------------------------------------
 Thu Oct  1 15:02:55 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 26.2.4 bugfix release
