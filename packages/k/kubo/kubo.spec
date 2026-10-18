@@ -88,7 +88,7 @@ go build -mod=vendor -buildmode=pie -trimpath \
             -X github.com/ipfs/kubo.taggedRelease=%{version}" \
   -v -o ./cmd/ipfs/ipfs ./cmd/ipfs
 
-%sysusers_generate_pre misc/systemd/ipfs-sysusers.conf ipfs ipfs.pre
+%sysusers_generate_pre misc/systemd/ipfs-sysusers.conf ipfs ipfs.conf
 
 %install
 mkdir -p %{buildroot}%{_bindir}

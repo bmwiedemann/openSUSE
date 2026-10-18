@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  8 13:33:15 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Fix sysusers pre-install scriptlet; systemd 261 requires a .conf
+  replacement path
+
+-------------------------------------------------------------------
 Mon Oct  5 17:56:11 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 0.43.1:
