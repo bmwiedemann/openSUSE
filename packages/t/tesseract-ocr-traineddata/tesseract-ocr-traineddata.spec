@@ -23,7 +23,6 @@ Summary:        Tesseract Traineddata for Various Languages
 License:        Apache-2.0
 URL:            https://github.com/tesseract-ocr
 Source0:        tessdata_fast-%{version}.tar.xz
-BuildRequires:  python3-packaging
 BuildArch:      noarch
 
 %description
@@ -36,12 +35,14 @@ These models only work with the LSTM OCR engine of Tesseract 4.
 Summary:        Documentation for %{name}
 
 %description    doc
-The %{name}-doc package contains the documentation for %{name}.
+The %{name}-doc package contains the documentation
+for %{name}.
 
 %package        osd
 Summary:        Orientation & Script Detection Data for tesseract
 Requires:       tesseract-ocr >= %{version}
 Provides:       tesseract-ocr-traineddata-orientation_and_script_detection = %{version}
+Provides:       tesseract-traineddata-orientation_and_script_detection = %{version}
 Obsoletes:      tesseract-ocr-traineddata-orientation_and_script_detection < 4
 Obsoletes:      tesseract-traineddata-orientation_and_script_detection <= 3.02
 BuildArch:      noarch
@@ -53,6 +54,7 @@ Orientation & Script Detection data for the Tesseract Open Source OCR Engine.
 Summary:        Orientation & Script Detection Data for tesseract
 Requires:       tesseract-ocr >= %{version}
 Provides:       tesseract-ocr-traineddata-math_equation = %{version}
+Provides:       tesseract-traineddata-math_equation = %{version}
 Obsoletes:      tesseract-ocr-traineddata-math_equation < 4
 Obsoletes:      tesseract-traineddata-math_equation <= 3.02
 BuildArch:      noarch
@@ -86,8 +88,9 @@ Provides:      locale(tesseract-ocr-common:%{langcode})\
 %endif\
 \
 %description   %{macrolang}\
-This package contains the fast integer version of the %{langname} language \
-trained models for the Tesseract Open Source OCR Engine.\
+This package contains the fast integer version of the\
+%{langname} language trained models for the Tesseract\
+Open Source OCR Engine.\
 \
 %files %{macrolang}\
 %dir %{_datadir}/tessdata\
@@ -107,8 +110,9 @@ BuildArch:     noarch\
 Requires:      tesseract-ocr >= %{version}\
 \
 %description   script-%{pkgname}\
-This package contains the fast integer version of the %{scriptname} script \
-trained models for the Tesseract Open Source OCR Engine.\
+This package contains the fast integer version of the\
+%{scriptname} script trained models for the Tesseract\
+Open Source OCR Engine.\
 \
 %files script-%{pkgname}\
 %dir %{_datadir}/tessdata/\

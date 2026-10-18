@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 16 11:05:56 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Remove unused BuildRequires: python3-packaging; nothing in the
+  spec uses Python and the built packages are unchanged
+- Rewrap the generated descriptions of the language, script and
+  doc subpackages so no line exceeds the length limit
+  (description-line-too-long)
+- Add the missing Provides for the pre-rename names
+  tesseract-traineddata-orientation_and_script_detection and
+  tesseract-traineddata-math_equation to the osd and equ
+  subpackages, matching the language subpackages
+  (obsolete-not-provided)
+
+-------------------------------------------------------------------
 Wed Feb 18 14:42:24 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Provide a common package name for all languages
