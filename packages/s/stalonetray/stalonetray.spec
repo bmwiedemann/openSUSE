@@ -1,7 +1,7 @@
 #
 # spec file for package stalonetray
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,24 @@
 
 
 Name:           stalonetray
-Version:        0.8.5
+Version:        1.5.0
 Release:        0
 Summary:        Stand-alone freedesktop.org system tray
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
-URL:            https://kolbusa.github.io/stalonetray/
-Source:         https://github.com/kolbusa/stalonetray/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fix-docbook-root.patch -- Fix docbook stylesheet root
-Patch0:         fix-docbook-root.patch
-BuildRequires:  automake
+URL:            https://github.com/d3adb5/stalonetray
+Source:         https://github.com/d3adb5/stalonetray/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE stalonetray-docbook-root.patch -- Look for the docbook stylesheet in the openSUSE location
+Patch0:         stalonetray-docbook-root.patch
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  gcc-c++
+BuildRequires:  gcc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
+BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xpm)
+BuildRequires:  pkgconfig(xrandr)
 
 %description
 Stalonetray is a stand-alone freedesktop.org and KDE system tray (notification
@@ -44,16 +46,19 @@ virtually any EWMH-compliant window manager.
 %autosetup -p1
 
 %build
-autoreconf -fi
-%configure
-%make_build stalonetrayrc.sample
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
+
+%check
+%meson_test
 
 %files
-%license COPYING
-%doc AUTHORS BUGS stalonetrayrc.sample
+%license LICENSE
+%doc AUTHORS README.md TODO stalonetrayrc.sample
+%config(noreplace) %{_sysconfdir}/stalonetrayrc
 %{_bindir}/stalonetray
 %{_mandir}/man1/stalonetray.1%{?ext_man}
 

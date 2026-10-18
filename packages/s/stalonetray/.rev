@@ -42,4 +42,12 @@
 - Update fix-docbook-root.patch</comment>
     <requestid>1094903</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1760ccb9c361c89e03e8ec274216593e</srcmd5>
+    <version>1.5.0</version>
+    <time>1792344201</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>1385711</requestid>
+  </revision>
 </revisionlist>

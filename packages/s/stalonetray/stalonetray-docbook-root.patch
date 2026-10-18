@@ -1,0 +1,10 @@
+--- a/generate-manpage.sh
++++ b/generate-manpage.sh
+@@ -31,6 +31,7 @@
+ done
+ 
+ for root in \
++    /usr/share/xml/docbook/stylesheet/nwalsh/current \
+     /usr/share/sgml/docbook/stylesheet/xsl/nwalsh \
+     /usr/share/xml/docbook/stylesheet/docbook-xs \
+     /usr/share/xml/docbook/stylesheet/docbook-xsl-nons \

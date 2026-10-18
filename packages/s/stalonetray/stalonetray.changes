@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:03:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.0 from the new d3adb5 upstream fork:
+  - Build system switched from autotools to meson
+  - New features: ignoring window classes; scrolling outside the tray;
+    drag-and-drop icon reordering with order kept across restarts;
+    reaction to monitor changes; live configuration reloading;
+    absolute tray positioning and virtual-display positioning;
+    slot_gap and slot_size settings
+  - Bug fixes: settings reloading logic; negative command line values;
+    XGetClassHint failures
+  - Packaging changes:
+    - Source URL moved to github.com/d3adb5/stalonetray
+    - Drop fix-docbook-root.patch (autotools gone); add
+      stalonetray-docbook-root.patch for the meson manpage build
+    - New BuildRequires: meson, pkgconfig(xinerama),
+      pkgconfig(xrandr), pkgconfig(cmocka); unit tests run in %check
+    - Sample configuration is now installed as
+      %{_sysconfdir}/stalonetrayrc
+
+-------------------------------------------------------------------
 Fri Jun 23 13:46:28 UTC 2023 - Petr Cervinka <petr@cervinka.net>
 
 - Update to version 0.8.5
@@ -66,4 +87,3 @@ Tue Apr 15 23:24:28 CEST 2008 - bwalle@suse.de
 
 - initial package
 
--------------------------------------------------------------------
