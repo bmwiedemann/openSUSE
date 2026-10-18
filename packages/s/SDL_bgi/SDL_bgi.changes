@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 18 14:06:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.4
+  * Added window scaling (requested by David Fileccia)
+  * PALETTE_SIZE hidden; use getpalettesize() instead
+    (compatibility)
+  * Added support for SDL3
+- Switch to SDL3 backend (avoid indirection through sdl2-compat)
+
+-------------------------------------------------------------------
 Thu Sep  5 17:03:17 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.0.2
