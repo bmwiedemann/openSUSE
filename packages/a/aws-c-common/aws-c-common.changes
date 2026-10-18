@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:17:46 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.3
+  * Uri secure cleanup by @rakshil14-2 in (#1286)
+- Define %{library_pkg} to define shared library name suffix
+
+-------------------------------------------------------------------
 Wed Oct  7 12:53:29 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.2

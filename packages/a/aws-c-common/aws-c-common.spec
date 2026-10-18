@@ -17,9 +17,10 @@
 
 
 %define library_version %{version}
+%define library_pkg 1_0
 %define library_soversion 1
 Name:           aws-c-common
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Core C99 package for AWS SDK for C
 License:        Apache-2.0
@@ -36,7 +37,7 @@ ExcludeArch:    s390x
 Core C99 package for AWS SDK for C. It includes cross-platform primitives,
 configuration, data structures, and error handling.
 
-%package -n lib%{name}%{library_soversion}_0
+%package -n lib%{name}%{library_pkg}
 Summary:        Core C99 package for AWS SDK for C
 Group:          System/Libraries
 Obsoletes:      lib%{name}1 < %{version}
@@ -50,7 +51,7 @@ This package contains the dynamically linked library.
 %package devel
 Summary:        Development files for aws-c-common library
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{library_soversion}_0 = %{version}
+Requires:       lib%{name}%{library_pkg} = %{version}
 
 %description devel
 Core C99 package for AWS SDK for C. It includes cross-platform primitives,
@@ -73,9 +74,9 @@ This package contains the development files.
 %check
 %ctest
 
-%ldconfig_scriptlets -n lib%{name}%{library_soversion}_0
+%ldconfig_scriptlets -n lib%{name}%{library_pkg}
 
-%files -n lib%{name}%{library_soversion}_0
+%files -n lib%{name}%{library_pkg}
 %doc NOTICE README.md
 %license LICENSE
 %{_libdir}/lib%{name}.so.%{library_soversion}.0
