@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-qt5-sip
-Version:        12.19.0
+Version:        12.20.0
 Release:        0
 Summary:        The sip module support for PyQt5
 License:        BSD-2-Clause
