@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.11.2
-%define short_version 6.11
+%define real_version 6.12.0
+%define short_version 6.12
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -33,7 +33,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.11.2
+Version:        6.12.0
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -186,7 +186,8 @@ EOF
 
 %if !%{qt6_docs_flavor}
 
-# .CMake files are not needed for plugins
+# CMake files are not needed for plugins
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Gui
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{AdditionalTargetInfo,Config,Targets}*.cmake
 
