@@ -1,7 +1,7 @@
 #
 # spec file for package cutmp3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,22 +18,19 @@
 
 
 Name:           cutmp3
-Version:        3.0.3
+Version:        4.0
 Release:        0
 Summary:        Command line based lossless MP3 editor
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://www.puchalla-online.de/cutmp3.html
 #Source:         https://www.puchalla-online.de/cutmp3-%%{version}.tar.bz2
 Source0:        https://github.com/tarjanm-movidius/cutmp3/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://www.puchalla-online.de/cutmp3-keys.pdf
 Source2:        https://www.puchalla-online.de/cutmp3-keys.jpg
 Source99:       %{name}-rpmlintrc
-# https://github.com/tarjanm-movidius/cutmp3/issues/2
-Patch0:        cutmp3-gcc15.patch
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(readline)
 Requires:       mpg123
 Obsoletes:      %{name}-kde3
 
@@ -46,9 +43,8 @@ as precise as with CBR files, though.
 
 %package doc
 Summary:        Documentation for %{name}
-Group:          Documentation/Other
-BuildArch:      noarch
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description doc
 This is a program to edit MP3 files without quality loss, using an
@@ -60,7 +56,9 @@ This package contains a user guide and a list of key bindings for %{name}
 %autosetup -p1
 
 %build
-%make_build CFLAGS="%{optflags}"
+# Upstream Makefile sets -DVERSION only via a target-specific CFLAGS+=,
+# which a command-line CFLAGS= discards — pass it explicitly.
+%make_build CFLAGS="%{optflags} -DVERSION=\"%{version}\""
 
 %install
 install -m 0755 -D cutmp3 "%{buildroot}%{_bindir}/cutmp3"
@@ -69,6 +67,7 @@ install -d "%{buildroot}%{_docdir}/%{name}"
 D="$PWD/main.doc.lst"
 echo -n >"$D"
 for f in BUGS USAGE README*; do
+    test -s "$f" || continue
     b="${f##*/}"
     install -m0644 "$f" "%{buildroot}%{_docdir}/%{name}/$b"
     echo "%doc %{_docdir}/%{name}/$b" >>"$D"
@@ -86,7 +85,7 @@ done
 %license COPYING
 %dir %doc %{_docdir}/%{name}
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files doc -f doc.doc.lst
 %dir %doc %{_docdir}/%{name}

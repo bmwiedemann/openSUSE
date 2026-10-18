@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:45:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.0:
+  * Optimised file copy
+  * Cleaner id3tag handling
+  * Option for linenoise instead of readline
+  * Skip first file frame that tends to hold meta information
+  * Fix signal handler prototypes (fixed upstream, drop
+    cutmp3-gcc15.patch)
+  * Drop the empty BUGS file from the docs (upstream ships it
+    zero-length)
+
+-------------------------------------------------------------------
 Mon Jun 30 12:57:25 UTC 2025 - pgajdos@suse.com
 
 - added patches
