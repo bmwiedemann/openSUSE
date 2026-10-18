@@ -1,38 +1,142 @@
 --- a/open-vm-tools/configure.ac
 +++ b/open-vm-tools/configure.ac
-@@ -738,11 +738,23 @@ AC_DEFUN([AC_VMW_CONTAINERINFO_MSG],[
+@@ -717,11 +717,80 @@
         fi
     done
     shared_prefix=$src_prefix/github.com
 -   AC_SUBST(TYPES_DIR, github.com/containerd/containerd/api/types)
 -   AC_SUBST(TASKS_PROTOPATH, $shared_prefix/containerd/containerd/api/services/tasks/v1)
-+
-+   vendor_sub_path=""
-+   vendor_search_str="import weak "
-+   vendor_replace_str="import "
-+   if test -d $shared_prefix/containerd/containerd/vendor/github.com/containerd/containerd/api; then
-+       vendor_sub_path=vendor/github.com/containerd/containerd
-+       vendor_search_str="import \"github.com\/containerd\/containerd\/api"
-+       vendor_replace_str="import \"github.com\/containerd\/containerd\/vendor\/github.com\/containerd\/containerd\/api"
-+   fi
-+   AC_SUBST(DEP_VENDOR_SEARCH_STR, $vendor_search_str)
-+   AC_SUBST(DEP_VENDOR_REPLACE_STR, $vendor_replace_str)
-+
-+   AC_SUBST(TYPES_DIR, github.com/containerd/containerd/$vendor_sub_path/api/types)
-+   AC_SUBST(TASKS_PROTOPATH, $shared_prefix/containerd/containerd/$vendor_sub_path/api/services/tasks/v1)
-    AC_SUBST(DEP_PROTOPATH, $src_prefix)
+-   AC_SUBST(DEP_PROTOPATH, $src_prefix)
 -   AC_SUBST(CONTAINERD_PROTOPATH, $shared_prefix/containerd/containerd/api/services/containers/v1)
 -   AC_SUBST(GOGO_PROTOPATH, $shared_prefix/gogo/protobuf)
-+   AC_SUBST(CONTAINERD_PROTOPATH, $shared_prefix/containerd/containerd/$vendor_sub_path/api/services/containers/v1)
-+   AC_SUBST(GOGO_PROTOPATH, $shared_prefix/containerd/containerd/vendor/github.com/gogo/protobuf)
++
++#
++# The proto files needed by the containerd grpc client are shipped in
++# different locations depending on the containerd version and the
++# distribution:
++#
++#   containerd 1.x (github.com/containerd/containerd):
++#      <src>/github.com/containerd/containerd/api
++#      <src>/github.com/containerd/containerd/vendor/github.com/containerd/containerd/api
++#   containerd 2.x (github.com/containerd/containerd/v2):
++#      <src>/github.com/containerd/containerd/v2/api
++#      <src>/github.com/containerd/containerd/v2/vendor/github.com/containerd/containerd/api
++#
++   containerd_protopath=""
++   for candidate in \
++       $shared_prefix/containerd/containerd/api \
++       $shared_prefix/containerd/containerd/vendor/github.com/containerd/containerd/api \
++       $shared_prefix/containerd/containerd/v2/api \
++       $shared_prefix/containerd/containerd/v2/vendor/github.com/containerd/containerd/api; do
++       if test -f "$candidate/services/tasks/v1/tasks.proto"; then
++           containerd_protopath="$candidate"
++           break
++       fi
++   done
++
++   gogo_protopath=""
++   vendor_search_str="import weak "
++   vendor_replace_str="import "
++   types_dir=""
++   dep_protopath=""
++   if test -n "$containerd_protopath"; then
++       if grep -q 'import "github.com/containerd/containerd/api' \
++             "$containerd_protopath/services/tasks/v1/tasks.proto"; then
++#
++# containerd 1.x imports the type definitions by their fully qualified path
++# and may rely on the gogo protobuf extensions. Some distributions ship the
++# proto files only inside the vendor directory.
++#
++           case "$containerd_protopath" in
++           */containerd/containerd/vendor/github.com/containerd/containerd/api)
++               types_dir="github.com/containerd/containerd/vendor/github.com/containerd/containerd/api/types"
++               gogo_protopath="$shared_prefix/containerd/containerd/vendor/github.com/gogo/protobuf"
++               vendor_search_str='import "github.com\/containerd\/containerd\/api'
++               vendor_replace_str='import "github.com\/containerd\/containerd\/vendor\/github.com\/containerd\/containerd\/api'
++               ;;
++           *)
++               types_dir="github.com/containerd/containerd/api/types"
++               gogo_protopath="$shared_prefix/gogo/protobuf"
++               ;;
++           esac
++           dep_protopath="$src_prefix"
++       else
++#
++# containerd 2.x imports the type definitions relative to the api directory
++# and no longer uses gogo.
++#
++           types_dir="types"
++           dep_protopath="$containerd_protopath"
++       fi
++   fi
++
++   AC_SUBST(TYPES_DIR, $types_dir)
++   AC_SUBST(DEP_PROTOPATH, $dep_protopath)
++   AC_SUBST(TASKS_PROTOPATH, $containerd_protopath/services/tasks/v1)
++   AC_SUBST(CONTAINERD_PROTOPATH, $containerd_protopath/services/containers/v1)
++   AC_SUBST(GOGO_PROTOPATH, $gogo_protopath)
++   AC_SUBST(DEP_VENDOR_SEARCH_STR, $vendor_search_str)
++   AC_SUBST(DEP_VENDOR_REPLACE_STR, $vendor_replace_str)
++   if test -n "$gogo_protopath"; then
++       gogo_protopath_include="-I$gogo_protopath"
++   else
++       gogo_protopath_include=''
++   fi
++   AC_SUBST(GOGO_PROTOPATH_INCLUDE, $gogo_protopath_include)
     AC_CHECK_FILE([${CONTAINERD_PROTOPATH}/containers.proto],
                   [],
                   [AC_VMW_CONTAINERINFO_MSG(["containerd package"])])
-
+@@ -740,9 +809,11 @@
+    AC_CHECK_FILE([${DEP_PROTOPATH}/${TYPES_DIR}/task/task.proto],
+                  [],
+                  [AC_VMW_CONTAINERINFO_MSG(["containerd package"])])
+-   AC_CHECK_FILE([${GOGO_PROTOPATH}/gogoproto/gogo.proto],
+-                 [],
+-                 [AC_VMW_CONTAINERINFO_MSG(["gogoproto package"])])
++   if test -n "$gogo_protopath"; then
++       AC_CHECK_FILE([${GOGO_PROTOPATH}/gogoproto/gogo.proto],
++                     [],
++                     [AC_VMW_CONTAINERINFO_MSG(["gogoproto package"])])
++   fi
+ 
+ #
+ # Binaries needed to build for containerd grpc client.
+@@ -1699,6 +1770,7 @@
+ AM_CONDITIONAL(HAVE_PAM, test "$with_pam" = "yes")
+ AM_CONDITIONAL(USE_SLASH_PROC, test "$os" = "linux")
+ AM_CONDITIONAL(ENABLE_CONTAINERINFO, test "$enable_containerinfo" = "yes")
++AM_CONDITIONAL(HAVE_CONTAINERD_GOGO, test -n "$gogo_protopath")
+ AM_CONDITIONAL(ENABLE_DEPLOYPKG, test "$enable_deploypkg" = "yes")
+ AM_CONDITIONAL(ENABLE_VGAUTH, test "$enable_vgauth" = "yes")
+ AM_CONDITIONAL(HAVE_VSOCK, test "$os" = "linux")
 --- a/open-vm-tools/services/plugins/containerInfo/Makefile.am
 +++ b/open-vm-tools/services/plugins/containerInfo/Makefile.am
-@@ -84,7 +84,7 @@ $(TYPES_DIR)/task/task.pb.cc: %.pb.cc :
- 	$(PROTOC) --cpp_out=. -I$(GOGO_PROTOPATH) -I. $<
+@@ -40,8 +40,10 @@
+ libcontainerInfo_la_CPPFLAGS += @CURL_CPPFLAGS@
+ libcontainerInfo_la_LIBADD += ../../../lib/jsmn/libJsmn.la
+ 
++if HAVE_CONTAINERD_GOGO
+ libcontainerInfo_la_SOURCES += gogoproto/gogo.pb.h
+ libcontainerInfo_la_SOURCES += gogoproto/gogo.pb.cc
++endif
+ libcontainerInfo_la_SOURCES += $(TYPES_DIR)/mount.pb.h
+ libcontainerInfo_la_SOURCES += $(TYPES_DIR)/mount.pb.cc
+ libcontainerInfo_la_SOURCES += $(TYPES_DIR)/metrics.pb.h
+@@ -65,7 +67,7 @@
+ libcontainerInfo_la_LIBADD += ${grpcxx_LIBS}
+ 
+ tasks.grpc.pb.cc containers.grpc.pb.cc: %.grpc.pb.cc : %.proto %.pb.cc
+-	$(PROTOC) -I. -I$(GOGO_PROTOPATH) \
++	$(PROTOC) -I. $(GOGO_PROTOPATH_INCLUDE) \
+              --grpc_out=. --plugin=protoc-gen-grpc=`which $(GRPC_CPP)` $<
+ 
+ containerInfo_grpc.cc : containers.grpc.pb.cc tasks.grpc.pb.cc
+@@ -81,18 +83,20 @@
+ $(TYPES_DIR)/metrics.pb.cc \
+ $(TYPES_DIR)/descriptor.pb.cc \
+ $(TYPES_DIR)/task/task.pb.cc: %.pb.cc : %.proto
+-	$(PROTOC) --cpp_out=. -I$(GOGO_PROTOPATH) -I. $<
++	$(PROTOC) --cpp_out=. $(GOGO_PROTOPATH_INCLUDE) -I. $<
  
  tasks.proto: $(TASKS_PROTOPATH)/tasks.proto
 -	sed 's/import weak /import /' $< > $@
@@ -40,3 +144,14 @@
  
  containers.proto: $(CONTAINERD_PROTOPATH)/containers.proto
  	sed 's/import weak /import /' $< > $@
+ 
+ tasks.pb.cc containers.pb.cc: %.pb.cc : %.proto
+-	$(PROTOC) --cpp_out=. -I. -I$(GOGO_PROTOPATH) $<
++	$(PROTOC) --cpp_out=. -I. $(GOGO_PROTOPATH_INCLUDE) $<
+ 
++if HAVE_CONTAINERD_GOGO
+ gogoproto/gogo.pb.cc: $(GOGO_PROTOPATH)/gogoproto/gogo.proto
+ 	$(MKDIR_P) $(@D)
+ 	$(PROTOC) --cpp_out=. -I$(GOGO_PROTOPATH) $<
++endif
+ 

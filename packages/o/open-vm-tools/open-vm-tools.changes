@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:10:13 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix build with containerd 2.3.3 (boo#1284086):
+  Update detect-suse-location.patch to locate the containerd grpc
+  protobuf definitions in the new github.com/containerd/containerd/v2
+  module directory, and to no longer require the gogo protobuf
+  extensions, which were dropped in containerd 2.
+  The previous containerd 1.x layout is still detected and supported.
+
+-------------------------------------------------------------------
 Mon Jul 20 21:16:21 UTC 2026 - Kirk Allan <kallan@suse.com>
 
 - Remove all dependencies on update-desktop-files - open-vm-tools (PED-15231)
