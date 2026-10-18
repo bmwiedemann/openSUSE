@@ -32,18 +32,15 @@
 %define cmakesupernova -DSUPERNOVA=OFF
 %endif
 Name:           supercollider-sc3-plugins
-Version:        3.13.0
+Version:        3.14.1
 Release:        0
 Summary:        Collection of SuperCollider plugins
 License:        GPL-3.0-only
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://supercollider.github.io/sc3-plugins/
 Source0:        https://github.com/supercollider/sc3-plugins/releases/download/Version-%{version}/sc3-plugins-%{version}-Source.tar.bz2
 Source1:        https://github.com/supercollider/sc3-plugins/releases/download/Version-%{version}/sc3-plugins-%{version}-Source.tar.bz2.asc
 Source9:        supercollider-sc3-plugins.keyring
 Source99:       supercollider-sc3-plugins-rpmlintrc
-Patch0:         000-supercollider-sc3-plugins-cmake-force-c++-17.patch
-Patch1:         001-supercollider-sc3-plugins-add-include-cstdint-in-nh_hall-hpp.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fftw-devel
