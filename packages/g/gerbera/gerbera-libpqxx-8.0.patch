@@ -1,0 +1,104 @@
+--- a/CMakeLists.txt	2026-10-17 18:23:05.209717641 +0200
++++ b/CMakeLists.txt	2026-10-17 18:23:05.477747727 +0200
+@@ -758,6 +758,19 @@
+ if(WITH_PGSQL)
+     find_package(libpqxx REQUIRED)
+     if(libpqxx_FOUND)
++        # libpqxx 8.x headers require C++20; keep it to the sources
++        # including pqxx headers so the rest stays on the default (C++17).
++        # (CXX_STANDARD is target-only, hence per-source COMPILE_OPTIONS.
++        # test/database/test_database.cc is covered in test/database/CMakeLists.txt.)
++        if(libpqxx_VERSION VERSION_GREATER_EQUAL "8.0")
++            set_property(
++                SOURCE
++                    src/database/database.cc
++                    src/database/postgres/pg_result.cc
++                    src/database/postgres/pg_task.cc
++                    src/database/postgres/postgres_database.cc
++                APPEND PROPERTY COMPILE_OPTIONS "-std=c++20")
++        endif()
+         target_include_directories(libgerbera PUBLIC ${libpqxx_INCLUDE_DIRS})
+         target_link_libraries(libgerbera PUBLIC ${libpqxx_LIBS} ${libpqxx_LIBRARIES})
+         target_link_libraries(libgerbera PUBLIC libpqxx::pqxx)
+--- a/test/database/CMakeLists.txt	2026-10-17 18:23:05.317729765 +0200
++++ b/test/database/CMakeLists.txt	2026-10-17 18:23:05.477747727 +0200
+@@ -22,6 +22,13 @@
+ #  $Id$
+ # ~~~
+ 
++# libpqxx 8.x headers require C++20 (see top-level CMakeLists.txt)
++if(WITH_PGSQL AND libpqxx_VERSION VERSION_GREATER_EQUAL "8.0")
++    set_property(
++        SOURCE test_database.cc
++        APPEND PROPERTY COMPILE_OPTIONS "-std=c++20")
++endif()
++
+ add_executable(
+     testdb
+     main.cc #
+diff -u -r a/src/database/postgres/pg_result.cc b/src/database/postgres/pg_result.cc
+--- a/src/database/postgres/pg_result.cc	2026-10-17 18:23:05.289726622 +0200
++++ b/src/database/postgres/pg_result.cc	2026-10-17 18:23:05.477747727 +0200
+@@ -43,7 +43,9 @@
+     if (result.size() == 0 || row >= result.size())
+         return nullptr;
+     row++;
+-    return std::make_unique<PostgresSQLRow>(result.at(row - 1));
++    // libpqxx 8 result::at() returns row_ref, and row(row_ref) is explicit.
++    // Explicit construction also compiles against libpqxx 7 (copy).
++    return std::make_unique<PostgresSQLRow>(pqxx::row(result.at(row - 1)));
+ }
+ 
+ #endif
+\ No newline at end of file
+diff -u -r a/src/database/postgres/pg_task.cc b/src/database/postgres/pg_task.cc
+--- a/src/database/postgres/pg_task.cc	2026-10-17 18:23:05.289726622 +0200
++++ b/src/database/postgres/pg_task.cc	2026-10-17 18:23:05.481748176 +0200
+@@ -66,7 +66,7 @@
+ 
+     if (!getError().empty()) {
+         log_debug("{}", getError());
+-        throw_std_runtime_error(getError());
++        throw_std_runtime_error("{}", getError());
+     }
+ }
+ 
+diff -u -r a/src/database/postgres/postgres_database.cc b/src/database/postgres/postgres_database.cc
+--- a/src/database/postgres/postgres_database.cc	2026-10-17 18:23:05.289726622 +0200
++++ b/src/database/postgres/postgres_database.cc	2026-10-17 18:23:05.481748176 +0200
+@@ -143,7 +143,7 @@
+     } catch (const std::runtime_error& e) {
+         log_error("Prematurely shutting down.\n{}", e.what());
+         shutdown();
+-        throw_std_runtime_error(e.what());
++        throw_std_runtime_error("{}", e.what());
+     }
+ 
+     try {
+@@ -151,7 +151,7 @@
+     } catch (const std::runtime_error& e) {
+         log_error("Prematurely shutting down because of initDynContainers.");
+         shutdown();
+-        throw_std_runtime_error(e.what());
++        throw_std_runtime_error("{}", e.what());
+     }
+ }
+ 
+@@ -219,7 +219,7 @@
+                         dirty = false;
+                     task->sendSignal();
+                 } catch (const pqxx::argument_error& e) {
+-                    log_debug(e.what());
++                    log_debug("{}", e.what());
+                     task->sendSignal(e.what());
+                 } catch (const std::runtime_error& e) {
+                     task->sendSignal(e.what());
+@@ -256,7 +256,7 @@
+ void PostgresDatabase::handleException(const std::exception& exc, const std::string& lineMessage)
+ {
+     if (!dbInitDone)
+-        throw_std_runtime_error(exc.what());
++        throw_std_runtime_error("{}", exc.what());
+     ++shutdownFlag;
+     if (shutdownFlag <= 1) {
+         log_error("Prematurely shutting down.\n{}\n{}", lineMessage, exc.what());

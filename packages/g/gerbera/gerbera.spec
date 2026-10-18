@@ -36,6 +36,8 @@ Source90:       README.SUSE
 Patch0:         harden_gerbera.service.patch
 # PATCH-FIX-OPENSUSE - build executables as PIE
 Patch1:         gerbera-cmake-pie.patch
+# PATCH-FIX-UPSTREAM gerbera-libpqxx-8.0.patch -- port to libpqxx 8.0 API (C++20, result::at() returns row_ref)
+Patch2:         gerbera-libpqxx-8.0.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  ccache
 BuildRequires:  cmake >= 3.25
