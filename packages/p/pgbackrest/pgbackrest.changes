@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Oct 18 11:33:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.60.0
+  IMPORTANT NOTE: The restore command will now error and stop if
+  any restored file contains an invalid page checksum, which leaves
+  the cluster incomplete and unable to start, so the restore must
+  be rerun. The expire command will now refuse to expire if the
+  oldest retained backup would contain checksum errors, which also
+  prevents archive from being expired in that repository. Set
+  checksum-page-error=n to warn instead of erroring.
+
+  - Features:
+    - Add checksum-page-error option to error on invalid page
+      checksums. (Contributed by Andrew Pogrebnoi. Reviewed by
+      Douglas J Hunley, David Steele, Greg Sabino Mullane, Stefan
+      Fercot. Suggested by Greg Sabino Mullane.)
+    - Support for GCS Workload Identity Federation. (Contributed by
+      Adol Rodriguez. Reviewed by Douglas J Hunley, David Steele.)
+    - Prefetch multi-file/range reads from object stores. (Reviewed
+      by Andrew Pogrebnoi, Douglas J Hunley.)
+  - Improvements:
+    - Reduce keep-alive requests to remote processes. (Reviewed by
+      Douglas J Hunley.)
+    - Retry Azure batch sub-requests missing from the response.
+      (Reviewed by Douglas J Hunley.)
+    - Reduce the manifest checks made when reconstructing
+      backup.info. (Reviewed by Douglas J Hunley. Suggested by
+      todeb.)
+    - Use original size to determine if a file should be bundled.
+      (Reviewed by Douglas J Hunley.)
+    - Add context to block map read errors during backup. (Reviewed
+      by Stefan Fercot, Douglas J Hunley.)
+    - Cast current_timestamp to text in the backup start label.
+      (Contributed by Tiago Corcelli de Oliveira. Reviewed by David
+      Steele.)
+    - Support building on illumos. (Contributed by Kalevi
+      Kolttonen. Reviewed by Douglas J Hunley, David Steele.)
+    - Support OpenSSL 4. (Reviewed by Douglas J Hunley.)
+    - Fix clang builds. (Reviewed by Douglas J Hunley.)
+    - Migrate code generation from C to Python.
+  - Documentation Improvements:
+    - Modernize the website. Special thanks to Jan for the
+      insightful (and hilarious) logo. (Contributed by David
+      Steele, Jan Wieremjewicz. Reviewed by Steve Atkins, Kai
+      Wagner, Douglas J Hunley, Nikolaos Stamatopoulos, Matt
+      Hudson, Stefan Fercot.)
+    - Document the release schedule.
+    - Migrate the documentation tools from C and Perl to Python.
+  - Test Suite Improvements:
+    - Migrate the test harness from C and Perl to Python.
+    - Add a Fil-C job to CI.
+    - Add fuzz testing for the JSON, Ini, and Pack readers.
+    - Allow test user names that adduser on Debian rejects.
+      (Contributed by Stefan Fercot. Reviewed by David Steele.)
+- refresh use-run-pgbackrest.patch
+
+-------------------------------------------------------------------
 Sun Oct  4 14:46:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.59.3

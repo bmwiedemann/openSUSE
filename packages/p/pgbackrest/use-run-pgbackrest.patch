@@ -1,7 +1,7 @@
-Index: pgbackrest-2.59.0/src/config/parse.auto.c.inc
+Index: pgbackrest-2.60.0/src/config/parse.auto.c.inc
 ===================================================================
---- pgbackrest-2.59.0.orig/src/config/parse.auto.c.inc
-+++ pgbackrest-2.59.0/src/config/parse.auto.c.inc
+--- pgbackrest-2.60.0.orig/src/config/parse.auto.c.inc
++++ pgbackrest-2.60.0/src/config/parse.auto.c.inc
 @@ -16,7 +16,7 @@ static const StringPubConst parseRuleVal
      PARSE_RULE_STRPUB("-20"),                                                                                             // val/str
      PARSE_RULE_STRPUB("-5"),                                                                                              // val/str
@@ -11,136 +11,24 @@ Index: pgbackrest-2.59.0/src/config/parse.auto.c.inc
      PARSE_RULE_STRPUB("/var/lib/pgbackrest"),                                                                             // val/str
      PARSE_RULE_STRPUB("/var/log/pgbackrest"),                                                                             // val/str
      PARSE_RULE_STRPUB("/var/spool/pgbackrest"),                                                                           // val/str
-Index: pgbackrest-2.59.0/doc/html/command.html
+Index: pgbackrest-2.60.0/doc/html/configuration.html
 ===================================================================
---- pgbackrest-2.59.0.orig/doc/html/command.html
-+++ pgbackrest-2.59.0/doc/html/command.html
-@@ -195,7 +195,7 @@ Path where lock files are stored.
+--- pgbackrest-2.60.0.orig/doc/html/configuration.html
++++ pgbackrest-2.60.0/doc/html/configuration.html
+@@ -783,7 +783,7 @@ Path where lock files are stored.
  </div><div class="section-body-text">
  The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
  </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-annotate/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-@@ -1120,7 +1120,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-archive-get/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-@@ -2200,7 +2200,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-archive-push/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-@@ -3395,7 +3395,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-backup/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-@@ -5783,7 +5783,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-expire/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-@@ -6830,7 +6830,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-info/category-general/option-priority"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Set Process Priority Option (<span class="id">--priority</span>)
-@@ -9721,7 +9721,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-restore/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-@@ -11232,7 +11232,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-stanza-create/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-@@ -12317,7 +12317,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-stanza-delete/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-@@ -13397,7 +13397,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-stanza-upgrade/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-@@ -14399,7 +14399,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-start/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-@@ -14588,7 +14588,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
- example: --lock-path=/backup/db/lock</pre>
- </div></div><div class="section3"><a id="command-stop/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-Index: pgbackrest-2.59.0/doc/html/configuration.html
-===================================================================
---- pgbackrest-2.59.0.orig/doc/html/configuration.html
-+++ pgbackrest-2.59.0/doc/html/configuration.html
-@@ -762,7 +762,7 @@ Path where lock files are stored.
- </div><div class="section-body-text">
- The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
- </div>
--<pre class="code-block">default: /tmp/pgbackrest
-+<pre class="code-block">default: /run/pgbackrest
+-<pre class="code-block" tabindex="0">default: /tmp/pgbackrest
++<pre class="code-block" tabindex="0">default: /run/pgbackrest
  example: lock-path=/backup/db/lock</pre>
- </div></div><div class="section2"><a id="section-general/option-neutral-umask"></a><div class="section2-header"><div class="section2-number"></div><div class="section2-title">
- Neutral Umask Option (<span class="id">--neutral-umask</span>)
-Index: pgbackrest-2.59.0/doc/html/release.html
+ </div></div><div class="section2"><a id="section-general/option-neutral-umask"></a><div class="section2-header"><div class="section2-title">
+ Neutral Umask (<span class="id">--neutral-umask</span>)
+Index: pgbackrest-2.60.0/doc/html/release.html
 ===================================================================
---- pgbackrest-2.59.0.orig/doc/html/release.html
-+++ pgbackrest-2.59.0/doc/html/release.html
-@@ -2923,7 +2923,7 @@ The default configuration filename is no
+--- pgbackrest-2.60.0.orig/doc/html/release.html
++++ pgbackrest-2.60.0/doc/html/release.html
+@@ -4415,7 +4415,7 @@ The default configuration filename is no
  </li><li class="list-unordered">
  The default repository name was changed from <span class="path">/var/lib/backup</span> to <span class="path">/var/lib/pgbackrest</span>. (<i>Suggested by Michael Renner, Stephen Frost.</i>)
  </li><li class="list-unordered">
@@ -149,11 +37,11 @@ Index: pgbackrest-2.59.0/doc/html/release.html
  </li><li class="list-unordered">
  Log files are now stored in <span class="path">/var/log/pgbackrest</span> by default and no longer have the date appended so they can be managed with <span class="id">logrotate</span>. The <span class="br-setting">log-path</span> option can be used to configure the log directory. (<i>Suggested by Stephen Frost.</i>)
  </li><li class="list-unordered">
-Index: pgbackrest-2.59.0/doc/man/pgbackrest.1.txt
+Index: pgbackrest-2.60.0/doc/man/pgbackrest.1.txt
 ===================================================================
---- pgbackrest-2.59.0.orig/doc/man/pgbackrest.1.txt
-+++ pgbackrest-2.59.0/doc/man/pgbackrest.1.txt
-@@ -312,7 +312,7 @@ FILES
+--- pgbackrest-2.60.0.orig/doc/man/pgbackrest.1.txt
++++ pgbackrest-2.60.0/doc/man/pgbackrest.1.txt
+@@ -317,7 +317,7 @@ FILES
    /var/lib/pgbackrest
    /var/log/pgbackrest
    /var/spool/pgbackrest
