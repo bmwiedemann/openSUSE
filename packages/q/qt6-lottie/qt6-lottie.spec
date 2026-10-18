@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.11.2
-%define short_version 6.11
+%define real_version 6.12.0
+%define short_version 6.12
 %define short_name qtlottie
 %define tar_name qtlottie-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-lottie%{?pkg_suffix}
-Version:        6.11.2
+Version:        6.12.0
 Release:        0
 Summary:        QML API for rendering graphics and animation
 # LICENSE.GPL3-EXCEPT only applies to the conan recipe which is not used
@@ -45,7 +45,9 @@ BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
 BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
+BuildRequires:  cmake(Qt6QuickTimeline) = %{real_version}
 BuildRequires:  cmake(Qt6QuickVectorImageGeneratorPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6QuickVectorImagePrivate) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
