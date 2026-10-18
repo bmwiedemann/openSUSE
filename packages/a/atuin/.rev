@@ -1659,4 +1659,12 @@
     <comment>Update to version 18.24.0 (forwarded request 1385229 from develop7)</comment>
     <requestid>1385230</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>da9615180ce970103a39e57056f9912b</srcmd5>
+    <version>18.24.1</version>
+    <time>1792356858</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 18.24.1 (forwarded request 1385890 from develop7)</comment>
+    <requestid>1386009</requestid>
+  </revision>
 </revisionlist>

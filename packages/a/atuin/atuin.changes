@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:11:57 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 18.24.1:
+  * Bug Fixes
+    + (daemon) Verify daemon version in HTTP headers (#4431)
+  * Features
+    + (ai-session) Support omp threads and keep reply providers
+      for resume (#4441)
+    + (config) Insert new keys where they're documented (#4432)
+
+-------------------------------------------------------------------
 Fri Oct 16 11:53:14 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 18.24.0:
