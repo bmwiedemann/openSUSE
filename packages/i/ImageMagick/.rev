@@ -4708,4 +4708,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>GHSA-g5j8-ff59-wp88, GHSA-vmj6-qx38-9gf5, GHSA-x48p-6655-8qgv</comment>
     <requestid>1385275</requestid>
   </revision>
+  <revision rev="355" vrev="2">
+    <srcmd5>7c2aa6e0f8fb8e16224607445affa443</srcmd5>
+    <version>7.1.2.34</version>
+    <time>1792419001</time>
+    <user>darix</user>
+    <comment>CVE-2026-109267, CVE-2026-109272</comment>
+    <requestid>1386274</requestid>
+  </revision>
 </revisionlist>
