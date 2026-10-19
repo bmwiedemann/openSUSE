@@ -321,6 +321,7 @@ unsorted:
   - SDL3_sound-devel 
   - SDL3_ttf-devel 
   - SDL_Pango-devel 
+  - SDL_bgi-devel 
   - SDL_mixer-devel 
   - SDL_net-devel 
   - SDL_sound-devel 
@@ -11810,14 +11811,13 @@ unsorted:
   - libSDL2_sound2 
   - libSDL2_ttf-2_0-0 
   - libSDL3-0-32bit 
+  - libSDL3_bgi-suse0 
   - libSDL3_image0 
   - libSDL3_mixer0 
   - libSDL3_net0 
   - libSDL3_sound0 
   - libSDL3_ttf0 
   - libSDL_Pango1 
-  - libSDL_bgi-devel 
-  - libSDL_bgi-suse9 
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit 
   - libSDL_gfx16-32bit 
@@ -12398,8 +12398,8 @@ unsorted:
   - libavutil59 
   - libavutil60-32bit 
   - libavutil61 
-  - libaws-c-auth1_0_0 
-  - libaws-c-cal0unstable 
+  - libaws-c-auth1_0 
+  - libaws-c-cal1_0 
   - libaws-c-common1_0 
   - libaws-c-compression1_0_0 
   - libaws-c-event-stream1 
@@ -13518,7 +13518,7 @@ unsorted:
   - libfluidsynth3 
   - libfluidsynth3-32bit 
   - libflux-devel 
-  - libflux0_199_0 
+  - libflux0_201_0 
   - libflxmlrpc1 
   - libfm 
   - libfm-devel 
@@ -14191,7 +14191,7 @@ unsorted:
   - libharfbuzz0-32bit 
   - libharminv3 
   - libharu-devel 
-  - libhashcat7_1_2 
+  - libhashcat7 
   - libhasl0 
   - libhavege2 
   - libhdf5-310 
@@ -14457,6 +14457,7 @@ unsorted:
   - libjanet1_39 
   - libjansson-devel 
   - libjasper-devel 
+  - libjasper7 
   - libjasper7-32bit 
   - libjavamapscript 
   - libjaylink 
@@ -15456,7 +15457,7 @@ unsorted:
   - libopenssl-fips-provider 
   - libopentimelineio18 
   - libopentracing-cpp1 
-  - libopenvdb13_0 
+  - libopenvdb13_1 
   - libopenvino2641 
   - libopenvino_c2641 
   - libopenvino_gguf_frontend2641 
@@ -15487,7 +15488,7 @@ unsorted:
   - liborigin-doc 
   - liborigin-tools 
   - liborigin3 
-  - libosdCPU3_6_1 
+  - libosdCPU3_7_0 
   - libosg2vsg-devel 
   - libosg2vsg0 
   - libosinfo-devel 
@@ -16139,7 +16140,6 @@ unsorted:
   - librdkafka1 
   - librdmacm-utils 
   - librdmacm1-32bit 
-  - libre2-11 
   - libre2-11-32bit 
   - libre45 
   - libreadline-java 
@@ -16527,6 +16527,7 @@ unsorted:
   - libsigsegv-devel 
   - libsigsegv-doc 
   - libsigsegv2 
+  - libsimdjson33 
   - libsingular_resources-4_4_1 
   - libsingular_resources-devel 
   - libsinsp0_26 
@@ -24034,6 +24035,7 @@ unsorted:
   - proton-vpn 
   - proton-vpn-cli 
   - protontricks 
+  - protonup-rs 
   - proxychains-ng 
   - prun-ohpc 
   - psgml 
@@ -24790,8 +24792,6 @@ unsorted:
   - python313-PyQt6-WebEngine-devel 
   - python313-PyQt6-devel 
   - python313-PyQt6-doc 
-  - python313-PyQt6-qt6pdf 
-  - python313-PyQt6-qt6pdf-devel 
   - python313-PyQt6-sip 
   - python313-PyRIC 
   - python313-PyRSS2Gen 
@@ -28838,8 +28838,6 @@ unsorted:
   - python314-PyQt6-WebEngine-devel 
   - python314-PyQt6-devel 
   - python314-PyQt6-doc 
-  - python314-PyQt6-qt6pdf 
-  - python314-PyQt6-qt6pdf-devel 
   - python314-PyQt6-sip 
   - python314-PyRIC 
   - python314-PyRSS2Gen 
@@ -33065,6 +33063,7 @@ unsorted:
   - qt6-bundledembree-devel-static 
   - qt6-bundledphysx-devel-static 
   - qt6-bundledresonanceaudio-devel-static 
+  - qt6-canvas2d-imports 
   - qt6-canvaspainter-devel 
   - qt6-canvaspainter-docs-html 
   - qt6-canvaspainter-docs-qch 
@@ -33228,8 +33227,11 @@ unsorted:
   - qt6-qmlcompiler-private-devel 
   - qt6-qmlcore-private-devel 
   - qt6-qmldebug-devel-static 
+  - qt6-qmldesignsupport-devel 
+  - qt6-qmldesignsupport-private-devel 
   - qt6-qmldom-devel-static 
   - qt6-qmlformat-devel-static 
+  - qt6-qmllint-devel-static 
   - qt6-qmllocalstorage-private-devel 
   - qt6-qmlls-devel-static 
   - qt6-qmlmeta-private-devel 
@@ -34833,6 +34835,7 @@ unsorted:
   - sile-zsh-completion 
   - silver-surfer 
   - simde-devel 
+  - simdjson-devel 
   - simdutf-devel 
   - simh 
   - simple-ccsm 

@@ -143,7 +143,7 @@ packagesets:
    - alsa-plugins # reason: dvd:patterns-kde-kde
    - alsa-plugins-speexrate # reason: dvd:patterns-kde-kde
    - alsa-plugins-upmix # reason: dvd:patterns-kde-kde
-   - alsa-ucm-conf # reason: dvd:patterns-kde-kde
+   - alsa-ucm-conf # reason: dvd:openSUSE-release
    - alsa-utils # reason: dvd:patterns-kde-kde
    - alts # reason: dvd:openSUSE-release
    - amarok # reason: dvd:amarok
@@ -1522,6 +1522,7 @@ packagesets:
    - libQt6PrintSupport6 # reason: dvd:patterns-kde-kde
    - libQt6Qml6 # reason: dvd:openSUSE-release
    - libQt6QmlCore6 # reason: dvd:openSUSE-release
+   - libQt6QmlDesignSupport6 # reason: dvd:openSUSE-release
    - libQt6QmlLocalStorage6 # reason: dvd:openSUSE-release
    - libQt6QmlMeta6 # reason: dvd:openSUSE-release
    - libQt6QmlModels6 # reason: dvd:openSUSE-release
@@ -1812,7 +1813,7 @@ packagesets:
    - libcdrdeflt1_0 # reason: dvd:patterns-gnome-gnome
    - libcdt6 # reason: dvd:patterns-gnome-gnome_yast
    - libcfitsio10 # reason: dvd:patterns-gnome-gnome
-   - libcgraph8 # reason: dvd:patterns-gnome-gnome_yast
+   - libcgraph10 # reason: dvd:patterns-gnome-gnome_yast
    - libcheese-common # reason: dvd:patterns-xfce-xfce
    - libcheese8 # reason: dvd:patterns-xfce-xfce
    - libcholmod5 # reason: dvd:patterns-gnome-gnome
@@ -2191,7 +2192,7 @@ packagesets:
    - libheif-svtenc # reason: dvd:openSUSE-release
    - libheif1 # reason: dvd:openSUSE-release
    - libhidapi-hidraw0 # reason: dvd:patterns-gnome-gnome
-   - libhiredis1_3_0 # reason: dvd:patterns-media-rest_dvd
+   - libhiredis1_5_0 # reason: dvd:patterns-media-rest_dvd
    - libhns1 # reason: dvd:patterns-media-rest_dvd
    - libhogweed7 # reason: dvd:openSUSE-release
    - libhogweed7-32bit # reason: dvd:patterns-media-rest_dvd
@@ -2234,7 +2235,6 @@ packagesets:
    - libjack0 # reason: dvd:patterns-gnome-gnome
    - libjansson4 # reason: dvd:patterns-gnome-gnome
    - libjansson4-32bit # reason: dvd:patterns-media-rest_dvd
-   - libjasper7 # reason: dvd:openSUSE-release
    - libjavascriptcoregtk-4_1-0 # reason: dvd:patterns-gnome-gnome
    - libjavascriptcoregtk-6_0-1 # reason: dvd:patterns-gnome-gnome
    - libjbig2 # reason: dvd:openSUSE-release
@@ -2380,7 +2380,7 @@ packagesets:
    - libmlx4-1 # reason: dvd:patterns-media-rest_dvd
    - libmlx5-1 # reason: dvd:patterns-media-rest_dvd
    - libmm-glib0 # reason: dvd:patterns-gnome-gnome
-   - libmng2 # reason: dvd:openSUSE-release
+   - libmng2 # reason: dvd:patterns-gnome-gnome
    - libmng2-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libmnl0 # reason: dvd:openSUSE-release
    - libmodulemd2 # reason: dvd:patterns-kde-kde
@@ -2613,6 +2613,7 @@ packagesets:
    - librdf0 # reason: dvd:openSUSE-release
    - librdmacm1 # reason: dvd:patterns-media-rest_dvd
    - librdtk0-0 # reason: dvd:patterns-gnome-gnome
+   - libre2-11 # reason: dvd:patterns-kde-kde
    - libreadline8 # reason: dvd:openSUSE-release
    - libreoffice # reason: dvd:openSUSE-release
    - libreoffice-base # reason: dvd:openSUSE-release
@@ -2945,7 +2946,7 @@ packagesets:
    - libxcb1 # reason: dvd:openSUSE-release
    - libxcrypt-devel # reason: dvd:patterns-base-console
    - libxcvt0 # reason: dvd:patterns-gnome-gnome
-   - libxdot4 # reason: dvd:patterns-gnome-gnome_yast
+   - libxdot5 # reason: dvd:patterns-gnome-gnome_yast
    - libxdp1 # reason: dvd:patterns-media-rest_dvd
    - libxfce4kbd-private-3-0 # reason: dvd:patterns-xfce-xfce
    - libxfce4panel-2_0-4 # reason: dvd:patterns-xfce-xfce
@@ -5188,6 +5189,7 @@ packagesets:
    - libQt6PrintSupport6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libQt6Qml6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libQt6QmlCore6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libQt6QmlDesignSupport6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libQt6QmlLocalStorage6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libQt6QmlMeta6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libQt6QmlModels6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5558,7 +5560,6 @@ packagesets:
    - libisl23 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libixml22 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libjansson4 # reason: opensuse_microos:patterns-containers-runtime_podman
-   - libjasper7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libjbig2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libjitterentropy3 # reason: opensuse_microos:patterns-base-hardware
    - libjpeg8 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5731,6 +5732,7 @@ packagesets:
    - librav1e0_8 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libraw1394-11 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libraw25 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libre2-11 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libreadline8 # reason: opensuse_microos:MicroOS-release
    - librepo0 # reason: opensuse_microos:patterns-microos-base-packagekit
    - librist4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6953,6 +6955,7 @@ packagesets:
    - libQt6PrintSupport6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libQt6Qml6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libQt6QmlCore6 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libQt6QmlDesignSupport6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libQt6QmlLocalStorage6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libQt6QmlMeta6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libQt6QmlModels6 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7315,7 +7318,6 @@ packagesets:
    - libisl23 # reason: opensuse_kalpa:patterns-kalpa-base
    - libixml22 # reason: opensuse_kalpa:patterns-kalpa-base
    - libjansson4 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libjasper7 # reason: opensuse_kalpa:patterns-kalpa-base
    - libjbig2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libjitterentropy3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libjpeg8 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7374,7 +7376,6 @@ packagesets:
    - libmetalink3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libminizip1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libmm-glib0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libmng2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libmnl0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libmount1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libmp3lame0 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7476,6 +7477,7 @@ packagesets:
    - librav1e0_8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libraw1394-11 # reason: opensuse_kalpa:patterns-kalpa-base
    - libraw25 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libre2-11 # reason: opensuse_kalpa:patterns-kalpa-base
    - libreadline8 # reason: opensuse_kalpa:Kalpa-release
    - librist4 # reason: opensuse_kalpa:patterns-kalpa-base
    - librsvg-2-2 # reason: opensuse_kalpa:patterns-kalpa-base
