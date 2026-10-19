@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20261017" schemaversion="4.1">
+<image name="OBS__openSUSE___20261018" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20261017</productvar>
+      <productvar name="VERSION">20261018</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261017,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261018,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261017/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261018/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1335,7 +1335,7 @@
       <repopackage name="libcdrdeflt1_0"/>
       <repopackage name="libcdt6"/>
       <repopackage name="libcfitsio10"/>
-      <repopackage name="libcgraph8"/>
+      <repopackage name="libcgraph10"/>
       <repopackage name="libcheese-common"/>
       <repopackage name="libcheese8"/>
       <repopackage name="libcholmod5"/>
@@ -1720,7 +1720,7 @@
       <repopackage name="libheif-svtenc"/>
       <repopackage name="libheif1"/>
       <repopackage name="libhidapi-hidraw0"/>
-      <repopackage name="libhiredis1_3_0"/>
+      <repopackage name="libhiredis1_5_0"/>
       <repopackage name="libhns1"/>
       <repopackage name="libhogweed7"/>
       <repopackage name="libhogweed7-32bit"/>
@@ -1771,7 +1771,6 @@
       <repopackage name="libjack0"/>
       <repopackage name="libjansson4"/>
       <repopackage name="libjansson4-32bit"/>
-      <repopackage name="libjasper7"/>
       <repopackage name="libjavascriptcoregtk-4_1-0"/>
       <repopackage name="libjavascriptcoregtk-6_0-1"/>
       <repopackage name="libjbig2"/>
@@ -2460,6 +2459,7 @@
       <repopackage name="libQt6PrintSupport6"/>
       <repopackage name="libQt6Qml6"/>
       <repopackage name="libQt6QmlCore6"/>
+      <repopackage name="libQt6QmlDesignSupport6"/>
       <repopackage name="libQt6QmlLocalStorage6"/>
       <repopackage name="libQt6QmlMeta6"/>
       <repopackage name="libQt6QmlModels6"/>
@@ -2527,6 +2527,7 @@
       <repopackage name="librdf0"/>
       <repopackage name="librdmacm1"/>
       <repopackage name="librdtk0-0"/>
+      <repopackage name="libre2-11"/>
       <repopackage name="libreadline8"/>
       <repopackage name="libreoffice"/>
       <repopackage name="libreoffice-base"/>
@@ -2877,7 +2878,7 @@
       <repopackage name="libxcvt0"/>
       <repopackage name="libXdamage1"/>
       <repopackage name="libXdmcp6"/>
-      <repopackage name="libxdot4"/>
+      <repopackage name="libxdot5"/>
       <repopackage name="libxdp1"/>
       <repopackage name="libXext6"/>
       <repopackage name="libxfce4kbd-private-3-0"/>

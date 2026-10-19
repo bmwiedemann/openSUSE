@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20261017" schemaversion="4.1">
+<image name="OBS__MicroOS___20261018" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20261017</productvar>
+      <productvar name="VERSION">20261018</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20261017,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20261018,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20261017/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20261018/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -748,7 +748,6 @@
       <repopackage name="libisl23"/>
       <repopackage name="libixml22"/>
       <repopackage name="libjansson4"/>
-      <repopackage name="libjasper7"/>
       <repopackage name="libjbig2"/>
       <repopackage name="libjitterentropy3"/>
       <repopackage name="libjpeg8"/>
@@ -1095,6 +1094,7 @@
       <repopackage name="libQt6PrintSupport6"/>
       <repopackage name="libQt6Qml6"/>
       <repopackage name="libQt6QmlCore6"/>
+      <repopackage name="libQt6QmlDesignSupport6"/>
       <repopackage name="libQt6QmlLocalStorage6"/>
       <repopackage name="libQt6QmlMeta6"/>
       <repopackage name="libQt6QmlModels6"/>
@@ -1151,6 +1151,7 @@
       <repopackage name="librav1e0_8"/>
       <repopackage name="libraw1394-11"/>
       <repopackage name="libraw25"/>
+      <repopackage name="libre2-11"/>
       <repopackage name="libreadline8"/>
       <repopackage name="librepo0"/>
       <repopackage name="librist4"/>
