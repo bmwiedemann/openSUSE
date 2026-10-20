@@ -967,4 +967,29 @@ can switch the default compiler. (forwarded request 1187079 from jamborm)</comme
     <comment></comment>
     <requestid>1366087</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>19ef680cc40a2a61f36112c4d24074f8</srcmd5>
+    <version>128</version>
+    <time>1792492580</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 128 (CVE-2026-4897 and CVE-2026-85498):
+  * fix two authentication-helper input vulnerabilities (CVE-2026-4897
+    bsc#1260859 and CVE-2026-85498 bsc#1278714).
+  * Sanitize values written to syslog from authorization requests
+  * Fix a use-after-free in the authentication agent's session handling
+  * Revalidate the administrator behind cached auth_admin_keep authorizations
+  * Fix agent cleanup races, resource leaks, and several error-path leaks
+  * Support systemd watchdog notifications and locked system accounts with
+    systemd 257+
+  * Improve FreeBSD and Solaris portability, including tests without Linux user
+    namespaces
+  * Add a polkit-agent-helper manual page and expand contributor documentation
+  * Remove the systemd service memory limits introduced in polkit 127
+  * Updated translations.
+- Update version dependencies according to meson.build.
+- Drop patches fixed upstream:
+  * 0001-Revert-memory-limits-in-systemd-unit-to-mitigate-mem.patch
+  * 0001-CVE-2026-4897-getline-string-overflow.patch</comment>
+    <requestid>1386168</requestid>
+  </revision>
 </revisionlist>

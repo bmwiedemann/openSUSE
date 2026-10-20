@@ -17,7 +17,7 @@
 
 
 %define _polkit_rulesdir %{_datadir}/polkit-1/rules.d
-%define glib_br_version  2.30.0
+%define glib_br_version  2.44
 # qemu emulation creates multiple threads, so unshare(CLONE_THREAD) always
 # fails.
 %if !0%{?qemu_user_space_build}
@@ -25,7 +25,7 @@
 %endif
 
 Name:           polkit
-Version:        127
+Version:        128
 Release:        0
 Summary:        PolicyKit Authorization Framework
 License:        LGPL-2.1-or-later
@@ -47,12 +47,6 @@ Patch1:         polkit-gettext.patch
 Patch3:         polkit-keyinit.patch
 # PATCH-FIX-OPENSUSE polkit-adjust-libexec-path.patch -- Adjust path to polkit-agent-helper-1 (bsc#1180474)
 Patch4:         polkit-adjust-libexec-path.patch
-
-# PATCH-FIX-UPSTREAM 0001-CVE-2026-4897-getline-string-overflow.patch -- bsc#1260859  ... use a limited getline buffer to avoid endless reads
-Patch5:         0001-CVE-2026-4897-getline-string-overflow.patch
-
-# PATCH-FIX-UPSTREAM 0001-Revert-memory-limits-in-systemd-unit-to-mitigate-mem.patch -- bsc#1266994 ... enabling this causes quite some performance drop
-Patch6:         0001-Revert-memory-limits-in-systemd-unit-to-mitigate-mem.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -259,6 +253,7 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %{_mandir}/man5/polkitd.conf.5%{?ext_man}
 %{_mandir}/man8/polkitd.8%{?ext_man}
 %{_mandir}/man8/polkit.8%{?ext_man}
+%{_mandir}/man8/polkit-agent-helper.8%{?ext_man}
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/system-services
 %{_datadir}/dbus-1/system-services/org.freedesktop.PolicyKit1.service

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 16 07:47:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 128 (CVE-2026-4897 and CVE-2026-85498):
+  * fix two authentication-helper input vulnerabilities (CVE-2026-4897
+    bsc#1260859 and CVE-2026-85498 bsc#1278714).
+  * Sanitize values written to syslog from authorization requests
+  * Fix a use-after-free in the authentication agent's session handling
+  * Revalidate the administrator behind cached auth_admin_keep authorizations
+  * Fix agent cleanup races, resource leaks, and several error-path leaks
+  * Support systemd watchdog notifications and locked system accounts with
+    systemd 257+
+  * Improve FreeBSD and Solaris portability, including tests without Linux user
+    namespaces
+  * Add a polkit-agent-helper manual page and expand contributor documentation
+  * Remove the systemd service memory limits introduced in polkit 127
+  * Updated translations.
+- Update version dependencies according to meson.build.
+- Drop patches fixed upstream:
+  * 0001-Revert-memory-limits-in-systemd-unit-to-mitigate-mem.patch
+  * 0001-CVE-2026-4897-getline-string-overflow.patch
+
+-------------------------------------------------------------------
 Wed Jul 15 12:56:10 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - pkexec: add provides pkexec-rpm to be able to give the solver a
