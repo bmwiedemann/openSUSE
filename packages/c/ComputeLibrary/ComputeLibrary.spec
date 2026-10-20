@@ -20,7 +20,7 @@
 # Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
 Name:           ComputeLibrary
-Version:        53.2.0
+Version:        53.3.1
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT
@@ -28,8 +28,9 @@ URL:            https://developer.arm.com/technologies/compute-library
 Source:         https://github.com/ARM-software/ComputeLibrary/archive/v%{version}.tar.gz#/ComputeLibrary-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
-BuildRequires:  ocl-icd-devel
+BuildRequires:  pkgconfig
 BuildRequires:  scons >= 2.4
+BuildRequires:  pkgconfig(OpenCL)
 Recommends:     %{name}-sample-data
 ExclusiveArch:  aarch64 armv7l armv7hl x86_64
 
@@ -76,8 +77,6 @@ Free *.npy and *.ppm files to use with example binaries.
 
 %prep
 %autosetup -p1 -n ComputeLibrary-%{version}
-# https://github.com/ARM-software/ComputeLibrary/issues/1277
-sed -i -e 's|#include "include/CL/opencl.hpp"|#include <CL/opencl.hpp>|' arm_compute/core/CL/cl_definitions.h
 
 %build
 scons os=linux \
@@ -136,7 +135,6 @@ rm %{buildroot}%{_bindir}/*.txt
 
 %post -n libarm_compute%{so_ver} -p /sbin/ldconfig
 %postun -n libarm_compute%{so_ver} -p /sbin/ldconfig
-
 %post -n libarm_compute_graph%{so_ver} -p /sbin/ldconfig
 %postun -n libarm_compute_graph%{so_ver} -p /sbin/ldconfig
 

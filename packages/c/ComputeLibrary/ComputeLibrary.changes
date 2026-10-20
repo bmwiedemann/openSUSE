@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct 11 14:25:51 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 53.3.1 (also covers 53.3.0):
+  * Enable QASYMM8_SIGNED to floating-point assembly dequantization
+    (non-uniform per-channel scales are rejected)
+  * Preserve QASYMM8 output in the GEMMLowp assembly fallback
+  * Restore exhaustive S8/U8 destination handling in the CPU GEMM
+    assembly dispatch
+  * Avoid SVE codegen in the SME wrapper
+  * Fix -Wstrict-overflow build failure with GCC 14 by replacing
+    std::deque with std::vector in the OpenCL MLGO HeuristicTree
+  * Deprecate S8/U8 inputs for has_opt_impl() API calls (docs)
+  * Library SONAME is unchanged (libarm_compute*.so.53)
+- Drop the sed workaround for upstream issue 1277 (wrong OpenCL
+  include path in cl_definitions.h): fixed upstream in 53.2.0, so
+  the sed no longer matches anything
+- Spec cleanup: use pkgconfig(OpenCL) BuildRequires instead of
+  ocl-icd-devel (same provider), declare BuildRequires: pkgconfig
+
+-------------------------------------------------------------------
 Fri Jul 31 07:22:15 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 53.2.0:
