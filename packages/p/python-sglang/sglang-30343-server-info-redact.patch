@@ -1,34 +1,8 @@
-Redact api_key/admin_api_key/ssl_keyfile_password from server info endpoints
-
-Fixes CVE-2026-105245 (boo#1284214): /server_info (and the deprecated
-/get_server_info alias), the gRPC bridge get_server_info, and
-Engine.get_server_info() serialized the full ServerArgs via
-resolved_dict(), exposing api_key, admin_api_key and
-ssl_keyfile_password verbatim. With only --admin-api-key set,
-/server_info is reachable anonymously (AuthLevel.NORMAL), so the
-admin key leaked to unauthenticated callers; with both keys set, a
-holder of either key could read the other.
-
-Carried from sgl-project/sglang PR 30343 by Rejudge-F (unmerged as of
-2026-10-12; closed by github-actions as stale, head commit
-38787264b70c5d931abf95ddf29d494fe5a943a8). Rebased onto 0.5.21: upstream
-wrote ServerArgs.redacted_asdict() around dataclasses.asdict(), but
-0.5.21 serializes via ServerArgs.resolved_dict() (msgspec defstruct +
-resolution pipeline), so redacted_asdict() here masks resolved_dict()
-instead. The three call sites and SENSITIVE_FIELDS are otherwise the
-same; the unit test from that PR is not carried (no pytest in %check).
----
- python/sglang/srt/entrypoints/engine.py      |  2 +-
- python/sglang/srt/entrypoints/grpc_bridge.py |  2 +-
- python/sglang/srt/entrypoints/http_server.py |  2 +-
- python/sglang/srt/server_args.py             | 17 ++++++++++++++++-
- 4 files changed, 20 insertions(+), 4 deletions(-)
-
 --- a/python/sglang/srt/server_args.py
 +++ b/python/sglang/srt/server_args.py
-@@ -265,6 +265,23 @@
-             for field in record_fields(type(self))
-         }
+@@ -331,6 +331,23 @@
+         resolved["enable_dp_attention"] = resolving_view(self).attn_dp_size > 1
+         return resolved
  
 +    # Fields whose values are secrets and must never leave the process via
 +    # introspection surfaces (/server_info, gRPC GetServerInfo, etc.).
@@ -48,38 +22,61 @@ same; the unit test from that PR is not carried (no pytest in %check).
 +        return d
 +
      LANGUAGE_MODEL_ONLY_ARCHITECTURES = (
+         "DeepseekV4ForCausalLM",
          "MuseGlimmerForConditionalGeneration",
-         "Cosmos3ForConditionalGeneration",
---- a/python/sglang/srt/entrypoints/http_server.py
-+++ b/python/sglang/srt/entrypoints/http_server.py
-@@ -859,7 +859,7 @@
+--- a/python/sglang/srt/utils/common.py
++++ b/python/sglang/srt/utils/common.py
+@@ -3642,7 +3642,7 @@
  
-     return msgspec_to_builtins(
-         {
--            **server_args.resolved_dict(),
-+            **server_args.redacted_asdict(),
-             "launch_command": server_args.launch_command,
-             **_global_state.scheduler_info,
-             "startup_time": _global_state.tokenizer_manager.startup_time,
---- a/python/sglang/srt/entrypoints/grpc_bridge.py
-+++ b/python/sglang/srt/entrypoints/grpc_bridge.py
-@@ -430,7 +430,7 @@
-         return json.dumps(result, default=str)
- 
-     def get_server_info(self) -> str:
--        result: Dict[str, Any] = self.tokenizer_manager.server_args.resolved_dict()
-+        result: Dict[str, Any] = self.tokenizer_manager.server_args.redacted_asdict()
-         # `resolved_dict` answers with what resolution decided; the launch
-         # command answers with what was asked for, and the two are not
-         # derivable from each other. The HTTP and in-process readbacks both
+     Callers add transport-specific fields and serialize the result.
+     """
+-    result = server_args.resolved_dict()
++    result = server_args.redacted_asdict()
+     result["launch_command"] = server_args.launch_command
+     result.update(scheduler_info)
+     result["kv_events"] = describe_kv_events_publisher(server_args)
 --- a/python/sglang/srt/entrypoints/engine.py
 +++ b/python/sglang/srt/entrypoints/engine.py
-@@ -1488,7 +1488,7 @@
-         )
+@@ -168,7 +168,7 @@
+ 
+ 
+ def _server_args_for_logging(server_args: ServerArgs) -> Dict[str, Any]:
+-    return redact_watermark_secrets(server_args.resolved_dict())
++    return redact_watermark_secrets(server_args.redacted_asdict())
+ 
+ 
+ @dataclasses.dataclass
+@@ -1562,7 +1562,7 @@
          return msgspec_to_builtins(
-             {
--                **self.tokenizer_manager.server_args.resolved_dict(),
-+                **self.tokenizer_manager.server_args.redacted_asdict(),
-                 "launch_command": self.tokenizer_manager.server_args.launch_command,
-                 **self._scheduler_init_result.scheduler_infos[0],
-                 "startup_time": self.tokenizer_manager.startup_time,
+             redact_watermark_secrets(
+                 {
+-                    **self.tokenizer_manager.server_args.resolved_dict(),
++                    **self.tokenizer_manager.server_args.redacted_asdict(),
+                     "launch_command": self.tokenizer_manager.server_args.launch_command,
+                     **self._scheduler_init_result.scheduler_infos[0],
+                     "startup_time": self.tokenizer_manager.startup_time,
+--- a/python/sglang/srt/managers/scheduler_components/internal_state.py
++++ b/python/sglang/srt/managers/scheduler_components/internal_state.py
+@@ -19,7 +19,7 @@
+ )
+ from sglang.srt.managers.scheduler_components.memory_usage import build_memory_usage
+ from sglang.srt.runtime_context import get_context, get_exec, get_parallel
+-from sglang.srt.server_args import compute_world_size
++from sglang.srt.server_args import ServerArgs, compute_world_size
+ from sglang.srt.utils.msgspec_utils import msgspec_to_builtins
+ 
+ if TYPE_CHECKING:
+@@ -60,6 +60,13 @@
+         # A bound signal handler is not msgpack-serializable, and no reader
+         # consumes it.
+         state.pop("custom_sigquit_handler", None)
++        # Secrets must not leave the process via readbacks (boo#1284214,
++        # CVE-2026-105245): mask like ServerArgs.redacted_asdict(). The
++        # set_internal_state path rejects these keys, so no round-trip can
++        # write a mask back.
++        for key in ServerArgs.SENSITIVE_FIELDS:
++            if state.get(key) is not None:
++                state[key] = "****"
+         return GetInternalStateReqOutput(internal_state=msgspec_to_builtins(state))
+ 
+     def _add_topology(self, state: Dict[str, Any]) -> None:

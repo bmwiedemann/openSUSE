@@ -144,4 +144,12 @@ Security:
     <comment>Security: redact server_info secrets for CVE-2026-105245 (boo#1284214) on 0.5.21; ZMQ pickle survey for boo#1284755 ships no code change (documented posture).</comment>
     <requestid>1384305</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2bb616bbc3299f70fab5c76207bbac96</srcmd5>
+    <version>0.5.22</version>
+    <time>1792492649</time>
+    <user>anag_factory</user>
+    <comment>Update python-sglang to 0.5.22</comment>
+    <requestid>1386108</requestid>
+  </revision>
 </revisionlist>

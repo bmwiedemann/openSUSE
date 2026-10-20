@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Oct 18 17:38:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.22:
+  * Diffusion and image: HunyuanImage-3.0 support, LLaDA-Image
+    BF16 generation and editing, faster LTX-2 guidance and video
+    output, Z-Image shared-block autotune at both token scales
+  * Memory and kernels: unified memory pool without transfer
+    waits, HiCache stabilization, heterogeneous-TP hybrid SWA KV
+    transfer, KV cache sharding for the DSA indexer, TileLang
+    FP8 KV cache on CUDA
+  * Models: DeepSeek V4 prefill with interleave context
+    parallelism and breakable CUDA graphs, LoRA for the
+    NemotronH Nano VL V2 family, GLM-5.3-Flash and Kimi K3
+    updates, XPU backend upgrade to PyTorch 2.14 with decode
+    context parallelism
+  * Runtime: work around a CPython fork deadlock in the CPU
+    preprocess pool, Helion MTP verification, exposed
+    sglang.api.v1 types for the new api-codegen generator
+  * CVE-2026-110807 (boo#1285675): this package is not affected
+    by the session_params denial of service; the session_id /
+    session_params mutual-exclusion and type guards the fix adds
+    are already present in 0.5.21 and unchanged in 0.5.22
+  * Drop sglang-grpc-system-protoc.patch: upstream removed the
+    sglang-grpc build.rs and its protoc-bin-vendored dependency
+  * Add sglang-api-codegen-system-protoc.patch: same system-
+    protoc treatment for the new sglang-api-codegen generator
+    crate, so no prebuilt protoc binaries land in vendor.tar.zst
+  * The 30343 redaction now also covers the internal_states
+    readback: 0.5.22 folds the full resolved server args into it,
+    which would otherwise re-expose the keys through /server_info
+  * Refresh vendor.tar.zst; new linked Rust crates are foldhash
+    (Zlib) and tonic-prost (MIT), reflected in License
+  * Transformers floor moves to >= 5.19.0 with the upstream pin
+
+-------------------------------------------------------------------
 Mon Oct 12 12:12:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - CVE-2026-105245: /server_info, gRPC GetServerInfo and

@@ -17,7 +17,7 @@
 
 
 Name:           python-sglang
-Version:        0.5.21
+Version:        0.5.22
 Release:        0
 Summary:        Fast serving framework for large language models
 # Legal-Review-Notice: sgl-model-gateway and CUDA AOT kernels
@@ -29,13 +29,14 @@ Summary:        Fast serving framework for large language models
 # against vendor.tar.zst. Re-derived with cargo tree --offline -e normal
 # over those crates: BSD-2-Clause from numpy; BSD-3-Clause from
 # subtle/matchit; Unicode-3.0 from icu_*/unicode-ident; ISC from
-# rustls-webpki/untrusted; CDLA-Permissive-2.0 from webpki-roots.
+# rustls-webpki/untrusted; CDLA-Permissive-2.0 from webpki-roots;
+# Zlib from foldhash (via hashbrown).
 # option-ext (MPL-2.0) reaches only sglang-server, but its sources ride
 # along in vendor.tar.zst, which in the src.rpm satisfies MPL-2.0 §3.2.
 # r-efi offers LGPL-2.1-or-later but is UEFI-target-only and absent from
 # the Linux graph. sglang-server itself is not built: the CPU Python
 # runtime does not use it and it drags in the whole dynamo stack.
-License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND Unicode-3.0
+License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND Unicode-3.0 AND Zlib
 URL:            https://github.com/sgl-project/sglang
 Source0:        https://github.com/sgl-project/sglang/archive/refs/tags/v%{version}.tar.gz#/sglang-%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -46,11 +47,11 @@ Patch0:         sglang-relax-cpu-requirements.patch
 Patch1:         sglang-cpu-triton-stub.patch
 # PATCH-FIX-OPENSUSE sglang-cpu-rust-exts.patch -- build setuptools-rust PyO3 extensions (mm, grpc) from the CPU pyproject
 Patch2:         sglang-cpu-rust-exts.patch
-# PATCH-FIX-OPENSUSE sglang-grpc-system-protoc.patch -- use system protoc instead of protoc-bin-vendored
-Patch3:         sglang-grpc-system-protoc.patch
+# PATCH-FIX-OPENSUSE sglang-api-codegen-system-protoc.patch -- use system protoc instead of protoc-bin-vendored in the sglang-api-codegen generator (0.5.22 moved the vendored protoc there after dropping the sglang-grpc build.rs); the prebuilt protoc binaries stay out of vendor.tar.zst
+Patch3:         sglang-api-codegen-system-protoc.patch
 # PATCH-FIX-UPSTREAM sglang-40185-bootstrap-room-dedup.patch boo#1283270 -- CVE-2026-102634: sgl-project/sglang PR 40185 (unmerged, head commit 1901ddecfe), report an unknown bootstrap_room as KVPoll.Failed instead of letting check_status raise KeyError, and count KVPoll.Success as bootstrap-done; 2 of the PR's 27 files, the rest being a typing modernisation that does not apply to 0.5.21
 Patch4:         sglang-40185-bootstrap-room-dedup.patch
-# PATCH-FIX-UPSTREAM sglang-30343-server-info-redact.patch boo#1284214 -- CVE-2026-105245: sgl-project/sglang PR 30343 (unmerged as of 2026-10-12, head commit 38787264b70c), mask api_key/admin_api_key/ssl_keyfile_password in /server_info, gRPC GetServerInfo and Engine.get_server_info; rebased onto 0.5.21 resolved_dict()
+# PATCH-FIX-UPSTREAM sglang-30343-server-info-redact.patch boo#1284214 -- CVE-2026-105245: sgl-project/sglang PR 30343 (closed stale, head commit 38787264b70c), mask api_key/admin_api_key/ssl_keyfile_password in server info surfaces; upstream refactored them into build_server_info() in 0.5.22 but still serializes the full ServerArgs, and 0.5.22 newly folds the full resolved args into the internal_states readback, so the patch routes build_server_info(), Engine.get_server_info(), the internal-state readback and the server_args log helper through ServerArgs.redacted_asdict()
 Patch5:         sglang-30343-server-info-redact.patch
 BuildRequires:  %{python_module IPython}
 BuildRequires:  %{python_module Pillow}
@@ -98,7 +99,7 @@ BuildRequires:  %{python_module torch >= 2.14.0}
 BuildRequires:  %{python_module torchaudio >= 2.11.0}
 BuildRequires:  %{python_module torchvision >= 0.29.0}
 BuildRequires:  %{python_module tqdm}
-BuildRequires:  %{python_module transformers >= 5.12.1}
+BuildRequires:  %{python_module transformers >= 5.19.0}
 BuildRequires:  %{python_module uvicorn}
 BuildRequires:  %{python_module uvloop}
 BuildRequires:  %{python_module wheel}
@@ -162,7 +163,7 @@ Requires:       python-torch >= 2.14.0
 Requires:       python-torchaudio >= 2.11.0
 Requires:       python-torchvision >= 0.29.0
 Requires:       python-tqdm
-Requires:       python-transformers >= 5.12.1
+Requires:       python-transformers >= 5.19.0
 Requires:       python-uvicorn
 Requires:       python-uvloop
 Requires:       python-xgrammar >= 0.2.7

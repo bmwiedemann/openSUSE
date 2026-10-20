@@ -1,0 +1,51 @@
+--- a/rust/sglang-api-codegen/Cargo.toml
++++ b/rust/sglang-api-codegen/Cargo.toml
+@@ -15,5 +15,4 @@
+ prost = { workspace = true }
+ prost-build = "0.14"
+ prost-reflect = "0.16"
+-protoc-bin-vendored = "3"
+ tonic-prost-build = "0.14"
+--- a/rust/Cargo.toml
++++ b/rust/Cargo.toml
+@@ -35,7 +35,6 @@
+ prost = "0.14"
+ prost-types = "0.14"
+ prost-build = "0.14"
+-protoc-bin-vendored = "=3.2.0"
+ serde = { version = "1", features = ["derive"] }
+ serde_json = "1"
+ socket2 = "0.6"
+--- a/rust/sglang-api-codegen/src/main.rs
++++ b/rust/sglang-api-codegen/src/main.rs
+@@ -22,9 +22,9 @@
+ //! Each target has a single root .proto: every API must be defined (or
+ //! imported) there, and protoc's import closure supplies the rest of the
+ //! package; a file the root does not reach gets no generated code. All output
+-//! is checked in, so commit it together with the .proto change. The vendored
+-//! protoc (pinned by Cargo.lock) is used unless `PROTOC` is set, so the output
+-//! is byte-stable across machines.
++//! is checked in, so commit it together with the .proto change. The system
++//! protoc (`PROTOC` or `PATH`) is used; distro builds do not ship the
++//! upstream vendored binary.
+ 
+ mod emit;
+ mod emit_py;
+@@ -73,15 +73,8 @@
+     let repo_root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..");
+     let proto_root = repo_root.join("proto");
+ 
+-    // Vendored protoc first: the checked-in output must not depend on
+-    // whichever protoc a machine has. `PROTOC` still overrides for platforms
+-    // the vendored crate lacks.
+-    if std::env::var_os("PROTOC").is_none()
+-        && let Ok(vendored) = protoc_bin_vendored::protoc_bin_path()
+-    {
+-        // SAFETY: nothing else is running yet; the generator is single-threaded.
+-        unsafe { std::env::set_var("PROTOC", vendored) };
+-    }
++    // Distro builds use the system protoc (PROTOC or PATH). The upstream
++    // vendored binary is not shipped.
+ 
+     // The descriptor set is only pass 2's input, not part of any crate; it is
+     // a protoc-version-dependent binary, so keep it out of the tree.
