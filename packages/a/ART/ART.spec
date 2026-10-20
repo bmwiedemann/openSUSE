@@ -19,15 +19,13 @@
 %if 0%{?suse_version} && 0%{?suse_version} < 1590
 %global force_gcc_version 12
 %endif
-
 %if (0%{?suse_version} >= 1590) || ("%{_project}" == "graphics")
 %bcond_without art_ctl
 %else
 %bcond_with    art_ctl
 %endif
-
 Name:           ART
-Version:        1.26.9
+Version:        1.26.10
 Release:        0
 Summary:        Rawtherapee fork with masks and simplified UI
 License:        GPL-3.0-or-later
@@ -38,18 +36,17 @@ Source:         https://github.com/artpixls/ART/releases/download/%{version}/%{n
 # https://keys.openpgp.org/vks/v1/by-fingerprint/942FCFB1CBE1E38928A1A6BEA94D951156835A5D
 Source2:        %{name}.keyring
 Patch0:         fix-missing-lm.patch
-BuildRequires:  OpenColorIO-devel
-%if %{with art_ctl}
-BuildRequires:  ctl-devel
-%endif
+Patch1:         fix-LUT3D-nonSIMD-redeclaration.patch
+# PATCH-FIX-UPSTREAM fix-install-art-utils.patch gh#artraweditor/ART#543 -- install libart_utils.so
+Patch2:         fix-install-art-utils.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  mimalloc-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(OpenColorIO)
 BuildRequires:  pkgconfig(cairomm-1.0)
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(expat)
@@ -68,8 +65,12 @@ BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libraw_r)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(mimalloc)
 BuildRequires:  pkgconfig(sigc++-2.0)
 BuildRequires:  pkgconfig(zlib)
+%if %{with art_ctl}
+BuildRequires:  ctl-devel
+%endif
 
 %description
 A free, open-source, cross-platform raw image processing program. ART is a
@@ -122,7 +123,8 @@ mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}/%{name}
 %license %{_docdir}/%{name}/LICENSE.txt
 %{_bindir}/ART
 %{_bindir}/ART-cli
-%{_libdir}/librtengine.so
+%{_libdir}/libart_engine.so
+%{_libdir}/libart_utils.so
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/applications/%{name}.desktop

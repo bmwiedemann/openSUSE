@@ -1,0 +1,17 @@
+Install libart_utils.so: ART and ART-cli link against it since the
+src/{engine,gui,utils} restructure, but only art_engine had an
+install rule.
+
+--- a/src/utils/CMakeLists.txt
++++ b/src/utils/CMakeLists.txt
+@@ -28,6 +28,10 @@
+ add_library(art_utils ${UTILSSOURCEFILES})
+ add_dependencies(art_utils UpdateInfo)
+ 
++if(BUILD_SHARED_LIBS)
++    install(TARGETS art_utils DESTINATION ${LIBDIR})
++endif()
++
+ target_link_libraries(art_utils
+     ${EXTRA_LIB}
+     ${GLIB2_LIBRARIES}

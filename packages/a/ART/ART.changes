@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct 19 08:31:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.26.10:
+  * Added experimental GPU (Vulkan) backend for some processing
+    steps (off by default)
+  * Fixed "reset to default profile" wiping snapshots stored in the
+    .arp sidecar; confirm before deleting sidecars with snapshots
+  * Crop: fit ratio to image when the profile has no crop geometry
+  * Show pipeline processing time in the editor and batch queue
+  * Inspector: fixed histogram for non-raw files and extended the
+    clipping view to them
+  * Spot removal: fixed dependency tracking in zoomed previews
+  * Lens profile, film simulation and CLUT combos replaced with a
+    searchable tree combo; pipettes for curves in CTL scripts;
+    cache baked CTL 3D LUTs
+  * Smoothing: faster lens_motion_blur with masks; vectorized LUT3D
+    and rescaleBilinear
+  * Guard against NaNs in the processing pipeline
+  * Updated translations
+- Packaging: engine library renamed librtengine.so to
+  libart_engine.so after upstream source-tree restructure; refreshed
+  fix-missing-lm.patch for the new src/engine/ path; spec-cleaner
+  pkgconfig conversions (OpenColorIO, mimalloc)
+- Added fix-LUT3D-nonSIMD-redeclaration.patch: drop the duplicate
+  'float out[3]' in LUT3D::apply_tetra that breaks the non-SIMD
+  (e.g. aarch64) build after upstream's LUT3D vectorization
+- Add fix-install-art-utils.patch: install libart_utils.so, which
+  ART, ART-cli and libart_engine.so link against since the
+  source-tree restructure but upstream never installs
+
+-------------------------------------------------------------------
 Mon Oct  5 10:04:14 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.26.9:

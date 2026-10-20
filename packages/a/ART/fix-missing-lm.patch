@@ -1,12 +1,12 @@
-Index: ART-1.26.4/rtengine/CMakeLists.txt
+Index: src/engine/CMakeLists.txt
 ===================================================================
---- ART-1.26.4.orig/rtengine/CMakeLists.txt
-+++ ART-1.26.4/rtengine/CMakeLists.txt
-@@ -234,6 +234,7 @@ target_link_libraries(rtengine
+--- a/src/engine/CMakeLists.txt
++++ b/src/engine/CMakeLists.txt
+@@ -311,6 +311,7 @@ target_link_libraries(art_engine
      ${LENSFUN_LIBRARIES}
      ${RSVG_LIBRARIES}
      ${EXIV2_LIBRARIES}
-+    m 
++    m
      )
  if(LCMS_FAST_FLOAT AND NOT LCMS_FAST_FLOAT_SYSTEM)
-     target_link_libraries(rtengine lcms2_fast_float)
+     target_link_libraries(art_engine lcms2_fast_float)
