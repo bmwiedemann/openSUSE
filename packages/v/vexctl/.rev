@@ -311,4 +311,30 @@ VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, so
   * build(deps): Bump chainguard-dev/actions/boilerplate in the all group (forwarded request 1379022 from jfkw)</comment>
     <requestid>1379025</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>08f62277c2ba3f157d57d5c8ad79b794</srcmd5>
+    <version>0.4.4+git106.aa6ffc8</version>
+    <time>1792492987</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.4+git106.aa6ffc8:
+  * build(deps): Bump sigs.k8s.io/release-utils
+  * build(deps): Bump golang.org/x/sync from 0.23.0 to 0.24.0
+  * Bump linter
+  * build(deps): Bump the all group with 2 updates
+  * build(deps): Bump chainguard-dev/actions/boilerplate
+  * build(deps): Bump chainguard-dev/actions/boilerplate in the all group
+  * build(deps): Bump github.com/carabiner-dev/collector in the all group
+  * Add a validate subcommand to lint OpenVEX documents
+- Packaging improvements:
+  * _service go.mod replace fixes dependency CVEs:
+    golang.org/x/net=golang.org/x/net@v0.60.0
+    GO-2026-6617 CVE-2026-97032
+    GO-2026-6612 CVE-2026-78663
+    GO-2026-6611 CVE-2026-78669
+    GO-2026-6610 CVE-2026-78660
+    GO-2026-6603 CVE-2026-78659
+  * Fix typo ppc64le not ppc64 in PIE condititional:
+    %%ifnarch ppc64le GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build (forwarded request 1386393 from jfkw)</comment>
+    <requestid>1386394</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           vexctl
-Version:        0.4.4+git91.839fbf5
+Version:        0.4.4+git106.aa6ffc8
 Release:        0
 Summary:        CLI tool to create, transform and attest VEX metadata
 License:        Apache-2.0
@@ -41,7 +41,7 @@ has no security implications for their product.
 %autosetup -a 1
 
 %build
-%ifnarch ppc64
+%ifnarch ppc64le
 export GOFLAGS="-buildmode=pie"
 %endif
 go build
