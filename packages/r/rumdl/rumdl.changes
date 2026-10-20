@@ -1,4 +1,241 @@
 -------------------------------------------------------------------
+Mon Oct 19 04:57:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.0:
+  * Changed
+    - 2.4–4.7× faster rumdl fmt than 0.2.79 on frozen documentation
+      snapshots: Cargo (99 files) 4.7×, MkDocs Material (85 files)
+      2.6×, and Ruff (16 files) 2.4×. Reusing parsed Markdown and
+      shared source analysis reduces repeated work. Speedups
+      compare median elapsed times from 31 paired runs after five
+      warmups on Apple M6: ordinary Rust 1.96.0 release builds,
+      default threads, warm filesystem cache, and --no-config
+      --no-cache --silent (--flavor=standard for Cargo/Ruff,
+      --flavor=mkdocs for MkDocs Material).
+      Output includes the correctness fixes listed below and can
+      differ from 0.2.79.
+    - Code block tools are supported and remain opt-in. Missing
+      tags, missing active-mode tools and invocations with no tools
+      checked are ignored by default.
+      An omitted unknown-tag policy inherits
+      on-missing-language-definition, preserving existing strict
+      configurations. Valid internal cached checks count as
+      checked; applicable external tools rerun to reflect changes
+      in their own configuration and environment.
+    - on-missing-language-definition = "warn" now reports uncovered
+      languages; previous releases treated it as ignore.
+    - Executable lookup remains system-only by default. Per-binary
+      preferences can opt into nearest-first project lookup bounded
+      by repository/configuration boundaries, including hoisted
+      workspace installations.
+    - MD037 still reports spaces inside emphasis delimiters but no
+      longer provides automatic fixes, including editor fixes.
+      Repair the reported emphasis manually; inserting escapes or
+      removing whitespace can change literal Markdown meaning.
+  * Added
+    - fmt --preflight and check --fix --preflight validate and plan
+      the complete selected file batch before applying any writes,
+      with atomic replacement per file after successful planning.
+    - Configurable coverage policies with block diagnostics and
+      invocation-wide fail-fast behavior. Invalid tool definitions
+      receive central configuration warnings, made fatal by
+      --deny-config-warnings.
+    - Fail-fast tool policies report an incomplete invocation (exit
+      2), including when document finding failures are disabled
+      with --fail-on never.
+    - Shared full-table language recognition and flavor-aware fence
+      coverage.
+      No-tools invocation errors preserve JSON's findings array and
+      use SARIF invocation notifications rather than assigning
+      errors to a document.
+    - --stdin-batch-targets FILE supplies a NUL-delimited
+      file/directory inventory for cross-file existence checks
+      without requiring placeholder documents.
+    - MD013: add reflow-break-code-spans to keep code spans whole
+      while emphasis wraps (bd41ee8)
+    - fmt: add Bun code-block formatting and reduce redundant
+      checks (2605ead)
+    - stdin: accept separate batch link target inventories
+      (56c492b)
+  * Fixed
+    - Headings inside blockquotes and list items are checked and
+      fixed relative to their container. Heading spacing,
+      indentation, capitalization, and reflow preserve list markers
+      and avoid rewriting literal text or template code.
+    - Tables nested under multiple containers are recognized.
+      Blank-line checks respect MkDocs admonition openers and
+      Markdown-enabled HTML boundaries; HTML markers inside
+      comments and indented code remain literal content.
+    - MD035: leave a first-line thematic break unchanged when
+      fixing it would turn the following content into front matter.
+    - File discovery skips source-code files matched by broad
+      include patterns, while explicitly supplied unsupported
+      source files still receive an error.
+    - Reject invalid UTF-8 in external tool stdout instead of
+      replacing invalid bytes and allowing that output to become
+      formatted document content.
+    - deps: update rustls to address security advisories (7acb91a)
+    - MD058: follow the parser on whether a bare marker opens a
+      list item, and limit the list tab check to table rows
+      (0075568)
+    - MD056: confirm tables longer than the parser slice limit
+      (3e55b6c)
+    - MD058: require a blank line before a table after a bare
+      marker that opens no item (2f259fd)
+    - MD056: leave text the parser does not read as a table alone
+      (f1cd37b)
+    - MD060: confirm a MkDocs table that follows the container
+      opener directly (d3ef855)
+    - MD060: keep the indentation of tables in admonitions and
+      content tabs (5d8b0f1)
+    - MD056: keep a table in a quoted list item and after a
+      definition from being corrupted by fixes (84be18d)
+    - MD060: rewrite only tables the Markdown parser confirms
+      (b7bd275)
+    - config: find user config under ~/.config on Windows and
+      explain discovery (77e3c42)
+    - inline-config: accept directive comments without whitespace
+      after the opener or before the closer (56f02cb)
+    - MD077: end the item at a tight line that does not continue
+      its paragraph (77b8840)
+    - MD065: keep a fix from moving a rule out of its list item or
+      turning a quoted heading into a rule (18a4458)
+    - MD027: keep lazy blockquote lines indented four or more
+      spaces from changing the parse (25e98af)
+    - MD003: keep Unicode whitespace in ATX heading text (6c49f9f)
+    - lsp: read the level of a hovered heading from the parser
+      (4ebb586)
+    - MD026: check and fix headings inside blockquotes and list
+      items (ceb994c)
+    - MD062: keep blockquote markers and non-CommonMark spaces out
+      of fixes (60948d3)
+    - MD013: keep reflow from moving text across a bare list marker
+      (9933ebd)
+    - lint_context: accept only ASCII digits in an ordered list
+      marker (b1f1983)
+    - lint_context: read only spaces and tabs as the padding after
+      a list marker (dea556c)
+    - MD026: keep the list marker when removing trailing
+      punctuation from a heading on a marker line (cab9c14)
+    - lsp: rename the text of a heading on a list marker line
+      without touching its marker (f8abc14)
+    - MD063: keep the list marker when capitalizing a heading on a
+      marker line (54e66a2)
+    - MD041: treat a heading that opens a list item as list
+      content, not a first-line heading (b97b57a)
+    - MD025: keep the list marker when demoting an extra top-level
+      heading (292b80a)
+    - MD022: do not add a blank line above a heading that opens its
+      list item (c0676d4)
+    - MD021: keep the list marker of a closed ATX heading on a
+      marker line (ec1b64e)
+    - MD019: measure extra spaces after the hashes of a heading on
+      a list marker line (d996536)
+    - MD003: keep a marker-line heading in its list item when
+      changing style (0ac54b5)
+    - lint_context: record headings that begin on a list marker
+      line (28aaf36)
+    - MD069: leave thematic breaks and dependent lines alone and
+      keep the first marker (7881cbe)
+    - MD077: keep continuation content inside the list item that
+      owns it (f6ef2ab)
+    - MD031: keep a fenced block in its list item and leave
+      unclosed fences alone (5902a03)
+    - MD010: leave the text of an inline code span untouched
+      (7009810)
+    - MD009: keep whitespace that ends a line inside a multi-line
+      code span (4859c8a)
+    - cli: report a panic in one file as an error for that file
+      instead of aborting the run (b010c43)
+    - lint_context: stop a setext heading ending in an attribute
+      block from crashing the parser (5e45599)
+    - MD010: expand leading tabs to their CommonMark columns and
+      drop trailing tabs (0c33ce5)
+    - lint_context: read a marker or an ATX shape indented four
+      columns as text (5add655)
+    - MD022: keep a heading that begins a list item directly under
+      its bare marker (cd805cf)
+    - MD023: measure heading indentation from the list item's
+      content column (5bd6f5b)
+    - MD003: decline ATX to setext conversions that would change
+      the document structure (a9b552d)
+    - lint_context: treat a bare list marker as an empty list item,
+      not setext heading text (8168f65)
+    - MD013: keep #word references off the start of reflowed lines
+      (e069f1e)
+    - MD035: do not rewrite a thematic break into a setext
+      underline (1c66de3)
+    - config: reject leading ! in exclude patterns instead of
+      misreading them (76e4b57)
+    - MD034: do not report a scheme with no host as a bare URL
+      (95efa02)
+    - MD051: percent-decode link fragments before resolving them
+      (c3be202)
+    - MD013: join a single sentence wrapped inside a list item in
+      sentence-per-line mode (4348ab2)
+    - MD060: preserve table continuations verbatim (267ce68)
+    - MD060: preserve pipe-less table body content (b59024c)
+    - code-block-tools: treat MkDocs syntax inside fenced blocks as
+      code (6182b96)
+    - code-block-tools: refuse formatted code that would end its
+      block early (d89051a)
+    - code-block-tools: lint embedded markdown inside blockquotes
+      (f82de52)
+    - code-block-tools: handle code blocks inside lists and
+      blockquotes (f7ddcd6)
+    - MD046: ignore fence markers inside front matter (044be22)
+    - MD046: leave an indented block alone when its backtick line
+      cannot open a fence (1d784cc)
+    - MD046: dedent a misplaced fence only when its last line
+      closes it (ccc9b91)
+    - MD046: keep the code text of whitespace-only lines when
+      fencing (5927307)
+    - MD046: check indented code in files indented only with tabs
+      (2908694)
+    - MD046: keep a misplaced fence in its container when dedenting
+      it (952c79f)
+    - MD046: fence indented code at its container's content column
+      (1da7b83)
+    - MD046: close a fence indented short of a list item's content
+      column (622c9cb)
+    - MD056: pad a short delimiter row with --- (807899c)
+    - MD056: keep extra table cells that contain text (9b61072)
+    - config: recognize the MD060 table-column-style alias
+      (4c101e7)
+    - config: honor CLI2 ignores across CLI and LSP (c562eb3)
+    - config: resolve markdownlint-cli2 configs like
+      markdownlint-cli2 (0256df7)
+    - code-block-tools: support home discovery without native
+      features (cdf4dd3)
+    - code-block-tools: use reliable native stdin format checks
+      (d8c5be5)
+    - MD046: fence the whole indented block when a line looks like
+      a list, quote or footnote (4b07d7e)
+  * Breaking Changes
+    - MD037: stop offering unsafe emphasis fixes (cfdd1bf)
+  * Performance
+    - links: reuse document destinations and anchor facts (e55b474)
+    - input: reuse conflict scans and avoid LF allocations
+      (01abef9)
+    - context: share block analysis and skip absent structures
+      (aa93bd9)
+    - rules: reuse parsed facts and discovered source identities
+      (b14cafe)
+    - context: share source scans and reuse temporary buffers
+      (b85e7a4)
+    - fmt: reuse stable analysis and avoid redundant scans
+      (9046164)
+    - fix: reuse dependency graphs and selected rule order
+      (b4f4d53)
+    - parser: skip marker regexes for ordinary text (8bec725)
+    - fmt: reuse initial analysis and directory snapshots (d4a66ea)
+    - parser: share Markdown analysis and add native source
+      scanning (694364a)
+    - fmt: reuse lint context while wrapping fix rules (0efc07d)
+    - skip document reconfiguration parsing without overrides
+      (78621a4)
+
+-------------------------------------------------------------------
 Mon Oct 12 04:48:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.79:
