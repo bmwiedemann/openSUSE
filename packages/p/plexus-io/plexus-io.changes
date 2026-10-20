@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 19 05:28:52 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.8.1
+  * Bug Fixes
+    + Apply default excludes on Windows
+  * Documentation updates
+    + Drop the Source Xref menu item
+  * Maintenance
+    * Drop the Source Xref menu item
+  * Build
+    + Allow running the release drafter by hand
+    + Use the shared release-drafter workflow from master
+
+-------------------------------------------------------------------
 Mon Sep 28 11:38:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.8.0

@@ -17,7 +17,7 @@
 
 
 Name:           plexus-io
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        Plexus IO Components
 License:        Apache-2.0
@@ -25,7 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/%{name}
 Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
-Source2:        http://www.apache.org/licenses/LICENSE-2.0.txt
+Source2:        https://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  atinject
