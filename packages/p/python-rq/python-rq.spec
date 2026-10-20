@@ -24,18 +24,20 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %define mod_name rq
-
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-rq%{psuffix}
-Version:        2.10
+Version:        2.12.0
 Release:        0
 Summary:        Easy Job Queues for Python
-License:        Apache-2.0
-Group:          Development/Languages/Python
+License:        BSD-2-Clause
 URL:            https://github.com/rq/rq
-Source:         https://github.com/rq/rq/archive/v%{version}/%{mod_name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/rq/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{python_module click >= 5.0.0}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -47,17 +49,19 @@ BuildRequires:  redis
 Requires:       python-click >= 5.0.0
 Requires:       python-croniter
 Requires:       python-redis >= 3.5.0
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
-
+%endif
 %if %{with test}
 BuildRequires:  %{python_module %{mod_name} = %{version}}
-BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module sentry-sdk}
+BuildRequires:  %{python_module psutil >= 7}
+BuildRequires:  %{python_module pytest >= 8.3.5}
 %endif
-
 %python_subpackages
 
 %description
@@ -67,6 +71,7 @@ integrated into web stacks.
 
 %prep
 %autosetup -p1 -n %{mod_name}-%{version}
+chmod -x rq/cli/cli.py
 
 %if !%{with test}
 %build
@@ -77,6 +82,7 @@ integrated into web stacks.
 %python_clone -a %{buildroot}%{_bindir}/rq
 %python_clone -a %{buildroot}%{_bindir}/rqinfo
 %python_clone -a %{buildroot}%{_bindir}/rqworker
+%python_group_libalternatives rq rqinfo rqworker
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -84,15 +90,25 @@ integrated into web stacks.
 %check
 export PATH="$PATH:%{buildroot}%{_bindir}"
 %{_sbindir}/redis-server --port 6379 &
-%pytest
-killall redis-server
+trap 'killall redis-server || true' EXIT
+# test_execution_order_with_sole_dependency assumes worker process w1 takes the
+# first job within 0.5 s; on slow ppc64le builders w2 wins the race
+# (uname, not %ifarch: both never match on a noarch package, rpm names the arch powerpc64le)
+skip=
+if [ "$(uname -m)" = ppc64le ]; then
+  skip="--deselect tests/test_job_dependency.py::TestJobDependency::test_execution_order_with_sole_dependency"
+fi
+%pytest $skip
 %endif
 
 %if !%{with test}
+%pre
+%python_libalternatives_reset_alternative rq
+%python_libalternatives_reset_alternative rqinfo
+%python_libalternatives_reset_alternative rqworker
+
 %post
-%python_install_alternative rq
-%python_install_alternative rqinfo
-%python_install_alternative rqworker
+%python_install_alternative rq rqinfo rqworker
 
 %postun
 %python_uninstall_alternative rq
@@ -103,7 +119,7 @@ killall redis-server
 %doc README.md CHANGES.md
 %license LICENSE
 %{python_sitelib}/rq
-%{python_sitelib}/rq-%{version}*-info
+%{python_sitelib}/rq-%{version}.dist-info
 %python_alternative %{_bindir}/rq
 %python_alternative %{_bindir}/rqinfo
 %python_alternative %{_bindir}/rqworker

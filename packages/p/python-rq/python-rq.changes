@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:26:02 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.12.0:
+  * Added `CronJobRegistry` so cron job histories can be monitored
+    without an active `CronScheduler`.
+  * `CronScheduler.heartbeat()` now re-creates its Redis hash if it
+    expires.
+- Changes in 2.11.0:
+  * `CronJob` now keeps a history of jobs it created, accessible via
+    `cron_job.get_job_ids()`.
+  * `RQScheduler` now acquires and refreshes locks before enqueueing.
+  * Each `CronJob` now has a `name`.
+  * `rq worker-pool` now supports custom exception handlers and honors
+    the `DICT_CONFIG` logging setting from config files.
+  * `Execution` now stores the name of the worker running it.
+  * Fixed an issue where calling `create_cron()` multiple times
+    creates duplicate jobs.
+  * Fixed `SpawnWorker` compatibility with `redis-py` >= 8.1.
+  * Worker log messages now include the worker name and job ID.
+- Switch from update-alternatives to libalternatives.
+- Fix License tag to BSD-2-Clause to match upstream LICENSE and
+  pyproject.toml.
+- Drop obsolete python-sentry-sdk test BuildRequires.
+- Skip test_execution_order_with_sole_dependency on ppc64le: it assumes
+  a worker process starts within 0.5 s and fails intermittently on slow
+  builders.
+
+-------------------------------------------------------------------
 Sun Jul  5 10:49:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10:
