@@ -53,4 +53,24 @@
     <comment></comment>
     <requestid>882810</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3dee26d41684e007850c8b61ec4dd353</srcmd5>
+    <version>2.4.0</version>
+    <time>1792492470</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.0:
+  * add utarray_replace (thanks, xunicatt!)
+  * add LL_REVERSE/DL_REVERSE/CDL_REVERSE (thanks, xunicatt!)
+  * add CDL_CONCAT (thanks, xunicatt!)
+  * remove `oom` (deprecated in v2.2.0) in favor of `utarray_oom`
+  * remove HASH_DEFINE_OWN_STDINT (added in v2.2.0), on the
+    theory nobody uses it
+  * use __typeof on the MCST Elbrus C Compiler (thanks,
+    utf-4096!)
+
+  * fixed clang warnings
+  * uthash has been downloaded 29,000+ times since 2006 on
+  * uthash HASH_MUR compiles under MSVC++ 10 in C mode</comment>
+    <requestid>1385874</requestid>
+  </revision>
 </revisionlist>

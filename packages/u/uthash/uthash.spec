@@ -1,7 +1,7 @@
 #
 # spec file for package uthash
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           uthash
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Inline hash table for C structures
 License:        BSD-3-Clause

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:36:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * add utarray_replace (thanks, xunicatt!)
+  * add LL_REVERSE/DL_REVERSE/CDL_REVERSE (thanks, xunicatt!)
+  * add CDL_CONCAT (thanks, xunicatt!)
+  * remove `oom` (deprecated in v2.2.0) in favor of `utarray_oom`
+  * remove HASH_DEFINE_OWN_STDINT (added in v2.2.0), on the
+    theory nobody uses it
+  * use __typeof on the MCST Elbrus C Compiler (thanks,
+    utf-4096!)
+
+-------------------------------------------------------------------
 Fri Apr 02 11:20:21 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - udpate to 2.3.0:
@@ -68,11 +81,11 @@ Thu Mar  5 07:47:20 UTC 2015 - mpluskal@suse.com
   * add HASH_OVERHEAD macro to get overhead size for hash table
 - Changes for 1.9.8
   * HASH_REPLACE now in uthash
-  * fixed clang warnings 
+  * fixed clang warnings
   * fixed utarray_insert when inserting past array end
   * you can now find uthash on GitHub
   * there’s a uthash Google Group
-  * uthash has been downloaded 29,000+ times since 2006 on 
+  * uthash has been downloaded 29,000+ times since 2006 on
     SourceForge
 - Changes for 1.9.7
   * utstring now supports substring search using utstring_find
@@ -80,7 +93,7 @@ Thu Mar  5 07:47:20 UTC 2015 - mpluskal@suse.com
   * utlist element prev/next fields can now have any names
   * uthash cast quiets a clang warning
   * uthash userguide example shows how to check key uniqueness
-  * uthash HASH_MUR compiles under MSVC++ 10 in C mode 
+  * uthash HASH_MUR compiles under MSVC++ 10 in C mode
   * utstring_printf now supports format checking
 
 -------------------------------------------------------------------
