@@ -1,7 +1,7 @@
 #
 # spec file for package ffnvcodec
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           ffnvcodec
-Version:        13.0.19.0
+Version:        13.1.15.0
 Release:        0
 Summary:        FFmpeg version of NVIDIA codec API headers
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git
 Source:         nv-codec-headers-%{version}.tar.xz
 BuildRequires:  pkgconfig
@@ -32,7 +31,6 @@ with NVIDIA codec APIs.
 
 %package -n %{name}-devel
 Summary:        FFmpeg version of NVIDIA codec API headers
-Group:          Development/Libraries/C and C++
 
 %description -n %{name}-devel
 This package contains the headers required for FFmpeg to interface
