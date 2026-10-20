@@ -40,9 +40,9 @@
 %define origname mozilla-nss
 
 Name:           %{origname}%{psuffix}
-Version:        3.129
+Version:        3.130
 Release:        0
-%define underscore_version 3_129
+%define underscore_version 3_130
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -182,10 +182,10 @@ Requires(post): sed
 Requires(post): coreutils
 
 %description sysinit
-Default Operation System module that manages applications loading
-NSS globally on the system. This module loads the system defined
+Default Operating System module that manages applications loading
+NSS globally on the system. This module loads the system-defined
 PKCS #11 modules for NSS and chains with other NSS modules to load
-any system or user configured modules.
+any system or user-configured modules.
 
 %package -n libfreebl3
 Summary:        Freebl library for the Network Security Services
@@ -501,10 +501,10 @@ install -m 644 %{SOURCE9} %{buildroot}%{nssdbdir}
   %{?__debug_package:%{__debug_install_post}} \
   %{__arch_install_post} \
   %__os_install_post \
-  LD_LIBRARY_PATH=:%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -K f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 -i %{buildroot}%{_libdir}/libsoftokn3.so \
-  LD_LIBRARY_PATH=:%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -K f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 -i %{buildroot}%{_libdir}/libnssdbm3.so \
-  LD_LIBRARY_PATH=:%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -K f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 -i %{buildroot}/%{_libdir}/libfreebl3.so \
-  LD_LIBRARY_PATH=:%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -K f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 -i %{buildroot}/%{_libdir}/libfreeblpriv3.so \
+  LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -K f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 -i %{buildroot}%{_libdir}/libsoftokn3.so \
+  LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -K f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 -i %{buildroot}%{_libdir}/libnssdbm3.so \
+  LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -K f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 -i %{buildroot}/%{_libdir}/libfreebl3.so \
+  LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{buildroot}%{_libexecdir}/nss/shlibsign -K f4556650ac31d35461610bac4ed81b1a181b2d8a43ea2854cbae22ca74560813 -i %{buildroot}/%{_libdir}/libfreeblpriv3.so \
 %{nil}
 
 %post -p /sbin/ldconfig

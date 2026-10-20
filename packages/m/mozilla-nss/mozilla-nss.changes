@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Oct 13 06:27:24 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.130
+  * bmo#2072042 - selfserv: drain connections before closing
+  * bmo#2072396 - reduce core file detection frequency in CI runs
+  * bmo#2074429 - applied clang-format on nss
+  * bmo#2074515 - Include blapit.h to expose AES_BLOCK_SIZE and SHA_*_LENGTH
+  * bmo#2073728 - remove some unused types and functions from lib/pki
+  * bmo#2012680 - Testcases for DER_GetInteger error handling
+  * bmo#2054712 - Don't accept post-handshake CertificateRequest in DTLS
+  * bmo#1951159 - release the decoded certificate when
+                  CERT_NewTempCertificate fails
+  * bmo#2072384 - remove unnecessary certs dependencies in CI graph
+  * bmo#2072554 - add missing return in do_key_slot when no internal key slot
+  * bmo#2072682 - initialize referenceCount in crlutil's CRL allocations
+  * bmo#2072682 - take a reference in cmsutil's CMS decrypt-key callback
+  * bmo#2072682 - release-assert softoken session and db reference counts
+  * bmo#2072682 - release-assert stan object reference counts
+  * bmo#2072682 - release-assert pk11wrap slot, module and symkey
+                  reference counts
+  * bmo#2072682 - release-assert SSL reference counts
+  * bmo#2072682 - release-assert CRL and GeneralNameList reference counts
+  * bmo#2072682 - free never-live symkeys directly in pk11_getKeyFromList
+  * bmo#2072682 - abort on detected key object double frees
+  * bmo#2072633 - return CKR_HOST_MEMORY when PORT_NewArena fails in
+                  jpakesftk.c
+  * bmo#2072389 - fix uninitialized SECItem.type in SECKEY_ConvertToPublicKey
+  * bmo#2047359 - propagate the PKCS#12 max element length to nested decoders
+  * bmo#2068001 - Switch NSS to WIN95 target and remove Windows fiber code
+  * bmo#2030245 - Add Windows ARM64 build support to NSS
+  * bmo#2019001 - Update policy for mlkem1024 named group and others
+  * bmo#2061391 - perform session object removals under slot lock
+  * bmo#2028690 - Keep the default input size limit in
+                  NSS_CMSMessage_CreateFromDER
+  * bmo#2028690 - Thread element limits through the QuickDER decoder and
+                  raise them for CRLs
+  * bmo#2028690 - Limit ASN.1 group element count and total streamed input
+  * bmo#2028690 - Add SEC_QuickDERDecodeItemWithLimits
+  * bmo#2028690 - Place a default size limit on ASN.1 decoder inputs
+  * bmo#1951159 - populate NSSCertificate::id at creation
+  * bmo#2064306 - avoid VLA in tls_ech_unittest.cc
+  * bmo#2070118 - Change the error from decode_error to illegal_parameter
+                  for the case when update field in Key Update is neither
+                  update_requested nor update_not_requested
+  * bmo#2064311 - Remove HPKE internals from public headers
+  * bmo#2064306 - HPKE P-256 and P-384 KEMs
+  * bmo#2070669 - NSS release process improvements
+  * bmo#2070421 - Set _NSPR_BUILD_ for Windows builds
+  * bmo#2064502 - add tsan build for NSS in treeherder
+
+-------------------------------------------------------------------
+Wed Oct  7 14:34:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix LD_LIBRARY_PATH setting to not include the current wd
+
+-------------------------------------------------------------------
 Wed Sep 30 05:49:36 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.129
@@ -851,7 +907,7 @@ Fri Aug  2 08:04:51 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 -------------------------------------------------------------------
 Mon Jul 29 12:44:11 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
-- Require `sed` for mozilla-nss-sysinit, as setup-nsssysinit.sh 
+- Require `sed` for mozilla-nss-sysinit, as setup-nsssysinit.sh
   depends on it and will create a broken, empty config, if sed is
   missing (bsc#1227918)
 
@@ -876,7 +932,7 @@ Wed Jul 10 13:21:13 UTC 2024 - Hans Petter Jansson <hpj@suse.com>
 -------------------------------------------------------------------
 Mon Jul  1 09:50:57 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
-- update to NSS 3.101.1 
+- update to NSS 3.101.1
   * bmo#1901932 - missing sqlite header.
   * bmo#1901080 - GLOBALTRUST 2020: Set Distrust After for TLS and S/MIME.
 
@@ -915,7 +971,7 @@ Mon Jun 10 12:49:53 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
   * bmo#1830415 - Switch to the mozillareleases/image_builder image
 - Follow upstream changes in nss-fips-constructor-self-tests.patch (switch from ec_field_GFp to ec_field_plain)
 - Remove part of nss-fips-zeroization.patch that got removed upstream
- 
+
 -------------------------------------------------------------------
 Fri May 24 08:12:08 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
@@ -928,7 +984,7 @@ Fri May 24 08:12:08 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 Wed May  8 06:06:52 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to NSS 3.100
- - bmo#1893029 - merge pk11_kyberSlotList into pk11_ecSlotList for 
+ - bmo#1893029 - merge pk11_kyberSlotList into pk11_ecSlotList for
                  faster Xyber operations.
  - bmo#1893752 - remove ckcapi.
  - bmo#1893162 - avoid a potential PK11GenericObject memory leak.
@@ -4555,8 +4611,8 @@ Sat Jun  6 15:37:13 CEST 2009 - wr@rosenauer.org
 -------------------------------------------------------------------
 Tue Jun  2 09:41:34 CEST 2009 - wr@rosenauer.org
 
-- updated builtin root certs by updating to 
-  NSS_3_12_3_WITH_CKBI_1_75_RTM tag which is supposed to be the 
+- updated builtin root certs by updating to
+  NSS_3_12_3_WITH_CKBI_1_75_RTM tag which is supposed to be the
   base for Firefox 3.5.0
 - PreReq coreutils in the main package already as "rm" is used
   in its %post script
@@ -4693,12 +4749,12 @@ Thu Jul 26 20:18:38 CEST 2007 - maw@suse.de
 -------------------------------------------------------------------
 Mon Jun 11 11:41:27 CEST 2007 - ro@suse.de
 
-- use string[0] instead of string in char.patch 
+- use string[0] instead of string in char.patch
 
 -------------------------------------------------------------------
 Mon Jun 11 11:33:34 CEST 2007 - ro@suse.de
 
-- update to NSS 3.11.6 (pull in from wr from opensuse BS) 
+- update to NSS 3.11.6 (pull in from wr from opensuse BS)
 
 -------------------------------------------------------------------
 Wed Feb 21 16:55:06 CST 2007 - maw@suse.de
@@ -4714,7 +4770,7 @@ Sun Oct  1 23:01:38 CEST 2006 - wr@rosenauer.org
 -------------------------------------------------------------------
 Wed Sep  6 08:23:45 CEST 2006 - stark@suse.de
 
-- update to NSS_3_11_20060905_TAG to be in sync with 
+- update to NSS_3_11_20060905_TAG to be in sync with
   Gecko 1.8.1
 
 -------------------------------------------------------------------
@@ -4725,7 +4781,7 @@ Mon Aug  7 13:53:55 CEST 2006 - stark@suse.de
 -------------------------------------------------------------------
 Sat Aug  5 09:50:47 CEST 2006 - stark@suse.de
 
-- update to NSS_3_11_20060731_TAG to be in sync with 
+- update to NSS_3_11_20060731_TAG to be in sync with
   Gecko 1.8.1
 
 -------------------------------------------------------------------
@@ -4850,7 +4906,7 @@ Thu Apr  7 09:08:22 CEST 2005 - stark@suse.de
 -------------------------------------------------------------------
 Fri Apr  1 15:55:58 CEST 2005 - stark@suse.de
 
-- don't parallelize build 
+- don't parallelize build
 
 -------------------------------------------------------------------
 Thu Mar 31 07:39:45 CEST 2005 - stark@suse.de

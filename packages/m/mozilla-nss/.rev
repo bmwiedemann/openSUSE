@@ -3802,4 +3802,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1382991</requestid>
   </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>486a281bfc40bfbae705651cd5eb0bd2</srcmd5>
+    <version>3.130</version>
+    <time>1792492537</time>
+    <user>anag_factory</user>
+    <comment>- update to NSS 3.130
+  * bmo#2072042 - selfserv: drain connections before closing
+  * bmo#2072396 - reduce core file detection frequency in CI runs
+  * bmo#2074429 - applied clang-format on nss
+  * bmo#2074515 - Include blapit.h to expose AES_BLOCK_SIZE and SHA_*_LENGTH
+  * bmo#2073728 - remove some unused types and functions from lib/pki
+  * bmo#2012680 - Testcases for DER_GetInteger error handling
+  * bmo#2054712 - Don't accept post-handshake CertificateRequest in DTLS
+  * bmo#1951159 - release the decoded certificate when
+                  CERT_NewTempCertificate fails
+  * bmo#2072384 - remove unnecessary certs dependencies in CI graph
+  * bmo#2072554 - add missing return in do_key_slot when no internal key slot
+  * bmo#2072682 - initialize referenceCount in crlutil's CRL allocations
+  * bmo#2072682 - take a reference in cmsutil's CMS decrypt-key callback
+  * bmo#2072682 - release-assert softoken session and db reference counts
+  * bmo#2072682 - release-assert stan object reference counts
+  * bmo#2072682 - release-assert pk11wrap slot, module and symkey
+                  reference counts
+  * bmo#2072682 - release-assert SSL reference counts
+  * bmo#2072682 - release-assert CRL and GeneralNameList reference counts
+  * bmo#2072682 - free never-live symkeys directly in pk11_getKeyFromList
+  * bmo#2072682 - abort on detected key object double frees
+  * bmo#2072633 - return CKR_HOST_MEMORY when PORT_NewArena fails in
+                  jpakesftk.c
+  * bmo#2072389 - fix uninitialized SECItem.type in SECKEY_ConvertToPublicKey
+  * bmo#2047359 - propagate the PKCS#12 max element length to nested decoders
+  * bmo#2068001 - Switch NSS to WIN95 target and remove Windows fiber code
+  * bmo#2030245 - Add Windows ARM64 build support to NSS
+  * bmo#2019001 - Update policy for mlkem1024 named group and others
+  * bmo#2061391 - perform session object removals under slot lock</comment>
+    <requestid>1385947</requestid>
+  </revision>
 </revisionlist>
