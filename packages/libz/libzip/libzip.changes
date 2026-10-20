@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Oct 16 19:04:47 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.12.1:
+ * Protect against denial of service attack
+   (GHSA-m3wq-j48p-jxwh, actually fixed in 1.12)
+  * Fix compile issues.
+  * Fix adding and replacing files in torrentzip archives
+  * Fix error handling in zip_source_filep_create()
+- update to 1.12:
+  * Keep order of local extra fields, even if an identical extra
+    field is present in the central directory
+  * Add zip_source_at_eof() and ZIP_SOURCE_AT_EOF
+  * Consistently report CRC and decryption errors when reading
+    exactly to end-of-file.
+  * Remove Mbed TLS support - the required functions were made
+    private
+  * Securely clear passwords and key material before freeing it
+  * Use SipHash hash function with per-table random keys. This
+    prevents hash flooding attacks
+  * Add compile time option to limit LZMA window size
+  * Add more comprehensive fuzzers for metadata and write code
+    paths
+  * Fix zip_source_is_seekable()
+  * Fix setting incorrect WinZIP AES version in some cases
+  * Further improvements to overall stability and other minor
+    adjustments have been made
+
+-------------------------------------------------------------------
 Tue Sep  9 13:27:20 UTC 2025 - pgajdos@suse.com
 
 - version update to 1.11.4

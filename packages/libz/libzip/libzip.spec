@@ -2,6 +2,7 @@
 # spec file for package libzip
 #
 # Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +17,9 @@
 #
 
 
-%{!?make_build: %global make_build make %{?_smp_mflags}}
 %define sover 5
 Name:           libzip
-Version:        1.11.4
+Version:        1.12.1
 Release:        0
 Summary:        C library for reading, creating, and modifying zip archives
 License:        BSD-3-Clause
@@ -101,8 +101,7 @@ rm -f %{buildroot}%{_libdir}/libzip.la
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %ctest
 
-%post -n libzip%{sover} -p /sbin/ldconfig
-%postun -n libzip%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libzip%{sover}
 
 %files tools
 %license LICENSE
@@ -119,7 +118,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 
 %files -n libzip%{sover}
 %license LICENSE
-%{_libdir}/libzip.so.%{sover}*
+%{_libdir}/libzip.so.%{sover}{,.*}
 
 %files devel
 %license LICENSE

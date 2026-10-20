@@ -548,4 +548,12 @@
   * Improve documentation. (forwarded request 1303357 from pgajdos)</comment>
     <requestid>1303446</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>6c8ade922831d464db6ea844972d48f0</srcmd5>
+    <version>1.12.1</version>
+    <time>1792492593</time>
+    <user>anag_factory</user>
+    <comment>libzip 1.12.1 (forwarded request 1385284 from AndreasStieger)</comment>
+    <requestid>1386190</requestid>
+  </revision>
 </revisionlist>
