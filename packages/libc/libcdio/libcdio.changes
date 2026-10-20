@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:03:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.4.0 (skips 2.3.0):
+  * Fix buffer overrun for Joliet filenames (CVE-2024-36600)
+  * Harden image parsers: validate Rock Ridge records and
+    continuation ranges, NRG track mappings and footer bounds,
+    UDF File Identifier Descriptor bounds and file entry
+    descriptors, reject cdrdao pre-track directives and cap
+    track counts
+  * Correct MMC CDB allocation length handling, deprecate obscure
+    MMC set-length macros, apply MMC command timeout on GNU/Linux
+    and move references from MMC-5 to MMC-6 Draft 2g
+  * New API: cdio_get_device_fd() and udf_setpos(); ISRC support
+    in image drivers; joliet-level driver option
+  * Fix ISO 9660 timezone offset signs, USB-drive detection on
+    macOS, MCN retrieval and last-track length calculation
+  * LFS fixes on 32-bit systems; thread-safe recursion checks and
+    strtok for multi-threaded use; tolerate missing help2man
+    outside maintainer mode
+- Soname bumps, shlib subpackages renamed accordingly:
+  libcdio.so.19 -> libcdio21 (.so.21), libcdio++.so.1 ->
+  libcdio++2 (.so.2), libiso9660.so.12 -> libiso9660-13
+  (.so.13); libudf and libiso9660++ sonames unchanged (.so.0 and
+  .so.1, libudf is linked without -version-info)
+- c99.patch: rebased onto 2.4.0 (upstream kept the LFS shims)
+- Drop --without-iso-info/--without-iso-read from the library
+  build: the 2.4.0 test suite requires both tools (check_udf.sh,
+  check_iso.sh); the binaries are still not shipped (bindir is
+  removed at install)
+- Add pkgconfig(libcddb) >= 1.0.1 floor from configure.ac
+- Spec cleanup via spec-cleaner (pkgconfig-style BuildRequires)
+
+-------------------------------------------------------------------
 Thu Jan 16 00:15:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.2.0:

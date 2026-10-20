@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:03:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.4.0: sync with libcdio (soname bumps in the
+  libraries, CVE-2024-36600 fixed, parsers hardened, new
+  cdio_get_device_fd() and udf_setpos() API)
+- c99.patch: rebased onto 2.4.0
+- Spec cleanup via spec-cleaner (pkgconfig-style BuildRequires)
+
+-------------------------------------------------------------------
 Thu Aug  1 09:26:39 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
 
 - Add c99.patch fixing implicit declaration of a function error so
