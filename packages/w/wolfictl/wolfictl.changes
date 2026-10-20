@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct 19 04:53:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.29:
+  * build(deps): bump github.com/github/go-spdx/v2 from 2.7.0 to
+    2.7.1 (#2092)
+  * build(deps): bump golang.org/x/term from 0.46.0 to 0.47.0
+    (#2093)
+  * build(deps): bump github.com/anchore/syft from 1.52.0 to 1.54.1
+    (#2094)
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.16.1 to 2.16.2
+    (#2095)
+  * build(deps): bump the chainguard group with 2 updates (#2096)
+  * Remove unused pkg/sbom (#2089)
+  * lint: add prefer-git-checkout rule (#2090)
+  * lint: add valid-version-stream-provides rule (#2091)
+  * checks: don't panic on a DT_SONAME without .so in it (#2017)
+  * Do not panic on an empty entry in the repositories block
+    (#2042)
+  * build(deps): bump github.com/anchore/stereoscope from 0.3.2 to
+    0.3.4 (#2075)
+  * build(deps): bump the chainguard group across 1 directory with
+    3 updates (#2081)
+  * build: bump golangci-lint to v2.14.0 (#2087)
+  * build(deps): bump golang.org/x/text from 0.41.0 to 0.43.0
+    (#2074)
+  * build(deps): bump cloud.google.com/go/storage from 1.67.1 to
+    1.68.0 (#2073)
+  * build(deps): bump github.com/anchore/syft from 1.51.0 to 1.52.0
+    (#2076)
+  * build(deps): bump github.com/containerd/containerd/v2 (#2079)
+
+-------------------------------------------------------------------
 Mon Sep 28 04:45:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.28:
