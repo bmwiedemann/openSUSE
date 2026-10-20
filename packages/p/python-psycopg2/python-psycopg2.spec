@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-psycopg2
-Version:        2.9.12
+Version:        2.9.13
 Release:        0
 Summary:        Python-PostgreSQL Database Adapter
 License:        LGPL-3.0-or-later AND (LGPL-3.0-or-later OR ZPL-2.0) AND LicenseRef-SUSE-GPL-2.0-with-openssl-exception
 URL:            https://www.psycopg.org/
 Source:         https://files.pythonhosted.org/packages/source/p/psycopg2/psycopg2-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 70.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
