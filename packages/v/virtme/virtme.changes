@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 14 12:45:43 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.42:
+  * With --cpus host, vng automatically pins guest vCPUs to the physical host
+    CPUs and mirrors their socket/core/thread topology where possible; this can
+    be particularly useful for performance regression tests and CPU scheduling
+    benchmarks.
+  * New --root-disk option allows booting a disk image (e.g., a cloud image,
+    even for a different architecture) with a kernel built on the host, without
+    having to install the test kernel inside the image.
+  * Added the --fb option to show the graphical framebuffer console without
+    starting an X server in the vng guest.
+  * Improved NixOS guest support with fixes for /run symlinks, the default
+    PATH, and bash-based guest init.
+  * Small fixes and improvements to systemd boots, virtiofs, SSH, graphics and kernel builds.
+
+-------------------------------------------------------------------
 Tue Apr  7 09:31:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.41:

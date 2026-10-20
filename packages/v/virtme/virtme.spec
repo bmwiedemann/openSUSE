@@ -22,7 +22,7 @@
 %global pythons python311
 %endif
 Name:           virtme
-Version:        1.41
+Version:        1.42
 Release:        0
 Summary:        Tools for virtualize the running distro or a rootfs
 License:        GPL-2.0-only
@@ -65,6 +65,8 @@ find . -name __pycache__ -type d -exec rm -fr {} +
 export PYTHONDONTWRITEBYTECODE=1 %python_install
 # This is a buildtime requirement, not runtime requirement
 sed -i -e /argparse-manpage/d $(find %{buildroot} -name requires.txt)
+# Get rid of env warning
+sed -i '1s|^#!/usr/bin/env bash|#!/bin/bash|' %{buildroot}%{python_sitelib}/virtme/guest/virtme-*
 
 %files
 %{_bindir}/virtme-configkernel
