@@ -17,7 +17,7 @@
 
 
 Name:           goverlay
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
@@ -32,7 +32,6 @@ BuildRequires:  libQt6Pas-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(sdl2)
-ExclusiveArch:  x86_64 aarch64
 Requires:       7zip
 Requires:       mangohud
 # Nerd symbols is necessary to show icons in goverlay interface
@@ -42,11 +41,12 @@ Recommends:     Mesa-demo
 Recommends:     vkSumi
 Recommends:     vkbasalt
 Recommends:     vulkan-tools
+Provides:       pascube = %{version}
+Obsoletes:      pascube <= 1.7.0
+ExclusiveArch:  x86_64 aarch64
 %if 0%{?suse_version} > 1500
 BuildRequires:  lazarus-lcl-qt6
 %endif
-Provides:       pascube = %{version}
-Obsoletes:      pascube <= 1.7.0
 
 %description
 GOverlay is a graphical UI to manage Vulkan/OpenGL overlays.
@@ -54,7 +54,7 @@ GOverlay is a graphical UI to manage Vulkan/OpenGL overlays.
 %prep
 %autosetup -p1
 chmod -x LICENSE README.md
-sed -i '1s|^#!/usr/bin/env python3|#!/usr/bin/python3|' assets/goverlay-steam-shortcut.py
+sed -i '1s|^#!%{_bindir}/env python3|#!%{_bindir}/python3|' assets/goverlay-steam-shortcut.py
 
 %build
 %{set_build_flags}

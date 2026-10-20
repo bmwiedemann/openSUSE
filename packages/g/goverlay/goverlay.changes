@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct 18 06:12:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9.4:
+  * Add AMD Fluid Motion Frames (AFMF) frame interpolation support
+    via afmf-linux
+  * Dynamic ReShade version discovery and update support
+  * Add experimental tweaks card; bundle PROTON_DXVK_LOWLATENCY
+    with PROTON_VKD3D_LOWLATENCY
+  * Add custom time format configuration for MangoHud
+  * Calibrate pascube hardware reference scores from real
+    benchmark data
+  * Render rich formatting and remote images in changelog dialog
+  * Improve controls text contrast under hybrid and light desktop
+    themes
+  * Fix Lutris launch prefix quoting when path contains spaces
+  * Fix Proton game argument ordering and launch args detection
+  * Download vkBasalt ReShade shaders on startup
+  * Block conflicting proxy DLLs between ReShade and OptiScaler
+
+-------------------------------------------------------------------
 Wed Sep 30 00:54:49 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to version 1.9.3:
