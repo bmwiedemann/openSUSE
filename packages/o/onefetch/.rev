@@ -589,4 +589,19 @@
 - Update to 2.23.0:</comment>
     <requestid>1383303</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6092698a5fa71c835fc80451644c94fc</srcmd5>
+    <version>3.1.0</version>
+    <time>1792492650</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.0:
+  Bug Fixes:
+  * Fix a crash when --ascii-input is empty or only whitespace #1898
+  * Fix --languages and --ascii-language listing languages in random order, a
+    regression since 2.28.0 #1890
+  * --number-of-languages now also applies to -o json and -o yaml #1884
+  Chores:
+  * Replace unmaintained winres with winresource #1896</comment>
+    <requestid>1386130</requestid>
+  </revision>
 </revisionlist>
