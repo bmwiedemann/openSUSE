@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Oct 19 06:05:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.6:
+  * Enhancements
+    - Add builtin hook check-commit-trailers (#2885)
+    - Add builtin hook check-signed-commit (#2725)
+  * Performance
+    - Enable PGO for native release builds (#2890)
+    - Reduce hook process launches with balanced batches (#2907)
+    - Resolve hook commands before batching (#2840)
+  * Bug fixes
+    - Accept UTF-8 BOM in check-json (#2879)
+    - Preserve unquoted dotted revisions in prek update (#2853)
+  * Documentation
+    - Document standalone installer options (#2859)
+    - Update benchmarks for prek 0.5.5 (#2786)
+  * Other changes
+    - Enable ICF for release builds (#2891)
+    - Update uv to 0.13.0 (#2856)
+    - Update dependency zensical to >=0.0.69 (#2896)
+    - Update dependency prefix-dev/pixi to v0.81.0 (#2905)
+    - Update docker.io/astral/uv Docker tag to v0.13.0 (#2906)
+    - Update dependency cargo-zigbuild to >=0.23.4 (#2895)
+    - Update Rust crate async_zip to 0.0.22 (#2898)
+    - Update Rust crate indoc to v2.0.8 (#2899)
+    - Update Rust crate tokio-util to v0.7.20 (#2901)
+    - Update Rust crate toml_edit to v0.25.17 (#2903)
+    - Update Rust crate serde_json to v1.0.154 (#2900)
+    - Update Rust crate toml to v1.1.8 (#2902)
+    - Update dependency maturin to >=1.15.0,<2.0 (#2904)
+    - Bump Rust toolchain to 1.99.1 (#2882)
+    - Update Rust crate insta to v1.49.0 (#2869)
+    - Update jdx/mise-action action to v5 (#2870)
+    - Update Rust crate asyncband to v0.7.3 (#2865)
+    - Update Rust crate libc to v0.2.190 (#2867)
+    - Update Rust crate tokio to v1.53.2 (#2868)
+    - Update Rust crate async-compression to v0.4.50 (#2864)
+    - Bump rustls to 0.23.45 (#2847)
+
+-------------------------------------------------------------------
 Mon Oct 05 11:26:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.5:
