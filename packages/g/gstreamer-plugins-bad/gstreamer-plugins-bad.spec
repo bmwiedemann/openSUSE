@@ -124,7 +124,7 @@ BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
 %if %{with fluidsynth}
 BuildRequires:  pkgconfig(fluidsynth)
 %endif
-BuildRequires:  pkgconfig(gio-2.0) >= 2.25.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.64.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv1_cm)
 BuildRequires:  pkgconfig(glesv2)
@@ -199,8 +199,7 @@ BuildRequires:  pkgconfig(wayland-egl) >= 9.0
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.4
 BuildRequires:  pkgconfig(wayland-scanner) >= 1.4.0
 %if %{with webrtc_audio_processing_1}
-BuildRequires:  pkgconfig(webrtc-audio-coding-1) >= 1.0
-BuildRequires:  pkgconfig(webrtc-audio-processing-1) >= 1.0
+BuildRequires:  pkgconfig(webrtc-audio-processing-2)
 %endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb) >= 1.10
