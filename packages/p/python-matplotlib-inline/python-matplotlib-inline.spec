@@ -1,7 +1,7 @@
 #
 # spec file for package python-matplotlib-inline
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,21 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
-%bcond_without test
 # no ipython anymore
 %define skip_python39 1
+%bcond_without test
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib-inline%{psuffix}
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Inline Matplotlib backend for Jupyter
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/matplotlib-inline
-Source:         https://files.pythonhosted.org/packages/source/m/matplotlib-inline/matplotlib_inline-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/m/matplotlib_inline/matplotlib_inline-%{version}.tar.gz
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module traitlets}
