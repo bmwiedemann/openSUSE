@@ -35,11 +35,13 @@ Patch0:         reproducible.patch
 Patch1:         fix.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-fixed-encoding-of-silent-audio-file.patch
-# FFmpeg5 support
+# FFmpeg8 support
 Patch3:         dvdstyler-ffmpeg5.patch
 Patch4:         DVDStyler-ffmpeg7.patch
+Patch5:         0004-added-support-of-ffmpeg-8.0.patch
 BuildRequires:  bison
 #!BuildIgnore:  wxWidgets-3_2-devel
+BuildRequires:  desktop-file-utils
 BuildRequires:  dvd+rw-tools
 BuildRequires:  dvdauthor
 BuildRequires:  fdupes
@@ -48,18 +50,16 @@ BuildRequires:  gcc-c++
 BuildRequires:  mkisofs >= 2.01
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  xmlto
 BuildRequires:  zip
-#doesn't build with ffmpeg 8 yet
-BuildRequires:  pkgconfig(libavcodec) < 62
-BuildRequires:  pkgconfig(libavfilter) < 11
-BuildRequires:  pkgconfig(libavformat) < 62
-BuildRequires:  pkgconfig(libavutil) < 60
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(libswscale) < 9
+BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwxsvg) >= 1.5.19
 BuildRequires:  pkgconfig(mjpegtools)
@@ -119,7 +119,7 @@ export FFMPEG_PATH=%{_bindir}/ffmpeg
 %install
 %make_install
 
-%suse_update_desktop_file -r dvdstyler DiscBurning
+desktop-file-edit --set-key=Categories --set-value="DiscBurning;" %{buildroot}%{_datadir}/applications/dvdstyler.desktop
 %find_lang dvdstyler
 
 %files

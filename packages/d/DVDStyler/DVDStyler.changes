@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 19 13:15:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 0004-added-support-of-ffmpeg-8.0.patch: Fix build with
+  ffmpeg-8 and newer
+- Replace obsolete update-desktop-files and macro with
+  desktop-file-utils BuildRequires and corresponding macro
+
+-------------------------------------------------------------------
 Tue Feb 17 16:12:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Force ffmpeg version < 8 without relying on the -mini package.
