@@ -2,7 +2,7 @@
 # spec file for package switcheroo
 #
 # Copyright (c) 2025 mantarimay
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 
 %define appid   io.gitlab.adhami3310.Converter
-%define rurl    1018de59a8ec3466929ed0bfb428b255
+%define rurl    a31f472445361fd40b42bf6ec7309ff1
 Name:           switcheroo
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        Convert and manipulate images
 License:        GPL-3.0-only
@@ -31,8 +31,9 @@ BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.9
 
 %description
 Switcheroo is designed to give you a simple, quick, and easy-to-use tool

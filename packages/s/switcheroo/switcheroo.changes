@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:55:54 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 2.6.0:
+  * Add option for removing EXIF metadata.
+  * Fix conversions running serially instead of concurrently.
+  * Update runtime to GNOME 50.
+  * Fix crash when checking for sandboxed environments in
+    non-sandboxed environments.
+  * CVE-2026-25541: bytes integer overflow in
+    BytesMut::reserve leading to undefined behavior and crashes,
+    fixed via bundled bytes 1.11.1 (boo#1274330)
+
+-------------------------------------------------------------------
 Sun Nov 23 11:30:44 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.5.1
