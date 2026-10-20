@@ -19,7 +19,7 @@
 
 %bcond_without aac
 Name:           kew
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only
