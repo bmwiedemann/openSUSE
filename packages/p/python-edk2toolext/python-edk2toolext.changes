@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:29:02 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 0.31.2:
+  * Edk2InvocableSettingsInterface: Update GetActiveScopes and
+    GetSkippedDirectories return types
+- Convert console-script alternatives to libalternatives, keeping
+  the update-alternatives fallback for SLE-15 targets
+
+-------------------------------------------------------------------
 Tue Aug 25 05:52:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.31.1:

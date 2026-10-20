@@ -16,9 +16,14 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-edk2toolext
-Version:        0.31.1
+Version:        0.31.2
 Release:        0
 Summary:        Tianocore Edk2 PyTool Extensions
 License:        BSD-2-Clause-Patent
@@ -52,10 +57,14 @@ Requires:       python-openpyxl >= 3.1.2
 Requires:       python-pefile >= 2023.2.7
 Requires:       python-semantic_version >= 2.10
 Requires:       python-setuptools
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
-
+%endif
 %python_subpackages
 
 %description
@@ -92,6 +101,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %python_clone -a %{buildroot}%{_bindir}/stuart_parse
 %python_clone -a %{buildroot}%{_bindir}/stuart_report
 %python_clone -a %{buildroot}%{_bindir}/validate_image_tool
+%python_group_libalternatives edk2_capsule_tool firmware_policy_tool fpdt_parser nuget-publish omnicache patch_var_store_tool perf_report_generator sig_db_tool statuscode_processor stuart_build stuart_ci_build stuart_ci_setup stuart_pr_eval stuart_setup stuart_update versioninfo_tool secureboot_audit stuart_parse stuart_report validate_image_tool
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -114,6 +124,28 @@ donttest+="or test_az_tool_environment "
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -Bm pytest $ignore -k "not ($donttest)"
 }
+
+%pre
+%python_libalternatives_reset_alternative edk2_capsule_tool
+%python_libalternatives_reset_alternative firmware_policy_tool
+%python_libalternatives_reset_alternative fpdt_parser
+%python_libalternatives_reset_alternative nuget-publish
+%python_libalternatives_reset_alternative omnicache
+%python_libalternatives_reset_alternative patch_var_store_tool
+%python_libalternatives_reset_alternative perf_report_generator
+%python_libalternatives_reset_alternative sig_db_tool
+%python_libalternatives_reset_alternative statuscode_processor
+%python_libalternatives_reset_alternative stuart_build
+%python_libalternatives_reset_alternative stuart_ci_build
+%python_libalternatives_reset_alternative stuart_ci_setup
+%python_libalternatives_reset_alternative stuart_pr_eval
+%python_libalternatives_reset_alternative stuart_setup
+%python_libalternatives_reset_alternative stuart_update
+%python_libalternatives_reset_alternative versioninfo_tool
+%python_libalternatives_reset_alternative secureboot_audit
+%python_libalternatives_reset_alternative stuart_parse
+%python_libalternatives_reset_alternative stuart_report
+%python_libalternatives_reset_alternative validate_image_tool
 
 %post
 %python_install_alternative edk2_capsule_tool
