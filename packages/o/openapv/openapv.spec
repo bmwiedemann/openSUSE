@@ -17,10 +17,10 @@
 
 
 # When bumping sover, do so in baselibs.conf too!
-%define         sover 1
+%define         sover 11
 %define         sname oapv
 Name:           openapv
-Version:        1.1.2.0
+Version:        1.1.3.0
 Release:        0
 Summary:        Open Advanced Professional Video Codec
 License:        BSD-3-Clause

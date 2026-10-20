@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:06:54 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 1.1.3.0:
+  * Shared library renamed to liboapv.so.11 (SOVERSION now tracks
+    the API set); applications must be relinked
+  * Encoder: fix small leftover tiles, default QP/ABR bitrate
+    selection and frame-hash padding/NULL-deref fixes
+  * Metadata: fix swapped mdcv primaries and drop empty groups
+    instead of leaking them
+  * Decoder: fix out-of-range frame access; propagate decode
+    errors to the caller
+  * Harden public API argument checks, group-ID validation and
+    bitstream bounds handling
+  * API: OAPV_MAX_GRP_SIZE replaced by OAPV_MAX_GROUP_ID,
+    OAPV_PBU_NUMS removed, frm_size now excludes the pbu_size
+    field
+
+-------------------------------------------------------------------
 Wed Oct  7 05:31:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add baselibs.conf, 32bit support.

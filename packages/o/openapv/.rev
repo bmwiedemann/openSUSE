@@ -175,4 +175,12 @@
     <comment>- Add baselibs.conf, 32bit support.</comment>
     <requestid>1383005</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7ffb70533e52a401ca5086ed145338b0</srcmd5>
+    <version>1.1.3.0</version>
+    <time>1792492465</time>
+    <user>anag_factory</user>
+    <comment>Update openapv to 1.1.3.0 (forwarded request 1385604 from pluskalm)</comment>
+    <requestid>1385716</requestid>
+  </revision>
 </revisionlist>
