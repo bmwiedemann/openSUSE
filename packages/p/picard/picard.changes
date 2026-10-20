@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Oct 19 13:03:53 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to actually fix the test_article_insensitive_adapter
+  test. The problem was that Qt 6.12 changed the way texts are
+  collated:
+  * fix-test_article_insensitive_adapter.patch
+
+-------------------------------------------------------------------
+Mon Oct 19 11:41:56 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- After talking with upstream, disable the
+  test_article_insensitive_adapter test in ppc64le where for some
+  reason the article insensitive sort sorts words without a
+  preceding article before words with an article.
+
+-------------------------------------------------------------------
+Sat Oct 17 16:49:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.0.2, the Qt6 major release:
+  * Ported from PyQt5 to PyQt6, requires Python 3.10 or newer.
+  * New features: ISRC lookup and submission from CD, ListenBrainz
+    listens submission, TOML-based exportable profiles, albumartists
+    tag, new tagger script functions, regex testing playground and
+    shell completion generation for picard-cli.
+  * Fixes upgrade from Picard 2: config migration no longer crashes
+    on launch and the metadata panel works with legacy naming
+    scripts; large-collection memory use and save performance
+    improved.
+  * Drop picard-requirements.patch, obsolete with the move of
+    dependencies to pyproject.toml.
+- Packaging changes:
+  * Switch build and runtime dependencies from PyQt5 to PyQt6.
+  * Add python3-pygit2 and python3-tomlkit requirements, raise
+    mutagen to >= 1.45 and drop fasteners and python-dateutil,
+    no longer used upstream.
+  * Drop the picard-lang subpackage: translations now ship inside
+    the main package (upstream no longer installs to
+    /usr/share/locale).
+
+-------------------------------------------------------------------
 Sun Feb 23 21:37:04 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 2.13.3:
