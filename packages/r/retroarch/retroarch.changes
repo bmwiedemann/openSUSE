@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:32:05 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.22.2:
+  * CloudSync: add manual/automatic sync mode setting
+    (cloud_sync_sync_mode) and a "Sync Now" menu action
+  * Scanner: add support for Philips CD-i disc images in CUE and
+    CHD formats
+  * Scanner: fix Sega Saturn serial detection across regions and
+    strip leading zeros from MK- serials
+  * Database: use 64-bit integers for entry sizes to support ROMs
+    larger than 4 GiB, and disable size hints for CHD serial
+    lookups
+  * Cheevos: enable GameCube/Wii RVZ/WIA disc image hashing support
+  * Menu: fix core suggestion and recovery when a core is manually
+    loaded
+  * XMB: fix left thumbnail positioning, alignment, and handheld
+    mode layout
+  * Replay/BSV: fix Zstd compressed checkpoint size calculation and
+    stream seek error handling
+  * Revert dr_flac, stb_vorbis, and stb_truetype build changes that
+    caused regressions, and update translations
+- Modernize spec file: drop Group tag, add explicit make
+  BuildRequires, convert dependencies to pkgconfig(), and declare
+  upstream version floors
+
+-------------------------------------------------------------------
 Sat Nov 22 21:24:26 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
