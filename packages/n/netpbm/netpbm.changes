@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 18 06:02:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 11.16.1:
+  * 11.16.01: fix jbigtopnm failure on certain multi-image inputs,
+    pnmnorm wrong output with huge images and memory corruption with
+    -wvalue above maxval, and ppmglobe color-name background specs.
+  * 11.16.00: new pamnoise tool; pnmtojbig long options and better
+    errors; ppmtoarbtxt '#' substitution class; more precise
+    pnmhisteq; many robustness fixes (picttoppm, jbigtopnm, sgitopnm,
+    tgatoppm, winicontopam, xpmtoppm, pamtogif, pgmtexture, pjtoppm,
+    thinkjettopbm, lispmtopgm, pbmtomda, mdatopbm, mrftopbm).
+  * 11.15.00: new pbmtobrush tool; makeman is Python 3 only; fixes
+    to pamcut, pbmtopgm, ppmtopict, pnmtoddif and imgtoppm.
+  * 11.14.01: fixes to pamcut, pbmtopgm, ppmtopict and pnmtojbig.
+- Drop makeman-py3.patch (upstream uses Python 3 now) and
+  netpbm-gcc-warnings.patch (upstream silences -Wreturn-type with
+  pragmas now); refresh netpbm-security-code.patch for the new
+  sources (sgitopnm, imgtoppm and mdatopbm hunks fixed upstream).
+- Spec cleanup: drop Group tags, pkgconfig BuildRequires, %make_build.
+- Disable pnmhisteq.test on all arches: upstream broke Test 4
+  in 11.15 (trailing whitespace after line continuations).
+
+-------------------------------------------------------------------
 Fri Jun  5 09:25:33 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - disable test/pnmhisteq.test

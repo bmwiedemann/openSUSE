@@ -66,26 +66,19 @@ Index: netpbm-11.9.3/converter/other/pbmtopgm.c
      maxval = MIN(PGM_OVERALLMAXVAL, cmdline.convCols * cmdline.convRows);
      pgm_writepgminit(stdout, cols, rows, maxval, 0) ;
  
-Index: netpbm-11.9.3/converter/other/pnmtoddif.c
+Index: netpbm-11.16.1/converter/other/pnmtoddif.c
 ===================================================================
---- netpbm-11.9.3.orig/converter/other/pnmtoddif.c
-+++ netpbm-11.9.3/converter/other/pnmtoddif.c
-@@ -627,6 +627,7 @@ main(int argc, char *argv[]) {
+--- netpbm-11.16.1.orig/converter/other/pnmtoddif.c
++++ netpbm-11.16.1/converter/other/pnmtoddif.c
+@@ -78,6 +78,8 @@
+     img.h_res  = horizontalResolution;
+     img.v_res  = verticalResolution;
+
++    overflow_add(cols, 7);
++    overflow2(cols, 3);
      switch (PNM_FORMAT_TYPE(format)) {
      case PBM_TYPE:
-         ip.bits_per_pixel = 1;
-+        overflow_add(cols, 7);
-         ip.bytes_per_line = (cols + 7) / 8;
-         ip.spectral = 2;
-         ip.components = 1;
-@@ -642,6 +643,7 @@ main(int argc, char *argv[]) {
-         ip.polarity = 2;
-         break;
-     case PPM_TYPE:
-+        overflow2(cols, 3);
-         ip.bytes_per_line = 3 * cols;
-         ip.bits_per_pixel = 24;
-         ip.spectral = 5;
+         img.bits_per_pixel = 1;
 Index: netpbm-11.9.3/converter/other/pnmtojpeg.c
 ===================================================================
 --- netpbm-11.9.3.orig/converter/other/pnmtojpeg.c
@@ -163,26 +156,6 @@ Index: netpbm-11.9.3/converter/other/rletopnm.c
   */
  /*
   * rletopnm - A conversion program to convert from Utah's "rle" image format
-Index: netpbm-11.9.3/converter/other/sgitopnm.c
-===================================================================
---- netpbm-11.9.3.orig/converter/other/sgitopnm.c
-+++ netpbm-11.9.3/converter/other/sgitopnm.c
-@@ -375,10 +375,14 @@ readChannels(FILE *       const ifP,
-         MALLOCARRAY_NOFAIL(image, head->ysize);
-     } else {
-         maxchannel = 3;
-+        overflow2(head->ysize, maxchannel);
-         MALLOCARRAY_NOFAIL(image, head->ysize * maxchannel);
-     }
--    if (table)
-+    if (table) {
-+        overflow2(head->xsize, 2);
-+        overflow_add(head->xsize*2, 2);
-         MALLOCARRAY_NOFAIL(temp, WORSTCOMPR(head->xsize));
-+    }
- 
-     for (channel = 0; channel < maxchannel; ++channel) {
-         unsigned int row;
 Index: netpbm-11.9.3/converter/other/tifftopnm.c
 ===================================================================
 --- netpbm-11.9.3.orig/converter/other/tifftopnm.c
@@ -221,25 +194,6 @@ Index: netpbm-11.9.3/converter/other/xwdtopnm.c
      *padrightP =
          h11FixedP->bytes_per_line * 8 -
          h11FixedP->pixmap_width * h11FixedP->bits_per_pixel;
-Index: netpbm-11.9.3/converter/pbm/mdatopbm.c
-===================================================================
---- netpbm-11.9.3.orig/converter/pbm/mdatopbm.c
-+++ netpbm-11.9.3/converter/pbm/mdatopbm.c
-@@ -283,10 +283,13 @@ main(int argc, const char **argv) {
-         pm_readlittleshort(ifP, &yy); nInCols = yy;
-     }
- 
-+    overflow2(nOutCols, 8);
-     nOutCols = 8 * nInCols;
-     nOutRows = nInRows;
--    if (bScale)
-+    if (bScale){
-+        overflow2(nOutRows, 2);
-         nOutRows *= 2;
-+    }
- 
-     data = pbm_allocarray(nOutCols, nOutRows);
- 
 Index: netpbm-11.9.3/converter/pbm/mgrtopbm.c
 ===================================================================
 --- netpbm-11.9.3.orig/converter/pbm/mgrtopbm.c
@@ -293,18 +247,22 @@ Index: netpbm-11.9.3/converter/pbm/pbmtolj.c
      packBufferSize = rowBufferSize + (rowBufferSize + 127) / 128 + 1;
      deltaBufferSize = rowBufferSize + rowBufferSize / 8 + 10;
  
-Index: netpbm-11.9.3/converter/pbm/pbmtomda.c
+Index: netpbm-11.16.1/converter/pbm/pbmtomda.c
 ===================================================================
---- netpbm-11.9.3.orig/converter/pbm/pbmtomda.c
-+++ netpbm-11.9.3/converter/pbm/pbmtomda.c
-@@ -204,6 +204,7 @@ main(int argc, const char ** argv) {
+--- netpbm-11.16.1.orig/converter/pbm/pbmtomda.c
++++ netpbm-11.16.1/converter/pbm/pbmtomda.c
+@@ -306,9 +306,10 @@
+     bits = pbm_readpbm(ifP, &cols, &inRowCt);
  
-     nOutRowsUnrounded = cmdline.dscale ? nInRows/2 : nInRows;
+     outRowCtUnrounded = cmdline.dscale ? inRowCt/2 : inRowCt;
  
-+    overflow_add(nOutRowsUnrounded, 3);
-     nOutRows = ((nOutRowsUnrounded + 3) / 4) * 4;
++    overflow_add(outRowCtUnrounded, 3);
+     outRowCt = ROUNDUP(outRowCtUnrounded, 4);
          /* MDA wants rows a multiple of 4 */
-     nOutCols = nInCols / 8;
+ 
+     warnPadding(outRowCtUnrounded, outRowCt);
+     warnTruncating(cols);
+
 Index: netpbm-11.9.3/converter/pbm/pbmtoppa/pbm.c
 ===================================================================
 --- netpbm-11.9.3.orig/converter/pbm/pbmtoppa/pbm.c
@@ -352,15 +310,6 @@ Index: netpbm-11.9.3/converter/pbm/thinkjettopbm.l
                                  rowCapacity += 100;
                                  REALLOCARRAY(rows, rowCapacity);
                                  if (rows == NULL)
-@@ -232,6 +234,8 @@ yywrap (void)
-     /*
-      * Quite simple since ThinkJet bit arrangement matches PBM
-      */
-+
-+    overflow2(maxRowLength, 8);
-     pbm_writepbminit(stdout, maxRowLength*8, rowCount, 0);
- 
-     packed_bitrow = malloc(maxRowLength);
 Index: netpbm-11.9.3/converter/pgm/lispmtopgm.c
 ===================================================================
 --- netpbm-11.9.3.orig/converter/pgm/lispmtopgm.c
@@ -421,26 +370,6 @@ Index: netpbm-11.9.3/converter/ppm/ilbmtoppm.c
  
  static void
  multi_adjust(ColorMap *            const cmapP,
-Index: netpbm-11.9.3/converter/ppm/imgtoppm.c
-===================================================================
---- netpbm-11.9.3.orig/converter/ppm/imgtoppm.c
-+++ netpbm-11.9.3/converter/ppm/imgtoppm.c
-@@ -85,6 +85,7 @@ main(int argc, const char ** argv) {
-             len = atoi((char*) buf);
-             if (fread(buf, len, 1, ifP) != 1)
-                 pm_error("bad colormap buf");
-+            overflow2(cmaplen, 3);
-             if (len != cmaplen * 3) {
-                 pm_message(
-                     "cmaplen (%u) and colormap buf length (%u) do not match",
-@@ -105,6 +106,7 @@ main(int argc, const char ** argv) {
-                 pm_error("bad pixel data header");
-             buf[8] = '\0';
-             len = atoi((char*) buf);
-+            overflow2(cols, rows);
-             if (len != cols * rows)
-                 pm_message(
-                     "pixel data length (%u) does not match image size (%u)",
 Index: netpbm-11.9.3/converter/ppm/Makefile
 ===================================================================
 --- netpbm-11.9.3.orig/converter/ppm/Makefile

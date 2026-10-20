@@ -1074,4 +1074,12 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
   * netpbm-gcc-warnings.patch (refreshed)</comment>
     <requestid>1357514</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>96bc2086a1404d9bdc82cc28298ea958</srcmd5>
+    <version>11.16.1</version>
+    <time>1792492589</time>
+    <user>anag_factory</user>
+    <comment>Update netpbm to 11.16.1 (forwarded request 1385799 from pluskalm)</comment>
+    <requestid>1386189</requestid>
+  </revision>
 </revisionlist>

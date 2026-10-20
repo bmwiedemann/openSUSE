@@ -20,14 +20,13 @@
 %define asan_build     0
 %define ubsan_build    0
 %define libmaj  11
-%define libmin  114
+%define libmin  116
 %define libver  %{libmaj}.%{libmin}
 Name:           netpbm
-Version:        11.14.0
+Version:        11.16.1
 Release:        0
 Summary:        A Graphics Conversion Package
-License:        BSD-3-Clause AND GPL-2.0-or-later AND IJG AND MIT AND SUSE-Public-Domain
-Group:          Productivity/Graphics/Convertors
+License:        BSD-3-Clause AND GPL-2.0-or-later AND IJG AND MIT AND LicenseRef-SUSE-Public-Domain
 URL:            http://netpbm.sourceforge.net/
 Source:         netpbm-%{version}-nohpcdtoppm-noppmtompeg.tar.bz2
 Source1:        netpbm-%{version}-documentation.tar.bz2
@@ -38,8 +37,6 @@ Patch0:         %{name}-make.patch
 # neccessary for running with ASAN
 Patch2:         %{name}-security-code.patch
 Patch3:         %{name}-security-scripts.patch
-Patch4:         %{name}-gcc-warnings.patch
-Patch5:         makeman-py3.patch
 # bsc#1144255 disable jpeg2k support due to removal of jasper
 Patch8:         netpbm-disable-jasper.patch
 # CVE-2017-5849 [bsc#1022790], CVE-2017-5849 [bsc#1022791]
@@ -47,11 +44,11 @@ Patch9:         netpbm-use-byrow-when-needed.patch
 BuildRequires:  flex
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
 # needed for the makeman
 BuildRequires:  python3-base
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(x11)
 Provides:       pbmplus
 
@@ -69,7 +66,6 @@ included for all tools.
 
 %package -n libnetpbm%{libmaj}
 Summary:        Libraries for the NetPBM (NetPortableBitmap) Graphic Formats
-Group:          System/Libraries
 Provides:       libnetpbm = %{version}
 Obsoletes:      libnetpbm < %{version}
 
@@ -80,7 +76,6 @@ source package.
 
 %package -n libnetpbm-devel
 Summary:        Header files for the NetPBM libraries
-Group:          Development/Libraries/C and C++
 Requires:       libnetpbm%{libmaj} = %{version}
 
 %description -n libnetpbm-devel
@@ -115,7 +110,7 @@ export LDFLAGS="$LDFLAGS -fsanitize=address"
 export CFLAGS="$CFLAGS -fsanitize=undefined -fno-sanitize-recover=all"
 export LDFLAGS="$LDFLAGS -fsanitize=undefined"
 %endif
-make %{?_smp_mflags} CFLAGS="$CFLAGS"
+%make_build CFLAGS="$CFLAGS"
 rm doc/INSTALL
 # Remove doc and man pages for pamtojpeg2k [bsc#1245164]
 find -type f -name "pamtojpeg2k.[h1]*" -delete -print
@@ -202,7 +197,9 @@ sed -i '/stdin-pnm2.test/d' test/Test-Order
 #0
 #0
 sed -i '/pbmtext-bdf.test/d' test/Test-Order
-# fails for i586
+# fails everywhere since 11.15.00: upstream rewrote Test 4 with
+# trailing whitespace after the line continuations, so the shell
+# runs stray tabs and pnmhisteq reads garbage (was i586-only before)
 #[   89s] == pnmhisteq.test ==
 #[   89s]
 #[   89s] Invalid command-line argument combination(s).
@@ -210,11 +207,9 @@ sed -i '/pbmtext-bdf.test/d' test/Test-Order
 #[   89s] -----------------------------------------------------------
 #[   89s] pnmhisteq: bad magic number 0x2320 - not a PPM, PGM, PBM, or PAM file
 #[   89s] pnmhisteq.test: FAILURE
-%ifarch i586
 sed -i '/pnmhisteq.test/d' test/Test-Order
-%endif
 mkdir package-test-{tmp,results}
-make pkgdir=`pwd`/package tmpdir=`pwd`/package-test-tmp RESULTDIR=`pwd`/package-test-results check-package
+%make_build pkgdir=`pwd`/package tmpdir=`pwd`/package-test-tmp RESULTDIR=`pwd`/package-test-results check-package
 
 %files
 %doc README doc/* netpbm.sourceforge.net/doc
