@@ -1,7 +1,7 @@
 #
 # spec file for package stk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # https://github.com/thestk/stk/issues/89
 %define soname %{version}
 Name:           stk
-Version:        4.6.2
+Version:        5.0.1
 Release:        0
 Summary:        Synthesis ToolKit in C++
 License:        MIT
@@ -32,6 +32,10 @@ Source99:       stk-rpmlintrc
 Patch0:         0001-Don-t-ignore-supplied-CXXFLAGS.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0002-Fix-the-library-soname.patch
+# PATCH-FIX-UPSTREAM 0003-Fix-the-library-version.patch -- upstream tagged
+# 5.0.1 without bumping AC_INIT, so the build still produces
+# libstk-5.0.0.so instead of libstk-5.0.1.so
+Patch2:         0003-Fix-the-library-version.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen

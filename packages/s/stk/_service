@@ -1,8 +1,8 @@
 <services>
-    <service name="tar_scm" mode="disabled">
+    <service name="tar_scm" mode="manual">
         <param name="scm">git</param>
         <param name="url">https://github.com/thestk/stk</param>
-        <param name="revision">4.6.2</param>
+        <param name="revision">5.0.1</param>
         <param name="versionformat">@PARENT_TAG@</param>
         <!-- Patent issue (boo#761147) -->
         <param name="exclude">/include/BeeThree.h</param>
@@ -51,9 +51,9 @@
         <param name="exclude">/src/Wurley.cpp</param>
         <param name="exclude">/src/include/soundcard.h</param>
     </service>
-    <service name="recompress" mode="disabled">
+    <service name="recompress" mode="manual">
         <param name="file">*.tar</param>
         <param name="compression">xz</param>
     </service>
-    <service name="set_version" mode="disabled"/>
+    <service name="set_version" mode="manual"/>
 </services>

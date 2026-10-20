@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:09:07 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 5.0.1 (major release, library renamed to
+  libstk5.0.1):
+  * Updated RtAudio/RtMidi with API changes across the library,
+    demos and examples; PitShift now uses a single delay line
+  * BiQuad supports different filter types; Twang and ModalBar
+    gain missing setter functions
+  * CMake install support, --with-pulse configure fix, C++11
+    baseline, MSVC build fixes
+  * Service revision moved to 5.0.1; legacy mode=disabled
+    converted to mode=manual
+- Add 0003-Fix-the-library-version.patch: upstream tagged 5.0.1
+  without bumping AC_INIT, so the build produced libstk-5.0.0.so
+
+-------------------------------------------------------------------
 Sun Oct 16 07:28:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Avoid conflict between the new data subpackage and the
