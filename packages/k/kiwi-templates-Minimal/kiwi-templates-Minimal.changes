@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  9 14:20:58 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Compatibility with KIWI 11:
+  * Set grub2 console to gfxterm explicitly where applicable
+  * Write /etc/sysconfig/bootloader for all platforms in config.sh
+
+-------------------------------------------------------------------
 Wed Sep 23 04:05:50 UTC 2026 - JS <obs.coke518@passinbox.com>
 
 - Add comments to _multibuild and Minimal.kiwi to remind people to

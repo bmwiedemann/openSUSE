@@ -120,6 +120,45 @@ EOF
 chmod a+x /etc/fstab.script
 
 #======================================
+# Determine and configure bootloader
+#--------------------------------------
+if [ -e /etc/sysconfig/bootloader ]; then
+	echo "Unexpected /etc/sysconfig/bootloader found"
+	exit 1
+fi
+
+loader_type=""
+if [ "$kiwi_bootloader" = "custom" ] && rpm -q sdbootutil; then
+	if rpm -q systemd-boot >/dev/null; then
+		loader_type="systemd-boot"
+	elif rpm -qa | grep 'grub2-.*-efi-bls' >/dev/null; then
+		loader_type="grub2-bls"
+	fi
+elif [ "$kiwi_bootloader" = "grub2_s390x_emu" ]; then
+	loader_type="grub2"
+elif [ "$kiwi_bootloader" = "grub2" ] ; then
+	if rpm -qa | grep 'grub2-.*-efi' >/dev/null; then
+		loader_type="grub2-efi"
+	elif rpm -q grub2-common >/dev/null; then
+		loader_type="grub2"
+	fi
+fi
+
+if [ -z "$loader_type" ]; then
+	echo "Unknown bootloader"
+	exit 1
+fi
+
+secure_boot="no"
+if rpm -q shim; then
+	secure_boot="yes"
+fi
+
+echo "LOADER_TYPE=\"${loader_type}\"" >> /etc/sysconfig/bootloader
+echo "SECURE_BOOT=\"${secure_boot}\"" >> /etc/sysconfig/bootloader
+# No need to set UPDATE_NVRAM="yes", it's already the default if applicable
+
+#======================================
 # Add default kernel boot options
 #--------------------------------------
 consoles='console=ttyS0,115200 console=tty0'

@@ -48,7 +48,7 @@ adjusting urls in the relevant _data/$VERSION.yml files.
             btrfs_root_is_snapshot="true"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
-            <bootloader name="grub2"/>
+            <bootloader name="grub2" output_console="gfxterm"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -154,7 +154,7 @@ adjusting urls in the relevant _data/$VERSION.yml files.
             btrfs_root_is_snapshot="true"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
-            <bootloader name="grub2"/>
+            <bootloader name="grub2" output_console="gfxterm"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -187,7 +187,7 @@ adjusting urls in the relevant _data/$VERSION.yml files.
             btrfs_root_is_snapshot="true"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
-            <bootloader name="grub2"/>
+            <bootloader name="grub2" output_console="gfxterm"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -223,7 +223,7 @@ adjusting urls in the relevant _data/$VERSION.yml files.
             devicepersistency="by-uuid"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
-            <bootloader name="grub2" timeout="1"/>
+            <bootloader name="grub2" output_console="gfxterm" timeout="1"/>
             <size unit="G">2</size>
         </type>
     </preferences>
@@ -250,7 +250,7 @@ adjusting urls in the relevant _data/$VERSION.yml files.
                 <oem-resize>false</oem-resize>
             </oemconfig>
             <containerconfig name="opensuse/tumbleweed-kubevirt-minimal" tag="latest"/>
-            <bootloader name="grub2" timeout="1"/>
+            <bootloader name="grub2" output_console="gfxterm" timeout="1"/>
             <size unit="G">2</size>
         </type>
     </preferences>
@@ -301,7 +301,7 @@ adjusting urls in the relevant _data/$VERSION.yml files.
             btrfs_root_is_snapshot="true"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
-            <bootloader name="grub2" timeout="10"/>
+            <bootloader name="grub2" output_console="gfxterm" timeout="10"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -335,7 +335,7 @@ adjusting urls in the relevant _data/$VERSION.yml files.
             btrfs_root_is_snapshot="true"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
-            <bootloader name="grub2" timeout="10"/>
+            <bootloader name="grub2" output_console="gfxterm" timeout="10"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -370,7 +370,7 @@ adjusting urls in the relevant _data/$VERSION.yml files.
             editbootinstall="editbootinstall_rpi.sh"
             bundle_format="%N-Image.%A-%M.%m.%p-%I"
         >
-            <bootloader name="grub2"/>
+            <bootloader name="grub2" output_console="gfxterm"/>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
