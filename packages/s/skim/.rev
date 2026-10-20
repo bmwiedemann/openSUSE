@@ -40,4 +40,12 @@
     <comment>bump to 5.7.0</comment>
     <requestid>1377798</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8edbf6329379f23e95d1889216f94067</srcmd5>
+    <version>5.7.4</version>
+    <time>1792492635</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1386099</requestid>
+  </revision>
 </revisionlist>

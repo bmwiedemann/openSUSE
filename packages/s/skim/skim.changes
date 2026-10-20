@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 12 00:01:46 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 5.7.4:
+  * Smart case detection treated special chars as uppercase
+  * (tui) Stop the scrollbar thumb inheriting the row's modifiers
+  * Merge repeated --color options
+  * Make min-query-length control interactive command runs
+
+-------------------------------------------------------------------
 Sun Sep 13 13:14:46 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 5.7.0:
