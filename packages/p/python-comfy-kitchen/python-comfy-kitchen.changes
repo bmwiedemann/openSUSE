@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 19 09:38:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.39:
+  * Fuse input activations into the W4A8/W6A8 quantizer and match
+    the ConvRot quantizer's shared-memory estimate to its launch,
+    with a fused prefill activation test
+  * Remainder of the release is CUDA kernel work, not compiled
+    in this CPU-only build
+
+-------------------------------------------------------------------
 Sat Oct 17 06:16:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.38:
