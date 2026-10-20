@@ -1,7 +1,7 @@
 #
 # spec file for package mjpegtools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        2.2.1
 Release:        0
 Summary:        MJPEG Video Capture and Processing Tools
 License:        GPL-2.0-only
-Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://mjpeg.sourceforge.net/
 Source:         https://sourceforge.net/projects/mjpeg/files/%{name}/%{version}/%{name}-%{version}.tar.gz/download#/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
@@ -37,6 +36,7 @@ Patch9:         mjpegtools-c++-17.patch
 Patch10:        mjpegtools-gcc15.patch
 Patch11:        mjpegtools-lto.patch
 Patch12:        mjpegtools-c99-configure.patch
+
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
@@ -44,12 +44,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL_gfx)
 BuildRequires:  pkgconfig(libdv)
 BuildRequires:  pkgconfig(libpng) >= 1.4
-BuildRequires:  pkgconfig(libquicktime)
 BuildRequires:  pkgconfig(libv4l1)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(x11)
 Requires(post): info
-Requires(preun):info
+Requires(preun): info
 Obsoletes:      mjpegtools-orig-addon
 
 %description
@@ -61,7 +60,6 @@ data from other sources as well.
 
 %package -n libmjpegutils-2_2-0
 Summary:        MJPEG Video Capture and Processing Tools
-Group:          System/Libraries
 
 %description -n libmjpegutils-2_2-0
 The mjpegtools allow for capture, playback, processing, and simple
@@ -72,7 +70,6 @@ data from other sources as well.
 
 %package -n liblavfile-2_2-0
 Summary:        MJPEG Video Capture and Processing Tools
-Group:          System/Libraries
 
 %description -n liblavfile-2_2-0
 The mjpegtools allow for capture, playback, processing, and simple
@@ -83,7 +80,6 @@ data from other sources as well.
 
 %package -n liblavjpeg-2_2-0
 Summary:        MJPEG Video Capture and Processing Tools
-Group:          System/Libraries
 
 %description -n liblavjpeg-2_2-0
 The mjpegtools allow for capture, playback, processing, and simple
@@ -94,7 +90,6 @@ data from other sources as well.
 
 %package -n liblavplay-2_2-0
 Summary:        MJPEG Video Capture and Processing Tools
-Group:          System/Libraries
 
 %description -n liblavplay-2_2-0
 The mjpegtools allow for capture, playback, processing, and simple
@@ -105,7 +100,6 @@ data from other sources as well.
 
 %package -n liblavrec-2_2-0
 Summary:        MJPEG Video Capture and Processing Tools
-Group:          System/Libraries
 
 %description -n liblavrec-2_2-0
 The mjpegtools allow for capture, playback, processing, and simple
@@ -116,7 +110,6 @@ data from other sources as well.
 
 %package -n libmplex2-2_2-0
 Summary:        MJPEG Video Capture and Processing Tools
-Group:          System/Libraries
 
 %description -n libmplex2-2_2-0
 The mjpegtools allow for capture, playback, processing, and simple
@@ -127,7 +120,6 @@ data from other sources as well.
 
 %package -n libmpeg2encpp-2_2-0
 Summary:        MJPEG Video Capture and Processing Tools
-Group:          System/Libraries
 
 %description -n libmpeg2encpp-2_2-0
 The mjpegtools allow for capture, playback, processing, and simple
@@ -138,7 +130,6 @@ data from other sources as well.
 
 %package -n libmjpegutils-devel
 Summary:        MJPEG Video Capture and Processing Tools
-Group:          Development/Libraries/C and C++
 Requires:       liblavfile-2_2-0 = %{version}
 Requires:       liblavjpeg-2_2-0 = %{version}
 Requires:       liblavplay-2_2-0 = %{version}
@@ -182,20 +173,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/mjpeg-howto.info%{ext_info}
 
-%post -n libmjpegutils-2_2-0 -p /sbin/ldconfig
-%postun -n libmjpegutils-2_2-0 -p /sbin/ldconfig
-%post -n liblavfile-2_2-0 -p /sbin/ldconfig
-%postun -n liblavfile-2_2-0 -p /sbin/ldconfig
-%post -n liblavjpeg-2_2-0 -p /sbin/ldconfig
-%postun -n liblavjpeg-2_2-0 -p /sbin/ldconfig
-%post -n liblavplay-2_2-0 -p /sbin/ldconfig
-%postun -n liblavplay-2_2-0 -p /sbin/ldconfig
-%post -n liblavrec-2_2-0 -p /sbin/ldconfig
-%postun -n liblavrec-2_2-0 -p /sbin/ldconfig
-%post -n libmplex2-2_2-0 -p /sbin/ldconfig
-%postun -n libmplex2-2_2-0 -p /sbin/ldconfig
-%post -n libmpeg2encpp-2_2-0 -p /sbin/ldconfig
-%postun -n libmpeg2encpp-2_2-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmjpegutils-2_2-0
+%ldconfig_scriptlets -n liblavfile-2_2-0
+%ldconfig_scriptlets -n liblavjpeg-2_2-0
+%ldconfig_scriptlets -n liblavplay-2_2-0
+%ldconfig_scriptlets -n liblavrec-2_2-0
+%ldconfig_scriptlets -n libmplex2-2_2-0
+%ldconfig_scriptlets -n libmpeg2encpp-2_2-0
 
 %files
 %attr(0755,root,root) %{_bindir}/*
