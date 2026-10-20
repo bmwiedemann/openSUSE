@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:32:42 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.0:
+  * Switched to GTK4 for the notebook interface (still builds with
+    GTK3 too).
+  * Fix vary bug with single-factor terms.
+  * New "restart kernel and run entire notebook" button.
+- Switch to Gtk4 builds.
+- Drop Remove-boost-system-component-from-cmakefiles.patch:
+  upstreamed
+
+-------------------------------------------------------------------
 Sat Sep  5 08:09:38 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Restore BuildRequires: libboost_date_time-devel for Leap 16.1
