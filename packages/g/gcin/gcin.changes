@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:55:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.9.4:
+  * Improved automatic word selection in phonetic input and cursor
+    placement after phrase selection
+  * Ubuntu 24.04 and desktop indicator support
+  * Fix a crash from garbled text when mistyping English input
+- Fix row-width mismatch with get_en_miss_cand() (fatal with gcc14
+  and later): gcin-en-miss-cand-fix.patch
+- Drop the new Wayland custom-surface block in win0.cpp, it uses
+  GDK APIs no longer present and its substance is commented out:
+  gcin-drop-wayland-block.patch
+- Fix heap overflow building the en-american table on aarch64
+  (length bytes must be read as signed char): tsa2d32-sign-fix.patch
+- Drop Group tags; fetch the tarball over https and use
+  pkgconfig-style BuildRequires with canonical build macros
+
+-------------------------------------------------------------------
 Sat Jun 21 08:58:47 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - add gcin-2.9.0-gcc15.patch, fix build with gcc15

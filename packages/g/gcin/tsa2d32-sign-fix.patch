@@ -1,0 +1,42 @@
+---
+ tsa2d32.cpp |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+--- a/tsa2d32.cpp
++++ b/tsa2d32.cpp
+@@ -88,7 +88,7 @@
+ {
+   int idxa=*((int *)a);  char *pa = (char *)&bf[idxa];
+   int idxb=*((int *)b);  char *pb = (char *)&bf[idxb];
+-  char lena,lenb, len;
++  signed char lena,lenb, len;
+   usecount_t usecounta, usecountb;
+ 
+   lena=*(pa++); if (lena < 0) lena = -lena; memcpy(&usecounta, pa, sizeof(usecount_t)); pa+= sizeof(usecount_t);
+@@ -129,7 +129,7 @@
+ {
+   int idxa=*((int *)a);  char *pa = (char *)&bf[idxa];
+   int idxb=*((int *)b);  char *pb = (char *)&bf[idxb];
+-  char lena,lenb, len;
++  signed char lena,lenb, len;
+ 
+   lena=*(pa++); if (lena < 0) lena = -lena; pa+= sizeof(usecount_t);
+   char *ka = pa;
+@@ -166,7 +166,7 @@
+ {
+   int idxa=*((int *)a);  char *pa = (char *)&sf[idxa];
+   int idxb=*((int *)b);  char *pb = (char *)&sf[idxb];
+-  char lena,lenb, len;
++  signed char lena,lenb, len;
+   usecount_t usecounta, usecountb;
+ 
+   lena=*(pa++); if (lena < 0) lena = -lena; memcpy(&usecounta, pa, sizeof(usecount_t)); pa+= sizeof(usecount_t);
+@@ -664,7 +664,7 @@
+   for(i=0;i<phcount;i++) {
+     idx = phidx[i];
+     sidx[j]=ofs;
+-    len=bf[idx];
++    len=(signed char)bf[idx];
+     gboolean en_has_str = FALSE;
+     if (len < 0) {
+       len = -len;

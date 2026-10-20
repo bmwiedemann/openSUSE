@@ -1,0 +1,48 @@
+---
+ win0.cpp |   30 +-----------------------------
+ 1 file changed, 1 insertion(+), 29 deletions(-)
+
+--- a/win0.cpp
++++ b/win0.cpp
+@@ -473,22 +473,6 @@
+ void tsin_toggle_eng_ch();
+ void set_no_focus();
+ 
+-#if GTK_CHECK_VERSION(3,24,0)
+-static void widget_realize_cb (GtkWidget *widget)
+-{
+-	dbg("widget_realize_cb %d\n", gtk_widget_get_realized(widget));
+-  GdkWindow *window;
+-  struct wl_surface *surface;
+-  struct input_panel_surface *ip_surface;
+-
+-  window = gtk_widget_get_window (widget);
+-  gdk_wayland_window_set_use_custom_surface (window);
+-
+-  surface = gdk_wayland_window_get_wl_surface (window);
+-//  ip_surface = input_panel_get_input_panel_surface (input_panel, surface);
+-//  input_panel_surface_set_panel (ip_surface);
+-}
+-#endif
+ 
+ GtkWidget *create_no_focus_win()
+ {
+@@ -496,18 +480,6 @@
+ //  GtkWidget *win = gtk_window_new (GTK_WINDOW_POPUP);
+ //  gtk_window_set_has_resize_grip(GTK_WINDOW(win), FALSE);
+ #if UNIX
+-#if GTK_CHECK_VERSION(3,24,0)
+-  if (!isX11()) 
+-  {
+-	  dbg("Wayland create_no_focus_win!\n");
+-	  gtk_widget_realize (win);
+-	  widget_realize_cb(win);
+-	  gtk_container_set_border_width (GTK_CONTAINER (win), 0);
+-	  gtk_window_set_accept_focus(GTK_WINDOW(win), FALSE);	 
+-//	  g_signal_connect (win, "realize", G_CALLBACK (widget_realize_cb), NULL);	  	 
+-	  return win;
+-  }
+-#endif  
+   gtk_window_set_resizable(GTK_WINDOW(win), FALSE);
+ #endif
+ #if WIN32

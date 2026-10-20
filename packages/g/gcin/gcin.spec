@@ -1,7 +1,7 @@
 #
 # spec file for package gcin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,14 @@
 %if ! %{defined _distconfdir}
 %define _distconfdir %{_sysconfdir}
 %endif
-
 %define build_qt4 0%{?is_opensuse} && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-
 Name:           gcin
-Version:        2.9.0
+Version:        2.9.4
 Release:        0
 Summary:        Chinese input method server
 License:        LGPL-2.1-only
-Group:          System/I18n/Chinese
-URL:            http://hyperrate.com/dir.php?eid=67
-Source:         http://hyperrate.com/gcin-source/%{name}-%{version}.tar.xz
+URL:            https://hyperrate.com/dir.php?eid=67
+Source:         https://hyperrate.com/gcin-source/%{name}-%{version}.tar.xz
 Source1:        xim.d-gcin
 Source2:        gcin-README.suse
 Source3:        xim.gcin.suse.template
@@ -58,33 +55,38 @@ Patch11:        gcin-remove-dead-code.patch
 Patch12:        gcin-gcc14-fix.patch
 # PATCH-FIX-UPSTREAM fix the build errors with gcc15
 Patch13:        gcin-2.9.0-gcc15.patch
-BuildRequires:  anthy-devel
+# PATCH-FIX-UPSTREAM fix row-width mismatch with get_en_miss_cand() (gcc14+ fatal)
+Patch14:        gcin-en-miss-cand-fix.patch
+# PATCH-FIX-UPSTREAM drop unbuildable Wayland custom-surface block (removed GDK APIs)
+Patch15:        gcin-drop-wayland-block.patch
+# PATCH-FIX-UPSTREAM read table length bytes as signed char (ARM char is unsigned)
+Patch16:        tsa2d32-sign-fix.patch
 BuildRequires:  fdupes
-BuildRequires:  gtk2-devel
-BuildRequires:  gtk3-devel
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5PlatformSupport-devel-static
-BuildRequires:  libXtst-devel
-BuildRequires:  libcurl-devel
 BuildRequires:  libjpeg-devel
-%if %{build_qt4}
-BuildRequires:  libqt4-devel
-%endif
 BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
+BuildRequires:  pkgconfig(anthy)
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(xtst)
 Requires:       %{name}-branding
 Requires:       %{name}-gtk2 = %{version}
 Requires:       %{name}-gtk3 = %{version}
-%if %{build_qt4}
-Requires:       %{name}-qt4 = %{version}
-%endif
 Requires:       %{name}-qt5 = %{version}
 Requires:       libgcin-im-client1 = %{version}
 Recommends:     libreoffice-gnome
 Provides:       locale(zh_TW;zh_HK;zh_MO)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if %{build_qt4}
+BuildRequires:  libqt4-devel
+%endif
+%if %{build_qt4}
+Requires:       %{name}-qt4 = %{version}
+%endif
 
 %description
 gcin is a Chinese input method server for traditional Chinese.
@@ -93,9 +95,10 @@ It features a better GTK user interface.
 %package branding-upstream
 Summary:        Upstream branding of gcin
 License:        LGPL-2.1-only
-Group:          System/I18n/Chinese
 Requires:       gcin = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
+Supplements:    (%{name} and branding-upstream)
+# Keep the otherproviders form: a plain package-name Conflicts would also
+# match this subpackage's own provide of the branding symbol above.
 Conflicts:      otherproviders(%{name}-branding)
 Provides:       %{name}-branding = %{version}
 
@@ -105,7 +108,6 @@ This package provides upstream look and feel for gcin
 %package -n libgcin-im-client1
 Summary:        Share libraries of gcin
 License:        LGPL-2.1-only
-Group:          System/Libraries
 
 %description -n libgcin-im-client1
 This package provides runtime libraries for gcin.
@@ -113,7 +115,6 @@ This package provides runtime libraries for gcin.
 %package gtk2
 Summary:        Gcin gtk2 immodule
 License:        LGPL-2.1-only
-Group:          System/I18n/Chinese
 Requires:       %{name} = %{version}
 Provides:       %{name}-gtk2-immodule = %{version}
 Obsoletes:      %{name}-gtk2-immodule <= 2.8.4-77.16
@@ -126,7 +127,6 @@ gcin gtk2 immodule, support gtk2-based applications
 %package qt4
 Summary:        Gcin qt4 immodule
 License:        GPL-2.0-only
-Group:          System/I18n/Chinese
 Requires:       %{name} = %{version}
 Provides:       %{name}-qt4-immodule = %{version}
 Obsoletes:      %{name}-qt4-immodule <= 2.8.4-77.16
@@ -138,7 +138,6 @@ gcin qt4 immodule, support Qt4-based applications
 %package qt5
 Summary:        Gcin qt5 immodule
 License:        GPL-2.0-only
-Group:          System/I18n/Chinese
 Requires:       %{name} = %{version}
 Provides:       %{name}-qt5-immodule = %{version}
 Obsoletes:      %{name}-qt5-immodule <= 2.8.4-77.16
@@ -149,7 +148,6 @@ gcin qt5 immodule, support Qt5-based applications
 %package anthy
 Summary:        Gcin anthy module
 License:        LGPL-2.1-only
-Group:          System/I18n/Japanese
 Requires:       %{name} = %{version}
 Provides:       %{name}-anthy-module = %{version}
 Obsoletes:      %{name}-anthy-module <= 2.8.4-77.16
@@ -160,7 +158,6 @@ gcin anthy module, try this to input Japanese with libanthy
 %package gtk3
 Summary:        Gcin gtk3 immodule
 License:        LGPL-2.1-only
-Group:          System/I18n/Chinese
 Requires:       %{name} = %{version}
 Provides:       %{name}-gtk3-immodule = %{version}
 Obsoletes:      %{name}-gtk3-immodule <= 2.8.4-77.16
@@ -183,13 +180,13 @@ sed -i "s/modify-XIM//" scripts/Makefile
 %if "%{_lib}" == "lib64"
 sed -e "s,^LIB='lib',LIB=lib64," -i configure
 %endif
-CFLAGS="%{optflags}" %configure --prefix=/usr --use_i18n=Y \
+CFLAGS="%{optflags}" %configure --prefix=%{_prefix} --use_i18n=Y \
 --use_anthy=Y --doc_version_dir=N
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 mkdir -p %{buildroot}%{_distconfdir}/X11/xim.d/
 install -m 644 %{SOURCE1} %{buildroot}%{_distconfdir}/X11/xim.d/gcin
@@ -212,11 +209,8 @@ popd
 %fdupes %{buildroot}
 
 %post -n libgcin-im-client1 -p /sbin/ldconfig
-
 %postun -n libgcin-im-client1 -p /sbin/ldconfig
-
 %post anthy -p /sbin/ldconfig
-
 %postun anthy -p /sbin/ldconfig
 
 %post gtk2
@@ -249,11 +243,11 @@ fi
 %post qt4 -p /sbin/ldconfig
 %postun qt4 -p /sbin/ldconfig
 %endif
+
 %post qt5 -p /sbin/ldconfig
 %postun qt5 -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %license COPYING
 %doc README.html Changelog.html AUTHORS gcin-README.suse xim.gcin.suse.template
 %{_distconfdir}/X11/xim.d
@@ -264,7 +258,6 @@ fi
 %dir %{_datadir}/icons/gcin/
 
 %files -n libgcin-im-client1
-%defattr(-,root,root)
 %dir %{_libdir}/gcin
 %{_libdir}/gcin/libgcin-im-client.so
 %{_libdir}/gcin/libgcin-im-client.so.1
@@ -274,29 +267,23 @@ fi
 %{_libdir}/gcin/intcode-module.so
 
 %files branding-upstream
-%defattr(-,root,root)
 %{_datadir}/icons/gcin/*
 
 %files gtk2
-%defattr(-,root,root)
 %{_libdir}/gtk-2.0/2.10.0/immodules/im-gcin.so
 
 %if %{build_qt4}
 %files qt4
-%defattr(-,root,root)
 %{_libdir}/qt4/plugins/inputmethods/im-gcin.so
 %endif
 
 %files qt5
-%defattr(-,root,root)
 %{_libdir}/qt5/plugins/platforminputcontexts/libgcinplatforminputcontextplugin.so
 
 %files anthy
-%defattr(-,root,root)
 %{_libdir}/gcin/anthy-module.so
 
 %files gtk3
-%defattr(-,root,root)
 %{_libdir}/gtk-3.0/3.0.0/immodules/im-gcin.so
 
 %changelog

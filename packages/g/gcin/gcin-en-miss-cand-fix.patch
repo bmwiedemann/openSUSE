@@ -1,0 +1,15 @@
+---
+ gtab-buf.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/gtab-buf.cpp
++++ b/gtab-buf.cpp
+@@ -1447,7 +1447,7 @@
+ 				en[j]=gbuf[i+j].ch[0];
+ 			en[len]=0;
+ 			dbg("pp8 '%s'\n", en);
+-			char best[10][MAX_PHRASE_LEN];
++			char best[10][MAX_PHRASE_LEN+1];
+ 			get_en_miss_cand(en_hand.fph, en, len, best);
+ 			int n=0;
+ 			for(int i=0;i<10;i++) {
