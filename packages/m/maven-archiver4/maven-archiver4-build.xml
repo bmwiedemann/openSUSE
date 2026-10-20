@@ -10,7 +10,7 @@
 
   <property name="project.groupId" value="org.apache.maven"/>
   <property name="project.artifactId" value="maven-archiver"/>
-  <property name="project.version" value="4.0.0-beta-5"/>
+  <property name="project.version" value="4.0.0-beta-6"/>
   <property name="project.name" value="Apache Maven Archiver"/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
 
@@ -57,6 +57,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           encoding="utf-8"
            release="${compiler.release}"
            target="${compiler.target}"
            verbose="false"

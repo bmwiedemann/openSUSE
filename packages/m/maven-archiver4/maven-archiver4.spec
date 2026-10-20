@@ -1,7 +1,7 @@
 #
 # spec file for package maven-archiver4
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global base_name maven-archiver
 %global base_ver 4.0.0
 %global ver_suffix 4
-%global beta_ver 5
+%global beta_ver 6
 %global file_ver %{base_ver}-beta-%{beta_ver}
 %bcond_with tests
 Name:           %{base_name}%{ver_suffix}
@@ -39,6 +39,7 @@ BuildRequires:  maven4-lib
 BuildRequires:  plexus-archiver >= 4.2.0
 BuildRequires:  plexus-interpolation >= 1.25
 BuildRequires:  plexus-utils
+BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildArch:      noarch
 
@@ -67,7 +68,8 @@ build-jar-repository -s lib \
   maven/maven-api-xml \
   plexus/archiver \
   plexus/interpolation \
-  plexus/utils
+  plexus/utils \
+  slf4j/api
 
 ant jar javadoc
 

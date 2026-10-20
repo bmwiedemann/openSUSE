@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Oct 20 07:43:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 4.0.0-beta-6
+  * Bug Fixes
+    + fix: do not clamp negative epoch timestamps to DATE_MIN
+    + Remove duplicate LOGGER field in MavenArchiver
+    + MJAR-595: Clamp outputTimestamp to DATE_MIN when
+      SOURCE_DATE_EPOCH=0
+    + fix: report invalid archiver properties
+    + Sanitize invalid Automatic-Module-Name instead of failing
+    + fix: support negative epoch timestamps in
+      parseBuildOutputTimestamp
+    + Handle null plugin maps in BuildHelper
+    + fix: throw NullPointerException when getManifest is called
+      without Session and classpath is enabled
+    + fix: prevent NPE in ManifestConfiguration.getClasspathPrefix()
+      when prefix is null
+    + MSHARED-815: Sanitize newlines in manifest entry values
+    + fix: restrict isNumeric() to ASCII digits to prevent
+      NumberFormatExceptionRefactor digit validation logic in
+      MavenArchiver
+  * Documentation updates
+    + docs: document null-value behaviour in manifest entry methods
+    + Convert the reference page from xdoc to Markdown
+    + Fix Javadoc issues per Oracle conventions
+  * Maintenance
+    + fix: replace deprecated testing stubs with non-deprecated
+      equivalents
+    + Add tests verifying empty lines in manifest values are
+      sanitized
+    + Let Dependabot bump the Maven 4 API artifacts
+    + MSHARED-815: Pattern.compile() called on every invocation of
+      handleSpecificationEntries
+    + small optimization
+    + Build against Maven 4.0.0-rc-6
+    + Fix #371: Cache model.getBuild() result to avoid repeated
+      calls
+    + Skip unused dependency resolution for addExtensions
+    + Mockito improvements
+    + JUnit Jupiter best practices
+  * Build
+    + Add ATR configuration to .asf.yaml
+    + Build with the shared workflow's Maven 4 version instead of
+      rc-6
+    + Keep Dependabot off Mockito 5 on maven-archiver-3.x
+  * Dependency updates
+    + Bump org.slf4j:slf4j-api from 2.0.17 to 2.0.20
+    + Bump org.apache.maven.shared:maven-shared-components from 45
+      to 50
+    + Bump mavenVersion from 4.0.0-rc-6 to 4.0.0-rc-7
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.28 to
+      1.30.0
+    + Bump org.codehaus.plexus:plexus-archiver from 4.10.2 to 4.14.0
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /stale.yml from 4 to 5
+    + Bump SLF4J API dependency to version 2.0.17
+    + Bump Maven version to 4.0.0-rc-5
+    + Bump org.codehaus.plexus:plexus-utils from 3.6.0 to 4.0.3
+    + Update to parent 48
+    + Bump org.assertj:assertj-core from 3.27.6 to 3.27.7
+
+-------------------------------------------------------------------
 Thu Nov  6 07:09:08 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Build with Java >= 17, since it is the baseline of the whole
