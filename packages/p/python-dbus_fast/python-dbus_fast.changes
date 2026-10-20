@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:53:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.2.0:
+  * Allow developers to set authentication timeouts.
+  * Guard against null characters in messages; catch and reject
+    invalid signatures.
+  * Share parsed introspection and proxy members between identical
+    interfaces for better performance.
+  * Drop Python 3.10 and add Python 3.15 support.
+- Spec cleanup: drop obsolete Group tag and modernize %files macro.
+
+-------------------------------------------------------------------
 Wed Aug 12 08:52:52 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update to version 5.0.22:

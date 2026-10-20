@@ -28,11 +28,10 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           %{pname}%{?psuffix}
-Version:        5.0.22
+Version:        5.2.0
 Release:        0
 Summary:        Python library for DBus
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/bluetooth-devices/dbus-fast
 Source0:        %{pname}-%{version}.tar.xz
 BuildRequires:  %{python_module pip}
@@ -87,8 +86,7 @@ eval $(dbus-launch --sh-syntax)
 %endif
 
 %if !%{with test}
-%files %python_files
-%defattr(-,root,root,-)
+%files %{python_files}
 %{python_sitearch}/%{mname}*
 %doc CHANGELOG.md CONTRIBUTING.md README.md
 %license LICENSE
