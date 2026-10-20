@@ -1,7 +1,18 @@
-Index: pesign-115/Make.defaults
-===================================================================
---- pesign-115.orig/Make.defaults
-+++ pesign-115/Make.defaults
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 1 Jan 2026 00:00:00 +0000
+Subject: [PATCH] Set the rpm macro directory at build time
+
+References: boo#1185663
+Upstream never made the rpm macro directory configurable; carry the
+downstream default so the spec can override it via rpmmacrodir=.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+diff --git a/Make.defaults b/Make.defaults
+index b91e1e3..086dbb4 100644
+--- a/Make.defaults
++++ b/Make.defaults
 @@ -13,6 +13,7 @@ rundir  ?= /run/
  rundir	:= $(abspath $(rundir))/
  pcdir	?= $(libdir)pkgconfig/
@@ -10,18 +21,20 @@ Index: pesign-115/Make.defaults
  DESTDIR	?=
  INSTALLROOT = $(DESTDIR)
  
-Index: pesign-115/src/Makefile
-===================================================================
---- pesign-115.orig/src/Makefile
-+++ pesign-115/src/Makefile
-@@ -88,8 +88,8 @@ install :
- 	$(INSTALL) -m 644 pesign.popt $(INSTALLROOT)/etc/popt.d/
+diff --git a/src/Makefile b/src/Makefile
+index 79d3bc2..71f4ab5 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -101,8 +101,8 @@ ifeq ($(ENABLE_DOCS), 1)
  	$(INSTALL) -d -m 755 $(INSTALLROOT)$(mandir)man1/
  	$(INSTALL) -m 644 $(MAN1TARGETS) $(INSTALLROOT)$(mandir)man1/
+ endif
 -	$(INSTALL) -d -m 755 $(INSTALLROOT)/etc/rpm/
 -	$(INSTALL) -m 644 macros.pesign $(INSTALLROOT)/etc/rpm/
 +	$(INSTALL) -d -m 755 $(INSTALLROOT)$(rpmmacrodir)
 +	$(INSTALL) -m 644 macros.pesign $(INSTALLROOT)$(rpmmacrodir)
  	$(INSTALL) -d -m 755 $(INSTALLROOT)$(libexecdir)/pesign/
- 	$(INSTALL) -m 750 pesign-authorize $(INSTALLROOT)$(libexecdir)/pesign/
  	$(INSTALL) -m 755 pesign-rpmbuild-helper $(INSTALLROOT)$(libexecdir)/pesign/
+ 	$(INSTALL) -d -m 700 $(INSTALLROOT)/etc/pesign
+-- 
+2.51.0

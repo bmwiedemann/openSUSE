@@ -17,45 +17,40 @@
 
 
 Name:           pesign
-Version:        116
+Version:        117
 Release:        0
 Summary:        Signing tool for PE-COFF binaries
 License:        GPL-3.0-or-later
-Group:          Productivity/Security
-URL:            https://github.com/rhinstaller/pesign
-Source:         https://github.com/rhinstaller/pesign/releases/download/%{version}/%{name}-%{version}.tar.bz2
+URL:            https://github.com/rhboot/pesign
+Source:         https://github.com/rhboot/pesign/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source1:        pesign.sysusers
 # PATCH-FIX-SUSE pesign-suse-build.patch glin@suse.com -- Adjust Makefile for the build service
 Patch1:         pesign-suse-build.patch
-Patch2:         pesign-skip-auth-on-friendly-slot.patch
 # PATCH-FIX-UPSTREAM pesign-fix-authvar-write-loop.patch glin@suse.com -- Fix the write loop in authvar
-Patch3:         pesign-fix-authvar-write-loop.patch
+Patch2:         pesign-fix-authvar-write-loop.patch
 # PATCH-FIX-SUSE pesign-boo1143063-remove-var-tracking.patch -- boo#1143063 Remove var-tracking from default CFLAGS
-Patch4:         pesign-boo1143063-remove-var-tracking.patch
+Patch3:         pesign-boo1143063-remove-var-tracking.patch
 # PATCH-FIX-UPSTREAM pesign-boo1185663-set-rpmmacrodir.patch boo#1185663 glin@suse.com -- Set the rpm macro directory at build time
-Patch5:         pesign-boo1185663-set-rpmmacrodir.patch
-Patch6:         harden_pesign.service.patch
-Patch7:         pesign-bsc1202933-Remove-pesign-authorize.patch
-Patch8:         pesign-bsc1202933-Make-etc-pki-pesign-writeable.patch
-Patch9:         pesign-fix-cert-match-check.patch
-Patch10:        pesign-fix-efikeygen-segfault.patch
-Patch11:        pesign-bsc1221694-fix-reversed-calloc-arguments.patch
-# PATCH-FIX-UPSTREAM pesign-bsc1238023-initialize-pwdata.patch bsc#1238023 glin@suse.com -- Fall back to password prompt correctly
-Patch12:        pesign-bsc1238023-initialize-pwdata.patch
-Patch13:        pesign-bsc1258751-constify-return-of-strrchr.patch
-Patch14:        pesign-disable-arm32-wchar_t-warnings.patch
-BuildRequires:  efivar-devel >= 38
-BuildRequires:  libuuid-devel
+Patch4:         pesign-boo1185663-set-rpmmacrodir.patch
+Patch5:         harden_pesign.service.patch
+Patch6:         pesign-bsc1202933-Make-etc-pki-pesign-writeable.patch
+# PATCH-FIX-SUSE pesign-fix-wincert-maybe-uninitialized.patch -- initialize dd to silence -Werror=maybe-uninitialized (LTO false positive)
+Patch7:         pesign-fix-wincert-maybe-uninitialized.patch
 BuildRequires:  mandoc
-BuildRequires:  mozilla-nss-devel
-BuildRequires:  pkg-config
-BuildRequires:  popt-devel
+BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(efiboot) >= 38
+BuildRequires:  pkgconfig(efisec) >= 38
+BuildRequires:  pkgconfig(efivar) >= 38
+BuildRequires:  pkgconfig(nss)
+BuildRequires:  pkgconfig(nss-util)
+BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(systemd)
-%sysusers_requires
-ExclusiveArch:  ia64 %ix86 x86_64 aarch64 %arm riscv64 loongarch64
-Recommends:     %{name}-systemd
+BuildRequires:  pkgconfig(uuid)
 Requires:       mozilla-nss-tools
+Recommends:     %{name}-systemd
+ExclusiveArch:  ia64 %{ix86} x86_64 aarch64 %{arm} riscv64 loongarch64
+%sysusers_requires
 
 %description
 Signing tool for PE-COFF binaries. It is vaguely compliant
@@ -64,11 +59,11 @@ with the PE and Authenticode specifications.
 %package systemd
 Summary:        Systemd units for pesign
 Requires:       %{name} = %{version}
-%{?systemd_requires}
-BuildArch:      noarch
 Provides:       pesign:%{_sbindir}/rcpesign
 Provides:       pesign:%{_tmpfilesdir}/pesign.conf
 Provides:       pesign:%{_unitdir}/pesign.service
+BuildArch:      noarch
+%{?systemd_requires}
 
 %description systemd
 Systemd units for the pesign package.
@@ -79,7 +74,7 @@ Systemd units for the pesign package.
 %build
 %sysusers_generate_pre %{SOURCE1} %{name} %{name}.conf
 export CPPFLAGS="%{optflags} -D_GLIBCXX_ASSERTIONS"
-make %{?_smp_mflags} CFLAGS="%{optflags}" LDFLAGS="${LDFLAGS} -pie" libexecdir=%{_libexecdir}
+%make_build CFLAGS="%{optflags}" LDFLAGS="${LDFLAGS} -pie" libexecdir=%{_libexecdir}
 
 %install
 mkdir -p %{buildroot}%{_sbindir}
@@ -93,7 +88,7 @@ make INSTALLROOT=%{buildroot} \
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 # there's some stuff that's not really meant to be shipped yet
-rm -rf %{buildroot}/boot %{buildroot}%{_prefix}/include
+rm -rf %{buildroot}/boot %{buildroot}%{_includedir}
 rm -rf %{buildroot}%{_libdir}/libdpe*
 
 install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/%{name}.conf
@@ -114,7 +109,6 @@ systemd-tmpfiles --create %{_tmpfilesdir}/pesign.conf || :
 %service_del_postun pesign.service
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %{_bindir}/pesign
 %{_bindir}/pesign-client

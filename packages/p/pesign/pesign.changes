@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:54:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 117:
+  * Add support for RSA3072, RSA4096, SHA384 and ML-DSA (PQC)
+    algorithms
+  * Add loongarch64 (la64) EFI support and branch protection for
+    aarch64 builds
+  * Fix signature removal, efikeygen segfaults, handling of tokens
+    without trust support, and daemon pid handling
+  * pesign-rpmbuild-helper: support inplace editing for the %pesign
+    macro
+  * Allow disabling the docs at build time (ENABLE_DOCS)
+  * Drop patches applied upstream: pesign-skip-auth-on-friendly-slot.patch,
+    pesign-bsc1202933-Remove-pesign-authorize.patch,
+    pesign-fix-cert-match-check.patch, pesign-fix-efikeygen-segfault.patch,
+    pesign-bsc1221694-fix-reversed-calloc-arguments.patch,
+    pesign-bsc1238023-initialize-pwdata.patch,
+    pesign-bsc1258751-constify-return-of-strrchr.patch and
+    pesign-disable-arm32-wchar_t-warnings.patch
+  * Rebase pesign-boo1185663-set-rpmmacrodir.patch onto the 117
+    Makefiles
+  * Add pesign-fix-wincert-maybe-uninitialized.patch to silence
+    -Werror=maybe-uninitialized (LTO false positive in
+    get_current_sigspace_size)
+  * Switch Source and URL over to the rhboot/pesign upstream
+
+-------------------------------------------------------------------
 Fri Jul 17 01:45:06 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Set stricter permissions on /etc/pki/pesign (bsc#1271405)

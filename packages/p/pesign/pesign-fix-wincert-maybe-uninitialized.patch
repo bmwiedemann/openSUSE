@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Martin Pluskal <mpluskal@suse.com>
+Date: Sun, 18 Oct 2026 12:00:00 +0000
+Subject: [PATCH] wincert: initialize dd to silence -Werror=maybe-uninitialized
+
+pe_getdatadir() always initializes *dd on success and the failure
+path exits, so this is an LTO false positive seen with GCC 16.
+Initialize the pointer to make the failure mode explicit.
+
+Signed-off-by: Martin Pluskal <mpluskal@suse.com>
+---
+ src/wincert.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wincert.c b/src/wincert.c
+index ea8a025..69d90b6 100644
+--- a/src/wincert.c
++++ b/src/wincert.c
+@@ -201,7 +201,7 @@ done:
+ static ssize_t
+ get_current_sigspace_size(Pe *pe)
+ {
+-	data_directory *dd;
++	data_directory *dd = NULL;
+ 
+ 	int rc = pe_getdatadir(pe, &dd);
+ 	if (rc < 0) {
+-- 
+2.51.0
