@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 19 01:02:59 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.7:
+  * JWK: Reject recognized DER, PEM, and SSH asymmetric public keys when
+    importing octkeys, including public key bytes embedded in an oct JWK.
+    Preserve warnings for input that only resembles an asymmetric key.
+  * Replace legacy union type hints with | syntax.
+  * JWE: Limit base64url-encoded additional authenticated data to 65,536
+    bytes before copying or decoding it in JSON serialization. Configure the
+    limit with JWERegistry(max_aad_length=...).
+  * JWT: Reject non-string jti claims, including arrays containing an
+    expected token ID, even when no claim options are configured.
+  * JWT: Report the correct claim name for invalid iss values.
+  * JWS & JWE: Validate compact token size before splitting it into segments.
+  * JWK: Handle key set equality comparisons with unrelated types.
+
+-------------------------------------------------------------------
 Tue Sep  1 21:37:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.5:
@@ -11,7 +28,7 @@ Mon Jul 20 16:15:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.4:
   * Reject JWS general JSON serialization when signatures is
-    empty.
+    empty. (CVE-2026-102946, bsc#1285840)
   * Raises DecodeError when encrypted_key is None in JWE.
 
 -------------------------------------------------------------------

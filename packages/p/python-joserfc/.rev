@@ -149,4 +149,24 @@
   * JWE: Add max_recipients to JWERegistry.</comment>
     <requestid>1375236</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f51130abb549eb9c178b900114edac71</srcmd5>
+    <version>1.7.7</version>
+    <time>1792492638</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.7:
+  * JWK: Reject recognized DER, PEM, and SSH asymmetric public keys when
+    importing octkeys, including public key bytes embedded in an oct JWK.
+    Preserve warnings for input that only resembles an asymmetric key.
+  * Replace legacy union type hints with | syntax.
+  * JWE: Limit base64url-encoded additional authenticated data to 65,536
+    bytes before copying or decoding it in JSON serialization. Configure the
+    limit with JWERegistry(max_aad_length=...).
+  * JWT: Reject non-string jti claims, including arrays containing an
+    expected token ID, even when no claim options are configured.
+  * JWT: Report the correct claim name for invalid iss values.
+  * JWS &amp; JWE: Validate compact token size before splitting it into segments.
+  * JWK: Handle key set equality comparisons with unrelated types.</comment>
+    <requestid>1386102</requestid>
+  </revision>
 </revisionlist>
