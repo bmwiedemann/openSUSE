@@ -16,26 +16,27 @@
 #
 
 
-%define sover 90
+%define sover 91
 %if 0%{?suse_version} >= 1550
 %define sbindir %{_sbindir}
 %else
 %define sbindir /sbin
 %endif
 Name:           ntfs-3g_ntfsprogs
-Version:        2026.7.7
+Version:        2026.9.28
 Release:        0
 Summary:        NTFS Support in Userspace
 License:        GPL-2.0-or-later
-Group:          System/Filesystems
 URL:            https://github.com/tuxera/ntfs-3g/
 Source:         https://tuxera.com/opensource/%{name}-%{version}.tgz
+BuildRequires:  gcc
 BuildRequires:  gnutls-devel
-BuildRequires:  hwinfo-devel
-BuildRequires:  libgcrypt-devel
-BuildRequires:  libuuid-devel
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fuse) >= 2.6.0
+BuildRequires:  pkgconfig(hwinfo)
+BuildRequires:  pkgconfig(libgcrypt)
+BuildRequires:  pkgconfig(uuid)
 
 %description
 NTFS-3G allows for read/write access to NTFS partitions which can be
@@ -45,7 +46,6 @@ Vista and Windows Seven.
 %package -n ntfs-3g
 Summary:        NTFS Support in Userspace
 License:        GPL-2.0-or-later
-Group:          System/Filesystems
 Provides:       ntfsprogs-fuse = 1.13.1
 Obsoletes:      ntfsprogs-fuse < 1.13.1
 %if 0%{?suse_version}
@@ -60,7 +60,6 @@ Vista and Windows Seven.
 %package -n libntfs-3g%{sover}
 Summary:        NTFS Support in Userspace -- Library
 License:        LGPL-2.1-or-later
-Group:          System/Filesystems
 
 %description -n libntfs-3g%{sover}
 NTFS-3G allows for read/write access to NTFS partitions which can be
@@ -70,7 +69,6 @@ Vista and Windows Seven.
 %package -n libntfs-3g-devel
 Summary:        NTFS Support in Userspace -- Development Files
 License:        LGPL-2.1-or-later
-Group:          System/Filesystems
 Requires:       glibc-devel
 Requires:       libntfs-3g%{sover} = %{version}
 Provides:       ntfs-3g-devel = %{version}
@@ -84,7 +82,6 @@ Vista and Windows Seven.
 %package -n ntfsprogs
 Summary:        NTFS Utilities
 License:        GPL-2.0-or-later
-Group:          System/Filesystems
 
 %description -n ntfsprogs
 The ntfsprogs includes utilities for doing all required tasks to NTFS
@@ -94,7 +91,6 @@ options to display the version number and usage syntax.
 %package -n ntfsprogs-extra
 Summary:        NTFS Utilities which can damage your filesystem such that Windows can't read it
 License:        GPL-2.0-or-later
-Group:          System/Filesystems
 
 %description -n ntfsprogs-extra
 These are programs which are considered non-functional or only test-oriented.  They are kept in the source

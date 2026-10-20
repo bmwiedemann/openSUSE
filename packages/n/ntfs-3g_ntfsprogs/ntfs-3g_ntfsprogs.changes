@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:38:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.9.28 (including the 2026.9.18 security
+  release; CVEs for its fixes are still pending, tracked by boo#):
+  * Heap out-of-bounds read/write in ntfs_ie_add_vcn (boo#1281763),
+    heap data corruption in ntfs_mapping_pairs_decompress
+    (boo#1281762), heap buffer overflows in ntfs_external_attr_find
+    (boo#1281761), ntfs_ea_check_wsldev (boo#1281760),
+    ntfs_check_restart_area (boo#1281759), ntfs_same_sid
+    (boo#1281757) and ntfs_acl_owner (boo#1281756), and
+    denial-of-service in ntfs_inode_attach_all_extents (boo#1281758).
+  * Guard against multiple creator-owner and creator-group ACEs
+    during ACL inheritance; fix stale $MFTMirr data in ntfsresize.
+  * Fix MST-fixup return-value regression, ntfslabel options
+    starting with '-', and use-after-free/improper realloc cases.
+- Drop patches adopted upstream:
+  * 1_ntfs-3g_2026.7.7-SA_2026-06-1_05.patch
+  * 2_ntfs-3g_2026.7.7-SA_2026-06-1_07.patch
+  * 3_ntfs-3g_2026.7.7-SA_2026-06-1_08.patch
+  * 4_ntfs-3g_2026.7.7-SA_2026-06-1_10.patch
+  * 5_ntfs-3g_2026.7.7-SA_2026-06-1_11.patch
+  * 6_ntfs-3g_2026.7.7-SA_2026-06-1_12.patch
+  * 7_ntfs-3g_2026.7.7-SA_2026-06-1_19.patch
+  * 8_ntfs-3g_2026.7.7-SA_2026-06-1_20.patch
+- Soname bump: libntfs-3g.so.90 -> libntfs-3g.so.91.
+- Spec cleanup: drop Group tags, use pkgconfig() BuildRequires,
+  explicitly require gcc and make.
+
+-------------------------------------------------------------------
+Thu Sep 24 01:00:31 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add CVE patch bundle:
+  * bsc#1281763: 1_ntfs-3g_2026.7.7-SA_2026-06-1_05.patch
+  * bsc#1281762: 2_ntfs-3g_2026.7.7-SA_2026-06-1_07.patch
+  * bsc#1281761: 3_ntfs-3g_2026.7.7-SA_2026-06-1_08.patch
+  * bsc#1281760: 4_ntfs-3g_2026.7.7-SA_2026-06-1_10.patch
+  * bsc#1281759: 5_ntfs-3g_2026.7.7-SA_2026-06-1_11.patch
+  * bsc#1281758: 6_ntfs-3g_2026.7.7-SA_2026-06-1_12.patch
+  * bsc#1281757: 7_ntfs-3g_2026.7.7-SA_2026-06-1_19.patch
+  * bsc#1281756: 8_ntfs-3g_2026.7.7-SA_2026-06-1_20.patch
+
+-------------------------------------------------------------------
 Wed Jul 22 23:42:55 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2026.7.7:
