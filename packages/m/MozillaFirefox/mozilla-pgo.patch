@@ -1,11 +1,11 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
-# Parent  73147e14b378957cdb8516125df34111d2699fe9
+# Parent  4499598efbf786a149279a530d9adfa3e7b59614
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
 --- a/build/moz.configure/lto-pgo.configure
 +++ b/build/moz.configure/lto-pgo.configure
-@@ -89,22 +89,26 @@ def pgo_profile_path(path, pgo_use, prof
+@@ -98,22 +98,26 @@ def pgo_profile_path(path, pgo_use, prof
      return path[0]
  
  
@@ -33,7 +33,7 @@ diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo
  
      topobjdir = build_env.topobjdir
  
-@@ -138,17 +142,17 @@ def pgo_flags(
+@@ -147,17 +151,17 @@ def pgo_flags(
      target_is_windows,
      pgo_temporal,
      orderfile,
@@ -52,7 +52,7 @@ diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo
          if compiler.type == "clang-cl":
              prefix = "/clang:"
              gen_ldflags = None
-@@ -352,34 +356,34 @@ def lto(
+@@ -361,34 +365,34 @@ def lto(
              "configure."
          )
  
@@ -213,7 +213,7 @@ diff --git a/extensions/spellcheck/src/moz.build b/extensions/spellcheck/src/moz
 diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components/terminator/nsTerminator.cpp
 --- a/toolkit/components/terminator/nsTerminator.cpp
 +++ b/toolkit/components/terminator/nsTerminator.cpp
-@@ -333,16 +333,21 @@ void nsTerminator::StartWatchdog() {
+@@ -398,16 +398,21 @@ void nsTerminator::StartWatchdog() {
        // Defend against overflow
        crashAfterMS = INT32_MAX;
      } else {
@@ -227,11 +227,11 @@ diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components
 +  // silently produce poorly performing binary.
 +  crashAfterMS = INT32_MAX;
 +
-   UniquePtr<Options> options(new Options());
-   // Guarantee that crashAfterTicks is non-zero
-   options->crashAfterTicks = std::max(1, crashAfterMS / HEARTBEAT_INTERVAL_MS);
+   // Guarantee that gCrashAfterTicks is non-zero
+   gCrashAfterTicks = std::max(1, crashAfterMS / HEARTBEAT_INTERVAL_MS);
  
    DebugOnly<PRThread*> watchdogThread =
-       CreateSystemThread(RunWatchdog, options.release());
+       CreateSystemThread(RunWatchdog, nullptr);
    MOZ_ASSERT(watchdogThread);
  }
+ 

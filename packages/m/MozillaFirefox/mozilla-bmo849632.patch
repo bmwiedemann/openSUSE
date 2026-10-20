@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  669e83ba291d98fea133d2cfd670d04963d456b9
+# Parent  4be640a4a8e7040ddb100806e2058025103ad029
 Problem:  webGL sites are displayed in the wrong color (usually blue-ish)
 Solution: Problem is with skia once again. Output of webgl seems endian-correct, but skia only
           knows how to deal with little endian.
@@ -25,9 +25,9 @@ diff --git a/gfx/gl/GLContext.h b/gfx/gl/GLContext.h
  #include "mozilla/ThreadLocal.h"
  #include "mozilla/UniquePtr.h"
  #include "mozilla/WeakPtr.h"
+ #include "mozilla/gfx/Point.h"
  #include "nsRegionFwd.h"
- #include "nsString.h"
-@@ -1619,16 +1620,23 @@ class GLContext : public GenericAtomicRe
+@@ -1636,16 +1637,23 @@ class GLContext : public GenericAtomicRe
      AFTER_GL_CALL;
    }
  

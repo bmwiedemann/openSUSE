@@ -8568,4 +8568,41 @@
     Sandbox escape due to use-after-free in the DOM: Content</comment>
     <requestid>1383340</requestid>
   </revision>
+  <revision rev="505" vrev="1">
+    <srcmd5>215f90c4b1cb5113fede4b956e5264d6</srcmd5>
+    <version>158.0</version>
+    <time>1792492479</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 158.0
+  * https://www.firefox.com/en-US/firefox/158.0/releasenotes/
+  MFSA 2026-106 (bsc#1284493)
+  * CVE-2026-109704 (bmo#2037979)
+    Privilege escalation in the Application Update component
+  * CVE-2026-109705 (bmo#2040905)
+    Sandbox escape, site isolation issue due to incorrect boundary
+    conditions, use-after-free in the Networking component
+  * CVE-2026-109706 (bmo#2053649)
+    Use-after-free in the Storage: IndexedDB component
+  * CVE-2026-109707 (bmo#2059150)
+    Sandbox escape due to use-after-free in the Networking component
+  * CVE-2026-109708 (bmo#2059151)
+    Sandbox escape due to incorrect boundary conditions in the
+    Networking component
+  * CVE-2026-109709 (bmo#2067976)
+    Information disclosure, privilege escalation in the Security:
+    Process Sandboxing component
+  * CVE-2026-109710 (bmo#2068338)
+    Use-after-free in the Graphics: Text component
+  * CVE-2026-109711 (bmo#2068344)
+    Use-after-free in the Graphics: Canvas2D component
+  * CVE-2026-109712 (bmo#2068420)
+    Sandbox escape due to uninitialized memory in the Graphics
+    component
+  * CVE-2026-109713 (bmo#2068421)
+    Use-after-free in the Crash Reporting component
+  * CVE-2026-109714 (bmo#2069765)
+    Incorrect boundary conditions in the Layout component
+  * CVE-2026-109715 (bmo#2073267)</comment>
+    <requestid>1385946</requestid>
+  </revision>
 </revisionlist>
