@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:14:40 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 1.32.0:
+  * Full AVX10.2 and APX backend support on the avx10.2dmr
+    and avx10.2nvl targets, based on LLVM 23.1.2.
+  * New parallel bit deposit/extract standard library functions
+    pdep32(), pext32(), pdep64() and pext64().
+  * New --cpu=znver6 support for AMD Zen 6 processors.
+  * New ispcrtLoadModuleFromMemory() API for loading GPU modules
+    from in-memory buffers.
+  * Dependency files honor -MQ for Make-quoted rule targets.
+  * Fix AArch64 miscompile of pre-decrement on varying unsigned
+    integers and an AVX-512 masked load/store miscompile.
+  * Fix crashes on bool short-vector reference loads and gather
+    index analysis with large constant offsets.
+- Allow building against LLVM 23 (raise upper bound to 24);
+  upstream now defaults to LLVM 23.1.2 and supports LLVM 24.
+- Spec cleanup: drop obsolete Group tags, use pkgconfig
+  BuildRequires and RPM macros for paths.
+
+-------------------------------------------------------------------
 Wed Oct  7 15:21:35 UTC 2026 - JS <obs.coke518@passinbox.com>
 
 - Add upper limit to llvm/clang versions and make sure the

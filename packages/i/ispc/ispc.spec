@@ -18,39 +18,54 @@
 
 
 %define libname libispcrt1
-
 %global minimum_llvm_version 20
-%global maximum_llvm_version_exclusive 23
-
+%global maximum_llvm_version_exclusive 24
 #if 0%{?suse_version} < 1699
 #define force_llvm_version 21
 #endif
-
 # LLVM is build with OpenMP support only on 64bit archs and x86
 %ifarch aarch64 ppc64 ppc64le %{ix86} x86_64
 %bcond_without openmp_task_model
 %else
 %bcond_with openmp_task_model
 %endif
-
 Name:           ispc
-Version:        1.31.0
+Version:        1.32.0
 Release:        0
 Summary:        C-based SPMD programming language compiler
 License:        BSD-3-Clause
-Group:          Development/Languages/C and C++
 URL:            https://ispc.github.io/
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}/v-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        series
 Patch1:         skip-tests.patch
 BuildRequires:  bison
+BuildRequires:  cmake >= 3.13
+BuildRequires:  flex
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(form)
+BuildRequires:  pkgconfig(formw)
+BuildRequires:  pkgconfig(level-zero)
+BuildRequires:  pkgconfig(menu)
+BuildRequires:  pkgconfig(menuw)
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(ncurses++)
+BuildRequires:  pkgconfig(ncurses++w)
+BuildRequires:  pkgconfig(ncursesw)
+BuildRequires:  pkgconfig(panel)
+BuildRequires:  pkgconfig(panelw)
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(tic)
+BuildRequires:  pkgconfig(ticw)
+BuildRequires:  pkgconfig(tinfo)
+# require devel for now for backwards compatibility (until now, packages just BuildRequire: ispc)
+Requires:       %{name}-devel
+# aarch32 requires LLVM with aarch64 target support, likewise for ix86
+ExclusiveArch:  x86_64 aarch64
 %if 0%{?force_llvm_version}
 BuildRequires:  clang%{force_llvm_version}-devel >= %{minimum_llvm_version}
 %else
 BuildRequires:  (cmake(Clang) >= %{minimum_llvm_version} with cmake(Clang) < %{maximum_llvm_version_exclusive})
 %endif
-BuildRequires:  cmake >= 3.13
-BuildRequires:  flex
 %if 0%{?force_llvm_version}
 BuildRequires:  llvm%{force_llvm_version}-devel >= %{minimum_llvm_version}
 %else
@@ -63,19 +78,12 @@ BuildRequires:  libomp%{force_llvm_version}-devel >= %{minimum_llvm_version}
 BuildRequires:  (libomp-devel-provider >= %{minimum_llvm_version} with libomp-devel-provider < %{maximum_llvm_version_exclusive})
 %endif
 %else
-BuildRequires:  tbb-devel
+BuildRequires:  pkgconfig(tbb)
 %endif
-BuildRequires:  ncurses-devel
-BuildRequires:  pkgconfig(level-zero)
-BuildRequires:  pkgconfig(python3)
 %ifarch x86_64
 # x86_64 always includes x86 target support: https://github.com/ispc/ispc/issues/1865
 BuildRequires:  glibc-devel-32bit
 %endif
-# aarch32 requires LLVM with aarch64 target support, likewise for ix86
-ExclusiveArch:  x86_64 aarch64
-# require devel for now for backwards compatibility (until now, packages just BuildRequire: ispc)
-Requires:       %{name}-devel
 
 %description
 A compiler for a variant of the C programming language, with extensions for
@@ -83,7 +91,6 @@ A compiler for a variant of the C programming language, with extensions for
 
 %package -n %{libname}
 Summary:        C-based SPMD programming language compiler library
-Group:          System/Libraries
 # Old library name violating SLPP, only dash or <none> allowed as separator
 Conflicts:      libispcrt_1 <= 1.18.0
 
@@ -93,7 +100,6 @@ Libary for a variant of the C programming language, with extensions for
 
 %package devel
 Summary:        Development files for ispc
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       %{name} = %{version}
 
@@ -138,7 +144,7 @@ echo "optflags: %{optflags}"
         -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIE" \
         -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIE" \
         -DCMAKE_EXE_LINKER_FLAGS="%{optflags} -pie" \
-        -DCURSES_CURSES_LIBRARY=/usr/%_lib/libncurses.so \
+        -DCURSES_CURSES_LIBRARY=%{_libdir}/libncurses.so \
         -DISPCRT_BUILD_TASK_MODEL=%{?with_openmp_task_model:OpenMP}%{!?with_openmp_task_model:TBB} \
         -DISPC_INCLUDE_EXAMPLES=OFF \
         -DISPCRT_BUILD_GPU:BOOL=ON \
@@ -152,7 +158,7 @@ echo "optflags: %{optflags}"
 %cmake_install
 
 %check
-pushd %__builddir
+pushd %{__builddir}
 %cmake_build check-all
 
 %ldconfig_scriptlets -n %{libname}
