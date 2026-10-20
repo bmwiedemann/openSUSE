@@ -79,4 +79,45 @@
     <comment></comment>
     <requestid>1236287</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3fa8828e7e0b2011dbca5929c1f5960e</srcmd5>
+    <version>2.2.2</version>
+    <time>1792492821</time>
+    <user>anag_factory</user>
+    <comment>  - CVE-2026-93712 bsc#1282295
+  - CVE-2026-93710 bsc#1282293
+  - CVE-2026-93711 bsc#1282294
+  - CVE-2026-93709 bsc#1282292
+- updated to 2.2.2
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+  2.2.2     2026-09-28 19:45:16-04:00 America/New_York
+      [ SECURITY ]
+      * None
+      [ BUG FIXES ]
+      * GH #1837: Fix class-method serializer crash (David Precious)
+      * GH #1843: Fix cpantesters, Debian build issues in gen.t
+        (David Precious)
+      [ ENHANCEMENTS ]
+      * None
+      [ DOCUMENTATION ]
+      * PR #1844: Update Patch's name (Nova Patch)
+      [ DEPRECATED ]
+      * None
+      [ MISC ]
+      * None
+  2.2.1     2026-09-18 21:12:29-04:00 America/New_York
+      [ SECURITY ]
+      * PR #1838: Serializer::YAML refuses blessed objects and code in
+        request bodies; raise min YAML version to 1.30 (David Precious)
+      * PR #1839: Serializer::YAML also zeroes $YAML::UseCode, which
+        otherwise reopens the code eval (David Precious)
+      [ BUG FIXES ]
+      * GH #1840: Specify min version of CLI::Osprey needed (Jason A. Crome)
+      [ ENHANCEMENTS ]
+      * None
+      [ DOCUMENTATION ]
+      * None
+      [ DEPRECATED ]</comment>
+    <requestid>1386249</requestid>
+  </revision>
 </revisionlist>

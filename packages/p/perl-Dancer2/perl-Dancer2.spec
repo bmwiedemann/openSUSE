@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dancer2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,33 @@
 
 %define cpan_name Dancer2
 Name:           perl-Dancer2
-Version:        1.1.2
+Version:        2.2.2
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Lightweight yet powerful web application framework
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/C/CR/CROMEDOME/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CLI::Osprey)
+BuildRequires:  perl(CLI::Osprey) >= 0.90
 BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.121
-BuildRequires:  perl(Capture::Tiny) >= 0.12
+BuildRequires:  perl(Capture::Tiny) >= 0.120
 BuildRequires:  perl(Clone)
 BuildRequires:  perl(Config::Any)
+BuildRequires:  perl(Crypt::URandom) >= 0.360
+BuildRequires:  perl(Data::Censor) >= 0.40
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(Exporter::Tiny)
 BuildRequires:  perl(File::Share)
-BuildRequires:  perl(File::ShareDir::Install) >= 0.06
+BuildRequires:  perl(File::ShareDir::Install) >= 0.60
 BuildRequires:  perl(File::Which)
 BuildRequires:  perl(HTTP::Cookies)
 BuildRequires:  perl(HTTP::Date)
 BuildRequires:  perl(HTTP::Headers)
-BuildRequires:  perl(HTTP::Headers::Fast) >= 0.21
+BuildRequires:  perl(HTTP::Headers::Fast) >= 0.210
 BuildRequires:  perl(HTTP::Tiny)
 BuildRequires:  perl(Hash::Merge::Simple)
 BuildRequires:  perl(Hash::MultiValue)
@@ -52,36 +55,40 @@ BuildRequires:  perl(MIME::Base64) >= 3.13
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Module::Pluggable)
 BuildRequires:  perl(Module::Runtime)
-BuildRequires:  perl(Moo) >= 2.000000
+BuildRequires:  perl(Moo) >= 2.0
 BuildRequires:  perl(Moo::Role)
 BuildRequires:  perl(Path::Tiny)
-BuildRequires:  perl(Plack) >= 1.0040
+BuildRequires:  perl(Plack) >= 1.4
 BuildRequires:  perl(Plack::Middleware::FixMissingBodyInRedirect)
 BuildRequires:  perl(Plack::Middleware::RemoveRedundantBody)
 BuildRequires:  perl(Pod::Simple::SimpleTree)
 BuildRequires:  perl(Ref::Util)
 BuildRequires:  perl(parent)
-#BuildRequires:  perl(Role::Tiny) >= 2.000000
+#BuildRequires:  perl(Role::Tiny) >= 2.0
 BuildRequires:  perl(Safe::Isa)
 BuildRequires:  perl(Sub::Quote)
+BuildRequires:  perl(Sub::Util)
 BuildRequires:  perl(Template)
-BuildRequires:  perl(Template::Tiny)
+BuildRequires:  perl(Template::Tiny) >= 1.160
 BuildRequires:  perl(Test::EOL)
+BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.92
-BuildRequires:  perl(Type::Tiny) >= 1.000006
+BuildRequires:  perl(Type::Tiny) >= 1.0.6
 BuildRequires:  perl(Types::Standard)
 BuildRequires:  perl(URI::Escape)
-BuildRequires:  perl(YAML) >= 0.86
-Requires:       perl(CLI::Osprey)
+BuildRequires:  perl(YAML) >= 1.300
+Requires:       perl(CLI::Osprey) >= 0.90
 Requires:       perl(Clone)
 Requires:       perl(Config::Any)
+Requires:       perl(Crypt::URandom) >= 0.360
+Requires:       perl(Data::Censor) >= 0.40
 Requires:       perl(Digest::SHA)
 Requires:       perl(Exporter::Tiny)
 Requires:       perl(File::Share)
 Requires:       perl(File::Which)
 Requires:       perl(HTTP::Date)
-Requires:       perl(HTTP::Headers::Fast) >= 0.21
+Requires:       perl(HTTP::Headers::Fast) >= 0.210
 Requires:       perl(HTTP::Tiny)
 Requires:       perl(Hash::Merge::Simple)
 Requires:       perl(Hash::MultiValue)
@@ -91,10 +98,10 @@ Requires:       perl(List::Util) >= 1.29
 Requires:       perl(MIME::Base64) >= 3.13
 Requires:       perl(Module::Pluggable)
 Requires:       perl(Module::Runtime)
-Requires:       perl(Moo) >= 2.000000
+Requires:       perl(Moo) >= 2.0
 Requires:       perl(Moo::Role)
 Requires:       perl(Path::Tiny)
-Requires:       perl(Plack) >= 1.0040
+Requires:       perl(Plack) >= 1.4
 Requires:       perl(Plack::Middleware::FixMissingBodyInRedirect)
 Requires:       perl(Plack::Middleware::RemoveRedundantBody)
 Requires:       perl(Ref::Util)
@@ -102,20 +109,19 @@ Requires:       perl(parent)
 #Requires:       perl(Role::Tiny) >= 2.000000
 Requires:       perl(Safe::Isa)
 Requires:       perl(Sub::Quote)
+Requires:       perl(Sub::Util)
 Requires:       perl(Template)
-Requires:       perl(Template::Tiny)
+Requires:       perl(Template::Tiny) >= 1.160
 Requires:       perl(Test::More) >= 0.92
-Requires:       perl(Type::Tiny) >= 1.000006
+Requires:       perl(Type::Tiny) >= 1.0.6
 Requires:       perl(Types::Standard)
 Requires:       perl(URI::Escape)
-Requires:       perl(YAML) >= 0.86
+Requires:       perl(YAML) >= 1.300
 Recommends:     perl(CGI::Deurl::XS)
 Recommends:     perl(Class::XSAccessor)
 Recommends:     perl(Cpanel::JSON::XS)
-Recommends:     perl(Crypt::URandom)
 Recommends:     perl(HTTP::XSCookies) >= 0.0.15
 Recommends:     perl(HTTP::XSHeaders)
-Recommends:     perl(Math::Random::ISAAC::XS)
 Recommends:     perl(MooX::TypeTiny)
 Recommends:     perl(Pod::Simple::Search)
 Recommends:     perl(Pod::Simple::SimpleTree)
@@ -126,24 +132,36 @@ Recommends:     perl(YAML::XS)
 %{perl_requires}
 
 %description
-Dancer2 is the new generation of Dancer, the lightweight web-framework for
+(If you're looking for the dancer2 command documentation via CLI, try
+'perldoc -F $(which dancer2)'.)
+
+Dancer2 is the new generation of Dancer, the lightweight web framework for
 Perl. Dancer2 is a complete rewrite based on Moo.
 
 Dancer2 can optionally use XS modules for speed, but at its core remains
-fatpackable (packable by App::FatPacker) so you could easily deploy Dancer2
+fatpackable (via App::FatPacker), enabling you to easily deploy Dancer2
 applications on hosts that do not support custom CPAN modules.
 
-Dancer2 is easy and fun:
+Creating web applications with Dancer2 is easy and fun:
 
+    #!/usr/bin/env perl
+
+    package HelloWorld;
     use Dancer2;
-    get '/' => sub { "Hello World" };
-    dance;
+
+    get '/' => sub {
+        return "Hello, world!";
+    };
+
+    true;
+
+    HelloWorld->to_app;
 
 This is the main module for the Dancer2 distribution. It contains logic for
 creating a new Dancer2 application.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

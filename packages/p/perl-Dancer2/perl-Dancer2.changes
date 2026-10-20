@@ -1,4 +1,187 @@
 -------------------------------------------------------------------
+Tue Sep 29 11:23:26 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.2.2
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+
+  2.2.2     2026-09-28 19:45:16-04:00 America/New_York
+      [ SECURITY ]
+      * None
+      [ BUG FIXES ]
+      * GH #1837: Fix class-method serializer crash (David Precious)
+      * GH #1843: Fix cpantesters, Debian build issues in gen.t
+        (David Precious)
+      [ ENHANCEMENTS ]
+      * None
+      [ DOCUMENTATION ]
+      * PR #1844: Update Patch's name (Nova Patch)
+      [ DEPRECATED ]
+      * None
+      [ MISC ]
+      * None
+  2.2.1     2026-09-18 21:12:29-04:00 America/New_York
+      [ SECURITY ]
+      * PR #1838: Serializer::YAML refuses blessed objects and code in
+        request bodies; raise min YAML version to 1.30 (David Precious)
+      * PR #1839: Serializer::YAML also zeroes $YAML::UseCode, which
+        otherwise reopens the code eval (David Precious)
+      [ BUG FIXES ]
+      * GH #1840: Specify min version of CLI::Osprey needed (Jason A. Crome)
+      [ ENHANCEMENTS ]
+      * None
+      [ DOCUMENTATION ]
+      * None
+      [ DEPRECATED ]
+      * None
+      [ MISC ]
+      * None
+  2.2.0     2026-09-16 07:58:19-04:00 America/New_York
+      [ SECURITY ]
+      * PR #1836: Fix path traversal in Dancer2::Handler::File, which
+        served files from outside public_dir; see GHSA-6xw8-v24c-m783
+        (David Precious) CVE-2026-93712 bsc#1282295
+      * PR #1836: A halting on_hook_exception handler no longer lets the
+        route the hook refused run anyway; see GHSA-v527-r4px-7vx7
+        (David Precious) CVE-2026-93710 bsc#1282293
+      * GH #1822: Strip CR and LF from response header names, as was
+        already done for header values (David Precious) CVE-2026-93711 bsc#1282294
+      * GH #1823: AutoPage no longer serves a layout as a page on
+        case-insensitive filesystems (David Precious) CVE-2026-93709 bsc#1282292
+      [ BUG FIXES ]
+      * GH #1781: Fix directory detection heuristic (Jason A. Crome)
+      * GH #1784: Fix UTF-8 handling in Serializer::JSON for readonly
+        values (Russell @veryrusty Jenkins)
+      * GH #1790: Fix infinite recursion into blessed objects in JSON
+        Serializer (Russell @veryrusty Jenkins)
+      * PR #1791: Send correct error codes in send_file (Anton Lundin)
+      * PR #1797: Fix path()/dirname() DSL keywords dropping their first
+        argument (Mike Weisenborn)
+      * PR #1801: Fix failing CI (Jason A. Crome)
+      * PR #1804: Make session ID generation always use Crypt::URandom and
+        harden validate_id against invalid session IDs (David Precious)
+      * GH #1824: Encode each response content assignment on its own
+        merits, not just the first (David Precious)
+      * GH #1825: Serializer::Mutable now ignores content type parameters
+        such as charset when choosing a format (David Precious)
+      * GH #1826: uri_for_route accepts a route parameter of 0, and
+        refuses an empty one with a clearer message (David Precious)
+      * GH #1827: Hooks are compiled exactly once however many times
+        to_app is called (David Precious)
+      * GH #1828: A NUL byte in a static file request no longer warns once
+        per request (David Precious)
+      * GH #1829: dancer2 gen -g (and -r) no longer dies after writing the
+        application (David Precious)
+      * GH #1830: dancer2 gen names the application directory after the
+        dashed distribution name (David Precious)
+      * GH #1831: dancer2 gen appends a relative, matchable pattern to
+        MANIFEST.SKIP (David Precious)
+      [ ENHANCEMENTS ]
+      * None
+      [ DOCUMENTATION ]
+      * GH #1832: Document Serializer::Mutable's actual header precedence
+        in each direction (David Precious)
+      * GH #1833: Remove %D from the documented log_format characters; it
+        was never implemented (David Precious)
+      [ DEPRECATED ]
+      * PR #1821: Remove Data::Dumper serializer from Dancer2 core, along
+        with from_dumper/to_dumper keywords, tests (David Precious)
+      [ MISC ]
+      * GH #1834: Rename share/.gitignore so git stops applying it to this
+        distribution's own share/ tree (David Precious)
+      * GH #1835: Add a characterization test suite under t/unit,
+        t/integration and t/e2e (David Precious)
+      * With thanks to Curtis "Ovid" Poe, whose generated test suite from
+        PAAD for Dancer2 found the defects fixed above
+  2.1.0     2026-03-11 21:29:26-04:00 America/New_York
+      [ BUG FIXES ]
+      * GH #686: Fix: to_json is double encoding UTF8 (Sawyer X)
+      * GH #863: Fix case insensitive system confusion (Sawyer X)
+      * GH #1124: Fix: charset config option is mostly ignored (Sawyer X)
+      * GH #1143: Fix utf8 in URL (Sawyer X, Sorin Pop)
+      * GH #1449, 1630: Make plugin DSL keyword app-specific (Sawyer X)
+      * GH #1772: t/dsl/send_file.t fails with content_type-related errors
+        (Sawyer X)
+      * GH #1773: t/dsl/send_as.t throws json-related warnings (Jason
+        A. Crome)
+      * GH #1774: t/hooks.t throws void warnings (Jason A. Crome)
+      * GH #1777: Properly unlink file uploads on Windows (Sawyer X)
+      [ ENHANCEMENTS ]
+      * GH #763: Strict config mode; warn on unknown config keys with
+        opt-out (Sawyer X)
+      * GH #763: Default strict config to off, but scaffold new apps with
+        stict config enabled (Jason A. Crome)
+      * GH #1073: Get multiple session cookie values at once with clear
+        method (Sawyer X)
+      * GH #1264: Move to Path::Tiny (Sawyer X)
+      * GH #1323: Allow fully qualified namespaces for all engines (Russell
+        @veryrusty Jenkins)
+      * GH #1594: Use Unicode::UTF8 if available (Sawyer X)
+      * GH #1664: Stop sending double server headers (Sawyer X)
+      * GH #1709: `send_as` should use the full serializer, including hooks
+        (Sawyer X)
+      * PR #1757: Remove api_version, improve dispatching loop (Sawyer X)
+      * PR #1758: Move MIME ownership to app (Sawyer X)
+      * PR #1767: Turn off strict_config for noisy tests (Jason A. Crome)
+      * PR #1780: Add package name capability to logger output (Mikko
+        Koivunalho)
+      [ DOCUMENTATION ]
+      * GH #1431: Better document behavior of views setting (Jason A. Crome)
+      * PR #1749, #1750: Fix broken manual and tutorial links (Gil Magno,
+        Jason A. Crome)
+      * PR #1753: Fix structure of config docs (Mikko Koivunalho)
+      * PR #1762: Remove keyword logger from DSL document (Mikko Koivunalho)
+      [ DEPRECATED ]
+      * None
+      [ MISC ]
+      * PR #1776: Remove "Powered by..." from the error page (Jason A. Crome)
+  2.0.1     2025-10-22 18:13:37-04:00 America/New_York
+      [ BUG FIXES ]
+      * None
+      [ ENHANCEMENTS ]
+      * None
+      [ DOCUMENTATION ]
+      * GH #1745: Fix cookbook link in README (icyavocado)
+      * PR #1748: Various documentation fixes (Jason A. Crome)
+      [ DEPRECATED ]
+      * None
+      [ MISC ]
+      * None
+  2.0.0     2025-09-15 17:49:26-04:00 America/New_York
+      [ BUG FIXES ]
+      * GH #1701: Split cookie values on & only (Yanick Champoux)
+      [ ENHANCEMENTS ]
+      * GH #530: Make data censoring configurable (Yanick Champoux, David
+        Precious)
+      * GH #850: Scaffold tutorial app; allow multiple apps to be scaffolded
+        in core Dancer2 (Jason A. Crome)
+      * GH #1512: Log hook entries as they are executed (Yanick Champoux)
+      * GH #1615: Remove Dancer2::Template::Simple from Dancer2 core (Jason
+        A. Crome)
+      * PR #1637: New, extendable configuration system (Mikko Koivunalho)
+      * GH #1723: Enable use of a different Template Toolkit base class
+        (Andy Beverley)
+      * PR #1727: Don't create CPAN package files when generating new apps
+        (Jason A. Crome)
+      * PR #1731: Retire Template::Tiny fork, use CPAN's (Jason A. Crome,
+        Karen Etheridge, Damien Krotkine, Yanick Champoux)
+      * PR #1736: Allow config system to bootstrap itself (Yanick Champoux)
+      * GH #1737: Add on_hook_exception for errors during hook processing
+        (Andy Beverley)
+      * PR #1739: Add source to on_hook_exception (Andy Beverley)
+      * PR #1742: Refactor CLI for future expansion (Jason A. Crome)
+      [ DOCUMENTATION ]
+      * GH #1342: Document skipping private methods in pod coverage tests
+        (Jason A. Crome)
+      * PR #1721: New Dancer2 docs, reorganization of all documentation;
+        from TPRF grant (Jason A. Crome)
+      * PR #1741: Cover items missed in earlier documentation branch (Jason
+        A. Crome)
+      [ DEPRECATED ]
+      * None
+      [ MISC ]
+      * None
+
+-------------------------------------------------------------------
 Thu Dec 12 16:14:47 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.1.2
