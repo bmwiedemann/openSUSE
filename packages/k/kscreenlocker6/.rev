@@ -386,4 +386,15 @@
     <comment>Plasma 6.8.0 preliminary tars, so far untested. K:F already publish disabled. (forwarded request 1383812 from Vogtinator)</comment>
     <requestid>1384205</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>9cc9cfe9c1954c3a2fb8a03a497126b1</srcmd5>
+    <version>6.8.0</version>
+    <time>1792492603</time>
+    <user>anag_factory</user>
+    <comment>- Update to respun 6.8.0 tarball that may avoid some authentication
+  issues:
+  * greeter: do not defer locked check to authenticator objects
+  * worker: drop time check (kde#526194) (forwarded request 1386257 from Vogtinator)</comment>
+    <requestid>1386258</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 19 11:31:21 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to respun 6.8.0 tarball that may avoid some authentication
+  issues:
+  * greeter: do not defer locked check to authenticator objects
+  * worker: drop time check (kde#526194)
+
+-------------------------------------------------------------------
 Thu Oct  8 16:54:27 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.8.0:
