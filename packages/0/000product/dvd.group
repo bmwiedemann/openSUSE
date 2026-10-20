@@ -1145,10 +1145,10 @@
     <package name="libGraphicsMagick3-config" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libHX43" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libICE6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libIex-3_4-33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libIex-3_4-33-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libIlmThread-3_4-33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libIlmThread-3_4-33-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libIex-3_5-34" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libIex-3_5-34-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libIlmThread-3_5-34" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libIlmThread-3_5-34-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libImath-3_2-30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libImlib2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libJudy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
@@ -1413,10 +1413,10 @@
     <package name="libLerc4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libMagickCore-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libMagickWand-7_Q16HDRI10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libOpenEXR-3_4-33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libOpenEXR-3_4-33-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libOpenEXRCore-3_4-33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libOpenEXRCore-3_4-33-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libOpenEXR-3_5-34" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libOpenEXR-3_5-34-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libOpenEXRCore-3_5-34" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libOpenEXRCore-3_5-34-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libPlasma5Support6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma5Support6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1759,7 +1759,7 @@
     <package name="libcdda_interface0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcdda_paranoia0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcddb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libcdio19" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libcdio21" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcdio_cdda2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcdr-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcdrdeflt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1981,9 +1981,9 @@
     <package name="libgedit-gfls-1-0" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-gfls-lang" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-gtksourceview" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
-    <package name="libgedit-gtksourceview-300-5" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
+    <package name="libgedit-gtksourceview-300-6" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-gtksourceview-lang" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
-    <package name="libgedit-tepl-6-4" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
+    <package name="libgedit-tepl-6-5" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgedit-tepl-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="libgee-0_8-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgegl-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2167,7 +2167,7 @@
     <package name="libidn2-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libidn2-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libiec61883-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libimagequant0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
+    <package name="libimagequant0_4" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libimobiledevice-1_0-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libimobiledevice-glue-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libini_config8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -2399,14 +2399,14 @@
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libntfs-3g90" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libntfs-3g91" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libntlm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnuma1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libnumbertext-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnumbertext-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnvme1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libnvme3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="liboapv1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="liboapv11" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liboauth0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libodbc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
@@ -2553,7 +2553,6 @@
     <package name="libqt5-qtxmlpatterns-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqt6keychain1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libquadmath0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libquicktime0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqxp-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librados2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libraptor2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2857,6 +2856,7 @@
     <package name="libwebpdemux2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwebpmux3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwebrtc-audio-processing-1-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libwebrtc-audio-processing-2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwinpr3-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwireplumber-0_5-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwlembed-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -4050,6 +4050,7 @@
     <package name="typelib-1_0-Gegl-0_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Geoclue-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GeocodeGlib-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-Gfls-1" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="typelib-1_0-Gio-2_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-GjsPrivate-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GnomeBG-4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
