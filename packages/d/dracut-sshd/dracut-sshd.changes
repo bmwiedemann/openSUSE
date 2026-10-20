@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:36:51 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7.1:
+  * Support /etc/dracut-sshd/sshd_config configuration overlay
+  * Add /usr/lib/openssh to the OpenSSH helper search path
+- Modernize spec file
+
+-------------------------------------------------------------------
 Wed Apr 30 23:52:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.7.0

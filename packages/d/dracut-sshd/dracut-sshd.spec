@@ -1,7 +1,7 @@
 #
 # spec file for package dracut-sshd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 Name:           dracut-sshd
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Provide SSH access to initramfs early user space
 License:        GPL-3.0-or-later
-Group:          System/Boot
 URL:            https://github.com/gsauthof/dracut-sshd
 Source:         https://github.com/gsauthof/dracut-sshd/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  dracut
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(dracut)
 Requires:       dracut
 Suggests:       systemd-network
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
