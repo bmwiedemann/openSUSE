@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:50:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.15.2 (ABI compatible, soname unchanged):
+  * 3.14.0: layered-image compression/quality gains, external rate
+    control API (experimental), new tuning modes and codec controls.
+  * 3.15.0: force-max-q option, low-complexity VOD decode mode,
+    IntraBC RTC improvements, VMAF/PSNR and speed work.
+  * 3.15.1/3.15.2: encoder bug fixes.
+  * Security fixes:
+    - CVE-2026-56208: heap-buffer-overflow in AV1 encoder LAP mode
+      (boo#1268650)
+    - CVE-2026-56209: bounds-check bypass in AV1E_SET_SVC_LAYER_ID
+      (boo#1268651)
+    - CVE-2026-56210: OOB heap read via unchecked SVC layer_id
+      (boo#1268653)
+    - CVE-2026-56211: out-of-range SVC layer selection
+      (boo#1268655)
+    - CVE-2026-13906: heap OOB read in
+      av1_int_pro_motion_estimation
+- Drop libaom-0001-Do-not-disable-_FORTIFY_SOURCE.patch:
+  upstream no longer forces _FORTIFY_SOURCE=0.
+- Rebase system-gtest.patch, libaom-cmake.patch to restructured
+  cmake/ tree.
+- Modernize spec file (drop Group tags).
+
+-------------------------------------------------------------------
 Sun Jan  4 14:46:46 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - Require aom-tools from the libaom-devel subpackage as the binaries

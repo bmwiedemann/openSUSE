@@ -1,7 +1,7 @@
 #
 # spec file for package libaom
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,41 +22,35 @@
 %else
 %define psuffix -devel-doc
 %endif
-
 %define sover 3
 %define __builder ninja
 %define __builddir _build
 Name:           libaom%{psuffix}
-Version:        3.13.1
+Version:        3.15.2
 Release:        0
-%if "%{flavor}" == ""
-Summary:        AV1 codec library
-Group:          Productivity/Multimedia/Other
-%endif
-%if "%{flavor}" == "doc"
-Summary:        Documentation for the libaom API
-Group:          Documentation/HTML
-BuildArch:      noarch
-%endif
 License:        BSD-2-Clause
 URL:            https://aomedia.googlesource.com/aom/
 Source0:        libaom-%{version}.tar.zst
 Source99:       baselibs.conf
-Patch0:         libaom-0001-Do-not-disable-_FORTIFY_SOURCE.patch
-Patch1:         system-gtest.patch
-Patch2:         system-yuv.patch
-Patch3:         libaom-cmake.patch
-
+Patch0:         system-gtest.patch
+Patch1:         system-yuv.patch
+Patch2:         libaom-cmake.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.9
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libvmaf)
 BuildRequires:  pkgconfig(libyuv)
-%ifarch x86_64 %ix86
+%if "%{flavor}" == ""
+Summary:        AV1 codec library
+%endif
+%if "%{flavor}" == "doc"
+Summary:        Documentation for the libaom API
+BuildArch:      noarch
+%endif
+%ifarch x86_64 %{ix86}
 BuildRequires:  yasm
 %endif
-
 %if "%{flavor}" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -76,7 +70,6 @@ for the AOMedia Video 1 (AV1) video coding format.
 %if "%{flavor}" == ""
 %package -n %{name}%{sover}
 Summary:        AV1 codec library
-Group:          System/Libraries
 
 %description -n %{name}%{sover}
 This is a library for AOMedia Video 1 (AV1), an open, royalty-free
@@ -84,7 +77,6 @@ video coding format designed for video transmissions over the Internet.
 
 %package devel
 Summary:        Development files for libaom, an AV1 codec library
-Group:          Development/Languages/C and C++
 Requires:       %{name}%{sover}%{_isa} = %{version}
 Requires:       aom-tools
 
@@ -94,7 +86,6 @@ libaom, a library for the AOMedia Video 1 (AV1) video coding format.
 
 %package -n aom-tools
 Summary:        AV1 Codec Library Tools
-Group:          Productivity/Multimedia/Other
 
 %description -n aom-tools
 This package contains tools included with libaom, a library for
@@ -118,11 +109,11 @@ sed -E -i 's|#include "third_party/googletest/src/googletest/include/([^"]*)"|#i
 	-DCONFIG_AV1_TEMPORAL_DENOISING=1 \
 	-DCONFIG_TUNE_VMAF=1 \
 	-DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
-%ifnarch aarch64 %arm %ix86 x86_64 %x86_64 ppc %power64
+%ifnarch aarch64 %{arm} %{ix86} x86_64 %{x86_64} ppc %{power64}
 	-DAOM_TARGET_CPU=generic \
 %endif
-%ifarch %arm
-`# see regex in build/cmake/rtcd.pl (this actually work for armv6hl too)` \
+%ifarch %{arm}
+`# see regex in cmake/rtcd.pl (this actually work for armv6hl too)` \
 	-DAOM_TARGET_CPU=armv7 \
 `# Fix missing flag for neon code` \
 `# See aom_ports/arm_cpudetect.c` \
@@ -132,13 +123,13 @@ sed -E -i 's|#include "third_party/googletest/src/googletest/include/([^"]*)"|#i
 %ifarch aarch64
 	-DAOM_TARGET_CPU=arm64 \
 %endif
-%ifarch ppc %power64
+%ifarch ppc %{power64}
 	-DAOM_TARGET_CPU=ppc \
 %endif
-%ifarch %ix86
+%ifarch %{ix86}
 	-DAOM_TARGET_CPU=x86 \
 %endif
-%ifarch x86_64 %x86_64
+%ifarch x86_64 %{x86_64}
 	-DAOM_TARGET_CPU=x86_64 \
 %endif
 	%{nil}

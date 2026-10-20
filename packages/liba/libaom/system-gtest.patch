@@ -9,7 +9,7 @@ diff -rub libaom-3.12.1.orig/test/test.cmake libaom-3.12.1/test/test.cmake
  
  include("${AOM_ROOT}/test/test_data_util.cmake")
  
-@@ -414,27 +415,21 @@
+@@ -426,29 +427,21 @@
      set(CMAKE_MACOSX_RPATH 1)
    endif()
  
@@ -17,6 +17,8 @@ diff -rub libaom-3.12.1.orig/test/test.cmake libaom-3.12.1/test/test.cmake
 -    aom_gtest STATIC
 -    "${AOM_ROOT}/third_party/googletest/src/googletest/src/gtest-all.cc")
 -  set_property(TARGET aom_gtest PROPERTY FOLDER ${AOM_IDE_TEST_FOLDER})
+-  # Starting from the 1.17.0 release, GoogleTest requires at least C++17.
+-  target_compile_features(aom_gtest PUBLIC cxx_std_17)
 -  # There are -Wundef warnings in the gtest headers. Tell the compiler to treat
 -  # the gtest include directories as system include directories and suppress
 -  # compiler warnings in the gtest headers.

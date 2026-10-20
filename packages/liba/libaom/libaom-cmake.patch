@@ -1,6 +1,6 @@
-diff -purN a/build/cmake/aom_install.cmake b/build/cmake/aom_install.cmake
---- a/build/cmake/aom_install.cmake	2025-09-06 00:10:37.000000000 +0200
-+++ b/build/cmake/aom_install.cmake	2026-01-04 15:27:13.010586657 +0100
+diff -purN a/cmake/aom_install.cmake b/cmake/aom_install.cmake
+--- a/cmake/aom_install.cmake	2025-09-06 00:10:37.000000000 +0200
++++ b/cmake/aom_install.cmake	2026-01-04 15:27:13.010586657 +0100
 @@ -79,7 +79,7 @@ macro(setup_aom_install_targets)
      endif()
  
@@ -10,9 +10,9 @@ diff -purN a/build/cmake/aom_install.cmake b/build/cmake/aom_install.cmake
      else()
        set(AOM_INSTALL_LIBS aom)
      endif()
-diff -purN a/build/cmake/config.cmake.in b/build/cmake/config.cmake.in
---- a/build/cmake/config.cmake.in	2025-09-06 00:10:37.000000000 +0200
-+++ b/build/cmake/config.cmake.in	2026-01-04 15:26:06.418675895 +0100
+diff -purN a/cmake/config.cmake.in b/cmake/config.cmake.in
+--- a/cmake/config.cmake.in	2025-09-06 00:10:37.000000000 +0200
++++ b/cmake/config.cmake.in	2026-01-04 15:26:06.418675895 +0100
 @@ -10,13 +10,6 @@ include("${CMAKE_CURRENT_LIST_DIR}/@AOM_
  
  set_and_check(@PROJECT_NAME@_INCLUDE_DIRS "@PACKAGE_CMAKE_INSTALL_INCLUDEDIR@")
