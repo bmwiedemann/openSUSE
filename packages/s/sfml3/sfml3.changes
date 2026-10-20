@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:21:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.1.0:
+  * Revamped text rendering engine based on HarfBuzz: complex text
+    layouts, bidirectional text and more glyph-level information.
+  * Network module: TLS and HTTPS support, IPv6, SFTP replacing FTP,
+    and a new DNS client.
+  * Graphics: support for the QOI image format and Unicode 17.0.
+  * Audio: improved device and stream rerouting management, updated
+    bundled miniaudio.
+  * Fixed X11 window implementation issues and Unicode filename
+    handling in several modules.
+- SONAME bump 3.0 -> 3.1: library subpackage renamed to libsfml3-3_1.
+- New BuildRequires on harfbuzz, mbedtls and libssh2 for the text
+  and network modules; SheenBidi (no system package) is built from
+  a vendored copy of its v3.0.0 sources; spec cleanup (ldconfig
+  scriptlets, dropped Group tags).
+
+-------------------------------------------------------------------
 Mon Oct 27 13:21:15 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Prevented build failure via minimal gcc version.

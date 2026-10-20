@@ -8,4 +8,12 @@
 - Fixed conflict of sfml3-devel to pass installcheck.</comment>
     <requestid>1313852</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>040f30fab20f052bbdf46cd29ce28c16</srcmd5>
+    <version>3.1.0</version>
+    <time>1792492630</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386098</requestid>
+  </revision>
 </revisionlist>

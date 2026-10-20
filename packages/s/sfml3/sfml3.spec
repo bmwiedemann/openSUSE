@@ -1,7 +1,7 @@
 #
 # spec file for package sfml3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,33 +14,41 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-%define so_ver -3_0
-Name: sfml3
-Version: 3.0.2
-Summary: SFML is a simple, fast, cross-platform and object-oriented multimedia API.
-Release: 0
-Source0: https://github.com/SFML/SFML/archive/refs/tags/3.0.2.tar.gz
-License: Zlib
-BuildRequires: cmake
-BuildRequires: doxygen
-BuildRequires: fdupes
-BuildRequires: gcc-c++ >= 9
-BuildRequires: libXi-devel
-BuildRequires: pkgconfig
-BuildRequires: pkgconfig(flac)
-BuildRequires: pkgconfig(freetype2)
-BuildRequires: pkgconfig(gl)
-BuildRequires: pkgconfig(glu)
-BuildRequires: pkgconfig(libudev)
-BuildRequires: pkgconfig(ogg)
-BuildRequires: pkgconfig(openal)
-BuildRequires: pkgconfig(vorbis)
-BuildRequires: pkgconfig(vorbisenc)
-BuildRequires: pkgconfig(vorbisfile)
-BuildRequires: pkgconfig(x11)
-BuildRequires: pkgconfig(xcursor)
-BuildRequires: pkgconfig(xrandr)
-BuildRequires: pkgconfig(pthread-stubs)
+
+
+%define so_ver -3_1
+Name:           sfml3
+Version:        3.1.0
+Release:        0
+Summary:        SFML is a simple, fast, cross-platform and object-oriented multimedia API.
+License:        Zlib
+Source0:        https://github.com/SFML/SFML/archive/refs/tags/3.1.0.tar.gz
+# No system package, vendored like upstream's git FetchContent (offline build):
+# https://github.com/Tehreer/SheenBidi/archive/refs/tags/v3.0.0.tar.gz
+Source1:        SheenBidi-3.0.0.tar.gz
+BuildRequires:  cmake
+BuildRequires:  doxygen
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++ >= 9
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(flac)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(libssh2)
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(mbedtls)
+BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(pthread-stubs)
+BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(vorbisenc)
+BuildRequires:  pkgconfig(vorbisfile)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xrandr)
 
 %description
 SFML is a simple, fast, cross-platform and object-oriented multimedia API.
@@ -49,7 +57,6 @@ It is written in C++, and has bindings for various languages such as C, .Net, Ru
 
 %package -n lib%{name}%{so_ver}
 Summary:        Free multimedia C++ API
-Group:          System/Libraries
 
 %description -n lib%{name}%{so_ver}
 SFML is a multimedia API that provides access to graphics, input,
@@ -60,12 +67,16 @@ programs.
 
 %package devel
 Summary:        SFML development files
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{so_ver} = %{version}
 Requires:       pkgconfig(gl)
 # Conflict with other SFML versions (same include files)
-Conflicts: sfml-devel
-Conflicts: sfml2-devel
+Conflicts:      sfml-devel
+Conflicts:      pkgconfig(sfml-all)
+Conflicts:      pkgconfig(sfml-audio)
+Conflicts:      pkgconfig(sfml-graphics)
+Conflicts:      pkgconfig(sfml-network)
+Conflicts:      pkgconfig(sfml-system)
+Conflicts:      pkgconfig(sfml-window)
 
 %description devel
 SFML is a C++ multimedia API that provides a low and high-level
@@ -78,18 +89,23 @@ This subpackage provides the header files needed to build SFML
 programs.
 
 %prep
-%setup -q -n SFML-%{version}
+%setup -q -n SFML-%{version} -a 1
+# Apply upstream tools/sheenbidi/PatchSheenBidi.cmake by hand, its
+# FetchContent PATCH_COMMAND is skipped for a local source dir, and drop
+# its install rules (everything below "Install Configuration") so the
+# vendored copy installs nothing
+sed -i -e 's/^add_library(SheenBidi$/add_library(SheenBidi OBJECT/' -e '/^# Install Configuration/,$d' SheenBidi-3.0.0/CMakeLists.txt
 
 %build
 %cmake -DSFML_INSTALL_PKGCONFIG_FILES=TRUE \
-       -DCMAKE_BUILD_TYPE=RelWithDebInfo
+       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+       -DFETCHCONTENT_SOURCE_DIR_SHEENBIDI:PATH=%{_builddir}/SFML-%{version}/SheenBidi-3.0.0
 %cmake_build
 
 %install
 %cmake_install
 
-%post -n lib%{name}%{so_ver} -p /sbin/ldconfig
-%postun -n lib%{name}%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{so_ver}
 
 %files -n lib%{name}%{so_ver}
 %license license.md
