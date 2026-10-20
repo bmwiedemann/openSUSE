@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 19 05:10:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.132:
+  * Install Codex with its companion package
+  * Install Crossplane from the stable chart
+- Update to version 0.11.131:
+  * Add shfmt and shellcheck to arkade get
+- Update to version 0.11.130:
+  * Stream the wanted binary out of the OCI image
+  * Pass OCI platform through to crane and add oidc-cli
+  * Disable symlink extraction for OCI images
+  * Pin sofka and run CI builds only on master
+  * Document OCI-extracted tools in AGENTS.md
+  * Render OCI tools as plain names in the markdown catalog
+  * Skip OCI-extracted tools in the URL checker
+  * Add OCI-extracted tools to arkade get
+- Update to version 0.11.129:
+  * Document arkade release as a remote-side operation
+
+-------------------------------------------------------------------
 Sun Oct 04 16:50:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.128:
