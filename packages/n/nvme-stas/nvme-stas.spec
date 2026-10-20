@@ -17,21 +17,19 @@
 
 
 %bcond_without check
-
 Name:           nvme-stas
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        NVMe STorage Appliance Services
 License:        Apache-2.0
 URL:            https://github.com/linux-nvme/nvme-stas
 Source0:        nvme-stas-%{version}.tar.gz
-BuildArch:      noarch
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  glib2-devel
 BuildRequires:  gobject-introspection
 BuildRequires:  libnvme3-devel
 BuildRequires:  libxslt
 BuildRequires:  meson >= 0.52.0
+BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-dasbus
 BuildRequires:  python3-gobject
@@ -41,6 +39,15 @@ BuildRequires:  python3-pyfakefs
 BuildRequires:  python3-pyudev
 BuildRequires:  python3-systemd
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(girepository-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gmodule-2.0)
+BuildRequires:  pkgconfig(gmodule-export-2.0)
+BuildRequires:  pkgconfig(gmodule-no-export-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gthread-2.0)
 Requires:       avahi
 Requires:       nvme-cli >= 3.0
 Requires:       python3-dasbus
@@ -49,6 +56,7 @@ Requires:       python3-libnvme3
 Requires:       python3-pyudev
 Requires:       python3-systemd
 Requires:       util-linux
+BuildArch:      noarch
 
 %description
 nvme-stas is a Central Discovery Controller (CDC) client for Linux. It
@@ -74,16 +82,16 @@ Automatic (zeroconf) and Manual configuration.
 %define services stacd.service stafd.service
 
 %pre
-%service_add_pre %services
+%service_add_pre %{services}
 
 %post
-%service_add_post %services
+%service_add_post %{services}
 
 %preun
-%service_del_preun %services
+%service_del_preun %{services}
 
 %postun
-%service_del_postun %services
+%service_del_postun %{services}
 
 %files
 %license LICENSE
@@ -102,9 +110,9 @@ Automatic (zeroconf) and Manual configuration.
 %{_unitdir}/stafd.service
 %{python3_sitelib}/staslib
 %{_unitdir}/stas*
-%{_mandir}/man1/sta*.1*
-%{_mandir}/man5/*.5*
-%{_mandir}/man7/nvme*.7*
-%{_mandir}/man8/sta*.8*
+%{_mandir}/man1/sta*.1%{?ext_man}
+%{_mandir}/man5/*.5%{?ext_man}
+%{_mandir}/man7/nvme*.7%{?ext_man}
+%{_mandir}/man8/sta*.8%{?ext_man}
 
 %changelog

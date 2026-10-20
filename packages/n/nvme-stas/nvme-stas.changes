@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:51:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.1:
+  * Drop the deprecated `exclude=` keyword from stafd.conf/stacd.conf;
+    controller exclusion now goes solely through the libnvme host-wide
+    exclusion list (/etc/nvme/exclusions.conf)
+  * Skip discovery log entries naming a different transport than the
+    discovery controller's own
+  * Fix DIM registration with a Centralized Discovery Controller
+    (TP8010) silently never running
+  * Connections without their own section now pick up the [Host]
+    section; a missing hostid is recovered when hostnqn is in uuid form
+  * Constructing a TID with an explicit hostnqn no longer touches
+    /etc/nvme/hostnqn
+
+-------------------------------------------------------------------
 Tue Sep 08 07:10:06 UTC 2026 - Daniel Wagner <dwagner@suse.de>
 
 - Update to version 3.0:
