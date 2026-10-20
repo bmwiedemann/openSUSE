@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Oct 19 04:58:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.5:
+  * bump: tag and release ORAS CLI v1.3.5 (#2244)
+  * docs: require cve fixes to land before preparing a release
+    (#2258)
+  * docs: add ORAS CLI release process (#2248)
+  * chore: bump oras-go to v2.6.4 in e2e tests (#2247)
+  * chore: update oras-go to v2.6.4 (#2242)
+  * fix: validate extra destination tags before pushing (#2237)
+  * build(deps): bump library/golang from 1.27.1-alpine to
+    1.27.2-alpine (#2239)
+  * build(deps): bump github.com/onsi/ginkgo/v2 from 2.33.0 to
+    2.33.1 in /test/e2e (#2238)
+  * Preserve the index media type when the index body omits it
+    (#2235)
+  * chore: update oras-go to v2.6.3 (#2234)
+  * build(deps): bump golang.org/x/term from 0.46.0 to 0.47.0
+    (#2232)
+  * build(deps): bump golang.org/x/sync from 0.23.0 to 0.24.0
+    (#2231)
+  * Fall back to config media type for old-style artifact types
+    (#2114)
+  * fix: validate format before special handling (#2205)
+  * fix: validate empty OCI layout path with digest (#2230)
+  * fix: restore pretty output for manifest fetch-config (#2228)
+  * fix: limit manifest config fetch size (#2222)
+  * docs(e2e): correct test/e2e/README.md references (#2219)
+  * chore: drop dead .gitignore entries for the Docker e2e registry
+    mounts (#2220)
+  * fix: detect credentials in multiple JSON values (#2218)
+  * fix: generate coverage report in covhtml (#2214)
+  * chore: update golang.org/x/crypto (#2207)
+  * feat(cp): support multiple platforms (#2191)
+  * fix: correct manifest fetch format error (#2203)
+  * fix: clarify absolute path validation warning (#2201)
+  * fix: clean up partial pull output on failure (#2194)
+  * test(errors): cover the CLI error type and its constructors
+    (#2196)
+  * build(deps): bump github.com/onsi/gomega from 1.43.1 to 1.44.0
+    in /test/e2e (#2195)
+  * test(display): cover the pulled-file model (#2189)
+  * feat: add Kubernetes-based e2e testing infrastructure (#1913)
+  * fix: fix concurrency in Tagged (#2183)
+  * fix: keep an index's own children out of its reported referrers
+    (#2174)
+  * build(deps): bump library/alpine from 3.24.1 to 3.24.2 (#2185)
+  * fix: only infer platform from OCI image configs (#2177)
+  * test(display): cover the raw content handlers (#2182)
+  * build(deps): bump github.com/onsi/gomega from 1.43.0 to 1.43.1
+    in /test/e2e (#2180)
+  * fix(display): report files as [] instead of null when a pull
+    produces none (#2175)
+  * test(display): cover the metadata model types (#2176)
+  * build(deps): bump github.com/onsi/ginkgo/v2 from 2.32.2 to
+    2.33.0 in /test/e2e (#2179)
+  * fix(display): report referenceAsTags as [] instead of null when
+    untagged (#2170)
+  * feat: add release automation script (#1992)
+  * test(display): split template repo handler tests to match
+    source files (#2171)
+  * test(display): cover the pull metadata handler (#2168)
+  * build(deps): bump github.com/onsi/ginkgo/v2 from 2.32.1 to
+    2.32.2 in /test/e2e (#2167)
+  * build(deps): bump golang.org/x/term from 0.45.0 to 0.46.0
+    (#2166)
+  * test(display): cover the template and descriptor metadata
+    handlers (#2164)
+  * build(deps): bump golang.org/x/sync from 0.22.0 to 0.23.0
+    (#2162)
+  * fix(cli): pluralize "argument" in argument-count errors (#2161)
+  * test(credential): fix TestNewStoreError failing on Windows
+    (#2159)
+  * build(deps): bump library/golang from 1.27.0-alpine to
+    1.27.1-alpine (#2160)
+  * fix: attribute recursive copy tag failures to the destination
+    (#2157)
+  * build(deps): bump github.com/onsi/gomega from 1.42.1 to 1.43.0
+    in /test/e2e (#2147)
+  * build(deps): bump github.com/sirupsen/logrus from 1.10.1 to
+    1.10.2 (#2146)
+  * build: bump Go toolchain to 1.26 (#2145)
+
+-------------------------------------------------------------------
 Fri Aug 28 12:34:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.3.4:
