@@ -5866,4 +5866,13 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1384501</requestid>
   </revision>
+  <revision rev="554" vrev="1">
+    <srcmd5>eb52a39e536c8e594814c0c883444818</srcmd5>
+    <version>2.10.0+git20261014.33646953</version>
+    <time>1792492564</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.0+git20261014.33646953:
+  * dbus-services: adjust cups whitelisting (bsc#1285410)</comment>
+    <requestid>1385000</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 15 11:13:28 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.10.0+git20261014.33646953:
+  * dbus-services: adjust cups whitelisting (bsc#1285410)
+
+-------------------------------------------------------------------
 Tue Oct 13 06:40:22 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.10.0+git20261012.78649473:
