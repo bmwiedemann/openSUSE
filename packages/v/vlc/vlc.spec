@@ -140,7 +140,9 @@ BuildRequires:  pkgconfig(libgme)
 #BuildRequires:  pkgconfig(libmodplug) >= 0.8.9
 BuildRequires:  pkgconfig(libmtp) >= 1.0.0
 %if 0%{?suse_version} >= 1500
+%ifnarch %{arm}
 BuildRequires:  pkgconfig(libnfs)
+%endif
 %endif
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse) >= 1.0
@@ -159,7 +161,9 @@ BuildRequires:  pkgconfig(twolame)
 %if %{with vdpau}
 BuildRequires:  pkgconfig(vdpau) >= 0.6
 %endif
+%ifnarch %{arm} ppc64le %{ppc} s390x
 BuildRequires:  pkgconfig(vpl)
+%endif
 BuildRequires:  pkgconfig(xcb) >= 1.6
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-keysyms) >= 0.3.4
@@ -767,7 +771,9 @@ fi
 %{_libdir}/vlc/plugins/access/liblinsys_sdi_plugin.so
 %{_libdir}/vlc/plugins/access/liblive555_plugin.so
 %if 0%{?suse_version} >= 1500
+%ifnarch %{arm}
 %{_libdir}/vlc/plugins/access/libnfs_plugin.so
+%endif
 %endif
 %if 0%{?suse_version} < 1330 && ( 0%{?sle_version} < 120200 || 0%{?is_opensuse} < 1 )
 %{_libdir}/vlc/plugins/access/librdp_plugin.so
@@ -858,7 +864,9 @@ fi
 %{_libdir}/vlc/plugins/codec/liboggspots_plugin.so
 %{_libdir}/vlc/plugins/codec/libopus_plugin.so
 %{_libdir}/vlc/plugins/codec/libpng_plugin.so
+%ifnarch %{arm} ppc64le %{ppc} s390x
 %{_libdir}/vlc/plugins/codec/libqsv_plugin.so
+%endif
 %{_libdir}/vlc/plugins/codec/librawvideo_plugin.so
 %{_libdir}/vlc/plugins/codec/librtpvideo_plugin.so
 %{_libdir}/vlc/plugins/codec/libscte18_plugin.so

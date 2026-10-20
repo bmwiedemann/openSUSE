@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:31:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add conditional for pkgconfig(vpl) BuildRequires and plugin,
+  exclude %{arm} ppc64le %{ppc} s390x.
+- Add conditional for pkgconfig(libnfs) BuildRequires and plugin,
+  exclude %{arm}
+
+-------------------------------------------------------------------
 Mon Oct 12 18:04:48 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Switch to qt6:
