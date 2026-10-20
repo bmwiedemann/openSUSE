@@ -32,22 +32,23 @@ ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-sedlex
 Name:           %pkg%nsuffix
-Version:        3.7
+Version:        3.8.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Unicode-friendly lexer generator
 License:        MIT
 URL:            https://opam.ocaml.org/packages/sedlex/
 Source0:        %pkg-%version.tar.xz
-BuildRequires:  ocaml(ocaml_base_version) >= 4.08
-BuildRequires:  ocaml-dune >= 3.0
+BuildRequires:  ocaml(ocaml_base_version) >= 4.11
+BuildRequires:  ocaml-dune >= 3.18
 BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(gen)
 BuildRequires:  ocamlfind(ppxlib) >= 0.36.0
 
 %if "%build_flavor" == "testsuite"
+BuildRequires:  ocamlfind(menhir)
 BuildRequires:  ocamlfind(ppx_expect)
-BuildRequires:  ocamlfind(sedlex)
+BuildRequires:  ocamlfind(sedlex) = %version
 %endif
 
 %description

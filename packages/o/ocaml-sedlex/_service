@@ -3,7 +3,7 @@
     <param name="exclude">.git*</param>
     <param name="exclude">examples</param>
     <param name="filename">ocaml-sedlex</param>
-    <param name="revision">589f26b0cc6c64d22953aac61a7103b4ef36cb5f</param>
+    <param name="revision">8bfec9063cc840b1bda0c4de7fab9670a467fce6</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml-community/sedlex.git</param>
