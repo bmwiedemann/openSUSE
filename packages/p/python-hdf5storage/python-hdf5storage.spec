@@ -1,7 +1,7 @@
 #
 # spec file for package python-hdf5storage
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,27 @@
 
 
 Name:           python-hdf5storage
-Version:        0.1.19
+Version:        0.2.2
 Release:        0
 Summary:        Utilities to read/write HDF5 files, including MATLAB v7.3 MAT files
 License:        BSD-3-Clause
-URL:            https://github.com/frejanordsiek/hdf5storage
-Source:         https://files.pythonhosted.org/packages/source/h/hdf5storage/hdf5storage-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM nose-to-pytest.patch gh#frejanordsiek/hdf5storage#96 mcepl@suse.com, uses pytest instead of nose
-Patch0:         nose-to-pytest.patch
-# PATCH-FIX-UPSTREAM hdf5storage-pr134-numpy2.patch gh#frejanordsiek/hdf5storage#135 (backport to 0.1)
-Patch1:         hdf5storage-pr134-numpy2.patch
-BuildRequires:  %{python_module h5py >= 3.3}
-BuildRequires:  %{python_module numpy}
+URL:            https://github.com/jclds139/hdf5storage
+Source:         https://github.com/jclds139/hdf5storage/archive/refs/tags/%{version}.tar.gz#/hdf5storage-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  %{python_module h5py >= 3.9}
+BuildRequires:  %{python_module numpy >= 1.26}
 BuildRequires:  %{python_module pytest >= 6.0}
-# I don't know how to do @pytest.mark.parametrize on class methods
-BuildRequires:  %{python_module parameterized}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{pythons}
 # /SECTION
-Requires:       python-h5py >= 3.3
-Requires:       python-numpy
-Recommends:     python-scipy
+Requires:       python-h5py >= 3.9
+Requires:       python-numpy >= 1.26
+Recommends:     python-scipy >= 1.14.0
 BuildArch:      noarch
 %python_subpackages
 

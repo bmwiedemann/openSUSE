@@ -73,4 +73,19 @@
     <comment></comment>
     <requestid>1199622</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3d2f6a3573e835a4c06905f4f8e18cf3</srcmd5>
+    <version>0.2.2</version>
+    <time>1792492722</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2.2:
+  * Typing fixes to public API
+  * Update README for new maintainers
+- Sort BuildRequires properly.
+- Update URL and switch to GitHub release tarball.
+- Drop patches:
+  * nose-to-pytest.patch
+  * hdf5storage-pr134-numpy2.patch</comment>
+    <requestid>1386180</requestid>
+  </revision>
 </revisionlist>

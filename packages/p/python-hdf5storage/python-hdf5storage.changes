@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 19 08:18:44 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.2.2:
+  * Typing fixes to public API
+  * Update README for new maintainers
+- Sort BuildRequires properly.
+- Update URL and switch to GitHub release tarball.
+- Drop patches:
+  * nose-to-pytest.patch
+  * hdf5storage-pr134-numpy2.patch
+
+-------------------------------------------------------------------
 Fri Aug 30 13:11:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Unpin numpy 2
