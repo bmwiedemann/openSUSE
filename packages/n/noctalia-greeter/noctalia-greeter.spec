@@ -17,7 +17,7 @@
 
 
 Name:           noctalia-greeter
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Greeter for Noctalia v5
 License:        MIT
@@ -26,10 +26,10 @@ Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  meson
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  wlroots-devel
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wlroots-0.20)
+BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(freetype2)
@@ -43,7 +43,9 @@ BuildRequires:  pkgconfig(tomlplusplus)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(stb)
 BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(libxml-2.0)
 
 # Runtime deps
 Requires:       greetd
@@ -68,9 +70,12 @@ Pair it with Noctalia Shell v5 if you want wallpaper and palette synced from the
 %install
 %meson_install
 
+chmod 0644 %{buildroot}%{_datadir}/noctalia-greeter/greetd_setup_lib.sh
+
 sed -i '1c\#!/usr/bin/sh' \
     %{buildroot}%{_bindir}/noctalia-greeter-session \
-    %{buildroot}%{_bindir}/noctalia-greeter-print-greetd-config
+    %{buildroot}%{_bindir}/noctalia-greeter-print-greetd-config \
+		%{buildroot}%{_bindir}/noctalia-greeter-xsession
 
 for script in \
     %{buildroot}%{_datadir}/noctalia-greeter/*.sh

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct 19 10:36:42 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.7.0:
+  * chore(version): bump
+  * fix(auth): preserve empty PAM prompt responses (#171)
+  * refactor(greeter): simplify redraw checks and test frame scheduling
+  * fix: keep the frame loop running while animations are active (#167)
+  * fix(greeter): don't crash when sync.toml cannot be saved (#162)
+  * chore(flake): update flake.lock
+  * docs: add openSUSE installation guides (#164)
+  * feat(render): support JPEG XL wallpapers
+  * fix(docs): correct installation frontmatter delimiter
+  * chore: update tabler icons license file to match upstream (#134)
+  * docs(install): Explicit `-t trixie-backports` (#150)
+  * feat(#154): allow opting out of synced display settings (#155)
+  * fix(input): treat a masked password as a single word (#160)
+  * Sort session options alphabetically (#161)
+  * docs(packaging): document state initialization and bundled licenses
+  * fix(greeter): add scrollbars to session and scheme selectors
+  * chore(flake): update flake.lock
+  * feat(docs): improve guix installation instructions (#153)
+  * feat(sessions): accept .desktop filename as session fallback (#130)
+  * feat(cursor): support cursor themes in <path>/share/icons (#152)
+  * docs: add installation instructions for guix (#133)
+  * docs(troubleshooting): document Intel PSR2 black screen workaround
+  * ci(flake): refresh nixpkgs on glibc updates
+  * chore(flake): update flake.lock
+  * fix(clock): use synced font face
+  * fix(greeter): preserve logo colors in light themes
+  * feat(greeter): add centered clock positions
+  * feat(greeter): add configurable clock
+
+-------------------------------------------------------------------
 Tue Oct 06 00:15:02 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 1.6.0:
