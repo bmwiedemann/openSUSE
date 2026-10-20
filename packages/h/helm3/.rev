@@ -300,4 +300,22 @@
       bsc#1283642, CVE-2026-63209):</comment>
     <requestid>1382135</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f4d6402b417c16e70d5d7610b2384397</srcmd5>
+    <version>3.22.1</version>
+    <time>1792492619</time>
+    <user>anag_factory</user>
+    <comment>- fix vendor.tar replacements after version update
+
+- Update to version 3.22.1 (bsc#1285273, CVE-2026-78669):
+  * chore(deps): bump github.com/distribution/distribution/v3
+    (#32697)
+  * [v3] chore(deps): bump k8s.io group to v0.37.1 (#32761)
+  * [v3] chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace otlptracegrpc
+    and otlptracehttp to v1.45.0 (#32760)
+  * chore(deps): bump golang.org/x/net to v0.60.0 for GO-2026-6617
+    GO-2026-6612 GO-2026-6611 GO-2026-6610 GO-2026-6603 (#32759)</comment>
+    <requestid>1386090</requestid>
+  </revision>
 </revisionlist>

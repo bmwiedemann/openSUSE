@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 18 21:53:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix vendor.tar replacements after version update
+
+-------------------------------------------------------------------
+Fri Oct 16 05:06:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.22.1 (bsc#1285273, CVE-2026-78669):
+  * chore(deps): bump github.com/distribution/distribution/v3
+    (#32697)
+  * [v3] chore(deps): bump k8s.io group to v0.37.1 (#32761)
+  * [v3] chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace otlptracegrpc
+    and otlptracehttp to v1.45.0 (#32760)
+  * chore(deps): bump golang.org/x/net to v0.60.0 for GO-2026-6617
+    GO-2026-6612 GO-2026-6611 GO-2026-6610 GO-2026-6603 (#32759)
+
+-------------------------------------------------------------------
 Wed Sep 23 20:37:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to address:
