@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Oct 19 08:29:37 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 3.3.4:
+  * remove dead code, ruff checks. cleanup.
+
+- version 3.3.3:
+  * Quote remote command arguments
+
+- version 3.3.2:
+  * Log libvirt errors, fix viewer issues, and clean up documentation
+
+- version 3.3.1:
+  * Auto-install:
+   * Reboot handling: force on_poweroff='destroy' alongside on_reboot='destroy' for auto-install
+   * on_poweroff='restart' restored for iothreads (COMPUTATION) VMs after install completes.
+   * NVRAM fallback: fall back to libvirt auto-NVRAM when NVRAM template missing from firmware directory
+   * API fix: net.getXMLDesc → net.XMLDesc (removed libvirt API)
+   * Automation config: default ssh_server, ntp_client, disk_device values
+  * vmc (CLI):
+   * VM name sanitization (same rules as TUI), fail fast if domain name exists
+   * Ensures default storage pool and network exist/active
+   * ISO source selection: distribution repo, cached ISOs, pool volumes, custom URL/path 
+   * Network validation (exists + active), storage pool selection restricted to active pools
+   * UEFI/BIOS boot mode selection
+   * ISO source and boot mode included in --dryrun summary
+  * GUI wrapper:
+   * tmux session cleanup: watchdog per tmux session kills session if GUI process dies
+
+- version 3.3.0:
+  * Path validation on RemoteAutoHTTPServer start/stop to prevent dangerous rm -rf
+  * Collapse "Expert Mode" and automation sections on install modal; default timezone to UTC
+  * Keep install button visible when form overflows
+  * Connect to new autoconnect servers when reloading server list
+  * Major fix Remote provisioning: fix bugs in vm_provisioner for remote servers
+  * RemoteAutoHTTPServer: now works when not run locally; optimized SSH calls via ControlMaster
+  * Clone: clone NVRAM per-VM to avoid SELinux label conflict (7883c0a)
+  * VM delete: skip CD-ROM disks when deleting VM storage (d66d382)
+  * Provisioning: skip local ISO existence check for remote pool volumes (d52cdff)
+  * ISO download: check pool for existing ISO before downloading (f08a78e)
+  * Remote servers: disable Browse buttons in AddPoolModal and attach volume; skip path existence checks (7503cfb, 77ebeee)
+  * Remote VMs: disable USB/PCI host tabs and Add Disk in VM details (56391a7)
+  * libvirt_utils: return volume with None pool when pool lookup fa
+
+-------------------------------------------------------------------
 Wed Aug 26 10:14:12 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - version 3.2.1:
