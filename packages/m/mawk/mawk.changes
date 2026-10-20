@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:58:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.3.4-20260302:
+  * -W interactive is now the default when stdout is a terminal,
+    without interfering with RS/FS handling.
+  * Many regex engine fixes and improvements: brace expressions,
+    loop unrolling, nested "+" handling, inf/nan comparisons,
+    null-pointer and out-of-bounds checks.
+  * printf/sprintf fixes: 2^64 exact value, infinite-value signs,
+    escaped '%', OFMT %c handling like gawk; sprintf buffer limit
+    now visible to the test suite.
+  * Disallow reading from a directory like a file; stdtod() rejects
+    hexadecimal/inf/nan values unless --posix is given.
+  * Improved limit checks for $n expressions (sign extension),
+    zmalloc/zrealloc size parameters and for-in loop comparisons.
+  * Mask nonprintable characters in script error reports.
+  * Build portability: gcc15 warnings fixed, clock_gettime/arc4random
+    configure checks, refreshed config.guess/sub and install-sh.
+  * Many more fixes and improvements; see upstream CHANGES
+    for the full list.
+
+-------------------------------------------------------------------
 Thu Jul 18 12:43:58 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.3.4-20240622:

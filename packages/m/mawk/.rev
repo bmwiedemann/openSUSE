@@ -197,4 +197,12 @@
     <comment></comment>
     <requestid>1188839</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ecd4824a877d8d6901109fb1a231037a</srcmd5>
+    <version>1.3.4.20260302</version>
+    <time>1792492704</time>
+    <user>anag_factory</user>
+    <comment>Update mawk to 1.3.4.20260302 (forwarded request 1385898 from pluskalm)</comment>
+    <requestid>1386157</requestid>
+  </revision>
 </revisionlist>

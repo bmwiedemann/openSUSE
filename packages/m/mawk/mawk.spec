@@ -1,7 +1,7 @@
 #
 # spec file for package mawk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 %define _upver 1.3.4
-%define _datever 20240622
+%define _datever 20260302
 Name:           mawk
 Version:        %{_upver}.%{_datever}
 Release:        0
