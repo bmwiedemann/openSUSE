@@ -4,7 +4,7 @@
     <param name="url">https://github.com/EHfive/ldacBT.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="revision">v2.0.2.5</param>
+    <param name="revision">v2.0.2.6</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="submodules">enable</param>

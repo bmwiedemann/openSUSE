@@ -18,14 +18,12 @@
 
 %global libname libldac2
 Name:           ldacBT
-Version:        2.0.2.5
+Version:        2.0.2.6
 Release:        0
 Summary:        A lossy audio codec for Bluetooth connections
 License:        Apache-2.0
-Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/EHfive/ldacBT
 Source0:        %{name}-%{version}.tar.xz
-
 Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -39,7 +37,6 @@ even over a Bluetooth connection.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -48,7 +45,6 @@ developing applications that use %{name}.
 
 %package -n %{libname}
 Summary:        A lossy audio codec for Bluetooth connections
-Group:          System/Libraries
 
 %description -n %{libname}
 LDAC is an audio coding technology developed by Sony.
