@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-ppxlib
 Name:           %pkg%nsuffix
-Version:        0.38.0
+Version:        0.39.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Base library and tools for ppx rewriters
@@ -47,7 +47,6 @@ BuildRequires:  ocamlfind(compiler-libs)
 BuildRequires:  ocamlfind(ocaml-compiler-libs)
 BuildRequires:  ocamlfind(ppx_derivers)
 BuildRequires:  ocamlfind(sexplib0)
-BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  ocamlfind(yojson)
 
 %if "%build_flavor" == "testsuite"
