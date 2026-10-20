@@ -25,4 +25,13 @@
   * Remove home:kukuk:mkosi-images key from development</comment>
     <requestid>1384657</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7886a4196f9fe231c0ae56265a7a6aae</srcmd5>
+    <version>unknown</version>
+    <time>1792492940</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261019.1a525f6:
+  * image: create /images mount point</comment>
+    <requestid>1386328</requestid>
+  </revision>
 </revisionlist>
