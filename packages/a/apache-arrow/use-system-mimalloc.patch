@@ -1,0 +1,102 @@
+From: Dominique Belhachemi <domibel@debian.org>
+Subject: Use system mimalloc instead of a vendored copy
+Bug: https://github.com/apache/arrow/issues/42211
+
+Adapted from Debian's debian/patches/use-debian-mimalloc.patch
+(apache-arrow 25.0.0) to arrow 26.0.0: the vendored block gained an
+APPLE MI_TLS_MODEL_LOCAL special-case and a "Don't override default
+malloc" comment, both dropped along with the ExternalProject. The
+global ARROW_SHARED_LINK_LIBS list the Debian patch appends to no
+longer exists in arrow 26 (per-target SHARED_LINK_LIBS arg in
+BuildUtils.cmake instead); it is not needed here anyway since
+cpp/src/arrow/CMakeLists.txt already links mimalloc::mimalloc
+PRIVATE into the memory-pool objects that become part of libarrow.
+
+Linking the shared system mimalloc means libarrow carries a DT_NEEDED
+on libmimalloc built with MI_OVERRIDE=ON (unlike the vendored static
+build with MI_OVERRIDE=OFF/MI_LOCAL_DYNAMIC_TLS=ON), same trade-off
+as Debian. %check (memory_pool / IPC tests) exercises the pool.
+
+--- a/cpp/cmake_modules/ThirdpartyToolchain.cmake
++++ b/cpp/cmake_modules/ThirdpartyToolchain.cmake
+@@ -2603,75 +2603,11 @@
+     message(FATAL_ERROR "Can't use mimalloc with ARROW_ENABLE_THREADING=OFF")
+   endif()
+ 
+-  message(STATUS "Building (vendored) mimalloc from source")
+-  # We only use a vendored mimalloc as we want to control its build options.
+-
+-  set(MIMALLOC_LIB_BASE_NAME "mimalloc")
+-  if(${UPPERCASE_BUILD_TYPE} STREQUAL "DEBUG")
+-    set(MIMALLOC_LIB_BASE_NAME "${MIMALLOC_LIB_BASE_NAME}-${LOWERCASE_BUILD_TYPE}")
+-  endif()
+-
+-  set(MIMALLOC_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/mimalloc_ep/src/mimalloc_ep")
+-  set(MIMALLOC_INCLUDE_DIR "${MIMALLOC_PREFIX}/include")
+-  set(MIMALLOC_STATIC_LIB
+-      "${MIMALLOC_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}${MIMALLOC_LIB_BASE_NAME}${CMAKE_STATIC_LIBRARY_SUFFIX}"
+-  )
+-
+-  set(MIMALLOC_C_FLAGS ${EP_C_FLAGS})
+-  if(MINGW)
+-    # Workaround https://github.com/microsoft/mimalloc/issues/910 on RTools40
+-    # This is still required as of mimalloc 3.3.1, tested as part of GH-49772
+-    set(MIMALLOC_C_FLAGS "${MIMALLOC_C_FLAGS} -DERROR_COMMITMENT_MINIMUM=635")
+-  endif()
+-
+-  set(MIMALLOC_CMAKE_ARGS
+-      ${EP_COMMON_CMAKE_ARGS}
+-      "-DCMAKE_C_FLAGS=${MIMALLOC_C_FLAGS}"
+-      "-DCMAKE_INSTALL_PREFIX=${MIMALLOC_PREFIX}"
+-      -DMI_INSTALL_TOPLEVEL=ON
+-      # Don't override default malloc
+-      -DMI_OVERRIDE=OFF
+-      -DMI_OSX_INTERPOSE=OFF
+-      -DMI_OSX_ZONE=OFF
+-      # Allow usage through dlopen (i.e. when libarrow.so itself is dlopen'ed)
+-      -DMI_LOCAL_DYNAMIC_TLS=ON
+-      -DMI_BUILD_OBJECT=OFF
+-      -DMI_BUILD_SHARED=OFF
+-      -DMI_BUILD_TESTS=OFF
+-      # GH-47229: Force mimalloc to generate armv8.0 binary
+-      -DMI_NO_OPT_ARCH=ON)
+-
+-  if(APPLE)
+-    list(APPEND
+-         MIMALLOC_CMAKE_ARGS
+-         # GH-50428: Make sure several mimalloc instances can cohabit in the same process
+-         # (also https://github.com/microsoft/mimalloc/issues/1327#issuecomment-4964140817)
+-         -DMI_TLS_MODEL_LOCAL=ON)
+-  endif()
+-
+-  externalproject_add(mimalloc_ep
+-                      ${EP_COMMON_OPTIONS}
+-                      URL ${MIMALLOC_SOURCE_URL}
+-                      URL_HASH "SHA256=${ARROW_MIMALLOC_BUILD_SHA256_CHECKSUM}"
+-                      CMAKE_ARGS ${MIMALLOC_CMAKE_ARGS}
+-                      BUILD_BYPRODUCTS "${MIMALLOC_STATIC_LIB}")
+-
+-  file(MAKE_DIRECTORY ${MIMALLOC_INCLUDE_DIR})
+-
+-  add_library(mimalloc::mimalloc STATIC IMPORTED)
+-  set_target_properties(mimalloc::mimalloc PROPERTIES IMPORTED_LOCATION
+-                                                      "${MIMALLOC_STATIC_LIB}")
+-  target_include_directories(mimalloc::mimalloc BEFORE
+-                             INTERFACE "${MIMALLOC_INCLUDE_DIR}")
+-  target_link_libraries(mimalloc::mimalloc INTERFACE Threads::Threads)
+-  if(WIN32)
+-    target_link_libraries(mimalloc::mimalloc INTERFACE "bcrypt.lib" "psapi.lib")
+-  endif()
+-  add_dependencies(mimalloc::mimalloc mimalloc_ep)
+-
+-  list(PREPEND ARROW_BUNDLED_STATIC_LIBS mimalloc::mimalloc)
+-
+-  set(mimalloc_VENDORED TRUE)
++  # Use the system mimalloc (Factory ships 3.3.2 with a CMake config).
++  # Upstream mimalloc installs its export without a namespace, so keep
++  # the mimalloc::mimalloc name the rest of the build expects via an alias.
++  find_package(mimalloc REQUIRED)
++  add_library(mimalloc::mimalloc ALIAS mimalloc)
+ endif()
+ 
+ # ----------------------------------------------------------------------

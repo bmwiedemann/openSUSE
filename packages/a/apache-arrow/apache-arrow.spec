@@ -16,38 +16,32 @@
 #
 
 
+%if 0%{?suse_version} <= 1500
+# requires __has_builtin with keywords
+%define gccver 13
+%endif
+%define sonum   2600
+# See git submodule /testing pointing to the correct revision
+%define arrow_testing_commit 9ff285c88565f0f6abc855918c6a342e70e4909c
+# See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
+%define parquet_testing_commit 56653c437c8092f704a092d0d1d4e600124cd49f
 %bcond_without tests
 %bcond_without flight
-
 # Remove static build due to devel-static packages being required by the generated CMake Targets
 %bcond_with static
 # Required for runtime dispatch, not yet packaged
 %bcond_with xsimd
-
-%if %{suse_version} <= 1500
-# requires __has_builtin with keywords
-%define gccver 13
-%endif
-
-%define sonum   2500
-# See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit 9ff285c88565f0f6abc855918c6a342e70e4909c
-# See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
-%define parquet_testing_commit e74785d85a4ecee829e1e405444d6a1b24b8bc9c
-# See cpp/thirdparty/versions.txt, replace by BuildRequires: pkgconfig(mimalloc) as soon as gh#apache/arrow#42211 is resolved
-%define arrow_mimalloc_build_version v3.3.1
 Name:           apache-arrow
-Version:        25.0.0
+Version:        26.0.0
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
-Group:          Development/Tools/Other
 URL:            https://arrow.apache.org/
 # SourceRepository: https://github.com/apache/arrow
 Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.tar.gz
 Source1:        https://github.com/apache/arrow-testing/archive/%{arrow_testing_commit}.tar.gz#/arrow-testing-%{version}.tar.gz
 Source2:        https://github.com/apache/parquet-testing/archive/%{parquet_testing_commit}.tar.gz#/parquet-testing-%{version}.tar.gz
-Source3:        https://github.com/microsoft/mimalloc/archive/%{arrow_mimalloc_build_version}.tar.gz#/mimalloc-%{arrow_mimalloc_build_version}.tar.gz
+Patch0:         use-system-mimalloc.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.25
 BuildRequires:  fdupes
@@ -58,12 +52,6 @@ BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_process-devel
-%if 0%{?suse_version} < 1699
-BuildRequires:  libboost_system-devel
-%endif
-%if %{with static}
-BuildRequires:  libzstd-devel-static
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -85,11 +73,23 @@ BuildRequires:  pkgconfig(libopenssl)
 BuildRequires:  pkgconfig(liburiparser) >= 0.9.3
 BuildRequires:  pkgconfig(libutf8proc) >= 2.10.0
 BuildRequires:  pkgconfig(libzstd) >= 1.5.7
+# cpp/thirdparty/versions.txt wants mimalloc 3.4.1; Factory ships 3.3.2
+# with a compatible API (Debian links its system mimalloc the same way)
+BuildRequires:  pkgconfig(mimalloc)
 BuildRequires:  pkgconfig(protobuf) >= 21.3
+# ARROW_SIMDJSON_REQUIRED_VERSION is 4.3.0 (ThirdpartyToolchain.cmake);
+# resolved from the in-project simdjson package until it lands in Factory
+BuildRequires:  pkgconfig(simdjson) >= 4.3.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(thrift) >= 0.22.0
 BuildRequires:  pkgconfig(xsimd) >= 14.2.0
 BuildRequires:  pkgconfig(zlib) >= 1.3.1
+%if 0%{?suse_version} < 1699
+BuildRequires:  libboost_system-devel
+%endif
+%if %{with static}
+BuildRequires:  libzstd-devel-static
+%endif
 %if %{with tests}
 BuildRequires:  timezone
 BuildRequires:  pkgconfig(gmock) >= 1.10
@@ -106,7 +106,6 @@ communication.
 
 %package     -n libarrow%{sonum}
 Summary:        Development platform for in-memory data - shared library
-Group:          System/Libraries
 
 %description -n libarrow%{sonum}
 Apache Arrow is a cross-language development platform for in-memory
@@ -120,7 +119,6 @@ This package provides the shared library for Apache Arrow.
 
 %package     -n libarrow_acero%{sonum}
 Summary:        Development platform for in-memory data - shared library
-Group:          System/Libraries
 
 %description -n libarrow_acero%{sonum}
 Apache Arrow is a cross-language development platform for in-memory
@@ -134,7 +132,6 @@ This package provides the shared library for the Acero streaming execution engin
 
 %package     -n libarrow_compute%{sonum}
 Summary:        Development platform for in-memory data - shared library
-Group:          System/Libraries
 
 %description -n libarrow_compute%{sonum}
 Apache Arrow is a cross-language development platform for in-memory
@@ -148,7 +145,6 @@ This package provides the shared library for the C++ Compute module
 
 %package     -n libarrow_flight%{sonum}
 Summary:        Development platform for in-memory data - shared library
-Group:          System/Libraries
 
 %description -n libarrow_flight%{sonum}
 Apache Arrow is a cross-language development platform for in-memory
@@ -162,7 +158,6 @@ This package provides the shared library for Arrow Flight
 
 %package     -n libarrow_flight_sql%{sonum}
 Summary:        Development platform for in-memory data - shared library
-Group:          System/Libraries
 
 %description -n libarrow_flight_sql%{sonum}
 Apache Arrow is a cross-language development platform for in-memory
@@ -176,7 +171,6 @@ This package provides the shared library for Arrow Flight SQL
 
 %package     -n libarrow_dataset%{sonum}
 Summary:        Development platform for in-memory data - shared library
-Group:          System/Libraries
 
 %description -n libarrow_dataset%{sonum}
 Apache Arrow is a cross-language development platform for in-memory
@@ -190,7 +184,6 @@ This package provides the shared library for Dataset API support.
 
 %package     -n libparquet%{sonum}
 Summary:        Development platform for in-memory data - shared library
-Group:          System/Libraries
 
 %description -n libparquet%{sonum}
 Apache Arrow is a cross-language development platform for in-memory
@@ -204,7 +197,6 @@ This package provides the shared library for the Parquet format.
 
 %package        devel
 Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
 Requires:       libarrow%{sonum} = %{version}
 Requires:       libarrow_acero%{sonum} = %{version}
 Requires:       libarrow_compute%{sonum} = %{version}
@@ -214,10 +206,10 @@ Requires:       libarrow_flight%{sonum} = %{version}
 Requires:       libarrow_flight_sql%{sonum} = %{version}
 %endif
 %if %{with static}
-Suggests:       %{name}-devel-static = %{version}
 Suggests:       %{name}-acero-devel-static = %{version}
 Suggests:       %{name}-compute-devel-static = %{version}
 Suggests:       %{name}-dataset-devel-static = %{version}
+Suggests:       %{name}-devel-static = %{version}
 %if %{with flight}
 Suggests:       %{name}-flight-devel-static = %{version}
 Suggests:       %{name}-flight-sql-devel-static = %{version}
@@ -238,7 +230,6 @@ Apache Arrow.
 %if %{with static}
 %package        devel-static
 Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 
 %description    devel-static
@@ -253,7 +244,6 @@ This package provides the static library
 
 %package        acero-devel-static
 Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 
 %description    acero-devel-static
@@ -268,7 +258,6 @@ This package provides the static library for the Acero streaming execution engin
 
 %package        compute-devel-static
 Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 
 %description    compute-devel-static
@@ -283,7 +272,6 @@ This package provides the static library for the C++ Compute module
 
 %package        flight-devel-static
 Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 
 %description    flight-devel-static
@@ -298,7 +286,6 @@ This package provides the static library for Arrow Flight
 
 %package        flight-sql-devel-static
 Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 
 %description    flight-sql-devel-static
@@ -313,7 +300,6 @@ This package provides the static library for Arrow Flight SQL
 
 %package        dataset-devel-static
 Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 
 %description    dataset-devel-static
@@ -329,7 +315,6 @@ This package provides the static library for Dataset API support
 
 %package     -n apache-parquet-devel
 Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
 Requires:       libparquet%{sonum} = %{version}
 
 %description -n apache-parquet-devel
@@ -346,7 +331,6 @@ the Parquet format.
 %if %{with static}
 %package     -n apache-parquet-devel-static
 Summary:        Development platform for in-memory data - development files
-Group:          Development/Libraries/C and C++
 Requires:       apache-parquet-devel = %{version}
 
 %description -n apache-parquet-devel-static
@@ -362,7 +346,6 @@ This package provides the static library for the Parquet format.
 
 %package     -n apache-parquet-utils
 Summary:        Development platform for in-memory data - development files
-Group:          Productivity/Scientific/Math
 
 %description -n apache-parquet-utils
 Apache Arrow is a cross-language development platform for in-memory
@@ -376,13 +359,13 @@ This package provides utilities for working with the Parquet format.
 
 %prep
 %setup -q -n arrow-apache-arrow-%{version} -a1 -a2
+%patch -P 0 -p1
 
 %build
 %{?gccver:export CXX=g++-%{gccver}}
 %{?gccver:export CC=gcc-%{gccver}}
 export CFLAGS="%{optflags} -ffat-lto-objects"
 export CXXFLAGS="%{optflags} -ffat-lto-objects"
-export ARROW_MIMALLOC_URL=%{SOURCE3}
 
 pushd cpp
 %cmake \
@@ -392,6 +375,7 @@ pushd cpp
    -DARROW_BUILD_TESTS:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \
    -DARROW_BUILD_UTILITIES:BOOL=ON \
    -DARROW_DEPENDENCY_SOURCE=SYSTEM \
+   -Dsimdjson_SOURCE=SYSTEM \
    -DARROW_BUILD_BENCHMARKS:BOOL=OFF \
 %ifarch aarch64
    -DARROW_SIMD_LEVEL:STRING=%{?with_xsimd:NEON}%{!?with_xsimd:NONE} \
@@ -464,7 +448,7 @@ export PARQUET_TEST_DATA="${PWD}/parquet-testing-%{parquet_testing_commit}/data"
 export ARROW_TEST_DATA="${PWD}/arrow-testing-%{arrow_testing_commit}/data"
 pushd cpp
 export PYTHON=%{_bindir}/python3
-%ifarch %ix86 %arm32
+%ifarch %{ix86} %{arm32}
 GTEST_failing="TestDecimalFromReal*"
 GTEST_failing="${GTEST_failing}:*TestDecryptionConfiguration.TestDecryption*"
 %endif
@@ -496,6 +480,7 @@ popd
 %post   -n libarrow_flight_sql%{sonum}  -p /sbin/ldconfig
 %postun -n libarrow_flight_sql%{sonum}  -p /sbin/ldconfig
 %endif
+
 %post   -n libarrow_dataset%{sonum}   -p /sbin/ldconfig
 %postun -n libarrow_dataset%{sonum}   -p /sbin/ldconfig
 %post   -n libparquet%{sonum} -p /sbin/ldconfig

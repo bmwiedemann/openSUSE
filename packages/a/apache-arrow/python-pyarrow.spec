@@ -16,19 +16,19 @@
 #
 
 
-%{?sle15_python_module_pythons}
-%bcond_with xsimd
 %define plainpython python
 # See git submodule /testing pointing to the correct revision
 %define arrow_testing_commit 9ff285c88565f0f6abc855918c6a342e70e4909c
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
-%define parquet_testing_commit e74785d85a4ecee829e1e405444d6a1b24b8bc9c
-%if %{suse_version} <= 1500
+%define parquet_testing_commit 56653c437c8092f704a092d0d1d4e600124cd49f
+%if 0%{?suse_version} <= 1500
 # requires __has_builtin with keywords
 %define gccver 13
 %endif
+%bcond_with xsimd
+%{?sle15_python_module_pythons}
 Name:           python-pyarrow
-Version:        25.0.0
+Version:        26.0.0
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -39,9 +39,9 @@ Source1:        arrow-testing-%{version}.tar.gz
 Source2:        parquet-testing-%{version}.tar.gz
 Source99:       python-pyarrow.rpmlintrc
 BuildRequires:  %{python_module Cython >= 3.1}
-BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module libcst >= 1.8.6}
-BuildRequires:  %{python_module numpy-devel >= 1.25}
+BuildRequires:  %{python_module numpy-devel >= 2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scikit-build-core}
 BuildRequires:  %{python_module setuptools_scm}
@@ -59,7 +59,7 @@ BuildRequires:  pkgconfig(bzip2) >= 1.0.8
 BuildRequires:  pkgconfig(gmock) >= 1.10
 BuildRequires:  pkgconfig(gtest) >= 1.10
 BuildRequires:  pkgconfig(parquet) = %{version}
-Requires:       python-numpy >= 1.25
+Requires:       python-numpy >= 2.0
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pandas}
@@ -87,7 +87,7 @@ data efficiently or as the basis for analytic engines.
 Summary:        Python library for Apache Arrow - header files
 Requires:       python-Cython
 Requires:       python-pyarrow = %{version}
-Requires:       %plainpython(abi) = %python_version
+Requires:       %plainpython(abi) = %{python_version}
 Supplements:    (python-devel and python-pyarrow)
 
 %description devel
@@ -97,7 +97,7 @@ This package provides the header files within the python
 platlib for consuming modules using cythonization.
 
 %prep
-%setup -n arrow-apache-arrow-%{version} -a1 -a2
+%setup -q -n arrow-apache-arrow-%{version} -a1 -a2
 %autopatch -p1
 
 %build
