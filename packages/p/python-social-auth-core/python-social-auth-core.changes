@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Mon Oct 19 12:12:08 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 5.2.0:
+  ### Added
+  - Added a CESID AAI OpenID Connect backend.
+  - Added an optional `user` argument to `do_auth()` and a
+    `BaseAuth.prepare_auth()` hook for backend-specific authentication
+    initiation.
+  ### Security
+  - Twilio Connect is now association-only: starting and completing a
+    connection requires the same authenticated local user. Twilio
+    callback data can no longer create or authenticate users.
+  - Facebook App authentication now binds access-token and
+    signed-request callbacks to the browser session, preventing login
+    CSRF and unauthorized account linking. Custom Facebook App
+    templates must preserve the query string in
+    `FACEBOOK_COMPLETE_URI` when submitting the callback.
+  - Weixin app authentication now validates OAuth state before
+    exchanging codes, preventing login CSRF and unauthorized account
+    linking.
+  - Last.fm authentication now binds callbacks to the browser session
+    that initiated the login, preventing login CSRF and unauthorized
+    account linking.
+  - GitHub App authentication now validates OAuth state before
+    exchanging codes.  Stateless installation callbacks restart a
+    state-protected OAuth flow, preventing forged installation
+    parameters from enabling login CSRF.
+  - VK OpenAPI authentication now uses the signed session's user ID
+    instead of trusting the ID supplied in callback data.
+  ### Changed
+  - Updated development dependencies and CI actions.
+  - Allowed newer Google Auth versions for the Google One Tap backend.
+
+- 5.1.1:
+  ### Security
+  - VK app authentication now fetches user profiles directly from VK
+    and verifies that the profile ID matches the signed viewer ID,
+    preventing forged callback data from overriding the authenticated
+    identity and profile.
+  ### Added
+  - Added `AuthReauthenticationRequired`, a subclass of
+    `AuthTokenError`, for OpenID Connect token refreshes that require
+    the user to sign in again.
+  ### Changed
+  - Updated development dependencies and CI actions.
+  - Allowed newer Google Auth versions for the Google One Tap backend.
+  ### Fixed
+  - Authentication backends now consistently honor configurable user
+    ID keys.
+  - Auth0 now requests the required `openid`, `profile`, and `email`
+    scopes and raises `AuthTokenError` when the token response lacks
+    an ID token.
+  - OpenID Connect now validates required ID token claims consistently
+    and handles legacy token refresh identity context more reliably.
+  - SAML parsing, decryption, and validation failures now consistently
+    raise authentication exceptions, as do unknown or invalid identity
+    provider names.
+  - SAML responses without RelayState now include the resolved
+    identity provider name when only one provider is configured.
+  ### Removed
+  - Discontinued OAuth backends: EchoSign, ExactTarget, Pocket,
+    Runkeeper, Skyrock, and Withings.
+
+- 5.1.0:
+  ### Added
+  - Added a Helmholtz AAI OpenID Connect backend.
+  - Native applications can allow private-use redirect URI schemes
+    with the `ALLOWED_REDIRECT_SCHEMES` setting.
+  ### Security
+  - OpenID Connect backends now validate ID tokens returned during
+    token refresh and reject changes to the authenticated identity.
+  ### Changed
+  - Updated development dependencies and CI actions.
+  ### Fixed
+  - Updated the Coinbase backend to use current OAuth endpoints,
+    scopes, API versioning, and token revocation parameters.
+  - HTTP 403 responses from authentication providers now raise
+    `AuthForbidden`.
+  - JWT verification failures are now consistently wrapped in
+    social-core authentication exceptions.
+
+-------------------------------------------------------------------
 Fri Sep  4 12:35:02 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - drop optional dependency on python-python-jose

@@ -590,4 +590,41 @@
 </comment>
     <requestid>1375802</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d69384514ec65448db0e307df29ab35b</srcmd5>
+    <version>5.2.0</version>
+    <time>1792492848</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.2.0:
+  ### Added
+  - Added a CESID AAI OpenID Connect backend.
+  - Added an optional `user` argument to `do_auth()` and a
+    `BaseAuth.prepare_auth()` hook for backend-specific authentication
+    initiation.
+  ### Security
+  - Twilio Connect is now association-only: starting and completing a
+    connection requires the same authenticated local user. Twilio
+    callback data can no longer create or authenticate users.
+  - Facebook App authentication now binds access-token and
+    signed-request callbacks to the browser session, preventing login
+    CSRF and unauthorized account linking. Custom Facebook App
+    templates must preserve the query string in
+    `FACEBOOK_COMPLETE_URI` when submitting the callback.
+  - Weixin app authentication now validates OAuth state before
+    exchanging codes, preventing login CSRF and unauthorized account
+    linking.
+  - Last.fm authentication now binds callbacks to the browser session
+    that initiated the login, preventing login CSRF and unauthorized
+    account linking.
+  - GitHub App authentication now validates OAuth state before
+    exchanging codes.  Stateless installation callbacks restart a
+    state-protected OAuth flow, preventing forged installation
+    parameters from enabling login CSRF.
+  - VK OpenAPI authentication now uses the signed session's user ID
+    instead of trusting the ID supplied in callback data.
+  ### Changed
+  - Updated development dependencies and CI actions.
+  - Allowed newer Google Auth versions for the Google One Tap backend.</comment>
+    <requestid>1386271</requestid>
+  </revision>
 </revisionlist>
