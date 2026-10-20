@@ -1,11 +1,14 @@
 <constraints>
-    <hardware>
-      <physicalmemory>
-        <size unit="G">32</size>
-      </physicalmemory>
-      <disk>
-        <size unit="G">12</size>
-      </disk>
-    </hardware>
+  <hardware>
+    <memory>
+      <size unit="G">12</size>
+    </memory>
+    <disk>
+      <size unit="G">12</size>
+    </disk>
+    <memoryperjob>
+      <size unit="M">4000</size>
+    </memoryperjob>
+  </hardware>
 </constraints>
 

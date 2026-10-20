@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+#!BcntSyncTag: ollama
 
 %ifarch x86_64
 %global jobs 3
@@ -26,7 +27,6 @@
 %global mlx_version bebd6422f8db88d56e6220520a35bcd146f823f8
 %global mlx_c_version a341b4925024b88b2c593468f16e12f5e17315da
 
-%{bcond_with rocm}
 %{bcond_with cuda}
 %if 0%{?suse_version} >= 1610
 %{bcond_without vulkan}
@@ -47,13 +47,13 @@ ExclusiveArch:  SKIP_IT
 %endif
 
 %if "%{flavor}" == "rocm"
+# ROCm is only available for x86_64
+ExclusiveArch:  x86_64
 %global preset_flavor rocm_v7_2_linux
 %if 0%{?suse_version} >= 1699
 %{bcond_without rocm}
-# ROCm is only available for x86_64
-ExclusiveArch:  x86_64
 %else
-ExclusiveArch:  SKIP_IT
+%{bcond_with rocm}
 %endif
 %endif
 
@@ -77,7 +77,7 @@ ExclusiveArch:  SKIP_IT
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.40.5
+Version:        0.40.6
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -148,6 +148,13 @@ BuildRequires:  cuda-driver-devel-%{cuda_version}
 BuildRequires:  cuda-nvcc-%{cuda_version}
 # requires libcublas
 BuildRequires:  libcublas-devel-%{cuda_version}
+Requires:       cuda-cudart-%{cuda_version}
+%endif
+
+%if "%{flavor}" == "test"
+%if %{with cuda}
+BuildRequires:  cuda-cudart-%{cuda_version}
+%endif
 %endif
 
 %if "%{flavor}" == "rocm"

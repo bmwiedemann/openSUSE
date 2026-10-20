@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 19 06:18:52 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.6
+  * Prevent orphaned runners on Windows
+  * Add q2_0 tensor and file types for GGUF
+  * Launch clef in Ollama's cloud
+  * Use identifiers for --ask mode question keys
+- Update generated using pbuild-ai
+- fix logic to enable ROCm to allow manual enablement
+
+-------------------------------------------------------------------
 Fri Oct 16 07:20:59 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Updated to version 0.40.5

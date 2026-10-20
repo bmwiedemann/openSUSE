@@ -989,4 +989,18 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * Updated README and documentation with clearer privacy and</comment>
     <requestid>1385170</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b6a1b360e21054c1c7cf2dda2c709e9e</srcmd5>
+    <version>0.40.6</version>
+    <time>1792492752</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 0.40.6
+  * Prevent orphaned runners on Windows
+  * Add q2_0 tensor and file types for GGUF
+  * Launch clef in Ollama's cloud
+  * Use identifiers for --ask mode question keys
+- Update generated using pbuild-ai
+- fix logic to enable ROCm to allow manual enablement</comment>
+    <requestid>1386200</requestid>
+  </revision>
 </revisionlist>
