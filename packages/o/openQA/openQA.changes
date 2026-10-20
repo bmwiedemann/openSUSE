@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 19 15:14:50 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792422872.0ae0959e:
+  * chore(deps-dev): bump acorn from 8.16.0 to 8.19.0 (#7983)
+  * fix(ui): Apply dark theme to text-bg-light badges
+  * fix(ui): Apply dark theme to btn-light buttons
+  * fix(worker): use 0-based tap index in OVS health check
+  * fix(ui): Improve dark theme contrast in a few places
+  * ci(mergify): support opt-out labels for extended tests
+  * test: speed up t/25-cache-service.t
+  * fix(deps): align MCP version requirement
+  * feat(docs): Improve openqa-cli documentation
+  * test: Ensure the `relevantfilter` is in the right state
+
+-------------------------------------------------------------------
+Sun Oct 18 11:38:21 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792323491.fd999d95:
+  * feat(container): Install swtpm in the worker image
+
+-------------------------------------------------------------------
 Sun Oct 18 08:38:52 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1792312714.72310e70:

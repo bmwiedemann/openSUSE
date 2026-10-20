@@ -73,7 +73,7 @@
 # The following line is generated from dependencies.yaml
 %define worker_requires bsdtar openQA-client optipng os-autoinst perl(Capture::Tiny) perl(File::Map) perl(Minion::Backend::SQLite) >= 5.0.7 perl(Mojo::IOLoop::ReadWriteProcess) >= 0.26 perl(Mojo::SQLite) psmisc sqlite3 >= 3.24.0
 # The following line is generated from dependencies.yaml
-%define mcp_requires perl(MCP) >= 0.80.0
+%define mcp_requires perl(MCP) >= 0.15.0
 %if 0%{?suse_version} < 1570
 # SLE <= 15 has older Perl not providing a sufficiently recent
 # ExtUtils::ParseXS needed by ExtUtils::CppGuess
@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1792312714.72310e70
+Version:        5.1792422872.0ae0959e
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other
