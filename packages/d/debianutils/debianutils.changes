@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 18 11:00:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.24:
+  * run-parts: new --after and --before options for greater
+    flexibility, short option for --debug, documented --stdin
+  * run-parts: forward the last exit code to preserve exit status
+  * run-parts: fix failure on empty directories, error messages
+    now go to stderr
+  * update-shells: fix duplicated entries in special cases
+  * ischroot: no longer claims it cannot run as non-root
+- Run autoreconf at build time and require po4a: 5.24 ships
+  no generated configure and builds translated man pages
+- Spec cleanup (spec-cleaner pass)
+- Switch Source to debianutils_5.24.tar.xz, upstream is a native
+  package without a separate .orig tarball now; remove
+  debianutils_5.4.orig.tar.xz
+
+-------------------------------------------------------------------
 Tue Mar 14 20:58:02 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Move run-parts to /usr/bin, Run-parts runs just fast as regular user.
