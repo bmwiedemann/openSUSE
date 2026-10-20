@@ -19,7 +19,7 @@
 %define api_ver 5
 
 Name:           libgedit-amtk
-Version:        5.10.0
+Version:        5.11.0
 Release:        0
 Summary:        An Actions, Menus and Toolbars Kit
 License:        LGPL-3.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 
 %description
 “Actions, Menus and Toolbars Kit” or just AMTK is a basic

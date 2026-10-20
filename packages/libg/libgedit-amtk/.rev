@@ -61,4 +61,23 @@
     imported from libgedit-gtksourceview.</comment>
     <requestid>1354189</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eebd298720dfcd9894abd4826f94f1bb</srcmd5>
+    <version>5.11.0</version>
+    <time>1792493837</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.11.0:
+  * Factory: add create_model_button*() functions for creating
+    GtkModelButton's.
+  * Test-headerbar:
+    + Demo for creating a GtkPopoverMenu with GtkModelButton's, and comment out
+      the GMenuModel creation (GtkPopoverMenu is more flexible).
+    + Demo of iconic buttons with tooltips, linked horizontally and placed in
+      the GtkPopoverMenu.
+  * Don't annotate get_type() functions with G_GNUC_CONST.
+  * Updated translations.
+
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1386366</requestid>
+  </revision>
 </revisionlist>
