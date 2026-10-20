@@ -65,4 +65,12 @@
 - Remove support-python-314.patch: fixed upstream.</comment>
     <requestid>1344505</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a4a48a33cafd0d7253e62e1f2d577bcf</srcmd5>
+    <version>2.4.0</version>
+    <time>1792492816</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386240</requestid>
+  </revision>
 </revisionlist>

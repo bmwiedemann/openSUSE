@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:14:56 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 2.4.0:
+  * Added a ``key`` parameter for custom cache key computation.
+  * Fixed a ``NameError`` when decorating functions whose
+    annotations refer to names defined later, on Python 3.14.
+  * On Python 3.14, cached functions expose ``__annotate__``
+    instead of ``__annotations__``, as ``functools.lru_cache``
+    wrappers do.
+
+-------------------------------------------------------------------
 Fri Apr  3 17:00:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:
