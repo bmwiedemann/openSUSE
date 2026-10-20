@@ -16,10 +16,9 @@
 #
 
 
-%define api_ver 50
-
+%define api_ver 51
 Name:           gedit
-Version:        50.0
+Version:        51.0
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
@@ -28,7 +27,6 @@ URL:            https://gedit-text-editor.org
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
-
 BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -47,18 +45,26 @@ BuildRequires:  pkgconfig(gspell-1) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libgedit-amtk-5)
 BuildRequires:  pkgconfig(libgedit-gtksourceview-300)
-BuildRequires:  pkgconfig(libgedit-tepl-6) >= 6.14.0
+BuildRequires:  pkgconfig(libgedit-tepl-6) >= 6.15
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(vapigen) >= 0.25.1
 BuildRequires:  pkgconfig(x11)
-Recommends:     iso-codes
-Provides:       gedit2 = %{version}
-Obsoletes:      gedit2 < %{version}
 # Throws "Settings schema 'org.gnome.desktop.interface' is not installed"
 #   in WSLg without this; see boo#1198312
 Requires:       gsettings-desktop-schemas
+Recommends:     iso-codes
+Provides:       gedit2 = %{version}
+Obsoletes:      gedit2 < %{version}
+Provides:       gedit-plugin-bookmarks = %{version}
+Obsoletes:      gedit-plugin-bookmarks < %{version}
+Provides:       gedit-plugin-drawspaces = %{version}
+Obsoletes:      gedit-plugin-drawspaces < %{version}
+Provides:       gedit-plugin-smartspaces = %{version}
+Obsoletes:      gedit-plugin-smartspaces < %{version}
+Provides:       gedit-plugin-wordcompletion = %{version}
+Obsoletes:      gedit-plugin-wordcompletion < %{version}
 Obsoletes:      python3-gedit < 48.2
 
 %description
@@ -107,6 +113,7 @@ This subpackage contains the header files for creating gedit plugins.
 %doc NEWS README.md
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/gedit
+%{_mandir}/man1/gedit.1%{?ext_man}
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.gnome.gedit.service
 # %%{_datadir}/gedit/gir-1.0/ lives in -devel
@@ -114,11 +121,13 @@ This subpackage contains the header files for creating gedit plugins.
 %{_datadir}/gedit/
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.drawspaces.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.filebrowser.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.filebrowser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.spell.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.wordcompletion.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/metainfo/org.gnome.gedit.metainfo.xml
 %dir %{_libdir}/gedit/
@@ -126,26 +135,32 @@ This subpackage contains the header files for creating gedit plugins.
 %{_libdir}/gedit/girepository-1.0/
 %dir %{_libdir}/gedit/plugins/
 # Explicitly list plugins so we know when we miss one
+%{_libdir}/gedit/plugins/bookmarks.plugin
 %{_libdir}/gedit/plugins/codecomment.plugin
-%{_libdir}/gedit/plugins/libcodecomment.so
 %{_libdir}/gedit/plugins/docinfo.plugin
-%{_libdir}/gedit/plugins/libdocinfo.so
+%{_libdir}/gedit/plugins/drawspaces.plugin
 %{_libdir}/gedit/plugins/filebrowser.plugin
+%{_libdir}/gedit/plugins/libbookmarks.so
+%{_libdir}/gedit/plugins/libcodecomment.so
+%{_libdir}/gedit/plugins/libdocinfo.so
+%{_libdir}/gedit/plugins/libdrawspaces.so
 %{_libdir}/gedit/plugins/libfilebrowser.so
-%{_libdir}/gedit/plugins/modelines.plugin
 %{_libdir}/gedit/plugins/libmodelines.so
-%{_libdir}/gedit/plugins/libtextsize.so
-%{_libdir}/gedit/plugins/textsize.plugin
-%{_libdir}/gedit/plugins/sort.plugin
-%{_libdir}/gedit/plugins/libsort.so
-%{_libdir}/gedit/plugins/spell.plugin
-%{_libdir}/gedit/plugins/libspell.so
-%{_libdir}/gedit/plugins/time.plugin
-%{_libdir}/gedit/plugins/libtime.so
-%{_libdir}/gedit/plugins/quickhighlight.plugin
-
 %{_libdir}/gedit/plugins/libquickhighlight.so
-%{_mandir}/man1/gedit.1%{?ext_man}
+%{_libdir}/gedit/plugins/libsmartspaces.so
+%{_libdir}/gedit/plugins/libsort.so
+%{_libdir}/gedit/plugins/libspell.so
+%{_libdir}/gedit/plugins/libtextsize.so
+%{_libdir}/gedit/plugins/libtime.so
+%{_libdir}/gedit/plugins/libwordcompletion.so
+%{_libdir}/gedit/plugins/modelines.plugin
+%{_libdir}/gedit/plugins/quickhighlight.plugin
+%{_libdir}/gedit/plugins/smartspaces.plugin
+%{_libdir}/gedit/plugins/sort.plugin
+%{_libdir}/gedit/plugins/spell.plugin
+%{_libdir}/gedit/plugins/textsize.plugin
+%{_libdir}/gedit/plugins/time.plugin
+%{_libdir}/gedit/plugins/wordcompletion.plugin
 
 %files devel
 %doc CONTRIBUTING.md

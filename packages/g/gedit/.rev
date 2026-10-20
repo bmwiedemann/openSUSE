@@ -1316,4 +1316,32 @@ Pushing GNOME 45.rc packages</comment>
   + Updated translations.</comment>
     <requestid>1354187</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>a50bf70351ef706471ef4d991a162394</srcmd5>
+    <version>51.0</version>
+    <time>1792493836</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.0:
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+- Update to version 51.alpha1:
+  * News in 51.alpha1:
+    + Copy the plugins from the gedit-plugins repository: Word Completion,
+      Smart Spaces, Draw Spaces and Bookmarks. The gedit-plugins repository
+      will be archived.
+    + Guidelines: no LLM AI tools.
+    + Replace git submodule of libgd by a simple copy of the needed sources.
+    + Adapt the code after libgedit API changes.
+    + MacOS: small build simplification.
+    + Don't annotate get_type() functions with G_GNUC_CONST.
+    + Small improvements here and there.
+  * Updated translations.
+- Provide/Obsolete the merged plugin packages: gedit-plugin-bookmarks,
+  gedit-plugin-drawspaces, gedit-plugin-smartspaces, and
+  gedit-plugin-wordcompletion.
+
+- Replace pkgconfig(gtksourceview-4) with</comment>
+    <requestid>1386365</requestid>
+  </revision>
 </revisionlist>

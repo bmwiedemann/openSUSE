@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 19 07:33:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Thu Oct  8 06:16:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.alpha1:
+  * News in 51.alpha1:
+    + Copy the plugins from the gedit-plugins repository: Word Completion,
+      Smart Spaces, Draw Spaces and Bookmarks. The gedit-plugins repository
+      will be archived.
+    + Guidelines: no LLM AI tools.
+    + Replace git submodule of libgd by a simple copy of the needed sources.
+    + Adapt the code after libgedit API changes.
+    + MacOS: small build simplification.
+    + Don't annotate get_type() functions with G_GNUC_CONST.
+    + Small improvements here and there.
+  * Updated translations.
+- Provide/Obsolete the merged plugin packages: gedit-plugin-bookmarks,
+  gedit-plugin-drawspaces, gedit-plugin-smartspaces, and
+  gedit-plugin-wordcompletion.
+
+-------------------------------------------------------------------
 Thu May 14 15:30:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.0:
@@ -104,7 +130,7 @@ Fri Mar 14 20:22:26 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop hard gtksourceview-devel Requires: Not needed and wrong
   devel package.
-- Replace pkgconfig(gtksourceview-4) with 
+- Replace pkgconfig(gtksourceview-4) with
   pkgconfig(libgedit-gtksourceview-300) BuildRequires: This is what
   gedit really depends on.
 
