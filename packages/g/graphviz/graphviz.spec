@@ -302,7 +302,7 @@ Group:          System/Libraries
 
 %description -n libgvc%{gvc_soversion}
 libgvc provides a context for applications wishing to manipulate and render
-graphs. It provides a command line parsing, common rendering code, and a
+graphs. It provides command line parsing, common rendering code, and a
 plugin mechanism for renderers.
 
 %package -n libgvpr%{gvpr_soversion}
@@ -311,7 +311,7 @@ Group:          System/Libraries
 
 %description -n libgvpr%{gvpr_soversion}
 The gvpr library allows an application to perform general-purpose graph
-manipulation and filtering based on an awk-like language
+manipulation and filtering based on an awk-like language.
 
 %package -n libpathplan%{pathplan_soversion}
 Summary:        Library for finding smooth shortest paths
@@ -319,7 +319,7 @@ Group:          System/Libraries
 
 %description -n libpathplan%{pathplan_soversion}
 The pathplan library contains functions for finding shortest paths in polygons
-in fitting bezier curves to those paths.
+and fitting bezier curves to those paths.
 
 %package -n libxdot%{xdot_soversion}
 Summary:        Library for parsing and deparsing of xdot operations
@@ -439,7 +439,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot}/%{_libdir}/graphviz/ -name "libgvplugin_*.so" -print -delete
 
 mkdir -p %{buildroot}/%{_docdir}
-mkdir -p %{buildroot}%{_datadir}/%{nmame}
 
 rm -f %{buildroot}/%{_libdir}/%{mname}/pkgIndex.tcl
 

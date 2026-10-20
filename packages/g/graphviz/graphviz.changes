@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 17 08:56:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- remove weirdly named nmame directory
+
+-------------------------------------------------------------------
 Tue Oct  6 10:00:00 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Update to 16.1.0 (see /usr/share/doc/packages/graphviz/ChangeLog for full
@@ -342,7 +347,7 @@ Wed Nov 24 21:32:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
   - CMake build system incorrectly aliases gv2gml to gml2gv
   - Gv2gml Doesn't escape quotes in attributes
   - GVPR incorrectly understands color schemes
-- reenable lefty to fix addons build 
+- reenable lefty to fix addons build
 
 -------------------------------------------------------------------
 Wed Oct 27 17:45:57 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
@@ -632,7 +637,7 @@ Thu Dec 31 14:30:11 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
   * some allocation failures that could previously allow memory
     corruption now exit
   * lab_gamut.3.pdf is no longer included in release archives
-  * Fixed Neato's hier mode is broken since v2.44.0  
+  * Fixed Neato's hier mode is broken since v2.44.0
   * Fixed segmentation fault (core dumped)
   * New SGD mode in neato
   * Add pkg-config files
@@ -640,14 +645,14 @@ Thu Dec 31 14:30:11 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
   * Workaround: avoid creating a virtual edge loop.
   * Add riscv64 to host_cpu configure.ac
   * lib/cgraph: include empty malloc.h from subdir include
-  * lib/gvpr: compile mkdefs with $(HOSTCC) rather than $(CC) 
+  * lib/gvpr: compile mkdefs with $(HOSTCC) rather than $(CC)
   * lib/vpsc: rename bcopy->b_copy
   * Fixed the NativeCodeAnalysis task failed unexpectedly.
   * Include all test files in distro
   * host_cpu add mips64 platform
   * Correct description of 'port' syntax in manual
   * svg output displays TITLE of %3 if graph had no name
-  * XML errors in generated SVG when URL attribute contains 
+  * XML errors in generated SVG when URL attribute contains
     ampersand (&)
   * Test files missing from source distributions
   * SVG error for "g.transform.scale " in graphviz version 2.43
