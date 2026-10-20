@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 16 07:05:31 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.7.10
+  + Check FDE_LUKS_PBKDF and set iterations accordingly
+  + Preserve well-known password in LUKS when used to regenerate
+    key (bsc#1284427)
+
+-------------------------------------------------------------------
 Mon Sep 21 07:03:14 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.7.9

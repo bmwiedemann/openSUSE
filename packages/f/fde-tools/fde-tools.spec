@@ -21,7 +21,7 @@
 %endif
 
 Name:           fde-tools
-Version:        0.7.9
+Version:        0.7.10
 Release:        0
 Summary:        Tools required for Full Disk Encryption
 License:        GPL-2.0-only
