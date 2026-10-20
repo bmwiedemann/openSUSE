@@ -16,8 +16,6 @@
 #
 
 
-%{!?gobuild:%global gobuild go build}
-
 %global provider        github
 %global provider_tld    com
 %global project         QubitProducts
@@ -40,31 +38,17 @@ Source3:        prometheus-exporter_exporter.service
 # Coreutils required for deterministic Build ID generation (sha1sum, cat)
 BuildRequires:  coreutils
 
-%if 0%{?suse_version} || 0%{?rhel} >= 8
 BuildRequires:  fdupes
-BuildRequires:  golang-packaging
-%endif
 %if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
 BuildRequires:  gcc11-c++
 %endif
-%if 0%{?suse_version}
 BuildRequires:  golang(API) >= 1.23
-%else
-BuildRequires:  golang >= 1.14
-%endif
-%if 0%{?suse_version}
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
 ExcludeArch:    s390
-%endif
 %{?systemd_ordering}
 
-%if 0%{?suse_version}
-%{go_nostrip}
-%{go_provides}
-%endif
-
-%if 0%{?debian} || 0%{?ubuntu}
+%if ! 0%{?suse_version}
 ExclusiveArch:  do_not_build
 %endif
 
@@ -75,12 +59,6 @@ Reverse proxy designed for Prometheus exporters
 %autosetup -a1 -n %{repo}-%{version}
 
 %build
-# Define common Linker Flags
-# -compressdwarf=false is required to fix the "Empty file .../debugsourcefiles.list" error on older rpmbuild tools
-export GO_LDFLAGS="-v -buildmode=pie -compressdwarf=false"
-
-%if 0%{?suse_version} || 0%{?rhel} >= 8
-%goprep %{import_path}
 %ifarch s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
 export CGO_ENABLED=1
 %if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
@@ -88,21 +66,10 @@ export CC=gcc-11
 export CXX=g++-11
 %endif
 %endif
-%gobuild --mod=vendor -ldflags "$GO_LDFLAGS" ...
-%else
-# Legacy logic: Generate and inject Deterministic Build ID
-BUILD_ID=$(cat %{_sourcedir}/%{SOURCE0} %{_sourcedir}/%{SOURCE1} | sha1sum | awk '{print $1}')
-go build -mod=vendor -ldflags "$GO_LDFLAGS -B 0x$BUILD_ID" -o %{repo}
-%endif
+go build
 
 %install
-# Binary
-%if 0%{?suse_version} || 0%{?rhel} >= 8
-%goinstall
-%else
-install -m 0755 -vd %{buildroot}%{_bindir}
-install -m 0755 -vp %{repo} %{buildroot}%{_bindir}/
-%endif
+install -D -m 0755 %{repo} %{buildroot}/%{_bindir}/%{repo}
 
 # Service
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/prometheus-exporter_exporter.service
@@ -111,43 +78,25 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/prometheus-exporter_export
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/%{repo}.yaml
 install -d -m 0755 %{buildroot}%{_sysconfdir}/%{repo}.d
 
-%if 0%{?suse_version} || 0%{?rhel} >= 8
-  %fdupes %{buildroot}/%{_prefix}
-%endif
+%fdupes %{buildroot}/%{_prefix}
 
 %check
-%if 0%{?suse_version} || 0%{?rhel} >= 8
-  %gotest --mod=vendor "" ...
-%endif
+./%{repo} --help
 
 %pre
-%if 0%{?suse_version}
-  %service_add_pre prometheus-exporter_exporter.service
-%endif
+%service_add_pre prometheus-exporter_exporter.service
 getent group prometheus >/dev/null || %{_sbindir}/groupadd -r prometheus
 getent passwd prometheus >/dev/null || %{_sbindir}/useradd -r -g prometheus -d %{_localstatedir}/lib/prometheus -M -s /sbin/nologin prometheus
 
 %post
-%if 0%{?suse_version}
-  %service_add_post prometheus-exporter_exporter.service
-  %fillup_only -n prometheus-exporter_exporter
-%else
-  %systemd_post prometheus-exporter_exporter.service
-%endif
+%service_add_post prometheus-exporter_exporter.service
+%fillup_only -n prometheus-exporter_exporter
 
 %preun
-%if 0%{?suse_version}
-  %service_del_preun prometheus-exporter_exporter.service
-%else
-  %systemd_preun prometheus-exporter_exporter.service
-%endif
+%service_del_preun prometheus-exporter_exporter.service
 
 %postun
-%if 0%{?suse_version}
-  %service_del_postun prometheus-exporter_exporter.service
-%else
-  %systemd_postun prometheus-exporter_exporter.service
-%endif
+%systemd_postun prometheus-exporter_exporter.service
 
 %files
 %{!?_licensedir:%global license %doc}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 12 13:29:35 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not build on EL
+- Drop golang-packaging
+
+-------------------------------------------------------------------
 Mon Apr 27 07:55:06 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2022-21698: Replace github.com/prometheus/client_golang with
