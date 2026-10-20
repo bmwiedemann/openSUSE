@@ -17,7 +17,7 @@
 
 
 Name:           helm
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -114,7 +114,7 @@ mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/helm completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
 %{buildroot}/%{_bindir}/helm completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
-mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d
 %{buildroot}/%{_bindir}/helm completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %check

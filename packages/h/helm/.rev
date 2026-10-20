@@ -1391,4 +1391,36 @@ changes the CVE reference from the (what was previously the helm bug and is now 
     excessive CPU consumption from repeated initial window changes</comment>
     <requestid>1384685</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>a197e05990b388504f15501c65a2168d</srcmd5>
+    <version>4.3.1</version>
+    <time>1792492610</time>
+    <user>anag_factory</user>
+    <comment>- fix up vendor.tar replacements
+
+- update to 4.3.1:
+  * chore(deps): bump otlploghttp and stdoutlog to v0.21.0 c0d08d0
+  * chore(deps): bump the k8s-io group across 1 directory with 7
+    updates 0c0146e
+  * fix: bump golang.org/x/net to v0.61.0
+  * fix(linters): update golangci-lint to v2.14.0
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.25.1 to
+    0.25.2
+  * chore(deps): bump sigs.k8s.io/kustomize/kyaml from 0.21.1 to
+    0.21.2
+  * chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc
+    ab6b245
+  * chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+  * chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+  * chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace
+  * chore(deps): bump go.opentelemetry.io/otel/sdk from 1.44.0 to
+    1.45.0
+
+- fix typo in install section</comment>
+    <requestid>1386089</requestid>
+  </revision>
 </revisionlist>

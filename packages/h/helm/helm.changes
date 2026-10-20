@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Oct 18 21:46:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix up vendor.tar replacements
+
+-------------------------------------------------------------------
+Fri Oct 16 05:11:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.3.1:
+  * chore(deps): bump otlploghttp and stdoutlog to v0.21.0 c0d08d0
+  * chore(deps): bump the k8s-io group across 1 directory with 7
+    updates 0c0146e
+  * fix: bump golang.org/x/net to v0.61.0
+  * fix(linters): update golangci-lint to v2.14.0
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.25.1 to
+    0.25.2
+  * chore(deps): bump sigs.k8s.io/kustomize/kyaml from 0.21.1 to
+    0.21.2
+  * chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc
+    ab6b245
+  * chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+  * chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+  * chore(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace
+  * chore(deps): bump go.opentelemetry.io/otel/sdk from 1.44.0 to
+    1.45.0
+
+-------------------------------------------------------------------
+Wed Oct 14 08:03:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix typo in install section
+
+-------------------------------------------------------------------
 Tue Oct 13 21:18:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to address:
