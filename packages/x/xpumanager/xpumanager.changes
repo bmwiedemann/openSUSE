@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Mon Oct 19 20:33:09 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 2.3.0
+  * xpu-smi ps no longer attributes processes to every GPU merely because Level Zero initialized on each enumerated device; a process is now attributed only to GPUs on which it has engine activity
+  * xpu-smi ps per-process GPU memory now counts device-local VRAM only, excluding GTT-mapped system memory that previously inflated usage reported for metric-streaming processes by approximately 186 MiB
+  * xpu-smi ps retries reading the process list when a process starts concurrently, instead of skipping the list with an error
+  * xpu-smi [ --query-gpu | dump | stats | discovery ] now reads engine utilization and engine counts from DRM fdinfo on Linux instead of Sysman engine counters, avoiding media GT wakeups and workload slowdowns of up to approximately 25 percent while xpu-smi was running
+  * Set XPU_SMI_SYSMAN_ENGINE_UTIL=1 to use Sysman engine counters instead, for example in containers where fdinfo only exposes processes belonging to the container
+  * xpu-smi stats no longer reports per-engine-instance utilization or per-tile utilization on multi-tile devices from fdinfo
+  * xpu-smi discovery now reports media engine counts correctly for non-root users
+  * xpu-smi [ --query-gpu | dump ] samples metrics only when requested, avoiding unnecessary EU metric collection overhead
+  * xpu-smi [ --query-gpu | dump ] now reports pci.sub_device_id as the PCI subsystem device ID shown by lspci, rather than the Sysman board number; the value is N/A on Windows
+  * xpu-smi [ --query-gpu | dump ] ECC and RAS counters now use the same error categories as xpu-smi stats -r, report N/A when no categories are exposed, and include all hardware error categories in ecc.errors.* totals instead of cache errors only
+  * xpu-smi [ --query-gpu | dump ] ecc.mode.current now falls back to the core device ECC flag, matching discovery and config output
+  * xpu-smi [ --query-gpu | dump ] memory.bandwidth.utilization is now rounded to two decimal places
+  * xpu-smi [ --query-gpu | dump | discovery ] now reports a consistent serial number resolved through Sysman, AMC, then IGSC
+  * xpu-smi discovery now reports the SKU type, or N/A if the firmware query fails, and reports GFX firmware status as unknown when the firmware version cannot be read
+  * xpu-smi stats now reports GPU Memory Used (MiB) and GPU Memory Util (%) on integrated GPUs instead of always N/A
+  * xpu-smi vgpu now falls back to debugfs on kernels without the sriov_admin interface, including kernels before 7.1
+  * xpu-smi updatefw now uses a lock in root-owned /run/xpum on Linux and an administrator-only namespace on Windows, instead of a world-writable directory
+  * xpu-smi updatefw now requires root or administrator privileges and returns an error if a firmware image contains no components valid for the target device
+  * xpu-smi amc now correctly parses PDR records spanning multiple MCTP packets and locates AMC responses that do not start at the beginning of the receive buffer
+  * xpu-smi amc --sensor now includes VR VCCGT temperature, input power, input voltage and input current (sensor IDs 3-6), and card average power (sensor ID 85)
+  * xpu-smi amc help now displays --gpureset instead of --gpuReset
+  * xpu-smi [ -h | help | amc | listpciinfo | log ] no longer requires Level Zero initialization and works when Level Zero is missing or fails to initialize
+  * xpu-smi no longer logs an error when the OPROM version cannot be read
+  * Add in-place summary view refresh with xpu-smi [ --loop <int> | --loop-ms <int> ] [ --count <int> ], removing the need for external loop or watch commands
+  * xpu-smi ps now reports per-process engine utilization (Cmp%, Rnd%, Med%, Cpy%) without root, EUAct% and EUStl% when CAP_PERFMON is available, and a Type column identifying Compute, Graphic, Media, Copy or Mixed engine usage
+  * xpu-smi --query-gpu now reports compute, render, media and copy engine utilization without root
+  * xpu-smi stats and dump now report GPU composite temperature, available in dump as temperature.composite
+  * xpu-smi discovery and the banner now report UMD Version and KMD Version instead of Driver Version and the srcversion-based Kernel Driver Version
+  * UMD Version identifies the Level Zero user-mode driver release; KMD Version identifies the kernel-mode driver release
+  * KMD Version is reported only by the out-of-tree DKMS driver; with the in-tree driver it is omitted from text output and the JSON kernel_driver_version key is omitted
+  * xpu-smi updatefw now updates VR firmware in-band through AMC when using composite firmware packages
+- Update to version 2.2.0
+  * xpu-smi stats GPU utilization now reports the busiest engine rather than the average across all engines; a compute-only workload on a multi-engine device (e.g. Arc Pro B70) previously read ~11% instead of 100%
+  * xpu-smi [ --query-gpu | dump --metrics ] energy.consumed (Card Energy Consumed) was previously read from the GPU power domain, which not every platform enumerates, causing N/A on hardware that does have a usable energy counter; it now reads the card-domain counter consistently. Added energy.consumed.gpu for the GPU-domain value
+  * xpu-smi stats offline memory page values are now printed and failure is reported honestly instead of silently
+  * xpu-smi dump metric values are no longer truncated when column-aligned output is used
+  * xpu-smi stats PCIe read/write throughput now reports 0.0 for an inactive link instead of N/A
+  * xpu-smi raslog non-destructive peek is now the default; use --drain to consume and clear records from the hardware buffer (previously every invocation drained the buffer)
+  * xpu-smi vgpu -l -d <device> no longer fails on kernels that use the older VRAM debugfs path
+  * xpu-smi discovery PCH SKU type is now read from firmware rather than returning a hardcoded string
+  * xpu-smi RATL throttle reason is now mapped to a PSU alert event
+  * xpu-smi config reset -d <bdf> no longer causes a host crash when active VFs are present
+  * xpu-smi part number field is now only shown in discovery output when AMC is present
+  * xpu-smi CPU affinity column now wraps correctly for devices with many cores
+  * xpu-smi --display section list is now generated from the group table, fixing missing sections
+  * xpu-smi fwupdate GFX data firmware update is now applied correctly
+  * Resolved a false-positive linker warning with GCC 13.1 and LTO
+  * xpu-smi raslog new command reads CPER (Common Platform Error Record) hardware error logs via the Level Zero sysman InfoLog extension (ZES_intel_experimental_driver_info_logs)
+    Default (peek) behaviour reads records without draining them; use --drain --file <path> to consume and persist
+  * xpu-smi crashlog new command drives the Intel Crash Log CLI (iclg) for platform crash log management: enable, disable, trigger, clear, extract, and decode, selecting a device by index (-d)
+  * xpu-smi config now supports setting a device health status; the configured status is reflected in xpu-smi stats output
+  * xpu-smi discovery now reports TDP information, memory vendor, fine-grained video memory specification, GFX Data firmware version, and kernel-mode driver srcversion
+  * xpu-smi topology PCIe switches are now detected dynamically via PCIe port type; PCIe Gen 5 switch IDs are included in the fallback PCI database
+  * PLDM type 5 extraction is now supported for unwrapping GPU firmware update binaries
+
+-------------------------------------------------------------------
+Thu Aug 13 21:32:05 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Initial creation of the package at version v2.1.0
