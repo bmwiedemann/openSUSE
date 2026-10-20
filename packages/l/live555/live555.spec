@@ -18,13 +18,11 @@
 
 
 %define lmdmaj 120
-
 Name:           live555
-Version:        2026.10.13
+Version:        2026.10.17
 Release:        0
 Summary:        LIVE555 Streaming Media
 License:        LGPL-2.1-only
-Group:          System/Libraries
 URL:            http://www.live555.com/liveMedia/
 Source:         https://download.live555.com/live.%{version}.tar.gz
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
@@ -40,7 +38,6 @@ can be used to build streaming applications
 
 %package -n libliveMedia%{lmdmaj}
 Summary:        Basic Usage Environment library of live555 streaming media
-Group:          System/Libraries
 
 %description -n libliveMedia%{lmdmaj}
 This code forms a set of C++ libraries for multimedia streaming,
@@ -49,7 +46,6 @@ can be used to build streaming applications
 
 %package -n libBasicUsageEnvironment2
 Summary:        Basic Usage Environment library of live555 streaming media
-Group:          System/Libraries
 
 %description -n libBasicUsageEnvironment2
 This code forms a set of C++ libraries for multimedia streaming,
@@ -58,7 +54,6 @@ can be used to build streaming applications
 
 %package -n libgroupsock33
 Summary:        Group sock library of live555 streaming media
-Group:          System/Libraries
 
 %description -n libgroupsock33
 This code forms a set of C++ libraries for multimedia streaming,
@@ -67,7 +62,6 @@ can be used to build streaming applications
 
 %package -n libUsageEnvironment3
 Summary:        Usage Environment library of live555 streaming media
-Group:          System/Libraries
 
 %description  -n libUsageEnvironment3
 This code forms a set of C++ libraries for multimedia streaming,
@@ -76,7 +70,6 @@ can be used to build streaming applications
 
 %package devel
 Summary:        LIVE555 Streaming Media
-Group:          Development/Languages/C and C++
 Requires:       libBasicUsageEnvironment2 = %{version}
 Requires:       libUsageEnvironment3 = %{version}
 Requires:       libgroupsock33 = %{version}
@@ -109,7 +102,7 @@ export CPPFLAGS="%{optflags}"
 export CXXFLAGS="-std=c++20 %{optflags}"
 %endif
 ./genMakefiles linux-with-shared-libraries
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install PREFIX=%{_prefix} LIBDIR=%{_libdir}
