@@ -51,4 +51,12 @@
   * Allow disabled eager loading with EAGER_IMPORT=0 (#166).</comment>
     <requestid>1339147</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>274521f05f95d2e5be3ff9ff99a646d5</srcmd5>
+    <version>0.6</version>
+    <time>1792492817</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386241</requestid>
+  </revision>
 </revisionlist>

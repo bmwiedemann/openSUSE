@@ -17,18 +17,20 @@
 
 
 Name:           python-lazy-loader
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        Populate library namespace without incurring immediate import costs
 License:        BSD-3-Clause
-URL:            https://github.com/scientific-python/lazy_loader
+URL:            https://github.com/scientific-python/lazy-loader
 Source:         https://files.pythonhosted.org/packages/source/l/lazy_loader/lazy_loader-%{version}.tar.gz
 BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging
 Provides:       python-lazy_loader = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
