@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 18 18:05:11 UTC 2026 - jan gaza <jangaza@proton.me>
+
+- Update to version 0.2026.10.12b:
+  * Added support for Minecraft 26.3
+  * Added support for raw input sensitivity multiplier
+  * Added waywall.set_raw_sensitivity to the Lua API
+  * Subprocesses are now killed with SIGTERM instead of SIGKILL
+  * Added logging for XDG_SESSION_DESKTOP
+  * Fixed crashes when using River 0.4 and Jay compositors
+  * Fixed MCSR Launcher instances not being recognized
+  * Fixed a crash when spawned subprocesses exit on NVIDIA systems
+  * Fixed a crash when the same coroutine resumes more than once
+
+-------------------------------------------------------------------
 Fri Jun 19 12:59:19 UTC 2026 - jan gaza <jangaza@proton.me>
 
 - Update to version 0.2026.06.13
