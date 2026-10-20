@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct 12 00:47:22 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.11.2:
+  * chore: bump version to 0.11.2
+  * chore(deps): bump taiki-e/install-action from 2.87.9 to 2.87.13 (#385)
+  * chore(deps): bump crate-ci/typos from 1.50.1 to 1.50.2 (#384)
+  * chore(deps): bump codecov/codecov-action from 7.0.0 to 7.1.1 (#386)
+  * fix: add handling for optional fileapi fields (#383)
+  * chore(deps): bump zizmorcore/zizmor-action from 0.6.3 to 0.6.4
+  * chore(deps): bump taiki-e/install-action from 2.87.4 to 2.87.9
+  * fix: even cmake is not found, buildin_commands generates resolve: https://github.com/neocmakelsp/neocmakelsp/issues/382
+  * chore: make the color ansi less
+  * chore: fmt fix
+  * fix: clippy failed
+  * chore: return exitcode
+  * feat: add basic highlight
+  * fix: clippy problem
+  * feat: use similar to show the changes
+  * chore: update completions
+  * chore: bump deps
+  * chore(deps): bump crate-ci/typos from 1.49.0 to 1.50.1
+  * chore(deps): bump tree-sitter from 0.26.8 to 0.26.13
+  * chore(deps): bump taiki-e/install-action from 2.86.8 to 2.87.4
+  * chore(deps): bump zizmorcore/zizmor-action from 0.6.2 to 0.6.3
+  * chore(deps): bump taiki-e/install-action from 2.86.3 to 2.86.8
+  * chore(deps): bump taiki-e/install-action from 2.86.1 to 2.86.3
+
+-------------------------------------------------------------------
 Wed Sep 16 17:38:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.1:

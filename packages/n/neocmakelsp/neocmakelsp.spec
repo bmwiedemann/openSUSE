@@ -17,7 +17,7 @@
 
 
 Name:           neocmakelsp
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        CMake LSP implementation based on Tower and Tree-sitter
 # Legal-Review-Notice: neocmakelsp itself is MIT. The shipped binary
