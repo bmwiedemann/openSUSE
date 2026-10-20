@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 19 04:58:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.3:
+  * Fixes
+    - Update kubecolor to v0.8.0 to support gradient config in #275
+  * Dependencies
+    - Bump github.com/knadh/koanf/providers/posflag from 1.0.1 to
+      1.0.2 in #254
+    - Bump the all group with 11 updates in #256
+    - Bump github.com/knadh/koanf/v2 from 2.3.5 to 2.3.6 in #255
+    - Bump the all group with 3 updates in #258
+    - Bump the all group with 3 updates in #264
+    - Bump k8s.io/kubectl from 0.36.3 to 0.37.0 in #261
+    - Bump the all group across 1 directory with 5 updates in #267
+    - Bump the all group with 2 updates in #268
+    - Bump k8s.io/client-go from 0.37.0 to 0.37.1 in #273
+    - Bump the all group with 5 updates in #274
+    - Update Go 1.26.5 => 1.27.2 & golang.org/x/net v0.57.0 =>
+      v0.61.0 in #276
+    - Bump k8s.io/cli-runtime from 0.37.0 to 0.37.1 in #271
+    - Bump k8s.io/kubectl from 0.37.0 to 0.37.1 in #272
+  * Other
+    - Update README.md in #253
+
+-------------------------------------------------------------------
 Mon Aug 10 05:06:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.2:
