@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:53:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.1:
+  * Migrate to GTK 4 with modernized dialogs and a combined
+    header bar
+  * Spell-check dialog text is now directly editable
+  * Allow overriding encoding and newlines when saving
+  * Follow the system-wide dark theme (GTK 4.20 or newer)
+  * Drop support for extensions; the custom-framerates extension
+    is replaced by the editor.custom_framerates config option
+  * Switch the integrated video player from gtksink to
+    gtk4paintablesink with a one-second preview offset
+  * Replace the gspell dependency with libspelling
+  * Raise minimum versions: Python 3.10, PyGObject 3.40, GTK 4.12,
+    GStreamer 1.18
+  * Fix theming related hang on startup with GTK 4.23.1
+  * Install via the new upstream Makefile; keep gaupol private
+    under /usr/share/gaupol with aeidon as a separate Python
+    package (keep gaupol-1.7-desktop.patch)
+  * Require charset-normalizer for aeidon (runtime encoding
+    detection); normalize the /usr/bin/gaupol shebang
+
+-------------------------------------------------------------------
+Sun May 17 13:48:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16:
+  * Two fixes for compatibility with Python 3.15, which can be
+    expected to be released around fall 2026. These have both been
+    deprecated for a while, but will be removed in 3.15.
+
+-------------------------------------------------------------------
+Fri May  1 01:26:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros to build and install.
+
+-------------------------------------------------------------------
 Sun Jun 23 20:14:42 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 1.15:
@@ -6,7 +42,7 @@ Sun Jun 23 20:14:42 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
     (gh#otsaloma/gaupol#224).
   * Drop dependency on chardet.
   * Add dependency on charset-normalizer.
-  * Raise Python dependency to >= 3.5. 
+  * Raise Python dependency to >= 3.5.
 
 -------------------------------------------------------------------
 Tue Apr  2 19:42:42 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
@@ -78,7 +114,7 @@ Thu Mar 25 16:11:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Mar 15 09:47:25 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
-- Do not delete zero-length header templates, they are needed by 
+- Do not delete zero-length header templates, they are needed by
   aeidon corresponding subclasses
 
 -------------------------------------------------------------------
@@ -274,7 +310,7 @@ Fri Jun 16 20:45:57 UTC 2017 - elchevive@opensuse.org
  * Only force theme variant if `dark_theme` in config file is
   `true`, thus respecting any global settings ([#753315][])
  * Make `GTK_THEME=Adwaita:dark gaupol` work correctly
- -rebase patch gaupol-0.17.1-destokp.patch 
+ -rebase patch gaupol-0.17.1-destokp.patch
 
 -------------------------------------------------------------------
 Mon May 18 12:40:06 UTC 2015 - elchevive@opensuse.org
