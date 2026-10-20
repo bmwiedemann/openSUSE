@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 25 10:14:57 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.510.0 (0.51)
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.51    2026-09-24
+          [CHANGES]
+           * Recognise the new undef-aware equality operators on Perl 5.45.3
+             onwards (PPC0030)
+
+-------------------------------------------------------------------
 Fri Sep 11 09:45:26 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.500.0 (0.50)
@@ -7,7 +18,7 @@ Fri Sep 11 09:45:26 UTC 2026 - Tina Müller <timueller+perl@suse.de>
   0.50    2026-09-10
           [BUGFIXES]
            * Use `SvROK` not `SvRV` to check for values being references
-             (CVE-2026-85644)
+             (CVE-2026-85644) bsc#1283247
            * Avoid putting #ifdef inside the arguments to `boolSV()`, that may
              itself be a macro (RT170453)
 

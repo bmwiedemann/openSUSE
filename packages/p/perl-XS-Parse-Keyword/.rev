@@ -220,4 +220,19 @@
              itself be a macro (RT170453)</comment>
     <requestid>1379453</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>44b292421145efa45cad7dd7feeddbb5</srcmd5>
+    <version>0.510.0</version>
+    <time>1792493827</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.510.0 (0.51)
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+  0.51    2026-09-24
+          [CHANGES]
+           * Recognise the new undef-aware equality operators on Perl 5.45.3
+             onwards (PPC0030)
+
+             (CVE-2026-85644) bsc#1283247</comment>
+    <requestid>1386346</requestid>
+  </revision>
 </revisionlist>
