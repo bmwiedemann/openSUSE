@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 19 05:11:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  * Features
+    - allow to select symbol sets used in TUI: NerdFont, Powerline
+      or Plain
+    - add read-only mode to the configuration (can be toggled with
+      Alt+Shift+R)
+    - allow direct switching between YAML, logs and describe views
+  * Bug Fixes
+    - scroll while selecting logs do not update bound to bottom
+      icon
+    - limit entries processed per tick to avoid UI freezing on
+      large directories
+
+-------------------------------------------------------------------
 Wed Oct 07 05:19:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.0:
