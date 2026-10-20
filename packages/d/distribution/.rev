@@ -333,4 +333,14 @@
   * build(deps): bump google.golang.org/grpc</comment>
     <requestid>1382481</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ba4f5f7afee46930ad79a67bcf0f541a</srcmd5>
+    <version>3.1.2</version>
+    <time>1792492622</time>
+    <user>anag_factory</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1285297, CVE-2026-78669: golang.org/x/net/http2: excessive
+    CPU consumption from repeated initial window changes</comment>
+    <requestid>1386092</requestid>
+  </revision>
 </revisionlist>
