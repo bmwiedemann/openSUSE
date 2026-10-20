@@ -1,7 +1,7 @@
 #
 # spec file for package os-prober
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           os-prober
-Version:        1.81
+Version:        1.85
 Release:        0
 Summary:        Probes disks on the system for installed operating systems
 License:        GPL-2.0-or-later
-Group:          System/Boot
 URL:            https://salsa.debian.org/installer-team/os-prober
 Source0:        https://salsa.debian.org/installer-team/os-prober/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        COPYING-note.txt
@@ -81,10 +80,10 @@ Requires:       /bin/grep
 Requires:       /bin/sed
 Requires:       /sbin/modprobe
 Requires:       coreutils
-Requires:       udev
 Requires:       util-linux
-Suggests:       lvm2
+Requires:       pkgconfig(udev)
 Suggests:       btrfsprogs
+Suggests:       lvm2
 %if 0%{?suse_version} >= 1315
 # For logger utility
 Requires:       util-linux-systemd
@@ -101,7 +100,7 @@ cp %{SOURCE1} .
 find . -name \*.orig -delete
 
 %build
-make %{?_smp_mflags} CC="gcc" CFLAGS="%{optflags}"
+%make_build CC="gcc" CFLAGS="%{optflags}"
 
 %install
 install -m 0755 -d %{buildroot}%{_bindir}
@@ -123,7 +122,7 @@ ARCH=powerpc
 %ifarch sparc sparc64
 ARCH=sparc
 %endif
-%ifarch %ix86 x86_64
+%ifarch %{ix86} x86_64
 ARCH=x86
 %endif
 
@@ -141,7 +140,6 @@ if [ "$ARCH" = x86 ]; then
 fi
 
 %files
-%defattr(-,root,root,-)
 %doc README TODO debian/copyright debian/changelog COPYING-note.txt
 %{_bindir}/*
 %{_prefix}/lib/linux-boot-probes

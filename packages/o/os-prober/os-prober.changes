@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 18 11:06:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.85:
+  * Detect Windows 12 via refactored version matching in 20microsoft.
+  * Make the EFI locale check locale-independent (LC_ALL=C).
+  * Install path made usrmerge-compliant; support the noudeb profile.
+- All 25 SUSE patches still apply cleanly, no rebasing needed.
+- Spec cleanup: drop Group tag, pkgconfig(udev), use %make_build.
+
+-------------------------------------------------------------------
 Wed Jan 21 19:09:25 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Drop dependency on dmraid (jsc#PED-15368)

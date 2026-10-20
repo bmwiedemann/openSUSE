@@ -494,4 +494,12 @@ as it has at least one small patch that depends on new code in grub2. (forwarded
     <comment></comment>
     <requestid>1328644</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>06171f4050324e73b1479e35f0d95fd1</srcmd5>
+    <version>1.85</version>
+    <time>1792492605</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386262</requestid>
+  </revision>
 </revisionlist>
