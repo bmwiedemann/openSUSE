@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 18 12:00:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0+git.1759261029.e3674e0:
+  * Updated and fixed CI
+  * android, allow to have 16KB pages
+  * Raise CMake minimum to 3.10; add Android-only 16KB page-size option
+    (no Linux behavior change)
+
+-------------------------------------------------------------------
 Sat Feb 22 08:34:38 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - lower needed qt6 version to 6.6.2 (available in 15.6)

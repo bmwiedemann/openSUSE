@@ -1,7 +1,7 @@
 #
 # spec file for package qml-box2d
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,23 @@
 
 
 %define qt6_version 6.6.2
-
 Name:           qml-box2d
-Version:        0+git.1713207787.3a85439
+Version:        0+git.1759261029.e3674e0
 Release:        0
 Summary:        QML Box2D plugin
 License:        Zlib
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/%{name}/%{name}
 Source:         %{name}-%{version}.tar.xz
-%if 0%{?suse_version} < 1599
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-%endif
 BuildRequires:  libbox2d-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+%if 0%{?suse_version} < 1599
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%endif
 
 %description
 This plugin is meant to be installed to your Qt/imports directory, or shipped
@@ -49,8 +47,8 @@ to make it easy to write physics-based games in QML.
 
 %build
 %if 0%{?suse_version} < 1599
-export CC="/usr/bin/gcc-13"
-export CXX="/usr/bin/g++-13"
+export CC="%{_bindir}/gcc-13"
+export CXX="%{_bindir}/g++-13"
 %endif
 %cmake
 %cmake_build

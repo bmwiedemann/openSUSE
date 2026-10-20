@@ -34,4 +34,12 @@ simplify BuildRequire list with pkconfig(Qt5Quick)
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1249518</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>59ddd262bfa95423293cb7ce44270c67</srcmd5>
+    <version>0+git.1759261029.e3674e0</version>
+    <time>1792493050</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386441</requestid>
+  </revision>
 </revisionlist>
