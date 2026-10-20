@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Oct 18 22:22:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Clear the queued markers when the queue is opened
+  * Keep the queued marker in step on duplicate URLs
+  * Show the prose around a reference-style link, not its
+    footnote
+  * Show one line of context before a URL, not two
+  * Stop losing context on screen, and separate joined lines
+  * Add a test suite, with a de-identified corpus of sample
+    messages
+  * Remove the "redisplay the cursor" keypress workaround
+  * Build the list from view state so c, R and search combine
+    correctly
+  * Accept "space" for the space bar in config.json
+  * Stop Up and Home from typing letters into the search
+  * Add ? to open the help menu and Esc to clear the search
+  * Move default keys, palettes and color modes out of __init__
+  * Build the header and footer in one place each; fix --nohelp
+    header
+  * Use one ListBox for the URL list instead of rebuilding it
+  * Fix crash after pressing Enter on a search with no matches
+  * Store each URL on its row and make open_url an ordinary
+    keybinding
+  * Fix --single not quitting when a URL opens in a worker thread
+  * Fix bug in flake version regex
+
+-------------------------------------------------------------------
 Mon Aug 17 06:34:41 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to urlscan 1.1.2:
