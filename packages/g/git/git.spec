@@ -87,6 +87,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcsh
 BuildRequires:  translate-suse-desktop
 BuildRequires:  xz
+BuildRequires:  zsh
 %if 0%{?suse_version} > 1600
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(zlib-ng)

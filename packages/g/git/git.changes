@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 17 19:37:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add zsh BuildRequires: Needed due to zsh-completion dirs.
+
+-------------------------------------------------------------------
 Mon Oct  5 19:54:35 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.56.0:

@@ -3097,4 +3097,14 @@ git 2.48.0</comment>
     <comment>1</comment>
     <requestid>1382798</requestid>
   </revision>
+  <revision rev="340" vrev="2">
+    <srcmd5>25dd44f89caa5308811f9827f42d3634</srcmd5>
+    <version>2.56.0</version>
+    <time>1792492569</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1385957 from iznogood
+
+- Add zsh BuildRequires: Needed due to zsh-completion dirs.</comment>
+    <requestid>1385958</requestid>
+  </revision>
 </revisionlist>
