@@ -1809,4 +1809,35 @@ dropped patch file
   * fix(sbom): skip null entries in SPDX file and package arrays (#11101)</comment>
     <requestid>1382112</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>9e3a8af97b927015d7c581286e030080</srcmd5>
+    <version>0.76.0</version>
+    <time>1792492609</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.76.0
+      (bsc#1285541, CVE-2026-78669, bsc#1284829, CVE-2026-19585):
+  * release: v0.76.0 [main] (#11379)
+  * chore(deps): pin zlib &gt;= 1.3.2-r1 in container images to fix CVE-2026-85091 (#11407)
+  * fix(php): keep dependency edges to packages named like PHP extensions (#11051)
+  * ci: add scan/crypto label (#11405)
+  * ci: add component/vex label (#11397)
+  * fix(vex): avoid panic on CSAF advisory without a CVE (#10990)
+  * chore(deps): bump the common group across 1 directory with 12 updates (#11386)
+  * chore(deps): bump the github-actions group across 1 directory with 6 updates (#11338)
+  * chore(deps): bump the aws group across 1 directory with 6 updates (#11375)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#11373)
+  * chore(deps): bump golang.org/x/net from 0.59.0 to 0.60.0 (#11387)
+  * feat(vuln): extend RapidFort scanner to Debian, Oracle, Rocky, Alma, and Amazon (#11285)
+  * feat(crypto): report nominal security levels of algorithms (#11369)
+  * feat(crypto): distinguish DSA algorithms by L and N (#11366)
+  * chore(deps): bump trivy-checks (#11381)
+  * fix(echo): match +echo.N local segment anywhere in pip versions (#11367)
+  * feat(echo): support Echo Maven and npm package scanning (#10883)
+  * ci: bump golangci-lint to v2.14.0 (#11377)
+  * chore: add a custom vulnerability reporting form (#11356)
+  * test(spdx): pin schema validation to release tags (#11359)
+  * docs(kubernetes): fix --exclude-namespace flag name in scan example (#10935)
+  * ci(helm): bump Trivy version to 0.75.0 for Trivy Helm Chart 0.27.0 (#11334)</comment>
+    <requestid>1386087</requestid>
+  </revision>
 </revisionlist>
