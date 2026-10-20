@@ -23,4 +23,12 @@
     <comment>Update graphifyy to 0.9.91, fixing arbitrary file reads via Fortran sources and shell interpolation in watch mode</comment>
     <requestid>1385274</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c2ece72266e6dfe3fdf061ba76150d49</srcmd5>
+    <version>0.9.92</version>
+    <time>1792492642</time>
+    <user>anag_factory</user>
+    <comment>Update graphifyy to 0.9.92</comment>
+    <requestid>1386110</requestid>
+  </revision>
 </revisionlist>

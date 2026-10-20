@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 18 17:23:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.92:
+  * Call-resolution and id-collision fixes across JS/TS, Python,
+    Go, Rust and Solidity extractors, including pytest fixture
+    typing and Solidity inheritance via C3 linearization
+  * MCP graph round-trip preserves parallel edges; node dedup
+    and model-drifted confidence folding fixes
+  * Skill fixes: code-only update path, Pi agent dispatch, and
+    pushing to the exact Neo4j/FalkorDB URI supplied
+  * Opt-in LLM backend selection via GRAPHIFY_BACKEND; dm extra
+    capped to tree-sitter-dm below 0.26
+  * AST cache schema bumped, so the first build after upgrading
+    re-extracts
+  * %check: skip three Julia extractor tests written for the
+    tree-sitter-julia 0.23.1 node shapes; the 0.25.0 grammar
+    restyles qualified imports and @enum forms
+
+-------------------------------------------------------------------
 Fri Oct 16 14:25:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.91:
