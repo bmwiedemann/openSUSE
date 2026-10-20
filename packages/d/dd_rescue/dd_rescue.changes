@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:59:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.99.24:
+  * 1.99.23: plugin close errors are reported as FATAL and always
+    reflected in the exit code; fixed positioning when overlapping
+    copies are detected and the copy direction is changed.
+  * 1.99.24: documentation improvements and fine-tuning of the
+    remaining time estimates.
+- Spec cleanup: https sources, pkgconfig-style BuildRequires,
+  drop obsolete Group tags.
+
+-------------------------------------------------------------------
 Tue Sep 29 10:06:39 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Add dd_rescue-ssp-strong.patch: drop the redundant -fstack-protector

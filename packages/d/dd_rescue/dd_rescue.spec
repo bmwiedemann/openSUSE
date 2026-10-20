@@ -1,7 +1,7 @@
 #
 # spec file for package dd_rescue
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,31 +21,42 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           dd_rescue
-Version:        1.99.22
+Version:        1.99.24
 Release:        0
 Summary:        Data copying in the presence of I/O Errors
 License:        GPL-2.0-only OR GPL-3.0-only
-Group:          System/Base
-URL:            http://www.garloff.de/kurt/linux/ddrescue/
-Source0:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2
-Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
+URL:            https://www.garloff.de/kurt/linux/ddrescue/
+Source0:        https://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2
+Source1:        https://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source99:       %{name}.changes
 # PATCH-FIX-OPENSUSE dd_rescue-ssp-strong.patch -- the libddr_lzo.po rule
 # appends basic -fstack-protector which downgrades the distro
 # -fstack-protector-strong from %%optflags; use strong instead
 Patch0:         dd_rescue-ssp-strong.patch
-# PATCH-FIX-UPSTREAM no-python2.patch sf#ddrescue#4 mcepl@suse.com
-# Remove dependency on python2
-BuildRequires:  autoconf
-BuildRequires:  libattr-devel
-# Workaround for bsc#1193438
-BuildRequires:  libopenssl-devel
-BuildRequires:  lzo-devel
 BuildRequires:  lzop
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-BuildRequires:  xz-devel
+# PATCH-FIX-UPSTREAM no-python2.patch sf#ddrescue#4 mcepl@suse.com
+# Remove dependency on python2
+BuildRequires:  perl(Autom4te::C4che)
+BuildRequires:  perl(Autom4te::ChannelDefs)
+BuildRequires:  perl(Autom4te::Channels)
+BuildRequires:  perl(Autom4te::Config)
+BuildRequires:  perl(Autom4te::Configure_ac)
+BuildRequires:  perl(Autom4te::FileUtils)
+BuildRequires:  perl(Autom4te::General)
+BuildRequires:  perl(Autom4te::Getopt)
+BuildRequires:  perl(Autom4te::Request)
+BuildRequires:  perl(Autom4te::XFile)
+BuildRequires:  pkgconfig(libattr)
+# Workaround for bsc#1193438
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libopenssl)
+BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(lzo2)
+BuildRequires:  pkgconfig(openssl)
 Requires:       bc
 Recommends:     dd_rescue-crypt
 Recommends:     dd_rescue-lzo
@@ -74,7 +85,6 @@ dd_rescue-lzo, the crypt plugin in the dd_rescue-crypt subpackage.
 
 %package crypt
 Summary:        Crypt plugin for dd_rescue
-Group:          System/Base
 Requires:       dd_rescue = %{version}
 
 %description crypt
@@ -91,7 +101,6 @@ might be careful to expect some bugs and future changes.
 
 %package lzo
 Summary:        LZO plugin for dd_rescue
-Group:          System/Base
 Requires:       dd_rescue = %{version}
 
 %description lzo
@@ -117,7 +126,6 @@ data to the decompressor.
 
 %package lzma
 Summary:        LZMA (xz) de/compression plugin for dd_rescue
-Group:          System/Base
 Requires:       dd_rescue = %{version}
 
 %description lzma
@@ -129,11 +137,6 @@ Decompression is much faster.
 This plugin is still new and may not be very mature yet. It may be
 a bad idea to feed it with untrusted data, especially when running
 with elevated privileges.
-
-Authors:
---------
-    Dmitrii Ivanov <dsivanov_9@edu.hse.ru>
-    Kurt Garloff <kurt@garloff.de>
 
 %prep
 %autosetup -p1
