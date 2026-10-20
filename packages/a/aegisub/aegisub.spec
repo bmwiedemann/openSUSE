@@ -18,15 +18,18 @@
 
 
 %define appid org.aegisub.Aegisub
+%define luajit_gitver LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6
+%define luajit_ver 2.1.1720049189
 Name:           aegisub
-Version:        3.4.2
+Version:        3.5.1
 Release:        0
 Summary:        Subtitle editor
 License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.aegisub.org/
 Source0:        https://github.com/TypesettingTools/Aegisub/archive/v%{version}/Aegisub-%{version}.tar.gz
-Source1:        LuaJIT-2.1.gitmodule.tar.zst
+Source1:        https://github.com/mesonbuild/wrapdb/releases/download/luajit_%{luajit_ver}-2/luajit-%{luajit_ver}.tar.gz
+Source2:        https://wrapdb.mesonbuild.com/v2/luajit_%{luajit_ver}-2/get_patch#/luajit_%{luajit_ver}-2_patch.zip
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
@@ -38,8 +41,8 @@ BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libicu-devel
 BuildRequires:  meson
-BuildRequires:  zstd
 BuildRequires:  pkgconfig >= 0.20
+BuildRequires:  unzip
 BuildRequires:  wxGTK3-3_2-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(ffms2)
@@ -48,8 +51,8 @@ BuildRequires:  pkgconfig(fontconfig) >= 2.4
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(hunspell) >= 1.2.0
 BuildRequires:  pkgconfig(libass)
+BuildRequires:  pkgconfig(libportal-gtk3)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.9
-BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(uchardet)
@@ -63,22 +66,26 @@ effects in the subtitles, apart from just basic timed text.
 
 %prep
 %autosetup -p1 -n Aegisub-%{version}
-mkdir -p subprojects/luajit
-tar -xf %{SOURCE1} --strip-components 1 -C subprojects/luajit
-cp -a subprojects/packagefiles/luajit/* subprojects/luajit
+%setup -n Aegisub-%{version} -DTa1
+%setup -n Aegisub-%{version} -DTa2
+cp -rf %{luajit_gitver} subprojects
+
 sed "/subdir('tests')/d" -i meson.build
 
 cat > git_version.h <<EOF
 #define BUILD_GIT_VERSION_NUMBER 0
-#define BUILD_GIT_VERSION_STRING "3.4.2"
+#define BUILD_GIT_VERSION_STRING "%{version}"
 #define TAGGED_RELEASE 0
-#define INSTALLER_VERSION "3.4.2"
-#define RESOURCE_BASE_VERSION 3, 4, 2
+#define INSTALLER_VERSION "%{version}"
+#define RESOURCE_BASE_VERSION 0, 0, 0
 EOF
 
 %build
 %meson \
     -Davisynth=disabled \
+    -Dluajit:default_library=static \
+    -Db_lto=false \
+    -Dtests=false \
     -Denable_update_checker=false
 %meson_build
 

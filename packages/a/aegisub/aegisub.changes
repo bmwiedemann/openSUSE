@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 19 12:12:17 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.5.1
+  * Added video panning using middle-click drag or Shift+Scroll
+  * Added video zooming using Ctrl+Scroll or touchpad gestures
+  * Added option to copy or save rendered subtitles with transparency
+  * Added style options for high decimal precision and border style 4
+  * Added syntax highlighting for vector clips and drawings
+  * Added shortcut to insert hard space via Ctrl+Shift+Space
+  * Fixed screen color picker on macOS and Wayland
+  * Fixed startup crash on macOS 13 and native module loading
+  * Fixed security vulnerability regarding arbitrary code execution
+  * Updated translations and added Lithuanian support
+- Switch LuaJIT dependency to Meson wrap package
+- Build LuaJIT statically via Meson fallback subproject
+- Add pkgconfig(libportal-gtk3) build dependency
+- Add unzip build dependency and drop zstd
+- Disable LTO build option (b_lto=false)
+- Dynamically set BUILD_GIT_VERSION_STRING to RPM version
+
+-------------------------------------------------------------------
 Sun Dec  7 21:42:26 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Add Again LuaJIT-2.1.gitmodule Source: luajit Factory remove 
