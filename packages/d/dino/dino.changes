@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 16 16:14:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(webrtc-audio-processing) with
+  pkgconfig(webrtc-audio-processing-2) BuildRequires.
+
+-------------------------------------------------------------------
 Tue Dec 23 21:29:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.5.1:
@@ -34,7 +40,7 @@ Tue Dec 23 21:29:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
   * rtp: device: Tweak common_widths for 16:9 ratio
   * rtp: device: Ensure even heights for rescaled streams
   * Fix fetching some MAM history for every MUC
-- fix building by removing pkgconfig(vapigen-0.46) requirement, as that 
+- fix building by removing pkgconfig(vapigen-0.46) requirement, as that
   dependency does not exist
 
 -------------------------------------------------------------------
@@ -114,19 +120,19 @@ Mon Jul 10 05:42:08 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.3:
   * Fix video for cameras with rotated image
-  * Fix call window controlls hiding 
-  * Fix call window styling 
-  * Fix empty alias being handled different than none 
+  * Fix call window controlls hiding
+  * Fix call window styling
+  * Fix empty alias being handled different than none
   * Fix crash on NS_URI call when own server has no MAM;
     drop broken mam: 1 "support" #1405
-  * Focus ChatInput textbox after selecting emoji 
+  * Focus ChatInput textbox after selecting emoji
   * Fix character counting for fallbacks #1420
   * Fix chat input status having a fixed width requirement #1439
   * Fix chat input for IME #1419
   * Fix reactions being made to the wrong message #1426
-  * data: Set X-Purism-FormFactor in .desktop file 
-  * Ignore non-DTLS data before handshake is complete 
-  * Do not send DTLS datagrams to RTP even after handshake 
+  * data: Set X-Purism-FormFactor in .desktop file
+  * Ignore non-DTLS data before handshake is complete
+  * Do not send DTLS datagrams to RTP even after handshake
   * Fix certificate start time
   * Fix potential crash in video calls
 
@@ -146,8 +152,8 @@ Fri Mar  3 08:01:54 UTC 2023 - Michael Vetter <mvetter@suse.com>
   * Fix typing notifications in groupchats
   * Fix some memory leaks
   * Stop regenerating message menu buttons
-  * Clear chat input after /command 
-  * Remove spell check setting 
+  * Clear chat input after /command
+  * Remove spell check setting
 
 -------------------------------------------------------------------
 Wed Feb  8 07:59:52 UTC 2023 - Michael Vetter <mvetter@suse.com>

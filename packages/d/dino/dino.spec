@@ -58,7 +58,7 @@ BuildRequires:  pkgconfig(libsrtp2)
 BuildRequires:  pkgconfig(nice) >= 0.1.15
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(vapigen) >= 0.30
-BuildRequires:  pkgconfig(webrtc-audio-processing)
+BuildRequires:  pkgconfig(webrtc-audio-processing-2)
 Requires:       hicolor-icon-theme
 %if 0%{?suse_version}
 BuildRequires:  libgpgmepp-devel

@@ -213,4 +213,13 @@
   * Fix file overlay leak</comment>
     <requestid>1324367</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ac543fbe43ccfbb9d234359c8354b0ce</srcmd5>
+    <version>0.5.1</version>
+    <time>1792492850</time>
+    <user>anag_factory</user>
+    <comment>- Replace pkgconfig(webrtc-audio-processing) with
+  pkgconfig(webrtc-audio-processing-2) BuildRequires.</comment>
+    <requestid>1386270</requestid>
+  </revision>
 </revisionlist>
