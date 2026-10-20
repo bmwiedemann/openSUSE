@@ -2,7 +2,7 @@
 # spec file for package identity
 #
 # Copyright (c) 2025 mantarimay
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 
 %define _lto_cflags %{nil}
 %define appid org.gnome.gitlab.YaLTeR.Identity
-%define rurl 9d5a220c7a70c698a72755825adfd93b
+%define rurl e2f3e6986d3cb2b398ec5157b2efdb40
 Name:           identity
-Version:        25.10.1
+Version:        26.03
 Release:        0
 Summary:        Compare images and videos
 License:        GPL-3.0-or-later
@@ -34,11 +34,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dav1d)
+BuildRequires:  pkgconfig(glycin-gtk4-2)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  pkgconfig(glycin-gtk4-2)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.0
 BuildRequires:  pkgconfig(libwebpdemux)
 Requires:       glycin-loaders
 

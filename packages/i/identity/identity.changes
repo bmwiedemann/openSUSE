@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:45:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 26.03:
+  * Added a time display when hovering over the video seek bar.
+  * Added --display and --zoom flags to start with a given
+    display mode and zoom.
+  * Added Ctrl+2..9 shortcuts to set zoom from 200% to 900%.
+  * The window title now shows the current file name.
+  * Increased the default window size to 960x540 video.
+  * Updated to the GNOME 50 platform.
+  * Updated translations.
+- Require pkgconfig(libadwaita-1) >= 1.8.0, matching upstream's
+  stated minimum.
+
+-------------------------------------------------------------------
 Tue Oct 28 20:53:49 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to Version 25.10.1
