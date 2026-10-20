@@ -1,7 +1,7 @@
 #
 # spec file for package yank
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yank
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Tool for selecting and copying text from stdin without a mouse
 License:        MIT
