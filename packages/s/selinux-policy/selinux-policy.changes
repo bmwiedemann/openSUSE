@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 19 15:00:53 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20261019:
+  * Allow systemd_nsresourced_t setuid/setgid inside a userns (bsc#1285095)
+  * broaden ld.so.cache regex to include temporary files (bsc#1270243)
+
+-------------------------------------------------------------------
 Thu Oct 15 07:36:56 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20261014:
