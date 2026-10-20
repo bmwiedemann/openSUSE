@@ -26,15 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-lazy-object-proxy%{psuffix}
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        Rebuild a new abstract syntax tree from Python's ast
 License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/python-lazy-object-proxy
 Source:         https://files.pythonhosted.org/packages/source/l/lazy-object-proxy/lazy_object_proxy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#ionelmc/python-lazy-object-proxy#97
-Patch0:         support-python-315.patch
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 75}
 BuildRequires:  %{python_module setuptools_scm >= 8}

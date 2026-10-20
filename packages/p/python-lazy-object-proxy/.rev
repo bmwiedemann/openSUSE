@@ -205,4 +205,17 @@
   * Support different await TypeError exception messages.</comment>
     <requestid>1377058</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7f4b541fb9f1f8b757772f987de4a2f7</srcmd5>
+    <version>1.13.0</version>
+    <time>1792492633</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.13.0:
+  * Document explicit proxy evaluation and identity checks with None.
+  * Fixed some broken tests on Python 3.15.
+  * Dropped support for EOL Python 3.10 and 3.9.
+  * Fixed typo in __annotations__ (basically it was broken).
+- Drop patch support-python-315.patch, merged upstream.</comment>
+    <requestid>1386095</requestid>
+  </revision>
 </revisionlist>
