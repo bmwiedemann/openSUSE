@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 18 01:43:30 UTC 2026 - Austin Foo <austinfu113@hotmail.com>
+
+- Update to 0.11.1
+  * Upstream migrated to https://github.com/tuigreet/tuigreet;
+    the old apognu/tuigreet repository now auto-redirects to the new location.
+  * Adapted to the new Cargo workspace layout; use `-p tuigreet`
+    for build, install and test stages.
+  * Features:
+    - TOML configuration
+    - Suspend/hibernate power actions
+    - Multi-monitor support
+    - Allow pre-filling the username field
+    - Make the login title optional
+    - Individual configuration of status bar items
+    - Background animations: matrix, doom fire
+    - Mock mode improvements
+    - New translations
+  * Bug fixes:
+    - Fix automatic sessions discovery from $XDG_DATA_DIRS (0.11.1)
+    - Fix various rendering glitches (0.11.0)
+
+-------------------------------------------------------------------
 Wed Jun  5 17:28:21 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Fix description-shorter-than-summary rpmlint warning
