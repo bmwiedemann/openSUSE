@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 16 16:26:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 13.07.00:
+  * Compiled top-level object files now start with ',' (e.g. ,main.o),
+    continuing 13.06.00's directory-prefix change.
+  * Object file prefixes are now configurable: with '#define OBJ_SEP <char>'
+    in icmconf, object files get their directory name followed by that
+    character instead of their class number.
+  * The recency check of the lexical scanner (#define SCANNER_DIR) and
+    parser (#define PARSER_DIR) configuration files now only runs when
+    icmbuild constructs a program or library.
+
+-------------------------------------------------------------------
 Sun Sep 13 06:20:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 13.06.01:

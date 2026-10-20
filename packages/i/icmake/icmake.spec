@@ -17,7 +17,7 @@
 
 
 Name:           icmake
-Version:        13.06.01
+Version:        13.07.00
 Release:        0
 Summary:        A program maintenance (make) utility using a C-like grammar
 License:        GPL-3.0-only
