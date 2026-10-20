@@ -32,4 +32,19 @@
   * Remove home:kukuk:mkosi-images key from development</comment>
     <requestid>1384656</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>553c54b40a2ca57f6783377e53852b5f</srcmd5>
+    <version>1.2.1+git20261019.1a525f6</version>
+    <time>1792492940</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.1+git20261019.1a525f6:
+  * Release version 1.2.1
+  * mount-part-by-label: mount tmpfs on /images
+  * settings: fix selection of keymap layout
+  * image: create /images mount point
+  * Make mount-part-by-label.sh more robust
+  * rdii-helper: always log if default bootloader get changed
+  * Add minimal Quickguide</comment>
+    <requestid>1386326</requestid>
+  </revision>
 </revisionlist>

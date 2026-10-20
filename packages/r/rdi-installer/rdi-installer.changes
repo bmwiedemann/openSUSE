@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 19 13:55:04 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.2.1+git20261019.1a525f6:
+  * Release version 1.2.1
+  * mount-part-by-label: mount tmpfs on /images
+  * settings: fix selection of keymap layout
+  * image: create /images mount point
+  * Make mount-part-by-label.sh more robust
+  * rdii-helper: always log if default bootloader get changed
+  * Add minimal Quickguide
+
+-------------------------------------------------------------------
 Tue Oct 13 15:50:48 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.2.0+git20261013.6276d8c:
