@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 16 06:23:18 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20261007.53bc127:
+  * doc: add raw-disk-image architecture document
+
+-------------------------------------------------------------------
 Tue Sep 29 20:24:08 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260929.26b6989:
@@ -17,7 +23,7 @@ Tue Sep 29 20:24:08 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 -------------------------------------------------------------------
 Thu Sep 24 20:05:03 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
-- Update to version 1+git20260924.2b7b94e:
+- Update to version 1+git20260924.2b7b94e (bsc#1284183, CVE-2026-104617, bsc#1284178, CVE-2026-104618):
   * Improve detection of encrypted device when RAID is used
   * Support btrfs RAID1 configurations
   * Move the service from oneshot to exec to avoid the wait
