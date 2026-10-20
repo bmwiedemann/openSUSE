@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 19 06:47:30 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.2.1:
+- Add --limit/-l to stop alternating splits at a container depth.
+- Fix automatic splitting inside tabbed and stacked containers.
+- Update swayipc to version 4.
+- Regenerate vendored dependencies.
+- Install LICENSE with %license.
+
+-------------------------------------------------------------------
 Tue Feb 10 09:15:57 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.1.8:

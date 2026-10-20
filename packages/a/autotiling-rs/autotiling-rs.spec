@@ -17,7 +17,7 @@
 
 
 Name:           autotiling-rs
-Version:        0.1.8
+Version:        0.2.1
 Release:        0
 Summary:        Container layout switcher for sway/i3 with automatic tiling
 License:        MIT
@@ -51,6 +51,7 @@ put it in your sway config like this: exec autotiling-rs.
 %{cargo_test}
 
 %files
+%license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 
