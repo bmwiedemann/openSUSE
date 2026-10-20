@@ -407,4 +407,12 @@
     <comment>Update to 12.9.3</comment>
     <requestid>1383305</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>a1c8cfa4adba50fd50f37b214750831a</srcmd5>
+    <version>12.9.4</version>
+    <time>1792493047</time>
+    <user>anag_factory</user>
+    <comment>Update to 12.9.4</comment>
+    <requestid>1386430</requestid>
+  </revision>
 </revisionlist>
