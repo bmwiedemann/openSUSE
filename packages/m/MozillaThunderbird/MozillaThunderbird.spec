@@ -54,7 +54,7 @@
 %define useccache     0
 %endif
 
-ExclusiveArch:  aarch64 ppc64le x86_64 s390x
+ExclusiveArch:  aarch64 ppc64le x86_64 s390x riscv64
 %{expand:%%global optflags %(echo "%optflags"|sed -e s/-flto=auto//) }
 
 # general build definitions
