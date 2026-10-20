@@ -24,25 +24,16 @@
 %define pp_so_ver       12
 %define wand_so_ver     2
 Name:           GraphicsMagick
-Version:        1.3.48
+Version:        1.3.49
 Release:        0
 Summary:        Viewer and Converter for Images
 License:        MIT
-Group:          Productivity/Graphics/Convertors
 URL:            http://www.GraphicsMagick.org/
 Source:         https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/%{version}/%{name}-%{version}.tar.xz
 Patch0:         GraphicsMagick-perl-linkage.patch
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
 # CVE-2026-46523: heap-use-after-free via a crafted MSL image [bsc#1268125]
 Patch8:         GraphicsMagick-CVE-2026-46523.patch
-# CVE-2026-61464: Heap Buffer Over-Write in X11 import with crafted window title [bsc#1271496]
-Patch11:        GraphicsMagick-CVE-2026-61464.patch
-# CVE-2026-56379: arbitrary MVG drawing command injection via the SVG decoder when processing specially crafted SVG files [bsc#1268878]
-Patch12:        GraphicsMagick-CVE-2026-56379.patch
-# CVE-2025-55154: integer overflow when performing magnified size calculations in ReadOneMNGIMage can lead to out-of-bounds write [bsc#1248078]
-Patch13:        GraphicsMagick-CVE-2025-55154.patch
-# CVE-2026-103118: uncontrolled recursion in the WPG file handler when processing crafted WPG files which are self-referencing [bsc#1283767]
-Patch14:        GraphicsMagick-CVE-2026-103118.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++
@@ -51,7 +42,6 @@ BuildRequires:  ghostscript-fonts-std
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libltdl-devel
-BuildRequires:  libwmf-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(freetype2)
@@ -60,14 +50,15 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpmux)
+BuildRequires:  pkgconfig(libwmf)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(zlib)
+Recommends:     xorg-x11-fonts-legacy
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libjxl)
 %endif
-Recommends:     xorg-x11-fonts-legacy
 
 %description
 GraphicsMagick provides an image manipulation and translation
@@ -86,7 +77,6 @@ performance on %{quant} bit images and less.
 
 %package     -n libGraphicsMagick-Q%{quant}-%{so_ver}
 Summary:        The GraphicsMagick image conversion runtime library
-Group:          System/Libraries
 Requires:       libGraphicsMagick3-config = %{version}
 
 %description -n libGraphicsMagick-Q%{quant}-%{so_ver}
@@ -103,7 +93,6 @@ performance on %{quant} and less bit images.
 
 %package     -n libGraphicsMagick%{so_ver}-config
 Summary:        Configuration for the GraphicsMagick image conversion library
-Group:          System/Libraries
 # %{_libdir}/GraphicsMagick-*/config/type-ghostscript.mgk references fonts
 # shipped as part of ghostscript-fonts-std (boo#1216604)
 Recommends:     ghostscript-fonts-std
@@ -121,7 +110,6 @@ This package contains GraphicsMagick library configuration files.
 
 %package     -n libGraphicsMagickWand-Q%{quant}-%{wand_so_ver}
 Summary:        Runtime library for the GraphicsMagick image conversion library
-Group:          System/Libraries
 
 %description -n libGraphicsMagickWand-Q%{quant}-%{wand_so_ver}
 GraphicsMagick provides an image manipulation and translation utility
@@ -137,7 +125,6 @@ performance on %{quant} and less bit images.
 
 %package        devel
 Summary:        Development files for the GraphicsMagick C language API
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libGraphicsMagick-Q%{quant}-%{so_ver} = %{version}
 Requires:       libGraphicsMagickWand-Q%{quant}-%{wand_so_ver} = %{version}
@@ -153,7 +140,6 @@ images, and to create thumbnail images.
 
 %package     -n perl-GraphicsMagick
 Summary:        Perl interface for the GraphicsMagick image conversion library
-Group:          Development/Languages/Perl
 Requires:       %{name} = %{version}
 Requires:       perl = %{perl_version}
 
@@ -170,7 +156,6 @@ This package contains perl interface to GraphicsMagick library.
 
 %package     -n libGraphicsMagick++-Q%{quant}-%{pp_so_ver}
 Summary:        C++ interface for the GraphisMagick image conversion library
-Group:          System/Libraries
 
 %description -n libGraphicsMagick++-Q%{quant}-%{pp_so_ver}
 GraphicsMagick provides an image manipulation and translation utility
@@ -185,7 +170,6 @@ This subpackage contains C++ interface to GraphicsMagick library.
 
 %package     -n libGraphicsMagick++-devel
 Summary:        Development files for the GraphicsMagick C++ language API
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       c++_compiler
 Requires:       libGraphicsMagick++-Q%{quant}-%{pp_so_ver} = %{version}

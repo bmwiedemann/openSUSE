@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:56:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.3.49 (security and bugfix release):
+  * CVE-2026-109964: heap buffer underwrite in the PICT decoder
+    via crafted files on 32-bit builds (boo#1285424)
+  * CVE-2026-42326: heap buffer over-read in IPTC attribute
+    handling via malicious input (boo#1268092)
+  * Drop patches adopted upstream in this release:
+    GraphicsMagick-CVE-2025-55154.patch,
+    GraphicsMagick-CVE-2026-56379.patch,
+    GraphicsMagick-CVE-2026-61464.patch,
+    GraphicsMagick-CVE-2026-103118.patch
+  * PICT arithmetic-overflow checks, MAT NULL-image guard, TIFF
+    adjoin double-free fix (Debian#1146076), X11 NULL ximage
+    guard, WPG NULL ps_data guard, PNG writer image-type support,
+    LevelImage() 'black/white/mid' parsing, posix_fallocate()
+    pixel cache
+  * Spec cleanup: drop Group tags, use pkgconfig(libwmf) provider
+  * CVE-2026-46559 (boo#1268121) is not affected: JP2 support is
+    not built (--without-jp2)
+  * CVE-2026-46692 (boo#1268120) is not affected: no
+    distribute-cache feature exists in GraphicsMagick
+  * CVE-2026-46557 (boo#1268123) is not affected: no fx operation
+    exists in GraphicsMagick
+  * CVE-2026-46521 (boo#1268124) is not affected: the MIFF coder
+    has no LZMA path
+  * CVE-2026-53465 (boo#1268100) is not affected: no SF3 encoder
+    exists in GraphicsMagick (only SFW)
+
+-------------------------------------------------------------------
 Thu Oct  8 07:38:45 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
