@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 17 09:02:48 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 2.3.0:
+  * Remove the previously-deprecated paperconf(1) utility.
+  * Remove /etc/papersize and $XDG_CONFIG_HOME/papersize configuration;
+    use the PAPERSIZE environment variable instead.
+- Run upstream test suite during build.
+
+-------------------------------------------------------------------
 Mon May 18 06:54:43 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update 2.2.8:

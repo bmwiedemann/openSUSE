@@ -17,9 +17,8 @@
 
 
 %define sover 2
-
 Name:           libpaper
-Version:        2.2.8
+Version:        2.3.0
 Release:        0
 Summary:        Enables users to indicate their preferred paper size
 License:        GPL-3.0-or-later
@@ -30,9 +29,9 @@ BuildRequires:  automake
 BuildRequires:  perl
 # libpaper-utils meanly packaged doc files in /usr/share/doc/packaes/libpaper
 Conflicts:      libpaper-utils <= 1.1.28
-# /etc/paperspecs used to live in paper (main package)
-Provides:       paper:/etc/paperspecs
 Conflicts:      paper <= 2.3
+# /etc/paperspecs used to live in paper (main package)
+Provides:       paper:%{_sysconfdir}/paperspecs
 
 %description
 This package enables users to indicate their preferred paper
@@ -81,6 +80,9 @@ This package contains all devel files needed by the libpaper package
 rm -vRf %{buildroot}%{_datadir}/doc/libpaper/README.md
 find %{buildroot}%{_libdir} -name *libpaper.la -delete
 
+%check
+make check %{?_smp_mflags}
+
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
@@ -88,12 +90,11 @@ find %{buildroot}%{_libdir} -name *libpaper.la -delete
 %license COPYING
 %doc README.md
 %config %{_sysconfdir}/paperspecs
-%{_mandir}/man5/paperspecs.5.gz
+%{_mandir}/man5/paperspecs.5%{?ext_man}
 
 %files -n %{name}-tools
 %{_bindir}/paper
-%{_bindir}/paperconf
-%{_mandir}/man1/paper.1.gz
+%{_mandir}/man1/paper.1%{?ext_man}
 
 %files -n %{name}%{sover}
 %{_libdir}/libpaper.so.%{sover}
