@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 19 09:22:16 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- add upmpdcli system user with systemd-sysusers (instead of useradd)
+- remove upmpdcli user and group on uninstall
+- remove /var/cache/upmpdcli on uninstall
+- removed upmpdcli-mother-earth-radio package plugin as that web service
+  ceased to exist
+- Update to 1.9.18
+  *  Renderer: openhome: fix crash switching from songcast-radio to radio
+  * Media server: fix caching bugs in the C++ side.
+  * Media server: if a single plugin is enabled, automatically create a
+    root alias.
+  * Media server: uprcl: improve browsing performance by enabling caching
+    in the C++ parent.
+  * Media server: Tidal and Subsonic modules updates.
+
+-------------------------------------------------------------------
 Sun Apr 19 13:12:02 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.9.17

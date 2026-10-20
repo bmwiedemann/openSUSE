@@ -19,7 +19,7 @@
 
 %bcond_without confgui
 Name:           upmpdcli
-Version:        1.9.17
+Version:        1.9.18
 Release:        0
 Summary:        UPnP AV and OpenHome Media Renderer front-end to MPD, the Music Player Daemon
 License:        GPL-2.0-or-later
@@ -27,12 +27,13 @@ URL:            https://www.lesbonscomptes.com/updmpdcli
 Source0:        https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-%{version}.tar.gz
 Source1:        https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-%{version}.tar.gz.asc
 Source2:        https://www.lesbonscomptes.com/pages/lesbonscomptes.gpg#/%{name}.keyring
+Source3:        %{name}-user.conf
 Patch0:         harden_upmpdcli.service.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  group(audio)
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libcurl)
@@ -41,16 +42,16 @@ BuildRequires:  pkgconfig(libmpdclient)
 BuildRequires:  pkgconfig(libnpupnp)
 BuildRequires:  pkgconfig(libupnpp) >= 0.26.0
 Requires:       python3-requests
+Requires(postun): shadow
 Requires(pre):  group(audio)
-Requires(pre):  shadow
 Suggests:       %{name}-bbc
 Suggests:       %{name}-hra
-Suggests:       %{name}-mother-earth-radio
 Suggests:       %{name}-radio-browser
 Suggests:       %{name}-radio-paradise
 Suggests:       %{name}-radios
 Suggests:       %{name}-subsonic
 Suggests:       %{name}-tidal
+%sysusers_requires
 %{?systemd_ordering}
 
 %description
@@ -62,6 +63,7 @@ It can also operate as an UPnP/DLNA Media Server to give access to various onlin
 %autosetup -p1
 
 %build
+%sysusers_generate_pre %{SOURCE3} %{name} %{name}-user.conf
 export QMAKE=qmake-qt5
 %meson \
 %if %{with confgui}
@@ -75,9 +77,14 @@ export QMAKE=qmake-qt5
 %meson_install
 rm %{buildroot}%{_sysconfdir}/upmpdcli.conf-dist
 
+# Mother Earth Radio ceased to exist
+rm -r %{buildroot}%{_datadir}/%{name}/cdplugins/mother-earth-radio
+
 install -D -m 644 systemd/upmpdcli.service %{buildroot}%{_unitdir}/upmpdcli.service
 mkdir -p %{buildroot}/%{_sbindir}
 ln -s service %{buildroot}/%{_sbindir}/rcupmpdcli
+
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 
 %files
 %license COPYING
@@ -116,10 +123,10 @@ ln -s service %{buildroot}/%{_sbindir}/rcupmpdcli
 %{_mandir}/man5/%{name}.conf.5%{?ext_man}
 %{_unitdir}/upmpdcli.service
 %{_sbindir}/rcupmpdcli
+%{_sysusersdir}/%{name}-user.conf
 %config(noreplace) %{_sysconfdir}/upmpdcli.conf
 
-%pre
-getent passwd upmpdcli >/dev/null || useradd -r -g audio -d /nonexistent -s /sbin/nologin -c "user for upmpdcli" upmpdcli
+%pre -f %{name}.pre
 %service_add_pre upmpdcli.service
 
 %post
@@ -130,6 +137,13 @@ getent passwd upmpdcli >/dev/null || useradd -r -g audio -d /nonexistent -s /sbi
 
 %postun
 %service_del_postun upmpdcli.service
+rm -rf /var/cache/%{name}
+if getent passwd upmpdcli > /dev/null; then
+    userdel upmpdcli
+fi
+if getent group upmpdcli > /dev/null; then
+    groupdel upmpdcli
+fi
 
 ####
 
@@ -178,21 +192,6 @@ music streaming service (https://www.highresaudio.com/en).
 %files hra
 %license COPYING
 %{_datadir}/%{name}/cdplugins/hra
-
-####
-
-%package mother-earth-radio
-Summary:        Mother Earth Radio media server plugin for upmpdcli
-Requires:       python3-requests
-Requires:       upmpdcli = %{version}
-BuildArch:      noarch
-
-%description mother-earth-radio
-Media Server plugin providing access to Mother Earth Radio streams.
-
-%files mother-earth-radio
-%license COPYING
-%{_datadir}/%{name}/cdplugins/mother-earth-radio
 
 ####
 
