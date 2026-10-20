@@ -65,4 +65,32 @@
   + Updated translations.</comment>
     <requestid>1372897</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cf09e0f06b8cef097eef9da83a1c32bc</srcmd5>
+    <version>0.5.0</version>
+    <time>1792493837</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.0:
+  * Updated translations.
+
+- Update to version 0.5.alpha2:
+  * News in 0.5.alpha2, 2026-10-07:
+    + New class: GflsEncodingConverter.
+    + New class: GflsUtf8AutoConverter (work-in-progress).
+    + GflsValidatedString: make it a GObject class.
+    + Change gfls_encoding_convert() API.
+    + Remove GflsBytesRegion (no longer used).
+    + Reference manual:
+    + Write an introduction and a file loading overview.
+    + Regroup related classes together in chapters.
+  * News in 0.5.alpha, 2026-08-12:
+    + New features: GflsByteArray, GflsValidatedString,
+      GflsValidatedStringBuilder, GflsValidatedStringChunk, UTF-8 validation,
+      and some utils functions.
+    + Encoding conversion: more docs and more tests.
+    + GflsEncoding: class copied and adapted from libgedit-gtksourceview.
+    + Don't annotate get_type() functions with G_GNUC_CONST.
+  * Updated translations.</comment>
+    <requestid>1386367</requestid>
+  </revision>
 </revisionlist>
