@@ -21,7 +21,7 @@
 # ext_gnome_version: latest GNOME shell version supported
 # min_gnome_version: earliest GNOME shell version supported
 %if 0%{?suse_version} > 1600
-%global ext_gnome_version 50
+%global ext_gnome_version 51
 %global min_gnome_version 46
 %else
 %if 0%{?suse_version} == 1600
@@ -163,6 +163,8 @@ Patch182:       0182-Remove-GNOME-45-from-the-list-of-supported-releases.patch
 Patch183:       0183-Add-option-to-hide-the-summary.patch
 Patch184:       0184-Mark-GNOME-49-as-supported.patch
 Patch185:       0185-Mark-GNOME-50-supported.patch
+Patch186:       0186-Replace-removed-St.BoxLayout-vertical-property.patch
+Patch187:       0187-Mark-GNOME-51-supported.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 # For detecting typelib() dependencies
@@ -328,7 +330,11 @@ cd hamster-shell-extension-%{ext_version}
 # GNOME 49 support
 %patch -P 183 -p1
 %patch -P 184 -p1
+# GNOME 50 support
 %patch -P 185 -p1
+# GNOME 51 support
+%patch -P 186 -p1
+%patch -P 187 -p1
 %endif
 
 %if 0%{?suse_version} < 1550 || 0%{?sle_version} < 150200

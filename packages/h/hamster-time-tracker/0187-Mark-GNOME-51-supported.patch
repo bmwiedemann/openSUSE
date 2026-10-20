@@ -1,0 +1,27 @@
+From 6b6ae0ff13ec49132b38430c53b471aef6a92652 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 19 Oct 2026 08:41:51 +0000
+Subject: [PATCH 187/187] Mark GNOME 51 supported
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ data/metadata.json.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index 9023d97..a1fc96f 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -14,7 +14,8 @@
+       "47",
+       "48",
+       "49",
+-      "50"
++      "50",
++      "51"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+-- 
+2.56.0
+

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 19 10:22:39 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Add support for GNOME 51
+  * add 0186-Replace-removed-St.BoxLayout-vertical-property.patch
+  * add 0187-Mark-GNOME-51-supported.patch
+
+-------------------------------------------------------------------
 Mon Apr 20 14:01:41 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Fix GNOME shell version in spec file

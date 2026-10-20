@@ -1,0 +1,77 @@
+From a6c20f29cd714bd011b42b15b28f81452b15a134 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 19 Oct 2026 08:41:51 +0000
+Subject: [PATCH 186/187] Replace removed St.BoxLayout vertical property
+
+GNOME 51 removed the "vertical" property, deprecated since GNOME 48,
+which made the extension fail with "set_vertical is not a function".
+Use the "orientation" property instead, falling back to "vertical"
+on GNOME 46/47 where "orientation" is not available.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ extension/stuff.js                     | 16 ++++++++++++++++
+ extension/widgets/factsBox.js          |  2 +-
+ extension/widgets/todaysFactsWidget.js |  2 +-
+ 3 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/extension/stuff.js b/extension/stuff.js
+index 4cd8a12..d299925 100644
+--- a/extension/stuff.js
++++ b/extension/stuff.js
+@@ -21,6 +21,8 @@ Copyright (c) 2016 - 2018 Eric Goller / projecthamster <elbenfreund@projecthamst
+ */
+ 
+ 
++import Clutter from 'gi://Clutter';
++
+ // Time formatting helpers
+ 
+ /* @function formatDuration
+@@ -116,3 +118,17 @@ export function fromDbusFacts(facts) {
+ 
+     return res;
+ }
++
++/* @function setVertical
++ *
++ * Make a St.BoxLayout vertical. GNOME 48 deprecated the 'vertical' property
++ * in favour of 'orientation', and GNOME 51 removed it.
++ *
++ * @param {St.BoxLayout} - The box to modify.
++ */
++export function setVertical(box) {
++    if ('orientation' in box)
++        box.orientation = Clutter.Orientation.VERTICAL;
++    else
++        box.vertical = true;
++}
+diff --git a/extension/widgets/factsBox.js b/extension/widgets/factsBox.js
+index 7d8ffbf..9a91364 100644
+--- a/extension/widgets/factsBox.js
++++ b/extension/widgets/factsBox.js
+@@ -48,7 +48,7 @@ class FactsBox extends PopupMenu.PopupBaseMenuItem {
+ 
+         // Setup main layout box
+         let main_box = new St.BoxLayout({style_class: 'hamster-box'});
+-        main_box.set_vertical(true);
++        Stuff.setVertical(main_box);
+         this.actor.add_child(main_box);
+ 
+         // Setup *ongoing fact* label and widget
+diff --git a/extension/widgets/todaysFactsWidget.js b/extension/widgets/todaysFactsWidget.js
+index 29b9bbd..359d051 100644
+--- a/extension/widgets/todaysFactsWidget.js
++++ b/extension/widgets/todaysFactsWidget.js
+@@ -42,7 +42,7 @@ class TodaysFactsWidget extends St.ScrollView {
+ 
+ 
+         this.factsBox = new St.BoxLayout({});
+-        this.factsBox.set_vertical(true);
++        Stuff.setVertical(this.factsBox);
+         this.facts_widget = new St.Widget({
+             style_class: 'hamster-activities',
+             layout_manager: new Clutter.GridLayout(),
+-- 
+2.56.0
+
