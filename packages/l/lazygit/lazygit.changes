@@ -1,4 +1,387 @@
 -------------------------------------------------------------------
+Mon Oct 19 09:40:14 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.66.2:
+  * Bump github.com/gdamore/tcell/v3 from 3.5.0 to 3.6.0
+  * Bump github.com/cli/go-gh/v2 from 2.13.0 to 2.16.2
+  * Bump golang.org/x/sync from 0.22.0 to 0.24.0
+  * Bump golang.org/x/sys from 0.47.0 to 0.49.0
+  * Update go to 1.26
+  * Set the Go version of the CI workflow in one place
+  * Use Sprint for text that isn't a format string
+  * Bump github.com/xo/terminfo from 1.0.0 to 1.2.0
+  * README.md: Update Sponsors
+  * Leave reads to the end to the task that replaces the one reading
+  * Add a test for a read to the end that a re-render interrupts
+  * Ask before discarding a nested repository if that loses anything
+  * Don't stage nested repositories when committing with nothing staged
+  * Don't stage nested repositories
+  * Extract stageAllScope from toggleStagedAllWithLock
+  * Explain the directories that git status reports as a whole
+  * Extract wrapForReadability from conflictResolutionHint
+  * Remove a worktree inside the repo properly when discarding it
+  * Extract worktreeOfFile from markWorktreeFiles
+  * Move the menu for removing a worktree to BranchesHelper
+  * Label the directories that git status reports as a whole
+  * Move gitDirOfRepo to git_commands
+  * Translate the "submodule" label in the files panel
+  * Show a directory that git status reports as a whole as a single entry
+  * Add a test for discarding the directory of a removed submodule
+  * Quit with an error message when the repo or worktree is deleted
+  * Begin blocking input after capturing the refresh's baseline
+  * Don't panic when listing the branches fails
+  * Add a test for loading branches when listing them fails
+  * Fix crash when two worktrees have the same path
+  * Extract a helper for trimming the slashes around a worktree path
+  * Cleanup: make WorktreeLoader.pathExists return what its name says
+  * Add a test that checks that every goroutine is guarded against panics
+  * Restore the terminal if a timer or errgroup function panics
+  * Restore the terminal if a goroutine panics
+  * Restore the terminal if one of gocui's goroutines panics
+  * Extract gocui's guard against panics in workers into a helper
+  * Time double clicks by when the clicks were read
+  * Add a test for clicks that wait in the event queue
+  * Remove the unused Timestamp of replayed input events
+  * Send the two clicks of a double click in tests without waiting between
+  * Leave out the text of the rows of a rendering that states its lines
+  * Collect the records of a line when the line has been written
+  * Make the path of a diff's lines absolute once per file
+  * Number the lines of a patch in one pass when indexing its change lines
+  * Number the lines of a diff in one pass when parsing it
+  * Read the lines above the view only for a render that stays where it is
+  * Name the fields of LinesToRead in the task tests
+  * Don't let a render stop reading before it has filled the view
+  * Stop at the end of the diff when jumping to a file from a panel
+  * Extract how far a jump can scroll its target to the top of the view
+  * Add tests for renders that don't show after scrolling far down a diff
+
+-------------------------------------------------------------------
+Mon Oct 19 09:39:55 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.66.1:
+  * Update docs and schema for release
+  * Add tip about alt-clicking, which is not very discoverable
+  * Remove obsolete tip
+  * Keep the diff renderer probe out of the command log
+  * Show the diff view's narrow selection bar on the right edge too
+  * Show an error when editing a file of a diff that doesn't exist
+  * Copy the absolute path of a branch's file from the worktree that has it
+  * Open files with `o` from the worktree that has the branch checked out
+  * Add a test for opening a file of a branch checked out in another worktree
+  * Open files of a branch's diff from the worktree that has it checked out
+  * Add a test for editing a file of a branch checked out in another worktree
+  * Add a way to run GetDiff in another worktree
+  * Route the editing of a diff's files through DiffHelper
+  * Scroll a view sideways to show the search match it goes to
+  * Scroll the focused diff sideways with H and L
+  * Scroll back to the left edge when jumping to another file of a diff
+  * Don't leave a re-rendered diff scrolled further right than it reaches
+  * Keep the horizontal scroll position when a diff is rendered again
+  * Keep horizontally scrolled content out of the inclusion gutter
+  * Remove the unused View.Line and View.Word
+  * Account for the inclusion gutter when mapping view columns to content
+  * Add tests for search matches and hyperlinks beside the inclusion gutter
+  * Draw a blank for a double-width character cut off at the edge of a view
+  * Add tests for double-width characters at the edges of a view
+  * Show an error if the commit to discard lines from can't be found
+  * Show an error if the selected diff lines can't be found in the diff
+  * Show an error if the file of the selected diff lines can't be found
+  * Build the patches of all selected files before applying any of them
+  * Don't ignore a git error when listing the files of a commit's diff
+  * Resolve the files of the selected diff lines before acting on them
+  * Fix staging lines in the main view when diff.mnemonicPrefix is set
+  * Extract the decoding of a path in a diff header into unquoteDiffPath
+  * Add a test for staging a line with diff.mnemonicPrefix set
+  * Fix diff paths when diff.srcPrefix and diff.dstPrefix are set
+  * Add a test for staging a line with diff.srcPrefix and diff.dstPrefix set
+  * Fix diff paths under a top-level a/ or b/ when diff.noprefix is set
+  * Add a test for jumping to a file of a stash with diff.noprefix set
+  * Add a test for staging a line with diff.noprefix set
+  * Extract the diff.noprefix override into a GitCommandBuilder method
+
+-------------------------------------------------------------------
+Mon Oct 19 09:39:42 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.66.0:
+  * Update docs and schema for release
+  * Update translations from Crowdin
+  * Draw the commit graph in the demos with the detailed style
+  * Add a font with the branch drawing symbols for the demo recordings
+  * Add a script for re-recording every demo a page embeds
+  * Change the demos in the README to videos
+  * Record demos with vhs and publish them to GitHub's attachment store
+  * Give the tests a visible inactive border colour
+  * Confirm the nuke prompt in the nuke_working_tree demo
+  * Update demos and readme for new staging-in-main-view functionality
+  * Run demos at the size they are recorded at
+  * Check the line we start on when navigating to a list item
+  * Use accordion mode in diff_commits demo
+  * Lay out the rule below a pull request's header to the main view's width
+  * Let the prefix of a render be laid out to the width it renders at
+  * Hoist the check for a stopped task to the top of NewCmdTask
+  * Keep copied commits when switching to another worktree or repo
+  * Keep an emptied pane empty
+  * Add a test for emptying a pane before its diff's task is created
+  * Tie the loading state of a view to the task asked for last
+  * Add tests for when a view counts as loading
+  * Show what was asked for last in the main view
+  * Add a test for switching tabs twice in rapid succession
+  * Set the caption of an integration test on the UI thread
+  * Link the file names in a diffstat to where each file's diff begins
+  * Add a menu of the diff's files to jump to one directly
+  * Move where a jump lands into the diff line helper
+  * Ask a diff where each of its files begins
+  * Name the file a diff row belongs to in the repo's terms
+  * Open the selected diff line in the branch's pull request
+  * Ask for the panel beneath the focused main view in one place
+  * Name a diff line's file in the repo's terms in one place
+  * Ask one place whether a branch has a pull request
+  * Acknowledge editor clicks in the diff
+  * Give views a transient line flash
+  * Open a clicked diff line in the editor
+  * Keep mouse gesture modifiers stable
+  * Share diff-line editing with mouse actions
+  * Let mouse bindings work behind focused popups
+  * Separate redraws from view-line invalidation
+  * Remove unused per-line highlighting
+  * Cleanup: remove error return value from Gui.SetRune, Gui.draw() et al
+  * Rename ctrl+o description to "Copy selected diff lines to clipboard"
+  * Remove the last staging-panel language from tests
+  * Document line actions in the focused diff
+  * Let wrapLinesInDiffView govern the two main panes
+  * Name diff options after the view that now uses them
+  * Allow context changes while building a custom patch
+  * Remove the staging and patch-building panel shells
+  * Remove the explorer behavior behind the retired panels
+  * Move the diff-copy helper out of the explorer controller
+  * Open file diffs in the focused main view
+  * Move the last explorer workflows onto the focused diff
+  * Drop test steps owned by the retiring explorers
+  * Migrate range select tests to focused main view
+  * Exercise commit and stash flows through the focused diff
+  * Build mixed custom patches from the focused diff
+  * Keep partial rename patches on the focused diff
+  * Manage patch lifetime from the focused diff
+  * Build applied patches from the focused diff
+  * Keep historical diff actions off the explorers
+  * Move partial-patch destination tests onto the commit diff
+  * Move whole-patch destination tests onto the commit diff
+  * Keep patch-move conflict coverage on the focused diff
+  * Move index-operation edge cases onto the focused diff
+  * Preserve whole-file operations for added and deleted files
+  * Expose the missing whole-file semantics in the focused diff
+  * Exercise patch-move selection recovery through the diff
+  * Keep whole-file discard coverage on the surviving diff view
+  * Let focused diff tests own shared staging behavior
+  * Remove the hint about hunk selection being the default
+  * Take lines back out of the custom patch from the pane showing it
+  * Materialize the custom patch so the diff renderer can show it
+  * Mark the lines of a commit's diff that are in the custom patch
+  * Build a custom patch from a commit's diff, and discard lines from it
+  * Say which change line is meant in one way
+  * Keep the diff selection when a commit is rewritten under it
+  * Move the post-action reveal onto the diff-line helper
+  * Give the panels showing a commit's diff one voice about it
+  * Let the patch builder be told which lines by their identity
+  * Draw a gutter of inclusion marks over a view's content
+  * Edit the selected hunk from the focused main view
+  * Don't refresh while the editor still has the hunk
+  * Ask a parsed patch which of its lines a selection covers
+  * Hold input back until the selection has moved on
+  * Replay withheld keys on a later pass of the event loop
+  * Cover the cases where the next change isn't the obvious one
+  * Show a selection only over the diff the panel offers
+  * Show git's own diff when the renderer's can't be acted on
+  * Say what a diff command's output is for
+  * Commit and find a fixup base from the focused main view
+  * Discard the selected diff lines from the focused main view
+  * Carry the acted-on lines into the pane the work lands in
+  * Leave a pane that only the permanent split keeps around
+  * Stop a render restore saying whether it placed the view
+  * Follow the focus into the pane that is left
+  * Give the focused main view's selection a home outside the controllers
+  * Carry the selection to the next change after staging
+  * Extract the shared core of the diff-line restores
+  * Act on a whole file's changes as acting on the file
+  * Stage and unstage diff lines from the focused main view
+  * Leave a command with nothing to say out of the options bar
+  * Copy the selected diff lines from the focused main view
+  * Share how a ref's diff endpoints are derived
+  * Always show a file's staged changes in the lower pane
+  * Let the main section show the secondary pane alone
+  * Let an emptied main pane forget what it was showing
+  * Add a test for a main pane coming back after being emptied
+  * Keep both ends of a selected range across a re-render
+  * Index a rendering by the diff lines it shows
+  * Keep your place in the diff when ignoring whitespace
+  * Keep your place in the diff when switching diff renderers
+  * Keep your place in the diff when changing the context size
+  * Let a view be read while it is re-rendering
+  * Let a re-render put the view back where it was
+  * Fix AGENTS.md markdown syntax
+  * AGENTS.md additions
+  * Follow the selection with the search in the focused main view
+  * Draw the diff selection as a narrow bar rather than across the line
+  * Edit the selected line of a diff from the focused main view
+  * Jump by hunk and by file in the focused main view
+  * Select a range of diff lines by dragging
+  * Select a whole change block when focusing the main view in hunk mode
+  * Make selecting a change block reachable without a controller
+  * Let a main pane be named without the context package
+  * Show a selection in the focused main view
+  * Separate reading a fixed number of lines from reading to the end
+  * Guard View.LinesHeight against a concurrent write
+  * Take the focused main view's context by its concrete type
+  * Remove the plumbing for clicking the focused main view
+  * Stop diving into a patch explorer when clicking the focused main view
+  * Classify which side panels show a diff in their main view
+  * Fold ViewSelectionController into MainViewController
+  * Ask diff renderers for OSC 1717 metadata
+  * Take a diff renderer at its word about a diff line
+  * Rename parsedDiffLine.RelPath to Path
+  * Keep the OSC 1717 records that cover no cell
+  * Swallow a diff renderer's protocol handshake
+  * Read the OSC 1717 records a diff renderer emits
+  * Recognize OSC numbers with more than one digit
+  * Decode the path of a diff header the way git writes it
+  * Recover the identity of a diff line from the rendered diff
+  * Keep a view's lines as they were written, beside their cells
+  * Clear a pending newline when overwriting lines in place
+  * Demonstrate that overwriting lines after a pending newline lands a line low
+  * Let callers map between view lines and buffer lines
+  * Add a well-formedness check for a parsed patch
+  * Add an old-file counterpart to Patch.LineNumberOfLine
+  * Keep a resized view's place in the content it wraps
+  * Demonstrate that resizing a wrapping view moves its selection
+  * Report a wrapped selection by the lines of content it covers
+  * Demonstrate that a wrapped selection is reported by segment
+  * Use the detailed commit graph automatically in terminals that draw it
+  * Add an option to draw the commit graph with branch drawing symbols
+  * Extract the choice of a graph cell's box drawing characters
+  * Record how lines run through the cells of the commit graph
+  * Stop drawing a line below root commits in the commit graph
+  * Demonstrate that the graph continues the line below a root commit
+  * Keep ReadToEnd's task busy until its callback has returned
+  * Add a test for the task that ReadToEnd holds while it calls back
+  * Lay git's own diff out to the width the layout gives the view
+  * Demonstrate that git's diffstat keeps the width from before a screen mode change
+  * Revert the change of InactiveBorderColor to "dim"
+  * Make shift-backspace do the same as backspace in editors
+  * Allow pushing a range selection of tags
+  * Let the command for pushing tags take several tags
+  * Allow deleting a range selection of tags
+  * Extract the remote prompt and confirmation of deleting a remote tag
+  * Let the commands for deleting tags take several tags
+  * Generalize showing an inline status on several branches to any items
+  * Offer to update the branches stacked below the current one when pulling
+  * Extract showing an inline status on several branches
+  * Split fast-forwarding branches into preparing and running it
+  * Auto-forward branches that are checked out in other worktrees
+  * Keep fast-forwarding the other branches when one of them fails
+  * Auto-forward branches on a worker
+  * Refuse to fast-forward a branch being rebased or bisected in a worktree
+  * Add a test for fast-forwarding a branch being rebased in a worktree
+  * Write a reflog message when moving branch refs
+  * Allow fast-forwarding a range of branches
+  * Fast-forward branches whose upstream branch was rewritten
+  * Split fast-forwarding a branch into fetching and updating it
+  * Move fast-forwarding a branch into BranchesHelper
+  * Generalize CanDoFastForwardMerge into IsAncestor
+  * Dim the divergence of a branch whose upstream was rewritten
+  * Rename the loadBehindCounts parameter to loadExtraInfo
+  * Add a function to tell whether a branch has commits of its own
+  * Ignore escape sequences when wrapping text for a view
+  * Offer to push the branches stacked below the current one
+  * Split pushing the current branch into resolving its destination and pushing
+  * Add a function to find the branches stacked below a branch
+  * Generalize the push command to take a remote and a list of refspecs
+  * Store each branch's push destination in the branch model
+  * Let users turn off the bold text of the selected line
+  * Stop brightening the text of the selected line
+  * Pick a selection color that is readable on light backgrounds
+  * Draw the borders of inactive windows in faint text
+  * Pick the built-in theme defaults for the terminal's background
+  * Show commits outside the bisect range in faint text
+  * Allow dim in theme colors
+  * Let strikethrough work in the theme colors that gocui draws
+  * Add a dim text style
+  * Add gui.darkTheme and gui.lightTheme
+  * Let a config struct appear at more than one path in the schema
+  * Rename setColorScheme to applyTheme
+  * Move gui.authorColors and gui.branchColorPatterns into gui.theme
+  * Try branch color patterns in the order they are written
+  * Extract converting a configured color to a text style
+  * Migrate gui.branchColors to gui.branchColorPatterns
+  * Tell diff renderers whether the terminal is dark or light
+  * Move re-rendering the main view after a diff renderer change to a helper
+  * Let the command of a diff renderer be a template
+  * Resolve the commands of all kinds of diff renderers in one place
+  * Pick the colors of authors for the terminal's background
+  * Derive author colors in a color space where lightness means brightness
+  * Add a tool that creates a repository of authors at the color extremes
+  * Split an author's color into where the name lands and the color there
+  * Let author colors follow a change of gui.authorColors
+  * Demonstrate that author colors don't follow a change of gui.authorColors
+  * Keep the configured author styles apart from the derived ones
+  * Detect whether the terminal is dark or light
+  * Keep coverage errors out of the output of the pipeline tests
+  * Let a render refresh the index again on Windows
+  * Render a diff without a pty on Windows
+  * Remove the LAZYGIT_COLUMNS environment variable
+  * Lay a diffstat out to the width of the view showing it
+  * Demonstrate that a diffstat is laid out for 80 columns
+  * Rename RunPtyTask to RunDiffRendererTask
+  * Separate setting up a render from running it in a pty
+  * Let an external diff command be told the width it renders at
+  * Hand an external diff command to git through the environment
+  * Let a stdin filter be told the width of the diff it renders
+  * Add a pipeline whose output can be read as it arrives
+  * Let a pipeline's commands notice when the next one is gone
+  * Extract the reusable parts of a command pipeline
+  * Let the branches refresh wait for the remotes
+  * Put the remotes in the model before loading their branches
+  * Add gopls to the nix dev shell
+  * Keep the topmost directory selected when a compressed directory splits
+  * Expand to the new half of a rename after rebuilding the tree
+  * Add a test for following a file into a rename in a collapsed directory
+  * Compare user-facing paths when re-finding the selection after a refresh
+  * Add a test for the selection after a selected rename splits in two
+  * Remove codespell again
+  * README.md: Update Sponsors
+  * Sort remote branches with the same committer date in stack order
+  * Load remote branches as one list and group them by remote afterwards
+  * Hand the RemoteLoader its GitCommon
+  * Sort local branches with the same committer date in stack order
+  * Keep the positions of malformed ahead-behind fields
+  * Let the caller of buildAheadBehindForEachRefArgs choose the refs
+  * Move the ahead-behind for-each-ref helpers to their own file
+  * Reserve the width the whole reflog needs for its date column
+  * Demonstrate that the reflog's date column is as wide as the visible lines need
+  * Hand the whole reflog to GetReflogCommitListDisplayStrings
+  * Reserve the width that all commits need for a commit list's columns
+  * Demonstrate that a commit list's columns are as wide as the visible lines need
+  * Don't strip leading spaces from a scenario's expected output
+  * Return early from WithPadding when there is nothing to pad to
+  * Separate the text of a commit's hash, bisect and action cells from its styling
+  * Cache Decolorise's result for a string that decolorises to nothing
+  * Ask git for the branch when the HEAD file doesn't hold it
+  * Export ForOtherRepo
+  * Demonstrate that the recent repos menu shows ".invalid" for a reftable repo
+  * Resolve a relative gitdir against the repo it belongs to
+  * Demonstrate that the recent repos menu can't read a submodule's branch
+  * Show "HEAD detached at <hash>" in the recent repos menu
+  * Pull the reading of a repo's HEAD out of getCurrentBranch
+  * Make the worktrees panel's detached-head text translatable
+  * Truncate the path column of the recent repos menu too
+  * Give the maximum width of a menu a name
+  * Add a truncation function that puts the ellipsis in the middle
+  * Truncate the repo and branch names in the recent repos menu
+  * Show the containing directory instead of the full path in the recent repos menu
+  * Collect the current branches of the recent repos in a slice
+  * Let a popup panel have an odd width
+  * Give popup panels their full width whenever the window has room for it
+
+-------------------------------------------------------------------
 Sat Oct 03 16:24:29 UTC 2026 - Mads Skau Nyland <suse.penholder495@passmail.com>
 
 - Update to version 0.65.1:

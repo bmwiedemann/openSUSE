@@ -311,4 +311,12 @@ expertise with the git command line.</comment>
     <comment>Update to version 0.65.1 (forwarded request 1382261 from muthyo)</comment>
     <requestid>1382272</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bd3c9a086d9c0c56d5f89490252d644a</srcmd5>
+    <version>0.66.2</version>
+    <time>1792492868</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.66.2 (forwarded request 1386214 from ecsos)</comment>
+    <requestid>1386277</requestid>
+  </revision>
 </revisionlist>
