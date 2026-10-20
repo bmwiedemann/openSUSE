@@ -28,11 +28,10 @@
 %define idevice disabled
 %endif
 Name:           upower
-Version:        1.91.4
+Version:        1.91.5
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
-Group:          System/Daemons
 URL:            https://upower.freedesktop.org/
 #Source:         https://gitlab.freedesktop.org/upower/upower/-/archive/v%%{version}/upower-v%%{version}.tar.bz2
 Source:         %{name}-%{version}.tar.zst
@@ -42,9 +41,6 @@ Patch1:         skip-tests-install.patch
 # PATCH-FIX-OPENSUSE: No need on SUSE to grant root user addtional polkit rights, bsc#1265867
 # This is a revert of mainline commit d75f2dbee4df2bc20df840
 Patch3:         policy-org.freedesktop.upower.rules-grant-permission-for-skipping-the-inhibitor.patch
-
-BuildRequires:  gobject-introspection-devel >= 0.9.9
-BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  meson >= 0.60.0
@@ -54,6 +50,8 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.76.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.76.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.76.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.76.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.9
+BuildRequires:  pkgconfig(gtk-doc) >= 1.11
 BuildRequires:  pkgconfig(gudev-1.0) >= 235
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(polkit-gobject-1)
@@ -62,7 +60,7 @@ BuildRequires:  pkgconfig(udev)
 %{?systemd_requires}
 %if %{with libimobile}
 BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 0.9.7
-%if %libplist2
+%if %{libplist2}
 BuildRequires:  pkgconfig(libplist-2.0)
 %else
 BuildRequires:  pkgconfig(libplist) >= 0.12
@@ -78,7 +76,6 @@ system) are restricted using PolicyKit.
 
 %package -n libupower-glib3
 Summary:        Power Device Enumeration Framework - Library
-Group:          System/Daemons
 Recommends:     %{name}
 
 %description -n libupower-glib3
@@ -90,7 +87,6 @@ system) are restricted using PolicyKit.
 
 %package -n typelib-1_0-UpowerGlib-1_0
 Summary:        Power Device Enumeration Framework - Introspection bindings
-Group:          System/Daemons
 
 %description -n typelib-1_0-UpowerGlib-1_0
 UPower is an abstraction for enumerating power devices, listening to
@@ -104,7 +100,6 @@ libupower-glib.
 
 %package -n libupower-glib-devel
 Summary:        Power Device Enumeration Framework - Development Files
-Group:          Development/Libraries/Other
 Requires:       libupower-glib3 = %{version}
 Requires:       typelib-1_0-UpowerGlib-1_0 = %{version}
 Provides:       %{name}-devel = %{version}
@@ -141,14 +136,14 @@ system) are restricted using PolicyKit.
 %post
 %{?udev_rules_update:%udev_rules_update}
 %service_add_post upower.service
-%udev_hwdb_update
+%{udev_hwdb_update}
 
 %preun
 %service_del_preun upower.service
 
 %postun
 %service_del_postun upower.service
-%udev_hwdb_update
+%{udev_hwdb_update}
 
 %ldconfig_scriptlets -n libupower-glib3
 

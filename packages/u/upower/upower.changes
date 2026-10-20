@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:55:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.91.5:
+  * Prefer live sysfs threshold values over hwdb CHARGE_LIMIT
+  * Keep keyboard backlight event IO active on ENODATA/EINTR
+  * Hide device batteries that report being offline
+  * Remove all BlueZ devices when the service vanishes
+- Spec cleanup: drop obsolete Group tags, use pkgconfig()
+  style BuildRequires
+
+-------------------------------------------------------------------
 Thu Oct  1 17:33:04 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 * Release 1.91.4
