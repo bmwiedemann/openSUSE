@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:04:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.12.4 (upstream tag Version-1-12-4):
+  * 1.12.3: fix Windows CI, macOS version macros, numpy 2.4 ptp
+    compatibility.
+  * 1.12.4: Python 3.14 reference-counting fixes, C++17
+    deprecation fixes.
+- Modernize spec file (pkgconfig BuildRequires, drop Group).
+
+-------------------------------------------------------------------
 Sat Apr  5 09:17:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.2

@@ -1,7 +1,7 @@
 #
 # spec file for package vigra
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define _shlibname libvigraimpex11
 %if 0%{?suse_version} < 1600
 %bcond_with numpy
 %else
@@ -23,36 +24,41 @@
 %bcond_without numpy
 %endif
 %endif
-
 #LEMON build doesn't work right now (shared library problem)
 %bcond_with    lemon
-%define _shlibname libvigraimpex11
 Name:           vigra
-Version:        1.12.2
+Version:        1.12.4
 Release:        0
 Summary:        Computer vision Library
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://ukoethe.github.io/vigra/
-Source:         https://github.com/ukoethe/vigra/archive/refs/tags/Version-1-12-2.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/ukoethe/vigra/archive/refs/tags/Version-1-12-4.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.12
 BuildRequires:  fdupes
-BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
-BuildRequires:  hdf5-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  openexr-devel
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(OpenEXR)
+BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(fftw3f)
+BuildRequires:  pkgconfig(fftw3l)
+BuildRequires:  pkgconfig(hdf5)
+BuildRequires:  pkgconfig(hdf5_cpp)
+BuildRequires:  pkgconfig(hdf5_fortran)
+BuildRequires:  pkgconfig(hdf5_hl)
+BuildRequires:  pkgconfig(hdf5_hl_cpp)
+BuildRequires:  pkgconfig(hdf5_hl_fortran)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(zlib)
 %if %{with numpy}
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_python3-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(python3-embed)
 %endif
 %if %{with lemon}
 BuildRequires:  lemon-devel
@@ -68,7 +74,6 @@ execution speed.
 
 %package -n %{_shlibname}
 Summary:        Computer vision Library
-Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
@@ -82,17 +87,23 @@ execution speed.
 
 %package devel
 Summary:        Development files for VIGRA Library
-Group:          Development/Libraries/C and C++
 Requires:       %{_shlibname} = %{version}
-Requires:       fftw3-devel
-Requires:       hdf5-devel
 Requires:       libjpeg-devel
 Requires:       libpng-devel
 Requires:       libstdc++-devel
-Requires:       libtiff-devel
-Requires:       openexr-devel
 Requires:       python3-base
-Requires:       zlib-devel
+Requires:       pkgconfig(OpenEXR)
+Requires:       pkgconfig(fftw3)
+Requires:       pkgconfig(fftw3f)
+Requires:       pkgconfig(fftw3l)
+Requires:       pkgconfig(hdf5)
+Requires:       pkgconfig(hdf5_cpp)
+Requires:       pkgconfig(hdf5_fortran)
+Requires:       pkgconfig(hdf5_hl)
+Requires:       pkgconfig(hdf5_hl_cpp)
+Requires:       pkgconfig(hdf5_hl_fortran)
+Requires:       pkgconfig(libtiff-4)
+Requires:       pkgconfig(zlib)
 %if %{with numpy}
 Requires:       python3-numpy
 %endif
@@ -108,7 +119,6 @@ execution speed.
 %if %{with numpy}
 %package -n python3-vigranumpy
 Summary:        Numpy support for VIGRA library
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       python3-numpy
 
@@ -123,8 +133,8 @@ execution speed. This package contains python / numpy bindings for VIGRA
 %endif
 
 %prep
-%autosetup -p1 -n%{name}-Version-1-12-2
-sed -i -e "1s|#!.*|#!/usr/bin/python3|" config/vigra-config.in
+%autosetup -p1 -n%{name}-Version-1-12-4
+sed -i -e "1s|#!.*|#!%{_bindir}/python3|" config/vigra-config.in
 
 %build
 %cmake \
