@@ -19,4 +19,12 @@ Green on x86_64 and aarch64 across Tumbleweed, Slowroll and Leap
 16.1/16.0/15.7; 653 tests run in %check; rpmlint clean.</comment>
     <requestid>1376999</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>31b17be8b2341f909bceab27bd198034</srcmd5>
+    <version>0.12.0</version>
+    <time>1792492767</time>
+    <user>anag_factory</user>
+    <comment>Update tilth to 0.12.0</comment>
+    <requestid>1386211</requestid>
+  </revision>
 </revisionlist>

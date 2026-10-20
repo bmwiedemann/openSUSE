@@ -17,7 +17,7 @@
 
 
 Name:           tilth
-Version:        0.10.1
+Version:        0.12.0
 Release:        0
 Summary:        Tree-sitter indexed code lookups for humans and AI agents
 # Legal-Review-Notice: upstream is MIT; the remaining tags come from crates

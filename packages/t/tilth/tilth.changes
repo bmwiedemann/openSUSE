@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 19 09:41:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.0 (skips 0.11.0, no separate update staged):
+  * v0.11.0: MCP search gains full flag (cap 10 to 100); capped
+    results report N of M matches; content search walks the whole
+    tree with stable results; Rust calls inside macro and
+    attribute arguments are found; grok separates tests from
+    callers; tilth diff honours custom git config; tree-sitter 0.27
+  * v0.12.0: Go type, const and var declarations are definitions
+    now; a file passed as scope is an error (was a silent widen
+    to root); omitted scope searches root; Go/Rust comment
+    markers no longer doubled; /pattern/flags is a regex on CLI;
+    tilth_savings tool removed; tilth install learns
+    antigravity-cli host; builds clean on Rust 1.99
+
+-------------------------------------------------------------------
 Thu Sep 10 17:45:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - New package: tilth 0.10.1, a tree-sitter based code indexer that
