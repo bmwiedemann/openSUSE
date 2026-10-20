@@ -542,7 +542,6 @@ unsorted:
   - alee-fonts 
   - alembic-devel 
   - alevt 
-  - alevtd 
   - alex 
   - aliftype-amiri-fonts 
   - aliyun-alinas-utils 
@@ -10498,6 +10497,7 @@ unsorted:
   - klatexformula-apidoc 
   - klavaro 
   - kldap-devel 
+  - klee-uclibc-devel-static 
   - kleingebaeck 
   - klettres 
   - klettres-lang 
@@ -11404,12 +11404,12 @@ unsorted:
   - libIPSec_MB2 
   - libIccXML-devel 
   - libIccXML2 
-  - libIex-3_4-33-32bit 
+  - libIex-3_5-34-32bit 
   - libIlmCtl1_5 
   - libIlmCtlMath1_5 
   - libIlmCtlSimd1_5 
   - libIlmImfCtl1_5 
-  - libIlmThread-3_4-33-32bit 
+  - libIlmThread-3_5-34-32bit 
   - libImath-3_2-30-32bit 
   - libIrrlicht1_8 
   - libKChart2 
@@ -11528,11 +11528,11 @@ unsorted:
   - libOpenCL1 
   - libOpenCL1-32bit 
   - libOpenColorIO2_6 
-  - libOpenEXR-3_4-33-32bit 
-  - libOpenEXRCore-3_4-33-32bit 
-  - libOpenEXRUtil-3_4-33 
-  - libOpenEXRUtil-3_4-33-32bit 
-  - libOpenEXRUtil-3_4-33-x86-64-v3 
+  - libOpenEXR-3_5-34-32bit 
+  - libOpenEXRCore-3_5-34-32bit 
+  - libOpenEXRUtil-3_5-34 
+  - libOpenEXRUtil-3_5-34-32bit 
+  - libOpenEXRUtil-3_5-34-x86-64-v3 
   - libOpenIPMI0 
   - libOpenIPMIui1 
   - libOpenImageDenoise2 
@@ -12287,12 +12287,12 @@ unsorted:
   - libarmnnTestUtils3-opencl 
   - libarpack2 
   - libarprec0 
-  - libarrow2500 
-  - libarrow_acero2500 
-  - libarrow_compute2500 
-  - libarrow_dataset2500 
-  - libarrow_flight2500 
-  - libarrow_flight_sql2500 
+  - libarrow2600 
+  - libarrow_acero2600 
+  - libarrow_compute2600 
+  - libarrow_dataset2600 
+  - libarrow_flight2600 
+  - libarrow_flight_sql2600 
   - libasan4 
   - libasan4-32bit 
   - libasan8-32bit 
@@ -12808,11 +12808,11 @@ unsorted:
   - libcddb-devel 
   - libcddb-utils 
   - libcddb2-32bit 
-  - libcdio++1 
-  - libcdio++1-32bit 
+  - libcdio++2 
+  - libcdio++2-32bit 
   - libcdio-devel 
   - libcdio-paranoia-devel 
-  - libcdio19-32bit 
+  - libcdio21-32bit 
   - libcdio_cdda2-32bit 
   - libcdio_paranoia2 
   - libcdio_paranoia2-32bit 
@@ -13209,7 +13209,7 @@ unsorted:
   - libdovi3-32bit 
   - libdpdk-26 
   - libdqlite0 
-  - libdraco9 
+  - libdraco11 
   - libdrm-devel 
   - libdrm-devel-32bit 
   - libdrm-tools 
@@ -14425,8 +14425,8 @@ unsorted:
   - libisl23-32bit 
   - libiso9660++1 
   - libiso9660++1-32bit 
-  - libiso9660-12 
-  - libiso9660-12-32bit 
+  - libiso9660-13 
+  - libiso9660-13-32bit 
   - libisoburn-devel 
   - libisobusfs0 
   - libisofs-devel 
@@ -15313,7 +15313,7 @@ unsorted:
   - libnxml0 
   - libo2scl0 
   - liboaml1 
-  - liboapv1-32bit 
+  - liboapv11-32bit 
   - liboath-devel 
   - liboauth-devel 
   - libobby-0_4-1 
@@ -15599,7 +15599,7 @@ unsorted:
   - libparlatype7 
   - libparpack2-openmpi4 
   - libparpack2-openmpi5 
-  - libparquet2500 
+  - libparquet2600 
   - libparserutils-devel 
   - libparserutils0 
   - libpartio1 
@@ -15638,9 +15638,9 @@ unsorted:
   - libperseus-sdr-devel 
   - libperseus-sdr-udev 
   - libperseus-sdr0 
-  - libpetsc3_25 
-  - libpetsc3_25-openmpi4 
-  - libpetsc3_25-openmpi5 
+  - libpetsc3_26 
+  - libpetsc3_26-openmpi4 
+  - libpetsc3_26-openmpi5 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -15844,7 +15844,7 @@ unsorted:
   - libpwquality-devel 
   - libpxbackend-1_0-32bit 
   - libpxbackend-1_0-mini 
-  - libpystring0_0 
+  - libpystring1 
   - libpythia8 
   - libpythia8hepmc3 
   - libpythia8lhapdf6 
@@ -16086,6 +16086,7 @@ unsorted:
   - libquicktime-devel 
   - libquicktime-lang 
   - libquicktime-tools 
+  - libquicktime0 
   - libquicktime0-32bit 
   - libquo-devel 
   - libquo8 
@@ -16475,7 +16476,7 @@ unsorted:
   - libsexp1 
   - libsexpp0 
   - libsfml2-2_6 
-  - libsfml3-3_0 
+  - libsfml3-3_1 
   - libsgutils-devel 
   - libsgx_dcap_gl1 
   - libsgx_dcap_quoteverify1 
@@ -16715,7 +16716,7 @@ unsorted:
   - libstfl0 
   - libstilview-devel 
   - libstilview0 
-  - libstk4.6.2 
+  - libstk5.0.1 
   - libstl-thumb 
   - libstlink1 
   - libstorage-ng-devel 
@@ -17375,13 +17376,10 @@ unsorted:
   - libwebrtc-audio-processing-1-3-32bit 
   - libwebrtc-audio-processing-1-devel 
   - libwebrtc-audio-processing-1-devel-static 
-  - libwebrtc-audio-processing-2-1 
+  - libwebrtc-audio-processing-2-1-32bit 
   - libwebrtc-audio-processing-devel 
   - libwebrtc-audio-processing-devel-static 
   - libwebrtc-suse137 
-  - libwebrtc_audio_processing-devel 
-  - libwebrtc_audio_processing-devel-static 
-  - libwebrtc_audio_processing1 
   - libwebsockets-devel 
   - libwebsockets-evlib_ev 
   - libwebsockets-evlib_event 
@@ -17724,7 +17722,7 @@ unsorted:
   - libz-ng-compat1-32bit 
   - libz-ng2 
   - libz-ng2-32bit 
-  - libz3-5_1 
+  - libz3-5_3 
   - libz_rs1 
   - libzarchive0_1 
   - libzbar-devel 
@@ -19050,6 +19048,7 @@ unsorted:
   - mcp-bugzilla 
   - mcp-dap-server 
   - mcp-redmine 
+  - mcp-server-cockpit 
   - mcp-server-managesw 
   - mcp-server-snapper 
   - mcp-server-snapper-testsuite 
@@ -19571,7 +19570,6 @@ unsorted:
   - motion 
   - motoya-lcedar-fonts 
   - motoya-lmaru-fonts 
-  - motv 
   - mousai 
   - mousai-lang 
   - mousam 
@@ -23372,10 +23370,8 @@ unsorted:
   - physlock 
   - pi-coding-agent 
   - pi-coding-agent-examples 
-  - pia 
   - pianobar 
   - picard 
-  - picard-lang 
   - picmi 
   - picmi-lang 
   - pico 
@@ -45779,6 +45775,7 @@ unsorted:
   - tkimg-devel 
   - tkinfo 
   - tkxcd 
+  - tl-expected-devel 
   - tllist-devel 
   - tlp 
   - tlp-bash-completion 
@@ -46334,7 +46331,6 @@ unsorted:
   - tuxpaint-stamps-symbols 
   - tuxpaint-stamps-town 
   - tuxpaint-stamps-vehicles 
-  - tv-common 
   - tv-fonts 
   - tvbrowser 
   - tvheadend 
@@ -46448,7 +46444,6 @@ unsorted:
   - typelib-1_0-GdkPixdata-2_0 
   - typelib-1_0-Gee-0_8 
   - typelib-1_0-Gepub-0_7 
-  - typelib-1_0-Gfls-1 
   - typelib-1_0-Ggit-1_0 
   - typelib-1_0-Gitg-1_0 
   - typelib-1_0-GitgExt-1_0 
@@ -46785,7 +46780,6 @@ unsorted:
   - upmpdcli-bbc 
   - upmpdcli-config 
   - upmpdcli-hra 
-  - upmpdcli-mother-earth-radio 
   - upmpdcli-radio-browser 
   - upmpdcli-radio-paradise 
   - upmpdcli-radios 
@@ -46868,8 +46862,6 @@ unsorted:
   - uwsm 
   - uzdoom 
   - v2ray-core 
-  - v4l-conf 
-  - v4l-tools 
   - v4l-utils 
   - v4l-utils-devel-tools 
   - v4l-utils-lang 
@@ -47535,7 +47527,6 @@ unsorted:
   - xautolock 
   - xautomation 
   - xaw3dd 
-  - xawtv 
   - xbacklight 
   - xbanish 
   - xbase 
@@ -47884,6 +47875,7 @@ unsorted:
   - xpra 
   - xpra-html5 
   - xprintidle 
+  - xpumanager 
   - xquarto 
   - xrdp 
   - xrdp-devel 

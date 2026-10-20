@@ -1193,10 +1193,10 @@ packagesets:
    - libGraphicsMagick3-config # reason: dvd:inkscape
    - libHX43 # reason: dvd:patterns-base-console
    - libICE6 # reason: dvd:openSUSE-release
-   - libIex-3_4-33 # reason: dvd:patterns-gnome-gnome
-   - libIex-3_4-33-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - libIlmThread-3_4-33 # reason: dvd:patterns-gnome-gnome
-   - libIlmThread-3_4-33-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libIex-3_5-34 # reason: dvd:patterns-gnome-gnome
+   - libIex-3_5-34-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libIlmThread-3_5-34 # reason: dvd:patterns-gnome-gnome
+   - libIlmThread-3_5-34-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libImath-3_2-30 # reason: dvd:patterns-gnome-gnome
    - libImlib2-1 # reason: dvd:patterns-kde-kde
    - libJudy1 # reason: dvd:patterns-server-lamp_server
@@ -1461,10 +1461,10 @@ packagesets:
    - libLerc4 # reason: dvd:openSUSE-release
    - libMagickCore-7_Q16HDRI10 # reason: dvd:patterns-gnome-gnome
    - libMagickWand-7_Q16HDRI10 # reason: dvd:patterns-gnome-gnome
-   - libOpenEXR-3_4-33 # reason: dvd:patterns-gnome-gnome
-   - libOpenEXR-3_4-33-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - libOpenEXRCore-3_4-33 # reason: dvd:patterns-gnome-gnome
-   - libOpenEXRCore-3_4-33-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libOpenEXR-3_5-34 # reason: dvd:patterns-gnome-gnome
+   - libOpenEXR-3_5-34-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libOpenEXRCore-3_5-34 # reason: dvd:patterns-gnome-gnome
+   - libOpenEXRCore-3_5-34-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libPlasma5Support6 # reason: dvd:patterns-kde-kde
    - libPlasma5Support6-lang # reason: dvd:patterns-kde-kde
    - libPlasma6-lang # reason: dvd:patterns-kde-kde
@@ -1807,7 +1807,7 @@ packagesets:
    - libcdda_interface0 # reason: dvd:patterns-kde-kde
    - libcdda_paranoia0 # reason: dvd:patterns-kde-kde
    - libcddb2 # reason: dvd:patterns-kde-kde
-   - libcdio19 # reason: dvd:patterns-gnome-gnome
+   - libcdio21 # reason: dvd:patterns-gnome-gnome
    - libcdio_cdda2 # reason: dvd:patterns-media-rest_dvd
    - libcdr-0_1-1 # reason: dvd:openSUSE-release
    - libcdrdeflt1_0 # reason: dvd:patterns-gnome-gnome
@@ -2029,9 +2029,9 @@ packagesets:
    - libgedit-gfls-1-0 # reason: dvd:gedit
    - libgedit-gfls-lang # reason: dvd:gedit
    - libgedit-gtksourceview # reason: dvd:gedit
-   - libgedit-gtksourceview-300-5 # reason: dvd:gedit
+   - libgedit-gtksourceview-300-6 # reason: dvd:gedit
    - libgedit-gtksourceview-lang # reason: dvd:gedit
-   - libgedit-tepl-6-4 # reason: dvd:gedit
+   - libgedit-tepl-6-5 # reason: dvd:gedit
    - libgedit-tepl-6-lang # reason: dvd:gedit
    - libgee-0_8-2 # reason: dvd:patterns-gnome-gnome
    - libgegl-0_4-0 # reason: dvd:patterns-gnome-gnome
@@ -2215,7 +2215,7 @@ packagesets:
    - libidn2-0-32bit # reason: dvd:patterns-media-rest_dvd
    - libidn2-lang # reason: dvd:openSUSE-release
    - libiec61883-0 # reason: dvd:openSUSE-release
-   - libimagequant0 # reason: dvd:inkscape
+   - libimagequant0_4 # reason: dvd:inkscape
    - libimobiledevice-1_0-6 # reason: dvd:patterns-kde-kde
    - libimobiledevice-glue-1_0-0 # reason: dvd:patterns-kde-kde
    - libini_config8 # reason: dvd:patterns-server-directory_server
@@ -2447,14 +2447,14 @@ packagesets:
    - libnotify4 # reason: dvd:openSUSE-release
    - libnpth0 # reason: dvd:openSUSE-release
    - libnss_usrfiles2 # reason: dvd:openSUSE-release
-   - libntfs-3g90 # reason: dvd:patterns-kde-kde
+   - libntfs-3g91 # reason: dvd:patterns-kde-kde
    - libntlm0 # reason: dvd:patterns-gnome-gnome
    - libnuma1 # reason: dvd:patterns-kde-kde
    - libnumbertext-1_0-0 # reason: dvd:openSUSE-release
    - libnumbertext-data # reason: dvd:openSUSE-release
    - libnvme1 # reason: dvd:grub2
    - libnvme3-1 # reason: dvd:patterns-media-rest_dvd
-   - liboapv1 # reason: dvd:openSUSE-release
+   - liboapv11 # reason: dvd:openSUSE-release
    - liboauth0 # reason: dvd:patterns-gnome-gnome
    - libobjc4 # reason: dvd:patterns-kde-kde
    - libodbc2 # reason: dvd:patterns-server-lamp_server
@@ -2601,7 +2601,6 @@ packagesets:
    - libqt5-qtxmlpatterns-imports # reason: dvd:patterns-kde-kde
    - libqt6keychain1 # reason: dvd:patterns-kde-kde
    - libquadmath0 # reason: dvd:patterns-gnome-gnome
-   - libquicktime0 # reason: dvd:patterns-gnome-gnome
    - libqxp-0_0-0 # reason: dvd:openSUSE-release
    - librados2 # reason: dvd:patterns-media-rest_dvd
    - libraptor2-0 # reason: dvd:openSUSE-release
@@ -2905,6 +2904,7 @@ packagesets:
    - libwebpdemux2 # reason: dvd:openSUSE-release
    - libwebpmux3 # reason: dvd:openSUSE-release
    - libwebrtc-audio-processing-1-3 # reason: dvd:openSUSE-release
+   - libwebrtc-audio-processing-2-1 # reason: dvd:patterns-gnome-gnome
    - libwinpr3-3 # reason: dvd:patterns-gnome-gnome
    - libwireplumber-0_5-0 # reason: dvd:openSUSE-release
    - libwlembed-0-0 # reason: dvd:patterns-xfce-xfce
@@ -4098,6 +4098,7 @@ packagesets:
    - typelib-1_0-Gegl-0_4 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Geoclue-2_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-GeocodeGlib-2_0 # reason: dvd:patterns-gnome-gnome
+   - typelib-1_0-Gfls-1 # reason: dvd:gedit
    - typelib-1_0-Gio-2_0 # reason: dvd:openSUSE-release
    - typelib-1_0-GjsPrivate-1_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-GnomeBG-4_0 # reason: dvd:patterns-gnome-gnome
@@ -5009,8 +5010,8 @@ packagesets:
    - libBasicUsageEnvironment2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libFLAC14 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libICE6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libIex-3_4-33 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libIlmThread-3_4-33 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libIex-3_5-34 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libIlmThread-3_5-34 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libImath-3_2-30 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libKDSoapWSDiscoveryClient0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libKDcrawQt6-5 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5136,8 +5137,8 @@ packagesets:
    - libLLVM23 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libLayerShellQtInterface6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libLerc4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libOpenEXR-3_4-33 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libOpenEXRCore-3_4-33 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libOpenEXR-3_5-34 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libOpenEXRCore-3_5-34 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libPlasma5Support6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libPlasma8 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libPlasmaActivities7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5652,11 +5653,11 @@ packagesets:
    - libnotify4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libnpth0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libnss_usrfiles2 # reason: opensuse_microos:patterns-base-hardware
-   - libntfs-3g90 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libntfs-3g91 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libnuma1 # reason: opensuse_microos:patterns-base-hardware
    - libnvme1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libnvme3-1 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - liboapv1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - liboapv11 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - liboath0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libogg0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libonig5 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
@@ -6817,8 +6818,8 @@ packagesets:
    - libBasicUsageEnvironment2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libFLAC14 # reason: opensuse_kalpa:patterns-kalpa-base
    - libICE6 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libIex-3_4-33 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libIlmThread-3_4-33 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libIex-3_5-34 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libIlmThread-3_5-34 # reason: opensuse_kalpa:patterns-kalpa-base
    - libImath-3_2-30 # reason: opensuse_kalpa:patterns-kalpa-base
    - libKDSoapWSDiscoveryClient0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libKDcrawQt6-5 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -6918,8 +6919,8 @@ packagesets:
    - libLLVM23 # reason: opensuse_kalpa:patterns-kalpa-base
    - libLayerShellQtInterface6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libLerc4 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libOpenEXR-3_4-33 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libOpenEXRCore-3_4-33 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libOpenEXR-3_5-34 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libOpenEXRCore-3_5-34 # reason: opensuse_kalpa:patterns-kalpa-base
    - libPlasma5Support6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libPlasma8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libPlasmaActivities7 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7404,10 +7405,10 @@ packagesets:
    - libnotify4 # reason: opensuse_kalpa:patterns-kalpa-base
    - libnpth0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libnss_usrfiles2 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libntfs-3g90 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libntfs-3g91 # reason: opensuse_kalpa:patterns-kalpa-base
    - libnuma1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libnvme1 # reason: opensuse_kalpa:patterns-kalpa-base
-   - liboapv1 # reason: opensuse_kalpa:patterns-kalpa-base
+   - liboapv11 # reason: opensuse_kalpa:patterns-kalpa-base
    - libogg0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenconnect5 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopencore-amrnb0 # reason: opensuse_kalpa:patterns-kalpa-base
