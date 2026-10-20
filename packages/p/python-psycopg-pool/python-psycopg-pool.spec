@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-psycopg-pool
-Version:        3.3.0
+Version:        3.3.3
 Release:        0
 Summary:        Connection Pool for Psycopg
 License:        LGPL-3.0-only
 URL:            https://psycopg.org/psycopg3/
-Source:         https://files.pythonhosted.org/packages/source/p/psycopg-pool/psycopg_pool-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/psycopg_pool/psycopg_pool-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 49.2.0}
+BuildRequires:  %{python_module setuptools >= 80.3.1}
 BuildRequires:  %{python_module wheel >= 0.37}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

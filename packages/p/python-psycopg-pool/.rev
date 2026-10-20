@@ -75,4 +75,12 @@
   * Use an empty query instead of SELECT 1 to check connections</comment>
     <requestid>1329588</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fd4a320f53a071c3db88c9e2613818b9</srcmd5>
+    <version>3.3.3</version>
+    <time>1792492815</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386238</requestid>
+  </revision>
 </revisionlist>

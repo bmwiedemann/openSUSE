@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:32:56 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 3.3.3:
+  * Fix sync pool workers terminating after 24 hours with no task
+    to run (ticket #1419).
+- Changes from 3.3.2:
+  * Propagate cancellation and other base exceptions raised in
+    connection check (ticket #1401).
+  * Declare compatibility with Python 3.15.
+- Changes from 3.3.1:
+  * Fix residual race condition catching asyncio.CancelledError on
+    connection (ticket #1275).
+  * Fix race condition constructing the lock that makes sync
+    ConnectionPool.open() thread-safe (ticket #1300).
+  * Raise PoolClosed instead of generic OperationalError on pool
+    reopening attempt (ticket #1295).
+- Bump python-setuptools BuildRequires minimum version to 80.3.1
+  to match upstream pyproject.toml.
+
+-------------------------------------------------------------------
 Tue Jan 27 23:43:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.0:
