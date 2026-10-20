@@ -159,4 +159,12 @@ Redesigned the directory-include feature to avoid using
     <comment>- Update to release 1.8.1</comment>
     <requestid>1281073</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1713429ab9f2f7ae7b2abc17864e7d6b</srcmd5>
+    <version>1.8.2</version>
+    <time>1792492458</time>
+    <user>anag_factory</user>
+    <comment>Update libconfig to 1.8.2</comment>
+    <requestid>1385637</requestid>
+  </revision>
 </revisionlist>

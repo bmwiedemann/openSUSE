@@ -1,7 +1,7 @@
 #
 # spec file for package libconfig
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _soversion 15
 Name:           libconfig
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        A library for manipulating structured configuration files
 License:        LGPL-2.1-or-later
