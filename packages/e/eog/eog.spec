@@ -17,7 +17,7 @@
 
 
 Name:           eog
-Version:        50.3
+Version:        50.4
 Release:        0
 Summary:        Image Viewer for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -39,12 +39,12 @@ BuildRequires:  pkgconfig(girepository-2.0) >= 2.86
 BuildRequires:  pkgconfig(glib-2.0) >= 2.86
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 2.91.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 2.91.92
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 42.beta
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.15
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0) >= 3.5.4
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(libexif) >= 0.6.14
+BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.38
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.38
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.44.0

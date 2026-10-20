@@ -1421,4 +1421,17 @@ New stable release</comment>
   migration directories.</comment>
     <requestid>1375704</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>0260dac0d9eceae9a33eea1311fba917</srcmd5>
+    <version>50.4</version>
+    <time>1792492937</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.4 (CVE-2026-107651):
+  * Fix heap buffer overflow in PNG metadata reader when parsing
+    cHRM or gAMA chunks after parsing an iCCP chunk
+  * Fix heap buffer overrun when parsing an invalid iCCP chunk
+  * Updated translations.
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1386306</requestid>
+  </revision>
 </revisionlist>
