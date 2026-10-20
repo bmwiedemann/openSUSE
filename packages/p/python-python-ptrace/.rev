@@ -96,4 +96,12 @@
   * Support new Python 3.14 linkat.</comment>
     <requestid>1322100</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>8e36ce23a5f65528697ed1645b4476f8</srcmd5>
+    <version>0.9.9</version>
+    <time>1792492710</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386166</requestid>
+  </revision>
 </revisionlist>

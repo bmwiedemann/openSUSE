@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 16 11:54:30 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Only require update-alternatives in the default flavour: the
+  cptrace packages have no %post/%postun scriptlets and install
+  no alternatives, so the scriptlet requirements were unused
+  there; verified against the built RPM metadata
+
+-------------------------------------------------------------------
 Thu Dec 11 06:00:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.9.9:

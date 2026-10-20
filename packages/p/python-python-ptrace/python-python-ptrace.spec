@@ -33,9 +33,8 @@
 %define pkgname python-ptrace-test
 %define pkgversion %{pyversion}+%{cversion}
 %bcond_without test
-ExcludeArch:    %arm
+ExcludeArch:    %{arm}
 %endif
-
 Name:           python-%{pkgname}
 Version:        %{pkgversion}
 Release:        0
@@ -45,19 +44,21 @@ URL:            https://github.com/vstinner/python-ptrace
 Source:         https://github.com/haypo/python-ptrace/archive/%{pyversion}.tar.gz#/python-ptrace-%{pyversion}.tar.gz
 # PATCH-FIX-UPSTREAM gh#vstinner/python-ptrace#91
 Patch0:         support-python314.patch
-%if "%{flavor}" == "cptrace"
-BuildRequires:  %{python_module devel}
-%else
-BuildArch:      noarch
-Recommends:     python-cptrace = %{cversion}
-%endif
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if "%{flavor}" == "cptrace"
+BuildRequires:  %{python_module devel}
+%else
+Recommends:     python-cptrace = %{cversion}
+BuildArch:      noarch
+%endif
+%if "%{flavor}" == ""
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 %if %{with test}
 BuildRequires:  %{python_module cptrace = %{cversion}}
 BuildRequires:  %{python_module python-ptrace = %{pyversion}}
