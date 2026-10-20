@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(yaml-cpp) >= 0.5
-Obsoletes:      %{name}-doc
+BuildRequires:  fdupes
 
 %description
 OpenXcom is an open-source clone of the original UFO: Enemy Unknown
@@ -58,11 +58,12 @@ dos2unix *.txt
 
 %install
 %cmake_install
-rm %{buildroot}%{_mandir}/man6/openxcom.6
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license LICENSE.txt
 %doc README.md CHANGELOG.txt
+%{_mandir}/man6/openxcom.6*
 %{_datadir}/applications/openxcom.desktop
 %{_datadir}/icons/hicolor/*/apps/openxcom.*
 %{_datadir}/%{name}/

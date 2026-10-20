@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 11 21:00:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Fix rpmcrab findings:
+  * Drop ancient Obsoletes: openxcom-doc (fixes unversioned Obsoletes
+    and obsolete-not-provided)
+  * Use %fdupes for duplicate data files (fixes files-duplicate)
+  * Install the manpage instead of deleting it in %install
+
+-------------------------------------------------------------------
 Sun Sep 27 20:10:49 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Update to version 1.0.0.1780693619.630130c5c:

@@ -150,4 +150,16 @@
     <comment>1</comment>
     <requestid>1380998</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4c40485fcd104395353c94ae9bacebf5</srcmd5>
+    <version>1.0.0.1780693619.630130c5c</version>
+    <time>1792492631</time>
+    <user>anag_factory</user>
+    <comment>- Fix rpmcrab findings:
+  * Drop ancient Obsoletes: openxcom-doc (fixes unversioned Obsoletes
+    and obsolete-not-provided)
+  * Use %fdupes for duplicate data files (fixes files-duplicate)
+  * Install the manpage instead of deleting it in %install</comment>
+    <requestid>1386352</requestid>
+  </revision>
 </revisionlist>
