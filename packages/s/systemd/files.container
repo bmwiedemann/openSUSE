@@ -147,7 +147,6 @@
 %{_systemd_util_dir}/user/systemd-nspawn@.service
 %if %{without bootstrap}
 %{_systemd_util_dir}/user/systemd-vmspawn@.service
-%{_systemd_util_dir}/user/systemd-vmspawn@.service
 %endif
 %if %{with importd}
 %{_systemdgeneratordir}/systemd-import-generator

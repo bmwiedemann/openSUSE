@@ -8136,4 +8136,20 @@ handle manual pages that consist only of a .so directive such as
 - Move systemd-measure from experimental to udev to fix ukify</comment>
     <requestid>1381350</requestid>
   </revision>
+  <revision rev="475" vrev="1">
+    <srcmd5>cc03833e1c63dddebe09cc4638e8dff6</srcmd5>
+    <version>261.4</version>
+    <time>1792492597</time>
+    <user>anag_factory</user>
+    <comment>- Import commit f408418369c8d20f9025b39c03f4ece2a0ee7041 (merge of v261.4)
+  This update includes the following fixes:
+    a9f077a4f3 seccomp: also refuse sched_setattr() in RestrictRealtime= (bsc#1285434)
+    1f8fca2185 nspawn: mask socket() arguments to 32 bits in the NETLINK_AUDIT filter (bsc#1284982)
+    b9a6730266 seccomp: mask setns() nstype to 32 bits in RestrictNamespaces= (bsc#1284982)
+    f739a5ac5a seccomp: mask socket() domain to 32 bits in RestrictAddressFamilies= (bsc#1284982)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/3255daee1572366b74fe92f002a3d60ecbb27103...f408418369c8d20f9025b39c03f4ece2a0ee7041
+  Rebase 0001-Drop-or-soften-some-upstream-warnings.patch</comment>
+    <requestid>1386196</requestid>
+  </revision>
 </revisionlist>

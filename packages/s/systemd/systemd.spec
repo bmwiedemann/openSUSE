@@ -31,7 +31,7 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    261.3
+%define systemd_version    261.4
 %define systemd_release    0
 %define archive_version    %{nil}
 %endif
@@ -209,7 +209,6 @@ Source5:        triggers.systemd
 Source6:        pam.systemd-user
 Source7:        pam.systemd-run0
 Source8:        kbd-model-map.legacy
-Source9:        testsuite-mkosi.local.conf
 
 Source100:      fixlet-systemd-post.sh
 
@@ -1023,7 +1022,6 @@ cat %{SOURCE8} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 %endif
 
 %if %{with testsuite}
-install -m0644 %{SOURCE9} %{buildroot}%{_testsuitedir}/mkosi/mkosi.local.conf
 install -m0644 test/integration-tests/README.md %{buildroot}%{_testsuitedir}/integration-tests/
 %endif
 

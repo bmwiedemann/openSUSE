@@ -1,4 +1,4 @@
-From 358ea09a537b1953dce898d85c31bde294831fa0 Mon Sep 17 00:00:00 2001
+From 2921e6f57196289efae1f5a14f4bbdc2f4604b00 Mon Sep 17 00:00:00 2001
 From: Thomas Blume <Thomas.Blume@suse.com>
 Date: Wed, 22 Oct 2025 08:04:12 +0200
 Subject: [PATCH] Drop or soften some upstream warnings
@@ -7,11 +7,11 @@ Subject: [PATCH] Drop or soften some upstream warnings
 ---
  catalog/systemd.catalog.in       | 1 -
  man/org.freedesktop.systemd1.xml | 9 ---------
- src/core/taint.c                 | 3 ---
- 3 files changed, 13 deletions(-)
+ src/core/taint.c                 | 4 ----
+ 3 files changed, 14 deletions(-)
 
 diff --git a/catalog/systemd.catalog.in b/catalog/systemd.catalog.in
-index f7ef980962..30f70a66de 100644
+index 30da7bd5aa..fa027a0c8a 100644
 --- a/catalog/systemd.catalog.in
 +++ b/catalog/systemd.catalog.in
 @@ -582,7 +582,6 @@ Support: %SUPPORT_URL%
@@ -23,10 +23,10 @@ index f7ef980962..30f70a66de 100644
  - "cgroupsv1" - the system is using the deprecated cgroup v1 hierarchy
  - "local-hwclock" - the local hardware clock (RTC) is configured to be in
 diff --git a/man/org.freedesktop.systemd1.xml b/man/org.freedesktop.systemd1.xml
-index ed22712748..aec2486759 100644
+index 8f9d64da2f..6e840ca642 100644
 --- a/man/org.freedesktop.systemd1.xml
 +++ b/man/org.freedesktop.systemd1.xml
-@@ -1695,15 +1695,6 @@ node /org/freedesktop/systemd1 {
+@@ -1745,15 +1745,6 @@ node /org/freedesktop/systemd1 {
            <xi:include href="version-info.xml" xpointer="v252"/></listitem>
          </varlistentry>
  
@@ -43,19 +43,20 @@ index ed22712748..aec2486759 100644
            <term><literal>var-run-bad</literal></term>
  
 diff --git a/src/core/taint.c b/src/core/taint.c
-index 8872a224b2..02d33fdd15 100644
+index 06a31e04b9..86d210bcbd 100644
 --- a/src/core/taint.c
 +++ b/src/core/taint.c
-@@ -47,9 +47,6 @@ char** taint_strv(void) {
+@@ -49,10 +49,6 @@ char** taint_strv(void) {
  
          /* Note that the check is different from default_PATH(), as we want to taint on uncanonical symlinks
           * too. */
--        if (readlink_malloc("/usr/sbin", &usr_sbin) < 0 || !PATH_IN_SET(usr_sbin, "bin", "/usr/bin"))
+-        r = readlink_malloc("/usr/sbin", &usr_sbin);
+-        if (r != -ENOENT && (r < 0 || !PATH_IN_SET(usr_sbin, "bin", "/usr/bin")))
 -                stage[n++] = "unmerged-bin";
 -
-         if (readlink_malloc("/var/run", &var_run) < 0 || !PATH_IN_SET(var_run, "../run", "/run"))
+         r = readlink_malloc("/var/run", &var_run);
+         if (r != -ENOENT && (r < 0 || !PATH_IN_SET(var_run, "../run", "/run")))
                  stage[n++] = "var-run-bad";
- 
 -- 
 2.51.0
 
