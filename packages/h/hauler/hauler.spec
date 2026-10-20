@@ -17,8 +17,8 @@
 
 
 Name:           hauler
-Version:        2.1.1
-%global git_commit f2511b1d6a809832c128b6bb8ab33fd34b1dd927
+Version:        2.1.2
+%global git_commit f16c6e34474320ccff846aa7c7147fcd0b875fcf
 Release:        0
 Summary:        Airgap Swiss Army Knife
 License:        Apache-2.0
@@ -34,8 +34,8 @@ BuildRequires:  golang(API) = 1.27
 
 %description
 Rancher Government Hauler simplifies the airgap experience without requiring
-users to adopt a specific workflow. Hauler simplifies the airgapping process,
-by representing assets (images, charts, files, etc...) as content and
+users to adopt a specific workflow. Hauler simplifies the airgapping process
+by representing assets (images, charts, files, etc.) as content and
 collections to allow users to easily fetch, store, package, and distribute
 these assets with declarative manifests or through the command line.
 
@@ -57,9 +57,10 @@ cp -p %{_bindir}/cosign cmd/hauler/binaries/cosign-linux-arm64
 cp -p %{_bindir}/cosign cmd/hauler/binaries/cosign-linux-amd64
 %endif
 # s -w -X {{ .Env.vpkg }}.gitVersion={{ .Version }} -X {{ .Env.vpkg }}.gitCommit={{ .ShortCommit }} -X {{ .Env.vpkg }}.gitTreeState={{if .IsGitDirty}}dirty{{else}}clean{{end}} -X {{ .Env.vpkg }}.buildDate={{ .Date }}
-go build -o hauler -mod=vendor -buildmode=pie -trimpath -ldflags "-s -w -X github.com/rancherfederal/hauler/internal/version.gitVersion=%{version} \
-    -X github.com/rancherfederal/hauler/internal/version.gitCommit=%{git_commit} \
-    -X github.com/rancherfederal/hauler/internal/version.gitTreeState=clean" cmd/hauler/main.go
+
+go build -o hauler -mod=vendor -buildmode=pie -trimpath -ldflags "-s -w -X hauler.dev/go/hauler/v2/internal/version.gitVersion=%{version} \
+    -X hauler.dev/go/hauler/v2/internal/version.gitCommit=%{git_commit} \
+    -X hauler.dev/go/hauler/v2/internal/version.gitTreeState=clean" cmd/hauler/main.go
 
 %install
 install -D -m 755 hauler %{buildroot}/%{_bindir}/%{name}

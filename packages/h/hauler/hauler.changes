@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 18 22:08:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.2 (bsc#1285270, CVE-2026-78669):
+  * It fixes credential and presigned url leaks, local chart
+    handling, haul formats from `--filename`, and `hauler store
+    copy` with image-type files and cosign bundles. It adds
+    `hauler`, `hauler-dev`, and `hauler@` homebrew casks, and it
+    is the first release published through them. It also bumps go
+    to `1.27.2`.
+
+-------------------------------------------------------------------
 Fri Oct  2 14:08:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:
