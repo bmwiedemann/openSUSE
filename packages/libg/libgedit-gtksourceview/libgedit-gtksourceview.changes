@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 19 07:29:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 299.8.0:
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Thu Oct  8 14:55:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 299.8.alpha:
+  * News in 299.8.alpha, 2026-08-22:
+    + GtkSourceFileLoader: code refactorings.
+    + Words completion provider: code refactorings.
+    + Use GflsEncoding, remove GtkSourceEncoding.
+    + Don't annotate get_type() functions with G_GNUC_CONST.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Thu Aug 20 11:41:53 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 299.7.1:

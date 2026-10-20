@@ -105,4 +105,22 @@
   + Updated translations.</comment>
     <requestid>1372902</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3dfe1e5a7e62c406adecd6a7d7e699ae</srcmd5>
+    <version>299.8.0</version>
+    <time>1792493838</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 299.8.0:
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+- Update to version 299.8.alpha:
+  * News in 299.8.alpha, 2026-08-22:
+    + GtkSourceFileLoader: code refactorings.
+    + Words completion provider: code refactorings.
+    + Use GflsEncoding, remove GtkSourceEncoding.
+    + Don't annotate get_type() functions with G_GNUC_CONST.
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1386368</requestid>
+  </revision>
 </revisionlist>
