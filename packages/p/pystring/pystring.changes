@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:55:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.0:
+  * Add removeprefix and removesuffix string methods
+  * Match isupper behaviour with Python
+  * Add header-only library target alongside the compiled library
+  * Install CMake package config files and both public headers
+  * Require C++11 and fix build with CMake 4.0
+- Drop downstream CMakeLists.txt: upstream ships its own build
+  system now
+- SONAME bump 0.0 -> 1: shlib package renamed to libpystring1
+- Correct License tag to BSD-3-Clause to match upstream LICENSE
+- Use %ldconfig_scriptlets macro for the shlib package
+
+-------------------------------------------------------------------
 Wed Aug 21 11:01:09 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - Update to 1.1.3:

@@ -1,7 +1,7 @@
 #
 # spec file for package pystring
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,15 +17,14 @@
 #
 
 
-%define so_ver  0_0
+%define so_ver  1
 Name:           pystring
-Version:        1.1.4
+Version:        1.2.0
 Release:        0
 Summary:        Collection of C++ functions emulating Python's string class methods
-License:        BSD-2-Clause
+License:        BSD-3-Clause
 URL:            https://github.com/imageworks/pystring
 Source:         https://github.com/imageworks/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-Source100:      CMakeLists.txt
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -58,7 +57,6 @@ http://opensource.imageworks.com/
 
 %prep
 %autosetup -p1
-cp %{SOURCE100} .
 
 %build
 %cmake
@@ -68,19 +66,18 @@ cp %{SOURCE100} .
 %cmake_install
 
 %check
-pushd build
-./test
+%ctest
 
-%post -n lib%{name}%{so_ver} -p /sbin/ldconfig
-%postun -n lib%{name}%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{so_ver}
 
 %files -n lib%{name}%{so_ver}
 %license LICENSE
 %doc README.md
-%{_libdir}/lib%{name}.so.0.0
+%{_libdir}/lib%{name}.so.1*
 
 %files devel
 %{_includedir}/pystring/
+%{_libdir}/cmake/pystring/
 %{_libdir}/lib%{name}.so
 
 %changelog
