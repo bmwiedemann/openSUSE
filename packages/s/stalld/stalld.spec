@@ -1,7 +1,7 @@
 #
 # spec file for package stalld
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,16 @@
 
 
 Name:           stalld
-Version:        1.21.1
+Version:        1.28.1
 Release:        0
 Summary:        Daemon that finds starving tasks and gives them a temporary boost
 License:        GPL-2.0-only AND GPL-2.0-or-later
 URL:            https://gitlab.com/rt-linux-tools/%{name}/%{name}.git
 Source0:        https://git.kernel.org/pub/scm/utils/stalld/stalld.git/snapshot/stalld-%{version}.tar.gz
+BuildRequires:  systemd-rpm-macros
+Requires:       util-linux
+Requires(post): %fillup_prereq
+%{?systemd_requires}
 %ifarch aarch64 x86_64
 BuildRequires:  bpftool
 BuildRequires:  clang
@@ -30,10 +34,6 @@ BuildRequires:  llvm
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libbpf)
 %endif
-BuildRequires:  systemd-rpm-macros
-%{?systemd_requires}
-Requires(post): %fillup_prereq
-Requires:       util-linux
 
 %description
 The stalld program monitors the set of system threads,

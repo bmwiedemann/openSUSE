@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 26 16:22:01 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.28.1 (jumps 1.22.1 through 1.28.1):
+  * queue_track (eBPF) backend is now the default on eBPF-capable
+    architectures
+  * new -N/--no_idle_detect option to disable idle-CPU detection
+  * reverted the 1.20.3 behavior of forcing log-only mode whenever
+    a DL-server is present
+  * syslog logging is now opt-in (-s/--log_syslog); the shipped
+    systemd sysconfig template was updated to keep the previous
+    default behavior
+  * stalld now errors out on an invalid -a/--affinity argument
+    instead of silently ignoring it
+  * --force_fifo is now rejected in single-threaded mode
+  * bpf: replaced the linear task scan with a hash map lookup
+  * hardening/bug fixes: double-free in fill_waiting_task(), buffer
+    underflows in read_proc_stat()/sched_debug_get(), uninitialized
+    buffer in find_debugfs_mount_point(), data races on
+    thread_running/config_buffer_size, async-signal-unsafe calls
+    removed from the signal handler, a segfault fixed in
+    adaptive/aggressive modes, an inverted DAEMON_UMASK value, and
+    a signed integer overflow in set_reservation()
+  * see upstream's release notes for the full list
+
+-------------------------------------------------------------------
 Tue Sep 16 20:36:38 UTC 2025 - Marco Chiappero <marco.chiappero@suse.com>
 
 - update to 1.21.1: 
