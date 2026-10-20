@@ -29,7 +29,8 @@ Wed Sep 16 17:43:15 CEST 2026 - Arvin Schnell <aschnell@suse.com>
 
 - update to version 3.7.13:
   - Add support for ExFAT
-  - Fix CVE-2026-89085 and CVE-2026-89088
+  - Fix CVE-2026-89085 (bsc#1286017) and CVE-2026-89088
+    (bsc#1286018)
   - Add various checks for increased security
 
 -------------------------------------------------------------------
