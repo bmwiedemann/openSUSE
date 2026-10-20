@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:24:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.8
+  * Leak fix #85
+  * Fix CVE-2026-111136 #87
+
+-------------------------------------------------------------------
 Tue Nov  4 20:36:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.7
