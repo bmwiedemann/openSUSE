@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:27:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 9.00
+  - Support AArch64 (ARM64), tested on Snapdragon X and RPi 4/5
+  - Save report to USB drive (FAT32 formatted only)
+  - Redesigned test suite: 128/256-bit SIMD tests (SSE2/AVX2/NEON/LASX)
+  - New bus stress test and RowHammer test (test 11, off by default)
+  - Improved bit fade test, corrupted SPD detection test
+  - RAM info from DMI when SPD is unavailable, 100+ new DRAM brands
+  - Machine-parseable serial log, better serial automation
+  - EFI images signed with the Memtest86+ Secure Boot key
+- Enable aarch64 builds (new build/aarch64 dir upstream)
+
+-------------------------------------------------------------------
 Thu May 28 07:40:37 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add grub2 subpackage for GRUB2 menu entries

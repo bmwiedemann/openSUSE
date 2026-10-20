@@ -18,9 +18,9 @@
 
 
 Name:           memtest86+
-Version:        8.10
+Version:        9.00
 Release:        0
-Summary:        Memory Testing Image for x86 Architecture
+Summary:        Memory Testing Image for x86 and AArch64
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://www.memtest.org
@@ -30,7 +30,7 @@ Source2:        memtest86plus.conf
 #!BuildIgnore:  gcc-PIE
 Obsoletes:      memtest86 <= 3.2
 Provides:       memtest86 > 3.2
-ExclusiveArch:  %{ix86} x86_64
+ExclusiveArch:  %{ix86} x86_64 aarch64
 %ifarch x86_64
 BuildRequires:  glibc-devel-32bit
 %endif
@@ -70,8 +70,12 @@ Generates the menu entry for BLS bootloaders (GRUB2-EFI, systemd-boot)
 # dependencies are broken for the package and it should not be built in parallel
 %ifarch x86_64
 cd build/x86_64
-%else
+%endif
+%ifarch %{ix86}
 cd build/i586
+%endif
+%ifarch aarch64
+cd build/aarch64
 %endif
 make
 
@@ -92,8 +96,12 @@ echo "ENTRY=%{_prefix}/lib/memtest86/memtest86plus.conf" >> %{buildroot}%{_prefi
 
 %ifarch x86_64
 cd build/x86_64
-%else
+%endif
+%ifarch %{ix86}
 cd build/i586
+%endif
+%ifarch aarch64
+cd build/aarch64
 %endif
 install -Dpm 0644 mt86plus %{buildroot}%{_prefix}/lib/memtest86/mt86plus.efi
 export BRP_PESIGN_FILES="*.efi"
