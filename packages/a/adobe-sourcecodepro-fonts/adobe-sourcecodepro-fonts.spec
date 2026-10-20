@@ -1,7 +1,7 @@
 #
 # spec file for package adobe-sourcecodepro-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,22 @@
 #
 
 
+%define         italic_version   1.062
+%define         variable_version 1.026
 Name:           adobe-sourcecodepro-fonts
-Version:        2.038
+Version:        2.042
 Release:        0
-%define         italic_version   1.058
-%define         variable_version 1.018
 Summary:        A set of OpenType fonts designed for coding environments
 License:        OFL-1.1
-Group:          System/X11/Fonts
 URL:            https://adobe-fonts.github.io/source-code-pro/
-Source:         https://github.com/adobe-fonts/source-code-pro/archive/%{version}R-ro/%{italic_version}R-it/%{variable_version}R-VAR.tar.gz#/source-code-pro-%{version}R-ro-%{italic_version}R-it-%{variable_version}R-VAR.tar.gz
+Source:         https://github.com/adobe-fonts/source-code-pro/archive/%{version}R-u/%{italic_version}R-i/%{variable_version}R-vf.tar.gz#/source-code-pro-%{version}R-u-%{italic_version}R-i-%{variable_version}R-vf.tar.gz
 Source1:        adobe-sourcecodepro-fonts.metainfo.xml
-Obsoletes:      SourceCodePro-fonts < %version-%release
-Provides:       SourceCodePro-fonts = %version-%release
 BuildRequires:  dos2unix
 BuildRequires:  fontpackages-devel
-%reconfigure_fonts_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Obsoletes:      SourceCodePro-fonts < %{version}-%{release}
+Provides:       SourceCodePro-fonts = %{version}-%{release}
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
 Source Code is a set of monospaced OpenType fonts that have been designed to
@@ -41,7 +39,7 @@ work well with coding environments. This family of fonts is a complementary
 design to the Source Sans family.
 
 %prep
-%setup -q -n source-code-pro-%{version}R-ro-%{italic_version}R-it-%{variable_version}R-VAR
+%setup -q -n source-code-pro-%{version}R-u-%{italic_version}R-i-%{variable_version}R-vf
 
 %build
 chmod -x+X -R *
@@ -52,12 +50,11 @@ install -d %{buildroot}%{_ttfontsdir}
 # by default install command uses 755 umask
 install -m 644 OTF/*.otf %{buildroot}%{_ttfontsdir}
 install -d -m0755  %{buildroot}%{_datadir}/metainfo
-install -D -m0644 %{S:1} %{buildroot}%{_datadir}/metainfo/
+install -D -m0644 %{SOURCE1} %{buildroot}%{_datadir}/metainfo/
 
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root)
 %license LICENSE.md
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/adobe-sourcecodepro-fonts.metainfo.xml

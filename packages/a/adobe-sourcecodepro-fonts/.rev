@@ -100,4 +100,12 @@
     <comment></comment>
     <requestid>977987</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>86d2780b61d63a612b9ad431f1d25768</srcmd5>
+    <version>2.042</version>
+    <time>1792492462</time>
+    <user>anag_factory</user>
+    <comment>Update adobe-sourcecodepro-fonts to 2.042 (forwarded request 1385622 from pluskalm)</comment>
+    <requestid>1385701</requestid>
+  </revision>
 </revisionlist>

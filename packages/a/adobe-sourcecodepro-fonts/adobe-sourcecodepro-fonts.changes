@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:29:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.042 (uprights) / 1.062 (italics) / 1.026 (variable):
+  * Re-compiled so static instances correspond to the Variable Font versions
+- Drop obsolete Group and BuildRoot tags
+
+-------------------------------------------------------------------
 Wed May 18 16:27:12 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to version 2.038 ( roman fonts ) / 1.058 ( italic fonts )
