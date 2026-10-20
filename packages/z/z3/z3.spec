@@ -19,7 +19,7 @@
 %define python_subpackage_only 1
 %define sover %(echo %{version} | sed 's@\\([0-9]*\\)\\.\\([0-9]*\\)\\..*@\\1_\\2@')
 Name:           z3
-Version:        5.1.0
+Version:        5.3.1
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
@@ -32,17 +32,13 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
-BuildRequires:  cmake >= 3.16
+BuildRequires:  cmake >= 3.26
 BuildRequires:  fdupes
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-%{?python_enable_dependency_generator}
-%if 0%{?suse_version} > 1600
 BuildRequires:  pkgconfig(gmpxx)
-%else
-BuildRequires:  gmp-devel
-%endif
+%{?python_enable_dependency_generator}
 %python_subpackages
 
 %description
@@ -146,7 +142,7 @@ popd
 %dir %{_libdir}/cmake/z3/
 %{_libdir}/cmake/z3/Z3Config.cmake
 %{_libdir}/cmake/z3/Z3ConfigVersion.cmake
-%{_libdir}/cmake/z3/Z3Targets*
+%{_libdir}/cmake/z3/Z3-shared-targets*
 
 %files %{python_files z3}
 %doc README.md

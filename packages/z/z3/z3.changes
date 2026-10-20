@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:04:42 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 5.3.1:
+  * Fix unsound nonlinear-arithmetic exponentiation bounds and
+    avoid 128-bit division in finite-field inversion
+  * Extend higher-order quantifier matching, Lean proof
+    reconstruction, and the F*/Pulse proof checker
+- Changes from 5.3.0 (5.2.0 was skipped upstream):
+  * Add QF_FF (finite field) logic support, a higher-order
+    quantifier solver, and associative and sequence EUF plugins
+  * Introduce a generalized Parikh engine and integrate seq.power
+    into the sequence and legacy string solvers
+  * Rework recursive-function and lambda handling in MBQI and
+    improve nonlinear/multi-objective optimization (QF_NRA OMT)
+  * Rework the CMake build system: relocatable pkg-config metadata,
+    z3::libz3 target, Z3-shared-targets.cmake export, parallel GCC
+    LTO linking, and cmake >= 3.26 requirement
+  * Fix soundness, model-completion, floating-point, sequence,
+    determinism, and use-after-free issues across solvers
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Rename the library subpackage libz3-5_1 to libz3-5_3, following
+  the upstream SONAME bump from libz3.so.5.1 to libz3.so.5.3
+- Bump cmake BuildRequires floor to >= 3.26 and update the CMake
+  target file pattern in devel to Z3-shared-targets*
+- Make BuildRequires: pkgconfig(gmpxx) unconditional
+
+-------------------------------------------------------------------
 Mon Aug 17 07:39:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.1.0:
