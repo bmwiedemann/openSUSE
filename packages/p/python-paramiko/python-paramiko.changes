@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 16 20:58:05 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Remove unused dependencies:
+  * python-gssapi BuildRequires and Recommends: upstream removed
+    GSSAPI support in 5.0.0; nothing in the library or the tests
+    uses it anymore
+  * python-pyasn1 BuildRequires and Recommends: dropped from the
+    upstream dependencies in 5.0.0; no references in the code or
+    the tests
+  * Sphinx, invocations and pytest-xdist BuildRequires: nothing
+    in %build or %check uses them (the invoke.vendor lexicon
+    import in the tests is replaced by the system lexicon via
+    remove-icecream-dep.patch)
+- Drop the %check exclusion of the k5shell tests: no such tests
+  exist in 5.0.0
+- python-invoke stays a Recommends: paramiko soft-imports it for
+  ssh_config Match exec handling. The invoke BuildRequires is
+  kept so the tests for that feature (TestMatchExec in
+  tests/test_config.py) run during %check instead of skipping
+
+-------------------------------------------------------------------
 Mon Jun  8 08:31:34 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 5.0.0 (fixes CVE-2026-44405, bsc#1264225)

@@ -847,4 +847,12 @@
     <comment>- Update to 5.0.0 (fixes CVE-2026-44405, bsc#1264225)</comment>
     <requestid>1358968</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>d9daa318eeefaa205df1239c30094a49</srcmd5>
+    <version>5.0.0</version>
+    <time>1792492579</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386167</requestid>
+  </revision>
 </revisionlist>

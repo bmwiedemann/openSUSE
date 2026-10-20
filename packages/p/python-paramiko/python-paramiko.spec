@@ -28,28 +28,21 @@ Patch0:         paramiko-test_extend_timeout.patch
 # PATCH-FIX-OPENSUSE remove-icecream-dep.patch to do not depend on python-icecream and unvendor lexicon
 Patch1:         remove-icecream-dep.patch
 BuildRequires:  %{python_module PyNaCl >= 1.5}
-BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module bcrypt >= 3.2}
 BuildRequires:  %{python_module cryptography >= 3.3}
-BuildRequires:  %{python_module gssapi}
-BuildRequires:  %{python_module invocations}
 BuildRequires:  %{python_module invoke >= 2.0}
 BuildRequires:  %{python_module lexicon}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pytest-relaxed}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-gssapi
-Recommends:     python-invoke
-Recommends:     python-pyasn1 >= 0.1.7
 Requires:       python-PyNaCl >= 1.5
 Requires:       python-bcrypt >= 3.2
 Requires:       python-cryptography >= 3.3
+Recommends:     python-invoke
 BuildArch:      noarch
 %python_subpackages
 
@@ -71,12 +64,10 @@ are supported.  SFTP client and server mode are both supported too.
 
 %check
 export LANG=en_US.UTF-8
-# Do not test k5shell to avoid dependency
-donttest="k5shell"
 # workaround for an issue with too many threads open https://github.com/paramiko/paramiko/issues/2571
 %pytest tests/test_transport.py
 rm tests/test_transport.py
-%pytest -k "not ($donttest)"
+%pytest
 
 %files %{python_files}
 %license LICENSE
