@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Oct 19 05:38:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.2.0
+  * Breaking changes
+    + Deprecate doxia-module-fml
+    + Stop marking external links with the externalLink class
+    + Move SinkEventAttributeSet to doxia-sink-api
+  * Removed
+    + Drop the JXR reports from the reporting profile
+  * Deprecated
+    + Deprecate doxia-module-fml
+    + Add HtmlTag so the sink writers can leave javax.swing behind
+    + Deprecate the parser hooks that will be retyped to
+      SinkEventAttributes
+    + Deprecate LineBreaker and take commons-io off the compile
+      classpath
+    + Make the deprecation of AbstractParser#getBasedir visible to
+      callers
+  * New features and improvements
+    + Add HtmlTag so the sink writers can leave javax.swing behind
+    + Let APT macro blocks end at the last brace on the line
+    + Move SinkEventAttributeSet to doxia-sink-api
+    + Stop over-escaping text in the Markdown sink
+  * Bug Fixes
+    + Render unknown Sink events as raw HTML in MarkdownSink
+    + Close self-closing non-void HTML tags in Markdown parsing
+    + Make SinkEventAttributeSet.hashCode ignore resolveParent
+    + Restore some methods from Doxia 1.4
+  * Documentation updates
+    + Restore the common wording on the download page
+    + Restore the plain form of the ASF licence header
+    + Document how Markdown code blocks reach the Sink
+  * Maintenance
+    + Drop the JXR reports from the reporting profile
+    + Drop unused hamcrest-core test dependency
+    + Deprecate LineBreaker and take commons-io off the compile
+      classpath
+    + Drop the HTML.Attribute dependency from the parsers and sinks
+    + Drop the xsddoc schema reference generation
+    + Make the deprecation of AbstractParser#getBasedir visible to
+      callers
+    + Drop the surefire exclusion for a test that no longer exists
+    + Restore the plain form of the ASF licence header
+    + Drop backslash escapes that Markdown does not need
+    + Use japicmp-maven-plugin to enforce binary backwards
+      compatibility among
+  * Build
+    + Verify with Maven 4 too
+    + Doxia Site merged into Maven Site
+  * Dependency updates
+    + Bump com.github.siom79.japicmp:japicmp-maven-plugin from
+      0.25.6 to 0.26.3
+    + Bump org.apache.maven:maven-parent from 47 to 50
+    + Drop unused hamcrest-core test dependency
+    + Bump org.jsoup:jsoup from 1.22.1 to 1.23.2
+    + Bump org.codehaus.plexus:plexus-testing from 2.1.0 to 2.2.0
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /stale.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + Bump commons-io:commons-io from 2.21.0 to 2.22.0
+    + Bump org.apache.ant:ant-apache-regexp from 1.10.15 to 1.10.17
+
+-------------------------------------------------------------------
 Sat Mar 21 22:21:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 2.1.0
