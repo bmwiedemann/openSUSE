@@ -18,9 +18,9 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-qpageview
-Version:        1.0.3
+Version:        1.0.5
 Release:        0
-Summary:        Widget to display page-based documents for Qt5/PyQt5
+Summary:        Widget to display page-based documents for Qt6/PyQt6
 License:        GPL-3.0-only
 URL:            https://github.com/frescobaldi/qpageview
 Source:         https://files.pythonhosted.org/packages/source/q/qpageview/qpageview-%{version}.tar.gz

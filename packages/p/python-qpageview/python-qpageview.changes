@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:45:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.0.5:
+  * Paint the background only when necessary (also fixes
+    rendering images with a transparent background).
+  * Optimize the cache size to avoid unnecessary re-rendering.
+  * Optimize PDF rendering to save memory.
+  * Fix a memory leak caused by uncollected QPdfDocument garbage.
+
+-------------------------------------------------------------------
+Sun Apr 12 19:54:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * Optimize PDF link caching (#49) and reduce memory usage.
+  * Optimize PDF rendering (#50) to increase performance and
+    reduce memory usage.
+
+-------------------------------------------------------------------
 Wed Mar 18 22:15:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.3:
