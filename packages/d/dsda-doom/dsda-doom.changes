@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Oct 19 11:32:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Refresh v0.30.1 tarball: upstream re-rolled the v0.30.1 tag,
+  old tarball no longer matches upstream; version unchanged.
+
+-------------------------------------------------------------------
+Fri Oct  9 18:45:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.30.1
+  * Added "Audio Output Device" option
+  * Added `mouse_menu_navigation` config option to toggle mouse
+    support for menu navigation
+  * Allow controller input to close the ENDOOM window
+  * Made Hexen stats save across the hub
+  * Fixed some desyncs due to compiler optimizations
+  * Fixed "force load game" message box not allowing 'y'
+  * Fixed -skipsec and -skiptic not working with -warp
+  * Fixed -warp during demos skipping incorrectly
+
+-------------------------------------------------------------------
+Thu Oct  8 18:59:22 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.30.0
+  * Mouse 2 and Mouse 3 have been swapped, update your keybindings
+    if you use them.
+  * Savegames are incompatible with previous versions.
+  * Removed ZDoom MAPINFO support.
+  * Support for UMAPINFO revision 3, including Heretic (though not
+    the "endcast" keyword), setting 10 episodes, and the keywords
+    "jumping", "crouching", "freeaim", "endpalette".
+  * Added support for base spec UDMF namespaces "doom", "heretic",
+    "hexen".
+  * Added Line Horizon special, but only works with the Software
+    renderer.
+  * Fixed Door_Raise special not being able to close while open.
+
+-------------------------------------------------------------------
 Sun Sep 28 20:40:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.29.4

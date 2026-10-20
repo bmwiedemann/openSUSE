@@ -1,7 +1,7 @@
 #
 # spec file for package dsda-doom
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           dsda-doom
-Version:        0.29.4
+Version:        0.30.1
 Release:        0
 Summary:        DOOM source port with Hexen support and demo compatibility
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
-URL:            https://github.com/kraflab/dsda-doom
-#Changelog:     https://github.com/kraflab/dsda-doom/tree/master/patch_notes
-#Announce:      https://www.doomworld.com/forum/topic/118074-dsda-doom-source-port-v0243/
-Source:         https://github.com/kraflab/dsda-doom/archive/refs/tags/v%version.tar.gz
+URL:            https://github.com/dsda-org/dsda-doom
+#Changelog:     https://github.com/dsda-org/dsda-doom/tree/master/patch_notes
+Source:         https://github.com/dsda-org/dsda-doom/archive/refs/tags/v%version.tar.gz
 Patch1:         prboom-hbar-all.diff
 Patch2:         prboom-hbar-gradient.diff
 BuildRequires:  Mesa-devel
