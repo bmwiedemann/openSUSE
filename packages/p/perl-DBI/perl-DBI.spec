@@ -18,10 +18,10 @@
 
 %define cpan_name DBI
 Name:           perl-DBI
-Version:        1.655.0
+Version:        1.656.0
 Release:        0
-# 1.655 -> normalize -> 1.655.0
-%define cpan_version 1.655
+# 1.656 -> normalize -> 1.656.0
+%define cpan_version 1.656
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Database independent interface for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -37,9 +37,9 @@ BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Simple) >= 0.96
 Requires:       perl(Module::Load) >= 0.22
 Provides:       perl(Bundle::DBI) = 12.8.696
-Provides:       perl(DBD::DBM) = 0.80.0
+Provides:       perl(DBD::DBM) = %{version}
 Provides:       perl(DBD::ExampleP) = 12.14.311
-Provides:       perl(DBD::File) = 0.450.0
+Provides:       perl(DBD::File) = %{version}
 Provides:       perl(DBD::Gofer) = 0.15.327
 Provides:       perl(DBD::Gofer::Policy::Base) = 0.10.88
 Provides:       perl(DBD::Gofer::Policy::classic) = 0.10.88
@@ -61,7 +61,7 @@ Provides:       perl(DBI::Const::GetInfoReturn) = 2.8.697
 Provides:       perl(DBI::Const::GetInfoType) = 2.8.697
 Provides:       perl(DBI::DBD) = 12.15.129
 Provides:       perl(DBI::DBD::Metadata) = 2.14.214
-Provides:       perl(DBI::DBD::SqlEngine) = 0.60.0
+Provides:       perl(DBI::DBD::SqlEngine) = %{version}
 Provides:       perl(DBI::Gofer::Execute) = 0.14.283
 Provides:       perl(DBI::Gofer::Request) = 0.12.537
 Provides:       perl(DBI::Gofer::Response) = 0.11.566

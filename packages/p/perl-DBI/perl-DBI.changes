@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 19 10:47:51 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.656.0 (1.656)
+   see /usr/share/doc/packages/perl-DBI/ChangeLog
+
+  1.656 - 2026-10-17, H.Merijn Brand & Robert Rothenberg
+      * Re-add conflicts to cpanfile. (WIP)
+      * Remove lock file on end of scope
+      * Prevent dbi_profile crash (CVE-2026-108518) (Henrik Teichmann)
+      * Memory corruption via selectrow_array + SQLite UDF (issue#98)
+      * Fix errstr when dbm_updatable_key attribute for DBD::DBM is set to 2 (croak) on Perl versions < v5.13.2.
+      * Fix emit warnings when dbm_updatable_key attribute for DBD::DBM is set to 1 (carp)
+      * Fix lock file not removed when DBD::DBM check for bad serializer class fails. (CVE-2026-111879)
+      * *** WARNING: Next release will require perl-5.14 ***
+        - Main reason: Exception handling
+
+-------------------------------------------------------------------
 Wed Sep 30 11:11:31 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.655.0 (1.655)
@@ -9,9 +26,9 @@ Wed Sep 30 11:11:31 UTC 2026 - Tina Müller <timueller+perl@suse.de>
       * Ignore invalid handles consistently (detected by Raj)
 
   1.654 - 2026-09-25, H.Merijn Brand & Robert Rothenberg
-      * Fix DBI::sql_type_cast on IV/NV (CVE-2026-88815) (reported by Raj)
+      * Fix DBI::sql_type_cast on IV/NV (CVE-2026-88815) (reported by Raj) bsc#1283055
         bsc#1283055
-      * Fix FetchHashKeyName   on IV/NV (CVE-2026-88816) (reported by Raj)
+      * Fix FetchHashKeyName   on IV/NV (CVE-2026-88816) (reported by Raj) bsc#1283056
         bsc#1283056
       * Fix provided in META
 
@@ -29,7 +46,7 @@ Thu Sep 10 09:44:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
   1.653 - 2026-09-09, H.Merijn Brand & Robert Rothenberg
       * Fix test for 32bit-perl (report in PR#189)
-      * Fix arbitrary module and file loading via dbm_type/dbm_mldbm (CVE-2026-78030)
+      * Fix arbitrary module and file loading via dbm_type/dbm_mldbm (CVE-2026-78030) bsc#1281704
       * More META checking/updates
       * Tighten symlink outside of f_dir (CVE-2026-15392) check (reported by Raj) bsc#1271629
       * CPAN.org does not forward email anymore

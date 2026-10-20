@@ -607,4 +607,27 @@
       * Fix provided in META</comment>
     <requestid>1381947</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>d89f19b380cd5bf5dc646ce212fccbc6</srcmd5>
+    <version>1.656.0</version>
+    <time>1792493826</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.656.0 (1.656)
+   see /usr/share/doc/packages/perl-DBI/ChangeLog
+  1.656 - 2026-10-17, H.Merijn Brand &amp; Robert Rothenberg
+      * Re-add conflicts to cpanfile. (WIP)
+      * Remove lock file on end of scope
+      * Prevent dbi_profile crash (CVE-2026-108518) (Henrik Teichmann)
+      * Memory corruption via selectrow_array + SQLite UDF (issue#98)
+      * Fix errstr when dbm_updatable_key attribute for DBD::DBM is set to 2 (croak) on Perl versions &lt; v5.13.2.
+      * Fix emit warnings when dbm_updatable_key attribute for DBD::DBM is set to 1 (carp)
+      * Fix lock file not removed when DBD::DBM check for bad serializer class fails. (CVE-2026-111879)
+      * *** WARNING: Next release will require perl-5.14 ***
+        - Main reason: Exception handling
+
+      * Fix DBI::sql_type_cast on IV/NV (CVE-2026-88815) (reported by Raj) bsc#1283055
+      * Fix FetchHashKeyName   on IV/NV (CVE-2026-88816) (reported by Raj) bsc#1283056
+      * Fix arbitrary module and file loading via dbm_type/dbm_mldbm (CVE-2026-78030) bsc#1281704</comment>
+    <requestid>1386345</requestid>
+  </revision>
 </revisionlist>
