@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:16:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.8 (changes since 2.0.4):
+  * Fix possible crash when opening a device ID for a removed
+    device
+  * Fix/workaround for ALSA output ports spuriously introducing
+    events, plus minor and cosmetic fixes
+  * Fix PM_STATIC_LIB_NAME being ignored for the static library
+    name (shared library unaffected, soname still libportmidi.2)
+  * Drop the pmdefaults Java program: upstream removed
+    pm_java/pmdefaults after 2.0.4, only the pmjni native
+    library remains in the java subpackage
+- Spec cleanup via spec-cleaner
+
+-------------------------------------------------------------------
 Wed Dec 11 07:10:51 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Normalize jar mtimes for reproducible builds (boo#1134568)

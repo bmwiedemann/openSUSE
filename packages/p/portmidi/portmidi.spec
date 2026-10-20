@@ -1,7 +1,7 @@
 #
 # spec file for package portmidi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,33 @@
 #
 
 
+%define soname  2
 %if 0%{?suse_version} >= 1590
 %bcond_without java
 %else
 %bcond_with    java
 %endif
-
-%define soname  2
+# Note: upstream CMakeLists still declares VERSION 2.0.7 at this tag;
+# only SOVERSION 2 matters here and it is unchanged.
 Name:           portmidi
-Version:        2.0.4
+Version:        2.0.8
 Release:        0
 Summary:        Real-time MIDI input/output audio tools
 License:        MIT
-Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://github.com/PortMidi/portmidi
 Source:         https://github.com/PortMidi/portmidi/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  alsa-devel >= 0.9
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(alsa) >= 0.9
+Requires:       libportmidi%{soname} = %{version}
 # we can reduce the minimum cmake version, if not building the java bindings
 %if %{with java}
 BuildRequires:  cmake >= 3.21
 BuildRequires:  java-devel >= 11
-BuildRequires:  strip-nondeterminism
 %else
 BuildRequires:  cmake >= 3.20
 Obsoletes:      portmidi-java <= %{version}-%{release}
 %endif
-Requires:       libportmidi%{soname} = %{version}
 
 %description
 PortMidi -- real-time MIDI input/output.
@@ -51,7 +51,6 @@ midi devices through PortMidi.
 
 %package -n libportmidi%{soname}
 Summary:        Real-time MIDI input/output audio library
-Group:          System/Libraries
 Recommends:     timidity
 
 %description -n libportmidi%{soname}
@@ -61,7 +60,6 @@ application that uses PortMidi.
 
 %package devel
 Summary:        Real-time MIDI input/output audio library
-Group:          Development/Libraries/Other
 Requires:       libportmidi%{soname} = %{version}
 
 %description devel
@@ -71,7 +69,6 @@ other libraries that use PortMidi.
 
 %package java
 Summary:        Java native bindings for %{name}
-Group:          Development/Libraries/Java
 Requires:       java
 Requires:       libportmidi%{soname} = %{version}
 
@@ -92,7 +89,6 @@ sed -i 's|cmake_minimum_required(VERSION 3.21)|cmake_minimum_required(VERSION 3.
 %cmake \
   %if %{with java}
   -DBUILD_JAVA_NATIVE_INTERFACE:BOOL=ON \
-  -DBUILD_PMDEFAULTS:BOOL=ON \
   %endif
   -DBUILD_PORTMIDI_TESTS:BOOL=ON \
   -DCMAKE_SKIP_BUILD_RPATH=ON
@@ -107,16 +103,8 @@ for binary in $(find pm_test/ -maxdepth 1 -type f -executable) ; do
 done
 popd
 
-%if %{with java}
-install -D -m 0644 pm_java/pmdefaults/pmdefaults.jar %{buildroot}%{_javadir}/pmdefaults.jar
-cd %{buildroot}%{_javadir}
-%?strip_all_nondeterminism
-cat > %{buildroot}%{_bindir}/pmdefaults <<EOF
-#!/bin/bash
-exec java -jar "@@JAVADIR@@/pmdefaults.jar" "$@" >/dev/null
-EOF
-chmod a+rx %{buildroot}%{_bindir}/pmdefaults
-%endif
+# Upstream removed the pmdefaults Java program after 2.0.4; only the
+# pmjni native library is still built for the java subpackage.
 
 %post   -n libportmidi%{soname} -p /sbin/ldconfig
 %postun -n libportmidi%{soname} -p /sbin/ldconfig
@@ -156,9 +144,7 @@ chmod a+rx %{buildroot}%{_bindir}/pmdefaults
 
 %if %{with java}
 %files java
-%{_bindir}/pmdefaults
 %{_libdir}/libpmjni.so*
-%{_javadir}/pmdefaults.jar
 %endif
 
 %changelog
