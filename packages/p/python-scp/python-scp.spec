@@ -23,7 +23,6 @@ Version:        0.16.2
 Release:        0
 Summary:        SSH scp module for paramiko
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/jbardin/scp.py
 Source:         https://github.com/jbardin/scp.py/archive/refs/tags/v%{version}.tar.gz#/scp-%{version}.tar.gz
 BuildRequires:  %{python_module paramiko}
@@ -64,6 +63,6 @@ and has only been tested with this implementation.
 %doc README.rst
 %{python_sitelib}/scp.py
 %pycache_only %{python_sitelib}/__pycache__/scp*
-%{python_sitelib}/scp-%{version}*-info
+%{python_sitelib}/scp-%{version}.dist-info
 
 %changelog

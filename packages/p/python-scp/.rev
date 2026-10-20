@@ -155,4 +155,12 @@
     <comment>1</comment>
     <requestid>1383825</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e420fa72376377e0d47ac59ae8147211</srcmd5>
+    <version>0.16.2</version>
+    <time>1792492969</time>
+    <user>anag_factory</user>
+    <comment>Add CVE and bug reference</comment>
+    <requestid>1386391</requestid>
+  </revision>
 </revisionlist>
