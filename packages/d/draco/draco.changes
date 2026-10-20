@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:57:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.9 (includes 1.5.8 changes):
+  * Experimental AOMedia Polygonal Mesh Coding (PMC) in glTF and
+    the draco_transcoder tool (off by default)
+  * New supported glTF extensions: KHR_materials_emissive_strength,
+    KHR_materials_iridescence, KHR_materials_anisotropy,
+    KHR_materials_diffuse_transmission, KHR_animation_pointer,
+    KHR_interactivity
+  * Read big-endian binary PLY files; signed integer attribute
+    types and normalized attributes in glTF; unlimited texture
+    coordinate attributes
+  * Security hardening (no CVE IDs assigned upstream): bounds
+    checks in mesh prediction scheme and sequential mesh decoders,
+    the rANS entropy decoder and the STL/PLY/OBJ readers against
+    crafted-file heap over-reads
+  * 1.5.9 additionally fixes the JavaScript/WASM decoder builds
+- Drop draco-gcc15.patch, fixed upstream
+- Rebase disable-static-library.patch for the PMC-aware shared
+  library block
+- Soname 9 -> 11: rename libdraco9 subpackage to libdraco11
+- Spec cleanup: drop Group tags, use %ldconfig_scriptlets
+
+-------------------------------------------------------------------
 Wed Jul 15 23:38:05 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add disable-static-library.patch:

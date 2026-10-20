@@ -18,20 +18,17 @@
 
 %define build_gtest 1
 %define commit ff233bdd4cac0a0bf6e5cd45bda3406814cb2796
-%define lname libdraco9
+%define lname libdraco11
 Name:           draco
-Version:        1.5.7
+Version:        1.5.9
 Release:        0
 Summary:        Library for compressing and decompressing 3D geometric meshes and point clouds
 License:        Apache-2.0
-Group:          Productivity/Archiving/Compression
 URL:            https://google.github.io/draco
 Source0:        https://github.com/google/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/google/googletest/archive/%{commit}.zip#/googletest-%{commit}.zip
-# https://github.com/google/draco/pull/1113
-Patch0:         draco-gcc15.patch
-# PATCH-OPENSUSE do not build static libraries unconditionally taken from https://github.com/google/draco/pull/1001/changes
-Patch1:         disable-static-library.patch
+# PATCH-OPENSUSE do not build static libraries unconditionally
+Patch0:         disable-static-library.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
@@ -48,7 +45,6 @@ and point clouds. It is intended to improve the storage and transmission of
 
 %package -n %{lname}
 Summary:        Library for compressing and decompressing 3D geometric meshes and point clouds
-Group:          System/Libraries
 
 %description -n %{lname}
 Draco is a library for compressing and decompressing 3D geometric meshes
@@ -57,7 +53,6 @@ and point clouds. It is intended to improve the storage and transmission of
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}-%{release}
 
 %description    devel
@@ -98,8 +93,7 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} help2man -N --version-string=%{version} \
 build/draco_tests
 %endif
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files
 %doc AUTHORS README.md
