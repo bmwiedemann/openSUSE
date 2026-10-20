@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 18 06:12:22 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 1.6.1:
+  * Add -c/--caption option to print a caption below the image
+  * Update viuer to 0.11 (adds icy_sixel backend) and crossterm to 0.29
+  * Add BuildRequires gcc-c++, autoconf, automake and libtool:
+    sixel-sys 0.5.0 builds the bundled libsixel with autotools
+- Correct License tag to MIT AND LGPL-3.0-or-later: the statically
+  linked ansi_colours crate (via viuer) is LGPL-3.0-or-later, its
+  sources ship in vendor.tar.zst
+
+-------------------------------------------------------------------
 Thu Mar 13 15:20:32 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.5.1:
