@@ -534,4 +534,12 @@
     <comment>Fix for CVE-2026-95511 bsc#1282291 and in avoid such kind of generic issues also for other backends (forwarded request 1383291 from jsmeix)</comment>
     <requestid>1383292</requestid>
   </revision>
+  <revision rev="66" vrev="11">
+    <srcmd5>a21c11bcb61cec38d49863a3ddd115bb</srcmd5>
+    <version>1.28.17</version>
+    <time>1792492606</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1386280</requestid>
+  </revision>
 </revisionlist>
