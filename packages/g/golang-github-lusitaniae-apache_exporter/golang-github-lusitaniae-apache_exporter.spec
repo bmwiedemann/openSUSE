@@ -22,15 +22,6 @@
 %define	upstreamname  apache_exporter
 %define	targetname    prometheus-apache_exporter
 %define	serviceuser   prometheus
-%if 0%{?rhel}
-%if 0%{?rhel} >= 8
-# Found compressed .debug_abbrev section, not attempting dwz compression
-# DWARF version 0 unhandled
-%global debug_package %{nil}
-%endif
-# Fix ERROR: No build ID note found in
-%undefine _missing_build_ids_terminate_build
-%endif
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 %bcond_without apparmor
 %else
@@ -53,12 +44,6 @@ Source2:        %{targetname}.service
 Source3:        apparmor-usr.bin.%{targetname}
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu
-ExcludeArch:    s390
-%{?systemd_ordering}
-%if 0%{?rhel}
-BuildRequires:  golang >= 1.20
-Requires(pre):  shadow-utils
-%else
 BuildRequires:  golang(API) >= 1.25
 Requires(pre):  shadow
 %if %{with apparmor}
@@ -70,8 +55,10 @@ Recommends:     apparmor-abstractions
 BuildRequires:  apparmor-profiles
 %endif
 %endif
-%endif
-%if 0%{?debian} || 0%{?ubuntu}
+ExcludeArch:    s390
+%{?systemd_ordering}
+
+%if ! 0%{?suse_version}
 ExclusiveArch:  do_not_build
 %endif
 
@@ -96,43 +83,22 @@ mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d
 install -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{targetname}
 %endif
 
-%check
-%if 0%{?rhel}
-# Fix OBS debug_package execution.
-rm -f %{buildroot}%{_prefix}/lib/debug%{_bindir}/%{targetname}-%{version}-*.debug
-rm -rf %{buildroot}%{_usrsrc}/debug/%{name}-%{version}-*
-%endif
-
 %pre
-%if 0%{?suse_version}
 %service_add_pre %{targetname}.service
-%endif
 getent group %{serviceuser} >/dev/null || %{_sbindir}/groupadd -r %{serviceuser}
 getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceuser} -d %{_localstatedir}/lib/%{serviceuser} -M -s /sbin/nologin %{serviceuser}
 
 %post
-%if 0%{?rhel}
-%{systemd_post} %{targetname}.service
-%else
 %service_add_post %{targetname}.service
 %if %{with apparmor_reload}
 %apparmor_reload %{_sysconfdir}/apparmor.d/usr.bin.%{targetname}
 %endif
-%endif
 
 %preun
-%if 0%{?rhel}
-%systemd_preun %{targetname}.service
-%else
 %service_del_preun %{targetname}.service
-%endif
 
 %postun
-%if 0%{?rhel}
-%{systemd_postun} %{targetname}.service
-%else
 %service_del_postun %{targetname}.service
-%endif
 
 %files
 %doc README.md
