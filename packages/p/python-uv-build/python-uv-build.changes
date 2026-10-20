@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:36:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.1:
+  * Use tar-codec by default
+  * Require hashes for uv's build dependencies
+  * Remove jiff dependency
+  * Reduce logging and regex overhead
+  * Ship rust-toolchain.toml in the sdist, fix up classifiers
+  * Rust toolchain moves along the way (up to 1.99, MSRV 1.97)
+
+-------------------------------------------------------------------
 Sun Jun 14 18:59:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.7:
