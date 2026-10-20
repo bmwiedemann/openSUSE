@@ -17,7 +17,7 @@
 
 
 Name:           erofs-utils
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        Utilities for the Extendable Read-Only Filesystem (EROFS)
 License:        GPL-2.0-or-later

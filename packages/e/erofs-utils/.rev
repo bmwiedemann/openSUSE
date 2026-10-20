@@ -162,4 +162,12 @@ remove broken &quot;enable zstd&quot; changelog entry;was never enabled</comment
     <comment>- Update to release 1.9.3</comment>
     <requestid>1370749</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0b5f892155411d6c65c14272b0f1f26a</srcmd5>
+    <version>1.9.4</version>
+    <time>1792492466</time>
+    <user>anag_factory</user>
+    <comment>Update erofs-utils to 1.9.4</comment>
+    <requestid>1385736</requestid>
+  </revision>
 </revisionlist>

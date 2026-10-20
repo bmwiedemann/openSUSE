@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 19 13:38:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.4
+  * Fixed an uninitialized mutex in mkfs
+
+-------------------------------------------------------------------
 Wed Aug 12 04:21:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9.3
