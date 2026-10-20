@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 19 04:53:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.63.0:
+  * build(deps): bump the gomod group across 1 directory with 9
+    updates (#2707)
+  * fix(docker): run exec'd pipeline steps under umask 022 (#2705)
+  * feat: let the build and test guests trust extra CA certificates
+    (#2704)
+  * test: e2e the git-checkout restore path against tampered caches
+    (#2698)
+  * fix: refuse to put a private key into the -source package
+    (#2699)
+  * feat: rebuild a package from its -source companion (#2674)
+  * feat: capture git checkouts for the -source package, and
+    restore them (#2672)
+  * feat: emit a -source package carrying the complete
+    corresponding source (#2667)
+
+-------------------------------------------------------------------
 Mon Oct 12 04:46:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.62.1:
