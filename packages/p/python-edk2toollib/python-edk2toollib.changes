@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:27:06 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 0.23.17:
+  * dsc_parser: Restore TargetFilePath after nested !include
+  * EDK2Path: Handle os.PathLike objects correctly for Python 3.14+
+  * fmp_capsule_header: Bugfix counts
+
+-------------------------------------------------------------------
 Tue Aug 25 05:49:35 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.23.16:

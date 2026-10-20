@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-edk2toollib
-Version:        0.23.16
+Version:        0.23.17
 Release:        0
 Summary:        Tianocore Edk2 PyTool Library
 License:        BSD-2-Clause-Patent
@@ -39,6 +39,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  git-core
+BuildRequires:  python-rpm-macros
 Requires:       python-GitPython >= 3.1.30
 Requires:       python-SQLAlchemy >= 2.0.0
 Requires:       python-cryptography >= 39.0.1
@@ -46,9 +49,6 @@ Requires:       python-joblib >= 1.3.2
 Requires:       python-pyasn1 >= 0.4.8
 Requires:       python-pyasn1-modules >= 0.2.8
 Requires:       python-pygount >= 1.6.1
-BuildRequires:  fdupes
-BuildRequires:  git-core
-BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
