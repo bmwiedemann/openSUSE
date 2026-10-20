@@ -19,31 +19,28 @@
 %define prjname      openexr
 # perhaps you want to build against corresponding Imath build
 %define debug_build 0
-%global so_suffix -3_4
-%define sonum 33
+%global so_suffix -3_5
+%define sonum 34
 %if 0%{?suse_version} == 1500
 %global force_gcc_version 14
 %endif
-
 Name:           openexr
-Version:        3.4.15
+Version:        3.5.2
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://www.openexr.com/
 Source0:        https://github.com/AcademySoftwareFoundation/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
-# CVE-2026-88384: NULL pointer dereference in the C++ attribute parsing path when a specially crafted EXR file containing an unknown-type attribute with dataSize set to zero is processed [bsc#1282700]
-Patch0:         openexr-CVE-2026-88384.patch
 BuildRequires:  cmake >= 3.12
-BuildRequires:  freeglut-devel
 BuildRequires:  gcc%{?force_gcc_version}
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Imath)
+BuildRequires:  pkgconfig(Imath) >= 3.1
+BuildRequires:  pkgconfig(glut)
 BuildRequires:  pkgconfig(libdeflate)
-BuildRequires:  pkgconfig(openjph) >= 0.21.0
+BuildRequires:  pkgconfig(libzstd) >= 1.5.0
+BuildRequires:  pkgconfig(openjph) >= 0.32.0
 BuildRequires:  pkgconfig(zlib)
 Obsoletes:      OpenEXR <= 1.6.1
 Provides:       OpenEXR = %{version}
@@ -65,7 +62,6 @@ contains a set of utilities to work with this format.
 %package -n libIex%{so_suffix}-%{sonum}
 Summary:        Exception handling library for OpenEXR
 License:        BSD-3-Clause
-Group:          System/Libraries
 
 %description -n libIex%{so_suffix}-%{sonum}
 OpenEXR is a high dynamic-range (HDR) image file format developed by
@@ -76,7 +72,6 @@ This package contains shared library libIex
 %package -n libIlmThread%{so_suffix}-%{sonum}
 Summary:        Thread abstraction library for OpenEXR
 License:        BSD-3-Clause
-Group:          System/Libraries
 
 %description -n libIlmThread%{so_suffix}-%{sonum}
 OpenEXR is a high dynamic-range (HDR) image file format developed by
@@ -87,7 +82,6 @@ This package contains shared library libIlmThread
 %package -n libOpenEXR%{so_suffix}-%{sonum}
 Summary:        Library to Handle EXR Pictures in 16-Bit Floating-Point Format
 License:        BSD-3-Clause
-Group:          System/Libraries
 
 %description -n libOpenEXR%{so_suffix}-%{sonum}
 OpenEXR is a high dynamic-range (HDR) image file format developed by
@@ -98,7 +92,6 @@ This package contains shared library libOpenEXR
 %package -n libOpenEXRCore%{so_suffix}-%{sonum}
 Summary:        Library to Handle EXR Pictures in 16-Bit Floating-Point Format
 License:        BSD-3-Clause
-Group:          System/Libraries
 
 %description -n libOpenEXRCore%{so_suffix}-%{sonum}
 OpenEXR is a high dynamic-range (HDR) image file format developed by
@@ -109,7 +102,6 @@ This package contains shared library libOpenEXRCore
 %package -n libOpenEXRUtil%{so_suffix}-%{sonum}
 Summary:        Library to simplify development of OpenEXR utilities
 License:        BSD-3-Clause
-Group:          System/Libraries
 
 %description -n libOpenEXRUtil%{so_suffix}-%{sonum}
 OpenEXR is a high dynamic-range (HDR) image file format developed by
@@ -120,12 +112,11 @@ This package contains shared library libOpenEXRUtil
 %package devel
 Summary:        Development files for the 16-bit FP EXR picture handling library
 License:        BSD-3-Clause AND GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
-Requires:       Imath-devel
 Requires:       libOpenEXR%{so_suffix}-%{sonum} = %{version}
 Requires:       libOpenEXRCore%{so_suffix}-%{sonum} = %{version}
 Requires:       libOpenEXRUtil%{so_suffix}-%{sonum} = %{version}
 Requires:       pkgconfig
+Requires:       pkgconfig(Imath)
 Requires:       pkgconfig(zlib)
 Obsoletes:      OpenEXR-devel <= 1.6.1
 Provides:       OpenEXR-devel = %{version}
@@ -143,7 +134,6 @@ This package contains header files.
 %package doc
 Summary:        Documentation for the 16-bit FP EXR picture handling library
 License:        BSD-3-Clause
-Group:          Documentation/Other
 Obsoletes:      OpenEXR-doc <= 1.6.1
 Provides:       OpenEXR-doc = %{version}
 BuildArch:      noarch
@@ -210,16 +200,11 @@ export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}"
 %ctest --exclude-regex "$EXCLUDE_REGEX" --timeout 3600
 %endif
 
-%post -n libIex%{so_suffix}-%{sonum} -p /sbin/ldconfig
-%postun -n libIex%{so_suffix}-%{sonum} -p /sbin/ldconfig
-%post -n libIlmThread%{so_suffix}-%{sonum} -p /sbin/ldconfig
-%postun -n libIlmThread%{so_suffix}-%{sonum} -p /sbin/ldconfig
-%post -n libOpenEXR%{so_suffix}-%{sonum} -p /sbin/ldconfig
-%postun -n libOpenEXR%{so_suffix}-%{sonum} -p /sbin/ldconfig
-%post -n libOpenEXRCore%{so_suffix}-%{sonum} -p /sbin/ldconfig
-%postun -n libOpenEXRCore%{so_suffix}-%{sonum} -p /sbin/ldconfig
-%post -n libOpenEXRUtil%{so_suffix}-%{sonum} -p /sbin/ldconfig
-%postun -n libOpenEXRUtil%{so_suffix}-%{sonum} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libIex%{so_suffix}-%{sonum}
+%ldconfig_scriptlets -n libIlmThread%{so_suffix}-%{sonum}
+%ldconfig_scriptlets -n libOpenEXR%{so_suffix}-%{sonum}
+%ldconfig_scriptlets -n libOpenEXRCore%{so_suffix}-%{sonum}
+%ldconfig_scriptlets -n libOpenEXRUtil%{so_suffix}-%{sonum}
 
 %files
 %license LICENSE.md

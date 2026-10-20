@@ -1159,4 +1159,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   * openexr-CVE-2026-88384.patch</comment>
     <requestid>1381394</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>da52ea4e18d3a668e6a6ba902c0e79e8</srcmd5>
+    <version>3.5.2</version>
+    <time>1792492581</time>
+    <user>anag_factory</user>
+    <comment>Update openexr to 3.5.2 (forwarded request 1385777 from pluskalm)</comment>
+    <requestid>1386188</requestid>
+  </revision>
 </revisionlist>

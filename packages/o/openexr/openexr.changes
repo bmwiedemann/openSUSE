@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:58:05 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 3.5.2:
+  * New lossless ZSTD compression (EXR_COMPRESSION_ZSTD) with
+    ByteShuffle/delta data prep; add BuildRequires
+    pkgconfig(libzstd) >= 1.5.0 (system lib, no vendoring)
+  * New lossy LJ2K compression based on HTJ2K via OpenJPH;
+    minimum OpenJPH raised to 0.32.0, matching Factory
+  * colorInteropID support: validation APIs plus exrstdattr and
+    exrinfo integration and Python bindings
+  * Backwards-compatible (de)compression-context cache in the
+    core decode pipeline
+  * 3.5.1: fix heap buffer overflow in ZSTD deep scanline
+    decoding; 3.5.2: OpenJPH LUT transfer function for LJ2K,
+    RPCL/TLM progression, exrcheck tile-size overflow fix
+- Soname bump 33 -> 34 and library suffix -3_4 -> -3_5; rename
+  the five lib subpackages and baselibs.conf accordingly
+- Drop upstreamed openexr-CVE-2026-88384.patch
+- Tighten BuildRequires pkgconfig(Imath) >= 3.1 to the upstream
+  minimum
+- Spec cleanup: use ldconfig scriptlets, drop Group tags
+
+-------------------------------------------------------------------
 Tue Sep 29 09:55:46 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 3.4.15
