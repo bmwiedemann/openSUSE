@@ -17,11 +17,10 @@
 
 
 Name:           vokoscreenNG
-Version:        4.10.0
+Version:        4.11.0
 Release:        0
 Summary:        Screencast creator
 License:        GPL-2.0-only
-Group:          Productivity/Multimedia/Other
 URL:            https://github.com/vkohaupt/vokoscreenNG
 Source:         https://github.com/vkohaupt/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - Add AppStream metadata - PR#94
@@ -36,6 +35,9 @@ BuildRequires:  pkgconfig(Qt6Linguist)
 BuildRequires:  pkgconfig(Qt6Multimedia)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6WebChannel)
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt6WebSockets)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(libpulse)

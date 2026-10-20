@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:47:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.11.0:
+  * Wayland: GIF and MP4 recording, camera support, PipeWire
+    virtual audio sources, online help via QWebEngineView, GUI
+    language switch, camera color temperature and message dialog
+    redesign
+  * Camera module rewritten for Linux-X11 and Windows; dropped
+    SystrayAlternative
+  * Translation updates
+- Add Qt6WebEngineWidgets, Qt6WebSockets and Qt6WebChannel
+  build requirements for the new QWebEngineView online help
+
+-------------------------------------------------------------------
 Tue Jun 30 08:39:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.10.0:
