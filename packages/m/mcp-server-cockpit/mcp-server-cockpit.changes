@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Mon Oct 19 15:14:56 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Initial package of cockpit-mcp 0.1.2 as mcp-server-cockpit
+  * Install the cockpit-bridge entry point as cockpit-mcp-bridge, as
+    /usr/bin/cockpit-bridge is shipped by cockpit-bridge
+
