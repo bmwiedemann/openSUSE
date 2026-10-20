@@ -17,11 +17,10 @@
 
 
 Name:           osslsigncode
-Version:        2.13
+Version:        2.14
 Release:        0
 Summary:        Platform-independent tool for Authenticode signing of EXE/CAB files
 License:        GPL-3.0-only
-Group:          Productivity/Security
 URL:            https://github.com/mtrojnar/osslsigncode
 Source0:        https://github.com/mtrojnar/osslsigncode/archive/%{version}.tar.gz#/osslsigncode-%{version}.tar.gz
 BuildRequires:  cmake
@@ -44,6 +43,9 @@ files and executables.
 
 %files
 %license COPYING.txt LICENSE.txt
+%dir %{_docdir}/%{name}
+%doc %{_docdir}/%{name}/README.md
+%doc %{_docdir}/%{name}/NEWS.md
 %{_bindir}/%{name}
 %{_datadir}/bash-completion/completions/%{name}.bash
 

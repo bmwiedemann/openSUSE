@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:54:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.14:
+  * CMake installations now honor standard GNU install directories,
+    install README and NEWS, and provide an uninstall target
+  * attach-signature now uses digest-only verification instead of full
+    signature validation; the output file is dropped when digest
+    verification fails
+  * Fix a memory leak when rejecting invalid compressed APPX data
+  * Add comprehensive command documentation in Markdown
+
+-------------------------------------------------------------------
 Thu Apr  2 07:34:46 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to 2.13 (bsc#1260680, CVE-2025-70888):
