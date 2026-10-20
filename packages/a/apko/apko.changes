@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Oct 19 04:57:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.12:
+  * build(deps): bump github.com/klauspost/compress from 1.20.1 to
+    1.20.3 (#2582)
+  * build(deps): bump google.golang.org/api from 0.301.0 to 0.302.0
+    (#2584)
+  * build(deps): bump chainguard.dev/sdk from 0.1.371 to 0.1.373
+    (#2585)
+  * build(deps): bump google.golang.org/api from 0.300.0 to 0.301.0
+    (#2568)
+  * build(deps): bump golang.org/x/term from 0.46.0 to 0.47.0
+    (#2570)
+  * build(deps): bump the codeql group across 1 directory with 2
+    updates (#2574)
+  * build(deps): bump github.com/github/go-spdx/v2 from 2.7.0 to
+    2.7.1 (#2571)
+  * build(deps): bump chainguard.dev/sdk from 0.1.337 to 0.1.371
+    (#2581)
+  * build(deps): bump github.com/prometheus/client_golang from
+    1.24.1 to 1.25.0 (#2573)
+  * build(deps): bump golang.org/x/sync from 0.23.0 to 0.24.0
+    (#2563)
+  * build(deps): bump chainguard.dev/sdk from 0.1.331 to 0.1.337
+    (#2564)
+
+-------------------------------------------------------------------
 Mon Oct 12 04:45:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.11:
