@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Oct 19 09:11:37 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.27.0:
+  * Features:
+    - Add jj_bookmark module.
+    - add jj_change module.
+    - add jj_metrics module.
+    - add jj_status module.
+    - Add Jujutsu support to the vcs module.
+    - bash: Support right prompt in Bash via Flyline.
+    - claude_model: add effort variable.
+    - git_branch: add ignore_remotes option.
+    - jj: Better bookmark discovery and improving JJ output parsing.
+    - package: detect zig package version from build.zig.zon.
+    - terraform: detect OpenTofu's .tofu files
+  * Bug Fixes:
+    - bash: avoid duplicating PS0 preexec hook.
+    - directory: render symlinks pointing into a repo subdirectory.
+    - git: avoid running sensitive git commands in untrusted 
+      environments.
+    - hostname: check SSH_CLIENT and SSH_TTY in addition 
+      to SSH_CONNECTION.
+    - jj_status: count file changes across the whole repository.
+    - nim: use detect_folders for folder detection.
+    - openstack: resolve clouds.yaml from context current directory.
+    - package: support build.gradle.kts in gradle version detection.
+    - preset: Pad OS icon instead of username so it is not 
+      clipped when hidden.
+    - pulumi: read the per-backend stack selection.
+    - sudo: Avoid creating system error logs on every unsuccessful 
+      invocation.
+    - sudo: sudo module pollutes journalctl with error logs.
+    - utils: Avoid unbounded file reads (187e183)
+    - utils: fix humanize_int rounding across unit boundaries.
+  * Performance Improvements:
+    - swift: prefer swift-frontend for version detection.
+
+-------------------------------------------------------------------
 Tue Oct  6 06:03:32 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
 
 - Build from v1.26.0 tag rather than slightly earlier commit
@@ -20,7 +58,7 @@ Mon Jun 29 06:37:23 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
     - nodejs: avoid deno project files.
     - preset: make OS symbol dynamic in Tokyo Night theme.
     - statusline: handle null context_window fields at session start.
-
+    
 -------------------------------------------------------------------
 Mon May  4 05:50:13 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
