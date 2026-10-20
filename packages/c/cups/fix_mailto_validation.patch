@@ -1,0 +1,19 @@
+--- notifier/mailto.c.orig	2026-10-05 17:26:07.000000000 +0200
++++ notifier/mailto.c	2026-10-14 13:01:43.536132354 +0200
+@@ -262,13 +262,14 @@ copy_validate_address(
+ 
+       saw_at = 1;
+     }
+-    else if (*bufptr == '.' && (bufptr == buffer || bufptr[-1] == '.' || bufptr[-1] == '@'))
++    else if (*bufptr == '.')
+     {
+      /*
+       * dot-atom-text doesn't allow consecutive periods...
+       */
+ 
+-      goto bad_address;
++      if (bufptr == buffer || bufptr[-1] == '.' || bufptr[-1] == '@')
++        goto bad_address;
+     }
+     else if (!strchr("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+                      "0123456789!#$%&\'*+-/=?^_`{|}~", *bufptr))

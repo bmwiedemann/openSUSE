@@ -40,18 +40,18 @@ Name:           cups
 # "zypper vcmp 2.3.b99 2.3.0" shows "2.3.b99 is older than 2.3.0" and
 # "zypper vcmp 2.2.99 2.3b6" show "2.2.99 is older than 2.3b6" so that
 # version upgrades from 2.2.x via 2.3.b* to 2.3.0 work:
-Version:        2.4.19
+Version:        2.4.20
 Release:        0
 Summary:        The Common UNIX Printing System
 License:        Apache-2.0
 Group:          Hardware/Printing
 URL:            https://openprinting.github.io/cups
 # To get Source0 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.4.19-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.19/cups-2.4.19-source.tar.gz
-Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.19/cups-2.4.19-source.tar.gz
+# wget --no-check-certificate -O cups-2.4.20-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.4.20/cups-2.4.20-source.tar.gz
+Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.4.20/cups-2.4.20-source.tar.gz
 # To get Source1 go to https://github.com/OpenPrinting/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.4.19-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.19/cups-2.4.19-source.tar.gz.sig
-Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.19/cups-2.4.19-source.tar.gz.sig
+# wget --no-check-certificate -O cups-2.4.20-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.4.20/cups-2.4.20-source.tar.gz.sig
+Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.4.20/cups-2.4.20-source.tar.gz.sig
 # To make Source2 use for 'Zdenek Dohnal'
 #   gpg --keyserver keys.openpgp.org --recv-keys 7082A0A50A2E92640F3880E0E4522DCC9B246FF7
 #   gpg --export --armor 7082A0A50A2E92640F3880E0E4522DCC9B246FF7 >cups.keyring
@@ -65,7 +65,7 @@ Source2:        cups.keyring
 # To manually verify Source0 with Source1 and Source2 do e.g.
 #   gpg --import cups.keyring
 #   gpg --list-keys | grep -1 'Zdenek Dohnal'
-#   gpg --verify cups-2.4.19-source.tar.gz.sig cups-2.4.19-source.tar.gz
+#   gpg --verify cups-2.4.20-source.tar.gz.sig cups-2.4.20-source.tar.gz
 Source102:      Postscript.ppd.gz
 Source105:      Postscript-level1.ppd.gz
 Source106:      Postscript-level2.ppd.gz
@@ -93,6 +93,16 @@ Patch100:       cups-pam.diff
 Patch103:       cups-1.4-do_not_strip_recommended_from_PPDs.patch
 # Patch104 cups-config-libs.patch fixes option --libs in cups-config script:
 Patch104:       cups-config-libs.patch
+# Patch105 avoid_C99_loop_initial_declarations.patch avoids
+# "ppd-cache.c:2173:5: error: 'for' loop initial declarations are only allowed in C99 mode"
+# which happens when building CUPS 2.4.20 on older SLE12:
+Patch105:       avoid_C99_loop_initial_declarations.patch
+# Patch106 fix_mailto_validation.patch is
+# "Fix: mailto notifier rejects valid email addresses containing dots"
+# https://github.com/OpenPrinting/cups/pull/1745
+# "Regression: mailto notifier rejects valid email addresses containing dots/periods"
+# https://github.com/OpenPrinting/cups/issues/1744
+Patch106:       fix_mailto_validation.patch
 # Patch107 harden_cups.service.patch adds hardening to systemd service cups.service
 # see https://bugzilla.suse.com/show_bug.cgi?id=1181400
 # and https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
@@ -107,16 +117,6 @@ Patch108:       downgrade-autoconf-requirement.patch
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 Patch112:       cups-2.4.2-additional_policies.patch
-# Patch113 cups-2.4.19-CVE-2026-87875.patch is based on
-# https://github.com/OpenPrinting/cups/commit/2b1dc178a2d2325135b855142e384f4e8c42d8e4
-# adapted to CUPS 2.4.19 to fix CVE-2026-87875
-# "Heap out-of-bounds read in cupsUTF32ToUTF8() via missing source-length bound
-#  - reachable from SNMP supply-description parsing (backend/snmp-supplies.c)"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-559w-7676-3xrq
-# "heap out-of-bounds read in `cupsUTF32ToUTF8()` due to missing source-length bound
-#  can be reached via the SNMP supply-description parsing"
-# https://bugzilla.suse.com/show_bug.cgi?id=1279945
-Patch113:       cups-2.4.19-CVE-2026-87875.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -331,6 +331,16 @@ printer drivers for CUPS.
 %patch -P 103 -b do_not_strip_recommended_from_PPDs.orig
 # Patch104 cups-config-libs.patch fixes option --libs in cups-config script:
 %patch -P 104 -b cups-config-libs.orig
+# Patch105 avoid_C99_loop_initial_declarations.patch avoids
+# "ppd-cache.c:2173:5: error: 'for' loop initial declarations are only allowed in C99 mode"
+# which happens when building CUPS 2.4.20 on older SLE12:
+%patch -P 105 -b avoid_C99_loop_initial_declarations.orig
+# Patch106 fix_mailto_validation.patch is
+# "Fix: mailto notifier rejects valid email addresses containing dots"
+# https://github.com/OpenPrinting/cups/pull/1745
+# "Regression: mailto notifier rejects valid email addresses containing dots/periods"
+# https://github.com/OpenPrinting/cups/issues/1744
+%patch -P 106 -b fix_mailto_validation.orig
 # Patch107 harden_cups.service.patch adds hardening to systemd service cups.service
 # see https://bugzilla.suse.com/show_bug.cgi?id=1181400
 # and https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
@@ -344,16 +354,6 @@ printer drivers for CUPS.
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 %patch -P 112 -b additional_policies.orig
-# Patch113 cups-2.4.19-CVE-2026-87875.patch is based on
-# https://github.com/OpenPrinting/cups/commit/2b1dc178a2d2325135b855142e384f4e8c42d8e4
-# adapted to CUPS 2.4.19 to fix CVE-2026-87875
-# "Heap out-of-bounds read in cupsUTF32ToUTF8() via missing source-length bound
-#  - reachable from SNMP supply-description parsing (backend/snmp-supplies.c)"
-# https://github.com/OpenPrinting/cups/security/advisories/GHSA-559w-7676-3xrq
-# "heap out-of-bounds read in `cupsUTF32ToUTF8()` due to missing source-length bound
-#  can be reached via the SNMP supply-description parsing"
-# https://bugzilla.suse.com/show_bug.cgi?id=1279945
-%patch -P113 -b CVE-2026-87875.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output

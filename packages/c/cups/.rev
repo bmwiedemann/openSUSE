@@ -1425,4 +1425,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>1</comment>
     <requestid>1381339</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>a5602218f811f0f793c0be7fec5281f4</srcmd5>
+    <version>2.4.20</version>
+    <time>1792492567</time>
+    <user>anag_factory</user>
+    <comment>CUPS version upgrade to 2.4.20 fixes security issues and regression https://github.com/OpenPrinting/cups/issues/1744</comment>
+    <requestid>1386176</requestid>
+  </revision>
 </revisionlist>

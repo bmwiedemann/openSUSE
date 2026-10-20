@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Oct 14 11:08:33 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- fix_mailto_validation.patch is
+  "Fix: mailto notifier rejects valid email addresses
+   containing dots"
+  https://github.com/OpenPrinting/cups/pull/1745
+  "Regression: mailto notifier rejects valid email addresses
+   containing dots/periods"
+  https://github.com/OpenPrinting/cups/issues/1744
+
+-------------------------------------------------------------------
+Tue Oct  6 12:29:07 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 2.4.20:
+  See https://github.com/openprinting/cups/releases
+  CUPS 2.4.20 provides amount of bug fixes and security fixes:
+  Assigned CVE ids:
+  CVE-2025-55480 (bsc#1284277)
+  CVE-2026-61702 (bsc#1284278)
+  CVE-2026-87875 (bsc#1279945)
+  CVE-2026-87876 (bsc#1279944)
+  CVE-2026-55453 (bsc#1284275)
+  CVE-2026-55467 (bsc#1284276)
+  CVE-2026-105326 (bsc#1284274)
+  Several fixes use GHSA id of security advisory
+  due long waiting time for CVE ids from CNA.
+  Due our changed policy the fixes referencing GHSA id are for:
+  * vulnerabilities with CVSS < 7.0, which we take
+    as lower priority vulnerabilities,
+  * issues which require print admin rights for triggering them,
+  * issues where its fix is security hardening patch/feature.
+  Per our security policy, issues which require print admin rights,
+  or are security hardening patches, are not taken as vulnerability
+  and they reference a security advisory due convenience, see
+  https://github.com/OpenPrinting/cups?tab=security-ov-file
+  More details in CHANGES.md - excerpts:
+  * SECURITY-5.7: The scheduler did not open temporary PPD files
+    in exclusive mode (CVE-2026-55480)
+  * SECURITY-5.5: The scheduler did not remove all job status
+    attributes from a job creation request (GHSA-7j85-5r23-xhvh)
+  * SECURITY-5.3: The scheduler did not validate the request
+    language value (CVE-2026-61702)
+  * SECURITY-4.6: Attribute names were not validated
+    as proper keyword values (GHSA-w9hj-hq9p-m7f6)
+  * SECURITY-4.3: The `cupsUTF32toUTF8` function incorrectly
+    treated UTF-32 values as 64-bit (CVE-2026-87875)
+  * SECURITY-4.1: Held jobs for temporary print queues could
+    crash the scheduler (GHSA-qqm8-4q5h-jg55)
+  * SECURITY-3.3: The backend did not sanitize IPP attribute
+    strings (CVE-2026-55453)
+  * SECURITY-3.3: The scheduler did not filter out group separators
+    from job submissions (GHSA-wjc4-qhjr-5m5x)
+  * SECURITY-3.0: Quota and policy operations did not treat
+    usernames as case-sensitive (CVE-2026-87876)
+  * SECURITY-3.0: The scheduler's startup permission checks
+    were vulnerable to TOU attacks (GHSA-gj33-wxpv-6fgg)
+  * SECURITY-2.5: The scheduler did not sanitize
+    fax numbers (CVE-2026-55467)
+  * SECURITY-2.5: The 'mailto' notifier did not sanitize
+    the recipient address provided to the sendmail
+    command (CVE-2026-105326)
+  * SECURITY-2.3: The scheduler could crash when modifying
+    a class (GHSA-pwg4-pv39-8c22)
+  * Fixed handling of multiple PPD: keywords from filters
+    (Issue #1562, related to CVE-2026-34980)
+  Issues are those at https://github.com/OpenPrinting/cups/issues
+- Adapted downgrade-autoconf-requirement.patch for CUPS 2.4.20
+- cups-2.4.19-CVE-2026-87875.patch
+  is no longer needed because the issue is fixed upstream.
+- avoid_C99_loop_initial_declarations.patch avoids
+  "ppd-cache.c:2173:5: error: 'for' loop initial declarations
+   are only allowed in C99 mode"
+  which happens when building CUPS 2.4.20 on older SLE12
+  https://github.com/OpenPrinting/cups/issues/1742
+
+-------------------------------------------------------------------
 Tue Sep 29 07:50:57 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Drop obsolete -fstack-protector from CFLAGS/CXXFLAGS (added 2006,
