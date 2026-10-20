@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 19 05:05:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.8.1:
+  * fix free_percent filter, eg -f 'free_percent>20%'
+  * -s use_percent and -s free_percent sort by default in the same
+    direction as -s use and -s free, and the inodes use columns
+    sort fullest first, like -s use
+
+-------------------------------------------------------------------
 Sat Oct 17 07:22:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.8.0:
