@@ -17,7 +17,7 @@
 
 
 Name:           klog
-Version:        7.1
+Version:        7.2
 Release:        0
 Summary:        Time tracking in a human-readable, plain-text file format
 License:        MIT
@@ -27,7 +27,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.26
+BuildRequires:  golang(API) >= 1.27
 
 %description
 klog is a plain-text file format and a command line tool for time tracking.
@@ -76,11 +76,15 @@ zsh command line completion support for %{name}.
 %build
 COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
 
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+
 go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags=" \
    -X main.BinaryVersion=v%{version} \
+   -X main.BinaryBuildDate=${BUILD_DATE} \
    -X main.BinaryBuildHash=${COMMIT_HASH}" \
    -o bin/%{name} ./%{name}.go
 
