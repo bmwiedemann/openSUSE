@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 19 07:32:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 6.15.0:
+  * TeplCodeCommentView: fine tune the behavior.
+  * Don't annotate get_type() functions with G_GNUC_CONST.
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Thu Oct  8 14:57:39 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:06:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

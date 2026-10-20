@@ -17,10 +17,10 @@
 
 
 %define api_ver 6
-%define lib_ver %{api_ver}-4
+%define lib_ver %{api_ver}-5
 
 Name:           libgedit-tepl
-Version:        6.14.0
+Version:        6.15.0
 Release:        0
 Summary:        Text Editor Product Line
 License:        LGPL-3.0-or-later
@@ -32,14 +32,14 @@ BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.64
-BuildRequires:  pkgconfig(gsettings-desktop-schemas)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.74
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 42
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
-BuildRequires:  pkgconfig(libgedit-amtk-5)
-BuildRequires:  pkgconfig(libgedit-gfls-1)
-BuildRequires:  pkgconfig(libgedit-gtksourceview-300) >= 299.6.0
+BuildRequires:  pkgconfig(libgedit-amtk-5) >= 5.11
+BuildRequires:  pkgconfig(libgedit-gfls-1) >= 0.5
+BuildRequires:  pkgconfig(libgedit-gtksourceview-300) >= 299.8
 BuildRequires:  pkgconfig(libhandy-1) >= 1.6
 BuildRequires:  pkgconfig(uchardet)
 

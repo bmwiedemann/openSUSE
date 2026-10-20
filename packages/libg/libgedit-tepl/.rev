@@ -46,4 +46,18 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342985</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bbac68b2322d1b02359031db09a4a61c</srcmd5>
+    <version>6.15.0</version>
+    <time>1792493840</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.15.0:
+  * TeplCodeCommentView: fine tune the behavior.
+  * Don't annotate get_type() functions with G_GNUC_CONST.
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1386369</requestid>
+  </revision>
 </revisionlist>
