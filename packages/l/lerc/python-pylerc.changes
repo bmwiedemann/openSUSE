@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:57:41 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 4.2.0 (upstream pylerc 4.2.0)
+  * Follows the lerc 4.2.0 sources: size-limit hardening and
+    security fixes, see lerc.changes
+  * Upstream now ships a PEP 517 pyproject.toml and a Python 3.14
+    classifier
+- Refresh pylerc-use-syslib.patch for the 4.2.0 sources
+- Drop Group tag (spec-cleaner run)
+
+-------------------------------------------------------------------
 Tue May 19 14:15:29 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing python-rpm-macros BR

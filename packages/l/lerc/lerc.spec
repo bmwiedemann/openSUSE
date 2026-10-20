@@ -19,18 +19,16 @@
 %define  sover  4
 %define  lname  libLerc
 Name:           lerc
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Limited Error Raster Compression
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/Esri/lerc
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  dos2unix
-
 
 %description
 LERC is an open-source image or raster format which supports rapid encoding
@@ -88,6 +86,5 @@ c++ %{optflags} --std=c++17 ../src/LercTest/main.cpp -L%{buildroot}%{_libdir} -l
 %{_includedir}/Lerc_types.h
 %{_libdir}/libLerc.so
 %{_libdir}/pkgconfig/Lerc.pc
-
 
 %changelog

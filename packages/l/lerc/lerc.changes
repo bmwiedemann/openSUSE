@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:57:37 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 4.2.0
+  * Enforce size limits: input data and compressed blob limited to
+    2 GB per band and 4 GB over all bands; oversized dimensions now
+    report a new DimensionsTooLarge error instead of risking
+    integer overflows from bogus blob headers
+  * Coverity fixes and overflow checks
+  * 4.1.1: fixed two security issues and minor bugs (no CVE IDs
+    assigned upstream)
+- Refresh pylerc-use-syslib.patch for the 4.2.0 sources
+- Drop Group tag (spec-cleaner run)
+
+-------------------------------------------------------------------
 Sat Mar 21 15:47:09 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Make the python package in a multibuild: Avoid build cycle

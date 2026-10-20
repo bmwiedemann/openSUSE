@@ -17,31 +17,29 @@
 
 %define  sover  4
 %define  lname  libLerc
-%define  cversion 4.1.0
+%define  cversion 4.2.0
 Name:           python-pylerc
-Version:        4.1
+Version:        4.2.0
 Release:        0
 Summary:        Python Bindings for LERC: Limited Error Raster Compression
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/Esri/lerc
 Source0:        lerc-%{cversion}.tar.gz
 # PATCH-FEATURE-OPENSUSE: Use the system library instead of copying to the python sitelib
 Patch0:         pylerc-use-syslib.patch
-BuildRequires:  dos2unix
-BuildRequires:  python-rpm-macros
-BuildRequires:  fdupes
-BuildRequires:  lerc-devel
 BuildRequires:  %{python_module base >= 3.11}
+BuildRequires:  %{python_module numpy >= 2.3.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module numpy >= 2.3.0}
-Requires:       python-numpy >= 2.3.0
+BuildRequires:  dos2unix
+BuildRequires:  fdupes
+BuildRequires:  lerc-devel
+BuildRequires:  python-rpm-macros
 Requires:       %{lname}%{sover} = %{cversion}
+Requires:       python-numpy >= 2.3.0
 BuildArch:      noarch
 %python_subpackages
-
 
 %description
 LERC is an open-source image or raster format which supports rapid encoding
