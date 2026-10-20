@@ -444,4 +444,14 @@
     <comment></comment>
     <requestid>1352052</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b8805c121e28baab954e434bbe7539fb</srcmd5>
+    <version>3.26.0</version>
+    <time>1792492749</time>
+    <user>anag_factory</user>
+    <comment>- Only keep conflicts against oldest incorrectly named shared lib
+  (from versio 3.23) and drop others.
+- Update to version 3.26.0.</comment>
+    <requestid>1386201</requestid>
+  </revision>
 </revisionlist>

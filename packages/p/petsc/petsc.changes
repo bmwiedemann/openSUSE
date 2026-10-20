@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct 19 09:26:31 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Only keep conflicts against oldest incorrectly named shared lib
+  (from versio 3.23) and drop others.
+
+-------------------------------------------------------------------
+Sat Oct 17 16:02:28 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.26.0:
+  * Configure/Build: add interface to LIBXSMM, NVIDIA NVPL BLAS/LAPACK
+    detection on aarch64, and OpenMP target offload support.
+  * Sys: make PetscCallHDF5() and related error-checking macros variadic;
+    fix -help 0/no/false/off to disable help output; add -help <mansec>
+    filtering and MCP server support.
+  * Vec: add VecCreateSeqWithArrayAndMemType(),
+    VecCreateMPIWithArrayAndMemType(), and VecSetStdBasis(); change
+    VecPointwiseDivide() so 0/0 evaluates to 1.
+  * Mat: add MATSEQBAIJLIBXSMM, MATMPIBAIJLIBXSMM, MatFlag(),
+    MatNormApproximate(), and MatCreateNestFromMultipleShifts(); fix
+    MATMPIDENSE norms and MATMPISELL zero-entry and off-diagonal handling.
+  * PC/KSP: add weighted PCASM scaling (PC_ASM_WEIGHTED), PCGAMG
+    prolongator filtering, KSPIDR, and KSPEKSM; promote GMRES
+    orthogonalization routines to KSPOrthogonalization*().
+  * SNES/TS/TAO: add SNESFAS coarse correction line search,
+    DMTSSetIFunctionPre(), TSIsImplicit(), TaoGetDM(), and TaoSetDM().
+  * DM/DMPlex/DMSwarm: add Morton space-filling curve cell reordering,
+    DMSwarmProjectFields(), DMSwarmSort, and mass matrix assembly helpers.
+  * Many more fixes and improvements; see upstream's release notes for the
+    full list.
+- Bump shared library subpackage version to libpetsc3_26 and add conflict
+  against libpetsc3_25.
+
+-------------------------------------------------------------------
 Tue May  5 15:25:16 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.25.1:

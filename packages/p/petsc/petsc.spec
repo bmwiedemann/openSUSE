@@ -22,7 +22,7 @@
 
 # Please also update slepc, which is version locked with petsc
 %define pname petsc
-%define so_ver 3_25
+%define so_ver 3_26
 
 ExcludeArch:    s390 s390x
 
@@ -71,7 +71,7 @@ Name:           %{package_name}
 Summary:        Portable Extensible Toolkit for Scientific Computation
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Version:        3.25.1
+Version:        3.26.0
 Release:        0
 URL:            https://www.mcs.anl.gov/petsc/
 Source:         https://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-%{version}.tar.gz
@@ -122,7 +122,6 @@ Group:          System/Libraries
 # Fixup wrong package name
 Conflicts:      libpetsc3%{?mpi_suffix}
 Conflicts:      lib%{pname}3_23%{?mpi_suffix}
-Conflicts:      lib%{pname}3_24%{?mpi_suffix}
 Requires:       %{name}-data = %{version}
 
 %description -n %{libname}
