@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Oct 20 08:32:05 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261020.5b865c90:
+  * fix(sbd): show stderr from nested other crm commands (#2204)
+  * fix(sbd): show stderr from nested crm sbd configure (#2204)
+  * fix(sbd): propagate -F/--force to nested crm sbd configure (#2204)
+  * fix(sbd): skip check and fix when SBD is not configured
+  * docs(test): add README.md for the functional test sandbox
+  * build(manifest): exclude sandbox functional tests from data-manifest
+  * test(features): add Firecracker sandbox for functional testing
+
+-------------------------------------------------------------------
+Tue Oct 13 09:15:16 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261013.cd0e91bd:
+  * fix(bootstrap): show stderr of "crm cluster join" in bootstrap_add
+
+-------------------------------------------------------------------
+Sat Oct 10 08:29:06 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261010.d600fb2e:
+  * fix(watchdog): quote shell command arguments
+  * refactor(watchdog): pass node_list instead of cluster state
+  * fix(watchdog): always persist watchdog config even when driver is loaded
+  * refactor(watchdog): share query-watchdog parsing and warn on softdog use
+  * refactor(watchdog): prefer hardware watchdog over softdog by default
+  * fix(watchdog): load driver on the correct nodes, and on the right cluster state (bsc#1282336)
+
+-------------------------------------------------------------------
+Sat Oct 10 03:44:46 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261010.5a5905d7:
+  * ci(workflow): Change runner image from ubuntu-24.04 to ubuntu-26.04
+  * refactor(report): drop redundant commands in collect_corosync_status
+  * fix(security): quote shell command arguments to prevent command injection
+
+-------------------------------------------------------------------
 Fri Oct 09 06:30:40 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20261009.9e8a64a1:
