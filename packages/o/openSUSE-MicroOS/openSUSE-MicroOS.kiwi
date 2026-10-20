@@ -13,7 +13,7 @@
         <!-- Platforms -->
         <profile name="kvm-and-xen-sdboot" description="kvm-and-xen with systemd-boot" arch="x86_64,aarch64,riscv64"/>
         <profile name="kvm-and-xen-grub-bls" description="kvm-and-xen with GRUB2 and bootctl" arch="x86_64,aarch64,riscv64"/>
-        <profile name="kvm-and-xen" description="kvm-and-xen" arch="x86_64,aarch64,armv7l"/>
+        <profile name="kvm-and-xen" description="kvm-and-xen" arch="x86_64,aarch64"/>
         <profile name="VMware" description="VMware for x86_64" arch="x86_64"/>
         <profile name="MS-HyperV" description="Hyper-V" arch="x86_64,aarch64"/>
         <profile name="OpenStack-Cloud" description="OpenStack Cloud" arch="x86_64,aarch64"/>

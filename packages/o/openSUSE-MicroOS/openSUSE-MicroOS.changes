@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 19 13:55:18 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Drop kvm-and-xen for armv7hl, qemu-img dropped support for 32-bit
+
+-------------------------------------------------------------------
+Fri Oct  9 14:57:35 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Compatibility with KIWI 11:
+  * Write /etc/sysconfig/bootloader for all platforms in config.sh
+
+-------------------------------------------------------------------
 Thu Aug 13 11:36:51 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - patterns-microos-hardware got obsoleted by patterns-base-hardware
