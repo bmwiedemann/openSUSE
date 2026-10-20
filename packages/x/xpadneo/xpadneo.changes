@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 19 02:10:00 UTC 2026 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to 0.10.5:
+  * Fix udev handling to hide supported hidraw nodes early and avoid
+    unnecessary device rebinds.
+  * Repair cached truncated Xbox One S descriptors.
+  * Improve detection of Mobapad Chitu 2 and GameSir Nova Lite controllers.
+  * Extend HID report debugging and update documentation.
+
+-------------------------------------------------------------------
 Tue Mar 31 13:11:58 UTC 2026 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to 0.10.1

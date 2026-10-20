@@ -18,10 +18,10 @@
 
 
 Name:           xpadneo
-Version:        0.10.1
+Version:        0.10.5
 Release:        0
 Summary:        Driver for Xbox Wireless Controller
-License:        GPL-3.0-only
+License:        GPL-2.0-only
 URL:            https://github.com/atar-axis/xpadneo
 Source0:        https://github.com/atar-axis/xpadneo/archive/v%{version}.tar.gz#/%name-%version.tar.gz
 Source1:        preamble
