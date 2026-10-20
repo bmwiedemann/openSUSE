@@ -181,4 +181,12 @@
 - Add SUSE Linux family default settings</comment>
     <requestid>1358499</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>354bc986e661d1676d1ae12fad58d34c</srcmd5>
+    <version>5.4.2.1</version>
+    <time>1792492572</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386061</requestid>
+  </revision>
 </revisionlist>
