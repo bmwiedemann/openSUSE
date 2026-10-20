@@ -1,7 +1,7 @@
 #
 # spec file for package libimagequant
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%define sover   0
+%define sover   0_4
 %define libname %{name}%{sover}
 Name:           libimagequant
-Version:        2.18.0
+Version:        4.4.1
 Release:        0
 Summary:        Palette quantization library
 License:        GPL-3.0-or-later
-Group:          Development/Languages/C and C++
 URL:            https://pngquant.org/lib/
-Source0:        https://github.com/ImageOptim/libimagequant/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(lcms2)
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
+BuildRequires:  cargo-c
+BuildRequires:  cargo-packaging
+BuildRequires:  rust >= 1.70
 
 %description
 C library for conversion of RGBA images to 8-bit indexed-color
@@ -35,7 +36,6 @@ C library for conversion of RGBA images to 8-bit indexed-color
 
 %package -n %{libname}
 Summary:        Palette quantization library
-Group:          System/Libraries
 
 %description -n %{libname}
 C library for conversion of RGBA images to 8-bit indexed-color
@@ -43,7 +43,6 @@ C library for conversion of RGBA images to 8-bit indexed-color
 
 %package devel
 Summary:        Development files for libimagequant
-Group:          Development/Languages/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -51,27 +50,29 @@ C library for conversion of RGBA images to 8-bit indexed-color
 (palette) images.
 
 %prep
-%setup -q
+%autosetup -p1 -a1
 
 %build
-# This is not an autoconf configure, but the script simply ignores parameters it does not know
-%configure \
-%ifnarch %ix86 x86_64
-    --disable-sse \
-%endif
-    --with-openmp
-make %{?_smp_mflags}
+export RUSTFLAGS="%{build_rustflags}"
+cd imagequant-sys
+CFLAGS="%{optflags}" cargo cbuild --release --offline
 
 %install
-%make_install
+cd imagequant-sys
+cargo cinstall --release --offline \
+    --destdir=%{buildroot} \
+    --prefix=%{_prefix} \
+    --libdir=%{_libdir}
+# no static library in the shlib policy packages
+rm -f %{buildroot}%{_libdir}/libimagequant.a
 
-# work around --disable-static not working
-find %{buildroot} \( -name '*.a' -o -name '*.la' \) -print -delete
+%check
+export RUSTFLAGS="%{build_rustflags}"
+cargo test --release --offline
 
-%post   -n libimagequant0 -p /sbin/ldconfig
-%postun -n libimagequant0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
-%files -n libimagequant0
+%files -n %{libname}
 %doc README.md CHANGELOG
 %license COPYRIGHT
 %{_libdir}/%{name}.so.*

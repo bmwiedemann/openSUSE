@@ -87,4 +87,12 @@
     <comment></comment>
     <requestid>1062006</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a3479662c9fb6497d9ae7f1a7befb865</srcmd5>
+    <version>4.4.1</version>
+    <time>1792492553</time>
+    <user>anag_factory</user>
+    <comment>Update libimagequant to 4.4.1 (forwarded request 1385779 from pluskalm)</comment>
+    <requestid>1385983</requestid>
+  </revision>
 </revisionlist>

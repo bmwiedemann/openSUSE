@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:59:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.4.1 (major rewrite, same C API, SONAME 0 -> 0.4):
+  * Library rewritten in Rust; built with cargo-c instead of
+    configure/make. Shlib package renamed libimagequant0 to
+    libimagequant0_4.
+  * OpenMP support dropped in favor of rayon threads
+    (use RAYON_NUM_THREADS to control thread count).
+  * Version 4.1: improved dithering over preset background,
+    new remap_into_vec, fix for images over 16 megapixels.
+  * Version 4.2: reworked fixed palette color handling, support
+    for palettes larger than 256 colors.
+  * Version 4.3: performance improvements, copyable Image object.
+  * Version 4.4: palette quality improvements, new
+    Histogram::from_palette constructor.
+- Packaging: fetch vendored sources via _service (cargo_vendor),
+  build with cargo-c; drop lcms2 BuildRequires (no longer used).
+
+-------------------------------------------------------------------
 Sun Jan 29 18:44:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18:
