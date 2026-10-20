@@ -1,7 +1,7 @@
 #
 # spec file for package console-setup
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           console-setup
-Version:        1.237
+Version:        1.249
 Release:        0
 Summary:        Tools for configuring the console using X Window System key maps
-License:        GPL-2.0-or-later AND MIT AND SUSE-Public-Domain
-Group:          System/Console
+License:        GPL-2.0-or-later AND MIT AND LicenseRef-SUSE-Public-Domain
 URL:            https://salsa.debian.org/installer-team/console-setup
 # Download here: https://salsa.debian.org/installer-team/console-setup/-/tags
 Source:         %{name}/%{name}-%{version}.tar.bz2
@@ -38,7 +37,7 @@ BuildRequires:  otf2bdf
 BuildRequires:  perl
 BuildRequires:  perl-XML-Parser
 BuildRequires:  perl(encoding)
-Suggests:       xkeyboard-config
+Suggests:       pkgconfig(xkeyboard-config)
 BuildArch:      noarch
 
 %description
