@@ -76,6 +76,8 @@ Patch2:         unbundle-fdkaac.patch
 %if %{without fdk_aac}
 Patch3:         disable-aac.patch
 %endif
+# Firx for building with Qt 6.12, taken from NixOs
+Patch4:         qmlcachegen-unity-build.diff
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
