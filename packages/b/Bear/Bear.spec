@@ -17,9 +17,8 @@
 
 
 %bcond_without  tests
-
 Name:           Bear
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        Tool that generates a compilation database for clang tooling
 License:        GPL-3.0-or-later
@@ -28,6 +27,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  lld
+ExclusiveArch:  %{rust_tier1_arches}
 %if %{with tests}
 #BuildRequires:  ccache
 BuildRequires:  fakeroot
@@ -36,7 +36,6 @@ BuildRequires:  gcc-fortran
 BuildRequires:  libtool
 BuildRequires:  valgrind
 %endif
-ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Build ear produces compilation database in JSON format. This database

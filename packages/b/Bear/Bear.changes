@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 16 16:28:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.2.3:
+  * Four more compiler drivers are recognized: Intel icx-cl (the
+    MSVC-compatible oneAPI driver), Arm Compiler for Linux armflang
+    and Embarcadero C++Builder bcc64x, bcc64 and bcc32x.
+  * Diagnostics now use the 'bear: error:' format throughout instead
+    of Rust's default 'Error:' text with internal names such as
+    'Failed to create consumer', and an error about a file names the
+    file once, followed by the action and the cause. Command-line
+    usage errors still print the usage text, so scripts matching the
+    old wording have to be updated.
+  * Output files are written all or nothing: a build command that
+    cannot start no longer leaves an empty compile_commands.tmp
+    behind (upstream issue #718), the events file follows the same
+    rule, and a failed replay no longer replaces a good database.
+  * The temporary output file now has a random, hidden name next to
+    the output, so it cannot clash with an output named '*.tmp' or
+    with another run, and an existing output that is not a regular
+    file (such as /dev/null) is written in place instead of replaced.
+  * Vendored dependencies refreshed, including cc 1.8 and
+    serde-saphyr 1.3, the latter pulling in encoding_rs.
+- Move ExclusiveArch next to the other package tags.
+
+-------------------------------------------------------------------
 Sun Sep 13 06:41:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.2.2:
