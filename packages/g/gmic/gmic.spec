@@ -16,14 +16,14 @@
 #
 
 
+%define gmic_qt_options -DENABLE_SYSTEM_GMIC=ON -DENABLE_DYNAMIC_LINKING=ON
+%define gmic_datadir %{_datadir}/gmic
 %ifnarch ppc64le
 %bcond_without krita_plugin
 %endif
-
 %ifnarch s390x
 %bcond_without gimp_plugin
 %endif
-
 %if %{with krita_plugin}
 %if %{pkg_vcmp krita >= 5}
 %bcond_without krita5
@@ -31,7 +31,6 @@
 %bcond_with    krita5
 %endif
 %endif
-
 %if %{with gimp_plugin}
 %if %{pkg_vcmp gimp >= 3}
 %define gimp_suffix 3
@@ -41,17 +40,11 @@
 %endif
 %global hostapps gimp%{?gimp_suffix}
 %endif
-
 %if %{with krita_plugin} && %{without krita5}
 %global hostapps %{?hostapps} krita
 %endif
-
-%define gmic_qt_options -DENABLE_SYSTEM_GMIC=ON -DENABLE_DYNAMIC_LINKING=ON
-
-%define gmic_datadir %{_datadir}/gmic
-
 Name:           gmic
-Version:        4.0.3
+Version:        4.0.5
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -64,29 +57,15 @@ Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
 Patch0:         krita5.patch
 # PATCH-FEATURE-OPENSUSE
 Patch1:         0001-Find-the-local-gmic-library.patch
-#
-# SECTION pkg_vcmp
-#
-# Those 2 are used for the pkg_vcmp conditionals above and also the rich expressions in the BuildRequires below
-#
-%{?with_gimp_plugin:BuildRequires: gimp}
-%{?with_krita_plugin:BuildRequires: krita}
-#
-# /SECTION
+BuildRequires:  (krita-devel if krita >= 5)
 #
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  dos2unix
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-threads-devel
-%if 0%{?suse_version} == 1500
-# Qt 6 requires c++-17, we'll use the latest version available on Leap 15
-BuildRequires:  gcc13-c++
-BuildRequires:  gcc13-PIE
-%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  (krita-devel if krita >= 5)
 BuildRequires:  (pkgconfig(gimp-2.0) if gimp < 2.99)
 BuildRequires:  (pkgconfig(gimp-3.0) if gimp >= 2.99)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -118,6 +97,15 @@ BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
 Requires:       gmic-data = %{version}
+#
+# SECTION pkg_vcmp
+#
+# Those 2 are used for the pkg_vcmp conditionals above and also the rich expressions in the BuildRequires below
+#
+%{?with_gimp_plugin:BuildRequires: gimp}
+%{?with_krita_plugin:BuildRequires: krita}
+#
+# /SECTION
 
 %description
 G'MIC is a framework for image processing, providing
@@ -200,10 +188,6 @@ This package contains shared data files for the various gmic frontends.
 dos2unix src/gmic_libc.*
 
 %build
-%if 0%{?suse_version} == 1500
-export CC=gcc-13 CXX=g++-13
-%endif
-
 # Build gmic
 # Starting with gmic 3.1.0, the gmic dev replaced their CMake build system with a non-configurable Makefile...
 sed -i 's#LIB ?= lib#LIB ?= %{_lib}#' src/Makefile
@@ -218,7 +202,7 @@ sed -i 's# -Wl,-rpath,.##' src/Makefile
 sed -i 's#/usr/lib/gimp/2.0/plug-ins#%{gmic_datadir}#' src/gmic_stdlib.gmic
 
 for target in lib cli_shared libc ; do
-  EXTRA_CFLAGS='%{optflags}' NOSTRIP=1 %__make ${target} %{?_smp_mflags}
+  EXTRA_CFLAGS='%{optflags}' NOSTRIP=1 make ${target} %{?_smp_mflags}
 done
 
 # Build gmic{_gimp|_krita}_qt

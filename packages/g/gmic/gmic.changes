@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 20 13:11:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Drop obsolete version check
+
+-------------------------------------------------------------------
+Sun Oct 18 05:57:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.0.5:
+  - New stdlib command 'arrange': simplified 'montage' for large
+    image counts
+  - New stdlib command 'shape_peano': generate 2D Peano curve
+    images
+  - Command 'map': new adaptive 'random' palette option
+  - Command 'colormap': faster float-valued mapping via float32
+    hashes
+  - Filter 'Rendering / Variable-Density Hilbert Curve': new SVG
+    export option
+  - Fix possible vulnerability in image network loading
+  - Ship new film-grain resource data (gmic_grain.gmz)
+
+-------------------------------------------------------------------
 Mon Aug  3 21:05:35 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.0.3
