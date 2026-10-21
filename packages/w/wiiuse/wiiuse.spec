@@ -18,19 +18,18 @@
 
 %define libname libwiiuse0
 Name:           wiiuse
-Version:        0.15.7
+Version:        0.16.0
 Release:        0
 Summary:        Connects with several Nintendo Wii remotes
 License:        GPL-3.0-only AND LGPL-3.0-only
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/wiiuse/wiiuse
 Source0:        https://github.com/wiiuse/wiiuse/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  bluez-devel
 BuildRequires:  cmake > 3.10.0
 BuildRequires:  dos2unix
-BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(bluez)
+BuildRequires:  pkgconfig(glut)
 BuildRequires:  pkgconfig(sdl)
 
 %description
@@ -41,7 +40,6 @@ nonblocking makes a light weight and clean API.
 
 %package -n %{libname}
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 
 %description  -n %{libname}
 The %{name}-devel package contains libraries and header files for
@@ -49,9 +47,8 @@ developing applications that use %{name}.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
-Requires:       bluez-devel
+Requires:       pkgconfig(bluez)
 
 %description  devel
 The %{name}-devel package contains libraries and header files for

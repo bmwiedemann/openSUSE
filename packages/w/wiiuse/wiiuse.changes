@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:19:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.16.0
+  * Wii port: the library can now run on the Wii itself, plus
+    other libusb-supported platforms via the new bt-embedded
+    Bluetooth backend (both off by default on Linux)
+  * New opt-in WITH_ACCEL_10BIT CMake option exposing the full
+    10-bit accelerometer precision; accel_t gained two fields
+    (cal_zero_lsb/cal_g_lsb), so rebuild applications against
+    the new headers
+  * Added a bounds check before memcpy in wiiuse_write_data
+  * example-sdl: fixed a year-2038 problem
+- Spec cleanup (spec-cleaner): drop obsolete Group tags, use
+  pkgconfig() style dependencies
+
+-------------------------------------------------------------------
 Mon Apr 20 19:23:46 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.15.7
