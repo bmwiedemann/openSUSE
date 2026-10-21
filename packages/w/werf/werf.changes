@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:23:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.81.4:
+  * Bug Fixes
+    - host-cleanup: remove root-owned project temporary data
+      (#8049) (fd98589)
+- Update to version 2.81.3:
+  * Bug Fixes
+    - giterminism: preserve user worktrees in dev mode (#8043)
+      (dc4360b)
+- Update to version 2.81.2:
+  * Bug Fixes
+    - build, stages: make from:scratch images usable by buildah
+      builds (#8025) (cbd1157)
+    - build: prevent intermittent Buildah initialization failures
+      (#8039) (5ba0d9d)
+    - build: stop rejecting initialized nested submodules (#8037)
+      (d139887)
+    - deploy: preserve kubectl env defaults and command syntax
+      (#8035) (cca9f53)
+    - deploy: run kubectl plugins only through kubectl (#8031)
+      (b860ae9)
+    - host-cleanup: reclaim abandoned tmp data from older releases
+      (#8029) (dfc2aed)
+  * - Update to version 2.81.1:
+  * Bug Fixes
+    - build: reduce repeated git work in v2 builds (#8020)
+      (46f0294)
+- Update to version 2.81.0:
+  * Features
+    - build: report backend operations and cache outcomes (#8010)
+      (29b7062)
+  * Bug Fixes
+    - build: honor --check-built-images and --require-built-images
+      flags (#7996) (9bec3e6)
+    - build: keep builds working after Git cache cleanup (#8017)
+      (7db5e11)
+    - build: keep checks read-only and reuse concurrently built
+      stages (#8016) (6d2a0bf)
+    - build: reduce registry tag-list pagination (#8009) (a85eef6)
+    - build: retain accurate operation statistics in build reports
+      (#8015) (a7437b2)
+    - build: retry refused registry connections (#8019) (bfe3753)
+    - build: reuse stage snapshots and keep build checks read-only
+      (#8011) (b9e06bb)
+
+-------------------------------------------------------------------
 Thu Oct 15 05:01:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.80.2:
