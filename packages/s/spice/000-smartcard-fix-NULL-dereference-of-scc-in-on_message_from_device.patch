@@ -1,0 +1,34 @@
+Subject: smartcard: fix NULL dereference of scc in on_message_from_device
+From: Alexandra Diupina dyupina_alex@mail.ru Thu Oct 8 18:33:05 2026 +0300
+Date: Fri Oct 9 20:56:40 2026 +0100:
+Git: 5f72434940d82157436b975b9ffbae17fd831870
+
+dev->priv->scc is dereferenced in the reader_id warning path,
+but the NULL check for dev->priv->scc happens afterwards.
+Move the NULL check before first dereference.
+
+Signed-off-by: Alexandra Diupina <dyupina_alex@mail.ru>
+
+diff --git a/server/smartcard.cpp b/server/smartcard.cpp
+index 023cf523..81b65455 100644
+--- a/server/smartcard.cpp
++++ b/server/smartcard.cpp
+@@ -159,7 +159,7 @@ smartcard_char_device_on_message_from_device(RedCharDeviceSmartcard *dev,
+     vheader->length = ntohl(vheader->length);
+     vheader->reader_id = ntohl(vheader->reader_id);
+ 
+-    if (vheader->type == VSC_Init) {
++    if (vheader->type == VSC_Init || !dev->priv->scc) {
+         return red::shared_ptr<RedMsgItem>();
+     }
+     /* We pass any VSC_Error right now - might need to ignore some? */
+@@ -168,9 +168,6 @@ smartcard_char_device_on_message_from_device(RedCharDeviceSmartcard *dev,
+                             "error: reader_id not assigned for message of type %d",
+                             vheader->type);
+     }
+-    if (dev->priv->scc == NULL) {
+-        return red::shared_ptr<RedMsgItem>();
+-    }
+     return smartcard_new_vsc_msg_item(dev->priv->reader_id, vheader);
+ }
+ 

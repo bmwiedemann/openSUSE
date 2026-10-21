@@ -419,4 +419,12 @@
     <comment>Spice fix for bsc#1278684 to prevent segfault in qemu at VM shutdown</comment>
     <requestid>1378198</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>478a13d3d34e55a10c4925b8d9714961</srcmd5>
+    <version>0.16.0</version>
+    <time>1792608683</time>
+    <user>anag_factory</user>
+    <comment>Upstream fixes for security bugs bsc#1285876 CVE-2026-105958, and bsc#1285875 CVE-2026-105959</comment>
+    <requestid>1386382</requestid>
+  </revision>
 </revisionlist>

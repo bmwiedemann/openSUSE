@@ -35,6 +35,19 @@ Source99:       %{name}.rpmlintrc
 # PATCH-FIX-UPSTREAM fix-build-with-gstreamer-1.24.patch alarrosa@suse.com
 Patch1:         fix-build-with-gstreamer-1.24.patch
 Patch2:         Fix-keyboard-and-mouse-state-leaks-on-interface-removal.patch
+# Upstream Security Fixes
+Patch10:        000-smartcard-fix-NULL-dereference-of-scc-in-on_message_from_device.patch
+Patch11:        001-CVE-2026-105958-migration-dont-abort-on-invalid-migration-data.patch
+Patch12:        002-CVE-2026-105958-reds-fix-wrong-struct-size-in-agent-migration-data-restore.patch
+Patch13:        003-CVE-2026-105958-display-validate-surface_id-bounds-in-migration-restore.patch
+Patch14:        004-CVE-2026-105958-display-validate-surfaces_at_client_ptr-in-display-migration-data.patch
+Patch15:        005-CVE-2026-105958-reds-validate-agent-migration-data-fields-before-use.patch
+Patch16:        006-CVE-2026-105958-char-device-validate-write_data_ptr-bounds-in-migration-restore.patch
+Patch17:        007-CVE-2026-105958-smartcard-validate-migration-read-bounds-and-buffer-sizing.patch
+Patch18:        008-CVE-2026-105958-smartcard-remove-spice_assert-on-attacker-controlled-read_size.patch
+Patch19:        009-CVE-2026-105958-smartcard-dont-allocate-based-on-attacker-controlled-message-length.patch
+Patch20:        010-CVE-2026-105959-glz-fix-integer-truncation-in-encoder-malloc-callback.patch
+Patch21:        011-CVE-2026-105959-glz-validate-max_encoders-from-migration-data.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel

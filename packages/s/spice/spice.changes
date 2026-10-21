@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 19 14:23:01 MDT 2026 - carnold@suse.com
+
+- bsc#1285876 - VUL-0: CVE-2026-105958: spice: heap corruption due
+  to insufficient bounds validation of client-supplied offsets in
+  multiple migration data handlers
+  000-smartcard-fix-NULL-dereference-of-scc-in-on_message_from_device.patch
+  001-CVE-2026-105958-migration-dont-abort-on-invalid-migration-data.patch
+  002-CVE-2026-105958-reds-fix-wrong-struct-size-in-agent-migration-data-restore.patch
+  003-CVE-2026-105958-display-validate-surface_id-bounds-in-migration-restore.patch
+  004-CVE-2026-105958-display-validate-surfaces_at_client_ptr-in-display-migration-data.patch
+  005-CVE-2026-105958-reds-validate-agent-migration-data-fields-before-use.patch
+  006-CVE-2026-105958-char-device-validate-write_data_ptr-bounds-in-migration-restore.patch
+  007-CVE-2026-105958-smartcard-validate-migration-read-bounds-and-buffer-sizing.patch
+  008-CVE-2026-105958-smartcard-remove-spice_assert-on-attacker-controlled-read_size.patch
+  009-CVE-2026-105958-smartcard-dont-allocate-based-on-attacker-controlled-message-length.patch
+- bsc#1285875 - VUL-0: CVE-2026-105959: spice: heap buffer
+  overflow due to incorrect truncation of `size_t` allocation in
+  the GLZ encoder dictionary restore path
+  010-CVE-2026-105959-glz-fix-integer-truncation-in-encoder-malloc-callback.patch
+  011-CVE-2026-105959-glz-validate-max_encoders-from-migration-data.patch
+
+-------------------------------------------------------------------
 Tue Sep 15 07:28:41 MDT 2026 - carnold@suse.com
 
 - bsc#1278684 - Core dump messages when a vm is shut down on
