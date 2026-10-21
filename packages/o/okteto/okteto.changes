@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Oct 08 05:29:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.24.0:
+  * fix: update vulnerable dependencies (#5176) (#5177)
+  * build(deps): bump brace-expansion in /samples/node.js (#5173)
+  * feat(build): support OKTETO_BUILD_COMPRESSION* env vars
+    (DEV-1469) (#5167)
+  * build(deps): bump github.com/containerd/containerd/v2 (#5162)
+  * fix(k8s): use "okteto" as field manager for all CLI writes
+    (DEV-1477) (#5168)
+  * chore(deps): Update github.com/tonistiigi/fsutil digest to
+    83cac42 (#5161)
+  * chore(deps): Update cli-and-logging (#5159)
+  * chore(deps): Update kubernetes to v0.36.4 (#5158)
+  * chore(deps): Update module
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace to v1.45.0
+    [SECURITY] (#5156)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace (#5155)
+  * chore(deps): Update module github.com/sirupsen/logrus to
+    v1.10.0 (#5152)
+  * chore(deps): Update module go.opentelemetry.io/otel/sdk to
+    v1.45.0 [SECURITY] (#5157)
+  * perf(analytics): compute is_preview once per command + dedupe
+    up-metrics I/O (#5140)
+  * build(deps): bump github.com/containerd/containerd/v2 (#5148)
+  * chore(deps): upgrade go-git from v5 to v6 (#5141)
+  * chore(deps): Update module google.golang.org/grpc to v1.83.2
+    [SECURITY] (#5146)
+  * test: reproduce go-git worktreeConfig failure on repos with
+    worktrees (#5143)
+  * revert: downgrade github.com/go-git/go-git/v5 to v5.16.5
+    (#5142)
+  * chore(deps): Update module github.com/docker/cli to
+    v29.7.2+incompatible (#5139)
+  * chore(deps): Update module github.com/posthog/posthog-go to
+    v1.23.0 (#5138)
+  * build(deps): bump google.golang.org/grpc from 1.83.0 to 1.83.1
+    (#5135)
+  * fix: update vulnerable dependencies in okteto and remote
+    binaries (#5133)
+  * chore(deps): Update module google.golang.org/grpc to v1.83.0
+    (#5134)
+  * chore(deps): Update module github.com/docker/cli to
+    v29.7.1+incompatible (#5132)
+  * chore(deps): Update module github.com/bluekeyes/go-gitdiff to
+    v0.9.0 (#5131)
+
+-------------------------------------------------------------------
 Sat Sep 19 07:36:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.23.1:
