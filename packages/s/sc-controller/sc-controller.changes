@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 18 06:13:42 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 1.0.7
+  * 1.0.5: cross-platform fixes making Windows support possible,
+    translatable UI seeded with Czech and Brazilian Portuguese, X/Y flip
+    fix (again) for emulated X360 output, Custom Editor and OSD-on-X11
+    regressions from the GTK 4 migration fixed
+  * 1.0.6: daemon crash on non-English systems fixed, Chinese and Russian
+    translations added, launches on macOS with drivers disabled, HID
+    driver no longer spams RSTICKPRESS for non-mapped inputs
+  * 1.0.7: LED control for DS4/DualSense (hidden where unsupported), LED
+    level fix for Steam Controller (2015) over Bluetooth, Input Mapper dot
+    and DualSense-over-evdev icon fixes
+- Refresh fix-libgtk4-layer-shell-so-name.patch for the reworked OSD
+  startup (upstream now gates the CDLL call on WAYLAND_DISPLAY)
+- Spec cleanup: drop obsolete Group tag, pkgconfig-style BuildRequires,
+  declare gcc for the bundled C extensions, explicit sitearch file list;
+  correct Summary to GTK4; package the new translations via find_lang,
+  dropping the module-local catalog duplicates, and the compiled driver
+  extensions
+
+-------------------------------------------------------------------
 Tue Sep 22 15:37:15 UTC 2026 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 1.0.4

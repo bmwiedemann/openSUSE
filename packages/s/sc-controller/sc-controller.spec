@@ -17,16 +17,16 @@
 
 
 Name:           sc-controller
-Version:        1.0.4
+Version:        1.0.7
 Release:        0
-Summary:        User-mode driver, mapper, and GTK3-based GUI for the Steam Controller and many other controllers.
+Summary:        User-mode driver, mapper, and GTK4-based GUI for the Steam Controller and many other controllers.
 License:        GPL-2.0-only
-Group:          Hardware/Joystick
 URL:            https://github.com/C0rn3j/sc-controller
 Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix-libgtk4-layer-shell-so-name.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  gcc
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -35,10 +35,10 @@ BuildRequires:  python3-installer
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
-BuildRequires:  shared-mime-info
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  pkgconfig(zlib)
 Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-ioctl-opt
@@ -63,12 +63,20 @@ python3 -m installer --destdir=%{buildroot} build/*.whl
 
 %fdupes %{buildroot}%{_prefix}
 
-%files
+# Drop the module-local catalog copies: the app prefers %%{_datadir}/locale,
+# and %%fdupes hardlinks the twins across trees in a way RPM cannot unpack.
+rm -rf %{buildroot}%{python3_sitearch}/scc/locale
+
+%find_lang %{name}
+
+%files -f %{name}.lang
 %license LICENSE
 %doc README.md ADDITIONAL-LICENSES TODO.md
 %{_bindir}/sc-controller
 %{_bindir}/scc*
-%{python3_sitearch}/*
+%{python3_sitearch}/scc
+%{python3_sitearch}/sccontroller-%{version}*-info
+%{python3_sitearch}/lib*.so
 %{_datadir}/applications/*
 %{_datadir}/metainfo/io.github.c0rn3j.sc-controller.metainfo.xml
 %{_datadir}/scc/
