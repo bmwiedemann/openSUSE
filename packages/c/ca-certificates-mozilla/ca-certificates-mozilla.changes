@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 20 13:18:07 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 2.92 state (bsc#1286261)
+  - Removed: 
+    - emSign ECC Root CA - C3
+    - emSign ECC Root CA - G3
+    - emSign Root CA - C1
+
+-------------------------------------------------------------------
 Thu Sep 10 12:34:57 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 2.90 state (bsc#1279961)

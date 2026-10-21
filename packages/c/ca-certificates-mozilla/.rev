@@ -974,4 +974,16 @@
     - Telia RSA TLS Root CA v3 (forwarded request 1378630 from msmeissn)</comment>
     <requestid>1378631</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>31788ab181cabb742bfb4e102e19c3d9</srcmd5>
+    <version>2.92</version>
+    <time>1792608706</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2.92 state (bsc#1286261)
+  - Removed: 
+    - emSign ECC Root CA - C3
+    - emSign ECC Root CA - G3
+    - emSign Root CA - C1 (forwarded request 1386501 from msmeissn)</comment>
+    <requestid>1386502</requestid>
+  </revision>
 </revisionlist>
