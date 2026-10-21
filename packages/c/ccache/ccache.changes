@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 18 18:55:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.14.2:
+  * Avoid undefined behavior for Bytes(data, 0) and a symlink race
+    when creating the fallback IPC dir in /tmp
+  * Do not log credentials for --stop-storage-helpers; treat a
+    closed helper connection as successful for stop
+  * Preserve inherited signal handling in compiler processes;
+    check that -fprebuilt-module-path is a directory
+  * Upgrade bundled BLAKE3 to 1.8.7
+
+-------------------------------------------------------------------
 Sun Sep 27 12:26:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.14.1:

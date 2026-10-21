@@ -30,7 +30,7 @@
 %bcond_with test
 %endif
 Name:           ccache
-Version:        4.14.1
+Version:        4.14.2
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later

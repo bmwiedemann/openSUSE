@@ -985,4 +985,19 @@ Merged into the devel project as jirislaby/d-t-b-ccache PR #2.</comment>
 - Add the missing PATCH-OPENSUSE category tag above Patch2</comment>
     <requestid>1382040</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>55cc13acae16bce3362b9d9caea9b4f1</srcmd5>
+    <version>4.14.2</version>
+    <time>1792608688</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.14.2:
+  * Avoid undefined behavior for Bytes(data, 0) and a symlink race
+    when creating the fallback IPC dir in /tmp
+  * Do not log credentials for --stop-storage-helpers; treat a
+    closed helper connection as successful for stop
+  * Preserve inherited signal handling in compiler processes;
+    check that -fprebuilt-module-path is a directory
+  * Upgrade bundled BLAKE3 to 1.8.7</comment>
+    <requestid>1386405</requestid>
+  </revision>
 </revisionlist>
