@@ -1,7 +1,7 @@
 #
 # spec file for package 7kaa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,18 @@
 
 %define base_version 2.15
 Name:           7kaa
-Version:        %{base_version}.6
+Version:        %{base_version}.7
 Release:        0
 Summary:        Seven Kingdoms: Ancient Adversaries
 License:        GPL-2.0-only
-Group:          Amusements/Games/Strategy/Real Time
 URL:            https://7kfans.com/
-Source0:        https://github.com/the3dfxdude/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/skfans/files/7KAA%20%{version}/%{name}-%{version}.tar.gz/download#/%{name}-%{version}.tar.gz
 Source1:        %{name}.png
 Source2:        %{name}.desktop
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2) >= 2.24.0
@@ -61,8 +56,6 @@ the GPL v2.
 %setup -q
 
 %build
-autoreconf -if
-./autogen.sh
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %configure --docdir=%{_docdir}/%{name}
 %make_build
@@ -76,7 +69,6 @@ install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/pixmaps/%{name}.png
 # install Desktop file
 install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-%suse_update_desktop_file %{name}
 %fdupes -s %{buildroot}%{_prefix}
 %find_lang %{name}
 
@@ -85,7 +77,7 @@ rm -f %{buildroot}%{_docdir}/7kaa/COPYING
 
 %files -f %{name}.lang
 %license COPYING
-%doc README
+%doc README README.source
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png

@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:20:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix Source0 URL: percent-encode the space in the SourceForge
+  directory as %20 so source_validator accepts the 2.15.7 tarball
+  (the bare space split the URL into two tokens and failed
+  validation)
+- Drop obsolete Group tag
+
+-------------------------------------------------------------------
+Thu Dec 11 19:45:15 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2.15.7
+  * Allowed the scenario settings to persist across save and load
+  * Fixed unit skill potential to persist, and not continually be
+    randomized
+  * Fixed some in-game statistics
+  * Tried again to fix mouse sticky/scrolling issues
+  * Fixed issues with skills being reset when entering buildings
+  * Improved caravan/caraval trade stop code
+  * Fixed some game file bugs
+  * Extended game file and synchronization code to support
+    extensions to the game
+  * Improved some graphic drawing
+  * Fixed a problem with unit pathing to board ships
+  * Fixed poor ai logic that cause the ai to always accept a
+    trade treaty
+  * Improved detection of the likely target nation of an attack
+  * Removed a bug causing a fake earthquake
+  * Removed a possible accidental disclosure of the presence
+    of spies
+  * Added support for a hotkey to center on the selected unit
+  * Added support to make numeric keys configurable
+  * Fixed poor ai logic concerning building weapons
+  * Fixed poor ai logic concerning hiring spies
+  * Fixed an error occuring sometimes when a town turns
+    independent
+  * Fixed an error when the ai attacking an unit that enters
+    a building
+  * Fixed an error occuring sometimes on recruiting the last pop
+    of a town
+  * Fixed a pathing issue
+  * Improved ai management of firms
+  * Improved ai in managing town capture operations
+  * Corrected utilization of base towns, typically an ai concept
+  * Improved ai to avoid more cases of accepting treaties of
+    large rivals
+  * Fixed an issue selecting invisible units
+  * Fixed an issue that caused the ai to duplicate fort build
+    actions
+  * Fixed more sea based ai actions
+  * Fixed ai to check skill of workers in managements actions
+  * Fixed ai to prioritize higher skilled generals in management
+    actions
+  * Fixed ai to prioritize higher combat level soldiers in
+    management actions
+  * Corrected more instances where the ai incorrect targets itself
+  * Fixed issue that allowed resigning ships with units in ships
+  * Added advanced options for news notifications
+  * Added support for ctrl button in hotkey mapping
+  * Fixed memory issue in multiplayer
+  * Improved mouse wheel scrolling
+  * Allow screenshots of in-game menu, to easily record map seed
+  * Added hotkey support to cancel build or settle (typically
+    right mouse button)
+  * Increased the max file limit of screenshots
+  * Improved manual, added cover
+  * Fixed difficulty calculation
+  * Fixed crash when clicking on a player market with version 1
+    scenarios
+  * Fixed attack detection
+  * Fixed some ai capture code
+  * Improved multi-language support
+  * Increased the speed of the 9th speed level
+- Drop BuildRequires update-desktop-files because deprecated
+- Drop BuildRequires autoconf, autoconf-archive and  automake
+- Update Source URL from github to sourceforge
+
+-------------------------------------------------------------------
 Tue Sep 26 08:42:27 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - switch build to official release file
