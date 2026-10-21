@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Oct 16 01:46:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.16.5:
+  * New:
+    + Add mad_version_get_string() as an ABI-stable alternative for getting the
+      version string.
+    + Add -DPAD_VERSION_STRING (disabled by default) to pad the global version
+      string for improved ABI compatibility with 0.15.1b.
+    + Miscellaneous stuff:
+      - Add CONTRIBUTING.md and BUILDING.md for contribution guidelines and how
+        to build the library, respectively.
+      - Fix typos in README.
+  * Changed:
+    + Deprecated global version and build type strings. The latter is
+      deprecated with no replacement, while mad_version_get_string() should be
+      used in place of the former.
+    + CMake 3.10+ is now required. This allows for supporting CMake 4.0+
+      without warnings.
+    + Disabled architecture-specific optimizations for 32-bit ARM for now.
+      These optimizations have unfortunately bitrotted and can cause a
+      segfault.
+    + Reorganize the source tree to be cleaner.
+    + Remove nonexistent -DMADD{16}_ASM options from build documentation. These
+      options have been long gone and haven't worked since we dropped GCC 4.4
+      support.
+    + Static and shared library versions of libmad are now built at the same
+      time by default. You can also build only a static version with
+      -DBUILD_SHARED_LIBS=OFF.
+  * Fixed:
+    + Fixed anonymous struct for C++ compatibility.
+    + Fix some clang-tidy warnings.
+    + Fix a Clang warning.
+    + minimad: Fix format under 32-bit.
+    + Fixed missing MAD_DEPRECATED declarations for MSVC.
+    + Fixed x86 CPU detection.
+    + Fixed build on ARM v7.
+- Drop libmad-x86.patch: Applied upstream.
+- Add 9dd96b40c5caf76fd1c6ef9dcc80ba330eb57a79.patch: Really fix build on arm
+- Delete the now build static lib.
+
+-------------------------------------------------------------------
 Thu Mar 26 12:20:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.16.4

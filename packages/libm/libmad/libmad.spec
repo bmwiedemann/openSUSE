@@ -19,16 +19,18 @@
 %define sover   0
 %define libname %{name}%{sover}
 Name:           libmad
-Version:        0.16.4
+Version:        0.16.5
 Release:        0
 Summary:        An MPEG audio decoder library
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 #Git-Clone:     https://codeberg.org/tenacityteam/libmad.git
 URL:            https://www.underbit.com/products/mad/
-Source:         https://codeberg.org/tenacityteam/libmad/releases/download/%{version}/libmad-%{version}.tar.gz
+Source:         https://codeberg.org/tenacityteam/libmad/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1000:     baselibs.conf
-Patch0:         libmad-x86.patch
+# PATCH-FIX-UPSTREAM Really fix build on arm
+Patch:          https://codeberg.org/tenacityteam/libmad/commit/9dd96b40c5caf76fd1c6ef9dcc80ba330eb57a79.patch
+
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -75,10 +77,11 @@ develop applications with libmad.
 
 %build
 %cmake -DOPTIMIZE=ACCURACY
-%make_build
+%cmake_build
 
 %install
 %cmake_install
+find %{buildroot} -name "*.a" -delete
 
 %ldconfig_scriptlets -n %{libname}
 
