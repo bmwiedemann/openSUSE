@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 16 18:12:22 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix occasional crashes on login:
+  * 0001-service-do-not-start-too-early.patch
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

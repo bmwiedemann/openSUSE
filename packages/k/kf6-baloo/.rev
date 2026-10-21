@@ -255,4 +255,13 @@
     <comment>KDE Frameworks 6.31 (forwarded request 1383794 from krop)</comment>
     <requestid>1383904</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>bf90a3b5f12539b1927199021135253b</srcmd5>
+    <version>6.31.0</version>
+    <time>1792608701</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to fix occasional crashes on login:
+  * 0001-service-do-not-start-too-early.patch (forwarded request 1385298 from Vogtinator)</comment>
+    <requestid>1386488</requestid>
+  </revision>
 </revisionlist>
