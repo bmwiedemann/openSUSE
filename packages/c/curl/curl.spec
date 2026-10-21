@@ -187,7 +187,6 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --enable-docs \
 %if %{with mini}
     --disable-dict \
-    --disable-ftp \
     --disable-gopher \
     --disable-imap \
     --disable-mqtt \

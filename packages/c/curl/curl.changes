@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 15 13:43:37 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable also the ftp protocol in the mini package so that dnf and
+  dnf5 can use ftp internally. (bsc#1248984)
+
+-------------------------------------------------------------------
 Thu Oct 15 08:59:18 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.23.0:
