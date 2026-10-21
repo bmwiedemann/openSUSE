@@ -1,0 +1,235 @@
+-------------------------------------------------------------------
+Wed Oct 21 12:57:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Ship the LICENSE file via %license in the main package
+
+-------------------------------------------------------------------
+Tue Oct 20 20:17:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop the duplicated spec header line; mark rpmcrab-rpmlint-compat
+  as noarch (symlinks only)
+
+-------------------------------------------------------------------
+Tue Oct 20 18:21:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Split the shell completions into rpmcrab-bash-completion,
+  rpmcrab-zsh-completion and rpmcrab-fish-completion subpackages,
+  pulled in automatically where the shell is present; the rpmlint
+  compatibility symlinks move to rpmcrab-rpmlint-compat, which
+  provides and conflicts with rpmlint/rpmlint-mini and is pulled
+  in automatically unless real rpmlint is installed; the main
+  package no longer conflicts with rpmlint
+
+-------------------------------------------------------------------
+Tue Oct 20 15:21:44 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to version 0.3.0
+  * Signature verification runs in-process: signature packets are
+    parsed with sequoia-openpgp and verified without invoking rpm,
+    and malformed or unreadable signatures are reported instead of
+    staying silent
+  * Badness simplified: every error fails the build by default and
+    the shipped configuration carries no badness values
+  * The vendored distro configuration ships a single SUSE flavour
+    (openSUSE); the SLFO flavour is removed
+  * A weekly watch tracks upstream rpmlint configuration movement
+    and files a tracking issue on drift; the vendored whitelist
+    stanzas are synced from upstream
+  * non-standard-uid/gid findings credit accounts the package
+    itself declares and are promoted to errors; the
+    file-contains-current-date findings are graded as errors
+  * PAMModulesCheck is enabled in the bundled defaults and the
+    openSUSE flavour, with the authorised module set derived from
+    the FileDigestGroup data
+  * Undefined symbols are resolved against the invocation package
+    set, and x86_64 binaries missing control-flow protection are
+    flagged
+  * New scriptlet checks flag direct useradd and groupadd calls,
+    daemon activation and deprecated cache updaters
+- Drop the slfo.toml configuration file together with the SLFO
+  flavour
+- Re-vendor the cargo dependencies for the release (370 crates;
+  adds sequoia-openpgp with its RustCrypto backend)
+  * The package now uses the upstream release tarball as its source
+
+-------------------------------------------------------------------
+Sun Oct 18 21:18:40 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to git snapshot 8381b07a (2026-10-18)
+  * AtomicUpdateCheck is enabled in the bundled defaults and in
+    the openSUSE and SLFO flavours
+  * AtomicUpdateCheck warns on scriptlet writes outside the
+    snapshot and on direct service restarts in scriptlets
+  * Badness simplified: errors fail the build by default and the
+    shipped configuration carries no badness values
+  * bzip2-compressed payloads and source archives are decoded
+  * New warning for %config-marked files below /usr/etc
+  * file-digest XML validation hardened; systemd unit aliases are
+    resolved before their targets are checked
+- Re-vendor the cargo dependencies for the new snapshot (adds the
+  bzip2 crate and its sys crate)
+
+-------------------------------------------------------------------
+Sun Oct 18 10:31:47 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Correct the snapshot version stamp to 0.2.1+git20261018.
+  Snapshot versions use the latest released version plus the git
+  suffix (RELEASE_VERSION+git, as produced by the package _service).
+  The packaged sources are unchanged (git b7385b27, current main at
+  0.3.0 in development), so the eventual 0.3.0 release supersedes
+  this snapshot in RPM version ordering.
+
+-------------------------------------------------------------------
+Sun Oct 18 10:06:29 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to git b7385b27 (2026-10-18): snapshot of current main
+  at version 0.3.0 (version-consistency guard and versioning
+  semantics landed, #651/#652, closing #289)
+- Regenerate vendor.tar.zst from the snapshot Cargo.lock
+  (209 crates, crate set unchanged)
+
+-------------------------------------------------------------------
+Fri Oct 16 10:15:10 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to git c4aae81a (2026-10-16): 28 PRs merged
+  * #535, #536, #537, #540, #541, #542, #546, #549, #550, #552,
+    #554, #555, #559, #560, #561, #564, #566, #567, #570, #571,
+    #572, #574, #576, #580, #581, #585, #586, #587
+  * Config-filters audit programme completed: dead filters pruned,
+    checks fixed at source, remaining blanket filters dropped or
+    scoped (conffile, symlink, read-error, usr-local,
+    non-standard-dir) (#540-#587)
+  * ldconfig checks tightened; no-dependency-on counts python3-base
+    and the versioned interpreter path (#570, #572)
+  * Decimal-digit table regenerated from CPython 3.14.8
+    (Unicode 16.0.0) (#571)
+- Regenerate vendor.tar.zst (Cargo.lock refreshed via cargo update,
+  209 crates; yanked zip 9.0.1 replaced by 9.0.3) (#585)
+
+-------------------------------------------------------------------
+Thu Oct 15 11:54:59 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to git 447039ef (2026-10-15): 6 PRs merged
+  * #520, #526, #527, #528, #530, #532
+  * Haskell and OCaml binaries are no longer flagged by
+    missing-fortify / missing-stack-protector (#527)
+  * missing-fortify now requires at least three distinct
+    fortifiable imports as evidence (#530)
+  * Mandriva-policy findings removed: lib-package-without-%mklibname
+    and no-major-in-name (#532)
+  * files-duplicate: DuplicatesWhitelistPairs config for known
+    duplicate directory pairs (#520)
+  * rpmlintrc filters are matched against the pre-rename tag (#526)
+- Vendor tarball unchanged (Cargo.lock unchanged, 209 crates)
+
+-------------------------------------------------------------------
+Wed Oct 14 17:10:26 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to git 6013f789 (2026-10-14): 12 PRs merged
+  * #505, #506, #507, #508, #512, #513, #514, #516, #517, #519,
+    #521, #523
+  * Undefined-symbol providers located via DT_RPATH/DT_RUNPATH (#505)
+  * AtomicUpdateCheck runs only under the slfo flavour (#514)
+  * Zero-length finding removed (#513); AMDGPU code objects no
+    longer flagged for partial RELRO (#512)
+  * Ghost binaries counted in package-level binary accounting (#516)
+  * Bytecode opt-level variant duplicates suppressed (#521)
+  * MinGW packages: devel-file, files-duplicate and .dll.a
+    permission handling (#519, #523)
+- Vendor tarball unchanged (Cargo.lock unchanged, 209 crates)
+
+-------------------------------------------------------------------
+Wed Oct 14 06:32:20 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to git 782ac1d5 (2026-10-14): 10 PRs merged
+  * #489, #490, #491, #492, #496, #497, #499, #500, #502, #503
+  * XinetdDepCheck and PAMModulesCheck enabled (45 checks total)
+- Regenerate vendor.tar.zst (Cargo.lock unchanged, 209 crates)
+
+-------------------------------------------------------------------
+Tue Oct 13 21:12:21 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to git c7841da6 (2026-10-13)
+- Regenerate vendor.tar.zst
+
+-------------------------------------------------------------------
+Tue Oct 13 08:25:26 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to git 492175c7 (2026-10-13): upstream version is now 0.2.1
+- Regenerate vendor.tar.zst
+
+-------------------------------------------------------------------
+Sun Oct 11 17:20:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add Conflicts: rpmlint-mini (rpmcrab already Provides: rpmlint-mini;
+  this prevents co-installation and forces the solver to pick rpmcrab)
+
+-------------------------------------------------------------------
+Sun Oct 11 11:05:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to git 5c23380e (2026-10-11)
+- Regenerate vendor.tar.zst
+- Strip the rpmcrab binary in %install (fixes unstripped-binary-or-object)
+- Add Provides: rpmlint-mini (with Prefer: rpmcrab in project config,
+  branched packages use rpmcrab instead of rpmlint/rpmlint-mini)
+
+-------------------------------------------------------------------
+Sat Oct 10 11:35:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Switch to cargo_vendor OBS service for vendoring (drop manual
+  .cargo/config.toml in %prep, stop shipping hand-built vendor.tar.zst)
+
+-------------------------------------------------------------------
+Sat Oct 10 11:10:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to git f100a579 (2026-10-10): 14 PRs merged
+  * #371, #372, #392, #393, #395, #396, #398, #399, #400, #401, #402,
+    #403, #404, #405
+- Regenerate vendor.tar.zst
+- Restore BuildRequires: clang, Requires: rpm-build and %dir completion
+  entries dropped by the rev 29 update
+
+-------------------------------------------------------------------
+Sat Oct 10 10:52:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Revert cargo_vendor service (not installed on OBS); restore manual
+  vendoring with hand-built vendor.tar.zst
+
+-------------------------------------------------------------------
+Fri Oct  9 22:30:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add Requires: rpm-build for SpecCheck (specfile-error/specfile-warning):
+  rpm --specfile re-execs /usr/bin/rpmspec since rpm 4.9, so the rpm
+  package alone is not enough on minimal installs
+
+-------------------------------------------------------------------
+Fri Oct  9 20:45:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to git HEAD 15250410:
+  * Exempt plugin-like objects from shared-library-without-dependency-information
+  * Fix comparison-operator-in-deptoken on rich dependencies
+  * Remove conditional-source-or-patch check
+  * Gate missing-fortify/missing-stack-protector to C/C++ binaries
+  * Anchor explicit-lib-dependency to lib* prefix
+  * Strip release binary while keeping debuginfo (debug=true + strip=symbols)
+
+-------------------------------------------------------------------
+Fri Oct  9 14:00:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- List all external tool Requires with per-check comments:
+  * dash for BashismsCheck (bin-sh-syntax-error)
+  * checkbashisms for BashismsCheck (potential-bashisms)
+  * desktop-file-utils for MenuXDGCheck (invalid-desktopfile)
+  * appstream-glib for AppDataCheck (invalid-appdata-file)
+  * binutils for BinariesCheck (strings)
+- Add rpmlint drop-in symlink (Provides/Conflicts rpmlint)
+- Add Requires: desktop-file-utils for invalid-desktopfile check
+- Add BuildRequires: zstd for vendor.tar.zst
+- Configure cargo to use vendored sources in %prep
+- Install manpage
+
+-------------------------------------------------------------------
+Thu Oct  9 12:00:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add Requires: dash for bin-sh-syntax-error check
+- Restore package after branch project wipe (home:scarabeus_iv:branches:openSUSE:Factory)
