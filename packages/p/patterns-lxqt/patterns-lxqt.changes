@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 18 18:11:37 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Stop pulling YaST into default Tumbleweed installations: drop
+  the Recommends on yast2-control-center-qt from the lxqt
+  pattern.
+  Drop YaST from the pattern recommendations. The YaST patterns
+  and packages stay in the repository for anyone who has them or
+  wants them; new installations simply come without YaST.
+
+-------------------------------------------------------------------
 Thu Feb 19 20:06:54 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add initial version of lxqt_wayland

@@ -195,4 +195,13 @@
   * move all dependencies to Qt6</comment>
     <requestid>1336035</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>eb740fd10f5b8b8444b52d37d0df841a</srcmd5>
+    <version>20260223</version>
+    <time>1792608725</time>
+    <user>anag_factory</user>
+    <comment>patterns-lxqt: stop pulling YaST into default Tumbleweed installs (drop yast2-control-center-qt recommend from lxqt pattern)
+Drop YaST from the pattern recommendations. The YaST patterns and packages stay in the repository for anyone who has them or wants them; new installations simply come without YaST. (forwarded request 1386073 from scarabeus_iv)</comment>
+    <requestid>1386179</requestid>
+  </revision>
 </revisionlist>

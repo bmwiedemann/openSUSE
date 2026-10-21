@@ -136,7 +136,6 @@ Recommends:     nm-tray
 Recommends:     samba
 Recommends:     simple-scan
 Recommends:     system-config-printer
-Recommends:     yast2-control-center-qt
 Suggests:       hplip
 
 %description lxqt
