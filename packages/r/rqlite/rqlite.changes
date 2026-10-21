@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 20 15:45:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.6.3:
+  * Node probes honor request context and commit exactly one
+    result
+  * Make DB connections a first-class object
+  * Prevent ATTACH on the query database connection
+
+-------------------------------------------------------------------
+Tue Oct 20 10:52:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.6.2:
+  * Check for trailing junk in request bodies
+  * Console schema view handles table names that collide with
+    JavaScript object properties
+  * Set CommitTimestamps in CDC Events Group
+  * Upgrade dependencies
+
+-------------------------------------------------------------------
 Sat Oct 17 15:32:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 10.6.1:

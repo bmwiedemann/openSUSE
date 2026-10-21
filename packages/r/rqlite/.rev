@@ -465,4 +465,12 @@
     <comment>rqlite 10.6.1</comment>
     <requestid>1385972</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>c7e7a6ca05d04e7fbe095e2e7405d75d</srcmd5>
+    <version>10.6.3</version>
+    <time>1792608708</time>
+    <user>anag_factory</user>
+    <comment>rqlite 10.6.3</comment>
+    <requestid>1386540</requestid>
+  </revision>
 </revisionlist>
