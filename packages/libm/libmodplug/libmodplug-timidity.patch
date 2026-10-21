@@ -1,7 +1,7 @@
 Index: src/load_pat.cpp
 ===================================================================
---- src/load_pat.cpp.orig
-+++ src/load_pat.cpp
+--- a/src/load_pat.cpp.orig
++++ b/src/load_pat.cpp
 @@ -59,8 +59,8 @@ typedef UWORD WORD;
  #define PATHFORPAT	"C:\\TIMIDITY\\INSTRUMENTS"
  #else

@@ -1,7 +1,7 @@
 #
 # spec file for package libmodplug
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,13 @@ Source1:        baselibs.conf
 Patch1:         libmodplug-timidity.patch
 # PATCH-FIX-UPSTREAM libmodplug-0.8.8.5-fix-missing-include-path.patch -- set includedir in pc file
 Patch2:         libmodplug-0.8.8.5-fix-missing-include-path.patch
+Patch3:         libmodplug-0.8.9.0-abc-drum-bounds.patch
+Patch4:         libmodplug-0.8.9.0-ams-upstream-bounds-checks.patch
+Patch5:         libmodplug-0.8.9.0-CVE-2026-108577.patch
+Patch6:         libmodplug-0.8.9.0-CVE-2026-111270.patch
+Patch7:         libmodplug-0.8.9.0-CVE-2026-111271.patch
+Patch8:         libmodplug-0.8.9.0-CVE-2026-75904.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -43,8 +50,8 @@ mod rendering code from ModPlug, a popular windows mod player written by
 Olivier Lapicque, found at http://www.modplug.com/.
 
 %package -n libmodplug%{soname}
-Summary:        Shared library part of libmodplug
-Group:          System/Libraries
+Summary:        Development files for libmodplug
+Group:          Development/Libraries/C and C++
 
 %description -n libmodplug%{soname}
 Modplug library based on the ModPlug sound engine.
@@ -64,8 +71,7 @@ Files needed to program against libmodplug.
 
 %prep
 %setup -q
-%patch -P 1
-%patch -P 2 -p1
+%autopatch -p1
 sed -i 's/\r$//' ChangeLog
 
 %build

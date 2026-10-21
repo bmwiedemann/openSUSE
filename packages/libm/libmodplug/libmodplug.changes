@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 21 17:45:16 UTC 2026 - Dave Plater <davejplater@gmail.com>
+
+- Added patches from Fedora git:
+  libmodplug-0.8.9.0-CVE-2026-75904.patch
+  libmodplug-0.8.9.0-ams-upstream-bounds-checks.patch
+  libmodplug-0.8.9.0-abc-drum-bounds.patch
+  libmodplug-0.8.9.0-CVE-2026-108577.patch
+  libmodplug-0.8.9.0-CVE-2026-111270.patch
+  libmodplug-0.8.9.0-CVE-2026-111271.patch
+  which fix boo#1285765, boo#1285766, boo#1284977 and boo#1275624
+- Fixes: CVE-2026-75904, CVE-2026-108577, CVE-2026-111270 and
+  CVE-2026-111271
+
+-------------------------------------------------------------------
 Thu Feb 29 17:45:01 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.
