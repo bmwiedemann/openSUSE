@@ -1,7 +1,7 @@
 #
 # spec file for package galaxis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           galaxis
-Version:        1.11
+Version:        1.13
 Release:        0
 Summary:        Clone of the nifty little Macintosh game
-License:        BSD-3-Clause
-Group:          Amusements/Games/Strategy/Turn Based
+License:        BSD-2-Clause
 URL:            http://www.catb.org/~esr/galaxis/
 Source0:        http://www.catb.org/~esr/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}.desktop
@@ -29,8 +28,11 @@ Source1:        %{name}.desktop
 Patch0:         %{name}-Makefile.patch
 # PATCH-FIX-UPSTREAM - galaxis-superhack.c.patch -- Fix bad C++ code
 Patch1:         %{name}-galaxis.c.patch
-BuildRequires:  libncurses6
-BuildRequires:  ncurses-devel
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  rubygem(asciidoctor)
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
@@ -59,7 +61,7 @@ cp -af %{SOURCE1} .
 %make_build CFLAGS="%{optflags}"
 
 %install
-%make_install
+%make_install PREFIX=%{_prefix} BINDIR=%{_bindir} MANDIR=%{_mandir} DATADIR=%{_datadir}
 
 %if 0%{?suse_version}
     %suse_update_desktop_file %{name}

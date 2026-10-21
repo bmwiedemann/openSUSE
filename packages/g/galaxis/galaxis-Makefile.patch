@@ -1,28 +1,23 @@
---- Makefile.orig	2024-06-30 09:09:15.631522825 +0800
-+++ Makefile	2024-06-30 09:14:38.004724948 +0800
-@@ -25,13 +25,20 @@
- 	asciidoctor -D. -a nofooter -a webfonts! $<
- 
- install: galaxis.6 uninstall
--	install -m 755 -o 0 -g 0 -d $(ROOT)/usr/bin/
--	install -m 755 -o 0 -g 0 galaxis $(ROOT)/usr/bin/galaxis
--	install -m 755 -o 0 -g 0 -d $(ROOT)/usr/share/man/man6/
--	install -m 755 -o 0 -g 0 galaxis.6 $(ROOT)/usr/share/man/man6/galaxis.6
-+	install -m 0755 -d $(DESTDIR)/usr/bin
-+	install -m 0755 -d $(DESTDIR)/usr/share/man/man6
-+	install -m 0755 -d $(DESTDIR)/usr/share/applications/
-+	install -m 0755 -d $(DESTDIR)/usr/share/pixmaps/
-+	install -m 0755 -d $(DESTDIR)/usr/share/appdata
-+	install -m 0755 galaxis $(DESTDIR)/usr/bin/
-+	install -m 0644 galaxis.6 $(DESTDIR)/usr/share/man/man6/
-+	install -m 0644 galaxis.desktop $(DESTDIR)/usr/share/applications/
-+	install -m 0644 galaxis.png $(DESTDIR)/usr/share/pixmaps/
+--- Makefile.orig
++++ Makefile
+@@ -58,11 +58,18 @@
+ install:
+ 	install -d $(DESTDIR)$(BINDIR)
+ 	install -m 755 galaxis $(DESTDIR)$(BINDIR)/galaxis
+-	install galaxis.1 $(DESTDIR)$(MANDIR)/man1/galaxis.6
++	install -d $(DESTDIR)$(MANDIR)/man6
++	install -m 644 galaxis.6 $(DESTDIR)$(MANDIR)/man6/galaxis.6
++	install -d $(DESTDIR)$(DATADIR)/applications
++	install -m 644 galaxis.desktop $(DESTDIR)$(DATADIR)/applications/
++	install -d $(DESTDIR)$(DATADIR)/pixmaps
++	install -m 644 galaxis.png $(DESTDIR)$(DATADIR)/pixmaps/
  
  uninstall:
--	rm -f ${ROOT}/usr/bin/galaxis ${ROOT}/usr/share/man/man6/galaxis.6
-+	rm -f /usr/bin/galaxis /usr/share/man/man6/galaxis.6
-+	rm -f /usr/share/applications/galaxis.desktop
-+	rm -f /usr/share/pixmaps/galaxis.png
+ 	rm -f $(DESTDIR)$(BINDIR)/galaxis
+-	rm -f $(DESTDIR)$(MANDIR)/man1/galaxis.6
++	rm -f $(DESTDIR)$(MANDIR)/man6/galaxis.6
++	rm -f $(DESTDIR)$(DATADIR)/applications/galaxis.desktop
++	rm -f $(DESTDIR)$(DATADIR)/pixmaps/galaxis.png
  
- clean:
- 	rm -f galaxis galaxis.6 galaxis-*.tar.gz *~ *.html
+ # Export
+ 

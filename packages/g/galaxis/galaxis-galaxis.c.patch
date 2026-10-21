@@ -1,10 +1,10 @@
---- galaxis.c.orig	2024-06-30 09:53:04.272614651 +0800
-+++ galaxis.c	2024-06-30 09:57:29.188407132 +0800
-@@ -647,6 +647,7 @@
- 	} while (confirm());
+--- galaxis.c.orig
++++ galaxis.c
+@@ -692,6 +692,7 @@
+ } while (confirm());
  	outro(0);
  	/*NOTREACHED*/
-+    return 0;
++	return 0;
  }
  
  /* galaxis.c ends here */

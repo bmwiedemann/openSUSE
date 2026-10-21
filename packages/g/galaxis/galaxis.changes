@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:21:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.13:
+  * 1.12: code audit fixes - corrected bounds checking in an
+    interface, avoided undefined behavior with unsigned
+    characters, and exit gracefully when the terminal window
+    is too small
+  * 1.13: fixed a surviving K&R-style function header for GCC 15
+- Reworked galaxis-Makefile.patch for the new upstream build system
+  and fixed its install target (wrong man page source and section);
+  install desktop file and icon, pass PREFIX/BINDIR/MANDIR/DATADIR
+- Refreshed galaxis-galaxis.c.patch context for the new sources
+- Fix License tag to BSD-2-Clause to match COPYING
+- BuildRequire rubygem(asciidoctor) to generate the man page,
+  plus gcc, make and pkgconfig(ncurses)
+
+-------------------------------------------------------------------
 Sun Jun 30 01:48:05 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 1.11 
