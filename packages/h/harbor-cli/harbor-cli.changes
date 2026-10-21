@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct 21 05:05:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.27:
+  * build(deps): bump github.com/stretchr/testify from 1.11.1 to
+    1.12.1 (#1093)
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.4 to
+    1.10.2 (#1094)
+  * build(deps): bump github.com/charmbracelet/x/ansi from 0.11.7
+    to 0.11.8 (#1086)
+  * build(deps): bump golang.org/x/text from 0.40.0 to 0.41.0
+    (#1087)
+  * build(deps): bump go.yaml.in/yaml/v4 from 4.0.0-rc.4 to
+    4.0.0-rc.6 (#1088)
+  * fix(api): encode nested repository names in API paths (#1114)
+  * fix: TUI picker to set Aborted when user cancels (#1051)
+  * tests: Add unit test for API type structures (#616)
+  * fix(typos): Adherence to Go guidlines and typos (#983)
+  * fix: abort delete when project selection fails (#1104)
+  * build(deps): bump github.com/go-openapi/strfmt from 0.26.2 to
+    0.27.0 (#977)
+  * build(deps): bump dagger/dagger-for-github from 7.0.6 to 8.4.1
+    (#968)
+  * Update harbor-cli manifest
+
+-------------------------------------------------------------------
 Fri Aug 28 06:16:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.26:
