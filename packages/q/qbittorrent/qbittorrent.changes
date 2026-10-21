@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Tue Oct 20 13:13:33 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.3.0
+  Added features:
+  * Add an option to match all share limits
+  * Put Email examples in placeholder text
+  * Add support for widely used image types in HTTP server
+  * Allow to filter torrent list by infohash
+  * Add "Copy path" in Content tab
+  * Don't overwrite config file when it has no write permission
+  * Allow banning IP range
+  * Enhance filename validation
+  * Allow monochrome tray icon to follow color mode
+  * Add "Queued tracker announces" session metric
+  * Improve "Deletion confirmation" dialog
+  * Add scroll bars to Statistics dialog
+  * Decide system tray icon color based on Windows color scheme
+  * Create a group for status bar related settings
+  * Add 'request latency' metric to Statistics dialog
+  * Add "Contribution" column to Peers list
+  * Add tooltips to email notification Options fields
+  * Add 'Open Destination Folder' button to toolbar
+  * Implement `seeding_outgoing_connections` libtorrent setting
+  * Add "Force start torrents" to filter context menus
+  * Improve management of torrent content
+  * Support multiple recipients for email notifications
+  * Add support for magnet link 'so' parameter
+  * Add 'Ignore dotfiles' option in Torrent Creator
+  * Implement 'Maximum outstanding block requests from a peer'
+    setting
+  * Revamp .torrent files backup management
+  * Make Torrent Options dialog scrollable
+  * Add allow_multiple_connections_per_pid advanced setting
+  * Reference torrent "seed mode" by its exact name
+  * Add logging of IP ban alerts
+  * Add 'Resize columns' action to 'Torrent Content Layout'
+    dialog header
+  * Detect redundant quotes from Python executable path
+  * Add option to toggle closing search tabs with middle-click
+  * Expose libtorrent setting for WebTorrent STUN server
+  * Add I2P PeX setting
+  * Add settings for I2P inbound/outbound length variance
+  * Make disabled speed graphs warning clickable
+  * Relax plugin versioning rule
+  Bug fixes:
+  * Fix Comment area background mismatch in Add New Torrent
+    dialog
+  * Rename FYR Macedonia to North Macedonia
+  * Fix STARTTLS implementation
+  * Don't try to load zero size GeoIP database
+  * Use sum of per-torrent payload rates for session speed
+    display
+  * Make "Force reannounce" actually do it
+  * Filter out dotfiles on all platforms in Torrent Creator
+  * Handle IPv6 range with prefix length 128 as single IP
+  * Fix "Torrent is already present" dialog position when main
+    window is minimized
+  * Avoid memory leak on translation changed
+  * Avoid failed add result after tracker merge
+  * Properly handle relative path of logs folder
+  * Fix wrong comparison between IP addresses
+  * Update share limits timer when share limits change
+  * Fix P2P filter parsing for IPv6
+  * Filter unsupported tracker URLs from magnets
+  * Prevent SMTP injection from unsanitized mail content
+  * Use HTTPS for dynamic DNS
+  * Fix torrent completion handling when ignored files are
+    present
+  * Don't create a torrent entry from an unauthenticated announce
+  * Fix broken documentation link
+  * Always query free space of parent path if specified one
+    doesn't exists
+  * Update sort order on Remaining column updated
+  * Apply theme tooltip colors to inactive palette
+  * Avoid heavy work in callback function
+  Web UI:
+  * Add "Select All" and "Invert Selection"
+  * Enable virtual list by default
+  * Improve folder collapse behavior
+  * Show free disk space in add torrent window
+  * Filter array elements in-place
+  * Improve 'set rows' operation performance
+  * Add "Pread/pwrite"  disk IO type option
+  * Unify global speed limit window
+  * Allow to download completed files
+  * Serialize torrent creator dates as epoch seconds
+  * Respect excluded file names in Add torrent dialog
+  * Replace alerts for test email with custom notification
+  * Allow cross-origin links to webroot
+  * Implement skip "Add new torrent" dialog
+  * Reuse category and plugin when refreshing search
+  * Make 'server domain' matching anchored
+  * Add secondary sort column
+  * Add 'Copy path' action to torrent content menu
+  * Handle non-torrent RSS link
+  * Disable torrent content menu items instead of hiding them
+  * Suppress errors when clicking on column headers
+  * Add sessions count limit
+  * Store search tabs between app restarts and across sessions
+  * Add controls to start BitTorrent session paused and set
+    session shutdown timeout
+  * Add support for pausing and resuming BitTorrent session
+  * Use exponential backoff for RSS refresh interval
+  * Detect cross-site requests using `Sec-Fetch-Site` header
+  * Remove indentation if no subcategory exists
+  * Tweak software version table layout
+  * Properly hide elements from screen readers
+  * Add ability to export/import RSS rules
+  * Cap path autocompletion suggestions to 25 entries
+  * Keep properties panel sortable after tab click
+  * Fix authentication bypass via X-Forwarded-For spoofing
+  * Add missing Options page settings and fix mismatches
+  * Prefer `Sec-Fetch-Site` for cross-site request detection
+  * Add shared download window for RSS articles
+  Web API:
+  * Construct WebAPI controller instances on demand
+  * Require POST for search/downloadTorrent and
+    rss/setFeedRefreshInterval
+  * Fix editCategory overwrites unrelated options
+  * Generate correct sync data if client has not received last
+    sent one
+  * Use torrent names for exported .torrent files
+  RSS:
+  * Fix the added RSS rule item doesn't follow "enabled" state
+  * Add "All" sticky RSS item
+  * Add "Clone Rule" feature to RSS AutoDownloader
+  * Allow adding torrents from links in RSS content viewer
+  * Persist feed list sort order
+  * Clamp 'Max articles per feed' to a non-negative value
+  * Make RSS settings warning clickable
+  Search:
+  * Clean up documentation format
+  * Preserve cookies when handling HTTP redirection
+  * Escape pipe characters properly
+  Other:
+  * Support build against latest version of libtorrent
+  * Don't use deprecated libtorrent features
+  * Remove outdated setting keys
+  * Bump Python version minimum requirement
+  * Disable "Resolve peer countries" by default in new
+    installations
+  * Remove FOSSHub site for program updates
+  * Align default DiskQueueSize with libtorrent 2.1
+  * Update man pages to document all command-line options
+  * Mark qBittorrent compatible with CET Shadow Stack
+
+-------------------------------------------------------------------
 Mon Sep 28 19:43:44 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.2.4
