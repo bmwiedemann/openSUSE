@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 20 22:08:29 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Clean up the .spec
+
+-------------------------------------------------------------------
+Sun Oct 18 16:36:42 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use gcc15 for Leap 16.0, fixes building for Leap 16.0 KF
+
+-------------------------------------------------------------------
 Thu Jun 25 22:00:58 UTC 2026 - Fabian Niepelt <fniepelt@faeyben.de>
 
 - Update to version 3.5.0:

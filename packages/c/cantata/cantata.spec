@@ -16,6 +16,8 @@
 #
 
 
+%define appid dog.unix.cantata.Cantata
+
 Name:           cantata
 Version:        3.5.0
 Release:        0
@@ -25,6 +27,13 @@ Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/nullobsi/cantata/
 Source:         https://github.com/nullobsi/cantata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
+%if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+%define gcc_ver 15
+BuildRequires:  gcc%{gcc_ver}
+BuildRequires:  gcc%{gcc_ver}-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
 BuildRequires:  pkgconfig
@@ -103,7 +112,12 @@ information, please refer to the main README.
     -DBUILD_PLUGIN_DEBUG=OFF \
     -DBUNDLED_FONTAWESOME=OFF \
     -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -Wno-error=unused-result -Wno-error=deprecated-declarations" \
-     %{nil}
+%if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+    -DCMAKE_C_COMPILER:STRING=gcc-%{gcc_ver} \
+    -DCMAKE_CXX_COMPILER:STRING=g++-%{gcc_ver} \
+%endif
+    %{nil}
+
 %cmake_build
 
 %install
@@ -122,9 +136,9 @@ information, please refer to the main README.
 %{_datadir}/Cantata/scripts/*
 %{_datadir}/applications/*
 %{_datadir}/metainfo/*
-%{_datadir}/icons/hicolor/scalable/apps/dog.unix.cantata.Cantata.svg
-%{_datadir}/icons/hicolor/symbolic/apps/dog.unix.cantata.Cantata-symbolic.svg
-%{_datadir}/icons/hicolor/*x*/apps/dog.unix.cantata.Cantata.png
+%{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
+%{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
+%{_datadir}/icons/hicolor/*x*/apps/%{appid}.png
 %dir %{_libexecdir}/Cantata
 %dir %{_datadir}/Cantata
 %dir %{_datadir}/Cantata/icons
