@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:47:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.7:
+  * Support songs and drumkits from 0.9.3, with forward-compat
+    for the upcoming 2.0 file formats
+  * Add Linux man pages for the h2cli and h2player applications
+  * Discard tempo changes via shortcuts, MIDI, OSC, Beat Counter
+    and Tap Tempo while timeline is active or tempo synced externally
+  * Validate font family names with fallback, default to Sans Serif
+  * Fix OSC SAVE_PREFERENCES saving the song instead of preferences
+  * Fix Sound Library pattern loading and deleting
+  * Fix Port-MIDI host-error segfault and OpenBSD linker error
+  * Fix JACK audio with rubberband performance issue
+  * Fix parameter loss in the MIDI table within preferences
+  * Rubberband support no longer deactivated when rubberband CLI
+    is not installed
+
+-------------------------------------------------------------------
 Mon Aug  4 07:46:36 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 1.2.6

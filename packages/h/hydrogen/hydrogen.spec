@@ -1,7 +1,7 @@
 #
 # spec file for package hydrogen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define soversion 1_2_7
 %bcond_with lash
 # The use of librubberband2 is marked as experimental.
 # Because the current implementation produce wrong timing!
@@ -24,12 +25,10 @@
 # will work properly as expected.
 %bcond_with librubberband
 Name:           hydrogen
-Version:        1.2.6
-%define soversion 1_2_6
+Version:        1.2.7
 Release:        0
 Summary:        A Real-Time Drum Machine and Sequencer
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Midi
 URL:            http://www.hydrogen-music.org/
 Source0:        https://github.com/hydrogen-music/hydrogen/archive/%{version}/%{name}-%{version}.tar.gz
 Patch2:         release-version.patch
@@ -41,7 +40,6 @@ BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
 BuildRequires:  libtar-devel
 BuildRequires:  pkgconfig
-BuildRequires:  portmidi-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
@@ -63,6 +61,7 @@ BuildRequires:  pkgconfig(liblo)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(lrdf)
 BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(portmidi)
 BuildRequires:  pkgconfig(raptor2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(zlib)
@@ -87,7 +86,7 @@ Hydrogen is a software synthesizer which can be used alone, emulating
 a drum machine based on patterns, or via an external MIDI
 keyboard/sequencer software.
 
-It features a modular and graphical interface based on QT5, has a
+It features a modular and graphical interface based on Qt6, has a
 sample-based stereo audio engine, with import of sound samples in PCM
 formats. Furthermore, a pattern-based sequencer with the ability to
 chain patterns into a song. Up to 64 ticks per pattern with
@@ -99,7 +98,6 @@ swing functions are implemented as well.
 
 %package -n libhydrogen-core-%{soversion}
 Summary:        Library essential for the hydrogen drum machine software
-Group:          System/Libraries
 
 %description -n libhydrogen-core-%{soversion}
 Hydrogen is a software synthesizer which can be used alone, emulating
@@ -109,10 +107,9 @@ keyboard/sequencer software.
 This library is the core of hydrogen's operation.
 
 %package -n libhydrogen-core-devel
-BuildArch:      noarch
 Summary:        Development files and headers for libhydrogen-core
-Group:          Development/Libraries/C and C++
 Requires:       libhydrogen-core-%{soversion} = %{version}
+BuildArch:      noarch
 
 %description -n libhydrogen-core-devel
 These are the headers needed to develop apps that
