@@ -40,4 +40,12 @@ Will (might) be required by the next alsa-utils package.</comment>
     <comment></comment>
     <requestid>976021</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3efe3aee135a1771b34e4ac2f32fc17f</srcmd5>
+    <version>2.5.1</version>
+    <time>1792608983</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386576</requestid>
+  </revision>
 </revisionlist>

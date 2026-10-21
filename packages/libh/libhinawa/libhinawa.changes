@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:15:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.5.1 (changes since 2.4.0):
+  * New Hinawa.FwReqError enumeration for the error domain,
+    previously the FwRcode enumeration was misused for it
+  * Documentation framework switched from gtk-doc to gi-docgen;
+    API docs are not built (-Ddoc=false, the upstream default)
+    because gi-docgen fails on this release's stale annotations
+  * Test-script refinements and missing inclusion guards
+- Soname unchanged (libhinawa.so.2)
+- Add pkgconfig(gobject-2.0) >= 2.44.0 floor from src/meson.build
+- Spec cleanup via spec-cleaner
+
+-------------------------------------------------------------------
 Mon May  9 16:58:02 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.4.0

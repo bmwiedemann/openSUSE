@@ -1,7 +1,7 @@
 #
 # spec file for package libhinawa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           libhinawa
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        I/O library for IEEE 1394 asynchronous transactions
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/alsa-project/libhinawa
 Source0:        https://github.com/alsa-project/libhinawa/releases/download/%{version}/%{name}-%{version}.tar.xz
-BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gobject-introspection-no-export-1.0)
 
 %description
 I/O library for IEEE 1394 asynchronous transactions to/from units on the bus,
@@ -37,7 +36,6 @@ with GObject Introspection.
 
 %package -n libhinawa2
 Summary:        I/O library for IEEE 1394 asynchronous transactions
-Group:          System/Libraries
 
 %description -n libhinawa2
 I/O library for IEEE 1394 asynchronous transactions to/from units on the bus,
@@ -45,7 +43,6 @@ with GObject Introspection.
 
 %package devel
 Summary:        Header files for libhinawa, a lib for IEEE 1394 async transactions
-Group:          Development/Libraries/C and C++
 Requires:       libhinawa2 = %{version}
 
 %description devel
@@ -54,7 +51,6 @@ to develop applications that require libhinawa.
 
 %package -n typelib-1_0-Hinawa-2_0
 Summary:        Introspection bindings for libhinawa
-Group:          System/Libraries
 Requires:       libhinawa2 = %{version}
 
 %description -n typelib-1_0-Hinawa-2_0
@@ -65,16 +61,14 @@ an I/O library for IEEE 1394 asynchronous transactions.
 %setup -q
 
 %build
-%meson -Dgtk_doc=true
+# API docs are disabled: gi-docgen exits non-zero on this release's
+# stale annotations (unknown Hitaki namespace, malformed Since:
+# versions), so -Ddoc=true cannot produce a green build.
+%meson -Ddoc=false
 %meson_build
 
 %install
 %meson_install
-
-mkdir -p %{buildroot}%{_docdir}/%{name}
-cp README* %{buildroot}%{_docdir}/%{name}
-mv %{buildroot}%{_datadir}/gtk-doc/html/hinawa \
-   %{buildroot}%{_docdir}/%{name}/html
 
 %post -n libhinawa2 -p /sbin/ldconfig
 %postun -n libhinawa2 -p /sbin/ldconfig
@@ -84,7 +78,7 @@ mv %{buildroot}%{_datadir}/gtk-doc/html/hinawa \
 %{_libdir}/libhinawa.so.2.*
 
 %files devel
-%doc %{_docdir}/%{name}
+%doc README.rst
 %{_includedir}/libhinawa
 %{_datadir}/gir-1.0/*.gir
 %{_libdir}/libhinawa.so
