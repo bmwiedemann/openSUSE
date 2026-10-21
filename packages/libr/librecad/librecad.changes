@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:57:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 2.2.1.6:
+  * Backported features: bounded hyperbolas with snapping and trimming;
+    right-to-left MText support; CJK fonts (Noto Sans SC/TC and
+    WenQuanYi Micro Hei) with full-Unicode LFF glyph handling; Lao
+    language support; improved small-display layouts
+  * Critical fixes: Undo/Redo and entity-ownership crashes; clipboard
+    and library block handling; hatch reliability and area computation;
+    snapping and intersections; pen inheritance and text display;
+    Linux/CUPS printing and PDF output; dxf2png/dxf2svg --outfile
+    handling; sanitizer findings in the DXF/DWG readers
+- Add OFL-1.1 to License: the bundled Amiri, lc_opengost and Noto
+  Sans SC/TC fonts are OFL-1.1
+
+-------------------------------------------------------------------
 Fri Oct 16 06:25:03 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - add libdxfrw-fix-OOB-read-in-dwgReader18-readFileHeader.patch (bsc#1285638

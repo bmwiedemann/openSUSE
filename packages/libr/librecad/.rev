@@ -332,4 +332,12 @@
   CVE-2026-110606)</comment>
     <requestid>1385145</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>5a319050ab31447695231a49f786e192</srcmd5>
+    <version>2.2.1.6</version>
+    <time>1792609039</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.2.1.6:</comment>
+    <requestid>1386646</requestid>
+  </revision>
 </revisionlist>

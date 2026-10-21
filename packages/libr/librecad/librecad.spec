@@ -17,13 +17,11 @@
 
 
 Name:           librecad
-Version:        2.2.1.5
+Version:        2.2.1.6
 Release:        0
 Summary:        Computer-aided design (CAD) software package for 2D design and drafting
-License:        (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception) AND GPL-2.0-only
-Group:          Productivity/Graphics/CAD
-URL:            http://librecad.org/
-
+License:        (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception) AND GPL-2.0-only AND OFL-1.1
+URL:            https://librecad.org/
 #Git-Web:       https://github.com/LibreCAD/LibreCAD
 Source:         https://github.com/LibreCAD/LibreCAD/archive/v%version.tar.gz
 # Version is actually 8, not 3 (it is 3 in the filename due to how MediaWiki
@@ -38,11 +36,10 @@ Patch4:         librecad-no-date.diff
 Patch6:         librecad-install.diff
 Patch7:         librecad-plugindir.diff
 BuildRequires:  fdupes
-BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++ >= 4.7
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libqt5-linguist
-BuildRequires:  muparser-devel
+BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  wqy-microhei-fonts
@@ -52,6 +49,8 @@ BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(muparser)
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
 Requires(postun): desktop-file-utils
@@ -64,7 +63,6 @@ and drafting.
 
 %package parts
 Summary:        Parts collection for LibreCAD
-Group:          Productivity/Graphics/CAD
 Requires:       %name
 BuildArch:      noarch
 
@@ -73,7 +71,7 @@ Collection of parts for LibreCAD, a Qt application to design 2D
 CAD drawings.
 
 %prep
-%setup -qn LibreCAD-%version -a2 -a3 -a4
+%setup -q -n LibreCAD-%version -a2 -a3 -a4
 %autopatch -p1
 
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
@@ -86,19 +84,22 @@ export PATH="$PWD/prog:$PATH"
 ln -s "$(which lrelease-qt5)" "prog/lrelease"
 
 echo 'DISABLE_POSTSCRIPT = true' > librecad/src/custom.pri
+# FIXME: you should use the %%qmake5 macro
 qmake-qt5 \
 librecad.pro CONFIG+="release" \
 	QMAKE_CFLAGS+="%optflags" QMAKE_CXXFLAGS+="%optflags"
 %make_build
 rm -f unix/resources/fonts/wqy-unicode.lff
 mkdir -p unix/resources/fonts
+# NOTE: keep %%_datadir/fonts literal — %%_fontsdir is undefined here,
+# leaving ttf2lff with a nonexistent font path (FT_New_Face failure).
 ./unix/ttf2lff -L "Apache-2.0 or SUSE-GPL-3.0+-with-font-exception" \
 	"%_datadir/fonts/truetype/wqy-microhei.ttc" \
 	unix/resources/fonts/wqy-unicode.lff
 
 %install
 export PATH="$PWD/prog:$PATH"
-b="%buildroot"
+b=%buildroot
 # No make install :(
 export BUILDDIR="$b/%_datadir/%name"
 sh scripts/postprocess-unix.sh
@@ -148,8 +149,8 @@ perl -pi -e "s|image/vnd.dxf|image/vnd.dxf;|" %buildroot%_datadir/applications/l
 %_bindir/librecad
 %_bindir/ttf2lff
 %_libdir/%name
-%_mandir/man1/librecad.1*
-%_mandir/man1/ttf2lff.1*
+%_mandir/man1/librecad.1%{?ext_man}
+%_mandir/man1/ttf2lff.1%{?ext_man}
 %_datadir/applications/librecad.desktop
 %_datadir/mime/packages/%name.xml
 %_datadir/pixmaps/librecad.png
