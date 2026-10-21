@@ -2017,4 +2017,16 @@
     <comment>[bsc#1283216], CVE-2025-14181</comment>
     <requestid>1381590</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>62372491fb02125de0ec92877ca35087</srcmd5>
+    <version>8.5.12</version>
+    <time>1792608720</time>
+    <user>anag_factory</user>
+    <comment>- version update to 8.5.12 [bsc#1286027]
+  CVE-2026-109618: memory corruption leading to RCE
+  CVE-2026-109619: memory corruption leading to RCE
+- modified patches
+  * php-build-reproducible-phar.patch (refreshed)</comment>
+    <requestid>1386921</requestid>
+  </revision>
 </revisionlist>

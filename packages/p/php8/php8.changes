@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:25:32 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 8.5.12 [bsc#1286027]
+  CVE-2026-109618: memory corruption leading to RCE
+  CVE-2026-109619: memory corruption leading to RCE
+- modified patches
+  * php-build-reproducible-phar.patch (refreshed)
+
+-------------------------------------------------------------------
 Thu Sep 24 17:46:45 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 8.5.11

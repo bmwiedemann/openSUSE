@@ -57,19 +57,21 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.5.11
+Version:        8.5.12
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
 Group:          Development/Libraries/PHP
 URL:            https://secure.php.net
-Source0:        https://www.php.net/distributions/php-%{version}.tar.xz
+# Source0:        https://www.php.net/distributions/php-%{version}.tar.xz
+Source0:        php-8.5.12.tar.xz
 Source1:        mod_%{php_name}.conf
 Source2:        %{php_name}-fpm.conf
 Source5:        README.macros
 Source6:        macros.php
-Source8:        https://www.php.net/distributions/php-%{version}.tar.xz.asc
-# Source9:       https://www.php.net/distributions/php-keyring.gpg#/%%{php_name}.keyring
+# Source8:        https://www.php.net/distributions/php-%{version}.tar.xz.asc
+Source8:        php-8.5.12.tar.xz.asc
+# Source9:        https://www.php.net/distributions/php-keyring.gpg#/%%{php_name}.keyring
 Source9:        %{php_name}.keyring
 Source11:       %{php_name}.rpmlintrc
 Source12:       php-fpm.tmpfiles.d
