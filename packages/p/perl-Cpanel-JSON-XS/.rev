@@ -467,4 +467,47 @@
             Added eg/bench_large.pl with results.</comment>
     <requestid>1378662</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a040f585667ac3fb6c11c039da91d42c</srcmd5>
+    <version>4.800.0</version>
+    <time>1792608827</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.800.0 (4.80)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+  4.80 2026-09-?? (rurban)
+  	- Security fixes, reported by Stig Palmquist (CPANSec):
+  	  * CVE-2026-110672 decode: free the hash key on &quot;Duplicate keys not
+  	    allowed&quot; and on a missing ':' (leak). bsc#1286166
+  	  * CVE-2026-110673 decode: charge allow_tags &quot;(&quot; nesting against
+  	    max_depth (stack overflow). bsc#1286167
+  	  * CVE-2026-110674 decode: look bare keys up as UTF-8, so the
+  	    duplicate check no longer misses or crashes on non-ASCII keys. bsc#1286168
+  	  * CVE-2026-110675 decode: validate bare hash keys as UTF-8 like
+  	    quoted keys (malformed keys). bsc#1286169
+  	  * CVE-2026-110676 encode: compact allow_bignum Math::BigFloat
+  	    values with huge exponents (30MB from 12 bytes). bsc#1286170
+  	  * CVE-2026-110677 decode: fix the dupkeys_as_arrayref reference
+  	    counts (leaked every array). bsc#1286173
+  	  * CVE-2026-110678 incr_parse: apply max_size to the buffered text
+  	    in every context. bsc#1286174
+  	  * CVE-2026-110680 encode: bound the canonical key snapshot for
+  	    growing tied or shared hashes (overflow). bsc#1286175
+  	  * CVE-2026-110681 new: clone the callbacks and buffer SVs on
+  	    ithread clone instead of sharing the parent's pointers. bsc#1286176
+  	  * CVE-2026-110682 incr_parse: reject a top-level number, true,
+  	    false or null unless allow_nonref was set explicitly, as
+  	    chunking changes their value. Strings, arrays and objects are
+  	    unchanged. bsc#1286177
+  	  * CVE-2026-110684 encode: release the temporary references when
+  	    stringifying overloaded objects (leak). bsc#1286179
+  	  * CVE-2026-110685 decode_tag: free the tag and its arguments when
+  	    THAW dies (leak). bsc#1286180
+
+  	  * CVE-2026-110686 decode: keep the filter callbacks alive while
+  	    they run (use-after-free when a filter removes itself). bsc#1286181
+  	  * CVE-2026-110687 canonical: sort byte-string keys as Latin-1. bsc#1286182
+  	  * CVE-2026-110688 incr_parse: validate UTF-8 only up to the end of
+  	    the decoded text (quadratic CPU). bsc#1286183</comment>
+    <requestid>1386514</requestid>
+  </revision>
 </revisionlist>
