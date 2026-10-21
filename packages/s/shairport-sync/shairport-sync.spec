@@ -17,11 +17,10 @@
 
 
 Name:           shairport-sync
-Version:        5.5.2
+Version:        5.6
 Release:        0
 Summary:        An AirPlay audio player
 License:        GPL-3.0-only
-Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/mikebrady/shairport-sync
 Source0:        https://github.com/mikebrady/shairport-sync/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        airplay-server.xml
