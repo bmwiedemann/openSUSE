@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:19:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7.0:
+  * Allow unambiguous command shorthands, opt-in with
+    `stgit.infer-commands`.
+  * Accept git approxidate spellings for dates, e.g. "2 days ago"
+    and "@<epoch>"; relative dates are now anchored in the local
+    time zone.
+  * Run `git mergetool` for `stg push` with `stgit.autoimerge`.
+  * Reject "@" as a branch name for `stg branch --create`.
+  * Bump gix to 0.89 and MSRV to 1.88.
+  * CVE-2026-91986: gix-transport CR/LF/NUL injection into
+    git-daemon connect request via crafted git URL path
+    (boo#1281742).
+  * CVE-2026-109349, CVE-2026-109350, CVE-2026-109351:
+    gix-pack denial of service via pack version 3 header,
+    ofs-delta base distance and pack header object count
+    (boo#1285176).
+- Replace 0001-Update-to-gix-0.85-and-enable-sha256-feature.patch
+  with enable-sha256.patch: carry forward the gix sha256 feature
+  enablement (bsc#1262997) with the vendor closure it needs.
+- Raise cargo minimum to 1.88 per upstream MSRV.
+
+-------------------------------------------------------------------
 Tue Jun 30 14:33:23 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to gix 0.85 and enable sha256 feature (bsc#1262997):
