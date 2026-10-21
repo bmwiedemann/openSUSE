@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:57:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.384: the manifest grows from 632 to 634
+  templates
+  * New, both owned by the media-assets-02 bundle: FastH3
+    OmniRef reference-to-video and Bria Fibo 2 text-to-image
+  * Follow-up hash refreshes for the Bria image-edit template
+    and the localized index files
+  * The floors here stay unchanged: no entry changes owner,
+    so json 0.1.102 and media-assets-02 0.1.9 still resolve
+    every entry they resolved before
+
+-------------------------------------------------------------------
+Tue Oct 20 17:27:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.382: the manifest grows from 628 to 632
+  templates
+  * New, all owned by the media-assets-02 bundle: Clarity AI
+    crystal video upscale, FLUX3 Max image-to-video and
+    text-to-video, and HeyGen Voice v1
+  * Follow-up hash refreshes for the moss-image text-to-image
+    entries, several 3D/video templates and the localized index
+    files
+  * The floors here stay unchanged: no entry changes owner,
+    so json 0.1.102 and media-assets-02 0.1.9 still resolve
+    every entry they resolved before
+
+-------------------------------------------------------------------
 Sun Oct 18 17:28:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.380: the manifest grows from 624 to 628
