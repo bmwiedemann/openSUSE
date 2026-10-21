@@ -194,4 +194,12 @@ satisfy their ranges; ws 8.21.3 is npm latest. No CVE or GHSA in the
     <comment>Update to 2.2.0: NotifyUser progress, kimi app launcher, 90s task cap, tower orchestration, sticky summaries, TRUST_WORKSPACE, plus fixes.</comment>
     <requestid>1384878</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c8a6c788420f2d0ffc2da75b237ad5ab</srcmd5>
+    <version>2.3.0</version>
+    <time>1792609218</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.3.0</comment>
+    <requestid>1386740</requestid>
+  </revision>
 </revisionlist>

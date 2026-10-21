@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:54:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.0:
+  * Confirm model switch in sessions with conversation history:
+    start a new session, compact and continue, continue directly
+    or cancel (cloud-configured)
+  * List plugin skills under qualified <pluginId>:<skillName>
+    names; bare skill names no longer invoke plugin skills
+  * Remote control streams large requests and responses, raising
+    the transfer limit from 10 MiB to 100 MiB
+  * Occupancy prompt when the same session is open in multiple
+    clients, with retry/cancel or reload-and-resend
+  * Auto-generate a session title after the first turn and show
+    it as the terminal window title
+  * Fixes: dangerous_command_guard=false now disables every
+    built-in confirmation guard, stalled session events after
+    archive/restore, Gemini 4 request failures, hooks running in
+    the wrong directory, terminal blocked on git status reads
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Vendor new runtime dependencies chokidar 4.0.3 and readdirp
+  4.1.2: the 2.3.0 bundle imports chokidar externally
+  * chokidar-4.0.3.tgz, readdirp-4.1.2.tgz
+
+-------------------------------------------------------------------
 Thu Oct 15 04:39:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.2.0:

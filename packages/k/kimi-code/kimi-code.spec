@@ -27,8 +27,10 @@
 %define qrcode_version 1.5.4
 %define pngjs_version 5.0.0
 %define dijkstrajs_version 1.0.3
+%define chokidar_version 4.0.3
+%define readdirp_version 4.1.2
 Name:           kimi-code
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Command-line agentic coding assistant powered by Kimi models
 License:        MIT
@@ -36,6 +38,8 @@ URL:            https://github.com/MoonshotAI/kimi-code
 # The published npm artifact is a prebuilt bundle (dist/main.mjs). Since 0.39.0
 # it no longer inlines ws and qrcode, so those - plus qrcode's own runtime
 # dependencies - are vendored alongside the optional native node-pty backend.
+# Since 2.3.0 the bundle also imports chokidar externally (file watching),
+# so it and its own dependency readdirp are vendored too.
 Source0:        https://registry.npmjs.org/@moonshot-ai/%{name}/-/%{name}-%{version}.tgz
 Source1:        https://registry.npmjs.org/node-pty/-/node-pty-%{node_pty_version}.tgz
 Source2:        https://registry.npmjs.org/node-addon-api/-/node-addon-api-%{node_addon_api_version}.tgz
@@ -43,6 +47,8 @@ Source3:        https://registry.npmjs.org/ws/-/ws-%{ws_version}.tgz
 Source4:        https://registry.npmjs.org/qrcode/-/qrcode-%{qrcode_version}.tgz
 Source5:        https://registry.npmjs.org/pngjs/-/pngjs-%{pngjs_version}.tgz
 Source6:        https://registry.npmjs.org/dijkstrajs/-/dijkstrajs-%{dijkstrajs_version}.tgz
+Source7:        https://registry.npmjs.org/chokidar/-/chokidar-%{chokidar_version}.tgz
+Source8:        https://registry.npmjs.org/readdirp/-/readdirp-%{readdirp_version}.tgz
 Source99:       kimi-code-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -57,11 +63,13 @@ Requires:       ripgrep
 # Only the dependencies that are shipped as separate trees are listed here;
 # dist/main.mjs is a prebuilt bundle whose inlined build-time dependencies
 # cannot be enumerated from the published artifact.
+Provides:       bundled(chokidar) = %{chokidar_version}
 Provides:       bundled(dijkstrajs) = %{dijkstrajs_version}
 Provides:       bundled(node-addon-api) = %{node_addon_api_version}
 Provides:       bundled(node-pty) = %{node_pty_version}
 Provides:       bundled(pngjs) = %{pngjs_version}
 Provides:       bundled(qrcode) = %{qrcode_version}
+Provides:       bundled(readdirp) = %{readdirp_version}
 Provides:       bundled(ws) = %{ws_version}
 # node-pty compiles a native addon; the pure-JS bundle is otherwise portable, but
 # only these arches are verified/relevant for the coding-agent workload.
@@ -92,6 +100,8 @@ unpack_npm %{SOURCE3} ws
 unpack_npm %{SOURCE4} qrcode
 unpack_npm %{SOURCE5} pngjs
 unpack_npm %{SOURCE6} dijkstrajs
+unpack_npm %{SOURCE7} chokidar
+unpack_npm %{SOURCE8} readdirp
 chmod -R a+rX,u+w,go-w .
 
 %build
@@ -123,7 +133,7 @@ cp -a kimi-code "$kimiroot"
 
 # Vendor the declared runtime dependencies into the package's own node_modules.
 install -d "$kimiroot/node_modules"
-cp -a ws qrcode pngjs dijkstrajs "$kimiroot/node_modules/"
+cp -a ws qrcode pngjs dijkstrajs chokidar readdirp "$kimiroot/node_modules/"
 # qrcode's bin/qrcode is the sole consumer of yargs and is not a supported entry
 # point here; dropping it keeps that dependency out of the package.
 rm -rf "$kimiroot/node_modules/qrcode/bin"
