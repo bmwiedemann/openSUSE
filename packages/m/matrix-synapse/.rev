@@ -1914,4 +1914,14 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.163.0</comment>
     <requestid>1384837</requestid>
   </revision>
+  <revision rev="173" vrev="2">
+    <srcmd5>d1409f1b88987aa8f322209d98817e3b</srcmd5>
+    <version>1.163.0</version>
+    <time>1792609185</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1386585 from computersalat
+
+Switch [Service] Type=notify</comment>
+    <requestid>1386716</requestid>
+  </revision>
 </revisionlist>

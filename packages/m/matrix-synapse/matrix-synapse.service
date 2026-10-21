@@ -1,19 +1,22 @@
 [Unit]
 Description=Synapse Matrix homeserver
+After=postgresql.service mysql.service mariadb.service
 
 [Service]
-Type=simple
-SyslogIdentifier=matrix-synapse
+Type=notify
+NotifyAccess=main
 Restart=on-failure
 RestartSec=3
+ExecReload=/bin/kill -HUP $MAINPID
 
 User=synapse
 Group=synapse
+
 WorkingDirectory=/var/lib/matrix-synapse
-
 ExecStart=@PYTHON_FLAVOR@ -m synapse.app.homeserver --config-path=/etc/matrix-synapse/homeserver.yaml --config-path=/etc/matrix-synapse/conf.d/
+SyslogIdentifier=matrix-synapse
 
-# Adjust the cache factor if necessary.
+# adjust the cache factor if necessary.
 #Environment=SYNAPSE_CACHE_FACTOR=2.0
 
 [Install]
