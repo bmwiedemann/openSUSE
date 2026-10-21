@@ -18,7 +18,7 @@
 
 
 Name:           protontricks
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        Winetricks for Proton-enabled Games
 License:        GPL-3.0-only

@@ -4,18 +4,9 @@ Date: Wed, 1 Apr 2026 12:26:04 +0200
 Subject: [PATCH] Fix using local vdf module
 
 ---
- setup.cfg                         | 1 -
- src/protontricks/_vdf/__init__.py | 2 +-
- src/protontricks/steam.py         | 2 +-
- tests/conftest.py                 | 2 +-
- tests/test_steam.py               | 2 +-
- 5 files changed, 4 insertions(+), 5 deletions(-)
-
-diff --git a/setup.cfg b/setup.cfg
-index 45185c6..44d60c2 100644
 --- a/setup.cfg
 +++ b/setup.cfg
-@@ -29,7 +29,6 @@ package_dir =
+@@ -29,7 +29,6 @@
      = src
  include_package_data = True
  install_requires =
@@ -23,11 +14,20 @@ index 45185c6..44d60c2 100644
      Pillow
  setup_requires =
      setuptools-scm
-diff --git a/src/protontricks/_vdf/__init__.py b/src/protontricks/_vdf/__init__.py
-index e79136b..722e6f5 100644
+--- a/src/protontricks/steam.py
++++ b/src/protontricks/steam.py
+@@ -9,7 +9,7 @@
+ from collections import OrderedDict, defaultdict
+ from pathlib import Path
+ 
+-import vdf
++from . import _vdf as vdf
+ 
+ from ._vdf import binary_loads as vendored_binary_loads
+ from .util import is_arm64, is_steam_deck, is_steam_frame, lower_dict
 --- a/src/protontricks/_vdf/__init__.py
 +++ b/src/protontricks/_vdf/__init__.py
-@@ -16,7 +16,7 @@ try:
+@@ -16,7 +16,7 @@
  except:
      from collections import Mapping
  
@@ -36,24 +36,9 @@ index e79136b..722e6f5 100644
  
  # Py2 & Py3 compatibility
  if sys.version_info[0] >= 3:
-diff --git a/src/protontricks/steam.py b/src/protontricks/steam.py
-index 5f13206..888f53d 100644
---- a/src/protontricks/steam.py
-+++ b/src/protontricks/steam.py
-@@ -8,7 +8,7 @@ import glob
- from collections import OrderedDict
- from pathlib import Path
- 
--import vdf
-+from . import _vdf as vdf
- 
- from ._vdf import binary_loads as vendored_binary_loads
- from .util import is_steam_deck, lower_dict
-diff --git a/tests/conftest.py b/tests/conftest.py
-index e604326..17fb338 100644
 --- a/tests/conftest.py
 +++ b/tests/conftest.py
-@@ -8,7 +8,7 @@ from pathlib import Path
+@@ -8,7 +8,7 @@
  from subprocess import run, TimeoutExpired
  
  import pytest
@@ -62,11 +47,9 @@ index e604326..17fb338 100644
  
  from protontricks.cli.desktop_install import \
      cli as desktop_install_cli_entrypoint
-diff --git a/tests/test_steam.py b/tests/test_steam.py
-index 81c3dc0..4a2c5bd 100644
 --- a/tests/test_steam.py
 +++ b/tests/test_steam.py
-@@ -4,7 +4,7 @@ import time
+@@ -4,7 +4,7 @@
  from pathlib import Path
  
  import pytest
@@ -77,4 +60,3 @@ index 81c3dc0..4a2c5bd 100644
                                  find_appid_proton_prefix,
 -- 
 2.51.0
-

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 18 06:12:46 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 1.15.0:
+  * Add support for ARM64 Proton installations
+  * Add support for Steam Frame game compatibility profiles for Proton discovery
+  * Add desktop file associations for batch files and Internet shortcuts
+  * Support passing Winetricks arguments after -- in the GUI
+  * Ignore duplicate Steam apps, listing only the most recently updated one
+  * protontricks-launch accepts non-executable arguments and uses the
+    executable location as working directory
+  * Fix Steam Linux Runtime 4.0 wrongly reported as unsupported runtime
+  * Fix Proton-provided shared libraries not loaded on newer Proton releases
+  * Fix Steam Runtime crash launching non-Steam shortcut with empty Start In
+  * Fix random app selection with multiple installations of the same app
+
+-------------------------------------------------------------------
 Wed Apr  1 10:26:38 UTC 2026 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 1.14.1:
