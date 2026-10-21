@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 20 17:27:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.15.post0:
+  * Add named type schema groups and fallback types for function
+    signatures, plus typed native reflection hooks with ABI
+    dispatch and typed reflection attribute keys
+  * Add a name membership query to EnumDef
+  * NativeFunction now preserves native errors, rejects null
+    payloads and adapts throwing native targets
+  * Locate the Cython extension without importing it in
+    find_cython_lib
+  * CMake: explicit FFI install component and embedded installation
+  * Upgrade the ORC JIT to LLVM 23.1.1; build Python 3.15 and
+    Windows ARM64 wheels and fix the free-threaded Windows torch
+    addon link
+  * Make concrete object references non-nullable, restore strict
+    casts on FFI-backed Optional and unify custom Any hash and
+    equality hooks
+
+-------------------------------------------------------------------
 Sat Sep 26 19:43:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.14.post1:
