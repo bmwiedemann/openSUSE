@@ -19,7 +19,7 @@
 %define _lto_cflags %{nil}
 
 Name:           boxfort
-Version:        0.1.8
+Version:        0.1.9
 Release:        0
 Summary:        A sandboxing C library for Criterion
 License:        MIT
@@ -27,6 +27,8 @@ URL:            https://github.com/Snaipe/BoxFort
 Source:         https://github.com/Snaipe/BoxFort/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
 BuildRequires:  gcc
 BuildRequires:  meson
+# upstream meson.build does not support these architectures
+ExcludeArch:    ppc64 ppc64le
 
 %description
 BoxFort provides an API to run user code in isolated processes.
