@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-typing-booster
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.31.1
+Version:        2.31.2
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://mike-fabian.github.io/ibus-typing-booster/
 Source0:        https://github.com/mike-fabian/ibus-typing-booster/releases/download/%{version}/%{name}-%{version}.tar.gz#/%{name}_%{version}.orig.tar.gz
-Source1:        https://releases.pagure.org/inscript2/inscript2-20210820.tar.gz
-BuildRequires:  wl-clipboard
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -35,6 +33,7 @@ BuildRequires:  glibc-locale
 BuildRequires:  gtk3
 BuildRequires:  ibus-devel
 BuildRequires:  m17n-db
+BuildRequires:  wl-clipboard
 %if 0%{?suse_version} < 1600
 BuildRequires:  python3-dataclasses
 %endif
@@ -84,7 +83,6 @@ Recommends:     python3-httpx
 # To get the primary selection on Wayland when getting it using
 # surrounding text fails:
 Recommends:     wl-clipboard
-BuildRequires:  python3-pyxdg
 BuildRequires:  myspell-de
 BuildRequires:  myspell-de_DE
 BuildRequires:  myspell-en
@@ -93,6 +91,7 @@ BuildRequires:  myspell-es
 BuildRequires:  myspell-es_ES
 BuildRequires:  myspell-fr_FR
 BuildRequires:  myspell-it_IT
+BuildRequires:  python3-pyxdg
 
 %description
 Ibus-typing-booster is a context sensitive completion
@@ -100,10 +99,6 @@ input method to speedup typing.
 
 %prep
 %setup -q
-%if 0%{?suse_version} < 1600
-##extract inscript2 maps
-tar xzf %{SOURCE1}
-%endif
 
 %build
 export PYTHON=%{_bindir}/python3
@@ -116,13 +111,6 @@ make install DESTDIR=%{buildroot} NO_INDEX=true
 gzip -n --force --best %{buildroot}/%{_datadir}/%{name}/data/*.{txt,json} \
     %{buildroot}/%{_datadir}/%{name}/data/annotations/*.xml \
     %{buildroot}/%{_datadir}/%{name}/data/annotationsDerived/*.xml
-
-%if 0%{?suse_version} < 1600
-#install inscript2 keymaps
-test -d %{buildroot}%{_datadir}/m17n/icons || mkdir -p %{buildroot}%{_datadir}/m17n/icons
-cp -p inscript2/IM/* %{buildroot}%{_datadir}/m17n/
-cp -p inscript2/icons/* %{buildroot}%{_datadir}/m17n/icons
-%endif
 
 %suse_update_desktop_file -i -u emoji-picker GTK Utility
 
@@ -219,11 +207,5 @@ fi
 %{_ibus_libexecdir}/ibus-setup-typing-booster
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.typing-booster.gschema.xml
-%if 0%{?suse_version} < 1600
-%dir %{_datadir}/m17n
-%{_datadir}/m17n/*.mim
-%dir %{_datadir}/m17n/icons
-%{_datadir}/m17n/icons/*.png
-%endif
 
 %changelog

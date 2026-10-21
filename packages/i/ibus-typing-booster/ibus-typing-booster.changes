@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 19 12:49:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop Source1 inscript2-20210820.tar.gz: releases.pagure.org no
+  longer serves it. It was only unpacked for suse_version < 1600,
+  and m17n-db ships the inscript2 layouts itself.
+
+-------------------------------------------------------------------
+Fri Oct 16 18:57:28 UTC 2026 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.31.2
+- Check whether m17n-lib was correctly initialized
+  (See also https://security-tracker.debian.org/tracker/CVE-2026-107170)
+- Update emoji annotations from CLDR to include Unicode 18.0.0 emoji
+
+-------------------------------------------------------------------
 Mon Sep 21 17:44:11 UTC 2026 - Mike FABIAN <maiku.fabian@gmail.com>
 
 - Update to 2.31.1
