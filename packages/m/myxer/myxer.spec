@@ -1,7 +1,7 @@
 #
 # spec file for package myxer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           myxer
-Version:        1.2.1~git0.f97f06a
+Version:        1.3.0~git0.ea53586
 Release:        0
 Summary:        A modern Volume Mixer for PulseAudio
 #               If you know the license, put it's SPDX string here.
@@ -26,11 +26,8 @@ License:        GPL-3.0-only
 URL:            https://github.com/VixenUtils/%{name}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-Source2:        cargo_config
 Source3:        install.yml
-Patch1:         fix-gio-dep.patch
 BuildRequires:  cargo-packaging
-BuildRequires:  libpulse-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rinstall
 BuildRequires:  pkgconfig(atk) >= 2.14
@@ -38,18 +35,18 @@ BuildRequires:  pkgconfig(cairo) >= 1.12
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.22
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libpulse-mainloop-glib)
+BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(pango) >= 1.36
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
-A hello world with a number of the day printer.
+A modern Volume Mixer for PulseAudio.
 
 %prep
 %setup -q
-%setup -qa1
-%patch -P 1 -p1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
+%setup -q -a1
 cp %{SOURCE3} .
 
 %build
