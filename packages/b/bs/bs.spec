@@ -1,7 +1,7 @@
 #
 # spec file for package bs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,21 @@
 
 
 Name:           bs
-Version:        2.13
+Version:        2.15
 Release:        0
 Summary:        Battleships solitaire game with a color interface
 License:        BSD-2-Clause
-Group:          Amusements/Games/Strategy/Turn Based
 URL:            http://www.catb.org/~esr/bs/
 Source0:        http://www.catb.org/~esr/%{name}/%{name}-%{version}.tar.gz
+Patch0:         bs-fix-install-paths.patch
+Patch1:         bs-fix-gcc15-errors.patch
+BuildRequires:  %{rubygem asciidoctor}
+BuildRequires:  gcc
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  ncurses-devel
+BuildRequires:  make
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(ncurses)
 
 %description
 The classic game of Battleships against the computer. Uses character-cell
@@ -38,15 +43,15 @@ under Linux the mouse will work.
 %autosetup -p1
 
 %build
-%make_build
+%make_build CFLAGS="%{optflags}"
 
 %install
-%make_install
+%make_install PREFIX=%{_prefix}
 %suse_update_desktop_file %{name}
 
 %files
 %license COPYING
-%doc NEWS.adoc README
+%doc NEWS.adoc README.adoc
 %{_bindir}/%{name}
 %{_mandir}/man6/%{name}.6%{?ext_man}
 %{_datadir}/appdata/

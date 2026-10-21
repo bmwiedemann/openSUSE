@@ -1,0 +1,26 @@
+Fix build with GCC 14+ (incompatible-pointer-types is an error):
+match the checkplace forward declaration to its const-qualified
+definition, and take plain char * in do_options (called with argv).
+
+Index: bs-2.15/bs.c
+===================================================================
+--- bs-2.15.orig/bs.c
++++ bs-2.15/bs.c
+@@ -112,7 +112,7 @@
+ 	bool placed;       /* has it been placed on the board? */
+ } ship_t;
+
+-static bool checkplace(int b, ship_t *ss, int vis);
++static bool checkplace(int b, const ship_t *ss, int vis);
+ static void reset_ai_state(void);
+
+ static ship_t plyship[SHIPTYPES] = {
+@@ -1210,7 +1210,7 @@
+ 	return (sgetc("YN") == 'Y');
+ }
+
+-static void do_options(int c, const char *op[]) {
++static void do_options(int c, char *op[]) {
+ 	if (c > 1) {
+ 		register int i;
+

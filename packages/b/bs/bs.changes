@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:20:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.15:
+  * 2.14: fix stack buffer overflow on long usernames: the
+    login name is now truncated into a LOGIN_NAME_MAX buffer
+    instead of strcpy into a 40-byte array
+  * 2.15: upstream packaging fixes: install honors
+    PREFIX/BINDIR/MANDIR, man page is built from source with
+    asciidoctor instead of shipping a prebuilt one
+  * Fully spellchecked manual page and assorted
+    undefined-behavior fixes (curses/mouse handling, character
+    classification, computer-AI state reset on new game)
+- Add bs-fix-install-paths.patch: install the binary into BINDIR
+  instead of MANDIR and honor DESTDIR in uninstall
+- Add bs-fix-gcc15-errors.patch: fix -Wincompatible-pointer-types
+  errors with GCC 14 and later
+- Spec cleanup: drop Group tag; add missing gcc, make and
+  rubygem(asciidoctor) BuildRequires; pass PREFIX at install time
+  and build with optflags; README renamed to README.adoc upstream
+
+-------------------------------------------------------------------
 Sat Mar  8 20:51:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.13:
