@@ -383,7 +383,6 @@ Recommends:     xfce4-xkb-plugin
 # core desktop functionality
 #
 Recommends:     libyui-qt-pkg
-Recommends:     yast2-control-center-qt
 #
 # branding
 #
