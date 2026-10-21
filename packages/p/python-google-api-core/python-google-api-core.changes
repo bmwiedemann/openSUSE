@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 21 10:40:12 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.42.0
+  * **observability:** implement universal 4-path OpenTelemetry
+    tracing (#18433)
+
+-------------------------------------------------------------------
 Wed Oct  7 09:34:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.41.0

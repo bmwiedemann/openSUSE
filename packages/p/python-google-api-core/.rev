@@ -585,4 +585,14 @@
     <comment>1</comment>
     <requestid>1383241</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>105f9fd458d051e1a2834fe3ea5c8071</srcmd5>
+    <version>2.42.0</version>
+    <time>1792609333</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.42.0
+  * **observability:** implement universal 4-path OpenTelemetry
+    tracing (#18433) (forwarded request 1386782 from glaubitz)</comment>
+    <requestid>1386813</requestid>
+  </revision>
 </revisionlist>
