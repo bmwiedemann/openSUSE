@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 20 20:24:14 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792527840.d945a1a7:
+  * docs: document OVS worker health check and REQUIRED_TAP_DEVS
+  * chore(deps): bump the all-actions group with 3 updates (#7987)
+  * chore(deps-dev): bump globals from 17.4.0 to 17.13.0 (#7986)
+  * chore(deps-dev): bump postcss from 8.5.23 to 8.5.31 (#7984)
+  * feat: Extend auto_clone_regex to cover OVS DBus.Error.NoReply failures
+  * fix(mergify): ignore openqa-in-openqa checks
+  * Revert "fix(deps): align MCP version requirement"
+  * chore(deps): Dependency cron 2026-10-20
+  * fix(worker): honour TAPDEV and NICOFFSET in OVS health check
+  * chore(deps-dev): bump postcss-safe-parser from 7.0.1 to 7.1.0
+  * feat: mark deleted needle in collapsed needle selector
+
+-------------------------------------------------------------------
 Mon Oct 19 15:14:50 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1792422872.0ae0959e:
