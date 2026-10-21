@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Wed Oct 21 05:05:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.5:
+  This release is built with Go 1.27.3 and updates the PGP
+  dependency to no longer use the unmaintained x/crypto package.
+  * 206912e build releases w/ go 1.27.3 toolchain on golang-cross
+    v1.27.2-0 (#3029)
+  * 8ae33bd Replace cyberphone/json-canonicalization with
+    encoding/json/jsontext (#3028)
+  * 6da522b Replace hashicorp/go-retryablehttp with std lib retry
+    transport (#2933)
+  * 2192dfb re-implement pgp v3 signature support (#3018)
+  * b7e5e99 feat: serve the API over TLS with a configurable TLS
+    policy (#2920)
+  * 37d3938 fix broken sigv3 parsing, add tests (#2959)
+  * d8bd804 dsse parsing cpu/memory optimization (#2946)
+  * db458f0 ensure invalid treeIDs always return with 400 errors
+    (#2958)
+  * 9651c3f use WithCancel ctx for async tasks (#2947)
+  * eee7d8d Update 413 status code error handling (#2813)
+  * Dependencies
+    - build(deps): Bump github.com/go-chi/chi/v5 from 5.3.2 to
+      5.5.0 (#3022)
+    - build(deps): Bump golang.org/x/net from 0.59.0 to 0.61.0
+      (#3023)
+    - build(deps): Bump github.com/tink-crypto/tink-go/v2 from
+      2.8.0 to 2.9.0 (#3024)
+    - build(deps): Bump cloud.google.com/go/profiler from 0.6.0 to
+      0.7.0 (#3025)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#3020)
+    - build(deps): Bump the all group with 3 updates (#3026)
+    - build(deps): Bump golang from 1.27.1 to 1.27.2 in the all
+      group (#3019)
+    - build(deps): Bump
+      github.com/sigstore/sigstore/pkg/signature/kms/hashivault
+    - build(deps): Bump go.step.sm/crypto from 0.89.0 to 0.91.0
+    - build(deps): Bump
+      github.com/sigstore/sigstore/pkg/signature/kms/azure
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+    - build(deps): Bump the all group with 2 updates
+    - build(deps): Bump golang from `e0174e5` to `162be52`
+    - build(deps): Bump
+      github.com/sigstore/sigstore/pkg/signature/kms/aws
+    - build(deps): Bump golang.org/x/sync from 0.23.0 to 0.24.0
+    - build(deps): Bump the all group with 5 updates
+    - build(deps): Bump the all group with 2 updates
+    - build(deps): Bump cloud.google.com/go/iam from 1.13.0 to
+      1.14.0 (#3006)
+    - build(deps): Bump sigs.k8s.io/release-utils (#3004)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#3003)
+    - build(deps): Bump golang from `3680233` to `e0174e5` (#3002)
+    - build(deps): Bump
+      github.com/sigstore/sigstore/pkg/signature/kms/gcp (#2998)
+    - build(deps): Bump github.com/go-openapi/errors in the all
+      group (#2996)
+    - build(deps): Bump google.golang.org/api from 0.292.0 to
+      0.299.0 (#2997)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2994)
+    - build(deps): Bump golang from `f44f6e8` to `3680233` (#2995)
+    - build(deps): Bump github.com/google/trillian from 1.7.3 to
+      1.8.0
+    - build(deps): Bump the all group with 4 updates
+    - build(deps): Bump golang.org/x/crypto from 0.55.0 to 0.57.0
+    - build(deps): Bump github.com/go-swagger/go-swagger (#2982)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2990)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2974)
+    - build(deps): Bump golang in the all group across 1 directory
+      (#2973)
+    - build(deps): Bump the all group with 4 updates
+    - build(deps): Bump go.step.sm/crypto from 0.87.0 to 0.89.0
+    - build(deps): Bump golang.org/x/mod from 0.38.0 to 0.40.0
+    - build(deps): Bump github.com/go-openapi/runtime from 0.32.5
+      to 0.33.1 (#2970)
+    - build(deps): Bump github.com/tink-crypto/tink-go/v2 from
+      2.7.0 to 2.8.0 (#2971)
+    - build(deps): Bump google.golang.org/grpc from 1.82.1 to
+      1.83.2 (#2969)
+    - build(deps): Bump cloud.google.com/go/pubsub/v2 from 2.6.2 to
+      2.7.0 (#2968)
+    - build(deps): Bump the all group with 4 updates (#2972)
+    - build(deps): Bump github.com/go-swagger/go-swagger (#2965)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2964)
+    - build(deps): Bump the all group with 10 updates (#2967)
+    - build(deps): Bump golang from `65b6f28` to `4013ae0` (#2966)
+    - build(deps): Bump github.com/go-openapi/swag/jsonutils
+      (#2955)
+    - build(deps): Bump github.com/go-openapi/swag/cmdutils (#2954)
+    - build(deps): Bump golang from 1.26.6 to 1.27.0 in the all
+      group (#2949)
+    - build(deps): Bump github.com/go-openapi/swag/conv from 0.28.0
+      to 0.29.0 (#2953)
+    - build(deps): Bump golang.org/x/net from 0.57.0 to 0.58.0
+      (#2952)
+    - build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+      (#2950)
+    - build(deps): Bump the all group with 3 updates (#2956)
+    - build(deps): Bump the all group with 5 updates (#2951)
+
+-------------------------------------------------------------------
 Fri Aug 28 07:40:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.4:

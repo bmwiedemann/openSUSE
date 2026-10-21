@@ -565,4 +565,12 @@
     <comment>update to 1.5.4 (forwarded request 1374264 from ojkastl_buildservice)</comment>
     <requestid>1374351</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f23c39cf1a7e85e87b6c042cbed11a5f</srcmd5>
+    <version>1.5.5</version>
+    <time>1792609201</time>
+    <user>anag_factory</user>
+    <comment>update to 1.5.5 (forwarded request 1386675 from ojkastl_buildservice)</comment>
+    <requestid>1386717</requestid>
+  </revision>
 </revisionlist>

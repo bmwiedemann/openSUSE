@@ -19,7 +19,7 @@
 %define apps cli server
 
 Name:           rekor
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        Supply Chain Transparency Log
 License:        Apache-2.0
@@ -29,7 +29,7 @@ Source1:        vendor.tar.zst
 Source2:        rekor-zypper-verify.sh
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.27
 
 %description
 Rekor's goals are to provide an immutable tamper resistant ledger of metadata
