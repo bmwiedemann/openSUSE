@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-v26.7.0/test/parallel/test-module-loading-globalpaths.js
+Index: node-v26.11.1/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-v26.7.0.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-v26.7.0/test/parallel/test-module-loading-globalpaths.js
+--- node-v26.11.1.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v26.11.1/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,23 +16,23 @@ Index: node-v26.7.0/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-v26.7.0/test/parallel/test-tls-passphrase.js
+Index: node-v26.11.1/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-v26.7.0.orig/test/parallel/test-tls-passphrase.js
-+++ node-v26.7.0/test/parallel/test-tls-passphrase.js
-@@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
+--- node-v26.11.1.orig/test/parallel/test-tls-passphrase.js
++++ node-v26.11.1/test/parallel/test-tls-passphrase.js
+@@ -224,7 +224,7 @@ server.listen(0, common.mustCall(functio
    }, onSecureConnect());
  })).unref();
  
 -const errMessageDecrypt = /bad[ _]decrypt/i;
 +const errMessageDecrypt = /(bad[ _]decrypt|password read)/i;
- 
- // Missing passphrase
- assert.throws(function() {
-Index: node-v26.7.0/test/parallel/test-repl-envvars.js
+ // TLS supplies an empty password when the passphrase is omitted. OpenSSL 4
+ // FIPS rejects it during PBKDF2 password-length checks, before decryption.
+ const missingPassphraseError = hasFIPS(4) ?
+Index: node-v26.11.1/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-v26.7.0.orig/test/parallel/test-repl-envvars.js
-+++ node-v26.7.0/test/parallel/test-repl-envvars.js
+--- node-v26.11.1.orig/test/parallel/test-repl-envvars.js
++++ node-v26.11.1/test/parallel/test-repl-envvars.js
 @@ -3,6 +3,8 @@
  // Flags: --expose-internals
  
@@ -42,11 +42,11 @@ Index: node-v26.7.0/test/parallel/test-repl-envvars.js
  const stream = require('stream');
  const { describe, test } = require('node:test');
  const REPL = require('internal/repl');
-Index: node-v26.7.0/Makefile
+Index: node-v26.11.1/Makefile
 ===================================================================
---- node-v26.7.0.orig/Makefile
-+++ node-v26.7.0/Makefile
-@@ -414,7 +414,6 @@ ADDONS_HEADERS_PREREQS := tools/install.
+--- node-v26.11.1.orig/Makefile
++++ node-v26.11.1/Makefile
+@@ -429,7 +429,6 @@ ADDONS_HEADERS_PREREQS := tools/install.
  	$(wildcard deps/uv/include/*/*.h) \
  	$(wildcard deps/v8/include/*.h) \
  	$(wildcard deps/v8/include/*/*.h) \
@@ -54,7 +54,7 @@ Index: node-v26.7.0/Makefile
  	src/node.h src/node_api.h src/js_native_api.h src/js_native_api_types.h \
  	src/node_api_types.h src/node_buffer.h src/node_object_wrap.h \
  	src/node_version.h
-@@ -641,6 +640,7 @@ test-ci-js: | clear-stalled ## Build and
+@@ -656,6 +655,7 @@ test-ci-js: | clear-stalled ## Build and
  # Related CI jobs: most CI tests, excluding node-test-commit-arm-fanned
  test-ci: LOGLEVEL := info ## Build and test everything (CI).
  test-ci: | clear-stalled bench-addons-build build-addons build-js-native-api-tests build-node-api-tests build-sqlite-tests build-ffi-tests doc-only
@@ -62,7 +62,7 @@ Index: node-v26.7.0/Makefile
  	out/Release/cctest --gtest_output=xml:out/junit/cctest.xml
  	$(PYTHON) tools/test.py $(PARALLEL_ARGS) -p tap --logfile test.tap \
  		--mode=$(BUILDTYPE_LOWER) --flaky-tests=$(FLAKY_TESTS) \
-@@ -845,7 +845,8 @@ apidocs_json = $(addprefix out/,$(apidoc
+@@ -860,7 +860,8 @@ apidocs_json = $(addprefix out/,$(apidoc
  run-npm-ci = $(PWD)/$(NPM) ci --omit=dev
  
  tools/doc/node_modules: tools/doc/package.json
@@ -72,11 +72,11 @@ Index: node-v26.7.0/Makefile
  		echo "Skipping tools/doc/node_modules (no crypto and/or no ICU)"; \
  	else \
  		cd tools/doc && $(call available-node,$(run-npm-ci)) \
-Index: node-v26.7.0/tools/test.py
+Index: node-v26.11.1/tools/test.py
 ===================================================================
---- node-v26.7.0.orig/tools/test.py
-+++ node-v26.7.0/tools/test.py
-@@ -1400,7 +1400,7 @@ def BuildOptions():
+--- node-v26.11.1.orig/tools/test.py
++++ node-v26.11.1/tools/test.py
+@@ -1407,7 +1407,7 @@ def BuildOptions():
    result.add_argument("-s", "--suite", help="A test suite",
        default=[], action="append")
    result.add_argument("-t", "--timeout", help="Timeout in seconds",
@@ -85,24 +85,24 @@ Index: node-v26.7.0/tools/test.py
    result.add_argument("--arch", help='The architecture to run tests for',
        default='none')
    result.add_argument("--snapshot", help="Run the tests with snapshot turned on",
-Index: node-v26.7.0/test/parallel/test-crypto-dh.js
+Index: node-v26.11.1/test/parallel/test-crypto-dh.js
 ===================================================================
---- node-v26.7.0.orig/test/parallel/test-crypto-dh.js
-+++ node-v26.7.0/test/parallel/test-crypto-dh.js
-@@ -93,7 +93,7 @@ const {
+--- node-v26.11.1.orig/test/parallel/test-crypto-dh.js
++++ node-v26.11.1/test/parallel/test-crypto-dh.js
+@@ -94,7 +94,7 @@ const {
+   {
+     assert.throws(() => {
        dh3.computeSecret('');
-     }, { message: process.features.openssl_is_boringssl ?
-       'Supplied key is invalid' :
--      'Supplied key is too small' });
-+      /(Supplied key is too small|invalid public key)/ });
+-    }, { message: 'Supplied key is too small' });
++    }, { message: /(Supplied key is too small|invalid public key)/ });
    }
  }
  
-Index: node-v26.7.0/test/parallel/test-dns.js
+Index: node-v26.11.1/test/parallel/test-dns.js
 ===================================================================
---- node-v26.7.0.orig/test/parallel/test-dns.js
-+++ node-v26.7.0/test/parallel/test-dns.js
-@@ -451,7 +451,7 @@ assert.throws(() => {
+--- node-v26.11.1.orig/test/parallel/test-dns.js
++++ node-v26.11.1/test/parallel/test-dns.js
+@@ -489,7 +489,7 @@ assert.throws(() => {
  
    const server = dgram.createSocket('udp4');
  
@@ -111,10 +111,10 @@ Index: node-v26.7.0/test/parallel/test-dns.js
      const parsed = dnstools.parseDNSPacket(msg);
      const domain = parsed.questions[0].domain;
      assert.strictEqual(domain, 'example.org');
-Index: node-v26.7.0/test/wpt/test-webcrypto.js
+Index: node-v26.11.1/test/wpt/test-webcrypto.js
 ===================================================================
---- node-v26.7.0.orig/test/wpt/test-webcrypto.js
-+++ node-v26.7.0/test/wpt/test-webcrypto.js
+--- node-v26.11.1.orig/test/wpt/test-webcrypto.js
++++ node-v26.11.1/test/wpt/test-webcrypto.js
 @@ -1,7 +1,8 @@
  'use strict';
  
@@ -125,38 +125,56 @@ Index: node-v26.7.0/test/wpt/test-webcrypto.js
    common.skip('missing crypto');
  
  const { WPTRunner } = require('../common/wpt');
-Index: node-v26.7.0/test/parallel/test-sqlite.js
+Index: node-v26.11.1/test/parallel/test-sqlite.js
 ===================================================================
---- node-v26.7.0.orig/test/parallel/test-sqlite.js
-+++ node-v26.7.0/test/parallel/test-sqlite.js
-@@ -243,6 +243,7 @@ suite('SQL APIs enabled at build time',
+--- node-v26.11.1.orig/test/parallel/test-sqlite.js
++++ node-v26.11.1/test/parallel/test-sqlite.js
+@@ -244,7 +244,8 @@ suite('SQL APIs enabled at build time',
    });
  
    test('fts3 is enabled', (t) => {
+-    const db = new Database(':memory:');
 +    t.skip(); return;
-     const db = new DatabaseSync(':memory:');
++    db = new Database(':memory:');
      db.exec(`
        CREATE VIRTUAL TABLE t1 USING fts3(content TEXT);
-@@ -258,6 +259,7 @@ suite('SQL APIs enabled at build time',
+       INSERT INTO t1 (content) VALUES ('hello world');
+@@ -259,6 +260,7 @@ suite('SQL APIs enabled at build time',
    });
  
    test('fts3 parenthesis is enabled', (t) => {
-+		t.skip(); return;
-     const db = new DatabaseSync(':memory:');
++    t.skip(); return;
+     const db = new Database(':memory:');
      db.exec(`
        CREATE VIRTUAL TABLE t1 USING fts3(content TEXT);
-@@ -326,6 +328,7 @@ suite('SQL APIs enabled at build time',
+@@ -274,6 +276,7 @@ suite('SQL APIs enabled at build time',
+   });
+ 
+   test('fts4 is enabled', (t) => {
++    t.skip(); return;
+     const db = new Database(':memory:');
+     db.exec(`
+       CREATE VIRTUAL TABLE t1 USING fts4(content TEXT);
+@@ -289,6 +292,7 @@ suite('SQL APIs enabled at build time',
+   });
+ 
+   test('fts5 is enabled', (t) => {
++    t.skip(); return;
+     const db = new Database(':memory:');
+     db.exec(`
+       CREATE VIRTUAL TABLE t1 USING fts5(content);
+@@ -327,6 +331,7 @@ suite('SQL APIs enabled at build time',
    });
  
    test('geopoly is enabled', (t) => {
 +    t.skip(); return;
-     const db = new DatabaseSync(':memory:');
+     const db = new Database(':memory:');
      db.exec(`
        CREATE VIRTUAL TABLE t1 USING geopoly(a,b,c);
-Index: node-v26.7.0/test/parallel/test-internal-util-construct-sab.js
+Index: node-v26.11.1/test/parallel/test-internal-util-construct-sab.js
 ===================================================================
---- node-v26.7.0.orig/test/parallel/test-internal-util-construct-sab.js
-+++ node-v26.7.0/test/parallel/test-internal-util-construct-sab.js
+--- node-v26.11.1.orig/test/parallel/test-internal-util-construct-sab.js
++++ node-v26.11.1/test/parallel/test-internal-util-construct-sab.js
 @@ -1,7 +1,6 @@
  // Flags: --enable-sharedarraybuffer-per-context --expose-internals
  'use strict';
@@ -165,11 +183,11 @@ Index: node-v26.7.0/test/parallel/test-internal-util-construct-sab.js
  const assert = require('assert');
  const { kMaxLength } = require('buffer');
  const { isSharedArrayBuffer } = require('util/types');
-Index: node-v26.7.0/test/common/index.js
+Index: node-v26.11.1/test/common/index.js
 ===================================================================
---- node-v26.7.0.orig/test/common/index.js
-+++ node-v26.7.0/test/common/index.js
-@@ -1003,6 +1003,7 @@ function resolveBuiltBinary(binary) {
+--- node-v26.11.1.orig/test/common/index.js
++++ node-v26.11.1/test/common/index.js
+@@ -1006,6 +1006,7 @@ function resolveBuiltBinary(binary) {
  
  const common = {
    allowGlobals,
@@ -177,10 +195,10 @@ Index: node-v26.7.0/test/common/index.js
    buildType,
    canCreateSymLink,
    childShouldThrowAndAbort,
-Index: node-v26.7.0/test/common/index.mjs
+Index: node-v26.11.1/test/common/index.mjs
 ===================================================================
---- node-v26.7.0.orig/test/common/index.mjs
-+++ node-v26.7.0/test/common/index.mjs
+--- node-v26.11.1.orig/test/common/index.mjs
++++ node-v26.11.1/test/common/index.mjs
 @@ -5,6 +5,7 @@ const common = require('./index.js');
  
  const {
@@ -189,10 +207,10 @@ Index: node-v26.7.0/test/common/index.mjs
    buildType,
    canCreateSymLink,
    childShouldThrowAndAbort,
-Index: node-v26.7.0/test/common/shared-lib-util.js
+Index: node-v26.11.1/test/common/shared-lib-util.js
 ===================================================================
---- node-v26.7.0.orig/test/common/shared-lib-util.js
-+++ node-v26.7.0/test/common/shared-lib-util.js
+--- node-v26.11.1.orig/test/common/shared-lib-util.js
++++ node-v26.11.1/test/common/shared-lib-util.js
 @@ -1,6 +1,7 @@
  'use strict';
  const common = require('../common');

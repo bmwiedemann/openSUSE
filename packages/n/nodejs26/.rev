@@ -81,4 +81,41 @@ For details, see https://github.com/nodejs/node/releases#release-v26.7.0
 - For details, see https://github.com/nodejs/node/releases#release-v26.6.0</comment>
     <requestid>1373780</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c3d0474f20bf8451ef48547256a02e0b</srcmd5>
+    <version>26.12.0</version>
+    <time>1792609231</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.12.0:
+  - doc,lib,src: throw on missing WebAssembly or RX support
+  - http: add websocketMask() and websocketUnmask()
+for details see https://nodejs.org/en/blog/release/v26.12.0
+nodejs-add-missing-include.patch: upstreamed, dropped
+
+- Update to 26.11.1:
+  - buffer: add isLatin1
+  - buffer: add Buffer.stringLength()
+  - http: add isValidHeaderName() and isValidHeaderValue()
+  - http2: add connectionWindowSize option
+  - perf_hooks: fix truncation of monitorEventLoopDelay() resolution
+  - perf_hooks: allow RecordableHistogram to record 0
+  - perf_hooks: add histogram.diff()
+  - perf_hooks: add histogram.snapshot()
+  - perf_hooks: harden histogram CBOR import validation
+  - process: graduate process.ref/unref to stable
+  - sqlite: rename DatabaseSync and StatementSync
+  - src: add --process-timeout=N
+  - src: expose size and count in heap profile output
+  - src: let embedders exempt linked bindings from the addon permission
+For complete list of changes, see
+  https://nodejs.org/en/blog/release/v26.11.1
+  https://nodejs.org/en/blog/release/v26.11.0
+  https://nodejs.org/en/blog/release/v26.10.0
+  https://nodejs.org/en/blog/release/v26.9.0
+  https://nodejs.org/en/blog/release/v26.8.2
+NOTICE: reject vuln reports on things that are enabled only by
+`--experimental-*` runtime flag that are still works in progress.
+https://github.com/nodejs/node/commit/ae1801eb55</comment>
+    <requestid>1386755</requestid>
+  </revision>
 </revisionlist>

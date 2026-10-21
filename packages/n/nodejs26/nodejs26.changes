@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:20:32 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to 26.12.0:
+  - doc,lib,src: throw on missing WebAssembly or RX support
+  - http: add websocketMask() and websocketUnmask()
+for details see https://nodejs.org/en/blog/release/v26.12.0
+
+nodejs-add-missing-include.patch: upstreamed, dropped
+
+-------------------------------------------------------------------
+Mon Oct 12 09:53:03 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to 26.11.1:
+  - buffer: add isLatin1
+  - buffer: add Buffer.stringLength()
+  - http: add isValidHeaderName() and isValidHeaderValue()
+  - http2: add connectionWindowSize option
+  - perf_hooks: fix truncation of monitorEventLoopDelay() resolution
+  - perf_hooks: allow RecordableHistogram to record 0
+  - perf_hooks: add histogram.diff()
+  - perf_hooks: add histogram.snapshot()
+  - perf_hooks: harden histogram CBOR import validation
+  - process: graduate process.ref/unref to stable
+  - sqlite: rename DatabaseSync and StatementSync
+  - src: add --process-timeout=N
+  - src: expose size and count in heap profile output
+  - src: let embedders exempt linked bindings from the addon permission
+
+For complete list of changes, see
+  https://nodejs.org/en/blog/release/v26.11.1
+  https://nodejs.org/en/blog/release/v26.11.0
+  https://nodejs.org/en/blog/release/v26.10.0
+  https://nodejs.org/en/blog/release/v26.9.0
+  https://nodejs.org/en/blog/release/v26.8.2
+
+NOTICE: reject vuln reports on things that are enabled only by
+`--experimental-*` runtime flag that are still works in progress.
+https://github.com/nodejs/node/commit/ae1801eb55
+
+- no_avx2_on_i586.patch, ip-address.patch: dropped, upstreamed
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
+Fri Sep  4 13:28:29 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to 26.8.1:
+  - benchmark: add --analyze mode to compare.js
+  - crypto: update root certificates to NSS 3.126
+  - crypto: enable SIV and GCM-SIV modes in Cipher/Decipher APIs
+  - diagnostics_channel: mark TracingChannel as stable
+  - lib,src: improve histogram implementation
+  - net: improve performance of net.BlockList
+  - perf_hooks: add statistical hypothesis testing to histogram
+  - repl: add basic syntax highlighting
+  - sqlite: add StatementSync.prototype.close()
+  - sqlite: add StatementSync.prototype[Symbol.dispose]()
+  - util: add non-throwing MIMEType.parse
+  - zlib: add ZipEntry, ZipFile, and ZipBuffer
+
+For details, see https://github.com/nodejs/node/releases#release-v26.8.1
+
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
 Tue Aug 25 10:56:32 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Update to 26.7.0:
