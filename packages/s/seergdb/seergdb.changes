@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:29:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.8:
+  * New Parallel Stacks visualizer: merged call-stack graph of all
+    threads, with Method View, search and filter, and minimap option
+  * Editor minimap for Source and Assembly views
+  * GDB Monitor visualizer for monitor commands (gdbserver, openocd,
+    qemu); new starti mode starting at the first instruction
+  * Icon theme option (auto/light/dark) following the color theme;
+    Memory visualizer highlights changed bytes
+  * Matrix visualizer row/column-major selector, auto-refresh and bulk
+    update; Array visualizer auto-refresh and faster scatter plots;
+    Image visualizer Ctrl+wheel zoom and fixed Qt6 zoom keys
+  * Syntax highlighting for Ada and Fortran; fixed string and
+    class-name rules; console output decoded as UTF-8
+  * Fixed gdb stderr reading, project run-setting loading, and a
+    spurious no-breakpoints restart warning
+- Pin _service tar_scm to release tags (match-tag v*): upstream's
+  rolling *-latest tags broke @PARENT_TAG@ version detection
+- Spec cleanup: drop Group tag, use pkgconfig() BuildRequires
+
+-------------------------------------------------------------------
 Wed May  6 04:42:04 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 * Upgrade to version 2.7

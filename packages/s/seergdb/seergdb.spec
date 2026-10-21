@@ -18,17 +18,14 @@
 
 %global optflags %{?optflags} -fpie
 %global build_ldflags %{?build_ldflags} -pie
-
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 %global force_gcc_version 12
 %endif
-
 Name:           seergdb
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        A GUI front-end for GNU gdb
 License:        GPL-3.0-or-later
-Group:          Development/Tools/Debuggers
 URL:            https://github.com/epasveer/seer
 # Temporarily building our own tarball, see:
 # https://github.com/epasveer/seer/pull/457
@@ -37,11 +34,13 @@ Source0:        seer-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}
 BuildRequires:  gcc%{?force_gcc_version}-c++
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel
-BuildRequires:  qt6-charts-devel
-BuildRequires:  qt6-core-devel
-BuildRequires:  qt6-gui-devel
-BuildRequires:  qt6-svg-devel
+BuildRequires:  pkgconfig(Qt6Charts)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6SvgWidgets)
 Requires:       gdb
 Recommends:     libQt6Svg6
 
