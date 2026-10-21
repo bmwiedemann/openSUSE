@@ -1,7 +1,7 @@
 #
 # spec file for package decker-doc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           decker-doc
-Version:        1.60
+Version:        1.71
 Release:        0
 Summary:        A multimedia sketchpad
 License:        MIT
-URL:            http://beyondloom.com/decker/
+URL:            https://beyondloom.com/decker/
 Source:         https://github.com/JohnEarnest/Decker/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  decker
 BuildArch:      noarch

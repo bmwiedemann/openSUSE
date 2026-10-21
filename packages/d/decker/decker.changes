@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 18 06:13:41 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 1.71:
+  * New Lil primitives: ceil, trim, rev and distinct; raze semantics
+    refined and the < and > operators now prefer numeric comparison
+    for mixed-type arguments (both minor breaking changes).
+  * Keystores reworked into general-purpose mutable dictionaries;
+    writing to a keystore now returns the written value.
+  * New IMG3 LZW image packing format reduces large deck sizes 2-4x.
+  * New experimental gamepad input interface with app.cursor pointer
+    override; kiosk mode (app.kiosk) with overridable quit[] event and
+    danger.open[] for kiosk launchers spanning multiple decks.
+  * The .pattern attribute now applies to all widgets, and animated
+    patterns support up to 256 steps.
+  * New bundled modules: stats, hershey vector fonts and qr code
+    generation, plus an All About Transitions guide and dfxr example.
+  * Sound: sound.scaled[] with interpolation for pitch-bending and
+    cloning, and read[] can fetch full samples as an i8 array.
+  * UTF-8/DeckRoman path handling fixes, post-2038 date support, and
+    assorted crash fixes (empty grids, GIF export, canvas clipping).
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+- Drop xxd BuildRequires and add gcc: upstream replaced the xxd
+  build-time dependency with a bundled C utility (c/ra.c).
+
+-------------------------------------------------------------------
 Tue Oct  7 11:26:49 UTC 2025 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - update to 1.60:

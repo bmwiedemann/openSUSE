@@ -1,7 +1,7 @@
 #
 # spec file for package decker
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           decker
-Version:        1.60
+Version:        1.71
 Release:        0
 Summary:        A multimedia sketchpad
 License:        MIT
-URL:            http://beyondloom.com/decker/
+URL:            https://beyondloom.com/decker/
 Source:         https://github.com/JohnEarnest/Decker/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  SDL2-devel
-BuildRequires:  SDL2_image-devel
+BuildRequires:  gcc
 BuildRequires:  make
-BuildRequires:  xxd
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(sdl2)
 
 %description
 Decker is a multimedia platform for creating and sharing interactive documents, with sound, images, hypertext, and scripted behavior.
@@ -42,7 +43,7 @@ Decker is a multimedia platform for creating and sharing interactive documents, 
 DESTDIR=%{buildroot} PREFIX=%{_prefix} %make_install
 
 %check
-make test
+%make_build test
 
 %files
 %license LICENSE.txt
