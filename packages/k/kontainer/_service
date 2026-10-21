@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="filename">kontainer</param>
+    <param name="url">https://invent.kde.org/denysmb/Kontainer.git</param>
+    <param name="scm">git</param>
+    <param name="version">1.6.2</param>
+    <!-- <param name="changesgenerate">enable</param> -->
+    <!-- <param name="changesauthor">RN</param> -->
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

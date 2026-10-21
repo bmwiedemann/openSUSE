@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Sun Sep 27 14:53:03 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 1.6.2:
+  * Chore: Update version to 1.4.0 and release metadata
+  * Chore: Update repository URLs to KDE Invent
+  * CI: Run KDE Tests
+  * Docs: Add BUILD file and update README
+  * Chore: Bump version to 1.3.0
+  * Feat: Improve container creation UX with centered loading indicator
+  * Fix: Disable container actions when engine is unavailable
+  * Feat: Warn users when Podman or Docker is not installed
+  * Style: Add color indicators for distros in image list
+
+-------------------------------------------------------------------
+Sun Sep 27 14:35:59 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Initial release
