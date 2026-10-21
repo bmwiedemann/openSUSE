@@ -17,7 +17,7 @@
 
 
 Name:           syncthing
-Version:        2.1.6
+Version:        2.1.7
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0

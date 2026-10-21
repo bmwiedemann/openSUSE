@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 21 08:36:02 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.1.7
+  * Fixes
+    fix: handle missing max-sequence file entries by @calmh in #10912
+    fix(sqlite): avoid early garbage collection of deleted recv-enc files by @calmh in #10916
+    fix(sqlite): do not generate unbounded prepared statements (ref #10913) by @calmh in #10915
+    fix(discover): skip unnecessary identical global announce updates; obey retry-after by @calmh in #10918
+    fix(protocol): convert panics on bad data to protocol errors by @calmh in #10923
+    fix(model): verify local change before applying metadata shortcut (fixes #10924) by @calmh in #10925
+    fix(model): ensure parent ownership is copied properly (fixes #8399) by @calmh in #10926
+    fix(model): properly compare blocks when reconciling receive-only (fixes #10928) by @calmh in #10929
+  * Other
+    build(deps): update dependencies by @calmh in #10917
+    chore(protocol): add protovalidate validation of incoming messages, reasonable limits by @calmh in #10838 
+
+-------------------------------------------------------------------
 Tue Oct  6 09:02:19 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.1.6
