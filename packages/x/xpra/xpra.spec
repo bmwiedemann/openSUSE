@@ -23,6 +23,7 @@
 ### Comes from git tarball setup.py:
 ###   setup.py build --verbose ...
 #%%define xpra_ver %%(echo %%{version} | awk -F+ '{print $1}' | awk -F. '{print $1"."$2}')
+%define xpra_ver %(echo %{version} | awk -F+ '{print $1}')
 #####
 %define python_ver python313
 %define python_short_ver 3.13
@@ -30,7 +31,7 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.5.3
+Version:        6.5.5
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -241,7 +242,9 @@ rm -v %{buildroot}%{_datadir}/gnome-shell/extensions/input-source-manager@xpra_o
 ###     /usr/lib64/wireshark/plugins/4.6/epan
 ###     /usr/lib64/wireshark/plugins/4.6/epan/libvirt.so
 ###
-rm -v %{buildroot}%{_prefix}/xpra_dissector.lua
+### 20260928: now lives in %%{_libdir}
+#rm -v %%{buildroot}%%{_prefix}/xpra_dissector.lua
+rm -v %{buildroot}%{_libdir}/wireshark/plugins/xpra_dissector.lua
 #####
 
 # 20250419: For some reason these are copied from "build/scripts-3.13",
@@ -342,8 +345,8 @@ done
 ### Leap 15.[5,6] need to use >= Python3.10, so these have to be called out directly.
 #%%{python3_sitearch}/xpra
 %{_libdir}/%{python_bin}/site-packages/%{name}
-%{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
-#%%{python3_sitearch}/%%{name}-%%{xpra_ver}-py%%{python3_version}.egg-info
+#%%{python3_sitearch}/%%{name}-%%{version}-py%%{python3_version}.egg-info
+%{python3_sitearch}/%{name}-%{xpra_ver}-py%{python3_version}.egg-info
 #%%{_libdir}/%%{python_bin}/site-packages/%%{name}-%%{xpra_ver}-py%%{python_short_ver}.egg-info
 #####
 %{_datadir}/applications/xpra-gui.desktop
