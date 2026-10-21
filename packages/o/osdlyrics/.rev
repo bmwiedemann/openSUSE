@@ -135,4 +135,12 @@
     <comment>- Add fix-build-with-gcc15.patch (forwarded request 1333267 from hillwood)</comment>
     <requestid>1333268</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0866105321b79f26c7b1176db4c9a042</srcmd5>
+    <version>0.5.16</version>
+    <time>1792608976</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386583</requestid>
+  </revision>
 </revisionlist>

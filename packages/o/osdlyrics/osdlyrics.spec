@@ -17,15 +17,13 @@
 
 
 Name:           osdlyrics
-Version:        0.5.15
+Version:        0.5.16
 Release:        0
 Summary:        A third-party lyrics display program
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Sound/Visualization
 URL:            https://github.com/osdlyrics/osdlyrics
 Source0:        https://github.com/osdlyrics/osdlyrics/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
-Patch0:         fix-build-with-gcc15.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
@@ -57,7 +55,6 @@ network automatically.
 
 %package -n python3-%{name}
 Summary:        Python module for osdlyrics
-Group:          Productivity/Multimedia/Sound/Visualization
 Requires:       %{name} = %{version}
 Obsoletes:      python-%{name} <= %{version}
 

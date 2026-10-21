@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:47:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.16:
+  * Add LrcLib lyrics source.
+  * Remove Xiami lyrics source support.
+  * Correctly parse song title from filename.
+  * Fix build error (drop fix-build-with-gcc15.patch, adopted upstream).
+
+-------------------------------------------------------------------
 Mon Feb 16 07:34:36 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-build-with-gcc15.patch 
