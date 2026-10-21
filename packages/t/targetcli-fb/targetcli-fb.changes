@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:57:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.0.2:
+  * restoreconfig: no longer return success if the file
+    doesn't exist
+  * Allow user to control exclusive ownership for iblock
+  * Correct tab-completion for storage objects
+- Spec cleanup: drop obsolete Group tags
+
+-------------------------------------------------------------------
 Tue Aug 26 08:03:24 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

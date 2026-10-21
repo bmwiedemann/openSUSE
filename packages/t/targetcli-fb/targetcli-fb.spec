@@ -1,7 +1,7 @@
 #
 # spec file for package targetcli-fb
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,10 @@
 %bcond_with libalternatives
 %endif
 Name:           targetcli-fb
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        A command shell for managing the Linux LIO kernel target
 License:        Apache-2.0
-Group:          System/Management
 URL:            https://github.com/open-iscsi/%{name}
 Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}.service
@@ -41,6 +40,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  git
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 Requires:       python-configshell-fb
@@ -75,7 +75,6 @@ no longer strictly compatible.
 
 %package -n %{name}-common
 Summary:        Common targetcli-fb subpackage for either flavor of Python
-Group:          System/Management
 Provides:       %{python_module targetcli-fb-common}
 
 %description -n %{name}-common
@@ -143,8 +142,8 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctargetclid
 %doc README.md THANKS
 %dir %{_sysconfdir}/target
 %dir %{_sysconfdir}/target/backup
-%doc %{_mandir}/man8/targetcli.8%{?ext_man}
-%doc %{_mandir}/man8/targetclid.8%{?ext_man}
+%{_mandir}/man8/targetcli.8%{?ext_man}
+%{_mandir}/man8/targetclid.8%{?ext_man}
 %{_unitdir}/targetcli.service
 %{_unitdir}/targetclid.service
 %{_unitdir}/targetclid.socket
