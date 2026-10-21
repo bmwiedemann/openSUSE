@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Oct 17 18:19:34 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.13.5:
+  * Ported core engine subsystems (renderer, audio, physics,
+    ndata, plugin manager GUI) to Rust and migrated from SDL2 to
+    SDL3 (0.13.0)
+  * Added built-in plugin manager and new outfits, ships, missions
+    and events (0.13.0)
+  * Fixed audio volume reset on load, radar weapon scaling, and
+    point defence firing while stealthed (0.13.1)
+  * Fixed time compression on non-ingame audio, NPCs missing core
+    outfits, and zero-velocity space mines (0.13.2)
+  * Fixed friendly pilots attacking player, plugin zip handling,
+    and editor/ship-switching memory safety bugs (0.13.3)
+  * Fixed NPC jump crash, high-DPI online resizing, plugin
+    segfaults, and escort mission behaviour (0.13.4)
+  * Fixed obelisk completion, hologram projector missile damage,
+    and taiomi01 scanning error (0.13.5)
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Switch Source0 URL to Codeberg, add vendor.tar.zst for Rust
+  crates, update License to GPL-3.0-only AND MPL-2.0, and update
+  BuildRequires for SDL3 and Rust build dependencies
+- Exclude i586: the Rust code in 0.13.x fails to build on 32-bit x86
+  (bindgen max_align_t layout check in naevc.rs).
+
+-------------------------------------------------------------------
 Sat Sep  6 07:50:53 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 0.12.6

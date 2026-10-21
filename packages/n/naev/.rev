@@ -312,4 +312,12 @@
   pkgconfig(yaml-0.1) (forwarded request 1302992 from Kieltux)</comment>
     <requestid>1303024</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0a28ac5eca3719c3b1b12084b1fb5f5f</srcmd5>
+    <version>0.13.5</version>
+    <time>1792608834</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.13.5; exclude i586, the new Rust code fails to build on 32-bit x86 (forwarded request 1385961 from amanzini)</comment>
+    <requestid>1386522</requestid>
+  </revision>
 </revisionlist>
