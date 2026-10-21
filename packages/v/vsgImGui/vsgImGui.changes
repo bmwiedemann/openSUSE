@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:21:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.8.0:
+  * Bundled dear imgui updated to 1.92.9 and implot to 1.0
+  * Added basic support for sRGB framebuffer usage
+  * Use VSG CMake config for C++17 support, require vsg >= 1.1.13
+  * Key handling fixes: drop special cases of key code handling,
+    fix modifier key state sent to ImGui
+  * Fix in-tree build warnings when building a library using vsgImGui
+- Spec file cleanup: drop obsolete Group tags and %defattr
+
+-------------------------------------------------------------------
 Mon May 27 13:31:24 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 0.3.0

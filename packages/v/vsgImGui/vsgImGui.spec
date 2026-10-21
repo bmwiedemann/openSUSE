@@ -1,7 +1,7 @@
 #
 # spec file for package vsgImGui
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 %define _vsg_so_nr 0
-
 Name:           vsgImGui
-Version:        0.3.0
+Version:        0.8.0
 Release:        0
 Summary:        3D graphics toolkit
 License:        MIT
-Group:          Productivity/Graphics/Other
 URL:            https://vsg-dev.github.io/VulkanSceneGraph
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  cmake(vsg)
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(vsg) >= 1.1.13
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(xcb)
 
@@ -37,7 +36,6 @@ Integration of VulkanSceneGraph with ImGui
 
 %package -n libvsgImGui%{_vsg_so_nr}
 Summary:        Shared libraries for vsgImGui
-Group:          System/Libraries
 
 %description -n libvsgImGui%{_vsg_so_nr}
 The VulkanSceneGraph is a graphics toolkit for the development of
@@ -50,8 +48,7 @@ This package contains the shared libraries for ImGui.
 
 %package -n libvsgImGui-devel
 Summary:        VulkanSceneGraph development files
-Group:          Development/Libraries/C and C++
-Requires:       libvsgImGui%{_vsg_so_nr} == %{version}
+Requires:       libvsgImGui%{_vsg_so_nr} = %{version}
 
 %description -n libvsgImGui-devel
 The VulkanSceneGraph is a graphics toolkit for the development of
@@ -76,12 +73,10 @@ This package contains the header and development files for vsgImGui.
 %postun -n libvsgImGui%{_vsg_so_nr} -p /sbin/ldconfig
 
 %files -n libvsgImGui%{_vsg_so_nr}
-%defattr(-,root,root)
 %license LICENSE.md
 %{_libdir}/lib*.so.*
 
 %files -n libvsgImGui-devel
-%defattr(-,root,root)
 %{_includedir}/vsg*/
 %{_libdir}/lib*.so
 %{_libdir}/cmake
