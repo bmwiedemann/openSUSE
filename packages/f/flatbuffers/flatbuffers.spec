@@ -1,7 +1,7 @@
 #
 # spec file for package flatbuffers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,12 @@
 #
 
 
-%define   sonum 25_2_10
+%define   sonum 25_12_19
 Name:           flatbuffers
-Version:        25.2.10
+Version:        25.12.19
 Release:        0
 Summary:        Memory Efficient Serialization Library
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://google.github.io/flatbuffers/
 Source0:        https://github.com/google/flatbuffers/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.8
@@ -36,7 +35,6 @@ it first, while still having great forwards/backwards compatibility.
 
 %package        -n libflatbuffers%{sonum}
 Summary:        Memory Efficient Serialization Library
-Group:          System/Libraries
 Provides:       libflatbuffers = %{version}
 
 %description    -n libflatbuffers%{sonum}
@@ -48,7 +46,6 @@ This package provides the libflatbuffers shared library.
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       libflatbuffers%{sonum} = %{version}
 Provides:       %{name}-devel-static = %{version}
 

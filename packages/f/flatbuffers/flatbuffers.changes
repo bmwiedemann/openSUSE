@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:49:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 25.12.19:
+  * C++ code generator: fixes for union access with
+    --cpp-field-case-style upper, VectorIterator dereference,
+    native_type handling and ValidateOptions
+  * C++ runtime: span handling fixes, Vector64<bool>
+    specialization, size verifier fixes
+  * Python: vtables now consider object size, bytes decoding in
+    Object API, typed keyword arguments in __init__, numpy
+    __eq__ fix, no longer shipping generated files for already
+    generated types
+  * Swift: new low-copy API, inline arrays, RandomAccessCollection
+    vectors, 5.10 minimum, Windows support
+  * Dart, Java, Lua, TypeScript and Rust codegen/runtime fixes
+  * New shared library SOVERSION 25.12.19 (no ABI stability
+    across releases by design)
+
+-------------------------------------------------------------------
 Tue Jun 17 09:37:37 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 25.2.10

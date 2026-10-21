@@ -1,7 +1,7 @@
 #
 # spec file for package python-flatbuffers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flatbuffers
-Version:        25.2.10
+Version:        25.12.19
 Release:        0
 Summary:        The FlatBuffers serialization format for Python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://google.github.io/flatbuffers/
 Source0:        https://github.com/google/flatbuffers/archive/v%{version}.tar.gz#/flatbuffers-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
