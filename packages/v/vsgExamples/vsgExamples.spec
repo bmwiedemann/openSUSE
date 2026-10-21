@@ -1,7 +1,7 @@
 #
 # spec file for package vsgExamples
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 %define addprofile 1
-
 Name:           vsgExamples
-Version:        1.0.7
+Version:        1.1.15
 Release:        0
 Summary:        3D graphics toolkit
 License:        MIT
-Group:          Productivity/Graphics/Other
 URL:            https://github.com/vsg-dev/vsgExamples
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  cmake(vsg)
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(vsg) >= 1.1.16
 BuildRequires:  cmake(vsgImGui)
 BuildRequires:  cmake(vsgXchange)
 BuildRequires:  pkgconfig(vulkan)
@@ -48,25 +47,24 @@ Example programs that test and illustrate how to use the VulkanSceneGraph and op
 %install
 %cmake_install
 
-%if %addprofile
+%if %{addprofile}
 # setup VSG_FILE_PATH
-prjdatadir=%_datadir/%name
-profiledir=%_sysconfdir/profile.d
-mkdir -p %buildroot/$profiledir
-cat << EOF > %buildroot/$profiledir/%{name}.sh
+prjdatadir=%{_datadir}/%{name}
+profiledir=%{_sysconfdir}/profile.d
+mkdir -p %{buildroot}/$profiledir
+cat << EOF > %{buildroot}/$profiledir/%{name}.sh
 export VSG_FILE_PATH=$prjdatadir:\${VSG_FILE_PATH+\$VSG_FILE_PATH}
 EOF
 %endif
 
-%fdupes %buildroot/$prjdatadir
+%fdupes %{buildroot}/$prjdatadir
 
 %files
-%defattr(-,root,root)
 %{_bindir}/vsg*
-%dir %_datadir/%name
-%_datadir/%name
-%if %addprofile
-%config %_sysconfdir/profile.d/vsgExamples.sh
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}
+%if %{addprofile}
+%config %{_sysconfdir}/profile.d/vsgExamples.sh
 %endif
 
 %changelog
