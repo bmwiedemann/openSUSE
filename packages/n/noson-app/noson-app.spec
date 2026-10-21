@@ -17,11 +17,10 @@
 
 
 Name:           noson-app
-Version:        5.6.27
+Version:        5.7.6
 Release:        0
 Summary:        SONOS device controller
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Sound/Players
 URL:            https://janbar.github.io/noson-app/index.html
 Source0:        https://github.com/janbar/noson-app/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  cmake

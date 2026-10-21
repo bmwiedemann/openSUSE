@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:48:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.7.6:
+  * Port the release to Qt6 (Qt5.15 remains supported for legacy platforms).
+  * Sync with upstream libnoson 2.14.x (socket polling, thread pool improvements).
+  * Zones: clearer labels for the zone grouping buttons.
+  * Allow copying the service registration link for manual browser paste.
+  * Fix char signedness bug on armhf and drop SIGALRM for timeouts.
+
+-------------------------------------------------------------------
 Mon Jun 29 12:30:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.25:
