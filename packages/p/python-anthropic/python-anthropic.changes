@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:53:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.17.0:
+  * Add organization webhook endpoints and user profile enforcement
+    events
+  * Add RBAC Group owner-access error codes to the Admin API and
+    document the unsupported_charset error code for plugin uploads
+  * Bug fixes: keep a workspace ID set in default_headers on the
+    Bedrock and Mantle clients; keep workspace and user profile IDs
+    on the Google Cloud client
+- Changes in 1.16.0 (skipped upstream release):
+  * Add data_refreshed_at and has_more to analytics report pages
+  * Add workspace rate-limit updates to the Admin API, make User
+    Profiles generally available
+  * Google Cloud client now uses the v1 endpoints and adds the
+    organization endpoint; unrecognized server-sent event names are
+    yielded instead of dropped
+
+-------------------------------------------------------------------
 Fri Oct 16 06:05:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.15.0:

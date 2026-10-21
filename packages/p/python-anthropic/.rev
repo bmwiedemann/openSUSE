@@ -316,4 +316,12 @@ claude-sonnet-4-5 is deprecated. No new dependencies.
     <comment>Update python-anthropic to 1.15.0 (forward from devel:languages:python).</comment>
     <requestid>1385114</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cd4da0cd44f8dd9ddf27ffde55d52ed4</srcmd5>
+    <version>1.17.0</version>
+    <time>1792609257</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.17.0</comment>
+    <requestid>1386771</requestid>
+  </revision>
 </revisionlist>
