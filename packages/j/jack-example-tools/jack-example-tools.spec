@@ -1,7 +1,7 @@
 #
 # spec file for package jack-example-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           jack-example-tools
-Version:        1
+Version:        4
 Release:        0
 Summary:        Official examples and tools from the JACK project
-License:        GPL-2.0
-Group:          System/Sound Daemons
+License:        GPL-2.0-only
 URL:            https://jackaudio.org/
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         fix-readline-support-leap.patch
@@ -30,14 +29,15 @@ BuildRequires:  gcc-c++
 BuildRequires:  jack
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(history)
 BuildRequires:  pkgconfig(jack) >= 1.9.20
 BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
 # In order to have a transparent transition to the splitted packages
-Provides:       jack:/usr/bin/jack_connect
+Provides:       jack:%{_bindir}/jack_connect
 
 %description
 JACK is system for handling real-time, low latency audio
@@ -45,13 +45,13 @@ JACK is system for handling real-time, low latency audio
 Windows (and can be ported to other POSIX-conformant
 platforms). It can connect a number of different
 applications to an audio device, as well as allowing them to
-share audio between themselves. 
+share audio between themselves.
 
 This package contains the the official JACK example clients
 and tools.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %autopatch -p1
 
 %build
@@ -70,6 +70,5 @@ and tools.
 %{_libdir}/jack/jack_inprocess.so
 %{_libdir}/jack/jack_internal_metro.so
 %{_libdir}/jack/jack_intime.so
-
 
 %changelog

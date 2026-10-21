@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:11:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4 (changes since 1):
+  * Version 2: fix crashes in midi_latency_test, fix alsa_in
+    resampling regression, fix midiseq usage string
+  * Version 3: export internal-client entry points, fix macOS
+    and Windows builds
+  * Version 4: fix manpage and comments, drop non-standard
+    alloca.h include
+- fix-readline-support-leap.patch: rebased onto 4
+- Spec cleanup via spec-cleaner
+
+-------------------------------------------------------------------
 Tue Mar  1 17:17:07 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Initial release of jack-example-tools 1
