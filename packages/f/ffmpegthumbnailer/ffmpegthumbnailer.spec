@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpegthumbnailer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -20,19 +20,16 @@
 
 %define soname  4
 Name:           ffmpegthumbnailer
-Version:        2.2.3
+Version:        2.3.1
 Release:        0
 Summary:        Video thumbnailer that can be used by file managers
 License:        GPL-2.0-or-later
 URL:            https://github.com/dirkvdb/ffmpegthumbnailer
-Source0:        https://github.com/dirkvdb/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/dirkvdb/ffmpegthumbnailer/pull/240
-Patch0:         %{name}-update-for-newest-ffmpeg.patch
+Source0:        https://github.com/dirkvdb/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libsndfile-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libavcodec)
@@ -40,6 +37,7 @@ BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(sndfile)
 
 %description
 This video thumbnailer can be used to create thumbnails for
@@ -71,16 +69,14 @@ files. The thumbnailer uses ffmpeg to decode frames from files.
 
 %prep
 %autosetup -N
-%if 0%{?suse_version} >= 1600
-%patch -p1 -P 0
-%endif
 chmod 644 AUTHORS README
 
 %build
 %cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_GIO=ON \
-  -DENABLE_THUMBNAILER=ON
+  -DENABLE_THUMBNAILER=ON \
+  -DENABLE_AUDIO_THUMBNAILER=ON
 %cmake_build
 
 %install
@@ -96,6 +92,7 @@ chmod 644 AUTHORS README
 %{_bindir}/%{name}
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/%{name}.thumbnailer
+%{_datadir}/thumbnailers/%{name}-audio.thumbnailer
 
 %files -n lib%{name}%{soname}
 %{_libdir}/lib%{name}.so.%{soname}

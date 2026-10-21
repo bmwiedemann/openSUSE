@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:47:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.1:
+  * Add audio file thumbnails (new ENABLE_AUDIO_THUMBNAILER option)
+  * Add additional Matroska MIME types
+  * Build against newest ffmpeg, require C++14
+  * Fix mingw and static builds
+- Drop ffmpegthumbnailer-update-for-newest-ffmpeg.patch: fixed
+  upstream (PR#240)
+
+-------------------------------------------------------------------
 Fri Oct 17 13:04:32 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to version 2.2.3:

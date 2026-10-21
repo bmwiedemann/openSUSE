@@ -71,4 +71,12 @@
   - ffmpegthumbnailer-cmake-updates.patch (forwarded request 1312043 from adkorte)</comment>
     <requestid>1312313</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8c26b67189e5b2f88db1c588102a61f9</srcmd5>
+    <version>2.3.1</version>
+    <time>1792608969</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386569</requestid>
+  </revision>
 </revisionlist>
