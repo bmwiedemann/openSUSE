@@ -17,19 +17,19 @@
 
 
 Name:           just
-Version:        1.58.0
+Version:        1.59.0
 Release:        0
 Summary:        Commmand runner
-License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND MIT AND CC0-1.0
-Group:          Development/Tools/Building
+License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND MIT AND CC0-1.0 AND MPL-2.0
 URL:            https://github.com/casey/just
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Patch0:         skip-test.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
+BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-BuildRequires:  rust >= 1.80
+BuildRequires:  rust >= 1.89
 BuildRequires:  zsh
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(bash-completion)
@@ -41,9 +41,8 @@ system.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and bash-completion)
 Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -51,9 +50,8 @@ Bash command-line completion support for %{name}.
 
 %package fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and fish)
 Requires:       fish
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description fish-completion
@@ -61,9 +59,8 @@ Fish command-line completion support for %{name}.
 
 %package zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and zsh)
 Requires:       zsh
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
