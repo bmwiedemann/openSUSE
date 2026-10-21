@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Oct 21 05:06:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.19.2:
+  * chore: pass GORELEASER_CURRENT_TAG to the goreleaser (#18124)
+  * [release-1.19] fix: preserve legacy generation scope and
+    ownership (#17937)
+  * test: expect the generation label protection webhook in
+    chainsaw asserts (#18039)
+  * fix: repair the post-merge Tests workflow on main (#17761)
+    (#18035)
+  * fix(deps): backport CVE-2026-78663 fix to release-1.19 (#18025)
+  * fix(deps): update x/net for CVE-2026-97032 (#18027)
+  * fix(pss): support user namespace pods in validate.podSecurity
+    (#17913)
+  * fix: preserve controller-owned generation labels (#17938)
+    (#18033)
+  * fix(security): cherry-pick N4K #1077 and #1164 (namespace
+    clamp) to release-1.19 (#18021)
+  * fix(cel): bound the cost of CEL policy expression evaluation
+    (#17989)
+  * fix(vap): apply the runtime PolicyException gates in the
+    admission-policy generator (#17987)
+  * fix(security): harden cherry-pick workflows against script
+    injection (#18012) (#18014)
+  * [1.19] fix(security): API path validation, apiCall
+    canonicalization, mpol/cleanup namespace confinement (#17984)
+  * fix(imageverify): verify at admission instead of trusting
+    prior-stage metadata (#17994)
+  * fix(engine): bound wildcard matching and variable substitution
+    (#17991)
+  * fix(imageverify): bound the reads image verification makes from
+    a registry (#17996)
+  * fix(deps): bump go to 1.26.9 to fix CVE-2026-97031 (#17976)
+  * perf(cel): hoist the request-map build in the ivpol engine
+    (Cherry-pick #17585) (#17872)
+  * test(cli): cover CRD-aware policy test mapping (#17808)
+    (#17816)
+  * feat: support additionalExtensions for keyless signing in the
+    ivpol (#17813) (#17814)
+  * fix: verify annotations properly for cosign v2 and v3 (#17794)
+    (#17798)
+  * fix(mpol): evaluate matchConditions during background
+    mutateExisting evaluation (#17433) (#17782)
+  * fix(background): resolve generate triggers by name instead of
+    listing the namespace (#17702) (#17779)
+  * fix(cli): preserve GeneratingPolicy skips in test results
+    (#17388) (#17749)
+  * feat(charts): support Pod user namespaces in PSS policies
+    (#17693) (#17746)
+  * fix: preserve MutatingPolicy reinvocation policy (#17324)
+    (#17745)
+  * fix(webhook): enforce exceptionNamespace for CEL
+    PolicyExceptions (#17479) (#17651)
+  * fix(cli): resolve match constraints for namespaced validating
+    policies (#17608) (#17612)
+  * chore(deps): bump kyverno sdk version to the latest commit
+    (#17616) (#17619)
+  * fix: autogen fine-grained namespaced image policies (#16840)
+    (#17614)
+  * fix(webhook): avoid image validating policy webhook name
+    collisions (#17558) (#17617)
+  * fix(deleting): process namespaced resources with pagination
+    (#17263) (#17603)
+  * test(ci): CEL admission-path allocation-regression gate
+    (post-merge) (#17573) (#17589)
+  * perf(cel): build the request activation once per admission
+    request (#17572) (#17588)
+  * ci: record failed job instances in workflow failure issues
+    (#16889) (#17587)
+  * perf: reduce engine context checkpoint copy cost (#17565)
+  * feat: Add filter field to imageExtractors for wildcard array
+    filtering (#16269)
+
+-------------------------------------------------------------------
 Sat Sep 19 09:07:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.19.1:
