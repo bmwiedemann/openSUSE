@@ -20,8 +20,8 @@
 Name:           sfml3
 Version:        3.1.0
 Release:        0
-Summary:        SFML is a simple, fast, cross-platform and object-oriented multimedia API.
-License:        Zlib
+Summary:        SFML is a simple, fast, cross-platform and object-oriented multimedia API
+License:        Apache-2.0 AND Zlib
 Source0:        https://github.com/SFML/SFML/archive/refs/tags/3.1.0.tar.gz
 # No system package, vendored like upstream's git FetchContent (offline build):
 # https://github.com/Tehreer/SheenBidi/archive/refs/tags/v3.0.0.tar.gz
@@ -79,7 +79,7 @@ Conflicts:      pkgconfig(sfml-system)
 Conflicts:      pkgconfig(sfml-window)
 
 %description devel
-SFML is a C++ multimedia API that provides a low and high-level
+SFML is a C++ multimedia API that provides low- and high-level
 access to graphics, input, audio, etc., and may be seen as an
 object-oriented alternative to SDL. SFML can be used as a minimal
 windowing system to interface with OpenGL, or as a multimedia library
@@ -108,7 +108,7 @@ sed -i -e 's/^add_library(SheenBidi$/add_library(SheenBidi OBJECT/' -e '/^# Inst
 %ldconfig_scriptlets -n lib%{name}%{so_ver}
 
 %files -n lib%{name}%{so_ver}
-%license license.md
+%license license.md SheenBidi-3.0.0/LICENSE
 %{_libdir}/libsfml-*.so.*
 
 %files devel
