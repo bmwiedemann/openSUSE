@@ -1,12 +1,13 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service mode="manual" name="tar_scm">
     <param name="url">https://github.com/linux-test-project/lcov.git</param>
     <param name="scm">git</param>
+    <param name="revision">v2.6</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">lcov</param>
-    <param name="versionformat">2.5</param>
+    <param name="versionformat">2.6</param>
   </service>
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>

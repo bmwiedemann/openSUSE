@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:25:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.6:
+  * new html2lcov tool: recover source and baseline coverage from
+    a genhtml HTML report, for differential coverage reports
+  * new jacoco2lcov tool: translate JaCoCo Java coverage to lcov
+  * new XS backend: C++ implementation of key types and operations
+    for faster execution and lower memory use
+  * various bug fixes and test coverage improvements
+- Ship the new html2lcov and jacoco2lcov binaries and man pages,
+  plus the new xml2lcov man page.
+- Build the XS backend (new gcc-c++, make, perl, perl-Capture-Tiny,
+  perl-DateTime, perl-TimeDate and perl-Devel-StackTrace
+  BuildRequires); the package is no longer noarch as it now ships
+  a compiled module. Also add the missing perl-Devel-StackTrace
+  runtime Requires (used since 2.5, now required at build time).
+- Regenerate the tarball from the v2.6 tag: run the tar_scm and
+  recompress services as manual instead of disabled.
+- Stamp the correct fallback version into the installed scripts
+  (upstream get_version.sh still falls back to 2.5.0 without git).
+- Fix the env-script-interpreter error on example/java_avail.sh and
+  filter the expected arch-dependent-file-in-usr-share error: the XS
+  module must stay under datadir, lcovutil.pm loads it via a path
+  relative to itself.
+
+-------------------------------------------------------------------
 Sun Sep 13 12:04:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.5:

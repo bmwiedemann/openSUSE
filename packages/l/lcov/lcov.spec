@@ -17,7 +17,7 @@
 
 
 Name:           lcov
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        A Graphical GCOV Front-end
 License:        GPL-2.0-or-later
@@ -25,16 +25,26 @@ URL:            https://github.com/linux-test-project/lcov
 Source0:        %{name}-%{version}.tar.xz
 Source1:        lcov.rpmlintrc
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  make
+# plain tool dependency: --perl mode would explode this into hundreds of
+# perl(...) lines on this non-Perl package, so it stays a package name
+BuildRequires:  perl
+BuildRequires:  perl-Capture-Tiny
+BuildRequires:  perl-DateTime
+BuildRequires:  perl-Devel-StackTrace
+BuildRequires:  perl-TimeDate
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinx_rtd_theme
 Requires:       findutils
 Requires:       gcc
 Requires:       perl-Capture-Tiny
 Requires:       perl-DateTime
+Requires:       perl-Devel-StackTrace
 Requires:       perl-GD
 Requires:       perl-PerlIO-gzip
 Requires:       perl-TimeDate
-BuildArch:      noarch
+# The XS (C++) backend ships a compiled .so, so this is no longer noarch
 
 %description
 LCOV is a graphical front-end for GCC's coverage testing tool gcov. It collects
@@ -52,10 +62,12 @@ Example sources for %{name}
 
 %prep
 %autosetup
-sed -i "s/1.0/%{version}/" bin/get_version.sh
+# get_version.sh falls back to a stale version without git metadata - stamp ours
+sed -i 's/VERSION="2\.5\.0"/VERSION="%{version}"/' bin/get_version.sh
 
 # fix  E: env-script-interpreter
 sed -i 's,#!%{_bindir}/env ,#!/usr/bin/,' bin/gen* bin/xml2lcovutil.py bin/*lcov scripts/*
+sed -i 's,#!/usr/bin/env bash,#!/bin/bash,' example/java_avail.sh
 
 %build
 
@@ -73,16 +85,21 @@ find %{buildroot}%{_datadir}/%{name}/support-scripts/ -name "*.pm" -exec chmod -
 %{_mandir}/man1/geninfo.1%{?ext_man}
 %{_mandir}/man1/genpng.1%{?ext_man}
 %{_mandir}/man1/gendesc.1%{?ext_man}
+%{_mandir}/man1/html2lcov.1%{?ext_man}
+%{_mandir}/man1/jacoco2lcov.1%{?ext_man}
 %{_mandir}/man1/llvm2lcov.1%{?ext_man}
 %{_mandir}/man1/perl2lcov.1%{?ext_man}
 %{_mandir}/man1/py2lcov.1%{?ext_man}
 %{_mandir}/man1/spreadsheet.py.1%{?ext_man}
+%{_mandir}/man1/xml2lcov.1%{?ext_man}
 %{_mandir}/man5/lcovrc.5%{?ext_man}
 %{_bindir}/lcov
 %{_bindir}/genhtml
 %{_bindir}/geninfo
 %{_bindir}/genpng
 %{_bindir}/gendesc
+%{_bindir}/html2lcov
+%{_bindir}/jacoco2lcov
 %{_bindir}/perl2lcov
 %{_bindir}/py2lcov
 %{_bindir}/llvm2lcov

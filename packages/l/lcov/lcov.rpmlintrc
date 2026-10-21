@@ -1,1 +1,4 @@
 addFilter("lcov-example.noarch: E: devel-file-in-non-devel-package")
+# The XS module must stay under datadir: lcovutil.pm loads it from a path
+# relative to itself (lib/LcovUtil/blib/arch), so relocation is not possible.
+addFilter(" E: arch-dependent-file-in-usr-share /usr/share/lcov/lib/")
