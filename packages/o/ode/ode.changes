@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:22:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.6:
+  * Threading support classes optimized and new parameters
+    controlling multi-threaded world stepping introduced;
+    LCP solving now defaults to the single-threaded variant
+    as it performs much better
+  * Fixed syntax error in configure.ac fpuarch_flags check (issue #86)
+  * x86 targets switched to SSE2 code by default
+  * Added support for E2K and LoongArch architectures and
+    config.h definitions for FreeBSD
+  * CMake improvements: SOVERSION now matches autotools,
+    relocatable pkgconfig file, GLVND preferred by default,
+    ode-config prefix and system libccd build fixes
+- Spec cleanup: drop Group tags, use pkgconfig(glut)
+
+-------------------------------------------------------------------
 Tue Mar 26 11:21:22 UTC 2024 - Hannes Braun <apple.hannes@gmail.com>
 
 - Update to 0.16.5:

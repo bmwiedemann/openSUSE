@@ -1,7 +1,7 @@
 #
 # spec file for package ode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,18 @@
 %define so_maj  8
 %define lname   libode%{so_maj}
 Name:           ode
-Version:        0.16.5
+Version:        0.16.6
 Release:        0
 Summary:        Open Dynamics Engine Library
 License:        BSD-3-Clause OR LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://ode.org/
 Source0:        https://bitbucket.org/odedevs/ode/downloads/%{name}-%{version}.tar.gz
 Source1:        ode-config.1
 Patch0:         ode-iso-cpp.patch
 BuildRequires:  Mesa-devel
-BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glut)
 
 %description
 ODE is an open source, high performance library for simulating rigid
@@ -44,7 +43,6 @@ authoring tools and simulation tools.
 
 %package -n %{lname}
 Summary:        Open Dynamics Engine Library development files
-Group:          System/Libraries
 
 %description -n %{lname}
 ODE is an open source, high performance library for simulating rigid
@@ -57,7 +55,6 @@ authoring tools and simulation tools.
 
 %package devel
 Summary:        Open Dynamics Engine Library development files
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Provides:       libode-devel = %{version}
 
