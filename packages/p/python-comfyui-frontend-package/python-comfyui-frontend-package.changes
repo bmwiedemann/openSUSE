@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:53:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.57.1 (crosses 1.56.1, 1.56.2 and 1.57.0):
+  * Manager: version choices spelled out, failed pack
+    installations reported instead of silently stalling
+  * Workflows: missing entries dropped from openWorkflows, no
+    activation crash on a null active state; promoted subgraph
+    widgets survive a rewire, DynamicGroup changes propagate
+    through nested promotions
+  * Canvas: viewport lifecycle and framing centralized, sidebar
+    width kept when panels toggle; gaussian-splat banding fixed
+    via a half-float target; 3D save/preview nodes read the
+    standard 3D output
+  * API workflow widget callback failures isolated;
+    ControlAfterGenerate mode read as a mode; extensionless
+    video uploads rejected; intentional AbortErrors no longer
+    reported to Sentry
+  * Upstream's Comfy Agent, billing, cloud and website changes
+    in this range are cloud-only and land in source this
+    package does not ship
+  * Vendored DOMPurify stays at 3.4.13: the two new
+    low-severity IN_PLACE-mode advisories since (GHSA-p98j-92pf-mc4p,
+    GHSA-6688-9rhm-gjv2) do not affect this build, which
+    sanitizes in default mode
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- No packaging change: setup.py still declares no runtime
+  requirements
+
+-------------------------------------------------------------------
 Sun Oct 18 17:28:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.55.18:

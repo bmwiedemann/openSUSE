@@ -214,4 +214,12 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
     <comment>Update python-comfyui-frontend-package to 1.55.18</comment>
     <requestid>1386021</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5f2f49e9760f54c1ff2302cf2a6f6dea</srcmd5>
+    <version>1.57.1</version>
+    <time>1792609025</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.57.1</comment>
+    <requestid>1386739</requestid>
+  </revision>
 </revisionlist>
