@@ -47,4 +47,12 @@
     <comment>Update python-langgraph-cli to 0.4.36</comment>
     <requestid>1385354</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b587ac5ed6403aba2311545a9e5aa33e</srcmd5>
+    <version>0.4.37</version>
+    <time>1792609002</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.4.37</comment>
+    <requestid>1386614</requestid>
+  </revision>
 </revisionlist>

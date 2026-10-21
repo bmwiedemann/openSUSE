@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 20 17:27:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.37:
+  * deploy: default --deployment-type is now serverless (was dev)
+  * deploy: scale-to-zero error on AWS hints to use --deployment-type dev
+  * Verbose mode no longer echoes stdin, which can carry secrets
+
+-------------------------------------------------------------------
 Sat Oct 17 06:30:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.36:

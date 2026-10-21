@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-langgraph-cli
-Version:        0.4.36
+Version:        0.4.37
 Release:        0
 Summary:        CLI for interacting with the LangGraph API
 License:        MIT
@@ -38,6 +38,7 @@ Requires:       python-httpx >= 0.24.0
 Requires:       python-langgraph-sdk >= 0.1.0
 Requires:       python-pathspec >= 0.11.0
 Requires:       python-python-dotenv >= 0.8.0
+BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -45,7 +46,6 @@ Requires:       alts
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 8.1.7}
 BuildRequires:  %{python_module httpx >= 0.24.0}
