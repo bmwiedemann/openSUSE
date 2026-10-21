@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 20 12:59:02 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.27:
+  * Fix a warning message in log (#507)
+  * Add server field (#511)
+  * Update i18n (#514)
+  * Update Qt to 6.12 (#515)
+
+-------------------------------------------------------------------
 Mon Oct  5 11:51:12 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 3.0.26:
