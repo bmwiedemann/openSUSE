@@ -1,4 +1,213 @@
 -------------------------------------------------------------------
+Wed Oct 21 05:43:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.163.0:
+  * Update clickhouse/clickhouse-server Docker tag to v26.9.16
+    (#52017)
+  * Update module github.com/open-telemetry/otel-arrow/go to
+    v0.60.0 (#52001)
+  * Update module github.com/prometheus/client_golang to v1.25.0
+    (#52002)
+  * Update All golang.org/x packages (#51999)
+  * Update module google.golang.org/api to v0.301.0 (#52005)
+  * Update module github.com/nats-io/nats-server/v2 to v2.15.1
+    (#51994)
+  * Update module github.com/SAP/go-hdb to v1.19.2 (#51995)
+  * Update module code.cloudfoundry.org/garden to v0.7.0 (#52000)
+  * Update module github.com/redis/go-redis/v9 to v9.23.0 (#52003)
+  * Update module github.com/scaleway/scaleway-sdk-go to v1.38.0
+    (#52004)
+  * Update opentelemetry-go monorepo (#52006)
+  * Update module github.com/prometheus/common to v0.72.1 (#52009)
+  * Update module github.com/Microsoft/go-winio to v0.6.3 (#51993)
+  * Update module github.com/twmb/murmur3 to v1.2.1 (#51996)
+  * Update All cloud.google.com/go packages (#51997)
+  * Update docker-compose deps (#51989)
+  * Update dependency js-yaml to v5.4.3 (#51988)
+  * Update module github.com/go-ldap/ldap/v3 to v3.4.15 (#51991)
+  * Update dockerfile deps (#51987)
+  * [chore] Update core dependencies (#51929)
+  * [chore][govuln] Update module golang.org/x/net to v0.60.0
+    (#51918)
+  * [receiver/saphana] Update SAP/go-hdb dependency (#51899)
+  * Update module github.com/google/go-github/v91 to v92 (#51378)
+  * [chore] Update core dependencies (#51829)
+  * Update All opentelemetry-go-contrib packages (#51788)
+  * Update module google.golang.org/api to v0.300.0 (#51797)
+  * Update module go.opentelemetry.io/proto/otlp to v1.11.1
+    (#51782)
+  * Update otel/weaver Docker tag to v0.27.0 (#51801)
+  * Update opentelemetry-go monorepo (#51799)
+  * Update module github.com/shirou/gopsutil/v4 to v4.26.9 (#51780)
+  * Update module github.com/apache/thrift to v0.25.0 (#51790)
+  * Update module code.cloudfoundry.org/garden to v0.6.0 (#51789)
+  * Update module github.com/open-telemetry/otel-arrow/go to
+    v0.59.0 (#51791)
+  * Update module modernc.org/sqlite to v1.60.1 (#51798)
+  * Update module golang.org/x/tools to v0.51.0 (#51796)
+  * Update module sigs.k8s.io/controller-runtime to v0.25.2
+    (#51784)
+  * Update module github.com/prometheus/common to v0.72.0 (#51792)
+  * [chore][govuln] Update module google.golang.org/grpc to v1.84.0
+    (#51813)
+  * Update python Docker tag to v3.14.8 (#51795)
+  * Update clickhouse/clickhouse-server Docker tag to v26.9.10
+    (#51807)
+  * Update module go.opentelemetry.io/ebpf-profiler to v0.0.202640
+    (#51781)
+  * Update All cloud.google.com/go packages (#51785)
+  * Update module
+    go.opentelemetry.io/proto/otlp/profiles/v1development to v0.4.1
+    (#51783)
+  * Update docker-compose deps (#51779)
+  * Update dockerfile deps (#51778)
+  * [chore]: Update open-telemetry/shared-workflows to v0.18.0
+    (#51714)
+  * [chore] Update core dependencies (#51689)
+  * [chore] Update core dependencies (#51661)
+  * [chore] update code ownership for honeycombmarkerexporter
+    (#51629)
+  * Update module github.com/twmb/franz-go to v1.22.1 (#51628)
+  * Update All github.com/aws packages (#51570)
+  * Update module github.com/huaweicloud/huaweicloud-sdk-go-v3 to
+    v0.1.217 (#51578)
+  * Update module github.com/open-telemetry/otel-arrow/go to
+    v0.57.0 (#51594)
+  * Update dependency simple-git to v4.0.2 (#51618)
+  * Update clickhouse/clickhouse-server Docker tag to v26.9.4
+    (#51620)
+  * Update module github.com/bmatcuk/doublestar/v4 to v4.10.2
+    (#51575)
+  * Update module github.com/microsoft/go-mssqldb to v1.11.2
+    (#51582)
+  * Update module google.golang.org/api to v0.299.0 (#51598)
+  * Update module github.com/prometheus/exporter-toolkit to v0.20.0
+    (#51595)
+  * Update module github.com/gowebpki/jcs to v1.0.2 (#51577)
+  * Update All cloud.google.com/go packages (#51585)
+  * Update module
+    github.com/Arize-ai/openinference/go/openinference-semantic-conventions
+    to v0.1.9 (#51574)
+  * Update module github.com/DeRuina/timberjack to v1.4.8 (#51576)
+  * Update module github.com/nats-io/nats.go to v1.54.0 (#51593)
+  * Update module github.com/klauspost/compress to v1.20.1 (#51581)
+  * Update All github.com/datadog packages (#51571)
+  * Update kubernetes monorepo to v0.37.1 (#51573)
+  * Update module github.com/SAP/go-hdb to v1.18.11 (#51583)
+  * Update docker-compose deps (#51586)
+  * Update module code.cloudfoundry.org/garden to v0.5.0 (#51587)
+  * Update module github.com/aerospike/aerospike-client-go/v8 to
+    v8.9.0 (#51588)
+  * Update module github.com/beevik/ntp to v1.6.0 (#51589)
+  * Update dependency simple-git to v4 (#51599)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.186 (#51584)
+  * Update module github.com/googleapis/gax-go/v2 to v2.26.2
+    (#51591)
+  * Update module github.com/jaegertracing/jaeger-idl to v0.13.1
+    (#51592)
+  * Update module github.com/prometheus/prometheus to v0.315.0
+    (#51597)
+
+-------------------------------------------------------------------
+Wed Oct 14 04:45:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.162.0:
+  * [cmd/telemetrygen] Fix fall in metric generation rate when
+    using --unique-timeseries (#50088)
+  * [chore] Update core dependencies (#51502)
+  * [chore] Update core dependencies (#51540)
+  * [chore] Update core dependencies (#51493)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.183 (#51413)
+  * Update All github.com/twmb/franz-go packages (#51365)
+  * Update module
+    github.com/open-telemetry/opentelemetry-collector-contrib/pkg/ottl
+    to v0.161.0 (#51371)
+  * Update module github.com/modelcontextprotocol/go-sdk to v1.8.0
+    (#51370)
+  * Update module github.com/aliyun/aliyun-log-go-sdk to v0.1.131
+    (#51356)
+  * Update module
+    github.com/Arize-ai/openinference/go/openinference-semantic-conventions
+    to v0.1.8 (#51357)
+  * Update module github.com/huaweicloud/huaweicloud-sdk-go-v3 to
+    v0.1.216 (#51359)
+  * Update module code.cloudfoundry.org/garden to v0.4.0 (#51366)
+  * Update module github.com/gosnmp/gosnmp to v1.45.0 (#51368)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.182 (#51362)
+  * Update module github.com/twmb/franz-go/pkg/kmsg to v1.14.0
+    (#51373)
+  * Update module google.golang.org/api to v0.298.0 (#51374)
+  * Update module github.com/rabbitmq/amqp091-go to v1.15.0
+    (#51372)
+  * Update module github.com/grafana/clusterurl to v0.3.0 (#51369)
+  * Update All cloud.google.com/go packages (#51364)
+  * Update All github.com/aws packages (#51350)
+  * Update module github.com/linode/go-metadata to v0.3.1 (#51360)
+  * Update module github.com/bmatcuk/doublestar/v4 to v4.10.1
+    (#51358)
+  * Update dependency js-yaml to v5.4.2 (#51352)
+  * Update docker-compose deps (#51353)
+  * Update dockerfile deps (#51354)
+  * Update module sigs.k8s.io/controller-runtime to v0.25.1
+    (#51363)
+  * Update module github.com/axiomhq/hyperloglog to v0.3.0 (#51367)
+  * Update module modernc.org/sqlite to v1.59.0 (#51377)
+  * Update All github.com/datadog packages (#51351)
+  * Update module github.com/SAP/go-hdb to v1.18.9 (#51361)
+  * [chore] Update core dependencies (#51093)
+  * Update module github.com/golangci/golangci-lint/v2 to v2.13.2
+    (#41780)
+  * Update module github.com/google/go-github/v90 to v91 (#50846)
+  * Update module github.com/open-telemetry/opamp-go to v0.24.0
+    (#51028)
+  * Update All golang.org/x packages (#51011)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.179 (#51041)
+  * Update module mvdan.cc/gofumpt to v0.12.0 (#51036)
+  * Update module github.com/rabbitmq/amqp091-go to v1.14.0
+    (#51033)
+  * Update module github.com/twmb/murmur3 to v1.2.0 (#51035)
+  * Update module github.com/oschwald/geoip2-golang/v2 to v2.4.0
+    (#51032)
+  * Update module github.com/open-telemetry/otel-arrow/go to
+    v0.56.0 (#51029)
+  * Update module github.com/logicmonitor/lm-data-sdk-go to v1.4.1
+    (#50998)
+  * Update module github.com/jaegertracing/jaeger-idl to v0.12.0
+    (#51020)
+  * Update All github.com/aws packages (#51006)
+  * Update clickhouse/clickhouse-server Docker tag to v26.8.3
+    (#51039)
+  * Update module github.com/moby/moby/api to v1.56.0 (#51022)
+  * Update module github.com/jackc/pgx/v5 to v5.11.0 (#51019)
+  * Update module code.cloudfoundry.org/garden to v0.3.0 (#51017)
+  * Update module
+    github.com/Azure/azure-sdk-for-go/sdk/storage/azblob to v1.8.1
+    (#50994)
+  * Update module
+    github.com/Arize-ai/openinference/go/openinference-semantic-conventions
+    to v0.1.7 (#50989)
+  * Update module github.com/aliyun/aliyun-log-go-sdk to v0.1.129
+    (#50988)
+  * Update module github.com/huaweicloud/huaweicloud-sdk-go-v3 to
+    v0.1.215 (#50997)
+  * Update module github.com/SAP/go-hdb to v1.18.4 (#51000)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.178 (#51001)
+  * Update module go.mongodb.org/mongo-driver/v2 to v2.9.1 (#51003)
+  * Update All cloud.google.com/go packages (#51004)
+  * Update All github.com/googlecloudplatform packages (#51007)
+  * Update All github.com/datadog packages to v0.83.1 (#50987)
+
+-------------------------------------------------------------------
 Sun Sep 20 05:40:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.161.0:
