@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 21 06:56:13 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 2.46.2:
+  * fix(topbar): restore buttons in global nav
+  * fix(extensions): restore compatibility with new spotify versions
+  * fix(wrapper): avoid nav link React startup race
+  * fix(css-map): only map exported classes
+  * fix(preprocess): optimize file patching (#4025)
+  * feat: add support for Spotify `1.3.5` and `1.3.6`
+  * chore(deps): bump golang.org/x/net from 0.58.0 to 0.59.0 (#3994)
+  * fix(lyrics-plus): fall back when legacy resize host is missing (#4017)
+  * feat(css-map): add missing classes for Spotify 1.3.5 (#4022)
+  * feat(css-map): add missing classes for Spotify `1.3.4`
+
+-------------------------------------------------------------------
 Sun Oct 04 16:47:29 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 2.45.3:
