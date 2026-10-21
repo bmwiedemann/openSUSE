@@ -7,4 +7,12 @@
     <comment>New package rtlsdr-airband 6.1.0: RTLSDR AM demodulator, multiple channels per dongle (SR 1384849).</comment>
     <requestid>1384972</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c175d5dd248b59d100e63982da53e201</srcmd5>
+    <version>6.2.0</version>
+    <time>1792608819</time>
+    <user>anag_factory</user>
+    <comment>Update to 6.2.0</comment>
+    <requestid>1386513</requestid>
+  </revision>
 </revisionlist>

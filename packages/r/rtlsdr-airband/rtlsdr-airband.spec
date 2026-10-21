@@ -17,11 +17,10 @@
 
 
 Name:           rtlsdr-airband
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        RTLSDR AM demodulator, support multiple channels per dongle
 License:        GPL-3.0-only
-Group:          Productivity/Hamradio/Other
 URL:            https://github.com/rtl-airband/RTLSDR-Airband/
 #Git-Clone:     https://github.com/rtl-airband/RTLSDR-Airband.git
 Source:         https://github.com/rtl-airband/RTLSDR-Airband/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz

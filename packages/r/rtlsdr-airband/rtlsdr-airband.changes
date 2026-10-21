@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 16 12:50:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.2.0
+  * Add split_include_transmission_start option to group split
+    transmission files (#574)
+- Drop obsolete Group tag
+
+-------------------------------------------------------------------
 Wed Oct 14 18:57:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.1.0
