@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:21:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.1.16:
+  * Cascaded and soft shadow map support, spotlight shadows
+  * New JSON parser and ReaderWriter, geometry instancing
+    (InstanceNode/InstanceDraw), sRGB render support
+  * Dynamic viewport and scissor by default, region of interest
+    node, polytope intersector, descriptor pool management
+  * Require C++17 when linking against vsg, support building
+    with C++17/20/23/26 via CMAKE_CXX_STANDARD
+  * Use external glslang instead of the bundled copy, supporting
+    glslang 16.x out of the box
+  * libvsg-devel Requires cmake(glslang): vsgConfig.cmake does
+    find_dependency(glslang), consumers need it at configure time
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Soname bump 14 -> 17
+- Drop bundled glslang tarball and its service entry, require
+  system glslang and SPIRV-Tools-opt at build time
+- Drop obsolete patch:
+  * 0001-Fix-building-with-gcc-15.patch (patched bundled glslang)
+
+-------------------------------------------------------------------
 Wed Jul  2 20:44:50 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix building with Tumbleweed

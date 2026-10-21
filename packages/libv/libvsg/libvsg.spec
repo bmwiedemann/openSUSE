@@ -1,7 +1,7 @@
 #
 # spec file for package libvsg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,26 @@
 
 
 %define _check 0
-%define _vsg_so_nr 14
+%define _vsg_so_nr 17
 %define rname VulkanSceneGraph
-%define glslang_version 20230222+git.e4075496
-
 Name:           libvsg
-Version:        1.0.9
+Version:        1.1.16
 Release:        0
 Summary:        3D graphics toolkit
 License:        MIT
-Group:          Productivity/Graphics/Other
 URL:            https://vsg-dev.github.io/VulkanSceneGraph
 Source0:        %{rname}-%{version}.tar.xz
-Source1:        glslang-%{glslang_version}.tar.xz
-Source2:        0001-Fix-building-with-gcc-15.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-%if %_check
-BuildRequires:  cppcheck
-%endif
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(SPIRV-Tools)
+BuildRequires:  cmake(SPIRV-Tools-opt)
+BuildRequires:  cmake(glslang)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(xcb)
+%if %{_check}
+BuildRequires:  cppcheck
+%endif
 
 %description
 The VulkanSceneGraph is a graphics toolkit for the development of
@@ -51,8 +49,6 @@ development of graphics applications.
 
 %package -n libvsg%{_vsg_so_nr}
 Summary:        Shared libraries for VulkanSceneGraph
-# try to cover up past mistakes
-Group:          System/Libraries
 
 %description -n libvsg%{_vsg_so_nr}
 The VulkanSceneGraph is a graphics toolkit for the development of
@@ -65,8 +61,10 @@ This package contains the shared libraries for VulkanSceneGraph.
 
 %package -n libvsg-devel
 Summary:        VulkanSceneGraph development files
-Group:          Development/Libraries/C and C++
 Requires:       libvsg%{_vsg_so_nr} = %{version}
+# vsgConfig.cmake does find_dependency(glslang): consumers need its
+# CMake config files at configure time, pulled in here.
+Requires:       cmake(glslang)
 Requires:       pkgconfig(vulkan)
 
 %description -n libvsg-devel
@@ -81,16 +79,13 @@ VulkanSceneGraph.
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
-tar -xJf %{SOURCE1}
-mv glslang-%{glslang_version} src/glslang
-patch -p1 -i %{SOURCE2}
 
 %build
 %cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_RELWITHDEBINFO_POSTFIX=
 %cmake_build
 
 %check
-%if %_check
+%if %{_check}
 cppcheck --version
 cd build && make cppcheck
 %endif
@@ -98,16 +93,13 @@ cd build && make cppcheck
 %install
 %cmake_install
 
-%post -n libvsg%{_vsg_so_nr} -p /sbin/ldconfig
-%postun -n libvsg%{_vsg_so_nr} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libvsg%{_vsg_so_nr}
 
 %files -n libvsg%{_vsg_so_nr}
-%defattr(-,root,root)
 %license LICENSE.md
 %{_libdir}/lib*.so.*
 
 %files -n libvsg-devel
-%defattr(-,root,root)
 %{_includedir}/vsg*/
 %{_libdir}/lib*.so
 %{_libdir}/cmake
