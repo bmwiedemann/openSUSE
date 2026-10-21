@@ -395,4 +395,18 @@
   * go#81252 lib/fips140: fix ML-KEM CAST and re-seal v1.26.0 (forwarded request 1383635 from jfkw)</comment>
     <requestid>1383636</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4f59ae18fdb5be64427298092a0477b2</srcmd5>
+    <version>1.26.10</version>
+    <time>1792608859</time>
+    <user>anag_factory</user>
+    <comment>- go1.26.10 (released 2026-10-19) includes security fixes to the
+  crypto/x509 package.
+  Refs boo#1255111 go1.26 release tracking
+  CVE-2026-78663 CVE-2026-78669 CVE-2026-111943
+  * go#81905 go#81743 boo#1284770 security: fix CVE-2026-78663 net/http: double flow control refund on HTTP/2 server streams
+  * go#81903 go#81742 boo#1284772 security: fix CVE-2026-78669 net/http: excessive CPU consumption from repeated initial window changes
+  * go#82348 go#82345 boo#1286317 security: fix CVE-2026-111943 crypto/x509: mitigation for security concerns with a specific Certificate Authority (forwarded request 1386534 from jfkw)</comment>
+    <requestid>1386535</requestid>
+  </revision>
 </revisionlist>
