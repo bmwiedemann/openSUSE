@@ -1,7 +1,7 @@
 #
 # spec file for package gcovr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,22 +17,35 @@
 #
 
 
+# Single-flavour application: build with the primary interpreter so the
+# install paths match the python3 macros (the pyproject default may
+# otherwise pick a newer non-primary flavor)
+%define pythons %{primary_python}
 Name:           gcovr
-Version:        6.0
+Version:        8.6
 Release:        0
 Summary:        A code coverage report generator using GNU gcov
 License:        BSD-3-Clause
-Group:          Development/Tools/Other
 URL:            https://gcovr.com/
 Source0:        https://github.com/gcovr/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel
+BuildRequires:  python3-Jinja2
+BuildRequires:  python3-Pygments
+BuildRequires:  python3-colorlog
 BuildRequires:  python3-lxml
-BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(python3-embed)
 # for %%{_bindir}/gcov
 Requires:       gcc
 Requires:       python3-Jinja2
+Requires:       python3-Pygments
+Requires:       python3-colorlog
 Requires:       python3-lxml
 BuildArch:      noarch
 # Only build the documentation on Tumbleweed, as
@@ -59,7 +72,6 @@ generates an HTML-formatted report.
 %if 0%{?suse_version} > 1500
 %package        doc
 Summary:        Documentation of gcovr
-Group:          Documentation/HTML
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinx_rtd_theme
@@ -76,10 +88,12 @@ This package contains the documentation of gcovr.
 %autosetup
 
 %build
-%py3_build
+# hatch-vcs derives the version from git, which the tarball lacks
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
 
 %if 0%{?suse_version} > 1500
 # the documentation can only be build **after** gcovr is installed
@@ -91,15 +105,14 @@ export PYTHONPATH=%{buildroot}%{python3_sitelib}
 export PATH=%{buildroot}%{_bindir}:$PATH
 export PYTHON=python3
 
-pushd .
-cd doc
+pushd doc
 
 # Manpage
-make man
+sphinx-build -b man source build/man
 install -D -p -m 0644 build/man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 # html doc
-make html
+sphinx-build -b html source build/html
 rm build/html/.buildinfo
 %fdupes -s build/html
 

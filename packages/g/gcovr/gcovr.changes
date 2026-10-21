@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:29:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 8.6:
+  * gcov JSON intermediate format and LLVM source-based coverage;
+    new Markdown, JaCoCo XML and Clover XML outputs, LCOV export
+  * TOML configuration files, coloured logging, single-page HTML
+    reports and new themes
+  * New --fail-under-decision/--fail-under-function, --include
+    and --sort/--txt-metric enums replacing flag options
+  * Breaking: Python 3.10+ required, setup.py replaced by
+    hatchling, config keys renamed (e.g. gcov-exclude-directory
+    to exclude-directory), JSON data model changes
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Switch the build to hatchling (new pip, hatchling, hatch-vcs
+  and hatch-fancy-pypi-readme BuildRequires) and call sphinx-build
+  directly (upstream dropped doc/Makefile).
+- Add the missing python3-Pygments and python3-colorlog runtime
+  dependencies (boo#1199251).
+
+-------------------------------------------------------------------
 Sun Nov 12 01:41:27 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Updated to release 6.0

@@ -75,4 +75,12 @@
     <comment></comment>
     <requestid>1127686</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>930b986d13f2055c79e9ad602c4507fa</srcmd5>
+    <version>8.6</version>
+    <time>1792609261</time>
+    <user>anag_factory</user>
+    <comment>Update gcovr to 8.6 (fixes boo#1199251). (forwarded request 1385216 from pluskalm)</comment>
+    <requestid>1386770</requestid>
+  </revision>
 </revisionlist>
