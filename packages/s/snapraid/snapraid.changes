@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Oct 20 12:59:02 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 15.0:
+  * Added support for automated filesystem snapshots to ensure data
+    consistency and improve recovery reliability. When the 'snapshot'
+    option is enabled, SnapRAID transparently manages filesystem
+    snapshots during operations. Supported on Btrfs, Bcachefs and ZFS
+    in Linux, and on NTFS in Windows.
+  * Implemented AVX-512BW support for parity generation and data
+    recovery.
+  * Implemented AArch64 (ARM64) NEON support for parity generation and
+    data recovery.
+  * Improved the chances of a successful recovery after an interrupted
+    sync, by removing the optimization of not recomputing the parity if
+    the input data matches the expected hash. This also keeps the
+    --import option functional after an incomplete sync.
+  * Skip spin-up and spin-down operations for non-rotational devices
+    (SSDs and NVMe drives) on Linux and Windows.
+  * Added --with-smartctl, --with-zfs, --with-zpool, --with-bcachefs
+    configure options to pin the absolute path of each tool at build
+    time.
+  * Removed the 512 TiB limitation on hard disk size (when using the
+    default 128 KiB blocks).
+  * Added support for a custom info options tag '[info: ...]' in the
+    'smartctl' configuration option, to replace the default '-a'
+    argument used to retrieve SMART attributes.
+  * Added support for case-insensitive SMART attribute names in the
+    'smartignore' configuration option.
+  * Added support for filesystems where only specific files fail to
+    report a 64-bit inode number (such as ReFS).
+  * Removed the dependency on the 'libblkid' library.
+
+-------------------------------------------------------------------
 Mon Oct  5 08:41:04 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 14.10:

@@ -17,7 +17,7 @@
 
 
 Name:           snapraid
-Version:        14.10
+Version:        15.0
 Release:        0
 Summary:        Disk array backup for many large rarely-changed files
 License:        GPL-3.0-or-later
