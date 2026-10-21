@@ -1,7 +1,7 @@
 #
 # spec file for package domination
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           domination
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        Board game that is a bit like the well known game Risk
 License:        GPL-3.0-only
-Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://domination.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/%{name}/Domination/%{version}/Domination_%{version}.zip
 Source1:        %{name}-FlashGUI.sh

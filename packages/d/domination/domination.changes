@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:20:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.3.6
+  * Drag and drop save file into MapEditor
+  * Stats Screen: right click to hide and show players
+  * Fixed: MapChooser and Lobby work on java 26
+  * Fixed: in Italian mode if a player with no valid moves but valid
+    cards trades makes no trade, the game ends
+  * Because of Italian rules fix: game engine/network play version
+    now 16
+  * Fixed: correctly show login message when username starts with $
+  * SwingGUI: allow any color in the game.ini
+- Drop obsolete Group: tag
+
+-------------------------------------------------------------------
 Fri Aug 28 14:56:57 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 1.3.5
