@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:52:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2025.11.0.0:
+  * allow specifying the escape character
+  * error out on positional arguments instead of silently ignoring them
+  * set the local tty like `stty raw -echo` for transparent communication
+- Switch _service from legacy mode="disabled" to mode="manual" and pin
+  revision v2025.11.0 (upstream renamed the default branch to main)
+
+-------------------------------------------------------------------
 Fri Oct 25 13:54:08 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
 
 - Updat to version 2023.09.0.0

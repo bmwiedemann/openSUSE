@@ -1,7 +1,7 @@
 #
 # spec file for package microcom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           microcom
-Version:        2023.09.0.0
+Version:        2025.11.0.0
 Release:        0
 Summary:        Minimalistic terminal program
 License:        GPL-2.0-only
-Group:          System/Console
 URL:            https://github.com/pengutronix/microcom.git
 Source0:        microcom-%{version}.tar
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  readline-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(readline)
 
 %description
 microcom is a minimalistic terminal program for communicating with devices over
@@ -45,7 +45,7 @@ autoreconf -i
 %make_build
 
 %install
-%make_install 
+%make_install
 
 %files
 %{_mandir}/man1/microcom.1%{?ext_man}

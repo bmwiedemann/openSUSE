@@ -2,13 +2,14 @@
 <!-- for more details on the syntax -->
 
 <services>
-        <service name="tar_scm" mode="disabled">
+        <service name="tar_scm" mode="manual">
                 <param name="scm">git</param>
                 <param name="url">https://github.com/pengutronix/microcom.git</param>
+                <param name="revision">v2025.11.0</param>
                 <param name="filename">microcom</param>
                 <param name="versionrewrite-pattern">v(.*)</param>
                 <param name="versionrewrite-replacement">\1</param>
                 <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@</param>
         </service>
-        <service mode="disabled" name="set_version" />
+        <service mode="manual" name="set_version" />
 </services>
