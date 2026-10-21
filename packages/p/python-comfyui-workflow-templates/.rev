@@ -325,4 +325,12 @@ its own request first.</comment>
     <comment>Update python-comfyui-workflow-templates</comment>
     <requestid>1386027</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>eecb422aefc8cfc4baf8398905d6281f</srcmd5>
+    <version>0.11.93</version>
+    <time>1792609026</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.93</comment>
+    <requestid>1386741</requestid>
+  </revision>
 </revisionlist>

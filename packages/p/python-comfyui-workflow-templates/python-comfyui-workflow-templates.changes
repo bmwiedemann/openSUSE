@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:57:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.93: release-train pin roll, the
+  re-export shim code is unchanged
+  * 0.11.92 adds the FastH3 OmniRef reference-to-video template;
+    pins move to core 0.3.383, json 0.1.118 and
+    media-assets-02 0.1.19
+  * 0.11.93 adds the Bria Fibo 2 text-to-image template and
+    refreshes the Bria image-edit template; pins move to core
+    0.3.384, json 0.1.119 and media-assets-02 0.1.20
+  * The floors in this package already cover all of those pins
+
+-------------------------------------------------------------------
+Tue Oct 20 17:27:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.91: release-train pin roll, the
+  re-export shim code is unchanged
+  * 0.11.90 adds HeyGen Voice 1.0 and Clarity Crystal Video
+    Upscale templates, fixes Pixal3D Trellis2UpsampleStage
+    target_resolution handling; pins move to core 0.3.381,
+    json 0.1.116, media-assets-01 0.1.48 and media-assets-02
+    0.1.18
+  * 0.11.91 marks new partner-node templates as local-only;
+    pins move to core 0.3.382 and json 0.1.117
+  * The floors in this package already cover all of those pins
+
+-------------------------------------------------------------------
 Sun Oct 18 17:28:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.89: release-train pin roll, the
