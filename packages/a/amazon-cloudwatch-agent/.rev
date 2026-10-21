@@ -136,4 +136,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1383670</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>65f97769718ea9a5bab978c412fbb926</srcmd5>
+    <version>1.300073.0</version>
+    <time>1792608744</time>
+    <user>anag_factory</user>
+    <comment>- Update github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream
+  to v1.7.6 (bsc#1280684, CVE-2026-89090)
+- Update golang.org/x/net to v0.61.0 (bsc#1285301, CVE-2026-78669) (forwarded request 1386444 from glaubitz)</comment>
+    <requestid>1386482</requestid>
+  </revision>
 </revisionlist>

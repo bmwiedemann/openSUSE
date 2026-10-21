@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 20 09:19:45 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream
+  to v1.7.6 (bsc#1280684, CVE-2026-89090)
+- Update golang.org/x/net to v0.61.0 (bsc#1285301, CVE-2026-78669)
+
+-------------------------------------------------------------------
 Thu Oct  1 15:32:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.300073.0
