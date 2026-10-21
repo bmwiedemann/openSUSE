@@ -623,4 +623,13 @@
   * Add exceptions module and TyperException base class.</comment>
     <requestid>1376491</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f4939147958c275912fb4da49120b7fe</srcmd5>
+    <version>0.27.3</version>
+    <time>1792608687</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.27.3
+  - Escape terminal control characters in error messages.</comment>
+    <requestid>1386404</requestid>
+  </revision>
 </revisionlist>
