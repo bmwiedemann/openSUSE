@@ -18,7 +18,7 @@
 
 # Note: We only want to build for the default python3
 Name:           conan
-Version:        2.32.0
+Version:        2.33.0
 Release:        0
 Summary:        A C/C++ package manager
 License:        MIT
@@ -26,18 +26,19 @@ URL:            https://github.com/conan-io/conan
 Source:         https://files.pythonhosted.org/packages/source/c/conan/conan-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-base >= 3.7.0
+BuildRequires:  python3-base >= 3.8
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
-Requires:       python3-Jinja2
+Requires:       python3-Jinja2 >= 3.0
 Requires:       python3-PyYAML >= 6.0
 Requires:       python3-colorama >= 0.4.3
-Requires:       python3-distro
+Requires:       python3-distro >= 1.4.0
 Requires:       python3-fasteners >= 0.15
-Requires:       python3-patch-ng >= 1.17.4
+Requires:       python3-patch-ng >= 1.18.0
 Requires:       python3-python-dateutil >= 2.8.0
 Requires:       python3-requests >= 2.25
+Requires:       python3-truststore >= 0.8
 Requires:       python3-urllib3 >= 1.26.6
 BuildArch:      noarch
 

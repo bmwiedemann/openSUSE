@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct 16 16:25:56 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 2.33.0:
+  * Feature: Support for CPS components configurations, with component
+    CPEs from extra_info (gh#conan-io/conan#20354, gh#conan-io/conan#20353).
+  * Feature: New core.net.http:trust_store conf verifies HTTPS certs
+    against the OS trust store; adds a truststore dependency
+    (gh#conan-io/conan#20343).
+  * Feature: New force_auth capability for remotes
+    (gh#conan-io/conan#20341) and a copy_config_files [runner] profile
+    entry for Docker runners (gh#conan-io/conan#20332).
+  * Feature: Support for Clang 23 and Apple OS 27.0
+    (gh#conan-io/conan#20330).
+  * Feature: CMakeConfigDeps.get_cmake_file_name returns a dict
+    instead of a string (gh#conan-io/conan#20300).
+  * Feature: CMakeConfigDeps supports cpp_info.sources-only packages,
+    imported object libraries and the find_package verbosity level
+    (gh#conan-io/conan#20297, gh#conan-io/conan#20347,
+    gh#conan-io/conan#20275).
+  * Feature: Recipe and package metadata downloads run in parallel with
+    the regular files, and CMakeDeps no longer emits empty generator
+    expressions, which improves performance (gh#conan-io/conan#20351,
+    gh#conan-io/conan#20322).
+  * Fix: Support for Python 3.7, EOL since 2024, was removed
+    (gh#conan-io/conan#20357).
+  * Fix: Error messages inside the source(), generate() and package()
+    steps now carry the package reference (gh#conan-io/conan#20348).
+  * Fix: conan graph build-order honors --update and computes options
+    correctly (gh#conan-io/conan#20356, gh#conan-io/conan#20331).
+  * Fix: Workspace monolithic builds prioritize host and visible nodes
+    when ambiguous, and export no longer injects a full lockfile
+    (gh#conan-io/conan#20305, gh#conan-io/conan#19404).
+  * Bugfix: Errors from a .bat script called by another .bat script are
+    propagated, and QbsDeps names now match pkg_config_name/
+    qbs_file_name (gh#conan-io/conan#20317, gh#conan-io/conan#20329).
+  * Many more fixes and improvements; see upstream's release notes for
+    the full list.
+  * Add python3-truststore, required by the new trust store support.
+  * Raise the python3-base floor to 3.8 and align the Jinja2, distro
+    and patch-ng floors with upstream's requirements (3.0, 1.4.0,
+    1.18.0).
+
+-------------------------------------------------------------------
 Sat Sep  5 07:57:40 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.32.0:
