@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 19 21:14:58 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.81.3
+  - [client] Bound the Signal stream registration wait and track
+    its state based on stream health (#8175) by @riccardomanfrin in
+    #8254
+  - [client,relay] Bump quic-go to v0.64.0 (#8249) by
+    @riccardomanfrin in #8253
+
+-------------------------------------------------------------------
 Fri Oct 16 07:27:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix initial config.json
