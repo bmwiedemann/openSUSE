@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 21 13:05:44 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.15.0:
+  * Fixes VUL-0: CVE-2026-78669: excessive CPU consumption in HTTP/2 (boo#1285501)
+    by bumping vendored golang.org/x/net to v0.60.0.
+  * Drops temporary google.golang.org/grpc pin for CVE-2026-84304 as upstream
+    now vendors v1.84.0.
+  * plugin/cache: cache SERVFAIL when resolver fails without response
+  * plugin/forward: support DNS-over-QUIC upstreams
+  * core: add opt-in JSON logging with structured DNS query fields
+  * New features: SIIT support, expr-lang templates, PROXY protocol v2 metadata
+  * Bumped minimum go build requirement to 1.26.0
+  * Skip flaky timing/network-sensitive tests in %check (TestHealthMaxFails,
+    TestReconnect, TestRace, TestSecondaryZoneNotify, TestPeriodicWeightUpdate)
+
+-------------------------------------------------------------------
 Fri Oct 16 05:37:57 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Bump vendored google.golang.org/grpc from 1.83.0 to 1.83.1:

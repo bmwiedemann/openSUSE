@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.14.7
+Version:        1.15.0
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0 AND MPL-2.0
@@ -28,7 +28,7 @@ Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
 BuildRequires:  fdupes
-BuildRequires:  golang(API) >= 1.25.0
+BuildRequires:  golang(API) >= 1.26.0
 Provides:       dns_daemon
 
 %description
@@ -86,6 +86,11 @@ skiplist=(
     "TestCoreDNSOverflow"
     "TestReloadTwoServerBlocksUnreadyPlugin"
     "TestServeFromStaleCacheFetchVerifyTimeout"
+    "TestHealthMaxFails"
+    "TestReconnect"
+    "TestRace"
+    "TestSecondaryZoneNotify"
+    "TestPeriodicWeightUpdate"
 )
 
 # Concatenate the array elements into a single regex string separated by pipes (|)

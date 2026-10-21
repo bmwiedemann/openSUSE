@@ -361,4 +361,12 @@
 The regenerated vendor.tar.gz differs from the previous one only in grpc (go.mod: 1 line, go.sum: 2 lines, 9 vendored grpc files, modules.txt); the module set is unchanged, so licences are unchanged. The built binary reports grpc v1.83.1 and govulncheck no longer lists GO-2026-6348 for it. Local build on Factory/x86_64 is green with %check (94 packages ok). Other products (Leap 16.x, SLE-15-SP7 Backports) follow separately.</comment>
     <requestid>1385102</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fac1b36b1691bbff9c74b511efa3b314</srcmd5>
+    <version>1.15.0</version>
+    <time>1792609372</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386938</requestid>
+  </revision>
 </revisionlist>
