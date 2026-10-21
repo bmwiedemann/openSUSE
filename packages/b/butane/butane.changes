@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jul 26 14:55:02 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 0.29.0:
+  * Breaking: Roll back OpenShift spec 4.22.0 to Ignition spec 3.5.0. 
+    Butane 0.28.0 stabilized 4.22.0 targeting Ignition 3.6.0, 
+    but OCP 4.22's Machine Config Operator does not support Ignition 3.6.0
+    (OCPBUGS-90256). Configs must be re-transpiled with an updated Butane.
+  * Add support for pretty error reporting, can be controlled through the use
+    of --raw-errors (disable) and --color/--colour
+
+- update to 0.28.0:
+  * Stabilize OpenShift spec 4.22.0, targeting Ignition spec 3.6.0
+  * Add OpenShift spec 4.23.0-experimental, targeting Ignition spec 
+    3.7.0-experimental
+  * Add systemd.quadlets section for embedding Podman Quadlet files 
+   (fcos 1.8.0-exp, fiot 1.1.0-exp, flatcar 1.2.0-exp, openshift 4.23.0-exp,
+    r4e 1.2.0-exp)
+  * Warn on root partition size is too small (fcos 1.3.0+)
+  * Warn on root partition constrained by another partition (fcos 1.3.0+)
+
+-------------------------------------------------------------------
 Wed Mar 25 21:11:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.27.0:
