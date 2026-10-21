@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 21 05:05:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.7:
+  * Enhancements
+    - Support system Rust toolchains without rustup (#2887)
+  * Performance
+    - Use blocking file checks for CPU-heavy builtin hooks (#2910)
+  * Other changes
+    - Update CA root crates and uv for the eMudhra intermediate CA
+      compromise (#2919)
+
+-------------------------------------------------------------------
 Mon Oct 19 06:05:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.6:
