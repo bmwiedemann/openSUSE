@@ -169,4 +169,12 @@
   * New designer form for the zypp history browser</comment>
     <requestid>1327892</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e1e180394a1b7b48997eebc14c9529b0</srcmd5>
+    <version>1.1.0</version>
+    <time>1792609331</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386811</requestid>
+  </revision>
 </revisionlist>

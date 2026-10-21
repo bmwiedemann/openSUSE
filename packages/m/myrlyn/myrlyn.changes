@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Wed Oct 21 12:37:20 UTC 2026 - Stefan Hundhammer <Stefan.Hundhammer@gmx.de>
+
+- Update to version 1.1.0:
+  * Updated screenshots
+  * Version bump to 1.1.0
+  * Fixed OBS home project URLs
+  * Updated screenshot
+  * No red versions in versions details view
+  * Color-coding in versions details view
+  * Unified text color handling
+  * Unify special fonts handling
+  * Moved dark theme detection from YQIconPool to MyrlynApp
+  * Use the new icon name in icons.qrc (Closes #156)
+  * No crazy all-caps spelling for vendors
+  * Fixed missing pkg versions view update for "dup" and "up"
+  * Versions details view: Use a grid (table) instead of prose text
+  * White, not yellow foreground color in dark theme (Closes #154)
+  * Fixed icon name (Closes #152)
+  * Updated screenshots
+  * Larger pattern icons (22x22 instead of 16x16)
+  * Updated screenshots with well-defined list icon size
+  * Updated screenshots with well-defined list icon size
+  * Force icon size for list items (#145)
+  * Pre-release version bump to 1.0.99
+  * Icon size fine tuning
+  * Updated screenshots
+  * Updated screenshots
+  * Markdown layout
+  * Markdown layout
+  * Markdown layout
+  * New screenshots
+  * Keep the emojis
+  * Keep the emojis
+  * Obsolete icons
+  * Removed old YaST icons
+  * Imported new icons by @byDMA
+  * Use official API to detect dark theme if available
+  * Detect Xfce theme if running on Xfce
+  * More debug logging
+  * Consistent naming
+  * Removed obsolete icons
+  * Fix download icons for certain themes (#145)
+  * Removed unused (since 20+ years!) icon
+  * Use dedicated icons for dark widget themes
+  * More contrast for download done icon for dark themes
+  * Yellow faces for sad/sick emoji for dark themes
+  * Silence Qt SVG renderer
+  * Added the new icons to YQIconPool
+  * YQIconPool migration from QPixmap to QIcon
+  * Load dark theme built-in icons if available
+  * Added icons for dark widget themes
+  * Updated screenshots with new logo
+  * Updated logo on project home page
+  * Added new contributors
+  * Revamped Myrlyn logo by @Arthurium-On-Linux and @byDMA
+  * New Myrlyn logo (Fixes #138)
+  * Auto-detect dark or light widget theme
+  * Dropped obsolete icons
+  * Dropped obsolete icons
+  * Fixed icon name in .ui preview
+  * More neatly aligned buttons in repo filter view
+  * First "Protect All" / "Un-Protect All" buttons in repo filter view
+  * Added secondary filters "Installed", "Not Installed"
+  * Renamed "Installation Summary" secondary filter to "Status"
+  * Typo
+  * Make sure the required gettext tools are installed
+  * Translations: No msgctx, merge duplicate msgids
+  * Don't translate an empty msgid with gettext auto-generated gibberish
+  * Add reboot notification if /run/reboot-needed exists
+  * Set app icon in window title (Closes #140)
+  * Exit if X11 connection lost regardless of Qt log level
+  * Prevent endless loop if X server crashed / terminated
+  * Highlight package version changes
+  * Removed 15.6 OBS targets that may or may not work
+  * New home project 'home:/huha:'
+  * Reset patterns after commit (Closes #130); thanks to @bjornmp
+  * Keep current pattern and scroll position when switching back to patterns view
+  * Typos
+  * Removed unneeded .png extension for icon in .desktop files (Closes #129)
+  * Fixed typo (thanks to @sakves)
+  * Skip additional warning for dist-upgraded / pkg-updated packages
+  * Safeguard against idiotic behavior (issue #128)
+  * Typo
+  * Log date extension only when appropriate
+  * Reduce log verbosity
+  * Handle cut-off zypp history files correctly
+  * Replaced outdated project header
+  * Use /run/user/0, not /run/user/1000 in myrlyn-sudo
+  * Make usage of theme icons configurable
+  * Simplified myrlyn-sudo a little bit
+  * Use the user theme in myrlyn-sudo (inspired by @cbravo)
+  * Clarify official vs. private project status
+  * Coding style
+  * Fixed screenshot target URLs
+  * Added new screenshots to home page
+  * Updated screenshots
+
+-------------------------------------------------------------------
 Sat Jan 17 19:05:15 UTC 2026 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Update to version 1.0.0:

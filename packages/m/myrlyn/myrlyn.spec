@@ -20,7 +20,7 @@
 Name:           myrlyn
 # If you change the version here, don't forget ../VERSION.cmake !
 # To increase only the last number, use  rake version:bump
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Package manager GUI
 License:        GPL-2.0-only
@@ -92,6 +92,6 @@ CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELEASE"
 %{_bindir}/myrlyn-askpass
 %{_bindir}/myrlyn-sudo
 %{_datadir}/applications/%{name}-*.desktop
-%{_datadir}/icons/hicolor/*/apps/Myrlyn.png
+%{_datadir}/icons/hicolor/scalable/apps/Myrlyn.svg
 
 %changelog
