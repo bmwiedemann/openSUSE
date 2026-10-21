@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 20 17:27:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.20.2 (patch release):
+  * Fix inputs dict losing original types inside
+    prepare_inputs_for_generation, breaking multimodal models
+  * Fix zero expert gradients in bfloat16 with expert
+    parallelism when ep_size < fsdp_size
+  * Declare input modalities of text-only-reporting VLMs
+  * Avoid a host-to-device copy in eager_mask
+
+-------------------------------------------------------------------
 Sat Oct 17 06:12:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.20.1:

@@ -154,4 +154,12 @@ also lifts the 2.0 ceiling that left 5.17.0 unimportable.</comment>
     <comment>Update python-transformers to 5.20.1 with Beam model support</comment>
     <requestid>1385345</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d082327aa85504f3a0b2da030e0f0e7</srcmd5>
+    <version>5.20.2</version>
+    <time>1792609024</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.20.2</comment>
+    <requestid>1386619</requestid>
+  </revision>
 </revisionlist>
