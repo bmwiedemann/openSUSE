@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 21 09:20:21 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Version 5.17.0
+  * Fetch file:// and $releasever gpgkeys correctly when asking to keep a key (#227)
+
+-------------------------------------------------------------------
 Wed Sep  9 09:20:16 UTC 2026 - Dominik Heidler <dheidler@suse.de>
 
 - Version 5.16.0

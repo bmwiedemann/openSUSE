@@ -880,4 +880,13 @@
   * Fix testsuite for Leap 16.0</comment>
     <requestid>1376570</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>70e872725c5f5cc1f33ac2583f8aa015</srcmd5>
+    <version>5.17.0</version>
+    <time>1792609253</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.17.0
+  * Fetch file:// and $releasever gpgkeys correctly when asking to keep a key (#227)</comment>
+    <requestid>1386764</requestid>
+  </revision>
 </revisionlist>
