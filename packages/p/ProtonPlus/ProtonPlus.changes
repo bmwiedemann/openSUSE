@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 18 06:13:08 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 0.6.8:
+  + Fixed release catalogs remaining stale until data was refreshed manually
+  + Fixed scheduled tool updates not working for Flatpak installations
+  + Renamed Proton-CachyOS Wineland to Proton-Wineland and fixed
+    its WoW64 release detection
+  + Fixed tool changelogs failing to render when inline code contains
+    Markdown emphasis characters
+  + Fixed the Steam restart notification missing its icon
+  + Added a Discord community link to the About dialog
+  + Updated translations
+- Spec cleanup: use pkgconfig(vapigen) BuildRequires instead of plain vala
+
+-------------------------------------------------------------------
 Fri Aug 14 04:14:32 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.6.4:

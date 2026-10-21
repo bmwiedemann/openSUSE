@@ -18,7 +18,7 @@
 
 %define         appid com.vysp3r.ProtonPlus
 Name:           ProtonPlus
-Version:        0.6.4
+Version:        0.6.8
 Release:        0
 Summary:        A Wine and Proton-based compatibility tools manager for GNOME
 License:        GPL-3.0-only
@@ -32,7 +32,6 @@ BuildRequires:  git-core
 BuildRequires:  meson >= 1.0.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  vala
 BuildRequires:  pkgconfig(appstream)
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -43,6 +42,8 @@ BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(sdl3) >= 3.2.0
+BuildRequires:  pkgconfig(vapigen)
+BuildRequires:  pkgconfig(vapigen-0.56)
 
 %description
 ProtonPlus is a Proton version manager for installing and managing Proton
