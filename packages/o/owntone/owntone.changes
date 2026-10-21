@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Oct 19 11:34:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Create owntone system user/group via sysusers.d instead of legacy
+  useradd/groupadd scriptlets, so the RPM Provides user(owntone)
+  and group(owntone):
+  * ship %{_sysusersdir}/owntone-user.conf (u owntone,
+    /var/lib/owntone, /sbin/nologin).
+  * drop Requires(pre): pwdutils with the old scriptlets.
+
+-------------------------------------------------------------------
+Sat Oct 17 16:49:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 29.3:
+  * fix: Spotify library missing due to malformed auth header.
+  * fix: heap-buffer-over-read in httpd.
+  * fix: Add support for Spotify audiobooks.
+  * fix: Minor web UI improvements.
+- Security fixes shipped in the 29.0 -> 29.3 range (fixed upstream in 29.1):
+  * CVE-2026-41457 (boo#1262568): SQL injection via DAAP query and filter parameters.
+  * CVE-2026-41458 (boo#1262570): denial of service via DAAP login session-list race.
+  * CVE-2026-26828 (boo#1260348): NULL pointer dereference in DAAP reply handling.
+
+-------------------------------------------------------------------
+Sun Jun 28 15:24:19 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+ - Updated to version 29.2
+   * This release is functionally identical to 29.1.1. The purpose of the release is to fix a RPi packaging issue caused by the 29.1.1 version number.
+   * Version 29.1.1:
+     - fix: 29.1 broke some older AirPlay speakers ("Missing or invalid public key")
+     - fix: "Computer" always being selected in Apple Remote
+     - fix: Minor web UI improvements
+   * Version 29.1:
+     - fix: Samsung and Sonos Era speakers via support for Airplay 2 PTP timing
+     - fix: shairport-sync Airplay 2 mode via support for PTP timing
+     - fix: ipv6 on MacOS and BSD
+     - fix: if bind_address is configured, use it for all services
+     - fix: better mpd support of swmpc (fix sort tags and missing fields)
+     - fix: security (races conditions, segfaults, sql injection, timing attacks)
+     - fix: iTunes/Apple Music with password
+     - fix: artwork for radio statios sometimes not updating
+     - fix: playback not starting in the web UI
+     - new: Airplay 2 is now default
+     - new: support artwork for non-library items, e.g. from Spotify search
+     - new: set speaker offset via web UI
+     - new: option to skip startup Spotify rescan
+     - new: option to set Airplay speakers as "exclusive"
+     - new: deprecate config file playback offset and websocket interface
+     - new: add option for music-assistant/cliairplay to set playback start time
+
+ - Update generated using pbuild-ai
+ - 0001-dacp-Fix-segfault-from-invalid-queries.patch is obsolete
+
+-------------------------------------------------------------------
 Sun Feb  8 10:53:22 UTC 2026 - Dave Plater <davejplater@gmail.com>
 
 - Fix boo#1257023 (CVE-2025-63648) with patch from git:
@@ -65,6 +118,7 @@ Tue Oct  8 09:10:27 UTC 2024 - erfan <erfanfrp@gmail.com>
 
 -------------------------------------------------------------------
 Mon Feb 26 12:54:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
   PatchN.

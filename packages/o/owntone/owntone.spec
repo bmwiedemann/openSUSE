@@ -29,13 +29,13 @@
 Summary:        DAAP server for iTunes and Chromecast with MPD and RSP support
 License:        GPL-2.0-or-later
 Name:           owntone
-Version:        29.0
+Version:        29.3
 Release:        0
 URL:            https://github.com/owntone/owntone-server
 Source0:        %url/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        owntone_logrotate
+Source2:        %{name}-user.conf
 Patch0:         harden_owntone.service.patch
-Patch1:         0001-dacp-Fix-segfault-from-invalid-queries.patch
 Provides:       forked-daapd = %version
 Obsoletes:      forked-daapd < 28
 BuildRequires:  antlr3-tool
@@ -46,6 +46,7 @@ BuildRequires:  libgpg-error-devel >= 1.6
 BuildRequires:  libunistring-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(avahi-client) >= 0.6.24
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libavcodec)
@@ -62,11 +63,9 @@ BuildRequires:  pkgconfig(mxml)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3) >= 3.5.0
 BuildRequires:  pkgconfig(zlib)
-Provides:       group(%{groupname})
-Provides:       user(%{username})
 
 Requires:       logrotate
-Requires(pre):  pwdutils
+%sysusers_requires
 
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libplist-2.0)
@@ -118,6 +117,8 @@ export CFLAGS="%optflags -fcommon"
   --with-daapd-user=%{username} --with-daapd-group=%{groupname}
 %make_build
 
+%sysusers_generate_pre %{SOURCE2} %{name}
+
 %install
 make install DESTDIR=%{buildroot} docdir=%{_pkgdocdir}
 rm -f %{buildroot}%{_pkgdocdir}/INSTALL
@@ -136,12 +137,9 @@ ln -s /sbin/service %{buildroot}%{_sbindir}/rc%{name}
 
 # install logrotate file
 install -D -m0644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
+install -Dpm0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 
-%pre
-getent group %{groupname} >/dev/null || groupadd -r %{groupname}
-getent passwd %{username} >/dev/null || \
-    useradd -r -g %{groupname} -d %{homedir} -s /sbin/nologin \
-    -c '%{name} User' %{username}
+%pre -f %{name}.pre
 %service_add_pre %{name}.service
 
 # try to rescuce former data due to package rename
@@ -176,6 +174,7 @@ fi
 %{_libdir}/%{name}/
 %{_datarootdir}/%{name}/
 %{_unitdir}/%{name}.service
+%{_sysusersdir}/%{name}-user.conf
 %attr(0750,%{username},%{groupname}) %{_localstatedir}/cache/%{name}
 %attr(0750,%{username},%{groupname}) %{homedir}
 %ghost %{_localstatedir}/log/%{name}.log
