@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 20 07:29:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.3:
+  * Fix severe `uv export` slowdowns in dependency graphs with
+    extras.
+  * 0.13.2 enhancements: `uv workspace metadata` reports all
+    installed packages; retry dropped GET/HEAD fetches; ksh
+    activation and non-relocatable environments on OpenBSD ksh;
+    PEP 508 direct URLs accepted in uv-build requires validation;
+    PyPy 3.11.17 and 3.12.15 support.
+  * 0.13.2 performance: faster marker simplification and export,
+    lower resolver memory use, cached workspace member discovery,
+    smaller binaries.
+  * 0.13.2 fixes: respect `--exclude-newer` with cached wheels;
+    no URL credential leaks in diagnostics; PEP 751 environment
+    restrictions honored for pylock installs; invalid
+    `--python-version` values and pylock filenames error instead
+    of panicking; no panics on repeated resolution conflicts.
+  * Refresh the vendored crates.
+
+-------------------------------------------------------------------
 Thu Oct 15 04:52:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.13.1:

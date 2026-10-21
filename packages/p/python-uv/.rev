@@ -3342,4 +3342,12 @@ licence set is unchanged. Both flavors build green on aarch64.</comment>
     <comment>Update python-uv to 0.13.1: pip check/strict ignore Requires-Python upper bounds, CPython 3.16.0a1, atomic managed-Python updates, uninstall-safety and concurrency fixes; re-vendored, licence set unchanged.</comment>
     <requestid>1384928</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>25a25a0fa9b027a34189c6c3c380dd8a</srcmd5>
+    <version>0.13.3</version>
+    <time>1792608726</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.13.3</comment>
+    <requestid>1386454</requestid>
+  </revision>
 </revisionlist>
