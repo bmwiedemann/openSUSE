@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:57:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.119:
+  * 0.1.118 adds the FastH3 OmniRef reference-to-video template
+    JSON and refreshes the localized index files
+  * 0.1.119 adds the Bria Fibo 2 text-to-image template JSON
+    and refreshes the Bria image-edit template and the
+    localized index files
+- No code or dependency change: the sdist still declares no
+  runtime requirements
+
+-------------------------------------------------------------------
+Tue Oct 20 17:27:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.117:
+  * 0.1.116 adds new template JSONs: Clarity AI crystal video
+    upscale, FLUX3 Max image-to-video and text-to-video, and
+    HeyGen voice; refreshes the 3D, audio, moss-image, Topaz
+    and LTX2 templates plus the localized index files
+  * 0.1.117 refreshes the localized index files
+- No code or dependency change: the sdist still declares no
+  runtime requirements
+
+-------------------------------------------------------------------
 Sun Oct 18 17:28:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.115:
