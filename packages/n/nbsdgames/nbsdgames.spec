@@ -17,14 +17,14 @@
 
 
 Name:           nbsdgames
-Version:        6.0.1
+Version:        6.0.3
 Release:        0
 Summary:        A collection of text-based games
-License:        CC0-1.0
-Group:          Amusements/Games/Other
+License:        Apache-2.0 OR CC0-1.0
 URL:            https://github.com/abakh/nbsdgames
 Source:         https://github.com/abakh/nbsdgames/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  ncurses-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(ncurses)
 
 %description
 A new collection of console games inspired by the classic bsd-games collection.
@@ -47,7 +47,7 @@ install -D nbsdgames.svg %{buildroot}%{_datadir}/pixmaps/nbsdgames.svg
 chmod -x %{buildroot}%{_datadir}/pixmaps/nbsdgames.svg
 
 %files
-%license LICENSE
+%license LICENSE APACHE
 %doc README.md
 %{_bindir}/*
 %{_mandir}/man6/*.6%{?ext_man}
