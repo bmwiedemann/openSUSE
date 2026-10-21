@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 21 08:03:59 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build with Qt >= 6.12.0 (patch 47ab0643e3c158476dd01dee13e7dff8eab59274.patch)
+
+-------------------------------------------------------------------
 Thu Oct  1 14:12:37 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to 4.2.3

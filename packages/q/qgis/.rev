@@ -688,4 +688,13 @@ clean).</comment>
 Needs https://build.opensuse.org/request/show/1381916 !!!!!</comment>
     <requestid>1381920</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>8bc1c402d132512c0826362e426c4857</srcmd5>
+    <version>4.2.3</version>
+    <time>1792609271</time>
+    <user>anag_factory</user>
+    <comment>- fix build with Qt &gt;= 6.12.0 (patch 47ab0643e3c158476dd01dee13e7dff8eab59274.patch)
+</comment>
+    <requestid>1386784</requestid>
+  </revision>
 </revisionlist>

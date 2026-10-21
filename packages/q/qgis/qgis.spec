@@ -51,6 +51,8 @@ Patch1:         fix-fastcgi-include.patch
 Patch2:         qgis-fix-cmake-findpdal.patch
 # PATCH-FIX-UPSTREAM - we're using a patched spatialindex version - https://github.com/libspatialindex/libspatialindex/issues/276
 Patch3:         spatialindex210.diff
+# PATCH-FIX-UPSTREAM - fix build with Qt >= 6.12.0
+Patch4:         https://github.com/qgis/QGIS/commit/47ab0643e3c158476dd01dee13e7dff8eab59274.patch
 BuildRequires:  %{mypython}-GDAL
 BuildRequires:  %{mypython}-Jinja2
 BuildRequires:  %{mypython}-OWSLib
