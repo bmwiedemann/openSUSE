@@ -18,7 +18,7 @@
 
 %define modname langchain_protocol
 Name:           python-langchain-protocol
-Version:        0.0.19
+Version:        0.0.20
 Release:        0
 Summary:        Python bindings for the LangChain agent streaming protocol
 License:        MIT

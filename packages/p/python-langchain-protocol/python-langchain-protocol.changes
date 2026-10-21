@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 20 17:10:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.0.20:
+  * Add ToolCallDelta typed dict (type "tool-call-delta" with
+    append-only args string) to the ContentBlockDelta union
+
+-------------------------------------------------------------------
 Thu Aug 27 06:24:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.0.19:

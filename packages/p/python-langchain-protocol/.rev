@@ -21,4 +21,12 @@
 - Build with hatchling &gt;= 1.26, the floor upstream now declares</comment>
     <requestid>1373930</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f78c758a5cf80a57536428be95ed2258</srcmd5>
+    <version>0.0.20</version>
+    <time>1792609000</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.0.20</comment>
+    <requestid>1386601</requestid>
+  </revision>
 </revisionlist>
