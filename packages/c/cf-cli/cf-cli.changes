@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Oct 17 09:00:21 UTC 2026 - Oliver Kurz <okurz@suse.com>
+
+- Update to version 8.19.1+git.0.2e5ae2396:
+  * Update Go version to 1.26.9 (#3880)
+  * [v8](go): Bump the dependencies group with 9 updates (#3879)
+  * [v8](go): Bump the dependencies group across 1 directory with 8 updates (#3873)
+  * Stream async job warnings as they arrive for delete commands (#3860)
+  * Migrate github.com/SermoDigital to github.com/golang-jwt for 1.27.0 compat (#3872)
+  * [v8](go): Bump the dependencies group with 6 updates (#3868)
+  * Fix(ci): bump grpc to v1.84.0 to resolve newly disclosed CVEs (#3869)
+  * [v8](go): Bump the dependencies group across 1 directory with 11 updates (#3865)
+  * [v8](go): Bump the dependencies group with 7 updates (#3856)
+  * Update Go version to 1.26.7 (#3854)
+  * [v8](go): Bump the dependencies group across 1 directory with 12 updates (#3848)
+  * [v8](go): Bump the dependencies group across 1 directory with 4 updates (#3840)
+  * Fix(curl): surface auth errors and avoid panic on nil HTTP response (#3838)
+  * [v8](go): Bump the dependencies group with 3 updates (#3836)
+  * [v8](go): Bump the dependencies group with 7 updates (#3834)
+  * [v8](gha): Bump actions/setup-go from 6 to 7 in the dependencies group (#3829)
+  * [v8](go): Bump the dependencies group with 4 updates (#3826)
+  * feat(ci): label bosh-lite GCP resources for tracking (#3831)
+  * [v8](go): Bump the dependencies group with 7 updates (#3824)
+  * RFC0055 Identity-Aware Routing (v8 backport) (#3816)
+  * Regenerate fakes (#3825)
+  * Fix(ci): fix delete-env failures and add force-delete fallback (#3822)
+  * Fix(ci): allow checkout of gated PR head SHA under actions/checkout (#3821)
+  * [v8](go): Bump the dependencies group with 4 updates (#3818)
+
+-------------------------------------------------------------------
 Thu Jul 30 11:10:23 UTC 2026 - Oliver Kurz <okurz@suse.com>
 
 - Update to version 8.18.4+git.0.3fcd823a1:
