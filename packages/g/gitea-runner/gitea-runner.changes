@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 20 20:45:51 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 5.2.0:
+  * refactor: drop logrus and other direct dependencies (#1319)
+  * fix: don't fail host steps over a leftover holding their output (#1323)
+  * enhance(k8s): reach Kubernetes services by their id when it is a DNS subdomain (#1320)
+
+-------------------------------------------------------------------
+Fri Oct 16 07:15:51 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 5.1.1:
+  * fix: remove the job network even when container removal overruns (#1318)
+  * perf: download actions as archives once per job (#1316)
+  * enhance(report): add runner.log_report_level for the uploaded runner messages (#1310)
+  * fix: stop pruning the cached action ref on refresh (#1312)
+
+-------------------------------------------------------------------
 Wed Oct 14 12:19:27 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 5.1.0:
