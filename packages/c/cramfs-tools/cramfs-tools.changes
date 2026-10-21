@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:23:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Remove leftover cramfs-tools-obey-cflags.patch, no longer
+  referenced since 2.2 dropped it from the spec.
+- CVE-2026-8274: cramfsck path traversal via crafted dirent names,
+  already fixed in 2.2 (boo#1264703)
+- Spec cleanup: drop obsolete Group tag, use pkgconfig(zlib),
+  and add missing gcc/make BuildRequires.
+
+-------------------------------------------------------------------
+Thu Apr 23 06:43:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2
+  * README: correct stale claims, document cramfsck, list mkcramfs
+    options.
+  * cramfsck: reject directory entries that extend past their
+    parent's size.
+  * cramfsck: check I/O return values and zero the window buffer
+    in romfs_read.
+  * cramfsck: fix outbuffer NUL termination and one-byte overflow
+    in do_symlink
+  * cramfsck: use O_EXCL when creating regular files during
+    extraction.
+  * cramfsck: reject dirent names containing path separators or
+    traversal components.
+  * Add mention of a known cramfs obfuscation to the README file.
+  * Makefile: Obey CFLAGS.
+  * updating to mask errors into reported value.
+  * adjusting return code for errors in continue mode.
+  * fixing bail-outs for non-root users in diag mode.
+  * fix a printf warning.
+  * undef any existing PAGE_SIZE.
+- Drop patch:
+  * cramfs-tools-obey-cflags.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Feb 26 11:07:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

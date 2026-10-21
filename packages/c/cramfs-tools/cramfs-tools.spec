@@ -1,7 +1,8 @@
 #
 # spec file for package cramfs-tools
 #
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2020-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +18,17 @@
 
 
 Name:           cramfs-tools
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Tools for CramFs (Compressed ROM File System)
 License:        GPL-2.0-only
-Group:          Development/Tools/Other
 URL:            https://github.com/npitre/cramfs-tools/
 Source:         https://github.com/npitre/cramfs-tools/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         cramfs-tools-obey-cflags.patch
+BuildRequires:  gcc
 BuildRequires:  help2man
-BuildRequires:  zlib-devel
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(zlib)
 
 %description
 This package contains tools that let you construct a CramFs
@@ -38,7 +40,7 @@ extracting its contents.
 %autosetup -p1
 
 %build
-export CFLAGS="%optflags"
+export CFLAGS="%{optflags}"
 %make_build
 help2man ./cramfsck --version-string="%{version}" --no-info > cramfsck.1
 help2man ./mkcramfs --version-string="%{version}" --no-info > mkcramfs.1
