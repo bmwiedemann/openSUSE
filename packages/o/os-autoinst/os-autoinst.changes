@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 20 08:19:22 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792484351.82c2f16:
+  * fix(setup-mm): Ensure proper error handling in NetworkManager setup
+  * feat(setup-mm): Clean Open vSwitch bridge when using NetworkManager
+  * feat(setup-mm): Improve setup of NetworkManager connections
+  * feat(setup-mm): Improve detection of networking service
+  * feat(setup-mm): Make deletion of tap interfaces safer
+  * feat(setup-mm): Clean all old NetworkManager connections
+  * feat(setup-mm): Avoid overriding existing dispatcher script
+  * refactor(setup-mm): Silence `shellcheck` warnings
+  * feat(setup-mm): Remove redundant `os-autoinst-openvswitch` config
+
+-------------------------------------------------------------------
 Mon Oct 19 21:41:35 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1792446083.2bd94ba:
