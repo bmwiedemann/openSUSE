@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 21 05:05:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.5:
+  * chore(deps): update anchore dependencies (#1142)
+  * chore(deps): Bump astral-sh/setup-uv (#1144)
+  * chore(deps): Bump boto3 (#1145)
+  * chore(deps-dev): Bump types-requests (#1146)
+  * chore(deps): Bump the go-minor-patch group with 3 updates
+    (#1143)
+  * chore(deps): update anchore dependencies (#1133)
+  * chore: add COPYRIGHT and CONTRIBUTORS.md files (#1141)
+  * chore(deps): update tool versions (#1139)
+  * chore(deps): Bump werkzeug from 3.1.6 to 3.1.9 (#1138)
+  * chore(deps): Bump fsspec from 2025.7.0 to 2026.6.0 (#1137)
+  * chore(deps): Bump github.com/klauspost/compress (#1135)
+  * chore(deps): update tool versions (#1134)
+
+-------------------------------------------------------------------
 Sun Oct 04 16:50:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.54.4:
