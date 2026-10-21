@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:42:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.522:
+  * Thousands of redrawn and added Hanzi: BIG5 completed,
+    Extension A reworked per GB/Z 40637-2021, Extension A redraws
+    shared with fellow Klee-derived projects, plus new
+    superscript/subscript letters.
+  * Bold weight renamed to Medium; Hanzi widths unified to 1 EM;
+    macOS/iOS Medium rendering and mono isFixedPitch fixed.
+  * New OpenType features: halt/vhal and experimental chws/vchw
+    punctuation squeezing, dash ligation, ccmp combining marks
+    for pinyin, UVS centered-punctuation variants; mono drops
+    dlig which harmed editor rendering.
+  * Vertical metrics adjusted to fix oversized vertical spacing;
+    minus sign unified with plus width; U+2E3A/2E3B set to 1 EM.
+  * Korean: all 11,172 syllables completed, compatibility jamo
+    added, KPS 9566 and GB/T 12052 syllables covered.
+  * New symbols: ancient Chinese punctuation, counting-rod
+    numerals, IBM Plex Math-derived shapes; Light-weight symbols
+    partly restored to Klee One originals.
+  * Many more glyph adjustments; see upstream release notes.
+
+-------------------------------------------------------------------
+Thu Jan 25 16:58:29 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>
+
+- Version 1.315
+- Update license
+
+-------------------------------------------------------------------
+Fri Oct 13 13:04:09 UTC 2023 - Guo Yunhe <i@guoyunhe.me>
+
+- Version 1.311
+
+-------------------------------------------------------------------
 Wed May 10 11:57:39 UTC 2023 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 1.300

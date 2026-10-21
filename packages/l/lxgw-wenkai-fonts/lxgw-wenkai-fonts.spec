@@ -1,7 +1,7 @@
 #
 # spec file for package lxgw-wenkai-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           lxgw-wenkai-fonts
-Version:        1.300
+Version:        1.522
 Release:        0
-Summary:        An open-source Chinese font derived from Fontworks' Klee One.
+Summary:        An open-source Chinese font derived from Fontworks' Klee One
 License:        OFL-1.1
 URL:            https://github.com/lxgw/LxgwWenKai
 Source0:        https://github.com/lxgw/LxgwWenKai/releases/download/v%{version}/lxgw-wenkai-v%{version}.tar.gz
@@ -27,7 +27,7 @@ BuildRequires:  fontpackages-devel
 BuildArch:      noarch
 
 %description
-An open-source Chinese font derived from Fontworks' Klee One.
+An open-source Chinese font derived from Fontworks' Klee One
 
 %prep
 %setup -q -n lxgw-wenkai-v%{version}
@@ -37,11 +37,12 @@ An open-source Chinese font derived from Fontworks' Klee One.
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}/
 install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}
+chmod -x OFL.txt
 
 %reconfigure_fonts_scriptlets -c
 
 %files
-%license License.txt
+%license OFL.txt
 %{_ttfontsdir}
 
 %changelog
