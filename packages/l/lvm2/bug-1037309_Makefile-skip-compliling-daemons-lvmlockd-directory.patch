@@ -6,42 +6,25 @@ Subject: [PATCH] build: skip compliling daemons/lvmlockd directory
 bsc#1037309
 
 Signed-off-by: Eric Ren <zren@suse.com>
+
+2026-10-18: Rebased onto v2_03_43. The daemons/Makefile.in part was
+dropped (upstream skips lvmlockd the same way now); the configure
+hunk was refreshed for the regenerated autoconf output.
+
 ---
- configure           | 3 ++-
- daemons/Makefile.in | 6 +++---
- 2 files changed, 5 insertions(+), 4 deletions(-)
+ configure | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/configure b/configure
-index 0bb5b3dbc6ca..ea657178076b 100755
 --- a/configure
 +++ b/configure
-@@ -12023,7 +12023,8 @@ fi
- printf "%s\n" "$BUILD_LVMPOLLD" >&6; }
- 
+@@ -12143,7 +12143,8 @@ fi
+ printf '%s\n' "$BUILD_LVMPOLLD" >&6; }
+
  ################################################################################
 -BUILD_LVMLOCKD=no
 +#BUILD_LVMLOCKD=no
 +BUILD_LVMLOCKD=yes
- 
- { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether to build lvmlockdsanlock" >&5
- printf %s "checking whether to build lvmlockdsanlock... " >&6; }
-diff --git a/daemons/Makefile.in b/daemons/Makefile.in
-index e548b1556478..642d839c046f 100644
---- a/daemons/Makefile.in
-+++ b/daemons/Makefile.in
-@@ -32,9 +32,9 @@ ifeq ("@BUILD_LVMPOLLD@", "yes")
-   SUBDIRS += lvmpolld
- endif
- 
--ifeq ("@BUILD_LVMLOCKD@", "yes")
--  SUBDIRS += lvmlockd
--endif
-+#ifeq ("@BUILD_LVMLOCKD@", "yes")
-+#  SUBDIRS += lvmlockd
-+#endif
- 
- ifeq ("@BUILD_LVMDBUSD@", "yes")
-   SUBDIRS += lvmdbusd
--- 
-2.42.0
 
+ { printf '%s\n' "$as_me:${as_lineno-$LINENO}: checking whether to build lvmlockdsanlock" >&5
+ printf %s "checking whether to build lvmlockdsanlock... " >&6; }

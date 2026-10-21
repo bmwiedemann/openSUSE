@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Oct 18 11:04:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.03.43:
+  * Wipe stale signatures before formatting a VDO data LV on thin
+    storage; allow 4K stripe size smaller than page size.
+  * dmeventd fixes: raid repair after partial replacement, snapshot
+    extension backoff, snapshot threshold and unmount handling.
+  * pvmove in shared VGs with lvmlockd, cluster lock lifecycle for
+    the pvmove LV, lock probes for holder availability.
+  * lvmpersist hardening: reject non-block devices, validate options,
+    require PR tools, clean up keys on interruption.
+  * Add lvmconfig --edit to set or remove an lvm.conf setting and
+    backup/file-limit handling for config edits.
+  * Remove cmirrord and clustered mirror log daemon support; drop the
+    legacy vgimportclone.sh script.
+  * Increase the default value of global/lvmlockd_lock_retries from
+    3 to 6.
+  * Respect /run/mdadm/creating-<md_dev_name> in 69-dm-lvm.rules.
+  * Many dmeventd, lvmlockd, vgmerge/vgcreate/vgimportclone lock-leak
+    and raid/pvmove polling fixes.
+- Sync lvm.conf with upstream 2.03.43 defaults (adds
+  allocation/vdo_use_kernel_format and backup/config_file_backup_limit
+  options).
+- Package the new dmvdostats symlink and man page in device-mapper.
+- Drop patches adopted upstream or obsolete:
+  * cmirrord_remove_date_time_from_compilation.patch (cmirrord
+    removed upstream)
+  * bug-1214071-blkdeactivate_calls_wrong_mountpoint.patch (upstream
+    uses /usr/bin/mountpoint now)
+- Rebase bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-rules.patch
+  onto the reworked MD section, keeping the new creating-guard.
+- Rework bug-1184124-link-tests-as-PIE.patch to pass -pie in the two
+  generic test link recipes, and
+  bug-1037309_Makefile-skip-compliling-daemons-lvmlockd-directory.patch
+  to its configure hunk (the Makefile.in part is upstream now).
+- Sonames unchanged (libdevmapper.so.1.03, liblvm2cmd.so.2.03);
+  device-mapper package version moves to 2.03.43_1.02.217.
+- Spec cleanup: drop Group tags, https sources, pkgconfig deps.
+
+-------------------------------------------------------------------
 Mon Dec 29 07:29:17 UTC 2025 - Glass Su <glass.su@suse.com>
 
 - update lvm.conf: sync up with upstream v2_03_38 (bsc#1255680)

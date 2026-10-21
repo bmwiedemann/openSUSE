@@ -1,7 +1,7 @@
 #
 # spec file for package lvm2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,11 @@
 %define libname_event libdevmapper-event1_03
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define cmdlib liblvm2cmd2_03
-%define lvm2_version              2.03.38
+%define lvm2_version              2.03.43
 # For device_mapper_version, it's package version, see bsc#1199074.
 # Also note there is another dm version on below "sed -ie ... VERSION_DM".
-%define upstream_device_mapper_version  1.02.212
-%define device_mapper_version           %{lvm2_version}_1.02.212
+%define upstream_device_mapper_version  1.02.217
+%define device_mapper_version           %{lvm2_version}_1.02.217
 %define thin_provisioning_version 0.7.0
 %if 0%{?suse_version} >= 1600 && ! 0%{?is_opensuse}
   %define _supportsanlock 0
@@ -57,32 +57,27 @@
 %else
   %bcond_with devicemapper
 %endif
-
 %if "%{flavor}" == "lockd"
   %define psuffix -lvmlockd
   %bcond_without lockd
 %else
   %bcond_with lockd
 %endif
-
 Name:           lvm2%{psuffix}
 Version:        %{lvm2_version}
 Release:        0
 Summary:        Logical Volume Manager Tools
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Base
 URL:            https://www.sourceware.org/lvm2/
-Source:         ftp://sourceware.org/pub/lvm2/LVM2.%{version}.tgz
+Source:         https://sourceware.org/pub/lvm2/LVM2.%{version}.tgz
 Source1:        lvm.conf
 Source2:        lvm2-rpmlintrc
-Source42:       ftp://sourceware.org/pub/lvm2/LVM2.%{version}.tgz.asc
+Source42:       https://sourceware.org/pub/lvm2/LVM2.%{version}.tgz.asc
 Source99:       baselibs.conf
-
 # Upstream patches
 #Patch0001:      n/a
 # SUSE patches: 1000+ for LVM
 # Never upstream
-Patch1001:      cmirrord_remove_date_time_from_compilation.patch
 Patch1002:      fate-309425_display-dm-name-for-lv-name.patch
 Patch1003:      bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
 Patch1004:      bug-998893_make_pvscan_service_after_multipathd.patch
@@ -90,8 +85,7 @@ Patch1005:      bug-1184687_Add-nolvm-for-kernel-cmdline.patch
 Patch1006:      fate-31841-01_fsadm-add-support-to-resize-check-btrfs-filesystem.patch
 Patch1007:      fate-31841-02_man-add-support-for-btrfs.patch
 Patch1008:      fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
-Patch1009:      bug-1214071-blkdeactivate_calls_wrong_mountpoint.patch
-Patch1010:      bug-1228854_lvm2-monitor-service-start-after-system-fully-booted.patch
+Patch1009:      bug-1228854_lvm2-monitor-service-start-after-system-fully-booted.patch
 # SUSE patches 2000+ for device mapper, udev rules
 Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-rules.patch
 # SUSE patches 3000+ for test code
@@ -105,17 +99,16 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
-Requires:       device-mapper >= %{device_mapper_version}
-Requires:       modutils
+Requires:       (multipath-tools >= 0.9.9 if multipath-tools)
 # see bsc#1225783 bsc#1229518 for following 2 lines
 Requires:       (udev >= 255.7 if udev)
-Requires:       (multipath-tools >= 0.9.9 if multipath-tools)
+Requires:       device-mapper >= %{device_mapper_version}
+Requires:       modutils
 Requires(post): coreutils
 Requires(postun): coreutils
 Provides:       lvm = %{version}
 Obsoletes:      lvm2-cmirrord <= %{lvm2_cmirrord_version}
 %{?systemd_requires}
-
 %if %{with devicemapper}
 BuildRequires:  gcc-c++
 BuildRequires:  suse-module-tools
@@ -125,18 +118,21 @@ BuildRequires:  pkgconfig(libsepol)
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(corosync)
 %if %{with lockd}
+# NOTE: keep the dlm floor on the package name: libdlm.pc carries its
+# own 4.0.0 version string and never satisfies a 4.0.9 constraint.
 BuildRequires:  libdlm-devel >= %{dlm_version}
+BuildRequires:  pkgconfig(libdlm)
 BuildRequires:  pkgconfig(systemd)
 %if 0%{_supportsanlock} == 1
 BuildRequires:  sanlock-devel >= %{sanlock_version}
 %endif
 %else
 BuildRequires:  gcc-c++
-BuildRequires:  libselinux-devel
-BuildRequires:  readline-devel
-BuildRequires:  pkgconfig(udev)
 # building lvm2 needs thin-provisioning-tools, see bsc#1236749
 BuildRequires:  thin-provisioning-tools >= %{thin_provisioning_version}
+BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  pkgconfig(readline)
+BuildRequires:  pkgconfig(udev)
 # see bsc#1236788 for dont_stop_blk_availability_service
 Provides:       dont_stop_blk_availability_service = 0.1
 %endif
@@ -148,7 +144,6 @@ Volume Manager.
 
 %prep
 %setup -q -n LVM2.%{version}
-%patch -P 1001 -p1
 %patch -P 1002 -p1
 %patch -P 1003 -p1
 %patch -P 1004 -p1
@@ -157,7 +152,6 @@ Volume Manager.
 %patch -P 1007 -p1
 %patch -P 1008 -p1
 %patch -P 1009 -p1
-%patch -P 1010 -p1
 %patch -P 2001 -p1
 %patch -P 3001 -p1
 
@@ -317,7 +311,7 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
     install -m 644 %{SOURCE1} "%{buildroot}/%{_sysconfdir}/lvm/"
     # Install testsuite
     make -C test install DESTDIR=%{buildroot}
-    %if %{suse_version} >= 1600
+    %if 0%{?suse_version} >= 1600
     %python3_fix_shebang_path %{buildroot}%{_datadir}/lvm2-testsuite/dbus/*
     %endif
 
@@ -338,6 +332,7 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
 
     # Remove devicemapper binaries, plain rm so we fail if something change
     rm %{buildroot}%{_sbindir}/dmsetup
+    rm %{buildroot}%{_sbindir}/dmvdostats
     rm %{buildroot}%{_sbindir}/dmeventd
     rm %{buildroot}%{_sbindir}/dmstats
     rm %{buildroot}%{_sbindir}/dmfilemapd
@@ -359,6 +354,7 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
     rm %{buildroot}%{_mandir}/man8/lvmlockd.8
     rm %{buildroot}%{_mandir}/man8/dmstats.8
     rm %{buildroot}%{_mandir}/man8/dmsetup.8
+    rm %{buildroot}%{_mandir}/man8/dmvdostats.8
     rm %{buildroot}%{_mandir}/man8/dmeventd.8
     rm %{buildroot}%{_mandir}/man8/dmfilemapd.8
 
@@ -380,7 +376,6 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
 Version:        %{device_mapper_version}
 Release:        0
 Summary:        Device Mapper Tools
-Group:          System/Base
 Requires:       thin-provisioning-tools >= %{thin_provisioning_version}
 Requires(post): coreutils
 
@@ -412,11 +407,13 @@ Programs and man pages for configuring and using the device mapper.
 /sbin/dmsetup
 %endif
 %{_sbindir}/dmsetup
+%{_sbindir}/dmvdostats
 %{_sbindir}/dmeventd
 %{_sbindir}/dmstats
 %{_sbindir}/dmfilemapd
 %{_mandir}/man8/dmstats.8%{?ext_man}
 %{_mandir}/man8/dmsetup.8%{?ext_man}
+%{_mandir}/man8/dmvdostats.8%{?ext_man}
 %{_mandir}/man8/dmeventd.8%{?ext_man}
 %{_mandir}/man8/dmfilemapd.8%{?ext_man}
 %{_udevrulesdir}/10-dm.rules
@@ -432,7 +429,6 @@ Programs and man pages for configuring and using the device mapper.
 Version:        %{device_mapper_version}
 Release:        0
 Summary:        Library for device-mapper
-Group:          System/Libraries
 Conflicts:      %{name} < %{version}
 
 %description -n %{libname}
@@ -462,7 +458,6 @@ fi
 Version:        %{device_mapper_version}
 Release:        0
 Summary:        Event library for device-mapper
-Group:          System/Libraries
 Conflicts:      %{name} < %{version}
 
 %description -n %{libname_event}
@@ -479,7 +474,6 @@ Device mapper event daemon shared library
 Version:        %{device_mapper_version}
 Release:        0
 Summary:        Development package for the device mapper
-Group:          Development/Libraries/C and C++
 Requires:       %{libname_event} = %{device_mapper_version}
 Requires:       %{libname} = %{device_mapper_version}
 Requires:       device-mapper = %{device_mapper_version}
@@ -499,7 +493,6 @@ Files needed for software development using the device mapper
 %if %{with lockd}
 %package -n lvm2-lockd
 Summary:        LVM locking daemon
-Group:          System/Base
 Requires:       corosync
 Requires:       device-mapper >= %{device_mapper_version}
 Requires:       libdlm >= %{dlm_version}
@@ -680,6 +673,9 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 /sbin/vgsplit
 %endif
 %{_mandir}/man5/lvm.conf.5%{?ext_man}
+%{_mandir}/man7/lvm-args.7%{?ext_man}
+%{_mandir}/man7/lvm-categories.7%{?ext_man}
+%{_mandir}/man7/lvm-index.7%{?ext_man}
 %{_mandir}/man7/lvmautoactivation.7%{?ext_man}
 %{_mandir}/man7/lvmcache.7%{?ext_man}
 %{_mandir}/man7/lvmraid.7%{?ext_man}
@@ -775,7 +771,6 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 
 %package -n %{cmdlib}
 Summary:        LVM2 command line library
-Group:          System/Libraries
 Conflicts:      %{name} < %{version}
 Obsoletes:      liblvm2app2_2 <= %{liblvm2app2_2_version}
 Obsoletes:      liblvm2cmd2_02 <= %{liblvm2cmd2_02_version}
@@ -792,10 +787,10 @@ lvm devices without invoking a separate program.
 
 %package devel
 Summary:        Development files for LVM2
-Group:          Development/Libraries/C and C++
 Requires:       %{cmdlib} = %{version}
-Requires:       device-mapper-devel
 Requires:       lvm2 = %{version}
+Requires:       pkgconfig(devmapper)
+Requires:       pkgconfig(devmapper-event)
 
 %description devel
 This package provides development files for the LVM2 Logical Volume Manager.
@@ -806,7 +801,6 @@ This package provides development files for the LVM2 Logical Volume Manager.
 
 %package testsuite
 Summary:        LVM2 Testsuite
-Group:          Development/Libraries/C and C++
 Requires:       %{cmdlib} = %{version}
 Requires:       lvm2 = %{version}
 

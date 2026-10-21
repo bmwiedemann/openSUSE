@@ -35,6 +35,11 @@ should be modified instead. The subject of this patch should be modified too.
 NOTE: the updated patch may let shell/duplicate-pvs-md0.sh fail because
 we change timing of lvm_scan in the rule file.
 
+2026-10-18:
+Rebased onto v2_03_43. Upstream reworked this section (RUN_DIR creating
+guard plus SYNTH_UUID/array_state conditions); keep that guard and
+retain the SUSE simplification of scanning on any add/change event.
+
 Signed-off-by: Glass Su <glass.su@suse.com>
 
 ---
@@ -45,7 +50,7 @@ diff --git a/udev/69-dm-lvm.rules.in b/udev/69-dm-lvm.rules.in
 index 3ec50a5cb878..45fdad444562 100644
 --- a/udev/69-dm-lvm.rules.in
 +++ b/udev/69-dm-lvm.rules.in
-@@ -35,12 +35,11 @@ ENV{DM_UDEV_PRIMARY_SOURCE_FLAG}=="1", ENV{DM_ACTIVATION}=="1", GOTO="lvm_scan"
+@@ -40,14 +40,12 @@ ENV{DM_UDEV_PRIMARY_SOURCE_FLAG}=="1", ENV{DM_ACTIVATION}=="1", GOTO="lvm_scan"
  GOTO="lvm_end"
  
  # MD device:
@@ -53,8 +58,10 @@ index 3ec50a5cb878..45fdad444562 100644
  LABEL="next"
  KERNEL!="md[0-9]*", GOTO="next"
 -IMPORT{db}="LVM_MD_PV_ACTIVATED"
+ TEST=="(RUN_DIR)/mdadm/creating-$kernel", GOTO="lvm_end"
 -ACTION=="add", ENV{LVM_MD_PV_ACTIVATED}=="1", GOTO="lvm_scan"
--ACTION=="change", ENV{LVM_MD_PV_ACTIVATED}!="1", TEST=="md/array_state", ENV{LVM_MD_PV_ACTIVATED}="1", GOTO="lvm_scan"
+-ACTION=="add", ENV{LVM_MD_PV_ACTIVATED}!="1", ENV{SYNTH_UUID}!="", ATTR{md/array_state}!="clear*|inactive", ENV{LVM_MD_PV_ACTIVATED}="1", GOTO="lvm_scan"
+-ACTION=="change", ENV{LVM_MD_PV_ACTIVATED}!="1", ATTR{md/array_state}!="clear*|inactive", ENV{LVM_MD_PV_ACTIVATED}="1", GOTO="lvm_scan"
 -ACTION=="add", KERNEL=="md[0-9]*p[0-9]*", GOTO="lvm_scan"
 +ACTION=="add", GOTO="lvm_scan"
 +ACTION=="change", GOTO="lvm_scan"

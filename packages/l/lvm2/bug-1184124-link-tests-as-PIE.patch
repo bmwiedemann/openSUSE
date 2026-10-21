@@ -1,12 +1,30 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Date: Sun, 18 Oct 2026 12:00:00 +0000
+Subject: [PATCH] link tests as PIE
+
+Link test binaries as position independent executables by passing
+-pie in the two generic link recipes. (Reworked for 2.03.43: the
+previous LDFLAGS += -pie hunk no longer applies after upstream
+extended SOURCES and added a FIXME note above it.)
+
 diff --git a/test/Makefile.in b/test/Makefile.in
-index 20e97ebd0f4d..d4d3ce9f6dc7 100644
 --- a/test/Makefile.in
 +++ b/test/Makefile.in
-@@ -31,6 +31,7 @@ LVM_TEST_RESULTS ?= results
- SOURCES := lib/not.c lib/harness.c lib/dmsecuretest.c
- CXXSOURCES := lib/runner.cpp
- CXXFLAGS += $(EXTRA_EXEC_CFLAGS)
-+LDFLAGS += -pie
+@@ -320,7 +320,7 @@ lib/should lib/invalid lib/fail: lib/not
  
- CLEAN_DIRS += dbus/__pycache__ $(LVM_TEST_RESULTS)
- ifneq (.,$(firstword $(srcdir)))
+ lib/runner: lib/runner.o .lib-dir-stamp
+ 	$(SHOW) "    [LD] $@"
+-	$(Q) $(CXX) $(CXXFLAGS) $(LDFLAGS) $(EXTRA_EXEC_LDFLAGS) $(ELDFLAGS) -o $@ $< $(RT_LIBS)
++	$(Q) $(CXX) $(CXXFLAGS) $(LDFLAGS) $(EXTRA_EXEC_LDFLAGS) $(ELDFLAGS) -pie -o $@ $< $(RT_LIBS)
+ 
+ lib/not: lib/not.o
+ lib/runner.o: $(wildcard $(srcdir)/lib/*.h)
+@@ -334,7 +334,7 @@ LDFLAGS_lib/idm_inject_failure += $(INTERNAL_LIBS) $(LIBS) -lseagate_ilm
+ 
+ lib/%: lib/%.o .lib-dir-stamp
+ 	$(SHOW) "    [LD] $@"
+-	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) $(EXTRA_EXEC_LDFLAGS) $(ELDFLAGS) -o $@ $< $(LDFLAGS_$@)
++	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) $(EXTRA_EXEC_LDFLAGS) $(ELDFLAGS) -pie -o $@ $< $(LDFLAGS_$@)
+ 
+ lib/%: $(srcdir)/lib/%.sh .lib-dir-stamp
+ 	$(SHOW) "    [CP] $@"
