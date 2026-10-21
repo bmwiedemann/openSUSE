@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:42:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.522:
+  * Track the LXGW WenKai v1.522 release (screen fonts rebuilt
+    from the full v1.522 sources).
+
+-------------------------------------------------------------------
 Wed Dec 13 09:28:35 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - add %reconfigure_fonts_prereq, required by the presence of the 

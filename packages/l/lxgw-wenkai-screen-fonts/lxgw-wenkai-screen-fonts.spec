@@ -1,7 +1,7 @@
 #
 # spec file for package lxgw-wenkai-screen-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxgw-wenkai-screen-fonts
-Version:        1.300
+Version:        1.522
 Release:        0
 Summary:        Chinese font derived from Klee One
 License:        OFL-1.1
@@ -31,7 +31,7 @@ BuildArch:      noarch
 A Chinese font derived from Fontworks's Klee One.
 
 %prep
-cp %{S:0} ./
+cp %{SOURCE0} ./
 
 %build
 
