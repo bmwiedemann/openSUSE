@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 16 19:50:03 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2.9.0
+  * No changelog
+- Update BuildRequires kf6_version and qt6_version
+- Add BuildRequires pkgconfig and pkgconfig(openssl)
+
+-------------------------------------------------------------------
 Sat Sep 12 15:39:54 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 2.8.1

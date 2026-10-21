@@ -16,14 +16,14 @@
 #
 
 
-%define kf6_version 6.22.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %bcond_without released
 # Disabled in the KDE:Extra repo for plain 16.0
 %bcond_without textautogeneratetext
 Name:           ruqola
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
@@ -78,6 +78,8 @@ BuildRequires:  cmake(Qt6NetworkAuth) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebSockets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(openssl)
 Requires:       qt6-sql-sqlite >= %{qt6_version}
 
 %description
