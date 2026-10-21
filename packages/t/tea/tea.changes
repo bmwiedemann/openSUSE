@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 16 16:56:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 63.3.1:
+  * New "Save more" function (save all existing files), renamed from
+    "Save as different"; "Save all" fixed
+  * New PRQL syntax highlighting
+  * Charset support reduced to UTF-8, UTF-16 and legacy Cyrillic
+    encodings; automatic charset detection removed
+  * ZIP support moved from Quazip/zlib to the bundled miniz library;
+    archives can no longer be created
+  * Support for gzipped text files removed
+  * Spellchecking reworked: one user dictionary shared by all
+    backends and languages
+  * File open/save dialogs enabled by default for new users;
+    copy/paste handling rewritten; e-book (FB2, EPUB) and printing
+    fixes
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Drop tea-fix-mimetype.patch (fixed upstream)
+- Rebase 0001-Add-metainfo-use-GNUInstallDirs-install-metainfo-des.patch
+- Drop BuildRequires for zlib, Qt5Compat and QML, which upstream no
+  longer uses; add explicit gcc-c++ BuildRequires
+
+-------------------------------------------------------------------
 Sat Nov 22 21:25:59 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

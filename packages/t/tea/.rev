@@ -119,4 +119,12 @@
     <comment>- Remove unused BuildRequires: update-desktop-files. (forwarded request 1319443 from sbrabec)</comment>
     <requestid>1319573</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2602dac56dd6aeef0443da899f7830f1</srcmd5>
+    <version>63.3.1</version>
+    <time>1792609327</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386802</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package tea
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,36 +22,29 @@
 %bcond_with qt6
 %endif
 Name:           tea
-Version:        61.2.0
+Version:        63.3.1
 Release:        0
 Summary:        Qt-based text editor with image viewer
 License:        GPL-3.0-or-later
 URL:            http://semiletov.org/tea
 Source:         https://github.com/psemiletov/tea-qt/archive/%{version}.tar.gz#/%{name}-qt-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE tea-fix-mimetype.patch -- Fix MimeType .desktop entry.
-Patch0:         tea-fix-mimetype.patch
 # PATCH-FEATURE-UPSTREAM -- https://github.com/psemiletov/tea-qt/pull/45
 Patch1:         0001-Add-metainfo-use-GNUInstallDirs-install-metainfo-des.patch
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hunspell)
-BuildRequires:  pkgconfig(zlib)
 %if %{with qt6}
 BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6PrintSupport)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6Widgets)
 %else
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Core) >= 5.15
+BuildRequires:  cmake(Qt5Gui) >= 5.15
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.15
+BuildRequires:  cmake(Qt5Widgets) >= 5.15
 %endif
 
 %description
