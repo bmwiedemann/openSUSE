@@ -19,20 +19,24 @@
 
 %define _buildshell /bin/bash
 %define oname sqlite
-%define tarversion 3530200
-%define docversion 3530200
+%define tarversion 3540100
+%define docversion 3540100
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.53.2
+Version:        3.54.1
 Release:        0
 Summary:        Embeddable SQL Database Engine
+%if 0%{?suse_version} >= 1500
 License:        LicenseRef-SUSE-Public-Domain
+%else
+License:        SUSE%{nil}-Public-Domain
+%endif
 Group:          Productivity/Databases/Servers
 URL:            https://www.sqlite.org/
-Source0:        https://www.sqlite.org/2025/sqlite-src-%{tarversion}.zip
+Source0:        https://www.sqlite.org/2026/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
-Source2:        https://www.sqlite.org/2025/sqlite-doc-%{docversion}.zip
+Source2:        https://www.sqlite.org/2026/sqlite-doc-%{docversion}.zip
 Source99:       %{name}-rpmlintrc
 Patch0:         sqlite-3.6.23-lemon-system-template.patch
 Patch1:         sqlite-3.49.0-fix-lemon-missing-cflags.patch
@@ -224,6 +228,9 @@ export CFLAGS="%{optflags} \
 
 %if %{with check}
 %check
+# Allow ASan tests
+ulimit -d unlimited
+
 %make_build devtest
 %endif
 

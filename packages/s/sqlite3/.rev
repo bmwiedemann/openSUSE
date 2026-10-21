@@ -2065,4 +2065,41 @@ CVE-2020-13871 boo#1172646</comment>
     <comment></comment>
     <requestid>1366777</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>2ef5bc8220bfec72785f423638f6dc9b</srcmd5>
+    <version>3.54.1</version>
+    <time>1792608711</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.54.1:
+  * https://sqlite.org/releaselog/3_54_1.html
+  * Fix a possible heap-buffer overflow on 32-bit builds (64-bit
+    builds are not affected).
+  * Fix other problems in 3.54.0 reported by users.
+
+- Update to version 3.54.0:
+  * https://sqlite.org/releaselog/3_54_0.html
+  * CLI enhancements: prompt strings may contain escape sequences
+    that expand to show state information, and the initial prompt
+    is taken from the SQLITE_PS1 and SQLITE_PS2 environment
+    variables if set. The default prompt honors NO_COLOR.
+  * CLI: columnar output modes now show the column name header by
+    default even if the query returns no rows.
+  * CLI: the new &quot;.diskused&quot; dot-command (based on the new
+    diskused() extension) replaces the separate sqlite3_analyzer
+    utility, which is now deprecated upstream.
+  * CLI: the .mode command gained the --rowcount, --titles,
+    --ifmt and --fpfmt options.
+  * CLI: ending an SQL command with a line containing just &quot;go&quot; or
+    &quot;/&quot; is discontinued unless compiled with
+    -DSQLITE_SHELL_LEGACY_COMMAND_TERMINATOR.
+  * Query planner improvements, including better optimization of
+    &quot;expr OR TRUE&quot; / &quot;expr OR FALSE&quot;, skipping needless updates of
+    expression indexes, ignoring DISTINCT on the right-hand side
+    of IN, and faster UNION queries with a LIMIT of exactly 1.
+  * ALTER TABLE now raises an error on any attempt to add, drop,
+    or rename columns named &quot;ROWID&quot;, &quot;_ROWID_&quot; or &quot;OID&quot;.
+  * New %J and %j conversions to render JSON string literals in
+    the built-in printf() and the format() SQL function.</comment>
+    <requestid>1386542</requestid>
+  </revision>
 </revisionlist>

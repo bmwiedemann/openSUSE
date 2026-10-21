@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:37:31 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to version 3.54.1:
+  * https://sqlite.org/releaselog/3_54_1.html
+  * Fix a possible heap-buffer overflow on 32-bit builds (64-bit
+    builds are not affected).
+  * Fix other problems in 3.54.0 reported by users.
+
+-------------------------------------------------------------------
+Mon Oct 12 11:57:22 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to version 3.54.0:
+  * https://sqlite.org/releaselog/3_54_0.html
+  * CLI enhancements: prompt strings may contain escape sequences
+    that expand to show state information, and the initial prompt
+    is taken from the SQLITE_PS1 and SQLITE_PS2 environment
+    variables if set. The default prompt honors NO_COLOR.
+  * CLI: columnar output modes now show the column name header by
+    default even if the query returns no rows.
+  * CLI: the new ".diskused" dot-command (based on the new
+    diskused() extension) replaces the separate sqlite3_analyzer
+    utility, which is now deprecated upstream.
+  * CLI: the .mode command gained the --rowcount, --titles,
+    --ifmt and --fpfmt options.
+  * CLI: ending an SQL command with a line containing just "go" or
+    "/" is discontinued unless compiled with
+    -DSQLITE_SHELL_LEGACY_COMMAND_TERMINATOR.
+  * Query planner improvements, including better optimization of
+    "expr OR TRUE" / "expr OR FALSE", skipping needless updates of
+    expression indexes, ignoring DISTINCT on the right-hand side
+    of IN, and faster UNION queries with a LIMIT of exactly 1.
+  * ALTER TABLE now raises an error on any attempt to add, drop,
+    or rename columns named "ROWID", "_ROWID_" or "OID".
+  * New %J and %j conversions to render JSON string literals in
+    the built-in printf() and the format() SQL function.
+  * New C-language interfaces: sqlite3_result_str() and
+    sqlite3_incomplete().
+  * Date/time functions: added the "weekday -N" form of the
+    weekday modifier and the "end of" modifier.
+  * The authorizer callback is now invoked for SQL functions found
+    in the DEFAULT clauses of CREATE TABLE statements.
+  * Added SQLITE_LIMIT_SCHEMA and SQLITE_LIMIT_TRIGGER_STEPS to
+    the sqlite3_limit() interface.
+  * Use O_TMPFILE when generating temporary files on systems that
+    support it.
+  * About 4% faster as measured by counting CPU cycles in the
+    speedtest1 benchmark.
+- Raise RLIMIT_DATA in %check so that the ASAN based tests can
+  reserve their shadow memory region.
+
+-------------------------------------------------------------------
 Tue Jun 30 22:28:22 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Add sqlite3-tools and sqlite3-tools-tcl subpackages
