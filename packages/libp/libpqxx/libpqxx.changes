@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:36:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 8.0.2 (major release, soname bump 7_10 -> 8_0):
+  * Requires C++20 to build and PostgreSQL 11 or newer servers
+  * Exception hierarchy reworked, all exceptions derive from
+    pqxx::failure now
+  * Result and row iterators are proper random access iterators;
+    row/field equality compares identity, not content
+  * pqxx::bytes is now a byte vector instead of a string
+  * Retired binarystring, connection_base, dynamic_params,
+    stream_from, old stream_to constructors, unesc_raw/quote_raw
+  * Reworked string conversion API with string_view support
+  * 8.0.1/8.0.2 fixes: bool conversion, array budget, memcpy
+    overlap, compiler flag detection
+- Package libpqxx-8_0, require gcc-c++ >= 11 for C++20
+
+-------------------------------------------------------------------
 Sun Nov  9 09:00:07 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 7.10.3
@@ -7,6 +24,48 @@ Sun Nov  9 09:00:07 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
   https://github.com/jtv/libpqxx/releases/tag/7.10.2
   https://github.com/jtv/libpqxx/releases/tag/7.10.3
 - switch to cmake
+
+-------------------------------------------------------------------
+Sat Nov  8 15:11:04 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.10.3
+  - Fixes to CMake & pkgconfig setup.
+  - Better handling of weirdness in connection strings.
+  - Can't pass parameters to stream().
+  - row::as_tuple() is now public.
+  - Fixed potential garbage at end of type names in error messages.
+  - Build fix on macOS related to std::free().
+  - Fix to workaround when compiler does not support to_chars() for floating point.
+  - Avoid crash in affected_rows() for empty result.
+  - Work with compilers that support concepts but not ranges.
+- Changes from 7.10.2
+  - CMake used unnecessary, broken PostgreSQL_INCLUDE_DIRS.
+  - pqxx::connection::connection_string() did not handle quotes and spaces correctly.
+  - Parameter-passing in stream() was pointless: the underlying protocol doesn't support it.
+  - Static linkage issue with pkgconfig.
+  - If you need pqxx::row::as_tuple()... it's public now.
+  - Demangled type names could have some garbage at the end.
+  - Build broke in compilers where std::free was not noexcept.
+  - Floating-point string conversion was broken in compilers that don't support std::to_chars().
+  - Failure in pqxx::result::affected_rows() when result set is empty.
+  - Error message in pqxx::result::expect_columns() wasn't quite right.
+  - Build failed on compilers that support concepts but not ranges.
+  - Some compilers with some settings issued deprecation warnings for the <ciso646> header.
+- Changes from 7.10.1
+  - Fix string conversion buffer budget for arrays containing nulls. (#921)
+  - Remove -fanalyzer option again; gcc is still broken.
+  - Oops, no, minimum CMake version is not 3.28, but 3.12!
+  - Fix warnings on compilers that accept [[assume]] with a warning. (#928)
+  - Can't pass parameters to streaming query.
+  - CMake build: take libpq path from build target, not absolute path. (#964)
+  - Added explanation to listen() of when notifications come in. (#963)
+- Changes from 7.10.0
+  - Since macOS doesn't have /bin/true, we'll just call true instead (#885).
+  - Error reporting could crash during non-blocking connection construction (#894).
+  - There was a potential buffer overrun when converting an array containing nulls to an SQL string (#906).
+  - The nullness check for std::optional was broken if the contained type had its own null value (#907).
+  - An error message for clashes between transaction focuses was misleading (#879).
+  - Minimum CMake version is now 3.28 3.12 (#851, #874).
 
 -------------------------------------------------------------------
 Sat Sep 28 00:53:28 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>

@@ -1,7 +1,7 @@
 #
 # spec file for package libpqxx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,19 @@
 %define force_gcc_version 12
 %endif
 
-%define abi_ver_major 7
-%define abi_ver_minor 10
+%define abi_ver_major 8
+%define abi_ver_minor 0
 Name:           libpqxx
-Version:        7.10.3
+Version:        8.0.2
 Release:        0
 Summary:        C++ Client Library for PostgreSQL
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            http://pqxx.org/development/libpqxx/
 Source:         https://github.com/jtv/libpqxx/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.12
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?force_gcc_version}-c++ >= 8
+# Upstream requires C++20
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 11
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libpq)
@@ -49,7 +49,6 @@ hard to get with most other database interfaces.
 
 %package %{abi_ver_major}_%{abi_ver_minor}
 Summary:        C++ Client Library for PostgreSQL
-Group:          System/Libraries
 
 %description %{abi_ver_major}_%{abi_ver_minor}
 This is the official C++ client API for postgres.  What libpqxx brings you is
@@ -63,9 +62,8 @@ hard to get with most other database interfaces.
 
 %package devel
 Summary:        C++ Client Library for PostgreSQL
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-%{abi_ver_major}_%{abi_ver_minor} = %{version}
-Requires:       gcc%{?force_gcc_version}-c++ >= 8
+Requires:       gcc%{?force_gcc_version}-c++ >= 11
 
 %description devel
 This package contains header files needed for writing
