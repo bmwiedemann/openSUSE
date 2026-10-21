@@ -1,7 +1,7 @@
 #
 # spec file for package vsgXchange
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,22 @@
 #
 
 
-%define _vsg_so_nr 1
-
+%define _vsg_so_nr 3
 Name:           vsgXchange
-Version:        1.0.5
+Version:        1.1.14
 Release:        0
 Summary:        3D graphics toolkit
 License:        MIT
-Group:          Productivity/Graphics/Other
 URL:            https://github.com/vsg-dev/vsgXchange
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         0001-Build-fixes-for-changes-to-GDAL-3.12.patch
 # not found by default
 #BuildRequires:  libassimp5
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(assimp)
 BuildRequires:  cmake(osg2vsg)
-BuildRequires:  cmake(vsg)
+BuildRequires:  cmake(vsg) >= 1.1.14
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gdal)
 BuildRequires:  pkgconfig(libcurl)
@@ -44,7 +42,6 @@ Utility library for converting data+materials to/from VulkanSceneGraph.
 
 %package -n libvsgXchange%{_vsg_so_nr}
 Summary:        Shared libraries for vsgXchange
-Group:          System/Libraries
 
 %description -n libvsgXchange%{_vsg_so_nr}
 The VulkanSceneGraph is a graphics toolkit for the development of
@@ -57,8 +54,7 @@ This package contains the shared libraries for vsgXchange.
 
 %package -n libvsgXchange-devel
 Summary:        VulkanSceneGraph development files
-Group:          Development/Libraries/C and C++
-Requires:       libvsgXchange%{_vsg_so_nr} == %{version}
+Requires:       libvsgXchange%{_vsg_so_nr} = %{version}
 
 %description -n libvsgXchange-devel
 The VulkanSceneGraph is a graphics toolkit for the development of
@@ -83,16 +79,13 @@ This package contains the development header and libraries for vsgXchange.
 %postun -n libvsgXchange%{_vsg_so_nr} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %{_bindir}/vsgconv
 
 %files -n libvsgXchange%{_vsg_so_nr}
-%defattr(-,root,root)
 %license LICENSE.md
 %{_libdir}/lib*.so.*
 
 %files -n libvsgXchange-devel
-%defattr(-,root,root)
 %{_includedir}/vsg*/
 %{_libdir}/lib*.so
 %{_libdir}/cmake

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:20:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.1.14
+  * Native glTF 2.0 and 3D Tiles 1.0 support without external
+    dependencies, incl. EXT_mesh_gpu_instancing and instancing
+    of whole models via vsg::InstanceNode
+  * Customizable Tile3D::Builder and extensible scene graph
+    Builders for assimp, glTF and Tile3D; new shared_objects
+    option
+  * Optional meshoptimizer and mesh shader support; handle
+    ASSIMP built with ASSIMP_DOUBLE_PRECISION
+  * Improved color handling: color space controls, sRGB support
+    in stbi/assimp loaders, sRGB assignment for diffuse and
+    emissive textures
+  * PBR/Phong shading detection from the AssImp shading model;
+    DDS R16G16B16A16 and R32G32B32A32 float formats
+  * KTX/DDS readers use vsg::MipmapLayout with libktx as
+    external dependency; GDAL HTTP support and GDAL fixes
+  * Compressed network transfers; optional texture embedding
+- Drop 0001-Build-fixes-for-changes-to-GDAL-3.12.patch, applied
+  upstream
+- Soname bump 1 -> 3 (libvsgXchange1 becomes libvsgXchange3);
+  require vsg >= 1.1.14
+- Spec cleanup (drop Group tags and %defattr)
+
+-------------------------------------------------------------------
 Tue Nov 25 08:08:18 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix building with GDAL 3.12
