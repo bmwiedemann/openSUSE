@@ -1,0 +1,19 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://gitlab.freedesktop.org/spice/linux/vd_agent.git</param>
+    <param name="revision">e940b0091e7d68245624fca55dfcfe3ca092a059</param>
+    <param name="filename">spice-vdagent</param>
+    <param name="parent-tag">spice-vdagent-0.23.0</param>
+    <param name="versionformat">0.23.0+git@TAG_OFFSET@.%h</param>
+  </service>
+
+  <service name="set_version" mode="manual"/>
+
+  <service name="tar" mode="buildtime"/>
+
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 19 19:39:52 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 0.23.0+git6.e940b00:
+  * vdagent: Fix build using GTK 4 without X11
+  * fix(file-xfers): Reject path traversal in file transfer filenames
+  * fix(udscs): Prevent integer overflow in udscs_write() buf_size calculation
+  * vdagent/device-info: remove unused loop variable for gcc 16
+  * Revert "spice-vdagent.service: Fixing cyclical systemd dependencies"
+  * spice-vdagent.service: Fixing cyclical systemd dependencies
+  * Release v0.23.0
+  * chore: prepare for release, use "Keep a Changelog" format
+  * spice-vdagent[d].service: Fix duplicated logs
+  * spice-vdagent.service: Add missing PartOf dep
+- Drop obsolete Prevent-integer-overflow-in-udscs_write-buf_size-calculation.patch
+- Drop obsolete Reject-path-traversal-in-file-transfer-filenames.patch
+- Add wayland_native_vd_agent.patch from upstream Merge Request
+  https://gitlab.freedesktop.org/spice/linux/vd_agent/-/merge_requests/57
+
+-------------------------------------------------------------------
 Fri Jul 24 11:35:30 MDT 2026 - carnold@suse.com
 
 - bsc#1269553 - VUL-0: CVE-2026-57965: spice-vdagent: integer

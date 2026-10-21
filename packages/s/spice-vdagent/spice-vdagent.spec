@@ -21,17 +21,16 @@
 %bcond_with session_info_test
 
 Name:           spice-vdagent
-Version:        0.23.0
+Version:        0.23.0+git6.e940b00
 Release:        0
 Summary:        Agent for Spice guests
 License:        GPL-3.0-or-later
 Group:          System/Daemons
 URL:            http://spice-space.org/
-Source:         http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.keyring
 Patch0:         harden_spice-vdagentd.service.patch
-Patch1:         Prevent-integer-overflow-in-udscs_write-buf_size-calculation.patch
-Patch2:         Reject-path-traversal-in-file-transfer-filenames.patch
+Patch1:         wayland_native_vd_agent.patch
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
 BuildRequires:  libXfixes-devel
@@ -49,6 +48,9 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(spice-protocol) >= 0.14.3
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  pkgconfig(wayland-client) >= 1.20
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.39
+BuildRequires:  pkgconfig(wayland-scanner)
 Supplements:    (xwayland and modalias(virtio:d00000003v*))
 Supplements:    modalias(xorg-x11-server:virtio:d00000003v*)
 %{?systemd_requires}
@@ -69,10 +71,11 @@ Features:
 %autosetup -p1
 
 %build
-autoreconf
+autoreconf -fi
 %configure \
   --with-session-info=systemd \
-  --with-init-script=systemd
+  --with-init-script=systemd \
+  --with-wayland=yes
 make %{?_smp_mflags} V=2
 
 %check

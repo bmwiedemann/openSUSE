@@ -1,0 +1,1374 @@
+diff --git a/.gitignore b/.gitignore
+index b3f32e203ca8ddaa09609175aacccb27cc8ab875..4b5251e7367b7282713c470c8aa3d9f0d4154bb4 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -12,6 +12,8 @@ tests/test-*.log
+ tests/test-*.trs
+ tests/test-file-xfers
+ tests/test-device-info
++src/vdagent/wayland/ext-data-control-v1-protocol.c
++src/vdagent/wayland/ext-data-control-v1-protocol.h
+ config.log
+ config.status
+ aclocal.m4
+diff --git a/Makefile.am b/Makefile.am
+index 563fa3eb1b7d457a715fc60fac58eb22720c6b16..d2de063e89b37ff05c6ee4313d52ef85621b22a1 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -22,7 +22,9 @@ src_spice_vdagent_CFLAGS =			\
+ 	$(GIO2_CFLAGS)				\
+ 	$(GTK_CFLAGS)				\
+ 	$(ALSA_CFLAGS)				\
++	$(WAYLAND_CLIENT_CFLAGS)		\
+ 	-I$(srcdir)/src				\
++	-I$(builddir)/src/vdagent/wayland	\
+ 	-DUDSCS_NO_SERVER			\
+ 	$(NULL)
+ 
+@@ -33,6 +35,7 @@ src_spice_vdagent_LDADD =			\
+ 	$(GIO2_LIBS)				\
+ 	$(GTK_LIBS)				\
+ 	$(ALSA_LIBS)				\
++	$(WAYLAND_CLIENT_LIBS)			\
+ 	$(NULL)
+ 
+ src_spice_vdagent_SOURCES =			\
+@@ -56,8 +59,35 @@ src_spice_vdagent_SOURCES =			\
+ 	src/vdagent/x11.c			\
+ 	src/vdagent/x11.h			\
+ 	src/vdagent/vdagent.c			\
++	src/vdagent/wayland/wayland.c		\
++	src/vdagent/wayland/wayland.h		\
++	src/vdagent/wayland/internal.h		\
++	src/vdagent/wayland/display.c		\
++	src/vdagent/wayland/clipboard.c		\
+ 	$(NULL)
+ 
++if WITH_WAYLAND
++EXT_DATA_CONTROL_XML = $(WAYLAND_PROTOCOLS_DIR)/staging/ext-data-control/ext-data-control-v1.xml
++
++BUILT_SOURCES =						\
++	src/vdagent/wayland/ext-data-control-v1-protocol.h	\
++	src/vdagent/wayland/ext-data-control-v1-protocol.c	\
++	$(NULL)
++
++CLEANFILES = $(BUILT_SOURCES)
++
++src/vdagent/wayland/ext-data-control-v1-protocol.h: $(EXT_DATA_CONTROL_XML)
++	$(AM_V_GEN)$(MKDIR_P) $(@D) && $(WAYLAND_SCANNER) client-header $< $@
++
++src/vdagent/wayland/ext-data-control-v1-protocol.c: $(EXT_DATA_CONTROL_XML)
++	$(AM_V_GEN)$(MKDIR_P) $(@D) && $(WAYLAND_SCANNER) private-code $< $@
++
++src_spice_vdagent_SOURCES +=				\
++	src/vdagent/wayland/ext-data-control-v1-protocol.c	\
++	src/vdagent/wayland/ext-data-control-v1-protocol.h	\
++	$(NULL)
++endif
++
+ tests_test_file_xfers_CFLAGS =			\
+ 	$(SPICE_CFLAGS)				\
+ 	$(GIO2_CFLAGS)				\
+diff --git a/configure.ac b/configure.ac
+index dddb83c72c0220c3f55e9f117d6072bb55722c3e..e4926875e721d6f2e6f121cf55fdcb24b2e43c86 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -119,6 +119,32 @@ AC_ARG_ENABLE([static-uinput],
+               [enable_static_uinput="$enableval"],
+               [enable_static_uinput="no"])
+ 
++AC_ARG_WITH([wayland],
++            [AS_HELP_STRING(
++               [--with-wayland=@<:@auto/yes/no@:>@],
++               [Build native Wayland backend @<:@default=auto@:>@])],
++            [],
++            [with_wayland="auto"])
++wayland_requested=$with_wayland
++if test "x$with_wayland" != "xno"; then
++    PKG_CHECK_MODULES([WAYLAND_CLIENT],
++                      [wayland-client >= 1.20 wayland-protocols >= 1.39],
++                      [], [with_wayland="no"])
++    if test "x$with_wayland" != "xno"; then
++        AC_PATH_PROG([WAYLAND_SCANNER], [wayland-scanner])
++        test -z "$WAYLAND_SCANNER" && with_wayland="no"
++    fi
++    AS_IF([test "x$with_wayland" = "xno" && test "x$wayland_requested" = "xyes"],
++          [AC_MSG_ERROR([Wayland backend requested but wayland-client/wayland-protocols/wayland-scanner not available])])
++    if test "x$with_wayland" != "xno"; then
++        AC_DEFINE([WITH_WAYLAND], [1], [If defined, build the native Wayland backend])
++        WAYLAND_PROTOCOLS_DIR=`$PKG_CONFIG --variable=pkgdatadir wayland-protocols`
++        AC_SUBST([WAYLAND_PROTOCOLS_DIR])
++        with_wayland="yes"
++    fi
++fi
++AM_CONDITIONAL([WITH_WAYLAND], [test "x$with_wayland" = "xyes"])
++
+ PKG_CHECK_MODULES([GIO2], [gio-unix-2.0 >= 2.50])
+ PKG_CHECK_MODULES(X, [xfixes xrandr >= 1.3 xinerama x11])
+ PKG_CHECK_MODULES(SPICE, [spice-protocol >= 0.14.3])
+@@ -249,6 +275,7 @@ AC_MSG_NOTICE([
+         udevdir:                  ${udevdir}
+ 
+         use GTK+:                 ${with_gtk}
++        wayland backend:          ${with_wayland}
+ 
+         Now type 'make' to build $PACKAGE
+ 
+diff --git a/src/vdagent/vdagent.c b/src/vdagent/vdagent.c
+index 05d1a8f8c1e5023f782807eeeeed53de25c274b1..5876c847f12189864fc8292206e7856f5aaf964d 100644
+--- a/src/vdagent/vdagent.c
++++ b/src/vdagent/vdagent.c
+@@ -41,6 +41,7 @@
+ #include "file-xfers.h"
+ #include "clipboard.h"
+ #include "display.h"
++#include "wayland/wayland.h"
+ 
+ #define MAX_RETRY_CONNECT_SYSTEM_AGENT 60
+ 
+@@ -50,6 +51,7 @@ typedef struct VDAgent {
+     struct vdagent_file_xfers *xfers;
+     UdscsConnection *conn;
+     gint udscs_num_retry;
++    VDAgentWayland *wayland;
+ 
+     GMainLoop *loop;
+ } VDAgent;
+@@ -99,6 +101,16 @@ static GOptionEntry entries[] = {
+     { NULL }
+ };
+ 
++/* On the Wayland path agent->display is NULL — desktop-icon detection
++ * is desktop-environment-specific there and there's no portable equivalent,
++ * so we report FALSE and file transfers default to ~/Downloads. */
++static gboolean agent_has_icons_on_desktop(VDAgent *agent)
++{
++    if (agent->display == NULL)
++        return FALSE;
++    return vdagent_display_has_icons_on_desktop(agent->display);
++}
++
+ /**
+  * xfer_get_download_directory
+  *
+@@ -116,7 +128,7 @@ static const gchar *xfer_get_download_directory(VDAgent *agent)
+         return fx_dir;
+     }
+ 
+-    return g_get_user_special_dir(vdagent_display_has_icons_on_desktop(agent->display) ?
++    return g_get_user_special_dir(agent_has_icons_on_desktop(agent) ?
+                                   G_USER_DIRECTORY_DESKTOP :
+                                   G_USER_DIRECTORY_DOWNLOAD);
+ }
+@@ -145,9 +157,17 @@ static gboolean vdagent_init_file_xfer(VDAgent *agent)
+         return FALSE;
+     }
+ 
+-    open_dir = fx_open_dir == -1 ?
+-               !vdagent_display_has_icons_on_desktop(agent->display) :
+-               fx_open_dir;
++    if (fx_open_dir != -1) {
++        open_dir = fx_open_dir;
++    } else if (agent->wayland != NULL) {
++        /* On Wayland sessions xdg-open's handler for inode/directory is
++         * unpredictable (file manager, terminal file browser, ...), so
++         * don't open the directory unless the user explicitly opted in
++         * with --file-xfer-open-dir=1. */
++        open_dir = FALSE;
++    } else {
++        open_dir = !agent_has_icons_on_desktop(agent);
++    }
+ 
+     agent->xfers = vdagent_file_xfers_create(agent->conn, xfer_dir,
+                                              open_dir, debug);
+@@ -181,20 +201,45 @@ static void daemon_read_complete(UdscsConnection *conn,
+ 
+     switch (header->type) {
+     case VDAGENTD_MONITORS_CONFIG:
++        if (agent->wayland) {
++            vdagent_wayland_set_monitor_config(agent->wayland,
++                                               (VDAgentMonitorsConfig *)data);
++            break;
++        }
+         vdagent_display_set_monitor_config(agent->display, (VDAgentMonitorsConfig *)data, 0);
+         break;
+     case VDAGENTD_CLIPBOARD_REQUEST:
++        if (agent->wayland) {
++            vdagent_wayland_clipboard_request(agent->wayland,
++                                              header->arg1, header->arg2);
++            break;
++        }
+         vdagent_clipboard_request(agent->clipboards, header->arg1, header->arg2);
+         break;
+     case VDAGENTD_CLIPBOARD_GRAB:
++        if (agent->wayland) {
++            vdagent_wayland_clipboard_grab(agent->wayland, header->arg1,
++                                           (guint32 *)data,
++                                           header->size / sizeof(guint32));
++            break;
++        }
+         vdagent_clipboard_grab(agent->clipboards, header->arg1,
+                                (guint32 *)data, header->size / sizeof(guint32));
+         break;
+     case VDAGENTD_CLIPBOARD_DATA:
++        if (agent->wayland) {
++            vdagent_wayland_clipboard_data(agent->wayland, header->arg1,
++                                           header->arg2, data, header->size);
++            break;
++        }
+         vdagent_clipboard_data(agent->clipboards, header->arg1, header->arg2,
+                                data, header->size);
+         break;
+     case VDAGENTD_CLIPBOARD_RELEASE:
++        if (agent->wayland) {
++            vdagent_wayland_clipboard_release(agent->wayland, header->arg1);
++            break;
++        }
+         vdagent_clipboard_release(agent->clipboards, header->arg1);
+         break;
+     case VDAGENTD_VERSION:
+@@ -251,10 +296,15 @@ static void daemon_read_complete(UdscsConnection *conn,
+         }
+         break;
+     case VDAGENTD_GRAPHICS_DEVICE_INFO:
++        if (agent->wayland) {
++            /* No equivalent device-info path on Wayland; ignore. */
++            break;
++        }
+         vdagent_display_handle_graphics_device_info(agent->display, data, header->size);
+         break;
+     case VDAGENTD_CLIENT_DISCONNECTED:
+-        vdagent_clipboards_release_all(agent->clipboards);
++        if (!agent->wayland)
++            vdagent_clipboards_release_all(agent->clipboards);
+         if (vdagent_finalize_file_xfer(agent)) {
+             vdagent_init_file_xfer(agent);
+         }
+@@ -363,6 +413,7 @@ static VDAgent *vdagent_new(void)
+ static void vdagent_destroy(VDAgent *agent)
+ {
+     vdagent_finalize_file_xfer(agent);
++    g_clear_pointer(&agent->wayland, vdagent_wayland_destroy);
+     vdagent_display_destroy(agent->display, agent->conn == NULL);
+     g_clear_pointer(&agent->conn, vdagent_connection_destroy);
+ 
+@@ -410,17 +461,23 @@ static gboolean vdagent_init_async_cb(gpointer user_data)
+     agent->udscs_num_retry = 0;
+     g_object_set_data(G_OBJECT(agent->conn), "agent", agent);
+ 
+-    agent->display = vdagent_display_create(agent->conn, debug, x11_sync);
+-    if (agent->display == NULL)
+-        goto err_init;
+-
++    if (vdagent_wayland_session_active()) {
++        agent->wayland = vdagent_wayland_create(agent->conn, debug);
++        if (agent->wayland == NULL)
++            syslog(LOG_WARNING,
++                   "wayland: backend init failed, falling back to X11");
++    }
++    if (agent->wayland == NULL) {
++        agent->display = vdagent_display_create(agent->conn, debug, x11_sync);
++        if (agent->display == NULL)
++            goto err_init;
++        agent->clipboards = vdagent_clipboards_new(vdagent_display_get_x11(agent->display));
++        vdagent_clipboards_set_conn(agent->clipboards, agent->conn);
++    }
+ 
+     if (!vdagent_init_file_xfer(agent))
+         syslog(LOG_WARNING, "File transfer is disabled");
+ 
+-    agent->clipboards = vdagent_clipboards_new(vdagent_display_get_x11(agent->display));
+-    vdagent_clipboards_set_conn(agent->clipboards, agent->conn);
+-
+     if (parent_socket != -1) {
+         if (write(parent_socket, "OK", 2) != 2)
+             syslog(LOG_WARNING, "Parent already gone.");
+diff --git a/src/vdagent/wayland/clipboard.c b/src/vdagent/wayland/clipboard.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..e9a4a12074ea68abb0e58c98d5ee32e5fba981c9
+--- /dev/null
++++ b/src/vdagent/wayland/clipboard.c
+@@ -0,0 +1,569 @@
++/*  clipboard.c - Wayland data-control clipboard backend
++
++    Copyright 2026 Viacheslav Dermichev
++
++    This program is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++#include <config.h>
++
++#ifdef WITH_WAYLAND
++
++#include <errno.h>
++#include <fcntl.h>
++#include <stdint.h>
++#include <stdlib.h>
++#include <string.h>
++#include <syslog.h>
++#include <unistd.h>
++
++#include <glib.h>
++#include <glib-unix.h>
++#include <spice/vd_agent.h>
++#include <wayland-client.h>
++
++#include "internal.h"
++#include "vdagentd-proto.h"
++
++#define MAX_CLIPBOARD_TYPES  32
++#define MAX_CLIPBOARD_BYTES  (64 * 1024 * 1024)
++
++G_STATIC_ASSERT(VD_AGENT_CLIPBOARD_SELECTION_CLIPBOARD == 0);
++G_STATIC_ASSERT(VD_AGENT_CLIPBOARD_SELECTION_PRIMARY == 1);
++G_STATIC_ASSERT(VDAGENT_WAYLAND_N_SELECTIONS ==
++                VD_AGENT_CLIPBOARD_SELECTION_PRIMARY + 1);
++
++static const char *sel_name(guint sel_id)
++{
++    return sel_id == VD_AGENT_CLIPBOARD_SELECTION_PRIMARY ? "primary" : "clipboard";
++}
++
++/* mime ↔ SPICE clipboard type mapping. Same set as clipboard.c's atom2agent.
++ * The first entry for any type is the canonical mime we use when we need to
++ * pick one. */
++static const struct {
++    guint32      type;
++    const gchar *mime;
++} mime2type[] = {
++    {VD_AGENT_CLIPBOARD_UTF8_TEXT, "text/plain;charset=utf-8"},
++    {VD_AGENT_CLIPBOARD_UTF8_TEXT, "UTF8_STRING"},
++    {VD_AGENT_CLIPBOARD_UTF8_TEXT, "STRING"},
++    {VD_AGENT_CLIPBOARD_UTF8_TEXT, "TEXT"},
++    {VD_AGENT_CLIPBOARD_UTF8_TEXT, "text/plain"},
++    {VD_AGENT_CLIPBOARD_IMAGE_PNG, "image/png"},
++    {VD_AGENT_CLIPBOARD_IMAGE_BMP, "image/bmp"},
++    {VD_AGENT_CLIPBOARD_IMAGE_BMP, "image/x-bmp"},
++    {VD_AGENT_CLIPBOARD_IMAGE_BMP, "image/x-MS-bmp"},
++    {VD_AGENT_CLIPBOARD_IMAGE_BMP, "image/x-win-bitmap"},
++    {VD_AGENT_CLIPBOARD_IMAGE_TIFF,"image/tiff"},
++    {VD_AGENT_CLIPBOARD_IMAGE_JPG, "image/jpeg"},
++};
++
++static const gchar *canonical_mime_for_type(guint32 type, GPtrArray *mimes)
++{
++    for (gsize i = 0; i < G_N_ELEMENTS(mime2type); i++) {
++        if (mime2type[i].type != type)
++            continue;
++        for (guint j = 0; j < mimes->len; j++) {
++            if (!g_ascii_strcasecmp(g_ptr_array_index(mimes, j), mime2type[i].mime))
++                return mime2type[i].mime;
++        }
++    }
++    return NULL;
++}
++
++static guint32 spice_type_for_mime(const gchar *mime)
++{
++    for (gsize i = 0; i < G_N_ELEMENTS(mime2type); i++) {
++        if (!g_ascii_strcasecmp(mime, mime2type[i].mime))
++            return mime2type[i].type;
++    }
++    return VD_AGENT_CLIPBOARD_NONE;
++}
++
++/* data-control offer -------------------------------------------------- */
++
++/* Each offer carries its own GPtrArray of mimes as the listener data —
++ * `wl_proxy_add_listener` writes the data argument as the proxy's
++ * user_data, so wl_proxy_get_user_data() reads it back. We don't destroy
++ * offers eagerly: at bind time the compositor sends both clipboard and
++ * primary selection back-to-back, and a stray destroy of one would race
++ * with the still-queued selection event for the other. Offers are torn
++ * down when the matching selection/primary_selection event arrives, or
++ * when superseded by a later selection. */
++
++static GPtrArray *offer_mimes(struct ext_data_control_offer_v1 *o)
++{
++    return wl_proxy_get_user_data((struct wl_proxy *)o);
++}
++
++static void offer_destroy_with_mimes(struct ext_data_control_offer_v1 *o)
++{
++    if (o == NULL)
++        return;
++    GPtrArray *mimes = offer_mimes(o);
++    if (mimes)
++        g_ptr_array_unref(mimes);
++    ext_data_control_offer_v1_destroy(o);
++}
++
++static void offer_offer(void *data, struct ext_data_control_offer_v1 *offer,
++                        const char *mime_type)
++{
++    g_ptr_array_add((GPtrArray *)data, g_strdup(mime_type));
++}
++
++static const struct ext_data_control_offer_v1_listener offer_listener = {
++    .offer = offer_offer,
++};
++
++/* data-control device ------------------------------------------------- */
++
++static void close_pending_send(VDAgentWayland *w, guint sel_id);
++
++static void device_data_offer(void *data, struct ext_data_control_device_v1 *device,
++                              struct ext_data_control_offer_v1 *id)
++{
++    GPtrArray *mimes = g_ptr_array_new_with_free_func(g_free);
++    ext_data_control_offer_v1_add_listener(id, &offer_listener, mimes);
++}
++
++/* Build a SPICE-type array from an offer's mimes, in mime2type order, with
++ * each type appearing at most once. Returns NULL if no type matches. */
++static GArray *types_from_mimes(GPtrArray *mimes)
++{
++    gboolean seen[VD_AGENT_CLIPBOARD_IMAGE_JPG + 1] = { 0 };
++    GArray *types = g_array_new(FALSE, FALSE, sizeof(guint32));
++
++    for (gsize i = 0; i < G_N_ELEMENTS(mime2type); i++) {
++        guint32 t = mime2type[i].type;
++        if (t > VD_AGENT_CLIPBOARD_IMAGE_JPG || seen[t])
++            continue;
++        for (guint j = 0; j < mimes->len; j++) {
++            if (!g_ascii_strcasecmp(g_ptr_array_index(mimes, j), mime2type[i].mime)) {
++                g_array_append_val(types, t);
++                seen[t] = TRUE;
++                break;
++            }
++        }
++    }
++    if (types->len == 0) {
++        g_array_free(types, TRUE);
++        return NULL;
++    }
++    return types;
++}
++
++/* Body shared between device_selection and device_primary_selection. */
++static void handle_offer(VDAgentWayland *w, guint sel_id,
++                         struct ext_data_control_offer_v1 *id)
++{
++    GPtrArray *mimes;
++    GArray *types;
++
++    if (w->current_offer[sel_id] != NULL && w->current_offer[sel_id] != id) {
++        offer_destroy_with_mimes(w->current_offer[sel_id]);
++        w->current_offer[sel_id] = NULL;
++    }
++    if (id == NULL)
++        return;
++
++    if (w->we_own[sel_id]) {
++        /* Echo of our own set_selection — discard, don't bounce a GRAB. */
++        offer_destroy_with_mimes(id);
++        return;
++    }
++
++    w->current_offer[sel_id] = id;
++    mimes = offer_mimes(id);
++    types = (mimes && mimes->len) ? types_from_mimes(mimes) : NULL;
++    if (types == NULL) {
++        if (w->debug)
++            syslog(LOG_DEBUG, "wayland: guest %s has no supported mime",
++                   sel_name(sel_id));
++        return;
++    }
++    syslog(LOG_INFO, "wayland: guest %s changed, GRAB %u type(s)",
++           sel_name(sel_id), types->len);
++    udscs_write(w->vdagentd, VDAGENTD_CLIPBOARD_GRAB, sel_id, 0,
++                (uint8_t *)types->data, types->len * sizeof(guint32));
++    g_array_free(types, TRUE);
++}
++
++static void device_selection(void *data, struct ext_data_control_device_v1 *device,
++                             struct ext_data_control_offer_v1 *id)
++{
++    handle_offer(data, VD_AGENT_CLIPBOARD_SELECTION_CLIPBOARD, id);
++}
++
++static void device_primary_selection(void *data,
++                                     struct ext_data_control_device_v1 *device,
++                                     struct ext_data_control_offer_v1 *id)
++{
++    handle_offer(data, VD_AGENT_CLIPBOARD_SELECTION_PRIMARY, id);
++}
++
++static void device_finished(void *data, struct ext_data_control_device_v1 *device)
++{
++    VDAgentWayland *w = data;
++
++    syslog(LOG_WARNING, "wayland: data control device finished");
++    for (guint s = 0; s < VDAGENT_WAYLAND_N_SELECTIONS; s++) {
++        close_pending_send(w, s);
++        g_clear_pointer(&w->current_offer[s],  offer_destroy_with_mimes);
++        g_clear_pointer(&w->current_source[s], ext_data_control_source_v1_destroy);
++        w->we_own[s] = FALSE;
++    }
++    if (w->device == device) {
++        ext_data_control_device_v1_destroy(w->device);
++        w->device = NULL;
++    }
++}
++
++static const struct ext_data_control_device_v1_listener device_listener = {
++    .data_offer        = device_data_offer,
++    .selection         = device_selection,
++    .finished          = device_finished,
++    .primary_selection = device_primary_selection,
++};
++
++/* data-control source ------------------------------------------------- */
++
++static void close_pending_send(VDAgentWayland *w, guint sel_id)
++{
++    if (w->pending_send_fd[sel_id] >= 0) {
++        close(w->pending_send_fd[sel_id]);
++        w->pending_send_fd[sel_id] = -1;
++    }
++}
++
++static void release_source(VDAgentWayland *w, guint sel_id)
++{
++    close_pending_send(w, sel_id);
++    w->we_own[sel_id] = FALSE;
++    g_clear_pointer(&w->current_source[sel_id],
++                    ext_data_control_source_v1_destroy);
++}
++
++/* Locate which selection a source pointer belongs to, or
++ * VDAGENT_WAYLAND_N_SELECTIONS if none — happens when source.send arrives
++ * after we've already torn the source down. */
++static guint sel_for_source(VDAgentWayland *w,
++                            struct ext_data_control_source_v1 *source)
++{
++    for (guint s = 0; s < VDAGENT_WAYLAND_N_SELECTIONS; s++)
++        if (w->current_source[s] == source)
++            return s;
++    return VDAGENT_WAYLAND_N_SELECTIONS;
++}
++
++static void source_send(void *data, struct ext_data_control_source_v1 *source,
++                        const char *mime_type, int32_t fd)
++{
++    VDAgentWayland *w = data;
++    guint sel_id = sel_for_source(w, source);
++    guint32 type;
++
++    if (sel_id >= VDAGENT_WAYLAND_N_SELECTIONS) {
++        close(fd);
++        return;
++    }
++    type = spice_type_for_mime(mime_type);
++    if (type == VD_AGENT_CLIPBOARD_NONE) {
++        if (w->debug)
++            syslog(LOG_DEBUG, "wayland: source.send for unknown mime %s", mime_type);
++        close(fd);
++        return;
++    }
++    if (w->pending_send_fd[sel_id] >= 0) {
++        if (w->debug)
++            syslog(LOG_DEBUG,
++                   "wayland: source.send for %s while previous is pending, dropping",
++                   mime_type);
++        close(fd);
++        return;
++    }
++
++    w->pending_send_fd[sel_id]   = fd;
++    w->pending_send_type[sel_id] = type;
++    if (w->debug)
++        syslog(LOG_DEBUG, "wayland: %s source.send %s -> REQUEST type=%u",
++               sel_name(sel_id), mime_type, type);
++    udscs_write(w->vdagentd, VDAGENTD_CLIPBOARD_REQUEST, sel_id, type, NULL, 0);
++}
++
++static void source_cancelled(void *data, struct ext_data_control_source_v1 *source)
++{
++    VDAgentWayland *w = data;
++    guint sel_id = sel_for_source(w, source);
++
++    if (sel_id >= VDAGENT_WAYLAND_N_SELECTIONS)
++        return;
++    if (w->debug)
++        syslog(LOG_DEBUG, "wayland: %s source cancelled", sel_name(sel_id));
++    release_source(w, sel_id);
++}
++
++static const struct ext_data_control_source_v1_listener source_listener = {
++    .send      = source_send,
++    .cancelled = source_cancelled,
++};
++
++/* internal init / teardown -------------------------------------------- */
++
++gboolean vdagent_wayland_clipboard_attach(VDAgentWayland *w)
++{
++    w->device = ext_data_control_manager_v1_get_data_device(w->data_control, w->seat);
++    if (w->device == NULL) {
++        syslog(LOG_ERR, "wayland: failed to obtain data-control device");
++        return FALSE;
++    }
++    ext_data_control_device_v1_add_listener(w->device, &device_listener, w);
++    return TRUE;
++}
++
++void vdagent_wayland_clipboard_release_state(VDAgentWayland *w)
++{
++    for (guint s = 0; s < VDAGENT_WAYLAND_N_SELECTIONS; s++) {
++        close_pending_send(w, s);
++        g_clear_pointer(&w->current_offer[s],  offer_destroy_with_mimes);
++        g_clear_pointer(&w->current_source[s], ext_data_control_source_v1_destroy);
++    }
++    g_clear_pointer(&w->device, ext_data_control_device_v1_destroy);
++}
++
++/* Public API: clipboard ----------------------------------------------- */
++
++static void install_selection(VDAgentWayland *w, guint sel_id,
++                              struct ext_data_control_source_v1 *source)
++{
++    if (sel_id == VD_AGENT_CLIPBOARD_SELECTION_PRIMARY)
++        ext_data_control_device_v1_set_primary_selection(w->device, source);
++    else
++        ext_data_control_device_v1_set_selection(w->device, source);
++}
++
++void vdagent_wayland_clipboard_grab(VDAgentWayland *w, guint sel_id,
++                                    guint32 *types, guint n_types)
++{
++    guint advertised = 0;
++
++    if (sel_id >= VDAGENT_WAYLAND_N_SELECTIONS)
++        return;
++    if (w->data_control == NULL || w->device == NULL)
++        return;
++    if (n_types > MAX_CLIPBOARD_TYPES) {
++        syslog(LOG_WARNING, "wayland: host GRAB with %u types, capping at %u",
++               n_types, MAX_CLIPBOARD_TYPES);
++        n_types = MAX_CLIPBOARD_TYPES;
++    }
++
++    release_source(w, sel_id);
++
++    w->current_source[sel_id] =
++        ext_data_control_manager_v1_create_data_source(w->data_control);
++    if (w->current_source[sel_id] == NULL) {
++        syslog(LOG_ERR, "wayland: create_data_source failed");
++        return;
++    }
++    ext_data_control_source_v1_add_listener(w->current_source[sel_id],
++                                            &source_listener, w);
++
++    for (guint i = 0; i < n_types; i++) {
++        for (gsize j = 0; j < G_N_ELEMENTS(mime2type); j++) {
++            if (mime2type[j].type == types[i]) {
++                ext_data_control_source_v1_offer(w->current_source[sel_id],
++                                                 mime2type[j].mime);
++                advertised++;
++            }
++        }
++    }
++    if (advertised == 0) {
++        if (w->debug)
++            syslog(LOG_DEBUG,
++                   "wayland: host %s GRAB with no supported types, dropping",
++                   sel_name(sel_id));
++        g_clear_pointer(&w->current_source[sel_id],
++                        ext_data_control_source_v1_destroy);
++        return;
++    }
++
++    w->we_own[sel_id] = TRUE;
++    install_selection(w, sel_id, w->current_source[sel_id]);
++    wl_display_flush(w->display);
++    syslog(LOG_INFO, "wayland: host %s GRAB, offering %u mime(s) for %u type(s)",
++           sel_name(sel_id), advertised, n_types);
++}
++
++void vdagent_wayland_clipboard_data(VDAgentWayland *w, guint sel_id, guint type,
++                                    guchar *data, guint size)
++{
++    ssize_t written = 0;
++
++    if (sel_id >= VDAGENT_WAYLAND_N_SELECTIONS || w->pending_send_fd[sel_id] < 0)
++        return; /* stray reply */
++    if (type != w->pending_send_type[sel_id]) {
++        if (w->debug)
++            syslog(LOG_DEBUG,
++                   "wayland: %s DATA type=%u doesn't match pending type=%u",
++                   sel_name(sel_id), type, w->pending_send_type[sel_id]);
++        close_pending_send(w, sel_id);
++        return;
++    }
++    if (size > MAX_CLIPBOARD_BYTES) {
++        syslog(LOG_WARNING, "wayland: DATA payload %u exceeds %u byte cap, dropping",
++               size, MAX_CLIPBOARD_BYTES);
++        close_pending_send(w, sel_id);
++        return;
++    }
++
++    if (type != VD_AGENT_CLIPBOARD_NONE && size > 0) {
++        while (written < (ssize_t)size) {
++            ssize_t n = write(w->pending_send_fd[sel_id],
++                              data + written, size - written);
++            if (n < 0) {
++                if (errno == EINTR)
++                    continue;
++                syslog(LOG_ERR, "wayland: write to send fd: %s", strerror(errno));
++                break;
++            }
++            written += n;
++        }
++        if (w->debug)
++            syslog(LOG_DEBUG, "wayland: served %zd/%u bytes for %s type=%u",
++                   written, size, sel_name(sel_id), type);
++    }
++    close_pending_send(w, sel_id);
++}
++
++void vdagent_wayland_clipboard_release(VDAgentWayland *w, guint sel_id)
++{
++    if (sel_id >= VDAGENT_WAYLAND_N_SELECTIONS || w->current_source[sel_id] == NULL)
++        return;
++    if (w->device)
++        install_selection(w, sel_id, NULL);
++    release_source(w, sel_id);
++    if (w->display)
++        wl_display_flush(w->display);
++}
++
++/* Drain `offer` for `mime` via a fresh pipe. */
++static GBytes *receive_offer(VDAgentWayland *w,
++                             struct ext_data_control_offer_v1 *offer,
++                             const gchar *mime)
++{
++    int fds[2];
++    GByteArray *buf;
++    guint8 chunk[4096];
++    ssize_t n;
++    GError *err = NULL;
++
++    if (!g_unix_open_pipe(fds, FD_CLOEXEC, &err)) {
++        syslog(LOG_ERR, "wayland: pipe(): %s", err->message);
++        g_error_free(err);
++        return NULL;
++    }
++
++    ext_data_control_offer_v1_receive(offer, mime, fds[1]);
++    /* Push the request out and drop our write end so read() sees EOF. */
++    wl_display_flush(w->display);
++    close(fds[1]);
++
++    buf = g_byte_array_new();
++    while ((n = read(fds[0], chunk, sizeof(chunk))) > 0) {
++        if (buf->len + (gsize)n > MAX_CLIPBOARD_BYTES) {
++            syslog(LOG_WARNING, "wayland: offer for %s exceeds %u byte cap, truncating",
++                   mime, MAX_CLIPBOARD_BYTES);
++            break;
++        }
++        g_byte_array_append(buf, chunk, n);
++    }
++    close(fds[0]);
++
++    if (n < 0) {
++        syslog(LOG_ERR, "wayland: read from offer pipe: %s", strerror(errno));
++        g_byte_array_free(buf, TRUE);
++        return NULL;
++    }
++    if (buf->len == 0) {
++        g_byte_array_free(buf, TRUE);
++        return NULL;
++    }
++    return g_byte_array_free_to_bytes(buf);
++}
++
++void vdagent_wayland_clipboard_request(VDAgentWayland *w, guint sel_id, guint type)
++{
++    struct ext_data_control_offer_v1 *offer;
++    const gchar *mime;
++    GPtrArray *mimes;
++    GBytes *bytes;
++
++    if (sel_id >= VDAGENT_WAYLAND_N_SELECTIONS)
++        goto reply_none;
++    offer = w->current_offer[sel_id];
++    if (offer == NULL)
++        goto reply_none;
++
++    mimes = offer_mimes(offer);
++    mime = mimes ? canonical_mime_for_type(type, mimes) : NULL;
++    if (mime == NULL) {
++        if (w->debug)
++            syslog(LOG_DEBUG,
++                   "wayland: REQUEST type=%u not advertised by current %s offer",
++                   type, sel_name(sel_id));
++        goto reply_none;
++    }
++
++    bytes = receive_offer(w, offer, mime);
++    if (bytes == NULL)
++        goto reply_none;
++
++    gsize len;
++    const guint8 *data = g_bytes_get_data(bytes, &len);
++    if (w->debug)
++        syslog(LOG_DEBUG, "wayland: serving %zu bytes for %s type=%u (%s)",
++               len, sel_name(sel_id), type, mime);
++    udscs_write(w->vdagentd, VDAGENTD_CLIPBOARD_DATA, sel_id, type,
++                data, (uint32_t)len);
++    g_bytes_unref(bytes);
++    return;
++
++reply_none:
++    udscs_write(w->vdagentd, VDAGENTD_CLIPBOARD_DATA, sel_id,
++                VD_AGENT_CLIPBOARD_NONE, NULL, 0);
++}
++
++#else /* !WITH_WAYLAND */
++
++#include "wayland.h"
++
++void vdagent_wayland_clipboard_grab(VDAgentWayland *w, guint sel_id,
++                                    guint32 *types, guint n_types)
++{
++}
++
++void vdagent_wayland_clipboard_request(VDAgentWayland *w, guint sel_id, guint type)
++{
++}
++
++void vdagent_wayland_clipboard_data(VDAgentWayland *w, guint sel_id, guint type,
++                                    guchar *data, guint size)
++{
++}
++
++void vdagent_wayland_clipboard_release(VDAgentWayland *w, guint sel_id)
++{
++}
++
++#endif /* WITH_WAYLAND */
+diff --git a/src/vdagent/wayland/display.c b/src/vdagent/wayland/display.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..aac1acbfcabf8e586c5f025aa78416aa80a8d6d9
+--- /dev/null
++++ b/src/vdagent/wayland/display.c
+@@ -0,0 +1,169 @@
++/*  display.c - Wayland output tracking and host->guest resize
++
++    Copyright 2026 Viacheslav Dermichev
++
++    This program is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++#include <config.h>
++
++#ifdef WITH_WAYLAND
++
++#include <stdint.h>
++#include <syslog.h>
++
++#include <glib.h>
++#include <spice/vd_agent.h>
++#include <wayland-client.h>
++
++#include "internal.h"
++#include "vdagentd-proto.h"
++
++static void send_resolution(VDAgentWayland *w)
++{
++    struct vdagentd_guest_xorg_resolution res = {
++        .width = w->width, .height = w->height,
++        .x = 0, .y = 0, .display_id = 0,
++    };
++    udscs_write(w->vdagentd, VDAGENTD_GUEST_XORG_RESOLUTION,
++                w->width, w->height, (uint8_t *)&res, sizeof(res));
++    if (w->debug)
++        syslog(LOG_DEBUG, "wayland: reported resolution %dx%d",
++               w->width, w->height);
++}
++
++static void output_mode(void *data, struct wl_output *output, uint32_t flags,
++                        int32_t width, int32_t height, int32_t refresh)
++{
++    VDAgentWayland *w = data;
++
++    if (!(flags & WL_OUTPUT_MODE_CURRENT))
++        return;
++    w->pending_width  = width;
++    w->pending_height = height;
++}
++
++static void output_done(void *data, struct wl_output *output)
++{
++    VDAgentWayland *w = data;
++
++    if (w->pending_width <= 0 || w->pending_height <= 0)
++        return;
++    if (w->pending_width == w->width && w->pending_height == w->height)
++        return;
++
++    w->width  = w->pending_width;
++    w->height = w->pending_height;
++    syslog(LOG_INFO, "wayland: output is now %dx%d", w->width, w->height);
++    send_resolution(w);
++}
++
++static void output_geometry(void *d, struct wl_output *o, int32_t x, int32_t y,
++                            int32_t pw, int32_t ph, int32_t sub,
++                            const char *make, const char *model,
++                            int32_t transform)
++{
++}
++
++static void output_scale(void *d, struct wl_output *o, int32_t f)
++{
++}
++
++static void output_name(void *d, struct wl_output *o, const char *n)
++{
++}
++
++static void output_description(void *d, struct wl_output *o, const char *desc)
++{
++}
++
++static const struct wl_output_listener output_listener = {
++    .geometry    = output_geometry,
++    .mode        = output_mode,
++    .done        = output_done,
++    .scale       = output_scale,
++    .name        = output_name,
++    .description = output_description,
++};
++
++void vdagent_wayland_display_attach(VDAgentWayland *w)
++{
++    if (w->output != NULL)
++        wl_output_add_listener(w->output, &output_listener, w);
++}
++
++/* Monitors config ----------------------------------------------------- */
++
++static gboolean spawn_compositor_cmd(const gchar *prog, gchar **argv)
++{
++    GError *err = NULL;
++    if (g_spawn_async(NULL, argv, NULL,
++                      G_SPAWN_SEARCH_PATH | G_SPAWN_STDOUT_TO_DEV_NULL
++                          | G_SPAWN_STDERR_TO_DEV_NULL,
++                      NULL, NULL, NULL, &err))
++        return TRUE;
++    syslog(LOG_WARNING, "wayland: failed to spawn %s: %s", prog, err->message);
++    g_error_free(err);
++    return FALSE;
++}
++
++void vdagent_wayland_set_monitor_config(VDAgentWayland *w,
++                                        VDAgentMonitorsConfig *mon_config)
++{
++    uint32_t width, height;
++
++    if (mon_config == NULL || mon_config->num_of_monitors == 0)
++        return;
++
++    /* Apply only the first monitor. SPICE display index → compositor output
++     * name (Hyprland's "DP-1", sway's "HEADLESS-1", ...) is compositor-specific
++     * and deferred until someone has a multi-head SPICE guest to test against. */
++    width  = mon_config->monitors[0].width;
++    height = mon_config->monitors[0].height;
++    if (width == 0 || height == 0)
++        return;
++
++    syslog(LOG_INFO, "wayland: host requests resize to %ux%u", width, height);
++
++    if (g_getenv("HYPRLAND_INSTANCE_SIGNATURE") != NULL) {
++        gchar *spec = g_strdup_printf(",%ux%u@60,0x0,1", width, height);
++        gchar *argv[] = { "hyprctl", "keyword", "monitor", spec, NULL };
++        gboolean ok = spawn_compositor_cmd("hyprctl", argv);
++        g_free(spec);
++        if (ok)
++            return;
++    }
++    if (g_getenv("SWAYSOCK") != NULL) {
++        gchar *mode = g_strdup_printf("%ux%u", width, height);
++        gchar *argv[] = { "swaymsg", "output", "*", "mode", mode, NULL };
++        gboolean ok = spawn_compositor_cmd("swaymsg", argv);
++        g_free(mode);
++        if (ok)
++            return;
++    }
++    syslog(LOG_DEBUG, "wayland: MONITORS_CONFIG %ux%u — no supported compositor backend",
++           width, height);
++}
++
++#else /* !WITH_WAYLAND */
++
++#include <spice/vd_agent.h>
++
++#include "wayland.h"
++
++void vdagent_wayland_set_monitor_config(VDAgentWayland *w,
++                                        VDAgentMonitorsConfig *mon_config)
++{
++}
++
++#endif /* WITH_WAYLAND */
+diff --git a/src/vdagent/wayland/internal.h b/src/vdagent/wayland/internal.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..1e0b2dbcac09b77c1eea2c3b2b62eae9910e86d2
+--- /dev/null
++++ b/src/vdagent/wayland/internal.h
+@@ -0,0 +1,80 @@
++/*  internal.h - shared private declarations for the Wayland backend
++
++    Copyright 2026 Viacheslav Dermichev
++
++    This program is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++
++#ifndef __VDAGENT_WAYLAND_INTERNAL_H
++#define __VDAGENT_WAYLAND_INTERNAL_H
++
++#include <stdint.h>
++#include <syslog.h>
++
++#include <glib.h>
++#include <wayland-client.h>
++
++#include "ext-data-control-v1-protocol.h"
++#include "udscs.h"
++#include "wayland.h"
++
++struct VDAgentWayland {
++    UdscsConnection *vdagentd;
++    int              debug;
++
++    struct wl_display    *display;
++    struct wl_registry   *registry;
++    struct wl_seat       *seat;
++    struct wl_output     *output;
++    struct ext_data_control_manager_v1 *data_control;
++    struct ext_data_control_device_v1  *device;
++
++    /* Per-selection state, indexed by VD_AGENT_CLIPBOARD_SELECTION_*.
++     * [0] = CLIPBOARD, [1] = PRIMARY. SECONDARY has no wayland counterpart. */
++#define VDAGENT_WAYLAND_N_SELECTIONS 2
++
++    /* Most recently committed guest-side offer; mime list lives in its
++     * wl_proxy user_data. NULL when that selection is empty. */
++    struct ext_data_control_offer_v1  *current_offer[VDAGENT_WAYLAND_N_SELECTIONS];
++
++    /* Source we install on the device to expose host-owned data to guest
++     * applications. NULL when we don't own that selection. */
++    struct ext_data_control_source_v1 *current_source[VDAGENT_WAYLAND_N_SELECTIONS];
++
++    /* TRUE while our source is the active selection. Discards the selection
++     * event the compositor echoes back when we install our own source. */
++    gboolean we_own[VDAGENT_WAYLAND_N_SELECTIONS];
++
++    /* In-flight paste: source.send stashes the write-end fd here; the DATA
++     * reply later writes the bytes and closes it. -1 = idle. */
++    int     pending_send_fd[VDAGENT_WAYLAND_N_SELECTIONS];
++    guint32 pending_send_type[VDAGENT_WAYLAND_N_SELECTIONS];
++
++    /* Tracked output mode. `width`/`height` are what we last reported;
++     * `pending_*` are staged from wl_output Mode events and committed on Done. */
++    int32_t width, height;
++    int32_t pending_width, pending_height;
++
++    GIOChannel *channel;
++    guint       watch_id;
++};
++
++/* display.c ------------------------------------------------------------ */
++void vdagent_wayland_display_attach(VDAgentWayland *w);
++
++/* clipboard.c ---------------------------------------------------------- */
++gboolean vdagent_wayland_clipboard_attach(VDAgentWayland *w);
++void     vdagent_wayland_clipboard_release_state(VDAgentWayland *w);
++
++#endif /* __VDAGENT_WAYLAND_INTERNAL_H */
+diff --git a/src/vdagent/wayland/wayland.c b/src/vdagent/wayland/wayland.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..fda16a8ef930d64ac767e563ad1429cd203bdb56
+--- /dev/null
++++ b/src/vdagent/wayland/wayland.c
+@@ -0,0 +1,196 @@
++/*  wayland.c - Wayland backend lifecycle and event loop integration
++
++    Copyright 2026 Viacheslav Dermichev
++
++    This program is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++#include <config.h>
++
++#ifdef WITH_WAYLAND
++
++#include <errno.h>
++#include <stdlib.h>
++#include <string.h>
++#include <syslog.h>
++
++#include <glib.h>
++#include <wayland-client.h>
++
++#include "internal.h"
++
++static void registry_global(void *data, struct wl_registry *registry,
++                            uint32_t name, const char *interface, uint32_t version)
++{
++    VDAgentWayland *w = data;
++
++    if (strcmp(interface, wl_seat_interface.name) == 0 && w->seat == NULL) {
++        w->seat = wl_registry_bind(registry, name, &wl_seat_interface, MIN(version, 1));
++    } else if (strcmp(interface, wl_output_interface.name) == 0 && w->output == NULL) {
++        w->output = wl_registry_bind(registry, name, &wl_output_interface, MIN(version, 2));
++    } else if (strcmp(interface, ext_data_control_manager_v1_interface.name) == 0
++               && w->data_control == NULL) {
++        w->data_control = wl_registry_bind(registry, name,
++                                           &ext_data_control_manager_v1_interface,
++                                           MIN(version, 1));
++    }
++}
++
++static void registry_global_remove(void *d, struct wl_registry *r, uint32_t n)
++{
++}
++
++static const struct wl_registry_listener registry_listener = {
++    .global        = registry_global,
++    .global_remove = registry_global_remove,
++};
++
++static gboolean wayland_io_cb(GIOChannel *source, GIOCondition cond, gpointer data)
++{
++    VDAgentWayland *w = data;
++
++    if (cond & (G_IO_ERR | G_IO_HUP)) {
++        syslog(LOG_ERR, "wayland: display fd error/hup, terminating");
++        return G_SOURCE_REMOVE;
++    }
++    /* Standard wayland-client read pattern: drain anything queued, read the
++     * fd, dispatch, flush any requests we generated. */
++    while (wl_display_prepare_read(w->display) != 0) {
++        if (wl_display_dispatch_pending(w->display) < 0)
++            goto err;
++    }
++    if (wl_display_read_events(w->display) < 0)
++        goto err;
++    if (wl_display_dispatch_pending(w->display) < 0)
++        goto err;
++    wl_display_flush(w->display);
++    return G_SOURCE_CONTINUE;
++
++err:
++    syslog(LOG_ERR, "wayland: dispatch failed: %s", strerror(errno));
++    return G_SOURCE_REMOVE;
++}
++
++static void cleanup_resources(VDAgentWayland *w)
++{
++    if (w->watch_id) {
++        g_source_remove(w->watch_id);
++        w->watch_id = 0;
++    }
++    g_clear_pointer(&w->channel, g_io_channel_unref);
++    vdagent_wayland_clipboard_release_state(w);
++    g_clear_pointer(&w->data_control, ext_data_control_manager_v1_destroy);
++    g_clear_pointer(&w->seat,         wl_seat_destroy);
++    g_clear_pointer(&w->output,       wl_output_destroy);
++    g_clear_pointer(&w->registry,     wl_registry_destroy);
++    g_clear_pointer(&w->display,      wl_display_disconnect);
++}
++
++gboolean vdagent_wayland_session_active(void)
++{
++    const char *env = getenv("WAYLAND_DISPLAY");
++    return env != NULL && env[0] != '\0';
++}
++
++VDAgentWayland *vdagent_wayland_create(UdscsConnection *vdagentd, int debug)
++{
++    VDAgentWayland *w = g_new0(VDAgentWayland, 1);
++    w->vdagentd = vdagentd;
++    w->debug = debug;
++    for (guint s = 0; s < VDAGENT_WAYLAND_N_SELECTIONS; s++)
++        w->pending_send_fd[s] = -1;
++
++    w->display = wl_display_connect(NULL);
++    if (w->display == NULL) {
++        syslog(LOG_ERR, "wayland: failed to connect to display");
++        g_free(w);
++        return NULL;
++    }
++
++    w->registry = wl_display_get_registry(w->display);
++    wl_registry_add_listener(w->registry, &registry_listener, w);
++
++    /* First roundtrip: registry advertisements arrive. */
++    if (wl_display_roundtrip(w->display) < 0) {
++        syslog(LOG_ERR, "wayland: initial roundtrip failed");
++        goto err;
++    }
++    if (w->data_control == NULL) {
++        syslog(LOG_ERR, "wayland: compositor does not advertise %s",
++               ext_data_control_manager_v1_interface.name);
++        goto err;
++    }
++    if (w->seat == NULL) {
++        syslog(LOG_ERR, "wayland: compositor advertised no wl_seat");
++        goto err;
++    }
++    if (w->output == NULL)
++        syslog(LOG_WARNING, "wayland: compositor advertised no wl_output");
++
++    if (!vdagent_wayland_clipboard_attach(w))
++        goto err;
++    vdagent_wayland_display_attach(w);
++
++    /* Second roundtrip: wl_output Mode/Done and any current selection arrive. */
++    if (wl_display_roundtrip(w->display) < 0) {
++        syslog(LOG_ERR, "wayland: post-bind roundtrip failed");
++        goto err;
++    }
++
++    /* Hand the display fd to the GMainLoop. */
++    w->channel = g_io_channel_unix_new(wl_display_get_fd(w->display));
++    if (w->channel == NULL) {
++        syslog(LOG_ERR, "wayland: failed to create GIOChannel");
++        goto err;
++    }
++    g_io_channel_set_encoding(w->channel, NULL, NULL);
++    w->watch_id = g_io_add_watch(w->channel, G_IO_IN | G_IO_ERR | G_IO_HUP,
++                                 wayland_io_cb, w);
++    wl_display_flush(w->display);
++
++    syslog(LOG_INFO, "wayland: backend ready");
++    return w;
++
++err:
++    cleanup_resources(w);
++    g_free(w);
++    return NULL;
++}
++
++void vdagent_wayland_destroy(VDAgentWayland *w)
++{
++    if (w == NULL)
++        return;
++    cleanup_resources(w);
++    g_free(w);
++}
++
++#else /* !WITH_WAYLAND */
++
++#include "wayland.h"
++
++gboolean vdagent_wayland_session_active(void)
++{
++    return FALSE;
++}
++
++VDAgentWayland *vdagent_wayland_create(UdscsConnection *vdagentd, int debug)
++{
++    return NULL;
++}
++
++void vdagent_wayland_destroy(VDAgentWayland *w)
++{
++}
++
++#endif /* WITH_WAYLAND */
+diff --git a/src/vdagent/wayland/wayland.h b/src/vdagent/wayland/wayland.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..725e5c3c7db44ff75e150c943e4216c5e7c392c0
+--- /dev/null
++++ b/src/vdagent/wayland/wayland.h
+@@ -0,0 +1,45 @@
++/*  wayland.h - native Wayland backend header
++
++    Copyright 2026 Viacheslav Dermichev
++
++    This program is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++
++#ifndef __VDAGENT_WAYLAND_H
++#define __VDAGENT_WAYLAND_H
++
++#include <glib.h>
++#include <spice/vd_agent.h>
++
++#include "udscs.h"
++
++typedef struct VDAgentWayland VDAgentWayland;
++
++/* Returns TRUE if a Wayland session is reachable (WAYLAND_DISPLAY set and a
++ * compositor is listening). Always FALSE when built --with-wayland=no. */
++gboolean vdagent_wayland_session_active(void);
++
++VDAgentWayland *vdagent_wayland_create(UdscsConnection *vdagentd, int debug);
++void vdagent_wayland_destroy(VDAgentWayland *w);
++
++void vdagent_wayland_clipboard_grab(VDAgentWayland *w, guint sel_id,
++                                    guint32 *types, guint n_types);
++void vdagent_wayland_clipboard_request(VDAgentWayland *w, guint sel_id, guint type);
++void vdagent_wayland_clipboard_data(VDAgentWayland *w, guint sel_id, guint type,
++                                    guchar *data, guint size);
++void vdagent_wayland_clipboard_release(VDAgentWayland *w, guint sel_id);
++void vdagent_wayland_set_monitor_config(VDAgentWayland *w,
++                                        VDAgentMonitorsConfig *mon_config);
++
++#endif /* __VDAGENT_WAYLAND_H */
