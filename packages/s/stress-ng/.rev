@@ -1222,4 +1222,12 @@
   BuildRequires to pkgconfig() providers</comment>
     <requestid>1372284</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>7fdb3382e62c73312c82ebf6b0a07e21</srcmd5>
+    <version>0.22.01</version>
+    <time>1792609317</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386806</requestid>
+  </revision>
 </revisionlist>

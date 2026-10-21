@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 16 13:57:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.22.01:
+  * New stressor: bpf, a BPF code generator exercising BPF
+    validation and JIT
+  * Use taskset settings for CPU affinity defaults
+  * Perform cache flushing and KSM scanning at a low rate
+  * Fix umount child pid check and yield bogo-ops in polling
+    loop
+  * Fix af-alg AEAD on pre-4.9 kernels and fp-subnormal
+    computation on x86
+
+-------------------------------------------------------------------
 Thu Aug 20 10:09:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.22.00:
