@@ -1,0 +1,46 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: [PATCH] Build null audio backend and sources in RelWithDebInfo for tests
+
+Upstream compiles the null audio backend and null sound/music sources
+only in Debug builds, but testing/test_sound_tracker.c references them
+unconditionally, so openomf_test_main fails to link in any other
+build type (e.g. the RelWithDebInfo build rpmbuild uses).
+
+Extend the generator expressions to RelWithDebInfo so the unit
+tests link and run in distro builds.
+
+--- a/CMakeLists.txt	2026-07-05 21:29:10.000000000 +0200
++++ b/CMakeLists.txt	2026-10-18 11:40:32.158212370 +0200
+@@ -150,10 +150,10 @@
+ list(FILTER OPENOMF_SRC EXCLUDE REGEX "^src/audio/backends/.*/")
+ # Enable "NULL" player in debug builds, for automated testing
+ list(APPEND OPENOMF_SRC
+-    "$<$<CONFIG:Debug>:src/audio/backends/null/null_backend.c>"
+-    "$<$<CONFIG:Debug>:src/audio/backends/null/null_backend.h>"
++    "$<$<CONFIG:Debug,RelWithDebInfo>:src/audio/backends/null/null_backend.c>"
++    "$<$<CONFIG:Debug,RelWithDebInfo>:src/audio/backends/null/null_backend.h>"
+ )
+-list(APPEND AUDIO_C_DEFINES "$<$<CONFIG:Debug>:ENABLE_NULL_AUDIO_BACKEND>")
++list(APPEND AUDIO_C_DEFINES "$<$<CONFIG:Debug,RelWithDebInfo>:ENABLE_NULL_AUDIO_BACKEND>")
+ # and enable select render plugins
+ set(ENABLED_AUDIO_BACKEND_PLUGINS sdl)
+ foreach (PLUGIN ${ENABLED_AUDIO_BACKEND_PLUGINS})
+@@ -177,13 +177,13 @@
+ list(FILTER OPENOMF_SRC EXCLUDE REGEX "(sound|music)_sources/null_")
+ # Enable null sources in debug builds, for automated testing
+ list(APPEND OPENOMF_SRC
+-    "$<$<CONFIG:Debug>:src/audio/sound_sources/null_sound_source.c>"
+-    "$<$<CONFIG:Debug>:src/audio/sound_sources/null_sound_source.h>"
+-    "$<$<CONFIG:Debug>:src/audio/music_sources/null_music_source.c>"
+-    "$<$<CONFIG:Debug>:src/audio/music_sources/null_music_source.h>"
++    "$<$<CONFIG:Debug,RelWithDebInfo>:src/audio/sound_sources/null_sound_source.c>"
++    "$<$<CONFIG:Debug,RelWithDebInfo>:src/audio/sound_sources/null_sound_source.h>"
++    "$<$<CONFIG:Debug,RelWithDebInfo>:src/audio/music_sources/null_music_source.c>"
++    "$<$<CONFIG:Debug,RelWithDebInfo>:src/audio/music_sources/null_music_source.h>"
+ )
+ set_source_files_properties("src/game/audio/audio_sources.c"
+-    PROPERTIES COMPILE_DEFINITIONS "$<$<CONFIG:Debug>:ENABLE_NULL_AUDIO_SOURCES>")
++    PROPERTIES COMPILE_DEFINITIONS "$<$<CONFIG:Debug,RelWithDebInfo>:ENABLE_NULL_AUDIO_SOURCES>")
+ 
+ # Remove all render plugin source code from OPENOMF_SRC
+ list(FILTER OPENOMF_SRC EXCLUDE REGEX "^src/video/renderers/.*/")

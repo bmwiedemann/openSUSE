@@ -79,4 +79,35 @@
     <comment>1</comment>
     <requestid>1375455</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>04468b59695644206f0aec21b29a294d</srcmd5>
+    <version>0.8.6</version>
+    <time>1792609348</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.6
+  * Add null-audio-relwithdebinfo.patch (PATCH-FIX-OPENSUSE): build
+    the null audio backend and sources in RelWithDebInfo so the unit
+    tests link (upstream enables them only in Debug builds).
+  * Mod support: load mods from zip files in mod directories,
+    overriding sprites, backgrounds, animations and portraits
+    (disabled during netplay); music mods with in-game source
+    selection and OGG loop tags honored
+  * Audio subsystem overhaul: new sound-effect source system and
+    corrected loudness formula
+  * 16-bit rendering surfaces, optional extended 1024-color palette,
+    fullscreen scaling filters and new on-screen display subsystem
+  * Gameplay fixes: frozen HARs can no longer block, stun and throw
+    mechanics fixes, three-tick jump delay, round crossfades
+  * Tournament mode: new winnings calculations, AI pilots spend
+    money, HAR-specific victory text
+  * Lobby and netplay UX and connection fixes, GUI and mechlab fixes
+  * New path handling via OPENOMF_* variables, XDG dirs and
+    SDL_GetPrefPath (see upstream PATHS.md)
+  * Install layout change: game data moved to
+    /usr/share/games/openomf/resources/; packaging follows the new
+    layout and drops the unusable Flatpak desktop file
+  * Drop Group tag, use pkgconfig-style BuildRequires
+</comment>
+    <requestid>1386893</requestid>
+  </revision>
 </revisionlist>
