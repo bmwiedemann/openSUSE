@@ -259,4 +259,12 @@ unchanged; re-vendoring moves ansi-regex 6.3.0 -&gt; 6.4.0.
     <comment>Update picsart-gen-ai to 2.82.0: model catalog refresh (skips 2.81.1), re-vendored deps, licences re-derived unchanged.</comment>
     <requestid>1384066</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f37cda8cb828ed21ae038a05bc94215d</srcmd5>
+    <version>2.85.0</version>
+    <time>1792609022</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.85.0</comment>
+    <requestid>1386622</requestid>
+  </revision>
 </revisionlist>

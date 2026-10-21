@@ -29,15 +29,15 @@
 %define npm_name gen-ai
 %define npm_scope @picsart
 Name:           picsart-gen-ai
-Version:        2.82.0
+Version:        2.85.0
 Release:        0
 Summary:        Picsart AI CLI for generating images, video and audio
 # Legal-Review-Notice: the CLI itself is MIT. The published cli.js is a bundle
 # that additionally inlines @picsart/ai-sdk (MIT) and the unpublished
 # @pulse/core and @pulse/server, which upstream distributes only inside this
-# MIT-licensed artifact. The vendored sources below vendor the 71 runtime
+# MIT-licensed artifact. The vendored sources below vendor the 66 runtime
 # dependencies the bundle imports; their licence fields were enumerated on this
-# re-vendor and are MIT (63), ISC (5), Apache-2.0 (1), BlueOak-1.0.0 (1, the
+# re-vendor and are MIT (58), ISC (5), Apache-2.0 (1), BlueOak-1.0.0 (1, the
 # glob/minimatch family) and one "MIT OR CC0-1.0" satisfied by MIT. No copyleft
 # is present.
 License:        MIT AND ISC AND Apache-2.0 AND BlueOak-1.0.0
