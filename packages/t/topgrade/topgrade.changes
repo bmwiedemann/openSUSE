@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 21 00:32:21 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.14.1:
+  * chore: release v17.14.1 (#2442)
+  * fix(opencode): check for plugin updates before updating (#2447)
+  * chore(deps): update swatinem/rust-cache action to v2.9.3 (#2444)
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.9 (#2445)
+  * chore(deps): lock file maintenance (#2446)
+  * chore(deps): update release-plz/action action to v0.5.143 (#2443)
+  * chore(deps): update github/codeql-action action to v4.39.0 (#2417)
+  * chore(deps): update dtolnay/rust-toolchain digest to 683b588 (#2420)
+  * docs(readme): add Terra as an official Fedora installation method (#2432)
+  * chore: release v17.14.0 (#2435)
+  * fix(opencode): support opencode v1 version format (#2428)
+  * fix(locale): correct French plural in "Finding available software" (#2436)
+  * feat(step): add pre-commit gc step (#2437)
+  * feat(step): add GitHub CLI skills step (#2438)
+  * chore(deps): lock file maintenance (#2441)
+  * feat(deno): add a no_delta option to pass --no-delta to deno upgrade (#2440)
+  * feat(os): add aerynOS support (#2433)
+
+-------------------------------------------------------------------
 Sat Oct 17 01:13:34 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.13.1:
