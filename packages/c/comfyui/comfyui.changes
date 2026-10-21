@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 20 17:29:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.42.1:
+  * New model support: Flux3-image, MOSS-image with fused situ,
+    MiniMax-H3 LightVAE; new Latent Geometry, ImageSDRToHDR and
+    ReferenceMultiLatent nodes
+  * Qwen 3.x performance improvements, think-block template fix
+    and embedding-model loading for Qwen3.5; PDD-baked models
+  * 3D remesh refactor; fix solid-mode crash on empty meshes,
+    broken webcam node and text-generation cleanup; NAF attention
+    per LR cell
+  * New partner node: Krea 3 Image; retired Quiver Arrow 1.x models
+  * 0.42.1 fixes crashing issues in the MOSS image template
+    workflow
+  * Track upstream pins: frontend-package 1.55.18,
+    workflow-templates 0.11.89, kitchen 0.2.39
+  * Many more fixes and improvements; see upstream release notes
+    for the full list
+- Both patches still apply
+
+-------------------------------------------------------------------
 Thu Oct 15 04:39:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.40.0:
