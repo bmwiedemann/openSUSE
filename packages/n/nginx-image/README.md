@@ -44,16 +44,17 @@ listen  80;
 
 ## Running nginx as a non-root user
 
-To run the image as a less-privileged `nginx` user, run the following command:
+To run the image as a less-privileged user, run the following command:
 
 ```ShellSession
 $ podman run -it --user nginx --rm -p 8080:8080 -v /path/to/html/:/srv/www/htdocs/:Z registry.opensuse.org/opensuse/nginx:1.31
 ```
 
-The included script `40-unprivileged-mode.sh` changes the default listening port from 80 to 8080, removes the `user` directive from `/etc/nginx/nginx.conf`,
- and configures temporary paths and the PID file to use writable locations under `/tmp` and `/var/run/nginx`, respectively.
+If no custom configuration is mounted to `/etc/nginx/nginx.conf`, the container falls back to `/etc/nginx/nginx.conf.non-root`.
+This non-root configuration changes the default options by changing the port from 80 to 8080,
+removes the user directive, and re-routes the PID file and temporary directory paths to /tmp to support unprivileged execution.
 
-**Note:** When running as the `nginx` user, the default port is 8080.
+**Note:** The container also supports execution under arbitrary user IDs.
 
 ## Environment variables
 
@@ -97,7 +98,7 @@ Currently, the container image ships with the following helper scripts:
 
 - `20-envsubst-on-templates.sh` - Enables the use of environment variables in templates.
 - `30-tune-worker-processes.sh` - Enables autotuning the number of nginx worker processes.
-- `40-unprivileged-mode.sh` - Enables running in unprivileged mode if the container is started as a non-root user (UID > 0).
+- `40-unprivileged-mode.sh` - Create temporary folders to be used in unprivileged execution.
 
 **Warning:** The container startup is aborted if any script exits with an error.
 

@@ -44,4 +44,21 @@ if [ "$1" = "nginx" ] || [ "$1" = "nginx-debug" ]; then
     fi
 fi
 
+# apply non-root config override only if -c is not already passed
+if [ "$1" = "nginx" ] || [ "$1" = "nginx-debug" ]; then
+    HAS_CUSTOM_CONFIG=0
+    for arg in "$@"; do
+        if [ "$arg" = "-c" ]; then
+            HAS_CUSTOM_CONFIG=1
+            break
+        fi
+    done
+
+    if [ "$HAS_CUSTOM_CONFIG" -eq 0 ]; then
+        if ! grep -q " /etc/nginx/nginx.conf " /proc/self/mountinfo && [ "$(id -u)" -gt 0 ]; then
+            set -- "$@" -c /etc/nginx/nginx.conf.non-root
+        fi
+    fi
+fi
+
 exec "$@"
