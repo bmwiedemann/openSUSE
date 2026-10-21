@@ -18,10 +18,10 @@
 
 %define cpan_name Text-CSV_XS
 Name:           perl-Text-CSV_XS
-Version:        1.640.0
+Version:        1.650.0
 Release:        0
-# 1.64 -> normalize -> 1.640.0
-%define cpan_version 1.64
+# 1.65 -> normalize -> 1.650.0
+%define cpan_version 1.65
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Comma-Separated Values manipulation routines
 URL:            https://metacpan.org/release/%{cpan_name}

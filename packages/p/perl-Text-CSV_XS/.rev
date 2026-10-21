@@ -611,4 +611,27 @@
       * Characters []:*/\ are not allowed in XLSX sheet names</comment>
     <requestid>1362464</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>b70f25009a6119b85955ed66da13fff9</srcmd5>
+    <version>1.650.0</version>
+    <time>1792608707</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.650.0 (1.65)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+  1.65	- 2026-10-15, H.Merijn Brand
+      * CPAN.org does not forward email anymore
+      * parse (): report trailing lone CR, do not store EOF as 0xFF (CVE-2026-110759) bsc#1286128
+      * Under allow_whitespace, do not strip beyond field start     (CVE-2026-110758) bsc#1286137
+      * combine (): decide quoting from the bytes, not the NV flags (CVE-2026-110757) bsc#1286191
+      * Flush saved bytes in Combine ()                             (CVE-2026-110756) bsc#1286130
+      * Re-use AHEAD with \r instead of copying                     (CVE-2026-110755) bsc#1286198
+      * getline (): free the result array when the parse fails      (CVE-2026-110754) bsc#1286188
+      * Do not free the bound column scalar in skip_empty_rows      (CVE-2026-110753) bsc#1286187
+      * fragment (): do not size memory by the selector integers    (CVE-2026-110752) bsc#1286138
+
+      * Small additional fix for eol = 
+ + BOM
+      * Fix</comment>
+    <requestid>1386512</requestid>
+  </revision>
 </revisionlist>

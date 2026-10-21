@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 15 09:58:32 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.650.0 (1.65)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.65	- 2026-10-15, H.Merijn Brand
+      * CPAN.org does not forward email anymore
+      * parse (): report trailing lone CR, do not store EOF as 0xFF (CVE-2026-110759) bsc#1286128
+      * Under allow_whitespace, do not strip beyond field start     (CVE-2026-110758) bsc#1286137
+      * combine (): decide quoting from the bytes, not the NV flags (CVE-2026-110757) bsc#1286191
+      * Flush saved bytes in Combine ()                             (CVE-2026-110756) bsc#1286130
+      * Re-use AHEAD with \r instead of copying                     (CVE-2026-110755) bsc#1286198
+      * getline (): free the result array when the parse fails      (CVE-2026-110754) bsc#1286188
+      * Do not free the bound column scalar in skip_empty_rows      (CVE-2026-110753) bsc#1286187
+      * fragment (): do not size memory by the selector integers    (CVE-2026-110752) bsc#1286138
+
+-------------------------------------------------------------------
 Tue Jun 23 08:40:35 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.640.0 (1.64)
@@ -373,7 +390,8 @@ Sun Dec 10 14:13:18 UTC 2017 - coolo@suse.com
       * Preserve first row in csv (set_column_names => 0)
   
   1.33	- 2017-10-19, H.Merijn Brand
-      * Small additional fix for eol =  + BOM
+      * Small additional fix for eol = 
+ + BOM
       * Updated doc for example files
       * Add support for formula actions (issue 11)
         - csv2xls and csv2xlsx now warn by default
