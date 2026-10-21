@@ -25,12 +25,9 @@
 %define psuffix %{nil}
 %endif
 
-# python311-zarr required for python311-xarray-io is not available, so skip python-311 to prevent: Installcheck problems for x86_64: nothing provides python311-zarr >= 2.18 needed by python311-xarray-io-2026.02.0.noarch
-%global skip_python311 1
-
 %{?sle15_python_module_pythons}
 Name:           python-xarray%{psuffix}
-Version:        2026.02.0
+Version:        2026.09.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -82,7 +79,7 @@ Summary:        The python xarray[accel] extra
 Requires:       python-Bottleneck
 Requires:       python-numba >= 0.62
 Requires:       python-opt-einsum
-Requires:       python-scipy >= 1.13
+Requires:       python-scipy >= 1.15
 Requires:       python-xarray = %{version}
 # not available yet
 Recommends:     python-flox

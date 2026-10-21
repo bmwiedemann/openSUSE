@@ -1,12 +1,11 @@
-Index: xarray-2025.03.0/pyproject.toml
+Index: xarray-2026.09.0/pyproject.toml
 ===================================================================
---- xarray-2025.03.0.orig/pyproject.toml
-+++ xarray-2025.03.0/pyproject.toml
-@@ -296,8 +296,6 @@ ban-relative-imports = "all"
+--- xarray-2026.09.0.orig/pyproject.toml
++++ xarray-2026.09.0/pyproject.toml
+@@ -329,7 +329,6 @@ asyncio_default_fixture_loop_scope = "fu
  addopts = [
    "--strict-config",
    "--strict-markers",
--  "--mypy-only-local-stub",
 -  "--mypy-pyproject-toml-file=pyproject.toml",
  ]
  

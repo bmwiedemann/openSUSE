@@ -1715,4 +1715,40 @@ https://github.com/numba/numba/issues/9760
 </comment>
     <requestid>1366375</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e28e3ad91da5bd8d92ab9c7aad485f21</srcmd5>
+    <version>2026.09.0</version>
+    <time>1792609181</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2026.09.0:
+  * Fix polyval returning a sentinel value for NaT in timedelta coordinates
+  * Maintenance: Support zarr&gt;=3.0
+  * Fix stacking dimensions with falsy names
+  * Migrate from nbsphinx/jupyter-sphinx to myst_nb
+  * Harmonize encoding from h5netcdf with netcdf4
+  * Raise a TypeError when a Coordinates object is used as a coordinate value
+  * Avoid densifying sparse.COO data in to_series()/to_dataframe()
+  * Raise error in diff() for a non-existent dimension
+  * fix: preserve stringdtype in zarr v3 round trips
+  * Add LineCollection plot
+  * Fix performance regression in Coordinates.to_index
+  * Silence datetime accessor deprecation warnings
+  * Support query optimization with Dask expression arrays
+  * Add dask expr protocol for variables
+  * Add map_blocks and some testing support for array query expressions
+  * Adapt to coming pd.infer_freq behavior change
+  * Adapt test_dataset_math_errors for coming NumPy behavior change
+  * Fix encoding of masked dask arrays
+  * Finalize change in behavior of decode_timedelta=None
+  * Switch to using blockcache with size 4MB by default for h5netcdf
+  * Allow writing StringDType variables to netCDF
+  * fix: handle PandasIndex promotion of dtypes
+  * Add inherit='all_coords' option to DataTree.to_dataset()
+  * Add overloads for DataArray.argmin and DataArray.argmax on dim parameter
+  * Adapt to deprecation of generic np.timedelta64 dtype
+  * Address additional upstream deprecation warnings
+  * Fix multi-coordinate indexes dropped in _replace_maybe_drop_dims
+- Refresh patch no-mypy-test-plugin.patch</comment>
+    <requestid>1386709</requestid>
+  </revision>
 </revisionlist>
