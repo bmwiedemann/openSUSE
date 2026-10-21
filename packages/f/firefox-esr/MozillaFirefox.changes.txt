@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:59:03 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 153.5.1 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 153.5.1
+  https://www.mozilla.org/security/advisories/mfsa2026-112
+  MFSA 2026-112 (boo#???????)
+  * CVE-2026-113470 (bmo#2083382)
+    Cryptographic issue in the Security Block-lists, Allow-lists,
+    and other State component
+
+-------------------------------------------------------------------
 Tue Oct 13 07:39:04 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Firefox Extended Support Release 153.5.0 ESR
