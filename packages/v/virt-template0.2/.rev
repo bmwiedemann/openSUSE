@@ -10,4 +10,12 @@ Versioned package so the minor a KubeVirt release pins can ship next to the next
 </comment>
     <requestid>1376608</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>239fa67cf23027d8ef9dbde6d677a89e</srcmd5>
+    <version>0.2.3</version>
+    <time>1792609036</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.2.3, the virt-template release KubeVirt 1.9.1 pins</comment>
+    <requestid>1386641</requestid>
+  </revision>
 </revisionlist>

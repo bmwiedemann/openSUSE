@@ -18,7 +18,7 @@
 
 %define upstream_name virt-template
 Name:           virt-template0.2
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Virtual machine templates add-on for KubeVirt
 License:        Apache-2.0
