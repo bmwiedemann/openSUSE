@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:20:41 UTC 2026 - Martin Pluskal <mpluskal@opensuse.org>
+
+- Update to version 6.2.0:
+  * Upgrade minimum versions to CMake 3.17 and C++20.
+  * Fix compilation warnings/issues with newer compilers.
+  * Support 32bpp only sprites, decoding 32bpp-only NewGRFs
+    and NewGRFs with out-of-order v2 container.
+  * Support alternate sprites for RTL languages.
+  * Fix PowerPC chunk-format compression.
+  * grfstrip: allow stripping 8bpp normal-zoom graphics, fix
+    command line parsing with multiple whitelisted formats.
+  * NFORenum data file updates: road/tram types and road stops
+    features, new Action 0 properties and Action 2 variables,
+    callback 161 (build probability), Action 5 road waypoint,
+    rocky overlay and bridge deck types; OpenTTD GUI sprite
+    limit raised to 192.
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list.
+- Drop grfcodec-cmake-install.patch: upstream now installs
+  binaries, man pages and docs itself.
+- Pin obs_scm service to the 6.2.0 tag instead of master.
+- Spec cleanup: drop obsolete Group, BuildRoot and %defattr,
+  drop unused git BuildRequires, require cmake >= 3.17,
+  package the man pages and docs, mark COPYING as %license,
+  drop the dead pre-SLE-12 boost-devel conditional.
+
+-------------------------------------------------------------------
 Mon Jul 19 09:43:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to git master, 6.0.6+39: Fix build with GCC 11

@@ -1,7 +1,7 @@
 #
 # spec file for package grfcodec
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,18 @@
 
 
 Name:           grfcodec
-Version:        6.0.6+39
+Version:        6.2.0
 Release:        0
 Summary:        A suite of programs to modify Transport Tycoon Deluxe's GRF files
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Building
 URL:            https://github.com/OpenTTD/grfcodec
 Source:         %{name}-%{version}.tar.xz
-Patch0:         grfcodec-cmake-install.patch
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel >= 1.36
-%endif
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.17
 BuildRequires:  gcc-c++
-BuildRequires:  git
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libpng-devel
 Provides:       nforenum = %{version}
 Obsoletes:      nforenum < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A suite of programs to modify Transport Tycoon Deluxe's GRF files.
@@ -57,10 +49,16 @@ or PNG files are encoded to form GRF files.
 %cmake_install
 
 %files
-%defattr(-,root,root,-)
+%license COPYING
+%doc %{_docdir}/%{name}/
+%exclude %{_docdir}/%{name}/COPYING
 %{_bindir}/grfcodec
 %{_bindir}/grfid
 %{_bindir}/grfstrip
 %{_bindir}/nforenum
+%{_mandir}/man1/grfcodec.1%{?ext_man}
+%{_mandir}/man1/grfid.1%{?ext_man}
+%{_mandir}/man1/grfstrip.1%{?ext_man}
+%{_mandir}/man1/nforenum.1%{?ext_man}
 
 %changelog
