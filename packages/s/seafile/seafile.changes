@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 20 12:59:02 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.0.22:
+  * Check if build websockets on linux (#3070)
+  * Clear read-only attribute before deleting files on Windows (#3065)
+  * FileSyncError add server field (#3081)
+  * Update vcpkg and Windows build scripts (#3072, #3094)
+
+-------------------------------------------------------------------
 Tue Sep  1 12:13:57 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.0.21 (no changelog).
