@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 20 12:59:02 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.0.22:
+  * Add server field (#1710)
+  * Update Qt to 6.12 (#1713)
+  * Update i18n (#1714)
+  * Update vcpkg (#1705)
+- Drop issue1611.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue Sep  1 12:14:34 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.0.21 (no changelog).

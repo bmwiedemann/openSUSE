@@ -17,7 +17,7 @@
 
 
 Name:           seafile-client
-Version:        9.0.21
+Version:        9.0.22
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
@@ -25,7 +25,6 @@ URL:            https://github.com/haiwen/seafile-client/
 Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz
 Source1:        seafile.appdata.xml
 Patch0:         01-fix-no-return-in-nonvoid.patch
-Patch1:         issue1611.patch
 Patch2:         fix-cmake-name.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
