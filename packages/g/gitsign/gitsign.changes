@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Oct 21 05:10:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.18.0:
+  * build(deps): bump github.com/godbus/dbus (#889)
+  * build(deps): bump github.com/dvsekhvalnov/jose2go from 1.5.0 to
+    1.7.0 (#886)
+  * build(deps): bump golang.org/x/crypto from 0.57.0 to 0.58.0
+    (#888)
+  * build(deps): bump github.com/sigstore/fulcio from 1.8.8 to
+    1.9.0 (#894)
+  * build(deps): bump the gomod group with 2 updates (#891)
+  * build(deps): bump github.com/sigstore/sigstore from 1.10.9 to
+    1.11.1 (#896)
+  * Bump the gomod group across 1 directory with 10 updates (#884)
+  * Add system keyring credential caching (#865)
+  * fix(verify): default the certificate identity to the commit
+    committer (#881)
+  * Bump github.com/go-openapi/runtime from 0.32.6 to 0.33.0 (#856)
+  * fix: wrap RFC3161 timestamp tokens as TimeStampResp in sigstore
+    bundles (#867)
+  * Bump google.golang.org/grpc from 1.82.0 to 1.83.2 (#879)
+  * lint: match unquoted SA1019 message for deprecated sigstore tuf
+    package (#877)
+  * fix(git): preserve trailing CR when splitting raw commit/tag
+    objects (#871)
+  * Add hidden "gitsign debug token" command (#864)
+  * doc(gitsign-credential-cache): fix path to systemd units (#863)
+  * Don't hard fail on slow systems. #624. (#664)
+
+-------------------------------------------------------------------
 Sun Sep 13 08:15:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.17.1:
