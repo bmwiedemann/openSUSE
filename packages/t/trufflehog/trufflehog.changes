@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 20 07:04:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.99.3:
+  * github: name the missing permission when a comment listing is refused (#5438)
+  * Update module google.golang.org/grpc to v1.83.2 [SECURITY] (#5431)
+  * Add per-logger debug level override for source logging (#5432)
+  * Add SonarQube Server token detector (#5419)
+  * fix(github): use a single "app client registry" to make sure we reuse client connections in a process (#5427)
+  * [INT-1051] Fix GitHub comment scans stopping early on large repositories (#5405)
+  * Update module google.golang.org/grpc to v1.83.1 [SECURITY] (#5426)
+  * Update module go.opentelemetry.io/otel/exporters/otlp/otlptrace to v1.45.0 [SECURITY] (#5424)
+  * Replace deprecated google.CredentialsFromJSON with CredentialsFromJSONWithType (#5428)
+  * Update module filippo.io/edwards25519 to v1.1.1 [SECURITY] (#5421)
+  * Update module go.opentelemetry.io/otel/sdk to v1.45.0 [SECURITY] (#5425)
+  * Update module github.com/moby/go-archive to v0.3.0 [SECURITY] (#5423)
+  * Update github-actions (major) (#5409)
+  * Update module github.com/rabbitmq/amqp091-go to v1.14.0 [SECURITY] (#5410)
+  * Update github.com/trufflesecurity/ldap-verify digest to 4964a20 (#5406)
+  * Update alpine Docker tag to v3.24 (#5407)
+  * Update dependency golangci/golangci-lint to v2.14.0 (#5408)
+  * Changed GithubOauth2 detector to only rotate on particular error message (#5396)
+  * Add travisci source documentation (#5401)
+  * Add syslog source documentation (#5398)
+  * Add stdin source documentation (#5397)
+
+-------------------------------------------------------------------
 Fri Oct 09 05:02:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.99.2:
