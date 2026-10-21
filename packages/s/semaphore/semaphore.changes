@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:25:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.17:
+  * f8cefe6 feat(runner): add check interval configuration for job
+    polling
+
+-------------------------------------------------------------------
 Fri Oct 09 05:17:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.19.16 (no releases between .12 and this one):
