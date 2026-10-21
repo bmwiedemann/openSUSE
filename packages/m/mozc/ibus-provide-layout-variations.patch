@@ -1,32 +1,36 @@
-diff --git a/src/unix/ibus/gen_mozc_xml.py b/src/unix/ibus/gen_mozc_xml.py
-index 75514ea3..7998c0e9 100755
---- a/src/unix/ibus/gen_mozc_xml.py
-+++ b/src/unix/ibus/gen_mozc_xml.py
-@@ -244,6 +244,27 @@ def main():
-       'rank': 99,
-       'symbol': 'A',
-       'composition_mode': 'DIRECT',
-+  }, {
-+      'name': 'mozc-jp-jp',
-+      'longname': product_name + " - JP layout",
-+      'layout': 'jp',
-+      'layout_variant': '',
-+      'layout_option': '',
-+      'rank': 0,
-+  }, {
-+      'name': 'mozc-us',
-+      'longname': product_name + " - US layout",
-+      'layout': 'us',
-+      'layout_variant': '',
-+      'layout_option': '',
-+      'rank': 0,
-+  }, {
-+      'name': 'mozc-dv',
-+      'longname': product_name + " - US Dvorak layout",
-+      'layout': 'us',
-+      'layout_variant': 'dvorak',
-+      'layout_option': '',
-+      'rank': 0,
-   }]
- 
-   if options.output_cpp:
+# PATCH-FEATURE-OPENSUSE ftake@geeko.jp
+# Provide JP/US/Dvorak keyboard layout variations for ibus-mozc
+# (rebased for 3.34: engines moved from gen_mozc_xml.py to ibus_config.textproto)
+--- a/src/unix/ibus/ibus_config.textproto
++++ b/src/unix/ibus/ibus_config.textproto
+@@ -66,6 +66,30 @@
+   symbol : "A"
+   composition_mode : DIRECT
+ }
++engines {
++  name : "mozc-jp-jp"
++  longname : "Mozc - JP layout"
++  layout : "jp"
++  layout_variant : ""
++  layout_option : ""
++  rank : 0
++}
++engines {
++  name : "mozc-us"
++  longname : "Mozc - US layout"
++  layout : "us"
++  layout_variant : ""
++  layout_option : ""
++  rank : 0
++}
++engines {
++  name : "mozc-dv"
++  longname : "Mozc - US Dvorak layout"
++  layout : "us"
++  layout_variant : "dvorak"
++  layout_option : ""
++  rank : 0
++}
+ active_on_launch: False
+ mozc_renderer {
+   # Set 'False' to use IBus' candidate window.

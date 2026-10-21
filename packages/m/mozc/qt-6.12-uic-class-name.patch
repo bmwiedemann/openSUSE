@@ -1,0 +1,31 @@
+From: Google Mozc upstream <https://github.com/google/mozc/commit/29c082a64b577b661694148760a2ae19817beb57>
+Subject: Remove leading "::" from custom widget class name in dictionary_tool.ui
+
+Qt 6.12.0 uic rejects class names starting with "::" in UI files,
+resulting in build errors (uic: Invalid class name). Drop the leading
+"::" from the custom widget class.
+
+Upstream issue: https://github.com/google/mozc/issues/1594
+Upstream commit rebased onto the 3.34 sources (context differs from
+master, change is identical).
+
+--- a/src/gui/dictionary_tool/dictionary_tool.ui
++++ b/src/gui/dictionary_tool/dictionary_tool.ui
+@@ -52,7 +52,7 @@
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QListWidget" name="dic_list_"/>
+-      <widget class="::mozc::gui::DictionaryContentTableWidget" name="dic_content_"/>
++      <widget class="mozc::gui::DictionaryContentTableWidget" name="dic_content_"/>
+      </widget>
+     </item>
+    </layout>
+@@ -78,7 +78,7 @@
+    <container>1</container>
+   </customwidget>
+   <customwidget>
+-   <class>::mozc::gui::DictionaryContentTableWidget</class>
++   <class>mozc::gui::DictionaryContentTableWidget</class>
+    <extends>QTableWidget</extends>
+    <header>gui/dictionary_tool/dictionary_content_table_widget.h</header>
+   </customwidget>

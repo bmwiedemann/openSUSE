@@ -1,0 +1,120 @@
+# PATCH-FIX-UPSTREAM adapt fcitx modules to mozc-3.34 (no more base:singleton)
+# Backported from fcitx/mozc commits 5e1ea48, 02eaaa6 and the
+# SharedStatePolicy OptionWithAnnotation change (all in fcitx tree by 2026-06-24)
+--- a/src/unix/fcitx/BUILD.bazel
++++ b/src/unix/fcitx/BUILD.bazel
+@@ -60,7 +60,6 @@
+     ],
+     deps = [
+         "//base:port",
+-        "//base:singleton",
+         "//base:vlog",
+         "//protocol:commands_cc_proto",
+         "//protocol:config_cc_proto",
+--- a/src/unix/fcitx/fcitx_key_event_handler.cc
++++ b/src/unix/fcitx/fcitx_key_event_handler.cc
+@@ -34,7 +34,6 @@
+ 
+ #include "absl/log/check.h"
+ #include "base/vlog.h"
+-#include "base/singleton.h"
+ 
+ namespace mozc {
+ namespace fcitx {
+@@ -52,7 +51,7 @@
+     data_[commands::KeyEvent::LEFT_SHIFT] = commands::KeyEvent::SHIFT;
+     data_[commands::KeyEvent::RIGHT_SHIFT] = commands::KeyEvent::SHIFT;
+   }
+-  const std::map<uint32_t, commands::KeyEvent::ModifierKey> &data() {
++  const std::map<uint32_t, commands::KeyEvent::ModifierKey> &data() const {
+     return data_;
+   }
+ 
+@@ -66,8 +65,10 @@
+     std::set<commands::KeyEvent::ModifierKey> *modifier_keys_set) {
+   DCHECK(modifier_keys_set);
+ 
+-  const std::map<uint32_t, commands::KeyEvent::ModifierKey> &data =
+-      Singleton<AdditionalModifiersData>::get()->data();
++  static const AdditionalModifiersData modifiers_data;
++
++  const std::map<uint32_t, mozc::commands::KeyEvent::ModifierKey>& data =
++      modifiers_data.data();
+ 
+   // Adds MODIFIER if there are (LEFT|RIGHT)_MODIFIER like LEFT_SHIFT.
+   for (std::set<commands::KeyEvent::ModifierKey>::const_iterator it =
+--- a/src/unix/fcitx5/BUILD.bazel
++++ b/src/unix/fcitx5/BUILD.bazel
+@@ -56,7 +56,6 @@
+     ],
+     deps = [
+         ":mozc_client_interface",
+-        "//base:singleton",
+         "//base:vlog",
+         "//config:config_handler",
+         "//data_manager/oss:oss_data_manager",
+@@ -143,7 +142,6 @@
+     ],
+     deps = [
+         "//base:port",
+-        "//base:singleton",
+         "//base:vlog",
+         "//protocol:commands_cc_proto",
+         "//protocol:config_cc_proto",
+--- a/src/unix/fcitx5/fcitx_key_event_handler.cc
++++ b/src/unix/fcitx5/fcitx_key_event_handler.cc
+@@ -42,7 +42,6 @@
+ 
+ #include "absl/log/check.h"
+ #include "absl/log/log.h"
+-#include "base/singleton.h"
+ #include "protocol/commands.pb.h"
+ #include "protocol/config.pb.h"
+ #include "unix/fcitx5/fcitx_key_translator.h"
+@@ -65,7 +64,8 @@
+     data_[mozc::commands::KeyEvent::RIGHT_SHIFT] =
+         mozc::commands::KeyEvent::SHIFT;
+   }
+-  const std::map<uint32_t, mozc::commands::KeyEvent::ModifierKey>& data() {
++  const std::map<uint32_t, mozc::commands::KeyEvent::ModifierKey>& data()
++      const {
+     return data_;
+   }
+ 
+@@ -79,8 +79,10 @@
+     std::set<mozc::commands::KeyEvent::ModifierKey>* modifier_keys_set) {
+   DCHECK(modifier_keys_set);
+ 
++  static const AdditionalModifiersData modifiers_data;
++
+   const std::map<uint32_t, mozc::commands::KeyEvent::ModifierKey>& data =
+-      mozc::Singleton<AdditionalModifiersData>::get()->data();
++      modifiers_data.data();
+ 
+   // Adds MODIFIER if there are (LEFT|RIGHT)_MODIFIER like LEFT_SHIFT.
+   for (auto it = modifier_keys_set->begin(); it != modifier_keys_set->end();
+--- a/src/unix/fcitx5/mozc_direct_client.cc
++++ b/src/unix/fcitx5/mozc_direct_client.cc
+@@ -11,7 +11,6 @@
+ 
+ #include "absl/log/check.h"
+ #include "absl/log/log.h"
+-#include "base/singleton.h"
+ #include "config/config_handler.h"
+ #include "data_manager/oss/oss_data_manager.h"
+ #include "engine/engine.h"
+--- a/src/unix/fcitx5/mozc_engine.h
++++ b/src/unix/fcitx5/mozc_engine.h
+@@ -81,9 +81,9 @@
+     OptionWithAnnotation<CompositionMode, CompositionModeI18NAnnotation>
+         initialMode{this, "InitialMode", _("Initial Mode"),
+                     mozc::commands::HIRAGANA};
+-    Option<SharedStatePolicy> sharedStatePolicy{
+-        this, "InputState", _("Shared Input State"),
+-        SharedStatePolicy::FollowGlobalConfig};
++    OptionWithAnnotation<SharedStatePolicy, SharedStatePolicyI18NAnnotation>
++        sharedStatePolicy{this, "InputState", _("Shared Input State"),
++                          SharedStatePolicy::FollowGlobalConfig};
+     Option<bool> verticalList{this, "Vertical", _("Vertical candidate list"),
+                               true};
+     OptionWithAnnotation<ExpandMode, ExpandModeI18NAnnotation> expandMode{

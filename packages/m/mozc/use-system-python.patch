@@ -1,10 +1,9 @@
-diff --git a/src/MODULE.bazel b/src/MODULE.bazel
-index d1bcb5dea..5143ae96d 100644
+diff --git a/src/MODULE.bazel
 --- a/src/MODULE.bazel
 +++ b/src/MODULE.bazel
-@@ -359,3 +359,5 @@ http_archive(
-     sha256 = "47a3e63e1379f707af9c49df5c4fa0534332173c73c61f93d14555673bed7599",
-     url = "https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/33524763837473258e7ba2f14b17fc3a70519831/ken_all.zip",
+@@ -372,3 +372,5 @@
+     sha256 = "3adc97d8e19e1168a6cdcb2fce759d0e9e613a9a3b630cc180aecfd56ae81eaf",
+     url = "https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/ken_all.zip",
  )
 +
 +register_toolchains("//python_toolchain:all")

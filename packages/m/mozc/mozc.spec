@@ -17,9 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-
 %if 0%{?is_opensuse}
-%if "%flavor" == "fcitx"
+%if "%{flavor}" == "fcitx"
 %define with_fcitx4 1
 %define with_fcitx5 0
 %define install_mozc 0
@@ -29,9 +28,8 @@
 %define install_mozc 1
 %endif
 %endif
-
 %if !0%{?is_opensuse}
-%if "%flavor" == "fcitx"
+%if "%{flavor}" == "fcitx"
 ExclusiveArch:  do_not_build
 %else
 %define with_fcitx4 0
@@ -39,35 +37,26 @@ ExclusiveArch:  do_not_build
 %define install_mozc 1
 %endif
 %endif
-
+%define server_dir %{_libdir}/mozc
+%define ibus_mozc_path %{_libdir}/ibus-mozc/ibus-engine-mozc
+%define ibus_mozc_icon_path %{_datadir}/ibus-mozc/mozc.png
+%define document_dir %{_docdir}/ibus-mozc
 %if %{with_fcitx4}
 %define fcitx_icon_dir %{_datadir}/fcitx/mozc/icon/
 %define fcitx_addon_dir %{_datadir}/fcitx/addon/
 %define fcitx_inputmethod_dir %{_datadir}/fcitx/inputmethod/
 %define fcitx_lib_dir %{_libdir}/fcitx/
 %endif
-
 %if %{with_fcitx5}
 %define fcitx5_addon_dir %{_datadir}/fcitx5/addon/
 %define fcitx5_inputmethod_dir %{_datadir}/fcitx5/inputmethod/
 %define fcitx5_lib_dir %{_libdir}/fcitx5/
 %endif
-
-%define server_dir %{_libdir}/mozc
-%define ibus_mozc_path %{_libdir}/ibus-mozc/ibus-engine-mozc
-%define ibus_mozc_icon_path %{_datadir}/ibus-mozc/mozc.png
-%define document_dir %{_docdir}/ibus-mozc
-
 Name:           mozc
-Version:        3.33.6133.102
+Version:        3.34.6239
 Release:        0
 Summary:        Mozc - Japanese Input Method for Chromium OS, Mac and Linux
-License:        Apache-2.0 AND BSD-3-Clause AND SUSE-Public-Domain AND Zlib
-Group:          System/I18n/Japanese
-ExcludeArch:    ppc ppc64 s390 s390x %{ix86}
-%if %{with_fcitx4} && 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
-ExclusiveArch:  donotbuild
-%endif
+License:        Apache-2.0 AND BSD-3-Clause AND LicenseRef-SUSE-Public-Domain AND Zlib
 URL:            https://github.com/google/mozc
 Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
@@ -78,6 +67,20 @@ Source2:        dependencies.tar
 # License: Apache-2.0
 Source3:        bcr.tar.xz
 Source4:        ibus-setup-mozc-jp.desktop.in
+# PATCH-FEATURE-OPENSUSE ftake@geeko.jp
+Patch1:         ibus-provide-layout-variations.patch
+# PATCH-FEATURE-OPENSUSE ftake@geeko.jp -- Use system python while building
+Patch2:         use-system-python.patch
+# PATCH-FIX-UPSTREAM https://github.com/google/mozc/commit/29c082a64b577b661694148760a2ae19817beb57 -- Qt 6.12 uic rejects leading "::" in custom widget class names
+Patch3:         qt-6.12-uic-class-name.patch
+BuildRequires:  bazel8
+BuildRequires:  pkgconfig
+BuildRequires:  unzip
+BuildRequires:  pkgconfig(zlib)
+ExcludeArch:    ppc ppc64 s390 s390x %{ix86}
+%if %{with_fcitx4} && 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
+ExclusiveArch:  donotbuild
+%endif
 #
 #
 # add fcitx as mozc module
@@ -88,17 +91,9 @@ Source4:        ibus-setup-mozc-jp.desktop.in
 Source20:       fcitx-mozc-96fcec5b.tar.xz
 Source21:       fcitx-mozc-icons.tar.gz
 Patch20:        fcitx-mozc-bazel-build.patch
+# PATCH-FIX-UPSTREAM adapt fcitx modules to mozc-3.34 (base:singleton removed upstream)
+Patch21:        fcitx-mozc-3.34-compat.patch
 %endif
-
-# PATCH-FEATURE-OPENSUSE ftake@geeko.jp
-Patch1:         ibus-provide-layout-variations.patch
-# PATCH-FEATURE-OPENSUSE ftake@geeko.jp -- Use system python while building
-Patch2:         use-system-python.patch
-
-BuildRequires:  bazel8
-BuildRequires:  unzip
-BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Mozc is a Japanese Input Method Editor (IME) designed for
@@ -107,8 +102,8 @@ project originates from Google Japanese Input.
 
 %package -n ibus-mozc
 Summary:        The Mozc engine for IBus
-Group:          System/I18n/Japanese
-BuildRequires:  ibus-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(ibus-1.0)
 Requires:       ibus >= 1.4.1
 Requires:       mozc = %{version}
 Requires:       mozc-gui-tools = %{version}
@@ -120,7 +115,7 @@ The Mozc engine for IBus provides a Japanese input method.
 
 %package -n ibus-mozc-candidate-window
 Summary:        An optional candidate window for ibus-mozc
-Group:          System/I18n/Japanese
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Widgets)
@@ -134,8 +129,8 @@ window shows examples of selected words.
 %if %{with_fcitx4}
 %package -n fcitx-mozc
 Summary:        The Mozc backend for Fcitx
-Group:          System/I18n/Japanese
-BuildRequires:  fcitx-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(fcitx)
 Requires:       fcitx
 Requires:       mozc = %{version}
 Requires:       mozc-gui-tools = %{version}
@@ -148,8 +143,11 @@ The Mozc backend for Fcitx provides a Japanese input method.
 %if %{with_fcitx5}
 %package -n fcitx5-mozc
 Summary:        The Mozc backend for Fcitx 5
-Group:          System/I18n/Japanese
-BuildRequires:  fcitx5-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(Fcitx5Config)
+BuildRequires:  pkgconfig(Fcitx5Core)
+BuildRequires:  pkgconfig(Fcitx5Module)
+BuildRequires:  pkgconfig(Fcitx5Utils)
 Requires:       fcitx5
 Requires:       mozc = %{version}
 Requires:       mozc-gui-tools = %{version}
@@ -166,7 +164,7 @@ The Mozc backend for Fcitx 5 provides a Japanese input method.
 
 %package gui-tools
 Summary:        GUI tools for mozc
-Group:          System/I18n/Japanese
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Widgets)
@@ -183,6 +181,7 @@ character-palette tools.
 %if %{with_fcitx4} || %{with_fcitx5}
 tar xvf %{SOURCE20}
 %patch -P 20 -p1
+%patch -P 21 -p1
 %endif
 
 %patch -P 1 -p1
@@ -190,6 +189,8 @@ tar xvf %{SOURCE20}
 cp %{SOURCE1} .
 
 %patch -P 2 -p1
+
+%patch -P 3 -p1
 
 # extract dependencies
 tar xf %{SOURCE2}
@@ -242,7 +243,10 @@ bazel build package \
 	--verbose_failures \
 	-s
 
-bazel shutdown
+# Bare `bazel shutdown` reads src/.bazelrc, where common:linux_env pulls
+# in the build-only compiler_gcc_like config and fails the whole build.
+# (--bazelrc only *adds* a file; --noworkspace_rc drops the workspace one.)
+bazel --noworkspace_rc shutdown
 
 %define output_dir src/bazel-bin
 
@@ -360,6 +364,9 @@ install -m755 %{output_dir}/renderer/qt/mozc_renderer %{buildroot}%{server_dir}
 install -m755 -d %{buildroot}%{_bindir}
 install -m755 %{output_dir}/unix/emacs/mozc_emacs_helper %{buildroot}%{_bindir}
 # install only for emacs since xemacs is not supported
+# Keep the datadir-based install path spelled out: the emacs sitelisp
+# macro is not defined in this buildroot, so the macro form breaks the
+# files list below.
 install -m755 -d %{buildroot}%{_datadir}/emacs/site-lisp
 install -m644 src/unix/emacs/mozc.el %{buildroot}%{_datadir}/emacs/site-lisp/
 
@@ -367,16 +374,15 @@ chmod 644 src/data/installer/credits_*.html
 %endif
 
 %if %{with_fcitx4}
-%find_lang fcitx-mozc %no_lang_C
+%find_lang fcitx-mozc %{no_lang_C}
 %endif
 
 %if %{with_fcitx5}
-%find_lang fcitx5-mozc %no_lang_C
+%find_lang fcitx5-mozc %{no_lang_C}
 %endif
 
 %if %{install_mozc}
 %files
-%defattr(-, root, root)
 %doc src/data/installer/credits_en.html
 %doc README.SUSE
 %dir %{server_dir}
@@ -386,11 +392,9 @@ chmod 644 src/data/installer/credits_*.html
 %{_datadir}/emacs/site-lisp/mozc.el
 
 %files gui-tools
-%defattr(-, root, root)
 %{_libdir}/mozc/mozc_tool
 
 %files -n ibus-mozc
-%defattr(-, root, root)
 %dir %{_libdir}/ibus-mozc/
 %{_libdir}/ibus-mozc/ibus-engine-mozc
 %{_datadir}/applications/ibus-setup-mozc-jp.desktop
@@ -402,13 +406,11 @@ chmod 644 src/data/installer/credits_*.html
 %{_datadir}/ibus-mozc/
 
 %files -n ibus-mozc-candidate-window
-%defattr(-, root, root)
 %{_libdir}/mozc/mozc_renderer
 %endif
 
 %if %{with_fcitx4}
 %files -n fcitx-mozc -f fcitx-mozc.lang
-%defattr(-,root,root)
 
 %{fcitx_lib_dir}/fcitx-mozc.so
 %{fcitx_addon_dir}/fcitx-mozc.conf
@@ -430,7 +432,6 @@ chmod 644 src/data/installer/credits_*.html
 
 %if %{with_fcitx5}
 %files -n fcitx5-mozc -f fcitx5-mozc.lang
-%defattr(-,root,root)
 
 %{fcitx5_lib_dir}/fcitx5-mozc.so
 %{fcitx5_addon_dir}/mozc.conf

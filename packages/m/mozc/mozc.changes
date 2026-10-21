@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:14:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.34.6239:
+  * Updated OSS dictionary and zip code data as of 2026-04-03
+  * Added the circled zero to number conversion candidates
+  * Enabled partial matches in user history prediction and improved
+    prediction performance
+  * Sanitize user dictionary entries and IBus config strings
+  * IBus engines moved to ibus_config.textproto, engine XML is no
+    longer generated (ibus-provide-layout-variations.patch rebased
+    to the new file to keep the JP/US/Dvorak layout variants)
+  * Refreshed use-system-python.patch for the new MODULE.bazel
+  * Adapt the fcitx modules to mozc-3.34 (base:singleton is gone;
+    backported from fcitx/mozc): fcitx-mozc-3.34-compat.patch
+- Regenerated dependencies.tar and bcr.tar.xz for the new Bazel
+  module pins (abseil-cpp 20260107.1, protobuf 34.1, rules_python
+  1.9.0, rules_go/gazelle/rules_android and others)
+- Shut the Bazel server down without the project .bazelrc: its
+  common:linux_env chain pulls in the build-only compiler_gcc_like
+  config, failing an otherwise successful build at the last step
+- Drop Group and BuildRoot tags; spec-cleaner pass (macro-ified
+  install paths)
+- Fix build with Qt 6.12 uic, which rejects the leading "::" in
+  the dictionary_tool custom widget class name (upstream commit
+  29c082a): qt-6.12-uic-class-name.patch
+
+-------------------------------------------------------------------
 Fri May 15 06:25:36 UTC 2026 - JS <obs.coke518@passinbox.com>
 
 - Provide fcitx-mozc also on Leap 16.0
