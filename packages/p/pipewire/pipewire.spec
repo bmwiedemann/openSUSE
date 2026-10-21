@@ -32,7 +32,7 @@
 %ifnarch s390 s390x ppc64
 %define with_ldacBT 1
 %define with_webrtc_audio_processing 1
-%define webrtc_audio_processing_major_version 1
+%define webrtc_audio_processing_major_version 2
 %else
 %define with_ldacBT 0
 %define with_webrtc_audio_processing 0
