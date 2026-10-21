@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 20 05:50:21 UTC 2026 - David Disseldorp <ddiss@suse.com>
+
+- Merge opensuse-kernel/SLE15-SP6-LTSS 503f6934ee002
+
+-------------------------------------------------------------------
 Mon Sep 21 14:34:09 UTC 2026 - Bernhard M. Wiedemann <bwiedemann@suse.de>
 
 - Export KBUILD_BUILD_* in %install as well (boo#1237474)
