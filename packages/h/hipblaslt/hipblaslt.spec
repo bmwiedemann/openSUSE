@@ -306,6 +306,7 @@ algorithmic implementations and heuristics.
 %if 0%{?suse_version}
 %package -n %{hipblaslt_name}
 Summary:        Runtime for %{name}
+Provides:       %{name} = %{version}-%{release}
 
 %description -n %{hipblaslt_name}
 %summary
