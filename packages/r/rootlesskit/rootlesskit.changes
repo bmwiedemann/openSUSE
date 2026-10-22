@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 19 04:41:59 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
+
+- Update to version 3.3.0:
+  * v3.3.0
+  * pkg/api: replace github.com/gorilla/mux with stdlib
+  * chore(deps): bump golang.org/x/net to v0.60.0
+  * Build(deps): Bump golang.org/x/sys from 0.48.0 to 0.49.0
+  * pkg/httputil: configure HTTP transport timeouts
+  * port/builtin: probe source-ip-transparent backend in the detached netns
+  * CI: test source IP propagation of the builtin port driver
+  * api/client: add Close to Client
+  * cmd/rootlessctl: use command context
+  * fix: forward startup messages to logWriter
+  * fix(pasta): remove --stderr option
+  * v3.2.0+dev
+
+-------------------------------------------------------------------
 Mon Sep 21 05:20:13 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
 
 - Update to version 3.2.0:
