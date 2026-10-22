@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct 19 12:01:58 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update e2fsprogs.keyring
+
+-------------------------------------------------------------------
+Sun Oct 18 05:36:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.47.4:
+  * mke2fs: support multiple -E options and a new root_selinux
+    option setting the SELinux label of the root directory;
+    suppress large-block-size warnings when the kernel supports
+    block sizes greater than page size
+  * mke2fs -d: handle copying files larger than 2 GiB; no longer
+    create oversized orphan-file inodes with 64k block size
+  * e2fsck: stop flagging fast symlinks with large external EAs
+    (EA-inode backed) as corrupt; check EA-inode values for
+    invalid zero size
+  * e4defrag: fix crash defragmenting inline-data files
+  * e2scrub: fix lvremove retry loop on temporary busy failures
+  * fuse2fs and libext2fs: many correctness fixes found running
+    xfstests (superblock error flags, refuse inconsistent mounts,
+    read-only/offset mounts, permissions, ACLs, inline data,
+    fallocate, FITRIM, statfs, relatime)
+  * Man page cleanups
+- Spec cleanup (spec-cleaner): drop obsolete Group tags and ppc64
+  Obsoletes, https Source URLs, pkgconfig-style dependencies
+
+-------------------------------------------------------------------
 Fri Jul 17 13:28:20 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Drop obsolete BuildRoot tag and no-op %defattr lines

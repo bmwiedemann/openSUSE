@@ -1,7 +1,7 @@
 #
 # spec file for package e2fsprogs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,30 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@%nil
-
+%define flavor @BUILD_FLAVOR@%{nil}
+Version:        1.47.4
+Release:        0
 %if "%{flavor}" == ""
 Name:           e2fsprogs
 Summary:        Utilities for the Second Extended File System
 License:        GPL-2.0-only
 %if 0%{?suse_version} >= 1010
 # Hint for ZYPP
-Supplements:    filesystem(ext2) filesystem(ext3) filesystem(ext4)
+Supplements:    filesystem(ext2)
+Supplements:    filesystem(ext3)
+Supplements:    filesystem(ext4)
 %endif
 %else
 Name:           fuse2fs
 Summary:        FUSE file system client for ext2/ext3/ext4 file systems
 License:        MIT
-BuildRequires:  fuse3-devel
+BuildRequires:  pkgconfig(fuse3)
 %endif
-Version:        1.47.3
-Release:        0
-Group:          System/Filesystems
 URL:            http://e2fsprogs.sourceforge.net
-Source:         http://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v%{version}/e2fsprogs-%{version}.tar.xz
+Source:         https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v%{version}/e2fsprogs-%{version}.tar.xz
 Source2:        README.SUSE
 Source3:        baselibs.conf
-Source4:        http://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v%{version}/e2fsprogs-%{version}.tar.sign
+Source4:        https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v%{version}/e2fsprogs-%{version}.tar.sign
 Source5:        https://thunk.org/tytso/tytso-key.asc#/e2fsprogs.keyring
 #
 # e2fsprogs patches
@@ -52,31 +52,32 @@ Patch6:         harden_e2scrub@.service.patch
 Patch7:         harden_e2scrub_all.service.patch
 Patch8:         harden_e2scrub_fail@.service.patch
 Patch9:         harden_e2scrub_reap.service.patch
-BuildRequires:  libarchive-devel
-BuildRequires:  libblkid-devel
-BuildRequires:  libuuid-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  xz
+BuildRequires:  pkgconfig(blkid)
+BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(uuid)
 %if "%{flavor}" == ""
-%if 0%{?suse_version} >= 1210
-%bcond_without systemd
-%else
-%bcond_with systemd
-%endif
-%if 0%{?suse_version} > 1220
-BuildRequires:  makeinfo
-%endif
 # Define info macros if missing (for Fedora builds)
 %if ! 0%{?suse_version}
 %define install_info_prereq info
 %define install_info sbin/install-info
 %define install_info_delete sbin/install-info --delete
-Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(post): %{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 %endif
-# bug437293
-%ifarch ppc64
-Obsoletes:      e2fsprogs-64bit
+%if 0%{?suse_version} >= 1210
+%bcond_without systemd
+%else
+%bcond_with systemd
+%endif
+Requires:       libcom_err2 >= %{version}
+Requires:       libext2fs2 >= %{version}
+Requires(post): %{_bindir}/mkdir
+Requires(post): %{_bindir}/touch
+Suggests:       e2fsprogs-scrub
+%if 0%{?suse_version} > 1220
+BuildRequires:  makeinfo
 %endif
 #
 # For regenerate_initrd_post macro
@@ -85,10 +86,6 @@ BuildRequires:  suse-module-tools
 %else
 BuildRequires:  rpm-config-SUSE
 %endif
-Requires(post): /usr/bin/mkdir /usr/bin/touch
-Requires:       libcom_err2 >= %{version}
-Requires:       libext2fs2 >= %{version}
-Suggests:       e2fsprogs-scrub
 # Do not suppress make commands
 
 %description
@@ -107,14 +104,14 @@ ext4 file systems.
 Summary:        Dummy development package
 # bug437293
 License:        LGPL-2.0-only
-Group:          Development/Libraries/C and C++
+#
+Requires:       pkgconfig(blkid)
+Requires:       pkgconfig(e2p) = %{version}
+Requires:       pkgconfig(ext2fs) = %{version}
+Requires:       pkgconfig(uuid)
 %ifarch ppc64
 Obsoletes:      e2fsprogs-devel-64bit
 %endif
-#
-Requires:       libblkid-devel
-Requires:       libext2fs-devel = %version
-Requires:       libuuid-devel
 
 %description devel
 Dummy development package for backwards compatibility.
@@ -122,15 +119,14 @@ Dummy development package for backwards compatibility.
 %package -n e2fsprogs-scrub
 Summary:        Ext2fs scrubbing scripts and service files
 License:        GPL-2.0-only
-Group:          System/Filesystems
-%if %{with systemd}
-BuildRequires:  systemd-rpm-macros
-%{?systemd_requires}
-%endif
 Requires:       e2fsprogs
 Requires:       lvm2
 Requires:       postfix
 Requires:       util-linux
+%if %{with systemd}
+BuildRequires:  systemd-rpm-macros
+%{?systemd_requires}
+%endif
 
 %description -n e2fsprogs-scrub
 Scripts and systemd service files for background scrubbing of LVM volumes
@@ -139,7 +135,6 @@ with ext2, ext3, and ext4 filesystems.
 %package -n libext2fs2
 Summary:        Ext2fs library
 License:        LGPL-2.0-only
-Group:          System/Filesystems
 
 %description -n libext2fs2
 The basic Ext2fs shared library.
@@ -147,9 +142,9 @@ The basic Ext2fs shared library.
 %package -n libext2fs-devel
 Summary:        Development files for libext2fs
 License:        LGPL-2.0-only
-Group:          Development/Libraries/C and C++
-Requires:       libcom_err-devel
-Requires:       libext2fs2 = %version
+Requires:       libext2fs2 = %{version}
+Requires:       pkgconfig(com_err)
+Requires:       pkgconfig(ss)
 
 %description -n libext2fs-devel
 Development files for libext2fs.
@@ -157,8 +152,8 @@ Development files for libext2fs.
 %package -n libext2fs-devel-static
 Summary:        Development files for libext2fs
 License:        LGPL-2.0-only
-Group:          Development/Libraries/C and C++
-Requires:       libext2fs-devel = %{version}
+Requires:       pkgconfig(e2p) = %{version}
+Requires:       pkgconfig(ext2fs) = %{version}
 Provides:       libext2fs-devel:%{_libdir}/libe2p.a
 Provides:       libext2fs-devel:%{_libdir}/libext2fs.a
 
@@ -169,14 +164,13 @@ Development files for libext2fs. Static libraries.
 Summary:        E2fsprogs error reporting library
 # bug437293
 License:        MIT
-Group:          System/Filesystems
+#
+Provides:       libcom_err = %{version}
+Obsoletes:      libcom_err <= 1.40
 %ifarch ppc64
 Obsoletes:      libcom_err-64bit
 Obsoletes:      libcom_err2-64bit
 %endif
-#
-Provides:       libcom_err = %{version}
-Obsoletes:      libcom_err <= 1.40
 
 %description -n libcom_err2
 com_err is an error message display library.
@@ -185,13 +179,12 @@ com_err is an error message display library.
 Summary:        Development files for libcom_err
 # bug437293
 License:        MIT
-Group:          Development/Libraries/C and C++
+#
+Requires:       glibc-devel
+Requires:       libcom_err2 = %{version}
 %ifarch ppc64
 Obsoletes:      libcom_err-devel-64bit
 %endif
-#
-Requires:       glibc-devel
-Requires:       libcom_err2 = %version
 
 %description -n libcom_err-devel
 Development files for the com_err error message display library.
@@ -199,14 +192,10 @@ Development files for the com_err error message display library.
 %package -n libcom_err-devel-static
 Summary:        Development files for libcom_err, static libraries
 License:        MIT
-Group:          Development/Libraries/C and C++
-Requires:       libcom_err-devel = %{version}
+Requires:       pkgconfig(com_err) = %{version}
+Requires:       pkgconfig(ss) = %{version}
 Provides:       libcom_err-devel:%{_libdir}/libcom_err.a
 Provides:       libcom_err-devel:%{_libdir}/libss.a
-# bug437293
-%ifarch ppc64
-Obsoletes:      libcom_err-devel-64bit
-%endif
 #
 
 %description -n libcom_err-devel-static
@@ -235,18 +224,18 @@ cp %{SOURCE2} .
   --disable-fsck \
   --without-crond-dir \
   --with-systemd-unit-dir=%{?_unitdir} \
-  CFLAGS="$RPM_OPT_FLAGS"
-make %{?_smp_mflags} V=1
+  CFLAGS="%{optflags}"
+%make_build
 #Guarantee that tranlations match the source messages
-make -C po update-po
+%make_build -C po update-po
 
 %install
 %if "%{flavor}" == ""
-make install install-libs DESTDIR=$RPM_BUILD_ROOT ELF_INSTALL_DIR=/%{_libdir}
+make install install-libs DESTDIR=%{buildroot} ELF_INSTALL_DIR=/%{_libdir}
 
-%{find_lang} e2fsprogs
+%find_lang e2fsprogs
 
-rm $RPM_BUILD_ROOT%{_libdir}/e2initrd_helper
+rm %{buildroot}%{_libdir}/e2initrd_helper
 
 %if 0%{?suse_version} < 1550
 mkdir %{buildroot}/sbin
@@ -317,17 +306,14 @@ done
 %{regenerate_initrd_posttrans}
 
 %post -n libext2fs2 -p /sbin/ldconfig
-
 %postun -n libext2fs2 -p /sbin/ldconfig
-
 %post -n libcom_err2 -p /sbin/ldconfig
-
 %postun -n libcom_err2 -p /sbin/ldconfig
 
 %files -f e2fsprogs.lang
 %doc doc/RelNotes/v%{version}.txt README
 %license NOTICE
-%config /etc/mke2fs.conf
+%config %{_sysconfdir}/mke2fs.conf
 %if 0%{?suse_version} < 1550
 /sbin/badblocks
 /sbin/debugfs
@@ -373,19 +359,19 @@ done
 %{_sbindir}/e2freefrag
 %{_sbindir}/e4defrag
 %{_sbindir}/e4crypt
-%{_infodir}/libext2fs.info.gz
-%{_mandir}/man1/chattr.1.gz
-%{_mandir}/man1/lsattr.1.gz
-%{_mandir}/man5/ext?.5.gz
-%{_mandir}/man5/e2fsck.conf.5.gz
-%{_mandir}/man5/mke2fs.conf.5.gz
-%{_mandir}/man8/*.8.gz
+%{_infodir}/libext2fs.info%{?ext_info}
+%{_mandir}/man1/chattr.1%{?ext_man}
+%{_mandir}/man1/lsattr.1%{?ext_man}
+%{_mandir}/man5/ext?.5%{?ext_man}
+%{_mandir}/man5/e2fsck.conf.5%{?ext_man}
+%{_mandir}/man5/mke2fs.conf.5%{?ext_man}
+%{_mandir}/man8/*.8%{?ext_man}
 
 %files devel
 %doc README.SUSE
 
 %files -n e2fsprogs-scrub
-%config /etc/e2scrub.conf
+%config %{_sysconfdir}/e2scrub.conf
 %{_sbindir}/e2scrub
 %{_sbindir}/e2scrub_all
 %if %{with systemd}
@@ -409,10 +395,10 @@ done
 %files -n libext2fs-devel
 %{_libdir}/libext2fs.so
 %{_libdir}/libe2p.so
-/usr/include/ext2fs
-/usr/include/e2p
-%_libdir/pkgconfig/e2p.pc
-%_libdir/pkgconfig/ext2fs.pc
+%{_includedir}/ext2fs
+%{_includedir}/e2p
+%{_libdir}/pkgconfig/e2p.pc
+%{_libdir}/pkgconfig/ext2fs.pc
 
 %files -n libcom_err2
 %if 0%{?suse_version} < 1550
@@ -423,20 +409,20 @@ done
 %{_libdir}/libss.so.*
 
 %files -n libcom_err-devel
-%_bindir/compile_et
-%_bindir/mk_cmds
+%{_bindir}/compile_et
+%{_bindir}/mk_cmds
 %{_libdir}/libcom_err.so
 %{_libdir}/libss.so
-%_libdir/pkgconfig/com_err.pc
-%_libdir/pkgconfig/ss.pc
-%_includedir/com_err.h
-%_includedir/et
-%_includedir/ss
-%_datadir/et
-%_datadir/ss
-%{_mandir}/man1/compile_et.1.gz
-%{_mandir}/man1/mk_cmds.1.gz
-%{_mandir}/man3/com_err.3.gz
+%{_libdir}/pkgconfig/com_err.pc
+%{_libdir}/pkgconfig/ss.pc
+%{_includedir}/com_err.h
+%{_includedir}/et
+%{_includedir}/ss
+%{_datadir}/et
+%{_datadir}/ss
+%{_mandir}/man1/compile_et.1%{?ext_man}
+%{_mandir}/man1/mk_cmds.1%{?ext_man}
+%{_mandir}/man3/com_err.3%{?ext_man}
 
 %files -n libcom_err-devel-static
 %{_libdir}/libcom_err.a
@@ -451,8 +437,8 @@ done
 (cd %{buildroot}; find -L -type f | grep -v fuse2fs | xargs rm)
 
 %files
-%_bindir/fuse2fs
-%{_mandir}/man1/fuse2fs.1.gz
+%{_bindir}/fuse2fs
+%{_mandir}/man1/fuse2fs.1%{?ext_man}
 %endif
 
 %changelog
