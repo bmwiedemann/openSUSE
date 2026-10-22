@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 21 15:10:03 UTC 2026 - Jeremy Newton <alexjnewt@gmail.com>
+
+- Drop explicit requires on hisparselt
+- Bundles provide was erroneously moved
+
+-------------------------------------------------------------------
+Fri Oct 16 00:00:00 UTC 2026 - Jeremy Newton <alexjnewt@hotmail.com>
+
+- Fix provides
+- Fix requires
+
+-------------------------------------------------------------------
 Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
 
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild

@@ -247,12 +247,7 @@ BuildRequires:  gmock-devel
 BuildRequires:  gtest-devel
 %endif
 
-Provides:       hipsparselt%{pkg_suffix} = %{version}-%{release}
 Provides:       bundled(python-tensile) = %{tensile_version}
-Requires:       rocm-filesystem%{pkg_suffix}
-Requires:       rocm-hip%{pkg_suffix}
-Requires:       rocm-origami%{pkg_suffix}
-Requires:       roctracer%{pkg_suffix}
 
 %if %{without nanobind}
 # BSD-3-Clause
@@ -275,6 +270,8 @@ hipSPARSELt supports the rocSPARSELt backend.
 %if 0%{?suse_version}
 %package -n %{hipsparselt_name}
 Summary:        Runtime for %{name}
+Provides:       hipsparselt%{pkg_suffix} = %{version}-%{release}
+Requires:       rocm-filesystem%{pkg_suffix}
 
 %description -n %{hipsparselt_name}
 %summary
@@ -286,7 +283,6 @@ Summary:        Runtime for %{name}
 Summary:        Libraries and headers for %{name}
 Requires:       %{hipsparselt_name}%{?_isa} = %{version}-%{release}
 Requires:       rocm-filesystem%{pkg_suffix}
-Provides:       hipsparselt%{pkg_suffix}-devel = %{version}-%{release}
 
 %description devel
 %{summary}

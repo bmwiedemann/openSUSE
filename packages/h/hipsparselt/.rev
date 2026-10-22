@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1382156</requestid>
   </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>e4a60ec546a5b02fc584d9c6ef130a0b</srcmd5>
+    <version>7.2.0</version>
+    <time>1792676941</time>
+    <user>anag_factory</user>
+    <comment>- Drop explicit requires on hisparselt
+- Bundles provide was erroneously moved
+
+- Fix provides
+- Fix requires</comment>
+    <requestid>1386957</requestid>
+  </revision>
 </revisionlist>
