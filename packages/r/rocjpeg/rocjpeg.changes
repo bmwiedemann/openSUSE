@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 16 00:00:00 UTC 2026 - Jeremy Newton <alexjnewt@hotmail.com>
+
+- Fix provides
+
+-------------------------------------------------------------------
 Thu Aug  6 10:23:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix build failure caused by host hardening flags reaching the amdgcn

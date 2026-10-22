@@ -157,7 +157,7 @@ on your GPU.
 %if 0%{?suse_version}
 %package -n %{rocjpeg_name}
 Summary:        Shared libraries for %{name}
-Provides:       %{name}%{?_isa} = %{version}-%{release}
+Provides:       %{name} = %{version}-%{release}
 
 %description -n %{rocjpeg_name}
 %{summary}
@@ -167,7 +167,7 @@ Provides:       %{name}%{?_isa} = %{version}-%{release}
 
 %package devel
 Summary:        The development package for %{name}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       %{rocjpeg_name}%{?_isa} = %{version}-%{release}
 
 %description devel
 The rocJPEG development package.
