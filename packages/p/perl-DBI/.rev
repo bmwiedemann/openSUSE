@@ -630,4 +630,13 @@
       * Fix arbitrary module and file loading via dbm_type/dbm_mldbm (CVE-2026-78030) bsc#1281704</comment>
     <requestid>1386345</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>05f106321ec2e74728135d8af9b477b4</srcmd5>
+    <version>1.656.0</version>
+    <time>1792676910</time>
+    <user>anag_factory</user>
+    <comment>      * Prevent dbi_profile crash (CVE-2026-108518) (Henrik Teichmann) bsc#1286552
+      * Fix lock file not removed when DBD::DBM check for bad serializer class fails. (CVE-2026-111879) bsc#1286553</comment>
+    <requestid>1387089</requestid>
+  </revision>
 </revisionlist>

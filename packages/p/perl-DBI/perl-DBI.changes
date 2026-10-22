@@ -7,11 +7,11 @@ Mon Oct 19 10:47:51 UTC 2026 - Tina Müller <timueller+perl@suse.de>
   1.656 - 2026-10-17, H.Merijn Brand & Robert Rothenberg
       * Re-add conflicts to cpanfile. (WIP)
       * Remove lock file on end of scope
-      * Prevent dbi_profile crash (CVE-2026-108518) (Henrik Teichmann)
+      * Prevent dbi_profile crash (CVE-2026-108518) (Henrik Teichmann) bsc#1286552
       * Memory corruption via selectrow_array + SQLite UDF (issue#98)
       * Fix errstr when dbm_updatable_key attribute for DBD::DBM is set to 2 (croak) on Perl versions < v5.13.2.
       * Fix emit warnings when dbm_updatable_key attribute for DBD::DBM is set to 1 (carp)
-      * Fix lock file not removed when DBD::DBM check for bad serializer class fails. (CVE-2026-111879)
+      * Fix lock file not removed when DBD::DBM check for bad serializer class fails. (CVE-2026-111879) bsc#1286553
       * *** WARNING: Next release will require perl-5.14 ***
         - Main reason: Exception handling
 
