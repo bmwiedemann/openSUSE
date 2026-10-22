@@ -1,7 +1,7 @@
 #
 # spec file for package openal-soft
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,22 @@
 
 
 Name:           openal-soft
-Version:        1.24.3~179
+Version:        1.25.2~0
 Release:        0
 Summary:        Audio library with an OpenGL-resembling API
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
-Group:          Development/Libraries/C and C++
 URL:            https://www.openal-soft.org/
 #Source0:        https://www.openal-soft.org/openal-releases/openal-soft-%%{version}.tar.bz2
 Source0:        openal-soft-%{version}.tar.zst
 Source1:        libopenalcompat.c
 Source3:        baselibs.conf
-BuildRequires:  cmake >= 3.0
+BuildRequires:  cmake >= 3.13
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libmysofa)
 # BuildRequires:  pkgconfig(jack) # undefined reference to `jack_error_callback'
-BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.23
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(sdl2)
@@ -59,7 +58,6 @@ capture.
 %package -n libopenal0
 Summary:        Audio library with an OpenGL-resembling API
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n libopenal0
 OpenAL is an audio library designed in the spirit of the OpenGL API.
@@ -69,7 +67,6 @@ compatibility with old software.
 %package devel
 Summary:        Development headers for OpenAL Soft
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/C and C++
 Requires:       glibc-devel
 Requires:       libopenal1 = %{version}
 Provides:       openal-devel = %{version}-%{release}
@@ -82,8 +79,7 @@ applications that want to make use of openal-soft.
 %package makemhr
 Summary:        OpenAL Soft HRTF generation utility
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Utilities
-Conflicts:      openal-soft-devel < %{version}
+Conflicts:      pkgconfig(openal) < %{version}
 Provides:       makehrtf = %{version}-%{release}
 Provides:       openal-soft-devel:%{_bindir}/makehrtf
 Obsoletes:      makehrtf < %{version}
@@ -96,7 +92,6 @@ transfer functions (HRTF).
 %package data
 Summary:        OpenAL Soft auxiliary data and config
 License:        LGPL-2.1-or-later
-Group:          Productivity/Multimedia/Sound/Utilities
 Provides:       openal-soft = %{version}
 Obsoletes:      openal-soft <= %{version}
 BuildArch:      noarch
@@ -108,7 +103,6 @@ This package contains auxiliary data and config files.
 %package tools
 Summary:        OpenAL Soft tools
 License:        LGPL-2.1-or-later AND MIT
-Group:          Productivity/Multimedia/Sound/Utilities
 Conflicts:      openal-soft < %{version}
 Provides:       openal-soft:%{_bindir}/openal-info
 
@@ -119,7 +113,6 @@ This package contains additional tools for OpenAL.
 %package -n libopenal1
 Summary:        Audio library with an OpenGL-resembling API
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Recommends:     openal-soft-data
 Conflicts:      openal-soft < %{version}
 
@@ -215,7 +208,6 @@ install -D -m 0644 /dev/null %{buildroot}/%{_sysconfdir}/openal/alsoft.conf
 %{_includedir}/AL/alc.h
 %{_includedir}/AL/alext.h
 %{_includedir}/AL/efx.h
-%{_includedir}/AL/efx-creative.h
 %{_includedir}/AL/efx-presets.h
 
 %changelog

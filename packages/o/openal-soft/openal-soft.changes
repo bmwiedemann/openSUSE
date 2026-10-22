@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:21:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.25.2~0:
+  * Library codebase moved to C++20
+  * Added fourth-order ambisonics support and CAF file support
+    to the Wave Writer backend
+  * Added capture support and device added/removed events to
+    the SDL3 backend; 7.1.4 output autodetection with CoreAudio
+  * Implemented 3D processing for the Distortion, Chorus,
+    Flanger, Pitch Shifter and Frequency Shifter effects
+  * New stereo-encoding option for Tetraphonic Surround Matrix
+    Encoding; default Super Stereo width changed to 0.46
+  * Fixed the OpenSL and JACK backends, WASAPI and CoreAudio
+    capture, the OSS v4 backend build and PipeWire duplicate
+    device names
+  * Fixed STL hardening assertions in the reverb effect and
+    the polyphase resampler, and a crash with older PipeWire
+    headers
+- Tighten build requirements to the upstream minimums:
+  cmake >= 3.13, pkgconfig(libpipewire-0.3) >= 0.3.23
+- Drop efx-creative.h from the devel file list: upstream no
+  longer installs it (dropped from TARGET_PUBLIC_HEADERS)
+- Spec cleanup via spec-cleaner (drop Group tags, pkgconfig-style
+  Conflicts)
+
+-------------------------------------------------------------------
 Fri May 30 16:44:11 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Use the @TAG@~@VERSION@ format specifier in obs_scm service 
