@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:33:55 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.1
+- Changes since 6.8.0:
+  * Update version for new release 6.8.1
+  * applets/kicker: set drag mimedata url only if we have one
+  * applets/kicker: inherit LayoutMirroring (kde#525994)
+  * applets/kicker: add ItemListView inner right margin if scrollable
+  * containments_desktop: don't always forward Shift+key to krunner
+  * kcms/mouse: Move QML property lines for better readability
+  * kcms/mouse: Fix indentation of scroll-button behavior options
+  * kcms/touchpad: Indent checkboxes with indicator width and spacing
+  * Update version for new release 6.8.1
+  * kcms/landingpage: Fix showing default kcms when there are no most used kcms (kde#522711)
+  * Fix action names
+
+-------------------------------------------------------------------
 Thu Oct  8 16:54:51 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.8.0:
