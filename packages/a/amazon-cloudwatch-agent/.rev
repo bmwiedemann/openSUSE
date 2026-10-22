@@ -146,4 +146,18 @@
 - Update golang.org/x/net to v0.61.0 (bsc#1285301, CVE-2026-78669) (forwarded request 1386444 from glaubitz)</comment>
     <requestid>1386482</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a1770fd3ee63c83321f6193dea10e357</srcmd5>
+    <version>1.300073.2</version>
+    <time>1792677155</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.300073.2
+  * [Agent] Fix OIDC token file permissions that prevented the agent
+    from restarting by @jefchien in amazon-contributing/opentelemetry
+    -collector-contrib#664
+- from version 1.300073.1
+  * [Agent] Defer mode detection to the agent on Windows by @jefchien
+    in (#2289) (forwarded request 1387062 from glaubitz)</comment>
+    <requestid>1387082</requestid>
+  </revision>
 </revisionlist>

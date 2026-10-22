@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 22 09:10:45 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.300073.2
+  * [Agent] Fix OIDC token file permissions that prevented the agent
+    from restarting by @jefchien in amazon-contributing/opentelemetry
+    -collector-contrib#664
+- from version 1.300073.1
+  * [Agent] Defer mode detection to the agent on Windows by @jefchien
+    in (#2289)
+
+-------------------------------------------------------------------
 Tue Oct 20 09:19:45 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream

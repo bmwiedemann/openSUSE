@@ -23,7 +23,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           amazon-cloudwatch-agent
-Version:        1.300073.0
+Version:        1.300073.2
 Release:        0
 Summary:        Amazon CloudWatch Agent
 License:        MIT
