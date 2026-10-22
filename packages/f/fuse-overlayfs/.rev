@@ -212,4 +212,14 @@
   * man: uniformly apply bold attributes.</comment>
     <requestid>1369698</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5fdf917e649308033058af75d4110a2f</srcmd5>
+    <version>1.18</version>
+    <time>1792689886</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.18 (bsc#1286378, CVE-2026-77478):
+  * main: fix operations on hardlinked lower-layer files
+    resolving to the wrong layer (CVE-2026-77478).</comment>
+    <requestid>1386776</requestid>
+  </revision>
 </revisionlist>
