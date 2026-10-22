@@ -1497,6 +1497,7 @@ packagesets:
    - libQt6Core6 # reason: dvd:openSUSE-release
    - libQt6DBus6 # reason: dvd:openSUSE-release
    - libQt6Designer6 # reason: dvd:patterns-kde-kde
+   - libQt6Graphs6 # reason: dvd:patterns-kde-kde
    - libQt6Gui6 # reason: dvd:openSUSE-release
    - libQt6Help6 # reason: dvd:patterns-media-rest_dvd
    - libQt6HunspellInputMethod6 # reason: dvd:patterns-kde-kde
@@ -1961,7 +1962,7 @@ packagesets:
    - libext2fs2 # reason: dvd:grub2
    - libexttextcat # reason: dvd:openSUSE-release
    - libexttextcat-2_0-0 # reason: dvd:openSUSE-release
-   - libf2fs10 # reason: dvd:patterns-media-rest_dvd
+   - libf2fs11 # reason: dvd:patterns-media-rest_dvd
    - libfa1 # reason: dvd:patterns-gnome-gnome
    - libfaad2 # reason: dvd:patterns-gnome-gnome
    - libfastjson4 # reason: dvd:rsyslog
@@ -2465,7 +2466,7 @@ packagesets:
    - libopenal1 # reason: dvd:patterns-gnome-gnome
    - libopenblas_openmp0 # reason: dvd:patterns-gnome-gnome
    - libopenblas_pthreads0 # reason: dvd:salt-master
-   - libopencc1_2 # reason: dvd:openSUSE-release
+   - libopencc1_4 # reason: dvd:openSUSE-release
    - libopenconnect5 # reason: dvd:patterns-gnome-gnome
    - libopencore-amrnb0 # reason: dvd:openSUSE-release
    - libopencore-amrwb0 # reason: dvd:openSUSE-release
@@ -3743,6 +3744,7 @@ packagesets:
    - qrca-lang # reason: dvd:patterns-kde-kde
    - qrencode # reason: dvd:patterns-media-rest_cd_core
    - qt6-declarative-imports # reason: dvd:openSUSE-release
+   - qt6-graphs-imports # reason: dvd:patterns-kde-kde
    - qt6-imageformats # reason: dvd:openSUSE-release
    - qt6-location # reason: dvd:patterns-kde-kde
    - qt6-multimedia # reason: dvd:openSUSE-release
@@ -5166,6 +5168,7 @@ packagesets:
    - libQt6Core5Compat6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libQt6Core6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libQt6DBus6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libQt6Graphs6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libQt6Gui6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libQt6HunspellInputMethod6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libQt6LabsAnimation6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6119,6 +6122,7 @@ packagesets:
    - qrca # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qrencode # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - qt6-declarative-imports # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - qt6-graphs-imports # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qt6-imageformats # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qt6-location # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - qt6-multimedia # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6932,6 +6936,7 @@ packagesets:
    - libQt6Core5Compat6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libQt6Core6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libQt6DBus6 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libQt6Graphs6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libQt6Gui6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libQt6HunspellInputMethod6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libQt6LabsAnimation6 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7787,6 +7792,7 @@ packagesets:
    - qqc2-breeze-style6 # reason: opensuse_kalpa:patterns-kalpa-base
    - qrca # reason: opensuse_kalpa:patterns-kalpa-base
    - qt6-declarative-imports # reason: opensuse_kalpa:patterns-kalpa-base
+   - qt6-graphs-imports # reason: opensuse_kalpa:patterns-kalpa-base
    - qt6-imageformats # reason: opensuse_kalpa:patterns-kalpa-base
    - qt6-location # reason: opensuse_kalpa:patterns-kalpa-base
    - qt6-multimedia # reason: opensuse_kalpa:patterns-kalpa-base
