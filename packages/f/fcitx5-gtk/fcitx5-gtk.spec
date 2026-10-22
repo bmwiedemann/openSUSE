@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-gtk
-Version:        5.1.5
+Version:        5.1.7
 Release:        0
 Summary:        Gtk im module for fcitx5 and glib based dbus client library
 License:        LGPL-2.1-or-later

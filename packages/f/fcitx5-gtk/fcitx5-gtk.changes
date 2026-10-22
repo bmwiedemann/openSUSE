@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:55:35 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 5.1.7:
+  * Update cursor position when a key is pressed
+  * Replace gdk_popup with gtk_popover
+  * Fix parent window signal connection cleanup on destruction
+
+-------------------------------------------------------------------
 Sun Feb  8 05:36:23 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.5
