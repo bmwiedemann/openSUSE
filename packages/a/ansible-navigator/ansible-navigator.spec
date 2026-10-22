@@ -87,6 +87,8 @@ Requires:       ansible-core >= 2.14.3
 Requires:       ansible-lint >= 6.19.0
 Requires:       ansible-runner >= 2.3.2
 Requires:       (podman or docker)
+# podman is the container engine on SUSE; without this the solver picks docker
+Suggests:       podman
 Suggests:       %{ansible_python}-importlib-metadata
 Suggests:       %{ansible_python}-mkdocs-ansible >= 0.1.2
 Suggests:       %{ansible_python}-darglint

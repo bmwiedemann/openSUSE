@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:37:13 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Suggest podman so the "(podman or docker)" requirement resolves to
+  podman, the container engine on SUSE, instead of docker
+
+-------------------------------------------------------------------
 Mon Oct  5 16:58:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - use python-tzdata, not pytzdata (which is unmaintained)
