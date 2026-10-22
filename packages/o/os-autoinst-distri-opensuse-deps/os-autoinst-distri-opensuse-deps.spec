@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst-distri-opensuse-deps
-Version:        1.1770726271.4c22ee70
+Version:        1.1792662242.b21d3799
 Release:        0
 Summary:        Metapackage that contains the dependencies of os-autoinst-distri-opensuse
 License:        MIT
@@ -28,6 +28,7 @@ Url:            https://github.com/os-autoinst/os-autoinst-distri-opensuse
 Requires:       perl(Carp)
 Requires:       perl(Class::Accessor::Fast)
 Requires:       perl(Code::DRY)
+Requires:       perl(Code::TidyAll)
 Requires:       perl(Config::Tiny)
 Requires:       perl(constant)
 Requires:       perl(Cwd)
@@ -48,6 +49,7 @@ Requires:       perl(IO::Socket::INET)
 Requires:       perl(List::MoreUtils)
 Requires:       perl(List::Util)
 Requires:       perl(LWP::Simple)
+Requires:       perl(Module::CPANfile)
 Requires:       perl(Mojo::Base)
 Requires:       perl(Mojo::File)
 Requires:       perl(Mojo::JSON)
@@ -57,6 +59,7 @@ Requires:       perl(Net::IP)
 Requires:       perl(NetAddr::IP)
 Requires:       perl(parent)
 Requires:       perl(Perl::Critic::Community)
+Requires:       perl(Perl::Tidy)
 Requires:       perl(POSIX)
 Requires:       perl(Regexp::Common)
 Requires:       perl(Selenium::Chrome)
@@ -66,6 +69,7 @@ Requires:       perl(Selenium::Waiter)
 Requires:       perl(SemVer)
 Requires:       perl(Storable)
 Requires:       perl(strict)
+Requires:       perl(Syntax::Keyword::Try)
 Requires:       perl(Term::ANSIColor)
 Requires:       perl(Test::Assert)
 Requires:       perl(Tie::IxHash)

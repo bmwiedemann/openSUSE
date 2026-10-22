@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 22 10:24:49 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Added dependency perl(Code::TidyAll)
+- Added dependency perl(Module::CPANfile)
+- Added dependency perl(Perl::Tidy)
+- Added dependency perl(Syntax::Keyword::Try)
+
+-------------------------------------------------------------------
 Tue Feb 10 13:24:49 UTC 2026 - Dominik Heidler <dheidler@suse.de>
 
 - Added dependency perl(constant)

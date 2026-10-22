@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="extract">os-autoinst-distri-opensuse-deps.spec</param>
@@ -11,6 +11,6 @@
     <param name="changesgenerate">disable</param>
     <param name="changesauthor">dheidler@suse.de</param>
   </service>
-  <service name="set_version" mode="disabled"/>
-  <service name="format_spec_file" mode="disabled"/>
+  <service name="set_version" mode="disabled" />
+  <service name="format_spec_file" mode="disabled" />
 </services>
