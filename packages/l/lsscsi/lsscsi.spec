@@ -1,7 +1,7 @@
 #
 # spec file for package lsscsi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,34 @@
 
 
 Name:           lsscsi
-Version:        0.32
+Version:        0.33
 Release:        0
 Summary:        List all SCSI devices in the system
 License:        GPL-2.0-or-later
-Group:          Hardware/Other
 URL:            http://sg.danny.cz/scsi/lsscsi.html
-Source:         http://sg.danny.cz/scsi/%{name}-%{version}.tar.xz
-BuildRequires:  xz
+Source:         https://github.com/doug-gilbert/lsscsi/archive/refs/tags/r%{version}.tar.gz#/lsscsi-%{version}.tar.gz
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  perl(Autom4te::C4che)
+BuildRequires:  perl(Autom4te::ChannelDefs)
+BuildRequires:  perl(Autom4te::Channels)
+BuildRequires:  perl(Autom4te::Config)
+BuildRequires:  perl(Autom4te::Configure_ac)
+BuildRequires:  perl(Autom4te::FileUtils)
+BuildRequires:  perl(Autom4te::General)
+BuildRequires:  perl(Autom4te::Getopt)
+BuildRequires:  perl(Autom4te::Request)
+BuildRequires:  perl(Autom4te::XFile)
 Provides:       scsi:%{_bindir}/lsscsi
 
 %description
 The lsscsi command lists information about SCSI devices in Linux.
 
 %prep
-%autosetup
+%autosetup -n %{name}-r%{version}
 
 %build
+./autogen.sh
 %configure
 
 %install
@@ -43,6 +54,11 @@ The lsscsi command lists information about SCSI devices in Linux.
 %license COPYING
 %doc README ChangeLog
 %{_bindir}/lsscsi
+%{_bindir}/ls_name_value
+%{_bindir}/ls_name_value_rd
 %{_mandir}/man8/lsscsi.8%{?ext_man}
+%{_mandir}/man8/lsscsi_json.8%{?ext_man}
+%{_mandir}/man8/ls_name_value.8%{?ext_man}
+%{_mandir}/man8/ls_name_value_rd.8%{?ext_man}
 
 %changelog

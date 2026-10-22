@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 18 11:02:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.33 (upstream moved to github.com/doug-gilbert/lsscsi):
+  * New --json (-j) and --js-file options for JSON output
+  * New helpers: ls_name_value script and ls_name_value_rd tool
+    with man pages, plus an lsscsi_json man page
+  * New --sysroot option matching lsblk/lsmem/lscpu
+  * nvme-generic devices (e.g. /dev/ng0n1) now shown with
+    --generic; single-line NVMe output re-aligned
+  * Fix multipath WWID inconsistencies; prefer sysfs wwid
+  * Transport output fixes for FC, FCoE, SAS and SBP
+  * Add cmake build support alongside autotools
+  * Buffer bounds-checking hardening
+- Switch Source to the upstream git tag archive and run
+  ./autogen.sh at build time
+
+-------------------------------------------------------------------
 Mon Aug 29 10:19:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.32
