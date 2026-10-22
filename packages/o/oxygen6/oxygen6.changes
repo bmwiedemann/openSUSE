@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:33:32 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.1
+- Changes since 6.8.0:
+  * desktoptheme: Add missing pager active/hover highlights for Air
+  * color-schemes: Improve active titlebar text contrast for Oxygen Dark
+  * Update version for new release 6.8.1
+
+-------------------------------------------------------------------
 Thu Oct  8 16:54:39 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.8.0:
