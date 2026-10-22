@@ -1654,15 +1654,15 @@ packagesets:
    - libabsl_log_sink2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_malloc_internal2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_raw_hash_set2608_0_0 # reason: dvd:patterns-gnome-gnome
-   - libabsl_raw_logging_internal2608_0_0 # reason: dvd:patterns-gnome-gnome
+   - libabsl_raw_logging_internal2608_0_0 # reason: dvd:openSUSE-release
    - libabsl_spinlock_wait2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_stacktrace2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_status2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_statusor2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_str_format_internal2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_strerror2608_0_0 # reason: dvd:patterns-gnome-gnome
-   - libabsl_strings2608_0_0 # reason: dvd:patterns-gnome-gnome
-   - libabsl_strings_internal2608_0_0 # reason: dvd:patterns-gnome-gnome
+   - libabsl_strings2608_0_0 # reason: dvd:openSUSE-release
+   - libabsl_strings_internal2608_0_0 # reason: dvd:openSUSE-release
    - libabsl_symbolize2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_synchronization2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_throw_delegate2608_0_0 # reason: dvd:openSUSE-release
@@ -2903,8 +2903,7 @@ packagesets:
    - libwebp7 # reason: dvd:openSUSE-release
    - libwebpdemux2 # reason: dvd:openSUSE-release
    - libwebpmux3 # reason: dvd:openSUSE-release
-   - libwebrtc-audio-processing-1-3 # reason: dvd:openSUSE-release
-   - libwebrtc-audio-processing-2-1 # reason: dvd:patterns-gnome-gnome
+   - libwebrtc-audio-processing-2-1 # reason: dvd:openSUSE-release
    - libwinpr3-3 # reason: dvd:patterns-gnome-gnome
    - libwireplumber-0_5-0 # reason: dvd:openSUSE-release
    - libwlembed-0-0 # reason: dvd:patterns-xfce-xfce
@@ -5861,7 +5860,7 @@ packagesets:
    - libwebp7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libwebpdemux2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libwebpmux3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libwebrtc-audio-processing-1-3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libwebrtc-audio-processing-2-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libwireplumber-0_5-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libwrap0 # reason: opensuse_microos:patterns-microos-defaults
    - libwtmpdb0 # reason: opensuse_microos:patterns-containers-runtime_podman
@@ -7605,7 +7604,7 @@ packagesets:
    - libwebp7 # reason: opensuse_kalpa:patterns-kalpa-base
    - libwebpdemux2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libwebpmux3 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libwebrtc-audio-processing-1-3 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libwebrtc-audio-processing-2-1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libwireplumber-0_5-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libwrap0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libwtmpdb0 # reason: opensuse_kalpa:patterns-kalpa-base
