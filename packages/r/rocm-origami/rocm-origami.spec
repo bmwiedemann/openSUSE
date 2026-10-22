@@ -124,6 +124,7 @@ operations.
 %if 0%{?suse_version}
 %package -n %{pkg_name}
 Summary:        Shared libraries for %{name}
+Provides:       %{name} = %{version}-%{release}
 
 %description -n %{pkg_name}
 %{summary}
