@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Mon Oct 19 11:38:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.32.2:
+  * ## CVE:
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-4g67-jhpc-q5xp
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-799q-hjgw-g55g
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-cg4f-57hc-v7w7
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-rrp5-666j-g6gp
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-wg7g-gx9g-r96c
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-f53w-3364-jr35
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-66mr-7wc7-23vc
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-hqf8-95c7-6r92
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-8g9g-hqqp-fw69
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-jq25-3374-4262
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-7qw2-8h66-pvpw
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-5j39-x36c-x9pm
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-6p3w-fv52-cf24
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-4qq4-qwxq-49m8
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-x7w3-32ch-x2jq
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-v3q2-qjvf-7rqw
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-4vh4-3pc3-32p7
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-x4x6-2hrm-hvq9
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-8rjm-m7xg-mg6m
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-xc85-4mqc-xgcx
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-v85m-wg84-5ffh
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-6wqx-rv3q-vcxp
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-fg78-v8j5-8697
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-983v-jp34-f3fm
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-2557-79qc-6gfr
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-xjhw-2r55-m95g
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-m59q-wm7v-mp57
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-x26g-fp9v-c2pg
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-c426-ppvf-jpfg
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-5qqp-5ffm-m3p9
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-fqcj-rwww-2498
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-r387-jjq3-87hv
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-2c9x-4gr7-hrwx
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-x8vp-ff7m-294g
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-3pg4-5r42-wxvj
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-qw7w-hhxq-763c
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-w897-ffhv-5j7g
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-3hf9-w6hr-hf9j
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-j536-qc58-pmf8
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-fqw6-jf2h-6fj6
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-cx9c-q4jc-wm6c
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-wffv-rjv2-h2x2
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-jqf4-4p68-4p43
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-q82v-5wjg-6h57
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-m7xq-5f7v-hjvw
+  * ## What's Changed:
+    + [channels,urbdrc] fix missing input range check
+    + [channel,urbdrc] revert device reset and cancel
+    + [channels,urbdrc] redirect USB devices plugged in during the session
+      (configurable hotplug class filter, detach late-bound kernel drivers)
+    + [channels,rdpei] track the client ready state
+    + [channels,rdpsnd,mac] connect player with the stream format
+    + [channels,rdpdr] fix drive redirection with FreeRDP-based servers
+    + [channels,smartcard] fix transaction deadlocks and lockups with pcsc-lite
+    + [core,proxy] fix inverted validity check
+    + [core,mcs] clarify disconnect ultimatum send logging
+    + [core,capabilities] sanitize KeyboardType from TS_INPUT_CAPABILITYSET
+    + Sspi/kerberos/gfx/usb fixes
+    + [codec,planar] match allocator for free
+    + [codec,dsp] add MediaCodec AAC audio backend
+    + [codec,dsp] check input size is valid for gsm_decode
+    + [codec,h264] only reinitialize on hardware acceleration change
+    + [codec,h264] improve MediaCodec decoder and add H.264 encoder
+    + Rfx fix reachable assertions
+    + Yuv fixes
+    + [gateway,http] fix BodyContent use-after-free
+    + Gateway checks
+    + [client,common] fix reading the user AAD helper config
+    + [client,common] Populate smart sizing from settings into rdpFile
+    + [client,common] copy buffer for alignment.
+    + [client,ios] Improve UI for modern devices.
+    + [client,sdl] announce the clipboard contents present at connect
+    + [client,sdl] rail: do not report deactivation from focus events
+    + [client,x11] fix raw clipboard transfer
+    + Rdg fixes
+    + Drdynvc increment
+    + Code cleanup/hardening
+    + Clip text plain
+    + [ci,workflow] switch to current clang-tidy review
+    + [utils,smartcard] add cReaders range checks
+    + Winpr tools linking
+    + [winpr,sspi] use an enterprise principal (RFC 6806) for UPN suffix
+      domains
+    + [winpr,utils] log SAM file name
+    + [winpr,clipboard] make test failure verbose
+    + [winpr,crt] check all paths for overflow
+    + [winpr,ncrypt] fix geometry checks to work with multiple keys on one …
+    + [winpr,crt] fix endless loop in winpr_utfEscapedStringToUtf8
+    + [winpr,crt] make test failures verbose
+    + [winpr,clipboard] improve unit tests
+    + [winpr,file] fix GetStdHandle returning the same handle for all streams
+    + [winpr,crt] fix winpr_utfEscapedStringToUtf8 on big-endian
+    + [cmake] link dav1d, aom and yuv when found without pkg-config
+    + Hardening what else
+    + Channel lock during reply
+    + More proxy fixes
+    + [server,ntlm] fix missing UNICODE flag that causes authentication to fail
+    + Warn fixes mstsc
+    + [client] fix clipboard mime type
+    + [channels,drdynvc] release channelsById lock when channel creation fails
+    + [winpr,crt] fix big-endian wchar compare
+    + [server,proxy] ensure PEM is \0 terminated
+    + [crypto,x509] accept wildcard DNS names in certificates
+    + [utils,scard] lazy allocate return buffer
+    + OSS-Fuzz: Improve core client fuzzer, fix bugs detected
+    + [client,sdl] fix Wayland clipboard: stale data, stale updates, threading
+    + Fix a bug in HashTable_Foreach
+    + Lint warning fix
+    + [channels,drdynvc] refuse unknown channels before registering them
+    + [client,sdl] include cstdlib for std::free
+    + [primitives,sse] fix AVC444v1 chroma placement in sse41_ChromaV1ToYUV444
+    + [scripts,mingw] update LibreSSL to 4.3.3
+    + [channels,urbdrc] complete pending transfers when freeing a device
+    + [channels,urbdrc] fix deadlock between USB hotplug and dynamic channel
+      close
+    + [core,connection] reset codecs on deactivate-reactivate resize
+    + Winpr image fuzz
+    + X11 rail
+    + [client,sdl] renegotiate the desktop size in fullscreen
+
+-------------------------------------------------------------------
 Tue Sep 29 07:34:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.1:
