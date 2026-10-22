@@ -989,4 +989,41 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   CVE-2026-59204 (bsc#1271424), CVE-2026-59205 (bsc#1271425))</comment>
     <requestid>1365920</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>d397d485c08dfca9c1b97b38bc03b2f9</srcmd5>
+    <version>13.0.0</version>
+    <time>1792689914</time>
+    <user>anag_factory</user>
+    <comment>- Update to 13.0.0:
+  * Addresses CVE-2026-112390 (bsc#1286256), CVE-2026-112391 (bsc#1286273),
+    CVE-2026-112392 (bsc#1286287), CVE-2026-112393 (bsc#1286325),
+    CVE-2026-112394 (bsc#1286311), CVE-2026-112395 (bsc#1286312),
+    CVE-2026-112396 (bsc#1286313), CVE-2026-112397 (bsc#1286314),
+    CVE-2026-112398 (bsc#1286406), CVE-2026-112399 (bsc#1286368),
+    CVE-2026-112400 (bsc#1286370), CVE-2026-112401 (bsc#1286372),
+    CVE-2026-112402 (bsc#1286381), CVE-2026-112403 (bsc#1286405),
+    CVE-2026-112404 (bsc#1286388), CVE-2026-112405 (bsc#1286404),
+    CVE-2026-112406 (bsc#1286403), CVE-2026-112891 (bsc#1286402),
+    CVE-2026-112892 (bsc#1286401), CVE-2026-112893 (bsc#1286392),
+    CVE-2026-112894 (bsc#1286408), CVE-2026-112895 (bsc#1286411),
+    CVE-2026-112896 (bsc#1286400), CVE-2026-112897 (bsc#1286398),
+    CVE-2026-112898 (bsc#1286399), CVE-2026-112899 (bsc#1286489),
+    CVE-2026-112900 (bsc#1286397), CVE-2026-112901 (bsc#1286396)
+  * Remove undocumented GifImagePlugin._save_netpbm
+  * Remove ExifTags.IFD.Makernote
+  * Drop support for Python 3.10
+  * Validate TIFF tag values against libtiff's own field definition before
+    TIFFSetField
+  * Take libtiff scanline geometry tags from the image, not tiffinfo/exif
+  * Bound retained TIFF tag data by stream size
+  * Fix heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO
+  * Use bit plane row size for P;2L and P;4L rawmodes
+  * Allow floating point constants in ImageMath operations
+  * Add support for ImageOps invert, posterize and solarize of P images
+  * Respect explicit BASIC layout in font_variant()
+  * Improve support for TGA images in P mode with an RGBA palette
+  * Use reducing_gap when resizing RGBA and LA images
+  * Use pen widths when drawing ImageDraw2 shape outlines</comment>
+    <requestid>1387000</requestid>
+  </revision>
 </revisionlist>

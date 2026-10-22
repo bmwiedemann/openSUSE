@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Oct 22 01:37:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 13.0.0:
+  * Addresses CVE-2026-112390 (bsc#1286256), CVE-2026-112391 (bsc#1286273),
+    CVE-2026-112392 (bsc#1286287), CVE-2026-112393 (bsc#1286325),
+    CVE-2026-112394 (bsc#1286311), CVE-2026-112395 (bsc#1286312),
+    CVE-2026-112396 (bsc#1286313), CVE-2026-112397 (bsc#1286314),
+    CVE-2026-112398 (bsc#1286406), CVE-2026-112399 (bsc#1286368),
+    CVE-2026-112400 (bsc#1286370), CVE-2026-112401 (bsc#1286372),
+    CVE-2026-112402 (bsc#1286381), CVE-2026-112403 (bsc#1286405),
+    CVE-2026-112404 (bsc#1286388), CVE-2026-112405 (bsc#1286404),
+    CVE-2026-112406 (bsc#1286403), CVE-2026-112891 (bsc#1286402),
+    CVE-2026-112892 (bsc#1286401), CVE-2026-112893 (bsc#1286392),
+    CVE-2026-112894 (bsc#1286408), CVE-2026-112895 (bsc#1286411),
+    CVE-2026-112896 (bsc#1286400), CVE-2026-112897 (bsc#1286398),
+    CVE-2026-112898 (bsc#1286399), CVE-2026-112899 (bsc#1286489),
+    CVE-2026-112900 (bsc#1286397), CVE-2026-112901 (bsc#1286396)
+  * Remove undocumented GifImagePlugin._save_netpbm
+  * Remove ExifTags.IFD.Makernote
+  * Drop support for Python 3.10
+  * Validate TIFF tag values against libtiff's own field definition before
+    TIFFSetField
+  * Take libtiff scanline geometry tags from the image, not tiffinfo/exif
+  * Bound retained TIFF tag data by stream size
+  * Fix heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO
+  * Use bit plane row size for P;2L and P;4L rawmodes
+  * Allow floating point constants in ImageMath operations
+  * Add support for ImageOps invert, posterize and solarize of P images
+  * Respect explicit BASIC layout in font_variant()
+  * Improve support for TGA images in P mode with an RGBA palette
+  * Use reducing_gap when resizing RGBA and LA images
+  * Use pen widths when drawing ImageDraw2 shape outlines
+  * Reject TIFFs whose unpacker row is wider than libtiff's decoded row
+  * Write all channels when saving a one pixel wide RGB image as PCX
+  * Allow ImageOps to create zero dimension images
+  * Do not write IFD1 as a tag when converting EXIF to bytes
+  * Check WebP canvas size before creating decoder
+  * Apply "bits" to saving L mode PNG images
+  * Clear TIFF strip and tile buffer beyond previously decoded data
+  * Read from tall PSD tiles safely
+  * Only load new palette in putpalette() if it contains raw data
+  * Only combine PNG frames if the combined duration is still writable
+  * Support greyscale TIFFs with ExtraSamples 0 or 1
+  * Avoid repeated concatenation of GIF comments
+  * Require TIFF ColorMap length according to BitsPerSample
+  * Assign next PDF object ID in constant time
+  * Reject JPEG streams whose scanlines are wider or have more components
+  * Raise an error when calling quantize() with an empty palette
+  * Set PdfParser default max_nesting limit to 900
+  * Prevent infinite loop when rewriting PDF pages
+  * Check COM marker length when encoding JPEG
+  * Delay creating APNG disposal frame until necessary
+  * Fix combining GIF frames when an earlier duration is missing
+  * Limit WMF dimensions when loading to 0-65535
+  * Read XBM header line by line, instead of through regex
+  * Fix PSD layer tiles reading from the wrong file offset
+  * Avoid unused object ids when saving PDF
+  * Raise an error if PDF page loop exists
+  * Fixed passing zero dimension images into fromarrow()
+  * Do not treat RGB as a rawmode for an RGB palette
+  * Use while loop in read_prev_trailer() to avoid RecursionError
+  * Allow zero-length members in tar files
+  * Correctly manage glyph when rendering font
+  * Return early when applying ImageMorph MorphOp to an empty image
+  * Do not decode more MSP or BMP data than necessary
+  * Raise error when creating ImagePalette with unsupported mode
+  * Apply hoist optimizations to Geometry.c's transforms
+  * Allow for IFDRational with negative numerator and zero denominator
+  * Add escape argument to PSDraw text method
+  * Use lazy imports on Python 3.15 to improve startup speed
+  * Add GPSHPositioningError to GPS IFD tag data
+  * Do not open YCbCr colorspace images as RGB without libtiff
+  * Fix loading XPM images with transparency
+  * Open BMP image with black palette in mode 1
+  * Remove palette if no longer relevant after TIFF seek
+  * Add mixed-line-ending to prek and convert to LF
+  * Fix adding a new color when image palette has missing background or
+    transparency index
+  * Correct background color when using P mode images with ImageOps.pad()
+  * Fix 16-bit ImageFilter accuracy
+  * Fix RLE4 absolute mode decoding for odd pixel counts
+
+-------------------------------------------------------------------
 Thu Jul  9 07:54:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 12.3.0 (fixes CVE-2026-42311 (bsc#1270404),
