@@ -353,7 +353,6 @@ BuildRequires:  ninja
 %endif
 %endif
 
-Provides:       rocblas%{pkg_suffix} = %{version}-%{release}
 Requires:       rocm-filesystem%{pkg_suffix}
 Requires:       rocm-hip%{pkg_suffix}
 
@@ -368,6 +367,7 @@ programming language and optimized for AMD GPUs.
 %if 0%{?suse_version}
 %package -n %{pkg_name}
 Summary:        Shared libraries for %{name}
+Provides:       %{name} = %{version}-%{release}
 
 %description -n %{pkg_name}
 %{summary}

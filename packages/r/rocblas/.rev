@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1381658</requestid>
   </revision>
+  <revision rev="2" vrev="10">
+    <srcmd5>6a80a14df06c2d3b3283e014087a68f8</srcmd5>
+    <version>7.2.0</version>
+    <time>1792676935</time>
+    <user>anag_factory</user>
+    <comment>- Fix provides</comment>
+    <requestid>1386313</requestid>
+  </revision>
 </revisionlist>
