@@ -305,4 +305,12 @@ other affected packages to make sure the copies are refreshed.
     <comment>libunistring 1.4.2 boo#1258742 (forwarded request 1334823 from AndreasStieger)</comment>
     <requestid>1334920</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>532d2343f2f8bb13f6eeff54ac5445f8</srcmd5>
+    <version>1.5</version>
+    <time>1792689909</time>
+    <user>anag_factory</user>
+    <comment>libunistring 1.5 (forwarded request 1386451 from AndreasStieger)</comment>
+    <requestid>1386897</requestid>
+  </revision>
 </revisionlist>
