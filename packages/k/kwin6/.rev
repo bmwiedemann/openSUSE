@@ -475,4 +475,12 @@
   * 0001-opengl-gltexture-use-swizzles-to-ignore-non-existent.patch (forwarded request 1385219 from Vogtinator)</comment>
     <requestid>1385221</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>0f97a3412a0a2b0734e13579b811610f</srcmd5>
+    <version>6.8.1</version>
+    <time>1792676890</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.8.1, not even fully built yet (forwarded request 1386635 from Vogtinator)</comment>
+    <requestid>1386839</requestid>
+  </revision>
 </revisionlist>

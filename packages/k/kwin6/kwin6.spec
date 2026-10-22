@@ -29,7 +29,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -39,8 +39,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/kwin/-/merge_requests/10128, but amended a bit
-Patch1:         0001-opengl-gltexture-use-swizzles-to-ignore-non-existent.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
