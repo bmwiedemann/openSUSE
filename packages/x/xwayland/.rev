@@ -905,4 +905,26 @@
   (bsc#1281240, CVE-2026-93522, ZDI-CAN-32361)</comment>
     <requestid>1383338</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>de3024dec46a17606aef6ee8febd38e0</srcmd5>
+    <version>24.1.14</version>
+    <time>1792689890</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 24.1.14
+  * security release
+- supersedes the following patches
+  * 0001-xkb-NULL-text-pointer-after-free-in-_CheckSetDoodad-.patch
+  * 0002-xkb-allocate-names-keys-to-MAP_LENGTH-in-XkbAllocNam.patch
+  * 0003-xkb-widen-size_syms-num_syms-size_acts-num_acts-to-u.patch
+  * 0004-xkb-fix-CheckKeySyms-overwriting-request-range-symsP.patch
+  * 0005-randr-fix-size-and-offset-in-RRChangeProviderPropert.patch
+  * 0006-Xi-validate-modifier-values-in-ProcXIPassiveUngrabDe.patch
+  * 0007-glx-validate-dataBytes-against-cmdlen-in-RenderLarge.patch
+  * 0008-present-unlink-notifies-from-window-list-in-present_.patch
+  * 0009-dix-remove-passive-grabs-referencing-a-device-on-rem.patch
+  * 0010-Xi-add-bounds-check-for-barrier-events-in-input_cons.patch
+  * 0011-Xi-clean-up-gesture-sprite-traces-in-WindowGone.patch
+  * 0012-glamor-size-tmp_bits-buffer-for-source-coordinate-ra.patch</comment>
+    <requestid>1386790</requestid>
+  </revision>
 </revisionlist>
