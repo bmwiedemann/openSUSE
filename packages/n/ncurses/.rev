@@ -5916,4 +5916,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1383994</requestid>
   </revision>
+  <revision rev="343" vrev="116">
+    <srcmd5>b46623fac72e9a6ee607f6e6b9d46d1c</srcmd5>
+    <version>unknown</version>
+    <time>1792676850</time>
+    <user>anag_factory</user>
+    <comment>- Make patch FORTIFY_SOURCE_3-fix.patch optional means only for
+  glibc &lt; 2.36 and also simply disable FORTIFYing for specific
+  variable &quot;string&quot; (boo#1285901)
+
+- Add ncurses patch 20261010
+  + modify test/test_mouse.c to demonstrate mouse_get(), mouse_test() and
+    mouse_mask().</comment>
+    <requestid>1386702</requestid>
+  </revision>
 </revisionlist>

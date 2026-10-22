@@ -47,6 +47,7 @@
 %global tackvers 1.11
 %global tacklvl  20251210
 %global download invisible-island.net
+%global glibc %(rpm -q --queryformat '%%{VERSION}' -f /lib64/libc.so 2>/dev/null | sed 's/\.//g')
 # ${!...} and pushd is bash-specific
 %define _buildshell /bin/bash
 
@@ -71,6 +72,7 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libbsd)
 %endif
 BuildRequires:  screen
+BuildRequires:  sed
 %if %{with usepcre2}
 BuildRequires:  pkgconfig(libpcre2-8)
 %endif
@@ -400,7 +402,9 @@ rm -fr tack
 mv tack-* tack
 %patch -P1 -p0 -b .327x
 %patch -P2 -p0 -b .hs
-%patch -P3 -p1
+%if 0%{?glibc} && 0%{?glibc} < 236
+%patch -P3 -p1 -b .p3
+%endif
 %patch -P4 -p0 -b .ghost
 %patch -P0 -p0 -b .p0
 

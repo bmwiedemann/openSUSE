@@ -1,13 +1,19 @@
+Disable FORTIFY_SOURCE check for length of string in unget_wch.
+Leave the rest of the code as is.
+
+---
+ ncurses/widechar/lib_unget_wch.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/ncurses/widechar/lib_unget_wch.c b/ncurses/widechar/lib_unget_wch.c
-index 4ea26b6..df82974 100644
 --- a/ncurses/widechar/lib_unget_wch.c
 +++ b/ncurses/widechar/lib_unget_wch.c
-@@ -76,6 +76,8 @@ NCURSES_SP_NAME(unget_wch) (NCURSES_SP_DCLx const wchar_t wch)
- 
-     init_mb(state);
-     length = _nc_wcrtomb(NULL, wch, &state);
-+    if (length < MB_CUR_MAX)
-+      length = MB_CUR_MAX;
+@@ -79,7 +79,7 @@ NCURSES_SP_NAME(unget_wch) (NCURSES_SP_D
  
      if (length != (size_t) (-1)
  	&& length != 0) {
+-	char *string;
++	char * volatile string;
+ 
+ 	if ((string = (char *) malloc(length)) != NULL) {
+ 	    int n;
