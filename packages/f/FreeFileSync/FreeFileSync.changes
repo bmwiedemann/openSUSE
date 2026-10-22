@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 22 06:56:02 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.13:
+  * Reduced window flickering during resize (Windows 10)
+  * Prevent process termination on broken pipe errors (Linux/macOS)
+  * Work around SMB driver dropping modification time (macOS)
+  * Fixed privilege drop after auto-update (Linux)
+  * Correctly save minimum folder pair list height (Linux, macOS)
+- Refresh FreeFileSync-disable-in-app-updates.patch and
+  FreeFileSync-gui.patch to apply on 14.13
+- Add FreeFileSync-wx32-compat.patch
+  * Fix build with wxWidgets 3.2: wxColour::IsTransparent(),
+    wxAuiPaneInfo::IsHorizontal() and wxAuiPaneInfo::dock_size are
+    only available in wxWidgets >= 3.3
+- Fix the missing line continuation in the upstream Makefiles
+  (make: "missing separator") with a sed in %prep
+- Fix the invalid "#if  def __GNUC__" in zen/argon2.cpp and
+  xBRZ/src/xbrz.cpp (was "#if defined __GNUC__") with a sed in %prep
+
+-------------------------------------------------------------------
 Mon Oct  5 09:55:06 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add FreeFileSync-wxstring-char-type.patch

@@ -1,6 +1,5 @@
-diff -ruN a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source/ui/gui_status_handler.cpp
---- a/FreeFileSync/Source/ui/gui_status_handler.cpp	2026-10-05 11:26:30.986938552 +0200
-+++ b/FreeFileSync/Source/ui/gui_status_handler.cpp	2026-10-05 11:26:31.021227748 +0200
+--- a/FreeFileSync/Source/ui/gui_status_handler.cpp	2026-10-16 18:56:58.000000000 +0200
++++ b/FreeFileSync/Source/ui/gui_status_handler.cpp	2026-10-22 08:52:32.868607883 +0200
 @@ -70,27 +70,33 @@
                  //case wxAUI_DOCK_CENTRE:
          }
@@ -38,10 +37,9 @@ diff -ruN a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source/
          //------------------------------------------------------------------
  
          statusPanel.Show();
-diff -ruN a/FreeFileSync/Source/ui/main_dlg.cpp b/FreeFileSync/Source/ui/main_dlg.cpp
---- a/FreeFileSync/Source/ui/main_dlg.cpp	2026-10-05 11:26:30.987030691 +0200
-+++ b/FreeFileSync/Source/ui/main_dlg.cpp	2026-10-05 11:26:31.022104585 +0200
-@@ -1273,11 +1273,11 @@
+--- a/FreeFileSync/Source/ui/main_dlg.cpp	2026-10-22 08:52:32.778874254 +0200
++++ b/FreeFileSync/Source/ui/main_dlg.cpp	2026-10-22 08:52:32.870875279 +0200
+@@ -1276,11 +1276,11 @@
  
      //--------------------------------------------------------------------------------
      m_checkBoxMatchCase->SetValue(globalCfg_.mainDlg.textSearchRespectCase);
@@ -56,7 +54,7 @@ diff -ruN a/FreeFileSync/Source/ui/main_dlg.cpp b/FreeFileSync/Source/ui/main_dl
  
      //compare progress dialog minimum sizes are layout-dependent + can't be changed by user => don't load stale values from config
      std::vector<std::tuple<wxAuiPaneInfo*, wxSize /*min size*/, wxSize /*best size*/>> paneConstraints;
-@@ -3141,8 +3141,8 @@
+@@ -3147,8 +3147,8 @@
      //----------------------------------------------------------------------------------------
  
      bool addedSeparator = false;
@@ -67,7 +65,7 @@ diff -ruN a/FreeFileSync/Source/ui/main_dlg.cpp b/FreeFileSync/Source/ui/main_dl
          if (!paneInfo.IsShown() &&
              paneInfo.window != compareStatus_->getAsWindow() &&
              paneInfo.window != m_panelLog                    &&
-@@ -3160,7 +3160,7 @@
+@@ -3166,7 +3166,7 @@
                  this->auiMgr_.Update();
              });
          }
@@ -76,32 +74,31 @@ diff -ruN a/FreeFileSync/Source/ui/main_dlg.cpp b/FreeFileSync/Source/ui/main_dl
      menu.popup(*this);
  }
  
-diff -ruN a/wx+/darkmode.cpp b/wx+/darkmode.cpp
---- a/wx+/darkmode.cpp	2026-10-05 11:26:30.992167023 +0200
-+++ b/wx+/darkmode.cpp	2026-10-05 11:26:31.021355402 +0200
-@@ -53,7 +53,7 @@
- {
+--- a/wx+/darkmode.cpp	2026-10-16 18:56:58.000000000 +0200
++++ b/wx+/darkmode.cpp	2026-10-22 08:52:32.887368219 +0200
+@@ -55,7 +55,7 @@
      assert(!refGlobalColorHook());
+     assert(wxTopLevelWindows.empty());
  
 -    globalDefaultThemeIsDark = wxSystemSettings::GetAppearance().AreAppsDark();
 +    globalDefaultThemeIsDark = false;
-     ZEN_ON_SCOPE_EXIT(if (!refGlobalColorHook()) refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance() and despite errors
+     ZEN_ON_SCOPE_EXIT(if (!refGlobalColorHook()) refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance()
  
      //caveat: on macOS there are more themes than light/dark: https://developer.apple.com/documentation/appkit/nsappearance/name-swift.struct
-@@ -86,10 +86,6 @@
+@@ -87,11 +87,6 @@
+ 
      try
      {
-         ZEN_ON_SCOPE_SUCCESS(refGlobalColorHook() = std::make_unique<SysColorsHook>()); //*after* SetAppearance()
--        if (wxApp::AppearanceResult rv = wxTheApp->SetAppearance(colTheme);
+-        if (const wxApp::AppearanceResult rv = wxTheApp->SetAppearance(colTheme);
 -            rv != wxApp::AppearanceResult::Ok)
--            throw SysError(formatSystemError("wxApp::SetAppearance",
--                                             rv == wxApp::AppearanceResult::CannotChange ? L"CannotChange" : L"Failure", L"" /*errorMsg*/));
+-            assert(rv != wxApp::AppearanceResult::CannotChange), //unused since wx 3.3.4
+-                   throw SysError(formatSystemError("wxApp::SetAppearance", L"", L"" /*errorMsg*/));
+-                
+         refGlobalColorHook() = std::make_unique<SysColorsHook>();
      }
      catch (const SysError& e) { throw FileError(_("Failed to update the color theme."), e.toString()); }
- }
-diff -ruN a/wx+/darkmode.h b/wx+/darkmode.h
---- a/wx+/darkmode.h	2026-10-05 11:26:30.991614771 +0200
-+++ b/wx+/darkmode.h	2026-10-05 11:26:31.044585835 +0200
+--- a/wx+/darkmode.h	2026-10-16 18:56:57.000000000 +0200
++++ b/wx+/darkmode.h	2026-10-22 08:52:32.872410686 +0200
 @@ -7,13 +7,16 @@
  
  #include <zen/file_error.h>
@@ -120,9 +117,9 @@ diff -ruN a/wx+/darkmode.h b/wx+/darkmode.h
  
  void colorThemeInit(wxApp& app, ColorTheme colTheme); //throw FileError
  void colorThemeCleanup();
-@@ -21,3 +24,27 @@
- bool equalAppearance(ColorTheme colTheme1, ColorTheme colTheme2);
- void changeColorTheme(ColorTheme colTheme); //throw FileError
+@@ -23,3 +26,27 @@
+ DEFINE_NEW_FILE_ERROR(ErrorRestartRequired)
+ void changeColorTheme(ColorTheme colTheme); //throw ErrorRestartRequired, FileError
  }
 +struct wxColorHook
 +{
@@ -148,9 +145,8 @@ diff -ruN a/wx+/darkmode.h b/wx+/darkmode.h
 +    }
 +};
 +
-diff -ruN a/wx+/dc.h b/wx+/dc.h
---- a/wx+/dc.h	2026-10-05 11:26:30.991646261 +0200
-+++ b/wx+/dc.h	2026-10-05 11:26:31.020577178 +0200
+--- a/wx+/dc.h	2026-10-16 18:56:57.000000000 +0200
++++ b/wx+/dc.h	2026-10-22 08:52:32.872609305 +0200
 @@ -341,7 +341,6 @@
      {
          assert(wnd.IsDoubleBuffered());
@@ -159,9 +155,8 @@ diff -ruN a/wx+/dc.h b/wx+/dc.h
      }
  
      operator wxDC& ()
-diff -ruN a/wx+/grid.cpp b/wx+/grid.cpp
---- a/wx+/grid.cpp	2026-10-05 11:26:30.992397141 +0200
-+++ b/wx+/grid.cpp	2026-10-05 11:26:31.020907086 +0200
+--- a/wx+/grid.cpp	2026-10-16 18:56:58.000000000 +0200
++++ b/wx+/grid.cpp	2026-10-22 08:52:32.873173033 +0200
 @@ -172,7 +172,7 @@
  
  wxRect GridData::drawCellBorder(wxDC& dc, const wxRect& rect) //returns remaining rectangle

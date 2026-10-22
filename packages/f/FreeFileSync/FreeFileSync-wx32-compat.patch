@@ -1,0 +1,26 @@
+diff -ruN a/FreeFileSync/Source/ui/main_dlg.cpp b/FreeFileSync/Source/ui/main_dlg.cpp
+--- a/FreeFileSync/Source/ui/main_dlg.cpp
++++ b/FreeFileSync/Source/ui/main_dlg.cpp
+@@ -438,7 +438,7 @@ void updateTopButton(wxBitmapButton& btn
+                      const wxColor& highlightCol /*optional*/)
+ {
+     wxColor backCol = highlightCol.IsOk() ? highlightCol : btn.GetBackgroundColour();
+-    if (backCol.IsTransparent()) //wxMAC: btn.GetBackgroundColour() == wxTransparentColor since wx 3.3.4!
++    if (backCol.Alpha() == wxALPHA_TRANSPARENT) //wxMAC: btn.GetBackgroundColour() == wxTransparentColor since wx 3.3.4!
+         backCol = wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE);
+ 
+     wxImage iconImg = highlightCol.IsOk() ? img : greyScale(img);
+@@ -6035,12 +6035,11 @@ void MainDialog::updateGuiForFolderPair(
+     addPairCountLast_ = addPairCountOpt;
+ 
+     wxAuiPaneInfo& dirPane = auiMgr_.GetPane(m_panelDirectoryPairs);
+-    if (dirPane.IsHorizontal())
++    if (dirPane.dock_direction == wxAUI_DOCK_TOP || dirPane.dock_direction == wxAUI_DOCK_BOTTOM) //wxAuiPaneInfo::IsHorizontal() needs wx >= 3.3
+     {
+         dirPane.min_size.x = dipToWxsize(100);
+         dirPane.min_size.y  = firstPairHeight + addPairCountMin * addPairHeight;
+         dirPane.best_size.y = firstPairHeight + addPairCountOpt * addPairHeight;
+-        dirPane.dock_size = 0; //triggers size re-calculate (alternative: set to = best_size.y since !dirPane.HasBorder())
+ 
+         //########################################################################################################################
+         //wxAUI hack: call wxAuiPaneInfo::Fixed() to apply best size:

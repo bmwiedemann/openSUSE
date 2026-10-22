@@ -413,4 +413,28 @@ It would be nice to have this application available in the default repos. </comm
 </comment>
     <requestid>1382490</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>883fc161731568692f6344d233b93fe5</srcmd5>
+    <version>14.13</version>
+    <time>1792677087</time>
+    <user>anag_factory</user>
+    <comment>- Update to 14.13:
+  * Reduced window flickering during resize (Windows 10)
+  * Prevent process termination on broken pipe errors (Linux/macOS)
+  * Work around SMB driver dropping modification time (macOS)
+  * Fixed privilege drop after auto-update (Linux)
+  * Correctly save minimum folder pair list height (Linux, macOS)
+- Refresh FreeFileSync-disable-in-app-updates.patch and
+  FreeFileSync-gui.patch to apply on 14.13
+- Add FreeFileSync-wx32-compat.patch
+  * Fix build with wxWidgets 3.2: wxColour::IsTransparent(),
+    wxAuiPaneInfo::IsHorizontal() and wxAuiPaneInfo::dock_size are
+    only available in wxWidgets &gt;= 3.3
+- Fix the missing line continuation in the upstream Makefiles
+  (make: &quot;missing separator&quot;) with a sed in %prep
+- Fix the invalid &quot;#if  def __GNUC__&quot; in zen/argon2.cpp and
+  xBRZ/src/xbrz.cpp (was &quot;#if defined __GNUC__&quot;) with a sed in %prep
+</comment>
+    <requestid>1387052</requestid>
+  </revision>
 </revisionlist>

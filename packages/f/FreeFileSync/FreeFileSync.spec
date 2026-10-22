@@ -21,7 +21,7 @@
 %endif
 
 Name:           FreeFileSync
-Version:        14.12
+Version:        14.13
 Release:        0
 Summary:        Backup software to synchronize files and folders
 License:        GPL-3.0-or-later
@@ -45,6 +45,8 @@ Patch5:         wxwidgets-no-wx3.3.1-WxLogCollector.patch
 Patch6:         FreeFileSync-wxstring-char-type.patch
 # PATCH-FIX-OPENSUSE FreeFileSync-libssh2-no-store-overflow.patch -- LIBSSH2_ERROR_STORE_OVERFLOW does not exist in libssh2 <= 1.11.1
 Patch7:         FreeFileSync-libssh2-no-store-overflow.patch
+# PATCH-FIX-OPENSUSE FreeFileSync-wx32-compat.patch -- 14.13 uses wxColour::IsTransparent(), wxAuiPaneInfo::IsHorizontal() and wxAuiPaneInfo::dock_size, which only exist in wxWidgets >= 3.3
+Patch8:         FreeFileSync-wx32-compat.patch
 BuildRequires:  boost-devel >= 1.54
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 15
 BuildRequires:  libcurl-devel
@@ -80,6 +82,10 @@ This command will usually trigger a FreeFileSync batch job.
 %autosetup -p1 -c %{name}-%{version}
 touch zen/warn_static.h
 sed -i 's|-Wfatal-errors||' FreeFileSync/Source/Makefile FreeFileSync/Source/RealTimeSync/Makefile
+# 14.13 ships Makefiles with a missing line continuation ("missing separator"); no-op once fixed upstream
+sed -i 's|^\( *-Wno-unused-function -Wno-deprecated-enum-enum-conversion\)$|\1 \\|' FreeFileSync/Source/Makefile FreeFileSync/Source/RealTimeSync/Makefile
+# 14.13 ships "#if  def __GNUC__" (invalid, was "#if defined __GNUC__"); no-op once fixed upstream
+sed -i 's|^#if  def __GNUC__|#if defined __GNUC__|' zen/argon2.cpp xBRZ/src/xbrz.cpp
 sed -i 's|const override|const|' FreeFileSync/Source/ui/small_dlgs.cpp
 sed -i 's/\r$//' License.txt
 mkdir FreeFileSync/Build/Bin
