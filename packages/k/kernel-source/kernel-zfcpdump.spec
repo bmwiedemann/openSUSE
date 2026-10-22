@@ -17,9 +17,9 @@
 # needssslcertforbuild
 
 
-%define srcversion 7.2
-%define patchversion 7.2.11
-%define git_commit 308af374c94a857bda9256ffe85bcdb72b1f7780
+%define srcversion 7.3
+%define patchversion 7.3.0
+%define git_commit 7f1f6b13bae94d7fa8dab0b17bf0dee081868ed0
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-zfcpdump
-Version:        7.2.11
+Version:        7.3.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g308af37
+Release:        <RELEASE>.g7f1f6b1
 %else
 Release:        0
 %endif
@@ -1266,7 +1266,7 @@ if test -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor -a $SHSK_VAL = "n" 
 elif test ! -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor \
 	-o 0%{?ignore_kabi_badness} -ne 0 \
 	-o -e %_sourcedir/IGNORE-KABI-BADNESS ; then
-	: # do nothing
+	CONFIG_SUSE_HAVE_STABLE_KABI="--disable CONFIG_SUSE_HAVE_STABLE_KABI"
 elif test ! -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor -a $SHSK_VAL = "y" ; then
 	# only message, not an error
 	echo "Disable CONFIG_SUSE_HAVE_STABLE_KABI or supply KABI reference data in -%build_flavor."

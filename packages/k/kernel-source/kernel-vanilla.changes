@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Oct 19 14:53:53 CEST 2026 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/tracing-Do-not-initialize-tracefs-work-if-tracing-is-disabled.patch.
+  Update upstream status.
+- commit f50be1b
+
+-------------------------------------------------------------------
+Mon Oct 19 12:43:23 CEST 2026 - msuchanek@suse.de
+
+- ring-buffer: Do not check si_mem_available() before deferred init completes
+  (https://lore.kernel.org/all/arYskzbiaNzBR9MD@kunlun.suse.cz/).
+  Refresh to current version
+- commit 33dfa83
+
+-------------------------------------------------------------------
+Mon Oct 19 12:41:50 CEST 2026 - msuchanek@suse.de
+
+- ring-buffer: Do not check si_mem_available() before deferred init completes
+  (https://lore.kernel.org/all/arYskzbiaNzBR9MD@kunlun.suse.cz/).
+  Refresh to current version
+- commit 7db0b58
+
+-------------------------------------------------------------------
+Mon Oct 19 06:54:32 CEST 2026 - mkubecek@suse.cz
+
+- update to 7.3
+- eliminate 1 patch
+  - patches.suse/tracing-Do-not-initialize-tracefs-work-if-tracing-is-disabled.patch (b3b974008388)
+- refresh
+  - patches.suse/ring-buffer-Do-not-check-si_mem_available-during-SYSTEM_BOOTING.patch
+- refresh configs (headers only)
+- commit e74a11c
+
+-------------------------------------------------------------------
+Mon Oct 19 06:37:23 CEST 2026 - mkubecek@suse.cz
+
+- config: disable QCOM firmware driver on s390x
+- QCOM_PAS=n (s390x)
+- QCOM_SCM=n (s390x)
+  This driver breaks s390x/zfcpdump build. As it does not seem to make sense
+  on s390x, just disable it in s390x configs.
+- commit 793f78f
+
+-------------------------------------------------------------------
+Fri Oct 16 10:16:40 CEST 2026 - msuchanek@suse.de
+
+- rpm/mkspec: Remove duplicate line
+- commit 58063dc
+
+-------------------------------------------------------------------
+Fri Oct 16 08:36:05 CEST 2026 - msuchanek@suse.de
+
+- Fix 32bit Arm build project
+- commit 0dd9bc3
+
+-------------------------------------------------------------------
+Fri Oct 16 08:29:42 CEST 2026 - msuchanek@suse.de
+
+- rpm/mkspec: Adjust for 32bit Arm arch rename
+- commit 38dbb31
+
+-------------------------------------------------------------------
 Thu Oct 15 13:07:15 CEST 2026 - jslaby@suse.cz
 
 - Update
@@ -604,12 +667,27 @@ Thu Oct 15 12:39:17 CEST 2026 - jslaby@suse.cz
 - commit 5dcab15
 
 -------------------------------------------------------------------
+Tue Oct 13 17:44:57 CEST 2026 - mkoutny@suse.com
+
+- Revert "kernel-binary.spec.in: Do not disable SUSE_HAVE_STABLE_KABI"
+  This reverts commit 8c0ce5cea0a96b9448e784c57628c0de681256a7.
+  The macro CONFIG_SUSE_HAVE_STABLE_KABI controls additional checks within
+  the build process. When the build is set to ignore KABI badness, these
+  checks should be disabled too. Therefore revert the change.
+  The macro is not meant to affect layout of structures. Branches
+  containing such ifdefs will be fixed.
+  (Optionally, the kernel-source could switch suse_kabi_static_assert()
+  from failure to a (build) warning on !CONFIG_SUSE_HAVE_STABLE_KABI
+  setups. But that isn't easily achievable in today's compilers.)
+- commit 3e5cb69
+
+-------------------------------------------------------------------
 Mon Oct 12 11:51:48 CEST 2026 - msuchanek@suse.de
 
 - tracing: Do not initialize tracefs work if tracing is disabled
   (https://lore.kernel.org/all/arYskzbiaNzBR9MD@kunlun.suse.cz/).
   Refresh to current version
-- commit eaccb59
+- commit 23b7ae0
 
 -------------------------------------------------------------------
 Mon Oct 12 07:33:14 CEST 2026 - jslaby@suse.cz
@@ -2055,6 +2133,14 @@ Mon Oct 12 07:30:24 CEST 2026 - jslaby@suse.cz
 - commit 917d70d
 
 -------------------------------------------------------------------
+Mon Oct 12 07:18:52 CEST 2026 - mkubecek@suse.cz
+
+- update to 7.3-rc7
+- update configs
+  - ERRATA_SIFIVE_MAL_9092 (riscv64 only)
+- commit b452a06
+
+-------------------------------------------------------------------
 Wed Oct  7 09:59:25 CEST 2026 - jslaby@suse.cz
 
 - tty: add missing driver flag kernel-doc colon (git-fixes).
@@ -2086,6 +2172,25 @@ Tue Oct  6 12:37:07 CEST 2026 - msuchanek@suse.de
   in this particular build failure to adhere to the ABI specification does
   not result in a build failure.
 - commit 8c0ce5c
+
+-------------------------------------------------------------------
+Sun Oct  4 23:27:51 CEST 2026 - mkubecek@suse.cz
+
+- update to 7.3-rc6
+- update configs
+  - ARM64_ERRATUM_3821522=y (arm64 only)
+- commit 8e160e9
+
+-------------------------------------------------------------------
+Sun Oct  4 23:19:02 CEST 2026 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- move unsortable patches out of sorted section
+  - patches.suse/early-boot-crash-in-init_tracer_tracefs.patch
+  - patches.suse/powerpc-Restore-all-registers-after-a-traced-syscall-again.patch
+- move queued patch into sorted section
+  - patches.suse/powerpc-ftrace-Don-t-restore-r13-during-ftrace_regs_caller.patch
+- commit faabea2
 
 -------------------------------------------------------------------
 Sun Oct  4 10:22:02 CEST 2026 - jslaby@suse.cz
@@ -3765,7 +3870,7 @@ Wed Sep 30 10:35:16 CEST 2026 - msuchanek@suse.de
 
 - ring-buffer: Do not check si_mem_available() during SYSTEM_BOOTING
   (https://lore.kernel.org/all/arYskzbiaNzBR9MD@kunlun.suse.cz/).
-- commit 9d7bd86
+- commit 9137cc5
 
 -------------------------------------------------------------------
 Wed Sep 30 08:08:48 CEST 2026 - jslaby@suse.cz
@@ -4134,27 +4239,33 @@ Tue Sep 29 20:25:18 CEST 2026 - msuchanek@suse.de
 Tue Sep 29 16:07:40 CEST 2026 - msuchanek@suse.de
 
 - Refresh patches.suse/powerpc-ftrace-Don-t-restore-r13-during-ftrace_regs_caller.patch.
-- commit 32f1032
+- commit e7904b6
 
 -------------------------------------------------------------------
 Tue Sep 29 15:15:31 CEST 2026 - msuchanek@suse.de
 
 - powerpc: Restore all registers after a traced syscall again
   (jsc#PED-15113 git-fixes).
-- commit aca5389
+- commit d51f523
 
 -------------------------------------------------------------------
 Tue Sep 29 15:13:00 CEST 2026 - msuchanek@suse.de
 
 - Fix early boot crash in init_tracer_tracefs
   (https://lore.kernel.org/all/arYskzbiaNzBR9MD@kunlun.suse.cz/).
-- commit 7d63c88
+- commit be741e4
 
 -------------------------------------------------------------------
 Tue Sep 29 15:10:55 CEST 2026 - msuchanek@suse.de
 
 - Refresh patches.suse/x86-mm-pat-fix-effective-RW-computation-in-lookup_address_.patch.
 - commit f0bad6b
+
+-------------------------------------------------------------------
+Mon Sep 28 17:34:24 CEST 2026 - mkubecek@suse.cz
+
+- update to 7.3-rc5
+- commit ea35bc8
 
 -------------------------------------------------------------------
 Sat Sep 26 09:00:58 CEST 2026 - jslaby@suse.cz
@@ -5875,6 +5986,13 @@ Fri Sep 25 23:08:52 CEST 2026 - jslaby@suse.cz
   patches.kernel.org/7.2.8-196-ASoC-ux500-Parenthesize-MSP_-RX-TX-_CLKPOL_BIT-.patch.
 - Update config files.
 - commit 93e89db
+
+-------------------------------------------------------------------
+Wed Sep 23 14:25:03 CEST 2026 - mkubecek@suse.cz
+
+- series.conf: cleanup
+  Move an unsortable patch out of sorted section.
+- commit 71b3745
 
 -------------------------------------------------------------------
 Tue Sep 22 10:00:24 CEST 2026 - jslaby@suse.cz
@@ -9911,6 +10029,17 @@ Mon Sep 21 23:18:11 CEST 2026 - jslaby@suse.cz
 - commit 15b90ce
 
 -------------------------------------------------------------------
+Mon Sep 21 00:13:26 CEST 2026 - mkubecek@suse.cz
+
+- update to 7.3-rc4
+- drop mainline patch
+  - patches.suse/net-qrtr-resend-HELLO-on-MHI-resume.patch (6a5719cc3ef2)
+- update configs
+  - SND_SOC_ADAU1977_SPI=n (=m on arm64 and armv7hl)
+  - SND_SOC_ADAU1977_I2C=n (=m on arm64 and armv7hl)
+- commit 63a8c41
+
+-------------------------------------------------------------------
 Sun Sep 20 09:51:35 CEST 2026 - jslaby@suse.cz
 
 - x86/alternatives: Exclude text poking against change_page_attr()
@@ -9946,11 +10075,25 @@ Fri Sep 18 14:48:43 CEST 2026 - mbrugger@suse.com
 - commit 125ac6f
 
 -------------------------------------------------------------------
+Wed Sep 16 20:34:42 CEST 2026 - mkubecek@suse.cz
+
+- Delete patches.suse/tools-power-x86-intel-speed-select-Fix_build_race.patch.
+  As per IRC discussion, this temporary build fix is no longer needed.
+- commit 5c9548d
+
+-------------------------------------------------------------------
 Tue Sep 15 08:50:07 CEST 2026 - jslaby@suse.cz
 
 - RDMA/erdma: Use IRQ-safe XArray helpers for QP and CQ tables
   (git-fixes).
 - commit 3d19f11
+
+-------------------------------------------------------------------
+Tue Sep 15 08:38:16 CEST 2026 - vbabka@suse.cz
+
+- net: qrtr: resend HELLO on MHI resume
+  (https://lore.kernel.org/all/20260909055846.16539-1-daniel@quora.org/).
+- commit aa928ec
 
 -------------------------------------------------------------------
 Tue Sep 15 06:31:17 CEST 2026 - jslaby@suse.cz
@@ -13743,6 +13886,20 @@ Mon Sep 14 07:48:37 CEST 2026 - jslaby@suse.cz
 - commit 16c1085
 
 -------------------------------------------------------------------
+Mon Sep 14 00:18:45 CEST 2026 - mkubecek@suse.cz
+
+- update to 7.3-rc3
+- drop 7 mainline patches:
+  - patches.rpmify/platform-x86-amd-pmf-fix-build-on-CONFIG_AMD_PMF_DEBUG.patch (2c1dde8a69a3)
+  - patches.suse/powerpc-Do-not-restore-KUAP-in-arch_exit_to_user_mode_prepare.patch
+  - patches.suse/powerpc-Don-t-drop-_TIF_RESTOREALL-on-syscall-restart.patch
+  - patches.suse/powerpc-entry-Clear-TIF_SYSCALL_RET-before-syscall-error-return.patch
+  - patches.suse/powerpc-entry-Fix-double-accounting-of-user-time-on-interrupt-entry.patch (11ae2e1dc583)
+  - patches.suse/powerpc-entry-Fix-irq_soft_mask-corruption-on-replayed-interrupt-exit.patch
+  - patches.suse/soundwire-dmi-quirks-Disable-ghost-Realtek-on-Asus-Z.patch
+- commit f115ed6
+
+-------------------------------------------------------------------
 Sat Sep 12 08:50:42 CEST 2026 - jslaby@suse.cz
 
 - Update
@@ -15122,6 +15279,15 @@ Fri Sep 11 13:34:45 CEST 2026 - jslaby@suse.cz
 - commit f17db31
 
 -------------------------------------------------------------------
+Thu Sep 10 07:46:30 CEST 2026 - mkubecek@suse.cz
+
+- series.conf: cleanup
+  We already have a section for build fixes/hacks so move the new patch
+  patches.suse/tools-power-x86-intel-speed-select-Fix_build_race.patch
+  into it.
+- commit a48d058
+
+-------------------------------------------------------------------
 Wed Sep  9 07:01:27 CEST 2026 - jslaby@suse.cz
 
 - Refresh
@@ -15150,8 +15316,24 @@ Tue Sep  8 08:09:12 CEST 2026 - jslaby@suse.cz
   patches.suse/powerpc-Don-t-drop-_TIF_RESTOREALL-on-syscall-restart.patch.
 - Refresh
   patches.suse/powerpc-entry-Fix-irq_soft_mask-corruption-on-replayed-interrupt-exit.patch.
+- Refresh
+  patches.suse/powerpc-entry-Clear-TIF_SYSCALL_RET-before-syscall-error-return.patch.
   Update upstream status (and check in the latest changes).
-- commit e841c45
+- Refresh
+  patches.suse/powerpc-Do-not-restore-KUAP-in-arch_exit_to_user_mode_prepare.patch.
+- Refresh
+  patches.suse/powerpc-Don-t-drop-_TIF_RESTOREALL-on-syscall-restart.patch.
+- Refresh
+  patches.suse/powerpc-entry-Fix-irq_soft_mask-corruption-on-replayed-interrupt-exit.patch.
+  Update upstream status (and check in the latest changes).
+- commit 56d5eb9
+
+-------------------------------------------------------------------
+Mon Sep  7 18:54:23 CEST 2026 - trenn@suse.de
+
+- tools/power/x86/intel-speed-select: Fix link creation race in
+  Makefile (bsc#1279549).
+- commit be2c0e9
 
 -------------------------------------------------------------------
 Mon Sep  7 17:57:41 CEST 2026 - jslaby@suse.cz
@@ -16471,6 +16653,19 @@ Mon Sep  7 17:57:41 CEST 2026 - jslaby@suse.cz
 - commit eac7913
 
 -------------------------------------------------------------------
+Mon Sep  7 06:21:11 CEST 2026 - mkubecek@suse.cz
+
+- update to 7.3-rc2
+- commit b316b3a
+
+-------------------------------------------------------------------
+Sun Sep  6 22:52:57 CEST 2026 - mkubecek@suse.cz
+
+- series.conf: cleanup
+  Move unsortable patches out of sorted section.
+- commit c14d508
+
+-------------------------------------------------------------------
 Fri Sep  4 09:22:25 CEST 2026 - jslaby@suse.cz
 
 - x86/alternative: Exclude text poking against change_page_attr()
@@ -16491,6 +16686,8 @@ Fri Sep  4 09:05:46 CEST 2026 - msuchanek@suse.de
 
 - powerpc/entry: Fix double accounting of user time on interrupt
   entry (bsc#1277802 ltc#222379).
+- powerpc/entry: Clear TIF_SYSCALL_RET before syscall error return
+  (bsc#1277802 ltc#222379).
 - commit b3d022a
 
 -------------------------------------------------------------------
@@ -16650,6 +16847,12 @@ Wed Sep  2 17:09:40 CEST 2026 - msuchanek@suse.de
   interrupt exit (bsc#1277802 ltc#222379).
 - powerpc: Don't drop _TIF_RESTOREALL on syscall restart
   (bsc#1277802 ltc#222379).
+- powerpc: Do not restore KUAP in arch_exit_to_user_mode_prepare()
+  (bsc#1277802 ltc#222379).
+- powerpc/entry: Fix irq_soft_mask corruption on replayed
+  interrupt exit (bsc#1277802 ltc#222379).
+- powerpc: Don't drop _TIF_RESTOREALL on syscall restart
+  (bsc#1277802 ltc#222379).
 - commit 5183f1b
 
 -------------------------------------------------------------------
@@ -16666,6 +16869,144 @@ Tue Sep  1 16:42:04 CEST 2026 - svarbanov@suse.de
   From the 7.3 configs from the below commit merged using:
   ./scripts/kconfig/merge_config.sh -m config-7.1 config-7.3
   (cherry picked from commit a1eacb59146415c72587ce7793cd62c6e13cea10)
+- config: Update armv6hl config files for 7.3.0-rc1
+  Updated configs:
+  +CONFIG_CC_HAS_ALLOC_TOKEN=y
+  +CONFIG_HAVE_POSIX_CPU_TIMERS_TASK_WORK=y
+  +CONFIG_POSIX_CPU_TIMERS_TASK_WORK=y
+  +CONFIG_CPU_ARM1136R0=y
+  +CONFIG_CPU_ARM1136R1=y
+  +CONFIG_CPU_ARM1176=y
+  +CONFIG_DPM_WATCHDOG_ENABLED=y
+  +CONFIG_ARCH_HAS_DELAY_TIMER=y
+  +CONFIG_KMALLOC_PARTITION_CACHES=y
+  +CONFIG_KMALLOC_PARTITION_RANDOM=y
+  +CONFIG_NETFILTER_NETLINK=y
+  +CONFIG_NET_DSA_TAG_MT7628=m
+  +CONFIG_NET_DSA_TAG_NETC=m
+  +CONFIG_QCOM_PAS=y
+  +CONFIG_QCOM_SCM=y
+  +CONFIG_QCOM_TZMEM=y
+  +CONFIG_QCOM_TZMEM_MODE_GENERIC=y
+  +CONFIG_QCOM_QSEECOM=y
+  +CONFIG_QCOM_QSEECOM_UEFISECAPP=y
+  +CONFIG_INTEL_SSEI=m
+  +CONFIG_DM_INLINECRYPT=m
+  +CONFIG_NET_VENDOR_ALIBABA=y
+  +CONFIG_ADIN1140=m
+  +CONFIG_NET_VENDOR_ZTE=y
+  +CONFIG_AIR_AN8801_PHY=m
+  +CONFIG_AIR_NET_PHYLIB=m
+  +CONFIG_ADIN1140_PHY=m
+  +CONFIG_DAP8211R_PHY=m
+  +CONFIG_PSE_REALTEK_MCU=m
+  +CONFIG_PSE_REALTEK_MCU_I2C=m
+  +CONFIG_PSE_REALTEK_MCU_UART=m
+  +CONFIG_CAN_VIRTIO_CAN=m
+  +CONFIG_MCTP_TRANSPORT_USBLIB=m
+  +CONFIG_PPPOX=m
+  +CONFIG_WLAN_VENDOR_MORSEMICRO=y
+  +CONFIG_MM81X=m
+  +CONFIG_MM81X_USB=m
+  +CONFIG_MM81X_SDIO=m
+  +CONFIG_WLAN_VENDOR_NXP=y
+  +CONFIG_NXPWIFI=m
+  +CONFIG_NXPWIFI_SDIO=m
+  +CONFIG_RTW89_8922A=m
+  +CONFIG_RTW89_8922AU=m
+  +CONFIG_RTW89_LEDS=y
+  +CONFIG_RTW89_LEDS_MC=y
+  +CONFIG_TOUCHSCREEN_WACOM_W9000=m
+  +CONFIG_INPUT_ISA1200_HAPTIC=m
+  +CONFIG_AMD_AXI_I3C_MASTER=m
+  +CONFIG_SPI_CADENCE_XSPI=m
+  +CONFIG_GENERIC_PINCTRL=y
+  +CONFIG_PINCTRL_GENERIC_MUX=m
+  +CONFIG_GPIO_WAVESHARE_DSI_TOUCH=m
+  +CONFIG_GPIO_LTC4283=m
+  +CONFIG_CHARGER_BQ25630=m
+  +CONFIG_CHARGER_SGM41542=m
+  +CONFIG_BATTERY_CHARGER_SURFACE_RT=m
+  +CONFIG_SENSORS_KB9002=m
+  +CONFIG_SENSORS_ARCTIC_FAN_CONTROLLER=m
+  +CONFIG_SENSORS_LTC4283=m
+  +CONFIG_SENSORS_D1U74T=m
+  +CONFIG_SENSORS_E50SN12051=m
+  +CONFIG_SENSORS_LX1308=m
+  +CONFIG_SENSORS_MAX20830=m
+  +CONFIG_SENSORS_MAX20860A=m
+  +CONFIG_SENSORS_MAX20860A_REGULATOR=y
+  +CONFIG_SENSORS_MP2985=m
+  +CONFIG_SENSORS_MPQ82D00=m
+  +CONFIG_SENSORS_MPQ8646=m
+  +CONFIG_SENSORS_SQ24860=m
+  +CONFIG_SENSORS_SQ24860_REGULATOR=y
+  +CONFIG_SENSORS_VT7505=m
+  +CONFIG_SENSORS_XDPE1A2G7B_REGULATOR=y
+  +CONFIG_SENSORS_EMC1812=m
+  +CONFIG_WATCHDOG_PRETIMEOUT_GOV_DUMP=m
+  +CONFIG_MFD_ROHM_PWRBUTTON=m
+  +CONFIG_REGULATOR_SGM3804=m
+  +CONFIG_VIDEO_IMX471=m
+  +CONFIG_VIDEO_IMX678=m
+  +CONFIG_DRM_AUX_HPD_BRIDGE=m
+  +CONFIG_DRM_IMX93_PARALLEL_DISP_FMT_CONVERTER=m
+  +CONFIG_DRM_PANEL_ANBERNIC_TD4310=m
+  +CONFIG_DRM_PANEL_CHIPONE_ICNA35XX=m
+  +CONFIG_DRM_PANEL_CHIPWEALTH_CH13726A=m
+  +CONFIG_DRM_PANEL_FOCALTECH_OTA7290B=m
+  +CONFIG_DRM_PANEL_ILITEK_ILI7807S=m
+  +CONFIG_DRM_PANEL_ILITEK_ILI9488=m
+  +CONFIG_DRM_PANEL_NOVATEK_NT35532=m
+  +CONFIG_DRM_PANEL_NOVATEK_NT36536=m
+  +CONFIG_DRM_PANEL_RENESAS_R63419=m
+  +CONFIG_BACKLIGHT_SY7758=m
+  +CONFIG_BACKLIGHT_MAX25014=m
+  +CONFIG_HID_HYPERX=m
+  +CONFIG_HID_MSI=m
+  +CONFIG_HID_RAKK=m
+  +CONFIG_HID_OXP=m
+  +CONFIG_LEDS_LTC3220=m
+  +CONFIG_LEDS_S2M_FLASH=m
+  +CONFIG_LEDS_LP5860_CORE=m
+  +CONFIG_LEDS_LP5860_SPI=m
+  +CONFIG_LEDS_S2M_RGB=m
+  +CONFIG_AMD_MBV_BRAM_REMOTEPROC=m
+  +CONFIG_IMX9_BLK_CTRL=m
+  +CONFIG_AD4691=m
+  +CONFIG_LTC2378=m
+  +CONFIG_TI_ADS112C14=m
+  +CONFIG_AD5706R=m
+  +CONFIG_INV_ICM42607=m
+  +CONFIG_INV_ICM42607_I2C=m
+  +CONFIG_INV_ICM42607_SPI=m
+  +CONFIG_APDS9999=m
+  +CONFIG_VEML3328=m
+  +CONFIG_MMC5983=m
+  +CONFIG_QMC5883L=m
+  +CONFIG_QMC6308=m
+  +CONFIG_PHY_NXP_TJA1145=m
+  +CONFIG_PHY_TI_DS125DF111=m
+  +CONFIG_EEPROM_AT24=m
+  +CONFIG_EEPROM_EE1004=m
+  +CONFIG_EEPROM_M24LR=m
+  +CONFIG_SYSCTL=y
+  +CONFIG_HAVE_TRUSTED_KEYS_DEBUG=y
+  +CONFIG_SECURITY_APPARMOR_COMPRESSED_POLICY=y
+  +CONFIG_SECURITY_LANDLOCK_LOG=y
+  +CONFIG_CRYPTO_LZ4=y
+  +CONFIG_GENERIC_BITREVERSE=y
+  +CONFIG_CRYPTO_LIB_AES_CBC=y
+  +CONFIG_CRYPTO_LIB_AES_CBC_MACS=y
+  +CONFIG_CRYPTO_LIB_AES_CCM=y
+  +CONFIG_CRYPTO_LIB_AES_CTR=y
+  +CONFIG_CRYPTO_LIB_AES_ECB=y
+  +CONFIG_CRYPTO_LIB_AES_GCM=y
+  +CONFIG_CRYPTO_LIB_AES_XTS=y
+  +CONFIG_CRYPTO_LIB_GF128HASH=y
+  +CONFIG_RAID6_PQ=m
+  +CONFIG_RAID6_PQ_BENCHMARK=y
+  +CONFIG_LZ4_COMPRESS=y
 - commit bace45b
 
 -------------------------------------------------------------------
@@ -16675,7 +17016,362 @@ Tue Sep  1 16:24:43 CEST 2026 - svarbanov@suse.de
   From the 7.3 configs from the below commit merged using:
   ./scripts/kconfig/merge_config.sh -m config-7.1 config-7.3
   (cherry picked from commit f7622cd51c9c6b3c85364610ba9c5192ee0a1ac5)
+- config: Update armv7hl config files for 7.3.0-rc1
+  Updates configs:
+  +CONFIG_CC_HAS_ALLOC_TOKEN=y
+  +CONFIG_HAVE_POSIX_CPU_TIMERS_TASK_WORK=y
+  +CONFIG_POSIX_CPU_TIMERS_TASK_WORK=y
+  +CONFIG_SCHED_CACHE=y
+  +CONFIG_ARCH_ZTE=y
+  +CONFIG_SOC_ZX297520V3=y
+  +CONFIG_DPM_WATCHDOG_ENABLED=y
+  +CONFIG_ARCH_HAS_DELAY_TIMER=y
+  +CONFIG_KMALLOC_PARTITION_CACHES=y
+  +CONFIG_KMALLOC_PARTITION_RANDOM=y
+  +CONFIG_NETFILTER_NETLINK=y
+  +CONFIG_NET_DSA_TAG_MT7628=m
+  +CONFIG_NET_DSA_TAG_NETC=m
+  +CONFIG_PCIE_TEGRA264=y
+  +CONFIG_QCOM_PAS=y
+  +CONFIG_QCOM_PAS_TEE=m
+  +CONFIG_INTEL_SSEI=m
+  +CONFIG_SCSI_LEAPRAID=m
+  +CONFIG_DM_INLINECRYPT=m
+  +CONFIG_NET_VENDOR_ALIBABA=y
+  +CONFIG_LIBIE_CP=m
+  +CONFIG_LIBIE_PCI=m
+  +CONFIG_IXD=m
+  +CONFIG_ADIN1140=m
+  +CONFIG_NET_VENDOR_ZTE=y
+  +CONFIG_AIR_AN8801_PHY=m
+  +CONFIG_AIR_NET_PHYLIB=m
+  +CONFIG_ADIN1140_PHY=m
+  +CONFIG_DAP8211R_PHY=m
+  +CONFIG_PSE_REALTEK_MCU=m
+  +CONFIG_PSE_REALTEK_MCU_I2C=m
+  +CONFIG_PSE_REALTEK_MCU_UART=m
+  +CONFIG_CAN_VIRTIO_CAN=m
+  +CONFIG_MCTP_TRANSPORT_USBLIB=m
+  +CONFIG_PPPOX=m
+  +CONFIG_WLAN_VENDOR_MORSEMICRO=y
+  +CONFIG_MM81X=m
+  +CONFIG_MM81X_USB=m
+  +CONFIG_MM81X_SDIO=m
+  +CONFIG_WLAN_VENDOR_NXP=y
+  +CONFIG_NXPWIFI=m
+  +CONFIG_NXPWIFI_SDIO=m
+  +CONFIG_RTW89_8922D=m
+  +CONFIG_RTW89_8922AU=m
+  +CONFIG_RTW89_8922DE=m
+  +CONFIG_RTW89_LEDS=y
+  +CONFIG_RTW89_LEDS_MC=y
+  +CONFIG_TOUCHSCREEN_WACOM_W9000=m
+  +CONFIG_INPUT_ISA1200_HAPTIC=m
+  +CONFIG_SERIAL_8250_MOXA_PCIE=y
+  +CONFIG_HW_RANDOM_QCOM=m
+  +CONFIG_AMD_AXI_I3C_MASTER=m
+  +CONFIG_SPI_CADENCE_XSPI=m
+  +CONFIG_GENERIC_PINCTRL=y
+  +CONFIG_PINCTRL_GENERIC_MUX=m
+  +CONFIG_PINCTRL_AIROHA=m
+  +CONFIG_PINCTRL_AIROHA_EN7523=m
+  +CONFIG_PINCTRL_ASPEED_G7_SOC0=y
+  +CONFIG_PINCTRL_ASPEED_G7_SOC1=y
+  +CONFIG_PINCTRL_MT6397=m
+  +CONFIG_PINCTRL_TEGRA238=y
+  +CONFIG_PINCTRL_TEGRA264=y
+  +CONFIG_GPIO_RTD1625=m
+  +CONFIG_GPIO_WAVESHARE_DSI_TOUCH=m
+  +CONFIG_GPIO_LTC4283=m
+  +CONFIG_CHARGER_BQ25630=m
+  +CONFIG_CHARGER_SGM41542=m
+  +CONFIG_BATTERY_CHARGER_SURFACE_RT=m
+  +CONFIG_SENSORS_KB9002=m
+  +CONFIG_SENSORS_ARCTIC_FAN_CONTROLLER=m
+  +CONFIG_SENSORS_PROM21_XHCI=m
+  +CONFIG_SENSORS_LTC4283=m
+  +CONFIG_SENSORS_D1U74T=m
+  +CONFIG_SENSORS_E50SN12051=m
+  +CONFIG_SENSORS_LX1308=m
+  +CONFIG_SENSORS_MAX20830=m
+  +CONFIG_SENSORS_MAX20860A=m
+  +CONFIG_SENSORS_MAX20860A_REGULATOR=y
+  +CONFIG_SENSORS_MP2985=m
+  +CONFIG_SENSORS_MPQ82D00=m
+  +CONFIG_SENSORS_MPQ8646=m
+  +CONFIG_SENSORS_SQ24860=m
+  +CONFIG_SENSORS_SQ24860_REGULATOR=y
+  +CONFIG_SENSORS_VT7505=m
+  +CONFIG_SENSORS_XDPE1A2G7B_REGULATOR=y
+  +CONFIG_SENSORS_EMC1812=m
+  +CONFIG_WATCHDOG_PRETIMEOUT_GOV_DUMP=m
+  +CONFIG_GUNYAH_WATCHDOG=m
+  +CONFIG_MFD_ROHM_PWRBUTTON=m
+  +CONFIG_REGULATOR_SGM3804=m
+  +CONFIG_VIDEO_HWS=m
+  +CONFIG_VIDEO_IMX471=m
+  +CONFIG_VIDEO_IMX678=m
+  +CONFIG_DRM_OF_DISPLAY_MODE_BRIDGE=m
+  +CONFIG_DRM_IMX8MP_DW_HDMI_BRIDGE_CONNECTOR_FIXUP=y
+  +CONFIG_DRM_IMX93_PARALLEL_DISP_FMT_CONVERTER=m
+  +CONFIG_DRM_PANEL_ANBERNIC_TD4310=m
+  +CONFIG_DRM_PANEL_CHIPONE_ICNA35XX=m
+  +CONFIG_DRM_PANEL_CHIPWEALTH_CH13726A=m
+  +CONFIG_DRM_PANEL_FOCALTECH_OTA7290B=m
+  +CONFIG_DRM_PANEL_ILITEK_ILI7807S=m
+  +CONFIG_DRM_PANEL_ILITEK_ILI9488=m
+  +CONFIG_DRM_PANEL_NOVATEK_NT35532=m
+  +CONFIG_DRM_PANEL_NOVATEK_NT36536=m
+  +CONFIG_DRM_PANEL_RENESAS_R63419=m
+  +CONFIG_BACKLIGHT_SY7758=m
+  +CONFIG_BACKLIGHT_MAX25014=m
+  +CONFIG_SND_SOC_MT8196=m
+  +CONFIG_SND_SOC_MT8196_NAU8825=m
+  +CONFIG_SND_SOC_CS42XX8_SPI=m
+  +CONFIG_SND_SOC_TAS675X=m
+  +CONFIG_SND_SOC_WSA885X=m
+  +CONFIG_HID_HYPERX=m
+  +CONFIG_HID_MSI=m
+  +CONFIG_HID_RAKK=m
+  +CONFIG_HID_OXP=m
+  +CONFIG_USB_XHCI_PCI_PROM21=m
+  +CONFIG_USB_CDNS3_GADGET=y
+  +CONFIG_LEDS_LTC3220=m
+  +CONFIG_LEDS_S2M_FLASH=m
+  +CONFIG_LEDS_LP5860_CORE=m
+  +CONFIG_LEDS_LP5860_SPI=m
+  +CONFIG_LEDS_S2M_RGB=m
+  +CONFIG_COMMON_CLK_HISI=y
+  +CONFIG_CLK_RV1106=y
+  +CONFIG_VF_USE_ARM_GLOBAL_TIMER=y
+  +CONFIG_AMD_MBV_BRAM_REMOTEPROC=m
+  +CONFIG_QCOM_SOC=y
+  +CONFIG_QCOM_INLINE_CRYPTO_ENGINE=m
+  +CONFIG_QCOM_MDT_LOADER=m
+  +CONFIG_QCOM_PDR_HELPERS=m
+  +CONFIG_QCOM_PDR_MSG=m
+  +CONFIG_QCOM_QMI_HELPERS=m
+  +CONFIG_IMX9_BLK_CTRL=m
+  +CONFIG_TEGRA114_EMC=y
+  +CONFIG_TEGRA_EMC_COMMON=y
+  +CONFIG_AD4691=m
+  +CONFIG_LTC2378=m
+  +CONFIG_MEDIATEK_MT6323_AUXADC=m
+  +CONFIG_TI_ADS112C14=m
+  +CONFIG_AD5706R=m
+  +CONFIG_INV_ICM42607=m
+  +CONFIG_INV_ICM42607_I2C=m
+  +CONFIG_INV_ICM42607_SPI=m
+  +CONFIG_APDS9999=m
+  +CONFIG_VEML3328=m
+  +CONFIG_MMC5983=m
+  +CONFIG_QMC5883L=m
+  +CONFIG_QMC6308=m
+  +CONFIG_PWM_IPQ=m
+  +CONFIG_ASPEED_AST2700_INTC=y
+  +CONFIG_PHY_NXP_TJA1145=m
+  +CONFIG_PHY_QCOM_QMP_PCIE_MULTIPHY=m
+  +CONFIG_PHY_DM816X_USB=m
+  +CONFIG_PHY_TI_DS125DF111=m
+  +CONFIG_PHY_TI_GMII_SEL=m
+  +CONFIG_TI_PIPE3=m
+  +CONFIG_USB4_CONFIGFS=m
+  +CONFIG_USB4_STREAM=m
+  +CONFIG_EEPROM_AT24=m
+  +CONFIG_EEPROM_EE1004=m
+  +CONFIG_EEPROM_M24LR=m
+  +CONFIG_FPGA_MGR_EFINIX_SPI=m
+  +CONFIG_INTERCONNECT_QCOM_HAWI=m
+  +CONFIG_INTERCONNECT_QCOM_MAILI=m
+  +CONFIG_INTERCONNECT_QCOM_NORD=m
+  +CONFIG_INTERCONNECT_QCOM_SHIKRA=m
+  +CONFIG_SYSCTL=y
+  +CONFIG_EROFS_FS_ZIP_LZMA_DEFAULT_MAX_STREAMS=16
+  +CONFIG_HAVE_TRUSTED_KEYS_DEBUG=y
+  +CONFIG_SECURITY_APPARMOR_COMPRESSED_POLICY=y
+  +CONFIG_SECURITY_LANDLOCK_LOG=y
+  +CONFIG_CRYPTO_LZ4=y
+  +CONFIG_CRYPTO_DEV_EXYNOS_HASH=y
+  +CONFIG_CRC64_ARCH=y
+  +CONFIG_CRYPTO_LIB_AES_CBC=y
+  +CONFIG_CRYPTO_LIB_AES_CBC_MACS=y
+  +CONFIG_CRYPTO_LIB_AES_CCM=y
+  +CONFIG_CRYPTO_LIB_AES_CTR=y
+  +CONFIG_CRYPTO_LIB_AES_ECB=y
+  +CONFIG_CRYPTO_LIB_AES_GCM=y
+  +CONFIG_CRYPTO_LIB_AES_XTS=y
+  +CONFIG_CRYPTO_LIB_GF128HASH=y
+  +CONFIG_RAID6_PQ=m
+  +CONFIG_RAID6_PQ_ARCH=y
+  +CONFIG_RAID6_PQ_BENCHMARK=y
+  +CONFIG_LZ4_COMPRESS=y
+  +CONFIG_VDSO_DATASTORE=y
+  +CONFIG_SWIOTLB_DEFAULT_SIZE_MB=64
 - commit 9c0aa80
+
+-------------------------------------------------------------------
+Tue Sep  1 14:41:14 CEST 2026 - svarbanov@suse.de
+
+- config: Update arm64 config files for 7.3.0-rc1
+  Updated configs:
+  +CONFIG_HAS_SEPARATE_PREEMPT_RESCHED_BITS=y
+  +CONFIG_ARCH_HAS_PTE_PROTNONE=y
+  +CONFIG_ARM64_WORKAROUND_REPEAT_TLBI_SYNC=y
+  +CONFIG_NVIDIA_OLYMPUS_1027_ERRATUM=y
+  +CONFIG_RENESAS_ERRATUM_GEN4GICITS1=y
+  +CONFIG_DPM_WATCHDOG_ENABLED=y
+  +CONFIG_ARCH_HAS_PMD_SOFTLEAVES=y
+  +CONFIG_USERFAULTFD_RWP=y
+  +CONFIG_GENERIC_ARCH_NUMA=y
+  +CONFIG_NET_DSA_TAG_MT7628=m
+  +CONFIG_PCIE_TEGRA264=y
+  +CONFIG_ARM_SDEI_NMI=y
+  +CONFIG_QCOM_PAS=y
+  +CONFIG_QCOM_PAS_TEE=m
+  +CONFIG_INTEL_SSEI=m
+  +CONFIG_SCSI_LEAPRAID=m
+  +CONFIG_NET_VENDOR_ALIBABA=y
+  +CONFIG_ALIBABA_EEA=m
+  +CONFIG_LIBIE_CP=m
+  +CONFIG_LIBIE_PCI=m
+  +CONFIG_IXD=m
+  +CONFIG_ADIN1140=m
+  +CONFIG_SFC_CXL=y
+  +CONFIG_NET_VENDOR_ZTE=y
+  +CONFIG_ADIN1140_PHY=m
+  +CONFIG_DAP8211R_PHY=m
+  +CONFIG_PSE_REALTEK_MCU=m
+  +CONFIG_PSE_REALTEK_MCU_I2C=m
+  +CONFIG_PSE_REALTEK_MCU_UART=m
+  +CONFIG_MCTP_TRANSPORT_USBLIB=m
+  +CONFIG_WLAN_VENDOR_MORSEMICRO=y
+  +CONFIG_MM81X=m
+  +CONFIG_MM81X_USB=m
+  +CONFIG_MM81X_SDIO=m
+  +CONFIG_WLAN_VENDOR_NXP=y
+  +CONFIG_NXPWIFI=m
+  +CONFIG_NXPWIFI_SDIO=m
+  +CONFIG_RTW89_8922D=m
+  +CONFIG_RTW89_8922DE=m
+  +CONFIG_RTW89_LEDS=y
+  +CONFIG_RTW89_LEDS_MC=y
+  +CONFIG_INPUT_ISA1200_HAPTIC=m
+  +CONFIG_SERIAL_8250_MOXA_PCIE=y
+  +CONFIG_HW_RANDOM_QCOM=m
+  +CONFIG_AMD_AXI_I3C_MASTER=m
+  +CONFIG_SPI_ATMEL_QUADSPI=m
+  +CONFIG_SPI_MA35D1_QSPI=m
+  +CONFIG_PINCTRL_AIROHA_AN7563=m
+  +CONFIG_PINCTRL_AIROHA_AN7581=m
+  +CONFIG_PINCTRL_AIROHA_AN7583=m
+  +CONFIG_PINCTRL_MT6858=y
+  +CONFIG_PINCTRL_MT6397=m
+  +CONFIG_PINCTRL_MAILI=m
+  +CONFIG_GPIO_RTD1625=m
+  +CONFIG_CHARGER_BQ25630=m
+  +CONFIG_CHARGER_SGM41542=m
+  +CONFIG_BATTERY_CHARGER_SURFACE_RT=m
+  +CONFIG_SENSORS_KB9002=m
+  +CONFIG_SENSORS_POLARFIRE_SOC_TVS=m
+  +CONFIG_SENSORS_PROM21_XHCI=m
+  +CONFIG_SENSORS_MPQ82D00=m
+  +CONFIG_SENSORS_MPQ8646=m
+  +CONFIG_SENSORS_SQ24860=m
+  +CONFIG_SENSORS_SQ24860_REGULATOR=y
+  +CONFIG_SENSORS_VT7505=m
+  +CONFIG_SENSORS_XDPE1A2G7B_REGULATOR=y
+  +CONFIG_SENSORS_ALTERA_SOCFPGA_HWMON=m
+  +CONFIG_WATCHDOG_PRETIMEOUT_GOV_DUMP=m
+  +CONFIG_MA35D1_WDT=m
+  +CONFIG_MFD_ROHM_PWRBUTTON=m
+  +CONFIG_REGULATOR_SC2730=m
+  +CONFIG_VIDEO_DCT_RPPX1=m
+  +CONFIG_VIDEO_IMX471=m
+  +CONFIG_VIDEO_IMX678=m
+  +CONFIG_DRM_IMX93_PARALLEL_DISP_FMT_CONVERTER=m
+  +CONFIG_DRM_PANEL_ANBERNIC_TD4310=m
+  +CONFIG_DRM_PANEL_CHIPONE_ICNA35XX=m
+  +CONFIG_DRM_PANEL_ILITEK_ILI7807S=m
+  +CONFIG_DRM_PANEL_ILITEK_ILI9488=m
+  +CONFIG_DRM_PANEL_NOVATEK_NT36536=m
+  +CONFIG_DRM_PANEL_RENESAS_R63419=m
+  +CONFIG_BACKLIGHT_SY7758=m
+  +CONFIG_SND_HDA_SCODEC_AW88399=m
+  +CONFIG_SND_HDA_SCODEC_AW88399_I2C=m
+  +CONFIG_SND_SOC_AW88399_LIB=m
+  +CONFIG_SND_SOC_RT5677=m
+  +CONFIG_SND_SOC_RT5677_SPI=m
+  +CONFIG_SND_SOC_RT766_SDCA_SDW=m
+  +CONFIG_SND_SOC_WSA885X=m
+  +CONFIG_HID_HYPERX=m
+  +CONFIG_HID_MSI=m
+  +CONFIG_USB_XHCI_PCI_PROM21=m
+  +CONFIG_LEDS_LTC3220=m
+  +CONFIG_RTC_DRV_RZN1=m
+  +CONFIG_CLK_SKY1_AUDSS=m
+  +CONFIG_COMMON_CLK_HISI=y
+  +CONFIG_COMMON_CLK_MT8173_MFGTOP=m
+  +CONFIG_COMMON_CLK_A9_PERIPHERALS=m
+  +CONFIG_COMMON_CLK_A9_AO=m
+  +CONFIG_CLK_GLYMUR_CAMCC=m
+  +CONFIG_CLK_GLYMUR_EVACC=m
+  +CONFIG_CLK_NORD_DISPCC=m
+  +CONFIG_CLK_MAILI_VIDEOCC=m
+  +CONFIG_CLK_SHIKRA_AUDIOCORECC=m
+  +CONFIG_CLK_SHIKRA_GCC=m
+  +CONFIG_CLK_NORD_GPUCC=m
+  +CONFIG_CLK_HAWI_VIDEOCC=m
+  +CONFIG_CLK_R8A78000=y
+  +CONFIG_CLK_RZV2H_CPG_LIB=y
+  +CONFIG_AXIADO_MAILBOX=m
+  +CONFIG_AMD_MBV_BRAM_REMOTEPROC=m
+  +CONFIG_APPLE_PMGR_MISC=m
+  +CONFIG_QCOM_SOC=y
+  +CONFIG_QCOM_INLINE_CRYPTO_ENGINE=m
+  +CONFIG_QCOM_KRYO_L2_ACCESSORS=y
+  +CONFIG_QCOM_MDT_LOADER=m
+  +CONFIG_QCOM_PDR_HELPERS=m
+  +CONFIG_QCOM_PDR_MSG=m
+  +CONFIG_QCOM_QMI_HELPERS=m
+  +CONFIG_IMX9_BLK_CTRL=m
+  +CONFIG_MDLC_R8A78000=y
+  +CONFIG_LTC2378=m
+  +CONFIG_MEDIATEK_MT6323_AUXADC=m
+  +CONFIG_TI_ADS112C14=m
+  +CONFIG_INV_ICM42607=m
+  +CONFIG_INV_ICM42607_I2C=m
+  +CONFIG_INV_ICM42607_SPI=m
+  +CONFIG_QMC5883L=m
+  +CONFIG_QMC6308=m
+  +CONFIG_RESET_SKY1_AUDSS=m
+  +CONFIG_PHY_QCOM_QMP_PCIE_MULTIPHY=m
+  +CONFIG_EEPROM_AT24=m
+  +CONFIG_EEPROM_EE1004=m
+  +CONFIG_EEPROM_M24LR=m
+  +CONFIG_NVMEM_AIROHA_SMC_EFUSES=m
+  +CONFIG_NVMEM_LAN9662_OTPC=m
+  +CONFIG_INTERCONNECT_QCOM_MAILI=m
+  +CONFIG_SYSCTL=y
+  +CONFIG_SECURITY_APPARMOR_COMPRESSED_POLICY=y
+  +CONFIG_SECURITY_LANDLOCK_LOG=y
+  +CONFIG_CRYPTO_LIB_AES_CBC=y
+  +CONFIG_CRYPTO_LIB_AES_CCM=y
+  +CONFIG_CRYPTO_LIB_AES_CTR=y
+  +CONFIG_CRYPTO_LIB_AES_ECB=y
+  +CONFIG_CRYPTO_LIB_AES_GCM=y
+  +CONFIG_CRYPTO_LIB_AES_XTS=y
+  +CONFIG_CRYPTO_LIB_GF128HASH=y
+  +CONFIG_SWIOTLB_DEFAULT_SIZE_MB=64
+  +CONFIG_VDSO_DATASTORE=y
+- commit 7c2bb94
+
+-------------------------------------------------------------------
+Mon Aug 31 17:39:16 CEST 2026 - pfalcato@suse.de
+
+- Rename to
+  patches.rpmify/platform-x86-amd-pmf-fix-build-on-CONFIG_AMD_PMF_DEBUG.patch.
+  The patch is required for vanilla too, to fix the build.
+- commit 1b26c26
 
 -------------------------------------------------------------------
 Mon Aug 31 13:59:09 CEST 2026 - tiwai@suse.de
@@ -16683,7 +17379,180 @@ Mon Aug 31 13:59:09 CEST 2026 - tiwai@suse.de
 - Update config files: enable AMD ISP4 camera driver (bsc#1277447)
   Set CONFIG_VIDEO_AMD_ISP4_CAPTURE=m for x86_64 and i386 archs.
   No other media platform drivers are enabled, so far.
-- commit dcfc956
+- commit 0545525
+
+-------------------------------------------------------------------
+Mon Aug 31 11:06:36 CEST 2026 - pfalcato@suse.de
+
+- update to 7.3-rc1
+- update to 7.3-rc1
+   - ARM configs disabled
+- drop patches.kernel.org/*
+- drop upstream patches.suse/md-raid1-create-serial-pool-adding-rdev-to-array-wit.patch
+- refresh patches
+   - patches.rpmify/btf-pahole-j1-option.patch
+   - patches.suse/Input-elan_i2c-Add-deny-list-for-Lenovo-Yoga-Slim-7.patch
+- add patch patches.suse/platform-x86-amd-pmf-fix-build-on-CONFIG_AMD_PMF_DEBUG.patch
+- new config options
+  - Power management and ACPI options
+          - CONFIG_DPM_WATCHDOG_ENABLED=y
+  - General architecture-dependent options
+    - CONFIG_SYSCALL_USER_DISPATCH=y
+  - CONFIG_QUEUED_SPINLOCKS_TRACE_CONTENDED_RELEASE=n
+  - Networking support
+    - Networking options
+      - Distributed Switch Architecture
+        - CONFIG_NET_DSA_TAG_MT7628=m
+  - Device Drivers
+    - Firmware Drivers
+      - Qualcomm firmware drivers
+        - CONFIG_QCOM_PAS=m
+        - CONFIG_QCOM_PAS_TEE=m
+        - CONFIG_QCOM_SCM=m
+    - Misc devices
+      - CONFIG_INTEL_SSEI=m
+       - CONFIG_INTEL_SSEI_HW_HECI=m
+    - SCSI device support
+      - SCSI low-level drivers
+        - CONFIG_SCSI_LEAPRAID=m
+    - Network device support
+      - Ethernet driver support
+          - CONFIG_IXD=m
+          - CONFIG_ADIN1140=m
+          - RmNet MAP driver
+            - CONFIG_SFC_CXL=y
+        - CONFIG_NET_VENDOR_ZTE=y
+          - CONFIG_DINGHAI=n
+      - PHY Device support and infrastructure
+        - CONFIG_ADIN1140_PHY=n
+      - Ethernet Power Sourcing Equipment Support
+        - CONFIG_PSE_REALTEK_MCU_I2C=m
+        - CONFIG_PSE_REALTEK_MCU_UART=m
+      - Wireless LAN
+        - CONFIG_WLAN_VENDOR_MORSEMICRO=y
+          - CONFIG_MM81X_USB=m
+          - CONFIG_MM81X_SDIO=m
+        - CONFIG_WLAN_VENDOR_NXP=y
+          - CONFIG_NXPWIFI_SDIO=m
+          - Realtek 802.11ax wireless chips support
+            - CONFIG_RTW89_8922DE=m
+    - Input device support
+        - Miscellaneous devices
+          - CONFIG_INPUT_ISA1200_HAPTIC=m
+          - CONFIG_INPUT_AMD_SFH_TABLETMODE=m
+    - Character devices
+        - Serial drivers
+            - CONFIG_SERIAL_8250_MOXA_PCIE=y
+      - IPMI top-level message handler
+        - CONFIG_IPMI_SI_ASYNC_INIT=n
+    - I3C support
+      - CONFIG_AMD_AXI_I3C_MASTER=m
+    - Power supply class support
+      - CONFIG_CHARGER_BQ25630=m
+      - CONFIG_CHARGER_SGM41542=m
+    - Hardware Monitoring support
+      - CONFIG_SENSORS_KB9002=m
+      - PMBus support
+        - CONFIG_SENSORS_MPQ82D00=m
+        - CONFIG_SENSORS_MPQ8646=m
+        - CONFIG_SENSORS_SQ24860=m
+          - CONFIG_SENSORS_SQ24860_REGULATOR=y
+        - CONFIG_SENSORS_VT7505=m
+          - CONFIG_SENSORS_XDPE1A2G7B_REGULATOR=y
+    - Watchdog Timer Support
+        - CONFIG_WATCHDOG_PRETIMEOUT_GOV_DUMP=m
+          - CONFIG_WATCHDOG_PRETIMEOUT_DEFAULT_GOV_DUMP=n
+      - CONFIG_LENOVO_SE30G2_SE60_WDT=m
+    - Multimedia support
+      - Media ancillary drivers
+        - Camera sensor devices
+          - CONFIG_VIDEO_IMX471=m
+          - CONFIG_VIDEO_IMX678=m
+    - Graphics support
+      - Backlight & LCD device support
+          - CONFIG_BACKLIGHT_SY7758=m
+    - Sound card support
+      - Advanced Linux Sound Architecture
+        - HD-Audio
+          - CONFIG_SND_HDA_SCODEC_AW88399_I2C=m
+        - ALSA for SoC audio support
+          - Sound Open Firmware (SOF) platforms
+              - CONFIG_SND_SOC_SOF_AMD_ACP7X=m
+          - CODEC drivers
+            - CONFIG_SND_SOC_RT766_SDCA_SDW=m
+            - CONFIG_SND_SOC_WSA885X=n
+    - HID bus support
+        - Special HID drivers
+          - CONFIG_HID_HYPERX=m
+          - CONFIG_HID_MSI=m
+    - LED Support
+      - CONFIG_LEDS_LTC3220=m
+    - X86 Platform Specific Device Drivers
+      - AMD HSMP Driver
+        - CONFIG_AMD_PMF_UTIL_SUPPORT=y
+      - CONFIG_AMD_HALO_LED=m
+      - CONFIG_LENOVO_YB9_KBDOCK=m
+    - Industrial I/O support
+      - Analog to digital converters
+        - CONFIG_LTC2378=n
+        - CONFIG_TI_ADS112C14=n
+        - CONFIG_VERSAL_SYSMON_I2C=n
+      - Digital to analog converters
+        - CONFIG_MCP47A1=n
+      - Flow sensors
+        - CONFIG_SENSIRION_SLF3S=n
+      - Frequency Synthesizers DDS/PLL
+        - Phase-Locked Loop (PLL) frequency synthesizers
+          - CONFIG_ADF41513=n
+      - Inertial measurement units
+        - CONFIG_INV_ICM42607_I2C=n
+        - CONFIG_INV_ICM42607_SPI=n
+      - Magnetometer sensors
+        - CONFIG_QMC5883L=n
+        - CONFIG_QMC6308=n
+  - File systems
+  - Security options
+    - Enable access key retention support
+      - CONFIG_SECURITY_APPARMOR_COMPRESSED_POLICY=y
+    - Integrity Policy Enforcement (IPE)
+        - CONFIG_IMA_INIT_LATE_SYNC=n
+  - Library routines
+    - CONFIG_SWIOTLB_DEFAULT_SIZE_MB=64
+  - Kernel hacking
+    - Tracers
+      - CONFIG_PROBE_EVENTS_DUMP_FETCHARG=n
+    - Kernel Testing and Coverage
+      - Runtime Testing
+        - CONFIG_REGION_ALLOC_BENCHMARK=n
+   - OF-based options
+  - DAP8211R_PHY=m
+  - SPI_CADENCE_XSPI=m
+  - DRM_PANEL_ANBERNIC_TD4310=n
+  - DRM_PANEL_CHIPONE_ICNA35XX=n
+  - DRM_PANEL_ILITEK_ILI7807S=n
+  - DRM_PANEL_ILITEK_ILI9488=n
+  - DRM_PANEL_NOVATEK_NT36536=n
+  - DRM_PANEL_RENESAS_R63419=n
+   - s390x
+  - CPU_IDLE=y
+  - CPU_IDLE_GOV_LADDER=y
+  - CPU_IDLE_GOV_MENU=y
+  - CPU_IDLE_GOV_TEO=y
+  - S390_CPUIDLE=y
+  - CFI=n
+   - riscv64
+  - RISCV_ISA_SSQOSID=y
+  - ACPI_TABLE_UPGRADE=y
+  - SPI_ATMEL_QUADSPI=m
+  - SENSORS_POLARFIRE_SOC_TVS=m
+  - SENSORS_EIC7700_PVT=m
+  - SND_SOC_RT5677=m
+  - RTC_DRV_RZN1=m
+  - COMMON_CLK_EIC7700_HSP=m
+  - CLK_ULTRARISC_DP1000=m
+  - RESET_EIC7700_HSP=m
+  - PHY_SPACEMIT_K3_COMBO_PHY=m
+- commit f3e4e91
 
 -------------------------------------------------------------------
 Fri Aug 28 10:47:32 CEST 2026 - jslaby@suse.cz

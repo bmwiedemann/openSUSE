@@ -1,7 +1,5 @@
 <multibuild>
 	<package>dtb-aarch64</package>
-	<package>dtb-armv6l</package>
-	<package>dtb-armv7l</package>
 	<package>dtb-riscv64</package>
 	<package>kernel-64kb</package>
 	<package>kernel-default</package>

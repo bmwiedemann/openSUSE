@@ -1,5 +1,5 @@
 # The version of the main tarball to use
-SRCVERSION=7.2
+SRCVERSION=7.3
 # variant of the kernel-source package, either empty or "-rt"
 VARIANT=
 # enable kernel module compression
@@ -13,6 +13,7 @@ MULTIBUILD="Yes"
 LIVEPATCH=livepatch
 # buildservice projects to build the kernel against
 OBS_PROJECT=openSUSE:Factory
+OBS_PROJECT_ARM32=openSUSE:Factory:LegacyARM
 OBS_PROJECT_ARM=openSUSE:Factory:ARM
 OBS_PROJECT_LEGACYX86=openSUSE:Factory:LegacyX86
 OBS_PROJECT_PPC=openSUSE:Factory:PowerPC
