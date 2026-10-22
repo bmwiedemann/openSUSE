@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:32:37 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.1
+- Changes since 6.8.0:
+  * RdpConnection: Fix early failure with empty custom user password
+  * VideoStreamSurface: Initialize struct members (kde#527202)
+  * Cursor: Don't swap red and blue channels of cursor images (kde#524148)
+  * kcm: Don't generate a TLS certificate that expires after one day
+  * Drop TLS security for non-pam authentication
+  * Update version for new release 6.8.1
+  * Fix Windows RDP client (mstsc) connection and authentication
+  * VideoStream: Stop waiting for acknowledgements the client suspended (kde#520260)
+
+-------------------------------------------------------------------
 Thu Oct  8 16:54:26 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.8.0:
