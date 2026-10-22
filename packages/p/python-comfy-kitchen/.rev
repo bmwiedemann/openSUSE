@@ -153,4 +153,12 @@ dependency change, no CVE.</comment>
     <comment>Update python-comfy-kitchen to 0.2.39</comment>
     <requestid>1386212</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4899dbd052f0cbc1aad291f524d83a2c</srcmd5>
+    <version>0.2.40</version>
+    <time>1792686270</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.2.40</comment>
+    <requestid>1387099</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 22 11:43:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.40:
+  * Eager backend: new rms_gated_residual op, group_norm_stats3d
+    with a per-frame stats override for group_norm_silu_pad3d, and
+    modulated int8_linear variants
+  * Eager fused INT8 layout ops return NotImplemented without a
+    native kernel, keeping the existing unfused path
+  * Remainder of the release is CUDA and HIP kernel work (flash
+    attention head-dim-64, tree MTP masking and deltanet, AMD
+    gfx12/gfx1170 INT8), not compiled in this CPU-only build
+
+-------------------------------------------------------------------
 Mon Oct 19 09:38:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.39:
