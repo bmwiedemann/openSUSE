@@ -85,4 +85,12 @@ crashlooped every virt-handler pod.</comment>
 </comment>
     <requestid>1377009</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92688fd4982e53c501917445955da839</srcmd5>
+    <version>1.9.1</version>
+    <time>1792677054</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.9.1, the KubeVirt release that pins virt-template 0.2.3 (in Factory since request 1386641).</comment>
+    <requestid>1386987</requestid>
+  </revision>
 </revisionlist>

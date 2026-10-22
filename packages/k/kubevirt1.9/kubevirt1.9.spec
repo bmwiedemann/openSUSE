@@ -20,7 +20,7 @@
 
 %define upstream_name kubevirt
 Name:           kubevirt1.9
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -29,12 +29,11 @@ URL:            https://github.com/kubevirt/kubevirt
 Source0:        %{upstream_name}-%{version}.tar.gz
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM 0001-Fix-VFIO-cdev-passthrough-on-kernels-without-CONFIG_VFIO.patch -- release-1.9 7d045a56dd (PR 18905/18931): guard the VFIO cdev DeviceSpec on kernels without CONFIG_VFIO_DEVICE_CDEV
-Patch0:         0001-Fix-VFIO-cdev-passthrough-on-kernels-without-CONFIG_VFIO.patch
-Patch1:         0002-use-safepath-when-dialing-the-migration-target-unix-sockets.patch
-Patch2:         0003-tests-dial-migration-target-sockets-through-proc-root-layout.patch
 # FIXME: not yet upstream: --virt-*-image flags were ignored for the operator deployment
-Patch3:         0004-manifest-templator-apply-the-custom-image-flags-before-rendering-the-operator-deployment.patch
+Patch0:         0004-manifest-templator-apply-the-custom-image-flags-before-rendering-the-operator-deployment.patch
+Patch1:         0005-Add-grace-period-for-Running-VMIs-when-domain-is-nil.patch
+Patch2:         0006-Notify-server-Make-event-chan-private.patch
+Patch3:         0007-Notify-server-Ignore-client-error.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  libnbd-devel
@@ -296,7 +295,7 @@ build_tests="true" \
 # upstream's quay.io images do not exist. Point it at the images built from
 # the virt-template package, at the version this release pins
 # (hack/virt-template/default.sh), through the manifest templator's
-# custom-image flags (Patch3 makes the operator deployment honour them).
+# custom-image flags (Patch0 makes the operator deployment honour them).
 vt_version=$(sed -n 's/^virt_template_version=.*:-"v\([^"]*\)".*/\1/p' hack/virt-template/default.sh)
 [ -n "$vt_version" ]
 env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version} KUBEVIRT_NO_BAZEL=true \
@@ -304,6 +303,10 @@ env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version} KUBEVIRT_NO_BAZEL=true \
     ./hack/build-manifests.sh
 [ "$(grep -c 'name: VIRT_TEMPLATE_APISERVER_IMAGE' _out/manifests/release/kubevirt-operator.yaml)" = 1 ]
 
+%else
+# No release manifests are shipped here, but the tests subpackage needs the
+# testing manifests, which carry no image references.
+env DOCKER_TAG=%{version} KUBEVIRT_NO_BAZEL=true ./hack/build-manifests.sh
 %endif
 
 %install
@@ -355,6 +358,7 @@ install -p -m 0644 cmd/virt-launcher/qemu.conf %{buildroot}%{_datadir}/kube-virt
 mkdir -p %{buildroot}%{_datadir}/kube-virt-1.9/manifests/release
 install -m 0644 _out/manifests/release/kubevirt-operator.yaml %{buildroot}%{_datadir}/kube-virt-1.9/manifests/release/
 install -m 0644 _out/manifests/release/kubevirt-cr.yaml %{buildroot}%{_datadir}/kube-virt-1.9/manifests/release/
+%endif
 
 # Install manifests for testing
 mkdir -p %{buildroot}%{_datadir}/kube-virt-1.9/manifests/testing
@@ -363,7 +367,6 @@ install -m 0644 _out/manifests/testing/* %{buildroot}%{_datadir}/kube-virt-1.9/m
 # images. Overwrite it with the upstream version for testing.
 install -m 0644 %{S:3} %{buildroot}/%{_datadir}/kube-virt-1.9/manifests/testing/
 install -m 0644 tests/default-config.json %{buildroot}%{_datadir}/kube-virt-1.9/manifests/testing/
-%endif
 
 %files virtctl
 %license LICENSE
@@ -457,9 +460,7 @@ install -m 0644 tests/default-config.json %{buildroot}%{_datadir}/kube-virt-1.9/
 %doc README.md
 %dir %{_datadir}/kube-virt-1.9
 %{_bindir}/virt-tests
-%if 0%{?suse_version} >= 1699
 %dir %{_datadir}/kube-virt-1.9/manifests
 %{_datadir}/kube-virt-1.9/manifests/testing
-%endif
 
 %changelog

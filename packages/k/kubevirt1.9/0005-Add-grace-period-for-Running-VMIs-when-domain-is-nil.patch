@@ -1,0 +1,198 @@
+From 6a21e66f30c1b2dbb081e90beb4a55df7f87a0ae Mon Sep 17 00:00:00 2001
+From: Itamar Holder <iholder@redhat.com>
+Date: Tue, 14 Jul 2026 11:00:59 +0300
+Subject: [PATCH] Add grace period for Running VMIs when domain is nil
+
+When virt-handler restarts, it may temporarily lose the launcher socket
+connection. For Scheduled VMIs, IsLauncherClientUnresponsive provides a
+3-minute grace period before marking them as Failed. Running VMIs lacked
+this protection and were immediately marked Failed, causing healthy VMs
+to be unnecessarily killed during upgrades.
+
+Mirror the Scheduled VMI grace period logic to the Running VMI path in
+calculateVmPhaseForStatusReason: check launcher client responsiveness
+before transitioning, re-enqueue if not yet initialized, and only mark
+Failed after the grace period expires.
+
+Assisted-by: Claude <noreply@anthropic.com>
+Signed-off-by: Itamar Holder <iholder@redhat.com>
+---
+ pkg/virt-handler/vm.go      |  21 +++-----
+ pkg/virt-handler/vm_test.go | 103 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 109 insertions(+), 15 deletions(-)
+
+diff --git a/pkg/virt-handler/vm.go b/pkg/virt-handler/vm.go
+index d6335d9ce2..d5a8abfbea 100644
+--- a/pkg/virt-handler/vm.go
++++ b/pkg/virt-handler/vm.go
+@@ -2323,33 +2323,24 @@ func (c *VirtualMachineController) calculateVmPhaseForStatusReason(domain *api.D
+ 			return vmi.Status.Phase, nil
+ 		}
+ 		switch {
+-		case vmi.IsScheduled():
++		case vmi.IsScheduled() || vmi.IsRunning():
+ 			isUnresponsive, isInitialized, err := c.launcherClients.IsLauncherClientUnresponsive(vmi)
+-
+ 			if err != nil {
+ 				return vmi.Status.Phase, err
+ 			}
+ 			if !isInitialized {
+ 				c.queue.AddAfter(controller.VirtualMachineInstanceKey(vmi), time.Second*1)
+-				return vmi.Status.Phase, err
+-			} else if isUnresponsive {
++				return vmi.Status.Phase, nil
++			}
++			if isUnresponsive {
+ 				if vmi.IsMigrationTarget() {
+ 					return v1.WaitingForSync, nil
+ 				}
+-				// virt-launcher is gone and VirtualMachineInstance never transitioned
+-				// from scheduled to Running.
+ 				return v1.Failed, nil
+ 			}
+-			return v1.Scheduled, nil
+-		case !vmi.IsRunning() && !vmi.IsFinal():
+-			return v1.Scheduled, nil
++			return vmi.Status.Phase, nil
+ 		case !vmi.IsFinal():
+-			if vmi.IsMigrationTarget() {
+-				return v1.WaitingForSync, nil
+-			}
+-			// That is unexpected. We should not be able to delete a VirtualMachineInstance before we stop it.
+-			// However, if someone directly interacts with libvirt it is possible
+-			return v1.Failed, nil
++			return v1.Scheduled, nil
+ 		}
+ 	} else {
+ 		switch domain.Status.Status {
+diff --git a/pkg/virt-handler/vm_test.go b/pkg/virt-handler/vm_test.go
+index 4390af45aa..133819efad 100644
+--- a/pkg/virt-handler/vm_test.go
++++ b/pkg/virt-handler/vm_test.go
+@@ -522,6 +522,95 @@ var _ = Describe("VirtualMachineInstance", func() {
+ 			Expect(updatedVMI.Status.Phase).To(Equal(v1.Failed))
+ 		})
+ 
++		Context("When a Running VMI has no domain", func() {
++			It("should re-enqueue if the launcher client is not yet initialized", func() {
++				vmi := NewRunningVMI(vmiTestUUID, podTestUUID, host)
++
++				createVMI(vmi)
++
++				controller.launcherClients = &launcherclients.MockLauncherClientManager{
++					Initialized: false,
++				}
++
++				sanityExecute()
++
++				Expect(mockQueue.GetAddAfterEnqueueCount()).To(BeNumerically(">", 0))
++				updatedVMI, err := virtfakeClient.KubevirtV1().VirtualMachineInstances(metav1.NamespaceDefault).Get(context.TODO(), vmi.Name, metav1.GetOptions{})
++				Expect(err).NotTo(HaveOccurred())
++				Expect(updatedVMI.Status.Phase).To(Equal(v1.Running))
++			})
++
++			It("should move to Failed if the launcher client is unresponsive", func() {
++				vmi := NewRunningVMI(vmiTestUUID, podTestUUID, host)
++
++				createVMI(vmi)
++
++				controller.launcherClients = &launcherclients.MockLauncherClientManager{
++					Initialized:  true,
++					UnResponsive: true,
++				}
++
++				sanityExecute()
++
++				testutils.ExpectEvent(recorder, VMICrashed)
++				Expect(mockQueue.GetAddAfterEnqueueCount()).To(Equal(0))
++				updatedVMI, err := virtfakeClient.KubevirtV1().VirtualMachineInstances(metav1.NamespaceDefault).Get(context.TODO(), vmi.Name, metav1.GetOptions{})
++				Expect(err).NotTo(HaveOccurred())
++				Expect(updatedVMI.Status.Phase).To(Equal(v1.Failed))
++			})
++
++			It("should stay Running if the launcher client is responsive", func() {
++				vmi := NewRunningVMI(vmiTestUUID, podTestUUID, host)
++
++				createVMI(vmi)
++
++				controller.launcherClients = &launcherclients.MockLauncherClientManager{
++					Initialized:  true,
++					UnResponsive: false,
++				}
++
++				sanityExecute()
++				testutils.ExpectEvent(recorder, v1.SyncFailed.String())
++
++				Expect(mockQueue.GetAddAfterEnqueueCount()).To(Equal(0))
++				updatedVMI, err := virtfakeClient.KubevirtV1().VirtualMachineInstances(metav1.NamespaceDefault).Get(context.TODO(), vmi.Name, metav1.GetOptions{})
++				Expect(err).NotTo(HaveOccurred())
++				Expect(updatedVMI.Status.Phase).To(Equal(v1.Running))
++			})
++
++			It("should move to WaitingForSync if the VMI is a migration target and launcher is unresponsive", func() {
++				vmi := NewRunningVMI(vmiTestUUID, podTestUUID, host)
++				vmi.Annotations = map[string]string{
++					v1.CreateMigrationTarget: "true",
++				}
++
++				controller.launcherClients = &launcherclients.MockLauncherClientManager{
++					Initialized:  true,
++					UnResponsive: true,
++				}
++
++				phase, err := controller.calculateVmPhaseForStatusReason(nil, vmi)
++				Expect(err).NotTo(HaveOccurred())
++				Expect(phase).To(Equal(v1.WaitingForSync))
++			})
++
++			It("should propagate error from IsLauncherClientUnresponsive and keep the current phase", func() {
++				vmi := NewRunningVMI(vmiTestUUID, podTestUUID, host)
++
++				createVMI(vmi)
++
++				controller.launcherClients = &launcherclients.MockLauncherClientManager{
++					UnResponsiveError: fmt.Errorf("test error"),
++				}
++
++				sanityExecute()
++
++				updatedVMI, err := virtfakeClient.KubevirtV1().VirtualMachineInstances(metav1.NamespaceDefault).Get(context.TODO(), vmi.Name, metav1.GetOptions{})
++				Expect(err).NotTo(HaveOccurred())
++				Expect(updatedVMI.Status.Phase).To(Equal(v1.Running))
++			})
++		})
++
+ 		It("should cleanup if vmi is finalized and domain does not exist", func() {
+ 			vmi := api2.NewMinimalVMI("testvmi")
+ 			vmi.UID = vmiTestUUID
+@@ -1159,6 +1248,10 @@ var _ = Describe("VirtualMachineInstance", func() {
+ 			vmi.Status.Phase = v1.Running
+ 
+ 			createVMI(vmi)
++			controller.launcherClients = &launcherclients.MockLauncherClientManager{
++				Initialized:  true,
++				UnResponsive: true,
++			}
+ 
+ 			sanityExecute()
+ 
+@@ -3629,6 +3722,16 @@ func NewScheduledVMI(vmiUID types.UID, podUID types.UID, hostname string) *v1.Vi
+ 	return vmi
+ }
+ 
++func NewRunningVMI(vmiUID types.UID, podUID types.UID, hostname string) *v1.VirtualMachineInstance {
++	vmi := api2.NewMinimalVMI("testvmi")
++	vmi.UID = vmiUID
++	vmi.ObjectMeta.ResourceVersion = "1"
++	vmi.Status.Phase = v1.Running
++
++	vmi = addActivePods(vmi, podUID, hostname)
++	return vmi
++}
++
+ type netConfStub struct {
+ 	vmiUID     types.UID
+ 	SetupError error
+-- 
+2.56.0
+

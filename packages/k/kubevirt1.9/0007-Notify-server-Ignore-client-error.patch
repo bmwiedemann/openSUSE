@@ -1,0 +1,33 @@
+From 6ba8edb64cfc8cd6ada3c5146148b099d7a063be Mon Sep 17 00:00:00 2001
+From: Luboslav Pivarc <lpivarc@redhat.com>
+Date: Wed, 26 Aug 2026 14:23:14 +0200
+Subject: [PATCH] Notify server: Ignore client error
+
+Launcher can produce watch error that currently
+will cause restart of domain watcher.
+Restart of the watcher means an expensive List is performed, forcing
+disruption even for clients that are healthy.
+
+Therefore this commits simply doesn't handle the error and keeps
+only logging.
+
+Signed-off-by: Luboslav Pivarc <lpivarc@redhat.com>
+---
+ pkg/virt-handler/notify-server/server.go | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/pkg/virt-handler/notify-server/server.go b/pkg/virt-handler/notify-server/server.go
+index f63b3d651b..469070983f 100644
+--- a/pkg/virt-handler/notify-server/server.go
++++ b/pkg/virt-handler/notify-server/server.go
+@@ -88,7 +88,6 @@ func (n *Notify) HandleDomainEvent(_ context.Context, request *notifyv1.DomainEv
+ 		n.eventChan <- watch.Event{Type: watch.Deleted, Object: domain}
+ 	case string(watch.Error):
+ 		log.Log.Object(domain).Errorf("Domain error event with message: %s", status.Message)
+-		n.eventChan <- watch.Event{Type: watch.Error, Object: status}
+ 	}
+ 	return response, nil
+ }
+-- 
+2.56.0
+

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Oct 18 20:59:26 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Update to version 1.9.1:
+  * virt-template is pinned at v0.2.3
+  * several bug fixes, see
+    https://github.com/kubevirt/kubevirt/releases/tag/v1.9.1
+- Drop 0001-Fix-VFIO-cdev-passthrough-on-kernels-without-CONFIG_VFIO.patch:
+  in 1.9.1.
+- Drop 0002-use-safepath-when-dialing-the-migration-target-unix-sockets.patch
+  and 0003-tests-dial-migration-target-sockets-through-proc-root-layout.patch:
+  CVE-2026-13622 (bsc#1272840) is fixed in 1.9.1 by the final upstream
+  change, which also puts the migration source listener sockets
+  behind safepath.
+- The tarball is v1.9.1 with the same go.mod/go.sum/vendor as the
+  1.9.0 package (golang.org/x/crypto v0.56.0, golang.org/x/net
+  v0.58.0, golang.org/x/text v0.41.0, google.golang.org/grpc v1.83.2,
+  google.golang.org/protobuf v1.36.11); upstream's module set is
+  unchanged between the two tags.
+- Refresh disks-images-provider.yaml to the v1.9.1 release asset.
+- Add 0005-Add-grace-period-for-Running-VMIs-when-domain-is-nil.patch:
+  when virt-handler restarts it briefly loses the launcher socket;
+  Scheduled VMIs already got a 3-minute grace period before being
+  marked Failed, Running VMIs were failed at once, so healthy VMs were
+  killed during upgrades (upstream release-1.9 commit 6a21e66f30).
+- Add 0006-Notify-server-Make-event-chan-private.patch and
+  0007-Notify-server-Ignore-client-error.patch:
+  a watch error from one virt-launcher made virt-handler restart its
+  whole domain watcher, re-listing every domain on the node and
+  disrupting healthy VMs; log the error instead (upstream release-1.9
+  commits b428d219c5, 6ba8edb64c).
+- Ship the testing manifests in the tests subpackage on SUSE Linux:
+  they were generated and installed only on Tumbleweed, together with
+  the release manifests, so virt-tests came without the
+  default-config.json, rbac-for-testing.yaml, uploadproxy-nodeport.yaml
+  and disks-images-provider.yaml it needs to run. The release manifests
+  and the manifests subpackage stay Tumbleweed-only.
+
+-------------------------------------------------------------------
 Wed Sep  9 18:52:13 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
 
 - Security: re-vendor the bundled Go dependencies to the current fixed
