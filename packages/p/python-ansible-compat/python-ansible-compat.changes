@@ -5,6 +5,16 @@ Wed Oct 14 05:07:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
   * chore(deps): update pep621 in #620
 
 -------------------------------------------------------------------
+Wed Oct 14 04:11:38 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Restore the suse_version >= 1600 guard so SLE 16 builds the
+  python3 alias again: with >= 1699 it produced python313-ansible-compat
+  next to the python3-ansible-compat that ansible-lint, molecule,
+  molecule-plugins and ansible-navigator require ("have choice for
+  python3-ansible-compat"), leaving navigator and molecule-plugins
+  unresolvable on SLE 16
+
+-------------------------------------------------------------------
 Wed Sep 23 04:38:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.9.0:
