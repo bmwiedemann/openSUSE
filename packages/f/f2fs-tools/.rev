@@ -195,4 +195,12 @@
     <comment>gcc15 support</comment>
     <requestid>1286325</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>eae607e74a3b9913f3cb90799ffaa42e</srcmd5>
+    <version>1.17</version>
+    <time>1792677034</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.17</comment>
+    <requestid>1386978</requestid>
+  </revision>
 </revisionlist>

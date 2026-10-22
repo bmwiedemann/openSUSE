@@ -1,7 +1,7 @@
 #
 # spec file for package f2fs-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%define libf2_so_ver 10
-%define libf2_format_so_ver 9
+%define libf2_so_ver 11
+%define libf2_format_so_ver 10
 
 Name:           f2fs-tools
-Version:        1.16.0
+Version:        1.17
 Release:        0
 Summary:        Utilities for the Flash-friendly Filesystem (F2FS)
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Filesystems
-URL:            https://git.kernel.org/cgit/linux/kernel/git/jaegeuk/f2fs-tools.git
-Source:         https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-%version.tar.gz
-Patch1:         c23.patch
+URL:            https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git
+Source:         https://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git/snapshot/f2fs-tools-%version.0.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -56,15 +55,6 @@ Group:          System/Libraries
 %description -n libf2fs_format%libf2_format_so_ver
 This package contains a shared library to format F2 filesystems.
 
-%package compat
-Summary:        f2fs utility compatibility symlinks
-Group:          System/Filesystems
-BuildArch:      noarch
-
-%description compat
-This subpackage contains symbolic links /sbin/fsck.* and /sbin/mkfs.*
-needed for programs that assume these locations.
-
 %package devel
 Summary:        Development files for f2fs
 Group:          Development/Languages/C and C++
@@ -75,29 +65,24 @@ Requires:       libf2fs_format%libf2_format_so_ver = %version-%release
 This package contains development files for %name.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %name-%version.0
 
 %build
 autoreconf -fiv
 %configure --disable-static
 %make_build
 
-%install -p /bin/bash
+%install
+b="%buildroot"
 %make_install
-find %buildroot -type f -name "*.la" -delete -print
+rm -f "$b/%_libdir"/*.la
 # sg3_utils already ships this
-rm -f "%buildroot/%_sbindir/sg_write_buffer"
+rm -f "$b/%_sbindir/sg_write_buffer"
 
-mkdir -p "%buildroot/sbin" "%buildroot/%_includedir"
-%if 0%{?suse_version} < 1550
-for i in defrag.f2fs dump.f2fs fibmap.f2fs fsck.f2fs mkfs.f2fs parse.f2fs resize.f2fs sload.f2fs; do
-	ln -sf "%_sbindir/$i" "%buildroot/sbin/"
-done
-%endif
+mkdir -p "$b/sbin" "$b/%_includedir"
 # for android-tools… this is of course totally untested.
 # The shared library for example has a "main" symbol :-/
-cp -a include/f2fs_fs.h mkfs/f2fs_format_utils.h \
-	"%buildroot/%_includedir/"
+cp -a include/f2fs_fs.h mkfs/f2fs_format_utils.h "$b/%_includedir/"
 
 %ldconfig_scriptlets -n libf2fs%libf2_so_ver
 %ldconfig_scriptlets -n libf2fs_format%libf2_format_so_ver
@@ -112,11 +97,6 @@ cp -a include/f2fs_fs.h mkfs/f2fs_format_utils.h \
 
 %files -n libf2fs_format%libf2_format_so_ver
 %_libdir/libf2fs_format.so.*
-
-%if 0%{?suse_version} < 1550
-%files compat
-/sbin/*
-%endif
 
 %files devel
 %_includedir/*.h
