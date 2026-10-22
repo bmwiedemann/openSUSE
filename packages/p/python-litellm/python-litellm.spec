@@ -23,7 +23,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-litellm
-Version:        1.103.0
+Version:        1.106.2
 Release:        0
 Summary:        Library to easily interface with LLM API providers
 License:        MIT
@@ -36,20 +36,25 @@ BuildRequires:  %{python_module uv-build}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-PyYAML >= 6.0.3
 Requires:       python-aiohttp >= 3.14.2
 Requires:       python-boto3 >= 1.43.1
 Requires:       python-click >= 8.0
 Requires:       python-fastuuid >= 0.14.0
+Requires:       python-filelock >= 3.16.1
 Requires:       python-httpx >= 0.28.0
+Requires:       python-huggingface-hub >= 0.34.0
 Requires:       python-importlib-metadata >= 8.0
 Requires:       python-jinja2 >= 3.1.6
 Requires:       python-jsonschema >= 4.22.0
 Requires:       python-openai >= 2.20.0
-Requires:       python-pydantic >= 2.10.0
+Requires:       python-packaging >= 24.0
+Requires:       python-pydantic >= 2.11.0
 Requires:       python-pydantic-settings >= 2.14.1
 Requires:       python-python-dotenv >= 1.0
 Requires:       python-tiktoken >= 0.8
 Requires:       python-tokenizers >= 0.21
+Requires:       python-typing_extensions >= 4.13.0
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts

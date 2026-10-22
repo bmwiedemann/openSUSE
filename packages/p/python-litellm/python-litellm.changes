@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct 21 17:38:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.106.2:
+  * Auth hardening: breached-password detection with forced reset
+    and self-service password change; the proxy refuses to start
+    with an unset, empty or publicly known master key
+  * Proxy: v2 migration resolver by default, fail-closed
+    rate-limit enforcement, Codex-native model catalog on
+    /v1/models, unified /v1/decisions endpoint
+  * MCP: stdio servers are now disabled by default and OAuth
+    clients are bound to their upstream issuer
+  * New providers: Eden AI, Sail, Laya and Bespoke Nimble
+    gateways, native xAI batches and files, Bedrock Mantle
+    /v1/messages serving
+  * Vector stores metadata-update fix; run upstream's
+    db_scripts/strip_vector_store_internal_metadata.py once
+    for stores created before 1.106.1
+  * New core runtime dependencies: python-filelock,
+    python-PyYAML, python-packaging, python-huggingface-hub
+    and python-typing_extensions; pydantic floor raised to
+    >= 2.11.0 to match upstream
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Tue Sep 29 13:14:25 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - Update to version 1.103.0:
