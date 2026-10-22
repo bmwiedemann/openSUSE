@@ -1,7 +1,7 @@
 #
 # spec file for package libXISF
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,10 @@
 %endif
 
 %define sover 0
-%define full_sover 0.2.13
+%define full_sover 0.2.14
 
 Name:           libXISF
-Version:        0.2.13+git5.7b70b6a
+Version:        0.2.14+git1.fa35ae2
 Release:        0
 Summary:        Library to read/write PixInsight XISF files
 License:        GPL-3.0-or-later

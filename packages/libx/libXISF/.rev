@@ -167,4 +167,18 @@
 </comment>
     <requestid>1321183</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c43f2c35d43c1b7b0b7050bf3b9b53dd</srcmd5>
+    <version>0.2.14+git1.fa35ae2</version>
+    <time>1792681214</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.14+git1.fa35ae2:
+  * Add XISFModify::removeProperty()
+  * Use CROTA to calculate CD_i_j if it is not available
+  * Add support for AstrometricSolution
+  * Bug fixes from Pleiades Astrophoto
+  * Add std::filesystem::path methods variant
+</comment>
+    <requestid>1387053</requestid>
+  </revision>
 </revisionlist>

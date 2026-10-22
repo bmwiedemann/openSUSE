@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 22 06:50:15 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.2.14+git1.fa35ae2:
+  * Add XISFModify::removeProperty()
+  * Use CROTA to calculate CD_i_j if it is not available
+  * Add support for AstrometricSolution
+  * Bug fixes from Pleiades Astrophoto
+  * Add std::filesystem::path methods variant
+
+-------------------------------------------------------------------
 Thu Dec 04 16:15:36 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.2.13+git5.7b70b6a:
