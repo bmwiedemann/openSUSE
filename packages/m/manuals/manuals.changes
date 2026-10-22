@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Mon Mar 23 08:03:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Tue Mar 17 08:37:54 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 24 07:52:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Release candidate for 50.0
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 13 15:15:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.alpha:
+  + Application renamed from app.devsuite.Manuals to
+    org.gnome.Manuals
+  + Add mouse navigation support (back/forward with mouse
+    keys 8 and 9)
+  + Improve navigation state updates when using history
+    back/forward
+  + Make Ctrl+K focus search and select all text for easier
+    re-searching
+  + Bundle dialog improvements:
+    - Use collate key for filename sorting
+    - Add button to show/hide legacy SDKs
+    - Denote EOL SDKs and show warnings
+  + Build system improvements
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  3 11:20:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.1:
+  + Implement new-window action
+  + Fix component to be desktop-application
+  + Fix APP_ID usage when doing test/development builds
+  + Updated translations
+- Changes from version 49.0
+  + Various build system improvements
+  + Updated translations
+
+-------------------------------------------------------------------
+Thu Sep  4 05:49:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.alpha.1:
+  + Upload dist tarball from CI
+
+-------------------------------------------------------------------
+Tue Sep  2 16:40:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.alpha:
+  + Some UI layout and styling has changed
+  + Improved sorting of search results and SDKs
+  + Improved responsiveness
+  + Handle Escape from search entry
+  + Many translations have been added
+
+-------------------------------------------------------------------
+Tue May 13 12:03:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial packaging for openSUSE.
