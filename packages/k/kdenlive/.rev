@@ -1357,4 +1357,15 @@ I would be grateful.
     <comment>KDE release gear 26.08.2 (forwarded request 1383113 from krop)</comment>
     <requestid>1383447</requestid>
   </revision>
+  <revision rev="162" vrev="2">
+    <srcmd5>bbfdf9172c3782aca5d16f18103a6621</srcmd5>
+    <version>26.08.2</version>
+    <time>1792677039</time>
+    <user>anag_factory</user>
+    <comment>- Add patches:
+  * 0001-Remove-unused-qml-imports.patch
+  * 0001-Fix-confusing-expression-statement-qml-error-with-Qt.patch
+- Add missing build dependency (boo#1286338)</comment>
+    <requestid>1386983</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 21 13:35:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * 0001-Remove-unused-qml-imports.patch
+  * 0001-Fix-confusing-expression-statement-qml-error-with-Qt.patch
+- Add missing build dependency (boo#1286338)
+
+-------------------------------------------------------------------
 Wed Oct  7 07:02:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

@@ -1,0 +1,224 @@
+From 3f6b8f1c32a664c1230d3f1db3cc1dc84f048b1c Mon Sep 17 00:00:00 2001
+From: Jean-Baptiste Mardelle <jb@kdenlive.org>
+Date: Wed, 19 Aug 2026 08:59:37 +0200
+Subject: [PATCH] Remove unused qml imports
+
+---
+ src/monitor/view/AudioZoomBar.qml                 | 1 -
+ src/monitor/view/ClipMonitor.qml                  | 1 -
+ src/monitor/view/MaskToolBar.qml                  | 1 -
+ src/monitor/view/MonitorAutomask.qml              | 2 --
+ src/monitor/view/MonitorRotoScene.qml             | 1 -
+ src/monitor/view/MonitorSafeZone.qml              | 1 -
+ src/monitor/view/MonitorSplit.qml                 | 1 -
+ src/monitor/view/MultiScreenToolBar.qml           | 1 -
+ src/monitor/view/OverlayCenterDiagonal.qml        | 1 -
+ src/monitor/view/SceneToolBar.qml                 | 1 -
+ src/timeline2/view/qml/AudioRecordingControls.qml | 1 -
+ src/timeline2/view/qml/Clip.qml                   | 1 -
+ src/timeline2/view/qml/ClipAudioThumbs.qml        | 2 --
+ src/timeline2/view/qml/ClipThumbs.qml             | 2 --
+ src/timeline2/view/qml/Composition.qml            | 2 --
+ src/timeline2/view/qml/Timeline.qml               | 1 -
+ 16 files changed, 20 deletions(-)
+
+diff --git a/src/monitor/view/AudioZoomBar.qml b/src/monitor/view/AudioZoomBar.qml
+index 86f655a7d0..9ca42a1fa8 100644
+--- a/src/monitor/view/AudioZoomBar.qml
++++ b/src/monitor/view/AudioZoomBar.qml
+@@ -6,7 +6,6 @@
+ 
+ pragma ComponentBehavior: Bound
+ 
+-import QtQuick.Controls
+ import QtQuick
+ 
+ import org.kde.kdenlive as K
+diff --git a/src/monitor/view/ClipMonitor.qml b/src/monitor/view/ClipMonitor.qml
+index f848ea889f..b001e10092 100644
+--- a/src/monitor/view/ClipMonitor.qml
++++ b/src/monitor/view/ClipMonitor.qml
+@@ -13,7 +13,6 @@ import QtQuick
+ import org.kde.ki18n
+ 
+ import org.kde.kdenlive as K
+-import 'Utils.js' as Utils
+ 
+ Item {
+     id: root
+diff --git a/src/monitor/view/MaskToolBar.qml b/src/monitor/view/MaskToolBar.qml
+index e0c3036f30..a960354875 100644
+--- a/src/monitor/view/MaskToolBar.qml
++++ b/src/monitor/view/MaskToolBar.qml
+@@ -3,7 +3,6 @@
+     SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+ 
+-import QtQuick.Controls
+ import QtQuick
+ 
+ import org.kde.ki18n
+diff --git a/src/monitor/view/MonitorAutomask.qml b/src/monitor/view/MonitorAutomask.qml
+index e3f634e815..550e6822ad 100644
+--- a/src/monitor/view/MonitorAutomask.qml
++++ b/src/monitor/view/MonitorAutomask.qml
+@@ -6,9 +6,7 @@
+ pragma ComponentBehavior: Bound
+ 
+ import QtQuick.Controls 2.15
+-import QtQuick.Layouts 1.15
+ import QtQuick.Window 2.15
+-import QtQuick.Effects
+ import QtQuick 2.15
+ 
+ import org.kde.ki18n
+diff --git a/src/monitor/view/MonitorRotoScene.qml b/src/monitor/view/MonitorRotoScene.qml
+index 14c212560c..6c4f930498 100644
+--- a/src/monitor/view/MonitorRotoScene.qml
++++ b/src/monitor/view/MonitorRotoScene.qml
+@@ -5,7 +5,6 @@
+ */
+ 
+ import QtQuick 2.15
+-import QtQuick.Controls
+ 
+ import org.kde.ki18n
+ 
+diff --git a/src/monitor/view/MonitorSafeZone.qml b/src/monitor/view/MonitorSafeZone.qml
+index 68cf45dd9c..ea96a7a7c2 100644
+--- a/src/monitor/view/MonitorSafeZone.qml
++++ b/src/monitor/view/MonitorSafeZone.qml
+@@ -4,7 +4,6 @@
+ */
+ 
+ import QtQuick
+-import org.kde.kdenlive as K
+ 
+ Item {
+     id: safeFrame
+diff --git a/src/monitor/view/MonitorSplit.qml b/src/monitor/view/MonitorSplit.qml
+index b04350aec4..2bf1511186 100644
+--- a/src/monitor/view/MonitorSplit.qml
++++ b/src/monitor/view/MonitorSplit.qml
+@@ -4,7 +4,6 @@
+ */
+ 
+ import QtQuick
+-import QtQuick.Controls
+ 
+ import org.kde.ki18n
+ 
+diff --git a/src/monitor/view/MultiScreenToolBar.qml b/src/monitor/view/MultiScreenToolBar.qml
+index e2a3a61046..66b09d47a8 100644
+--- a/src/monitor/view/MultiScreenToolBar.qml
++++ b/src/monitor/view/MultiScreenToolBar.qml
+@@ -3,7 +3,6 @@
+     SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+ 
+-import QtQuick.Controls 2.15
+ import QtQuick 2.15
+ 
+ import org.kde.ki18n
+diff --git a/src/monitor/view/OverlayCenterDiagonal.qml b/src/monitor/view/OverlayCenterDiagonal.qml
+index b010ecaa63..f21e2ad19e 100644
+--- a/src/monitor/view/OverlayCenterDiagonal.qml
++++ b/src/monitor/view/OverlayCenterDiagonal.qml
+@@ -4,7 +4,6 @@
+     SPDX-License-Identifier: GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+ */
+ 
+-import QtQuick.Controls 2.15
+ import QtQuick 2.15
+ 
+ Item {
+diff --git a/src/monitor/view/SceneToolBar.qml b/src/monitor/view/SceneToolBar.qml
+index a7955912f6..2fb29582d3 100644
+--- a/src/monitor/view/SceneToolBar.qml
++++ b/src/monitor/view/SceneToolBar.qml
+@@ -4,7 +4,6 @@
+ */
+ 
+ import QtQuick 2.15
+-import QtQuick.Controls
+ 
+ import org.kde.ki18n
+ 
+diff --git a/src/timeline2/view/qml/AudioRecordingControls.qml b/src/timeline2/view/qml/AudioRecordingControls.qml
+index fcbfcc242b..e2bb17483b 100644
+--- a/src/timeline2/view/qml/AudioRecordingControls.qml
++++ b/src/timeline2/view/qml/AudioRecordingControls.qml
+@@ -4,7 +4,6 @@
+ */
+ 
+ import QtQuick 2.15
+-import QtQuick.Controls 2.15
+ import QtQuick.Layouts 1.15
+ 
+ import org.kde.kdenlive as K
+diff --git a/src/timeline2/view/qml/Clip.qml b/src/timeline2/view/qml/Clip.qml
+index 314c9e45b2..7b72d0a59b 100644
+--- a/src/timeline2/view/qml/Clip.qml
++++ b/src/timeline2/view/qml/Clip.qml
+@@ -10,7 +10,6 @@ pragma ComponentBehavior: Bound
+ import QtQuick 2.15
+ import QtQuick.Controls 2.15
+ import QtQuick.Window 2.15
+-import QtQml.Models 2.15
+ import QtQml 2.15
+ 
+ import org.kde.ki18n
+diff --git a/src/timeline2/view/qml/ClipAudioThumbs.qml b/src/timeline2/view/qml/ClipAudioThumbs.qml
+index 054634af00..941f8750b2 100644
+--- a/src/timeline2/view/qml/ClipAudioThumbs.qml
++++ b/src/timeline2/view/qml/ClipAudioThumbs.qml
+@@ -6,8 +6,6 @@
+ pragma ComponentBehavior: Bound
+ 
+ import QtQuick 2.15
+-import QtQuick.Controls 2.15
+-import QtQml.Models 2.15
+ 
+ import org.kde.kdenlive as K
+ 
+diff --git a/src/timeline2/view/qml/ClipThumbs.qml b/src/timeline2/view/qml/ClipThumbs.qml
+index 338a514e59..3831f2300f 100644
+--- a/src/timeline2/view/qml/ClipThumbs.qml
++++ b/src/timeline2/view/qml/ClipThumbs.qml
+@@ -6,8 +6,6 @@
+ pragma ComponentBehavior: Bound
+ 
+ import QtQuick 2.15
+-import QtQuick.Controls 2.15
+-import QtQml.Models 2.15
+ 
+ import org.kde.kdenlive as K
+ 
+diff --git a/src/timeline2/view/qml/Composition.qml b/src/timeline2/view/qml/Composition.qml
+index db54d5380f..e427ecacc4 100644
+--- a/src/timeline2/view/qml/Composition.qml
++++ b/src/timeline2/view/qml/Composition.qml
+@@ -6,8 +6,6 @@
+ */
+ 
+ import QtQuick 2.15
+-import QtQuick.Controls 2.15
+-import QtQml.Models 2.15
+ import QtQuick.Window 2.15
+ 
+ import org.kde.ki18n
+diff --git a/src/timeline2/view/qml/Timeline.qml b/src/timeline2/view/qml/Timeline.qml
+index d2b8f6c4cd..66b11774c4 100644
+--- a/src/timeline2/view/qml/Timeline.qml
++++ b/src/timeline2/view/qml/Timeline.qml
+@@ -19,7 +19,6 @@ import org.kde.ki18n
+ 
+ import org.kde.kdenlive as K
+ import 'TimelineLogic.js' as Logic
+-import 'Utils.js' as Utils
+ 
+ Rectangle {
+     id: root
+-- 
+2.56.0
+

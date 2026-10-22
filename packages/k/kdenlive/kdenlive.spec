@@ -32,9 +32,13 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Remove-unused-qml-imports.patch
+Patch1:         0001-Fix-confusing-expression-statement-qml-error-with-Qt.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-multimedia-imports >= %{qt6_version}
 BuildRequires:  rttr-devel
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KDDockWidgets-qt6)
@@ -89,6 +93,7 @@ Requires:       melt >= 7
 # Required at runtime
 Requires:       kf6-qqc2-desktop-style >= %{kf6_version}
 Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       qt6-multimedia-imports >= %{qt6_version}
 # Required by the composition and effects panel
 Requires:       kf6-knewstuff-imports >= %{kf6_version}
 Recommends:     %{_bindir}/dvdauthor
@@ -115,7 +120,9 @@ work.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DFETCH_OTIO:BOOL=FALSE
+%cmake_kf6 \
+  -DFETCH_OTIO:BOOL=FALSE \
+  -DBUILD_RUN_QMLLINT:BOOL=FALSE
 
 %kf6_build
 

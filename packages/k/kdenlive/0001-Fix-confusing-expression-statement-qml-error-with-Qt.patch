@@ -1,0 +1,52 @@
+From 2a40ef90e699ae270fc8c1e4b0db36c0c9b9a029 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julius=20K=C3=BCnzel?= <julius.kuenzel@kde.org>
+Date: Sun, 9 Aug 2026 23:27:32 +0200
+Subject: [PATCH] Fix confusing-expression-statement qml error with Qt 6.12
+
+---
+ src/timeline2/view/qml/ClipThumbs.qml | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/src/timeline2/view/qml/ClipThumbs.qml b/src/timeline2/view/qml/ClipThumbs.qml
+index d59f65b..3945b9c 100644
+--- a/src/timeline2/view/qml/ClipThumbs.qml
++++ b/src/timeline2/view/qml/ClipThumbs.qml
+@@ -28,29 +28,28 @@ Row {
+         id: thumbRepeater
+         // switching the model allows one to have different view modes.
+         // We set the model to the number of frames we want to show
+-        model: switch (parentTrack.trackThumbsFormat) {
++        model: {
++            switch (parentTrack.trackThumbsFormat) {
+                    case 0:
+                        // in/out
+                        if (parent.width > thumbRow.thumbWidth) {
+-                           2 // 2: will display start / end thumbs
++                           return 2 // 2: will display start / end thumbs
+                        } else {
+-                           1 // 1: if the width of the container is to small, only show first thumbnail
++                           return 1 // 1: if the width of the container is to small, only show first thumbnail
+                        }
+-                       break;
+                    case 1:
+                        // All frames
+                        // display as many thumbnails as can fit into the container
+-                       Math.ceil(parent.width / thumbRow.thumbWidth)
+-                       break;
++                       return Math.ceil(parent.width / thumbRow.thumbWidth)
+                    case 2:
+                        // In frame only
+-                       1 // 1: only show first thumbnail
+-                       break;
++                       return 1 // 1: only show first thumbnail
+                    case 3:
+                    default:
+                        // No thumbs
+-                       0 // 0: will disable thumbnails
+-               }
++                       return 0 // 0: will disable thumbnails
++            }
++        }
+         property int startFrame: thumbRow.parentClip.inPoint
+         property int endFrame: thumbRow.parentClip.outPoint
+         property real imageWidth: Math.max(thumbRow.thumbWidth, parent.width / thumbRepeater.count)
