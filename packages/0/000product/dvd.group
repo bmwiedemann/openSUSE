@@ -1606,15 +1606,15 @@
     <package name="libabsl_log_sink2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libabsl_malloc_internal2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libabsl_raw_hash_set2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libabsl_raw_logging_internal2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libabsl_raw_logging_internal2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libabsl_spinlock_wait2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libabsl_stacktrace2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libabsl_status2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libabsl_statusor2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libabsl_str_format_internal2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libabsl_strerror2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libabsl_strings2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libabsl_strings_internal2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libabsl_strings2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libabsl_strings_internal2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libabsl_symbolize2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libabsl_synchronization2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libabsl_throw_delegate2608_0_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2855,8 +2855,7 @@
     <package name="libwebp7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwebpdemux2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwebpmux3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libwebrtc-audio-processing-1-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libwebrtc-audio-processing-2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libwebrtc-audio-processing-2-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwinpr3-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwireplumber-0_5-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwlembed-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->

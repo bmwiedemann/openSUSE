@@ -10497,6 +10497,7 @@ unsorted:
   - klatexformula-apidoc 
   - klavaro 
   - kldap-devel 
+  - klee 
   - klee-uclibc-devel-static 
   - kleingebaeck 
   - klettres 
@@ -10582,6 +10583,8 @@ unsorted:
   - konquest-lang 
   - konstraint 
   - kontactinterface-devel 
+  - kontainer 
+  - kontainer-lang 
   - kontrast 
   - kontrast-lang 
   - kopeninghours 
@@ -13497,7 +13500,7 @@ unsorted:
   - libfl2-32bit 
   - libflann1_9 
   - libflashrom1 
-  - libflatbuffers25_2_10 
+  - libflatbuffers25_12_19 
   - libflickcurl-devel 
   - libflickcurl0 
   - libflint24 
@@ -14283,7 +14286,7 @@ unsorted:
   - libhwasan0-gcc15 
   - libhwloc15 
   - libhwy1-32bit 
-  - libhydrogen-core-1_2_6 
+  - libhydrogen-core-1_2_7 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libhyprcursor0 
@@ -15764,7 +15767,7 @@ unsorted:
   - libpq5-32bit 
   - libpqos-devel 
   - libpqos7 
-  - libpqxx-7_10 
+  - libpqxx-8_0 
   - libpqxx-devel 
   - libpresage-devel 
   - libpresage-doc 
@@ -17306,7 +17309,7 @@ unsorted:
   - libvsapm-tools 
   - libvsapm1 
   - libvsg-devel 
-  - libvsg14 
+  - libvsg17 
   - libvsgImGui-devel 
   - libvsgImGui0 
   - libvsgXchange-devel 
@@ -17373,6 +17376,7 @@ unsorted:
   - libwebrtc-audio-coding-1-3-32bit 
   - libwebrtc-audio-coding-1-devel 
   - libwebrtc-audio-coding-1-devel-static 
+  - libwebrtc-audio-processing-1-3 
   - libwebrtc-audio-processing-1-3-32bit 
   - libwebrtc-audio-processing-1-devel 
   - libwebrtc-audio-processing-1-devel-static 
@@ -17611,12 +17615,10 @@ unsorted:
   - libxmi0 
   - libxml++-2_6-2 
   - libxml++-3_0-1-32bit 
-  - libxml++-4_0-1 
   - libxml++-5_0-1 
   - libxml++-devel 
   - libxml++26-devel 
   - libxml++30-devel 
-  - libxml++40-devel 
   - libxml-security-c-devel 
   - libxml-security-c30 
   - libxml2-16-32bit 
@@ -33954,6 +33956,11 @@ unsorted:
   - rpm-repos-openSUSE-Tumbleweed 
   - rpm2docserv 
   - rpmconf 
+  - rpmcrab 
+  - rpmcrab-bash-completion 
+  - rpmcrab-fish-completion 
+  - rpmcrab-rpmlint-compat 
+  - rpmcrab-zsh-completion 
   - rpmdevtools 
   - rpmlint 
   - rpmlint-mini 
