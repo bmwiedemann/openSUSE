@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 20 03:29:30 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Reduce the size and number of TPM 8 PCR events (bsc#1278206)
+  * 0001-script-execute-Do-not-measure-.-block-bodies-into-PC.patch
+  * 0002-script-execute-Free-argv-on-error-paths-in-grub_scri.patch
+  * 0001-grub-mkconfig-Track-and-deduplicate-emitted-modules.patch
+  * 0002-00_header-Deduplicate-device-preparation-for-theme-f.patch
+  * 0003-31_efi_bootnext-Consolidate-EFI-platform-check.patch
+- Fix overflow in grub-mkpasswd-argon2 (bsc#1284464)
+  * 0001-grub-mkpasswd-argon2-validate-argument-ranges-to-avo.patch
+- Fix overflow in MFA key protector (bsc#1284464)
+  * 0001-mfa-fix-key-size-calculation-when-keyfile_size-is-0.patch
+  * 0002-mfa-reject-keyfile-offset-at-EOF-to-prevent-empty-ke.patch
+  * 0003-mfa-wipe-key-buffer-on-file-read-error.patch
+  * 0004-mfa-require-both-factors-to-provide-non-empty-keys.patch
+- Rebase patches
+  * grub-install-force-journal-draining-to-ensure-data-i.patch
+  * grub2-btrfs-05-grub2-mkconfig.patch
+  * grub2-efi-xen-cmdline.patch
+  * grub2-suse-remove-linux-root-param.patch
+
+-------------------------------------------------------------------
 Tue Oct 13 01:21:12 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Fix PowerPC PCIe NVMe disk discovery (bsc#1239799 ltc#211961 bsc#1245357 ltc#214095)

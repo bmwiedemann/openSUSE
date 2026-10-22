@@ -1,0 +1,62 @@
+From ef7a67dff2154365978e1effa555c3bada64221c Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 2 Oct 2026 08:37:15 +0000
+Subject: [PATCH 3/3] 31_efi_bootnext: Consolidate EFI platform check
+
+Currently, 31_efi_bootnext wraps each discovered BootNext menuentry
+individually inside an "if [ "$grub_platform" = "efi" ]; then ... fi"
+block. On systems with multiple UEFI boot entries (e.g. 7 entries in the
+reference configuration), this evaluates "[ efi = efi ]" repeatedly,
+adding unnecessary lines to grub.cfg and redundant PCR 8 events.
+
+Wrap all discovered BootNext entries inside a single top-level conditional
+block.
+
+Assisted-by: Claude:Opus-5.5 Gemini:gemini-3.8-flash
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Sudhakar Kuppusamy <sudhakar@linux.ibm.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/297>
+---
+ util/grub.d/31_efi_bootnext.in | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/util/grub.d/31_efi_bootnext.in b/util/grub.d/31_efi_bootnext.in
+index 342508385..5b6250546 100644
+--- a/util/grub.d/31_efi_bootnext.in
++++ b/util/grub.d/31_efi_bootnext.in
+@@ -156,6 +156,7 @@ fi
+ # rejection) do not update grubenv.  Cf. 30_os-prober.in:204.
+ SAVEDEFAULT="`save_default_entry`"
+ 
++bootnext_entries="$(
+ printf '%s\n' "${EFI_OUTPUT}" | \
+     sed -n "s/^Boot\([0-9A-Fa-f]\{4\}\)${ACTIVE_PAT} *\([^${TAB}]*\)${TAB}\{0,1\}\(.*\)/\1${TAB}\2${TAB}\3/p" | \
+ while IFS="${TAB}" read -r bootnum label devpath; do
+@@ -231,14 +232,21 @@ while IFS="${TAB}" read -r bootnum label devpath; do
+ 
+     # Cf. 30_uefi-firmware.in:34
+     cat << EOF
+-if [ "\$grub_platform" = "efi" ]; then
+   menuentry '$(gettext_printf "%s (EFI BootNext)" "${label}" | grub_quote)' $CLASS --class os \$menuentry_id_option 'efi-bootnext-${bootnum}' {
+     if bootnext ${bootnum}; then
+       ${SAVEDEFAULT}
+       reboot
+     fi
+   }
+-fi
+ EOF
+ 
+ done
++)"
++
++if [ -n "${bootnext_entries}" ]; then
++    cat << EOF
++if [ "\$grub_platform" = "efi" ]; then
++${bootnext_entries}
++fi
++EOF
++fi
+-- 
+2.51.0
+

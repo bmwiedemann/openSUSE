@@ -1,0 +1,42 @@
+From 0056a23967996095bd6e2899859b92505095c554 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 13 Oct 2026 01:59:44 +0000
+Subject: [PATCH 4/4] mfa: require both factors to provide non-empty keys
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In mfa_recover_key(), the check only validated that total_size was non-zero.
+If one factor returned a zero-length key while the other succeeded,
+mfa_recover_key() would concatenate them without warning, effectively
+downgrading multi-factor authentication to a single factor.
+
+Ensure that neither factor is permitted to have a size of zero
+(p1_size == 0 || p2_size == 0).
+
+Fixes: 40a1f9e5b627 ("key_protector: Add MFA key protector")
+Assisted-by: Gemini:gemini-3.8-flash
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/306>
+---
+ grub-core/commands/mfa.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grub-core/commands/mfa.c b/grub-core/commands/mfa.c
+index c8cdafaa9..568724e63 100644
+--- a/grub-core/commands/mfa.c
++++ b/grub-core/commands/mfa.c
+@@ -163,7 +163,7 @@ mfa_recover_key (grub_uint8_t **key, grub_size_t *key_size)
+     goto error;
+ 
+   total_size = p1_size + p2_size;
+-  if (total_size < p1_size || total_size < p2_size || total_size == 0)
++  if (p1_size == 0 || p2_size == 0 || total_size < p1_size || total_size < p2_size)
+     {
+       err = grub_error (GRUB_ERR_BAD_NUMBER, N_("invalid MFA key size"));
+       goto error;
+-- 
+2.51.0
+

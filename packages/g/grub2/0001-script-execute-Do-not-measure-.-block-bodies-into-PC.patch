@@ -1,0 +1,105 @@
+From 8f2f931336066816d9060c04a2bb8b0c84736357 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 23 Sep 2026 02:59:10 +0000
+Subject: [PATCH 1/2] script/execute: Do not measure { ... } block bodies into
+ PCR 8
+
+grub_script_execute_cmdline() measures the entire command line,
+including any { ... } block body, into TPM PCR 8. For block commands
+like menuentry, this quickly exhausts the firmware TPM event log buffer
+(typically 64 KiB) and leads to OS-level event log parsing failures.
+
+Replace the block body with a "{...}" placeholder for commands flagged
+with GRUB_COMMAND_FLAG_BLOCKS (handling an optional "!" prefix). Dynamic
+commands (GRUB_COMMAND_FLAG_DYNCMD) are excluded because their stubs
+unconditionally carry GRUB_COMMAND_FLAG_BLOCKS, which would otherwise
+drop valid arguments and make PCR 8 depend on module load order.
+
+No measurement integrity is lost: the enclosing configuration file is
+measured into PCR 9, and the commands inside the block are measured
+individually when executed.
+
+Assisted-by: Claude:Opus-5
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/268>
+---
+ grub-core/script/execute.c | 37 +++++++++++++++++++++++++++++++++++--
+ 1 file changed, 35 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/script/execute.c b/grub-core/script/execute.c
+index 369d985ee..1123516ca 100644
+--- a/grub-core/script/execute.c
++++ b/grub-core/script/execute.c
+@@ -948,6 +948,27 @@ grub_script_execute_new_scope (const char *source, int argc, char **args)
+   return ret;
+ }
+ 
++/*
++ * Placeholder logged in place of a { ... } block body to prevent overflowing
++ * the TPM event log.
++ *
++ * Dyncmd stubs are excluded because read_command_list() registers all
++ * unloaded module commands with GRUB_COMMAND_FLAG_BLOCKS unconditionally.
++ */
++#define GRUB_SCRIPT_BLOCK_PLACEHOLDER "{...}"
++
++/* Text to log for argument I of ARGV, eliding a { ... } block body.  */
++static const char *
++cmdline_logged_arg (const struct grub_script_argv *argv, unsigned int i,
++		    bool is_block_cmd)
++{
++  if (is_block_cmd && argv->script != NULL && argv->argc > 1 &&
++      i + 1 == argv->argc)
++    return GRUB_SCRIPT_BLOCK_PLACEHOLDER;
++
++  return argv->args[i];
++}
++
+ /* Execute a single command line.  */
+ grub_err_t
+ grub_script_execute_cmdline (struct grub_script_cmd *cmd)
+@@ -959,18 +980,30 @@ grub_script_execute_cmdline (struct grub_script_cmd *cmd)
+   char errnobuf[18];
+   char *cmdname, *cmdstring;
+   int argc, offset = 0, cmdlen = 0;
++  bool is_block_cmd = false;
+   unsigned int i;
+   char **args;
+   int invert;
++  const char *check_name;
+   struct grub_script_argv argv = { 0, 0, 0 };
+ 
+   /* Lookup the command.  */
+   if (grub_script_arglist_to_argv (cmdline->arglist, &argv) || ! argv.args || ! argv.args[0])
+     return grub_errno;
+ 
++  /* Only elide the block if the command actually accepts blocks.  */
++  check_name = argv.args[0];
++  if (grub_strcmp (check_name, "!") == 0 && argv.argc > 1 && argv.args[1])
++    check_name = argv.args[1];
++
++  grubcmd = grub_command_find (check_name);
++  if (grubcmd != NULL && (grubcmd->flags & GRUB_COMMAND_FLAG_BLOCKS) != 0 &&
++      (grubcmd->flags & GRUB_COMMAND_FLAG_DYNCMD) == 0)
++    is_block_cmd = true;
++
+   for (i = 0; i < argv.argc; i++)
+     {
+-      cmdlen += grub_strlen (argv.args[i]) + 1;
++      cmdlen += grub_strlen (cmdline_logged_arg (&argv, i, is_block_cmd)) + 1;
+     }
+ 
+   cmdstring = grub_malloc (cmdlen);
+@@ -983,7 +1016,7 @@ grub_script_execute_cmdline (struct grub_script_cmd *cmd)
+   for (i = 0; i < argv.argc; i++)
+     {
+       offset += grub_snprintf (cmdstring + offset, cmdlen - offset, "%s ",
+-			       argv.args[i]);
++			       cmdline_logged_arg (&argv, i, is_block_cmd));
+     }
+   cmdstring[cmdlen - 1] = '\0';
+   grub_verify_string (cmdstring, GRUB_VERIFY_COMMAND);
+-- 
+2.51.0
+

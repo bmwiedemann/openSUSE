@@ -1,8 +1,10 @@
---- a/util/grub-mkconfig.in
-+++ b/util/grub-mkconfig.in
-@@ -323,7 +323,8 @@
-   GRUB_RECOVERY_ACCESS_LEVEL \
+Index: grub-2.16/util/grub-mkconfig.in
+===================================================================
+--- grub-2.16.orig/util/grub-mkconfig.in
++++ grub-2.16/util/grub-mkconfig.in
+@@ -324,7 +324,8 @@ export GRUB_DEFAULT \
    GRUB_BOOTNEXT_OMIT_INACTIVE \
+   GRUB_DISABLE_MODULE_DEDUPLICATION \
    SUSE_BTRFS_SNAPSHOT_BOOTING \
 -  SUSE_CMDLINE_XENEFI
 +  SUSE_CMDLINE_XENEFI \
@@ -10,9 +12,11 @@
  
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
---- a/util/grub.d/10_linux.in
-+++ b/util/grub.d/10_linux.in
-@@ -76,7 +76,7 @@
+Index: grub-2.16/util/grub.d/10_linux.in
+===================================================================
+--- grub-2.16.orig/util/grub.d/10_linux.in
++++ grub-2.16/util/grub.d/10_linux.in
+@@ -76,7 +76,7 @@ case x"$GRUB_FS" in
  	else
  	rootsubvol="`make_system_path_relative_to_its_root /`"
  	rootsubvol="${rootsubvol#/}"
@@ -21,7 +25,7 @@
  	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
  	fi
  	fi;;
-@@ -93,6 +93,10 @@
+@@ -93,6 +93,10 @@ case x"$GRUB_FS" in
  	;;
  esac
  
@@ -32,9 +36,11 @@
  title_correction_code=
  
  hotkey=1
---- a/util/grub.d/20_linux_xen.in
-+++ b/util/grub.d/20_linux_xen.in
-@@ -100,7 +100,7 @@
+Index: grub-2.16/util/grub.d/20_linux_xen.in
+===================================================================
+--- grub-2.16.orig/util/grub.d/20_linux_xen.in
++++ grub-2.16/util/grub.d/20_linux_xen.in
+@@ -100,7 +100,7 @@ case x"$GRUB_FS" in
  	else
  	rootsubvol="`make_system_path_relative_to_its_root /`"
  	rootsubvol="${rootsubvol#/}"
@@ -43,7 +49,7 @@
  	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
  	fi
  	fi;;
-@@ -111,6 +111,10 @@
+@@ -111,6 +111,10 @@ case x"$GRUB_FS" in
  	;;
  esac
  
@@ -54,9 +60,11 @@
  title_correction_code=
  
  grub2_unquote ()
---- a/util/s390x/zipl2grub.pl.in
-+++ b/util/s390x/zipl2grub.pl.in
-@@ -384,9 +384,13 @@
+Index: grub-2.16/util/s390x/zipl2grub.pl.in
+===================================================================
+--- grub-2.16.orig/util/s390x/zipl2grub.pl.in
++++ grub-2.16/util/s390x/zipl2grub.pl.in
+@@ -384,9 +384,13 @@ while ( <IN> ) {
      } else {
        $v = "";
      }

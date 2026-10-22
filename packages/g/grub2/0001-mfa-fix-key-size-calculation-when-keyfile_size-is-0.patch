@@ -1,0 +1,44 @@
+From e296e5c5a0cae02f089120739e8d49a9270f1af5 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 13 Oct 2026 01:28:23 +0000
+Subject: [PATCH 1/4] mfa: fix key size calculation when keyfile_size is 0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In file_recover_key(), when keyfile_size was not specified (0), *key_size
+was assigned file_size instead of (file_size - file_ctx.keyfile_offset).
+After grub_file_seek() advanced the file by keyfile_offset, grub_file_read()
+attempted to read *key_size bytes but only (file_size - keyfile_offset)
+bytes remained, causing key recovery to always fail with
+GRUB_ERR_FILE_READ_ERROR.
+
+Subtract keyfile_offset from file_size when keyfile_size is 0 so *key_size
+reflects the actual number of bytes to read.
+
+Fixes: 40a1f9e5b627 ("key_protector: Add MFA key protector")
+Assisted-by: Gemini:gemini-3.8-flash
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/306>
+---
+ grub-core/commands/mfa.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grub-core/commands/mfa.c b/grub-core/commands/mfa.c
+index 354b6aa94..96712a717 100644
+--- a/grub-core/commands/mfa.c
++++ b/grub-core/commands/mfa.c
+@@ -298,7 +298,7 @@ file_recover_key (grub_uint8_t **key, grub_size_t *key_size)
+       *key_size = file_ctx.keyfile_size;
+     }
+   else
+-    *key_size = file_size;
++    *key_size = file_size - file_ctx.keyfile_offset;
+ 
+   if (grub_file_seek (file, (grub_off_t) file_ctx.keyfile_offset) == (grub_off_t) -1)
+     {
+-- 
+2.51.0
+

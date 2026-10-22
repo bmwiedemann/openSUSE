@@ -1,0 +1,45 @@
+From ff2d771276fae4fdb2ee67eecd9f65580d50609d Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 13 Oct 2026 01:52:19 +0000
+Subject: [PATCH 2/4] mfa: reject keyfile offset at EOF to prevent empty key
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In file_recover_key(), the check "file_ctx.keyfile_offset > file_size"
+allowed keyfile_offset to be equal to file_size. When keyfile_size was not
+specified (0), this resulted in *key_size = 0, causing file_recover_key()
+to succeed with an empty key and bypass the file key factor in MFA.
+
+Change the check to ">=" so that an offset at or beyond EOF is rejected.
+
+Fixes: 40a1f9e5b627 ("key_protector: Add MFA key protector")
+Assisted-by: Gemini:gemini-3.8-flash
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/306>
+---
+ grub-core/commands/mfa.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/commands/mfa.c b/grub-core/commands/mfa.c
+index 96712a717..53e706ac8 100644
+--- a/grub-core/commands/mfa.c
++++ b/grub-core/commands/mfa.c
+@@ -274,10 +274,10 @@ file_recover_key (grub_uint8_t **key, grub_size_t *key_size)
+       goto error;
+     }
+ 
+-  if (file_ctx.keyfile_offset > file_size)
++  if (file_ctx.keyfile_offset >= file_size)
+     {
+       err = grub_error (GRUB_ERR_OUT_OF_RANGE,
+-			N_("Keyfile offset, %llu, is greater than keyfile size, %llu"),
++			N_("Keyfile offset, %llu, is greater than or equal to file size, %llu"),
+ 			   file_ctx.keyfile_offset, (unsigned long long) file_size);
+       goto error;
+     }
+-- 
+2.51.0
+

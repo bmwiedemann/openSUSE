@@ -1,18 +1,22 @@
---- a/util/grub-mkconfig.in
-+++ b/util/grub-mkconfig.in
-@@ -322,7 +322,8 @@
-   GRUB_ADVANCED_ACCESS_LEVEL \
+Index: grub-2.16/util/grub-mkconfig.in
+===================================================================
+--- grub-2.16.orig/util/grub-mkconfig.in
++++ grub-2.16/util/grub-mkconfig.in
+@@ -323,7 +323,8 @@ export GRUB_DEFAULT \
    GRUB_RECOVERY_ACCESS_LEVEL \
    GRUB_BOOTNEXT_OMIT_INACTIVE \
+   GRUB_DISABLE_MODULE_DEDUPLICATION \
 -  SUSE_BTRFS_SNAPSHOT_BOOTING
 +  SUSE_BTRFS_SNAPSHOT_BOOTING \
 +  SUSE_CMDLINE_XENEFI
  
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
---- a/util/grub.d/20_linux_xen.in
-+++ b/util/grub.d/20_linux_xen.in
-@@ -222,7 +222,7 @@
+Index: grub-2.16/util/grub.d/20_linux_xen.in
+===================================================================
+--- grub-2.16.orig/util/grub.d/20_linux_xen.in
++++ grub-2.16/util/grub.d/20_linux_xen.in
+@@ -222,7 +222,7 @@ linux_entry_xsm ()
      message="$(gettext_printf "Loading Xen %s with Linux %s ..." ${xen_version} ${version})"
      sed "s/^/$submenu_indentation/" <<-EOF
  	 	echo	'$(echo "$message" | grub_quote)'

@@ -1,0 +1,103 @@
+From 556af1a64fc4ce429d406277a424d99de0dd8c55 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 2 Oct 2026 08:12:48 +0000
+Subject: [PATCH 2/3] 00_header: Deduplicate device preparation for theme files
+
+Font and theme/background loading in 00_header independently prepare
+the same storage device, emitting duplicate cryptomount, root, and
+search commands at top level.
+
+Prepare the shared device once before loadfont with "--toplevel" to
+record its modules for later scripts, and omit redundant preparation
+in the theme and background sections.
+
+Assisted-by: Claude:Opus-5.5 Gemini:gemini-3.8-flash
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Sudhakar Kuppusamy <sudhakar@linux.ibm.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/297>
+---
+ util/grub.d/00_header.in | 39 ++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 34 insertions(+), 5 deletions(-)
+
+diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
+index 742e2ea14..17d863e18 100644
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -224,9 +224,30 @@ if [ "x$serial" = x1 ]; then
+ fi
+ 
+ if [ "x$gfxterm" = x1 ]; then
++    _header_theme_device=
++    if [ "x$GRUB_THEME" != x ] && [ -f "$GRUB_THEME" ] \
++	&& is_path_readable_by_grub "$GRUB_THEME"; then
++	_header_theme_device="`${grub_probe} --target=device "$GRUB_THEME"`"
++    elif [ "x$GRUB_BACKGROUND" != x ] && [ -f "$GRUB_BACKGROUND" ] \
++	    && is_path_readable_by_grub "$GRUB_BACKGROUND"; then
++	_header_theme_device="`${grub_probe} --target=device "$GRUB_BACKGROUND"`"
++    fi
++    _header_prepared_device=
++
++    # Prepare access to the device list $1 (newline separated, as printed
++    # by grub-probe) unless it was the last one prepared.
++    header_prepare_device ()
++    {
++	if [ "x${GRUB_DISABLE_MODULE_DEDUPLICATION}" = "xtrue" ] || \
++	   [ "x$_header_prepared_device" != "x$1" ]; then
++	    prepare_grub_to_access_device --toplevel "$1"
++	    _header_prepared_device="$1"
++	fi
++    }
++
+     if [ -n "$GRUB_FONT" ] ; then
+        # Make the font accessible
+-       prepare_grub_to_access_device `${grub_probe} --target=device "${GRUB_FONT}"`
++       header_prepare_device "`${grub_probe} --target=device "${GRUB_FONT}"`"
+     cat << EOF
+ if loadfont `make_system_path_relative_to_its_root "${GRUB_FONT}"` ; then
+ EOF
+@@ -243,13 +264,21 @@ EOF
+ 	    done
+ 	done
+ 	if [ -n "${font_path}" ] ; then
++	    _header_font_device="`${grub_probe} --target=device "${font_path}"`"
++	    if [ "x${GRUB_DISABLE_MODULE_DEDUPLICATION}" != "xtrue" ] && \
++	       [ -n "$_header_theme_device" ] && \
++	       [ "x$_header_font_device" = "x$_header_theme_device" ]; then
++		header_prepare_device "$_header_theme_device"
++	    fi
+     cat << EOF
+ if [ x\$feature_default_font_path = xy ] ; then
+    font=unicode
+ else
+ EOF
+-                # Make the font accessible
+-		prepare_grub_to_access_device `${grub_probe} --target=device "${font_path}"`
++	    # Make the font accessible
++	    if [ -z "$_header_prepared_device" ]; then
++		prepare_grub_to_access_device "${_header_font_device}"
++	    fi
+     cat << EOF
+     font="`make_system_path_relative_to_its_root "${font_path}"`"
+ fi
+@@ -310,7 +339,7 @@ if [ "x$gfxterm" = x1 ]; then
+ 	&& is_path_readable_by_grub "$GRUB_THEME"; then
+ 	gettext_printf "Found theme: %s\n" "$GRUB_THEME" >&2
+ 
+-	prepare_grub_to_access_device `${grub_probe} --target=device "$GRUB_THEME"`
++	header_prepare_device "`${grub_probe} --target=device "$GRUB_THEME"`"
+ 	cat << EOF
+ insmod gfxmenu
+ EOF
+@@ -351,7 +380,7 @@ EOF
+ 	    *.jpg|*.jpeg)  reader=jpeg ;;
+ 	    *)             gettext "Unsupported image format" >&2; echo >&2; exit 1 ;;
+ 	esac
+-	prepare_grub_to_access_device `${grub_probe} --target=device "$GRUB_BACKGROUND"`
++	header_prepare_device "`${grub_probe} --target=device "$GRUB_BACKGROUND"`"
+ 	cat << EOF
+ insmod $reader
+ background_image -m stretch "`make_system_path_relative_to_its_root "$GRUB_BACKGROUND"`"
+-- 
+2.51.0
+

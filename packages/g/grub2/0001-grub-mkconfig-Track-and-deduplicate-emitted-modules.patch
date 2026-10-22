@@ -1,0 +1,224 @@
+From 13fd119b11f3bef3183b3f2354fe692c3430014d Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 2 Oct 2026 14:35:16 +0800
+Subject: [PATCH 1/3] grub-mkconfig: Track and deduplicate emitted modules
+
+Currently, prepare_grub_to_access_device() scatters redundant "insmod"
+commands across sections and entries, and emits "insmod gcry_rijndael"
+twice under LUKS2 with AES-XTS. These duplicates bloat grub.cfg and
+waste TPM PCR 8 event log space.
+
+Deduplicate modules within probed blocks, and track modules loaded
+unconditionally at the top level of grub.cfg via a temporary state file
+(${grub_cfg}.modules) so later sections can omit them. Conditional and
+menu entry insertions are not recorded to avoid dropping drivers needed
+by other entries.
+
+Add grub_toplevel_insmod(), grub_module_is_loaded(), and "--toplevel"
+for prepare_grub_to_access_device().
+
+Add GRUB_DISABLE_MODULE_DEDUPLICATION to restore the previous behavior.
+
+Assisted-by: Claude:Opus-5.5 Gemini:gemini-3.8-flash
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Sudhakar Kuppusamy <sudhakar@linux.ibm.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/297>
+---
+ docs/grub.texi            |  9 +++++
+ util/grub-mkconfig.in     | 36 ++++++++++++++++++-
+ util/grub-mkconfig_lib.in | 76 ++++++++++++++++++++++++++++++++++++---
+ 3 files changed, 116 insertions(+), 5 deletions(-)
+
+diff --git a/docs/grub.texi b/docs/grub.texi
+index 734a9c6e2..76c2aaacc 100644
+--- a/docs/grub.texi
++++ b/docs/grub.texi
+@@ -1511,6 +1511,15 @@ enable the use of partition UUIDs, set this option to @samp{false}.
+ If this option is set to @samp{true}, disable the generation of recovery
+ mode menu entries.
+ 
++@item GRUB_DISABLE_MODULE_DEDUPLICATION
++Normally, @command{grub-mkconfig} tracks modules loaded unconditionally at
++the top level of the generated configuration (outside of any menu entry,
++submenu or conditional block), and omits redundant @samp{insmod} commands for
++them in later sections, such as menu entries. Modules loaded inside a menu
++entry are never considered loaded for other entries. If you need each menu
++entry to emit the full set of module insertion commands regardless of prior
++loading, set this option to @samp{true}.
++
+ @item GRUB_DISABLE_UUID
+ Normally, @command{grub-mkconfig} will generate menu entries that use
+ universally-unique identifiers (UUIDs) to identify various filesystems to
+diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
+index 749b0bd85..06eb66ad2 100644
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -278,7 +278,8 @@ export GRUB_DEFAULT \
+   GRUB_SIMPLE_ACCESS_LEVEL \
+   GRUB_ADVANCED_ACCESS_LEVEL \
+   GRUB_RECOVERY_ACCESS_LEVEL \
+-  GRUB_BOOTNEXT_OMIT_INACTIVE
++  GRUB_BOOTNEXT_OMIT_INACTIVE \
++  GRUB_DISABLE_MODULE_DEDUPLICATION
+ 
+ if test "x${grub_cfg}" != "x"; then
+   rm -f "${grub_cfg}.new"
+@@ -298,6 +299,34 @@ cat << EOF
+ #
+ EOF
+ 
++# Track modules loaded unconditionally at the top level of grub.cfg
++# in a state file so that following scripts can omit them.
++if [ "x${GRUB_DISABLE_MODULE_DEDUPLICATION}" != "xtrue" ]; then
++  if test "x${grub_cfg}" != "x"; then
++    GRUB_MODULE_STATE_FILE="${grub_cfg}.modules"
++    rm -f "${GRUB_MODULE_STATE_FILE}"
++  elif GRUB_MODULE_STATE_FILE="`mktemp "${TMPDIR:-/tmp}/grub-mkconfig-modules.XXXXXXXXXX" 2>/dev/null`"; then
++    :
++  else
++    # Never fall back to a predictable name in a world-writable directory.
++    # Without a state file, modules are not deduplicated across scripts.
++    unset GRUB_MODULE_STATE_FILE
++  fi
++  if [ -n "${GRUB_MODULE_STATE_FILE}" ]; then
++    export GRUB_MODULE_STATE_FILE
++    oldumask=$(umask); umask 077
++    > "${GRUB_MODULE_STATE_FILE}"
++    umask $oldumask
++    trap 'test -n "${GRUB_MODULE_STATE_FILE}" && rm -f "${GRUB_MODULE_STATE_FILE}"' EXIT
++    # Some shells (e.g. dash) skip the EXIT trap when killed by a signal.
++    # Exit explicitly instead, so the EXIT trap runs and the script stops.
++    trap 'exit 129' HUP
++    trap 'exit 130' INT
++    trap 'exit 131' QUIT
++    trap 'exit 143' TERM
++  fi
++fi
++
+ 
+ for i in "${grub_mkconfig_dir}"/* ; do
+   case "$i" in
+@@ -316,6 +345,11 @@ for i in "${grub_mkconfig_dir}"/* ; do
+   esac
+ done
+ 
++if [ -n "${GRUB_MODULE_STATE_FILE}" ]; then
++  rm -f "${GRUB_MODULE_STATE_FILE}"
++  unset GRUB_MODULE_STATE_FILE
++fi
++
+ if test "x${grub_cfg}" != "x" ; then
+   if ! ${grub_script_check} ${grub_cfg}.new; then
+     # TRANSLATORS: %s is replaced by filename
+diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
+index 9e1aaf9cb..307094c98 100644
+--- a/util/grub-mkconfig_lib.in
++++ b/util/grub-mkconfig_lib.in
+@@ -118,31 +118,99 @@ EOF
+   fi
+ }
+ 
++# Append module $1 to $access_modules unless already listed.  Entries are
++# separated by $IFS, which the caller must set to a newline.
++grub_add_module ()
++{
++  case "${IFS}${access_modules}${IFS}" in
++    *"${IFS}${1}${IFS}"*) ;;
++    *) access_modules="${access_modules}${1}${IFS}" ;;
++  esac
++}
++
++# Succeed if module $1 was already loaded unconditionally at the top level
++# of grub.cfg, i.e. before any menu entry can be executed.
++grub_module_is_loaded ()
++{
++  if [ "x${GRUB_DISABLE_MODULE_DEDUPLICATION}" = "xtrue" ]; then
++    return 1
++  fi
++  if [ -n "${GRUB_MODULE_STATE_FILE}" ] && [ -f "${GRUB_MODULE_STATE_FILE}" ]; then
++    _loaded="`cat "${GRUB_MODULE_STATE_FILE}" 2>/dev/null`" || _loaded=
++  else
++    _loaded="${_grub_loaded_modules}"
++  fi
++  case "
++${_loaded}
++" in
++    *"
++$1
++"*) return 0 ;;
++  esac
++  return 1
++}
++
++# Emit "insmod $1" unless already loaded, and record it as loaded.  Only
++# call this for output placed at the top level of grub.cfg, outside of any
++# menuentry, submenu or conditional block.
++grub_toplevel_insmod ()
++{
++  if grub_module_is_loaded "$1"; then
++    return
++  fi
++  echo "insmod $1"
++  if [ "x${GRUB_DISABLE_MODULE_DEDUPLICATION}" != "xtrue" ]; then
++    if [ -n "${GRUB_MODULE_STATE_FILE}" ]; then
++      echo "$1" >> "${GRUB_MODULE_STATE_FILE}"
++    fi
++    _grub_loaded_modules="${_grub_loaded_modules}$1
++"
++  fi
++}
++
++# Emit commands to access the device(s) given as arguments.  Pass
++# --toplevel first if the output is placed at the top level of grub.cfg
++# (see grub_toplevel_insmod), so that later sections can skip the modules.
+ prepare_grub_to_access_device ()
+ {
++  toplevel=
++  if [ "x$1" = "x--toplevel" ]; then
++    toplevel=y
++    shift
++  fi
+   old_ifs="$IFS"
+   IFS='
+ '
+   partmap="`"${grub_probe}" --device $@ --target=partmap`"
++  access_modules=
+   for module in ${partmap} ; do
+     case "${module}" in
+       netbsd | openbsd)
+-        echo "insmod part_bsd";;
++        grub_add_module "part_bsd";;
+       *)
+-        echo "insmod part_${module}";;
++        grub_add_module "part_${module}";;
+     esac
+   done
+ 
+   # Abstraction modules aren't auto-loaded.
+   abstraction="`"${grub_probe}" --device $@ --target=abstraction`"
+   for module in ${abstraction} ; do
+-    echo "insmod ${module}"
++    grub_add_module "${module}"
+   done
+ 
+   fs="`"${grub_probe}" --device $@ --target=fs`"
+   for module in ${fs} ; do
+-    echo "insmod ${module}"
++    grub_add_module "${module}"
++  done
++
++  for module in ${access_modules} ; do
++    if [ -n "${toplevel}" ]; then
++      grub_toplevel_insmod "${module}"
++    elif ! grub_module_is_loaded "${module}"; then
++      echo "insmod ${module}"
++    fi
+   done
++  unset access_modules toplevel
+ 
+   if [ x$GRUB_ENABLE_CRYPTODISK = xy ]; then
+       for uuid in `"${grub_probe}" --device $@ --target=cryptodisk_uuid`; do
+-- 
+2.51.0
+

@@ -1,0 +1,41 @@
+From 5576e1eeff02158fe655fd9c918755eef8315ca8 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 13 Oct 2026 01:56:19 +0000
+Subject: [PATCH 3/4] mfa: wipe key buffer on file read error
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In file_recover_key(), if grub_file_read() fails or returns a short read,
+read_buffer is freed without zeroing it first. If a partial key was read
+before an error occurred, sensitive key material could remain in freed heap
+memory.
+
+Zero the buffer with grub_memset() before calling grub_free(), matching
+the behavior of password_recover_key() and mfa_recover_key().
+
+Fixes: 40a1f9e5b627 ("key_protector: Add MFA key protector")
+Assisted-by: Gemini:gemini-3.8-flash
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/306>
+---
+ grub-core/commands/mfa.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/grub-core/commands/mfa.c b/grub-core/commands/mfa.c
+index 53e706ac8..c8cdafaa9 100644
+--- a/grub-core/commands/mfa.c
++++ b/grub-core/commands/mfa.c
+@@ -316,6 +316,7 @@ file_recover_key (grub_uint8_t **key, grub_size_t *key_size)
+   read_n = grub_file_read (file, read_buffer, *key_size);
+   if (read_n != *key_size)
+     {
++      grub_memset (read_buffer, 0, *key_size);
+       grub_free (read_buffer);
+       err = grub_error (GRUB_ERR_FILE_READ_ERROR, N_("could not retrieve file contents: %s"), filepath);
+       goto error;
+-- 
+2.51.0
+

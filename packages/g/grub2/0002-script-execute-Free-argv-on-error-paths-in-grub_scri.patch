@@ -1,0 +1,49 @@
+From d065efdd35c9a52f34b1a99c43d545ed8f35cc08 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 23 Sep 2026 15:24:54 +0800
+Subject: [PATCH 2/2] script/execute: Free argv on error paths in
+ grub_script_execute_cmdline()
+
+When grub_script_arglist_to_argv() populates argv, it must be freed
+before returning. Two error paths (allocation failure for cmdstring and
+assignment string duplication failure) returned early without freeing
+argv.
+
+Add grub_script_argv_free() to both error return paths to avoid memory
+leaks.
+
+Assisted-by: Claude:Opus-5
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/268>
+---
+ grub-core/script/execute.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/script/execute.c b/grub-core/script/execute.c
+index 1123516ca..1d05a67db 100644
+--- a/grub-core/script/execute.c
++++ b/grub-core/script/execute.c
+@@ -1009,6 +1009,7 @@ grub_script_execute_cmdline (struct grub_script_cmd *cmd)
+   cmdstring = grub_malloc (cmdlen);
+   if (!cmdstring)
+     {
++      grub_script_argv_free (&argv);
+       return grub_error (GRUB_ERR_OUT_OF_MEMORY,
+ 			 N_("cannot allocate command buffer"));
+     }
+@@ -1051,7 +1052,10 @@ grub_script_execute_cmdline (struct grub_script_cmd *cmd)
+ 	  /* As a last resort, try if it is an assignment.  */
+ 	  char *assign = grub_strdup (cmdname);
+           if (assign == NULL)
+-            return grub_errno;
++	    {
++	      grub_script_argv_free (&argv);
++	      return grub_errno;
++	    }
+ 
+ 	  char *eq = grub_strchr (assign, '=');
+ 
+-- 
+2.51.0
+

@@ -1,0 +1,62 @@
+From 88ed5b3b4cf3a7cf27def47b050f5fba70bbf787 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Mon, 12 Oct 2026 09:29:03 +0000
+Subject: [PATCH] grub-mkpasswd-argon2: validate argument ranges to avoid
+ overflows
+
+In grub-mkpasswd-argon2, buflen and saltlen were not validated against upper
+bounds, allowing large values to overflow the size calculation for the
+allocated result buffer and cause a heap buffer overflow. Additionally,
+zero values for iterations, memory, parallelism, buflen, and saltlen were
+not rejected.
+
+Validate that iterations, memory, and parallelism are non-zero, enforce
+RFC 9106 lower bounds (buflen >= 4, saltlen >= 8), and cap buflen and
+saltlen to GRUB_AUTH_MAX_PASSLEN. Also free result before exiting main.
+
+Fixes: a2b9258d57e6 ("util: Introduce grub-mkpasswd-argon2")
+Assisted-by: Gemini:gemini-3.8-flash
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/305>
+---
+ util/grub-mkpasswd-argon2.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/util/grub-mkpasswd-argon2.c b/util/grub-mkpasswd-argon2.c
+index cdb608d94..2d100a098 100644
+--- a/util/grub-mkpasswd-argon2.c
++++ b/util/grub-mkpasswd-argon2.c
+@@ -148,6 +148,21 @@ main (int argc, char *argv[])
+       exit(1);
+     }
+ 
++  if (arguments.iterations == 0)
++    grub_util_error ("%s", _("iterations must be greater than 0"));
++
++  if (arguments.memory == 0)
++    grub_util_error ("%s", _("memory must be greater than 0"));
++
++  if (arguments.parallelism == 0)
++    grub_util_error ("%s", _("parallelism must be greater than 0"));
++
++  if (arguments.buflen < 4 || arguments.buflen > GRUB_AUTH_MAX_PASSLEN)
++    grub_util_error (_("hash length must be between 4 and %d"), GRUB_AUTH_MAX_PASSLEN);
++
++  if (arguments.saltlen < 8 || arguments.saltlen > GRUB_AUTH_MAX_PASSLEN)
++    grub_util_error (_("salt length must be between 8 and %d"), GRUB_AUTH_MAX_PASSLEN);
++
+   printf ("%s", _("Enter password: "));
+   if (!grub_password_get (pass1, GRUB_AUTH_MAX_PASSLEN))
+     grub_util_error ("%s", _("failure to read password"));
+@@ -222,6 +237,7 @@ main (int argc, char *argv[])
+   *ptr = '\0';
+ 
+   printf (_("ARGON2 hash of your password is %s\n"), result);
++  free (result);
+   memset (buf, 0, arguments.buflen);
+   free (buf);
+   memset (salt, 0, arguments.saltlen);
+-- 
+2.51.0
+
