@@ -155,7 +155,6 @@ BuildRequires:  python3-pyyaml
 %endif
 %endif
 
-Provides:       hipblas%{pkg_suffix} = %{version}-%{release}
 Requires:       rocblas%{pkg_suffix}
 Requires:       rocm-filesystem%{pkg_suffix}
 Requires:       rocm-hip%{pkg_suffix}
@@ -176,6 +175,7 @@ hipBLAS supports rocBLAS and cuBLAS as backends.
 %if 0%{?suse_version}
 %package -n %{pkg_name}
 Summary:        Shared libraries for %{name}
+Provides:       %{name} = %{version}-%{release}
 
 %description -n %{pkg_name}
 %{summary}
