@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 19:53:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.1.11:
+  * Fix FindLibKKC (correct kkc-1.0 pkgconfig name, link/compile
+    cleanup, keep include dirs working with broken CFLAGS)
+  * UI cleanup: overlay input-method info, signal-driven UI
+    updates, squashed key-event refreshes
+  * Raise floor to fcitx5 >= 5.1.22
+
+-------------------------------------------------------------------
 Sun Feb  8 06:11:15 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.9

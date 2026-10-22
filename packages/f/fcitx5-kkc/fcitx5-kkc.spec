@@ -17,38 +17,40 @@
 
 
 Name:           fcitx5-kkc
-Version:        5.1.9
+Version:        5.1.11
 Release:        0
 Summary:        Libkkc input method support for Fcitx5
 License:        GPL-3.0-or-later
-Group:          System/I18n/Japanese
 URL:            https://github.com/fcitx/fcitx5-kkc
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
-BuildRequires:  fcitx5-devel
 BuildRequires:  fcitx5-qt-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libkkc-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(Fcitx5Config) >= 5.1.22
+BuildRequires:  pkgconfig(Fcitx5Core) >= 5.1.22
+BuildRequires:  pkgconfig(Fcitx5Module) >= 5.1.22
+BuildRequires:  pkgconfig(Fcitx5Utils) >= 5.1.22
+BuildRequires:  pkgconfig(kkc-1.0)
 Requires:       fcitx5
 Requires:       kkc-data
+Supplements:    (fcitx5 and kkc-data)
 Provides:       fcitx-kkc = %{version}
 Obsoletes:      fcitx-kkc <= 0.1.4
 Obsoletes:      fcitx5-kkc-qt6 <= 5.1.6
-Supplements:    (fcitx5 and kkc-data)
 %if 0%{?suse_version} <= 1520
-BuildRequires:  appstream-glib-devel
+BuildRequires:  pkgconfig(appstream-glib)
 %endif
 
 %description
 This package provides libkkc input method support for Fcitx5.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 %if 0%{?suse_version} == 1500
