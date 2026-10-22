@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:58:14 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 0.20260928:
+  * gn edit: keep build files alive for warnings
+  * Add instructions for agent to build GN and run code / tests
+  * Write phony rules for harddeps
+  * Support conditional sources for gn check.
+  * Don't write order-only deps reachable through direct deps
+  * When suggestions have a known includer target, don't complain that they don't resolve to a single target.
+  * rust_project_writer: Support aliased_deps in rust-project.json
+  * Header check: validate includes before building diagnostics
+  * Header check: defer unrestricted dependency walks
+  * Header check: batch reachability and file checking tasks
+  * Header check: select files from the existing file map
+  * Add an allowlist for allow_circular_includes_from.
+  * [gn] Use std::unordered_map for waiting_map_
+  * [gn] Shard StringAtomSet to avoid lock contention
+  * [gn] Use DCHECK in Target::info()
+  * [gn] Make ResolvedTargetData stateless
+  * [recipe] Enable THP for jemalloc build in GN recipe
+  * Header check: avoid interning paths during include lookup
+  * Improve heuristic to disambiguate recommended dependency to add.
+  * No longer automatically add files to public.
+  * Deduplicate deps/public_deps and sources/public in gn edit
+  * Preserve toolchain when generating suggestions in gn check
+
+-------------------------------------------------------------------
 Tue Sep 08 22:06:34 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 0.20260907:
