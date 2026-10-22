@@ -5,6 +5,14 @@ Wed Oct 14 04:48:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
   * fix: lower cryptography minimum version to 46.0.7 in #5212
 
 -------------------------------------------------------------------
+Wed Oct 14 04:37:13 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Build the wheel with setuptools_scm and SETUPTOOLS_SCM_PRETEND_VERSION:
+  the GitHub archive has no git metadata, so the installed
+  distribution was versioned 0.0.0 and "pip check" failed for
+  ansible-navigator (requires ansible-lint >= 6.19.0)
+
+-------------------------------------------------------------------
 Tue Oct 13 04:43:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.10.0:

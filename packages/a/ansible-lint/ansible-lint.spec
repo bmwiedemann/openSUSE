@@ -49,6 +49,8 @@ BuildArch:      noarch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-base >= 3.12
 BuildRequires:  %{ansible_python}-pip
+BuildRequires:  %{ansible_python}-setuptools >= 65.3.0
+BuildRequires:  %{ansible_python}-setuptools_scm >= 7.0.5
 BuildRequires:  %{ansible_python}-wheel
 BuildRequires:  fdupes
 
@@ -117,6 +119,9 @@ sed -i '1{/\/usr\/bin\/env python/d;}' src/ansiblelint/__main__.py
 sed -i 's/0.1.dev1/%{version}/' src/ansiblelint/version.py
 
 %build
+# The GitHub archive tarball carries no git metadata: without setuptools_scm and a
+# pretend version the wheel is built as 0.0.0 and ansible-lint --version reports 0.0.0
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install
