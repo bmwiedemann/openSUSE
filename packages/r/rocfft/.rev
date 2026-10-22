@@ -43,4 +43,12 @@
 - Rebuild for gfx1036</comment>
     <requestid>1379972</requestid>
   </revision>
+  <revision rev="3" vrev="10">
+    <srcmd5>c177e73b371e9a6d66b8a91a9734ceff</srcmd5>
+    <version>7.2.0</version>
+    <time>1792676936</time>
+    <user>anag_factory</user>
+    <comment>- Fix provides</comment>
+    <requestid>1386317</requestid>
+  </revision>
 </revisionlist>
