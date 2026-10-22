@@ -209,8 +209,6 @@ BuildRequires:  ninja
 %endif
 %endif
 
-Provides:       rocrand%{pkg_suffix} = %{version}-%{release}
-
 # Only x86_64 works right now:
 ExclusiveArch:  x86_64
 
@@ -225,6 +223,7 @@ Radeon Open Compute ROCm runtime, but it also works on CUDA enabled GPUs.
 %if 0%{?suse_version}
 %package -n %{rocrand_name}
 Summary:        Shared libraries for %{name}
+Provides:       %{name} = %{version}-%{release}
 
 %description -n %{rocrand_name}
 %{summary}
