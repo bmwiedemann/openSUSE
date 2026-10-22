@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 22 09:36:20 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.14.2
+
+- Update to 5.14.2
+  * Security
+    - #25563 Update composer/ca-bundle to 1.6.0.
+    - #25566 Urgent Core release: warn On-Premise users running affected PHP versions
+  * Notice
+    Important security update for our Matomo On-premise or self hosted users: On 21 October 2026,
+    two critical vulnerabilities were disclosed in PHP, the technology Matomo runs on.
+    Both are rated 9.2/10 in severity (CVE-2026-109618 and CVE-2026-109619).
+    Updating Matomo alone will not apply these fixes. Read the Matomo security guidance for more information.
+
+-------------------------------------------------------------------
 Fri Oct 16 20:25:07 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.14.1
 
 - Update to 5.14.1
