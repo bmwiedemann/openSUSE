@@ -1,0 +1,34 @@
+From d770d13022392394acc3d5cbe4c74315359e926d Mon Sep 17 00:00:00 2001
+From: Jeremy Newton <Jeremy.Newton@amd.com>
+Date: Thu, 15 Oct 2026 17:02:46 -0400
+Subject: [PATCH] Silence gcc warning
+
+These return cases don't matter, but GCC complains that not all possible
+cases return a value.
+---
+ rcqt.so/src/rcutils.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/rcqt.so/src/rcutils.cpp b/rcqt.so/src/rcutils.cpp
+index 5ef2709c..dfd02e41 100644
+--- a/rcqt.so/src/rcutils.cpp
++++ b/rcqt.so/src/rcutils.cpp
+@@ -64,6 +64,7 @@ OSType getOS(std::string keyname){
+       return searchos(osame);
+     }
+   }
++  return OSType::None;
+ }
+ 
+ std::string get_last_word(const std::string& input){
+@@ -124,6 +125,7 @@ bool getPackageInfo(const std::string& package,
+     else {
+       execlp(packagemgr.c_str(), packagemgr.c_str(), command.c_str(), option.c_str(), package.c_str(), NULL);
+     }
++    return true;
+   }
+   else {
+     /* Parent process */
+-- 
+2.54.0
+

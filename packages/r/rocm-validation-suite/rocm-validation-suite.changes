@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Mar 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.1
+
+-------------------------------------------------------------------
+Thu Jan 29 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Fri Dec 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+- Update gpu list
+
+-------------------------------------------------------------------
+Tue Nov  4 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Thu Oct 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- link rvslib with libomp
+
+-------------------------------------------------------------------
+Sat Oct 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.2
+
+-------------------------------------------------------------------
+Sat Sep 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires amdsmi-devel
+- import mxdatagenertor
+
+-------------------------------------------------------------------
+Mon Sep 22 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+
+-------------------------------------------------------------------
+Wed Sep 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify cpack install change
+
+-------------------------------------------------------------------
+Sat Jul 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Initial package
+
