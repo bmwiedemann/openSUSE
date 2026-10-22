@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:55:29 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 5.1.11:
+  * Fix table option not applied upon start
+  * Hide AnthyCommandConfig on other platforms
+
+-------------------------------------------------------------------
 Sun Feb  8 05:38:41 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.9

@@ -2,9 +2,9 @@ Index: fcitx5-anthy-5.1.9/CMakeLists.txt
 ===================================================================
 --- fcitx5-anthy-5.1.9.orig/CMakeLists.txt
 +++ fcitx5-anthy-5.1.9/CMakeLists.txt
-@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.6)
+@@ -2,7 +2,7 @@
  
- project(fcitx5-anthy VERSION 5.1.9)
+ project(fcitx5-anthy VERSION 5.1.11)
  
 -set(REQUIRED_FCITX_VERSION 5.1.13)
 +set(REQUIRED_FCITX_VERSION 5.0.18)
@@ -15,7 +15,7 @@ Index: fcitx5-anthy-5.1.9/src/engine.cpp
 ===================================================================
 --- fcitx5-anthy-5.1.9.orig/src/engine.cpp
 +++ fcitx5-anthy-5.1.9/src/engine.cpp
-@@ -294,7 +294,7 @@ AnthyEngine::AnthyEngine(fcitx::Instance
+@@ -294,7 +294,7 @@
              FCITX_ANTHY_INFO() << "Anthy: " << msg;
          },
          0);
@@ -24,7 +24,7 @@ Index: fcitx5-anthy-5.1.9/src/engine.cpp
                    fcitx::isEmscripten()) {
          const auto &sp = fcitx::StandardPaths::global();
          std::string anthy_conf = sp.locate(fcitx::StandardPathsType::Data,
-@@ -311,7 +311,7 @@ AnthyEngine::AnthyEngine(fcitx::Instance
+@@ -311,7 +311,7 @@
          anthy_conf_override(
              "XDG_CONFIG_HOME",
              sp.userDirectory(fcitx::StandardPathsType::Data).string().c_str());
