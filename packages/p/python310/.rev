@@ -1525,4 +1525,15 @@ CVE-2026-3276-On2-unicodedata-normalize.patch
       tar extraction filters where a crafted archive using a hard</comment>
     <requestid>1383280</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>8f9ff3c1d13f0f0b936d445ba6ffd3af</srcmd5>
+    <version>3.10.22</version>
+    <time>1792677032</time>
+    <user>anag_factory</user>
+    <comment>- Require Expat 2.8.5 for Python (bsc#1285433)
+  Version the Expat build and runtime dependencies to match
+  pyexpat's use of XML_SetHashSalt16Bytes. This prevents builds
+  against or runtime loading of older Expat libraries.</comment>
+    <requestid>1386973</requestid>
+  </revision>
 </revisionlist>

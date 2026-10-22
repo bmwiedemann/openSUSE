@@ -242,7 +242,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(expat) >= 2.8.5
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
@@ -384,6 +384,8 @@ Extending and Embedding Reference, Python/C API Reference, Documenting
 Python, and Macintosh Module Reference in format for devhelp.
 
 %package -n %{python_pkg_name}-base
+# pyexpat uses XML_SetHashSalt16Bytes, so require a compatible Expat library.
+Requires:       libexpat1 >= 2.8.5
 Summary:        Python 3 Interpreter and Stdlib Core
 Requires:       libpython%{so_version} = %{version}
 Recommends:     %{python_pkg_name} = %{version}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 16 18:05:16 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- Require Expat 2.8.5 for Python (bsc#1285433)
+  Version the Expat build and runtime dependencies to match
+  pyexpat's use of XML_SetHashSalt16Bytes. This prevents builds
+  against or runtime loading of older Expat libraries.
+
+-------------------------------------------------------------------
 Thu Oct  8 06:59:58 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.10.22 (final release, upstream EOS)
