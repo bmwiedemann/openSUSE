@@ -16,13 +16,12 @@
 #
 
 
-Name:           libchewing
 %define soname	3
-Version:        0.12.0
+Name:           libchewing
+Version:        0.13.1
 Release:        0
 Summary:        Intelligent Phonetic Input Method Library for Traditional Chinese
 License:        LGPL-2.1-or-later
-Group:          System/I18n/Chinese
 URL:            https://codeberg.org/chewing/libchewing
 Source:         https://codeberg.org/chewing/libchewing/releases/download/v%{version}/libchewing-%{version}.tar.zst
 Source1:        vendor.tar.zst
@@ -30,17 +29,16 @@ Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  corrosion
 BuildRequires:  fdupes
-BuildRequires:  ncurses-devel
 BuildRequires:  rust
-BuildRequires:  sqlite3-devel
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(ncursesw)
+BuildRequires:  pkgconfig(sqlite3)
 
 %description
 Intelligent phonetic input method library for traditional Chinese.
 
 %package devel
 Summary:        Development package for libchewing
-Group:          Development/Libraries/C and C++
 Requires:       %{name}%{soname} = %{version}
 
 %description devel
@@ -48,7 +46,6 @@ Development package for libchewing.
 
 %package -n %{name}%{soname}
 Summary:        Chewing libraries
-Group:          System/Libraries
 Requires:       chewing-data
 
 %description -n %{name}%{soname}
@@ -56,14 +53,12 @@ This package contains libraries for Chewing.
 
 %package -n chewing-cli
 Summary:        Chewing Command Line
-Group:          System/I18n/Chinese
 
 %description -n chewing-cli
 This package provides command-line tool for Chewing.
 
 %package -n chewing-data
 Summary:        Data for libchewing
-Group:          System/I18n/Chinese
 BuildArch:      noarch
 
 %description -n chewing-data
@@ -85,7 +80,6 @@ cmake --install build --prefix %{buildroot}%{_prefix}
 %fdupes %{buildroot}%{_includedir}
 
 %post -n %{name}%{soname} -p /sbin/ldconfig
-
 %postun -n %{name}%{soname} -p /sbin/ldconfig
 
 %files -n %{name}%{soname}

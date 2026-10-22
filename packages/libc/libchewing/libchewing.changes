@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:10:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.1:
+  * conversion: switch pathfinding to m-A* and update probability
+    constants; default symbol U+2026 replaced by U+22EF.
+  * dict: protect single characters from permanent exclusion; use
+    default user path when only the system path is customized.
+  * editor: fix candidate cycling via Tab key, snapshot selections
+    after exiting Tab-triggered cycling.
+  * build: require cmake >= 3.27.
+- Refresh vendor.tar.zst for 0.13.1 (no new copyleft linked in;
+  License stays LGPL-2.1-or-later, SOVERSION stays 3).
+
+-------------------------------------------------------------------
 Fri Apr 10 22:45:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.0:
