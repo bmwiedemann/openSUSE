@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,23 @@
 
 
 Name:           ibus-table
-Version:        1.17.14
+Version:        1.18.0
 Release:        0
 Summary:        The Table engine for IBus platform
 License:        LGPL-2.1-or-later
-Group:          System/I18n/Chinese
 URL:            https://github.com/mike-fabian/ibus-table/
 Source:         https://github.com/mike-fabian/ibus-table/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  fdupes
-BuildRequires:  gettext-tools
+BuildRequires:  gettext-tools >= 0.16.1
 BuildRequires:  libtool
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(ibus-1.0)
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  python3 >= 3.9
+BuildRequires:  pkgconfig(ibus-1.0) >= 1.1.0
+BuildRequires:  pkgconfig(python3) >= 3.9
 Requires:       ibus >= 1.4.99
-Requires:       python3
+Requires:       python3 >= 3.9
 Requires:       python3-curses
 
 %description
@@ -40,22 +41,21 @@ The package contains general Table engine for IBus platform.
 
 %package devel
 Summary:        Development package for ibus-table
-Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
 
 %description devel
 This package contains the files required for the development of ibus-table.
 
 %prep
-%setup -q
+%autosetup
 chmod -x AUTHORS COPYING README
 
 %build
 export PYTHON=python3
 NOCONFIGURE=1 ./autogen.sh
-%configure --disable-static \
-           --enable-additional \
-           --libexecdir=%{_ibus_libexecdir}
+%configure \
+    --disable-static \
+    --libexecdir=%{_ibus_libexecdir}
 %make_build
 
 %install
@@ -63,6 +63,15 @@ NOCONFIGURE=1 ./autogen.sh
 
 %find_lang %{name}
 %fdupes %{buildroot}
+
+%check
+pushd engine
+python3 table.py -v
+python3 it_util.py -v
+popd
+pushd tests
+python3 -m unittest test_it.SelectWordsEscapeIndexTestCase -v
+popd
 
 %files -f %{name}.lang
 %license COPYING
@@ -75,7 +84,7 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/metainfo/org.freedesktop.ibus.engine.table.metainfo.xml
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.table.gschema.xml
 %{_ibus_componentdir}/table.xml
-%{_mandir}/man1/%{name}-createdb.1.gz
+%{_mandir}/man1/%{name}-createdb.1%{?ext_man}
 %{_datadir}/icons/hicolor/16x16/apps/ibus-table.png
 %{_datadir}/icons/hicolor/22x22/apps/ibus-table.png
 %{_datadir}/icons/hicolor/32x32/apps/ibus-table.png

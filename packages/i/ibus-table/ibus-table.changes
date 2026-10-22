@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:24:59 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.18.0:
+  * Require Python 3.9+
+  * Drop unneeded SQLite ESCAPE clause in select_words() and
+    is_in_system_database() and create phrases_tabkeys_index so
+    LIKE prefix matches use an indexed range scan
+  * Remove TabSqliteDb._phrases_cache and periodic idle cache
+    rewrites made redundant by the tabkeys index
+  * Run optimize_database() after drop_indexes() in
+    tabcreatedb.py --no-create-index so VACUUM reclaims freed pages
+  * Fill the lookup table in one pass rather than one page at a
+    time so the total candidate count is shown immediately
+  * Improve Wayland session detection by checking both
+    WAYLAND_DISPLAY and XDG_SESSION_TYPE=wayland
+  * Replace obsolete imp module import with importlib
+  * Enhance TabEngine key-handling cancellation when suggestion
+    mode is active
+  * Update Unihan_Variants.txt and regenerate
+    engine/chinese_variants.py for Unicode 17.0.0
+  * Log unhandled exceptions in callbacks, stop calling IBus.init()
+    from Python, and guard against short strings in get_goucima()
+  * Update translations (including new Korean and Lao translations)
+- Spec cleanup:
+  * Declare upstream dependency floors (python3 >= 3.9,
+    pkgconfig(ibus-1.0) >= 1.1.0, gettext-tools >= 0.16.1) and
+    explicit make BuildRequires
+  * Add %check running upstream doctests and SQLite index/escape
+    unit tests
+  * Drop obsolete --enable-additional configure flag and Group tags
+
+-------------------------------------------------------------------
 Tue Aug 12 18:32:04 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Rename 1.17.14.tar.gz to ibus-table-1.17.14.tar.gz:

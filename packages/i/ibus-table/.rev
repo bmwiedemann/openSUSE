@@ -492,4 +492,12 @@ feat: use _service files to automate fetching sources</comment>
   Rename source package to conform to openSUSE community practices.</comment>
     <requestid>1300251</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9850195e1ca2630a8eff396f060472f1</srcmd5>
+    <version>1.18.0</version>
+    <time>1792676960</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386568</requestid>
+  </revision>
 </revisionlist>
