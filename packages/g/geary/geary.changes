@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  7 19:21:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.0+122:
+  * misc: fix typos
+  * build: Fix build issues against GNOME SDK master
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:31:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

@@ -683,4 +683,16 @@
     <comment>Push from SCM</comment>
     <requestid>1343029</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>6ab6fa6e0848eced01d075d0d374ce80</srcmd5>
+    <version>46.0+122</version>
+    <time>1792677074</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 46.0+122:
+  * misc: fix typos
+  * build: Fix build issues against GNOME SDK master
+  * Updated translations.
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1387017</requestid>
+  </revision>
 </revisionlist>
