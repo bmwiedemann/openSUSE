@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 21 18:26:05 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792607148.117af9ef:
+  * feat: Add seasonal Halloween decorations
+  * fix(webapi): Validate all appearance fields
+  * refactor(ui): Move theme init script to bundle
+
+-------------------------------------------------------------------
+Wed Oct 21 06:37:05 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792563360.efc0128c:
+  * chore(deps): Dependency cron 2026-10-21
+
+-------------------------------------------------------------------
 Tue Oct 20 20:24:14 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1792527840.d945a1a7:
