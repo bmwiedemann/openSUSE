@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:35:37 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.1
+- Changes since 6.8.0:
+  * Update version for new release 6.8.1
+  * Gui: Don't shadow Item.focusPolicy in the button containers
+  * Fix transient popup CLI mapping for -u/-t
+  * SpectacleCore: update current saved image URL so Save overwrites file after Save As (kde#526111)
+  * Update version for new release 6.8.1
+  * ExportManager: fall back to default location if last save directory is missing (kde#526909)
+
+-------------------------------------------------------------------
 Thu Oct  8 16:55:15 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.8.0:
