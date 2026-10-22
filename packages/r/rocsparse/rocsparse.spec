@@ -213,11 +213,6 @@ BuildRequires:  ninja
 %endif
 %endif
 
-Provides:       rocsparse%{pkg_suffix} = %{version}-%{release}
-Requires:       rocblas%{pkg_suffix}
-Requires:       rocm-filesystem%{pkg_suffix}
-Requires:       rocm-hip%{pkg_suffix}
-
 # Only x86_64 works right now:
 ExclusiveArch:  x86_64
 
@@ -232,6 +227,8 @@ latest discrete GPUs.
 %if 0%{?suse_version}
 %package -n %{pkg_name}
 Summary:        Shared libraries for %{name}
+Provides:       %{name} = %{version}-%{release}
+Requires:       rocm-filesystem%{pkg_suffix}
 
 %description -n %{pkg_name}
 %{summary}

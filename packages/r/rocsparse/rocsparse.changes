@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 21 16:21:43 UTC 2026 - Jeremy Newton <alexjnewt@gmail.com>
+
+- Drop explicit requires, this was added erroneously
+
+-------------------------------------------------------------------
+Fri Oct 16 00:00:00 UTC 2026 - Jeremy Newton <alexjnewt@hotmail.com>
+
+- Fix provides
+
+-------------------------------------------------------------------
 Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
 
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild

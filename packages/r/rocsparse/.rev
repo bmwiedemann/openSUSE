@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1381660</requestid>
   </revision>
+  <revision rev="2" vrev="7">
+    <srcmd5>791854f68adea9fed432e11ca73ba0d9</srcmd5>
+    <version>7.2.0</version>
+    <time>1792676941</time>
+    <user>anag_factory</user>
+    <comment>- Drop explicit requires, this was added erroneously
+
+- Fix provides</comment>
+    <requestid>1386956</requestid>
+  </revision>
 </revisionlist>
