@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           python-comfyui-workflow-templates-core
-Version:        0.3.384
+Version:        0.3.385
 Release:        0
 Summary:        Core helpers for ComfyUI workflow templates
 # Legal-Review-Notice: sdist ships no LICENSE file; upstream

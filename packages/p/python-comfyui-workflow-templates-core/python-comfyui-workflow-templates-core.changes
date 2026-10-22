@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 22 11:45:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.385: the manifest grows from 634 to 642
+  templates
+  * New, all owned by the media-assets-02 bundle: HeyGen Voice
+    v1 Turbo, Mirelo text-to-SFX and video-to-SFX, and five Veed
+    templates (clean audio, clean audio video, Fabric 1.0,
+    lipsync 2.0 and remove video background)
+  * Follow-up hash refreshes for the localized index files and
+    the new Mirelo and Veed logos
+  * The floors here stay unchanged: no entry changes owner,
+    so json 0.1.102 and media-assets-02 0.1.9 still resolve
+    every entry they resolved before
+
+-------------------------------------------------------------------
 Wed Oct 21 07:57:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.384: the manifest grows from 632 to 634
