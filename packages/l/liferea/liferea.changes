@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:05:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.3:
+  * Ensure schemas are available during testing
+  * Fixes missing top margin when Readability.js does not convert text
+  * Show likes/comment count in the same line as categories, slightly
+    increase separator padding
+  * Fixes update counter only ever growing. Now resets automatically after
+    30s of no changes.
+
+-------------------------------------------------------------------
 Fri Oct  2 08:38:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Skip the liferea:subscription test (remove it from meson.build
