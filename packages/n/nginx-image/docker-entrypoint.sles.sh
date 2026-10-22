@@ -55,7 +55,7 @@ if [ "$1" = "nginx" ] || [ "$1" = "nginx-debug" ]; then
     done
 
     if [ "$HAS_CUSTOM_CONFIG" -eq 0 ]; then
-        if ! grep -q " /etc/nginx/nginx.conf " /proc/self/mountinfo && [ "$(id -u)" -gt 0 ]; then
+        if ! grep -q " /etc/nginx" /proc/self/mountinfo && [ "$(id -u)" -gt 0 ]; then
             set -- "$@" -c /etc/nginx/nginx.conf.non-root
         fi
     fi
