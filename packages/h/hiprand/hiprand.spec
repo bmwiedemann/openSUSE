@@ -151,7 +151,6 @@ BuildRequires:  gtest-devel
 BuildRequires:  doxygen
 %endif
 
-Provides:       hiprand%{pkg_suffix} = %{version}-%{release}
 Requires:       rocm-filesystem%{pkg_suffix}
 Requires:       rocrand%{pkg_suffix}
 
@@ -168,6 +167,7 @@ backend. Currently, hipRAND supports either rocRAND or cuRAND.
 %if 0%{?suse_version}
 %package -n %{pkg_name}
 Summary:        The hipRAND runtime package
+Provides:       hiprand%{pkg_suffix} = %{version}-%{release}
 
 %description -n %{pkg_name}
 %summary
