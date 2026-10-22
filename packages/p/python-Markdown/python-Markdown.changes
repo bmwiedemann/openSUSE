@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 20 18:08:03 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.11.2:
+  * Fixed:
+    + Sanitize attribute names in the fenced_code and legacy_attrs
+      extensions so an attribute name cannot break out of its tag
+      and inject markup (#1663).
+    + For backwards compatibility, revert the enforcement of
+      CommonMark style punctuation rules (#1657).
+
+-------------------------------------------------------------------
 Wed Oct 14 09:20:52 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.11.1:
