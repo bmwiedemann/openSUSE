@@ -17,31 +17,29 @@
 
 
 Name:           opencc
-Version:        1.2.0
+Version:        1.4.2
 Release:        0
 Summary:        Open Chinese Convert
 License:        Apache-2.0
-Group:          System/I18n/Chinese
 URL:            https://github.com/BYVoid/OpenCC
 Source:         https://github.com/BYVoid/OpenCC/archive/ver.%{version}/OpenCC-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  rapidjson-devel
 # needed to generate some docu files
 BuildRequires:  python3-base
+BuildRequires:  pkgconfig(RapidJSON)
 
 %description
 OpenCC is an opensource project for conversion between Traditional
 Chinese and Simplified Chinese, which supports phrase-level conversion
 and regional idioms among Mainland China, Taiwan and Hong kong.
 
-%package -n libopencc1_2
+%package -n libopencc1_4
 Summary:        Open Chinese Convert
-Group:          System/Libraries
 Requires:       %{name}-data
 
-%description -n libopencc1_2
+%description -n libopencc1_4
 OpenCC is an opensource project for conversion between Traditional
 Chinese and Simplified Chinese, which supports phrase-level conversion
 and regional idioms among Mainland China, Taiwan and Hong kong.
@@ -50,7 +48,6 @@ This package provides shared libraries of OpenCC.
 
 %package data
 Summary:        Dictionaries for Open Chinese Convert
-Group:          System/I18n/Chinese
 
 %description data
 OpenCC is an opensource project for conversion between Traditional
@@ -62,7 +59,6 @@ binaries of OpenCC.
 
 %package devel
 Summary:        Open Chinese Convert
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
 %description devel
@@ -76,13 +72,10 @@ This package provides development headers for OpenCC.
 %setup -q -n OpenCC-ver.%{version}
 %autopatch -p1
 
-# call python3 with path
-sed -i \
-    -e 's:BIN python:BIN /usr/bin/python3:g' \
-    data/CMakeLists.txt
-
 %build
+# Jieba is an optional loadable segmentation plugin, shipped separately per upstream
 %cmake \
+  -DBUILD_OPENCC_JIEBA_PLUGIN=OFF \
   -DCMAKE_SKIP_RPATH=OFF \
   -DUSE_SYSTEM_RAPIDJSON=ON
 %make_jobs
@@ -91,8 +84,8 @@ sed -i \
 %cmake_install
 find %{buildroot} -name "*.a" -delete -print
 
-%post -n libopencc1_2 -p /sbin/ldconfig
-%postun -n libopencc1_2 -p /sbin/ldconfig
+%post -n libopencc1_4 -p /sbin/ldconfig
+%postun -n libopencc1_4 -p /sbin/ldconfig
 
 %files
 %{_bindir}/%{name}
@@ -104,8 +97,8 @@ find %{buildroot} -name "*.a" -delete -print
 %files data
 %{_datadir}/%{name}/
 
-%files -n libopencc1_2
-%{_libdir}/libopencc.so.1.2
+%files -n libopencc1_4
+%{_libdir}/libopencc.so.1.4
 %{_libdir}/libopencc.so.%{version}
 
 %files devel

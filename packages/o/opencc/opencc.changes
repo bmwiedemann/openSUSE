@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:57:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.2 (C++ SOVERSION 1.2 -> 1.4, lib package renamed
+  to libopencc1_4; dependent packages need a rebuild):
+  * Core conversion rewritten: 3-10x faster on long text, and
+    t2s on a 22 MB corpus dropped from 3.40s to 0.52s with
+    byte-identical output.
+  * Traditional-to-Simplified no longer emits tofu-risk
+    (unencoded) analogical simplifications by default; CJK
+    Compatibility Ideographs are normalized before conversion.
+  * Large dictionary refresh across s2t/t2s/s2twp/tw2t/tw2s and
+    HK/JP variants, new s2hkp/hk2sp modes, region terms and
+    personal/name protections.
+  * New experimental word-level candidate and ambiguity-marking
+    APIs with --ambiguities CLI mode (private headers only,
+    no ABI impact).
+  * Hardened malformed .ocd validation; fixed UTF8Util heap
+    out-of-bounds read and big-endian legacy .ocd misdetection.
+  * Optional Jieba segmentation plugin left unbuilt (ships
+    separately per upstream guidance).
+  * Drop obsolete python3 path fixup (upstream uses
+    find_package(Python3) now).
+
+-------------------------------------------------------------------
 Mon Jan 12 05:51:05 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Update to 1.2.0:
