@@ -383,4 +383,12 @@
     <comment>Plasma 6.8.0 preliminary tars, so far untested. K:F already publish disabled. (forwarded request 1383812 from Vogtinator)</comment>
     <requestid>1384193</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>00a49f2b023bb3d3fb0c4795c0f9d851</srcmd5>
+    <version>6.8.1</version>
+    <time>1792676865</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.8.1, not even fully built yet (forwarded request 1386635 from Vogtinator)</comment>
+    <requestid>1386822</requestid>
+  </revision>
 </revisionlist>
