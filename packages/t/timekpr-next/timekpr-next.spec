@@ -18,7 +18,7 @@
 %define         _confdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}
 %define         _sitelib %( echo %{python3_sitelib} | cut -c 10- )
 Name:           %{shortname}-next
-Version:        0.5.10
+Version:        0.5.11
 Release:        0
 Summary:        Keep control of computer usage
 License:        GPL-3.0-only

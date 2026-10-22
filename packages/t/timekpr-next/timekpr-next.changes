@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:01:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.11:
+  * fix leftover process killer crashing when a process
+    disappears while iterating over processes (lp#2167185)
+
+-------------------------------------------------------------------
 Wed Sep 16 20:28:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.10:
