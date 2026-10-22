@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:02:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 6.17:
+  * added missing localization strings; X11 localizations
+    are installed again; macOS, iOS and Android now localized
+  * macOS: workarounds for legacyScreenSaver 100% CPU bugs;
+    macOS 14.6+ and iOS 17.6+ now required
+- Refresh xscreensaver-mansuffix.patch for upstream's added
+  localedir line (no content change)
+
+-------------------------------------------------------------------
 Wed Sep 16 20:28:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 6.16:

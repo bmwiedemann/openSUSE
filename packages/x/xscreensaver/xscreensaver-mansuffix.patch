@@ -2,8 +2,8 @@ Index: hacks/Makefile.in
 ===================================================================
 --- a/hacks/Makefile.in
 +++ b/hacks/Makefile.in
-@@ -18,8 +18,8 @@ datarootdir	= @datarootdir@
- datadir		= @datadir@
+@@ -19,8 +19,8 @@
+ localedir	= @PO_DATADIR@/locale
  mandir		= @mandir@
  libexecdir	= @libexecdir@
 -mansuffix	= 6
@@ -17,8 +17,8 @@ Index: hacks/glx/Makefile.in
 ===================================================================
 --- a/hacks/glx/Makefile.in
 +++ b/hacks/glx/Makefile.in
-@@ -19,8 +19,8 @@ datarootdir	= @datarootdir@
- datadir		= @datadir@
+@@ -19,8 +19,8 @@
+ localedir	= @PO_DATADIR@/locale
  mandir		= @mandir@
  libexecdir	= @libexecdir@
 -mansuffix	= 6
