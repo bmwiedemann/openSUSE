@@ -17,17 +17,22 @@
 
 
 Name:           libime
-Version:        1.1.13
+Version:        1.1.17
 Release:        0
 Summary:        Generic input method implementation
 License:        LGPL-2.1-or-later
-Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/libime
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
-BuildRequires:  fcitx5-devel
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
+BuildRequires:  zstd
+BuildRequires:  pkgconfig(Fcitx5Config)
+BuildRequires:  pkgconfig(Fcitx5Core)
+BuildRequires:  pkgconfig(Fcitx5Module)
+BuildRequires:  pkgconfig(Fcitx5Utils) >= 5.1.20
+BuildRequires:  pkgconfig(libzstd)
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc15-c++
 BuildRequires:  libboost_iostreams1_75_0-devel
@@ -35,15 +40,12 @@ BuildRequires:  libboost_iostreams1_75_0-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_iostreams-devel
 %endif
-BuildRequires:  libzstd-devel
-BuildRequires:  zstd
 
 %description
 This is a library to support generic input method implementation.
 
 %package devel
 Summary:        Development files for libime
-Group:          Development/Libraries/C and C++
 Requires:       libIMECore0 = %{version}
 Requires:       libIMEPinyin0 = %{version}
 Requires:       libIMETable0 = %{version}
@@ -53,14 +55,12 @@ This package provides development files for libime.
 
 %package tools
 Summary:        Toolkit for libime
-Group:          System/I18n/Chinese
 
 %description tools
 This package provides toolkit for libime.
 
 %package -n libIMECore0
 Summary:        Core library for libime
-Group:          System/Libraries
 Requires:       libime-tools
 
 %description -n libIMECore0
@@ -68,7 +68,6 @@ This package provides core library for libime.
 
 %package -n libIMEPinyin0
 Summary:        Pinyin library for libime
-Group:          System/Libraries
 Requires:       libime-dicts
 
 %description -n libIMEPinyin0
@@ -76,7 +75,6 @@ This package provides pinyin library for libime.
 
 %package -n libIMETable0
 Summary:        Table library for libime
-Group:          System/Libraries
 Requires:       libime-dicts
 
 %description -n libIMETable0
@@ -84,7 +82,6 @@ This package provides table library for libime.
 
 %package dicts
 Summary:        Dictionary files for libime
-Group:          System/I18n/Chinese
 
 %description dicts
 This package provides dictionary files for libime.
