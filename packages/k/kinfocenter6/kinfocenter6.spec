@@ -28,14 +28,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           kinfocenter6
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         %{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -64,6 +64,9 @@ Provides:       kinfocenter5 = %{version}
 Obsoletes:      kinfocenter5 < %{version}
 Obsoletes:      kinfocenter5-lang < %{version}
 Requires:       kf6-kcmutils-imports >= %{kf6_version}
+
+# Embedded as qrc:/, so not automatically found
+Requires:       qt6qmlimport(QtGraphs)
 
 # needed for the fileindexermonitor
 Requires:       kf6-baloo-imports >= %{kf6_version}
