@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:42:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1.10:
+  * 2.1.8: new InfluxDB and OpenLDAP database hooks, 1Password
+    credential hook, MongoDB "password_transport" option; Borg 2
+    prune "--from" flag; don't run "borg info" before "check
+    --repair"; fix PostgreSQL child-process hang and soft-failure
+    handling in command hooks.
+  * 2.1.9: glob support in database names and "--data-source" flag;
+    combined "statistics" option replacing the boolean flags; fix
+    command-hook exit codes and passwordless MongoDB connections.
+  * 2.1.10: per-repository top-level configuration options;
+    command-line overrides can disable options ("--no-btrfs");
+    relative source paths with working directory for ZFS/LVM/Btrfs;
+    fix "restore --dry-run" JSON error; drop "rest://" URLs.
+  * Add Requires on python-psutil, newly needed upstream.
+
+-------------------------------------------------------------------
 Sat Sep 12 15:48:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.1.7:

@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           borgmatic
-Version:        2.1.7
+Version:        2.1.10
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-or-later
@@ -38,6 +38,7 @@ BuildRequires:  %{python_module jsonschema >= 3.2.0}
 BuildRequires:  %{python_module mccabe}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pluggy}
+BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pyflakes}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -58,6 +59,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       %{pythons}-jsonschema >= 3.2.0
 Requires:       %{pythons}-packaging
+Requires:       %{pythons}-psutil
 Requires:       %{pythons}-requests
 Requires:       %{pythons}-ruamel.yaml > 0.15.0
 Requires:       borgbackup
@@ -115,7 +117,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcborgmatic
 export LANG=en_US.UTF-8
 %python_exec -m venv --system-site-packages --without-pip borgmatic-env
 source borgmatic-env/bin/activate
-%python_exec -m pip install --disable-pip-version-check --no-compile --ignore-installed --no-deps --no-index --find-links ./build borgmatic==2.1.7
+%python_exec -m pip install --disable-pip-version-check --no-compile --ignore-installed --no-deps --no-index --find-links ./build borgmatic==2.1.10
 PYTHONPATH=$(pwd):%{buildroot} py.test -v --pyargs borgmatic tests
 
 %post
