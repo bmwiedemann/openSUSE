@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 19 10:55:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix Source URL: the upstream release is tagged v2.11.92, the
+  asset 404s without the v prefix.
+
+-------------------------------------------------------------------
+Sun Oct 18 13:53:44 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.11.92
+  * support tkrzw
+  * support "sua" and "zua" pinyin input
+  * Replace POSIX getline with std::getline
+  * Use fgets to avoid locale-sensitive parsing of model tables
+  * Open memory chunks in binary mode on MinGW
+  * use g_rename to replace rename since rename fails by replace-existing file
+
+-------------------------------------------------------------------
 Tue Jan  6 08:02:43 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2.10.3

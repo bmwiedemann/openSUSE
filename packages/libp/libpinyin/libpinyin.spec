@@ -18,13 +18,13 @@
 
 %define sover 15
 Name:           libpinyin
-Version:        2.10.3
+Version:        2.11.92
 Release:        0
 Summary:        Intelligent Pinyin IME
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/libpinyin/libpinyin
-Source:         https://github.com/libpinyin/libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/libpinyin/libpinyin/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
