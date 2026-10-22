@@ -1,0 +1,16 @@
+---
+ configure.ac |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,6 +27,9 @@ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_CXX
+
++CFLAGS="$CFLAGS -Wall"
++CXXFLAGS="$CXXFLAGS -Wall -std=c++14"
++
+ dnl Checks for gettext
+ ALL_LINGUAS="ja it"
+ AM_GNU_GETTEXT

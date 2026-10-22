@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:53:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7 (upstream moved to
+  https://github.com/fujiwarat/kasumi-unicode):
+  * GTK3 port, adopted from the downstream patches, which are dropped:
+    kasumi-2.5-gtk3.patch, kasumi-2.5-configure-gtk3.patch
+  * Prefer anthy-unicode, fall back to anthy (no new dependency here)
+  * Force C++14 (dynamic exception specifications were removed
+    in C++17): kasumi-c++14.patch (replaces the dropped
+    kasumi-2.5-c++14.patch for the renamed configure.ac)
+  * Fix a crash on window close and a C89 compatibility issue
+  * Refreshed desktop file (drops desktop.patch, adopted upstream)
+  * New Meson build backend (the package keeps using autotools)
+- Translations now install under the kasumi-unicode gettext domain
+- Fetch the upstream kasumi-unicode-2.7.tar.xz release tarball
+- Drop Group tag; use pkgconfig-style BuildRequires
+
+-------------------------------------------------------------------
 Fri Aug 23 16:14:17 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Ad hoc fix for the build error with gcc14:
