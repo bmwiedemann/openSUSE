@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 22 11:43:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.94: release-train pin roll, the
+  re-export shim code is unchanged
+  * Add Mirelo SFX, VEED and HeyGen Voice 1.0 Turbo templates
+  * Pins move to core 0.3.385, json 0.1.120 and
+    media-assets-02 0.1.21
+  * The floors in this package already cover all of those pins
+
+-------------------------------------------------------------------
 Wed Oct 21 07:57:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.93: release-train pin roll, the
