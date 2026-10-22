@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 22 11:43:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.120:
+  * Adds eight new API template JSONs: HeyGen voice_1_turbo,
+    Mirelo text-to-sfx and video-to-sfx, and five Veed
+    templates (clean audio, clean audio-video, fabric 1.0,
+    lipsync 2.0, remove video background); refreshes the
+    localized index files
+- No code or dependency change: the sdist still declares no
+  runtime requirements
+
+-------------------------------------------------------------------
 Wed Oct 21 07:57:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.119:
