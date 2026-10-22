@@ -77,6 +77,8 @@ Requires:       %{ansible_python}-bindep
 Requires:       %{ansible_python}-jsonschema
 Requires:       %{ansible_python}-packaging
 Requires:       (podman or docker)
+# podman is the container engine on SUSE; without this the solver picks docker
+Suggests:       podman
 
 %description
 Ansible Builder is a tool that automates the process of

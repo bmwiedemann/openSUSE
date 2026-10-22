@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 21 09:08:30 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Suggest podman so the "(podman or docker)" requirement resolves to
+  podman, the container engine on SUSE, instead of docker
+
+-------------------------------------------------------------------
 Wed Oct 14 05:05:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.2.0:
