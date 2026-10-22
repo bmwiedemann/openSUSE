@@ -515,4 +515,12 @@ consumer passes the removed arguments.
     <comment>Update python-langsmith to 0.14.11</comment>
     <requestid>1385351</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c4f7917dc920673caaa5955c33d8029a</srcmd5>
+    <version>0.14.12</version>
+    <time>1792686265</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.14.12</comment>
+    <requestid>1387096</requestid>
+  </revision>
 </revisionlist>

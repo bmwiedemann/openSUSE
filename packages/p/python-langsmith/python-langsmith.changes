@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 22 09:58:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.12:
+  * Agent registry CRUD in the SDKs and the CLI
+  * CLI: expose runs share and get-url
+  * Enforced feedback configs; trajectory input type for code
+    evaluators
+  * Sandboxes: cursor pagination for registry listing, login
+    service URLs embedded by named origins, Standard Units in
+    cost breakdowns
+  * Keep wrap_openai Responses stream output when it ends
+    incomplete or failed; use reference outputs for example
+    creation
+  * Root run metadata policy conditions and compiled
+    trace_filters
+  * No new runtime dependencies; requires-python stays >= 3.10
+- Sort test BuildRequires into canonical spec-cleaner order
+
+-------------------------------------------------------------------
 Sat Oct 17 06:11:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.11:
