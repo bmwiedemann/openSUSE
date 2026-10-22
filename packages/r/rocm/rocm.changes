@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Fri Oct 16 00:00:00 UTC 2026 - Jeremy Newton <alexjnewt@hotmail.com>
+
+- Fix up requires
+- Cleanup non-suse logic
+
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jun 16 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove rocm-omp-static
+
+-------------------------------------------------------------------
+Tue Jun  9 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove rocm-omp
+
+-------------------------------------------------------------------
+Fri Apr 10 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove noarch build
+
+-------------------------------------------------------------------
+Wed Apr  8 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add rocm-rdc
+
+-------------------------------------------------------------------
+Thu Mar 19 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove tensile from rocm-devel
+
+-------------------------------------------------------------------
+Wed Mar 11 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove rocblas-test from rocm-tests
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sun Nov 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- For fedora add migraphx, rccl-tests, rocm-origami
+
+-------------------------------------------------------------------
+Wed Nov 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Wed Oct 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve description
+
+-------------------------------------------------------------------
+Thu Oct  2 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+
+-------------------------------------------------------------------
+Thu Sep 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add rocprofiler-register, rocm-validation-suite
+
+-------------------------------------------------------------------
+Thu Aug 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- rocm-opencl-devel has a conflict on fedora
+
+-------------------------------------------------------------------
+Thu Aug  7 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add rocm-bandwidth-test to fedora
+
+-------------------------------------------------------------------
+Mon Jul 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add aqlprofile and hipsparselt to fedora
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Mon Jun 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add a suse version
+
+-------------------------------------------------------------------
+Wed Jun 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify RHEL changes
+
+-------------------------------------------------------------------
+Wed May 28 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- hipify is not part of the set we intend to build for EL for now
+
+-------------------------------------------------------------------
+Tue May 27 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- Don't require yet-unpackaged deps in EL builds
+
+-------------------------------------------------------------------
+Tue Apr 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.0
+- Use version requires to pull in newer packages
+- Fix rpmlint warnings
+- Package is now noarch
+
+-------------------------------------------------------------------
+Sat Mar 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add rocm-examples
+
+-------------------------------------------------------------------
+Fri Mar 21 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add rocal
+- Move hipify to devel
+
+-------------------------------------------------------------------
+Fri Mar 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Initial package
+
