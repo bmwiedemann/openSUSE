@@ -1,7 +1,7 @@
 #
 # spec file for package vsqlite++
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,39 +17,33 @@
 
 
 %define lib_name libvsqlitepp
-%define sover   3
+%define sover   0
 Name:           vsqlite++
-Version:        0.3.13
+Version:        0.4.2
 Release:        0
 Summary:        Well designed C++ sqlite 3.x wrapper library
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/vinzenz/vsqlite--
-Source0:        https://github.com/vinzenz/vsqlite--/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  dos2unix
-BuildRequires:  gcc-c++
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libtool
-BuildRequires:  perl-base
-BuildRequires:  sqlite-devel
+Source0:        https://github.com/vinzenz/vsqlite--/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake >= 3.21
+BuildRequires:  gcc-c++ >= 11
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(sqlite3)
 
 %description
-VSQLite++ is a C++ wrapper for sqlite3 using the C++ standard library and boost.
+VSQLite++ is a C++ wrapper for sqlite3 using the C++ standard library.
 VSQLite++ is designed to be easy to use and focuses on simplicity.
 
 %package -n %{lib_name}%{sover}
 Summary:        Well designed C++ sqlite 3.x wrapper library
-Group:          System/Libraries
 
-%description -n  %{lib_name}%{sover}
-VSQLite++ is a C++ wrapper for sqlite3 using the C++ standard library and boost.
+%description -n %{lib_name}%{sover}
+VSQLite++ is a C++ wrapper for sqlite3 using the C++ standard library.
 VSQLite++ is designed to be easy to use and focuses on simplicity.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{lib_name}%{sover} = %{version}
 
 %description devel
@@ -57,29 +51,29 @@ This package contains development files for %{name}.
 
 %prep
 %autosetup -n vsqlite---%{version}
-find . -iname "*.[ch]pp" -exec dos2unix -k {} \;
 
 %build
-autoreconf -fiv
-%configure
-%make_build
+%cmake -DBUILD_TESTING=OFF -DVSQLITE_BUILD_EXAMPLES=OFF -DVSQLITE_BUNDLED_SQLITE=OFF
+%cmake_build
 
 %install
-%make_install
-# do not ship these
-find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
+%cmake_install
+# Upstream excludes include/sqlite/private from install, but public
+# <sqlite/function.hpp> includes <sqlite/private/private_accessor.hpp>
+mkdir -p %{buildroot}%{_includedir}/sqlite/private
+install -m 644 include/sqlite/private/*.hpp %{buildroot}%{_includedir}/sqlite/private/
+# COPYING is shipped as %%license in the shlib package
+rm %{buildroot}%{_docdir}/%{name}/COPYING
 
-%post -n %{lib_name}%{sover} -p /sbin/ldconfig
-%postun -n %{lib_name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lib_name}%{sover}
 
 %files devel
-%defattr(0644, root, root, 0755)
-%doc ChangeLog README
+%{_docdir}/%{name}
 %{_includedir}/sqlite
 %{_libdir}/libvsqlitepp.so
+%{_libdir}/cmake/vsqlitepp
 
 %files -n %{lib_name}%{sover}
-%defattr(0644, root, root, 0755)
 %license COPYING
 %{_libdir}/libvsqlitepp.so.%{sover}*
 

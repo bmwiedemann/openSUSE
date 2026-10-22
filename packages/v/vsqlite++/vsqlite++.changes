@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:28:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.2 (complete refresh, not backward compatible with 0.3.x):
+  * Public API moved to the sqlite::v2 namespace with many signature
+    changes; existing code must be updated before recompiling
+  * Build switched from Autotools to CMake, requires a C++20 compiler
+    (GCC 11+); upstream Autotools files were deleted
+  * New connection_pool and threading helpers, statement cache, named
+    parameter binding, tuple materialization and row views
+  * New lambda-based create_function API plus WAL2/snapshot, session
+    tracking, serialization and JSON/FTS helpers
+  * connection::get_row_count() removed in favor of get_changes()
+  * 0.4.2 fixes a statement ownership regression from 0.4.1 that
+    crashed backup and execute paths
+- Drop boost dependency, no longer used upstream
+- Soname change: libvsqlitepp3 -> libvsqlitepp0
+- Install private headers required by public sqlite/function.hpp
+
+-------------------------------------------------------------------
 Wed Apr 28 11:08:58 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file
