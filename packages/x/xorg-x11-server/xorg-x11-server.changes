@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 21 11:50:04 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.25
+  * Security Update
+- supersedes the following patches:
+  * 0001-xkb-NULL-text-pointer-after-free-in-_CheckSetDoodad-.patch
+  * 0002-xkb-allocate-names-keys-to-MAP_LENGTH-in-XkbAllocNam.patch
+  * 0003-xkb-widen-size_syms-num_syms-size_acts-num_acts-to-u.patch
+  * 0004-xkb-fix-CheckKeySyms-overwriting-request-range-symsP.patch
+  * 0005-randr-fix-size-and-offset-in-RRChangeProviderPropert.patch
+  * 0006-Xi-validate-modifier-values-in-ProcXIPassiveUngrabDe.patch
+  * 0007-glx-validate-dataBytes-against-cmdlen-in-RenderLarge.patch
+  * 0008-present-unlink-notifies-from-window-list-in-present_.patch
+  * 0009-dix-remove-passive-grabs-referencing-a-device-on-rem.patch
+  * 0010-Xi-add-bounds-check-for-barrier-events-in-input_cons.patch
+  * 0011-Xi-clean-up-gesture-sprite-traces-in-WindowGone.patch
+
+-------------------------------------------------------------------
 Thu Oct  8 01:41:51 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - 0001-xkb-NULL-text-pointer-after-free-in-_CheckSetDoodad-.patch
