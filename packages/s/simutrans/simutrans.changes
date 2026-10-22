@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:21:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 125.0.1 (svn r12334):
+  * New waybuilder tool (F7 in pak64 and pak128, experimental)
+    builds bridges and tunnels automatically
+  * Diagonal road signs and signals, close diagonals
+  * Multiple shared owners of stops without admin
+  * New airplane state machine with much less deadlocks even on
+    crossed runways
+  * Show a schedule as line in the map, prevent bridges through
+    buildings
+  * Much faster loading of paks, faster iteration with many convois
+  * 125.0.1 fixes SDL2 key commands lost after opening an edit
+    field and waybuilder crashes on double slopes; adds building
+    underground lines without tunnel portals and alternative
+    music folders
+- Bump REVISION define in config.default to 12334
+
+-------------------------------------------------------------------
 Thu Apr 30 14:12:52 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to new version 124.4.1

@@ -16,40 +16,40 @@
 #
 
 
-%define pkgver 124-4
+%define pkgver 125-0-1
 Name:           simutrans
-Version:        124.4.1
+Version:        125.0.1
 Release:        0
 Summary:        Transport and Economic Simulation Game
 License:        Artistic-1.0
-Group:          Amusements/Games/Strategy/Real Time
 URL:            http://sourceforge.net/projects/simutrans/
-Source0:        simutrans-src-124-4-1.zip
+Source0:        simutrans-src-125-0-1.zip
 Source1:        config.default
-Source2:        http://www.simutrans.com/images/resources/simutrans-square.svg
+Source2:        https://www.simutrans.com/images/resources/simutrans-square.svg
 # PATCH-FIX-UPSTREAM https://forum.simutrans.com/index.php/topic,11173.0.html
 Patch0:         simutrans-fhs-home-directory.patch
+BuildRequires:  dos2unix
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(bzip2)
+# Since now we have Leap > 15.4, we follow the advice here: https://forum.simutrans.com/index.php?action=post;quote=198369;topic=21320.0;last_msg=198369
+BuildRequires:  pkgconfig(fluidsynth) >= 2.1.0
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(sdl2) 
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  freetype2-devel
+Requires:       fluid-soundfont-gm
+Recommends:     %{name}-pak128 >= 2.10.0
+Suggests:       %{name}-makeobj
+Suggests:       %{name}-pak128-german >= 2.2
+Suggests:       %{name}-pak64 >= 124.3
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
-BuildRequires:  dos2unix
-BuildRequires:  hicolor-icon-theme
-# Since now we have Leap > 15.4, we follow the advice here: https://forum.simutrans.com/index.php?action=post;quote=198369;topic=21320.0;last_msg=198369
-BuildRequires:  fluidsynth-devel >= 2.1.0
-Requires:       fluid-soundfont-gm
-BuildRequires:  libzstd-devel
-Recommends:     %{name}-pak128 >= 2.10.0
-Suggests:       %{name}-pak128-german >= 2.2
-Suggests:       %{name}-pak64 >= 124.3
-Suggests:       %{name}-makeobj
 
 %description
 Simutrans is a transport and economic simulation with some ecological
@@ -61,7 +61,6 @@ of your earned money to expand your infrastructure network.
 
 %package makeobj
 Summary:        Tool for compiling simutrans data packages
-Group:          Development/Tools/Other
 # Package was called simutrans previously
 Obsoletes:      makeobj < %{version}-%{release}
 
