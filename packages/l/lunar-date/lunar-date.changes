@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:01:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.2.0:
+  * Statutory holiday information added.
+  * Fixed display of the White Dew solar term and D-Bus/mingw
+    build issues.
+  * API reference now built with gi-docgen instead of gtk-doc.
+  * Build requires meson >= 1.0.0 and glib >= 2.44.
+
+-------------------------------------------------------------------
 Mon Dec  4 05:33:43 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 3.0.1

@@ -1,7 +1,7 @@
 #
 # spec file for package lunar-date
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,23 @@
 
 %define _libver 3_0
 %define _libpkg lib%{name}-%{_libver}-1
-
+Name:           lunar-date
+Version:        3.2.0
+Release:        0
 Summary:        Chinese Lunar calendar library
 License:        LGPL-2.1-or-later
-Group:          System/I18n/Chinese
-Name:           lunar-date
-Version:        3.0.1
-Release:        0
 URL:            https://github.com/yetist/lunar-date
 Source:         https://github.com/yetist/lunar-date/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  gi-docgen
+BuildRequires:  meson >= 1.0.0
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(vapigen)
 
 %package -n %{_libpkg}
 Summary:        Chinese Lunar calendar library
-Group:          System/I18n/Chinese
 Recommends:     %{name}-lang
 Provides:       locale(patterns-gnome-gnome:zh_CN;zh_SG;zh_TW;zh_HK)
 Provides:       locale(patterns-mate-mate:zh_CN;zh_SG;zh_TW;zh_HK)
@@ -44,20 +42,17 @@ Provides:       locale(patterns-xfce-xfce:zh_CN;zh_SG;zh_TW;zh_HK)
 
 %package -n typelib-1_0-LunarDate-%{_libver}
 Summary:        Chinese Lunar calendar introspection bindings
-Group:          System/I18n/Chinese
 Provides:       locale(patterns-gnome-gnome:zh_CN;zh_SG;zh_TW;zh_HK)
 Provides:       locale(patterns-mate-mate:zh_CN;zh_SG;zh_TW;zh_HK)
 Provides:       locale(patterns-xfce-xfce:zh_CN;zh_SG;zh_TW;zh_HK)
 
 %package devel
 Summary:        Chinese Lunar calendar library development files
-Group:          Development/Libraries/C and C++
 Requires:       %{_libpkg} = %{version}
 Requires:       typelib-1_0-LunarDate-%{_libver} = %{version}
 
 %package doc
 Summary:        Chinese Lunar calendar library Documents
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description
@@ -75,7 +70,7 @@ Development files for Chinese Lunar calendar library
 %description doc
 Documents for Chinese Lunar calendar library
 
-%{lang_package}
+%lang_package
 
 %prep
 %setup -q
@@ -93,11 +88,9 @@ Documents for Chinese Lunar calendar library
 %find_lang %{name} %{?no_lang_C}
 
 %post -n %{_libpkg} -p /sbin/ldconfig
-
 %postun -n %{_libpkg} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %doc AUTHORS NEWS README.md
 %license COPYING
 %{_bindir}/lunar-date
@@ -107,19 +100,15 @@ Documents for Chinese Lunar calendar library
 %files lang -f %{name}.lang
 
 %files -n %{_libpkg}
-%defattr(-,root,root,-)
 %{_libdir}/*.so.*
 
 %files -n typelib-1_0-LunarDate-%{_libver}
-%defattr(-,root,root,-)
 %{_libdir}/girepository-1.0/*.typelib
 
 %files doc
-%defattr(-,root,root,-)
-%{_datadir}/gtk-doc/html/%{name}
+%{_datadir}/doc/%{name}/
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/%{name}-*
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/*.gir
