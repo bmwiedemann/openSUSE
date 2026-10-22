@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:56:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.1.12
+  * Guard against invalid out-of-range crash in getTonePosition
+  * Add a highlight preedit style using the cursor trick
+  * Translation updates
+
+-------------------------------------------------------------------
 Sun Feb  8 06:39:17 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.9

@@ -17,35 +17,37 @@
 
 
 Name:           fcitx5-unikey
-Version:        5.1.9
+Version:        5.1.12
 Release:        0
 Summary:        Unikey engine support for Fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Group:          System/Localization
 URL:            https://github.com/fcitx/fcitx5-unikey
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
-BuildRequires:  fcitx5-devel
 BuildRequires:  fcitx5-qt-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(Fcitx5Config)
+BuildRequires:  pkgconfig(Fcitx5Core) >= 5.1.13
+BuildRequires:  pkgconfig(Fcitx5Module)
+BuildRequires:  pkgconfig(Fcitx5Utils)
 Requires:       fcitx5
 Provides:       fcitx-unikey = %{version}
 Obsoletes:      fcitx-unikey <= 0.2.7
 Obsoletes:      fcitx5-unikey-qt6 <= 5.1.6
 %if 0%{?suse_version} <= 1520
-BuildRequires:  appstream-glib-devel
+BuildRequires:  pkgconfig(appstream-glib)
 %endif
 
 %description
 Chewing Wrapper for Fcitx5.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 %if 0%{?suse_version} == 1500
