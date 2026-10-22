@@ -168,7 +168,6 @@ BuildRequires:  rocm-clang-tools-extra%{pkg_suffix}
 %endif
 %endif
 
-Provides:       hipsparse%{pkg_suffix} = %{version}-%{release}
 Requires:       rocm-filesystem%{pkg_suffix}
 Requires:       rocm-hip%{pkg_suffix}
 Requires:       rocsparse%{pkg_suffix}
@@ -189,6 +188,7 @@ cuSPARSE backends.
 %if 0%{?suse_version}
 %package -n %{pkg_name}
 Summary:        Shared libraries for %{name}
+Provides:       %{name} = %{version}-%{release}
 
 %description -n %{pkg_name}
 %{summary}
