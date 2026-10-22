@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 21 17:59:03 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.22.3:
+  * Bump required Go build version to v1.26.10 to mitigate
+    CVE-2026-111943 by distrusting select intermediary authorities
+    so server admins (and docker users) don't have to update
+    ca-certificates themselves (see gh#golang/go#82348).
+  * Fix an issue in the dereferencer where remote accounts could
+    masquerade as other remote accounts with sneaky URL shenanigans.
+
+-------------------------------------------------------------------
 Fri Oct  9 16:40:41 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.22.2:
