@@ -23,7 +23,7 @@
 %define _environmentdir %{_prefix}/lib/environment.d
 %endif
 Name:           fcitx5
-Version:        5.1.17
+Version:        5.1.23
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later
@@ -36,10 +36,14 @@ Source4:        macros.fcitx5
 Source5:        fcitx5-autostart
 Source6:        20-fcitx5-plasma-setup.sh
 Source102:      fcitx5.service
+# PATCH-FIX-OPENSUSE fcitx5-gcc7.patch -- fix build with GCC 7
 Patch1:         fcitx5-gcc7.patch
+# PATCH-FIX-OPENSUSE fcitx5-5.0.13-memfd.patch -- memfd_create compatibility
 Patch2:         fcitx5-5.0.13-memfd.patch
 %if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+# PATCH-FIX-SLE fcitx5-5.1.17-xcb.patch -- guard Xfixes disconnect-mode API absent on SLE 15 SP6
 Patch3:         fcitx5-5.1.17-xcb.patch
+# PATCH-FIX-SLE fcitx5-5.1.17-waylandprotocols-revert-ext-data-control.patch -- drop ext-data-control-v1 for the old wayland-protocols stack on SLE 15 SP6
 Patch4:         fcitx5-5.1.17-waylandprotocols-revert-ext-data-control.patch
 %endif
 BuildRequires:  cmake
@@ -49,6 +53,7 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  plasma-wayland-protocols >= 1.20
 BuildRequires:  update-desktop-files
 BuildRequires:  xcb-util-wm-devel
 BuildRequires:  xkeyboard-config
@@ -60,6 +65,7 @@ BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(iso-codes)
+BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(nlohmann_json)
@@ -67,7 +73,7 @@ BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.46
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-imdkit)
 BuildRequires:  pkgconfig(xcb-keysyms)

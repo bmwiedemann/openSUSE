@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:19:14 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 5.1.23:
+  * Native SVG theme rendering via librsvg for HiDPI displays, with the
+    default theme images converted from png to svg.
+  * Coroutine-based wayland launcher and GNOME/ibus app monitors.
+  * Clipboard prefers ext-data-control-v1; fractional scaling handled
+    via the wayland-protocols package (needs wayland-protocols >= 1.46).
+  * New key-matching logic shared by checkKeyList users, and an option
+    to consume redundant Activate/Deactivate key presses.
+  * Preserve the current input method across group updates; port the
+    clipboard, quickphrase and input-method selector to temp mode.
+  * Update emoji dictionary to Emoji 17.0; harden theme-name, commit
+    string and config-value escaping handling.
+- Packaging changes:
+  * Add pkgconfig(librsvg-2.0) and plasma-wayland-protocols >= 1.20
+    BuildRequires for the new mandatory dependencies.
+  * Rebase fcitx5-5.1.17-waylandprotocols-revert-ext-data-control.patch
+    for the new upstream sources.
+
+-------------------------------------------------------------------
 Sat Feb  7 04:05:20 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - Update version 5.1.17

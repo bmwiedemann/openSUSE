@@ -1,24 +1,26 @@
 diff -urN fcitx5-5.1.17/CMakeLists.txt fcitx5-5.1.17.new/CMakeLists.txt
 --- fcitx5-5.1.17/CMakeLists.txt	2025-12-22 14:18:01.000000000 +0800
 +++ fcitx5-5.1.17.new/CMakeLists.txt	2026-02-07 13:09:14.689438272 +0800
-@@ -169,7 +169,7 @@
+@@ -184,8 +184,8 @@
      set(REQUIRED_WAYLAND_COMPONENTS Client Cursor)
      find_package(Wayland 1.22 REQUIRED COMPONENTS ${REQUIRED_WAYLAND_COMPONENTS})
      find_package(WaylandScanner REQUIRED)
--    find_package(WaylandProtocols 1.39 REQUIRED)
+-    find_package(WaylandProtocols 1.46 REQUIRED)
 +    find_package(WaylandProtocols REQUIRED)
-     pkg_check_modules(Gio IMPORTED_TARGET gio-2.0)
- endif()
+     # Required for gsettings
+     pkg_check_modules(Gio REQUIRED IMPORTED_TARGET gio-2.0)
  
+     if (USE_SYSTEM_PLASMA_WAYLAND_PROTOCOLS)
+     if (USE_SYSTEM_PLASMA_WAYLAND_PROTOCOLS)
 diff -urN fcitx5-5.1.17/src/lib/fcitx-wayland/CMakeLists.txt fcitx5-5.1.17.new/src/lib/fcitx-wayland/CMakeLists.txt
 --- fcitx5-5.1.17/src/lib/fcitx-wayland/CMakeLists.txt	2025-12-22 14:18:01.000000000 +0800
 +++ fcitx5-5.1.17.new/src/lib/fcitx-wayland/CMakeLists.txt	2026-02-07 13:09:52.981927150 +0800
-@@ -2,7 +2,6 @@
+@@ -2,6 +2,5 @@
  add_subdirectory(input-method)
  add_subdirectory(input-method-v2)
  add_subdirectory(wlr-data-control)
 -add_subdirectory(ext-data-control)
- add_subdirectory(blur)
+ add_subdirectory(ext-background-effect)
  add_subdirectory(plasma-window-management)
  add_subdirectory(wlr-foreign-toplevel-management-unstable-v1)
 diff -urN fcitx5-5.1.17/src/lib/fcitx-wayland/ext-data-control/ext_data_control_source_v1.cpp fcitx5-5.1.17.new/src/lib/fcitx-wayland/ext-data-control/ext_data_control_source_v1.cpp
