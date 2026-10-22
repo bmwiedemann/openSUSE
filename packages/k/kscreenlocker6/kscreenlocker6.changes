@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:32:46 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.1
+- Changes since 6.8.0:
+  * Handle dropping command line arguments in live upgrades
+  * Update version for new release 6.8.1
+
+-------------------------------------------------------------------
 Mon Oct 19 11:31:21 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to respun 6.8.0 tarball that may avoid some authentication

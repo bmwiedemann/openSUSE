@@ -397,4 +397,12 @@
   * worker: drop time check (kde#526194) (forwarded request 1386257 from Vogtinator)</comment>
     <requestid>1386258</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>ece22767e42b8e489efaa57ca4135d27</srcmd5>
+    <version>6.8.1</version>
+    <time>1792676882</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.8.1, not even fully built yet (forwarded request 1386635 from Vogtinator)</comment>
+    <requestid>1386834</requestid>
+  </revision>
 </revisionlist>
