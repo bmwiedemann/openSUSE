@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-chewing
-Version:        5.1.10
+Version:        5.1.13
 Release:        0
 Summary:        Chewing Wrapper for Fcitx5
 License:        GPL-2.0-or-later

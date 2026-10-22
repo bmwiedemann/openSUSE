@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:55:29 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 5.1.13:
+  * Handle keypad Enter like Return
+  * Locate libchewing syspath with tsi.dat
+
+-------------------------------------------------------------------
 Sun Feb  8 06:02:07 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.10
