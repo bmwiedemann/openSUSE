@@ -17,30 +17,32 @@
 
 
 Name:           fcitx5-zhuyin
-Version:        5.1.6
+Version:        5.1.9
 Release:        0
 Summary:        Libzhuyin Wrapper for Fcitx5
 License:        GPL-2.0-or-later
-Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-zhuyin
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
-BuildRequires:  fcitx5-devel
-BuildRequires:  fmt-devel
+BuildRequires:  pkgconfig
+BuildRequires:  zstd
+BuildRequires:  pkgconfig(Fcitx5Config)
+BuildRequires:  pkgconfig(Fcitx5Core) >= 5.1.13
+BuildRequires:  pkgconfig(Fcitx5Module)
+BuildRequires:  pkgconfig(Fcitx5Utils)
+BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(libzhuyin) >= 2.3.0
+Requires:       fcitx5
+Provides:       fcitx-zhuyin = %{version}
+Obsoletes:      fcitx-zhuyin <= 0.1.1
 %if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
 %else
 BuildRequires:  gcc13-c++
 %endif
-BuildRequires:  libpinyin-devel
-BuildRequires:  pkgconfig
-BuildRequires:  zstd
-Requires:       fcitx5
-Provides:       fcitx-zhuyin = %{version}
-Obsoletes:      fcitx-zhuyin <= 0.1.1
 %if 0%{?suse_version} <= 1520
-BuildRequires:  appstream-glib-devel
+BuildRequires:  pkgconfig(appstream-glib)
 %endif
 
 %description
