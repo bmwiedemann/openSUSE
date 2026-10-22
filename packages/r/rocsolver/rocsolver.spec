@@ -226,8 +226,6 @@ BuildRequires:  ninja
 %endif
 %endif
 
-Provides:       rocsolver%{pkg_suffix} = %{version}-%{release}
-
 %description
 rocSOLVER is a work-in-progress implementation of a subset
 of LAPACK functionality on the ROCm platform.
@@ -235,6 +233,7 @@ of LAPACK functionality on the ROCm platform.
 %if 0%{?suse_version}
 %package -n %{pkg_name}
 Summary:        Shared libraries for %{name}
+Provides:       %{name} = %{version}-%{release}
 
 %description -n %{pkg_name}
 %{summary}
