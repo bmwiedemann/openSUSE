@@ -1,4 +1,178 @@
 -------------------------------------------------------------------
+Thu Oct 22 06:51:14 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 153.5.1 ESR
+  MFSA 2026-115 (bsc#)
+  * CVE-2026-113866 (bmo#2080121)
+    Account password sent unencrypted during Exchange account
+    setup
+  * CVE-2026-113867 (bmo#2080073)
+    Stanza injection in XMPP chat
+  * CVE-2026-113868 (bmo#2076569)
+    Uninitialized memory disclosure and out-of-bounds read in
+    POP3 and SMTP NTLM authentication
+  * CVE-2026-113470 (bmo#2083382)
+    Cryptographic issue in the Security Block-lists, Allow-lists,
+    and other State component
+  * fixed: Failed account setup left incoming servers that
+    blocked subsequent setup attempts (bmo#1121151)
+
+-------------------------------------------------------------------
+Wed Oct 14 17:00:23 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 153.5.0 ESR
+  MFSA 2026-110 (bsc#)
+  * CVE-2026-110249 (bmo#2077826)
+    Denial-of-service in the Exchange email component
+  * CVE-2026-109704 (bmo#2037979)
+    Privilege escalation in the Application Update component
+  * CVE-2026-109705 (bmo#2040905)
+    Sandbox escape, site isolation issue due to incorrect
+    boundary conditions, use-after-free in the Networking
+    component
+  * CVE-2026-109706 (bmo#2053649)
+    Use-after-free in the Storage: IndexedDB component
+  * CVE-2026-109707 (bmo#2059150)
+    Sandbox escape due to use-after-free in the Networking
+    component
+  * CVE-2026-109708 (bmo#2059151)
+    Sandbox escape due to incorrect boundary conditions in the
+    Networking component
+  * CVE-2026-109709 (bmo#2067976)
+    Information disclosure, privilege escalation in the Security:
+    Process Sandboxing component
+  * CVE-2026-109710 (bmo#2068338)
+    Use-after-free in the Graphics: Text component
+  * CVE-2026-109711 (bmo#2068344)
+    Use-after-free in the Graphics: Canvas2D component
+  * CVE-2026-109712 (bmo#2068420)
+    Sandbox escape due to uninitialized memory in the Graphics
+    component
+  * CVE-2026-109713 (bmo#2068421)
+    Use-after-free in the Crash Reporting component
+  * CVE-2026-109715 (bmo#2073267)
+    Incorrect boundary conditions in the JavaScript Engine
+    component
+  * CVE-2026-109716 (bmo#2073269)
+    Incorrect boundary conditions in the JavaScript Engine
+    component
+  * CVE-2026-109717 (bmo#2073647)
+    Use-after-free in the DOM: Bindings (WebIDL) component
+  * CVE-2026-109718 (bmo#2073692)
+    Use-after-free in the XML component
+  * CVE-2026-109719 (bmo#2073969)
+    Race condition, use-after-free in the Graphics: CanvasWebGL
+    component
+  * CVE-2026-109720 (bmo#2074160)
+    JIT miscompilation in the JavaScript: WebAssembly component
+  * CVE-2026-109721 (bmo#2074161)
+    Incorrect boundary conditions in the JavaScript Engine: JIT
+    component
+  * CVE-2026-109722 (bmo#2074164)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2026-109723 (bmo#2074171)
+    Integer overflow in the Layout: Text and Fonts component
+  * CVE-2026-109724 (bmo#2074193)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-109725 (bmo#2074208)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-109726 (bmo#2074212)
+    Use-after-free in the SVG component
+  * CVE-2026-109727 (bmo#2074213)
+    Use-after-free in the Audio/Video component
+  * CVE-2026-109728 (bmo#2074625)
+    Use-after-free in the DOM: Animation component
+  * CVE-2026-109729 (bmo#2074632)
+    Use-after-free in the JavaScript Engine: JIT component
+  * CVE-2026-109730 (bmo#2074896)
+    Integer overflow in the Graphics component
+  * CVE-2026-109731 (bmo#2075436)
+    Incorrect boundary conditions in the Graphics: Canvas2D
+    component
+  * CVE-2026-109732 (bmo#2075998)
+    Use-after-free in the DOM: Streams component
+  * CVE-2026-109733 (bmo#2076269)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2026-109734 (bmo#1926318)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-109736 (bmo#2029784)
+    Frame poisoning in the Layout component
+  * CVE-2026-109737 (bmo#2044525)
+    Mitigation bypass in the Enterprise Policies component
+  * CVE-2026-109738 (bmo#2047722)
+    Use-after-free in the Audio/Video: Playback component
+  * CVE-2026-109740 (bmo#2057113)
+    Sandbox escape due to incorrect boundary conditions in the
+    Widget: Win32 component
+  * CVE-2026-109741 (bmo#2058651)
+    Use-after-free in the Storage: Bucket File System component
+  * CVE-2026-109742 (bmo#2058800)
+    Information disclosure in the PDF Viewer component
+  * CVE-2026-109743 (bmo#2059195)
+    Privilege escalation in the Panning and Zooming component
+  * CVE-2026-109744 (bmo#2059211)
+    Other issue in the DOM: File component
+  * CVE-2026-109745 (bmo#2061784)
+    Sandbox escape due to uninitialized memory in the DOM: Web
+    Serial component
+  * CVE-2026-109782 (bmo#2067465)
+    Mitigation bypass in the File Handling component
+  * CVE-2026-109751 (bmo#2068372)
+    Information disclosure in the Networking component
+  * CVE-2026-109752 (bmo#2068407)
+    Use-after-free in the DOM: Workers component
+  * CVE-2026-109753 (bmo#2068441)
+    Incorrect boundary conditions in the Layout component
+  * CVE-2026-109754 (bmo#2068443)
+    Incorrect boundary conditions in the DOM: Editor component
+  * CVE-2026-109756 (bmo#2069258)
+    Privilege escalation in the DOM: Navigation component
+  * CVE-2026-109757 (bmo#2069910)
+    Sandbox escape due to race condition in the Networking
+    component
+  * CVE-2026-109759 (bmo#2070252)
+    Site isolation issue in the Networking component
+  * CVE-2026-109760 (bmo#2070633)
+    Mitigation bypass in the Networking: HTTP component
+  * CVE-2026-109762 (bmo#2072438)
+    Incorrect boundary conditions in the SVG component
+  * CVE-2026-109763 (bmo#2072501)
+    Mitigation bypass in the File Handling component
+  * CVE-2026-109764 (bmo#2073382)
+    Mitigation bypass in the Enterprise Policies component
+  * CVE-2026-109765 (bmo#2073396)
+    Race condition, use-after-free in the Graphics: Text
+    component
+  * CVE-2026-109766 (bmo#2074406)
+    Mitigation bypass in the Enterprise Policies component
+  * CVE-2026-109767 (bmo#2074963)
+    Information disclosure in the Networking component
+  * CVE-2026-109783 (bmo#2075533)
+    Mitigation bypass in the File Handling component
+  * CVE-2026-109770 (bmo#2059230)
+    Spoofing issue in the DOM: Web Serial component
+  * CVE-2026-109775 (bmo#2068255)
+    Denial-of-service in the WebRTC component
+  * CVE-2026-109776 (bmo#2069395)
+    Race condition in the XPCOM component
+  * CVE-2026-109777 (bmo#2069638)
+    Information disclosure in the Storage: IndexedDB component
+  * CVE-2026-109778 (bmo#2070547)
+    Privilege escalation in the WebExtensions component
+  * CVE-2026-109781 (bmo#2072852)
+    Denial-of-service in the Printing: Output component
+  * fixed: Attach File dialog failed to open when the previously
+    used folder was unavailable (bmo#2077590)
+  * fixed: Troubleshooting falsely reported crash reports were
+    not configured when available (bmo#2070966)
+  * fixed: Switching to Unified Folders could leave All Folders
+    enabled and not change view (bmo#2041038)
+  * fixed: Archived Inbox folders ignored localized names and
+    appeared as "INBOX" (bmo#2062951)
+  * fixed: Plain-text inline forwards omitted signatures placed
+    below the quote (bmo#2063939)
+
+-------------------------------------------------------------------
 Mon Oct 12 12:30:04 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Reenable build on riscv64
