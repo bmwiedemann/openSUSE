@@ -42,4 +42,13 @@
 - Run testsuite</comment>
     <requestid>1304705</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ca83579db004c15d6314d7046428db8</srcmd5>
+    <version>1.11.0</version>
+    <time>1792681211</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 1.11.0
+  * https://github.com/berndporr/iir1/releases/tag/1.11.0</comment>
+    <requestid>1387044</requestid>
+  </revision>
 </revisionlist>
