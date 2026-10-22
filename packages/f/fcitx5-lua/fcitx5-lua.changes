@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:56:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.0.18
+  * Add support for Lua 5.5
+  * Prefer pkg-config over CMake for Lua detection
+
+-------------------------------------------------------------------
 Sat Jun 21 08:02:57 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.15

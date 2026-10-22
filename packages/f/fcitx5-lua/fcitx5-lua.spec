@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-lua
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,20 @@
 
 
 Name:           fcitx5-lua
-Version:        5.0.15
+Version:        5.0.18
 Release:        0
 Summary:        Lua support for fcitx
 License:        LGPL-2.1-or-later
-Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-lua
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
-BuildRequires:  fcitx5-devel
+BuildRequires:  pkgconfig
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(Fcitx5Config)
+BuildRequires:  pkgconfig(Fcitx5Core) >= 5.1.13
+BuildRequires:  pkgconfig(Fcitx5Module)
+BuildRequires:  pkgconfig(Fcitx5Utils)
 Supplements:    fcitx5
 %if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
@@ -35,12 +38,14 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc13-c++
 %endif
 %if 0%{?suse_version} >= 1550
-BuildRequires:  lua54-devel
+BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(lua5.4)
 %else
-BuildRequires:  lua53-devel
+BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(lua5.3)
 %endif
 %if 0%{?suse_version} <= 1520
-BuildRequires:  appstream-glib-devel
+BuildRequires:  pkgconfig(appstream-glib)
 %endif
 
 %description
@@ -48,7 +53,6 @@ Lua support for fcitx
 
 %package devel
 Summary:        Development files for fcitx5-lua
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
 %description devel
