@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 21 23:11:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.10.21
+  * Fixed decoding '+' in SOCKS proxy credentials
+  * Reworked extractors for Bandcamp, Kick, TED, Twitch and others
+- Add yt01-c7fb478d2.patch, yt02-817450d28.patch,
+  yt03-897341241.patch (merged)
+
+-------------------------------------------------------------------
+Mon Oct 12 21:12:35 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add yt01-c7fb478d2.patch, yt02-817450d28.patch,
+  yt03-897341241.patch
+
+-------------------------------------------------------------------
+Sat Oct 10 10:10:10 UTC 2026 - olaf@aepfle.de
+
+- Use specific python versions for SLE15 because the lack of
+  primary_python can not be used anymore to distinguish SLE15
+
+-------------------------------------------------------------------
 Thu Aug 20 05:23:34 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2026.08.19

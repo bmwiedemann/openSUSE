@@ -18,20 +18,20 @@
 
 %if %{defined primary_python}
 %define pythons %primary_python
-%else
+%endif
 %if 0%{?sle_version} == 150700
 %global pythons python313
-%else
-%global pythons python312
 %endif
+%if 0%{?sle_version} == 150600
+%global pythons python312
 %endif
 
 Name:           yt-dlp
-Version:        2026.08.19
+Version:        2026.10.21
 %define ejsver  0.8.0
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
-License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
+License:        CC-BY-SA-3.0 AND LicenseRef-SUSE-Public-Domain
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/yt-dlp/yt-dlp
 Source:         https://github.com/yt-dlp/yt-dlp/releases/download/%version/yt-dlp.tar.gz
