@@ -17,18 +17,16 @@
 
 
 Name:           ibus-chewing
-Version:        2.1.7
+Version:        2.2.0
 Release:        0
 Summary:        The Chewing engine for IBus input platform
 License:        GPL-2.0-or-later
-Group:          System/I18n/Chinese
-URL:            https://github.com/chewing/ibus-chewing/
-Source0:        https://github.com/chewing/ibus-chewing/releases/download/v%{version}/%{name}-%{version}-Source.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  cmake >= 2.6.2
+URL:            https://codeberg.org/chewing/ibus-chewing/
+Source0:        https://codeberg.org/chewing/ibus-chewing/releases/download/v%{version}/%{name}-%{version}.tar.xz
+BuildRequires:  cmake >= 3.21
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(chewing)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk4)
@@ -42,7 +40,7 @@ libchewing.
 新酷音輸入法
 
 %prep
-%autosetup -p1 -n %{name}-%{version}-Source
+%autosetup -p1
 
 %build
 %cmake -DLIBEXEC_DIR=%{_ibus_libexecdir}
@@ -50,12 +48,11 @@ libchewing.
 %install
 %cmake_install
 
-rm -rf %{buildroot}%{_datadir}/doc/packages/ibus-chewing
+rm -rf %{buildroot}%{_docdir}/ibus-chewing
 
 %find_lang %{name} %{?no_lang_C}
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %doc USER-GUIDE AUTHORS INSTALL ChangeLog-1.x CHANGELOG.md README.md
 %license COPYING
 %{_libexecdir}/ibus-*

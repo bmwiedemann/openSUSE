@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:13:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.2.0:
+  * Only switch mode if not in candidate window on keypad keys.
+  * Longer Shift tap timeout (500 ms), panel orientation fix.
+  * Use semantic preedit text hint with ibus >= 1.5.33.
+  * Better resource cleanup, UTF-8 robustness, less allocations.
+- Upstream moved to CodeBerg: adjust URL and Source.
+
+-------------------------------------------------------------------
 Tue Mar 17 12:44:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.7:
