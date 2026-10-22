@@ -23,11 +23,11 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pi-coding-agent
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Minimal terminal coding agent
-# Legal-Review-Notice: pi itself is MIT. The 117 vendored dependencies are
-# MIT (57), Apache-2.0 (36), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2),
+# Legal-Review-Notice: pi itself is MIT. The 118 vendored dependencies are
+# MIT (58), Apache-2.0 (36), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2),
 # Unlicense (1) and 0BSD (1); every dependency declares a license. The tag
 # below is the union of all of them.
 License:        0BSD AND Apache-2.0 AND BSD-3-Clause AND BlueOak-1.0.0 AND ISC AND MIT AND Unlicense

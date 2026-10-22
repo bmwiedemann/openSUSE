@@ -304,4 +304,12 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
     <comment>Update pi-coding-agent to 1.3.0. Upstream release with pinned dependency refresh, no new Factory deps.</comment>
     <requestid>1385122</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f72d43c8f5bd074a2d9657dd58869ca3</srcmd5>
+    <version>1.4.0</version>
+    <time>1792677157</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.4.0</comment>
+    <requestid>1387109</requestid>
+  </revision>
 </revisionlist>
