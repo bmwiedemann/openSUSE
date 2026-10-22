@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:35:47 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.1
+- Changes since 6.8.0:
+  * TreeViewElement: draw the branch arrow at the size of the indicator
+  * UnionStyle: underline accelerators of selectable labels only with Alt
+  * Update version for new release 6.8.1
+  * CheckBox/RadioButtonElement: Don't draw as a push button without a widget (kde#526764)
+  * Elements: Add validity checks
+  * :cherries: tools/styletool: Support Tar archived styles in install/inspect/update commands
+  * tools/styletool: Add support for extracting files from a Tar archive
+  * tools/styletool: Add support for reading existing archives to TarArchive
+  * :cherries: tools/styletool: Refactor Tar to TarArchive and make it a proper class
+  * ScrollAreaCornerElement: Fix validity check
+  * UnionStyle: Remove unused QSplitterHandle check
+  * CMakeLists: Remove Breeze QStyle dependency
+  * delegate: Add focusframe
+  * FocusElement: Fix validity check
+  * AbstractElement: Add changed hint on _kde_highlight_neutral
+
+-------------------------------------------------------------------
 Thu Oct  8 16:55:16 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.8.0:
