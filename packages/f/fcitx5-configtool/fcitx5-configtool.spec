@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-configtool
-Version:        5.1.12
+Version:        5.1.16
 Release:        0
 Summary:        Configuration tool for fcitx5
 License:        GPL-2.0-or-later

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:55:35 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 5.1.16:
+  * Support latest scale asset feature
+  * Add menu blur config option
+  * Add optional widget and option support to kcm
+  * Improve font button visual look
+  * Rebase fcitx5-configtool-revert-drop-qt5.patch for upstream changes
+
+-------------------------------------------------------------------
 Sun Feb  8 14:07:42 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - update version 5.1.12

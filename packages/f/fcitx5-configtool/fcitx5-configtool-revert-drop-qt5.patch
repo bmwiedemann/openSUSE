@@ -1,9 +1,9 @@
 diff -urN fcitx5-configtool-5.1.12/CMakeLists.txt fcitx5-configtool-5.1.12.new/CMakeLists.txt
---- fcitx5-configtool-5.1.12/CMakeLists.txt	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/CMakeLists.txt	2026-02-08 22:16:45.455817979 +0800
+--- fcitx5-configtool-5.1.12/CMakeLists.txt
++++ fcitx5-configtool-5.1.12.new/CMakeLists.txt
 @@ -13,13 +13,24 @@
  
- project(fcitx5-configtool VERSION 5.1.12)
+ project(fcitx5-configtool VERSION 5.1.16)
  
 +option(USE_QT6 "Build with Qt6" On)
 +
@@ -52,8 +52,8 @@ diff -urN fcitx5-configtool-5.1.12/CMakeLists.txt fcitx5-configtool-5.1.12.new/C
  
  find_package(Fcitx5Core 5.1.13 REQUIRED)
 diff -urN fcitx5-configtool-5.1.12/layout/CMakeLists.txt fcitx5-configtool-5.1.12.new/layout/CMakeLists.txt
---- fcitx5-configtool-5.1.12/layout/CMakeLists.txt	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/layout/CMakeLists.txt	2026-02-08 22:16:45.455986583 +0800
+--- fcitx5-configtool-5.1.12/layout/CMakeLists.txt
++++ fcitx5-configtool-5.1.12.new/layout/CMakeLists.txt
 @@ -10,6 +10,9 @@
  add_library(layoutlib STATIC keyboardlayoutwidget.cpp)
  set_target_properties(layoutlib PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
@@ -65,8 +65,8 @@ diff -urN fcitx5-configtool-5.1.12/layout/CMakeLists.txt fcitx5-configtool-5.1.1
  
  set(kbd_layout_viewer_SOURCES
 diff -urN fcitx5-configtool-5.1.12/layout/keyboardlayoutwidget.cpp fcitx5-configtool-5.1.12.new/layout/keyboardlayoutwidget.cpp
---- fcitx5-configtool-5.1.12/layout/keyboardlayoutwidget.cpp	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/layout/keyboardlayoutwidget.cpp	2026-02-08 22:16:45.456187447 +0800
+--- fcitx5-configtool-5.1.12/layout/keyboardlayoutwidget.cpp
++++ fcitx5-configtool-5.1.12.new/layout/keyboardlayoutwidget.cpp
 @@ -12,6 +12,9 @@
  #include <QPainter>
  #include <QPainterPath>
@@ -99,8 +99,8 @@ diff -urN fcitx5-configtool-5.1.12/layout/keyboardlayoutwidget.cpp fcitx5-config
  } // namespace
  
 diff -urN fcitx5-configtool-5.1.12/layout/main.cpp fcitx5-configtool-5.1.12.new/layout/main.cpp
---- fcitx5-configtool-5.1.12/layout/main.cpp	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/layout/main.cpp	2026-02-08 22:16:45.456320876 +0800
+--- fcitx5-configtool-5.1.12/layout/main.cpp
++++ fcitx5-configtool-5.1.12.new/layout/main.cpp
 @@ -49,6 +49,10 @@
          variant = parser.value("variant");
      }
@@ -113,8 +113,8 @@ diff -urN fcitx5-configtool-5.1.12/layout/main.cpp fcitx5-configtool-5.1.12.new/
      mainWindow.setWindowIcon(QIcon::fromTheme("input-keyboard"));
      mainWindow.setWindowTitle(_("Keyboard Layout viewer"));
 diff -urN fcitx5-configtool-5.1.12/src/configtool/mainwindow.cpp fcitx5-configtool-5.1.12.new/src/configtool/mainwindow.cpp
---- fcitx5-configtool-5.1.12/src/configtool/mainwindow.cpp	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/configtool/mainwindow.cpp	2026-02-08 22:21:32.614381000 +0800
+--- fcitx5-configtool-5.1.12/src/configtool/mainwindow.cpp
++++ fcitx5-configtool-5.1.12.new/src/configtool/mainwindow.cpp
 @@ -21,7 +21,6 @@
  #include <QPushButton>
  #include <QSessionManager>
@@ -124,8 +124,8 @@ diff -urN fcitx5-configtool-5.1.12/src/configtool/mainwindow.cpp fcitx5-configto
  
  namespace fcitx::kcm {
 diff -urN fcitx5-configtool-5.1.12/src/kcm/CMakeLists.txt fcitx5-configtool-5.1.12.new/src/kcm/CMakeLists.txt
---- fcitx5-configtool-5.1.12/src/kcm/CMakeLists.txt	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/CMakeLists.txt	2026-02-08 22:16:45.456367202 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/CMakeLists.txt
++++ fcitx5-configtool-5.1.12.new/src/kcm/CMakeLists.txt
 @@ -1,5 +1,42 @@
 -kcmutils_add_qml_kcm(kcm_fcitx5 SOURCES main.cpp)
 -target_link_libraries(kcm_fcitx5 KF${QT_MAJOR_VERSION}::KCMUtilsQuick)
@@ -172,8 +172,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/CMakeLists.txt fcitx5-configtool-5.1.
  target_link_libraries(kcm_fcitx5
    Qt${QT_MAJOR_VERSION}::Quick
 diff -urN fcitx5-configtool-5.1.12/src/kcm/kcm_fcitx5.desktop.in fcitx5-configtool-5.1.12.new/src/kcm/kcm_fcitx5.desktop.in
---- fcitx5-configtool-5.1.12/src/kcm/kcm_fcitx5.desktop.in	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/kcm_fcitx5.desktop.in	2026-02-08 22:16:45.456395886 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/kcm_fcitx5.desktop.in
++++ fcitx5-configtool-5.1.12.new/src/kcm/kcm_fcitx5.desktop.in
 @@ -0,0 +1,8 @@
 +[Desktop Entry]
 +Icon=fcitx
@@ -183,10 +183,10 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/kcm_fcitx5.desktop.in fcitx5-configto
 +NoDisplay=True
 +Name=Input Method
 +Comment=Configure Input Method
-\ 文件末尾没有换行符
+\ No newline at end of file
 diff -urN fcitx5-configtool-5.1.12/src/kcm/kcm_fcitx5_kservice.desktop.in fcitx5-configtool-5.1.12.new/src/kcm/kcm_fcitx5_kservice.desktop.in
---- fcitx5-configtool-5.1.12/src/kcm/kcm_fcitx5_kservice.desktop.in	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/kcm_fcitx5_kservice.desktop.in	2026-02-08 22:16:45.456425801 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/kcm_fcitx5_kservice.desktop.in
++++ fcitx5-configtool-5.1.12.new/src/kcm/kcm_fcitx5_kservice.desktop.in
 @@ -0,0 +1,16 @@
 +[Desktop Entry]
 +Icon=fcitx
@@ -205,8 +205,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/kcm_fcitx5_kservice.desktop.in fcitx5
 +
 +Categories=Qt;KDE;X-KDE-settings-fcitx;
 diff -urN fcitx5-configtool-5.1.12/src/kcm/main.cpp fcitx5-configtool-5.1.12.new/src/kcm/main.cpp
---- fcitx5-configtool-5.1.12/src/kcm/main.cpp	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/main.cpp	2026-02-08 22:16:45.456485903 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/main.cpp
++++ fcitx5-configtool-5.1.12.new/src/kcm/main.cpp
 @@ -36,7 +36,6 @@
  #include <fcitx-utils/misc.h>
  #include <fcitx-utils/standardpaths.h>
@@ -284,8 +284,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/main.cpp fcitx5-configtool-5.1.12.new
  
  FcitxModule::~FcitxModule() {}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/main.h fcitx5-configtool-5.1.12.new/src/kcm/main.h
---- fcitx5-configtool-5.1.12/src/kcm/main.h	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/main.h	2026-02-08 22:16:45.456541106 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/main.h
++++ fcitx5-configtool-5.1.12.new/src/kcm/main.h
 @@ -11,8 +11,6 @@
  #include "dbusprovider.h"
  #include "font.h"
@@ -342,8 +342,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/main.h fcitx5-configtool-5.1.12.new/s
  
      auto imConfig() const { return imConfig_; }
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/AddIMPage.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/AddIMPage.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/AddIMPage.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/AddIMPage.qml	2026-02-08 22:16:45.456605316 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/AddIMPage.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/AddIMPage.qml
 @@ -0,0 +1,82 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -428,8 +428,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/AddIMPage.qml fci
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/AddonPage.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/AddonPage.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/AddonPage.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/AddonPage.qml	2026-02-08 22:16:45.456648446 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/AddonPage.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/AddonPage.qml
 @@ -0,0 +1,168 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -600,8 +600,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/AddonPage.qml fci
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/BoolOption.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/BoolOption.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/BoolOption.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/BoolOption.qml	2026-02-08 22:16:45.456676228 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/BoolOption.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/BoolOption.qml
 @@ -0,0 +1,26 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -630,8 +630,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/BoolOption.qml fc
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ColorOption.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ColorOption.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ColorOption.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ColorOption.qml	2026-02-08 22:16:45.456702818 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ColorOption.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ColorOption.qml
 @@ -0,0 +1,50 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -684,8 +684,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ColorOption.qml f
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ConfigGroup.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ConfigGroup.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ConfigGroup.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ConfigGroup.qml	2026-02-08 22:16:45.456732312 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ConfigGroup.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ConfigGroup.qml
 @@ -0,0 +1,85 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -773,8 +773,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ConfigGroup.qml f
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ConfigPage.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ConfigPage.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ConfigPage.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ConfigPage.qml	2026-02-08 22:16:45.456758662 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ConfigPage.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ConfigPage.qml
 @@ -0,0 +1,55 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -832,8 +832,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ConfigPage.qml fc
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/EnumOption.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/EnumOption.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/EnumOption.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/EnumOption.qml	2026-02-08 22:16:45.456788818 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/EnumOption.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/EnumOption.qml
 @@ -0,0 +1,86 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -922,8 +922,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/EnumOption.qml fc
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ExternalOption.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ExternalOption.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ExternalOption.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ExternalOption.qml	2026-02-08 22:16:45.456824795 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ExternalOption.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ExternalOption.qml
 @@ -0,0 +1,37 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -963,8 +963,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ExternalOption.qm
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/FontOption.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/FontOption.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/FontOption.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/FontOption.qml	2026-02-08 22:16:45.456860361 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/FontOption.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/FontOption.qml
 @@ -0,0 +1,37 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -1004,8 +1004,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/FontOption.qml fc
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/IntegerOption.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/IntegerOption.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/IntegerOption.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/IntegerOption.qml	2026-02-08 22:16:45.456886430 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/IntegerOption.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/IntegerOption.qml
 @@ -0,0 +1,40 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -1048,8 +1048,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/IntegerOption.qml
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/KeyListOption.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/KeyListOption.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/KeyListOption.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/KeyListOption.qml	2026-02-08 22:16:45.456918860 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/KeyListOption.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/KeyListOption.qml
 @@ -0,0 +1,105 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -1157,8 +1157,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/KeyListOption.qml
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/KeyOption.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/KeyOption.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/KeyOption.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/KeyOption.qml	2026-02-08 22:16:45.456957221 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/KeyOption.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/KeyOption.qml
 @@ -0,0 +1,151 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -1312,8 +1312,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/KeyOption.qml fci
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ListOption.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ListOption.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ListOption.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ListOption.qml	2026-02-08 22:16:45.457008026 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ListOption.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/ListOption.qml
 @@ -0,0 +1,255 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -1571,8 +1571,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/ListOption.qml fc
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/main.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/main.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/main.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/main.qml	2026-02-08 22:16:45.457070813 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/main.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/main.qml
 @@ -0,0 +1,371 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -1946,8 +1946,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/main.qml fcitx5-c
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/OptionLoader.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/OptionLoader.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/OptionLoader.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/OptionLoader.qml	2026-02-08 22:16:45.457110387 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/OptionLoader.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/OptionLoader.qml
 @@ -0,0 +1,66 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -2016,8 +2016,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/OptionLoader.qml 
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/SaveWarningDialog.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/SaveWarningDialog.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/SaveWarningDialog.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/SaveWarningDialog.qml	2026-02-08 22:16:45.457138629 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/SaveWarningDialog.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/SaveWarningDialog.qml
 @@ -0,0 +1,27 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -2047,8 +2047,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/SaveWarningDialog
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/SelectLayoutSheet.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/SelectLayoutSheet.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/SelectLayoutSheet.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/SelectLayoutSheet.qml	2026-02-08 22:16:45.457173344 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/SelectLayoutSheet.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/SelectLayoutSheet.qml
 @@ -0,0 +1,104 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -2155,8 +2155,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/SelectLayoutSheet
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/StringOption.qml fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/StringOption.qml
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/StringOption.qml	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/StringOption.qml	2026-02-08 22:16:45.457197359 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/StringOption.qml
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/StringOption.qml
 @@ -0,0 +1,25 @@
 +/*
 + * SPDX-FileCopyrightText: 2020~2020 CSSlayer <wengxt@gmail.com>
@@ -2184,8 +2184,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/StringOption.qml 
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/utils.js fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/utils.js
---- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/utils.js	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/utils.js	2026-02-08 22:16:45.457221233 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/utils.js
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/contents/ui/utils.js
 @@ -0,0 +1,29 @@
 +function getRawValue(rawValue, name) {
 +    if (name.length == 0) {
@@ -2217,8 +2217,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/contents/ui/utils.js fcitx5-c
 +    }
 +}
 diff -urN fcitx5-configtool-5.1.12/src/kcm/package/metadata.json fcitx5-configtool-5.1.12.new/src/kcm/package/metadata.json
---- fcitx5-configtool-5.1.12/src/kcm/package/metadata.json	1970-01-01 08:00:00.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/kcm/package/metadata.json	2026-02-08 22:16:45.457252892 +0800
+--- fcitx5-configtool-5.1.12/src/kcm/package/metadata.json
++++ fcitx5-configtool-5.1.12.new/src/kcm/package/metadata.json
 @@ -0,0 +1,46 @@
 +{
 +    "KPlugin": {
@@ -2267,8 +2267,8 @@ diff -urN fcitx5-configtool-5.1.12/src/kcm/package/metadata.json fcitx5-configto
 +    "X-Plasma-MainScript": "ui/main.qml"
 +}
 diff -urN fcitx5-configtool-5.1.12/src/lib/configlib/addonmodel.cpp fcitx5-configtool-5.1.12.new/src/lib/configlib/addonmodel.cpp
---- fcitx5-configtool-5.1.12/src/lib/configlib/addonmodel.cpp	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/lib/configlib/addonmodel.cpp	2026-02-08 22:16:45.457288939 +0800
+--- fcitx5-configtool-5.1.12/src/lib/configlib/addonmodel.cpp
++++ fcitx5-configtool-5.1.12.new/src/lib/configlib/addonmodel.cpp
 @@ -420,12 +420,16 @@
          QProcess::startDetached(wrapperToUse, args);
      } else {
@@ -2287,8 +2287,8 @@ diff -urN fcitx5-configtool-5.1.12/src/lib/configlib/addonmodel.cpp fcitx5-confi
  }
  
 diff -urN fcitx5-configtool-5.1.12/src/lib/configlib/model.cpp fcitx5-configtool-5.1.12.new/src/lib/configlib/model.cpp
---- fcitx5-configtool-5.1.12/src/lib/configlib/model.cpp	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/lib/configlib/model.cpp	2026-02-08 22:16:45.457341778 +0800
+--- fcitx5-configtool-5.1.12/src/lib/configlib/model.cpp
++++ fcitx5-configtool-5.1.12.new/src/lib/configlib/model.cpp
 @@ -15,7 +15,6 @@
  #include <QString>
  #include <QStringLiteral>
@@ -2310,8 +2310,8 @@ diff -urN fcitx5-configtool-5.1.12/src/lib/configlib/model.cpp fcitx5-configtool
                      if (!territory.isEmpty()) {
                          territory =
 diff -urN fcitx5-configtool-5.1.12/src/lib/configwidgetslib/addonselector.cpp fcitx5-configtool-5.1.12.new/src/lib/configwidgetslib/addonselector.cpp
---- fcitx5-configtool-5.1.12/src/lib/configwidgetslib/addonselector.cpp	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/lib/configwidgetslib/addonselector.cpp	2026-02-08 22:16:45.457392552 +0800
+--- fcitx5-configtool-5.1.12/src/lib/configwidgetslib/addonselector.cpp
++++ fcitx5-configtool-5.1.12.new/src/lib/configwidgetslib/addonselector.cpp
 @@ -46,9 +46,15 @@
  
  protected:
@@ -2345,8 +2345,8 @@ diff -urN fcitx5-configtool-5.1.12/src/lib/configwidgetslib/addonselector.cpp fc
          return;
      }
 diff -urN fcitx5-configtool-5.1.12/src/lib/configwidgetslib/listoptionwidget.cpp fcitx5-configtool-5.1.12.new/src/lib/configwidgetslib/listoptionwidget.cpp
---- fcitx5-configtool-5.1.12/src/lib/configwidgetslib/listoptionwidget.cpp	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/lib/configwidgetslib/listoptionwidget.cpp	2026-02-08 22:16:45.457438348 +0800
+--- fcitx5-configtool-5.1.12/src/lib/configwidgetslib/listoptionwidget.cpp
++++ fcitx5-configtool-5.1.12.new/src/lib/configwidgetslib/listoptionwidget.cpp
 @@ -104,7 +104,11 @@
                             index.parent(), index.row() - 1)) {
              return;
@@ -2372,8 +2372,8 @@ diff -urN fcitx5-configtool-5.1.12/src/lib/configwidgetslib/listoptionwidget.cpp
      }
  
 diff -urN fcitx5-configtool-5.1.12/src/lib/configwidgetslib/varianthelper.cpp fcitx5-configtool-5.1.12.new/src/lib/configwidgetslib/varianthelper.cpp
---- fcitx5-configtool-5.1.12/src/lib/configwidgetslib/varianthelper.cpp	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/lib/configwidgetslib/varianthelper.cpp	2026-02-08 22:16:45.457472421 +0800
+--- fcitx5-configtool-5.1.12/src/lib/configwidgetslib/varianthelper.cpp
++++ fcitx5-configtool-5.1.12.new/src/lib/configwidgetslib/varianthelper.cpp
 @@ -82,7 +82,11 @@
              iter = map.insert(path[depth], QVariantMap());
          }
@@ -2387,9 +2387,9 @@ diff -urN fcitx5-configtool-5.1.12/src/lib/configwidgetslib/varianthelper.cpp fc
              *iter = QVariantMap({{"", oldValue}});
          }
 diff -urN fcitx5-configtool-5.1.12/src/plasmathemegenerator/CMakeLists.txt fcitx5-configtool-5.1.12.new/src/plasmathemegenerator/CMakeLists.txt
---- fcitx5-configtool-5.1.12/src/plasmathemegenerator/CMakeLists.txt	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/plasmathemegenerator/CMakeLists.txt	2026-02-08 22:16:45.457505843 +0800
-@@ -6,8 +6,13 @@
+--- fcitx5-configtool-5.1.12/src/plasmathemegenerator/CMakeLists.txt
++++ fcitx5-configtool-5.1.12.new/src/plasmathemegenerator/CMakeLists.txt
+@@ -9,8 +9,13 @@
      Fcitx5::Utils
      Fcitx5::Config)
  
@@ -2404,10 +2404,10 @@ diff -urN fcitx5-configtool-5.1.12/src/plasmathemegenerator/CMakeLists.txt fcitx
  
  install(TARGETS fcitx5-plasma-theme-generator DESTINATION ${CMAKE_INSTALL_BINDIR})
 diff -urN fcitx5-configtool-5.1.12/src/plasmathemegenerator/main.cpp fcitx5-configtool-5.1.12.new/src/plasmathemegenerator/main.cpp
---- fcitx5-configtool-5.1.12/src/plasmathemegenerator/main.cpp	2025-12-22 14:18:08.000000000 +0800
-+++ fcitx5-configtool-5.1.12.new/src/plasmathemegenerator/main.cpp	2026-02-08 22:16:45.457551278 +0800
-@@ -7,9 +7,6 @@
- #include "config.h"
+--- fcitx5-configtool-5.1.12/src/plasmathemegenerator/main.cpp
++++ fcitx5-configtool-5.1.12.new/src/plasmathemegenerator/main.cpp
+@@ -8,9 +8,6 @@
+ #include "screenscaletracker.h"
  #include <KIconLoader>
  #include <KLocalizedString>
 -#include <KSvg/FrameSvg>
@@ -2416,7 +2416,7 @@ diff -urN fcitx5-configtool-5.1.12/src/plasmathemegenerator/main.cpp fcitx5-conf
  #include <Plasma/Theme>
  #include <QBitmap>
  #include <QColor>
-@@ -35,8 +32,18 @@
+@@ -36,8 +33,18 @@
  #include <fcntl.h>
  #include <memory>
  #include <string>
@@ -2435,7 +2435,7 @@ diff -urN fcitx5-configtool-5.1.12/src/plasmathemegenerator/main.cpp fcitx5-conf
  
  namespace {
  bool fd_is_valid(int fd) { return fcntl(fd, F_GETFD) != -1 || errno != EBADF; }
-@@ -126,6 +133,7 @@
+@@ -138,6 +145,7 @@
              theme_ = std::make_unique<Plasma::Theme>();
          }
  
@@ -2443,15 +2443,15 @@ diff -urN fcitx5-configtool-5.1.12/src/plasmathemegenerator/main.cpp fcitx5-conf
          if (parser.isSet("theme") && !monitorMode()) {
              imageSet_ = std::make_unique<KSvg::ImageSet>(theme_->themeName());
          } else {
-@@ -134,6 +142,7 @@
+@@ -146,6 +154,7 @@
              // theme's global change like composite.
              imageSet_ = std::make_unique<KSvg::ImageSet>();
          }
 +#endif
  
          if (monitorMode()) {
-             socketNotifier_ =
-@@ -146,11 +155,13 @@
+             screenScaleTracker_ = new ScreenScaleTracker(this);
+@@ -159,11 +168,13 @@
                          }
                      });
              connect(theme_.get(), &Plasma::Theme::themeChanged, this, [this]() {
@@ -2465,18 +2465,20 @@ diff -urN fcitx5-configtool-5.1.12/src/plasmathemegenerator/main.cpp fcitx5-conf
                  if (!generateTheme()) {
                      qDebug() << "Failed to generate theme.";
                  }
-@@ -400,14 +411,21 @@
+@@ -263,8 +274,12 @@
  
      template <typename T>
-     void setThemeToSvg(T &svg) {
+     void setThemeToSvg(T &svg, int scale = 1) {
 +#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
          svg.setImageSet(imageSet_.get());
+         svg.setDevicePixelRatio(scale);
 +#else
 +        svg.setTheme(theme_.get());
 +#endif
      }
  
  private:
+@@ -471,7 +486,10 @@
      QSocketNotifier *socketNotifier_ = nullptr;
      int fd_ = -1;
      std::unique_ptr<Plasma::Theme> theme_;
@@ -2484,6 +2486,6 @@ diff -urN fcitx5-configtool-5.1.12/src/plasmathemegenerator/main.cpp fcitx5-conf
      std::unique_ptr<KSvg::ImageSet> imageSet_;
 +#else
 +#endif
+     ScreenScaleTracker *screenScaleTracker_ = nullptr;
      QString outputPath_;
- };
- 
+     QString generatedTheme_;
