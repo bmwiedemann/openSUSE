@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:00:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.18:
+  * Drop Python 2 support.
+  * Enable compose error notification and use preedit semantic API.
+  * Fix double IBus.init() and Backspace in prediction.
+  * Update era table with 2026.
+  * Translation updates.
+
+-------------------------------------------------------------------
 Mon Jan 19 02:51:42 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Update ibus-anthy.spec to get rid of update-desktop-files:

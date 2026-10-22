@@ -17,25 +17,23 @@
 
 
 Name:           ibus-anthy
-Version:        1.5.17
+Version:        1.5.18
 Release:        0
 Summary:        The Anthy engine for IBus input platform
 License:        GPL-2.0-or-later
-Group:          System/I18n/Japanese
 URL:            https://github.com/ibus/ibus-anthy
 Source:         https://github.com/ibus/ibus-anthy/releases/download/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  anthy-devel
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject >= 3
 BuildRequires:  swig
+BuildRequires:  pkgconfig(anthy)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(python3)
 Requires:       anthy
 Requires:       python3-gobject >= 3
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Anthy engine for IBus platform. It provides Japanese input method from
@@ -43,7 +41,6 @@ libanthy.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
 
 %description devel
@@ -57,12 +54,12 @@ The %{name}-devel package includes the header files for the %{name} package.
            --libexecdir=%{_ibus_libexecdir} \
            --with-python=python3
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
-find %{buildroot} -name "*.la" -type f -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %find_lang %{name}
 %fdupes -s %{buildroot}
