@@ -17,31 +17,34 @@
 
 
 Name:           fcitx5-m17n
-Version:        5.1.5
+Version:        5.1.8
 Release:        0
 Summary:        M17n input method engine for Fcitx5
 License:        LGPL-2.1-or-later
-Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-m17n
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
-BuildRequires:  fcitx5-devel
-BuildRequires:  fmt-devel
+BuildRequires:  pkgconfig
+BuildRequires:  zstd
+BuildRequires:  pkgconfig(Fcitx5Config)
+BuildRequires:  pkgconfig(Fcitx5Core) >= 5.1.13
+BuildRequires:  pkgconfig(Fcitx5Module)
+BuildRequires:  pkgconfig(Fcitx5Utils)
+BuildRequires:  pkgconfig(m17n-db)
+BuildRequires:  pkgconfig(m17n-gui) >= 1.6.3
+Requires:       fcitx5
+# m17n-db is a data package, not a library: keep the package-name Requires
+Requires:       m17n-db
+Provides:       fcitx-m17n = %{version}
+Obsoletes:      fcitx-m17n <= 0.2.4
 %if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++
 %else
 BuildRequires:  gcc13-c++
 %endif
-BuildRequires:  m17n-lib-devel
-BuildRequires:  pkgconfig
-BuildRequires:  zstd
-Requires:       fcitx5
-Requires:       m17n-db
-Provides:       fcitx-m17n = %{version}
-Obsoletes:      fcitx-m17n <= 0.2.4
 %if 0%{?suse_version} <= 1520
-BuildRequires:  appstream-glib-devel
+BuildRequires:  pkgconfig(appstream-glib)
 %endif
 
 %description
