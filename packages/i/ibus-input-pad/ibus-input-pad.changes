@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:02:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.0:
+  * Port build from intltool to gettext and to LT_INIT.
+  * Translation updates.
+- Drop GTK+2 and intltool BuildRequires, version the remaining
+  pkgconfig floors per configure (ibus-1.0 >= 1.5.3).
+
+-------------------------------------------------------------------
 Sat Jan 20 14:55:24 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)
