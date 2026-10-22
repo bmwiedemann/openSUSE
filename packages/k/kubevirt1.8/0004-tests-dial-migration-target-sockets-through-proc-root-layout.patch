@@ -1,0 +1,81 @@
+From 6b82d6c38d82a74eea76161024b7af0cf33fdfa0 Mon Sep 17 00:00:00 2001
+From: Victor Carvalho <victor.carvalho@suse.com>
+Date: Tue, 4 Aug 2026 07:33:06 +0200
+Subject: [PATCH 2/2] tests: dial migration target sockets through a
+ /proc/<pid>/root layout
+
+The migration proxy resolves the target unix socket relative to the
+/proc/<pid>/root of the virt-launcher it belongs to, and rejects a path
+that is not below such a root. The unit tests dialed sockets straight
+out of a temporary directory, so the target proxy refused to connect and
+the tests blocked on a listener that never accepted.
+
+Place the sockets that act as proxy targets under a "root" directory
+inside the temporary directory. The paths then have the same shape as in
+production and exercise the same resolution. The source socket keeps its
+place: the source proxy listens on it and dials TCP, so it never reaches
+that code path.
+---
+ .../migration-proxy/migration-proxy_test.go      | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/pkg/virt-handler/migration-proxy/migration-proxy_test.go b/pkg/virt-handler/migration-proxy/migration-proxy_test.go
+index 50c5e70..56d929c 100644
+--- a/pkg/virt-handler/migration-proxy/migration-proxy_test.go
++++ b/pkg/virt-handler/migration-proxy/migration-proxy_test.go
+@@ -39,12 +39,18 @@ import (
+ var _ = Describe("MigrationProxy", func() {
+ 	var tlsConfig *tls.Config
+ 	var tmpDir string
++	var launcherRoot string
+ 
+ 	BeforeEach(func() {
+ 		var err error
+ 		tmpDir, err = os.MkdirTemp("", "migrationproxytest")
+ 		Expect(err).ToNot(HaveOccurred())
+ 		os.MkdirAll(tmpDir, 0755)
++		// virt-handler reaches the target sockets inside the virt-launcher
++		// filesystem through /proc/<pid>/root. Mirror that layout so the
++		// proxy resolves them exactly as it does in production.
++		launcherRoot = filepath.Join(tmpDir, "root")
++		Expect(os.MkdirAll(launcherRoot, 0755)).To(Succeed())
+ 		store, err := certificates.GenerateSelfSignedCert(tmpDir, "test", "test")
+ 
+ 		ephemeraldiskutils.MockDefaultOwnershipManager()
+@@ -107,7 +113,7 @@ var _ = Describe("MigrationProxy", func() {
+ 
+ 			It("by creating both ends and sending a message", func() {
+ 				sourceSock := filepath.Join(tmpDir, "source-sock")
+-				virtqemudSock := filepath.Join(tmpDir, "virtqemud-sock")
++				virtqemudSock := filepath.Join(launcherRoot, "virtqemud-sock")
+ 				virtqemudListener, err := net.Listen("unix", virtqemudSock)
+ 
+ 				Expect(err).ShouldNot(HaveOccurred())
+@@ -151,10 +157,10 @@ var _ = Describe("MigrationProxy", func() {
+ 
+ 			DescribeTable("by creating both ends with a manager and sending a message", func(migrationConfig *v1.MigrationConfiguration) {
+ 				directMigrationPort := "49152"
+-				virtqemudSock := filepath.Join(tmpDir, "virtqemud-sock")
++				virtqemudSock := filepath.Join(launcherRoot, "virtqemud-sock")
+ 				virtqemudListener, err := net.Listen("unix", virtqemudSock)
+ 				Expect(err).ShouldNot(HaveOccurred())
+-				directSock := filepath.Join(tmpDir, "mykey-"+directMigrationPort)
++				directSock := filepath.Join(launcherRoot, "mykey-"+directMigrationPort)
+ 				directListener, err := net.Listen("unix", directSock)
+ 
+ 				Expect(err).ShouldNot(HaveOccurred())
+@@ -218,12 +224,12 @@ var _ = Describe("MigrationProxy", func() {
+ 				key2 := "key2"
+ 
+ 				directMigrationPort := "49152"
+-				virtqemudSock := filepath.Join(tmpDir, "virtqemud-sock")
++				virtqemudSock := filepath.Join(launcherRoot, "virtqemud-sock")
+ 				virtqemudListener, err := net.Listen("unix", virtqemudSock)
+ 				Expect(err).ShouldNot(HaveOccurred())
+ 				defer virtqemudListener.Close()
+ 
+-				directSock := filepath.Join(tmpDir, key1+"-"+directMigrationPort)
++				directSock := filepath.Join(launcherRoot, key1+"-"+directMigrationPort)
+ 				directListener, err := net.Listen("unix", directSock)
+ 				Expect(err).ShouldNot(HaveOccurred())
+ 				defer directListener.Close()

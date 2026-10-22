@@ -9,6 +9,22 @@ Mon Aug 17 20:45:00 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
   unavailable. The script is upstream in cmd/pr-helper/entrypoint.sh.
 
 -------------------------------------------------------------------
+Mon Aug  3 23:14:03 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Add 0003-use-safepath-when-dialing-the-migration-target-unix-sockets.patch:
+  CVE-2026-13622 (bsc#1272840) —
+  virt-handler dials the migration target unix sockets through
+  /proc/<pid>/root of the virt-launcher pod; resolve the socket path
+  with safepath and dial via ExecuteNoFollow so a symlink planted
+  inside the launcher filesystem cannot redirect the connection.
+  Unsupported target protocols are now rejected instead of dialed.
+- Add 0004-tests-dial-migration-target-sockets-through-proc-root-layout.patch:
+  the migration-proxy unit tests dialed target sockets straight out of a
+  temporary directory, which is not below a /proc/<pid>/root and is
+  therefore refused by the resolution above; place those sockets under a
+  "root" directory so they keep the shape they have in production.
+
+-------------------------------------------------------------------
 Thu Jul 30 18:17:46 UTC 2026 - Victor Toso de Carvalho <victor.carvalho@suse.com>
 
 - Fix the release manifests' image references (bsc#1272604): pull

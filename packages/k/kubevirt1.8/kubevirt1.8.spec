@@ -32,6 +32,8 @@ Source2:        kubevirt1.8_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Patch0001:      0001-safepath-make-sure-whole-path-has-no-symlink.patch
 Patch0002:      0002-console-use-JoinNoFollow-for-console-socket-path.patch
+Patch0003:      0003-use-safepath-when-dialing-the-migration-target-unix-sockets.patch
+Patch0004:      0004-tests-dial-migration-target-sockets-through-proc-root-layout.patch
 Source100:      %{name}-rpmlintrc
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging

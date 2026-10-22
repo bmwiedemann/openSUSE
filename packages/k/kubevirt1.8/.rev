@@ -110,4 +110,12 @@ installed, so enabling the PersistentReservation feature gate
 crashlooped every virt-handler pod.</comment>
     <requestid>1373666</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>d6668f827b3f02b8b234df161298b261</srcmd5>
+    <version>1.8.4</version>
+    <time>1792677054</time>
+    <user>anag_factory</user>
+    <comment>Backport the safepath dialing of the migration target unix sockets, CVE-2026-13622 (bsc#1272840).</comment>
+    <requestid>1386988</requestid>
+  </revision>
 </revisionlist>
