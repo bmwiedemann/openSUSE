@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 20 13:40:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.4.0+9git.20260610 (9 commits past the 1.4.0
+  release, no SONAME change):
+  * ostrace: fix a memory leak (upstream issue #1677)
+  * afc: improve error handling; afcclient cd fix, start in
+    /Documents with --documents, progress and echo fixes
+  * endianness.h: default to little endian if __BYTE_ORDER is
+    undefined; libsrp6a-sha512: fix environ handling for Apple
+  * docs: CSS fix
+
+-------------------------------------------------------------------
 Sat Oct 11 06:43:13 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 1.4.0+0git.20251010:
