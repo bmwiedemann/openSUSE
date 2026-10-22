@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 21 23:06:48 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Require the data and tools the checks consume from the installed
+  system, mirroring rpmlint and rpmlint-mini: polkit-default-privs
+  on the rpmlint-compat subpackage (PolkitCheck reads the standard
+  default-privs profile), file (magic classification via file -b),
+  bash (scriptlet syntax checks via /bin/sh and /bin/bash -n) and
+  the gzip, bzip2, xz and zstd decompressors (FilesCheck reads
+  compressed files through the external tools); without them the
+  affected checks silently degrade, in build roots substituting
+  rpmcrab for rpmlint-mini as in plain installations. The en_US
+  hunspell dictionary (myspell-en_US) is only recommended: the
+  spell checker uses it when present and stays silent without it
+
+-------------------------------------------------------------------
 Wed Oct 21 12:57:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Ship the LICENSE file via %license in the main package

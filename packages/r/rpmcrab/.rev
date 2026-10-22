@@ -7,4 +7,12 @@
     <comment>Split completions and rpmlint compat into subpackages, ship LICENSE</comment>
     <requestid>1386883</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dfb7b627dc5e8af4ef0365e8fc176243</srcmd5>
+    <version>0.3.0</version>
+    <time>1792681210</time>
+    <user>anag_factory</user>
+    <comment>Require check tools and data</comment>
+    <requestid>1387015</requestid>
+  </revision>
 </revisionlist>

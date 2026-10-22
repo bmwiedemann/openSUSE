@@ -34,17 +34,31 @@ BuildRequires:  zstd
 BuildRequires:  pkgconfig(rpm)
 # - AppDataCheck: invalid-appdata-file/invalid-metainfo-file via appstream-util
 Requires:       appstream-glib
-# - BinariesCheck: binary analysis via strings (binutils)
+# - PostCheck: scriptlet syntax check via /bin/sh and /bin/bash -n
+Requires:       bash
+# - BinariesCheck: binary analysis via strings and ar (binutils)
 Requires:       binutils
+# - FilesCheck: decompression of .bz2 files via bzip2 -dc
+Requires:       bzip2
 Requires:       checkbashisms
 # External tools invoked by checks (see comments for which check needs each):
 # - BashismsCheck: bin-sh-syntax-error via dash, potential-bashisms via checkbashisms
 Requires:       dash
 # - MenuXDGCheck: invalid-desktopfile via desktop-file-validate
 Requires:       desktop-file-utils
+# - File classification: libmagic description of files via file -b
+Requires:       file
+# - FilesCheck: decompression of .gz files via gzip -dc
+Requires:       gzip
+# - TagsCheck: spelling-error via the en_US hunspell dictionary
+Recommends:     myspell-en_US
 # - SpecCheck: specfile-error/specfile-warning via rpm --specfile
 #   (rpm re-execs /usr/bin/rpmspec from rpm-build since rpm 4.9)
 Requires:       rpm-build
+# - FilesCheck: decompression of .xz files via xz -dc
+Requires:       xz
+# - FilesCheck: decompression of .zst files via zstd -dc
+Requires:       zstd
 
 %description
 rpmcrab is a Rust rewrite of rpmlint, the RPM package linter.
@@ -83,6 +97,9 @@ Fish command line completion support for rpmcrab.
 %package rpmlint-compat
 Summary:        rpmlint compatibility symlinks for rpmcrab
 Requires:       %{name} = %{version}-%{release}
+# PolkitCheck reads the standard profile from the installed
+# polkit-default-privs data, mirrored from rpmlint-mini
+Requires:       polkit-default-privs
 Supplements:    (%{name} unless rpmlint)
 Conflicts:      rpmlint
 Conflicts:      rpmlint-mini
