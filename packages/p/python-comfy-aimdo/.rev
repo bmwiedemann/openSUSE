@@ -144,4 +144,12 @@ unchanged and is still needed. Factory's comfyui floor (&gt;= 0.4.15) satisfied.
     <comment>Update to 0.5.6: native-allocator NULL guard only, shipped Python fallback unchanged. Local build green, rpmlint clean.</comment>
     <requestid>1383210</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d9a48ad98ee97483445294883594043c</srcmd5>
+    <version>0.6.0</version>
+    <time>1792686268</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.6.0</comment>
+    <requestid>1387097</requestid>
+  </revision>
 </revisionlist>

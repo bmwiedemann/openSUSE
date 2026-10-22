@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 22 11:42:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.0:
+  * VBAR writeback on eviction: the owner now saves whole tensors
+    back to RAM before the pages are unmapped, and keeps them mapped
+    when writeback fails; ModelVBAR gains an optional
+    pageout_callback plus close()
+  * VBAR failures now surface: unpin, set_watermark and free_memory
+    raise on error instead of silently passing (all native paths,
+    which this build does not compile)
+  * New whole-tensor descriptor writes through the transfer queue
+    (host_buffer.write_device_to_file/write_host_to_file wrappers
+    around the native calls)
+  * MCDM adapters now resolve through a DXCore LUID lookup
+    (Windows-only native helper)
+  * torch floor stays >= 2.8.0: the sdist still declares no install
+    dependencies and requires-python is unchanged (>= 3.9)
+- Keep comfy-aimdo-detect-vendor-without-local-version.patch
+  (control.py unchanged, still applies cleanly)
+
+-------------------------------------------------------------------
 Thu Oct  8 06:23:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.6:
