@@ -6776,4 +6776,14 @@ v2: with CVEs in .changes</comment>
 v2: Remove ccache configuration and stat printing</comment>
     <requestid>1385470</requestid>
   </revision>
+  <revision rev="556" vrev="1">
+    <srcmd5>3ea6bbda99fc1fedae30053c2783d356</srcmd5>
+    <version>156.0.8078.47</version>
+    <time>1792677022</time>
+    <user>anag_factory</user>
+    <comment>Chromium 156.0.8078.47 boo#1286350
+
+v3: with gn dependency</comment>
+    <requestid>1386953</requestid>
+  </revision>
 </revisionlist>

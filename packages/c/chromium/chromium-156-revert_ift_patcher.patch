@@ -1,0 +1,481 @@
+diff -urN chromium-156.0.8063.3/third_party/blink/renderer/platform/fonts/web_font_decoder.cc chromium-155.0.8059.5/third_party/blink/renderer/platform/fonts/web_font_decoder.cc
+--- chromium-156.0.8063.3/third_party/blink/renderer/platform/fonts/web_font_decoder.cc	2026-09-17 22:14:02.000000000 +0200
++++ chromium-155.0.8059.5/third_party/blink/renderer/platform/fonts/web_font_decoder.cc	2026-09-16 02:15:15.000000000 +0200
+@@ -33,27 +33,19 @@
+ #include <hb.h>
+ #include <stdarg.h>
+ 
+-#include <string>
+-
+ #include "base/compiler_specific.h"
+-#include "base/containers/span.h"
+-#include "base/numerics/byte_conversions.h"
+ #include "base/numerics/safe_conversions.h"
+ #include "build/build_config.h"
+ #include "third_party/blink/public/platform/platform.h"
+ #include "third_party/blink/renderer/platform/fonts/font_cache.h"
+-#include "third_party/blink/renderer/platform/fonts/ift/ift_patcher.h"
+ #include "third_party/blink/renderer/platform/fonts/web_font_typeface_factory.h"
+ #include "third_party/blink/renderer/platform/instrumentation/tracing/trace_event.h"
+-#include "third_party/blink/renderer/platform/runtime_enabled_features.h"
+ #include "third_party/blink/renderer/platform/wtf/shared_buffer.h"
+ #include "third_party/blink/renderer/platform/wtf/text/format.h"
+ #include "third_party/blink/renderer/platform/wtf/text/string_builder.h"
+ #include "third_party/blink/renderer/platform/wtf/text/wtf_string.h"
+ #include "third_party/ots/src/include/ots-memory-stream.h"
+ #include "third_party/skia/include/core/SkStream.h"
+-#include "third_party/woff2/include/woff2/decode.h"
+-#include "third_party/woff2/include/woff2/output.h"
+ 
+ namespace blink {
+ 
+@@ -65,11 +57,6 @@
+ const size_t kMaxDecompressedSizeMb = 128;
+ #endif
+ 
+-constexpr size_t kMaxDecompressedSize = kMaxDecompressedSizeMb * 1024 * 1024;
+-
+-constexpr uint32_t kWoffTag = OTS_TAG('w', 'O', 'F', 'F');
+-constexpr uint32_t kWoff2Tag = OTS_TAG('w', 'O', 'F', '2');
+-
+ class BlinkOTSContext final : public ots::OTSContext {
+   DISALLOW_NEW();
+ 
+@@ -189,94 +176,17 @@
+   }
+ }
+ 
+-struct FontDecodeResult {
+-  std::unique_ptr<IftPatcher> ift_patcher;
+-};
+-
+-// Decompresses and sanitizes `font_data` into an output stream using
+-// `ots_context`, and initializes `ift_patcher` if `font_data` is an IFT-enabled
+-// font. Returns whether decoding succeeded. On failure, the error string can be
+-// retrieved from `ots_context`.
+-bool DecodeFontWithIft(BlinkOTSContext& ots_context,
+-                       base::span<const uint8_t> font_data,
+-                       ots::ExpandingMemoryStream* output,
+-                       std::unique_ptr<IftPatcher>& ift_patcher) {
+-  TRACE_EVENT("blink", "DecodeFont");
+-
+-  uint32_t magic = 0;
+-  if (font_data.size() >= 4) {
+-    magic = base::U32FromBigEndian(font_data.first<4u>());
+-  }
+-
+-  switch (magic) {
+-    case kWoff2Tag: {
+-      size_t decompressed_size =
+-          woff2::ComputeWOFF2FinalSize(font_data.data(), font_data.size());
+-      if (decompressed_size == 0) {
+-        ots_context.Message(0, "Size of decompressed WOFF 2.0 is set to 0");
+-        return false;
+-      }
+-      if (decompressed_size < font_data.size()) {
+-        ots_context.Message(
+-            0, "Size of decompressed WOFF 2.0 is less than compressed size");
+-        return false;
+-      }
+-      if (decompressed_size > kMaxDecompressedSize) {
+-        ots_context.Message(0,
+-                            "Size of decompressed WOFF 2.0 font exceeds %gMB",
+-                            kMaxDecompressedSize / (1024.0 * 1024.0));
+-        return false;
+-      }
+-
+-      std::string buf(decompressed_size, 0);
+-      woff2::WOFF2StringOut out(&buf);
+-      if (!woff2::ConvertWOFF2ToTTF(font_data.data(), font_data.size(), &out)) {
+-        ots_context.Message(0, "Failed to convert WOFF 2.0 font to SFNT");
+-        return false;
+-      }
+-
+-      base::span<const uint8_t> decompressed_span =
+-          base::as_byte_span(buf).first(out.Size());
+-      if (!ots_context.Process(output, decompressed_span.data(),
+-                               decompressed_span.size())) {
+-        return false;
+-      }
+-      ift_patcher = IftPatcher::Create(decompressed_span);
+-      break;
+-    }
+-    case kWoffTag: {
+-      // The IFT (Incremental Font Transfer) specification recommends using
+-      // WOFF2. OTS handles WOFF decompression directly, so we do not extract
+-      // unsanitized font data or create an IftPatcher for the WOFF format.
+-      if (!ots_context.Process(output, font_data.data(), font_data.size())) {
+-        return false;
+-      }
+-      break;
+-    }
+-    default: {
+-      if (!ots_context.Process(output, font_data.data(), font_data.size())) {
+-        return false;
+-      }
+-      ift_patcher = IftPatcher::Create(font_data);
+-      break;
+-    }
+-  }
+-
+-  return true;
+-}
+-
+ }  // namespace
+ 
+-DecodedWebFont::DecodedWebFont() = default;
+-DecodedWebFont::DecodedWebFont(DecodedWebFont&&) noexcept = default;
+-DecodedWebFont& DecodedWebFont::operator=(DecodedWebFont&&) noexcept = default;
+-DecodedWebFont::~DecodedWebFont() = default;
+-
+-base::expected<DecodedWebFont, String> DecodeWebFont(SegmentedBuffer* buffer) {
++base::expected<DecodedWebFont, String> DecodedWebFont::Create(
++    SegmentedBuffer* buffer) {
+   if (!buffer) {
+     return base::unexpected("Empty Buffer");
+   }
+ 
++  // This is the largest web font size which we'll try to transcode.
++  static const size_t kMaxDecompressedSize =
++      kMaxDecompressedSizeMb * 1024 * 1024;
+   if (buffer->size() > kMaxDecompressedSize) {
+     return base::unexpected(
+         Format("Web font size more than {}MB", kMaxDecompressedSizeMb));
+@@ -291,11 +201,7 @@
+   SegmentedBuffer::DeprecatedFlatData flattened_buffer(buffer);
+ 
+   bool ok;
+-  std::unique_ptr<IftPatcher> ift_patcher;
+-  if (RuntimeEnabledFeatures::IncrementalFontTransferEnabled()) {
+-    ok = DecodeFontWithIft(ots_context, base::as_byte_span(flattened_buffer),
+-                           output.get(), ift_patcher);
+-  } else {
++  {
+     TRACE_EVENT("blink", "DecodeFont");
+     ok = ots_context.Process(
+         output.get(), reinterpret_cast<const uint8_t*>(flattened_buffer.data()),
+@@ -307,9 +213,9 @@
+   }
+ 
+   const void* decoded_data = output->get();
+-  DecodedWebFont result;
+-  result.ift_patcher = std::move(ift_patcher);
+-  result.decoded_size = base::checked_cast<size_t>(output->Tell());
++  DecodedWebFont result{
++      .decoded_size = base::checked_cast<size_t>(output->Tell()),
++  };
+   sk_sp<SkData> sk_data = SkData::MakeWithProc(
+       decoded_data, result.decoded_size,
+       [](const void*, void* output) {
+diff -urN chromium-156.0.8063.3/third_party/blink/renderer/platform/fonts/web_font_decoder.h chromium-155.0.8059.5/third_party/blink/renderer/platform/fonts/web_font_decoder.h
+--- chromium-156.0.8063.3/third_party/blink/renderer/platform/fonts/web_font_decoder.h	2026-09-17 22:14:02.000000000 +0200
++++ chromium-155.0.8059.5/third_party/blink/renderer/platform/fonts/web_font_decoder.h	2026-09-16 02:15:15.000000000 +0200
+@@ -31,8 +31,6 @@
+ #ifndef THIRD_PARTY_BLINK_RENDERER_PLATFORM_FONTS_WEB_FONT_DECODER_H_
+ #define THIRD_PARTY_BLINK_RENDERER_PLATFORM_FONTS_WEB_FONT_DECODER_H_
+ 
+-#include <memory>
+-
+ #include "base/types/expected.h"
+ #include "third_party/blink/renderer/platform/platform_export.h"
+ #include "third_party/blink/renderer/platform/wtf/text/wtf_string.h"
+@@ -42,7 +40,6 @@
+ 
+ namespace blink {
+ 
+-class IftPatcher;
+ class SegmentedBuffer;
+ 
+ // Represents a font that has been successfully decoded and sanitized.
+@@ -56,32 +53,18 @@
+   // The size of the font after decoding and sanitizing.
+   size_t decoded_size = 0;
+ 
+-  // Used to discover and apply patches to fonts. `nullptr` if the font is not
+-  // IFT-encoded or if Incremental Font Transfer is disabled.
+-  std::unique_ptr<IftPatcher> ift_patcher;
+-
+-  // Defined out of line so that `IftPatcher` only needs to be forward declared
+-  // here.
+-  DecodedWebFont();
+-  DecodedWebFont(DecodedWebFont&&) noexcept;
+-  DecodedWebFont& operator=(DecodedWebFont&&) noexcept;
+-  DecodedWebFont(const DecodedWebFont&) = delete;
+-  DecodedWebFont& operator=(const DecodedWebFont&) = delete;
+-  ~DecodedWebFont();
++  // Decodes, decompresses, and sanitizes the raw font data from the provided
++  // `buffer` (which typically contains WOFF, WOFF2, or TTF data).
++  //
++  // Returns:
++  // - On success: A `DecodedWebFont` containing the successfully created
++  //   font.
++  // - On failure: A `String` containing a descriptive error message (e.g., if
++  //   the buffer is empty, the decompressed size exceeds limits, or OTS
++  //   validation fails).
++  static base::expected<DecodedWebFont, String> Create(SegmentedBuffer*);
+ };
+ 
+-// Decodes, decompresses, and sanitizes the raw font data from the provided
+-// `buffer` (which typically contains WOFF, WOFF2, or TTF data).
+-//
+-// Returns:
+-// - On success: A `DecodedWebFont` containing the successfully created
+-//   font.
+-// - On failure: A `String` containing a descriptive error message (e.g., if
+-//   the buffer is empty, the decompressed size exceeds limits, or OTS
+-//   validation fails).
+-PLATFORM_EXPORT base::expected<DecodedWebFont, String> DecodeWebFont(
+-    SegmentedBuffer* buffer);
+-
+ }  // namespace blink
+ 
+ #endif  // THIRD_PARTY_BLINK_RENDERER_PLATFORM_FONTS_WEB_FONT_DECODER_H_
+diff -urN chromium-156.0.8063.3/third_party/blink/renderer/platform/fonts/web_font_decoder_test.cc chromium-155.0.8059.5/third_party/blink/renderer/platform/fonts/web_font_decoder_test.cc
+--- chromium-156.0.8063.3/third_party/blink/renderer/platform/fonts/web_font_decoder_test.cc	2026-09-17 22:14:02.000000000 +0200
++++ chromium-155.0.8059.5/third_party/blink/renderer/platform/fonts/web_font_decoder_test.cc	2026-09-16 02:15:15.000000000 +0200
+@@ -8,8 +8,6 @@
+ #include <utility>
+ 
+ #include "testing/gtest/include/gtest/gtest.h"
+-#include "third_party/blink/renderer/platform/fonts/ift/ift_patcher.h"
+-#include "third_party/blink/renderer/platform/testing/runtime_enabled_features_test_helpers.h"
+ #include "third_party/blink/renderer/platform/testing/unit_test_helpers.h"
+ #include "third_party/blink/renderer/platform/wtf/shared_buffer.h"
+ #include "third_party/blink/renderer/platform/wtf/text/wtf_string.h"
+@@ -18,26 +16,18 @@
+ 
+ namespace blink {
+ 
+-namespace {
+-
+-scoped_refptr<SharedBuffer> LoadFont(const String& path) {
+-  std::optional<Vector<char>> font_data =
+-      test::ReadFromFile(test::PlatformTestDataPath(path));
+-  CHECK(font_data.has_value());
+-  return SharedBuffer::Create(std::move(*font_data));
+-}
+-
+-}  // namespace
+-
+ // Regression test for a font that triggers a large number of OTS warnings
+ // during decoding. Without a bound on the accumulated error string, processing
+ // these warnings dominated decode time and made the OpenType math fuzzer time
+ // out. Verify that the reported error string stays within the budget.
+ TEST(WebFontDecoderTest, ErrorStringIsBoundedOnPathologicalFont) {
+-  scoped_refptr<SharedBuffer> font_buffer =
+-      LoadFont("open_type_math_support_fuzzer_timeout.ttf");
++  std::optional<Vector<char>> font_data = test::ReadFromFile(
++      test::PlatformTestDataPath("open_type_math_support_fuzzer_timeout.ttf"));
++  ASSERT_TRUE(font_data);
++
++  auto font_buffer = SharedBuffer::Create(std::move(*font_data));
+   base::expected<DecodedWebFont, String> decoded_result =
+-      DecodeWebFont(font_buffer.get());
++      DecodedWebFont::Create(font_buffer.get());
+ 
+   // Messages are accepted until the accumulated string reaches the ~4096 byte
+   // budget, so the result may overshoot by at most one final message. The
+@@ -49,71 +39,10 @@
+ }
+ 
+ TEST(WebFontDecoderTest, EmptyBufferIsError) {
+-  scoped_refptr<SharedBuffer> font_buffer = SharedBuffer::Create();
++  auto font_buffer = SharedBuffer::Create();
+   base::expected<DecodedWebFont, String> decoded_result =
+-      DecodeWebFont(font_buffer.get());
++      DecodedWebFont::Create(font_buffer.get());
+   ASSERT_FALSE(decoded_result.has_value());
+ }
+ 
+-TEST(WebFontDecoderTest, IftWoff2WithFeatureEnabledThenCreatesIftPatcher) {
+-  ScopedIncrementalFontTransferForTest scoped_ift(true);
+-  scoped_refptr<SharedBuffer> font_buffer = LoadFont("roboto-ift.woff2");
+-  base::expected<DecodedWebFont, String> decoded_result =
+-      DecodeWebFont(font_buffer.get());
+-
+-  ASSERT_TRUE(decoded_result.has_value());
+-  EXPECT_NE(decoded_result->sk_typeface, nullptr);
+-  EXPECT_NE(decoded_result->ift_patcher, nullptr);
+-  EXPECT_GT(decoded_result->decoded_size, 0u);
+-}
+-
+-TEST(WebFontDecoderTest, IftTtfWithFeatureEnabledThenCreatesIftPatcher) {
+-  ScopedIncrementalFontTransferForTest scoped_ift(true);
+-  scoped_refptr<SharedBuffer> font_buffer = LoadFont("roboto-ift.ttf");
+-  base::expected<DecodedWebFont, String> decoded_result =
+-      DecodeWebFont(font_buffer.get());
+-
+-  ASSERT_TRUE(decoded_result.has_value());
+-  EXPECT_NE(decoded_result->sk_typeface, nullptr);
+-  EXPECT_NE(decoded_result->ift_patcher, nullptr);
+-  EXPECT_GT(decoded_result->decoded_size, 0u);
+-}
+-
+-TEST(WebFontDecoderTest, IftFontWithFeatureDisabledThenIftPatcherIsNull) {
+-  ScopedIncrementalFontTransferForTest scoped_ift(false);
+-  scoped_refptr<SharedBuffer> font_buffer = LoadFont("roboto-ift.woff2");
+-  base::expected<DecodedWebFont, String> decoded_result =
+-      DecodeWebFont(font_buffer.get());
+-
+-  ASSERT_TRUE(decoded_result.has_value());
+-  EXPECT_NE(decoded_result->sk_typeface, nullptr);
+-  EXPECT_EQ(decoded_result->ift_patcher, nullptr);
+-  EXPECT_GT(decoded_result->decoded_size, 0u);
+-}
+-
+-TEST(WebFontDecoderTest, NonIftFontWithFeatureEnabledThenIftPatcherIsNull) {
+-  ScopedIncrementalFontTransferForTest scoped_ift(true);
+-  scoped_refptr<SharedBuffer> font_buffer =
+-      LoadFont("third_party/Roboto/roboto-regular.woff2");
+-  base::expected<DecodedWebFont, String> decoded_result =
+-      DecodeWebFont(font_buffer.get());
+-
+-  ASSERT_TRUE(decoded_result.has_value());
+-  EXPECT_NE(decoded_result->sk_typeface, nullptr);
+-  EXPECT_EQ(decoded_result->ift_patcher, nullptr);
+-  EXPECT_GT(decoded_result->decoded_size, 0u);
+-}
+-
+-TEST(WebFontDecoderTest, WoffFontWithFeatureEnabledThenIftPatcherIsNull) {
+-  ScopedIncrementalFontTransferForTest scoped_ift(true);
+-  scoped_refptr<SharedBuffer> font_buffer = LoadFont("Ahem.woff");
+-  base::expected<DecodedWebFont, String> decoded_result =
+-      DecodeWebFont(font_buffer.get());
+-
+-  ASSERT_TRUE(decoded_result.has_value());
+-  EXPECT_NE(decoded_result->sk_typeface, nullptr);
+-  EXPECT_EQ(decoded_result->ift_patcher, nullptr);
+-  EXPECT_GT(decoded_result->decoded_size, 0u);
+-}
+-
+ }  // namespace blink
+--- chromium-156.0.8063.3/third_party/blink/renderer/platform/fonts/font_custom_platform_data.cc	2026-09-17 22:14:02.000000000 +0200
++++ chromium-155.0.8059.5/third_party/blink/renderer/platform/fonts/font_custom_platform_data.cc	2026-09-16 02:15:15.000000000 +0200
+@@ -328,7 +328,8 @@
+     SharedBuffer* buffer,
+     String& ots_parse_message) {
+   DCHECK(buffer);
+-  base::expected<DecodedWebFont, String> decode_result = DecodeWebFont(buffer);
++  base::expected<DecodedWebFont, String> decode_result =
++      DecodedWebFont::Create(buffer);
+   if (!decode_result.has_value()) {
+     ots_parse_message = std::move(decode_result).error();
+     return nullptr;
+diff -urN chromium-156.0.8078.4.orig/third_party/blink/renderer/platform/BUILD.gn chromium-156.0.8078.4/third_party/blink/renderer/platform/BUILD.gn
+--- chromium-156.0.8078.4.orig/third_party/blink/renderer/platform/BUILD.gn	2026-09-30 01:57:21.000000000 +0200
++++ chromium-156.0.8078.4/third_party/blink/renderer/platform/BUILD.gn	2026-10-03 15:56:10.679294692 +0200
+@@ -713,8 +725,6 @@
+     "fonts/generic_font_family_settings.cc",
+     "fonts/generic_font_family_settings.h",
+     "fonts/glyph_metrics_map.h",
+-    "fonts/ift/ift_patcher.cc",
+-    "fonts/ift/ift_patcher.h",
+     "fonts/opentype/color_table_lookup.cc",
+     "fonts/opentype/color_table_lookup.h",
+     "fonts/opentype/font_format_check.cc",
+@@ -1845,7 +1845,6 @@
+   deps = [
+     ":font_format_check",
+     ":rustfft_ffi",
+-    "fonts:ift_patcher_bindings",
+     "//base:base_static",
+     "//base/allocator:buildflags",
+     "//build:chromecast_buildflags",
+@@ -2245,7 +2253,6 @@
+     "fonts/font_test.cc",
+     "fonts/font_test_utilities.cc",
+     "fonts/generic_font_family_settings_test.cc",
+-    "fonts/ift/ift_patcher_test.cc",
+     "fonts/opentype/color_table_lookup_test.cc",
+     "fonts/opentype/font_format_check_test.cc",
+     "fonts/opentype/font_settings_test.cc",
+--- chromium-156.0.8078.4/third_party/blink/renderer/core/loader/resource/font_resource.h	2026-09-30 01:57:21.000000000 +0200
++++ chromium-155.0.8059.5/third_party/blink/renderer/core/loader/resource/font_resource.h	2026-09-16 02:15:15.000000000 +0200
+@@ -47,7 +47,6 @@
+ class ResourceFetcher;
+ class FontCustomPlatformData;
+ class FontResourceClient;
+-class IftPatcher;
+ 
+ // An observer that will be notified when original data is cleared
+ // from the resource. Inspector may collect this data and store it for
+@@ -78,7 +77,6 @@
+   String OtsParsingMessage() const { return ots_parsing_message_; }
+ 
+   const FontCustomPlatformData* GetCustomFontData();
+-  std::unique_ptr<IftPatcher> TakeIftPatcher();
+ 
+   // Returns true if the loading priority of the remote font resource can be
+   // lowered. The loading priority of the font can be lowered only if the
+@@ -127,7 +125,6 @@
+   };
+ 
+   Member<FontCustomPlatformData> font_data_;
+-  std::unique_ptr<IftPatcher> ift_patcher_;
+   String ots_parsing_message_;
+   LoadLimitState load_limit_state_;
+   bool cors_failed_;
+--- chromium-156.0.8078.4/third_party/blink/renderer/core/loader/resource/font_resource.cc	2026-09-30 01:57:21.000000000 +0200
++++ chromium-155.0.8059.5/third_party/blink/renderer/core/loader/resource/font_resource.cc	2026-09-16 02:15:15.000000000 +0200
+@@ -44,7 +44,6 @@
+ #include "third_party/blink/public/mojom/loader/request_context_frame_type.mojom-blink.h"
+ #include "third_party/blink/renderer/platform/fonts/font_custom_platform_data.h"
+ #include "third_party/blink/renderer/platform/fonts/font_platform_data.h"
+-#include "third_party/blink/renderer/platform/fonts/ift/ift_patcher.h"
+ #include "third_party/blink/renderer/platform/fonts/web_font_decoder.h"
+ #include "third_party/blink/renderer/platform/heap/cross_thread_handle.h"
+ #include "third_party/blink/renderer/platform/loader/fetch/fetch_parameters.h"
+@@ -85,7 +84,8 @@
+     return base::unexpected("");
+   }
+   auto decode_start_time = base::TimeTicks::Now();
+-  base::expected<DecodedWebFont, String> result = DecodeWebFont(buffer);
++  base::expected<DecodedWebFont, String> result =
++      DecodedWebFont::Create(buffer);
+   base::UmaHistogramMicrosecondsTimes(
+       "Blink.Fonts.BackgroundDecodeTime",
+       base::TimeTicks::Now() - decode_start_time);
+@@ -316,22 +316,13 @@
+         font_data_ = FontCustomPlatformData::Create(
+             std::move(background_decode_result_->sk_typeface),
+             background_decode_result_->decoded_size);
+-        ift_patcher_ = std::move(background_decode_result_->ift_patcher);
+       } else {
+         auto decode_start_time = base::TimeTicks::Now();
+-        base::expected<DecodedWebFont, String> decode_result =
+-            DecodeWebFont(Data());
++        font_data_ =
++            FontCustomPlatformData::Create(Data(), ots_parsing_message_);
+         base::UmaHistogramMicrosecondsTimes(
+             "Blink.Fonts.DecodeTime",
+             base::TimeTicks::Now() - decode_start_time);
+-        if (decode_result.has_value()) {
+-          font_data_ = FontCustomPlatformData::Create(
+-              std::move(decode_result->sk_typeface),
+-              decode_result->decoded_size);
+-          ift_patcher_ = std::move(decode_result->ift_patcher);
+-        } else {
+-          ots_parsing_message_ = std::move(decode_result).error();
+-        }
+       }
+     } else {
+       ots_parsing_message_ = background_decode_result_.error();
+@@ -340,7 +331,6 @@
+ 
+   if (!font_data_) {
+     SetStatus(ResourceStatus::kDecodeError);
+-    ift_patcher_.reset();
+   } else {
+     // Call observers once and remove them.
+     HeapHashSet<WeakMember<FontResourceClearDataObserver>> observers;
+@@ -353,10 +343,6 @@
+   return font_data_;
+ }
+ 
+-std::unique_ptr<IftPatcher> FontResource::TakeIftPatcher() {
+-  return std::move(ift_patcher_);
+-}
+-
+ void FontResource::WillReloadAfterDiskCacheMiss() {
+   DCHECK(IsLoading());
+   DCHECK(Loader()->IsCacheAwareLoadingActivated());

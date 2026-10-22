@@ -180,15 +180,6 @@ Index: chromium-144.0.7559.59/sandbox/linux/seccomp-bpf-helpers/baseline_policy.
           SyscallSets::IsSocketCall(sysno) ||
  #endif
  #if defined(__arm__)
-@@ -259,7 +260,7 @@ ResultExpr EvaluateSyscallImpl(int fs_de
- 
-   // TODO(crbug.com/40528912): should i386 really be in this list?
- #if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
--    defined(__aarch64__)
-+    defined(__aarch64__) || defined(__powerpc64__)
-   if (sysno == __NR_mmap)
-     return RestrictMmapFlags();
- #endif
 @@ -342,7 +343,8 @@ ResultExpr EvaluateSyscallImpl(int fs_de
    }
  

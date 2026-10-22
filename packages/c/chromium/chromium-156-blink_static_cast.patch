@@ -1,0 +1,11 @@
+--- chromium-156.0.8078.4/third_party/blink/renderer/platform/fonts/shaping/shape_result_run.h	2026/10/03 22:19:39	1.1
++++ chromium-156.0.8078.4/third_party/blink/renderer/platform/fonts/shaping/shape_result_run.h	2026/10/03 22:20:16
+@@ -548,7 +548,7 @@
+       return TryMakeCompactFrom(data_.size(), [this](unsigned i) {
+         const HarfBuzzRunGlyphData& glyph = data_[i];
+         return CompactableGlyph{
+-            .glyph = glyph.glyph,
++            .glyph = static_cast<uint16_t>(glyph.glyph),
+             .advance = glyph.advance,
+             .character_index = glyph.character_index,
+             .has_offset = false,

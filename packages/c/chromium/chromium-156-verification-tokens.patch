@@ -1,0 +1,428 @@
+--- chromium-156.0.8072.0/chrome/browser/devtools/protocol/devtools_protocol_browsertest.cc	2026/09/30 22:53:03	1.1
++++ chromium-156.0.8072.0/chrome/browser/devtools/protocol/devtools_protocol_browsertest.cc	2026/09/30 22:54:02
+@@ -2432,51 +2432,6 @@
+     EXPECT_TRUE(first_token->FindDouble("creationTime").has_value());
+   }
+ 
+-  // 3. Verify getPrivateVerificationTokensIssuerConfigs.
+-  {
+-    SendCommandSync("Storage.getPrivateVerificationTokensIssuerConfigs");
+-    ASSERT_TRUE(result());
+-    EXPECT_THAT(result()->FindList("configs"),
+-                testing::Pointee(testing::IsEmpty()));
+-
+-    base::DictValue custom_issuer;
+-    custom_issuer.Set("issuerRequestUrl", "https://issuer.example.com/issue");
+-    custom_issuer.Set("version", 1);
+-    custom_issuer.Set("publicKey",
+-                      base::Base64Encode(std::vector<uint8_t>{1, 2, 3, 4}));
+-    custom_issuer.Set("publicKeyProof",
+-                      base::Base64Encode(std::vector<uint8_t>{5, 6, 7}));
+-    custom_issuer.Set("batchSize", 7);
+-    custom_issuer.Set("expiration", "2147483647");
+-    base::ListValue redeemers;
+-    redeemers.Append("https://redeemer1.example.com");
+-    redeemers.Append("https://redeemer2.example.com");
+-    custom_issuer.Set("redeemers", std::move(redeemers));
+-    custom_issuer.Set("deploymentId", "test-deployment-id");
+-
+-    pvt_service_->SetIssuerConfig(
+-        private_verification_tokens::PrivateVerificationTokensIssuerConfig::
+-            CreateWithCustomIssuer(/*base_config=*/nullptr,
+-                                   std::move(custom_issuer)));
+-
+-    SendCommandSync("Storage.getPrivateVerificationTokensIssuerConfigs");
+-    ASSERT_TRUE(result());
+-    const base::ListValue* configs_list = result()->FindList("configs");
+-    ASSERT_THAT(configs_list, testing::Pointee(testing::SizeIs(1)));
+-
+-    const base::DictValue* first_config = configs_list->front().GetIfDict();
+-    ASSERT_TRUE(first_config);
+-    EXPECT_THAT(first_config->FindString("issuerOrigin"),
+-                testing::Pointee(testing::Eq(issuer_origin.Serialize())));
+-    const base::ListValue* redeemer_origins =
+-        first_config->FindList("redeemerOrigins");
+-    ASSERT_TRUE(redeemer_origins);
+-    EXPECT_EQ(*redeemer_origins, base::ListValue()
+-                                     .Append("https://redeemer1.example.com")
+-                                     .Append("https://redeemer2.example.com"));
+-  }
+-
+-  // 4. Delete one token by ID.
+   {
+     base::DictValue params;
+     params.Set("tokenId", first_token_id);
+@@ -2491,7 +2446,7 @@
+                 testing::Pointee(testing::SizeIs(2)));
+   }
+ 
+-  // 5. Clear all tokens for the issuer.
++  // 4. Clear all tokens for the issuer.
+   {
+     base::DictValue params;
+     params.Set("issuerOrigin", issuer_origin.Serialize());
+--- chromium-156.0.8078.4/chrome/browser/devtools/inspector_protocol_config.json	2026-09-30 01:57:21.000000000 +0200
++++ chromium-156.0.8078.4/chrome/browser/devtools/inspector_protocol_config.json	2026-10-05 16:40:55.428167014 +0200
+@@ -49,9 +49,8 @@
+             },
+             {
+                 "domain": "Storage",
+-                "include": ["runBounceTrackingMitigations", "getPrivateVerificationTokens", "getPrivateVerificationTokensIssuerConfigs", "clearPrivateVerificationTokens", "deletePrivateVerificationToken", "setPrivateVerificationTokensTracking"],
+-                "include_events": ["privateVerificationTokensUpdated"],
+-                "async": ["runBounceTrackingMitigations", "getPrivateVerificationTokens", "clearPrivateVerificationTokens", "deletePrivateVerificationToken"]
++                "include": ["runBounceTrackingMitigations"],
++                "async": ["runBounceTrackingMitigations"]
+             },
+             {
+                 "domain": "SystemInfo",
+--- chromium-156.0.8072.0/components/private_verification_tokens/BUILD.gn	2026/09/29 21:51:11	1.1
++++ chromium-156.0.8072.0/components/private_verification_tokens/BUILD.gn	2026/09/29 21:52:42
+@@ -22,7 +22,6 @@
+   if (enable_rust) {
+     deps += [
+       "//components/private_verification_tokens/common:privacy_pass_athm_batch_request_unittest",
+-      "//components/private_verification_tokens/common/athm_ffi:privacy_pass_unittests",
+     ]
+   }
+ }
+--- chromium-156.0.8072.0/content/browser/devtools/protocol_config.json	2026/09/30 22:55:00	1.1
++++ chromium-156.0.8072.0/content/browser/devtools/protocol_config.json	2026/09/30 22:55:21
+@@ -188,7 +188,7 @@
+             },
+             {
+                 "domain": "Storage",
+-                "exclude": ["runBounceTrackingMitigations", "getPrivateVerificationTokens", "getPrivateVerificationTokensIssuerConfigs", "clearPrivateVerificationTokens", "deletePrivateVerificationToken", "setPrivateVerificationTokensTracking"],
++                "exclude": ["runBounceTrackingMitigations", "getPrivateVerificationTokens", "clearPrivateVerificationTokens", "deletePrivateVerificationToken", "setPrivateVerificationTokensTracking"],
+                 "async": ["getUsageAndQuota", "clearDataForOrigin", "clearDataForStorageKey", "getCookies", "setCookies", "clearCookies", "overrideQuotaForOrigin", "getTrustTokens", "clearTrustTokens", "getStorageBucketList"]
+             },
+             {
+--- chromium-156.0.8072.0/third_party/blink/public/devtools_protocol/domains/Storage.pdl	2026/09/30 22:55:47	1.1
++++ chromium-156.0.8072.0/third_party/blink/public/devtools_protocol/domains/Storage.pdl	2026/09/30 22:56:50
+@@ -58,14 +58,6 @@
+       # Base64-encoded serialized token.
+       string token
+ 
+-  # Configuration for a Private Verification Tokens issuer.
+-  experimental type PrivateVerificationTokensIssuerConfig extends object
+-    properties
+-      # Origin of the token issuer.
+-      string issuerOrigin
+-      # Origins authorized to redeem tokens from this issuer.
+-      array of string redeemerOrigins
+-
+ 
+ 
+   type StorageBucketsDurability extends string
+@@ -242,12 +234,6 @@
+     returns
+       array of PrivateVerificationToken tokens
+ 
+-  # Returns the configured Private Verification Tokens issuers and their redeemer
+-  # origins.
+-  experimental command getPrivateVerificationTokensIssuerConfigs
+-    returns
+-      array of PrivateVerificationTokensIssuerConfig configs
+-
+   # Removes all Private Verification Tokens issued by the provided issuerOrigin.
+   experimental command clearPrivateVerificationTokens
+     parameters
+--- chromium-156.0.8072.0/chrome/browser/devtools/protocol/storage_handler.h	2026-09-24 05:05:03.000000000 +0200
++++ chromium-156.0.8063.3/chrome/browser/devtools/protocol/storage_handler.h	2026-09-17 22:14:02.000000000 +0200
+@@ -5,22 +5,15 @@
+ #ifndef CHROME_BROWSER_DEVTOOLS_PROTOCOL_STORAGE_HANDLER_H_
+ #define CHROME_BROWSER_DEVTOOLS_PROTOCOL_STORAGE_HANDLER_H_
+ 
+-#include <memory>
+-#include <string>
+-#include <vector>
+-
+ #include "base/memory/weak_ptr.h"
+-#include "base/scoped_observation.h"
+ #include "chrome/browser/devtools/protocol/protocol.h"
+ #include "chrome/browser/devtools/protocol/storage.h"
+-#include "chrome/browser/private_verification_tokens/private_verification_tokens_service.h"
+ 
+ namespace content {
+ class WebContents;
+ }  // namespace content
+ 
+-class StorageHandler : public protocol::Storage::Backend,
+-                       public PrivateVerificationTokensService::Observer {
++class StorageHandler : public protocol::Storage::Backend {
+  public:
+   StorageHandler(content::WebContents* web_contents,
+                  protocol::UberDispatcher* dispatcher);
+@@ -31,41 +24,19 @@
+   ~StorageHandler() override;
+ 
+  private:
+-  protocol::Response Disable() override;
+-
+   void RunBounceTrackingMitigations(
+       std::unique_ptr<RunBounceTrackingMitigationsCallback> callback) override;
+ 
+-  void GetPrivateVerificationTokens(
+-      std::unique_ptr<GetPrivateVerificationTokensCallback> callback) override;
+-  protocol::Response GetPrivateVerificationTokensIssuerConfigs(
+-      std::unique_ptr<protocol::Array<
+-          protocol::Storage::PrivateVerificationTokensIssuerConfig>>*
+-          out_configs) override;
+-  void ClearPrivateVerificationTokens(
+-      const std::string& in_issuerOrigin,
+-      std::unique_ptr<ClearPrivateVerificationTokensCallback> callback)
+-      override;
+-  void DeletePrivateVerificationToken(
+-      const std::string& in_tokenId,
+-      std::unique_ptr<DeletePrivateVerificationTokenCallback> callback)
+-      override;
+-  protocol::Response SetPrivateVerificationTokensTracking(bool enable) override;
+-
+-  // PrivateVerificationTokensService::Observer:
+-  void OnTokensStored() override;
+-  void OnTokensDeleted() override;
+-  void OnShutdown() override;
++
++
++
++
+ 
+   static void GotDeletedSites(
+       std::unique_ptr<RunBounceTrackingMitigationsCallback> callback,
+       const std::vector<std::string>& sites);
+ 
+   base::WeakPtr<content::WebContents> web_contents_;
+-  std::unique_ptr<protocol::Storage::Frontend> frontend_;
+-  base::ScopedObservation<PrivateVerificationTokensService,
+-                          PrivateVerificationTokensService::Observer>
+-      pvt_observation_{this};
+ };
+ 
+ #endif  // CHROME_BROWSER_DEVTOOLS_PROTOCOL_STORAGE_HANDLER_H_
+--- chromium-156.0.8078.4/chrome/browser/devtools/protocol/storage_handler.cc.orig	2026-10-07 01:01:25.947108466 +0200
++++ chromium-156.0.8078.4/chrome/browser/devtools/protocol/storage_handler.cc	2026-10-07 01:05:02.208186004 +0200
+@@ -7,56 +7,26 @@
+ #include <memory>
+ #include <string>
+ #include <utility>
+-#include <vector>
+ 
+-#include "base/base64.h"
+ #include "base/check.h"
+-#include "base/strings/string_number_conversions.h"
+ #include "chrome/browser/browser_process.h"
+ #include "chrome/browser/devtools/protocol/protocol.h"
+ #include "chrome/browser/devtools/protocol/storage.h"
+-#include "chrome/browser/private_verification_tokens/private_verification_tokens_service.h"
+-#include "chrome/browser/private_verification_tokens/private_verification_tokens_service_factory.h"
+-#include "chrome/browser/profiles/profile.h"
++#include "chrome/browser/first_party_sets/first_party_sets_policy_service.h"
++#include "chrome/browser/first_party_sets/first_party_sets_policy_service_factory.h"
+ #include "chrome/browser/profiles/profile_manager.h"
+-#include "components/private_verification_tokens/common/private_verification_tokens_database.h"
+ #include "content/public/browser/btm_service.h"
+ #include "content/public/browser/web_contents.h"
+-#include "url/gurl.h"
+-#include "url/origin.h"
+-
+-namespace {
+-
+-PrivateVerificationTokensService* GetPrivateVerificationTokensService(
+-    content::WebContents* web_contents) {
+-  if (!web_contents) {
+-    return nullptr;
+-  }
+-  Profile* profile =
+-      Profile::FromBrowserContext(web_contents->GetBrowserContext());
+-  if (!profile) {
+-    return nullptr;
+-  }
+-  return PrivateVerificationTokensServiceFactory::GetForProfile(profile);
+-}
+-
+-}  // namespace
++#include "net/first_party_sets/first_party_set_entry.h"
+ 
+ StorageHandler::StorageHandler(content::WebContents* web_contents,
+                                protocol::UberDispatcher* dispatcher)
+     : web_contents_(web_contents->GetWeakPtr()) {
+-  frontend_ =
+-      std::make_unique<protocol::Storage::Frontend>(dispatcher->channel());
+   protocol::Storage::Dispatcher::wire(dispatcher, this);
+ }
+ 
+ StorageHandler::~StorageHandler() = default;
+ 
+-protocol::Response StorageHandler::Disable() {
+-  pvt_observation_.Reset();
+-  return protocol::Response::FallThrough();
+-}
+-
+ // TODO: crbug.com/380896828 - move CDP support for BTM to //content.
+ void StorageHandler::RunBounceTrackingMitigations(
+     std::unique_ptr<RunBounceTrackingMitigationsCallback> callback) {
+@@ -82,152 +52,3 @@
+       std::make_unique<protocol::Array<protocol::String>>(sites);
+   callback->sendSuccess(std::move(deleted_sites));
+ }
+-
+-void StorageHandler::GetPrivateVerificationTokens(
+-    std::unique_ptr<GetPrivateVerificationTokensCallback> callback) {
+-  PrivateVerificationTokensService* pvt_service =
+-      GetPrivateVerificationTokensService(web_contents_.get());
+-  if (!pvt_service) {
+-    callback->sendFailure(protocol::Response::ServerError(
+-        "Private Verification Tokens service is not available"));
+-    return;
+-  }
+-
+-  pvt_service->GetAllTokens(base::BindOnce(
+-      [](std::unique_ptr<GetPrivateVerificationTokensCallback> callback,
+-         std::vector<private_verification_tokens::TokenWithId> tokens) {
+-        auto result = std::make_unique<
+-            protocol::Array<protocol::Storage::PrivateVerificationToken>>();
+-        for (const auto& item : tokens) {
+-          result->push_back(
+-              protocol::Storage::PrivateVerificationToken::Create()
+-                  .SetId(base::NumberToString(item.id))
+-                  .SetIssuerOrigin(item.token.issuer().Serialize())
+-                  .SetKeyId(static_cast<int>(item.token.key_id()))
+-                  .SetExpiration(
+-                      item.token.expiration().InSecondsFSinceUnixEpoch())
+-                  .SetCreationTime(
+-                      item.token.creation_time().InSecondsFSinceUnixEpoch())
+-                  .SetVersion(static_cast<int>(item.token.version()))
+-                  .SetToken(base::Base64Encode(item.token.token()))
+-                  .Build());
+-        }
+-        callback->sendSuccess(std::move(result));
+-      },
+-      std::move(callback)));
+-}
+-
+-protocol::Response StorageHandler::GetPrivateVerificationTokensIssuerConfigs(
+-    std::unique_ptr<protocol::Array<
+-        protocol::Storage::PrivateVerificationTokensIssuerConfig>>*
+-        out_configs) {
+-  PrivateVerificationTokensService* pvt_service =
+-      GetPrivateVerificationTokensService(web_contents_.get());
+-  if (!pvt_service) {
+-    return protocol::Response::ServerError(
+-        "Private Verification Tokens service is not available");
+-  }
+-
+-  auto configs = std::make_unique<protocol::Array<
+-      protocol::Storage::PrivateVerificationTokensIssuerConfig>>();
+-  scoped_refptr<
+-      const private_verification_tokens::PrivateVerificationTokensIssuerConfig>
+-      issuer_config = pvt_service->issuer_config();
+-  if (issuer_config) {
+-    for (const auto& [issuer_origin, config] : issuer_config->config()) {
+-      auto redeemer_origins =
+-          std::make_unique<protocol::Array<protocol::String>>();
+-      for (const url::Origin& redeemer : config.redeemers) {
+-        redeemer_origins->push_back(redeemer.Serialize());
+-      }
+-      configs->push_back(
+-          protocol::Storage::PrivateVerificationTokensIssuerConfig::Create()
+-              .SetIssuerOrigin(issuer_origin.Serialize())
+-              .SetRedeemerOrigins(std::move(redeemer_origins))
+-              .Build());
+-    }
+-  }
+-
+-  *out_configs = std::move(configs);
+-  return protocol::Response::Success();
+-}
+-
+-void StorageHandler::ClearPrivateVerificationTokens(
+-    const std::string& in_issuerOrigin,
+-    std::unique_ptr<ClearPrivateVerificationTokensCallback> callback) {
+-  PrivateVerificationTokensService* pvt_service =
+-      GetPrivateVerificationTokensService(web_contents_.get());
+-  if (!pvt_service) {
+-    callback->sendFailure(protocol::Response::ServerError(
+-        "Private Verification Tokens service is not available"));
+-    return;
+-  }
+-
+-  url::Origin issuer_origin = url::Origin::Create(GURL(in_issuerOrigin));
+-  if (issuer_origin.opaque()) {
+-    callback->sendFailure(
+-        protocol::Response::InvalidParams("Invalid issuer origin"));
+-    return;
+-  }
+-
+-  pvt_service->DeleteTokens(
+-      base::Time::Min(), base::Time::Max(),
+-      base::BindOnce(&ClearPrivateVerificationTokensCallback::sendSuccess,
+-                     std::move(callback)),
+-      std::vector<url::Origin>{issuer_origin});
+-}
+-
+-void StorageHandler::DeletePrivateVerificationToken(
+-    const std::string& in_tokenId,
+-    std::unique_ptr<DeletePrivateVerificationTokenCallback> callback) {
+-  PrivateVerificationTokensService* pvt_service =
+-      GetPrivateVerificationTokensService(web_contents_.get());
+-  if (!pvt_service) {
+-    callback->sendFailure(protocol::Response::ServerError(
+-        "Private Verification Tokens service is not available"));
+-    return;
+-  }
+-
+-  int64_t token_id = 0;
+-  if (!base::StringToInt64(in_tokenId, &token_id)) {
+-    callback->sendFailure(
+-        protocol::Response::InvalidParams("Invalid token ID"));
+-    return;
+-  }
+-
+-  pvt_service->DeleteToken(
+-      token_id,
+-      base::BindOnce(&DeletePrivateVerificationTokenCallback::sendSuccess,
+-                     std::move(callback)));
+-}
+-
+-protocol::Response StorageHandler::SetPrivateVerificationTokensTracking(
+-    bool enable) {
+-  PrivateVerificationTokensService* pvt_service =
+-      GetPrivateVerificationTokensService(web_contents_.get());
+-  if (!pvt_service) {
+-    return protocol::Response::ServerError(
+-        "Private Verification Tokens service is not available");
+-  }
+-
+-  if (enable) {
+-    if (!pvt_observation_.IsObserving()) {
+-      pvt_observation_.Observe(pvt_service);
+-    }
+-  } else {
+-    pvt_observation_.Reset();
+-  }
+-  return protocol::Response::Success();
+-}
+-
+-void StorageHandler::OnTokensStored() {
+-  frontend_->PrivateVerificationTokensUpdated();
+-}
+-
+-void StorageHandler::OnTokensDeleted() {
+-  frontend_->PrivateVerificationTokensUpdated();
+-}
+-
+-void StorageHandler::OnShutdown() {
+-  pvt_observation_.Reset();
+-}
+--- chromium-156.0.8078.4.orig/chrome/browser/devtools/protocol/DEPS	2026-09-30 01:57:21.000000000 +0200
++++ chromium-156.0.8078.4/chrome/browser/devtools/protocol/DEPS	2026-10-05 16:41:51.445510531 +0200
+@@ -15,10 +15,4 @@
+   "devtools_iwa_browsertest\\.cc": [
+     "+components/web_package/signed_web_bundles"
+   ],
+-  "storage_handler\\.cc": [
+-    "+components/private_verification_tokens/common",
+-  ],
+-  "devtools_protocol_browsertest\\.cc": [
+-    "+components/private_verification_tokens/common",
+-  ],
+ }

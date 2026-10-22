@@ -74,8 +74,8 @@ Index: chromium-152.0.7977.8/gpu/command_buffer/service/raster_decoder.cc
 +++ chromium-152.0.7977.8/gpu/command_buffer/service/raster_decoder.cc
 @@ -2973,7 +2973,7 @@ void RasterDecoderImpl::DoRasterCHROMIUM
  
-   auto paint_buffer_opt =
-       GetSharedMemoryAsSpan(raster_shm_id, raster_shm_offset, raster_shm_size);
+   auto paint_buffer_opt = GetSharedMemoryAsSpan<volatile uint8_t>(
+       raster_shm_id, raster_shm_offset, raster_shm_size);
 -  if (paint_buffer_opt.value_or({}).empty()) {
 +  if (paint_buffer_opt.value_or(std::span<uint8_t>{}).empty()) {
      LOCAL_SET_GL_ERROR(GL_INVALID_VALUE, "glRasterCHROMIUM",

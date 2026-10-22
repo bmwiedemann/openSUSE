@@ -16,14 +16,14 @@ planning to drop USE_CBOR_RUST..)
 +  flags = [ "USE_CBOR_RUST=$enable_cpp_api_from_rust" ]
  }
  
- component("cbor") {
+ source_set("cbor_headers") {
 @@ -35,7 +35,7 @@
      "//base",
    ]
  
 -  if (!is_cronet_build) {
 +  if (enable_cpp_api_from_rust) {
-     public_deps = [
+     deps += [
        "//build/rust/crubit",
        "//components/cbor/rust:cbor_rust_bindings",
 @@ -62,7 +62,7 @@

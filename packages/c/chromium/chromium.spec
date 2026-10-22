@@ -81,7 +81,7 @@
 # minimal esbuild version
 %define esbuild_version 0.28.2
 # minimal gn version
-%define gn_version 0.20260831
+%define gn_version 0.20260928
 # local rollup override to run without binaries
 %define rollup_version 3.29.5
 %if 0%{?suse_version} <= 1699
@@ -139,7 +139,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        155.0.8059.84
+Version:        156.0.8078.47
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -219,11 +219,14 @@ Patch405:       chromium-152-no-eula.patch
 Patch406:       chromium-153-opus_includes.patch
 Patch407:       chromium-153-ignore-typescript-deps.patch
 Patch408:       chromium-154-revert-crubit_web_package.patch
-Patch409:       chromium-154-revert-crubit_private_verification_tokens.patch
+Patch409:       chromium-154-verification-tokens.patch
 Patch410:       chromium-155-v8-clang-path.patch
 Patch411:       chromium-153-ftbfs-pipewire-api.patch
 Patch412:       chromium-155-older-clang-bindings.patch
 Patch413:       chromium-155-v8-cxx-include.patch
+Patch414:       chromium-156-revert_ift_patcher.patch
+Patch415:       chromium-156-verification-tokens.patch
+Patch416:       chromium-156-blink_static_cast.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch452:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
@@ -303,6 +306,7 @@ Patch1041:      gtk-414-2.patch
 Patch1050:      chromium-140-old-flac.patch
 # only in ffmpeg avutil >= 60.31
 Patch1051:      chromium-150-ffmpeg_no_agtm.patch
+Patch1052:      chromium-162dc276a85b4f7d353adbe312d05d8e7a4c28e3.patch
 Patch1061:       chromium-146-static-assert.patch
 # llvm19 segfaults in
 # ../services/network/public/cpp/permissions_policy/origin_with_possible_wildcards.cc:99:1: current parser token 'std'
@@ -323,13 +327,6 @@ Patch1073:       chromium-151-constexpr.patch
 Patch1074:       chromium-152-no-lifetime-checks.patch 
 Patch1075:       chromium-152-no-warning-suppression-map.patch
 Patch1080:       rollup.patch
-# more crubit fallout
-Patch1082:       chromium-493e6c3911e33cc356856bafbffc6cf95521266b.patch
-Patch1083:       chromium-155-consistently-cxx23.patch
-# get v8 to build on code15
-# c++ include limits is found by chance on newer versions,
-# try to force the needed include dir into code15
-
 # end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
@@ -614,6 +611,7 @@ WebDriver is an open source tool for automated testing of webapps across many br
 
 # GetAgtmSideData is only in libavutil >= 60.31, ffmpeg > 8.1
 %if %{with system_ffmpeg}
+%patch -p1 -R -P 1052
 %patch -p1 -P 1051
 %endif
 
@@ -636,15 +634,6 @@ if [[ $(echo ${clang_version} | cut -d. -f1) -lt 23 ]]; then
 %patch -p1 -P 1071
 %patch -p1 -P 1074
 fi
-
-# revert another crubit patch until we get a proper building crubit
-%patch -p1 -R -P 1082
-
-%if 0%{?suse_version} < 1600
-%ifarch ppc64le
-%patch -p1 -P 1083
-%endif
-%endif
 
 ## ROLLUP_HACK
 rm -rf third_party/devtools-frontend/src/node_modules/rollup
@@ -677,6 +666,13 @@ popd
 %endif
 
 %build
+
+ccache --show-config
+# Zero out the hit/miss stats from previous runs to have data from this build
+ccache --zero-stats
+# show how much cache we are starting with
+ccache --show-stats
+
 # esbuild
 rm third_party/devtools-frontend/src/third_party/esbuild/esbuild
 tar -xf %{SOURCE1}
@@ -1384,11 +1380,12 @@ ln -sf chromium-browser.1%{?ext_man} %{buildroot}%{_mandir}/man1/chromium.1%{?ex
 
 %fdupes -s %{buildroot}
 
+# show the ccache hit/miss stats
+ccache --show-stats
+
 %files
 %license LICENSE
 %doc AUTHORS
-# hack to keep the generated file
-%doc out/gen/v8/builtins-generated/bytecodes-builtins-list.h
 %{_datadir}/chromium
 %dir %{_sysconfdir}/chromium
 %dir %{_sysconfdir}/chromium/policies
