@@ -17,37 +17,33 @@
 
 
 Name:           fcitx5-chinese-addons
-Version:        5.1.11
+Version:        5.1.15
 Release:        0
 Summary:        Pinyin and Table IM support for fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-chinese-addons
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.zst
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
-BuildRequires:  fcitx5-devel
 BuildRequires:  fcitx5-lua-devel
 BuildRequires:  fcitx5-qt-devel
 BuildRequires:  fdupes
-BuildRequires:  fmt-devel
 BuildRequires:  hicolor-icon-theme
-%if 0%{?suse_version} < 1600
-BuildRequires:  libboost_iostreams1_75_0-devel
-BuildRequires:  libboost_regex1_75_0-devel
-%else
-BuildRequires:  libboost_iostreams-devel
-BuildRequires:  libboost_regex-devel
-%endif
-BuildRequires:  libcurl-devel
-BuildRequires:  libime-devel >= 1.0.12
-BuildRequires:  opencc-devel
+BuildRequires:  libime-devel >= 1.1.14
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-concurrent-devel
-BuildRequires:  qt6-dbus-devel
-BuildRequires:  qt6-webenginewidgets-devel
-BuildRequires:  qt6-widgets-devel
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(Fcitx5Config) >= 5.1.22
+BuildRequires:  pkgconfig(Fcitx5Core) >= 5.1.22
+BuildRequires:  pkgconfig(Fcitx5Module) >= 5.1.22
+BuildRequires:  pkgconfig(Fcitx5Utils) >= 5.1.22
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(nlohmann_json) >= 3.2
+BuildRequires:  pkgconfig(opencc)
 Supplements:    fcitx5
 Conflicts:      fcitx <= 4.2.9.8
 Provides:       fcitx-cloudpinyin = %{version}
@@ -78,6 +74,13 @@ Obsoletes:      fcitx-table-cn-wanfeng < 4.2.9.6
 Obsoletes:      fcitx-table-cn-wubi < 4.2.9.6
 Obsoletes:      fcitx-table-cn-wubi-pinyin < 4.2.9.6
 Obsoletes:      fcitx-table-cn-ziran < 4.2.9.6
+%if 0%{?suse_version} < 1600
+BuildRequires:  libboost_iostreams1_75_0-devel
+BuildRequires:  libboost_regex1_75_0-devel
+%else
+BuildRequires:  libboost_iostreams-devel
+BuildRequires:  libboost_regex-devel
+%endif
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc8
 BuildRequires:  gcc8-c++
@@ -85,7 +88,7 @@ BuildRequires:  gcc8-c++
 BuildRequires:  gcc-c++
 %endif
 %if 0%{?suse_version} <= 1520
-BuildRequires:  appstream-glib-devel
+BuildRequires:  pkgconfig(appstream-glib)
 %endif
 
 %description
@@ -93,7 +96,6 @@ This provides pinyin and table input method support for fcitx5.
 
 %package -n fcitx5-pinyindictmanager6
 Summary:        Fcitx5 Pinyin dictionary manager library
-Group:          System/Libraries
 Supplements:    (fcitx5-chinese-addons and plasma6-workspace)
 
 %description -n fcitx5-pinyindictmanager6
@@ -101,7 +103,6 @@ Fcitx5 Pinyin dictionary manager library.
 
 %package -n fcitx5-customphraseeditor6
 Summary:        Fcitx5 Custom Phrase editor library
-Group:          System/Libraries
 Supplements:    (fcitx5-chinese-addons and plasma6-workspace)
 
 %description -n fcitx5-customphraseeditor6
@@ -109,7 +110,6 @@ Fcitx5 Custom Phrase editor library.
 
 %package devel
 Summary:        Development files for fcitx5-chinese-addons
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       fcitx5-customphraseeditor6 = %{version}
 Requires:       fcitx5-pinyindictmanager6 = %{version}
@@ -182,6 +182,7 @@ This package provides development files for fcitx5-chinese-addons.
 %{_fcitx5_datadir}/punctuation/punc.mb.*
 %{_fcitx5_datadir}/lua/imeapi/extensions/pinyin.lua
 %{_fcitx5_datadir}/pinyin/chaizi.dict
+%{_fcitx5_datadir}/pinyin/sp.dat.example
 %{_fcitx5_datadir}/pinyin/symbols
 %{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-*
 %{_datadir}/icons/hicolor/*/apps/fcitx-*

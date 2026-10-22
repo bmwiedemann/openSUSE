@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 17 19:53:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.1.15:
+  * Pinyin: keep typed context for prediction, select last char
+    from candidates, tabbed/stroke candidate actions, separate
+    single-char and pinyin filters, full pinyin in duplicate
+    comments, partial-final matching disabled by default
+  * New GB shuangpin support and custom shuangpin profile example
+  * Table: hint in comment, SpaceBeforeHint option, stroke filter,
+    guard against empty candidate list
+  * Cloudpinyin: reworked learning (can be disabled), split
+    backend, fix crash on empty result, updated Baidu URL
+  * Emoji 17.0 support, new symbols, Lua 5.5 fix
+  * Build: boost::json replaced by nlohmann/json, tools are now
+    optional, raise floors to fcitx5 >= 5.1.22, libime >= 1.1.14
+
+-------------------------------------------------------------------
 Sun Feb  8 05:34:25 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.11
