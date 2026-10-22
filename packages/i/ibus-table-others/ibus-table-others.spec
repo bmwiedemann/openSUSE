@@ -17,16 +17,15 @@
 
 
 Name:           ibus-table-others
-Version:        1.3.21
+Version:        1.3.22
 Release:        0
 Summary:        Other non-Chinese tables for ibus
 License:        GPL-3.0-or-later
-Group:          System/Localization
 URL:            https://github.com/moebiuscurve/ibus-table-others
-Source:         https://github.com/moebiuscurve/ibus-table-others/archive/refs/tags/1.3.21.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/moebiuscurve/ibus-table-others/archive/refs/tags/1.3.22.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ibus-table >= 1.9.1
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(ibus-table) >= 1.9.1
 BuildArch:      noarch
@@ -39,7 +38,6 @@ table you want to use.
 
 %package -n ibus-table-latex
 Summary:        Latex input method for IBus framework
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-latex
@@ -47,7 +45,6 @@ ibus-table-latex provides Latex input method on IBus Table under IBus framework.
 
 %package -n ibus-table-cns11643
 Summary:        CNS11643 input method for IBus framework
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-cns11643
@@ -56,7 +53,6 @@ framework.
 
 %package -n ibus-table-emoticon
 Summary:        Emoji input method for IBus framework
-Group:          System/Localization
 Requires:       ibus-table
 Provides:       ibus-table-emoji = %{version}
 Obsoletes:      ibus-table-emoji < %{version}
@@ -66,9 +62,8 @@ ibus-table-emoticon provides table for emoticons o(*￣▽￣*)q.
 
 %package -n ibus-table-rustrad
 Summary:        Rustrad input method for IBus framework
-Group:          System/Localization
-Provides:       locale(ibus:ru)
 Requires:       ibus-table
+Provides:       locale(ibus:ru)
 
 %description -n ibus-table-rustrad
 ibus-table-rustrad provides Rustrad input method on IBus Table under IBus
@@ -76,9 +71,8 @@ framework.
 
 %package -n ibus-table-translit
 Summary:        Translit input method for IBus framework
-Group:          System/Localization
-Provides:       locale(ibus:ru)
 Requires:       ibus-table
+Provides:       locale(ibus:ru)
 
 %description -n ibus-table-translit
 ibus-table-translit provides Translit input method on IBus Table under IBus
@@ -86,9 +80,8 @@ framework.
 
 %package -n ibus-table-translit-ua
 Summary:        Translit-ua input method for IBus framework
-Group:          System/Localization
-Provides:       locale(ibus:uk)
 Requires:       ibus-table
+Provides:       locale(ibus:uk)
 
 %description -n ibus-table-translit-ua
 ibus-table-translit-ua provides Translit-ua input method on IBus Table under
@@ -96,7 +89,6 @@ IBus framework.
 
 %package -n ibus-table-yawerty
 Summary:        Yawerty input method for IBus framework
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-yawerty
@@ -105,7 +97,6 @@ framework.
 
 %package -n ibus-table-compose
 Summary:        The Compose table for ibus-table
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-compose
@@ -113,7 +104,6 @@ ibus-table-compose provides the Compose table for ibus-table.
 
 %package -n ibus-table-ipa-x-sampa
 Summary:        The ipa-x-sampa table for ibus-table
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-ipa-x-sampa
@@ -121,7 +111,6 @@ ibus-table-ipa-x-sampa provides the ipa-x-sampa table for ibus-table.
 
 %package -n ibus-table-thai
 Summary:        The Thai table for ibus-table
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-thai
@@ -130,9 +119,8 @@ ibus-table-thai provides the Thai table for ibus-table.
 
 %package -n ibus-table-viqr
 Summary:        The Viqr (Vietnamese) table for ibus-table
-Group:          System/Localization
-Provides:       locale(ibus:vi)
 Requires:       ibus-table
+Provides:       locale(ibus:vi)
 
 %description -n ibus-table-viqr
 ibus-table-viqr provides the Viqr (Vietnamese) table for ibus-table. Tiếng Việt
@@ -140,7 +128,6 @@ ibus-table-viqr provides the Viqr (Vietnamese) table for ibus-table. Tiếng Vi�
 
 %package -n ibus-table-mathwriter
 Summary:        Mathematics symbols table for ibus-table
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-mathwriter
@@ -148,7 +135,6 @@ The package contains table for writing Unicode mathematics symbols.
 
 %package -n ibus-table-rusle
 Summary:        Rusle table for ibus-table
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-rusle
@@ -156,7 +142,6 @@ ibus-table-rusle provides the Rusle table for ibus-table.
 
 %package -n ibus-table-hu-old-hungarian-rovas
 Summary:        Hu old hungarian rovas table for ibus-table
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-hu-old-hungarian-rovas
@@ -164,7 +149,6 @@ ibus-table-rusle provides the Hu old hungarian rovas table for ibus-table.
 
 %package -n ibus-table-mongol-bichig
 Summary:        Mongol Bichig table for ibus-table
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-mongol-bichig
@@ -172,7 +156,6 @@ ibus-table-mongol-bichig provides the Mongol Bichig table for ibus-table.
 
 %package -n ibus-table-telex
 Summary:        Telex table for ibus-table
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-telex
@@ -180,7 +163,6 @@ ibus-table-telex provides the Vietnamese telex table for ibus-table.
 
 %package -n ibus-table-vni
 Summary:        Vni table for ibus-table
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-vni
@@ -188,7 +170,6 @@ ibus-table-mongol-bichig provides the Vietnamese Vni table for ibus-table.
 
 %package -n ibus-table-lean
 Summary:        lean table for ibus-table
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-lean
@@ -196,14 +177,13 @@ ibus-table-lean provides abbreviations to enter mathematical symbols. All abbrev
 
 %package -n ibus-table-hu_Hung_HU_traditional
 Summary:        lean table for ibus-table
-Group:          System/Localization
 Requires:       ibus-table
 
 %description -n ibus-table-hu_Hung_HU_traditional
 ibus-table-hu_Hung_HU_traditional provides old Hungarian script for ibus-table.
 
 %prep
-%setup
+%setup -q
 
 %build
 ./autogen.sh
@@ -212,10 +192,9 @@ alias python=python3
 %make_build
 
 %install
-make DESTDIR=${RPM_BUILD_ROOT} NO_INDEX=true install
+make DESTDIR=%{buildroot} NO_INDEX=true install
 
 %files
-%defattr(-,root,root)
 %doc ChangeLog README AUTHORS
 %license COPYING
 

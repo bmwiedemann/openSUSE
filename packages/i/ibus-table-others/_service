@@ -3,7 +3,7 @@
     <param name="url">https://github.com/moebiuscurve/ibus-table-others</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">95453df</param>
+    <param name="revision">35863cede0de0c1fbb652d2a5757ce2c24c535c8</param>
     <param name="versionrewrite-pattern">Release (\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
