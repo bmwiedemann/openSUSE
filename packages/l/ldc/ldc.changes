@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct  2 12:35:45 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.43.0:
+  * Frontend, druntime and Phobos are at version 2.113.0, incl.
+    new command-line option -foptimize-nothrow.
+  * Bump so_ver to 113.
+  * Support for LLVM 22; minimum LLVM version raised to 18.
+  * DRuntime and Phobos now support WASI preview levels 1 and 2,
+    as well as Emscripten.
+  * The @ldc.attributes.restrict UDA is now supported for
+    dynamic-array parameters.
+  * DMD-style inline assembly: naked functions codegen
+    improvements.
+  * Native device code Embedding (PTX and SPIR-V) for dcompute.
+  * WebAssembly improvements and fixes.
+  * New -fno-moduleinfo-localclasses switch.
+  * Predefined version LDC_LLVM_* now only contains the LLVM
+    major version.
+- Bump Clang/LLVM BuildRequires floor to 18.0 and ceiling to < 23.
+
+-------------------------------------------------------------------
 Mon Jul  6 14:15:57 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Adjust build to support clang using libalternatives by referencing

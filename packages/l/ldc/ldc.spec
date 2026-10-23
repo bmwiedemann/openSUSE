@@ -16,29 +16,33 @@
 #
 
 
-%define so_ver        112
+%define so_ver        113
 %define lname_jit     libldc-jit
 %define lname_runtime libdruntime-%{name}
 %define lname_phobos  libphobos2-%{name}
 %define _bashcompletionsdir %{_datadir}/bash-completion/completions
-
 %define HOST_ARCH %(echo %{_host_cpu} | sed -e "s/i.86/i586/;s/ppc/powerpc/;s/sparc64.*/sparc64/;s/sparcv.*/sparc/;")
 %ifarch ppc
 %define LDCDIST powerpc64-suse-linux
 %else
-%ifarch %sparc
+%ifarch %{sparc}
 %define LDCDIST sparc64-suse-linux
 %else
-%ifarch %arm
+%ifarch %{arm}
 %define LDCDIST %{HOST_ARCH}-suse-linux-gnueabi
 %else
 %define LDCDIST %{HOST_ARCH}-suse-linux
 %endif
 %endif
 %endif
-
 %define ldcincludedir %{_libdir}/ldc/%{LDCDIST}/include/d
-
+# JIT is available with LLVM >= 18 < 20
+# https://github.com/ldc-developers/ldc/pull/4774
+%global jit_support 1
+# LLVM LTO is too much for 32bit ARM
+%ifarch %{arm}
+%define _lto_cflags %{nil}
+%endif
 # With bootstrap enabled (the default), gdc is used (through the gdmd wrapper)
 # to build ldc (and shared runtime), then the built ldc is used to build ldc
 # itself again. The final ldc with shared runtime is then installed.
@@ -46,24 +50,27 @@
 # the new ldc. Note that the resulting ldc is linked against the old ldc's
 # runtime, which might not be compatible with the newly built one!
 %bcond_without ldc_bootstrap
-
 %bcond_with ldc_tests
-
-# JIT is available with LLVM >= 18 < 20
-# https://github.com/ldc-developers/ldc/pull/4774
-%global jit_support 1
-
-# LLVM LTO is too much for 32bit ARM
-%ifarch %{arm}
-%define _lto_cflags %nil
+%if %{with ldc_bootstrap}
+# Use GDC 10, available on 15.3+
+%if 0%{?suse_version} < 1550
+%global gdc_version 10
+%global gdc_suffix -%{gdc_version}
 %endif
-
+BuildRequires:  gcc%{?gdc_version}-PIE
+# Clang uses the newest gcc to find headers and libs
+BuildRequires:  gcc%{?gdc_version}-c++
+BuildRequires:  gdmd%{?gdc_suffix}
+%else
+BuildRequires:  ldc
+BuildRequires:  ldc-phobos-devel
+BuildRequires:  ldc-runtime-devel
+%endif
 Name:           ldc
-Version:        1.42.0
+Version:        1.43.0
 Release:        0
 Summary:        The LLVM D Compiler
 License:        Artistic-1.0 AND BSD-3-Clause
-Group:          Development/Languages/Other
 URL:            https://wiki.dlang.org/LDC
 Source0:        https://github.com/ldc-developers/ldc/releases/download/v%{version}/ldc-%{version}-src.tar.gz
 Source1:        %{name}-rpmlintrc
@@ -71,39 +78,38 @@ Patch0:         ldc-1.9.0-fix_arm_build.patch
 Patch1:         ldc-conf-path.patch
 BuildRequires:  cmake
 BuildRequires:  help2man
-BuildRequires:  libconfig++-devel
-BuildRequires:  libcurl-devel
 BuildRequires:  libstdc++-devel
-BuildRequires:  ncurses-devel
-BuildRequires:  sqlite3-devel
-BuildRequires:  zlib-devel
-# It supports LLVM < 22, but only without JIT (LDC_DYNAMIC_COMPILE=OFF)
-%if %{jit_support}
-BuildRequires:  (cmake(Clang) >= 15.0 with cmake(Clang) < 20)
-BuildRequires:  (cmake(LLVM) >= 15.0 with cmake(LLVM) < 20)
-%else
-BuildRequires:  (cmake(Clang) >= 15.0 with cmake(Clang) < 22)
-BuildRequires:  (cmake(LLVM) >= 15.0 with cmake(LLVM) < 22)
-%endif
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bash-completion)
+BuildRequires:  pkgconfig(form)
+BuildRequires:  pkgconfig(formw)
+BuildRequires:  pkgconfig(libconfig++)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(menu)
+BuildRequires:  pkgconfig(menuw)
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(ncurses++)
+BuildRequires:  pkgconfig(ncurses++w)
+BuildRequires:  pkgconfig(ncursesw)
+BuildRequires:  pkgconfig(panel)
+BuildRequires:  pkgconfig(panelw)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(tic)
+BuildRequires:  pkgconfig(tinfo)
+BuildRequires:  pkgconfig(zlib)
+Recommends:     ldc-jit-devel = %{version}
 # Should be installed, at least runtime
 Recommends:     ldc-phobos-devel = %{version}
-Recommends:     ldc-jit-devel = %{version}
 Recommends:     ldc-runtime-devel = %{version}
-%if %{with ldc_bootstrap}
-# Use GDC 10, available on 15.3+
-%if 0%{?suse_version} < 1550
-%global gdc_version 10
-%global gdc_suffix -%{gdc_version}
-%endif
-# Clang uses the newest gcc to find headers and libs
-BuildRequires:  gcc%{?gdc_version}-c++
-BuildRequires:  gcc%{?gdc_version}-PIE
-BuildRequires:  gdmd%{?gdc_suffix}
+# ppc64 is disabled due to boo#1113531
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
+# It supports LLVM < 23, but only without JIT (LDC_DYNAMIC_COMPILE=OFF)
+%if %{jit_support}
+BuildRequires:  (cmake(Clang) >= 18.0 with cmake(Clang) < 20)
+BuildRequires:  (cmake(LLVM) >= 18.0 with cmake(LLVM) < 20)
 %else
-BuildRequires:  ldc
-BuildRequires:  ldc-phobos-devel
-BuildRequires:  ldc-runtime-devel
+BuildRequires:  (cmake(Clang) >= 18.0 with cmake(Clang) < 23)
+BuildRequires:  (cmake(LLVM) >= 18.0 with cmake(LLVM) < 23)
 %endif
 %if %{with ldc_tests}
 BuildRequires:  gcc-c++
@@ -112,8 +118,6 @@ BuildRequires:  python
 BuildRequires:  timezone
 BuildRequires:  unzip
 %endif
-# ppc64 is disabled due to boo#1113531
-ExclusiveArch:  %{ix86} x86_64 %arm aarch64 riscv64
 
 %description
 LDC is an LLVM based compiler for the D programming language. It uses the
@@ -123,18 +127,16 @@ capabilities.
 
 %package -n %{lname_runtime}%{so_ver}
 Summary:        Minimal D runtime library
-Group:          System/Libraries
 
 %description -n %{lname_runtime}%{so_ver}
 The minimal runtime library required to support the D programming language.
 
 %package runtime-devel
 Summary:        Development files for the D runtime library
-Group:          Development/Libraries/Other
 Requires:       %{lname_runtime}%{so_ver} = %{version}
+Recommends:     ldc-phobos-devel = %{version}
 # library version 99 wrongly packaged an unversioned file %{_libdir}/ldc_rt.dso.o
 Conflicts:      %{lname_runtime}99
-Recommends:     ldc-phobos-devel = %{version}
 
 %description runtime-devel
 This package contains the druntime development files necessary for developing
@@ -142,21 +144,18 @@ with LDC.
 
 %package -n %{lname_phobos}%{so_ver}
 Summary:        The D standard library
-Group:          System/Libraries
 
 %description -n %{lname_phobos}%{so_ver}
 This package includes ldc's phobos library - The D standard library.
 
 %package -n %{lname_jit}%{so_ver}
 Summary:        The LDC jit library
-Group:          System/Libraries
 
 %description -n %{lname_jit}%{so_ver}
 This package includes ldc's jit library.
 
 %package jit-devel
 Summary:        Development files for the D standard library
-Group:          Development/Libraries/Other
 Requires:       %{lname_jit}%{so_ver} = %{version}
 
 %description jit-devel
@@ -164,7 +163,6 @@ This package contains the LDC jit development files.
 
 %package phobos-devel
 Summary:        Development files for the D standard library
-Group:          Development/Libraries/Other
 Requires:       %{lname_phobos}%{so_ver} = %{version}
 Requires:       %{name}-runtime-devel = %{version}
 
@@ -211,7 +209,7 @@ touch no-suse-rules
 # thus set an rpath on generated executables. The next/final stage will be
 # installed and should use its own libs, so explicitly disable the rpath.
 sed -i '/rpath/d' etc/ldc2.conf/50-target-default.conf
-export LD_LIBRARY_PATH="$PWD/%_lib"
+export LD_LIBRARY_PATH="$PWD/%{_lib}"
 cd ..
 
 %define __builddir build
@@ -238,14 +236,14 @@ touch no-suse-rules
 %check
 pushd build/
 # Make sure it can find its own libs
-export LD_LIBRARY_PATH="$PWD/%_lib"
+export LD_LIBRARY_PATH="$PWD/%{_lib}"
 %make_build test
 popd
 %endif
 
 %install
 # Make sure it can find its own libs (help2man and cmake_install runs the binaries)
-export LD_LIBRARY_PATH="$PWD/build/%_lib"
+export LD_LIBRARY_PATH="$PWD/build/%{_lib}"
 %cmake_install
 # Install bash completion in the right folder
 if [ ! -d %{buildroot}%{_bashcompletionsdir} ]; then
@@ -302,7 +300,7 @@ rm -rf %{buildroot}%{_prefix}/lib/debug
 %{_libdir}/%{lname_phobos}-debug-shared.so.%{so_ver}
 %{_libdir}/%{lname_phobos}-debug-shared.so.*
 
-%if %jit_support
+%if %{jit_support}
 %files -n %{lname_jit}%{so_ver}
 %{_libdir}/%{lname_jit}.so.%{so_ver}
 %{_libdir}/%{lname_jit}.so.*
