@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu Oct 22 05:05:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.72:
+  * General
+    - feat(models): add Infisical Kubernetes Operator model
+      (secrets-operator v0.11.12) (#22423)
+    - fix(server): prevent nil pointer panic on ServiceMeshFilter
+      without type (#20988) (#22419)
+    - chore(deps): bump meshkit to v1.0.24 for GitHub connection
+      changes (#22361)
+    - Bump github.com/moby/sys/user from 0.4.0 to 0.4.1 in
+      /server/policies/wasm (#22318)
+  * Meshery CLI
+    - fix: [mesheryctl] Two --save bugs in view commands:
+      unconditional UserHomeDir call and missing file extension
+      (#21333)
+    - [Chore] Remove leftover meshery-cpx references (#22160)
+    - [Chore] Remove leftover meshery-octarine references (#22161)
+    - [Chore] Remove the AWS App Mesh adapter (#22355)
+    - [mesheryctl] Remove the NGINX Service Mesh adapter (#22035)
+    - [mesheryctl] Fix docker not launching in macos because of
+      hardcoded invalid path (#22266)
+    - [mesheryctl] Fix TestReadValidationErrorMessages_Direct panic
+      on Windows (#22334)
+    - [mesheryctl] Prevent index out of range panic in system
+      status (#22331)
+    - [mesheryctl] Remove dead code in healthcheck.go and
+      registry.go (#22289)
+    - Fix/mesheryctl context create validate components (#22259)
+  * Maintenance
+    - Update playground cleanup workflow to point to new infra
+      (OCI) (#21548)
+    - Update GitHub token and add maturity level 2 (#22403)
+    - Replace expression mode with environment variable mode
+      (#22389)
+    - [Chore] Remove the AWS App Mesh adapter (#22355)
+    - Add GitHub Actions for publishing OSPS results to grc store
+      (#22368)
+    - [UI] Remove the NGINX Service Mesh adapter from the Meshery
+      design e2e fixture (#22325)
+    - [CI] Publish Allure results after E2E failures (#22328)
+    - Add OSPS Baseline Scanner tool to SECURITY-INSIGHTS.yml
+      (#22336)
+    - Bump sharp and next in /ui (#22322)
+    - Bump source-map-js from 1.2.1 to 1.2.2 in /ui (#22320)
+    - Bump joi from 18.2.8 to 18.2.9 in /ui (#22319)
+    - [CI] Fail docs workflows on npm ci errors (#22326)
+    - Bump next from 16.2.11 to 16.3.8 in /provider-ui (#22321)
+    - Update OSPS Baseline workflow configuration (#22301)
+  * Documentation
+    - [Docs] Remove nested links and redundant p tags inside
+      summary elements (#21973)
+    - [Docs] Remove tanzu-sm from the mesheryctl guide adapter list
+      (#22399)
+    - [Chore] Remove leftover meshery-cpx references (#22160)
+    - [Chore] Remove leftover meshery-octarine references (#22161)
+    - [Docs] Remove the archived meshery-tanzu-sm adapter page
+      (#22162)
+    - [Chore] Remove the AWS App Mesh adapter (#22355)
+    - [Docs] Fix broken wasm-filters repository links in
+      Architecture overview and Filter management guide (#22316)
+    - [CI] Publish Allure results after E2E failures (#22328)
+    - [Docs] Fix mesheryctl contributor path (#22299)
+    - [Docs] Fix cloned repository directory (#22297)
+    - [Docs] Remove Duplicated Content from the Catalog Page
+      (#22340)
+    - [Docs] Document Kustomize package imports (#22317)
+    - [Docs] Add meeting attendance for Rajpreet Singh Khurana
+      (#22330)
+  * Security
+    - Update GitHub token and add maturity level 2 (#22403)
+    - Replace expression mode with environment variable mode
+      (#22389)
+    - Add GitHub Actions for publishing OSPS results to grc store
+      (#22368)
+    - Add OSPS Baseline Scanner tool to SECURITY-INSIGHTS.yml
+      (#22336)
+    - Update OSPS Baseline workflow configuration (#22301)
+
+-------------------------------------------------------------------
 Wed Oct 14 04:44:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.71:
