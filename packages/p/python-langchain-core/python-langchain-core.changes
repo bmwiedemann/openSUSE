@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:25:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.0:
+  * Stream tool-call args as `tool-call-delta` slices instead of
+    `block-delta` snapshots of the args so far; `.tool_calls.get()`
+    and `.output` are unchanged (pin langchain-core<1.7 to keep
+    snapshot behavior)
+  * Iterating `ChatModelStream.tool_calls` yields each call's new
+    args slice, not a snapshot of the args so far
+  * Refresh model profile data
+- Raise python-langchain-protocol floor to >= 0.0.20
+
+-------------------------------------------------------------------
+Thu Oct 22 09:55:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.13:
+  * Stream consumers understand the new `tool-call-delta`
+    block deltas: `.tool_calls` on v3 event streams yields
+    only the new part of each tool call args instead of the
+    accumulated string; the final message is unchanged
+
+-------------------------------------------------------------------
 Sat Oct 17 06:23:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.12:

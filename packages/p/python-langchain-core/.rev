@@ -237,4 +237,12 @@ Built and checked locally on aarch64: 2076 tests pass under python3.13 and
     <comment>Update python-langchain-core to 1.6.12</comment>
     <requestid>1385352</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>401ddcee5e6e2be2fb51a742343891a5</srcmd5>
+    <version>1.7.0</version>
+    <time>1792779749</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.7.0</comment>
+    <requestid>1392016</requestid>
+  </revision>
 </revisionlist>
