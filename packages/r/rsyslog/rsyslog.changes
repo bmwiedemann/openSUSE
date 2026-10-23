@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:03:57 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- fix postgresql dependency for devel package (bsc#1286162)
+
+-------------------------------------------------------------------
 Wed Sep 23 13:22:56 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - fix VUL-0: imdtls permitted-peer authorization bypass (bsc#1281628) 

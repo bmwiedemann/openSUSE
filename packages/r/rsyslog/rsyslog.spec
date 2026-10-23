@@ -537,7 +537,7 @@ Requires:       librelp-devel
 Requires:       libzstd-devel
 Requires:       linux-glibc-devel
 Requires:       net-snmp-devel
-Requires:       postgresql18-devel-mini
+Requires:       postgresql18-devel
 Requires:       zlib-devel
 Summary:        Development files for rsyslog
 Group:          System/Daemons
