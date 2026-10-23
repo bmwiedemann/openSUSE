@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 23 10:58:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.6.1:
+  * update to go1.26.10
+    These releases include 1 security fix following the security
+    policy:
+    - crypto/x509: mitigation for security concerns with a specific
+      Certificate Authority
+      We're blocking trust in a small set of intermediate
+      certificates due to specific security concerns around their
+      operation.
+      Verify will now filter out chains which contain these
+      intermediates, preventing them from being returned to the
+      caller.
+      We highly recommend immediately upgrading to this release.
+      This is CVE-2026-111943 and Go issue
+      https://go.dev/issue/82345.
+
+-------------------------------------------------------------------
 Sun Oct 04 16:51:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.6.0:
