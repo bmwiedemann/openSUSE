@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 23 09:31:01 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 5.2.2:
+  * fix(k8s): retry the startup exec until the kubelet accepts it (#1337)
+  * refactor: remove dead code and consolidate tests (#1335)
+  * refactor: remove bolthold and gofakes3 deps (#1336)
+  * refactor: migrate to connect-go v2 (#1325)
+  * fix: handle workflow commands like GitHub's runner (#1333)
+  * fix: improve the actions toolkit patching (#1328)
+  * perf: speed up job setup, action preparation and the cache server (#1327)
+
+-------------------------------------------------------------------
 Tue Oct 20 20:45:51 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 5.2.0:
