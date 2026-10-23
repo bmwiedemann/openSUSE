@@ -93,4 +93,12 @@ crashlooped every virt-handler pod.</comment>
     <comment>Update to 1.9.1, the KubeVirt release that pins virt-template 0.2.3 (in Factory since request 1386641).</comment>
     <requestid>1386987</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>64e2aac28ec07f6c175ddf1fb517cfb0</srcmd5>
+    <version>1.9.1</version>
+    <time>1792780098</time>
+    <user>anag_factory</user>
+    <comment>Security re-vendor: golang.org/x/net 0.60.0 (bsc#1285255), pulling golang.org/x/crypto 0.57.0 as its requirement</comment>
+    <requestid>1387192</requestid>
+  </revision>
 </revisionlist>

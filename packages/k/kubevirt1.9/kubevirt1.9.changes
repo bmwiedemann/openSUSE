@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 21 21:29:14 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Re-vendor the Go dependencies for the open security bugs:
+  * golang.org/x/net 0.60.0: CVE-2026-78669 (bsc#1285255) excessive CPU
+    from repeated HTTP/2 initial window changes; also CVE-2026-78659,
+    CVE-2026-78660, CVE-2026-78663 and CVE-2026-97032 fixed in that release
+
+-------------------------------------------------------------------
 Sun Oct 18 20:59:26 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
 
 - Update to version 1.9.1:
