@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:57:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.15.7.0:
+  * ShadingSystem: per-ShaderGroup post-optimization compile stats
+    (active layers, network depth, texture/noise ops) via new
+    getattribute keys and getstats() section, plus
+    --print-group-stats testshade flag
+  * OSLQuery Python bindings no longer force-import OpenImageIO;
+    new Parameter.type_name property
+  * Fix interactive shader parameter incorrectly overriding
+    a connected input; fix unsafe error-message string formatting;
+    fix testrender principal-direction discontinuities
+  * Build: support LLVM 22 and 23, guard bad CUDA >= 13.2 with
+    LLVM < 22.1.2 combo, serialize the CUDA testrender build
+- Bump supported LLVM range to <= 23.9
+- Spec cleanup (drop Group: tags, sort BuildRequires)
+
+-------------------------------------------------------------------
 Mon Oct  5 02:22:41 UTC 2026 - JS <obs.coke518@passinbox.com>
 
 - Explicitly invoke the same version of clang++ as LLVM.

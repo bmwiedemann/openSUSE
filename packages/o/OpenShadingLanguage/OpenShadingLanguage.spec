@@ -21,38 +21,34 @@
 %define sufx %(echo %{sover}|tr . _)
 # Required for the plugin directory name, see https://github.com/OpenImageIO/oiio/issues/2583
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
-
 # we could have a minimum of 9 here. but to more easily switch to C++17 we set the minium to 16
 %global min_llvm_version 16
-%global max_llvm_version 22.9
-
+%global max_llvm_version 23.9
 # cmake expects the shaders in /usr/share/OSL
 %define osldir OSL
-
 # keep in sync with blender
 %if 0%{?suse_version} >= 1600
-%bcond_without qt
 %global py3ver 3.13
 %global py3pkg python313
+%bcond_without qt
 %else
-%bcond_with    qt
 %global force_boost_version 1_75_0
 %global force_gcc_version   14
-
 %global py3ver 3.11
 %global py3pkg python311
+%bcond_with    qt
 %endif
-
 Name:           OpenShadingLanguage
-Version:        1.15.4.0
+Version:        1.15.7.0
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
-Group:          Productivity/Graphics/Other
 URL:            https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
 Source0:        https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
 Patch0:         fix-install-paths.patch
+BuildRequires:  %{py3pkg}-devel
+BuildRequires:  %{py3pkg}-pybind11-devel
 BuildRequires:  OpenEXR-devel >= 2.4
 BuildRequires:  OpenImageIO >= 2.5
 BuildRequires:  bison
@@ -61,8 +57,15 @@ BuildRequires:  flex
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libboost_filesystem%{?force_boost_version}-devel
 BuildRequires:  libboost_thread%{?force_boost_version}-devel
+BuildRequires:  pkgconfig
 BuildRequires:  (cmake(Clang) >= %{min_llvm_version} with cmake(Clang) =< %{max_llvm_version})
 BuildRequires:  (cmake(LLVM)  >= %{min_llvm_version} with cmake(LLVM)  =< %{max_llvm_version})
+BuildRequires:  cmake(OpenImageIO) >= 2.5
+BuildRequires:  cmake(pugixml) >= 1.8
+BuildRequires:  cmake(tsl-robin-map)
+Requires:       %{name}-common-headers = %{version}
+Recommends:     %{name}-doc = %{version}
+ExcludeArch:    %{ix86} %{arm32}
 %if %{with qt}
 BuildRequires:  cmake(Qt6)
 BuildRequires:  cmake(Qt6Core)
@@ -74,15 +77,6 @@ BuildRequires:  cmake(Qt6Widgets)
 # Build fails with partio on armv7/armv6
 BuildRequires:  partio-devel
 %endif
-BuildRequires:  %{py3pkg}-devel
-BuildRequires:  %{py3pkg}-pybind11-devel
-BuildRequires:  pkg-config
-BuildRequires:  cmake(OpenImageIO) >= 2.5
-BuildRequires:  cmake(pugixml) >= 1.8
-BuildRequires:  cmake(tsl-robin-map)
-Requires:       %{name}-common-headers = %{version}
-Recommends:     %{name}-doc = %{version}
-ExcludeArch:    %{ix86} %{arm32}
 
 %description
 Open Shading Language (OSL) is a language for programmable shading
@@ -95,7 +89,6 @@ utilities.
 %package doc
 Summary:        Documentation for OpenShadingLanguage
 License:        CC-BY-3.0
-Group:          Documentation/Other
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -108,7 +101,6 @@ This package contains documentation.
 %package example-shaders-source
 Summary:        OSL shader examples
 License:        BSD-3-Clause
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-common-headers
 BuildArch:      noarch
@@ -123,7 +115,6 @@ This package contains some OSL example shaders.
 %package common-headers
 Summary:        OSL standard library and auxiliary headers
 License:        BSD-3-Clause
-Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -138,7 +129,6 @@ as some additional headers useful for writing shaders.
 %package -n liboslcomp%{sufx}
 Summary:        OpenShadingLanguage's compiler component library
 License:        BSD-3-Clause
-Group:          System/Libraries
 
 %description -n liboslcomp%{sufx}
 Open Shading Language (OSL) is a language for programmable shading
@@ -148,7 +138,6 @@ materials, lights, displacement, and pattern generation.
 %package -n liboslexec%{sufx}
 Summary:        OpenShadingLanguage's execution component library
 License:        BSD-3-Clause
-Group:          System/Libraries
 
 %description -n liboslexec%{sufx}
 Open Shading Language (OSL) is a language for programmable shading
@@ -158,7 +147,6 @@ materials, lights, displacement, and pattern generation.
 %package -n liboslnoise%{sufx}
 Summary:        OpenShadingLanguage's image noise generation library
 License:        BSD-3-Clause
-Group:          System/Libraries
 
 %description -n liboslnoise%{sufx}
 Open Shading Language (OSL) is a language for programmable shading
@@ -168,7 +156,6 @@ materials, lights, displacement, and pattern generation.
 %package -n liboslquery%{sufx}
 Summary:        Osl library
 License:        BSD-3-Clause
-Group:          System/Libraries
 
 %description -n liboslquery%{sufx}
 Open Shading Language (OSL) is a language for programmable shading
@@ -178,7 +165,6 @@ materials, lights, displacement, and pattern generation.
 %package -n libtestshade%{sufx}
 Summary:        Osl library
 License:        BSD-3-Clause
-Group:          System/Libraries
 
 %description -n libtestshade%{sufx}
 Open Shading Language (OSL) is a language for programmable shading
@@ -188,7 +174,6 @@ materials, lights, displacement, and pattern generation.
 %package -n OpenImageIO-plugin-osl
 Summary:        OpenImageIO input plugin
 License:        BSD-3-Clause
-Group:          System/Libraries
 Obsoletes:      osl.imageio < 1.11.4.1
 Provides:       osl.imageio = %{version}
 
@@ -202,7 +187,6 @@ This is a plugin to access OSL from OpenImageIO.
 %package        devel
 Summary:        Development files for %{name}
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       OpenImageIO-plugin-osl = %{version}
 Requires:       liboslcomp%{sufx} = %{version}
@@ -226,7 +210,7 @@ export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
 
-# Avoid version mismatch. The default clang++ may also be installed alongside the required version. 
+# Avoid version mismatch. The default clang++ may also be installed alongside the required version.
 LLVM_MAJOR_VERSION=$(llvm-config --version | cut -d'.' -f1)
 CLANGPLUSPLUS=%{_bindir}/clang++-${LLVM_MAJOR_VERSION}
 LLVM_AS=%{_bindir}/llvm-as-${LLVM_MAJOR_VERSION}
