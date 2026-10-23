@@ -1291,4 +1291,41 @@
     - Always check the current lists before inserting on blueprints (forwarded request 1355693 from aeneas_jaissle)</comment>
     <requestid>1355793</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>f62bfcfaaf1bbbdc44f9d8a4bf948011</srcmd5>
+    <version>1.4.6</version>
+    <time>1792780161</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.6:
+  * Vulnerability fix
+    - CVE-2026-85518: Fix path traversal when dumping SDS components (bsc#1286889)
+  * Maintenance, bug fix
+    - Lock test_file for all_python.sh
+    - Serialize the filehash DoS tests
+    - Free the TestResult of an evaluation that names an unknown rule
+    - Evaluate OVAL state with no entities as true
+    - Ship oscap-run-sce-script with the SCE engine
+
+- update to 1.4.5:
+  * New features
+    - Add yescrypt support to encrypt_method in shadow probe
+    - autotailor: Add validation for variable names, rule IDs, and profile IDs
+  * Maintenance, bug fix
+    - Ensure that there is only one customizations in blueprint remedations
+    - Add test ensuring $TMPDIR is honored by OpenSCAP
+    - Add missing fix systems to guides
+    - Fix groff warning for nested &quot;tagged paragraph&quot;
+    - Prevent denial of service in filehash and filehash58 probes
+    - Fix TOCTOU race condition in file content probes
+    - Do not use gcrypt cmake variables if gcrypt is not found
+    - Replace removed Python 2 C API macros for SWIG 4.5.0 compatibility
+    - Fix build without crypto support
+    - Fix autotailor overwriting extends attribute from JSON tailoring
+    - Gracefully provide an error if JSON tailoring doesn't exist
+    - textfilecontent54 probe: fix memory leaks in process_file
+    - fix: account for DST in XCCDF result timestamp offset
+    - OVAL/XCCDF/DS/source: fix memory-corruption bugs on malformed input
+    - CPE/XCCDF/DS: fix infinite loops in parsers on malformed input (forwarded request 1387244 from abergmann)</comment>
+    <requestid>1388021</requestid>
+  </revision>
 </revisionlist>
