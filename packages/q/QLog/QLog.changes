@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 23 14:25:53 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.54.0:
+  * QSL Printing - Added QSL ordering, QSL Manager and QSL DXCC
+  * Updates to awards, settings
+  * ADIF 3.1.8 updates
+  * Add support for multiple WSJT-X instances
+  * Functionality additions to DXC, MCP bridges
+  * UI tweaks: mouse wheel and tuning steps
+  * Bug fixes
+
+-------------------------------------------------------------------
 Sat Sep 19 19:46:02 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.53.0:
