@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:25:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.3.0 (PyPI release 2026-10-22):
+  * Number validator supports Decimal and Fraction
+  * Empty config containers bind for dict, list, tuple, set and
+    dataclass parameters
+  * Config null rejected for types not allowing None; config arrays
+    rejected for single-value types
+  * dict[str, X] parameters accept a JSON object from the CLI or
+    an environment variable
+  * Unions with a class member (Foo | bool, Foo | dict) handle
+    keyed fields, bare flags and typed keys without silently
+    dropping unknown keys
+  * Faster startup and lower per-invocation overhead
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Wed Oct  7 07:31:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.2.0 (PyPI release 2026-10-06):
