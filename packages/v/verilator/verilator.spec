@@ -1,7 +1,7 @@
 #
 # spec file for package verilator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,30 @@
 
 
 Name:           verilator
-Version:        5.038
+Version:        5.052
 Release:        0
 Summary:        Compiling Verilog HDL simulator
 License:        Artistic-2.0 OR LGPL-3.0-only
 Group:          Productivity/Scientific/Electronics
-URL:            https://www.veripool.org/projects/verilator/wiki/Intro
-Source0:        https://github.com/verilator/verilator/archive/refs/tags/v%{version}.tar.gz#/verilator-%{version}.tar.gz
+URL:            https://verilator.org/
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  bison
+# Required by the CMake integration examples run by make test.
+BuildRequires:  cmake >= 3.19
 BuildRequires:  flex
-BuildRequires:  gcc-c++
-BuildRequires:  gdb
+BuildRequires:  gcc-c++ >= 10
 BuildRequires:  help2man
+BuildRequires:  jemalloc-devel
 BuildRequires:  perl
-BuildRequires:  pkgconfig
-BuildRequires:  python3-devel >= 3.7
+BuildRequires:  python3-base >= 3.9
 BuildRequires:  python3-distro
+BuildRequires:  z3
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(zlib)
+Requires:       %{name}-devel = %{version}-%{release}
+Requires:       perl
+Requires:       z3
 
 %description
 Verilator compiles synthesizable Verilog (not test-bench code), plus
@@ -44,8 +51,11 @@ execution.
 %package devel
 Summary:        Verilator library header files
 Group:          Development/Languages/C and C++
-Requires:       %{name} = %{version}
-BuildArch:      noarch
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       gcc-c++ >= 10
+Requires:       make
+Requires:       pkgconfig(liblz4)
+Requires:       pkgconfig(zlib)
 
 %description devel
 Development files for Verilator, a compiling Verilog HDL simulator.
@@ -65,48 +75,35 @@ This package contains examples of using verilator.
 %prep
 %setup -q
 # Use real path in she-bangs
-sed -i -e '1 s@bin/env perl@bin/perl@' bin/*
-sed -i -e '1 s@bin/env python3@bin/python3@' bin/*
+sed -i '1s@/usr/bin/env @/usr/bin/@' bin/*
 
 %build
+export VERILATOR_SRC_VERSION=v%{version}
 autoconf
-%configure
+%configure --disable-partial-static
 %make_build
 
 %install
-%make_install
-
-# install examples
-install -d %{buildroot}%{_docdir}/%{name}/
-mv %{buildroot}%{_datadir}/verilator/examples %{buildroot}%{_docdir}/%{name}/examples
+%make_install pkgconfigdir=%{_libdir}/pkgconfig
+install -d %{buildroot}%{_docdir}/%{name}
+mv %{buildroot}%{_datadir}/verilator/examples %{buildroot}%{_docdir}/%{name}/
 
 %check
-mkdir -p "~/.config/gdb/"
-echo "set auto-load safe-path /" > "~/.config/gdb/gdbinit"
 export DEBUGINFOD_URLS=""
 make test
 
 %files
-%license Artistic LICENSE
+%license LICENSE LICENSES
 %doc Changes README.rst
-%exclude %{_docdir}/%{name}/examples/
-%exclude %{_datadir}/verilator/include
-%{_bindir}/verilator
-%{_bindir}/verilator_bin
-%{_bindir}/verilator_bin_dbg
-%{_bindir}/verilator_coverage
-%{_bindir}/verilator_coverage_bin_dbg
-%{_bindir}/verilator_gantt
-%{_bindir}/verilator_profcfunc
-%{_datadir}/verilator
-%{_mandir}/man1/verilator.1%{?ext_man}
-%{_mandir}/man1/verilator_coverage.1%{?ext_man}
-%{_mandir}/man1/verilator_gantt.1%{?ext_man}
-%{_mandir}/man1/verilator_profcfunc.1%{?ext_man}
+%{_bindir}/verilator*
+%dir %{_datadir}/verilator
+%{_datadir}/verilator/bin
+%{_mandir}/man1/verilator*.1%{?ext_man}
 
 %files devel
 %{_datadir}/verilator/include
-%{_datadir}/pkgconfig/verilator.pc
+%{_datadir}/verilator/verilator-config*.cmake
+%{_libdir}/pkgconfig/verilator.pc
 
 %files examples
 %doc %{_docdir}/%{name}/examples/

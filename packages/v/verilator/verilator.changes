@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 14 16:50:38 UTC 2026 - Mikhail Paulyshka <me@mixaill.net>
+
+- Update to v5.052. For a list of changes, see included Changes or
+  https://github.com/verilator/verilator/blob/v5.052/Changes
+- Add _service for release archives.
+- Require GCC >= 10, Python >= 3.9 and CMake >= 3.19.
+- Add jemalloc-devel, pkgconfig(liblz4), pkgconfig(zlib) and z3.
+- Disable partial static linking.
+- Set VERILATOR_SRC_VERSION to the release tag.
+- Require matching devel subpackage and make it architecture-specific.
+- Move CMake configs to devel and pkg-config metadata to libdir/pkgconfig.
+- Run make test.
+
+-------------------------------------------------------------------
 Mon Jul 14 13:19:50 UTC 2025 - Yousaf Kaukab <yousaf.kaukab@suse.com>
 
 - Update to v5.038. For a list of changes, see included Changes or
