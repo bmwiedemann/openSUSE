@@ -2975,4 +2975,12 @@ we must have vb7.1.10.</comment>
   (kernel too old to support cooperative KVM)</comment>
     <requestid>1382838</requestid>
   </revision>
+  <revision rev="319" vrev="1">
+    <srcmd5>23d8471bf2bff068acb64b68164e390d</srcmd5>
+    <version>7.2.22</version>
+    <time>1792779686</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.2.22</comment>
+    <requestid>1386995</requestid>
+  </revision>
 </revisionlist>

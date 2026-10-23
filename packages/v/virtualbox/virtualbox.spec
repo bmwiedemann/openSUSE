@@ -69,7 +69,7 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.2.20
+Version:        7.2.22
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-only
@@ -126,7 +126,6 @@ Patch8:         turn_off_cloud_net.patch
 Patch9:         vbox-usb-warning.diff
 # Patch for 15.5
 Patch10:        fix_for_leap15.5.patch
-Patch11:        cxx17.patch
 Patch12:        host-source.patch
 Patch20:        gentoo-C23.patch
 Patch30:        kernel-longterm_6-18-44.patch
