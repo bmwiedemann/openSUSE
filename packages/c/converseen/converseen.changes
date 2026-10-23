@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:54:56 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 0.15.2.9:
+  * Added HIF read/write and JFIF write support (when HEIC is available)
+  * Fixed conversion and resolution issues with certain formats
+  * Fixed AVIF quality issue and AOM encoder error during AVIF conversion
+  * Fixed potential issues with file paths and with settings directory
+  * Fixed scale spinbox handling (value 0, reset on manual removal)
+  * Added visual feedback for folder imports and autoscroll in dialog
+  * Improved update dialog UX, aspect-ratio tooltip and dialog focus
+  * Added Korean and Georgian translations, updated many translations
+  * Windows-only: restrict DLL search path before ImageMagick init
+  * Fixed MacPorts build
+  * Many more fixes and improvements; see upstream release notes for full list
+- Drop Group tag and redundant Recommends (already provided by %lang_package)
+- Add missing Qt5Concurrent build dependency (required since this release)
+
+-------------------------------------------------------------------
 Mon Oct  6 13:25:11 UTC 2025 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - update to 0.15.0.3 – 2025-09-11 – Latest!

@@ -1,7 +1,7 @@
 #
 # spec file for package converseen
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           converseen
-Version:        0.15.0.3
+Version:        0.15.2.9
 Release:        0
 Summary:        Batch Image Conversion Tool
 License:        GPL-3.0-or-later
-Group:          Productivity/Graphics/Convertors
 URL:            https://converseen.fasterland.net/
 Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 BuildRequires:  ImageMagick
@@ -29,6 +28,7 @@ BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -37,7 +37,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(MagickCore)
 BuildRequires:  pkgconfig(MagickWand)
-Recommends:     %{name}-lang
 
 %description
 Converseen is a batch image conversion tool. Converseen allows you
