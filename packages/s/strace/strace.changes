@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Oct 22 21:56:39 UTC 2026 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 7.3
+  * Implemented decoding of fchroot syscall.
+  * Implemented decoding of SO_RIGHTS_NOTRUNC socket option.
+  * Implemented decoding of IFA_MC_USERS and IFA_PROTO netlink attributes.
+  * Implemented decoding of macvlan IFLA_INFO_DATA netlink attributes.
+  * Implemented decoding of NHA_DST_PORT, NHA_GROUP_STATS,
+    NHA_HW_STATS_ENABLE, NHA_HW_STATS_USED, and NHA_OP_FLAGS netlink
+    nexthop attributes.
+  * Implemented decoding of RTA_DEL_REASON route attribute.
+  * Implemented decoding of TUN/TAP ioctls.
+  * Implemented decoding of UFFDIO_MOVE, UFFDIO_RWPROTECT, and
+    UFFDIO_SET_MODE userfaultfd ioctls.
+  * Implemented decoding of bpf_link_info for BPF_OBJ_GET_INFO_BY_FD.
+  * Implemented decoding of landlock_restrict_self flags.
+  * Implemented decoding of ZCRX_CTRL_ADD_AREA io_uring zcrx ctrl operation.
+  * Implemented decoding of VIDIOC_{UN,}SUBSCRIBE_EVENT ioctl commands.
+  * Enhanced -e namespace=new option to decode setns(2) namespace transitions
+    when nstype is 0.
+  * Implemented decoding of auxiliary clock IDs.
+  * Updated lists of ATA_*, KVM_*, NL80211_*, V4L2_*, and *_MAGIC constants.
+  * Updated lists of ioctl commands from Linux 7.3.
+  * Fixed the argument names printed by -N/--arg-names for getresgid,
+    setfsgid, setgid, setregid, and setresgid syscalls.
+  * Limited nested NLMSG_ERROR netlink decoding to prevent stack exhaustion.
+  * Fixed out-of-bounds read in STHYI kernel response buffer tail decoding
+    when the declared header length exceeds the available buffer size.
+  * Fixed decoding of AF_BRIDGE RTM_GETNEIGH requests, including requests
+    with multiple attributes.
+  * Fixed several procfs lookups that used the wrong PID when strace's
+    PID namespace differs from the mounted /proc, affecting -e namespace=new
+    annotations for setns(2) and unshare(2), -Y/--decode-pids=comm process
+    names, and "already traced" attach diagnostics.
+  * Fixed -e namespace=new to report the correct namespace ID for setns(2)
+    and unshare(2) transitions to PID and time namespaces, which affect
+    future children rather than the caller.  An unavailable PID namespace
+    ID after unshare(2) is omitted.
+  * Fixed dynamic clock id decoding.
+
+-------------------------------------------------------------------
 Wed Sep  2 15:35:21 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Remove unused sysvinit-tools and time

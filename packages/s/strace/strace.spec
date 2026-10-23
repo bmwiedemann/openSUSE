@@ -17,7 +17,7 @@
 
 
 Name:           strace
-Version:        7.2
+Version:        7.3
 Release:        0
 Summary:        A utility to trace the system calls of a program
 License:        LGPL-2.1-or-later
