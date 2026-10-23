@@ -1665,4 +1665,30 @@
     connection.</comment>
     <requestid>1384825</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>cd1ec5ae0c7fe3c57445649da562ed85</srcmd5>
+    <version>1.31.8</version>
+    <time>1792779715</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.31.8
+  - Change in internal API: now the JSON parser reports strings
+    with escape sequences as separate events, and the
+    ngx_json_unescape_string() function decodes a string into a
+    separate buffer.
+  - Change: now the path specified in the &quot;working_directory&quot;
+    directive is relative to nginx prefix directory, but not to the
+    current directory.
+  - Bugfix: worker processes exited on start or during
+    reconfiguration if an invalid directory was specified in the
+    &quot;working_directory&quot; directive.
+  - Bugfix: worker processes might be terminated abnormally on a
+    SIGBUS signal when using HTTP/3 on platforms with strict
+    alignment requirements. Thanks to Daewoo Choi.
+  - Bugfix: &quot;recv() failed (5: Input/output error)&quot; alerts might
+    appear in logs when closing SSL connections if kernel TLS was
+    used with OpenSSL 3.2.0 or newer.
+  - Bugfix: nginx could not be built on Solaris if the
+    --with-control-api option was used.</comment>
+    <requestid>1387003</requestid>
+  </revision>
 </revisionlist>
