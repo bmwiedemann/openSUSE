@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Oct 11 16:34:39 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.6.9
+  * When fetchmail was built with NTLM support, and a POP3 server send
+    a malformed challenge to the authentication request,
+    fetchmail would call strtok() on an uninitialized stack buffer and
+    could in extreme cases read off the end of the buffer if it did not
+    contain 0x00 or 0x20 bytes, and corrupt the first 0x20 character to 0x00.
+    This will not allow remote code injection but can cause undefined
+    behavior including crashes of fetchmail or corrupting one bit of memory.
+    This is a regression introduced by commit 09f95921 that also became
+    part of all fetchmail-6.6.7.rc1 and later release candidates and the
+    6.6.7 and 6.6.8 releases. It is separate from CVE-2026-94184 and
+    just happened to be introduced anew in the same releases that fixed
+    the mentioned CVE.
+    Reported by Jakub Kulik, Gitlab Issue #98.
+  * Fix missing CR when sending multi-line warning messages from
+    daemon mode. Reported by Andrea Venturoli, Gitlab Issue #99.
+- Correct source URLs in spec by using branch 6.6
+
+-------------------------------------------------------------------
 Mon Oct  5 10:29:41 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update Source URL 
