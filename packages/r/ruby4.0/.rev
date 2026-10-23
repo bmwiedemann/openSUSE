@@ -308,4 +308,41 @@ Binary file ruby-4.0.1.tar.xz (revision 4) deleted</comment>
     <comment>- Update to 4.0.7</comment>
     <requestid>1378091</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>81ff3bfc4f53e419c228c8d87155480e</srcmd5>
+    <version>4.0.9</version>
+    <time>1792779732</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.9 (boo#1287171 CVE-2026-89078, CVE-2026-93577,
+  CVE-2026-97229, CVE-2026-110264)
+  https://www.ruby-lang.org/en/news/2026/10/23/regexp-fixes-for-gitlab-cves/
+  - Reject overflowed repeat/null-check IDs in huge regexps by
+    makenowjust 
+
+- Update to 4.0.8
+  - Bug #22311: Build crashes on macOS 26 with the macOS 27 SDK
+    because pipe2() and dup3() are unavailable - Ruby - Ruby Issue
+    Tracking System
+  - Bug #22174: Set operations (&amp;, ^, collect!, flatten, classify,
+    divide) do not preserve compare_by_identity - Ruby - Ruby Issue
+    Tracking System
+  - Bug #22383: Fix inverted STR_SHARED check in
+    rb_str_tmp_frozen_release - Ruby - Ruby Issue Tracking System
+  - Bug #22387: str_shared_replace incorrectly recalculates termlen
+    - Ruby - Ruby Issue Tracking System
+  - Bug #22327: RubyVM::ZJIT.reset_stats! aborts the process (Rust
+    panic) when ZJIT is not enabled - Ruby - Ruby Issue Tracking
+    System
+  - Bug #22381: MatchData assigned to $~ is incorrectly reused -
+    Ruby - Ruby Issue Tracking System
+  - Bug #22321: Assertion Failed:
+    rb_vm_search_method_slowpath:RB_TYPE_2_P(klass, RUBY_T_CLASS,
+    RUBY_T_ICLASS): klass: T_MODULE - Ruby - Ruby Issue Tracking
+    System
+  - Bug #22315: heap-use-after-free in String unpack with a block
+    that mutates the receiver - Ruby - Ruby Issue Tracking System
+  - Bug #22318: heap uaf triggered in array.flatten - Ruby - Ruby
+    Issue Tracking System</comment>
+    <requestid>1391994</requestid>
+  </revision>
 </revisionlist>

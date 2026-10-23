@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Fri Oct 23 10:04:57 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.9 (boo#1287171 CVE-2026-89078, CVE-2026-93577,
+  CVE-2026-97229, CVE-2026-110264)
+
+  https://www.ruby-lang.org/en/news/2026/10/23/regexp-fixes-for-gitlab-cves/
+
+  - Reject overflowed repeat/null-check IDs in huge regexps by
+    makenowjust 
+
+-------------------------------------------------------------------
+Thu Oct 22 09:19:29 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.8
+  - Bug #22311: Build crashes on macOS 26 with the macOS 27 SDK
+    because pipe2() and dup3() are unavailable - Ruby - Ruby Issue
+    Tracking System
+  - Bug #22174: Set operations (&, ^, collect!, flatten, classify,
+    divide) do not preserve compare_by_identity - Ruby - Ruby Issue
+    Tracking System
+  - Bug #22383: Fix inverted STR_SHARED check in
+    rb_str_tmp_frozen_release - Ruby - Ruby Issue Tracking System
+  - Bug #22387: str_shared_replace incorrectly recalculates termlen
+    - Ruby - Ruby Issue Tracking System
+  - Bug #22327: RubyVM::ZJIT.reset_stats! aborts the process (Rust
+    panic) when ZJIT is not enabled - Ruby - Ruby Issue Tracking
+    System
+  - Bug #22381: MatchData assigned to $~ is incorrectly reused -
+    Ruby - Ruby Issue Tracking System
+  - Bug #22321: Assertion Failed:
+    rb_vm_search_method_slowpath:RB_TYPE_2_P(klass, RUBY_T_CLASS,
+    RUBY_T_ICLASS): klass: T_MODULE - Ruby - Ruby Issue Tracking
+    System
+  - Bug #22315: heap-use-after-free in String unpack with a block
+    that mutates the receiver - Ruby - Ruby Issue Tracking System
+  - Bug #22318: heap uaf triggered in array.flatten - Ruby - Ruby
+    Issue Tracking System
+  - Bug #22319: heap buffer overflow triggered by array's zip
+    function - Ruby - Ruby Issue Tracking System
+  - Bug #22322: AddressSanitizer: use-after-poison in
+    econv_description /ruby-src/build/../transcode.c - Ruby - Ruby
+    Issue Tracking System
+  - Bug #22334: Assertion Failed: VM_ENV_FLAGS:FIXNUM_P(flags) -
+    Ruby - Ruby Issue Tracking System
+  - Bug #22336: IO:Buffer Heap uaf - Ruby - Ruby Issue Tracking
+    System
+  - Bug #22330: heap uaf from string.encode() - Ruby - Ruby Issue
+    Tracking System
+  - Bug #22340: Win32: File.stat succeeds on symbolic-link loops on
+    Windows - Ruby - Ruby Issue Tracking System
+  - Bug #22335: Stack corruption with >31 keyword args and refined
+    Integer#== - Ruby - Ruby Issue Tracking System
+  - Bug #22339: Ruby::Box: crash / hang at VM shutdown with
+    RUBY_FREE_AT_EXIT=1 - Ruby - Ruby Issue Tracking System
+  - Bug #22342: IO#gets can ignore the limit argument in some edge
+    cases - Ruby - Ruby Issue Tracking System
+  - Bug #22391: Fix propagation of errno in rb_io_maybe_wait. -
+    Ruby - Ruby Issue Tracking System
+  - Bug #22384: Regexp compile error in the 2nd+ branch of a
+    top-level alternation leaks the parse tree (regression from
+    #13332, Ruby 4.0) - Ruby - Ruby Issue Tracking System
+  - Bug #22388: Use-after-free when an Enumerable retains its each
+    block - Ruby - Ruby Issue Tracking System
+  - Bug #22284: Passing an object with to_int to curry as its arity
+    causes problems with LLP64. - Ruby - Ruby Issue Tracking System
+  - Bug #22416: Respect timezone abbreviation encodings in
+    Time#strftime - Ruby - Ruby Issue Tracking System
+  - Bug #22426: ZJIT: keyword arguments swapped when passed out of
+    declared order to a method with a block (please backport
+    d81a11d4e6 to 4.0) - Ruby - Ruby Issue Tracking System
+  - Bug #22406: Process.fork can leave the child unable to resolve
+    hostnames: getaddrinfo helper threads take glibc's resolver
+    lock after releasing the fork lock - Ruby - Ruby Issue Tracking
+    System
+  - Bug #22445: On macOS, a child of Kernel#fork can abort with
+    "[BUG] pthread_rwlock_destroy: Resource busy (EBUSY)" - Ruby -
+    Ruby Issue Tracking System
+  - Bug #22415: Thread.handle_interrupt needs to preserve errinfo -
+    Ruby - Ruby Issue Tracking System
+  - Bug #22434: "No live threads left. Deadlock?" when running
+    system() or spawn in Ractors - Ruby - Ruby Issue Tracking
+    System
+  - Backport the regexp compiler program size overflow fixes to
+    ruby_4_0 by hsbt · Pull Request #19025
+
+-------------------------------------------------------------------
 Tue Sep 15 09:20:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.0.7
