@@ -65,6 +65,8 @@ Patch15:        https://github.com/FreeCAD/FreeCAD/commit/06bc4f61e06fb4215ae7e5
 Patch16:        Fix_CAM_PathOpUtil_OCCT_7_9.patch
 # PATCH-FIX-UPSTREAM
 Patch17:        https://github.com/FreeCAD/FreeCAD/commit/605af01bfa14.patch#/Fix_Lineformat_test.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/FreeCAD/FreeCAD/commit/01e4eecfc614387a48c50e38392244976618583b
+Patch18:        pyside-6.12.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x

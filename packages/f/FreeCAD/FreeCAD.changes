@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 22 17:56:26 UTC 2026 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+- Fix pySide 6.12 compatibility
+  * pyside-6.12.patch
+
+-------------------------------------------------------------------
 Mon Sep 28 16:55:48 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.1.4
