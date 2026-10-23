@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 23 07:44:54 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.2.19.
+  Changelog: https://github.com/jelmer/dulwich/releases/tag/dulwich-1.2.19
+  * Keep assume-unchanged and other index flags on entries whose content does not change (status, reset, checkout, restore, stash pop, add).
+  * Split interactive rebase todo lists only on newlines, so a carriage return in a commit subject can no longer inject an instruction such as exec.
+  * Don't follow a symlinked leading directory in update_working_tree, which could remove a file outside the work tree.
+  * Make ancestor collection during upload-pack negotiation and pack generation linear rather than quadratic.
+  * Fold the commit message's first paragraph onto a single Subject line in format-patch, so later lines no longer end up in the mail headers.
+- Changes from version 1.2.18: https://github.com/jelmer/dulwich/releases/tag/dulwich-1.2.18
+  * Add support for Python 3.15.
+  * Many checkout, reset, pull and merge fixes: honour .gitattributes (including in subdirectories) and line-ending conversion, handle file/directory swaps, keep merge state consistent, and stop pull from dropping local commits or leaving HEAD moved on refusal.
+  * Sparse checkout fixes: patterns now match git's semantics, excluded paths stay out of the working tree and out of status, and emptied directories are removed.
+  * Fix a race where GitFile.close() could remove another writer's lockfile.
+  * Much improved LFS support: working lfs_fetch/lfs_pull/lfs_push with git-lfs semantics, proxy/TLS settings honoured for uploads, filter.lfs.required and GIT_LFS_SKIP_SMUDGE support, consistent LFSError exceptions, and rejection of non-HTTP transfer URLs.
+  * Raise MemoryError/ApplyDeltaError for bogus delta sizes rather than aborting.
+  * Faster porcelain.status (especially on Windows) and porcelain.add.
+
+-------------------------------------------------------------------
 Tue Oct 13 16:20:39 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 1.2.17.
