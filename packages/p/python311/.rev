@@ -2078,4 +2078,16 @@ CVE-2026-17084: Don't consider Unicode codepoint attributes
       checked. (In Python 3.13 and later, this raises</comment>
     <requestid>1383247</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>5e4d3be0ff43926df21a35cba977546c</srcmd5>
+    <version>3.11.17</version>
+    <time>1792779733</time>
+    <user>anag_factory</user>
+    <comment>- Require libexpat1 &gt;= 2.8.5 for python311-base and raise
+  the Expat build requirement accordingly. pyexpat uses
+  XML_SetHashSalt16Bytes when built with Expat &gt;= 2.8, but the
+  automatic SONAME dependency permits older libraries, breaking
+  imports and venv/ensurepip (bsc#1285433).</comment>
+    <requestid>1386974</requestid>
+  </revision>
 </revisionlist>
