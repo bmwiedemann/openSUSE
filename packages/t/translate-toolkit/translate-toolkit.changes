@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:07:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.20.0:
+  * Project relicensed from GPL-2.0-or-later to
+    GPL-3.0-or-later.
+  * Gettext PO: opt-in SPDX format for contributor comments.
+  * TBX: ordered term alternatives; robust editing of existing
+    units; TBX/TMX language-code fallbacks.
+  * Markdown/MDX: keep translations identical to the source.
+  * New odf2po converter.
+  * Requires lxml >= 6.1.0, Python >= 3.11,
+    unicode-segmentation-rs >= 0.2.0 and tomlkit >= 0.13.0.
+
+-------------------------------------------------------------------
 Tue May 12 07:39:45 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 3.19.9

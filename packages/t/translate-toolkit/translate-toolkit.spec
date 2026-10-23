@@ -40,7 +40,7 @@ ExcludeArch: %ix86
 %define binaries_and_manpages %{shrink:\
     pretranslate poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology \
     android2po arb2po asciidoc2po csv2po csv2tbx dtd2po flatxml2po fluent2po html2po ical2po idml2po ini2po json2po \
-    moz2po mozfunny2prop mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo \
+    moz2po mozfunny2prop mozlang2po odf2po odf2xliff oo2po oo2xliff php2po phppo2pypo \
     po2asciidoc po2csv po2dtd po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2odf po2oo \
     po2php po2prop po2rc po2resx po2symb po2tiki po2tmx po2toml po2ts po2txt po2web2py \
     po2wordfast po2wxl po2xliff po2yaml pot2po prop2po pypo2phppo rc2po resx2po symb2po \
@@ -51,15 +51,15 @@ ExcludeArch: %ix86
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.19.9
+Version:        3.20.0
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 URL:            https://toolkit.translatehouse.org/
 Source:         https://github.com/translate/translate/archive/refs/tags/%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module iniparse >= 0.5}
-BuildRequires:  %{python_module lxml >= 5.2.0}
+BuildRequires:  %{python_module lxml >= 6.1.0}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module phply >= 1.2.6}
@@ -77,9 +77,9 @@ BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       gettext-runtime
 Requires:       python
-Requires:       python-tomlkit
-Requires:       python-unicode-segmentation-rs
-Requires:       python-lxml >= 5.2.0
+Requires:       python-tomlkit >= 0.13.0
+Requires:       python-unicode-segmentation-rs >= 0.2.0
+Requires:       python-lxml >= 6.1.0
 # The following are for the full experience of translate-toolkit
 Recommends:     %{name}-doc
 Recommends:     %{name}-man
