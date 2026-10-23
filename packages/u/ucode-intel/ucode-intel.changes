@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:54:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20260925:
+  * Meteor Lake (MTL) C0 stepping microcode 0x28 -> 0x2b
+    (functional update)
+
+-------------------------------------------------------------------
 Mon Aug 24 13:16:39 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - Intel CPU Microcode was updated to the 20260812 release (bsc#1274785)
