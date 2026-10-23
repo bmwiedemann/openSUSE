@@ -709,4 +709,15 @@
     environments is resolved (forwarded request 1384357 from rrahl0)</comment>
     <requestid>1384358</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>7d05f0ea39fd735d30276c3a893f0c73</srcmd5>
+    <version>1.104.2</version>
+    <time>1792780246</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.104.2:
+  - Go is updated to version 1.27.3, to explicitly distrust
+    compromised TLS intermediate certificates as described in
+    security bulletin TS-2026-013. (forwarded request 1392020 from darix)</comment>
+    <requestid>1392044</requestid>
+  </revision>
 </revisionlist>

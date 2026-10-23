@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:29:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.104.2:
+  - Go is updated to version 1.27.3, to explicitly distrust
+    compromised TLS intermediate certificates as described in
+    security bulletin TS-2026-013.
+
+-------------------------------------------------------------------
 Mon Oct 12 16:01:01 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.104.1:
