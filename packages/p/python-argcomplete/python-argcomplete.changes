@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:42:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.7.2:
+  * Require Python 3.10+
+  * Fix zsh global completion with zsh 5.9.0.1; expand ~ in
+    _FilteredFilesCompleter
+  * Escape glob and brace metacharacters in quote_completions;
+    quote compgen prefix in FilesCompleter
+  * Remove deprecated easy_install script detection
+- Drop python-argcomplete-check-easy-install-script and its
+  libalternatives registrations, removed upstream
+- Remove the /usr/bin/env python3 shebang from the non-executable
+  argcomplete/scripts modules
+
+-------------------------------------------------------------------
 Wed Feb  4 09:07:21 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.6.3:

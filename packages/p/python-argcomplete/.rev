@@ -495,4 +495,12 @@
 - Add %pythons_for_pypi macro</comment>
     <requestid>1330905</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4af11b65808b8b79bd1f830e36dc6f82</srcmd5>
+    <version>3.7.2</version>
+    <time>1792779655</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386544</requestid>
+  </revision>
 </revisionlist>

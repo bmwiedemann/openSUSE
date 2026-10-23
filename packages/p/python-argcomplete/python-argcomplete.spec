@@ -33,13 +33,13 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-argcomplete%{psuffix}
-Version:        3.6.3
+Version:        3.7.2
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
 URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 67.2}
@@ -80,6 +80,8 @@ resources over the network).
 
 %prep
 %autosetup -p1 -n argcomplete-%{version}
+# imported via the entry points and installed non-executable
+sed -i '1{/^#!/d}' argcomplete/scripts/*.py
 
 %build
 %if %{without test}
@@ -91,7 +93,6 @@ resources over the network).
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/activate-global-python-argcomplete
 %python_clone -a %{buildroot}%{_bindir}/register-python-argcomplete
-%python_clone -a %{buildroot}%{_bindir}/python-argcomplete-check-easy-install-script
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand chmod -x %{buildroot}%{$python_sitelib}/argcomplete/scripts/*.py
 %endif
@@ -118,17 +119,14 @@ cp -rf test test.bak
 %pre
 %python_libalternatives_reset_alternative activate-global-python-argcomplete
 %python_libalternatives_reset_alternative register-python-argcomplete
-%python_libalternatives_reset_alternative python-argcomplete-check-easy-install-script
 
 %post
 %python_install_alternative activate-global-python-argcomplete
 %python_install_alternative register-python-argcomplete
-%python_install_alternative python-argcomplete-check-easy-install-script
 
 %postun
 %python_uninstall_alternative activate-global-python-argcomplete
 %python_uninstall_alternative register-python-argcomplete
-%python_uninstall_alternative python-argcomplete-check-easy-install-script
 
 %files %{python_files}
 %doc README.rst
@@ -136,7 +134,6 @@ cp -rf test test.bak
 %{python_sitelib}/argcomplete-%{version}.dist-info
 %{python_sitelib}/argcomplete
 %python_alternative %{_bindir}/activate-global-python-argcomplete
-%python_alternative %{_bindir}/python-argcomplete-check-easy-install-script
 %python_alternative %{_bindir}/register-python-argcomplete
 %endif
 
