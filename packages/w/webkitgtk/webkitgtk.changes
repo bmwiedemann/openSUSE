@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 16 13:09:21 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Lower memory constraint down to 25G which is enough and allow
+  build for armv9
+
+-------------------------------------------------------------------
 Mon Oct 12 15:05:43 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable overoptimization in mimalloc with -DMI_NO_OPT_ARCH=ON

@@ -165,4 +165,13 @@
   to keep compatibility with armv8.0 baseline on aarch64</comment>
     <requestid>1384515</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>b4383e4445e5627322be0c3c24a890b6</srcmd5>
+    <version>2.54.1</version>
+    <time>1792779675</time>
+    <user>anag_factory</user>
+    <comment>- Lower memory constraint down to 25G which is enough and allow
+  build for armv9</comment>
+    <requestid>1386727</requestid>
+  </revision>
 </revisionlist>
