@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 22 18:28:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add build fix for Qt >= 6.12
+  * 0001-Fix-uic-compilation-error-with-AddressableItemList-o.patch
+
+-------------------------------------------------------------------
 Thu Jul  2 03:31:10 UTC 2026 - Jianhua Lu <lujianhua000@gmail.com>
 
 - Update to version 2.5.0

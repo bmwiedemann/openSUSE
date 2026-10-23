@@ -25,6 +25,8 @@ Summary:        GUI for Rizin reverse engineering framework
 License:        GPL-3.0-only
 URL:            https://github.com/rizinorg/cutter
 Source0:        https://github.com/rizinorg/cutter/releases/download/v%{version}/Cutter-v%{version}-src.tar.gz
+# PATCH-FIX-UPSTREAM -- https://github.com/rizinorg/cutter/pull/3670
+Patch0:         0001-Fix-uic-compilation-error-with-AddressableItemList-o.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
