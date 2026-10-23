@@ -17,11 +17,10 @@
 
 
 Name:           Photini
-Version:        2026.3.4
+Version:        2026.8.0
 Release:        0
 Summary:        Digital photograph metadata (EXIF, IPTC, XMP) editing application
 License:        GPL-3.0-or-later
-Group:          Productivity/Graphics/Other
 URL:            https://github.com/jim-easterbrook/Photini
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
@@ -43,19 +42,19 @@ Requires:       python3-requests >= 2.4.0
 Requires:       python3-requests-oauthlib
 Requires:       python3dist(pyqt6-webengine)
 Requires:       typelib(GExiv2)
-# For the flickr, Google Photos, Ipernity and Pixelfed/Mastodon plugins
-Recommends:     python3-keyring
-Conflicts:      python3-keyring-keyutils
-# For the flickr, Ipernity and Pixelfed/Mastodon plugin
-Recommends:     python3-requests-toolbelt
-# For the spelling plugin
-Recommends:     python3-pyenchant
-# For the GPS plugin
-Recommends:     python3-gpxpy
 # For the camera import plugin
 Recommends:     python3-gphoto2
+# For the GPS plugin
+Recommends:     python3-gpxpy
+# For the flickr, Google Photos, Ipernity and Pixelfed/Mastodon plugins
+Recommends:     python3-keyring
+# For the spelling plugin
+Recommends:     python3-pyenchant
+# For the flickr, Ipernity and Pixelfed/Mastodon plugin
+Recommends:     python3-requests-toolbelt
+Conflicts:      python3-keyring-keyutils
 BuildArch:      noarch
-ExclusiveArch:  %x86_64 aarch64 riscv64
+ExclusiveArch:  %{x86_64} aarch64 riscv64
 
 %description
 A digital photograph metadata (EXIF, IPTC, XMP) editing application.
@@ -86,7 +85,7 @@ mkdir -p %{buildroot}%{_datadir}/icons
 mv  ~/.local/share/icons/* %{buildroot}%{_datadir}/icons
 
 # Adapt desktop file
-sed -i 's#^Exec=[^ ]\+#Exec=/usr/bin/photini#g' \
+sed -i 's#^Exec=[^ ]\+#Exec=%{_bindir}/photini#g' \
    ~/.local/share/applications/photini.desktop
 install -Dm0644 ~/.local/share/applications/photini.desktop \
    %{buildroot}%{_datadir}/applications/photini.desktop

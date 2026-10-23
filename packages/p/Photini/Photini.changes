@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:54:37 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 2026.8.0:
+  * Allow list item separator (e.g. ";") to be changed in settings.
+  * Fix Ipernity uploader after their API change.
+  * Fix clash between GIMP metadata and MS person in region metadata.
+  * Improved handling of LangAlt values when no system language is set.
+  * Fix problem with some Canon scanners putting "/" in Exif dates.
+  * Fix bug with empty Exif timezone offset values from some cameras.
+  * Allow Photini to run if python-keyring is not installed.
+  * Fix localisation of editable builds.
+- Drop Group tag and clean up spec file with spec-cleaner.
+
+-------------------------------------------------------------------
 Fri Jul 31 17:16:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2026.3.4:
