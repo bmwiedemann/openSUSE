@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 23 13:39:01 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version v0.5.4:
+  * Simple launch by default: fresh FILE opens just that file
+    without restoring session or dock; rename orchestrator_mode to
+    auto_attach
+  * Markdown Source, Rendered, and side-by-side Source+Compose view
+    modes
+  * Forward OSC 52 clipboard writes from the integrated terminal to
+    the host clipboard, and add an option to close terminal tabs on
+    shell exit
+  * Close tabs with middle-click, make the "Palette: Ctrl+P" status
+    hint clickable, and add a Duplicate Line Above command
+  * Share unsaved-change recovery between daemon and direct
+    launches, keep detached daemons running, and hash long daemon
+    socket paths to fit sun_path
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- cargo_vendor: re-enable dependency updates now that upstream
+  replaced the yanked zip 2.x dependency
+
+-------------------------------------------------------------------
 Fri Oct 16 17:00:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version v0.5.3:

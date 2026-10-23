@@ -135,4 +135,12 @@
     <comment>Update to 0.5.3</comment>
     <requestid>1385287</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2be4b38c6d79acb5b4c33eb92b3bd635</srcmd5>
+    <version>0.5.4</version>
+    <time>1792780266</time>
+    <user>anag_factory</user>
+    <comment>Update fresh-editor to 0.5.4: simple launch defaults, Markdown compose view, OSC 52 clipboard support, and re-enabled cargo_vendor updates.</comment>
+    <requestid>1392057</requestid>
+  </revision>
 </revisionlist>
