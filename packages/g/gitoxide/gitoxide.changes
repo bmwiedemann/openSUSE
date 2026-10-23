@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:34:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.61.0:
+  * Vendored TLS crates refreshed past their advisory floors: rustls
+    0.23.46 (RUSTSEC-2026-0346 through RUSTSEC-2026-0349),
+    rustls-webpki 0.103.16 (RUSTSEC-2026-0382) and
+    webpki-root-certs 1.0.11 (RUSTSEC-2026-0383, CVE-2026-111943
+    alias); the shipped binaries use the curl-openssl backend and do
+    not link these crates (reqwest backend only), so this records new
+    vendored floors, not a fix to gix/ein
+  * Plumbing crates now use a standard std::error::Error
+    compatible error type, with more consistent error
+    handling and greatly improved tracing of all commands
+  * Add gix worktree locking with a lock override that
+    preserves changes, and separate linked worktree
+    registration from checkout
+- Drop gix-utils-prodash-feature.patch, restored upstream
+  in gix-utils 0.5.1.
+- Refresh the vendored dependencies. The linked graph still
+  carries MPL-2.0 only (uluru, option-ext); the License tag
+  is unchanged.
+
+-------------------------------------------------------------------
 Fri Oct  9 07:11:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.60.0:

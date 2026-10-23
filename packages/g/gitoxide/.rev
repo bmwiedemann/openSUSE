@@ -151,4 +151,12 @@ openSUSE_Tumbleweed aarch64&quot;: green, %check ok, rpmlint 0 errors /
     <comment>Update gitoxide to 0.60.0: drops --progress flags (breaking), adds trace counter and worktree add/remove, plus a build fix for cargo-auditable metadata.</comment>
     <requestid>1383696</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a5dc73792cd46125af75a9976f93e3b6</srcmd5>
+    <version>0.61.0</version>
+    <time>1792780174</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.61.0</comment>
+    <requestid>1392008</requestid>
+  </revision>
 </revisionlist>
