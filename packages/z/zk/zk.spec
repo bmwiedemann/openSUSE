@@ -17,18 +17,19 @@
 
 
 Name:           zk
-Version:        0.15.6
+Version:        0.15.7
 Release:        0
 Summary:        Plain text note-taking assistant for markdown
-License:        BSD-2-Clause
-Group:          System/Shells
+# Legal-Review-Notice: Upstream zk is GPL-3.0-only (LICENSE); vendored github.com/gosimple/slug is MPL-2.0 (source included in vendor.tar.gz in src.rpm).
+License:        GPL-3.0-only AND MPL-2.0
 URL:            https://github.com/zk-org/zk
 Source0:        https://github.com/zk-org/zk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-# PATCH-FIX-UPSTREAM fix_test.patch -- based on commit e3c5784fb84a792491724fe4cc1f26e2c9d01b60
 BuildRequires:  c_compiler
+BuildRequires:  make
+BuildRequires:  pkgconfig
 BuildRequires:  zstd
-BuildRequires:  golang(API)
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  pkgconfig(icu-io)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       fzf
@@ -38,7 +39,7 @@ Zk is a plain text note-taking assistant for markdown.
 It is a command-line tool helping you to maintain a plain text Zettelkasten or personal wiki.
 
 %prep
-%setup -qa1
+%setup -q -a1
 
 %build
 %ifarch ppc64
@@ -47,13 +48,13 @@ BUILDMOD=""
 BUILDMOD="-buildmode=pie"
 %endif
 export RPM_OPT_FLAGS="%{optflags}"
-go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.Version=%{version} -X main.Build=578894f" --tags "icu json1 fts5 secure_delete"
+go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.Version=%{version} -X main.Build=955cb76" --tags "icu json1 fts5 secure_delete"
 
 %install
 install -Dm755 zk %{buildroot}%{_bindir}/zk
 
 %check
-make test
+%make_build test
 
 %files
 %{_bindir}/%{name}

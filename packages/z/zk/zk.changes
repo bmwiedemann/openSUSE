@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:19:39 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.15.7:
+  * Keep note ordering requested with --sort in fzf during
+    interactive filtering
+  * Resolve links with a leading slash against the notebook root,
+    falling back to the filesystem for absolute paths
+  * Pass a complete NoteIndex to the transaction in
+    NoteIndex.Commit
+  * Make tag filtering case-insensitive
+  * Use the working directory as the target of the
+    "edit --interactive" new note fzf binding
+- Correct License tag to GPL-3.0-only AND MPL-2.0 to match
+  upstream LICENSE and vendored github.com/gosimple/slug
+- Add BuildRequires on golang(API) >= 1.25, make, and pkgconfig
+- Pin golang.org/x/crypto@v0.56.0 via go_modules service require
+  parameter and add download_files service so the upstream source
+  tarball stays unmodified
+
+-------------------------------------------------------------------
+Fri Sep  4 08:08:07 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update Go vendored dependencies to resolve security issues
+  (boo#1278625, boo#1278447):
+  * Upgrade golang.org/x/crypto to v0.56.0 to fix security
+    vulnerabilities in the embedded x/crypto/ssh package:
+    - CVE-2026-56854: authentication bypass
+    - CVE-2026-56855: deadlock vulnerability
+    - CVE-2026-78662: deadlock vulnerability
+
+-------------------------------------------------------------------
 Tue Jul 28 14:17:14 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.15.6:
