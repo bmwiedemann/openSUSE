@@ -17,7 +17,7 @@
 
 
 Name:           libnotify
-Version:        0.8.8
+Version:        0.8.9
 Release:        0
 Summary:        Notifications Library
 License:        LGPL-2.1-or-later

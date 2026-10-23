@@ -435,4 +435,32 @@ No GPL-2.0+ files found in the package. The Fedora package is also licensed unde
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342991</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0cc76ed896034e96bd8e695c2410a4b9</srcmd5>
+    <version>0.8.9</version>
+    <time>1792779670</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.9:
+  * This is a maintenance release, mostly with bug fixes around notify-send
+    behaviors and portal notifications, together with more tests coverage for
+    hints edge cases, and some library cleanups:
+    + Notify-send:
+      - Start action ID from 1 as docs states
+      - Fix the activation token FD validity check
+      - Don't write the notification ID and action to stdin
+      - Don't cache the hint conversion error
+    + Notify: Free the application name and icon on uninit
+    + Notification:
+      - Do not send the default action as a button in portal notifications
+      - Read the icon contents using g_file_load_contents()
+      - Use g_clear_handle_id() for the portal timeout
+    + Tests/notify-send:
+      - Add tests for the default action button
+      - Verify behavior on invalid hints
+    + Launch-context: Don't omit parameter names in vfunc implementation
+    + Bugs fixed:
+      - portal: &quot;default&quot; action adds additional button
+      - Omitted parameter names in a vfunc implementation</comment>
+    <requestid>1386719</requestid>
+  </revision>
 </revisionlist>

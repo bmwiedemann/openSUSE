@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 18 04:56:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.8.9:
+  * This is a maintenance release, mostly with bug fixes around notify-send
+    behaviors and portal notifications, together with more tests coverage for
+    hints edge cases, and some library cleanups:
+    + Notify-send:
+      - Start action ID from 1 as docs states
+      - Fix the activation token FD validity check
+      - Don't write the notification ID and action to stdin
+      - Don't cache the hint conversion error
+    + Notify: Free the application name and icon on uninit
+    + Notification:
+      - Do not send the default action as a button in portal notifications
+      - Read the icon contents using g_file_load_contents()
+      - Use g_clear_handle_id() for the portal timeout
+    + Tests/notify-send:
+      - Add tests for the default action button
+      - Verify behavior on invalid hints
+    + Launch-context: Don't omit parameter names in vfunc implementation
+    + Bugs fixed:
+      - portal: "default" action adds additional button
+      - Omitted parameter names in a vfunc implementation
+
+-------------------------------------------------------------------
 Mon Mar 23 10:48:29 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
@@ -413,7 +438,7 @@ Sat Dec 20 11:30:04 EST 2008 - mboman@suse.de
 -------------------------------------------------------------------
 Tue Nov 11 16:54:22 CET 2008 - ro@suse.de
 
-- SLE-11 uses PPC64 instead of PPC, adapt baselibs.conf 
+- SLE-11 uses PPC64 instead of PPC, adapt baselibs.conf
 
 -------------------------------------------------------------------
 Tue Oct 28 02:49:12 CET 2008 - vuntz@novell.com
@@ -470,19 +495,19 @@ Mon Nov 27 19:27:48 CET 2006 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Thu Aug 31 12:01:12 CEST 2006 - cschneemann@suse.de
 
-- Updated to version 0.4.2 
+- Updated to version 0.4.2
 
 -------------------------------------------------------------------
 Tue Aug 15 01:27:53 CEST 2006 - ro@suse.de
 
-- added dbus-1-glib-devel to BuildRequires 
+- added dbus-1-glib-devel to BuildRequires
 
 -------------------------------------------------------------------
 Thu May 11 16:53:50 CEST 2006 - rml@suse.de
 
 - Require dbus-x11 too, because that provides dbus-launch, which
   is how we launch the session bus.  And libnotify needs the
-  session bus (Novell bug #174865). 
+  session bus (Novell bug #174865).
 - No need to rerun autogen; just run configure
 
 -------------------------------------------------------------------
@@ -503,7 +528,7 @@ Wed Jan 18 20:28:02 CET 2006 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Tue Aug  2 17:32:08 CEST 2005 - rodrigo@suse.de
 
-- Updated to 0.2.1. 
+- Updated to 0.2.1.
 
 -------------------------------------------------------------------
 Wed Jun 29 17:08:56 CEST 2005 - sbrabec@suse.cz
