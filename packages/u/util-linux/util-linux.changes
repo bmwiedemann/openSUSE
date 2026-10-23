@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 19 08:08:42 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Wrap the lastlog2 and liblastlog2-2 package descriptions within
+  the line length limit
+- Ship /var/lib/lastlog in the lastlog2 package; the directory is
+  created by the tmpfiles entry but was missing from the file list
+- Drop the no-op %tmpfiles_create calls from the lastlog2 and
+  uuidd scriptlets; both packages ship their tmpfiles.d entries,
+  which the systemd file trigger processes at install time
+- Use the find -regextype name posix-extended instead of its
+  posix-egrep alias in %install
+- List the header directories excluded from the systemd package
+  explicitly instead of globbing the shared include directory
+
+-------------------------------------------------------------------
 Sun Oct  4 22:26:56 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.42.4 (bsc#1274864, PED-16740):

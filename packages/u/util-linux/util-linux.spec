@@ -405,7 +405,10 @@ Requires(pre):  pam-config >= 2.4
 Requires(post): pam-config >= 2.4
 
 %description -n lastlog2
-pam_lastlog2 and lastlog2 are Y2038 safe versions of the old lastlog utility. pam_lastlog2 collects all data in a sqlite3 database and lastlog2 formats and prints the contents. The username, port, and last login time will be printed.
+pam_lastlog2 and lastlog2 are Y2038 safe versions of the old lastlog
+utility. pam_lastlog2 collects all data in a sqlite3 database and
+lastlog2 formats and prints the contents. The username, port, and
+last login time will be printed.
 
 %package -n liblastlog2-2
 Summary:        Library to report most recent login of users
@@ -413,7 +416,8 @@ License:        BSD-2-Clause
 Group:          System/Libraries
 
 %description -n liblastlog2-2
-The liblastlog2 library provides various interfaces to read, write or modify the lastlog 2 database.
+The liblastlog2 library provides various interfaces to read, write
+or modify the lastlog 2 database.
 
 %package -n liblastlog2-devel
 Summary:        Development files for the lastlog2 library
@@ -680,10 +684,10 @@ rm -f %{buildroot}%{_mandir}/man8/fdisk.8*
 # ulsubset != core
 
 # create list of setarch(8) symlinks
-find  %{buildroot}%{_mandir}/man8 -regextype posix-egrep  \
+find  %{buildroot}%{_mandir}/man8 -regextype posix-extended  \
   -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)\.8.*" \
   -printf "%{_mandir}/man8/%f*\n" >> %{name}.files
-find  %{buildroot}%{_bindir}/ -regextype posix-egrep -type l \
+find  %{buildroot}%{_bindir}/ -regextype posix-extended -type l \
   -regex ".*(linux32|linux64|s390|s390x|i386|ppc|ppc64|ppc32|sparc|sparc64|sparc32|sparc32bash|mips|mips64|mips32|ia64|x86_64|parisc|parisc32|parisc64)$" \
   -printf "%{_bindir}/%f\n" >> %{name}.files
 mkdir -p %{buildroot}/run/uuidd
@@ -697,6 +701,7 @@ touch %{buildroot}%{_sharedstatedir}/libuuid/clock.txt
 # Install systemd-tmpfile for lastlog database
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 644 %{SOURCE17} %{buildroot}%{_tmpfilesdir}/lastlog2.conf
+mkdir -p %{buildroot}%{_localstatedir}/lib/lastlog
 %endif
 # ulsubset == systemd, ulbuild == base
 
@@ -960,7 +965,6 @@ fi
 %service_add_pre lastlog2-import.service
 
 %post -n lastlog2
-%tmpfiles_create lastlog2.conf
 %service_add_post lastlog2-import.service
 %{_sbindir}/pam-config -a --lastlog2 --lastlog2-silent_if=gdm,gdm-password,lxdm,lightdm,mdm,sddm || :
 
@@ -991,7 +995,6 @@ getent passwd uuidd >/dev/null || \
 # Useful for Tumbleweed or zypper dup only.
 mv /run/run/uuidd /run/uuidd >/dev/null 2>&1 || :
 rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
-%tmpfiles_create uuidd.conf
 %{service_add_post uuidd.socket uuidd.service}
 
 %preun -n uuidd
@@ -1620,7 +1623,12 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/uuidd
 
 %exclude %{_datadir}/locale
-%exclude %{_includedir}/*
+%exclude %{_includedir}/blkid
+%exclude %{_includedir}/libfdisk
+%exclude %{_includedir}/liblastlog2
+%exclude %{_includedir}/libmount
+%exclude %{_includedir}/libsmartcols
+%exclude %{_includedir}/uuid
 %exclude %{_libdir}/lib*.*
 %exclude %{_libdir}/pkgconfig/*.pc
 %exclude %{_docdir}/%{name}/getopt-example.*
@@ -1843,6 +1851,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man8/pam_lastlog2.8.gz
 %{_unitdir}/lastlog2-import.service
 %{_tmpfilesdir}/lastlog2.conf
+%dir %{_localstatedir}/lib/lastlog
 %{_datadir}/bash-completion/completions/lastlog2
 
 %files -n liblastlog2-2
