@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 20 01:26:06 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.27.3 (released 2026-10-19) includes security fixes to the
+  crypto/x509 package.
+  Refs boo#1272545 go1.27 release tracking
+  CVE-2026-111943
+  * go#82349 go#82345 boo#1286317 security: fix CVE-2026-111943 crypto/x509: mitigation for security concerns with a specific Certificate Authority
+
+-------------------------------------------------------------------
 Thu Oct  8 15:36:10 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.27.2 (released 2026-10-08) includes security fixes to the go

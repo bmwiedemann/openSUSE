@@ -111,4 +111,16 @@
   * go#81252 lib/fips140: fix ML-KEM CAST and re-seal v1.26.0</comment>
     <requestid>1383637</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fb750e3382a38379ecb8c077525173d8</srcmd5>
+    <version>1.27.3</version>
+    <time>1792779654</time>
+    <user>anag_factory</user>
+    <comment>- go1.27.3 (released 2026-10-19) includes security fixes to the
+  crypto/x509 package.
+  Refs boo#1272545 go1.27 release tracking
+  CVE-2026-111943
+  * go#82349 go#82345 boo#1286317 security: fix CVE-2026-111943 crypto/x509: mitigation for security concerns with a specific Certificate Authority</comment>
+    <requestid>1386538</requestid>
+  </revision>
 </revisionlist>
