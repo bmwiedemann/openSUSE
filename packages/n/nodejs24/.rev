@@ -258,4 +258,41 @@ for details see https://github.com/nodejs/node/releases#release-v24.20.0
   - buffer: implement blob.textStream()</comment>
     <requestid>1384624</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d9887481d96b6124cf81313a2a2fe045</srcmd5>
+    <version>24.22.1</version>
+    <time>1792779682</time>
+    <user>anag_factory</user>
+    <comment>- Update to 24.22.1:
+ - CVE-2026-106069, CVE-2026-106072 tls: reject non-canonical IP addresses (bsc#1286563, bsc#1286566)
+ - CVE-2026-105482 dns: validate resolve inputs for null bytes (bsc#1286561)
+ - CVE-2026-105483 tls: fix ip normalization regression (bsc#1286562)
+ - CVE-2026-111497 deps: brotli: cherry-pick 0ed4268a4401abcb44720963 (bsc#1286564)
+ - CVE-2026-105481 http: ensure agent data guard works without I/O (bsc#1286565)
+ - CVE-2026-106074 crypto: reset random caches across snapshots (bsc#1286567)
+ - CVE-2026-106073 permission: check permission model in realpathSync (bsc#1286570)
+ - crypto: update root certificates to NSS 3.131.1
+ - deps: update c-ares to 1.34.9
+ - deps: update timezone to 2026e
+ - deps: upgrade openssl sources to openssl-3.5.9
+ - deps: update undici to 7.30.1
+
+- Update to 24.22.0:
+ - crypto: add crypto.parsePKCS12()
+ - crypto: discover ciphers and hashes from OpenSSL providers
+ - crypto: enable SIV and GCM-SIV modes in Cipher/Decipher APIs
+ - doc: deprecate Server.prototype._listen2 in node:net
+ - net: support sending net.BoundSocket to threads and child processes
+ - perf_hooks: implement SlidingWindowHistogram
+ - perf_hooks: implement qrde analysis support in Histogram
+ - perf_hooks: implement Histogram meanCI API
+ - perf_hooks: add CBOR export/import for histogram exchange
+ - sqlite: add StatementSync.prototype.close()
+ - sqlite: add StatementSync.prototype[Symbol.dispose]()
+ - src,lib: add util.markPromiseAsHandled
+ - util: implement util.throttle
+ - util: implement debounce
+for details, see https://nodejs.org/en/blog/release/v24.22.0</comment>
+    <requestid>1386946</requestid>
+  </revision>
 </revisionlist>
