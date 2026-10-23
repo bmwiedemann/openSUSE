@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:56:25 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 1.8.1:
+  * Support EMF images without an initial viewport setup and with
+    wrong transformation applied (e.g. Wine-generated files)
+  * Fix incorrect handling of polygon fill modes and a crash in
+    reverse font encoding memory handling
+  * Emit width and height attributes even when Y-coordinates are
+    repaired
+  * New cmake USE_SYSTEM_LIBUEMF flag to use a system libuemf
+    (still builds against the vendored copy by default)
+  * New libxml2 dependency
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Spec cleanup: drop obsolete Group tags, use pkgconfig-style
+  BuildRequires.
+
+-------------------------------------------------------------------
 Mon Mar 16 08:18:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Disable RPATH for building libemf2svg.

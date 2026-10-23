@@ -1,7 +1,7 @@
 #
 # spec file for package libemf2svg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,19 @@
 
 %define soversion 1
 Name:           libemf2svg
-Version:        1.1.0
+Version:        1.8.1
 Release:        0
 Summary:        EMF (Enhanced Metafile) to SVG conversion library
 License:        GPL-2.0-only
-Group:          Productivity/Graphics/Convertors
 URL:            https://github.com/kakwa/libemf2svg
 Source:         https://github.com/kakwa/libemf2svg/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  fontconfig-devel
-BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
 Library for converting Enhanced Metafile (EMF and EMF+) files to the
@@ -39,7 +40,6 @@ Visio drawings.
 
 %package -n %{name}%{soversion}
 Summary:        EMF (Enhanced Metafile) to SVG conversion library
-Group:          System/Libraries
 
 %description -n %{name}%{soversion}
 Library for converting Enhanced Metafile (EMF and EMF+) files to the
@@ -49,7 +49,6 @@ Visio drawings.
 
 %package devel
 Summary:        Development files for applications which will use libemf2svg
-Group:          Development/Libraries/C and C++
 Requires:       %{name}%{soversion} = %{version}
 
 %description devel
@@ -59,7 +58,6 @@ linking programs which will convert EMF files to SVG.
 
 %package -n emf2svg-conv
 Summary:        EMF to SVG converter
-Group:          Productivity/Graphics/Convertors
 
 %description -n emf2svg-conv
 Tool to convert files in EMF format to SVG
