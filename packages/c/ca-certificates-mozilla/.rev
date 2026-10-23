@@ -986,4 +986,12 @@
     - emSign Root CA - C1 (forwarded request 1386501 from msmeissn)</comment>
     <requestid>1386502</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>7d41e69455f63438987cb8210dfe29fc</srcmd5>
+    <version>2.92</version>
+    <time>1792779790</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2.92 state (bsc#1286261 CVE-2026-114406 bsc#1287180)</comment>
+    <requestid>1392062</requestid>
+  </revision>
 </revisionlist>

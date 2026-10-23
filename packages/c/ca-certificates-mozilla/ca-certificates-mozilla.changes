@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Oct 20 13:18:07 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
-- Updated to 2.92 state (bsc#1286261)
+- Updated to 2.92 state (bsc#1286261 CVE-2026-114406 bsc#1287180)
   - Removed: 
     - emSign ECC Root CA - C3
     - emSign ECC Root CA - G3
