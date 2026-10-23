@@ -19,7 +19,7 @@
 %define version_suffix 1
 
 Name:           grandorgue
-Version:        3.17.1
+Version:        3.17.3
 Release:        0
 Summary:        Virtual Pipe Organ Software
 License:        GPL-2.0-or-later
@@ -27,6 +27,7 @@ URL:            https://github.com/GrandOrgue/grandorgue
 Source:         https://github.com/GrandOrgue/grandorgue/archive/%{version}-%{version_suffix}.tar.gz#/%{name}-%{version}-%{version_suffix}.tar.gz
 BuildRequires:  ImageMagick
 BuildRequires:  cmake >= 3.10
+BuildRequires:  cpptrace-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
@@ -72,7 +73,8 @@ This package contains the demo sampleset for GrandOrgue.
        -DUSE_BUILD_SYSTEM_LIBDIR=ON \
        -DUSE_INTERNAL_RTAUDIO=OFF \
        -DUSE_INTERNAL_PORTAUDIO=OFF \
-       -DUSE_INTERNAL_ZITACONVOLVER=OFF
+       -DUSE_INTERNAL_ZITACONVOLVER=OFF \
+       -DUSE_INTERNAL_CPPTRACE=OFF
 %cmake_build
 
 %install
