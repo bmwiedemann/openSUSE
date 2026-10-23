@@ -1,7 +1,7 @@
 #
 # spec file for package libtirpc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %define debug_package_requires libtirpc3 = %{version}-%{release}
 Name:           libtirpc
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        Transport Independent RPC Library
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://sourceforge.net/projects/libtirpc/
 Source:         https://download.sourceforge.net/libtirpc/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
@@ -37,7 +36,6 @@ TCP over IPv4.
 
 %package -n libtirpc3
 Summary:        Transport Independent RPC Library
-Group:          System/Libraries
 Requires:       libtirpc-netconfig >= %{version}
 
 %description -n libtirpc3
@@ -48,7 +46,6 @@ TCP over IPv4.
 
 %package netconfig
 Summary:        Netconfig configuration file for TI-RPC Library
-Group:          System/Base
 
 %description netconfig
 This RPM contains the netconfig configuration file and manual page for
@@ -56,7 +53,6 @@ the TI-RPC Library.
 
 %package devel
 Summary:        Development files for the Transport Independent RPC Library
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libtirpc3 = %{version}
 

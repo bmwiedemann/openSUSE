@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:57:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.3.8 (bsc#1285882, CVE-2026-85977,
+    bsc#1285881, CVE-2026-85231):
+  * Security hardening against malicious-data memory exhaustion:
+    cap decoded pmap/rpcb XDR list lengths to 1024 nodes
+    (CVE-2026-85977) and RPCSEC_GSS wrapped payload decoding
+    at 16 MB (CVE-2026-85231, authenticated remote DoS).
+  * Fix off-by-one allocation when building the GSS caller name.
+  * Export authdes_getucred and rpc_gss_getcred under a versioned
+    symbol node (backward compatible, soname stays libtirpc.so.3).
+- Spec cleanup: drop obsolete Group tags.
+
+-------------------------------------------------------------------
 Tue Sep  9 06:06:29 UTC 2025 - Petr Vorel <pvorel@suse.cz>
 
 - Update to 1.3.7:
