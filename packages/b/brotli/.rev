@@ -121,4 +121,12 @@
     <comment>- Add 0001-disable-BROTLI_MODEL-macro-for-LoongArch64.patch</comment>
     <requestid>1341515</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>66bed91623d945ae606e3f141beaba3b</srcmd5>
+    <version>1.2.1</version>
+    <time>1792779685</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.2.1</comment>
+    <requestid>1386990</requestid>
+  </revision>
 </revisionlist>

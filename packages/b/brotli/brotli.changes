@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 21 20:47:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.1
+  * Fixed an out-of-bounds write write permitting remote code
+    execution [CVE-2026-111497]
+
+-------------------------------------------------------------------
 Thu Mar 19 15:03:08 UTC 2026 - JS <obs.coke518@passinbox.com>
 
 - Add 0001-disable-BROTLI_MODEL-macro-for-LoongArch64.patch

@@ -1,7 +1,7 @@
 #
 # spec file for package brotli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017 Buschmann <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           brotli
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Lossless Compression Algorithm
 License:        MIT
