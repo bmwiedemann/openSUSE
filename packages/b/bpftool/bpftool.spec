@@ -17,7 +17,7 @@
 
 
 Name:           bpftool
-Version:        7.7.0
+Version:        7.8.1
 Release:        0
 Summary:        Tool for inspection and manipulation of BPF programs and maps
 License:        GPL-2.0-only
@@ -57,6 +57,8 @@ bash command line completion support for bpftool.
 %build
 export CFLAGS="%{optflags}"
 %make_build -C src V=1 \
+    CLANG=clang-%{product_libs_llvm_ver} \
+    LLVM_STRIP=llvm-strip-%{product_libs_llvm_ver} \
     feature-reallocarray=1 \
     feature-libbfd-liberty=1 \
 %if %(if gcc -lsframe -shared -o /dev/null 2>/dev/null ; then echo 1 ; else echo 0; fi; )
