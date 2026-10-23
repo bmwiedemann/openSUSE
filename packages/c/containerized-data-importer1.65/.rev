@@ -55,4 +55,12 @@ Validated with the full upstream CDI functional test suite against the built ima
 </comment>
     <requestid>1376503</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>57a3c0680a91b17c78146696abaacac9</srcmd5>
+    <version>1.65.0</version>
+    <time>1792780099</time>
+    <user>anag_factory</user>
+    <comment>Security re-vendor: github.com/moby/sys/user 0.4.1 (bsc#1284883); golang.org/x/net 0.60.0 (bsc#1285502); google.golang.org/grpc 1.83.2 (bsc#1278993); golang.org/x/crypto 0.57.0 as a transitive requirement</comment>
+    <requestid>1387194</requestid>
+  </revision>
 </revisionlist>
