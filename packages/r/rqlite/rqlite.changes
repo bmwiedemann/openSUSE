@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 22 18:54:08 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.6.4:
+  * BACKUP_STREAM authorization failures can disclose the database
+    and crash rqlited (boo#1286934)
+  * GET /leader returns a JSON error body when there is no leader
+  * Close the connection after rejecting an unauthorized inter-node
+    backup stream request, instead of streaming the database anyway
+  * Decide inter-node command authorization once, before dispatch,
+    and close the connection after rejecting any unauthorized
+    command
+
+-------------------------------------------------------------------
 Tue Oct 20 15:45:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.6.3:
