@@ -17,7 +17,7 @@
 
 
 Name:           maildir-utils
-Version:        1.14.3
+Version:        1.14.4
 Release:        0
 Summary:        Maildir indexer and searcher
 License:        GPL-3.0-or-later
@@ -25,17 +25,28 @@ Group:          Productivity/Networking/Email/Utilities
 URL:            https://www.djcbsoftware.nl/code/mu/
 Source:         https://github.com/djcb/mu/releases/download/v%{version}/mu-%{version}.tar.xz
 BuildRequires:  cld2-devel
+BuildRequires:  cli11-devel
+BuildRequires:  cmake
 BuildRequires:  emacs-nox >= 28.1
-BuildRequires:  glib2-devel >= 2.80
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  meson >= 1.3.2
 BuildRequires:  pkgconfig
+BuildRequires:  tl-expected
+BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.80
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.80
+BuildRequires:  pkgconfig(glib-2.0) >= 2.80
 BuildRequires:  pkgconfig(gmime-3.0) >= 3.0
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.80
+BuildRequires:  pkgconfig(gmodule-export-2.0) >= 2.80
+BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.80
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.80
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.80
 BuildRequires:  pkgconfig(guile-3.0)
 # Optional: for outputting of messages in json
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig(xapian-core) >= 1.4.22
 
 %description

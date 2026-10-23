@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 15 06:06:02 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.14.4:
+  Mu:
+  * experimental new "fish" completions
+  * avoid vendored dependencies
+  Mu4e:
+  * much extended / improved reference documentation
+  * improved html support, links etc.
+  * renewed support for "xwidget" (better integrated); for Emacs 31.1+.
+  * bugfixes
+  SCM:
+  * more robust runtime
+  * extended API support (esp. for matching messages, language, contacts), all documented
+
+-------------------------------------------------------------------
 Mon Aug 10 07:06:15 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.14.3:
