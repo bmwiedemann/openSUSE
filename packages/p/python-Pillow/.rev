@@ -1026,4 +1026,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   * Use pen widths when drawing ImageDraw2 shape outlines</comment>
     <requestid>1387000</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>1205154f4998a154066d5885fbc79c6d</srcmd5>
+    <version>13.0.0</version>
+    <time>1792779783</time>
+    <user>anag_factory</user>
+    <comment>Add 11 new CVE and bug references.</comment>
+    <requestid>1387214</requestid>
+  </revision>
 </revisionlist>
