@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 22 06:47:24 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to version 4.6.2
+  * Consider all input plugins for MIME type probing
+  * Resolve thread safety issues in PipeWire plugin
+  * Honor proxy settings for Scrobbler and StreamTuner plugin
+  * Save correct size and position of GTK plugin windows
+
+-------------------------------------------------------------------
 Sat Jun 13 07:21:54 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - Update to verstion 4.6.1
