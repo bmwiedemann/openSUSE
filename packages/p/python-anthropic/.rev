@@ -324,4 +324,12 @@ claude-sonnet-4-5 is deprecated. No new dependencies.
     <comment>Update to 1.17.0</comment>
     <requestid>1386771</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e6e6d941b4aba04d0aa3e15add15e1d0</srcmd5>
+    <version>2.1.0</version>
+    <time>1792779747</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.1.0</comment>
+    <requestid>1387145</requestid>
+  </revision>
 </revisionlist>

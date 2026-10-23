@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anthropic
-Version:        1.17.0
+Version:        2.1.0
 Release:        0
 Summary:        The official Python library for the Anthropic API
 # Legal-Review-Notice: ships vendored httpx_aiohttp (BSD-3-Clause)
-# under src/anthropic/_vendor; the SDK itself is MIT.
-License:        BSD-3-Clause AND MIT
+# under src/anthropic/_vendor; the SDK itself is Apache-2.0 since 2.0.0
+# (was MIT before; see LICENSE-MIT for the pre-2.0 text).
+License:        Apache-2.0 AND BSD-3-Clause
 URL:            https://github.com/anthropics/anthropic-sdk-python
 Source:         https://files.pythonhosted.org/packages/source/a/anthropic/anthropic-%{version}.tar.gz
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
@@ -61,7 +62,7 @@ synchronous and asynchronous clients powered by httpx2.
 
 %prep
 %autosetup -p1 -n anthropic-%{version}
-# Distinct basename so %%license does not overwrite the SDK MIT LICENSE.
+# Distinct basename so %%license does not overwrite the SDK LICENSE.
 cp -a src/anthropic/_vendor/httpx_aiohttp/LICENSE httpx_aiohttp.LICENSE
 
 %build

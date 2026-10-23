@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 22 09:57:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1.0:
+  * Major release 2.0.0 targets the new Claude API version 2026-10-21;
+    follow the migration guide in the Claude API docs to upgrade
+  * Add a workspace_id filter and the usage_tier scope type to list
+    spend limits
+  * Add enforcement status, actions and filter to user profiles
+  * Remove the outdated system role note from the messages description
+  * Upstream relicensed the SDK from MIT to Apache-2.0 in 2.0.0; the
+    vendored httpx_aiohttp stays BSD-3-Clause
+  * Runtime dependencies are unchanged from 1.17.0
+
+-------------------------------------------------------------------
 Wed Oct 21 07:53:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.17.0:
