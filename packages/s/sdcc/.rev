@@ -235,4 +235,40 @@
 - Add patch sdcc-fix-for-cpp23.patch to fix build for Tumbleweed</comment>
     <requestid>1339411</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>bc4607f449e17a0e01739545405f9d9a</srcmd5>
+    <version>4.6.0</version>
+    <time>1792779987</time>
+    <user>anag_factory</user>
+    <comment>- Fix binutils conflict
+- Update to version 4.6.0:
+  * Implement several upcoming C23/C2y language features:
+    constexpr (RFE #850), storage class specifiers in compound
+    literals (RFE #332), if-declarations (RFE #979), new octal
+    and escape sequence syntax (RFE #977), the _Countof/countof
+    operator (RFE #978), and C2Y bit utilities including
+    stdc_bit_width/stdc_count_ones intrinsics (RFE #1000)
+  * mcs51: add --norestartseqatomics option (RFE #1015)
+  * Improve Z80N/Z180/eZ80 multiplication code generation
+    (RFE #972)
+  * Improve generalized constant propagation optimizations for
+    global variables (RFE #534)
+  * Numerous peephole/codegen optimizations and over 60 bug
+    fixes across the mcs51, ds390, z80, hc08, pdk, and mos6502
+    backends; see upstream's ChangeLog for the full list
+- Drop sdcc-fix-for-cpp23.patch: upstream 4.6.0 already carries
+  equivalent fixes (stdbool.h use in debugger/mcs51/sdcdb.[ch]
+  and symtab.c, extern void elf(int i) in sdas/linksrc/aslink.h)
+- 4.6.0's bundled sdbinutils now also installs its own
+  ctf/opcodes/sframe headers, static libs, info pages, locale
+  files and host-triplet tool names; remove them in %install,
+  they are not part of sdcc (same fix Fedora's 4.6.0 spec needed)
+- spec-cleaner cleanup: drop Group: tags, convert ncurses-devel
+  and zlib-devel BuildRequires to pkgconfig(...) provider forms
+  (kept the texlive-* package names as-is: spec-cleaner's
+  per-file tex(...) expansion for those names files no package
+  actually provides, which made the build unresolvable)
+</comment>
+    <requestid>1387206</requestid>
+  </revision>
 </revisionlist>

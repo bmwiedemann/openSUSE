@@ -17,20 +17,17 @@
 
 
 %define with_non_free 0
-
 Name:           sdcc
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 Summary:        Small Device C Compiler
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          Development/Languages/C and C++
 URL:            https://sdcc.sourceforge.net/
 Source:         http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 Source2:        sdccman.pdf
 Patch0:         0001-Doc-Disable-fallback-to-dvipdfm-remove-non-pdftex-ta.patch
 Patch2:         sdcc_enable_additional_target_libs.patch
-Patch3:         sdcc-fix-for-cpp23.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -45,8 +42,12 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  lyx
 BuildRequires:  makeinfo
-BuildRequires:  ncurses-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python3-base
+# spec-cleaner's --tex expansion of these into individual tex(...)
+# BuildRequires is wrong: it names files (tex(source2e.tex),
+# tex(utf8-test.tex), tex(utf8test.tex)) that no package provides,
+# making the build unresolvable. Keep the package-name form.
 BuildRequires:  texlive-amsmath
 BuildRequires:  texlive-babel-english
 BuildRequires:  texlive-epstopdf
@@ -57,10 +58,22 @@ BuildRequires:  texlive-makeindex
 BuildRequires:  texlive-makeindex-bin
 BuildRequires:  texlive-ulem
 BuildRequires:  texlive-xcolor
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(form)
+BuildRequires:  pkgconfig(formw)
+BuildRequires:  pkgconfig(menu)
+BuildRequires:  pkgconfig(menuw)
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(ncurses++)
+BuildRequires:  pkgconfig(ncurses++w)
+BuildRequires:  pkgconfig(ncursesw)
+BuildRequires:  pkgconfig(panel)
+BuildRequires:  pkgconfig(panelw)
+BuildRequires:  pkgconfig(tic)
+BuildRequires:  pkgconfig(tinfo)
+BuildRequires:  pkgconfig(zlib)
 BuildRequires:  tex(footnote.sty)
 %if 0%{?suse_version} >= 1500
-BuildRequires:  texlive-footnotehyper
+BuildRequires:  tex(footnotehyper.sty)
 %endif
 
 %description
@@ -71,7 +84,6 @@ degree) include the 8051, ds390, z80, hc08, and PIC.
 
 %package        doc
 Summary:        Documentation for the SDCC C compiler
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description    doc
@@ -84,7 +96,6 @@ This package contains documentation for SDCC C compiler.
 
 %package        libc-sources
 Summary:        Small Device C Compiler
-Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -108,7 +119,6 @@ find -name '*.[ch]' -perm -u=x | xargs chmod a-x
 %patch -P 0 -p1
 %patch -P 2 -p1
 sed -i '1 s@.*@#!%{_bindir}/python3@' support/scripts/as2gbmap.py
-%patch -P 3 -p1
 
 %build
 export PYTHON=%{_bindir}/python3
@@ -141,11 +151,21 @@ mv %{buildroot}%{_bindir}/*.el %{buildroot}%{_datadir}/emacs/site-lisp
 # remove useless file
 rm %{buildroot}%{_docdir}/%{name}/INSTALL.txt
 
+# remove devel files/tools from the bundled sdbinutils (ctf/opcodes/sframe
+# support), new with 4.6.0's sdbinutils; not part of sdcc, already provided
+# by binutils-devel if needed (same exclusion Fedora's 4.6.0 spec applies)
+rm -f %{buildroot}%{_includedir}/{ctf-api.h,ctf.h,dis-asm.h,sframe-api.h,sframe.h}
+rm -f %{buildroot}%{_libdir}/lib{ctf-nobfd,ctf,opcodes,sframe}.{a,la}
+rm -f %{buildroot}%{_infodir}/ctf-spec.info* %{buildroot}%{_infodir}/sframe-spec.info*
+rm -f %{buildroot}%{_datadir}/locale/*/LC_MESSAGES/{bfd,opcodes}.mo
+rm -rf %{buildroot}%{_prefix}/*-suse-linux*
+
 # remove strange stuff (installed by mistake?)
 rm -rf %{buildroot}%{_datadir}/%{name}/lib/src/pic1{4,6}/.checkdevices
 rm -rf %{buildroot}%{_datadir}/%{name}/lib/src/pic1{4,6}/aclocal.m4
 rm -rf %{buildroot}%{_datadir}/%{name}/lib/src/pic1{4,6}/stamp-h1
 rm -rf %{buildroot}%{_datadir}/%{name}/lib/src/pic1{4,6}/libsdcc/.dirstamp
+rm -rf %{buildroot}%{_bindir}/c++filt
 
 # remove built libraries from source folder
 find %{buildroot}%{_datadir}/%{name}/lib/src/pic16/ -iname \*lib*.a -delete
