@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:09:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.0 (libmp3lame soname unchanged, still .so.0):
+  * Major version bump: the 9-byte encoder version field in MP3s
+    overflowed with 3.100 minor versions; 4.0 resets the scheme.
+  * Security fixes: AIFF header parser integer-underflow DoS
+    (CVSS 5.5, frontend); Blade DLL beInitStream stack overflow
+    (Windows-only, CVSS 8.4).
+  * Fix build with recent GCC/Clang (UTF-8 ID3 tag functions);
+    export id3tag_set_textinfo/comment_utf8 from shared lib.
+  * Add ID3v2.4 support and upstream pkg-config support.
+  * mp3rtp gains IPv6 support (incompatible CLI change).
+- Use upstream lame.pc; keep libmp3lame.pc alias.
+- Use pkgconfig(ncurses); drop obsolete Group tags.
+- Add pkgconfig(libmpg123) BuildRequires: 4.0's --enable-decoder
+  mandates external mpg123 (configure errors out without it).
+- Add lame-4.0-frontend-utf8.patch (backport of upstream post-4.0
+  fix): split the mistyped ID3v2 tag handler into typed UTF-16/UTF-8
+  variants and add id3tag_set_fieldvalue_utf8(); export hip_set_pinfo
+  and hip_finish_pinfo for the frontend; unbreaks the build
+  with GCC 14+ defaults.
+
+-------------------------------------------------------------------
 Sat Mar 11 08:20:04 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3

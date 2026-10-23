@@ -1,7 +1,7 @@
 #
 # spec file for package lame
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,22 +19,23 @@
 
 %define sover 0
 Name:           lame
-Version:        3.100
+Version:        4.0
 Release:        0
 Summary:        The LAME MP3 encoder
 License:        LGPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://lame.sourceforge.net/
 Source:         http://prdownloads.sourceforge.net/lame/lame-%{version}.tar.gz
 Source99:       lame-rpmlintrc
 Source1000:     baselibs.conf
 Patch1:         lame-field-width-fix.patch
+Patch2:         lame-4.0-frontend-utf8.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(libmpg123)
+BuildRequires:  pkgconfig(ncurses)
 Requires:       libmp3lame%{sover} >= %{version}
 %{?suse_build_hwcaps_libs}
 %ifarch %{ix86}
@@ -50,7 +51,6 @@ a patent free audio compression codec for the GNU project.
 
 %package doc
 Summary:        Documentation for the LAME MP3 encoder
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
 Requires:       %{name} = %{version}
 
 %description doc
@@ -60,7 +60,6 @@ tests.
 
 %package -n libmp3lame%{sover}
 Summary:        The LAME MP3 encoder library
-Group:          System/Libraries
 
 %description -n libmp3lame%{sover}
 LAME is an encoder that converts audio to the MP3 file format. It has
@@ -69,7 +68,6 @@ tests.
 
 %package -n libmp3lame-devel
 Summary:        Development files for the LAME MP3 encoder
-Group:          Development/Libraries/C and C++
 Requires:       libmp3lame%{sover} = %{version}
 
 %description -n libmp3lame-devel
@@ -77,7 +75,6 @@ Contains the header files for use with LAME's encoding library.
 
 %package mp3rtp
 Summary:        MP3 Encoder for RTP Streaming
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
 Requires:       libmp3lame%{sover} >= %{version}
 
 %description mp3rtp
@@ -112,19 +109,7 @@ CFLAGS="%{optflags}" \
 make install pkgdocdir=%{_defaultdocdir}/%{name}/ DESTDIR=%{buildroot}
 rm -f %{buildroot}%{_libdir}/libmp3lame.la
 
-#make package config file
-mkdir -p %{buildroot}%{_libdir}/pkgconfig
-cat << EOF > %{buildroot}%{_libdir}/pkgconfig/lame.pc
-prefix=%{_prefix}
-libdir=%{_libdir}
-includedir=%{_includedir}/lame
-
-Name:           lame
-Description: encoder that converts audio to the MP3 file format.
-Version:        %{version}
-Libs: -L\${libdir} -lmp3lame
-Cflags: -I\${includedir}
-EOF
+# upstream ships lame.pc since 4.0; keep libmp3lame.pc alias for compatibility
 pushd %{buildroot}%{_libdir}/pkgconfig/
 ln -s lame.pc libmp3lame.pc
 popd

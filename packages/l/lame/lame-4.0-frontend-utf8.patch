@@ -1,0 +1,171 @@
+diff -rub lame-4.0.orig/frontend/parse.c lame-4.0/frontend/parse.c
+--- lame-4.0.orig/frontend/parse.c	2026-10-17 19:17:38.681406662 +0200
++++ lame-4.0/frontend/parse.c	2026-10-17 19:17:38.857426437 +0200
+@@ -402,40 +402,62 @@
+ }
+ 
+ #ifdef ID3TAGS_EXTENDED
+-static int
+-set_id3v2tag(lame_global_flags* gfp, TextEncoding enc, int type, unsigned short const* str)
++/**
++ * @internal
++ * @brief Returns the ID3v2 text frame that a tag option sets.
++ * @param type  the letter of the option: a, t, l, g, n or y.
++ * @return the four-character frame identifier. NULL for the comment (c), a
++ *         user frame (v) and any other letter.
++ */
++static char const *
++id3v2_text_frame(int type)
+ {
+-    switch (enc)
+-    {
+-        case TENC_UTF8:
+             switch (type)
+             {
+-                case 'a': return id3tag_set_textinfo_utf8(gfp, "TPE1", str);
+-                case 't': return id3tag_set_textinfo_utf8(gfp, "TIT2", str);
+-                case 'l': return id3tag_set_textinfo_utf8(gfp, "TALB", str);
+-                case 'g': return id3tag_set_textinfo_utf8(gfp, "TCON", str);
+-                case 'c': return id3tag_set_comment_ucs2(gfp, 0, 0, str);
+-                case 'n': return id3tag_set_textinfo_utf8(gfp, "TRCK", str);
+-                case 'y': return id3tag_set_textinfo_utf8(gfp, "TYER", str);
+-                case 'v': return id3tag_set_fieldvalue_ucs2(gfp, str);
++        case 'a': return "TPE1";
++        case 't': return "TIT2";
++        case 'l': return "TALB";
++        case 'g': return "TCON";
++        case 'n': return "TRCK";
++        case 'y': return "TYER";
+             }
+-            ;;
+-        case TENC_UTF16:
++    return NULL;
++}
++
++/* Set an ID3v2 tag field from UTF-16 data. The data pointer is genuinely
++   UTF-16 here, so the UTF-16 id3tag_* setters are used throughout. */
++static int
++set_id3v2tag_utf16(lame_global_flags* gfp, int type, unsigned short const* str)
++{
++    char const *const id = id3v2_text_frame(type);
++
++    if (id != NULL)
++        return id3tag_set_textinfo_utf16(gfp, id, str);
+             switch (type)
+             {
+-                case 'a': return id3tag_set_textinfo_utf16(gfp, "TPE1", str);
+-                case 't': return id3tag_set_textinfo_utf16(gfp, "TIT2", str);
+-                case 'l': return id3tag_set_textinfo_utf16(gfp, "TALB", str);
+-                case 'g': return id3tag_set_textinfo_utf16(gfp, "TCON", str);
+                 case 'c': return id3tag_set_comment_utf16(gfp, 0, 0, str);
+-                case 'n': return id3tag_set_textinfo_utf16(gfp, "TRCK", str);
+-                case 'y': return id3tag_set_textinfo_utf16(gfp, "TYER", str);
+                 case 'v': return id3tag_set_fieldvalue_utf16(gfp, str);
+             }
+-            ;;
+-        default:
+             return -3;
++}
++
++/* Set an ID3v2 tag field from UTF-8 data. The data pointer is a UTF-8 char
++   string (not UTF-16 as the old, mistyped single handler assumed), so the
++   UTF-8 id3tag_* setters are used - including id3tag_set_fieldvalue_utf8 for
++   'v', which replaces the removed *_ucs2 calls the UTF-8 path used to make. */
++static int
++set_id3v2tag_utf8(lame_global_flags* gfp, int type, char const* str)
++{
++    char const *const id = id3v2_text_frame(type);
++
++    if (id != NULL)
++        return id3tag_set_textinfo_utf8(gfp, id, str);
++    switch (type)
++    {
++        case 'c': return id3tag_set_comment_utf8(gfp, 0, 0, str);
++        case 'v': return id3tag_set_fieldvalue_utf8(gfp, str);
+     }
++    return -3;
+ }
+ #endif
+ 
+@@ -480,8 +502,8 @@
+         default:
+ #ifdef ID3TAGS_EXTENDED
+         case TENC_LATIN1: result = set_id3tag(gfp, type, x);   break;
+-        case TENC_UTF16:  result = set_id3v2tag(gfp, enc, type, x); break;
+-        case TENC_UTF8:   result = set_id3v2tag(gfp, enc, type, x); break;
++        case TENC_UTF16:  result = set_id3v2tag_utf16(gfp, type, x); break;
++        case TENC_UTF8:   result = set_id3v2tag_utf8(gfp, type, x);  break;
+ #else
+         case TENC_RAW:    result = set_id3tag(gfp, type, x);   break;
+ #endif
+diff -rub lame-4.0.orig/include/lame.h lame-4.0/include/lame.h
+--- lame-4.0.orig/include/lame.h	2026-10-17 19:17:38.769416550 +0200
++++ lame-4.0/include/lame.h	2026-10-17 19:17:38.857426437 +0200
+@@ -1297,6 +1297,9 @@
+ int CDECL id3tag_set_fieldvalue_utf16(lame_t gfp, const unsigned short *fieldvalue);
+ 
+ /* experimental */
++int CDECL id3tag_set_fieldvalue_utf8(lame_t gfp, const char *fieldvalue);
++
++/* experimental */
+ int CDECL id3tag_set_textinfo_utf16(lame_t gfp, char const *id, unsigned short const *text);
+ 
+ /* experimental */
+diff -rub lame-4.0.orig/include/libmp3lame.sym lame-4.0/include/libmp3lame.sym
+--- lame-4.0.orig/include/libmp3lame.sym	2026-10-17 19:17:38.769416550 +0200
++++ lame-4.0/include/libmp3lame.sym	2026-10-17 19:22:59.389437149 +0200
+@@ -188,6 +188,8 @@
+ hip_set_errorf
+ hip_set_debugf
+ hip_set_msgf
++hip_set_pinfo
++hip_finish_pinfo
+ hip_decode
+ hip_decode_headers
+ hip_decode1
+@@ -229,6 +231,7 @@
+ id3tag_set_comment_ucs2
+ id3tag_set_fieldvalue_ucs2
+ id3tag_set_fieldvalue_utf16
++id3tag_set_fieldvalue_utf8
+ id3tag_set_textinfo_utf16
+ id3tag_set_comment_utf16
+ id3tag_set_textinfo_utf8
+diff -rub lame-4.0.orig/libmp3lame/id3tag.c lame-4.0/libmp3lame/id3tag.c
+--- lame-4.0.orig/libmp3lame/id3tag.c	2026-10-17 19:17:38.705409359 +0200
++++ lame-4.0/libmp3lame/id3tag.c	2026-10-17 19:17:38.861426887 +0200
+@@ -1832,6 +1832,34 @@
+     return -1;
+ }
+ 
++/*! Set an arbitrary ID3v2 text frame, taking UTF-8. */
++/*!
++  \ingroup api_tags
++  \c id3tag_set_fieldvalue() for UTF-8 input. The frame identifier is ASCII in
++  both cases, so the string is read the same way. Only the text differs.
++
++  \param gfp         the encoder instance.
++  \param fieldvalue  the frame identifier, "=", and the text, in UTF-8. NULL
++                     or empty is accepted and does nothing.
++  \return 0 on success. -1 if the string is too short or has no "=" in the
++          fifth position. Otherwise the result of
++          \c id3tag_set_textinfo_utf8().
++*/
++int
++id3tag_set_fieldvalue_utf8(lame_t gfp, const char *fieldvalue)
++{
++    if (is_lame_internal_flags_null(gfp)) {
++        return 0;
++    }
++    if (fieldvalue && *fieldvalue) {
++        if (strlen(fieldvalue) < 5 || fieldvalue[4] != '=') {
++            return -1;
++        }
++        return id3tag_set_textinfo_utf8(gfp, fieldvalue, &fieldvalue[5]);
++    }
++    return 0;
++}
++
+ extern int
+ id3tag_set_fieldvalue_ucs2(lame_t gfp, const unsigned short *fieldvalue);
+ 
