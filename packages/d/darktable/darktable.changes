@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 22 12:00:00 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix Tumbleweed build: skip LLVM-based OpenCL test-compilation, since
+  LLVM's zstd target clashes with OpenEXR's zstd dependency
+
+-------------------------------------------------------------------
+Wed Oct 14 12:16:24 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Enable USE_AI on Debian 13+ and Ubuntu 25.10+
+
+-------------------------------------------------------------------
 Mon Oct  5 07:20:44 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update tp version 5.6.2:
+- Update to version 5.6.2:
   * https://github.com/darktable-org/darktable/releases/tag/release-5.6.2
 
 -------------------------------------------------------------------

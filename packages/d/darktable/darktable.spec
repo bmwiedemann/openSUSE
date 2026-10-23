@@ -362,11 +362,16 @@ export _OPENCL_INCLUDE_DIR=$(clang -print-search-dirs | awk -F= '/^libra/ {print
 
 %if %{with cmake_macros}
 #suse branch
+# Tumbleweed: find_package(LLVM) defines zstd::libzstd_shared, which breaks OpenEXR's find_dependency(zstd)
 %cmake \
   -DCLANG_OPENCL_INCLUDE_DIR=${_OPENCL_INCLUDE_DIR} \
   -DDONT_USE_INTERNAL_LUA=%{_dont_use_intree_lua} \
   %ifarch aarch64
   -DTESTBUILD_OPENCL_PROGRAMS=OFF \
+  %else
+  %if 0%{?suse_version} >= 1699
+  -DTESTBUILD_OPENCL_PROGRAMS=OFF \
+  %endif
   %endif
   %{cmake_options} \
 %if "%{optimization_architecture}" == "asan"
