@@ -5875,4 +5875,13 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * dbus-services: adjust cups whitelisting (bsc#1285410)</comment>
     <requestid>1385000</requestid>
   </revision>
+  <revision rev="555" vrev="1">
+    <srcmd5>608e6b25a92e44d747df3a6c042b95a9</srcmd5>
+    <version>2.10.0+git20261020.513f17e8</version>
+    <time>1792779648</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.0+git20261020.513f17e8:
+  * polkit-rules-whitelist: adjust fwupd rules path to new prefix (bsc#1279948)</comment>
+    <requestid>1386463</requestid>
+  </revision>
 </revisionlist>

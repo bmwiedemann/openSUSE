@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:06:14 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.10.0+git20261020.513f17e8:
+  * polkit-rules-whitelist: adjust fwupd rules path to new prefix (bsc#1279948)
+
+-------------------------------------------------------------------
 Thu Oct 15 11:13:28 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 2.10.0+git20261014.33646953:
