@@ -1,7 +1,7 @@
 #
 # spec file for package ninvaders
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,25 @@
 
 
 Name:           ninvaders
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        A space invaders-like game using ncurses
 License:        GPL-2.0-or-later
-Group:          Amusements/Games/Action/Arcade
-URL:            http://ninvaders.sourceforge.net/
-Source:         http://downloads.sourceforge.net/ninvaders/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ninvaders-fix-multiple-definitions.patch -- upstream bug #2
-Patch0:         ninvaders-fix-multiple-definitions.patch
-# PATCH-FIX-UPSTREAM ninvaders-fix-render-loop.patch -- fix Leap 15+ build error
-Patch1:         ninvaders-fix-render-loop.patch
+URL:            https://dettus.net/ninvaders/
+Source:         https://dettus.net/ninvaders/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM ninvaders-obey-cflags.patch -- don't clear pre-set CFLAGS
-Patch2:         ninvaders-obey-cflags.patch
+Patch0:         ninvaders-obey-cflags.patch
 # PATCH-FIX-UPSTREAM ninvaders-sighandler_t.patch -- fix gcc15 build
-Patch3:         ninvaders-sighandler_t.patch
+Patch1:         ninvaders-sighandler_t.patch
 # PATCH-FIX-UPSTREAM ninvaders-fix-doSleep-decl.patch -- fix gcc15 build
-Patch4:         ninvaders-fix-doSleep-decl.patch
-BuildRequires:  ncurses-devel
+Patch2:         ninvaders-fix-doSleep-decl.patch
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(tic)
+BuildRequires:  pkgconfig(ticw)
+BuildRequires:  pkgconfig(tinfo)
 
 %description
 A Space Invaders type game with text-only graphics.
@@ -43,8 +44,7 @@ A Space Invaders type game with text-only graphics.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -fcommon"
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -Dm 0755 nInvaders %{buildroot}%{_bindir}/%{name}

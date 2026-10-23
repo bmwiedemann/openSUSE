@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:20:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.2 (first upstream release after 19 years):
+  * Fix build with GCC 11 and newer by declaring globals extern
+    in headers with the definitions in the .c files
+  * Fix buffer overflow in render()
+- Switch Source and URL to the author site (dettus.net), as
+  SourceForge is stuck at 0.1.1
+- Drop ninvaders-fix-multiple-definitions.patch and
+  ninvaders-fix-render-loop.patch: adopted upstream
+- Drop the -fcommon workaround, no longer needed; add explicit
+  gcc and make BuildRequires
+
+-------------------------------------------------------------------
 Thu Jul 10 12:36:01 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Backport ninvaders-fix-render-loop.patch: Fix buffer overflow in
