@@ -293,4 +293,12 @@ entries are re-sorted. Data only, no code or dependency change.</comment>
     <comment>Update to 0.1.120</comment>
     <requestid>1387108</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6b9f32d115d53d776a06ce0d68f05112</srcmd5>
+    <version>0.1.122</version>
+    <time>1792780196</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.122</comment>
+    <requestid>1392035</requestid>
+  </revision>
 </revisionlist>
