@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 23 05:51:14 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to version 1.0+git.20261017.58ccfa5:
+  * lit-based testsuite: Transition external to internal shell [#55]
+  * Fix error check in 'test/ld/search-1.test' [#38]
+  * Fix escape sequences in 'test/lit.cfg.py' [#18]
+  * Update imported files: GCC, 2026-10-17 [#1]
+
+-------------------------------------------------------------------
 Wed Apr 08 05:48:55 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Update to version 1.0+git.20260402.212da2e:

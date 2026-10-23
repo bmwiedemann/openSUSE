@@ -216,4 +216,16 @@
   * Defuse 'nvptx-none-run.exp:sim_exec'</comment>
     <requestid>1345158</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1a6885a8a4058adf3706601f5a46709f</srcmd5>
+    <version>1.0+git.20261017.58ccfa5</version>
+    <time>1792780144</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0+git.20261017.58ccfa5:
+  * lit-based testsuite: Transition external to internal shell [#55]
+  * Fix error check in 'test/ld/search-1.test' [#38]
+  * Fix escape sequences in 'test/lit.cfg.py' [#18]
+  * Update imported files: GCC, 2026-10-17 [#1]</comment>
+    <requestid>1387238</requestid>
+  </revision>
 </revisionlist>

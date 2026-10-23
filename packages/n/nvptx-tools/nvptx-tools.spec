@@ -17,7 +17,7 @@
 
 
 Name:           nvptx-tools
-Version:        1.0+git.20260402.212da2e
+Version:        1.0+git.20261017.58ccfa5
 Release:        0
 Summary:        PTX language tools
 License:        GPL-3.0-or-later
