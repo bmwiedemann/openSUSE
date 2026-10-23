@@ -137,4 +137,12 @@ package, so there is no boo# to reference.
 </comment>
     <requestid>1380831</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>20f8e8c44f7b72e971b9c9887562b9bd</srcmd5>
+    <version>0.12.10</version>
+    <time>1792780194</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.12.10</comment>
+    <requestid>1392018</requestid>
+  </revision>
 </revisionlist>

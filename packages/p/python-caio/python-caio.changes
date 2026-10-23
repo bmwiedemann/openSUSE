@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:25:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.10:
+  * Fix thread_aio error attribute reading a wrong value on
+    big-endian: use T_UBYTE for uint8 (PR #86)
+- Replace the committed source tarball caio-0.12.9.tar.gz with
+  caio-0.12.10.tar.gz to match the new Source0
+
+-------------------------------------------------------------------
 Sat Sep 26 16:16:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.9:
