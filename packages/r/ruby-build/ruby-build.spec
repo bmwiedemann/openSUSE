@@ -24,7 +24,7 @@
 %endif
 
 Name:           ruby-build
-Version:        20261013
+Version:        20261023
 Release:        0
 BuildArch:      noarch
 License:        MIT
@@ -41,6 +41,8 @@ Requires:       curl
 Requires:       gzip
 Requires:       make
 Requires:       tar
+Requires:       awk
+Requires:       /usr/bin/xargs
 # Maybe Requires would be better.
 Recommends:     %{name}-dependencies-mri
 

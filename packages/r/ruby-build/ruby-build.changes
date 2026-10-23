@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:36:54 UTC 2026 - Müller <expeehaa@outlook.com>
+
+- Add explicit dependencies on awk and xargs.
+
+-------------------------------------------------------------------
+Fri Oct 23 07:43:10 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20261023.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20261023
+  * Add 4.0.8
+  * Add 4.0.9
+  * Add 3.4.12
+  * Add 3.3.13
+  * Allow OpenSSL 4 for Rubies that support it by @p-linnane in #2647
+
+-------------------------------------------------------------------
 Tue Oct 13 16:10:03 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20261013.
