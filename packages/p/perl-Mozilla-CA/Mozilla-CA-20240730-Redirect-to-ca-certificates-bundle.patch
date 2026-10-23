@@ -25,8 +25,8 @@ index a88847b..6577ede 100644
  lib/Mozilla/CA.pm
 -lib/Mozilla/CA/cacert.pem
  maint/cacert-diff
+ maint/denylist.pl
  maint/get-tarball-name
- maint/make-tarball
 diff --git a/Makefile.PL b/Makefile.PL
 index 9faf720..a491813 100644
 --- a/Makefile.PL
@@ -48,7 +48,7 @@ index e4a6c56..fdb3c75 100644
 --- a/lib/Mozilla/CA.pm
 +++ b/lib/Mozilla/CA.pm
 @@ -5,11 +5,9 @@
- our $VERSION = '20250602';
+ our $VERSION = '20261020';
  
  use File::Spec ();
 -use File::Basename qw(dirname);

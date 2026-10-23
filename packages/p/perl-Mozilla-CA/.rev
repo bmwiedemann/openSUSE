@@ -108,4 +108,41 @@
         sha256: cecddc905099d8dadfc5b1d209b737cbe2c18cfb2c10c0ff0bcf0d3286fc1aa2</comment>
     <requestid>1282222</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6388c725d5450944b74904bb3ab7a2be</srcmd5>
+    <version>20261020.0.0</version>
+    <time>1792780278</time>
+    <user>anag_factory</user>
+    <comment>- Update Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch
+
+- updated to 20261020.0.0 (20261020)
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+  20261020
+    - Update from Mozilla repository to 2026-10-20
+    - Denylisted certificates: CVE-2026-113812 bsc#1287179
+      - emSign ECC Root CA - G3
+        sha256: 86a1ecba089c4a8d3bbe2734c612ba341d813e043cf9e8a862cd5c57a36bbe6b
+  20260813
+    - Update from Mozilla repository to 2026-08-13
+    - Added certificates:
+      - OISTE Server Root ECC G1
+        sha256: eec997c0c30f216f7e3b8b307d2bae42412d753fc8219dafd1520b2572850f49
+      - OISTE Server Root RSA G1
+        sha256: 9ae36232a5189ffddb353dfd26520c015395d22777dac59db57b98c089a651e6
+      - SECOM TLS ECC Root CA 2024
+        sha256: 6ab2ab75f51cb4f4f0156203fbf6f646232f514be059f62833308b82b4d72db1
+      - SECOM TLS RSA Root CA 2024
+        sha256: 1435f225c5d252d7a21948cc3ce62aecfa88001e3dd72d1cc3555100eb372f93
+      - SwissSign RSA TLS Root CA 2022 - 1
+        sha256: 193144f431e0fddb740717d4de926a571133884b4360d30e272913cbe660ce41
+      - Telia EC TLS Root CA v3
+        sha256: 098e08a91dbbf77478b96cceb89b1413a5da37b7c862606a955deb07179f4326
+      - Telia RSA TLS Root CA v3
+        sha256: d13db1294c45ebc6fc86c6bbf69fa29bdfe692dff7c713c243c7a956c6a2284c
+      - TrustAsia TLS ECC Root CA
+        sha256: c0076b9ef0531fb1a656d67c4ebe97cd5dbaa41ef44598acc2489878c92d8711
+      - TrustAsia TLS RSA Root CA
+        sha256: 06c08d7dafd876971eb1124fe67f847ec0c7a158d3ea53cbe940e2ea9791f4c3</comment>
+    <requestid>1392070</requestid>
+  </revision>
 </revisionlist>

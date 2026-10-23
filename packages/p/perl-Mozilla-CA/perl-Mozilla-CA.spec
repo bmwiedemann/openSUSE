@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mozilla-CA
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %define cpan_name Mozilla-CA
 Name:           perl-Mozilla-CA
-Version:        20250602.0.0
+Version:        20261020.0.0
 Release:        0
-# 20250602 -> normalize -> 20250602.0.0
-%define cpan_version 20250602
+# 20261020 -> normalize -> 20261020.0.0
+%define cpan_version 20261020
 #Upstream: SUSE-Public-Domain
 License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Summary:        Mozilla's CA cert bundle in PEM format
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LW/LWP/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 # PATCH-FIX-OPENSUSE https://bugzilla.suse.com/show_bug.cgi?id=1228762
 Patch0:         Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch
 BuildArch:      noarch
