@@ -36,6 +36,8 @@ Group:          System/Management
 URL:            https://github.com/systemd/mkosi
 Source0:        https://github.com/systemd/mkosi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        mkosi-initrd.conf
+# PATCH-FIX-UPSTREAM -- based on PR#4489
+Patch:          ignore-stat-failure.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}

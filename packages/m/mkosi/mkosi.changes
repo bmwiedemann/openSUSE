@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 23 10:15:18 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add ignore-stat-failure.patch to be able to rename images in
+  postoutput for OBS
+
+-------------------------------------------------------------------
 Mon Oct  5 14:46:35 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Update to 27.1:
