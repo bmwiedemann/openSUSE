@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 19 17:08:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.26.1
+  * Add apachectl command parser.
+  * Add ics file parser.
+  * Add conntrack command parser.
+  * Add nfsiostat command parser.
+  * Add nfsiostat-s streaming command parser.
+  * Add nftables nft command parser.
+  * Fix cksum parser for lines with no filename
+  * Fix crontab and crontab_u parsers to ignore whitespace-only
+    lines.
+  * Fix dpkg parser for Unicode table header.
+  * Fix fstab parser to ignore whitespace-only lines.
+  * Fix group parser to ignore whitespace-only lines.
+  * Fix gshadow parser to ignore whitespace-only lines.
+  * Fix lsattr parser to support e2fsprogs and support x and m flags.
+  * Fix passwd parser to ignore whitespace-only lines.
+  * Fix plist parser for deprecation warning for codecs.open().
+  * Fix shadow parser to ignore whitespace-only lines.
+
+-------------------------------------------------------------------
 Sun Sep 20 12:02:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.26.0
