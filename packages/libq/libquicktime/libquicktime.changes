@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 19 23:14:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable mp3 encoding support, disable libmp3lame-devel
+  BuildRequires.
+
+-------------------------------------------------------------------
 Wed Jul 23 07:43:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Enable faad2 support.
