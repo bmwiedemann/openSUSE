@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 22 06:45:45 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to version 4.6.2
+  * Achieve feature parity for the Qt Winamp interface compared
+    to GTK
+  * Add seeking support for SID files and parse more metadata
+  * Implement support for MPRIS OpenUri method
+  * Allow to cycle through toolbar buttons with tab/arrow keys
+
+-------------------------------------------------------------------
 Sat Jun 13 07:19:30 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - Update to version 4.6.1
