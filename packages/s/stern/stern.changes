@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Fri Oct 23 11:03:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.35.0:
+  * Notable Changes
+    - A new --pager flag to pipe output into a pager
+      You can now pipe stern's output into a pager with the --pager
+      flag. Unlike piping in the shell (stern --color=always
+      backend | less -R), colors are preserved without any extra
+      flags, and stern stops tailing when you quit the pager.
+
+        stern --pager less backend
+
+      The pager is used only when the standard output is connected
+      to a terminal (tty). If you always want to use a pager, set
+      it in the config file:
+
+        pager: less
+
+    - Distinct colors for pods created by the same workload
+      Pods created by the same workload (e.g. replicas of a
+      Deployment) are now assigned distinct colors as long as
+      unused colors remain, so that their interleaved logs are
+      easier to tell apart. Pods that do not share a workload with
+      other pods keep the same colors as before.
+    - Nested field extraction in extractJSONParts
+      extractJSONParts and tryExtractJSONParts now accept keys in
+      dot notation to access nested fields.
+
+        stern --template='{{ extractJSONParts .Message "python.levelname" "message" }}{{"\n"}}' backend
+
+    - The timestamp and the namespace in extjson and ppextjson
+      The extjson and ppextjson outputs now include the timestamp
+      field when --timestamps is specified, and the namespace field
+      when tailing multiple namespaces with --namespace. Nested
+      JSON messages in ppextjson are now indented as well.
+
+        $ stern --timestamps -o extjson backend
+        {"pod":"backend-...","container":"backend","timestamp":"2026-10-01T10:00:00.123456789Z","message":"hello"}
+
+  * Breaking Changes
+    - .Message no longer includes the timestamp with --timestamps
+      With --timestamps, the timestamp is no longer prepended to
+      .Message in templates, so template functions that parse
+      .Message as JSON now work with --timestamps. The timestamp is
+      available as the new .Timestamp template variable. The output
+      of the built-in default and raw templates is unchanged, but
+      if you use a custom template with --timestamps, add
+      .Timestamp to it to keep printing the timestamp.
+
+        stern --timestamps --template='{{.Timestamp}} {{.Message}}{{"\n"}}' backend
+
+  * Changes
+    - fix: close config file after reading (#367) ee5b0b3
+    - fix: change errorf format to represent real value (#368)
+      0d39b3f
+    - docs: fix "when if" typo in max-log-requests table (#371)
+      13b9806
+    - Keep .Message raw with --timestamps; expose timestamp as
+      .Timestamp (#372) 8a00e61
+    - Support nested field extraction via dot notation in
+      extractJSONParts (#373) 3dd605b
+    - docs: list toUTC in README template functions (#378) 2926461
+    - Fix misspelled identifiers reHightlight and stirngSlice
+      (#382) 523c01a
+    - fix: honor --timestamps when reading from stdin (#380)
+      96b3c3a
+    - fix: include the namespace in extjson and ppextjson for
+      multiple namespaces (#386) d6d42c9
+    - fix: preserve the sign of fractional Unix timestamps (#388)
+      6db257e
+    - docs: fix the function name in the colorCustom example (#383)
+      050c9fe
+    - Assign distinct colors to pods created by the same workload
+      (#375) 74000c2
+    - Add --pager flag to pipe output into a pager (#376) 4772306
+    - Hide the namespace when --namespace repeats a single
+      namespace (#389) b4b5d59
+    - Update dependencies for Kubernetes 1.37 (#390) e62aec2
+    - fix: show the timestamp in extjson and ppextjson output
+      (#392) 5e330c6
+    - Marshal extjson and ppextjson outputs with encoding/json
+      instead of string concatenation (#393) 7ef2365
+    - fix: keep inline regexp flags within their own --highlight
+      pattern (#395) 9a830a0
+
+-------------------------------------------------------------------
 Sat May 02 13:53:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.34.0:
