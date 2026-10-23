@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 22 10:36:10 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 1.26.2:
+  * Fix CVE-2026-97206, DoQ path-migration can lead to use-after-free
+    on multi-threaded deployments.
+    [bsc#1286139]
+  * Fix CVE-2026-50106, Possible insecure NXDOMAIN for non-existing
+    records under a configured island trust anchor underneath an
+    insecure parent.
+    [bsc#1286140]
+  * Fix CVE-2026-96405, Aggregate DNS name chained pointer
+    decompression work leads to degradation of service.
+    [bsc#1286141]
+  * Fix CVE-2026-109125, Possible cache poisoning vulnerability via
+    a cache side-channel exposed by 'unwanted-reply-threshold'.
+    [bsc#1286142]
+  * Fix CVE-2026-35501, Bypass of a configured island trust anchor
+    underneath an insecure parent from an attacker-controlled NSEC
+    record.
+    [bsc#1286143]
+
+-------------------------------------------------------------------
 Mon Sep 28 14:11:51 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.26.1:

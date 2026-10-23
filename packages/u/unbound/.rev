@@ -927,4 +927,29 @@ Features
     [bsc#1280403]</comment>
     <requestid>1381192</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>72af2db900c12d8e5f4c9601b7bd8c5e</srcmd5>
+    <version>1.26.2</version>
+    <time>1792779721</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.26.2:
+  * Fix CVE-2026-97206, DoQ path-migration can lead to use-after-free
+    on multi-threaded deployments.
+    [bsc#1286139]
+  * Fix CVE-2026-50106, Possible insecure NXDOMAIN for non-existing
+    records under a configured island trust anchor underneath an
+    insecure parent.
+    [bsc#1286140]
+  * Fix CVE-2026-96405, Aggregate DNS name chained pointer
+    decompression work leads to degradation of service.
+    [bsc#1286141]
+  * Fix CVE-2026-109125, Possible cache poisoning vulnerability via
+    a cache side-channel exposed by 'unwanted-reply-threshold'.
+    [bsc#1286142]
+  * Fix CVE-2026-35501, Bypass of a configured island trust anchor
+    underneath an insecure parent from an attacker-controlled NSEC
+    record.
+    [bsc#1286143]</comment>
+    <requestid>1387072</requestid>
+  </revision>
 </revisionlist>
