@@ -34,4 +34,14 @@
   * image: create /images mount point</comment>
     <requestid>1386328</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5dc679c1f766a621346b2d26ca55fc56</srcmd5>
+    <version>unknown</version>
+    <time>1792779737</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261022.058e144:
+  * image: fix excluding of kernel modules
+  * image: don't bail out of images directory already exists</comment>
+    <requestid>1387124</requestid>
+  </revision>
 </revisionlist>

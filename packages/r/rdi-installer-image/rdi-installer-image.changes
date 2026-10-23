@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 22 14:49:21 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20261022.058e144:
+  * image: fix excluding of kernel modules
+  * image: don't bail out of images directory already exists
+
+-------------------------------------------------------------------
 Mon Oct 19 14:10:50 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 20261019.1a525f6:
