@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 23 09:25:56 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.7.3:
+  * mvcc: fix data race between Hash and Restore
+  * etcdserver: keep Ready message order in processMessages
+  * etcdserver: add test for processMessages output order
+  * etcdserver: fix data race in keys-only RangeStream
+  * logutil: deprecate NewJournalWriter
+
+-------------------------------------------------------------------
 Tue Sep 22 21:29:55 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.7.2:
