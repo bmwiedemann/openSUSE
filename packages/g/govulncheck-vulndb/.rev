@@ -2516,4 +2516,12 @@
   * GO-2026-6507 CVE-2026-82399 GHSA-mrg3-qvqr-jw29 (forwarded request 1382108 from jfkw)</comment>
     <requestid>1382109</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>75b120a0b2cc33be9014c83270c17687</srcmd5>
+    <version>0.0.20261008T223109</version>
+    <time>1792780101</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1387202</requestid>
+  </revision>
 </revisionlist>
