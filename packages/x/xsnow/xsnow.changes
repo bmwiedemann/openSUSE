@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 22 14:55:18 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.9.9
+  * 01: snow.c, xsnow.h and others: implement rotating flakes,
+        following the kind instructions of Rick Jansen,
+        the godfather of xsnow.
+- Changes in version 3.9.8
+  * moon.c: init_halo_surface: use correct expression for
+            initial brightness of halo.
+- Changes in version 3.9.7
+  * 01: cn -> zh
+  * 02: Faster startup: no more wait in main.c:drawit() and some
+        tweaks in main.c, scenery.c. stars.c and moon.c
+        Makefile.am, configure.ac: removed afterpo/ 
+           ís use is obsolete.
+  * 03: main.c: do_fadein(), adapt_transparency(): 
+        Added fade_in for transparancy.
+  * 05: main.c, ui.c: some code cleanup
+
+-------------------------------------------------------------------
 Sun Sep 27 05:18:54 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.9.6: 
