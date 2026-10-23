@@ -84,7 +84,7 @@ reconstruction (think XOR-based LRC code).
 %python_alternative %{_bindir}/pyeclib-backend
 %{python_sitearch}/pyeclib
 %{python_sitearch}/pyeclib_c
-%{python_sitearch}/pyeclib_c.abi3.so
+%{python_sitearch}/pyeclib_c.abi3*.so
 %{python_sitearch}/[Pp]y[Ee][Cc][Ll]ib-%{version}.dist-info
 
 %changelog
