@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:02:21 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Suggest the freedoom package for the international-doom package
+  instead of the international-doom-common package
+- Install icons in %{_datadir}/icons/hicolor instead of %{_datadir}/pixmaps
+- Update to v9.1
+  * Features
+    - Implemented ingame "short tics" toggle key bind, available in
+      Keyboard Bindings / Special Modes / Short tics mode (thanks al_zera)
+    - Extended the weapon bobbing feature with an "Improved" modes for
+      less repetitive and more natural weapon sway (@pvictress)
+    - Implemented variable game speed (from 3% to 10000%).
+      Toggling keys can be assigned in the Special Modes section of
+      the Keyboard Bindings menu (@pvictress)
+    - Implemented rewind feature.
+      The rewind key can be assigned in the Special Modes section of
+      the Keyboard Bindings menu; rewind can be configured and disabled
+      on the second page of Misc Settings (@pvictress)
+    - Implemented "Clean Screenshot" feature  key bind can be assigned
+      in Keyboard Bindings menu (thanks to Claire and @pvictress)
+    - Added back "unscaled" fuzz effect, available in
+      Gameplay Features / Fuzz Effect (thanks STARTEK2)
+    - Added the ability to choose PNG screenshot compression level,
+      as well as JPEG save support.
+      Available in Misc Features / Screenshots
+      (by @pvictress, with special thanks to Sean Barrett (@nothings))
+  * Improvements
+    - Implemented transposed backbuffer rendering for improving
+      rendering performance (@pvictress, with whanks to @GooberMan)
+    - Implemented "Organize Save Files" and "Organize Screenshots" options
+      to the Misc menu.
+      When enabled, savegames and screenshots go into subfolders named after
+      the WAD the maps were loaded from, instead of the common Savegames/Screenshots
+      folders (@pvictress)
+    - Heretic and Hexen: interpolated status bar chain movement in uncapped
+      framerate mode (@pvictress)
+    - Heretic and Hexen: vertical mouse look is now more responsive
+    - Heretic and Hexen: added dedicated mouse button binds for all artifacts
+      (thanks ptrdoom)
+    - Saturation can now be set above 100% (up to 200%), and R/G/B intensity can be
+      increased beyond 1.0 (up to 2.0) (by @pvictress, with thanks to BenAkenobi)
+    - Improved colors for certain default menu options (thanks BenAkenobi)
+    - The gamepad is now disabled by default to avoid extra detection/handling
+      calls during program runtime. It can be enabled in Gamepad Settings menu
+    - Replaced Nuked-OPL3 with optimized Nuked-OPL3-fast
+      (special thanks to Tony Gies (@tgies))
+    - Various Doom v1.2 emulation improvements (thanks @mikeday0 and @SmileTheory)
+    - Implemented "Shimmering HOM" post-processing effect, with an appearance
+      similar to the DOS version (@pvictress)
+    - Added "Cylindrical sky projection" to "Sky drawing mode"
+      (@pvictress, with whanks to @MrAlaux)
+    - Implemented Transposed Backbuffer and improved performance of sprites
+      drawing/clipping (@pvictress)
+    - Doom: DeHackEd patches of Chex Quest, French Doom 2 version and Doom 1.2
+      are now embedded into the executable and no longer require extra downloads
+      (thanks @pvictress, @mikeday0, @fragglet)
+  * Widgets
+    - Added DSDA font option for widgets drawing (thanks @pvictress)
+  * Automap
+    - Adapted automap tag finder from DSDA-Doom, default keybind is H
+      (@pvictress, with thanks to @kraflab)
+    - Improved automap mouse panning: should be more responsive now and better working
+      with automap rotate mode (@pvictress)
+  * Fixes
+    - Fixed missing raising/lowering animation on some Dehacked-modded weapons
+      (thanks @andrikpowell)
+    - Mouse wheel now working with any mouse actions (@pvictress)
+    - Fixed possible rare crash on changing music tracks in OPL synth (thanks @Noseey)
+    - Fixed jittering of dropped items on moving lifts
+      (@pvictress, with thanks to @andrikpowell)
+    - Fixed a few missing tracks in the Remastered Music that caused the program
+      to quit (@pvictress, with thanks to @augvalle)
+    - Hexen: fixed possible slime trails on polyobjects drawing
+      (@pvictress, with thanks to ptrdoom)
+  * Linux
+    - Implemented automatic detection of .sf2 soundfonts on Linux (@bubbleguuum)
+    - Renamed inter-setup to inter-netgame
+
+-------------------------------------------------------------------
 Fri Jun  5 12:24:22 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - splitted into international-doom, international-heretic and

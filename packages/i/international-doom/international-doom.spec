@@ -17,7 +17,7 @@
 
 
 Name:           international-doom
-Version:        9.0
+Version:        9.1
 Release:        0
 Summary:        Limit-removing source port of DOOM
 License:        GPL-2.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(samplerate)
 Requires:       %{name}-common
+Suggests:       freedoom
 
 %description
 Source port of Doom based on Chocolate Doom and Crispy Doom
@@ -71,19 +72,18 @@ Major Features:
 chmod 755 %{buildroot}%{_bindir}/*
 for i in doom heretic hexen
 do
-    install -Dpm644 data/$i.png %{buildroot}%{_datadir}/pixmaps/inter-$i.png
+    install -Dpm644 data/$i.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/inter-$i.png
     install -Dpm644 data/$i.desktop %{buildroot}%{_datadir}/applications/inter-$i.desktop
 done
 
 %files
 %{_bindir}/inter-doom
 %{_datadir}/applications/inter-doom.desktop
-%{_datadir}/pixmaps/inter-doom.png
+%{_datadir}/icons/hicolor/128x128/apps/inter-doom.png
 
 %package common
 Summary:        Common files for international-doom, international-heretic and international-hexen
 Recommends:     timidity
-Suggests:       freedoom
 
 %description common
 Common files for international-doom, international-heretic and international-hexen
@@ -91,7 +91,7 @@ Common files for international-doom, international-heretic and international-hex
 %files common
 %license COPYING
 %doc README.md THANKS.md
-%{_bindir}/inter-setup
+%{_bindir}/inter-netgame
 
 %package -n international-heretic
 Summary:        Limit-removing source port of Heretic
@@ -127,7 +127,7 @@ Major Features:
 %files -n international-heretic
 %{_bindir}/inter-heretic
 %{_datadir}/applications/inter-heretic.desktop
-%{_datadir}/pixmaps/inter-heretic.png
+%{_datadir}/icons/hicolor/128x128/apps/inter-heretic.png
 
 %package -n international-hexen
 Summary:        Limit-removing source port of Hexen
@@ -163,6 +163,6 @@ Major Features:
 %files -n international-hexen
 %{_bindir}/inter-hexen
 %{_datadir}/applications/inter-hexen.desktop
-%{_datadir}/pixmaps/inter-hexen.png
+%{_datadir}/icons/hicolor/128x128/apps/inter-hexen.png
 
 %changelog
