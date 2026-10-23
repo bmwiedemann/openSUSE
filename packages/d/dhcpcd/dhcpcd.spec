@@ -30,6 +30,7 @@ Source4:        dhcpcd-tmpfiles.conf
 Source5:        dhcpcd.service
 Source6:        dhcpcd@.service
 Patch0:         dhcpcd-privsep-Fix-daemonising-broken-by-RLIMIT_NOFILE-of-0.patch
+Patch1:         dhcpcd-privsep-Allow-accept4-2-through-SECCOMP-on-s390x.patch
 BuildRequires:  sysuser-tools
 %sysusers_requires
 

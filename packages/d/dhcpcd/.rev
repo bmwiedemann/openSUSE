@@ -185,4 +185,13 @@
   [bsc#1275516]</comment>
     <requestid>1377921</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>50b42771240cf13a15475f35c368b64e</srcmd5>
+    <version>10.5.2</version>
+    <time>1792779730</time>
+    <user>anag_factory</user>
+    <comment>- Add dhcpcd-privsep-Allow-accept4-2-through-SECCOMP-on-s390x.patch
+  [bsc#1281598]</comment>
+    <requestid>1387115</requestid>
+  </revision>
 </revisionlist>

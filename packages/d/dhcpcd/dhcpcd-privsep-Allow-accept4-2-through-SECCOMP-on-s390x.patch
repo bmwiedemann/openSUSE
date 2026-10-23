@@ -1,0 +1,26 @@
+From 4364f000cf99dbc1cbaf49c2d4faf170457460f7 Mon Sep 17 00:00:00 2001
+From: Jorik Cronenberg <jorik.cronenberg@suse.com>
+Date: Thu, 22 Oct 2026 15:01:58 +0200
+Subject: [PATCH] privsep: Allow accept4(2) through SECCOMP on s390x
+
+---
+ src/privsep-linux.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/privsep-linux.c b/src/privsep-linux.c
+index bd26f908..7b405930 100644
+--- a/src/privsep-linux.c
++++ b/src/privsep-linux.c
+@@ -286,6 +286,9 @@ static struct sock_filter ps_seccomp_filter[] = {
+ #ifdef __NR_accept
+ 	SECCOMP_ALLOW(__NR_accept),
+ #endif
++#ifdef __NR_accept4
++	SECCOMP_ALLOW(__NR_accept4),
++#endif
+ #ifdef __NR_brk
+ 	SECCOMP_ALLOW(__NR_brk),
+ #endif
+-- 
+2.56.0
+
