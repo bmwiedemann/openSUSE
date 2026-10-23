@@ -17,17 +17,19 @@
 
 
 Name:           pspg
-Version:        5.8.16
+Version:        5.9.0
 Release:        0
 Summary:        Pager for PostgreSQL, MariaDB, Percona, and MySQL
 License:        BSD-2-Clause
-Group:          Productivity/Text/Utilities
 URL:            https://github.com/okbob/pspg
 Source:         https://github.com/okbob/pspg/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig >= 0.9.0
-BuildRequires:  postgresql-devel
 BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(libecpg)
+BuildRequires:  pkgconfig(libecpg_compat)
+BuildRequires:  pkgconfig(libpgtypes)
+BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(ncurses)
 
 %description

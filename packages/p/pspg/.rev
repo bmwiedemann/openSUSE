@@ -49,4 +49,12 @@
     <comment>Update to 5.8.16 (devel project current; Factory was stuck at 1.9.0 from 2019)</comment>
     <requestid>1360620</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4754c64da6493a14a67e1b0cc88608eb</srcmd5>
+    <version>5.9.0</version>
+    <time>1792780179</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.9.0</comment>
+    <requestid>1392006</requestid>
+  </revision>
 </revisionlist>

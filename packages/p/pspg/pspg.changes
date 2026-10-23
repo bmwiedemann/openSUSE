@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:26:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.9.0:
+  * New option --raw-input-on-quit-if-one-screen: return the original
+    input unchanged when the content fits on one screen and the pager
+    is not used
+  * Fix possible crashes on input data with broken encoding
+  * Fix SIGSEGV when --null is empty or whitespace-only
+  * Fix possible SIGFPE crash when the terminal width is zero
+- Switch to pkgconfig-style BuildRequires for PostgreSQL libraries
+
+-------------------------------------------------------------------
 Wed Feb 18 07:46:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 5.8.16
