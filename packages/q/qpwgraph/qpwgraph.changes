@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 22 15:28:13 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Replace with the upstream tarball: qpwgraph-1.0.4.tar.gz
+
+-------------------------------------------------------------------
+Sat Oct 17 16:42:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.4:
+  * Custom color theme (with palette editor) and widget style
+    theme selectors with preview (Graph/Options.../Custom).
+  * Added View/Fullscreen toggle action (F11 shortcut).
+  * Fixed crash when selecting the "Don't ask this again" option
+    on some message-box prompts.
+  * Added Ctrl+R shortcut for View/Arrange Nodes.
+  * PipeWire node and port IDs are now shown on hovering
+    tooltips.
+  * Support connecting to a remote PipeWire daemon by name
+    (-r/--remote); remote name shown in the status bar.
+  * Configured ALSA MIDI port colors are now reset/restored
+    properly.
+
+-------------------------------------------------------------------
 Mon Feb 16 11:15:01 UTC 2026 - ecsos@opensuse.org
 
 - Update to version 0.9.9:

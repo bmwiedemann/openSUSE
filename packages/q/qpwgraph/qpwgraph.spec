@@ -17,11 +17,10 @@
 
 
 Name:           qpwgraph
-Version:        0.9.9
+Version:        1.0.4
 Release:        0
 Summary:        PipeWire Graph Qt GUI Interface
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://gitlab.freedesktop.org/rncbc/qpwgraph
 Source:         https://rncbc.org/archive/qpwgraph-%{version}.tar.gz
 BuildRequires:  cmake
@@ -49,10 +48,10 @@ Qt C++ framework, based and pretty much like the same of QjackCtl.
 %build
 %cmake_qt6 \
   -DCONFIG_ALSA_MIDI=ON
-%qt6_build
+%{qt6_build}
 
 %install
-%qt6_install
+%{qt6_install}
 
 %files
 %license LICENSE.md
