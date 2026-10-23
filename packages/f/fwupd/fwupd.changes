@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 19 12:14:52 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- rename Polkit rules to give it a 10- prefix, allowing them to gain priority
+  over the SUSE-specific rules generated in
+  /etc/polkit-1/rules.d/90-default-privs.rules (bsc#1279948).
+
+-------------------------------------------------------------------
 Thu Oct  8 09:13:34 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - move Polkit rules into the proper package

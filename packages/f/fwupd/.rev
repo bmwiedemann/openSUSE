@@ -1143,4 +1143,14 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
   policy, which was the reason for not packaging the rules files previously.</comment>
     <requestid>1384173</requestid>
   </revision>
+  <revision rev="123" vrev="3">
+    <srcmd5>c22a1453bf1fd15687a997107c261db6</srcmd5>
+    <version>2.1.8</version>
+    <time>1792779650</time>
+    <user>anag_factory</user>
+    <comment>- rename Polkit rules to give it a 10- prefix, allowing them to gain priority
+  over the SUSE-specific rules generated in
+  /etc/polkit-1/rules.d/90-default-privs.rules (bsc#1279948).</comment>
+    <requestid>1386477</requestid>
+  </revision>
 </revisionlist>

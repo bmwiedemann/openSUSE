@@ -253,6 +253,11 @@ rm -f %{buildroot}%{_modulesloaddir}/fwupd-i2c.conf
 %endif
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_datadir}/doc
+# give the polkit rules a numeric prefix to give them priority over
+# polkit-default-privs, otherwise they remain ineffective
+pushd %{buildroot}%{_datadir}/polkit-1/rules.d
+mv org.freedesktop.fwupd.rules 10-org.freedesktop.fwupd.rules
+popd
 
 # installed-tests are packaged in fwupd-tests subpackage
 
@@ -352,7 +357,7 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_libdir}/fwupd-*/libfwupdutil.so
 %{_datadir}/%{name}/quirks.d/builtin.quirk.gz
 %_sysusersdir/fwupd.conf
-%{_datadir}/polkit-1/rules.d/org.freedesktop.fwupd.rules
+%{_datadir}/polkit-1/rules.d/10-org.freedesktop.fwupd.rules
 
 %files -n libfwupd%{shlib_sover}
 %{_libdir}/libfwupd.so.*
