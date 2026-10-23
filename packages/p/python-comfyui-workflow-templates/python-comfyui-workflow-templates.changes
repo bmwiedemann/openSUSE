@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:25:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.96: release-train pin roll, the
+  re-export shim code is unchanged
+  * 0.11.95 adds the Ideogram Vector 1 text/image-to-SVG
+    templates
+  * 0.11.96 adds Meshy T2.5, PixVerse V6 Max and Bria
+    guided/holding/try-on templates; pins move to core 0.3.387,
+    json 0.1.122 and media-assets-02 0.1.23
+  * The floors in this package already cover all of those pins
+
+-------------------------------------------------------------------
 Thu Oct 22 11:43:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.94: release-train pin roll, the
