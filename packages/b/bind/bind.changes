@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Oct 22 10:04:03 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.30
+  Security Fixes:
+  * Prevent exhaustion of CPU while parsing crafted DNS messages.
+    (CVE-2026-19630)
+    [bsc#1286575]
+  * Prevent concurrent GSS-TSIG traffic from terminating named.
+    (CVE-2026-94300)
+    [bsc#1286578]
+  * Fix a crash with redirect zones and strict QNAME minimization.
+    (CVE-2026-96888)
+    [bsc#1286579]
+  * Fix a crash when resuming from a query initiated by RPZ.
+    (CVE-2026-97313)
+    [bsc#1286580]
+
+  Bug Fixes:
+  * Remove a spurious root trust anchor warning and recognize the
+    new root key.
+  * Do not accept HMAC keys and signatures for SIG(0) or DNSSEC.
+  * Fix DNSSEC tool dates being read one hour late during Daylight
+    Saving Time.
+  * Reject URI records with an empty target.
+  * Fix a crash when loading a zone in raw format.
+  * Prevent dynamic update prerequisites from probing zones that
+    refuse queries.
+  * Fix a named-journalprint crash when using the -x option.
+  * Honor server settings for keyed NOTIFY and DS queries.
+  * Fix a catalog zone update bug.
+  * Fix an out-of-bounds read in dig +dns64prefix.
+  * Prevent excessive RRL table scans under load.
+  * Make named-checkconf fail on invalid command-line arguments.
+  * Remove the temporary file when saving a zone file fails.
+  * Prevent the statistics channel from serving data on
+    unregistered URL prefixes.
+  * Fix a crash on OpenBSD when a signal reached an idle worker
+    thread.
+  * Resolve names in insecure zones whose apex answers with a
+    CNAME.
+  * Set GSS-TSIG keys to last as long as the negotiated context.
+
+-------------------------------------------------------------------
 Fri Oct  2 10:46:55 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update named.root
