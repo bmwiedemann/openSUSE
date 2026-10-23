@@ -344,4 +344,12 @@ license=(&quot;Unlicense&quot;), stale for every version since 2023 and not foll
     <comment>Recommend libonnxruntime1: the ONNX backend dlopens it at run time; LiteRT note stays (no runtime packaged).</comment>
     <requestid>1384350</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>56c6addd715104e98756c6138afe3093</srcmd5>
+    <version>3.0.4</version>
+    <time>1792779745</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.0.4</comment>
+    <requestid>1387144</requestid>
+  </revision>
 </revisionlist>

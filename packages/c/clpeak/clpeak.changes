@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 22 11:42:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.0.4:
+  * 3.0.2: a run keeps its finished part in <output>.partial.json
+    and continues with --resume (--skip-crashed records the dying
+    test as an error); GPU time budget split into --max-time-gpu
+    (500 ms default) and the new --max-time-ml-gpu (1000 ms);
+    vendored runtimes raised to LiteRT 2.3.0 and ONNX Runtime
+    1.31.0 (both dlopen'd, not linked); corrected CPU/GPU rows
+    (fastest-core single-thread, Arm FMLAL chain, Arc matrix
+    engines, Intel OpenCL int8, LiteRT int8 I/O) and crash fixes.
+  * 3.0.3 is an app-only fix with nothing in the built CLI.
+  * 3.0.4 fixes the build of the AVX-VNNI-INT16 translation unit
+    with GCC 14.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+- Refresh bundled-header versions in the Legal-Review-Notice
+  (onnxruntime 1.31.0, LiteRT 2.3.0).
+
+-------------------------------------------------------------------
 Mon Oct 12 14:54:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Recommend libonnxruntime1: the ONNX backend dlopens it at run time

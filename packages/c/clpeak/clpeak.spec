@@ -18,7 +18,7 @@
 
 
 Name:           clpeak
-Version:        3.0.1
+Version:        3.0.4
 Release:        0
 Summary:        Find peak compute, bandwidth and latency of GPUs, CPUs and NPUs
 # Legal-Review-Notice:
@@ -28,13 +28,13 @@ Summary:        Find peak compute, bandwidth and latency of GPUs, CPUs and NPUs
 #    to match; before that the tag was Apache-2.0 (65e57245, 2023-12-22).
 #    LICENSE grants v3 only -- no "or later" wording in it or in any source
 #    header -- hence -only. One upstream field is stale and was not followed
-#    (still so in 3.0.1): packaging/flatpak/
+#    (still so in 3.0.4): packaging/flatpak/
 #    io.github.krrishnarraj.clpeak.metainfo.xml reads project_license
 #    Apache-2.0.
 #  * Bundled third-party code, new in 3.0.0, header-only and both one-way
 #    GPL-3.0 compatible, each carrying its notice verbatim:
-#    third_party/onnxruntime (3 MIT headers, microsoft/onnxruntime v1.30.0) and
-#    third_party/litert (35 Apache-2.0 headers, google-ai-edge/LiteRT v2.2.0).
+#    third_party/onnxruntime (3 MIT headers, microsoft/onnxruntime v1.31.0) and
+#    third_party/litert (35 Apache-2.0 headers, google-ai-edge/LiteRT v2.3.0).
 #    Both runtimes are dlopen'd at run time, so none of their code is linked.
 #  * third_party/libopencl-stub and third_party/Vulkan-Headers are not
 #    shipped -- git submodules, absent from the release archive, and referenced
