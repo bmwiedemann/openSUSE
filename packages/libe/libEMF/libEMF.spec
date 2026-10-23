@@ -1,7 +1,7 @@
 #
 # spec file for package libEMF
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           libEMF
-Version:        1.0.13
+Version:        1.0.14
 Release:        0
 Summary:        Library for Manipulation with Enhanced MetaFile (EMF, ECMA-234)
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Libraries
 URL:            https://libemf.sourceforge.net/
 Source:         https://downloads.sourceforge.net/libemf/libemf-%{version}.tar.gz
-Patch1:         riscv64-support.patch
-Patch2:         ppc64le-support.patch
+Patch1:         ppc64le-support.patch
 BuildRequires:  gcc-c++
 # taken from includes/wine/winnt.h
 ExclusiveArch:  alpha %{arm} aarch64 %{ix86} mips ppc ppc64 ppc64le riscv64 sparc s390 s390x x86_64
@@ -43,7 +41,6 @@ object.
 %package -n libEMF1
 Summary:        Library for manipulation with Enhanced MetaFile (EMF, ECMA-234)
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n libEMF1
 LibEMF is a C/C++ library which provides a drawing toolkit based on
@@ -59,7 +56,6 @@ SO/OO graphics object.
 Summary:        Library for manipulation with Enhanced MetaFile (EMF, ECMA-234)
 # split-provides for upgrade from openSUSE <= 12.1 and SLE <= 11
 License:        GPL-2.0-or-later
-Group:          Productivity/Graphics/Other
 Provides:       %{name}:%{_bindir}/printemf
 
 %description utils
@@ -75,7 +71,6 @@ SO/OO graphics object.
 %package devel
 Summary:        Library for manipulation with Enhanced MetaFile (EMF, ECMA-234)
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libEMF1 = %{version}
 
@@ -117,7 +112,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/*
 
 %files devel
-%doc doc/html
 %{_includedir}/libEMF
 %{_libdir}/*.so
 

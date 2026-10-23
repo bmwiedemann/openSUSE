@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:59:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.14:
+  * Allow compilation on macOS with newer clang.
+  * Improve code portability.
+  * Documentation can now be built with `make docs`.
+- Drop riscv64-support.patch: upstream adopted riscv64 support.
+- Drop obsolete Group tags.
+- Drop prebuilt API docs from devel (upstream 1.0.14 no longer ships
+  doc/html; build with `make docs` instead).
+
+-------------------------------------------------------------------
 Sat Sep 24 08:37:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add riscv64-support.patch
