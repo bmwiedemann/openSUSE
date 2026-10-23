@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 20 15:08:47 UTC 2026 - mcepl@cepl.eu
+
+- Update to version 20260912.881b918:
+  * Avoid trailing arguments in recursive macro expansion
+
+-------------------------------------------------------------------
 Wed Sep 09 10:00:28 UTC 2026 - mcepl@cepl.eu
 
 - Update to version 20260909.65d2791:

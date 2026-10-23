@@ -759,4 +759,13 @@ prerequisite for new python submission</comment>
   * Provide a primary_python fallback for legacy projects</comment>
     <requestid>1376598</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>4337c231761411a2cd3e0c87b78813b8</srcmd5>
+    <version>20260912.881b918</version>
+    <time>1792779736</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260912.881b918:
+  * Avoid trailing arguments in recursive macro expansion</comment>
+    <requestid>1386992</requestid>
+  </revision>
 </revisionlist>
