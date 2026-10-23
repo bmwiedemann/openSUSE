@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 16 09:35:42 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- Require libexpat1 >= 2.8.5 for python312-base and raise
+  the Expat build requirement accordingly. pyexpat uses
+  XML_SetHashSalt16Bytes when built with Expat >= 2.8, but the
+  automatic SONAME dependency permits older libraries, breaking
+  imports and venv/ensurepip (bsc#1285433).
+
+-------------------------------------------------------------------
 Wed Oct  7 18:00:15 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.12.15:

@@ -229,7 +229,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(expat) >= 2.8.5
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
@@ -348,6 +348,8 @@ Python, and Macintosh Module Reference in format for devhelp.
 
 %package -n %{python_pkg_name}-base
 Summary:        Python 3 Interpreter and Stdlib Core
+# pyexpat needs XML_SetHashSalt16Bytes; the SONAME dependency is unversioned (bsc#1285433).
+Requires:       libexpat1 >= 2.8.5
 Requires:       libpython%{so_version} = %{version}
 Recommends:     %{python_pkg_name} = %{version}
 %obsolete_python_versioned base

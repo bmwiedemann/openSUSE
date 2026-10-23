@@ -2238,4 +2238,16 @@ CVE-2026-3276-On2-unicodedata-normalize.patch
       tar extraction filters where a crafted archive using a hard</comment>
     <requestid>1383245</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>c4df5e627f99cae3ad557e62a3ddb56b</srcmd5>
+    <version>3.12.15</version>
+    <time>1792779734</time>
+    <user>anag_factory</user>
+    <comment>- Require libexpat1 &gt;= 2.8.5 for python312-base and raise
+  the Expat build requirement accordingly. pyexpat uses
+  XML_SetHashSalt16Bytes when built with Expat &gt;= 2.8, but the
+  automatic SONAME dependency permits older libraries, breaking
+  imports and venv/ensurepip (bsc#1285433).</comment>
+    <requestid>1386975</requestid>
+  </revision>
 </revisionlist>
