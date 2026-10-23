@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:17:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.15.0:
+  * bugfix: Fix log stack overflow if metadata contains
+    circular references
+  * Add psycopg (v3) database backend in a new
+    python-aws-xray-sdk-psycopg subpackage
+  * Keep revert-trace.patch (still applies, lambda trace
+    header behavior unchanged upstream)
+  * Skip psycopg tests needing a live PostgreSQL and the
+    benchmark test importing pkg_resources
+  * Spec cleanup: drop obsolete Group tags
+
+-------------------------------------------------------------------
 Wed Mar 18 13:21:24 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Ignore tests that fails with latest python-pytest-asyncio
