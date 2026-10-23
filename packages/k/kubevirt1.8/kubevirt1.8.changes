@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 21 21:29:07 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Re-vendor the Go dependencies for the open security bugs:
+  * golang.org/x/net 0.60.0: CVE-2026-78669 (bsc#1285255) excessive CPU
+    from repeated HTTP/2 initial window changes; also CVE-2026-78659,
+    CVE-2026-78660, CVE-2026-78663 and CVE-2026-97032 fixed in that release
+  * golang.org/x/crypto 0.57.0: CVE-2026-56854, CVE-2026-56855 and
+    CVE-2026-78662 (bsc#1278574) ssh authentication bypass and deadlocks
+  * google.golang.org/grpc 1.83.2: CVE-2026-84445 (bsc#1278869) crash on
+    requests without :authority and Host headers, CVE-2026-84304
+    (bsc#1279184) HTTP/2 DATA fragment memory exhaustion, CVE-2026-84303
+    (bsc#1279276) xDS RBAC header matcher bypass
+- Build with Go 1.26: the updated modules require it (go.mod)
+
+-------------------------------------------------------------------
 Mon Aug 17 20:45:00 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
 
 - Package the persistent-reservation helper's entrypoint script:

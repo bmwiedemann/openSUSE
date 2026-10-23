@@ -118,4 +118,12 @@ crashlooped every virt-handler pod.</comment>
     <comment>Backport the safepath dialing of the migration target unix sockets, CVE-2026-13622 (bsc#1272840).</comment>
     <requestid>1386988</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>3675ac0f8ef3cef4579d4072049de581</srcmd5>
+    <version>1.8.4</version>
+    <time>1792780096</time>
+    <user>anag_factory</user>
+    <comment>Security re-vendor: golang.org/x/net 0.60.0 (bsc#1285255); golang.org/x/crypto 0.57.0 (bsc#1278574); google.golang.org/grpc 1.83.2 (bsc#1278869 bsc#1279184 bsc#1279276); build with Go 1.26</comment>
+    <requestid>1387191</requestid>
+  </revision>
 </revisionlist>
