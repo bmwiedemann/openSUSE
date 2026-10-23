@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Oct 21 14:08:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- rule_path needs to be a directory own
+  %{_sysconfdir}/loki/rules.d/ for this purpose in the package 
+
+-------------------------------------------------------------------
+Wed Oct 21 07:31:30 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.7.9:
+  * fix(security): Bump Go to 1.26.10 [SECURITY] (release-3.7.x) (#25458)
+  * fix(deps): Update go4.org/netipx digest to 3075585 (release-3.7.x) (#25390)
+  * chore(deps): Update module github.com/fxamacker/cbor/v2 to v2.9.6 (release-3.7.x) (#25430)
+  * chore(deps): Update module github.com/go-jose/go-jose/v4 to v4.1.6 (release-3.7.x) (#25440)
+  * chore(deps): Update module github.com/go-playground/universal-translator to v0.18.2 (release-3.7.x) (#25442)
+  * docs: Add Grafana Play link to the Loki landing page [release-3.7.x] (#25434)
+  * chore(deps): Update module github.com/gabriel-vasile/mimetype to v1.4.16 (release-3.7.x) (#25431)
+  * fix(deps): Update k8s.io/utils digest to cf1189d (release-3.7.x) (#25391)
+  * chore(deps): Update module cel.dev/expr to v0.25.3 (release-3.7.x) (#25421)
+  * chore(deps): Update module github.com/andybalholm/brotli to v1.2.6 (release-3.7.x) (#25422)
+  * chore(deps): Update module github.com/Azure/go-autorest/autorest/date to v0.3.1 (release-3.7.x) (#25423)
+  * chore(deps): Update dependency fluentd to v1.19.4 (release-3.7.x) (#25396)
+  * chore(deps): Update fluent/fluent-bit Docker tag to v4.2.8 (release-3.7.x) (#25398)
+  * chore(deps): Update golang.org/x/exp digest to f0251eb (release-3.7.x) (#25358)
+  * chore(deps): Update github.com/charmbracelet/ultraviolet digest to 6b8d4ba (release-3.7.x) (#25340)
+  * chore(deps): Update github.com/google/pprof digest to 1facf8f (release-3.7.x) (#25371)
+  * chore(deps): Update golang.org/x/telemetry digest to 824aa3d (release-3.7.x) (#25372)
+  * chore(deps): Update sigs.k8s.io/json digest to 11ed52e (release-3.7.x) (#25367)
+  * chore(deps): Update google.golang.org/genproto digest to 4341edf (release-3.7.x) (#25359)
+  * chore(deps): Update github.com/lufia/plan9stats digest to 341c2f0 (release-3.7.x) (#25342)
+  * chore(deps): Update github.com/power-devops/perfstat digest to 22a1a46 (release-3.7.x) (#25343)
+  * chore(deps): Update google.golang.org/genproto/googleapis/api digest to 4341edf (release-3.7.x) (#25360)
+  * docs: Loki 3.6.18 Release Notes [release-3.7.x] (#25355)
+  * chore: Update otel log modules to v0.21.0 and golang.org/x/net to v0.60.0 (#25179)
+  * fix(ingester): Concurrent WAL `Append()` calls could lead to inconsitent record order and irrecoverable WAL state (#25125)
+  * fix: Limit request body size for ruler "CreateRuleGroup" API and LogQLAnalyzer API [release-3.7.x] (#24838)
+  * fix(security/MEDIUM/): Update module github.com/containerd/containerd/v2 to v2.2.9 [SECURITY] (release-3.7.x) (#24806)
+  * docs: Update the Helm Reference chart [release-3.7.x] (#24812)
+  * fix(security/LOW/): Update module go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc to v1.45.0 [SECURITY] (release-3.7.x) (#24614)
+  * fix(logql): Keep entries while stream accumulator has free room [release-3.7.x] (#24703)
+  * fix(security/LOW/): Update module go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp to v1.45.0 [SECURITY] (release-3.7.x) (#24615)
+  * fix(security/LOW/): Update module go.opentelemetry.io/otel/sdk to v1.45.0 [SECURITY] (release-3.7.x) (#24616)
+  * docs: Add Loki limits topic [release-3.7.x] (#24654)
+  * docs: Loki 3.7.8 Release Notes [release-3.7.x] (#24593)
+  * docs: Loki 3.6.17 Release Notes [release-3.7.x] (#24591)
+  * chore(release-3.7.x): Release 3.7.8 (#24331)
+
+-------------------------------------------------------------------
 Thu Sep 17 16:08:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.7.8:

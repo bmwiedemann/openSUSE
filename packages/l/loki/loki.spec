@@ -27,7 +27,7 @@
 %global promtail_binaries promtail
 
 Name:           loki
-Version:        3.7.8
+Version:        3.7.9
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -45,7 +45,7 @@ Source8:        promtail.target
 Source99:       series
 Patch0:         proper-data-directories.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  go1.26 >= 1.26.5
+BuildRequires:  go1.26 >= 1.26.10
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
 Requires:       logcli = %{version}
@@ -158,6 +158,7 @@ install -Dm644 %{SOURCE6} %{buildroot}%{_unitdir}/promtail@.service
 install -Dm640 clients/cmd/promtail/promtail-local-config.yaml \
     %{buildroot}%{_sysconfdir}/loki/promtail.yaml
 %endif
+install -Dm0750 -d %{buildroot}%{_sysconfdir}/loki/rules.d/
 
 # Binaries
 install -D -m 0755 -t %{buildroot}%{_bindir} %{loki_public_binaries} %{?loki_internal_binaries}
@@ -210,6 +211,7 @@ install -D -m 0750 -d %{buildroot}%{promtail_datadir}
 %{_bindir}/loki-canary
 %{_bindir}/logql-analyzer
 %dir %{_sysconfdir}/loki
+%dir %attr(-,root,loki) %{_sysconfdir}/loki/rules.d/
 %config(noreplace) %attr(-,root,loki) %{_sysconfdir}/loki/loki.yaml
 %{_sbindir}/rcloki
 %dir %attr(-,loki,loki) %{loki_datadir}/
