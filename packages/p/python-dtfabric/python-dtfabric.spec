@@ -1,7 +1,7 @@
 #
 # spec file for package python-dtfabric
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %{?sle15_python_module_pythons}
 %define modname dtfabric
 Name:           python-dtfabric
-Version:        20230520
+Version:        20260506
 Release:        0
 Summary:        Data type fabric (dtfabric)
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/libyal/dtfabric
 Source:         https://github.com/libyal/dtfabric/releases/download/%{version}/dtfabric-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
@@ -33,7 +32,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
-Requires:       python-pip
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -50,17 +48,14 @@ dtFabric, or data type fabric, is a project to manage data types and structures,
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/validate-definitions.py
-# setup.py install helpfully installs files where it shouldn’t
-rm -rv %{buildroot}%{_datadir}/doc/%{modname}
-
+%python_clone -a %{buildroot}%{_bindir}/validate_definitions
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
-%python_install_alternative validate-definitions.py
+%python_install_alternative validate_definitions
 
 %postun
-%python_uninstall_alternative validate-definitions.py
+%python_uninstall_alternative validate_definitions
 
 %check
 # Using pytest leads to some horribly-looking crashes, not sure what's
@@ -69,9 +64,9 @@ rm -rv %{buildroot}%{_datadir}/doc/%{modname}
 
 %files %{python_files}
 %license LICENSE
-%doc ACKNOWLEDGEMENTS AUTHORS README
-%python_alternative %{_bindir}/validate-definitions.py
+%doc ACKNOWLEDGEMENTS AUTHORS README.md
+%python_alternative %{_bindir}/validate_definitions
 %{python_sitelib}/dtfabric
-%{python_sitelib}/dtfabric-%{version}*-info
+%{python_sitelib}/dtfabric-%{version}.dist-info
 
 %changelog
