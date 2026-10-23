@@ -18,26 +18,19 @@
 
 %define my_qtversion 6.5.3
 %define my_pyver 3.14
-
-%if 0%{suse_version} < 1600
-%global pythons python314
-%else
-%global pythons python3
-%endif
-
 %global pythons python314
 
 %{?sle15_python_module_pythons}
 
 Name:           calibre
-Version:        9.14.0
+Version:        9.17.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
 Group:          Productivity/Other
 URL:            https://calibre-ebook.com
 #Source0:        https://download.calibre-ebook.com/%%{version}/calibre-%%{version}.tar.xz
-#Source1:        https://calibre-ebook.com/signatures/calibre-%%{version}.tar.xz.sig
+#Source1:        httpsy://calibre-ebook.com/signatures/calibre-%%{version}.tar.xz.sig
 Source0:        https://github.com/kovidgoyal/calibre/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source2:        https://calibre-ebook.com/signatures/kovid.gpg#/%{name}.keyring
 Source5:        https://github.com/mathjax/MathJax/archive/3.1.4/mathjax-3.1.4.tar.gz
@@ -61,15 +54,10 @@ Patch3:         %{name}-no-update.diff
 # PATCH-FIX-OPENSUSE: disbale piper because since 8.8.0 calibre needs onnxruntime which is not in openSUSE.
 Patch4:         %{name}-disable_piper.patch
 ExclusiveArch:  aarch64 x86_64 riscv64
-%if 0%{?suse_version} <= 1550
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  cmake >= 3.27.6
 BuildRequires:  fdupes
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
@@ -100,13 +88,11 @@ BuildRequires:  libopenssl-3-devel >= 3.5.3
 BuildRequires:  libpoppler-devel >= 25.11.0
 BuildRequires:  libstemmer-devel >= 3.0.1
 BuildRequires:  libwmf-devel >= 0.2.8
-%if 0%{suse_version} == 1600
-BuildRequires:  (libpodofo-devel >= 0.10.5 and libpodofo-devel < 1.0.0)
-%else
-BuildRequires:  (libpodofo-0_10-devel >= 0.10.5 and libpodofo-0_10-devel < 1.0.0)
-%endif
+# upstream use libpodofo >= 1.1.2
+BuildRequires:  pkgconfig(libpodofo) >= 1.1.1
 # upstream use: mozjpeg >= 4.1.5
 BuildRequires:  nodejs >= 22
+BuildRequires:  %{pythons}
 BuildRequires:  optipng >= 0.9.1
 BuildRequires:  poppler-tools >= 25.11.0
 BuildRequires:  python-rpm-macros
@@ -157,6 +143,7 @@ BuildRequires:  pkgconfig(libmspack)
 BuildRequires:  pkgconfig(libopenjp2) >= 2.5.2
 # upstream use: pkgconfig(libpng16) >= 1.6.57
 BuildRequires:  pkgconfig(libpng16) >= 1.6.44
+BuildRequires:  pkgconfig(libavif) >= 1.0.4
 BuildRequires:  pkgconfig(libtiff-4) >= 4.7.1
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.30
 BuildRequires:  pkgconfig(libwebp) >= 1.6.0
@@ -167,13 +154,13 @@ BuildRequires:  pkgconfig(uchardet) >= 0.0.8
 # calibre no longer depends on ImageMagick
 # but keept BuildRequires to convert icon to serveral sizes
 BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
-#
-BuildRequires:  jxrlib-devel >= 0.2.4
 BuildRequires:  %{python_module Brotli >= 1.2.0}
 BuildRequires:  %{python_module Deprecated >= 1.3.1}
 BuildRequires:  %{python_module FontTools >= 4.61.0}
+BuildRequires:  jxrlib-devel >= 0.2.4
 BuildRequires:  libjpeg-turbo >= 3.0.0
 BuildRequires:  pkgconfig(lcms2) >= 2.17
+BuildRequires:  pkgconfig(libjxl) >= 0.12.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.15.3
 BuildRequires:  pkgconfig(libxslt) >= 1.1.45
 # Not in suse BuildRequires:  %%{python_module MacFSEvents >= 0.8.4}
@@ -246,6 +233,7 @@ BuildRequires:  %{python_module wheel >= 0.46.2}
 # upstream use pyqt-builder >= 1.19.1
 BuildRequires:  %{python_module pyqt-builder >= 1.19.0}
 BuildRequires:  %{python_module pywebpush}
+# missing in suse: BuildRequires:  %%{python_module speechd >= 0.12.1}
 Requires(pretrans): findutils
 Requires:       %{python_flavor}-Brotli >= 1.2.0
 Requires:       %{python_flavor}-Deprecated >= 1.3.1
@@ -363,22 +351,18 @@ chmod -x recipes/*.recipe
 ##sed -i 's| calibre/utils/lzx/mspack.h||' setup/extensions.json
 
 %build
-%if 0%{?suse_version} <= 1500
-export CC=gcc-12
-export CXX=g++-12
-%endif
 export \
 LANG="en_US.UTF8" \
 CFLAGS="%{optflags}" \
 CXXFLAGS="%{optflags}"
 
 ###python setup.py build
-CALIBRE_PY3_PORT=1 python%python_bin_suffix setup.py build
+CALIBRE_PY3_PORT=1 python%my_pyver setup.py build
 
 #python%%python_bin_suffix setup.py iso639
 #python%%python_bin_suffix setup.py iso3166
 #python%%python_bin_suffix setup.py translations
-python%python_bin_suffix setup.py gui
+python%my_pyver setup.py gui
 
 #%%{__python3} setup.py resources \
 #	--path-to-liberation_fonts %%{_datadir}/fonts/truetype \
@@ -389,7 +373,7 @@ python%python_bin_suffix setup.py gui
 
 %install
 ###python setup.py install \
-CALIBRE_PY3_PORT=1 python%python_bin_suffix setup.py install \
+CALIBRE_PY3_PORT=1 python%my_pyver setup.py install \
    --prefix=%{_prefix} \
    --root=%{buildroot}%{_prefix} \
    --staging-bindir=%{buildroot}%{_bindir} \
@@ -412,8 +396,8 @@ done
 %suse_update_desktop_file -i -n -N "Calibre LRF Viewer" -G "Calibre Viewer for LRF files" calibre-lrfviewer
 
 # rpmlint: wrong-script-interpreter /usr/bin/env python3
-find %{buildroot}%{_bindir} -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python%python_bin_suffix:g'
-find %{buildroot}%{_libdir}/calibre -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python%python_bin_suffix:g'
+find %{buildroot}%{_bindir} -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python%my_pyver:g'
+find %{buildroot}%{_libdir}/calibre -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python%my_pyver:g'
 
 # these are provided as separate packages
 rm -r %{buildroot}%{_libdir}/%{name}/odf
@@ -456,21 +440,19 @@ TEST_EXCLUDE=(
     --exclude-test-name unrar                       # is not in openSUSE oss
     --exclude-test-name zeroconf                    # rise up build error
 %if 0%{?suse_version} >= 1600
-    --exclude-test-name test_fts_basic              # rise up build error
-    --exclude-test-name test_websocket_basic        # rise up build error
-    --exclude-test-name test_piper                  # rise up build error
-    --exclude-test-name test_plugins                # rise up build error since disable_piper.patch
-    --exclude-test-name test_pykakasi               # is not in openSUSE oss
-    --exclude-test-name test_import_of_all_python_modules # rise up build error because of pykakasi
-    --exclude-test-name test_qt                     # rise up build errror because of cwebp
-    --exclude-test-name test_speech_dispatcher      # rise up build error because of python-speechd
+    --exclude-test-name test_piper                   # rise up build error
+    --exclude-test-name test_plugins                 # rise up build error since disable_piper.patch
+    --exclude-test-name test_pykakasi                # rise up build errror because of pykakasi
+    --exclude-test-name test_import_of_all_python_modules # rise up build error because of pykakasi and piper
+    --exclude-test-name test_qt                      # rise up build errror because of cwebp
+    --exclude-test-name test_speech_dispatcher       # rise up build error because of python-speechd
 %endif
 %if 0%{?qemu_user_space_build}
     --exclude-test-name test_recipe_browser_webengine # sandbox not supported
 %endif
 )
 
-CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python%python_bin_suffix setup.py test "${TEST_EXCLUDE[@]}"
+CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python%my_pyver setup.py test "${TEST_EXCLUDE[@]}"
 %endif
 
 %if 0%{?suse_version} <= 1320
