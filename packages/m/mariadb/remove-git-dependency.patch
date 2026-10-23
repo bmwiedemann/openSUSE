@@ -1,0 +1,14 @@
+Index: b/storage/duckdb/cmake/duckdb.cmake
+===================================================================
+--- a/storage/duckdb/cmake/duckdb.cmake
++++ b/storage/duckdb/cmake/duckdb.cmake
+@@ -89,8 +89,7 @@ ExternalProject_Add(duckdb_build
+   PREFIX          "${_DUCKDB_BUILD_DIR}"
+   SOURCE_DIR      "${DUCKDB_SUBMODULE_DIR}"
+   BINARY_DIR      "${_DUCKDB_BUILD_DIR}"
+-  # Idempotent: skip when the working tree already carries the patch.
+-  PATCH_COMMAND   bash -c "echo '${_DUCKDB_GIT_DESCRIBE}' >/dev/null && (git apply --reverse --check '${_DUCKDB_PATCH}' 2>/dev/null || git apply --verbose '${_DUCKDB_PATCH}')"
++  PATCH_COMMAND   patch -p1 < "${_DUCKDB_PATCH}"
+   CMAKE_ARGS
+     -DCMAKE_BUILD_TYPE=${_DUCKDB_BUILD_TYPE}
+     -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}

@@ -36,13 +36,6 @@
 %define with_mroonga 0
 %define with_rocksdb 0
 %endif
-# Build galera on SLE. Galera requires mariadb >= 10.5, so only
-# build it on SLE15SP3 onwards
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150300 || 0%{?suse_version} >= 1600
-%bcond_without galera
-%else
-%bcond_with    galera
-%endif
 # Define python interpreter version
 %if 0%{?suse_version} >= 1500
 %define python_path %{_bindir}/python3
@@ -51,12 +44,18 @@
 %endif
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
+# Build galera on SLE. Galera requires mariadb >= 10.5, so only
+# build it on SLE15SP3 onwards
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150300 || 0%{?suse_version} >= 1600
+%bcond_without galera
+%else
+%bcond_with    galera
+%endif
 Name:           mariadb
-Version:        12.3.2
+Version:        13.0.2
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
-Group:          Productivity/Databases/Servers
 URL:            https://www.mariadb.org
 Source:         https://archive.mariadb.org/%{name}-%{version}/source/%{name}-%{version}.tar.gz
 Source1:        https://archive.mariadb.org/%{name}-%{version}/source/%{name}-%{version}.tar.gz.asc
@@ -82,53 +81,32 @@ Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
 Patch10:        fix-pamdir.patch
 Patch11:        gcc13-fix.patch
-Patch12:        mariadb-fix-testsuite-openssl3.2.3.patch
+Patch12:        remove-git-dependency.patch
 # PATCH-FIX-OPENSUSE fix-MDEV-32585.patch boo#1237555 antonio.teixeira@suse.com -- Fixes potential buffer overflow in get_defaults_options()
 Patch13:        fix-MDEV-32585.patch
 # PATCH-FIX-UPSTREAM https://github.com/MariaDB/server/pull/4667
 Patch14:        0001-MDEV-38874-Make-tests-pass-after-2030.patch
+Patch15:        fix-duckdb-sccache-launcher.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-# GSSAPI
-BuildRequires:  krb5-devel
 # embedded server libmariadbd
 BuildRequires:  libaio-devel
-# mariabackup tool
-BuildRequires:  libarchive-devel
-BuildRequires:  libbz2-devel
-# commands history feature
-BuildRequires:  libedit-devel
-BuildRequires:  libevent-devel
-BuildRequires:  liblz4-devel
 BuildRequires:  libtool
-BuildRequires:  libxml2-devel
-# CLI graphic and wsrep API
-BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
-# auth_pam.so plugin
-BuildRequires:  pam-devel
-# MariaDB requires a specific version of pcre. Provide MariaDB with
-# "BuildRequires: pcre-devel" and it automatically decides if the version is
-# ok or not. If not, it uses bundled pcre.
-BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  procps
 # Some tests and myrocks_hotbackup script need python3
 BuildRequires:  python3
-BuildRequires:  readline-devel
 BuildRequires:  sqlite
 BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 # Tests requires time and ps and some perl modules
 # Keep in sync with Requires of mysql-testsuite
 BuildRequires:  time
-BuildRequires:  unixODBC-devel
-BuildRequires:  zlib-devel
-BuildRequires:  xz-devel
 BuildRequires:  perl(Data::Dumper)
 BuildRequires:  perl(Env)
 BuildRequires:  perl(Exporter)
@@ -142,13 +120,38 @@ BuildRequires:  perl(Symbol)
 BuildRequires:  perl(Sys::Hostname)
 BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Time::HiRes)
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(fmt) < 10
+# GSSAPI
+BuildRequires:  pkgconfig(krb5-gssapi)
+# mariabackup tool
+BuildRequires:  pkgconfig(libarchive)
+# commands history feature
+BuildRequires:  pkgconfig(libedit)
+BuildRequires:  pkgconfig(libevent)
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(liblzma)
+# MariaDB requires a specific version of pcre. Provide MariaDB with
+# "BuildRequires: pcre-devel" and it automatically decides if the version is
+# ok or not. If not, it uses bundled pcre.
+BuildRequires:  pkgconfig(libpcre2-8)
 # Do not ever switch away from BuildRequires: pkgconfig(libsystemd); BuildRequires systemd/systemd-devel causes build cycles
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(fmt) < 10
+BuildRequires:  pkgconfig(libxml-2.0)
+# CLI graphic and wsrep API
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(odbc)
+# auth_pam.so plugin
+BuildRequires:  pkgconfig(pam)
+BuildRequires:  pkgconfig(readline)
+BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  user(mysql)
 # Required by rcmysql
 Requires:       %{name}-client
 Requires:       %{name}-errormessages = %{version}
+Requires:       (policycoreutils if selinux-policy)
+# selinux dependencies for mysql-systemd-helper
+Requires:       (selinux-tools if selinux-policy)
 # Requires /bin/hostname because otherwise we have a conflict on Leap (bsc#1009905).
 # It can be switched back to plain "hostname" when this bug is resolved
 Requires:       /bin/hostname
@@ -157,9 +160,6 @@ Requires:       perl-base
 Requires:       python3-mysqlclient
 Requires:       user(mysql)
 Requires(post): permissions
-# selinux dependencies for mysql-systemd-helper
-Requires:       (selinux-tools if selinux-policy)
-Requires:       (policycoreutils if selinux-policy)
 # Require mysql user
 Requires(pre):  user(mysql)
 Recommends:     logrotate
@@ -187,7 +187,7 @@ Obsoletes:      mysql-debug < %{version}
 # Do not BuildRequires lzo for i586 and arm
 # https://lists.launchpad.net/maria-discuss/msg04639.html
 %ifnarch i586 %{arm}
-BuildRequires:  lzo-devel
+BuildRequires:  pkgconfig(lzo2)
 %endif
 # boost and Judy are required for oograph
 %if 0%{with_oqgraph} > 0
@@ -208,7 +208,6 @@ This package only contains the server-side programs.
 
 %package -n libmariadbd%{soname}
 Summary:        MariaDB embedded server library
-Group:          System/Libraries
 Requires:       %{name}-errormessages >= %{version}
 Provides:       libmysqld = %{version}-%{release}
 Obsoletes:      libmysqld < %{version}-%{release}
@@ -219,12 +218,12 @@ MariaDB server inside a client application.
 
 %package -n libmariadbd-devel
 Summary:        MariaDB embedded server development files
-Group:          Development/Libraries/C and C++
 Requires:       libaio-devel
-# The headers files are the shared
-Requires:       libmariadb-devel >= 3.0
 Requires:       libmariadbd%{soname} = %{version}
 Requires:       tcpd-devel
+# The headers files are the shared
+Requires:       pkgconfig(libmariadb) >= 3.0
+Requires:       pkgconfig(mysqlclient) >= 3.0
 Provides:       libmysqld-devel = %{version}-%{release}
 Obsoletes:      libmysqld-devel < %{version}-%{release}
 
@@ -241,7 +240,6 @@ Provides macros usable in rpm spec files.
 
 %package client
 Summary:        Client for MariaDB
-Group:          Productivity/Databases/Clients
 Requires:       %{name}-errormessages = %{version}
 # Explicit requires to pull in charsets for errormessages
 Requires:       libmariadb3 >= 3.0
@@ -256,7 +254,6 @@ This package contains the standard clients for MariaDB.
 %if %{with galera}
 %package galera
 Summary:        The configuration files and scripts for galera replication
-Group:          Productivity/Databases/Tools
 Requires:       %{name} = %{version}
 Requires:       galera-4
 Requires:       iproute2
@@ -272,7 +269,6 @@ needed for running MariaDB Galera Cluster.
 
 %package errormessages
 Summary:        The error messages files required by server, client and libmariadbd
-Group:          System/Localization
 BuildArch:      noarch
 
 %description errormessages
@@ -281,7 +277,6 @@ server daemon, embedded server and client.
 
 %package bench
 Summary:        Benchmarks for MariaDB
-Group:          Productivity/Databases/Tools
 Requires:       %{name}-client
 Requires:       perl-DBD-mysql
 Conflicts:      mysql-bench
@@ -296,7 +291,6 @@ the directory %{_datadir}/sql-bench after starting MariaDB.
 
 %package test
 Summary:        Testsuite for MariaDB
-Group:          Productivity/Databases/Servers
 Requires:       %{name} = %{version}
 Requires:       %{name}-bench = %{version}
 Requires:       %{name}-client = %{version}
@@ -331,7 +325,6 @@ To run the testsuite, run %{_datadir}/%{name}-test/suse-test-run.
 
 %package tools
 Summary:        MariaDB tools
-Group:          Productivity/Databases/Servers
 Requires:       perl-DBD-mysql
 Conflicts:      mysql-tools
 # make sure this package is installed when updating from 10.2 and older
@@ -378,6 +371,7 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %ifnarch %{ix86} armv7l armv7hl
 %patch -P 14 -p1
 %endif
+%patch -P 15 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
@@ -644,6 +638,9 @@ ln -sf %{_unitdir}/mariadb@.service %{buildroot}%{_unitdir}/mysql@.service
 
 # Replace the default socket for multi instance mariadb with the one used by
 # mysql-systemd-helper
+# NOTE: the percent-I in the next line is a systemd instance specifier
+# inside the template unit file, not an RPM macro; bracing it changes
+# what sed matches, so keep it exactly as upstream ships it.
 sed -e 's:mysql.sock-%I:mysql.%I.sock:' -i %{buildroot}%{_unitdir}/mariadb@.socket
 
 # Tmpfiles file
@@ -745,6 +742,10 @@ cd mysql-test
 # client does not require server and needs the user too
 %pre client -f mysql.pre
 %pre
+# CVE-2026-107814: mysql service account must not use the datadir as its
+# home (a FILE-privileged user could plant shell startup files there);
+# sysusers does not migrate existing users, so move them here.
+usermod -d /nonexistent mysql 2>/dev/null || :
 %service_add_pre mariadb.service mariadb.socket mariadb-extra.socket mariadb.target
 
 %post
@@ -826,8 +827,7 @@ exit 0
 %postun
 %service_del_postun mariadb.service mariadb.socket mariadb-extra.socket mariadb.target
 
-%post -n libmariadbd%{soname} -p /sbin/ldconfig
-%postun -n libmariadbd%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmariadbd%{soname}
 
 %files -f mariadb.files -f mariadb-galera-exclude.files
 %config(noreplace) %attr(-, root, mysql) %{_sysconfdir}/my.cnf

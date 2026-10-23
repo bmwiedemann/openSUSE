@@ -68,3 +68,6 @@ perfschema.func_mutex                            : since 12.3.2 - armv7l
 perfschema.global_read_lock                      : since 12.3.2 - armv7l
 perfschema.mdl_func                              : since 12.3.2 - armv7l
 perfschema.setup_objects                         : since 12.3.2 - armv7l
+
+main.mysql_client_test                           : since 13.0.2 - all, new MDEV-25817 subtest expects host blocking after clean-EOF PROXY handshakes, but server closes those normally without counting connect errors
+main.mysql_client_test_comp                      : since 13.0.2 - all, same as main.mysql_client_test

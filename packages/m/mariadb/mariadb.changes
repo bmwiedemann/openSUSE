@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue Oct 20 21:24:46 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add remove-git-dependency.patch
+  * Avoid git dependency by using patch instead of git apply
+- Add fix-duckdb-sccache-launcher.patch
+  * Forward CMAKE_[C|CXX]_COMPILER_ARG1/LAUNCHER into the bundled
+    DuckDB ExternalProject_Add() configure step, fixing a build
+    failure when sccache is wired in as the compiler
+
+-------------------------------------------------------------------
+Tue Oct 20 14:23:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 13.0.2 (major release, evolution of 12.3):
+    https://mariadb.com/docs/release-notes/community-server/13.0/13.0.2
+    https://mariadb.com/docs/release-notes/community-server/changelogs/13.0/13.0.2
+    https://mariadb.com/docs/release-notes/community-server/13.0/mariadb-13.0-changes-and-improvements
+  * Single-table UPDATE ... RETURNING with OLD_VALUE() support,
+    atomic CREATE OR REPLACE TABLE, reversed executable comments.
+  * New innodb_log_archive for continuous WAL archiving and
+    point-in-time recovery; mariadb-backup cannot read that format
+    yet. binlog_row_event_max_size default raised to 64k.
+  * New QB_NAME() optimizer hint with implicit block names, optimizer
+    trace now includes used statistics, PERFORMANCE_SCHEMA digest
+    moved to XXH3_128, init_rpl_role visible in SHOW VARIABLES.
+  * INFORMATION_SCHEMA SYSTEM_VARIABLES gains deprecation columns;
+    STATISTICS/COLUMNS show engine-specific create options. Configurable
+    audit plugin log timestamp format, REF CURSOR and RECORD usable in
+    package routines.
+  * Crash and correctness fixes from 12.3.3 (included): SELECT INTO
+    row-type and SYS_REFCURSOR crashes, GIS ST_* crashes, InnoDB
+    recovery races, replication event application fixes.
+  * Fixes the following security vulnerabilities:
+    13.0.2: CVE-2026-107814 (bsc#1285002)
+            CVE-2026-107815 (bsc#1285005)
+            CVE-2026-107816 (bsc#1285006)
+            CVE-2026-107817 (bsc#1285007)
+            CVE-2026-107818 (bsc#1285033)
+            CVE-2026-107821 (bsc#1284999)
+            CVE-2026-107822 (bsc#1284998)
+            CVE-2026-107823 (bsc#1284997)
+            CVE-2026-102523
+            CVE-2026-97380 (bsc#1286010)
+            CVE-2026-92262 (bsc#1286011)
+            CVE-2026-86047 (bsc#1285936)
+            CVE-2026-85985 (bsc#1285935)
+            CVE-2026-85748 (bsc#1285932)
+            CVE-2026-85746 (bsc#1285931)
+            CVE-2026-85745 (bsc#1285928)
+            CVE-2026-61081
+            CVE-2026-60585
+            CVE-2026-60331
+            CVE-2026-60747
+            CVE-2026-47023
+            CVE-2026-60184
+- Drop mariadb-fix-testsuite-openssl3.2.3.patch (fixed upstream).
+- Refresh fix-pamdir.patch and 0001-MDEV-38874-Make-tests-pass-
+  after-2030.patch for the new sources; drop Group tags, use
+  %ldconfig_scriptlets, add git-core BuildRequires for the DuckDB
+  engine patch step.
+- Skip main.mysql_client_test and main.mysql_client_test_comp: their
+  new MDEV-25817 subtest expects host blocking after clean-EOF PROXY
+  handshakes, which the server closes normally without counting
+  connect errors, so the block never triggers.
+- Use pkgconfig() BuildRequires for bzip2, krb5 (GSSAPI),
+  libarchive, libedit, libevent, libxml2, lz4, lzo, ncurses, pam,
+  pcre2, readline, unixODBC, xz and zlib, and pkgconfig() Requires
+  for libmariadb in libmariadbd-devel; the systemd instance
+  specifier in the socket sed stays unbraced on purpose.
+- CVE-2026-107814 (boo#1285002): move the mysql service account
+  home from the datadir to /nonexistent, matching upstream; migrate
+  existing users via usermod in %pre.
+
+-------------------------------------------------------------------
 Tue Sep 29 09:12:27 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Disable upstream SECURITY_HARDENED (would append -fstack-protector
