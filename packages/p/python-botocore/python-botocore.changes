@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:15:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.43.114:
+  * Refresh service models and endpoint rules for new regions
+    and API operations
+  * Drop paginators and waiters from the new Lambda web adapter
+    service model until the APIs stabilize
+  * Ignore unknown top-level keys in endpoint rulesets
+  * Raise the request/response syntax documentation limit
+    to 2000 lines
+
+-------------------------------------------------------------------
 Tue Oct  6 13:22:38 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.43.108

@@ -25,10 +25,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?sle15_python_module_pythons}
 Name:           python-botocore%{?psuffix}
-Version:        1.43.108
+Version:        1.43.114
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
