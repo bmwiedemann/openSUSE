@@ -129,12 +129,12 @@ BuildRequires:  pkgconfig(dbus-1) >= 1.6.0
 BuildRequires:  pkgconfig(dvdnav) > 4.9.0
 BuildRequires:  pkgconfig(dvdread) > 4.9.0
 BuildRequires:  pkgconfig(fdk-aac)
-BuildRequires:  pkgconfig(gnutls) >= 3.2.0
+BuildRequires:  pkgconfig(gnutls) >= 3.3.6
 BuildRequires:  pkgconfig(libarchive) >= 3.1.0
 BuildRequires:  pkgconfig(libass) >= 0.9.8
 BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavformat) >= 53.21.0
+BuildRequires:  pkgconfig(libavutil) >= 52.0.0
 BuildRequires:  pkgconfig(libbluray) >= 0.6.2
 BuildRequires:  pkgconfig(libgme)
 #BuildRequires:  pkgconfig(libmodplug) >= 0.8.9
@@ -149,7 +149,7 @@ BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(libva)
+BuildRequires:  pkgconfig(libva) >= 0.38
 BuildRequires:  pkgconfig(libva-x11)
 BuildRequires:  pkgconfig(protobuf-lite) >= 2.5.0
 %if 0%{?suse_version} >= 1500
@@ -201,7 +201,7 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(libupnp)
 %ifarch %{ix86} x86_64
 # Disabled as it pulls in qt5
-%dnl BuildRequires:  pkgconfig(libprojectM) >= 2.0.0
+# BuildRequires:  pkgconfig(libprojectM) >= 2.0.0
 %endif
 %endif
 %if 0%{?suse_version} < 1330 && ( 0%{?sle_version} < 120200 || 0%{?is_opensuse} < 1 )
@@ -225,7 +225,7 @@ BuildRequires:  pkgconfig(faad2)
 
 # These are dependencies which are NOT provided in openSUSE, mostly for legal reasons.
 %if 0%{?BUILD_ORIG}
-BuildRequires:  pkgconfig(x264) >= 0.8.6
+BuildRequires:  pkgconfig(x264) >= 0.148
 BuildRequires:  pkgconfig(x265)
 %endif
 
@@ -1183,7 +1183,7 @@ fi
 %if 0%{?is_opensuse}
 %ifarch %{ix86} x86_64
 # Disabled, pulls in qt5
-%dnl %{_libdir}/vlc/plugins/visualization/libprojectm_plugin.so
+# %{_libdir}/vlc/plugins/visualization/libprojectm_plugin.so
 %endif
 %endif
 

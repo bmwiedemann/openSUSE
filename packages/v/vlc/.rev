@@ -1796,4 +1796,19 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment>1</comment>
     <requestid>1386327</requestid>
   </revision>
+  <revision rev="172" vrev="6">
+    <srcmd5>8b250264ef4b2a9df38169372c3ec1a2</srcmd5>
+    <version>3.0.24</version>
+    <time>1792779730</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to configure.ac.
+
+
+- Migrate to xz compression and manual service run
+
+
+- Use legacy '#' instead of '%dnl' to comment: VLC is still being built for
+  CODE15 branches outside of OBS, where %dnl is not supported.</comment>
+    <requestid>1387155</requestid>
+  </revision>
 </revisionlist>

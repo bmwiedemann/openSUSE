@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 22 17:19:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to configure.ac.
+
+-------------------------------------------------------------------
+Thu Oct 22 17:00:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Thu Oct 22 14:12:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use legacy '#' instead of '%dnl' to comment: VLC is still being built for
+  CODE15 branches outside of OBS, where %dnl is not supported.
+
+-------------------------------------------------------------------
 Sat Oct 17 17:31:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add conditional for pkgconfig(vpl) BuildRequires and plugin,
@@ -416,9 +432,9 @@ Mon Oct 23 16:09:40 UTC 2023 - Aaron Stern <ukbeast89@protonmail.com>
 
 -  Update to version 3.0.19
 -  Remove 104-playback-bar.patch, as it's no longer needed.
-   + Core: 
+   + Core:
      - Fix next-frame freezing in most scenarios
-   + Demux: 
+   + Demux:
      - Support RIFF INFO tags for Wav files
      - Fix AVI files with flipped RAW video planes
      - Fix duration on short and small Ogg/Opus files
@@ -468,7 +484,7 @@ Mon Oct 23 16:09:40 UTC 2023 - Aaron Stern <ukbeast89@protonmail.com>
    + Translations:
      - Update of most translations
      - New translations to Esperanto, Interlingue, Lao, Macedonian, Burmese, Odia, Samoan and Swahili
-     
+
 -------------------------------------------------------------------
 Sun Jul 23 19:58:28 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
@@ -2438,8 +2454,8 @@ Wed Nov 13 09:58:01 UTC 2013 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Thu Nov  7 16:56:22 UTC 2013 - hrvoje.senjan@gmail.com
 
-- Force creation of plugins cache in vlc-nox %post, instead of just 
-  touching the file, for details see 
+- Force creation of plugins cache in vlc-nox %post, instead of just
+  touching the file, for details see
   https://trac.videolan.org/vlc/ticket/9807#comment:2
 
 -------------------------------------------------------------------
@@ -2450,8 +2466,8 @@ Thu Oct 24 13:49:52 UTC 2013 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Mon Oct 21 18:04:36 UTC 2013 - hrvoje.senjan@gmail.com
 
-- Make vlc build on OBS for openSUSE 12.3 - BuildRequire 
-  pkgconfig(libswscale) and live555-devel on >= 13.1, and on 
+- Make vlc build on OBS for openSUSE 12.3 - BuildRequire
+  pkgconfig(libswscale) and live555-devel on >= 13.1, and on
   BUILD_ORIG case
 
 -------------------------------------------------------------------
@@ -2588,7 +2604,7 @@ Thu Jul  4 10:41:24 UTC 2013 - hrvoje.senjan@gmail.com
   + Input:
     - Fix playback termination when switching ES tracks
       (PowerPC only)
-    - Fix memory exhaustion vulnerability when playing specifically 
+    - Fix memory exhaustion vulnerability when playing specifically
       crafted playlist files
   + Decoders:
     - Fix WMA Pro, MPEG 4 ALS, APE, MLP and ADPCM-IMA4 playback
@@ -2597,17 +2613,17 @@ Thu Jul  4 10:41:24 UTC 2013 - hrvoje.senjan@gmail.com
   + Muxers:
     - Fix noticeable memory leak when creating AVI files
   + Video output:
-    - Fix crash when using libvlc in 3rd party applications 
+    - Fix crash when using libvlc in 3rd party applications
       (Mac only)
   + Mac OS X Interface
     - Minor improvements
-    - Fix issue which could lead to loss of media files created 
+    - Fix issue which could lead to loss of media files created
       through transcoding
 
 -------------------------------------------------------------------
 Tue Jun 11 22:01:52 UTC 2013 - dvaleev@suse.com
 
-- Enable SSE for x86 only 
+- Enable SSE for x86 only
 
 -------------------------------------------------------------------
 Tue Jun  4 19:40:47 UTC 2013 - reddwarf@opensuse.org
@@ -2728,7 +2744,7 @@ Thu Oct 18 11:36:52 UTC 2012 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Thu Jul 19 21:28:10 UTC 2012 - dimstar@opensuse.org
 
-- Update to version 2.0.3 
+- Update to version 2.0.3
 
 -------------------------------------------------------------------
 Mon Jul  2 11:25:55 UTC 2012 - dimstar@opensuse.org
@@ -2917,7 +2933,7 @@ Sat Feb 19 13:02:11 UTC 2011 - dominique-vlc.suse@leuenberger.net
 -------------------------------------------------------------------
 Mon Jan 31 21:07:19 UTC 2011 - dominique-vlc.suse@leuenberger.net
 
-- Update to version 1.1.7: 
+- Update to version 1.1.7:
   + Linux port:
     - Integration with the KDE GUI platform is disabled due to KDE
     - bugs #234484 and #260719.
@@ -2933,7 +2949,7 @@ Mon Jan 31 21:07:19 UTC 2011 - dominique-vlc.suse@leuenberger.net
 - Changes from version 1.1.6.1:
   + Fix libnotify, lirc, pulse compilation and packaging for
     Unix/Linux
-- Drop patches: vlc-lirc.patch and  
+- Drop patches: vlc-lirc.patch and
   0001-Libnotify-depends-on-a-GTK-version-can-be-gtk-2.0-or.patch
 
 -------------------------------------------------------------------
