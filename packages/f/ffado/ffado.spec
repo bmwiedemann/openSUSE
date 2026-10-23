@@ -18,10 +18,10 @@
 
 %define docs 0
 %define flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == ""
-%define mflavor %{nil}
-%else
+%if "%{flavor}" == "mixer"
 %define mflavor -%{flavor}
+%else
+%define mflavor %{nil}
 %endif
 %define sover 2
 %define tname libffado
@@ -102,7 +102,7 @@ Obsoletes:      libffado-devel < %{version}-%{release}
 Provides:       libffado-devel = %{version}-%{release}
 
 %description -n ffado-devel
-This package supplys the files necessary to develop
+This package supplies the files necessary to develop
 applications that use the FFADO libraries and API.
 
 %package -n libffado%{sover}
@@ -222,8 +222,6 @@ mkdir -pv %{buildroot}/%{_datadir}/applications/
 mkdir -pv %{buildroot}/%{_datadir}/pixmaps
 cp -av support/xdg/hi64-apps-ffado.png %{buildroot}%{_datadir}/pixmaps/ffadomixer.png
 %suse_update_desktop_file -c ffadomixer FfadoMixer "Mixer for ffado" ffado-mixer ffadomixer "AudioVideo;Mixer;HardwareSettings;Qt"
-
-find ./ -empty -delete
 %endif
 
 %fdupes -s %{buildroot}%{_datadir}

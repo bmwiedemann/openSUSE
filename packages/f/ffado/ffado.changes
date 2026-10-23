@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:32:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- libffado-date_time.patch: avoid mismatched format string types
+  and args
+
+-------------------------------------------------------------------
 Sat Oct 17 17:06:53 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Update to version 2.5.0:
@@ -290,7 +296,7 @@ Fri Apr 26 08:46:14 UTC 2013 - fcrozat@suse.com
 Mon Dec 24 19:15:58 UTC 2012 - p.drouand@gmail.com
 
 - Update to 2.1.0 version:
-  * Significantly improved support for the new "juju" firewire stack 
+  * Significantly improved support for the new "juju" firewire stack
     found in newer kernels
   * Support for JACK freewheeling mode and set-buffer-size operation
   * Lower CPU usage
@@ -300,7 +306,7 @@ Mon Dec 24 19:15:58 UTC 2012 - p.drouand@gmail.com
   * Fix race conditions and invalid memory accesses on shutdown
   * Fixes for clean compilation on recent gcc versions (up to 4.7)
   * ffado-diag enhanced to aid debugging efforts
-  * Many bugs fixed 
+  * Many bugs fixed
 - Remove patchs merged on upstream release:
   * ffado-gcc47.patch
   * libffado-bswap.patch
@@ -364,7 +370,7 @@ Thu Sep 30 10:38:42 UTC 2010 - davejplater@gmail.com
 -------------------------------------------------------------------
 Wed Jun 16 06:03:13 UTC 2010 - davejplater@gmail.com
 
-- Update to svn 1856. 
+- Update to svn 1856.
 - Upstream changes : Make it easier for distributions to define
   their own additional built-flags.
   Numerous bug fixes, see ChangeLog for details.
