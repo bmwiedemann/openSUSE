@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:20:48 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 112+suse.62.g1b64cef:
+  * fix(bluetooth): always install HID drivers that can be needed
+  * fix(bluetooth): mark installed hostonly files
+  * fix(nvmf): prevent nvmf's installkernel failure when no nbft present
+  * test(DRACUT-CPIO): fix unbound CPIO_TESTDIR variable
+  * test(STORAGE): fix condition to add disk2
+
+-------------------------------------------------------------------
 Fri Oct 16 14:53:06 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 112+suse.57.g23bbfee:
