@@ -321,4 +321,19 @@
     `text_structure.find_message_structure` and</comment>
     <requestid>1372926</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>eefbab6d966525ba8c72d3a35ed4ccf1</srcmd5>
+    <version>9.5.1</version>
+    <time>1792779727</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.5.1
+  * Added esql.delete_data_source, esql.get_data_source, and
+    esql.put_data_source APIs
+  * Updated SemanticText.inference_id default when the Elastic
+    Inference Service is available
+  * Fixed DenseVectorIndexOptions to include missing bbq_disk
+    properties
+  * confidence_interval on DenseVectorIndexOptions is deprecated</comment>
+    <requestid>1387081</requestid>
+  </revision>
 </revisionlist>
