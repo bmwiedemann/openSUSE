@@ -3005,4 +3005,16 @@ jsc#PED-15851</comment>
       whose name leaves the destination and returns to it, such</comment>
     <requestid>1382826</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>23fa401578289acc6693ff1ea216cb20</srcmd5>
+    <version>3.14.8</version>
+    <time>1792779735</time>
+    <user>anag_factory</user>
+    <comment>- Require libexpat1 &gt;= 2.8.5 for python311-base and raise
+  the Expat build requirement accordingly. pyexpat uses
+  XML_SetHashSalt16Bytes when built with Expat &gt;= 2.8, but the
+  automatic SONAME dependency permits older libraries, breaking
+  imports and venv/ensurepip (bsc#1285433).</comment>
+    <requestid>1386977</requestid>
+  </revision>
 </revisionlist>
