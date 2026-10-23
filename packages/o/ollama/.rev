@@ -1003,4 +1003,41 @@ because we don't need git-web and the other stuff here (forwarded request 125417
 - fix logic to enable ROCm to allow manual enablement</comment>
     <requestid>1386200</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>f6d3c47236d00a9f2c1b4ee3e3c6d5e5</srcmd5>
+    <version>0.40.9</version>
+    <time>1792780153</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 0.40.9
+  * Add speech generation with Phonon on Apple Silicon
+  * ollama run plays audio as text or reply is generated
+  * OpenAI /v1/audio/speech can stream audio
+  * Add d3 decision models from vLLM Semantic Router
+  * d3 classifies, answers yes/no, or scores options
+  * d3 comes in 2B, 4B, 9B, and 27B sizes
+  * Expand Flint support to Linux and Windows
+  * Report generation failures in streaming OpenAI Responses
+  * Pass cloud model context lengths to coding tools
+  * Fix Anthropic web search thinking in follow-ups
+- Update generated using pbuild-ai
+
+- Updated to version 0.40.8
+  * Add Recursive Flint coding model to Ollama
+  * Apache 2.0-licensed, 40B-parameter MoE with ~2.5B active
+  * Reasoning, multi-turn tool use, and 262K-token context
+  * Reports 54.9% Terminal-Bench 2.1, 74.2% SWE-bench Verified
+  * macOS support enabled now; other GPU support later
+- Update generated using pbuild-ai
+
+- Updated to version 0.40.7
+  * Added pplx-decider: a 27B Perplexity decision model fine-tuned
+  from Qwen3.8-27B
+  * Fixed OpenAI-compatible Responses conversations failing when
+  switching between models with and without thinking, or handling
+  compaction items from other providers
+  * Fixed streaming Responses requests where client tool calls (e.g.
+  Codex web search) could emit before open reasoning items, causing
+  misordered/duplicate events</comment>
+    <requestid>1387265</requestid>
+  </revision>
 </revisionlist>

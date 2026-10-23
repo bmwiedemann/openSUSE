@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Oct 23 07:38:51 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.9
+  * Add speech generation with Phonon on Apple Silicon
+  * ollama run plays audio as text or reply is generated
+  * OpenAI /v1/audio/speech can stream audio
+  * Add d3 decision models from vLLM Semantic Router
+  * d3 classifies, answers yes/no, or scores options
+  * d3 comes in 2B, 4B, 9B, and 27B sizes
+  * Expand Flint support to Linux and Windows
+  * Report generation failures in streaming OpenAI Responses
+  * Pass cloud model context lengths to coding tools
+  * Fix Anthropic web search thinking in follow-ups
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Thu Oct 22 10:26:49 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.8
+  * Add Recursive Flint coding model to Ollama
+  * Apache 2.0-licensed, 40B-parameter MoE with ~2.5B active
+  * Reasoning, multi-turn tool use, and 262K-token context
+  * Reports 54.9% Terminal-Bench 2.1, 74.2% SWE-bench Verified
+  * macOS support enabled now; other GPU support later
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Wed Oct 21 07:06:38 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.7
+  * Added pplx-decider: a 27B Perplexity decision model fine-tuned
+  from Qwen3.8-27B
+  * Fixed OpenAI-compatible Responses conversations failing when
+  switching between models with and without thinking, or handling
+  compaction items from other providers
+  * Fixed streaming Responses requests where client tool calls (e.g.
+  Codex web search) could emit before open reasoning items, causing
+  misordered/duplicate events
+  * Cancelled remote model requests on ollama.com when the client
+  disconnects, instead of leaving them to run
+  * Enhanced ollama show to report renderer, parser, and chat
+  source; API now exposes these as new fields
+  * Expanded speculative decoding support: llama-server now infers
+  draft types automatically without Ollama identification
+  * Clamped CLAUDE_CODE_AUTO_COMPACT_WINDOW in ollama launch claude
+  to Claude Code's supported range, preventing window size warnings
+  * Updated llama.cpp and MLX
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
 Mon Oct 19 06:18:52 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Updated to version 0.40.6

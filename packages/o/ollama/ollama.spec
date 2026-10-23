@@ -23,7 +23,7 @@
 %global jobs 4
 %endif
 
-%global llama_cpp_version b11669
+%global llama_cpp_version b11803
 %global mlx_version bebd6422f8db88d56e6220520a35bcd146f823f8
 %global mlx_c_version a341b4925024b88b2c593468f16e12f5e17315da
 
@@ -33,6 +33,11 @@
 %else
 %{bcond_with vulkan}
 %endif
+%if 0%{?suse_version} >= 1699
+%{bcond_without rocm}
+%else
+%{bcond_with rocm}
+%endif
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %global preset_flavor %flavor
@@ -40,7 +45,7 @@
 %if "%{flavor}" == "cuda"
 %global preset_flavor llama_cuda_v13_linux
 %if %{with cuda}
-ExclusiveArch:  x86_64
+ExclusiveArch:  aarch64 x86_64
 %else
 ExclusiveArch:  SKIP_IT
 %endif
@@ -50,10 +55,10 @@ ExclusiveArch:  SKIP_IT
 # ROCm is only available for x86_64
 ExclusiveArch:  x86_64
 %global preset_flavor rocm_v7_2_linux
-%if 0%{?suse_version} >= 1699
-%{bcond_without rocm}
+%if %{with rocm}
+ExclusiveArch:  x86_64
 %else
-%{bcond_with rocm}
+ExclusiveArch:  SKIP_IT
 %endif
 %endif
 
@@ -77,7 +82,7 @@ ExclusiveArch:  SKIP_IT
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.40.6
+Version:        0.40.9
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -127,7 +132,9 @@ BuildRequires:  ollama
 BuildRequires:  ollama-vulkan
 %endif
 %if %{with rocm}
+%ifarch x86_64
 BuildRequires:  ollama-rocm
+%endif
 %endif
 %if %{with cuda}
 BuildRequires:  ollama-cuda
