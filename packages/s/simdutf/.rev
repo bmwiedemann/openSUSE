@@ -144,4 +144,15 @@
     kernels</comment>
     <requestid>1384945</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>11e4e84c7e2481880d9cbeb4f11b03a6</srcmd5>
+    <version>9.3.2</version>
+    <time>1792779677</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 9.3.2:
+  * icelake: unroll the base64 encoding loop
+- Changes from version 9.3.1:
+  + icelake: use plain loads in the base64 encoding loop</comment>
+    <requestid>1386750</requestid>
+  </revision>
 </revisionlist>
