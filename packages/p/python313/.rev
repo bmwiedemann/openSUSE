@@ -1439,4 +1439,16 @@ CVE-2026-17084: Don't consider Unicode codepoint attributes
       the filter function returns None when called with the</comment>
     <requestid>1383077</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>892f2e064a46a476d3919ffaf598b21c</srcmd5>
+    <version>3.13.16</version>
+    <time>1792779734</time>
+    <user>anag_factory</user>
+    <comment>- Require libexpat1 &gt;= 2.8.5 for python313-base and raise
+  the Expat build requirement accordingly. pyexpat uses
+  XML_SetHashSalt16Bytes when built with Expat &gt;= 2.8, but the
+  automatic SONAME dependency permits older libraries, breaking
+  imports and venv/ensurepip (bsc#1285433).</comment>
+    <requestid>1386976</requestid>
+  </revision>
 </revisionlist>
