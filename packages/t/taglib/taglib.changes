@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 21 15:21:38 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add fix-32bit-overflow.patch
+  * Fix 32-bit overflows and i586 test suite
+
+-------------------------------------------------------------------
+Sat Oct 17 17:03:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.2 (soname unchanged, libtag.so.2):
+  * 2.3.1: Matroska crash and element-length fixes, MP4 cnID
+    64-bit/chapter fixes, QT stsc allocation guard, XM save fix.
+  * 2.3.2: MP3 unsync/iTunes ID3 fixes, MP4 covr tolerance and
+    new codecs, Ogg muxed Vorbis comments, ASF property
+    improvements, RF64/BW64 support, Matroska scan/attachment
+    fixes, crafted-input hardening (DoS/resource exhaustion).
+  * Build: use Requires.private for zlib.
+- Modernize spec (pkgconfig zlib, drop Group tags).
+
+-------------------------------------------------------------------
 Sun Jun 28 17:50:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3:

@@ -27,15 +27,15 @@
 %bcond_with tests
 %endif
 Name:           taglib%{psuffix}
-Version:        2.3
+Version:        2.3.2
 Release:        0
 Summary:        Audio Meta-Data Library
 License:        LGPL-2.1-or-later AND MPL-1.1
-Group:          Productivity/Multimedia/Other
 URL:            https://taglib.github.io/
 Source0:        https://taglib.github.io/releases/taglib-%{version}.tar.gz
 Source100:      baselibs.conf
 Patch1:         taglib-utf8cpp-include.patch
+Patch2:         fix-32bit-overflow.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -61,7 +61,6 @@ command line.
 %package -n libtag2
 Summary:        Audio Meta-Data Library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Conflicts:      taglib <= 1.6.3
 
 %description -n libtag2
@@ -73,7 +72,6 @@ TrueAudio, WAV, AIFF, MP4 and ASF files.
 %package -n libtag_c2
 Summary:        Audio Meta-Data Library
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Conflicts:      taglib <= 1.6.3
 
 %description -n libtag_c2
@@ -85,11 +83,10 @@ TrueAudio, WAV, AIFF, MP4 and ASF files.
 %package -n libtag-devel
 Summary:        Development files for taglib
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       libstdc++-devel
 Requires:       libtag2 = %{version}-%{release}
 Requires:       libtag_c2 = %{version}-%{release}
-Requires:       zlib-devel
+Requires:       pkgconfig(zlib)
 # taglib-devel was last used in openSUSE 11.4 (taglib-devel-1.6.2)
 # The last taglib-devel used was version 1.6.3 from multimedia:libs.
 Provides:       taglib-devel = %{version}
@@ -101,7 +98,6 @@ This package contains development files for taglib.
 %package -n libtag-doc
 Summary:        API documentation for taglib
 License:        LGPL-2.1-or-later
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description -n libtag-doc
