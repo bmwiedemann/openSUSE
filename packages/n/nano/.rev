@@ -1000,4 +1000,12 @@ nano 8.7.1 boo#1258260</comment>
     <comment>Update to 9.2</comment>
     <requestid>1368938</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>e84953b89c080d2e39469819cebf3097</srcmd5>
+    <version>9.3</version>
+    <time>1792779728</time>
+    <user>anag_factory</user>
+    <comment>Update to 9.3</comment>
+    <requestid>1387106</requestid>
+  </revision>
 </revisionlist>

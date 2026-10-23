@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 22 09:59:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 9.3:
+  * On the mini bar, an overlong filename gets properly clipped.
+  * The keypad operator keys produce their inscribed characters.
+  * CVE-2026-6390 (boo#1272394): not affected, fixed upstream
+    in 9.0 and the hardening is present in 9.3.
+
+-------------------------------------------------------------------
 Fri Jul 31 19:41:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 9.2:
