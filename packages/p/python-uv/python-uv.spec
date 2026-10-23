@@ -36,11 +36,11 @@
 %global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
 %endif
 Name:           %{origname}%{psuffix}
-Version:        0.13.3
+Version:        0.13.5
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 # Legal-Review-Notice: uv itself is "Apache-2.0 OR MIT", but the binary
-# statically links the vendored Rust dependencies. Re-derived on the 0.13.3
+# statically links the vendored Rust dependencies. Re-derived on the 0.13.5
 # re-vendor with "cargo tree --offline -p uv -e normal" over the vendored
 # tree (502 unique name-version nodes); the copyleft licences in the linked graph are:
 #  - MPL-2.0 from astral-pubgrub, astral-version-ranges and option-ext

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 22 13:37:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.5:
+  * Security: drop the compromised emSign ECC Root CA - G3 from
+    the bundled CA certificates (GHSA-hq85-5cpj-mr62); follow up
+    by rejecting chains with its compromised intermediate keys
+    via rustls-webpki 0.103.16. Managed CPython 3.13/3.14/3.15
+    move to the 3.15.1, 3.14.9 and 3.13.17 security patch
+    releases with pip 26.2.2 and certifi 2026.10.19; run
+    `uv python upgrade` for the new builds.
+  * Preview: validate PEP 825 variant metadata, treating package
+    versions with invalid metadata as unavailable under
+    wheel-variants; rank variants with no required properties.
+  * Report incompatible self-dependencies directly in resolution
+    errors; lower peak resolver memory use; faster exports with
+    complex transitive extras; smaller binaries.
+  * Fix Android-only wheels with no sdist failing to lock, and
+    optional dependencies lost through transitive extras.
+- Drop uv-astral-version-ranges-0.2.3-display.patch: upstream now
+  formats singleton ranges as "==1.0" itself, so the floated
+  astral-version-ranges 0.2.3 needs no test adaptation.
+
+-------------------------------------------------------------------
 Tue Oct 20 07:29:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.13.3:

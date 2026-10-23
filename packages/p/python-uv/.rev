@@ -3350,4 +3350,12 @@ licence set is unchanged. Both flavors build green on aarch64.</comment>
     <comment>Update to 0.13.3</comment>
     <requestid>1386454</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>b25e916a9e31bafe0849c4902810b143</srcmd5>
+    <version>0.13.5</version>
+    <time>1792779738</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.13.5</comment>
+    <requestid>1387126</requestid>
+  </revision>
 </revisionlist>
