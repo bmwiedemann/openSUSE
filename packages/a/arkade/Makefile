@@ -20,4 +20,4 @@ go_modules:
 		--pull=always \
 		-v .:/data/ \
 		registry.opensuse.org/opensuse/leap:16.0 \
-		bash /data/vendor_go_modules.sh $(NAME) go1.26
+		bash /data/vendor_go_modules.sh $(NAME) go1.27

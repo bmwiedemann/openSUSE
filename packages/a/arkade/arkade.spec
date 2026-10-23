@@ -17,7 +17,7 @@
 
 
 Name:           arkade
-Version:        0.11.132
+Version:        0.11.133
 Release:        0
 Summary:        Open Source Kubernetes Marketplace
 License:        Apache-2.0
@@ -31,7 +31,7 @@ Source12:       PACKAGING_README.md
 Source13:       vendor_go_modules.sh
 BuildRequires:  bash-completion
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.27
 
 %description
 arkade provides a portable marketplace for downloading your favourite devops

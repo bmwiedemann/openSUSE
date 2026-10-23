@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 23 10:59:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.133:
+  * Upgrade to Go 1.27 and bump dependencies
+
+-------------------------------------------------------------------
 Mon Oct 19 05:10:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.132:
