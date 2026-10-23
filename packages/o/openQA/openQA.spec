@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1792607148.117af9ef
+Version:        5.1792679797.1d1b53d2
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other
@@ -127,7 +127,6 @@ Requires:       openQA-common = %{version}
 %requires_eq    perl-Mojolicious-Plugin-AssetPack
 Recommends:     %{name}-local-db
 Requires(post): coreutils
-Requires(post): perl(SQL::SplitStatement)
 Recommends:     apache2
 Recommends:     apparmor-profiles
 Recommends:     apparmor-utils
@@ -202,7 +201,7 @@ openQA workers.
 %package worker
 Summary:        The openQA worker
 Group:          Development/Tools/Other
-%define worker_requires_including_uncovered_in_tests %worker_requires perl(SQL::SplitStatement)
+%define worker_requires_including_uncovered_in_tests %worker_requires
 Requires:       %{worker_requires_including_uncovered_in_tests}
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         openQA-common = %{version}

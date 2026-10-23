@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 22 14:39:18 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792679797.1d1b53d2:
+  * chore(deps-dev): bump stylelint from 17.14.1 to 17.16.0 (#8011)
+  * chore(deps): Remove unused dependency SQL::SplitStatement
+  * refactor(OpenQA::Files): Remove dead code
+
+-------------------------------------------------------------------
+Thu Oct 22 05:22:00 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792643104.8298c14a:
+  * chore(deps-dev): bump fastq from 1.20.1 to 1.20.3 (#8007)
+
+-------------------------------------------------------------------
+Thu Oct 22 02:48:29 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792617696.d7563f0b:
+  * feat: Improve use of the tempfile-move pattern
+  * refactor: Ensure common file permissions in `OpenQA::Downloader`
+  * feat: Ensure cached assets have 0644 permissions
+  * refactor(tests): Rename test to reflect topic
+  * refactor(tests): Remove unused imports
+  * fix(etc): remove specific auto_clone_regex definition
+
+-------------------------------------------------------------------
 Wed Oct 21 18:26:05 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1792607148.117af9ef:
