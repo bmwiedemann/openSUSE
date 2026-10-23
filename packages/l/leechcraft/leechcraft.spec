@@ -28,7 +28,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml6
 
 %define so_ver -qt6-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-18808-g3467692359
+%define LEECHCRAFT_VERSION 0.6.70-19214-g121e5318a7
 
 %define azoth_postfix %{so_ver}
 %define db_postfix %{so_ver}
@@ -50,7 +50,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.18808.g3467692359
+Version:        0.6.70+git.19214.g121e5318a7
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -59,12 +59,14 @@ URL:            https://leechcraft.org
 Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
-
+# PATCH-FIX-UPSTREAM Fix testWaitManyFirstFailureInOrderWins doing exact string match:
+# https://github.com/0xd34df00d/leechcraft/commit/a31f194
+Patch0:         leechcraft-0.6.70-19214-g121e5318a7+a31f194.patch
 
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
 BuildRequires:  file-devel
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 BuildRequires:  clang >= 21
 BuildRequires:  llvm-gold-provider >= 21
 %else
@@ -80,17 +82,17 @@ BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 BuildRequires:  liblastfm-qt6-devel
 %endif
 BuildRequires:  libsensors4-devel
 BuildRequires:  libtidy-devel
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 BuildRequires:  wt-devel
 %endif
 BuildRequires:  cmake(Qca-qt6)
-BuildRequires:  cmake(Qt6LinguistTools) >= 6.10
+BuildRequires:  cmake(Qt6LinguistTools) >= 6.11.1
 BuildRequires:  pkgconfig(Qt6NetworkAuth)
 BuildRequires:  pkgconfig(Qt6QuickWidgets)
 BuildRequires:  pkgconfig(Qt6Qwt6)
@@ -165,8 +167,6 @@ Recommends:     %{name}-blogique
 Recommends:     %{name}-dolozhee
 Recommends:     %{name}-lackman
 Recommends:     %{name}-monocle
-Recommends:     %{name}-netstoremanager
-Recommends:     %{name}-newlife
 Recommends:     %{name}-poshuku
 Recommends:     %{name}-scrobbler
 Recommends:     %{name}-secman-simplestorage
@@ -178,10 +178,12 @@ Obsoletes:      %{name}-azoth
 Obsoletes:      %{name}-lhtr
 Obsoletes:      %{name}-poshuku
 %endif
+Obsoletes:      %{name}-gmailnotifier
 Obsoletes:      %{name}-krigstask
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
 Obsoletes:      %{name}-lastfmscrobble
 %endif
+Obsoletes:      %{name}-newlife
 Obsoletes:      %{name}-textogroose
 Obsoletes:      %{name}-touchstreams
 
@@ -219,7 +221,7 @@ Requires:       %{name} = %{version}
 Requires:       %{name}-http = %{version}
 Requires:       qt6-sql-sqlite
 Recommends:     %{name}-poshuku = %{version}
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
 Obsoletes:      %{name}-aggregator-webaccess
 %endif
 
@@ -238,7 +240,7 @@ It features:
 
 A web browser plugin is recommended to show the news in a fancy way.
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %package aggregator-webaccess
 Summary:        LeechCraft Aggregator Web Interface Module
 License:        BSL-1.0
@@ -855,6 +857,8 @@ Recommends:     %{name}-vrooby
 Recommends:     compton
 Requires:       %{name} = %{version}
 Requires:       %{name}-fenet-wm = %{version}
+Obsoletes:      %{name}-fenet-kwin < %{version}
+Provides:       %{name}-fenet-kwin = %{version}
 
 %description fenet
 This package provides a WM control plugin for Leechcraft.
@@ -871,19 +875,6 @@ Requires:       awesome
 %description fenet-awesome
 This package allows to start Leechcraft as a Desktop Environment with
 the Awesome Window Manager.
-
-%package fenet-kwin
-Summary:        Kwin integration for LeechCraft
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-BuildArch:      noarch
-Provides:       %{name}-fenet-wm = %{version}
-Requires:       %{name}-fenet = %{version}
-Requires:       kwin6-x11
-
-%description fenet-kwin
-This package allows to start Leechcraft as a Desktop Environment with
-the KDE Window Manager.
 
 %package fenet-openbox
 Summary:        OpenBox Window Manager integration for LeechCraft
@@ -926,21 +917,6 @@ Requires:       %{name} = %{version}
 %description glance
 This package provides a tabs overview plugin for Leechcraft
 which shows a grid of overview thumbnails.
-
-%package gmailnotifier
-Summary:        LeechCraft GMail notifier Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Requires:       %{name}-http = %{version}
-Recommends:     %{name}-sb = %{version}
-
-%description gmailnotifier
-This package provides a GMail notifications plugin for Leechcraft
-which allows to show notifications about new mail in your GMail account.
-
-It has a configurable frequency for updates and the number of last unread
-messages shown.
 
 %package historyholder
 Summary:        LeechCraft History Module
@@ -1392,7 +1368,8 @@ Summary:        LeechCraft Network file storages Module
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
-Requires:       %{name}-netstoremanager-subplugin
+Obsoletes:      %{name}-netstoremanager-googledrive
+# Requires:       %{name}-netstoremanager-subplugin
 
 %description netstoremanager
 This package provides a network storage plugin for Leechcraft.
@@ -1406,16 +1383,6 @@ Features:
  * Delete the uploaded files (if supported by service).
  * Support for prolongating uploaded files (if supported by service).
 
-%package netstoremanager-googledrive
-Summary:        LeechCraft Google Drive storage Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-netstoremanager = %{version}
-Provides:       %{name}-netstoremanager-subplugin
-
-%description netstoremanager-googledrive
-This package provides a Google Drive subplugin for Leechcraft NetStoreManager.
-
 %package networkmonitor
 Summary:        LeechCraft Network Monitor Module
 License:        BSL-1.0
@@ -1427,25 +1394,6 @@ This package provides a network monitor plugin for LeechCraft.
 
 It allows to watch for HTTP requests and allows to inspect them and search
 through the list.
-
-%package newlife
-Summary:        LeechCraft Importer Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-
-%description newlife
-This package provides a settings importer plugin for LeechCraft
-which can import settings, preferences, etc. from various applications.
-
-Currently it supports
- * Kopete: chat history.
- * Psi+: account settings, chat history.
- * Vacuum IM: account settings, chat history.
- * Akregator: feeds list, individual settings for each feed, like
-update interval and custom storage parameters, Akregator's settings.
- * Firefox: history, bookmarks, RSS feeds (aka Live bookmarks).
- * Liferea: feeds list.
 
 %package ooronee
 Summary:        LeechCraft Text and Images Handler Module
@@ -2011,7 +1959,7 @@ tmpflags=${tmpflags/-strong}
 
 # NOTE that %%cmake macro breaks compiler configuring.
 cmake ../src \
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
         -DCMAKE_C_COMPILER=/usr/bin/gcc-16 \
         -DCMAKE_CXX_COMPILER=/usr/bin/g++-16 \
 %else
@@ -2032,7 +1980,7 @@ cmake ../src \
         -DENABLE_ADVANCEDNOTIFICATIONS=True \
         -DENABLE_AGGREGATOR=True \
                 -DENABLE_AGGREGATOR_BODYFETCH=False \
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
                 -DENABLE_AGGREGATOR_WEBACCESS=True \
 %else
                 -DENABLE_AGGREGATOR_WEBACCESS=False \
@@ -2088,7 +2036,6 @@ cmake ../src \
         -DENABLE_FONTIAC=True \
         -DENABLE_GACTS=True \
         -DENABLE_GLANCE=True \
-        -DENABLE_GMAILNOTIFIER=True \
         -DENABLE_HOTSENSORS=True \
         -DENABLE_HOTSTREAMS=True \
         -DENABLE_HTTHARE=True \
@@ -2100,7 +2047,7 @@ cmake ../src \
         -DENABLE_KRIGSTASK=False \
         -DENABLE_LACKMAN=True \
                 -DTESTS_LACKMAN=True \
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
         -DENABLE_LASTFMSCROBBLE=True \
 %else
         -DENABLE_LASTFMSCROBBLE=False \
@@ -2151,8 +2098,6 @@ cmake ../src \
         -DENABLE_NACHEKU=False \
         -DENABLE_NAMAUTH=True \
         -DENABLE_NETSTOREMANAGER=True \
-                -DENABLE_NETSTOREMANAGER_GOOGLEDRIVE=True \
-        -DENABLE_NEWLIFE=True \
         -DENABLE_OORONEE=True \
         -DENABLE_OTLOZHU=True \
                 -DENABLE_OTLOZHU_SYNC=False \
@@ -2295,7 +2240,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_aggregator.so
 %dir %{_datadir}/leechcraft/scripts
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %files aggregator-webaccess
 %{plugin_dir}/*craft_aggregator_webaccess.so
 %{settings_dir}/aggregatorwebaccesssettings.xml
@@ -2542,16 +2487,12 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{_datadir}/leechcraft/xsessions
 %{translations_dir}/*craft_fenet_*.qm
 %{_datadir}/leechcraft/fenet/compositing/*compton*
+%{_datadir}/leechcraft/fenet/wms/*kwin*
 
 %files fenet-awesome
 %dir %{_datadir}/leechcraft/fenet
 %dir %{_datadir}/leechcraft/fenet/wms
 %{_datadir}/leechcraft/fenet/wms/*awesome*
-
-%files fenet-kwin
-%dir %{_datadir}/leechcraft/fenet
-%dir %{_datadir}/leechcraft/fenet/wms
-%{_datadir}/leechcraft/fenet/wms/*kwin*
 
 %files fenet-openbox
 %dir %{_datadir}/leechcraft/fenet
@@ -2572,12 +2513,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_glance.so
 %{translations_dir}/*craft_glance*
 %{qml_dir}/glance
-
-%files gmailnotifier
-%{plugin_dir}/*craft_gmailnotifier.so
-%{settings_dir}/gmailnotifiersettings.xml
-%{translations_dir}/*craft_gmailnotifier*
-%{qml_dir}/gmailnotifier/
 
 %files historyholder
 %{plugin_dir}/*leechcraft_historyholder.so
@@ -2632,7 +2567,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{settings_dir}/lackmansettings.xml
 %{translations_dir}/*craft_lackman*
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %files lastfmscrobble
 %{plugin_dir}/lib%{name}_lastfmscrobble.so
 %{settings_dir}/lastfmscrobblesettings.xml
@@ -2784,23 +2719,12 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{settings_dir}/netstoremanagersettings.xml
 %{translations_dir}/*craft_netstoremanager_??.qm
 %{translations_dir}/*craft_netstoremanager_??_??.qm
-%dir %{_datadir}/leechcraft/netstoremanager
-%dir %{_datadir}/leechcraft/netstoremanager/services
-
-%files netstoremanager-googledrive
-%{plugin_dir}/*craft_netstoremanager_googledrive.so
-%{settings_dir}/nsmgoogledrivesettings.xml
-%{translations_dir}/*craft_netstoremanager_googledrive_*.qm
-%{_datadir}/leechcraft/netstoremanager/services/googledrive.png
+# %dir %{_datadir}/leechcraft/netstoremanager
+# %dir %{_datadir}/leechcraft/netstoremanager/services
 
 %files networkmonitor
 %{translations_dir}/*craft_networkmonitor*.qm
 %{plugin_dir}/*craft_networkmonitor.so
-
-%files newlife
-%{translations_dir}/*craft_newlife*.qm
-%{plugin_dir}/*craft_newlife.so
-%{_datadir}/leechcraft/newlife
 
 %files ooronee
 %{plugin_dir}/lib%{name}_ooronee.so

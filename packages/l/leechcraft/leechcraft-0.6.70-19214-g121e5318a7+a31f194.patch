@@ -1,0 +1,23 @@
+From a31f194605d0a4ce603b6dbd91b9b7a7cf67bc83 Mon Sep 17 00:00:00 2001
+From: 0xd34df00d <0xd34df00d@gmail.com>
+Date: Wed, 21 Oct 2026 16:35:44 -0500
+Subject: [PATCH] [Util] Fix `testWaitManyFirstFailureInOrderWins` doing exact
+ string match
+
+---
+ src/util/threads/tests/corotasktest.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/util/threads/tests/corotasktest.cpp b/src/util/threads/tests/corotasktest.cpp
+index 2c8d88136c..544fccba6d 100644
+--- a/src/util/threads/tests/corotasktest.cpp
++++ b/src/util/threads/tests/corotasktest.cpp
+@@ -501,7 +501,7 @@ namespace LC::Util
+ 
+ 	void CoroTaskTest::testWaitManyFirstFailureInOrderWins ()
+ 	{
+-		QTest::ignoreMessage (QtWarningMsg, "dropping a subsequent exception: first in time");
++		QTest::ignoreMessage (QtWarningMsg, "dropping a subsequent exception: \"first in time\"");
+ 
+ 		const auto message = ThrownMessage ([] { GetTaskResult (InParallel ({ SlowFailure (40ms, "first in order"), SlowFailure (10ms, "first in time") })); });
+ 		QCOMPARE (message, "first in order"_qs);

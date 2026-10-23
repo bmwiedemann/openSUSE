@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:18:40 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Obsoleted kwin subplugin since kwin-x11 became unavailable.
+- Updated to 0.6.70-19214-g121e5318a7 snapshot:
+  * Obsoleted plugin: gmailnotifier, netstoremanager-googledrive,
+    newlife.
+- Fixed changes and rpmlintrc.
+- Added leechcraft-0.6.70-19214-g121e5318a7+a31f194.patch
+  to fix tests.
+- Better Leap 16.* support if/when Qt>=6.11.1 will be available.
+
+-------------------------------------------------------------------
 Mon Sep 14 14:38:33 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop requirement for libpostproc (unused and dropped from ffmpeg8+)
@@ -14,7 +26,7 @@ Mon Jul 20 07:37:09 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
 - Fixed clang >= 21 build requirenment;
 - Updated to 0.6.70-18808-g3467692359 snapshot:
   * Removed leechcraft-0.6.70-18450-gabe19ee3b0_68abb98.diff,
-  * Qt >= 5.10 became required,
+  * Qt >= 6.10 became required,
   * Obsoleted plugins: azoth-metacontacts, azoth-velvetbird,
     blasq-vangog, lmp-mp3tunes, poshuku-onlinebookmarks-delicious,
     poshuku-onlinebookmarks-readitlater.

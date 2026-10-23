@@ -1,4 +1,2 @@
-# Adium stuff.
-addFilter("zero-length /usr/share/leechcraft/azoth/styles/adium/.*/Contents/Resources/.*.html");
 # Binary is provided via main package not plugins ones.
 addFilter("desktopfile-without-binary /usr/share/applications/leechcraft-.*.desktop leechcraft");
