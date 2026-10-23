@@ -1,7 +1,7 @@
 #
 # spec file for package pssh
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,17 @@
 #
 
 
-%define pkg_version 2.3.4
 %define pythons python3
 %if ! %{defined python3_sitelib}
-%define python3_sitelib /usr/lib/python3.6/site-packages/
+%define python3_sitelib %{_prefix}/lib/python3.6/site-packages/
 %endif
-
 Name:           pssh
-Version:        2.3.4+git10.d4909c9
+Version:        2.3.6
 Release:        0
 Summary:        Parallel SSH to control large numbers of Machines simultaneously
 License:        BSD-3-Clause
-Group:          Productivity/Clustering/Computing
 URL:            https://github.com/lilydjwg/pssh
-Source:         pssh-%{version}.tar.xz
+Source:         https://github.com/lilydjwg/pssh/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE 0001-Remove-shebangs-from-library-files.patch dejan@suse.de -- remove
 # shebangs from library files
 Patch1:         0001-Remove-shebangs-from-library-files.patch
@@ -62,7 +59,6 @@ versions of ssh, scp, and rsync, as well as a parallel kill command.
 
 %package -n python-pssh
 Summary:        Python Module for Parallel SSH
-Group:          Development/Libraries/Python
 Requires:       openssh
 Requires:       rsync
 
@@ -81,7 +77,16 @@ This package contains the pssh Python module.
 
 %install
 %pyproject_install
+# setup.cfg (2.3.5+) no longer installs the man pages
+install -Dpm 0644 -t %{buildroot}%{_mandir}/man1 man/man1/*.1
 %fdupes %{buildroot}%{python3_sitelib}
+
+%check
+# upstream's test/test.py needs live ssh hosts: smoke-test the CLIs only
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
+for t in pssh pscp prsync pslurp pnuke; do
+  %{buildroot}%{_bindir}/$t --version
+done
 
 %files
 %doc AUTHORS ChangeLog
@@ -104,7 +109,7 @@ This package contains the pssh Python module.
 %files -n python-pssh
 %license COPYING
 %doc AUTHORS ChangeLog
-%{python3_sitelib}/%{name}-%{pkg_version}.dist-info
+%{python3_sitelib}/%{name}-%{version}.dist-info
 %{python3_sitelib}/%{name}lib
 
 %changelog

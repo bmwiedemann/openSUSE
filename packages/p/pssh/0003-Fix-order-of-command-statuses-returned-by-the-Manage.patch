@@ -7,19 +7,17 @@ Subject: [PATCH 3/8] Fix order of command statuses returned by the Manager
  psshlib/manager.py | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/psshlib/manager.py b/psshlib/manager.py
-index 7dbf4e377116..06e1cf31a010 100644
 --- a/psshlib/manager.py
 +++ b/psshlib/manager.py
-@@ -8,6 +8,7 @@
+@@ -8,6 +8,7 @@ import signal
  import sys
  import threading
  import queue
 +import copy
  
  from psshlib.askpass_server import PasswordServer
- from psshlib import psshutil
-@@ -42,6 +43,7 @@
+ 
+@@ -41,6 +42,7 @@ class Manager(object):
          self.next_nodenum = 0
          self.numnodes = 0
          self.tasks = []
@@ -27,7 +25,7 @@ index 7dbf4e377116..06e1cf31a010 100644
          self.running = []
          self.done = []
  
-@@ -49,6 +51,7 @@
+@@ -48,6 +50,7 @@ class Manager(object):
  
      def run(self):
          """Processes tasks previously added with add_task."""
@@ -35,7 +33,7 @@ index 7dbf4e377116..06e1cf31a010 100644
          try:
              if self.outdir or self.errdir:
                  writer = Writer(self.outdir, self.errdir, self.fileappend)
-@@ -87,7 +90,7 @@
+@@ -86,7 +89,7 @@ class Manager(object):
              writer.signal_quit()
              writer.join()
  

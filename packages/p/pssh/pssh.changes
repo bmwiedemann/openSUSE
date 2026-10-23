@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 11 14:05:58 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.3.6 (was git snapshot 2.3.4+git10.d4909c9):
+  * Add pscp --download to fetch files from the hosts in parallel
+  * Add pssh --no-headers and prsync --inline
+  * Print error output on stderr when using the print option (-P)
+  * Fix IPv6 host addresses, port handling and hostname case
+- Use the upstream v2.3.6 release tag tarball instead of a tar_scm
+  snapshot:
+  * Add pssh-2.3.6.tar.gz
+  * Remove pssh-2.3.4+git10.d4909c9.tar.xz, _service, _servicedata
+- Install the man pages in %install: upstream's setup.cfg no
+  longer installs them
+- Add %check smoke test (--version of each command); upstream's
+  test/test.py needs live ssh hosts
+- Rebase patches for the new sources:
+  * 0002-Add-quiet-option.patch
+  * 0003-Fix-order-of-command-statuses-returned-by-the-Manage.patch
+  * 0008-openSUSE-add-C-pcmk_nodes-option-to-get-list-of-node.patch
+- Spec cleanup: drop Group tags and the pkg_version define
+
+-------------------------------------------------------------------
 Mon Jul 14 04:21:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
