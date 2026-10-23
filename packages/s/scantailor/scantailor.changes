@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:56:49 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 1.2.1, tracking the ScanTailor-Advanced successor
+  upstream (formerly 4lex4/scantailor-advanced):
+  * Binary renamed to scantailor-advanced (update scripts and launchers)
+  * Build against Qt6 (Core, Gui, Widgets, Xml, Network, OpenGL,
+    OpenGLWidgets, Svg, Test and LinguistTools modules)
+  * Automatic oblique deskew correction; Fox, Window, Grad and EdgePlus
+    threshold methods; portable relative project paths; negative
+    margins; 1200 DPI output and black page fill options
+  * Pausable thumbnail reordering, Ctrl+drag rubber-band selection,
+    aggregate size locking, inline Source DPI fields, manual per-image
+    trim, fill outside page box, reverse spread order for RTL workflows
+  * Wayland X11/xcb rendering fallback, on-screen thumbnail menus,
+    preserved content box position, Apply Margins including current
+    page, Qt6/MSVC build fixes, new and updated translations
+- Packaging changes:
+  * Drop 0001-Fix-build-with-Qt-5.15-missing-QPainterPath-includes.patch
+    (fixed upstream)
+  * Drop scantailor-icons.tar.bz2: upstream now installs its own desktop
+    file and application icon
+  * No %check: upstream test suite fails headless (QApplication without
+    display) and its Scale suite expects Qt5-era QImage::scaled results
+
+-------------------------------------------------------------------
 Thu Feb 22 07:02:48 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
