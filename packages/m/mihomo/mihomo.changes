@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 22 10:01:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.33:
+  * The tun listener now supports dns-mode (#3288)
+  * CVE-2026-97031: crypto/tls rejects malformed ECH outer
+    extension references (boo#1284779), via metacubex/tls v0.1.9
+  * Fix the embedded shadowsocks listener not closing (#3314),
+    unbounded DoH dials piling up after query timeout (#3274), a
+    quadratic dialer-proxy cycle check (#3315), sub-millisecond
+    URL tests reported as failures (#3316), and fake-ip state lost
+    on pool reload (#3283)
+  * Maintenance: mieru to v3.38.1 (fixes infinite TCP read retry
+    with QUIC-like dialer proxies), lazy wireguard device/stack
+    init, a sudoku refactor, plus the sing-tun, sing-wireguard
+    and mipstack updates this vendor tree carries
+
+-------------------------------------------------------------------
 Thu Oct  1 19:37:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.32:

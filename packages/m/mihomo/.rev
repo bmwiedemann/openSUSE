@@ -86,4 +86,12 @@ Built and tested locally against openSUSE_Factory/aarch64.</comment>
 </comment>
     <requestid>1381965</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>81ab8177a7cca1e08dd79a51923b7fed</srcmd5>
+    <version>1.19.33</version>
+    <time>1792779755</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.19.33</comment>
+    <requestid>1387147</requestid>
+  </revision>
 </revisionlist>
