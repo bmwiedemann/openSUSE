@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 13 06:45:37 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- support kernel 7.1 -- add:
+  * makedumpfile-Fix-wrong-exclusion-of-compound-tail-pages-on-.patch
+
+-------------------------------------------------------------------
 Wed Aug 13 06:22:31 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
 
 - Move makedumpfile-R.pl to doc. The script is no longer needed,

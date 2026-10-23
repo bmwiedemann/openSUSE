@@ -1282,4 +1282,15 @@ See README.static for an explanation why static linking is preferred for some li
   (boo#1247577).</comment>
     <requestid>1299217</requestid>
   </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>2adf4c320382397339d54cb109b8b999</srcmd5>
+    <version>1.7.7</version>
+    <time>1792779683</time>
+    <user>anag_factory</user>
+    <comment>- support kernel 7.1 -- add:
+  * makedumpfile-Fix-wrong-exclusion-of-compound-tail-pages-on-.patch
+- support kernel 7.1 -- add:
+  * makedumpfile-Fix-wrong-exclusion-of-compound-tail-pages-on-.patch</comment>
+    <requestid>1387073</requestid>
+  </revision>
 </revisionlist>

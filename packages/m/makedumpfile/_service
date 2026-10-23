@@ -1,6 +1,4 @@
 <services>
-  <service name="download_files" mode="manual">
-    <param name="recompress">yes</param>
-  </service>
+  <service name="download_files" mode="manual" />
 </services>
 

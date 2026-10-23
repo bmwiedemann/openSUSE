@@ -41,6 +41,7 @@ Patch0:         %{name}-override-libtinfo.patch
 Patch1:         %{name}-ppc64-VA-range-SUSE.patch
 Patch2:         %{name}-PN_XNUM.patch
 Patch3:         %{name}-fix-multi-threading-data-race.patch
+Patch4:         %{name}-Fix-wrong-exclusion-of-compound-tail-pages-on-.patch
 BuildRequires:  libbz2-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
