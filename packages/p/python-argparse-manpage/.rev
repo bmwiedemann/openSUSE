@@ -219,4 +219,16 @@ tools.</comment>
   * Support Python 3.15 argparse changes.</comment>
     <requestid>1377797</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>baccfec506a759a7ae4a5baa88f2935c</srcmd5>
+    <version>4.8</version>
+    <time>1792779687</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.8:
+  * escape sequences are no longer propagated into the generated man pages
+  * fixed a traceback when an action has no help text (action.help == None)
+  * double-quoted values are newly supported in the manpages spec parsing
+- Drop patch support-python-315.patch, merged upstream.</comment>
+    <requestid>1386999</requestid>
+  </revision>
 </revisionlist>

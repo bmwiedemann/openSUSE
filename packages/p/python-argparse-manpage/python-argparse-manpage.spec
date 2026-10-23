@@ -23,14 +23,12 @@
 %bcond_with libalternatives
 %endif
 Name:           python-argparse-manpage
-Version:        4.7
+Version:        4.8
 Release:        0
 Summary:        Tool for automatic manual page building from a Python ArgumentParser object
 License:        Apache-2.0
 URL:            https://github.com/praiskup/argparse-manpage
 Source:         https://github.com/praiskup/argparse-manpage/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#praiskup/argparse-manpage#130
-Patch0:         support-python-315.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
