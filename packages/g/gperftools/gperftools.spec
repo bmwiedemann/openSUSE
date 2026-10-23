@@ -17,7 +17,7 @@
 
 
 Name:           gperftools
-Version:        2.18.1
+Version:        2.19.1
 Release:        0
 Summary:        Performance Tools for C++
 License:        BSD-3-Clause

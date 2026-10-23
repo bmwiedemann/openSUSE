@@ -356,4 +356,29 @@
     processes to use the pid in the cpu profile file name.</comment>
     <requestid>1340790</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>67576aeabad0d1cb7fc84d4f2d2ece07</srcmd5>
+    <version>2.19.1</version>
+    <time>1792779719</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.19.1:
+  * Bundle aw-backtrace, a new stack-trace capturing engine. It is the
+    default on Linux x86-64 and aarch64 when the toolchain can build
+    it (C++20) and glibc provides _dl_find_object (2.35 or later);
+    use --disable-aw-backtrace to opt out.
+  * When both libtcmalloc and libprofiler were loaded in the same
+    process, the two copies of aw-backtrace clashed and failed a check
+    at initialization. They are now built with hidden visibility.
+  * Fix aw-backtrace skip_count handling when GCC 16 in LTO mode
+    devirtualizes and inlines indirect calls (gh#gperftools/gperftools#1649).
+  * No longer link libaw_backtrace with -latomic.
+  * New --disable-tests configure flag to skip building tests and
+    benchmarks.
+  * Basic support for Alpha, and compilation on Linux sparc64.
+  * Build fix for musl libc (elf_mem_image no longer uses __WORDSIZE)
+    and two PowerPC/Linux stack unwinder fixes on musl.
+  * Add GetPC support for FreeBSD/aarch64.
+</comment>
+    <requestid>1387054</requestid>
+  </revision>
 </revisionlist>
