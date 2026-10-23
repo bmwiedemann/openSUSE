@@ -1,6 +1,7 @@
 #
 # spec file for package google-guest-agent
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +20,7 @@
 %define shortname guest-agent
 
 Name:           google-guest-agent
-Version:        20260917.00
+Version:        20261015.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -66,6 +67,7 @@ install -p -m 0644 %{name}.service %{buildroot}%{_unitdir}
 install -p -m 0644 google-startup-scripts.service %{buildroot}%{_unitdir}
 install -p -m 0644 google-shutdown-scripts.service %{buildroot}%{_unitdir}
 install -p -m 0644 gce-workload-cert-refresh.service %{buildroot}%{_unitdir}
+install -p -m 0644 gce-workload-cert-refresh.timer %{buildroot}%{_unitdir}
 mkdir -p %{buildroot}%{_sbindir}
 for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.service' $srv_name); ln -s service %{buildroot}%{_sbindir}/rc$rc_name; done
 
