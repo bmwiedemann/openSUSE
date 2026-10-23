@@ -876,4 +876,12 @@
     <comment>- use https url</comment>
     <requestid>1377844</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>0073bdef2b805f6dd7153d1d9e0efd5a</srcmd5>
+    <version>7.3</version>
+    <time>1792779642</time>
+    <user>anag_factory</user>
+    <comment>- Update to kernel headers 7.3 (forwarded request 1386284 from Andreas_Schwab)</comment>
+    <requestid>1386285</requestid>
+  </revision>
 </revisionlist>
