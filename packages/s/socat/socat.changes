@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:41:11 UTC 2026 - Jiri Slaby <jirislaby@gmail.com>
+
+- Add socat-chain-ssl-l-race.patch
+
+-------------------------------------------------------------------
 Wed Aug  5 08:25:38 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use %{arm} instead of armv6l/armv6hl to include armv7 as well

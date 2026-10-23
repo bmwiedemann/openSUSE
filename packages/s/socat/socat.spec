@@ -31,6 +31,8 @@ Source2:        socat-test-dhparam
 # TODO: as of 1.8.0.0, test.sh supports "--expect-fail <code>", this should be used
 #       instead of ignoring all test failures
 Patch1:         socat-ignore-tests-failure-boo1078346.patch
+# PATCH-FIX-UPSTREAM fix race in socat-chain.sh with passive SSL-L (test 530)
+Patch2:         socat-chain-ssl-l-race.patch
 BuildRequires:  iputils
 BuildRequires:  net-tools
 BuildRequires:  openssl-devel

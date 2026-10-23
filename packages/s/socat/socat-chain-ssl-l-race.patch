@@ -1,0 +1,41 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: fix race in socat-chain.sh
+References: build-fix
+Patch-mainline: no
+
+Fix race in socat-chain.sh where the connecting instance did not wait for the
+passive SSL-L instance to listen, and make test 530 (SOCAT_CHAIN_SSL_PTY) wait
+for the PTY link instead of calling waittcp4port with a file name; fixes
+sporadic failure of test 530 (seen on i586 with kernel 7.3).
+
+--- a/socat-chain.sh
++++ b/socat-chain.sh
+@@ -223,7 +223,7 @@
+     ADDR1B="$ARG1A,bind=$LOCALHOST,$ARG1B"
+     ADDR2A="TCP4-L:$PORT,reuseaddr,$FORK,bind=$LOCALHOST,range=$LOCALHOST/32"
+ else
+-    ADDR1B="TCP4:$LOCALHOST:$PORT,bind=$LOCALHOST"
++    ADDR1B="TCP4:$LOCALHOST:$PORT,bind=$LOCALHOST,retry=50,interval=0.1"
+     ADDR2A="$ARG1A,reuseaddr,$FORK,bind=$LOCALHOST,range=$LOCALHOST/32,$ARG1B"
+ fi
+ ADDR2B="$ARG2"
+@@ -245,6 +245,8 @@
+ 	"$ADDR2A" \
+ 	"$ADDR2B" &
+ pid2=$!
++# Passive instance 2 might not yet listen when instance 1 connects (e.g., slow
++# SSL initialization); the retry option on TCP4 in ADDR1B handles this
+ sleep 0.1
+ 
+ #trap 'if ! kill -n 0 $pid1 2>/dev/null; then [ -z "$QUIET" ] && echo "$0: socat-$NAME1 exited with rc=$?" >&2; kill $pid2 2>/dev/null; exit 1; elif ! kill -n 0 $pid2 2>/dev/null; then [ -z "$QUIET" ] && echo "$0: socat-$NAME2 exited with rc=$?" >&2; kill $pid1 2>/dev/null; exit 1; fi' SIGCHLD
+--- a/test.sh
++++ b/test.sh
+@@ -18644,7 +18644,7 @@
+     printf "test $F_n $TEST... " $N
+     $CMD0 >/dev/null 2>"${te}0" &
+     pid0=$!
+-    waittcp4port $tp
++    waitfile $tp 1 100
+     # NetBSD-9 seems to need massive delay
+     { echo "$da"; relsleep 100; } |$CMD1 >"${tf}1" 2>"${te}1"
+     rc1=$?
