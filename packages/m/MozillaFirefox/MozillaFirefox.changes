@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 21 16:37:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 158.0.1
+  * https://www.firefox.com/en-US/firefox/158.0.1/releasenotes/
+    MFSA 2026-111 (boo#)
+  * CVE-2026-113399 (bmo#2079938)
+    Incorrect boundary conditions in the SVG component
+  * CVE-2026-113470 (bmo#2083382)
+    Cryptographic issue in the Security Block-lists, Allow-lists,
+    and other State component
+  * CVE-2026-113400 (bmo#2061768)
+    Uninitialized memory in the Audio/Video: cubeb component
+  * CVE-2026-113401 (bmo#2073714)
+    Denial-of-service in the PDF Viewer component
+  * Mozilla blocked compromised eMudhra intermediate certificates
+    via OneCRL on October 17th. The blocks were distributed to
+    clients via Remote Settings the same day. This update contains
+    the updated OneCRL block list, ensuring clients will block the
+    compromised certificates even if RemoteSettings is disabled by
+    policy or otherwise unavailable in the user's
+    network environment
+  * Fixed an issue where pages would unexpectedly scroll back to
+    the top when selecting text (bmo#2081016)
+  * Fixed an issue where Firefox was opening windows on the wrong
+    monitor in multi-monitor setups on Linux (bmo#2076558)
+  * Fixed an issue that could prevent the built-in VPN from turning
+    on for some users (bmo#2055094)
+
+-------------------------------------------------------------------
 Wed Oct 14 16:51:53 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 158.0
