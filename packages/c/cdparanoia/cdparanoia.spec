@@ -1,7 +1,7 @@
 #
 # spec file for package cdparanoia
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %define filever III-10.2
 Name:           cdparanoia
-Version:        3.10.2
+Version:        10.2
 Release:        0
 Summary:        A Program for Extracting, Verifying, and Fixing Audio Tracks from CDs
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/CD/Grabbers
-URL:            http://www.xiph.org/paranoia/index.html
-Source:         http://downloads.xiph.org/releases/%{name}/%{name}-%{filever}.src.tgz
+URL:            https://www.xiph.org/paranoia/index.html
+Source:         https://downloads.xiph.org/releases/%{name}/%{name}-%{filever}.src.tgz
 Source2:        baselibs.conf
 Patch1:         010_build_system.patch
 Patch2:         cdparanoia-III-ide_majors.patch
@@ -42,18 +41,15 @@ Obsoletes:      cdparano < %{version}
 %package -n libcdda_interface0
 Summary:        Library for Extracting, Verifying, and Fixing Audio Tracks from CDs
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 Suggests:       ImageMagick-extra = %{version}
 
 %package -n libcdda_paranoia0
 Summary:        Library for Extracting, Verifying, and Fixing Audio Tracks from CDs
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %package devel
 Summary:        Development files for cdparanoia, a library for extractnig audio tracks from CDs
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 Requires:       libcdda_interface0 = %{version}
 Requires:       libcdda_paranoia0 = %{version}
 

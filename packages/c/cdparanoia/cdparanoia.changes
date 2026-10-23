@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 17:51:13 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Align version with upstream release numbering (III 10.2):
+  3.10.2 -> 10.2. No source changes (same upstream tarball).
+- Spec cleanup: drop obsolete Group tags, https Source/URL.
+
+-------------------------------------------------------------------
 Thu Dec  5 10:56:43 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - fix loongarch64 build
