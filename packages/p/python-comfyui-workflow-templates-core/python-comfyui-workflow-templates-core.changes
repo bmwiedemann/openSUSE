@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:26:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.387: the manifest grows from 642 to 651
+  templates
+  * New, all owned by the media-assets-02 bundle: three Bria
+    (guided remove background, product holding and virtual
+    try-on), two Ideogram Vector 1 (image to SVG and text to
+    SVG), two Meshy 2.5 smart topology (image to model and text
+    to model) and two PixVerse v6 Max (image to video and text
+    to video)
+  * Follow-up hash refreshes for the localized index files
+  * The floors here stay unchanged: no entry changes owner,
+    so json 0.1.102 and media-assets-02 0.1.9 still resolve
+    every entry they resolved before
+
+-------------------------------------------------------------------
 Thu Oct 22 11:45:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.385: the manifest grows from 634 to 642
