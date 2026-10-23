@@ -38,8 +38,7 @@ BuildRequires:  dejagnu
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 
 %description
 This package provides the libapparmor library, which contains the

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 20 10:44:04 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Pass the distribution build flags to the plain make builds of the
+  parser and the binutils programs, so apparmor_parser, aa-exec,
+  aa-load and aa-status are built with fortify and stack-protector
+  hardening like the rest of the package
+- Drop the obsolete BuildRoot tag from both specs and use the pkgconfig
+  spelling of the pkg-config BuildRequires
+
+-------------------------------------------------------------------
 Tue Sep 15 14:06:53 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
 
 - update wg-quick.diff to fix setting DNS (boo#1265394)

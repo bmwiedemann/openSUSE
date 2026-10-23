@@ -96,7 +96,6 @@ Patch13:        wg-quick.diff
 Patch14:        dovecot.diff
 
 PreReq:         sed
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -107,7 +106,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  iproute2
 BuildRequires:  libtool
 BuildRequires:  libzstd-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  swig
 BuildRequires:  perl(Locale::gettext)
@@ -397,11 +396,13 @@ export SUSE_ASNEEDED=0
 # Utilities:
 make -C utils
 
-# binutils
-make -C binutils
+# The parser and binutils builds compose their compiler flags from
+# the environment; feed them the distribution flags that way.
+# (Make command-line variable overrides would propagate into the
+# libapparmor_re sub-make and break its own flag composition.)
+CFLAGS="%{optflags}" make -C binutils
 
-# parser:
-make -C parser V=1
+CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" make -C parser V=1
 
 # Apache mod_apparmor:
 %if %{with apache}

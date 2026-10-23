@@ -3243,4 +3243,12 @@ Detailed changelog:
     <comment>- update wg-quick.diff to fix setting DNS (boo#1265394) (forwarded request 1378194 from cboltz)</comment>
     <requestid>1378195</requestid>
   </revision>
+  <revision rev="243" vrev="4">
+    <srcmd5>66fb713806ce06b481bcc43ed6bf120d</srcmd5>
+    <version>5.0.2</version>
+    <time>1792779722</time>
+    <user>anag_factory</user>
+    <comment>Resubmitted from a clean branch of security:apparmor with sources identical to the superseded request from home:scarabeus_iv: that project builds with a substituted development linter whose findings failed the branch builds, while the package itself compiles and packages cleanly, as the builds in this branch project show. The changes are unchanged: pass the distribution build flags to the plain make builds of the parser and the binutils programs, so apparmor_parser, aa-exec, aa-load and aa-status are built with fortify and stack-protector hardening like the rest of the package. Also drop the obsolete BuildRoot tag and use the pkgconfig() spelling for the pkg-config BuildRequires. (forwarded request 1386766 from scarabeus_iv)</comment>
+    <requestid>1387079</requestid>
+  </revision>
 </revisionlist>
