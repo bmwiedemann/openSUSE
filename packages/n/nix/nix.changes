@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 22 21:58:19 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.35.4:
+  - 958a4d31b packaging: cacert: 3.126 -> 3.131.1
+  - 25e74536b packaging: Fix more fork unsafety in aws-c-io s2n
+    patch
+  - ba27db58c packaging/dependencies: Update
+  - 5eec05caa maintainers: Disable more formatting cases in tests
+  - c9ac68eae flake.lock: Update
+  - 43d8c6c7f [Backport 2.35-maintenance] Fix incorrectly reported
+    bytes freed for local-overlay-store (#16630)
+  - bfdc7f4c6 Fix incorrectly reported bytes freed for
+    local-overlay-store
+
+-------------------------------------------------------------------
 Tue Oct 13 15:31:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.35.3:
