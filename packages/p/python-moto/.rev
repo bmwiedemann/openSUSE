@@ -421,4 +421,12 @@
   * Kinesis: list_stream_consumers() now supports pagination</comment>
     <requestid>1378230</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>580d4f9f081393629d7547b88e50ae81</srcmd5>
+    <version>5.2.4</version>
+    <time>1792779975</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1387168</requestid>
+  </revision>
 </revisionlist>

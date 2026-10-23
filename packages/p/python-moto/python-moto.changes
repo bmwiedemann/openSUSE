@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:18:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.2.4:
+  * Core: normalize incoming requests, map hyphenated URI params;
+    migrate DSQL, OSIS, NetworkManager, NetworkFirewall and DS
+    to automated request parsing and serialization
+  * Fix pagination for OSIS ListPipelines, SESv2
+    ListEmailIdentities, SQS ListQueues and list-of-strings
+    result sets
+  * ElastiCache: implement modify_replication_group; MQ: add
+    delete_configuration and list_configuration_revisions;
+    EC2: guard against duplicate ENI assignments; RDS:
+    validate RestoreToTime
+  * Drop setuptools and multipart from extra requirements,
+    require aws-xray-sdk >= 2.10.0
+  * Packaging: migrate console scripts to libalternatives
+
+-------------------------------------------------------------------
 Wed Sep 16 00:42:19 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.2.3:

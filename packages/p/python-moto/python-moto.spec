@@ -17,8 +17,9 @@
 
 
 %{?sle15_python_module_pythons}
+%bcond_without libalternatives
 Name:           python-moto
-Version:        5.2.3
+Version:        5.2.4
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
@@ -28,8 +29,10 @@ BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.6.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Werkzeug >= 0.5
 Requires:       python-boto3 >= 1.9.201
 Requires:       python-botocore >= 1.20.88
@@ -38,18 +41,16 @@ Requires:       python-requests >= 2.5
 Requires:       python-responses >= 0.15.0
 Requires:       python-xmltodict
 Requires:       (python-python-dateutil >= 2.1 with python-python-dateutil < 3)
-Conflicts:      (python-Werkzeug >= 2.2.0 with python-Werkzeug < 2.2.2)
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 Recommends:     python-moto-all
 Suggests:       python-moto-server
+Conflicts:      (python-Werkzeug >= 2.2.0 with python-Werkzeug < 2.2.2)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask without (%python-Flask >= 2.2.0 with %python-Flask < 2.2.2)}
 BuildRequires:  %{python_module Flask-Cors}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module antlr4-python3-runtime}
-BuildRequires:  %{python_module aws-xray-sdk >= 0.93}
+BuildRequires:  %{python_module aws-xray-sdk >= 2.10.0}
 BuildRequires:  %{python_module boto3 >= 1.9.201}
 BuildRequires:  %{python_module botocore >= 1.20.88}
 BuildRequires:  %{python_module cfn-lint >= 0.40.0}
@@ -88,9 +89,8 @@ A library that allows your python tests to mock out AWS Services
 
 %package all
 Summary:        Library to mock out the boto library -- all extras
-Provides:       python-moto-proxy = %{version}-%{release}
 Requires:       python-PyYAML >= 5.1
-Requires:       python-aws-xray-sdk >= 0.93
+Requires:       python-aws-xray-sdk >= 2.10.0
 Requires:       python-cfn-lint >= 0.40.0
 Requires:       python-docker >= 3.0.0
 Requires:       python-ecdsa
@@ -101,8 +101,7 @@ Requires:       python-moto = %{version}
 Requires:       python-openapi-spec-validator >= 0.5.0
 Requires:       python-py-partiql-parser >= 0.6.1
 Requires:       python-pyparsing >= 3.0.7
-Requires:       python-python-multipart
-Requires:       python-setuptools
+Provides:       python-moto-proxy = %{version}-%{release}
 
 %description all
 A library that allows your python tests to mock out the boto
@@ -128,6 +127,7 @@ for f in athena/utils.py \
          medialive/exceptions.py \
          meteringmarketplace/exceptions.py \
          redshift/utils.py \
+         stepfunctions/parser/asl/eval/contex_object.py \
          support/exceptions.py
 do
    [ -f moto/$f ] || (echo "moto/$f does not exist anymore"; exit 1)
@@ -148,12 +148,13 @@ echo '{}' | gzip -c > moto/eresources/instance_types.json.gz
 # Fix python-bytecode-inconsistent-mtime
 pushd %{buildroot}%{python_sitelib}
 find . -name '*.pyc' -exec rm -f '{}' ';'
-python%python_bin_suffix -m compileall *.py ';'
+python%{python_bin_suffix} -m compileall *.py ';'
 popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/moto_server
 %python_clone -a %{buildroot}%{_bindir}/moto_proxy
+%python_group_libalternatives moto_server moto_proxy
 
 %check
 export BOTO_CONFIG=/dev/null
@@ -201,11 +202,9 @@ parallel_tests="./tests/test_awslambda ./tests/test_batch ./tests/test_ec2 ./tes
 export MOTO_CALL_RESET_API=false
 %pytest -n auto -k "not ($donttest ${$python_donttest})" $parallel_tests
 
-%post
-%python_install_alternative moto_server moto_proxy
-
-%postun
-%python_uninstall_alternative moto_server
+%pre
+%python_libalternatives_reset_alternative moto_server
+%python_libalternatives_reset_alternative moto_proxy
 
 %files %{python_files}
 %doc AUTHORS.md README.md
