@@ -200,4 +200,14 @@ add bugnumber</comment>
     <comment>1</comment>
     <requestid>1374400</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9354721b77a03c742c7d22e591c1b2db</srcmd5>
+    <version>3.8.1</version>
+    <time>1792780106</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1387199 from darix
+
+- update to 3.8.1:</comment>
+    <requestid>1387200</requestid>
+  </revision>
 </revisionlist>
