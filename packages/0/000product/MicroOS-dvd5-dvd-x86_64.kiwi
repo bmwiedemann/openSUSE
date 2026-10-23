@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20261021" schemaversion="4.1">
+<image name="OBS__MicroOS___20261022" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20261021</productvar>
+      <productvar name="VERSION">20261022</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20261021,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20261022,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20261021/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20261022/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1070,6 +1070,7 @@
       <repopackage name="libQt6Core5Compat6"/>
       <repopackage name="libQt6Core6"/>
       <repopackage name="libQt6DBus6"/>
+      <repopackage name="libQt6Graphs6"/>
       <repopackage name="libQt6Gui6"/>
       <repopackage name="libQt6HunspellInputMethod6"/>
       <repopackage name="libqt6keychain1"/>
@@ -1592,6 +1593,7 @@
       <repopackage name="qrca"/>
       <repopackage name="qrencode"/>
       <repopackage name="qt6-declarative-imports"/>
+      <repopackage name="qt6-graphs-imports"/>
       <repopackage name="qt6-imageformats"/>
       <repopackage name="qt6-location"/>
       <repopackage name="qt6-multimedia"/>

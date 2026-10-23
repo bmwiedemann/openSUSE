@@ -9021,6 +9021,7 @@ unsorted:
   - identity 
   - identity-lang 
   - idep 
+  - ideviceinstaller 
   - ido-devel 
   - idutils 
   - idutils-lang 
@@ -11760,7 +11761,6 @@ unsorted:
   - libQt6DataVisualizationQml6 
   - libQt6DeclarativeOpcua6 
   - libQt6DesignerComponents6 
-  - libQt6Graphs6 
   - libQt6Grpc6 
   - libQt6HttpServer6 
   - libQt6Lottie6 
@@ -13404,7 +13404,7 @@ unsorted:
   - libexttextcat-devel 
   - libexttextcat-tools 
   - libf2c0 
-  - libf2fs_format9 
+  - libf2fs_format10 
   - libf3d3 
   - libfa1-32bit 
   - libfaad2-32bit 
@@ -17326,7 +17326,7 @@ unsorted:
   - libvsmbr-devel 
   - libvsmbr-tools 
   - libvsmbr1 
-  - libvsqlitepp3 
+  - libvsqlitepp0 
   - libvsscript0 
   - libvted-3-0 
   - libvterm-devel 
@@ -18697,6 +18697,8 @@ unsorted:
   - mangoplot 
   - manifold-devel 
   - manpageeditor 
+  - manuals 
+  - manuals-lang 
   - mapi-header-php 
   - mapitags 
   - mapserver 
@@ -33117,7 +33119,6 @@ unsorted:
   - qt6-graphs-docs-html 
   - qt6-graphs-docs-qch 
   - qt6-graphs-examples 
-  - qt6-graphs-imports 
   - qt6-graphs-private-devel 
   - qt6-grpc-devel 
   - qt6-grpc-docs-html 
@@ -33867,6 +33868,7 @@ unsorted:
   - rocksdb-tools 
   - rocksndiamonds 
   - rocksndiamonds-data 
+  - rocm 
   - rocm-clang 
   - rocm-clang-analyzer 
   - rocm-clang-devel 
@@ -33879,6 +33881,7 @@ unsorted:
   - rocm-compilersupport-macros 
   - rocm-core 
   - rocm-core-devel 
+  - rocm-devel 
   - rocm-device-libs 
   - rocm-filesystem 
   - rocm-hip 
@@ -33899,6 +33902,8 @@ unsorted:
   - rocm-smi 
   - rocm-smi-devel 
   - rocm-smi-libs 
+  - rocm-test 
+  - rocm-validation-suite 
   - rocminfo 
   - rocprim-devel 
   - rocq 
@@ -34973,7 +34978,6 @@ unsorted:
   - smenu-tests 
   - smictrl 
   - smillaenlarger 
-  - smilutils 
   - smlnj 
   - smooth 
   - smooth-devel 
