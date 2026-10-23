@@ -398,4 +398,12 @@
     <comment>Fix some regressions found by the MLM people</comment>
     <requestid>1369322</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>fbdf7ad7bccbfd34fa9f081613978ef4</srcmd5>
+    <version>2.26.1</version>
+    <time>1792779743</time>
+    <user>anag_factory</user>
+    <comment>Fix unresolved ${revision} variable in pom files</comment>
+    <requestid>1387150</requestid>
+  </revision>
 </revisionlist>

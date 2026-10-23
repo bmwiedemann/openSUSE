@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 22 15:20:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Fix unresolved ${revision} variable in pom files
+
+-------------------------------------------------------------------
 Mon Aug  3 18:32:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Build with apache-logging-parent 12.1.1

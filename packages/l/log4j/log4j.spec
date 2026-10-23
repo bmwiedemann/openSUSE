@@ -131,6 +131,8 @@ Obsoletes:      %{name}-manual < %{version}
 
 find . -name package-info.java -print -delete
 
+%pom_xpath_replace -r "//pom:version[normalize-space()='\${revision}']" "<version>%{version}</version>"
+
 %pom_remove_plugin -r :apache-rat-plugin
 %pom_remove_plugin -r :maven-source-plugin
 %pom_remove_plugin -r :maven-enforcer-plugin
