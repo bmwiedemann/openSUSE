@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Oct 15 02:32:00 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- update to 0.13.1:
+  * bwrap now accepts multiple --sync-fd arguments and will handle
+    all of the fds.
+  * O_PATH is used when opening parent directories in the new root,
+    fixing an error when read permission is missing.
+
+
+-------------------------------------------------------------------
+Tue Oct 13 22:24:12 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- update to 0.13.0:
+  * Linux kernel headers with __NR_pivot_root (Linux 2.3.41+) are
+    required at build-time on all architectures
+  * If compiled with -Dassume_kernel=5.12.0 or newer, then a kernel with
+    the mount_setattr syscall is required at runtime, and kernel headers
+    with __NR_mount_setattr are required at build-time on most
+    architectures. On the x86_64, i386 and aarch64 architectures, a
+    fallback is provided to be able to compile with pre-5.12 kernel
+    headers.
+  * On kernels that support it (5.12+), use mount_setattr() to remount
+    filesystems with ro, nodev and/or nosuid.
+  * Arguments that expect a path argument (--bind, --overlay-src, etc.)
+    now reject empty strings. Previously they would sometimes be treated
+    as the root directory due to implementation details, but this was
+    unintended.
+  * A new build option -Ddebug_logging=true can be used to enable
+    verbose debug logging (not recommended for distro builds). These
+    debug messages don't appear unless environment variable
+    DEBUG_INVOCATION is set at runtime.
+  * Fix build failures with older gcc or older -std argument
+  * Fix build failure with musl
+  * Fix test failure on systems that lack hostname(1)
+  * Fix test failure on systems with a mount point containing a
+    backslash
+  * Fix test failure on systems with older xdg-desktop-portal
+  * Don't leave a temporary file behind after running the test suite
+  * CI improvements
+
+
+-------------------------------------------------------------------
 Mon Aug 31 07:39:37 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
 
 - update to 0.12.0:
