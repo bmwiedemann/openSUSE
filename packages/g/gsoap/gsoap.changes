@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 21 20:18:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.145
+  * Reject RFC 4051 truncated-HMAC values specified in
+    `HMACOutputLength`.
+  * Constrain the use of weak and vulnerable HMAC-SHA1 in
+    WS-Security (gSOAP WS-Security documentation has always warned
+    against using HMAC with secret shared keys).
+  * Further constrain (deprecated) DIME protocol attachment
+    processing limits, which are already constrained by
+    `SOAP_MAXDIMESIZE` (8MB default) and by the run-time
+    `recv_maxlength` limit on XML+attachment size.
+
+-------------------------------------------------------------------
 Mon Jul 27 10:15:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.144
