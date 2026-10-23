@@ -103,4 +103,17 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345351</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>08302f2b4da88a5cdb899ac0bc2c2be3</srcmd5>
+    <version>0.8.10</version>
+    <time>1792780094</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.10:
+  * Allow Phosh to use the important hint (for e.g. cellbroadcasts)
+  * Add pmi8998-haptics
+- Update version dependencies according to meson.build.
+
+- Version 0.8.6</comment>
+    <requestid>1387196</requestid>
+  </revision>
 </revisionlist>

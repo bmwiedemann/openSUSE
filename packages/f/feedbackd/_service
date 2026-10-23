@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <services>
   <service mode="manual" name="obs_scm">
-    <param name="url">https://github.com/agx/feedbackd.git</param>
-    <param name="revision">v0.8.9</param>
+    <param name="url">https://gitlab.freedesktop.org/feedbackd/feedbackd.git</param>
+    <param name="revision">v0.8.10</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="scm">git</param>

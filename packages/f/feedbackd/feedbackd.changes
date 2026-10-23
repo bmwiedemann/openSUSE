@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:01:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.8.10:
+  * Allow Phosh to use the important hint (for e.g. cellbroadcasts)
+  * Add pmi8998-haptics
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:28:17 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
@@ -28,7 +36,7 @@ Thu Nov 20 15:04:42 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Fri Oct 17 18:17:09 UTC 2025 - Adrian Campos Garrido <adriancampos@teachelp.com>
 
-- Version 0.8.6 
+- Version 0.8.6
   * data: Move udev rule to 72
     systemd as of 258 requires uaccess tag processing to be < 73.
   * packaging: Trigger change event for input subsystem too

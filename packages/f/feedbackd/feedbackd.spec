@@ -19,11 +19,11 @@
 %define soname libfeedback-0_0-0
 
 Name:           feedbackd
-Version:        0.8.9
+Version:        0.8.10
 Release:        0
 Summary:        Feedback library for GNOME
 License:        GPL-3.0-only AND LGPL-2.1-only
-URL:            https://source.puri.sm/Librem5/feedbackd
+URL:            https://gitlab.freedesktop.org/feedbackd/
 Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  c_compiler
@@ -34,7 +34,7 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gmobile)
+BuildRequires:  pkgconfig(gmobile) >= 0.1.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsound)
