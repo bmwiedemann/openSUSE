@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 20 16:18:38 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Fix integer overflow vulnerability in mat4_read_header()
+  (bsc#1282671, CVE-2026-88372):
+  libsndfile-CVE-2026-88372.patch
+
+-------------------------------------------------------------------
 Wed Oct 14 16:21:27 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Add another fix for CVE-2022-33065:

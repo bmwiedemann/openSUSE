@@ -37,6 +37,7 @@ Patch11:        libsndfile-CVE-2026-88386.patch
 # not merged yet to the upstream
 Patch5:         libsndfile-CVE-2025-52194.patch
 Patch6:         libsndfile-CVE-2026-37555.patch
+Patch12:        libsndfile-CVE-2026-88372.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  cmake
