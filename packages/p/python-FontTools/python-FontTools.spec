@@ -31,15 +31,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-FontTools%{psuffix}
-Version:        4.62.1
+Version:        4.67.0
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1
-Group:          Development/Languages/Python
 URL:            https://github.com/fonttools/fonttools
 # The PyPI archive lacks some test files, but the source is identical to the github archive
 Source:         https://github.com/fonttools/fonttools/archive/refs/tags/%{version}.tar.gz#/fonttools-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -54,7 +53,7 @@ Recommends:     python-reportlab
 Recommends:     python-scipy >= 1.11.4
 Recommends:     python-sympy >= 1.12
 Recommends:     python-ufoLib2 >= 0.16.0
-Recommends:     python-unicodedata2 >= 17.0.0
+Recommends:     python-unicodedata2 >= 18.0.0
 Recommends:     python-zopfli >= 0.1.4
 Provides:       python-fonttools = %{version}-%{release}
 Obsoletes:      fonttools < %{version}-%{release}

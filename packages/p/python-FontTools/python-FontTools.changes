@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:02:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.67.0:
+  * Requires Python 3.11 or later; bundled Unicode data updated
+    to 18.0.0 (python-unicodedata2 >= 18.0.0).
+  * Security hardening: UFO paths confined to the filesystem
+    root, glyph names sanitized in extfile export, no external
+    XML entity resolution, and cmap group bounds clamping.
+  * varLib: decreasing axis mappings, VARC partial instancing,
+    COLRv1 instancing, and avar2 partial instancing; VARC store
+    format updated (older VARC fonts need a rebuild).
+  * subset keeps East Asian palt spacing and the input flavor;
+    merge handles MATH tables and reports unitsPerEm mismatches.
+  * feaLib script/language tracking and overflow handling fixes;
+    clearer errors for STAT and value-record problems.
+  * ttLib: TrueType Collection v2, AAT bitmap and EBSC tables,
+    GPOS overflow recovery via splitSinglePos, and stricter
+    sfnt/cmap error reporting.
+  * Many more fixes and improvements; see upstream NEWS.rst
+    for the full list.
+
+-------------------------------------------------------------------
 Wed Mar 25 09:02:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.62.1:
