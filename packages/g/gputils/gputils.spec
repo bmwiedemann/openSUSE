@@ -1,7 +1,7 @@
 #
 # spec file for package gputils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar
 Patch1:         gputils-no-build-time.patch
 # https://sourceforge.net/p/gputils/bugs/329/
 Patch2:         gputils-gcc15.patch
+# https://sourceforge.net/p/gputils/bugs/328/
+Patch3:         gputils-source-date-epoch.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex

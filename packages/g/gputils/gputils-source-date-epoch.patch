@@ -1,0 +1,134 @@
+From: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Subject: Honour SOURCE_DATE_EPOCH for the timestamps written into output files
+
+gpasm, gplink, gplib and gpstrip stamp the current wall-clock time into the
+COFF file headers (f_timdat), into the ar member headers of .lib archives and
+into the .cod debug files. That makes the output of every build using gputils
+unreproducible - for instance every PIC library shipped by sdcc differs between
+two builds.
+
+Take the timestamp from SOURCE_DATE_EPOCH when it is set, as specified by
+https://reproducible-builds.org/specs/source-date-epoch/
+
+--- gputils-1.5.2.orig/libgputils/gpsystem.h
++++ gputils-1.5.2/libgputils/gpsystem.h
+@@ -64,6 +64,8 @@
+ extern unsigned int gp_find_lowest_bit(uint64_t Bits);
+ extern unsigned int gp_find_highest_bit(uint64_t Bits);
+ 
++extern time_t gp_current_time(void);
++
+ extern void  gp_date_string(char* Buffer, size_t Sizeof_buffer);
+ 
+ extern void* gp_malloc(size_t Size, const char* File, size_t Line, const char* Func);
+--- gputils-1.5.2.orig/libgputils/gpsystem.c
++++ gputils-1.5.2/libgputils/gpsystem.c
+@@ -354,6 +354,35 @@
+ 
+ /*------------------------------------------------------------------------------------------------*/
+ 
++/* Current time, overridable through SOURCE_DATE_EPOCH so that the timestamps
++   written into COFF objects, archives and listings stay reproducible.
++   See https://reproducible-builds.org/specs/source-date-epoch/ */
++
++time_t
++gp_current_time(void)
++{
++  const char *source_date_epoch;
++  char       *endptr;
++  long long   epoch;
++
++  source_date_epoch = getenv("SOURCE_DATE_EPOCH");
++
++  if ((source_date_epoch != NULL) && (source_date_epoch[0] != '\0')) {
++    errno = 0;
++    epoch = strtoll(source_date_epoch, &endptr, 10);
++
++    if ((errno == 0) && (*endptr == '\0') && (epoch >= 0)) {
++      return (time_t)epoch;
++    }
++
++    gp_error("invalid SOURCE_DATE_EPOCH value: \"%s\"", source_date_epoch);
++  }
++
++  return time(NULL);
++}
++
++/*------------------------------------------------------------------------------------------------*/
++
+ void
+ gp_date_string(char *Buffer, size_t Sizeof_buffer)
+ {
+@@ -363,7 +392,7 @@
+   char             format[60];
+ #endif
+ 
+-  time(&now);
++  now    = gp_current_time();
+   now_tm = localtime(&now);
+   if (now_tm != NULL) {
+ #if defined(HAVE_LOCALE_H) && defined(HAVE_LANGINFO_H)
+--- gputils-1.5.2.orig/libgputils/gparchive.c
++++ gputils-1.5.2/libgputils/gparchive.c
+@@ -221,7 +221,7 @@
+   /* fill in the archive header */
+   memset(&new_member->header, ' ', AR_HDR_SIZ); /* fill the header with space */
+ 
+-  timer = (int)time(NULL);
++  timer = (int)gp_current_time();
+ 
+   snprintf(name, sizeof(name), "%s/", Object_name);
+   snprintf(date, sizeof(date), "%il", timer);
+--- gputils-1.5.2.orig/libgputils/gpcod.c
++++ gputils-1.5.2/libgputils/gpcod.c
+@@ -32,7 +32,7 @@
+   struct tm    *local;
+   unsigned int  value;
+ 
+-  time(&now);
++  now = gp_current_time();
+   local = localtime(&now);
+   value = (local->tm_hour * 100) + local->tm_min;
+   gp_putl16(Buffer, value);
+@@ -53,7 +53,7 @@
+   char       temp[16];
+   int        length;
+ 
+-  time(&now);
++  now = gp_current_time();
+ #ifdef HAVE_LOCALE_H
+   setlocale(LC_ALL, "C");
+ #endif
+--- gputils-1.5.2.orig/libgputils/gpcoffgen.c
++++ gputils-1.5.2/libgputils/gpcoffgen.c
+@@ -44,7 +44,7 @@
+   object->filename  = GP_Strdup(File_name);
+   object->processor = gp_find_processor("generic");
+   object->class     = PROC_CLASS_GENERIC;
+-  object->time      = (uint32_t)time(NULL);
++  object->time      = (uint32_t)gp_current_time();
+   object->serial_id = object_serial_id++;
+ 
+   gp_list_set_delete_node_func(&object->section_list, (gp_node_del_t)gp_coffgen_free_section);
+--- gputils-1.5.2.orig/libgputils/gpcofflink.c
++++ gputils-1.5.2/libgputils/gpcofflink.c
+@@ -149,7 +149,7 @@
+   gp_object_t *object_list;
+ 
+   /* assign the time the operation occured */
+-  Object->time = (uint32_t)time(NULL);
++  Object->time = (uint32_t)gp_current_time();
+ 
+   /* append the sections onto the list */
+   object_list = Object->next;
+--- gputils-1.5.2.orig/gputils/gpstrip.c
++++ gputils-1.5.2/gputils/gpstrip.c
+@@ -430,7 +430,7 @@
+ 
+       if (!state.preserve_dates) {
+         /* FIXME: need to update the output file dates */
+-        state.object->time = (long)time(NULL);
++        state.object->time = (long)gp_current_time();
+       }
+ 
+       if (gp_num_errors == 0) {

@@ -70,4 +70,15 @@
     <comment></comment>
     <requestid>1275329</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>3f0ca44ccf7f666454d756790bef5759</srcmd5>
+    <version>1.5.2</version>
+    <time>1792780115</time>
+    <user>anag_factory</user>
+    <comment>- Add gputils-source-date-epoch.patch to make gpasm/gplink/gplib/gpstrip
+  honour SOURCE_DATE_EPOCH = https://sourceforge.net/p/gputils/bugs/328/
+
+- fixed old changelog validation</comment>
+    <requestid>1387203</requestid>
+  </revision>
 </revisionlist>

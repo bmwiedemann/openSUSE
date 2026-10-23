@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  8 02:57:32 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add gputils-source-date-epoch.patch to make gpasm/gplink/gplib/gpstrip
+  honour SOURCE_DATE_EPOCH = https://sourceforge.net/p/gputils/bugs/328/
+
+-------------------------------------------------------------------
 Wed May  7 06:54:12 UTC 2025 - pgajdos@suse.com
 
 - added patches
@@ -97,5 +103,6 @@ Tue Jun 12 08:09:59 UTC 2012 - cyberorg@opensuse.org
 - update to 0.14.2_RC1 
 
 -------------------------------------------------------------------
-Wed Jan 13 2010 Torben Mikael Hansen - build at sciomnis__singledot__com 
+Wed Jan 13 00:00:00 UTC 2010 - Torben Mikael Hansen
+- build at sciomnis__singledot__com
 - Version 0.13.7
