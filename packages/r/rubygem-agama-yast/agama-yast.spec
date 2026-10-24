@@ -17,7 +17,7 @@
 
 
 Name:           agama-yast
-Version:        24.devel92.b3589a3ff
+Version:        25.devel3.ca3b0768b
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
@@ -27,8 +27,6 @@ BuildRequires:  gettext-runtime
 Requires:       dbus-1-common
 Requires:       rubygem(agama-yast)
 
-# do not build on 32bits, the dependant libsuseconnect is 64bit only
-ExcludeArch:    %ix86 s390 ppc64
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ruby-macros >= 5

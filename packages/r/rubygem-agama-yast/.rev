@@ -881,4 +881,37 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1381646</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>062407e5dcb7dc5aac6e7629aa135a4a</srcmd5>
+    <version>25.devel3.ca3b0768b</version>
+    <time>1792872221</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release
+
+--- rubygem-agama-yast.changes (revision 55)
++++ rubygem-agama-yast.changes (revision 94)
+@@ -1,4 +1,21 @@
+ -------------------------------------------------------------------
++Thu Oct 22 09:44:41 UTC 2026 - José Iván López González &lt;jlopez@suse.com&gt;
++
++- Version 25
++
++-------------------------------------------------------------------
++Wed Sep 30 12:48:23 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
++
++- Drop unnecessary YaST RPM dependencies from the AutoYaST support
++  code:
++  - Vendor the needed autoyast2/yast2-installation code
++    (gh#agama-project/agama#4001).
++  - Vendor the needed yast2-network code and reimplement the
++    yast2-users profile parsing (gh#agama-project/agama#4003).
++  - Drop the unused yast2-country/yast2-proxy dependencies
++    (gh#agama-project/agama#4004).
++
++-------------------------------------------------------------------
+ Wed Sep 23 09:30:35 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
+ 
+ - Fix support for AutoYaST classes adding the missing dependency on</comment>
+    <requestid>1387137</requestid>
+  </revision>
 </revisionlist>
