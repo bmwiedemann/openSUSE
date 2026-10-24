@@ -81,9 +81,6 @@ export K8S_MODULES_MINOR_VER=$(grep k8s.io/client-go go.mod | cut -d. -f3)
 echo "K8S_MODULES_MAJOR_VER is set to $K8S_MODULES_MAJOR_VER"
 echo "K8S_MODULES_MINOR_VER is set to $K8S_MODULES_MINOR_VER"
 
-%ifnarch %ix86 s390x riscv64
-export CGO_ENABLED=0
-%endif
 go build \
   -trimpath \
   -tags '' \
@@ -111,11 +108,11 @@ go build \
 install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
-%{buildroot}/%{_bindir}/helm completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+%{buildroot}/%{_bindir}/helm --color never completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
-%{buildroot}/%{_bindir}/helm completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+%{buildroot}/%{_bindir}/helm --color never completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d
-%{buildroot}/%{_bindir}/helm completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+%{buildroot}/%{_bindir}/helm --color never completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %check
 rm -fv internal/plugin/installer/base_test.go

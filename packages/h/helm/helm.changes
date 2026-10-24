@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 23 12:36:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar:
+  * avoid color related crash on non-x86
+
+-------------------------------------------------------------------
 Sun Oct 18 21:46:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix up vendor.tar replacements
