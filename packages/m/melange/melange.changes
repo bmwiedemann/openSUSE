@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:57:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.63.1:
+  * fix: preserve hardlinks when writing .apk files (#2709)
+
+-------------------------------------------------------------------
 Mon Oct 19 04:53:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.63.0:
