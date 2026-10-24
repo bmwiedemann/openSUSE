@@ -17,20 +17,21 @@
 
 
 Name:           sasutils
-Version:        0.5.0
-Release:        1
+Version:        0.6.1
+Release:        0
 Summary:        Serial Attached SCSI (SAS) utilities
 License:        Apache-2.0
-Group:          Hardware/Other
 URL:            https://github.com/stanford-rc/sasutils
 Source0:        https://files.pythonhosted.org/packages/source/s/%{name}/%{name}-%{version}.tar.gz
-BuildArch:      noarch
 BuildRequires:  fdupes
+# Keep plain python3-devel: spec-cleaner expands it into stale
+# pkgconfig(python-3.6[m]) provides that no longer exist.
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Requires:       python3-setuptools
 Requires:       sg3_utils
 Requires:       smp_utils
+BuildArch:      noarch
 
 %description
 sasutils is a set of command-line tools, udev scripts and a Python
@@ -62,10 +63,10 @@ install -p -m 0644 doc/man/man1/ses_report.1 %{buildroot}/%{_mandir}/man1/
 %{_bindir}/ses_report
 %{python3_sitelib}/sasutils/
 %{python3_sitelib}/sasutils-*
-%{_mandir}/man1/sas_counters.1*
-%{_mandir}/man1/sas_devices.1*
-%{_mandir}/man1/sas_discover.1*
-%{_mandir}/man1/ses_report.1*
+%{_mandir}/man1/sas_counters.1%{?ext_man}
+%{_mandir}/man1/sas_devices.1%{?ext_man}
+%{_mandir}/man1/sas_discover.1%{?ext_man}
+%{_mandir}/man1/ses_report.1%{?ext_man}
 %doc README.rst
 %license LICENSE.txt
 

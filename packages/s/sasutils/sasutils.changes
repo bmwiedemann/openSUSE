@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 23 17:08:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.1:
+  * sas_discover: show linkrate and speed info in verbose output,
+    highlighted when on a tty
+  * sas: handle devices whose target has no scsi_generic in sysfs
+  * sysfs: always sanitize values to avoid binary output
+    (seen with Dell HBA355e board names)
+  * sysfs: make value sanitizing resilient to non-string input
+- Spec cleanup: drop Group tag, use %{?ext_man} for man pages
+
+-------------------------------------------------------------------
 Mon Oct  2 18:21:16 UTC 2023 - Stephane Thiell <sthiell@stanford.edu>
 
 - initial version (0.5.0)
