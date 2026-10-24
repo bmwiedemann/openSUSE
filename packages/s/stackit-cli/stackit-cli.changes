@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:56:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.76.0:
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mariadb (#1688)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/resourcemanager
+    (#1687)
+  * feat(cli): bump golang version from 1.26.0 to 1.26.10 (#1694)
+  * chore(deps): bump goreleaser/goreleaser-action from 7.2.3 to
+    7.3.0 (#1686)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/logme (#1685)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/edge (#1684)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceenablement
+    (#1683)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/redis (#1682)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#1681)
+  * feat(auth): add no browser open flag to login (#1602)
+  * feat(printer): add Noticef and Noticeln methods to printer
+    (#1675)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/authorization
+    (#1676)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/loadbalancer
+    (#1677)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/dns (#1678)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/runcommand
+    (#1679)
+  * feat(iaas): support description field for network and network
+    area cmds (#1673)
+
+-------------------------------------------------------------------
 Sat Oct 17 07:24:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.75.0:
