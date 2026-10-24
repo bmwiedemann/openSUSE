@@ -16,26 +16,31 @@
 #
 
 Name:           inputplumber
-Version:        0.81.0
+Version:        0.83.0
 Release:        0%{?dist}
 Summary:        Input router and remapper daemon for Linux
-License:        GPL-3.0
+# spec-cleaner deviation: upstream Cargo.toml declares GPL-3.0-or-later,
+# not GPL-3.0-only as the mechanical rewrite suggested.
+License:        GPL-3.0-or-later
 URL:            https://github.com/ShadowBlip/InputPlumber
 Source0:        InputPlumber-%{version}.tar.xz
 Source1:        vendor.tar.zst
+# PATCH-FIX-OPENSUSE polkit-rules.patch -- grant access to inputplumber group only, drop debug logging
 Patch0:         polkit-rules.patch
-BuildRequires:  rust
-BuildRequires:	cargo
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  libevdev-devel
-BuildRequires:  pkgconfig(libiio)
-BuildRequires:  pkgconfig(libudev)
-BuildRequires:  llvm-devel
 BuildRequires:  clang-devel
+BuildRequires:  llvm-devel
+BuildRequires:  pkgconfig
+BuildRequires:  rust
+# spec-cleaner deviation: plain devel package name kept on purpose;
+# the pkgconfig form resolves to the same devel package.
+BuildRequires:  libevdev-devel
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 Requires:       polkit
-Provides:       InputPlumber
 Conflicts:      python3-hhd
+Provides:       InputPlumber
 
 %description
 InputPlumber is a input routing and control daemon for Linux.
@@ -47,15 +52,17 @@ virtual device formats.
 %autosetup -p1 -a1 -n InputPlumber-%{version}
 
 %build
-make build
+%make_build build
 
 %install
 make install PREFIX=%{buildroot}%{_prefix} NO_RELOAD=true
 
 %check
-make test
+%make_build test
 
 %pre
+# spec-cleaner deviation: scriptlet macros below stay in bare form
+# because they consume the service names as arguments.
 %systemd_pre inputplumber-suspend.service inputplumber.service
 
 %post
@@ -76,6 +83,8 @@ make test
 %dir %{_udevhwdbdir}
 %{_udevhwdbdir}/*.hwdb
 %{_udevrulesdir}/*.rules
+%dir %{_modulesloaddir}
+%{_modulesloaddir}/*.conf
 %dir %{_datadir}/inputplumber
 %dir %{_datadir}/inputplumber/capability_maps
 %{_datadir}/inputplumber/capability_maps/*.yaml

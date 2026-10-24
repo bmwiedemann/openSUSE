@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:25:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.83.0 (0.82.0 was never packaged, its changes are
+  included below):
+  * Add trigger haptics for the ROG Ally / Xbox Ally X
+  * Add support for ASUS ROG Xbox Ally X20
+  * Add event filtering to the DualSense, Steam Deck, Legion Go S,
+    MSI Claw, GPD, OXP HID/TTY, Opineo, Ultimate 2, XPad UHID,
+    Horipad Steam, Flydigi Vader 4 Pro and FTS3528 drivers
+  * Improve Steam Deck haptics behavior; fix AYANEO haptics busy loop
+  * Restore ZOTAC Zone button events
+  * Decouple IIO IMU and Legion Go drivers from Capability; add
+    EventCapability trait
+  * From 0.82.0: SI IMU capabilities across drivers, IIO IMU driver
+    refactor, stable target addresses from persistent id, udev
+    handling improvements, new devices (AYN Thor Lite, ONEXPLAYER 3,
+    OneXPlayer X2 Mini Pro), graceful shutdown of all tasks
+- Drop unused pkgconfig(libiio) BuildRequires: upstream removed the
+  libiio dependency
+- Spec cleanup: correct License tag to GPL-3.0-or-later (as declared
+  in upstream Cargo.toml) and use make_build macros
+- Ship new upstream modules-load.d config loading iio_trig_hrtimer
+  for the reworked IIO IMU driver
+  * Many more fixes and improvements; see upstream release notes
+    for the full list
+
+
+-------------------------------------------------------------------
 Sun Sep 27 10:56:45 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - Update to version 0.81.0:
