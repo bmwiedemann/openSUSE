@@ -17,7 +17,7 @@
 
 
 Name:           zoitechat
-Version:        2.19.0
+Version:        2.19.1
 Release:        0
 Summary:        A graphical IRC (chat) client, fork of HexChat
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ Patch0:         zoitechat-migrate-config.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  lua-devel
-BuildRequires:  meson
+BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  publicsuffix
 BuildRequires:  python3-cffi

@@ -7,4 +7,38 @@
     <comment>zoitechat is a maintained fork of the now unmaintained (upstream) hexchat</comment>
     <requestid>1372098</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ddd541486d0d1a492250966a4b3f65cb</srcmd5>
+    <version>2.19.1</version>
+    <time>1792872278</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.19.1:
+  * ZoiteChat 2.19.1 is a bug fix release for the 2.19 series. No
+    major new features here, mostly fixing issues found since
+  * Fixed `/msg` messages showing twice on servers using IRCv3
+    `echo-message`.
+  * Fixed escaping a leading command slash so `//text` sends
+    `/text` as normal chat.
+  * Fixed automatic away clearing when sending messages on
+    servers using `echo-message`.
+  * Fixed other users' away status not updating until rejoining a
+    channel when `away-notify` updates are missed.
+  * Fixed private messages and `/me` actions being routed to the
+    wrong window when using WeeChat's IRC relay, while preserving
+    channel ACTION routing.
+  * Fixed a Flatpak startup error caused by the D-Bus service
+    still using the old HexChat app ID.
+  * Fixed optional Windows 10 theme downloads in the Windows
+    installer.
+  * Fixed the GTK warning when switching from channel tabs to the
+    channel tree.
+  * Fixed GTK3 theme archive root detection so themes with an
+    `index.theme` file are preferred correctly.
+  * Fixed source-build configuration when plugin AppStream
+    metadata installation is disabled, and corrected the minimum
+    Meson version to 0.59.
+
+- Add publicsuffix as a BuildRequires</comment>
+    <requestid>1392151</requestid>
+  </revision>
 </revisionlist>
