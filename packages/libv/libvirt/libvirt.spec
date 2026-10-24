@@ -108,7 +108,6 @@
 # Items to exclude in SLE 16.x
 %if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
     %define with_apparmor  0
-    %define with_esx       0
     %define with_interface 0
     %define with_libxl     0
     %define with_lxc       0

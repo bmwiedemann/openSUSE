@@ -5190,4 +5190,15 @@ https://build.opensuse.org/requests/1354518
     https://libvirt.org/news.html#v12-8-0-2026-10-01</comment>
     <requestid>1383126</requestid>
   </revision>
+  <revision rev="451" vrev="2">
+    <srcmd5>a83b0901daffe68d45939b24b0a4500c</srcmd5>
+    <version>12.8.0</version>
+    <time>1792872225</time>
+    <user>dimstar_suse</user>
+    <comment>- qemu: Emit UNDEFINED event when undefining source after migration
+  bsc#1242788
+- spec: Unconditionally enable building ESX driver
+  bsc#1284983</comment>
+    <requestid>1387154</requestid>
+  </revision>
 </revisionlist>

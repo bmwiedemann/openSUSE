@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 22 17:03:18 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Emit UNDEFINED event when undefining source after migration
+  bsc#1242788
+- spec: Unconditionally enable building ESX driver
+  bsc#1284983
+
+-------------------------------------------------------------------
 Mon Oct  5 19:31:15 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 12.8.0
