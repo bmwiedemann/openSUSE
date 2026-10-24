@@ -17,7 +17,7 @@
 
 
 Name:           zpaqfranz
-Version:        65.12
+Version:        65.13
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 # Legal-Review-Notice: zpaqfranz is a single-translation-unit program that

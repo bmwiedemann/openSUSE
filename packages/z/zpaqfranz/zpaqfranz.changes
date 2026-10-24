@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:56:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.13 (upstream notes this release is still to be
+  stabilized, not for production use yet):
+  * Commands now refuse when their output is their own input: cp,
+    password, m, trim, crop, x and l no longer clobber or delete
+    their input, and x skips members that would overwrite the
+    archive being read
+  * k no longer deletes the whole -to folder on a trailing slash
+    or case mismatch; the -to folder itself is never removed
+  * trim -kill on an interrupted -chunk archive keeps the good
+    versions instead of emptying them, trim -to copies only the
+    good part, and exit codes were corrected
+  * crop refuses Franzen archives instead of writing encrypted
+    bytes as an archive
+  * New -chunk size cap and -chunk with -franzen, new cp -verify
+    with a piece-by-piece map, and new password -franzen2
+  * -dateto is now inclusive and dates are typed in local time,
+    monitor resumes the NTFS journal, and autotest -m5 checks
+    multipart, -chunk and backup archives byte by byte
+
+-------------------------------------------------------------------
 Sun Oct 18 17:23:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 65.12 (upstream notes this release is still to be
