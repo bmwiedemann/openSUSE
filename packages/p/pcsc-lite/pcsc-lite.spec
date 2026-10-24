@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-lite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        2.3.3
+Version:        2.5.3
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -133,6 +133,7 @@ cp -a %{SOURCE1} %{SOURCE2} %{SOURCE6} .
 %meson_install
 mkdir -p %{buildroot}%{ifddir}
 mkdir -p %{buildroot}%{_sysconfdir}/reader.conf.d/
+mkdir -p %{buildroot}%{_prefix}/lib/sysusers.d/
 sed s:@ifddir@:%{ifddir}: <pcsc-lite-reader-conf >%{buildroot}%{_sysconfdir}/reader.conf.d/reader.conf
 %if 0%{?suse_version} < 1600
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpcscd
@@ -140,7 +141,8 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcpcscd
 mkdir -p %{buildroot}%{_fillupdir}
 cp %{name}.sysconfig %{buildroot}%{_fillupdir}/sysconfig.pcscd
 mkdir -p %{buildroot}%{_docdir}/%{name}
-cp -a AUTHORS ChangeLog COPYING HELP NEWS README README.SUSE SECURITY %{buildroot}%{_docdir}/%{name}
+cp -a AUTHORS ChangeLog COPYING HELP README README.SUSE SECURITY %{buildroot}%{_docdir}/%{name}
+##% cp -a etc/pcscd-sysusers.conf %{buildroot}%{_prefix}/lib/sysuser.d/.
 mv %{buildroot}/usr/share/doc/%{name}/* %{buildroot}%{_docdir}/%{name}
 rm -d %{buildroot}/usr/share/doc/%{name}
 mkdir -p %{buildroot}%{_sysconfdir}/default
@@ -179,7 +181,6 @@ install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
 %{_docdir}/%{name}/AUTHORS
 %{_docdir}/%{name}/COPYING
 %{_docdir}/%{name}/HELP
-%{_docdir}/%{name}/NEWS
 %{_docdir}/%{name}/README
 %{_docdir}/%{name}/README.SUSE
 %{_docdir}/%{name}/SECURITY
@@ -187,6 +188,8 @@ install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
 %{_sbindir}/*
 %dir %{_sysconfdir}/reader.conf.d
 %config(noreplace) %{_sysconfdir}/reader.conf.d/reader.conf
+%dir %{_prefix}/lib/sysusers.d
+%config(noreplace) %{_prefix}/lib/sysusers.d/pcscd-sysusers.conf
 %{_sysconfdir}/default/pcscd
 %{ifddir}
 %{_unitdir}/pcsc*

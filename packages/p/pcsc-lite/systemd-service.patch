@@ -11,6 +11,6 @@ diff -rU 3 a/etc/pcscd.service.in b/etc/pcscd.service.in
 +ExecStart=@sbindir_exp@/pcscd --foreground $PCSCD_OPTIONS
  ExecReload=@sbindir_exp@/pcscd --hotplug
 -EnvironmentFile=-@sysconfdir@/default/pcscd
- 
- # Paths
- ProtectProc=invisible
+ User=pcscd
+ RuntimeDirectory=pcscd
+ RuntimeDirectoryPreserve=yes

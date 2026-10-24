@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Oct 19 13:12:11 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.5.3
+  - pcscd.service: preserve card sessions across polkit restarts
+  - correctly decode all ATRs (fix the fix suggested by AI)
+  - Fix authorization for uid > 65536
+
+- version 2.5.2
+  - hotplug_libudev: rescan "serial" readers in HPReCheckSerialReaders
+  - fix minor issues found by AI tool
+
+- version 2.5.1
+  - Fix a bug (introduced in 2.5.0) with multi-slots readers
+  - Add support of Haiku Operating System
+
+- version 2.5.0
+  - Do not limit to 16 readers only
+  - Remove support of autotools
+  - Fix a crash when rescanning serial configs
+  - Fix a memory leak in Polkit
+  - tokenparser: avoid a crash with corrupted Info.plist files
+  - Some other minor improvements
+
+- version 2.4.1
+  - Add backward version support on the client side
+  - Add backward version support on the server side
+  - hotplug libudev: rescan the USB bus with "pcscd --hotplug"
+  - fix a value in pcscd.service systemd file
+  - meson: install systemd files even if libsystemd is not used
+  - Some other minor improvements
+
+- version 2.4.0
+  - Run pcscd under a pcscd user instead of root when using systemd
+  - Set PIDFile in systemd service file
+  - Protect contextMapList modifications using a mutex
+  - meson:
+   . Fix libpcsclite.pc file
+   . respect builtin meson default_library option
+   . build and install spy lib & tool only when needed
+  - UnitaryTests/*.py: fix pylint warnings
+  - Improve Doxygen documentation
+
+-------------------------------------------------------------------
 Fri Jan  2 13:12:49 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add Provides for pcscd to increase Debian compatibility
