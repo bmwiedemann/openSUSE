@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 24 16:05:40 UTC 2026 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+- Update to version 26.2, see CHANGELOG file for details
+  * Switch to Qt6
+- Drop QtDMM-0.9.2-newmodels.patch
+
+-------------------------------------------------------------------
 Wed May 15 08:28:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated

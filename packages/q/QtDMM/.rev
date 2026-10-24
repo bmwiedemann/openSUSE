@@ -162,4 +162,12 @@
   %patchN syntax. (forwarded request 1174172 from dimstar)</comment>
     <requestid>1178329</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ac296989765e17442aeecff273ec2ac8</srcmd5>
+    <version>26.2</version>
+    <time>1792872337</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1392257</requestid>
+  </revision>
 </revisionlist>
