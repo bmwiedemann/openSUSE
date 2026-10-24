@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:34:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix upgrade path from 0.2.3: the shlib subpackage was renamed
+  libmodbuspp1_0-0 to libmodbuspp1 with unchanged SONAME, so add
+  Provides and Obsoletes for the old name.
+- Raise pkgconfig(libmodbus) build floor to >= 3.1.6 as required
+  by upstream's CMakeLists.
+- Spec cleanup: drop Group tags and duplicate License tags.
+
+-------------------------------------------------------------------
+Wed Mar 11 11:13:30 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2
+  * Relicensed from LGPLv3 to LGPL-2.1-or-later. This change
+    improves compatibility with locked-down embedded systems.
+- Update to version 1.1
+  * https://github.com/epsilonrt/libmodbuspp/compare/v1.0...v1.1
+- Update to version 1.0
+  * https://github.com/epsilonrt/libmodbuspp/compare/v0.2.3...v1.0
+
+-------------------------------------------------------------------
 Sat Nov 28 20:48:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.2.3
