@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:55:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.15.0:
+  * New capabilities are decoded: MMIO Register Block Locator,
+    Flit Error Injection, Flit Logging.
+  * Decoding of PCIe capabilities updated to Gen7.
+  * lspci and setpci warn when the "-s" or "-d" option is given
+    multiple times.
+  * Improved display of interrupts in "lspci -vv": routing of
+    interrupt pins is shown only if the pins are not disabled,
+    routing of MSI(X) interrupts is shown when available.
+  * Dump back-end can read the dump from stdin with "-" as file name.
+  * libpci adds pci_filter_has_slot and pci_filter_has_id
+    (backward compatible, sover stays 3).
+  * FreeBSD supports 64-bit addresses; minor Windows back-end
+    improvements.
+  * Updated pci.ids.
+- Spec cleanup: drop obsolete Group tags.
+- Rebase pciutils-ocloexec.patch for the reworked dump and sysfs
+  back-ends (stdin dump support).
+
+-------------------------------------------------------------------
 Thu Oct 23 12:30:48 UTC 2025 - Jean Delvare <jdelvare@suse.com>
 
 - pciutils.spec: Add a strict dependency to libpci. [bsc#1252338]

@@ -1,7 +1,7 @@
 #
 # spec file for package pciutils
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,11 +20,10 @@
 %define sover   3
 %define lname   libpci%{sover}
 Name:           pciutils
-Version:        3.14.0
+Version:        3.15.0
 Release:        0
 Summary:        PCI utilities for the Linux Kernel
 License:        GPL-2.0-or-later
-Group:          Hardware/Other
 URL:            https://mj.ucw.cz/sw/pciutils/
 Source:         https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/software/utils/%{name}/%{name}-%{version}.tar.sign
@@ -37,11 +36,11 @@ Patch2:         pciutils-ocloexec.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(zlib)
-Requires:       hwdata
 # pciutils makes use of libpci internals which aren't covered by ABI
 # versioning, so it is only guaranteed to work with the exact library
 # it was built with.
 Requires:       %{lname} = %{version}-%{release}
+Requires:       hwdata
 
 %description
 lspci: This program displays detailed information about all PCI busses
@@ -56,14 +55,12 @@ pci.ids file.
 
 %package -n %{lname}
 Summary:        PCI utility library
-Group:          System/Libraries
 
 %description -n %{lname}
 libpci offers access to the PCI configuration space.
 
 %package devel
 Summary:        Library and Include Files of the PCI utilities
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
@@ -106,6 +103,7 @@ rm %{buildroot}%{_mandir}/man8/update-pciids.8
 %else
 %post -p /sbin/ldconfig -n %{lname}
 %end
+
 %postun -p /sbin/ldconfig -n %{lname}
 %end
 %endif
