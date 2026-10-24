@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 23 18:32:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.04.0:
+  * Support machine-less builds and machine-specific interfaces
+    outside of libmetal
+  * NuttX mutex support now handles recursive mutexes
+  * CMake no longer propagates PROJECT_EC_FLAGS options to the
+    parent project
+  * Remove Xilinx BSP code, now maintained in a downstream repo
+  * Add public headers to the metal-shared and metal-static CMake
+    targets
+  * Fix compatibility with AMD machines
+  * Provide ATOMIC_VAR_INIT for C23 compilers lacking it
+  * Add cross-platform tests, fix documentation and CI issues
+- Drop libmetal-gcc15.patch: adopted upstream
+- Spec file cleanup
+
+-------------------------------------------------------------------
 Tue Jul  1 13:12:09 UTC 2025 - pgajdos@suse.com
 
 - fix devel package dependency

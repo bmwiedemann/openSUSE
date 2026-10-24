@@ -18,15 +18,15 @@
 
 %define libname libmetal1
 Name:           libmetal
-Version:        2025.04.0
+Version:        2026.04.0
 Release:        0
 Summary:        Bare metal interaction APIs
 License:        BSD-3-Clause
 URL:            https://github.com/OpenAMP/libmetal
 Source:         https://github.com/OpenAMP/libmetal/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# https://github.com/OpenAMP/libmetal/commit/dcf121ab617443166e976afbdd848569cf773895
-Patch0:         libmetal-gcc15.patch
 BuildRequires:  cmake
+# Keep plain -devel names: --pkgconfig overexpands these into multiple
+# pkgconfig() lines for a single library; the -devel form is equivalent.
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  sysfsutils-devel
 ExclusiveArch:  x86_64 %{arm} aarch64 %{ix86} riscv64
@@ -63,7 +63,7 @@ to develop applications that require these.
 ln -s arm lib/processor/armv6l
 ln -s arm lib/processor/armv7l
 ln -s riscv lib/processor/riscv64
-for i in %ix86; do
+for i in %{ix86}; do
   ln -s x86 lib/processor/$i
 done
 
@@ -76,7 +76,7 @@ done
 %install
 %cmake_install
 # do not install test binaries
-rm %{buildroot}%{_bindir}/test-metal*
+rm %{buildroot}%{_bindir}/test-metal* %{buildroot}%{_bindir}/test-all-metal*
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
