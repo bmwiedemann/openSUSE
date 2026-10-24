@@ -16,14 +16,14 @@
 #
 
 
-%define gfx_aarch64_version 580.178.04
+%define gfx_aarch64_version 580.196.07
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 580.178.04
+%define gfx_version 580.196.07
 %endif
-%define cuda_version 580.178.04
+%define cuda_version 580.196.07
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -101,7 +101,6 @@ Source18:       Check4WrongSupplements.sh
 %ifnarch aarch64
 Patch1:         fix-objtool-warnings.patch
 %endif
-Patch2:         linux-7.0.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

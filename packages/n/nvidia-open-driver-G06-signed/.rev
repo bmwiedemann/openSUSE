@@ -1102,4 +1102,15 @@
 - update non-CUDA variant to version 580.178.04 (boo#1271603)</comment>
     <requestid>1372952</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>8f74a06655afe78bf1bead40d5b2a577</srcmd5>
+    <version>580.196.07</version>
+    <time>1792872233</time>
+    <user>dimstar_suse</user>
+    <comment>- update CUDA and non-CUDA variants to 580.196.07 (boo#1286887)
+- supersedes linux-7.0.patch
+
+- added CVEs for security release 580.178.04 ((bsc#1270255)</comment>
+    <requestid>1387218</requestid>
+  </revision>
 </revisionlist>
