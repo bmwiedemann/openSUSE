@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Oct 11 13:30:05 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 26.09:
+  * Redesigned undo/redo covering many more editing actions.
+  * New rotation gizmo with trackball and camera-plane rotation.
+  * Smoother viewport text rendering with configurable halos.
+  * Model List drag-and-drop reordering; merge multiple files
+    into one project.
+  * Open submodels from the parts picker; Zoom and Smart Zoom
+    gestures; Simplified Chinese localization.
+  * Improved high-DPI scaling and refreshed several dialogs.
+  * Fixed textures in subparts and a texture-loading race.
+  * Fixed timeline selection, property-edit cancellation and
+    undo/redo issues.
+  * Fixed Categories preferences crash and empty Shortcuts list.
+  * Fixed POV-Ray render completion and Blender render failure
+    handling.
+  * Hardened image buffer size calculations against integer
+    overflow.
+- Package docs/README.md; docs/README.txt no longer exists
+  upstream, so the old %doc entry silently packaged nothing.
+- Spec cleanup: use pkgconfig(zlib) BuildRequires.
+
+-------------------------------------------------------------------
 Thu Mar 26 10:24:42 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 25.09

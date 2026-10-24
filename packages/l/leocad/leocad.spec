@@ -17,7 +17,7 @@
 
 
 Name:           leocad
-Version:        25.09
+Version:        26.09
 Release:        0
 Summary:        CAD program for creating virtual LEGO models
 License:        GPL-2.0-only
@@ -29,8 +29,9 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-devel >= 5.4.0
 BuildRequires:  make
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 Requires:       povray
 
 %description
@@ -57,7 +58,7 @@ rm -rf %{buildroot}%{_datadir}/doc
 
 %files
 %license docs/COPYING.txt
-%doc docs/{README.txt,CREDITS.txt}
+%doc docs/README.md docs/CREDITS.txt
 %{_bindir}/leocad
 %{_datadir}/applications/leocad.desktop
 %{_mandir}/man1/leocad.1%{?ext_man}
