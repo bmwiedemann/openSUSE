@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 23 17:39:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.19.9:
+  * pcap: Adapt to libpcap 1.11 USB pseudo-header definition
+    (fixes SIGBUS on sparc64 reading DLT_USB_LINUX_MMAPPED records)
+- Changes from version 0.19.8:
+  * preload: Fix libc name on alpha architecture
+  * preload: Check dlopen(libc) failure
+  * ioctl: Fix array handling to work with gcc 16 fortify checks
+
+-------------------------------------------------------------------
 Sat Apr 18 08:33:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.19.7:
