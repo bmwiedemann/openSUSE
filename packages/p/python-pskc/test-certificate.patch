@@ -1,0 +1,96 @@
+From 6bcd0274db24467f7c9c410b31461228f70d6620 Mon Sep 17 00:00:00 2001
+From: Arthur de Jong <arthur@arthurdejong.org>
+Date: Sat, 18 Jul 2026 17:27:47 +0200
+Subject: [PATCH] Ensure test certificate has keyUsage attribute
+
+Newer versions of cryptography check for the presence of the X509
+extension.
+---
+ tests/certificate/README          |  3 ++-
+ tests/certificate/certificate.pem | 25 +++++++++++++------------
+ tests/certificate/request.pem     | 18 +++++++++---------
+ 3 files changed, 24 insertions(+), 22 deletions(-)
+
+diff --git a/tests/certificate/README b/tests/certificate/README
+index 100826d..7f46cd4 100644
+--- a/tests/certificate/README
++++ b/tests/certificate/README
+@@ -23,7 +23,8 @@ openssl req \
+   -new \
+   -key key.pem -out request.pem \
+   -subj '/C=NL/O=python-pskc/CN=Test signing' \
+-  -addext 'subjectAltName = email:test-signing@example.com'
++  -addext 'subjectAltName = email:test-signing@example.com' \
++  -addext 'keyUsage = digitalSignature'
+ 
+ openssl x509 \
+   -req \
+diff --git a/tests/certificate/certificate.pem b/tests/certificate/certificate.pem
+index 7e19000..7b09cd6 100644
+--- a/tests/certificate/certificate.pem
++++ b/tests/certificate/certificate.pem
+@@ -1,20 +1,21 @@
+ -----BEGIN CERTIFICATE-----
+-MIIDUTCCAjmgAwIBAgIBKjANBgkqhkiG9w0BAQsFADA1MQswCQYDVQQGEwJOTDEU
+-MBIGA1UECgwLcHl0aG9uLXBza2MxEDAOBgNVBAMMB1Rlc3QgQ0EwHhcNMjQwODI3
+-MjEyODM1WhcNMzQwODI1MjEyODM1WjA6MQswCQYDVQQGEwJOTDEUMBIGA1UECgwL
++MIIDXjCCAkagAwIBAgIBKjANBgkqhkiG9w0BAQsFADA1MQswCQYDVQQGEwJOTDEU
++MBIGA1UECgwLcHl0aG9uLXBza2MxEDAOBgNVBAMMB1Rlc3QgQ0EwHhcNMjYwNzE4
++MTUyNTUwWhcNMzYwNzE1MTUyNTUwWjA6MQswCQYDVQQGEwJOTDEUMBIGA1UECgwL
+ cHl0aG9uLXBza2MxFTATBgNVBAMMDFRlc3Qgc2lnbmluZzCCASIwDQYJKoZIhvcN
+ AQEBBQADggEPADCCAQoCggEBAMTn3YiNxlR1mxUJyGhU65yvvzsKhl/4HpDmiVQo
+ UGq7daxYLddLx9bW/OSUQmIZS9NiebcmZGJF0B1+ru3Au962+Cso69F4+mPN+xKo
+ fqyQpl9gzgo5IXvFzvgjlVQYuSGjf6B5J+NoQbeuR/latqIrjT7K1QtDSYZr4WSN
+ 0BVI1JpEmQ3ucmIgwt9ZtC1mZg8ApznDs/yf8dfN6Y5jFYjCaRt+Qzzv/Uqx3rgK
+ /tl8Kr1fJXGWaDI0afPrja7syVCkTs1VhMaZt5nXzEmX17W4PzBz3M6ElBrO06S2
+-B++DDe2Hjip0wJ+qCUVmUQuDCdC9o35Oi6cf0RIy8gZReaECAwEAAaNnMGUwIwYD
+-VR0RBBwwGoEYdGVzdC1zaWduaW5nQGV4YW1wbGUuY29tMB0GA1UdDgQWBBQaU4Kp
+-x4G2yysRZ4du/WRn7/aBFTAfBgNVHSMEGDAWgBQT90iyrXa6/1Rj0NiHnsOe30Y8
+-BzANBgkqhkiG9w0BAQsFAAOCAQEAJzt19KlSPCP2RH5wMI7OiVf+Zbt9inC1pCPb
+-vRebgz2GuDRZu+WMlXQ9WXFLwZze+j7VVdx9k84MKfasLmkarUt6xc5fhxIzopMs
+-Of2swbIjxKssdO9GNIhjuVnC2d3ltwPqBb/Y+mpuxRwQ2zoahS1bFxTxTnhXLxQx
+-qEzWeJ66dplYdKnYsCsnB7yDv1A7KPQTy/zHzFzD9DBk9WCluyLJQ6DASjQlKr8M
+-Uu42tVkfhTaBJTBfEh+HlJApSJP94xE5uY5iE2cLAlEPJwZk4BCQYM8B5JR4PpHq
+-0L4dJYLcE5Id0f9xdO0D9L5/kmO4RipBXImdoNZwDoeqRx8aEw==
++B++DDe2Hjip0wJ+qCUVmUQuDCdC9o35Oi6cf0RIy8gZReaECAwEAAaN0MHIwIwYD
++VR0RBBwwGoEYdGVzdC1zaWduaW5nQGV4YW1wbGUuY29tMAsGA1UdDwQEAwIHgDAd
++BgNVHQ4EFgQUGlOCqceBtssrEWeHbv1kZ+/2gRUwHwYDVR0jBBgwFoAUE/dIsq12
++uv9UY9DYh57Dnt9GPAcwDQYJKoZIhvcNAQELBQADggEBAEx3eiwct1Hr+G+wIcCs
++PRY/xUH0DvTISEZXhIGFiJG6UTdyyEMTjhuZBYLS+WTV7ipqR2B6ZqBoQXbfnwJG
++IDbIS/J4DbpHvih3gvLz1F4tFm00gvZZ3fSvu3bSVymOKIH2KsOtcii3FWaL7uAK
++RvPDgztjPhZHKFETavOifTT5/GhVCTQccgr7kQ6+zEkmplu1jW+HZ8knL1THWGJq
++GHrLd/gh5s6CYx+lbO7layRVNynObMmyzrLRdUBDV/00e12ZMgtGpk1woUZ8fYij
++UsN4ihWq6CIYQZKhsnNJNU9dsuFvAHLKlcG6ql44yM2eVZekZBYfwqwRwur2X7hT
++hwA=
+ -----END CERTIFICATE-----
+diff --git a/tests/certificate/request.pem b/tests/certificate/request.pem
+index 8d3f4c2..56916ef 100644
+--- a/tests/certificate/request.pem
++++ b/tests/certificate/request.pem
+@@ -1,17 +1,17 @@
+ -----BEGIN CERTIFICATE REQUEST-----
+-MIICtTCCAZ0CAQAwOjELMAkGA1UEBhMCTkwxFDASBgNVBAoMC3B5dGhvbi1wc2tj
++MIICwjCCAaoCAQAwOjELMAkGA1UEBhMCTkwxFDASBgNVBAoMC3B5dGhvbi1wc2tj
+ MRUwEwYDVQQDDAxUZXN0IHNpZ25pbmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ ggEKAoIBAQDE592IjcZUdZsVCchoVOucr787CoZf+B6Q5olUKFBqu3WsWC3XS8fW
+ 1vzklEJiGUvTYnm3JmRiRdAdfq7twLvetvgrKOvRePpjzfsSqH6skKZfYM4KOSF7
+ xc74I5VUGLkho3+geSfjaEG3rkf5WraiK40+ytULQ0mGa+FkjdAVSNSaRJkN7nJi
+ IMLfWbQtZmYPAKc5w7P8n/HXzemOYxWIwmkbfkM87/1Ksd64Cv7ZfCq9XyVxlmgy
+ NGnz642u7MlQpE7NVYTGmbeZ18xJl9e1uD8wc9zOhJQaztOktgfvgw3th44qdMCf
+-qglFZlELgwnQvaN+TounH9ESMvIGUXmhAgMBAAGgNjA0BgkqhkiG9w0BCQ4xJzAl
+-MCMGA1UdEQQcMBqBGHRlc3Qtc2lnbmluZ0BleGFtcGxlLmNvbTANBgkqhkiG9w0B
+-AQsFAAOCAQEAuVZnrqmn7SgQDAgzYI7dPLI2NeDwq4+1JOGOupEO4Iz9N4AEa5dt
+-rj0FiFzLGRueskI0W6GgFW+FHxEiFVykGttY/oWXkjMziJWYu9QbV+JsmIHSi89y
+-m4+zoSXEvZTDfmuj5D2FLTuDSLwIxbWLn+6c/3/hKsK1SdD7mJ/JA6gKcmuM+RAM
+-mOOB5/ZJ5z/3heKoy68NR5kt3JdI1OJokoep0rb6hsImxf9j3gJXPFg8Rhg0spDh
+-DOBzrlqTemokUc6n+2Xa3zY31rB7vaqfX47b4eLDZQ7Nj3Ap9Nu2wH0HXHQDiRI8
+-G05Tf6c1fZNuIkEm42PqE072oWZcapnMfQ==
++qglFZlELgwnQvaN+TounH9ESMvIGUXmhAgMBAAGgQzBBBgkqhkiG9w0BCQ4xNDAy
++MCMGA1UdEQQcMBqBGHRlc3Qtc2lnbmluZ0BleGFtcGxlLmNvbTALBgNVHQ8EBAMC
++B4AwDQYJKoZIhvcNAQELBQADggEBAMGF7SY653d+XaU32E5+vwnCuURYF4UNGAxs
++uqZd6UwAiqj0Fdgd2j0/a2lAoEq3vwDRNVphBhjSsmRcM21tYlS3wgxmoSKzUpUc
++C47CreumM4wcXNjepYksU/Yyeob7JQgazfT1ke32FoA8/rLm65GGW6yIi0VHVrer
++sGCVqmI9oVput4ncjIdfW8uH1dlHQMo3OfL3lc/RVYHmhXKx27M3/M/9wy2vYcqG
++kk45mDNt6PCJpvQQYnz0ful9Zq8ogJ7IMHe3/F5KRDHhAAE6CSUnkHLecuL+Vs4Q
++wmZFdDdC0Si5ShMrLYFfLNCLFpTY+mGqSCRu3Wbm2YLHlyraDAo=
+ -----END CERTIFICATE REQUEST-----

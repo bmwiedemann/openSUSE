@@ -1,0 +1,19 @@
+--- a/pskc/xml.py	2025-12-30 16:31:50.000000000 +0100
++++ b/pskc/xml.py	2026-09-18 10:50:26.301175695 +0200
+@@ -127,7 +127,15 @@
+     value = findtext(tree, *matches)
+     if value:
+         import dateutil.parser
+-        return dateutil.parser.parse(value)
++        result = dateutil.parser.parse(value)
++        # Normalise UTC timestamps to dateutil's tzutc() object.  Recent
++        # versions of python-dateutil may return tzlocal() when the local
++        # timezone is UTC, which makes the datetime representation differ
++        # from the PSKC test-suite expectation.
++        if result.utcoffset() == datetime.timedelta(0):
++            from dateutil.tz import tzutc
++            result = result.replace(tzinfo=tzutc())
++        return result
+     return None
+ 
+ 
