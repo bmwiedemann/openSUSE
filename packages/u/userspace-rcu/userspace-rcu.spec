@@ -20,7 +20,7 @@
 
 %define soname  8
 Name:           userspace-rcu
-Version:        0.15.6
+Version:        0.15.7
 Release:        0
 Summary:        Userspace Read-Copy-Update Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND GPL-3.0-or-later
