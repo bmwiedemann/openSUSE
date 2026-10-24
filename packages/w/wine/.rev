@@ -6019,4 +6019,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.19 release</comment>
     <requestid>1382237</requestid>
   </revision>
+  <revision rev="503" vrev="1">
+    <srcmd5>9f98c53892b30b5648e9d6c2c920ca99</srcmd5>
+    <version>11.20</version>
+    <time>1792872320</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1392207</requestid>
+  </revision>
 </revisionlist>

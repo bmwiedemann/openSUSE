@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 09:47:57 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.20 release
+  - Relay debugging for ARM64EC.
+  - Improvements in XML validation.
+  - CDROM support moved to the Mount Manager.
+  - Various bug fixes.
+- update staging to 11.20 release
+
+-------------------------------------------------------------------
 Sat Oct  3 08:38:07 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.19 release
