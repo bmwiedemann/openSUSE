@@ -1,4 +1,29 @@
 --------------------------------------------------------------------
+Fri Oct 23 14:28:51 UTC 2026 - wfeldt@opensuse.org
+
+- Add qnoc modules for Qualcomm SM8750, Kaanapali and Glymur platforms
+- 17.179
+
+--------------------------------------------------------------------
+Fri Oct 23 14:20:29 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#788
+- etc: add qnoc-x1e80100 kernel module for Qualcomm X1E80100 Platform
+
+--------------------------------------------------------------------
+Fri Oct 23 14:18:25 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#787
+- etc: add qnoc-qcs615 kernel module for Qualcomm QCS615/Talos
+  Platform
+
+--------------------------------------------------------------------
+Fri Oct 23 14:11:40 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#794
+- add pre-generated mldsa44-ed25519 ssh host key
+
+--------------------------------------------------------------------
 Mon Sep 14 08:25:19 UTC 2026 - dimstar@opensuse.org
 
 - merge gh#openSUSE/installation-images#793
