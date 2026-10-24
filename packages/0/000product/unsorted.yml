@@ -10783,7 +10783,6 @@ unsorted:
   - kubectl-validate 
   - kubectl-view-allocations 
   - kubectl-view-secret 
-  - kubectl-who-can 
   - kubectx 
   - kubectx-bash-completion 
   - kubectx-fish-completion 
@@ -11197,12 +11196,10 @@ unsorted:
   - leechcraft-eleeminator 
   - leechcraft-fenet 
   - leechcraft-fenet-awesome 
-  - leechcraft-fenet-kwin 
   - leechcraft-fenet-openbox 
   - leechcraft-fontiac 
   - leechcraft-gacts 
   - leechcraft-glance 
-  - leechcraft-gmailnotifier 
   - leechcraft-historyholder 
   - leechcraft-hotsensors 
   - leechcraft-hotstreams 
@@ -11240,9 +11237,7 @@ unsorted:
   - leechcraft-musiczombie 
   - leechcraft-namauth 
   - leechcraft-netstoremanager 
-  - leechcraft-netstoremanager-googledrive 
   - leechcraft-networkmonitor 
-  - leechcraft-newlife 
   - leechcraft-ooronee 
   - leechcraft-otlozhu 
   - leechcraft-pintab 
@@ -13233,7 +13228,7 @@ unsorted:
   - libdrumstick-rt2-plugins 
   - libdrumstick-widgets-lang 
   - libdrumstick-widgets2 
-  - libdruntime-ldc112 
+  - libdruntime-ldc113 
   - libdrvproxy2 
   - libdsdcc1 
   - libduktape207-32bit 
@@ -14046,7 +14041,7 @@ unsorted:
   - libgsm-devel-32bit 
   - libgsm-utils 
   - libgsm1-32bit 
-  - libgsoap-2_8_144 
+  - libgsoap-2_8_145 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
   - libgstadaptivedemux-1_0-0-32bit 
@@ -14664,7 +14659,7 @@ unsorted:
   - libldapcpp-devel 
   - libldastoolsal7 
   - libldb-devel 
-  - libldc-jit112 
+  - libldc-jit113 
   - libldl-doc 
   - libldl3 
   - libldm-1_0-0 
@@ -15659,7 +15654,7 @@ unsorted:
   - libphdi-tools 
   - libphdi1 
   - libphobos2-0_113 
-  - libphobos2-ldc112 
+  - libphobos2-ldc113 
   - libphonenumber-devel 
   - libphysfs-devel 
   - libphysfs1 
@@ -25053,6 +25048,7 @@ unsorted:
   - python313-aws-xray-sdk-all 
   - python313-aws-xray-sdk-bottle 
   - python313-aws-xray-sdk-mysql-connector 
+  - python313-aws-xray-sdk-psycopg 
   - python313-aws-xray-sdk-psycopg2 
   - python313-aws-xray-sdk-pymongo 
   - python313-aws-xray-sdk-pymysql 
@@ -29114,6 +29110,7 @@ unsorted:
   - python314-aws-xray-sdk-all 
   - python314-aws-xray-sdk-bottle 
   - python314-aws-xray-sdk-mysql-connector 
+  - python314-aws-xray-sdk-psycopg 
   - python314-aws-xray-sdk-psycopg2 
   - python314-aws-xray-sdk-pymongo 
   - python314-aws-xray-sdk-pymysql 
