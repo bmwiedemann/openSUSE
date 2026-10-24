@@ -115,4 +115,13 @@
   * https://github.com/3proxy/3proxy/releases/tag/1.0.1</comment>
     <requestid>1384033</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d891c73fa8f8d7e51c30957793254298</srcmd5>
+    <version>1.0.2</version>
+    <time>1792872334</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.0.2
+  * https://github.com/3proxy/3proxy/releases/tag/1.0.2</comment>
+    <requestid>1392242</requestid>
+  </revision>
 </revisionlist>
