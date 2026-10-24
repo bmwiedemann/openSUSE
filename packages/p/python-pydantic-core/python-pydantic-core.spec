@@ -26,20 +26,17 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-core%{psuffix}
-Version:        2.46.5
+Version:        2.50.1
 Release:        0
 Summary:        Core functionality for pydantic validation and serialization
 License:        MIT
 URL:            https://github.com/pydantic/pydantic/tree/main/pydantic-core
 Source0:        https://files.pythonhosted.org/packages/source/p/pydantic-core/pydantic_core-%{version}.tar.gz
 Source1:        vendor.tar.xz
-# PATCH-FIX-UPSTREAM https://github.com/pydantic/pydantic/pull/13357 Fix test failures with pytest >= 9.1.0
-Patch0:         pytest91.patch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module inline-snapshot}
 BuildRequires:  %{python_module maturin >= 1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module typing-extensions >= 4.14.1}
 BuildRequires:  cargo-packaging
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -47,7 +44,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pydantic-core == %{version}}
+BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest-examples}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-run-parallel}
 BuildRequires:  %{python_module pytest-timeout}
@@ -56,7 +55,7 @@ BuildRequires:  %{python_module typing-inspection}
 %endif
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-typing-extensions >= 4.14.1
+Requires:       python-typing-extensions >= 4.16.0
 %python_subpackages
 
 %description

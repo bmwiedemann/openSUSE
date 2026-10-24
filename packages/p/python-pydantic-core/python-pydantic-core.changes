@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 16 04:50:42 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.50.1:
+  * Update to match pydantic 2.14.1.
+- Drop patch pytest91.patch.
+
+-------------------------------------------------------------------
 Wed Sep 23 10:58:32 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream pytest91.patch to fix tests with pytest 9.1

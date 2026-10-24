@@ -285,4 +285,12 @@ Introduce `exactness` into `Decimal` validation logic</comment>
     <comment>- Add upstream pytest91.patch to fix tests with pytest 9.1</comment>
     <requestid>1379940</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>069cf383d7ffb5ff938a7ab300e184b9</srcmd5>
+    <version>2.50.1</version>
+    <time>1792872207</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1387225</requestid>
+  </revision>
 </revisionlist>
