@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:59:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.2:
+  - Robustness release, upgrade is recommended when processing BIE
+    or PBM/PGM data from untrusted sources.
+  - The jbig.c decoder now caps the final image layer at 2 GB by
+    default via the new sd->maxmem limit (adjustable), mitigating
+    denial of service through excessive image dimensions.
+  - pbmtojbg and pbmtojbg85 validate PBM/PGM header dimensions and
+    check size calculations against integer overflow.
+  - Fixed jbg85_dec_finalheight() macro typo, a jbg_enc_options()
+    range check, jbgtopbm division by zero, and several converter
+    file-handling fixes.
+  - struct jbg_dec_state gained maxmem: libjbig consumers must be
+    recompiled against the new headers (soname unchanged).
+  - Dropped jbigkit-CVE-2022-1210.patch, superseded upstream;
+    rebased jbigkit-2.1-shlib.patch to the 2.2 sources, fixing
+    parallel-build races in the test programs and test suite.
+- Spec cleanup: BuildRequires for gcc and make,
+  %ldconfig_scriptlets, https source URL.
+
+-------------------------------------------------------------------
 Tue Dec 19 12:07:52 UTC 2023 - pgajdos@suse.com
 
 - security update

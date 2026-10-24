@@ -1,7 +1,7 @@
 #
 # spec file for package jbigkit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,33 @@
 #
 
 
-Name:           jbigkit
 %define ver_maj 2
-%define ver_min 1
+%define ver_min 2
+%define libname libjbig
+%define soversion %{ver_maj}
+%define libpkg %{libname}%{soversion}
+%define devpkg %{libname}-devel
+Name:           jbigkit
 Version:        %{ver_maj}.%{ver_min}
 Release:        0
 Summary:        JBIG1 lossless image compression tools
 License:        GPL-2.0-or-later
-Group:          Productivity/Graphics/Convertors
-URL:            http://www.cl.cam.ac.uk/~mgk25/jbigkit/
-Source0:        http://www.cl.cam.ac.uk/~mgk25/download/%{name}-%{version}.tar.gz
+URL:            https://www.cl.cam.ac.uk/~mgk25/jbigkit/
+Source0:        https://www.cl.cam.ac.uk/~mgk25/download/%{name}-%{version}.tar.gz
 Source42:       baselibs.conf
-Patch0:         %{name}-%{version}-shlib.patch
-# CVE-2022-1210 [bsc#1198146], Malicious file leads to a denial of service in TIFF File Handler
-Patch1:         jbigkit-CVE-2022-1210.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         jbigkit-2.1-shlib.patch
+BuildRequires:  gcc
+BuildRequires:  make
 
-%define libname libjbig
-%define soversion %ver_maj
-%define libpkg %{libname}%soversion
-%define devpkg %{libname}-devel
-
-%package -n %libpkg
+%package -n %{libpkg}
 Summary:        JBIG1 lossless image compression library
-Group:          System/Libraries
-Provides:       %libname = %version
+Provides:       %{libname} = %{version}
 
-%package -n %devpkg
+%package -n %{devpkg}
 Summary:        JBIG1 lossless image compression library -- development files
-Group:          Development/Libraries/C and C++
-Requires:       %libpkg = %version
+Requires:       %{libpkg} = %{version}
 
-%description -n %libpkg
+%description -n %{libpkg}
 JBIG-KIT provides a portable library of compression and decompression
 functions with a documented interface that you can include very easily
 into your image or document processing software. In addition, JBIG-KIT
@@ -62,7 +57,7 @@ JBIG-KIT implements the specification:
 
 which is commonly referred to as the “JBIG1 standard”
 
-%description -n %devpkg
+%description -n %{devpkg}
 The libjbig-devel package contains files needed for development using
 the JBIG-KIT image compression library.
 
@@ -74,54 +69,50 @@ formats.
 %autosetup -p1
 
 %build
-export CFLAGS="%optflags -I../libjbig" CXXFLAGS="%optflags"
-# Makefile is not parallel-safe
-%__make
+export CFLAGS="%{optflags} -I../libjbig" CXXFLAGS="%{optflags}"
+%make_build
 
 %check
-%__make test
+%make_build test
 
 %install
-%__install -d %{buildroot}/%_libdir
-%__install -m 0755 libjbig/libjbig.so.%version %{buildroot}/%_libdir
-%__install -m 0755 libjbig/libjbig85.so.%version %{buildroot}/%_libdir
-%__ln_s -f libjbig.so.%version %{buildroot}/%{_libdir}/libjbig.so.%soversion
-%__ln_s -f libjbig85.so.%version %{buildroot}/%{_libdir}/libjbig85.so.%soversion
-%__ln_s -f libjbig.so.%version %{buildroot}/%{_libdir}/libjbig.so
-%__ln_s -f libjbig85.so.%version %{buildroot}/%{_libdir}/libjbig85.so
+install -d %{buildroot}/%{_libdir}
+install -m 0755 libjbig/libjbig.so.%{version} %{buildroot}/%{_libdir}
+install -m 0755 libjbig/libjbig85.so.%{version} %{buildroot}/%{_libdir}
+ln -s -f libjbig.so.%{version} %{buildroot}/%{_libdir}/libjbig.so.%{soversion}
+ln -s -f libjbig85.so.%{version} %{buildroot}/%{_libdir}/libjbig85.so.%{soversion}
+ln -s -f libjbig.so.%{version} %{buildroot}/%{_libdir}/libjbig.so
+ln -s -f libjbig85.so.%{version} %{buildroot}/%{_libdir}/libjbig85.so
 
-%__install -d %{buildroot}%_includedir
-%__install -m 0644 libjbig/jbig*.h %{buildroot}%_includedir
+install -d %{buildroot}%{_includedir}
+install -m 0644 libjbig/jbig*.h %{buildroot}%{_includedir}
 
-%__install -d %{buildroot}%_bindir
-%__install -m 0755 pbmtools/pbmtojbg %{buildroot}%_bindir
-%__install -m 0755 pbmtools/jbgtopbm %{buildroot}%_bindir
-%__install -m 0755 pbmtools/pbmtojbg85 %{buildroot}%_bindir
-%__install -m 0755 pbmtools/jbgtopbm85 %{buildroot}%_bindir
+install -d %{buildroot}%{_bindir}
+install -m 0755 pbmtools/pbmtojbg %{buildroot}%{_bindir}
+install -m 0755 pbmtools/jbgtopbm %{buildroot}%{_bindir}
+install -m 0755 pbmtools/pbmtojbg85 %{buildroot}%{_bindir}
+install -m 0755 pbmtools/jbgtopbm85 %{buildroot}%{_bindir}
 
-%__install -d %{buildroot}%{_mandir}/man1
-%__install -m 0644 pbmtools/*.1 %{buildroot}%{_mandir}/man1
-%__ln_s -f pbmtojbg.1 %{buildroot}%{_mandir}/man1/pbmtojbg85.1
-%__ln_s -f jbgtopbm.1 %{buildroot}%{_mandir}/man1/jbgtopbm85.1
+install -d %{buildroot}%{_mandir}/man1
+install -m 0644 pbmtools/*.1 %{buildroot}%{_mandir}/man1
+ln -s -f pbmtojbg.1 %{buildroot}%{_mandir}/man1/pbmtojbg85.1
+ln -s -f jbgtopbm.1 %{buildroot}%{_mandir}/man1/jbgtopbm85.1
 
-%post -n %libpkg -p /sbin/ldconfig
-
-%postun -n %libpkg -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libpkg}
 
 %files
-%defattr(-,root,root)
 %{_bindir}/*
-%doc %{_mandir}/man1/*
-%doc COPYING ANNOUNCE TODO CHANGES pbmtools/*.txt
+%{_mandir}/man1/*
+%license COPYING
+%doc ANNOUNCE TODO CHANGES pbmtools/*.txt
 
-%files -n %libpkg
-%defattr(-,root,root)
+%files -n %{libpkg}
 %{_libdir}/%{libname}*.so.*
 
-%files -n %devpkg
-%defattr(-,root,root)
+%files -n %{devpkg}
 %{_libdir}/%{libname}*.so
 %{_includedir}/jbig*.h
-%doc COPYING ANNOUNCE TODO CHANGES libjbig/*.txt
+%license COPYING
+%doc ANNOUNCE TODO CHANGES libjbig/*.txt
 
 %changelog
