@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 23 14:55:52 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.1.0
+  * https://github.com/heldercorreia/speedcrunch/releases/tag/v1.1.0
+- Add BuildRequires cmake(Qt6LinguistTools), hicolor-icon-theme
+
+-------------------------------------------------------------------
 Wed Oct  7 07:38:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.0.0

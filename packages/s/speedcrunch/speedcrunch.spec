@@ -17,7 +17,7 @@
 
 
 Name:           speedcrunch
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Calculator with history display, keyboard-oriented
 License:        GPL-2.0-or-later
@@ -26,9 +26,11 @@ Source0:        https://github.com/heldercorreia/speedcrunch/archive/refs/tags/v
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Help)
+BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  hicolor-icon-theme
 
 %description
 A keyboard-oriented desktop scientific calculator which shows results in a
@@ -54,7 +56,8 @@ cd ..
 %doc README.md
 %{_bindir}/speedcrunch
 %{_datadir}/applications/org.speedcrunch.SpeedCrunch.desktop
+%{_datadir}/icons/hicolor/scalable/apps/org.speedcrunch.SpeedCrunch.svg
+%{_datadir}/icons/hicolor/*x*/apps/org.speedcrunch.SpeedCrunch.png
 %{_datadir}/metainfo/org.speedcrunch.SpeedCrunch.metainfo.xml
-%{_datadir}/pixmaps/org.speedcrunch.SpeedCrunch.png
 
 %changelog

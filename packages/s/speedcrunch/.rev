@@ -181,4 +181,14 @@
     <comment>Update to 1.0.0</comment>
     <requestid>1382994</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>bd504cd62c85aeceb4993949082d4b3f</srcmd5>
+    <version>1.1.0</version>
+    <time>1792872318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0
+  * https://github.com/heldercorreia/speedcrunch/releases/tag/v1.1.0
+- Add BuildRequires cmake(Qt6LinguistTools), hicolor-icon-theme (forwarded request 1392190 from Kieltux)</comment>
+    <requestid>1392198</requestid>
+  </revision>
 </revisionlist>
