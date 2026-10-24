@@ -17,7 +17,7 @@
 
 
 Name:           libressl
-Version:        4.3.3
+Version:        4.4.0
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
@@ -33,7 +33,6 @@ Source5:        unavailable-libcrypto-symbols.txt.zst
 Patch1:         des-fcrypt.diff
 Patch2:         extra-symver.diff
 Patch3:         fix_cert_path.patch
-Patch4:         enable_pqc.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libtool

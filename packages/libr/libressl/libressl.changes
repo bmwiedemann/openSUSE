@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 23 14:01:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.4.0
+  * Removed eMudhra emSign ECC Root CA - G3 from cert.pem
+  * Enabled SHA assembly on ELF AArch64 with CMake.
+  * Enabled bignum assembly on RISC-V with autotools.
+  * Use X25519MLKEM768 as the preferred group for TLSv1.3
+    connections in libtls.
+  * Align X509_check_ca() with modern OpenSSL. While it has long
+    been documented that it only works after calling
+    X509_check_purpose(), it still makes sense to "fail closed",
+    i.e., indicate a non-CA.
+  * Fix PKCS7_set_{un,}signed_attributes() to allow caller to free
+    on failure rather than risking a double free.
+  * Avoid NULL dereference and out-of-bounds read in password-based
+    CMS decryption.
+  * Add some missing bounds check to ASN1_mbstrinc_copy().
+  * Avoid freeing a caller-owned buffer in PKCS7_verify().
+  * Fix parsing issues in X.509 name constraints URI host parsing.
+    Handle IPv6 literals correctly and don't allow specially
+    crafted userinfo to bypass host checks.
+- Delete enable_pqc.patch (merged)
+
+-------------------------------------------------------------------
 Mon Oct  5 19:10:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.3.3
