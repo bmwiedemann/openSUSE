@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Oct 22 09:44:07 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Version 25
+
+-------------------------------------------------------------------
+Wed Oct  7 12:53:02 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Rename "Check Installation Medium" into "Check Medium & Install"
+  to make it more clear (bsc#1283085)
+
+-------------------------------------------------------------------
+Mon Oct  5 14:34:04 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Improved self-update cleanup to disable the added self-update
+  repositories also when the self-update fails or crashes.
+  (bsc#1254163)
+
+-------------------------------------------------------------------
+Wed Sep 30 12:48:23 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Reduce the installer image footprint by dropping unnecessary
+  transitive YaST dependencies pulled in by agama-yast
+  (gh#agama-project/agama#4001, gh#agama-project/agama#4003,
+  gh#agama-project/agama#4004).
+
+-------------------------------------------------------------------
+Mon Sep 28 08:50:52 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Add support for riscv64 (gh#agama-project/agama#3867)
+
+-------------------------------------------------------------------
+Thu Sep 24 14:03:15 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- bsc#1282603
+  - switched from 16.1 to 16.2 in kiwi build config
+
+-------------------------------------------------------------------
+Fri Sep 18 08:43:24 UTC 2026 - Santiago Zarate <santiago.zarate@suse.com>
+
+- Set default bootloader for MicroOS to systemd-boot (bsc#1277929)
+
+-------------------------------------------------------------------
+Wed Sep 16 11:50:51 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Add experimental support for 32 bit architectures which are in
+  TW ports (bsc#1266309)
+
+-------------------------------------------------------------------
 Thu Sep 10 18:49:38 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Use license.txt for English in license.opensuse
