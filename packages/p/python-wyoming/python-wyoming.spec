@@ -21,12 +21,11 @@
 %define         skip_python36 1
 %define         skip_python38 1
 Name:           python-wyoming
-Version:        1.5.4
+Version:        1.10.2
 Release:        0
-License:        MIT
 Summary:        Peer-to-peer protocol for voice assistants
-Group:          Development/Languages/Python
-URL:            https://github.com/rhasspy/wyoming
+License:        MIT
+URL:            https://github.com/OHF-Voice/wyoming
 #Source:         https://files.pythonhosted.org/packages/source/w/wyoming/wyoming-%{version}.tar.gz
 Source:         wyoming-%{version}.tar.xz
 BuildRequires:  %{python_module pip}
@@ -51,6 +50,7 @@ Peer-to-peer protocol for voice assistants
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/wyoming
+%{python_sitelib}/wyoming-%{version}*-info
 
 %changelog

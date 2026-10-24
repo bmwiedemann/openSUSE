@@ -1,9 +1,9 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/rhasspy/wyoming</param>
+    <param name="url">https://github.com/OHF-Voice/wyoming</param>
     <param name="scm">git</param>
-    <param name="version">1.5.4</param>
-    <param name="revision">1.5.4</param>
+    <param name="version">1.10.2</param>
+    <param name="revision">v1.10.2</param>
   </service>
   <service mode="manual" name="tar" />
   <service mode="manual" name="recompress">

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 24 04:46:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.10.2:
+  * CVE-2026-8712: SSRF via malicious uri query parameter in the
+    HTTP API let unauthenticated attackers force outbound
+    connections to arbitrary targets (boo#1278078)
+  * HTTP servers now require --uri or --allow-uri-override, restrict
+    request URIs to tcp:// and unix://, and no longer return
+    exception details to clients
+  * Upstream project moved from rhasspy to the OHF-Voice
+    organization; update URL and source accordingly
+  * Add VAD and audio preferences to ASR, select-program support,
+    transcript names/terms, and text_format for synthesize
+  * Add intents-start/end events, user events, wake_words query
+    parameter, and home control flag for handle
+  * Streaming support for tts, handle and asr; bi-directional
+    run-pipeline with wake word names and announce text
+  * Fix ZeroConf discovery, 8-bit audio conversion, and stop
+    servers gracefully on SIGTERM
+  * Migrate to pyproject.toml and support Python 3.13
+- Spec cleanup: drop obsolete Group tag and tighten the file list
+
+-------------------------------------------------------------------
 Wed Sep  4 12:05:59 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - fix build for Leap 15
