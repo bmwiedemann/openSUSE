@@ -105,4 +105,12 @@
     <comment>1</comment>
     <requestid>1384549</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6975380f075f56d04bd2155ae6709615</srcmd5>
+    <version>3.6.0</version>
+    <time>1792872324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.6.0</comment>
+    <requestid>1392216</requestid>
+  </revision>
 </revisionlist>

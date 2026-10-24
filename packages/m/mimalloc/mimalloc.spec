@@ -20,13 +20,13 @@
 %global sover   3
 %global libname libmimalloc%{sover}
 Name:           mimalloc
-Version:        3.3.2
+Version:        3.6.0
 Release:        0
 Summary:        A compact general purpose allocator
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/microsoft/mimalloc
-Source:         https://github.com/microsoft/mimalloc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/microsoft/mimalloc/archive/v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -65,7 +65,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of mimalloc.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \
@@ -78,14 +78,12 @@ applications that want to make use of mimalloc.
 %make_build
 
 %check
-cd %{__builddir}
-%make_build test
+%ctest
 
 %install
 %cmake_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE

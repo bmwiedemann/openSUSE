@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 24 10:03:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.0
+  * Fix concurrency bug in concurrent heap destroy
+  * Detect RISC-V virtual address bits at runtime, add RISC-V
+    Thread Local Storage support
+  * Fix a crash with glibc 2.44
+  * Set errno on allocation errors
+  * Better support for large OS page sizes
+  * Immediate purging of very large allocations once freed
+  * Fix heap-destroy bug (crash) when a fresh heap was allocated at
+    the same address
+
+-------------------------------------------------------------------
 Tue Oct 13 07:34:53 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable overoptimization in mimalloc with -DMI_NO_OPT_ARCH=ON
