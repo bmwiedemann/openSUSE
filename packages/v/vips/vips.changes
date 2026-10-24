@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:56:00 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 8.18.7:
+  * tiffload: copy colormaps on page load, check rgba settings
+    between directories and reject undersized jp2k tiles
+  * buildlut: limit the output lut size
+  * hough_line: improve bounds check
+  * pdfiumload: check for too small buffers
+  * uhdrload: calculate gain map scale factor with round-to-nearest
+  * jp2ksave: tag as UNTRUSTED
+  * header: only parse EXIF metadata for blob values
+  * jp2kload: more size validation
+  * openexrload: more validation
+  * heifload: tag as UNTRUSTED for libheif before 1.23.2
+- These CVEs were fixed upstream before 8.18.5, so this package
+  is not affected by them:
+  * CVE-2019-6976 (boo#1123273): fixed in 8.7.4
+  * CVE-2019-17534 (boo#1153863): fixed in 8.8.2
+  * CVE-2023-40032 (boo#1215232): fixed in 8.14.4
+  * CVE-2025-59933 (boo#1250962): fixed in 8.17.2
+  * CVE-2026-2913 (boo#1258702): fixed in 8.18.1
+  * CVE-2026-69242 (boo#1277494): fixed in 8.18.3
+  * CVE-2026-70651 (boo#1277498): fixed in 8.18.3
+  * CVE-2026-70652 (boo#1277499): fixed in 8.18.3
+  * CVE-2026-70654 (boo#1277501): fixed in 8.18.3
+- Drop obsolete Group: tags
+
+-------------------------------------------------------------------
 Wed Aug  5 09:45:59 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 8.18.5:

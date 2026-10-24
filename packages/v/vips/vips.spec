@@ -23,11 +23,10 @@
 %define short_version_ 8.0
 %define somajor 42
 Name:           vips
-Version:        8.18.5
+Version:        8.18.7
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
-Group:          Development/Libraries/C and C++
 URL:            https://www.libvips.org
 Source0:        https://github.com/libvips/libvips/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
@@ -84,7 +83,6 @@ research and development.
 
 %package     -n %{libname}%{somajor}
 Summary:        C/C++ library for processing large images
-Group:          System/Libraries
 Requires:       vips-modules-%{short_version} >= %{version}
 
 %description -n %{libname}%{somajor}
@@ -95,7 +93,6 @@ research and development.
 
 %package     -n typelib-1_0-Vips-%{short_version_}
 Summary:        C/C++ library for processing large images
-Group:          System/Libraries
 
 %description -n typelib-1_0-Vips-%{short_version_}
 VIPS is an image processing system. It is good with large images
@@ -105,7 +102,6 @@ research and development.
 
 %package     -n %{libname}-devel
 Summary:        Development files for the VIPS library
-Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{somajor} = %{version}
 Requires:       pkgconfig
 Requires:       pkgconfig(gobject-2.0)
@@ -119,7 +115,6 @@ want to make use of the VIPS library.
 
 %package        tools
 Summary:        Command line tools for VIPS library
-Group:          Productivity/Graphics/Other
 Requires:       %{libname}%{somajor} = %{version}
 
 %description    tools
@@ -128,7 +123,6 @@ the VIPS library.
 
 %package        modules-%{short_version}
 Summary:        Additional modules for libvips
-Group:          Productivity/Graphics/Other
 Requires:       %{libname}%{somajor} = %{version}
 
 %description    modules-%{short_version}
@@ -136,7 +130,6 @@ Additional modules for libvips.
 
 %package        doc
 Summary:        Documentation for VIPS library
-Group:          Documentation/Other
 Requires:       %{libname}%{somajor} = %{version}
 BuildArch:      noarch
 
@@ -146,7 +139,6 @@ formats.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       %{name}-tools
 Requires:       bash-completion
 Supplements:    (%{name}-tools and bash)
@@ -205,7 +197,7 @@ install -Dm644 completions/vips-completion.bash %{buildroot}%{_datadir}/bash-com
 %files tools
 %license LICENSE
 %{_bindir}/vips{,edit,header,thumbnail}
-%{_mandir}/man1/vips{,edit,header,thumbnail}.1%{ext_man}
+%{_mandir}/man1/vips{,edit,header,thumbnail}.1%{?ext_man}
 
 %files doc
 %license LICENSE
