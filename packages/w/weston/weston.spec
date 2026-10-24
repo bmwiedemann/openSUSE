@@ -23,7 +23,7 @@
 Name:           weston
 %define lname	libweston0
 %define major   16
-Version:        16.0.0
+Version:        16.0.1
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        CC-BY-SA-3.0 AND MIT
