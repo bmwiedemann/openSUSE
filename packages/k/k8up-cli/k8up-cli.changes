@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:05:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.1:
+  * Update security relevant Go dependencies
+  * Introduce secretKeys for endpoint and bucket
+  * Align OWNERS.md with the Maintainer GitHub team (#1253)
+  * e2e: use ghcr.io/vshn/minio for the MinIO server and mc
+  * Use the MinIO binary from ghcr.io/vshn/minio instead of
+    building it
+  * Fix CI: Go 1.26.6, lint exclusion, MinIO from source
+  * Add 7 day delay for actions
+  * Autoformat json
+  * Set github action digests
+  * fix(scheduler): randomize @annually-random schedules
+  * Update vulnerable x library
+  * Update module github.com/restic/restic to v0.19.1
+  * Bump chart version for new release
+
+-------------------------------------------------------------------
 Mon Jul 20 04:54:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.16.0:
