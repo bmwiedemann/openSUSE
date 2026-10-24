@@ -1,0 +1,17 @@
+<constraints>
+  <!-- The x86_64 build compiles the Rust native addons of the Web UI.
+       Locally they peaked at up to 2 GB of memory. -->
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">10</size>
+      </disk>
+      <physicalmemory>
+        <size unit="G">4</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>

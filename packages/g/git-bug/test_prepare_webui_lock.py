@@ -88,6 +88,49 @@ class PreparationTests(unittest.TestCase):
             lock["packages"]["node_modules/example/node_modules/child"]["version"] = "3.0.0"
             with self.assertRaisesRegex(ValueError, "Bundled manifest disagrees"):
                 HELPER["validate_lock"](lock, self.inventory(), path)
+    def test_build_inventory_drops_only_optional_platform_packages(self):
+        inventory = {f"{name}@1.0.0": {"name": name} for name in (
+            "binding-linux", "systeminformation", "plain", "dev-required", "unused")}
+        lock = {"packages": {
+            "": {"name": "test"},
+            "node_modules/binding-linux": {"version": "1.0.0", "optional": True,
+                                            "dev": True, "os": ["linux"], "cpu": ["x64"]},
+            # Required pure-JS packages may still declare supported platforms.
+            "node_modules/systeminformation": {"version": "1.0.0", "os": ["linux"]},
+            # devOptional is required for a development install.
+            "node_modules/dev-required": {"version": "1.0.0", "devOptional": True,
+                                           "cpu": ["x64"]},
+            "node_modules/plain": {"version": "1.0.0"},
+            "node_modules/plain/node_modules/inner": {"version": "9.0.0", "inBundle": True}}}
+        sources, excluded = HELPER["build_inventory"](lock, inventory)
+        self.assertEqual(set(sources), {"systeminformation@1.0.0", "plain@1.0.0",
+                                        "dev-required@1.0.0"})
+        self.assertEqual(excluded, ["binding-linux@1.0.0"])
+
+    def test_build_inventory_keeps_identity_required_elsewhere(self):
+        inventory = {"shared@1.0.0": {}}
+        lock = {"packages": {
+            "node_modules/a/node_modules/shared": {"version": "1.0.0", "optional": True,
+                                                    "os": ["linux"]},
+            "node_modules/shared": {"version": "1.0.0"}}}
+        sources, excluded = HELPER["build_inventory"](lock, inventory)
+        self.assertEqual((list(sources), excluded), (["shared@1.0.0"], []))
+
+    def test_build_inventory_rejects_unknown_source(self):
+        lock = {"packages": {"node_modules/x": {"version": "1.0.0"}}}
+        with self.assertRaisesRegex(ValueError, "absent from the inventory"):
+            HELPER["build_inventory"](lock, {})
+
+    def test_native_overrides_pick_highest_version(self):
+        lock = {"packages": {
+            "node_modules/lightningcss": {"version": "1.32.0"},
+            "node_modules/vite/node_modules/lightningcss": {"version": "1.33.0"},
+            "node_modules/x/node_modules/lightningcss": {"version": "1.9.10"},
+            "node_modules/rolldown": {"version": "1.2.8"}}}
+        self.assertEqual(HELPER["native_overrides"](lock), {"lightningcss": "1.33.0"})
+        del lock["packages"]["node_modules/vite/node_modules/lightningcss"]
+        del lock["packages"]["node_modules/x/node_modules/lightningcss"]
+        self.assertEqual(HELPER["native_overrides"](lock), {})
 
 
 if __name__ == "__main__":

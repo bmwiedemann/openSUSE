@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Fri Oct 23 17:38:53 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix vendored CVEs and build Web UI native addons from source
+  Update vendored dependencies for security fixes:
+  - npm: fast-uri 3.1.7 -> 3.1.9 and qs 6.16.0 -> 6.16.1. The
+    reviewed downstream inventory replaces only these two
+    sources, the npm manifest pins them through overrides, and
+    prepare-webui-lock.py gains --security-inventory to keep
+    them when the lock is regenerated.
+  - Go: replace golang.org/x/net with v0.60.0 through the
+    go_modules service.
+  - Not changed: picomatch stays at 4.0.7, the newest npm
+    release, which is still affected.
+  - follow-redirects and webpack-dev-server are not vendored.
+  - GO-2026-5932 concerns only the unmaintained
+    golang.org/x/crypto/openpgp, which is neither used nor
+    vendored; upstream uses ProtonMail's fork.
+  - The Web UI build also loaded upstream's prebuilt npm binaries
+    for Rolldown, Tailwind CSS oxide and Lightning CSS, so
+    unverified machine code generated the JavaScript and CSS
+    embedded in git-bug. The npm container carried native
+    binaries for every platform: 1,167 tarballs and 809 MiB, most
+    of it never used on Linux x86_64. The RPM now compiles these
+    three Node-API modules from their upstream Rust workspaces:
+    - New native-addons.py reads the addon versions from
+      package-lock.json, regenerates tar_scm, recompress and
+      cargo_vendor services in a marked region of _service, and
+      writes native-addons.spec.inc with the source tags and the
+      %{native_addons} list. The service run adds the upstream
+      source and vendored crate tarballs for Rolldown 1.2.8,
+      Tailwind CSS 4.3.3 and Lightning CSS 1.33.0.
+    - The spec builds each module with plain cargo, --offline and
+      --locked against upstream's Cargo.lock, keeping upstream's
+      release profiles and project rustflags (%cargo_build would
+      override Lightning CSS's link flags through RUSTFLAGS). It
+      checks each tag against the locked npm version, fails if
+      npm installs any ELF file, and installs the modules where
+      the npm loaders look first.
+    - prepare-webui-lock.py unifies addons that npm resolves
+      in several versions; @tailwindcss/node's exact Lightning
+      CSS 1.32.0 pin is overridden to 1.33.0, changing no other
+      lock entry. It also writes the reduced build inventory
+      node-sources.json: npm's selected sources minus optional
+      platform-specific packages. The complete reviewed inventory
+      moves to node-sources-full.json for lock generation.
+    - The npm container shrinks to 860 tarballs (61 MiB); all
+      sources total 111 MiB.
+    - Drop the esbuild build dependency: the Vite 8 build never
+      runs esbuild.
+    - Add _constraints for the Rust builds on x86_64, ignore the
+      tar_scm clone caches, and update WEBUI-PACKAGING.md.
+  Fixes: bsc#1286302
+  Fixes: bsc#1285711
+  Fixes: CVE-2026-110725
+  Fixes: CVE-2026-110306
+  Fixes: CVE-2026-110095
+  Fixes: CVE-2026-110180
+  Fixes: CVE-2026-110816
+  Fixes: CVE-2026-97032
+  Fixes: CVE-2026-78663
+  Fixes: CVE-2026-78669
+  Fixes: CVE-2026-78660
+  Fixes: CVE-2026-78659
+  References: bsc#1286061
+  References: CVE-2026-112366
+  References: bsc#1286880
+  References: CVE-2026-111756
+  References: bsc#1286894
+  References: CVE-2026-112085
+  References: GO-2026-5932
+
+-------------------------------------------------------------------
+Fri Oct 23 08:23:34 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Build the native npm addons of the Web UI (Rolldown 1.2.8,
+  Tailwind CSS oxide 4.3.3, Lightning CSS 1.33.0) from their
+  upstream Rust sources instead of using prebuilt binaries
+  from npm. New native-addons.py derives their versions from
+  the npm lock and generates the tar_scm, recompress and
+  cargo_vendor services and native-addons.spec.inc.
+- Drop all optional platform-specific npm packages and the
+  sources npm never selects from the build inventory: the npm
+  container shrinks from 1,167 tarballs (809 MiB) to 860
+  tarballs (61 MiB). The complete reviewed inventory is kept as
+  node-sources-full.json for lock generation.
+- Unify Lightning CSS on 1.33.0 with an npm override, so that
+  only one version has to be compiled.
+- Drop the esbuild build dependency; the Vite 8 build does not
+  run esbuild.
+- Add _constraints for the Rust builds on x86_64.
+
+-------------------------------------------------------------------
+Thu Oct 22 21:13:37 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update JavaScript vendoring for security fixes:
+- fast-uri 3.1.7 -> 3.1.9 (bsc#1286302, CVE-2026-110725,
+  CVE-2026-110306, CVE-2026-110095, CVE-2026-110180).
+- qs 6.16.0 -> 6.16.1 (bsc#1285711, CVE-2026-110816).
+- Regenerate npm lock and vendor container; support reviewed
+  downstream security inventory in the lock preparation tool.
+- picomatch remains affected by bsc#1286061, CVE-2026-112366;
+  no fixed npm release is available through 4.0.7.
+- follow-redirects (bsc#1286880, CVE-2026-111756) and
+  webpack-dev-server (bsc#1286894, CVE-2026-112085) are not vendored.
+- Replace vendored golang.org/x/net with v0.60.0 to fix security
+  vulnerabilities (CVE-2026-97032, CVE-2026-78663, CVE-2026-78669,
+  CVE-2026-78660, CVE-2026-78659).
+- GO-2026-5932 only affects the unmaintained
+  golang.org/x/crypto/openpgp package which is neither used nor
+  vendored (upstream uses ProtonMail's fork instead).
+
+-------------------------------------------------------------------
 Wed Oct  7 15:16:44 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update vendored NPM packages to fix CVE-2026-104844:

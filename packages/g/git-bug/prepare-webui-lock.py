@@ -5,6 +5,10 @@
 Maintainer-side tool, not an rpmbuild step. Requires Python/PyYAML, Node/npm,
 local-npm-registry, and Linux unshare with unprivileged user namespaces enabled.
 The npm resolver runs in a new network namespace with only loopback enabled.
+
+Resolution uses the complete source inventory. The RPM build needs only the
+sources npm selected, minus optional platform-specific packages: the RPM
+compiles the native addons it needs from Rust sources (see native-addons.py).
 """
 import argparse
 import fcntl
@@ -24,7 +28,9 @@ import time
 import yaml
 
 CONVERTER = runpy.run_path(str(Path(__file__).with_name("pnpm-to-obs.py")))
+NATIVE = runpy.run_path(str(Path(__file__).with_name("native-addons.py")))
 Error = CONVERTER["ConversionError"]
+PLATFORM_FIELDS = ("os", "cpu", "libc")
 
 
 def build_manifest(package, lock):
@@ -107,6 +113,44 @@ def validate_lock(lock, inventory, tarballs):
             "not_selected_by_npm": sorted(set(inventory) - selected)}
 
 
+def native_overrides(lock):
+    """Pin each multi-version native addon to its highest locked version.
+
+    The RPM compiles one module per addon, so npm must install only one copy.
+    """
+    result = {}
+    for name, entries in NATIVE["lock_versions"](lock).items():
+        versions = {entry["version"] for entry in entries.values()}
+        if len(versions) > 1:
+            result[name] = max(versions, key=lambda value: tuple(map(int, value.split("."))))
+    return result
+
+
+def build_inventory(lock, inventory):
+    """Return the sources the RPM build installs.
+
+    Keep every source npm selected, except identities whose every lock entry is
+    an optional package restricted to a platform. npm skips such packages when
+    the registry lacks them. Required packages that merely list supported
+    platforms (for example systeminformation) stay.
+    """
+    required = set()
+    platform = set()
+    for path, entry in lock["packages"].items():
+        if not path or entry.get("inBundle"):
+            continue
+        identity = f"{entry.get('name', path.rsplit('node_modules/', 1)[-1])}@{entry['version']}"
+        if entry.get("optional") and any(field in entry for field in PLATFORM_FIELDS):
+            platform.add(identity)
+        else:
+            required.add(identity)
+    excluded = platform - required
+    missing = required - set(inventory)
+    if missing:
+        raise Error(f"Npm selected sources absent from the inventory: {sorted(missing)}")
+    return {key: inventory[key] for key in sorted(required)}, sorted(excluded)
+
+
 def enable_loopback():
     # Executed only after unshare creates the private namespace.
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
@@ -167,6 +211,9 @@ def main():
     parser.add_argument("--registry-helper", nargs="+", default=["local-npm-registry"],
                         help="helper command; defaults to local-npm-registry")
     parser.add_argument("--timeout", type=int, default=180)
+    parser.add_argument("--security-inventory", type=Path,
+                        help="reviewed complete inventory with fast-uri/qs security updates "
+                             "(node-sources-full.json)")
     parser.add_argument("--_in-namespace", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
     try:
@@ -174,21 +221,47 @@ def main():
             result = subprocess.run(["unshare", "-Urn", sys.executable,
                                      str(Path(__file__).resolve()), *sys.argv[1:], "--_in-namespace"])
             return result.returncode
+        if args.security_inventory and (args.security_inventory.resolve()
+                                        == (args.output_dir / "node-sources.json").resolve()):
+            raise Error("The security inventory must be the complete node-sources-full.json; "
+                        "node-sources.json is regenerated as the reduced build inventory")
         enable_loopback()
         lock = yaml.load((args.webui / "pnpm-lock.yaml").read_text(),
                          Loader=CONVERTER["UniqueKeyLoader"])
         inventory = CONVERTER["convert"](lock)
+        if args.security_inventory:
+            reviewed = json.loads(args.security_inventory.read_text())
+            removed = {"fast-uri@3.1.7", "qs@6.16.0"}
+            added = {"fast-uri@3.1.9", "qs@6.16.1"}
+            if set(inventory) - set(reviewed) != removed or set(reviewed) - set(inventory) != added:
+                raise Error("Security inventory must only replace fast-uri and qs")
+            if any(reviewed[key] != value for key, value in inventory.items() if key not in removed):
+                raise Error("Security inventory changed unrelated sources")
+            inventory = reviewed
         tarballs = args.tarballs.resolve()
         CONVERTER["verify_downloads"](inventory, tarballs)
         manifest = build_manifest(json.loads((args.webui / "package.json").read_text()), lock)
+        if args.security_inventory:
+            manifest["overrides"].update({"fast-uri": "3.1.9", "qs": "6.16.1"})
         npm_lock = resolve(manifest, tarballs, args.registry_helper, args.timeout)
+        unify = native_overrides(npm_lock)
+        if unify:
+            print(f"Unifying native addons: {unify}", file=sys.stderr)
+            manifest["overrides"].update(unify)
+            npm_lock = resolve(manifest, tarballs, args.registry_helper, args.timeout)
+        NATIVE["addon_versions"](npm_lock)
         report = validate_lock(npm_lock, inventory, tarballs)
+        sources, excluded = build_inventory(npm_lock, inventory)
+        report["native_overrides"] = unify
+        report["build_source_identities"] = len(sources)
+        report["excluded_platform_packages"] = excluded
         args.output_dir.mkdir(parents=True, exist_ok=True)
         for name, value in (("webui-package.json", manifest), ("package-lock.json", npm_lock),
-                            ("webui-lock-report.json", report)):
+                            ("webui-lock-report.json", report), ("node-sources.json", sources)):
             (args.output_dir / name).write_text(json.dumps(value, indent=2) + "\n")
         print(f"Validated {report['source_identities']} tarball identities and "
-              f"{report['bundled_entries']} bundled entries. Output: {args.output_dir}")
+              f"{report['bundled_entries']} bundled entries; the build needs "
+              f"{len(sources)}. Output: {args.output_dir}")
         return 0
     except (Error, OSError, ValueError, KeyError, tarfile.TarError,
             subprocess.SubprocessError, yaml.YAMLError) as exc:
