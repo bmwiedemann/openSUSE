@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:06:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.21.0:
+  * goreleaser: upgrade go version to 1.26.10
+  * chore: upgrade to go 1.26 and resolve CVE's
+  * build: bump tzdata version to 2026e
+
+-------------------------------------------------------------------
 Mon Jul 20 04:55:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.20.0:
