@@ -3762,4 +3762,12 @@ autoforward-gate ELIGIBLE, no competing Factory SR).</comment>
     <comment>Update python-ruff to 0.17.1: bugfix release, no security signal in upstream notes. VUL-bug cross-check not done (no bugwarden access).</comment>
     <requestid>1385066</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>de15b76804a012040902e31bf3f27a9d</srcmd5>
+    <version>0.17.2</version>
+    <time>1792872211</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.17.2</comment>
+    <requestid>1392005</requestid>
+  </revision>
 </revisionlist>

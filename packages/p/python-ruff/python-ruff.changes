@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:30:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.17.2:
+  * Preview: new unnecessary-regular-expression-compile rule
+    (complexity)
+  * Bug fixes: starred type-variable constraints no longer cause
+    syntax errors (UP040, UP046, UP047, RUF053); pydocstyle
+    documents escaped *args/**kwargs (D417); pylint starred-element
+    false positive fixed (PLE0643); fixes deleting comments marked
+    unsafe (PLR5501, PLW0120, UP035)
+  * Performance: faster lint name resolution and postfix parsing;
+    prefiltered bidirectional Unicode checks
+  * Configuration: configurable allowlist for magic-value-comparison
+    (PLR2004)
+- Re-vendored Rust dependencies; licence set unchanged
+  (MIT AND MPL-2.0)
+
+-------------------------------------------------------------------
 Thu Oct 15 16:33:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.17.1:
