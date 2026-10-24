@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct 24 04:46:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.04.0:
+  * Library is now versioned 1.10.0, soname moved from 0 to 1
+  * Reworked cache handling with new WITH_DCACHE option
+  * Added virtio MMIO native transport layer support
+  * Reintroduced zero-copy transmit and receive for RPMsg
+  * Added TX buffer wait and endpoint-release callbacks
+  * Added virtqueue RX-empty-notify and message buffer size APIs
+  * Removed long-deprecated cmake options and APIs
+  * CMake minimum raised to 3.16
+  * Many bug fixes and maturity improvements
+- Rename shared library package libopen_amp0 -> libopen_amp1
+  following the upstream soname bump
+- Drop examples subpackage: upstream removed the sample
+  applications in 2025.04.0 (moved to openamp-system-reference)
+- Drop obsolete patches, code was reworked upstream:
+  * openamp-fix-build-with-libmetal.patch (apps tree is gone)
+  * openamp-wait-when-no-more-buffer-avail.patch (TX buffer
+    wait logic was reworked upstream with wait callbacks)
+- Spec cleanup: use ldconfig_scriptlets macro, drop unused
+  doxygen and graphviz BuildRequires, declare gcc and make
+  explicitly (libhugetlbfs-devel and sysfsutils-devel are kept:
+  libmetal's installed headers include them)
+
+-------------------------------------------------------------------
 Mon Feb 26 12:45:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

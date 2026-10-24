@@ -16,23 +16,21 @@
 #
 
 
-%define libname libopen_amp0
+%define libname libopen_amp1
 Name:           openamp
-Version:        2020.01
+Version:        2026.04.0
 Release:        0
 Summary:        Asymmetric Multiprocessing communication APIs
 License:        BSD-3-Clause
 URL:            https://github.com/OpenAMP/open-amp
 Source:         https://github.com/OpenAMP/open-amp/archive/v%{version}.tar.gz#/open-amp-%{version}.tar.gz
-# https://github.com/OpenAMP/open-amp/pull/196
-Patch0:         openamp-fix-build-with-libmetal.patch
-# https://github.com/OpenAMP/open-amp/pull/197
-Patch1:         openamp-wait-when-no-more-buffer-avail.patch
+# Keep plain -devel names: spec-cleaner --pkgconfig over-expands them
+# into per-.pc deps; the -devel form pulls the same providers.
 BuildRequires:  cmake
-BuildRequires:  doxygen
-BuildRequires:  graphviz
+BuildRequires:  gcc
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libmetal-devel
+BuildRequires:  make
 BuildRequires:  sysfsutils-devel
 
 %description
@@ -75,13 +73,6 @@ The framework provides the following key capabilities.
    to handle printf, scanf, open, close, read, write calls from Bare metal
    based remote contexts.
 
-%package examples
-Summary:        Example applications for OpenAMP
-Requires:       %{libname} = %{version}
-
-%description examples
-This package contains example binaries for OpenAMP.
-
 %package devel
 Summary:        Include Files and Libraries mandatory for Development
 Requires:       %{libname} = %{version}
@@ -94,9 +85,8 @@ to develop applications that require these.
 %autosetup -p1 -n open-amp-%{version}
 
 %build
-# Remove '-Wl,--no-undefined' from linker flags and build example apps
+# Remove '-Wl,--no-undefined' from linker flags
 %cmake \
-  -DWITH_APPS:BOOL=ON \
   -DCMAKE_SHARED_LINKER_FLAGS='-Wl,--as-needed -Wl,-z,now' \
   -DWITH_STATIC_LIB=OFF
 %cmake_build
@@ -104,24 +94,11 @@ to develop applications that require these.
 %install
 %cmake_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE.md
 %{_libdir}/*.so.*
-
-%files examples
-%{_bindir}/msg-test-rpmsg-flood-ping-shared
-%{_bindir}/msg-test-rpmsg-ping-shared
-%{_bindir}/msg-test-rpmsg-update-shared
-%{_bindir}/rpmsg-echo-ping-shared
-%{_bindir}/rpmsg-echo-shared
-%{_bindir}/rpmsg-sample-echo-shared
-%{_bindir}/rpmsg-sample-ping-shared
-%{_bindir}/matrix_multiply-shared
-%{_bindir}/matrix_multiplyd-shared
-%{_bindir}/rpc_demod-shared
 
 %files devel
 %{_includedir}/openamp/
