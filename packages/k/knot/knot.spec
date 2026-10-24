@@ -1,7 +1,7 @@
 #
 # spec file for package knot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 Name:           knot
-Version:        3.6.0
+Version:        3.6.2
 Release:        0
 Summary:        An authoritative DNS daemon
 License:        GPL-2.0-or-later
