@@ -1,10 +1,10 @@
-Index: sysstat-12.7.5/sa1.in
+Index: sysstat-12.8.0/sa1.in
 ===================================================================
---- sysstat-12.7.5.orig/sa1.in
-+++ sysstat-12.7.5/sa1.in
-@@ -31,8 +31,16 @@ then
- 	LONG_NAME=y
- fi
+--- sysstat-12.8.0.orig/sa1.in
++++ sysstat-12.8.0/sa1.in
+@@ -28,8 +28,16 @@
+ [ ${HISTORY} -gt 28 ] && SADC_OPTIONS="${SADC_OPTIONS} -D"
+ case "${SADC_OPTIONS}" in *-D*) LONG_NAME=y ;; esac
  
 +set -e
  ENDIR=@SA_LIB_DIR@
@@ -19,7 +19,7 @@ Index: sysstat-12.7.5/sa1.in
  [ "$1" = "--boot" ] && shift && BOOT=y || BOOT=n
  [ "$1" = "--sleep" ] && shift && SLEEP=y || SLEEP=n
  
-@@ -51,13 +59,13 @@ fi
+@@ -48,13 +56,13 @@
  
  if [ "${SLEEP}" = "y" ]
  then
@@ -36,11 +36,11 @@ Index: sysstat-12.7.5/sa1.in
 -	exec ${ENDIR}/sadc -F -L ${SADC_OPTIONS} $* ${SA_DIR}
 +	${ENDIR}/sadc -F -L ${SADC_OPTIONS} $* ${SA_DIR}
  fi
-Index: sysstat-12.7.5/sa2.in
+Index: sysstat-12.8.0/sa2.in
 ===================================================================
---- sysstat-12.7.5.orig/sa2.in
-+++ sysstat-12.7.5/sa2.in
-@@ -59,6 +59,19 @@ fi
+--- sysstat-12.8.0.orig/sa2.in
++++ sysstat-12.8.0/sa2.in
+@@ -60,6 +60,19 @@
  
  [ -f "${DFILE}" ] || exit 0
  cd ${ENDIR}

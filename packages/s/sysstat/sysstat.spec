@@ -17,11 +17,10 @@
 
 
 Name:           sysstat
-Version:        12.7.9
+Version:        12.8.0
 Release:        0
 Summary:        Sar and Iostat Commands for Linux
 License:        GPL-2.0-or-later
-Group:          System/Monitoring
 URL:            https://github.com/sysstat/sysstat
 Source:         https://github.com/sysstat/sysstat/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        isag.desktop
@@ -36,12 +35,12 @@ Patch3:         sysstat-service.patch
 Patch4:         harden_sysstat.service.patch
 BuildRequires:  findutils
 BuildRequires:  gettext-runtime
-BuildRequires:  libpcp-devel
 BuildRequires:  libpcp_import1
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(libpcp)
 Requires:       util-linux
 Requires:       xz
 %{?systemd_ordering}
@@ -59,7 +58,6 @@ utilization.
 
 %package isag
 Summary:        Interactive System Activity Grapher for sysstat
-Group:          System/Monitoring
 Requires:       gnuplot
 Requires:       sysstat = %{version}
 Requires:       tk
@@ -85,7 +83,7 @@ export sadc_options="-S ALL"
 %configure \
            --with-systemdsystemunitdir=%{_unitdir} \
            --with-systemdsleepdir=%{_systemd_util_dir}/system-sleep \
-           --enable-install-cron \
+           --enable-automated-sar-reporting \
            --disable-silent-rules \
            --enable-nls \
            --disable-man-group \
@@ -120,7 +118,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcsysstat
 %post
 %service_add_post sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service sysstat-rotate.timer
 # Earlier versions used cron, remove leftover
-rm -f /etc/cron.d/sysstat || :
+rm -f %{_sysconfdir}/cron.d/sysstat || :
 
 %preun
 %service_del_preun sysstat.service sysstat-collect.service sysstat-collect.timer sysstat-summary.service sysstat-summary.timer sysstat-rotate.service sysstat-rotate.timer

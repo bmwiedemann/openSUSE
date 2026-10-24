@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:56:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 12.8.0:
+  * iostat, tapestat and cifsiostat: new -G flag to display in
+    gibibytes (plus JSON output for cifsiostat -G)
+  * sar/sadf: --fs now also matches mountpoints, not just device
+    names
+  * sadc: read /proc files once per collection cycle
+  * sa1/sa2 improvements; automated sar reporting is now enabled
+    by default; upstream renamed the configure flag
+    --enable-install-cron to --enable-automated-sar-reporting in
+    12.8.0 (the old flag no longer exists), spec follows the
+    rename
+  * Many counter and overflow fixes (pgsteal double counting,
+    pgscan, irq truncation, heap buffer overflow in
+    reallocate_buffer) and a theoretical security fix (no CVE
+    assigned)
+  * Rebase sa1/sa2 locking patch for reworked LONG_NAME and new
+    --rotate handling
+- Spec cleanup: drop obsolete Group tags, use pkgconfig()
+  style BuildRequires
+
+-------------------------------------------------------------------
 Sat Mar 14 14:02:44 UTC 2026 - David Anes <david.anes@suse.com>
 
 - Update to 12.7.9. Changes:
