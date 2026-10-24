@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:19:24 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792772346.47ae4497:
+  * chore(deps-dev): bump unicorn-magic from 0.4.0 to 0.4.1 (#8016)
+
+-------------------------------------------------------------------
+Fri Oct 23 05:55:39 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792734249.530bc142:
+  * chore(deps): Dependency cron 2026-10-23
+
+-------------------------------------------------------------------
+Fri Oct 23 01:47:30 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1792688935.7fdc004e:
+  * feat(auto_clone): append `api failure` regex into auto_clone_regex
+
+-------------------------------------------------------------------
 Thu Oct 22 14:39:18 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1792679797.1d1b53d2:
