@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 23 19:54:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.9.2:
+  * CLI: Fix YubiKey 4 FIPS CLI PIN commands for FIDO
+  * Improve device information when listing YubiKeys with no
+    serial number visible over OTP.
+  * OATH: Add support for importing credentials from PSKC
+    files.
+  * OATH: Add --generate flag to "oath accounts add" command
+    to generate random secrets.
+  * CLI: Include attached devices in error output when device
+    selection fails.
+  * PIV: Add support for decompressing certificates using CXF.
+  * PIV: Correct display of PIN attempts remaining when >= 15.
+  * PIV: Deprecate ykman.piv.parse_rfc4514_string. Use
+    from_rfc4514_string from cryptography instead.
+  * OpenPGP: Improve error handling for YubiKey NEO.
+  * HSM Auth: Add "hsmauth credentials change-password"
+    command.
+  * Bugfix: Fix error handling in "apdu" command.
+  * Dependency: Add python-pskc library for PSKC support.
+
+-------------------------------------------------------------------
 Fri Jan  2 13:41:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.8.0:

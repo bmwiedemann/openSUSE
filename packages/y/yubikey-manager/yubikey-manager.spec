@@ -17,7 +17,7 @@
 
 
 Name:           yubikey-manager
-Version:        5.8.0
+Version:        5.9.2
 Release:        0
 Summary:        Python 3 library and command line tool for configuring a YubiKey
 License:        BSD-2-Clause
@@ -34,6 +34,7 @@ BuildRequires:  python3-cryptography >= 3.0
 BuildRequires:  python3-fido2 >= 0.9
 BuildRequires:  python3-pip
 BuildRequires:  python3-poetry-core
+BuildRequires:  python3-pskc
 BuildRequires:  python3-pyscard
 BuildRequires:  python3-wheel
 # TEST DEPENDENCIES
@@ -50,6 +51,7 @@ Requires:       python3-click
 Requires:       python3-cryptography
 Requires:       python3-fido2 >= 0.9
 Requires:       python3-keyring
+Requires:       python3-pskc
 Requires:       python3-pyscard
 Recommends:     python3-pyOpenSSL
 Provides:       python3-yubikey-manager
