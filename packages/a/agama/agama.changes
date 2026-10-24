@@ -1,7 +1,80 @@
 -------------------------------------------------------------------
-Wed Sep 30 12:41:05 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+Thu Oct 22 09:42:52 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Version 25
+
+-------------------------------------------------------------------
+Thu Oct 15 07:36:10 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not run RPM scriptlets when updating the agama-scripts package
+  (bsc#1285032).
+
+-------------------------------------------------------------------
+Thu Oct 15 07:35:10 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Fix storage model schema: request password attribute instead of
+  non-existent method attribute (gh#agama-project/agama#4038).
+
+-------------------------------------------------------------------
+Thu Oct 15 07:34:10 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix the proxy section of the profile JSON schema to use the
+  same property names as the proxy config (http, https, ftp,
+  gopher, socks, socks5) and reject unknown properties instead of
+  silently ignoring them (gh#agama-project/agama#3999, related to
+  gh#agama-project/agama#3069).
+
+-------------------------------------------------------------------
+Thu Oct 15 07:34:10 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- bsc#1271374
+  - added references to storage definitions into the OpenAPI schema
+
+-------------------------------------------------------------------
+Thu Oct  8 06:22:28 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Move back packaging agama-openapi-nightly into agama.srpm as
+  it is fast moving target, so it make sense to live together with
+  code from which it is generated. agama-openapi will be from
+  separated repo for stable releases.
+
+-------------------------------------------------------------------
+Thu Oct  1 11:55:11 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
 
 - properly copy SSL certificates to target system (bsc#1283318)
+
+-------------------------------------------------------------------
+Thu Oct  1 11:53:11 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Unify OpenAPI specification and manual JSON schemas:
+  - Generate standalone profile, proposal, and system schemas from
+    OpenAPI components using `cargo xtask openapi`.
+  - Replace manually maintained profile.schema.json and
+    software.schema.json with schemas generated from Rust sources.
+  - Move packaging of OpenAPI specifications and schemas to standalone
+    agama-openapi package, and require agama-openapi-nightly in
+    agama-common.
+  - Port descriptions, titles, and examples from legacy schemas.
+
+-------------------------------------------------------------------
+Tue Sep 29 16:45:27 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Do not query the software service while a software task is
+  pending: it cannot answer until the software proposal is ready,
+  and the waiting request held every other API request back
+  (bsc#1283098). Pending storage tasks now count too while
+  installing.
+
+-------------------------------------------------------------------
+Mon Sep 28 09:10:11 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Allow finishing installation independently on the current stage
+  (needed for gh#agama-project/agama#3911).
+
+-------------------------------------------------------------------
+Mon Sep 28 08:50:52 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Add support for riscv64 (gh#agama-project/agama#3867)
 
 -------------------------------------------------------------------
 Tue Sep 22 14:39:11 UTC 2026 - José Iván López González <jlopez@suse.com>
@@ -16,13 +89,13 @@ Tue Sep 22 13:50:57 UTC 2026 - José Iván López González <jlopez@suse.com>
   same scope (bsc#1280257).
 
 -------------------------------------------------------------------
-Mon Sep 21 06:23:54 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+Mon Sep 21 15:32:00 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Allow defining multiple licenses per product (jsc#PED-16988,
   gh#agama-project/agama#3953).
 
 -------------------------------------------------------------------
-Fri Sep 18 16:29:17 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
+Mon Sep 21 15:31:00 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
 
 - Recognize the ports whose connection refers to its controller by
   UUID instead of by interface name, so the bonds and bridges
@@ -30,21 +103,83 @@ Fri Sep 18 16:29:17 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
   back (gh#agama-project/agama#3562).
 
 -------------------------------------------------------------------
-Fri Sep 18 14:13:16 UTC 2026 - José Iván López González <jlopez@suse.com>
+Mon Sep 21 15:30:00 UTC 2026 - José Iván López González <jlopez@suse.com>
 
 - Avoid blocking storage service (bsc#1280751).
 
 -------------------------------------------------------------------
-Tue Sep 15 16:19:38 UTC 2026 - José Iván López González <jlopez@suse.com>
+Mon Sep 21 07:11:10 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Drop the dependency on async_trait (gh#agama-project/agama#3950)
+  because it is not needed by our use case. This change reduces the
+  build time.
+
+-------------------------------------------------------------------
+Fri Sep 18 07:30:00 UTC 2026 - José Iván López González <jlopez@suse.com>
 
 - Cancel actions if setting storage, DASD, zFCP, iSCSI or bootloader
   configs fail (related to bsc#1280006).
+
+-------------------------------------------------------------------
+Wed Sep 16 11:50:09 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Add experimental support for 32 bit architectures which are in
+  TW ports (bsc#1266309)
+
+-------------------------------------------------------------------
+Thu Sep 10 14:00:00 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
+
+- Report more details about the network devices ("speed",
+  "carrier", "driver", "busPath" and "mtu"), so the user interface
+  can tell one device from another when picking the ports of a bond
+  or a bridge (related to bsc#1279417, gh#agama-project/agama#3884)
+
+-------------------------------------------------------------------
+Thu Sep 10 13:10:57 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add a WebSocket-backed terminal endpoint, spawning a shell
+  attached to a pseudo-terminal for the web UI terminal panel
+  (gh#agama-project/agama#3868).
+
+-------------------------------------------------------------------
+Thu Sep 10 08:26:22 UTC 2026 - PadaCommit <185716433+PadaCommit@users.noreply.github.com>
+
+- Fix schema URLs in rust/share/ (gh#agama-project/agama#3881):
+  - Use parsable URLs for schema IDs
+  - Update schema paths in profile examples
+  - Fix SLE-16 profile schema URL example
 
 -------------------------------------------------------------------
 Wed Sep  9 10:21:21 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
 
 - Disable local installation repositories instead of removing it
   from target system (bsc#1277466)
+
+-------------------------------------------------------------------
+Fri Sep  4 10:52:03 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash when validating or evaluating a profile without
+  content (bsc#1278737).
+
+-------------------------------------------------------------------
+Wed Sep  2 14:15:16 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Improve storage schema to force the encryption key size to be
+  multiple of 8 (gh#agama-project/agama#3854).
+
+-------------------------------------------------------------------
+Wed Sep  2 14:09:43 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Sanitize rust dependencies and add CI task to check unused
+  dependencies (gh#agama-project/agama#3856).
+
+-------------------------------------------------------------------
+Wed Sep  2 09:31:32 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
+
+- Use camelCase consistently for the JSON API keys renaming the
+  network connection "ieee-8021x" key to "ieee8021x", still
+  accepting the old name for backward compatibility
+  (gh#agama-project/agama#3858).
 
 -------------------------------------------------------------------
 Tue Sep  1 15:51:02 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
