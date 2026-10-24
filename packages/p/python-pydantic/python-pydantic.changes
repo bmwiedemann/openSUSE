@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Oct 16 04:52:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.14.1:
+  ## New Features
+  * Add support for multiple_of constraint in fraction and timedelta core
+    schemas
+  * Add __namespace__ parameter to create_model()
+  ## Changes
+  * Add an ordered-dict core schema
+  * Add a counter core schema
+  * Do not mutate model_config attribute
+  * Reject newlines in NameEmail validation
+  ## Performance
+  * Avoid Python tuple allocation during model fields validation
+  * Avoid unnecessary extra dict allocation in model validation
+  ## Fixes
+  * Fix arguments-v3 schema with variadic keywords
+  * Fix TypeError on ForwardRef on Python 3.10.0
+  * Support closed and extra_items via inheritance in TypedDict
+  * Enforce the max_digits whole-digits limit in the Python Decimal validator
+  * Reject out-of-range int inputs for timedelta
+  * Support named tuples in Sequence validation
+  * Call enum constructors in both validation modes
+  * Fix documentation examples not raising and remove unused string_sub_type
+    unused error code
+  * Catch OverflowError during ByteSize validation
+  * Require multiple_of constraints to be positive
+  * Always pop field name and model type stacks during schema generation
+  * Handle TypeError gracefully during docstring extraction
+  * Fix config propagation of stdlib dataclasses and TypedDicts in JSON
+    Schema
+  * Don't apply ser_json_timedelta to all datetime types in serialization
+    inference
+  * Encode JSON Schema defaults with a consistent configuration
+  * Propagate init and kw_only=False from Field() to stdlib dataclass fields
+  * Respect propagated extra config in the JSON Schema of stdlib dataclasses
+  * Handle OS errors during ZoneInfo validation
+  * Handle exceptions during Decimal validation
+  * Rebuild incomplete types during serialization inference
+  * Reject large exponents in Fraction validation
+  * Avoid validating URL prefix multiple times in multi host URLs
+- Drop patches:
+  * support-ruff-0.16.patch
+  * pytest91.patch
+
+-------------------------------------------------------------------
 Wed Sep 23 10:49:33 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream pytest91.patch to fix tests with pytest 9.1

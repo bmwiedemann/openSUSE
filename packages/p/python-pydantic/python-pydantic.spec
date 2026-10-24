@@ -27,22 +27,18 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic%{psuffix}
-Version:        2.13.5
+Version:        2.14.1
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
 URL:            https://github.com/pydantic/pydantic
 Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support changes required by ruff 0.16
-Patch0:         support-ruff-0.16.patch
-# PATCH-FIX-UPSTREAM https://github.com/pydantic/pydantic/pull/13357 Fix test failures with pytest >= 9.1.0
-Patch1:         pytest91.patch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic-core = 2.46.5}
+BuildRequires:  %{python_module pydantic-core = 2.50.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
@@ -63,11 +59,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv >= 0.10.4}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module rich}
+BuildRequires:  %{python_module time-machine}
 %endif
 Requires:       python-annotated-types >= 0.6.0
-Requires:       python-pydantic-core = 2.46.5
-Requires:       python-typing-extensions >= 4.14.1
-Requires:       python-typing-inspection >= 0.4.2
+Requires:       python-pydantic-core = 2.50.1
+Requires:       python-typing-extensions >= 4.16.0
+Requires:       python-typing-inspection >= 0.4.4
 Recommends:     python-email-validator >= 2.0
 BuildArch:      noarch
 %python_subpackages
