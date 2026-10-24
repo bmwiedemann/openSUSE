@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 23 19:42:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- improve summaries
+
+-------------------------------------------------------------------
+Thu Oct 22 14:14:19 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Use HTTP to download sources instead of FTP.
+
+-------------------------------------------------------------------
+Sat Oct 17 17:50:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.3.11:
+  * New API fftw_copy_plan().
+  * Support SVE SIMD instructions.
+  * Support LoongArch LSX and LASX SIMD instructions.
+  * Support Apple ARM, RISC-V and LoongArch cycle counters.
+  * Fix SSE2 double-precision unaligned access segfaults.
+  * threads/openmp/mpi-devel now require pkgconfig(fftw3/f/l)
+    (provided by fftw3-devel); man pages ship as regular files.
+- Modernize spec file (spec-cleaner, drop Group/BuildRoot).
+
+-------------------------------------------------------------------
 Mon Mar 24 13:05:44 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable and remove support for gnu-hpc build flavours (bsc#1239982)
@@ -193,7 +216,7 @@ Tue Nov  7 11:33:09 UTC 2017 - eich@suse.com
   * Bugfix: MPI Fortran-03 headers were missing in FFTW 3.3.6-pl1.
   * Bugfix: FFTW 3.3.6 had the wrong libtool version number, and generated
     shared libraries of the form libfftw3.so.2.6.6 instead of
-    libfftw3.so.3.*.  
+    libfftw3.so.3.*.
   * The fftw_make_planner_thread_safe() API introduced in 3.3.5 didn't
     work, and this 3.3.6 fixes it.  Sorry about that.
   * compilation fixes for IBM XLC
@@ -230,7 +253,7 @@ Thu Oct 12 05:46:35 UTC 2017 - eich@suse.com
 -------------------------------------------------------------------
 Mon Sep 25 09:36:55 UTC 2017 - cgoll@suse.com
 
-- removed unnedded dependency packages 
+- removed unnedded dependency packages
 
 -------------------------------------------------------------------
 Thu Sep  7 07:46:53 UTC 2017 - cgoll@suse.com
@@ -257,7 +280,7 @@ Mon Aug  1 22:03:49 UTC 2016 - mardnh@gmx.de
       This code is expected to work but the FFTW maintainers do not have
       hardware to test it.
     - generic SIMD support using gcc vector intrinsics
-  * Add fftw_make_planner_thread_safe() API    
+  * Add fftw_make_planner_thread_safe() API
   * fix #18 (disable float128 for CUDACC)
   * fix #19: missing Fortran interface for fftwq_alloc_real
   * fix #21 (don't use float128 on Portland compilers, which pretend to be gcc)
@@ -272,7 +295,7 @@ Sat Apr 19 19:16:23 UTC 2014 - mardnh@gmx.de
 Sat Apr 19 17:37:38 UTC 2014 - mardnh@gmx.de
 
 - update to version 3.3.4
-  
+
   * New functions fftw_alignment_of (to check whether two arrays are equally
     aligned for the purposes of applying a plan) and fftw_sprint_plan
     (to output a description of plan to a string).
@@ -285,7 +308,7 @@ Sat Apr 19 17:37:38 UTC 2014 - mardnh@gmx.de
 
   * Default to Win32 threads, not pthreads, if both are present.
 
-  * Various build-script fixes. 
+  * Various build-script fixes.
 
 - Drop obsoleted 1_man_macro.patch
 
@@ -310,13 +333,13 @@ Tue Jul  3 18:31:53 UTC 2012 - coolo@suse.com
 
   * Removed an archaic stack-alignment hack that was failing with
     gcc-4.7/i386.
-  
+
   * Added stack-alignment hack necessary for gcc on Windows/i386.  We
     will regret this in ten years (see previous change).
-    
+
   * Fix incompatibility with Intel icc which pretends to be gcc
     but does not support quad precision.
-  
+
   * make libfftw{threads,mpi} depend upon libfftw when using libtool;
     this is consistent with most other libraries and simplifies the life
     of various distributors of GNU/Linux.
@@ -336,7 +359,7 @@ Thu Apr 26 04:26:02 UTC 2012 - adrian@suse.de
 -------------------------------------------------------------------
 Fri Mar 16 01:17:58 UTC 2012 - alinm.elena@gmail.com
 
-- source the mpi environment  
+- source the mpi environment
 
 -------------------------------------------------------------------
 Tue Mar  6 14:16:22 UTC 2012 - dhall@wustl.edu
@@ -376,7 +399,7 @@ Mon Nov 28 13:33:44 UTC 2011 - idoenmez@suse.de
 -------------------------------------------------------------------
 Mon Nov 28 01:48:17 CET 2011 - ro@suse.de
 
-- fix build on s390/s390x without openmpi 
+- fix build on s390/s390x without openmpi
 
 -------------------------------------------------------------------
 Mon Nov 21 17:45:00 UTC 2011 - jengelh@medozas.de
@@ -412,7 +435,7 @@ Wed Aug  3 13:58:49 UTC 2011 - dhall@wustl.edu
   * Add support for the AVX extensions to x86 and x86-64
   * Added Fortran 2003 interface
   * Added MPI distributed-memory transforms
-  * Add support for quad-precision __float128 in gcc 4.6 or later (on x86. 
+  * Add support for quad-precision __float128 in gcc 4.6 or later (on x86.
     x86-64, and Itanium). The new routines use the fftwq_ prefix.
   * New convenience functions fftw_alloc_real and fftw_alloc_complex to use
     fftw_malloc for real and complex arrays without typecasts or sizeof.
@@ -431,10 +454,10 @@ Wed Aug  3 13:58:49 UTC 2011 - dhall@wustl.edu
 
 -------------------------------------------------------------------
 Sun Apr 24 12:59:34 UTC 2011 - toddrme2178@gmail.com
-  
+
 - Add 32bit compatibility libraries
 - Changed -devel package groups to Development/Libraries/C and C++ (fix for RPMLINT warning)
-  
+
 -------------------------------------------------------------------
 Thu Apr 22 18:59:44 UTC 2010 - davejplater@gmail.com
 
@@ -447,7 +470,7 @@ Thu Jul 16 15:27:24 CEST 2009 - tiwai@suse.de
  * Improve performance of some copy operations of complex arrays
  * Add configure flag to disable alloca()
  * Planning in FFTW_ESTIMATE mode for r2r transforms became slower
-   between fftw-3.1.3 and 3.2. This regression has now been fixed. 
+   between fftw-3.1.3 and 3.2. This regression has now been fixed.
 
 -------------------------------------------------------------------
 Thu Apr 23 17:36:12 CEST 2009 - tiwai@suse.de
@@ -474,12 +497,12 @@ Mon Feb 16 12:24:16 CET 2009 - tiwai@suse.de
   * Some documentation clarifications
   * FAQ was accidentally omitted from 3.2 tarball.
   * Remove some extraneous (harmless) files accidentally included
-    in a subdirectory of the 3.2 tarball. 
+    in a subdirectory of the 3.2 tarball.
 
 -------------------------------------------------------------------
 Sat Aug  2 10:46:31 CEST 2008 - tiwai@suse.de
 
-- Reduce dependency without release number. 
+- Reduce dependency without release number.
   This allows to install packages on different media with
   different release numbers.
 
