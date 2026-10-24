@@ -153,8 +153,7 @@ Conflicts:      postfix-lmdb < %{version}-%{release}
 
 %description lmdb
 Postfix plugin to support LMDB maps. This library will be loaded
-by starting postfix if you'll access a postmap which is stored in
-lmdb.
+by starting postfix if you access a postmap which is stored in lmdb.
 %endif
 
 %prep

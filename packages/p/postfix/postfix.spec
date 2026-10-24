@@ -163,13 +163,13 @@ Requires(pre):  %{name} = %{version}
 Postfix aims to be an alternative to the widely-used sendmail program.
 
 %package      doc
-Summary:        Documentations for the %{name} package
+Summary:        Documentation for the %{name} package
 Group:          Productivity/Networking/Email/Servers
 BuildArch:      noarch
 
 %description doc
 Postfix aims to be an alternative to the widely-used sendmail program.
-This package contains the documentation for %{name}
+This package contains the documentation for %{name}.
 
 %package      mysql
 Summary:        Postfix plugin to support MySQL maps
@@ -181,7 +181,7 @@ Provides:       group(vmail)
 
 %description mysql
 Postfix plugin to support MySQL maps. This library will be loaded by
-starting %{name} if you'll access a postmap which is stored in mysql.
+starting %{name} if you access a postmap which is stored in mysql.
 
 %package      postgresql
 Summary:        Postfix plugin to support PostgreSQL maps
@@ -190,7 +190,7 @@ Requires(pre):  %{name} = %{version}
 
 %description postgresql
 Postfix plugin to support PostgreSQL maps. This library will be loaded
-by starting %{name} if you'll access a postmap which is stored in
+by starting %{name} if you access a postmap which is stored in
 PostgreSQL.
 
 %if %{with ldap}
@@ -261,7 +261,7 @@ else
   export AUXLIBS_PGSQL="-lpq"
 fi
 #
-export CCARGS="${CCARGS} -DHAS_LMDB -I/usr/local/include" \
+export CCARGS="${CCARGS} -DHAS_LMDB"
 export AUXLIBS_LMDB="-llmdb"
 #
 # TODO
