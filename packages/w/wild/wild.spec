@@ -18,7 +18,7 @@
 
 
 Name:           wild
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        A very fast linker for Linux
 License:        Apache-2.0 OR MIT
@@ -29,6 +29,7 @@ Patch0:         disable-tidy-tests.patch
 BuildRequires:  binutils-devel
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+BuildRequires:  rust >= 1.99.0
 # For testing
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel-static

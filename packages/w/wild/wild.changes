@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Oct 24 10:50:10 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Refresh disable-tidy-tests.patch for the 0.11.0 source layout
+- Require Rust 1.99.0 or newer to build Wild
+- Update to version 0.11.0:
+  * Enable the Wasm feature by default. Wild can now link Wasm
+    modules, though debug information is not supported yet.
+  * Greatly expand GNU linker script support. Wild can now link
+    Linux kernel modules and is close to linking the Linux kernel.
+  * Advance the Mac port: Wild can link itself on Mac, and a
+    maintainer now uses it as the default linker for Rust on Mac.
+    The port is not enabled by default yet.
+  * Improve performance on several filesystems and add general
+    optimizations. ELF COMDAT support adds some overhead.
+  * Limit default threads to 32 to avoid contention on Linux's
+    per-inode mutex; --threads can override the limit.
+  * Expand benchmarks to cover more filesystems and existing or new
+    output files.
+  * Add linker script commands and expressions, section attributes,
+    symbol and alignment handling, orphan handling, and additional
+    GNU linker options. Add AArch64, x86_64, and ppc64le
+    relocation and relaxation support.
+  * Add --image-base, --only-keep-debug, --no-keep-memory,
+    --discard-*, executable stack, and linker version options.
+  * Improve parallel archive parsing, partial linking, relocation
+    processing, debug relocation handling, memory allocation, and
+    filesystem output handling.
+  * Fix linker script symbols and location counters, LTO and
+    dynamic symbols, TLS and PLT relocations, GOT/PLT relaxation,
+    ELF properties and section handling, archive/shared-library
+    selection, and deterministic output.
+  * Extend Wasm linking with shared-memory TLS, exports, stripping,
+    feature checks, section retention, and symbol handling.
+  * Advance Mach-O linking with dylib, TLS, fixup, exports, and
+    compact unwind support. Add COFF link.exe-style argument
+    parsing.
+  * See the full changelog at
+    /usr/share/doc/packages/wild/CHANGELOG.md.
+
+-------------------------------------------------------------------
 Fri Aug  7 19:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Remove the obsolete RustSec risk waiver
