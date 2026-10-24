@@ -202,4 +202,12 @@ satisfy their ranges; ws 8.21.3 is npm latest. No CVE or GHSA in the
     <comment>Update to 2.3.0</comment>
     <requestid>1386740</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b292bb926d041833d7d76f135bef6ba1</srcmd5>
+    <version>2.3.1</version>
+    <time>1792872242</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.3.1</comment>
+    <requestid>1392034</requestid>
+  </revision>
 </revisionlist>

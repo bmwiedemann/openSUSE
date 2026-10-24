@@ -30,7 +30,7 @@
 %define chokidar_version 4.0.3
 %define readdirp_version 4.1.2
 Name:           kimi-code
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Command-line agentic coding assistant powered by Kimi models
 License:        MIT

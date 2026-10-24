@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:26:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.1:
+  * Offer to take over a session that is still in use after a
+    retry, so sessions left locked by an exited process can be
+    used again; KIMI_CODE_SESSION_LOCK=0 turns off the session
+    lock
+  * Fix sessions occasionally remaining occupied after an
+    application crash on macOS and Linux
+  * Show the holding client's name in session-in-use errors
+  * Web dashboard interaction improvements and bug fixes
+
+-------------------------------------------------------------------
 Wed Oct 21 07:54:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.3.0:
