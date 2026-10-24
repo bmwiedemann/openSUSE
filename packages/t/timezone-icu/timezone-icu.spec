@@ -25,6 +25,7 @@ Group:          System/Base
 URL:            https://unicode-org.github.io/icu/userguide/datetime/timezone/
 Source:         %name-%version.tar.xz
 BuildRequires:  fdupes
+BuildRequires:  libicu-devel
 BuildRequires:  xz
 BuildArch:      noarch
 
@@ -61,10 +62,13 @@ This subpackage contains these data tables, in big-endian format.
 
 %install
 b="%buildroot"
-# icu4c >= 54 is able to recognize these override fragments (the binary format is 44).
+#
+# icu4c >= 54 is able to recognize override fragment files
+# (the binary format itself is unchanged since 44).
+#
 vlist="60.2 65.1 69.1" # Leap 15
 vlist="$vlist 77.1" # Leap 16
-vlist="$vlist 78.3" # Slowroll/Tumbleweed
+vlist="$vlist %{pkg_version libicu-devel}"
 for version in $vlist; do
 	maj="${version%.*}"
 	d="$b/%_datadir/icu/$version/icudt$maj"
