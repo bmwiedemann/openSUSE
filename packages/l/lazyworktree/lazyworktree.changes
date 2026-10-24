@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:59:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.51.0:
+  This release introduces support for the Herdr multiplexer,
+  implements worktree tracking for multiplexer sessions, adds
+  interactive branch checkout and sync improvements, and enhances
+  safety during worktree updates.
+  * Features
+    - Herdr Multiplexer Support: Added integration for Herdr as a
+      custom command target, supporting both workspace and
+      named-session modes, multi-tab layouts, containerized
+      execution, CLI exec support, and a default H keybinding.
+    - Worktree-Aware Session Tracking: Tagged tmux sessions and
+      Herdr workspaces with their associated worktree metadata,
+      allowing sessions to be accurately rediscovered even if
+      session names change.
+    - Interactive Picker Highlights: Worktrees that are already
+      checked out are now flagged with [worktree] and highlighted
+      in green within the -P (pull request) and -I (issue)
+      interactive selectors.
+    - Direct Branch Checkout: The create command can now check out
+      an existing local or remote-tracking branch directly when no
+      explicit worktree name is specified, falling back to a
+      generated branch name if already in use.
+    - Diverged Worktree Guidance: Provided suggested git rebase and
+      git reset --hard commands when existing worktrees cannot be
+      updated due to divergent history.
+    - Safe Worktree Fast-Forwarding: Enhanced --update-on-existing
+      to safely fast-forward clean worktrees to the latest upstream
+      commit rather than performing hard resets, leaving dirty,
+      ahead, or diverged worktrees intact.
+    - Visual Warnings for Skipped Updates: Added highlighted
+      console notifications when worktree updates are skipped due
+      to local modifications, unpushed commits, or diverged
+      branches.
+  * Bug Fixes
+    - tmux Session Server Lookups: Fixed an issue where new
+      terminal tabs in tmux looked up sessions against the current
+      tmux server socket rather than the default server socket used
+      by the new tab.
+    - Multiplexer Session Termination Safety: Prevented on_exists:
+      kill from terminating unrelated untagged sessions sharing the
+      same name.
+    - Cross-Version tmux Session Names: Sanitized dots to
+      underscores in tmux session names across all versions to
+      ensure consistent naming and discovery on older tmux
+      releases.
+    - CLI new_tab Multiplexer Handling: Allowed tmux and zellij
+      custom commands configured with new_tab to execute in CLI
+      mode by attaching within the active terminal rather than
+      failing.
+    - Herdr Socket and Environment Routing: Fixed socket routing
+      for ambient Herdr sessions, ensured containerized Herdr tabs
+      fall back to sh when bash is missing, and preserved existing
+      panes when tabs specify no custom command.
+    - Active Branch Reuse on Worktree Creation: Handled existing
+      checked-out branches gracefully during pull request worktree
+      creation by returning the active path instead of aborting
+      with an error.
+  * Maintenance
+    - Simplified and polished project documentation, CLI
+      references, man pages, and the README.md for clarity and
+      consistency (#104).
+    - Synchronized the minimum required Go version to Go 1.26
+      across documentation and project metadata (#104).
+    - Addressed linter warnings in the documentation
+      synchronization scripts.
+  * Dependencies
+    - Updated charm.land/bubbletea/v2 to v2.1.0.
+    - Updated github.com/urfave/cli/v3 to v3.14.0.
+    - Updated golang.org/x/sys, golang.org/x/term,
+      golang.org/x/sync, and other indirect dependencies to their
+      latest versions.
+
+-------------------------------------------------------------------
 Tue Sep 22 04:39:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.50.1:
