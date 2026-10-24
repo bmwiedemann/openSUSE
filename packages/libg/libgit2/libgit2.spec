@@ -39,7 +39,6 @@ Source0:        https://github.com/libgit2/libgit2/archive/v%{version}.tar.gz#/%
 Source1:        libgit2-rpmlintrc
 BuildRequires:  cmake >= 3.5.1
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpcre2-posix)
 BuildRequires:  pkgconfig(libssh2)
 BuildRequires:  pkgconfig(openssl)
