@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:16:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.31.3:
+  * Security update
+    https://istio.io/latest/news/security/istio-security-2026-008/
+    - Removed trust in the compromised eMudhra intermediate CA
+      certificates. The CA bundle in the ubuntu-based and
+      distroless images no longer includes emSign ECC Root CA - G3.
+    - CVE-2026-111943: Updated Go to 1.26.10, which rejects
+      certificate chains that contain any of the compromised
+      eMudhra intermediate keys in istiod, istioctl, and
+      pilot-agent.
+    - Updated rustls-webpki in ztunnel to 0.103.16, which rejects
+      certificate chains that contain any of the compromised
+      eMudhra intermediate keys.
+  * Changes
+    - Fixed istioctl bug-report --duration not filtering logs when
+      used without --end-time.
+
+-------------------------------------------------------------------
 Fri Oct 16 04:51:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.31.2:
