@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:57:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.10:
+  * test: don't assert temp-dir cleanup on Windows in the registry
+    buildpack test (#2722)
+  * deps: ignore two advisories whose code paths pack does not link
+    (#2721)
+  * build(deps): bump Go to 1.26.10 for CVE-2026-111943 (#2720)
+  * test: assert the annotation we set, not the total annotation
+    count (#2717)
+  * fix: propagate the Go 1.26 bump to the hard-coded Go pins
+    (#2715)
+  * ci: fix duplicate-issue search in the release canary (#2716)
+  * build(deps): bump Go to 1.26.9 and security-relevant deps
+    (#2713)
+  * fix: pass the format string directly to Debugf (#2712)
+  * Dependency updates
+    - golang.org/x/crypto v0.54.0 → v0.57.0
+      CVE-2026-78662, CVE-2026-56855
+      DoS on deadlocked ssh channels
+    - golang.org/x/net (indirect) v0.56.0 → v0.60.0
+      CVE-2026-78659/78660/78663/78669/97032
+      HTTP/2 memory exhaustion, malformed framing headers, double
+      flow-control refund, HPACK encoder race
+    - github.com/moby/go-archive v0.2.0 → v0.3.3
+      GHSA-hfg8-hc9c-6c3h / CVE-2026-17106
+      crafted tar can write outside the extraction directory
+    - github.com/moby/sys/user v0.4.0 → v0.4.1
+      GHSA-mjcv-p78q-w5fw / CVE-2026-61801
+      DoS via unbounded parsing of user/group files
+
+
+-------------------------------------------------------------------
 Mon Aug 10 05:09:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.9:
