@@ -1,7 +1,7 @@
 #
 # spec file for package hidapi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %define sover 0
 Name:           hidapi
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Simple library for communicating with USB and Bluetooth HID devices
 License:        BSD-3-Clause OR GPL-3.0-or-later
-Group:          System/Libraries
 URL:            https://github.com/libusb/hidapi
 Source:         https://github.com/libusb/hidapi/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE do_not_install_docs.patch -- don't let make install put files into /usr/share/doc/packages
 Patch0:         do_not_install_docs.patch
+# Keep plain -devel BuildRequires/Requires: no pkgconfig()/perl() overexpansion
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -42,7 +42,6 @@ While it can be used to communicate with standard HID devices like keyboards, mi
 
 %package -n libhidapi-devel
 Summary:        Development libraries and header files for hidapi
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libhidapi-hidraw%{sover} = %{version}
 Requires:       libhidapi-libusb%{sover} = %{version}
@@ -55,7 +54,6 @@ programs using the hidapi library.
 
 %package -n libhidapi-hidraw%{sover}
 Summary:        Simple library for communicating with USB and Bluetooth HID devices
-Group:          System/Libraries
 
 %description -n libhidapi-hidraw%{sover}
 HIDAPI is a library which allows an application to interface with USB and Bluetooth HID-Class devices.
@@ -63,7 +61,6 @@ While it can be used to communicate with standard HID devices like keyboards, mi
 
 %package -n libhidapi-libusb%{sover}
 Summary:        Simple library for communicating with USB and Bluetooth HID devices
-Group:          System/Libraries
 
 %description -n libhidapi-libusb%{sover}
 HIDAPI is a library which allows an application to interface with USB and Bluetooth HID-Class devices.
@@ -81,10 +78,8 @@ While it can be used to communicate with standard HID devices like keyboards, mi
 make install DESTDIR=%{?buildroot}
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libhidapi-libusb%{sover} -p /sbin/ldconfig
-%post -n libhidapi-hidraw%{sover} -p /sbin/ldconfig
-%postun -n libhidapi-libusb%{sover} -p /sbin/ldconfig
-%postun -n libhidapi-hidraw%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libhidapi-libusb%{sover}
+%ldconfig_scriptlets -n libhidapi-hidraw%{sover}
 
 %files -n libhidapi-devel
 %doc README.md AUTHORS.txt HACKING.txt

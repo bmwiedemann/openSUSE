@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:23:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.15.0:
+  * general: add hid_send_output_report() (#677)
+  * general: add hid_read_error() (#721)
+  * winapi: add hid_winapi_set_write_timeout (#700)
+  * winapi: improve hid_get_report_descriptor and descriptor
+    reconstruction (#707)
+  * hidraw: report only Top-Level Usage_page/Usage pairs
+    as unique devices (#601)
+  * macOS: add option to mimic 1.0.0 compatibility version (#709)
+  * NetBSD: UHID native backend implementation (#612)
+  * libusb: allow building using non-POSIX runtime; support
+    Xbox 360/One controllers (#572)
+  * various other fixes and improvements
+- Spec cleanup: use %ldconfig_scriptlets, drop Group tags
+
+-------------------------------------------------------------------
 Thu Jul 20 09:37:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.0:
