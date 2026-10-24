@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:03:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.24.1:
+  * [Backport release-3.24] fix: Go 1.26.10, ca-certificates floor
+    and buildkit v0.34.1-okteto1 (eMudhra, CVE-2026-111943) (#5213)
+
+-------------------------------------------------------------------
 Thu Oct 08 05:29:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.24.0:
