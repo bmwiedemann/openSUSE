@@ -15,19 +15,18 @@
 #
 
 Name:           steamos-powerbuttond
-Version:        3.3
+Version:        4.2
 Release:        0%{?dist}
 Summary:        Steam Deck power button daemon
-
 License:        BSD-2-Clause
-URL:            https://gitlab.com/evlaV/powerbuttond
+URL:            https://gitlab.steamos.cloud/holo/powerbuttond
 Source:         %{name}-%{version}.tar.xz
 Patch0:         steamos-powerbuttond-service.patch
-Patch1:         fix-cmdline-overflow.patch
-
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  systemd-rpm-macros
+# pkgconf-pkg-config provides the pkg-config tool the Makefile calls;
+# keep it instead of the redundant bare pkgconfig dependency.
 BuildRequires:  pkgconf-pkg-config
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libudev)
@@ -50,6 +49,7 @@ sed -i 's|$(CC) $(LIB_LDFLAGS) $(LDFLAGS) $< -o $@|$(CC) $< -o $@ $(LDFLAGS) $(L
 %make_install DESTDIR=%{buildroot}
 rm -r %{buildroot}/%{_userunitdir}/gamescope-session.service.wants
 
+# Keep the user scriptlet macros unbraced: they take the service name argument.
 %pre
 %systemd_user_pre %{name}.service
 
@@ -67,8 +67,8 @@ rm -r %{buildroot}/%{_userunitdir}/gamescope-session.service.wants
 %dir %{_prefix}/lib/hwsupport
 %{_prefix}/lib/hwsupport/%{name}
 %{_userunitdir}/%{name}.service
-%{_prefix}/lib/udev/rules.d/80-steamos-power-button.rules
+%{_prefix}/lib/udev/rules.d/70-steamos-power-button.rules
 %dir %{_prefix}/lib/udev/hwdb.d
-%{_prefix}/lib/udev/hwdb.d/80-steamos-power-button.hwdb
+%{_prefix}/lib/udev/hwdb.d/70-steamos-power-button.hwdb
 
 %changelog

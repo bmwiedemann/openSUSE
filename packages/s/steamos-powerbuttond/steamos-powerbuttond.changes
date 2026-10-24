@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 23 17:39:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.2:
+  * Move udev rules/hwdb from 80- to 70- prefix so the power button
+    keeps working with systemd v258 in gamescope-session
+  * Support ASUS ROG Xbox Ally and Xbox Ally X, ZOTAC Gaming Zone Pro;
+    fix Legion Go 2 long-press mapping and cover its BIOS variants
+  * Detect devices by key presence instead of an explicit list, track
+    META+F16, support lid switch, SIGHUP reload, node blacklisting,
+    raise max devices from 2 to 10
+  * Fix short-press key-repeat handling and long-press detection
+    after suspend/resume by re-enumerating stale device FDs
+  * Switch _service to official upstream
+    (gitlab.steamos.cloud/holo/powerbuttond); the previous mirror
+    carries no tags past 3.3
+- Drop fix-cmdline-overflow.patch: upstream bounded the device loop
+  by MAX_DEVS, so the downstream argument guard is redundant
+
+-------------------------------------------------------------------
 Mon Oct 20 11:13:55 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add fix-cmdline-overflow.patch: this fixes memory corruption if more than

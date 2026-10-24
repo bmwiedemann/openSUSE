@@ -1,6 +1,6 @@
 <services>
 	<service name="tar_scm" mode="manual">
-		<param name="url">https://gitlab.com/evlaV/powerbuttond.git</param>
+		<param name="url">https://gitlab.steamos.cloud/holo/powerbuttond.git</param>
 		<param name="scm">git</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="filename">steamos-powerbuttond</param>
