@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 23 10:58:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.99.4:
+  * Update module github.com/yuin/goldmark to v1.7.17 [SECURITY] (#5460)
+  * Update module golang.org/x/net to v0.60.0 [SECURITY] (#5464)
+  * Update module golang.org/x/crypto to v0.56.0 [SECURITY] (#5462)
+  * Update dependency trufflesecurity/.github to v1.0.5 (#5442)
+  * Update github.com/trufflesecurity/ldap-verify digest to 4a15faf (#5441)
+  * Add Lambda Cloud API key detector (#5435)
+  * Clean up Git source logging for per-source debug (#5451)
+  * Mark results whose verification was skipped (#5448)
+  * Add per-source debug option and hide sensitive data in debug logs (#5446)
+
+-------------------------------------------------------------------
 Tue Oct 20 07:04:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.99.3:
