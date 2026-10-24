@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:47:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.164.0:
+  * Reusable prompts and slash commands in ten numbered /presets slots
+    with a keyboard menu; inline /model and /permissions arguments for
+    model, reasoning effort, speed and permission profiles
+  * Viewed and generated image previews in the fullscreen transcript on
+    terminals with Kitty or Sixel graphics
+  * Enterprise MCP authentication via Codex account grants and credential
+    masking for remote Bash and Zsh snapshot sessions; Bedrock setup
+    wizard enabled by default
+  * Failed compaction no longer loses conversation history; session resume
+    restores compressed histories and thread settings; Windows proxy
+    authentication and hardened sandbox checks for macOS case-variant
+    paths and replaceable symlinks
+  * Reduced disk usage from installs and marketplace checkouts; embedded
+    JavaScript runtime updated to V8 152.2.0
+- Drop codex-bump-gix-0.88.patch and codex-gix-error-anyhow.patch,
+  obsolete now that upstream ships gix 0.89.0 with the fixed
+  gix-pack 0.76.0 (boo#1285151):
+  * CVE-2026-109349: gix-pack aborts on the header of a crafted
+    pack-version-3 pack file
+  * CVE-2026-109350: gix-pack misresolves an ofs-delta base distance
+    on crafted input
+  * CVE-2026-109351: gix-pack can exhaust memory on the header
+    object count of a crafted pack file
+- Raise the rust build floor to 1.99 for upstream's pinned toolchain
+- Rebase codex-drop-v8-code-mode.patch (V8 152.2.0) and
+  codex-system-libzstd.patch (zip 9.0.0 context) onto the new sources
+- Licence set re-derived from the new vendor tree: the tag gains
+  bzip2-1.0.6 for libbz2-rs-sys, linked via zip 9.0.0
+
+-------------------------------------------------------------------
 Sat Oct 17 13:25:42 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Ship a complete Codex package so the daemon, started by default

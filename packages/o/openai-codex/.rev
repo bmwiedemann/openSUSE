@@ -541,4 +541,12 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
     <comment>Ship complete Codex package layout so the default daemon works</comment>
     <requestid>1385608</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a102cafb5f62b1cd59db5e576048ff08</srcmd5>
+    <version>0.164.0</version>
+    <time>1792872242</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.164.0</comment>
+    <requestid>1392031</requestid>
+  </revision>
 </revisionlist>

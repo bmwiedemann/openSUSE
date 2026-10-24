@@ -11,10 +11,8 @@ upstream submission.
 
 --- a/codex-rs/Cargo.toml
 +++ b/codex-rs/Cargo.toml
-@@ -552,7 +552,7 @@
- winapi-util = "0.1.11"
- windows-sys = "0.61.2"
- zip = "2.4.2"
+@@ -573,5 +573,5 @@
+ ] }
 -zstd = "0.13"
 +zstd = { version = "0.13", features = ["pkg-config"] }
  

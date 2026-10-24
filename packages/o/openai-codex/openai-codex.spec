@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.163.0
+Version:        0.164.0
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
@@ -77,6 +77,19 @@ Summary:        OpenAI Codex coding agent for the terminal
 # Apache-2.0 528, MIT 181, Unicode-3.0 20, MPL-2.0 12, ISC 9,
 # BSD-3-Clause 9, Zlib 5, BSD-2-Clause 1, CC0-1.0 1,
 # CDLA-Permissive-2.0 1 - so the tag above is unchanged by this bump.
+# 0.164.0 re-derives with the same scope for a bigger vendor tree: 775
+# third-party crates in the codex-cli closure (774 tallied, aws-lc-sys
+# itemised separately as before) - Apache-2.0 542, MIT 178,
+# Unicode-3.0 20, MPL-2.0 12, ISC 9, BSD-3-Clause 9, Zlib 5,
+# BSD-2-Clause 1, CC0-1.0 1, CDLA-Permissive-2.0 1, bzip2-1.0.6 1.
+# The newcomer is libbz2-rs-sys 0.2.5 ("bzip2-1.0.6"): upstream moves zip
+# 2.4.2 -> 9.0.0 and selects its bzip2-rs feature, which enables both the
+# bzip2-sys backend (system lib, see %%install) and bzip2's own default
+# backend, so the pure-Rust libbz2 code links in too and the tag gains
+# bzip2-1.0.6. constant_time_eq and dunce ("CC0-1.0 OR MIT-0 OR
+# Apache-2.0") elect Apache-2.0. Upstream's own gix move (0.81.0 ->
+# 0.89.0, gix-pack 0.68.0 -> 0.76.0) retires the boo#1285151 backport:
+# codex-bump-gix-0.88.patch and codex-gix-error-anyhow.patch are dropped.
 #  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate
 #    anywhere in the graph offering GPL. Apache-2.0 is elected, so this
 #    package carries no GPL obligation; please do not re-derive it as GPL.
@@ -110,7 +123,7 @@ Summary:        OpenAI Codex coding agent for the terminal
 #  - matchit (MIT AND BSD-3-Clause), encoding_rs, ring and aws-lc-rs similarly
 #    keep ISC / BSD-3-Clause in the tag even when Apache-2.0 is elected as the
 #    crate's primary licence.
-License:        Apache-2.0 AND MIT AND Unicode-3.0 AND MPL-2.0 AND ISC AND BSD-3-Clause AND Zlib AND BSD-2-Clause AND CC0-1.0 AND CDLA-Permissive-2.0
+License:        Apache-2.0 AND MIT AND Unicode-3.0 AND MPL-2.0 AND ISC AND BSD-3-Clause AND Zlib AND BSD-2-Clause AND CC0-1.0 AND CDLA-Permissive-2.0 AND bzip2-1.0.6
 URL:            https://github.com/openai/codex
 Source0:        https://github.com/openai/codex/archive/refs/tags/rust-v%{version}.tar.gz#/codex-rust-v%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -120,12 +133,8 @@ Patch0:         codex-drop-v8-code-mode.patch
 Patch1:         codex-no-startup-update-check.patch
 # PATCH-FIX-OPENSUSE codex-system-libzstd.patch mpluskal@suse.com -- link zstd-sys against the system libzstd instead of its bundled copy
 Patch2:         codex-system-libzstd.patch
-# PATCH-FIX-OPENSUSE codex-bump-gix-0.88.patch mpluskal@suse.com -- bump gix 0.81.0 -> 0.88.0 so the lockfile reaches the fixed gix-pack 0.75.0 (boo#1285151)
-Patch3:         codex-bump-gix-0.88.patch
-# PATCH-FIX-OPENSUSE codex-gix-error-anyhow.patch mpluskal@suse.com -- adapt codex-git-utils to the gix 0.88 gix-error API (boo#1285151)
-Patch4:         codex-gix-error-anyhow.patch
 # PATCH-FIX-OPENSUSE codex-disable-daemon-auto-update.patch mpluskal@suse.com -- distribution policy: the managed daemon must not replace the packaged binary with an upstream download
-Patch5:         codex-disable-daemon-auto-update.patch
+Patch3:         codex-disable-daemon-auto-update.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging >= 1.2.0
 BuildRequires:  cmake
@@ -133,7 +142,7 @@ BuildRequires:  gcc-c++
 # %%limit_build: cap parallel rustc jobs by available memory (see %%build)
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.95
+BuildRequires:  rust >= 1.99
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblzma)

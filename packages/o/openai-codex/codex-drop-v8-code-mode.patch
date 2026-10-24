@@ -58,7 +58,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  url = "2"
  urlencoding = "2.1"
  uuid = "1"
--v8 = "=150.4.0"
+-v8 = "=152.2.0"
  vt100 = "0.16.2"
  walkdir = "2.5.0"
  webbrowser = "1.2.2"
