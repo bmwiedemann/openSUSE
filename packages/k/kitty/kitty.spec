@@ -19,10 +19,10 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.48.2
+Version:        0.49.2
 Release:        0
 Summary:        A GPU-based terminal emulator
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          System/X11/Terminals
 URL:            https://sw.kovidgoyal.net/kitty/
 #Git-Clone:     https://github.com/kovidgoyal/kitty
@@ -41,6 +41,8 @@ BuildRequires:  fdupes
 BuildRequires:  librsync-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  shader-slang
+BuildRequires:  shader-slang-devel
 BuildRequires:  symbols-only-nerd-fonts
 BuildRequires:  terminfo
 BuildRequires:  wayland-devel
@@ -96,6 +98,7 @@ Requires:       libwayland-egl1
 Recommends:     %{name}-shell-integration
 Recommends:     %{name}-terminfo
 Recommends:     python3-importlib_resources
+Suggests:       shader-slang
 
 %description
 A terminal emulator that uses OpenGL for rendering.
