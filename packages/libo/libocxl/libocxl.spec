@@ -1,7 +1,7 @@
 #
 # spec file for package libocxl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %define soversion 1
 Name:           libocxl
-Version:        1.1.0
+Version:        1.2.1
 Release:        0%{?dist}
-Summary:        Allows to implement a user-space driver for an OpenCAPI accelerator
+Summary:        Access library for OpenCAPI accelerators
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/OpenCAPI/libocxl
 Source:         %{name}-%{version}.tar.gz
-Patch1:         remove_2_backslashes_in_shell_call.patch
-Patch2:         add_missing_ocxl_header_from_glibc_devel_in_leap.patch
+Patch1:         add_missing_ocxl_header_from_glibc_devel_in_leap.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc
+BuildRequires:  make
 ExclusiveArch:  ppc64le
 
 %description
@@ -37,7 +36,6 @@ Access library for OpenCAPI accelerator (refer to lib package with soversion)
 
 %package -n %{name}%{soversion}
 Summary:        OpenCAPI accelerator shared library
-Group:          System/Libraries
 
 %description -n %{name}%{soversion}
 Access library which allows to implement a user-space
@@ -45,7 +43,6 @@ driver for an OpenCAPI accelerator.
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{name}%{soversion}%{?_isa} = %{version}-%{release}
 Recommends:     %{name}-doc
 
@@ -55,26 +52,24 @@ developing applications that use %{name}.
 
 %package doc
 Summary:        Documentation files for %{name}
-Group:          Documentation/Man
 BuildArch:      noarch
 
 %description doc
-The *-docs package contains doxygen pages for
+The *-doc package contains doxygen pages for
 developing applications that use %{name}.
 
 %prep
 %autosetup -p1
 
 %build
-CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" make %{?_smp_mflags} V=1
+CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" %make_build V=1
 
 %install
 %make_install PREFIX=%{_prefix} docdir=%{_docdir}
 
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n %{name}%{soversion} -p /sbin/ldconfig
-%postun -n %{name}%{soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{soversion}
 
 %files -n %{name}%{soversion}
 %license COPYING

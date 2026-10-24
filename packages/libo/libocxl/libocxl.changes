@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:35:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.1:
+  * 1.2.0: support device names with a hexadecimal PCI domain name
+  * 1.2.0: allow overriding the driver info path via LIBOCXL_SYSPATH
+  * 1.2.0: documentation and Makefile/build enhancements
+  * 1.2.0: add tests for debug AFUs (memcpy, afp)
+  * 1.2.1: set the library version correctly
+  * 1.2.1: fix the test build
+- Drop remove_2_backslashes_in_shell_call.patch: fixed upstream by
+  reworking the header check for make 4.3 escape handling
+- Add BuildRequires: make
+- Retarget _service to 1.2.1 and switch tar_scm/recompress to
+  mode="manual"
+- Spec cleanup: drop obsolete Group: tags
+
+-------------------------------------------------------------------
 Tue Jun 16 13:46:05 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Update to version 1.1.0
