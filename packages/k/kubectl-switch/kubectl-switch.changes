@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:07:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.35:
+  * Bug Fixes
+    - d5deb80: fix(go): update golang.org/x/net ( v0.57.0 → v0.60.0
+      ) [security]
+  * Chores
+    - 7f2e33b: chore(mise): update aqua:helm/helm ( 4.3.0 → 4.3.1 )
+    - 3aa38cf: chore(mise): update direnv ( 2.37.1 → 2.38.1 )
+    - 00ce01f: chore(mise): update direnv ( 2.38.1 → 2.38.2 )
+    - 7228482: chore(mise): update github:goreleaser/goreleaser (
+      2.18.2 → v2.18.3 )
+    - 4855f66: chore(mise): update go ( 1.27.1 → 1.27.2 )
+    - 4663ff2: chore(mise): update golangci-lint ( 2.14.0 → 2.15.0
+      )
+
+-------------------------------------------------------------------
 Fri Oct 09 05:01:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.34:
