@@ -1,7 +1,7 @@
 #
 # spec file for package hw-probe
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Andrey Ponomarenko <andrewponomarenko@yandex.ru>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,14 @@
 
 
 Name:           hw-probe
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
-Summary:        Check operability of computer hardware and find drivers
+Summary:        Tool for checking operability of hardware and finding drivers
 License:        BSD-4-Clause AND LGPL-2.1-or-later
-Group:          Hardware/Other
 URL:            https://github.com/linuxhw/hw-probe
 Source0:        https://github.com/linuxhw/hw-probe/archive/%{version}/%{name}-%{version}.tar.gz
+# spec-cleaner deviation: keep plain perl, perl-libwww-perl and usbutils
+# names; provider-form expansion is noise on this non-Perl package.
 BuildRequires:  perl
 BuildRequires:  perl(Getopt::Long)
 Requires:       acpica
@@ -45,25 +46,17 @@ Recommends:     mcelog
 BuildArch:      noarch
 
 %description
-A tool to check operability of computer hardware and upload result
-to the Linux hardware database.
+Hardware Probe Tool (hw-probe) is a tool to probe for hardware, check
+operability and find drivers with the help of the Linux hardware
+database.
 
-Probe — is a snapshot of your computer hardware state and system
-logs. The tool checks operability of devices by analysis of logs
-and returns a permanent url to view the probe of the computer.
-
-The tool is intended to simplify collecting of logs necessary for
-investigating hardware related problems. Just run one simple
-command in the console to check your hardware and collect all the
-system logs at once:
-
-    sudo -E hw-probe -all -upload
-
-By creating probes you contribute to the HDD/SSD Real-Life
-Reliability Test study: https://github.com/linuxhw/SMART
+Each probe is a snapshot of the computer hardware state and system
+logs. The tool checks operability of devices by analysis of logs,
+uploads them and returns a permanent URL to view the probe of the
+computer.
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i "s|\#\!\/usr\/bin\/env perl|\#\!\/usr\/bin\/perl|g" hw-probe.pl
 
 %build

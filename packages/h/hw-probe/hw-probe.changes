@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:22:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.6:
+  * Probe for boltctl list --all
+  * Pass permissive mode to smartctl for reading SMART data
+    from uncommon devices
+  * Do not overwrite dmesg collected from /var/log/messages
+    if the result is empty
+  * Allow vmstat log type on non-BSD and pstree log type on BSD
+    platforms
+  * Check for MEGAcmd tool before running megacmd
+  * Fix parsing of drives and monitors
+  * Support for more drives, memory devices and LCD monitors
+  * Improve reuploading in case of error
+- Drop obsolete Group tag from spec file
+
+-------------------------------------------------------------------
 Tue Sep 19 21:30:33 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Correction of license based on legaldb
