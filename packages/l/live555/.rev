@@ -430,4 +430,29 @@
     <comment>1</comment>
     <requestid>1385899</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>50e0e187d3df1128323507b15e6dc119</srcmd5>
+    <version>2026.10.23</version>
+    <time>1792872238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2026.10.23:
+  * The bug fix in version 2026.10.21 was not complete. This should fix it for
+    real.
+- Bump lmdmaj define to 122 following upstream changes.
+- Fix typos in the description
+- Update to version 2026.10.22:
+  * Fixed a bug that had accidentally been introduced in version 2026.07.23: We
+    now correctly parse the &quot;RTP/SAVP&quot; and &quot;RTP/SAVP/TCP&quot; profile strings.
+  * When a RTSP server is asked to stream RTP/RTSP-over-TCP, we don't record
+    the TCP socket number to use when we're processing the &quot;SETUP&quot; command.
+    Instead, we have to wait until we're processing the &quot;PLAY&quot; command, because
+    the &quot;PLAY&quot; command might be using a different TCP connection (and thus a
+    different socket number).
+- Bump lmdmaj define to 121 following upstream changes.
+- Update to version 2026.10.21:
+  * Fixed a bug that could possibly allow a malicious client to cause a RTSP
+    server to crash when streaming from an AC-3 audio file.
+</comment>
+    <requestid>1392081</requestid>
+  </revision>
 </revisionlist>

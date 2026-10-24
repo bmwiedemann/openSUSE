@@ -17,9 +17,9 @@
 #
 
 
-%define lmdmaj 120
+%define lmdmaj 122
 Name:           live555
-Version:        2026.10.17
+Version:        2026.10.23
 Release:        0
 Summary:        LIVE555 Streaming Media
 License:        LGPL-2.1-only
@@ -34,15 +34,15 @@ BuildRequires:  pkgconfig(openssl)
 %description
 This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
-can be used to build streaming applications
+can be used to build streaming applications.
 
 %package -n libliveMedia%{lmdmaj}
-Summary:        Basic Usage Environment library of live555 streaming media
+Summary:        Live Media library of live555 streaming media
 
 %description -n libliveMedia%{lmdmaj}
 This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
-can be used to build streaming applications
+can be used to build streaming applications.
 
 %package -n libBasicUsageEnvironment2
 Summary:        Basic Usage Environment library of live555 streaming media
@@ -50,7 +50,7 @@ Summary:        Basic Usage Environment library of live555 streaming media
 %description -n libBasicUsageEnvironment2
 This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
-can be used to build streaming applications
+can be used to build streaming applications.
 
 %package -n libgroupsock33
 Summary:        Group sock library of live555 streaming media
@@ -58,7 +58,7 @@ Summary:        Group sock library of live555 streaming media
 %description -n libgroupsock33
 This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
-can be used to build streaming applications
+can be used to build streaming applications.
 
 %package -n libUsageEnvironment3
 Summary:        Usage Environment library of live555 streaming media
@@ -66,7 +66,7 @@ Summary:        Usage Environment library of live555 streaming media
 %description  -n libUsageEnvironment3
 This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
-can be used to build streaming applications
+can be used to build streaming applications.
 
 %package devel
 Summary:        LIVE555 Streaming Media
@@ -80,7 +80,7 @@ Requires:       pkgconfig(openssl)
 %description devel
 This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
-can be used to build streaming applications
+can be used to build streaming applications.
 
 %prep
 %autosetup -p1 -n live

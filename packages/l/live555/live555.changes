@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:48:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2026.10.23:
+  * The bug fix in version 2026.10.21 was not complete. This should fix it for
+    real.
+- Bump lmdmaj define to 122 following upstream changes.
+
+-------------------------------------------------------------------
+Fri Oct 23 09:18:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Fix typos in the description
+
+-------------------------------------------------------------------
+Thu Oct 22 04:01:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2026.10.22:
+  * Fixed a bug that had accidentally been introduced in version 2026.07.23: We
+    now correctly parse the "RTP/SAVP" and "RTP/SAVP/TCP" profile strings.
+  * When a RTSP server is asked to stream RTP/RTSP-over-TCP, we don't record
+    the TCP socket number to use when we're processing the "SETUP" command.
+    Instead, we have to wait until we're processing the "PLAY" command, because
+    the "PLAY" command might be using a different TCP connection (and thus a
+    different socket number).
+- Bump lmdmaj define to 121 following upstream changes.
+
+-------------------------------------------------------------------
+Wed Oct 21 17:06:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2026.10.21:
+  * Fixed a bug that could possibly allow a malicious client to cause a RTSP
+    server to crash when streaming from an AC-3 audio file.
+
+-------------------------------------------------------------------
 Sat Oct 17 17:04:08 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Update to version 2026.10.17:
