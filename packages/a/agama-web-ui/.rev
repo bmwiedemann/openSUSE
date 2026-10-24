@@ -1017,4 +1017,208 @@
     <comment>Automatic update from systemsmanagement:Agama:Release</comment>
     <requestid>1379730</requestid>
   </revision>
+  <revision rev="55" vrev="55">
+    <srcmd5>5e99d7a8433b7c090f680e8520890b63</srcmd5>
+    <version>0</version>
+    <time>1792872221</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release
+
+--- agama-web-ui.changes (revision 54)
++++ agama-web-ui.changes (revision 122)
+@@ -1,10 +1,58 @@
+ -------------------------------------------------------------------
++Thu Oct 22 09:43:42 UTC 2026 - José Iván López González &lt;jlopez@suse.com&gt;
++
++- Version 25
++
++-------------------------------------------------------------------
++Thu Oct 15 07:41:55 UTC 2026 - Martin Vidner &lt;mvidner@suse.com&gt;
++
++- web dependencies: move those not needed for run time or building
++  to optionalDependencies (bsc#1278985)
++- web dependencies: use knip in CI to detect unused dependencies
++  and files (jlopez)
++
++-------------------------------------------------------------------
++Thu Oct 15 07:40:55 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Keep the focus in the field the user moved to after using a
++  selector, so typed text is not lost (bsc#1282513,
++  gh#agama-project/agama#3982).
++
++-------------------------------------------------------------------
++Tue Oct  6 11:48:59 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Let keyboard users tab past the terminal panel, which now stops
++  in front of the shell to explain how to enter and leave it
++  (gh#agama-project/agama#3918, gh#agama-project/agama#3964).
++
++-------------------------------------------------------------------
++Tue Sep 29 16:45:27 UTC 2026 - Martin Pluskal &lt;martin@pluskal.org&gt;
++
++- Do not fail saving a form with &quot;CancelledError&quot; when the
++  configuration is refetched while the save waits for it
++  (bsc#1283098).
++
++-------------------------------------------------------------------
++Fri Sep 25 13:49:06 UTC 2026 - José Iván López González &lt;jlopez@suse.com&gt;
++
++- Add menu option for exiting the installation
++ (gh#agama-project/agama#3911).
++
++-------------------------------------------------------------------
+ Tue Sep 22 14:54:01 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
+ 
+ - Block the registration page while software changes are in progress
+   (bsc#1277099, gh#agama-project/agama#3973).
+ 
+ -------------------------------------------------------------------
++Tue Sep 22 07:00:00 UTC 2026 - Knut Anderssen &lt;kanderssen@suse.com&gt;
++
++- Pick the ports of a bond or a bridge from a searchable list of
++  the devices found in the system, or from a dialog showing their
++  details, instead of typing their names by hand
++  (gh#agama-project/agama#3883, related to bsc#1279417).
++
++-------------------------------------------------------------------
+ Fri Sep 18 14:30:33 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
+ 
+ - Ask to accept each license of a product requiring several
+@@ -16,24 +64,50 @@
+ - Fix progress tracking (related to bsc#1280751).
+ 
+ -------------------------------------------------------------------
+-Thu Sep 17 16:00:00 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++Fri Sep 18 07:32:00 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
+ 
+ - Show the name of the package being installed in one piece and stop
+   the progress text from moving as packages go by (bsc#1279489).
+ 
+ -------------------------------------------------------------------
+-Tue Sep 15 16:11:54 UTC 2026 - José Iván López González &lt;jlopez@suse.com&gt;
++Fri Sep 18 07:31:00 UTC 2026 - José Iván López González &lt;jlopez@suse.com&gt;
+ 
+ - Fix formatting of the storage commit errors
+   (gh#agama-project/agama#3912).
+ 
+ -------------------------------------------------------------------
+-Mon Sep 14 12:51:32 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++Fri Sep 18 07:30:00 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
+ 
+ - Remove empty space due to a byte order mark which kills
+   PatternFly's base reset (bsc#1280220).
+ 
+ -------------------------------------------------------------------
++Tue Sep 15 09:38:41 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Add a form field for selecting several values from a searchable
++  list of known options, with optional support for custom entries
++  (gh#agama-project/agama#3927).
++
++-------------------------------------------------------------------
++Thu Sep 10 13:10:57 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
++
++- Add a terminal panel to the web UI, giving access to a real shell
++  on the system being installed (gh#agama-project/agama#3868).
++
++-------------------------------------------------------------------
++Thu Sep  3 08:13:38 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Offer applying the installer language and keyboard to the product
++  to install also while the product is being selected (bsc#1277718).
++
++-------------------------------------------------------------------
++Wed Sep  2 14:47:52 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Close dialogs with Escape or a close button, answer questions by
++  pressing Enter, and name every dialog for screen readers
++  (gh#agama-project/agama#3859).
++
++-------------------------------------------------------------------
+ Tue Sep  1 15:51:08 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
+ 
+ - Version 24
+@@ -47,6 +121,39 @@
+   wrong one has to be fixed (bsc#1277313).
+ 
+ -------------------------------------------------------------------
++Tue Sep  1 13:10:58 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Allow browsing the network devices with more details when binding
++  a connection (gh#agama-project/agama#3822).
++
++-------------------------------------------------------------------
++Tue Sep  1 10:00:00 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Rebuild the product selection form with the new form stack
++  (gh#agama-project/agama#3791).
++
++-------------------------------------------------------------------
++Tue Sep  1 09:00:28 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Keep the software patterns search in the URL, so reloading or
++  sharing the link opens the same filtered list
++  (gh#agama-project/agama#3788).
++
++-------------------------------------------------------------------
++Tue Sep  1 08:49:04 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Keep the table filters in the URL, so reloading or sharing the
++  link opens the same list (gh#agama-project/agama#3787).
++
++-------------------------------------------------------------------
++Tue Sep  1 08:11:20 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Keep the sorted column of the DASD, zFCP, iSCSI targets and
++  network connections tables in the URL, so reloading or sharing
++  the link opens the table sorted the same way
++  (gh#agama-project/agama#3785).
++
++-------------------------------------------------------------------
+ Mon Aug 31 15:53:32 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
+ 
+ - Default the registration form to the effective registration URL
+@@ -79,6 +186,13 @@
+   - react-router 7.15.1, CVE-2026-33245 (bsc#1267499)
+ 
+ -------------------------------------------------------------------
++Thu Aug 27 09:00:00 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Keep the expanded sections and the selected tabs of the storage
++  page in the URL, so reloading or sharing the link opens the same
++  view (gh#agama-project/agama#3773).
++
++-------------------------------------------------------------------
+ Wed Aug 26 11:30:21 UTC 2026 - Martin Vidner &lt;mvidner@suse.com&gt;
+ 
+ - update development dependencies to:
+@@ -101,6 +215,12 @@
+   for buttons alone (gh#agama-project/agama#3834).
+ 
+ -------------------------------------------------------------------
++Fri Aug 14 07:16:16 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Do not bind new connections to the loopback device
++  (gh#agama-project/agama#3821).
++
++-------------------------------------------------------------------
+ Thu Aug 13 10:46:43 UTC 2026 - Imobach Gonzalez Sosa &lt;igonzalezsosa@suse.com&gt;
+ 
+ - Do not wait in the selection page after selecting a product
+@@ -109,6 +229,12 @@
+   not disappearing (bsc#1275027, gh#agama-project/agama#3819).
+ 
+ -------------------------------------------------------------------
++Tue Aug 11 10:57:37 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
++
++- Add an application-wide live region for announcing status changes
++  to screen reader users (gh#agama-project/agama#3759).
++
++-------------------------------------------------------------------
+ Fri Aug  7 15:07:47 UTC 2026 - David Diaz &lt;dgonzalez@suse.com&gt;
+ 
+ - Fix typography and layout details that a product skin makes</comment>
+    <requestid>1387136</requestid>
+  </revision>
 </revisionlist>
