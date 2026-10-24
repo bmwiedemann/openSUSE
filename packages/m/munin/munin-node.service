@@ -15,8 +15,8 @@ ProtectControlGroups=true
 # end of automatic additions 
 Type=forking
 ExecStart=/usr/sbin/munin-node
-ExecStartPre=/usr/bin/mkdir -p /var/run/munin-node/
-PIDFile=/var/run/munin-node/munin-node.pid
+ExecStartPre=/usr/bin/mkdir -p /run/munin-node/
+PIDFile=/run/munin-node/munin-node.pid
 
 [Install]
 WantedBy=multi-user.target

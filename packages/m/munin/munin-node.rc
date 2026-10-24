@@ -50,9 +50,9 @@ rc_reset
 case "$1" in
   start)
 	echo -n "Starting Munin Node: "
-	if [ ! -d /var/run/munin ]; then
-	    mkdir -p /var/run/munin 2>/dev/null
-	    chown munin /var/run/munin
+	if [ ! -d /run/munin ]; then
+	    mkdir -p /run/munin 2>/dev/null
+	    chown munin /run/munin
 	fi
 
 	## Start daemon with startproc(8). If this fails

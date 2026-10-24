@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  2 10:54:43 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Replace deprecated /var/run with /run
+
+-------------------------------------------------------------------
 Mon Sep 14 18:23:39 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Add munin-fix-rrdtool-version-check.patch to fix graphing with
