@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 23 18:51:59 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.24.1:
+  * webpki-roots and webpki-root-certs 1.0.7 → 1.0.10
+    clear RUSTSEC-2026-0381 and RUSTSEC-2026-0383: the bundled
+    Mozilla root set still trusted intermediates issued by the
+    breached emSign CA. 'webpki-roots' backs the update check
+    ('ureq'); 'webpki-root-certs' reaches ttl via 'reqwest's
+    platform verifier (PeeringDB).
+  * rustls-webpki 0.103.15 → 0.103.16 clears RUSTSEC-2026-0382
+    (certificate verification could accept distrusted intermediates).
+    Reaches ttl via 'rustls' in 'reqwest' and 'ureq'.
+
+-------------------------------------------------------------------
 Fri Oct 16 18:32:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.24.0:
