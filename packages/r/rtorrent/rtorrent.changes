@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 24 11:03:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.26
+  * Logging categories were changed/removed and this could break
+    some frontends and user config files:
+    The last few cascading logging categories have been removed,
+    replaced by errors, events and debug_trace.
+
+-------------------------------------------------------------------
 Mon Oct  5 18:31:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to relesae 0.16.25
