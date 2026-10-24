@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:05:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.28.0:
+  * Highlights
+    - feat: add TestCase/TestRunSelector to skip a test case (#730)
+    - feat: dump remaining namespace contents when deletion times
+      out (#737)
+  * Bug Fixes
+    - fix: run collectors on early step errors too (#735)
+    - fix: handle variable fractional seconds in junit golden
+      normalization (#736)
+  * Other Changes
+    - chore: replace interface{} -> any (#726)
+    - ci: migrate release-drafter category labels to 'when'
+      condition (#727)
+  * Dependency bumps
+    - chore(deps): bump github.com/moby/moby/client from 0.6.0 to
+      0.6.2 (#732, #734)
+    - chore(deps): bump github.com/moby/moby/api from 1.56.0 to
+      1.56.1 (#733)
+    - chore(deps): bump sigs.k8s.io/controller-tools from 0.22.0 to
+      0.23.0 in the kubernetes group (#738)
+    - chore(deps): bump sigs.k8s.io/controller-runtime from 0.25.1
+      to 0.25.2 in the kubernetes group (#731)
+    - chore(deps): bump the kubernetes group with 5 updates (#729)
+
+-------------------------------------------------------------------
 Thu Sep 24 05:03:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.27.0:
