@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 22 10:53:55 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 595.112.07 (boo#1286763)
+
+-------------------------------------------------------------------
 Tue Oct  6 11:07:17 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix determining the kernel source directory path

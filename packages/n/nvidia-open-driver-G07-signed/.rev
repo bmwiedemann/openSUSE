@@ -250,4 +250,12 @@
     <comment>1</comment>
     <requestid>1382814</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>455003ac10527f90182d2513e125dd61</srcmd5>
+    <version>595.112.07</version>
+    <time>1792872232</time>
+    <user>dimstar_suse</user>
+    <comment>- update non-CUDA variant to 595.112.07 (boo#1286763)</comment>
+    <requestid>1387216</requestid>
+  </revision>
 </revisionlist>
