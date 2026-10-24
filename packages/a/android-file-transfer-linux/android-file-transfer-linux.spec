@@ -1,7 +1,7 @@
 #
 # spec file for package android-file-transfer-linux
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           android-file-transfer-linux
-Summary:        Android file fransfer for Linux
-Version:        4.5
+Version:        4.6
 Release:        0
+Summary:        Android file fransfer for Linux
+License:        LGPL-2.1-only
 URL:            https://github.com/whoozle/android-file-transfer-linux
 Source0:        %{name}-%{version}.tar.gz
-License:        LGPL-2.1-only
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6NetworkAuth)

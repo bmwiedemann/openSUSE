@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:21:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.6:
+  * Fix double-counting files and folders on upload
+  * Fix reading and writing files the user has no permission for
+  * CLI: ignore device friendly name and battery level when the
+    device advertises but won't return them
+  * macOS: link IOKit and CoreFoundation into the shared library,
+    default its install rpath, and make the deployment target a
+    cache variable
+  * Python example: use InquirerPy and add pyproject.toml
+
+-------------------------------------------------------------------
 Sat Nov 22 21:15:46 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
