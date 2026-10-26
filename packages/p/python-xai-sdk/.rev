@@ -63,4 +63,12 @@ python314, rpmlint 0 errors / 0 warnings / 0 badness.</comment>
     <comment>Update to 1.20.0: video last-frame/keyframes; keep protobuf-7 patch.</comment>
     <requestid>1380711</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d0c109e027cf03c0e895cedf39469b67</srcmd5>
+    <version>1.21.0</version>
+    <time>1793006383</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-xai-sdk to 1.21.0.</comment>
+    <requestid>1392608</requestid>
+  </revision>
 </revisionlist>

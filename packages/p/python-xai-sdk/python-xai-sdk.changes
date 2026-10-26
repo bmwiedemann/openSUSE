@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:37:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.21.0:
+  * chat.create gains guidelines moderation controls and
+    safety_identifier end-user attribution
+  * Allow protobuf 7 via the v6 gencode; drop
+    0001-proto-dispatch-support-protobuf-7-via-v6-gencode.patch
+    (adopted upstream)
+
+-------------------------------------------------------------------
 Fri Sep 25 17:14:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.20.0:
