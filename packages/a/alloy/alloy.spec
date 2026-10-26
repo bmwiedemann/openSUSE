@@ -98,6 +98,7 @@ go build \
 install -D -m 0755 collector/bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 # systemd unit
+install -D -m 0750 packaging/systemd/%{name}-wrapper %{buildroot}%{_prefix}/lib/%{name}/%{name}-wrapper
 install -D -m 0644 packaging/rpm/%{name}.service %{buildroot}/%{_unitdir}/%{name}.service
 
 # configuration file
@@ -127,6 +128,8 @@ install -D -m 0644 %{SOURCE6} %{buildroot}%{_prefix}/lib/tmpfiles.d/alloy.conf
 %config(noreplace) %{_sysconfdir}/%{name}/config.alloy
 %license LICENSE
 %{_bindir}/%{name}
+%dir %attr(770,alloy,alloy) %{_prefix}/lib/%{name}
+%attr (550,alloy,alloy) %{_prefix}/lib/%{name}/%{name}-wrapper
 %{_unitdir}/%{name}.service
 %dir %attr(770,root,alloy) %config %{_sysconfdir}/%{name}
 %{_prefix}/lib/tmpfiles.d/alloy.conf

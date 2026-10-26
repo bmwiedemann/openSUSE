@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:43:24 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Add wrapper script for systemd (bsc#1285585)
+
+-------------------------------------------------------------------
 Fri Oct 16 09:15:27 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Increase required memory in constraints
