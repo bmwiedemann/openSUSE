@@ -1,0 +1,19 @@
+Take cpuinfo from the system instead of the network.  Upstream 1.31.0 dropped
+the "FIND_PACKAGE_ARGS NAMES cpuinfo" its Linux FetchContent declare carried
+in 1.29.0, so with FETCHCONTENT_FULLY_DISCONNECTED=ON configure falls back to
+a download that cannot work on OBS and the cpuinfo::cpuinfo target is never
+defined.  Restoring the find lets the system cpuinfo-devel be used, as in
+1.29.0: it already ships cpuinfo_deinitialize (as a stub, exactly what 1.29.0
+linked against), so behavior is unchanged.
+
+diff --git a/cmake/external/onnxruntime_external_deps.cmake b/cmake/external/onnxruntime_external_deps.cmake
+--- a/cmake/external/onnxruntime_external_deps.cmake
++++ b/cmake/external/onnxruntime_external_deps.cmake
+@@ -396,6 +396,7 @@
+           # https://github.com/pytorch/cpuinfo/pull/400
+           ${Patch_EXECUTABLE} --binary --ignore-whitespace -p1 <
+           ${PROJECT_SOURCE_DIR}/patches/cpuinfo/enable_deinit_refcounting.patch
++      FIND_PACKAGE_ARGS NAMES cpuinfo
+       )
+     else()
+       onnxruntime_fetchcontent_declare(

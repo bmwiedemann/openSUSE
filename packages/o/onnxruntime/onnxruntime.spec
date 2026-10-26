@@ -18,11 +18,15 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %define archs x86_64 aarch64 ppc64le
-
 %if "%{flavor}" == ""
 %bcond_with python
 %else
-%bcond_without python
+%define python python%{pyver}
+# %%python_sitearch is hardcoded to the system-default python3, not the flavor
+# being built, so override it with the flavor-specific platlib path. Otherwise
+# the %%install cleanup and %%files reference the wrong site-packages directory
+# for any flavor whose version differs from the default interpreter.
+%define python_sitearch %{_libdir}/python%{pyver}/site-packages
 %if "%{flavor}" == "python311"
 %define pyver  3.11
 %define pysuff 311
@@ -38,16 +42,9 @@
 %else
 %{error:Unknown flavor '%{flavor}'}
 %endif
-%define python python%{pyver}
-# %%python_sitearch is hardcoded to the system-default python3, not the flavor
-# being built, so override it with the flavor-specific platlib path. Otherwise
-# the %%install cleanup and %%files reference the wrong site-packages directory
-# for any flavor whose version differs from the default interpreter.
-%define python_sitearch %{_libdir}/python%{pyver}/site-packages
+%bcond_without python
 %endif
-
 %global sover   1
-
 # ---------------------------------------------------------------------------
 # Dependencies
 # ---------------------------------------------------------------------------
@@ -65,25 +62,28 @@
 # bundled three are pointed at by FETCHCONTENT_SOURCE_DIR_<name> in %%build, and
 # FETCHCONTENT_FULLY_DISCONNECTED=ON makes any missing system dep fail the build
 # instead of attempting a download.
+#
+# Telemetry is explicitly disabled in %%build.  Since 1.29.0 ONNX Runtime can
+# also do telemetry on non-Windows platforms, via Microsoft's 1DS SDK
+# (cpp_client_telemetry, which drags in curl + mbedTLS + a vendored sqlite/zlib).
+# It is off by default upstream -- we pin it off so an upstream default flip
+# cannot silently enable it.
 # ---------------------------------------------------------------------------
 %define date_ver        3.0.1
-%define onnx_ver        1.21.0
+%define onnx_ver        1.22.0
 %define safeint_ver     3.0.28
 # eigen 3.4-branch snapshot ORT pins in cmake/deps.txt; bundled only on
 # Leap/SLE (suse_version < 1699), whose system eigen is the older 3.4.0 release.
 # (3.4.90 = the post-3.4.0 development version this snapshot reports.)
 %define eigen_commit    1d8b82b0740839c0de7f1242a3585e3390ff5f33
 %define eigen_ver       3.4.90
-
 Name:           onnxruntime
-Version:        1.27.0
+Version:        1.31.0
 Release:        0
 Summary:        Cross-platform machine-learning inference and training accelerator
-Group:          Development/Libraries/Other
 License:        Apache-2.0 AND MIT AND MPL-2.0 AND BSL-1.0 AND BSD-2-Clause
 URL:            https://github.com/microsoft/onnxruntime
 Source0:        %{name}-%{version}.tar.zst
-
 # -----------------------------------------------------------------------
 # Bundled FetchContent dependencies (no network access in OBS).
 # Only the deps openSUSE does not package are bundled; everything else comes
@@ -105,7 +105,6 @@ Source21:       https://github.com/dcleblanc/SafeInt/archive/refs/tags/%{safeint
 # element_wise_ops.cc needs (added on eigen's 3.4 branch after the 3.4.0 tag).
 # Factory ships eigen 5.0 and keeps using the system package (see %%prep / %%build).
 Source25:       https://github.com/eigen-mirror/eigen/archive/%{eigen_commit}/eigen-%{eigen_commit}.zip
-
 Patch0:         gcc-false-positives.patch
 Patch1:         system-pybind11.patch
 # Drop ORT's exact-version gate on abseil so the system abseil-cpp can be used
@@ -116,46 +115,63 @@ Patch3:         system-eigen3.patch
 Patch4:         system-mp11.patch
 # Take flatbuffers from the system (alias shared target; schemas regenerated in %%build)
 Patch5:         system-flatbuffers.patch
-
-# MLAS only supports these architectures
-ExclusiveArch:  %archs
-
+# Drop ORT's 4.0 version gate on GSL so the system ms-gsl can be used (its
+# SameMajorVersion config rejects the 5.x Factory ships; without this,
+# configure falls back to a disconnected download and fails)
+Patch6:         system-gsl-version.patch
+# Take cpuinfo from the system (upstream 1.31.0 dropped the FIND_PACKAGE_ARGS
+# its Linux declare had in 1.29.0, so configure falls back to a disconnected
+# download; the system cpuinfo already ships cpuinfo_deinitialize as in 1.29.0)
+Patch7:         system-cpuinfo.patch
+# abseil + re2 must be a matched pair (re2 is built against this abseil)
+BuildRequires:  abseil-cpp-devel
 BuildRequires:  cmake >= 3.28
+BuildRequires:  cpuinfo-devel
+BuildRequires:  execstack
 BuildRequires:  fdupes
+# flatbuffers-devel provides the headers, CMake config and /usr/bin/flatc
+BuildRequires:  flatbuffers-devel
 BuildRequires:  gcc-c++ >= 11
+# Boost.Mp11 (header-only) + BoostConfig.cmake for find_package(Boost)
+BuildRequires:  libboost_headers-devel
+BuildRequires:  ms-gsl-devel
 BuildRequires:  ninja
+BuildRequires:  nlohmann_json-devel
+BuildRequires:  pkgconfig
+# Dependencies taken from system libraries instead of bundling (see deps
+# comment above). protobuf21 pins the exact 21.12 the runtime needs and
+# provides protoc; do NOT pull the default protobuf-devel (34.x).
+BuildRequires:  protobuf21-devel
 BuildRequires:  python3 >= 3.11
 # python3-base guarantees the /usr/bin/python3 interpreter in the buildroot
 # (the bare python3 meta does not ship it); used for the flatbuffers schema
 # regeneration in %%build.
 BuildRequires:  python3-base
-BuildRequires:  execstack
 BuildRequires:  unzip
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(zlib)
-# Dependencies taken from system libraries instead of bundling (see deps
-# comment above). protobuf21 pins the exact 21.12 the runtime needs and
-# provides protoc; do NOT pull the default protobuf-devel (34.x).
-BuildRequires:  protobuf21-devel
-BuildRequires:  ms-gsl-devel
-BuildRequires:  nlohmann_json-devel
-# abseil + re2 must be a matched pair (re2 is built against this abseil)
-BuildRequires:  abseil-cpp-devel
+# re2 kept as plain -devel (not pkgconfig(re2)): it must stay visibly paired
+# with abseil-cpp-devel above (re2 is built against this abseil).
 BuildRequires:  re2-devel
+# date/onnx/SafeInt are statically linked into the built libraries (the shared
+# lib and the python extension); eigen too on Leap/SLE. Declared once here for
+# bundled-library tracking.
+Provides:       bundled(date) = %{date_ver}
+Provides:       bundled(SafeInt) = %{safeint_ver}
+Provides:       bundled(onnx) = %{onnx_ver}
+# MLAS only supports these architectures
+ExclusiveArch:  %{archs}
 # System eigen3: Factory ships 5.0, which has the min/max<NaNPropagation>
 # ArrayBase overloads ORT needs. Leap/SLE 16.x ship only the eigen 3.4.0
 # release, which predates them, so there we bundle ORT's 3.4-branch snapshot
 # instead (see Source25, %%prep and %%build) and do not require the system one.
 %if 0%{?suse_version} >= 1699
+# eigen3 kept as plain -devel (not pkgconfig(eigen3)): matches the header
+# comment's system/bundled listing and keeps the Leap-conditional split below
+# reviewable.
 BuildRequires:  eigen3-devel
 %endif
-# flatbuffers-devel provides the headers, CMake config and /usr/bin/flatc
-BuildRequires:  flatbuffers-devel
-BuildRequires:  cpuinfo-devel
-# Boost.Mp11 (header-only) + BoostConfig.cmake for find_package(Boost)
-BuildRequires:  libboost_headers-devel
-
 %if %{with python}
 BuildRequires:  python%{pysuff}-devel
 BuildRequires:  python%{pysuff}-numpy-devel
@@ -165,13 +181,6 @@ BuildRequires:  python%{pysuff}-pybind11-devel
 BuildRequires:  python%{pysuff}-setuptools
 BuildRequires:  python%{pysuff}-wheel
 %endif
-
-# date/onnx/SafeInt are statically linked into the built libraries (the shared
-# lib and the python extension); eigen too on Leap/SLE. Declared once here for
-# bundled-library tracking.
-Provides:       bundled(date) = %{date_ver}
-Provides:       bundled(SafeInt) = %{safeint_ver}
-Provides:       bundled(onnx) = %{onnx_ver}
 %if 0%{?suse_version} < 1699
 Provides:       bundled(eigen3) = %{eigen_ver}
 %endif
@@ -203,10 +212,10 @@ for developing applications against ONNX Runtime.
 %if %{with python}
 %package -n python%{pysuff}-onnxruntime
 Summary:        Python %{pyver} bindings for ONNX Runtime
+Requires:       python%{pysuff}-flatbuffers
 # date/onnx/SafeInt are statically linked into the pybind extension (eigen too on
 # Leap/SLE).
 Requires:       python%{pysuff}-numpy
-Requires:       python%{pysuff}-flatbuffers
 Requires:       python%{pysuff}-packaging
 Requires:       python%{pysuff}-protobuf
 Requires:       python%{pysuff}-sympy
@@ -260,6 +269,14 @@ mkdir _deps
 unzip -qo %{SOURCE11} -d _deps
 unzip -qo %{SOURCE17} -d _deps
 unzip -qo %{SOURCE21} -d _deps
+
+# ONNX Runtime ships cmake/patches/onnx/onnx.patch and normally applies it through
+# the onnx FetchContent PATCH_COMMAND.  Setting FETCHCONTENT_SOURCE_DIR_ONNX (see
+# %%build) makes CMake skip the whole populate step -- patch step included -- so
+# apply it by hand here with the same flags upstream uses (its newer hunks rely
+# on --ignore-whitespace).  Its functional hunk drops .Deprecate() from the
+# GroupNormalization-18 schema, which ONNX Runtime relies on.
+patch --binary --ignore-whitespace -d _deps/onnx-%{onnx_ver} -p1 < cmake/patches/onnx/onnx.patch
 %if 0%{?suse_version} < 1699
 # eigen, bundled on Leap/SLE only (see the %%prep workaround block above)
 unzip -qo %{SOURCE25} -d _deps
@@ -308,7 +325,7 @@ pushd cmake
 %if %{with python}
     -Donnxruntime_ENABLE_DLPACK=OFF \
     -Donnxruntime_ENABLE_PYTHON=ON \
-    -DPython_EXECUTABLE=/usr/bin/python%{pyver} \
+    -DPython_EXECUTABLE=%{_bindir}/python%{pyver} \
 %else
     -Donnxruntime_ENABLE_PYTHON=OFF \
 %endif
@@ -316,6 +333,7 @@ pushd cmake
     -Donnxruntime_BUILD_UNIT_TESTS=OFF \
     -Donnxruntime_BUILD_BENCHMARKS=OFF \
     -Donnxruntime_ENABLE_TRAINING=OFF \
+    -Donnxruntime_USE_TELEMETRY=OFF \
     -Donnxruntime_USE_FULL_PROTOBUF=ON
 
 %cmake_build
@@ -331,7 +349,7 @@ python%{pyver} -m pip install \
     --no-build-isolation \
     .
 
-rm -rf %{buildroot}%{_prefix}/bin
+rm -rf %{buildroot}%{_bindir}
 rm -f %{buildroot}%{python_sitearch}/onnxruntime/capi/libonnxruntime.so*
 execstack -c %{buildroot}%{python_sitearch}/onnxruntime/capi/onnxruntime_pybind11_state.so
 find %{buildroot}%{python_sitearch}/onnxruntime -name '*.so' -exec strip --strip-unneeded {} +

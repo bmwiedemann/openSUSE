@@ -1,0 +1,21 @@
+Relax ONNX Runtime's GSL version gate so the openSUSE system ms-gsl can be
+used instead of the bundled 4.2.1 source.  Upstream asks for exactly 4.0+ via
+"FIND_PACKAGE_ARGS 4.0 NAMES Microsoft.GSL", but ms-gsl's CMake config is
+SameMajorVersion, so any 5.x system GSL is rejected and the disconnected
+FetchContent fallback aborts configure.  Dropping the version lets
+find_package accept whatever ms-gsl Factory currently ships (5.0.1) -- ONNX
+Runtime only uses long-stable APIs (span, narrow, not_null, finally, ...)
+present in both major versions.
+
+diff --git a/cmake/external/onnxruntime_external_deps.cmake b/cmake/external/onnxruntime_external_deps.cmake
+--- a/cmake/external/onnxruntime_external_deps.cmake
++++ b/cmake/external/onnxruntime_external_deps.cmake
+@@ -425,7 +425,7 @@
+   # containing microsoft/GSL#1213 (commit 543d0dd).
+   PATCH_COMMAND ${Patch_EXECUTABLE} --binary --ignore-whitespace -p1 < ${PROJECT_SOURCE_DIR}/patches/gsl/1213.patch
+   EXCLUDE_FROM_ALL
+-  FIND_PACKAGE_ARGS 4.0 NAMES Microsoft.GSL
++  FIND_PACKAGE_ARGS NAMES Microsoft.GSL
+ )
+ set(GSL_TARGET "Microsoft.GSL::GSL")
+ set(GSL_INCLUDE_DIR "$<TARGET_PROPERTY:${GSL_TARGET},INTERFACE_INCLUDE_DIRECTORIES>")
