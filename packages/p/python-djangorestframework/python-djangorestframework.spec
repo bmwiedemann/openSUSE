@@ -26,12 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-djangorestframework%{psuffix}
-Version:        3.18.0
+Version:        3.18.2
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause
 URL:            https://www.django-rest-framework.org/
 Source:         https://github.com/encode/django-rest-framework/archive/%{version}.tar.gz#/djangorestframework-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module wheel}
@@ -75,7 +76,7 @@ authentication and permission policies out of the box.
 %autosetup -p1 -n django-rest-framework-%{version}
 
 # Remove pytest params incompatible with older pytest on Leap
-sed -i '/addopts/d' pyproject.toml
+sed -i '/^addopts/,/^\]/d' pyproject.toml
 # Remove pytest params breaking Tumbleweed
 sed -i '/^filterwarnings/,/^\]/d' pyproject.toml
 

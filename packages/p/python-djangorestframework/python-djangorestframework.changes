@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct 26 09:06:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18.2 (
+    bsc#1287141, CVE-2026-114136,
+    bsc#1287153, CVE-2026-114137,
+    bsc#1287167, CVE-2026-114138):
+  * GHSA-33wh-fxxf-88vv: Harden content negotiation against large
+    `Accept` headers by @jisung-02 in 148ab65. Thanks @jisung-02
+    for the report.
+  * GHSA-3547-9m27-7rxg: Refuse non-text encoding charsets by
+    @syrull in 3c26345. Thanks @syrull and @jisung-02 who both
+    reported the problem.
+  * GHSA-xw6w-gcfp-cf8m: Make `TokenProxy` deletion actually
+    delete the token by @syrull in af3fabf. Thanks @syrull for
+    the report.
+  * Add support for Python 3.15
+  * Fix `blank=True` fields in unique constraints being treated
+    as required
+  * Fix `UniqueConstraint` validation with conditional fields
+- update to 3.18.1:
+  * Fix duplicate validation errors for GenericIPAddressField
+    with protocol
+  * Fix int64 format detection for negative `IntegerField`
+    minimums in OpenAPI schema definition
+  * Fix list serializer on unique constraint validator
+  * Reject non-finite values (nan, inf) in FloatField
+  * Add a compatibility setting for `ListSerializer` error
+    formats
+  * Expand deprecation classes and review deprecation policy
+
+-------------------------------------------------------------------
 Thu Aug 27 14:38:44 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Skip failing test and add CVE references
