@@ -18,7 +18,7 @@
 
 %define cpan_name Plack
 Name:           perl-Plack
-Version:        1.0054
+Version:        1.0057
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
