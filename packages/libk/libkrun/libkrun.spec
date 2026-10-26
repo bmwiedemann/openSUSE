@@ -32,7 +32,7 @@ complexity that comes from Virtual Machine management, offering users a simple C
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        1.19.6
+Version:        1.19.7
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0

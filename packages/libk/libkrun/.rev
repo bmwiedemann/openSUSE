@@ -549,4 +549,31 @@
     <comment>1</comment>
     <requestid>1385296</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bb4f525d04123c09e637cbd75828d686</srcmd5>
+    <version>1.19.7</version>
+    <time>1793005201</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.19.7:
+  * cpuid: Preserve newer extended leaves
+  * virtio/balloon: ignore free page reports outside guest memory
+  * vsock: drain rxq in muxer thread
+  * virtio/fs/linux: do not assume UTF-8 file names in
+    the lookup log
+  * virtio/vsock: drain buffered TSI stream data before closing
+  * virtio/vsock: drain buffered Unix stream data before closing
+  * devices/net: retry unixgram sends on EAGAIN
+  * virtio/input: report the full size of
+    VIRTIO_INPUT_CFG_ABS_INFO
+  * virtio/input: keep select and subsel when a config
+    query fails
+  * vsock/unix: split up shutdown into read and write
+  * virtio/vsock: preserve TCP half-close semantics in TSI
+  * virtio/gpu: offer VIRTIO_GPU_F_BLOB_ALIGNMENT
+
+  * Update rust-vmm deps and bump version for upcoming release
+- add proper split-provides
+    + Fixes a bug triggered when using openSUSE images</comment>
+    <requestid>1392378</requestid>
+  </revision>
 </revisionlist>

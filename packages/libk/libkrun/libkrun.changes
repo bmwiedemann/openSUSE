@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct 25 10:45:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.19.7:
+  * cpuid: Preserve newer extended leaves
+  * virtio/balloon: ignore free page reports outside guest memory
+  * vsock: drain rxq in muxer thread
+  * virtio/fs/linux: do not assume UTF-8 file names in
+    the lookup log
+  * virtio/vsock: drain buffered TSI stream data before closing
+  * virtio/vsock: drain buffered Unix stream data before closing
+  * devices/net: retry unixgram sends on EAGAIN
+  * virtio/input: report the full size of
+    VIRTIO_INPUT_CFG_ABS_INFO
+  * virtio/input: keep select and subsel when a config
+    query fails
+  * vsock/unix: split up shutdown into read and write
+  * virtio/vsock: preserve TCP half-close semantics in TSI
+  * virtio/gpu: offer VIRTIO_GPU_F_BLOB_ALIGNMENT
+
+-------------------------------------------------------------------
 Thu Oct 15 05:07:13 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
 
 - Update to version 1.19.6:
@@ -796,7 +816,7 @@ Thu May 30 13:38:30 UTC 2024 - dfaggioli@suse.com
   * Update sev crate to 1.2.0
   * virtio net bugfixes and performance improvement
   * Makefile: De-couple KBS init sources from SEV-SNP
-  * Update rust-vmm deps and bump version for upcoming release 
+  * Update rust-vmm deps and bump version for upcoming release
 
 - Changes from 1.5.1
   * Fix CI clippy
@@ -864,7 +884,7 @@ Mon Dec 05 13:14:11 UTC 2022 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon Dec  5 08:44:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add proper split-provides 
+- add proper split-provides
 - add cargo_audit
 
 -------------------------------------------------------------------
@@ -963,7 +983,7 @@ Wed Jun 22 07:36:02 UTC 2022 - dfaggioli@suse.com
   * Bump vm-memory dependency from 0.7.0 to 0.8.0
 - Update to version to 1.2.0:
   * Disable virtio-fs DAX
-    + Fixes a bug triggered when using openSUSE images 
+    + Fixes a bug triggered when using openSUSE images
   * vsock: defer TSI proxy removal
 
 -------------------------------------------------------------------
