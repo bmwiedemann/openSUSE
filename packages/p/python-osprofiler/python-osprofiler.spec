@@ -64,6 +64,8 @@ Obsoletes:      python3-osprofiler < %{version}
 %else
 Conflicts:      python3-osprofiler < %{version}
 %endif
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
