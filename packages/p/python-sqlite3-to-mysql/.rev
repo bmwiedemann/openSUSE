@@ -129,4 +129,18 @@
     fixing the MySQL container port binding</comment>
     <requestid>1354113</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8648b408f696a5120402686273b88505</srcmd5>
+    <version>2.6.1</version>
+    <time>1793006393</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.1:
+  * [FEAT] add MySQL 9.7 support
+  * [DOCS] clarify project usage and update MySQL 9.7
+    documentation
+  * [CHORE] stop upgrading pip during Docker image builds
+  * [CHORE] update GitHub Actions dependencies
+  * [TEST] add MySQL 9.7 test coverage</comment>
+    <requestid>1392625</requestid>
+  </revision>
 </revisionlist>

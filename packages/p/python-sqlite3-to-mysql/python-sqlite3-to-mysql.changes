@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:02:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.1:
+  * [FEAT] add MySQL 9.7 support
+  * [DOCS] clarify project usage and update MySQL 9.7
+    documentation
+  * [CHORE] stop upgrading pip during Docker image builds
+  * [CHORE] update GitHub Actions dependencies
+  * [TEST] add MySQL 9.7 test coverage
+
+-------------------------------------------------------------------
 Tue May 19 21:22:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.0:
