@@ -79,4 +79,25 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1288107</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d4c9689ebc537d270e9b4a014eb680d8</srcmd5>
+    <version>4.5</version>
+    <time>1793005418</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.5:
+  * Skip comments that are larger than 256k.
+  * Truncate filenames at NUL byte.
+  * Skip CRC check for some old subblocks.  Previously rarfile
+    tried to calculate header CRC by reading data payload for
+    those, but that could cause excessive allocations.
+  * RAR5: Reattempt passwords after trying wrong password when
+    header encryption is used.
+  * Restore fd position in file type detection functions.
+  * Disallow extraction outside extraction path, in case of
+    existing symlink.
+  * Disallow creating symlinks to outside of extraction path.
+  * Apply length limit to passwords, so too long password give
+    same result as for unrar.</comment>
+    <requestid>1392580</requestid>
+  </revision>
 </revisionlist>

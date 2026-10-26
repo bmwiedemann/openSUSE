@@ -1,7 +1,7 @@
 #
 # spec file for package python-rarfile
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python2 1
 Name:           python-rarfile
-Version:        4.2
+Version:        4.5
 Release:        0
 Summary:        RAR Archive Reader for Python
 License:        ISC
