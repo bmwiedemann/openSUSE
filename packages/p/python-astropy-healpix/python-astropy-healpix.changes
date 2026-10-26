@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 25 14:39:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Have nside_to_level return a 64-bit integer. It is very
+    common to use the return value as a bit-shift argument which
+    would cause truncation if the user failed to first convert
+    the return value to a 64-bit integer.
+  * Require Numpy >= 2.
+  * Fix incorrect return values of uniq_to_level_ipix near npix
+    boundaries.
+  * The functions nside_to_level and uniq_to_level_ipix no longer
+    raise exceptions for invalid input values. Instead, they
+    return -1.
+
+-------------------------------------------------------------------
 Thu Jan 22 08:47:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.3:

@@ -86,4 +86,22 @@
   * Build wheels for free-threaded Python (3.14t).</comment>
     <requestid>1328629</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>28dc69ecbd46f74943764d0e635434d9</srcmd5>
+    <version>2.0.1</version>
+    <time>1793005248</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Have nside_to_level return a 64-bit integer. It is very
+    common to use the return value as a bit-shift argument which
+    would cause truncation if the user failed to first convert
+    the return value to a 64-bit integer.
+  * Require Numpy &gt;= 2.
+  * Fix incorrect return values of uniq_to_level_ipix near npix
+    boundaries.
+  * The functions nside_to_level and uniq_to_level_ipix no longer
+    raise exceptions for invalid input values. Instead, they
+    return -1.</comment>
+    <requestid>1392440</requestid>
+  </revision>
 </revisionlist>
