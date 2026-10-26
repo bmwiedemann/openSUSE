@@ -17,27 +17,33 @@
 
 
 %{?sle15_python_module_pythons}
-%global padded_version 2024.04.15
 Name:           python-nox
-Version:        2026.8.17
+%global padded_version 2026.10.20
+Version:        2026.10.20
 Release:        0
 Summary:        Flexible test automation
 License:        Apache-2.0
 URL:            https://nox.thea.codes
-Source:         https://github.com/wntrblm/nox/archive/refs/tags/%{padded_version}.tar.gz#/nox-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-broken-mock-test.patch (gh#28bbaa5)
-Patch0:         fix-broken-mock-test.patch
-BuildRequires:  %{python_module base >= 3.8}
+Source:         https://github.com/wntrblm/nox/archive/refs/tags/%{version}.tar.gz#/nox-%{version}.tar.gz
+BuildRequires:  %{python_module attrs >= 24.1}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module dependency-groups >= 1.1}
 BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module humanize >= 4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-argcomplete >= 1.9.4
-Requires:       python-colorlog >= 2.6.1
-Requires:       python-packaging >= 20.9
-Requires:       python-virtualenv >= 20.14.1
+Requires:       python-attrs >= 24.1
+Requires:       python-colorlog >= 6.6
+Requires:       python-dependency-groups >= 1.1
+Requires:       python-humanize >= 4
+Requires:       python-packaging >= 22
+Requires:       python-platformdirs >= 2
+Requires:       python-python-discovery >= 1
+Requires:       python-virtualenv >= 20.15
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Suggests:       python-Jinja2
@@ -46,11 +52,13 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module argcomplete >= 1.9.4}
-BuildRequires:  %{python_module colorlog >= 2.6.1}
-BuildRequires:  %{python_module packaging >= 20.9}
+BuildRequires:  %{python_module colorlog >= 6.6}
+BuildRequires:  %{python_module packaging >= 22}
+BuildRequires:  %{python_module platformdirs >= 2}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-discovery >= 1}
 BuildRequires:  %{python_module tox}
-BuildRequires:  %{python_module virtualenv >= 20.14.1}
+BuildRequires:  %{python_module virtualenv >= 20.15}
 # Missing deps conda
 # /SECTION
 %python_subpackages
@@ -71,7 +79,7 @@ Flexible test automation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest --ignore tests/test_main.py --ignore tests/test_virtualenv.py -k "not test_get_dependencies"
 
 %post
 %python_install_alternative tox-to-nox

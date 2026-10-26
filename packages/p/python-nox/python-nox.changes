@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Oct 25 19:34:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.10.20:
+  * Remove the experimental banner from `--parallel`
+  * Expose parallel execution state on sessions
+  * Add py-rattler support
+  * Add free-threaded versions from classifiers
+  * Expand ranges and iterators in single-argument
+    parametrization
+  * `rattler`: load config from default locations
+  * Isolate envdirs and relax duration checks to fix flaky CI
+  * Run test sessions in parallel steps in CI
+  * Give `test_interrupt_handled` child more time to exit
+  * Keep existing `PYTHONPATH` in `test_noxfile_script_mode`
+  * Accept unnormalized nox version in script mode test
+  * Bump pinned conda to 26.7.1
+  * Support legacy encodings in the parallel reporter
+  * Run sessions in parallel with `--parallel`/`-j`
+  * Use `python-discovery` for interpreter discovery
+  * Support `requires-python` in script mode
+  * Sort classifier-derived Python versions
+  * Isolate script mode from inherited `PYTHONPATH`
+  * Require virtualenv 21+ on Python 3.15
+  * Correct conda version constraints on Windows
+  * Make explicit command-line options beat noxfile and alias
+    values
+  * Translate PEP 440 range interpreters to conda version specs
+  * Download upper-bound-only Python ranges
+  * Do not write `~/.local/bin` shims when provisioning with uv
+  * Don't crash `python_versions()` on a major-only `max_version`
+  * Correct `python_versions()` minimum for major-only and
+    multiple lower bounds
+  * Don't crash building the manifest when a python-matrix
+    session has an empty parametrize
+  * Keep an empty inner `@parametrize` from being dropped when
+    stacked
+- drop fix-broken-mock-test.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Oct  5 19:06:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.08.17:
