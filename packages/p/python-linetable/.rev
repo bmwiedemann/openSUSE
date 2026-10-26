@@ -16,4 +16,13 @@
 </comment>
     <requestid>1281775</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4d503c984444282ece33029e13fad2f4</srcmd5>
+    <version>0.0.4</version>
+    <time>1793005257</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.0.4:
+  * add license and add more tests</comment>
+    <requestid>1392462</requestid>
+  </revision>
 </revisionlist>

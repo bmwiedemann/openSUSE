@@ -1,7 +1,7 @@
 #
 # spec file for package python-linetable
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-linetable
-Version:        0.0.3
+Version:        0.0.4
 Release:        0
 Summary:        library to manage Python Locations Table (co_linetable)
 License:        MIT
@@ -46,6 +46,7 @@ library to manage Python Locations Table (co_linetable)
 
 %files %{python_files}
 %doc README.rst
+%license LICENSE
 %{python_sitelib}/linetable
 %{python_sitelib}/linetable-%{version}*-info
 
