@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 25 11:59:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.1:
+  * Reject bool for Pool numeric args (processes, timeouts,
+    limits) - #460
+  * Reject fewer than one pool process - #462
+  * Reject a non-positive maxtasksperchild in Pool - #465
+  * Refuse to close a Process that is still running -(#467)
+  * Raise ValueError when using a closed Queue (#466)
+  * Do not report a shutdown SystemExit as the job's result
+
+-------------------------------------------------------------------
 Fri Sep 25 20:33:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0:

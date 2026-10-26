@@ -316,4 +316,19 @@
   Ensure that task results are delivered during pool</comment>
     <requestid>1380726</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>abe8d8639f0db84aec79288e367d8af2</srcmd5>
+    <version>4.3.1</version>
+    <time>1793005225</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.1:
+  * Reject bool for Pool numeric args (processes, timeouts,
+    limits) - #460
+  * Reject fewer than one pool process - #462
+  * Reject a non-positive maxtasksperchild in Pool - #465
+  * Refuse to close a Process that is still running -(#467)
+  * Raise ValueError when using a closed Queue (#466)
+  * Do not report a shutdown SystemExit as the job's result</comment>
+    <requestid>1392395</requestid>
+  </revision>
 </revisionlist>
