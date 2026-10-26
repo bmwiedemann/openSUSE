@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:36:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.15.post1:
+  * stubgen: from_fields rename, namedtuple-unpack fix and
+    structural-map-descent fix
+  * Private library lookup fallback controls
+  * Build fixes for Darwin and MSVC
+
+-------------------------------------------------------------------
 Tue Oct 20 17:27:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.15.post0:
