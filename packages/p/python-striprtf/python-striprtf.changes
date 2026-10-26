@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 25 07:21:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.35
+  * fix: restore the active font when an RTF group closes.
+
+-------------------------------------------------------------------
 Wed Sep  2 07:11:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.0.33
