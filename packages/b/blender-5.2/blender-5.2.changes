@@ -1,4 +1,235 @@
 -------------------------------------------------------------------
+Sat Oct 24 00:26:29 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.2.3
+  - fab76e95306 Fix: Core: Crash freeing data-block that failed to
+    read from blend file
+  - f9d44a1836c Fix: Core: Crash with node tree interface root
+    panel of wrong type
+  - aaa607d7c74 Fix: Core: Crash copying line style with invalid
+    modifier type
+  - 7ef4a9e4abb Fix: Core: Crash with corrupt window area edges in
+    blend file
+  - 13914d2159c Fix: Core: Crash with space data with the wrong
+    type
+  - 7de64556c3e Fix: Core: Crash with user menu item with the wrong
+    type
+  - 752f2a172a1 Fix: Core: Crash with viewer path element with the
+    wrong type
+  - 2bf438c1d56 Fix: Core: Crash with node interface item with the
+    wrong type
+  - 581fd021cd8 Fix: Core: Crash with strip modifier with the wrong
+    type
+  - e1d1177f78b Fix: Core: Crash with line style modifier with the
+    wrong type
+  - bfbb687dffe Fix: Core: Crash with shader effect with wrong type
+  - 5fcec20c8b3 Fix: Core: Crash with grease pencil drawing or
+    layer with wrong type
+  - cd64c336764 Fix: Core: Crash with legacy grease pencil modifier
+    wrong type
+  - 192d81f0b6b Fix: Core: Crash with modifier with wrong type
+  - 7eb2a65881d Fix: Core: Crash with invalid boid rule type in
+    blend file
+  - 3bd7836223f Refactor: Core: Utilities to read structs with
+    derived types
+  - a0ac7a9b74b Fix: Core: Out of bounds read with too short ID
+    name in blend file
+  - 19281632235 Fix: Core: Use after free with data-block failing
+    to read from blend file
+  - 3b8cf8fdae4 Fix: Core: Crash freeing link placeholders after
+    failing to read library
+  - 3b3e1e07be6 Fix: Core: Struct and array size check not checking
+    negative sizes
+  - fdf7b2a22bd Fix: Core: Struct size check rejects files with old
+    cloth gravity bug
+  - cd841694ab1 Fix: Point Cache: Crash with corrupt point indices
+    in file
+  - a0c62db3db6 Fix: Point Cache: Crashes reading corrupt files
+  - eb5cb0bffae Refactor: Point Cache: Simplify file IO functions
+  - 1677fb82310 Fix: Core: Memory leak reading data with invalid
+    size from blend file
+  - fe166033d51 Fix: Core: Crash with link placeholder in archive
+    library in blend file
+  - be0552fbd8a Fix: Core: Crash reading ID with missing asset
+    metadata in blend file
+  - 9b524b3b8a8 Fix: Core: Crash with link placeholder without
+    library in blend file
+  - 5e1e426bddd Fix: Core: Crash with blend file block of
+    unexpected struct type
+  - c5d6faf04bf Fix: Core: Crash with too short blocks in blend
+    file
+  - 45d99782518 Fix: Core: Crash with missing typeinfo freeing
+    incompletely read node
+  - 495deb9efff Fix: Core: Crash listing datablocks and previews
+    with corrupt blend file
+  - d723c68112d Fix: Core: Crash with corrupt thumbnails causing
+    integer overflow
+  - 0296b562715 Core: Add more early return in invalid case in
+    liblinking part of blendfile reading.
+  - 73ecdbfe9f7 Fix various issues in case linking fails to read a
+    library blenfile.
+  - 330fe8ec003 Fix: corrupt linked block silently treated as
+    missing
+  - b88ab7eeb14 Tests: add corrupt .blend reader files
+  - abf32747c71 Fix: null dereference linking a data-block that
+    fails to read
+  - c87d8c08912 Fix: null dereference freeing a partially-read
+    window
+  - e4fe3bccffd Fix: null dereference reading a corrupt global or
+    user-prefs block
+  - 9a4270683b7 Fix: out-of-bounds read from an invalid block
+    struct index
+  - 92da5200750 Fix: out-of-bounds struct reconstruction with an
+    invalid block count
+  - 8ebc1243e0b Fix: out-of-bounds struct reconstruction with
+    inconsistent DNA sizes
+  - cee3d63d6a0 Fix: partial data used when a data-block fails to
+    read
+  - cf6293034a9 Fix several potential errors when reading corrupted
+    DNA data.
+  - e20f4844043 Revert "Fix: Cycles: Hydra uses unsupported GPU
+    when driver is outdated"
+  - 2d8b9ebe59f Fix: Anim: Remove Update Animated Transform
+    Constraints operator
+  - 6bc8a2d77a5 Fix: Rigify: Consistently use getattr and repr
+    instead of eval
+  - 5cada4a8b0b Refactor: Stop using `eval()` in Rigify code
+  - 4e420409783 Fix: Text Editor: Live edit should not be loaded
+    from blend file
+  - 320fa8f8e1e Fix: EEVEE image texture node crash with invalid
+    blend file
+  - ca58a34b832 Fix: Materials: More unsanitized material slot
+    index issues
+  - 2a4430733cf Fix: Freestyle: Python style modules ignore
+    auto-run setting
+  - 01e72b8293a Fix: Core: Auto-run scripts trusted for unintended
+    files
+  - 198d44f0060 UI: Remove auto-run preference from warning prompt,
+    communicate risk
+  - c361aec8a86 Fix #161575: GPU: Properly unbind OpenGL images in
+    destructor
+  - 35fea4a8cea Fix #163617: bad null handling in UString::ref and
+    UString::c_str call sites
+  - 935493b6cd9 Fix: glTF: Vertex Color Export - backport 5.2
+  - 32ede9dba15 Fix #163193: Texture paint crashes (Vulkan) or
+    freezes (OpenGL)
+  - 8270ea7d044 Fix #161013: Outliner "Scroll to Active"
+    uncollapses items undesirably
+  - 459c7d3fda9 Fix #161943: Cycles HIP pthread_create crash
+  - 126473d1199 Fix #161954, #163193: Blender runs out VRAM when
+    painting large images
+  - ef20c7b6006 Fix #164448: Unsaved image edits lost on texture
+    garbage collection
+  - e8daeedf53a Fix: VSE: 5.2 Backport: Wrong bounding box for
+    scene and image sequence strips
+  - 36c568e7595 Fix #164105 - glTF: Fix UDIM export with inline
+    material node tree - Backport 5.2
+  - e8b7fe175f6 Fix #164964: Node Tool poll skips unsupported types
+  - 2c2cd6d6c3f Fix #123859: Multiresolution breaks mask when
+    subdividing in Object Mode
+  - 9e3977607b9 Fix #164752: Crash when Texture Painting UDIM with
+    X-axis symmetry
+  - c9ae3a6c46a Fix: Image Editor sampling incorrectly on repeated
+    image in negative direction
+  - 40dc0a03105 Fix #164527: Image Editor sampling incorrectly on
+    repeated image
+  - ed65a00ea20 Fix #161827: Audio mixdown from scripts produces
+    bad output
+  - 19fb59f28e3 Fix #162536: Crash adding Grease Pencil Opacity
+    modifier
+  - c44602a5f81 Fix #164458: masklayer.splines.new() has 1st point
+    not fully initialized
+  - cb2d26ab9b7 Fix: Geometry Node tool misses update if the output
+    is empty
+  - 765ddb80978 Fix #164368: Geometry Node tool on pointcloud
+    crashes...
+  - 32e78d94819 Fix #158954: Knife breaks under certain conditions
+  - a6cc63e7881 Fix: Image autosave data potentially not populated
+    to cache on file load
+  - 47d4d2f535c Fix #163648: Remote Asset Library never Append
+    (always Pack)
+  - 7bd77c62d6b Fix #164924: Assets: Cannot download asset with
+    2.38GB
+  - 88cc4bba495 Fix #120806: Clamp gamma when passed to OCIO
+  - ca16d26a263 Fix: Node Wrangler: `Connect to Output` inside node
+    groups fails for certain socket types
+  - 4d8b5eef8bc Fix #162167: Grease Pencil: Aspect doesn't work
+    with placement modes
+  - 2005e6f9ad7 Fix  #163701: crash during viewport garbage
+    collector
+  - fe0c1a3d1df Fix #164323: UV Edge Ring Select hangs in
+    select-sync & vertex selection
+  - 2b293badfb4 Fix: Unused variable in image coordinates code
+  - 9203bbaec53 Fix #164563: Image Coordinates node doubles input
+    transforms
+  - 3caf1790a79 Fix #164125: Compositor crashes with missing node
+    group
+  - 070e5bfa7d6 Fix #164227: updating extensions removed wheels
+    used by other extensions
+  - 59dc49847f1 Cleanup: de-duplicate calculating enabled & pending
+    extensions
+  - c707fe8be12 Fix #164486: Crash overriding the contexts window &
+    screen with None
+  - d1acb6447ef Fix #164326: Cycles: Bump node not working on point
+    clouds
+  - 8f5c4471b41 Fix: Cycles: Wrong MultiDevice::is_shared for peer
+    memory
+  - f5064c97976 Fix #164190: Cycles CUDA: Texture cache error with
+    distributed memory
+  - 76bf051f9fb Fix #163605: Viewport pick selection of motion
+    tracks fails
+  - db87fb08b02 Fix: Ignore non-bone hits for bone selection
+  - b612b782138 Fix #164433: Crash using Bake operator in viewport
+    with hidden object
+  - 1041e3042fd Fix: Glare node asserts for overscan images
+  - 24fdf15ded3 Fix #163412: Highlights ignore display window of
+    the input
+  - 4a50a290f3c Fix: Geometry Nodes: `Quick Fur` only hides node
+    group selector for last object
+  - da674322e7f Fix #163962: Quick Fur modifiers show node group
+    selector
+  - 4c7f2e6dbf8 Refactor: Cycles: Remove custom Python thread
+    save/restore
+  - 66cb847d730 Fix: Render: Deadlock drawing render with render
+    stats handler
+  - d6316b741a3 Vulkan: Fix missing instance extensions
+  - 89a3318d4f7 Fix #164004: Animation: Only add button keyingset
+    on animatable buttons
+  - 997639d28fb Fix: Images: EXR writing software metadata
+    preserved
+  - b0655d2347b Fix: Core: Unique naming bug with driver variables,
+    f-modifiers, exporters
+  - 2e54cd605d2 Fix: Physics: Invalid point cache extra data read
+  - 8e57f84f998 Fix: Modeling: Proportional connected edit less
+    accurate than needed
+  - 5e41f0d833f Fix: Materials: Potential crashes with unsanitized
+    material slots
+  - 8592ea0536f Fix: Hydra: Missing volume material after update
+  - 6a1ab6a87d5 Fix: Cycles: MNEE enabled on HIP without HIP-RT in
+    multi-device render
+  - 312830cab3b Fix: Cycles: Wrong handling of vertex color node in
+    bump mapping
+  - 7f51a73732d Fix: Cycles: Crash with kernel compilation without
+    hair or SSS
+  - ba920ac75a4 Fix: Cycles: Crash with SSS legacy random walk and
+    emission
+  - cafefeccd9f Fix: Various crash/bug fixes with differing active
+    scene and sequencer scene
+  - 66ebab82e59 Fix #163811: Recover XR session after global undo.
+  - 939c97c5e2f Fix: use-after-free passing non-UTF8 file-paths to
+    RNA functions
+  - 351b6478150 Fix: Avoid repopulating Image cache from autosave
+    on undo
+  - 6be9edce857 Fix #161651: Transform ORCO coordinates for edit
+    mesh tangents
+  - 13a6e106dfc Fix: IDP_group_lookup_float_array checks the wrong
+    property type
+  - ba98007065f Release: Bump to 5.2.3 candidate
+  - 1b64146561d Fix #161868: Crash when deleting invalid shapekey
+    on blendfile read.
+  - dc6fd99b3b6 Fix: Missing invariants update after ID deletion.
+
+-------------------------------------------------------------------
 Wed Sep 16 23:36:22 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 5.2.2
