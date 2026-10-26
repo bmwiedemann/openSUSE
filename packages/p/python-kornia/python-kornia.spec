@@ -18,26 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kornia
-Version:        0.8.3
+Version:        0.9.0
 Release:        0
 Summary:        Differentiable computer vision library for PyTorch
 License:        Apache-2.0
 URL:            https://github.com/kornia/kornia
 Source:         https://files.pythonhosted.org/packages/source/k/kornia/kornia-%{version}.tar.gz
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module kornia-rs >= 0.1.9}
-BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module kornia-rs >= 0.2.0}
+BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module torch >= 2.0.0}
+BuildRequires:  %{python_module torch >= 2.5.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-kornia-rs >= 0.1.9
-Requires:       python-packaging
-Requires:       python-torch >= 2.0.0
+Requires:       python-kornia-rs >= 0.2.0
+Requires:       python-numpy >= 1.21
+Requires:       python-torch >= 2.5.1
 BuildArch:      noarch
 # python-kornia-rs is ExclusiveArch %%{rust_tier1_arches}; also matches
 # Factory python-torch (no ix86/arm).
-ExclusiveArch:  %{rust_tier1_arches}
+ExclusiveArch:  %{rust_tier1_arches} riscv64
 %python_subpackages
 
 %description

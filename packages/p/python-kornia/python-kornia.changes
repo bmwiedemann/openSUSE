@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:37:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.0:
+  * Correctness and speed release: fp16/bf16 warps and geometry,
+    faster blur/unsharp/CLAHE/morphology, RANSAC and SIFT close
+    to OpenCV, ONNX-exportable augmentations
+  * RandomMosaic, XFeat and batch-consistency fixes; migration
+    notes on numerical baselines
+- Require python-numpy >= 1.21 (new upstream dependency), raise
+  python-kornia-rs to >= 0.2.0 and python-torch to >= 2.5.1,
+  drop the unused python-packaging dependency
+
+-------------------------------------------------------------------
+Mon Aug 31 11:38:31 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Fri Aug 21 10:16:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - ExclusiveArch %%{rust_tier1_arches} to match python-kornia-rs, so
