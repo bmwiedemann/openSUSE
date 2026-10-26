@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hatch-argparse-manpage
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Hatch build hook plugin to generate manual pages
 License:        GPL-3.0-or-later

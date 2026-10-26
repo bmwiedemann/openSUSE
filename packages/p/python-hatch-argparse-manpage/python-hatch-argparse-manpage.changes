@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 25 16:30:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Add skip-platforms configuration option.
+
+-------------------------------------------------------------------
 Fri Apr 10 10:45:56 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use fdupes to remove duplicate pyc files
