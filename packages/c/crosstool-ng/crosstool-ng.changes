@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 25 06:57:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.29.0 (1.26.0, 1.27.0 and 1.28.0 skipped):
+  * New supported toolchain components: GCC 16.2, binutils 2.47,
+    glibc 2.44 and mold 2.41.0; the skipped releases added
+    GCC 13.2/14.2/15.2, binutils 2.40/2.43.1/2.45,
+    glibc 2.38/2.41/2.42, musl 1.2.4/1.2.5, newlib 4.3/4.5,
+    picolibc 1.8.1/1.8.8, uClibc(-ng) 1.0.43/1.0.54, and mold
+    linker support (2.36.0).
+  * Run `ct-ng upgradeconfig` when moving existing configurations
+    across these releases to pick up internal changes.
+- Add explicit gcc, gcc-c++ and make BuildRequires.
+- Spec cleanup: drop obsolete Group tag, use %make_build macro, fix
+  stale rpmlintrc filter levels (W: -> E:).
+
+-------------------------------------------------------------------
 Wed Dec  7 21:42:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.25.0:

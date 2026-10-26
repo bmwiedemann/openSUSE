@@ -17,11 +17,10 @@
 
 
 Name:           crosstool-ng
-Version:        1.25.0
+Version:        1.29.0
 Release:        0
 Summary:        Toolchain building framework
 License:        GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-only AND LGPL-3.0-or-later
-Group:          Development/Tools/Building
 URL:            http://crosstool-ng.org
 Source0:        http://crosstool-ng.org/download/crosstool-ng/%{name}-%{version}.tar.xz
 Source1:        http://crosstool-ng.org/download/crosstool-ng/%{name}-%{version}.tar.xz.sig
@@ -31,10 +30,16 @@ Source99:       %{name}.rpmlintrc
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  gperf
 BuildRequires:  help2man
 BuildRequires:  libtool
+BuildRequires:  make
 BuildRequires:  makeinfo
+# Keep the plain -devel form: spec-cleaner --pkgconfig over-expands this
+# into a dozen pkgconfig() lines for every curses .pc variant the source
+# never uses (only the principal curses API is consumed).
 BuildRequires:  ncurses-devel
 BuildRequires:  unzip
 BuildRequires:  wget
@@ -59,7 +64,7 @@ in the resulting binary/ies: static libraries are but an example.
 %build
 %configure \
     --docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -77,6 +82,6 @@ find %{buildroot} -name '*-new-valencian-locale.patch' -type f -delete -print
 %{_datadir}/bash-completion/completions/ct-ng
 %{_docdir}/%{name}
 %{_libexecdir}/%{name}
-%{_mandir}/man1/ct-ng.1.gz
+%{_mandir}/man1/ct-ng.1%{?ext_man}
 
 %changelog
