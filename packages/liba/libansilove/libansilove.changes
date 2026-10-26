@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 25 11:06:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.3
+  * Allow overriding the definition of ANSILOVE_EXTERN.
+  - Provide a compatibility fallback implementation for strndup.
+  - Document support for PabloDraw 24-bit ANSI sequences.
+  - Fix line wrapping when the cursor exceeds the column limit in
+    ANSI and PCBoard loaders.
+  - Advance TAB to the next tab stop in ANSI and PCBoard loaders.
+  - Fix black background with the blink bit in BinaryText files
+    when iCE colors are disabled.
+  
+-------------------------------------------------------------------
 Mon Mar 24 17:26:55 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.2
