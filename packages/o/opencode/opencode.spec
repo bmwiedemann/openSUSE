@@ -25,7 +25,7 @@
 # The TypeScript and libopentui.so talk over a private FFI ABI with no
 # versioning of its own, so the runtime opentui package must be the
 # release this tree pins. %%prep checks that this still matches.
-%global opentui_version 0.5.17
+%global opentui_version 0.6.8
 # The two native libraries loaded through bun:ffi at run time. Both ABIs are
 # private to the TypeScript that ships in the vendor tree, so the packages
 # are required at exactly the version that tree was generated from; %%prep
@@ -56,17 +56,18 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        2.0.32
+Version:        2.1.4
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 2.0.32 from the declared license field
-# of all 354 unique packages in the vendor tarball (355 store entries, one of
-# which is the symlink farm and not a package). No copyleft of any kind. The
-# SPDX set and the counts are unchanged from 2.0.28 (MIT 199, Apache-2.0 69,
-# ISC 63, BlueOak-1.0.0 9, rest as before); the keep list is byte-identical. @opencode-ai/pty-linux-{arm64,x64}-gnu ship a
+# Legal-Review-Notice: rederived for 2.1.4 from the declared license field
+# of all 352 unique packages in the vendor tarball (354 store entries: 353
+# package dirs, one name@version twice, plus the symlink farm, which is not
+# a package). No copyleft of any kind. The
+# SPDX set is unchanged from 2.0.32; the counts moved slightly (MIT 195,
+# Apache-2.0 71, ISC 63, BlueOak-1.0.0 9, rest as before). @opencode-ai/pty-linux-{arm64,x64}-gnu ship a
 # prebuilt ELF bin/opencode-pty that ends up embedded in the payload rather
 # than loaded from a package like the rest of the native code; both are MIT
 # and both shipped that way at 2.0.23 too. See README.SUSE-maint "Native code".
@@ -99,10 +100,11 @@ Source11:       https://registry.npmjs.org/node-addon-api/-/node-addon-api-%{nod
 # C side of the native shell parser (Patch4).
 Source12:       %{name}-tsshim.c
 # Upstream's build script fails unless bun satisfies a caret range around the
-# version it pins. It pins 1.4.2 and Factory has 1.4.2, so the check passes
-# and this patch is inert today; it stays because both versions float, and a
-# major bump on either side would otherwise stop the build over upstream's
-# convenience rather than a real incompatibility. See README.SUSE-maint.
+# version it pins. It pins 1.4.4 and Factory has 1.4.2, so without this the
+# check would fail the build; the patch warns instead, because both versions
+# float and the check is upstream's convenience rather than a real
+# incompatibility (the build is Bun.build() plus shell calls, and %check
+# runs the resulting binary). See README.SUSE-maint.
 Patch0:         %{name}-relax-bun-version.patch
 # The next three stop the binary fetching code over the network at runtime.
 # Each patch's header says what it stops, why it cannot be configured away,
@@ -292,6 +294,9 @@ Provides:       bundled(photon-node) = %{photon_version}
 Provides:       bundled(tree-sitter-javascript) = %{ts_javascript_version}
 Provides:       bundled(tree-sitter-markdown) = %{ts_markdown_version}
 Provides:       bundled(tree-sitter-typescript) = %{ts_typescript_version}
+# 0.6.8's sixth grammar module, tsx for typescriptreact, ships in the same
+# tree-sitter-typescript-wasm package as the typescript one above.
+Provides:       bundled(tree-sitter-tsx) = %{ts_typescript_version}
 Provides:       bundled(tree-sitter-zig) = %{ts_zig_version}
 # The one module still taken from npm: web-tree-sitter's runtime needs
 # emscripten, which the distribution does not have. Used by the highlighter.
@@ -474,10 +479,19 @@ strip --strip-debug watcher.node
 install -pm 0644 watcher.node "$plat/watcher.node"
 
 # The highlighter's grammar modules, from the tree-sitter-<lang>-wasm
-# packages (bun embeds what sits in the asset directories).
-assets=$(ls -d node_modules/.bun/@opentui+core@%{opentui_version}+*/node_modules/@opentui/core/assets)
-for lang in javascript typescript markdown markdown_inline zig; do
-    install -pm 0644 %{_datadir}/tree-sitter/wasm/tree-sitter-$lang.wasm "$assets/$lang/tree-sitter-$lang.wasm"
+# packages (bun embeds what sits in the asset directories). Every copy in
+# the tree gets them: a re-resolved tree can hold two @opentui+core entries
+# while the farms link only one of them (0.6.8 ships d25f280c761c3e91 live
+# and eff4d38d6a4a2cd9 unreferenced). 0.6.8 adds a sixth module, tsx for
+# typescriptreact, which no upstream descriptor uses yet but bun build
+# still resolves; it comes from tree-sitter-typescript-wasm like the
+# typescript one, so no new pin.
+for assets in node_modules/.bun/@opentui+core@%{opentui_version}+*/node_modules/@opentui/core/assets; do
+    test -d "$assets" || continue
+    for lang in javascript typescript markdown markdown_inline zig; do
+        install -pm 0644 %{_datadir}/tree-sitter/wasm/tree-sitter-$lang.wasm "$assets/$lang/tree-sitter-$lang.wasm"
+    done
+    install -pm 0644 %{_datadir}/tree-sitter/wasm/tree-sitter-tsx.wasm "$assets/typescriptreact/tree-sitter-tsx.wasm"
 done
 
 export HOME="$PWD/.home"
@@ -529,7 +543,7 @@ python3 - %{buildroot}%{_bindir}/%{name} %{_datadir}/tree-sitter/wasm %{_datadir
 import sys
 exe = open(sys.argv[1], "rb").read()
 for f in ["{}/tree-sitter-{}.wasm".format(sys.argv[2], l) for l in
-          ("javascript", "typescript", "markdown", "markdown_inline", "zig")] + sys.argv[3:]:
+          ("javascript", "typescript", "markdown", "markdown_inline", "zig", "tsx")] + sys.argv[3:]:
     assert open(f, "rb").read() in exe, f + " is not embedded as built"
 # bun's embedded-file table names the payload's native and wasm members.
 import re
@@ -537,7 +551,7 @@ found = sorted(set((m.group(1), m.group(2)) for m in
                re.finditer(rb"\$bunfs/root/([A-Za-z0-9_.-]+?)-[a-z0-9]{8}\.(so|node|wasm)\b", exe)))
 expected = sorted([(b"photon_rs_bg", b"wasm"), (b"tree-sitter", b"wasm"), (b"watcher", b"node")] +
                   [(b"tree-sitter-" + l.encode(), b"wasm") for l in
-                   ("javascript", "typescript", "markdown", "markdown_inline", "zig")])
+                   ("javascript", "typescript", "markdown", "markdown_inline", "zig", "tsx")])
 assert found == expected, "embedded native/wasm files: {}".format(found)
 EOF
 # The native shell parser through the shim that ships and the grammar

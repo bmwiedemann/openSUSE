@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Oct 25 19:12:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.1.4 (the 2.x line publishes no release objects, so
+  this is a summary of the v2.0.32..v2.1.4 tag-to-tag diff)
+  * Core: session archiving restored; todowrite tool back behind
+    an experimental flag; background compaction summaries
+  * TUI: dialogs, model switcher and settings reworked to the new
+    designs; free-model picker and free-limit notices (hide them
+    with OPENCODE_DISABLE_FREE_MODELS)
+  * MCP: elicitation forms never appearing fixed; client-hosted
+    tools over websocket (experimental)
+  * AI: more context-overflow errors recognised; ChatGPT context
+    caps moved into a plugin; install creates ~/.zshrc so the
+    binary lands on PATH
+  * Security hardening, no CVEs: unauthenticated feishu bridge
+    route removed; GitHub App token scoped; nested seroval dropped
+  * Deps: OpenTUI 0.5.17 -> 0.6.8; @opencode-ai/pty 0.2.0 -> 0.3.1
+    (still MIT, prebuilt ELF as before); bun 1.4.2 -> 1.4.4
+    (Patch0 now warns, Factory ships 1.4.2); typescript via
+    typescript6 6.0.2 plus new @pierre/highlights and
+    @typescript/native; other pins unchanged, floors hold
+  * 0.6.8's new typescriptreact asset gets the distro tsx module
+    (same tree-sitter-typescript-wasm as the typescript one)
+  * Many more fixes and improvements; the full list is the
+    v2.0.32..v2.1.4 commit range, which publishes no release notes
+- Regenerate the vendor tree: 354 of 2177 store entries kept
+  (closure moved for typescript6, the new highlight packages
+  and pty 0.3.1)
+- Legal review re-derived for the new tree: same 10-licence set
+  (MIT 195, Apache-2.0 71, rest as before), no copyleft
+- All five patches apply clean against 2.1.4 (offsets only, no
+  rebases); filenames unchanged
+- %build installs the distro grammar modules into every
+  @opentui+core copy: the re-resolved tree holds two (only one
+  linked), which the old single-path install failed on
+
+-------------------------------------------------------------------
 Sun Oct 18 17:52:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.32 (the 2.x line publishes no release objects, so

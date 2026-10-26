@@ -215,17 +215,16 @@ Patch3 keeps it blocked.
 
 The remaining patch is unrelated to the network.
 
-opencode-relax-bun-version.patch is, as of 2.0.23, inert. Upstream's build
-script fails unless bun satisfies a caret range around the version in the
-packageManager field: 2.0.23 pins bun@1.4.2 and Factory has 1.4.2, which
-satisfies ^1.4.2, so the check passes and the patch changes nothing. Keep it
-anyway. Both versions float independently, a distribution ships one bun, and
-the day either side crosses a major the check would stop a build for a reason
-that is upstream's convenience rather than a real incompatibility - the build
+opencode-relax-bun-version.patch carries the version skew instead. Upstream's
+build script fails unless bun satisfies a caret range around the version in
+the packageManager field: 2.1.4 pins bun@1.4.4 and Factory has 1.4.2, which
+does not satisfy ^1.4.4, so without the patch the check would fail the
+build. The patch turns it into a warning because both versions float
+independently, a distribution ships one bun, and the check is upstream's
+convenience rather than a real incompatibility - the build
 itself is Bun.build() plus shell calls, and %check runs the resulting binary,
-so a bun that really is too new fails visibly on its own. To confirm it is
-still inert, grep a build log for "expected bun@": the warning is absent when
-the range is satisfied.
+so a bun that really is too new fails visibly on its own. A build log
+carries the "expected bun@" warning whenever the range is not satisfied.
 
 Two things are deliberately left alone:
 
@@ -320,9 +319,10 @@ binaries at 0.2.0.
     C++ in its own npm package (binding.gyp's Linux branch, node-addon-api
     headers from Source11).
 
-  - Embedded, taken from packages: the five grammar modules @opentui/core
-    highlights with (javascript, typescript, markdown, markdown_inline, zig)
-    are the tree-sitter-<lang>-wasm subpackages' files, copied over the
+  - Embedded, taken from packages: the grammar modules @opentui/core
+    highlights with (javascript, typescript, markdown, markdown_inline, zig;
+    0.6.8 adds tsx for typescriptreact, which no upstream descriptor uses
+    yet but bun build resolves, so it is installed the same way) are the tree-sitter-<lang>-wasm subpackages' files, copied over the
     asset directories before bun build. Those packages build every Factory
     grammar to WebAssembly with the %treesitter_wasm_* macros (clang, lld,
     wasi-libc through the tree-sitter CLI's own wasi-sdk invocation); the
@@ -353,7 +353,8 @@ bundled(web-tree-sitter). Retiring it means either packaging emscripten or
 giving the highlighter the same native treatment as the shell parser.
 
 %check reads bun's embedded-file table out of the executable and asserts it
-lists exactly watcher.node, the five grammar modules, photon's module and
+lists exactly watcher.node, the grammar modules (the five plus tsx since
+0.6.8), photon's module and
 tree-sitter.wasm, and that the files built here are in the payload byte
 for byte. (Counting ELF headers does not work: bun's own executable
 contains the magic three times.)

@@ -488,4 +488,12 @@ aarch64, all 5 patches still apply.</comment>
     <comment>Update opencode to 2.0.32</comment>
     <requestid>1386051</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>01c1f7584262adeae55cdeb413b6cdc6</srcmd5>
+    <version>2.1.4</version>
+    <time>1793009841</time>
+    <user>dimstar_suse</user>
+    <comment>Update opencode to 2.1.4. - Stage with 1392516 (exact Requires: opentui = 0.6.8).</comment>
+    <requestid>1392518</requestid>
+  </revision>
 </revisionlist>
