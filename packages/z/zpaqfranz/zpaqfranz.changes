@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:36:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.14 (upstream notes this release is still to be
+  stabilized, not for production use yet):
+  * t with a path and -ssd: multithreaded archive verification
+  * w -test -verify: compare the archive decompressed in RAM
+    with the files on disk
+  * New -ini and -writeini switch files; searchable help, now
+    also in Italian and Russian
+  * ac from Windows PE fixes; v now also checks empty files
+
+-------------------------------------------------------------------
 Wed Oct 21 07:56:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 65.13 (upstream notes this release is still to be
