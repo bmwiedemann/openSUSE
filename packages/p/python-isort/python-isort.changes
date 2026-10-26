@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:39:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.0.2:
+  * Preserve blank lines before comment-only sections
+  * Preserve trailing-comma layout when sorting reexports
+  * fix: treat EOF on stdin as 'quit' in --interactive prompt
+  * Fix multi_line_output=10 emitting unparsable code around
+    trailing comments
+  * Stop configuration discovery at Git worktree boundaries
+  * fix: preserve trailing comments when sorting literals
+  * Preserve LF stdin output on Windows
+  * Handle star imports better when using parenthesis
+  * Sort unwrapped lines in force_sort_within_sections
+  * Preserve file line endings when sorting reexports
+  * Fix float_to_top hoisting indented semicolon imports
+  * Preserve CRLF blank lines during float-to-top preprocessing
+  * mypy: type-check tests and use pathlib fixtures
+- update to 9.0.1:
+  * Restore `python -m isort` by excluding `__main__` from mypyc
+    compilation by @DanielNoord with @Copilot in
+    https://github.com/PyCQA/isort/pull/2643
+- update to 9.0.0:
+  * `isort` `9.0.0` contains some significant changes and
+    improvements. Most notably there is now support for Python
+    3.15 and its `lazy` imports and we have included several
+    performance improvements as well as providing `mypyc`
+    compiled wheels for all major platforms and supported
+    versions of Python. In our own tests we saw speeds ups of
+    more than 2x and 3x times, but this is highly dependent on
+    the codebase `isort` needs to inspect.
+
+-------------------------------------------------------------------
 Tue Mar 17 10:00:27 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Fix the condition with suse_version macro on SLFO (jsc#PED-15806)

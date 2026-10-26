@@ -32,7 +32,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-isort%{psuffix}
-Version:        8.0.1
+Version:        9.0.2
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
