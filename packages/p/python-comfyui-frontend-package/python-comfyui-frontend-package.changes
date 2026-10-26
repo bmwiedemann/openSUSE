@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:31:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.57.3 (crosses 1.57.2):
+  * Agent: node widget forms declared at the Agent boundary,
+    hand-added subgraph host definitions bound, inserted
+    workflows moved clear of landing nodes, human links sent
+    into dynamic-combo inputs
+  * DynamicGroup: remote row counts above max refused, restored
+    above-max groups created on followers, multiline widget
+    store id resolved from its current name
+  * UI: link context menu opens only from its centre marker,
+    balance refreshed when the profile menu opens, deployment
+    opened from the run bar, Desktop sign-in and Members-tab
+    banner messages fixed
+  * Vendored DOMPurify unchanged at 3.4.13, no new dependencies
+
+-------------------------------------------------------------------
 Wed Oct 21 07:53:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.57.1 (crosses 1.56.1, 1.56.2 and 1.57.0):
