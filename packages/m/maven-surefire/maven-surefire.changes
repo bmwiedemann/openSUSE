@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Oct 26 06:55:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.6.1
+  * New features and improvements
+    + Group module path heuristics in a single class
+      ModulePathJpmsArguments
+    + Fix out of memory errors with big JUnit 4 suites
+    + SUREFIRE-3459: Allow opting out of StackWalker stack capture
+  * Bug Fixes
+    + Fix IllegalAccessError when the main module requires JUnit
+    + Fix groups and excludedGroups being ignored when TestNG is on
+      the classpath
+    + Don't let runOrder replace JUnit orderers set elsewhere
+    + Fix groups and excludedGroups for Spock and Jupiter tests
+      when JUnit 4 is on the classpath
+    + Issue #3462 TestNG extension onStart/onFinish called too many
+      times
+    + Fix forked JVM hanging forever when the exit timeout fires,
+      Possible NPE if a thread ends while building the thread dump
+    + Stop rewriting the class report for every nested suite
+    + Fix IllegalAccessError in the forked JVM on Java 8 and 11
+    + SUREFIRE-3460: Don't NPE when StackWalkerStrategy inits with
+      a null TCCL
+    + SUREFIRE-3465: Match includes/excludes the way the scanner
+      does
+    + Issue-3456: Apply systemPropertyVariables before the fork
+      initializes networking
+    + Fix inverted filter predicate in
+      ForkStarter#readTestClassNames
+  * Documentation updates
+    + Clean up deprecated parameters and fix TestNG parallel modes
+    + Merge the two timeout extension pages into one. The guide and
+      the example page covered the same things twice.
+    + Drop the Source Xref menu items
+  * Maintenance
+    + Use push for PR Automation
+    + Use workflow_run for PR check
+    + Add project metadata for ATR
+    + Add PR check workflow
+    + Fix ForkCountIT failing on Windows with Maven 3.10.0
+    + Fix ITs for Maven 3.10.0
+    + Migrate surefire-its fixture from maven-verifier to
+      maven-executor
+    + Port the IT scripts from BeanShell to Groovy
+    + Drop the Source Xref menu items
+    + Implement getOutputPath() and deprecate getOutputName()
+  * Build
+    + Drop the Maven 3.9.0 CI job
+    + Fix ForkCountIT failing on Windows with Maven 3.10.0
+    + fix test due to uneven Maven API migration, Maven 4 build
+    + Keep Dependabot off JUnit 6
+    + Verify the plugin on Maven 3.9.0
+  * Dependency updates
+    + Bump doxiaVersion from 2.1.0 to 2.2.0
+    + Bump org.testng:testng from 6.14.3 to 7.5.1 in /surefire-its/
+      /src/test/resources/groups-with-testng-on-classpath
+    + Bump org.testng:testng from 7.5 to 7.5.1 in /surefire-its/
+      /src/test/resources/surefire-3462-testng-suite-listener
+    + Bump mavenVersion from 3.9.16 to 3.10.0
+    + Bump org.apache.commons:commons-lang3 from 3.20.0 to 3.21.0
+    + Bump org.apache.maven.shared:maven-shared-utils from 3.3.4 to
+      3.5.0
+    + Bump org.apache.maven:maven-parent from 49 to 50
+    + Bump org.xmlunit:xmlunit-core from 2.13.0 to 2.14.0
+    + Bump org.codehaus.mojo:animal-sniffer-maven-plugin from 1.27
+      to 1.28
+- Modified patch:
+  * 0001-Unshade-surefire.patch
+    + rebase
+
+-------------------------------------------------------------------
 Fri Sep  4 10:47:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 3.6.0
