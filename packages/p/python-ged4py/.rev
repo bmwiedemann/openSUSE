@@ -58,4 +58,15 @@
 - update setuptools requirement to &gt;= 61.0</comment>
     <requestid>1346094</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4c9ba417d245afdc11e9b061cbeb353f</srcmd5>
+    <version>0.5.5</version>
+    <time>1793005255</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.5:
+  * Fix for .readthedocs.yaml.
+  * Update .readthedocs.yaml.
+  * Add .readthedocs.yaml.</comment>
+    <requestid>1392461</requestid>
+  </revision>
 </revisionlist>

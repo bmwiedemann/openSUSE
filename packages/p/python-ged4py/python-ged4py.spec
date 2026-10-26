@@ -17,7 +17,7 @@
 
 
 Name:           python-ged4py
-Version:        0.5.2
+Version:        0.5.5
 Release:        0
 Summary:        GEDCOM tools for Python
 License:        MIT
@@ -57,7 +57,7 @@ chmod a-x README.rst
 %pytest
 
 %files %{python_files}
-%doc AUTHORS.rst CONTRIBUTING.rst HISTORY.rst README.rst
+%doc HISTORY.rst README.rst
 %license LICENSE
 %{python_sitelib}/ged4py
 %{python_sitelib}/ged4py-%{version}*-info
