@@ -17,59 +17,55 @@
 
 
 %define flavor @BUILD_FLAVOR@%{nil}
-%if "%flavor" == ""
+%if "%{flavor}" == ""
 %bcond_with cuda
 %endif
-%if "%flavor" == "cuda"
-%bcond_without cuda
+%if "%{flavor}" == "cuda"
 %define psuffix -cuda
 %define cudavers -12-4
+%bcond_without cuda
 %endif
-
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 %global force_gcc_version 12
 %endif
-
-
 %{?sle15_python_module_pythons}
-
 Name:           python-faiss%{?psuffix}
-Version:        1.10.0
+Version:        1.15.1
 Release:        0
 Summary:        A library for efficient similarity search and clustering of dense vectors
 License:        MIT
 URL:            https://ai.meta.com/tools/faiss/
 Source0:        faiss-%{version}.tar
 BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  libopenblas_openmp-devel
-BuildRequires:  onednn-devel
-BuildRequires:  openblas-common-devel
-%if %{with cuda}
-BuildRequires:  cuda-cudart-devel%cudavers
-BuildRequires:  cuda-nvcc%cudavers
-BuildRequires:  cuda-profiler-api%cudavers
-BuildRequires:  libcublas-devel%cudavers
-BuildRequires:  libcurand-devel%cudavers
-%endif
-BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ffcall
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  lapack-devel
+BuildRequires:  libopenblas_openmp-devel
+BuildRequires:  onednn-devel
+BuildRequires:  openblas-common-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  suse-module-tools
 BuildRequires:  swig
 Requires:       python-numpy
 Requires:       python-packaging
+%if %{with cuda}
+BuildRequires:  cuda-cudart-devel%{cudavers}
+BuildRequires:  cuda-nvcc%{cudavers}
+BuildRequires:  cuda-profiler-api%{cudavers}
+BuildRequires:  libcublas-devel%{cudavers}
+BuildRequires:  libcurand-devel%{cudavers}
+%endif
 %python_subpackages
 
 %description
 Faiss is a library for efficient similarity search and clustering of dense
 vectors. It contains algorithms that search in sets of vectors of any size,
- up to ones that possibly do not fit in RAM. It also contains supporting
+up to ones that possibly do not fit in RAM. It also contains supporting
 code for evaluation and parameter tuning. Faiss is written in C++ with
 complete wrappers for Python/numpy. Some of the most useful algorithms
 are implemented on the GPU. It is developed by Facebook AI Research.
@@ -79,7 +75,7 @@ Summary:        Development headers for faiss
 Requires:       libfaiss
 
 %description -n faiss-devel
-These are the header for C and C++ of faiss
+These are the headers for C and C++ of faiss.
 
 %package -n libfaiss
 Summary:        faiss library
@@ -87,7 +83,7 @@ Summary:        faiss library
 %description -n libfaiss
 Faiss is a library for efficient similarity search and clustering of dense
 vectors. It contains algorithms that search in sets of vectors of any size,
- up to ones that possibly do not fit in RAM. It also contains supporting
+up to ones that possibly do not fit in RAM. It also contains supporting
 code for evaluation and parameter tuning. Faiss is written in C++ with
 complete wrappers for Python/numpy. Some of the most useful algorithms
 are implemented on the GPU. It is developed by Facebook AI Research.
@@ -97,7 +93,7 @@ are implemented on the GPU. It is developed by Facebook AI Research.
 
 %build
 %if %{with cuda}
-export PATH=/usr/local/cuda-12.4/bin:${PATH}
+export PATH=%{_prefix}/local/cuda-12.4/bin:${PATH}
 export CC=gcc-12
 export CXX=g++-12
 %endif
@@ -106,7 +102,7 @@ export CC=gcc-12
 export CXX=g++-12
 %endif
 
-# Always compile with AVX512 as seperate libaries will be built
+# Always compile with AVX512 as separate libraries will be built
 %cmake \
   -DCMAKE_SKIP_RPATH=ON \
 %if %{with cuda}
@@ -129,7 +125,7 @@ cd ..
 %{python_expand # need to disable the standard eror from the linker for
 # undefined symbols as swig doesn't create all the functions
 %if %{with cuda}
-export PATH=/usr/local/cuda-12.1/bin:${PATH}
+export PATH=%{_prefix}/local/cuda-12.1/bin:${PATH}
 %endif
 %cmake \
   -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
@@ -170,22 +166,19 @@ cd %{__builddir}/faiss/python
 
 %install
 %cmake_install
+# Upstream installs its pip-wheel staging tree to DESTINATION faiss
+# (i.e. /usr/faiss); the real Python install is done by the pyproject
+# install macro below, so drop the redundant copy.
+rm -rf %{buildroot}%{_prefix}/faiss
 # c lib is build not installed
 install -D ./build/c_api/libfaiss_c.so %{buildroot}%{_libdir}/libfaiss_c.so
 cd %{__builddir}/faiss/python
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
-
-%post
-%{python_expand test -e %{_libdir}/libfaiss_python_callbacks.so || ln -s %{$python_sitelib}/faiss/libfaiss_python_callbacks.so %{_libdir}/libfaiss_python_callbacks.so}
-
-%postun
-%{python_expand test -e %{_libdir}/libfaiss_python_callbacks.so || rm -f %{_libdir}/libfaiss_python_callbacks.so}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %{python_sitelib}/faiss
 %{python_sitelib}/faiss-%{version}.dist-info
-%ghost %{_libdir}/libfaiss_python_callbacks.so
 
 %files -n faiss-devel
 %{_includedir}/faiss/*
@@ -198,6 +191,8 @@ cd %{__builddir}/faiss/python
 %ifarch x86_64
 %{_libdir}/libfaiss_avx2.so
 %{_libdir}/libfaiss_avx512.so
+%{_libdir}/libfaiss_c_avx2.so
+%{_libdir}/libfaiss_c_avx512.so
 %endif
 
 %changelog

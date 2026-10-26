@@ -1,12 +1,37 @@
 -------------------------------------------------------------------
+Sun Oct 25 16:28:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix typos
+
+-------------------------------------------------------------------
+Sat Oct 24 04:45:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.15.1:
+  * New RaBitQ quantization with FastScan and multi-bit support
+  * New EDEN and TurboQuant quantizers, SuperKMeans clustering
+  * New Metal GPU backend, RISC-V RVV and Arm SVE SIMD backends
+  * New IndexIVFFlatPanorama family and cuVS IVF-SQ backend
+  * Python type stubs, pip install support, wider C API coverage
+  * HNSW speedups, similarity mode and persistent locks
+  * Hardened index deserialization and many crash fixes
+  * Support Python 3.13 and 3.14, build against numpy 2
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Spec file cleanup (spec-cleaner); drop the redundant /usr/faiss
+  staging install, package the new per-level C API libraries
+- Drop the obsolete libfaiss_python_callbacks.so symlink: the callbacks
+  library is static in 1.15.x, nothing ships the shared object, and the
+  non-idempotent %post broke installing both Python flavors together
+
+-------------------------------------------------------------------
 Wed Jun 25 03:49:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Use pyproject macros to build and install the Python module. 
+- Use pyproject macros to build and install the Python module.
 
 -------------------------------------------------------------------
 Thu Apr  3 15:31:42 UTC 2025 - Christian Goll <cgoll@suse.com>
 
-- enable C_API 
+- enable C_API
 
 -------------------------------------------------------------------
 Tue Mar 18 17:46:46 UTC 2025 - Christian Goll <cgoll@suse.com>
