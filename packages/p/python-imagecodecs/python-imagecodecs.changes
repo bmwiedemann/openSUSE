@@ -1,8 +1,123 @@
 -------------------------------------------------------------------
+Sun Oct 25 22:41:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.10.10:
+  * Reject 0-D input to array codecs (#151, breaking).
+  * Reject bitspersample outside dtype range (breaking).
+  * Reject dtype too wide for bitspersample (#153, breaking).
+  * Reject big-endian arrays in many codecs.
+  * Add skipres parameter to jpeg2k_decode (#155).
+  * Add bitspersample parameter to htj2k_encode (#153).
+  * Add bitspersample and color transformation parameter to
+    jpegls_encode (#150).
+  * Add option to write SPIFF header in jpegls_encode (breaking).
+  * Add perceptualheuristics parameter to jpegxl_encode (#149).
+  * Add numthreads parameter to zstd_encode and zstd1_encode.
+  * Add gainmap_gamma, gainmap_level, and multichannel to
+    ultrahdr_encode.
+  * Add ultrahdr_encode_jpeg and ultrahdr_decode_jpeg functions.
+  * Add colorinteropid parameter to exr_encode.
+  * Add compression level parameter to snappy_encode (require
+    Snappy 1.3).
+  * Add contentsize parameter to lz4f_encode.
+  * Add chunked decoder to lz4f_decode, used when content size
+    not in header.
+  * Add ZSTD and LJ2K compression to EXR codec (require OpenEXR
+    3.5).
+  * Add colorspace parameter to qoi_encode.
+  * Add codec parameter to avif_decode.
+  * Add numthreads parameter to heif_encode and heif_decode.
+  * Add rgbe_info function, and orientation field to
+    rgbe_header_info C struct.
+  * Set GIF background alpha to 0 when alpha channel is present
+    (breaking).
+  * Set JPEG8 lossless data precision to 16 for uint16 by
+    default.
+  * Set AVIF encoder default speed to match avifenc (breaking).
+  * Enable writing lossy monochrome AVIF images.
+  * Update OPENZL codec to FrameInfo API (require OpenZL 0.3.0).
+  * Support more pixelformats in jpegxr_decode.
+  * Avoid copy of non-planar input in jpeg2k_encode.
+  * Avoid extra copy in CZI hilo unpacking.
+  * Avoid memset on CLEAR in lzw_encode.
+  * Improve lzw_decode using literal table.
+  * Improve inner loops in bmp_encode.
+  * Improve HTJ2K error handling.
+  * Use uint64 accumulators in imcd_delta, imcd_xor, and
+    imcd_packints_decode.
+  * Fix issues in static Pyodide builds.
+  * Add CHUNKED codec for experimental chunked compression in CZI
+    files.
+  * Change zarr Byteshuffle, Bitshuffle, Floatpred to
+    ArrayByteCodec (breaking).
+  * Remove axis parameter from Packbits zarr codecs (breaking).
+  * Remove height and width parameters from Ccitt zarr codecs
+    (breaking).
+  * Fix codecs failing on empty or small input (#146, #147).
+  * Fix zarr codecs squeezing planar dimension (#145).
+  * Fix sperr_encode fails with non-contiguous input.
+  * Fix lzw_decode writes to truncated output.
+  * Fix tiff_decode fails to read 12-bit JPEG compressed TIFF
+    files.
+  * Fix jpegxl_encode fails to set distance=0 required by libjxl
+    0.12.
+  * Add option to specify primaries and transferfunction in
+    (a)png_encode (#142).
+  * Map htj2k_encode level >= 1.0 to qfactor (breaking; require
+    OpenJPH 0.31).
+  * Accept float32 input in htj2k_encode (experimental).
+  * Return HTJ2K images with nonlinear transform as float32
+    (breaking).
+  * Improve EXR error handling.
+  * Update JPEGXS codec to libjxs 3.0.2-ED3.
+  * Add experimental support for Pyodide (core codecs only).
+  * Add B2ND codec based on Blosc2 library.
+  * Add ISAL codec based on ISA-L library (handles deflate, zlib,
+    and gzip).
+  * Add OPENZL codec based on OpenZL library (currently Windows
+    and decode only).
+  * Add block_size, prog_order, and profile parameters to
+    htj2k_encode.
+  * Add fancyupsampling parameter to jpeg decoder functions.
+  * Fix tiff_encode modifies input array.
+  * Avoid unnecessary memory initialization.
+  * Optimize LZW codec.
+  * Limit IntEnum parameters to documented values (breaking).
+  * Optimize lzw_decode and remove buffersize parameter
+    (breaking).
+  * Fix floatpred_encode for zero-stride data (#138).
+  * Add ZSTD1 codec with optional hilo byte shuffle and BGR to
+    RGB conversion.
+  * Add cms_info function.
+  * Add spng_encode filter parameter.
+  * Add Zarr 3 compatible PCX and TGA codecs.
+  * Support Python 3.15.
+  * Add Zarr 3 compatible codecs.
+  * Add WIC codec based on Windows Imaging Component.
+  * Add EXR codec based on OpenEXRCore library.
+  * Add WAVPACK codec based on WavPack library.
+  * Add HCOMP and PLIO codecs based on modified cfitsio library.
+  * Add TGA and PCX/DCX legacy codecs.
+  * Add option to pass SDR image to ultrahdr_encode.
+  * Add option to specify primaries and transferfunction in
+    jpegxl_encode (#137).
+  * Add animated WebP encoding and decoding of all frames
+    (breaking).
+  * Remove cms_encode and cms_decode aliases for cms_transform
+    (breaking).
+  * Determine colorspace/pixeltype from profiles in
+    cms_transform.
+  * Allow to pass IntEnum parameters as strings except for
+    levels.
+  * Support decoding RLE8 and RLE4 compressed BMP.
+  * Link zopfli_encode level to numiterations parameter.
+  * Unify image layout handling in encode functions.
+
+-------------------------------------------------------------------
 Wed May 27 11:53:05 UTC 2026 - Ana Guerrero <ana.guerrero+factory@suse.com>
 
-- skip builds for python311 for the test flavor. Several of the 
-  required packages are not available for python311. 
+- skip builds for python311 for the test flavor. Several of the
+  required packages are not available for python311.
 
 -------------------------------------------------------------------
 Tue Mar 24 19:37:58 UTC 2026 - Dirk Müller <dmueller@suse.com>

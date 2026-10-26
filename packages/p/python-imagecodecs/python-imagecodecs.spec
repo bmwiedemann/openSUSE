@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-imagecodecs%{psuffix}
-Version:        2026.3.6
+Version:        2026.10.10
 Release:        0
 Summary:        Image transformation, compression, and decompression codecs
 License:        BSD-3-Clause
@@ -36,17 +36,16 @@ Source0:        https://files.pythonhosted.org/packages/source/i/imagecodecs/ima
 Source1:        imagecodecs_distributor_setup.py
 # PATCH-FIX-OPENSUSE Remove h5lookup tests that cause failed assertions
 Patch0:         no-length-assertion-aborts.patch
-ExcludeArch:    %ix86 %arm32 ppc s390
 BuildRequires:  %{python_module Cython >= 3.1.0}
 BuildRequires:  %{python_module base >= 3.11}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy-devel >= 2.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
+Requires:       python-numpy >= 2.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-Pillow
@@ -56,6 +55,7 @@ Recommends:     python-matplotlib >= 3.3
 Recommends:     python-numcodecs
 Recommends:     python-tifffile
 Recommends:     python-zstd
+ExcludeArch:    %{ix86} %{arm32} ppc s390
 %if %{with test}
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Pillow}
@@ -87,6 +87,7 @@ BuildRequires:  CharLS-devel
 BuildRequires:  dav1d-devel
 BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
+BuildRequires:  isa-l-devel
 BuildRequires:  jxrlib-devel
 BuildRequires:  libaec-devel >= 1.1
 BuildRequires:  libaom-devel
@@ -94,10 +95,12 @@ BuildRequires:  libdeflate-devel
 BuildRequires:  libzopfli-devel
 BuildRequires:  lzfse-devel
 BuildRequires:  lzham_codec-devel
+BuildRequires:  openexr-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rav1e-devel
 BuildRequires:  snappy-devel
 BuildRequires:  sz2-devel
+BuildRequires:  wavpack-devel
 BuildRequires:  xz-devel
 BuildRequires:  zfp-devel
 BuildRequires:  pkgconfig(SvtAv1Enc)
@@ -145,7 +148,9 @@ rm imagecodecs/licenses/LICENSE-brunsli
 rm imagecodecs/licenses/LICENSE-jetraw
 rm imagecodecs/licenses/LICENSE-lerc
 rm imagecodecs/licenses/LICENSE-lzokay
+rm imagecodecs/licenses/LICENSE-meshoptimizer
 rm imagecodecs/licenses/LICENSE-mozjpeg
+rm imagecodecs/licenses/LICENSE-openzl
 rm imagecodecs/licenses/LICENSE-pcodec
 rm imagecodecs/licenses/LICENSE-sperr
 rm imagecodecs/licenses/LICENSE-libjxs
@@ -177,7 +182,7 @@ donttest="heif"
 # no webp and lerc support in libtiff
 donttest="$donttest or (test_tiff and (webp or lerc))"
 donttest+=" or test_cms"
-donttest+=" or test_tiff_encode_pixarlog"
+donttest+=" or test_tiff_encode_pixarlog or test_tiff_decode_files"
 %pytest_arch -n auto tests -rsXfE -k "not ($donttest ${$python_donttest})"
 %endif
 

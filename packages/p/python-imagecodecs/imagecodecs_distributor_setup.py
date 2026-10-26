@@ -14,11 +14,12 @@ def customize_build(EXTENSIONS, OPTIONS):
     del EXTENSIONS['brunsli']  # graphics/brunsli not in Factory
     del EXTENSIONS['jetraw']   # jetraw library not available
     del EXTENSIONS['lerc']     # LERC library not available
-    del EXTENSIONS['lz4f']     # requires static linking
     del EXTENSIONS['lzo']      # lzokay not available
+    del EXTENSIONS['openzl']   # not in Factory
     del EXTENSIONS['meshopt']  # not in Factory
     del EXTENSIONS['mozjpeg']  # Win32 only
     del EXTENSIONS['pcodec']   # not available in Factory
+    del EXTENSIONS['wic']      # not available in Factory
     del EXTENSIONS['sperr']    # not available in Factory
     del EXTENSIONS['jpegxs']   # jxs not available in Factory
     del EXTENSIONS['sz3']      # SZ3c not available in Factory
@@ -39,7 +40,7 @@ def customize_build(EXTENSIONS, OPTIONS):
     EXTENSIONS['jpeg2k']['include_dirs'].append(openjpeg_inc)
     EXTENSIONS['jpegxr']['include_dirs'].append(includedir +  'jxrlib')
     EXTENSIONS['jpegxl']['libraries'] = ['jxl', 'jxl_threads']
-    EXTENSIONS['rcomp']['include_dirs'].append(includedir +   'cfitsio')
+    EXTENSIONS['exr']['include_dirs'].append(includedir +  'OpenEXR')
     EXTENSIONS['zopfli']['include_dirs'].append(includedir +  'zopfli')
     EXTENSIONS['lzham']['libraries'] = ['lzhamdll']
     # gh#gohlke/imagecodecs#111
