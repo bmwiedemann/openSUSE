@@ -23,13 +23,11 @@
 %define gcc_ver 12
 %endif
 %endif
-
 Name:           qucs-s
-Version:        26.1.0
+Version:        26.1.1
 Release:        0
 Summary:        Qucs with SPICE
 License:        GPL-2.0-or-later
-Group:          Productivity/Scientific/Electronics
 URL:            https://ra3xdh.github.io/
 Source:         https://github.com/ra3xdh/qucs_s/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        qucs-s.rpmlintrc
@@ -39,9 +37,6 @@ BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  flex
-%if 0%{?suse_version} < 1600
-BuildRequires:  gcc%{gcc_ver}-c++
-%endif
 BuildRequires:  gperf
 BuildRequires:  cmake(Qt6Charts)
 BuildRequires:  cmake(Qt6Gui)
@@ -50,9 +45,12 @@ BuildRequires:  cmake(Qt6PrintSupport)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Xml)
 Requires:       ngspice
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc%{gcc_ver}-c++
+%endif
 
 %description
-Qucs-S is a spin-off of the Qucs cross-platform circuit simulator. "S" 
+Qucs-S is a spin-off of the Qucs cross-platform circuit simulator. "S"
 letter indicates SPICE. The purpose of the Qucs-S subproject is to use
 free SPICE circuit simulation kernels with the Qucs GUI It merges the power
 of SPICE and the simplicity of the Qucs GUI. Qucs intentionally uses its
@@ -63,7 +61,7 @@ it requires to use a simulation backend with it. The schematic document
 format of Qucs and Qucs-S are fully compatible.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %if 0%{?suse_version} >= 1600
 %patch -P 0 -p1
 %endif
@@ -72,7 +70,7 @@ format of Qucs and Qucs-S are fully compatible.
 %if 0%{?suse_version} >= 1600
 %cmake
 %else
-%cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-%{gcc_ver}
+%cmake -DCMAKE_CXX_COMPILER=%{_bindir}/g++-%{gcc_ver}
 %endif
 %cmake_build
 
@@ -88,9 +86,9 @@ format of Qucs and Qucs-S are fully compatible.
 %{_datadir}/%{name}
 %{_datadir}/icons/hicolor/
 %{_datadir}/applications/%{name}.desktop
-%{_mandir}/man1/%{name}.1.gz
-%{_mandir}/man1/qucsator_rf.1.gz
-%{_mandir}/man1/qucsconv_rf.1.gz
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/qucsator_rf.1%{?ext_man}
+%{_mandir}/man1/qucsconv_rf.1%{?ext_man}
 %{_datadir}/metainfo/io.github.ra3xdh.qucs_s.metainfo.xml
 
 %changelog

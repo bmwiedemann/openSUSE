@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 25 06:52:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 26.1.1
+  * Fix netlisting of terminated (power-unset) ports and add
+    LoadOnly passive-termination port property
+  * Fix Xyce segfault when netlisting schematics without
+    simulations
+  * Fix SpiceLibComp pin counting on continuation lines and
+    harden dialog input validation
+  * Fix SPICE entry for MOSFET with parameters defined as
+    variables
+  * Append .sym extension when saving symbol files
+  * Update SPAR viewer submodule and Italian translation
+- Spec cleanup: drop obsolete Group tag, use %{?ext_man} for
+  man pages
+
+-------------------------------------------------------------------
 Sat Apr 11 14:07:51 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 26.1.0
