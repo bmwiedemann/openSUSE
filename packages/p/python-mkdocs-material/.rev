@@ -856,4 +856,20 @@ update to 9.6.20</comment>
     <comment></comment>
     <requestid>1366697</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>170327873119ece9ae6e8955454d2bd4</srcmd5>
+    <version>9.8.0</version>
+    <time>1793005317</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.8.0:
+  * **Python 3.11 or newer is now required.** Python 3.8–3.10 are
+    no longer supported.
+  * Updated Node build-time dependencies to fix vulnerabilities
+  * Updated Python dependency minimums and required Python 3.11
+  * Removed RSS from recommended dependencies
+  * Updated project status and maintenance links
+  * Updated CLI notice with end-of-life and migration guidance
+  * Removed redirects from recommended dependencies</comment>
+    <requestid>1392494</requestid>
+  </revision>
 </revisionlist>

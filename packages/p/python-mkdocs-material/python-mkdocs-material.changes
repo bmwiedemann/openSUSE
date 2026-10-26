@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 25 17:06:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.8.0:
+  * **Python 3.11 or newer is now required.** Python 3.8–3.10 are
+    no longer supported.
+  * Updated Node build-time dependencies to fix vulnerabilities
+  * Updated Python dependency minimums and required Python 3.11
+  * Removed RSS from recommended dependencies
+  * Updated project status and maintenance links
+  * Updated CLI notice with end-of-life and migration guidance
+  * Removed redirects from recommended dependencies
+
+-------------------------------------------------------------------
 Mon Jul 20 05:53:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.7.7:
