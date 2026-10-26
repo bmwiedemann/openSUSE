@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 25 06:00:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.38:
+  * Add the priority section to langgraph.json
+  * Fix missed brace-expansion dependency majors
+
+-------------------------------------------------------------------
 Tue Oct 20 17:27:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.37:
