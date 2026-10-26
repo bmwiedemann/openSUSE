@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 18:12:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.27
+  * Fixed: Sample files shouldn't be listed when in "Instr." item
+    mode in Disk Op.
+  * Fixed double-free memory bug when loading .OGG samples.
+  * Scope interpolation tweak (again).
+
+-------------------------------------------------------------------
 Fri Oct 16 18:01:01 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.26.1
