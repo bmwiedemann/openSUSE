@@ -526,4 +526,12 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
   * decoder foundation to support more compression algorithms</comment>
     <requestid>1364066</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>7d42f1b51e218a10524025eedfde1e9c</srcmd5>
+    <version>0.32.0</version>
+    <time>1793005383</time>
+    <user>dimstar_suse</user>
+    <comment>- update cert bundle to remove eMudra certs (bsc#1286261)</comment>
+    <requestid>1392542</requestid>
+  </revision>
 </revisionlist>

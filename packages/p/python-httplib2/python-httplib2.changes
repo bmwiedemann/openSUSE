@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:37:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update cert bundle to remove eMudra certs (bsc#1286261)
+
+-------------------------------------------------------------------
 Mon Jul  6 15:28:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.32.0:

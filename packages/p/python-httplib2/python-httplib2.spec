@@ -24,6 +24,7 @@ Summary:        A Python HTTP client library
 License:        Apache-2.0 AND MIT AND (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later)
 URL:            https://github.com/httplib2/httplib2
 Source:         https://files.pythonhosted.org/packages/source/h/httplib2/httplib2-%{version}.tar.gz
+Source1:        https://files.pythonhosted.org/packages/source/c/certifi/certifi-2026.10.23.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -47,7 +48,9 @@ A comprehensive HTTP client library that supports many features
 left out of other HTTP libraries.
 
 %prep
-%autosetup -p1 -n httplib2-%{version}
+%autosetup -p1 -n httplib2-%{version} -a1
+rm -v httplib2/cacerts.txt
+cp ./certifi-2026.10.23/certifi/cacert.pem httplib2/cacerts.txt
 
 %build
 %pyproject_wheel
