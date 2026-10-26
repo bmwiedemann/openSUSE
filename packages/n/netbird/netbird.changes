@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 24 14:07:02 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.81.4
+  - [client] Drop SSH privileges through libc in PKCS#11 package
+    builds (#8323) (#8331)
+  - [client,proxy,management,signal,relay] Distrust compromised
+    eMudhra CA keys (#8326) by @mlsmaycon in #8328
+  - [client] Drop SSH privileges through libc in PKCS#11 package
+    builds (#8323) by @lixmal in #8331
+
+-------------------------------------------------------------------
 Mon Oct 19 21:14:58 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.81.3
