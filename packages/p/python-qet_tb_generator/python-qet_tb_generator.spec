@@ -1,7 +1,7 @@
 #
 # spec file for package python-qet_tb_generator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define modname qet_tb_generator
 %bcond_without libalternatives
 Name:           python-%{modname}
-Version:        1.3.1
+Version:        2.0.2
 Release:        0
 Summary:        Generates terminal blocks & connectors for QElectroTech
 License:        GPL-2.0-only
