@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pint
-Version:        0.25.3
+Version:        0.26.2
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause
 URL:            https://github.com/hgrecco/pint
 Source:         https://files.pythonhosted.org/packages/source/p/pint/pint-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.11}
+BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -32,23 +32,23 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-flexcache >= 0.3
 Requires:       python-flexparser >= 0.4
-Requires:       python-platformdirs >= 2.1
-Requires:       python-typing_extensions >= 4.0
+Requires:       python-platformdirs >= 2.1.0
+Requires:       python-typing_extensions >= 4.0.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-numpy >= 1.21
+Recommends:     python-numpy >= 2.0.0
 Recommends:     python-uncertainties >= 3.1.6
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module flexcache >= 0.3}
 BuildRequires:  %{python_module dask-array if %python-base >= 3.12}
 BuildRequires:  %{python_module flexparser >= 0.4}
-BuildRequires:  %{python_module numpy >= 1.21}
+BuildRequires:  %{python_module numpy >= 2.0.0}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module platformdirs >= 2.1}
+BuildRequires:  %{python_module platformdirs >= 2.1.0}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
-BuildRequires:  %{python_module typing_extensions >= 4.0}
+BuildRequires:  %{python_module typing_extensions >= 4.0.0}
 BuildRequires:  %{python_module uncertainties >= 3.1.6}
 # /SECTION
 %python_subpackages
@@ -88,7 +88,7 @@ rm -rv pint/testsuite/benchmarks
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS README.rst
+%doc README.rst
 %python_alternative %{_bindir}/pint-convert
 %{python_sitelib}/pint
 %{python_sitelib}/[Pp]int-%{version}.dist-info

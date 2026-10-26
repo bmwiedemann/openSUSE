@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sun Oct 25 19:17:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.2:
+  ### Units and parsing
+  - Update definition of US survey units to reflect the 2022
+    revision by NIST/NGS (#1920)
+  - Fix `fathom` to equal two international yards; the old value is
+    now `survey_fathom` (#2397)
+  - Fix the angular mil so one turn is 6400 mil
+  - Parse `$` as a unit symbol like `£`, and raise
+    `DefinitionSyntaxError` for unknown operators such as `&`
+    instead of ignoring them (#1814)
+  - Raise `DefinitionSyntaxError` instead of an internal
+    `TypeError` for addition or subtraction in unit expressions,
+    e.g. `kilo-watt` (#2029)
+  - Reject invalid unit aliases at definition time while preserving
+    Unicode and degree aliases (#1918)
+  ### Formatting changes
+  - Add `TypstFormatter` and `ZeroFormatter` to allow formatting to
+    plain Typst and zero package (#2148)
+  - Format temperature units as valid LaTeX (`~L`) and siunitx
+    (`Lx`), e.g. `\degreeCelsius` (#400)
+  - `str()` and `format()` of a `Unit` now use the registry's
+    `fmt_locale`, like Quantities (#1472)
+  - Keep the row layout of multi-dimensional arrays in
+    `Quantity._repr_html_`, as `repr` does (#487)
+  - Fix babel not localizing unit names containing underscores,
+    e.g. `kilowatt_hour` (#2234)
+  - Fix formatting a unit with only negative exponents, e.g. `1 /
+    second`, raising `IndexError` when a locale is set (#2446)
+  - Restore the previous numeric locale when localized formatting
+    raises an exception
+  ### NumPy
+  - Support the `numpy.vecdot`, `numpy.matvec` and `numpy.vecmat`
+    ufuncs and `numpy.linalg.vecdot` on Quantities
+  - Support `numpy.repeat` on Quantities (#2104)
+  - `numpy.sum`/`numpy.nansum` now raise `DimensionalityError` for
+    a bare non-zero `initial` on a dimensioned Quantity, like
+    `numpy.max` (#2401)
+  - Fix `numpy.sum`/`numpy.nansum` not converting a Quantity
+    `initial` value, unlike `numpy.max`/`numpy.min` (#2400)
+  - Fix `numpy.nanmax`/`numpy.nanmin` raising `ValueError` on a
+    Quantity `initial` value, unlike `numpy.max`/`numpy.min`
+  - Fix `numpy.clip` not converting the units of the numpy 2.1
+    `min`/`max` keywords (#2433)
+  - Fix recursion in `numpy.average` with dimensionless Quantity
+    weights and `returned=False` (#1609)
+  - Fix assigning offset-unit quantities (e.g. `degC` into a
+    `kelvin` array) via `__setitem__` (#618)
+  - Fix `numpy.linspace(..., retstep=True)` on Quantities failing
+    to return separate samples and step; offset temperature steps
+    use delta units (#1340)
+  - Fix `numpy.block` raising `TypeError` for nested lists of
+    Quantities, e.g. `numpy.block([[a, b], [c, d]])`
+  - Fix `numpy.percentile`, `numpy.nanpercentile`,
+    `numpy.quantile`, and `numpy.nanquantile` raising
+    `RecursionError` when `q` is a Quantity
+  - Fix `numpy.tensordot`, `numpy.cross` and the other
+    multiplicative functions rejecting positional arguments after
+    the two arrays, e.g. `numpy.tensordot(a, b, 1)`
+  - Fix `numpy.mod`, `numpy.remainder`, `numpy.fmod` and
+    `numpy.floor_divide` ignoring the units of the divisor when
+    both operands have the same dimensionality, e.g. `np.mod(7 m, 200
+    cm)` returned `7 m`
+  - Fix `numpy.unwrap` raising `TypeError` on the `period` keyword;
+    a Quantity `period` or `discont` is converted to the units of
+    the input
+  - Fix `numpy.diff` and `numpy.ediff1d` not converting the units
+    of Quantity `prepend`/`append` and `to_end`/`to_begin` values
+  - Fix `numpy.ptp` returning an absolute temperature instead of a
+    delta for offset units (#2441)
+
+-------------------------------------------------------------------
 Thu Jun 18 15:31:42 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Don't test with python311-dask-array: no longer available, SPEC 0
