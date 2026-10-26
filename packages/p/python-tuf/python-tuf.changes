@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:12:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.1:
+  * Fix hash method on Role and DelegatedRole
+  * Fix incorrect dependency range for urllib3
+  * ngclient: Fix connection exception handling
+  * ngclient: Fix incorrect delegation in diamond-shape case
+  * ngclient: Avoid use of symlink on Windows: it requires
+    privileges
+
+-------------------------------------------------------------------
 Tue May 19 22:15:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.0:

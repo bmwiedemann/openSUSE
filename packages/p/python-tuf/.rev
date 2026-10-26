@@ -41,4 +41,18 @@
   * Prepare for removal of securesystemslib.hash</comment>
     <requestid>1354129</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60f829195616d08c1f338859e43d9b9d</srcmd5>
+    <version>7.0.1</version>
+    <time>1793005369</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.1:
+  * Fix hash method on Role and DelegatedRole
+  * Fix incorrect dependency range for urllib3
+  * ngclient: Fix connection exception handling
+  * ngclient: Fix incorrect delegation in diamond-shape case
+  * ngclient: Avoid use of symlink on Windows: it requires
+    privileges</comment>
+    <requestid>1392537</requestid>
+  </revision>
 </revisionlist>
