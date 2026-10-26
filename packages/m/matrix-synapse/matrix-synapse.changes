@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 23 21:42:37 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.163.2
+  - Bump pillow to 13.0.0 to address critical security
+    vulnerabilties. You must use Python >= 3.11 to take advantage
+    of this version bump. (#20398)
+
+-------------------------------------------------------------------
+Thu Oct 22 21:24:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.163.1
+  - Update certifi to 2026.10.19 to address GHSA-6q48-6c7w-9gw2.
+    This only affects TLS connections made by the Sentry SDK when
+    sentry is configured, SAML, and a couple utility scripts;
+    federation and Synapse's other outbound HTTP requests use the
+    system trust store. (#20387)
+  - Bump rustls-webpki to 0.103.16 to actively distrust compromised
+    eMudhra intermediate CA certificates. (#20392)
+
+-------------------------------------------------------------------
 Tue Oct 20 16:33:59 UTC 2026 - chris@computersalat.de
 
 - Fix matrix-synapse.service

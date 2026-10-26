@@ -27,10 +27,11 @@
 # if we do not have the version yet for the locked version
 # add it as TODO
 %if %{with use_poetry_for_dependencies}
+%global certifi_version               2026.10.19
 %global beautifulsoup4_version        4.13.0
 %global Twisted_version               24.7.0
 %global Jinja2_version                3.1.5
-%global Pillow_version                12.3.0
+%global Pillow_version                13.0.0
 %global PyYAML_version                6.0.3
 %global attrs_version                 26.1.0
 %global bcrypt_version                5.0.0
@@ -113,9 +114,10 @@
 %global tornado_version               6.0
 %else
 # some version locks based on pyproject.toml
+%global certifi_version               2026.10.19
 %global beautifulsoup4_version        4.13.0
 %global Jinja2_version                3.0
-%global Pillow_version                10.0.1
+%global Pillow_version                13.0.0
 %global PyYAML_version                5.3
 %global Twisted_version               21.2.0
 %global attrs_version                 21.1.1
@@ -231,7 +233,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.163.0
+Version:        1.163.2
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -303,6 +305,8 @@ BuildRequires:  %{use_python}-bleach >= %{bleach_version}
 %requires_peq   %{use_python}-bleach
 BuildRequires:  (%{use_python}-canonicaljson >= %{canonicaljson_version})
 %requires_peq   %{use_python}-canonicaljson
+BuildRequires:  %{use_python}-certifi >= %{certifi_version}
+%requires_peq   %{use_python}-certifi
 BuildRequires:  %{use_python}-cryptography >= %{cryptography_version}
 %requires_peq   %{use_python}-cryptography
 BuildRequires:  (%{use_python}-immutabledict >= %{immutabledict_version})

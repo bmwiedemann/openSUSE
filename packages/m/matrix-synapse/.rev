@@ -1924,4 +1924,24 @@ mostly-working synapse than nothing at all) and the package has been update to
 Switch [Service] Type=notify</comment>
     <requestid>1386716</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>6bd05c3941aebc7eb9585137b1821f95</srcmd5>
+    <version>1.163.2</version>
+    <time>1793005081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.163.2
+  - Bump pillow to 13.0.0 to address critical security
+    vulnerabilties. You must use Python &gt;= 3.11 to take advantage
+    of this version bump. (#20398)
+
+- Update to 1.163.1
+  - Update certifi to 2026.10.19 to address GHSA-6q48-6c7w-9gw2.
+    This only affects TLS connections made by the Sentry SDK when
+    sentry is configured, SAML, and a couple utility scripts;
+    federation and Synapse's other outbound HTTP requests use the
+    system trust store. (#20387)
+  - Bump rustls-webpki to 0.103.16 to actively distrust compromised
+    eMudhra intermediate CA certificates. (#20392)</comment>
+    <requestid>1392163</requestid>
+  </revision>
 </revisionlist>
