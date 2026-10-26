@@ -202,4 +202,12 @@
     <comment>Update to version 8.05.02</comment>
     <requestid>1365534</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>814feed255ea375a814bdeb165f517fa</srcmd5>
+    <version>8.05.03</version>
+    <time>1793005172</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1392334</requestid>
+  </revision>
 </revisionlist>
