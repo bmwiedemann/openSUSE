@@ -32,7 +32,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-iminuit%{psuffix}
-Version:        2.32.0
+Version:        2.33.0
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
@@ -42,9 +42,9 @@ Source0:        https://files.pythonhosted.org/packages/source/i/iminuit/iminuit
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= 1.21}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pybind11 >= 2.9.0}
+BuildRequires:  %{python_module pybind11 >= 3.0}
 BuildRequires:  %{python_module pybind11-devel}
-BuildRequires:  %{python_module scikit-build-core-pyproject >= 0.3.0}
+BuildRequires:  %{python_module scikit-build-core-pyproject >= 0.11}
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

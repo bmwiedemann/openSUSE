@@ -320,4 +320,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1347026</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4a106556ebb7ea06dcd42b517ef8daf4</srcmd5>
+    <version>2.33.0</version>
+    <time>1793005263</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.33.0:
+  * Add optional dependency extras
+  * Add llms.txt and Markdown page versions to the documentation
+  * Keep the minimum usable after pickle or deepcopy
+  * Clear stale Minos errors and refresh the covariance
+  * Fix scipy(), which mutated options, misreported the call
+    limit, and kept a stale covariance
+  * Minuit.scipy no longer mutates a user NonlinearConstraint
+  * Keep the seed gradient when Hesse runs without a minimum
+  * Return the user callables from Minuit.g2 and Minuit.hessian
+  * Accumulate FMin.time correctly across migrad, hesse, and
+    minos
+  * Fix fixto and reset, which did not handle the Minuit state
+    correctly
+  * Fix scan with all parameters fixed or with many free
+    parameters
+  * Use eigh for the symmetric covariance block in mncontour
+  * Fix per-parameter limits in experimental mncontour and an
+    off-by-one in draw_mnmatrix
+  * Accept negative and numpy integer parameter indices
+  * Honor numpy boolean masks in parameter views
+  * Label Matrix sub-matrices correctly for boolean selectors
+  * Keep parameter names on Matrix sub-selection
+  * Fall back to the ndarray repr for a non-square Matrix
+  * Raise proper exceptions from Params/MErrors indexing and FMin
+    equality
+  * Do not assert in the FMin text repr when Hesse failed
+  * describe() accepts Annotated with a non-float base type
+  * Handle keyword-only parameters and odd annotations in
+    describe</comment>
+    <requestid>1392452</requestid>
+  </revision>
 </revisionlist>

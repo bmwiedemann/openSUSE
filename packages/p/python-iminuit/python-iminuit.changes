@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sun Oct 25 15:04:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.33.0:
+  * Add optional dependency extras
+  * Add llms.txt and Markdown page versions to the documentation
+  * Keep the minimum usable after pickle or deepcopy
+  * Clear stale Minos errors and refresh the covariance
+  * Fix scipy(), which mutated options, misreported the call
+    limit, and kept a stale covariance
+  * Minuit.scipy no longer mutates a user NonlinearConstraint
+  * Keep the seed gradient when Hesse runs without a minimum
+  * Return the user callables from Minuit.g2 and Minuit.hessian
+  * Accumulate FMin.time correctly across migrad, hesse, and
+    minos
+  * Fix fixto and reset, which did not handle the Minuit state
+    correctly
+  * Fix scan with all parameters fixed or with many free
+    parameters
+  * Use eigh for the symmetric covariance block in mncontour
+  * Fix per-parameter limits in experimental mncontour and an
+    off-by-one in draw_mnmatrix
+  * Accept negative and numpy integer parameter indices
+  * Honor numpy boolean masks in parameter views
+  * Label Matrix sub-matrices correctly for boolean selectors
+  * Keep parameter names on Matrix sub-selection
+  * Fall back to the ndarray repr for a non-square Matrix
+  * Raise proper exceptions from Params/MErrors indexing and FMin
+    equality
+  * Do not assert in the FMin text repr when Hesse failed
+  * describe() accepts Annotated with a non-float base type
+  * Handle keyword-only parameters and odd annotations in
+    describe
+  * Keep annotations when merging signatures
+  * minimize accepts scalar Bounds and documents the callback
+    behaviour
+  * Honor throw_nan for numba cfunc cost functions
+  * Make hide_modules exception-safe and cheapen
+    is_module_available
+  * Copy input arrays in the cost constructors
+  * Recompute the total counts in BinnedNLL so in-place edits are
+    visible
+  * Avoid NaN in binned chi2 gradients when mu is zero
+  * Fix the masked BinnedNLL gradient
+  * Fix mask handling in BinnedCost._n_err and
+    LeastSquares._pulls
+  * Fix the UnbinnedNLL.scaled_pdf scale for multivariate data
+  * Keep shape validation in _normalize_output for non-float
+    output
+  * log_or_zero no longer downcasts integer input
+  * Fix CostSum.visualize with a single visualizable component
+  * Fix figure reuse in CostSum.visualize with matplotlib >= 3.11
+  * Keep the fixed state in sync in the interactive widgets
+  * Import PySide6 before the matplotlib Qt backend in qtwidget
+  * Check indices in MnUserParameterState and
+    MnUserTransformation
+  * Make the MnPrint bindings memory-safe
+  * Fix bounds, lifetime, and equality bugs in the C++ bindings
+  * Avoid numpy round-trips in the FCN hot loop
+  * Store LeastSquares data in Fortran order for contiguous
+    columns
+  * Cache the total counts and avoid temporaries in
+    Template._pred
+  * Generate _version.py at build time instead of reading package
+    metadata on import
+  * Use an identity check before copying the parameter state
+  * Construct the strategy-2 MnMigrad only when retrying
+  * Add Python 3.15 to the tests and wheels
+  * Build Pyodide wheels (#1171) and iOS wheels
+  * Use dependency groups instead of extras
+  * Use uv in the release workflow (#1182) and describe trusted
+    publishing in the release notes
+  * Set permissions, timeouts, and concurrency groups in the
+    workflows
+  * Modernize CMakeLists.txt (#1183) and remove dead tooling
+    configuration
+  * Install the notebook dependencies on Binder
+  * Make the ROOT version check tolerant of hash length
+  * List both licenses in CITATION.cff
+
+-------------------------------------------------------------------
 Mon Mar 23 13:25:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.32.0:
