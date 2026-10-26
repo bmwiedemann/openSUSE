@@ -17,7 +17,7 @@
 
 
 Name:           python-arviz-stats
-Version:        1.3.0
+Version:        1.3.3
 Release:        0
 Summary:        Statistical computation and diagnostics for ArviZ
 License:        Apache-2.0

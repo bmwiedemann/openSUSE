@@ -60,4 +60,41 @@
     diagnostics</comment>
     <requestid>1372936</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6bed1f81ab04e520ca580deb766045ee</srcmd5>
+    <version>1.3.3</version>
+    <time>1793007598</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.3:
+  * Add PSIS LFO-CV
+  * Accept coords in ci_in_rope, as its docstring documents
+  * Correct interval for pit evaluation
+  * Only build the summary's LaTeX repr when asked for
+  * Add bivariate histogram and hexbin statistics
+  * Add ELPD subclasses
+  * Add default `ci_kind` handling in `ci_in_rope`
+  * Miscelaneous docstrings fixes
+  * Update citation information
+  * More miscellaneous docstring fixes
+  * Fix ddof in `summary` std computation
+  * Hexbin and histogram2d: Use adaptive binning
+  * Fix histogram with array-like bins
+  * Allow hdi with prob=1
+- update to 1.3.2:
+  * ### Maintenance and bug fixes
+  * Respect ci_kind in summary for the stats and all kinds
+  * Remove deprecated inplace in sort_values
+  * Write the bandwidth into the kde gufunc output
+  * Ensure correct order for bounds in circular std
+  * Add PyMC and Bambi support for `loo_subsample`
+  * Fix `p_loo` calculation in sub-sampled PSIS-LOO-CV
+  * Fix rounding of `subsampling_dse` in `compare()`
+  * Honour circular in the Numba KDE
+  * Fix _mcse_sd to use ESS of squared deviations
+  * Fix custom limits for circular KDE
+  * Fix Kaplan–Meier estimates for integer event times
+  * Fix covariance and split steps in `loo_moment_match`
+  * Fix `num_samples` default in survival curves</comment>
+    <requestid>1392403</requestid>
+  </revision>
 </revisionlist>
