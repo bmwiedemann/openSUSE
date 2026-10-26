@@ -72,4 +72,19 @@
     format to resolve setuptools deprecation warnings (#39).</comment>
     <requestid>1349309</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>29b54e1a5ce7af4aefb021d5dfb637b1</srcmd5>
+    <version>3.0.1</version>
+    <time>1793005365</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.1:
+  * Normalization fixes change canonical output for some URLs,
+    including encoded delimiters, query plus signs, explicit
+    empty query values, and trailing spaces. If normalized URLs
+    are used as cache keys or deduplication identifiers, review
+    stored keys and re-normalize the original URLs where
+    available; information discarded by earlier normalization
+    cannot be recovered from those normalized values alone.</comment>
+    <requestid>1392535</requestid>
+  </revision>
 </revisionlist>
