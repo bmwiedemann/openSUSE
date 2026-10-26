@@ -1,0 +1,8 @@
+<package name="sdrangel" project="openSUSE:Factory">
+  <title>SDR/Analyzer frontend for Airspy, BladeRF, HackRF, RTL-SDR and FunCube</title>
+  <description>SDRangel is an Open Source Qt5/OpenGL SDR and signal analyzer frontend
+to various hardware. 
+
+</description>
+  <url>https://github.com/f4exb/sdrangel</url>
+</package>
