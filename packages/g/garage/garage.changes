@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Oct 24 15:26:10 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.5.0
+  This release is a stable release. Please be aware of the
+  following when upgrading:
+  
+  - This release of Garage is not backwards-compatible: once a node
+    is upgraded, you must not downgrade it back to older Garage
+    versions. You can still mix-and-match nodes running older and
+    newer versions of the v2.x branch within a cluster.
+  - Access to (Put/Get/Delete)BucketLifecycle is now restricted to
+    keys with owner permission. This breaking change has been
+    introduced in this release for security reasons. Adapt your
+    workflows accordingly.
+  - It is recommended to add the newly-added public_endpoint
+    parameter to your garage.toml configuration files.
+
+  - Security:
+    - fix panic with invalid utf8 in url after percent decode
+      (#1581)
+    - s3: (breaking/security) restrict access to lifecycle
+      configuration endpoints (#1573)
+  - Features:
+    - add public_endpoint configuration parameter (#1563, #1587)
+    - add GARAGE_LOG_FORMAT=json to log JSON lines to stderr
+      (#1568)
+    - CLI: export key-id & secret-key (#1176, #1504)
+    - Add the resync queue size to garage status (#1556)
+    - Admin API: add parameters details, offset and limit to
+      ListKeys and ListBuckets (#1490, #1500)
+    - block deletion metric (#1040, #1515)
+  - Bug fixes:
+    - s3: use generate_object_public_url in PostObject (#1574,
+      #1585)
+    - api: be resilient to failures in .accept() (#1508, #1582)
+    - api/s3: add -N suffix to composite checksums (#1228, #1555)
+    - fix the NO_COLOR environment variable (#1566, #1567)
+    - Fixes in admin API token handling (fix crash etc) (#1553)
+    - Fix panic caused by corrupted time when fetching block
+      (#1517)
+    - fix(s3): return x-amz-checksum-type in responses as per AWS
+      S3 spec (#1511)
+    - Report Content-MD5 mismatch on PutObject as BadDigest (#1520,
+      #1538)
+  - Kubernetes:
+    - feat(helm): Expose admin API in cluster (#1466)
+  - Other improvements:
+    - Refactor resync manager (#1476, #1544, #1577)
+    - trivia: remove unused imports (#1558)
+    - wrap secrets in new type (#1524)
+    - Add fuzzing for object crdt (#1540)
+    - Documentation improvements (#871, #1301, #1543, #1546, #1548,
+      #1552, #1580)
+  - Ecosystem:
+    - upgrade dependencies (#1531)
+    - telemetry: swap elastic for jaeger 2.x (#1557)
+    - telemetry: ugrade otel and swap prometheus deps (#1550)
+    - replace grep -P by -E in tests for compatibility (#1554)
+
+-------------------------------------------------------------------
 Sat Sep 19 06:52:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.4.1:
