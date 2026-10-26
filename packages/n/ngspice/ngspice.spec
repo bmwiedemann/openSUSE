@@ -16,38 +16,42 @@
 #
 
 
-%bcond_with    oldapps
-
 %global flavor @BUILD_FLAVOR@%{nil}
-
-%if "%flavor" == "shlibs"
+%if "%{flavor}" == "shlibs"
 %define build_shared 1
 %endif
 %define pname   ngspice
-
-Name:           %pname%{?build_shared:-shared}
 %define so_ver 0
-Version:        46
+%bcond_with    oldapps
+Name:           %{pname}%{?build_shared:-shared}
+Version:        47
 Release:        0
 Summary:        Mixed-level, Mixed-signal Circuit Simulator Based on spice3f5
 License:        BSD-2-Clause
-Group:          Productivity/Scientific/Electronics
 URL:            https://ngspice.sourceforge.io
 Source0:        https://downloads.sourceforge.net/%{pname}/%{pname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM sharedspice-missing-return.patch mpluskal@suse.com -- return NULL when the process name cannot be read, fixes return-type FTBFS in the shared-library flavor
+Patch0:         sharedspice-missing-return.patch
+# NOTE: plain -devel names kept on purpose below. The automatic
+# provider-name conversion over-expands single providers into several
+# lines, which hurts readability without changing the build root.
 BuildRequires:  bison
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
+BuildRequires:  libsamplerate-devel
+BuildRequires:  libsndfile-devel
+BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(tinfo)
+Requires:       %{pname}-scripts = %{version}
+Requires:       %{pname}-xspice-cm = %{version}
+Recommends:     %{pname}-doc = %{version}
 %if ! 0%{?build_shared}
 BuildRequires:  libXaw-devel
 BuildRequires:  libXext-devel
 BuildRequires:  libXft-devel
 BuildRequires:  libXmu-devel
 %endif
-Requires:       %{pname}-scripts = %{version}
-Requires:       %{pname}-xspice-cm = %{version}
-Recommends:     %{pname}-doc = %{version}
 
 %description
 Ngspice is a mixed-level/mixed-signal circuit simulator. Its code
@@ -56,7 +60,6 @@ and Xspice.
 
 %package oldapps
 Summary:        Some deprecated applications included in ngspice
-Group:          Productivity/Scientific/Electronics
 Requires:       %{pname} = %{version}
 Provides:       %{pname}:%{_bindir}/ngmakeidx
 
@@ -71,7 +74,6 @@ ngspice package:
 
 %package xspice-cm
 Summary:        Xspice code model Plugins
-Group:          Productivity/Scientific/Electronics
 
 %description xspice-cm
 Ngspice is a mixed-level/mixed-signal circuit simulator. Its code
@@ -80,7 +82,6 @@ and Xspice. This package contains the Xspice code model plugins.
 
 %package scripts
 Summary:        Ngspice init scripts
-Group:          Productivity/Scientific/Electronics
 # https://sourceforge.net/p/ngspice/bugs/615/
 # BuildArch:      noarch
 
@@ -92,9 +93,8 @@ between ngspice and libngspice.
 
 %package -n lib%{pname}%{so_ver}
 Summary:        Shared libraries for ngspice
-Group:          System/Libraries
-Requires:       %{pname}-scripts
-Requires:       %{pname}-xspice-cm
+Requires:       %{pname}-scripts = %{version}
+Requires:       %{pname}-xspice-cm = %{version}
 
 %description -n lib%{pname}%{so_ver}
 Ngspice is a mixed-level/mixed-signal circuit simulator. Its code
@@ -103,7 +103,6 @@ and Xspice. This package contains the shared libraries.
 
 %package -n lib%{pname}-devel
 Summary:        Development files for ngspice
-Group:          Development/Libraries/Other
 Requires:       lib%{pname}%{so_ver} = %{version}
 
 %description -n lib%{pname}-devel
@@ -183,7 +182,6 @@ rm -rf %{buildroot}/%{_mandir} \
 %{_libdir}/%{pname}
 
 %else
-
 %files -n lib%{pname}%{so_ver}
 %{_libdir}/lib%{pname}.so.*
 

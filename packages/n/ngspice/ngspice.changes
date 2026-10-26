@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 25 06:52:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 47:
+  * Update periodic state simulation (PSS) and examples.
+  * Small signal noise simulation for code models.
+  * Printing outputs with engineering exponents.
+  * New instance parameters td and r for the ISRC pwl source.
+  * Reading and writing audio files (*.wav) with new dot commands
+    .sndprint and .sndparam.
+  * Vdmos bulk diode now uses a soft recovery model; dc sweep for
+    capacitance measurement added or corrected in several models.
+  * New XSPICE macros TSTEP and TSTOP, new behavioral capacitor
+    model, multi-bit ADC/DAC bridges with Schmitt trigger.
+  * New pyplot command rendering simulated vectors with matplotlib.
+  * Allow spice notations like 2n or 5m in filesource inputs.
+- Add libsamplerate-devel and libsndfile-devel BuildRequires for
+  audio file support.
+- Add sharedspice-missing-return.patch fixing the shared-library
+  flavor build (missing return value when the process name cannot
+  be read).
+- Version the libngspice shared-library data Requires so the
+  matching scripts and code models are always pulled in (boo#1236657).
+- Spec cleanup: drop obsolete Group tags (spec-cleaner canonical,
+  plain -devel dependency names kept on purpose).
+
+-------------------------------------------------------------------
 Mon Jun 29 12:17:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 46:

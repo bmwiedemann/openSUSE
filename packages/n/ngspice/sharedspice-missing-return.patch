@@ -1,0 +1,10 @@
+--- a/src/sharedspice.c	2026-08-10 15:26:57.000000000 +0200
++++ b/src/sharedspice.c	2026-10-25 07:58:36.453389864 +0100
+@@ -2637,6 +2637,7 @@
+             fclose(f);
+         return NULL;
+     }
++    return NULL;
+ #elif defined(_WIN32)
+     char processPath[MAX_PATH];
+     // Passing NULL retrieves the path of the executable for the current process
