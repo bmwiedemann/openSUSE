@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 23 20:04:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.2
+  * Removed unnecessary sleep after final retry.
+
+-------------------------------------------------------------------
 Sat Oct 10 06:45:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.4.1
