@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 25 11:08:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 768
+  * READ CD: request the exact transfer length (#459).
+  * Fix READ CDDA short transfer check rejecting oversized buffers
+    (#468).
+  * Add LG GP57ES40 drive (#466).
+  * Add ATAPI DVD D DH16D2S GD0D drive (#463).
+  * Print MKB version (#462).
+  * Added support for flashing encrypted firmware (#456).
+  * Add LG SP80NB60 drive (#460).
+  * Fix layer break printing (#458).
+  * AES-128 and CMAC implementation.
+  * Improve MT1959 flashing support (#452).
+  * Update raw OmniDrive dump read size handling (#451).
+  * Add entry support to UDF implementation (#450).
+
+-------------------------------------------------------------------
 Fri Sep 25 20:18:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 752
