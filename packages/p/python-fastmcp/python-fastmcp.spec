@@ -17,7 +17,7 @@
 
 
 Name:           python-fastmcp
-Version:        3.4.8
+Version:        3.4.11
 Release:        0
 Summary:        The fast, Pythonic way to build MCP servers and clients
 License:        Apache-2.0
@@ -26,6 +26,7 @@ Source:         https://files.pythonhosted.org/packages/source/f/fastmcp/fastmcp
 BuildRequires:  %{python_module Authlib >= 1.6.11}
 BuildRequires:  %{python_module PyYAML >= 6.0}
 BuildRequires:  %{python_module anyio}
+BuildRequires:  %{python_module certifi >= 2026.10.19}
 BuildRequires:  %{python_module cyclopts >= 4.0.0}
 BuildRequires:  %{python_module email-validator}
 BuildRequires:  %{python_module exceptiongroup >= 1.2.2}
@@ -73,6 +74,7 @@ Summary:        The fast, Pythonic way to build MCP servers and clients (slim)
 # uv-backend wheels don't expose deps to pythondistdeps, so require them by hand
 Requires:       python-Authlib >= 1.6.11
 Requires:       python-PyYAML >= 6.0
+Requires:       python-certifi >= 2026.10.19
 Requires:       python-cyclopts >= 4.0.0
 Requires:       python-email-validator
 Requires:       python-exceptiongroup >= 1.2.2

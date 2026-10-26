@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:32:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.4.11 (3.x maintenance release):
+  * 3.4.9: OpenAPI path parameters reject "." and ".." segments,
+    skill SKILL.md files must stay inside their skill folder,
+    regex tool search is bounded in time and pattern length, and
+    JWT verifiers share JWKS refreshes.
+  * 3.4.10: authorization checks after component transforms, and
+    denied concrete resources are no longer served via matching
+    templates.
+  * 3.4.11: require certifi 2026.10.19 or later following the
+    eMudhra CA compromise.
+- Add python-certifi >= 2026.10.19 to BuildRequires and the slim
+  subpackage Requires, matching upstream's new floor; drop
+  fastmcp-3.4.8.tar.gz, add fastmcp-3.4.11.tar.gz.
+
+-------------------------------------------------------------------
 Tue Oct  6 07:12:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.4.8 (3.x maintenance release with security and
