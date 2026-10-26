@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.messaging
-Version:        18.3.0
+Version:        18.3.1
 Release:        0
 Summary:        OpenStack oslo.messaging library
 License:        Apache-2.0

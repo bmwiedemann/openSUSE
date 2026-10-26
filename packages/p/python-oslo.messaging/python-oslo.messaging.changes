@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 17:41:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.3.1:
+  * Fix QManager reply queue collision under cotyledon/threading
+  * Fix rabbit consumer reconnection loop
+  * Update TOX_CONSTRAINTS_FILE for stable/2026.2
+  * Update .gitreview for stable/2026.2
+
+-------------------------------------------------------------------
 Tue Sep  1 20:52:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.3.0:
