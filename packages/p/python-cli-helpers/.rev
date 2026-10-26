@@ -198,4 +198,16 @@
   * Better handle empty headers in vertical table output.</comment>
     <requestid>1368881</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b772bcc57f1d335caccc92a45ed701d8</srcmd5>
+    <version>2.15.2</version>
+    <time>1793005217</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.2:
+  * Align vertical table headers containing wide or combining
+    characters.
+  * Target Python 3.11 in pre-commit configuration.
+  * Update `pytest` to 9.1.1, and other dev requirements.</comment>
+    <requestid>1392387</requestid>
+  </revision>
 </revisionlist>
