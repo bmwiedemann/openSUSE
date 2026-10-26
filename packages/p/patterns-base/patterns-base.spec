@@ -78,9 +78,6 @@ Requires:       apparmor-profiles
 Requires:       pattern() = minimal_base
 Recommends:     apparmor-docs
 Recommends:     apparmor-utils
-%if 0%{?suse_version} >= 1699
-Recommends:     yast2-apparmor
-%endif
 Suggests:       pam_apparmor
 %{obsolete_legacy_pattern apparmor}
 %if 0%{?is_opensuse}
@@ -386,9 +383,6 @@ Requires:       pattern() = base
 %if 0%{?is_opensuse}
 Recommends:     pattern() = documentation
 Recommends:     pattern() = sw_management
-%if 0%{?suse_version} >= 1699
-Recommends:     pattern() = yast2_basis
-%endif
 %else
 Recommends:     pattern() = kdump
 %endif
@@ -1005,10 +999,6 @@ Recommends:     myrlyn
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts
 Requires:       pattern() = x11
-%if 0%{?suse_version} >= 1699
-Recommends:     pattern() = x11_yast
-Recommends:     pattern() = yast2_desktop
-%endif
 # 1057377
 Requires:       glibc-locale
 Requires:       glibc-locale-base
@@ -1033,12 +1023,6 @@ Recommends:     xdmbgrd
 Recommends:     xkeyboard-config
 Recommends:     xorg-x11-fonts
 Recommends:     xorg-x11-fonts-core
-%if 0%{?suse_version} >= 1699
-Recommends:     yast2-control-center-gnome
-# Recommend yast2-network until the Generic Desktop Role defaults to NetworkManager
-# At worst people need a way to switch from Wicked to NetworkManager.
-Recommends:     yast2-network
-%endif
 # This will install Firefox if no other browser is selected
 Suggests:       MozillaFirefox
 Suggests:       MozillaFirefox-translations

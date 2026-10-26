@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 18 18:11:37 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Stop pulling YaST into default Tumbleweed installations:
+  * enhanced_base: drop the Recommends on pattern() = yast2_basis
+  * x11_enhanced: drop the Recommends on pattern() = x11_yast,
+    pattern() = yast2_desktop, yast2-control-center-gnome and
+    yast2-network
+  * apparmor: drop the Recommends on yast2-apparmor
+  Drop YaST from the pattern recommendations. The YaST patterns
+  and packages stay in the repository for anyone who has them or
+  wants them; new installations simply come without YaST.
+  Completes code-o-o#leap/features/173 for Tumbleweed defaults.
+
+-------------------------------------------------------------------
 Fri Aug 28 13:07:05 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - immutable_base: install transactional-wrapper by default on SLE
