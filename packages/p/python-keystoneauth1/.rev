@@ -489,4 +489,33 @@ update to version 2.12.0
   * Add HTTP 429 Too Many Requests support</comment>
     <requestid>1376311</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7f51166e270b4376c7e276f981ac107f</srcmd5>
+    <version>5.18.1</version>
+    <time>1793005270</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.18.1:
+  * Handle optional RelayState in SAML2 ECP responses
+  * trivial: Add docstrings for ServiceTokenAuthWrapper
+  * Mark OAuth1 consumer and access secrets as sensitive opts
+  * Resolve relative ACS redirect Location in SAML2 ECP
+  * Validate SAML2 ECP consumer fault and redirect URLs
+  * trivial: Rewrap opt help strings
+  * pre-commit: Add codespell
+  * trivial: Remove type info from docstrings
+  * Reject unsupported system_scope values in v3 auth requests
+  * Include TOTP passcode in auth cache key elements
+  * Default OIDC device authorization polling interval to 5s
+  * Redact OTP and MFA fields in OIDC debug sanitization
+  * typing: Remove unnecessary use of TYPE_CHECKING
+  * typing: Use objects from typing
+  * Fix typo
+  * feat: add Session.close() for deterministic resource release
+  * typing: Allow None passed to set_auth_state
+  * Update master for stable/2026.2
+  * trivial: Make Adapter, Session register methods classmethods
+  * loading: Accept OptGroup
+  * trivial: Update docs for Adapter.register_conf_options</comment>
+    <requestid>1392489</requestid>
+  </revision>
 </revisionlist>

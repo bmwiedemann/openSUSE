@@ -17,7 +17,7 @@
 
 
 Name:           python-keystoneauth1
-Version:        5.17.0
+Version:        5.18.1
 Release:        0
 Summary:        OpenStack authenticating tools
 License:        Apache-2.0
