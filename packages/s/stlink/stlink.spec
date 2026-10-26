@@ -16,29 +16,29 @@
 #
 
 
+%global modprobe_d_files stlink_v1.conf
+%define         sover 1
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
 # systemd-rpm-macros is wrong in 15.3 and below
 %define _modprobedir /lib/modprobe.d
 %endif
-%global modprobe_d_files stlink_v1.conf
-
-%define         sover 1
-
 Name:           stlink
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        STM32 discovery line linux programmer
 License:        BSD-3-Clause
-Group:          Development/Tools/Debuggers
 URL:            https://github.com/stlink-org/stlink/
 Source0:        https://github.com/stlink-org/stlink/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
-BuildRequires:  gtk3-devel >= 3.22.30
-BuildRequires:  pkg-config
+BuildRequires:  cmake >= 3.21
+# Keep the plain -devel form: its pkgconfig expansion is ten sub-libraries
+# the GUI never names directly; the single BuildRequires is exact.
+BuildRequires:  gtk3-devel >= 3.24.30
+BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.22
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.24
 BuildRequires:  pkgconfig(udev)
+# Runtime requirement on the udev package itself, not its devel files.
 Requires:       udev
 
 %description
@@ -46,7 +46,6 @@ STLINK v1/v2 JTAG/SWD debugging/flashing tool for STM32 microcontrollers.
 
 %package        gui
 Summary:        GUI for STM32 discovery line linux programmer
-Group:          Development/Tools/Debuggers
 Requires:       %{name} = %{version}
 
 %description    gui
@@ -54,14 +53,12 @@ STLINK v1/v2 JTAG/SWD debugging/flashing tool for STM32 microcontrollers.
 
 %package -n     libstlink%{sover}
 Summary:        Shared library for stlink
-Group:          Development/Tools/Debuggers
 
 %description -n libstlink%{sover}
 STLINK v1/v2 JTAG/SWD debugging/flashing tool for STM32 microcontrollers.
 
 %package        devel
 Summary:        Development files for stlink package
-Group:          Development/Tools/Debuggers
 Requires:       libstlink%{sover} = %{version}
 
 %description    devel
@@ -71,8 +68,8 @@ STLINK v1/v2 JTAG/SWD debugging/flashing tool for STM32 microcontrollers.
 %autosetup -p1
 
 %build
-%cmake -DSTLINK_UDEV_RULES_DIR="%_udevrulesdir" \
-       -DSTLINK_MODPROBED_DIR="%_modprobedir" \
+%cmake -DSTLINK_UDEV_RULES_DIR="%{_udevrulesdir}" \
+       -DSTLINK_MODPROBED_DIR="%{_modprobedir}" \
        -DCMAKE_EXE_LINKER_FLAGS="-pie"
 
 %cmake_build
@@ -82,25 +79,28 @@ STLINK v1/v2 JTAG/SWD debugging/flashing tool for STM32 microcontrollers.
 
 # remove static lib sdi
 rm %{buildroot}%{_libdir}/*.a
+# Upstream installs a second copy of the shared library into bindir via
+# RUNTIME_DEPENDENCY_SET (meant for Windows DLL deployment); drop the
+# duplicates, the libdir copies are the packaged ones.
+rm %{buildroot}%{_bindir}/libstlink.so*
 
 %suse_update_desktop_file -r stlink-gui Development Debugger
 
 %pre
 # Avoid restoring outdated stuff in posttrans
 for _f in %{?modprobe_d_files}; do
-    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
-        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+    [ ! -f "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" "%{_sysconfdir}/modprobe.d/${_f}.rpmsave.old" || :
 done
 
 %posttrans
 # Migration of modprobe.conf files to _modprobedir
 for _f in %{?modprobe_d_files}; do
-    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
-        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+    [ ! -f "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" "%{_sysconfdir}/modprobe.d/${_f}" || :
 done
 
 %post -n libstlink%{sover} -p /sbin/ldconfig
-
 %postun -n libstlink%{sover} -p /sbin/ldconfig
 
 %files
@@ -110,9 +110,10 @@ done
 %{_udevrulesdir}/49-stlink*
 %dir %{_modprobedir}
 %{_modprobedir}/stlink_v1.conf
-%{_mandir}/man1/st-flash.1*
-%{_mandir}/man1/st-info.1*
-%{_mandir}/man1/st-util.1*
+%{_mandir}/man1/st-flash.1%{?ext_man}
+%{_mandir}/man1/st-info.1%{?ext_man}
+%{_mandir}/man1/st-server.1%{?ext_man}
+%{_mandir}/man1/st-util.1%{?ext_man}
 
 %files -n libstlink%{sover}
 %{_libdir}/libstlink.so.1*

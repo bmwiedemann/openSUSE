@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 25 06:53:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9.0:
+  * Support for STM32H5, STM32C5, STM32U073 and STM32L4Q5CG
+    series (erase, read and write), STM32H533 plus trace
+    support for H5/U5/L5
+  * New st-server tool with remote backend for remote control
+    of an STLINK programmer, including its man page
+  * st-flash write commands gained a --mass-erase option; st-info
+    probes in parallel and reports voltage
+  * Flash erase support in stlink-gui, OTP bytes for STM32U575/585
+    and option bytes for STM32L41x/L42x
+  * Harden gdb-server against buffer overflows via bounded string
+    copies
+  * Raised build requirements: C17, cmake >= 3.21,
+    libusb >= 1.0.24, gtk3 >= 3.24.30; drops support for some
+    older operating systems
+
+-------------------------------------------------------------------
 Fri Feb 16 07:15:09 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.8.0. Check CHANGELOG.md for the full list of changes
