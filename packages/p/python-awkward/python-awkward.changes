@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Oct 25 12:02:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * feat: add ak.from_cudf and rewrite to_cudf via libcudf
+  * fix: remove the vectorized union-flattening fast path
+  * fix: enforce the plain-function contract in @experimental
+  * fix: `to_arrow` datetime conversion
+  * fix: out-of-bounds write in Cupy.repeat() with trailing zeros
+  * perf: optimize option-type ListArray to Arrow conversion
+  * perf: project option inputs in broadcasting with one nonzero
+    and integer takes
+  * perf: skip named-axis machinery when no input carries named
+    axes
+  * perf: cache whether a virtual array's shape is known
+  * perf: return the input array from asarray when it already has
+    the requested dtype
+  * perf: test field-name slices before integer-like slices
+  * perf: fast-path int and numpy integers in is_integer
+  * docs: require the experimental mark when introducing new
+    public APIs
+  * docs: render experimental API notices
+  * docs: add summary lines to 9 field/name/parameter operation
+    docstrings
+  * docs: add summary lines to 8 from_* array-library converter
+    docstrings
+  * docs: add kmohrman as a contributor for code
+  * docs: add summary lines to 8 missing-value operation
+    docstrings
+  * docs: update CITATION.cff
+  * docs: read the Chicago taxi dataset from an R2 mirror
+  * test: exclude layouts affected by #4305 from the parquet
+    roundtrip tests
+  * test: widen `has_issue_4264` to lists under untrimmed regular
+    content
+  * test: exclude layouts affected by #4316 from the Arrow
+    `test_roundtrip` comparison
+  * test: add a no-raise property-test module for `ak.any`
+  * test: widen `_has_issue_4228` to union option children longer
+    than their used length
+  * test: match the experimental warning filter by message, not
+    by class path
+  * ci: pin numpy below 2.5 in the GPU test environment
+  * chore(deps): bump hypothesis-awkward from 0.19.1 to 0.20.0
+  * chore: generate kernel artefacts from CMake instead of nox -s
+    prepare
+  * ci: deploy the documentation to the gh-pages branch
+  * chore(deps): bump the actions group across 1 directory with 5
+    updates
+  * chore: Cap cuda-cccl version at 1.1.1
+
+-------------------------------------------------------------------
 Sat Jun 20 17:48:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.1:

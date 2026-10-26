@@ -27,17 +27,17 @@ ExcludeArch:    %{ix86} %{arm32}
 %bcond_with test
 %endif
 
-%define awkward_cpp_version 52
+%define awkward_cpp_version 57
 %{?sle15_python_module_pythons}
 Name:           python-awkward%{psuffix}
-Version:        2.9.1
+Version:        2.14.0
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
 URL:            https://github.com/scikit-hep/awkward
 Source0:        https://files.pythonhosted.org/packages/source/a/awkward/awkward-%{version}.tar.gz
 Source1:        python-awkward.rpmlintrc
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling >= 1.10.0}
 BuildRequires:  %{python_module pip}
@@ -46,9 +46,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-awkward-cpp >= %{awkward_cpp_version}
 Requires:       python-fsspec >= 2022.11.0
-Requires:       python-numpy >= 1.18.0
+Requires:       python-numpy >= 1.21.3
 Requires:       python-packaging
-Requires:       (python-importlib-metadata if python-base < 3.12)
+Requires:       (python-importlib-metadata >= 4.13.0 if python-base < 3.12)
 Requires:       (python-typing-extensions >= 4.1.0 if python-base < 3.11)
 Recommends:     python-cupy
 Recommends:     python-numba

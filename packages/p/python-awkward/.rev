@@ -611,4 +611,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1362026</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0e5eab5e8c3b9cf5bfbbb5dfeece1af7</srcmd5>
+    <version>2.14.0</version>
+    <time>1793007605</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.14.0:
+  * feat: add ak.from_cudf and rewrite to_cudf via libcudf
+  * fix: remove the vectorized union-flattening fast path
+  * fix: enforce the plain-function contract in @experimental
+  * fix: `to_arrow` datetime conversion
+  * fix: out-of-bounds write in Cupy.repeat() with trailing zeros
+  * perf: optimize option-type ListArray to Arrow conversion
+  * perf: project option inputs in broadcasting with one nonzero
+    and integer takes
+  * perf: skip named-axis machinery when no input carries named
+    axes
+  * perf: cache whether a virtual array's shape is known
+  * perf: return the input array from asarray when it already has
+    the requested dtype
+  * perf: test field-name slices before integer-like slices
+  * perf: fast-path int and numpy integers in is_integer
+  * docs: require the experimental mark when introducing new
+    public APIs
+  * docs: render experimental API notices
+  * docs: add summary lines to 9 field/name/parameter operation
+    docstrings
+  * docs: add summary lines to 8 from_* array-library converter
+    docstrings
+  * docs: add kmohrman as a contributor for code
+  * docs: add summary lines to 8 missing-value operation
+    docstrings
+  * docs: update CITATION.cff
+  * docs: read the Chicago taxi dataset from an R2 mirror
+  * test: exclude layouts affected by #4305 from the parquet
+    roundtrip tests</comment>
+    <requestid>1392406</requestid>
+  </revision>
 </revisionlist>
