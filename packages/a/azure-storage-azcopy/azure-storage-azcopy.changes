@@ -1,7 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct 26 08:43:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.34.1
+  * Update changelog
+  * Update sync test to use current timestamps for source file properties
+  * Ensure incomplete Azure Files syncs remain stale
+  * Use Windows epoch for incomplete Azure Files
+  * Preserve incomplete Azure Files LWT during range uploads
+  * Add E2E coverage for incomplete file sync retries
+  * Inline Azure Files creation LWT adjustment
+  * Ensure incomplete Azure Files remain stale
+  * Classify new flags
+  * Upgrade golang & offending packages
+- from version 10.34.0
+  * Merge branch 'user/adreed/fix-msrc-pathtraverse' into adreed/10.34.0
+  * Fix testing
+  * Changelog + version updates
+  * Merge branch 'user/adreed/fix-msrc-pathtraverse' into main (#3591)
+  * Ensure flags that should be hidden are hidden
+  * Fix SIGTERM cancellation during enumeration
+  * Merge branch 'main' into user/adreed/fix-msrc-pathtraverse
+  * Fuzzy log redaction (catch encoded query segments) (#3592)
+  * Merge branch 'main' into user/adreed/fix-msrc-pathtraverse
+- Add missing Bugzilla and CVE references for golang.org/x/net
+
+-------------------------------------------------------------------
 Thu Oct 15 09:03:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update golang.org/x/net to v0.61.0 (bsc#1285377, CVE-2026-78669)
+  (bsc#1287007, CVE-2026-78659) (bsc#1287075, CVE-2026-78660)
+  (bsc#1287157, CVE-2026-78663) (bsc#1287496, CVE-2026-97032)
 
 -------------------------------------------------------------------
 Wed Sep  9 06:10:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>

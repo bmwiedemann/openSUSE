@@ -192,4 +192,36 @@
     <comment>- Update golang.org/x/net to v0.61.0 (bsc#1285377, CVE-2026-78669) (forwarded request 1384981 from glaubitz)</comment>
     <requestid>1385043</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5d5a42135af71d5b6e8ac971cbd807de</srcmd5>
+    <version>10.34.1</version>
+    <time>1793021919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.34.1
+  * Update changelog
+  * Update sync test to use current timestamps for source file properties
+  * Ensure incomplete Azure Files syncs remain stale
+  * Use Windows epoch for incomplete Azure Files
+  * Preserve incomplete Azure Files LWT during range uploads
+  * Add E2E coverage for incomplete file sync retries
+  * Inline Azure Files creation LWT adjustment
+  * Ensure incomplete Azure Files remain stale
+  * Classify new flags
+  * Upgrade golang &amp; offending packages
+- from version 10.34.0
+  * Merge branch 'user/adreed/fix-msrc-pathtraverse' into adreed/10.34.0
+  * Fix testing
+  * Changelog + version updates
+  * Merge branch 'user/adreed/fix-msrc-pathtraverse' into main (#3591)
+  * Ensure flags that should be hidden are hidden
+  * Fix SIGTERM cancellation during enumeration
+  * Merge branch 'main' into user/adreed/fix-msrc-pathtraverse
+  * Fuzzy log redaction (catch encoded query segments) (#3592)
+  * Merge branch 'main' into user/adreed/fix-msrc-pathtraverse
+- Add missing Bugzilla and CVE references for golang.org/x/net
+
+  (bsc#1287007, CVE-2026-78659) (bsc#1287075, CVE-2026-78660)
+  (bsc#1287157, CVE-2026-78663) (bsc#1287496, CVE-2026-97032) (forwarded request 1392660 from glaubitz)</comment>
+    <requestid>1392741</requestid>
+  </revision>
 </revisionlist>
