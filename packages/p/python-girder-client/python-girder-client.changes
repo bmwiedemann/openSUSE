@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Oct 25 15:31:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.20:
+  * Add missing comma that resulted in spurious concatenation of
+    builtins
+  * Add OAuth tests for CILogon and Microsoft providers
+  * Do not record a canceled job as an error when its outputs are
+    missing
+- update to 5.0.19:
+  * Prevent concurrent chunk collisions
+  * Add an explicit timeout for SMTP connection
+  * jobs: register REST token scope and allow scoped tokens to
+    read jobs
+  * forward port: Show download UI config elements
+  * Support multiple files for a single Girder-resource input
+  * Remove unused DateTimeWidget and DateTimeRangeWidget
+  * Self-host the swagger-ui assets instead of loading them from
+    unpkg.
+  * Remove sprintf-js as a dependency
+  * Fix hash state serialization on Python 3.15 and free-threaded
+    builds
+  * Test on Python 3.15 (as well as 3.10)
+- update to 5.0.18:
+  * Bump fast-uri from 3.1.5 to 3.1.7 in /girder/web
+  * Bump qs from 6.15.3 to 6.16.0 in /girder/web
+  * Bump fast-uri from 3.1.5 to 3.1.7
+  * Update decode-uri-component
+  * Forward-port show download setting
+  * Adjust for OIDC publishing of npm packages
+- update to 5.0.17:
+  * Cherry-pick #259 from slicer_cli_web
+  * Return partial paths for public resources
+  * Reduce warnings during testing
+  * Expire tokens on logout rather than deleting them
+  * Add a setting to disable anonymous access
+  * Fix the RTD build
+  * Document the DISABLE_ANONYMOUS_ACCESS setting
+
+-------------------------------------------------------------------
 Fri Aug 21 19:40:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.16:
