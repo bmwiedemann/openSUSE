@@ -20,7 +20,7 @@
 # (successor of the python-graphifyy multibuild package).
 %define pythons %{primary_python}
 Name:           graphifyy
-Version:        0.9.92
+Version:        0.9.95
 Release:        0
 Summary:        Code knowledge graph builder and query CLI for AI assistants
 License:        Apache-2.0 AND MIT
@@ -28,8 +28,9 @@ URL:            https://github.com/Graphify-Labs/graphify
 # PyPI sdist omits tests/fixtures and ARCHITECTURE.md, which %%check needs.
 # Use the GitHub tag archive (same revision as the PyPI release).
 Source:         https://github.com/Graphify-Labs/graphify/archive/refs/tags/v%{version}.tar.gz#/graphify-%{version}.tar.gz
-# Optional at runtime: nested YAML frontmatter uses PyYAML when present.
-BuildRequires:  %{primary_python}-PyYAML
+# Mandatory since 0.9.95: structural YAML extraction parses .yaml/.yml
+# via yaml.safe_load (upstream pyyaml>=6.0 core dependency).
+BuildRequires:  %{primary_python}-PyYAML >= 6.0
 BuildRequires:  %{primary_python}-mcp >= 1
 BuildRequires:  %{primary_python}-networkx >= 3.4
 BuildRequires:  %{primary_python}-numpy >= 1.21
@@ -39,10 +40,8 @@ BuildRequires:  %{primary_python}-rapidfuzz >= 3.0
 # .robot/.resource extraction parses via robot.api (upstream [robot] extra);
 # absent, those tests skip and only Robot Framework support is lost
 BuildRequires:  %{primary_python}-robotframework >= 4.0
-# Upstream build wants setuptools >= 83, not yet in the tree (has
-# 80.9): keep the satisfiable floor, plain setuptools.build_meta
-# needs nothing newer.
-BuildRequires:  %{primary_python}-setuptools >= 77
+# Upstream build wants setuptools >= 83 (Factory ships 84).
+BuildRequires:  %{primary_python}-setuptools >= 83
 # HTTP MCP tests import starlette; extra floor is 1.3.1 (CVE-2026-48818 /
 # CVE-2026-54283)
 BuildRequires:  %{primary_python}-starlette >= 1.3.1
@@ -109,6 +108,7 @@ BuildRequires:  tree-sitter-verilog
 BuildRequires:  tree-sitter-zig
 Requires:       %{primary_python}-networkx >= 3.4
 Requires:       %{primary_python}-numpy >= 1.21
+Requires:       %{primary_python}-PyYAML >= 6.0
 Requires:       %{primary_python}-rapidfuzz >= 3.0
 Recommends:     %{primary_python}-robotframework >= 4.0
 Recommends:     %{primary_python}-tree-sitter >= 0.25

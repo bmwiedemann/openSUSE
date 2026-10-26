@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:37:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.95:
+  * 0.9.93: Kotlin typealias, C# delegate, Swift macro, Dart
+    typedef and sibling-module Rust use resolve to declarations;
+    credential redaction on rationale labels; versioned-shebang
+    scripts classified
+  * 0.9.94: URL validation rejects hostless/credential-bearing
+    URLs, Maven POM contributes own dependencies only, T-SQL
+    support and cross-file table-stub folding in SQL pass
+  * 0.9.95: structural YAML extraction (new PyYAML dependency),
+    per-language type-alias nodes, per-overload C# methods,
+    symlink-proof skill-install writes, SSRF multicast block
+  * AST cache schema bumped, so the first build after upgrading
+    re-extracts
+- Require python-PyYAML >= 6.0 (new upstream core dependency)
+  and raise the setuptools floor to >= 83
+
+-------------------------------------------------------------------
 Sun Oct 18 17:23:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.92:
