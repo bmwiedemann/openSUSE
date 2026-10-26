@@ -17,7 +17,7 @@
 
 
 Name:           oxipng
-Version:        10.1.0
+Version:        10.2.1
 Release:        0
 Summary:        Multithreaded lossless PNG optimizer
 License:        MIT
@@ -26,7 +26,10 @@ Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libdeflate)
+BuildRequires:  rust >= 1.88
+%if 0%{?suse_version} >= 1620
+BuildRequires:  pkgconfig(libdeflate) >= 1.23
+%endif
 
 %description
 Oxipng is a multithreaded lossless PNG compression optimizer. It can be used
@@ -36,12 +39,17 @@ via a command-line interface or as a library in other Rust programs.
 %autosetup -a1
 
 %build
-%define __cargo_common_opts %{?_smp_mflags} --features "sanity-checks system-libdeflate"
-%{cargo_build}
+#%%define __cargo_common_opts %%{?_smp_mflags} --features "sanity-checks system-libdeflate"
+%{cargo_build} \
+  --features "sanity-checks" \
+%if 0%{?suse_version} >= 1620
+  --features "system-libdeflate" \
+%endif
+%{nil}
 %{__cargo} run --manifest-path ./xtask/Cargo.toml -- mangen
 
 %install
-%{cargo_install}
+%cargo_install
 install -t %{buildroot}%{_mandir}/man1/ -D -p -m 0644 target/xtask/mangen/manpages/oxipng.1
 
 %check
@@ -51,6 +59,6 @@ install -t %{buildroot}%{_mandir}/man1/ -D -p -m 0644 target/xtask/mangen/manpag
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

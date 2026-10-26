@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:29:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 10.2.1:
+  * [Build] Fix package metadata shown in the generated man page.
+- Update to version 10.2.0:
+  * [Performance] Improve performance of filtering and reductions.
+  * [Improvement] Balance changes to level presets for
+    better/faster results.
+  * [Improvement] Improve optimization of indexed images.
+  * [Improvement] Slightly improve optimization of interlaced
+    images.
+  * [Improvement] Make --keep more robust, no longer stripping
+    certain chunks regardless.
+  * [Misc] Show oxipng version in verbose output.
+  * [Misc] Bump minimum Rust version to 1.88.0.
+- Update to version 10.1.1:
+  * [Performance] Improve Bigrams performance, giving notably
+    faster results at lower levels.
+  * [Improvement] Change --np flag to also prevent conversion to
+    indexed from other color types.
+  * [Improvement] Improve support for recompressing ICC profiles
+    with high compression ratios.
+  * [Misc] Add warning when --ziwi exceeds --zi.
+- Link against the system libdeflate: the refreshed libdeflate-sys
+  crate accepts libdeflate >= 1.23, the previous one required
+  exactly 1.24 and silently built its bundled copy instead
+- Add BuildRequires rust >= 1.88 and pkgconfig(libdeflate) >= 1.23
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Feb  9 16:12:55 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 10.1.0:

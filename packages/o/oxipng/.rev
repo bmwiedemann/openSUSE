@@ -67,4 +67,13 @@ It provides better performance than other established similar programs.</comment
     <comment>Update to version 10.1.0</comment>
     <requestid>1332084</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6c350580d6db04252dd3e5176a07eb8d</srcmd5>
+    <version>10.2.1</version>
+    <time>1793005182</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 10.2.1:
+  * fix build</comment>
+    <requestid>1392367</requestid>
+  </revision>
 </revisionlist>
