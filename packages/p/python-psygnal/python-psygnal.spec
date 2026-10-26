@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-psygnal
-Version:        0.15.1
+Version:        0.16.1
 Release:        0
 Summary:        Fast python callback/event system modeled after Qt Signals
 License:        BSD-3-Clause

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 25 17:43:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.1:
+  * fix: check if caller is alive then callback
+  * build: support Python 3.15 (and fix missing locals in
+    compiled EmitLoopError on 3.13+)
+- update to 0.16.0:
+  * ci(pre-commit.ci): autoupdate
+  * chore: Limit mypy version and fix typesafety
+  * fix: add missing methods in `_group.pyi` type stub
+  * ci(dependabot): bump the actions group with 3 updates
+  * fix: Fix emmision when signal disconnect itself
+  * ci(pre-commit.ci): autoupdate
+  * fix: Unpin mypy
+  * fix: Improve disconnect behavior for slots with missing_ok
+    option in SignalRelay
+  * ci(dependabot): bump the actions group with 4 updates
+  * ci(pre-commit.ci): autoupdate
+  * feat: Add batch signal support for contiguous item insertions
+    and removals in EventedList
+  * ci(pre-commit.ci): autoupdate
+  * Make mypyc wheel builds reproducible
+  * Preserve child event forwarding policy during replacement
+
+-------------------------------------------------------------------
 Sun Jul  5 10:19:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.1:
