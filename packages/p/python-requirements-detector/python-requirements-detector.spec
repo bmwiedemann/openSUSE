@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-requirements-detector
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Python tool to find and list requirements of a Python project
 License:        MIT

@@ -131,4 +131,21 @@
   * pylint 4 fixes</comment>
     <requestid>1336289</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0159e6c919ddff30f521ccbabd189915</srcmd5>
+    <version>1.6.0</version>
+    <time>1793005364</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * Poetry lets a dependency be pinned by a path, a URL or a git reference
+    instead of a version, and lets it be a list of such entries -- multiple
+    constraints -- where every entry may be version-less.
+  * The single-dict form was handled, but the list form fell past the guard
+    straight onto `assert parsed_spec_obj is not None`, so reading a
+    pyproject.toml that poetry itself accepts raised an AssertionError. The
+    guard now keys off the parsed constraint being absent rather than off the
+    shape of what produced it, which covers both forms, and the assert -- which
+    could only ever fire on input the parser already understood -- is gone.</comment>
+    <requestid>1392534</requestid>
+  </revision>
 </revisionlist>

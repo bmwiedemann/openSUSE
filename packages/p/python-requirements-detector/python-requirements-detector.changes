@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:08:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Poetry lets a dependency be pinned by a path, a URL or a git reference
+    instead of a version, and lets it be a list of such entries -- multiple
+    constraints -- where every entry may be version-less.
+  * The single-dict form was handled, but the list form fell past the guard
+    straight onto `assert parsed_spec_obj is not None`, so reading a
+    pyproject.toml that poetry itself accepts raised an AssertionError. The
+    guard now keys off the parsed constraint being absent rather than off the
+    shape of what produced it, which covers both forms, and the assert -- which
+    could only ever fire on input the parser already understood -- is gone.
+
+-------------------------------------------------------------------
 Wed Mar  4 08:34:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:
