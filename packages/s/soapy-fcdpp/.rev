@@ -89,4 +89,12 @@ Supersedes SR 1374707.</comment>
 - The pin is deliberately left at 5c2ee79c.</comment>
     <requestid>1382549</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ed559bbea1e39f6ac65cfa864c7e0d1e</srcmd5>
+    <version>0.2.0~git20261010.96c31ed</version>
+    <time>1793005394</time>
+    <user>dimstar_suse</user>
+    <comment>Refresh soapy-fcdpp snapshot to 96c31ed.</comment>
+    <requestid>1392563</requestid>
+  </revision>
 </revisionlist>

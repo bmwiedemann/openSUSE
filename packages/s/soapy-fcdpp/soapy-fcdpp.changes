@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:32:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.0~git20261010.96c31ed:
+  * No functional change: only a CI build-check workflow plus
+    changelog and Debian packaging metadata (upstream's 0.1.2)
+  * No source changed, so the module ABI is unchanged
+
+-------------------------------------------------------------------
 Mon Oct  5 08:33:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.0~git20260924.5c2ee79:
