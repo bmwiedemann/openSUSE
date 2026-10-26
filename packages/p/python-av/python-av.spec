@@ -18,24 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-av
-Version:        18.1.0
+Version:        19.0.2
 Release:        0
 Summary:        Python bindings for FFmpeg's libraries
 License:        BSD-3-Clause
 URL:            https://github.com/PyAV-Org/PyAV
 Source:         https://files.pythonhosted.org/packages/source/a/av/av-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 3.1.0}
-BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module Cython >= 3.3.0}
+BuildRequires:  %{python_module devel >= 3.12}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 77.0}
+BuildRequires:  %{python_module setuptools >= 78.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavfilter)
-BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavdevice) >= 8
+BuildRequires:  pkgconfig(libavfilter) >= 8
+BuildRequires:  pkgconfig(libavutil) >= 8
 Requires:       python-numpy
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
