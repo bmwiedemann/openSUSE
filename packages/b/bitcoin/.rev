@@ -659,4 +659,12 @@
     <comment>Update to 31.1 (privatebroadcast IP-leak fix, background chainstate compaction, wallet migration hardening; drop merged boost-1.91 patch)</comment>
     <requestid>1364619</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>54c5847ec9c7e832ed9ae0d108492154</srcmd5>
+    <version>32.0</version>
+    <time>1793005479</time>
+    <user>dimstar_suse</user>
+    <comment>Update bitcoin to 32.0.</comment>
+    <requestid>1392613</requestid>
+  </revision>
 </revisionlist>

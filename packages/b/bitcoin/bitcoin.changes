@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:43:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 32.0:
+  * 29.x and older releases are end of life
+  * P2P: default -maxconnections raised to 200 with the new
+    -inboundrelaypercent limit; global transaction-relay
+    rate limiting; Tor hidden-service PoW defenses; capped
+    private-broadcast queue and send attempts; legacy I2P
+    ElGamal sunset notice
+  * RPC: PSBT version 2 by default; combined block-policy
+    and mempool fee estimation in estimatesmartfee; new
+    exportasmap and getopenrpcinfo calls; vsize accounting
+    split into vsize_adjusted and vsize_bip141; new wallet
+    calls addhdkey, derivehdkey and exportwatchonlywallet
+  * Wallet: send and sendall no longer experimental;
+    -walletrbf deprecated; wallet notifications no longer
+    expand crafted names as commands
+  * Build: libevent replaced by an in-tree HTTP server
+    (drop the libevent requirement); GUI built with Qt 6.8.4
+  * New -rpcmaxconnections and -prevoutfetchthreads options;
+    transaction index uses less than half the disk space
+    after a rebuild
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Wed Jul  8 18:56:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 31.1:

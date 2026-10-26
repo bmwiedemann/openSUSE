@@ -24,7 +24,7 @@
 %define consensus 0
 %define is_base 1
 Name:           bitcoin
-Version:        31.1
+Version:        32.0
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
@@ -48,9 +48,8 @@ BuildRequires:  pkgconfig(Qt6Gui) >= 6.2
 BuildRequires:  pkgconfig(Qt6Network) >= 6.2
 BuildRequires:  pkgconfig(Qt6Test) >= 6.2
 BuildRequires:  pkgconfig(Qt6Widgets) >= 6.2
-BuildRequires:  pkgconfig(libevent) >= 2.1.8
 BuildRequires:  pkgconfig(libqrencode)
-BuildRequires:  pkgconfig(libzmq)
+BuildRequires:  pkgconfig(libzmq) >= 4.0.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.7.17
 
 %description
