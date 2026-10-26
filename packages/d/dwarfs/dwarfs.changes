@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:33:27 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 0.15.8
+  * Fix handling of sparse files when querying entries in data order,
+    avoiding slow extraction and excessive memory use in dwarfsextract
+  * Limit worker group queue size in filesystem extractor to bound
+    memory use during extraction
+  * Correctly compute total hardlink size; no longer abort extraction
+    on progress mismatch in release builds, report an error instead
+  * Preserve preferred path separator when rebuilding metadata
+  * Report warnings for all entries in dwarfsextract, handle sparse
+    files in readahead and default max_eager_map_size to 1 TiB on
+    64-bit to avoid errors mapping very large sparse files
+  * Add missing includes to fix build with newer compilers
+
+-------------------------------------------------------------------
 Sat Aug 22 19:54:42 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to version 0.15.7

@@ -346,4 +346,12 @@ Bug fixes
     (https://gitlab.kitware.com/cmake/cmake/-/work_items/27939)</comment>
     <requestid>1373136</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4aa1e1cc66c5ad5cba475a26117945fe</srcmd5>
+    <version>0.15.8</version>
+    <time>1793005174</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1392335</requestid>
+  </revision>
 </revisionlist>
