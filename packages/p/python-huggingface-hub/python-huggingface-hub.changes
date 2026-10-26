@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:31:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.3.0:
+  * HfFileSystem gains live-follow for Buckets (live_follow=True)
+    and lists large repos in parallel (new max_workers option)
+  * New HfApi.upload_attachment() plus --attach option for
+    discussions commands to attach media files
+  * New get_sharded_safetensors_metadata() reading every shard
+    header in one request
+  * Access requests on gated repos hiding requester identity now
+    work via request_id
+  * create_commit no longer deletes files re-added in the same
+    commit; hf jobs run keeps streaming logs and shows queue status
+  * Official Python 3.15 support; Inference fixes
+    (InferenceTimeoutError, response memory use, async providers)
+  * Bug fixes for custom endpoints, find/glob listings, offline
+    mode and repocard UTF-8 handling
+
+-------------------------------------------------------------------
 Fri Oct  9 07:06:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.2.0:
