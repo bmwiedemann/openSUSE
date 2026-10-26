@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>1369208</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>969f9db46bc0a4401b7e8d164f4f5efd</srcmd5>
+    <version>0.13.1</version>
+    <time>1793005221</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.1:
+  * auth: Register new iPhone devices with the Audible 4.60
+    profile
+- update to 0.13.0:
+  * Accept PKCS#8 device private keys from Android profiles
+  * deps: Update dependency cryptography to v50 [security]
+  * deps: Declare pyasn1 as a runtime dependency</comment>
+    <requestid>1392393</requestid>
+  </revision>
 </revisionlist>

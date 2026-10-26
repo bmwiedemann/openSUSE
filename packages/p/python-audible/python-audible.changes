@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 25 11:48:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.1:
+  * auth: Register new iPhone devices with the Audible 4.60
+    profile
+- update to 0.13.0:
+  * Accept PKCS#8 device private keys from Android profiles
+  * deps: Update dependency cryptography to v50 [security]
+  * deps: Declare pyasn1 as a runtime dependency
+
+-------------------------------------------------------------------
 Mon Aug  3 07:37:14 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.0:

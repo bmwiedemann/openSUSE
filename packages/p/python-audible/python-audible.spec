@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-audible
-Version:        0.12.0
+Version:        0.13.1
 Release:        0
 Summary:        A(Sync) Interface for internal Audible API
 License:        AGPL-3.0-only
