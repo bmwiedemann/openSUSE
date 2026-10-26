@@ -532,4 +532,41 @@
   * Fix display of HID descriptors. (forwarded request 1318467 from mnhauke)</comment>
     <requestid>1318726</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>72197ba583bc437b888b06eb4a02c544</srcmd5>
+    <version>020</version>
+    <time>1793005078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 020:
+  * lsusb: Add support for FWStatus Capability decoding.
+  * desc-dump: fix operator precedence bug in bit-to-byte
+    conversion.
+  * usbmisc: fix NULL dereference on getcwd() failure in
+    get_absolute_path().
+  * usbmisc: check malloc() return in get_dev_string_ascii().
+  * usbmisc: check malloc() return in usb_string_to_native().
+  * usbmisc: fix unbounded recursion and strncpy issues in
+    readlink_recursive().
+  * names: replace sprintf() with snprintf() for modalias
+    formatting.
+  * lsusb-t: replace sprintf() with snprintf() in lanes_to_str().
+  * desc-dump: fix NULL pointer dereference for unknown audio
+    terminal types.
+  * desc-dump: fix integer underflow in get_array_entry_count().
+  * names: fix missing null termination in
+    get_vendor_product_with_fallback().
+  * sysfs: fix buffer handling in read_sysfs_prop().
+  * sysfs: check initial snprintf() return value in
+    get_sysfs_name().
+  * lsusb: fix out-of-bounds array access in dump_encryption_type()
+  * lsusb: fix out-of-bounds reads in video EXTENSION_UNIT
+    descriptor parsing.
+  * lsusb: fix unaligned memory access in dump_printer_device().
+  * lsusb: fix out-of-bounds read in video HEADER descriptor
+    parsing.
+  * lsusb: fix out-of-bounds read in HID report descriptor parsing.
+  * lsusb: replace sprintf() with snprintf() in get_guid().
+  * lsusb: fix out-of-bounds read in MIDI streaming endpoint (forwarded request 1392148 from mnhauke)</comment>
+    <requestid>1392232</requestid>
+  </revision>
 </revisionlist>
