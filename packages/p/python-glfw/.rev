@@ -174,4 +174,14 @@
   * Include type stubs in package</comment>
     <requestid>1372803</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9932ea75d7031e80ef913948f43ecccf</srcmd5>
+    <version>2.11.0</version>
+    <time>1793005267</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.11.0:
+  * Improve library loading on Windows
+  * Build Windows ARM64 wheels using GitHub actions</comment>
+    <requestid>1392481</requestid>
+  </revision>
 </revisionlist>

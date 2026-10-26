@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-glfw
-Version:        2.10.2
+Version:        2.11.0
 Release:        0
 Summary:        A ctypes-based wrapper for GLFW3
 License:        MIT
