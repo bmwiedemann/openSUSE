@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sqlmodel%{psuffix}
-Version:        0.0.39
+Version:        0.0.48
 Release:        0
 Summary:        SQL databases in Python, designed for simplicity, compatibility, and robustness
 License:        MIT
@@ -39,19 +39,22 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy >= 2.0.14
 Requires:       python-pydantic >= 2.11.0
+Requires:       python-typing-extensions >= 4.5.0
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module Jinja2 >= 3.1.6}
+BuildRequires:  %{python_module aiosqlite >= 0.17.0}
+BuildRequires:  %{python_module alembic >= 1.12.0}
 BuildRequires:  %{python_module black >= 24.1.0}
-BuildRequires:  %{python_module dirty-equals >= 0.10.0}
+BuildRequires:  %{python_module dirty-equals >= 0.11}
 BuildRequires:  %{python_module fastapi >= 0.128.0}
 BuildRequires:  %{python_module httpx >= 0.28.1}
 BuildRequires:  %{python_module pytest >= 7.0.1}
 BuildRequires:  %{python_module pytest-cov >= 6.2}
 BuildRequires:  %{python_module sqlmodel = %{version}}
-BuildRequires:  %{python_module typer}
-BuildRequires:  %{python_module typing_extensions >= 4.15.0}
+BuildRequires:  %{python_module typer >= 0.26.1}
+BuildRequires:  %{python_module typing-extensions >= 4.15.0}
 %endif
 # /SECTION
 %python_subpackages

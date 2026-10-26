@@ -107,4 +107,40 @@
   * Fix type of __sqlmodel_relationships__</comment>
     <requestid>1366376</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>faf9b89d4be43a37a8c8986084921b64</srcmd5>
+    <version>0.0.48</version>
+    <time>1793005422</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.0.48:
+  * Add support for SQLAlchemy 2.1. PR #2112 by @tiangolo.
+- update to 0.0.47:
+  * Add direct support for PostgreSQL, MySQL, and MariaDB,
+    include in CI tests.
+- update to 0.0.46:
+  * Fix timedelta arithmetic with UTC datetime fields.
+- update to 0.0.45:
+  * Use UTC datetimes by default.
+- update to 0.0.44:
+  * Replace the dataclass_transform shim with
+    typing_extensions.
+- update to 0.0.43:
+  * Fix SQLAlchemy type handling in `Field`.
+- update to 0.0.42:
+  * Allow `Discriminator` type for `discriminator` parameter
+    in `Field`.
+- update to 0.0.41:
+  * Deprecate `min_items` and `max_items` parameters of
+    `Field`.
+- update to 0.0.40:
+  * Fix grammar and typos in docs. PR #2058 by @YuriiMotov.
+  * Fix &quot;Decimals in SQLModel&quot; to reference `Field()` instead
+    of `condecimal()`. PR #2035 by @anxkhn.
+  * Use buttons for Termynal controls. PR #2063 by @tiangolo.
+  * Add Library Skills documentation. PR #2052 by @tiangolo.
+  * Recommend uv projects by default in docs. PR #2050 by
+  * Prevent Termynal controls from scrolling. PR #2051 by
+  * Update help docs. PR #2049 by @tiangolo.</comment>
+    <requestid>1392587</requestid>
+  </revision>
 </revisionlist>
