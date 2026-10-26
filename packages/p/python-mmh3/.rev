@@ -47,4 +47,15 @@
   * Add support for the Android wheel for Python 3.14.</comment>
     <requestid>1338414</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>939068f98756f2302249897417e68e7b</srcmd5>
+    <version>5.3.1</version>
+    <time>1793005502</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3.1:
+  * Add support for Python 3.15 (#192).
+  * Fix undefined behavior when writing to const-qualified
+    128-bit digest buffers</comment>
+    <requestid>1392639</requestid>
+  </revision>
 </revisionlist>
