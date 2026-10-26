@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 24 08:54:00 UTC 2026 - Aleksey Cheusov <vle@gmx.net>
+
+- Update to 0.40.3:
+  * Fix for clang-22 and other clang versions
+  * Fixes in tests for recent version of bmake
+  * Tests rework
+  * bmake-error-location-format.patch has been removed
+    (fixed in upstream)
+
+-------------------------------------------------------------------
 Fri Oct 16 17:01:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.40.1:

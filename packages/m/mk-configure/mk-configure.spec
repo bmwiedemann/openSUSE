@@ -17,16 +17,14 @@
 
 
 Name:           mk-configure
-Version:        0.40.1
+Version:        0.40.3
 Release:        0
 Summary:        A build system on top of bmake
 License:        BSD-2-Clause AND MIT AND ISC
 URL:            https://github.com/cheusov/mk-configure/
-Source:         https://github.com/cheusov/mk-configure/archive/refs/tags/mk-configure-%{version}/%{name}-%{name}-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/%{name}/files/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:        mkcmake.macros
 Source9:        mk-configure-rpmlintrc
-# PATCH-FIX-OPENSUSE bmake-error-location-format.patch -- tests and test helper know only bmake's old diagnostic location format
-Patch0:         bmake-error-location-format.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -63,7 +61,7 @@ Requires:       %{name}
 Mk-configure package: examples and presentation.
 
 %prep
-%autosetup -p1 -n %{name}-%{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %define env \
         unset MAKEFLAGS \
@@ -101,7 +99,7 @@ install -m644 %{SOURCE1} -D %{buildroot}%{_rpmmacrodir}/macros.mkcmake
 
 %check
 unset MAKEFLAGS
-env bmake test
+bmake test
 bmake nodeps-cleandir-examples
 bmake nodeps-cleandir-tests
 

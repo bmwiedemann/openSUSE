@@ -225,4 +225,18 @@ POSIX utilities.</comment>
     <comment>1</comment>
     <requestid>1385266</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b562f19dfc3cb1016b659007ffb158d8</srcmd5>
+    <version>0.40.3</version>
+    <time>1793022369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.40.3:
+  * Fix for clang-22 and other clang versions
+  * Fixes in tests for recent version of bmake
+  * Tests rework
+  * bmake-error-location-format.patch has been removed
+    (fixed in upstream)
+</comment>
+    <requestid>1392730</requestid>
+  </revision>
 </revisionlist>
