@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:56:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.3
+  * Added a gradient tool, Aseprite file export, and frame tag
+    duration adjustment that keeps relative ratios
+  * Guides can be locked from the View menu, cels cloned with
+    Shift-drag, and cel content centered from the timeline
+  * Fixed bucket tool freeze with an active selection, keyframe ID
+    conflicts, and stacked layer effect performance
+- Raise godot/godot-runner floor to 4.7.2, the release these
+  versions are built with
+- Drop obsolete Group tag
+
+-------------------------------------------------------------------
 Fri Aug 21 12:00:00 UTC 2026 - cunix@mail.de
 
 - Update to 1.2.1

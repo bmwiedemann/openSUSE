@@ -1,6 +1,7 @@
 #
 # spec file for package pixelorama
 #
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2023-2026 cunix
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,22 +19,20 @@
 
 %define _buildshell /bin/bash
 %define nameupper Pixelorama
-
 Name:           pixelorama
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        2D sprite editor
 License:        MIT
-Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://github.com/Orama-Interactive/Pixelorama
 Source0:        https://codeload.github.com/Orama-Interactive/%{nameupper}/tar.gz/refs/tags/v%{version}#/%{nameupper}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  godot >= 4.7.1
-BuildRequires:  godot-runner >= 4.7.1
+BuildRequires:  godot >= 4.7.2
+BuildRequires:  godot-runner >= 4.7.2
 BuildRequires:  vendored_licenses_packager
 # currently no godot binary
-ExcludeArch:    %arm
-ExcludeArch:    %power64
+ExcludeArch:    %{arm}
+ExcludeArch:    %{power64}
 
 %description
 Graphical tool based on the Godot Engine to create and edit
