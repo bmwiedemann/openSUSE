@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:10:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * Add support for the StreamDeck Studio.
+  * Added support for the StreamDeck Mini (Discord edition).
+  * Added support for the StreamDeck Plus XL.
+  * Minimum Python version bumped to 3.10, as 3.9 is now EOL.
+  * Added additional and fixed existing Python type hints.
+  * Fix error in animated deck example, when the example is
+    closed.
+  * Fix Dummy Streamdeck backend when calling `read_feature()`.
+  * Fixed missing retrieval of installed asyncio callbacks, which
+    were causing exceptions raised in the callback to be silently
+    discarded.
+
+-------------------------------------------------------------------
 Mon Sep 29 12:10:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.9.8

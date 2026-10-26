@@ -72,4 +72,23 @@
     <comment></comment>
     <requestid>1307880</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ba73c4cee55144cd0bb13e4f1acdcb1c</srcmd5>
+    <version>0.10.0</version>
+    <time>1793005367</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0:
+  * Add support for the StreamDeck Studio.
+  * Added support for the StreamDeck Mini (Discord edition).
+  * Added support for the StreamDeck Plus XL.
+  * Minimum Python version bumped to 3.10, as 3.9 is now EOL.
+  * Added additional and fixed existing Python type hints.
+  * Fix error in animated deck example, when the example is
+    closed.
+  * Fix Dummy Streamdeck backend when calling `read_feature()`.
+  * Fixed missing retrieval of installed asyncio callbacks, which
+    were causing exceptions raised in the callback to be silently
+    discarded.</comment>
+    <requestid>1392536</requestid>
+  </revision>
 </revisionlist>
