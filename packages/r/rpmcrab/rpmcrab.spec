@@ -14,7 +14,7 @@
 #
 
 Name:           rpmcrab
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Rust rewrite of rpmlint
 License:        GPL-2.0-or-later
@@ -50,8 +50,6 @@ Requires:       desktop-file-utils
 Requires:       file
 # - FilesCheck: decompression of .gz files via gzip -dc
 Requires:       gzip
-# - TagsCheck: spelling-error via the en_US hunspell dictionary
-Recommends:     myspell-en_US
 # - SpecCheck: specfile-error/specfile-warning via rpm --specfile
 #   (rpm re-execs /usr/bin/rpmspec from rpm-build since rpm 4.9)
 Requires:       rpm-build
@@ -59,6 +57,8 @@ Requires:       rpm-build
 Requires:       xz
 # - FilesCheck: decompression of .zst files via zstd -dc
 Requires:       zstd
+# - TagsCheck: spelling-error via the en_US hunspell dictionary
+Recommends:     myspell-en_US
 
 %description
 rpmcrab is a Rust rewrite of rpmlint, the RPM package linter.

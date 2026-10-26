@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:38:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.0:
+  * Keep --format json stdout pure by running through a child
+  * Support v6 OpenPGP signature entries
+  * AlternativesCheck accepts exact-path libalternatives targets
+  * SpecCheck gains licence-marking findings
+  * Discover rpmlintrc beside every positional argument
+  * Demote unused-rpmlintrc-filter, spelling-error and
+    undefined-non-weak-symbol to warnings; sunset invalid-soname
+  * Many precision fixes cutting false positives across Files,
+    Binaries, Tags and Spec checks
+  * Refresh vendored ctutils to 0.4.5, fixing RUSTSEC-2026-0385
+    (no CVE assigned)
+- Spec cleanup: sort Recommends after Requires
+
+-------------------------------------------------------------------
 Wed Oct 21 23:06:48 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Require the data and tools the checks consume from the installed
