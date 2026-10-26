@@ -71,4 +71,26 @@
   * fix: enforce key_prefix in PoW v2 fallback verification</comment>
     <requestid>1369601</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c5dca2bb4b6999520de870666534f1e1</srcmd5>
+    <version>2.3.0</version>
+    <time>1793005222</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * Aligns the v2 API (`altcha.v2`) with the reference JavaScript
+    implementation (altcha-lib) and hardens verification
+    against malformed payloads.
+  * Challenges signed by earlier versions may fail verification
+    after upgrading if their `data` contains `None`, floats,
+    integer-like keys, or integers above 2^53, or
+    if they use a non-standard algorithm string (e.g.
+    `'sha-512'`, `'SHA-1'`). Other challenges keep the same
+    signature and derived key.
+  * `counter_mode` option (`'uint32'` default, or `'string'`) for
+    `create_challenge`, `solve_challenge` and `verify_solution`,
+     matching altcha-lib's `counterMode`.
+  * `'string'` encodes the counter as decimal digits, as in
+    v1-compatible challenges.</comment>
+    <requestid>1392394</requestid>
+  </revision>
 </revisionlist>
