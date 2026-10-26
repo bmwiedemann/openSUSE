@@ -251,4 +251,12 @@
     <comment></comment>
     <requestid>1359734</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>8c531b750f0d3bf06372ec9be47d6f9f</srcmd5>
+    <version>1.0.23</version>
+    <time>1793005397</time>
+    <user>dimstar_suse</user>
+    <comment>Update lldpd to 1.0.23.</comment>
+    <requestid>1392560</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:37:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.23:
+  * Add "reset" command to restore the startup configuration
+    without restarting lldpd.
+  * Escape control characters when output is a terminal.
+  * Fix out-of-bound reads: long interface description "was"
+    marker, LLDP-MED location and chassis/port-ID address
+    display in liblldpctl.
+  * Send a shutdown LLDPDU when a port stops transmitting.
+  * Fix Tx fast start on local change, bond double-free and
+    a SIGCHLD race during shutdown.
+- Source0 moved to the upstream GitHub release asset: the
+  upstream host media.luffy.cx is DNS-dead. GPG verification
+  is suspended (no .asc published): dropped Source2/Source3
+  and lldpd.keyring; restore once signed artifacts return.
+  * lldpd-1.0.22.tar.gz lldpd-1.0.22.tar.gz.asc lldpd.keyring
+- This release is not affected by CVE-2023-41910 (boo#1215067),
+  fixed in 1.0.17; CVE-2021-43612 was credited in 1.0.13.
+- Spec cleanup: drop Group tags, pwdutils pre-require is now
+  shadow.
+
+-------------------------------------------------------------------
 Mon Jun 15 14:15:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Add libcap-devel to BuildRequires to build with support for

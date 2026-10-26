@@ -26,18 +26,20 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lldpd
-Version:        1.0.22
+Version:        1.0.23
 Release:        0
 Summary:        Implementation of IEEE 802.1ab (LLDP)
 # We have some GPL linux headers in include/linux, they are used on
 # platforms where glibc headers are not recent enough
 License:        GPL-2.0-or-later AND ISC
-Group:          System/Daemons
 URL:            https://lldpd.github.io/
-Source0:        https://media.luffy.cx/files/lldpd/%{name}-%{version}.tar.gz
+# Upstream download host media.luffy.cx is DNS-dead (no answer since
+# 2026-10-25); Source0 uses the upstream GitHub release asset instead.
+# No .asc is published as a release asset, so signature verification
+# is suspended: restore Source2/Source3 + lldpd.keyring once the
+# upstream host (and signed artifacts) return.
+Source0:        https://github.com/lldpd/lldpd/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        lldpd.sysconfig
-Source2:        https://media.luffy.cx/files/lldpd/%{name}-%{version}.tar.gz.gpg#/%{name}-%{version}.tar.gz.asc
-Source3:        http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x95A42FE8353525F9#/%{name}.keyring
 Patch0:         harden_lldpd.service.patch
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel
@@ -49,7 +51,7 @@ BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires(pre):  %fillup_prereq
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 
 %description
 This implementation provides LLDP sending and reception, supports VLAN
@@ -68,7 +70,6 @@ protocol. It also handles LLDP-MED extension.
 %package -n %{libname}
 Summary:        Implementation of IEEE 802.1ab
 License:        MIT
-Group:          System/Libraries
 
 %description -n %{libname}
 This package provides the shared library for lldpd.
@@ -82,7 +83,6 @@ to adjacent network devices.
 %package devel
 Summary:        Headers for the lldpd implementation
 License:        MIT
-Group:          Development/Languages/C and C++
 Requires:       %{libname} = %{version}-%{release}
 
 %description devel
@@ -142,7 +142,6 @@ getent passwd %{lldpd_user} >/dev/null || \
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun  -n %{libname} -p /sbin/ldconfig
-
 %post
 %service_add_post lldpd.service
 %fillup_only
