@@ -77,6 +77,8 @@ donttest="test_png_url or test_bidi_conformance or test_bidi_character or test_p
 donttest+=" or test_bidi_paragraph_direction or test_hebrew_diacritics or test_text_with_parentheses or test_alias_in_rtl_text or test_alias_and_literal_side_by_side_in_rtl"
 # Exclude tests that fail due to SVG/fontTools floating-point rendering diffs on modern Python toolchains:
 donttest+=" or test_twitter_emoji_shaping or test_twitter_emoji_text"
+# Fails due to QPDF fun and games
+donttest+=" or test_image_with_explicit_dimensions"
 %pytest -s -k "not ($donttest)"
 
 %files %{python_files}
