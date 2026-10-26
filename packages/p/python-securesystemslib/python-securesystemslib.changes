@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:05:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * ML-DSA keys are now part of default set of verification keys
+  * `CryptoSigner` now raises `KeyMismatchError` if initialized
+    with a public key that does not match the private key
+  * Removed experimental `SpxSigner` and `SpxKey` (`pyspx`)
+    support
+  * DSSE `Envelope.pae()` now uses UTF-8 byte length instead of
+    character length for payload type as spec requires
+  * VaultSigner: Fix key version selection during import
+  * The crypto extra correctly depends on cryptography 48 but
+    some users depend on cryptography directly instead of the extra.
+  * Post-quantum ML-DSA (ML-DSA-44, ML-DSA-65, ML-DSA-87) support
+    in `CryptoSigner`, `GCPSigner`, and `SSlibKey`
+  * TKeySigner: Support Tillitis TKey hardware token as a ML-
+    DSA-44 signer (URI scheme `tkey:`)
+  * CryptoSigner: Support `ecdsa-sha2-nistp384` and `ecdsa-
+    sha2-nistp521` schemes in key generation and signing
+  * Named constants for key types and signing schemes in `signer`
+    module
+
+-------------------------------------------------------------------
 Sun Jun 14 19:18:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

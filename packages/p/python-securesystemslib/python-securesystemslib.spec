@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-securesystemslib
-Version:        1.4.0
+Version:        1.6.0
 Release:        0
 Summary:        Cryptographic and general routines for Secure Systems Lab
 License:        MIT
@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/s/securesystemsli
 BuildRequires:  %{python_module PyKCS11}
 BuildRequires:  %{python_module asn1crypto}
 BuildRequires:  %{python_module cryptography >= 40.0.0}
-BuildRequires:  %{python_module hatchling >= 1.29.0}
+BuildRequires:  %{python_module hatchling >= 1.32.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
