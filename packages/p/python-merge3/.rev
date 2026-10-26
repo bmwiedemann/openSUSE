@@ -45,4 +45,13 @@
     <comment></comment>
     <requestid>1317848</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>047c6ffb8ccf2a2bd0174dfbad72a80c</srcmd5>
+    <version>1.0.0</version>
+    <time>1793005254</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * Python 3.15 support</comment>
+    <requestid>1392457</requestid>
+  </revision>
 </revisionlist>
