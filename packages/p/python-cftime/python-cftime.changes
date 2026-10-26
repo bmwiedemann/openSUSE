@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 11:16:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.6.1:
+  * ensure has_year_zero=False is ignored for idealized
+    calendars, including when constructing year zero dates
+  * added new CF calendar "tai", which is the same as
+    proleptic_gregorian but is only valid for dates after 1958-01-01.
+
+-------------------------------------------------------------------
 Tue Oct 21 09:24:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.6.5

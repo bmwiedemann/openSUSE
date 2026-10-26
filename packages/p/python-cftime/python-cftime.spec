@@ -1,7 +1,7 @@
 #
 # spec file for package python-cftime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cftime
-Version:        1.6.5
+Version:        1.6.6.1
 Release:        0
 Summary:        Time-handling functionality from netcdf4-python
 License:        MIT
 URL:            https://github.com/Unidata/cftime
 Source:         https://files.pythonhosted.org/packages/source/c/cftime/cftime-%{version}.tar.gz
-
 BuildRequires:  %{python_module Cython >= 0.29.20}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy-devel >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 18.0}
+BuildRequires:  %{python_module setuptools >= 77.0.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
+Requires:       python-numpy >= 2
 %python_subpackages
 
 %description
