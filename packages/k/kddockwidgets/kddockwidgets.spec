@@ -24,10 +24,10 @@ ExclusiveArch:  do_not_build
 %define qt6 1
 %define pkg_suffix -qt6
 %endif
-%define soversion 3
+%define soversion 4
 %define rname kddockwidgets
 Name:           kddockwidgets%{?pkg_suffix}
-Version:        2.4.1
+Version:        2.5.1
 Release:        0
 Summary:        Qt dock widget library, suitable for replacing QDockWidget
 License:        GPL-2.0-only OR GPL-3.0-only

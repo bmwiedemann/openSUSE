@@ -87,4 +87,12 @@
     <comment>Update to 2.4.1</comment>
     <requestid>1368976</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5bf7b150cb3024388798df216a58b108</srcmd5>
+    <version>2.5.1</version>
+    <time>1793005183</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.5.1</comment>
+    <requestid>1392357</requestid>
+  </revision>
 </revisionlist>

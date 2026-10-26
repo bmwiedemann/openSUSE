@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Oct 25 08:11:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.5.1
+  https://github.com/KDAB/KDDockWidgets/releases/tag/v2.5.0
+  * LayoutSaver: New LayoutSaver::addWindowToSave(), to save and
+    restore individual windows.
+  * LayoutSaver: New RestoreOption_CloseUnknownDockWidgets. A
+    dock widget docked in a main window being restored, but
+    absent from the saved layout, is closed instead of floated.
+  * LayoutSaver: A dock widget with no affinities is no longer
+    dropped from its group when saving with an affinity filter.
+  * Fix MDI not honouring initial size property
+  * qtquick: Support setting floating window flags from QML
+  * qtquick: Support dark mode
+  * qtquick: In MDI, fix random splitters getting highlighted
+  * ViewFactory: createGroup()/createTitleBar()/createTabBar()/createFloatingWindow()
+    now have new overloads which also receive the userType() of
+    the DockWidget that's initially covered by the created view
+    (see DockWidget::setUserType()).
+
+-------------------------------------------------------------------
 Tue Jul 21 13:01:28 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.4.1
