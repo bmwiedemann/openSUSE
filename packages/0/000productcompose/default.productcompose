@@ -104,7 +104,7 @@ packagesets:
    - PackageKit-lang # reason: dvd:patterns-gnome-gnome
    - WebKitGTK-4.1-lang # reason: dvd:patterns-gnome-gnome
    - WebKitGTK-6.0-lang # reason: dvd:patterns-gnome-gnome
-   - WindowMaker # reason: dvd:patterns-base-x11
+   - WindowMaker # reason: dvd:patterns-media-rest_cd_core
    - aaa_base # reason: dvd:openSUSE-release
    - aaa_base-extras # reason: dvd:openSUSE-release
    - accountsservice # reason: dvd:patterns-gnome-gnome
@@ -137,14 +137,14 @@ packagesets:
    - akonadi-search-lang # reason: dvd:patterns-kde-kde
    - akregator # reason: dvd:patterns-kde-kde
    - akregator-lang # reason: dvd:patterns-kde-kde
-   - alsa # reason: dvd:patterns-kde-kde
+   - alsa # reason: dvd:patterns-media-rest_cd_core
    - alsa-firmware # reason: dvd:patterns-media-rest_cd_core
-   - alsa-oss # reason: dvd:patterns-kde-kde
-   - alsa-plugins # reason: dvd:patterns-kde-kde
-   - alsa-plugins-speexrate # reason: dvd:patterns-kde-kde
-   - alsa-plugins-upmix # reason: dvd:patterns-kde-kde
+   - alsa-oss # reason: dvd:patterns-media-rest_cd_core
+   - alsa-plugins # reason: dvd:patterns-media-rest_cd_core
+   - alsa-plugins-speexrate # reason: dvd:patterns-media-rest_cd_core
+   - alsa-plugins-upmix # reason: dvd:patterns-media-rest_cd_core
    - alsa-ucm-conf # reason: dvd:openSUSE-release
-   - alsa-utils # reason: dvd:patterns-kde-kde
+   - alsa-utils # reason: dvd:patterns-media-rest_cd_core
    - alts # reason: dvd:openSUSE-release
    - amarok # reason: dvd:amarok
    - amavisd-milter # reason: common_locks:expansion
@@ -188,7 +188,7 @@ packagesets:
    - aurorae6-lang # reason: dvd:patterns-kde-kde
    - autofs # reason: dvd:patterns-media-rest_dvd
    - autoyast2 # reason: dvd:autoyast2
-   - autoyast2-installation # reason: dvd:patterns-kde-kde
+   - autoyast2-installation # reason: dvd:patterns-yast-yast2_install_wf
    - avahi # reason: dvd:patterns-kde-kde
    - avahi-lang # reason: dvd:patterns-kde-kde
    - awesfx # reason: dvd:patterns-media-rest_cd_core
@@ -649,7 +649,7 @@ packagesets:
    - google-noto-sans-symbols-fonts # reason: dvd:patterns-kde-kde
    - google-noto-sans-symbols2-fonts # reason: dvd:patterns-kde-kde
    - google-opensans-fonts # reason: dvd:patterns-kde-kde
-   - google-poppins-fonts # reason: dvd:patterns-kde-kde
+   - google-poppins-fonts # reason: dvd:patterns-media-rest_cd_core
    - google-roboto-fonts # reason: dvd:patterns-kde-kde
    - gpart # reason: dvd:patterns-kde-kde
    - gpg2 # reason: dvd:openSUSE-release
@@ -798,10 +798,10 @@ packagesets:
    - ibus-table-rustrad # reason: dvd:openSUSE-release
    - ibus-table-translit # reason: dvd:openSUSE-release
    - iceauth # reason: dvd:patterns-kde-kde
-   - icewm # reason: dvd:patterns-kde-kde
-   - icewm-config-upstream # reason: dvd:patterns-kde-kde
-   - icewm-default # reason: dvd:patterns-kde-kde
-   - icewm-lang # reason: dvd:patterns-kde-kde
+   - icewm # reason: dvd:patterns-base-basic_desktop
+   - icewm-config-upstream # reason: dvd:patterns-media-rest_dvd
+   - icewm-default # reason: dvd:patterns-base-basic_desktop
+   - icewm-lang # reason: dvd:patterns-base-basic_desktop
    - icewm-lite # reason: dvd:icewm-lite
    - icewm-theme-branding # reason: dvd:patterns-base-basic_desktop
    - iio-sensor-proxy # reason: dvd:patterns-gnome-gnome
@@ -1704,7 +1704,7 @@ packagesets:
    - libatk-bridge-2_0-0 # reason: dvd:openSUSE-release
    - libatkmm-1_6-1 # reason: dvd:patterns-media-rest_cd_core
    - libatomic1 # reason: dvd:patterns-gnome-gnome
-   - libatopology2 # reason: dvd:patterns-kde-kde
+   - libatopology2 # reason: dvd:patterns-media-rest_cd_core
    - libatspi0 # reason: dvd:openSUSE-release
    - libattr1 # reason: dvd:openSUSE-release
    - libaudit1 # reason: dvd:openSUSE-release
@@ -2691,7 +2691,7 @@ packagesets:
    - libsimdutf37 # reason: dvd:patterns-gnome-gnome
    - libslang2 # reason: dvd:patterns-kde-kde
    - libslirp0 # reason: dvd:patterns-media-rest_dvd
-   - libslp1 # reason: dvd:patterns-kde-kde
+   - libslp1 # reason: dvd:patterns-yast-yast2_install_wf
    - libsmartcols1 # reason: dvd:openSUSE-release
    - libsmbios-lang # reason: dvd:patterns-media-rest_cd_core
    - libsmbios_c2 # reason: dvd:patterns-media-rest_cd_core
@@ -3206,7 +3206,7 @@ packagesets:
    - openldap2-client # reason: dvd:patterns-kde-kde
    - opensc # reason: dvd:rng-tools
    - opensc-bash-completion # reason: common_locks:expansion
-   - openslp # reason: dvd:patterns-kde-kde
+   - openslp # reason: dvd:patterns-yast-yast2_install_wf
    - openslp-server # reason: dvd:patterns-media-rest_dvd
    - openssh # reason: dvd:patterns-kde-kde
    - openssh-askpass-gnome # reason: dvd:patterns-kde-kde
@@ -3294,7 +3294,7 @@ packagesets:
    - patterns-kde-kde_plasma # reason: dvd:patterns-kde-kde
    - patterns-kde-kde_utilities # reason: dvd:patterns-kde-kde
    - patterns-kde-kde_utilities_opt # reason: dvd:patterns-kde-kde
-   - patterns-kde-kde_yast # reason: dvd:patterns-kde-kde
+   - patterns-kde-kde_yast # reason: dvd:patterns-kde-kde_yast
    - patterns-media-rest_cd_core # reason: dvd:patterns-media-rest_cd_core
    - patterns-media-rest_dvd # reason: dvd:patterns-media-rest_dvd
    - patterns-office-office # reason: dvd:patterns-gnome-gnome
@@ -3311,8 +3311,8 @@ packagesets:
    - patterns-xfce-xfce_laptop # reason: dvd:patterns-xfce-xfce_laptop
    #-  patterns-xfce-xfce_office not found on x86_64
    - patterns-yast-x11_yast # reason: dvd:patterns-gnome-gnome_yast
-   - patterns-yast-yast2_basis # reason: dvd:patterns-kde-kde
-   - patterns-yast-yast2_desktop # reason: dvd:patterns-kde-kde
+   - patterns-yast-yast2_basis # reason: dvd:patterns-yast-yast2_basis
+   - patterns-yast-yast2_desktop # reason: dvd:patterns-yast-yast2_desktop
    - patterns-yast-yast2_install_wf # reason: dvd:patterns-yast-yast2_install_wf
    - patterns-yast-yast2_server # reason: dvd:patterns-yast-yast2_server
    - pavucontrol # reason: dvd:patterns-xfce-xfce
@@ -4245,7 +4245,7 @@ packagesets:
    - xbitmaps # reason: dvd:patterns-gnome-gnome
    - xbrlapi # reason: dvd:patterns-media-rest_dvd
    - xclip # reason: dvd:patterns-kde-kde
-   - xclock # reason: dvd:patterns-kde-kde
+   - xclock # reason: dvd:patterns-base-basic_desktop
    - xconsole # reason: dvd:patterns-kde-kde
    - xdelta3 # reason: dvd:xdelta3
    - xdg-dbus-proxy # reason: dvd:patterns-gnome-gnome
@@ -4257,7 +4257,7 @@ packagesets:
    - xdg-desktop-portal-kde6 # reason: dvd:patterns-kde-kde
    - xdg-desktop-portal-kde6-lang # reason: dvd:patterns-kde-kde
    - xdg-desktop-portal-lang # reason: dvd:patterns-gnome-gnome
-   - xdg-menu # reason: dvd:patterns-kde-kde
+   - xdg-menu # reason: dvd:patterns-media-rest_cd_core
    - xdg-user-dirs # reason: dvd:patterns-gnome-gnome
    - xdg-user-dirs-gtk # reason: dvd:patterns-gnome-gnome
    - xdg-user-dirs-gtk-lang # reason: dvd:patterns-gnome-gnome
@@ -4415,9 +4415,9 @@ packagesets:
    - xprop # reason: dvd:patterns-gnome-gnome
    - xrandr # reason: dvd:patterns-kde-kde
    - xrdb # reason: dvd:patterns-kde-kde
-   - xscreensaver # reason: dvd:patterns-kde-kde
-   - xscreensaver-data # reason: dvd:patterns-kde-kde
-   - xscreensaver-lang # reason: dvd:patterns-kde-kde
+   - xscreensaver # reason: dvd:patterns-base-basic_desktop
+   - xscreensaver-data # reason: dvd:patterns-base-basic_desktop
+   - xscreensaver-lang # reason: dvd:patterns-base-basic_desktop
    - xset # reason: dvd:patterns-kde-kde
    - xsetroot # reason: dvd:patterns-kde-kde
    - xsettingsd # reason: dvd:patterns-kde-kde
@@ -4432,9 +4432,8 @@ packagesets:
    - xz # reason: dvd:patterns-gnome-gnome
    - xz-lang # reason: dvd:patterns-gnome-gnome
    - yast2 # reason: dvd:patterns-gnome-gnome_yast
-   - yast2-add-on # reason: dvd:patterns-kde-kde
-   - yast2-alternatives # reason: dvd:patterns-kde-kde
-   - yast2-apparmor # reason: dvd:patterns-base-apparmor
+   - yast2-add-on # reason: dvd:patterns-yast-yast2_install_wf
+   - yast2-alternatives # reason: dvd:patterns-yast-yast2_basis
    - yast2-auth-client # reason: dvd:patterns-yast-yast2_server
    - yast2-auth-server # reason: dvd:patterns-yast-yast2_server
    - yast2-bootloader # reason: dvd:patterns-kde-kde
@@ -4444,26 +4443,26 @@ packagesets:
    - yast2-core # reason: dvd:patterns-gnome-gnome_yast
    - yast2-country # reason: dvd:patterns-kde-kde
    - yast2-country-data # reason: dvd:patterns-kde-kde
-   - yast2-firewall # reason: dvd:patterns-kde-kde
+   - yast2-firewall # reason: dvd:patterns-yast-yast2_basis
    - yast2-firstboot # reason: dvd:yast2-firstboot
    - yast2-ftp-server # reason: dvd:patterns-media-rest_dvd
    - yast2-hardware-detection # reason: dvd:patterns-gnome-gnome_yast
-   - yast2-installation # reason: dvd:patterns-kde-kde
+   - yast2-installation # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-instserver # reason: dvd:patterns-media-rest_dvd
    - yast2-iscsi-client # reason: dvd:patterns-yast-yast2_server
    - yast2-isns # reason: dvd:patterns-media-rest_dvd
-   - yast2-journal # reason: dvd:patterns-kde-kde
+   - yast2-journal # reason: dvd:patterns-yast-yast2_server
    - yast2-kdump # reason: dvd:patterns-media-rest_dvd
    - yast2-ldap # reason: dvd:patterns-kde-kde
    - yast2-logs # reason: dvd:patterns-gnome-gnome_yast
-   - yast2-metapackage-handler # reason: dvd:patterns-kde-kde
+   - yast2-metapackage-handler # reason: dvd:patterns-yast-yast2_basis
    - yast2-network # reason: dvd:patterns-kde-kde
    - yast2-nfs-client # reason: dvd:patterns-yast-yast2_server
    - yast2-nfs-common # reason: dvd:patterns-yast-yast2_server
    - yast2-nfs-server # reason: dvd:patterns-media-rest_dvd
-   - yast2-ntp-client # reason: dvd:patterns-kde-kde
-   - yast2-online-update # reason: dvd:patterns-kde-kde
-   - yast2-online-update-frontend # reason: dvd:patterns-kde-kde
+   - yast2-ntp-client # reason: dvd:patterns-yast-yast2_install_wf
+   - yast2-online-update # reason: dvd:patterns-yast-yast2_install_wf
+   - yast2-online-update-frontend # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-packager # reason: dvd:patterns-kde-kde
    - yast2-pam # reason: dvd:patterns-kde-kde
    - yast2-perl-bindings # reason: dvd:patterns-gnome-gnome_yast
@@ -4474,19 +4473,19 @@ packagesets:
    - yast2-ruby-bindings # reason: dvd:patterns-gnome-gnome_yast
    - yast2-samba-client # reason: dvd:patterns-kde-kde
    - yast2-samba-server # reason: dvd:patterns-kde-kde
-   - yast2-scanner # reason: dvd:patterns-kde-kde
+   - yast2-scanner # reason: dvd:patterns-yast-yast2_desktop
    - yast2-schema # reason: dvd:autoyast2
    - yast2-security # reason: dvd:patterns-kde-kde
-   - yast2-services-manager # reason: dvd:patterns-kde-kde
-   - yast2-slp # reason: dvd:patterns-kde-kde
+   - yast2-services-manager # reason: dvd:patterns-yast-yast2_install_wf
+   - yast2-slp # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-slp-server # reason: dvd:patterns-media-rest_dvd
    - yast2-snapper # reason: dvd:patterns-media-rest_cd_core
    - yast2-storage-ng # reason: dvd:patterns-kde-kde
    - yast2-sudo # reason: dvd:patterns-yast-yast2_server
-   - yast2-sysconfig # reason: dvd:patterns-kde-kde
+   - yast2-sysconfig # reason: dvd:patterns-yast-yast2_server
    - yast2-tftp-server # reason: dvd:patterns-yast-yast2_server
-   - yast2-theme # reason: dvd:patterns-kde-kde
-   - yast2-theme-breeze # reason: dvd:patterns-kde-kde
+   - yast2-theme # reason: dvd:patterns-media-rest_cd_core
+   - yast2-theme-breeze # reason: dvd:patterns-media-rest_dvd
    - yast2-trans-af # reason: dvd:patterns-media-rest_dvd
    - yast2-trans-ar # reason: dvd:patterns-media-rest_dvd
    - yast2-trans-bg # reason: dvd:patterns-media-rest_dvd
@@ -4546,11 +4545,11 @@ packagesets:
    - yast2-trans-zu # reason: dvd:patterns-media-rest_dvd
    - yast2-transfer # reason: dvd:patterns-kde-kde
    - yast2-tune # reason: dvd:patterns-yast-yast2_server
-   - yast2-update # reason: dvd:patterns-kde-kde
+   - yast2-update # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-users # reason: dvd:patterns-kde-kde
-   - yast2-vm # reason: dvd:patterns-kde-kde
+   - yast2-vm # reason: dvd:patterns-yast-yast2_basis
    - yast2-vpn # reason: dvd:patterns-yast-yast2_server
-   - yast2-x11 # reason: dvd:patterns-kde-kde
+   - yast2-x11 # reason: dvd:patterns-media-rest_cd_core
    - yast2-xml # reason: dvd:patterns-kde-kde
    - yast2-ycp-ui-bindings # reason: dvd:patterns-gnome-gnome_yast
    - yelp # reason: dvd:patterns-media-rest_dvd
