@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-build-cmake
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,33 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-py-build-cmake
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Modern, PEP 517 compliant build backend for creating Python packages with
 License:        MIT
 URL:            https://github.com/tttapa/py-build-cmake
 Source:         https://github.com/tttapa/py-build-cmake/archive/refs/tags/%{version}.tar.gz#/py-build-cmake-%{version}-gh.tar.gz
 BuildRequires:  %{python_module click >= 8.1.3}
-BuildRequires:  %{python_module distlib >= 0.3.5}
+BuildRequires:  %{python_module distlib >= 0.4.0}
 BuildRequires:  %{python_module flit-core >= 3.7}
-BuildRequires:  %{python_module lark}
+BuildRequires:  %{python_module lark >= 1.1.9}
+BuildRequires:  %{python_module packaging >= 23.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyproject-metadata}
+BuildRequires:  %{python_module pyproject-metadata >= 0.9.1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tomli if %python-base < 3.11}
+BuildRequires:  %{python_module tomli >= 1.2.3 if %python-base < 3.11}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       cmake
 Requires:       python-click >= 8.1.3
-Requires:       python-distlib >= 0.3.5
+Requires:       python-distlib >= 0.4.0
 Requires:       python-packaging >= 23.2
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.2.3
 %endif
-Requires:       python-lark
-Requires:       python-pyproject-metadata
+Requires:       python-lark >= 1.1.9
+Requires:       python-pyproject-metadata >= 0.9.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

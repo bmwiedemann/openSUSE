@@ -68,4 +68,15 @@
   * Update core dependencies (distlib, pyproject-metadata)</comment>
     <requestid>1308107</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e5f854f644a623c04b7a8522766dfe20</srcmd5>
+    <version>0.5.1</version>
+    <time>1793005345</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.1:
+  * Support free-threaded Python in latest CMake
+  * Add Python 3.15 support
+  * Drop Python 3.7 support</comment>
+    <requestid>1392526</requestid>
+  </revision>
 </revisionlist>
