@@ -17,11 +17,10 @@
 
 
 Name:           gtkwave
-Version:        3.3.126
+Version:        3.3.128
 Release:        0
 Summary:        Waveform viewer for Ditital Signals
 License:        GPL-2.0-or-later
-Group:          Productivity/Scientific/Electronics
 URL:            https://gtkwave.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/%{name}/%{name}-gtk3-%{version}.tar.gz
 BuildRequires:  fdupes
@@ -44,7 +43,6 @@ tools.
 
 %package        doc
 Summary:        Documentation for GTKWave
-Group:          Documentation/Other
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -57,7 +55,6 @@ This package contains documentation for GTKWave
 
 %package        examples
 Summary:        Examples for GTKWave
-Group:          Documentation/Other
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 

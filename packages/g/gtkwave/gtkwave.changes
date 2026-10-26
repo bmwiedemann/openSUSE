@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 25 06:52:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.3.128
+  * Hurd compile fix.
+  * Update bundled lz4 to 1.10.0.
+- Changes in 3.3.127
+  * Fix for fixed point shift that does not disable it on the specify
+    value change menu option.
+  * Changed ps2pdf to pstopdf on Mac as ps2pdf was removed by Sonoma.
+  * Warnings fix in vcd2fst for missing string.h include.
+  * Added FST_ST_SV_ARRAY (FST) and "sv_array" (VCD) for arrays.
+  * Wrote replacement for gdk_pixbuf_new_from_xpm_data.
+  * Update FSDB to handle FST_ST_SV_ARRAY, FSDB_ST_SV_INTERFACEPORT_REF
+    and FSDB_VT_STRING.
+  * Added "SV_ST_ARRAY" to exclude file parsing on init.
+  * Fix use after free of GLOBALS->entrybox_text in
+    regexp_highlight_generic().
+
+-------------------------------------------------------------------
 Thu Jan  1 22:12:57 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to 3.3.126
