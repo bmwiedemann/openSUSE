@@ -298,4 +298,21 @@
   * Replace generated `version.h` with macro (#735) @hugovk</comment>
     <requestid>1362182</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1ce209b28a38b35b46b674eb597e9668</srcmd5>
+    <version>6.0.0</version>
+    <time>1793005352</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.0:
+  * Assorted cleanup refactors (#756) @bwoodsend
+  * Reduce bytes-like support to only bytes and bytearray (#755)
+  * Allow default handler to handle bytes (#759) @bwoodsend
+  * Update build dependencies to avoid warning about missing
+    [tool.setuptools_scm] section (#746) @musicinmybrain
+  * Tighten UTF-8 validation for ujson.loads()-ing strings from
+    bytes (#750) @bwoodsend, @hugovk
+  * Fix memory leak when the `default()` handler returns non-
+    serialisable objects until its recursion limit is hit</comment>
+    <requestid>1392533</requestid>
+  </revision>
 </revisionlist>

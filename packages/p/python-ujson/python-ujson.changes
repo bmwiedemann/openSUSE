@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:07:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * Assorted cleanup refactors (#756) @bwoodsend
+  * Reduce bytes-like support to only bytes and bytearray (#755)
+  * Allow default handler to handle bytes (#759) @bwoodsend
+  * Update build dependencies to avoid warning about missing
+    [tool.setuptools_scm] section (#746) @musicinmybrain
+  * Tighten UTF-8 validation for ujson.loads()-ing strings from
+    bytes (#750) @bwoodsend, @hugovk
+  * Fix memory leak when the `default()` handler returns non-
+    serialisable objects until its recursion limit is hit
+
+-------------------------------------------------------------------
 Sun Jun 28 14:34:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.13.0:
