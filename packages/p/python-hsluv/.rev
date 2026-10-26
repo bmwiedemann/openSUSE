@@ -16,4 +16,13 @@
   * python 3.11 support</comment>
     <requestid>1131996</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9fc1cf0bdc4c2e5dee895fa1760706d4</srcmd5>
+    <version>5.0.5</version>
+    <time>1793005252</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.5:
+  * build modernization</comment>
+    <requestid>1392456</requestid>
+  </revision>
 </revisionlist>
