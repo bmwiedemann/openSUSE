@@ -18,17 +18,16 @@
 
 
 Name:           kured
-Version:        1.21.0
+Version:        1.23.0
 Release:        0
 Summary:        Kubernetes daemonset to perform safe automatic node reboots
 License:        Apache-2.0
-Group:          System/Management
 URL:            https://github.com/weaveworks/kured
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Patch0:         systemctl-path.patch
 Patch1:         kured-imagePullPolicy.patch
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.26
 
 %description
 Kured (KUbernetes REboot Daemon) is a Kubernetes daemonset that
@@ -45,7 +44,6 @@ indicated by the package management system of the underlying OS.
 
 %package k8s-yaml
 Summary:        Kubernetes yaml file to run kured container
-Group:          System/Management
 BuildArch:      noarch
 
 %description k8s-yaml

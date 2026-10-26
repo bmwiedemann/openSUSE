@@ -350,4 +350,12 @@
   * build(deps): bump aquasecurity/trivy-action from 0.33.0 to 0.33.1 (forwarded request 1328748 from jfkw)</comment>
     <requestid>1328749</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>563871eaf8d8ac29f354569887a4087b</srcmd5>
+    <version>1.23.0</version>
+    <time>1793005134</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.23.0 (forwarded request 1392285 from pluskalm)</comment>
+    <requestid>1392310</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 24 17:56:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.23.0 (via 1.22.0 and 1.22.1):
+  * Kubernetes client libraries 0.34.3 -> 0.36.2; supports
+    Kubernetes 1.35, 1.36 and 1.37
+  * Go toolchain directive 1.24 -> 1.26.4, including the
+    upstream update addressing CVE-2026-42504
+  * Container registry made configurable; redundant DH_ORG
+    variable removed
+- CVE-2025-47911, CVE-2025-58190: x/net/html parsing
+  complexity fixes via x/net 0.43.0 -> 0.55.0
+  (bsc#1251430, bsc#1251610)
+- CVE-2026-33814: x/net/http2 infinite loop on malformed
+  SETTINGS_MAX_FRAME_SIZE value (bsc#1265732)
+- CVE-2026-39821: x/net/idna ASCII-only Punycode label
+  validation bypass (bsc#1266574)
+- CVE-2025-22872 is not affected by this package (fixed in
+  x/net 0.38.0, older than the previously vendored 0.43.0)
+  (bsc#1241769)
+- CVE-2022-21698 is not affected by this package
+  (client_golang 1.23.2, fixed upstream in 2022) (bsc#1248706)
+- Refresh kured-imagePullPolicy.patch for the 1.22.1 yaml
+  context; drop Group: tags; require golang(API) >= 1.26
+
+-------------------------------------------------------------------
 Thu Jan 22 20:59:40 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.21.0:
