@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Oct 24 04:48:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.14:
+  * Layer normalization gains RMSNorm mode; sparse memory objects
+    and sparse matmul are now production status
+  * Graph API: RMSNorm and Dropout operations, SDPA/GQA fusion
+    improvements, host-side scalars, experimental grouped (MoE)
+    matmul
+  * New quantization support: fp8 primitives, MX dynamic
+    quantization, NVFP4 scheme and fp4 compressed weights
+  * x86: initial AVX10.2/AMX support (opt-in), relaxed fp32
+    accumulation mode, ZenDNN path for AMD Zen (opt-in)
+  * AArch64: faster SVE/ASIMD matmul, eltwise and softmax; re-enable
+    the Arm Compute Library backend (the 25.03.1 API break is fixed
+    on both sides and 3.14 needs ACL >= 53.1, matched here)
+    and the OpenCL GPU backend (kept off on ppc64le where the
+    bundled CL headers still break the build via <altivec.h>,
+    and on unvalidated riscv64);
+    drop the unpackaged bundled-KleidiAI install droppings
+  * AArch64 %check: skip test_internals_env_vars_* (new verbose-mode
+    coverage fails only there) and test_benchdnn_modeC_graph_ci_cpu
+    (known upstream MHA/dropout reference failures)
+  * Removed the experimental Graph Compiler backend; BLAS-like
+    sgemm API and f4_e3m0 type deprecated; legacy SSE4.1/AVX and
+    old-GPU kernels dropped in favor of generic fallbacks
+  * No soname change (libdnnl.so.3)
+  * Pass empty DNNL_ARCH_OPT_FLAGS for portable binaries (upstream
+    renamed the option and dropped the MKLDNN_ compat shim)
+  * Enable ONEDNN_BUILD_DOC (upstream flipped its default to OFF)
+  * Add doxygen-mainpage-path.patch: point USE_MDFILE_AS_MAINPAGE
+    at the source tree, fixing the doc build (the relative
+    mainpage.md no longer resolves in out-of-source builds, fatal
+    since upstream turned doxygen warnings into errors)
+  * Add doxygen-no-warn-as-error.patch: tolerate doxygen warnings
+    instead of failing the doc build on them (the doc tree predates
+    the newer doxygen, which reports hundreds of alias/ref warnings)
+  * Add ocl-sparse-test-skip-without-gpu.patch: skip the new sparse
+    memory OpenCL tests when no GPU is present (they failed instead
+    of skipping like every sibling test)
+  * CVE-2022-26076 (boo#1208411) was fixed upstream in 2022.1,
+    before the previously packaged 3.7.3, and this Linux build
+    loads system libraries only: not affected
+
+-------------------------------------------------------------------
 Mon Jul 20 11:05:39 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Enable build for riscv64

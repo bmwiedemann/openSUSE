@@ -1,0 +1,44 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: ocl: skip sparse memory tests when no GPU is present
+
+The new sparse memory tests construct a GPU engine unconditionally, so
+they fail with "could not create an engine" on builders without a GPU
+instead of skipping like every sibling test does. Add the same SKIP_IF
+guard the other tests in these files already use.
+
+--- a/tests/gtests/ocl/api/test_memory_usm.cpp
++++ b/tests/gtests/ocl/api/test_memory_usm.cpp
+@@ -245,6 +245,7 @@
+ }
+
+ HANDLE_EXCEPTIONS_FOR_TEST(ocl_memory_usm_test_t, TestSparseMemoryCreation) {
++    SKIP_IF(engine::get_count(engine::kind::gpu) == 0, "Engine not found.");
+     engine eng(engine::kind::gpu, 0);
+     const int nnz = 12;
+     memory::desc md;
+@@ -284,6 +285,7 @@
+ }
+
+ HANDLE_EXCEPTIONS_FOR_TEST(ocl_memory_usm_test_t, TestSparseMemoryMapUnmap) {
++    SKIP_IF(engine::get_count(engine::kind::gpu) == 0, "Engine not found.");
+     engine eng(engine::kind::gpu, 0);
+
+     const int nnz = 2;
+--- a/tests/gtests/ocl/api/test_memory_buffer.cpp
++++ b/tests/gtests/ocl/api/test_memory_buffer.cpp
+@@ -215,6 +215,7 @@
+
+ HANDLE_EXCEPTIONS_FOR_TEST(
+         ocl_memory_buffer_test_cpp_t, TestSparseMemoryCreation) {
++    SKIP_IF(engine::get_count(engine::kind::gpu) == 0, "Engine not found.");
+     engine eng(engine::kind::gpu, 0);
+     const int nnz = 12;
+     memory::desc md;
+@@ -275,6 +276,7 @@
+
+ HANDLE_EXCEPTIONS_FOR_TEST(
+         ocl_memory_buffer_test_cpp_t, TestSparseMemoryMapUnmap) {
++    SKIP_IF(engine::get_count(engine::kind::gpu) == 0, "Engine not found.");
+     engine eng(engine::kind::gpu, 0);
+
+     const int nnz = 2;

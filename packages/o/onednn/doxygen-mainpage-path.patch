@@ -1,0 +1,22 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: doc: resolve mainpage.md against the source directory
+
+doc/Doxyfile.in sets USE_MDFILE_AS_MAINPAGE to a bare relative path, so
+an out-of-source build fails: doxygen runs with the build directory as
+its working directory (and the generated Doxyfile lives there too),
+where mainpage.md does not exist. This used to be a mere warning, but
+upstream turned doxygen warnings into errors (commit 32165009), so the
+doc build now aborts with "Specified markdown mainpage 'mainpage.md'
+does not exist". Point it at the real file.
+
+--- a/doc/Doxyfile.in
++++ b/doc/Doxyfile.in
+@@ -930,7 +930,7 @@
+ # (index.html). This can be useful if you have a project on for instance GitHub
+ # and want to reuse the introduction page also for the doxygen output.
+
+-USE_MDFILE_AS_MAINPAGE = mainpage.md
++USE_MDFILE_AS_MAINPAGE = @CMAKE_CURRENT_SOURCE_DIR@/doc/mainpage.md
+
+ #---------------------------------------------------------------------------
+ # Configuration options related to source browsing

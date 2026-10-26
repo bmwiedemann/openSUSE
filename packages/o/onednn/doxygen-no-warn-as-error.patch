@@ -1,0 +1,22 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: doc: do not treat doxygen warnings as errors
+
+Upstream turned doxygen warnings into errors (commit 32165009), but the
+doc tree was written against an older doxygen: current releases report
+hundreds of warnings (unknown commands from alias-in-formula usage such
+as \src inside \f$... \f$, unexpanded aliases, unresolved @ref targets,
+mismatched \return documentation). Failing the whole package build on
+doc cosmetics is wrong, so build the documentation with warnings
+tolerated, as before.
+
+--- a/doc/Doxyfile.in
++++ b/doc/Doxyfile.in
+@@ -751,7 +751,7 @@
+ # a warning is encountered.
+ # The default value is: NO.
+
+-WARN_AS_ERROR          = YES
++WARN_AS_ERROR          = NO
+
+ # This WARN_NO_PARAMDOC option can be enabled to get warnings for functions that
+ # are documented, but have no documentation for their parameters or return
