@@ -779,4 +779,41 @@
   during build. Needed after changes to glib2.</comment>
     <requestid>1382688</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>a65e0f42949a683d0fabae557f7e9b6d</srcmd5>
+    <version>5.3.0</version>
+    <time>1793005240</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.3.0:
+  * Feature release. Tokens that fail validation used to be preserved in the
+    database file with a single toast to say so and nothing to do about it; a
+    banner now counts them and opens a review where each one can be repaired or
+    deleted. Several tokens can be selected at once to move to a group, export
+    or delete, a group can be renamed or removed across all its tokens, and an
+    import shows what it will add and what it will skip before anything is
+    written. Underneath, reading a backup, writing an export and changing the
+    database password or key-derivation parameters now run off the main thread,
+    a stored algorithm in lowercase no longer silently produces SHA1 codes, and
+    otpauth links are checked field by field instead of being imported with
+    guessed values. There is no on-disk format change; existing databases open
+    unchanged.:
+    + NEW: review and repair tokens the app had to set aside. A banner above
+      the token list counts them and opens a review dialog. Each token can be
+      repaired in a form that validates every field before saving, or deleted.
+      A repair that fails validation changes nothing and says why, a repaired
+      token is stored with its type and algorithm in their canonical upper-case
+      spelling, and deleting asks first, because there is no Undo and the
+      preserved token may be the only copy of its secret
+    + NEW: select several tokens. The Select button in the header bar shows a
+      checkbox on every row, and the checked tokens can be assigned to a group,
+      exported, or deleted; a bulk delete can be undone from its toast. Only
+      checked tokens that are still visible are acted on, so changing the
+      search text or the group filter unchecks the ones it hides. Tokens from
+      other databases that appear in search results are read-only
+    + NEW: Manage Groups, in the main menu, renames a group across all its
+      tokens or removes the group from them, as one transaction
+    + NEW: import preview. Choosing a file lists what it contains before
+      anything is written. Exact duplicates are unchecked, tokens that share an</comment>
+    <requestid>1392417</requestid>
+  </revision>
 </revisionlist>

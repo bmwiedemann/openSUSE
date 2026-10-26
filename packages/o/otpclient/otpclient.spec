@@ -18,15 +18,13 @@
 
 %define uclname OTPClient
 Name:           otpclient
-Version:        5.2.2
+Version:        5.3.0
 Release:        0
 Summary:        Simple GTK+ client for managing TOTP and HOTP
 License:        GPL-3.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/paolostivanin/%{name}
-Source0:        https://github.com/paolostivanin/%{name}/archive/v%{version}.tar.gz
-Source1:        https://github.com/paolostivanin/%{uclname}/releases/download/v%{version}/v%{version}.tar.gz.asc
-Source2:        otpclient.keyring
+Source0:        %{uclname}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
