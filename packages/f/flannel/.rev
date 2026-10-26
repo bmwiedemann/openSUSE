@@ -281,4 +281,12 @@ includes - Bump the etcd group with 4 updates (#2455), includes fix for CVE-2026
 * bump golang.org/x/net to 0.55.0, which includes fix for CVE-2026-33814 (bsc#1265780) and CVE-2026-39821 (bsc#1266620)</comment>
     <requestid>1364706</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d8d7e7fab4ac826cd5d6d96d9287c470</srcmd5>
+    <version>0.28.10</version>
+    <time>1793005494</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1392646</requestid>
+  </revision>
 </revisionlist>

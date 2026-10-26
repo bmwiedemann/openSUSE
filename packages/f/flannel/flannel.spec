@@ -16,27 +16,23 @@
 #
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
 # Use Tumbleweed Kubic containers
 %define flannel_container_path registry.opensuse.org/kubic/flannel
-
+%if ! %{defined _fillupdir}
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
 Name:           flannel
-Version:        0.28.7
+Version:        0.28.10
 Release:        0
 Summary:        An etcd backed network fabric for containers
 License:        Apache-2.0
-Group:          System/Management
-Url:            https://github.com/flannel-io/flannel
+URL:            https://github.com/flannel-io/flannel
 Source0:        flannel-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  golang(API) >= 1.26
+BuildRequires:  golang-packaging
 Requires:       iproute2
 Requires:       iptables
-BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.25
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390
 %{go_nostrip}
 %{go_provides}
@@ -53,7 +49,6 @@ This package contains the binary to be included into a container image
 
 %package k8s-yaml
 Summary:        Kubernetes yaml file to run flannel container
-Group:          System/Management
 BuildArch:      noarch
 
 %description k8s-yaml
@@ -85,10 +80,9 @@ install -D -m 0755 dist/flanneld %{buildroot}%{_sbindir}/flanneld
 mkdir -p %{buildroot}%{_datadir}/k8s-yaml/flannel
 install -m 0644 Documentation/kube-flannel.yml %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
 sed -i -e 's|image: docker.io/flannel/flannel:.*|image: %{flannel_container_path}:%{version}|g' %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
-sed -i -e 's|/opt/bin/flanneld|/usr/sbin/flanneld|g' %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
+sed -i -e 's|/opt/bin/flanneld|%{_sbindir}/flanneld|g' %{buildroot}%{_datadir}/k8s-yaml/flannel/kube-flannel.yaml
 
 %files
-%defattr(-,root,root)
 %doc README.md DCO
 %license LICENSE
 %{_sbindir}/flanneld

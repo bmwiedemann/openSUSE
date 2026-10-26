@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 24 19:09:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.28.10:
+  * etcd: recover single-subnet watch from compaction and unify the
+    two subnet watch loops
+  * flanneld: add readiness (/readyz) and liveness (/healthz) probes
+  * vxlan: recover from closed netlink subscription
+  * Default CNI config cniVersion is now 1.0.0
+  * Build with Go 1.26; bump k8s to v0.34.10, grpc, etcd and other
+    Go modules
+  * is not affected by CVE-2026-46600: x/net dnsmessage is not
+    compiled into flanneld, and vendored x/net v0.58.0 postdates
+    the v0.56.0 fix
+  * CVE-2026-56852: x/text norm.Iter infinite loop on invalid UTF-8
+    input, fixed via vendored x/text v0.41.0
+  * is not affected by CVE-2026-32241 (boo#1261044): Extension
+    backend command injection, fixed in 0.28.2
+  * is not affected by CVE-2024-51744 (boo#1232988):
+    golang-jwt/jwt/v4 is not vendored; only jwt/v5 is shipped
+  * Spec cleanup: drop obsolete Group, BuildRoot and defattr tags,
+    canonicalize URL and sbin macro use
+
+-------------------------------------------------------------------
 Thu Jul  9 05:30:40 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 0.28.7:
