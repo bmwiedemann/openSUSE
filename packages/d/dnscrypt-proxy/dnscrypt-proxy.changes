@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 25 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to version 2.1.20
+  * Name lists now support "regex:" rules for matching domain names with
+    regular expressions
+  * Added "doh_check_cert_hashes_on_connect" to optionally check
+    DoH certificate hashes from DNS stamps on every new connection,
+    rather than only during probes.
+  * Network change detection now ignores non-global addresses
+  * Network probes now support multiple comma-separated addresses
+
+-  Update to version 2.1.19
+  * Resumed PQDNSCrypt queries now use regular UDP padding, protecting their
+    size and response budget. Oversized tickets are rejected, and oversized
+    queries fall back to TCP
+  * Forwarded queries to local or DHCP resolvers now use UDP by default.
+    Bootstrap resolvers still use TCP when "force_tcp" is enabled
+  * Suffix rules now match only at DNS label boundaries. IP allow/block rules
+    now correctly handle IPv4-mapped IPv6 addresses
+
+- boo#1287579: vendored golang.org/x/net v0.61.0
+
+- boo#1285488: vendored golang.org/x/net v0.61.0
+
+-------------------------------------------------------------------
 Tue Aug 11 12:00:00 UTC 2026 - cunix@mail.de
 
 - Update to version 2.1.18
