@@ -159,4 +159,18 @@
   * Support Python 3.15.</comment>
     <requestid>1362043</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d861444a4e800b0942bc1c531af75328</srcmd5>
+    <version>2026.10.15</version>
+    <time>1793005513</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.10.15:
+  * Improve reading ISS IFI files.
+  * Use struct.unpack_from where possible.
+  * Fix reading big-endian CCP4 map headers.
+  * Fix convert CLI passing unsupported compress argument to
+    TiffWriter.
+  * Warn about trailing bytes in ISS IFI files.</comment>
+    <requestid>1392652</requestid>
+  </revision>
 </revisionlist>
