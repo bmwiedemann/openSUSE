@@ -21,7 +21,7 @@
 %bcond_without gcc15
 %endif
 Name:           zathura
-Version:        2026.10.4
+Version:        2026.10.23
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib

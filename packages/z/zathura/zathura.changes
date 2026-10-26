@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:32:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.10.23:
+  * Support per-page rotation, applied to selection and highlights
+  * Fix shortcut handling: mode-aware key buffer, 0 continues
+    a count as in vim, error on unsupported shortcuts
+  * Restore adjustment mode after inputbar actions
+  * Fix vertical and horizontal smooth scrolling
+
+-------------------------------------------------------------------
 Mon Oct  5 06:48:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2026.10.4:

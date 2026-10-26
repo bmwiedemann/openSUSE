@@ -256,4 +256,12 @@
 - Zlib unchanged; %check 12 Ok / 0 Fail; Good signature</comment>
     <requestid>1382547</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a199f39b0da11fd3fc060980a4488218</srcmd5>
+    <version>2026.10.23</version>
+    <time>1793005377</time>
+    <user>dimstar_suse</user>
+    <comment>Update zathura to 2026.10.23.</comment>
+    <requestid>1392545</requestid>
+  </revision>
 </revisionlist>
