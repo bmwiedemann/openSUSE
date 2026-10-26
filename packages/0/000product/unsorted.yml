@@ -13175,7 +13175,7 @@ unsorted:
   - libdjinterop-devel 
   - libdjinterop0 
   - libdjvulibre-devel 
-  - libdlib20_0_0 
+  - libdlib20_0_1 
   - libdlm 
   - libdlm-devel 
   - libdlm3 
@@ -13253,7 +13253,7 @@ unsorted:
   - libdwarf-doc 
   - libdwarf-tools 
   - libdwarf2 
-  - libdwarfs0_15_7 
+  - libdwarfs0_15_8 
   - libdwarves1 
   - libdxflib-3_26_4-1 
   - libe-book-devel 
@@ -14514,7 +14514,7 @@ unsorted:
   - libkdcraw-devel 
   - libkdcraw-qt5 
   - libkdcraw-qt5-devel 
-  - libkddockwidgets-qt6-3 
+  - libkddockwidgets-qt6-4 
   - libkdegames-devel 
   - libkdepim-devel 
   - libkdsoap-server-qt6-2 
@@ -24275,7 +24275,6 @@ unsorted:
   - python-python-datamatrix-doc 
   - python-rcssmin-docs 
   - python-rdflib-doc 
-  - python-renderspec-doc 
   - python-rpm-generators 
   - python-rpm-macros 
   - python-rpm-packaging 
@@ -24511,7 +24510,6 @@ unsorted:
   - python3-pytest-cookies 
   - python3-rados 
   - python3-rbd 
-  - python3-renderspec 
   - python3-reno 
   - python3-rgw 
   - python3-rpmconf 
@@ -25812,6 +25810,7 @@ unsorted:
   - python313-demosh 
   - python313-dennis 
   - python313-dep-logic 
+  - python313-dependency-groups 
   - python313-deprecation 
   - python313-deprecation-alias 
   - python313-depyf 
@@ -27480,7 +27479,6 @@ unsorted:
   - python313-pylineclip 
   - python313-pylink-square 
   - python313-pylint 
-  - python313-pylint-ignore 
   - python313-pylint-venv 
   - python313-pylons-sphinx-themes 
   - python313-pylru 
@@ -29890,6 +29888,7 @@ unsorted:
   - python314-demosh 
   - python314-dennis 
   - python314-dep-logic 
+  - python314-dependency-groups 
   - python314-deprecation 
   - python314-deprecation-alias 
   - python314-depyf 
@@ -31598,7 +31597,6 @@ unsorted:
   - python314-pylineclip 
   - python314-pylink-square 
   - python314-pylint 
-  - python314-pylint-ignore 
   - python314-pylint-venv 
   - python314-pylons-sphinx-themes 
   - python314-pylru 
@@ -34677,6 +34675,7 @@ unsorted:
   - sdl_bomber 
   - sdlpop 
   - sdparm 
+  - sdrangel 
   - seadrive-fuse 
   - seadrive-gui 
   - seafile 
@@ -48022,6 +48021,7 @@ unsorted:
   - yast2-adcommon-python 
   - yast2-adsi 
   - yast2-aduc 
+  - yast2-apparmor 
   - yast2-audit-laf 
   - yast2-boot-server 
   - yast2-buildtools 
