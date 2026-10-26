@@ -1,7 +1,7 @@
 #
 # spec file for package libconfig
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _soversion 15
 Name:           libconfig
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        A library for manipulating structured configuration files
 License:        LGPL-2.1-or-later
@@ -43,7 +43,7 @@ string parsing in application code.
 The library includes bindings for both the C and C++ languages.
 
 %package -n libconfig%{_soversion}
-Summary:        C API of libconfig
+Summary:        C library for manipulating structured configuration files
 Group:          System/Libraries
 
 %description -n libconfig%{_soversion}
@@ -55,7 +55,7 @@ string parsing in application code.
 This package contains the shared libraries for libconfig.
 
 %package -n libconfig++%{_soversion}
-Summary:        C++ API of libconfig
+Summary:        C++ library for manipulating structured configuration files
 Group:          System/Libraries
 
 %description -n libconfig++%{_soversion}
@@ -102,7 +102,7 @@ export CFLAGS="%{optflags} -std=gnu11"
 
 %install
 %make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+rm -f %{buildroot}/%{_libdir}/*.la
 %fdupes -s %{buildroot}%{_docdir}
 
 %check

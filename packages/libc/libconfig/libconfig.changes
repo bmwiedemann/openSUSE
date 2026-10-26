@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 24 09:56:15 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.3
+  * Preserve 32-bit width when writing negative binary integers
+  * Preserve explicit 64-bit suffixes when parsing nondecimal
+    integers
+  * Preserve double precision when auto-converting integer
+    assignments
+  * Improve handling of file read errors in the lexer
+
+-------------------------------------------------------------------
 Sun Dec 14 18:59:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.2
