@@ -16,20 +16,23 @@
 #
 
 
-%define shlib libdlib%( echo %{version} | tr '.' '_' )_0
+%define shlib libdlib%( echo %{version} | tr '.' '_' )
 %define python_subpackage_only 1
 Name:           dlib
-Version:        20.0
+Version:        20.0.1
 Release:        0
 Summary:        Toolkit for making machine learning and data analysis applications
 License:        BSL-1.0
 URL:            https://github.com/davisking/dlib
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support Python 3.14 refcounting changes
-Patch0:         support-python-3.14.patch
+# PATCH-FIX-UPSTREAM setup.py parses --no/--set only in build_extension(),
+# so every PEP 517 hook fails when options arrive via --global-option;
+# parse them at import time again (as in 20.0)
+Patch0:         restore-module-level-arg-scan.patch
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -111,15 +114,20 @@ pushd dlib
 %cmake -DUSE_AVX_INSTRUCTIONS:BOOL=OFF -DUSE_SSE4_INSTRUCTIONS:BOOL=OFF
 %cmake_build
 popd
-# cannot use pyproject_wheel macro because we need to pass cmake options to setup.py using --set, so build it by hand per Python version
+# cannot use pyproject_wheel macro because we need to pass cmake options to setup.py using --no, so build it by hand per Python version
 # Note that setting these to `--yes` does not enable them unconditionally, but
 # rather makes them host machine dependent (boo#1223168)
-%python_exec -m build -wn -o build -C--global-option="--no USE_AVX_INSTRUCTIONS --no USE_SSE4_INSTRUCTIONS"
+# Each --global-option value arrives as a single argv token (setuptools 78),
+# so --no and its option need separate -C settings.
+%python_exec -m build -wnx -o build -C--global-option=--no -C--global-option=USE_AVX_INSTRUCTIONS -C--global-option=--no -C--global-option=USE_SSE4_INSTRUCTIONS
 
 %install
 pushd dlib
 %cmake_install
 popd
+# dlib's cmake emits redundant -L/usr/lib64 entries into dlib-1.pc that
+# trip the pkgconfig-invalid-libs-dir check; the system path needs no -L.
+sed -i -e 's| -L/usr/lib64||g' %{buildroot}%{_libdir}/pkgconfig/dlib-1.pc
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %fdupes %{buildroot}%{_includedir}/

@@ -71,4 +71,43 @@
     <comment></comment>
     <requestid>1362019</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c1623a954c9573b617ed4d477126962b</srcmd5>
+    <version>20.0.1</version>
+    <time>1793005175</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.0.1:
+  * Fix YOLO loss gradient for bounding box x/y coordinates.
+  * Fix crash when reading very large images from a 32-bit
+    width-step overflow.
+  * Support the FFmpeg 7.1 API.
+  * full_object_detection: accept parts as vector of dpoint.
+  * Python: account for changed refcounting in Python 3.14,
+    support functools.partial and other callables, accept CMake
+    args as environment variables for setup.
+  * Improve batch normalization numerical stability on CPUs and
+    cuDNN convolution precision on Ampere and newer GPUs.
+  * Add Adaptive Computation Time (ACT) layer and ARC-AGI dataset
+    loader.
+  * Build: use FindCUDAToolkit instead of deprecated FindCUDA,
+    fix C++23 and gcc 16 build issues.
+  * CVE-2026-24799 (boo#1257318): the bundled zlib copy is not
+    affected, the inflate() extra-field guard from
+    gh#davisking/dlib#3063 shipped since 19.24.9.
+- Drop support-python-3.14.patch (fixed upstream).
+- Fix the Python wheel build with the new toolchain:
+  * pass the setup.py --no options as separate --global-option
+    settings (one value per setting),
+  * parse them at import time again via
+    restore-module-level-arg-scan.patch (as in 20.0),
+  * skip python-build's dependency check (-x) and require
+    python-packaging, since the build uses the system cmake
+    rather than the pip cmake module.
+- Rename the shared-library subpackage to libdlib20_0_1 to match
+  the libdlib.so.20.0.1 SONAME (shlib policy).
+- Drop redundant -L/usr/lib64 entries from dlib-1.pc
+  (pkgconfig-invalid-libs-dir).
+</comment>
+    <requestid>1392337</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,27 @@
+Index: dlib-20.0.1/setup.py
+===================================================================
+--- dlib-20.0.1.orig/setup.py
++++ dlib-20.0.1/setup.py
+@@ -90,6 +90,14 @@ def get_extra_cmake_options():
+     return _cmake_extra_options, _clean_build_folder
+ 
+ 
++# Parse --no/--set/--compiler-flags/-G here, at import time, so the options
++# are removed from sys.argv before distutils parses it.  Calling it only
++# from CMakeBuild.build_extension() breaks every PEP 517 hook (even
++# get_requires_for_build_wheel) when options are passed via --global-option
++# config settings, as current setuptools passes them to every hook.
++cmake_extra_options, clean_build_folder = get_extra_cmake_options()
++
++
+ class CMakeExtension(Extension):
+     def __init__(self, name, sourcedir=''):
+         super().__init__(name, sources=[])
+@@ -172,7 +180,6 @@ class CMakeBuild(build_ext):
+     def build_extension(self, ext):
+         # Build CMake args based on default settings, environment variables and CLI parameters
+         extdir = os.path.abspath(os.path.dirname(self.get_ext_fullpath(ext.name)))
+-        cmake_extra_options, clean_build_folder = get_extra_cmake_options()
+         cmake_args_dict = {
+             'CMAKE_LIBRARY_OUTPUT_DIRECTORY': extdir,
+             'DLIB_USE_FFMPEG': 'OFF',
