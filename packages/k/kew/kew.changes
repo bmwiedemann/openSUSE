@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 24 16:47:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix the locale directory used during compilation by setting
+  PREFIX in the %build section, so installed translations are
+  actually found (thanks Victorhck!).
+
+-------------------------------------------------------------------
 Sat Oct 17 16:47:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.4.1:

@@ -55,6 +55,7 @@ sed -i '1s|gcc|clang|' Makefile
 
 %build
 %make_build \
+   PREFIX=%{_prefix} \
    USE_DBUS=1 \
 %if %{with aac}
    USE_FAAD=1 \
