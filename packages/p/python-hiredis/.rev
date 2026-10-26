@@ -214,4 +214,20 @@
   * RESP2 array replies were never affected.</comment>
     <requestid>1382580</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>35afa17319816cfe12a2fe21ad78f60f</srcmd5>
+    <version>3.5.0</version>
+    <time>1793005244</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  * Drop Python 3.8 support
+  * Bump hiredis to v1.5.0
+    The C parser picks up upstream fixes, including protection
+    against overflow of map elements (redis/hiredis#1323). The
+    nesting limit is now configurable upstream, but it still
+    defaults to 1024, so parsing behavior has not changed.
+  * Fix benchmarking for hiredis-py
+  * Remove outdated spell check workflow</comment>
+    <requestid>1392438</requestid>
+  </revision>
 </revisionlist>

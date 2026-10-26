@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 25 14:27:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * Drop Python 3.8 support
+  * Bump hiredis to v1.5.0
+    The C parser picks up upstream fixes, including protection
+    against overflow of map elements (redis/hiredis#1323). The
+    nesting limit is now configurable upstream, but it still
+    defaults to 1024, so parsing behavior has not changed.
+  * Fix benchmarking for hiredis-py
+  * Remove outdated spell check workflow
+
+-------------------------------------------------------------------
 Mon Oct  5 16:26:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.2:
