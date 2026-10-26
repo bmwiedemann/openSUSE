@@ -1,8 +1,8 @@
-Index: peazip-11.3.0.src/dev/peach.pas
+Index: peazip-11.4.0.src/dev/peach.pas
 ===================================================================
---- peazip-11.3.0.src.orig/dev/peach.pas
-+++ peazip-11.3.0.src/dev/peach.pas
-@@ -63813,7 +63813,7 @@ end;
+--- peazip-11.4.0.src.orig/dev/peach.pas
++++ peazip-11.4.0.src/dev/peach.pas
+@@ -63783,7 +63783,7 @@ end;
  
  procedure TFormPeach.altF1Execute(Sender: TObject);
  begin
@@ -11,7 +11,7 @@ Index: peazip-11.3.0.src/dev/peach.pas
  end;
  
  procedure TFormPeach.cbcratioClick(Sender: TObject);
-@@ -65032,7 +65032,7 @@ end;
+@@ -65002,7 +65002,7 @@ end;
  
  procedure TFormPeach.baboutlocalhelpClick(Sender: TObject);
  begin
