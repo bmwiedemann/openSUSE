@@ -18,7 +18,7 @@
 
 %define cpan_name Starman
 Name:           perl-Starman
-Version:        0.4018
+Version:        0.4019
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        High-performance preforking PSGI/Plack web server
@@ -33,6 +33,7 @@ BuildRequires:  perl(Data::Dump)
 BuildRequires:  perl(HTTP::Date)
 BuildRequires:  perl(HTTP::Parser::XS)
 BuildRequires:  perl(HTTP::Status)
+BuildRequires:  perl(HTTP::Tiny) >= 0.064
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.34
