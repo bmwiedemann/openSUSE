@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 24 13:59:15 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.7.0:
+  * feat: Support CSV when listing issues
+  * feat: Support custom delimiter
+  * feat: Add releases command
+  * feat: Add option to list issues in raw JSON
+  * feat: Allow skipping notification on edit
+  * feat: Support num comments in issue list cmd
+  * feat: Add environment variable to specify config file path
+  * fix: csv format priority, two-character usernames, deprecated endpoint
+- Require Go 1.24 to build, as go.mod declares.
+
+-------------------------------------------------------------------
 Fri Apr 25 18:43:03 UTC 2025 - Holden Fried <holden@opensuse.org>
 
 - Update to version 1.6.0:

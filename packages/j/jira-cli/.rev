@@ -69,4 +69,12 @@
   * Generate and include upstream-provided manpages (forwarded request 1272811 from jfkw)</comment>
     <requestid>1272812</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e6d186ef17a03e11510f61ee9ebea967</srcmd5>
+    <version>1.7.0</version>
+    <time>1793005138</time>
+    <user>dimstar_suse</user>
+    <comment>Update jira-cli to 1.7.0: CSV and raw JSON issue output, releases command, Go 1.24 floor (forwarded request 1392247 from amanzini)</comment>
+    <requestid>1392309</requestid>
+  </revision>
 </revisionlist>

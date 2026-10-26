@@ -20,17 +20,16 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 %define shortname jira
 Name:           jira-cli
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        CLI tool for Atlassian JIRA inspired by the Github CLI tool
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://github.com/ankitpokhrel/jira-cli
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  golang(API) >= 1.19
 # For completions packages
 BuildRequires:  fish
+BuildRequires:  golang(API) >= 1.24
 BuildRequires:  zsh
 # For SLE_15_SP4
 BuildRequires:  zstd
@@ -106,7 +105,7 @@ install -Dm644 %{shortname}.fish %{buildroot}%{_datadir}/fish/vendor_completions
 %doc README.md
 %license LICENSE
 %{_bindir}/%{shortname}
-%{_mandir}/man7/%{shortname}*.7.gz
+%{_mandir}/man7/%{shortname}*.7%{?ext_man}
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{shortname}
