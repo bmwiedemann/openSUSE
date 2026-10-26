@@ -1,0 +1,9 @@
+# The GPU runtime sources in %{_prefix}/libasr/runtime are compiled by the
+# lfortran driver when linking GPU programs; they are runtime data
+# resolved relative to %{_bindir}, not development headers, so they
+# ship in the main package.
+addFilter("devel-file-in-non-devel-package /usr/libasr/runtime/")
+# Upstream-mandated layout: the driver locates these files relative to
+# its own binary (%{_bindir}/../libasr/runtime), they cannot move to
+# a FHS-approved directory without patching the driver lookup.
+addFilter("filelist-forbidden-fhs23 /usr/libasr")

@@ -25,7 +25,7 @@ to allow exploratory work (much like Python, MATLAB or Julia) as well as \
 compile to binaries with the goal to run user's code on modern \
 architectures such as multi-core CPUs and GPUs.
 Name:           lfortran
-Version:        0.65.0
+Version:        0.67.0
 Release:        0
 Summary:        A modern interactive Fortran compiler built on top of LLVM
 # Main code is BSD-3-Clause
@@ -34,6 +34,7 @@ Summary:        A modern interactive Fortran compiler built on top of LLVM
 License:        Apache-2.0 WITH LLVM-exception AND BSD-3-Clause
 URL:            https://lfortran.org/
 Source0:        https://github.com/lfortran/lfortran/releases/download/v%{version}/lfortran-%{version}.tar.gz
+Source1:        lfortran-rpmlintrc
 BuildRequires:  binutils-devel
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -43,8 +44,8 @@ BuildRequires:  libzstd-devel-static
 BuildRequires:  llvm22-devel
 BuildRequires:  nlohmann_json-devel
 BuildRequires:  pkgconfig
-# test-only: asr test scripts import toml
-BuildRequires:  python3-toml
+# test-only: asr test scripts import tomli
+BuildRequires:  python3-tomli
 BuildRequires:  re2c
 BuildRequires:  zlib-devel-static
 BuildRequires:  pkgconfig(RapidJSON)
@@ -141,6 +142,9 @@ export LFORTRAN_LINKER="gcc"
 %doc README.md
 %{_bindir}/lfortran
 %{_mandir}/man1/lfortran.1%{?ext_man}
+# GPU runtime sources the driver compiles when linking GPU programs
+%dir %{_prefix}/libasr
+%{_prefix}/libasr/runtime/
 
 %files -n liblfortran%{sover}
 %license LICENSE

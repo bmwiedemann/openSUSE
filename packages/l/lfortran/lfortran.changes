@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:12:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.67.0 (through 0.66.0):
+  * Fortran 2023 conditional expressions and conditional arguments
+  * Fortran 2028 templates: standard brace syntax for REQUIRE,
+    INSTANTIATE and DEFERRED declarations, template constraint
+    enforcement
+  * GPU offload: unified parallel-loop lowering across CPU and GPU,
+    Metal support for Formal kernels, non-offloadable DO CONCURRENT
+    is now a compile error
+  * OpenMP: THREADPRIVATE via LLVM thread-local storage,
+    default(shared/none) clauses, nested do/task/distribute fixes
+  * Implicit interfaces represented in ASR; per-call-site typing of
+    calls through implicit interfaces
+  * I/O: ADVANCE='no' on empty formatted READ, decimal edit mode,
+    real(10) formatted output, assumed-rank reads/writes
+  * Intrinsics: CSHIFT/EOSHIFT string length, RANDOM_SEED reseed,
+    RealCopySign, character I/O and pointer fixes
+  * Derived types: PDT fixes, structure-constructor and finalization
+    fixes, NULL()/c_null_ptr handling, SEQUENCE/BIND(C) support
+  * Diagnostics: invalid ishft/log args, non-variable ALLOCATE
+    target, I/O-list function names diagnosed instead of crashing
+  * LLVM 23 support; LLVM 7 build fixed; fixed-form and interactive
+    fixes; many compiler crash fixes
+- Replace test-only BuildRequires python3-toml with python3-tomli,
+  upstream's test helpers import tomli since 0.66.0
+- Package the GPU runtime sources upstream installs to
+  %{_prefix}/libasr/runtime since 0.67.0, the driver compiles them
+  when linking GPU programs
+  (runtime data consumed by the driver, hence in the main package;
+  its two rpmlint findings filtered via lfortran-rpmlintrc)
+
+-------------------------------------------------------------------
 Sat Sep 12 16:33:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.65.0, 23 releases ahead of 0.42.0:
