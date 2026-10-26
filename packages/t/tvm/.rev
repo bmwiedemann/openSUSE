@@ -301,4 +301,12 @@
     <comment></comment>
     <requestid>1359824</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1fb098c47fc570199f35b67802169074</srcmd5>
+    <version>0.27.0</version>
+    <time>1793005103</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.27.0</comment>
+    <requestid>1392262</requestid>
+  </revision>
 </revisionlist>

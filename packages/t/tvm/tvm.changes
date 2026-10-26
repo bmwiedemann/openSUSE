@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct 24 04:51:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.27.0 (covers 0.25.0 and 0.26.0):
+  * Relax, frontend and TIR improvements, including TIRx PTX dialect
+    overhaul, shared-KV attention with sliding windows and PEP 695
+    symbolic variables
+  * Python bindings import tvm_ffi directly (shim removed); needs
+    apache-tvm-ffi >= 0.1.14.post0, bump tvm-ffi source to v0.1.14-post1
+  * Route LLVM transcendentals through libm; Vulkan barrier fix
+- Drop sources and patches no longer needed upstream:
+  * dmlc-core.tar.gz (dmlc-core no longer used)
+  * tvm-pr19786.patch (merged upstream)
+  * lib-finder-python-cmake.patch (libinfo refactored around
+    TVM_LIBRARY_PATH)
+  * tvm-disable-vulkan-test-check.patch (device probing reworked,
+    tests gated by TVM_TEST_TARGETS)
+- Packaging: USE_MKLDNN renamed to USE_DNNL upstream; drop dead
+  ANTLR, OpenGL and ARM Compute Library options; require llvm-devel
+  >= 15 as upstream mandates
+- Disable oneDNN codegen (USE_DNNL=OFF): TVM targets the oneDNN 2.x
+  API, incompatible with Factory's oneDNN 3.x
+- Add Requires on python-apache-tvm-ffi, imported directly since
+  the 0.26.0 shim removal
+- Add tvm-llvm-isystem-usr-include.patch: filter /usr/include out
+  of LLVM_INCLUDE_DIRS (Factory LLVM headers live there; as
+  -isystem it breaks GCC's #include_next)
+
+-------------------------------------------------------------------
 Tue Jun 16 11:22:29 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix tests on aarch64:

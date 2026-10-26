@@ -16,45 +16,29 @@
 #
 
 
-%bcond_with system_dmlc
-%define dmlc_version 3031e4a
 %define libbacktrace_version 08f7c7e
-
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%ifarch aarch64 x86_64 ppc64le
-%bcond_without onednn
-%else
-%bcond_with onednn
-%endif
-# Disable pytest until python3-xgboost is available
-%bcond_with pytest
-%ifarch aarch64
-%bcond_without arm_compute_lib
-%else
-%bcond_with arm_compute_lib
-%endif
-%bcond_without cpptest
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
+# TVM's DNNL integration targets the oneDNN 2.x API and fails against
+# Factory's oneDNN 3.x (upstream untouched since 2022, no v3 port)
+%bcond_with onednn
+# Disable pytest until python3-xgboost is available
+%bcond_with pytest
+%bcond_without cpptest
 Name:           tvm
-Version:        0.24.0
+Version:        0.27.0
 Release:        0
 Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
 URL:            https://tvm.apache.org/
 Source:         https://github.com/apache/tvm/archive/refs/tags/v%{version}.tar.gz#/tvm-%{version}.tar.gz
-Source1:        https://github.com/apache/tvm-ffi/archive/refs/tags/v0.1.11.tar.gz#/tvm-ffi.tar.gz
-# License2: MIT
-Source2:        https://github.com/dmlc/dmlc-core/archive/%{dmlc_version}.tar.gz#/dmlc-core.tar.gz
-# License3: BSD-3-Clause
-Source3:        https://github.com/tlc-pack/libbacktrace/archive/%{libbacktrace_version}.tar.gz#/libbacktrace.tar.gz
-# PATCH-FIX-OPENSUSE lib-finder-python-cmake.patch -- custom cmake path
-Patch1:         lib-finder-python-cmake.patch
-# PATCH-FIX-OPENSUSE tvm-disable-vulkan-test-check.patch -- Cannot test in OBS despite enabled in library
-Patch2:         tvm-disable-vulkan-test-check.patch
-# PATCH-FIX-UPSTREAM - https://github.com/apache/tvm/pull/19786
-Patch3:         tvm-pr19786.patch
+Source1:        https://github.com/apache/tvm-ffi/archive/refs/tags/v0.1.14-post1.tar.gz#/tvm-ffi.tar.gz
+# License2: BSD-3-Clause
+Source2:        https://github.com/tlc-pack/libbacktrace/archive/%{libbacktrace_version}.tar.gz#/libbacktrace.tar.gz
+# PATCH-FIX-OPENSUSE tvm-llvm-isystem-usr-include.patch -- Factory LLVM ships headers directly in /usr/include; as -isystem it breaks GCC #include_next
+Patch0:         tvm-llvm-isystem-usr-include.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module cloudpickle}
@@ -65,52 +49,44 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-build-core}
 BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module synr}
 BuildRequires:  %{python_module tornado}
-%if %{with pytest}
-BuildRequires:  %{python_module typing_extensions}
-%endif
-%if %{with arm_compute_lib}
-BuildRequires:  ComputeLibrary-devel
-%endif
-BuildRequires:  antlr4-java
 BuildRequires:  cmake
 BuildRequires:  dlpack-devel >= 1.1
-%if %{with system_dmlc}
-BuildRequires:  dmlc-core-devel
-%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git
-%if %{with cpptest}
-BuildRequires:  gmock
-BuildRequires:  gtest
-%endif
-BuildRequires:  llvm-devel
+BuildRequires:  llvm-devel >= 15
 BuildRequires:  memory-constraints
 BuildRequires:  openblas-devel
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
-BuildRequires:  rang-devel
 BuildRequires:  spirv-headers
 BuildRequires:  spirv-tools
 BuildRequires:  spirv-tools-devel
 BuildRequires:  vulkan-devel
 BuildRequires:  pkgconfig(OpenCL)
-BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glfw3)
+Requires:       python-apache-tvm-ffi >= 0.1.14.post0
 Requires:       python-attrs
 Requires:       python-cloudpickle
 Requires:       python-decorator
 Requires:       python-numpy
 Requires:       python-psutil
 Requires:       python-synr
+# Tests are failing on 32-bit
+ExcludeArch:    %{arm} %{ix86}
+%if %{with pytest}
+BuildRequires:  %{python_module typing_extensions}
+%endif
+%if %{with cpptest}
+BuildRequires:  gmock
+BuildRequires:  gtest
+%endif
 %if %{with onednn}
 BuildRequires:  onednn-devel
 %endif
-# Tests are failing on 32-bit
-ExcludeArch:    %{arm} %{ix86}
 %python_subpackages
 
 %description
@@ -155,10 +131,7 @@ tar xf %{SOURCE1} && rmdir tvm-ffi && mv tvm-ffi-* tvm-ffi
 pushd tvm-ffi
 rm -rf 3rdparty && ln -s ../../3rdparty
 popd
-%if %{without system_dmlc}
-tar xf %{SOURCE2} && rmdir dmlc-core && mv dmlc-core-* dmlc-core
-%endif
-tar xf %{SOURCE3} && mv libbacktrace-* libbacktrace
+tar xf %{SOURCE2} && mv libbacktrace-* libbacktrace
 popd
 
 # Workaround - https://discuss.tvm.ai/t/build-fails-on-tvm-0-6-0-0-6-1-with-gcc10-and-gcc7/7462/5?u=ggardet
@@ -180,27 +153,14 @@ popd
 # USE_NNPACK
 # USE_ROCBLAS USE_ROCM
 %cmake \
-%if %{with arm_compute_lib}
-  -DUSE_ARM_COMPUTE_LIB_GRAPH_RUNTIME=ON \
-  -DUSE_ARM_COMPUTE_LIB=ON \
-%endif
-%if %{with system_dmlc}
-  -DDMLC_PATH="%{_includedir}/dmlc" \
-%else
-  -DDMLC_PATH="$(pwd)/../3rdparty/dmlc-core/include" \
-%endif
-  -DDLPACK_PATH="%{_includedir}/dlpack" \
-  -DRANG_PATH="%{_includedir}/rang" \
-  -DUSE_GRAPH_RUNTIME=ON \
   -DUSE_LLVM=ON \
   -DUSE_BLAS="openblas" \
 %if %{with onednn}
-  -DUSE_MKLDNN=ON \
+  -DUSE_DNNL=ON \
 %else
-  -DUSE_MKLDNN=OFF \
+  -DUSE_DNNL=OFF \
 %endif
   -DUSE_OPENCL=ON \
-  -DUSE_OPENGL=ON \
   -DUSE_OPENMP=ON \
   -DUSE_RANDOM=ON \
   -DUSE_RPC=ON \
@@ -208,11 +168,12 @@ popd
   -DUSE_SORT=ON \
   -DUSE_THREADS=ON \
   -DUSE_VULKAN=ON \
-  -DUSE_ANTLR="/usr/share/java/antlr4/antlr4-runtime.jar" \
   -DINSTALL_DEV=ON
 %cmake_build
 cd ..
 export TVM_LIBRARY_PATH="$(pwd)/%{__builddir}"
+# version comes from the git tag via setuptools_scm; the tarball has no .git
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 # Fix rpm runtime dependency rpmlint error replace the shebang in all the scripts with %%{_bindir}/python3
 find . -name "*.py" -exec sed -i 's|#!%{_bindir}/env python|#!%{_bindir}/python3|' {} ";"
 %pyproject_wheel
@@ -227,9 +188,6 @@ export TVM_LIBRARY_PATH="$(pwd)/%{__builddir}"
 cp build_cmake/lib/libtvm_ffi.so %{buildroot}%{_libdir}
 # Remove src,include,3rdparty dirs
 %python_expand rm -rf %{buildroot}/%{$python_sitearch}/tvm/{src,include,3rdparty}/
-%if %{without system_dmlc}
-rm -rf %{buildroot}%{_includedir}/dmlc
-%endif
 # Regenerate tvmc which is not provided anymore
 # https://tvm.apache.org/docs/v0.8.0/tutorial/tvmc_command_line_driver.html#using-tvmc
 mkdir -p %{buildroot}%{_bindir}
@@ -323,6 +281,6 @@ donttest="$donttest or test_meta_schedule_local_runner_time_out or test_meta_sch
 
 %files %{python_files}
 %{python_sitearch}/tvm
-%{python_sitearch}/tvm-*.dist-info/
+%{python_sitearch}/apache_tvm-*.dist-info/
 
 %changelog

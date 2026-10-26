@@ -1,0 +1,29 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: [PATCH] cmake: drop /usr/include from LLVM_INCLUDE_DIRS
+
+LLVM distributions that install their headers directly into /usr/include
+(e.g. openSUSE Factory, -- Found LLVM_INCLUDE_DIRS=/usr/include) end up
+passing it to the compiler as -isystem via include_directories(SYSTEM ...)
+and TVM_LLVM_INCLUDE_FLAGS below. An explicitly listed -isystem directory
+takes the compiler default's place in the search order, which breaks GCC's
+#include_next lookup (c++/cstdlib -> stdlib.h: No such file or directory)
+for every C++ translation unit that includes a C++ standard header.
+
+/usr/include is on the compiler's default search path anyway, so filter it
+out; LLVM headers in /usr/include/llvm* keep resolving as before.
+
+--- a/cmake/modules/LLVM.cmake
++++ b/cmake/modules/LLVM.cmake
+@@ -32,6 +32,12 @@
+   if (${TVM_LLVM_VERSION} LESS 150)
+     message(FATAL_ERROR "LLVM version 15.0 or greater is required.")
+   endif()
++  # LLVM installations with headers directly in /usr/include list it in
++  # LLVM_INCLUDE_DIRS. Passing it via -isystem breaks GCC's #include_next
++  # (e.g. cstdlib -> stdlib.h not found), and it is searched by default
++  # anyway, so drop it here. LLVM headers under /usr/include/llvm* still
++  # resolve through the default search path.
++  list(REMOVE_ITEM LLVM_INCLUDE_DIRS "/usr/include")
+   include_directories(SYSTEM ${LLVM_INCLUDE_DIRS})
+   add_definitions(${LLVM_DEFINITIONS})
+   add_library(tvm_llvm_header INTERFACE)
