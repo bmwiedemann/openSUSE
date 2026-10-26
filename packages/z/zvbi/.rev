@@ -285,4 +285,13 @@ Use SPDX format and include the LGPL as well (forwarded request 131772 from babe
 - BuildRequire pkgconfig(x11) instead of xorg-x11-devel</comment>
     <requestid>1374969</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>010e4d60fcacfc6726dcb77fb9557e5a</srcmd5>
+    <version>0.2.46</version>
+    <time>1793005076</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.46:
+  * Apply security updates.</comment>
+    <requestid>1392152</requestid>
+  </revision>
 </revisionlist>
