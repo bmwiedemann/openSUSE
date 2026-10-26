@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:47:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.4:
+  * fix(langchain): clean up streaming run memo on error
+  * fix(media): don't hang flush() after a repeated shutdown()
+  * fix(scores): make flush() and shutdown() work under gevent
+- update to 5.0.3:
+  * perf(serializer): skip the isinstance chain for plain JSON
+    values
+  * feat(experiments): accept a caller-supplied experiment_id in
+    run_experiment
+  * fix(scores): send pending scores immediately on flush()
+- update to 5.0.2:
+  * test: expect flattened metadata keys for v5
+  * perf(scores): build create_score body without Fern's dict()
+  * perf(tracing): skip span attribute limit checks when the span
+    has room
+  * docs(masking): explain JSON-encoded metadata values in
+    mask_otel_spans
+- update to 4.18.0:
+  * docs(api): document metadata is set / is not set filter
+    operators
+  * fix(api): type Dataset JSON-schema response fields as objects
+  * refactor(api): share cursor pagination meta via
+    CursorMetaResponse
+  * docs(api): document fromStartTime as required on experiments
+    endpoints
+  * fix(api): type read-side metadata as optional objects
+- update to 4.17.0:
+  * feat(otel): add opt-in gzip compression for the default OTLP
+    exporter
+
+-------------------------------------------------------------------
 Mon Oct  5 16:40:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.16.0:
