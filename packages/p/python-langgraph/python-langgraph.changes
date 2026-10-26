@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 06:00:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.17:
+  * Apply an explicit recursion_limit equal to the default
+  * Keep the caller's namespace in RemoteGraph.stream
+    with subgraphs
+  * Drop precautionary third-party upper bounds
+
+-------------------------------------------------------------------
 Sat Oct 17 06:28:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.2.16:
