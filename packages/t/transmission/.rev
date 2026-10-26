@@ -1192,4 +1192,41 @@
   + Everything Else: Fixed a 4.1.2 build error in tests.</comment>
     <requestid>1362948</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>b22f23bcbc26210999e23543e3fb8ed2</srcmd5>
+    <version>4.1.4</version>
+    <time>1793005241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.4:
+  * All Platforms:
+    + Fixed a potential RCE vulnerability in the macOS client. It requires
+      local write access to the user's preferences, so it is not remotely
+      exploitable. (GHSA-v7mp-fpv3-jf5r)
+    + Fixed a Transmission 4.1.0 regression that could cause torrents with
+      zero-byte files to be handled incorrectly, sometimes losing downloaded
+      progress
+    + Hardened the torrent-add RPC method against malformed requests.
+    + Unified launch and delegation between the Qt and GTK clients: If either
+      is already running and then you or a browser's mime-type handler tries to
+      start the other to add a new torrent, that new torrent will get handed
+      off to the pre-existing session.
+    + Fixed a build failure that happened when building Transmission with
+      -Wnull-dereference -Werror in gcc 12.15.
+    + Fixed a rare bug could leave Transmission hung but running on shutdown.
+    + Fixed a rare bug that could prevent downloading webseeds from finishing.
+    + Fixed a bug where setting TR_CURL_PROXY_SSL_NO_VERIFY broke origin
+      server SSL verification.
+    + Fixed per-torrent session speed-limit overrides so they apply to both
+      downloads and uploads.
+  * Qt Client: Improved UI code to use less CPU. (#9161)
+  * GTK Client:
+    + The torrent list now re-sorts and re-applies its filter when the
+      torrent's top folder's name changes, eg after a rename or after a magnet
+      link's metadata arrives.
+    + Opening a torrent's folder now opens the correct folder when a
+      single-file torrent uses a directory structure.
+    + Fixed a bug that prevented transmission-gtk's app icon from being found
+      on some desktops.</comment>
+    <requestid>1392421</requestid>
+  </revision>
 </revisionlist>

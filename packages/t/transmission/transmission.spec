@@ -31,13 +31,13 @@
 %define webui_opt OFF
 %endif
 Name:           transmission
-Version:        4.1.3
+Version:        4.1.4
 Release:        0
 Summary:        A BitTorrent client with multiple UIs
 License:        (GPL-2.0-only OR GPL-3.0-only) AND MIT
 Group:          Productivity/Networking/Other
 URL:            https://www.transmissionbt.com/
-Source0:        https://github.com/transmission/transmission/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        README.openSUSE
 Source98:       transmission-user.conf
 Source99:       %{name}.rpmlintrc
@@ -71,9 +71,9 @@ BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(giomm-2.68) >= %{glibmm_version}
 BuildRequires:  pkgconfig(glibmm-2.68) >= %{glibmm_version}
-BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.10.0
+BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.11.1
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(openssl) >= 1.1.0
 BuildRequires:  pkgconfig(zlib) >= 1.2.3
 Requires:       %{name}-common = %{version}
 Requires:       alts

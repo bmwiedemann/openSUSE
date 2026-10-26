@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Oct 23 11:08:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.1.4:
+  * All Platforms:
+    + Fixed a potential RCE vulnerability in the macOS client. It requires
+      local write access to the user's preferences, so it is not remotely
+      exploitable. (GHSA-v7mp-fpv3-jf5r)
+    + Fixed a Transmission 4.1.0 regression that could cause torrents with
+      zero-byte files to be handled incorrectly, sometimes losing downloaded
+      progress
+    + Hardened the torrent-add RPC method against malformed requests.
+    + Unified launch and delegation between the Qt and GTK clients: If either
+      is already running and then you or a browser's mime-type handler tries to
+      start the other to add a new torrent, that new torrent will get handed
+      off to the pre-existing session.
+    + Fixed a build failure that happened when building Transmission with
+      -Wnull-dereference -Werror in gcc 12.15.
+    + Fixed a rare bug could leave Transmission hung but running on shutdown.
+    + Fixed a rare bug that could prevent downloading webseeds from finishing.
+    + Fixed a bug where setting TR_CURL_PROXY_SSL_NO_VERIFY broke origin
+      server SSL verification.
+    + Fixed per-torrent session speed-limit overrides so they apply to both
+      downloads and uploads.
+  * Qt Client: Improved UI code to use less CPU. (#9161)
+  * GTK Client:
+    + The torrent list now re-sorts and re-applies its filter when the
+      torrent's top folder's name changes, eg after a rename or after a magnet
+      link's metadata arrives.
+    + Opening a torrent's folder now opens the correct folder when a
+      single-file torrent uses a directory structure.
+    + Fixed a bug that prevented transmission-gtk's app icon from being found
+      on some desktops.
+  * Web Client: Fixed a display bug that sometimes listed torrent names as
+    'Unknown'.
+  * transmission-remote:
+    + Fixed a 4.0.0 bug that broke transmission-remote --list-groups.
+- Migrate package to _service for easier management.
+
+-------------------------------------------------------------------
 Tue Jun 30 15:17:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.1.3:
@@ -243,7 +282,7 @@ Fri Nov 24 18:39:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Fri May  5 09:29:21 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
 
-- Fix transmission-daemon missing /var/lib/transmission 
+- Fix transmission-daemon missing /var/lib/transmission
 
 -------------------------------------------------------------------
 Sat Apr 15 04:55:58 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
@@ -304,9 +343,9 @@ Thu Mar 16 07:00:14 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
     - Fixed small error calculating protocol overhead when receiving
       peer messages.
     - Fixed incorrect escaping of non-BMP characters when
-      generating JSON. 
+      generating JSON.
     - Fixed 4.0.0 crash when receiving malformed piece data from peers.
-    - Fixed 4.0.0 potential crash when downloading from webseeds. 
+    - Fixed 4.0.0 potential crash when downloading from webseeds.
     - Improved handling of the leechers param in trackers'
       announce responses.
     - Fixed 4.0.0 regression that stopped increasing the download
@@ -328,11 +367,11 @@ Thu Mar 16 07:00:14 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
       multi-file torrents.
     - Fixed 4.0.0 bug that prevented batch-adding trackers to
       multiple torrents at once.
-    - Fixed per-torrent ratio display in main window. 
+    - Fixed per-torrent ratio display in main window.
   + GTK client:
-    - Fixed 4.0.0 ignoring -m/--minimized command line option. 
+    - Fixed 4.0.0 ignoring -m/--minimized command line option.
     - Fixed assertion failure in the progress display when creating
-      a new torrent. 
+      a new torrent.
   + Web client:
     - Fixed minor UI bugs, e.g. layout and control alignment.
     - Fixed 4.0.0 bug that that failed to save alternate speed begin/end
