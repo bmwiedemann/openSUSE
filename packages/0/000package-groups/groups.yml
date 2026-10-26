@@ -148,6 +148,9 @@ dvd:
   - wicked
 
   - patterns-media-rest_dvd: [required]
+  # To make our migration life easier, we still want to have yast on the DVD
+  # for the yast-based installer (until we fully switch to Agama)
+  - patterns-yast-yast2_desktop
   # all loggers
   - rsyslog
   - syslog-service

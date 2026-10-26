@@ -2465,4 +2465,12 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <comment>Add riscv64 to kde and microos patterns, and build microos release packages</comment>
     <requestid>1376228</requestid>
   </revision>
+  <revision rev="346" vrev="344">
+    <srcmd5>b59eda2ab9a5b513b1c017db2358f41d</srcmd5>
+    <version>unknown</version>
+    <time>1793005071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1386511</requestid>
+  </revision>
 </revisionlist>
