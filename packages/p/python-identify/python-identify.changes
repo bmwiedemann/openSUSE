@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 25 15:24:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.20:
+  * Add support for uv.lock, poetry.lock, Gemfile.lock
+
+-------------------------------------------------------------------
 Sun Apr 19 19:59:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.19:

@@ -250,4 +250,13 @@
   * Add support for *.tif</comment>
     <requestid>1348072</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>40d97dc489245ef8776f63da5f78b0e0</srcmd5>
+    <version>2.6.20</version>
+    <time>1793005254</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.20:
+  * Add support for uv.lock, poetry.lock, Gemfile.lock</comment>
+    <requestid>1392458</requestid>
+  </revision>
 </revisionlist>
