@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:36:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.0 (skipped 2.2.0):
+  * 2.2.0: message threads; usage and cost reports by
+    dimension; tool-runner history and callback fixes;
+    max_retries message fix
+  * 2.3.0: Claude Tag endpoints; Google Cloud user profiles
+    moved to the organization endpoint; query-parameter
+    plumbing; docs and MCP example fixes
+
+-------------------------------------------------------------------
 Thu Oct 22 09:57:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.1.0:

@@ -332,4 +332,12 @@ claude-sonnet-4-5 is deprecated. No new dependencies.
     <comment>Update to 2.1.0</comment>
     <requestid>1387145</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ba2196f1fd8415878d5631577f4199db</srcmd5>
+    <version>2.3.0</version>
+    <time>1793005385</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-anthropic to 2.3.0.</comment>
+    <requestid>1392561</requestid>
+  </revision>
 </revisionlist>
