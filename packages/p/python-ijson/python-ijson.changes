@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 25 14:26:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  * Removed support for Python < 3.10
+  * Fixed treatment of null characters on strings (map keys and
+    string values) on `cffi` backend (#178).
+
+-------------------------------------------------------------------
 Tue Jul 14 19:54:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.1:

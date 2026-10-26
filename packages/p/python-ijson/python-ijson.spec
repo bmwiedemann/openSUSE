@@ -20,14 +20,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ijson
-Version:        3.5.1
+Version:        3.6.0
 Release:        0
 Summary:        Iterative JSON parser with a standard Python iterator interface
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ICRAR/ijson
 Source:         https://files.pythonhosted.org/packages/source/i/ijson/ijson-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

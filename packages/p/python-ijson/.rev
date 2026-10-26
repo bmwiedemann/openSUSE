@@ -157,4 +157,15 @@
     holds the in-progress containers rather than setter closures.</comment>
     <requestid>1365759</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>574d72785c8f23becf904e97a65ccd6c</srcmd5>
+    <version>3.6.0</version>
+    <time>1793005243</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.0:
+  * Removed support for Python &lt; 3.10
+  * Fixed treatment of null characters on strings (map keys and
+    string values) on `cffi` backend (#178).</comment>
+    <requestid>1392437</requestid>
+  </revision>
 </revisionlist>
