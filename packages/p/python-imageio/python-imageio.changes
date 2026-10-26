@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:45:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.38.1:
+  * Correct v2 format argument type hints
+  * Drop Python 3.10, fix PyAV gc stall, temporarily pin pillow
+    on pypy (`1c83326`)
+
+-------------------------------------------------------------------
 Sun Oct  4 14:44:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.38.0:

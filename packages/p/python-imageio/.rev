@@ -263,4 +263,15 @@
     (#1013)</comment>
     <requestid>1382331</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>65144aea289b0a782e867a1d5666c1b7</srcmd5>
+    <version>2.38.1</version>
+    <time>1793005498</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.38.1:
+  * Correct v2 format argument type hints
+  * Drop Python 3.10, fix PyAV gc stall, temporarily pin pillow
+    on pypy (`1c83326`)</comment>
+    <requestid>1392637</requestid>
+  </revision>
 </revisionlist>
