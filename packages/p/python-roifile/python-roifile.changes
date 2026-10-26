@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:07:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.9.22:
+  * Accept buffer objects and avoid unnecessary copies in
+    ImagejRoi.frombytes.
+  * Use Java compatible rounding for subpixel coordinates
+    (breaking).
+  * Recover roi names stored as Latin-1 instead of UTF-16.
+  * Drop support for Python 3.11 and numpy 2.0 (SPEC0).
+  * Support Python 3.15.
+
+-------------------------------------------------------------------
 Tue May 12 08:56:53 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Drop support for Python 3.11: added %global skip_python311 1 in spec file 

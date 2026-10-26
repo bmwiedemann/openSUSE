@@ -137,4 +137,19 @@
     (bsc#1263906)</comment>
     <requestid>1352685</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>953fe2f581f4f008763162f6e25273d7</srcmd5>
+    <version>2026.9.22</version>
+    <time>1793005472</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.9.22:
+  * Accept buffer objects and avoid unnecessary copies in
+    ImagejRoi.frombytes.
+  * Use Java compatible rounding for subpixel coordinates
+    (breaking).
+  * Recover roi names stored as Latin-1 instead of UTF-16.
+  * Drop support for Python 3.11 and numpy 2.0 (SPEC0).
+  * Support Python 3.15.</comment>
+    <requestid>1392628</requestid>
+  </revision>
 </revisionlist>
