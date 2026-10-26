@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Sat Oct 24 00:29:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.15
+  - ef05e168f53 Fix: Core: Crash freeing data-block that failed to
+    read from blend file
+  - 19ee153e4fd Fix: Core: Crash with node tree interface root
+    panel of wrong type
+  - dada5c96d18 Fix: Core: Crash copying line style with invalid
+    modifier type
+  - 3881a489067 Fix: Core: Crash with corrupt window area edges in
+    blend file
+  - dc7a5792b0b Fix: Core: Crash with space data with the wrong
+    type
+  - 513fb271987 Fix: Core: Crash with user menu item with the wrong
+    type
+  - 0d227f74337 Fix: Core: Crash with viewer path element with the
+    wrong type
+  - 658150c448e Fix: Core: Crash with node interface item with the
+    wrong type
+  - a05f1731f21 Fix: Core: Crash with strip modifier with the wrong
+    type
+  - cbaeb2f96eb Fix: Core: Crash with line style modifier with the
+    wrong type
+  - 037b759cd75 Fix: Core: Crash with shader effect with wrong type
+  - 2e292e730e7 Fix: Core: Crash with grease pencil drawing or
+    layer with wrong type
+  - c62e81e08d2 Fix: Core: Crash with legacy grease pencil modifier
+    wrong type
+  - bdcfa8f257c Fix: Core: Crash with modifier too small for its
+    type in blend file
+  - 7254476d0d0 Fix: Core: Crash with invalid boid rule type in
+    blend file
+  - b78573b06fe Refactor: Core: Utilities to read structs with
+    derived types
+  - e7b3b8f669e Fix: Core: Out of bounds read with too short ID
+    name in blend file
+  - 75be001974c Fix: Core: Use after free with data-block failing
+    to read from blend file
+  - 65963a25320 Fix: Core: Crash freeing link placeholders after
+    failing to read library
+  - d7346886d2d Fix: Core: Struct and array size check not checking
+    negative sizes
+  - 57d0ea0028f Fix: Core: Struct size check rejects files with old
+    cloth gravity bug
+  - d17af882149 Fix: Point Cache: Crash with corrupt point indices
+    in file
+  - 4f8a3270213 Fix: Point Cache: Crashes reading corrupt files
+  - fab04184ccb Refactor: Point Cache: Simplify file IO functions
+  - 1518d9a3e4f Fix: Core: Layer collection resync stuck after
+    invalid read
+  - 1533f91483c Fix: Core: Memory leak reading data with invalid
+    size from blend file
+  - b4724b794d8 Fix: Core: Crash with link placeholder in archive
+    library in blend file
+  - 54734705a62 Fix: Core: Crash reading ID with missing asset
+    metadata in blend file
+  - c605a24798f Fix: Core: Crash with link placeholder without
+    library in blend file
+  - 5afc69b7a8d Fix: Core: Crash with blend file block of
+    unexpected struct type
+  - 7de4986e74e Fix: Core: Crash with too short blocks in blend
+    file
+  - 56c2236eabf Fix: Core: Crash with missing typeinfo freeing
+    incompletely read node
+  - 94d99b362b0 Fix: Core: Crash listing datablocks and previews
+    with corrupt blend file
+  - 71c10a0217d Fix: Core: Crash with corrupt thumbnails causing
+    integer overflow
+  - 7eaf6c0dc59 Core: Add more early return in invalid case in
+    liblinking part of blendfile reading.
+  - 532eea513d5 Fix various issues in case linking fails to read a
+    library blenfile.
+  - d13a810ffe5 Fix: corrupt linked block silently treated as
+    missing
+  - 21f79293863 Tests: add corrupt .blend reader files
+  - 0c92f54ad85 Fix: null dereference linking a data-block that
+    fails to read
+  - 3410c36355e Fix: null dereference freeing a partially-read
+    window
+  - 7d4b6dbe71b Fix: null dereference reading a corrupt global or
+    user-prefs block
+  - c57017661ae Fix: out-of-bounds read from an invalid block
+    struct index
+  - e6ba05d9b7e Fix: out-of-bounds struct reconstruction with an
+    invalid block count
+  - 908fdae9cbb Fix: out-of-bounds struct reconstruction with
+    inconsistent DNA sizes
+  - 0e6cf01e741 Fix: partial data used when a data-block fails to
+    read
+  - af234c2d750 Fix several potential errors when reading corrupted
+    DNA data.
+  - de81cdb9a43 Fix: Anim: Remove Update Animated Transform
+    Constraints operator
+  - d916f1679c1 Fix: Rigify: Consistently use getattr and repr
+    instead of eval
+  - 0a33430e6a6 Refactor: Stop using `eval()` in Rigify code
+  - f41fd04ba61 Fix: Text Editor: Live edit should not be loaded
+    from blend file
+  - 8d6a9f9759a Fix: EEVEE image texture node crash with invalid
+    blend file
+  - a204d52b534 Fix: Materials: More unsanitized material slot
+    index issues
+  - a01db23d1e8 Fix: Freestyle: Python style modules ignore
+    auto-run setting
+  - 752e3134302 Fix: Core: Auto-run scripts trusted for unintended
+    files
+  - 9b01c5fd1b2 UI: Remove auto-run preference from warning prompt,
+    communicate risk
+  - e99661edb4d Fix: VSE: 4.5 Backport: Wrong bounding box for
+    scene and image sequence strips
+  - 36033f56bd6 Fix #164448: Unsaved image edits lost on texture
+    garbage collection
+  - 2463b2bcb98 Fix #145084: Crash opening a file and removing a
+    scene from Python
+  - 937f9d02d77 Fix  #163701: crash during viewport garbage
+    collector
+  - db5671676a7 Fix #146838: Windows/IME cancel composition on end
+    IME
+
+-------------------------------------------------------------------
 Wed Sep 16 23:38:58 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.5.14
