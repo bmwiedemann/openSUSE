@@ -1,6 +1,7 @@
 #
 # spec file for package bluetui
 #
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,11 +18,10 @@
 
 
 Name:           bluetui
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        TUI for managing bluetooth devices
 License:        GPL-3.0-or-later
-Group:          Hardware/Other
 URL:            https://github.com/pythops/bluetui
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -32,7 +32,7 @@ Requires:       bluez
 
 %description
 bluetui is a TUI-based bluetooth connection manager written in Rust.
-Which can interact with bluetooth adapters and devices. It aims to be 
+Which can interact with bluetooth adapters and devices. It aims to be
 an alternative to most bluetooth managers, like blueman.
 
 %prep

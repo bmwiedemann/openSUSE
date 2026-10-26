@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:23:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.8.2:
+  * Add unpair confirmation dialog
+  * Make first discovered device actionable during scanning
+  * Make Tab reset devices state like BackTab
+  * Check all controllers for rfkill state
+  * Fall back to selecting first controller during refresh
+  * Clean up the terminal if the app fails to initialize
+- Drop obsolete Group tag
+
+-------------------------------------------------------------------
 Sun Jan 18 08:51:47 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.1
