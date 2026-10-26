@@ -23,11 +23,10 @@
 %define buildmode pie
 %endif
 Name:           traefik
-Version:        3.7.13
+Version:        3.7.16
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
-Group:          Productivity/Networking/Web/Proxy
 URL:            https://traefik.io/
 # set the desired version in the spec-file
 # download the source files and create the vendor tarball with "osc service mr"
@@ -38,11 +37,11 @@ Source3:        %{name}.yml
 Source4:        %{name}-user.conf
 Source5:        90-%{name}.conf
 Source6:        %{name}.logrotate
+BuildRequires:  (golang(API) >= 1.26)
 BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  (golang(API) >= 1.26)
 Requires:       logrotate
 Recommends:     podman
 Conflicts:      traefik2

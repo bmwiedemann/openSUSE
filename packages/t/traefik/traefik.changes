@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Oct 24 17:55:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.7.16
+  (covers upstream 3.7.14, 3.7.15 and 3.7.16)
+  * CVE-2026-114635: snicheck skipped when request TLS state
+    is nil, bypassing authentication (boo#1286655)
+  * CVE-2026-114636: ingress-nginx ssl-passthrough sibling
+    HTTP router served auth-protected backends (boo#1286656)
+  * CVE-2026-114637: FastProxy pool leaked connection-bound
+    NTLM/Negotiate identity to other clients (boo#1286657)
+  * CVE-2026-114638: colliding ingress-nginx auth-tls-secret
+    names merged two client CAs into one option (boo#1286658)
+  * CVE-2026-114639: preauthenticated Negotiate contaminated
+    the shared backend connection pool (boo#1286659)
+  * CVE-2026-114640: ingress-nginx forwarded forged
+    Ssl-Client-* identity headers on HTTP route (boo#1286660)
+  * CVE-2026-114641: unsynchronized write to the
+    per-connection sticky round tripper (boo#1286661)
+  * CVE-2026-114642: NTLM/Kerberos sticky round tripper not
+    keyed by service, reusing one TLS config (boo#1286663)
+  * CVE-2026-114656: negated Host matchers counted as served
+    domains, skipping client-cert checks (boo#1286664)
+  * Upstream advisory GHSA-p8wx-ph99-xgcr (no CVE assigned):
+    ingress-nginx mTLS silently disabled for a host missing
+    the auth-tls annotation
+  * Upstream advisory GHSA-ww7c-q3mv-xx22 (no CVE assigned):
+    FastProxy data race after HTTP/1 upgrade panicking
+    the process
+  * Upstream advisory GHSA-28hp-c82p-8vqj (no CVE assigned):
+    TLS-option cache hit skipped cross-namespace
+    authorization check
+  * Upstream advisory GHSA-hrpp-p4fc-wwf8 (no CVE assigned):
+    ForwardAuth shared the auth-server pool across clients,
+    leaking NTLM/Negotiate-bound identity
+  * Support NTLM and Kerberos authentication in ForwardAuth
+    and ingress-nginx auth-url
+  * Reject CONNECT requests before reaching the muxer; bump
+    golang.org/x/net to v0.60.0 and lego to v5.5.2
+  * Many more fixes and improvements; see upstream release
+    notes for the full list
+
+-------------------------------------------------------------------
 Wed Sep 23 04:53:15 UTC 2026 - Daniel Mulzer <daniel.mulzer@gmail.com>
 
 - Version 3.7.13
