@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 26 06:18:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.13.1:
+  * Fewer false incomplete scans: quote boundaries in JSON
+    examples, documented dotted config fields, quoted YAML
+    versions, corroborated passive images, and possessive prose
+    no longer exhaust the shell parser
+  * Fail closed more often: obfuscated curl via declared markers,
+    report-shaped strings reaching shell execution, and the
+    bounded-helper proof keep incomplete inspection
+  * Hardening backports: atomic report/baseline writes refusing
+    symlinked destinations, per-file static-analysis time limits,
+    and failed gap-fill passes reported incomplete
+  * Release sdist now excludes the uv build cache
+- Add skillspector-typer-parametersource.patch: compare the
+  transitive-depth parameter source by member name, not enum
+  identity. Factory ships typer 0.27, which vendors click, while
+  upstream pins typer < 0.24, so the check rejected every scan
+  --mcp-registry invocation with exit 2.
+- Deselect eleven test_cli_subprocess.py tests: they re-exec
+  the CLI against the sourceless src/ tree and die with
+  PackageNotFoundError before the CLI runs; the same guard
+  behavior is covered in-process.
+
+-------------------------------------------------------------------
 Sat Oct 17 06:11:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.13.0:

@@ -1,0 +1,27 @@
+--- a/src/skillspector/cli.py
++++ b/src/skillspector/cli.py
+@@ -35,7 +35,6 @@
+ from typing import Annotated, cast
+
+ import typer
+-from click.core import ParameterSource
+ from langchain_core.runnables import RunnableConfig
+ from rich.console import Console
+ from rich.progress import BarColumn, Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
+@@ -625,7 +624,15 @@
+             or transitive_allow_prefix
+             or transitive_deny_prefix
+             # Even an explicitly supplied default depth requests an unsupported option.
+-            or ctx.get_parameter_source("transitive_depth") not in (None, ParameterSource.DEFAULT)
++            # OPENSUSE: compare the source by member name, not enum identity.
++            # typer >= 0.24 vendors click as typer._click, so the
++            # ParameterSource returned here is a different enum class than
++            # the one importable from click (Factory ships typer 0.27 while
++            # upstream pins typer < 0.24); an identity comparison against
++            # ParameterSource.DEFAULT is then always true and rejects every
++            # --mcp-registry invocation, even with no other option given.
++            or getattr(ctx.get_parameter_source("transitive_depth"), "name", None)
++            not in (None, "DEFAULT")
+         ):
+             err_console.print(
+                 "[red]Error:[/red] --mcp-registry cannot be combined with "

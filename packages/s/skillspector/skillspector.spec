@@ -21,7 +21,7 @@
 # %%{primary_python} so it stays correct as the primary interpreter moves.
 %define pythons %{primary_python}
 Name:           skillspector
-Version:        2.13.0
+Version:        2.13.1
 Release:        0
 Summary:        Security scanner for AI agent skills
 License:        Apache-2.0
@@ -32,6 +32,13 @@ Source:         https://github.com/NVIDIA/skillspector/releases/download/v%{vers
 # langchain cone exceeds the hardcoded 5s child timeout on constrained
 # builders; 30s still bounds a regressed blocking open. (upstream-test-only)
 Patch0:         skillspector-fifo-timeout.patch
+# Upstream pins typer<0.24 (system click); Factory ships typer 0.27, which
+# vendors click as typer._click. cli.py compares ctx.get_parameter_source()
+# against click.core.ParameterSource by identity, so under Factory's typer
+# the --mcp-registry guard always fires and every registry scan exits 2.
+# The patch compares by member name instead (same semantics on both).
+# PATCH-FIX-OPENSUSE skillspector-typer-parametersource.patch -- typer 0.27 vendors click, breaking the ParameterSource identity check
+Patch1:         skillspector-typer-parametersource.patch
 # Test suite - exercises the full langchain/langgraph runtime cone
 BuildRequires:  %{python_module PyYAML >= 6.0.1}
 BuildRequires:  %{python_module anthropic}
@@ -153,6 +160,15 @@ cp -a .skillspector-baseline.example.yaml skillspector-baseline.example.yaml
 #     Path(sys.executable).with_name("skillspector") and get
 #     FileNotFoundError. The remaining eight tests in that file drive the same
 #     analyzer in-process and do run.
+#   * 2.13.1's new test_cli_subprocess.py re-execs "python -c 'from
+#     skillspector.cli import app; app()'" with PYTHONPATH replaced by the
+#     source src/, which carries no .dist-info, so all eleven die in
+#     skillspector/__init__.py with PackageNotFoundError before the CLI ever
+#     runs -- the same shape as the two deselects above. The registry-guard
+#     behavior they cover is still asserted in-process by the
+#     test_cli_mcp_registry_* tests, which do run (with the typer
+#     Patch1 fix); the recursive-vs-direct equivalence they cover is
+#     exercised by the in-process recursive tests.
 #
 # test_discovery_parser_bounds_and_ledger_table[malformed_schema] expects the
 # invalid punycode hosts xn--a.com (decodes to U+0080) and xn--drf7t.example
@@ -195,7 +211,7 @@ cp -a .skillspector-baseline.example.yaml skillspector-baseline.example.yaml
 # test_static_runtime_limit_is_reported_as_partial,
 # test_static_output_limit_is_reported_as_partial, and the build_context
 # deadline tests), and those do run.
-%pytest --deselect tests/unit/test_mcp_server.py::test_mcp_stdio_initialize_registers_scan_skill --deselect tests/unit/test_baseline_mcp.py::test_stdio_mcp_preserves_compact_verdicts_and_ignores_shipped_baseline --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_github_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_gitlab_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_raw_githubusercontent_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_download_does_not_follow_redirects --deselect tests/unit/test_input_handler.py::test_validate_url_host_scp_extracts_github --deselect tests/unit/test_input_handler.py::test_scp_valid_host_clones --deselect tests/unit/test_input_handler.py::test_https_url_unchanged --deselect "tests/nodes/analyzers/test_bundled_execution_surface.py::test_discovery_parser_bounds_and_ledger_table[malformed_schema]" --deselect tests/test_bundled_execution_surface_acceptance.py::test_public_cli_exit_contract --deselect tests/test_bundled_execution_surface_acceptance.py::test_recursive_single_child_routes_execution_surfaces_from_child_root --deselect tests/test_bundled_execution_surface_acceptance.py::test_cli_fail_on_incomplete_is_opt_in --deselect tests/nodes/test_security_end_to_end.py::test_rd04_large_file_pair_detects_start_boundary_and_end --deselect tests/nodes/test_security_end_to_end.py::test_nine_case_contract_across_public_surfaces --deselect tests/nodes/test_security_remediation.py::test_five_megabyte_normalized_static_scan_stays_below_memory_ceiling --deselect tests/nodes/test_security_end_to_end.py::test_cross_window_separator_pair_across_public_surfaces --deselect tests/unit/test_patterns.py::TestPrivilegeEscalation::test_pe3_repeated_nouns_have_bounded_qualifier_cost
+%pytest --deselect tests/unit/test_mcp_server.py::test_mcp_stdio_initialize_registers_scan_skill --deselect tests/unit/test_baseline_mcp.py::test_stdio_mcp_preserves_compact_verdicts_and_ignores_shipped_baseline --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_github_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_gitlab_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_raw_githubusercontent_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_download_does_not_follow_redirects --deselect tests/unit/test_input_handler.py::test_validate_url_host_scp_extracts_github --deselect tests/unit/test_input_handler.py::test_scp_valid_host_clones --deselect tests/unit/test_input_handler.py::test_https_url_unchanged --deselect "tests/nodes/analyzers/test_bundled_execution_surface.py::test_discovery_parser_bounds_and_ledger_table[malformed_schema]" --deselect tests/test_bundled_execution_surface_acceptance.py::test_public_cli_exit_contract --deselect tests/test_bundled_execution_surface_acceptance.py::test_recursive_single_child_routes_execution_surfaces_from_child_root --deselect tests/test_bundled_execution_surface_acceptance.py::test_cli_fail_on_incomplete_is_opt_in --deselect tests/nodes/test_security_end_to_end.py::test_rd04_large_file_pair_detects_start_boundary_and_end --deselect tests/nodes/test_security_end_to_end.py::test_nine_case_contract_across_public_surfaces --deselect tests/nodes/test_security_remediation.py::test_five_megabyte_normalized_static_scan_stays_below_memory_ceiling --deselect tests/nodes/test_security_end_to_end.py::test_cross_window_separator_pair_across_public_surfaces --deselect tests/unit/test_patterns.py::TestPrivilegeEscalation::test_pe3_repeated_nouns_have_bounded_qualifier_cost --deselect tests/unit/test_cli_subprocess.py::test_registry_unsupported_options_stop_before_input_or_output_access --deselect tests/unit/test_cli_subprocess.py::test_registry_default_options_still_scan --deselect tests/unit/test_cli_subprocess.py::test_recursive_medium_recommendation_matches_direct_scan
 
 %files
 %license LICENSE
