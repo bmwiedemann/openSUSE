@@ -582,4 +582,37 @@
   * substantially simplify util.ba2int() and util.int2ba()</comment>
     <requestid>1380809</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>34e583a5f06efa012a8dbe8cfb6495f4</srcmd5>
+    <version>3.12.3</version>
+    <time>1793005219</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.12.3:
+  * fix unaligned buffer handling on sparc64, see #259
+  * preserve bitarray subtypes in operation return type hints,
+    see #260 (closes #175)
+  * fix Hashable detection on Windows, closes #232
+  * add workflow to build and test on SPARC64, RISC-V and NetBSD
+    11 (amd64) (all successful)
+  * add documentation for platform support
+  * update cibuildwheel to 4.3.1 and enable PyPy and Pyodide
+    wheel builds
+  * fix uint64 alignment on SPARC64, see #247
+  * disable some tests not only for wasm32 but also wasm64, see
+    #258
+  * update vendored pythoncapi_compat.h
+  * improve documentation
+  * fix bitarray.util import on PyPy, see issue #257
+  * add Bitarray and NumPy arrays documentation for NumPy array
+    interoperability
+  * add bitfields sub-module, see Bit-field structures
+  * add optional alignment argument to bitarray.fill()
+  * add official Python 3.15 support
+  * update cibuildwheel to 4.2.1
+  * fix compilation problems on pypy 3.12, see #255
+  * add IEEE Float 16, 32 and 64-bit example
+  * add IPv4 header example for packing and unpacking bit-level
+    structures using bitarray.bitfields</comment>
+    <requestid>1392388</requestid>
+  </revision>
 </revisionlist>
