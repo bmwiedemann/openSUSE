@@ -104,4 +104,13 @@
   Issue deprecation message as a warning in addition to a log message</comment>
     <requestid>1219203</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>096f11fc1f3a1af6be63a3d306b40cea</srcmd5>
+    <version>0.9.6</version>
+    <time>1793005261</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.6:
+  * Made library py.typed</comment>
+    <requestid>1392466</requestid>
+  </revision>
 </revisionlist>
