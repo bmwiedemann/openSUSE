@@ -257,4 +257,19 @@
   * Allow building with Python 3.15.</comment>
     <requestid>1376067</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7227c1b24c90d1869b20218799d33431</srcmd5>
+    <version>1.19.2</version>
+    <time>1793005503</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.19.2:
+  * #914 - Changed `sanitize_config_jinja` to render a filter's
+    replacement as a Jinja template only when that filter sets
+    `render_jinja` to `True`, rather than whenever the
+    replacement contains any Jinja expression.
+  * #914 - Fixed `sanitize_config_jinja` emitting `re.sub`
+    backreferences literally when they appeared outside a Jinja
+    expression, and rewriting those inside a `{% raw %}` block.</comment>
+    <requestid>1392642</requestid>
+  </revision>
 </revisionlist>

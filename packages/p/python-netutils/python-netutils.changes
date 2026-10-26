@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:50:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.19.2:
+  * #914 - Changed `sanitize_config_jinja` to render a filter's
+    replacement as a Jinja template only when that filter sets
+    `render_jinja` to `True`, rather than whenever the
+    replacement contains any Jinja expression.
+  * #914 - Fixed `sanitize_config_jinja` emitting `re.sub`
+    backreferences literally when they appeared outside a Jinja
+    expression, and rewriting those inside a `{% raw %}` block.
+
+-------------------------------------------------------------------
 Mon Sep  7 05:53:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.19.1:
