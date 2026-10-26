@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:03:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.45.0:
+  * feat(models): add ContainerBlock for block kit
+  * feat(models): allow raw_number cells in TableBlock rows
+  * feat(web-api): add agents.conversations.* methods
+  * fix(socket_mode): shut down current_session_runner in built-
+    in close()
+  * fix(socket_mode): check the effective log level in debug
+    guards
+  * fix(socket_mode): recreate a closed aiohttp session when
+    reconnecting
+  * fix(oauth): treat naive datetime values as UTC when
+    converting to timestamps
+  * ci: use psycopg 3 for the PostgreSQL database tests
+  * docs(deps): simplify the managing-dependencies skill
+- update to 3.44.1:
+  * fix: stop aiohttp Socket Mode connect() retrying forever
+    after close
+- update to 3.44.0:
+  * feat(oauth): add StatelessOAuthStateStore using JWT
+  * feat(blocks): add min_lines/max_lines to RichTextInputElement
+  * feat(models): add typed model classes for TableBlock cells
+    and column_settings
+  * feat(web-api): add agents.sessions.setStatus and
+    agents.sessions.rename
+  * feat(web-api): add blocks.validate method
+  * feat(web-api): add session_status to chat.stopStream and
+    chat_stream stop() helpers
+  * fix(models): type CardBlock icon/hero_image as image element
+    (not str)
+  * fix(socket-mode): only release connect_operation_lock when
+    this task acquired it
+  * docs(oauth): document StatelessOAuthStateStore anti-replay
+    caveat
+  * fix: resolve flaky sqlite3 installation store bot token
+    lookup
+  * docs(deps): establish and apply a managing-dependencies
+    convention
+    >=9.1.1,<10
+  * ci: do not fail CI when Codecov test-results upload errors
+  * test: fix intermittent CI hang in the unit test matrix
+- update to 3.43.0:
+  * feat(web): expose public ts property on ChatStream
+  * feat: make thread_ts optional for
+    assistant.threads.setSuggestedPrompts
+  * docs: add security policy
+  * docs: removing external links for unified nav
+  * docs: fixing broken links to security concepts
+  * docs: restore canonical security policy over bot-added
+    SECURITY.md
+  * fix(signature): validate signing_secret is a non-empty string
+
+-------------------------------------------------------------------
 Sun Jun 28 11:53:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.42.0:
