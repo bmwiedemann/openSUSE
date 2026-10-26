@@ -69,4 +69,32 @@
   * Fix missing size checks in RTP/RTCP packet processing</comment>
     <requestid>1368911</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c9f510deb08b252d315660a4f556be7c</srcmd5>
+    <version>0.24.6</version>
+    <time>1793005209</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.24.6:
+  * Fix WARNINGS_AS_ERRORS in MacOS workflow
+  * Fix return type of RtcpReportBlock::getNTPOfSR
+  * Fix DTLS startup ordering
+  * Fix TLS server requesting client certificate with MbedTLS
+  * Fix use-after-free in libnice component_io_cb on ICE stream
+    removal
+  * Fix RtpRtx::normalizePacket() for RTX packets with RTP header
+    extensions
+  * Fix ICE options separator in SDP description
+  * Fix DTLS handshake deadlock when start() runs on the juice
+    state callback thread (TURN relay)
+  * Reset mInitialized when doInit fails
+  * Fix SNAP compatibility by not reciprocating unknown SDP
+    transport attributes
+  * Fix MbedTLS DTLS timeout handling causing threadpool
+    starvation
+  * Fix MbedTLS certificate verify callback
+  * Update libjuice to v1.7.4
+  * **Full Changelog**: https://github.com/paullouisageneau/libda
+    tachannel/compare/v0.24.5...v0.24.6</comment>
+    <requestid>1392380</requestid>
+  </revision>
 </revisionlist>
