@@ -147,12 +147,12 @@ resolve alongside.
 
 One part of that tree is not upstream's file: the syntax highlighter's
 grammar modules, packages/core/src/lib/tree-sitter/assets/<lang>/
-tree-sitter-<lang>.wasm (javascript, typescript, markdown, markdown_inline,
-zig), which upstream commits as downloads from the grammars' releases. The
+tree-sitter-<lang>.wasm (javascript, typescript, typescriptreact,
+markdown, markdown_inline, zig), which upstream commits as downloads from the grammars' releases. The
 distribution builds every tree-sitter grammar to WebAssembly in a
 tree-sitter-<lang>-wasm subpackage (%treesitter_wasm_* macros, clang, lld
 and wasi-libc through the tree-sitter CLI's own wasi-sdk invocation), so
-%install turns those five files into symlinks to /usr/share/tree-sitter/wasm
+%install turns those six files into symlinks to /usr/share/tree-sitter/wasm
 and opentui-devel requires the four packages. The loop walks the asset
 directories: a grammar upstream adds fails the build until its package is
 in BuildRequires and the devel Requires. The highlight queries next to the

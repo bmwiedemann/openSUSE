@@ -69,4 +69,12 @@ opentui = 0.5.14 exactly.</comment>
     <comment>Update to 0.5.17, lockstep half 1/2: opencode 2.0.26 pins @opentui/* at exactly this version (private FFI ABI), its SR follows once this lands in devel.</comment>
     <requestid>1383689</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>68444227c8e63da5ec54da29016e3601</srcmd5>
+    <version>0.6.8</version>
+    <time>1793005351</time>
+    <user>dimstar_suse</user>
+    <comment>Update opentui to 0.6.8 for the opencode 2.1.4 lockstep.</comment>
+    <requestid>1392516</requestid>
+  </revision>
 </revisionlist>

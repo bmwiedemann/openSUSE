@@ -33,7 +33,7 @@
 %global node_arch arm64
 %endif
 Name:           opentui
-Version:        0.5.17
+Version:        0.6.8
 Release:        0
 Summary:        Library for building terminal user interfaces
 # OpenTUI itself is MIT. miniaudio is vendored as a single header in
@@ -201,7 +201,11 @@ for pkg in core keymap solid; do
             scripts/test-node-hook.mjs scripts/test-packed-consumer.ts \
             scripts/bench-js-node.ts scripts/native-symbols.ts \
             scripts/native-symbols.test.ts scripts/package-native-symbols.ts \
-            scripts/variants.ts scripts/reconciler-benchmark.ts
+            scripts/variants.ts scripts/reconciler-benchmark.ts \
+            scripts/branch-cov.ts scripts/branch-cov-map.ts \
+            scripts/branch-cov-preload.ts scripts/native-abi.ts \
+            scripts/native-abi-pointers.ts scripts/native-abi.zig \
+            scripts/native-scene.fixture.tsx
       rmdir scripts 2>/dev/null || :
       find . -name '*.test.ts' -delete
       find . -name '__snapshots__' -type d -prune -exec rm -rf {} +

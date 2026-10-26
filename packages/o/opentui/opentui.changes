@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Oct 25 19:10:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.8:
+  * 0.6.0 moves the renderable tree into native code: one frame
+    step lays out, clips and paints with a single FFI call, and
+    resources cross as generational handles owned by a Context.
+    Custom renderables draw in renderSelf()/renderBefore/
+    renderAfter, size via setMeasureProvider() and take
+    renderer.nativeScene as owner; suspend()/resume() are async.
+  * Editors show control characters Vim-style (^L, <85>) instead
+    of throwing, with EditBuffer.measureText() and
+    measureEditText() for display offsets (0.6.1/0.6.2).
+  * renderer.setProgramStatus() reports working/blocked/done to
+    the terminal over OSC 7501 (0.6.3). Kitty images in iTerm2
+    no longer go black or blank on move, scroll or relayout
+    (0.6.4).
+  * Renderables regain the Yoga style getters for declared
+    layout styles; assigning null/undefined restores the option
+    default (0.6.5/0.6.6).
+  * Default-ignorable code points take no cell; one in
+    customBorderChars is now an error. Left-button drags belong
+    to the pressed renderable, React root.render() updates the
+    mounted tree, DiffRenderable gains a gutter option (0.6.7).
+  * A sideways wheel step no longer shifts truncated text by a
+    column (0.6.8).
+  * Packaging: the highlighter adds the typescriptreact grammar,
+    linked to the existing tree-sitter-typescript-wasm package;
+    prune upstream's new dev-only scripts from -devel.
+
+-------------------------------------------------------------------
 Fri Oct  9 07:06:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.17 (opencode v2.0.26 pins @opentui/* at exactly
