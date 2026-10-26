@@ -654,4 +654,41 @@
     Labor Day</comment>
     <requestid>1372774</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6bf1ce8d7d94353dc0999a6707ce657c</srcmd5>
+    <version>0.107</version>
+    <time>1793005275</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.107:
+  * BREAKING: Update Sweden holidays, exclude Sundays by default
+  * Refactor release notes generator
+  * Add Pakistan Stock Exchange (PSX) holidays
+  * Add Saudi Exchange (Tadawul) holidays
+  * Update Australia holidays: add Easter Sunday (TAS) from 2027
+  * Update Australia holidays: add Labour Day (VIC) start year
+  * Update Australia holidays: add May Day and Picnic Day (NT)
+    start years
+  * Update Australia holidays: add NSW Western Division school
+    holidays
+  * Update Australia holidays: fix Labour Day (SA) historical
+    dates
+  * Update Australia holidays: start NT observance rules in 1973
+  * Update Bolsas y Mercados Argentinos holidays: add 2026 Visit
+    of Pope Leo XIV holidays
+  * Update Brazil holidays: rename Ash Wednesday to Quarta-feira
+    de Cinzas
+  * Update Chad holidays: add l10n support
+  * Update Hong Kong Stock Exchange holidays: add severe weather
+    closures
+  * Update India holidays: subdiv holidays improvement (East,
+    North-East &amp; South regions - II)
+  * Update Moldova holidays: fix Romanian diacritics
+  * Update Morocco holidays: add Unity Day, fix Amazigh New Year
+  * Update NSE and BSE holidays: add Kannada language support
+  * Update NSE and BSE holidays: add Malayalam language support
+  * Update NSE and BSE holidays: add Telugu language support
+  * Update NYSE and CME holidays: add Marathi language support
+  * Update Nepal holidays: add Hindi language support</comment>
+    <requestid>1392490</requestid>
+  </revision>
 </revisionlist>

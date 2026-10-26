@@ -21,7 +21,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-holidays
-Version:        0.103
+Version:        0.107
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
@@ -49,8 +49,9 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-A Python library for generating country, province and state specific sets of holidays on the fly.
-It makes determining whether a specific date is a holiday possible.
+A Python library for generating country, province and state specific sets of
+holidays on the fly.  It makes determining whether a specific date is a holiday
+possible.
 
 %prep
 %setup -q -n holidays-%{version}

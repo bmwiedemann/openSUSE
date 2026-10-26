@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Sun Oct 25 16:32:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.107:
+  * BREAKING: Update Sweden holidays, exclude Sundays by default
+  * Refactor release notes generator
+  * Add Pakistan Stock Exchange (PSX) holidays
+  * Add Saudi Exchange (Tadawul) holidays
+  * Update Australia holidays: add Easter Sunday (TAS) from 2027
+  * Update Australia holidays: add Labour Day (VIC) start year
+  * Update Australia holidays: add May Day and Picnic Day (NT)
+    start years
+  * Update Australia holidays: add NSW Western Division school
+    holidays
+  * Update Australia holidays: fix Labour Day (SA) historical
+    dates
+  * Update Australia holidays: start NT observance rules in 1973
+  * Update Bolsas y Mercados Argentinos holidays: add 2026 Visit
+    of Pope Leo XIV holidays
+  * Update Brazil holidays: rename Ash Wednesday to Quarta-feira
+    de Cinzas
+  * Update Chad holidays: add l10n support
+  * Update Hong Kong Stock Exchange holidays: add severe weather
+    closures
+  * Update India holidays: subdiv holidays improvement (East,
+    North-East & South regions - II)
+  * Update Moldova holidays: fix Romanian diacritics
+  * Update Morocco holidays: add Unity Day, fix Amazigh New Year
+  * Update NSE and BSE holidays: add Kannada language support
+  * Update NSE and BSE holidays: add Malayalam language support
+  * Update NSE and BSE holidays: add Telugu language support
+  * Update NYSE and CME holidays: add Marathi language support
+  * Update Nepal holidays: add Hindi language support
+  * Update Pakistan holidays: add 2025-2026 Islamic holiday dates
+  * Update Pakistan holidays: fix 2007-2015 dates
+  * Update Russia holidays: add 2026-2027 substituted holidays
+  * Update Saudi Arabia holidays: fix Founding Day name
+  * Update Spain holidays: add Barcelona city holidays
+  * Update Zambia holidays: 2026 holidays changes
+  * Update documentation: enhance iCalendar export examples
+  * Update runner versions, extend test suite to run on previous
+    OS version.
+  * Add Bolsa de Valores de Colombia (BVC) holidays
+  * Add Borsa Istanbul (BIST) holidays
+  * Add Warsaw Stock Exchange (GPW) holidays
+  * Update Argentina holidays: add 2026 Visit of Pope Leo XIV
+    holidays
+  * Update Australia holidays: add Labour Day (WA) and Eight
+    Hours Day (TAS) start years
+  * Update Australia holidays: add Labour Day start years (ACT,
+    QLD)
+  * Update Azerbaijan holidays: add substituted holidays from
+    earlier years
+  * Update Bahrain holidays: add Urdu language support
+  * Update Kuwait holidays: add Urdu language support
+  * Update Malta holidays: add Arabic language support
+  * Update Oman holidays: add Urdu language support
+  * Update Qatar holidays: add Urdu language support
+  * Update Saudi Arabia holidays: add Urdu language support
+  * Update Spain holidays: add Eid al-Fitr in Ceuta (CE)
+  * Update Turkmenistan holidays: add special holidays
+  * Update United Arab Emirates holidays: add Urdu language
+    support
+  * Update Vietnam holidays: add Vietnam Cultural Day, 2025-2027
+    substituted holidays
+  * Update Warsaw Stock Exchange holidays: add Ukrainian language
+    support
+  * Update iCalendar generation tool: add `{all}` placeholder to
+    output template
+  * Reference maintenance: archive links
+  * Refactor German School Holidays generator
+  * Refactor imports in tests
+  * Update Australia holidays: add school holidays support
+  * Update Canada holidays: remove Boxing Day from optional
+    holidays in QC
+  * Update India holidays: subdiv holidays improvement (East,
+    North-East & South regions - I)
+  * Update Indonesia holidays: add 2027 special holidays
+  * Update Malaysia holidays
+  * Update Philippines holidays: add 2027 holidays
+  * Update South Africa holidays: add Nov 4, 2026 holiday
+  * Add support for special holidays inheritance from parent
+    entity
+  * Refactor United States tests
+  * Refactor `HolidayBase::__getitem__` method
+  * Refactor l10n implementation
+  * Add Australian Securities Exchange (ASX) holidays
+  * Add London Stock Exchange (LSE) holidays
+  * Fix unbounded `functools.cache` retention in Burmese and Thai
+    calendars
+  * Improve Islamic holidays calculations among ASEAN countries
+    (with MABIMS crescent visibility criteria)
+  * Update Ethiopia holidays: restrict May 28 holiday to
+    1992-2024
+  * Update India holidays: fix 2026 Holi date in Maharashtra
+  * Update India holidays: fix Arbaeen holiday name
+  * Update India holidays: fix holidays structure
+  * Update India holidays: subdiv holidays improvement (Central
+    and West region)
+  * Update Iran holidays: add 2026 exact dates
+  * Update Mauritania holidays: add l10n support
+  * Update United Kingdom holidays: add Urdu language support
+  * Update documentation build settings
+  * Update iCal exporter: fix dropping or duplicating events
+  * Update l10n test: fix duplicated entries check
+  * Update ruff configuration
+  * Update subdivision aliases handling
+  * Add Python 3.15 (beta) to CI/CD
+  * Reference maintenance: archive links
+
+-------------------------------------------------------------------
 Fri Aug 21 10:02:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.103:
