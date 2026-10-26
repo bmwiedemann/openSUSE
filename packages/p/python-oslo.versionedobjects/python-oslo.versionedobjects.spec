@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.versionedobjects
-Version:        3.11.0
+Version:        3.12.0
 Release:        0
 Summary:        Oslo Versioned Objects library
 License:        Apache-2.0
