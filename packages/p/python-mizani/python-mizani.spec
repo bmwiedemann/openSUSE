@@ -17,7 +17,7 @@
 
 
 Name:           python-mizani
-Version:        0.14.4
+Version:        0.14.6
 Release:        0
 Summary:        Scales for Python
 License:        BSD-3-Clause

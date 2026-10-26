@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 25 16:32:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.6:
+  * :class:`~mizani.breaks.breaks_extended` accepts a pair for
+    only_inside, one flag per end, so a break sequence can be
+    held inside the limits at one end and allowed past them at
+    the other.
+  * :func:`~mizani.palettes.brewer_pal` now resolves a named
+    palette to its own type, so the name no longer has to match
+    the type argument. brewer_pal(palette="Set2") now works even
+    though type defaults to sequential and Set2 is qualitative.
+    An unknown name raises a ValueError listing the valid names.
+    This resolves (plotnine #1048).
+
+-------------------------------------------------------------------
 Sun Mar 15 20:23:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.4:

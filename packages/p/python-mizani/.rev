@@ -181,4 +181,22 @@
     dates by using an offset. (:issue:`58`)</comment>
     <requestid>1339165</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a32065f05269513a7a32d7e41099d932</srcmd5>
+    <version>0.14.6</version>
+    <time>1793005280</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.6:
+  * :class:`~mizani.breaks.breaks_extended` accepts a pair for
+    only_inside, one flag per end, so a break sequence can be
+    held inside the limits at one end and allowed past them at
+    the other.
+  * :func:`~mizani.palettes.brewer_pal` now resolves a named
+    palette to its own type, so the name no longer has to match
+    the type argument. brewer_pal(palette=&quot;Set2&quot;) now works even
+    though type defaults to sequential and Set2 is qualitative.
+    An unknown name raises a ValueError listing the valid names.
+    This resolves (plotnine #1048).</comment>
+    <requestid>1392485</requestid>
+  </revision>
 </revisionlist>
