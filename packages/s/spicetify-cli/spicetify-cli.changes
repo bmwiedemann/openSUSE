@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Oct 26 06:56:51 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 2.46.4:
+  * fix: restore homeConfig and expFeatures on Spotify 1.2.68
+  * fix(popupLyrics): musixmatch lyrics load issue (#4032)
+  * feat(css-map): add `right-sidebar` mappings
+  * fix(patch): resolve appx path, regex replacement (#4035)
+  * fix(install/pwsh): hide progress bar (#3921)
+  * feat(homeConfig): support new spotify versions
+  * fix(wrapper): avoid webpack cold-start race
+  * fix(apply): always inject xpui-modules and config into `index.html`
+  * fix(lyrics-plus): restore search and playbar compatibility
+  * fix(css-map): add mappings for macOS builds
+
+-------------------------------------------------------------------
+Mon Oct 26 06:52:43 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 2.46.4:
+  * fix: restore homeConfig and expFeatures on Spotify 1.2.68
+  * fix(popupLyrics): musixmatch lyrics load issue (#4032)
+  * feat(css-map): add `right-sidebar` mappings
+  * fix(patch): resolve appx path, regex replacement (#4035)
+  * fix(install/pwsh): hide progress bar (#3921)
+  * feat(homeConfig): support new spotify versions
+  * fix(wrapper): avoid webpack cold-start race
+  * fix(apply): always inject xpui-modules and config into `index.html`
+  * fix(lyrics-plus): restore search and playbar compatibility
+  * fix(css-map): add mappings for macOS builds
+
+-------------------------------------------------------------------
 Wed Oct 21 06:56:13 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 2.46.2:
