@@ -1,8 +1,8 @@
 #
 # spec file for package flnews
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2020-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 
 Name:           flnews
-Version:        1.2.1
+Version:        1.4.0
 Release:        0
 Summary:        Graphical USENET newsreader
-License:        BSD-2-Clause
+License:        BSD-2-Clause AND CC0-1.0
 Group:          Productivity/Graphics/Other
 URL:            http://micha.freeshell.org/flnews/
 Source:         http://micha.freeshell.org/flnews/src/%{name}-%{version}.tar.bz2
@@ -45,10 +45,10 @@ sed -i 's|CFG_NLS_PATH="$CFG_PREFIX/lib/$CFG_NAME/nls"|CFG_NLS_PATH="$CFG_PREFIX
 export CFLAGS="%{optflags} -fPIE"
 export CXXFLAGS="%{optflags} -fPIE"
 export LDFLAGS="-pie"
-make PREFIX=%{_prefix} %{?_smp_mflags}
+make V=1 PREFIX=%{_prefix} CFG_PREFIX=%{_prefix} CC=gcc C99=gcc %{?_smp_mflags}
 
 %install
-%make_install PREFIX=%{_prefix}
+%make_install PREFIX=%{_prefix} CFG_PREFIX=%{_prefix}
 
 %files
 %license LICENSE

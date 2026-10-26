@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Oct 25 08:06:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.0
+  Important notes:
+  * TLS: Add support for OpenSSL 4 API.
+  * ENC: Add subproject for Unicode database.
+  * Replace license CC0 1.0 Universal (SPDX ID "CC0-1.0") with
+    BSD Zero Clause License (SPDX ID "0BSD") because Fedora project
+    does not accept CC0 for documentation.
+  Bug fixes:
+  * FILTER: Avoid double free in filter rule constructor if regular
+    expression for string could not be compiled.
+  * FILTER: Reset pointer to wildmat pattern linked list for every
+    group.Formerly a nontrivial wildmat could only match the first
+    group of a group list.
+  * FILTER: Use result if the wildmat of a score rule has matched a
+    group. Formerly the further processing of a group list could
+    reset the match.
+  New features and improvements:
+  * ENC: Unicode database updated to version 18.0.0.
+  * FILTER: Section SCORING in man page updated.
+  * FILTER: Display line number in scorefile (if debug mode is
+    enabled).
+  * Title of man page now follows convention to use only capital
+    letters.
+
+-------------------------------------------------------------------
+Mon Mar 16 15:03:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.0
+  * Many bugfixes.
+  * FLTK 1.4 is now supported.
+  * Glyph substitution (use of multiple fonts) is now supported
+    for the Wayland and X11 backends too, if FLTK is compiled for
+    Pango.
+  * Better keyboard navigation (formerly limited by ABI of
+    FLTK 1.3.0 shared library).
+  * Kill support added. Implemented as extension for scoring.
+    Anything with score -9999 and below will be killed.
+  * Empty lines in scorefile are now allowed and ignored.
+  * Unicode database updated to version 17.0.0.
+  * Support for POSIX.1-2024 operating systems.
+  * Support for C23/C++23 compilers.
+
+-------------------------------------------------------------------
 Mon May  6 20:38:18 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.1
