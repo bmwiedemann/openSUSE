@@ -1,7 +1,7 @@
 #
 # spec file for package python-logging-journald
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15allpythons}
 Name:           python-logging-journald
-Version:        0.6.11
+Version:        0.6.12
 Release:        0
 Summary:        Logging Handler For Sending Logs to journald
 License:        MIT
 URL:            https://github.com/mosquito/logging-journald
 Source:         https://files.pythonhosted.org/packages/source/l/logging_journald/logging_journald-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
