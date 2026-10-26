@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 19 11:48:43 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Fix preceding changelog entry: libseat support got enabled again
+  after it got fixed.
+
+-------------------------------------------------------------------
 Mon Sep 28 10:16:39 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 10.0.4+git2:
@@ -45,8 +51,6 @@ Mon Sep 28 10:16:39 UTC 2026 - Fabian Vogt <fvogt@suse.com>
   * drm_shared: remove vmwgfx workaround
   * terminal: Fix error handling when pageflip failed.
   * drm_shared: Use legacy modesetting with vmwgfx driver
-- Disable building with libseat completely, the upstream integration
-  bitrotted already (gh#kmscon/kmscon#539)
 
 -------------------------------------------------------------------
 Tue Sep 01 13:11:32 UTC 2026 - Fabian Vogt <fvogt@suse.com>
