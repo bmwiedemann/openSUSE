@@ -46,4 +46,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1378762</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>239f8b65e70fa3e859797ccd1a6eadc2</srcmd5>
+    <version>2.0.1</version>
+    <time>1793005328</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * **Full Changelog**:
+    https://github.com/defnull/multipart/compare/v2.0.0...v2.0.1</comment>
+    <requestid>1392510</requestid>
+  </revision>
 </revisionlist>
