@@ -17,7 +17,7 @@
 
 
 Name:           python-habanero
-Version:        2.4.0
+Version:        2.9.2
 Release:        0
 Summary:        Low Level Client for Crossref Search API
 License:        MIT
@@ -28,17 +28,17 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-httpx >= 0.27.2
-Requires:       python-packaging >= 24.1
-Requires:       python-tqdm >= 4.66.5
-Requires:       python-urllib3 >= 2.2.2
+Requires:       python-httpx2 >= 2.4.0
+Requires:       python-packaging >= 26.2
+Requires:       python-tqdm >= 4.67.3
+Requires:       python-urllib3 >= 2.7.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-recording}
-BuildRequires:  %{python_module httpx >= 0.27.2}
+BuildRequires:  %{python_module httpx2 >= 2.4.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tqdm >= 4.66.5}
-BuildRequires:  %{python_module urllib3 >= 2.2.2}
+BuildRequires:  %{python_module tqdm >= 4.67.3}
+BuildRequires:  %{python_module urllib3 >= 2.7.0}
 # /SECTION
 %python_subpackages
 

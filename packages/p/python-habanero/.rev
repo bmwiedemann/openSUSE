@@ -48,4 +48,20 @@
     documented new facet count options</comment>
     <requestid>1359255</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0a7841b876392610e3710ef114552811</srcmd5>
+    <version>2.9.2</version>
+    <time>1793005245</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.2:
+  * httpx replaced by httpx2 throughout this package
+  * new class WorksQuery: a chainable query builder for any of
+    the Crossref API queries that include /works (plain ol works,
+    members, prefixes, etc.).
+  * added integrated checking of values passed to facets, select,
+    sort, and field query parameters to avoid invalid queries
+    before making a real HTTP request
+  * many internal refactoring improvements</comment>
+    <requestid>1392443</requestid>
+  </revision>
 </revisionlist>

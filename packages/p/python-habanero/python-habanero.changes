@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 25 14:38:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.2:
+  * httpx replaced by httpx2 throughout this package
+  * new class WorksQuery: a chainable query builder for any of
+    the Crossref API queries that include /works (plain ol works,
+    members, prefixes, etc.).
+  * added integrated checking of values passed to facets, select,
+    sort, and field query parameters to avoid invalid queries
+    before making a real HTTP request
+  * many internal refactoring improvements
+
+-------------------------------------------------------------------
 Sun Jun 14 15:09:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.0:
