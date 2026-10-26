@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:09:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.0:
+  * Extended easy Intersphinx configuration to websockets
+  * Intersphinx mappings now point to the documentation of the
+    latest release (/en/stable/) instead of the development
+    version (/en/latest/) for projects that publish it.
+  * The sphinx-scrapy pre-commit hook now also updates Git-based
+    sphinx-scrapy pins, e.g. sphinx-scrapy @
+    git+https://github.com/scrapy/sphinx-scrapy.git@0.9.0,
+    turning them into PyPI pins.
+  * sphinx-llm-friendly 0.5.1 or higher is now required.
+  * Enabled sphinx_design and sphinxcontrib.youtube, so their
+    directives, e.g. .. tab-set:: or .. youtube::, work without
+    adding them to extensions, and YouTube videos render as links
+    in the Markdown output.
+  * Extended easy Intersphinx configuration to requests
+  * The sphinx-scrapy pre-commit hook now also updates the
+    sphinx-scrapy pins in :file:`tox.ini` and
+    :file:`docs/requirements.in` to match its rev, so upgrading
+    sphinx-scrapy only takes changing that rev. After
+    :file:`docs/requirements.in` changes, recompile
+    :file:`docs/requirements.txt` with uv pip compile
+    requirements.in -o requirements.txt from the :file:`docs`
+    directory.
+  * Documentation builds now fail on Sphinx warnings. While you
+    fix existing warnings, you can suppress them by type in
+    :file:`docs/conf.py`, or allow all of them in
+    :file:`pyproject.toml` with fail-on-warning = false under
+    [tool.sphinx-scrapy].
+  * Documentation is now built with a regular parallel sphinx-
+    build -b html, which writes the Markdown pages, llms.txt and
+    llms-full.txt next to the HTML pages, in
+    :file:`docs/_build/html` instead of :file:`docs/_build/all`.
+    sphinx-scrapy build and tox -e docs accept an optional output
+    directory, e.g. tox -e docs -- $READTHEDOCS_OUTPUT/html. This
+    is backward-incompatible. To update:  Run sphinx-scrapy
+    update-rtd-config to regenerate :file:`.readthedocs.yml`. In
+    app.add_node() calls, drop llm_singlemarkdown= handlers;
+    llm_markdown= handlers cover all Markdown output.
+  * Run sphinx-scrapy update-rtd-config to regenerate
+    :file:`.readthedocs.yml`.
+  * In app.add_node() calls, drop llm_singlemarkdown= handlers;
+    llm_markdown= handlers cover all Markdown output.
+  * Sphinx 8.0.0 or higher is now required, and sphinx-llm-
+    friendly 0.3.0 or higher.
+  * Replaced the Git-based sphinx-llms-txt and sphinx-markdown-
+    builder dependencies with sphinx-llm-friendly, so sphinx-
+    scrapy can be installed from PyPI again, e.g. sphinx-
+    scrapy==0.10.0 in :file:`docs/requirements.txt` and sphinx-
+    scrapy[tox]==0.10.0 in the requires of :file:`tox.ini`. This
+    is backward-incompatible. To update:  Rename llms_txt_*
+    settings to their llm_friendly_* counterparts, or drop them
+    where the new defaults cover them, and drop markdown_flavor.
+    Remove "sphinx_llms_txt" from extensions. In app.add_node()
+    calls, rename the markdown= and singlemarkdown= handlers to
+    llm_markdown= and llm_singlemarkdown=. Replace
+    exclude_patterns workarounds that check the builder name with
+    llm_friendly_exclude or llm_friendly_llms_full_txt_exclude.
+  * Rename llms_txt_* settings to their llm_friendly_*
+    counterparts, or drop them where the new defaults cover them,
+    and drop markdown_flavor.
+  * Remove "sphinx_llms_txt" from extensions.
+  * In app.add_node() calls, rename the markdown= and
+    singlemarkdown= handlers to llm_markdown= and
+    llm_singlemarkdown=.
+  * Replace exclude_patterns workarounds that check the builder
+    name with llm_friendly_exclude or
+    llm_friendly_llms_full_txt_exclude.
+  * HTML pages now include an <link rel="alternate"
+    type="text/markdown"> tag pointing to their .md counterpart.
+  * llms-full.txt now includes a Source: line before each page's
+    content.
+
+-------------------------------------------------------------------
 Sat Aug 22 13:45:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.12:

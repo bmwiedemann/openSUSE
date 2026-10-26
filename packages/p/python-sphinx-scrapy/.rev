@@ -51,4 +51,41 @@
   * Extended easy Intersphinx configuration to pypug</comment>
     <requestid>1373068</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>43739209d8d6f19029937ee004be76eb</srcmd5>
+    <version>0.14.0</version>
+    <time>1793006401</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.0:
+  * Extended easy Intersphinx configuration to websockets
+  * Intersphinx mappings now point to the documentation of the
+    latest release (/en/stable/) instead of the development
+    version (/en/latest/) for projects that publish it.
+  * The sphinx-scrapy pre-commit hook now also updates Git-based
+    sphinx-scrapy pins, e.g. sphinx-scrapy @
+    git+https://github.com/scrapy/sphinx-scrapy.git@0.9.0,
+    turning them into PyPI pins.
+  * sphinx-llm-friendly 0.5.1 or higher is now required.
+  * Enabled sphinx_design and sphinxcontrib.youtube, so their
+    directives, e.g. .. tab-set:: or .. youtube::, work without
+    adding them to extensions, and YouTube videos render as links
+    in the Markdown output.
+  * Extended easy Intersphinx configuration to requests
+  * The sphinx-scrapy pre-commit hook now also updates the
+    sphinx-scrapy pins in :file:`tox.ini` and
+    :file:`docs/requirements.in` to match its rev, so upgrading
+    sphinx-scrapy only takes changing that rev. After
+    :file:`docs/requirements.in` changes, recompile
+    :file:`docs/requirements.txt` with uv pip compile
+    requirements.in -o requirements.txt from the :file:`docs`
+    directory.
+  * Documentation builds now fail on Sphinx warnings. While you
+    fix existing warnings, you can suppress them by type in
+    :file:`docs/conf.py`, or allow all of them in
+    :file:`pyproject.toml` with fail-on-warning = false under
+    [tool.sphinx-scrapy].
+  * Documentation is now built with a regular parallel sphinx-
+    build -b html, which writes the Markdown pages, llms.txt and</comment>
+    <requestid>1392631</requestid>
+  </revision>
 </revisionlist>
