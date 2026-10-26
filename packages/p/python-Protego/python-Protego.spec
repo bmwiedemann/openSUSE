@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Protego
-Version:        0.6.2
+Version:        0.7.0
 Release:        0
 Summary:        Pure-Python robotstxt parser with support for modern conventions
 License:        BSD-3-Clause
