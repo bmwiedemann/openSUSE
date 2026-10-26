@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 26 10:16:54 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add missing Bugzilla and CVE references for golang.org/x/net
+
+-------------------------------------------------------------------
 Thu Oct 22 09:10:45 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.300073.2
@@ -15,6 +20,8 @@ Tue Oct 20 09:19:45 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 - Update github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream
   to v1.7.6 (bsc#1280684, CVE-2026-89090)
 - Update golang.org/x/net to v0.61.0 (bsc#1285301, CVE-2026-78669)
+  (bsc#1287013, CVE-2026-78659) (bsc#1287078, CVE-2026-78660)
+  (bsc#1287160, CVE-2026-78663) (bsc#1287504, CVE-2026-97032)
 
 -------------------------------------------------------------------
 Thu Oct  1 15:32:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>

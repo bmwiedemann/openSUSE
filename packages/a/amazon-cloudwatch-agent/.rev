@@ -160,4 +160,14 @@
     in (#2289) (forwarded request 1387062 from glaubitz)</comment>
     <requestid>1387082</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>060773fc9397998fdb2828d1aa3e64e9</srcmd5>
+    <version>1.300073.2</version>
+    <time>1793020641</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Bugzilla and CVE references for golang.org/x/net
+  (bsc#1287013, CVE-2026-78659) (bsc#1287078, CVE-2026-78660)
+  (bsc#1287160, CVE-2026-78663) (bsc#1287504, CVE-2026-97032) (forwarded request 1392688 from glaubitz)</comment>
+    <requestid>1392701</requestid>
+  </revision>
 </revisionlist>
