@@ -408,4 +408,14 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
   pattern rather than libreoffice-qt5 (boo#1277445) (forwarded request 1374632 from krop)</comment>
     <requestid>1374895</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>1853417a5c3842a194940be8f53e756f</srcmd5>
+    <version>20260830</version>
+    <time>1793005070</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the Tumbleweed-only Recommends on yast2-control-center-qt and
+  pattern() = kde_yast from the kde pattern.
+  [edited by fabian@ritter-vogt.de]</comment>
+    <requestid>1386185</requestid>
+  </revision>
 </revisionlist>

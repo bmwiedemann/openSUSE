@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 18 18:11:37 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop the Tumbleweed-only Recommends on yast2-control-center-qt and
+  pattern() = kde_yast from the kde pattern.
+  [edited by fabian@ritter-vogt.de]
+
+-------------------------------------------------------------------
 Mon Aug 31 15:35:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Drop Leap 15 recommends from spec file

@@ -469,11 +469,6 @@ Recommends:     pattern() = games
 Recommends:     pattern() = kde_internet
 Recommends:     pattern() = kde_pim
 Recommends:     pattern() = kde_utilities
-# Only for Tumbleweed
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
-Recommends:     yast2-control-center-qt
-Recommends:     pattern() = kde_yast
-%endif
 Recommends:     pattern() = multimedia
 Recommends:     pattern() = office
 # bnc#605509
