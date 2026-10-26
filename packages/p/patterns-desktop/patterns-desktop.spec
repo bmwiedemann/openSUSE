@@ -182,7 +182,6 @@ Recommends:     ImageMagick
 Recommends:     dvd+rw-tools
 Recommends:     mjpegtools
 Recommends:     vorbis-tools
-Recommends:     yast2-sound
 Suggests:       blender
 Suggests:       ripit
 # maintained by coolo - must be good
