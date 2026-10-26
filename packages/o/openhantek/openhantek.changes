@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 23 17:08:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.4.0:
+  * Add support for Instrustar ISDS205A/B/X oscilloscopes
+  * Add greater math modes; allow MATH scaling from 20 mV to 1000 V
+  * Show oversampling factor on top of screen
+  * Add persistent doNotTranslate option to bypass localisation;
+    no UI translation for LANG=en_*
+  * Remember save-as path for screenshots and exports; report an
+    error when the screenshot or export file write fails
+  * Fix voltage scale indices and channel calibration (ISDS205b)
+  * Rename desktop file to org.openhantek.OpenHantek.desktop
+  * Update user manual and translations; restructure includes,
+    refactor build system and fix compiler warnings
+
+-------------------------------------------------------------------
 Mon Sep  4 08:14:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.3:

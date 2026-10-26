@@ -17,12 +17,11 @@
 
 
 Name:           openhantek
-Version:        3.3.3
+Version:        3.4.0
 Release:        0
 Summary:        Software for Hantek DSO6022 USB digital signal oscilloscopes
 License:        GPL-3.0-or-later
-Group:          Hardware/Other
-URL:            http://openhantek.org/
+URL:            https://openhantek.org/
 Source:         https://github.com/OpenHantek/OpenHantek6022/archive/refs/tags/%{version}.tar.gz#/%name-%version.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -50,14 +49,14 @@ compatible scopes (Voltcraft, Darkwire, Protek, Acetech, etc.).
 
 %install
 %cmake_install
-%suse_update_desktop_file OpenHantek Development Debugger Education Engineering DataVisualization Qt
+%suse_update_desktop_file org.openhantek.OpenHantek Development Debugger Education Engineering DataVisualization Qt
 
 %files
 %license LICENSE
 %doc CHANGELOG README README.md
 %{_bindir}/OpenHantek
 %{_prefix}/lib/udev/rules.d/60-openhantek.rules
-%{_datadir}/applications/OpenHantek.desktop
+%{_datadir}/applications/org.openhantek.OpenHantek.desktop
 %{_datadir}/doc/%{name}/
 %dir %{_datadir}/icons/hicolor/48x48
 %dir %{_datadir}/icons/hicolor/48x48/apps
