@@ -1,3 +1,12 @@
+gpxsee (16.18) stable; urgency=low
+
+  * Directory listing now takes a geologically-short time on
+    Android.
+  * Fixed video playback on Android.
+  * Mapsforge map style tweaking.
+
+ -- Martin Tůma <tumic@gpxsee.org>  Sun, 25 Oct 2026 23:30:39 +0100
+
 gpxsee (16.17) stable; urgency=low
 
   * Added playback of waypoint videos.
