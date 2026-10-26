@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Oct 25 10:36:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.21:
+  * Added PKCS#11 provider support for `openssl genpkey`
+  * Added the PKCS11_generate_key_ext() API
+  * Added the PKCS11_CTX_set_pkey_callback() API
+  * Removed incorrect `fips=yes` properties from provider
+    algorithms
+  * Isolated ENGINE EVP_PKEY methods from unrelated OpenSSL keys
+  * Fixed ENGINE EVP_PKEY method races and lifetime issues
+  * Fixed public-key association for generated key pairs with
+    duplicate CKA_ID values
+  * Added all-zero shared-secret checks for X25519 and X448
+  * Fixed a provider EC public-point NULL dereference with
+    affected OpenSSL 3.x versions
+  * Fixed building with OpenSSL 1.0.2
+  * Improved Git build and RSA-OAEP documentation
+  * Added PKCS#11 3.2 interface discovery and updated the bundled
+    header to version 3.2
+  * Added PKCS#11 provider support for ML-KEM-512, ML-KEM-768 and
+    ML-KEM-1024 key generation, encapsulation and decapsulation
+  * Added the PKCS11_evp_pkey_decapsulate() API
+  * Added provider signature AlgorithmIdentifier support,
+    including RSA-PSS parameters and correct default salt length
+    handling
+  * Fixed RSA-PSS salt length parsing and spurious OpenSSL errors
+  * Fixed session-pool races and deadlocks during concurrent key
+    generation and cryptographic operations
+  * Fixed key-cache and OpenSSL 1.x RSA object use-after-free
+    bugs
+  * Fixed provider EC parameter lifetime handling and resource
+    leaks during EC, RSA, EdDSA and XDH operations and context
+    cleanup
+  * Added native KEYMGMT, SIGNATURE and ASYM_CIPHER operations to
+    the PKCS#11 provider, enabling OpenSSL 4.x support and
+    improving RSA interoperability
+  * Added support for ML-DSA, SLH-DSA and FALCON key generation,
+    signing and verification
+  * Added PQC key generation examples and provider tests
+  * Added PKCS#11 provider support for ECDH, X25519 and X448 key
+    exchange, including X25519 and X448 key generation
+  * Improved Ed25519 and Ed448 public-key resolution with
+    certificate fallback
+  * Fixed use-after-free crashes after enumerating additional
+    PKCS#11 keys
+  * Fixed a potential out-of-bounds write while parsing PKCS#11
+    URI attributes
+
+-------------------------------------------------------------------
 Sat Feb  7 18:20:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.4.17:
@@ -147,14 +196,14 @@ Tue Oct 22 04:23:31 UTC 2019 - Jason Sikes <jsikes@suse.com>
 
 - Update to version 0.4.10:
 
-  * Added EC signing through EVP API 
-  * Added an empty EC private key required by OpenSSL 1.1.1 
-  * Stored additional certificate attributes 
-  * Engine allowed to use private keys without a PIN 
-  * Lazy binding used as a workaround for buggy modules 
-  * MinGW build fixes and documentation 
-  * LibreSSL 2.8.3 build fixes 
-  * Error handling fixes 
+  * Added EC signing through EVP API
+  * Added an empty EC private key required by OpenSSL 1.1.1
+  * Stored additional certificate attributes
+  * Engine allowed to use private keys without a PIN
+  * Lazy binding used as a workaround for buggy modules
+  * MinGW build fixes and documentation
+  * LibreSSL 2.8.3 build fixes
+  * Error handling fixes
 
 -------------------------------------------------------------------
 Tue Mar 12 16:15:22 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
@@ -227,9 +276,9 @@ Wed Dec  2 00:18:59 UTC 2015 - p.drouand@gmail.com
 - Update to version 0.3.0
   * Added small test suite based on softhsm (run on make check)
   * Memory leak fixes
-  * On module initialization tell the module that the OS locking 
+  * On module initialization tell the module that the OS locking
     primitives are OK to use
-  * Transparently handle applications that fork. That is call C_Initialize() 
+  * Transparently handle applications that fork. That is call C_Initialize()
     and reopen any handles if a fork is detected.
   * Eliminated any hard coded limits for certificate size
   * Added support for ECDSA
@@ -285,7 +334,7 @@ Tue Sep  2 11:39:55 CEST 2008 - crrodriguez@suse.de
 
 - fix build, doxygen required.
 - kill ".la" files and static libraries
-- fix -devel package requires 
+- fix -devel package requires
 
 -------------------------------------------------------------------
 Tue Aug 19 14:53:13 CEST 2008 - sbrabec@suse.cz
@@ -307,7 +356,7 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 -------------------------------------------------------------------
 Mon Jul 30 00:53:34 CEST 2007 - ro@suse.de
 
-- provide old name 
+- provide old name
 
 -------------------------------------------------------------------
 Wed Jul 25 16:40:27 CEST 2007 - sbrabec@suse.cz
@@ -324,7 +373,7 @@ Wed Jul 25 16:40:27 CEST 2007 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri Mar 30 01:45:07 CEST 2007 - ro@suse.de
 
-- added zlib-devel to buildreq 
+- added zlib-devel to buildreq
 
 -------------------------------------------------------------------
 Tue Oct  3 17:50:13 CEST 2006 - sbrabec@suse.cz

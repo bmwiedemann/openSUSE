@@ -1,7 +1,7 @@
 #
 # spec file for package libp11
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@
 %define libname libp11-3
 %endif
 Name:           libp11
-Version:        0.4.17
+Version:        0.4.21
 Release:        0
 Summary:        Library Implementing a Small Layer on Top of PKCS#11 API
 License:        LGPL-2.1-or-later
