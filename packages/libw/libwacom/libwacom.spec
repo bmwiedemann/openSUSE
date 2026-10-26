@@ -17,28 +17,26 @@
 
 # library version from upstream meson.build
 %define sover 9
-
 Name:           libwacom
-Version:        2.19.1
+Version:        2.20.0
 Release:        0
 Summary:        Tablet description library
 License:        HPND
-Group:          Development/Libraries/C and C++
 URL:            https://linuxwacom.github.io/
 Source0:        https://github.com/linuxwacom/libwacom/releases/download/libwacom-%{version}/libwacom-%{version}.tar.xz
 Source1:        https://github.com/linuxwacom/libwacom/releases/download/libwacom-%{version}/libwacom-%{version}.tar.xz.sig
 # Fetched from https://github.com/whot.gpg
 Source2:        %{name}.keyring
 Source99:       baselibs.conf
-BuildRequires:  meson >= 0.57.0
+BuildRequires:  doxygen
 BuildRequires:  fdupes
+BuildRequires:  meson >= 0.58.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libevdev) >= 1.7.0
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  doxygen
 
 %description
 libwacom is a library to identify graphics tablets and their model-specific
@@ -47,7 +45,6 @@ on-screen tablet", "what is the size of this model", etc.
 
 %package -n libwacom%{sover}
 Summary:        Library to identify wacom tablets
-Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
 
 %description -n libwacom%{sover}
@@ -59,7 +56,6 @@ supports any graphics tablet from any vendor.
 
 %package data
 Summary:        Data files for libwacom, a table identification library
-Group:          System/Libraries
 
 %description data
 libwacom is a library to identify graphics tablets and their model-specific
@@ -68,7 +64,6 @@ on-screen tablet", "what is the size of this model", etc.
 
 %package tools
 Summary:        Command-line tools for libwacom
-Group:          Hardware/Other
 Requires:       python3-libevdev
 Requires:       python3-pyudev
 
@@ -79,7 +74,6 @@ This subpackage provides command-line utilities to query/update the database.
 
 %package devel
 Summary:        Header files for libwacom
-Group:          Development/Libraries/C and C++
 Requires:       libwacom%{sover} = %{version}
 
 %description devel
@@ -97,9 +91,11 @@ This subpackage provides the header files for the library.
 %install
 %meson_install
 
+# Keep the literal shebang text below: the pattern matches upstream file
+# content, it is not a path we emit (spec-cleaner macro-ifies it).
 sed -e 's-#!/usr/bin/env python3-#!/usr/bin/python3-g' -i %{buildroot}%{_bindir}/*
 find %{buildroot} -type f -name "*.la" -delete -print
-%python3_fix_shebang
+%{python3_fix_shebang}
 
 %fdupes %{buildroot}%{_datadir}/libwacom/layouts
 

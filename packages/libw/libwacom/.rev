@@ -453,4 +453,12 @@
   * Build fixes for older systems and other arches (forwarded request 1373111 from dirkmueller)</comment>
     <requestid>1373123</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>d443fb0c7b18977b5f50be66347f66d8</srcmd5>
+    <version>2.20.0</version>
+    <time>1793005073</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.20.0 (forwarded request 1392121 from pluskalm)</comment>
+    <requestid>1392141</requestid>
+  </revision>
 </revisionlist>
