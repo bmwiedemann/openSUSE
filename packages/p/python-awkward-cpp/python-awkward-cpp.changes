@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Oct 25 12:00:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 57:
+  * Add kFormatSingleLineArray for PrettyWriter
+  * Added optional support for trailing commas
+  * Added filterkey and filterkeydom examples
+  * Added npm docs
+  * Allow options for writing and parsing NaN/Infinity
+  * Add std::string overload to PrettyWriter::Key() when
+    RAPIDJSON_HAS_STDSTRING is defined
+  * Fix gcc/clang/vc warnings
+  * Fix documentation
+  * Fix emscripten alignment issue
+  * Fix missing allocator to uses of AddMember in document
+  * CMake will no longer complain that the minimum CMake version
+    is not specified
+  * Make it usable with old VC8 (VS2005)
+  * Prohibit C++11 move from Document to Value
+  * Try to fix incorrect 64-bit alignment
+  * Check return of fwrite to avoid warn_unused_result build
+    failures
+  * Fix UB in GenericDocument::ParseStream
+  * Keep Document value unchanged on parse error
+  * Add missing return statement
+  * Fix Document::Parse(const Ch*) for transcoding
+  * encodings.h: fix typo in preprocessor condition
+  * Custom Microsoft headers are necessary only for Visual Studio
+    2012 and lower
+  * Fix memory leak for invalid regex
+  * Fix a bug in schema minimum/maximum keywords for 64-bit
+    integer
+  * Fix a crash bug in regex
+  * Fix schema "required" keyword cannot handle duplicated keys
+  * Fix cmake CMP0054 warning
+  * Added missing include guards in istreamwrapper.h and
+    ostreamwrapper.h
+  * Fix undefined behaviour
+  * Fix buffer overrun using PutN
+  * Fix rapidjson::value::Get<std::string>() may returns wrong
+    data
+  * Add Flush() for all value types
+  * Handle malloc() fail in PoolAllocator
+  * Fix builds on x32 platform. #703
+
+-------------------------------------------------------------------
 Sat Jun 20 17:50:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 53:

@@ -344,4 +344,41 @@
     RAPIDJSON_HAS_STDSTRING is defined</comment>
     <requestid>1360757</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6510faae309bc6d3a82b1df2c55cf37f</srcmd5>
+    <version>57</version>
+    <time>1793005228</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 57:
+  * Add kFormatSingleLineArray for PrettyWriter
+  * Added optional support for trailing commas
+  * Added filterkey and filterkeydom examples
+  * Added npm docs
+  * Allow options for writing and parsing NaN/Infinity
+  * Add std::string overload to PrettyWriter::Key() when
+    RAPIDJSON_HAS_STDSTRING is defined
+  * Fix gcc/clang/vc warnings
+  * Fix documentation
+  * Fix emscripten alignment issue
+  * Fix missing allocator to uses of AddMember in document
+  * CMake will no longer complain that the minimum CMake version
+    is not specified
+  * Make it usable with old VC8 (VS2005)
+  * Prohibit C++11 move from Document to Value
+  * Try to fix incorrect 64-bit alignment
+  * Check return of fwrite to avoid warn_unused_result build
+    failures
+  * Fix UB in GenericDocument::ParseStream
+  * Keep Document value unchanged on parse error
+  * Add missing return statement
+  * Fix Document::Parse(const Ch*) for transcoding
+  * encodings.h: fix typo in preprocessor condition
+  * Custom Microsoft headers are necessary only for Visual Studio
+    2012 and lower
+  * Fix memory leak for invalid regex
+  * Fix a bug in schema minimum/maximum keywords for 64-bit
+    integer
+  * Fix a crash bug in regex</comment>
+    <requestid>1392407</requestid>
+  </revision>
 </revisionlist>
