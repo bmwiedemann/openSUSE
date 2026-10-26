@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 25 08:36:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 40.0.1
+  * Fixed rendering of Unicode characters in go-to-symbol matches
+    (#440).
+
+-------------------------------------------------------------------
 Mon Oct  5 18:44:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 40.0.0

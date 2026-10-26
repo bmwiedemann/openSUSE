@@ -18,7 +18,7 @@
 
 
 Name:           fx
-Version:        40.0.0
+Version:        40.0.1
 Release:        0
 Summary:        Terminal JSON viewer
 License:        MIT
