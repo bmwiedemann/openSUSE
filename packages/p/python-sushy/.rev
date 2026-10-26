@@ -409,4 +409,21 @@
   * Handle incomplete TaskMonitor responses</comment>
     <requestid>1373088</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e03ace5e8f2649d77a10cca70fd4e3c8</srcmd5>
+    <version>5.14.0</version>
+    <time>1793005468</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.14.0:
+  * Remove note about old pip's behavior
+  * Skip tempest jobs for more local files
+  * Add per-job status API to DellJobCollection
+  * Use lazy registries for TaskMonitor
+  * Fix accessing PCIe functions when Redfish does not support
+    them
+  * Update master for stable/2026.2
+  * Read reset types from ResetActionInfo when not listed inline
+  * Fix get_unfinished_jobs missing non-terminal job states</comment>
+    <requestid>1392630</requestid>
+  </revision>
 </revisionlist>
