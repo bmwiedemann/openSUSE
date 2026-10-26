@@ -255,4 +255,12 @@ Kernels &gt; 3.1 with newer Broadcom hardware require this. (forwarded request 1
     <comment></comment>
     <requestid>1279940</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1eacb9d441d6de3bb106c2891eea9108</srcmd5>
+    <version>021</version>
+    <time>1793005429</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 021 (forwarded request 1392530 from pluskalm)</comment>
+    <requestid>1392589</requestid>
+  </revision>
 </revisionlist>

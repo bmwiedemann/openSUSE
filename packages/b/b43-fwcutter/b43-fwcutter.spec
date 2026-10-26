@@ -1,7 +1,7 @@
 #
 # spec file for package b43-fwcutter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,42 +17,41 @@
 
 
 %{!?_firmwaredir: %global _firmwaredir /lib/firmware}
-
 Name:           b43-fwcutter
-Version:        019
+Version:        021
 Release:        0
 Summary:        Tool for extracting firmware from newer Broadcom WLAN drivers
 License:        BSD-2-Clause
-Group:          Hardware/Wifi
 URL:            https://bues.ch/cms/hacking/misc.html#linux_b43_driver_firmware_tools
-Source:         http://bues.ch/b43/fwcutter/%{name}-%{version}.tar.bz2
+Source:         https://bues.ch/b43/fwcutter/%{name}-%{version}.tar.xz
 Source1:        install_bcm43xx_firmware
+BuildRequires:  gcc
+BuildRequires:  make
 Requires:       curl
-Supplements:    modalias(pci:v000014E4d000043*sv*sd*bc*sc*i*)
-#b43legacy
-Supplements:    modalias(ssb:v4243id0812rev04*)
-Supplements:    modalias(ssb:v4243id0812rev02*)
 #b43
-Supplements:    modalias(pcmcia:m02D0c0476f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(pcmcia:m02D0c0448f*fn*pfn*pa*pb*pc*pd*)
-Supplements:    modalias(bcma:m04BFid0812rev1Dcl*)
-Supplements:    modalias(bcma:m04BFid0812rev18cl*)
-Supplements:    modalias(bcma:m04BFid0812rev17cl*)
 Supplements:    modalias(bcma:m04BFid0812rev11cl*)
-Supplements:    modalias(ssb:v4243id0812rev10*)
-Supplements:    modalias(ssb:v4243id0812rev0F*)
-Supplements:    modalias(ssb:v4243id0812rev0D*)
-Supplements:    modalias(ssb:v4243id0812rev0C*)
-Supplements:    modalias(ssb:v4243id0812rev0B*)
-Supplements:    modalias(ssb:v4243id0812rev0A*)
-Supplements:    modalias(ssb:v4243id0812rev09*)
-Supplements:    modalias(ssb:v4243id0812rev07*)
-Supplements:    modalias(ssb:v4243id0812rev06*)
+Supplements:    modalias(bcma:m04BFid0812rev17cl*)
+Supplements:    modalias(bcma:m04BFid0812rev18cl*)
+Supplements:    modalias(bcma:m04BFid0812rev1Dcl*)
+Supplements:    modalias(pci:v000014E4d000043*sv*sd*bc*sc*i*)
+Supplements:    modalias(pcmcia:m02D0c0448f*fn*pfn*pa*pb*pc*pd*)
+Supplements:    modalias(pcmcia:m02D0c0476f*fn*pfn*pa*pb*pc*pd*)
+#b43legacy
+Supplements:    modalias(ssb:v4243id0812rev02*)
+Supplements:    modalias(ssb:v4243id0812rev04*)
+#b43
 Supplements:    modalias(ssb:v4243id0812rev05*)
-
+Supplements:    modalias(ssb:v4243id0812rev06*)
+Supplements:    modalias(ssb:v4243id0812rev07*)
+Supplements:    modalias(ssb:v4243id0812rev09*)
+Supplements:    modalias(ssb:v4243id0812rev0A*)
+Supplements:    modalias(ssb:v4243id0812rev0B*)
+Supplements:    modalias(ssb:v4243id0812rev0C*)
+Supplements:    modalias(ssb:v4243id0812rev0D*)
+Supplements:    modalias(ssb:v4243id0812rev0F*)
+Supplements:    modalias(ssb:v4243id0812rev10*)
 Obsoletes:      bcm43xx-fwcutter < %{version}
 Provides:       bcm43xx-fwcutter = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 b43-fwcutter can be used to extract firmware from Windows WLAN drivers
@@ -63,7 +62,7 @@ card under Linux using the b43 or b43legacy driver.
 %setup -q
 
 %build
-make CFLAGS="%{optflags}" %{?_smp_mflags}
+%make_build CFLAGS="%{optflags}"
 
 %install
 #make PREFIX=%%{buildroot}/usr \
@@ -85,7 +84,6 @@ do
 done
 
 %files
-%defattr(-, root, root)
 %doc README
 %{_bindir}/b43-fwcutter
 %{_sbindir}/install_bcm43xx_firmware

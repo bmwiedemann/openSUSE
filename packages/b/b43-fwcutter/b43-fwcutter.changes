@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:22:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 021:
+  * Support extracting firmware from two more Broadcom driver blobs
+    (wl_apsta.o, wlDSL-3580_EU.o_save)
+  * Fix possible firmware filename truncation in driver
+    identification output
+  * Port the mklist.py helper script to Python 3
+  * Upstream tarball format changed to .tar.xz; adjust Source
+    URL accordingly
+- Spec cleanup: drop obsolete Group, BuildRoot and %defattr, use
+  %make_build, declare missing gcc and make BuildRequires
+- Fix Supplements grouping: ssb rev02 belongs to b43legacy,
+  both pcmcia IDs to b43
+
+-------------------------------------------------------------------
 Wed May 14 03:39:00 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update URL to HTTPS
