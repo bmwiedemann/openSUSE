@@ -25,7 +25,7 @@ end
 
 # compiled modules should go here
 %lua_archdir %{lua:
-  local handle = io.popen("pkgconf --variable=INSTALL_CMOD lua 2>/dev/null")
+  local handle = io.popen("pkg-config --variable=INSTALL_CMOD lua 2>/dev/null")
   local result = handle:read("*a")
   handle:close()
   result = result:gsub("^%s*(.-)%s*$", "%1")
@@ -35,7 +35,7 @@ end
 # pure Lua modules should go here
 %lua_noarchdir %{lua:
 local output = ""
-local f = io.popen("pkgconf --variable=INSTALL_LMOD lua 2>/dev/null")
+local f = io.popen("pkg-config --variable=INSTALL_LMOD lua 2>/dev/null")
 if f ~= nil then
     output = f:read("*a"):gsub("^%s*(.-)%s*$", "%1")
     f:close()
@@ -49,7 +49,7 @@ print(rpm.expand("%{_datadir}/lua/%{lua_version}"))
 
 # lua includes folder
 %lua_incdir %{lua:
-  local handle = io.popen("pkgconf --variable=includedir lua 2>/dev/null")
+  local handle = io.popen("pkg-config --variable=includedir lua 2>/dev/null")
   local result = handle:read("*a")
   handle:close()
   result = result:gsub("^%s*(.-)%s*$", "%1")
@@ -96,7 +96,6 @@ if mod_name == "" or mod_name == "%{?mod_name}" then
     print("-- Error: %%{mod_name} is not defined!")
     return
 end
-
 --
 local lua_ver_nodots = rpm.expand("%{lua_version_nodots}")
 local lua_ver_default_nodots = rpm.expand("%{lua_version_default_nodots}")
@@ -132,6 +131,6 @@ luarocks --lua-version "%{lua_version}" make --deps-mode none --pack-binary-rock
 %luarocks_install \
   %{_rpmconfigdir}/install-lua-rock.sh "%{lua_version}" "%{buildroot}%{_prefix}" "%{buildroot}%{luarocks_treedir}/%{mod_name}"
 
-%alternatives_requires_exclude() %{global __requires_exclude ^/usr/bin/lua(5\\.[1-9]|jit)?$}
+%alternatives_requires_exclude() %global __requires_exclude ^/usr/bin/lua(5\\.[1-9]|jit)?$
 
 # vi: ft=spec

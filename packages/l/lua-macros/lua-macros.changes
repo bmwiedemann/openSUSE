@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 22 13:01:55 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix build on SLE15
+  - rpm on SLE15 does not like %%{global name ...}, remove superfluous {}
+
+-------------------------------------------------------------------
+Tue Jul 21 17:16:27 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix build on SLE12
+  - SLE12 and SLE15 rpm does not like empty lines in lua macros. Drop.
+  - pkgconf and pkgconfig are distinct binaries. lua-macros depend on pkgconfig
+    but call pkgconf. Correct the calls to use the older binary name.
+
+-------------------------------------------------------------------
+Tue Jul 21 17:14:23 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix lua-interpreter dependency condition (bsc#1272140)
+
+-------------------------------------------------------------------
 Sat Feb 28 01:36:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Don't double escape, just once is enough.

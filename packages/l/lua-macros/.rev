@@ -154,4 +154,20 @@
   versions don't like blank lines in lua macros.</comment>
     <requestid>1335528</requestid>
   </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>122eb2493630cdbb5802008a29aeda64</srcmd5>
+    <version>20210827</version>
+    <time>1793005066</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on SLE15
+  - rpm on SLE15 does not like %%{global name ...}, remove superfluous {}
+
+- Fix build on SLE12
+  - SLE12 and SLE15 rpm does not like empty lines in lua macros. Drop.
+  - pkgconf and pkgconfig are distinct binaries. lua-macros depend on pkgconfig
+    but call pkgconf. Correct the calls to use the older binary name.
+
+- Fix lua-interpreter dependency condition (bsc#1272140)</comment>
+    <requestid>1392251</requestid>
+  </revision>
 </revisionlist>

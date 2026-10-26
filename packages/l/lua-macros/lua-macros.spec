@@ -1,7 +1,7 @@
 #
 # spec file for package lua-macros
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Group:          Development/Languages/Other
 URL:            https://www.lua.org
 Source0:        macros.lua
 Source1:        install-lua-rock.sh
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 Requires:       lua-interpreter
 %elif 0%{?suse_version} >= 1500
 # on SLE 12 lua is lua5.2 unconditionally, avoid
