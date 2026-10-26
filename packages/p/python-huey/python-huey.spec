@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-huey
-Version:        2.6.0
+Version:        3.5.3
 Release:        0
 Summary:        A little task queue for Python
 License:        MIT
@@ -63,36 +63,26 @@ Huey supports:
 
 %prep
 %autosetup -p1 -n huey-%{version}
-# Remove empty file from source
-rm huey/contrib/djhuey/models.py
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/huey_consumer.py
 %python_clone -a %{buildroot}%{_bindir}/huey_consumer
-
-%{python_expand #
-chmod 755 %{buildroot}%{$python_sitelib}/huey/bin/huey_consumer.py
-%{$python_fix_shebang_path %{buildroot}%{$python_sitelib}/huey/bin/huey_consumer.py}
-}
-
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # all checks need a running REDIS instance
 
 %post
-%python_install_alternative huey_consumer.py huey_consumer
+%python_install_alternative huey_consumer
 
 %postun
-%python_uninstall_alternative huey_consumer.py
+%python_uninstall_alternative huey_consumer
 
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license LICENSE
-%python_alternative %{_bindir}/huey_consumer.py
 %python_alternative %{_bindir}/huey_consumer
 %{python_sitelib}/huey
 %{python_sitelib}/huey-%{version}.dist-info

@@ -69,4 +69,41 @@
     actions.</comment>
     <requestid>1338097</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d64520cad16a58192810649983138bc5</srcmd5>
+    <version>3.5.3</version>
+    <time>1793005509</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.3:
+  * Close the storage connection before forking process workers,
+    this just simplifies things. Refs #924 sorta.
+  * Run the callback of an empty chord with an empty results
+    list. Previously it was never enqueued, fixes #926.
+  * **Backwards-incompatible.** Stop storing an error or running
+    `on_error` when a task raises `RetryTask`, or is rate-limited
+    or locked, with a retry pending.
+  * Fix `RedisSemaphore` allowing more than `value` holders under
+    contention.
+  * Renew the `lock_task_semaphore` slot while the task runs, and
+    drop the timeout from 24 hours to 5 minutes.
+  * Ensure `FileStorage` readers never see a partially-written
+    result.
+  * Prevent forked workers deadlocking w/sqlite or PG storage
+    when another thread was using the storage at fork time, see #924.
+  * Ensure traceback is stored properly for error results.
+  * Restart the stats recorder in forked children via
+    `os.register_at_fork`.
+  * Previously the writer thread existed only in the process that
+    called `enable_stats()`, so a consumer w/ `worker_type='process'`
+  * Add `retry_backoff` parameter to `task()` and
+    `periodic_task()`. The first retry waits `retry_delay` seconds
+    and each subsequent delay is multiplied by `retry_backoff`,
+    giving exponentially-growing waits between retries.
+  * Fix `create_tables=False`, which crashed `SqliteHuey` at
+    connect and was silently ignored by the peewee `SqlHuey`.
+    `SqlStorage` also gains `initialize_schema()` so the
+    `create_huey_tables` command supports it.
+  * Add `store_intermediate_errors` option (default true,</comment>
+    <requestid>1392647</requestid>
+  </revision>
 </revisionlist>
