@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 12:37:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.1:
+  * @beartype `0.23.1` is the minor release that wishes it was
+    the ultimate QA suplex. Instead, it just resolves a single
+    regression at the intersection between @beartype `0.23.1`,
+    Python ≤ 3.13, and PEP 557-compliant
+
+-------------------------------------------------------------------
 Tue May 19 05:31:39 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Commented python-torch build requirement. python-torch package is

@@ -17,7 +17,7 @@
 
 
 Name:           python-beartype
-Version:        0.22.9
+Version:        0.23.1
 Release:        0
 Summary:        Unbearably fast runtime type checking in pure Python
 License:        MIT
