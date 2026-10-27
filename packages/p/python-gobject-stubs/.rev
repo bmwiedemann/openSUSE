@@ -25,4 +25,41 @@ Typing stubs for python-gobject to (typically) allow IDEs to provide helpful com
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1343008</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22e09f5e1aeb35ab1dbe15329d535813</srcmd5>
+    <version>2.20.0</version>
+    <time>1793116064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20.0:
+  + Improve type hints for
+    - Adw: Update to 1.10.0.
+    - Gtk4: Update to 4.24.1.
+    - Atspi: Update to 2.62.1 (gh#pygobject/pygobject-stubs#325).
+    - Rsvg: Update to 2.63.3 (gh#pygobject/pygobject-stubs#315).
+  + Bug Fixes
+    - Generator: Write aliases after the classes in the same
+      module.
+    - Gtk3: Add missing import of `Collection`
+      (gh#pygobject/pygobject-stubs#324).
+    - Generator: Build type vars before writing imports
+      (gh#pygobject/pygobject-stubs#321).
+- Changes from version 2.19.0:
+  + Improve type hints for:
+    - GLib.
+    - GLibUnix.
+  + Bug Fixes:
+    - GLib: Fix annotation for io_add_watch().
+    - Fix regressions.
+- Changes from version 2.18.0:
+  + New feature: new update script with stub selection options
+    (gh#pygobject/pygobject-stubs#303).
+  + Improvements
+    - asyncio-related stubs in events and `Gio`
+      (gh#pygobject/pygobject-stubs#309).
+    - vfunc and `AsyncReadyCallback` signatures
+      (gh#pygobject/pygobject-stubs#308).
+    - generate async overloads for finish-func methods
+      (gh#pygobject/pygobject-stubs#307).</comment>
+    <requestid>1392729</requestid>
+  </revision>
 </revisionlist>

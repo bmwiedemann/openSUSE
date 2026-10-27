@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sun Oct 25 17:40:25 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.20.0:
+  + Improve type hints for
+    - Adw: Update to 1.10.0.
+    - Gtk4: Update to 4.24.1.
+    - Atspi: Update to 2.62.1 (gh#pygobject/pygobject-stubs#325).
+    - Rsvg: Update to 2.63.3 (gh#pygobject/pygobject-stubs#315).
+  + Bug Fixes
+    - Generator: Write aliases after the classes in the same
+      module.
+    - Gtk3: Add missing import of `Collection`
+      (gh#pygobject/pygobject-stubs#324).
+    - Generator: Build type vars before writing imports
+      (gh#pygobject/pygobject-stubs#321).
+- Changes from version 2.19.0:
+  + Improve type hints for:
+    - GLib.
+    - GLibUnix.
+  + Bug Fixes:
+    - GLib: Fix annotation for io_add_watch().
+    - Fix regressions.
+- Changes from version 2.18.0:
+  + New feature: new update script with stub selection options
+    (gh#pygobject/pygobject-stubs#303).
+  + Improvements
+    - asyncio-related stubs in events and `Gio`
+      (gh#pygobject/pygobject-stubs#309).
+    - vfunc and `AsyncReadyCallback` signatures
+      (gh#pygobject/pygobject-stubs#308).
+    - generate async overloads for finish-func methods
+      (gh#pygobject/pygobject-stubs#307).
+    - property and enum stub generation
+      (gh#pygobject/pygobject-stubs#306).
+    - add `--format` to run formatters on the generated stub
+      (gh#pygobject/pygobject-stubs#301).
+    - rewrite generator type/callback handling
+      (gh#pygobject/pygobject-stubs#298).
+    - always use `__init__` instead of `__new__`
+      (gh#pygobject/pygobject-stubs#295).
+    - class generation, props typing, and `__init__` arguments
+      (gh#pygobject/pygobject-stubs#294).
+    - constant and property annotations
+      (gh#pygobject/pygobject-stubs#288).
+    - properly type read-only properties
+      (gh#pygobject/pygobject-stubs#286).
+    - assign aliases, update inheritance
+      (gh#pygobject/pygobject-stubs#285).
+    - use versioned imports to improve type checking
+    - typing in generate script
+    - bump and use ruff instead of isort
+    - enum and flags classes inheritance
+    - Add typings for `gi._gi` (gh#pygobject/pygobject-stubs#272).
+    - Add default for `ListModel` type param
+      (gh#pygobject/pygobject-stubs#271).
+  + Typing: Almost all libs were updated due to generator
+    improvements
+  + Bug Fixes:
+    - `__get__` for FunctionInfo and VFuncInfo should return Self
+      (gh#pygobject/pygobject-stubs#310).
+    - accept bytes in `GdkPixbuf.Pixbuf.new_from_data()`
+      (gh#pygobject/pygobject-stubs#300).
+    - gstreamer stubs (gh#pygobject/pygobject-stubs#289).
+    - class bases generation (gh#pygobject/pygobject-stubs#293).
+    - `GInterface` and `GObject.Object` shape and inheritance
+      (gh#pygobject/pygobject-stubs#290).
+    - actually add the `Gio.ListModel` default to the stub
+      (gh#pygobject/pygobject-stubs#238).
+    - use `main()` and call `gi.require()`
+
+-------------------------------------------------------------------
 Sun Mar 22 04:34:29 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.17.0:

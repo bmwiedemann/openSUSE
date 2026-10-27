@@ -25,7 +25,7 @@
 %define psuffix %{?with_gtk3:-gtk3}%{!?with_gtk3:%{nil}}
 
 Name:           %{pname}%{psuffix}
-Version:        2.17.0
+Version:        2.20.0
 Release:        0
 Summary:        Typing stubs for PyGObject
 License:        LGPL-2.1-only
