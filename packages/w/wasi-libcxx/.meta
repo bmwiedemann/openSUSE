@@ -1,0 +1,4 @@
+<package name="wasi-libcxx" project="openSUSE:Factory">
+  <title>wasi-libstdcxx</title>
+  <description>wasi builds of LLVMs libstdcxx and libcxxabi</description>
+</package>

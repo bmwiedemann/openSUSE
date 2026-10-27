@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Oct 13 12:00:00 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to LLVM 23.1.2, target wasm32-wasip1.
+- Build via the runtimes/ entry point (standalone libcxx/libcxxabi
+  builds were removed upstream).
+- Source is now a subset of llvm-project created by _service, as
+  LLVM no longer ships per-project tarballs.
+- Add llvm-pr-186054.patch and llvm-undo-part-of-194317.patch
+  from wasi-sdk.
+
+-------------------------------------------------------------------
+Wed Aug 10 11:28:21 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Initial commit 

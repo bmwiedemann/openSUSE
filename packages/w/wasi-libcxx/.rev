@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5963affcc64d711fed8c92fa42e3b816</srcmd5>
+    <version>23.1.2</version>
+    <time>1793130997</time>
+    <user>dimstar_suse</user>
+    <comment>New package, needed for Firefox wasm sandboxing security feature.
+This was discussed/developed with the llvm/wasi-libc maintainer.</comment>
+    <requestid>1392966</requestid>
+  </revision>
+</revisionlist>

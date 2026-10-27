@@ -1,0 +1,3 @@
+# wasm static libraries are arch-independent, but rpmlint treats them as host binaries
+addFilter("arch-independent-package-contains-binary-or-object .*")
+addFilter("devel-file-in-non-devel-package .*")
