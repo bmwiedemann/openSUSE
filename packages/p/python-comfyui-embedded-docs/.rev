@@ -84,4 +84,12 @@ counts exactly 1018 node directories, and no file ships executable.</comment>
     <comment>Update to 0.5.14: new node docs (CameraAngle, Quiver V2, Vidu Q4, LoRA loaders), Luma retirement notes, de/he/it translations. Builds green.</comment>
     <requestid>1384889</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b4a3f963a4821aa93cc445b6beabf20a</srcmd5>
+    <version>0.5.15</version>
+    <time>1793116845</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-comfyui-embedded-docs to 0.5.15.</comment>
+    <requestid>1392933</requestid>
+  </revision>
 </revisionlist>

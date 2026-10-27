@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:29:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.15:
+  * New node docs: Kling 4.0, MiniMax H3, Fibo 2.0 and
+    MOSS-Image nodes, Bria guided remove background and
+    product nodes, Ideogram Vector, Meshy T2.5 smart
+    topology, Mirelo, VEED, Flux 3 Max video and Flux
+    Kontext/Flux 2 image nodes, plus Clarity Crystal video
+    upscale, HeyGen voice, Higgsfield motion transfer and
+    SDR-to-HDR docs
+  * Drop pages for removed nodes and restore canonical doc
+    folder names; note the Quiver Arrow 1-series retirement
+  * Refresh the existing node documentation and its
+    translations, including the Spanish locale sync
+  * Many more fixes and improvements; see upstream release notes
+    for the full list
+
+-------------------------------------------------------------------
 Thu Oct 15 04:42:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.14:
