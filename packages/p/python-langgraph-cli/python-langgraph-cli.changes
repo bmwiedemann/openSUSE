@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:30:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.40 (crosses 0.4.39):
+  * 0.4.39: add --json to deploy list; routine dependency bumps
+    (zod, checkpoint-postgres, virtualenv, setuptools,
+    opentelemetry-api)
+  * 0.4.40: send the upload headers the control plane returns
+
+-------------------------------------------------------------------
 Sun Oct 25 06:00:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.38:
