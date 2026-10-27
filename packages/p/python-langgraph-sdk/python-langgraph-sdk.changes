@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:33:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.10:
+  * Retry runs.wait with a bodyless GET and raise run errors
+    in the sync wait
+  * Follow the SSE spec for multi-line data, empty ids and
+    a leading BOM
+  * Accept durability, stream_resumable and context in the
+    runs overloads
+
+-------------------------------------------------------------------
 Sun Oct 25 06:00:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.9:

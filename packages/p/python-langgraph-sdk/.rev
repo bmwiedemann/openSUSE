@@ -91,4 +91,12 @@ Built and checked locally on aarch64: 510 tests pass, rpmlint 0 errors,
     <comment>Update python-langgraph-sdk to 0.4.9.</comment>
     <requestid>1392569</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3dc5eaa46cbd63327fadbd2d3c0ae7d0</srcmd5>
+    <version>0.4.10</version>
+    <time>1793116703</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-langgraph-sdk to 0.4.10.</comment>
+    <requestid>1392921</requestid>
+  </revision>
 </revisionlist>
