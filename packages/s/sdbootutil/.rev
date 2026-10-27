@@ -995,4 +995,15 @@
     <comment>1</comment>
     <requestid>1386348</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>c9818ab08d2a7fcf69dc4ea4be1a8477</srcmd5>
+    <version>1+git20261026.4e266f0</version>
+    <time>1793115982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1+git20261026.4e266f0:
+  * Add --version parameter
+  * Do not propagate umount to the host
+  * Do not add duplicate cmdline.d entries (forwarded request 1392713 from aplanas)</comment>
+    <requestid>1392715</requestid>
+  </revision>
 </revisionlist>

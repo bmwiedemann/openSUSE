@@ -55,7 +55,7 @@ fi									\
 %{nil}
 
 Name:           sdbootutil
-Version:        1+git20261007.53bc127
+Version:        1+git20261026.4e266f0
 Release:        0
 Summary:        Bootctl wrapper for BLS boot loaders
 License:        MIT
@@ -182,6 +182,8 @@ cd uhmac
 
 %install
 install -D -m 755 %{name} %{buildroot}%{_bindir}/%{name}
+sed -i 's/^version=git$/version="%{version}"/' %{buildroot}%{_bindir}/%{name}
+grep -q '^version="%{version}"$' %{buildroot}%{_bindir}/%{name}
 
 # Install uhmac binary
 pushd uhmac

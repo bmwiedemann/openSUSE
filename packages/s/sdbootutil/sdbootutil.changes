@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 26 11:51:26 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20261026.4e266f0:
+  * Add --version parameter
+  * Do not propagate umount to the host
+  * Do not add duplicate cmdline.d entries
+
+-------------------------------------------------------------------
 Fri Oct 16 06:23:18 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20261007.53bc127:
