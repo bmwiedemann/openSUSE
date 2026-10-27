@@ -25,4 +25,14 @@
     <comment></comment>
     <requestid>987753</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9391bd5cf1fcbbafcfdff340a7309f4</srcmd5>
+    <version>0.5</version>
+    <time>1793116170</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5:
+  * Avoid control-key collisions when typing literal text #77
+  * Add additional modifier keys #57</comment>
+    <requestid>1392885</requestid>
+  </revision>
 </revisionlist>

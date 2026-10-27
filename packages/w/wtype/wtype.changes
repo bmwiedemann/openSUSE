@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:30:57 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5:
+  * Avoid control-key collisions when typing literal text #77
+  * Add additional modifier keys #57
+
+-------------------------------------------------------------------
 Thu Jul  7 18:24:09 UTC 2022 - llyyr <llyyr.public@gmail.com>
 
 - Update to 0.4:
