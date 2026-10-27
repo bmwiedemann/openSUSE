@@ -36,6 +36,9 @@
 %if "%{flavor}" != "test-py314"
 %define skip_python314 1
 %endif
+%if "%{flavor}" != "test-py315"
+%define skip_python315 1
+%endif
 # Skip empty buildsets, last one is for sle15_python_module_pythons
 %if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
 ExclusiveArch:  donotbuild
@@ -46,7 +49,7 @@ ExclusiveArch:  donotbuild
 %bcond_with extratest
 
 Name:           python-scikit-learn%{psuffix}
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
@@ -54,7 +57,7 @@ URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit_learn-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 3.1.2}
 BuildRequires:  %{python_module devel >= 3.11}
-BuildRequires:  %{python_module meson-python}
+BuildRequires:  %{python_module meson-python >= 0.17.1}
 BuildRequires:  %{python_module numpy-devel >= 1.24.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy >= 1.10.0}
