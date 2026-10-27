@@ -44,4 +44,13 @@
   * image: don't bail out of images directory already exists</comment>
     <requestid>1387124</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>44bc92c78f7298ccc69f47f60ea0cc41</srcmd5>
+    <version>unknown</version>
+    <time>1793121798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20261023.8560c66:
+  * Rename images to include rdi-installer version</comment>
+    <requestid>1393128</requestid>
+  </revision>
 </revisionlist>
