@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 26 16:45:37 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 1.8.4:
+  * Release 1.8.4 (#2041)
+  * [1.8] Backports for 1.8.4: no controlling terminal for children, GNOME icon (#2040)
+  * [1.8] Clipboard: set the KDE password hint on the BSDs too (#2039)
+  * [1.8] CodeQL: analyze every pull request, without a build when no code changed (#2013)
+  * [1.8] FAQ: other apps for the same store, with what to watch out for (#2011)
+  * 1.8 CodeQL: codeql-action v4.38.2, as on main (#2002)
+  * 1.8: FAQ, README and CONTRIBUTING without em dashes (#1999)
+  * 1.8 Flatpak: build v1.8.3 (#1973)
+
+-------------------------------------------------------------------
 Tue Oct 06 15:58:08 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 1.8.3:
