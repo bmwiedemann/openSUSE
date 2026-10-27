@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 22 10:06:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.3:
+  * Build with Go 1.27.3, whose crypto/x509 rejects certificate
+    chains using the compromised eMudhra intermediates
+    (CVE-2026-111943, boo#1286317)
+  * Fix UTF-8 encoding in repository resource URIs
+  * get_file_contents returns a resource link for files over 1 MB
+  * Cursor pagination for the list_label tool
+  * No new or renamed tools
+- Vendored Go modules are unchanged since 2.0.2 (module set
+  identical): only MIT, BSD-3-Clause and Apache-2.0, no copyleft,
+  so the licence audit stands
+- go.mod now requires go 1.27.3, so raise the golang(API) floor to
+  >= 1.27 (the go command enforces the patch level at build time)
+
+-------------------------------------------------------------------
 Fri Oct  9 07:12:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.0.2 (bugfix):
