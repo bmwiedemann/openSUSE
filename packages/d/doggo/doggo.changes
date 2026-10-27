@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 23 10:58:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.2:
+  * Bug fixes
+    - cbaf054: fix(lint): handle I/O failures and remove unsafe IP
+      middleware
+  * Others
+    - e00664c: chore(deps): update Go, Astro, and CI toolchains
+    - 8ef13e1: chore(release): migrate container builds to
+      dockers_v2
+    - 021e46c: chore(release): prepare v1.4.2
+
+-------------------------------------------------------------------
 Tue Oct 13 05:37:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.1:
