@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:31:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.63.2:
+  * perf(git-checkout): read verify_worktree's hashes in step with
+    the index (#2718)
+  * fix(pipelines): strip the whole userinfo from recorded source
+    URIs (#2717)
+  * fix(qemu): wait for SSH on a wall-clock deadline instead of a
+    try count (#2714)
+
+-------------------------------------------------------------------
 Fri Oct 23 15:57:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.63.1:
