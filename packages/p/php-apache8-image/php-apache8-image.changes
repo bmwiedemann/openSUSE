@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 26 12:34:43 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- set pipefail in case we need it
+
+-------------------------------------------------------------------
 Mon Sep 21 16:02:23 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - quote arguments

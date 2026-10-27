@@ -38,11 +38,11 @@ RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
     systemd-tmpfiles --create --root /target apache2.conf
 
 # create our own apache2-foreground from the systemd startup script
-RUN sed 's|^exec $apache_bin|exec $apache_bin -DFOREGROUND|' /target/usr/sbin/start_apache2 > /target/usr/local/bin/apache2-foreground
-RUN chmod +x /target/usr/local/bin/apache2-foreground
+RUN set -euo pipefail; sed 's|^exec $apache_bin|exec $apache_bin -DFOREGROUND|' /target/usr/sbin/start_apache2 > /target/usr/local/bin/apache2-foreground
+RUN set -euo pipefail; chmod +x /target/usr/local/bin/apache2-foreground
 
 # apache fails to start without its log folder
-RUN mkdir -p /target/var/log/apache2
+RUN set -euo pipefail; install -d -m 0755 /target/var/log/apache2
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
@@ -83,7 +83,7 @@ ENV PHP_INI_DIR="/etc/php8/"
 ENV PHP_VERSION="%%php_version%%"
 ENTRYPOINT ["docker-php-entrypoint"]
 CMD ["apache2-foreground"]
+EXPOSE 80/tcp
 
 STOPSIGNAL SIGWINCH
 WORKDIR /srv/www/htdocs
-EXPOSE 80
