@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 07:23:10 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- fix vigra detection [bsc#1287783]
+- added patches
+  hg changeset 8991:5dad0e83e6c5
+  * hugin-cmake-vigra.patch
+
+-------------------------------------------------------------------
 Mon Dec 22 11:51:23 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 2025.0.1

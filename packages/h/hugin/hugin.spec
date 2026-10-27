@@ -1,8 +1,7 @@
 #
 # spec file for package hugin
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +35,8 @@ Group:          Productivity/Graphics/Other
 URL:            http://hugin.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{mversion}/%{name}-%{version}.tar.bz2
 Patch0:         hugin.appdata.patch
+# hg changeset 8991:5dad0e83e6c5
+Patch1:         hugin-cmake-vigra.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  cmake >= 3.1.0
