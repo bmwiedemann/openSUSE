@@ -118,4 +118,41 @@
   * add autopkgtests #95</comment>
     <requestid>1328434</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>287fdc9d72795c117eb4f6f4f3c5dd45</srcmd5>
+    <version>1.33</version>
+    <time>1793116147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.33:
+  Changed behavior:
+  * Accumulated values count from the start of each task. In -a and -A modes,
+    iotop now shows the I/O that a task did since it started, as counted by the
+    kernel, instead of only the I/O since iotop first saw it. A process that
+    did its I/O before iotop was started is no longer shown as idle. With -A
+    the average is over the age of the task. The total of a process includes
+    its threads that iotop saw, but not the threads that exited before.
+    --no-lifetime brings back the previous behavior, Ctrl-A toggles it and the
+    setting is saved in the config file. (#84)
+  * The IO and SWAPIN of a process are the longest that one of its threads
+    waited in the cycle. They used to follow only the thread with the most
+    delay since it started, so a process whose worker thread waited all the
+    time could show 0 and sort as idle.
+  * The interactive view refreshes when the delay is over. It used to wait in
+    steps of 200 ms, so -d 0.5 refreshed every 0.6 s and any delay below 0.2 s
+    became 0.2 s. A delay of 0 now refreshes as fast as the data can be read.
+  * After an exec a process starts over as the new program that it shows, with
+    a new graph and new totals since first seen.
+  * Batch mode with -p reads only the process of the given task, with all its
+    threads, instead of every task of the system. With many tasks a cycle took
+    seconds before; now it takes almost nothing. The Total DISK READ and Total
+    DISK WRITE then cover only that process.
+  * The config file is replaced only when the new one is complete. -W and W
+    write a temporary file next to it and rename it over the old one, so a
+    crash or a failed write no longer leaves the config empty or cut. A
+    symlinked config keeps its link, and the file keeps its mode and owner,
+    also when root saves the config of a user. When that is not possible, e.g.
+    in a directory that is not writable, the config is written in place as
+    before. On a full disk the save now fails and keeps the old config.</comment>
+    <requestid>1392895</requestid>
+  </revision>
 </revisionlist>

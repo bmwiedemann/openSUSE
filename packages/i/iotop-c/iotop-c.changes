@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:27:07 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.33:
+  Changed behavior:
+  * Accumulated values count from the start of each task. In -a and -A modes,
+    iotop now shows the I/O that a task did since it started, as counted by the
+    kernel, instead of only the I/O since iotop first saw it. A process that
+    did its I/O before iotop was started is no longer shown as idle. With -A
+    the average is over the age of the task. The total of a process includes
+    its threads that iotop saw, but not the threads that exited before.
+    --no-lifetime brings back the previous behavior, Ctrl-A toggles it and the
+    setting is saved in the config file. (#84)
+  * The IO and SWAPIN of a process are the longest that one of its threads
+    waited in the cycle. They used to follow only the thread with the most
+    delay since it started, so a process whose worker thread waited all the
+    time could show 0 and sort as idle.
+  * The interactive view refreshes when the delay is over. It used to wait in
+    steps of 200 ms, so -d 0.5 refreshed every 0.6 s and any delay below 0.2 s
+    became 0.2 s. A delay of 0 now refreshes as fast as the data can be read.
+  * After an exec a process starts over as the new program that it shows, with
+    a new graph and new totals since first seen.
+  * Batch mode with -p reads only the process of the given task, with all its
+    threads, instead of every task of the system. With many tasks a cycle took
+    seconds before; now it takes almost nothing. The Total DISK READ and Total
+    DISK WRITE then cover only that process.
+  * The config file is replaced only when the new one is complete. -W and W
+    write a temporary file next to it and rename it over the old one, so a
+    crash or a failed write no longer leaves the config empty or cut. A
+    symlinked config keeps its link, and the file keeps its mode and owner,
+    also when root saves the config of a user. When that is not possible, e.g.
+    in a directory that is not writable, the config is written in place as
+    before. On a full disk the save now fails and keeps the old config.
+  New features:
+  * --flat lists the threads alone in the interactive view, sorted by their own
+    values, instead of grouping them below their process. Ctrl-F toggles it,
+    --no-flat turns it off and the setting is saved in the config file. It has
+    no effect when only processes are shown. (#87)
+  * --no-inverse turns off --inverse, e.g. after it was saved in the config file.
+  * --debug-write works like -W, but writes the config with the preceding
+    options to standard output instead of saving it, and exits. It is meant for
+    debugging and testing. (Masatake YAMATO)
+  * make check runs a test of the option parsing (Masatake YAMATO), without the config file of the user.
+  * make scan runs the clang static analyzer (scan-build-23, or the one set in
+    SCANBUILD) on a clean build. make pv also shows the compiler and the
+    analyzer.
+  * See https://github.com/Tomas-M/iotop/releases/tag/v1.33 for more
+
+-------------------------------------------------------------------
+Tue Oct 27 06:23:14 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.32:
+  New features:
+  * VFS READ and VFS WRITE columns show the bytes that each task reads and
+    writes through the VFS layer, including I/O served from the page cache.
+    They are hidden by default. Toggle them with v in interactive mode, or use
+    --show-vfs/--hide-vfs and the per-column --show-vfs-read, --hide-vfs-read,
+    --show-vfs-write and --hide-vfs-write. The setting is saved in the config
+    file.
+  * --uid2name=MODE sets how the USER column turns UIDs into user names:
+    + always calls getpwuid(3) for every task;
+    + none shows the numeric UID;
+    + cyclic caches the names for one refresh cycle;
+    + static, the default, caches them until Ctrl-L.
+    UIDs without a name are cached too, and the mode is saved in the config file. (Masatake YAMATO)
+  * --delay accepts fractional seconds, e.g. -d 0.5, always with . whatever the locale.
+  * --time works as documented. --timestamp is accepted as a synonym, and with
+    --time every batch line is prefixed with the time.
+  * The interactive view shows the current units (IEC 1024 or SI 1000) in the top-right corner.
+  * < and > scroll the help window when it does not fit on the screen.
+  Performance:
+  * Large systems with hundreds of thousands of tasks were the main target of
+    this release. Each refresh now does much less work, and iotop uses less
+    memory
+  Fixes:
+  * The I/O priority no longer shows the Linux 6.5+ priority hints as part of the level.
+  * Taskstats replies are matched to their requests, so a late reply can no longer shift the data of the following tasks.
+  * The netlink error code is no longer read from an incomplete reply.
+  * The command name is taken from argv[0] only when the process has not rewritten its command line into one string (e.g. sshd: user@pts/0).
+  * Graphs:
+    + Process graphs are scaled by the aggregated history.
+    + The graph maximum is taken from the visible rows only.
+    + Fixed an out-of-bounds access in reversed Unicode graphs.
+  * The first curses snapshot gets proper timestamps, so the first accumulated bandwidth values are right.
+  * -n counts data refreshes in the curses view instead of loop iterations, and
+    the last iteration is shown for a full delay.
+  * Scrolling with PgUp/PgDn and the arrows starts from where the view is after the list has shrunk.
+  * A use after free is fixed: the ionice selection pointed into a freed cycle.
+  * A leak of the combining character buffer in the search input is fixed.
+  * Config file:
+    + Trailing whitespace, including the CR of CRLF line ends, is trimmed.
+    + The directories are created only when saving.
+    + An empty XDG_CONFIG_HOME is treated as unset, and the config is not placed in / when there is no home.
+    + Truncated paths are not opened.
+    + A failed save is reported, both with -W and with the W key.
+  * Numeric option values (-n, -p, -u +UID, --threshold) are now validated.
+    Invalid or out-of-range values are an error instead of being silently read
+    as 0. Empty values for --help-type and -g are rejected.
+  * getopt is fully reset before the command line is parsed after the config file.
+  * In batch mode, a kernel whose taskstats version is too old now triggers a warning.
+  * The code builds cleanly with many more compiler warnings enabled. Fixes for
+    the clang static analyzer and NULL/PATH_MAX safety checks are included.
+  * Documentation fixes in the README and the man page.
+  What's Changed:
+  * Add --user-decode option with pwuid, none, and cache methods #98
+  * Add VFS READ and VFS WRITE columns to monitor logical I/O at syscall layer #100
+
+-------------------------------------------------------------------
 Wed Jan 21 07:33:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.31:
