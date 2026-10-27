@@ -17,29 +17,26 @@
 
 
 Name:           wasi-libc
-Version:        32
+Version:        34
 Release:        0
 Summary:        WASI libc implementation for WebAssembly
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
 License:        MIT
 URL:            https://github.com/WebAssembly/wasi-libc
 Source:         https://github.com/WebAssembly/wasi-libc/archive/refs/tags/wasi-sdk-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# FIXME: This should come from LLVM.
-Source1:        https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-25/libclang_rt.builtins-wasm32-wasi-25.0.tar.gz
 Source100:      wasi-libc-rpmlintrc
-# Build uses LLVM option -wasm-enable-sjlj, which was introduced in LLVM 14.
-# (https://github.com/llvm/llvm-project/commit/77b921b870aacfd531ff449166937e0de6a377bc)
-BuildRequires:  clang >= 14
+# wasm32-wasip1 compiler-rt builtins are shipped with clang since LLVM 23.
+BuildRequires:  clang >= 23
 BuildRequires:  cmake >= 3.26
 BuildRequires:  lld
-BuildRequires:  llvm >= 14
+BuildRequires:  llvm >= 23
 BuildArch:      noarch
 
 %description
 WASI libc allows cross platform binaries to be created and executed on a variety of platforms
 
 %prep
-%autosetup -p1 -n wasi-libc-wasi-sdk-%{version} -a1
+%autosetup -p1 -n wasi-libc-wasi-sdk-%{version}
 
 %build
 # Building libsetjmp.so fails with LTO:
@@ -57,7 +54,9 @@ WASI libc allows cross platform binaries to be created and executed on a variety
     -DCMAKE_SHARED_LINKER_FLAGS="" \
     -DCMAKE_LINK_DEPENDS_USE_LINKER:BOOL=OFF \
     -DCMAKE_INSTALL_PREFIX:PATH=%{_datadir}/wasi-sysroot \
-    -DBUILTINS_LIB=%{_builddir}/%{buildsubdir}/libclang_rt.builtins-wasm32-wasi-25.0/libclang_rt.builtins-wasm32.a
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_INCLUDEDIR=include \
+    -DBUILTINS_LIB=$(clang --target=wasm32-wasip1 --print-libgcc-file-name)
 %cmake_build
 
 %install

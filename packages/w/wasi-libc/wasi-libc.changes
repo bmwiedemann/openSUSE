@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Oct 24 21:17:44 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version (wasi-sdk-)34.
+  * Update to Musl 1.2.6.
+  * Fix single-threaded recursive mutex locking.
+  * Implement timed waits for synchronization primitives.
+  * Futex-style API for locking primitives in cooperative threading
+    mode.
+  * Combine pollfds in select.
+  * Support thread names on coop threads.
+  * Tighten POSIX semantics for listen.
+  * Adjust sendto/recvfrom on TCP sockets.
+  * Implement dup-family functions.
+  * Add ppoll symbol to wasi-libc.
+  * Fix recursive thread initialization on the main thread.
+  * Fill out some more of getaddrinfo.
+  * Define file locking constants, return ENOSTUP.
+  * Don't abort on invalid-state errors.
+  * Public-facing futex API.
+  * Handle the IPV6_V6ONLY socket option.
+  * Use ESPIPE for lseek failures.
+  * Don't fail all of poll on one bad fd.
+  * Block on pending writes in close.
+  * Add futex relative sleeps and wakeup counts.
+  * Implement UDP send/receive timeouts.
+  * Configure a new stack in cabi_realloc.
+  * Route __wasm_get_stack_pointer as an import.
+  * Support shared-library TLS.
+  * Fix wasip1 accept(NULL) crash and emulated mmap leak on pread
+    failure.
+
+-------------------------------------------------------------------
+Wed Oct 14 06:53:43 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Require clang and llvm >= 23, which ship the wasm32-wasip1 compiler-rt builtins.
+
+-------------------------------------------------------------------
 Sun Apr 26 21:35:28 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version (wasi-sdk-)32.
