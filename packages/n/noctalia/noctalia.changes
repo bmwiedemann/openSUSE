@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Mon Oct 26 15:20:43 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.4.0:
+  * chore(version): bump
+  * chore(i18n): update
+  * chore: i18n update
+  * Feat/calendar past events (#4993)
+  * chore: i18n update
+  * fix(bar): render custom widget images at display resolution (#4928)
+  * fix(launcher): drop ineffective calculator pre-warm. Ref #3213
+  * refactor(ui): use palette roles instead of alpha blends in controls
+  * refactor(settings): use palette roles instead of alpha blends
+  * fix(theme): derive fixed palette containers from the surface
+  * chore(ci): let's try to keep alpha for transparency only
+  * feat(widgets/taskbar): allow customizing workspace group border colour (#4454)
+  * refactor(theme)!: expose container roles and rename ambiguous palette roles
+  * fix(tray): do not index the whole system icon tree for a tray IconThemePath (#4341)
+  * fix(notifications): send ActionInvoked and NotificationClosed only to the sender (#5047)
+  * feat(wallpaper): pick palettes through the search picker dialog
+  * fix(bar): measure clock, battery and taskbar text with the label font (#5039)
+  * feat(sysmon): add per-core CPU gauge option to the sysmon widget (#5049)
+  * fix(input): follow the text's own direction for right-to-left values (#5050)
+  * feat(launcher): make navigation labels optional
+  * feat(screenshot): add copy_on_escape for the annotation editor (#5027)
+  * build(docs): handle GitHub alerts and math in the remark formatter
+  * feat(bluetooth): notify only on external connection changes and enable by default
+  * feat(bluetooth): add bluetooth connection notification (#5028)
+  * docs: add SCOPE.md and point README scope section to it
+  * chore(nix): bump flake.lock
+  * feat(sysmon): add network-speed-decimal-places option
+  * feat(launcher): add ignore_mouse configuration option (#5023)
+  * fix(CI): use Raw string in gtk_extension file (#5025)
+  * fix(plugins): make plugin file writes private by default
+  * fix(input): honor rebound keybinds instead of hardcoded keys
+  * feat(home_tab): add avatar border toggle (#5029)
+  * fix(lockscreen): hide wallpaper, when disabled in noctalia (#5034)
+  * fix(greeter): skip wallpaper sync when wallpaper is disabled (#4942)
+  * feat(launcher): respect provider layout capabilities
+  * feat(windows): track minimise state across supported compositors
+  * feat(umbriel): assign secondary color to the minimize button in the title bar
+  * feat(lockscreen): add per-action lockscreen_shortcut with settings editor overehaul
+  * chore(18n): update and removed panel-bar-alignement
+  * docs(umbriel): adjust recommended blur settings/rules
+  * docs(bar): note that only widget capsule_radius accepts "auto"
+  * fix(config): warn about values of the wrong type instead of ignoring them
+  * perf(plugins): reuse manifest parses while file contents are unchanged
+  * perf(config): validate each override write once
+  * fix(config): reload once per editor save and on file removal
+  * fix(i18n): skip catalog reload when the requested language is unchanged
+  * Feat(ipc): add config-get/set commands (#4833)
+  * test(config): fix ci/cover bar dead_zone.click_through in schema round-trip
+  * feat(panel): honor *_position alignment for attached panels (#4827)
+  * docs(shell): clarify panel_anchor_bar overrides the source bar
+  * fix(bar): right-align sysmon values on horizontal bars (#4908)
+  * fix(control-center): resolve notification history rows by id, not cached pointers (#5018)
+  * fix(plugins): reconcile manifest changes on config reload (#5014)
+  * feat(bar): dead_zone.click_through lets clicks pass through the dead zone (#4820)
+  * feat(ui): add copy button to ColorPicker that copies in the active format
+  * docs(hyprland): add xray to blur configuration
+  * feat(i18n): add en_GB translation. Fix #4010
+  * fix(media): match album art to capsule radius
+  * feat(control-center): add circular avatar toggle
+  * fix(upower): ignore charge thresholds outside the Custom charge type (#4864)
+  * feat(templates): load community GTK extensions through built-in GTK theming
+  * docs(mango): clarification
+  * docs(mango): fix exec-once to exec_once  Fix #5010
+  * refactor(render): bundle font family and weight into TextFont (#4953)
+  * docs(contributing): limit user docs to config and behavior users need to know
+  * feat(control-center): show compositor version line in home user card
+  * Adding tab_bar and title_message_bar color to mangowm template (#5004)
+  * docs(build): correct distro names and explain moss CLI transition
+  * feat(plugins): require max_height for content-height panels
+  * feat(panel): animate content-fitted panel height and fit the polkit prompt
+  * feat(panel): fit plugin panels to their content height
+  * feat(ui): add alpha, input modes, swatches, and commit callback to ColorPicker
+  * refactor(ui): compact color picker with format switch
+  * chore: credit pixel stream co-author
+  * feat(plugins): add ui.pixelStream control for companion processes
+  * enh(mpris): add ipc calls to decrease/increase and directly set volume (#4584)
+  * chore: docs formatting
+  * feat(control-center): allow toggling media tab audio visualizer (#4959)
+  * chore: i18n update
+  * feat(bar): configure accordion duration and hover delay (#4913)
+  * fix(templates): theme Umbriel title bars
+  * docs: move community template guides to the community-templates readmes
+  * chore: ignore docs reformat in git blame
+  * docs: apply remark formatting to markdown and mdx
+  * chore: format markdown and mdx with remark
+  * fix(audio): skip sound theme loading when shell sounds are disabled and hide sub-options in Settings (#4966)
+  * feat(desktop-entry): Add XDG Desktop Entry for the image annotator (#4965)
+  * fix(calendar): skip invalid CalDAV resources instead of dropping the collection (#4979)
+  * fix(annotate): hide close button with `[shell].show_close_buttons` (#4994)
+  * fix(hyprland): retry Lua config detection until Hyprland answers (#4992)
+  * feat(brightness): add show glyph toggle
+  * refactor(templates): move Starship to community templates
+  * feat(templates): undo disabled community templates
+  * feat(volume): add show glyph toggle
+  * fix(templates): only surface explicit setup warnings
+  * fix(theme): match KDE color scheme ID to its filename (#4971)
+  * feat(images): screenshot formats, clipboard HEIC, optional libheif decoding
+  * feat(screenshot): add appearance options to the screenshot overlay (#4907)
+  * feat(screenshot): per-call option flags for screenshot and annotate IPC
+  * chore: i18n update - removed annotate "fill-on"
+  * feat(annotate): fill mode tri-state (add opaque) and shortcut (#4955)
+  * chore: i18n update
+  * perf(time): wake only when the finest visible clock changes (#4558)
+  * feat(shell): close overview when launching an app from the launcher (#4527)
+  * fix(control-center): prefer landscape wallpaper for the user card (#4909)
+  * feat(calendar): mTLS client-certificate support for CalDAV accounts (#4427)
+  * fix(battery): warn on the combined charge of laptop batteries (#4937)
+  * feat(bluetooth): option to disable auto-reconnect on power-on (#4873)
+  * fix(templates): preserve compositor configs and show setup warnings
+  * feat(widgets): match outputs by monitor identity
+  * feat(launcher): place the default view tab first
+  * fix(theme): fix ansi term colors for emacs noctalia theme (#4893)
+  * docs(packaging): add optional power-profiles-daemon dependency
+  * Feat/custom osd (#4643)
+  * fix(launcher): Fix inconsistent state in the launcher's categories view (#4946)
+  * feat(plugin): drag and drop in bar widgets (#4689)
+  * feat(plugins): expose calendar events to the plugin API (#4464)
+  * feat(plugins): add idle watches and [[layer]] entries
+  * fix(sound): log stream lifecycle and expire unlinked sound streams
+  * chore: i18n update
+  * fix(settings): warn about sensitive data in config exports
+  * feat(capture): add screenshot-window IPC capturing the focused window (#4731)
+  * feat(net): send a noctalia user agent on all http requests
+  * feat(templates): add documentation links to template tiles
+  * fix(security): open an unopened KWallet instead of reading empty secrets
+  * fix(security): auto-retry storage key after unlock on backend error
+  * test(plugins): tolerate floating-point precision in recommendation scores
+  * feat(template): Add emacs message mode faces (#4849)
+  * fix(bar): prevent accordion expansion from jittering anchored widgets
+  * fix(panel): defer destroying a panel unregistered while its surface initializes
+  * fix(panel): destroy a closing panel before unregistering it (#4921)
+  * feat(bar): show fcitx input method in keyboard_layout widget (#4925)
+  * fix(launcher): center search and move settings to the top row
+  * chore(flake): update flake.lock
+  * fix(screenshot): keep the region size badge outside the selection (#4839)
+  * feat(audio-visualizer): add wave rendering mode (#4115)
+  * feat(new transitions): add Vortex, Pixel, Diamond, Golden, and Melt transition effects. (#4795)
+  * feat(umbriel): updated template with tab_bar colors
+  * fix(session): stop UWSM before exiting the compositor (#4832)
+  * fix(hyprland): use Lua dispatcher for window stacking (#4851)
+  * feat(launcher): Load user defined constants and units from libqalculate config (#4896)
+  * feat(session): add built-in reboot to UEFI command (#4808)
+  * feat(window-switcher): add ipc commands to choose the scope at runtime (#4887)
+
+-------------------------------------------------------------------
 Fri Oct 16 07:24:02 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 5.3.0:

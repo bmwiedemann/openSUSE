@@ -17,7 +17,7 @@
 
 
 Name:           noctalia
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        A sleek and minimal desktop shell thoughtfully crafted for Wayland.
 License:        MIT
@@ -28,7 +28,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
-BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(fontconfig)
@@ -104,6 +103,7 @@ find %{buildroot}%{_datadir}/noctalia/assets/templates \
 %{_bindir}/noctalia
 %{_datadir}/noctalia
 %{_datadir}/applications/dev.noctalia.Noctalia.desktop
+%{_datadir}/applications/dev.noctalia.Noctalia.Annotator.desktop
 %{_datadir}/icons/hicolor/scalable/apps/noctalia.svg
 
 %changelog
