@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 24 16:51:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.41.1:
+  * Controller heals manually modified Secrets (#2073)
+  * Controller dynamically detects new, updated, and deleted sealing
+    key secrets (#2034)
+  * Fix crash on malformed multi-document YAML input (#2074)
+  * Fix concurrent map writes from redundant scheme registration
+    in NewController (#2046)
+  * Build with Go 1.27.3; k8s client-go and code-generator 0.37.1,
+    golang.org/x/crypto 0.58.0, golang.org/x/net 0.60.0
+  * Not affected by CVE-2024-45337 (boo#1234541), CVE-2025-22869
+    (boo#1239400), CVE-2025-58181 (boo#1253867): shipped
+    x/crypto 0.58.0 is above the 0.31.0, 0.35.0 and 0.45.0 fixes
+  * Not affected by CVE-2024-45338 (boo#1235306), CVE-2025-22872
+    (boo#1241864), CVE-2025-47911 (boo#1251433), CVE-2025-58190
+    (boo#1251638): golang.org/x/net/html is not imported by the
+    shipped binary (vendored x/net is 0.60.0, above all four
+    fixes regardless)
+
+-------------------------------------------------------------------
 Fri Sep 18 05:17:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.0:
