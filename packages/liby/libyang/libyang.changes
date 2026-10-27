@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:34:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-115327: an uninitialized pointer free vulnerability in lydxml_env_netconf_rpc() in src/parser_xml.c [bsc#1286830]
+  * libyang-CVE-2026-115327.patch
+
+-------------------------------------------------------------------
 Wed May 27 15:08:31 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches

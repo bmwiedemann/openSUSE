@@ -31,6 +31,8 @@ Source0:        https://github.com/CESNET/libyang/archive/refs/tags/v%{version}.
 Patch0:         libyang-CVE-2026-41401.patch
 # CVE-2026-44673: integer overflow in `lyb_read_string()` of `src/parser_lyb.c` leads to heap buffer overflow when parsing a maliciously crafted LYB binary blob [bsc#1265330]
 Patch1:         libyang-CVE-2026-44673.patch
+# CVE-2026-115327: an uninitialized pointer free vulnerability in lydxml_env_netconf_rpc() in src/parser_xml.c [bsc#1286830]
+Patch2:         libyang-CVE-2026-115327.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
