@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Oct 24 19:39:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.0.0 (major release, see upstream UPGRADE.md
+  for the full migration notes):
+  * Go module path moved to github.com/kumahq/kuma/v3, upgrade
+    kumactl together with the control plane
+  * Remove long-deprecated kumactl flag aliases: --config-file
+    and --kuma-dp-uid (install transparent-proxy), --config-dump
+    (inspect dataplane) and --type (generate dataplane-token)
+  * kumactl inspect <policy> uses the current policy inspect API
+    with paginated dataplane metadata output
+  * kumactl get meshes no longer prints the mTLS column, the
+    Mesh.mtls API is removed
+  * kumactl generate zone-token no longer accepts --scope ingress
+    or --scope egress, zone proxies take dataplane tokens
+  * ZoneIngress/ZoneEgress resources with their kumactl
+    get/inspect subcommands are gone, the matching kumactl
+    install control-plane flags are removed too
+  * kumactl export --profile federation strips
+    control-plane-owned labels, re-export older output before
+    applying it to the global control plane
+  * kumactl apply rejects resources with fields outside the
+    schema, and warns on control-plane/CLI version mismatch
+  * Envoy bumped to 1.39.4
+  * Spec cleanup: drop obsolete Group: tags (spec-cleaner)
+  * None of the open kumactl VUL bugs affect the shipped tree
+    (vendored versions checked against each published fix):
+  * CVE-2024-45337 (boo#1234570): golang.org/x/crypto is 0.58.0,
+    above the 0.31.0 fix
+  * CVE-2024-45338 (boo#1235370): golang.org/x/net is 0.61.0,
+    above the 0.33.0 fix
+  * CVE-2024-51744 (boo#1232986): golang-jwt/jwt/v4 is not
+    vendored, only jwt/v5 5.3.1 is shipped
+  * CVE-2025-22869 (boo#1239431): golang.org/x/crypto is 0.58.0,
+    above the 0.35.0 fix
+  * CVE-2025-22872 (boo#1241849): golang.org/x/net is 0.61.0,
+    above the 0.38.0 fix
+  * CVE-2025-30204 (boo#1240478): golang-jwt/jwt/v4 is not
+    vendored, shipped jwt/v5 5.3.1 is above the 5.2.2 fix
+  * CVE-2025-47911 (boo#1251492): golang.org/x/net is 0.61.0,
+    above the 0.45.0 fix
+  * CVE-2025-47913 (boo#1253599): golang.org/x/crypto is 0.58.0,
+    above the 0.43.0 fix
+  * CVE-2025-47914 (boo#1254076): golang.org/x/crypto is 0.58.0,
+    above the 0.45.0 fix
+  * CVE-2025-58181 (boo#1253921): golang.org/x/crypto is 0.58.0,
+    above the 0.45.0 fix
+  * CVE-2025-58190 (boo#1251697): golang.org/x/net is 0.61.0,
+    above the 0.45.0 fix
+  * CVE-2026-26958 (boo#1258590): filippo.io/edwards25519 is
+    1.1.1, matching the 1.1.1 fix
+  * CVE-2026-33186 (boo#1260300): google.golang.org/grpc is
+    1.84.0, above the 1.79.3 fix
+  * CVE-2026-41178 (boo#1276626): go.opentelemetry.io/otel is
+    1.47.0, above the 1.44.0 fix
+
+
+-------------------------------------------------------------------
 Wed Oct 14 04:48:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.6:

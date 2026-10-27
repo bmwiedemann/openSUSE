@@ -17,7 +17,7 @@
 
 
 Name:           kumactl
-Version:        2.14.6
+Version:        3.0.0
 Release:        0
 Summary:        CLI for the Kuma service mesh
 License:        Apache-2.0
@@ -55,7 +55,6 @@ curve.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -66,7 +65,6 @@ Bash command line completion support for %{name}.
 
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
@@ -76,7 +74,6 @@ Fish command line completion support for %{name}.
 
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
@@ -88,7 +85,7 @@ zsh command line completion support for %{name}.
 %autosetup -p 1 -a 1
 
 %build
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %{_sourcedir}/%{name}.obsinfo)"
 
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
@@ -99,11 +96,11 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags=" \
-   -X github.com/kumahq/kuma/v2/pkg/version.version=v%{version} \
-   -X github.com/kumahq/kuma/v2/pkg/version.gitTag=%{version} \
-   -X github.com/kumahq/kuma/v2/pkg/version.gitCommit=${COMMIT_HASH} \
-   -X github.com/kumahq/kuma/v2/pkg/version.buildDate=${BUILD_DATE} \
-   -X github.com/kumahq/kuma/v2/pkg/version.Envoy=${ENVOY_VERSION}" \
+   -X github.com/kumahq/kuma/v3/pkg/version.version=v%{version} \
+   -X github.com/kumahq/kuma/v3/pkg/version.gitTag=%{version} \
+   -X github.com/kumahq/kuma/v3/pkg/version.gitCommit=${COMMIT_HASH} \
+   -X github.com/kumahq/kuma/v3/pkg/version.buildDate=${BUILD_DATE} \
+   -X github.com/kumahq/kuma/v3/pkg/version.Envoy=${ENVOY_VERSION}" \
    -o bin/%{name} ./app/%{name}
 
 %install
