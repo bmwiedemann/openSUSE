@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 09:07:37 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.9.13
+  * Fix off-by-one error when sending a specific track slice from the
+    directory browser to the player
+  * Fix small memory leak occurring when interrupting a directory read
+
+-------------------------------------------------------------------
 Wed Sep  2 16:19:49 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.9.12
