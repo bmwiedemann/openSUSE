@@ -2153,4 +2153,12 @@
     bsc#1285787, CVE-2026-100347):</comment>
     <requestid>1385227</requestid>
   </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>3685c8e849ac3b4374c24683f35a64ff</srcmd5>
+    <version>0.168.0</version>
+    <time>1793117352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.168.0 (bsc#1287405, CVE-2026-78663):</comment>
+    <requestid>1393104</requestid>
+  </revision>
 </revisionlist>

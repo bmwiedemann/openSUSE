@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Oct 13 17:21:51 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
-- Update to version 0.168.0:
+- Update to version 0.168.0 (bsc#1287405, CVE-2026-78663):
   * releaser: Bump versions for release of 0.168.0
   * circleci: Update config.yml to version 2.1
   * build(deps): bump golang.org/x/image from 0.46.0 to 0.47.0
