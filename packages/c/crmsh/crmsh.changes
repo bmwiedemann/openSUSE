@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 27 09:45:08 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261027.e559ffa7:
+  * fix(sbd): allow zero fencing-watchdog-timeout (bsc#1286095)
+
+-------------------------------------------------------------------
+Fri Oct 23 07:15:47 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261023.bf7b3f40:
+  * fix(sbd): Don't verify SBD device while purging SBD
+
+-------------------------------------------------------------------
+Thu Oct 22 14:00:49 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261022.8a2aa2f0:
+  * feat(sbd): account for disk backstore in watchdog timeout (jsc#PED-13836)
+  * feat(sbd): show disk backstore timeouts
+  * feat(storage): read multipath timeout config
+  * feat(sbd): read async IO timeout
+  * feat(sbd): read servant restart interval
+  * fix(sbd): account for SCSI device timeout
+
+-------------------------------------------------------------------
 Tue Oct 20 08:32:05 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20261020.5b865c90:
