@@ -1,5 +1,0 @@
-<package name="kdelibs4support" project="openSUSE:Factory">
-  <title>kdelibs4support</title>
-  <description>KDE 4 Support</description>
-  <devel project="KDE:Frameworks5" package="kdelibs4support"/>
-</package>
