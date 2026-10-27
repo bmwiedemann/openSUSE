@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 26 23:50:59 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.6 
+  - New filter Patterns / Penrose Tiling generate Penrose tilings
+    by Robinson-triangle deflation.
+  - New filter Deformations / Page Curl curls up a corner of the
+    image, as on a sheet of paper.
+  - New filter Deformations / Glass Door simulates optical
+    distortion as if your image is seen through a glass block door.
+  - New filter Rendering / Cosmic Nebula generates a procedural
+    cosmic nebula.
+  - New filter Rendering / Chladni Figures, mathematically
+    simulates complex sand shapes created by 2D wave interference.
+
+-------------------------------------------------------------------
 Tue Oct 20 13:11:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Drop obsolete version check

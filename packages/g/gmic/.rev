@@ -520,4 +520,12 @@
   - Ship new film-grain resource data (gmic_grain.gmz)</comment>
     <requestid>1386491</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>226317fdb7d7cf48154faa6f8fd903d9</srcmd5>
+    <version>4.0.6</version>
+    <time>1793116773</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1392912</requestid>
+  </revision>
 </revisionlist>
