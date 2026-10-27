@@ -17,19 +17,21 @@
 
 
 Name:           argocd-diff-preview
-Version:        0.0.24
+Version:        0.2.17
 Release:        0
-Summary:	Tool for rendering manifest changes on pull requests
-License:        Apache-2.0
+Summary:        Tool for rendering manifest changes on pull requests
+# Legal-Review-Notice: binary links MPL-2.0 files from vendored Go modules
+# used by the argo-cd and helm libraries: github.com/cyphar/filepath-securejoin
+# (BSD-3-Clause AND MPL-2.0, via argo-cd util/io/files and helm chartutil),
+# cyphar.com/go-pathrs (via filepath-securejoin pathrs-lite), and
+# github.com/hashicorp/errwrap, github.com/hashicorp/go-multierror
+# (via helm pkg/kube) plus github.com/r3labs/diff (via argo-cd util/argo).
+# No GPL/AGPL/LGPL/EPL code is vendored.
+License:        Apache-2.0 AND MPL-2.0
 URL:            https://github.com/dag-andersen/argocd-diff-preview
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-# https://github.com/dag-andersen/argocd-diff-preview/issues/62
-# comes from main branch, as 0.0.24 did not contain the license
-Source2:        https://raw.githubusercontent.com/dag-andersen/argocd-diff-preview/refs/heads/main/LICENSE
-BuildRequires:  cargo
-BuildRequires:  cargo-packaging
-BuildRequires:  zstd
+BuildRequires:  golang(API) = 1.26
 
 %description
 Argo CD Diff Preview is a tool that renders the diff between two branches in a
@@ -39,19 +41,21 @@ operates similarly to Atlantis for Terraform, creating a plan that outlines the
 proposed changes.
 
 %prep
-%autosetup -p 1 -a 1
-
-cp %{SOURCE2} .
+%autosetup -p1 -a1
 
 %build
-%{cargo_build}
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %{_sourcedir}/%{name}.obsinfo)"
+go build -mod=vendor -buildmode=pie -trimpath \
+    -ldflags="-s -w -X 'main.Version=%{version}' -X 'main.Commit=${COMMIT_HASH}' -X 'main.BuildDate=${BUILD_DATE}'" \
+    -o bin/%{name} ./cmd
 
 %install
-install -D -d -m 0755 %{buildroot}%{_bindir}
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
+install -D -m 0755 bin/%{name} %{buildroot}%{_bindir}/%{name}
 
 %check
-%{cargo_test}
+go test -mod=vendor ./cmd/... ./pkg/...
 
 %files
 %doc README.md

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct 24 17:58:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.2.17 (rewritten from Rust to Go since 0.1.0;
+  packaging switched from cargo to go_modules vendoring):
+  * ApplicationSet app-of-apps traversal, including nested matrix
+    generators and redirect-target-revisions handling
+  * New render methods server-api and repo-server-api alongside
+    cli, with --repo-server-address and repo-creds templates
+  * Render controls: --repo-regex selection, manifest
+    generate-paths filter and preinstall manifests folder
+  * Helm: --include-helm-hooks, kind-level .Capabilities entries,
+    OCI chart support, releaseName handling and Kustomize
+    buildOptions from argocd-cm
+  * Diff reliability: checksum/secret default ignore prefix, staged
+    whole-checkout Kustomize sources and stale finalizer cleanup
+  * GKE fleet gateway cluster support, KSOPS stub plugin and SOPS
+    metadata stripping notes
+  * JSON log output, fail-fast on missing Argo CD deps and
+    clearer startup error messages
+  * License is now Apache-2.0 AND MPL-2.0 (MPL-2.0 files linked
+    via the argo-cd and helm libraries); LICENSE now ships in
+    the upstream tarball, so the extra Source is dropped
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Tue Nov 12 13:29:08 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package argocd-diff-preview: tool for rendering manifest
