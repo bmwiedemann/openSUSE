@@ -18,13 +18,13 @@
 
 %bcond_without libalternatives
 Name:           python-transformers
-Version:        5.20.2
+Version:        5.21.0
 Release:        0
 Summary:        State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow
 License:        Apache-2.0
 URL:            https://github.com/huggingface/transformers
 Source:         https://files.pythonhosted.org/packages/source/t/transformers/transformers-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

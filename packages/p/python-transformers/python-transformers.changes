@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:30:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.21.0:
+  * Raise minimum Python version to 3.11
+  * Add PocketTTS and GradiumPhononTTS text-to-speech models,
+    Flint and Qwen-Omni Thinker models
+  * Speed up AutoTokenizer.from_pretrained by loading
+    tokenizer.json only once
+  * Support bool-mask logits_to_keep in all ForXXX model classes
+  * Allow cache continuation for chunked prefill
+  * Deprecate rope_scaling assignment, normalize legacy RoPE keys
+  * Drop SDPA for models using softcapping
+  * Fixes for BLOOM static cache, SmolVLM, idefics3, MiniCPM-V,
+    HunYuan-VL, DeepGEMM Mega MoE and gemma4 import without torch
+- Raise python base floor to >= 3.11 to match upstream
+  requires-python.
+
+-------------------------------------------------------------------
 Tue Oct 20 17:27:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.20.2 (patch release):
