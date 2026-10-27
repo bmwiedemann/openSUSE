@@ -446,4 +446,41 @@
     `reference_internal` paths.</comment>
     <requestid>1352321</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>868033d6c27e33d68634cde5c55cf13a</srcmd5>
+    <version>3.1.0</version>
+    <time>1793121435</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.0:
+  * Support for Python 3.8 was removed. The minimum supported
+    version is now Python 3.9.
+  * Changed strict-mode numeric conversions for PEP 484
+    compatibility: `float` now accepts `int`, and `complex` now
+    accepts `int` and `float`.
+  * Small extra features added to the pybind11 command line tool
+    based on python-config.
+  * Added `subinterpreter_thread_state`, an RAII wrapper that
+    owns a reusable `PyThreadState` for a sub-interpreter,
+    together with a `subinterpreter_scoped_activate` overload that
+    activates it.
+  * Add `py::mod_gil_used()` as replacement spelling to
+    `py::mod_gil_not_used(false)`.
+  * Fixed a crash in `py::subinterpreter::create()` when called
+    without a current `PyThreadState`, which its documentation
+    explicitly allows — for example from an
+    embedder that ended initialization with
+    `PyEval_SaveThread()`, or from a worker thread that has never
+    touched Python. `error_scope` is now constructed after a
+    thread state has been attached instead of before.
+  * Make `py::print` delegate to the current frame/interpreter
+    built-ins `print` entry, fixing handling of `sys.stdout = None`,
+    following the active runtime's stream, keyword, and error
+    semantics, and remaining a no-op if the entry is
+    unavailable during teardown.
+  * Include the builtin `complex` type in the input annotation of
+    the `std::complex&lt;T&gt;` type caster.
+  * String views (e.g. `std::string_view`) are now kept alive
+    only when loaded from a transient source (such as a</comment>
+    <requestid>1392499</requestid>
+  </revision>
 </revisionlist>
