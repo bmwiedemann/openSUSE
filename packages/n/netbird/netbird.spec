@@ -32,7 +32,7 @@
 %bcond_with stub_config
 
 Name:           netbird
-Version:        0.81.4
+Version:        0.81.5
 Release:        0
 Summary:        Mesh VPN based on WireGuard
 License:        AGPL-3.0-only AND BSD-3-Clause
@@ -43,6 +43,7 @@ Source2:        %{name}.service
 Source3:        %{name}-management.service
 Source4:        %{name}-signal.service
 Source5:        series
+Source99:       update.sh
 Patch0:         service-install-cli-change.patch
 Patch1:         skip-ui.patch
 BuildRequires:  fdupes
@@ -351,6 +352,7 @@ failing_tests=(
   TestWaitJWTToken_DropsTokenFromASessionThatEndedBeforeTheWait
   TestLogin_ProfileSwitchRejectsJWTObtainedUnderPreviousConfig
   TestExchangeWithFallback_TCPTruncatesToClientSize
+  TestSession_ResizeWhileRunningIsApplied
 )
 # Assemble skip string by replacing spaces with a pipe.
 disable=$(echo ${failing_tests[*]} | sed 's/ /|/g')

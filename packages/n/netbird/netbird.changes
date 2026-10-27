@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 26 20:34:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.81.5
+  - [client] Validate and bound SSH session requests and channels
+    (#8344) by @lixmal in #8368
+  - [client] Bound the SSH session request queue and keep resizes
+    from blocking the session loop (#8363) by @lixmal in #8369
+
+-------------------------------------------------------------------
 Sat Oct 24 14:07:02 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.81.4
