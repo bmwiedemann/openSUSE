@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 27 09:05:22 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.10.0
+  * Media server: support custom icons for plugins
+  * Media server: Updates to Subsonic and Tidal plugins
+
+-------------------------------------------------------------------
 Mon Oct 19 09:22:16 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - add upmpdcli system user with systemd-sysusers (instead of useradd)

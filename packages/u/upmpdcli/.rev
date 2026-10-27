@@ -250,4 +250,12 @@
     <comment>Update to 1.9.18</comment>
     <requestid>1386338</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>952c4e6b0d417ae71e6cbad7aa685d71</srcmd5>
+    <version>1.10.0</version>
+    <time>1793117271</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.10.0</comment>
+    <requestid>1393026</requestid>
+  </revision>
 </revisionlist>

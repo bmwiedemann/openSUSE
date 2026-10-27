@@ -19,7 +19,7 @@
 
 %bcond_without confgui
 Name:           upmpdcli
-Version:        1.9.18
+Version:        1.10.0
 Release:        0
 Summary:        UPnP AV and OpenHome Media Renderer front-end to MPD, the Music Player Daemon
 License:        GPL-2.0-or-later
@@ -76,9 +76,6 @@ export QMAKE=qmake-qt5
 %install
 %meson_install
 rm %{buildroot}%{_sysconfdir}/upmpdcli.conf-dist
-
-# Mother Earth Radio ceased to exist
-rm -r %{buildroot}%{_datadir}/%{name}/cdplugins/mother-earth-radio
 
 install -D -m 644 systemd/upmpdcli.service %{buildroot}%{_unitdir}/upmpdcli.service
 mkdir -p %{buildroot}/%{_sbindir}
