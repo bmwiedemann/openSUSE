@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 21 12:47:05 UTC 2026 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 0.4.0:
+  * Updates to build with lat3est changes to VSG
+  * gcc 13 warning fix
+  * Replaced vsg::AnimationPath usage with vsg::CameraAnimation
+
+-------------------------------------------------------------------
 Thu Jun 22 10:45:18 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 0.1.0 

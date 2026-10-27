@@ -1,7 +1,7 @@
 #
 # spec file for package osg2vsg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _vsg_so_nr 0
 
 Name:           osg2vsg
-Version:        0.1.0
+Version:        0.4.0
 Release:        0
 Summary:        3D graphics toolkit
 License:        MIT

@@ -7,4 +7,16 @@
     <comment>- Initial package for openSUSE Factory</comment>
     <requestid>1096646</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>628d9406b64ab3bacceec9ce9e3a2976</srcmd5>
+    <version>0.4.0</version>
+    <time>1793116066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.0:
+  * Updates to build with lat3est changes to VSG
+  * gcc 13 warning fix
+  * Replaced vsg::AnimationPath usage with vsg::CameraAnimation
+</comment>
+    <requestid>1392976</requestid>
+  </revision>
 </revisionlist>
