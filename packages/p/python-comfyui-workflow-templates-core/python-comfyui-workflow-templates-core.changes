@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:28:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.388: the manifest grows from 651 to 660
+  templates
+  * New, all owned by the media-assets-02 bundle: four Kling
+    4.0 (image/video/reference-to-video and video edit), two
+    Fibo 2.0 edit, one MiniMax H3 text-to-image and two
+    MOSS-Image (color depth control and edit)
+  * The floors here stay unchanged: no entry changes owner,
+    so json 0.1.102 and media-assets-02 0.1.9 still resolve
+    every entry they resolved before
+
+-------------------------------------------------------------------
 Fri Oct 23 08:26:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.387: the manifest grows from 642 to 651
