@@ -67,4 +67,22 @@
     This release is API and ABI compatible with 23.1.0.</comment>
     <requestid>1384113</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d185e29deb9701c872119e6b9ff5fd8a</srcmd5>
+    <version>23.1.4</version>
+    <time>1793116007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 23.1.4.
+  * This release contains bug-fixes for the LLVM 23.1.0 release.
+    This release is API and ABI compatible with 23.1.0.
+- Build all targets on ppc64le.
+- Build SPIRV target also on ARMv6/7 and s390x.
+- Cleanup parts specific to ppc and ppc64, because we don't build
+  them anymore.
+- Increase memory for compile jobs to avoid OOM.
+- Build compiler-rt builtins for wasm32-wasip1 as part of the
+  runtimes build (LLVM_BUILTIN_TARGETS) and ship them in clang23,
+  so that clang can link wasm32-wasip1 binaries with a WASI sysroot.</comment>
+    <requestid>1392308</requestid>
+  </revision>
 </revisionlist>

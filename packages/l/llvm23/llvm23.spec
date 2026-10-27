@@ -19,7 +19,7 @@
 %global _sonum  23
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_rc:-rc%_rc}
-%global _patch_level 3
+%global _patch_level 4
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:-rc%_rc}
 %global _itsme23 1
@@ -75,6 +75,7 @@
 %bcond_with valgrind
 %bcond_without polly
 %bcond_without lld
+%bcond_without wasm_builtins
 
 # Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
 # See https://bugzilla.suse.com/show_bug.cgi?id=1235697
@@ -110,21 +111,15 @@
 # By default, build everything.
 %global llvm_targets "all"
 %global llvm_experimental_targets "M68k"
-%ifarch %arm ppc64 ppc64le
+%ifarch %arm
 # No cross-compilation, but GPU targets.
-%global llvm_targets "host;AMDGPU;BPF;NVPTX;WebAssembly"
+%global llvm_targets "host;AMDGPU;BPF;NVPTX;SPIRV;WebAssembly"
 %global llvm_experimental_targets ""
 %endif
-%ifarch ppc s390x
-# No graphics cards on System Z; turned off for ppc because of relocation overflows.
-%global llvm_targets "host;BPF;WebAssembly"
+%ifarch s390x
+# No graphics cards on System Z.
+%global llvm_targets "host;BPF;SPIRV;WebAssembly"
 %global llvm_experimental_targets ""
-%endif
-
-%ifnarch ppc64le
-%global openmp_cpu %{target_cpu}
-%else
-%global openmp_cpu ppc64
 %endif
 
 %define _plv %{!?product_libs_llvm_ver:%{_sonum}}%{?product_libs_llvm_ver}
@@ -1050,7 +1045,7 @@ CFLAGS=$flags
 CXXFLAGS=$flags
 
 # Clang uses a bit less memory.
-mem_per_compile_job=700000
+mem_per_compile_job=750000
 %ifarch %{arm} i586 ppc
 # 32-bit arches need less memory than 64-bit arches.
 mem_per_compile_job=500000
@@ -1065,9 +1060,8 @@ max_link_jobs=1
 %define __builddir build
 %if %{with thin_lto} && %{with use_lld}
 %global lld_ldflag --ld-path=%{sourcedir}/stage1/bin/ld.lld
-jobs=$(echo %{?_smp_mflags} | cut -c 3-)
 %ifarch %{arm} i586 ppc
-if [ $jobs -gt 8 ] ; then
+if [ ${RPM_BUILD_NCPUS} -gt 8 ] ; then
     lto_limit_threads=-Wl,--thinlto-jobs=8
 fi
 %endif
@@ -1113,6 +1107,11 @@ export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
     -DCLANG_CONFIG_FILE_SYSTEM_DIR="%{_sysconfdir}/clang" \
     -DCLANG_CONFIG_FILE_USER_DIR="~/.config/clang" \
     -DCOMPILER_RT_USE_LIBCXX:BOOL=OFF \
+%if %{with wasm_builtins}
+    -DLLVM_BUILTIN_TARGETS="default;wasm32-wasip1" \
+    -DBUILTINS_wasm32-wasip1_CMAKE_SYSTEM_NAME=WASI \
+    -DBUILTINS_wasm32-wasip1_COMPILER_RT_BAREMETAL_BUILD=ON \
+%endif
     -DLIBCXX_INCLUDE_BENCHMARKS:BOOL=OFF \
 %if %{with libcxx}
     -DLIBCXX_ENABLE_SHARED=YES \
@@ -1422,14 +1421,9 @@ rm ../llvm/test/tools/llvm-cov/{multithreaded-report,sources-specified}.test
 %endif
 %{python_bin} bin/llvm-lit -sv test/
 
-# On ppc, these tests fails with "fatal error: error in backend: Relocation type not implemented yet!"
-sed -i '1i// XFAIL: target=powerpc-{{.*}}' ../clang/test/Interpreter/{code-undo,execute{,-stmts,-weak},fail,global-dtor,lambda,simple-exception}.cpp
 # Tests hang on armv6l.
 sed -i '1i// UNSUPPORTED: target=armv6{{.*}}' \
   ../clang/test/{Interpreter/{code-undo,execute,execute-weak}.cpp,Modules/{preprocess-{build-diamond.m,decluse.cpp,module.cpp},string_names.cpp}}
-# https://github.com/llvm/llvm-project/issues/217532
-sed -i '1i// XFAIL: target=powerpc64le-{{.*}}' \
-  ../clang/test/Frontend/fixed_point_{{add,div,mul}_const,errors}.c
 %ifarch ppc64le
 # Sporadic failures, possibly races?
 rm -r ../clang/test/ClangScanDeps
@@ -1547,6 +1541,9 @@ rm -rf ./stage1 ./build
 %ifarch aarch64 %{arm} loongarch64 ppc64le s390x x86_64
 %{_libdir}/clang/%{_sonum}/lib/linux/liborc_rt-*.a
 %endif
+%if %{with wasm_builtins}
+%{_libdir}/clang/%{_sonum}/lib/wasm32-unknown-wasip1/
+%endif
 
 %files -n libclang_rt%{_sonum}
 %license compiler-rt/CREDITS.TXT compiler-rt/LICENSE.TXT
@@ -1558,10 +1555,7 @@ rm -rf ./stage1 ./build
 %dir %{_libdir}/clang/%{_sonum}/lib
 %dir %{_libdir}/clang/%{_sonum}/lib/linux
 %{_libdir}/clang/%{_sonum}/lib/linux/libclang_rt.*.so
-# The sanitizer runtime is not available for ppc.
-%ifnarch ppc
 %{_libdir}/clang/%{_sonum}/share
-%endif
 
 %if %{_plv} == %{_sonum}
 %files -n clang-tools

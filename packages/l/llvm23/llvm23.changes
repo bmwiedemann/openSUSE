@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 24 12:20:55 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 23.1.4.
+  * This release contains bug-fixes for the LLVM 23.1.0 release.
+    This release is API and ABI compatible with 23.1.0.
+- Build all targets on ppc64le.
+- Build SPIRV target also on ARMv6/7 and s390x.
+- Cleanup parts specific to ppc and ppc64, because we don't build
+  them anymore.
+- Increase memory for compile jobs to avoid OOM.
+
+-------------------------------------------------------------------
+Tue Oct 20 07:37:46 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Build compiler-rt builtins for wasm32-wasip1 as part of the
+  runtimes build (LLVM_BUILTIN_TARGETS) and ship them in clang23,
+  so that clang can link wasm32-wasip1 binaries with a WASI sysroot.
+
+-------------------------------------------------------------------
 Sat Oct 10 13:20:03 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 23.1.3.
