@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 24 17:08:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.74:
+  * fix(server): accept both remote provider connection response shapes
+  * fix(server): open each extension plugin at most once
+  * Fix stable release builds by granting the Helm chart releaser
+    its token permissions
+  * UI fix in the Registry settings tab plus documentation updates
+- Drop obsolete Group: tags from completion subpackages
+
+-------------------------------------------------------------------
 Thu Oct 22 05:05:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.72:

@@ -17,7 +17,7 @@
 
 
 Name:           mesheryctl
-Version:        1.0.72
+Version:        1.0.74
 Release:        0
 Summary:        CLI for the meshery cloud native management plane
 License:        Apache-2.0
@@ -47,7 +47,6 @@ Service Mesh Interface (SMI), and Service Mesh Performance (SMP).
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -58,7 +57,6 @@ Bash command line completion support for %{name}.
 
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
@@ -68,7 +66,6 @@ Fish command line completion support for %{name}.
 
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
