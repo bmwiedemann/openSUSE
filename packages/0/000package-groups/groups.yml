@@ -146,6 +146,8 @@ dvd:
   - kexec-tools
   - quota-nfs
   - wicked
+  # mkisofs is explicitly requested by the autofs and udisks2 tests
+  - mkisofs
 
   - patterns-media-rest_dvd: [required]
   # To make our migration life easier, we still want to have yast on the DVD
