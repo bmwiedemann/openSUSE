@@ -4,6 +4,14 @@ Sun Oct 18 22:15:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 - update vendor.tar to address:
   * bsc#1285297, CVE-2026-78669: golang.org/x/net/http2: excessive
     CPU consumption from repeated initial window changes
+  * bsc#1287474, CVE-2026-9703: golang.org/x/net/http2: HTTP/2
+    server crash due to HPACK encoder race
+  * bsc#1287163, CVE-2026-78663: golang.org/x/net/http2: double
+    flow control refund on HTTP/2 server streams
+  * bsc#1287071, CVE-2026-78660: golang.org/x/net/http2: HTTP/2
+    transport accepts malformed framing-related headers
+  * bsc#1287000, CVE-2026-78659: golang.org/x/net/http2: HTTP/2
+    server memory exhaustion due to Trailer headers
 
 -------------------------------------------------------------------
 Mon Oct 05 08:24:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
