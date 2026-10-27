@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonpath-ng
-Version:        1.10.0
+Version:        1.13.0
 Release:        0
 Summary:        JSONPath for Python
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/h2non/jsonpath-ng
 Source:         https://github.com/h2non/jsonpath-ng/archive/refs/tags/v%{version}.tar.gz#/jsonpath-ng-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

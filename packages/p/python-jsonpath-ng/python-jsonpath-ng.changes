@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:10:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.0:
+  * Support the RFC 9535 logical operators && and || in filters.
+    (#27) For example, parse("$[?@.a == 1 || @.b == 2 && @.c ==
+    3]"). Note that filters are currently only supported in the
+    jsonpath_ng.ext module. && binds more tightly than ||, and
+    parentheses group expressions. The operators are valid only
+    inside a filter.
+  * Fix Slice.filter() taking quadratic time to remove array
+    elements.
+  * Fix Slice.filter() removing the wrong elements from an array.
+  * Return [] when a slice's step size is 0. For example,
+    parse("$[::0]").find([1,2,3]) now returns []. This aligns
+    with RFC 9535, section 2.3.4.2.2.
+  * Fix != filter comparisons with literals. This includes fixing
+    comparisons between string and integer values, as well as
+    fixing comparisons when the target path doesn't exist. For
+    example, parse("$[?@.a != 1]").find([{"b": 1}]) finds {"b":
+    1}. Previously, {"b": 1} was excluded because it didn't have
+    an "a" field. For example, parse("$[?@.a != 1]").find([{"a":
+    "x"}]) finds {"a": "x"}. Previously, {"a": "x"} was excluded.
+    This change aligns with RFC 9535, section 2.3.5.2.2.
+  * Fix a TypeError that occurs when a filter orders values of
+    different types. For example, parse("$[?@.a <
+    1]").find([{"a": None}]) now finds nothing instead of raising
+    a TypeError.
+  * Stop speculatively coercing strings to integers in filter
+    comparisons. For example, parse("$[?@.a == 1]").find([{"a": "
+    +0_1"}]) now finds nothing. Previously, the string " +0_1"
+    was converted to an integer before comparing and would
+    incorrectly match. Note that this also means that simpler
+    numeric strings will no longer match. For example,
+    parse("$[?@.a == 1]").find([{"a": "1"}]) now finds nothing.
+  * Serialize filters so that they can be parsed again. Note that
+    this in a filter selector is now replaced with @, which is
+    the RFC 9535 compliant syntax. Similarly, strings are single-
+    quoted and & is replaced with && as is required by RFC 9535.
+    For example, str(parse("$[?`this`.a == 1 & @.b == x]")) now
+    returns $[?@.a == 1 && @.b == 'x'].
+  * Quote field names that begin with @ when serializing a query,
+    unless the @ is followed by a letter or an underscore. For
+    example, str(jsonpath_ng.ext.parse("$['@']")) now returns
+    $.'@'. Previously it returned $.@, which jsonpath_ng.ext
+    parsed as the current node.
+  * The | (union) operator between paths is deprecated. A
+    DeprecationWarning is issued when the operator is used. It
+    will be removed in version 2.0.0. There is no RFC 9535
+    equivalent. A now-deprecated path like ($.a) | ($.b) can be
+    replaced with code like this:  matches =
+    parse("$.a").find(data) + parse("$.b").find(data)  Beware
+    that | binds tighter than .. Unparenthesized paths like a.b |
+    c.d are interpreted as a.(b | c).d, so write each full path
+    when migrating and test the paths and results for
+    equivalency.
+  * The & (intersection) operator between paths is deprecated. A
+    DeprecationWarning is issued when the & (intersection)
+    operator is used. It will be removed in version 2.0.0. There
+    is no RFC 9535 equivalent.
+  * The & (logical AND) operator in filters is deprecated. A
+    DeprecationWarning is issued when the & (logical AND)
+    operator is used. It will be removed in version 2.0.0. Its
+    RFC 9535 equivalent is &&. Use && instead of & in filters.
+  * The Union and Intersect classes are deprecated. A
+    DeprecationWarning is issued when they are accessed. They
+    will be removed in version 2.0.0.
+  * Update the README.
+  * Support a query on the right-hand side of a filter
+    comparison. (#79) For example: $.items[?@.a == @.b] and
+    $.items[?@.v == $.ref.v]. The query must start with @ or $
+    and may only contain name and index segments, as required by
+    RFC 9535.
+  * Resolve $ to the root node inside a filter. (#66) Previously,
+    $ was incorrectly treated as an alias of @. Use @ to refer to
+    the element being tested. This change improves RFC 9535
+    compliance.
+  * Skip index updates for non-list inputs and out-of-range array
+    indices.
+  * Fix crashes and other issues with filtering by array index.
+    Out-of-range indices and non-array values are now ignored,
+    and queries that select several indices (for example, $[0,1],
+    $[0,2], or $[0,-3]) now remove exactly the selected elements.
+  * Add type annotations for the PLY lexers and parsers.
+  * Add type annotations to many of the JSONPath interfaces.
+  * When applying an index to a string, nothing will be returned.
+    Previously, an index applied to a string would "find"
+    individual characters. For example, $[0] applied to "abc"
+    would find "a". This change improves RFC 9535 compliance.
+  * Slices and the [*] wildcard no longer coerce scalars and
+    objects into arrays. (#96) Previously, $[*] applied to "abc"
+    or 5 would find the value itself, and $[*] applied to {"a":
+    1} would find the whole object. This also caused $..[*] to
+    return phantom nodes, such as the root object and a second
+    copy of each string. Now, slices like [0:2] find nothing
+    unless they are applied to an array, and [*] finds the member
+    values of an object or the elements of an array and nothing
+    from a scalar value. This change improves RFC 9535
+    compliance.
+  * Fix RecursionError when paths using .. are applied to deeply
+    nested data. It is still possible to encounter
+    RecursionError. For example, very long JSONPath expressions
+    can still raise RecursionError. Note that cyclic data
+    structures can trigger indefinite execution, as can updating
+    data with a value that the path can match again. Cyclic data
+    structures are impossible to encounter in JSON and can only
+    be constructed programmatically in Python.
+  * Make Descendants.find() runtimes scale linearly with the
+    depth of the data.
+  * Fix TypeError when an index like [0] is applied to a scalar
+    value. These values now match nothing, as required by RFC
+    9535.
+  * Fix ..[*] omitting the member values of objects. (#96)
+  * Fix * (used as a field) omitting the elements of arrays.
+    (#11, #164) $.* and $..* now find array elements as well as
+    object member values. update() and filter() now also act on
+    array elements for these wildcards.
+  * Fix a parse error when a filter follows .., as in
+    $..[?@.key]. (#46) The path now parses and selects every
+    matching array element or object member value at any depth,
+    as required by RFC 9535.
+  * Allow filters to compare against JSON null values ([?(@.v ==
+    null)]). (#49) An unquoted null no longer matches the string
+    "null". To compare a value to the word "null", quote it
+    ([?(@.v == 'null')]). null also continues to work as a field
+    name, as in $.null. != null now also matches members that are
+    missing, and <, <=, >, and >= no longer raise a TypeError
+    when compared with null.
+  * Allow true and false to be used as field names in the
+    extended parser. For example: $.true and $[?@.false ==
+    false]. These previously raised a JsonPathParserError.
+    Unquoted true and false on the right-hand side of a filter
+    comparison continue to be boolean literals.
+  * Stop treating booleans as numbers in filter comparisons.
+    Previously [?@.v == true] also matched 1 and [?@.v == 1] also
+    matched true. A boolean is now never equal to a number, which
+    follows RFC 9535.
+  * Include RFC 9535 and errata in the docs/rfc9535/ directory.
+  * Fix a TypeError crash that can occur when filtering scalar
+    values. This can only occur when a Filter has been
+    instantiated without expressions. (This usage is now
+    deprecated.)
+  * Deprecate instantiating Filter with no expressions. It is
+    impossible to encounter this deprecation via a parsed
+    JSONPath string. This deprecation helps align programmatic
+    usage with RFC 9535, which doesn't syntactically support
+    filters without expressions. This usage will raise an
+    exception in version 2.0.0.
+
+-------------------------------------------------------------------
 Fri Oct  9 16:23:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.10.0

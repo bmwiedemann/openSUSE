@@ -137,4 +137,41 @@
     <comment>1</comment>
     <requestid>1384181</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>651cc444c8ac2a2e9d3b174836469f8f</srcmd5>
+    <version>1.13.0</version>
+    <time>1793121528</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.0:
+  * Support the RFC 9535 logical operators &amp;&amp; and || in filters.
+    (#27) For example, parse(&quot;$[?@.a == 1 || @.b == 2 &amp;&amp; @.c ==
+    3]&quot;). Note that filters are currently only supported in the
+    jsonpath_ng.ext module. &amp;&amp; binds more tightly than ||, and
+    parentheses group expressions. The operators are valid only
+    inside a filter.
+  * Fix Slice.filter() taking quadratic time to remove array
+    elements.
+  * Fix Slice.filter() removing the wrong elements from an array.
+  * Return [] when a slice's step size is 0. For example,
+    parse(&quot;$[::0]&quot;).find([1,2,3]) now returns []. This aligns
+    with RFC 9535, section 2.3.4.2.2.
+  * Fix != filter comparisons with literals. This includes fixing
+    comparisons between string and integer values, as well as
+    fixing comparisons when the target path doesn't exist. For
+    example, parse(&quot;$[?@.a != 1]&quot;).find([{&quot;b&quot;: 1}]) finds {&quot;b&quot;:
+    1}. Previously, {&quot;b&quot;: 1} was excluded because it didn't have
+    an &quot;a&quot; field. For example, parse(&quot;$[?@.a != 1]&quot;).find([{&quot;a&quot;:
+    &quot;x&quot;}]) finds {&quot;a&quot;: &quot;x&quot;}. Previously, {&quot;a&quot;: &quot;x&quot;} was excluded.
+    This change aligns with RFC 9535, section 2.3.5.2.2.
+  * Fix a TypeError that occurs when a filter orders values of
+    different types. For example, parse(&quot;$[?@.a &lt;
+    1]&quot;).find([{&quot;a&quot;: None}]) now finds nothing instead of raising
+    a TypeError.
+  * Stop speculatively coercing strings to integers in filter
+    comparisons. For example, parse(&quot;$[?@.a == 1]&quot;).find([{&quot;a&quot;: &quot;
+    +0_1&quot;}]) now finds nothing. Previously, the string &quot; +0_1&quot;
+    was converted to an integer before comparing and would
+    incorrectly match. Note that this also means that simpler</comment>
+    <requestid>1392632</requestid>
+  </revision>
 </revisionlist>
