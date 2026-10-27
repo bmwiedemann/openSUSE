@@ -17,14 +17,14 @@
 
 
 Name:           adriconf
-Version:        2.7.4
+Version:        2.7.5
 Release:        0
 Summary:        Advanced DRI Configurator
 License:        GPL-3.0-only
 URL:            https://gitlab.freedesktop.org/mesa/adriconf
-# NOTE: upstream tagged this release "v.2.7.4" (with a stray dot after v),
-# unlike the plain "v2.7.x" used before, hence the "v." in the paths below.
-Source0:        https://gitlab.freedesktop.org/mesa/adriconf/-/archive/v.%{version}/adriconf-v.%{version}.tar.bz2
+# NOTE: upstream tag for 2.7.4 was "v.2.7.4" (stray dot after v);
+# 2.7.5 is back to the plain "v2.7.5" scheme, hence "v" below.
+Source0:        https://gitlab.freedesktop.org/mesa/adriconf/-/archive/v%{version}/adriconf-v%{version}.tar.bz2
 Source1:        adriconf.desktop
 Source2:        driconf-icon.png
 # PATCH-FIX-OPENSUSE adriconf-system-gtest.patch mpluskal@suse.com -- build unit tests against the system GTest/GMock instead of downloading googletest at build time
@@ -55,7 +55,7 @@ the standard drirc file used by the Mesa drivers.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{name}-v.%{version}
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %cmake \

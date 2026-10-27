@@ -145,4 +145,12 @@
     <comment>Update to 2.7.4; run upstream unit tests via ctest; drop deprecated %suse_update_desktop_file; fix install perms; modernize spec</comment>
     <requestid>1356052</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>83785339c5bc2b0ec6a86d3e861c0eb6</srcmd5>
+    <version>2.7.5</version>
+    <time>1793116160</time>
+    <user>dimstar_suse</user>
+    <comment>Update adriconf to 2.7.5.</comment>
+    <requestid>1392961</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:30:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7.5:
+  * Maintenance release with no user-visible changes
+    to the Linux build (Flatpak manifest updates only:
+    runtime 51, gtkmm modules split, Flathub styling)
+- Upstream tag scheme is back to plain "v" (2.7.4 used
+  "v." with a stray dot): adjust Source0 URL and tarball
+  directory accordingly
+
+-------------------------------------------------------------------
 Sat May 30 15:38:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.7.4
