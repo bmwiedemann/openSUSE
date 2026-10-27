@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:33:11 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.3:
+  Security fixes:
+  * Upgrade rustls-webpki to v0.103.16 and webpki-root-certs to v1.0.10
+  Features:
+  * Detect and error on incomplete downloads, see #487
+
+-------------------------------------------------------------------
 Wed Aug 26 07:38:42 UTC 2026 - Lars Dieckow <larsd@mailbox.org>
 
 - Install manpage

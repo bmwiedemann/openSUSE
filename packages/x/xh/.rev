@@ -178,4 +178,16 @@
     <comment>1</comment>
     <requestid>1377817</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>25e8b32e430383cbc4951abb09c78304</srcmd5>
+    <version>0.26.3</version>
+    <time>1793116874</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.26.3:
+  Security fixes:
+  * Upgrade rustls-webpki to v0.103.16 and webpki-root-certs to v1.0.10
+  Features:
+  * Detect and error on incomplete downloads, see #487</comment>
+    <requestid>1392901</requestid>
+  </revision>
 </revisionlist>
