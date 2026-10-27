@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Oct 24 16:58:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.36.0:
+  * `timoni mod build` and `timoni artifact build` take the new
+    --resolve-symlinks flag that packages symlink targets as
+    regular files, same as the push commands
+  * Built with Go 1.27.3; Go and Kubernetes dependencies updated
+  * CVE-2026-100352: kin-openapi OAS 3.1 validation panic on
+    YAML NaN/Inf values, fixed in vendored kin-openapi 0.151.0
+  * CVE-2026-100353: kin-openapi openapi3filter nil-Items
+    panics, fixed in vendored kin-openapi 0.151.0
+  * CVE-2026-100354: kin-openapi fatal crash on circular
+    schemas, fixed in vendored kin-openapi 0.151.0
+  * CVE-2026-78659: x/net HTTP/2 server memory exhaustion via
+    Trailer headers, fixed in vendored x/net 0.61.0
+  * CVE-2026-78660: x/net HTTP/2 transport accepts malformed
+    framing headers, fixed in vendored x/net 0.61.0
+  * CVE-2026-78663: x/net HTTP/2 double flow-control refund,
+    fixed in vendored x/net 0.61.0
+  * CVE-2026-78669: x/net HTTP/2 CPU exhaustion via window
+    changes, fixed in vendored x/net 0.61.0
+  * CVE-2026-97032: x/net HTTP/2 server crash via HPACK
+    encoder race, fixed in vendored x/net 0.61.0
+  * CVE-2024-45338 (boo#1235262): vendored x/net is 0.61.0,
+    above the 0.33.0 fix
+  * CVE-2025-22872 (boo#1241726): vendored x/net is 0.61.0,
+    above the 0.38.0 fix
+  * CVE-2025-47911 (boo#1251359): vendored x/net is 0.61.0,
+    above the 0.45.0 fix
+  * CVE-2025-58190 (boo#1251548): vendored x/net is 0.61.0,
+    above the 0.45.0 fix
+  * CVE-2026-33186 (boo#1260178): vendored grpc is 1.83.2,
+    above the 1.79.3 fix
+  * CVE-2026-100351 (boo#1285805): vendored kin-openapi is
+    0.151.0, the fix shipped upstream in 0.147.0
+
+-------------------------------------------------------------------
 Tue Sep 29 04:53:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.35.0:
