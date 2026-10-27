@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:54:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.21.4:
+  * build: bump go (1.27.2 -> 1.27.3) (#9421)
+
+-------------------------------------------------------------------
 Tue Oct 20 07:11:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.21.3:
