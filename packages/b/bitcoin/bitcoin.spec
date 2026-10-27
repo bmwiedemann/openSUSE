@@ -24,7 +24,7 @@
 %define consensus 0
 %define is_base 1
 Name:           bitcoin
-Version:        32.0
+Version:        32.1
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT

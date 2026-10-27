@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:27:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 32.1:
+  * P2P: clamp -maxconnections values above 2000 with a warning
+    to reduce crash risk at very high peer counts.
+  * P2P: enforce the timeout interval for peers with
+    paused sending.
+  * Proxy: preserve network name case in errors and share the
+    network parsing between proxy options.
+  * Windows: use 64-bit file positioning syscalls for flat files.
+  * Update example bitcoin.conf and manual pages for v32.1.
+
+-------------------------------------------------------------------
 Sun Oct 25 20:43:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 32.0:

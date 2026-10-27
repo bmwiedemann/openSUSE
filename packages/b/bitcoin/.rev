@@ -667,4 +667,12 @@
     <comment>Update bitcoin to 32.0.</comment>
     <requestid>1392613</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b427938e77ab97882730cc7d78206eb5</srcmd5>
+    <version>32.1</version>
+    <time>1793116783</time>
+    <user>dimstar_suse</user>
+    <comment>Update bitcoin to 32.1.</comment>
+    <requestid>1392927</requestid>
+  </revision>
 </revisionlist>
