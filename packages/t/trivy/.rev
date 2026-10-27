@@ -1840,4 +1840,18 @@ dropped patch file
   * ci(helm): bump Trivy version to 0.75.0 for Trivy Helm Chart 0.27.0 (#11334)</comment>
     <requestid>1386087</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>31b7a110730835239a0de8f90b522591</srcmd5>
+    <version>0.76.1</version>
+    <time>1793117344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.76.1:
+  * fix(deps): bump the aws group across 1 directory with 6 updates [backport: release/v0.76] (#11446)
+  * fix(deps): bump the docker group with 3 updates [backport: release/v0.76] (#11443)
+  * fix(deps): bump the common group with 3 updates [backport: release/v0.76] (#11442)
+
+      (bsc#1285541, CVE-2026-78669, bsc#1284829, CVE-2026-19585,
+       bsc#1287329, CVE-2026-97032):</comment>
+    <requestid>1393109</requestid>
+  </revision>
 </revisionlist>
