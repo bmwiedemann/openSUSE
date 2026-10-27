@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 27 12:04:53 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Add update_zip_to_9.patch to update zip-dependency to fix several CVEs (boo#1287907) 
+
+-------------------------------------------------------------------
 Sun Sep 13 14:03:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.15.1 (bugfix release):

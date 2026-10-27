@@ -32,6 +32,7 @@ URL:            https://github.com/typst/typst
 Source0:        https://github.com/typst/typst/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Patch0:         hayagriva-bump-strum-version.patch
+Patch1:         update_zip_to_9.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  gcc%{?force_gcc_version}-c++
