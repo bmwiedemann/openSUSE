@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:21:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.1:
+  * Drain the sd-bus queue in the check pass
+  * Fix idle_notifier_v1 interface version
+  * Use bright black rather than black for LOG_DEBUG
+
+-------------------------------------------------------------------
 Sat Nov  8 08:31:02 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.0:

@@ -136,4 +136,15 @@
   * Add missing period in a config path</comment>
     <requestid>1316538</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6a0e3eb336ab4f893cfeb8eb379dc2c9</srcmd5>
+    <version>1.9.1</version>
+    <time>1793116167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.1:
+  * Drain the sd-bus queue in the check pass
+  * Fix idle_notifier_v1 interface version
+  * Use bright black rather than black for LOG_DEBUG</comment>
+    <requestid>1392884</requestid>
+  </revision>
 </revisionlist>
