@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:30:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.58.1 (crosses 1.58.0; 1.57.5 skipped, same-day
+  backport-only release):
+  * 1.57.5 (skipped): harden workflow load against null initial
+    state, with occurrence reporting
+  * Agent: reject spoofed video attachments; one accepted
+    file-type list for every composer upload path; render
+    ask-user questions; withhold stale bound canvas drafts;
+    loopback asset URLs re-homed onto the page origin
+  * Canvas: marquee-select links, then hide or delete them;
+    hidden link badges ordered by socket position; viewport and
+    graph-load lifecycle repairs; legacy widget canvases sized
+    from layout width
+  * Nodes and widgets: node-level undo/redo for bounding-box,
+    curve, range and light-info widgets; DynamicGroup row
+    mint/shift fixes with remote row-count guards; node search
+    autofocus restored; rich widget editors kept out of the
+    right side panel
+  * UI: HDR placeholder fallback for failed previews; deployment
+    switcher under the workspace selector; billing top-up and
+    checkout fix battery
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
+Mon Oct 26 19:29:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.57.4 (backport fixes only):
+  * Agent fixes: label agent_usage events in the Activity table;
+    recheck funds after an admitted send before showing the
+    out-of-credits card; preserve links in ask-user answers; gate
+    canvas-affecting claims on observed canvas state;
+    no-selection 409 no longer reported as another answer
+    winning; free-text-only winning answers reported
+  * Agent tests: open a template mid-turn without load-failure
+    toast; user-story specs for stop/output/failure handling
+  * Defer agent onboarding coach while a global dialog is open;
+    workspace read-only downgrade fix; load3d viewer bounds pin
+
+-------------------------------------------------------------------
 Sun Oct 25 20:31:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.57.3 (crosses 1.57.2):
