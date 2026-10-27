@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:29:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.123:
+  * Adds nine new API template JSONs: four Kling 4.0
+    (image/reference/text-to-video and video edit), two
+    Fibo 2.0 edit, one MiniMax H3 text-to-image and two
+    MOSS-Image (color depth control and edit); refreshes
+    the localized index files
+- No code or dependency change: the sdist still declares no
+  runtime requirements
+
+-------------------------------------------------------------------
 Fri Oct 23 08:25:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.122:
