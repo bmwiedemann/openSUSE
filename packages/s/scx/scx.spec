@@ -20,7 +20,7 @@
 %define libbpf_min_ver 1.4
 %define llvm_min_ver 17
 Name:           scx
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
@@ -35,14 +35,13 @@ BuildRequires:  clang >= %{llvm_min_ver}
 BuildRequires:  jq
 BuildRequires:  llvm >= %{llvm_min_ver}
 BuildRequires:  pkgconfig
-BuildRequires:  rust+cargo >= 1.82
+BuildRequires:  rust+cargo >= 1.91
 BuildRequires:  pkgconfig(libbpf) >= %{libbpf_min_ver}
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(systemd)
-
-ExclusiveArch:  %rust_tier1_arches
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 sched_ext is a Linux kernel feature which enables implementing kernel thread schedulers in BPF and dynamically loading them. This package contains various scheduler implementations and support utilities.
@@ -58,7 +57,7 @@ Header files needed to develop a sched-ext scheduler in C.
 %autosetup -p1 -a1
 
 %build
-%cargo_build
+%{cargo_build}
 
 %install
 install -D -m 0755 -t %{buildroot}%{_bindir} $(find target/release -maxdepth 1  -type f -executable -name scx_\*) target/release/scxtop

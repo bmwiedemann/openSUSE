@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:59:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.1.4:
+  * New experimental schedulers scx_cidland, scx_eevdf, scx_mavd and
+    scx_nitosis (arena/cid-form fair-scheduling work).
+  * Require Rust 1.91 with edition 2024; build BPF with -mcpu=v4
+    (clang 22 in CI); update libbpf.
+  * Improvements and fixes across lavd, mitosis, cosmos, cake,
+    bpfland, layered and rusty schedulers.
+- Raise rust+cargo floor to 1.91 per upstream rust-version.
+- Spec cleanup: modernize macro style.
+
+-------------------------------------------------------------------
 Mon Aug 31 21:38:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.1.3:
