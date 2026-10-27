@@ -48,6 +48,7 @@ Source:         https://files.pythonhosted.org/packages/source/m/molecule/molecu
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools
+BuildRequires:  %{ansible_python}-setuptools_scm >= 7.0.5
 BuildRequires:  %{ansible_python}-wheel
 %if %{with test}
 BuildRequires:  git-core
@@ -57,11 +58,11 @@ BuildRequires:  %{ansible_python}-ansi2html >= 1.8.0
 BuildRequires:  %{ansible_python}-coverage >= 7.0.3
 BuildRequires:  %{ansible_python}-filelock >= 3.9.0
 BuildRequires:  (%{ansible_python}-pexpect >= 4.9.0 with %{ansible_python}-pexpect < 5)
-BuildRequires:  %{ansible_python}-pytest >= 8.4.1
+BuildRequires:  %{ansible_python}-pytest >= 8.3.5
 BuildRequires:  %{ansible_python}-pytest-instafail >= 0.5.0
 BuildRequires:  %{ansible_python}-pytest-mock >= 3.10.0
 BuildRequires:  %{ansible_python}-pytest-plus >= 0.7.0
-BuildRequires:  %{ansible_python}-pytest-xdist >= 3.8.0
+BuildRequires:  %{ansible_python}-pytest-xdist >= 3.6.1
 BuildRequires:  %{ansible_python}-yamllint
 %endif
 # add runtime dependencies of molecule as BuildRequires
@@ -117,6 +118,8 @@ testing scenarios.
 %if %{with test}
 export PATH="%{buildroot}%{_bindir}:$PATH"
 sed -i '/^addopts/s/ --color=yes//' pyproject.toml
+# [tool.pytest] is read only by pytest >= 9; [tool.pytest.ini_options] works with 8 and 9
+sed -i 's/^\[tool\.pytest\]$/[tool.pytest.ini_options]/' pyproject.toml
 
 rm -f tests/integration/test_command.py
 

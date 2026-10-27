@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 14 04:37:13 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Add BuildRequires setuptools_scm: without the version plugin the wheel
+  was built as 0.0.0, so the installed metadata and the
+  python3dist(molecule) provide reported 0 instead of the real version
+- Lower the test-only BuildRequires to pytest >= 8.3.5 and
+  pytest-xdist >= 3.6.1, the versions in SLE 16.1, and rename the
+  pytest 9 [tool.pytest] table to [tool.pytest.ini_options] so
+  pytest 8 reads the test configuration too
+
+-------------------------------------------------------------------
 Wed Sep 23 04:38:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.9.0:
