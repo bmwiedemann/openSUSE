@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Oct 26 13:29:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.9:
+  * This release adds the following features:
+    + Add an instance ID for each Redfish HPE device class and target pair
+    + Include if the machine is a container or hypervisor in the report data
+    + Require libusb 1.0.27 when building the daemon
+  * This release fixes the following bugs:
+    + Add After=local-fs.target to fwupd.service to fix a CoreOS mount issue
+    + Create a dbx device with version 0 when the variable is missing
+    + Delete the efi helper when using fwupdtool reboot-cleanup
+    + Do not show GPIO devices in the fwupdmgr emulation-tag device list
+    + Do not truncate 64-bit values when exporting firmware as XML
+    + Fix a small memory leak when installing dell-kestrel firmware
+    + Fix the DFU footer size check
+    + Ignore parent battery reports when updating the Jabra GNP child
+    + Process all releases to set the version on a 2023-only dbx
+    + Remove command aliases from bash-completion
+    + Use absolute paths when sending the filename hint
+  * This release adds support for the following hardware: Pixart PID 38CA
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Mon Oct 19 12:14:52 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - rename Polkit rules to give it a 10- prefix, allowing them to gain priority
@@ -889,7 +912,7 @@ Tue Mar 25 16:35:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
     - Lenovo USB-C Dual Display Travel Dock
     - More EDL 5G modem devices
 - Drop 8583.patch and 8588.patch: fixed upsrtream.
-- Align meson call with current upstream supported parameters. 
+- Align meson call with current upstream supported parameters.
 
 -------------------------------------------------------------------
 Mon Mar 17 15:11:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -1080,7 +1103,7 @@ Sat Dec 21 11:01:39 UTC 2024 - tobi.goergens@gmail.com
     - Google GID8 Headset
     - Parade PS188
     - Primax Ryder Mouse
-    
+
 - Update to version 1.9.26:
   + This release fixes the following bugs:
     - Add HSI tests for Arrow and Meteor Lake CSME
@@ -2278,7 +2301,7 @@ Tue Dec 21 11:56:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 -------------------------------------------------------------------
 Fri Dec 10 17:56:00 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
-- Fix build issue in spec 
+- Fix build issue in spec
   (references to libfwupdplugin2 -> libfwupdplugin5)
 
 -------------------------------------------------------------------
@@ -2461,7 +2484,7 @@ Thu Oct  7 04:56:37 UTC 2021 - Joey Lee <jlee@suse.com>
 - Update to version 1.6.2
     - The fwupd efi program be separated to fwupd-efi package.
     - Removed pesign-obs-integration, moved needssslcertforbuild
-      , SBAT and EFI signing stuff to fwupd-efi. 
+      , SBAT and EFI signing stuff to fwupd-efi.
     - Moved libfwupdplugin1 to libfwupdplugin2
 - Change log from upstream:
   https://github.com/fwupd/fwupd/blob/main/data/org.freedesktop.fwupd.metainfo.xml
@@ -2577,7 +2600,7 @@ Wed Feb 24 01:50:12 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
     * Add initial support for Bluez bluetooth devices
     * Add more supported pixart devices
     * Add support for the RTD21xx HDMI converter
-  Fixes  
+  Fixes
     * Convert MBR types to GPT GUIDs to help find the ESP
     * Do not allow updating a synaptics-mst device with no customer ID
     * Drop unused heap pages after startup has completed
@@ -3240,7 +3263,7 @@ Wed Mar 11 09:14:46 UTC 2020 - hpj@urpla.net
   * Capitalize GNOME
 
 - package has grown a few new binaries: fwupdagent, fwupdate, fwupdtool
-  and a tpm event debugging tool, that is packaged separately: 
+  and a tpm event debugging tool, that is packaged separately:
   fwupdtpmevlog
 
 -------------------------------------------------------------------
@@ -3984,17 +4007,17 @@ Wed May  8 10:39:24 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
   * Match the old or new version number when setting NEEDS_REBOOT
   * Make an error message clearer when there are no updates available
   * Add support for the not-child extension from Logitech
-  * thunderbolt: Set require-ac for Thunderbolt devices 
+  * thunderbolt: Set require-ac for Thunderbolt devices
     (Fixes: gh#hughsie/fwupd#1142)
   * Fix some typos spotted using codespell
   * Add a component categories to express the firmware type
   * fu-tool: Port get-history command to fwupdtool
   * Recreate the history database if migration failed
   * Move the core built-in 'fwupd' remote over to the dell-esrt plugin
-  * snap: Add a custom systemd unit to call activation on shutdown 
+  * snap: Add a custom systemd unit to call activation on shutdown
     (Fixes: gh#hughsie/fwupd#1125)
   * ata: Flush cache before standby and activate
-  * synapticsmst: blacklist plugin when using amdgpu 
+  * synapticsmst: blacklist plugin when using amdgpu
     (Fixes: gh#hughsie/fwupd#1121)
   * uefi: add a new option to specify the os name
   * Return the newest device when using fu_history_get_device_by_id()
@@ -4198,7 +4221,7 @@ Wed May  8 10:39:24 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
   * Add a new plugin checklist (Fixes: gh#hughsie/fwupd#899)
 - Dropped obsolete patch: fwupd-bsc1130056-change-esp-os-name.patch
   (upstream PR: gh#hughsie/fwupd#1119
-- Fixed fwupd-bsc1130056-change-shim-path.patch so that it works 
+- Fixed fwupd-bsc1130056-change-shim-path.patch so that it works
   with the new files
 - Cleaned up changelog
 

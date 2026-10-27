@@ -43,7 +43,7 @@
 %define shlib_sover  3
 
 Name:           fwupd
-Version:        2.1.8
+Version:        2.1.9
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -82,18 +82,18 @@ BuildRequires:  pkgconfig(appstream-glib) >= 0.5.10
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(colorhug) >= 1.2.12
-BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.48.8
-BuildRequires:  pkgconfig(glib-2.0) >= 2.45.8
+BuildRequires:  pkgconfig(gi-docgen) >= 2021.1
+BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(gnutls) >= 3.6.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(gusb) >= 0.2.9
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
-BuildRequires:  pkgconfig(libdrm_amdgpu)
+BuildRequires:  pkgconfig(libdrm_amdgpu) >= 2.4.113
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libgcab-1.0) >= 1.0
 BuildRequires:  pkgconfig(libmnl)

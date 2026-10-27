@@ -1153,4 +1153,30 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
   /etc/polkit-1/rules.d/90-default-privs.rules (bsc#1279948).</comment>
     <requestid>1386477</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>a9cd5258dce9aaab426ef0e0a7635970</srcmd5>
+    <version>2.1.9</version>
+    <time>1793115998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.9:
+  * This release adds the following features:
+    + Add an instance ID for each Redfish HPE device class and target pair
+    + Include if the machine is a container or hypervisor in the report data
+    + Require libusb 1.0.27 when building the daemon
+  * This release fixes the following bugs:
+    + Add After=local-fs.target to fwupd.service to fix a CoreOS mount issue
+    + Create a dbx device with version 0 when the variable is missing
+    + Delete the efi helper when using fwupdtool reboot-cleanup
+    + Do not show GPIO devices in the fwupdmgr emulation-tag device list
+    + Do not truncate 64-bit values when exporting firmware as XML
+    + Fix a small memory leak when installing dell-kestrel firmware
+    + Fix the DFU footer size check
+    + Ignore parent battery reports when updating the Jabra GNP child
+    + Process all releases to set the version on a 2023-only dbx
+    + Remove command aliases from bash-completion
+    + Use absolute paths when sending the filename hint
+  * This release adds support for the following hardware: Pixart PID 38CA
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1392752</requestid>
+  </revision>
 </revisionlist>
