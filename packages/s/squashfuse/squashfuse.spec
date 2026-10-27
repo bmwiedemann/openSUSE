@@ -1,7 +1,7 @@
 #
 # spec file for package squashfuse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,19 +19,18 @@
 
 %define so_version 0
 Name:           squashfuse
-Version:        0.6.1
+Version:        0.6.3
 Release:        0
 Summary:        FUSE module to mount squashfs images
 License:        BSD-2-Clause
-Group:          System/Filesystems
 URL:            https://github.com/vasi/squashfuse
 Source:         %{url}/releases/download/%{version}/squashfuse-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc
-BuildRequires:  libattr-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  pkgconfig(fuse3)
+BuildRequires:  pkgconfig(libattr)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libzstd)
@@ -62,7 +61,6 @@ squashfs file system (no man pages).
 
 %package devel
 Summary:        FUSE module to mount squashfs images
-Group:          Development/Languages/C and C++
 Requires:       libsquashfuse%{so_version} = %{version}
 
 %description devel
