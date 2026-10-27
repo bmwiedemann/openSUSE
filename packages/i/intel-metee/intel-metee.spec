@@ -15,18 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define SONAME libmetee6_0_2_0
-
+%define SONAME libmetee6_2_6_0
 Name:           intel-metee
-Version:        6.0.2
+Version:        6.2.6
 Release:        0
 Summary:        Library to access CSE/CSME/GSC firmware via a MEI interface
 License:        Apache-2.0
 URL:            https://github.com/intel/metee
 Source:         https://github.com/intel/metee/archive/refs/tags/%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  cmake
 
 %description
 ME TEE Library is a C library to access CSE/CSME/GSC firmware via a
@@ -72,6 +71,6 @@ CFLAGS=-Wno-builtin-macro-redefined \
 %files devel
 %{_libdir}/libmetee.so
 %{_includedir}/metee.h
+%{_includedir}/meteepp.h
 
 %changelog
-
