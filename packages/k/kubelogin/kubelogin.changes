@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:57:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.22:
+  * What's Changed
+    - Add --outfile flag to convert-kubeconfig in #823
+  * Maintenance
+    - Bump Go to 1.26.10 for CVE-2026-111943 in #824
+
+-------------------------------------------------------------------
 Fri Oct 09 05:03:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.21:
