@@ -17,7 +17,7 @@
 
 
 Name:           gitea-runner
-Version:        5.2.2
+Version:        5.2.3
 Release:        0
 Summary:        Gitea Runner for Gitea Actions
 License:        MIT

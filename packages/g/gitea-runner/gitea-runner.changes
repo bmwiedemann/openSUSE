@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 27 07:00:01 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 5.2.3:
+  * fix: close the action header group before the action runs (#1345)
+  * fix: keep dry runs off the docker daemon and speed up the tests (#1349)
+  * fix: keep the shared action cache as extracted, re-fetch damaged trees (#1352)
+  * fix: align runner behaviours (#1338)
+
+-------------------------------------------------------------------
 Fri Oct 23 09:31:01 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 5.2.2:
