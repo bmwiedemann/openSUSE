@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-modelscope-hub
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Official Python client for ModelScope Hub
 License:        Apache-2.0
@@ -76,6 +76,13 @@ commands.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# 0.5.1 tests import the `tests` package (test_download_report needs
+# tests.test_download_integrity), but the sdist ships tests/ without
+# __init__.py and pytest never puts the source root on sys.path --
+# export it (pytest prepends $PYTHONPATH) so the suite collects. The
+# 37 rescued report tests pass offline (localhost fixtures, no
+# remote marks).
+export PYTHONPATH=.
 # Offline mock-mode tests (HTTP mocked with responses). Skip @remote
 # tests that need live Hub credentials.
 # The six test_openapi_coverage spec-drift guards read
@@ -87,7 +94,11 @@ commands.
 # earlier test has initialised it. The line IS emitted (it shows in
 # captured stderr) -- the assertion is order-dependent upstream, not a
 # defect here. Drop this deselect once upstream makes it order-safe.
-%pytest -m "not remote" --deselect tests/test_agent_plugin.py::test_log_execution_records_the_build_before_import --deselect tests/test_openapi_coverage.py::test_every_covered_operation_is_registered --deselect tests/test_openapi_coverage.py::test_registry_has_no_unknown_operations --deselect tests/test_openapi_coverage.py::test_registry_does_not_claim_deferred_tags --deselect tests/test_openapi_coverage.py::test_every_tag_is_accounted_for --deselect tests/test_openapi_coverage.py::test_spec_is_the_expected_document --deselect tests/test_openapi_coverage.py::test_covered_tags_account_for_every_registered_entry
+# Ignore (not deselect -- the module never collects):
+# tests/test_download_corruption.py needs
+# tests/download_corruption_harness.py, present in upstream git but
+# missing from the sdist, so its import fails however it is invoked.
+%pytest -m "not remote" --ignore tests/test_download_corruption.py --deselect tests/test_agent_plugin.py::test_log_execution_records_the_build_before_import --deselect tests/test_openapi_coverage.py::test_every_covered_operation_is_registered --deselect tests/test_openapi_coverage.py::test_registry_has_no_unknown_operations --deselect tests/test_openapi_coverage.py::test_registry_does_not_claim_deferred_tags --deselect tests/test_openapi_coverage.py::test_every_tag_is_accounted_for --deselect tests/test_openapi_coverage.py::test_spec_is_the_expected_document --deselect tests/test_openapi_coverage.py::test_covered_tags_account_for_every_registered_entry
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import modelscope_hub"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/modelscope-%{$python_bin_suffix} --help
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/ms-hub-%{$python_bin_suffix} --help

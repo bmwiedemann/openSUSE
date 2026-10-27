@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:31:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.1:
+  * Add download_repo_report with explicit COMPLETE, PARTIAL and
+    CANCELLED results; strict downloads remain the default
+  * Add opt-in continuous downloads to CLI and compatibility
+    APIs, with explicit failed-file recovery and CLI exit code 3
+    for partial completion
+  * Fix repeated bad-file retries across batches and restarts;
+    share short recovery budgets across retries, defer lengthy
+    server cooldowns; revalidate files before trusting stale
+    recovery hints; stronger timeout coverage
+  * Refactor recovery hints and summary into one hidden JSON per
+    task; stream dataset listings with bounded memory; docs and
+    100 corruption-scenario tests
+- Fix %check collection: export PYTHONPATH so the new `tests`
+  imports resolve; ignore tests/test_download_corruption.py whose
+  helper (tests/download_corruption_harness.py) is missing from
+  the sdist.
+
+-------------------------------------------------------------------
 Sun Oct 25 20:31:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.0:
