@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Oct 25 13:24:47 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- dhcp_dns_server: build the DHCP half on Kea on openSUSE too, as
+  the SLE branch of this pattern already does; ISC dhcp is
+  end-of-life since December 2022 and 4.4.3.P1 was its final
+  release. Drop bind-chrootenv, which the bind package no longer
+  ships.
+- gateway_server: drop quagga, ipsec-tools and rarpd, none of which
+  exists in openSUSE Factory anymore; recommend frr, the FRRouting
+  successor of quagga that the SLE branch of this pattern already
+  names, on openSUSE as well. Also drop calamaris and
+  wondershaper, and arptables: the patterns' firewall is
+  firewalld, recommended by patterns-base, and its backend is
+  nftables, so the legacy ARP packet filtering tool is
+  superseded on both counts.
+- mail_server: drop cyrus-imapd, whose source package was removed
+  from Factory, and inn, the NNTP news server left over from the
+  mail-and-news era. Recommend postfix and dovecot, so the
+  pattern has a mail centre again: postfix is the distribution's
+  default MTA (boo#1136078) and dovecot is the remaining full
+  IMAP server in Factory.
+- lamp_server: drop apache2-mod_python (mod_python is Python 2 era
+  and the package was removed from Factory) and
+  apache2-example-pages (no longer built); recommend
+  libapr1-0/libapr-util1-0 and apache2-manual under their current
+  names instead of libapr1/libapr-util1 and apache2-doc, which no
+  longer exist as packages.
+- directory_server: drop yast2-ldap-server, which no longer exists
+  in Factory.
+- printing: drop cups-filters-foomatic-rip and
+  cups-filters-ghostscript; both were folded into cups-filters,
+  which this pattern already recommends. Recommend
+  hplip-driver-hpcups instead of the retired hplip-hpijs name.
+- Drop all remaining yast2-* recommendations, as patterns do not
+  carry YaST modules: yast2-ftp-server, yast2-nfs-server,
+  yast2-samba-server and yast2-tftp-server in file_server;
+  yast2-control-center, yast2-ncurses, yast2-ncurses-pkg and
+  yast2-vm in kvm_tools and xen_tools; and the yast2-*-32bit
+  mirrors in pattern-definition-32bit.txt.
+- file_server: drop the nfsidmap recommendation entirely rather
+  than renaming it to libnfsidmap1: the idmapping library is
+  pulled in by the NFS client packages themselves and has no
+  place named in a pattern.
+- kvm_tools, xen_tools: recommend xauth under its current name
+  instead of xorg-x11-xauth.
+- Mirror the changed entries in pattern-definition-32bit.txt,
+  including the inn-32bit removal in mail_server.
+- gateway_server: recommend wireshark unconditionally. The SLE
+  branch of this pattern also requires it, while the openSUSE
+  branch named it nowhere and nothing in the file explains the
+  difference; the recommended strength matches the pattern's
+  other analysis tooling.
+
+-------------------------------------------------------------------
 Fri Jun 12 15:26:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only require libvirt-daemon-qemu on supported architectures.

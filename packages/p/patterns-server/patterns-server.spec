@@ -54,20 +54,10 @@ Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 3040
 Provides:       pattern-visible()
 Requires:       bind
-%if 0%{?is_opensuse}
-Requires:       dhcp-server
-%else
 Requires:       kea
-%endif
 Requires:       pattern() = basesystem
-Recommends:     bind-chrootenv
 Recommends:     bind-doc
-%if 0%{?is_opensuse}
-Recommends:     dhcp
-Recommends:     dhcp-relay
-%else
 Recommends:     kea-hooks
-%endif
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-dhcp_dns_server = %{version}
 Obsoletes:      patterns-openSUSE-dhcp_dns_server < %{version}
@@ -100,7 +90,6 @@ Requires:       pattern() = basesystem
 Recommends:     sssd
 Recommends:     sssd-ldap
 %if 0%{?is_opensuse}
-Recommends:     yast2-ldap-server
 Provides:       patterns-openSUSE-directory_server = %{version}
 Obsoletes:      patterns-openSUSE-directory_server < %{version}
 %else
@@ -127,7 +116,6 @@ Provides:       pattern-order() = 2900
 Provides:       pattern-visible()
 Requires:       nfs-kernel-server
 Requires:       pattern() = basesystem
-Recommends:     nfsidmap
 Recommends:     samba
 Recommends:     samba-client
 Recommends:     samba-winbind
@@ -141,10 +129,6 @@ Provides:       patterns-sles-file_server = %{version}
 Obsoletes:      patterns-sles-file_server < %{version}
 %endif
 %if 0%{?is_opensuse}
-Recommends:     yast2-ftp-server
-Recommends:     yast2-nfs-server
-Recommends:     yast2-samba-server
-Recommends:     yast2-tftp-server
 Suggests:       atftp
 %endif
 
@@ -169,25 +153,14 @@ Requires:       pattern() = basesystem
 %if !0%{?is_opensuse}
 Requires:       wireshark
 %endif
-Recommends:     arptables
-Recommends:     calamaris
 Recommends:     ddclient
 Recommends:     fetchmail
 Recommends:     fetchmailconf
-Recommends:     ipsec-tools
-%if 0%{?is_opensuse}
-Recommends:     quagga
-%else
 Recommends:     frr
-%endif
 Recommends:     radvd
-Recommends:     rarpd
 Recommends:     squid
 Recommends:     whois
-%if !0%{?is_opensuse}
 Recommends:     wireshark
-%endif
-Recommends:     wondershaper
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-gateway_server = %{version}
 Obsoletes:      patterns-openSUSE-gateway_server < %{version}
@@ -268,11 +241,7 @@ Recommends:     openssh
 Recommends:     vim
 Recommends:     virt-v2v
 Recommends:     virt-viewer
-Recommends:     xorg-x11-xauth
-Recommends:     yast2-control-center
-Recommends:     yast2-ncurses
-Recommends:     yast2-ncurses-pkg
-Recommends:     yast2-vm
+Recommends:     xauth
 %endif
 %if !0%{?is_opensuse}
 Provides:       patterns-sles-kvm_tools = %{version}
@@ -300,13 +269,11 @@ Provides:       pattern-order() = 3000
 Provides:       pattern-visible()
 Requires:       apache2
 Requires:       pattern() = basesystem
-Recommends:     apache2-doc
-Recommends:     apache2-example-pages
+Recommends:     apache2-manual
 Recommends:     apache2-mod_php8
-Recommends:     apache2-mod_python
 Recommends:     apache2-prefork
-Recommends:     libapr-util1
-Recommends:     libapr1
+Recommends:     libapr-util1-0
+Recommends:     libapr1-0
 Recommends:     mariadb
 Recommends:     perl
 %if 0%{?is_opensuse}
@@ -342,8 +309,8 @@ Requires:       vacation
 Requires:       pattern() = basesystem
 Recommends:     amavisd-new
 Recommends:     clamav
-Recommends:     cyrus-imapd
-Recommends:     inn
+Recommends:     dovecot
+Recommends:     postfix
 Recommends:     spamassassin
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-mail_server = %{version}
@@ -384,11 +351,9 @@ Recommends:     OpenPrintingPPDs-postscript
 Recommends:     cups-backends
 Recommends:     cups-filters
 Recommends:     cups-filters-cups-browsed
-Recommends:     cups-filters-foomatic-rip
-Recommends:     cups-filters-ghostscript
 Recommends:     epson-inkjet-printer-escpr
 Recommends:     gutenprint
-Recommends:     hplip-hpijs
+Recommends:     hplip-driver-hpcups
 Recommends:     manufacturer-PPDs
 Recommends:     samba
 Recommends:     splix
@@ -473,11 +438,7 @@ Recommends:     vim
 Recommends:     virt-viewer
 #Recommends:     sles-xen_en-pdf
 Recommends:     xen-doc-html
-Recommends:     xorg-x11-xauth
-Recommends:     yast2-control-center
-Recommends:     yast2-ncurses
-Recommends:     yast2-ncurses-pkg
-Recommends:     yast2-vm
+Recommends:     xauth
 %if !0%{?is_opensuse}
 Provides:       patterns-sles-xen_tools = %{version}
 Obsoletes:      patterns-sles-xen_tools < %{version}
