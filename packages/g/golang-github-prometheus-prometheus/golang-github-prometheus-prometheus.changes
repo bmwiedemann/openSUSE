@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 26 22:46:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- actually apply the patches
+
+-------------------------------------------------------------------
+Mon Oct 19 14:24:58 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2026-93753: Bump sanitize-html to version 2.18.1 to remove
+                  dependency on the vulnerable deepmerge library
+                  (bsc#1282590)
+- Add 0003-Fix-CVE-2026-93753.patch
+- Remove 0003-Remove-build-react-app.patch
+- Clean up prepare_webassets.sh
+
+-------------------------------------------------------------------
 Mon Sep 28 04:57:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.15.0:

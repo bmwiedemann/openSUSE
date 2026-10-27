@@ -42,17 +42,11 @@ echo "Extracting obscpio archive"
 cpio -id < "${working_directory}/${obscpio}" || exit 21
 cd "${basename}" || exit 23
 
-patch -p1 < 0003-Remove-build-react-app.patch
-
 echo "##########"
+patch -p1 -i "${working_directory}/0003-Fix-CVE-2026-93753.patch"
 cd web/ui/ || exit 25
 rm -rf node_modules || exit 27
 pnpm install --frozen-lockfile
-
-# cd react-app || exit 25
-# rm -rf node_modules || exit 27
-# pnpm install --frozen-lockfile
-# cd .. || exit 25
 
 CI="true" pnpm run build:mantine-ui
 

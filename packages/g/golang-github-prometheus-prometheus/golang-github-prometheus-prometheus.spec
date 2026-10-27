@@ -50,8 +50,7 @@ Source23:       prepare_webassets.sh
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
-Patch3:         0003-Remove-build-react-app.patch
-#
+Patch3:         0003-Fix-CVE-2026-93753.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
 BuildRequires:  firewall-macros
@@ -87,12 +86,7 @@ Prometheus's main features are:
  - multiple modes of graphing and dashboarding support
 
 %prep
-# As the 0003-Remove-build-react-app.patch patch was already applied
-# during the webassets generation, it would fail to apply now.
-# Hence we are using setup and autopatch instead of autosetup
-# to omit this patch during the build
-%setup -q -a1 -n prometheus-%{version}
-%autopatch -p1 -M 2
+%autosetup -p1 -a1 -n prometheus-%{version}
 tar xf %{SOURCE2}
 
 %build
@@ -178,8 +172,8 @@ License:        GPL-2.0-or-later
 Requires:       firewalld
 
 %description -n firewalld-prometheus-config
-This package contains configuration file for Prometheus for older versions of
-Firewalld which do not provide this in own package.
+This package contains a configuration file for Prometheus for older versions of
+Firewalld which do not provide this in their own package.
 
 %files -n firewalld-prometheus-config
 %dir %{_prefix}/lib/firewalld
