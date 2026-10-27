@@ -113,4 +113,41 @@
     <comment>1</comment>
     <requestid>1384226</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>96e2ffc20ae24f6bf4840519727d21dc</srcmd5>
+    <version>0.0.92</version>
+    <time>1793117295</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.0.92:
+  * Infer the types of Django model primary keys (`pk` and the
+    automatic `id`) with `django-types`
+  * Infer Django foreign key `_id` types from the referenced
+    field
+  * Recognize `get__display()` on Django model fields with
+    choices
+  * Recognize `get_next_by_()` and `get_previous_by_()` on non-
+    nullable Django date and datetime fields
+  * Preserve generic callback parameters when forwarding
+    overloaded functions through a `ParamSpec`
+  * Check implicit and PEP 613 type aliases as type expressions
+    at their definitions
+  * Emit SARIF reports with `ty check --output-format sarif`
+  * Skip scanning for scripts at startup and reload when uv
+    script environments are disabled
+  * Abbreviate large nested tuple types in diagnostics and inlay
+    hints
+  * Point to the expression that makes a type alias invalid, even
+    when the alias is imported
+- update to 0.0.91:
+  * Improve generics solving when an intersection is passed into
+    a generic call to prefer solving the call to a more precise
+    type when it is safe to do so
+  * Fix recursive type materialization
+  * Infer return intersections from correlated call
+    specializations
+  * Preserve `Self` when checking universal protocols
+  * Fix stack overflows involving recursive descriptor setter
+    types</comment>
+    <requestid>1393068</requestid>
+  </revision>
 </revisionlist>

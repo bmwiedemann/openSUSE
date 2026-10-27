@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Oct 27 11:47:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.92:
+  * Infer the types of Django model primary keys (`pk` and the
+    automatic `id`) with `django-types`
+  * Infer Django foreign key `_id` types from the referenced
+    field
+  * Recognize `get__display()` on Django model fields with
+    choices
+  * Recognize `get_next_by_()` and `get_previous_by_()` on non-
+    nullable Django date and datetime fields
+  * Preserve generic callback parameters when forwarding
+    overloaded functions through a `ParamSpec`
+  * Check implicit and PEP 613 type aliases as type expressions
+    at their definitions
+  * Emit SARIF reports with `ty check --output-format sarif`
+  * Skip scanning for scripts at startup and reload when uv
+    script environments are disabled
+  * Abbreviate large nested tuple types in diagnostics and inlay
+    hints
+  * Point to the expression that makes a type alias invalid, even
+    when the alias is imported
+- update to 0.0.91:
+  * Improve generics solving when an intersection is passed into
+    a generic call to prefer solving the call to a more precise
+    type when it is safe to do so
+  * Fix recursive type materialization
+  * Infer return intersections from correlated call
+    specializations
+  * Preserve `Self` when checking universal protocols
+  * Fix stack overflows involving recursive descriptor setter
+    types
+  * Preserve the namespace-package fallback in module discovery
+    when the namespace-package fallback is obscured by a partial
+    stub package
+  * Report all missing `@override` decorators together
+  * Fix false-positive `invalid-argument-type` diagnostics when
+    inferring constrained type variables from callbacks that
+    return an invariant generic with a gradual type argument
+- update to 0.0.90:
+  * Allow subclasses to restore hashability
+  * Avoid crashes when negating recursive aliases
+  * Avoid stack overflow for recursive descriptor setter checks
+  * Defer constructor type variable defaults
+  * Preserve bound receivers for strict signature checks
+  * Preserve read types for dynamic attributes
+  * Reject runtime_checkable on non-protocol classes
+  * Validate TypeAliasType keyword arguments
+- update to 0.0.89:
+  * Added support for return type inference for unannotated
+    functions and methods (#29253).
+- update to 0.0.88:
+  * Avoid panics and hangs involving recursive type aliases and
+    intersections
+  * Fix false `invalid-mutable-override` errors when overriding
+    `object` attributes
+  * Fix attribute assignment and deletion checks through bounded
+    or constrained type variables
+  * Detect instance layout conflicts hidden by additional base
+    classes
+  * Fix false missing-argument errors when Pydantic models
+    override inherited attributes with `ClassVar`
+  * Preserve known module owners when uv reports owners outside
+    the resolution
+  * ### Diagnostic improvements
+  * Report assignments to individually frozen Pydantic fields
+  * ### Core type checking
+  * Improve type inference for intersection arguments to generic
+    functions
+  * Preserve inherited annotations for unannotated subclass
+    attributes when a base has type `Any` or `Unknown`
+  * Preserve common return-type structure when gradual arguments
+    match multiple overloads
+- update to 0.0.87:
+  * Clamp notebook cell positions to the end of the cell
+  * Fix deadlock when requests arrive before workspace
+    configuration
+  * Fix notebook cell lookups after cells with cell magics
+  * Fix panic on completions past the end of a notebook's last
+    cell
+  * Add opt-in `mismatched-sentinel-name` rule
+  * Deduplicate identical argument type diagnostics
+  * Enable `invalid-mutable-override` by default
+  * Improve display of distinct string literal types
+  * Respect suppression of attribute override diagnostics
+
+-------------------------------------------------------------------
 Mon Oct 12 00:16:24 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - update to 0.0.86:
