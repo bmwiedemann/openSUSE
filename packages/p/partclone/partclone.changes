@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:31:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.51:
+  * btrfs: sync bundled code with btrfs-progs v7.3, report staged
+    bitmap progress on large filesystems
+  * exfat: clone the last two clusters of a volume (data-loss fix)
+  * ntfs: clone the backup boot sector again, fixing ntfsfix
+    alternate-boot-sector validation
+  * New --json-status/--json-fresh options for progress monitoring
+  * Fix static linking by renaming internal crc32 to pc_crc32
+
+-------------------------------------------------------------------
 Sun Sep 13 16:54:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.50:
