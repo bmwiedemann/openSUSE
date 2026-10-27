@@ -1514,4 +1514,12 @@ bsc#1130564: Apply update from the openSUSE package
   * python 3.15 support</comment>
     <requestid>1373094</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>417aa4363634525aa93c95f1775a14d5</srcmd5>
+    <version>1.18.1</version>
+    <time>1793121689</time>
+    <user>dimstar_suse</user>
+    <comment>- add unpin-pybind11.patch</comment>
+    <requestid>1393006</requestid>
+  </revision>
 </revisionlist>

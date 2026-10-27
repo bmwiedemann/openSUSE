@@ -1,0 +1,13 @@
+Index: scipy-1.18.1/pyproject.toml
+===================================================================
+--- scipy-1.18.1.orig/pyproject.toml
++++ scipy-1.18.1/pyproject.toml
+@@ -26,7 +26,7 @@ requires = [
+     "Cython>=3.2.0,<3.3.0",
+     # Pre-emptive upper bound on pybind11
+     # (3.0.4 works at time of writing)
+-    "pybind11>=2.13.2,<3.1.0",
++    "pybind11>=2.13.2",
+     # Pre-emptive upper bound on pythran
+     # (0.19.0 works at time of writing)
+     "pythran>=0.18.1,<0.20.0; python_version < '3.15'",

@@ -56,11 +56,13 @@ Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{v
 Source1:        scipy-datasets.tar.gz
 # PATCH-FIX-UPSTREAM - https://github.com/scipy/scipy/pull/25571
 Patch0:         scipy-25571.patch
+# PATCH-FIX-SUSE - unpin pybind11
+Patch1:         unpin-pybind11.patch
 BuildRequires:  %{python_module Cython >= 3.2.0}
 BuildRequires:  %{python_module devel >= 3.12}
 BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.22}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pybind11-devel >= 2.13.2 with %python-pybind11-devel < 3.1.0}
+BuildRequires:  %{python_module pybind11-devel >= 2.13.2 with %python-pybind11-devel < 3.2.0}
 # Upstream's pre-emptive pin to < 0.19 is not necessary
 BuildRequires:  %{python_module pythran >= 0.18.1}
 BuildRequires:  fdupes
