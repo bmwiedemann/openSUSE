@@ -188,4 +188,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1341097</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f8cd6832c62ff747da5079e294b10cb1</srcmd5>
+    <version>3.12</version>
+    <time>1793116039</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.12:
+  * Emit one type definition for declarators that share it
+  * raise ParseError for _Atomic applied to array or function
+    type
+  * Fix code generation for the _Pragma operator
+  * Parse GNU statement expressions as primary expressions
+  * Fix shared type declarations in switch cases
+  * raise ParseError for typedef in a parameter declaration
+  * Scope for loop init declarations to the loop
+  * Enhanced C11 support
+  * Drop an unneeded direct build depndency on wheel
+  * fix: handle integer suffix in #line directive without
+    crashing
+  * Update default branch to main
+  * fix: raise ParseError instead of AssertionError on unmatched
+    '}'
+  * Add support for Python 3.15
+  * Fix empty compound literal (type){} raising ParseError
+  * Fix compound literal statements in C generator
+  * Keep the contents of adjacent u8 string literals</comment>
+    <requestid>1392498</requestid>
+  </revision>
 </revisionlist>

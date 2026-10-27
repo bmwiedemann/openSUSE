@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pycparser
-Version:        3.0
+Version:        3.12
 Release:        0
 Summary:        C parser in Python
 License:        BSD-3-Clause
