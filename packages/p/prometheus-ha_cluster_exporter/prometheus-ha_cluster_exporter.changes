@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 27 14:57:58 UTC 2026 - shap-staff@suse.de
+
+- Release 1.4.3
+
+  ## What's Changed
+  * Upgrade x/net to 0.61 by @vicenteqa in https://github.com/ClusterLabs/ha_cluster_exporter/pull/295 (CVE-2026-78660, bsc#1287033)
+
+  ## New Contributors
+  * @vicenteqa made their first contribution in https://github.com/ClusterLabs/ha_cluster_exporter/pull/295
+
+  **Full Changelog**: https://github.com/ClusterLabs/ha_cluster_exporter/compare/1.4.2...1.4.3
+
+-------------------------------------------------------------------
 Tue Jul 21 12:13:41 UTC 2026 - shap-staff@suse.de
 
 - Release 1.4.2
