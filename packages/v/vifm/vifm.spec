@@ -17,7 +17,7 @@
 
 
 Name:           vifm
-Version:        0.14.4
+Version:        0.14.5
 Release:        0
 Summary:        Ncurses based file manager with vi like keybindings
 License:        GPL-2.0-or-later

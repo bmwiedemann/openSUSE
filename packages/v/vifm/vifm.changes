@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:17:25 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.5:
+  Security:
+  * Fixed unsafe IPC pipe reuse (CVE-2026-110237).
+  Documentation:
+  * Improved wording of documentation sections describing filters and patterns.
+  * Improved wording of documentation covering :view.
+  * Slightly improve documentation of columncount: in 'lsoptions'.
+  * Fixed invocation form of :locate that passes parameters without escaping not being documented.
+  set command and options:
+  * Fixed printing the value of 'previewoptions': remove trailing comma and fix
+    maxtreedepth: and graphicsdelay: being mutually exclusive.
+  File list:
+  * Avoid views scrolling unnecessarily in response to file-system changes that
+    add or remove files before the first visible line.
+  File preview:
+  * Fixed external preview of directories being indefinitely refreshed when
+    'previewoptions' lists non-default values for builtin directory preview.
+  * Fixed graphics from miller preview staying visible after switching away
+    from a file entry.
+  * Fixed graphics from miller preview staying visible after switching 'millerview' off.
+  Command-line mode:
+  * Fixed :highlight Group cterm=combine,none gui=combine,none resulting in cterm=combine and gui=combine.
+  Menus and dialogs:
+  * Fixed dialog's title being hidden when it's longer than the dialog's message.
+  Core:
+  * Fixed startup commands being executed on loading sessions.
+  * Fixed cleaning up IPC pipe file on exiting after handling --remote or --remote-expr.
+  * Fixed an unlikely memory leak on discovering .desktop files.
+  TUI:
+  * Fixed ruler in view mode not growing in size to accommodate its content.
+  Integration:
+  * Fixed FUSE unmounting not working on FreeBSD 15.0 or later, which has added
+    an implementation of inotify that, unlike on Linux, counts as a directory
+    use and prevents unmounting.
+
+-------------------------------------------------------------------
 Mon Jun  1 07:14:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.4:
