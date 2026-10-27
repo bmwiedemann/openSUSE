@@ -328,4 +328,41 @@
   * docs: fix merge order in the config how-to</comment>
     <requestid>1375228</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9d9f881c97799ca6d1176dc23c594329</srcmd5>
+    <version>4.13.5</version>
+    <time>1793121448</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.13.5:
+  * Publish a GitHub Release with changelog notes, a PyPI link,
+    and a version comparison after each PyPI release.
+- update to 4.13.4:
+  * Require a complete `files` path segment when locating Android
+    app directories from `sys.path`. #621
+  * Keep root directory tests independent of inherited XDG
+    environment variables. #622
+  * Raise `RuntimeError` when iOS cannot resolve the home
+    directory, rather than returning paths rooted at a literal
+  * Keep user directory strings, paths and iterators consistent
+    inside `isolated_dirs` when Unix root enables
+  * `use_site_for_root`. Restore root redirection when the
+    context exits. #625
+  * Raise `RuntimeError` when the Windows Projects directory
+    cannot resolve the home directory, rather than returning a
+  * path rooted at a literal `~`. #627
+  * Correct the contributor guide to name ty as the type checker
+    used by the type environment. #623
+- update to 4.13.1:
+  * Free the path buffer from `SHGetKnownFolderPath` when the
+    known-folder lookup fails. #618
+  * Preserve literal backslashes before ordinary characters in
+    double-quoted `user-dirs.dirs` paths instead of removing
+  * them.
+- update to 4.13.0:
+  * Detect Homebrew Python for the `MacOS` site directories under
+    `python:-S`, which
+  * leaves `base_prefix` on the `Cellar` keg, and for the
+    `python-freethreading` formula - by</comment>
+    <requestid>1392513</requestid>
+  </revision>
 </revisionlist>
