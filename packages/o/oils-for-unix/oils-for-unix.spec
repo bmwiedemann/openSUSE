@@ -17,7 +17,7 @@
 
 
 Name:           oils-for-unix
-Version:        0.37.0
+Version:        0.38.0
 Release:        0
 Summary:        A bash compatible shell and a new modern shell
 License:        Apache-2.0 AND CNRI-Python-GPL-Compatible
@@ -25,14 +25,16 @@ URL:            https://oils.pub
 Source:         %{url}/download/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
-BuildRequires:  readline-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(history)
+BuildRequires:  pkgconfig(readline)
 
 %description
 oils-for-unix contains two different shells: a POSIX and bash compatible shell
 called OSH, and a modern Python-like shell called YSH.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %{_configure} \

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:56:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.38.0:
+  * OSH: implement GLOBIGNORE for better bash compatibility
+  * OSH: implement shopt -u globskipdots
+  * OSH: getopts supports leading colon for silent mode
+  * OSH: exec -a sets argv[0], like bash
+  * OSH: trap empty string now ignores signals (SIG_IGN)
+  * umask accepts symbolic modes like ug=rwx
+  * YSH: new Dict methods clear, append and update, plus ++
+  * YSH: new io.glob() and io.libcGlob() functions
+  * YSH: trap --ignore to ignore signals
+  * Remove long-deprecated _status variable in YSH
+  * kill -l handles more cases
+  * Report core dumps with a message like other shells
+- Use pkgconfig(history) and pkgconfig(readline) BuildRequires;
+  %autosetup -p1
+
+-------------------------------------------------------------------
 Fri Jan  2 14:17:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.37.0:
