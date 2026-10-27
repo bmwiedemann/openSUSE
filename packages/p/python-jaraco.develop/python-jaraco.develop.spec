@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.develop
-Version:        8.19.2
+Version:        9.1.0
 Release:        0
 Summary:        Development utilities by jaraco
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.develop
 Source:         https://files.pythonhosted.org/packages/source/j/jaraco.develop/jaraco_develop-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 56}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
@@ -36,8 +36,8 @@ BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module ini2toml}
 BuildRequires:  %{python_module jaraco.collections}
 BuildRequires:  %{python_module jaraco.context}
-BuildRequires:  %{python_module jaraco.packaging}
-BuildRequires:  %{python_module jaraco.ui}
+BuildRequires:  %{python_module jaraco.packaging >= 10}
+BuildRequires:  %{python_module jaraco.ui >= 2.4}
 BuildRequires:  %{python_module jaraco.vcs >= 1.1}
 BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module packaging}
@@ -54,9 +54,9 @@ Requires:       python-PyNaCl
 Requires:       python-build
 Requires:       python-ini2toml
 Requires:       python-jaraco.context
-Requires:       python-jaraco.ui
+Requires:       python-jaraco.packaging >= 10
+Requires:       python-jaraco.ui >= 2.4
 Requires:       python-jaraco.vcs >= 1.1
-Requires:       python-keyring
 Requires:       python-keyring
 Requires:       python-packaging
 Requires:       python-path

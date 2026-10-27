@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Oct 25 16:10:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1.0:
+  * Require Python 3.11 or later.
+  * Fragment types are now parsed from the right of the filename,
+    as towncrier itself does, so a dot in the fragment id no
+    longer causes finalize to fail with a KeyError. Fragment
+    names are also validated before the release kind is computed,
+    giving a clear error for unrecognized names.
+  * Secrets read from keyring are now wrapped in secrets.Secret,
+    whose repr elides the value, keeping credentials out of
+    rendered tracebacks and other repr-based output.
+  * Adopted the expanded Ruff 0.16 default rule selection, fixing
+    the violations it surfaced. Notably, the subprocess
+    invocations in init-azure and macos-build-python now check
+    their return codes, failing fast instead of proceeding after
+    a failed command.
+  * github.Repo.get_public_key() is now the Repo.public_key
+    cached property, which caches per repo instead of globally.
+
+-------------------------------------------------------------------
 Sun Mar 15 19:14:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.19.2:
