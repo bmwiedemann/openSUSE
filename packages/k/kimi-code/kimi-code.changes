@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:27:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.3:
+  * Handle tasks directly by default instead of proactively
+    launching subagents; request delegation explicitly in
+    your message, AGENTS.md, a skill or a multi-agent mode
+  * Swarms now start only in swarm mode: no longer launched
+    by the agent itself, nor available in kimi -p or ACP
+    clients such as Zed
+  * Stop reporting a failed swarm for AgentSwarm calls
+    rejected before any subagent starts; the agent points
+    to /swarm; warn about high usage when turning it on
+  * Merge the repeated permission-mode notices and refresh
+    model-switch prompts; web dashboard fixes
+
+-------------------------------------------------------------------
 Fri Oct 23 08:26:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.3.1:

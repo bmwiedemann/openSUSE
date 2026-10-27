@@ -210,4 +210,12 @@ satisfy their ranges; ws 8.21.3 is npm latest. No CVE or GHSA in the
     <comment>Update to 2.3.1</comment>
     <requestid>1392034</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>283139e7c7695015012202140c7cc20c</srcmd5>
+    <version>2.3.3</version>
+    <time>1793116743</time>
+    <user>dimstar_suse</user>
+    <comment>Update kimi-code to 2.3.3.</comment>
+    <requestid>1392926</requestid>
+  </revision>
 </revisionlist>
