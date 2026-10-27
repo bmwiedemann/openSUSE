@@ -2,35 +2,39 @@ Index: libquicktime-1.2.4+git20180804.fff99cd/configure.ac
 ===================================================================
 --- libquicktime-1.2.4+git20180804.fff99cd.orig/configure.ac
 +++ libquicktime-1.2.4+git20180804.fff99cd/configure.ac
-@@ -282,6 +282,7 @@ have_lame="false"
+@@ -282,7 +282,7 @@ have_lame="false"
    AC_TRY_RUN([
      #include <lame/lame.h>
      #include <stdio.h>
-+int
-     main()
+-    main()
++    int main()
      {
      int version_major;
-@@ -661,6 +662,7 @@
+     int version_minor;
+@@ -661,7 +661,7 @@ AC_MSG_CHECKING(for faac)
  AC_TRY_RUN([
      #include <inttypes.h>
      #include <faac.h>
-+int
-     main()
+-    main()
++    int main()
      {
      int samplerate = 44100, num_channels = 2;
-@@ -730,6 +732,7 @@
+     unsigned long input_samples, output_bytes;
+@@ -730,7 +730,7 @@ AC_MSG_CHECKING(for neaacdec.h usability
  AC_TRY_RUN([
      #include <neaacdec.h>
      #include <stdio.h>
-+int
-     main()
+-    main()
++    int main()
      {
      int faad_major;
-@@ -763,6 +766,7 @@
+     int faad_minor;
+@@ -763,7 +763,7 @@ AC_MSG_CHECKING(for faad.h usability for
  AC_TRY_RUN([
      #include <faad.h>
      #include <stdio.h>
-+int
-     main()
+-    main()
++    int main()
      {
      int faad_major;
+     int faad_minor;

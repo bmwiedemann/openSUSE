@@ -1,7 +1,7 @@
 #
 # spec file for package libquicktime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 Patch0:         fix-gcc14-build.patch
 Patch1:         fix-gcc15-build.patch
+Patch2:         libquicktime-lame-4.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -37,8 +38,7 @@ BuildRequires:  doxygen
 BuildRequires:  libdv-devel
 BuildRequires:  libfaad2-devel
 BuildRequires:  libjpeg-devel
-# Disable lame, broken since 4.0 bump, patches welcome.
-%dnl BuildRequires:  libmp3lame-devel
+BuildRequires:  libmp3lame-devel
 BuildRequires:  libtool
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
@@ -139,7 +139,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libquicktime/lqt_audiocodec.so
 %{_libdir}/libquicktime/lqt_dv.so
 %{_libdir}/libquicktime/lqt_faad2.so
-%dnl %{_libdir}/libquicktime/lqt_lame.so
+%{_libdir}/libquicktime/lqt_lame.so
 %{_libdir}/libquicktime/lqt_mjpeg.so
 %{_libdir}/libquicktime/lqt_png.so
 %{_libdir}/libquicktime/lqt_rtjpeg.so

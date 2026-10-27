@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 25 08:28:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add libquicktime-lame-4.patch: Fix build with new lame. Enable
+  mp3 encoding support again.
+- Rebase fix-gcc14-build.patch
+
+-------------------------------------------------------------------
 Mon Oct 19 23:14:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable mp3 encoding support, disable libmp3lame-devel

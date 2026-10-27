@@ -1,0 +1,13 @@
+Index: libquicktime-1.2.4+git20180804.fff99cd/configure.ac
+===================================================================
+--- libquicktime-1.2.4+git20180804.fff99cd.orig/configure.ac
++++ libquicktime-1.2.4+git20180804.fff99cd/configure.ac
+@@ -292,7 +292,7 @@ have_lame="false"
+     if(sscanf(version, "%d.%d", &version_major,
+               &version_minor) < 2)
+       return -1;
+-    if((version_major != 3) || (version_minor < 93))
++    if(version_major < 3 || (version_major == 3 && version_minor < 93))
+       return 1;
+     return 0;
+     }
