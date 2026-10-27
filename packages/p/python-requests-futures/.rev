@@ -69,4 +69,13 @@
   * Correct setup.py email addr</comment>
     <requestid>1266244</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ed8d074d9182f06dbf7ccb41451fbff4</srcmd5>
+    <version>1.1.0</version>
+    <time>1793121474</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * build modernization</comment>
+    <requestid>1392532</requestid>
+  </revision>
 </revisionlist>
