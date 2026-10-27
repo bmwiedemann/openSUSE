@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:28:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.97: release-train pin roll, the
+  re-export shim code is unchanged
+  * Adds Kling 4.0, Fibo 2.0, MOSS-Image and MiniMax H3
+    templates
+  * Pins move to core 0.3.388, json 0.1.123 and
+    media-assets-02 0.1.24
+  * The floors in this package already cover all of those pins
+
+-------------------------------------------------------------------
 Fri Oct 23 08:25:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.96: release-train pin roll, the

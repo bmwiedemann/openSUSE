@@ -349,4 +349,12 @@ its own request first.</comment>
     <comment>Update to 0.11.96</comment>
     <requestid>1392032</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ae0983af474003a8c249a0c68039f8ab</srcmd5>
+    <version>0.11.97</version>
+    <time>1793116834</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-comfyui-workflow-templates to 0.11.97.</comment>
+    <requestid>1392930</requestid>
+  </revision>
 </revisionlist>
