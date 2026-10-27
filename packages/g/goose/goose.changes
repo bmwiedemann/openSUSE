@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:40:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.56.0:
+  * automatic thinking level, resumable delegate subagents with
+    view-only UI sessions, and a cap on concurrent subagents
+  * IO Intelligence provider, provider-defined cache prices, live
+    model catalog in goose-acp, and OpenRouter/Moonshot fixes
+  * CVE-2026-111079: terminal shell history is opt-in behind
+    --dangerous-include-history with a warning instead of
+    always-on (boo#1286929)
+  * Boa JavaScript runtime replaces PCTX code mode; MCP tools get
+    provider-safe names, skills discovery moves into the GDK
+  * Databricks, Bedrock, OpenAI Responses and stale-model fixes;
+    Windows build and NSIS installer fixes
+- Refresh the vendored dependencies (1142 crates vendored, 461
+  third-party crates in the linked set); re-derive the License tag
+  from the new graph, unchanged at 12 SPDX identifiers; the four
+  bundled() Provides keep their versions
+- Upstream moved to github.com/aaif-goose/goose: point URL and the
+  obs_scm service at the new location
+
+-------------------------------------------------------------------
 Sat Oct 17 06:21:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.55.0:
