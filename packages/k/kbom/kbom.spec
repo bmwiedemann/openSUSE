@@ -17,7 +17,7 @@
 
 
 Name:           kbom
-Version:        0.3.4
+Version:        0.3.6
 Release:        0
 Summary:        Kubernetes Bill of Materials
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         kbom-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.26 >= 1.26.0
+BuildRequires:  go1.27 >= 1.27.0
 BuildRequires:  zsh
 
 %description
@@ -42,7 +42,6 @@ well as DIY Kubernetes.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -53,7 +52,6 @@ Bash command line completion support for %{name}.
 
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
@@ -63,7 +61,6 @@ Fish command line completion support for %{name}.
 
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch

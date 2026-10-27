@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 24 16:57:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.6:
+  * Show progress during KBOM generation and speed it up; add
+    --quiet flag to disable it, errors now go to stderr
+  * Support KUBECONFIG with multiple files, merged like kubectl
+  * Bump Go to 1.27, Kubernetes libraries to 0.37.1 and update
+    dependencies; CycloneDX-Go 0.7 -> 0.12 emitting
+    metadata.tools as components (spec 1.7)
+- Build with Go 1.27 to match upstream's go.mod floor
+- Drop obsolete Group: tags from subpackages
+
+-------------------------------------------------------------------
 Sat May 30 06:59:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.4 (no releases between .1 and this one):
