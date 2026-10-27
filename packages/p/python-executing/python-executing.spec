@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-executing%{psuffix}
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Get the currently executing AST node of a frame, and other information
 License:        MIT

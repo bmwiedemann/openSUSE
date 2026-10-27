@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:54:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * python 3.15 support
+  * formatting
+  * refactor: convert type comments to type annotations
+
+-------------------------------------------------------------------
 Wed Jun  3 11:28:39 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix the condition with suse_version macro on SLFO for tests (jsc#PED-15846)

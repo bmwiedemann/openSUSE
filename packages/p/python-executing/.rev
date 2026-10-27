@@ -174,4 +174,15 @@
     <comment>- Fix the condition with suse_version macro on SLFO for tests (jsc#PED-15846)</comment>
     <requestid>1356947</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9c9793fbe985149bfee89ef84c2f2682</srcmd5>
+    <version>2.3.0</version>
+    <time>1793121543</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * python 3.15 support
+  * formatting
+  * refactor: convert type comments to type annotations</comment>
+    <requestid>1392644</requestid>
+  </revision>
 </revisionlist>
