@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct 27 10:29:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.5.2
+  * fix: preserve command targets with leading --force by @pl0301 in (#1459)
+  * fix(argparser): preserve object-like input in string arrays and
+    stop consuming tokens after a complete JSON array by @AllyW in (#1463)
+  * fix: read product help endpoints from canonical version metadata
+    by @pl0301 in (#1466)
+  * Fixed the issue of incorrect API parameter name values displayed by
+    --help in non-plugin paths. by @yuexiu94 in (#1470)
+  * fix: improve unknown OSS option diagnostics by @PanPanZou in (#1464)
+  * fix: surface real pip error when plugin install fails (#1409)
+    by @mengjunwei-mjw in (#1479)
+  * fix: update Go security baseline and dependencies by @PanPanZou in (#1477)
+  * fix: require HTTPS and checksums for plugin package installs
+    by @yndu13 in (#1469)
+  * fix: OAuth callback binding and add --no-browser login by @AllyW in (#1461)
+  * fix: emit structured profile configuration errors in AI mode
+    by @pl0301 in (#1476)
+  * test: expand CLI unit coverage and failure recovery checks
+    by @PanPanZou in (#1478)
+  * fix: honor config path when refreshing OAuth and CloudSSO credentials
+    by @PanPanZou in (#1468)
+  * feat: support CLI credentials in MCP proxy by @PanPanZou in (#1465)
+  * Sign release archives and publish an SBOM and provenance for each one
+    by @yndu13 in (#1473)
+  * fix: clarify safety policy configuration and confirmation boundaries
+    by @Winphies in (#1480)
+  * feat(openapi): tell "confirmed free" apart from "cannot be quoted" in
+    --estimate-cost by @api-tool-agent in (#1410)
+  * feat: apply API metadata read timeout defaults by @pl0301 in (#1475)
+  * Add shared CloudSSO sessions across profiles by @AllyW in (#1481)
+  * fix: validate JSON parameters as parent values by @Winphies in (#1485)
+
+-------------------------------------------------------------------
 Mon Oct 12 09:31:23 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Generate code from bundled metadata before build (bsc#1284203)
