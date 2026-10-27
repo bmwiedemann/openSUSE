@@ -1,7 +1,7 @@
 #
 # spec file for package gosec
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gosec
-Version:        2.29.0
+Version:        2.30.0
 Release:        0
 Summary:        CLI tool to scan the Go AST and SSA code representations for security problems
 License:        Apache-2.0
