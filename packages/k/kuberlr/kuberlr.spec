@@ -17,25 +17,24 @@
 
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           kuberlr
-Version:        0.6.1
+Version:        0.8.0
 Release:        0
 Summary:        A tool that simplifies the management of multiple versions of kubectl
 License:        Apache-2.0
-Group:          System/Management
 URL:            https://github.com/flavio/kuberlr
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# Tracks the Factory go toolchain; go.mod needs >= 1.26.4
+BuildRequires:  golang(API) = 1.27
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.25
 Requires(post): %fillup_prereq
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Provides:       kubernetes-client-provider = %{version}
 %if 0%{?suse_version} <= 1500
 Conflicts:      kubernetes-client
 %endif
-Provides:       kubernetes-client-provider = %{version}
 
 %description
 kuberlr (kube-ruler) is a simple wrapper for kubectl. Its main purpose is to

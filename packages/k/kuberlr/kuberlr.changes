@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 24 18:55:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.8.0:
+  * Add `update` command that refreshes local kubectl binaries
+  * Add `rm` command that removes local kubectl binaries
+  * `get` now downloads the latest patch release of a major.minor version
+  * Add `UseLatestIfNoCompatible` option
+  * Skip remote version check for local-only kubectl commands
+  * Sort listed kubectl binaries by version, then by path
+  * Print CLI-style messages instead of klog lines
+  * k8s.io/client-go 0.33.2 -> 0.37.0, cobra 1.9.1 -> 1.10.2,
+    viper 1.20.1 -> 1.21.0; build against Go 1.27
+- Spec cleanup via spec-cleaner, track Factory Go 1.27 toolchain
+
+-------------------------------------------------------------------
 Mon Nov 17 16:43:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.6.1:

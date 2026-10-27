@@ -68,4 +68,12 @@
   * chore(deps): Bump golangci/golangci-lint-action from 6.5.0 to 6.5.1</comment>
     <requestid>1318285</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eafc452d5cebaca2ec2749c3b816c9b3</srcmd5>
+    <version>0.8.0</version>
+    <time>1793117188</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1393008</requestid>
+  </revision>
 </revisionlist>
