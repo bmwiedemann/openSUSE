@@ -1,7 +1,7 @@
 #
 # spec file for package alpine-branding-openSUSE
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,7 +28,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Provides:       alpine-branding
 Conflicts:      otherproviders(alpine-branding)
-Enhances:       packageand(alpine:branding-openSUSE)
+Enhances:       (alpine and branding-openSUSE)
 
 %description
 The package provides a system-wide configuration file for the Alpine
