@@ -50,11 +50,9 @@ Provides:       pattern-order() = 5200
 Provides:       pattern-visible()
 Obsoletes:      patterns-openSUSE-books < %{version}
 
-Recommends:     opensuse-manuals_en
-Recommends:     opensuse-startup_en-pdf
 Suggests:       ImageMagick-doc
 Suggests:       amavisd-new-docs
-Suggests:       apache2-doc
+Suggests:       apache2-manual
 Suggests:       apparmor-docs
 Suggests:       bash-doc
 Suggests:       bind-doc
@@ -62,11 +60,9 @@ Suggests:       digikam-doc
 Suggests:       dhcp-doc
 Suggests:       docbook-tdg
 Suggests:       gcc-info
-Suggests:       gcc46-info
 Suggests:       gnome-devel-docs
 Suggests:       gnome-user-docs
 Suggests:       kernel-docs
-Suggests:       kiwi-doc
 Suggests:       man-pages
 Suggests:       man-pages-fr
 Suggests:       man-pages-it
@@ -74,28 +70,16 @@ Suggests:       man-pages-ja
 Suggests:       man-pages-ko
 Suggests:       man-pages-posix
 Suggests:       man-pages-ru
-Suggests:       nfs-doc
 Suggests:       ntp-doc
 Suggests:       perl-doc
-Suggests:       php-doc
 Suggests:       postfix-doc
 Suggests:       postgresql-docs
-Suggests:       python-doc
 Suggests:       python3-doc
-Suggests:       python-doc-pdf
-Suggests:       python3-doc-pdf
 Suggests:       samba-doc
-Suggests:       selinux-doc
+Suggests:       selinux-policy-doc
 Suggests:       subversion-doc
-Suggests:       texlive-doc
 Suggests:       texlive-latex-doc
 Suggests:       xorg-docs
-Suggests:       yast2-devel-doc
-Suggests:       opensuse-manuals_de
-Suggests:       opensuse-manuals_hu
-Suggests:       opensuse-manuals_ru
-Suggests:       opensuse-startup_de-pdf
-Suggests:       opensuse-startup_ru-pdf
 
 %description books
 Help and Documentation, various books.
@@ -118,10 +102,7 @@ Provides:       patterns-openSUSE-imaging = %{version}
 Obsoletes:      patterns-openSUSE-imaging < %{version}
 # from data/IMAGE
 Recommends:     gimp
-Recommends:     gimp-help
 Suggests:       exiftool
-Suggests:       ufraw
-Suggests:       gimp-ufraw
 Suggests:       pfstools
 Suggests:       pfstmo
 Suggests:       pfscalibration
@@ -154,8 +135,7 @@ Obsoletes:      patterns-openSUSE-mobile < %{version}
 Recommends:     wpa_supplicant
 # bnc#480879
 Recommends:     iw
-Suggests:       irda
-Suggests:       smbios-utils-python
+Suggests:       python3-smbios-utils
 Suggests:       powertop
 
 %description mobile
@@ -188,8 +168,6 @@ Suggests:       ripit
 Suggests:       abcde
 Suggests:       audacity
 Suggests:       timidity
-Suggests:       vdr
-Suggests:       xawtv
 Suggests:       flac
 
 %description multimedia
@@ -225,9 +203,8 @@ Recommends:     xslide
 Recommends:     xmlgraphics-batik
 Recommends:     dia
 Recommends:     inkscape
-Recommends:     mxml
-Recommends:     sablot
-Recommends:     saxon
+Recommends:     libmxml1
+Recommends:     saxon10
 #LATER xmlroff
 Recommends:     xmlformat
 Recommends:     xmlstarlet
@@ -235,10 +212,8 @@ Recommends:     xmlstarlet
 Recommends:     dbsplit-tools
 #LATER docbook2odf
 Recommends:     docbook_5
-Recommends:     docbook-xml-website
 Recommends:     docbook5-xsl-stylesheets
 #LATER doclifter
-Recommends:     susedoc
 #LATER texi2db
 #LATER wt2db
 # Text Encoding Initiative
@@ -251,11 +226,8 @@ Suggests:       texlive-metapost
 Suggests:       texlive-omega
 Suggests:       texlive-xetex
 Suggests:       texlive-context
-Suggests:       texlive-omega
-Suggests:       texlive-xetex
 Suggests:       texlive-tools
 Suggests:       texlive-latex-doc
-Suggests:       texlive-doc
 # 441536
 Suggests:       djvulibre
 

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Oct 25 14:19:39 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- books: drop the Recommends on opensuse-manuals_en and
+  opensuse-startup_en-pdf and the Suggests on opensuse-manuals_de,
+  opensuse-manuals_hu, opensuse-manuals_ru, opensuse-startup_de-pdf
+  and opensuse-startup_ru-pdf. The opensuse-manuals source no longer
+  builds any binary into the Tumbleweed repo, so the lines were
+  silently inert.
+- books: drop the Suggests on gcc46-info (the GCC 4.6 info pages
+  are long gone; gcc-info remains), kiwi-doc, nfs-doc, php-doc,
+  python-doc, python-doc-pdf, python3-doc-pdf, texlive-doc and
+  yast2-devel-doc. None of these names resolves to a binary, a
+  Provides or an Obsoletes in the current repository; the kiwi
+  documentation moved online and the texlive-doc meta package was
+  removed (per-collection *-doc packages remain).
+- books: rename apache2-doc to apache2-manual and selinux-doc to
+  selinux-policy-doc. The documentation ships under the new names;
+  the old ones survive only as compat Provides/Obsoletes.
+- imaging: drop the Recommends on gimp-help and the Suggests on
+  gimp-ufraw and ufraw. GIMP 3 no longer ships a help subpackage or
+  the ufraw plugin, and ufraw itself is unmaintained upstream with
+  its pattern role gone with the plugin.
+- mobile: drop the Suggests on irda (IrDA support was removed from
+  the distribution) and rename smbios-utils-python to
+  python3-smbios-utils, the current package name.
+- multimedia: drop the Suggests on vdr and xawtv; both packages
+  were dropped from the distribution.
+- technical_writing: drop the Recommends on docbook-xml-website
+  and susedoc (both dropped from the distribution) and the Suggests
+  on texlive-doc; rename mxml to libmxml1 and saxon to saxon10,
+  the current package names; drop sablot, an XSLT processor dormant
+  upstream for two decades whose role is covered by saxon10 and
+  libxslt; remove the duplicated texlive-omega and texlive-xetex
+  Suggests.
+
+-------------------------------------------------------------------
 Sun Oct 18 18:11:37 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Stop pulling YaST into default Tumbleweed installations: drop
