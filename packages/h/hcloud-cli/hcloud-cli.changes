@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:58:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.70.2:
+  * deps: update module github.com/hetznercloud/hcloud-go/v2 to
+    v2.53.0 (#1521)
+  * fix: update Go to mitigate CVE-2026-111943 (#1520)
+  * deps: update golang.org/x/exp digest to f0251eb (#1516)
+  * deps: update dependency go to v1.27.3 (#1519)
+  * deps: update dependency github:golangci/golangci-lint to
+    v2.15.0 (#1518)
+  * docs: name sidebar categories after their directory (#1517)
+  * deps: update dependency jdx/mise to v2026.10.7 (#1513)
+  * deps: update golang.org/x/ (#1511)
+  * deps: update golang.org/x/ (#1476)
+  * chore: apply fixes for go 1.26 (#1507)
+  * deps: update dependency go to v1.27.2 (#1509)
+  * deps: update dependency go to v1.27.1 (#1505)
+  * docs(firewall): fix typo (#1506)
+  * docs: revert setup tutorial to section headings (#1504)
+
+-------------------------------------------------------------------
 Wed Oct 07 05:07:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.70.1:
