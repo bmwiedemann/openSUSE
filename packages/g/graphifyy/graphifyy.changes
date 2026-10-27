@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:28:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.96:
+  * Security: raise the Pillow floor to >= 13.0.0 on Python 3.11+
+    (staying at >= 12.3.0 on 3.10, which Pillow 13 no longer
+    supports) and pypdf to >= 6.19.0; refresh the lockfile to
+    patched transitive dependencies, clearing most open
+    Dependabot advisories (no CVE IDs named upstream)
+  * Fix failed LLM chunks no longer reported as model omissions;
+    Markdown papers included in watch quick-scan rebuilds;
+    unfinished CheckRun statuses count as pending CI
+  * Fix Obsidian export lists all parallel relations; DeepSeek
+    backend sends max_tokens; Ollama window sized for non-Latin
+    prompts; extract records token usage to cost.json
+  * Fix Python member-call binding, Rust use scoping, Zig
+    method/free-function calls, Dart extensions, TypeScript
+    chained decorators, C# obj/bin pruning, VB.NET stubs
+  * Perf: update with no input change skips the pipeline; watch
+    rebuilds bounded by GRAPHIFY_REBUILD_TIMEOUT
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- No spec dependency changes: the raised Pillow/pypdf floors are
+  in upstream's optional extras, which this package does not ship
+
+-------------------------------------------------------------------
 Sun Oct 25 20:37:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.95:
