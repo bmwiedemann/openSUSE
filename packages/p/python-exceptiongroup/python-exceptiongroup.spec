@@ -35,6 +35,7 @@ Summary:        Backport of PEP 654 (exception groups)
 License:        MIT AND Python-2.0
 URL:            https://github.com/agronholm/exceptiongroup
 Source:         https://github.com/agronholm/exceptiongroup/archive/refs/tags/%{version}.tar.gz#/exceptiongroup-%{version}-gh.tar.gz
+Patch1:         py315.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-scm}
 BuildRequires:  %{python_module pip}
