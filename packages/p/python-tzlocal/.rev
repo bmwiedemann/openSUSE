@@ -237,4 +237,15 @@
   * Dropped support for Python 3.9 and added support for 3.14.</comment>
     <requestid>1363876</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f50d0d20243768b91fa347c48bbd640c</srcmd5>
+    <version>5.4.5</version>
+    <time>1793121465</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.5:
+  * Recognize timezone file names with multiple slashes in the TZ
+    environment variable.
+  * Use HTTPS in place of FTP to retrieve tzdata archive.</comment>
+    <requestid>1392528</requestid>
+  </revision>
 </revisionlist>

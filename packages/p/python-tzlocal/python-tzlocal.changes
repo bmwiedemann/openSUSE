@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 25 19:57:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.5:
+  * Recognize timezone file names with multiple slashes in the TZ
+    environment variable.
+  * Use HTTPS in place of FTP to retrieve tzdata archive.
+
+-------------------------------------------------------------------
 Sun Jul  5 14:59:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.4:
