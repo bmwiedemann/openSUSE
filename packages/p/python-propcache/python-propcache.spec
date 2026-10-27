@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-propcache
-Version:        0.5.2
+Version:        0.5.4
 Release:        0
 Summary:        Accelerated property cache
 License:        Apache-2.0

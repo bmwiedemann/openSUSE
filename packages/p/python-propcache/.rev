@@ -113,4 +113,41 @@
     The effect is that downstreams will get reproducible build</comment>
     <requestid>1362134</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>321d27c005c14f02f424ca027714027a</srcmd5>
+    <version>0.5.4</version>
+    <time>1793116040</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.4:
+  * Fixed the release wheels being compiled without optimization
+    since version 0.5.0. The build backend set CFLAGS to add
+    -ffile-prefix-map, which replaced the interpreter's own
+    compiler flags instead of extending them, so -O3 and -DNDEBUG
+    were dropped; the extra flags now go through CPPFLAGS, which
+    is appended. Cached property reads are about 1.5x faster than
+    in 0.5.3 -- by :user:`bdraco`. Related issues and pull
+    requests on GitHub: :issue:`244`, :issue:`302`.
+  * Fixed a possible crash in the C implementation of
+    cached_property and under_cached_property on free-threaded
+    Python, where a cached value could be freed by another thread
+    while it was being read; errors raised while looking up the
+    cache are now propagated on all builds, and the computed
+    value is no longer leaked if storing it fails -- by
+    :user:`bdraco`. Related issues and pull requests on GitHub:
+    :issue:`297`.
+  * Dropped support for free-threaded Python 3.13 -- by
+    :user:`Vizonex`. Related issues and pull requests on GitHub:
+    :issue:`223`.
+  * Updated discussion links from the defunct Google Groups forum
+    to GitHub Discussions -- by :user:`gundalow`. Related issues
+    and pull requests on GitHub: :issue:`217`.
+  * The setuptools build dependency lower bound has been restored
+    to be &gt;= 47 after an incorrect automated increase in
+    :pr:`207` -- by :user:`bbhtt`. Related issues and pull
+    requests on GitHub: :issue:`207`.
+  * Dropped support for free-threaded Python 3.13 -- by
+    :user:`Vizonex`. Related issues and pull requests on GitHub:
+    :issue:`223`.</comment>
+    <requestid>1392501</requestid>
+  </revision>
 </revisionlist>
