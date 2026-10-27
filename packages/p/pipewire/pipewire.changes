@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Oct 26 12:04:02 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.6.10:
+  * This is a bugfix release that is API and ABI compatible with
+    the previous 1.6.x releases.
+  * Highlights
+    - Fix some potential crashes in the JACK layer.
+    - Fix a regression in the PSD rear delay upmixing code.
+    - Avoid pops and clicks when playing unsigned formats.
+    - More small fixes and backports.
+  * PipeWire
+    - Initialize the error location in all cases when parsing
+      properties.
+    - Don't try to unlink ports without a node. (#5540 (closed))
+  * Modules
+    - Fix a potential crash in the X11 module because error
+      handlers can be called twice.
+  * SPA
+    - Fix a regression in the PSD rear delay upmixing code. A delay
+      of 0 was not working and would result in a big delay instead.
+      (#5490 (closed))
+    - Use per audio format clear function to avoid pops when
+      draining on unsigned formats. (#5531 (closed))
+  * Pulse-server
+    - Avoid queueing an unlimited amount of REQUEST commands for
+      paused clients in some cases. (#5541 (closed))
+  * Bluetooth
+    - Remove some old deprecated functions.
+    - cancel RegisterApplication calls when adapter goes away.
+      (#5096 (closed))
+  * JACK
+    - Add locking around the port array and mixer list.
+      (#5499 (closed))
+    - Avoid possible infinite loop.
+    - Free port and buffers before disconnect. (#5455)
+  * GStreamer
+    - Set the plane strides and offsets correctly.
+    - Avoid setting invalid max resolution values.
+  * ALSA Plugin
+    - Handle the XRUN case better. (#5524 (closed))
+  * Tools
+    - Support more output formats by letting sndfile choose the
+      byte order.
+
+-------------------------------------------------------------------
 Sat Oct 17 15:16:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Set webrtc_audio_processing_major_version to 2 (replace

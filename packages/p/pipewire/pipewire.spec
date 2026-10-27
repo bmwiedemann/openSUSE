@@ -75,7 +75,7 @@
 %endif
 
 Name:           pipewire
-Version:        1.6.9
+Version:        1.6.10
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
