@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 24 18:55:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.0:
+  * Search within the current view (/ to search, n/N for next and
+    previous match) and improved tree UI
+  * Parse command line arguments with argparse
+  * Check the installed grype version and warn when it is outdated
+  * Loading screen and notifications for long-running operations
+  * Sort views by package name, vulnerability ID, package type
+    or severity
+  * Fix crash when pressing 'e' without a selected vulnerability
+  * Fix SBOM encoding error on Windows
+- Switch Source to the PyPI sdist
+- Follow the upstream rename of the launcher from grummage to
+  grummage.py
+- Drop unused update-alternatives Requires without scriptlets
+
+-------------------------------------------------------------------
 Thu Aug 21 05:12:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.0:

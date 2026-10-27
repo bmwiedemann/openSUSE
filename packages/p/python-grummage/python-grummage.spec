@@ -21,14 +21,13 @@
 %else
 %{?sle15_python_module_pythons}
 %endif
-
 Name:           python-grummage
-Version:        1.0.0
+Version:        2.0.0
 Release:        0
 Summary:        Interactive terminal frontend to Grype
 License:        MIT
 URL:            https://github.com/popey/grummage
-Source:         https://github.com/popey/grummage/archive/v%{version}.tar.gz#/grummage-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/grummage/grummage-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module textual >= 0.85.2}
@@ -37,8 +36,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       grype
 Requires:       python-textual >= 0.85.2
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,10 +48,10 @@ Grummage is an interactive terminal frontend to Grype.
 %autosetup -p1 -n grummage-%{version}
 
 %build
-sed -i 's/env python/python3/g' grummage
+sed -i 's/env python/python3/g' grummage.py
 
 %install
-install -D -m 0755 grummage %{buildroot}/%{_bindir}/grummage
+install -D -m 0755 grummage.py %{buildroot}/%{_bindir}/grummage
 
 %files %{python_files}
 %{_bindir}/grummage
