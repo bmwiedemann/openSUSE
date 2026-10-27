@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 26 20:47:56 UTC 2026 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- Avoid lexical binding warning on Emacs 31.1+ boo#1277717
+
+-------------------------------------------------------------------
 Thu Feb 22 13:51:03 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
