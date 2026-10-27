@@ -3275,6 +3275,7 @@ unsorted:
   - delaguardo-inconsolata_lgc-fonts 
   - delayacct-utils 
   - delayacct-utils-rebuild 
+  - deltarpm 
   - deluge 
   - deluge-lang 
   - delve 
@@ -3310,6 +3311,8 @@ unsorted:
   - dhcp-devel 
   - dhcp-doc 
   - dhcp-keama 
+  - dhcp-relay 
+  - dhcp-server 
   - dhcpcd 
   - dhcpd-pools 
   - dhewm3 
@@ -3491,14 +3494,7 @@ unsorted:
   - dosemu 
   - dotconf-devel 
   - double-conversion-devel 
-  - dovecot 
-  - dovecot24 
-  - dovecot24-backend-mysql 
-  - dovecot24-backend-pgsql 
-  - dovecot24-backend-sqlite 
   - dovecot24-devel 
-  - dovecot24-fts 
-  - dovecot24-fts-flatcurve 
   - dovecot24-fts-solr 
   - doxx 
   - doxygen 
@@ -5062,6 +5058,7 @@ unsorted:
   - gcrane-fish-completion 
   - gcrane-zsh-completion 
   - gcstar 
+  - gd 
   - gd-devel 
   - gd-devel-32bit 
   - gdal 
@@ -7993,6 +7990,7 @@ unsorted:
   - gp2c 
   - gpa 
   - gpa-lang 
+  - gpart 
   - gparted 
   - gparted-lang 
   - gpaste 
@@ -9124,6 +9122,7 @@ unsorted:
   - ini4j-javadoc 
   - inkscape-extensions-fig 
   - inkscape-extensions-scribus 
+  - inn 
   - inn-devel 
   - innoextract 
   - innotop 
@@ -10144,9 +10143,6 @@ unsorted:
   - kded-lang 
   - kdegames-carddecks-other 
   - kdegraphics-mobipocket-devel 
-  - kdelibs4support 
-  - kdelibs4support-devel 
-  - kdelibs4support-lang 
   - kdenlive 
   - kdenlive-lang 
   - kdeplasma6-addons-devel 
@@ -10183,10 +10179,8 @@ unsorted:
   - kdsoap-ws-discovery-client-devel 
   - kdstatemachineeditor-devel 
   - kdumpid 
-  - kea 
   - kea-devel 
   - kea-doc 
-  - kea-hooks 
   - keditbookmarks 
   - keditbookmarks-lang 
   - keepalived 
@@ -10517,6 +10511,7 @@ unsorted:
   - klog-bash-completion 
   - klog-fish-completion 
   - klog-zsh-completion 
+  - klogd 
   - klp-build 
   - kmailtransport-devel 
   - kmbox-devel 
@@ -10693,7 +10688,6 @@ unsorted:
   - kspaceduel-lang 
   - ksquares 
   - ksquares-lang 
-  - kssl 
   - kst 
   - kstars 
   - kstars-lang 
@@ -11427,7 +11421,6 @@ unsorted:
   - libKF5KCMUtils5 
   - libKF5KCMUtils5-lang 
   - libKF5KCMUtilsCore5 
-  - libKF5KDELibs4Support5 
   - libKF5Kirigami2-5 
   - libKF5NewStuff5 
   - libKF5NewStuff5-lang 
@@ -11441,7 +11434,6 @@ unsorted:
   - libKF5Syndication5 
   - libKF5SyntaxHighlighting5 
   - libKF5SyntaxHighlighting5-lang 
-  - libKF5ThreadWeaver5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
   - libKGantt2 
@@ -14443,6 +14435,7 @@ unsorted:
   - libitpp8 
   - libivykis0 
   - libiw-devel 
+  - libiw30 
   - libixion-devel 
   - libixion-tools 
   - libjack-devel 
@@ -14526,31 +14519,7 @@ unsorted:
   - libkdstatemachineeditor_view-qt6-2 
   - libkdumpfile-devel 
   - libkdumpfile12 
-  - libkea-asiodns75 
-  - libkea-asiolink105 
-  - libkea-cc98 
-  - libkea-cfgrpt3 
-  - libkea-config98 
-  - libkea-cryptolink76 
-  - libkea-d2srv75 
-  - libkea-database88 
-  - libkea-dhcp129 
-  - libkea-dhcp_ddns82 
-  - libkea-dhcpsrv149 
-  - libkea-dns84 
-  - libkea-eval97 
-  - libkea-exceptions55 
-  - libkea-hooks139 
-  - libkea-http100 
-  - libkea-log-interprocess4 
-  - libkea-log86 
-  - libkea-mysql106 
-  - libkea-pgsql105 
-  - libkea-process105 
-  - libkea-stats64 
-  - libkea-tcp45 
   - libkea-util-io12 
-  - libkea-util118 
   - libkea1_6 
   - libkeccak-devel 
   - libkeccak1 
@@ -14738,7 +14707,6 @@ unsorted:
   - liblog4c-devel 
   - liblog4c-doc 
   - liblog4c3 
-  - liblog4cplus-2_1-9 
   - liblog4cpp5 
   - liblog4cxx-devel 
   - liblog4cxx15 
@@ -14954,7 +14922,7 @@ unsorted:
   - libmetal-devel 
   - libmetal1 
   - libmetalink-devel 
-  - libmetee6_0_2_0 
+  - libmetee6_2_6_0 
   - libmetis5 
   - libmetrics-devel 
   - libmetrics0 
@@ -15671,7 +15639,7 @@ unsorted:
   - libpkgmanifest-devel 
   - libpkgmanifest0 
   - libplacebo-devel 
-  - libplacebo360-32bit 
+  - libplacebo387-32bit 
   - libplacebo5-devel 
   - libplanarity4 
   - libplanify-0 
@@ -16056,8 +16024,6 @@ unsorted:
   - libqt5keychain1-lang 
   - libqt5xdg-devel 
   - libqt6xdg-devel 
-  - libqtcurve-cairo1 
-  - libqtcurve-utils2 
   - libqtermwidget5-1 
   - libqtermwidget6-2 
   - libqtolm-devel 
@@ -17308,7 +17274,7 @@ unsorted:
   - libvsgImGui-devel 
   - libvsgImGui0 
   - libvsgXchange-devel 
-  - libvsgXchange1 
+  - libvsgXchange3 
   - libvsgpt-devel 
   - libvsgpt-tools 
   - libvsgpt1 
@@ -19679,6 +19645,7 @@ unsorted:
   - mpop-doc 
   - mpremote 
   - mpris-ctl 
+  - mpt-status 
   - mpv 
   - mpv-bash-completion 
   - mpv-devel 
@@ -20148,6 +20115,7 @@ unsorted:
   - nerdctl 
   - nerdfonts-symbolsonly-fonts 
   - nestopia 
+  - net-snmp 
   - net-snmp-devel 
   - net-snmp-devel-32bit 
   - net-tools-deprecated 
@@ -22280,6 +22248,7 @@ unsorted:
   - perl-Furl 
   - perl-Future 
   - perl-Future-IO 
+  - perl-GD 
   - perl-GD-Barcode 
   - perl-GD-Graph3d 
   - perl-GDGraph 
@@ -22802,6 +22771,7 @@ unsorted:
   - perl-SDL 
   - perl-SGML-Parser-OpenSP 
   - perl-SGMLS 
+  - perl-SNMP 
   - perl-SOAP-Lite 
   - perl-SQL-Abstract 
   - perl-SQL-Abstract-Classic 
@@ -33447,9 +33417,6 @@ unsorted:
   - qt6-xml-private-devel 
   - qt6ct 
   - qt6gtk2 
-  - qtcurve-gtk2 
-  - qtcurve-qt5 
-  - qtcurve-qt5-lang 
   - qtdeclarative-imports-provides-qt5 
   - qtel 
   - qteletextmaker 
@@ -35599,6 +35566,7 @@ unsorted:
   - system-user-mktex 
   - system-user-msr 
   - system-user-nagios 
+  - system-user-news 
   - system-user-ntp 
   - system-user-openbao 
   - system-user-osc-collab 
@@ -35609,6 +35577,7 @@ unsorted:
   - system-user-qgsd 
   - system-user-rustdesk 
   - system-user-transmission 
+  - system-user-uucp 
   - system-user-uuidd 
   - system-user-vault-sync 
   - system-user-velociraptor 
@@ -45680,7 +45649,6 @@ unsorted:
   - thinkfan 
   - thonny 
   - thonny-lang 
-  - threadweaver-devel 
   - thrift 
   - thttpd 
   - thunar-devel 
@@ -47237,6 +47205,7 @@ unsorted:
   - warzone2100 
   - warzone2100-data 
   - wasi-libc 
+  - wasi-libcxx 
   - wasistlos 
   - wasistlos-lang 
   - wasm-bindgen 
@@ -47394,6 +47363,7 @@ unsorted:
   - winrs 
   - wipe 
   - wire 
+  - wireless-tools 
   - wiremix 
   - wireplumber-devel 
   - wireplumber-doc 
@@ -48032,12 +48002,14 @@ unsorted:
   - yast2-drbd 
   - yast2-fcoe-client 
   - yast2-firstboot-wsl 
+  - yast2-ftp-server 
   - yast2-geo-cluster 
   - yast2-gpmc 
   - yast2-installation-control 
   - yast2-iplb 
   - yast2-iscsi-lio-server 
   - yast2-multipath 
+  - yast2-nfs-server 
   - yast2-rdp 
   - yast2-rear 
   - yast2-registration 

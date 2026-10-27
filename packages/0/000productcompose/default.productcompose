@@ -353,14 +353,10 @@ packagesets:
    - debuginfod-client # reason: dvd:openSUSE-release
    - debuginfod-profile # reason: dvd:openSUSE-release
    - dejavu-fonts # reason: dvd:openSUSE-release
-   - deltarpm # reason: dvd:patterns-kde-kde
    - desktop-data-openSUSE # reason: dvd:patterns-gnome-gnome
    - desktop-file-utils # reason: dvd:openSUSE-release
    - desktop-translations # reason: dvd:openSUSE-release
    - device-mapper # reason: dvd:grub2
-   - dhcp # reason: dvd:patterns-server-dhcp_dns_server
-   - dhcp-relay # reason: dvd:patterns-server-dhcp_dns_server
-   - dhcp-server # reason: dvd:patterns-server-dhcp_dns_server
    - dialog # reason: dvd:patterns-kde-kde
    - dialog-lang # reason: dvd:patterns-kde-kde
    - diffutils # reason: dvd:patterns-kde-kde
@@ -384,6 +380,13 @@ packagesets:
    - dolphin-part-lang # reason: dvd:patterns-kde-kde
    - dos2unix # reason: dvd:patterns-kde-kde
    - dosfstools # reason: dvd:grub2
+   - dovecot # reason: dvd:patterns-server-mail_server
+   - dovecot24 # reason: dvd:patterns-server-mail_server
+   - dovecot24-backend-mysql # reason: dvd:patterns-server-mail_server
+   - dovecot24-backend-pgsql # reason: dvd:patterns-server-mail_server
+   - dovecot24-backend-sqlite # reason: dvd:patterns-server-mail_server
+   - dovecot24-fts # reason: dvd:patterns-server-mail_server
+   - dovecot24-fts-flatcurve # reason: dvd:patterns-server-mail_server
    - dracut # reason: dvd:patterns-kde-kde
    - dracut-pcr-signature # reason: dvd:patterns-media-rest_cd_core
    - drkonqi6 # reason: dvd:patterns-kde-kde
@@ -496,7 +499,6 @@ packagesets:
    - gcr3-prompter # reason: dvd:patterns-gnome-gnome
    - gcr3-ssh-agent # reason: dvd:patterns-gnome-gnome
    - gcr3-ssh-askpass # reason: dvd:patterns-gnome-gnome
-   - gd # reason: dvd:patterns-server-mail_server
    - gdb # reason: dvd:patterns-kde-kde
    - gdbm-lang # reason: dvd:openSUSE-release
    - gdk-pixbuf-lang # reason: dvd:openSUSE-release
@@ -651,7 +653,6 @@ packagesets:
    - google-opensans-fonts # reason: dvd:patterns-kde-kde
    - google-poppins-fonts # reason: dvd:patterns-media-rest_cd_core
    - google-roboto-fonts # reason: dvd:patterns-kde-kde
-   - gpart # reason: dvd:patterns-kde-kde
    - gpg2 # reason: dvd:openSUSE-release
    - gpg2-lang # reason: dvd:openSUSE-release
    - gpgme # reason: dvd:patterns-gnome-gnome
@@ -814,7 +815,6 @@ packagesets:
    - inkscape-extensions-extra # reason: dvd:inkscape
    - inkscape-extensions-gimp # reason: common_locks:expansion
    - inkscape-lang # reason: dvd:inkscape
-   - inn # reason: dvd:patterns-server-mail_server
    - intel-vaapi-driver # reason: dvd:patterns-media-rest_cd_core
    - intlfonts-euro-bitmap-fonts # reason: dvd:patterns-kde-kde
    - inxi # reason: dvd:patterns-kde-kde
@@ -910,6 +910,8 @@ packagesets:
    - kdoctools # reason: dvd:patterns-kde-kde
    - kdoctools-lang # reason: dvd:patterns-kde-kde
    - kdump # reason: dvd:kdump
+   - kea # reason: dvd:patterns-server-dhcp_dns_server
+   - kea-hooks # reason: dvd:patterns-server-dhcp_dns_server
    - kernel-default # reason: dvd:patterns-media-rest_cd_core
    - kernel-firmware-amdgpu # reason: dvd:patterns-media-rest_cd_core
    - kernel-firmware-ath10k # reason: dvd:patterns-media-rest_cd_core
@@ -1086,7 +1088,6 @@ packagesets:
    - kldap-lang # reason: dvd:patterns-kde-kde
    - kleopatra # reason: dvd:patterns-kde-kde
    - kleopatra-lang # reason: dvd:patterns-kde-kde
-   - klogd # reason: dvd:patterns-kde-kde
    - kmag # reason: dvd:patterns-kde-kde
    - kmag-lang # reason: dvd:patterns-kde-kde
    - kmahjongg # reason: dvd:patterns-kde-kde
@@ -2230,7 +2231,6 @@ packagesets:
    - libisoburn1 # reason: dvd:patterns-gnome-gnome
    - libisofs6 # reason: dvd:patterns-gnome-gnome
    - libitm1 # reason: dvd:patterns-base-console
-   - libiw30 # reason: dvd:patterns-kde-kde
    - libixion-0_20-0 # reason: dvd:openSUSE-release
    - libixml22 # reason: dvd:patterns-kde-kde
    - libjack0 # reason: dvd:patterns-gnome-gnome
@@ -2270,6 +2270,30 @@ packagesets:
    - libkdevplatform66 # reason: dvd:patterns-media-rest_dvd
    - libkdsingleapplication-qt6-1_2 # reason: dvd:patterns-kde-kde
    - libkdsoap-qt6-2 # reason: dvd:patterns-kde-kde
+   - libkea-asiodns75 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-asiolink105 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-cc98 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-cfgrpt3 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-config98 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-cryptolink76 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-d2srv75 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-database88 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-dhcp129 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-dhcp_ddns82 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-dhcpsrv149 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-dns84 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-eval97 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-exceptions55 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-hooks139 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-http100 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-log-interprocess4 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-log86 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-mysql106 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-pgsql105 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-process105 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-stats64 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-tcp45 # reason: dvd:patterns-server-dhcp_dns_server
+   - libkea-util118 # reason: dvd:patterns-server-dhcp_dns_server
    - libkerfuffle26 # reason: dvd:patterns-kde-kde
    - libkexiv2-qt6 # reason: dvd:patterns-kde-kde
    - libkeybinder-3_0-0 # reason: dvd:patterns-xfce-xfce
@@ -2330,6 +2354,7 @@ packagesets:
    - liblirc_client0 # reason: dvd:patterns-kde-kde
    - libliveMedia122 # reason: dvd:patterns-kde-kde
    - liblmdb-0_9_35 # reason: dvd:patterns-gnome-gnome
+   - liblog4cplus-2_1-9 # reason: dvd:patterns-server-dhcp_dns_server
    - liblogging0 # reason: dvd:rsyslog
    - liblognorm5 # reason: dvd:rsyslog
    - liblouis-data # reason: dvd:patterns-gnome-gnome
@@ -2530,13 +2555,13 @@ packagesets:
    - libphonon4qt6 # reason: dvd:patterns-kde-kde
    - libpinyin-data # reason: dvd:openSUSE-release
    - libpinyin15 # reason: dvd:openSUSE-release
-   - libpipeline1 # reason: dvd:patterns-kde-kde
+   - libpipeline1 # reason: dvd:patterns-base-console
    - libpipewire-0_3-0 # reason: dvd:openSUSE-release
    - libpixman-1-0 # reason: dvd:openSUSE-release
    - libpkcs11-helper1 # reason: dvd:patterns-gnome-gnome
    - libpkgconf7 # reason: dvd:openSUSE-release
    - libplacebo264 # reason: dvd:patterns-kde-kde
-   - libplacebo360 # reason: dvd:openSUSE-release
+   - libplacebo387 # reason: dvd:openSUSE-release
    - libplasma6-components # reason: dvd:patterns-kde-kde
    - libplasma6-desktoptheme # reason: dvd:patterns-kde-kde
    - libplist-2_0-4 # reason: dvd:patterns-kde-kde
@@ -2564,7 +2589,7 @@ packagesets:
    - libpotrace0 # reason: dvd:inkscape
    - libppd # reason: dvd:patterns-gnome-gnome
    - libppd2 # reason: dvd:patterns-gnome-gnome
-   - libpq5 # reason: dvd:postgresql
+   - libpq5 # reason: dvd:patterns-server-dhcp_dns_server
    - libproc2-1 # reason: dvd:patterns-gnome-gnome
    - libprotobuf-c1 # reason: dvd:patterns-gnome-gnome
    - libprotobuf-lite36_2_0 # reason: dvd:patterns-kde-kde
@@ -3088,7 +3113,7 @@ packagesets:
    - meson-vim # reason: dvd:patterns-media-rest_dvd
    - messagelib # reason: dvd:patterns-kde-kde
    - messagelib-lang # reason: dvd:patterns-kde-kde
-   - metamail # reason: dvd:patterns-kde-kde
+   - metamail # reason: dvd:sendmail
    - metatheme-adwaita-common # reason: dvd:openSUSE-release
    - metatheme-breeze6-common # reason: dvd:patterns-kde-kde
    - metatheme-greybird-geeko-common # reason: dvd:patterns-media-rest_cd_core
@@ -3115,7 +3140,6 @@ packagesets:
    - mozilla-nss-tools # reason: dvd:patterns-server-directory_server
    - mpg123-openal # reason: dvd:patterns-gnome-gnome
    - mpt-firmware # reason: dvd:patterns-media-rest_cd_core
-   - mpt-status # reason: dvd:patterns-kde-kde
    - mt-st # reason: dvd:patterns-gnome-gnome
    - mtools # reason: dvd:patterns-base-console
    - mugshot # reason: dvd:patterns-xfce-xfce
@@ -3156,7 +3180,6 @@ packagesets:
    - nbd # reason: dvd:patterns-media-rest_dvd
    - ncompress # reason: dvd:patterns-server-mail_server
    - ncurses-utils # reason: dvd:openSUSE-release
-   - net-snmp # reason: dvd:patterns-kde-kde
    - net-tools # reason: dvd:patterns-media-rest_cd_core
    - net-tools-lang # reason: dvd:patterns-media-rest_cd_core
    - netcat-openbsd # reason: dvd:patterns-kde-kde
@@ -3353,7 +3376,6 @@ packagesets:
    - perl-Exporter-Tiny # reason: dvd:patterns-gnome-gnome
    - perl-File-Listing # reason: dvd:patterns-gnome-gnome
    - perl-File-ShareDir # reason: dvd:patterns-gnome-gnome
-   - perl-GD # reason: dvd:patterns-server-mail_server
    - perl-Geography-Countries # reason: dvd:patterns-server-mail_server
    - perl-Git # reason: dvd:patterns-media-rest_dvd
    - perl-HTML-Parser # reason: dvd:patterns-gnome-gnome
@@ -3395,9 +3417,8 @@ packagesets:
    - perl-NetAddr-IP # reason: dvd:patterns-server-mail_server
    - perl-Params-Util # reason: dvd:patterns-gnome-gnome
    - perl-Parse-RecDescent # reason: dvd:patterns-kde-kde
-   - perl-SNMP # reason: dvd:patterns-kde-kde
    - perl-Socket6 # reason: dvd:patterns-server-mail_server
-   - perl-Term-ReadKey # reason: dvd:patterns-kde-kde
+   - perl-Term-ReadKey # reason: dvd:patterns-media-rest_dvd
    - perl-TimeDate # reason: dvd:patterns-gnome-gnome
    - perl-Try-Tiny # reason: dvd:patterns-gnome-gnome
    - perl-Types-Serialiser # reason: dvd:patterns-server-mail_server
@@ -3547,7 +3568,7 @@ packagesets:
    - pragha-plugins # reason: dvd:patterns-media-rest_dvd
    - prctl # reason: dvd:patterns-kde-kde
    - procinfo # reason: dvd:patterns-kde-kde
-   - procmail # reason: dvd:patterns-kde-kde
+   - procmail # reason: dvd:sendmail
    - procps # reason: dvd:patterns-gnome-gnome
    - procps-lang # reason: dvd:patterns-gnome-gnome
    - psmisc # reason: dvd:patterns-kde-kde
@@ -3964,7 +3985,6 @@ packagesets:
    - system-user-lp # reason: dvd:openSUSE-release
    - system-user-mail # reason: dvd:patterns-base-console
    - system-user-man # reason: dvd:patterns-base-console
-   - system-user-news # reason: dvd:patterns-server-mail_server
    - system-user-nobody # reason: dvd:patterns-gnome-gnome
    - system-user-pulse # reason: dvd:patterns-gnome-gnome
    - system-user-qemu # reason: dvd:patterns-media-rest_dvd
@@ -3973,7 +3993,6 @@ packagesets:
    - system-user-tftp # reason: dvd:patterns-gnome-gnome
    - system-user-tss # reason: dvd:patterns-media-rest_cd_core
    - system-user-upsd # reason: dvd:system-user-upsd
-   - system-user-uucp # reason: dvd:patterns-server-mail_server
    - system-user-vscan # reason: dvd:patterns-server-mail_server
    - system-user-wwwrun # reason: dvd:patterns-server-lamp_server
    - systemd # reason: dvd:openSUSE-release
@@ -4227,8 +4246,7 @@ packagesets:
    - which # reason: dvd:patterns-kde-kde
    - wicked # reason: dvd:wicked
    - wicked-service # reason: dvd:wicked
-   - wireless-regdb # reason: dvd:patterns-media-rest_cd_core
-   - wireless-tools # reason: dvd:patterns-kde-kde
+   - wireless-regdb # reason: dvd:patterns-kde-kde
    - wireplumber # reason: dvd:openSUSE-release
    - wireplumber-bash-completion # reason: dvd:patterns-kde-kde
    - wireplumber-lang # reason: dvd:openSUSE-release
@@ -4445,7 +4463,6 @@ packagesets:
    - yast2-country-data # reason: dvd:patterns-kde-kde
    - yast2-firewall # reason: dvd:patterns-yast-yast2_basis
    - yast2-firstboot # reason: dvd:yast2-firstboot
-   - yast2-ftp-server # reason: dvd:patterns-media-rest_dvd
    - yast2-hardware-detection # reason: dvd:patterns-gnome-gnome_yast
    - yast2-installation # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-instserver # reason: dvd:patterns-media-rest_dvd
@@ -4459,7 +4476,6 @@ packagesets:
    - yast2-network # reason: dvd:patterns-kde-kde
    - yast2-nfs-client # reason: dvd:patterns-yast-yast2_server
    - yast2-nfs-common # reason: dvd:patterns-yast-yast2_server
-   - yast2-nfs-server # reason: dvd:patterns-media-rest_dvd
    - yast2-ntp-client # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-online-update # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-online-update-frontend # reason: dvd:patterns-yast-yast2_install_wf
@@ -5694,7 +5710,7 @@ packagesets:
    - libpkcs11-helper1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpkgconf7 # reason: opensuse_microos:patterns-base-hardware
    - libplacebo264 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libplacebo360 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libplacebo387 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libplasma6-components # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libplasma6-desktoptheme # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libplist-2_0-4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7444,7 +7460,7 @@ packagesets:
    - libpkcs11-helper1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpkgconf7 # reason: opensuse_kalpa:patterns-kalpa-base
    - libplacebo264 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libplacebo360 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libplacebo387 # reason: opensuse_kalpa:patterns-kalpa-base
    - libplasma6-components # reason: opensuse_kalpa:patterns-kalpa-base
    - libplasma6-desktoptheme # reason: opensuse_kalpa:patterns-kalpa-base
    - libplist-2_0-4 # reason: opensuse_kalpa:patterns-kalpa-base
