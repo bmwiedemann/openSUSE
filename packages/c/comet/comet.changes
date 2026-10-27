@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 27 03:10:36 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 0.4.0:
+  * docs: update 0.4.0 documentation
+  * feat: support quotes in a workaround file
+  * release: v0.4.0
+  * feat: support async processing of requests
+  * ci: update workflows and add caching
+  * docs: add information about the custom event payload
+  * docs: update readme to specify event config
+  * feat: support sending events to custom http listeners
+  * feat: support GET_USER_TIME_PLAYED
+  * fix: Recover from a stale overlay socket left by a killed session (#93)
+
+-------------------------------------------------------------------
 Thu Jan 15 22:28:31 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to 0.3.2
