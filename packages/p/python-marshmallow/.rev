@@ -304,4 +304,18 @@
     <comment></comment>
     <requestid>1349128</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>430d8c4d61914a3391a9c210c6ce531d</srcmd5>
+    <version>4.3.1</version>
+    <time>1793116025</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.1:
+  * If by_value is enabled on an enum with a None value
+    allow_none now defaults to True. Thanks
+    :user:`GeraldineGalindo` for the suggestion (:issue:`2985`).
+  * marshmallow.validate.URL accepts a fragment that follows an
+    empty path, e.g. https://example.com#frag (:pr:`3016`).
+    Thanks :user:`hdimer` for the PR.</comment>
+    <requestid>1392436</requestid>
+  </revision>
 </revisionlist>

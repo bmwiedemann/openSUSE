@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 25 14:24:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.1:
+  * If by_value is enabled on an enum with a None value
+    allow_none now defaults to True. Thanks
+    :user:`GeraldineGalindo` for the suggestion (:issue:`2985`).
+  * marshmallow.validate.URL accepts a fragment that follows an
+    empty path, e.g. https://example.com#frag (:pr:`3016`).
+    Thanks :user:`hdimer` for the PR.
+
+-------------------------------------------------------------------
 Fri Apr 24 09:00:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.3.0
