@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Oct 25 11:54:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.1:
+  * Drop support for SQLAlchemy 1.4; SQLAlchemy >= 2.0.0 is
+    now required.
+  * Add Python 3.14 and 3.15 to trove classifiers; use PEP 604
+    unions in type annotations.
+  * Autogenerate:
+    - Treat empty string comment as None to prevent repeated
+      diff detections.
+    - Render full set of arguments and dialect prefix for
+      PostgreSQL DOMAIN types.
+    - Strip type casts from PostgreSQL Computed columns to
+      prevent false-positive warnings.
+    - Fix false modified detection on expression-based indexes
+      with type casts.
+    - Detect addition and removal of named CHECK constraints
+      via checkconstraint_byname plugin (now opt-in).
+    - Render dialect-specific kwargs on ForeignKey and CHECK
+      constraints in create_table directives.
+    - Render warning comment above drop_constraint when
+      constraint name is None.
+    - Avoid duplicate CHECK constraints rendered for Enum and
+      Boolean types in SQLAlchemy 2.1.
+  * Batch mode:
+    - Warn when unnamed CHECK constraint on reflected table is
+      omitted from batch recreate.
+    - Fix duplicate CHECK constraint emission and naming
+      convention issues for Boolean/Enum types.
+    - Apply batch_alter_table.naming_convention only to
+      unnamed reflected constraints.
+  * Operations / Engine:
+    - Fix invalid ALTER TABLE on identity columns when
+      existing_server_default is omitted on PostgreSQL.
+    - Fix TypeError when loading plugins pointing to a module
+      in alembic.plugins entrypoint.
+    - Accommodate Float/Numeric and (rand()) expressions in
+      compare_server_default on MySQL.
+    - Offline stamp/downgrade to base no longer emits spurious
+      DROP TABLE alembic_version.
+    - Use target_tokens and target_table_key from SQLAlchemy
+      2.1 to resolve ForeignKey targets containing dots.
+
+-------------------------------------------------------------------
 Mon Jun 29 20:43:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18.5:

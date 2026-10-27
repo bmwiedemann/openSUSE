@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-alembic
-Version:        1.18.5
+Version:        1.20.1
 Release:        0
 Summary:        A database migration tool for SQLAlchemy
 License:        MIT
@@ -31,14 +31,13 @@ URL:            https://github.com/sqlalchemy/alembic
 Source0:        https://files.pythonhosted.org/packages/source/a/alembic/alembic-%{version}.tar.gz
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module SQLAlchemy >= 2.0.0}
-BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
 BuildRequires:  %{python_module black}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.9}
-BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest >= 8}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing-extensions >= 4}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
+BuildRequires:  %{python_module typing-extensions >= 4.12}
 BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
@@ -46,7 +45,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Mako
 Requires:       python-SQLAlchemy >= 2.0.0
-Requires:       python-typing-extensions >= 4
+Requires:       python-typing-extensions >= 4.12
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -55,9 +54,8 @@ Requires:       alts
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
-%if 0%{?python_version_nodots} < 39
-Requires:       python-importlib-metadata
-Requires:       python-importlib-resources
+%if 0%{?python_version_nodots} < 311
+Requires:       python-tomli
 %endif
 %python_subpackages
 
