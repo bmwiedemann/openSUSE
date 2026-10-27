@@ -16,9 +16,9 @@
 #
 
 
-%define sover   360
+%define sover   387
 Name:           libplacebo
-Version:        7.%{sover}.1
+Version:        7.%{sover}.0
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
