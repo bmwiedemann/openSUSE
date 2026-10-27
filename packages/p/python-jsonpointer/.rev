@@ -205,4 +205,35 @@
   * testsuite fixes</comment>
     <requestid>1343416</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0e013a39506607e4aafaefeaafc503fb</srcmd5>
+    <version>3.5</version>
+    <time>1793121547</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5:
+  * Handle array-end pointers as CLI resolution errors
+  * Read CLI JSON and pointer files as UTF-8
+- update to 3.4:
+  * Add `create` parameter to `set_pointer` for auto-creating
+    missing paths
+- update to 3.3:
+  * Preserve control-flow exceptions when joining pointer parts
+  * Continue CLI batches after malformed JSON input
+- update to 3.2.1:
+  * Report test coverage to Coveralls from GitHub Actions
+  * Replace Travis CI link with GitHub Actions badge in README
+  * Preserve trailing member-name spaces in pointer files
+- update to 3.2.0:
+  * Run unittest discovery in the coverage target
+  * [BUGFIX] JsonPointer should not index into strings
+  * Preserve JsonPointer subclasses when joining
+  * fix: validate assignment target in JsonPointer.set()
+  * Normalize oversized array index conversion errors
+  * Add VERBOSE_EXCEPTIONS flag to suppress doc content in
+    JsonPointerException messages by @stefankoegl with @Copilot
+    in https://github.com/stefankoegl/python-json-pointer/pull/72
+  * Improve jsonpointer CLI: support positional pointer argument
+  * Add GitHub Actions workflow for PyPI publishing</comment>
+    <requestid>1392649</requestid>
+  </revision>
 </revisionlist>
