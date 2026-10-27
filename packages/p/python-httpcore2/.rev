@@ -65,4 +65,26 @@
     are abandoned early.</comment>
     <requestid>1380301</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>29123c4a2e7fa93c66da0cb322525f25</srcmd5>
+    <version>2.16.0</version>
+    <time>1793116027</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.16.0:
+  * No changes since `2.15.1`. Version bumped to stay in lockstep
+    with `httpx2`.
+  * Configure the default SSL context once on Linux, instead of
+    on every handshake. With OpenSSL older than 3.4, CPU usage
+    grew over the lifetime of a reused client.
+  * Drop support for Python 3.10.
+  * Keep `CONNECT` and absolute-form proxy targets when the
+    request sets the `target` extension.
+  * Stop blocking reads when an HTTP/2 server lowers
+    `SETTINGS_MAX_CONCURRENT_STREAMS` while requests are in
+    flight.
+  * Raise `WriteError` instead of `anyio.EndOfStream` when
+    writing after the peer closes a TLS connection without
+    `close_notify`.</comment>
+    <requestid>1392446</requestid>
+  </revision>
 </revisionlist>

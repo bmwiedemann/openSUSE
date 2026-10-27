@@ -17,7 +17,7 @@
 
 
 Name:           python-httpcore2
-Version:        2.13.1
+Version:        2.16.0
 Release:        0
 Summary:        A minimal low-level HTTP client
 License:        BSD-3-Clause
