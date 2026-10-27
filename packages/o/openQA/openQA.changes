@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 26 12:43:36 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793015014.afb80823:
+  * test: forbid FA sr-only in templates and JS
+  * fix(ui): use Bootstrap's .visually-hidden instead of FA's .sr-only
+
+-------------------------------------------------------------------
 Fri Oct 23 16:19:24 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1792772346.47ae4497:
