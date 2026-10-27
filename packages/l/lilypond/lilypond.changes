@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 26 21:18:15 UTC 2026 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- Add patch emacs31_lexical_binding.patch to avoid lexical binding
+  warning on Emacs 31.1+ boo#1277717
+
+-------------------------------------------------------------------
 Mon Jul 22 08:07:36 UTC 2024 - Dave Plater <davejplater@gmail.com>
 
 - Update to release 2.24.4
@@ -611,7 +617,7 @@ Mon Feb 22 11:40:05 UTC 2010 - davejplater@gmail.com
 
 - Fixed gcc45 build failure with lilypond-2.12.3-gcc45fix.patch
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Mon Feb 22 06:29:00 UTC 2010 - davejplater@gmail.com
 
 - Update to 2.12.3-2 to fix documentation issues.
@@ -747,7 +753,7 @@ Tue Nov  3 10:23:57 CET 2009 - pgajdos@suse.cz
 - Don't build documentation because of problems on x86_64.
 
 -------------------------------------------------------------------
-Sun May 10 15:15:01 2009 CET - janneke@gnu.org
+Sun May 10 15:15:01 CET 2009 - janneke@gnu.org
 
 - Update to 2.12.2
 - Update build dependencies.

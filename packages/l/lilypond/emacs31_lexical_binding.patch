@@ -1,0 +1,8 @@
+diff -ru lilypond-v2.24.4.old/elisp/lilypond-init.el lilypond-v2.24.4/elisp/lilypond-init.el
+--- lilypond-v2.24.4.old/elisp/lilypond-init.el	2024-07-20 06:21:13.000000000 -0500
++++ lilypond-v2.24.4/elisp/lilypond-init.el	2026-10-26 16:34:11.100530106 -0500
+@@ -1,3 +1,4 @@
++;; -*- lexical-binding: t; -*-
+ ;;; lilypond-init.el --- Startup code for LilyPond mode
+ ;;
+ ;; Instructions, extracted from Documentation/topdocs/INSTALL.texi: 

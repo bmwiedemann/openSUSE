@@ -1,7 +1,8 @@
 #
 # spec file for package lilypond
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
+#               2026 Tristan Miller
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +46,8 @@ Patch0:         reproducible.patch
 Patch2:         add_dircategories_to_documentation.patch
 Patch4:         use_cstring_and_ctype_includes.patch
 Patch5:         lilypond-missing-lgc.patch
+# Avoid lexical binding warning on Emacs 31.1+ boo#1277717
+Patch6:         emacs31_lexical_binding.patch
 #!BuildIgnore:  icu.691-devel
 BuildRequires:  ImageMagick
 BuildRequires:  autoconf
