@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Oct 24 18:06:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.3.1:
+  * First 1.x release (previous package was 0.0.16); upstream
+    tags confirm v1.3.1 is the latest release.
+  * CLI: the version string moved from cli/cmd.Version to
+    internal/buildinfo.Version, stamp the binary via ldflags
+    accordingly. Adds bpftrace and shell subcommands.
+  * Raise BuildRequires to go >= 1.26 following upstream go.mod.
+  * Correct License tag to MIT matching upstream LICENSE
+    (was wrongly Apache-2.0 since the initial package).
+  * Vendored modules refreshed via obs-service-go_modules.
+  * Run the upstream CLI unit tests in %check.
+- Security fixes pulled in with the re-vendor:
+  * CVE-2026-72815, CVE-2026-72816, CVE-2026-72817: go-chi
+    chi RealIP middleware IP spoofing (boo#1276157, vendored
+    chi v5.1.0 -> v5.5.0, fixed in 5.3.0).
+  * CVE-2026-95838: containerd layer unpack DoS (boo#1285139,
+    module no longer in the vendor tree).
+  * CVE-2025-27144: go-jose parsing denial of service
+    (boo#1237666, go-jose/v3 3.0.3 removed, v4 at 4.1.4).
+  * CVE-2026-34986: go-jose JWE empty encrypted key panic
+    (boo#1262908, vendored go-jose/v4 at fixed 4.1.4).
+  * CVE-2025-54410: moby firewalld bridge isolation loss
+    (boo#1247396, module no longer in the vendor tree).
+  * CVE-2026-53941: inspektor-gadget ld.so.cache CPU burn
+    (boo#1275858, module no longer in the vendor tree).
+  * CVE-2025-22872, CVE-2024-45338, CVE-2025-47911,
+    CVE-2025-58190: golang.org/x/net html parser flaws
+    (boo#1241780, boo#1235312, boo#1251432, boo#1251622,
+    vendored x/net 0.28.0 -> 0.61.0).
+  * CVE-2026-33186: grpc-go HTTP/2 :path authorization bypass
+    (boo#1260240, vendored grpc 1.66.0 -> 1.84.0).
+  * CVE-2025-30204: golang-jwt ParseUnverified memory
+    exhaustion (boo#1240488, vendored jwt/v4 4.5.0 -> 4.5.2
+    and jwt/v5 5.2.1 -> 5.3.1, both at fixed releases).
+  * CVE-2024-51744: golang-jwt ParseWithClaims error handling
+    (boo#1232967, fixed via the same jwt refresh).
+
+-------------------------------------------------------------------
 Thu Sep 12 07:19:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package kubectl-retina: CLI for the Retina Kubernetes network

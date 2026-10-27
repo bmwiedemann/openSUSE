@@ -17,16 +17,15 @@
 
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           kubectl-retina
-Version:        0.0.16
+Version:        1.3.1
 Release:        0
 Summary:        CLI for the Retina Kubernetes network observability platform
-License:        Apache-2.0
+License:        MIT
 URL:            https://github.com/microsoft/retina
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.21
+BuildRequires:  go >= 1.26
 
 %description
 Retina is a cloud-agnostic, open-source Kubernetes network observability
@@ -44,7 +43,6 @@ This package contains the CLI to interact with the platform.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -55,7 +53,6 @@ Bash command line completion support for %{name}.
 
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
@@ -65,7 +62,6 @@ Fish command line completion support for %{name}.
 
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
@@ -82,8 +78,11 @@ go build \
    -buildmode=pie \
    -tags=tools \
    -ldflags=" \
-   -X github.com/microsoft/retina/cli/cmd.Version=v%{version}" \
+   -X github.com/microsoft/retina/internal/buildinfo.Version=v%{version}" \
    -o bin/%{name} ./cli/main.go
+
+%check
+go test -mod=vendor ./cli/...
 
 %install
 # Install the binary.
@@ -116,7 +115,6 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
 %dir %{_datarootdir}/zsh_completion.d/
 %{_datarootdir}/zsh_completion.d/_%{name}
 
