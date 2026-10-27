@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:43:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.6:
+  * Dependencies
+    - Update oras.land/oras-go/v2 from v2.6.4 to v2.7.0 (#2284,
+      fixes #2275)
+      - Behavior change: v2.6.4 rejected bearer token realms on any
+        private address, which broke split-host registries such as
+        self-hosted GitLab (oras-project/oras-go#1631). The default
+        denylist now blocks only loopback, link-local, unspecified,
+        and cloud metadata addresses. RFC 1918, IPv6 unique-local,
+        and CGNAT realms are allowed again.
+      - Authentication now works after a same-host HTTP-to-HTTPS
+        redirect.
+      - Copy and verification fixes: FilterArtifactType matching
+        for referrers with an empty config and for image indexes,
+        PreCopy returning SkipNode after a declined cross-repo
+        mount, and a clearer error when a source fails after
+        sending all its declared bytes.
+  * Bug fixes
+    - oras tag now checks that it gets a source reference and at
+      least one tag (#2265, fixes #2264)
+    - --from-resolve and --to-resolve rules no longer overwrite
+      each other when combined with --resolve (#2282, fixes #2277)
+    - Fix a panic when a mount is attempted against a tracked
+      target that does not support mounting, such as an OCI layout
+      (#2283, fixes #2278)
+  * Release and packaging
+    - Release archives and the checksums file now come with GitHub
+      artifact attestations (SLSA build provenance). You can verify
+      them with gh attestation verify in addition to GPG signatures
+      (#2271, fixes #2269)
+    - Stable snap releases now publish to the candidate channel as
+      well as stable. The classic snap no longer bundles its own
+      ca-certificates and uses the host certificate store instead
+      (#2274)
+  * Other
+    - More unit tests for display JSON metadata handlers and
+      contentutil (#2266, #2267)
+
+-------------------------------------------------------------------
 Mon Oct 19 04:58:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.3.5:
