@@ -1,4 +1,169 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:31:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.0.2:
+  * chore(deps): update dependency aquaproj/aqua-renovate-config to
+    v2.14.0 (#1814)
+  * chore(deps): update suzuki-shunsuke/download-go-module-action
+    action to v0.0.10 (#1812)
+  * chore: update go-test-workflow to v3.2.4 (#1807)
+  * chore: update go-autofix-action to v0.2.2 (#1806)
+  * chore: update go-release-workflow to v10.1.3 (#1808)
+  * chore(deps): update suzuki-shunsuke/go-release-workflow action
+    to v10.1.3 (#1810)
+  * chore(deps): update suzuki-shunsuke/go-test-workflow action to
+    v3.2.4 (#1811)
+  * chore: update download-go-module-action to v0.0.9 (#1805)
+  * chore: update goreleaser to v2.19.0 and migrate cask hook to
+    install_steps (#1803)
+  * chore(deps): update dependency aquaproj/aqua-registry to
+    v4.576.0 (#1801)
+  * chore(deps): update suzuki-shunsuke/go-release-workflow action
+    to v10.1.2 (#1800)
+  * chore(deps): update dependency sigstore/cosign to v3.1.4
+    (#1799)
+  * chore(deps): update dependency anchore/syft to v1.55.0 (#1798)
+  * chore(deps): update dependency aquaproj/aqua to v2.65.0 (#1796)
+  * chore(deps): update aquaproj/aqua-installer action to v4.1.1
+    (#1797)
+  * chore(deps): update dependency aqua to v2.65.0 (#1795)
+  * chore(deps): update dependency suzuki-shunsuke/pinact to v5.0.1
+    (#1794)
+
+-------------------------------------------------------------------
+Fri Oct 23 15:56:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.0.1:
+  * Security
+    - #1792 Update Go to v1.27.3
+      This release is built with Go 1.27.3, which fixes
+      CVE-2026-111943 in crypto/x509. Go now refuses trust in a
+      small set of intermediate certificates of a specific
+      Certificate Authority, after its CA keys were reported
+      compromised. Verify filters out chains containing those
+      intermediates. The Go team highly recommends upgrading
+      immediately.
+      pinact relies on crypto/x509 to verify the TLS certificate of
+      GitHub when it calls the GitHub API, with your access token
+      if one is set, to resolve the commit SHAs that workflows are
+      pinned to. We recommend upgrading.
+      - https://go.dev/doc/devel/release#go1.27.3
+      - https://thehackernews.com/2026/10/eight-emudhra-ca-keys-compromised.html
+      This release also includes Go 1.27.2 (#1764), which has
+      security fixes to the go command and the crypto/tls,
+      html/template, net/http, net/textproto, and os packages.
+      - https://go.dev/doc/devel/release#go1.27.2
+  * Others
+    -  fix(deps): update module github.com/google/go-github/v92 to
+       v93 (#1789)
+    -  chore(deps): update suzuki-shunsuke/go-release-workflow
+       action to v10.1.1 (#1788)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.575.0 (#1786)
+    -  chore(deps): update
+       suzuki-shunsuke/download-go-module-action action to v0.0.8
+       (#1784)
+    -  chore(deps): update suzuki-shunsuke/go-test-workflow action
+       to v3.2.3 (#1785)
+    -  chore(deps): update
+       suzuki-shunsuke/download-go-module-action action to v0.0.7
+       (#1783)
+    -  chore(deps): update dependency goreleaser/goreleaser to
+       v2.18.3 (#1777)
+    -  chore(deps): update suzuki-shunsuke/actionlint-action action
+       to v0.2.2 (#1778)
+    -  chore(deps): update
+       suzuki-shunsuke/download-go-module-action action to v0.0.6
+       (#1775)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.574.1 (#1772)
+    -  chore(deps): update suzuki-shunsuke/go-release-workflow
+       action to v10.1.0 (#1773)
+    -  chore(deps): update suzuki-shunsuke/go-release-workflow
+       action to v10.0.2 (#1771)
+    -  chore(deps): update suzuki-shunsuke/go-test-full-workflow
+       action to v6.2.0 (#1770)
+    -  chore(deps): update
+       suzuki-shunsuke/download-go-module-action action to v0.0.4
+       (#1769)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.574.0 (#1765)
+    -  chore(deps): update dependency crate-ci/typos to v1.51.1
+       (#1762)
+    -  chore(deps): update dependency crate-ci/typos to v1.51.0
+       (#1761)
+    -  chore(deps): update dependency anchore/syft to v1.54.1
+       (#1760)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.573.1 (#1759)
+    -  chore(deps): update suzuki-shunsuke/go-test-full-workflow
+       action to v6.1.0 (#1758)
+    -  chore(deps): update suzuki-shunsuke/go-release-workflow
+       action to v10 (#1753)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.573.0 (#1757)
+    -  chore(deps): update dependency aquaproj/aqua to v2.64.0
+       (#1756)
+    -  chore(deps): update dependency aqua to v2.64.0 (#1755)
+    -  chore(deps): update aquaproj/aqua-installer action to v4.1.0
+       (#1754)
+    -  chore(deps): update dependency anchore/syft to v1.54.0
+       (#1750)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.572.0 (#1751)
+    -  chore(deps): update suzuki-shunsuke/actionlint-action action
+       to v0.2.1 (#1746)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.571.0 (#1747)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.570.0 (#1744)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.569.0 (#1743)
+    -  chore(deps): update dependency crate-ci/typos to v1.50.3
+       (#1742)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.568.0 (#1740)
+    -  chore(deps): update dependency golangci/golangci-lint to
+       v2.14.0 (#1741)
+    -  fix(deps): update module
+       github.com/suzuki-shunsuke/cobra-util to v0.0.5 (#1739)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.567.0 (#1738)
+    -  chore(deps): update suzuki-shunsuke/go-release-workflow
+       action to v9.0.2 (#1737)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.566.0 (#1736)
+    -  chore(deps): update dependency reviewdog/reviewdog to
+       v0.21.2 (#1735)
+    -  chore(deps): update dependency anchore/syft to v1.52.0
+       (#1734)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.565.0 (#1733)
+    -  chore(deps): update dependency goreleaser/goreleaser to
+       v2.18.2 (#1732)
+    -  chore(deps): update dependency crate-ci/typos to v1.50.2
+       (#1731)
+    -  fix(deps): update module github.com/google/go-github/v91 to
+       v92 (#1730)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.564.0 (#1729)
+    -  chore(deps): update dependency reviewdog/reviewdog to
+       v0.21.1 (#1728)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.563.0 (#1727)
+    -  chore(deps): update dependency aquaproj/aqua to v2.63.0
+       (#1726)
+    -  chore(deps): update dependency aqua to v2.63.0 (#1725)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.562.0 (#1724)
+    -  fix(deps): update module github.com/sourcegraph/go-diff to
+       v0.9.0 (#1723)
+    -  chore(deps): update dependency suzuki-shunsuke/pinact to v5
+       (#1720)
+    -  chore(deps): update dependency aquaproj/aqua-registry to
+       v4.561.0 (#1722)
+
+-------------------------------------------------------------------
 Sat Sep 19 05:44:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.0.0:
