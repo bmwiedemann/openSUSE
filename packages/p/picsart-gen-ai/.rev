@@ -267,4 +267,12 @@ unchanged; re-vendoring moves ansi-regex 6.3.0 -&gt; 6.4.0.
     <comment>Update to 2.85.0</comment>
     <requestid>1386622</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b582b2cd996dfd535a62746d11d851df</srcmd5>
+    <version>2.86.0</version>
+    <time>1793116745</time>
+    <user>dimstar_suse</user>
+    <comment>Update picsart-gen-ai to 2.86.0.</comment>
+    <requestid>1392929</requestid>
+  </revision>
 </revisionlist>

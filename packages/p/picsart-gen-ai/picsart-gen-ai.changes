@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:28:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.86.0 (real content, not a republish:
+  cli.js bundle grows 1334301 -> 1336603 bytes; the npm manifest,
+  README, skills and launcher are unchanged, so the delta is the
+  model catalog and the code paths serving it):
+  * New models: Flux 3 Max (text/image/keyframes-to-video),
+    Ideogram Vector and Vectorize (SVG output), Aurora and Star
+    Swirl (ImageGen 2.6 Alpha previews) and MiniMax M3/M3.1 Flash
+  * Retired: the deprecated Pika Frames and Pika Scenes entries
+    are gone from the catalog
+- Re-vendor: the dependency set is unchanged (73 lock entries,
+  71 tarballs, no floats); licences re-derived over the new tree,
+  unchanged (MIT, ISC, Apache-2.0, BlueOak-1.0.0,
+  MIT OR CC0-1.0), no copyleft
+- The bundle still requires Node.js 22, so the nodejs >= 22 floor
+  stands
+
+-------------------------------------------------------------------
 Tue Oct 20 17:29:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.85.0 (real content, not a republish:
