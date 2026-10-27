@@ -19,11 +19,10 @@
 
 
 Name:           ansifilter
-Version:        2.23
+Version:        2.24
 Release:        0
 Summary:        ANSI Terminal Escape Code Converter
 License:        GPL-3.0-or-later
-Group:          Development/Tools/Other
 URL:            http://www.andre-simon.de/
 Source:         http://www.andre-simon.de/zip/ansifilter-%{version}.tar.bz2
 Source2:        http://www.andre-simon.de/zip/ansifilter-%{version}.tar.bz2.asc
@@ -47,7 +46,6 @@ output (HTML, RTF, TeX, LaTeX, BBCode).
 
 %package gui
 Summary:        ANSI Terminal Escape Code Converter - Qt GUI
-Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 
 %description gui

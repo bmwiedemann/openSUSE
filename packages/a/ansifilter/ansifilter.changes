@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 24 14:03:00 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.24:
+  * fix OSC parsing of hyperlinks
+    (https://gitlab.com/saalen/ansifilter/-/work_items/47)
+  * refactor code to use C++17 features
+  * make CMP0167 policy optional in CMakeLists.txt
+
+-------------------------------------------------------------------
 Thu Aug 20 19:51:44 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.23:
