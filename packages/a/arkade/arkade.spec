@@ -17,7 +17,7 @@
 
 
 Name:           arkade
-Version:        0.11.133
+Version:        0.11.134
 Release:        0
 Summary:        Open Source Kubernetes Marketplace
 License:        Apache-2.0
@@ -30,8 +30,8 @@ Source11:       Makefile
 Source12:       PACKAGING_README.md
 Source13:       vendor_go_modules.sh
 BuildRequires:  bash-completion
-BuildRequires:  zsh
 BuildRequires:  golang(API) >= 1.27
+BuildRequires:  zsh
 
 %description
 arkade provides a portable marketplace for downloading your favourite devops
@@ -41,7 +41,6 @@ CLIs like kubectl, kind, kubectx and helm faster than you can type
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -52,7 +51,6 @@ Bash command line completion support for %{name}.
 
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
@@ -66,7 +64,7 @@ tar xvf %{SOURCE2} --directory ../
 
 %build
 # hash will be shortened by COMMIT_HASH:0:8 later
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %{_sourcedir}/%{name}.obsinfo)"
 
 go build \
    -mod=vendor \
@@ -89,7 +87,7 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %check
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %{_sourcedir}/%{name}.obsinfo)"
 %{buildroot}/%{_bindir}/%{name} version | grep v%{version}
 %{buildroot}/%{_bindir}/%{name} version | grep "${COMMIT_HASH:0:8}"
 
