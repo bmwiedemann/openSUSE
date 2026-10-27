@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:31:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.3:
+  * Refresh OpenAI model profile data
+  * Relax third-party dependency upper bounds: openai,
+    tiktoken and the azure-identity/aiohttp extras are no
+    longer capped
+  * Fix dependencies in some partner packages
+- Raise the langchain-core requirement to 1.7.0, as upstream does
+
+-------------------------------------------------------------------
 Thu Oct 15 04:57:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.2:
