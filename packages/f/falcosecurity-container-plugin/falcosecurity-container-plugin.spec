@@ -17,7 +17,7 @@
 
 
 Name:           falcosecurity-container-plugin
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        Falcosecurity plugin providing container metadata
 # Legal-Review-Notice: MPL-2.0 from vendored Go modules statically
@@ -35,7 +35,7 @@ Source2:        LICENSE
 Patch0:         container-plugin-use-system-deps.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  go >= 1.25
+BuildRequires:  go >= 1.26.10
 BuildRequires:  libbtrfs-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig

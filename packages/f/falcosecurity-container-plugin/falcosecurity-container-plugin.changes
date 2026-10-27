@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:25:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7.6:
+  * Bound each steady-state container lookup with the engine
+    timeout, including retries and deferred lookups (0 disables)
+  * Retry lookups whose metadata enrichment hit the deadline,
+    keeping the deferred container identity
+  * Rebuild with the Go 1.26.10 release, including the
+    certificate-verification fix for the eMudhra CA issue
+  * Update containerd to 2.2.9 and Podman to 6.1.3
+- Raise the Go build floor to 1.26.10 as upstream now requires
+- Refresh vendor.tar.gz for the new go-worker dependencies
+
+-------------------------------------------------------------------
 Wed Sep 23 19:25:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.7.5:

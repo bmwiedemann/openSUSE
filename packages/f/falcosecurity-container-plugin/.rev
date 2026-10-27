@@ -55,4 +55,12 @@ build until these land):
     <comment>Update to 0.7.5: listener shutdown fix, otel bumps. Export GOROOT for the go-worker build (trimmed go).</comment>
     <requestid>1380077</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>05d740a2f7feab09f9f41f2c552fe44b</srcmd5>
+    <version>0.7.6</version>
+    <time>1793116119</time>
+    <user>dimstar_suse</user>
+    <comment>Update falcosecurity-container-plugin to 0.7.6.</comment>
+    <requestid>1392828</requestid>
+  </revision>
 </revisionlist>
