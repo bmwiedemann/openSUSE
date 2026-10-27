@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:57:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.2:
+  * SECURITY ADVISORIES:
+    - Previous versions of OpenTofu could potentially experience
+      excessive CPU usage if connecting to an attacker-controlled
+      HTTP2 server while installing dependencies in tofu init.
+      (#4681)
+    - [Govulncheck][GO-2026-6809][v1.13] Upgrade go version to
+      include filtering of the compromised intermediate
+      certificates (#4750)
+  * BUG FIXES:
+    - Lifecycle destroy will no longer crash when given an
+      expression with references (#4648)
+    - tofu workspace select and tofu workspace delete
+      autocompletion predicts from the existing workspaces. This
+      restores the behavior pre-v1.13 (#4706)
+    - Combined usage of -chdir and -version flags does not show an
+      error anymore but instead shows the version of the tofu
+      binary (#4707)
+    - Symbol libraries are now saved in plan files and no-longer
+      prevent applying of plan files (#4734)
+
+-------------------------------------------------------------------
 Fri Oct 02 05:12:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.13.1:
