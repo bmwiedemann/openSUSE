@@ -3,8 +3,8 @@
     <param name="url">https://github.com/GoogleCloudPlatform/osconfig</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">20261015.00</param>
-    <param name="revision">20261015.00</param>
+    <param name="versionformat">20261022.00</param>
+    <param name="revision">20261022.00</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
@@ -15,7 +15,7 @@
     <param name="basename">osconfig</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">osconfig-20261015.00.tar.gz</param>
+    <param name="archive">osconfig-20261022.00.tar.gz</param>
     <param name="replace">github.com/containerd/containerd=github.com/containerd/containerd@v1.7.35</param>
     <param name="replace">github.com/klauspost/compress=github.com/klauspost/compress@v1.18.7</param>
     <param name="replace">github.com/moby/sys/user=github.com/moby/sys/user@v0.4.1</param>

@@ -1076,4 +1076,21 @@
 - Update golang.org/x/net to v0.61.0 (bsc#1285283, CVE-2026-78669) (forwarded request 1385139 from glaubitz)</comment>
     <requestid>1385178</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>85762e9e092fcca3adde04243fbf22e6</srcmd5>
+    <version>20261022.00</version>
+    <time>1793117298</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20261022.00
+  * Add unit tests for zypper.go (#1014)
+- from version 20261021.01
+  * Add unit tests for util/util.go (#995)
+- from version 20261021.00
+  * Add scalibr flow for windows (#1037)
+- Add missing Bugzilla and CVE references for golang.org/x/net
+
+  (bsc#1286994, CVE-2026-78659) (bsc#1287058, CVE-2026-78660)
+  (bsc#1287137, CVE-2026-78663) (bsc#1287487, CVE-2026-97032) (forwarded request 1393003 from glaubitz)</comment>
+    <requestid>1393082</requestid>
+  </revision>
 </revisionlist>
