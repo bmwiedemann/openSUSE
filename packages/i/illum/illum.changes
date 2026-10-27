@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:22:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6:
+  * Use RPM-provided build flags instead of dev flags
+  * Stop processing input events on error
+  * Drop vanished input devices on ENODEV
+- Spec cleanup: drop obsolete Group tag
+
+-------------------------------------------------------------------
 Mon May  8 13:24:51 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 0.5

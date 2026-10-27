@@ -1,7 +1,7 @@
 #
 # spec file for package illum
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,18 @@
 %global ccan_commit 1cebc0895d236bfc5cd6797d03e02c55c773ddf1
 %global owner jmesmon
 Name:           illum
-Version:        0.5
+Version:        0.6
 Release:        0
-Summary:        A daemon that responds to brightness keys by changing the backlight level
+Summary:        Daemon that responds to brightness keys by changing the backlight level
 License:        AGPL-3.0-only
-Group:          System/Base
 URL:            https://github.com/jmesmon/illum
 Source0:        https://github.com/%{owner}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/%{owner}/ccan/archive/%{ccan_commit}/ccan-%{ccan_commit}.tar.gz
-BuildRequires:  libev-devel
-BuildRequires:  libevdev-devel
 BuildRequires:  libudev-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libev)
+BuildRequires:  pkgconfig(libevdev)
 
 %description
 While there are tools that can be configured to adjust brightness illum adjusts
@@ -48,7 +47,8 @@ rmdir ccan
 mv $(basename %{SOURCE1} .tar.gz) ccan
 
 %build
-./build
+%set_build_flags
+./build -v
 
 %install
 DESTDIR=%{buildroot} PREFIX=%{_prefix} ./do-install
@@ -56,6 +56,6 @@ DESTDIR=%{buildroot} PREFIX=%{_prefix} ./do-install
 %files
 %doc README
 %{_bindir}/%{name}-d
-%{_prefix}/lib/systemd/system/%{name}.service
+%{_unitdir}/%{name}.service
 
 %changelog
