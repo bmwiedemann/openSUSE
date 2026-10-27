@@ -18,13 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kiwisolver
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        An implementation of the Cassowary constraint solver
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/nucleic/kiwi
-Source:         https://files.pythonhosted.org/packages/source/k/kiwisolver/kiwisolver-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/k/kiwisolver/kiwisolver-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM opensuse-build.patch mcepl@suse.com
+# add `-lstdc++` linker argument
+Patch0:         opensuse-build.patch
 BuildRequires:  %{python_module cppy >= 1.3.0}
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
@@ -50,7 +53,7 @@ cases gaining a 40x improvement. Memory savings are consistently >5x.
 In addition to the C++ solver, Kiwi ships with hand-rolled Python bindings.
 
 %prep
-%setup -q -n kiwisolver-%{version}
+%autosetup -p1 -n kiwisolver-%{version}
 # Fix wrong-file-end-of-line-encoding
 dos2unix LICENSE README.md releasenotes.rst
 
@@ -61,8 +64,6 @@ export CFLAGS="%{optflags}"
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-# remove setuptools_scm working file
-%python_expand rm -r %{buildroot}%{$python_sitearch}/src
 
 %check
 %pytest_arch

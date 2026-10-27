@@ -185,4 +185,18 @@
     <comment></comment>
     <requestid>1346880</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>320760d258f5411a373fd0db0ddbf80d</srcmd5>
+    <version>1.5.1</version>
+    <time>1793121677</time>
+    <user>dimstar_suse</user>
+    <comment>- removed the workaround for setuptools_scm, fixed upstream
+
+- update to 1.5.1:
+  * add support for Python 3.15 PR #243
+
+- Fixing linking arguments with Python 3.14.6
+- Add upstream opensuse-build.patch</comment>
+    <requestid>1392762</requestid>
+  </revision>
 </revisionlist>

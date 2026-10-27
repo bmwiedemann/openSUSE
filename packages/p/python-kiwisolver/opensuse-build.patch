@@ -1,0 +1,17 @@
+---
+ setup.py |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: kiwisolver-1.5.0/setup.py
+===================================================================
+--- kiwisolver-1.5.0.orig/setup.py	2026-03-09 13:12:58.000000000 +0100
++++ kiwisolver-1.5.0/setup.py	2026-06-29 20:51:39.820747527 +0200
+@@ -33,6 +33,8 @@
+         ],
+         include_dirs=["."],
+         language="c++",
++        extra_compile_args=["-std=c++11"],
++        extra_link_args=["-lstdc++"],
+     ),
+ ]
+ 
