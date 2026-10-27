@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-durationpy
-Version:        0.10
+Version:        0.11
 Release:        0
 Summary:        Module for converting between datetime.timedelta and Go's Duration strings
 # FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses

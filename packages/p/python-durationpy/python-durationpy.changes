@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 24 17:53:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11:
+  * from_str raises DurationError on out-of-range durations
+    instead of leaking OverflowError
+  * Document day, week, month and year units in README
+
+-------------------------------------------------------------------
 Tue May 20 04:47:11 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - update package version — 0.10
