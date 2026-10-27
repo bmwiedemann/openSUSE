@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 26 08:17:17 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.21.2
+  * SEC: Avoid repeated full file loads
+  * SEC: Limit size of standard xref table
+  * Decode UniGB-UTF16 CMaps as UTF-16BE
+  6.21.1 (CVE-2026-113786, bsc#1286632)
+  * SEC: Only open /DCTDecode image data with the Pillow JPEG plugin
+  6.21.0 (CVE-2026-113789, bsc#1286633, CVE-2026-113790, bsc#1286634, CVE-2026-113791, bsc#1286635)
+  * SEC: Improve performance and limit field work
+  * SEC: Limit stream parsing work
+  * Allow custom fit modes for named destinations
+  * Treat NUL as whitespace in ArrayObject
+  6.20.1 (CVE-2026-113792, bsc#1286636, CVE-2026-113793, bsc#1286637)
+  * SEC: Prevent cyclic tree handling
+  6.20.0 (CVE-2026-113795, bsc#1286639, CVE-2026-113794, bsc#1286638)
+  * SEC: Limit work per stream (filter count, accumulated decoding work)
+  * Add support for BrotliDecode filter
+  * Performance improvements
+  * Declare official support for Python 3.15
+
+-------------------------------------------------------------------
 Fri Sep 25 07:44:22 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.19.0
