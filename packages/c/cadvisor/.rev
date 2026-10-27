@@ -188,4 +188,15 @@
 - fix summary</comment>
     <requestid>1384833</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>8e594ddabe313a6ac57a3b20e554ebc3</srcmd5>
+    <version>0.60.6</version>
+    <time>1793117340</time>
+    <user>dimstar_suse</user>
+    <comment>  * bsc#1285500, CVE-2026-78669: golang.org/x/net/http2: excessive CPU
+    consumption from repeated initial window changes
+  * bsc#1287575, CVE-2026-97032: golang.org/x/net/http2: HTTP/2 server
+    crash due to HPACK encoder race</comment>
+    <requestid>1393098</requestid>
+  </revision>
 </revisionlist>
