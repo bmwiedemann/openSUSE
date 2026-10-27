@@ -758,4 +758,12 @@
     <comment>- Update to release 2026.10.21</comment>
     <requestid>1386997</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>0255327651c8e7142a2a699fc117cf3d</srcmd5>
+    <version>2026.10.26</version>
+    <time>1793116128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2026.10.26</comment>
+    <requestid>1392851</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 26 22:35:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.10.26
+  * Removed Python 3.10 support
+  * odnoklassniki: Fix boosty direct link extraction
+  * Support for optional curl_cffi >= 0.17
+
+-------------------------------------------------------------------
 Wed Oct 21 23:11:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2026.10.21

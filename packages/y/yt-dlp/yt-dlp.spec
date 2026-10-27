@@ -19,6 +19,7 @@
 %if %{defined primary_python}
 %define pythons %primary_python
 %endif
+# Minimum is 3.11 currently (see pyproject.toml)
 %if 0%{?sle_version} == 150700
 %global pythons python313
 %endif
@@ -27,7 +28,7 @@
 %endif
 
 Name:           yt-dlp
-Version:        2026.10.21
+Version:        2026.10.26
 %define ejsver  0.8.0
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
