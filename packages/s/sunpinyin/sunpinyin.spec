@@ -1,7 +1,7 @@
 #
 # spec file for package sunpinyin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +25,14 @@ Group:          System/I18n/Chinese
 URL:            https://github.com/sunpinyin/sunpinyin
 Source:         https://github.com/sunpinyin/sunpinyin/archive/v3.0.0-rc2/%{name}-3.0.0-rc2.tar.gz
 # https://sourceforge.net/projects/open-gram
-Source1:        http://jaist.dl.sourceforge.net/project/open-gram/lm_sc.3gm.arpa-20140820.tar.bz2
-Source2:        http://jaist.dl.sourceforge.net/project/open-gram/dict.utf8-20131214.tar.bz2
+Source1:        https://cytranet-dal.dl.sourceforge.net/project/open-gram/lm_sc.3gm.arpa-20140820.tar.bz2
+Source2:        https://cytranet-dal.dl.sourceforge.net/project/open-gram/dict.utf8-20131214.tar.bz2
 Source3:        sunpinyin-dictgen-local.mk.in
 # PATCH-FIX-OPENSUSE marguerite@opensuse.org do not download online
 Patch1:         no-download.patch
-# PATCH-FIX-UPSTREAM bmwiedemann@opensuse.org make build reproducible
-# Patch2:         reproducible.patch
-# PATCH-FIx-UPSTREAM sunpinyin-scons-on-py3.patch dimstar@opensuse.org -- Fix build with scons using python3 as interpreter
-# Patch3:         sunpinyin-scons-on-py3.patch
+# PATCH-FIX-UPSTREAM sunpinyin-shuangpin-pop-empty.patch hillwood@opensuse.org
+# FIX a crash issue on ShuangPin
+Patch2:         sunpinyin-shuangpin-pop-empty.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  scons

@@ -141,4 +141,12 @@ When I sr'ed it the blasted sourceservice kicked in, and pulled down the source 
     <comment></comment>
     <requestid>1303079</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>1eb8c66831aa95a84ed7f0fcd8d08dba</srcmd5>
+    <version>2.0.99.2</version>
+    <time>1793117335</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1393113 from hillwood)</comment>
+    <requestid>1393115</requestid>
+  </revision>
 </revisionlist>

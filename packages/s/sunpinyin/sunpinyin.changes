@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 27 13:28:52 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add sunpinyin-shuangpin-pop-empty.patch, fix a crash issue on shuangpin
+
+-------------------------------------------------------------------
 Sat Sep  6 05:34:10 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
 
 - Changed sunpinyin-data BuildArch to noarch

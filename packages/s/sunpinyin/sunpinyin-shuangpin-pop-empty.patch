@@ -1,0 +1,11 @@
+--- a/src/pinyin/shuangpin_seg.cpp
++++ b/src/pinyin/shuangpin_seg.cpp
+@@ -79,7 +79,7 @@
+     unsigned l = m_segs.back().m_len;
+     m_segs.pop_back();
+ 
+-    if (size == 1 || m_segs.back().m_type != IPySegmentor::INVALID) {
++    if (m_segs.empty() || m_segs.back().m_type != IPySegmentor::INVALID) {
+         m_hasInvalid = false;
+     }
+     if (l == 1)
