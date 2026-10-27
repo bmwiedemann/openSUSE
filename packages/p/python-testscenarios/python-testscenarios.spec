@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-testscenarios%{psuffix}
-Version:        0.6.2
+Version:        0.7.0
 Release:        0
 Summary:        A pyunit extension for dependency injection
 License:        Apache-2.0 OR BSD-3-Clause

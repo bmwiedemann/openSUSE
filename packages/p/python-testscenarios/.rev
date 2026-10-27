@@ -100,4 +100,14 @@
 - Remove obsolete use-assertequal.patch</comment>
     <requestid>1362168</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>503642209fbb7650b6ca4f4562fc800f</srcmd5>
+    <version>0.7.0</version>
+    <time>1793121484</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.0:
+  * Add typing (Stephen Finucane).
+  * Re-add tests to sdist (Michał Górny).</comment>
+    <requestid>1392539</requestid>
+  </revision>
 </revisionlist>
