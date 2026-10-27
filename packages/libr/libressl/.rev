@@ -617,4 +617,13 @@
     <comment>- Update to release 4.4.0</comment>
     <requestid>1392224</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>0b8ef25e928bd89848ff526d35c99d68</srcmd5>
+    <version>4.4.0</version>
+    <time>1793116130</time>
+    <user>dimstar_suse</user>
+    <comment>- Edit fix_cert_path.patch to restore the TLS_DEFAULT_CA_FILE
+  path openSUSE used in 4.3.3.</comment>
+    <requestid>1392855</requestid>
+  </revision>
 </revisionlist>

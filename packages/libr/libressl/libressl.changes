@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 26 23:52:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Edit fix_cert_path.patch to restore the TLS_DEFAULT_CA_FILE
+  path openSUSE used in 4.3.3.
+
+-------------------------------------------------------------------
 Fri Oct 23 14:01:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.4.0
