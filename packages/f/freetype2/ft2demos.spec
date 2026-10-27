@@ -79,7 +79,8 @@ Conflicts:      %{name} < %{version}-%{release}
 
 %description -n ftbench
 Run FreeType benchmarks
-This tool is part of the FreeType project
+
+This tool is part of the FreeType project.
 
 %package -n ftdiff
 Summary:        Compare font hinting modes
@@ -88,7 +89,8 @@ Conflicts:      %{name} < %{version}-%{release}
 
 %description -n ftdiff
 Compare font hinting modes
-This tool is part of the FreeType project
+
+This tool is part of the FreeType project.
 
 %package -n ftgamma
 Summary:        Screen gamma calibration helper
@@ -97,7 +99,8 @@ Conflicts:      %{name} < %{version}-%{release}
 
 %description -n ftgamma
 Screen gamma calibration helper
-This tool is part of the FreeType project
+
+This tool is part of the FreeType project.
 
 %package -n ftgrid
 Summary:        Simple glyph grid viewer
@@ -105,8 +108,9 @@ Group:          Productivity/Publishing/Other
 Conflicts:      %{name} < %{version}-%{release}
 
 %description -n ftgrid
-Simple glyph grid viewer
-This tool is part of the FreeType project
+Simple glyph grid viewer.
+
+This tool is part of the FreeType project.
 
 %package -n ftinspect
 Summary:        Shows how a font gets rendered by FreeType
@@ -116,7 +120,7 @@ Conflicts:      %{name} < %{version}-%{release}
 %description -n ftinspect
 Shows how a font gets rendered by FreeType, allowing
 control over virtually all rendering parameters
-This tool is part of the FreeType project
+This tool is part of the FreeType project.
 
 %package -n ftlint
 Summary:        Simple font tester
@@ -125,7 +129,8 @@ Conflicts:      %{name} < %{version}-%{release}
 
 %description -n ftlint
 Simple font tester
-This tool is part of the FreeType project
+
+This tool is part of the FreeType project.
 
 %package -n ftmulti
 Summary:        Multiple masters font viewer
@@ -143,7 +148,8 @@ Conflicts:      %{name} < %{version}-%{release}
 
 %description -n ftsdf
 Signed Distance Fields viewer
-This tool is part of the FreeType project
+
+This tool is part of the FreeType project.
 
 %package -n ftstring
 Summary:        String viewer
@@ -152,7 +158,8 @@ Conflicts:      %{name} < %{version}-%{release}
 
 %description -n ftstring
 String viewer
-This tool is part of the FreeType project
+
+This tool is part of the FreeType project.
 
 %package -n ftvalid
 Summary:        Layout table validator
@@ -161,7 +168,8 @@ Conflicts:      %{name} < %{version}-%{release}
 
 %description -n ftvalid
 Layout table validator
-This tool is part of the FreeType project
+
+This tool is part of the FreeType project.
 
 %package -n ftview
 Summary:        Simple glyph viewer
@@ -170,7 +178,8 @@ Conflicts:      %{name} < %{version}-%{release}
 
 %description -n ftview
 Simple glyph viewer
-This tool is part of the FreeType project
+
+This tool is part of the FreeType project.
 
 %prep
 

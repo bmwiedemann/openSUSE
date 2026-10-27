@@ -67,10 +67,10 @@ Requires:       freetype2
 BuildArch:      noarch
 
 %description profile-tti35
-System environment for set TrueType interpreter to version 35.
+System environment for setting TrueType interpreter to version 35.
 In release 2.6.4, a new hinting mode for TrueType fonts was added,
-which enabled by default to activate sub-pixel hinting for TrueType.
-This broke the work of full hinting. This optional package with a bash profile
+which is enabled by default to activate sub-pixel hinting for TrueType.
+This broke the work of full hinting. This optional package provides a bash profile
 that will switch the TrueType Interpreter to the old version 35.
 
 %package devel
@@ -98,7 +98,8 @@ Conflicts:      ft2demos < %{version}
 
 %description -n ftdump
 Simple font dumper
-This tool is part of the FreeType project
+
+This tool is part of the FreeType project.
 
 %prep
 

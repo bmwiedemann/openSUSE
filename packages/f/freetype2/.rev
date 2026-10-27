@@ -1169,4 +1169,12 @@
     <comment>2.15.0</comment>
     <requestid>1385543</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>eeb4dd4d1df26bab0890f530e6f9fa2f</srcmd5>
+    <version>2.15.0</version>
+    <time>1793116016</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1392372</requestid>
+  </revision>
 </revisionlist>
