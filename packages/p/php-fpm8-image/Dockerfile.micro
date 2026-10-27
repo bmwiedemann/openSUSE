@@ -93,11 +93,10 @@ ENV PHP_INI_DIR="/etc/php8/"
 ENV PHP_VERSION="%%php_version%%"
 ENTRYPOINT ["docker-php-entrypoint"]
 CMD ["php-fpm"]
+EXPOSE 9000/tcp
 
 WORKDIR /srv/www/htdocs
 
 # Override stop signal to stop process gracefully
 # https://github.com/php/php-src/blob/17baa87faddc2550def3ae7314236826bc1b1398/sapi/fpm/php-fpm.8.in#L163
 STOPSIGNAL SIGQUIT
-
-EXPOSE 9000
