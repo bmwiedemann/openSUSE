@@ -521,4 +521,17 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300300</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>47b44990a9b79b9a6b7e31d6607fc8f8</srcmd5>
+    <version>7.4.1</version>
+    <time>1793121642</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.4.1:
+  * Fix ``--builtins`` (regressed in 7.4.0)
+  * Drop support for python 3.10
+  * pycodestyle has been updated to &gt;= 2.15.0, &lt; 2.16.0
+  * Pyflakes has been updated to &gt;= 4.0.0, &lt; 4.1.0
+  * Added support for python 3.15</comment>
+    <requestid>1392675</requestid>
+  </revision>
 </revisionlist>
