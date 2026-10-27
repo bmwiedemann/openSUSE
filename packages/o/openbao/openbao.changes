@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:46:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.6.5:
+  * SECURITY
+    - auth/cert: Add resolve path canonicalization to CRL paths.
+      GHSA-736f-82w7-hj22. [GH-4325]
+    - auth/ldap: Add resolve path canonicalization to user, group
+      paths. GHSA-736f-82w7-hj22. [GH-4325]
+    - auth/radius: Add resolve path canonicalization to user paths.
+      GHSA-736f-82w7-hj22. [GH-4325]
+    - secrets/approle: Add resolve path canonicalization in Role ID
+      paths. GHSA-736f-82w7-hj22. [GH-4325]
+    - secrets/identity: Ensure client_type=public is denied with
+      client_credentials=true in the OIDC provider.
+      GHSA-q824-44ff-f5j5. [GH-4325]
+    - secrets/ssh: Deny wildcards (*) in SSH certificate identity
+      templating by default. Configurable via the
+      allow_wildcards_in_identity_templates parameter.
+      GHSA-h76r-48x5-36hg. [GH-4325]
+    - secrets/transit: Ensure imported key backup does not allow
+      clobbering arbitrary keys through path traversal.
+      GHSA-5pmx-2p74-x478. [GH-4325]
+
+-------------------------------------------------------------------
 Fri Oct 02 09:45:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.6.4:
