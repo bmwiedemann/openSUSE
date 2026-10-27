@@ -1168,4 +1168,18 @@
     <comment>1</comment>
     <requestid>1392072</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>0e6b50ef795d0129ad0082043647e09a</srcmd5>
+    <version>20261022.00</version>
+    <time>1793116074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20261022.00
+  * Update go dependencies (#641)
+- Add missing Bugzilla and CVE references for golang.org/x/net
+- Remove stale Go module version overrides in _service file
+
+  (bsc#1286994, CVE-2026-78659) (bsc#1287058, CVE-2026-78660)
+  (bsc#1287137, CVE-2026-78663) (bsc#1287487, CVE-2026-97032) (forwarded request 1392760 from glaubitz)</comment>
+    <requestid>1392768</requestid>
+  </revision>
 </revisionlist>
