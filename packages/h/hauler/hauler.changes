@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 12:06:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor:
+  * CVE-2026-114437 (bsc#1287881):
+    github.com/go-chi/chi/v5: client IP spoofing in
+    `ClientIPFromXFF` via `X-Forwarded-For
+
+-------------------------------------------------------------------
 Sun Oct 18 22:08:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.2 (bsc#1285270, CVE-2026-78669):

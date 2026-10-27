@@ -493,4 +493,15 @@
     to `1.27.2`.</comment>
     <requestid>1386177</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>b9f55a4253ee7d77e2ae1106d4d62ec8</srcmd5>
+    <version>2.1.2</version>
+    <time>1793117287</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor:
+  * CVE-2026-114437 (bsc#1287881):
+    github.com/go-chi/chi/v5: client IP spoofing in
+    `ClientIPFromXFF` via `X-Forwarded-For</comment>
+    <requestid>1393072</requestid>
+  </revision>
 </revisionlist>
