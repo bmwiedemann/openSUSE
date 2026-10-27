@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Oct 25 21:52:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.2.3:
+  * Do not run the xmlsec download regression test on Python 3.8,
+    where no lxml wheel exists and `--no-build-isolation` leaves
+    pip without a build toolchain for the lxml sdist.
+  * The `pkginfo` workdir discovery entry point moved to vcs-
+    versioning; `vcs-versioning>=2.3.2` is now required (the
+    workspace pin carries a `.dev0` suffix so in-tree builds
+    resolve, matching the existing convention).
+    `setuptools_scm._integration._discover.discover_pkginfo`
+    remains as a re-export.
+  * Stop shipping a per-package `uv.lock` in the sdist. It could
+    not be generated correctly whenever `setuptools-scm` required
+    an unreleased `vcs-versioning`, which broke the release
+    proposal workflow.
+  * Omit ``scm_version.json`` and ``scm_file_list.json`` from
+    wheel ``.dist-info``
+  * while still including them in sdists for fallback discovery.
+  * Restore Python 3.8 and 3.9 support, re-enabling use as a
+    build dependency for projects like scikit-build that still
+    support these versions.
+  * Pass `project_root` from egg_info to the workdir so file
+    discovery is correctly scoped in monorepo setups.
+  * Fix DeprecationWarning leak by threading VcsEnvironment
+    through VersionInferenceConfig and using env.make_reader() in
+    _should_write_to_source.
+  * Add backward-compatible shims in ``setuptools_scm.git``,
+    ``setuptools_scm.hg``, ``setuptools_scm.hg_git``, and
+    ``setuptools_scm.scm_workdir`` so that external code calling
+    ``get_scm_version(config)`` or ``run_describe(config)`` with
+    an explicit ``Configuration`` continues to work. The shim
+    automatically wires ``_config`` and ``VcsEnvironment`` onto
+    the workdir.
+  * Write ``scm_version.json`` and ``scm_file_list.json`` into
+    egg-info directories during ``egg_info``, enabling sdist
+    fallback version inference when no VCS is present. Add
+    ``ScmEggInfoMixin`` for workdir-based file finding in
+    ``find_sources()``.
+  * Add `write_to_source` pyproject.toml option to control
+    whether version files are written to the source tree. When
+    unset, a deprecation warning advises setting it explicitly
+    before the default changes in a future major release. The
+    `SETUPTOOLS_SCM_WRITE_TO_SOURCE` environment variable
+    overrides this setting.
+  * Adopt the workdir-centric pipeline from vcs-versioning:
+    version discovery now follows an explicit ``env → config →
+    workdir → version`` chain instead of relying on ambient
+    globals and ``parse`` entry points. The ``egg_info`` command
+    writes ``scm_version.json`` and ``scm_file_list.json``
+    metadata so sdists can infer versions without a VCS checkout.
+    Requires ``vcs-versioning >= 2.0.0.dev0``.
+
+-------------------------------------------------------------------
 Sun Apr 12 20:18:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.0.5:

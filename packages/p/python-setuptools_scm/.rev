@@ -437,4 +437,41 @@
   * Version files (``write_to`` and ``version_file``) are now</comment>
     <requestid>1346264</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f0d3113e2d2ea9685f69e60ed241bc8b</srcmd5>
+    <version>10.2.3</version>
+    <time>1793121667</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.2.3:
+  * Do not run the xmlsec download regression test on Python 3.8,
+    where no lxml wheel exists and `--no-build-isolation` leaves
+    pip without a build toolchain for the lxml sdist.
+  * The `pkginfo` workdir discovery entry point moved to vcs-
+    versioning; `vcs-versioning&gt;=2.3.2` is now required (the
+    workspace pin carries a `.dev0` suffix so in-tree builds
+    resolve, matching the existing convention).
+    `setuptools_scm._integration._discover.discover_pkginfo`
+    remains as a re-export.
+  * Stop shipping a per-package `uv.lock` in the sdist. It could
+    not be generated correctly whenever `setuptools-scm` required
+    an unreleased `vcs-versioning`, which broke the release
+    proposal workflow.
+  * Omit ``scm_version.json`` and ``scm_file_list.json`` from
+    wheel ``.dist-info``
+  * while still including them in sdists for fallback discovery.
+  * Restore Python 3.8 and 3.9 support, re-enabling use as a
+    build dependency for projects like scikit-build that still
+    support these versions.
+  * Pass `project_root` from egg_info to the workdir so file
+    discovery is correctly scoped in monorepo setups.
+  * Fix DeprecationWarning leak by threading VcsEnvironment
+    through VersionInferenceConfig and using env.make_reader() in
+    _should_write_to_source.
+  * Add backward-compatible shims in ``setuptools_scm.git``,
+    ``setuptools_scm.hg``, ``setuptools_scm.hg_git``, and
+    ``setuptools_scm.scm_workdir`` so that external code calling
+    ``get_scm_version(config)`` or ``run_describe(config)`` with
+    an explicit ``Configuration`` continues to work. The shim</comment>
+    <requestid>1392722</requestid>
+  </revision>
 </revisionlist>

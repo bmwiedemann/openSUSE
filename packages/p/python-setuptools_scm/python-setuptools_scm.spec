@@ -29,7 +29,7 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-setuptools_scm%{psuffix}
-Version:        10.0.5
+Version:        10.2.3
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT
@@ -37,8 +37,8 @@ URL:            https://github.com/pypa/setuptools_scm/
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools-scm/setuptools_scm-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 77.0.3}
-BuildRequires:  %{python_module vcs-versioning >= 1.0.0.dev0}
+BuildRequires:  %{python_module setuptools >= 45}
+BuildRequires:  %{python_module vcs-versioning >= 2.3.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
@@ -47,11 +47,11 @@ Provides:       python-setuptools-scm = %{version}
 Requires:       alts
 Requires:       python-packaging >= 20.0
 Requires:       python-setuptools
-Requires:       python-vcs-versioning >= 1.0.0.dev0
+Requires:       python-vcs-versioning >= 2.3.2
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1
-Requires:       python-typing-extensions
+Requires:       python-typing-extensions >= 4.1
 %endif
 %if %{with test}
 # Testing requirements
