@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:32:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.18:
+  * Default delta-channel snapshots to every 100 updates
+    instead of 1000 to bound replay latency
+  * Let node error_handler recover on the executor path and
+    stream failed task results
+  * Stream the last checkpoint of a run stopped by
+    interrupt_after or the recursion limit
+  * Stop duplicating tags at every subgraph level
+
+-------------------------------------------------------------------
 Sun Oct 25 06:00:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.2.17:
