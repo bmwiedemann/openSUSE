@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 27 07:55:42 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Port and apply patch from Rasmus (boo#1287669) 
+
+-------------------------------------------------------------------
+Mon Oct 26 00:00:00 UTC 2026 - Rasmus Borup Hansen <rasmus.borup.hansen@gmail.com>
+
+- Include variants level 0 and 1.
+- Ensure UTF-8.
+
+-------------------------------------------------------------------
 Fri Sep  4 11:55:55 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Version 2026.02.25

@@ -113,7 +113,7 @@ do
     #
     (
         set -e
-        ./mk-list --variants 2 --accents both ${s} 80 | sort -fdu -S100M -o result/${s}
+        ./mk-list --with-variants 2 --accents both --encoding utf-8 ${s} 80 | sort -fdu -S100M -o result/${s}
     )&
     #
     pids="$pids $!"

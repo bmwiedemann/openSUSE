@@ -257,4 +257,15 @@
   * Many new words like tokenize</comment>
     <requestid>1375792</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>f9a1d3375454b2f1925663b1e199297a</srcmd5>
+    <version>2026.02.25</version>
+    <time>1793116880</time>
+    <user>dimstar_suse</user>
+    <comment>- Port and apply patch from Rasmus (boo#1287669) 
+
+- Include variants level 0 and 1.
+- Ensure UTF-8.</comment>
+    <requestid>1392990</requestid>
+  </revision>
 </revisionlist>
