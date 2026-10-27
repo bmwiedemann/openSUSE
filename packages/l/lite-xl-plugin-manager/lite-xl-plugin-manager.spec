@@ -18,7 +18,7 @@
 
 %define baseprogramname lite-xl
 Name:           lite-xl-plugin-manager
-Version:        1.4.9
+Version:        1.5.0
 Release:        0
 Summary:        A %{baseprogramname} plugin manager
 # Legal-Review-Notice: v1.4.9 GitHub tarball ships LPM and vendored microtar (both MIT). Previous Apache-2.0/BSD-3-Clause/Zlib/SUSE-GPL-2.0-with-linking-exception covered obs_scm git submodules meson does not link.
