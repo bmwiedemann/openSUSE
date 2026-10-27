@@ -250,4 +250,12 @@ No dependency floor changes.
     <comment>Update python-langchain-aws to 1.9.0.</comment>
     <requestid>1385124</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0aa6d3e59c32e2d206b357049ca0dc22</srcmd5>
+    <version>1.9.1</version>
+    <time>1793116712</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-langchain-aws to 1.9.1.</comment>
+    <requestid>1392925</requestid>
+  </revision>
 </revisionlist>

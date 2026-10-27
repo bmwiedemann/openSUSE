@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:26:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.9.1:
+  * ChatBedrockConverse gains Z.ai model support and
+    requestMetadata on InvokeModel calls
+  * Deterministic fallback names for unnamed file blocks
+  * Model profiles: per-model media-type overrides, added
+    reasoning_effort_levels, refreshed profile data
+  * Upstream dropped the pydantic/numpy upper caps
+
+-------------------------------------------------------------------
 Fri Oct 16 06:08:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.9.0:
