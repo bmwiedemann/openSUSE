@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 25 12:34:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.2.2:
+  * Upgrade certifi to 2026.10.19
+
+-------------------------------------------------------------------
 Thu Sep 17 08:24:47 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove the usage of ensurepip to build the package, uses the source
