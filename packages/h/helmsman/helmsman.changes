@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 24 19:38:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.0.5 (major release, 3.x -> 4.x):
+  * Upstream repository moved from Praqma to mkubaczyk; the
+    container image is now published as ghcr.io/mkubaczyk/helmsman
+  * Support both Helm 3.x and Helm 4.x
+  * Add option to verify charts before using them
+  * Create namespaces with labels and annotations in a single
+    request
+  * Fix helm diff --dry-run handling under Helm 4 and AWS
+    credential error propagation
+  * Require Go >= 1.24 to build
+  * helmsman is not affected by CVE-2026-41178 (boo#1276641):
+    shipped go.opentelemetry.io/otel is 1.38.0 while only 1.41.0
+    and 1.43.0 carry the flaw
+
+-------------------------------------------------------------------
 Sat Feb 22 09:56:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package helmsman: Helm Charts as Code

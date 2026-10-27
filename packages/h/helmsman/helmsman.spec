@@ -17,14 +17,14 @@
 
 
 Name:           helmsman
-Version:        3.17.1
+Version:        4.0.5
 Release:        0
 Summary:        Helm Charts as Code
 License:        MIT
-URL:            https://github.com/Praqma/helmsman
+URL:            https://github.com/mkubaczyk/helmsman
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.21
+BuildRequires:  go >= 1.24
 Requires:       helm
 
 %description

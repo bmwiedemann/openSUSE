@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/Praqma/helmsman</param>
-              <param name="changesrevision">9f1ea20e04d3ddf2e0974f2e1114aa25d71f7f4d</param></service></servicedata>
+              <param name="changesrevision">9f1ea20e04d3ddf2e0974f2e1114aa25d71f7f4d</param></service><service name="tar_scm">
+                <param name="url">https://github.com/mkubaczyk/helmsman</param>
+              <param name="changesrevision">f437802099a506dbc4bdef509b1c61884cd0a16c</param></service></servicedata>
