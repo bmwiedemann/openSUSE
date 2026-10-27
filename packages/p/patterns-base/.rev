@@ -1309,4 +1309,12 @@ by zypper, as no packages with those names exist</comment>
     <comment>1</comment>
     <requestid>1386123</requestid>
   </revision>
+  <revision rev="152" vrev="36">
+    <srcmd5>6452175a476ffac80e7f0ca58c39ec6d</srcmd5>
+    <version>20241218</version>
+    <time>1793115979</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1392669</requestid>
+  </revision>
 </revisionlist>

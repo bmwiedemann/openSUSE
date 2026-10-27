@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Oct 25 12:23:43 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Modernise the core patterns:
+  * base: drop the Suggests on openssl-1_1: the package was
+    dropped from Factory, and the comment above it still claimed
+    1.1 was the default openssl, two major versions out of date
+  * console: drop the Suggests on cnetworkmanager: the
+    Python-2-era NetworkManager CLI no longer exists in Factory
+  * console: suggest plocate instead of mlocate: mlocate was
+    dropped from Factory and plocate is its designated successor
+    (it Provides and Obsoletes mlocate); no pattern named
+    plocate before
+  * enhanced_base: drop the Suggests on kerneloops: the package
+    is gone from Factory and the crash submission service it
+    reported to is defunct
+  * x11_enhanced: drop the Suggests on
+    xorg-x11-driver-video-radeonhd and
+    xorg-x11-driver-video-unichrome: both drivers were removed
+    from Factory years ago
+  * enhanced_base: recommend iw and wireless-regdb instead of
+    wireless-tools: wireless-tools is the stalled 30.pre9
+    pre-release driving the deprecated Wireless Extensions API
+    and iw is its nl80211 successor; wireless-regdb was not
+    pulled in by any installing pattern before, so default
+    installs ran on the kernel's built-in world regulatory
+    domain
+  * enhanced_base: use the current package names
+    update-bootloader and kmod instead of the compat aliases
+    perl-Bootloader and kmod-compat: the alias packages no
+    longer exist and only resolve via the Provides of their
+    successors, so the lines would silently rot if those compat
+    Provides were ever dropped
+  * enhanced_base: drop the Recommends on klogd on openSUSE:
+    journald captures the kernel messages, and the pattern
+    already goes for the journal on Tumbleweed (boo#1143144)
+  * enhanced_base: drop the Recommends on deltarpm: Tumbleweed
+    repositories publish no deltainfo, so the repository
+    infrastructure deltarpm serves no longer exists there
+  * enhanced_base: drop the Recommends on net-snmp: a full SNMP
+    stack does not belong in every default install
+  * enhanced_base: drop the Recommends on mpt-status: it is the
+    status tool for the LSI 1030, a 2002-era SCSI RAID chip
+  * enhanced_base: drop the Recommends on gpart: the 1999-era
+    lost-partition guessing tool
+  * enhanced_base: drop the Recommends on zisofs-tools: tools
+    for the zisofs compressed-ISO extension
+  * enhanced_base: drop the Recommends on procmail: the
+    sendmail-era local delivery agent, upstream dormant since
+    2001
+  * pattern-definition-32bit.txt: mirror the enhanced_base
+    changes for the enhanced_base-32bit pattern
+  * enhanced_base: correct the comment above the openSUSE-only
+    block: it claimed the block lists packages missing from
+    SLE-15, but the block is guarded by is_opensuse, so SLE of
+    any version does not get these packages from this pattern
+
+-------------------------------------------------------------------
 Sun Oct 18 18:11:37 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Stop pulling YaST into default Tumbleweed installations:

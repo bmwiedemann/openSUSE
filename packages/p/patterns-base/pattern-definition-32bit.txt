@@ -92,7 +92,6 @@ Recommends:     cpio-32bit
 Recommends:     cpupower-32bit
 Recommends:     cryptsetup-32bit
 Recommends:     curl-32bit
-Recommends:     deltarpm-32bit
 Recommends:     diffutils-32bit
 Recommends:     dos2unix-32bit
 Recommends:     e2fsprogs-32bit
@@ -105,7 +104,6 @@ Recommends:     fuse-32bit
 Recommends:     gawk-32bit
 Recommends:     gettext-runtime-32bit
 Recommends:     glibc-locale-32bit
-Recommends:     gpart-32bit
 Recommends:     gpg2-32bit
 Recommends:     gpm-32bit
 Recommends:     grep-32bit
@@ -115,7 +113,7 @@ Recommends:     hwinfo-32bit
 Recommends:     info-32bit
 Recommends:     iputils-32bit
 Recommends:     irqbalance-32bit
-Recommends:     kmod-compat-32bit
+Recommends:     kmod-32bit
 Recommends:     kpartx-32bit
 Recommends:     krb5-32bit
 Recommends:     less-32bit
@@ -126,7 +124,6 @@ Recommends:     man-32bit
 Recommends:     mdadm-32bit
 Recommends:     multipath-tools-32bit
 Recommends:     ncurses-utils-32bit
-Recommends:     net-snmp-32bit
 Recommends:     netcat-openbsd-32bit
 Recommends:     netcfg-32bit
 Recommends:     nscd-32bit
@@ -136,7 +133,6 @@ Recommends:     pam-config-32bit
 Recommends:     parted-32bit
 Recommends:     pciutils-32bit
 Recommends:     pciutils-ids-32bit
-Recommends:     perl-Bootloader-32bit
 Recommends:     perl-base-32bit
 Recommends:     pinentry-32bit
 Recommends:     plymouth-32bit
@@ -152,11 +148,11 @@ Recommends:     time-32bit
 Recommends:     timezone-32bit
 Recommends:     udev-configure-printer-32bit
 Recommends:     udev-extra-rules-32bit
+Recommends:     update-bootloader-32bit
 Recommends:     usbutils-32bit
 Recommends:     vim-32bit
 Recommends:     wget-32bit
 Recommends:     xz-32bit
-Recommends:     zisofs-tools-32bit
 Recommends:     rsyslog-32bit
 Recommends:     systemd-logger-32bit
 Recommends:     dmidecode-32bit
@@ -167,13 +163,10 @@ Recommends:     powerpc32-32bit
 Recommends:     dmraid-32bit
 Recommends:     dosfstools-32bit
 Recommends:     ifplugd-32bit
-Recommends:     klogd-32bit
-Recommends:     mpt-status-32bit
 Recommends:     nano-32bit
 Recommends:     openldap2-client-32bit
 Recommends:     prctl-32bit
 Recommends:     procinfo-32bit
-Recommends:     procmail-32bit
 Recommends:     providers-32bit
 Recommends:     psmisc-32bit
 Recommends:     setserial-32bit
@@ -185,7 +178,8 @@ Recommends:     terminfo-32bit
 Recommends:     tnftp-32bit
 Recommends:     tuned-32bit
 Recommends:     vlan-32bit
-Recommends:     wireless-tools-32bit
+Recommends:     iw-32bit
+Recommends:     wireless-regdb-32bit
 Recommends:     wol-32bit
 Recommends:     acpica-32bit
 Recommends:     mcelog-32bit

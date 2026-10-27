@@ -191,8 +191,6 @@ Suggests:       libjack-devel
 Suggests:       libcurl4
 # There are multiple providers for /usr/bin/openssl and openssl(cli); defaulting to openssl
 Suggests:       openssl
-# In line with above: the default openssl version is 1.1 for now; at the moment, the meta package does not provide all symbols needed
-Suggests:       openssl-1_1
 # if anything wants to recommend an MTA, openSUSE defaults to postfix (boo#1136078)
 Suggests:       postfix
 # We have two providers of psmisc, favour the regular one (not the busybox one)
@@ -295,7 +293,6 @@ Recommends:     tmux
 Recommends:     w3m
 Suggests:       alpine
 Suggests:       bsd-games
-Suggests:       cnetworkmanager
 Suggests:       convert
 Suggests:       dar
 Suggests:       ding
@@ -306,11 +303,11 @@ Suggests:       lftp
 Suggests:       links
 Suggests:       lynx
 Suggests:       minicom
-Suggests:       mlocate
 Suggests:       mutt
 Suggests:       ncftp
 Suggests:       pico
 Suggests:       pinfo
+Suggests:       plocate
 Suggests:       slrn
 Suggests:       units
 Suggests:       vlock
@@ -405,8 +402,6 @@ Recommends:     cryptsetup
 Recommends:     curl
 # bnc#430895
 # cyrus-sasl-saslauthd
-# delta rpms are considered cool for updates
-Recommends:     deltarpm
 Recommends:     diffutils
 Recommends:     dos2unix
 Recommends:     e2fsprogs
@@ -420,7 +415,6 @@ Recommends:     fuse
 Recommends:     gawk
 Recommends:     gettext-runtime
 Recommends:     glibc-locale
-Recommends:     gpart
 Recommends:     gpg2
 Recommends:     gpm
 Recommends:     grep
@@ -431,7 +425,7 @@ Recommends:     info
 # ping is required for network tests
 Recommends:     iputils
 Recommends:     irqbalance
-Recommends:     kmod-compat
+Recommends:     kmod
 # #303857
 Recommends:     kpartx
 Recommends:     krb5
@@ -448,7 +442,6 @@ Recommends:     mdadm
 Recommends:     multipath-tools
 # split out of ncurses
 Recommends:     ncurses-utils
-Recommends:     net-snmp
 Recommends:     netcat-openbsd
 Recommends:     netcfg
 # Kernel 5.15+ has an improved R/W ntfs module.
@@ -464,7 +457,6 @@ Recommends:     pam-config
 Recommends:     parted
 Recommends:     pciutils
 Recommends:     pciutils-ids
-Recommends:     perl-Bootloader
 Recommends:     perl-base
 Recommends:     pinentry
 %ifarch s390x
@@ -489,13 +481,13 @@ Recommends:     time
 Recommends:     timezone
 #SUSE hardware tunings
 Recommends:     udev-extra-rules
+Recommends:     update-bootloader
 # lsusb is good for debugging USB devices - #401593
 Recommends:     usbutils
 # Our editor of choice
 Recommends:     vim
 Recommends:     wget
 Recommends:     xz
-Recommends:     zisofs-tools
 Suggests:       cpupower
 # #437252
 Suggests:       pam_ssh
@@ -522,17 +514,16 @@ Recommends:     mouseemu
 Recommends:     pdisk
 Recommends:     powerpc32
 %endif
-# Other packages we have in openSUSE and not SLE-15
+# Other packages we have in openSUSE and not in SLE. This block is
+# openSUSE-only (guarded by is_opensuse), so SLE of any version does
+# not get these packages from this pattern.
 %if 0%{?is_opensuse}
 Recommends:     dosfstools
-Recommends:     klogd
-Recommends:     mpt-status
 # boo#1034493
 Recommends:     nano
 Recommends:     openldap2-client
 Recommends:     prctl
 Recommends:     procinfo
-Recommends:     procmail
 # fuser (psmisc) by default (#304694)
 Recommends:     psmisc
 Recommends:     sharutils
@@ -545,7 +536,8 @@ Recommends:     terminfo
 Recommends:     tnftp
 Recommends:     tuned
 Recommends:     vlan
-Recommends:     wireless-tools
+Recommends:     iw
+Recommends:     wireless-regdb
 Recommends:     wol
 Suggests:       acpid
 Suggests:       cracklib-dict-full
@@ -556,8 +548,6 @@ Suggests:       delayacct-utils
 Suggests:       ed
 Suggests:       groff
 Suggests:       hfsutils
-# bnc#388570
-Suggests:       kerneloops
 Suggests:       mailx
 Suggests:       man-pages
 Suggests:       man-pages-posix
@@ -1051,8 +1041,6 @@ Suggests:       hexchat
 Suggests:       unclutter
 Suggests:       wpa_supplicant-gui
 Suggests:       xlockmore
-Suggests:       xorg-x11-driver-video-radeonhd
-Suggests:       xorg-x11-driver-video-unichrome
 # #389816
 Suggests:       xorg-x11-server-sdk
 %endif
