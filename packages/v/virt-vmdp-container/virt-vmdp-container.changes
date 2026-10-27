@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Fri Oct 23 20:41:12 UTC 2026 - Kirk Allan <kallan@suse.com>
+
+- Updates in VMDP-WIN-2.5.5.3
+  https://github.com/SUSE/vmdp/releases/tag/v2.5.5.3
+
+- pvvxblk: Jira 12132 - Fix crash when doing virsh blockresize.
+
+- pvvxscsi: (bsc#1284387) - Fix BusType to be 0xA.  Also, put sense data into
+  the sense buffer.
+
+Known issues:
+Same as VMDP-WIN-2.5.5.2
+
+- Updates in VMDP-WIN-2.5.5.2
+  https://github.com/SUSE/vmdp/releases/tag/v2.5.5.2
+- pvvxnet:
+  - Fixed mergeable buffers.  Added a mergeable buffers parameter.
+    Default is enabled and rx buffers will continue to allocate a single page.
+    If disabled, rx buffer allocation will be multiple pages based on the
+    MTU size.  Account for the buffer_offset so that you don't go past the
+    end of a page when doing NdisAllocateMdl and setting the scatter gather
+    length of the receive buffer in cases where mergeable buffers are enabled
+    and the requested receive buffer size is greater than a page.
+  - Fixed bug 1279962 Windows vm crashes on qemu 10.0.13.  pvvxnet did not
+    handle the increased virtio queue/ring size change from 256 1o 1024
+    correctly.
+  - pvvxnet for Windows Server 2016 is now used in Windows Server 2019.
+
+- viosock: Included upstream driver and dlls for Windows Server 2016 and newer.
+  Add WHQL signed files to the released build and attestation signed files to
+  the community build.  Installs with the /viosock setup parameter for Windows
+  Server 2019 and newer.  Must use pnputil.exe for to install on Windows
+  Server 2016. Includes commit 687c776 that sets device type to
+  FILE_DEVICE_NAMED_PIPE.  Includes updates up to 261001.
+
+- viogpudo: Included upstream driver and exes for Windows Server 2016 and newer.
+  Add WHQL signed files to release builds for Windows Server 2020 and newer.
+  Windows Server 2019 uses the WHQL signed Windows Server 2022/2025 driver.
+  Add attestation signed files to community builds for Windows Server 2019,
+  2022, and 2025.  Uses SUSE signed driver for attestation builds for Windows
+  Server 2016.  Must use pnputil.exe for to install on Windows Server 2016.
+  Use the /viogpu setup parameter to install the package.
+
+- virtio_fs: Updated to use METHOD_OUT_DIRECT and handle
+  IOCTL_VIRTFS_FUSE_REQUEST_READ.
+
+- virtiofs_svc: Updated to latest code.
+
+- virtio_serial: Fixed potential crash during shutdown by testing that the
+  virtio queue is valid before sending a control message.
+
+- Created separate inf and driver packages for w2k16 and w2k19.  w2k16 uses
+  DIRID=12.  W2k19 uses PNPLockdown=1 and DIRID=13.  Updated the medial layout
+  to reflect the changes.  Use Server2016 for Windows Server 2016 and older
+  versions of Windows 10 and use Server19-Win10 for Windows Server 2019 and
+  newer versions of Windows 10.
+
+- setup:
+  - Use newdev.dll where available to install drivers.  Use LoadLibrary
+    to load newdev.dll.  If not available fall back to loading difxapi.dll.
+    This allows for a single binary.
+  - For w2k19, remove any drivers leftover in the systsem32\drivers directory.
+    Drivers now reside in the filestore directory. Then copy the disk drivers
+    to system32\drivers. They are needed there to do a crash dump.
+  - Install the viosock driver and dlls if the /viosock parameter is included.
+  - Add /all parameter to install all drivers.  The /all parameter adds
+    the parameters such as /vfs, /viosock, and /viogpu.
+
+- uninstall:
+  - As with setup.exe, to use LoadLibrary for newdev.dll and difxapi.dll
+  - Uninstall viosock and dlls.
+  - Uninstall voigoudo and exes.
+
+- qemu-ga: Updated to latest upstream code. For w2k12/R2, install the needed
+  vc_redist dll files for use by qemu-ga. 32 bit qemu-ga is based on remains
+  on qemu v10.2.1, the last supported 32 bit version of qemu.
+
+- modxml: modxml is new a command line utility that can be used to add
+  devices to a vm's xml.
+
+- virt-v2v-vmdp.sh: Directory structures have been updated to reflect what
+  virt-v2v expects.  Added an optional parameter "ln" to link files rather
+  than touching the files.
+
+Known issues:
+- viosocklib.dll and viosockwspsvc.exe may not be removed on w2k19 as part
+  of an uninstall.
+
+- Setup will not install viosock on Windows Server 2016.  If viosock is
+  desired on Windows Server 2016, use pnputil.exe.
+
+-------------------------------------------------------------------
 Fri Feb 27 21:29:46 UTC 2026 - Kirk Allan <kallan@suse.com>
 
 - Updates in VMDP-WIN-2.5.5.1:
