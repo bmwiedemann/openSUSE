@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:37:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.6:
+  * Enhancements: accept an empty UV_RUN_RECURSION_DEPTH as zero;
+    `uv init` explains how to add project metadata when the
+    pyproject.toml has no [project] table.
+  * Managed Python: add CPython 3.11.18, 3.12.16, 3.13.18, 3.14.10
+    and 3.15.2; `uv python upgrade` preserves free-threaded and
+    other non-default variants.
+  * Preview: detect NVIDIA GPU capabilities when selecting wheel
+    variants; report unsupported properties of incompatible wheel
+    variants; nest module owners in `uv workspace metadata`.
+  * Performance: lower peak memory use when resolving, locking
+    and upgrading large projects and workspaces; faster export
+    and pip compile output; cheaper metadata and settings parsing.
+  * Fix `uv run --active --script` and `uv sync --active --script`
+    deleting non-virtual-environment directories; use AMD64 for
+    platform_machine on x86-64 Windows; no panics rendering
+    containment markers with local versions.
+- Not affected by CVE-2026-115905, CVE-2026-115906,
+  CVE-2026-115907, CVE-2026-115908, CVE-2026-115909
+  (boo#1287916): the zip crate is neither vendored nor linked
+  into the shipped binary.
+- Refresh the vendored crates; the linked licence set is unchanged.
+
+-------------------------------------------------------------------
 Thu Oct 22 13:37:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.13.5:
@@ -359,7 +385,9 @@ Wed Sep  9 06:26:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Mon Sep  7 08:17:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to 0.12.10:
+- Update to 0.12.10 (bsc#1287916,
+      CVE-2026-115905,CVE-2026-115906,CVE-2026-115907,
+      CVE-2026-115908,CVE-2026-115909):
   * uv publish revokes short-lived PyPI trusted-publishing tokens
     afterwards, failures included
   * uv init demands an explicit --name when the inferred project
@@ -678,17 +706,17 @@ Wed Jul 29 06:44:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Fri Jul 24 16:01:08 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.32 
+- update to 0.11.32
  * Preview features
-  * Add --package and --all-packages selection to uv check 
-  * Allow uv upgrade to update multiple marker-specific declarations of the same package 
-  * Reject non-canonically formatted lockfiles in uv lock --check and commands using --locked 
-  * Regenerate non-canonically formatted lockfiles with uv lock --refresh 
-  * Include best-effort information about the active environment in uv workspace metadata by default 
+  * Add --package and --all-packages selection to uv check
+  * Allow uv upgrade to update multiple marker-specific declarations of the same package
+  * Reject non-canonically formatted lockfiles in uv lock --check and commands using --locked
+  * Regenerate non-canonically formatted lockfiles with uv lock --refresh
+  * Include best-effort information about the active environment in uv workspace metadata by default
  * Performance
-  * Skip dependency-group conflict expansion when no additional conflicts can be inferred 
+  * Skip dependency-group conflict expansion when no additional conflicts can be inferred
  * Bug fixes
-  * Fork universal resolutions when Requires-Python is discovered only from distribution metadata 
+  * Fork universal resolutions when Requires-Python is discovered only from distribution metadata
 
 -------------------------------------------------------------------
 Wed Jul 22 13:41:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
@@ -698,22 +726,22 @@ Wed Jul 22 13:41:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Tue Jul 21 17:33:06 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.30 
+- update to 0.11.30
  * Preview features
-  * Allow uv workspace metadata --sync to target the active virtual environment with --active 
-  * Reuse centralized project environments when workspaces are accessed through symlinks 
+  * Allow uv workspace metadata --sync to target the active virtual environment with --active
+  * Reuse centralized project environments when workspaces are accessed through symlinks
  * Performance
-  * Skip resolver candidates whose files are all excluded by exclude-newer 
-  * Limit parallel cache reads to reduce resolver scheduling and allocation overhead 
-  * Accelerate lockfile serialization with toml_writer 
+  * Skip resolver candidates whose files are all excluded by exclude-newer
+  * Limit parallel cache reads to reduce resolver scheduling and allocation overhead
+  * Accelerate lockfile serialization with toml_writer
   * Compact cached Simple API distribution metadata and hashes
-  * Decode stale cache entries in a single blocking task 
-  * Decode cached payloads outside resolver workers 
-  * Cache resolver Python requirement markers 
-  * Reuse resolver fork markers while recording preferences 
+  * Decode stale cache entries in a single blocking task
+  * Decode cached payloads outside resolver workers
+  * Cache resolver Python requirement markers
+  * Reuse resolver fork markers while recording preferences
  * Bug fixes
-  * Prevent skipped tar-wheel entries from causing unrelated files to be removed during uninstall 
-  * Preserve literal extends-environment paths in pyvenv.cfg on Unix 
+  * Prevent skipped tar-wheel entries from causing unrelated files to be removed during uninstall
+  * Preserve literal extends-environment paths in pyvenv.cfg on Unix
  * Documentation
   * Add a contribution guide
 
@@ -737,73 +765,73 @@ Mon Jul 20 13:10:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Wed Jul  8 14:09:32 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.28 
+- update to 0.11.28
  * Enhancements
-  * Improve trace logs for unexpected error chains 
-  * Move lockfile update guidance to a hint 
-  * Preserve indentation for multiline error causes 
-  * Render user errors with their cause chains 
-  * Route final command errors through the printer to respect -q and -qq 
-  * Use standard rendering for uv build errors 
-  * Use standard rendering for tool requirement errors 
-  * Continue on ignored errors when fetching wheel metadata 
-  * Use caching for --python-downloads-json-url 
+  * Improve trace logs for unexpected error chains
+  * Move lockfile update guidance to a hint
+  * Preserve indentation for multiline error causes
+  * Render user errors with their cause chains
+  * Route final command errors through the printer to respect -q and -qq
+  * Use standard rendering for uv build errors
+  * Use standard rendering for tool requirement errors
+  * Continue on ignored errors when fetching wheel metadata
+  * Use caching for --python-downloads-json-url
  * Preview features
-  * Discover extensionless shebang scripts in uv workspace list --scripts 
+  * Discover extensionless shebang scripts in uv workspace list --scripts
  * Performance
-  * Only compile bytecode for installed distributions in uv pip install 
-  * Avoid allocating URL-safe Git revisions 
-  * Avoid allocating canonical Python request strings 
-  * Avoid allocating custom Astral mirror URLs 
-  * Avoid allocating expanded compatibility tags 
-  * Avoid allocating shell strings that need no escaping 
-  * Avoid allocating static ABI descriptions 
-  * Avoid allocating static Windows executable names 
-  * Avoid allocating static dependency table names 
-  * Avoid allocating static platform triple components 
-  * Avoid allocating static resolver report labels 
-  * Avoid allocating static unavailable-version messages 
-  * Avoid allocating unchanged Python download architectures 
-  * Avoid allocating unchanged paths during case normalization 
-  * Avoid allocations when expanding group conflicts 
-  * Avoid allocations when formatting requirements 
-  * Avoid cloning credential lookup services 
-  * Avoid cloning dry-run distributions 
-  * Avoid cloning owned dependency metadata 
-  * Avoid redundant direct URL clones 
-  * Create metadata version errors lazily 
-  * Optimize expanded tag compatibility checks 
-  * Optimize parsing of single-digit three-part versions 
-  * Avoid full site-packages scans for direct reinstalls 
-  * Avoid redundant pyproject parsing 
-  * Cache default dependency markers when reading locks 
-  * Enable SIMD-accelerated TOML parsing 
-  * Intern requires-python specifiers in Simple API parsing 
-  * Read cache entries into exact-sized buffers 
-  * Reduce VersionSpecifiers parsing allocations 
-  * Reduce site-packages scan allocation overhead 
-  * Reuse package names when parsing wheel filenames 
-  * Sort Simple API files after grouping 
-  * Adapt uv to IDs-only PubGrub dependencies 
-  * Avoid allocations in ForkMap::contains 
-  * Reuse resolver work across PubGrub iterations 
-  * Speed up candidate selection for disjoint ranges 
+  * Only compile bytecode for installed distributions in uv pip install
+  * Avoid allocating URL-safe Git revisions
+  * Avoid allocating canonical Python request strings
+  * Avoid allocating custom Astral mirror URLs
+  * Avoid allocating expanded compatibility tags
+  * Avoid allocating shell strings that need no escaping
+  * Avoid allocating static ABI descriptions
+  * Avoid allocating static Windows executable names
+  * Avoid allocating static dependency table names
+  * Avoid allocating static platform triple components
+  * Avoid allocating static resolver report labels
+  * Avoid allocating static unavailable-version messages
+  * Avoid allocating unchanged Python download architectures
+  * Avoid allocating unchanged paths during case normalization
+  * Avoid allocations when expanding group conflicts
+  * Avoid allocations when formatting requirements
+  * Avoid cloning credential lookup services
+  * Avoid cloning dry-run distributions
+  * Avoid cloning owned dependency metadata
+  * Avoid redundant direct URL clones
+  * Create metadata version errors lazily
+  * Optimize expanded tag compatibility checks
+  * Optimize parsing of single-digit three-part versions
+  * Avoid full site-packages scans for direct reinstalls
+  * Avoid redundant pyproject parsing
+  * Cache default dependency markers when reading locks
+  * Enable SIMD-accelerated TOML parsing
+  * Intern requires-python specifiers in Simple API parsing
+  * Read cache entries into exact-sized buffers
+  * Reduce VersionSpecifiers parsing allocations
+  * Reduce site-packages scan allocation overhead
+  * Reuse package names when parsing wheel filenames
+  * Sort Simple API files after grouping
+  * Adapt uv to IDs-only PubGrub dependencies
+  * Avoid allocations in ForkMap::contains
+  * Reuse resolver work across PubGrub iterations
+  * Speed up candidate selection for disjoint ranges
  * Bug fixes
-  * Avoid overflow when computing HTTP cache age 
-  * Respect --upgrade when upgrade-package is configured 
-  * Support uv tree in dependency-group-only projects 
-  * Treat cache entries as stale at exact expiration 
-  * Always emit packages table for pylock.toml 
-  * Avoid blank line for empty uv pip tree 
-  * Encode hashes in file paths 
-  * Error on a registry uv.lock package without a version instead of panicking 
-  * Preserve conditional extra markers in exports 
-  * Skip the ambiguous authority check for file transport VCS URLs 
-  * Sync index format when uv add --index updates an existing index URL 
-  * Warn when the build cache is inside the source directory 
+  * Avoid overflow when computing HTTP cache age
+  * Respect --upgrade when upgrade-package is configured
+  * Support uv tree in dependency-group-only projects
+  * Treat cache entries as stale at exact expiration
+  * Always emit packages table for pylock.toml
+  * Avoid blank line for empty uv pip tree
+  * Encode hashes in file paths
+  * Error on a registry uv.lock package without a version instead of panicking
+  * Preserve conditional extra markers in exports
+  * Skip the ambiguous authority check for file transport VCS URLs
+  * Sync index format when uv add --index updates an existing index URL
+  * Warn when the build cache is inside the source directory
  * Other changes
-  * Re-add pub APIs used in Pixi 
-  * Update Rust toolchain to 1.96.1 
+  * Re-add pub APIs used in Pixi
+  * Update Rust toolchain to 1.96.1
 
 -------------------------------------------------------------------
 Mon Jun 29 14:10:18 UTC 2026 - Fabian Vogt <fvogt@suse.com>
@@ -816,81 +844,81 @@ Sun Jun 28 22:49:17 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.25
  * Enhancements
-  * Add a full "lockfile" to tool receipts 
-  * Allow scoped overrides to add dependencies 
-  * Avoid writing redundant lockfile markers with tool.uv.environments 
-  * Factor supported environments out of lockfile markers 
-  * Recommend our own build backend in the build frontend 
-  * Reject wheels with multiple .dist-info directories 
-  * Simplify dependency markers under parent reachability 
-  * Support scoped dependency exclusions 
-  * Support scoped dependency overrides 
-  * Explain why files are skipped in registry index parsing 
+  * Add a full "lockfile" to tool receipts
+  * Allow scoped overrides to add dependencies
+  * Avoid writing redundant lockfile markers with tool.uv.environments
+  * Factor supported environments out of lockfile markers
+  * Recommend our own build backend in the build frontend
+  * Reject wheels with multiple .dist-info directories
+  * Simplify dependency markers under parent reachability
+  * Support scoped dependency exclusions
+  * Support scoped dependency overrides
+  * Explain why files are skipped in registry index parsing
  * Preview features
-  * Add uv workspace list --scripts 
-  * Support centralised environments in uv venv 
-  * Use locked ty versions in uv check 
-  * Add centralized storage of project environments 
-  * Verify lockfile hashes before reusing a cached ty in uv check 
-  * Use locked dependency selection for uv check --script 
+  * Add uv workspace list --scripts
+  * Support centralised environments in uv venv
+  * Use locked ty versions in uv check
+  * Add centralized storage of project environments
+  * Verify lockfile hashes before reusing a cached ty in uv check
+  * Use locked dependency selection for uv check --script
  * Bug fixes
-  * 
-  * Preserve standalone markers in workspace metadata 
-  * Reject uv build if the cache dir is enclosed 
+  *
+  * Preserve standalone markers in workspace metadata
+  * Reject uv build if the cache dir is enclosed
 
 -------------------------------------------------------------------
 Thu Jun 25 10:46:25 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.24 
+- update to 0.11.24
  * Preview features
-  * Make project environments relocatable under preview 
+  * Make project environments relocatable under preview
  * Performance
-  * Use a compact index for lazy version maps 
+  * Use a compact index for lazy version maps
  * Bug fixes
-  * Allow disabling exclude-newer 
-  * Avoid archive id collisions 
-  * Reapply "Fix transparent Python upgrades in project environments" 
-  * Clean up partial tool entrypoint installs 
-  * Fix relocatable activate.fish and broaden Fish version support 
+  * Allow disabling exclude-newer
+  * Avoid archive id collisions
+  * Reapply "Fix transparent Python upgrades in project environments"
+  * Clean up partial tool entrypoint installs
+  * Fix relocatable activate.fish and broaden Fish version support
 
 -------------------------------------------------------------------
 Sun Jun 21 22:31:34 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.23 
+- update to 0.11.23
  * Bug fixes
-  - Revert "Fix transparent Python upgrades in project environments" to mitigate unintended breakage in pre-commit-uv 
-  - Restore old behavior where workspace members "hidden" by an intermediate pyproject.toml would be treated as standalone projects 
+  - Revert "Fix transparent Python upgrades in project environments" to mitigate unintended breakage in pre-commit-uv
+  - Restore old behavior where workspace members "hidden" by an intermediate pyproject.toml would be treated as standalone projects
 
 -------------------------------------------------------------------
 Fri Jun 19 13:14:35 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.22
  * Enhancements
-  * Publish wheels before sdists in uv publish 
-  * Add TY and RUFF env vars for providing paths for binaries used by uv format and uv check 
+  * Publish wheels before sdists in uv publish
+  * Add TY and RUFF env vars for providing paths for binaries used by uv format and uv check
  * Preview features
-  * Allow configuring preview features in uv.toml and pyproject.toml 
-  * Update the lockfile during uv check --no-sync 
-  * Add --script to uv check and uv metadata 
-  * Report workspace-exclusive dependency groups in workspace metadata 
-  * Support SARIF as a uv audit output 
+  * Allow configuring preview features in uv.toml and pyproject.toml
+  * Update the lockfile during uv check --no-sync
+  * Add --script to uv check and uv metadata
+  * Report workspace-exclusive dependency groups in workspace metadata
+  * Support SARIF as a uv audit output
  * Performance
-  * Use a more deadlock-resistant concurrent hashmap in the resolver 
+  * Use a more deadlock-resistant concurrent hashmap in the resolver
  * Bug fixes
-  * Update string marker ordering semantics to match upstream clarified rules 
-  * Reject extras that have the same normalized name 
-  * Reject dependency group include-group entries that have additional fields 
-  * Reject invalid UTF-8 URL credentials 
-  * Validate that PEP 517 backend-paths exist when building sdists 
-  * Validate that pylock.toml files do not have an unsupported a lock-version 
-  * Validate that the environment satisfies the packages.requires-python of a pylock.toml 
-  * Allow uv to be recursively invoked by PEP 517 build hooks 
-  * Allow empty credentials.toml files 
-  * Fix transparent Python upgrades in project environments 
-  * Handle non-file editable URLs in uv pip list 
-  * Fix incorrect output from uv tree --invert 
-  * Fix environment locking of uv venv in a project 
-  * Fix handling of workspace-exclusive dependency groups in uv tree 
+  * Update string marker ordering semantics to match upstream clarified rules
+  * Reject extras that have the same normalized name
+  * Reject dependency group include-group entries that have additional fields
+  * Reject invalid UTF-8 URL credentials
+  * Validate that PEP 517 backend-paths exist when building sdists
+  * Validate that pylock.toml files do not have an unsupported a lock-version
+  * Validate that the environment satisfies the packages.requires-python of a pylock.toml
+  * Allow uv to be recursively invoked by PEP 517 build hooks
+  * Allow empty credentials.toml files
+  * Fix transparent Python upgrades in project environments
+  * Handle non-file editable URLs in uv pip list
+  * Fix incorrect output from uv tree --invert
+  * Fix environment locking of uv venv in a project
+  * Fix handling of workspace-exclusive dependency groups in uv tree
 
 -------------------------------------------------------------------
 Sun Jun 14 20:06:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
