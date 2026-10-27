@@ -504,7 +504,7 @@
  import static sun.security.util.SecurityConstants.PROVIDER_VER;
  import static sun.security.util.SecurityProviderConstants.*;
  
-@@ -78,6 +79,10 @@ import static sun.security.util.SecurityProviderConstants.*;
+@@ -80,6 +81,10 @@ import static sun.security.util.SecurityProviderConstants.*;
  
  public final class SunJCE extends Provider {
  
@@ -515,7 +515,7 @@
      @java.io.Serial
      private static final long serialVersionUID = 6812507587804302833L;
  
-@@ -143,6 +148,7 @@ public final class SunJCE extends Provider {
+@@ -145,6 +150,7 @@ public final class SunJCE extends Provider {
      void putEntries() {
          // reuse attribute map and reset before each reuse
          HashMap<String, String> attrs = new HashMap<>(3);
@@ -523,7 +523,7 @@
          attrs.put("SupportedKeyClasses",
                  "java.security.interfaces.RSAPublicKey" +
                  "|java.security.interfaces.RSAPrivateKey");
-@@ -425,6 +431,7 @@ public final class SunJCE extends Provider {
+@@ -427,6 +433,7 @@ public final class SunJCE extends Provider {
          psA("KeyPairGenerator", "DiffieHellman",
                  "com.sun.crypto.provider.DHKeyPairGenerator",
                  null);
@@ -531,7 +531,7 @@
  
          /*
           * Algorithm parameter generation engines
-@@ -433,6 +440,7 @@ public final class SunJCE extends Provider {
+@@ -435,6 +442,7 @@ public final class SunJCE extends Provider {
                  "DiffieHellman", "com.sun.crypto.provider.DHParameterGenerator",
                  null);
  
@@ -539,7 +539,7 @@
          /*
           * Key Agreement engines
           */
-@@ -442,6 +450,7 @@ public final class SunJCE extends Provider {
+@@ -444,6 +452,7 @@ public final class SunJCE extends Provider {
          psA("KeyAgreement", "DiffieHellman",
                  "com.sun.crypto.provider.DHKeyAgreement",
                  attrs);
@@ -547,7 +547,7 @@
  
          /*
           * Algorithm Parameter engines
-@@ -613,6 +622,7 @@ public final class SunJCE extends Provider {
+@@ -615,6 +624,7 @@ public final class SunJCE extends Provider {
          ps("SecretKeyFactory", "PBEWithHmacSHA512AndAES_256",
                  "com.sun.crypto.provider.PBEKeyFactory$PBEWithHmacSHA512AndAES_256");
  
@@ -555,7 +555,7 @@
          // PBKDF2
          psA("SecretKeyFactory", "PBKDF2WithHmacSHA1",
                  "com.sun.crypto.provider.PBKDF2Core$HmacSHA1",
-@@ -726,6 +736,7 @@ public final class SunJCE extends Provider {
+@@ -745,6 +755,7 @@ public final class SunJCE extends Provider {
                  "com.sun.crypto.provider.TlsRsaPremasterSecretGenerator",
                  List.of("SunTls12RsaPremasterSecret"), null);
      }
@@ -1029,28 +1029,31 @@
          /*
           * SecureRandom engines
           */
-@@ -177,6 +183,8 @@ public final class SunEntries {
-                 "sun.security.provider.DSA$SHA3_384withDSAinP1363Format");
-         add(p, "Signature", "SHA3-512withDSAinP1363Format",
-                 "sun.security.provider.DSA$SHA3_512withDSAinP1363Format");
+@@ -184,6 +190,7 @@ public final class SunEntries {
+         addWithAlias(p, "Signature", "ML-DSA-44", "sun.security.provider.ML_DSA_Impls$SIG2", attrs);
+         addWithAlias(p, "Signature", "ML-DSA-65", "sun.security.provider.ML_DSA_Impls$SIG3", attrs);
+         addWithAlias(p, "Signature", "ML-DSA-87", "sun.security.provider.ML_DSA_Impls$SIG5", attrs);
 +        }
-+
+ 
          /*
           *  Key Pair Generator engines
-          */
-@@ -184,9 +192,11 @@ public final class SunEntries {
+@@ -191,6 +198,7 @@ public final class SunEntries {
+         attrs.clear();
          attrs.put("ImplementedIn", "Software");
-         attrs.put("KeySize", "2048"); // for DSA KPG and APG only
  
 +        if (!systemFipsEnabled) {
          String dsaKPGImplClass = "sun.security.provider.DSAKeyPairGenerator$";
          dsaKPGImplClass += (useLegacyDSA? "Legacy" : "Current");
-         addWithAlias(p, "KeyPairGenerator", "DSA", dsaKPGImplClass, attrs);
+         attrs.put("KeySize", "2048");
+@@ -201,6 +209,7 @@ public final class SunEntries {
+         addWithAlias(p, "KeyPairGenerator", "ML-DSA-44", "sun.security.provider.ML_DSA_Impls$KPG2", attrs);
+         addWithAlias(p, "KeyPairGenerator", "ML-DSA-65", "sun.security.provider.ML_DSA_Impls$KPG3", attrs);
+         addWithAlias(p, "KeyPairGenerator", "ML-DSA-87", "sun.security.provider.ML_DSA_Impls$KPG5", attrs);
 +        }
  
          /*
           * Algorithm Parameter Generator engines
-@@ -201,6 +211,7 @@ public final class SunEntries {
+@@ -216,6 +225,7 @@ public final class SunEntries {
          addWithAlias(p, "AlgorithmParameters", "DSA",
                  "sun.security.provider.DSAParameters", attrs);
  
@@ -1058,10 +1061,10 @@
          /*
           * Key factories
           */
-@@ -235,6 +246,7 @@ public final class SunEntries {
-                 "sun.security.provider.SHA3$SHA384", attrs);
-         addWithAlias(p, "MessageDigest", "SHA3-512",
-                 "sun.security.provider.SHA3$SHA512", attrs);
+@@ -259,6 +269,7 @@ public final class SunEntries {
+                 "sun.security.provider.SHA3$SHAKE128Hash", attrs);
+         addWithAlias(p, "MessageDigest", "SHAKE256-512",
+                 "sun.security.provider.SHA3$SHAKE256Hash", attrs);
 +        }
  
          /*
