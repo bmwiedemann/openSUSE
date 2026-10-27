@@ -17,7 +17,7 @@
 
 
 Name:           falcosidekick
-Version:        2.35.0
+Version:        2.35.1
 Release:        0
 Summary:        A simple daemon for connecting Falco to your ecosystem
 License:        Apache-2.0
@@ -26,9 +26,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 # taken from https://github.com/falcosecurity/falcosidekick?tab=readme-ov-file#with-systemd
 Source2:        %{name}.service
-# 16.0 fails with go.mod requires go >= 1.26.0 (running go 1.26rc3; GOTOOLCHAIN=local)
-# BuildRequires:  golang(API) >= 1.26
-BuildRequires:  go1.26 >= 1.26.0
+BuildRequires:  go1.26 >= 1.26.10
 
 %description
 A simple daemon for connecting Falco to your ecosystem. It takes a Falco events

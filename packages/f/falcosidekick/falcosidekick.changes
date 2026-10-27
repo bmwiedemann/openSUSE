@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:59:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.1:
+  This patch updates certificate trust and fixes issues in OTLP log
+  export.
+  - Requires Go 1.26.10 for source builds and refreshes the
+    container CA trust bundle to include the eMudhra distrust
+    changes.
+  - Fixes OTLP gRPC log export ignoring CA and client certificates
+    configured through environment variables.
+  - Updates the OTLP log batch processor to avoid CPU spin under
+    exporter backpressure.
+  - Updates the RabbitMQ AMQP client and compression dependencies
+    with upstream security fixes.
+  - Closes the Syslog writer after each event to prevent connection
+    leaks.
+  N.B. The updated OTLP log exporters enforce a 64 MiB serialized
+  request limit. Oversized batches fail export.
+  This release also includes dependency, CI, and documentation
+  updates.
+  * fix(deps): align OTLP log dependencies and cover TLS export
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc
+  * build(deps): bump github.com/klauspost/compress from 1.18.4 to
+    1.18.7
+  * build(deps): bump github.com/rabbitmq/amqp091-go from 1.13.0 to
+    1.14.0
+  * fix(build): require eMudhra trust fixes
+  * docs(README.md): explain falcosidekick config nesting in helm
+    values
+  * Fixing typo in grafana documentation
+  * build(deps): bump the gomod group with 2 updates
+  * build(deps): bump golang.org/x/sync from 0.22.0 to 0.23.0
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+  * fix(outputs): close the syslog connection after each event
+  * build(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.44.0 to
+    1.46.0
+  * build(deps): bump the actions group across 1 directory with 5
+    updates
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/sns
+  * build(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.1
+  * build(deps): bump go.opentelemetry.io/otel from 1.44.0 to
+    1.46.0
+  * build(deps): bump github.com/rabbitmq/amqp091-go from 1.11.0 to
+    1.13.0
+
+-------------------------------------------------------------------
 Sun Sep 20 07:12:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.35.0:
