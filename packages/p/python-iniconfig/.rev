@@ -114,4 +114,20 @@
 - Update BuildRequires from pyproject.toml</comment>
     <requestid>1321919</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>67fd2053719a9b123bd8cdb6b9dcbbd4</srcmd5>
+    <version>2.3.1</version>
+    <time>1793121539</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1:
+  * fix quadratic parse time for values with many continuation
+    lines (#78, regarding #77)
+  * strip a leading UTF-8 BOM when reading INI files, which
+    previously raised ``ParseError`` (#76)
+  * internal: ``iniconfig._parse.ParsedLine.value`` is now a list
+    of lines
+
+- BuildRequire itself when building test flavour.</comment>
+    <requestid>1392636</requestid>
+  </revision>
 </revisionlist>

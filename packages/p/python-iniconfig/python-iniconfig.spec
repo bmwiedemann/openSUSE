@@ -1,7 +1,7 @@
 #
 # spec file for package python-iniconfig
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-iniconfig%{psuffix}
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        iniconfig: brain-dead simple config-ini parsing
 License:        MIT

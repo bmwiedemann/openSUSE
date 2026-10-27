@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:44:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * fix quadratic parse time for values with many continuation
+    lines (#78, regarding #77)
+  * strip a leading UTF-8 BOM when reading INI files, which
+    previously raised ``ParseError`` (#76)
+  * internal: ``iniconfig._parse.ParsedLine.value`` is now a list
+    of lines
+
+-------------------------------------------------------------------
 Wed Dec 10 09:30:44 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean the SPEC file.
@@ -76,7 +87,7 @@ Mon Dec  5 12:45:15 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Wed Jul 20 12:01:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- BuildRequire itself when building test flavour. 
+- BuildRequire itself when building test flavour.
 
 -------------------------------------------------------------------
 Mon Mar 14 10:47:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
