@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 21 10:05:19 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Prevent denial of Service via crafted forwarded credentials
+  * CVE-2026-107778, bsc#1284816
+- Prevent denial of Service via malformed PAC in S4U2Proxy
+  * CVE-2026-107778, bsc#1284817
+- Add 0014-cve-2026-107708.patch and 0015-cve-2026-107778.patch
+
+-------------------------------------------------------------------
 Mon Jun 29 06:25:23 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
 
 - Prevent read overrun in kdb-ldap:
