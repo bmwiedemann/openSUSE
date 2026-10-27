@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:30:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.3.1:
+  * Reject NUL bytes in store namespace labels to prevent
+    SQLite GLOB truncation bypassing namespace segment boundaries
+
+-------------------------------------------------------------------
 Thu Oct 15 04:40:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.3.0:
