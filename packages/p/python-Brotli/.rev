@@ -83,4 +83,13 @@
   - decoder / encoder: static tables use &quot;small&quot; model (allows 2GiB+ binaries)</comment>
     <requestid>1317114</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e49ade5a7bda55ea6b3d0d65004ceaae</srcmd5>
+    <version>1.2.1</version>
+    <time>1793121682</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1 (bsc#1287779, CVE-2026-111497):
+  * Brotli decoder out-of-bounds write permits remote code execution</comment>
+    <requestid>1392953</requestid>
+  </revision>
 </revisionlist>

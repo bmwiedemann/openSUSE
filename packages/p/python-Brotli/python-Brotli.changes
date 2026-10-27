@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:57:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1 (bsc#1287779, CVE-2026-111497):
+  * Brotli decoder out-of-bounds write permits remote code execution
+
+-------------------------------------------------------------------
 Tue Nov 11 13:31:41 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Run tests in %check section
