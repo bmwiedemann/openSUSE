@@ -421,4 +421,27 @@ Requires python-setuptools 78 to build successfully.
     flake8 and isort with a faster Rust-based tool.</comment>
     <requestid>1342401</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b238cf7e21ae6d125220c125bbdb59df</srcmd5>
+    <version>0.43.0</version>
+    <time>1793116123</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.43.0:
+  * Add support for SQLAlchemy 2.1.
+  * Reimplement generic_relationship as a hybrid property built
+    only on public SQLAlchemy APIs, instead of private attribute
+    internals. Assigning to a generic relationship now sets the
+    discriminator and id attributes through regular attribute
+    instrumentation, so re-assigning it on a persistent object is
+    flushed to the database.
+  * Support querying generic relationships through aliased
+    models, including composite keys and renamed columns.
+  * Drop support for sqlalchemy 1.4.
+  * Drop support for Python 3.9.
+  * Support Python 3.14.
+  * Fix ChoiceType returning the raw scalar instead of a Choice
+    for falsy codes such as 0 or the empty string. (#813) NULL
+    values continue to return None.</comment>
+    <requestid>1392850</requestid>
+  </revision>
 </revisionlist>

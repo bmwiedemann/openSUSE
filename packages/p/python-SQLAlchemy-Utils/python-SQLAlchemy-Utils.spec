@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy-Utils
-Version:        0.42.1
+Version:        0.43.0
 Release:        0
 Summary:        Various utility functions for SQLAlchemy
 License:        BSD-3-Clause
@@ -27,9 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy-Util
 BuildRequires:  %{python_module Babel >= 1.3}
 BuildRequires:  %{python_module Jinja2 >= 2.3}
 BuildRequires:  %{python_module Pygments >= 1.2}
-BuildRequires:  %{python_module SQLAlchemy >= 1.0}
+BuildRequires:  %{python_module SQLAlchemy >= 2.0}
 BuildRequires:  %{python_module arrow >= 0.3.4}
-BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
 BuildRequires:  %{python_module colour >= 0.0.4}
 BuildRequires:  %{python_module cryptography >= 0.6}
 BuildRequires:  %{python_module docutils >= 0.10}
@@ -43,14 +42,14 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psycopg2 >= 2.5.1}
 BuildRequires:  %{python_module psycopg2cffi >= 2.8.1}
 BuildRequires:  %{python_module pyodbc}
-BuildRequires:  %{python_module pytest >= 2.7.1}
+BuildRequires:  %{python_module pytest >= 9.0}
 BuildRequires:  %{python_module python-dateutil >= 2.6}
 BuildRequires:  %{python_module pytz >= 2014.2}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-SQLAlchemy >= 1.0
+Requires:       python-SQLAlchemy >= 2.0
 Recommends:     python-Babel >= 1.3
 Recommends:     python-arrow >= 0.3.4
 Recommends:     python-colour >= 0.0.4
@@ -62,9 +61,6 @@ Recommends:     python-passlib >= 1.6
 Recommends:     python-phonenumbers >= 5.9.2
 Suggests:       python-pendulum >= 2.0.5
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 39
-Requires:       python-backports.zoneinfo
-%endif
 %python_subpackages
 
 %description
