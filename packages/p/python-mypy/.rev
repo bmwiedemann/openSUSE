@@ -756,4 +756,28 @@ reveal_type(Context[MyBot]().bot)
     <comment>1</comment>
     <requestid>1376653</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d4e77408a8d7ac2064e7dd9950c2d964</srcmd5>
+    <version>2.4.0</version>
+    <time>1793121693</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.0:
+  * Python 3.15 support
+  * Make the native parser the default (Ivan Levkivskyi, PR
+    21823)
+  * Fix native parser crash caused by invalid assignment
+    expression (Jukka Lehtosalo, PR 21882)
+  * Fix native parser crashes on non-UTF-8 encoded source files
+    (Ivan Levkivskyi, PR 22066)
+  * Match native parser behavior for positional-only arguments
+    (Ivan Levkivskyi, PR 21891)
+  * Preserve docstrings in the native parser (Ivan Levkivskyi, PR
+    21890)
+  * Use the native parser for `parse_type_string()` (Ivan
+    Levkivskyi, PR 21965)
+  * Fall back to sequential parsing when threads are unavailable
+    (Jukka Lehtosalo, PR 21993)
+  * Various improvements to `ast-serialize` (Ivan Levkivskyi)</comment>
+    <requestid>1393060</requestid>
+  </revision>
 </revisionlist>

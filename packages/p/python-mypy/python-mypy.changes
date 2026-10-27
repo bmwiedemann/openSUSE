@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Oct  4 14:37:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Python 3.15 support
+  * Make the native parser the default (Ivan Levkivskyi, PR
+    21823)
+  * Fix native parser crash caused by invalid assignment
+    expression (Jukka Lehtosalo, PR 21882)
+  * Fix native parser crashes on non-UTF-8 encoded source files
+    (Ivan Levkivskyi, PR 22066)
+  * Match native parser behavior for positional-only arguments
+    (Ivan Levkivskyi, PR 21891)
+  * Preserve docstrings in the native parser (Ivan Levkivskyi, PR
+    21890)
+  * Use the native parser for `parse_type_string()` (Ivan
+    Levkivskyi, PR 21965)
+  * Fall back to sequential parsing when threads are unavailable
+    (Jukka Lehtosalo, PR 21993)
+  * Various improvements to `ast-serialize` (Ivan Levkivskyi)
+
+-------------------------------------------------------------------
 Wed Sep  9 08:58:19 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Do not package the sphinx doctree cache (4.4 of 5.1 MB) because
