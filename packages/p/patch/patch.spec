@@ -2,7 +2,7 @@
 # spec file for package patch
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           patch
-Version:        2.8
+Version:        2.8.1
 Release:        0
 Summary:        GNU patch
 License:        GPL-3.0-or-later
@@ -30,8 +30,6 @@ Source2:        https://ftp.gnu.org/gnu/patch/%{name}-%{version}.tar.xz.sig
 Source3:        patch.keyring
 Patch14:        CVE-2019-20633.patch
 Patch15:        CVE-2021-45261.patch
-Patch16:        avoid-null-pointer-derefence-with-bad-hunks.patch
-Patch17:        dont-infloop-on-null-ranges.patch
 BuildRequires:  ed
 # See bnc#662957. The fix for CVE-2010-4651 breaks the way interdiff was
 # invoking patch, so interdiff had to be fixed too.

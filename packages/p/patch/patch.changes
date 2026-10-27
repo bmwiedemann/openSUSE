@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 24 07:16:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.8.1:
+  * CVE-2026-115207: Prevent creation of out-of-tree files
+    (boo#1286941)
+- drop patches now included:
+  * avoid-null-pointer-derefence-with-bad-hunks.patch
+  * dont-infloop-on-null-ranges.patch
+
+-------------------------------------------------------------------
 Thu Jul  9 14:44:39 UTC 2026 - Jean Delvare <jdelvare@suse.com>
 
 - dont-infloop-on-null-ranges.patch: Apply the same checks to
