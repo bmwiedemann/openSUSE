@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-importlib-metadata%{psuffix}
-Version:        9.0.1
+Version:        10.1.0
 Release:        0
 Summary:        Read metadata from Python packages
 License:        Apache-2.0
