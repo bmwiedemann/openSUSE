@@ -34,4 +34,12 @@ Maintainer: pluskalm (package-level role set in devel:tools _meta).</comment>
     <comment>Update bun-pty to 0.5.1: node-pty env semantics, TERM/PWD handling, drop test files. ABI unchanged, Tumbleweed green.</comment>
     <requestid>1384903</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3cfc79d2ecbc4d2eed1b8462f5d1fe28</srcmd5>
+    <version>0.5.2</version>
+    <time>1793116118</time>
+    <user>dimstar_suse</user>
+    <comment>Update bun-pty to 0.5.2.</comment>
+    <requestid>1392807</requestid>
+  </revision>
 </revisionlist>

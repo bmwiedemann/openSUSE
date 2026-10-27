@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:27:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.2:
+  * spawn() reports a clear error naming the library path and the
+    cause when the native library fails to load, instead of
+    `undefined is not an object` (#51); importing without
+    spawning keeps working
+  * Linux ABI unchanged: same eight dlsym entry points, same
+    private librust_pty.so path; no consumer rebuild needed
+  * Refresh the vendored dependencies (libc 0.2.190 -> 0.2.191)
+
+-------------------------------------------------------------------
 Thu Oct 15 05:02:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.5.1:
