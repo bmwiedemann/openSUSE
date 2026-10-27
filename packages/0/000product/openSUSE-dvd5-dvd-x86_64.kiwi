@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20261026" schemaversion="4.1">
+<image name="OBS__openSUSE___20261027" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20261026</productvar>
+      <productvar name="VERSION">20261027</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261026,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261027,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261026/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261027/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -304,14 +304,10 @@
       <repopackage name="debuginfod-client"/>
       <repopackage name="debuginfod-profile"/>
       <repopackage name="dejavu-fonts"/>
-      <repopackage name="deltarpm"/>
       <repopackage name="desktop-data-openSUSE"/>
       <repopackage name="desktop-file-utils"/>
       <repopackage name="desktop-translations"/>
       <repopackage name="device-mapper"/>
-      <repopackage name="dhcp"/>
-      <repopackage name="dhcp-relay"/>
-      <repopackage name="dhcp-server"/>
       <repopackage name="dialog"/>
       <repopackage name="dialog-lang"/>
       <repopackage name="diffutils"/>
@@ -336,6 +332,13 @@
       <repopackage name="dolphin-part-lang"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
+      <repopackage name="dovecot"/>
+      <repopackage name="dovecot24"/>
+      <repopackage name="dovecot24-backend-mysql"/>
+      <repopackage name="dovecot24-backend-pgsql"/>
+      <repopackage name="dovecot24-backend-sqlite"/>
+      <repopackage name="dovecot24-fts"/>
+      <repopackage name="dovecot24-fts-flatcurve"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-pcr-signature"/>
       <repopackage name="drkonqi6"/>
@@ -448,7 +451,6 @@
       <repopackage name="gcr3-prompter"/>
       <repopackage name="gcr3-ssh-agent"/>
       <repopackage name="gcr3-ssh-askpass"/>
-      <repopackage name="gd"/>
       <repopackage name="gdb"/>
       <repopackage name="gdbm-lang"/>
       <repopackage name="gdk-pixbuf-lang"/>
@@ -603,7 +605,6 @@
       <repopackage name="google-opensans-fonts"/>
       <repopackage name="google-poppins-fonts"/>
       <repopackage name="google-roboto-fonts"/>
-      <repopackage name="gpart"/>
       <repopackage name="gpg2"/>
       <repopackage name="gpg2-lang"/>
       <repopackage name="gpgme"/>
@@ -768,7 +769,6 @@
       <repopackage name="inkscape-extensions-extra"/>
       <repopackage name="inkscape-extensions-gimp"/>
       <repopackage name="inkscape-lang"/>
-      <repopackage name="inn"/>
       <repopackage name="intel-vaapi-driver"/>
       <repopackage name="intlfonts-euro-bitmap-fonts"/>
       <repopackage name="inxi"/>
@@ -863,6 +863,8 @@
       <repopackage name="kdoctools"/>
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
+      <repopackage name="kea"/>
+      <repopackage name="kea-hooks"/>
       <repopackage name="kernel-default"/>
       <repopackage name="kernel-firmware-amdgpu"/>
       <repopackage name="kernel-firmware-ath10k"/>
@@ -1040,7 +1042,6 @@
       <repopackage name="kldap-lang"/>
       <repopackage name="kleopatra"/>
       <repopackage name="kleopatra-lang"/>
-      <repopackage name="klogd"/>
       <repopackage name="kmag"/>
       <repopackage name="kmag-lang"/>
       <repopackage name="kmahjongg"/>
@@ -1765,7 +1766,6 @@
       <repopackage name="libisoburn1"/>
       <repopackage name="libisofs6"/>
       <repopackage name="libitm1"/>
-      <repopackage name="libiw30"/>
       <repopackage name="libixion-0_20-0"/>
       <repopackage name="libixml22"/>
       <repopackage name="libjack0"/>
@@ -1811,6 +1811,30 @@
       <repopackage name="libkdsingleapplication-qt6-1_2"/>
       <repopackage name="libkdsoap-qt6-2"/>
       <repopackage name="libKDSoapWSDiscoveryClient0"/>
+      <repopackage name="libkea-asiodns75"/>
+      <repopackage name="libkea-asiolink105"/>
+      <repopackage name="libkea-cc98"/>
+      <repopackage name="libkea-cfgrpt3"/>
+      <repopackage name="libkea-config98"/>
+      <repopackage name="libkea-cryptolink76"/>
+      <repopackage name="libkea-d2srv75"/>
+      <repopackage name="libkea-database88"/>
+      <repopackage name="libkea-dhcp129"/>
+      <repopackage name="libkea-dhcp_ddns82"/>
+      <repopackage name="libkea-dhcpsrv149"/>
+      <repopackage name="libkea-dns84"/>
+      <repopackage name="libkea-eval97"/>
+      <repopackage name="libkea-exceptions55"/>
+      <repopackage name="libkea-hooks139"/>
+      <repopackage name="libkea-http100"/>
+      <repopackage name="libkea-log-interprocess4"/>
+      <repopackage name="libkea-log86"/>
+      <repopackage name="libkea-mysql106"/>
+      <repopackage name="libkea-pgsql105"/>
+      <repopackage name="libkea-process105"/>
+      <repopackage name="libkea-stats64"/>
+      <repopackage name="libkea-tcp45"/>
+      <repopackage name="libkea-util118"/>
       <repopackage name="libKEduVocDocument5"/>
       <repopackage name="libKEduVocDocument5-lang"/>
       <repopackage name="libkerfuffle26"/>
@@ -2125,6 +2149,7 @@
       <repopackage name="libliveMedia122"/>
       <repopackage name="libLLVM23"/>
       <repopackage name="liblmdb-0_9_35"/>
+      <repopackage name="liblog4cplus-2_1-9"/>
       <repopackage name="liblogging0"/>
       <repopackage name="liblognorm5"/>
       <repopackage name="liblouis-data"/>
@@ -2337,7 +2362,7 @@
       <repopackage name="libpkcs11-helper1"/>
       <repopackage name="libpkgconf7"/>
       <repopackage name="libplacebo264"/>
-      <repopackage name="libplacebo360"/>
+      <repopackage name="libplacebo387"/>
       <repopackage name="libPlasma5Support6"/>
       <repopackage name="libPlasma5Support6-lang"/>
       <repopackage name="libplasma6-components"/>
@@ -3084,7 +3109,6 @@
       <repopackage name="MozillaFirefox-translations-common"/>
       <repopackage name="mpg123-openal"/>
       <repopackage name="mpt-firmware"/>
-      <repopackage name="mpt-status"/>
       <repopackage name="mt-st"/>
       <repopackage name="mtools"/>
       <repopackage name="mugshot"/>
@@ -3125,7 +3149,6 @@
       <repopackage name="nbd"/>
       <repopackage name="ncompress"/>
       <repopackage name="ncurses-utils"/>
-      <repopackage name="net-snmp"/>
       <repopackage name="net-tools"/>
       <repopackage name="net-tools-lang"/>
       <repopackage name="netcat-openbsd"/>
@@ -3354,7 +3377,6 @@
       <repopackage name="perl-Exporter-Tiny"/>
       <repopackage name="perl-File-Listing"/>
       <repopackage name="perl-File-ShareDir"/>
-      <repopackage name="perl-GD"/>
       <repopackage name="perl-Geography-Countries"/>
       <repopackage name="perl-gettext"/>
       <repopackage name="perl-Git"/>
@@ -3400,7 +3422,6 @@
       <repopackage name="perl-Params-Util"/>
       <repopackage name="perl-Parse-RecDescent"/>
       <repopackage name="perl-razor-agents"/>
-      <repopackage name="perl-SNMP"/>
       <repopackage name="perl-Socket6"/>
       <repopackage name="perl-Term-ReadKey"/>
       <repopackage name="perl-TimeDate"/>
@@ -3963,7 +3984,6 @@
       <repopackage name="system-user-lp"/>
       <repopackage name="system-user-mail"/>
       <repopackage name="system-user-man"/>
-      <repopackage name="system-user-news"/>
       <repopackage name="system-user-nobody"/>
       <repopackage name="system-user-pulse"/>
       <repopackage name="system-user-qemu"/>
@@ -3972,7 +3992,6 @@
       <repopackage name="system-user-tftp"/>
       <repopackage name="system-user-tss"/>
       <repopackage name="system-user-upsd"/>
-      <repopackage name="system-user-uucp"/>
       <repopackage name="system-user-vscan"/>
       <repopackage name="system-user-wwwrun"/>
       <repopackage name="systemd"/>
@@ -4230,7 +4249,6 @@
       <repopackage name="wicked-service"/>
       <repopackage name="WindowMaker"/>
       <repopackage name="wireless-regdb"/>
-      <repopackage name="wireless-tools"/>
       <repopackage name="wireplumber"/>
       <repopackage name="wireplumber-bash-completion"/>
       <repopackage name="wireplumber-lang"/>
@@ -4447,7 +4465,6 @@
       <repopackage name="yast2-country-data"/>
       <repopackage name="yast2-firewall"/>
       <repopackage name="yast2-firstboot"/>
-      <repopackage name="yast2-ftp-server"/>
       <repopackage name="yast2-hardware-detection"/>
       <repopackage name="yast2-installation"/>
       <repopackage name="yast2-instserver"/>
@@ -4461,7 +4478,6 @@
       <repopackage name="yast2-network"/>
       <repopackage name="yast2-nfs-client"/>
       <repopackage name="yast2-nfs-common"/>
-      <repopackage name="yast2-nfs-server"/>
       <repopackage name="yast2-ntp-client"/>
       <repopackage name="yast2-online-update"/>
       <repopackage name="yast2-online-update-frontend"/>
