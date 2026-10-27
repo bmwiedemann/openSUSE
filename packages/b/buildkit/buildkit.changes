@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 22 04:56:47 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Update to version 0.34.1:
+  * Dockerfile: Reuse existing secret lint test
+  * solver: check permissions for CDI class matches
+  * Omit definitions from returned references
+  * ci: update docker/github-builder to 1.18.0
+  * cdisetup: keep failed NVIDIA key imports retryable
+  * build(deps): bump github/codeql-action/upload-sarif
+  * solver: synchronize CDI auto-allow access
+  * solver: fix on-demand CDI device resolution
+  * Dockerfile: Test DIPSWITCH token boundaries
+  * Dockerfile: Check PSW variables for secrets
+  * build(deps): bump docker/bake-action/subaction/matrix
+  * build(deps): bump docker/bake-action from 7.4.0 to 7.5.0
+  * util/contentutil: remove uses of "-1" sentinel value for sizes
+  * Dockerfile: containerd v2.4.2, v2.3.7
+  * update alpine linux to 3.24
+  * lint: update to 2.14
+  * vendor: update stargz-snapshotter/estargz v0.19.0
+  * compression: pin gzip layer output to Go 1.26 flate
+  * lint: support Go 1.27 validation
+  * update to go1.27
+  * dockerfile: update xx to 1.10.0
+  * ci: update runners to ubuntu 26.04
+  * ci: pin runj package for freebsd tests
+  * fix(solver): check for context canceled in ReleaseUnreferenced
+
+-------------------------------------------------------------------
 Mon Oct 12 07:55:41 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
 
 - Update to version 0.34.0:
