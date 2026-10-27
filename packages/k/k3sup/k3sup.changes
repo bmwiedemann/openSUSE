@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 24 16:52:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.13.14:
+  * Build with Go 1.27
+  * Refresh Go dependencies: go-containerregistry 0.22.1,
+    golang.org/x-crypto 0.58.0, golang.org/x-term 0.47.0
+  * k3sup is not affected by CVE-2024-45337 (boo#1234551):
+    vendored x/crypto is 0.58.0, above the 0.31.0 fix
+  * k3sup is not affected by CVE-2025-22869 (boo#1239403):
+    vendored x/crypto is 0.58.0, above the 0.35.0 fix
+  * k3sup is not affected by CVE-2025-47913 (boo#1253564):
+    vendored x/crypto is 0.58.0, above the 0.43.0 fix
+  * k3sup is not affected by CVE-2025-47914 (boo#1254026):
+    vendored x/crypto is 0.58.0, above the 0.45.0 fix
+  * k3sup is not affected by CVE-2025-58181 (boo#1253872):
+    vendored x/crypto is 0.58.0, above the 0.45.0 fix
+
+-------------------------------------------------------------------
 Sat Sep 19 09:06:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.13.13:
