@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:35:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.43.0:
+  * New MOSS-image model support, incl. edit LoRAs and model merge
+  * Fibo 2.0 image generate/edit support
+  * New Pad Image and Branch nodes; ACEScg color space and EXR
+    output in Save Image (Advanced)
+  * Comfy-Aimdo 0.6.0 with Dynamic VRAM KV caches
+  * Optional local agent via --enable-agent (needs comfy-agent)
+  * Track upstream dependency floors: frontend-package 1.57.4,
+    workflow-templates 0.11.97, embedded-docs 0.5.15,
+    comfy-aimdo 0.6.0, comfy-kitchen 0.2.40, Pillow >= 10.1.0
+
+-------------------------------------------------------------------
 Tue Oct 20 17:29:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.42.1:

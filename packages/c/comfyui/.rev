@@ -326,4 +326,12 @@ one warning is a pre-existing hidden-file entry present in 0.36.0 too.</comment>
     <comment>Update to 0.42.1</comment>
     <requestid>1386620</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b93b03f32ad91d80c2f1f147393aa501</srcmd5>
+    <version>0.43.0</version>
+    <time>1793116825</time>
+    <user>dimstar_suse</user>
+    <comment>Update comfyui to 0.43.0.</comment>
+    <requestid>1392923</requestid>
+  </revision>
 </revisionlist>

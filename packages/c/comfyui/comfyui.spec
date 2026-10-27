@@ -20,7 +20,7 @@
 # Follow %%{primary_python} so the interpreter tracks the distro primary.
 %define pythons %{primary_python}
 Name:           comfyui
-Version:        0.42.1
+Version:        0.43.0
 Release:        0
 Summary:        Modular node-graph engine for local AI content creation
 License:        GPL-3.0-only
@@ -38,14 +38,14 @@ BuildRequires:  python-rpm-macros
 # Runtime stack. Cone packages (torchsde/vision/audio, comfy-*,
 # comfyui-frontend-package, …) may still be unpublished; Requires stay
 # honest so the package is unresolvable until they land.
-Requires:       %{primary_python}-Pillow
+Requires:       %{primary_python}-Pillow >= 10.1.0
 Requires:       %{primary_python}-PyYAML
 Requires:       %{primary_python}-SQLAlchemy >= 2.0.0
 Requires:       %{primary_python}-aiohttp >= 3.11.8
 Requires:       %{primary_python}-alembic
 Requires:       %{primary_python}-av >= 17.0.0
 Requires:       %{primary_python}-blake3
-Requires:       %{primary_python}-comfy-aimdo >= 0.5.6
+Requires:       %{primary_python}-comfy-aimdo >= 0.6.0
 # Upstream's requirements.txt uses "==" for the comfy* packages, but its own
 # check_comfy_packages_versions() warns only when the installed version is
 # BELOW the pinned one, so upstream itself treats these as floors. Encoding
@@ -63,19 +63,19 @@ Requires:       %{primary_python}-comfy-aimdo >= 0.5.6
 # 0.2) removed no exported names. A speculative upper bound would simply
 # recreate the unresolvable state this floor exists to fix, so none is set;
 # a real break gets a bound then, with the evidence.
-# aimdo 0.5.6 is a hard floor: comfy/storage.py imports comfy_aimdo.storage
+# aimdo 0.6.0 is a hard floor: comfy/storage.py imports comfy_aimdo.storage
 # at module scope and comfy/utils.py imports it, while 0.5.3 ships no such
 # submodule. comfy/ldm/modules/attention.py calls
 # comfy_kitchen.int8_attention_is_available() at module import, so the
-# kitchen floor must provide it; track upstream's pin (0.2.39).
-Requires:       %{primary_python}-comfy-kitchen >= 0.2.39
-Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.14
+# kitchen floor must provide it; track upstream's pin (0.2.40).
+Requires:       %{primary_python}-comfy-kitchen >= 0.2.40
+Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.15
 # Security floor: 1.50.6 carries the XSS fixes GHSA-2gr5-vw2p-2hcf,
 # GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3. Upstream requires
 # 1.55.18, which is above it, so the floor tracks upstream now; do not
 # lower it below either.
-Requires:       %{primary_python}-comfyui-frontend-package >= 1.55.18
-Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.89
+Requires:       %{primary_python}-comfyui-frontend-package >= 1.57.4
+Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.97
 Requires:       %{primary_python}-einops
 Requires:       %{primary_python}-filelock
 Requires:       %{primary_python}-numpy >= 1.25.0
