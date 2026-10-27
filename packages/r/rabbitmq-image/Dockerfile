@@ -28,6 +28,12 @@ COPY --from=target / /target
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends glibc-locale-base grep hostname rabbitmq-server sed systemd xz
+# changing user id and group id created by package installation to stable values
+RUN set -euo pipefail; \
+    chroot /target chown -R --from=rabbitmq 497 /; \
+    chroot /target chown -R --from=:rabbitmq :497 /; \
+    groupmod -R /target -g 497 rabbitmq; \
+    usermod -R /target -u 497 rabbitmq
 
 RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
     systemd-tmpfiles --create --root /target rabbitmq-server.conf
@@ -43,7 +49,7 @@ COPY entrypoint.sh /target/usr/local/bin/entrypoint.sh
 RUN set -euo pipefail; chmod +x /target/usr/local/bin/entrypoint.sh
 
 # replace gosu calls with idexec
-RUN set -euo pipefail; sed -i 's/exec gosu /exec idexec /g' /target//usr/local/bin/entrypoint.sh
+RUN set -euo pipefail; sed -i 's/exec gosu /exec idexec /g' /target/usr/local/bin/entrypoint.sh
 RUN set -euo pipefail; install -d -m 0755 /target/etc/rabbitmq/conf.d/
 
 
@@ -81,7 +87,7 @@ LABEL org.opensuse.release-stage="released"
 LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["rabbitmq-server"]
-EXPOSE 4369/tcp 5671/tcp 5672/tcp 15691/tcp 15692/tcp 25672/tcp
+EXPOSE 1883/tcp 4369/tcp 5671/tcp 5672/tcp 15672/tcp 25672/tcp 61613/tcp 61614/tcp
 
 ENV HOME=/var/lib/rabbitmq
 ENV LC_ALL=C.UTF-8

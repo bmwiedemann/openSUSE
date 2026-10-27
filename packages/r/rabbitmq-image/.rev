@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of rabbitmq-image</comment>
     <requestid>1376870</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0168104db38305c3a70b7abeb125e783</srcmd5>
+    <version>unknown</version>
+    <time>1793116072</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1392765</requestid>
+  </revision>
 </revisionlist>
