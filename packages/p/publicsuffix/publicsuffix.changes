@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:37:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20261022:
+  * Add *.ztna-dingtalk.com to the PRIVATE section (#3196)
+  * Remove `oya.to` (domain expired & drop-caught) (#3432)
+  * Remove GCom Internet entries: aliases121.com (#3435)
+  * Remove gitapp.si form the list (#3421)
+  * util: gTLD data autopull updates (#3414, #3338, #3331)
+  * AWS Submissions to the Public Suffix List - Q3 2026 (#3044)
+  * Remove knightpoint.systems and perspecta.cloud (#3070)
+  * Add NAVER Cloud (Ncloud Storage) domains to the PRIVATE
+    section (#3340)
+  * Replace explicit replit.dev entries with wildcard rules (#3251)
+  * AWS Submissions to the Public Suffix List Q2 2026 (#2771)
+  * Add retool.app (Retool) to PRIVATE section (#3283)
+  * Add glideos.app (Glide) (#3200)
+  * Add site prefixes to Combell domains (#3282)
+  * Add iqhs.pl (IQHost) to PRIVATE section (#3264)
+
+-------------------------------------------------------------------
 Tue Sep 22 13:30:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20260921 (public_suffix_list.dat snapshot taken

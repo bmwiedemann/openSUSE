@@ -1971,4 +1971,12 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
 list.</comment>
     <requestid>1379693</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>9a3b076045e24851e11b9e4fda6108e5</srcmd5>
+    <version>20261022</version>
+    <time>1793115958</time>
+    <user>dimstar_suse</user>
+    <comment>Update publicsuffix to 20261022.</comment>
+    <requestid>1392564</requestid>
+  </revision>
 </revisionlist>
