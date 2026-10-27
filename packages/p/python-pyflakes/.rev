@@ -482,4 +482,41 @@ It is a dependency of the spyder python graphical environment, besides by a usef
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301231</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4188ef4e4bb76a4caf9802e009a26806</srcmd5>
+    <version>4.0.3</version>
+    <time>1793121626</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.3:
+  * A few performance improvements
+  * Fix handling of unconventional NamedTuple / TypedDict
+    argument 1.
+  * Fix for lazy import of Literal considered eager
+  * Fix for lazy imports inside try: (not at module scope)
+  * Add support for python 3.15
+  * Drop support for EOL python 3.9
+  * Add new errors for lazy imports:  lazy import is eagerly used
+    at module scope lazy from ... import * is invalid syntax lazy
+    from __future__ import ... is invalid syntax lazy import must
+    be at module scope
+  * lazy import is eagerly used at module scope
+  * lazy from ... import * is invalid syntax
+  * lazy from __future__ import ... is invalid syntax
+  * lazy import must be at module scope
+  * Improve typing specialization:  Handle cast(...) with named
+    arguments Fix duplicate errors in first argument of cast(...)
+    Handle TypeVar(... default='...') Fix missing error for first
+    argument of TypeVar(...) call Update handling of
+    NamedTuple(...) for python 3.15 changes Update handling of
+    TypedDict(...) for python 3.13 changes Add handling of
+    assert_type(...) Add handling of NewType(...) Add handling of
+    TypeVarTuple(...) Add handling of ParamSpec(...)
+  * Handle cast(...) with named arguments
+  * Fix duplicate errors in first argument of cast(...)
+  * Handle TypeVar(... default='...')
+  * Fix missing error for first argument of TypeVar(...) call
+  * Update handling of NamedTuple(...) for python 3.15 changes
+  * Update handling of TypedDict(...) for python 3.13 changes</comment>
+    <requestid>1392674</requestid>
+  </revision>
 </revisionlist>
