@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct 24 18:57:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 37.0.1:
+  * Regenerated against Kubernetes API v1.37.1 (via v1.36.1
+    in 36.0.0)
+  * Migrated to the modern OpenAPI Generator client: models now
+    use Pydantic validation (keyword-only, unknown fields
+    rejected); low-level sync/async transport interfaces changed
+  * New runtime requirements: pydantic and typing-extensions;
+    urllib3 >= 2.8 and < 3, PyYAML >= 6.0.3,
+    setuptools >= 84.0.0; six is no longer used
+  * Resource deletion methods now return decoded dictionaries
+    instead of V1Status models
+  * Upstream now nests the asyncio client sources as kubernetes.aio
+    (not installed by setup.py, so not shipped here)
+  * Support the exec credential protocol v5
+  * Fix in-cluster and kubeconfig BearerToken authentication
+    regressions, watch stream selection, leader election
+    shutdown and duration formatting bugs
+- Drop fix-exec-provider-test-sle-15-sp4.patch: SLE-15-SP4-only
+  workaround whose build target no longer exists
+- Skip the bundled asyncio client tests in %check: setup.py does
+  not ship kubernetes.aio, so only the synchronous client is
+  packaged
+
+-------------------------------------------------------------------
 Wed Jan 28 13:18:54 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - remove the following Build time requirements.

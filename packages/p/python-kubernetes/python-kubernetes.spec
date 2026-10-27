@@ -18,55 +18,52 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kubernetes
-Version:        35.0.0
+Version:        37.0.1
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0
 URL:            https://github.com/kubernetes-client/python
 # Source tar - https://pypi.org/project/kubernetes/#files
 Source:         https://files.pythonhosted.org/packages/source/k/kubernetes/kubernetes-%{version}.tar.gz
-# Patch file to fix failing kubernetes.config.exec_provider_test.ExecProviderTest
-# in SLE-15 SP4 (Python 3.6.15, pytest-5.4.3, py-1.10.0, pluggy-0.13.1)
-Patch1:         fix-exec-provider-test-sle-15-sp4.patch
-BuildRequires:  %{python_module PyYAML >= 5.4.1}
-BuildRequires:  %{python_module certifi >= 14.05.14}
-BuildRequires:  %{python_module durationpy >= 0.7}
+BuildRequires:  %{python_module PyYAML >= 6.0.3}
+BuildRequires:  %{python_module certifi >= 2026.7.22}
+BuildRequires:  %{python_module durationpy >= 0.11}
 BuildRequires:  %{python_module google-auth >= 1.0.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module python-dateutil >= 2.5.3}
+BuildRequires:  %{python_module pydantic >= 2.13.5}
+BuildRequires:  %{python_module python-dateutil >= 2.8.2}
 BuildRequires:  %{python_module requests-oauthlib}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools >= 21.0.0}
-BuildRequires:  %{python_module six >= 1.9.0}
-BuildRequires:  %{python_module urllib3 >= 1.24.2}
-BuildConflicts: %{python_module urllib3 = 2.6.0}
+BuildRequires:  %{python_module setuptools >= 84.0.0}
+BuildRequires:  %{python_module typing-extensions >= 4.16.0}
+BuildRequires:  %{python_module urllib3 >= 2.8.0}
 BuildRequires:  %{python_module websocket-client >= 0.32.0}
-BuildConflicts: %{python_module websocket-client = 0.40.0}
-BuildConflicts: %{python_module websocket-client = 0.41.0}
-BuildConflicts: %{python_module websocket-client = 0.41.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module oauthlib}
-BuildRequires:  %{python_module pytest}
-# /SECTION
-Requires:       python-oauthlib
-Requires:       python-PyYAML >= 5.4.1
-Requires:       python-certifi >= 14.05.14
-Requires:       python-durationpy >= 0.7
+BuildConflicts: %{python_module websocket-client = 0.40.0}
+BuildConflicts: %{python_module websocket-client = 0.41.0}
+BuildConflicts: %{python_module websocket-client = 0.41.1}
+Requires:       python-PyYAML >= 6.0.3
+Requires:       python-certifi >= 2026.7.22
+Requires:       python-durationpy >= 0.11
 Requires:       python-google-auth >= 1.0.1
-Requires:       python-python-dateutil >= 2.5.3
+Requires:       python-oauthlib
+Requires:       python-pydantic >= 2.13.5
+Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-requests
 Requires:       python-requests-oauthlib
-Requires:       python-six >= 1.9.0
-Requires:       python-urllib3 >= 1.24.2
-Conflicts:      python-urllib3 = 2.6.0
+Requires:       python-typing-extensions >= 4.16.0
+Requires:       python-urllib3 >= 2.8.0
 Requires:       python-websocket-client >= 0.32.0
 Conflicts:      python-websocket-client = 0.40.0
 Conflicts:      python-websocket-client = 0.41.0
 Conflicts:      python-websocket-client = 0.41.1
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module oauthlib}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -74,9 +71,6 @@ Python client for kubernetes http://kubernetes.io/
 
 %prep
 %setup -q -n kubernetes-%{version}
-%if 0%{?sle_version} && 0%{?sle_version} == 150400
-%patch -P 1 -p1
-%endif
 
 %build
 %if 0%{?sle_version} && 0%{?sle_version} >= 150500
@@ -104,6 +98,9 @@ Python client for kubernetes http://kubernetes.io/
 # 2. [End to end tests](kubernetes/e2e_test): these are tests that can only be verified with a live kubernetes server.
 rm kubernetes/dynamic/test_client.py
 rm kubernetes/dynamic/test_discovery.py
+# kubernetes.aio is not shipped by setup.py (absent from packages=),
+# so its tests, which need the aiohttp stack, are not run either
+rm -rf kubernetes/aio
 cat kubernetes/config/exec_provider_test.py
 %pytest
 

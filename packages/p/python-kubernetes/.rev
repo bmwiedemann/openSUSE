@@ -359,4 +359,15 @@ ref: https://github.com/kubernetes-client/python/releases/tag/v35.0.0</comment>
 </comment>
     <requestid>1329680</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7534df50c9216ac0187beb053a783507</srcmd5>
+    <version>37.0.1</version>
+    <time>1793121653</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 37.0.1
+
+follow up of https://build.opensuse.org/request/show/1392317
+</comment>
+    <requestid>1392689</requestid>
+  </revision>
 </revisionlist>
