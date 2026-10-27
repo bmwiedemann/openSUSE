@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 26 08:18:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Upgrade llhttp to 9.4.3
+  * Build CPython 3.15 wheels
+  * Add RISC-V 64-bit wheels
+  * Add Windows ARM64 support in CI
+  * Build PPC64LE wheels
+  * Modernize test and release workflows
+
+-------------------------------------------------------------------
 Sat Jun 27 20:53:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.0:

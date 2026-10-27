@@ -86,4 +86,18 @@
   * Allow building with latest setuptools</comment>
     <requestid>1362042</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c437fbb62b89cc48732ed13c7b0c1224</srcmd5>
+    <version>0.9.0</version>
+    <time>1793121576</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * Upgrade llhttp to 9.4.3
+  * Build CPython 3.15 wheels
+  * Add RISC-V 64-bit wheels
+  * Add Windows ARM64 support in CI
+  * Build PPC64LE wheels
+  * Modernize test and release workflows</comment>
+    <requestid>1392651</requestid>
+  </revision>
 </revisionlist>
