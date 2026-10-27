@@ -17,7 +17,7 @@
 
 
 Name:           igsc
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Intel Graphics System Controller Firmware Update Utility
 License:        Apache-2.0
