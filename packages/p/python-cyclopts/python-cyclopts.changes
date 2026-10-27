@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:25:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.3.1 (PyPI release 2026-10-26):
+  * Respect explicit delimiters for path environment values
+  * Validate Parameter(name="*") behind a type alias at setup time
+  * Resolve subscripted generic type aliases
+  * Bind config values to a meta app's own parameters (regression
+    since 4.0.0)
+
+-------------------------------------------------------------------
 Fri Oct 23 08:25:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.3.0 (PyPI release 2026-10-22):
