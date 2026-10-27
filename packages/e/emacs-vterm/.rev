@@ -55,4 +55,12 @@
     <comment>1</comment>
     <requestid>1377470</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5ccc205b27ba90e7c36dcf8932e145f3</srcmd5>
+    <version>724.7092111</version>
+    <time>1793116930</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid lexical binding warning on Emacs 31.1+ boo#1277717 (forwarded request 1392838 from psych0naut)</comment>
+    <requestid>1392986</requestid>
+  </revision>
 </revisionlist>

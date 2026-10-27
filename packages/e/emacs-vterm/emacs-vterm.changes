@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 26 20:51:35 UTC 2026 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- Avoid lexical binding warning on Emacs 31.1+ boo#1277717
+
+-------------------------------------------------------------------
 Sat Sep 05 02:53:17 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 724.7092111:

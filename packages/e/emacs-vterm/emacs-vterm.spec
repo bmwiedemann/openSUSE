@@ -60,6 +60,7 @@ install -D -m755 %{_name}-module.so %{buildroot}/%{_libdir}/emacs/site-lisp/%{_n
 
 install -dm755 %{buildroot}/%{_emacs_sitestartdir}/
 cat << EOF > %{buildroot}/%{_emacs_sitestartdir}/%{_name}-init.el
+;; -*- lexical-binding: t; -*-
 (add-to-list 'load-path "%{_libdir}/emacs/site-lisp")
 EOF
 
