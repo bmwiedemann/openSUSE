@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:49:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.164.0:
+  * [chore] Update core dependencies (#52341)
+  * [chore] bump semconv 1.40.0 -> 1.43.0 (#52324)
+  * [chore] bump semconv 1.41.0 to 1.43.0 (#52322)
+  * [chore] bump semconv 1.42.0 -> 1.43.0 (#52323)
+  * Update module github.com/klauspost/compress to v1.18.7
+    [SECURITY] (#52298)
+  * [chore] Update core dependencies (#52294)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v3 -
+    abandoned (#51037)
+  * Bump github.com/klauspost/compress from 1.18.6 to 1.18.7 in
+    /receiver/snowflakereceiver (#52200)
+  * Update module github.com/Microsoft/go-winio to v0.6.4 (#52176)
+  * Update module github.com/twmb/franz-go to v1.22.2 (#52177)
+  * Update dependency js-yaml to v5.5.0 (#52178)
+  * Update module cloud.google.com/go/compute to v1.73.0 (#52182)
+  * Update module code.cloudfoundry.org/garden to v0.8.0 (#52183)
+  * Update module github.com/envoyproxy/go-control-plane/envoy to
+    v1.40.0 (#52184)
+  * Update module github.com/oschwald/geoip2-golang/v2 to v2.5.0
+    (#52185)
+  * Update module github.com/twmb/franz-go/pkg/kmsg to v1.15.0
+    (#52188)
+  * Update module google.golang.org/api to v0.304.0 (#52189)
+  * Update module github.com/google/go-github/v92 to v93 (#52193)
+  * Update module github.com/scaleway/scaleway-sdk-go to v1.39.0
+    (#52186)
+  * [chore] Update core dependencies (#52112)
+
+-------------------------------------------------------------------
 Wed Oct 21 05:43:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.163.0:
