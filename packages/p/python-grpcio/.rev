@@ -712,4 +712,13 @@
   * Cancel calls without closing channels in fork child</comment>
     <requestid>1381000</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>d5158c370d9f8a67aedee40b1313d53a</srcmd5>
+    <version>1.84.1</version>
+    <time>1793116035</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.84.1:
+  * Update gRPC repo roots</comment>
+    <requestid>1392467</requestid>
+  </revision>
 </revisionlist>
