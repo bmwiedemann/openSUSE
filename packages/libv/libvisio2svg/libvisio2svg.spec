@@ -1,7 +1,7 @@
 #
 # spec file for package libvisio2svg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,25 @@
 
 %define soversion 0
 Name:           libvisio2svg
-Version:        0.5.5
+Version:        0.5.8
 Release:        0
 Summary:        Library to convert Visio Documents and Stencils (VSS and VSD) to SVG
 License:        GPL-2.0-only
-Group:          Productivity/Graphics/Convertors
 URL:            https://github.com/kakwa/libvisio2svg
 Source0:        https://github.com/kakwa/libvisio2svg/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  freetype2-devel
-%if 0%{?suse_version} > 1320
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
-%else
-# SLE12
-BuildRequires:  gcc7-c++
-#!Buildignore:  libgcc_s1
-%endif
 BuildRequires:  libemf2svg-devel >= 1.1.0
-BuildRequires:  librevenge-devel
-BuildRequires:  libvisio-devel
-BuildRequires:  libwmf-devel
-BuildRequires:  libxml2-devel
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(librevenge-0.0)
+BuildRequires:  pkgconfig(librevenge-generators-0.0)
+BuildRequires:  pkgconfig(librevenge-stream-0.0)
+BuildRequires:  pkgconfig(libvisio-0.1)
+BuildRequires:  pkgconfig(libwmf)
+BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
 Library for conversion of Visio Documents and Stencils (VSS and VSD) to SVG.
@@ -48,7 +46,6 @@ Visio drawings.
 
 %package -n %{name}%{soversion}
 Summary:        Library to convert Visio Documents and Stencils (VSS and VSD) to SVG
-Group:          System/Libraries
 
 %description -n %{name}%{soversion}
 Library for conversion of Visio Documents and Stencils (VSS and VSD) to SVG.
@@ -58,7 +55,6 @@ Visio drawings.
 
 %package devel
 Summary:        Development Files for applications which will use libvisio2svg
-Group:          Development/Libraries/C and C++
 Requires:       %{name}%{soversion} = %{version}
 
 %description devel
@@ -68,7 +64,6 @@ linking programs which will convert Visio files to SVG.
 
 %package -n visio2svg-conv
 Summary:        VSS/VDS to SVG converter
-Group:          Productivity/Graphics/Convertors
 Requires:       %{name}%{soversion} >= %{version}
 
 %description -n visio2svg-conv
@@ -78,8 +73,6 @@ Tools to convert Visio Documents (VSD) or Stencils (VSS) to SVG.
 %setup -q
 
 %build
-test -x "$(type -p gcc-7)" && export CC=gcc-7
-test -x "$(type -p g++-7)" && export CXX=g++-7
 %cmake -DCMAKE_SKIP_RPATH=TRUE
 %cmake_build
 

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:55:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.8:
+  * Build now requires a C++17 capable compiler.
+  * Fix crash/double free caused by libxml2 memory management.
+  * Fix crash on shapes without title (empty string instead of
+    NULL pointer).
+  * Reset input stream position between parse passes.
+  * Copy libxml2 output buffer instead of reusing freed memory.
+  * Rework argp detection in CMake; require CMake 3.5 or newer.
+- Spec cleanup: drop Group tags, use pkgconfig-style
+  BuildRequires, explicitly require gcc and make.
+- Drop the SLE12 gcc7 build conditional.
+
+-------------------------------------------------------------------
 Mon Mar 16 08:09:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Disable RPATH for building libvision2svg.
