@@ -37,4 +37,14 @@
     <comment>- Fixed the build with cmake4.</comment>
     <requestid>1275552</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7073665cb5fb686119a5b0a9125a0419</srcmd5>
+    <version>3.0.1+git20260628</version>
+    <time>1793117269</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed source to https://github.com/ssharunas/soundkonverter#branch=port-qt6
+- Updated to 3.0.1+git20260628.
+  * Migrated to Qt6/KF6.</comment>
+    <requestid>1393022</requestid>
+  </revision>
 </revisionlist>

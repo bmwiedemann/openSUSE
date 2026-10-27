@@ -1,7 +1,7 @@
 #
 # spec file for package soundkonverter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,29 @@
 
 
 Name:           soundkonverter
-Version:        3.0.1+git20240225
+Version:        3.0.1+git20260628
 Release:        0
 Summary:        Audio file converter, CD ripper and Replay Gain tool
 License:        GPL-2.0-only
-URL:            https://github.com/nphantasm/%{name}
-# n=soundkonverter && v=3.0.1 && g=20240225 && d=$n-$v+git$g && cd /tmp && git clone https://github.com/nphantasm/$n.git && pushd $n && rm -rf .??* && popd && mv $n $d && f=$d.tar.xz && tar c --remove-files "$d" | xz -9e > "$f"
+URL:            https://github.com/ssharunas/%{name}#branch=port-qt6
+# n=soundkonverter && cd /tmp && git clone --depth=1 -bport-qt6 https://github.com/ssharunas/$n.git $n && pushd $n && v=3.0.1+git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cdparanoia-devel
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  pkgconfig
-BuildRequires:  unzip
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Cddb)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(KCddb6)
+BuildRequires:  cmake(KF6Config)
+BuildRequires:  cmake(KF6ConfigWidgets)
+BuildRequires:  cmake(KF6I18n)
+BuildRequires:  cmake(KF6KCMUtils)
+BuildRequires:  cmake(KF6KIO)
+BuildRequires:  cmake(KF6Solid)
+BuildRequires:  cmake(KF6StatusNotifierItem)
+BuildRequires:  cmake(KF6WidgetsAddons)
+BuildRequires:  cmake(KF6XmlGui)
+BuildRequires:  cmake(Phonon4Qt6)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(taglib)
 Requires:       cdparanoia
 Requires:       flac
@@ -49,24 +48,17 @@ Requires:       vorbis-tools
 Requires:       wavpack
 
 %description
-soundKonverter is a frontend to various audio converters.
+%{name} is a frontend to various audio converters.
 
 %prep
 %autosetup -p1
 
 %build
-export CMAKE_POLICY_VERSION_MINIMUM=3.5
-pushd src
-%cmake_kf5 -d build -- "-DKF5_BUILD=ON"
-%cmake_build
-popd
+%cmake_kf6
+%kf6_build
 
 %install
-pushd src
-%kf5_makeinstall -C build
-popd
-
-%suse_update_desktop_file -r %{name} AudioVideo AudioVideoEditing KDE
+%kf6_install
 
 %find_lang %{name}
 
@@ -76,20 +68,12 @@ popd
 %files -f %{name}.lang
 %license src/COPYING
 %doc src/CHANGELOG src/README
-%dir %{_datadir}/kxmlgui5/soundkonverter
-%dir %{_datadir}/solid
-%dir %{_datadir}/solid/actions
-%dir %{_datadir}/soundkonverter
-%{_bindir}/soundkonverter
-%{_libdir}/libsoundkonvertercore.so*
-%{_libdir}/qt5/plugins/soundkonverter_*
-%{_datadir}/metainfo/soundkonverter.appdata.xml
-%{_datadir}/applications/soundkonverter.desktop
-%{_datadir}/icons/hicolor/*/apps/soundkonverter*.png
-%{_datadir}/kservices5/soundkonverter_*
-%{_datadir}/kservicetypes5/soundkonverter_*.desktop
-%{_datadir}/kxmlgui5/soundkonverter/soundkonverterui.rc
-%{_datadir}/solid/actions/soundkonverter-rip-audiocd.desktop
-%{_datadir}/soundkonverter/*
+%{_bindir}/%{name}
+%{_libdir}/lib%{name}core.so*
+%{_libdir}/qt6/plugins/%{name}plugins
+%{_datadir}/metainfo/org.kde.%{name}.metainfo.xml
+%{_datadir}/applications/org.kde.%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}*.png
+%{_datadir}/%{name}
 
 %changelog

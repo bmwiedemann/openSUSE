@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 27 08:47:54 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Changed source to https://github.com/ssharunas/soundkonverter#branch=port-qt6
+- Updated to 3.0.1+git20260628.
+  * Migrated to Qt6/KF6.
+
+-------------------------------------------------------------------
 Wed May  7 11:29:43 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - Fixed the build with cmake4.
