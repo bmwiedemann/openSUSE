@@ -28,12 +28,12 @@
 %define origname python-ruff
 %bcond_without libalternatives
 Name:           %{origname}%{psuffix}
-Version:        0.17.2
+Version:        0.17.3
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 # Legal-Review-Notice: ruff itself is MIT, but the binary statically links
 # the vendored Rust dependencies. Re-derived on this re-vendor with
-# "cargo tree --offline -p ruff -e normal" over the vendored tree (287
+# "cargo tree --offline -p ruff -e normal" over the vendored tree (299
 # unique crates; the count in earlier notices did not reproduce and is
 # corrected): the only copyleft licence in the linked graph is
 # MPL-2.0, from three crates -

@@ -3770,4 +3770,12 @@ autoforward-gate ELIGIBLE, no competing Factory SR).</comment>
     <comment>Update to 0.17.2</comment>
     <requestid>1392005</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>22084f36e0c655ad9a2af7b075fb5898</srcmd5>
+    <version>0.17.3</version>
+    <time>1793121696</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-ruff to 0.17.3.</comment>
+    <requestid>1393078</requestid>
+  </revision>
 </revisionlist>
