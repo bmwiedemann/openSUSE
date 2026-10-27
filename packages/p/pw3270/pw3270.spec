@@ -116,6 +116,7 @@ Requires:		%{name} = %{version}
 BuildArch:		noarch
 
 Provides:		%{name}-branding
+Supplements:		(%{name} and branding-upstream)
 Conflicts:		otherproviders(%{name}-branding)
 
 Requires(post):		desktop-file-utils
