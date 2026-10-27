@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Oct 26 08:06:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.37:
+  * Clean up in-place output after write errors
+  * Reject invalid patch document containers
+  * Use UTF-8 for JSON command-line file I/O
+  * Handle source pointer objects in move location helpers
+- update to 1.36:
+  * Honor optimization=False when generating patches
+  * Preserve the original file when in-place CLI replacement
+    fails
+- update to 1.35:
+  * Refactor JsonPatch class and improve documentation
+  * Add pytest configuration for non-standard test file naming
+  * Document JSON Pointer escaping for special characters
+  * Improve list diffing to avoid unnecessary item replacements
+  * Use correct SPDX-Identifer
+  * Improve coverage reporting by combining test runs
+  * ci: run tests on every PR and pushes to master
+  * Add support for Python 3.13 and 3.14
+  * Improve list diffing with sequence alignment to avoid
+    cascading changes
+  * Handle self-containing values in make_patch and add #180
+    regression tests
+  * Only reject '-' in replace when it refers to an array
+  * Reject moving any location into its own children, fixes #214
+  * Compare values in 'test' by JSON equality
+  * Hash patch operations by their 'op' and 'path'
+  * Require jsonpointer>=3.2
+  * Raise documented exceptions for malformed patches and "from":
+    "/-"
+  * Support whole document operations on scalar documents
+  * Housekeeping: stale links, packaging cleanup, CI action
+    versions
+  * Find moves in make_patch without rewriting all later
+    operations
+  * Close test coverage gaps
+  * Remove unreachable code from make_patch and the jsonpointer <
+    3.2 shim
+  * Test the index helpers of PatchOperation and MoveOperation
+  * Upload coverage to Coveralls again
+  * Close the original input before in-place replacement
+  * Install the command line programs as console_scripts
+- update to 1.34:
+  * Update documentation to include a link to the GitHub repo and
+    installation instructions
+  * Support only currently supported Python versions (by @hf-
+    kklein in #155, #156, @CyrilRoelandteNovance in #162,
+    @stefankoegl in #193)
+  * fix: remove unused exception variables (F841)
+  * Avoid usage of unittest.makeSuite, removed from Python 3.13
+  * Handle the whole-document pointer in the sequence branch
+  * Fix copying from the whole-document pointer
+  * Add property-based tests using Hypothesis
+  * DiffBuilder: fix reindexing of operations involving nested
+    paths
+  * fix: use deterministic comparison ordering
+  * Fix `_compare_lists` treating `1` and `True` as equal in JSON
+    diff by @stefankoegl with @Copilot in
+    https://github.com/stefankoegl/python-json-patch/pull/181
+  * Update property test counterexamples for fixes from #175 and
+    #181
+  * Prevent RFC 6901 pointer indexing into strings
+  * DiffBuilder: fix operation reindexing bug
+  * Fix patch operations to not modify patch object during apply
+  * Refactor DiffBuilder to use tuple paths and simplify
+    operation handling
+  * Fix ReadTheDocs configuration and documentation build
+  * Clarify patch application semantics and fix documentation
+  * Add PyPI publishing workflow and update release process
+
+-------------------------------------------------------------------
 Fri May 30 08:58:07 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

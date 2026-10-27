@@ -258,4 +258,41 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1281320</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a9e50878a91d63b5f0b9a25d26e9fc16</srcmd5>
+    <version>1.37</version>
+    <time>1793121562</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.37:
+  * Clean up in-place output after write errors
+  * Reject invalid patch document containers
+  * Use UTF-8 for JSON command-line file I/O
+  * Handle source pointer objects in move location helpers
+- update to 1.36:
+  * Honor optimization=False when generating patches
+  * Preserve the original file when in-place CLI replacement
+    fails
+- update to 1.35:
+  * Refactor JsonPatch class and improve documentation
+  * Add pytest configuration for non-standard test file naming
+  * Document JSON Pointer escaping for special characters
+  * Improve list diffing to avoid unnecessary item replacements
+  * Use correct SPDX-Identifer
+  * Improve coverage reporting by combining test runs
+  * ci: run tests on every PR and pushes to master
+  * Add support for Python 3.13 and 3.14
+  * Improve list diffing with sequence alignment to avoid
+    cascading changes
+  * Handle self-containing values in make_patch and add #180
+    regression tests
+  * Only reject '-' in replace when it refers to an array
+  * Reject moving any location into its own children, fixes #214
+  * Compare values in 'test' by JSON equality
+  * Hash patch operations by their 'op' and 'path'
+  * Require jsonpointer&gt;=3.2
+  * Raise documented exceptions for malformed patches and &quot;from&quot;:
+    &quot;/-&quot;
+  * Support whole document operations on scalar documents</comment>
+    <requestid>1392650</requestid>
+  </revision>
 </revisionlist>
