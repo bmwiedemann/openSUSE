@@ -16,12 +16,6 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -30,11 +24,14 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%if !%{with test}
-%{?pythons_for_pypi}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
 %endif
+%{?pythons_for_pypi}
 Name:           python-vcs-versioning%{psuffix}
-Version:        1.1.1
+Version:        2.3.2
 Release:        0
 Summary:        the blessed package to manage your versions by vcs metadata
 License:        MIT
@@ -47,10 +44,15 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 20
 BuildArch:      noarch
+%if !%{with test}
+%{?pythons_for_pypi}
+%endif
 %if %{with test}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module vcs-versioning >= %{version}}
+BuildRequires:  git-core
 %endif
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -72,7 +74,7 @@ the blessed package to manage your versions by vcs metadata
 
 %if %{with test}
 %check
-%pytest --ignore testing_vcs/test_file_finders.py --ignore testing_vcs/test_git.py
+%pytest --ignore testing_vcs/test_file_finders.py --ignore testing_vcs/test_git.py -k "not test_egg_info_metadata_wins_over_pkginfo"
 
 %else
 

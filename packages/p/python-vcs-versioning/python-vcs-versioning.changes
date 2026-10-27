@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Sun Oct 25 21:47:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.2:
+  * Register the `pkginfo` workdir discovery factory in vcs-
+    versioning itself. `PKG-INFO` is standard sdist metadata, not
+    a setuptools artifact, but its factory was only registered by
+    setuptools-scm -- so a standalone vcs-versioning install
+    could not infer a version from an sdist. This broke sdist
+    builds for non-setuptools backends, e.g. meson-python calling
+    `python -m vcs_versioning` from `project()`.
+  * Fallback workdir candidates are now ordered by how much
+    metadata they carry (egg-info, then archival, then `PKG-
+    INFO`) instead of by entry point iteration order, so a
+    setuptools built sdist keeps using its `scm_version.json` now
+    that the two factories ship from different distributions.
+  * Fix a `FileNotFoundError` crash in the git file finder when a
+    submodule is tracked in the index but its working tree
+    directory does not exist - such gitlinks are now skipped like
+    not checked out submodules.
+  * Add a ``vcs_versioning.dynamic_metadata`` provider for the
+    dynamic-metadata system.
+  * Make the `tag.strict` and `scm.git.describe_command`
+    diagnostics actionable and non-conflicting.
+  * The `tag.strict` future-default notice is now reported by the
+    git backend rather than at configuration time, and only when
+    the future default would actually select a different tag for
+    the repository -- the message names both the current and the
+    future version string. Projects the change cannot affect are
+    silent, and setting an explicit `describe_command` no longer
+    triggers it at all, so the two warnings can no longer
+    contradict each other.
+  * The `describe_command` notice is likewise limited to the case
+    where it and an explicit `tag.strict` really disagree, and no
+    longer claims that `tag.prefix` has no effect -- prefix
+    stripping applies regardless of how the tag was selected.
+  * Both are logged at warning level instead of raised as
+    warnings, so `SETUPTOOLS_SCM_DEBUG=ERROR` silences them.
+  * Honour `export-ignore` on directories and submodules again in
+    the git file finder.
+  * The switch from `git archive` to `git ls-files --recurse-
+    submodules` lost two parts of the archive semantics:
+    `--recurse-submodules` listed every submodule regardless of
+    `export-ignore`, and the `:(exclude,attr:export-ignore)`
+    pathspec only matches files, so an `export-ignore` on a
+    directory no longer excluded the files below it. Projects
+    that kept vendored submodules in an `export-ignore`d
+    directory suddenly shipped them in their sdists.
+
+  * The finder now lists a repository without recursion, checks
+    `export-ignore` for directories via `git check-attr` (which
+    is what `git archive` effectively does when it skips a tree),
+    and only then descends into the submodules that survived.
+    Submodule contents are still listed - with their own
+    `.gitattributes` applied - so `export-ignore` in the parent
+    repository now controls exactly which submodules get
+    packaged. Submodules that are not checked out are skipped
+    instead of failing the listing.
+  * Honour `tag.strict` on Mercurial changesets that carry tags
+    of their own, and report the coming strict default for
+    Mercurial repositories.
+
+  * `tag.strict` was only applied when looking for the latest
+    tag, so a checked-out changeset tagged `event-2024` still
+    produced version `2024` even with `tag.strict = true`, while
+    git rejected the same tag. Strict matching now applies to the
+    tags on the changeset too: a changeset carrying only event-
+    style tags is treated as untagged and versioning continues
+    from the last real version tag, matching `git describe
+    --match`. When several tags sit on one changeset, the
+    version-shaped one is now selected instead of whichever
+    Mercurial happened to list first.
+
+  * The `tag.strict` divergence diagnostic added in #1429 now
+    covers Mercurial as well, naming the current and future
+    version whenever the coming default would change them. Both
+    backends share the message, and the git-only helpers moved to
+    `_backends/_scm_workdir.py`.
+
+  * Note that the Mercurial backend required a dot in version
+    tags before setuptools-scm 9, so for Mercurial projects the
+    coming strict default restores the historical behavior.
+  * Fix `ValueError` when parsing `.git_archival.txt` of a tagged
+    commit whose tag contains more than one dash (e.g.
+    `llvmorg-23.1.0-rc2`) - the `git describe` suffix is now
+    matched precisely instead of splitting on the last two
+    dashes.
+  * Add missing pytest-timeout to vcs-versioning test
+    dependencies.
+  * Fix crash in `_warn_if_tracked` when the version file target
+    is a relative path
+  * by resolving it against the project root before comparison.
+  * Also warn (instead of crashing) when the target resolves
+    outside the project root.
+  * Restore Python 3.8 and 3.9 support, re-enabling use as a
+    build dependency for projects like scikit-build that still
+    support these versions.
+  * Move PKG-INFO discovery tests to setuptools-scm where the
+    entry points are registered.
+  * Fix MetadataWorkdir crash when using custom `tag_regex` —
+    stored tags are already parsed version strings and no longer
+    re-parsed through the tag regex.
+  * Scope `list_tracked_files` to `project_root` in monorepo
+    setups so that sdists no longer include files from sibling
+    projects when `root=".."` is configured.
+  * Fix spurious ``DeprecationWarning`` for ``tag_regex`` when
+    using default value via ``get_version()``.
+  * Add `VcsEnvironment.build_config_from_pyproject`,
+    `build_config_from_data`, and `pyproject_tool_names` methods
+    for canonical env-first configuration creation.
+  * Fix DeprecationWarning leak in pretend API by ensuring all
+    public APIs attach VcsEnvironment to Configuration before
+    accessing env-dependent properties.
+  * Fix fallback discovery so an unprocessed `.git_archival.txt`
+    no longer shadows a valid `PKG-INFO` in PyPI sdists.
+  * Update CI to use PyPy 3.11 as cryptography has no PyPy 3.10
+    build available
+  * Remove module-level accessor functions from
+    ``vcs_versioning.overrides``: ``get_active_overrides()``,
+    ``get_debug_level()``, ``get_subprocess_timeout()``,
+    ``get_hg_command()``, ``get_source_date_epoch()``, and
+    ``source_epoch_or_utc_now()``. Use
+    ``VcsEnvironment.from_env()`` or ``config.env`` instead.
+    External consumer audit confirmed no downstream usage of
+    these functions.
+  * Introduce ``VcsEnvironment`` and the chained API (``env →
+    config → workdir → version``) for explicit runtime settings.
+    Add ``Configuration.env``,
+    ``Configuration.discover_workdir()``, and the
+    ``vcs_versioning.discover_workdir`` entry-point group.
+    Integrators can now use
+    ``VcsEnvironment.from_env("MY_TOOL").build_config()`` to
+    thread timeout, hg command, and other settings without
+    ambient globals.
+  * Warn when ``version_file`` or ``write_to`` targets a file
+    that is tracked by version control. A tracked version file
+    causes ``git describe --dirty`` to report a dirty tree after
+    builds rewrite it, leading to unexpected dev-version bumps on
+    tag checkouts. The warning advises removing the file from VCS
+    and adding it to the ignore file.
+  * Add native Jujutsu (jj) VCS backend with version inference,
+    file finder, and strict error when `.jj/` is detected but
+    `jj` is not installed. The `SETUPTOOLS_SCM_DISABLE_JJ=1`
+    environment variable can be used to opt out of jj discovery
+    in environments where `jj` is not available.
+  * Add ``no-local-version-strict`` local scheme that combines
+    ``no-local-version`` and ``fail-on-uncommitted-changes`` in a
+    single entry-point. When the working tree is dirty the build
+    fails with ``DirtyWorkingTreeError``; otherwise the local
+    segment is stripped, producing PyPI-safe versions suitable
+    for release builds.
+  * Modernize Mercurial backend to use `latesttag(pattern)`
+    template instead of manual tag discovery with revsets,
+    reducing subprocess calls and enabling tag.prefix/tag.strict
+    support for Mercurial repositories.
+  * Add `tag.prefix` and `tag.strict` configuration options for
+    controlling which VCS tags are considered version tags.
+    `tag.prefix` filters and strips a literal prefix (for
+    monorepo tag schemes like `hatchling-v1.0.0`). `tag.strict`
+    (tri-state) requires tags to contain at least one dot,
+    rejecting non-version tags like event markers. Both compose
+    to generate the `git describe --match` glob automatically.
+
+-------------------------------------------------------------------
 Mon Apr 20 16:26:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - reset_alternative for sle16+
