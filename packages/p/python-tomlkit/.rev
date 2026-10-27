@@ -321,4 +321,41 @@
     <comment>1</comment>
     <requestid>1373921</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7f8773bf969ffd913c9bdbe542075869</srcmd5>
+    <version>0.15.2</version>
+    <time>1793121519</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.2:
+  * Write the ESC control character as `u001b` instead of `e`,
+    which is only valid in TOML 1.1, so the output stays readable
+    by TOML 1.0 parsers such as `tomllib`.
+  * `key_value()` now raises `UnexpectedCharError` on anything
+    other than whitespace or a comment after the pair, instead of
+    silently discarding it (e.g. `key_value(&quot;a = 1 b = 2&quot;)`),
+    matching `parse()`.
+  * `integer()` given a string now validates it against the TOML
+    integer grammar and keeps the original text, so grouping
+    underscores (e.g. `integer(&quot;1_000&quot;)`) survive `dumps()`;
+    strings that are not valid TOML integers (e.g. `&quot;010&quot;`) now
+    raise `ValueError`.
+  * Add a `fold` argument to `DateTime` and `Time`, mirroring the
+    stdlib, and carry `fold` through `item()`, arithmetic
+    (including datetime subtraction) and `unwrap()`, so a folded
+    local time no longer converts an hour off.
+  * Declare the project metadata in the PEP 621 `[project]`
+    table; building from source now requires `poetry-
+    core&gt;=2.2.0`.
+  * Fix valid TOML being rejected when an out-of-order table
+    reopens an implicit super-table with a dotted key: `[a.b.c]`
+    then `[a]` with `b.z = 1` extends the implicit `a.b` super-
+    table rather than redefining it (stdlib `tomllib` accepts
+    it), so it now parses and round-trips instead of raising
+    `Redefinition of an existing table`. The concrete-table case
+    (`[a.b]` then `[a]` `b.z = 1`) stays rejected.
+  * Fix uppercase `E` exponent after a leading-zero mantissa
+    (e.g. `0E2`) being rejected as an invalid number while `0e2`
+    parsed fine.</comment>
+    <requestid>1392621</requestid>
+  </revision>
 </revisionlist>

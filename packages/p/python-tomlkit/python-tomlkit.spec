@@ -27,14 +27,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tomlkit%{psuffix}
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        Style preserving TOML library
 License:        MIT
 URL:            https://github.com/sdispater/tomlkit
 Source:         https://files.pythonhosted.org/packages/source/t/tomlkit/tomlkit-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module poetry-core >= 2.2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
