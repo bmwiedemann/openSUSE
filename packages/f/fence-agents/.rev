@@ -1312,4 +1312,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1371936</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>8524719f0618607b6c54095af9d2d16c</srcmd5>
+    <version>4.17.0+git.1790584011.65a423c8</version>
+    <time>1793116062</time>
+    <user>dimstar_suse</user>
+    <comment>- pacemaker-cts needs its own version of fence_dummy to be able to run CTS tests.
+  Introduce %Conflicts to avoid resolver problems
+
+- Update to version 4.17.0+git.1790584011.65a423c8:
+  * fence_ibmz: replace deprecated method_whitelist with allowed_methods (#662)</comment>
+    <requestid>1393130</requestid>
+  </revision>
 </revisionlist>

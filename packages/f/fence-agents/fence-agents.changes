@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 27 14:08:54 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- pacemaker-cts needs its own version of fence_dummy to be able to run CTS tests.
+  Introduce %Conflicts to avoid resolver problems
+
+-------------------------------------------------------------------
+Mon Oct 19 09:44:34 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.17.0+git.1790584011.65a423c8:
+  * fence_ibmz: replace deprecated method_whitelist with allowed_methods (#662)
+
+-------------------------------------------------------------------
 Wed Aug 12 07:09:12 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.17.0+git.1786356985.d90bec5f:
