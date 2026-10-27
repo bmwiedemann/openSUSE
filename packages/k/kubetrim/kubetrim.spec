@@ -17,16 +17,15 @@
 
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           kubetrim
-Version:        0.0.1
+Version:        0.0.3
 Release:        0
 Summary:        Trim your KUBECONFIG automatically
 License:        MIT
 URL:            https://github.com/alexellis/kubetrim
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.27
 
 %description
 Tidy up old Kubernetes clusters from kubeconfig.
@@ -38,7 +37,7 @@ removes any that are unreachable, or which error.
 %autosetup -p 1 -a 1
 
 %build
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %{_sourcedir}/%{name}.obsinfo)"
 
 go build \
    -mod=vendor \

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 24 17:52:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.0.3:
+  * Try each cluster for 5 seconds before giving up and pruning it
+    from kubeconfig
+  * Build with Go 1.27 and refresh Kubernetes clients to v0.37.1
+    with other Go dependencies
+  * Refresh README documentation
+- Raise Go build requirement to >= 1.27 to match upstream go.mod
+
+-------------------------------------------------------------------
 Thu Sep 26 06:39:57 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.0.1:
