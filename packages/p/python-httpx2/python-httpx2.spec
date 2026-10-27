@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpx2
-Version:        2.13.1
+Version:        2.16.0
 Release:        0
 Summary:        The next generation HTTP client
 License:        BSD-3-Clause
