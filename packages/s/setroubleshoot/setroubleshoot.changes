@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 25 11:37:40 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(dbus-glib-1) BuildRequires: it is only used for
+  seappletlegacy that we explicitly do not build.
+- Drop dbus-1 and python3-dbus-python Requires, ported to dasbus
+  back in 2021.
+
+-------------------------------------------------------------------
 Wed Jul 15 18:24:11 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
 
 - update to version 3.3.37

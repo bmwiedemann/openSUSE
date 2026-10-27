@@ -50,11 +50,9 @@ BuildRequires:  make
 BuildRequires:  polkit-devel
 BuildRequires:  python3-dasbus
 BuildRequires:  pkgconfig(audit) >= 3.0.1
-BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(python3)
-#BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
 BuildRequires:  python3-pip
 BuildRequires:  python3-selinux
@@ -179,7 +177,6 @@ Requires:       %{name}-plugins >= 3.3.10
 Requires:       audit >= 3.0.1
 Requires:       audit-libs-python3
 Requires:       policycoreutils-python-utils
-Requires:       python3-dbus-python
 Requires:       python3-gobject >= 3.11
 Requires:       python3-rpm
 Requires:       python3-selinux  >= 2.1.5-1
@@ -188,7 +185,6 @@ BuildRequires:  gettext
 BuildRequires:  intltool
 #BuildRequires:  python3
 BuildRequires:  pkgconfig(python3)
-Requires:       dbus-1
 Requires:       polkit
 Requires:       python3-dasbus
 Recommends:     logrotate
