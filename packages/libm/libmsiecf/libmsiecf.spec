@@ -28,6 +28,7 @@ Source:         https://github.com/libyal/libmsiecf/releases/download/%version/%
 Source2:        https://github.com/libyal/libmsiecf/releases/download/%version/%name-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source8:        MSIE_Cache_File_index.dat_format.pdf
+Patch1:         0001-Changes-to-improve-resilience.patch
 BuildRequires:  %python_module devel
 BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler

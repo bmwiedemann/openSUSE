@@ -211,4 +211,12 @@ part of summer 2013 libyal refresh for opensuse 2013</comment>
     <comment>- Update to release 20260525</comment>
     <requestid>1355137</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>02ea3b17274e3242b29912a14a5d24cf</srcmd5>
+    <version>20260525</version>
+    <time>1793206079</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Changes-to-improve-resilience.patch [boo#1288092]</comment>
+    <requestid>1393227</requestid>
+  </revision>
 </revisionlist>

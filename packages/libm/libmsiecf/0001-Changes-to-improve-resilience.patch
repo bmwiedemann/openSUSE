@@ -1,0 +1,24 @@
+From a99a703d190d62f6c21b6225cf84ce80037e45d5 Mon Sep 17 00:00:00 2001
+From: Joachim Metz <joachim.metz@gmail.com>
+Date: Thu, 22 Oct 2026 09:57:38 +0200
+Subject: [PATCH] Changes to improve resilience
+
+---
+
+diff --git a/libmsiecf/libmsiecf_url_values.c b/libmsiecf/libmsiecf_url_values.c
+index a78311d..a234f1e 100644
+--- a/libmsiecf/libmsiecf_url_values.c
++++ b/libmsiecf/libmsiecf_url_values.c
+@@ -827,9 +827,6 @@ int libmsiecf_url_values_read_data(
+ 			}
+ 			else
+ 			{
+-				memory_free(
+-				 data );
+-
+ 				return( 1 );
+ 			}
+ 		}
+-- 
+2.56.0
+
