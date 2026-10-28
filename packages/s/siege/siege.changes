@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:39:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.2.2:
+  * New -E/--extended and -e/--extended-errors options printing
+    a per-code breakdown of HTTP error statuses, in standard
+    and JSON output modes
+  * Fix cookie parsing for RFC850 two-digit dates (from 4.2.1)
+  * Silence OpenSSL deprecation warnings
+
+-------------------------------------------------------------------
 Thu Aug 20 10:17:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.2.0:
