@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Oct 20 19:26:22 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.70:
+  * sync: Provide a CLI command to opt in/out of smartsync for a user.
+  * upload: reject --fix with --ignore-hooks or --no-verify
+
+-------------------------------------------------------------------
+Mon Oct 19 18:45:15 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.69:
+  * git_config: Fix bugs in processing RepoConfig.
+  * sync: Add GetApprovedManifestV2 with named request options
+  * repo: tolerate a transiently missing stable branch
+  * sync: keep smart sync override with -l
+  * sync: skip clone.bundle when repo.fetchcmd is configured
+  * project: peel annotated tags in GetRevisionId with cached refs
+  * sync: don't run git ls-remote before fetchcmd on unpinned refs
+  * agents: enable generic multi-perspective code review agent
+  * sync: keep --superproject-revision across manifest reloads
+  * sync: roll back repo when stable is rewound
+  * sync: Support SYNC_BRANCH to override the smart sync branch
+  * sync: don't let --nmu affect smart sync
+  * vpython: update to uv spec format
+  * sync: Support manifest-driven default smart sync
+  * gc: add --keep-manifest-projects
+  * sync: record superproject sync analysis state again
+  * isort: print diff on failures
+  * sync: keep local sync state paths relative to repo root
+  * init: don't suggest --no-use-superproject on failure
+  * Revert "sync: Recommend using --no-use-superproject if sync fails."
+
+-------------------------------------------------------------------
 Sat Oct 10 16:45:36 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.68.1:
