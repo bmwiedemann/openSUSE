@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 28 11:05:15 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 5.2.4:
+  * enhance(kubernetes): gzip copies into job containers over exec (#1355)
+  * fix(exec): serve the v4 artifact API so upload-artifact v4 and later work (#1341)
+
+-------------------------------------------------------------------
 Tue Oct 27 07:00:01 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 5.2.3:
