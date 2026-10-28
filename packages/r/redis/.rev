@@ -263,4 +263,16 @@ Redis 8.0.0 supported atomic HGETDEL, HGETEX and HSETEX, and AGPL-3.0-only licen
     <comment>8.10.2</comment>
     <requestid>1378756</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>832483312c5cb689ee0d5c522c394694</srcmd5>
+    <version>8.10.3</version>
+    <time>1793205842</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.10.3 (boo#1287775)
+  Update urgency: SECURITY: There are security fixes in the release.
+  - Security fixes
+    - Heap buffer overflow when propagating a PUBLISH/SPUBLISH
+      message larger than 4GB over the cluster bus in cluster mode</comment>
+    <requestid>1392777</requestid>
+  </revision>
 </revisionlist>

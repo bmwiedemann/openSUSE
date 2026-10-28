@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 26 14:07:55 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 8.10.3 (boo#1287775)
+  Update urgency: SECURITY: There are security fixes in the release.
+  - Security fixes
+    - Heap buffer overflow when propagating a PUBLISH/SPUBLISH
+      message larger than 4GB over the cluster bus in cluster mode
+
+-------------------------------------------------------------------
 Thu Sep 17 16:20:31 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 8.10.2
