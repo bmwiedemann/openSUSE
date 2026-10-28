@@ -119,4 +119,13 @@
   * Cancel calls without closing channels in fork child</comment>
     <requestid>1381001</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c75e9d43f9cd474669ae1042f7923c39</srcmd5>
+    <version>1.84.1</version>
+    <time>1793211905</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.84.1:
+  * align with grpcio 1.84.1 update</comment>
+    <requestid>1392484</requestid>
+  </revision>
 </revisionlist>
