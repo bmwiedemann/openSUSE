@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 28 07:32:46 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 15.1:
+  * Add synthetic device IDs on Linux, allowing SnapRAID Daemon to
+    preserve history for devices without unique hardware IDs while
+    they remain connected within the same boot.
+  * Fix a failed internal inconsistency check when '--gui-touch-before'
+    is used before the first sync when no content file exists yet.
+    Also ensure that commands that can save the content file ('touch',
+    'scrub', 'rehash', 'rewrite') fail with a clear error message if the
+    array has not been synced yet. This fix is required by
+    SnapRAID-Daemon.
+  * Make test and doc variables in Makefile.am compatible with BSD make,
+    allowing builds, tests, and documentation generation on BSD systems
+    without requiring GNU make.
+
+-------------------------------------------------------------------
 Tue Oct 20 12:59:02 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 15.0:
