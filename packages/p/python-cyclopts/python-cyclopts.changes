@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:36:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.3.2 (PyPI release 2026-10-27):
+  * Fix enum members in a Literal shown as Color.RED in help,
+    completion and errors instead of the name that parses
+  * No more crash on a nameless Flag value in a Literal
+
+-------------------------------------------------------------------
 Mon Oct 26 19:25:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.3.1 (PyPI release 2026-10-26):
