@@ -1,0 +1,5 @@
+<package name="pdfcraft" project="openSUSE:Factory">
+  <title>PdfCraft — open-source PDF workbench</title>
+  <description>Open-source, native PDF workbench: read, comment, fill and sign forms, organize, combine, split, edit, redact, protect and export PDFs. Includes pdfcraft-cli, a headless command runner and opt-in MCP server.</description>
+  <url>https://github.com/storytold/pdfcraft</url>
+</package>

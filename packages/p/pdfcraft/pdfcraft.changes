@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Fri Oct 23 07:09:35 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.13.0 (upstream tag v0.13.0, 2026-10-23):
+  * 0.13.0: recover existing macOS PDF associations (no Linux
+    change).
+  * Forms: Prepare a form gains Calculation order and Text field
+    table pages; renaming a field updates the calculations reading
+    it; tooltips on hover; arrow keys nudge the selected field.
+  * Editing: Edit and Format text panels relaid out, one editing
+    session per paragraph; rotate images by any angle; Header &
+    Footer in Times or Courier; Ctrl+V pastes a picture; fills and
+    border widths for text boxes and callouts.
+  * Viewer: optional gapless continuous display; full screen shows
+    one fitted page at a time; thumbnail size controls; Layers
+    panel reset; Print keeps the printer and paper size.
+  * Organize: reverse page order, Ctrl-drag copies pages, custom
+    document properties; Save As writes a clean copy, saves keep
+    file permissions and creation date.
+  * Rendering (patched hayro crates): /DefaultGray/RGB/CMYK,
+    knockout groups, stencil masks, JP2 palettes, mesh seams,
+    clip-only text extraction, Japanese CID spacing; hayro-cmap is
+    now vendored and patched for tolerant CMap parsing.
+  * New interface languages: Albanian, Catalan, Central Kurdish,
+    Finnish, Hindi, Indonesian, Korean, Lao, Norwegian Bokmal,
+    Romanian, Thai; Czech, French, Portuguese (BR), Polish and
+    Spanish catalogs completed.
+  * Security hardening (no CVE ids): encryption and signature
+    validation gaps closed, copy/print/removal limits enforced,
+    redaction removes hidden content completely or refuses, parser
+    and export work bounded, CSV formulas neutralised, recovery
+    folder owner-only on Unix; rustls-webpki 0.103.16
+    (RUSTSEC-2026-0382).
+  * Many redaction, XFA, FormCalc, text-extraction and save fixes;
+    date handling now goes through chrono.
+  * Re-vendored (update=false kept for --locked): in the shipped
+    graph only rustls-webpki 0.103.15 -> 0.103.16 (ISC) changed and
+    hayro-cmap 0.1.0 moved from crates.io to upstream's patched
+    vendor/ copy (Apache-2.0 OR MIT, same BSD-3-Clause Adobe CMap
+    blob); new plist and quick-xml 0.42 (MIT) are macOS-only,
+    webpki-root-certs 1.0.10 is not linked on Linux. License tag
+    unchanged, MSRV still 1.95, no new system deps; cargo_vendor:
+    "All lockfiles are audited", no RUSTSEC advisories.
+- Rebase pdfcraft-no-brand-assets.patch onto 0.13.0 (hunk moved 10
+  lines, same three docs/brand include_bytes! embeds; the 0.13.0
+  tree has no new docs/brand references).
+- Ship the licence texts of the assets the vendored hayro crates
+  embed (Foxit fonts, CGATS ICC profile, Adobe CMaps) under
+  pdf-backend/; list hayro-cmap and vello_common in the
+  Legal-Review-Notice.
+
+-------------------------------------------------------------------
+Sun Oct 18 17:45:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.0 (upstream tag v0.9.0, 2026-10-18):
+  * Rendering: Poppler render oracle with pixel test on; JBIG2
+    conformance fixtures; page-transform precision; Indexed samples
+    clamped to the palette range.
+  * Printing and redaction: off layers stay off; repeated redaction
+    overlays reused; undo keeps the last saved revision.
+  * UI: drag files onto the Pages panel to insert; text selection
+    drag-scrolls and extends by word/line; dragged images follow the
+    frame; page labels and navigation stay consistent.
+  * pdfcraft-no-brand-assets.patch refreshed for the moved widgets.rs
+    (same three trademark embeds, new line numbers). Re-vendored
+    (update=false kept for --locked; respect-lockfile true); license
+    re-derived over shipped targets, no new copyleft (new crates all
+    MIT/Apache), tag stands; no new system deps.
+
+-------------------------------------------------------------------
+Thu Oct 15 04:55:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.0 (stable tag v0.8.0, 2026-10-14, draft=false
+  prerelease=false)
+- Render: exact standard-14 metrics, Lab Bradford fix, Type 3 modes,
+  retire inherited resources; keep neighbouring line on replace
+- Edit/organize: orphan-widget drop, rotation-overflow guard, audit
+  rectangle cover, folder-tree batch, Telugu fallback, fsync fallback
+- UI: large PDFs off thread, drag-follows-pointer, wheel during select,
+  closed panel stays closed, shortcut handling, XFDF empty values
+- Security hardening (no CVE ids): three audit findings in redaction
+  and signature validation, overflow-safe coordinates and rotations
+- pdfcraft-no-brand-assets.patch still applies and is still needed
+  (upstream still embeds docs/brand/ marks); re-vendored
+  (update=false kept for in-tree vendor/, craft-print rev bump);
+  License tag unchanged; rust >= 1.95; OCR models still not shipped
+  (OCR reports NoModels)
+
+-------------------------------------------------------------------
+Tue Oct 13 07:31:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.1 (stable tag v0.7.1, 2026-10-12, draft=false
+  prerelease=false)
+- Combine files takes images and text files; Organize pages replace
+  and editable page-range; Create separate PDFs; PPTX export
+- Visible digital signatures with drawn/typed/image graphic; Fill &
+  Sign font size; redaction audit + case/whole-word options
+- Harden PNG/XFA/XFDF/signature/redaction handling: 10 verified
+  audit findings (no CVE ids assigned); AES-256 SASLprep passwords,
+  permissions-password unlock, honour copy permission
+- Wayland GPU selection + server DPI, StartupWMClass, scroll-speed
+  preference, theme picker, Turkish/Greek/Kazakh/Czech locales
+- pdfcraft-no-brand-assets.patch still applies cleanly and is still
+  needed (upstream still embeds docs/brand/ marks); re-vendored
+  (498 crates, License tag unchanged, craft-ui/craft-print MIT OR
+  Apache-2.0 vendored, update=false kept for in-tree vendor/);
+  rust >= 1.95 per upstream MSRV; OCR models still not shipped
+  (OCR reports NoModels)
+
+-------------------------------------------------------------------
+Mon Oct 12 06:21:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.0 (stable tag v0.6.0, 2026-10-11, draft=false
+  prerelease=false)
+- Fill & Sign: drawn signatures and drawings resize from their handles;
+  Add text keeps typed text on click-away; Select picks up signatures
+  placed over form fields
+- Combine files: thumbnail grid, expand a file into its pages, move and
+  remove single pages before combining
+- Edit: column select (Alt-drag), fill colour for shape comments, pale
+  text edited on a dark box; exports keep image transparency
+- Open R2-R4 encrypted files with non-ASCII passwords; harden render and
+  JS surfaces (nesting caps, bounded lookups)
+- Interface-size preference (Auto follows GNOME scaling), Polish
+  translation, localized shortcut names
+- pdfcraft-no-brand-assets.patch still applies cleanly and is still
+  needed (upstream still embeds docs/brand/ marks); re-vendored
+  (494 crates, License tag unchanged, ryu-js under its Apache-2.0
+  option); OCR models still not shipped (OCR reports NoModels)
+
+-------------------------------------------------------------------
+Sat Oct 10 14:51:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package 0.5.0 (stable tag v0.5.0, 2026-10-10, draft=false
+  prerelease=false): from-scratch Rust workspace source build
+  (resolver 3, edition 2024, MSRV 1.90), no copypac source exists on OBS
+  (home: copies are binary repacks, rejected per policy)
+- Services: tar_scm pinned tag + cargo_vendor (tag cratesio, update=false
+  for --locked build; upstream vendor/ holds patched hayro/lopdf/winit/
+  egui-wgpu) + cargo_audit; tarball excludes docs/brand/ trademarks
+- Build pdfcraft + pdfcraft-cli --locked --offline; CRAFT_FONTS_DIR unset
+  (system CJK fallback); OCR models (CC-BY-SA-4.0) not shipped
+- License covers bundled OFL-1.1/ISC/BSD-3-Clause/Ubuntu-font-1.0/
+  Bitstream-Vera/CC0-1.0 plus MIT/Apache-2.0; see Legal-Review-Notice
+- Add pdfcraft-no-brand-assets.patch: replace trademarked ArtCraft marks
+  embedded via include_bytes! with the open-source PdfCraft tile
+  (docs/brand/ stays excluded from tarball and RPM)
+- Correct License tag per linked vendor audit, add Legal-Review-Notice
+  and Requires basis comments.
+
