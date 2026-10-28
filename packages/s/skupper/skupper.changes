@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Oct 24 16:56:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.2.4:
+  * Go toolchain raised to 1.26.10 (go.mod now requires go >= 1.26)
+  * New Connection Sweeper CLI command
+  * TLS credential handling: accept Opaque secrets for backward
+    compatibility, use kubernetes.io/tls secrets for podman link
+    tokens, skip router ConfigMap entries when TLS secrets are
+    missing
+  * Controller reliability: port mapping recovery, MultiKeyListener
+    status on create, connector status when host and selector are
+    missing, site flow controller retry after leader lease
+  * File watcher fixes: drain the fsnotify errors channel, fix the
+    FileWatcher deadlock
+  * Respect SKUPPER_PLATFORM env var when auto-reloading namespaces
+  * skupper-source OCI image for downstream build contexts;
+    build-oci-images honors IMAGE_TAG from the Makefile
+  * AfterConfigMap task tolerates missing annotations and labels in
+    the retry loop
+  * Curl e2e pod now carries a SecurityContext (runAsUser 65534)
+  * Fixed Go dependency vulnerabilities GO-2026-5024 through
+    GO-2026-5030
+  * Fixed Go toolchain vulnerabilities GO-2026-6599, GO-2026-6600,
+    GO-2026-6603, GO-2026-6604, GO-2026-6605, GO-2026-6607,
+    GO-2026-6608, GO-2026-6609, GO-2026-6610, GO-2026-6611,
+    GO-2026-6612, GO-2026-6613, GO-2026-6617 and GO-2026-6629
+    (including CVE-2026-97032 via x/net v0.60.0), addressed by
+    the Go 1.26.10 toolchain
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Raise the golang(API) BuildRequires floor to >= 1.26 per go.mod
+- Regenerate vendor.tar.gz with the
+  tests/integration/kube/controller _test.go files importing
+  internal/fixtures set aside, which the 2.2.x branch does not
+  ship (present on main only), breaking plain 'go mod vendor';
+  shipped sources are untouched
+- Regen-vendor.sh (`make vendor`) reproduces this: only those
+  _test.go files move aside and back, output verified
+  content-identical to the committed vendor tree
+
+-------------------------------------------------------------------
 Thu Jun 04 15:00:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.1:

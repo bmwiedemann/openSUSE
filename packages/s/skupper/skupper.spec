@@ -17,17 +17,19 @@
 
 
 Name:           skupper
-Version:        2.2.1
+Version:        2.2.4
 Release:        0
 Summary:        Virtual Application Network, enabling rich hybrid cloud communication
 License:        Apache-2.0
 URL:            https://github.com/skupperproject/skupper
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        regen-vendor.sh
+Source3:        Makefile
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  golang(API) >= 1.26
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
 
 %description
 Skupper enables cloud communication by enabling you to create a Virtual
@@ -54,7 +56,6 @@ the cluster-admin role to create networks.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -65,7 +66,6 @@ Bash command line completion support for %{name}.
 
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       fish
 Supplements:    (%{name} and fish)
@@ -76,7 +76,6 @@ Fish command line completion support for %{name}.
 
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
