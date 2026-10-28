@@ -17,7 +17,7 @@
 
 
 Name:           tcpreplay
-Version:        4.6.1
+Version:        4.6.2
 Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only
@@ -69,7 +69,7 @@ rm %{buildroot}%{_libdir}/pkgconfig/lib%{name}.pc
 %make_build check
 
 %files
-%license docs/LICENSE
+%license LICENSE
 %doc docs/CHANGELOG
 %{_bindir}/tcpbridge
 %{_bindir}/tcpcapinfo

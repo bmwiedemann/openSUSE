@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:26:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.6.2 (bugfix release):
+  * fragroute: six OSS-Fuzz crash fixes: NULL dereferences,
+    a wild read, a negative memmove size, a rule leak and
+    double frees of the ip_frag/tcp_seg random handle
+  * fragroute: ip_opt and tcp_opt add options again, no more
+    one-byte truncation, fixed wscale length, paws overflow
+    and chaff leaks
+  * tcpreplay: --pps is honored with -T select again,
+    a regression since 4.5.0
+  * build: musl and uClibc support, tcpdump detection when
+    cross compiling, macOS clang warning fixes
+  * packaging: follow upstream's LICENSE move from docs/ to
+    the top level in %license
+  * CVE-2020-12740 (boo#1171427): fixed upstream in 4.3.3,
+    this package ships 4.6.2 and is not affected
+
+-------------------------------------------------------------------
 Sat Aug 15 18:25:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.6.1:
