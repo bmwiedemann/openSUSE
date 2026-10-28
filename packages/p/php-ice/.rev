@@ -97,4 +97,26 @@
     <comment></comment>
     <requestid>1317446</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>0a179b479b30b2d080fe733051b003dc</srcmd5>
+    <version>1.10.1</version>
+    <time>1793215449</time>
+    <user>dimstar_suse</user>
+    <comment>- ice 1.12.0
+  * PHP 8.0, drop support
+  * PHP 8.5, add support
+  * Update zephir parser to 2.8.0
+  * Update mongodb/mongodb to ~2
+  * Sleet\Parser, fix template parsing and array literal syntax
+  * Di, Arr, fix magic get/set returning null for registered services
+  * FastRouter, fix routes with no explicit handler not matching
+  * Url, fix double leading slash in generated URLs
+  * Filter\Css, fix comment stripping
+  * Http\Response, fix byte range for non-resumable downloads
+  * Fix various Zephir compile errors and conditional-initialization warnings
+  * Tests, convert @dataProvider annotations to PHP 8 attributes for PHPUnit 11+
+- remove upstreamed patch
+  - ice-fix-build-PHP-8.5.patch</comment>
+    <requestid>1393451</requestid>
+  </revision>
 </revisionlist>
