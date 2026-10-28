@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 28 11:31:54 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20261028.0a629c2:
+  * Provide rdii-pubkey-setup.service to import pubkeys into import-pubring.gpg
+
+-------------------------------------------------------------------
 Fri Oct 23 10:18:46 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 20261023.8560c66:

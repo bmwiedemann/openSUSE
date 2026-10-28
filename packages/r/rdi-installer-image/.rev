@@ -53,4 +53,13 @@
   * Rename images to include rdi-installer version</comment>
     <requestid>1393128</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>8d9fc757c3f22f71f5424db2caba6545</srcmd5>
+    <version>unknown</version>
+    <time>1793206211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20261028.0a629c2:
+  * Provide rdii-pubkey-setup.service to import pubkeys into import-pubring.gpg</comment>
+    <requestid>1393416</requestid>
+  </revision>
 </revisionlist>
