@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        5.16.0
+Version:        5.23.0
 Release:        0
 Summary:        PHP Extension Module
 License:        BSD-3-Clause
@@ -44,7 +44,6 @@ BuildRequires:  %{php_name}-devel
 BuildRequires:  %{php_name}-pdo
 BuildRequires:  %{php_name}-psr >= 0.7.0
 BuildRequires:  gcc
-BuildRequires:  %{php_name} < 8.6
 Requires:       %{php_name}-mysql
 
 %description
