@@ -354,4 +354,20 @@
     from 1.6.5 to 1.7.8 in /ecs-init (#4925) (bsc#1280679, CVE-2026-89090) (forwarded request 1384223 from glaubitz)</comment>
     <requestid>1384291</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0a6cd0a0d6d9627613bec37e0cc5ac45</srcmd5>
+    <version>1.108.1</version>
+    <time>1793206202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.108.1
+  * Enhancement - Bump ECS Exec SSM Agent to 3.3.5390.0 (#5171)
+  * Enhancement - Update to golang 1.26.9 (#5170)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.6 to 1.33.8 in /ecs-agent, /agent and /ecs-init (#5169)
+  * Enhancement - Stage ecs-anywhere exec binaries in a temporary
+    directory and verify their signature (#5168)
+  * Enhancement - Bump golang.org/x/time to 0.16.0 in /ecs-agent
+    and /agent (#5165) (forwarded request 1393215 from glaubitz)</comment>
+    <requestid>1393403</requestid>
+  </revision>
 </revisionlist>
