@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Mon Oct 26 11:11:12 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.11.1 (upstream tag v0.11.1, 2026-10-25):
+  * Integration of many contributor PRs: Edit Points segment/path
+    context menu and modifier-key drags, pattern fill gallery,
+    Columns dialog, AutoFormat as-you-type lists, table cell range
+    selection, RTF outline save/open, Play From in the Animation
+    Pane, Set Transparent Color by clicking the picture
+  * Fixes for number formats (scientific, trailing-comma scaling),
+    chart labels/axes/histogram bins, PPTX import/export (video
+    crop, comments namespaces, paragraph builds), rendering of
+    groups, tables and glows, presenter view and slide show
+  * Hardening (no CVE assigned): EMF+ parsing and clipping
+    complexity, PPTX import resource budgets, bounded animation and
+    HTML entity scans, regular-file/size checks on read, nesting
+    limit for groups, exclusive temporary directories
+  * Media: bitstream, isobmff and matroska parsing moved to
+    craft-media; PDF export pins craft-pdf and krilla
+  * CI and packaging scripts only otherwise; no install layout
+    change
+  * Re-vendor (update=true): vendor tree re-audited, no new
+    licences beyond the ones already listed; Legal-Review-Notice
+    unchanged; cargo_vendor reports all lockfiles audited.
+- Set the fixed metainfo release date to 2026-10-25 (v0.11.1).
+
+-------------------------------------------------------------------
+Fri Oct 23 07:12:14 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.10.0 (upstream tag v0.10.0, 2026-10-22):
+  * 0.9.0: PNG export with a transparent background; PDF export
+    stores each shared slide backdrop once; a .ppsx opened last
+    starts its slide show; Align to Slide/Selected Objects
+  * 0.9.0: AutoFormat superscripts ordinals; change case across
+    formatting runs; flipping a rotated shape mirrors the
+    rotation; Edit Points freeform conversion is one undo step
+  * 0.9.0: imported chart parts survive native saves; unreadable
+    PPTX slides are reported instead of silently dropped
+  * 0.9.0 hardening (no CVE assigned): absurd effect sizes from
+    a file are capped (a huge glow asked for 34 GB), duplicate
+    shape ids get fresh ones, shape geometry and comment.delete
+    indices are bounds-checked
+  * 0.10.0: thumbnails render only the slides in view; an empty
+    text line takes the size of its end mark; invalid slide
+    indices are rejected; OPC targets strip the URI fragment
+    before percent-decoding; animation triggers on deleted
+    shapes are cleared
+  * 0.10.0: macOS Finder/Dock open support (fmv-macos-events,
+    macOS-only, not built here); docs/CI only otherwise
+  * Re-vendor (update=true): only point bumps (icu 2.4, cc,
+    memmap2, zerovec, yoke, tinystr, webbrowser, crc32fast) under
+    already-listed licences; licence set and Legal-Review-Notice
+    unchanged; cargo_vendor reports all lockfiles audited, no
+    RUSTSEC advisories.
+- Set the fixed metainfo release date to 2026-10-22 (v0.10.0).
+
+-------------------------------------------------------------------
+Sun Oct 18 17:25:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.0 (upstream tag v0.8.0, 2026-10-18):
+  * Slide show: click-triggered animations, per-slide state,
+    Presenter View fixes; copy/cut put text on the clipboard
+  * Editing: outline levels from leading tabs; eyedropper colour
+    picker; linked pictures resolve via r:link; PPTX round-trip
+    keeps comments, links, shows and groups
+  * Harden media importers against crafted files (no CVE
+    assigned): damaged audio no longer hangs or panics; ASF
+    walk arithmetic, ID3 chains, NAL units, Matroska nesting
+    and AV1 tile groups validated or bounded; Opus header
+    checked; quick-xml 0.41 (RUSTSEC-2026-0194,
+    RUSTSEC-2026-0195)
+  * MCP validates reply IDs and response frames
+  * cargo_audit clean.
+- Raise the cargo floor to >= 1.95, matching upstream's
+  rust-version.
+
+-------------------------------------------------------------------
+Thu Oct 15 05:07:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7.0 (upstream tag v0.7.0, 2026-10-14):
+  * Text fidelity: superscript/subscript spacing, 1.2x single spacing,
+    PowerPoint wrap, gradient fills, shadows and glows, WordArt transforms
+  * Rendering: two-colour gradients, pattern and compound outlines, soft edges,
+    background fills, group-scale line and text fixes, 38 preset shapes
+  * PPTX interop: placeholder geometry, picture-fill tiling, table styles kept,
+    WMF/EMF metafiles, embedded previews, chart legends and axes
+  * Interface: File tab view, Selection Pane drag and lock, CJK IME and UI,
+    PowerPoint text keys, colour emoji, missing-font reporting
+  * No CVE keywords in the 0.6.1-0.7.0 range; cargo_audit clean.
+- Packaging: vendor re-audit (update=true, no vendor/ upstream): same licence
+  set, still MPL-2.0 symphonia plus OFL-1.1/Ubuntu-font-1.0 fonts; in-house
+  H.264/HEVC/VP9/AV1 decoders unchanged, patent comfort still open
+
+-------------------------------------------------------------------
+Tue Oct 13 07:29:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.1:
+  * No user-visible changes: upstream 0.5.0 to 0.6.1 only
+    bumps the workspace version and reworks the release
+    workflows (shared craft-common-actions, Windows signing)
+  * Vendor re-audit (update=true, no vendor/ upstream): same
+    licence set, still MPL-2.0 symphonia audio decoding plus
+    OFL-1.1/Ubuntu-font-1.0 fallback fonts; ryu takes the
+    Apache-2.0 side of its Apache-2.0 OR BSL-1.0 dual licence
+  * In-house H.264/HEVC/VP9/AV1 decoders unchanged; legal
+    comfort for the codec patents is still open
+
+-------------------------------------------------------------------
+Sun Oct 11 19:39:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 0.5.0:
+  * Animated GIFs play in slides, with pause (media.gifPlay)
+  * Animation Painter copies and applies sequences between shapes
+  * Morph turns a changed geometry outline (a circle into a star)
+  * Hyperlinks drawn in the theme colour, underlined; show follows links
+  * Date fields show today's date in their own format; flipped shapes
+    keep their text readable
+  * Slide-show transitions, colour menus and the Home button fixed;
+    scalable SVG app icon for Linux desktops
+  * MCP export tool lists PDF and its layout options
+  * Vendor audit (update=true, no vendor/ upstream): binaries link
+    MPL-2.0 symphonia audio decoding plus OFL-1.1/Ubuntu-font-1.0
+    fallback fonts; CRAFT_FONTS_DIR stays unset so nothing else embeds
+  * In-house H.264/HEVC/VP9/AV1 decoders implement patented
+    algorithms; legal comfort for the codec patents is still open
+

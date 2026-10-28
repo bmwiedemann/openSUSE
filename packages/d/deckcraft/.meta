@@ -1,0 +1,10 @@
+<package name="deckcraft" project="openSUSE:Factory">
+  <title>Native presentation app with slides, shows and an agent API</title>
+  <description>DeckCraft is an open-source, native presentation app: themes, layouts, shapes, pictures,
+tables, charts, transitions and animations. It opens and saves PowerPoint (.pptx) files and
+presents them full screen with a presenter view.
+
+This package provides the desktop application; the companion deckcraft-cli
+subpackage provides the headless renderer, converter and command server.</description>
+  <url>https://github.com/storytold/deckcraft</url>
+</package>
