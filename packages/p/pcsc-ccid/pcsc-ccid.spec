@@ -74,6 +74,9 @@ cp -a src/towitoko/README README.towitoko
 
 %install
 %meson_install
+# Copied elsewhere:
+mkdir -p %{buildroot}/%{_udevrulesdir}
+sed 's:GROUP="pcscd":GROUP="scard":' <src/92_pcscd_ccid.rules >%{buildroot}/%{_udevrulesdir}/92_pcscd_ccid.rules
 
 %files
 %defattr(-,root,root)

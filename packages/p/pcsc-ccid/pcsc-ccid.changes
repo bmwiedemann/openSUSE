@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 27 11:17:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Revert previous change until we figure out where scard is used
+  still. Instead we give the pcscd user an additional group and
+  make it member of the scard group. (boo#1287634)
+
+-------------------------------------------------------------------
 Mon Oct 26 21:32:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - No longer override the group to scard from pcscd. This breaks
