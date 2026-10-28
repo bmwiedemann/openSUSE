@@ -21,7 +21,7 @@
 %endif
 
 Name:           fde-tools
-Version:        0.7.10
+Version:        0.7.11
 Release:        0
 Summary:        Tools required for Full Disk Encryption
 License:        GPL-2.0-only
@@ -32,6 +32,7 @@ Source1:        fde-tools.service
 Source2:        fde-tools.conf
 Patch0:         fde-tools-firstboot-alp-snapshot.patch
 BuildRequires:  help2man
+BuildRequires:  pkgconfig(efivar)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcryptsetup)
 BuildRequires:  pkgconfig(libfido2)
@@ -133,6 +134,7 @@ install -m 0644 %{S:2} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 %files
 %{_sbindir}/fdectl
+%{_sbindir}/fde-boot-loader
 %{_sbindir}/fde-token
 %{_sbindir}/fdectl-grub-tpm2
 %dir %{_sysconfdir}/fde

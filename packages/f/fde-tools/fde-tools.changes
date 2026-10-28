@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 27 07:12:33 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.7.11
+  + Add fde-boot-loader helper to detect loader path without
+    efibootmgr/efibootdump (bsc#1286645)
+- Add the new utility: fde-boot-loader
+  + Also add the new BuildRequires: efivar
+
+-------------------------------------------------------------------
 Fri Oct 16 07:05:31 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.7.10
