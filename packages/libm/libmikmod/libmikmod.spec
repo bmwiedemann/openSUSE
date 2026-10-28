@@ -18,11 +18,11 @@
 
 %define lname	libmikmod3
 Name:           libmikmod
-Version:        3.3.15
+Version:        3.3.16
 Release:        0
 Summary:        MikMod Sound Library
 License:        LGPL-2.1-or-later
-URL:            http://mikmod.raphnet.net/
+URL:            http://mikmod.raphnet.net
 Source:         http://sourceforge.net/projects/mikmod/files/%{name}/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch1:         libmikmod-config.patch
@@ -65,11 +65,13 @@ also write wav files. Supported file formats include mod, stm, s3m,
 mtm, xm, and it.
 
 %prep
-%autosetup -p0
+%autosetup
 
 %build
-%configure --disable-static --disable-oss
-make %{?_smp_mflags}
+%configure \
+	--disable-static \
+	--disable-oss
+%make_build
 
 %install
 %make_install

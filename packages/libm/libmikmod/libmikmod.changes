@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 28 12:09:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.3.16:
+  * Fix out-of-bounds reads in MTM loader (CVE-2026-111165.)
+  * Fix out-of-bounds reads in IMF loader (CVE-2026-111166.)
+- Drop -p0 variable in autosetup call, it is implicit.
+- Use make_build macro.
+
+-------------------------------------------------------------------
 Sat Oct 10 13:04:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.15
