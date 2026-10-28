@@ -2,5 +2,6 @@
   <service name="download_files" mode="manual"/>
   <service name="go_modules" mode="manual">
     <param name="replace">golang.org/x/mod=golang.org/x/mod@v0.40.0</param>
+    <param name="replace">github.com/klauspost/compress=github.com/klauspost/compress@v1.20.2</param>
   </service>
 </services>
