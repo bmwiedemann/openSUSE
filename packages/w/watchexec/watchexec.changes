@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 14 05:54:25 UTC 2026 - David Anes <david.anes@suse.com>
+
+- Remove the redundant 'tar' service to stop a duplicate source tarball made from a stale .obsinfo.
+- Update to version 2.8.0 (bsc#1266416, CVE-2026-40034):
+  * release: update CLI metadata
+  * release: normalize changelog headers
+  * release
+  * fix(supervisor): take the command state mutably when resuming a pause
+  * feat(supervisor): record pauses and continue paused commands before stopping them
+  * plan: pause management — record pauses, manage them in normal operations
+  * feat(supervisor): resume the granted foreground on SIGCONT, and guard grants
+  * plan: terminal pause handling for the foreground grant
+  * unplan: --wrap-process=auto with JIT terminal foreground grant
+
+-------------------------------------------------------------------
 Fri Apr 24 20:14:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.1:
@@ -62,11 +77,6 @@ Tue Mar 10 08:29:22 UTC 2026 - david.anes@suse.com
   * only check docs on linux
   * remove netbsd typecheck
   * fix: do not print "waiting" if timeout is 0 (#946)
-
--------------------------------------------------------------------
-Tue Mar 10 08:29:09 UTC 2026 - david.anes@suse.com
-
-- Update to version 2.3.2:
   * chore: Release
   * cli: change the default for --wrap-process on mac to session
   * chore: Release
