@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Mon Oct 26 11:21:06 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.12.1 (upstream tag v0.12.1, 2026-10-25):
+  * Hardening (M2.9/M6/M7): hostile XLSX imports, datetime fields,
+    wildcard searches, lambda work, print/export/autofit and native
+    file open/save are bounded; protection gaps closed; Agile
+    encryption dataIntegrity is enforced; a self-calling LAMBDA
+    answers #NUM! instead of overflowing the stack.
+  * New: PivotTable Show Details, Auto Fill Options button, Fill
+    Days/Weekdays/Months/Years, Show Outline Symbols (Ctrl+8),
+    Paste Name (F3), richer Go To, status bar statistics menu,
+    100% Stacked Area/Bar charts, Circular References submenu,
+    theme tokens, multi-line formula bar and code editor widget.
+  * Fixes: structured-reference '!' kept on XLSX save, accounting
+    formats 42/44 written with their code, MOD with tiny divisors,
+    TEXTBEFORE/TEXTAFTER empty instance_num, Ctrl+click follows
+    hyperlinks, more translations (Romanian, Japanese).
+  * Re-vendored (update=true); cargo_vendor lockfile audit clean
+    (the cargo_audit service is a no-op). Licence set of the
+    vendor tree unchanged, no new copyleft; no new system deps.
+- Set the fixed metainfo release date to 2026-10-25.
+
+-------------------------------------------------------------------
+Fri Oct 23 06:53:07 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.11.1 (upstream tag v0.11.1, 2026-10-22):
+  * 0.10.0 (2026-10-21) only changed CI; there was no 0.11.0.
+  * Hardening: embedded scripts need workbook trust before they
+    run; SUBTOTAL/AGGREGATE, LINEST, array broadcasts, pasted HTML
+    colspan/rowspan, repeated XLSX columns and long dependency
+    chains are bounded; the control channel drops a request whose
+    sender already timed out instead of running it late.
+  * Interface languages Dutch, Romanian, Greek, Italian, Polish,
+    Turkish, Ukrainian and Vietnamese; Japanese dialogs translated;
+    Spanish formula aliases for financial functions.
+  * New: Advanced Filter dialog, fill-handle right-drag menu, Number
+    Stored as Text indicator, More Colors/Recent Colors, Ctrl+[ and
+    Ctrl+] select precedents/dependents, wrap-aware row auto-fit;
+    PDF export keeps hyperlinks and gridcraft-cli convert writes PDF.
+  * XLSX/charts: phonetic runs, per-script theme fonts, dynamic-array
+    cell metadata, note boxes and header/footer pictures kept on
+    save; multi-level category axes; [Content_Types].xml written
+    first so libmagic detects the file type.
+  * gridcraft-cli check fails on empty or incomplete input discovery
+    and its --json lists warning messages instead of a count.
+  * Fixes: closing the window asks to save; Ctrl+Q no longer quits
+    outside macOS; CJK text prints with a CID font; Lao text uses an
+    installed Lao face; many Excel-parity calculation fixes.
+  * Re-vendored (update=true): only clipboard-win 5.4.3, memmap2
+    0.9.12, open 5.4.5 and tokio 1.54.1 move, licences unchanged;
+    of these only memmap2 is linked. Crate and licence set of the
+    shipped targets unchanged, no new copyleft, tag and notice
+    stand; no new system deps; MSRV still 1.90.
+  * cargo_vendor lockfile audit clean, no advisories (the
+    cargo_audit service is a no-op).
+- Set the fixed metainfo release date to 2026-10-22; it was still
+  2026-10-18 from 0.8.0.
+
+-------------------------------------------------------------------
+Wed Oct 21 06:40:33 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.9.0 (upstream tag v0.9.0, 2026-10-20):
+  * Pivot tables: grand totals read and written in Excel's
+    direction; TRUE/FALSE or error values in a source no longer make
+    the file unopenable; unknown value-field funcs rejected.
+  * Right-to-left sheets kept across XLSX, XLS and HTML import and
+    export; keytips and keyboard shortcuts for whole rows/columns.
+  * Fixes: MEDIAN overflow, TEXTBEFORE/TEXTAFTER negative instances,
+    255-character name limit counted in characters, touch panning.
+  * Re-vendored; no new system deps.
+
+-------------------------------------------------------------------
+Sun Oct 18 17:23:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.0 (upstream tag v0.8.0, 2026-10-18):
+  * Formulas: recalculate all changed cells after large-range clears;
+    Excel 8,192-character limit and postfix nesting no longer crash.
+  * UI: AutoFilter Enter applies and closes; control port closes on the
+    first non-request line.
+  * Re-vendored (update=true, lockfile moves with vendor tree: arboard
+    3.7.0, combine 4.6.9, zbus/zvariant fixlets); license re-derived
+    over shipped targets, no new copyleft (MPL-2.0 colored and BSL-1.0
+    crates not linked), tag stands; no new system deps.
+
+-------------------------------------------------------------------
+Thu Oct 15 05:08:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.0 (upstream tag v0.7.0, 2026-10-14):
+  * Calculation hardening: spill/offset/INDEX/INDIRECT overflows give #REF!,
+    deep operator chains print iteratively, TEXTSPLIT/HSTACK/PIVOTBY size-checked
+  * Functions match Excel 365 (MIRR/COUNTIF/ROMAN/MODE/DGET/CELL), date-system
+    fixes, structured-reference spacing, defined-name quoting
+  * XLS/XLSX fidelity: FORMAT truncation, compound-sector opens, calc settings,
+    default font and fileVersion kept, chart sheets and XML maps survive
+  * Interface: Page Setup/Validation/Zoom dialogs open on current values,
+    Serbian/Czech/pt-BR translations, sheet navigator, PDF export, hyperlink
+    confirmation (http/https/mailto only)
+  * No CVE keywords in the 0.6.1-0.7.0 range; cargo_audit clean.
+- Packaging: vendor re-audit (update=true): no new copyleft linked; tag unchanged
+
+-------------------------------------------------------------------
+Tue Oct 13 07:29:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.1 (upstream tag v0.6.1, 2026-10-12):
+  * Legacy .xls (BIFF8) import and password-encrypted workbooks
+    (Agile and Standard encryption); XLSX keeps unmodelled parts
+    on save, writes threaded comments, checkboxes and trendlines.
+  * New functions ODDFPRICE/ODDFYIELD/ODDLPRICE/ODDLYIELD,
+    FORECAST.ETS family, TRIMRANGE, PERCENTOF, EUROCONVERT and
+    BAHTTEXT; iterative calculation for circular references.
+  * Charts: PivotCharts, Recommended Charts dialog and Select Data;
+    Page Layout view with rulers and in-place headers/footers;
+    table slicers, Analysis ToolPak (13 tools), Solver and
+    Forecast Sheet.
+  * Interface languages Spanish, German, Czech and French; File
+    Backstage view, display-theme switch and print via dialog.
+  * XLSX: bump quick-xml 0.38.4 to 0.41.0, fixing RUSTSEC-2026-0195
+    (unbounded namespace-declaration allocation) and RUSTSEC-2026-0194
+    (quadratic duplicate-attribute check), both DoS via crafted XML.
+- License re-derived over the new vendor tree for the shipped
+  targets: no new copyleft linked (new crates are MIT OR
+  Apache-2.0); tag unchanged.
+
+-------------------------------------------------------------------
+Sun Oct 11 19:25:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package gridcraft 0.5.0 (upstream tag v0.5.0, 2026-10-10):
+  native spreadsheet opening and saving .xlsx workbooks and CSV/TSV,
+  with hundreds of worksheet functions, formatting, sorting, filtering
+  and charts; every action is also runnable headless via gridcraft-cli.
+- Highlights: ODS and XLSB import (data plus cached values); charts
+  with smooth curves, row/column switching and combo/stock/histogram
+  kinds; interface language follows the system (Portuguese, Simplified
+  Chinese, Korean, Russian added) with CJK/Thai/Hebrew rendering;
+  sheet protection enforces locked cells and keeps hidden formulas
+  hidden; Paste Special, Text to Columns and in-cell pictures.
+- Excel parity fixes: DATE(1900,2,29) serial, 15-digit ROUND,
+  SUMIF/AVERAGEIF range sizing, spill (#SPILL!/#CALC!) handling.
+- License derived over the vendor tree for the shipped targets
+  (gridcraft, gridcraft-cli): no copyleft linked; tag covers the
+  embedded OFL-1.1/Ubuntu-font-1.0 fonts and Unicode-3.0 code, see
+  the Legal-Review-Notice in the spec. No vendor/ upstream, so the
+  cargo_vendor service runs with update=true (14 crates refreshed).
+- Split out gridcraft-cli subpackage (own description and files,
+  main package ships the GUI only, main Recommends: gridcraft-cli);
+  the headless CLI needs none of the X11/Wayland/Vulkan Requires.
+

@@ -1,0 +1,7 @@
+<package name="gridcraft" project="openSUSE:Factory">
+  <title>Native open-source spreadsheet with XLSX support</title>
+  <description>GridCraft is an open-source, native spreadsheet. It opens and saves .xlsx workbooks and CSV/TSV files, evaluates hundreds of worksheet functions, and formats, sorts, filters and charts data.
+
+This package provides the desktop application; the companion gridcraft-cli subpackage provides the headless converter, evaluator and command server.</description>
+  <url>https://github.com/storytold/gridcraft</url>
+</package>
