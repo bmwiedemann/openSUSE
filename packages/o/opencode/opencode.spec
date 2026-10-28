@@ -25,7 +25,7 @@
 # The TypeScript and libopentui.so talk over a private FFI ABI with no
 # versioning of its own, so the runtime opentui package must be the
 # release this tree pins. %%prep checks that this still matches.
-%global opentui_version 0.6.8
+%global opentui_version 0.7.0
 # The two native libraries loaded through bun:ffi at run time. Both ABIs are
 # private to the TypeScript that ships in the vendor tree, so the packages
 # are required at exactly the version that tree was generated from; %%prep
@@ -56,18 +56,18 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        2.1.4
+Version:        2.2.0
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 2.1.4 from the declared license field
-# of all 352 unique packages in the vendor tarball (354 store entries: 353
-# package dirs, one name@version twice, plus the symlink farm, which is not
-# a package). No copyleft of any kind. The
-# SPDX set is unchanged from 2.0.32; the counts moved slightly (MIT 195,
-# Apache-2.0 71, ISC 63, BlueOak-1.0.0 9, rest as before). @opencode-ai/pty-linux-{arm64,x64}-gnu ship a
+# Legal-Review-Notice: rederived for 2.2.0 from the declared license field
+# of all 356 packages in the vendor tarball (357 store entries: one entry
+# is the symlink farm, which is not a package; several names resolve at two
+# or three versions, same as before). No copyleft of any kind. The
+# SPDX set is unchanged from 2.1.4; the counts moved slightly (MIT 197,
+# ISC 65, Apache-2.0 71, BlueOak-1.0.0 9, rest as before). @opencode-ai/pty-linux-{arm64,x64}-gnu ship a
 # prebuilt ELF bin/opencode-pty that ends up embedded in the payload rather
 # than loaded from a package like the rest of the native code; both are MIT
 # and both shipped that way at 2.0.23 too. See README.SUSE-maint "Native code".
@@ -481,8 +481,8 @@ install -pm 0644 watcher.node "$plat/watcher.node"
 # The highlighter's grammar modules, from the tree-sitter-<lang>-wasm
 # packages (bun embeds what sits in the asset directories). Every copy in
 # the tree gets them: a re-resolved tree can hold two @opentui+core entries
-# while the farms link only one of them (0.6.8 ships d25f280c761c3e91 live
-# and eff4d38d6a4a2cd9 unreferenced). 0.6.8 adds a sixth module, tsx for
+# (0.7.0 ships d25f280c761c3e91 live and eff4d38d6a4a2cd9 for the
+# plugin/theme farms). 0.7.0 adds a sixth module, tsx for
 # typescriptreact, which no upstream descriptor uses yet but bun build
 # still resolves; it comes from tree-sitter-typescript-wasm like the
 # typescript one, so no new pin.
@@ -533,6 +533,16 @@ install -Dpm 0755 libopencode-tsshim.so %{buildroot}%{_libdir}/%{name}/libopenco
 # truncated it, it does not get this far.
 %{buildroot}%{_bindir}/%{name} --version
 test "$(%{buildroot}%{_bindir}/%{name} --version)" = "%{name} v%{version}"
+
+# The vendor tree must hold exactly one copy of the TUI toolkit. A filtered
+# install without the workspace root resolves two copies, whose theme colour
+# objects then fail the identity check, so the TUI crashes at startup with
+# "e.replace is not a function" (boo#1288219). Fail here rather than ship a
+# binary that crashes on first start.
+test "$(ls -d node_modules/.bun/@opentui+core@* 2>/dev/null | wc -l)" = "1" || {
+    echo "vendor tree has more than one @opentui/core instance; see boo#1288219" >&2
+    exit 1
+}
 
 # What the payload carries: the distribution's modules and the addon
 # built above, plus one prebuilt ELF helper @opencode-ai/pty ships - the

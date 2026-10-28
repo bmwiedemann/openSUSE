@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Oct 28 07:10:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix TUI crash at startup: `e.replace is not a function`
+  (boo#1288219)
+  * The filtered `bun install` in opencode_vendor resolved two
+    @opentui/core copies, whose theme colours then failed the
+    identity check; adding the workspace root to the filter set
+    leaves exactly one (reporter's hint, same as upstream PR
+    #56889 for their Nix packaging)
+  * Re-vendored: keep list drops the duplicate @opentui/core
+    0.7.0 entry, licence set unchanged, no copyleft
+  * %check now fails unless the tree holds exactly one
+    @opentui/core copy
+
+-------------------------------------------------------------------
+Tue Oct 27 19:50:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.2.0
+  * Core: experimental image and decision generation APIs;
+    session instruction entries for plugins; configurable
+    prompt-cache TTLs; history starts from the latest
+    compaction; cheaper diffs, schemas and git discovery
+  * TUI: /usage and model-picker details for Console limits;
+    `run --format json` reports connection errors as JSON
+  * AI: throttled requests retried instead of misreported as
+    context overflows; fixes for xAI, Groq, Bedrock, OpenAI,
+    Kimi and MCP tool handling
+  * Breaking for plugin authors: @opencode/ai root is now the
+    Promise API; the OpenCode GitHub Action is removed
+  * Many more fixes and improvements; the full list is the
+    v2.1.4..v2.2.0 release notes upstream publishes
+- Needs the opentui 0.7.0 runtime: 2.2.0 pins @opentui/*
+  0.7.0 over a private FFI ABI, and %prep checks the pin
+  still matches
+- Regenerate the vendor tree: 357 of 2021 store entries kept
+  (closure moved for opentui 0.7.0, @opentunnel/client 0.6.1
+  and gitlab-ai-provider 6.23.1; uqr left)
+- Legal review re-derived for the new tree: same 10-licence
+  set (MIT 197, Apache-2.0 71, ISC 65, rest as before), no
+  copyleft
+- All five patches apply clean against 2.2.0 (offsets only,
+  no rebases); filenames unchanged
+- fff 0.10.5, bun-pty 0.4.11, photon-node 0.3.4, parcel 2.5.1,
+  @opencode-ai/pty 0.3.1 and lydell node-pty 1.2.0-beta.12
+  are unchanged, so the %prep pin checks pass unmodified; no
+  new mandatory dependencies
+
+-------------------------------------------------------------------
 Sun Oct 25 19:12:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.1.4 (the 2.x line publishes no release objects, so

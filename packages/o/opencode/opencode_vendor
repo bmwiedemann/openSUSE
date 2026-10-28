@@ -28,7 +28,7 @@ retrace=""
 # FFI ABI ties the tree to the opentui RPM 1:1, so on a lockstep bump this
 # leads and the tag's pin is rebased up to it (same %global opentui_version
 # as the spec). Must stay in sync with the opentui package.
-opentui_version="0.6.8"
+opentui_version="0.7.0"
 
 here="$(cd "$(dirname "$0")" && pwd)"
 src="$here/opencode-$version.orig.tar.gz"
@@ -78,10 +78,18 @@ pinned=$(python3 -c "import json; print(json.load(open('$tree/package.json'))['w
 [[ $pinned == "$opentui_version" ]] || { echo "@opentui/core pin is $pinned, want $opentui_version" >&2; exit 1; }
 
 echo "==> installing npm dependencies"
-# --filter restricts the install to the CLI and its build script. Without it
-# bun resolves the whole monorepo -- 4626 packages, 2.3 GB -- and drags in the
-# web and desktop trees, which is where the licence problems live (@sentry/cli
-# is FSL-1.1-MIT, @img/sharp-libvips-* are LGPL prebuilt binaries).
+# --filter restricts the install to the workspace root and the CLI and its
+# build script. Without the root filter bun resolves one @opentui/core copy
+# per filter scope, and the two instances disagree on theme colour identity:
+# the TUI then crashes at startup with "e.replace is not a function"
+# (boo#1288219). Upstream hit the same double instance in their own Nix
+# packaging and fixed it the same way, by adding the root to the filter
+# set (upstream PR #56889).
+#
+# Without any filter bun resolves the whole monorepo -- 4626 packages,
+# 2.3 GB -- and drags in the web and desktop trees, which is where the
+# licence problems live (@sentry/cli is FSL-1.1-MIT, @img/sharp-libvips-*
+# are LGPL prebuilt binaries).
 #
 # The lockfile is deliberately not frozen: bun rewrites the key order of
 # trustedDependencies and patchedDependencies, so a bun newer than the one
@@ -100,7 +108,7 @@ echo "==> installing npm dependencies"
 # step after this one prunes the platforms we do not build for back out.
 ( cd "$tree" && bun install --ignore-scripts --no-progress \
       --cpu '*' --os '*' \
-      --filter './packages/cli' --filter './packages/script' >/dev/null )
+      --filter './' --filter './packages/cli' --filter './packages/script' >/dev/null )
 
 store="$tree/node_modules/.bun"
 

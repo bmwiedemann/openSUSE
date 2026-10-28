@@ -496,4 +496,12 @@ aarch64, all 5 patches still apply.</comment>
     <comment>Update opencode to 2.1.4. - Stage with 1392516 (exact Requires: opentui = 0.6.8).</comment>
     <requestid>1392518</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f75ba3d0aedf14dca30d096b9da24fe2</srcmd5>
+    <version>2.2.0</version>
+    <time>1793206064</time>
+    <user>dimstar_suse</user>
+    <comment>Fix TUI startup crash (boo#1288219; stage with opentui 0.7.0).</comment>
+    <requestid>1393279</requestid>
+  </revision>
 </revisionlist>
