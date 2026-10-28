@@ -17,7 +17,7 @@
 
 
 Name:           zpaqfranz
-Version:        65.14
+Version:        65.15
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 # Legal-Review-Notice: zpaqfranz is a single-translation-unit program that
@@ -90,7 +90,7 @@ time machine, but much more efficiently.
 sed -i 's/\r$//' CHANGELOG.md COPYING
 
 %build
-%{set_build_flags}
+%set_build_flags
 # Upstream's Makefile does not know about s390x and strips the executable, so
 # the single translation unit is compiled directly.
 g++ $CXXFLAGS $LDFLAGS \

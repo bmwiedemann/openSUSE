@@ -226,4 +226,12 @@ Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
     <comment>Update zpaqfranz to 65.14.</comment>
     <requestid>1392567</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>317c6f09f663542be543d815a76dc77f</srcmd5>
+    <version>65.15</version>
+    <time>1793206020</time>
+    <user>dimstar_suse</user>
+    <comment>Update zpaqfranz to 65.15.</comment>
+    <requestid>1393174</requestid>
+  </revision>
 </revisionlist>

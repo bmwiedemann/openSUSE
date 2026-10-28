@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:36:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.15 (upstream notes this release is still to be
+  stabilized, not for production use yet):
+  * Much lower memory use on huge archives: d, a, x and t now
+    handle millions of files on small machines instead of dying
+    with std::bad_alloc
+  * New tw command: test every file decompressed in RAM against
+    its stored hash (plus the on-disk files with a folder given)
+  * New x -lowram: extract archives whose name index does not
+    fit in RAM, one pass per name interval
+  * Tests (t, tw, pp, p, x) now answer OK only when every file
+    really comes out right; recoverable damage is a WARNING,
+    anything else an ERROR
+  * a -verify no longer writes the CRC-32 as 00000000
+  * A damaged index block no longer hangs: unknown ZPAQL
+    programs run with a step limit instead
+
+-------------------------------------------------------------------
 Sun Oct 25 20:36:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 65.14 (upstream notes this release is still to be
