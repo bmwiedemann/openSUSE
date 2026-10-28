@@ -17,7 +17,7 @@
 
 
 Name:           falcoctl
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        CLI / Administrative tooling for Falco
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         falcoctl-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.27 >= 1.27.0
+BuildRequires:  go1.27 >= 1.27.3
 BuildRequires:  zsh
 
 %description
