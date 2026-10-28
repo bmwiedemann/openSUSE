@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Oct 20 17:49:26 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.73.3:
+  - NO-OP update: this is just an upstream version bump to update the CI
+    build to use Go 1.27.3. chezmoi built on OBS uses the Go version
+    in Factory, which is now also 1.27.3.
+
+-------------------------------------------------------------------
+Tue Oct 20 17:43:03 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.73.2:
+  - Fixes
+    * fix: Fix keepassxcAttachment template func in cache password mode
+    * fix: Ignore entries in tar archives that resolve to the current dir
+    * fix: Fix re-add command when adding individual files in an exact_ dir
+    * fix: Don't read .chezmoidata files in external_ dirs
+
+-------------------------------------------------------------------
+Tue Oct 20 17:31:50 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.73.1:
+  - Fixes
+    * fix: Don't double backslashes in shellQuote
+    * fix: Pass /dev/null to diff command for missing files in apply --interactive
+    * fix: Fix panic in add when adding file in external_ explicit dir
+    * fix: Fix panic in re-add with exact_ dirs with implicit parents
+    * fix: Fix panic in re-add with externals with implicit parents
+    * fix: Report correct line number for secrets found by add
+  - Documentation
+    * docs: State that re-add command does not cover externals
+
+-------------------------------------------------------------------
 Thu Oct  1 15:18:36 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.73.0:
