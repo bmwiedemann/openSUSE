@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 24 16:53:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.55.0:
+  * Fixes JWT forgery, SSRF and credential leaks through the
+    datasource proxy, arbitrary file reads, and path traversals
+    in the file system database, several of them critical and
+    exploitable without authentication with the default
+    configuration.
+  * Breaking change: when authentication is enabled, an encryption
+    key is now mandatory; see the v0.55.0 upgrade guide.
+  * CLI: new `percli dac watch` command for provisioning folders.
+  * CLI: `percli dac preview` gained a `--create-project` flag.
+  * CLI: login now checks whether the terminal is interactive.
+  * CLI: `percli plugin build` downloads all CUE dependencies
+    before vendoring them.
+  * Upstream now requires Go 1.27 to build.
+  * Many more fixes and improvements; see upstream's release notes
+    at https://github.com/perses/perses/releases/tag/v0.55.0
+    for the full list.
+- Switch BuildRequires to go1.27, matching upstream's go.mod.
+
+-------------------------------------------------------------------
 Thu Jul 30 05:35:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.54.0:
