@@ -1,0 +1,32 @@
+Index: tinygo-0.43.0/vendor/tinygo.org/x/go-llvm/llvm_config_llvm22.go
+===================================================================
+--- tinygo-0.43.0.orig/vendor/tinygo.org/x/go-llvm/llvm_config_llvm22.go
++++ tinygo-0.43.0/vendor/tinygo.org/x/go-llvm/llvm_config_llvm22.go
+@@ -11,9 +11,9 @@ package llvm
+ // #cgo freebsd      CPPFLAGS: -I/usr/local/llvm22/include -I/usr/local/llvm22/include/llvm-c -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+ // #cgo freebsd      CXXFLAGS: -std=c++17
+ // #cgo freebsd      LDFLAGS: -L/usr/local/llvm22/lib -lLLVM
+-// #cgo linux        CPPFLAGS: -I/usr/include/llvm-22 -I/usr/include/llvm-c-22 -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
++// #cgo linux        CPPFLAGS: -I/usr/include/llvm -I/usr/include/llvm-c -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+ // #cgo linux        CXXFLAGS: -std=c++17
+-// #cgo linux        LDFLAGS: -L/usr/lib/llvm-22/lib -lLLVM-22
++// #cgo linux        LDFLAGS: -lLLVM
+ import "C"
+ 
+ type run_build_sh int
+Index: tinygo-0.43.0/vendor/tinygo.org/x/go-llvm/llvm_config_llvm20.go
+===================================================================
+--- tinygo-0.43.0.orig/vendor/tinygo.org/x/go-llvm/llvm_config_llvm20.go
++++ tinygo-0.43.0/vendor/tinygo.org/x/go-llvm/llvm_config_llvm20.go
+@@ -11,9 +11,9 @@ package llvm
+ // #cgo freebsd      CPPFLAGS: -I/usr/local/llvm20/include -I/usr/local/llvm20/include/llvm-c -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+ // #cgo freebsd      CXXFLAGS: -std=c++17
+ // #cgo freebsd      LDFLAGS: -L/usr/local/llvm20/lib -lLLVM
+-// #cgo linux        CPPFLAGS: -I/usr/include/llvm-20 -I/usr/include/llvm-c-20 -I/usr/lib64/llvm20/include -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
++// #cgo linux        CPPFLAGS: -I/usr/include/llvm -I/usr/include/llvm-c -I/usr/lib64/llvm20/include -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+ // #cgo linux        CXXFLAGS: -std=c++17
+-// #cgo linux        LDFLAGS: -L/usr/lib/llvm-20/lib -L/usr/lib64/llvm20/lib64 -lLLVM-20
++// #cgo linux        LDFLAGS: -lLLVM
+ import "C"
+ 
+ type run_build_sh int

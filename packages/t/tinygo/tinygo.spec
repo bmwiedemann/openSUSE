@@ -18,18 +18,19 @@
 
 
 Name:           tinygo
-Version:        0.41.1
+Version:        0.43.0
 Release:        0
 Summary:        Go toolchain targeting embedded devices and webassembly
 License:        Apache-2.0
 Group:          Development/Languages/Go
 URL:            https://tinygo.org
 Source:         tinygo-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source1:        vendor.tar.zst
 # extracted from llvm19 sources because we need .c files at runtime:
 Source2:        llvm-compiler-rt-builtins.tar.gz
 Source3:        tinygo.rpmlintrc
-Patch0:         go-llvm-makefile-llvm-config.patch
+# PATCH-FIX-SUSE: adjust llvm c flags for the SUSE style packaging
+Patch0:         llvm-config.patch
 Requires:       clang20
 Requires:       go1.25
 Requires:       lld20
@@ -37,10 +38,11 @@ BuildRequires:  clang20-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  llvm20-devel
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.27
 # for test:
 BuildRequires:  lld20
-BuildRequires:  nodejs >= 20
+BuildRequires:  nodejs >= 24
 
 %description
 TinyGo brings the Go programming language to embedded systems and to the modern

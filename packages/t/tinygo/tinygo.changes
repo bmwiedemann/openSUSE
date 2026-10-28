@@ -1,4 +1,417 @@
 -------------------------------------------------------------------
+Tue Oct 27 11:29:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.43.0:
+  * Release 0.43.0
+  * machine/nrf: stop the RNG after each read
+  * compiler, reflect: preserve runtime type identity
+  * reflect: implement Slice3 and SetCap
+  * reflect: fix map iterator state
+  * reflect: implement FieldByIndexErr
+  * reflect: implement NewAt
+  * builder: update binary size for the nrf RTC wakeup fix
+  * runtime: fix a missed RTC wakeup on nrf
+  * machine/usb/msc, machine/rp2: send the CSW when an OUT command fails
+  * machine/esp32xx: fix PWM above 78 kHz and lost duty updates (#5790)
+  * machine/nrf52840: clear EPDATASTATUS before the EPDATA handlers run
+  * machine/usb/msc: fix stalls and split writes at raw blocks
+  * machine/nrf52840: fix USB endpoint 3 and EasyDMA ownership
+  * machine/nrf52840: add USB mass storage support
+  * builder: update binary size for the USB reset handler
+  * machine/usb/msc: reset MSC state when the host sets the configuration
+  * machine/usb/msc: read the block device outside the USB interrupt
+  * targets: use an 8 KB default stack on nrf52840
+  * rp2350: pause the other core during flash operations with scheduler=cores
+  * testing: implement AllocsPerRun
+  * runtime, runtime/pprof: add Func.Entry and goroutine labels
+  * machine/usb/cdc: send a ZLP when TX ends on a full packet
+  * examples: add esp32xx pins to i2s-tone
+  * machine/esp32xx: add I2S support
+  * loader: precompute recorded source directories
+  * builder: trim Clang builtin header paths
+  * builder: omit C command lines from trimmed debug info
+  * builder: make trimmed Darwin builds reproducible with LLVM 15
+  * builder: add -trimpath support
+  * compiler: make equal-position member ordering deterministic
+  * targets: align the heap to 16 bytes on the esp32 family
+  * examples: add i2s-tone example
+  * machine/nrf52xxx: add I2S support
+  * runtime: yield the thread in Gosched on the threads scheduler
+  * testdata: exercise the aggregate escape phi at runtime
+  * transform: track escapes through nested aggregate results
+  * transform, interp: name the test fixture cache workaround
+  * machine/esp32xx: clear the I2C bus with a GPIO STOP when configuring
+  * compiler: add debug info to synthetic wrapper functions
+  * machine/esp32xx: reset the I2C FIFOs at the start of each transaction
+  * machine/esp32xx: read the last I2C byte in its own segment
+  * machine/esp32xx: do not clock SCL when configuring I2C
+  * machine/esp32xx: send the I2C address in its own WRITE command
+  * machine/esp32xx: do not check ACK on I2C read commands
+  * runtime/cores: add secondary core startup barrier (#5737)
+  * make: skip oversized synctest stress test on macOS
+  * runtime/debug: populate BuildInfo so ReadBuildInfo works (#5592)
+  * compiler: avoid byte slice copies in ordered string comparisons
+  * internal/abi: add PC-line table magic values
+  * transform: reuse GC stack slots for repeated pointer tracking
+  * builder: add representative binary size test
+  * make: test net/netip on hosted platforms
+  * compiler: avoid byte slice copies in string equality
+  * compiler: factor out adjacent comparison check
+  * testdata: isolate Boehm collection tests from stale stack roots
+  * transform: follow phi inputs only through phis that can repeat
+  * make: test bytes, slices, and strings on hosted platforms
+  * compiler: reject impossible slice allocations
+  * compiler: optimize large array comparisons
+  * drop "devel " version prefix handling due to Go 1.25 changed version reporting
+  * machine/esp32c6: add default UART0 pins
+  * targets/esp32c6: align .rodata to its flash offset
+  * machine/esp32c6: move the UART interrupt off CPU interrupt 7
+  * transform, testdata: add regression tests for GC roots lost across a loop phi
+  * transform: root every input of a tracked phi in a loop
+  * machine,targets: add the ESP32-H2-DevKitM-1 board
+  * runtime,machine,targets: add ESP32-H2 support
+  * builder: add the esp32h2 firmware image format
+  * runtime/esp32c6: move the PLIC and timer interrupt code to a shared file
+  * runtime/esp32xx: make the timer tick period a per-chip constant
+  * docs: remove ASD-STE100, just tell coding tools to keep it simple and direct
+  * machine/mimxrt1062: add USB device (CDC) support for Teensy 4.x (#5691)
+  * builder: add debug info to runtime.initAll (#5746)
+  * interp: resize ptrtoint and inttoptr results (#5745)
+  * ci: update Wasmtime to 48.0.2 LTS
+  * runtime: classify standard panic messages
+  * make: test iter on hosted platforms
+  * runtime: exit coroutines before resuming callers
+  * runtime: do not allocate in runGC
+  * binaryen: update to version 133
+  * interp: evaluate fastrand without the global RNG state
+  * testing: add B.SetParallelism
+  * crypto/rand: implement Text
+  * runtime: do not allocate in printitf
+  * runtime: implement NumGoroutine
+  * make: test go/printer on hosted platforms
+  * compiler: optimize non-blocking single-case selects (#5500)
+  * crypto/tls: return Conn from dial functions
+  * reflect: do not mark zero values read-only
+  * runtime: avoid allocation while stopping the world
+  * runtime: report the configured Go root
+  * testing: order verbose subtest results
+  * testing: report parallel test state
+  * testing: implement parallel tests
+  * runtime/rp2: use blocking FIFO writes for multicore handshakes
+  * RP2040: avoid XIP hangs during flash operations with scheduler=cores (#5411)
+  * runtime/debug: add SetTraceback compatibility stub
+  * reflect: fix Elem for named multi-pointer types
+  * reflect: format invalid values
+  * runtime: add weak.Pointer.Value compatibility shim
+  * sync: hand the RWMutex over instead of a re-test of the reader count
+  * machine/esp32xx: share the LEDC channels and fix SetInverting
+  * machine/esp32: add PWM support using the LEDC peripheral
+  * runtime: implement synctest
+  * testing: run benchmark cleanup functions
+  * runtime: block signal_recv on targets without signal delivery
+  * runtime/rp2: check FIFO_ST.VLD in the SIO FIFO interrupt handler
+  * runtime/rp2350: set ACTLR.EXTEXCLALL on each core
+  * runtime: reduce typed Boehm allocation overhead
+  * runtime: use precise layouts with Boehm GC
+  * compiler: implement go:cgo_import_dynamic and lower Darwin cgo import trampolines (#5604) (#5612)
+  * main: give the program stdin on `tinygo run`
+  * runtime/mimxrt1062: use Normal memory attributes for ITCM and DTCM
+  * esp32: route GPIO pin interrupts to the PRO CPU (#5688)
+  * esp32: handle the alloca exception
+  * esp32: add Bluetooth controller ROM symbols and reserve its memory
+  * wasm: keep one pending scheduler wakeup instead of leaking a timer chain
+  * runtime: fix multicore RISC-V GC synchronization
+  * compiler: bound aggregate call signatures
+  * runtime: release completed Asyncify stacks
+  * runtime: name Goexit task exit explicitly
+  * compiler: reuse Asyncify panic catchers
+  * compiler: reduce Asyncify catcher stack usage
+  * runtime: preserve Wasm panic traceback
+  * compiler: conservatively handle new SSA instructions
+  * compiler: skip unwinding for safe calls
+  * compiler: test non-panicking calls with defers
+  * test: expand explicit panic unwind coverage
+  * GNUmakefile: enable recovered wasm package tests
+  * compiler: support panic recovery without exceptions
+  * make: avoid fetching available LLVM revision
+  * esp32: fix I2C timeouts on larger transfers (#5674)
+  * ci: narrow the files that set the LLVM image tag
+  * make: allow updating LLVM sources
+  * test: skip finalizerinvariants.go on riscv-qemu
+  * runtime: jump indirectly to longjmp on Xtensa
+  * Add support for Waveshare RP2040-PiZero board
+  * ci: build the compiler image on a prebuilt LLVM image (#5671)
+  * Add Waveshare RP2350-PiZero board (#5670)
+  * ci: split assert-test-linux into jobs that run at the same time
+  * runtime: avoid heap allocs for plain errors
+  * targets: add support for Pimoroni Tufty 2350 board
+  * ci: correct the artifact name in the macOS test jobs
+  * ci: split the macOS jobs, and test only the host on the intel runner
+  * make: run the slowest stdlib tests with -short
+  * runtime: preserve malloc allocations until free
+  * runtime: precisely scan globals on all platforms
+  * test: reduce AVR map memory pressure
+  * runtime: eagerly mark Boehm global roots
+  * runtime: precisely scan Wasm globals
+  * runtime: require explicit GC layouts
+  * runtime: test container GC layouts
+  * ci: include Xtensa in size comparisons
+  * ci: share LLVM setup steps
+  * test: run panic recovery on ESP32 QEMU
+  * runtime: support panic recovery on Xtensa
+  * machine: avoid sync.Once during ESP32 startup
+  * runtime: avoid duplicate task exit symbol
+  * compiler: fix 64-bit sin and cos on AVR
+  * all: remove stale picolibc workarounds
+  * builder: enable picolibc freopen
+  * all: update picolibc to latest main
+  * all: start 0.43.0-dev cycle
+  * Release 0.42.0
+  * compiler: make composite map hashes order dependent
+  * compiler: test generated composite map hashes
+  * builder: add strlen to wasm builtins
+  * ci: publish a draft release from the artifacts that CI already built
+  * ci: stop the LLVM caches from being evicted
+  * Puya PY32F MCU support (#5106)
+  * UEFI: add support for tasks scheduler and make it default  (#5553)
+  * Add agents.md guideline for using ASD-STE100 in documentation and discourse (#5566)
+  * net: update net submodule from latest changes
+  * ci: run the full smoke test once, and split the GNUmakefile (#5616)
+  * targets:wasm_exec.js set _pendingEvent to null
+  * lib: update macos-minimal-sdk to v0.1.0
+  * runtime: run syscall/js finalizers on wasm without a manual GC (#5545)
+  * modules: update espflasher with version including fixes for esp32c3/esp32s3
+  * builder: convert TestBinarySize to a golden file test
+  * machine/esp32: add ADC driver (#5595)
+  * esp32s3: fix register-window corruption under interrupt load
+  * reflect: skip the MakeChan panic cases on every wasm target, not just wasip1
+  * reflect: implement MakeChan
+  * interp: mark pointers in aggregate call operands as external
+  * machine: add USBDevice.Attach and USBDevice.Detach (#5563)
+  * test: run ESP32 programs in QEMU
+  * builder: fix ESP32 QEMU XIP image offsets
+  * all: build/test using Go 1.27.0
+  * Revert "chore: copy fix to esp32xx"
+  * chore: copy fix to esp32xx
+  * fix: remove incorrect !readLast check
+  * test: skip asn1 nesting-limit tests, and BoundarySlices crypto tests
+  * all: build/test using Go 1.27-rc3
+  * os: add File.Chown on the unix path
+  * runtime: implement MemStats.NumGC
+  * os, syscall: add Statfs/Fstatfs stubs and Getpagesize for non-hosted targets
+  * esp32: fix pullup/pulldown on RTC GPIO pins
+  * builder: build SSA before compiling packages
+  * tests: normalize LLVM IR when updating goldens
+  * runtime: make arrays and struct field hashes order dependent
+  * fix(gc): pause all cores before scanning stack and globals.
+  * fix(gc): correct leaking allocator bounds and overflow checks.
+  * fix(gc): correct old size calculation in block realloc.
+  * Fix to allow -o flag to point to a directory
+  * targets/esp32*: add espradio tag for convenience
+  * main: update to espflasher 0.8.0
+  * targets/esp32c3: add remaining required BT ROM functions to linker
+  * targets/esp32c3: add BT ROM functions to linker
+  * targets/esp32: add .rxring and .wifibss sections to DRAM1
+  * runtime: prevent timer starvation in cores scheduler
+  * runtime: make fatal failures unrecoverable
+  * runtime: make out-of-memory failures fatal
+  * main_test: skip flaky goroutines test on threaded schedulers
+  * UEFI: Add support for UEFI time and UEFI events; fix STOP \n -> \r\n conversion (#5549)
+  * compiler, runtime: support recover on riscv64
+  * runtime: add critical-section fallbacks for atomic And and Or
+  * targets: minimal uefi target support (#5452)
+  * feat(machine/stm32): add STM32H7 and NUCLEO-H753ZI support
+  * src/device/arm: add ARM v7-M MPU support
+  * compiler: add regression test for generic methods in interfaces
+  * compiler: fix hasMethodSet to account for filtered generic methods
+  * compiler: exclude generic methods from runtime method sets
+  * machine/esp32: address review feedback for interrupt and UART code
+  * esp32: remove dead code and fix GC root scanning
+  * esp32: add PHY DRAM symbols to linker
+  * esp32: fix XIP boot crash caused by LLVM 22 / lld l32r relocation bug
+  * targets/esp32: adjust memory usage and export required symbols for wifi
+  * esp32: implement flash XIP (execute-in-place) support
+  * esp32: add interrupt-based UART RX and fix init order
+  * esp32: add interrupt support (vector table, timer alarm, GPIO SetInterrupt)
+  * testing: avoid Goexit without unwind support
+  * compiler: pass large aggregates by pointer
+  * compiler: add large aggregate IR tests
+  * compiler: move SSA result handling into helpers
+  * compiler: resolve callees before lowering arguments
+  * compiler: share LLVM function type construction
+  * compiler: centralize loads and stores of SSA values
+  * compiler: centralize deferred call record types
+  * compiler: key deferInvokeFuncs on distinct name
+  * compiler: handle nested unsigned shift being untyped after type resolution (#5497)
+  * runtime/esp32c6: select 80MHz PLL as TIMG0 timer clock source
+  * go.mod: update to go-llvm with changes to use context-aware wrappers
+  * compiler: consistently pass layout and alignment to createAlloc
+  * sync: fix deadlock in Map.Range callback
+  * esp32s3: fix boot crash caused by LLVM 22 / lld l32r relocation bug
+  * main: update to espflasher 0.7.1 and add flash erase progress tracker
+  * builder: improvements needed for esp32 XIP to allow for correctly flashing large programs
+  * ci: fix sizediff check by updating to go 1.25, which is the new minimum version
+  * feat(machine/stm32): make HSE crystal frequency selectable.
+  * runtime: wake channel waiters after releasing locks (#5513)
+  * builder: add chkstk2.S to windows/386 builtins for __alloca symbol
+  * all: fix LLVM version compatibility for targets and interp
+  * all: add LLVM 22 support
+  * ci: modify builds to use llvm 22
+  * go.mod: update to go-llvm with needed changes
+  * interp: fix switch-instruction handling for LLVM 22's new case-value API
+  * transform, compiler: support LLVM 21's captures(none) attribute; add LLVM 22 build support
+  * Add UART line inversion support (#5522)
+  * runtime: implement SetFinalizer to fix syscall/js finalizeRef leak
+  * targets: add M5Stack Stamp-S3A (#5524)
+  * test: skip crypto/ecdsa on wasi for now, since it never finishes
+  * test: skip compress/flate for now due to Go 1.27 changes
+  * main_test: skip json on Cortex-M QEMU with Go 1.27
+  * builder: link stack probes on Windows amd64 and arm64
+  * compiler: support Go 1.27 generic methods via x/tools upgrade
+  * builder: update max supported Go version to 1.27
+  * all: build/test using Go 1.27-rc2
+  * runtime: fix leaking GC build with cores scheduler
+  * compiler: canonicalize method signature identities
+  * compiler: canonicalize generic instance identities
+  * testdata: add generic alias identity regressions
+  * compiler: support //go:linknamestd pragma
+  * compiler: support file-level //go:linkname directives
+  * machine/stm32: add OTG FS USB driver for F4/F7
+  * compiler: disambiguate generic instance link names with local type args
+  * testdata: add regression test for generic instances with local type args
+  * runtime: encode pending Goexit in panic state
+  * GNUmakefile: increase encoding/xml test stack
+  * GNUMakefile: change skip reason note
+  * runtime: make Goexit exit host threads
+  * runtime, testing: support Goexit, SkipNow, FailNow
+  * build: statically link MinGW runtime in LLVM tools on Windows
+  * add device/uefi and device/amd64
+  * wasm: patch wasm_exec.js and wasm_exec_node.js from Go 1.18+ (#5483)
+  * UEFI Target Groundwork: Add LinkerFlavor compile option (#5465)
+  * machine: add support for the STM32U031 chip
+  * Adding support for the 'Plus' board variant of SeeedStudio XIAO nrf52840, works with Sense variants as well (#5479)
+  * upgrade net (#5490)
+  * add runtime.fastrandn (#5502)
+  * reflect: add missing iterator methods
+  * all: modernize (#5498)
+  * runtime: fix ticker not stopping when Stop races with its callback (#5487)
+  * [feature] moved ReadTemeprature to machine_esp32s3.go
+  * [feature] added temperature reading to esp32s3
+  * machine/esp32c6: add ADC driver
+  * tests: support simavr 1.8+
+  * add CGO_CFLAGS support (#5453)
+  * all: clean up code with Go 1.24+ in mind (#5489)
+  * runtime/rp2: handle RP2350 shared FIFO IRQ for GC (#5482)
+  * machine/rp2: clear USB buffer status before endpoint handlers
+  * builder: don't count non-writable SHT_NOBITS sections as RAM/bss
+  * reflect,reflectlite: make IsRO/MakeRO package methods
+  * reflect: fix pointer receiver for MakeRO
+  * reflect: address Copilot review feedback
+  * reflect: use TestConvert from all_test.go and make it pass
+  * refleect: more conversion tests
+  * reflect: fix (u)int -> string conversions for invalid code points
+  * reflect: add (u)int -> string conversions
+  * reflect: add string <-> []rune conversions
+  * reflect: add some more complex conversion tests
+  * reflect: add converting complex
+  * reflect: add Type.ConvertibleTo
+  * machine: add I2C support for ESP32-C6
+  * transform: restore previous test behavior
+  * compiler, runtime: optimize zero-sized allocations
+  * runtime: move alloc_noheap call (pure refactor)
+  * compiler: refactor runtime.alloc call
+  * machine,targets: add minimal esp32c6 implementation
+  * compiler: use LLVM intrinsics for math trig operations
+  * interp: defer out-of-bounds loads to runtime instead of crashing
+  * machine: optimize RTT initialization
+  * runtime: don't access timer queue outside of lock
+  * main: don't mutate compile options in Test
+  * transform: follow aggregate returned alloc aliases
+  * transform: handle returned pointer alloc aliases
+  * transform: add allocation alias regression cases
+  * runtime (gc.blocks): move objHeader to the end
+  * New Boards: Pimoroni Blinky 2350 and Badger 2350 (#5434)
+  * machine: add GP aliases for waveshare-rp2040-zero
+  * builder: retry cached archive renames on Windows (#5462)
+  * machine/rp2350: fix the ROM CS control for RP2350 ROM code
+  * transform: add -print-allocs-cover and restore -print-allocs reason output
+  * fix(usb): implement endpoint stall for nRF52840.
+  * fix(usb): support bidirectional endpoints on RP2 and SAMD21/51.
+  * refactor(usb): dynamic endpoint descriptor generation
+  * syscall: remove sliceHeader, use unsafe.SliceData more
+  * builder: increase stack size margin for automatic stack allocation
+  * usb/cdc: fix RP2 USB CDC TX race with cores scheduler (#5391)
+  * ci: add job to ensure that the go.sum is up to date with the go.mod file
+  * fix: update go.sum file which became out of sync somehow
+  * ci: update to latest Go version (1.26.4) for tests
+  * gba: add bios interrupt flags (#5445)
+  * machine/usb: support bidirectional endpoints by dynamic registration (#5447)
+  * CI: go back to free runners
+  * machine/usb: fix truncated USB string descriptor when host requests short maxLen (#5449)
+  * UEFI Target groundwork: runtime: extract Windows PE globals scan helper (#5361)
+  * UEFI target groundwork: runtime: split baremetal memory setup (#5360)
+  * runtime: improve hardfault handler and stack reporting on Cortex-M
+  * gba: add support for mGBA debugging
+  * rp2: allow SPI transmit-only without SDI (#5437)
+  * compiler: disambiguate function-local named types (#5336)
+  * Makefile: Use ${LLVM_PROJECTDIR} during copy phase
+  * compiler: document defer frame field dependency
+  * compiler: share recoverable fault blocks
+  * GNUmakefile: update stdlib test package lists
+  * runtime: add Windows vectored exception handler for recoverable panics
+  * runtime: make divide-by-zero and nil dereference panics recoverable
+  * compiler: make map and channel panics recoverable
+  * compiler, runtime: make runtime panics recoverable
+  * compiler: store defer list head in defer frame
+  * esp32: configure uarts to specified pins and yield waiting for buffer
+  * interp: fix partial store aliasing with previously loaded values
+  * interp: add regression test for partial store aliasing
+  * interp: avoid repeated object clones on partial stores
+  * gba: add some const values for sound register configs to avoid magic numbers
+  * sizediff: look for actual 'tinygo build' line
+  * ci: increase runner size for compat build
+  * fix: move esp32s3 based device to inside of XTENSA build section
+  * Add new targets/esp32s3-box-3 (#5388)
+  * ci: increase size of runners for Linux, Windows, and macOS (Intel)
+  * all: update golang.org/x/tools
+  * cli: add basic probe-rs support
+  * stm32u5: configure system clock to 160 MHz
+  * ci: add check for compatibility with older Go/LLVM versions
+  * nrf: avoid too high priority interrupt on SoftDevice
+  * ci: re-add fmt-check in CI
+  * machine/stm32: fix UART transmission, baud rate, and interrupt handling
+  * upgrade espflasher
+  * all: use unsafe.SliceData where appropriate
+  * loader: skip object resolution
+  * runntime/interrupt.Checkpoint: add warning that this is hard to use
+  * rp2040: fix `-gc=leaking/none`
+  * skip flag on windows :(
+  * GNUmakefile: disable DWARF compression for CGo objects
+  * cli: clarify runtime.alloc linker error with -gc=none
+  * runtime,syscall,internal/poll,os: wasip1 poll_oneoff scheduler integration + net.FileListener (#5386)
+  * compiler: add //go:noheap pragma
+  * compiler: clean up pointer pack code
+  * fix targets/wasm_exec.js: move unsigned coercions from helpers to top-level import functions
+  * fix: coerce memory offsets to unsigned before typed array and DataView access
+  * reflectlite: remove stringHeader
+  * compiler, runtime, reflect: generate type-specific hash/equal (#5359)
+  * interp: bail out of loops that iterate too many times (#5395)
+  * ci: remove CircleCI configuration
+  * targets/wasm_exec: add runtime.getRandomData to gojs imports
+  * monitor flag on flash now respects port
+  * loader: avoid race condition when loading package list
+  * sync: add Map.CompareAndSwap and Map.CompareAndDelete
+  * builder, cgo, syscall: replace fixed-size array casts with unsafe.Slice
+  * builder,loader: fix -ldflags -X not overriding variables with default values
+  * modules: update to 'net' package with roundtrip fix for js/wasm
+  * compiler: re-enable generics test
+  * testdata: re-add reflect.DeepEqual test case
+  * all: support LLVM 19 and LLVM 20 on Fedora 43
+  * version: update to 0.42.0-dev for next dev cycle
+- add llvm-config.patch (renamed and rebased from
+  go-llvm-makefile-llvm-config.patch)
+
+-------------------------------------------------------------------
 Thu Apr 23 04:37:53 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.41.1:

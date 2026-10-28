@@ -183,4 +183,41 @@ It reuses libraries used by the Go language tools alongside LLVM to provide an a
   * runtime/esp32s3: wait for TIMG0 update register to clear before reading timer registers (forwarded request 1348996 from jfkw)</comment>
     <requestid>1349011</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e719e9fd6e5de045a7f17eae04351d74</srcmd5>
+    <version>0.43.0</version>
+    <time>1793217252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.43.0:
+  * Release 0.43.0
+  * machine/nrf: stop the RNG after each read
+  * compiler, reflect: preserve runtime type identity
+  * reflect: implement Slice3 and SetCap
+  * reflect: fix map iterator state
+  * reflect: implement FieldByIndexErr
+  * reflect: implement NewAt
+  * builder: update binary size for the nrf RTC wakeup fix
+  * runtime: fix a missed RTC wakeup on nrf
+  * machine/usb/msc, machine/rp2: send the CSW when an OUT command fails
+  * machine/esp32xx: fix PWM above 78 kHz and lost duty updates (#5790)
+  * machine/nrf52840: clear EPDATASTATUS before the EPDATA handlers run
+  * machine/usb/msc: fix stalls and split writes at raw blocks
+  * machine/nrf52840: fix USB endpoint 3 and EasyDMA ownership
+  * machine/nrf52840: add USB mass storage support
+  * builder: update binary size for the USB reset handler
+  * machine/usb/msc: reset MSC state when the host sets the configuration
+  * machine/usb/msc: read the block device outside the USB interrupt
+  * targets: use an 8 KB default stack on nrf52840
+  * rp2350: pause the other core during flash operations with scheduler=cores
+  * testing: implement AllocsPerRun
+  * runtime, runtime/pprof: add Func.Entry and goroutine labels
+  * machine/usb/cdc: send a ZLP when TX ends on a full packet
+  * examples: add esp32xx pins to i2s-tone
+  * machine/esp32xx: add I2S support
+  * loader: precompute recorded source directories
+  * builder: trim Clang builtin header paths
+  * builder: omit C command lines from trimmed debug info
+  * builder: make trimmed Darwin builds reproducible with LLVM 15</comment>
+    <requestid>1393457</requestid>
+  </revision>
 </revisionlist>
