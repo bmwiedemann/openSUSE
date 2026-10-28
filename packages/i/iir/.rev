@@ -51,4 +51,13 @@
   * https://github.com/berndporr/iir1/releases/tag/1.11.0</comment>
     <requestid>1387044</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cdd71f2fe91088ea0640986b807b95ba</srcmd5>
+    <version>1.11.1</version>
+    <time>1793206136</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.11.1
+  * https://github.com/berndporr/iir1/releases/tag/1.11.1</comment>
+    <requestid>1393296</requestid>
+  </revision>
 </revisionlist>

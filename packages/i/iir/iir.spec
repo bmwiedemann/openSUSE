@@ -19,7 +19,7 @@
 %define sover   1
 %define sname   %{name}%{sover}
 Name:           iir
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        DSP infinite impulse response realtime C++ filter library
 License:        MIT
