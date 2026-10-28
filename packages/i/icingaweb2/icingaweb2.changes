@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Oct 28 13:01:38 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.14.1
+
+- Update to 2.14.1
+  * What's New
+    - You can find all issues related to this release on our Roadmap.
+    - This release requires Icinga PHP Library 1.1.0 or later.
+  * Security Fixes
+    - Remove the standalone chart endpoints to prevent file reads and denial of service GHSA-mph2-hvq4-8423
+    - Match usernames literally in database and LDAP backends GHSA-jff6-vjrf-q9gj
+    - Escape navigation item labels in sidebar submenu headers GHSA-grpw-587v-93vw
+    - Restrict remembered device management to the user's own devices GHSA-fmf2-272p-p3r9
+  * Password Policy Password Parameters Marked as Sensitive
+    - Modernize password policy #5537
+  * Password Policy Moved to the Security Configuration
+    - Modernize password policy #5537
+  * CSRF Protection for Config Forms
+    - Add CsrfCounterMeasure to ConfigForm #5552
+  * CompatForm-based Repository Form
+    - Modernize repository form #5536
+  * Sensitive Two-Factor Token
+    - Mark TwoFactor::verify() token parameter as sensitive #5559
+  * ConfigFormEventsHook Deprecation
+    - Modernize password policy #5537
+  * Default Theme Mode
+    - Add configurable default theme mode to theming configuration #5541
+    - Add documentation about the default theme mode #5551
+  * Fixes
+    - Handle a missing or unusable configuration database gracefully #5356
+    - Let PDO decode PostgreSQL password hashes #5584
+    - Support URLs whose scheme has no authority #5565
+    - Reload on timezone/locale preference changes and after authentication #5540
+    - Set baseTarget for user and group access-control list tabs #5558
+    - Fix config form value & Simplify CspConfigForm #5533
+    - Check for a preference store before accepting the primary submit button #5542
+    - Guard TwoFactorHook::yieldMethods() #5543
+    - Sync ipl\Html\Error::showTraces() with displayExceptions setting #5555
+    - Avoid a null array offset when selecting the dashboard pane #5588
+    - Fix logging level description in configuration #5566
+    - Tell DbTool about the resource's TLS settings #5571
+    - Add getCspForAllUsers() directives to every user's CSP #5595
+ * Framework Changes
+    - Keep hook APIs needed by interface-based hooks supported #5585
+    - Remove datetime picker behavior #5532
+    - Add getCspForAllUsers() directives to every user's CSP #5595
+    - Docs: Mention that RenderHooks should not be used anymore #5557
+  * Documentation
+    - Documentation updates #5539
+    - Improve database setup in the installation guide #5548
+    - Fix broken documentation section links #5587
+    - Remove the outdated contributing guide #5590
+
+-------------------------------------------------------------------
 Tue Sep 29 16:50:12 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.14.0
 
 - Update to 2.14.0

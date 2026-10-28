@@ -18,7 +18,7 @@
 
 %define php_major_version 8
 Name:           icingaweb2
-Version:        2.14.0
+Version:        2.14.1
 Release:        0
 Summary:        Icinga Web
 License:        GPL-3.0-only
@@ -33,6 +33,7 @@ BuildRequires:  apache2
 BuildRequires:  nagios-rpm-macros
 Requires:       apache2
 Requires:       icinga-l10n >= 1.1.0
+Requires:       icinga-php-legacy >= 1.1.0
 Requires:       icingacli = %{version}
 Requires:       icingaweb2-common = %{version}
 Requires:       icingaweb2-module-monitoring >= 2.12.6
