@@ -763,4 +763,12 @@ sfc.c and stmmac.c have GPL-2.0 licenses (forwarded request 95755 from babelworx
     <comment>- Update to release 7.1</comment>
     <requestid>1364884</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>82fddb0d3b54a715ddbd5a60d97f33a4</srcmd5>
+    <version>7.2</version>
+    <time>1793205940</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1393114</requestid>
+  </revision>
 </revisionlist>
