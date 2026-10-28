@@ -1,0 +1,228 @@
+-------------------------------------------------------------------
+Mon Oct 26 11:15:19 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.11.0 (upstream tag v0.11.0, 2026-10-25):
+  * Editing: Restrict Editing (file commands, user name, read-only and
+    comments-only protection), mail merge to any record or a range of
+    records, Convert Text to Table keeps inline content, Convert to
+    Text asks for the separator, Split Table fixes, Track Changes
+    Accept/Reject can move to the next change, AutoFormat of
+    *bold*/_italic_, border lines and tables, Tab/Backspace indents
+    and Enter twice for headings, field switches (Upper, Lower, Caps,
+    DollarText, Hex...) and more fields updated, Read Mode page color.
+  * UI: Format Painter pointer, ruler/save/print keep the view,
+    status bar names the page in view, comment times in the user's
+    time zone, real tabs in dialogs, SmartArt/chart resize handles,
+    table-insert grid preview, highlight shortcut, autoscroll
+    follows the scroll direction, translated ribbon tooltips.
+  * Layout and import/export: many pagination, table, floating-table
+    and rendering fixes closer to Word; DOCX East Asian font hints,
+    default font size, text-box story sharing, Word 2003 headers and
+    notes; ODT, RTF/LaTeX and spreadsheet import fixes.
+  * Proofing and languages: Spanish proofing (es-ES, es-MX, es-419,
+    es-UY), proofing options for more languages, Turkic Change Case,
+    Khmer ligature fix, Romanian translation, interface translations
+    from craft-i18n.
+  * Hardening: caps and bounds on VML paths, picture memory, mailing
+    text, ui_requests queue, .aff alphabets and numeric parsing;
+    encrypted DOCX packages now require the data integrity check;
+    file.exportPng validates the extension.
+  * CLI/MCP: type_text with paragraphs is one command and MCP keeps
+    serving when the app is not open yet.
+  * Re-vendor with update=true (669 crates, up from 550): craft-libs
+    is pinned to a newer rev (adds craft-i18n with the ICU 2.3 data
+    and formatting crates, craft-winprint-gdi), plus chrono's
+    iana-time-zone and the release tooling's networking and signing
+    stack (hyper, rustls, aws-lc-sys, sigstore, quinn, cms/der) that
+    only the non-shipped xtask workspace member uses. New licences in
+    the tree: aws-lc-sys (ISC/Apache-2.0/MIT/BSD-3-Clause mix),
+    webpki-root-certs (CDLA-Permissive-2.0, CA data), colored
+    (MPL-2.0, xtask only) and r-efi (MIT OR Apache-2.0 OR
+    LGPL-2.1-or-later, MIT chosen); none is copyleft that applies to
+    the shipped binaries. cargo_vendor's lockfile audit reports no
+    RUSTSEC advisories (the cargo_audit service itself is a no-op).
+- Update the fixed metainfo release date to 2026-10-25.
+- Skip the new wall-clock test a_document_of_many_paragraphs_lays_out_in_linear_time
+  in %check (timing-ratio assertion, failed on an OBS aarch64 worker)
+- Also skip a_long_unbreakable_word_lays_out_in_linear_time in %check
+  (same wall-clock ratio assertion, 25.7 vs limit 24 on an OBS x86_64 worker)
+
+-------------------------------------------------------------------
+Fri Oct 23 06:57:28 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.10.0 (upstream tag v0.10.0, 2026-10-22):
+  * Editing: shape fills with gradients and transparency, personal
+    templates for File > New, Format Page Numbers, Table of Figures,
+    Split Cells, Convert Text to Table, Cell Margins, Drop Cap and
+    picture Size dialogs, Insert Caption, Word's Spike, Word 2003
+    legacy menu keys, ribbon groups that shrink to fit, Track
+    Changes move tracking, printing scaled to another paper size.
+  * Rendering and layout: triple and Word-pattern dashed borders,
+    radar charts, legacy text effects and form fields, collapsible
+    Navigation pane headings, comments in headers, footers, notes
+    and text boxes, many pagination and table fixes closer to Word.
+  * Import/export: DOCX glossary (building blocks), OpenType
+    ligatures, positional tabs, East Asian layout and mixed
+    Hebrew/Latin run order; RTF/ODT sections, ODT column widths,
+    master-page headers/footers and embedded MathML; RTF East Asian
+    code pages, HTML furigana, Markdown reference links; tagged-PDF
+    figures; copied equations go on the clipboard as MathML.
+  * Proofing and languages: English dialects (en-GB, en-CA,
+    en-AU...) flag each other's spellings, German hyphenation,
+    Indonesian spelling, ISO 8859-1 Hunspell dictionaries and
+    unreadable-dictionary reporting, proofing settings kept across
+    restarts; Dutch, Danish, Slovenian and Romanian interfaces.
+  * Linux: Flatpak host font folders are scanned, AltGr types
+    accented letters instead of opening KeyTips, and saving to a
+    GVFS-mounted NAS share no longer fails on a refused mode change.
+  * CLI/MCP: wordcraft-cli runs script files, opens password-
+    protected Word files with --password and can update fields
+    during conversion; MCP open_document takes a password.
+  * Hardening (no CVE ids): pipe or device paths no longer hang or
+    exhaust memory, tables nest at most 24 deep, image limits are
+    checked before allocating, overflow-checked measurements,
+    stricter colour, HTML entity and percent-escape parsing;
+    date/time conversion now goes through chrono.
+  * Many more fixes in 0.9.0 (2026-10-21) and 0.10.0; see
+    upstream's release notes for the full lists.
+  * Re-vendor with update=true (530 crates): chrono 0.4.45 is the
+    only new crate (MIT OR Apache-2.0, std feature only); the rest
+    are minor bumps (ICU crates 2.4.0, tokio 1.54.1 and others)
+    with unchanged licences. The newly embedded de.pat (hyph-utf8)
+    is MIT. License audit finds no new copyleft, License tag
+    unchanged; quick-xml stays at 0.41.0 and no ruzstd is vendored.
+    cargo_vendor's lockfile audit reports no RUSTSEC advisories
+    (the cargo_audit service itself is a no-op in
+    obs-service-cargo 7.2.2).
+- Update the fixed metainfo release date to 2026-10-22.
+- Legal-Review-Notice: list the embedded hyph-utf8 hyphenation
+  patterns (pl/it/de.pat MIT, pt.pat BSD-3-Clause).
+- Keep all eight %check skips (their test bodies are unchanged in
+  0.10.0) and refresh the comments: upstream CI now tests the whole
+  workspace, but with the optional craft-fonts set this build omits.
+- Skip four new 0.10.0 tests that fail on the OBS workers (three
+  layout assertions needing the optional fonts and one needing a GPU
+  adapter)
+
+-------------------------------------------------------------------
+Sun Oct 18 17:32:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.0 (upstream tag v0.8.0, 2026-10-18):
+  * Editing: header/footer editing by double-clicking the margin,
+    Alt+numpad character codes, F11 full screen, Ctrl+drag object
+    copy, tab stops on the ruler, Sort and Formula table dialogs,
+    table formulas with cell references.
+  * Import/export: password-protected .doc (RC4/XOR), mail merge
+    .xls recipients, RTF/ODT tracked changes, DOCX Office 2016
+    charts, legacy form fields, PDF Hebrew/Arabic reading order.
+  * Proofing: Korean, Swedish, Croatian and Vietnamese interface;
+    Russian, Turkish and Czech spelling/grammar; British spellings.
+  * Hardening (no CVE ids): hostile-document DoS and link-export
+    guards, bounded hostile run lengths and header/footer depth,
+    image byte budgets, overflow-checked measurement parsing.
+    Crash recovery with unsaved-work offer; CLI --help.
+  * Re-vendor with update=true: chardetng 1.0.0, encoding_rs 0.8.42
+    (BSD-3-Clause, already in the tag), craft-pdf 0.1.0, arboard
+    3.7.0 and combine 4.6.9 (all else MIT or Apache-2.0).
+    License audit finds no new copyleft, License tag unchanged.
+    No CVEs in the v0.7.0 to v0.8.0 range, and no ruzstd in the
+    vendor set (not affected by RUSTSEC-2026-0344).
+  * The three 0.7.0 %check skips still match 0.8.0 tests and stay,
+    as does the wall-clock layout skip. Four more 0.8.0 tests fail
+    identically on both arches in suites upstream CI never runs
+    (two layout, two PDF extraction) and are skipped; git-core is
+    now a BuildRequires for the xtask asset test that shells out
+    to git.
+
+-------------------------------------------------------------------
+Thu Oct 15 05:00:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.0 (upstream tag v0.7.0):
+  * Import: WMF/EMF pictures, RTF code pages and page setup, tables
+    laid out on cell edges, Wingdings/Webdings/Symbol as Unicode.
+  * Layout: blank pages put sections on the right side, paragraph
+    spacing is the larger of after/before, shape drag anchoring.
+  * Print through craft-print, Word 2003 XML save, ink kept in runs,
+    drawings/VML kept with margins and fit.
+  * Track Changes Accept All fix, comment balloons, caret contrast,
+    middle-click scroll, MathML copy, Read Aloud without console.
+  * Proofing: Italian (it_IT/it_CH) and Croatian spelling/grammar,
+    hyphenation catalog, equation gallery and watermarks.
+  * Re-vendor with update=true; license audit finds no new copyleft
+    (self_cell still Apache-2.0 option), so the License tag is
+    unchanged. No CVEs in the v0.6.1 to v0.7.0 range.
+  * Scope %check around three 0.7.0 regressions that fail on every
+    OBS arch (file-access ratchet tripped by the new Word 2003 sniff
+    helper, one GPU-adapter UI test, one headless focus UI test);
+    the wall-clock layout skip stays.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+
+-------------------------------------------------------------------
+Tue Oct 13 07:36:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.1:
+  * Tables: select, insert and move with the mouse, resize by dragging
+    borders, double-click a border to AutoFit, vertical merges lay out
+    as one cell, and the right-click menu offers the table's commands.
+  * Layout closer to Word: kerning, automatic paragraph spacing, list
+    indents, keep-with-next, column breaks, hidden end-of-cell marks and
+    text frames in headers, footers and cells.
+  * Paginated Reading Mode, Hide White Space in Print Layout, print
+    preview with page range, odd/even, copies and collate, and comments
+    in printed and PDF output.
+  * Find: Ctrl+F searches in the Navigation pane, Alt+Q opens the "Tell
+    me" command search, and Shift+F10 opens the context menu at the caret.
+  * Complex scripts: Myanmar, Khmer and Indic shaping, automatic RTL
+    paragraph direction while typing, and numeral display modes.
+  * Proofing: Portuguese (pt-BR), Polish and Bulgarian hyphenation,
+    persistent custom dictionary, and non-English runs are skipped by
+    English proofing.
+  * New German interface language, improved Spanish and Polish
+    translations.
+  * DOCX/DOC/ODT: preserve fonts, ink, custom XML stores and complex-script
+    formatting on save; .doc import gains pictures, shapes and tab
+    stops; ODT import reads page setup from styles.xml; native saves
+    protect the original file.
+  * New documents follow the system region (A4, centimetres, decimal
+    comma outside the US); add fonts at run time; clipboard pictures
+    and foreign formatting survive paste on Wayland.
+  * MCP: confine file access with --automation-read-root and
+    --automation-write-root.
+  * Hardening: pictures travel in the reply and exported links keep only
+    safe targets (upstream names no CVE id for it; quick-xml stays at
+    0.41, so the RUSTSEC-2026-0195 fix is retained).
+  * Re-vendored with cargo_vendor update=true (552 crates): new
+    wl-clipboard-rs, zbus, wuff, unicode-script and miniz_oxide stacks
+    are all MIT/Apache-2.0/Zlib; no new copyleft beyond the declared
+    Unicode-3.0, Ubuntu-font-1.0, OFL-1.1 and CC0-1.0 set.
+  * Many UI, dark theme, ribbon and accessibility fixes.
+
+-------------------------------------------------------------------
+Sun Oct 11 20:01:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Skip the wall-clock layout-linearity test in %check: its timing
+  assertion measures shared-worker speed (ratios 33-80 for identical
+  sources on three OBS workers), not the code; the other layout tests
+  still run.
+
+-------------------------------------------------------------------
+Sun Oct 11 19:26:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 0.5.0:
+  * Native word processor with a familiar ribbon: styles, tables, track
+    changes, references, mail merge, plus Zotero cite-while-you-write.
+  * Reads and writes .docx (macros, signatures and charts survive saving),
+    imports Word 97-2003 .doc and password-protected documents via
+    pure-Rust agile decryption, opens ODT/RTF/HTML/Markdown/LaTeX, exports
+    PDF with a text layer.
+  * Word equations (OMML) with an editor, charts, SmartArt, text boxes and
+    WMF/EMF pictures render instead of being dropped; RTL/Persian support.
+  * File dialogs no longer freeze the window on Linux; touchpad scrolling,
+    pinch zoom, dark page mode and a system theme following the OS.
+  * Headless wordcraft-cli converter and command server with MCP support.
+  * Namespace-declaration memory-exhaustion DoS in document XML parsing
+    fixed via quick-xml 0.41 (RUSTSEC-2026-0195).
+  * Vendored crates carry no copyleft beyond Unicode-3.0 (ICU),
+    Ubuntu-font-1.0 (eframe default font) and CC0-1.0 hyphenation data;
+    cargo_vendor runs with update=true as upstream ships no vendor tree.

@@ -1,0 +1,8 @@
+<package name="wordcraft" project="openSUSE:Factory">
+  <title>Native word processor with ribbon, styles, track changes and Word support</title>
+  <description>WordCraft is an open-source, native word processor with a familiar ribbon: styles, tables, track changes, references, mail merge, and .docx, PDF, ODT, RTF, HTML and Markdown files.
+
+This package provides the desktop application; the companion wordcraft-cli
+subpackage provides the headless converter, batch runner and command server.</description>
+  <url>https://github.com/storytold/wordcraft</url>
+</package>
