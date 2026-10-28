@@ -1,0 +1,98 @@
+From 85c2b18fec5ff868e74a2c0d92af8e06dd778504 Mon Sep 17 00:00:00 2001
+From: Georg <mail@georg-pfuetzenreuter.net>
+Date: Tue, 27 Oct 2026 10:35:11 +0100
+Subject: [PATCH] Repair Git state comment formatting (#788)
+
+The _uptodate() function already invokes _format_comments() on the
+comments passed, avoid duplicate invocations of _format_comments()
+which caused the joined string result from being joined with dots a
+second time, effectively placing a dot after every character in the
+resulting comment output.
+
+Also amend the test suite to cover these output conditions.
+
+
+(cherry picked from commit bfdfb18ea135d425ed5f9c000ecc7c8a5544cd83)
+
+Signed-off-by: Georg Pfuetzenreuter <mail@georg-pfuetzenreuter.net>
+---
+ changelog/67944.fixed.md             |  1 +
+ salt/states/git.py                   | 10 ++++------
+ tests/integration/states/test_git.py | 11 +++++++++++
+ 3 files changed, 16 insertions(+), 6 deletions(-)
+ create mode 100644 changelog/67944.fixed.md
+
+diff --git a/changelog/67944.fixed.md b/changelog/67944.fixed.md
+new file mode 100644
+index 0000000000..b25be2844f
+--- /dev/null
++++ b/changelog/67944.fixed.md
+@@ -0,0 +1 @@
++Repair Git state comment formatting
+diff --git a/salt/states/git.py b/salt/states/git.py
+index 0f3f977442..c56c6bdd55 100644
+--- a/salt/states/git.py
++++ b/salt/states/git.py
+@@ -953,9 +953,7 @@ def latest(
+                         target,
+                         force_reset,
+                     )
+-                    return _uptodate(
+-                        ret, target, _format_comments(comments), local_changes
+-                    )
++                    return _uptodate(ret, target, comments, local_changes)
+ 
+             if (
+                 remote_rev_type == "sha1"
+@@ -1184,7 +1182,7 @@ def latest(
+                             # user of the actions taken.
+                             ret["comment"] = _format_comments(actions)
+                             return ret
+-                        return _uptodate(ret, target, _format_comments(actions))
++                        return _uptodate(ret, target, actions)
+ 
+                 # The fetch_url for the desired remote does not match the
+                 # specified URL (or the remote does not exist), so set the
+@@ -1294,7 +1292,7 @@ def latest(
+                         if not revs_match and not update_head and formatted_actions:
+                             ret["comment"] = formatted_actions
+                             return ret
+-                        return _uptodate(ret, target, _format_comments(actions))
++                        return _uptodate(ret, target, actions)
+ 
+                 if not upstream and desired_upstream:
+                     upstream_action = "Tracking branch was set to {}".format(
+@@ -1692,7 +1690,7 @@ def latest(
+             ret["comment"] = _format_comments(comments)
+             ret["changes"]["revision"] = {"old": local_rev, "new": new_rev}
+         else:
+-            return _uptodate(ret, target, _format_comments(comments))
++            return _uptodate(ret, target, comments)
+     else:
+         if os.path.isdir(target):
+             target_contents = os.listdir(target)
+diff --git a/tests/integration/states/test_git.py b/tests/integration/states/test_git.py
+index dba4340dab..fc9fa6fc1a 100644
+--- a/tests/integration/states/test_git.py
++++ b/tests/integration/states/test_git.py
+@@ -295,6 +295,17 @@ class GitTest(ModuleCase, SaltReturnAssertsMixin):
+             "git.latest", name=TEST_REPO, target=target, force_reset=True
+         )
+         self.assertSaltTrueReturn(ret)
++        ret = ret[next(iter(ret))]
++        # beginning of comment
++        self.assertEqual(
++            f"Repository {target} is up-to-date\n",
++            ret["comment"][0 : 26 + len(target)],
++        )
++        self.assertIn("Uncommitted changes were discarded.", ret["comment"])
++        # ending of comment
++        self.assertEqual(
++            "Repository was hard-reset to remote HEAD (bbefe81).", ret["comment"][-51:]
++        )
+ 
+         # Make sure that we no longer have uncommitted changes
+         self.assertFalse(self.run_function("git.diff", [target, "HEAD"]))
+-- 
+2.56.0
+

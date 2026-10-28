@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 27 10:19:53 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
+
+- Ignore network status when comparing docker networks
+- Fix Git state comment formatting
+- Fix surogateescape encoding typo in openscap module
+- Prevent schedule loss during master connection loss (bsc#1280583)
+
+- Added:
+  * fix-docker-tests-785.patch
+  * repair-git-state-comment-formatting-788.patch
+  * fix-surogateescape-typo-in-openscap-module-790.patch
+  * prevent-schedule-loss-when-minion-loses-master-conne.patch
+
+-------------------------------------------------------------------
 Fri Sep 18 07:56:27 UTC 2026 - Victor Zhestkov <vzhestkov@suse.com>
 
 - Ignore release if not specified in the pkg state (bsc#1280289)

@@ -1,0 +1,46 @@
+From 2e6c28b26ab77f003026f63ac983db9da54da9f5 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Tue, 27 Oct 2026 10:36:33 +0100
+Subject: [PATCH] Fix docker tests (#785)
+
+---
+ salt/states/docker_network.py                          | 2 +-
+ tests/pytests/functional/states/test_docker_network.py | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/salt/states/docker_network.py b/salt/states/docker_network.py
+index 38e9027a1a..ace1481a8d 100644
+--- a/salt/states/docker_network.py
++++ b/salt/states/docker_network.py
+@@ -718,7 +718,7 @@ def present(
+                 network["IPAM"]["Config"] = []
+ 
+             changes = __salt__["docker.compare_networks"](
+-                network, temp_net_info, ignore="Name,Id,Created,Containers"
++                network, temp_net_info, ignore="Name,Id,Created,Containers,Status"
+             )
+ 
+             if not changes:
+diff --git a/tests/pytests/functional/states/test_docker_network.py b/tests/pytests/functional/states/test_docker_network.py
+index 19868d03ad..5b652d85ec 100644
+--- a/tests/pytests/functional/states/test_docker_network.py
++++ b/tests/pytests/functional/states/test_docker_network.py
+@@ -427,6 +427,7 @@ def test_bridge_dupname_update(network, docker, docker_network):
+         ret = docker_network.present(
+             name=net.name,
+             subnet=net.subnet,
++            gateway=net.gateway,
+             driver="bridge",
+             driver_opts=[{"com.docker.network.bridge.name": net.name[-8:]}],
+         )
+@@ -435,6 +436,7 @@ def test_bridge_dupname_update(network, docker, docker_network):
+         ret = docker_network.present(
+             name=net.name,
+             subnet=net.subnet,
++            gateway=net.gateway,
+             driver="bridge",
+             driver_opts=[{"com.docker.network.bridge.name": net.name[-8:]}],
+         )
+-- 
+2.56.0
+

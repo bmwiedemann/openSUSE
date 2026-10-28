@@ -1,0 +1,34 @@
+From 7f36a33548e242684a7dd4b2ba09d87f71f6df9e Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Tue, 27 Oct 2026 10:33:51 +0100
+Subject: [PATCH] Fix surogateescape typo in openscap module (#790)
+
+---
+ salt/modules/openscap.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/salt/modules/openscap.py b/salt/modules/openscap.py
+index 7322c667dc..926c98db9e 100644
+--- a/salt/modules/openscap.py
++++ b/salt/modules/openscap.py
+@@ -153,7 +153,7 @@ def xccdf_eval(xccdffile, ovalfiles=None, **kwargs):
+         tempdir = tempfile.mkdtemp()
+         proc = Popen(cmd_opts, stdout=PIPE, stderr=PIPE, cwd=tempdir)
+         (_, error) = proc.communicate()
+-        error = error.decode('utf-8', errors='surogateescape')
++        error = error.decode('utf-8', errors='surrogateescape')
+         success = _OSCAP_EXIT_CODES_MAP.get(proc.returncode, False)
+         if proc.returncode < 0:
+             error += "\nKilled by signal {}\n".format(proc.returncode)
+@@ -205,7 +205,7 @@ def xccdf(params):
+         tempdir = tempfile.mkdtemp()
+         proc = Popen(shlex.split(cmd), stdout=PIPE, stderr=PIPE, cwd=tempdir)
+         (_, error) = proc.communicate()
+-        error = error.decode('utf-8', errors='surogateescape')
++        error = error.decode('utf-8', errors='surrogateescape')
+         success = _OSCAP_EXIT_CODES_MAP.get(proc.returncode, False)
+         if proc.returncode < 0:
+             error += "\nKilled by signal {}\n".format(proc.returncode)
+-- 
+2.56.0
+
