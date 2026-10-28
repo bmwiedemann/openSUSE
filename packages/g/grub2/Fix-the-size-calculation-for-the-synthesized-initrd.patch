@@ -26,11 +26,9 @@ Signed-off-by: Gary Lin <glin@suse.com>
  grub-core/loader/linux.c | 23 ++++++++---------------
  1 file changed, 8 insertions(+), 15 deletions(-)
 
-diff --git a/grub-core/loader/linux.c b/grub-core/loader/linux.c
-index 4e028f5..9ee8f37 100644
 --- a/grub-core/loader/linux.c
 +++ b/grub-core/loader/linux.c
-@@ -209,13 +209,6 @@ grub_initrd_component (const char *buf, int bufsz, const char *newc_name,
+@@ -201,13 +201,6 @@
  		&initrd_ctx->size))
      goto overflow;
  
@@ -41,24 +39,32 @@ index 4e028f5..9ee8f37 100644
 -		&initrd_ctx->size))
 -    goto overflow;
 -
+   /* Component fully built: only now is it owned by grub_initrd_close(). */
+   initrd_ctx->nfiles++;
    free_dir (root);
-   root = 0;
-   return GRUB_ERR_NONE;
-@@ -312,6 +305,13 @@ grub_initrd_init (int argc, char *argv[],
+@@ -333,6 +326,21 @@
  	goto overflow;
      }
  
 +  FOR_LIST_ELEMENTS (pk, kpuber)
 +    if (pk->key && pk->path)
 +      {
-+	grub_initrd_component (pk->key, pk->key_len, pk->path, initrd_ctx);
++	grub_err_t err;
++
++	err = grub_initrd_component (pk->key, pk->key_len, pk->path, initrd_ctx);
++	if (err != GRUB_ERR_NONE)
++	  {
++	    /* grub_initrd_component() already closed initrd_ctx. */
++	    free_dir (root);
++	    return err;
++	  }
 +	newc = 1;
 +      }
 +
    if (newc)
      {
        initrd_ctx->size = ALIGN_UP (initrd_ctx->size, 4);
-@@ -324,10 +324,6 @@ grub_initrd_init (int argc, char *argv[],
+@@ -345,10 +353,6 @@
        root = 0;
      }
  
@@ -69,7 +75,7 @@ index 4e028f5..9ee8f37 100644
    return GRUB_ERR_NONE;
  
   overflow:
-@@ -404,10 +400,7 @@ grub_initrd_load (struct grub_linux_initrd_context *initrd_ctx,
+@@ -425,10 +429,7 @@
  
        cursize = initrd_ctx->components[i].size;
        if (initrd_ctx->components[i].buf)
@@ -81,6 +87,3 @@ index 4e028f5..9ee8f37 100644
        else if (grub_file_read (initrd_ctx->components[i].file, ptr, cursize)
  	  != cursize)
  	{
--- 
-2.35.3
-

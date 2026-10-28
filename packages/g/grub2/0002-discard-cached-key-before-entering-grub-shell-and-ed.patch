@@ -17,7 +17,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/commands/crypttab.c
 +++ b/grub-core/commands/crypttab.c
-@@ -53,6 +53,22 @@
+@@ -53,6 +53,23 @@
    return GRUB_ERR_NONE;
  }
  
@@ -29,7 +29,8 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +  FOR_LIST_ELEMENTS_SAFE (cur, nxt, kpuber)
 +	{
 +	  grub_list_remove (GRUB_AS_LIST (cur));
-+	  grub_memset (cur->key, 0, cur->key_len);
++	  if (cur->key)
++	    grub_memset (cur->key, 0, cur->key_len);
 +	  grub_free (cur->name);
 +	  grub_free (cur->path);
 +	  grub_free (cur->key);
@@ -42,7 +43,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  	       int argc, char **argv)
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
-@@ -37,6 +37,7 @@
+@@ -38,6 +38,7 @@
  #ifdef GRUB_MACHINE_IEEE1275
  #include <grub/ieee1275/ieee1275.h>
  #endif
@@ -50,7 +51,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -478,6 +479,7 @@
+@@ -488,6 +489,7 @@
        return;
      }
  
@@ -68,7 +69,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
  enum update_mode
    {
-@@ -1262,6 +1263,8 @@
+@@ -1266,6 +1267,8 @@
        return;
      }
  

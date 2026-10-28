@@ -1,0 +1,62 @@
+From 3fada8f23d6074cc04351e6150f9e385a3c5dd37 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 13 Oct 2026 13:17:36 +0800
+Subject: [PATCH 2/3] osdep/unix/platform: Handle missing IEEE1275 NVMe boot
+ path
+
+When add_multiple_nvme_bootdevices() cannot find any valid NVMe boot
+device paths, it returns an empty string instead of NULL.
+
+Return NULL when multipath_boot is empty, and check the return value in
+grub_install_register_ieee1275() so an error is reported instead of
+setting an empty boot-device variable.
+
+Fixes: 0f13508bc ("ieee1275: support added for multiple nvme bootpaths")
+Assisted-by: GitHub Copilot:gpt-5.3-codex
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Sudhakar Kuppusamy <sudhakar@linux.ibm.com>
+---
+ grub-core/osdep/unix/platform.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/grub-core/osdep/unix/platform.c b/grub-core/osdep/unix/platform.c
+index b79d3913d..70050f5a7 100644
+--- a/grub-core/osdep/unix/platform.c
++++ b/grub-core/osdep/unix/platform.c
+@@ -322,6 +322,12 @@ add_multiple_nvme_bootdevices (const char *install_device)
+   free (dirR1);
+   free (dirR2);
+ 
++  if (*multipath_boot == '\0')
++    {
++      free (multipath_boot);
++      return NULL;
++    }
++
+   return multipath_boot;
+ }
+ 
+@@ -367,6 +373,9 @@ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+   else if (grub_strstr (install_device, "nvme"))
+     {
+       boot_device = add_multiple_nvme_bootdevices (install_device);
++      if (boot_device == NULL)
++	grub_util_error (_("couldn't find IEEE1275 device path for %s.\nYou will have to set `boot-device' variable manually"),
++			install_device);
+     }
+   else
+     {
+@@ -375,6 +384,9 @@ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+         {
+           free (boot_device);
+           boot_device = add_multiple_nvme_bootdevices (install_device);
++	  if (boot_device == NULL)
++	    grub_util_error (_("couldn't find IEEE1275 device path for %s.\nYou will have to set `boot-device' variable manually"),
++			    install_device);
+         }
+     }
+ 
+-- 
+2.56.0
+

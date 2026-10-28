@@ -93,8 +93,8 @@ Signed-Off-by Michael Chang <mchang@suse.com>
 +  FOR_LIST_ELEMENTS_SAFE (cur, nxt, cryptokey_lst)
  	{
  	  grub_list_remove (GRUB_AS_LIST (cur));
- 	  grub_memset (cur->key, 0, cur->key_len);
-@@ -69,6 +75,20 @@
+ 	  if (cur->key)
+@@ -70,6 +76,20 @@
  	}
  }
  
@@ -115,7 +115,7 @@ Signed-Off-by Michael Chang <mchang@suse.com>
  static grub_err_t
  grub_cmd_crypttab_entry (grub_command_t cmd __attribute__ ((unused)),
  	       int argc, char **argv)
-@@ -92,7 +112,7 @@
+@@ -93,7 +113,7 @@
      }
  
    /*FIXME: Validate UUID string*/
@@ -144,7 +144,7 @@ Signed-Off-by Michael Chang <mchang@suse.com>
  #endif
  	      goto cleanup;
  	    }
-@@ -1307,7 +1311,7 @@
+@@ -1314,7 +1318,7 @@
  
  #ifndef GRUB_UTIL
    if (cargs->key_data && dev)
@@ -153,7 +153,7 @@ Signed-Off-by Michael Chang <mchang@suse.com>
  #endif
    if (askpass)
      {
-@@ -1890,6 +1894,10 @@
+@@ -1897,6 +1901,10 @@
    grub_cryptodisk_t i;
    grub_uint8_t *buf;
  
@@ -166,7 +166,7 @@ Signed-Off-by Michael Chang <mchang@suse.com>
      grub_fatal ("grub_cryptodisk_erasesecrets: cannot allocate memory");
 --- a/grub-core/loader/linux.c
 +++ b/grub-core/loader/linux.c
-@@ -226,13 +226,13 @@
+@@ -232,13 +232,13 @@
    int i;
    int newc = 0;
    struct dir *root = 0;
@@ -182,7 +182,7 @@ Signed-Off-by Michael Chang <mchang@suse.com>
      if (pk->key && pk->path)
        numkey++;
  
-@@ -305,7 +305,7 @@
+@@ -326,7 +326,7 @@
  	goto overflow;
      }
  
@@ -190,7 +190,7 @@ Signed-Off-by Michael Chang <mchang@suse.com>
 +  FOR_LIST_ELEMENTS (pk, cryptokey_lst)
      if (pk->key && pk->path)
        {
- 	grub_initrd_component (pk->key, pk->key_len, pk->path, initrd_ctx);
+ 	grub_err_t err;
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
 @@ -599,7 +599,7 @@
@@ -212,7 +212,7 @@ Signed-Off-by Michael Chang <mchang@suse.com>
  #ifdef GRUB_MACHINE_IEEE1275
  #include <grub/ieee1275/ieee1275.h>
  #endif
-@@ -770,6 +771,7 @@
+@@ -756,6 +757,7 @@
  	  if (grub_key_is_interrupt (key))
  	    {
  	      timeout = -1;
@@ -220,7 +220,7 @@ Signed-Off-by Michael Chang <mchang@suse.com>
  	      break;
  	    }
  
-@@ -852,6 +854,11 @@
+@@ -838,6 +840,11 @@
  	      clear_timeout ();
  	    }
  

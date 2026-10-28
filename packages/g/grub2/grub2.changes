@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 22 06:27:52 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Fix out-of-bound memory write and uninitialized read in
+  add_multiple_nvme_bootdevices() when adding boot device to PowerPC
+  OpenFirmware's boot list (bsc#1284464) 
+  * 0001-osdep-unix-platform-Fix-NVMe-boot-device-buffer-boun.patch
+  * 0002-osdep-unix-platform-Handle-missing-IEEE1275-NVMe-boo.patch
+  * 0003-osdep-unix-platform-Fix-memory-leaks-in-add_multiple.patch
+- Fix memory leak in error path, add missing error return check in
+  grub_initrd_component(), ensure NULL check before memset() in
+  grub_cryptokey_discard() (bsc#1284464)
+  * 0009-Add-crypttab_entry-to-obviate-the-need-to-input-pass.patch
+  * 0002-discard-cached-key-before-entering-grub-shell-and-ed.patch
+  * Fix-the-size-calculation-for-the-synthesized-initrd.patch
+- Fix out-of-bound memory write in add_multiple_dm_multipath_bootdevices() when
+  adding boot device to PowerPC OpenFirmware's boot list
+  * 0001-ieee1275-support-dm-multipath-bootlist.patch
+- Rebase patches
+  * 0002-Restrict-cryptsetup-key-file-permission-for-better-s.patch
+  * 0001-Improve-TPM-key-protection-on-boot-interruptions.patch
+
+-------------------------------------------------------------------
 Tue Oct 20 03:29:30 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Reduce the size and number of TPM 8 PCR events (bsc#1278206)

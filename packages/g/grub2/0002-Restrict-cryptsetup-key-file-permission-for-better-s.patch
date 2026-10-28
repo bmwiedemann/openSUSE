@@ -16,7 +16,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/loader/linux.c
 +++ b/grub-core/loader/linux.c
-@@ -32,6 +32,7 @@
+@@ -33,6 +33,7 @@
    char *buf;
    char *newc_name;
    grub_off_t size;
@@ -24,23 +24,23 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  };
  
  struct dir
-@@ -203,6 +204,7 @@
+@@ -195,6 +196,7 @@
+     goto fail;
    grub_memcpy (comp->buf, buf, bufsz);
-   initrd_ctx->nfiles++;
    comp->size = bufsz;
 +  comp->mode = 0100400;
    if (grub_add (initrd_ctx->size, comp->size,
  		&initrd_ctx->size))
      goto overflow;
-@@ -272,6 +274,7 @@
- 		  grub_initrd_close (initrd_ctx);
+@@ -283,6 +285,7 @@
+ 		  grub_error_pop ();
  		  return grub_errno;
  		}
 +	      initrd_ctx->components[i].mode = 0100777;
  	      name_len = grub_strlen (initrd_ctx->components[i].newc_name) + 1;
  	      if (grub_add (initrd_ctx->size,
  			    ALIGN_UP (sizeof (struct newc_head) + name_len, 4),
-@@ -374,6 +377,7 @@
+@@ -396,6 +399,7 @@
        if (initrd_ctx->components[i].newc_name)
  	{
  	  grub_size_t dir_size;
@@ -48,7 +48,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
  	  if (insert_dir (initrd_ctx->components[i].newc_name, &root, ptr,
  			  &dir_size))
-@@ -385,7 +389,7 @@
+@@ -406,7 +410,7 @@
  	  ptr += dir_size;
  	  ptr = make_header (ptr, initrd_ctx->components[i].newc_name,
  			     grub_strlen (initrd_ctx->components[i].newc_name) + 1,

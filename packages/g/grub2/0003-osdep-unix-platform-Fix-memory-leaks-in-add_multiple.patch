@@ -1,0 +1,74 @@
+From 28b7bc3489ea3a4e143647c01f2a75ce2d006441 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 13 Oct 2026 13:21:36 +0800
+Subject: [PATCH 3/3] osdep/unix/platform: Fix memory leaks in
+ add_multiple_nvme_bootdevices()
+
+In add_multiple_nvme_bootdevices(), strings returned by get_ofpathname()
+were passed directly to xasprintf() without being freed, leaking memory.
+Additionally, sysfs_path was leaked when opening the splitter directory
+failed.
+
+Assign the initial get_ofpathname() result directly to ofpath, store
+subsequent results in a temporary variable to free them after use, and
+free sysfs_path on the splitter_dp failure path.
+
+Fixes: 0f13508bc ("ieee1275: support added for multiple nvme bootpaths")
+Assisted-by: GitHub Copilot:gpt-5.3-codex
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Sudhakar Kuppusamy <sudhakar@linux.ibm.com>
+---
+ grub-core/osdep/unix/platform.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/grub-core/osdep/unix/platform.c b/grub-core/osdep/unix/platform.c
+index 70050f5a7..cd34e12ef 100644
+--- a/grub-core/osdep/unix/platform.c
++++ b/grub-core/osdep/unix/platform.c
+@@ -206,7 +206,7 @@ add_multiple_nvme_bootdevices (const char *install_device)
+     return NULL;
+ 
+   sysfs_path = nvme_get_syspath (nvme_ns);
+-  ofpath = xasprintf ("%s", get_ofpathname (nvme_ns));
++  ofpath = get_ofpathname (nvme_ns);
+ 
+   if (grub_strstr (ofpath, "fibre-channel"))
+     {
+@@ -234,6 +234,7 @@ add_multiple_nvme_bootdevices (const char *install_device)
+       free (splitter_info_path);
+       if (!splitter_dp)
+         {
++	  free (sysfs_path);
+           free (dirR1);
+           return NULL;
+         }
+@@ -275,7 +276,9 @@ add_multiple_nvme_bootdevices (const char *install_device)
+   if (is_splitter == false && is_FC == false)
+     {
+       size_t len;
+-      non_splitter_path = xasprintf ("%s/namespace@%x:1 ", get_ofpathname (dirR1), nsid);
++      char *p = get_ofpathname (dirR1);
++      non_splitter_path = xasprintf ("%s/namespace@%x:1 ", p, nsid);
++      free (p);
+       len = strlen (non_splitter_path);
+       if (len < BOOTDEV_BUFFER)
+ 	{
+@@ -295,10 +298,13 @@ add_multiple_nvme_bootdevices (const char *install_device)
+ 
+           if (grub_strstr (ep->d_name, "nvme") != NULL)
+             {
++	      char *p;
+               if (is_FC == false && grub_strstr (ep->d_name, dirR1) == NULL &&
+                   grub_strstr (ep->d_name, dirR2) == NULL)
+                 continue;
+-              path = xasprintf ("%s/namespace@%x ", get_ofpathname (ep->d_name), nsid);
++	      p = get_ofpathname (ep->d_name);
++              path = xasprintf ("%s/namespace@%x ", p, nsid);
++	      free (p);
+               if ((strlen (multipath_boot) + strlen (path)) >= BOOTDEV_BUFFER)
+                 {
+                   grub_util_warn (_("Maximum five entries are allowed in the bootlist"));
+-- 
+2.56.0
+

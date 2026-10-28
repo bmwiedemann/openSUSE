@@ -21,11 +21,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub-core/osdep/unix/platform.c | 115 ++++++++++++++++++++++++++++++++
  1 file changed, 115 insertions(+)
 
-diff --git a/grub-core/osdep/unix/platform.c b/grub-core/osdep/unix/platform.c
-index e8e28f3d4..733a8ec55 100644
 --- a/grub-core/osdep/unix/platform.c
 +++ b/grub-core/osdep/unix/platform.c
-@@ -304,6 +304,112 @@ add_multiple_nvme_bootdevices (const char *install_device)
+@@ -364,6 +364,112 @@
    return multipath_boot;
  }
  
@@ -95,7 +93,7 @@ index e8e28f3d4..733a8ec55 100644
 +	}
 +
 +      physical_paths[num_path++] = p;
-+      if (num_path > max_physical_path)
++      if (num_path >= max_physical_path)
 +	break;
 +    }
 +
@@ -138,9 +136,9 @@ index e8e28f3d4..733a8ec55 100644
  void
  grub_install_register_ieee1275 (int is_prep, const char *install_device,
  				int partno, const char *relpath)
-@@ -355,6 +461,15 @@ grub_install_register_ieee1275 (int is_prep, const char *install_device,
-           free (boot_device);
-           boot_device = add_multiple_nvme_bootdevices (install_device);
+@@ -421,6 +527,15 @@
+ 	    grub_util_error (_("couldn't find IEEE1275 device path for %s.\nYou will have to set `boot-device' variable manually"),
+ 			    install_device);
          }
 +      else
 +	{
@@ -154,6 +152,3 @@ index e8e28f3d4..733a8ec55 100644
      }
  
    if (grub_util_exec ((const char * []){ "nvsetenv", "boot-device",
--- 
-2.53.0
-

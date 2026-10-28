@@ -216,6 +216,9 @@ Patch:          0001-mfa-fix-key-size-calculation-when-keyfile_size-is-0.patch
 Patch:          0002-mfa-reject-keyfile-offset-at-EOF-to-prevent-empty-ke.patch
 Patch:          0003-mfa-wipe-key-buffer-on-file-read-error.patch
 Patch:          0004-mfa-require-both-factors-to-provide-non-empty-keys.patch
+Patch:          0001-osdep-unix-platform-Fix-NVMe-boot-device-buffer-boun.patch
+Patch:          0002-osdep-unix-platform-Handle-missing-IEEE1275-NVMe-boo.patch
+Patch:          0003-osdep-unix-platform-Fix-memory-leaks-in-add_multiple.patch
 # Downstream patches below
 Patch:          rename-grub-info-file-to-grub2.patch
 Patch:          grub2-linux.patch
