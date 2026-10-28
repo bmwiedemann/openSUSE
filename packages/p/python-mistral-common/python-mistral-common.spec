@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-mistral-common
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        Library of common utilities for Mistral AI
 License:        Apache-2.0
@@ -31,11 +31,13 @@ BuildRequires:  %{python_module jsonschema >= 4.21.1}
 BuildRequires:  %{python_module numpy >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycountry >= 23}
-BuildRequires:  %{python_module pydantic >= 2.7}
+BuildRequires:  %{python_module pydantic >= 2.12}
 BuildRequires:  %{python_module pydantic-extra-types >= 2.10.5}
 BuildRequires:  %{python_module requests >= 2.0.0}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module tiktoken >= 0.7.0}
+# Still imported by mistral_common.guidance.grammar_factory although
+# upstream no longer declares it; kept explicitly.
 BuildRequires:  %{python_module typing_extensions >= 4.11.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
@@ -50,7 +52,7 @@ Requires:       python-numpy >= 1.25
 Requires:       python-opencv
 # pydantic-extra-types[pycountry] extra, needed by language_code
 Requires:       python-pycountry >= 23
-Requires:       python-pydantic >= 2.7
+Requires:       python-pydantic >= 2.12
 Requires:       python-pydantic-extra-types >= 2.10.5
 Requires:       python-requests >= 2.0.0
 Requires:       python-tiktoken >= 0.7.0
