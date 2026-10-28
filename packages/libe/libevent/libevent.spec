@@ -1,7 +1,7 @@
 #
 # spec file for package libevent
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           libevent
 %define     version_base 2
 %define     version_minor 1
-%define     version_release 12
+%define     version_release 13
 %define     abi_release 7
 %define     version_suffix stable
 %define     libsoname %{name}-%{version_base}_%{version_minor}-%{abi_release}

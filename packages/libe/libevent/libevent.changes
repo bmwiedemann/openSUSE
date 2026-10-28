@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Oct 27 12:36:25 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- libevent.keyring updated, fetched from keyserver
+- Updated to 2.1.13 stable
+  Security Fixes (evtag, evrpc):
+
+  - CVE-2026-63383: Fix an out-of-bounds read in decode_tag_internal.
+    (GHSA-fj29-64w6-73h6 bsc#1276000)
+  - CVE-2026-63384: Fix an integer overflow in evtag_unmarshal_header.
+    (GHSA-45c6-qx49-89m8 bsc#1276001)
+
+  Security Fixes (evhttp):
+
+  - CVE-2026-63379: Discard HTTP trailers, to prevent header smuggling attacks.
+    (GHSA-2gmv-p5m7-98p6 bsc#1275995)
+  - CVE-2026-63382: Restrict HTTP header parsing to prevent request smuggling.
+    (GHSA-q39v-w2g7-gr8j bsc#1275999)
+  - CVE-2026-63385, CVE-2026-63382: Treat CRLF and %00 more strictly in
+    HTTP headers, to prevent parser mismatch attacks.
+    (See GHSA-q39v-w2g7-gr8j, GHSA-jcwh-pvf2-73p2, bsc#1275999 bsc#1276002)
+  - CVE-2026-63388: Fix a heap out-of-bound write that could occur when using
+    AF_UNIX sockets and compiling libevent with -DNDEBUG.
+    (GHSA-cvq5-vrvr-j338 bsc#1276004)
+
+  Security fixes (evbuffer, bufferevent):
+
+  - CVE-2026-63381: Fixed a dangling pointer in evbuffer_add_reference.
+    (GHSA-c2pj-cg4r-88c8 bsc#1275997)
+
+  Security fixes (evdns):
+
+  - CVE-2026-63387: Fix an out-of-bounds write in dnsname_to_labels
+    when building a DNS response of 2^16 bytes.
+    (GHSA-58rx-7448-jw47 bsc#1276003)
+
+  Security fixes (example code):
+
+  - Avoid using strcpy() in sample/http-server.c.
+    (GHSA-5rgj-2c58-7jrc)
+
+  Other fixes:
+
+  - Backport fixes for numerous compiler warnings.
+  - Backport fixes for compilation with openssl 3 and later.
+
+-------------------------------------------------------------------
 Sun Jun 22 13:35:40 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Adjust conflict from libev-devel to libev-libevent-devel (event.h was moved)
