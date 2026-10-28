@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 16:14:53 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.4.5:
+  * Fix memory error with 2d tris in normalized inradius.
+  * Move hex_nodal_jacobians to public header verdict.h.
+  * Fix warnings under clang.
+  * Fix CUDA compile.
+
+-------------------------------------------------------------------
 Wed Jul  9 18:11:58 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Update to 1.4.4:

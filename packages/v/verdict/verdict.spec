@@ -1,7 +1,7 @@
 #
 # spec file for package verdict
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define libname libverdict1_4
-
 Name:           verdict
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        Compute quality functions of 2 and 3-dimensional regions
 License:        BSD-3-Clause
@@ -27,21 +26,21 @@ URL:            https://github.com/sandialabs/verdict
 Source:         https://github.com/sandialabs/verdict/archive/refs/tags/%{version}.tar.gz#/verdict-%{version}.tar.gz
 BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
-BuildRequires:  gtest
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gtest)
+BuildRequires:  pkgconfig(gtest_main)
 
 %description
 Verdict is a library for evaluating the geometric qualities of regions of space.
 
 %package -n %{libname}
 Summary:        Verdict library for evaluating the geometric qualities of regions of space
-Group:          System/Libraries
 
 %description -n %{libname}
 Verdict is a library for evaluating the geometric qualities of regions of space.
 
 %package devel
 Summary:        Verdict header files
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
