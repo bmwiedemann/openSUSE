@@ -3,5 +3,6 @@
   <service name="go_modules" mode="manual">
     <param name="compression">zst</param>
     <param name="replace">github.com/go-chi/chi/v5=github.com/go-chi/chi/v5@v5.4.0</param>
+    <param name="replace">github.com/klauspost/compress=github.com/klauspost/compress@v1.20.2</param>
   </service>
 </services>

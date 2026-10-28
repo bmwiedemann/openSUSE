@@ -504,4 +504,15 @@
     `ClientIPFromXFF` via `X-Forwarded-For</comment>
     <requestid>1393072</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>879cd277f01af00bd91a456b89a2dbdc</srcmd5>
+    <version>2.1.2</version>
+    <time>1793219527</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1288488, CVE-2026-116591, github.com/klauspost/compress/zstd:
+    crafted ~27 KB two-block zstd frame makes DecodeAll and the
+    streaming decoder panic</comment>
+    <requestid>1393463</requestid>
+  </revision>
 </revisionlist>
