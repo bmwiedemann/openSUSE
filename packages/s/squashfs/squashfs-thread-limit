@@ -1,11 +1,11 @@
-Index: squashfs-tools-4.6.1/squashfs-tools/mksquashfs.c
+Index: squashfs-tools-4.7.5/squashfs-tools/mksquashfs.c
 ===================================================================
---- squashfs-tools-4.6.1.orig/squashfs-tools/mksquashfs.c
-+++ squashfs-tools-4.6.1/squashfs-tools/mksquashfs.c
-@@ -5276,6 +5276,15 @@ static void initialise_threads(int readq
- 		}
- #endif
- 	}
+--- squashfs-tools-4.7.5.orig/squashfs-tools/mksquashfs.c
++++ squashfs-tools-4.7.5/squashfs-tools/mksquashfs.c
+@@ -5440,6 +5440,16 @@ static void initialise_threads(int readq
+ 	if(pthread_sigmask(SIG_BLOCK, &sigmask, &old_mask) != 0)
+ 		BAD_ERROR("Failed to set signal mask in initialise_threads\n");
+ 
 +	/* Every frag_thrd will:
 +	 * * occupy a slot in the process table (_SC_CHILD_MAX), and will
 +	 * * allocate SQUASHFS_FILE_MAX_SIZE (currently 1MiB), which is
@@ -15,6 +15,7 @@ Index: squashfs-tools-4.6.1/squashfs-tools/mksquashfs.c
 +	 * ourselves to an impressive but sane arbitrary maximum.
 +	 */
 +	if (processors > 64) processors = 64;
- 
++
  	if(multiply_overflow(processors, 3) ||
  			multiply_overflow(processors * 3, sizeof(pthread_t)))
+ 		BAD_ERROR("Processors too large\n");

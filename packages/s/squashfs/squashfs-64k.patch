@@ -1,50 +1,74 @@
-Index: squashfs-tools-4.6.1/squashfs-tools/mksquashfs.c
-===================================================================
---- squashfs-tools-4.6.1.orig/squashfs-tools/mksquashfs.c
-+++ squashfs-tools-4.6.1/squashfs-tools/mksquashfs.c
-@@ -6378,7 +6378,7 @@ static void print_options(FILE *stream,
- 	fprintf(stream, "file on\n\t\t\tencountering them. This option makes ");
- 	fprintf(stream, "Mksquashfs ignore\n\t\t\tthe zero filled blocks\n");
- 	fprintf(stream, "\nExpert options (these may make the filesystem unmountable):\n");
--	fprintf(stream, "-nopad\t\t\tdo not pad filesystem to a multiple of 4K\n");
-+	fprintf(stream, "-nopad\t\t\tdo not pad filesystem to a multiple of 64K\n");
- 	fprintf(stream, "-offset <offset>\tskip <offset> bytes at the beginning of ");
- 	fprintf(stream, "FILESYSTEM.\n\t\t\tOptionally a suffix of K, M or G can be given ");
- 	fprintf(stream, "to specify\n\t\t\tKbytes, Mbytes or Gbytes respectively.\n");
-@@ -6606,7 +6606,7 @@ static void print_sqfstar_options(FILE *
- 	fprintf(stream, "memory for caches.  Default 25%%\n");
- 	fprintf(stream, "-mem-default\t\tprint default memory usage in Mbytes\n");
- 	fprintf(stream, "\nExpert options (these may make the filesystem unmountable):\n");
--	fprintf(stream, "-nopad\t\t\tdo not pad filesystem to a multiple of 4K\n");
-+	fprintf(stream, "-nopad\t\t\tdo not pad filesystem to a multiple of 64K\n");
- 	fprintf(stream, "-offset <offset>\tskip <offset> bytes at the beginning of ");
- 	fprintf(stream, "FILESYSTEM.\n\t\t\tOptionally a suffix of K, M or G can be given ");
- 	fprintf(stream, "to specify\n\t\t\tKbytes, Mbytes or Gbytes respectively.\n");
-@@ -7605,9 +7605,9 @@ print_sqfstar_compressor_options:
- 	set_progressbar_state(FALSE);
- 	write_filesystem_tables(&sBlk);
- 
--	if(!nopad && (i = bytes & (4096 - 1))) {
--		char temp[4096] = {0};
--		write_destination(fd, bytes, 4096 - i, temp);
-+	if(!nopad && (i = bytes & (65536 - 1))) {
-+		char temp[65536] = {0};
-+		write_destination(fd, bytes, 65536 - i, temp);
+diff -urN squashfs-tools-4.7.5/squashfs-tools/mksquashfs.c new/squashfs-tools/mksquashfs.c
+Index: squashfs-tools-4.7.5/squashfs-tools/mksquashfs.c
+--- squashfs-tools-4.7.5.orig/squashfs-tools/mksquashfs.c	2026-03-01 23:42:49.000000000 +0100
++++ squashfs-tools-4.7.5/squashfs-tools/mksquashfs.c	2026-10-18 07:35:40.847607130 +0200
+@@ -593,9 +593,9 @@
+ 				strerror(errno));
  	}
  
- 	res = close(fd);
-@@ -8877,10 +8877,10 @@ print_compressor_options:
- 
- 	set_progressbar_state(FALSE);
- 	write_filesystem_tables(&sBlk);
--
--	if(!nopad && (i = bytes & (4096 - 1))) {
+-	if(!nopad && (i = get_dpos() & (4096 - 1))) {
 -		char temp[4096] = {0};
--		write_destination(fd, bytes, 4096 - i, temp);
-+	
-+	if(!nopad && (i = bytes & (65536 - 1))) {
+-		write_destination(fd, get_dpos(), 4096 - i, temp);
++	if(!nopad && (i = get_dpos() & (65536 - 1))) {
 +		char temp[65536] = {0};
-+		write_destination(fd, bytes, 65536 - i, temp);
++		write_destination(fd, get_dpos(), 65536 - i, temp);
  	}
  
- 	res = close(fd);
+ 	write_superblock(&sBlk);
+@@ -5961,7 +5961,7 @@
+ 	long long block;
+ 
+ 	if(streaming)
+-		block = nopad ? get_dpos() : (get_dpos() + 4095) & ~4095;
++		block = nopad ? get_dpos() : (get_dpos() + 65535) & ~65535;
+ 	else
+ 		block = SQUASHFS_START;
+ 
+@@ -7488,9 +7488,9 @@
+ 				strerror(errno));
+ 	}
+ 
+-	if(!nopad && (i = get_dpos() & (4096 - 1))) {
+-		char temp[4096] = {0};
+-		write_destination(fd, get_dpos(), 4096 - i, temp);
++	if(!nopad && (i = get_dpos() & (65536 - 1))) {
++		char temp[65536] = {0};
++		write_destination(fd, get_dpos(), 65536 - i, temp);
+ 	}
+ 
+ 	write_superblock(&sBlk);
+@@ -8943,9 +8943,9 @@
+ 				strerror(errno));
+ 	}
+ 
+-	if(!nopad && (i = get_dpos() & (4096 - 1))) {
+-		char temp[4096] = {0};
+-		write_destination(fd, get_dpos(), 4096 - i, temp);
++	if(!nopad && (i = get_dpos() & (65536 - 1))) {
++		char temp[65536] = {0};
++		write_destination(fd, get_dpos(), 65536 - i, temp);
+ 	}
+ 
+ 	write_superblock(&sBlk);
+diff -urN squashfs-tools-4.7.5/squashfs-tools/mksquashfs_help.c new/squashfs-tools/mksquashfs_help.c
+Index: squashfs-tools-4.7.5/squashfs-tools/mksquashfs_help.c
+--- squashfs-tools-4.7.5.orig/squashfs-tools/mksquashfs_help.c	2026-03-01 23:42:49.000000000 +0100
++++ squashfs-tools-4.7.5/squashfs-tools/mksquashfs_help.c	2026-10-18 07:35:40.847607130 +0200
+@@ -464,7 +464,7 @@
+ 		"-stream " "option\n",
+ 	"-fix <filesystem>\tfix <filesystem> generated using the -stream "
+ 		"option\n",
+-	"-nopad\t\t\tdo not pad filesystem to a multiple of 4K\n",
++	"-nopad\t\t\tdo not pad filesystem to a multiple of 64K\n",
+ 	"-offset <offset>\tskip <offset> bytes at the beginning of FILESYSTEM."
+ 		"  Optionally a suffix of K, M or G can be given to specify "
+ 		"Kbytes, Mbytes or Gbytes respectively.  Default 0 bytes\n",
+@@ -784,7 +784,7 @@
+ 		"the -stream option\n",
+ 	"-fix <filesystem>\tfix <filesystem> generated using the -stream "
+ 		"option\n",
+-	"-nopad\t\t\tdo not pad filesystem to a multiple of 4K\n",
++	"-nopad\t\t\tdo not pad filesystem to a multiple of 64K\n",
+ 	"-offset <offset>\tskip <offset> bytes at the beginning of "
+ 		"FILESYSTEM.  Optionally a suffix of K, M or G can be given to "
+ 		"specify Kbytes, Mbytes or Gbytes respectively.  Default 0 "

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:36:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.7.5:
+  * Mksquashfs now reads files in parallel (-small-readers,
+    -block-readers, -single-reader options), much faster on SSDs
+    and network filesystems; "fragment block stall" eliminated,
+    improving performance by 20% or more
+  * Rewritten help system using the full terminal width with pager
+    support and -help-all/-help-section/-help-option selectors
+  * New reproducible-image options: -repro, -repro-time, plus
+    -mkfs-time/-inode-time/-root-time inode variants
+  * Mksquashfs/Sqfstar can stream the filesystem to stdout
+    (-stream) and fix it up afterwards (-fix); sparse file
+    reading greatly sped up via SEEK_DATA
+  * New Align action, -force-file-mode/-force-dir-mode,
+    -numeric-owner, -mem/-mem-percent for unsquashfs and more
+  * Bug fixes: possible filesystem corruption with sparse files,
+    broken -max-depth, pseudo-file definition issues, -offset
+    regression, tar-file cache leak in sqfstar
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Rebase squashfs-64k.patch (pad to 64K for ppc64 alignment) to
+  4.7.5, covering the new streamed-filesystem superblock padding
+  and the rewritten help texts; squashfs-thread-limit refreshed
+  for the reworked initialise_threads().
+- Adjust packaged docs to the new upstream layout (README.md,
+  CHANGES.md).
+
+-------------------------------------------------------------------
 Mon Jul  3 13:48:44 UTC 2023 - Torsten Duwe <duwe@suse.com>
 
 - For reference: previous updates fixed
