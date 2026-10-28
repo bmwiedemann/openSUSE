@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 28 17:50:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to address:
+  * bsc#1288551, CVE-2026-116591: github.com/klauspost/compress/zstd:
+    crafted ~27 KB two-block zstd frame makes DecodeAll and the
+    streaming decoder panic
+
+-------------------------------------------------------------------
+Tue Oct 27 13:51:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar: remove
+  * outdated vendor.tar replacements obsoleted with the 4.3.1
+    version update.
+
+-------------------------------------------------------------------
 Fri Oct 23 12:36:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar:
@@ -12,7 +27,15 @@ Sun Oct 18 21:46:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Oct 16 05:11:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 4.3.1:
+- update to 4.3.1 (
+    bsc#1287484, CVE-2026-97032: golang.org/x/net/http2:
+    HTTP/2 server crash due to HPACK encoder race,
+    bsc#1287128, CVE-2026-78663: golang.org/x/net/http2:
+    double flow control refund on HTTP/2 server streams,
+    bsc#1287054, CVE-2026-78660: golang.org/x/net/http2:
+    HTTP/2 transport accepts malformed framing-related headers
+    bsc#1286993, CVE-2026-78659: golang.org/x/net/http2:
+    HTTP/2 server memory exhaustion due to Trailer headers):
   * chore(deps): bump otlploghttp and stdoutlog to v0.21.0 c0d08d0
   * chore(deps): bump the k8s-io group across 1 directory with 7
     updates 0c0146e

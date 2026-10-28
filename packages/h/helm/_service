@@ -17,10 +17,8 @@
   </service>
   <service name="go_modules" mode="manual">
     <param name="compression">zst</param>
-    <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.56.0</param>
-    <param name="replace">golang.org/x/mod=golang.org/x/mod@v0.40.0</param>
-    <param name="replace">golang.org/x/net=golang.org/x/net@v0.60.0</param>
     <param name="replace">golang.org/x/sys=golang.org/x/sys@v0.49.1-0.20261022125458-f5cb0306ac0e</param>
     <param name="replace">google.golang.org/grpc=google.golang.org/grpc@v1.83.2</param>
+    <param name="replace">github.com/klauspost/compress=github.com/klauspost/compress@v1.20.2</param>
   </service>
 </services>

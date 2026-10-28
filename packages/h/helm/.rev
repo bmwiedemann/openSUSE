@@ -1432,4 +1432,29 @@ changes the CVE reference from the (what was previously the helm bug and is now 
   * avoid color related crash on non-x86</comment>
     <requestid>1392155</requestid>
   </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>49d014a6fbfeb262a57c2fa880e01b46</srcmd5>
+    <version>4.3.1</version>
+    <time>1793219524</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1288551, CVE-2026-116591: github.com/klauspost/compress/zstd:
+    crafted ~27 KB two-block zstd frame makes DecodeAll and the
+    streaming decoder panic
+
+- update vendor.tar: remove
+  * outdated vendor.tar replacements obsoleted with the 4.3.1
+    version update.
+
+- update to 4.3.1 (
+    bsc#1287484, CVE-2026-97032: golang.org/x/net/http2:
+    HTTP/2 server crash due to HPACK encoder race,
+    bsc#1287128, CVE-2026-78663: golang.org/x/net/http2:
+    double flow control refund on HTTP/2 server streams,
+    bsc#1287054, CVE-2026-78660: golang.org/x/net/http2:
+    HTTP/2 transport accepts malformed framing-related headers
+    bsc#1286993, CVE-2026-78659: golang.org/x/net/http2:
+    HTTP/2 server memory exhaustion due to Trailer headers):</comment>
+    <requestid>1393460</requestid>
+  </revision>
 </revisionlist>
