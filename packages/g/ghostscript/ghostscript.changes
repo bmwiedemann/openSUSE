@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 27 12:19:35 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Build --without-local-brotli to not use the brotli sources
+  in Ghostscript but the system brotli library to avoid
+  CVE-2026-111497: ghostscript: brotli: "Brotli decoder
+  out-of-bounds write permits remote code execution"
+  (bsc#1287815)
+
+-------------------------------------------------------------------
 Tue Oct 13 11:41:58 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
 
 - Ghostscript version 10.08.0 also fixes

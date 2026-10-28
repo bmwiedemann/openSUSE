@@ -76,6 +76,7 @@ BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 %endif
+BuildRequires:  libbrotli-devel
 BuildRequires:  zlib-devel
 # Provide the additional RPM Provides of the ghostscript-library package
 # (ghostscript_x11 is provided by the ghostscript-x11 sub-package, see below).
@@ -220,6 +221,8 @@ autoreconf -fi
 #   unbundling the 35 Postscript Standard fonts, provided by the URW font package
 # --without-libpaper disables libpaper support because SUSE does not have libpaper.
 # --without-tesseract because this requires C++ (it might be added if Tesseract support in Ghostscript is needed).
+# --without-local-zlib do not use the zlib sources in Ghostscript but the system zlib library
+# --without-local-brotli do not use the brotli sources in Ghostscript but the system brotli library
 %define gs_font_path %{_datadir}/fonts/truetype:%{_datadir}/fonts/Type1:%{_datadir}/fonts/CID:%{_datadir}/fonts/URW
 # See http://bugs.ghostscript.com/show_bug.cgi?id=693100
 export SUSE_ASNEEDED=0
@@ -248,6 +251,7 @@ export SUSE_ASNEEDED=0
     --with-x \
 %endif
     --without-local-zlib \
+    --without-local-brotli \
     --with-system-libtiff \
     --disable-gtk \
     --without-ufst \
