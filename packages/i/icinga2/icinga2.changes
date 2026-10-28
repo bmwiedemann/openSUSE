@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Oct 28 12:59:57 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 2.16.6:
+  * Allow rebuilding already published tags
+  * Version bump for v2.16.6
+  * Upgrading documentation for v2.16.6 and v2.15.7
+  * Changelog for v2.16.6
+  * Remove unused #include
+  * Array#sort: capture the validated `Function::Ptr`, not args
+  * Array#sort: use a hand-rolled heapsort to survive bad comparators
+  * Limit Array#sort() size for sandboxed script frames
+  * Unit-test Array#sort()
+  * Sanitize $USEREMAIL to prevent mail(1) argument injection
+  * Avoid diag info in config compiler that could end up in API response
+  * Don't send diagnostic information to endpoints
+  * Don't add diagnostic information to the check output
+  * Replace non-verbose `DiagnosticInformation` with just `ex.what()`
+  * Add exception string for unhandled exceptions out of http handlers
+  * Add exception string to Config{Stages|Packages}Handler errors
+  * Require a permission for `diagnostic_information` in API responses
+  * Add a unit test for the object join case
+  * Fix `ApiUser` permission filters with `get_object()`
+  * Automatically check expression results against permissions
+  * Evaluate only the object filter sandboxed
+  * Optimize allocation of noop permission checkers
+  * CompatLogger: Fix newline injection
+  * Reject certificates with bad CN
+  * Explicitly quote values in log messages that are easy to reach
+  * Better sanitization and quoting in Log class
+  * Add helper class for sanitizing string values
+  * TestLoggerFixture: allow matching exact strings in addition to regex
+  * CI: add SLES 16.1
+  * .gitlab-ci.yml: fix missing Ubuntu 26.10
+  * Send all info needed used for `history.ID` to `icinga:runtime:state` stream
+  * apiactions: make ACK `set_time` user configurable
+  * AUTHORS: Add Akulbanxal
+  * Icinga DB: Fix inconsistent state_type for volatile checks
+  * Remove `extern template class std::vector<icinga::String>;`
+  * CI: test `-DCMAKE_CXX_STANDARD=20`
+  * Allow building with `-DCMAKE_CXX_STANDARD=20`
+  * Add Ubuntu 26.10 to CI workflow
+  * CI: let zypper retry failed downloads
+  * CI: Build on Alpine edge instead of latest stable
+  * Bump OpenSSL shipped for Windows to v3.5.9
+  * GHA: also test -DICINGA2_UNITY_BUILD=OFF
+  * GHA: remove no-op default -DICINGA2_UNITY_BUILD=ON
+  * GitHub actions: also test macOS
+  * Bump OpenSSL shipped for Windows to v3.5.8
+  * Relax timer test tolerance on all platforms, not just Windows
+  * dnf install: use --nobest option
+  * Install ccache via SPAL on `amazonlinux:2023`
+  * Disable debug symbols for CI builds to reduce ccache usage
+  * Fix saving restoring ccache in Linux GHAs
+  * win-dev.ps1: prevent merge conflicts during backports
+  * Remove Ubuntu 25.10
+  * Remove Ubuntu 25.04
+  * Remove Debian 11
+  * Remove Fedora 42
+  * CI build script: allow limiting build jobs from environment
+  * Add GitLab CI/CD configuration
+
+-------------------------------------------------------------------
 Tue Aug 18 08:50:50 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 2.16.5:
