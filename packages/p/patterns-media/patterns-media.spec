@@ -302,7 +302,6 @@ Requires:       udftools
 Requires:       pattern() = apparmor
 Requires:       pattern() = base
 Requires:       pattern() = console
-Requires:       pattern() = dhcp_dns_server
 Requires:       pattern() = directory_server
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = file_server

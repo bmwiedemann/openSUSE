@@ -523,4 +523,11 @@
   installer.</comment>
     <requestid>1371690</requestid>
   </revision>
+  <revision rev="63" vrev="63">
+    <srcmd5>b9a9f7ea41e3efd7f1398b1524e4c101</srcmd5>
+    <version>20170319</version>
+    <time>1793187026</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the dhcp server pattern from the DVD.</comment>
+  </revision>
 </revisionlist>
