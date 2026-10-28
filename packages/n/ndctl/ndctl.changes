@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 21 15:49:49 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 85
+  * daxctl: Add support for famfs mode
+  * cxl/list: apply bus and port filters to anonymous memdevs
+  * cxl/region: prevent partial teardown on out-of-order destroy-region
+  * cxl/list: show region locked status to user
+
+-------------------------------------------------------------------
 Thu Mar 26 18:31:47 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to version 84 (jsc#PED-15085)

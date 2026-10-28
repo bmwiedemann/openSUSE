@@ -515,4 +515,16 @@
     <comment></comment>
     <requestid>1343049</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>7aa94e8833c94b412aba5bca7ed82443</srcmd5>
+    <version>85</version>
+    <time>1793205842</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 85
+  * daxctl: Add support for famfs mode
+  * cxl/list: apply bus and port filters to anonymous memdevs
+  * cxl/region: prevent partial teardown on out-of-order destroy-region
+  * cxl/list: show region locked status to user</comment>
+    <requestid>1392789</requestid>
+  </revision>
 </revisionlist>
