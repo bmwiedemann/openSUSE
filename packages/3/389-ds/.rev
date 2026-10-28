@@ -876,4 +876,12 @@ RelEng emergencyfix</comment>
     <comment>1</comment>
     <requestid>1376511</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>ba6d40d7a646fa58abf1b366087fcd7d</srcmd5>
+    <version>3.3.1+28b6d8afc</version>
+    <time>1793205855</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1393004</requestid>
+  </revision>
 </revisionlist>

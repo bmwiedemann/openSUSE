@@ -1,10 +1,48 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:40:25 UTC 2026 - william.brown@suse.com
+
+- bsc#1284028 - CVE-2026-86344 - incomplete LDAP messages sent in rapid succession can cause worker thread exhaustion
+- bsc#1284034 - CVE-2026-86345 - smuggled plaintext commands sent alongside StartTLS requests can cause response forgery and authentication bypasses
+- Update to version 3.3.1+28b6d8afc:
+  * Issue 7919 - Coordinate PDU writer handoff and buffered reads
+  * Issue 7919 - CVE-2026-86344 - Fix worker pool exhaustion via partial LDAP messages (DoS)
+  * Issue 8001 - RFE - log total number of entries in each backend
+  * Issue 8017 - Server can hang at shutdown after an aborted import (#8026)
+  * Issue 7879 - Outbound SASL bind waits forever while holding krb5_lock (#7881) (#7926)
+  * Issue 7827 - Preserve dsEntryDN case from DN cache (#7828)
+  * Issue 7877 - UI - add view raw entry action (#7878)
+  * Issue 7915 - UI - Reindexing single attribute does not show progress in modal (#7916) (#7930)
+  * Issue 7953 - dsrate - should use server's ldif directory location (#7954)
+  * Issue 7921 - Fix StartTLS plaintext buffer handling (#7922)
+  * Issue 7912 - dsidm role create-filtered ignores --nsrolefilter and forces an interactive prompt (#7913)
+  * Issue 7908 - dsctl cockpit open-firewall --zone passes a malformed argument (#7909)
+  * Issue 7905 - man: fix dropped line in 99user.ldif(5) example (#7906)
+  * Issue 7742 - memory leak in schema replication (#7894)
+  * Issue 7848 - Reject incomplete MD5 and GOST-YESCRYPT hashes (#7849)
+  * Issue 7744 - memory leak in search referral handling (#7884)
+  * Issue 7702 - memory leak in send_specific_attrs() (#7883)
+  * Issue 7745 - memory leak in replication replica init (#7892)
+  * Issue 7887 - Prevent password reuse when changing multiple passwords (#7888)
+  * Issue 4598 - Copy attribute syntax hashtables to each worker thread (#5693)
+  * Issue 7835 -  rdn can be NULL when passed to bdb_has_spaces() in bdb_upgradedn_producer()
+  * Issue 7837 - importing ldif with entry with long attribute name and subtype causes stack-buffer-overflow (#7838)
+  * Issue 6270 - heap-use-after-free with pwp dictionary path (#7791)
+  * Issue 7863 - remove redundant strcmp's in schema superset checking
+  * Issue 7506 - CLI/UI - Add option to list accounts by status (#7818)
+  * Issue 7627 - When it exists configured matching rule for an (#7628)
+  * Issue 7832 - remove instance monitor directory when server is removed (#7839)
+  * Issue 7772 - double-free when processing an invalid Session Tracking control (#7773)
+  * iadvisories/GHSA-rgxx-hcc4-x3h4 / heap-buffer-overflow in rdn_av_swap (#7826)
+  * Issue 7823 - CI: stabilize test_controltype_expired_grace_limit (#7824)
+  * Issue 7815 - Support nsslapd-attribute-name-exceptions when adding entries
+
+-------------------------------------------------------------------
 Wed Sep 09 00:34:14 UTC 2026 - william.brown@suse.com
 
-- CVE-2026-18922 - During SASL PLAIN authentication, a stale identity carried in a Cyrus SASL auxiliary property from a prior failed bind attempt can be installed on a connection following a subsequent, unrelated successful bind
-- CVE-2026-19843 - The Cockpit 389 Console's LDAP editor constructs an ldapsearch command by embedding an LDAP entry's distinguished name (DN) into a shell command string
-- CVE-2026-76560 - A flaw was found in 389 Directory Server. The SELFDN ACI bind-rule evaluator incorrectly matches an anonymous LDAP client's empty bind DN
-- CVE-2026-18355 - A heap buffer overflow flaw was found in the SASL I/O layer of 389 Directory Server (389-ds-base).
+- bsc#1279864 - CVE-2026-18355 - A heap buffer overflow flaw was found in the SASL I/O layer of 389 Directory Server (389-ds-base).
+- bsc#1279865 - CVE-2026-18922 - During SASL PLAIN authentication, a stale identity carried in a Cyrus SASL auxiliary property from a prior failed bind attempt can be installed on a connection following a subsequent, unrelated successful bind
+- bsc#1279866 - CVE-2026-19843 - The Cockpit 389 Console's LDAP editor constructs an ldapsearch command by embedding an LDAP entry's distinguished name (DN) into a shell command string
+- bsc#1279867 - CVE-2026-76560 - A flaw was found in 389 Directory Server. The SELFDN ACI bind-rule evaluator incorrectly matches an anonymous LDAP client's empty bind DN
 - bsc#1275302 - CVE-2026-18663 - pre-authentication double-free in get_ldapmessage_controls_ext() via critical Session Tracking control 
 - bsc#1273133 - CVE-2026-11770 - pre-auth LDAP filter injection in CleanAllRUV status check
 - bsc#1279572 - CVE-2026-18453 - pre-authentication NULL pointer dereference via paged results and USE_ONE_BACKEND control in op_shared_search
