@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 28 07:05:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.5:
+  * chore(deps): bump the go-minor group with 4 updates (#7733)
+  * chore(deps): bump the go-patch group with 6 updates (#7732)
+  * chore(deps): bump library/node from 26.11.1 to 26.12.1 (#7715)
+  * chore(backport release-1.12): chore(deps): bump Go to 1.27.3
+    and fix high-severity CVEs (#7707) (#7709)
+  * chore(deps): bump the go-patch group across 1 directory with 4
+    updates (#7670)
+  * chore(deps): bump google.golang.org/api from 0.304.0 to 0.305.0
+    in the go-minor group (#7671)
+  * chore(backport release-1.12): docs: make the GitHub CLI the
+    quickstart's default path for the fork and the token (#7662)
+  * chore(backport release-1.12): docs: fix credential CLI commands
+    in managing secrets guide (#7653)
+  * chore(backport release-1.12): docs: correct the garbage
+    collector docs to reflect actual schedule in chart (#7539)
+  * chore(deps/api): bump the go-patch group across 1 directory
+    with 3 updates (#7513)
+  * chore(deps): bump the go-minor group across 1 directory with 6
+    updates (#7602)
+  * chore(deps): bump the go-patch group across 1 directory with 19
+    updates (#7576)
+  * chore(deps): bump library/node from 26.10.0 to 26.11.1 (#7572)
+  * chore(backport release-1.12): docs: add searchable promotion
+    step catalog (#7584)
+
+-------------------------------------------------------------------
 Tue Oct 13 04:31:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.4:
