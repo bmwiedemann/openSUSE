@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:39:50 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2026.10.24:
+  * In "RTPInterface::handleRead()", if we're reading from a TCP socket, call
+    "getpeername()" to set our "fromAddress", because the "recvfrom()" call
+    won't set it.
+  * Added a check to "AC3AudioStreamParser" for a buffer overflow that probably
+    won't happen, but to be safe...
+  * Began replacing some calls to "sprintf()" (that were perfectly safe, but
+    caused some compilers to emit warning messages) with calls to "snprintf()".
+
+-------------------------------------------------------------------
 Fri Oct 23 15:48:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2026.10.23:
