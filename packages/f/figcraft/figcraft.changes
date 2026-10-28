@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Mon Oct 26 11:20:55 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.11.2 (upstream tag v0.11.2, 2026-10-25; covers the
+  skipped 0.10.x/0.11.x tags):
+  * New Boards file kind (collaborative whiteboard), Dev Mode
+    additions (imports in layer trees, compare with versions,
+    inspect-only canvas, measurements, read-only layers panel),
+    Text on a path tool, corner smoothing on polygons and stars,
+    variable binding for text styles, font family and Selection
+    colors, one presentation tab per page, notice before a
+    prototype link leaves for a website.
+  * Large security hardening batch: symlink traversal in the asset
+    walker, owner-only recovery and data-directory permissions,
+    bounded decoding and layout caches, linear-time vector, SVG and
+    export paths, per-client secret for collab resume, per-IPv6
+    prefix storage caps, plugin restrictions on library and font
+    paths.
+  * Many engine, UI and MCP/control-channel fixes and additions
+    from the community batches; PDF now written with craft-libs'
+    krilla; CI and packaging script hygiene.
+  * Re-vendored with update=false against the upstream lockfile.
+    Vendor licences re-audited: all in the shipped targets are
+    under licences already listed; r-efi (MIT OR Apache-2.0 OR
+    LGPL-2.1-or-later, UEFI only) is taken under MIT/Apache-2.0,
+    so License is unchanged; no new copyleft, MSRV still 1.95.
+  * Vendor audit: no RUSTSEC advisories reported.
+
+-------------------------------------------------------------------
+Fri Oct 23 06:54:06 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.10.0 (upstream tag v0.10.0, 2026-10-22):
+  * Linux window frame is now decided by the shared craft-window
+    crate: KDE, Sway, Hyprland, COSMIC and X11 keep the native
+    titlebar, GNOME keeps the app-drawn one; FIGCRAFT_TITLEBAR=app
+    or system overrides it.
+  * Components: Combine as variants in the context menu and Design
+    panel, Add variant on a lone component, new component sets named
+    from the variant path.
+  * Saved documents show their chosen filename, comment drafts are
+    dismissed on tool switch, a document dropped on the canvas opens
+    as a new file, the pages list keeps the current page in view.
+  * Fixes: CSS colour parsing rejects malformed alpha and extra
+    arguments, same-server check strips the default port when the
+    address has a path, whole numbers beyond the i64 range print
+    correctly, SVG export Title Case no longer restarts mid-word
+    across styled runs, reversed open subpaths stay open, local
+    links reject non-hex tokens.
+  * UTC/calendar conversion uses chrono instead of hand-rolled code;
+    packaging scripts enforce HTTPS on curl downloads.
+  * Re-vendored with update=false against the upstream lockfile:
+    adds craft-window (second craft-libs git rev) and chrono, plus
+    patch bumps (rustls, rustls-webpki, webpki-roots, zip, uuid).
+    Every new or changed crate in the shipped targets is under
+    licences already listed (MIT, Apache-2.0, ISC, BSD-2-Clause,
+    CDLA-Permissive-2.0, Unicode-3.0), so License is unchanged; no
+    copyleft added, no new system deps, MSRV still 1.95.
+  * Vendor audit: no RUSTSEC advisories reported.
+- Set the fixed metainfo release date to 2026-10-22 (v0.10.0); it
+  still carried the v0.6.0 date.
+
+-------------------------------------------------------------------
+Wed Oct 21 13:52:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix License tag: MPL-2.0-or-later is not a valid SPDX
+  identifier, use MPL-2.0 like the other craft packages
+
+-------------------------------------------------------------------
+Wed Oct 21 06:40:33 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.8.0 (upstream tag v0.8.0, 2026-10-20):
+  * Home: search files and templates; list fonts a file uses that
+    are not installed; canvas frame rename by double-click; View
+    toggles such as Rulers kept in preferences.
+  * Web build opens files; CLI info, export, convert, render and run
+    are confined to automation roots; desktop refuses unknown
+    command-line options.
+  * New Dutch, French (draft) and Finnish interface catalogs.
+  * Fixes: prototype delete, bound colour variable alpha, recovery
+    folder lock wait, REST import of slot layers.
+- Update to 0.7.0 (upstream tag v0.7.0, 2026-10-18):
+  * Community batches of reviewed fixes: pen bezier handles,
+    gradient icons, SVG export clipping, system clipboard in the
+    browser, outline stroke on all selected layers, Japanese labels.
+  * Packaging: RPM declares the glibc 2.35 floor.
+  * Re-vendored; no new system deps.
+
+-------------------------------------------------------------------
+Fri Oct 16 13:13:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package: FigCraft 0.6.0 (upstream tag v0.6.0, 2026-10-14),
+  native interface design and prototyping tool plus headless
+  figcraft-cli:
+  * Everyday editing: number fields, outline options, Hide when
+    publishing, cursors, panel widths, dark pages.
+  * Starter templates with a Templates section and first-run help;
+    recent files as thumbnail cards with list view and sorting.
+  * Online files with remembered ownership and crash recovery;
+    online-sharing terms with a build-time server switch (kept at
+    the upstream default).
+  * .fig export: instance sizes, variables with modes, shared styles,
+    variable-width strokes; Leptos dev-mode code export.
+  * Core editor: wrapped-line alignment, prototype delays and overlay
+    offsets, frame/group convert, effects on groups, full screen mode.
+  * Security hardening (no CVE ids): ruzstd 0.9.1 fixes the
+    RUSTSEC-2026-0344 decompression-bomb DoS; bounded SVG/SVGZ and
+    plugin inputs, layer-cycle repair, owner-only preferences.
+  * Vendored with update=false against the upstream lockfile; license
+    re-derived over the shipped targets (see the spec notice).
+
