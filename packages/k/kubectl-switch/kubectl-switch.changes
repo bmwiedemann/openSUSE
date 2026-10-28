@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:47:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.36:
+  * Bug Fixes
+    - fa7e15d: fix(go): update golang.org/x/net ( v0.60.0 → v0.62.0
+      ) [security]
+  * Chores
+    - c349b06: chore(mise): update github:goreleaser/goreleaser (
+      2.18.3 → v2.19.0 )
+    - 7b727a6: chore(mise): update go ( 1.27.2 → 1.27.3 )
+
+-------------------------------------------------------------------
 Fri Oct 23 16:07:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.35:
