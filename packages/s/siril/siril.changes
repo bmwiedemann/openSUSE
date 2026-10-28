@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Oct 28 07:43:30 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.4.5:
+  * Fixed constellation names in annotations
+  * Fixed python-related thread contention bug and a race in the
+    Python venv initialisation
+  * Fixed opening JPEG XL files wrapped in an ISO/IEC 18181-2
+    container
+  * Fixed compilation when the version of opencv is >= 5
+  * Fixed an invalid EQUINOX value written in the FITS header when
+    the solver does not write an EQUINOX card
+  * Fixed FITS extension truncation causing corrupted filenames
+  * Fixed GESDT rejection, the `stack` command refusing rejection
+    parameters in scientific notation, and stacking of images
+    having fewer rows than threads
+  * Fixed crashes when exporting monochrome sequence as mp4, when
+    `wavelet` or `linear_match` were called with too few arguments,
+    and when converting files in parallel with a cfitsio built
+    without thread safety
+  * Fixed selection dragged past the image edge losing its last
+    column and row, and the 100% zoom button jumping to the
+    top-left corner
+  * Fixed potential issue with XISF handling of Bayer Pattern
+  * Fixed `cancel` command from pipes to stop a command
+  * Fixed display sliders not being reset when switching to linear
+    display while a stretch tool is open
+  * Fixed MIPS-FHI not being saved in 32-bit FITS files
+  * Fixed cosmetic correction in calibration and live stacking
+    ignoring the hot and cold sigma values of the Calibration tab
+  * Fixed AAVSO export writing V-C instead of the standardized
+    magnitude when Cstd was left at its default of 0
+  * Allowed editing FITS keywords of a whole sequence from the UI
+  * Reimplemented banding reduction for improved speed
+  * Added `addwcs` and `catquery` commands
+  * Added SirilInterface.is_headless property
+
+-------------------------------------------------------------------
 Wed Jun 17 11:46:23 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.4.4:
