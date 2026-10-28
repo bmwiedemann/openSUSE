@@ -17,7 +17,7 @@
 
 
 Name:           kbom
-Version:        0.3.6
+Version:        0.5.0
 Release:        0
 Summary:        Kubernetes Bill of Materials
 License:        Apache-2.0

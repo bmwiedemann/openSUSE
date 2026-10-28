@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:48:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.0:
+  * Detect cluster add-ons and their versions
+  * Validate CycloneDX output against spec 1.7 explicitly
+- Update to version 0.4.1 (there is no release 0.4.0):
+  * Make CycloneDX resource bom-refs unique
+  * Add integration tests against a kind cluster
+  * Omit empty node labels and annotations
+  * Pin GitHub Actions, add Dependabot and govulncheck
+  * Add stable cluster ID and detect real cluster name
+  * Fix README badges and typos
+  * Handle clusters without nodes and fix Metadata return order
+  * Continue when some API groups are unavailable
+  * Use the same field names in YAML and JSON output
+
+-------------------------------------------------------------------
 Sat Oct 24 16:57:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.6:
