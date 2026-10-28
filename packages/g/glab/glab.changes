@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:52:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.125.0:
+  * Features
+    - feat(artifact-registry): add --config-file to login for Maven
+      and sbt (1888cec5)
+    - feat(auth): set default host on login to a self-managed
+      instance (30fc7bad)
+    - feat(deploy-token): Add the list command (437a1b96)
+    - feat(df): add a loopback Go module proxy that gates module
+      zips (e4092589)
+    - feat(df): check golang PURLs in glab df package (d6eb0bd2)
+    - feat(govern): install an OpenCode plugin to sync OpenCode
+      sessions (849928d7)
+    - feat: add token self-rotate option (407441c2)
+  * Bug Fixes
+    - fix(api): refuse redirects that turn a write into a GET
+      (3204dd39)
+    - fix(artifact-registry): write sbt credentials for both sbt
+      1.x and 2.x (6a95d216)
+    - fix(auth): pick git-credential output from the resolved
+      credential (805a649e)
+    - fix(ci): show the real total in the list header (37d91698)
+    - fix(cmdutils): show error text as written (894f4f8b)
+    - fix(config): use host key only as a fallback (eab64cb2)
+    - fix(df): fail closed when the policy API stops answering
+      (d3af5a4c)
+    - fix(df): override yarn networkSettings from every rc file
+      (61651116)
+    - fix(glrepo): recognize an authenticated host with a port in
+      --repo (cdd7749c)
+    - fix(govern): don't report unfound projects as sync errors
+      (c62fa3a0)
+    - fix(govern): make command output agent-neutral (e81d359e)
+    - fix(govern): say how to turn on governance when it is off
+      (2dd7ac25)
+    - fix(i-8408): removed deprecated flag (f825406c)
+    - fix(iostreams): make background/color detection reachable,
+      add --color mode (308e1907)
+    - fix(mr): stop retrying branch creation for an issue on every
+      error (2f35df39)
+    - fix(mr): wait for the queued rebase before merging (67123413)
+    - fix(opentofu): suggest --binary when the snap cannot find
+      tofu (38b3e333)
+    - fix(release): refuse a null entry in --assets-links
+      (3b0c1e0d)
+    - fix(release): send asset links in the create release request
+      (095fd5fd)
+    - fix(release): show the real total in the list header
+      (51975cd6)
+    - fix(repo): read the README when the default branch contains a
+      slash (05caf92c)
+    - fix(repo): wait between fork import status polls (eed440f7)
+    - fix(runner): show the real total in the list header
+      (2dc51a90)
+    - fix(snap): narrow dot-kube plug to kubeconfig and its lock
+      (3926c43f)
+    - fix(snap): rename kube-config plug to dot-kube (9f3aacac)
+    - fix(template): surface directory listing errors (c011eb9b)
+    - fix: clone from full URL uses the URL host for auth
+      (b0fd1244)
+    - fix: correct GAIG feature name in help text (88a16709)
+    - fix: skip API auth when cloning a full URL (f74fbe44)
+    - fix: wiki clone from URL honors a configured subfolder
+      (08849cad)
+  * Documentation
+    - docs: align glab stack intro with stacked diffs terminology
+      (29e7f996)
+    - docs: update install instructions for mise to use mise
+      registry shorthand (14a141d5)
+  * Maintenance
+    - chore: implement many rumdl rules in project (fe0ebfed)
+    - chore: use .tool-versions as "make fix" golangci-lint version
+      source (80cc6798)
+    - ci: update docs review app URL for Cloudflare Workers
+      (70adb737)
+    - refactor(issue): reuse cmdutils issue URL parsing (4291fa56)
+  * Dependencies
+    - chore(deps): bump golangci-lint version updates to v2.15.0
+      (8f3fb72b)
+    - chore(deps): update dependency @commitlint/cli to ^21.2.4
+      (4235991a)
+    - chore(deps): update dependency
+      @commitlint/config-conventional to ^21.2.4 (4783a593)
+    - chore(deps): update dependency @commitlint/lint to ^21.2.4
+      (be74cecc)
+    - chore(deps): update module github.com/docker/cli to
+      v29.9.1+incompatible (2c54515b)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.30.1 (b67171dd)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.38.1 (9708d969)
+    - chore(deps): update module software.sslmate.com/src/go-pkcs12
+      to v0.7.4 (3fa4ec7b)
+  * Others
+    - build(deps): update github.com/andybalholm/brotli to v1.2.7
+      (ae7fcb50)
+    - build: bump Go to 1.27.3 for GO-2026-6809 (b6cd4229)
+    - test: cover cloneHost error paths, ported host and subfolder
+      (579800a5)
+    - test: cover full-URL wiki clone using the URL host (9b78f5ef)
+
+-------------------------------------------------------------------
 Wed Oct 21 05:09:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.124.0:
