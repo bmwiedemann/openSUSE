@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          153
-%define mainver        %major.5.1
-%define orig_version   153.5.1
+%define mainver        %major.6.0
+%define orig_version   153.6.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
@@ -656,7 +656,7 @@ export MOZ_SOURCE_REPO=$RELEASE_REPO
 rm -f dist/bin/browser/defaults/preferences/firefox-l10n.js
 make -C browser/installer STRIP=/bin/true MOZ_PKG_FATAL_WARNINGS=0
 #DEBUG (break the build if searchplugins are missing / temporary)
-#grep amazondotcom dist/firefox/browser/omni.ja
+grep '"identifier": "wikipedia' dist/firefox/browser/omni.ja
 # copy tree into RPM_BUILD_ROOT
 mkdir -p %{buildroot}%{progdir}
 cp -rf $RPM_BUILD_DIR/obj/dist/%{srcname}/* %{buildroot}%{progdir}
