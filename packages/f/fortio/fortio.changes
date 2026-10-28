@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 24 19:37:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.76.0:
+  * Integrate grol scripting for scriptable load scenarios
+  * Support load testing with custom gRPC methods
+  * Add goroutine count to the debug/metrics endpoint
+  * Report error details in jrpc server replies
+  * Custom QPS/response labels in result JSON and histogram titles
+  * Fix FastClient spin and socket reuse on large chunks; close
+    connections after truncating oversized responses
+  * Keep valid graphs when a result is malformed (UI)
+  * Refresh vendored dependencies to security-fixed versions
+    (grpc 1.84.0, x/net 0.61.0); build now requires go >= 1.26
+  * CVE-2026-33186: grpc-go authorization bypass via malformed
+    HTTP/2 :path pseudo-header (boo#1260272)
+  * Many more fixes and improvements; see upstream release
+    notes, v1.63.4 through v1.76.0:
+    https://github.com/fortio/fortio/releases/tag/v1.76.0
+    https://github.com/fortio/fortio/releases
+
+-------------------------------------------------------------------
 Sat Feb 10 06:29:09 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.63.3:
