@@ -1161,4 +1161,41 @@
     <comment>1</comment>
     <requestid>1385248</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6c7a400fc4d27689efe8f8702aebc0e1</srcmd5>
+    <version>0.66.0</version>
+    <time>1793206075</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.66.0:
+  * Update ROADMAP.md to no longer reference outdated 2025
+    roadmap
+  * fix(ui): implement synchronized output and isolate spinner
+    rendering
+  * fix(ui): fix debug console height calculation and
+    terminalBuffer flickering
+  * fix(cli): prevent right-hand border bleed in scrollable tool
+    containers
+  * refactor(core,cli): emit tool call groups from the scheduler
+    and drop the UI lookahead
+  * fix(core): format and quote Windows diff command arguments in
+    openDiff
+  * fix(cli): round before selecting units in formatDuration
+  * fix(core): disable interactive credential and SSH prompts in
+    getSafeGitEnv
+  * fix(cli): resolve settings placeholders after loading .env
+    files
+  * fix(core): harden SKILL.md frontmatter parsing for single-
+    line descriptions
+  * Add Banner about Gemini CLI not being optimized for Gemini 4
+  * Update README to remove obsolete content
+  * fix(ci): remove unsupported members permission in unassign-
+    inactive-assignees workflow
+  * fix(cli): reset slash-command conflict dedupe when conflicts
+    reappear
+  * fix(cli): verify active binary update to prevent PATH
+    shadowing false success
+  * fix(cli): support 'keys' array in keybindings.json
+  * fix(cli): forward termination signals from bootstrap parent</comment>
+    <requestid>1393221</requestid>
+  </revision>
 </revisionlist>
