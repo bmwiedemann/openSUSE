@@ -16,18 +16,6 @@
 #
 
 
-%if 0%{?suse_version} >= 1550
-%bcond_without xxhash
-%else
-%bcond_with xxhash
-%endif
-
-%if 0%{?suse_version} < 1550
-%bcond_without gcc11
-%else
-%bcond_with gcc11
-%endif
-
 %if 0%{?suse_version} >= 1600
 %define use_python %{primary_python}
 %define python_binary %{_bindir}/python%{python_bin_suffix}
@@ -35,55 +23,60 @@
 %define use_python python311
 %define python_binary %{_bindir}/python3.11
 %endif
-
+%if 0%{?suse_version} >= 1550
+%bcond_without xxhash
+%else
+%bcond_with xxhash
+%endif
+%if 0%{?suse_version} < 1550
+%bcond_without gcc11
+%else
+%bcond_with gcc11
+%endif
 Name:           rsync
 Version:        3.5.1
 Release:        0
 Summary:        Versatile tool for fast incremental file transfer
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/Other
 URL:            https://rsync.samba.org/
 Source:         https://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz
 Source1:        rsyncd
 Source2:        logrotate.rsync
 Source3:        rsyncd.socket
-Source4:        rsyncd.rc
 Source5:        rsyncd.conf
 Source6:        rsyncd.secrets
 Source8:        rsyncd.service
 Source9:        rsyncd@.service
 Source10:       https://rsync.samba.org/ftp/rsync/src/rsync-%{version}.tar.gz.asc
 Source12:       %{name}.keyring
-
 Patch1:         rsync-usr-etc.patch
 Patch2:         rsync-run-dir.patch
 # https://github.com/RsyncProject/rsync/pull/639
 Patch3:         rsyncd-return-from-list-command-with-0.patch
 Patch4:         rsync-python-3.6-tests.patch
 Patch5:         use-sys.executable.patch
+Patch6:         rsync-direct-interpreters.patch
 BuildRequires:  %{use_python}-base
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
-BuildRequires:  libacl-devel
-BuildRequires:  libidn2-devel
-BuildRequires:  liblz4-devel
-BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
-BuildRequires:  popt-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libidn2)
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(popt)
+BuildRequires:  pkgconfig(zlib)
+Recommends:     logrotate
 %if %{with xxhash}
 BuildRequires:  pkgconfig(libxxhash) >= 0.8.0
 %endif
 %if %{with gcc11}
 BuildRequires:  gcc11-c++
 %endif
-BuildRequires:  pkgconfig(openssl)
-Requires(post): grep
-Requires(post): sed
-Recommends:     logrotate
 
 %description
 Rsync is a fast and extraordinarily versatile file  copying  tool. It can copy
@@ -139,8 +132,6 @@ chmod -x support/*
 %install
 %make_install
 rm -f %{buildroot}%{_sbindir}/rsyncd
-install -d %{buildroot}%{_sysconfdir}/init.d
-install -d %{buildroot}%{_sysconfdir}/xinetd.d
 install -d %{buildroot}%{_sbindir}
 install -m 755 %{SOURCE1} %{buildroot}%{_sbindir}/rsyncd
 install -m 755 support/rsyncstats %{buildroot}%{_bindir}
@@ -164,6 +155,9 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/rsyncd.socket
 ln -sf service %{buildroot}%{_sbindir}/rcrsyncd
 %endif
 chmod -x support/*
+install -d %{buildroot}%{_docdir}/%{name}
+cp -a support %{buildroot}%{_docdir}/%{name}/
+rm %{buildroot}%{_docdir}/%{name}/support/rsyncstats
 
 %pre
 %service_add_pre rsyncd.service rsyncd.socket
@@ -193,7 +187,8 @@ done
 
 %files
 %license COPYING
-%doc NEWS.md README.md tech_report.tex support/
+%doc NEWS.md README.md tech_report.tex
+%{_docdir}/%{name}/support
 %{_unitdir}/rsyncd@.service
 %{_unitdir}/rsyncd.service
 %{_unitdir}/rsyncd.socket

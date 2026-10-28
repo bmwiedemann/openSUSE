@@ -1,0 +1,16 @@
+--- rsync-3.5.1.old/rsync-ssl	2026-08-20 09:27:55.000000000 +0000
++++ rsync-3.5.1/rsync-ssl	2026-10-25 15:47:29.857160577 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ 
+ # This script uses openssl, gnutls, or stunnel to secure an rsync daemon connection.
+ 
+--- rsync-3.5.1.old/support/rsyncstats	2020-06-17 01:27:48.000000000 +0000
++++ rsync-3.5.1/support/rsyncstats	2026-10-25 15:47:29.860216109 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ #
+ # This script parses the default logfile format produced by rsync when running
+ # as a daemon with transfer logging enabled.  It also parses a slightly tweaked

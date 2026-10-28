@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct 25 15:47:50 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add rsync-direct-interpreters.patch: use direct interpreter
+  paths, #!/bin/bash for rsync-ssl and #!/usr/bin/perl for
+  rsyncstats, instead of /usr/bin/env lookups. The scripts
+  then declare a proper interpreter dependency rather than
+  relying on PATH resolution at runtime.
+- Do not ship rsyncstats twice: the support documentation
+  is copied without it, the script is installed once in
+  /usr/bin.
+- Drop the unused rsyncd.rc source and the empty init.d and
+  xinetd.d directory creation; the daemon runs through the
+  systemd units.
+- Drop the grep and sed post requirements, no scriptlet of
+  this package calls either tool.
+- Spec cleanup per the packaging guidelines: drop the
+  obsolete Group tag and write the library build
+  requirements in pkgconfig form.
+
+-------------------------------------------------------------------
 Mon Sep 28 06:09:43 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Limit the number of check jobs to the available jobs
