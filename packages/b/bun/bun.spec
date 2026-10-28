@@ -17,17 +17,17 @@
 
 
 # 1.4.0 is the first release written in Rust (1.3.14 was the last in Zig).
-# git_commit is the bun-v1.4.2 tag peel, used as GIT_SHA for bun --revision;
-# it is not part of the RPM version.
-%define git_commit 744846f844374847c902b5e7fd59b4342a51ef99
-%define git_short 744846f8
+# git_commit is the bun-v1.4.4 tag peel (38afee6c), used as GIT_SHA for
+# bun --revision; it is not part of the RPM version.
+%define git_commit 38afee6c84fcf48c0edb2466aa4b27d287a59c30
+%define git_short 38afee6c8
 # The WebKit revision Source1 was made from, for reference; it is read out of
 # the Bun tarball by bun_webkit, not set here.
-# 2e2aa2290fac856d6f451ceacb58f7f5b44dd057
+# d6375c72affe0f70222cdcb45012b10f0bf3a9d5
 # The SQLite amalgamation in Bun's tree. Used for both the bundled() Provides
 # and the %%check that asserts it against sqlite_version(), so the two cannot
 # drift apart on a version bump.
-%define bundled_sqlite 3.53.2
+%define bundled_sqlite 3.53.4
 %define bootstrap_version 1.3.14
 %define dl_boot https://github.com/oven-sh/bun/releases/download/bun-v%{bootstrap_version}
 # Building Bun requires an existing Bun. The build driver runs on Node, but 24
@@ -51,7 +51,7 @@
 # slower but keeps the package free of foreign binaries.
 %bcond_without webkit_source
 Name:           bun
-Version:        1.4.2
+Version:        1.4.4
 Release:        0
 Summary:        Fast all-in-one JavaScript runtime and toolkit
 # Bun itself is MIT, but it is one statically linked executable and everything
@@ -61,12 +61,11 @@ Summary:        Fast all-in-one JavaScript runtime and toolkit
 # Unicode-3.0 from unicode-ident, BSD-3-Clause from lol-html and lsquic.
 # picohttpparser (MIT OR Artistic-1.0-Perl) is taken under its permissive half.
 # See LICENSE.md, which upstream keeps current, and re-check this on every
-# version bump. IJG is gone with libjpeg-turbo, the only thing that carried it,
-# now that Patch4 links it from the distribution.
+# version bump. IJG is carried by the bundled libjpeg-turbo source.
 #
 # LGPL-2.1 section 6 is satisfied by shipping the engine's source: WebKit is
 # Source1 and is part of the src.rpm.
-License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND LGPL-2.1-or-later AND MIT AND MPL-2.0 AND Unicode-3.0 AND Zlib AND blessing
+License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND IJG AND LGPL-2.1-or-later AND MIT AND MPL-2.0 AND Unicode-3.0 AND Zlib AND blessing
 URL:            https://bun.sh/
 Source0:        https://github.com/oven-sh/bun/archive/refs/tags/bun-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # JavaScriptCore source. Upstream's fork, at the revision Bun is developed
@@ -126,28 +125,36 @@ Patch2:         bun-uniform-dwarf.patch
 # each and drops the rest, leaving .debug_str_offsets entries no unit refers to
 # any more, and debugedit asserts on the first of those.
 Patch3:         bun-webkit-no-type-units.patch
-# Link zstd, brotli, libdeflate, libspng, libwebp and libjpeg-turbo from the
-# distribution instead of the vendored copies. These are the bundled C
+# Link zstd, brotli, libdeflate, libspng and libwebp from the distribution
+# instead of the vendored copies. These are the bundled C
 # libraries whose pin is an unmodified upstream release rather than a fork and
 # that Bun reaches through their installed public headers, so each can be
 # tracked like any other shared library. See the patch header for the details
 # that are specific to each of them.
 Patch4:         bun-system-libs.patch
-# Raise the LLVM version bun pins from 21 to the distribution default.
-Patch5:         bun-llvm-22.patch
+# Rust 1.99 has TypeId reflection methods, but not the type_info::of
+# convenience function used by upstream. Call the compiler intrinsic directly.
+Patch5:         bun-rust-type-info.patch
+# std::sync::Once has no Default implementation in the shipped Rust compiler.
+Patch6:         bun-rust-once-default.patch
 BuildRequires:  cargo
-# LLVM 22.1.x, per Patch5. scripts/build/tools.ts enforces this for the C
-# compiler and the linker only; see the PATH shim in %%build for the C++
-# compiler, which it looks up without a version check.
-BuildRequires:  clang22
+# LLVM 23.1.x: upstream pins 23.1.1 (scripts/build/ci-images/spec.ts) and
+# scripts/build/tools.ts accepts the same major.minor, so the distribution's
+# 23.1.x needs no patch. It also requires clang's LLVM and rustc's LLVM to be
+# the same major version - both are 23 here. (bun-llvm-22.patch is gone with
+# 1.4.3: upstream moved 21 -> 23 and the distribution default moved 22 -> 23.)
+BuildRequires:  clang23
 BuildRequires:  cmake >= 3.24
 BuildRequires:  gcc-c++
 # Bun patches several of its vendored C dependencies with `git apply`.
 BuildRequires:  git-core
-BuildRequires:  lld22
-BuildRequires:  llvm22
+BuildRequires:  lld23
+BuildRequires:  llvm23
 BuildRequires:  ninja
-# The build driver runs on Node, and 1.4.2 refuses anything below 25
+%ifarch x86_64
+BuildRequires:  nasm
+%endif
+# The build driver runs on Node, and 1.4.4 refuses anything below 25
 # (scripts/build/configure.ts): the codegen scripts gate on import.meta.main,
 # and upstream set the floor at the release after the one that added it rather
 # than at 24.2. 26 is what upstream CI installs and what bun's own node headers
@@ -158,10 +165,15 @@ BuildRequires:  nodejs26
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-# Not a floor upstream states - upstream pins a nightly - but the oldest
-# release this was actually built with. An older compiler fails deep in the
-# workspace instead of here.
-BuildRequires:  rust >= 1.97
+# Not a floor upstream states - upstream pins a nightly - but 1.4.4 needs it
+# twice over: the build refuses a clang whose LLVM major differs from rustc's
+# own (scripts/build/config.ts), and rust 1.99 is the first release whose
+# bundled LLVM is 23, to go with the distribution's clang23. An older
+# compiler fails deep in the workspace instead of here.
+BuildRequires:  rust >= 1.99
+# 1.4.4 builds the standard library from source in every profile
+# (scripts/build/rust.ts), which needs the rust-src component.
+BuildRequires:  rust-src
 BuildRequires:  unzip
 BuildRequires:  zstd
 # Unbundled by Patch4. brotlicommon has no header of its own but is a separate
@@ -171,7 +183,6 @@ BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(libdeflate)
-BuildRequires:  pkgconfig(libturbojpeg)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpdemux)
 BuildRequires:  pkgconfig(libwebpmux)
@@ -184,7 +195,7 @@ Recommends:     libsecret-1-0
 # Bun is a single statically linked executable and everything still listed here
 # ends up inside it. Each is pinned to an exact commit, several are upstream
 # forks (boringssl, tinycc, mimalloc, lol-html) and the JavaScript engine is a
-# fork of WebKit, so none of them can be unbundled the way the six in Patch4
+# fork of WebKit, so none of them can be unbundled the way the five in Patch4
 # were. Unversioned because upstream pins commits rather than releases.
 # Regenerate from bun-prefetch.manifest, LICENSE.md and the crates.io
 # dependencies in Cargo.toml on a version bump - the manifest and LICENSE.md
@@ -195,6 +206,7 @@ Provides:       bundled(c-ares)
 Provides:       bundled(hdr_histogram)
 Provides:       bundled(highway)
 Provides:       bundled(libarchive)
+Provides:       bundled(libjpeg-turbo)
 Provides:       bundled(lol-html)
 Provides:       bundled(ls-hpack)
 Provides:       bundled(ls-qpack)
@@ -290,34 +302,35 @@ EOF
 
 %if %{without rust_nightly}
 # Bun pins a Rust nightly. Use the distribution compiler instead and open the
-# unstable-feature gate, as rustc's own bootstrap does.
-rm -f rust-toolchain.toml
+# unstable-feature gate, as rustc's own bootstrap does. Keep a placeholder:
+# 1.4.4 tracks the file as a ninja input, so deleting it breaks the build.
+echo '# distro build uses system rust' > rust-toolchain.toml
 %endif
 
 %build
 # Bun resolves its own toolchain (scripts/build/tools.ts) and never reads CC,
 # CXX, AR or RANLIB - those are for the cc crate in the Rust workspace. Its
 # resolver looks up "clang" with a version check, so an unversioned clang of a
-# different major is rejected and clang-22 is found instead; but it looks up
+# different major is rejected and clang-23 is found instead; but it looks up
 # "clang++" with checkVersion:false ("clang++ is the same binary from the same
 # install", which does not hold here) and takes the first hit in PATH.
 # /usr/bin/clang++ is whatever major the unversioned clang package currently
 # points at, so every C++ unit - JavaScriptCore and Bun's own bindings alike -
 # can end up built by a different compiler than the C units. Put the right one
 # first in PATH; the resolver tries each name across all of PATH before moving
-# to the next name variant, so this wins. It is needed even while 22 is the
+# to the next name variant, so this wins. It is needed even while 23 is the
 # distribution default, because that default moves on its own.
 mkdir -p _clangshim
-ln -sf %{_bindir}/clang-22 _clangshim/clang
-ln -sf %{_bindir}/clang++-22 _clangshim/clang++
+ln -sf %{_bindir}/clang-23 _clangshim/clang
+ln -sf %{_bindir}/clang++-23 _clangshim/clang++
 export PATH="$PWD/_clangshim:$PATH"
 # llvm-ar, llvm-ranlib, llvm-nm and llvm-strip are looked up unversioned too,
 # but openSUSE ships no unversioned names for those, so they already resolve to
-# the 22 variants. ld.lld is version-checked like clang.
-export CC=clang-22
-export CXX=clang++-22
-export AR=llvm-ar-22
-export RANLIB=llvm-ranlib-22
+# the 23 variants. ld.lld is version-checked like clang.
+export CC=clang-23
+export CXX=clang++-23
+export AR=llvm-ar-23
+export RANLIB=llvm-ranlib-23
 export GIT_SHA="%{git_commit}"
 # process.versions.zstd and .libdeflate are generated from the vendored commit
 # hashes, which say nothing once the distribution libraries are linked instead
@@ -407,7 +420,7 @@ EOF
 # still pass every test above.
 ldd %{buildroot}%{_bindir}/bun
 for lib in libzstd libbrotlienc libbrotlidec libbrotlicommon libdeflate \
-           libspng libwebp libwebpmux libwebpdemux libturbojpeg; do
+           libspng libwebp libwebpmux libwebpdemux; do
     ldd %{buildroot}%{_bindir}/bun | grep -qE "\<$lib\.so" || \
         { echo "$lib is not linked - Patch4 did not take effect"; exit 1; }
 done

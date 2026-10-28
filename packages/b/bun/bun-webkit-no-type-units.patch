@@ -1,6 +1,7 @@
 --- a/scripts/build/deps/webkit.ts
 +++ b/scripts/build/deps/webkit.ts
-@@ -252,5 +252,19 @@
+@@ -260,6 +260,20 @@
+     // PIE-default distros — without it the driver still passes -pie and the
      // -fno-pic probe object fails R_X86_64_32S relocation, killing FindThreads.
      if (cfg.unix && cfg.abi !== "android") optFlags.push("-fno-pic", "-fno-pie", "-no-pie");
 +    // Do not put types in their own units. WebKit's cmake turns them on for
@@ -17,6 +18,6 @@
 +    // very little. WebKit prepends its own flags to CMAKE_CXX_FLAGS and
 +    // these are appended, so this one wins.
 +    if (cfg.unix && !cfg.darwin) optFlags.push("-fno-debug-types-section");
+     if (cfg.hardened) optFlags.push(...hardeningFlags);
      if (cfg.lto) optFlags.push("-flto=thin");
      if (cfg.pgoGenerate) optFlags.push(`-fprofile-generate=${cfg.pgoGenerate}`);
-     if (cfg.pgoUse) {

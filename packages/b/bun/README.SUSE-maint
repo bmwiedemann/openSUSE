@@ -106,6 +106,15 @@ unpacked. bun_prefetch does the steps in the right order. rust-argon2 used to
 be a crates.io crate; 1.4.0 vendors it to apply
 patches/rust-argon2/legacy-low-memory.patch.
 
+Since 1.4.3 the tree also carries the standard library's own registry
+dependencies: every profile builds std from source (-Zbuild-std), so the
+workspace resolve alone is short hashbrown, rustc-demangle, a newer libc
+than the workspace pins and their transitive closures. bun_prefetch vendors
+the rust-src library/ workspace (step 2b, same lockfile the build resolves)
+and merges it into cargo-vendor/; the two trees overlap and the workspace
+copy wins, while differing versions coexist as versioned dirs. Needs
+rust-src installed next to the rustc that runs the generator.
+
 The crates unpack to cargo-vendor/ rather than vendor/, which in Bun's tree
 already holds WebKit and lol-html; cargo requires every entry of its vendor
 directory to be a crate and rejects the ones that are not. The [source]
@@ -209,14 +218,22 @@ the pin in place; a nightly would then have to be provided some other way.
 Patches
 -------
 
-bun-offline-build.patch stops release builds from rebuilding the Rust standard
-library. Upstream rebuilds it to get -Ctarget-cpu into it and to feed
-cross-language LTO, but doing so resolves std's own dependencies from crates.io,
-which a build environment cannot reach. The distribution compiler's prebuilt
-std is what the rest of the system links against anyway, and cross-language LTO
-is off in this build. The patch also passes --offline to cargo (--locked is
-upstream's own since 1.4.0), and reduces the `bun install` ninja rule to
-touching its stamp - see "Source4 - the npm packages".
+bun-offline-build.patch passes --offline to cargo (--locked is upstream's own
+since 1.4.0), so the workspace and the standard library resolve from the
+pre-vendored crate tree and rust-src instead of crates.io, and reduces the
+`bun install` ninja rule to touching its stamp - see "Source4 - the npm
+packages". (Up to 1.4.2 the patch also kept release builds off rebuilding
+the Rust standard library; 1.4.3 builds std from source unconditionally -
+its link consumes each crate's rlib as a ninja edge, so there is no
+prebuilt-std path left to take.)
+
+bun-llvm-22.patch is gone as of 1.4.3. Upstream moved its LLVM pin 21 -> 23
+(scripts/build/ci-images/spec.ts) and the distribution default moved
+22 -> 23 with it, so the version check passes unpatched. 1.4.3 also
+requires clang's LLVM and rustc's LLVM to share a major version
+(scripts/build/config.ts); rust 1.99 is the first release whose bundled
+LLVM is 23, hence BuildRequires: rust >= 1.99. Building std from source
+needs the rust-src component.
 
 bun-unknown-lint.patch adds unknown_lints to two allow() attributes that name a
 lint newer than the released compiler. The workspace denies warnings, so an

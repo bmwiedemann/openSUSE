@@ -134,4 +134,12 @@ assertion, bun:ffi, bundled tinycc, the ldd assertions for all ten
 unbundled libraries, and the image codec chain).</comment>
     <requestid>1376121</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a699b7eb46791de54f84f99fb9a13e82</srcmd5>
+    <version>1.4.4</version>
+    <time>1793205957</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>1392776</requestid>
+  </revision>
 </revisionlist>

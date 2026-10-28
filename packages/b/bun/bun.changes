@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:27:49 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to 1.4.4:
+  * `bun fmt`: Prettier-compatible built-in code formatter that is
+    3x-6x faster than oxfmt and up to 286x faster than Prettier
+  * `bun check`: 1.4x to 7.8x faster on large projects with lower
+    peak memory; `bun check -b` up to 15x faster in monorepos
+  * `bun install`:
+    - Migrates Yarn Berry (v2+) `yarn.lock` to `bun.lock`
+    - Retries network requests with exponential backoff and jitter
+    - Hoisted installs from warm cache up to 3.2x faster on Linux
+    - Respects `"libc": ["glibc"]` vs `["musl"]` optional
+      dependencies
+    - Adds `packageExtensions`, `link:` path syntax,
+      `bun pm fetch`, `bun pm cache pack/unpack/prune`, and
+      `bun publish --recursive`
+  * `Bun.SQL` and `bun:sqlite`:
+    - Up to 48% less client CPU and memory per query
+    - Adds `query.cancel()`, PostgreSQL `COPY` web streams, and
+      column name transforms (`SQL.camel`)
+    - Adds user-defined functions (`db.function()`,
+      `db.aggregate()`) and table update hooks (`db.onInsert`,
+      `db.onUpdate`, `db.onDelete`)
+  * `WebSocket` and `ws`:
+    - Rewritten `ws` module matching npm `ws` 8.22.0 behavior
+    - Adds `ws.pause()` and `ws.resume()` backpressure controls
+      in `Bun.serve`
+  * JavaScriptCore upgrade (commit d6375c72) with 54x faster
+    `toLocaleString`, optimized array allocations, and runtime
+    bugfixes
+  * See upstream's release notes for the rest
+- Refresh downstream patches for 1.4.4 source layout and verify
+  clean application with zero fuzz
+- Refresh bun-rust-type-info.patch for Rust 1.99: patch
+  MultiArrayList reflection calls because type_info::of is not
+  available yet
+- Add bun-rust-once-default.patch: implement Default for Start in
+  lint_js.rs (std::sync::Once lacks Default in Rust 1.99)
+- Re-vendor libjpeg-turbo: Bun requires patched
+  tj3BunCompletedWithWarning symbol missing from system
+  libturbojpeg; restore nasm on x86_64, bundled provides and IJG
+  license
+- Let bun_webkit use ${TMPDIR:-/var/tmp} or custom --tmpdir to
+  avoid filling small /tmp tmpfs mounts
+
+-------------------------------------------------------------------
+Sun Oct 11 11:49:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.3:
+  * `bun check`: a TypeScript type checker passing TypeScript
+    7.0.2's conformance suite at 3x-6.4x tsc speed; also as
+    `bun run --check`, `bun test --check`, `bun build --check`
+  * CVE-2026-48618: TLS server identity is matched on the IDNA
+    mapping alone and IP literals are parsed strictly
+  * CVE-2026-48615: node:http no longer prints proxy credentials
+    in proxy error messages
+  * CVE-2023-44487: node:http2 servers rate-limit stream resets
+    (rapid reset)
+  * CVE-2025-8671: node:http2 servers rate-limit stream resets
+    (MadeYouReset)
+  * TLS clients (fetch, WebSocket, SQL, Redis) verify the server
+    certificate during the handshake instead of after it
+  * node:http server follows Node on framing, pipelining, response
+    lifecycle and close() semantics
+  * The bundler orders shared chunks by first evaluation
+  * WebKit 0c06faad, mimalloc 3.5.3, bundled sqlite 3.53.4
+  * See upstream's release notes for the rest
+- Drop bun-llvm-22.patch: upstream's LLVM pin moved 21 -> 23 with
+  the distribution default, so the check passes unpatched
+- Rebase bun-offline-build.patch for the 1.4.3 sources and fix its
+  hunk context to apply with --fuzz=0
+- Build with clang23, rust >= 1.99 and rust-src: 1.4.3 requires
+  matching clang/rustc LLVM majors and builds std from source;
+  keep rust-toolchain.toml as a placeholder since ninja tracks it
+
+-------------------------------------------------------------------
 Mon Sep  7 08:00:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.4.2:

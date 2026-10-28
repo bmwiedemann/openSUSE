@@ -1,6 +1,5 @@
 From: Martin Pluskal <mpluskal@suse.com>
-Subject: Link zstd, brotli, libdeflate, libspng, libwebp and libjpeg-turbo
- from the distribution
+Subject: Link zstd, brotli, libdeflate, libspng and libwebp from the distribution
 
 Bun's build system has no USE_SYSTEM_* switch; the only precedent for a
 distribution library is the ICU block in systemLibs() (scripts/build/bun.ts),
@@ -9,7 +8,7 @@ makes resolveDep() return null and computeDepLibs() return [], so no fetch,
 no compile and no -l for the vendored copy; the link flags are then added by
 hand in the same place ICU's are.
 
-These six are the vendored C libraries whose pin is an unmodified upstream
+These five are the vendored C libraries whose pin is an unmodified upstream
 release rather than a fork, that bun reaches through their installed public
 headers, and that no other dependency fetchDeps on. Each dep file carries the
 specific reasoning; the recurring points are:
@@ -20,13 +19,10 @@ specific reasoning; the recurring points are:
   - libspng and libwebp: the Rust codecs mirror C structs and ABI version
     constants by hand. The distribution versions equal the vendored pins
     (0.7.4 and 1.6.0), so the layouts and constants agree.
-  - libjpeg-turbo: 8bit-only.patch and jbun_stubs.c only compile out the 12-
-    and 16-bit precisions to save size, which the distribution library simply
-    has.
   - libspng's fetchDeps on zlib goes away with it, since resolveDep() returns
     before reading them.
 
-All six stay vendored for Android, whose NDK sysroot ships none of them.
+All five stay vendored for Android, whose NDK sysroot ships none of them.
 
 process.versions.zstd and .libdeflate are generated from the vendored commit
 hashes, so depVersionsHeader.ts learns to take the real linked version from
@@ -35,12 +31,12 @@ diff --git a/scripts/build/bun.ts b/scripts/build/bun.ts
 index ae2fdef..28a1e4e 100644
 --- a/scripts/build/bun.ts
 +++ b/scripts/build/bun.ts
-@@ -78,6 +78,25 @@ function systemLibs(cfg: Config): string[] {
+@@ -78,6 +78,24 @@ function systemLibs(cfg: Config): string[] {
          libs.push("-latomic");
        }
      }
 +    // openSUSE: these are unbundled - see the enabled() predicate in each of
-+    // deps/{zstd,brotli,libdeflate,libspng,libwebp,libjpeg-turbo}.ts for why
++    // deps/{zstd,brotli,libdeflate,libspng,libwebp}.ts for why
 +    // that one can go where the rest of the vendored list cannot.
 +    // brotlicommon comes last: static archives resolve left to right and the
 +    // encoder and decoder both draw symbols from it.
@@ -55,7 +51,6 @@ index ae2fdef..28a1e4e 100644
 +        "-lwebp",
 +        "-lwebpmux",
 +        "-lwebpdemux",
-+        "-lturbojpeg",
 +      );
 +    }
      // Linux local WebKit: link system ICU (prebuilt bundles its own).
@@ -116,27 +111,6 @@ index e84688d..c789608 100644
    source: () => ({
      kind: "github-archive",
      repo: "ebiggers/libdeflate",
-diff --git a/scripts/build/deps/libjpeg-turbo.ts b/scripts/build/deps/libjpeg-turbo.ts
-index 224d1f3..e8eb699 100644
---- a/scripts/build/deps/libjpeg-turbo.ts
-+++ b/scripts/build/deps/libjpeg-turbo.ts
-@@ -89,6 +89,16 @@ const cmakedefine = (truthy: boolean): [string, string] => ["#cmakedefine", trut
- export const libjpegTurbo: Dependency = {
-   name: "libjpeg-turbo",
- 
-+  // openSUSE: link the distribution's libturbojpeg instead of building the
-+  // vendored copy - 3.1.4 either side. codec_jpeg.rs uses only the tj3_* API
-+  // and two POD structs of ints, so nothing here depends on the internals the
-+  // vendored build reconfigures. The two patches above are size trims, not
-+  // fixes: 8bit-only.patch and jbun_stubs.c compile out the 12- and 16-bit
-+  // precisions, which the distribution library simply has. Dropping this also
-+  // drops the NASM SIMD kernels, and with them the only reason the spec
-+  // needed nasm on x86_64. See systemLibs() in scripts/build/bun.ts.
-+  enabled: cfg => !cfg.linux || cfg.abi === "android",
-+
-   source: () => ({
-     kind: "github-archive",
-     repo: "libjpeg-turbo/libjpeg-turbo",
 diff --git a/scripts/build/deps/libspng.ts b/scripts/build/deps/libspng.ts
 index 0f66452..00b2372 100644
 --- a/scripts/build/deps/libspng.ts

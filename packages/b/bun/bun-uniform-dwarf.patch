@@ -1,11 +1,12 @@
 --- a/scripts/build/rust.ts
 +++ b/scripts/build/rust.ts
-@@ -376,6 +376,18 @@
+@@ -325,6 +325,19 @@
    // Keep frame pointers — matches the C++ side's `-fno-omit-frame-pointer`
    // (flags.ts:293-301). Needed so profilers and crash backtraces can walk Rust frames.
    rustflags.push("-Cforce-frame-pointers=yes");
-+  // Emit the same DWARF version as everything else linked in. Clang 21 and the
-+  // prebuilt standard library are both DWARF 5; rustc still defaults to 4, so
++  // Emit the same DWARF version as everything else linked in. Clang and the
++  // standard library (built from source with these same flags) are both
++  // DWARF 5; rustc still defaults to 4, so
 +  // the binary ends up carrying .debug_ranges and .debug_rnglists at once.
 +  // debugedit cannot read that mixture - it aborts on
 +  // "string_find_entry: Assertion `ret != NULL' failed" - and rpm then cannot
@@ -16,6 +17,6 @@
 +  // the section at all: "Unknown debugging section .debug_names", then the
 +  // same assertion.
 +  rustflags.push("-Cllvm-args=-accel-tables=Disable");
-   // Parallel frontend: rustc's default is single-threaded for parse / macro
-   // expansion / typeck / borrowck, so the critical-path crate (`bun_runtime`)
-   // sits on one core while the rest idle. With this, independent compiler
+   // The one of `hardeningFlags` (flags.ts) rustc has and does not already do:
+   // its stack probes are inline on this target with or without this.
+   if (cfg.hardened) rustflags.push("-Zstack-protector=strong");

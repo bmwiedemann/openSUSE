@@ -1,0 +1,27 @@
+--- a/src/runtime/cli/lint_js.rs
++++ b/src/runtime/cli/lint_js.rs
+@@ -407,7 +407,6 @@
+ }
+ 
+ /// Startup state that all VMs share.
+-#[derive(Default)]
+ struct Start {
+     initialize: std::sync::Once,
+     /// Set if the run won't have more than a few VMs. Stays unset if a VM starts before the files are known.
+@@ -415,6 +414,16 @@
+     memory: std::sync::OnceLock<usize>,
+ }
+ 
++impl Default for Start {
++    fn default() -> Self {
++        Self {
++            initialize: std::sync::Once::new(),
++            is_for_few: AtomicBool::default(),
++            memory: std::sync::OnceLock::default(),
++        }
++    }
++}
++
+ impl Start {
+     /// [`memory_for_engines`]
+     fn memory(&self) -> usize {

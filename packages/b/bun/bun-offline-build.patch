@@ -1,39 +1,25 @@
 diff --git a/scripts/build/rust.ts b/scripts/build/rust.ts
 --- a/scripts/build/rust.ts
 +++ b/scripts/build/rust.ts
-@@ -413,18 +413,22 @@
+@@ -281,6 +281,14 @@
      "--profile",
-     profile.name,
+     profile,
      "--locked",
-+    // Distribution builds have no network and a pre-vendored crate tree.
++    // Distribution builds have no network: resolve everything from the
++    // pre-vendored crate tree (workspace crates) and rust-src (-Zbuild-std
++    // below) instead. CARGO_NET_OFFLINE is set in the environment too; this
++    // states the requirement at the invocation that needs it. (1.4.3 builds
++    // std from source unconditionally - the link consumes each crate's rlib
++    // as a ninja edge - so unlike before there is no prebuilt-std path left
++    // to gate on the profile here.)
 +    "--offline",
    ];
--  if (tier3 || cfg.release || cfg.asan) {
-+  if (tier3 || cfg.asan) {
-     // Rebuild std from source (cargoBuildStdArg) because:
-     // tier3:   no prebuilt `rust-std` exists.
--    // release: prebuilt std is native code built for generic x86-64 with no
--    //          `.llvm_addrsig`. Rebuilding with our RUSTFLAGS gets it
--    //          `-Ctarget-cpu=` (AVX2/BMI in core::str / hashbrown), and under
--    //          `cfg.lto` it becomes bitcode that joins the cross-language LTO
--    //          unit + safe ICF instead of being an opaque blob in the link.
-     // asan:    prebuilt std is uninstrumented; rebuilding applies
-     //          `-Zsanitizer=address` so OOB/UAF inside Vec/String/HashMap are
-     //          visible instead of stopping at the std boundary.
-+    //
-+    // Release builds used to rebuild std here too, to get `-Ctarget-cpu=` into
-+    // it and to feed cross-language LTO. That is dropped when packaging for a
-+    // distribution: rebuilding std means resolving its own dependencies from
-+    // crates.io, which a build environment cannot reach, and the distribution
-+    // compiler's prebuilt std is the one the rest of the system links against
-+    // anyway. Cross-language LTO is off for the same build (--lto=off).
-     args.push(cargoBuildStdArg);
-     if (cfg.release && !cfg.asan) {
-       // Cargo's default build-std feature set is `panic-unwind,backtrace,default`.
+   // std is compiled from source (cargoBuildStdArg) in every build: the link is bun's own and takes each crate's rlib
+   // as the output of an edge (rust/units.ts linkedRlibs), so std's crates have to be units of the graph like the
 diff --git a/scripts/build/codegen.ts b/scripts/build/codegen.ts
 --- a/scripts/build/codegen.ts
 +++ b/scripts/build/codegen.ts
-@@ -146,11 +146,14 @@
+@@ -159,11 +159,14 @@
    //
    // CMake only tracked package.json as input; we add bun.lock so lockfile
    // version bumps actually reinstall.

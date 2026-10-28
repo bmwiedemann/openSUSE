@@ -30,7 +30,9 @@
 # Rust crates are vendored here rather than by obs-service-cargo because the
 # workspace has path dependencies on vendor/lolhtml and vendor/rust-argon2,
 # which are downloads above: cargo cannot even read the manifest until they
-# are unpacked, which has to happen between the two steps.
+# are unpacked, which has to happen between the two steps. The vendor tree
+# also carries the standard library's own registry dependencies for
+# -Zbuild-std (step 2b), read from the rust-src next to the rustc at hand.
 #
 # Run after a version bump:
 #     ./bun_prefetch
@@ -170,6 +172,34 @@ echo "vendoring Rust crates"
 mv "$srcdir/rust-toolchain.toml" "$srcdir/rust-toolchain.toml.orig"
 (cd "$srcdir" && cargo vendor --locked --versioned-dirs "$workdir/cargo-vendor" >/dev/null)
 mv "$srcdir/rust-toolchain.toml.orig" "$srcdir/rust-toolchain.toml"
+
+# ---------------------------------------------------------------------------
+# 2b. Rust crates for -Zbuild-std
+#
+# 1.4.3 builds the standard library from source in every profile
+# (scripts/build/rust.ts): the link consumes each crate's rlib as a ninja
+# edge, so there is no prebuilt-std path. std's own registry dependencies
+# (hashbrown, rustc-demangle, a newer libc than the workspace pins, ...)
+# are not part of the workspace resolve above and have to be vendored too.
+# They are pinned by the rust-src component's library/Cargo.lock - the same
+# component the build needs in its build root - so vendor that workspace
+# with the rustc at hand and merge it in. Needs rust-src installed next to
+# the rustc running this (rustc --print sysroot must show library/).
+# ---------------------------------------------------------------------------
+echo "vendoring crates for -Zbuild-std"
+sysroot=$(rustc --print sysroot)
+stdws="$sysroot/lib/rustlib/src/rust/library"
+[ -f "$stdws/Cargo.toml" ] || {
+    echo "$0: $stdws/Cargo.toml missing; install rust-src for this rustc" >&2
+    exit 1
+}
+# RUSTC_BOOTSTRAP: the std manifests use nightly cargo features; the build
+# sets the same for its own metadata resolve (scripts/build/rust/plan.ts).
+(cd "$stdws" && RUSTC_BOOTSTRAP=1 cargo vendor --locked --versioned-dirs "$workdir/std-vendor" >/dev/null)
+# The two trees overlap (cfg-if, ...); the workspace copy stays. Different
+# versions of one crate coexist as versioned dirs, which is what the two
+# separate resolves (workspace lock, std lock) need.
+cp -rn "$workdir/std-vendor/"* "$workdir/cargo-vendor/"
 
 # ---------------------------------------------------------------------------
 # 3. npm packages for the code generators
