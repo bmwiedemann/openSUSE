@@ -1,0 +1,11 @@
+<package name="cadcraft" project="openSUSE:Factory">
+  <title>Open-source CAD and drafting application</title>
+  <description>CADCraft is an open-source computer-aided design and drafting
+application with a command line, object snaps, layers, dimensions,
+hatches and blocks. It opens and saves DXF and DWG drawings and
+exports SVG and PNG.
+
+This package provides the desktop application; the companion cadcraft-cli
+subpackage provides the headless converter, exporter and MCP command server.</description>
+  <url>https://github.com/storytold/cadcraft</url>
+</package>

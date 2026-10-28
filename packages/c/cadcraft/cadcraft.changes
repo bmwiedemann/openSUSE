@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Mon Oct 26 11:12:05 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.13.0 (upstream tag v0.13.0, 2026-10-25):
+  * PDF plotting now uses craft-pdf's krilla writer
+  * Panels use craft-ui's shared docking
+  * New: RECTANG Center Rectangle mode, MEASUREINIT, usage
+    cross-reference, appload from a path or file picker, implied
+    closed loops from loose LINE and ARC chains, CLI {last} handle
+  * DXF/DWG: layout kept on save, DIMASSOC for angular, diametric
+    and radial dimensions, proxy objects keep their class, drawing
+    variable dictionary written, arrowhead block names kept
+  * Many fixes: dimension text placement (DIMTMOVE, DIMTAD), HATCH
+    with multiline islands, STRETCH multilines, SVG arc flags and
+    viewBox sizing, AutoLISP getangle/angtof/getkword/entmake,
+    surveyor angles, QuickCalc shortcut, Italian, Portuguese,
+    Swedish and Chinese translations
+  * Cargo dependency group bump (17 crates); docs on security
+    limits; autosave folder owner-only on Unix
+  * No CVE keywords in the release notes; cargo_vendor audit clean
+    ("All lockfiles are audited", no RUSTSEC advisories).
+- Re-vendored at upstream's locked versions (update=false kept):
+  new crates craft-pdf (craft-libs git dep, MIT OR Apache-2.0),
+  krilla 0.8.2, pdf-writer 0.15.0 and subsetter 0.2.6 (all
+  MIT OR Apache-2.0); vendor-tree licence set and License tag
+  unchanged; no new system deps; cargo floor 1.95 still
+- Set the fixed metainfo release date to 2026-10-25 (v0.13.0)
+- Legal-Review-Notice: acadrust is now 0.6.5 (locked version)
+
+-------------------------------------------------------------------
+Fri Oct 23 07:14:42 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.12.0 (upstream tag v0.12.0, 2026-10-23):
+  * 0.9.0 was an untagged version bump only
+  * Security hardening (0.12.0): the local control server needs a
+    per-session token (CWE-306); atomic writes via an exclusive
+    temp file (CWE-59); bounded work/allocation in geometry,
+    constraints, rendering, DXF/SVG/PDF import, fonts, MTEXT and
+    Lisp (CWE-400/407/789); XATTACH paths submitted as literal
+    text (CWE-74); craft-fonts manifest paths confined (CWE-22)
+  * New commands: BURST, BREAKLINE, TXT2MTXT, MOCORO, SHAPES,
+    ALIASEDIT dialog, AUDITCTL with .adt logs; HATCHEDIT adds and
+    removes boundary loops; selection cycling (Shift+Space)
+  * DWG/DXF interop: justified text, DIMPOST, second-layout
+    entities, millimetre layouts, plot window corners, ACAD_TABLE
+    blocks, current text style handle, foreign handles above 2^48,
+    orphaned DGN line styles left out so bloated files open
+  * Editing fixes: ARC Ctrl direction, BREAK on closed polylines
+    and Z kept, JOIN cLose, Shift ortho override, constraint and
+    dynamic-block grip fixes, multileader sizes, ID/DIST/LIST Z
+  * Interface: Hungarian, Turkish and Greek translations, interface
+    scale and two-click selection options, menu bar hover switch
+  * cadcraft-cli: --help exits 0; image export warns about
+    entities it cannot draw
+  * No CVE keywords in the 0.8.0-0.12.0 range; cargo_vendor audit
+    clean ("All lockfiles are audited", no RUSTSEC advisories).
+- Re-vendored at upstream's locked versions (update=false kept):
+  the only new crate is chrono 0.4.45 (MIT OR Apache-2.0), so the
+  vendor-tree licence set and License tag are unchanged; craft-libs
+  git revs unchanged; no new system deps; cargo floor 1.95 still
+- Set the fixed metainfo release date to 2026-10-23 (v0.12.0)
+- Legal-Review-Notice: correct the acadrust version to 0.6.4 (the
+  locked version since 0.7.0)
+
+-------------------------------------------------------------------
+Sun Oct 18 17:25:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.0 (upstream tag v0.8.0, 2026-10-17):
+  * RECTANG keeps its area when ortho would move the other corner
+  * Harden the control port: a non-request first line gets one
+    error reply and closes; idle/write timeouts; at most 64
+    queued requests (no CVE assigned)
+  * Xrefs and table data links follow stored paths only on this
+    computer or the drawing's share, via craft-docpath
+  * No CVE keywords in the 0.7.0-0.8.0 range; cargo_audit clean.
+- Vendor-tree licence set unchanged; two rev-pinned craft-libs
+  deps now (craft-ui for the UI, craft-docpath for path
+  resolution), both MIT OR Apache-2.0 and vendored.
+
+-------------------------------------------------------------------
+Thu Oct 15 05:08:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.0 (upstream tag v0.7.0, 2026-10-14):
+  * DWG/DXF: acadrust 0.6.4 partial open of damaged files, ACIS solids kept,
+    unedited dimension blocks preserved, viewport frozen layers, xdata kept
+  * New: AutoLISP routines, dynamic-block parameters/actions/grips, Block
+    Editor, in-place MTEXT editor, Hatch/Gradient dialog, MLEADEREDIT family
+  * Editing: SOLID/hatch picking, TRIM/PEDIT/STRETCH fixes, constraint and arc
+    handling, autosave retry, background zoom/pan, recent-files list
+  * Interface: Italian/Korean/Swedish/Arabic catalogs, CJK big-fonts, control
+    --lazy and --launch, accessibility animation setting
+  * No CVE keywords in the 0.6.2-0.7.0 range; cargo_audit clean.
+- Packaging: acadrust 0.6.3 to 0.6.4 follows upstream lock (update=false);
+  craft-ui git rev unchanged; cargo floor 1.95 still; license tag unchanged
+- Skip one GPU test in %check (gpu_viewport_stencil needs a wgpu adapter;
+  OBS workers have none)
+
+-------------------------------------------------------------------
+Tue Oct 13 07:34:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.2 (upstream tag v0.6.2, 2026-10-12).
+  Commands and entities: GROUP family, MLINE/MLSTYLE, HELIX, REGION
+  booleans, TOLERANCE frames, tables with formulas, Xrefs, SELECTSIMILAR
+  and isolation, OVERKILL, MATCHPROP, DATAEXTRACTION, QDIM, the DIMEDIT
+  family, SCRIPT files, drawing COMPARE, QuickCalc, and an OPTIONS dialog
+  with surviving user profiles; AUDIT/RECOVER plus crash autosave/recovery.
+  Interchange: DXF/DWG save at version 2000-2018 and binary DXF, native
+  MULTILEADER, pre-2007 DWGCODEPAGE files, SVG/SVGZ import, PDF layers and
+  embedded-text subsets. Plot styles (CTB monochrome/grayscale, STB named),
+  PLOTSTYLE, a Plot dialog with preview, and plotter device configs. Text:
+  RTL/bidi with Arabic shaping and new interface languages
+  (pt-BR, de, es, cs, ru, fr, pt, zh). Rendering: fatal wgpu buffer-overflow
+  fix, GPU device-loss handling with immediate autosave, GPU previews.
+  Control server bounds request lines and connections.
+  No CVE keywords in the 0.5.0-0.6.2 range; cargo_audit clean.
+- Packaging: cargo floor 1.90 to 1.95 (cadcraft-ui-egui and craft-ui declare
+  rust-version 1.95); one rev-pinned git crate (craft-ui, MIT OR Apache-2.0)
+  vendored with the rest at upstream's locked versions (update=false:
+  acadrust 0.6.4 fails 3 DWG roundtrip tests). License tag unchanged
+  (290 crates re-derived); no new system deps.
+
+-------------------------------------------------------------------
+Sun Oct 11 19:17:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package cadcraft 0.5.0 (upstream tag v0.5.0, 2026-10-11):
+  open-source CAD/drafting with command line, snaps, layers,
+  dimensions, hatches and blocks; DXF/DWG open and save, SVG/PNG
+  export, MCP command server in the cadcraft-cli subpackage.
+- DXF round-trip fidelity: layer transparency and description, frozen
+  viewport layers, LWPOLYLINE elevation, dimension text rotation,
+  arc-length dimensions, non-ASCII text as \U+ escapes.
+- DWG reads go through the acadrust crate (MPL-2.0, see the
+  Legal-Review-Notice); runaway conversions stop early at a named limit.
+- Commands: EXPLODE keeps elevations, JOIN, HATCHEDIT gradient reset,
+  deferred LINE tangents, SCALE Reference option, PLINE halfwidth
+  semantics; dirty-close asks Save / Don't Save / Cancel.
+- Interface: Light and System themes, command history (F2), ViewCube
+  and UCS icon, per-character font fallback with CJK support.
+- Vendored with cargo_vendor update=true (no vendor/ shipped upstream;
+  validator warning accepted with precedent): license tag re-derived
+  over the shipped-target vendor tree.
+
