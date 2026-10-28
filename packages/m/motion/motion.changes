@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 20 15:30:58 UTC 2026 - Christopher Hofmann <cwh@suse.com>
+
+- Make it installable on busybox images/systems by
+  * removing hard requirement of sysusers-tools
+  * using sysusers.d to create user/group instead
+  * recommending instead of requiring 'systemd'
+
+-------------------------------------------------------------------
 Wed Oct 22 09:43:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.7.1

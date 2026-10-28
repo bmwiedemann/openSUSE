@@ -1,7 +1,7 @@
 #
 # spec file for package motion
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,14 @@ URL:            https://motion-project.github.io/
 Source0:        https://github.com/Motion-Project/motion/archive/release-%{version}.tar.gz
 Source1:        motion-service
 Source2:        motion-sysconfig
+Source3:        system-user-motion.conf
 Patch0:         harden_motion.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  group(video)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
@@ -45,10 +47,10 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(sqlite3)
 Requires(pre):  %fillup_prereq
 Requires(pre):  group(video)
-Requires(pre):  shadow
 Provides:       group(motion)
 Provides:       user(motion)
-%{?systemd_requires}
+%{?systemd_ordering}
+%{?sysusers_requires}
 
 %description
 Motion is a software motion detector. It grabs images from video4linux devices
@@ -71,6 +73,9 @@ autoreconf -i -f
   --without-pgsql
 %make_build
 
+sed -i 's|##HOMEDIR##|%{spooldir}|' %{SOURCE3}
+%sysusers_generate_pre %{SOURCE3} motion %{name}.conf
+
 %install
 %make_install
 
@@ -84,6 +89,7 @@ sed -i 's|; pid_file value|pid_file /var/run/motion.pid|' %{buildroot}%{_sysconf
 sed -i 's|; target_dir value|target_dir %{spooldir}|' %{buildroot}%{_sysconfdir}/%{name}/motion.conf
 
 install -m 0644 -D -t %{buildroot}%{_datadir}/%{name}/examples data/*.{conf,service}
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 mkdir -p %{buildroot}%{_unitdir}
 install -c -m 0644 %{SOURCE1}  %{buildroot}%{_unitdir}/motion.service
@@ -106,9 +112,7 @@ rm -r %{buildroot}%{_datadir}/locale
 %postun
 %service_del_postun motion.service
 
-%pre
-getent group motion || groupadd --system motion
-getent passwd motion || useradd -g motion -G video -c "Motion capture daemon" -d %{spooldir} --system motion
+%pre -f motion.pre
 %service_add_pre motion.service
 
 %preun
@@ -130,5 +134,6 @@ getent passwd motion || useradd -g motion -G video -c "Motion capture daemon" -d
 %config %{_unitdir}/motion.service
 %{_fillupdir}/sysconfig.%{name}
 %{_sbindir}/rcmotion
+%{_sysusersdir}/%{name}.conf
 
 %changelog

@@ -276,4 +276,15 @@
     <comment>Update to 4.7.1 (forwarded request 1313023 from krop)</comment>
     <requestid>1313024</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0085c3a0e5702db135a2891c312d65a0</srcmd5>
+    <version>4.7.1</version>
+    <time>1793215454</time>
+    <user>dimstar_suse</user>
+    <comment>- Make it installable on busybox images/systems by
+  * removing hard requirement of sysusers-tools
+  * using sysusers.d to create user/group instead
+  * recommending instead of requiring 'systemd' (forwarded request 1393450 from cwh)</comment>
+    <requestid>1393456</requestid>
+  </revision>
 </revisionlist>
