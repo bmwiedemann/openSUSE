@@ -6,6 +6,8 @@ Wed Oct 14 10:25:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
     consumption from repeated initial window changes
   * bsc#1287575, CVE-2026-97032: golang.org/x/net/http2: HTTP/2 server
     crash due to HPACK encoder race
+  * bsc#1288212, CVE-2026-78663: golang.org/x/net/http2: double
+    flow control refund on HTTP/2 server streams
 - fix summary
 
 -------------------------------------------------------------------
