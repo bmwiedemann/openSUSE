@@ -108,8 +108,6 @@ dvd:
   - patterns-base-apparmor: [required]
   - patterns-base-base: [required]
   - patterns-base-console: [required]
-  - patterns-server-dhcp_dns_server: [required]
-  - patterns-server-directory_server: [required]
   - patterns-base-enhanced_base: [required]
   - patterns-server-file_server: [required]
   - patterns-fonts-fonts: [required]
