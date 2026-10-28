@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct 28 13:03:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix staging build failure: keep the cargo build and test macros
+  in their braced form so rpm passes the cargo arguments through
+  as shell text instead of parsing them as macro options.
+
+-------------------------------------------------------------------
+Wed Oct 28 06:47:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.165.0:
+  * Built-in Google Cloud Vertex AI provider and GPT-6.1 Terra
+    in the model catalogs (model_provider = "gcp")
+  * Repository filter in the session picker and directory grouping
+    in the agent command center; experimental attached thread forks
+    in the app-server API
+  * Reasoning effort changes mid-conversation by default; memory v2
+    by default for fresh profiles with external-agent memory import
+  * Fresh TUI sessions honor the server approval reviewer; queued
+    agent messages no longer restart work after interrupt or Plan
+    switch; unknown models fail fast instead of retrying
+  * Closed marketplace URL validation gap that could steer Git at a
+    different host than the one allow-listed (no CVE assigned)
+  * Re-vendored for ctutils 0.4.2 -> 0.4.5; licence set re-derived
+    unchanged; keeps upstream gix 0.89.0 / gix-pack 0.76.0
+
+-------------------------------------------------------------------
 Fri Oct 23 08:47:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.164.0:

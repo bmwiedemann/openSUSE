@@ -549,4 +549,12 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
     <comment>Update to 0.164.0</comment>
     <requestid>1392031</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1272421f0fcd2c46941063377c9d77f0</srcmd5>
+    <version>0.165.0</version>
+    <time>1793219520</time>
+    <user>dimstar_suse</user>
+    <comment>Fix staging build: braced cargo macros.</comment>
+    <requestid>1393421</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.164.0
+Version:        0.165.0
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
@@ -271,6 +271,11 @@ export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
 cd codex-rs
 # Only codex-cli is built: a workspace-wide build would also pull the v8
 # crate through the code-mode members, which cannot be built offline.
+# NOTE for spec-cleaner: the cargo build invocation below and the cargo test
+# invocation in the check section must keep the braced macro form, with the
+# cargo arguments appended as plain shell text. Unbracing them makes rpm
+# parse the first argument as a macro option, and the build fails at
+# spec-parse time with a "cargo_build: invalid option" error. Do not "fix".
 %{cargo_build} -p codex-cli --bin codex
 
 %install
