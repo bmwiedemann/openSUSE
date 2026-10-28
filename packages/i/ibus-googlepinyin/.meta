@@ -1,0 +1,12 @@
+<package name="ibus-googlepinyin" project="openSUSE:Factory">
+  <title></title>
+  <description>GooglePinyin
+===
+
+libgooglepinyin is a fork of Google Pinyin on Android, it features to have excellent input 
+experience and uses little resource.
+
+==
+This package is for IBus to use libgooglepinyin. 
+  </description>
+</package>

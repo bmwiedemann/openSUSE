@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Wed Oct 28 13:19:44 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add do-not-install-gschemas_compiled.patch 
+
+-------------------------------------------------------------------
+Sun Oct 25 13:50:27 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.42.0
+  * Migrate to python3
+  * Add a GTK preferences dialog with a layout based on ibus-libpinyin
+- Drop ibus-googlepinyin-python3.patch
+
+-------------------------------------------------------------------
+Sat Apr 12 04:37:58 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- no more python-devel
+- add ibus-googlepinyin-python3.patch
+
+-------------------------------------------------------------------
+Fri Apr 13 08:12:28 UTC 2018 - hillwood@opensuse.org
+
+- Drop Provides tag, make sure python2 won't be automatically installed.
+
+-------------------------------------------------------------------
+Wed May 24 06:42:02 UTC 2017 - qzhao@suse.com
+
+- Add is_opensuse macro in SPEC file, limit google-pinyin 
+  installation not by default in SLE. 
+
+-------------------------------------------------------------------
+Sat Jul 20 22:48:37 CST 2012 - hillwood@linuxfans.org
+
+- Add libgooglepinyin0 and python-ibus as Requires 
+
+-------------------------------------------------------------------
+Wed Jul  4 13:35:45 UTC 2012 - swyear@gmail.com
+
+- Add ibus as Requires 
+
+-------------------------------------------------------------------
+Mon Jun 11 12:16:17 CST 2012 - hillwood@linuxfans.org
+
+- update to 0.1.2
+
+-------------------------------------------------------------------
+Sat Jun  2 14:53:47 CST 2012 - hillwood@linuxfans.org
+
+- bring ibus-googlepinyin as default in DVD.
+- add Provides(ibus:zh)
+
+-------------------------------------------------------------------
+Thu Feb 16 16:00:42 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+
+
+-------------------------------------------------------------------
+Sun Dec  4 17:02:34 UTC+8 2011 - hillwood@linuxfans.org
+
+- Rewite spec file
+- Use BuildArch: noarch for this packages
+
+-------------------------------------------------------------------
+Mon Sep 12 13:57:14 UTC+8 2011 - hillwood@linuxfans.org
+
+- First build
+
+
+

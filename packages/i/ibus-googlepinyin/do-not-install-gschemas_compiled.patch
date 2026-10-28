@@ -1,0 +1,18 @@
+From 74b6dd37eb2af2b98b6d1522930355aea8464f59 Mon Sep 17 00:00:00 2001
+From: Hillwood Yang <hillwood@opensuse.org>
+Date: Wed, 28 Oct 2026 21:15:19 +0800
+Subject: [PATCH] Don't install gschemas.compiled
+
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8b97381..5232e51 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -40,4 +40,3 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/googlepinyin.xml DESTINATION ${CMAKE_I
+ install(FILES data/${SCHEMA} DESTINATION ${CMAKE_INSTALL_DATADIR}/glib-2.0/schemas)
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ibus-setup-googlepinyin.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+ install(DIRECTORY icons/ DESTINATION ${CMAKE_INSTALL_DATADIR}/ibus-googlepinyin/icons)
+-install(CODE "execute_process(COMMAND \"${GLIB_COMPILE_SCHEMAS}\" \"\$ENV{DESTDIR}${CMAKE_INSTALL_FULL_DATADIR}/glib-2.0/schemas\")")
