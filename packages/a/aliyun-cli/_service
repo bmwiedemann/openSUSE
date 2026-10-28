@@ -13,6 +13,6 @@
   </service>
   <service name="go_modules" mode="disabled">
     <param name="archive">aliyun-cli-v3.5.2.tar.gz</param>
-    <param name="replace">github.com/klauspost/compress=github.com/klauspost/compress@v1.18.7</param>
+    <param name="replace">github.com/klauspost/compress=github.com/klauspost/compress@v1.20.3</param>
   </service>
 </services>

@@ -399,4 +399,13 @@
   * Add shared CloudSSO sessions across profiles by @AllyW in (#1481) (forwarded request 1393047 from glaubitz)</comment>
     <requestid>1393066</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>d9c706cc943b500bfa98708b46228efa</srcmd5>
+    <version>3.5.2</version>
+    <time>1793206231</time>
+    <user>dimstar_suse</user>
+    <comment>- Update github.com/klauspost/compress to v1.20.3
+  (bsc#1288500, CVE-2026-116591) (forwarded request 1393437 from glaubitz)</comment>
+    <requestid>1393440</requestid>
+  </revision>
 </revisionlist>
