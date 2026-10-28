@@ -17,11 +17,10 @@
 
 
 Name:           xfsdump
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Administrative Utilities for the XFS File System
 License:        GPL-2.0-or-later
-Group:          System/Filesystems
 URL:            https://xfs.wiki.kernel.org/
 Source0:        https://www.kernel.org/pub/linux/utils/fs/xfs/xfsdump/xfsdump-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/linux/utils/fs/xfs/xfsdump/xfsdump-%{version}.tar.sign
@@ -30,12 +29,17 @@ Patch0:         xfsdump-docdir.diff
 Patch1:         xfsdump-rename-READ-WRITE-macros-in-rmtlib.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+# Keep the autoconf/automake tool dependencies literally: the spec-cleaner
+# perl conversion would explode them into their perl module providers.
 BuildRequires:  e2fsprogs-devel
-BuildRequires:  libattr-devel
+BuildRequires:  gcc
 BuildRequires:  libtool
-BuildRequires:  ncurses-devel
+BuildRequires:  make
+BuildRequires:  pkgconfig
 BuildRequires:  xfsprogs-devel
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libattr)
+BuildRequires:  pkgconfig(ncurses)
 
 %description
 The xfsdump package contains xfsdump, xfsrestore, and a number of other
@@ -59,7 +63,7 @@ subtrees may be restored from full or partial backups.
 
 %build
 rm -f configure
-make configure
+%make_build configure
 export DEBUG=-DNDEBUG
 %configure --bindir=%{_sbindir}
 %make_build
@@ -82,7 +86,7 @@ ln -s %{_sbindir}/xfsrestore %{buildroot}/sbin
 %doc %{_defaultdocdir}/%{name}
 %{_mandir}/man8/*
 %if 0%{?suse_version} > 1200
-%doc doc/COPYING
+%license doc/COPYING
 %endif
 
 %changelog

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 18 05:36:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.3.0:
+  * xfsrestore: only process subtrees that are selected, fixing
+    an assertion failure in cumulative restores where the initial
+    restore used the subtree (-s) option
+  * Fix permissions on files installed by libtoolize (build fix)
+- Refresh keyring: add new upstream maintainer key (Andrey
+  Albershteyn); upstream signing key rotated from Carlos Maiolino
+- Spec cleanup (spec-cleaner): drop Group tag, use pkgconfig()
+  BuildRequires, %license for COPYING
+- Fix BuildRequires: restore autoconf (regenerating configure
+  needs it), keep only the pkgconfig() providers the sources
+  use (libattr, ncurses), add gcc/make
+
+-------------------------------------------------------------------
 Fri Jan  2 09:15:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:
