@@ -20,7 +20,7 @@
 %bcond_with    mutt_openssl
 %bcond_without mutt_gnutls
 Name:           mutt
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
@@ -55,8 +55,6 @@ Patch16:        mutt-1.5.23-carriage-return.path
 Patch18:        mutt-1.5.21-mailcap.diff
 # PATCH-FIX-SUSE: bsc#907453 - CVE-2014-9116: mutt: heap-based buffer overflow in mutt_substrdup()
 Patch19:        bsc907453-CVE-2014-9116-jessie.patch
-# PATCH-FIX-UPSTREAM: bsc#128473 - CVE-2026-107570: mutt: heap out-of-bounds write in `convert_file_from_to()` via a crafted `Content-Type` header
-Patch20:        bsc1284739-CVE-2026-107570.patch
 # PATCH-ENHANCE-SUSE: boo#1156477 - Mutt has an option to ask before quitting on ^C but quits immediately on ^4
 Patch21:        mutt-Fix-SIGQUIT-handling.patch
 BuildRequires:  autoconf
@@ -164,7 +162,6 @@ Provides translations to the package mutt.
 %patch -P 16  -b .crlf
 %patch -P 18  -b .mailcap
 %patch -P 19  -b .cve2014.9116
-%patch -P 20  -p1 -b .cve2026.107570
 %patch -P 21  -b .quit
 
 cp %{SOURCE2} .

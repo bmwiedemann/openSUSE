@@ -1607,4 +1607,39 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
   * Fix bsc#1284739 (CVE-2026-107570)</comment>
     <requestid>1383711</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>a2bc32b4c737efdffd3e83ddd8f74846</srcmd5>
+    <version>2.4.3</version>
+    <time>1793206213</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mutt 2.4.3 (Bug fix release)
+  * Fix OOB heap write in convert_file_from_to().
+    This issue was reported by Calif.io, in collaboration with Anthropic,
+    with a full reproduce and suggested patch.  I've reviewed the patch
+    and concur it is the best approach.
+    This is due to a logic error in convert_file_from_to() in sendlib.c.
+    It first counts the number of charsets to try in one loop, and then
+    allocates and copies the charsets over in a separate loop afterwards.
+    Unfortunately the second loop's logic does not follow the first loop
+    exactly, and the counter gets out of sync with a zero-length charset.
+    For example &quot;:utf-8&quot; where &quot;:&quot; is the delimiter.
+    The fix is to keep the counter logic the same: incrementing after the
+    initial zero-length charset check instead of in the for loop increment
+    clause.
+    It takes user interaction to trigger this OOB write: using the
+    received message as a template in a new message via &lt;resend-message&gt;.
+    The write is of arbitrary length.
+    Calif.io did not report any exploitation beyond the OOB write.
+    Nonetheless, I recommend all shipping distributions apply this patch.
+  * Fix mutt_signed_handler() goodsig setting.
+    The signed handler did not properly handle the case where
+    crypt_write_signed() fails, or the case where an unknown signature
+    type is encountered.  In both those cases, goodsig would be left as 1,
+    giving a status flag in the index as 'S', indicating a goodsig.
+    Thanks to Acts1631 for the ticket, with a detailed description of the
+    problem and suggested fix, which this patch is based on.
+- Remove patch bsc1284739-CVE-2026-107570.patch
+  as the above mentioned fix for convert_file_from_to() is fixed now</comment>
+    <requestid>1393414</requestid>
+  </revision>
 </revisionlist>
