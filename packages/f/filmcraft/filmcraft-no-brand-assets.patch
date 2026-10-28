@@ -1,0 +1,29 @@
+From: openSUSE Publishing <publishing@opensuse.org>
+Subject: [PATCH] Use open-source FilmCraft tile instead of trademarked ArtCraft marks
+Bug: none (downstream trademark removal, not upstreamable)
+
+docs/brand/ (ArtCraft wordmark/mark, LICENSE-brand.txt) is explicitly NOT
+open source and must not ship in the tarball, the RPM, or the linked
+binary (LICENSE-brand.txt: forks/modified versions must remove the marks).
+crates/ui-egui/src/brand.rs embeds two brand PNGs via include_bytes!, so
+excluding docs/brand from the tarball breaks the build. Point those
+includes at the open-source FilmCraft app tile
+(assets/app-icon/filmcraft-1024.png, MIT OR Apache-2.0) instead. The
+About/Home placements stay, only the artwork changes.
+
+--- a/crates/ui-egui/src/brand.rs
++++ b/crates/ui-egui/src/brand.rs
+@@ -1,8 +1,9 @@
+-//! The ArtCraft wordmark (first-party trademark, used with permission; see `docs/brand/` and
+-//! AGENTS.md §1.8), decoded once and kept as a texture.
++//! Downstream artwork (openSUSE): the trademarked ArtCraft marks in
++//! docs/brand/ are not shipped; show the open-source FilmCraft tile
++//! instead. The placements (About, Home) stay, only the artwork changes.
+ 
+-const LOGO_LIGHT_INK: &[u8] = include_bytes!("../../../docs/brand/artcraft-logo-white.png");
+-const LOGO_DARK_INK: &[u8] = include_bytes!("../../../docs/brand/artcraft-logo.png");
++const LOGO_LIGHT_INK: &[u8] = include_bytes!("../../../assets/app-icon/filmcraft-1024.png");
++const LOGO_DARK_INK: &[u8] = include_bytes!("../../../assets/app-icon/filmcraft-1024.png");
+ 
+ /// The wordmark for a dark (`dark = true`) or light UI: light ink on dark themes. Its aspect
+ /// ratio is width / height of the returned texture.

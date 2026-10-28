@@ -1,0 +1,114 @@
+-------------------------------------------------------------------
+Fri Oct 23 07:13:08 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.12.0 (upstream tag v0.12.0, 2026-10-23; includes
+  v0.10.0, 2026-10-21 and v0.11.0, 2026-10-22):
+  * Harden parsers against hostile input (no CVE assigned): bounded
+    Matroska chapter/tag recursion, saturating crop/field math on
+    Matroska/MXF/AAF headers, AV1 panic and oversize allocations,
+    MPEG-2 allocations, damaged MP4 audio, oversized .3dl LUTs and
+    deeply nested CLI parameters; new fuzz tests
+  * Timeline and UI: track colour labels, interface animations can
+    be turned off, View > Reset Interface Zoom, caption text/timing
+    in the Properties panel, Essential Graphics stopwatches, capped
+    thumbnail texture cache, complete German translation
+  * Export and CLI: SDR exports tagged with a colr box,
+    file.exportMedia waits for the export, stricter CLI render and
+    number-field parsing, preview files read in place
+  * Audio and captions: a failed audio output is re-opened during
+    playback, TTML tick rate follows the frame rate, TTS fixes for
+    prices, negative amounts and "a.m."
+  * Faster AAF export of many markers, AAF/OMF import keeps
+    existing files, auto-save rotation keeps the newest file
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+  * Re-vendored with update=false against the new Cargo.lock
+    (respect-lockfile true): vendored crate set unchanged; the only
+    new edge in the shipped targets is tempfile 3.27.0 (MIT OR
+    Apache-2.0, already vendored), so the licence set and the
+    Legal-Review-Notice stay current; no new system deps, MSRV
+    still 1.95; cargo_vendor audit clean (no RUSTSEC advisories)
+- filmcraft-no-brand-assets.patch still applies unchanged (no fuzz);
+  no new docs/brand references in the 0.12.0 tree
+- Bump the fixed metainfo release date to 2026-10-23
+
+-------------------------------------------------------------------
+Sun Oct 18 17:18:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.0 (upstream tag v0.9.0, 2026-10-18):
+  * Media: preserve individual linked-clip selections through deletion;
+    keep Unicode prefixes in image-sequence filenames; fix UTF-8 slice
+    panics in interchange file URLs.
+  * Export: renderer-pool deadlock fixed; follow stored media paths only
+    on this computer or the project share.
+  * Re-vendored (update=false kept for --locked, no in-tree vendor/ upstream;
+    respect-lockfile true); license re-derived over shipped targets, no new
+    copyleft (new crate craft-docpath 0.1.0, MIT OR Apache-2.0), tag stands;
+    no new system deps.
+
+-------------------------------------------------------------------
+Thu Oct 15 04:51:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.0 (stable tag v0.8.0, 2026-10-14,
+  draft=false prerelease=false):
+  * Import: raw ADTS .aac, MP1 audio from Matroska, Radiance HDR
+    stills, YUV4MPEG2 video, YCbCr TIFF, PXR24 OpenEXR
+  * Export: 32-bit integer and float audio, caption sidecars clipped
+    to range, 32-bit FLAC round-trips
+  * Harden demuxers against malformed files (no CVE assigned):
+    MPEG-1 program-stream cut no longer panics, H.264 malformed
+    PPS validated, MPEG-TS bounds-checked with capped allocations
+  * Timeline and UI fixes: transitions travel with clips, eyedropper
+    picks from Program monitor, Linux file dialogs, Korean catalog
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Re-vendored with update=false against the new Cargo.lock; audit
+  clean, licence set unchanged, Legal-Review-Notice still current
+- filmcraft-no-brand-assets.patch still applies unchanged
+
+-------------------------------------------------------------------
+Tue Oct 13 07:45:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7.2 (upstream tags v0.6.0, 2026-10-11 and
+  v0.7.2, 2026-10-12):
+  * New clean-room codecs, all in-tree with no new system
+    dependency: VP8/WebM video, MPEG Layer I/II audio, E-AC-3,
+    AVI/OpenDML demuxer, FLAC encoder, CinemaDNG/DNG stills,
+    AAC audio export, ProRes 4444/XQ with alpha, compressed
+    OpenEXR, JPEG/Targa/DPX sequences, GIF/APNG import
+  * Hardware: Linux NVDEC (H.264/HEVC) decode and NVENC (H.265)
+    export, shared VA-API display, AV1 hardware export
+  * Harden the AAF/CFB parsers against malicious files (bounded
+    weak-reference and DIFAT/FAT walks); no CVE assigned
+  * Faster AV1/HEVC/VP9 decode, exact Matroska/MP3 audio trims,
+    Scene Edit Detection, Optical Flow interpolation, Morph Cut,
+    8-channel AAC, new interface translations (Japanese, German,
+    French, Russian, Ukrainian, Chinese, Indonesian, Portuguese)
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Re-vendored with update=false against the new Cargo.lock (no
+  vendor/ shipped upstream; audit findings all outside the
+  shipped binaries)
+- filmcraft-no-brand-assets.patch still applies unchanged
+
+-------------------------------------------------------------------
+Sun Oct 11 06:59:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package filmcraft 0.5.0 (upstream tag v0.5.0, 2026-10-10):
+  from-scratch Rust workspace source build (resolver 3, edition
+  2024, MSRV 1.95); no distro packages it and the home: copy is a
+  binary repack, so port the Publishing photocraft structure instead
+- Services: tar_scm pinned tag + cargo_vendor (update=false,
+  respect-lockfile) + cargo_audit; tarball excludes docs/brand/
+  trademarks; build filmcraft + filmcraft-cli --locked --offline
+  with default features (whisper off, CRAFT_FONTS_DIR unset)
+- License covers the linked MPL-2.0 symphonia decoders (interim
+  MP3/FLAC/ALAC/Vorbis) plus embedded OFL-1.1/Ubuntu-font-1.0/
+  ISC/Unicode-3.0/Zlib, see the Legal-Review-Notice in the spec
+- Add filmcraft-no-brand-assets.patch: point the trademarked
+  include_bytes! in crates/ui-egui/src/brand.rs at the open-source
+  FilmCraft tile (docs/brand/ stays excluded from tarball and RPM)
+- Split out filmcraft-cli subpackage (mirror Publishing/pdfcraft):
+  headless exporter/command runner moves to its own package, desktop
+  keeps the GUI; main Recommends: filmcraft-cli
+

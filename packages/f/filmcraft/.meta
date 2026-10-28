@@ -1,0 +1,7 @@
+<package name="filmcraft" project="openSUSE:Factory">
+  <title>FilmCraft video editor</title>
+  <description>FilmCraft is a timeline video editor written in pure Rust:
+edit video, color and sound, with its own H.264/HEVC/ProRes/AAC/VP9/Opus/AV1
+codecs and export.</description>
+  <url>https://github.com/storytold/filmcraft</url>
+</package>
