@@ -50,7 +50,7 @@ spec:
               fieldPath: metadata.namespace
         - name: TUF_ROOT
           value: /tmp/.sigstore
-        image: fluxcd/source-controller:v1.9.6
+        image: fluxcd/source-controller:v1.10.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -69,8 +69,8 @@ spec:
           protocol: TCP
         readinessProbe:
           httpGet:
-            path: /
-            port: http
+            path: /readyz
+            port: healthz
         resources:
           limits:
             cpu: 1000m

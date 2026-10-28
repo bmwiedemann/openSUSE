@@ -48,7 +48,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: fluxcd/source-watcher:v2.2.4
+        image: fluxcd/source-watcher:v2.3.1
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -67,8 +67,8 @@ spec:
           protocol: TCP
         readinessProbe:
           httpGet:
-            path: /
-            port: http
+            path: /readyz
+            port: healthz
         resources:
           limits:
             cpu: 1000m

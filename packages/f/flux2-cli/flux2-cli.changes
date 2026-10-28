@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 27 15:06:34 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 2.10.0:
+  Flux v2.10.0 is a feature release. Highlights include GA for object
+  identity, SPIFFE mTLS between controllers, and promotion of the
+  notification APIs to v1. The minimum supported Kubernetes version
+  is now 1.35. Users are encouraged to upgrade for the best experience;
+  review the upstream upgrade notes for RBAC and API changes.
+  * Components changelog
+    - source-controller v1.10.1
+    - kustomize-controller v1.10.1
+    - notification-controller v1.10.0
+    - helm-controller v1.7.1
+    - image-reflector-controller v1.3.0
+    - image-automation-controller v1.3.0
+    - source-watcher v2.3.1
+  * CLI changelog
+    - Add suspend, resume and reconcile commands for ArtifactGenerator
+    - Accept TYPE/NAME arguments in resource commands
+    - Support OCIRepository chart sources for HelmRelease
+    - Add --policy-change-delay to create image update
+
+-------------------------------------------------------------------
 Fri Oct 02 04:49:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.9.6:

@@ -20,16 +20,16 @@
 
 # check these versions on updates
 # see flux2/manifests/bases/*/kustomization.yaml
-%define helm_controller_version             v1.6.5
-%define image_automation_controller_version v1.2.5
-%define image_reflector_controller_version  v1.2.5
-%define kustomize_controller_version        v1.9.6
-%define notification_controller_version     v1.9.4
-%define source_controller_version           v1.9.6
-%define source_watcher_version              v2.2.4
+%define helm_controller_version             v1.7.1
+%define image_automation_controller_version v1.3.0
+%define image_reflector_controller_version  v1.3.0
+%define kustomize_controller_version        v1.10.1
+%define notification_controller_version     v1.10.0
+%define source_controller_version           v1.10.1
+%define source_watcher_version              v2.3.1
 
 Name:           flux2-cli
-Version:        2.9.6
+Version:        2.10.0
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
@@ -59,7 +59,7 @@ BuildRequires:  helm
 BuildRequires:  kustomize
 BuildRequires:  zsh
 # 16.0 currently contains 1.26rc3 which causes the build to fail...
-BuildRequires:  go1.26 >= 1.26.0
+BuildRequires:  go1.27 >= 1.27.0
 
 %description
 Flux is a tool for keeping Kubernetes clusters in sync with sources of
