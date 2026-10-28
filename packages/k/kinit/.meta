@@ -1,5 +1,0 @@
-<package name="kinit" project="openSUSE:Factory">
-  <title>kinit</title>
-  <description>KInit</description>
-  <devel project="KDE:Frameworks5" package="kinit"/>
-</package>
