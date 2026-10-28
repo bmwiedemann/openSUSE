@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Mon Oct 26 11:20:58 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.13.1 (upstream tag v0.13.1, 2026-10-25):
+  * Edit: fix source offset when trimming the start of a stretched
+    audio clip; heal keeps each clip's gain envelope and skips clips
+    whose mute or stretch differ; deleting fades leaves unrelated
+    overlapping clips untouched; MIDI note selection stays valid
+    across clip, session and note-order changes.
+  * Tracks: track and group names are clipped to their rows in the
+    side lists; track-name collisions after truncation are
+    prevented; exact channel formats are preserved when committing
+    tracks.
+  * Audio I/O: Float32 WAV and AIFF-C encoding keeps finite
+    headroom; the full WAVE_FORMAT_EXTENSIBLE fmt chunk is
+    validated; older sessions with a bare Fit track height load.
+  * VST3 host: IMessage and IAttributeList are provided to plugins.
+  * automation.clip_gain_to_volume keeps the existing volume lane;
+    the Record button tooltip names F12.
+  * Re-vendored with update=true (cargo-dependencies group bump).
+    License audit: no new copyleft in the Linux targets (only
+    Windows/UEFI-only crates carry BSL-1.0 or LGPL options), so the
+    License tag and the Legal-Review-Notice are unchanged. No new
+    system deps.
+- Set the fixed AppStream release date to 2026-10-25 (v0.13.1).
+
+-------------------------------------------------------------------
+Fri Oct 23 06:51:32 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.12.1 (upstream tag v0.12.1, 2026-10-22):
+  * 0.11.0 is a version-only release (CI config, no code changes);
+    0.12.0 was never tagged, and 0.12.1 only adds a macOS
+    notarisation stapler retry on top of it.
+  * Edit: bare "=" nudges the selected clip right, matching "-";
+    the playlist stays sorted after delete_fades trims overlapping
+    clips; automation writes keep the breakpoint at end + 1.
+  * Mix: mix.send to an unknown bus name is rejected instead of
+    creating a bus; normalize no longer produces inf samples for
+    subnormal peaks.
+  * Hardening: integer-overflow fixes in the tempo map, timecode
+    frame counts and pan automation labels; undefined SMPTE frame
+    rates in MIDI headers and zero/invalid NAL length widths in
+    video bitstreams are rejected.
+  * Re-vendored with update=true: no crates added or removed, only
+    version bumps (icu_* 2.4.0, memmap2 0.9.12, tinystr 0.8.5,
+    webbrowser 1.2.5, yoke 0.8.4, zerovec 0.11.9, plus clipboard-win,
+    open and tokio, which the Linux targets do not link). License
+    audit: every bumped crate keeps its licence, no new copyleft,
+    so the License tag and the Legal-Review-Notice are unchanged.
+    No new system deps; MSRV still 1.90. cargo_audit reports no
+    advisories.
+- Set the fixed AppStream release date to 2026-10-22 (v0.12.1); it
+  was still the v0.8.0 date.
+
+-------------------------------------------------------------------
+Wed Oct 21 06:40:33 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.10.0 (upstream tag v0.10.0, 2026-10-20):
+  * New: Modify Group dialog, Track > Instrument menu, portable mode
+    (portable.txt next to the executable), automation breakpoint
+    dragging and Alt-click delete, editor AppStream screenshot.
+  * Plugins: inserted plugins open automatically; VST3 shows
+    identity-mapped parameter text; CLAP port layouts beyond host
+    limits rejected.
+  * Fixes: punch range before placing a take, step input over the
+    next MIDI clip, Min:Secs rounding, Fedora font paths.
+  * Hardening: oversized MCP batches rejected, size and range
+    checks in WAV, base64 and MIDI writers.
+  * Re-vendored; no new system deps.
+
+-------------------------------------------------------------------
+Sun Oct 18 17:32:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.0 (upstream tag v0.8.0, 2026-10-17):
+  * Follow stored paths only on this computer or the session's
+    share (hardening against session-file misdirection); engine
+    tests compile on Windows again. ProRes frame-size guards
+    before plane allocation;
+  * Re-vendor with update=true: arboard 3.7.0, combine 4.6.9,
+    font-types 0.12.7, libc 0.2.191, zip 9.0.5, zvariant 5.15.1,
+    craft-docpath 0.1.0 (MIT OR Apache-2.0); windows-sys 0.60.2
+    pruned; craft-ui git rev unchanged (5c874d5). License audit
+    finds no new copyleft (MPL-2.0 symphonia and Apache-2.0-option
+    self_cell as before), so the License tag is unchanged. No CVEs
+    in the v0.7.0 to v0.8.0 range, and no ruzstd in the vendor set
+    (not affected by RUSTSEC-2026-0344).
+
+-------------------------------------------------------------------
+Thu Oct 15 05:04:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.0 (upstream tag v0.7.0):
+  * Edit: Shuffle/Slip/Spot/Grid modes, Pencil/Grabber MIDI clips,
+    transient detection with Tab to Transient, clip fades with live
+    waveform previews, Consolidate over the selection.
+  * Mix: separate Mix window, Pro Tools-like tracks/slots/faders,
+    delay compensation on masters and aux bounces, VST3/CLAP safety.
+  * Engine: crash recovery with unsaved-work offer, corrupt files and
+    sessions refused instead of crashing, bounded control-server
+    requests, no audio-thread allocs, streamed disk bounces.
+  * UI: Silver Light theme, track tinting, grid over clips, Send levels
+    to -inf, marker double-click rename, Hangul fallback font.
+  * Files: .m4b audiobooks, File Open Recent, Signal Generator fills
+    selection, MCP file-access confinement flags.
+  * Re-vendor with update=true (craft-ui git dep still needed);
+    license audit finds no new copyleft (MPL-2.0 symphonia and
+    Apache-2.0-option self_cell as before), so the License tag is
+    unchanged. No CVEs in the v0.6.1 to v0.7.0 range.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+
+-------------------------------------------------------------------
+Tue Oct 13 07:32:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.1:
+  * New built-in Sampler instrument; record takes straight to
+    disk.
+  * Save safety: copies without retargeting, never overwrite
+    audio or sessions, synced saves with backups, prompt on
+    unsaved changes.
+  * Edit window: fixed drag selection, trackpad panning with
+    pinch and Cmd+scroll zoom, Clip List management and clip
+    export as files.
+  * Mixer routing menus and numeric controls; instrument params
+    pushed before each block; adaptive meter polling with live
+    armed meters while stopped.
+  * MIDI controller export honouring the tracks filter,
+    multichannel import, per-file consolidation, named-bus
+    bounce with unknown-bus rejection.
+  * CLI: survive closed stdout, dotted command-id shorthand,
+    MCP batch surfaces failures with keep_going; app sleeps
+    when idle or covered.
+  * Re-vendor for zip 9 (session bundles), nix, typed-path and
+    the craft-ui git dependency; license audit finds no new
+    copyleft, so the License tag is unchanged. No CVEs in the
+    0.5.0 to 0.6.1 range.
+
+-------------------------------------------------------------------
+Sun Oct 11 19:16:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.5.0): native digital audio
+  workstation with non-destructive clip editing (fades, playlists,
+  grids, markers) and a mixer with inserts, sends, buses,
+  automation and metering.
+- Built-in EQ, dynamics, reverb, delay, modulation and instruments;
+  CLAP and VST3 plugin hosting with per-vendor menus.
+- Imports WAV, AIFF, FLAC, MP3 and MIDI and bounces mixes to disk;
+  the soundcraft-cli subpackage adds headless editing and an MCP
+  server for scripting and agents.
+- Recent highlights: clip-gain nudge, resizable MIDI dock, tempo
+  operations as stretch factor, snap to neighbours, metronome click
+  in live playback, Linux system fonts via fontconfig, and logging
+  to stderr plus a rotating log file.
+

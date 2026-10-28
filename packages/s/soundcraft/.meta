@@ -1,0 +1,11 @@
+<package name="soundcraft" project="openSUSE:Factory">
+  <title>Native digital audio workstation with multitrack editing and mixing</title>
+  <description>SoundCraft is an open-source, native digital audio workstation. Record, edit and mix
+multitrack audio and MIDI in Edit and Mix windows, with built-in EQ, dynamics,
+reverb, delay, modulation and instruments, CLAP/VST3 plugin hosting, and
+WAV/AIFF/FLAC/MP3/MIDI import.
+
+This package provides the desktop application; the companion soundcraft-cli
+subpackage provides headless editing, conversion, bounce and a command server.</description>
+  <url>https://github.com/storytold/soundcraft</url>
+</package>
