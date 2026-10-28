@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct 27 19:18:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.0:
+  * Text editing lays out only the lines an edit changed, once,
+    at the next read or frame: typing in a 10,000-line Textarea
+    lays out 1 line instead of 10,000; undo and redo scroll to
+    the cursor and emit content-changed
+  * New opt-in native input parser (experimental_nativeInput or
+    OTUI_NATIVE_INPUT_PARSER) fixing lost Escape-prefixed events,
+    wrong Alt keys and wheel releases ending drags; off by
+    default while edge cases are tested
+  * Renderable hooks now come from the class at construction:
+    reflection-added hooks need refreshHooks(), renderBefore /
+    renderAfter / onLifecyclePass are assigned in the
+    constructor, and defineNativeIntegration() is removed
+  * The native FFI ABI version is now 2, so bindings built
+    against the old header fail; the scene work budget, the
+    YIELD frame and geometryRevision are gone and ot_scene_stats
+    is 224 bytes. Consumers must rebuild against this release,
+    so this moves in lockstep with opencode 2.2.0
+  * Idle ScrollBox refreshes no rows, wheel steps go to the
+    innermost movable scroller, bare URLs render as link labels,
+    and the embedded terminal ships a newer Ghostty
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Sun Oct 25 19:10:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.6.8:

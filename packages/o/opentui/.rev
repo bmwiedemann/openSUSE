@@ -77,4 +77,12 @@ opentui = 0.5.14 exactly.</comment>
     <comment>Update opentui to 0.6.8 for the opencode 2.1.4 lockstep.</comment>
     <requestid>1392516</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1b1128387adda35ac5de960b35c09f44</srcmd5>
+    <version>0.7.0</version>
+    <time>1793206063</time>
+    <user>dimstar_suse</user>
+    <comment>Update opentui to 0.7.0 (stage with opencode 2.2.0).</comment>
+    <requestid>1393193</requestid>
+  </revision>
 </revisionlist>
