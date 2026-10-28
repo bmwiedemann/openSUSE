@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Oct 21 13:42:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.2.3
+  - Incompatible changes
+    - Phishing: phishtank.rspamd.com is now disabled by default
+      because the zone no longer carries data
+    - RBL: Duplicate DNS queries from several checks are merged
+      into one request and one symbol insertion, so a rule now
+      scores once per matched value. Set merge_checks = false to
+      keep one insertion per check
+    - RBL: Fixed the inverted dkim_domainonly test under
+      dkim_match_from. eSLDs used to be compared when
+      dkim_domainonly was off
+  - Features
+    - force_actions: Rules that depend on composites are promoted
+      to postfilters. A new priority setting decides between
+      matching rules and shows up as a priority:N symbol option
+    - Lua API: task:has_pre_result() now returns the action name
+      instead of its type, plus its flags
+    - metadata_exporter: Added unix_time to general metadata
+  - Bug fixes
+    - ARC/DKIM: ARC forwarders whose seal fails verification are no
+      longer trusted. Before this fix, a whitelisted d= with a
+      broken seal produced ARC_ALLOW_TRUSTED, and its AAR could
+      lower DMARC. Each instance must now have exactly one
+      ARC-Authentication-Results header, and results are published
+      only after all seal checks finish. A DKIM key request that
+      cannot be scheduled now counts as a failure, so ARC chains
+      with such a seal get a result again
+    - HTML and URL parsing: Declarations, comments, raw text, CDATA
+      sections, SVG/MathML elements and /> self-closing are handled
+      the way browsers handle them, so content after them is no
+      longer hidden from the scan. Character references stay
+      undecoded in CDATA and raw text elements. Text URLs end at
+      quotes, and schemeless URLs after a double quote are found
+    - Statistics: Plain and HTML alternatives are deduplicated by
+      parts_distance, including HTML inside multipart/related, so
+      the body is no longer counted twice. Fixed inverted
+      substitution costs in parts distance. Statistical words are
+      now finalized in late-injected parts
+    - RBL: RSPAMD_URIBL queries eSLDs and skips IP literal hosts.
+      Fixed require_symbols, which stopped rules using it from ever
+      running, and luapattern matching for return_codes. From and
+      DKIM domains are normalised the same way
+    - Networking: HTTPS reads no longer stall on TLS records over 8
+      KiB. librdns reconnects the UDP channel after the kernel
+      drops it. HTTP upstreams resolve for hosts without a public
+      suffix, which fixes gpt failing on every message after a
+      reload. monitored loads every element of an ipnet array
+    - Lua API: store_in_file and save_in_file retry short writes,
+      keep the default 0600 mode and leave a caller-supplied
+      descriptor open. Table set_pre_result uses normal priority by
+      default and accepts several flags. get_symbol_flags reports
+      the composite flag
+    - Crashes and leaks: Fixed a milter session use-after-free on
+      connection close, a crash on a regexp map that repeats an
+      invalid regexp, and a crash in get_stat_tokens without a
+      classifier. Fixed DNS resolver leaks on worker shutdown and
+      ESMTP argument container leaks
+    - Core: Hyperscan recompiles cached map and multipattern
+      databases that fail to deserialize, so stale blobs no longer
+      leave maps on the PCRE fallback. Fixed symcache persistence
+      and file descriptor ownership. MIME parsing accepts obsolete
+      whitespace before header colons
+
+-------------------------------------------------------------------
 Sat Oct 10 21:51:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.2.2
