@@ -31,4 +31,18 @@
     <comment>Update to 1.2.0</comment>
     <requestid>1354901</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2594059af7d8dc1810789aa79c54df0b</srcmd5>
+    <version>1.2.1</version>
+    <time>1793206111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1
+  * cmake: Drop obsolete FOUND_VAR arg to
+    find_package_handle_standard_args
+  * Drop obsolete FOUND_VAR arg to
+    find_package_handle_standard_args
+  * mpvcontroller, mpvrenderer: check for nullptrs and add
+    debug logs</comment>
+    <requestid>1393374</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 27 15:43:50 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.2.1
+  * cmake: Drop obsolete FOUND_VAR arg to
+    find_package_handle_standard_args
+  * Drop obsolete FOUND_VAR arg to
+    find_package_handle_standard_args
+  * mpvcontroller, mpvrenderer: check for nullptrs and add
+    debug logs
+
+-------------------------------------------------------------------
 Sun May 24 06:59:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.2.0
