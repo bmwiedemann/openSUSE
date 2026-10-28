@@ -373,4 +373,12 @@
   * Improve state file recovery when mounts die (forwarded request 1384985 from glaubitz)</comment>
     <requestid>1385022</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a4005e881ea363123052ec12aa04260d</srcmd5>
+    <version>3.3.4</version>
+    <time>1793206197</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with JEMALLOC_SYS_WITH_LG_PAGE=16 on aarch64 (bsc#1275450) (forwarded request 1393209 from glaubitz)</comment>
+    <requestid>1393402</requestid>
+  </revision>
 </revisionlist>

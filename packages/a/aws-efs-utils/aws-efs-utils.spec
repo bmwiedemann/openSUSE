@@ -82,6 +82,9 @@ export CC=gcc-15
 export CXX=g++-15
 export RUSTFLAGS=" -C linker=/usr/bin/gcc-15"
 %endif
+%ifarch aarch64
+export JEMALLOC_SYS_WITH_LG_PAGE=16
+%endif
 cd src/proxy
 %{cargo_build} --verbose
 
@@ -122,6 +125,9 @@ find %{buildroot}%{python_sitelib}/{efs_utils_common,mount_efs,mount_s3files} -n
 export CC=gcc-15
 export CXX=g++-15
 export RUSTFLAGS=" -C linker=/usr/bin/gcc-15"
+%endif
+%ifarch aarch64
+export JEMALLOC_SYS_WITH_LG_PAGE=16
 %endif
 cd src/proxy
 %cargo_install

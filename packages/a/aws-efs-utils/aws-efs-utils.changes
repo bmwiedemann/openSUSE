@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:40:39 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Build with JEMALLOC_SYS_WITH_LG_PAGE=16 on aarch64 (bsc#1275450)
+
+-------------------------------------------------------------------
 Thu Oct 15 09:30:58 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.4
