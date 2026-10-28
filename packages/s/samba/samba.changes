@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct 26 06:40:00 UTC 2026 - Samuel Cabrero <scabrero@suse.com>
+
+- Update to 4.25.1
+  * CVE-2026-109411: Access control bypass via vfs_ceph_rgw
+    case-insensitive open; (bso#16276); (bsc#1286540);
+  * CTDB: Cannot find device "<iface>@<link>": need to extract real
+    interface names; (bso#16274).
+  * generate_unique_u64() may not protect against veto_value;
+    (bso#16200).
+  * Rename with ReplaceIfExists to a target differing only in case
+    creates a duplicate instead of replacing; (bso#16261).
+  * Samba 4.25.0 fails to build on macOS; (bso#16263).
+  * Python smbconf transaction_start() lacks a talloc stack frame
+    with CTDB; (bso#16258).
+  * Linux i686 build fails on dynamic_lookup; (bso#16265).
+  * vfs_acl_xattr crashes on zero-sized flistxattr queries;
+    (bso#16287).
+  * Dynamic interface support in smbd is racy; (bso#16235).
+  * CTDB database operations can be run against incorrect nodes;
+    (bso#16254).
+  * A node can be banned because it tries to run recovery after
+    losing the cluster lock; (bso#16273).
+  * All backend log should honor global log level "log level = ";
+    (bso#15857).
+  * fruit:time machine max size can only be set to an integer and
+    is ignored if user sets a float; (bso#15324).
+
+-------------------------------------------------------------------
 Mon Sep 28 10:12:06 UTC 2026 - Noel Power <nopower@suse.com>
 
 - Update to 4.25.0

@@ -3992,4 +3992,12 @@ list of changes.</comment>
     <comment>1</comment>
     <requestid>1382465</requestid>
   </revision>
+  <revision rev="335" vrev="1">
+    <srcmd5>1c82b12a49b8e498df1089b3db4b1d07</srcmd5>
+    <version>4.25.1+git.476.bfc358351cb</version>
+    <time>1793205955</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1393142</requestid>
+  </revision>
 </revisionlist>
