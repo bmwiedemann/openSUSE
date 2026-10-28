@@ -358,4 +358,15 @@
     server memory exhaustion due to Trailer headers</comment>
     <requestid>1393107</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>e2dcbcf4141d516118ad24f907ebb39b</srcmd5>
+    <version>3.1.2</version>
+    <time>1793215452</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1288598, CVE-2026-116591: github.com/klauspost/compress/zstd:
+    crafted ~27 KB two-block zstd frame makes DecodeAll and the
+    streaming decoder panic</comment>
+    <requestid>1393458</requestid>
+  </revision>
 </revisionlist>
