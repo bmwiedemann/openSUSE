@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:27:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.6.2:
+  cmctl is the command line tool for interacting with cert-manager.
+  This release is built with Go 1.27.3. That Go release changes
+  crypto/x509 so that it no longer trusts the compromised eMudhra
+  intermediate CAs (GO-2026-6809). cmctl uses crypto/x509 when it
+  talks to the Kubernetes API server and to OCSP and CRL endpoints,
+  so we recommend upgrading.
+  There are no other user-facing changes. The release also moves
+  from cert-manager v1.21.2 to v1.21.3, takes Kubernetes v0.37.1
+  and Helm v4.3.1, and includes security updates to
+  golang.org/x/net and the OpenTelemetry OTLP exporter.
+  * What's changed
+    - Add CertID to the internal and legacy
+      CertificateACMEARIStatus types
+    - chore(deps): update makefile modules to 2bbe78f
+    - fix(deps): update module github.com/cert-manager/cert-manager
+      to v1.21.3
+    - chore(deps): update makefile modules to 9c357fd
+    - fix(deps): update module helm.sh/helm/v4 to v4.3.1
+    - fix(deps): update golang.org/x deps
+    - chore(deps): update makefile modules to 9af7929
+    - fix(deps): update module sigs.k8s.io/gateway-api to v1.6.3
+    - fix(deps): update module golang.org/x/sync to v0.24.0
+    - chore(deps): update makefile modules to 652e787
+    - chore(deps): update module golang.org/x/net to v0.60.0
+      [security]
+    - chore(deps): update makefile modules to 95c9211
+    - chore(deps): update makefile modules to 82d2ae9
+    - chore(deps): update makefile modules to 2a76aa9
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.25.2
+    - chore(deps): update makefile modules to f2fb9c3
+    - chore(deps): update makefile modules to c153741
+    - chore(deps): update makefile modules to 9096105
+    - chore(deps): update makefile modules to edc0ae9
+    - fix(deps): update module k8s.io/kubectl to v0.37.1
+    - fix(deps): update kubernetes go patches to v0.37.1
+    - chore(deps): update makefile modules to aee0ddc
+    - chore(deps): update makefile modules to 4277ca6
+    - chore(deps): update makefile modules to 2215aaf
+    - chore(deps): update module
+      go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+      to v1.45.0 [security]
+
+-------------------------------------------------------------------
 Sun Sep 20 06:00:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.6.1 (2.6.0 was not released):
