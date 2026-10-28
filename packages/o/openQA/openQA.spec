@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1793015014.afb80823
+Version:        5.1793118173.1c8a4cde
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Oct 27 16:23:09 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793118173.1c8a4cde:
+  * refactor(tests): Include `OpenQA::Task::Job::CreateZipArchive` properly
+  * test(archive-downloads): Remove redundant test
+  * refactor(archive-downloads): Use scope guard to close lock file
+  * refactor(archive-downloads): Remove redundant filesystem check
+  * refactor(archive-downloads): Remove unused default
+  * test(archive-downloads): Log result of Minion jobs for debugging
+  * refactor(tests): Use signatures in `t/60-archive-download.t`
+  * refactor(tests): Simplify cleanup in `t/60-archive-download.t`
+  * refactor(tests): Use sub tests in `t/60-archive-download.t`
+  * fix(archive-downloads): Fix warnings and 500 responses
+  * feat: Ignore bugrefs, labels, tags and flags in flag:verbatim comments
+  * test(worker-engine): Allow tests to pass if `OPENQA_CGROUP_SLICE` is set
+  * chore(deps): bump fast-uri from 3.1.7 to 3.1.9
+  * ci(helm): pull test images directly inside KinD node via crictl
+
+-------------------------------------------------------------------
+Mon Oct 26 20:27:29 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793046431.4d768eeb:
+  * feat(investigation): Improve git log --stat filename output
+
+-------------------------------------------------------------------
 Mon Oct 26 12:43:36 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1793015014.afb80823:
