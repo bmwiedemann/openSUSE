@@ -238,4 +238,12 @@ exosip API: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=709860 (forwarded r
     <comment></comment>
     <requestid>1044062</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1aeb16758433ba72f6dabfeefde4de0b</srcmd5>
+    <version>5.3.2</version>
+    <time>1793206073</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1393217</requestid>
+  </revision>
 </revisionlist>

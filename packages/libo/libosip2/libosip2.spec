@@ -2,6 +2,7 @@
 # spec file for package libosip2
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define sover 15
 Name:           libosip2
-Version:        5.3.1
+Version:        5.3.2
 Release:        0
 Summary:        Implementation of SIP (RFC 3261)
 License:        LGPL-2.1-or-later
@@ -61,7 +62,7 @@ Protocol. SIP is described in the RFC 3261, which is available at
 http://www.ietf.org/rfc/rfc3261.txt.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -78,8 +79,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 %make_build check
 
-%post -n %{name}-%{sover} -p /sbin/ldconfig
-%postun -n %{name}-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}-%{sover}
 
 %files -n %{name}-%{sover}
 %license COPYING
@@ -92,6 +92,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/osip2
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/libosip2.pc
-%{_mandir}/man1/*
+%{_mandir}/man1/osip.1%{?ext_man}
 
 %changelog
