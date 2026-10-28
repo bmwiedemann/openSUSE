@@ -1944,4 +1944,14 @@ Switch [Service] Type=notify</comment>
     eMudhra intermediate CA certificates. (#20392)</comment>
     <requestid>1392163</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>871e0e1b506343968ce6aeb6cbf13bb4</srcmd5>
+    <version>1.164.0</version>
+    <time>1793206026</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1393165 from darix
+
+- Update to 1.164.0</comment>
+    <requestid>1393172</requestid>
+  </revision>
 </revisionlist>
