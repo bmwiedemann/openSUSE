@@ -25,7 +25,7 @@
 %endif
 %define libname libhandle1
 Name:           xfsprogs
-Version:        6.19.0
+Version:        7.2.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
@@ -145,7 +145,31 @@ install -m 0755 -d %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 install -m 0755 module-setup.sh %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 
+# xfs_healer_start (and its unit) are only built when the target's kernel
+# headers provide listmount/statmount/fanotify mount events (HAVE_HEALER_
+# START_DEPS in configure); list them only when they actually got built,
+# so older targets without those headers don't fail on a missing file.
+: > healer_start.files
+if [ -e %{buildroot}%{_libexecdir}/xfsprogs/xfs_healer_start ]; then
+    echo "%{_libexecdir}/xfsprogs/xfs_healer_start" >> healer_start.files
 %if %{with systemd}
+    echo "%{_unitdir}/xfs_healer_start.service" >> healer_start.files
+%endif
+fi
+
+%if %{with systemd}
+%pre
+%service_add_pre system-xfs_healer.slice xfs_healer_start.service
+
+%post
+%service_add_post system-xfs_healer.slice xfs_healer_start.service
+
+%preun
+%service_del_preun system-xfs_healer.slice xfs_healer_start.service
+
+%postun
+%service_del_postun system-xfs_healer.slice xfs_healer_start.service
+
 %pre scrub
 %service_add_pre xfs_scrub_all.service xfs_scrub_all.timer
 
@@ -170,13 +194,19 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 %posttrans -n %{libname}
 %{?regenerate_initrd_posttrans}
 
-%files -f %{name}.lang
+%files -f %{name}.lang -f healer_start.files
 %{_sbindir}/*
 %exclude %{_sbindir}/xfs_scrub_all
 %{_mandir}/man[258]/*
 %exclude /usr/sbin/xfs_protofile
 %exclude /usr/share/man/man8/xfs_protofile.8.gz
 %exclude /usr/share/man/man8/xfs_scrub_all.8.gz
+%dir %{_libexecdir}/xfsprogs
+%{_libexecdir}/xfsprogs/xfs_healer
+%if %{with systemd}
+%{_unitdir}/xfs_healer@.service
+%{_unitdir}/system-xfs_healer.slice
+%endif
 %doc %{_defaultdocdir}/%{name}
 %if 0%{?suse_version} >= 1315
 # SLE12 doesn't do %license

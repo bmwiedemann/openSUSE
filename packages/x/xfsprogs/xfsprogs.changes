@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:13:30 UTC 2026 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- update to 7.2.0
+      - xfs_quota, xfs_spaceman, libfrog: hoist xfsquotactl into libfrog
+        with quotactl_fd and mount-fd support, so xfs_quota can open the
+        filesystem mountpoint directly for quota operations and
+        xfs_spaceman's makecfg can reuse the same code path
+      - mkfs, xfs_admin, xfs_spaceman, xfs_db: allow specifying and
+        printing mkfs default options via a configuration file; mkfs also
+        upgrades autofsck earlier automatically
+      - xfs: fix an off-by-one in rtrefcount btree root level validation, a
+        reflink-flag clearing issue with INO1_WRITTEN during exchange-range,
+        a memory leak in xfs_dqinode_metadir_create(), a 32-bit pointer
+        arithmetic bug, an exchmaps reservation limit check, and growfs
+        delta computation not returning the updated block count
+      - xfs: report case sensitivity via fileattr_get
+      - xfs_copy: always align I/O to at least the page size, and log the
+        errno on write failures
+      - man: document that XFS_IOC_FS[G|S]ETXATTR can't be used on special
+        files
+
+- update to 7.1.1
+      - fiemap: add a nosync option
+      - xfs_scrub: fix spacemap scan for the data volume
+      - mdrestore: fix extent length overflow in the v2 restore path
+      - xfs_healer: install targets one at a time (build fix)
+
+- update to 7.1.0
+      - xfs: zero directory data block padding and header regions on write
+        verification and at init, avoiding exposure of stale data
+      - xfs_scrub: dozens of correctness and crash fixes across rtgroups,
+        zoned and realtime filesystem handling, spacemap scans, media
+        verification and work estimation; notably an integer overflow, a
+        crash when reporting clean health, and several memory/scan-item
+        leaks
+      - mkfs: fix PQUOTA/GQNOENFORCE conflict, hardlink detection, symlink
+        length checks, a PATH_MAX check and protofile handling in directory
+        import; fix filesystem/log size units
+      - libfrog: fix a buffer overflow in getparents' path_to_string
+      - xfs_healer, xfs_healer_start: fix a getmntent race in weakhandle,
+        statmount buffer sizing, listmount checks on --check, and
+        monitor-fd aliasing; allow AF_UNIX socket access for xfs_healer
+        instances
+      - xfs_db: dump zoned filesystem superblock fields
+      - xfs_scrub_all, xfs_scrub_media_fail: reduce security lockdowns that
+        broke postfix mail notifications, and fix broken command-line
+        array construction
+
+- update to 7.0.1
+      - xfs_healer, libfrog: fix build/runtime on targets missing the
+        HAVE_LISTMOUNT flag or statmount kernel support (missing flags and
+        fallback stubs) -- a portability fix for the health-monitoring code
+        introduced in 7.0.0
+
+- update to 7.0.0
+      - xfs_healer: new self-healing background daemon that monitors mounted
+        filesystems for health events (metadata corruption, I/O errors,
+        shutdowns) and automatically triggers spot or full repairs, picking
+        repair mode from the autofsck fsproperty; adds a per-mount
+        xfs_healer_start service to start it automatically
+      - xfs_io: add listmount, statmount and a media verify command; monitor
+        filesystem health events
+      - xfs_scrub: use the new media-verify ioctl for phase 6 media scanning,
+        extend it to cover the log region, raise media verification IO
+        limits, and report truncated devices as media errors
+      - mkfs: enable online repair by default when all backrefs are enabled
+      - xfs_repair: don't fail on INCOMPLETE attrs in leaf blocks
+      - xfs_scrub_all: fix a deadlock when lsblk produces a lot of output
+      - xfs_scrub: drop the bogus warning about mixed bidirectional
+        codepoints in names, warn about unicode variation selectors instead
+      - xfs_quota: display default limits for users with zero usage
+
+-------------------------------------------------------------------
 Wed Mar 18 13:15:22 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.19.0
