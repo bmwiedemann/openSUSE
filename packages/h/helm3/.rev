@@ -318,4 +318,19 @@
     GO-2026-6612 GO-2026-6611 GO-2026-6610 GO-2026-6603 (#32759)</comment>
     <requestid>1386090</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>17ca45d9180782f9ea2a324c040d953f</srcmd5>
+    <version>3.22.1</version>
+    <time>1793219522</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1288551, CVE-2026-116591: github.com/klauspost/compress/zstd:
+    crafted ~27 KB two-block zstd frame makes DecodeAll and the
+    streaming decoder panic
+
+- update vendor.tar:
+  - update x/sys to fix ppc64le regression on pie mode
+  - update x/net</comment>
+    <requestid>1393459</requestid>
+  </revision>
 </revisionlist>
