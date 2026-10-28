@@ -752,4 +752,20 @@
 - Raise minimum Go version to 1.26.9 in BuildRequires (forwarded request 1384978 from glaubitz)</comment>
     <requestid>1385042</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0710cb800646a5acb8f2238ec1f9c28d</srcmd5>
+    <version>3.3.5678.0</version>
+    <time>1793206218</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.5678.0
+  * Bump golang.org/x/sys from v0.47.0 to v0.48.0
+  * Bump golang.org/x/net from v0.57.0 to v0.60.0
+  * Upgrade Go version to 1.26.10
+- Add missing Bugzilla and CVE references for golang.org/x/crypto
+- Raise minimum Go version to 1.26.10 in BuildRequires
+
+    (bsc#1253611, CVE-2025-47913) (bsc#1253946, CVE-2025-58181)
+    (bsc#1254082, CVE-2025-47914) (forwarded request 1393425 from glaubitz)</comment>
+    <requestid>1393429</requestid>
+  </revision>
 </revisionlist>

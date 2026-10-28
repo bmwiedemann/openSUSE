@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 28 14:48:21 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.5678.0
+  * Bump golang.org/x/sys from v0.47.0 to v0.48.0
+  * Bump golang.org/x/net from v0.57.0 to v0.60.0
+  * Upgrade Go version to 1.26.10
+- Add missing Bugzilla and CVE references for golang.org/x/crypto
+- Raise minimum Go version to 1.26.10 in BuildRequires
+
+-------------------------------------------------------------------
 Thu Oct 15 08:56:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.5538.0
@@ -172,7 +182,8 @@ Thu Mar 26 09:50:01 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Update Golang version to 1.24.12
   * Updating golang.org/x/crypto from v0.37.0 to v0.47.0, golang.org/x/net
     from v0.39.0 to v0.48.0 and golang.org/x/sys from v0.32.0 to v0.40.0
-    (bsc#1253611, CVE-2025-47913)
+    (bsc#1253611, CVE-2025-47913) (bsc#1253946, CVE-2025-58181)
+    (bsc#1254082, CVE-2025-47914)
   * Categorize integration tests by adding new tags to split fast and slow ones
   * Fix bug where IP field being empty string and causing UII API failure
 - Drop CVE-2025-47913.patch, merged upstream
