@@ -1,0 +1,12 @@
+<constraints>
+  <hardware>
+    <physicalmemory>
+      <!-- 0.10.0 needs >23G: two LTO-linked bins peak ~14G each;
+           0.8.0 only fit a 32G worker, 23G OOMs (Factory aarch64). -->
+      <size unit="G">32</size>
+    </physicalmemory>
+    <disk>
+      <size unit="G">30</size>
+    </disk>
+  </hardware>
+</constraints>

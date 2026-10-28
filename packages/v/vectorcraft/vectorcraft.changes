@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Mon Oct 26 11:14:32 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.17.0 (upstream tag v0.17.0, 2026-10-25):
+  * New: heavy plug-in filters allowed at install and run in the
+    background; OpenType SVG colour fonts draw and export as
+    vector art; Constrain Angle for arrow keys, Shift drags and new
+    objects; Artboard Options centre mark and cross hairs; Simplify
+    slider opens at the Auto-Simplify level; SVG import/export keeps
+    other applications' attributes; Place and Export for Screens
+    decode, encode and write on background threads.
+  * Fixes: brush output budget across tracks, tiles and copies;
+    paragraph Auto Leading and hanging punctuation under Glyph
+    Scaling; PDF import tracking and glyph widths; pastes follow
+    Draw Inside and Draw Behind; Windows Ink pen barrel button.
+  * Hardening: font collection face count and live Pathfinder
+    effect input capped; render depth counters restored after a
+    caught panic.
+  * Re-vendor locked (update=false retained); licence audit redone,
+    no new licences in the linked set (r-efi, an OR alternative
+    with LGPL-2.1-or-later, is used under MIT).
+
+-------------------------------------------------------------------
+Fri Oct 23 07:14:46 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.16.0 (upstream tag v0.16.0, 2026-10-23):
+  * Covers 0.14.0 (2026-10-21) and 0.15.0 (2026-10-22) too.
+  * New: Objects on Path; Effect Gallery and many more Sketch and
+    Artistic raster filters; Hard Mix and Soft Mix effects;
+    tangent and perpendicular snapping; dithered and perceptual
+    (OKLab) gradients; ruby and COLR/bitmap colour emoji fonts;
+    Insert Kashidas and Optical Margin Alignment; artboard
+    background colours; dock group improvements; Targa (.tga)
+    open and place; linked PDF/.ai place; Affinity import of
+    strokes, text and CMYK photos; export progress with Cancel.
+  * CLI and MCP: run --commands reads steps from a JSON file or
+    stdin; automation read/write roots may be given repeatedly;
+    exports honour SOURCE_DATE_EPOCH.
+  * Linux: Wayland window decorations through craft-window and
+    sctk-adwaita (no title font); Save As takes the file type
+    from the desktop portal dialog; pen barrel buttons work;
+    desktop file and MIME XML now register .vectorcraft,
+    templates, .ai, EPS, Affinity and the other openable types.
+  * Hardening (no CVE ids): deep XMP and SVG image nesting
+    capped, mesh and repeat instance limits, numbers given as
+    text refused by commands, owner-only recovery folders and
+    browser preview folders, links on other shares not followed.
+  * New interface languages: Georgian and Turkish.
+  * Re-vendor locked (update=false retained): new craft-window
+    git pin, chrono 0.4.45 and sctk-adwaita 0.10.1 added, plus
+    routine bumps (zerocopy, zvariant, toml, libc, serde_json and
+    others), all MIT and/or Apache-2.0, some with Unicode-3.0 or a
+    BSD-2-Clause alternative. License re-audit over shipped targets
+    unchanged, still no copyleft linked; cargo_vendor reports all
+    lockfiles audited, no RUSTSEC advisories.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+- Legal-Review-Notice: list zlib-rs instead of slotmap (not linked
+  on Linux), note sctk-adwaita is built without its Cantarell
+  title font, and state that colored (MPL-2.0) in the vendor set
+  is a never-built dev-dependency.
+
+-------------------------------------------------------------------
+Sun Oct 18 17:32:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.1 (stable tags v0.12.0, 2026-10-16 and v0.13.1,
+  2026-10-18, draft=false prerelease=false), covering 0.12.0 too:
+  * New: restyled UI with Classic colour scheme; Recolor Artwork;
+    Object Intertwine; Image Trace accuracy and large-image guard;
+    Graph Type dropdown with CSV data merge; Effect Rasterize,
+    Halftone and Outline Object; Blend panel; Live Paint gap
+    options; Touch Type tool; PostScript open/place; .docx place;
+    CCITT G3 TIFF; portable mode; print presets; variable-font
+    sliders; 3D colored lights; SVG interactivity panel.
+  * Import/export: PDF UserUnit pages, CMYK soft masks, Illustrator
+    3 layers, rotated .ai images, hairline strokes, Hebrew/Arabic
+    PDF text order, justified/Mojikumi SVG spacing.
+  * Hardening (no CVE ids): image RGBA size checked before decode,
+    XML ID escaping, hex and numeric input clamping, doc_inspect
+    scoping, MCP cancel/progress, originals opened only on this
+    computer or the document's share; Wayland pointer fix.
+  * New interface languages: Brazilian Portuguese, Bulgarian,
+    Swedish, Greek, Finnish, Dutch, Danish, Hindi and Indonesian.
+  * Re-vendor locked (update=false retained): hayro crates move to
+    0.7.2/0.3.x per the upstream lock; craft-docpath and craft-pdf
+    0.1.0, stringprep and unicode-normalization added (all MIT or
+    Apache-2.0); fontconfig-parser gone, skrifa 0.46.2 and
+    fearless_simd 1.1.0 pruned (other versions remain).
+    License re-audit over shipped targets unchanged, still no
+    copyleft linked; ruzstd stays 0.9.1, so RUSTSEC-2026-0344
+    remains fixed.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+
+-------------------------------------------------------------------
+Thu Oct 15 05:03:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.0 (stable tag v0.11.0, 2026-10-14,
+  draft=false prerelease=false):
+  * Image Trace: edges, shapes, gradients, presets, memory cut
+    (16 MP photo in 0.9 GB)
+  * 3D and Materials: Extrude and Bevel, Inflate, Rotate,
+    Perspective; Type stylistic sets and OpenType features
+  * Import/export: .ai editing data, SVG textPath and filters,
+    PDF/EPS fixes, DXF and TIFF export
+  * Harden importers against malicious files (no CVE assigned):
+    nesting capped against stack overflow, bounded ASCII85,
+    PNG/JPEG size from header, RGBA size before decoding
+  * Fix RUSTSEC-2026-0344 by updating ruzstd to 0.9.1
+  * Cap MCP framing input and command batches; owner-only staging
+    files; refuse packaging over source documents
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Vendor refresh locked (update=false retained; upstream vendor/
+  still Windows-only): license re-audit over shipped targets
+  unchanged, still no copyleft linked
+
+-------------------------------------------------------------------
+Tue Oct 13 07:29:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.0 (stable tag v0.10.0, 2026-10-12,
+  draft=false prerelease=false), covering 0.9.0 too:
+  * Type: proportional metrics (palt, vertical vpal),
+    area/threaded/path text, missing-fonts listing
+  * Import/export: .ai ASCII85 fix, PDF clip to crop, PSD/PSB
+    merged image, EPS hang fixes, SVG viewBox framing
+  * Tools/effects: Glowing Edges, Pixelate/Video effects,
+    brush pressure options, Shape Builder seams, Offset Path
+    and Zig Zag dialogs
+  * UI/i18n: shared docking panels, toolbar drawer, rulers in
+    rotated views, macOS sheets, Spanish/Hungarian/Korean rows
+  * CLI/MCP: automation roots confine files, command_batch
+    reuses results, Smart Guides labels
+  * Robustness: streaming open/save with per-section limits,
+    byte-bounded undo/caches/images, explicit-target
+    validation, Print via craft-print
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Vendor refresh locked (update=false retained: new tree
+  vendor/ still holds only the Windows-only windows-link copy):
+  new craft-print/craft-ui git pins, internal three-d crate,
+  linesweeper 0.5, vello_cpu f32_pipeline; license re-audit
+  over the shipped targets unchanged, still no copyleft linked
+- Sort Recommends to spec-cleaner order (no functional change)
+
+-------------------------------------------------------------------
+Sun Oct 11 06:59:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package 0.8.0 (stable tag v0.8.0, 2026-10-10, draft=false
+  prerelease=false): from-scratch Rust workspace source build
+  (resolver 3, edition 2024, MSRV 1.95), no copypac source exists on OBS
+  (home: copies are binary repacks, rejected per policy)
+- Services: tar_scm pinned tag + cargo_vendor (tag cratesio, update=false
+  for --locked build; upstream vendor/ holds only the win7 windows-link
+  patch, unused on Linux) + cargo_audit; tarball excludes docs/brand/
+  trademarks
+- Build vectorcraft + vectorcraft-cli --locked --offline, split into main
+  desktop app + vectorcraft-cli headless runner (main Recommends -cli);
+  CRAFT_FONTS_DIR unset (bundled Latin fonts plus system fallback)
+- License covers bundled BSD-2-Clause/BSD-3-Clause/ISC/OFL-1.1/
+  Ubuntu-font-1.0/IJG/Unicode-3.0/Zlib plus MIT/Apache-2.0; see
+  Legal-Review-Notice
+

@@ -1,0 +1,4 @@
+<package name="vectorcraft" project="openSUSE:Factory">
+  <title>Vector illustration app in pure Rust</title>
+  <description>VectorCraft is an open-source vector illustration app written from scratch in pure Rust: pen, shape and brush tools, fills, strokes, gradients, live effects, artboards, type, SVG and PDF open/save, plus a headless command-line companion.</description>
+</package>
