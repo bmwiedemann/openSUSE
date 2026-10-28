@@ -80,7 +80,7 @@ packagesets:
    - NetworkManager-branding-openSUSE # reason: dvd:patterns-gnome-gnome
    - NetworkManager-connection-editor # reason: dvd:patterns-xfce-xfce
    - NetworkManager-connection-editor-lang # reason: dvd:patterns-xfce-xfce
-   - NetworkManager-dns-bind # reason: dvd:patterns-media-rest_dvd
+   - NetworkManager-dns-bind # reason: common_locks:expansion
    - NetworkManager-dns-dnsmasq # reason: dvd:patterns-gnome-gnome
    - NetworkManager-lang # reason: dvd:patterns-gnome-gnome
    - NetworkManager-openconnect # reason: dvd:patterns-gnome-gnome
@@ -208,8 +208,7 @@ packagesets:
    - bc # reason: dvd:patterns-base-console
    - bcm20702a1-firmware # reason: dvd:bcm20702a1-firmware
    - bcm43xx-firmware # reason: dvd:bcm43xx-firmware
-   - bind # reason: dvd:patterns-media-rest_dvd
-   - bind-doc # reason: dvd:patterns-media-rest_dvd
+   - bind # reason: dvd:bind
    - bind-utils # reason: dvd:patterns-kde-kde
    - binutils # reason: dvd:patterns-base-console
    - blinken # reason: dvd:patterns-kde-kde_edutainment
@@ -910,8 +909,6 @@ packagesets:
    - kdoctools # reason: dvd:patterns-kde-kde
    - kdoctools-lang # reason: dvd:patterns-kde-kde
    - kdump # reason: dvd:kdump
-   - kea # reason: dvd:patterns-media-rest_dvd
-   - kea-hooks # reason: dvd:patterns-media-rest_dvd
    - kernel-default # reason: dvd:patterns-media-rest_cd_core
    - kernel-firmware-amdgpu # reason: dvd:patterns-media-rest_cd_core
    - kernel-firmware-ath10k # reason: dvd:patterns-media-rest_cd_core
@@ -2270,30 +2267,6 @@ packagesets:
    - libkdevplatform66 # reason: dvd:patterns-media-rest_dvd
    - libkdsingleapplication-qt6-1_2 # reason: dvd:patterns-kde-kde
    - libkdsoap-qt6-2 # reason: dvd:patterns-kde-kde
-   - libkea-asiodns75 # reason: dvd:patterns-media-rest_dvd
-   - libkea-asiolink105 # reason: dvd:patterns-media-rest_dvd
-   - libkea-cc98 # reason: dvd:patterns-media-rest_dvd
-   - libkea-cfgrpt3 # reason: dvd:patterns-media-rest_dvd
-   - libkea-config98 # reason: dvd:patterns-media-rest_dvd
-   - libkea-cryptolink76 # reason: dvd:patterns-media-rest_dvd
-   - libkea-d2srv75 # reason: dvd:patterns-media-rest_dvd
-   - libkea-database88 # reason: dvd:patterns-media-rest_dvd
-   - libkea-dhcp129 # reason: dvd:patterns-media-rest_dvd
-   - libkea-dhcp_ddns82 # reason: dvd:patterns-media-rest_dvd
-   - libkea-dhcpsrv149 # reason: dvd:patterns-media-rest_dvd
-   - libkea-dns84 # reason: dvd:patterns-media-rest_dvd
-   - libkea-eval97 # reason: dvd:patterns-media-rest_dvd
-   - libkea-exceptions55 # reason: dvd:patterns-media-rest_dvd
-   - libkea-hooks139 # reason: dvd:patterns-media-rest_dvd
-   - libkea-http100 # reason: dvd:patterns-media-rest_dvd
-   - libkea-log-interprocess4 # reason: dvd:patterns-media-rest_dvd
-   - libkea-log86 # reason: dvd:patterns-media-rest_dvd
-   - libkea-mysql106 # reason: dvd:patterns-media-rest_dvd
-   - libkea-pgsql105 # reason: dvd:patterns-media-rest_dvd
-   - libkea-process105 # reason: dvd:patterns-media-rest_dvd
-   - libkea-stats64 # reason: dvd:patterns-media-rest_dvd
-   - libkea-tcp45 # reason: dvd:patterns-media-rest_dvd
-   - libkea-util118 # reason: dvd:patterns-media-rest_dvd
    - libkerfuffle26 # reason: dvd:patterns-kde-kde
    - libkexiv2-qt6 # reason: dvd:patterns-kde-kde
    - libkeybinder-3_0-0 # reason: dvd:patterns-xfce-xfce
@@ -2354,7 +2327,6 @@ packagesets:
    - liblirc_client0 # reason: dvd:patterns-kde-kde
    - libliveMedia122 # reason: dvd:patterns-kde-kde
    - liblmdb-0_9_35 # reason: dvd:patterns-gnome-gnome
-   - liblog4cplus-2_1-9 # reason: dvd:patterns-media-rest_dvd
    - liblogging0 # reason: dvd:rsyslog
    - liblognorm5 # reason: dvd:rsyslog
    - liblouis-data # reason: dvd:patterns-gnome-gnome
@@ -3321,7 +3293,6 @@ packagesets:
    - patterns-media-rest_cd_core # reason: dvd:patterns-media-rest_cd_core
    - patterns-media-rest_dvd # reason: dvd:patterns-media-rest_dvd
    - patterns-office-office # reason: dvd:patterns-gnome-gnome
-   - patterns-server-dhcp_dns_server # reason: dvd:patterns-media-rest_dvd
    - patterns-server-directory_server # reason: dvd:patterns-media-rest_dvd
    - patterns-server-file_server # reason: dvd:patterns-server-file_server
    - patterns-server-kvm_server # reason: dvd:patterns-media-rest_dvd

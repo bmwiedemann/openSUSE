@@ -1469,6 +1469,7 @@ unsorted:
   - bijiben 
   - bijiben-lang 
   - binaryen 
+  - bind-doc 
   - bind-modules-bdbhpt 
   - bind-modules-generic 
   - bind-modules-ldap 
@@ -10179,8 +10180,10 @@ unsorted:
   - kdsoap-ws-discovery-client-devel 
   - kdstatemachineeditor-devel 
   - kdumpid 
+  - kea 
   - kea-devel 
   - kea-doc 
+  - kea-hooks 
   - keditbookmarks 
   - keditbookmarks-lang 
   - keepalived 
@@ -14519,7 +14522,31 @@ unsorted:
   - libkdstatemachineeditor_view-qt6-2 
   - libkdumpfile-devel 
   - libkdumpfile12 
+  - libkea-asiodns75 
+  - libkea-asiolink105 
+  - libkea-cc98 
+  - libkea-cfgrpt3 
+  - libkea-config98 
+  - libkea-cryptolink76 
+  - libkea-d2srv75 
+  - libkea-database88 
+  - libkea-dhcp129 
+  - libkea-dhcp_ddns82 
+  - libkea-dhcpsrv149 
+  - libkea-dns84 
+  - libkea-eval97 
+  - libkea-exceptions55 
+  - libkea-hooks139 
+  - libkea-http100 
+  - libkea-log-interprocess4 
+  - libkea-log86 
+  - libkea-mysql106 
+  - libkea-pgsql105 
+  - libkea-process105 
+  - libkea-stats64 
+  - libkea-tcp45 
   - libkea-util-io12 
+  - libkea-util118 
   - libkea1_6 
   - libkeccak-devel 
   - libkeccak1 
@@ -14707,6 +14734,7 @@ unsorted:
   - liblog4c-devel 
   - liblog4c-doc 
   - liblog4c3 
+  - liblog4cplus-2_1-9 
   - liblog4cpp5 
   - liblog4cxx-devel 
   - liblog4cxx15 
@@ -21604,6 +21632,7 @@ unsorted:
   - patterns-network-network_admin 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
+  - patterns-server-dhcp_dns_server 
   - patterns-server-dhcp_dns_server-32bit 
   - patterns-server-directory_server-32bit 
   - patterns-server-file_server-32bit 
