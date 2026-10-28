@@ -1,0 +1,28 @@
+<services>
+  <service mode="manual" name="tar_scm">
+    <param name="url">https://github.com/storytold/craft-launcher.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.8.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <!-- NOTE: docs/brand is deliberately NOT excluded even though it is
+         trademarked, not MIT/Apache: crates/ui-egui/src/icons.rs and
+         apps/artcraft-launcher/src/tray.rs embed five of its files at
+         compile time (include_image!/include_bytes!), so excluding it
+         breaks %build on every arch. Nothing from it is ever installed. -->
+    <!-- The clone directory (and the tarball's top dir) is craft-launcher, which
+         would make Source0 disagree with %{name}. -->
+    <param name="filename">artcraft-launcher</param>
+  </service>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service mode="manual" name="cargo_vendor">
+    <param name="src">artcraft-launcher-*.tar.zst</param>
+    <param name="update">true</param>
+  </service>
+  <service mode="manual" name="cargo_audit"/>
+</services>

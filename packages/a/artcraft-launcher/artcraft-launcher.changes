@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Mon Oct 26 11:07:42 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.8.1 (upstream tag v0.8.1, 2026-10-25):
+  * Security hardening: archive extraction, layout normalization and
+    file enumeration hardened; release HTML URLs confined and
+    browser-open links sanitized; decoded HTTP responses and
+    screenshot decoding bounded; artifact URL identity bound in
+    install and self-update; loopback bypasses the proxy and HTTP
+    wire credentials are no longer logged; mutual challenge-response
+    for single-instance IPC; local mirror reads bounded with
+    deadlines and terminal escaping; remote feed overrides gated to
+    dev builds.
+  * Linux and FreeBSD install: pkexec and package tools are run from
+    the system directories.
+  * Settings: keep settings inside a portable suite; languages listed
+    alphabetically by their own name; update check looks past a feed
+    that is behind GitHub; one-time notice that closing the window
+    keeps the launcher in the tray.
+  * UI: maximized title bar close button takes the screen corner;
+    wgpu limits capped to what the GPU offers; non-UTF-8 arguments
+    ignored; busy state cleared when a worker panics.
+  * Windows: version-folder wrapped portable ZIPs install, pinned
+    taskbar icons survive updates; macOS: quitting no longer crashes
+    and Intel Macs skip wgpu indirect-call validation; FreeBSD
+    aarch64 cross build packaged.
+  * Re-vendored: shipped target only gets version bumps (cc,
+    ordered-float, smallvec, uuid, ...); the new craft-quit
+    (MIT OR Apache-2.0, storytold/craft-libs) only does something on
+    macOS. Licence set unchanged, no new system deps.
+- Refresh artcraft-launcher-pkcon-first.patch for the 0.8.1 sources:
+  upstream now runs pkexec and package tools from the system
+  directories, so pkcon is looked up and run the same way
+  (system_tool) instead of through PATH; PR
+  storytold/craft-launcher#256 still open
+- Set the metainfo release date to 2026-10-25
+
+-------------------------------------------------------------------
+Fri Oct 23 06:52:22 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.7.0 (upstream tag v0.7.0, 2026-10-23):
+  * Security hardening: release/feed download URLs confined to the
+    app's repository and the artifact version bound to the release;
+    a tarball whose app binary is a symlink is refused before any
+    chmod; single-instance replace authenticated and the local
+    mirror server bounded; shell metacharacters rejected in opened
+    web links; decoded feed size, screenshot dimensions and locale
+    tags bounded. No CVE ids assigned.
+  * Date/time conversion goes through jiff instead of hand-rolled
+    calendar code.
+  * Windows: self-update and portable version checks run without
+    PowerShell and install only files signed like the launcher;
+    busy download renames retried, Windows Installer runs logged.
+  * 0.6.1: saved filters no longer hide every app on startup;
+    clearer update dialog (Download case) and AppImage folder
+    wording; FreeBSD aarch64 installs its own tarball.
+  * Re-vendored: shipped target only gets version bumps (icu_* 2.4.0,
+    ureq 3.5.0, webbrowser 1.2.5, zerovec 0.11.9, ...); the new
+    verifysign (BSD-3-Clause) and winsafe (MIT) are Windows-only.
+    Licence set unchanged (MPL-2.0 option-ext 0.2.0, Unlicense ksni
+    0.3.7), no new system deps, MSRV unchanged; cargo_audit clean.
+- Rebase artcraft-launcher-pkcon-first.patch for the 0.7.0 sources
+  (line offsets only, content unchanged; PR
+  storytold/craft-launcher#256 still open)
+- Set the metainfo release date to 2026-10-23 (it still said
+  2026-10-18 from 0.5.1) and name ksni 0.3.7, the vendored version
+  since 0.6.0, in the Legal-Review-Notice
+
+-------------------------------------------------------------------
+Wed Oct 21 06:40:33 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.6.0 (upstream tag v0.6.0, 2026-10-20):
+  * Linux: install and update Arch packages (.pkg.tar.zst) from
+    settings, only for release packages (AUR/repo ones are delegated);
+    managed AppImage desktop entries respected and icon caches
+    refreshed.
+  * Fixes: fragmented single-instance version greetings, helper
+    output drained after the capture limit.
+  * UI: calmer header, toolbar, cards, app page and dialogs.
+  * Re-vendored; no new system deps.
+
+-------------------------------------------------------------------
+Sun Oct 18 17:25:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.1 (upstream tag v0.5.1, 2026-10-18):
+  * Install: choose where Craft apps are installed; Flatpak
+    launcher self-updates and restarts; corrupt and future
+    self-update timestamps refused; no retry loops when a
+    partial file cannot be removed
+  * Catalog: app numbering aligned with the website; Discord
+    opens in the desktop app when installed; Intel macOS no
+    longer offered ARM-only DMGs
+  * Interface: release-note zoom, Command+M minimize on macOS
+  * Update backups and unrelated state files preserved; Flatpak
+    launcher resolves the bundle link, not the AppImage
+  * No CVE keywords in the 0.4.1-0.5.1 range; cargo_audit clean.
+- Rebase artcraft-launcher-pkcon-first.patch for the 0.5.1
+  sources (upstream refactored the backend around install_at;
+  PR storytold/craft-launcher#256 still open)
+- Vendor-tree licence set unchanged (MPL-2.0 option-ext 0.2.0,
+  Unlicense ksni 0.3.6, both as before).
+
+-------------------------------------------------------------------
+Thu Oct 15 05:08:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.1 (upstream tags v0.4.0 2026-10-13, v0.4.1 2026-10-13):
+  * New app FigCraft in the catalog; release 0.4.1
+  * Trust: feed repo renames stay inside storytold, releases without checksums
+    refused before fetch; pacman only with its database; rpm-ostree skip
+  * Interface: details drawer, hide-uninterested apps, Spanish/Czech/Polish/
+    Hungarian/Japanese languages, GPU/animation/theme fixes, log file
+  * No CVE keywords in the 0.3.2-0.4.1 range; cargo_audit clean.
+- Rebase artcraft-launcher-pkcon-first.patch for the 0.4.1 sources
+  (checksum-enforced download flow; PR storytold/craft-launcher#256 still open)
+- Packaging: vendor re-audit (update=true): same licence set (MPL-2.0
+  option-ext, Unlicense ksni); no CLI binary, so no -cli split; keep
+  Recommends: PackageKit
+
+-------------------------------------------------------------------
+Mon Oct 12 18:25:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package artcraft-launcher 0.3.2 (upstream tag v0.3.2, 2026-10-11):
+  * One place to find, install, update and open the 12-app Craft suite
+    (PhotoCraft, LightCraft, FilmCraft, DesignCraft, VectorCraft,
+    PdfCraft, EffectCraft, WordCraft, DeckCraft, GridCraft, CADCraft
+    and SoundCraft), with the right build picked for your computer.
+  * Handles distro packages (deb/rpm/tar), Flatpak bundles and AppImage
+    installs, serializes queued installs, and filters detection by arch.
+  * Lives in the system tray (ksni StatusNotifierItem, no GTK needed),
+    tells you when updates are ready, and updates itself.
+  * License derived over the vendor tree for the shipped desktop target:
+    MPL-2.0 (option-ext via dirs), Unlicense (ksni), ISC, BSD-2/3-Clause,
+    Zlib, Unicode-3.0, CC-BY-4.0/CC0-1.0 social icons, OFL-1.1 fonts and
+    Ubuntu-font-1.0, see the Legal-Review-Notice in the spec; docs/brand
+    (trademarked) stays in the sources unmodified as compile-time input
+    only (five files embedded by include_image!/include_bytes!) and is
+    never installed.
+  * No CLI binary ships, so no -cli subpackage split. No CVEs known.
+- Add artcraft-launcher-pkcon-first.patch: Linux install/update/remove go through PackageKit when the distro carries the app (storytold/craft-launcher#256, open), download flow stays as fallback
+- Recommend PackageKit for the new path
+

@@ -1,0 +1,8 @@
+<package name="artcraft-launcher" project="openSUSE:Factory">
+  <title>Install, update and launch the Craft App Suite</title>
+  <description>ArtCraft Launcher lists every app in the Craft App Suite (PhotoCraft,
+LightCraft, FilmCraft, DesignCraft, VectorCraft, PdfCraft, EffectCraft,
+WordCraft, DeckCraft, GridCraft, CADCraft and SoundCraft), installs the
+right build for your computer, and keeps them up to date.</description>
+  <url>https://github.com/storytold/craft-launcher</url>
+</package>
