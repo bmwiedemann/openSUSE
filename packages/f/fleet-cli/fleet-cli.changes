@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:06:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.16.3:
+  * Restrict cross-namespace kubeConfigSecret references to Secrets
+    labeled fleet.cattle.io/kubeconfig-referenceable-from in #5969
+  * Bind ClusterRegistration ClientID to its registration token in
+    #5946
+  * Clear Stalled when GitRepo polling recovers (#5907) in #5929
+  * Scope namespaceLabels and namespaceAnnotations to matched
+    target customizations (#5470) in #5885
+  * Allow Helm valuesFiles to reference files within the repository
+    checkout root (#5842) in #5865
+  * Support OCI build metadata in Helm chart versions (#5827) in
+    #5841
+  * Warn when helmRepoURLRegex strips credentials from a
+    non-matching chart URL (#5793) in #5819
+  * Reconcile Fleet agent when cluster-specific pull secrets change
+    (#5438) in #5795
+  * Add Helm chart image HIP-0015 annotations in #5852
+  * Update Go to v1.26.10 (CVE-2026-111943) in #5984
+  * Update golang.org/x/net to v0.60.0, golang.org/x/crypto to
+    v0.57.0, golang.org/x/mod to v0.41.0, golang.org/x/sync to
+    v0.23.0, golang.org/x/sys to v0.48.0, golang.org/x/term to
+    v0.46.0, and golang.org/x/text to v0.42.0 (CVE-2026-78659,
+    CVE-2026-78660, CVE-2026-78669, CVE-2026-78663, CVE-2026-97032)
+    in #5915
+  * Update Kubernetes dependencies to v1.36.5 (k8s.io/* modules at
+    v0.36.5) in #5848
+
+-------------------------------------------------------------------
 Sun Sep 20 07:17:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.16.2:
