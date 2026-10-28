@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 09:14:30 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- games pattern: drop the requirement on the x11 pattern
+  entirely. X11 desktop patterns already require the x11
+  pattern themselves, and a games install must not pull an
+  X stack onto Wayland-only systems
+
+-------------------------------------------------------------------
 Wed Jan 26 12:29:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer suggest solarwolf: this package does not exist since

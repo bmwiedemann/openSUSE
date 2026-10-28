@@ -48,7 +48,6 @@ Provides:       pattern() = games
 Provides:       pattern-icon() = pattern-games
 Provides:       pattern-order() = 1900
 Provides:       pattern-visible()
-Requires:       pattern() = x11
 # from data/GAMES
 Suggests:       frozen-bubble
 Suggests:       armagetron
