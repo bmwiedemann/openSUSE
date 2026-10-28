@@ -16,7 +16,7 @@
 #
 
 Name:           rdi-installer
-Version:        1.2.1+git20261019.1a525f6
+Version:        1.3.0
 Release:        0
 Summary:        Utility to write disk images to hard disk
 License:        MIT
@@ -100,16 +100,19 @@ the rdi-installer image in OBS.
 %{_bindir}/rdii-networkd
 %{_bindir}/rdii-fetch-config
 %{_bindir}/rdii-proxy-setup
+%{_bindir}/rdii-pubkey-setup
 %{_bindir}/rdii-ssh-setup
 %{_prefix}/lib/systemd/system/rdii-fetch-config-early.service
 %{_prefix}/lib/systemd/system/rdii-fetch-config.service
 %{_prefix}/lib/systemd/system/rdii-mount-img-part.service
 %{_prefix}/lib/systemd/system/rdii-networkd.service
 %{_prefix}/lib/systemd/system/rdii-proxy-setup.service
+%{_prefix}/lib/systemd/system/rdii-pubkey-setup.service
 %{_prefix}/lib/systemd/system/rdii-ssh-setup.service
 %dir %{_libexecdir}/rdi-installer
 %{_libexecdir}/rdi-installer/mount-part-by-label
 %{_mandir}/man8/rdii-networkd.8%{?ext_man}
+%{_mandir}/man8/rdii-pubkey-setup.service.8%{?ext_man}
 %{_mandir}/man8/rdii-ssh-setup.service.8%{?ext_man}
 
 %files -n rdii-helper

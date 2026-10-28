@@ -47,4 +47,27 @@
   * Add minimal Quickguide</comment>
     <requestid>1386326</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>18862197570621b00a58e62d4605dc93</srcmd5>
+    <version>1.3.0</version>
+    <time>1793206177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.0:
+  * Release version 1.3.0
+  * Provide rdii-pubkey-setup.service to import pubkeys into import-pubring.gpg
+  * CI: update actions/checkout
+  * First version of the Quick Guide with text
+  * README.md: fix typos
+  * Add &quot;rdii.minsize=&quot; option for minimal required disk size
+
+- Update to version 1.2.1+git4.20261023:
+  * Rename images to include rdi-installer version
+  * image: fix excluding of kernel modules
+  * image: don't bail out of images directory already exists
+- Switch git suffix to have it always increasing
+
+- Update to version 1.2.1+git20261021.b30d538:
+  * Don't run rdii-set-default-loader-entry on MicroOS</comment>
+    <requestid>1393391</requestid>
+  </revision>
 </revisionlist>

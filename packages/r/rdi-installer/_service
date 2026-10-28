@@ -5,8 +5,8 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">rdi-installer</param>
     <param name="revision">main</param>
-    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
-    <param name="versionrewrite-pattern">v(.*?)(\+git0)?$</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(.*?)(\+git[0-9]{8}\.0)?$</param>
     <param name="exclude">images</param>
   </service>
   <service mode="manual" name="recompress">
