@@ -1,4 +1,176 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:07:38 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 1.3.1:
+  * ci: publish signed release binaries and SBOMs (#178)
+  * ci: replace removed qemu-kvm package with qemu-system-x86 (#179)
+  * chore(deps): bump github.com/containerd/containerd/v2 (#177)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.11.0 to 1.11.1 (#176)
+  * chore(deps): bump go.podman.io/podman/v6 from 6.1.3 to 6.1.4 (#175)
+  * chore(deps): bump golang.org/x/crypto from 0.57.0 to 0.58.0 (#174)
+  * chore(deps): bump golang.org/x/sys from 0.48.0 to 0.49.0 (#173)
+  * chore(deps): bump github.com/urfave/cli/v3 from 3.13.0 to 3.14.0 (#171)
+  * chore(deps): bump go.podman.io/podman/v6 from 6.1.2 to 6.1.3 (#172)
+  * chore(deps): bump github.com/containerd/containerd/v2 (#170)
+  * chore(deps): bump github.com/urfave/cli/v3 from 3.12.0 to 3.13.0 (#169)
+  * chore(deps): bump go.podman.io/podman/v6 from 6.1.1 to 6.1.2 (#166)
+  * chore(deps): bump github.com/containerd/containerd/v2 (#167)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.10 to 1.11.0 (#168)
+  * chore(deps): bump github.com/urfave/cli/v3 from 3.11.0 to 3.12.0 (#165)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.9 to 1.10.10 (#163)
+  * chore: bump go to 1.27.1 (#164)
+  * chore(deps): bump golang.org/x/crypto from 0.56.0 to 0.57.0 (#162)
+  * chore(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.2 (#161)
+  * chore(deps): bump github.com/containerd/containerd/v2 (#159)
+  * chore(deps): bump golang.org/x/sys from 0.47.0 to 0.48.0 (#160)
+  * chore(deps): bump golang.org/x/crypto from 0.55.0 to 0.56.0 (#156)
+  * chore(deps): bump github.com/google/go-containerregistry (#158)
+  * chore(deps): bump go.podman.io/podman/v6 from 6.1.0 to 6.1.1 (#157)
+  * chore(deps): bump github.com/google/go-containerregistry (#155)
+  * chore(deps): bump github.com/moby/go-archive from 0.2.0 to 0.3.0 (#154)
+  * chore(deps): bump github.com/containerd/containerd/v2 (#150)
+  * chore(deps): bump github.com/stretchr/testify from 1.12.0 to 1.12.1 (#153)
+  * chore(deps): bump github.com/urfave/cli/v3 from 3.10.1 to 3.11.0 (#152)
+  * chore(deps): bump go.podman.io/podman/v6 from 6.0.2 to 6.1.0 (#149)
+  * chore(deps): bump github.com/stretchr/testify from 1.11.1 to 1.12.0 (#151)
+  * chore(deps): bump golang.org/x/crypto from 0.54.0 to 0.55.0 (#148)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.8 to 1.10.9 (#144)
+  * chore(deps): bump github.com/sigstore/cosign/v2 from 2.6.4 to 2.6.5 (#146)
+  * chore(deps): bump github.com/google/go-containerregistry (#147)
+  * chore(deps): bump github.com/google/go-containerregistry (#145)
+  * chore(deps): bump github.com/sigstore/sigstore-go from 1.2.2 to 1.3.0 (#143)
+  * build(deps): upgrade containerd to v2.3.3 and podman to v6 (#142)
+  * chore(deps): bump actions/setup-go from 6 to 7 (#140)
+  * chore(deps): bump github.com/sigstore/cosign/v2 from 2.6.3 to 2.6.4 (#141)
+  * chore(deps): bump golang.org/x/crypto from 0.53.0 to 0.54.0 (#138)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.8.4 to 5.8.5 (#137)
+  * chore(deps): bump github.com/urfave/cli/v3 from 3.10.0 to 3.10.1 (#134)
+  * chore(deps): bump github.com/sigstore/sigstore-go from 1.2.1 to 1.2.2 (#135)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.8.3 to 5.8.4 (#133)
+  * chore(deps): bump actions/checkout from 6 to 7 (#131)
+  * chore(deps): bump github.com/google/go-containerregistry (#130)
+  * chore(deps): bump github.com/urfave/cli/v3 from 3.9.1 to 3.10.0 (#128)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.8.2 to 5.8.3 (#129)
+  * chore(deps): bump github.com/urfave/cli/v3 from 3.9.0 to 3.9.1 (#127)
+  * chore(deps): bump github.com/sigstore/sigstore-go from 1.2.0 to 1.2.1 (#126)
+  * chore(deps): bump golang.org/x/crypto from 0.52.0 to 0.53.0 (#125)
+  * chore(deps): bump golang.org/x/sys from 0.45.0 to 0.46.0 (#124)
+  * chore(deps): bump github.com/sigstore/sigstore-go from 1.1.4 to 1.2.0 (#123)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.7 to 1.10.8 (#122)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.6 to 1.10.7 (#121)
+  * chore(deps): bump golang.org/x/crypto from 0.51.0 to 0.52.0 (#119)
+  * chore: enable gomodguard_v2 in the linter (#117)
+  * chore: bump go to 1.26.3 in gomod (#116)
+  * chore(deps): bump github.com/google/go-containerregistry (#115)
+  * feat: add `schedctl info <SCHEDULER>` command (#114)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.5 to 1.10.6 (#113)
+  * chore(deps): bump github.com/urfave/cli/v3 from 3.8.0 to 3.9.0 (#112)
+  * chore(deps): bump golang.org/x/crypto from 0.50.0 to 0.51.0 (#110)
+  * feat: verify scheduler image signatures before run (#109)
+  * chore(deps): bump github.com/google/go-containerregistry (#107)
+  * ci: rebuild test kernel with nftables built-in (#108)
+  * feat: implement version picking and version listing for schedulers (#106)
+  * feat: generate manpages from the CLI definitions (#105)
+  * feat: add a `doctor` command (#104)
+  * feat: add a `status` command (#103)
+  * chore: switch to `urfave/cli/v3` for the CLI layer (#102)
+  * build(deps): bump to containerd/v2 2.2.0 (#96)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.8.1 to 5.8.2 (#94)
+  * chore(deps): bump golang.org/x/crypto from 0.49.0 to 0.50.0 (#92)
+  * chore(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.3 (#91)
+  * chore: ugrade to containerd v2 api (#89)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.3 to 1.10.4 (#88)
+  * chore(deps): bump github.com/sigstore/fulcio from 1.7.1 to 1.8.5 (#87)
+  * chore(deps): bump golang.org/x/crypto from 0.48.0 to 0.49.0 (#82)
+  * chore: upgrade to go 1.25 (#85)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.7.1 to 5.8.1 (#81)
+  * chore: get rid of the old worklow (#84)
+  * ci: get rid of gpgme when testing (#83)
+  * ci: fix missing init in qemu (#80)
+  * ci: leverage mkosi to generate the end to end tests disk image (#78)
+  * chore: pin golang 1.24 in CI (#79)
+  * chore(deps): bump golang.org/x/crypto from 0.47.0 to 0.48.0 (#76)
+  * chore(deps): bump golang.org/x/crypto from 0.46.0 to 0.47.0 (#74)
+  * feat: tabular output for ps (#73)
+  * feat: implement attach flag for podman too (#72)
+  * feat: allow monitor processes to be run sharing the same filesystem ns (#71)
+  * feat: collision detection for container names (#70)
+  * feat: pass arguments to the schedulers (#69)
+  * fix: rename CI steps (#68)
+  * chore: cmd unit tests (#67)
+  * feat: run arbitrary images (#66)
+  * chore(deps): bump golang.org/x/crypto from 0.45.0 to 0.46.0 (#61)
+  * chore(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2 (#60)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.7.0 to 5.7.1 (#62)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.29 to 1.7.30 (#63)
+  * docs: README updates about refreshing the QEMU rootfs and kernel image (#58)
+  * chore(deps): bump actions/checkout from 5 to 6 (#57)
+  * chore(deps): bump golang.org/x/crypto from 0.44.0 to 0.45.0 (#56)
+  * feat: dynamic listing of schedulers (#55)
+  * chore(deps): bump golang.org/x/crypto from 0.43.0 to 0.44.0 (#53)
+  * chore(deps): bump github.com/containers/podman/v5 from 5.6.2 to 5.7.0 (#52)
+  * chore(deps): bump golangci/golangci-lint-action from 8 to 9 (#51)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.28 to 1.7.29 (#50)
+  * docs: Update 'schedctl start' command to 'schedctl run' (#49)
+  * feat: support gthulhu
+  * chore(deps): bump golang.org/x/crypto from 0.42.0 to 0.43.0
+  * chore(deps): bump github.com/containers/podman/v5 from 5.6.1 to 5.6.2
+  * chore(deps): bump github.com/containers/podman/v5 from 5.6.0 to 5.6.1
+  * ci: bump go to 1.24
+  * chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+  * chore(deps): bump golang.org/x/crypto from 0.41.0 to 0.42.0
+  * chore(deps): bump actions/setup-go from 5 to 6
+  * chore(deps): bump github.com/stretchr/testify from 1.11.0 to 1.11.1
+  * chore(deps): bump github.com/stretchr/testify from 1.10.0 to 1.11.0
+  * chore(deps): bump github.com/containers/podman/v5 from 5.5.2 to 5.6.0
+  * chore(deps): bump actions/checkout from 4 to 5
+  * chore(deps): bump golang.org/x/crypto from 0.40.0 to 0.41.0
+  * chore(deps): bump github.com/containerd/containerd from 1.7.27 to 1.7.28
+  * chore(deps): bump golang.org/x/crypto from 0.39.0 to 0.40.0
+  * chore(deps): bump github.com/containers/podman/v5 from 5.5.1 to 5.5.2
+  * chore(deps): bump golang.org/x/crypto from 0.38.0 to 0.39.0
+  * chore(deps): bump github.com/containers/podman/v5 from 5.5.0 to 5.5.1
+  * doc: please run as root when needed
+  * doc: update readme with container engine setup instructions
+  * chore: add new schedulers to the schedulers list
+  * feat: switch default driver to podman
+  * Add schedctl README
+  * chore(deps): bump github.com/containers/podman/v5 from 5.4.2 to 5.5.0
+  * Bump golang.org/x/crypto from 0.37.0 to 0.38.0
+  * chore: add license file
+  * ci: fix dependencies needed to build the program
+  * test: fix Fatalf call without enough arguments
+  * test: fix missing return in qemu run function
+  * test: add podman tests to the QEMU integration test suite
+  * test: add podman test
+  * fix: main.go named import due to strange linting issues
+  * test: add podman and enable podman service
+  * ci: install libbtrfs-dev and libgpgme-dev
+  * feat: add podman support to schedctl ps, iron out some details
+  * chore: repair go mod
+  * feat: add podman support to schedctl stop
+  * feat: add podman support to schedctl run
+  * feat: add podman golang bindings to go mods
+  * feat: add multi-driver support
+  * ci: install golangci-lint 2.1.6
+  * Bump golangci/golangci-lint-action from 7 to 8
+  * Bump golang.org/x/crypto from 0.31.0 to 0.37.0
+  * Bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+  * Migrate golanci-lint config
+  * Upgrade golangci lint
+  * Bump github.com/containerd/containerd from 1.7.25 to 1.7.27
+  * Bump github.com/stretchr/testify from 1.9.0 to 1.10.0
+  * Bump golangci/golangci-lint-action from 6 to 7
+  * Bump actions/setup-go from 4 to 5
+  * Add dependabot
+  * Enable golangcilint in the CI
+  * Refine integration tests and make them pass linting
+  * Iron out some linting and update tests
+  * Add a first test using QEMU
+  * Setup QEMU when running the CI pipeline
+  * Add testdata utiilities for testing through QEMU
+
+-------------------------------------------------------------------
 Sun Aug 02 10:54:48 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Install the manpages along with the software
