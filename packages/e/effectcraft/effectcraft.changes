@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Mon Oct 26 11:14:25 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.17.0 (upstream tag v0.17.0, 2026-10-25):
+  * Harden importers and parsers with bounds on SVG raster surfaces,
+    text layout and variable font metadata, PDF image samples and
+    masks, frozen roto mattes, expression rewrite expansion and
+    segmentation checkpoints; fix PDF CID width u32 overflows
+  * Preview: keep rendering past cached frames after a loop,
+    smarter disk-cache invalidation, zoom or resolution changes
+    evict other sizes first
+  * Layer: replace a source with Alt-drag, Reveal Layer Source in
+    Project, layer switches act on the whole selection, New 3D
+    Primitive dialog, Environment lights preserved
+  * Text: Faux Bold, CJK fallback isolation, Range Selector counts
+    with Units = Index
+  * Colour effects (Tint, Tritone, Levels, Curves, Luma Key, Fill
+    and others) now render as in After Effects; Gaussian and Fast
+    Box Blur continuous at small values
+  * Project and Composition Settings: Frame Count, Start at 0 or 1,
+    Resolution menu with memory estimate
+  * EPS: Illustrator EPS files draw their artwork
+  * Interface: Georgian language, translations fall back to
+    English, platform UI faces, languages sorted by own name
+  * CLI: preserve template composition names when rendering
+- Refresh the pinned release date in the metainfo stamp (2026-10-25)
+
+-------------------------------------------------------------------
+Fri Oct 23 07:15:47 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.16.0 (upstream tag v0.16.0, 2026-10-23; via the
+  untagged 0.12.0 version bump and v0.13.0, v0.14.0, v0.15.0):
+  * Linux: the commands' file dialogs open through the desktop
+    portal without blocking the frame; fonts honour
+    FONTCONFIG_PATH; Microsoft font names resolve to installed
+    metric-compatible fonts; variable-font named instances are
+    styles of their family
+  * Harden importers (no CVE assigned): glTF accessor spans and
+    FBX memory budgets checked, SVG <use> expansion bounded with
+    cycle detection, EPS/PDF huge arcs and long paths counted
+    against import limits, precomp walks no longer recurse
+  * Fix panics and overflows: ProEXR export with non-ASCII layer
+    names, path rect with NaN sizes, sampleImage with huge
+    sample points; script sockets get per-socket locks and a
+    write deadline
+  * CLI: render --progress reports frames on stderr when it is
+    not a terminal; render --template --values fills media
+    replacement controls with a file path
+  * Compositing and editing: Accepts Shadows Only, Merge Paths,
+    Mask Expansion, Wave Warp edge pinning, guide layers hidden
+    in nested comps, Ease Presets on selected keyframes, preset
+    drag-and-drop, comps reopen at their saved time, parametric
+    shape paths convert to bezier, Range Selector viewer handles
+  * Expressions: propertyGroup() and a group's propertyIndex;
+    setValue rejects arrays of the wrong dimension
+  * Interface: Japanese Settings dialog, localised layer and
+    timeline context menus, mask point nudging with arrow keys
+  * Docs and README reworded; SonarCloud fixes (HTTPS-only curl
+    in upstream's package.sh, JS fixes in the web build)
+  * Re-vendored (update=false, respect-lockfile=true): third-party
+    crate set identical to 0.11.1 (620 crates, only workspace
+    member versions changed in Cargo.lock), so the licence set is
+    unchanged; cargo_vendor audit: all lockfiles audited, no
+    RUSTSEC advisories
+- effectcraft-no-brand-assets.patch applies unchanged (no fuzz or
+  offset); 0.16.0 adds no new docs/brand references in code,
+  build scripts or packaging
+- Stamp the metainfo release date for v0.16.0 (2026-10-23)
+
+-------------------------------------------------------------------
+Sun Oct 18 17:25:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.1 (upstream tag v0.11.1, 2026-10-18):
+  * Writes are atomic; relinking a moved project keeps Windows
+    separators and UNC shares
+  * Harden importers against crafted files (no CVE assigned):
+    EPS idiv overflow, hostile ROI crop math, cyclic CFF seac
+    recursion and non-Unicode CLI args no longer panic; PDF
+    structure read through the shared parser
+  * Import: AIFF renders; Composition Retain Layer Sizes for
+    PDF/Illustrator; WebM last-frame duration; effects keep
+    alpha with Blending Mode None; GPU Echo keeps preceding
+    effects
+  * Automation edits not duplicated after lost replies;
+    media-browser and project listing performance
+  * cargo_audit clean.
+- Correct the License tag: BSD-2-Clause (arrayref),
+  BSD-3-Clause (exr, lebe, tiny-skia), ISC (libloading),
+  Unicode-3.0 (ICU) and Zlib (foldhash) were already linked
+  in 0.10.0 but not declared; re-derived from the 0.11.1
+  vendor tree with no other set change.
+
+-------------------------------------------------------------------
+Thu Oct 15 05:04:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.0 (stable tag v0.10.0, 2026-10-14,
+  draft=false prerelease=false):
+  * Harden importers against malicious files (no CVE assigned):
+    PSD group nesting bound at 64, non-finite values dropped
+    without panic, capped decode budget; SVG non-finite viewBox
+    no longer panics; EPS huge angles no longer hang
+  * PSD: damaged layer keeps merged image; memory budget for
+    decodes and smart-object bakes
+  * Render: Cryptomatte GPU path faster, capped frames in flight,
+    resident effect stacks, GPU readback budgets
+  * Scripting and expressions: layer.source, include/evalFile,
+    footage proxies, keyframe and marker handling
+  * Interface: Spanish and Japanese catalogs, portable mode,
+    footage relink, unique comp names
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Re-vendored with update=false against the new Cargo.lock; audit
+  clean, licence set unchanged
+- effectcraft-no-brand-assets.patch still applies unchanged
+
+-------------------------------------------------------------------
+Tue Oct 13 07:28:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.2 (0.7.0 via 0.8.0):
+  * Import: Targa, Radiance HDR, DPX, Cineon, animated WebP,
+    MXF, STL/FBX models; in-place movie opens; PSD-drop dialog
+  * Render: uncompressed QuickTime output; CLI --bitrate for
+    VP9 WebM; GPU precomp layers with device-loss handling;
+    GPU readback staging caps against memory exhaustion
+  * Scripting: #include, $.evalFile, ScriptUI mouse events,
+    keyframe-range delete, layered-PSD ImportOptions
+  * Effects: Pixel Motion Blur, Brightness and Contrast parity,
+    CC Cylinder XYZ rotation; Noise stays inside layer alpha
+  * Hardening: deeply nested XML projects refused; expression
+    overflows, hangs and panic fixed; NaN arc lengths safe;
+    PDF stream bounds; 28 community crash/security fixes
+  * Interface: Brazilian Portuguese, Spanish, Russian, French,
+    German, Czech catalogs; variable-font filtering; native-
+    window panels; per-project composition Resolution
+  * Re-vendored (update=false, no vendor/ upstream) and
+    re-audited: licence set unchanged
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Rebase effectcraft-no-brand-assets.patch for the 0.9.2 sources
+  (same trademark removal, refreshed context)
+
+-------------------------------------------------------------------
+Sun Oct 11 06:58:19 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Initial package 0.7.0: motion graphics and VFX compositor
+  * Import: image sequences with Sequence option and Start
+    Timecode; footage audio resampling no longer stutters
+  * Plug-ins and extensions like After Effects: ScriptUI panels,
+    Ease Presets panel, snapping options
+  * Text: CJK fallback follows the interface language,
+    Japanese vertical punctuation, Audio Spectrum rewritten
+    to the linear model
+  * Effects: Fractal Noise without lattice creases, EXtractoR for
+    multi-layer EXRs, GPU Posterize parity, Puppet pin fix
+  * Render Queue output names keep the format extension;
+    export keeps values above 1.0 in EXR, writes 32-bit float
+    AIFF-C correctly
+  * Interface: Simplified/Traditional Chinese and Ukrainian
+    translations, compact effect rows, long-press tool flyouts,
+    MCP core tools with render progress and cancellation
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- License is (Apache-2.0 OR MIT) AND MPL-2.0 AND OFL-1.1 AND
+  Ubuntu-font-1.0: symphonia audio codecs are MPL-2.0, embedded
+  fonts are OFL-1.1 and Ubuntu-font-1.0
+- Add effectcraft-no-brand-assets.patch:
+  docs/brand/ (ArtCraft marks) is not open source, so exclude it
+  from the tarball and show the open-source app tile in the
+  header bar and About dialog instead
+- No cargo test in %check: the GPU suite needs a GL device absent
+  from the build root; upstream CI runs cargo test --workspace
+- Split out effectcraft-cli subpackage: headless renderer, batch
+  runner and command server moves to its own package; main package
+  Recommends it
+

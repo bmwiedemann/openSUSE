@@ -1,0 +1,9 @@
+<package name="effectcraft" project="openSUSE:Factory">
+  <title>Motion graphics and VFX compositor</title>
+  <description>EffectCraft is an open-source motion graphics and visual effects
+compositor: layers with keyframes and a graph editor, masks and shapes,
+text animators, expressions, 3D cameras and lights, effects and a render
+queue, with GPU compositing. This package provides the desktop application
+and effectcraft-cli, a headless renderer, batch runner and command server.</description>
+  <url>https://github.com/storytold/effectcraft</url>
+</package>

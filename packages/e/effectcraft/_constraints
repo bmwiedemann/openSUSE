@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <physicalmemory>
+      <!-- 0.10.0 needs >16G: LTO-linked effectcraft-cli peaks ~11.5G;
+           16G workers OOM with parallel rustc (Factory aarch64). -->
+      <size unit="G">32</size>
+    </physicalmemory>
+    <disk>
+      <size unit="G">30</size>
+    </disk>
+  </hardware>
+</constraints>

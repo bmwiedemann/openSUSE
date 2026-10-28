@@ -1,0 +1,33 @@
+From: openSUSE Publishing <publishing@opensuse.org>
+Subject: [PATCH] Use open-source EffectCraft tile instead of trademarked ArtCraft mark
+Bug: none (downstream trademark removal, not upstreamable)
+
+docs/brand/ (ArtCraft wordmark/mark, LICENSE-brand.txt) is explicitly NOT
+open source and must not ship in the tarball, the RPM, or the linked
+binary (LICENSE-brand.txt: forks/modified versions must remove the marks).
+crates/ui-egui embeds the brand PNG via include_bytes!, so excluding
+docs/brand breaks the build. Point that include at the open-source
+EffectCraft app tile (assets/app-icon 128 px hicolor PNG, MIT OR
+Apache-2.0) instead. The header-bar/About placements stay, only the
+artwork changes.
+
+diff --git a/crates/ui-egui/src/header.rs b/crates/ui-egui/src/header.rs
+--- a/crates/ui-egui/src/header.rs
++++ b/crates/ui-egui/src/header.rs
+@@ -654,11 +654,12 @@
+     }
+ }
+ 
+-/// The ArtCraft mark as supplied in `docs/brand` (the README's and getartcraft.com's logo; used
+-/// unmodified, see `docs/brand/LICENSE-brand.txt`).
+-static ARTCRAFT_MARK: &[u8] = include_bytes!("../../../docs/brand/artcraft-mark.png");
++/// Downstream logo (openSUSE): the trademarked ArtCraft marks in docs/brand/
++/// are not shipped; show the open-source EffectCraft app tile instead
++/// (assets/app-icon, MIT OR Apache-2.0, like the repo).
++static ARTCRAFT_MARK: &[u8] = include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/ai.storyteller.effectcraft.png");
+ 
+-/// The ArtCraft mark in `r` (decoded once into a mipmapped texture, so it stays crisp from the
++/// The downstream logo in `r` (decoded once into a mipmapped texture, so it stays crisp from the
+ /// 24 px Tools bar to the About dialog). Nothing is drawn if it can't be decoded.
+ pub fn paint_logo(p: &egui::Painter, r: Rect) {
+     let ctx = p.ctx();
