@@ -16,38 +16,8 @@
 #
 
 
-#---netcdf is for TW no longer available on 32bit archs, disable them:
-%if 0%{?suse_version} > 1600
-ExcludeArch: %{ix86} %{arm}
-%endif
-
-Name:           nco
-Version:        5.3.9
-%define  soname 5_3_9
+%define  soname 5_4_1
 %define  major  5
-Release:        0
-Summary:        Suite of programs for manipulating NetCDF/HDF files
-License:        BSD-3-Clause
-Group:          Productivity/Scientific/Other
-URL:            https://github.com/nco/nco/
-Source0:        https://github.com/nco/nco/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  flex
-BuildRequires:  gawk
-BuildRequires:  gcc-c++
-BuildRequires:  hdf5-devel >= 1.8.8
-BuildRequires:  libaec-devel
-BuildRequires:  libsz2-devel
-BuildRequires:  netcdf
-BuildRequires:  pkgconfig
-BuildRequires:  texinfo
-BuildRequires:  udunits2-devel
-BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(netcdf) >= 4.1.3
-BuildRequires:  pkgconfig(zlib)
 %if 0%{?fedora_version}
 %define ext_man .gz
 %define ext_info .gz
@@ -58,7 +28,35 @@ BuildRequires:  texinfo-tex
 %else
 BuildRequires:  antlr-devel
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
+%endif
+Name:           nco
+Version:        5.4.1
+Release:        0
+Summary:        Suite of programs for manipulating NetCDF/HDF files
+License:        BSD-3-Clause
+URL:            https://github.com/nco/nco/
+Source0:        https://github.com/nco/nco/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        %{name}-rpmlintrc
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  flex
+BuildRequires:  gawk
+BuildRequires:  gcc-c++
+BuildRequires:  libaec-devel
+BuildRequires:  libsz2-devel
+BuildRequires:  netcdf
+BuildRequires:  pkgconfig
+BuildRequires:  texinfo
+BuildRequires:  udunits2-devel
+BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(hdf5) >= 1.8.8
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(netcdf) >= 4.1.3
+BuildRequires:  pkgconfig(zlib)
+#---netcdf is for TW no longer available on 32bit archs, disable them:
+%if 0%{?suse_version} > 1600
+ExcludeArch:    %{ix86} %{arm}
 %endif
 
 %description
@@ -68,7 +66,6 @@ in the netCDF and HDF formats.
 
 %package     -n lib%{name}-%{soname}
 Summary:        Libraries for accessing %{name}
-Group:          System/Libraries
 Provides:       libnco = %{version}-%{release}
 Provides:       libnco-%{major} = %{version}-%{release}
 
@@ -82,7 +79,6 @@ files.
 
 %package     -n lib%{name}_c++-%{soname}
 Summary:        Libraries for accessing %{name}
-Group:          System/Libraries
 Provides:       libnco_c++ = %{version}-%{release}
 Provides:       libnco_c++-%{major} = %{version}-%{release}
 
@@ -96,13 +92,12 @@ netCDF files.
 
 %package     -n lib%{name}-devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
-Provides:       %{name}-devel = %{version}-%{release}
-Obsoletes:      %{name}-devel < %{version}-%{release}
-Provides:       lib%{name}_c++-devel = %{version}-%{release}
 Requires:       lib%{name}-%{soname} = %{version}-%{release}
 Requires:       lib%{name}_c++-%{soname} = %{version}-%{release}
 Recommends:     %{name} = %{version}-%{release}
+Provides:       %{name}-devel = %{version}-%{release}
+Obsoletes:      %{name}-devel < %{version}-%{release}
+Provides:       lib%{name}_c++-devel = %{version}-%{release}
 
 %description -n lib%{name}-devel
 The netCDF Operators, NCO, are a suite of command line programs to
@@ -114,7 +109,6 @@ build packages that use the lib%{name} HDF and netCDF library.
 
 %package        doc
 Summary:        Documentation for %{name}
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description    doc
@@ -152,7 +146,7 @@ export QA_RPATHS=$((0x0001))  # check-rpaths: ignore standard RPATHs, for Fedora
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_infodir}/dir
 # Fix shebangs
-sed -i '1 s|.*env bash|#!/usr/bin/bash|' \
+sed -i '1 s|.*env bash|#!%{_bindir}/bash|' \
   %{buildroot}%{_bindir}/{ncchecker,ncclimo,ncremap,ncz2psx}
 
 %check

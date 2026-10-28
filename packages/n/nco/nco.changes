@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Oct 23 14:45:11 UTC 2026 - Andrea Manzini <ilmanzo@gmail.com>
+
+- Update to version 5.4.1:
+  * ncclimo and ncremap now invoke srun --exclusive in MPI mode
+    (--par=mpi) to prevent compute nodes from sharing resources
+  * Add data/nco_e3smu.sh regression script for testing NCO in
+    batch mode in the E3SM-Unified environment
+  * Fix unbound variable errors in ncremap and ncclimo
+- Update to version 5.4.0:
+  * ncclimo now supports generating ensemble monthly climatologies
+  * ncclimo --mth_end now defaults to 11 months after --mth_srt,
+    and --yr_srt/--yr_end now accept YYYYMM format
+  * Support --rad (retain_all_dimensions) in ncap2, ncecat, nces,
+    ncflint, ncpdq, and ncwa to preserve orphaned dimensions
+  * Support setting the netCDF4 metadata block size via --blk_sz
+    in all data operators
+  * ncremap now tolerates absent reference surface pressure
+    variables (p0/P0) in hybrid sigma-pressure coordinate datasets
+  * ncremap now supports regridding MODIS MOD10CM datasets
+  * Add --alg as a synonym for --alg_typ in ncremap
+  * Limit BitGroom single-precision quantization to NSD<=6
+    significant digits to avoid producing NaN
+  * Fix duplicate CASEID prefix in ncclimo filenames
+  * Fix ncap2 build with Clang in C++23 mode
+  * Fix potential buffer overrun in nco_flt() filter string
+    construction
+
+-------------------------------------------------------------------
 Tue Apr 28 12:22:03 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 5.3.9:
