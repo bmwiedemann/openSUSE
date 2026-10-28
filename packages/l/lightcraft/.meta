@@ -1,0 +1,5 @@
+<package name="lightcraft" project="openSUSE:Factory">
+  <title>Photo library and raw developer</title>
+  <description>LightCraft is an open-source photo library and raw developer. Organise photos and develop raw files non-destructively. This package provides the desktop application and lightcraft-cli, a headless renderer and command runner.</description>
+  <url>https://github.com/storytold/lightcraft</url>
+</package>

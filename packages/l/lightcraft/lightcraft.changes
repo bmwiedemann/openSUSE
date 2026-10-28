@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Fri Oct 23 06:52:21 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.13.0 (upstream tag v0.13.0, 2026-10-23):
+  * Covers v0.10.0, v0.11.0, v0.12.0 and v0.13.0; 0.13.0 itself only
+    validates CLI paths/arguments in upstream's dev tools.
+  * Raw/import: Minolta MRW, tiled RW2 format 8 (DC-S1RM2 high-res),
+    table-less packed Nikon NEFs, Lightroom lossy DNGs (JPEG XL
+    tiles), Sony SR2/SRF folder import, Hasselblad FFF colour, TIFF
+    strips/tiles over 128 MiB, AI Denoise for 102 MP Bayer raws.
+  * Colour: X-Trans CMOS 4 spectral matrices, Kelvin white balance
+    for Nikon Z5II and Canon CR2 presets, Nikon DSLR and Fujifilm
+    lens profiles, A7CR embedded distortion, tone curve fixes.
+  * Develop: Guided Upright guides editable, Alt-drag clipping
+    previews, View Options for the loupe info lines, crop fixes
+    (shape lock, orientation, spiral guide, tilted edges), SAM 3
+    falls back to the CPU, HDR merge warps use Lanczos-3, GPU
+    denoise fixed on DX12 with NVIDIA Pascal.
+  * Library: search finds named people, large Lightroom catalogs
+    read by page, album hierarchy kept on import, faster grid and
+    File Path smart rules, stack badge, F8 and backslash shortcuts.
+  * Hardening: stricter parsing of XMP, GPS, GPX, colours, URLs,
+    redirects, dates and catalog/face index records; bounded TIFF
+    entries, JPEG XL/HEIF sizes and brush strokes; commands and MCP
+    params validated before mutation; idle control connections
+    expire; date/time conversion now goes through chrono.
+  * Translations: new Finnish, Indonesian, Swedish and Vietnamese;
+    German, Czech, Italian, Polish and others updated.
+  * Re-vendored (update=false kept for --locked, respect-lockfile
+    true); only new crate is chrono 0.4.45 (MIT OR Apache-2.0), no
+    other crate changed version; license re-derived over shipped
+    targets, no new copyleft, tag stands; no new system deps, MSRV
+    still 1.90; cargo_audit reports no advisories.
+- Bump the fixed metainfo release date to 2026-10-23.
+- Legal-Review-Notice: correct heic-rs version to 0.1.4 (pinned
+  upstream since 0.8.0; the notice still said 0.1.1).
+
+-------------------------------------------------------------------
+Sun Oct 18 17:38:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.1 (upstream tag v0.9.1, 2026-10-18):
+  * Catalog: Lightroom import results fixed with lower CPU/memory use;
+    DNG export writes the color the raw opens with; faces from replaced
+    photos dropped.
+  * Editing: Reset tooltip shows the platform shortcut; radial masks keep
+    inside/outside from Lightroom; loupe overlay layout image; crop
+    straighten/rotate and NaN-rect fixes; Show All Masks in zoom windows.
+  * Never-crash fixes: raw size checks (PEF, TIFF tiles, ARW6), no
+    write-through at temp-file links, CLI rejects non-object params.
+  - Hardening: crafted Lightroom catalogs can no longer smuggle an
+    executable into the library and run it via Open Original / Edit In;
+    only file types LightCraft reads reach the system opener, and
+    catalog paths are followed only on this computer or the catalog's
+    share.
+  * Packaging: HEIF images advertised, AppStream screenshot repaired.
+  * Re-vendored (update=false kept for --locked, no in-tree vendor/ upstream;
+    respect-lockfile true); license re-derived over shipped targets, no new
+    copyleft (new crates all craft-family MIT/Apache-2.0), tag stands;
+    no new system deps.
+
+-------------------------------------------------------------------
+Thu Oct 15 04:53:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.0 (upstream tag v0.8.0):
+  * Export: HLG HDR AVIF, Render to DNG, resized exports keep the
+    asked edge, merges keep the reference lens corrections.
+  * Display: monitor profiles kept sharp when zoomed, Linux previews
+    use the colord display profile, HDR histogram follows drags.
+  * Import: HEIC/HEIF/NRW folder import, CR2 white level, ORF/NEF/PEF
+    fixes, Leica Q3, Canon EOS RP, Nikon D90/D7100 frame fixes.
+  * Library: portable mode via portable.txt, Synchronize Folder,
+    Recently Deleted for Local photos, faces from previews.
+  * Hardening: many never-crash fixes (mask/NEF/PEF/demosaic/export
+    overflows, NaN inputs, damaged-catalog repair, preset zip cap).
+  * Perf: 64 MP raws stay decoded on GPU, slider drags skip re-decode,
+    smart previews at JPEG quality 97, heic-rs 0.1.4 (was 0.1.1).
+  * Re-vendor with update=false; license audit finds no new copyleft
+    (self_cell still Apache-2.0 option), so the License tag is
+    unchanged. No CVEs in the v0.7.1 to v0.8.0 range.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+
+-------------------------------------------------------------------
+Tue Oct 13 06:44:01 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.7.1 (includes 0.6.0, upstream tags v0.6.0 and v0.7.1):
+  * HDR editing and export: gain map JPEG, PQ AVIF, float TIFF,
+    16-bit Rec. 2020 PQ PNG, HDR histogram and HDR button in the
+    Edit panel
+  * New export options: JPEG XL, PSD, contact sheet PDF, Add to
+    Apple Photos (macOS), watermark preview, all nine positions,
+    separate insets and quarter-turn rotation
+  * Edit in PhotoCraft (flat PSD hand-off)
+  * Activity stack: one progress indicator for long-running tasks
+  * Library: Keyword List and keywording box, folder colour
+    labels, Synchronize Folder, creating folders on disk and moving
+    photos, New Library and Open Recent Library, offline reverse
+    geocoding, smart collection rules, Lightroom catalog detection
+    when opening a library, Lightroom spot removal import
+  * Develop: process versions, Lightroom-like Auto, content-aware
+    Remove (PatchMatch), soft proofing against printer ICC
+    profiles, Kelvin white balance for 52 camera models, Color
+    Grading improvements, AI Denoise offload to another computer's
+    graphics card, crop tool angle readout and Shift to keep
+    proportions
+  * Display: monitor ICC profiles, macOS previews follow the screen
+    profile, system appearance and light themes, Lights Out view,
+    sidebar sections, shared panel docking
+  * Raw support: Sony ARW6 (ILCE-7RM6), DSC-R1 SR2, Fujifilm RAF
+    and DNG WarpRectilinear2 lens corrections, Canon CR3 C-RAW
+    fixes (EOS R5 Mark II, R50, R7), Nikon lossy and High
+    Efficiency NEF handling, Olympus ORF, Hasselblad 3FR, Kodak
+    DCS520C, DNG 1.7 and HEIC (release builds)
+  * New translations: French, Ukrainian, Simplified Chinese;
+    updated Russian
+  * Linux riscv64 release build; Wayland file dialogs are children
+    of the app window and XWayland is the default for drag-and-drop
+  * Windows MSI: choose the install folder, and upgrades from older
+    installers keep the legacy folder
+  * Fixes for GPU denoise races, Intel Metal pipeline compile
+    failures, library lock release on close, brush mask coverage,
+    upper-case file extensions, and many UI behaviours
+  * Full upstream notes:
+    https://github.com/storytold/lightcraft/compare/v0.5.0...v0.7.1
+
+-------------------------------------------------------------------
+Sun Oct 11 06:59:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package lightcraft 0.5.0 (upstream tag v0.5.0, 2026-10-10),
+  built from source with --features heif (pure-Rust heic-rs 0.1.1,
+  no system HEIF library; HEVC patent comfort still open, disclosed
+  in the Legal-Review-Notice).
+- License derived over the vendor tree for the shipped targets
+  (lightcraft, lightcraft-cli): no copyleft linked; tag covers the
+  embedded OFL-1.1 Inter fonts, Ubuntu-font-1.0, IJG, Unicode-3.0,
+  CC0-1.0, CDLA-Permissive-2.0 and Zlib/ISC/BSD/MIT permissive code,
+  see the Legal-Review-Notice in the spec.
+- Split off lightcraft-cli subpackage (headless renderer, command
+  runner and MCP server); main package ships only the desktop app
+  and recommends the CLI. License tag duplicated to the subpackage,
+  Legal-Review-Notice still covers both targets incl. heif flag.
+- Reorder Requires to spec-cleaner order (cosmetic).
+
