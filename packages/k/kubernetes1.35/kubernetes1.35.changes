@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:54:03 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.35.10:
+  * Bump images and versions to Go 1.26.10 and update distroless-iptables
+  * [release-1.35] upgrade .go-version to 1.26.10
+  * hack: match OpenSSL 3.5 CN=127.0.0.1 output in client cert check
+  * apiserver: accept large identity header sets with Go 1.27
+  * job controller: simplify recreation regression test
+  * job controller: extend recreation regression coverage
+  * job controller: clear expectations when deleting Job
+  * scheduler: fix negative namespace selector evaluation
+  * Fix flapping pod.status.resourceClaimStatuses
+  * kubelet/dra: reset devices before processing response
+
+- Update .spec file to bump go version build requirements:
+  `BuildRequires:  go >= 1.26.10`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.35.10/.go-version
+
+-------------------------------------------------------------------
 Mon Sep 28 05:57:47 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.35.9:
