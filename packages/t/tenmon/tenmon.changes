@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 28 08:04:44 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Require libXISF >= 0.2.14+git1.fa35ae2 (XISFModify::removeProperty
+  is needed since 20261023)
+
+-------------------------------------------------------------------
+Wed Oct 28 07:32:44 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20261023:
+  * LibXISF fix to support files from upcoming PixInsight
+  * Support for XISF formalized AstrometricSolution
+
+-------------------------------------------------------------------
 Mon Oct  5 09:27:08 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 20260913:

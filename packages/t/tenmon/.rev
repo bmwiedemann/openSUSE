@@ -265,4 +265,17 @@
 </comment>
     <requestid>1382487</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>acc9432d5245a0d672b2ebbea2c02fdd</srcmd5>
+    <version>20261023</version>
+    <time>1793206135</time>
+    <user>dimstar_suse</user>
+    <comment>- Require libXISF &gt;= 0.2.14+git1.fa35ae2 (XISFModify::removeProperty
+  is needed since 20261023)
+- Update to 20261023:
+  * LibXISF fix to support files from upcoming PixInsight
+  * Support for XISF formalized AstrometricSolution
+</comment>
+    <requestid>1393369</requestid>
+  </revision>
 </revisionlist>

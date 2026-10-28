@@ -21,7 +21,7 @@
 %endif
 
 Name:           tenmon
-Version:        20260913
+Version:        20261023
 Release:        0
 Summary:        FITS and XISF image viewer, converter and indexer
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ Patch0:         fix-cmakelists.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         fix-libxisf-include.patch
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
-BuildRequires:  libXISF-devel >= 0.2.13+git5.7b70b6a
+BuildRequires:  libXISF-devel >= 0.2.14+git1.fa35ae2
 BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel >= 6.2.0
