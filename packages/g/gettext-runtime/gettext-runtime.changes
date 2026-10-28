@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct 26 11:22:53 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add ldconfig calls to the gettext-tools scriptlets: the package
+  ships libgettextpo.so.0 but never ran ldconfig for it; the calls
+  join the existing %post and a new %postun
+- Add gettext-spit-shebang.patch: /usr/bin/spit used an
+  /usr/bin/env python3 shebang, name the interpreter directly
+- Extend the frozen gettext-linkdupes.sh hardlink list to cover
+  the examples and data files added since it was generated
+  (hello-go, hello-go-http, hello-c++20, hello-objc-gnome2, the
+  GNOME m4 files, the shared po/LINGUAS files and the nls.m4
+  pair under /usr/share); the list stays frozen and is extended
+  by hand rather than replaced by live %fdupes runs, because a
+  BuildRequires on fdupes would create a build loop (its
+  dependency chain reaches back into gettext)
+- Drop the stale removal of gettext.jar from %install: no jar is
+  built since the Java support was dropped, and the line missed
+  the buildroot prefix
+- Fix the libtextstyle0 summary wording (text styling)
+- Drop the deprecated Group: tags
+- rpmlintrc: drop the filters for the fixed gettext-tools ldconfig
+  findings and the gettext-csharp filters (that package is built
+  from a different source package)
+- The remaining rpmlint error, non-devel-file-in-devel-package
+  for libgettextpo.so.0 in gettext-tools, is a checker problem,
+  not a package defect: gettext-tools is the designated devel
+  package for libgettextpo (it ships the headers, the unversioned
+  symlink and Provides: gettext-devel). It is tracked on the
+  rpmcrab side and is deliberately not restructured or filtered
+  in this package
+
+-------------------------------------------------------------------
 Wed Sep 30 07:33:15 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Add lexical-binding statement to suse-start-po-mode.el to fix
