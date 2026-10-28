@@ -87,4 +87,12 @@
     <comment>August 2026 CSPU + tzdata 2026c</comment>
     <requestid>1373464</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c29aacfbd012de689a724fbaea78cabd</srcmd5>
+    <version>25.0.5.0</version>
+    <time>1793205928</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle Octobre 2026 CPU fixes</comment>
+    <requestid>1393092</requestid>
+  </revision>
 </revisionlist>

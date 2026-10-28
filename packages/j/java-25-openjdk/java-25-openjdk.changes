@@ -1,4 +1,350 @@
 -------------------------------------------------------------------
+Tue Oct 27 11:58:28 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-25.0.5+8 (Octobre 2026 CPU)
+  * Security fixes
+    + JDK-8383530: Enhance Javadoc Searching
+    + JDK-8383689, CVE-2026-87255, bsc#1286483: Enhance Vector
+      Processing
+    + JDK-8383679, CVE-2026-87294, bsc#1286490: Enhance Certificate
+      Name Checks
+    + JDK-8383439, CVE-2026-83395, bsc#1286479: Enhance HTTP Client
+      Response Handling
+    + JDK-8386783: WebRowSet empty elements read value of previous
+      element
+    + JDK-8383301, CVE-2026-83387, bsc#1286478: Enhance WebRowSets
+    + JDK-8380715, CVE-2026-83374, bsc#1286472: Enhance PKCS5
+      padding
+    + JDK-8384654, CVE-2026-87367, bsc#1286943: Enhance Template
+      Handling
+    + JDK-8384736, CVE-2026-91379, bsc#1286498: Enhance JShell
+      8387235: JShell tests failing
+    + JDK-8382378, CVE-2026-83378, bsc#1286475: Improve C2 loop
+      transformations
+    + JDK-8383699, CVE-2026-87290, bsc#1286484: Enhance XPath
+      Expressions
+    + JDK-8383047, CVE-2026-83380, bsc#1286476: Enhance LDAP logins
+    + JDK-8384468: Enhance jpackage Packaging
+    + JDK-8384021, CVE-2026-101516, bsc#1286395: Enhance
+      Certificate Constraint Checking
+    + JDK-8387152, CVE-2026-91462, bsc#1286547: Enhance krb5 tokens
+    + JDK-8387238, CVE-2026-91464, bsc#1286550: Enhance Kerberos
+      validation
+    + JDK-8386013: Enhance EventListenerList
+    + JDK-8382407: Enhance LDAP Lookups
+    + JDK-8390400, CVE-2026-91487, bsc#1286551: Enhance C2
+      comparisons
+    + JDK-8385209, CVE-2026-91394, bsc#1286507: Enhance HTTP client
+      caching
+    + JDK-8386535, CVE-2026-91453, bsc#1286545: Improve HTTP headers
+    + JDK-8386923, CVE-2026-91461, bsc#1286546: Enhance TLS
+      Extensions
+    + JDK-8387217, CVE-2026-91463, bsc#1286549: Enhance krb5 client
+    + JDK-8386515, CVE-2026-91451, bsc#1286542: Enhance HTTP server
+      parsing
+    + JDK-8373677: Clear text HttpServer connection could fail fast
+      if receiving SSL ClientHello
+    + JDK-8384872, CVE-2026-91332, bsc#1286491: Enhance HTTP Client
+    + JDK-8383756, CVE-2026-87292, bsc#1286486: Enhance Network
+      Clients
+    + JDK-8383745, CVE-2026-87291, bsc#1286485: Enhance HTTP Server
+    + JDK-8384165, CVE-2026-91333, bsc#1286492: Improve ciphertext
+      handling
+    + JDK-8383281: Enhance MD5 Digesting
+    + JDK-8384664, CVE-2026-91335, bsc#1286494: Enhance Image
+      Handling
+    + JDK-8384746, CVE-2026-91380, bsc#1286500: Enhance Preferences
+    + JDK-8386552, CVE-2026-91418, bsc#1286539: Enhance GIF loading
+    + JDK-8385476, CVE-2026-91400, bsc#1286517: Enhance MIDI file
+      handling
+    + JDK-8384688, CVE-2026-91375, bsc#1286497: Enhance jmod
+      handling
+    + JDK-8387075: RemoteHostImpl constructor correction (jstatd)
+    + JDK-8386525, CVE-2026-91452, bsc#1286544: Enhance HTTP Server
+      Handler
+    + JDK-8386187, CVE-2026-91415, bsc#1286537: Enhance font
+      rendering
+    + JDK-8385260, CVE-2026-91398, bsc#1286515: Enhance SOCKS5
+      support
+    + JDK-8385249, CVE-2026-91397, bsc#1286513: Enhance diagnostic
+      sessions
+    + JDK-8384930, CVE-2026-91374, bsc#1286496: Enhance jstatd
+    + JDK-8384771, CVE-2026-91373, bsc#1286495: Enhance TLS
+      handshakes
+    + JDK-8384455: Enhance DataFlavor
+    + JDK-8384445, CVE-2026-91334, bsc#1286493: Enhance JPEG loading
+    + JDK-8384031, CVE-2026-83400, bsc#1286480: Enhance XML
+      Processing
+    + JDK-8383076, CVE-2026-83381, bsc#1286477: Enhance SASL
+      Authentication
+    + JDK-8382178, CVE-2026-83376, bsc#1286474: Enhance TLS
+      certificate handling
+  * Other fixes
+    + JDK-8386273: Some javax/sound/sampled tests fail on systems
+      with high CPU core number and running with high concurrency
+    + JDK-8392072: Follow-on fix for Improve certification checking
+    + JDK-8391256: TestZoneTextPrinterParser.java assertion fails
+      with expected: <Mountain Standard Time> but was: <Mountain
+      Daylight Time>
+    + JDK-8388214: (tz) Update Timezone Data to 2026c
+    + JDK-8390380: Cherry-pick metazone changes from CLDR to support
+      tzdata2026c for JDK update releases
+    + JDK-8390388: Cherry-pick tz attributes from newer CLDR data
+      for jdk25u and earlier
+    + JDK-8372044: Implementation Review Based on ML-KEM Security
+      Considerations
+    + JDK-8381379: Support std/dstOffset attributes in CLDR's
+      metazone definitions
+    + JDK-8387874: Timeout when running test
+      BulkCipherDisabledAlgorithms
+    + JDK-8387124: Incomplete algorithm decomposition for TLS 1.3
+      cipher suites in SSLAlgorithmDecomposer
+    + JDK-8380223: Refactor test/jdk/sun/util/resources TestNG tests
+      to JUnit
+    + JDK-8387123: Remove LuxTrust Global Root CA
+    + JDK-8390654: Test gc/TestUseGCOverheadLimit.java#G1 fails on
+      linux-arm32
+    + JDK-8390033: Disable stringop-overflow in shenandoahHeap.cpp
+    + JDK-8389453: [unix] Avoid unused variables warnings in
+      libj2pkcs11 and adjust malloc rv handling
+    + JDK-8389648: [TEST_BUG] java/awt/TextField/CaretPositionTest/
+      /CaretPositionTest.java fails in OL-9
+    + JDK-8383642: Additional Shenandoah clone barrier tests
+    + JDK-8388449: GenShen: Degenerated cycle could be skipped
+    + JDK-8388809: Shenandoah: Control thread may observe incorrect
+      cancellation reason
+    + JDK-8390441: RISC-V: Fix C2 stack-to-stack spill copies with
+      large offsets
+    + JDK-8366037: Remove oopDesc::mark_addr()
+    + JDK-8382933: Improve Shenandoah clone barrier tests
+    + JDK-8365153: AArch64: Set JVM flags for Neoverse N3 and V3
+      cores
+    + JDK-8385180: Shenandoah: Load klass once in marking task
+    + JDK-8388872: Avoid unused variables warnings in libj2pkcs11
+    + JDK-8380641: Thread dump parsing and test improvements
+    + JDK-8378946: threadDump.schema.json syntax error, missing
+      comma after owner
+    + JDK-8354242: VectorAPI: combine vector not operation with
+      compare
+    + JDK-8367008: Algorithm identifiers for HmacSHA* should always
+      have NULL as params
+    + JDK-8383196: Shenandoah: Interpreter barriers clobber
+      interpreter registers
+    + JDK-8382150: Shenandoah: Clean up nmethod entry barrier
+      support
+    + JDK-8372154: AArch64: Match rule failure with some
+      CompareAndSwap operand shapes
+    + JDK-8387391: hotspot_gc_shenandoah should include gtests
+    + JDK-8373820: C2: Robust Node::uncast_helper infinite loop
+      check
+    + JDK-8347007: --strip-debug removes parameter names included
+      with -parameters
+    + JDK-8384274: Shenandoah: GC checks in C1 LRB clobber fastpath
+      result
+    + JDK-8382608: Shenandoah: STS yield deadlocks in OOM-evac scope
+    + JDK-8383910: klass_or_null_acquire asserts on null when using
+      compact object headers
+    + JDK-8375571: Compiler crash when using record pattern matching
+      with a generic type parameter shadowing a record class
+    + JDK-8360595: OOM in java/foreign/TestUpcallStress.java
+    + JDK-8377990: Zero: Replace Java math ops with UB-safe
+      implementations
+    + JDK-8376472: Shenandoah: Assembler store barriers read
+      destination memory despite the decorators
+    + JDK-8356289: Shenandoah: Clean up SATB barrier runtime entry
+      points
+    + JDK-8378080: Zero: JNIEnv argument is corrupted in native
+      calls
+    + JDK-8382815: C2: Reference intrinsics are broken by shadow
+      "referent" field
+    + JDK-8387414: Insufficient feature gate in vm_version_x86 for
+      UseKyberIntrinsics
+    + JDK-8365199: Use a set instead of a list as the intermediary
+      Klass* storage to reduce typeset processing
+    + JDK-8371949: Upcall exception handler crashes with bad oop
+    + JDK-8387074: Remove duplicate handling of sparc in platform.m4
+    + JDK-8373557: Remove stale comments after JDK-8372584
+    + JDK-8388538: com/sun/net/httpserver/simpleserver/jwebserver/
+      /MaxRequestTimeTest.java does not test the maximum request
+      time
+    + JDK-8386600: Fix comparison checks in DHasKEM
+    + JDK-8378506: [macOS] Window content not updated when rendering
+      to multiple windows
+    + JDK-8375275: Error handling to raise illegal_parameter or
+      internal_error alert in hybrid key exchange
+    + JDK-8389312: RISC-V: vector_update_crc32 wrongly assumes
+      undisturbed tail elements
+    + JDK-8377992: (zipfs) Align ZipFileSystem END header validation
+      with the ZipFile implementation
+    + JDK-8362894: PKCS12 KeyStore PBMAC1 interoperability testing
+    + JDK-8379433: Throwing proper exception for invalid
+      encapsulation length in Hybrid
+    + JDK-8314323: Implement JEP 527: TLS 1.3 Hybrid Key Exchange
+    + JDK-8367656: Refactor Constantpool's operand array into two
+    + JDK-8368694: PKCS11-NSS generic keys generated by DH have
+      leading zeroes stripped
+    + JDK-8343232: PKCS#12 KeyStore support for RFC 9879: Use of
+      Password-Based Message Authentication Code 1 (PBMAC1)
+    + JDK-7067310: 3 tests from closed/javax/sound/sampled caused
+      BSOD on win 7 x86
+    + JDK-8307574: ClipIsRunningAfterStop.java failed with
+      "../nptl/pthread_mutex_lock.c:81: __pthread_mutex_lock:
+      Assertion `mutex->__data.__owner == 0' failed."
+    + JDK-8308395: javax/sound/sampled/Clip/ClipFlushCrash.java
+      timed out
+    + JDK-8372584: [Linux]: Replace reading proc to get thread user
+      CPU time with clock_gettime
+    + JDK-8365893: test/jdk/java/lang/Thread/virtual/JfrEvents.java
+      failing intermittently
+    + JDK-8377983: (zipfs) ZipFileSystem.initCEN needlessly reads
+      END header
+    + JDK-8352728: InternalError loading java.security due to
+      Windows parent folder permissions
+    + JDK-8387593: Using XOR mode to clear the content leaves some
+      traces in metal
+    + JDK-8372625: [Linux] Remove unnecessary logic for
+      supports_fast_thread_cpu_time
+    + JDK-8388703: Launching with AOT cache fatally crashes with
+      SIGILL (0x4) depending on available CPU instructions
+    + JDK-8387625: Add "dt_socket" to
+      `CheckedFeatures.notImplemented` for Windows/ARM64
+    + JDK-8365498: jdk/jfr/event/os/TestCPULoad.java fails with
+      Expected at least one event
+    + JDK-8370653: Fix race in
+      CompressedClassSpaceSizeInJmapHeap.java
+    + JDK-8369020: Test compiler/intrinsics/
+      /TestLongUnsignedDivMod.java completed and timed out
+    + JDK-8387985: sun/tools/jstat shell tests fail on platforms
+      that do not support ParallelGC
+    + JDK-8378713: C2: performance regression due to missing
+      constant folding for Math.pow()
+    + JDK-8386852: Lower peak throughput with AOTCache
+    + JDK-8347901: C2 should remove unused leaf / pure runtime calls
+    + JDK-8374755: ML-KEM's 12-bit decompression can be simplified
+      on aarch64
+    + JDK-8360934: Add AVX-512 intrinsics for ML-KEM - enhancement
+      on AVX512_VBMI
+    + JDK-8380390: Shenandoah: Missing store barrier when resetting
+      bitmaps 8386798: Shenandoah: Missing load barrier when making
+      assertions about mark bitmap
+    + JDK-8379129: C2 crash in LoadNode::can_split_through_phi_base
+      during Escape Analysis (JDK 25.0.1+8)
+    + JDK-8387015: C2: crash with "named projection 2 not found"
+      from ArrayCopyNode::finish_transform() for clone
+    + JDK-8385166: PPC: C2: c_return_value and return_value should
+      not set 2nd OptoRegPair for Op_RegI
+    + JDK-8385817: Headless jdk still contains bin/jconsole
+    + JDK-8372757: MacOS, Accessibility: Crash in [MenuAccessibility
+      accessibilityChildren] after JDK-8341311
+    + JDK-8349535: Refactor ./pkcs11/Provider/MultipleLogins.sh to
+      java test
+    + JDK-8348862: runtime/ErrorHandling/CreateCoredumpOnCrash fails
+      on Windows aarch64
+    + JDK-8380896: Reduce runtime for MonitorVmStartTerminate.java
+      on hosts with a lot of VMs
+    + JDK-8375352: java/net/httpclient/ConnectTimeoutWithProxy*.java
+      tests fail on EC2
+    + JDK-8384804: JMX remote bootstrap tests fail on Windows
+    + JDK-8365426: [macos26] Graphics2D tests fail on new macOS 26
+    + JDK-8384161: [PPC64] Consolidate code related to calls in
+      nmethods that use trampoline stubs
+    + JDK-8382222: sun/security/ssl/SSLSocketImpl/
+      /SSLSocketBruteForceClose.java fails sporadically
+    + JDK-8381840: Lots of /tmp/8173970-<number> folders on test
+      machines
+    + JDK-8379516: Adjust JVM debug helper exports
+    + JDK-8387381: RISC-V: assert failed with fastdebug build on
+      systems with different core types
+    + JDK-8352565: Add native method implementation of
+      Reference.get()
+    + JDK-8377991: TestLimitsUpdating.java fails with runtime
+      exception even after JDK-8370492 is fixed
+    + JDK-8368520: TLS 1.3 KeyUpdate fails with SunPKCS11 provider
+    + JDK-8361125: Fix typo in onTradAbsence
+    + JDK-8382063: Jtreg test javax/swing/SwingWorker/
+      /TestDoneBeforeDoInBackground.java fails
+    + JDK-8368514: TLS stateless session ticket decryption fails on
+      some providers
+    + JDK-8372615: Many container tests fail when running rootless
+      on cgroup v1
+    + JDK-8378211: Test ChangedJarFile.java failed: missing
+      "timestamp has changed"
+    + JDK-8368073: PKCS11 HKDF can't use byte array IKM in FIPS mode
+    + JDK-8357220: Introduce a BSMAttributeEntry struct
+    + JDK-8365579: ml64.exe is not the right assembler for Windows
+      aarch64
+    + JDK-8380993: [REDO] Incorrect Interpretation of POSIX TZ
+      Environment Variable on AIX
+    + JDK-8386578: double_keccak stub does not set its return value
+      on x86
+    + JDK-8367027: java/lang/ProcessBuilder/Basic.java fails on
+      Windows AArch64
+    + JDK-8373246: JDK-8351842 broke native debugging on Linux
+    + JDK-8385454: Provide more NUMA related information in
+      hsinfo/hserr files
+    + JDK-8351842: Windows specific issues in combination of JEP 493
+      and --with-external-symbols-in-bundles=public
+    + JDK-8378838: Fix issues with "dead" code elimination and
+      serviceability agent in libjvm.so on Linux
+    + JDK-8341382: EXCEPTION_ACCESS_VIOLATION in awt.dll after
+      JDK-8185862
+    + JDK-8376355: Update to use jtreg 8.2.1
+    + JDK-8369488: Update to use jtreg 8.1
+    + JDK-8376400: C2: folding ifs may cause incorrect execution
+      when trap is taken
+    + JDK-8368861: [TEST] compiler/floatingpoint/
+      /ScalarFPtoIntCastTest.java expects x86 IR on non-x86
+      platforms
+    + JDK-8383611: assert(count == os::processor_count() + 1)
+      failed: invalid enumeration!
+    + JDK-8364305: Support AVX10 saturating floating point
+      conversion instructions
+    + JDK-8369447: GenShen: Regulator thread may observe
+      inconsistent states
+    + JDK-8381771: Add a check for DNS label not to end with a
+      hyphen
+    + JDK-8386551: Windows build broken because of MSys2/Make update
+    + JDK-8372731: Detailed authentication failure messages
+    + JDK-8366926: Unexpected exception occurs when executing code
+      in a "local" JShell  environment
+    + JDK-8386345: Remove redundant @requires from
+      TestGarbageCollectionEventWithZMinor
+    + JDK-8382166: [AOT Cache] CRC was not checked on Code Region
+    + JDK-8385165: [ubsan] TestDockerMemoryMetricsSubgroup.java
+      jtreg test fails with ubsan-enabled binaries
+    + JDK-8372546: UnixMultiResolutionSplashTest.java fails
+      intermittently on Ubuntu_24.04
+    + JDK-8364106: Include java.runtime.version in thread dump
+      output
+    + JDK-8378180: Compiling OpenJDK with C23 C-Compiler gives
+      warning: initialization discards ‘const’ qualifier from
+      pointer target type
+    + JDK-8378462: Build fails with --enable-linktime-gc set when
+      using some devkits/toolchains
+    + JDK-8375125: assert(false) failed: "Attempting to acquire lock
+      NativeHeapTrimmer_lock/nosafepoint out of order with lock
+      ConcurrentHashTableResize_lock/nosafepoint-2 -- possible
+      deadlock" when using native heap trimmer
+    + JDK-8360116: Add support for AVX10 floating point minmax
+      instruction
+    + JDK-8374886: CAInterop.java#microsoftrsa2017 test fails as EE
+      certificate does not specify OCSP responder
+    + JDK-8385584: CAInterop.java#buypassclass3ca fails with
+      Intermediate Root CA not found in the chain
+    + JDK-8362884: [GCC static analyzer] unix NetworkInterface.c
+      addif leak on early returns
+    + JDK-8247690: RunTest does not support running of JTREG manual
+      tests
+    + JDK-8385507: Bump update version for OpenJDK: jdk-25.0.5
+- Added patch:
+  * JDK-8395142-25u.patch
+    + JDK-8395142, CVE-2026-91403, bsc#1287264: CA Enhancements
+      (backport of upstream fix)
+- Removed patch:
+  * tzdata-2026c.patch
+    + not needed any more
+
+-------------------------------------------------------------------
 Mon Aug 24 17:28:58 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-25.0.4.1+1 (August 2026 CSPU)

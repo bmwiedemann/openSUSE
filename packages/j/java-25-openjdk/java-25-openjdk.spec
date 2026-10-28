@@ -37,9 +37,9 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      25
 %global interimver      0
-%global updatever       4
-%global patchver        1
-%global buildver        1
+%global updatever       5
+#global patchver        0
+%global buildver        8
 %global openjdk_repo    jdk25u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
@@ -198,7 +198,7 @@ Patch302:       disable-doclint-by-default.patch
 Patch400:       nssadapter-Fix-build-on-openSUSE.patch
 Patch401:       nssadapter-Allow-overriding-of-gcc-name.patch
 #
-Patch500:       tzdata-2026c.patch
+Patch500:       JDK-8395142-25u.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -236,7 +236,6 @@ BuildRequires:  zip
 # Requires rest of java
 Requires:       %{name}-headless = %{version}-%{release}
 Requires:       fontconfig
-Requires(post): file
 ExcludeArch:    %{ix86}
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
@@ -297,6 +296,7 @@ The OpenJDK %{featurever} runtime environment.
 Summary:        OpenJDK %{featurever} Runtime Environment
 Group:          Development/Languages/Java
 Requires:       jpackage-utils
+Requires(posttrans): file
 Requires(posttrans): java-ca-certificates
 Obsoletes:      %{name}-accessibility
 Provides:       timezone-java
@@ -756,7 +756,7 @@ export JAVA_HOME=%{_jvmdir}/%{jrelnk}
 
 # check if the java-cacerts is a valid keystore (bnc#781690)
 if [ X"`%{_bindir}/file --mime-type -b %{javacacerts}`" \
-    != "Xapplication/x-java-keystore;" ]; then
+    != "Xapplication/x-java-keystore" ]; then
 %if 0%{?suse_version} <= 1310
     # workaround for bnc#847952 - pre 13.1 keyring.jar attempts to load invalid keystore and fail on it
     rm -f "%{javacacerts}"
@@ -772,7 +772,7 @@ fi
 # if cacerts does exists, neither does not contain/point to a
 # valid keystore (bnc#781690) ...
 if [ X"`%{_bindir}/file --mime-type -b -L %{cacerts}`" \
-    != "Xapplication/x-java-keystore;" ]; then
+    != "Xapplication/x-java-keystore" ]; then
     # bnc#727223
     rm -f %{cacerts}
     ln -s %{javacacerts} %{cacerts}
