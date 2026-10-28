@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:07:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.56.2:
+  * Fix
+    - [c128513] return error from toolbox Run if process not found
+      (#4149)
+  * Chore
+    - [10a792c] Update version.go for v0.56.2
+    - [b4dd7a8] use setup-go with check-latest
+    - [2db454e] output go version with release dryrun
+  * Commits
+    - [10a792c] chore: Update version.go for v0.56.2
+    - [b4dd7a8] chore: use setup-go with check-latest
+    - [2db454e] chore: output go version with release dryrun
+    - [c128513] fix: return error from toolbox Run if process not
+      found (#4149)
+- Update to version 0.56.1:
+  * Chore
+    - [e45bf1c] Update version.go for v0.56.1
+  * Commits
+    - [e45bf1c] chore: Update version.go for v0.56.1
+
+-------------------------------------------------------------------
 Fri Aug 28 12:11:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.56.0:
