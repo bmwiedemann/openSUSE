@@ -17,7 +17,7 @@
 
 
 Name:           suse-kabi-tools
-Version:        1.1.0+git0.3857c3a
+Version:        1.1.0+git38.0c6c5c0
 Release:        0
 Summary:        A set of ABI tools for the Linux kernel
 Group:          System/Kernel

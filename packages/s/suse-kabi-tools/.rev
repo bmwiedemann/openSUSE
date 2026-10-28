@@ -56,4 +56,26 @@
   * Correct the --version output</comment>
     <requestid>1330778</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b74ea6723455abf4bc9785aed3c75fc0</srcmd5>
+    <version>1.1.0+git38.0c6c5c0</version>
+    <time>1793205912</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0+git38.0c6c5c0:
+  * Correct the names of referenced files in the usage description
+  * Unify the genksyms information in ksymtypes.1 and suse-kabi-tools.5
+  * Fix documentation typos
+  * Fix an error message regarding an unrecognized unused-rules option
+  * Fix incorrect file indexes when reading multiple rules files
+  * Report changes from a definition to a forward declaration in a succinct manner
+  * Add the 'ksymvers unused-rules' command to detect unused severity rules
+  * Add ability to find used/unused rules
+  * Allow printing of severity rules
+  * Track origin of severity rules
+  * Load symtypes and symvers data last
+  * Extend the format of kABI severity rules to include the type
+
+- Switch away from obsolete obscpio format</comment>
+    <requestid>1393084</requestid>
+  </revision>
 </revisionlist>
