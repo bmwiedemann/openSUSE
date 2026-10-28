@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:45:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.43.0:
+  * fix(datastore): escape DSN values so pgx parses them back
+    unchanged
+  * feat(registry): enable REGISTRY_FF_TOLERATE_MISSING_SUBJECT by
+    default
+  * chore(sissue_router): route requests for help to the Interrupt
+    DRI
+  * build(deps): update module gitlab.com/gitlab-org/labkit to
+    v1.65.4
+  * build(deps): update module github.com/olekukonko/tablewriter to
+    v1.1.5
+  * build(deps): update module
+    github.com/eko/gocache/store/redis/v4 to v4.2.12
+  * feat: add organization_id to token metadata and request logs
+    (#2185)
+  * build(deps): update module
+    github.com/azure/azure-sdk-for-go/sdk/storage/azblob to v1.8.2
+  * fix(notifications): stop the event queue busy-looping on a slow
+    sink
+  * build(deps): update module
+    github.com/azure/azure-sdk-for-go/sdk/azcore to v1.23.3
+  * fix(handlers): fail at startup when database load balancing
+    lacks redis load balancing
+  * fix(handlers): return 416 for a malformed chunk Content-Range
+    header
+  * fix: apply the configured TLS cipher suites
+  * refactor(handlers): separate legacy blob upload delete code
+  * fix: fail at startup when TLS for the debug server cannot be
+    set up
+  * fix: lock subject GC review row when pushing a referrer
+  * build(deps): update module github.com/aws/aws-sdk-go-v2/config
+    to v1.33.9
+  * feat(api): bump rename sub-repository limit from 2000 to 3000
+  * docs: fix broken and retired links
+  * feat: record subject_digest for image-index referrers and
+    import path
+  * fix: warn in the garbage-collect error that the lockfile may be
+    stale
+  * docs: serve manifests from the metadata database in the auth
+    request flow
+  * chore: use newer documentation linting tools in project
+  * refactor: store the resolved metadata backend on the app
+  * build(deps): update urllib3 to v2.8.0
+  * chore: warn that offline garbage collection is deprecated on
+    every run
+  * fix: resolve the metadata backend before the garbage-collect
+    gate
+  * refactor(handlers): extract the metadata backend resolution
+  * build(deps): update module github.com/aws/smithy-go to v1.28.2
+  * build(deps): update module
+    github.com/azure/azure-sdk-for-go/sdk/azidentity to v1.14.1
+
+-------------------------------------------------------------------
+Wed Oct 28 06:30:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.42.0:
+  * docs: document cross-repository blob mount and re-auth loop
+  * build(deps): update module github.com/bsm/redislock to v0.10.0
+  * build(deps): update module cloud.google.com/go/storage to
+    v1.68.0
+  * build(deps): upgrade gitlab.com/gitlab-org/labkit to v1.65.3
+  * feat(handlers): record subject_digest and plumb through store
+  * build(deps): update module github.com/aws/aws-sdk-go-v2/config
+    to v1.33.5
+  * feat(datastore): add subject_id backfill trigger and index
+  * docs: widen sequence diagram note boxes in auth and push-pull
+    request flows
+  * fix: allow dots in namespace path segments for RenameRepository
+  * fix(handlers): tolerate manifest subject not present on push
+  * feat(datastore): add subject_digest column to manifests
+  * build(deps): upgrade gitlab.com/gitlab-org/labkit to v1.64.10
+  * chore: update self-managed release to v4.41.0-gitlab
+  * build(deps): update module github.com/aws/aws-sdk-go-v2 to
+    v1.43.5
+  * build(deps): update module github.com/eko/gocache/lib/v4 to
+    v4.2.4
+  * build(deps): update module
+    github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+    v1.11.11
+  * build(deps): update module github.com/aws/aws-sdk-go-v2/config
+    to v1.32.34
+  * chore: assing RFH to EM temporarily
+  * build(deps): update module github.com/schollz/progressbar/v3 to
+    v3.19.1
+
+-------------------------------------------------------------------
 Wed Jul 29 06:00:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.41.0:
