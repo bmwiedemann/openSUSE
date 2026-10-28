@@ -1,7 +1,7 @@
 #
 # spec file for package speex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://www.speex.org/
 Source0:        https://downloads.xiph.org/releases/speex/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         speex-no-build-date.patch
+Patch1:         speex-CVE-2026-116741.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(speexdsp)
@@ -62,7 +63,7 @@ This package contains the files needed to compile programs that use the
 SpeeX library.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 %configure \

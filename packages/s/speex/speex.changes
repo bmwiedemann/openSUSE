@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 14:55:09 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Fix out-of-bounds write in speex_bits_read_whole_bytes()
+  (CVE-2026-116741, bsc#1288101):
+  speex-CVE-2026-116741.patch
+- Refresh speex-no-build-date.patch to be applied with -p1
+
+-------------------------------------------------------------------
 Mon Feb 26 13:43:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

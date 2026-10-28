@@ -1,7 +1,10 @@
-Index: src/speexdec.c
-===================================================================
---- src/speexdec.c.orig
-+++ src/speexdec.c
+---
+ src/speexdec.c |    2 +-
+ src/speexenc.c |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/src/speexdec.c
++++ b/src/speexdec.c
 @@ -291,7 +291,7 @@ void version()
  {
     const char* speex_version;
@@ -11,10 +14,8 @@ Index: src/speexdec.c
     printf ("Copyright (C) 2002-2006 Jean-Marc Valin\n");
  }
  
-Index: src/speexenc.c
-===================================================================
---- src/speexenc.c.orig
-+++ src/speexenc.c
+--- a/src/speexenc.c
++++ b/src/speexenc.c
 @@ -203,7 +203,7 @@ void version()
  {
     const char* speex_version;
