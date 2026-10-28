@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 21 13:14:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch wordlist Source URLs from ftp:// to http:// (ftp is not
+  reachable from the build environment); three wordlists
+  re-downloaded with identical content (gzip header only)
+
+-------------------------------------------------------------------
+Sun Oct 18 11:00:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.10.3, following the cracklib 2.10.3 package
+  (boo#1160062): rebuild the dictionaries with its current
+  tools. No wordlist changes.
+- Spec cleanup (spec-cleaner pass)
+
+-------------------------------------------------------------------
 Fri Sep 28 02:52:10 UTC 2018 - sean@suspend.net
 
 - Added additional dictionary libraries

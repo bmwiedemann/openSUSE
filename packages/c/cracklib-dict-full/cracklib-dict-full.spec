@@ -1,7 +1,7 @@
 #
 # spec file for package cracklib-dict-full
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,54 +17,52 @@
 
 
 Name:           cracklib-dict-full
-BuildRequires:  cracklib
-BuildRequires:  gzip
-Url:            http://sourceforge.net/projects/cracklib
-Version:        2.8.12
+Version:        2.10.3
 Release:        0
-Provides:       cracklib-dict
-Provides:       cracklib:/usr/share/cracklib/pw_dict.pwd
-Conflicts:      cracklib-dict-small
 Summary:        A Password-Checking Library
 License:        LGPL-2.1-only
-Group:          System/Libraries
+URL:            http://sourceforge.net/projects/cracklib
 Source1:        http://prdownloads.sourceforge.net/cracklib/cracklib-words-20080507.gz
-Source10:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/Domains.gz
-Source11:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/Dosref.gz
-Source12:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/Ftpsites.gz
-Source13:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/Jargon.gz
-Source14:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/common-passwords.txt.gz
-Source15:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/etc-hosts.gz
-Source16:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/movieTV/Movies.gz
-Source17:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/movieTV/Python.gz
-Source18:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/movieTV/Trek.gz
-Source19:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/LCarrol.gz
-Source20:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/Paradise.Lost.gz
-Source21:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/cartoon.gz
-Source22:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/myths-legends.gz
-Source23:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/sf.gz
-Source24:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/shakespeare.gz
-Source25:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/ASSurnames.gz
-Source26:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/Congress.gz
-Source27:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/Family-Names.gz
-Source28:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/Given-Names.gz
-Source29:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/famous.gz
-Source30:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/fast-names.gz
-Source31:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/female-names.gz
-Source32:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/male-names.gz
-Source33:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/names.french.gz
-Source34:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/names.hp.gz
-Source35:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/other-names.gz
-Source36:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/names/surnames.finnish.gz
+Source10:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/Domains.gz
+Source11:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/Dosref.gz
+Source12:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/Ftpsites.gz
+Source13:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/Jargon.gz
+Source14:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/common-passwords.txt.gz
+Source15:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/computer/etc-hosts.gz
+Source16:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/movieTV/Movies.gz
+Source17:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/movieTV/Python.gz
+Source18:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/movieTV/Trek.gz
+Source19:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/LCarrol.gz
+Source20:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/Paradise.Lost.gz
+Source21:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/cartoon.gz
+Source22:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/myths-legends.gz
+Source23:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/sf.gz
+Source24:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/literature/shakespeare.gz
+Source25:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/ASSurnames.gz
+Source26:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/Congress.gz
+Source27:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/Family-Names.gz
+Source28:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/Given-Names.gz
+Source29:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/famous.gz
+Source30:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/fast-names.gz
+Source31:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/female-names.gz
+Source32:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/male-names.gz
+Source33:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/names.french.gz
+Source34:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/names.hp.gz
+Source35:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/other-names.gz
+Source36:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/names/surnames.finnish.gz
 Source37:       pt_BR-wordlist.gz
 Source38:       es-wordlist.gz
-Source39:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/german/germanl.gz
-Source40:       ftp://ftp.cerias.purdue.edu/pub/dict/wordlists/german/words.german.gz
+Source39:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/german/germanl.gz
+Source40:       http://ftp.cerias.purdue.edu/pub/dict/wordlists/german/words.german.gz
 Source41:       john.gz
 Source42:       cain.gz
 Source43:       500-worst-passwords.gz
 Source44:       twitter-banned.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  cracklib
+BuildRequires:  gzip
+Conflicts:      cracklib-dict-small
+Provides:       cracklib-dict
+Provides:       cracklib:%{_datadir}/cracklib/pw_dict.pwd
 # don't build as noarch for now
 # probably little/big-endian dependent (x86 and x86_64 are the same)
 # need to investigate further
@@ -74,8 +72,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 CrackLib tests passwords to determine whether they match certain
 security-oriented characteristics. You can use CrackLib to stop users
 from choosing passwords that are easy to guess.
-
-
 
 %prep
 mkdir cracklib-dicts
@@ -92,17 +88,16 @@ gunzip cracklib-dicts/*
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/cracklib/
-/usr/sbin/cracklib-format cracklib-dicts/* | \
-/usr/sbin/cracklib-packer $RPM_BUILD_ROOT/%{_datadir}/cracklib/pw_dict
+mkdir -p %{buildroot}/%{_datadir}/cracklib/
+%{_sbindir}/cracklib-format cracklib-dicts/* | \
+%{_sbindir}/cracklib-packer %{buildroot}/%{_datadir}/cracklib/pw_dict
 #
 # using zip'ed dict takes too long for a check. But the support
 # for this is still in the lib.
 #
 #gzip $RPM_BUILD_ROOT/%{_datadir}/cracklib/pw_dict.pwd
 
-%files 
-%defattr(-,root,root)
+%files
 %dir %{_datadir}/cracklib
 %{_datadir}/cracklib/pw_dict.hwm
 %{_datadir}/cracklib/pw_dict.pwd
