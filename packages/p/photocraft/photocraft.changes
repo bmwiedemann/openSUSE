@@ -1,0 +1,154 @@
+-------------------------------------------------------------------
+Fri Oct 23 06:56:01 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.14.0 (upstream tag v0.14.0, 2026-10-23):
+  * 0.12.0: DDS save (uncompressed or BC1-BC3, optional mipmaps);
+    indexed GIFs open in Indexed Color; PSD saves Indexed, Bitmap
+    and Duotone in their own mode; History panel menu and History
+    Brush source; Smart Filters map 41 filters to PSD (was 14);
+    graphics adapter choice on multi-GPU Linux; faster many-layer
+    GPU composites and Blur/Sharpen strokes; crop, actions, type
+    and PSB save fixes.
+  * 0.13.0: GIMP XCF import (layers, groups, masks, channels,
+    selection); DICOM and Amiga IFF/ILBM read, Cineon save, .act
+    colour tables; HEIF honours nclx, HLG/PQ HEICs open as linear
+    BT.2020 32-bit; JPEG Options dialog, Export As resample and
+    file size, Layers panel thumbnail sizes, Object Finder, user
+    contour library; recovery after a lost GPU device; Hindi
+    catalog, French, Turkish, Czech, Russian and pt-BR updates;
+    photocraft-cli convert refuses to overwrite its input unless
+    --in-place; many tool, .atn and PSD compatibility fixes.
+  * 0.14.0: tighter automation workspace checks for export, linked
+    files and dialogs; View > Extras hides the Move tool's
+    transform controls; strided row sampling overflow fix.
+  * Security hardening (no CVE ids): bounded RAW, XCF, PDN, HEIF,
+    deep-EXR, TIFF, PCX/XPM, SVG and pattern decode work and
+    allocations, linear-time lookups replacing quadratic scans,
+    bounded nested automation playback, IPP printer names encoded,
+    hardened temporary and recovery files, gzip SVG no longer
+    decompressed twice.
+  * Re-vendored (update=false, lockfile respected): the only new
+    vendored crates are roxmltree 0.21.1 (MIT OR Apache-2.0) and
+    yeslogic-fontconfig-sys 6.0.1 (MIT), optional fontique deps of
+    its system feature, which upstream enables on macOS only, so
+    neither is built here; the shipped targets' crate set is
+    otherwise unchanged; license re-derived over the shipped
+    targets, no new copyleft, tag stands; no new system deps; the
+    cargo_vendor lockfile audit reports no advisories.
+- Set the fixed metainfo release date to 2026-10-23 (v0.14.0); it
+  was still the v0.10.0 date.
+
+-------------------------------------------------------------------
+Wed Oct 21 06:40:33 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.11.1 (upstream tag v0.11.1, 2026-10-20):
+  * New: Content-Aware Fill workspace; performance gains in
+    Properties-panel adjustment drags and Stack Mode statistics.
+  * Fixes: Lens Flare on 32-bit pixels, Twirl/Pinch/Spherize
+    region, Pencil 1 px lines, snapping to guides, Stamp Visible,
+    EXR ACEScg preference, Krita tile reading, GPU startup limits,
+    Linux Reveal and file dialog portal probing.
+  * Range hardening for type styles, filter.cameraRaw exposure and
+    variable data set CSV import.
+  * Re-vendored; no new system deps.
+
+-------------------------------------------------------------------
+Sun Oct 18 17:32:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.0 (upstream tag v0.10.0, 2026-10-18):
+  * Tools: per-control pressure curves, image files as brush tips,
+    Pen Shift 45-degree constraints, arrow-key nudges in one History
+    state; Pen/brush sampling and Free Transform fixes.
+  * File handling: .atn duplicate-into-new-document, SVG text
+    transforms kept, Targa RLE scanline fix, PSD warp-clamp and
+    non-finite sanitization, flat fallback with decode budget.
+  * Performance: Stack Mode 8-17x faster, Photomerge 4x faster,
+    lower-stack cache follows edits; GPU pattern textures freed on
+    close and over budget.
+  * Hardening (no CVE ids): transactional channel pastes, bounded
+    selection sampling, ICC checked arithmetic, control-token file
+    permission refusal, linked paths restricted to computer/share,
+    read-only file replace refused.
+  * Print through CUPS over IPP and the print portal; pure-Rust
+    photocraft-ipp client, no new system dependency.
+    `photocraft --help` prints usage.
+  * Security: fixes RUSTSEC-2026-0344 (ruzstd decompression bomb,
+    CVSS 7.5) via ruzstd 0.9.1; craft-docpath 0.1.0 added (MIT OR
+    Apache-2.0). Re-vendored (update=false, lockfile respected);
+    license re-derived over shipped targets, no new copyleft, tag
+    stands.
+
+-------------------------------------------------------------------
+Thu Oct 15 04:48:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.0 (upstream tag v0.9.0, 2026-10-14):
+  * System printing via craft-print; Photoshop Actions (.atn) load and
+    save; Krita (.kra/.krz) import; type on a path; Soft Dark/Light themes.
+  * Linux caption buttons follow desktop layout, style and icon theme;
+    Serbian Latin catalog; Pencil without 8-bit dither; grayscale-safe exports.
+  * Selection/mask, Properties, Actions panel and PSD/PSB compatibility fixes.
+  * Security hardening (no CVE ids): Compose overflow guard, oversized-mask
+    reject, PSD zero-length hang fix; fuzz-found panics addressed.
+  * New vendored crates (craft-print git, wl-clipboard-rs 0.9.4, resvg 0.45.1,
+    all Apache/MIT); heic-rs stays 0.1.4 pure-Rust, heif feature stays on.
+  * Re-vendored (update=false kept for --locked, no in-tree vendor/ upstream;
+    respect-lockfile true); license re-derived over shipped targets, no new
+    copyleft, tag stands; no new system deps.
+
+-------------------------------------------------------------------
+Tue Oct 13 07:39:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.2 (upstream tag v0.8.2, 2026-10-12):
+  * New tools: Color Replacement, Color Sampler, Artboard, Frame,
+    Perspective Crop, Freeform/Curvature Pen, Convert Point and
+    Anchor Point tools, Horizontal/Vertical Type Mask.
+  * Auto-Align Layers and Auto-Blend Stack Images; FITS read/write;
+    File Info shows EXIF/XMP camera data; TGA asks 24 or 32 bits;
+    animated GIFs keep transparency; PSD decoding interop fixes.
+  * Faster canvas: brush-stroke commit freeze fixed, GPU stack-chunk
+    reuse, faster feathered masks, cached Select Subject; Select
+    and Mask gains live preview, Refine Edge Brush, new outputs.
+  * Security hardening (no CVE ids): bounded exports/automation
+    inputs, pattern-size limits, overflow-safe blob/ZIP decode,
+    PSD over-budget guard; heic-rs pin moves 0.1.1 to 0.1.4,
+    fixing six fuzz-found malformed-file panics.
+  * Re-vendored (lockfile respected, update=false kept: update=true
+    aborts against --locked in this service); license re-derived
+    over the shipped targets, no new copyleft, tag stands; heif
+    stays on via the single pure-Rust heic-rs crate, no sysdeps.
+
+-------------------------------------------------------------------
+Mon Oct 12 06:18:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.0 (upstream tag v0.7.0, 2026-10-11):
+  * OpenRaster (.ora) open and save; layered edits of flat images
+    now default to PSD on Save, TGA saves 32-bit alpha.
+  * New Remove tool, Single Row/Column Marquee, pen-pressure curve
+    in Preferences, Breeze Light/Dark themes, preference search,
+    draggable dock tabs, Alt+Space zoom-out.
+  * Photoshop parity: selection feather is the Gaussian sigma,
+    Select-Modify Border/Smooth match, default tab stops, CMYK
+    round trips, Background-from-Layer, Rasterize every layer.
+  * Faster canvas: threaded distance fields, 4x faster Select and
+    Mask refinement, Vulkan window present on Linux CPU-mode start.
+  * Re-vendored (lockfile respected): external crate set unchanged
+    (only workspace crates bumped), License tag stands; heif stays
+    on via pure-Rust heic-rs 0.1.1, no new system deps.
+
+-------------------------------------------------------------------
+Sun Oct 11 06:59:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package photocraft 0.6.0 (upstream tag v0.6.0, 2026-10-10),
+  built from source with --features heif (pure-Rust heic-rs 0.1.1,
+  no system HEIF library).
+- License derived over the vendor tree for the shipped targets
+  (photocraft, photocraft-cli): no copyleft linked; tag covers the
+  embedded OFL-1.1 fonts, ISC icons, CC-BY-3.0 glyph and CC0-1.0
+   profile, see the Legal-Review-Notice in the spec.
+- BuildRequires hicolor-icon-theme so the filelist checker finds
+  /usr/share/icons/hicolor owned in the build root (runtime
+  Requires alone does not satisfy it).
+- Split out photocraft-cli subpackage (own description and files,
+  main package ships the GUI only, main Recommends: photocraft-cli);
+  the headless CLI needs none of the X11/Wayland/Vulkan Requires.
+

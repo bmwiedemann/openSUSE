@@ -1,0 +1,11 @@
+<package name="photocraft" project="openSUSE:Factory">
+  <title>Native image editor with layers, masks, type and PSD support</title>
+  <description>PhotoCraft is an open-source, native image editor with layers, masks,
+adjustment layers, layer styles, type and brushes. It opens, edits and
+saves layered PSD and PSB files and 8/16/32-bit documents, composited on
+the GPU.
+
+This package provides the desktop application; the companion photocraft-cli
+subpackage provides the headless converter, batch runner and command server.</description>
+  <url>https://github.com/storytold/photocraft</url>
+</package>
