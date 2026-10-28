@@ -20,7 +20,7 @@
 # (successor of the python-graphifyy multibuild package).
 %define pythons %{primary_python}
 Name:           graphifyy
-Version:        0.9.96
+Version:        0.9.97
 Release:        0
 Summary:        Code knowledge graph builder and query CLI for AI assistants
 License:        Apache-2.0 AND MIT
@@ -106,9 +106,9 @@ BuildRequires:  tree-sitter-swift
 BuildRequires:  tree-sitter-typescript
 BuildRequires:  tree-sitter-verilog
 BuildRequires:  tree-sitter-zig
+Requires:       %{primary_python}-PyYAML >= 6.0
 Requires:       %{primary_python}-networkx >= 3.4
 Requires:       %{primary_python}-numpy >= 1.21
-Requires:       %{primary_python}-PyYAML >= 6.0
 Requires:       %{primary_python}-rapidfuzz >= 3.0
 Recommends:     %{primary_python}-robotframework >= 4.0
 Recommends:     %{primary_python}-tree-sitter >= 0.25
@@ -188,9 +188,9 @@ grammar only disables that language.
 
 %package mcp
 Summary:        Model Context Protocol server for graphify
-Requires:       graphifyy = %{version}
 Requires:       %{primary_python}-mcp >= 1
 Requires:       %{primary_python}-starlette >= 1.3.1
+Requires:       graphifyy = %{version}
 
 %description mcp
 The graphify-mcp entry point, exposing the graphify knowledge graph

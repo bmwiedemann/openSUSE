@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:36:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.97:
+  * Security: centralize rationale-label credential redaction
+    at a single pre-cache choke point and cover more leak
+    shapes (URL userinfo, PEM bodies, glued tokens, Slack
+    refresh tokens, short JWTs); benign strings left alone
+  * Security: floor anyio at >= 4.14.2 in the mcp extra, above
+    CVE-2026-63374 (IDNA hostname-validation bypass); anyio is
+    transitive-only and the lockfile already resolves 4.15.1,
+    so no spec dependency changes
+  * Markdown: CommonMark ATX headings and fenced-code tracking,
+    so headings inside fences no longer leak as structure
+  * YAML: read the composed node tree, restoring written key
+    spelling and source lines; 1.1 bare keys (on/off/yes/no)
+    no longer folded to booleans
+  * Extractors: aliased Terraform providers get their own nodes;
+    Razor @implements and Blade wire:click bindings extracted;
+    COBOL, Pascal, VBNET, Fortran, OCaml and Verilog scoping
+    fixes; nested JS functions no longer leak into the
+    file-wide name map
+  * CLI, build and index robustness: bare query/explain --help
+    prints usage; relation-less edges dropped; linked git
+    worktrees pruned from scans; bad pnpm globs warned, not
+    fatal; wikilink slugs and case-only renames fixed
+
+-------------------------------------------------------------------
 Mon Oct 26 19:28:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.96:
