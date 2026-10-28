@@ -1,5 +1,0 @@
-<package name="kimageformats" project="openSUSE:Factory">
-  <title>kimageformats</title>
-  <description>KImageFormats</description>
-  <devel project="KDE:Frameworks5" package="kimageformats"/>
-</package>
