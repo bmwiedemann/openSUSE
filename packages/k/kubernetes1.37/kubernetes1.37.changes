@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 28 07:08:40 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.37.2:
+  * Bump images and versions to Go 1.26.10 and update distroless-iptables
+  * upgrade .go-version to 1.26.10
+  * hack: match OpenSSL 3.5 CN=127.0.0.1 output in client cert check
+  * apiserver: accept large identity header sets with Go 1.27
+  * dra: include extended resource claims in pod claim iteration and taint eviction
+  * job controller: simplify recreation regression test
+  * job controller: extend recreation regression coverage
+  * job controller: clear expectations when deleting Job
+  * Don't set nf_conntrack_max if it's already larger than needed
+  * Move hashsize parameter setting out of SetMax
+  * Move detectNumCPU() into conntrackConfigurer interface
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.26.10`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.37.2/.go-version
+
+-------------------------------------------------------------------
 Mon Sep 28 05:55:18 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.37.1:
