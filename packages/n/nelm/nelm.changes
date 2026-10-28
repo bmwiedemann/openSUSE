@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:25:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.29.0:
+  * Features
+    - add case-insensitive-condition-tracking feature gate
+      (3d2d2d0)
+    - track managed-services.deckhouse.io resources (2dc75a3)
+- Update to version 1.28.0 (unreleased):
+  * Features
+    - add feat gate to own deckhouse-controller fields (6092c11)
+
+-------------------------------------------------------------------
 Fri Oct 02 04:49:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.27.2:
