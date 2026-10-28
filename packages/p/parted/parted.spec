@@ -15,13 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           parted
 Version:        3.8
 Release:        0
 Summary:        GNU partitioner
 License:        GPL-3.0-or-later
-Group:          System/Filesystems
 URL:            https://www.gnu.org/software/parted/
 Source0:        https://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz.sig
@@ -75,11 +73,10 @@ BuildRequires:  libsepol-devel
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
 BuildRequires:  makeinfo
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  readline-devel
 PreReq:         %install_info_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # bug437293
 %ifarch ppc64
 Obsoletes:      parted-64bit
@@ -91,8 +88,6 @@ and copying partitions, and the file systems on them.
 
 %package -n libparted2
 Summary:        Library for manipulating partitions
-Group:          System/Libraries
-Obsoletes:      libparted0
 
 %description -n libparted2
 Libparted is a library for creating, destroying, resizing, checking
@@ -100,14 +95,12 @@ and copying partitions and the file systems on them.
 
 %package -n libparted-fs-resize0
 Summary:        Library for manipulating partitions
-Group:          System/Libraries
 
 %description -n libparted-fs-resize0
 Libparted-fs-resize is a library for resizing filesystems.
 
 %package devel
 Summary:        Parted Include Files and Libraries necessary for Development
-Group:          Development/Libraries/C and C++
 Requires:       device-mapper-devel >= 1.02.33
 Requires:       libparted-fs-resize0 = %version
 Requires:       libparted2 = %version
@@ -163,7 +156,7 @@ rm %{buildroot}%{_libdir}/*.la
 %{_sbindir}/*
 %{_mandir}/man8/part*.8.gz
 %{_mandir}/man8/fatresize.8.gz
-%doc %{_infodir}/*.info*
+%{_infodir}/*.info*
 
 %files devel
 %defattr(-,root,root)

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 26 11:44:43 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop Obsoletes: libparted0 from libparted2. The libparted.so.0
+  and libparted.so.2 file sets are disjoint, so the generations
+  are co-installable as the shared library packaging policy
+  intends; the obsoletes only forced removal of the older
+  generation, and also drew the obsolete-not-provided warning.
+- baselibs.conf: run /sbin/ldconfig in %post and %postun of the
+  generated libparted2 and libparted-fs-resize0 -32bit packages;
+  they previously carried no ldconfig scriptlets at all.
+- Drop the Group tags and the BuildRoot tag (ignored by rpm).
+- Convert BuildRequires: pkg-config to pkgconfig, and drop the
+  %doc marker from the info files (spec-cleaner conversions).
+
+-------------------------------------------------------------------
 Fri Oct  2 09:59:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix description
