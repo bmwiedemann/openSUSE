@@ -17,7 +17,7 @@
 
 
 Name:           python-langsmith
-Version:        0.14.12
+Version:        0.14.13
 Release:        0
 Summary:        Client library for the LangSmith LLM tracing and evaluation platform
 License:        MIT
@@ -118,7 +118,7 @@ export LANGSMITH_TRACING=false
 # lives in an --ignore'd file, so this is the one that needs deselecting.
 %pytest tests/unit_tests -p no:langsmith_plugin --ignore tests/unit_tests/wrappers --ignore tests/unit_tests/sandbox --ignore tests/unit_tests/cli --ignore tests/unit_tests/evaluation --ignore tests/unit_tests/test_async_client.py --ignore tests/unit_tests/test_client.py --ignore tests/unit_tests/test_run_helpers.py --ignore tests/unit_tests/test_hybrid_tracing.py --ignore tests/unit_tests/test_background_thread.py -k 'not test_client_gc and not test_git_info and not test_as_runnable and not test_admission_under_concurrency and not test_extract_string_nodes_scales_linearly and not test_langchain_tool_attributes_reach_otel_spans'
 
-%files %{python_files}
+%files %python_files
 %doc README.md
 %{python_sitelib}/langsmith
 %{python_sitelib}/langsmith-%{version}.dist-info

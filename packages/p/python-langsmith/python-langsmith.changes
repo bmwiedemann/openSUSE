@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:36:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.13:
+  * Agent owner API support and custom avatar upload for agents
+  * list_examples() gains select and resolve_destination options
+  * Sandbox volumes and sandbox functions support
+  * Client.flush() now waits for buffered run operations
+  * Fix AsyncExperimentResults iteration hanging when processing
+    fails; default agent creation to EXTERNAL
+  * Refresh bundled application certificates
+
+-------------------------------------------------------------------
 Thu Oct 22 09:58:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.12:
