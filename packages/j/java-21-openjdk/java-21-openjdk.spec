@@ -37,9 +37,9 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      21
 %global interimver      0
-%global updatever       12
-%global patchver        1
-%global buildver        1
+%global updatever       13
+#global patchver        0
+%global buildver        9
 %global openjdk_repo    jdk21u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
@@ -187,7 +187,7 @@ Patch302:       disable-doclint-by-default.patch
 Patch303:       java-40y.patch
 Patch304:       bsc-1221224.patch
 #
-Patch400:       tzdata-2026c.patch
+Patch400:       JDK-8395142-21u.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -224,7 +224,6 @@ BuildRequires:  zip
 # Requires rest of java
 Requires:       %{name}-headless = %{version}-%{release}
 Requires:       fontconfig
-Requires(post): file
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java = %{javaver}
@@ -764,7 +763,7 @@ export JAVA_HOME=%{_jvmdir}/%{jrelnk}
 
 # check if the java-cacerts is a valid keystore (bnc#781690)
 if [ X"`%{_bindir}/file --mime-type -b %{javacacerts}`" \
-    != "Xapplication/x-java-keystore;" ]; then
+    != "Xapplication/x-java-keystore" ]; then
 %if 0%{?suse_version} <= 1310
     # workaround for bnc#847952 - pre 13.1 keyring.jar attempts to load invalid keystore and fail on it
     rm -f "%{javacacerts}"
@@ -780,7 +779,7 @@ fi
 # if cacerts does exists, neither does not contain/point to a
 # valid keystore (bnc#781690) ...
 if [ X"`%{_bindir}/file --mime-type -b -L %{cacerts}`" \
-    != "Xapplication/x-java-keystore;" ]; then
+    != "Xapplication/x-java-keystore" ]; then
     # bnc#727223
     rm -f %{cacerts}
     ln -s %{javacacerts} %{cacerts}
