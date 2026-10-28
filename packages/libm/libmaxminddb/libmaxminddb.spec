@@ -1,7 +1,7 @@
 #
 # spec file for package libmaxminddb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define lname	libmaxminddb0
 Name:           libmaxminddb
-Version:        1.13.3
+Version:        1.14.1
 Release:        0
 Summary:        C library for the MaxMind DB file format
 License:        Apache-2.0
