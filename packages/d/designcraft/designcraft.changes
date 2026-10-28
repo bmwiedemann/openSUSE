@@ -1,0 +1,166 @@
+-------------------------------------------------------------------
+Mon Oct 26 11:20:19 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.13.0 (upstream tag v0.13.0, 2026-10-25):
+  * Typography: Hyphenation Settings dialog, Hyphenate Across Column,
+    Align to Grid in Paragraph Style Options, custom baseline grid
+    Relative To options kept through IDML, Story Optical Margin
+    Alignment with a size, Character and Paragraph modes in the
+    Control panel.
+  * Autoflow fills the pages that follow before adding pages at the
+    end; Go Back and Go Forward through viewed pages; Convert to
+    Note, Previous/Next Note and Convert Variable to Text commands.
+  * EPUB: Split Document export option; PDF export preserves placed
+    optional-content visibility and layer choices through IDML and
+    native saves.
+  * Hardening: PDF post-pass slice panics fixed, linked files read
+    under a cap, GREP scans bounded, out-of-range RTF/DOCX/IDML
+    values rejected, package temp files owner-writable.
+  * Many smaller fixes and UI improvements; see the upstream release
+    notes.
+  * Re-vendored: no crate changes; vendor-tree licence set unchanged;
+    no new system deps.
+
+-------------------------------------------------------------------
+Fri Oct 23 06:52:49 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.12.0 (upstream tag v0.12.0, 2026-10-22):
+  * Guides: select ruler guides and set their position; a dragged
+    ruler guide snaps to guides, margins, columns and objects; Lock
+    Guides and Lock Column Guides are commands.
+  * Column guides: drag one to move its gutter; Margins and Columns,
+    autoflow, inserted pages and new parents keep dragged columns;
+    IDML imports, validates and round-trips them.
+  * Keyboard Shortcuts can import an InDesign shortcut set; the
+    French interface is complete.
+  * Fixes: Paste in Place shortcut, other apps' text pastes into a
+    text caret, trailing-space dots before the paragraph mark, Rule
+    Above offset measured from the baseline, SVG font families match
+    in any case, an explicit Place position makes a new frame.
+  * Date handling uses chrono instead of hand-rolled UTC code.
+  * 0.11.0: placed PDFs are read through the shared craft-pdf
+    reader (bounded input and per-stream decode limits); incomplete
+    layered exports are reported.
+  * Re-vendored: chrono 0.4.45 (MIT OR Apache-2.0) is the only new
+    crate; the patched hayro crates now come from craft-libs and the
+    winit pin from storytold/winit (same commit), licences as
+    before. Vendor-tree licence set unchanged; no new system deps;
+    cargo_audit clean.
+- Ship upstream's new licenses/pdf-backend/ texts (hayro, embedded
+  Foxit fonts, CMYK profile, Adobe CMaps) that NOTICE refers to.
+
+-------------------------------------------------------------------
+Wed Oct 21 06:40:33 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.10.0 (upstream tag v0.10.0, 2026-10-20):
+  * Tables: cell First Baseline offset; Links panel shows page and
+    resolution of anchored images; text stroke options in the Stroke
+    panel; New Document preset sizes shown in the selected units.
+  * Fixes: single-line paths resizable along their length, drop cap
+    scaling, moved equations keep their place, clickable dock
+    chevrons, Story Editor label alignment.
+  * Import/export hardening: non-finite or out-of-range values in
+    IDML, DOCX, RTF, Tagged Text and ASE; PDF/X-4 XMP gains
+    MetadataDate and VersionID.
+  * Re-vendored; no new system deps.
+
+-------------------------------------------------------------------
+Sun Oct 18 17:25:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.0 (upstream tag v0.9.0, 2026-10-18):
+  * Page tool with liquid rules, pins and resize locks; Pages
+    panel; Alternate Layout; Table of Contents and IDML TOC
+    styles; InDesign-order menus and shortcuts
+  * Export: PDF/A-2b leaves out forms and media; EPUB/IDML
+    selector and sort-key fixes
+  * Harden against crafted input (no CVE assigned): LaTeX
+    nesting depth capped; page-insert overflow fixed;
+    nonfinite EPS boxes rejected; click/drag input bounded;
+    quick-xml 0.41 (RUSTSEC-2026-0194, RUSTSEC-2026-0195)
+  * cargo_audit clean.
+- Vendor-tree licence set unchanged.
+
+-------------------------------------------------------------------
+Thu Oct 15 05:00:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.0 (stable tag v0.8.0, 2026-10-14, draft=false
+  prerelease=false)
+- Save/export atomically; per-app recovery kept until save/close;
+  quitting asks for unsaved docs; macOS Dock Quit cancelable
+- Text: CR as paragraph return, leading empty Tagged Text para kept,
+  one underline bar per stretch, gradient midpoints mirrored
+- Objects: Arrange past siblings, locked fixed on distribute, corner
+  options round every point, Step and Repeat grid with preview
+- Import/export: EPUB selectors match tags, IDML sort keys kept, table
+  cells split once, preflight checks placed-image resolution
+- Engine: NaN-safe path clamping, xref no longer rebuilds itself;
+  placed PDFs render via pdfcraft patched hayro crates
+- Services: tar_scm pinned tag v0.8.0, vendor regenerated (update=false
+  kept for --locked, no in-tree vendor/ upstream; winit pin and hayro
+  git patches vendored); docs/brand/ still excluded
+- License re-derived over shipped targets: no copyleft linked (hayro
+  under Apache-2.0, winit under Apache-2.0, self_cell under Apache-2.0);
+  tag unchanged; rust >= 1.95 holds
+
+-------------------------------------------------------------------
+Tue Oct 13 07:27:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.1 (stable tag v0.7.1, 2026-10-12, draft=false
+  prerelease=false)
+- Shared panel docking with workspace commands preserved (new
+  craft-ui git dependency, MIT OR Apache-2.0, vendored)
+- Printing via the new craft-print git dependency (MIT OR
+  Apache-2.0, vendored): CUPS and Windows PDF printing
+- Place keeps PDF pages and SVGs at exact size; image placed into
+  a frame leaves Auto-Fit off; assets deduplicated, unused ones
+  omitted on save
+- Hyphenation via hypher gains Portuguese patterns; words in
+  capitals hyphenate like capitalized words
+- IDML import matches part names leniently and reports missing
+  parts; fills and strokes must name a document swatch
+- MCP server never replays a request after a lost reply; duplicate,
+  step-and-repeat and copy-moves report the copies ids
+- Upstream MSRV is now 1.95: BuildRequires rust >= 1.95
+- Services: tar_scm pinned tag v0.7.1, vendor regenerated (update=false
+  for --locked build); docs/brand/ trademarks still excluded
+- License re-derived over the new vendor tree for the shipped targets:
+  no copyleft linked (craft-print/craft-ui taken under MIT, hypher
+  under MIT, self_cell under Apache-2.0); tag unchanged
+
+-------------------------------------------------------------------
+Sun Oct 11 07:04:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.0 (stable tag v0.6.0, 2026-10-11, draft=false
+  prerelease=false)
+- Hyphenation now via the hypher crate (MIT OR Apache-2.0), including
+  Spanish; CC0-1.0 patterns and word list still bundled in
+  assets/hyphenation/
+- Images: PSD decode, damaged PNG/GIF/WebP skipped not fatal, SVG text
+  in shared fonts; PDF/A keeps placed images; PDF/X-4 validation
+  command
+- IDML layers import/export in stacking order; RTF and Tagged Text
+  keep characters past U+FFFF; tracked moves kept on Word import
+- Desktop: ruler units, searchable font menu, Ukrainian and Japanese
+  translations, A6 sheet preset, plus many UI fixes
+- Services: tar_scm pinned tag v0.6.0, vendor regenerated (update=false
+  for --locked build); docs/brand/ trademarks still excluded
+- License re-derived over the new vendor tree for the shipped targets:
+  no copyleft linked (hypher taken under MIT); tag unchanged
+
+-------------------------------------------------------------------
+Sat Oct 10 20:17:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package 0.5.0 (stable tag v0.5.0, 2026-10-10, draft=false
+  prerelease=false): from-scratch Rust workspace source build
+  (resolver 3, edition 2024, MSRV 1.90), no copypac source exists on OBS
+  (home: copies are binary repacks, rejected per policy)
+- Services: tar_scm pinned tag + cargo_vendor (tag cratesio, update=false
+  for --locked build) + cargo_audit; tarball excludes docs/brand/ trademarks
+- Build designcraft + designcraft-cli --locked --offline; CRAFT_FONTS_DIR
+  unset (system fallback); designcraft-web is wasm-only, not built
+- License covers bundled OFL-1.1/Ubuntu-font-1.0 (egui default fonts
+  plus app fonts)/ISC/BSD-2-Clause/BSD-3-Clause/Unicode-3.0/Zlib/CC0-1.0
+  (hyphenation patterns) plus MIT/Apache-2.0; no copyleft linked
+  (self_cell dual Apache-2.0 OR GPL-2.0-only, Apache chosen);
+  see NOTICE and ASSETS.md
+

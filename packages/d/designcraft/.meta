@@ -1,0 +1,9 @@
+<package name="designcraft" project="openSUSE:Factory">
+  <title>Page layout and publishing workbench</title>
+  <description>Page layout and publishing workbench: lay out magazines, books and print
+documents with a native Rust application.
+
+This package provides the desktop application; the companion designcraft-cli
+subpackage provides the headless command runner and opt-in MCP server.</description>
+  <url>https://github.com/storytold/designcraft</url>
+</package>
