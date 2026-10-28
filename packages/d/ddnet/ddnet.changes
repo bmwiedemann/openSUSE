@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Oct 27 15:19:48 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 20.2.1:
+  * Fix DDNET_VERSION_NUMBER and GAME_RELEASE_VERSION_INTERNAL
+
+-------------------------------------------------------------------
+Mon Oct 26 18:52:22 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 20.2:
+  * [Client] Add practice bind to teleport dummy to cursor
+    (tp_dummy_to_cursor), new "Practice" section in controls
+    settings
+  * [Client] Show tooltips for truncated texts in server browser,
+    demo browser and custom binds
+  * [Client] Keep auto demos with time markers in
+    demos/auto/marked so they are not deleted automatically
+  * [Client] Align centiseconds at bottom and add a dot, show
+    centiseconds in tooltip for times over an hour
+  * [Client] Rework scoreboard cursor hint, fix scoreboard
+    highlighting being rendered over player names
+  * [Client] Add tooltip to HSLA sliders explaining fine
+    adjustment with shift
+  * [Client] Add snowflake texture to original 0.6 game skin
+  * [Client] Fix cl_sub_tick_aiming only working for binds that
+    are exactly "+fire" or "+hook"
+  * [Client] Fix various issues with text input and multi-line
+    text selection
+  * [Client] Fix copying multi-line text from console being
+    shifted by newlines
+  * [Client] Fix various issues with ghost list, including a crash
+  * [Client] Fix invalid snapshots being recorded when slicing
+    0.7 demos
+  * [Client] Fix various HTTP issues, especially in web client
+  * [Client] Fix translation strings being truncated and strings
+    with newlines not being localizable
+  * [Client] Fix crashes with invalid country codes in language
+    index and when failing to load fonts
+  * [Client] Fix emoticon wiggle animation not ending smoothly
+  * [Client] Fix joystick handle leak on hot-unplug
+  * [Editor] Add envelope editor tooltips showing values while
+    moving points, tangents, timebar and scaling
+  * [Editor] Fix other tune zone settings being deleted when
+    changing zone number [Wranked1]
+  * [Editor] Fix crash when activating menu proof mode on new map
+  * [Editor] Fix file browser refreshing wrong storage type
+    after delete
+  * [Client&Server] Fix input mismatch between server and
+    prediction caused by spectator flag
+  * [Client&Server] Stop sending millisecond times because of
+    floating point inaccuracies
+  * [Server] Add uptime rcon command
+  * [Server] sv_reserved_slots_auth_level takes role names
+    ("helper", "moderator", "admin") now, numbers are deprecated
+  * [Server] Fix lasers of dead players passing through other
+    players
+  * [Server] Fix laser doors being rendered at a slight angle
+  * [Server] Fix moving entire team to team 0 by killing and
+    unlocking at once
+  * [Server] Fix password splitting for reserved slot
+    authentication
+  * [Server] Fix IP not being hidden when unmuting a client that
+    is not muted
+
+-------------------------------------------------------------------
 Wed Sep 30 18:17:00 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 20.1.1:
