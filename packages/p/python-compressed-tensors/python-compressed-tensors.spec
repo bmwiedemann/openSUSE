@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-compressed-tensors
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Library for utilization of compressed safetensors of neural network models
 License:        Apache-2.0
@@ -62,7 +62,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 # make this noarch package fail to build on every other architecture.
 # Most of the test suite additionally requires a GPU.
 
-%files %{python_files}
+%files %python_files
 %license LICENSE
 %doc README.md
 %{python_sitelib}/compressed_tensors

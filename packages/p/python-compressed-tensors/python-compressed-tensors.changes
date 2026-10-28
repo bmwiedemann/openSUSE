@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:31:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.20.0:
+  * Add MXFP6 (E2M3) quantization with mxfp6-pack-quantized format,
+    and a MXFP4xFP8 quantization scheme
+  * Add layerwise compression and decompression, and an expert
+    sparsity config for MoE models
+  * Add FP8 block dequantizer from_pretrained and fuse the quantize
+    and FP4-pack Triton kernels
+  * Offload: support device_map="disk", reuse safetensors handles
+    via disk_load_context, group subgraph staging reads, and batch
+    metadata exchange in distributed dispatch; fix onloading of
+    offloaded children in set_onload_device
+  * convert_checkpoint gains max_workers="auto" by default and
+    quieter file-copying logs; support MTP checkpoint export
+  * Quantization fixes: NVFP4 on A100, 4-bit unpack by splitting
+    bytes (also on big-endian hosts), contiguous packed INT
+    tensors, qparam init on disk, weight transforms and
+    dense-saving of quantized Linear/Embedding subclasses,
+    router bias pruning fix
+  * Parse CT_ENFORCE_EAGER as a boolean, so =0/=false disables it;
+    skip default-valued fields in QuantizationArgs serialization
+  * Drop Python 3.10: minimum is now 3.11
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Sat Sep 26 20:52:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.19.0:
