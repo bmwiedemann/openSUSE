@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 27 08:38:43 UTC 2026 - aplanas@suse.com
+
+- Add Cargo_toml.patch
+- Update zip to 9.1.2
+  bsc#1287921, CVE-2026-115905, CVE-2026-115906, CVE-2026-115907,
+  CVE-2026-115908, CVE-2026-115909
+- Update to version 0.2.10+12:
+  * log Agent UUID at push agent startup
+  * Limit actix-web workers
+  * Fix clippy needless_late_init warnings
+  * Unwrap OCTET STRING wrapped EK certificates
+  * build(deps): bump rand from 0.9.4 to 0.10.1
+  * build(deps): bump glob from 0.3.3 to 0.3.4
+  * build(deps): bump reqwest from 0.13.3 to 0.13.4
+  * Check shutdown marker inside ml_extend loop
+  * Fix clippy useless_borrows_in_formatting warnings
+  * build(deps): bump tokio from 1.52.2 to 1.53.1
+  * Fix payload key upgrade regression by falling back to mTLS key
+  * Accept any RSA key size for payload encryption
+  * Bump version to 0.2.10
+  * keylime: use runtime OpenSSL algorithm detection instead of compile-time symbols
+
+-------------------------------------------------------------------
 Mon Jul 06 10:02:46 UTC 2026 - aplanas@suse.com
 
 - Remove Cargo_toml.patch (merged upstream)

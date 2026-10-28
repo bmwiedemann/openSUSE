@@ -1,0 +1,10 @@
+diff --git i/Cargo.toml w/Cargo.toml
+index d006826..ee7bbbe 100644
+--- i/Cargo.toml
++++ w/Cargo.toml
+@@ -60,4 +60,4 @@ tokio = {version = "1", features = ["rt", "sync", "macros"]}
+ tss-esapi = {version = "7.7.0", features = ["generate-bindings"]}
+ url = "2.5.4"
+ uuid = {version = "1.3", features = ["v4"]}
+-zip = {version = "0.6", default-features = false, features= ["deflate"]}
++zip = {version = "*", default-features = false, features= ["deflate"]}
