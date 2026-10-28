@@ -2540,4 +2540,24 @@ and testsuite accidentally disabled :-/
       when an input file uses ___tls_get_addr or R_386_TLS_DESC_CALL or</comment>
     <requestid>1379975</requestid>
   </revision>
+  <revision rev="187" vrev="2">
+    <srcmd5>d993c0178c088be5b2a1c7e3a0f406ab</srcmd5>
+    <version>2.47</version>
+    <time>1793205840</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a couple more CVE fixes that meanwhile got upstream:
+  * bsc#1280611 aka CVE-2026-91781 aka PR34449
+  * bsc#1280605 aka CVE-2026-90828 aka PR34450
+  * bsc#1275936 aka CVE-2026-19582 no PR
+  * bsc#1275267 aka CVE-2026-19548 no PR
+- Also fixed already:
+  * bsc#1282138 aka CVE-2026-15003 aka PR34053
+- Add patches for the above:
+  binutils-fix-cve19582.diff, binutils-fix-cve19548.diff,
+  binutils-fix-pr34450.diff, binutils-fix-pr34449.diff
+
+Small adjustment to last .changes entry to mention something
+that users may affect.</comment>
+    <requestid>1392774</requestid>
+  </revision>
 </revisionlist>

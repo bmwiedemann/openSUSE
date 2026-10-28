@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 26 16:05:48 UTC 2026 - Michael Matz <matz@suse.com>
+
+- Add a couple more CVE fixes that meanwhile got upstream:
+  * bsc#1280611 aka CVE-2026-91781 aka PR34449
+  * bsc#1280605 aka CVE-2026-90828 aka PR34450
+  * bsc#1275936 aka CVE-2026-19582 no PR
+  * bsc#1275267 aka CVE-2026-19548 no PR
+- Also fixed already:
+  * bsc#1282138 aka CVE-2026-15003 aka PR34053
+- Add patches for the above:
+  binutils-fix-cve19582.diff, binutils-fix-cve19548.diff,
+  binutils-fix-pr34450.diff, binutils-fix-pr34449.diff
+
+-------------------------------------------------------------------
 Mon Sep 21 13:40:14 UTC 2026 - Michael Matz <matz@suse.com>
 
 - Update to 2.47:
@@ -13,6 +27,9 @@ Mon Sep 21 13:40:14 UTC 2026 - Michael Matz <matz@suse.com>
     symbol associated with an immediate, if there is one
   * add --debug-dir=<DIR> to readelf and objdump, for separate debuginfo files
   * removed targets: NaCL, Solaris/PowerPC
+  * stricter target checking: objcopy --target=X requires also the input
+    to be of target X; if one wants to specify output target, that is
+    --output-target=/-O X
   * assembler:
     - ELF: new attribute letter 'E', for entity size for arbitrary sections
     - add --reloc-section-sym=[all|internal|none] to control adjusting

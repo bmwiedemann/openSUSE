@@ -1,0 +1,30 @@
+commit 7322e9bc30cb282575a701c307851fd3d66fee68
+Author: H.J. Lu <hjl.tools@gmail.com>
+Date:   Thu Jul 30 15:47:05 2026 +0800
+
+    x86-64: Return SHN_COMMON on non-ELF input
+    
+    elf_x86_64_common_definition segfaults on PE/x86-64 input.  Return
+    SHN_COMMON on non-ELF input.  Linker now gets assertion fail at
+    bfd/coffgen.c:575, instead of getting segfault.
+    
+            PR ld/34449
+            * elf64-x86-64.c (elf_x86_64_common_definition): Return
+            SHN_COMMON on non-ELF input.
+    
+    Signed-off-by: H.J. Lu <hjl.tools@gmail.com>
+
+diff --git a/bfd/elf64-x86-64.c b/bfd/elf64-x86-64.c
+index ade6613b62a..3700520b40f 100644
+--- a/bfd/elf64-x86-64.c
++++ b/bfd/elf64-x86-64.c
+@@ -6091,7 +6091,8 @@ elf_x86_64_common_definition (Elf_Internal_Sym *sym)
+ static unsigned int
+ elf_x86_64_common_section_index (asection *sec)
+ {
+-  if ((elf_section_flags (sec) & SHF_X86_64_LARGE) == 0)
++  if (bfd_get_flavour (sec->owner) != bfd_target_elf_flavour
++      || (elf_section_flags (sec) & SHF_X86_64_LARGE) == 0)
+     return SHN_COMMON;
+   else
+     return SHN_X86_64_LCOMMON;

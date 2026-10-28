@@ -1,0 +1,297 @@
+commit d9ab6e42e739fe826b02a5f868586132ea2d893a
+Author: Alan Modra <amodra@gmail.com>
+Date:   Sat Aug 15 00:17:56 2026 +0100
+
+    PR ld/24600: BFD: Fix use-after-free from `_bfd_load_armap'
+    
+    Fix an issue in commit e34fd4bfa6d7 ("PR ld/24600: BFD: Add general
+    linker support for mapless archives") where the symbol map created by
+    `_bfd_load_armap' has its entries discarded by a call to `bfd_release'
+    after return to `_bfd_compute_and_push_armap' where all objalloc memory
+    is freed that came starting from the dummy `first_name' allocation.
+    
+    This has been found in the context of CVE-2026-19548,
+    <https://nvd.nist.gov/vuln/detail/CVE-2026-19548>.
+    
+    Also remove the "name" indirection in struct orl as that pointer is
+    never modified so we are just wasting memory, and remove "namidx" too
+    as that can easily be recalculated when writing an armap.
+    
+    Co-Authored-By: Maciej W. Rozycki <macro@orcam.me.uk>
+    
+            PR ld/24600
+            * archive.c (struct orl): Remove "name" indirection.  Delete
+            "namidx".
+            (_bfd_load_armap): Don't copy name.
+            (_bfd_compute_and_push_armap): Adjust for struct orl changes.
+            Use memcpy rather than strcpy when copying symbol name.  Don't
+            release bfd_alloc'd memory when keep_symdefs.
+            (_bfd_bsd_write_armap): Calculate namidx from names.  Adjust
+            for struct orl "name" change.
+            (_bfd_coff_write_armap): Adjust for struct orl "name" change.
+            * archive64.c (_bfd_archive_64_bit_write_armap): Likewise.
+            * coff-rs6000.c (xcoff_write_armap_old): Likewise.
+            (xcoff_write_armap_big): Likewise.
+            * ecoff.c (_bfd_ecoff_write_armap): Calculate namidx from
+            names.  Adjust for struct orl "name" change.
+            * libbfd.h: Regenerate.
+
+diff --git a/bfd/archive.c b/bfd/archive.c
+index 1bff31b6d09..6b3cef692c4 100644
+--- a/bfd/archive.c
++++ b/bfd/archive.c
+@@ -175,9 +175,8 @@ INTERNAL
+ .{* Used in generating armaps (archive tables of contents).  *}
+ .struct orl		{* Output ranlib.  *}
+ .{
+-.  char **name;		{* Symbol name.  *}
++.  char *name;		{* Symbol name.  *}
+ .  bfd *abfd;		{* Containing BFD.  *}
+-.  int namidx;		{* Index into string table.  *}
+ .};
+ .
+ .{* Return an inexistent element reference for archive ARCH.  *}
+@@ -1023,29 +1022,13 @@ _bfd_load_armap (bfd *arch, unsigned int elength ATTRIBUTE_UNUSED,
+        counter < ardata->symdef_count;
+        counter++, set++)
+     {
+-      bfd_size_type namelen = strlen (*map[counter].name) + 1;
+-      char *name = bfd_alloc (arch, namelen);
+-
+-      if (name == NULL)
+-	{
+-	  bfd_set_error (bfd_error_no_memory);
+-	  goto release_symdefs;
+-	}
+-
+-      memcpy (name, *map[counter].name, namelen);
+-      set->name = name;
++      set->name = map[counter].name;
+       set->u.abfd = map[counter].abfd;
+     }
+ 
+   ardata->symdef_use_bfd = true;
+   arch->has_armap = true;
+   return true;
+-
+- release_symdefs:
+-  bfd_release (arch, ardata->symdefs);
+-  ardata->symdef_count = 0;
+-  ardata->symdefs = NULL;
+-  return false;
+ }
+ 
+ /* Iterate over members of archive ARCH starting from FIRST_ONE and
+@@ -2453,8 +2436,7 @@ _bfd_write_armap (bfd *arch, unsigned int elength,
+ 
+ /* Iterate over members of archive ARCH retrieving their symbols and then
+    push the symbols out using PUSH_ARMAP handler, giving it extended name
+-   table length ELENGTH.  Retain the information according to KEEP_SYMTAB.
+-   Note that the namidx for the first symbol is 0.  */
++   table length ELENGTH.  Retain the information according to KEEP_SYMTAB.  */
+ 
+ bool
+ _bfd_compute_and_push_armap
+@@ -2577,20 +2559,15 @@ _bfd_compute_and_push_armap
+ 			    (_("%pB: plugin needed to handle lto object"),
+ 			     current);
+ 			}
+-		      namelen = strlen (syms[src_count]->name);
+-		      amt = sizeof (char *);
+-		      map[orl_count].name = (char **) bfd_alloc (arch, amt);
++		      namelen = strlen (syms[src_count]->name) + 1;
++		      map[orl_count].name = bfd_alloc (arch, namelen);
+ 		      if (map[orl_count].name == NULL)
+ 			goto error_return;
+-		      *(map[orl_count].name) = (char *) bfd_alloc (arch,
+-								   namelen + 1);
+-		      if (*(map[orl_count].name) == NULL)
+-			goto error_return;
+-		      strcpy (*(map[orl_count].name), syms[src_count]->name);
++		      memcpy (map[orl_count].name, syms[src_count]->name,
++			      namelen);
+ 		      map[orl_count].abfd = current;
+-		      map[orl_count].namidx = stridx;
+ 
+-		      stridx += namelen + 1;
++		      stridx += namelen;
+ 		      ++orl_count;
+ 		    }
+ 		}
+@@ -2605,10 +2582,12 @@ _bfd_compute_and_push_armap
+ 
+   /* OK, now we have collected all the data, let's push them out.  */
+   ret = push_armap (arch, elength, map, orl_count, stridx);
++  if (!ret)
++    goto error_return;
+ 
+   free (syms);
+   free (map);
+-  if (first_name != NULL)
++  if (!keep_symtab)
+     bfd_release (arch, first_name);
+ 
+   return ret;
+@@ -2641,6 +2620,7 @@ _bfd_bsd_write_armap (bfd *arch,
+   unsigned int count;
+   struct ar_hdr hdr;
+   long uid, gid;
++  unsigned int namidx = 0;
+ 
+   first = mapsize + elength + sizeof (struct ar_hdr) + SARMAG;
+ 
+@@ -2753,11 +2733,13 @@ _bfd_bsd_write_armap (bfd *arch,
+ 	}
+ 
+       last_elt = current;
+-      H_PUT_32 (arch, map[count].namidx, buf);
++      H_PUT_32 (arch, namidx, buf);
+       H_PUT_32 (arch, firstreal, buf + BSD_SYMDEF_OFFSET_SIZE);
+       if (bfd_write (buf, BSD_SYMDEF_SIZE, arch)
+ 	  != BSD_SYMDEF_SIZE)
+ 	return false;
++
++      namidx += strlen (map[count].name) + 1;
+     }
+ 
+   /* Now write the strings themselves.  */
+@@ -2766,9 +2748,9 @@ _bfd_bsd_write_armap (bfd *arch,
+     return false;
+   for (count = 0; count < orl_count; count++)
+     {
+-      size_t len = strlen (*map[count].name) + 1;
++      size_t len = strlen (map[count].name) + 1;
+ 
+-      if (bfd_write (*map[count].name, len, arch) != len)
++      if (bfd_write (map[count].name, len, arch) != len)
+ 	return false;
+     }
+ 
+@@ -2982,9 +2964,9 @@ _bfd_coff_write_armap (bfd *arch,
+   /* Now write the strings themselves.  */
+   for (count = 0; count < symbol_count; count++)
+     {
+-      size_t len = strlen (*map[count].name) + 1;
++      size_t len = strlen (map[count].name) + 1;
+ 
+-      if (bfd_write (*map[count].name, len, arch) != len)
++      if (bfd_write (map[count].name, len, arch) != len)
+ 	return false;
+     }
+ 
+diff --git a/bfd/archive64.c b/bfd/archive64.c
+index 1201a2f73a7..508810ba5e3 100644
+--- a/bfd/archive64.c
++++ b/bfd/archive64.c
+@@ -247,9 +247,9 @@ _bfd_archive_64_bit_write_armap (bfd *arch,
+   /* now write the strings themselves */
+   for (count = 0; count < symbol_count; count++)
+     {
+-      size_t len = strlen (*map[count].name) + 1;
++      size_t len = strlen (map[count].name) + 1;
+ 
+-      if (bfd_write (*map[count].name, len, arch) != len)
++      if (bfd_write (map[count].name, len, arch) != len)
+ 	return false;
+     }
+ 
+diff --git a/bfd/coff-rs6000.c b/bfd/coff-rs6000.c
+index f945b235cfa..c1adcd5ed49 100644
+--- a/bfd/coff-rs6000.c
++++ b/bfd/coff-rs6000.c
+@@ -1944,7 +1944,7 @@ xcoff_write_armap_old (bfd *abfd, unsigned int elength ATTRIBUTE_UNUSED,
+       const char *name;
+       size_t namlen;
+ 
+-      name = *map[i].name;
++      name = map[i].name;
+       namlen = strlen (name);
+       if (bfd_write (name, namlen + 1, abfd) != namlen + 1)
+ 	return false;
+@@ -2058,7 +2058,7 @@ xcoff_write_armap_big (bfd *abfd, unsigned int elength ATTRIBUTE_UNUSED,
+       arch_info = bfd_get_arch_info (current_bfd);
+       while (map[i].abfd == current_bfd)
+ 	{
+-	  string_length = strlen (*map[i].name) + 1;
++	  string_length = strlen (map[i].name) + 1;
+ 	  if (arch_info->bits_per_address == 64)
+ 	    {
+ 	      sym_64++;
+@@ -2175,7 +2175,7 @@ xcoff_write_armap_big (bfd *abfd, unsigned int elength ATTRIBUTE_UNUSED,
+ 	    {
+ 	      if (arch_info->bits_per_address == 32)
+ 		{
+-		  string_length = sprintf (st, "%s", *map[i].name);
++		  string_length = sprintf (st, "%s", map[i].name);
+ 		  st += string_length + 1;
+ 		}
+ 	      i++;
+@@ -2259,7 +2259,7 @@ xcoff_write_armap_big (bfd *abfd, unsigned int elength ATTRIBUTE_UNUSED,
+ 	    {
+ 	      if (arch_info->bits_per_address == 64)
+ 		{
+-		  string_length = sprintf (st, "%s", *map[i].name);
++		  string_length = sprintf (st, "%s", map[i].name);
+ 		  st += string_length + 1;
+ 		}
+ 	      i++;
+diff --git a/bfd/ecoff.c b/bfd/ecoff.c
+index 906fe44725e..b8665b09e1f 100644
+--- a/bfd/ecoff.c
++++ b/bfd/ecoff.c
+@@ -3115,6 +3115,7 @@ _bfd_ecoff_write_armap (bfd *abfd,
+   bfd_byte *hashtable;
+   bfd *current;
+   bfd *last_elt;
++  unsigned int namidx = 0;
+ 
+   /* Ultrix appears to use as a hash table size the least power of two
+      greater than twice the number of entries.  */
+@@ -3205,7 +3206,7 @@ _bfd_ecoff_write_armap (bfd *abfd,
+ 
+       last_elt = current;
+ 
+-      hash = ecoff_armap_hash (*map[i].name, &rehash, hashsize, hashlog);
++      hash = ecoff_armap_hash (map[i].name, &rehash, hashsize, hashlog);
+       if (H_GET_32 (abfd, (hashtable + (hash * 8) + 4)) != 0)
+ 	{
+ 	  unsigned int srch;
+@@ -3222,8 +3223,10 @@ _bfd_ecoff_write_armap (bfd *abfd,
+ 	  hash = srch;
+ 	}
+ 
+-      H_PUT_32 (abfd, map[i].namidx, (hashtable + hash * 8));
+-      H_PUT_32 (abfd, firstreal, (hashtable + hash * 8 + 4));
++      H_PUT_32 (abfd, namidx, hashtable + hash * 8);
++      H_PUT_32 (abfd, firstreal, hashtable + hash * 8 + 4);
++
++      namidx += strlen (map[i].name) + 1;
+     }
+ 
+   if (bfd_write (hashtable, symdefsize, abfd) != symdefsize)
+@@ -3239,8 +3242,8 @@ _bfd_ecoff_write_armap (bfd *abfd,
+     {
+       bfd_size_type len;
+ 
+-      len = strlen (*map[i].name) + 1;
+-      if (bfd_write (*map[i].name, len, abfd) != len)
++      len = strlen (map[i].name) + 1;
++      if (bfd_write (map[i].name, len, abfd) != len)
+ 	return false;
+     }
+ 
+diff --git a/bfd/libbfd.h b/bfd/libbfd.h
+index 6e737e468df..ed5d7cf382a 100644
+--- a/bfd/libbfd.h
++++ b/bfd/libbfd.h
+@@ -1008,9 +1008,8 @@ extern const struct bfd_iovec _bfd_memory_iovec;
+ /* Used in generating armaps (archive tables of contents).  */
+ struct orl             /* Output ranlib.  */
+ {
+-  char **name;         /* Symbol name.  */
++  char *name;          /* Symbol name.  */
+   bfd *abfd;           /* Containing BFD.  */
+-  int namidx;          /* Index into string table.  */
+ };
+ 
+ /* Return an inexistent element reference for archive ARCH.  */
