@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:37:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.20.0:
+  * Update SQLite baseline to 3.54.1
+  * Avoid a deferred error when PRAGMA cipher_migrate fails
+    before migrating
+- BuildRequire pkgconfig(history) and pkgconfig(readline)
+  instead of readline-devel (spec-cleaner)
+
+-------------------------------------------------------------------
 Wed Sep  9 06:21:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.19.0:

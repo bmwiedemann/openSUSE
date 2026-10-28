@@ -283,4 +283,12 @@
     <comment>Forward sqlcipher 4.19.0 to Factory. Native aarch64 build green, source_validator clean, SONAME unchanged (libsqlcipher.so.0), no rdep rebuilds.</comment>
     <requestid>1376568</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1ae7e52fb7c2b21ff8ae710a359fb347</srcmd5>
+    <version>4.20.0</version>
+    <time>1793206051</time>
+    <user>dimstar_suse</user>
+    <comment>Update sqlcipher to 4.20.0.</comment>
+    <requestid>1393175</requestid>
+  </revision>
 </revisionlist>

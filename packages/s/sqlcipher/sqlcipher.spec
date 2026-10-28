@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           sqlcipher
-Version:        4.19.0
+Version:        4.20.0
 Release:        0
 Summary:        SQLite database encryption
 License:        BSD-3-Clause
@@ -29,8 +29,9 @@ BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
+BuildRequires:  pkgconfig(history)
 BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(zlib)
 # The Tcl extension subpackage is gone: upstream's new build system no longer
 # produces a standalone sqlcipher Tcl binding.
