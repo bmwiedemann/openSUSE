@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 28 07:05:03 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.34.13:
+  * Bump images and versions to Go 1.26.10 and update distroless-iptables
+  * [release-1.34] upgrade .go-version to 1.26.10
+  * hack: match OpenSSL 3.5 CN=127.0.0.1 output in client cert check
+  * kubelet: fix kubeletconfig.cgroupDriver in configz
+  * apiserver: accept large identity header sets with Go 1.27
+  * scheduler: fix negative namespace selector evaluation
+  * Fix flapping pod.status.resourceClaimStatuses
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.26.10`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.34.13/.go-version
+
+-------------------------------------------------------------------
 Mon Sep 28 05:59:42 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.34.12:
