@@ -16,22 +16,20 @@
 #
 
 
-%define cname libplist-2_0-4
-%define cppname libplist++-2_0-4
+%define cname libplist-2_0-12
+%define cppname libplist++-2_0-12
 # only use primary python on Factory...
 %define pythons python3
 # ... and python311 on SLE 15 derivates
 %{?sle15_python_module_pythons}
 Name:           libplist
-Version:        2.6.0
+Version:        2.8.0
 Release:        0
 Summary:        Library for handling Apple Binary and XML Property Lists
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 URL:            https://github.com/libimobiledevice/libplist
 Source:         https://github.com/libimobiledevice/libplist/archive/%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM https://github.com/libimobiledevice/libplist/commit/d7fe479707af57aeedf7e41c08e7fb698cd2e2a3
-Patch0:         0001-cython-Fix-build-with-cython-3.1.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -137,6 +135,7 @@ install -D -m 0644 cython/plist.pxd %{buildroot}%{_includedir}/plist/cython/plis
 
 %files -n plistutil
 %{_bindir}/plistutil
+%{_bindir}/plist2json
 %{_mandir}/man1/plistutil.1%{?ext_man}
 
 %files -n libplist-2_0-devel

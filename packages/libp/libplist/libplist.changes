@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct 20 13:27:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.8.0:
+  * The plist_array_* and plist_dict_* setters now return
+    plist_err_t instead of void so allocation failures are
+    reported; the array and dict iterators are opaque, release
+    them with the new plist_array_free_iter/plist_dict_free_iter
+  * SONAME bump .so.4 -> .so.12 (libplist-2_0-12,
+    libplist++-2_0-12); consumers need a rebuild and may need
+    porting to the new iterator API
+  * JSON and OpenStep coercion for non-native plist types,
+    circular-reference detection and deep-nesting limits in all
+    format writers
+  * plistutil: getopt option parsing and a new --nodepath option
+    to select a single node
+  * Hardening fixes: heap overflow in PLIST_STRING copy, bplist
+    offset-table and UTF-8 decoding checks, plist_copy() size
+    fixes
+- Drop 0001-cython-Fix-build-with-cython-3.1.patch: upstream
+
+-------------------------------------------------------------------
+Sat Aug 15 02:06:10 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to version 2.7.0:
+  * Add plist_new_unix_date(), plist_get_unix_date_val() and
+    plist_set_unix_date_val() taking int64_t UNIX timestamps; the
+    MAC-epoch date functions are deprecated.  This is the API
+    libimobiledevice's configure probes for, removing its int32
+    "time(NULL) - MAC_EPOCH" fallback that breaks in 2038. (boo#1258930)
+  * JSON: support exponent notation per RFC 8259
+  * Fix segmentation fault in plist_sort() and memory leaks
+  * C++ interface: new convenience methods
+- Drop 0001-cython-Fix-build-with-cython-3.1.patch: included upstream
+
+-------------------------------------------------------------------
 Thu Jul 24 07:58:52 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Fix build with cython 3.1+:
