@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 27 21:02:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 7.4.0:
+  * New: Client: Add better disconnect check
+  * Improvements:
+    + VCardAvatars: Validate and normalize sha1
+    + Fallback: Improve range validation
+    + Use secrets module instead of random
+    + OMEMO: Harden bundle parser
+    + OMEMO: Harden devicelist parser
+  * Bug Fixes:
+    + WebSocket: Disconnect on parsing errors
+    + VCardTemp: Guard against base64 decoding errors
+    + Client: Add timeout when waiting for stream end
+    + MDS: Add request_items dependency
+- Changes from version 7.3.0:
+  * New: Add helper method parse_account_invite()
+  * Improvements: OpenPGP: Don't add fallback body text
+  * Bug Fixes: EME: Make name always a string
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Mon Apr 20 20:58:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.2.0:
