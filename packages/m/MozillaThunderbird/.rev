@@ -6636,4 +6636,41 @@ I cannot test locally unfortunately.
     <comment>1</comment>
     <requestid>1387076</requestid>
   </revision>
+  <revision rev="398" vrev="1">
+    <srcmd5>50c45a40ef931fa6bcf8ef954d9188cd</srcmd5>
+    <version>153.6.0</version>
+    <time>1793286586</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 153.6.0 ESR
+  * Sent messages could fail to save without displaying a warning
+  MFSA 2026-122 (bsc#1286955)
+  * CVE-2026-118174 (bmo#2080910)
+    Displaying a message could load an attacker-chosen URL
+    through an OpenPGP key attachment
+  * CVE-2026-118175 (bmo#2081720)
+    Content of other messages could be included when replying to
+    a crafted message
+  * CVE-2026-118176 (bmo#2081141)
+    Bypass of remote UNC path restriction in mailbox: URLs
+  * CVE-2026-118177 (bmo#2080924)
+    Calendar discovery accepted local file and remote network
+    share locations
+  * CVE-2026-118178 (bmo#2075772)
+    RSS feed could redirect its subscription to a local file or
+    network share
+  * CVE-2026-118179 (bmo#2077789)
+    Request forgery via news: links
+  * CVE-2026-118180 (bmo#2080939)
+    Matrix homeserver could redirect the chat session to a local
+    file or network share
+  * CVE-2026-110247 (bmo#2071621)
+    Integer overflow in libmime buffer growth could lead to heap
+    corruption
+  * CVE-2026-113869 (bmo#2075530)
+    Use-after-free in S/MIME decryption during a security device
+    password prompt
+  * CVE-2026-117860 (bmo#2046558)
+    Same-origin policy bypass in the DOM: Navigation component</comment>
+    <requestid>1393557</requestid>
+  </revision>
 </revisionlist>

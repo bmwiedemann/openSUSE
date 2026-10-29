@@ -9,4 +9,5 @@ Icon=thunderbird
 Terminal=false
 Type=Application
 StartupNotify=true
+Categories=Network;GTK;
 MimeType=x-scheme-handler/mailto;
