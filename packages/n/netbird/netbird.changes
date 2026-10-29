@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Thu Oct 29 14:08:00 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.82.0
+  - 🔒 Security and Access Control
+    - Applied the SSH root-login setting to every uid 0 account,
+      not only to the account named root, so aliases such as
+      FreeBSD's toor are covered; an account whose uid cannot be
+      parsed is treated as privileged. #8390
+    - Refused path-bearing LANGUAGE/LC_*, TERM and TZ values from
+      SSH clients before they reach the privileged login/su call
+      for a session. #8388
+    - Matched the account id from the request against the service
+      configuration in the reverse proxy's auth and access log
+      middleware. #8386
+    - Masked credentials in URLs written to the management logs.
+      #8250
+  - 🖥️ Client Improvements
+    - Detected default route changes in the Linux network monitor.
+      #8216
+    - Kept the resolv.conf watch armed while repairing DNS in file
+      mode. #8207
+    - Fixed a deadlock when shutting down the Signal reconnect
+      listener. #8257
+    - Called the disconnect callback on every connection teardown.
+      #8178
+    - Skipped peers without a PTR record in the Kubernetes
+      commands. #8360
+    - Stopped the service and the UI before the Windows installer
+      extracts files. #8255
+    - Moved the macOS Homebrew cask to Homebrew install steps.
+      #7477
+    - Migrated the desktop UI to Tailwind CSS 4 and fixed the
+      frontend npm audit findings, and bumped the wails fork to
+      v3.0.0. #8277, #8370
+    - Added Hebrew to the language picker, and fixed the grammar of
+      the post-install message. #8102, #8242
+    - Removed the non-functional --admin-url flag; it is now
+      deprecated and ignored. #8267
+    - Bumped wireguard-go and removed the replace directives from
+      the embedded client module. #8229, #8280
+  - ⚙️ Management Improvements
+    - Moved network map data reads onto a PostgreSQL read replica
+      when NB_STORE_ENGINE_POSTGRES_REPLICA_DSN is set; without it,
+      reads stay on the primary. #8302
+    - Sped up common queries with new indexes for groups, events,
+      personal access tokens and access logs, an index-friendly
+      inner groups query, a faster posture check cache and fewer
+      last-usage writes for users and tokens. #8289, #8297, #8366,
+      #8290
+    - Pushed network maps when an integrated validator changes a
+      peer's approval outside a login, for example during a
+      periodic EDR sync, so a newly approved peer no longer waits
+      for an unrelated update. #8299
+    - Made the EDR sync interval configurable. #8273
+    - Gave the /api/setup owner account the single account mode
+      domain, so the first JIT user joins it instead of getting an
+      account of their own. #8147
+    - Used the account owner as the inviter for service user
+      invites. #8276
+    - Added pagination to the GetAllPeers call. #8190
+    - Skipped the inactivity expiration rescan on connect when a
+      job is already scheduled, and cancelled peer expiration for
+      accounts that no longer exist. #8287, #8218
+    - Handled a possible nil peer when returning an empty network
+      map, and cleaned NUL bytes from peer metadata strings. #8285,
+      #8219
+  - 🔀 Reverse Proxy
+    - Added --external-ip-map to the proxy's embedded client
+      (NB_PROXY_EXTERNAL_IP_MAP), so a proxy in a container or
+      behind NAT can advertise its public address and peers reach
+      it directly instead of over relay. It needs a fixed,
+      forwarded --wg-port, so it applies to single-account
+      deployments. #8185
+    - Returned the reason when custom domain validation fails.
+      #8122
+    - Fixed the proxy connection lifecycle during acknowledgements.
+      #8220
+  - 📡 Signal and Relay
+    - The relay server now negotiates the protocol version instead
+      of rejecting clients that send a different one, and skips
+      unknown message types after authentication. Current clients
+      still get v1 and the same bytes as before; this lets later
+      client versions change the protocol without upgrading every
+      relay first. The handshake size limit grows from 212 to 8192
+      bytes. #8231
+  - 🏗️ Infrastructure and CI
+    - Restricted the FreeBSD port job to stable releases. #8204
+    - Raised the WASM build size limit to 70MB. #8281
+    - Announced tag-pushed releases on the forum. #8265
+    - Let test suites outside the module reach the e2e harness
+      network, and fixed errcheck findings from the latest
+      golangci-lint. #8260, #8251
+  - 📝 Misc
+    - New translations from Crowdin. #8101
+  - Dashboard (v2.96.0)
+    - Saved target edits made from the network and peer pages.
+      dashboard#863
+    - Refined the RDP certificate prompt. dashboard#874
+    - Fixed crashes: browser translation no longer breaks the
+      dashboard, and resetting a table page while server data loads
+      no longer crashes. dashboard#867, dashboard#868
+    - Updated Next.js to 16.4.3 and Tailwind CSS to v4, fixed the
+      npm audit findings and the white outline flash on button
+      click that came with Tailwind v4. dashboard#852,
+      dashboard#876, dashboard#866
+    - Updated the announcements with the v0.81 features and bumped
+      the embedded WASM client to v0.81.5. dashboard#861,
+      dashboard#859, dashboard#862, dashboard#875
+    - Fixed flaky Control Center draft end-to-end tests.
+      dashboard#869, dashboard#864
+
+-------------------------------------------------------------------
 Mon Oct 26 20:34:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.81.5

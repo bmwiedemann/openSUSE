@@ -2,7 +2,7 @@ Index: netbird/go.mod
 ===================================================================
 --- netbird.orig/go.mod
 +++ netbird/go.mod
-@@ -120,7 +120,6 @@ require (
+@@ -119,7 +119,6 @@ require (
  	github.com/ti-mo/conntrack v0.5.1
  	github.com/ti-mo/netfilter v0.5.2
  	github.com/vmihailenco/msgpack/v5 v5.4.1
@@ -10,10 +10,11 @@ Index: netbird/go.mod
  	github.com/yusufpapurcu/wmi v1.2.4
  	github.com/zcalusic/sysinfo v1.1.3
  	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.67.0
-@@ -365,6 +364,15 @@ require (
- 	rsc.io/qr v0.2.0 // indirect
+@@ -375,3 +374,12 @@ tool (
+ 	github.com/goreleaser/chglog/cmd/chglog
+ 	go.uber.org/mock/mockgen
  )
- 
++
 +ignore (
 +	github.com/netbirdio/netbird/client/ui
 +	github.com/wailsapp/wails/v3
@@ -22,7 +23,3 @@ Index: netbird/go.mod
 +	github.com/wailsapp/wails/v3/pkg/services/notifications
 +	github.com/wailsapp/wails/v3/pkg/w32
 +)
-+
- replace github.com/kardianos/service => github.com/netbirdio/service v0.0.0-20240911161631-f62744f42502
- 
- replace github.com/getlantern/systray => github.com/netbirdio/systray v0.0.0-20231030152038-ef1ed2a27949
