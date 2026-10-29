@@ -28,7 +28,7 @@
 # Latest ABI-stable Plasma (e.g. 5.8 in KF6, but 5.8.95 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           libksysguard6
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
@@ -39,8 +39,6 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source2:        plasma.keyring
 %endif
 Source3:        libksysguard6-rpmlintrc
-# PATCH-ANTIFEATURE-OPENSUSE
-Patch1:         0001-Drop-org.kde.ksysguard.processlisthelper.applyschedu.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libsensors4-devel
 BuildRequires:  pkgconfig

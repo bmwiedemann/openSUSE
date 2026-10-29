@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:10:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.2
+- Changes since 6.8.1:
+  * Update version for new release 6.8.2
+  * Only show 2000 data points in Line Chart applet (kde#527627)
+- Drop patch:
+  * 0001-Drop-org.kde.ksysguard.processlisthelper.applyschedu.patch
+
+-------------------------------------------------------------------
 Tue Oct 20 11:33:16 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.8.1:
