@@ -19,7 +19,7 @@
 %define pkg_major 1.13
 %define with_doxygen 0
 Name:           sofia-sip
-Version:        1.13.18
+Version:        1.13.19
 Release:        0
 Summary:        A RFC3261 compliant SIP User-Agent library
 License:        LGPL-2.1-or-later

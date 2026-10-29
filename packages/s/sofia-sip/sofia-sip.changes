@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 28 08:08:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.13.19:
+  CVE-2026-110658: Fix out-of-bounds read in msg_mime multipart
+
+-------------------------------------------------------------------
 Thu Aug 20 11:58:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.13.18:
@@ -35,7 +41,7 @@ Wed Jun  3 21:25:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
     debian/ubuntu are using.
 - Add patch (various fixes from the debian package):
   * sofia-sip_1.12.11+20110422.1-2.1.diff.gz
-- Package cleanup 
+- Package cleanup
 - Remove compat ifdefs for old SLE versions
 
 -------------------------------------------------------------------

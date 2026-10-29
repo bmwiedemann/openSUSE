@@ -189,4 +189,13 @@
   + [GHA] Skip artifacts upload on public forks</comment>
     <requestid>1372905</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9b22ea4b7fac309103acce01d5a6a5a9</srcmd5>
+    <version>1.13.19</version>
+    <time>1793286578</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13.19:
+  CVE-2026-110658: Fix out-of-bounds read in msg_mime multipart</comment>
+    <requestid>1393565</requestid>
+  </revision>
 </revisionlist>
