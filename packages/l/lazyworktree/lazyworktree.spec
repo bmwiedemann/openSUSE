@@ -17,7 +17,7 @@
 
 
 Name:           lazyworktree
-Version:        1.51.0
+Version:        1.52.0
 Release:        0
 Summary:        Easy Git worktree management for the terminal
 License:        Apache-2.0

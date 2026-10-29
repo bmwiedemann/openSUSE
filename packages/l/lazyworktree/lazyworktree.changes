@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Oct 29 05:57:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.52.0:
+  This release introduces deeper integration with the Herdr
+  multiplexer, enabling worktree creation directly within Herdr,
+  automatic workspace grouping under repositories, and workspace
+  cleanup on worktree deletion. It also improves existing branch
+  and worktree handling when creating from issues, honors
+  background settings for multiplexer sessions, and hardens test
+  isolation.
+  * Features
+    - Herdr Worktree Creation: Added use_herdr_for_workspace_create
+      and herdr_workspace_create_layout configuration options,
+      allowing Herdr to create new worktrees as workspaces grouped
+      under their repository across the CLI, TUI, and shell
+      helpers.
+    - Herdr Repository Grouping: Herdr workspaces now automatically
+      nest under their parent repository in the sidebar via herdr
+      worktree open. This can be toggled via the new worktree_group
+      field on custom commands (defaults to true).
+    - Herdr Workspace Cleanup on Deletion: Deleting worktrees
+      through the TUI, lazyworktree delete, or lazyworktree cleanup
+      now closes associated Herdr workspaces across all running
+      sessions, while preserving the workspace hosting LazyWorktree
+      itself.
+    - Cancel Setup Option: The trust prompt for .wt files on new
+      worktrees now includes a "Cancel Setup" option, which retains
+      the worktree while skipping initialization commands and
+      workspace layout execution.
+  * Bug Fixes
+    - Issue Worktree & Branch Reuse:
+      - Reused existing local branches when creating worktrees from
+        issues (--from-issue / -I) instead of failing with a
+        branch-already-exists error.
+      - Returned the existing worktree path directly when
+        attempting to create a worktree for an issue that already
+        has one.
+      - Detected when an attached issue worktree was deleted
+        externally, prompting the user to run git worktree prune.
+      - Displayed a clear error indicating which worktree already
+        checks out the branch when using --no-workspace.
+    - Multiplexer Integrations:
+      - Respected attach: false configurations for tmux and Zellij
+        when running through CLI exec, launching sessions in the
+        background and printing attach instructions rather than
+        attaching interactively.
+      - Displayed attach instructions in the TUI when launching
+        background Zellij sessions configured with new_tab.
+      - Executed Herdr tab commands through temporary self-deleting
+        scripts with bash -l to resolve quote rewriting and
+        multi-line command issues in interactive shells.
+      - Closed Herdr workspaces associated with orphaned worktree
+        directories removed during cleanup.
+    - Test Isolation:
+      - Cleared Git repository environment variables during test
+        suite runs to prevent tests invoked via Git hooks inside
+        worktrees from altering the host repository.
+  * Dependencies
+    - Updated github.com/charmbracelet/ultraviolet.
+  * Maintenance
+    - Expanded test coverage for issue workflows, worktree hooks,
+      and Herdr integrations.
+    - Updated documentation for Herdr workspace management, CLI
+      execution modes, and cleanup behavior.
+
+-------------------------------------------------------------------
 Fri Oct 23 15:59:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.51.0:
