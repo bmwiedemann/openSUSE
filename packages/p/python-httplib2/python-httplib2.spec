@@ -25,6 +25,11 @@ License:        Apache-2.0 AND MIT AND (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-
 URL:            https://github.com/httplib2/httplib2
 Source:         https://files.pythonhosted.org/packages/source/h/httplib2/httplib2-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/c/certifi/certifi-2026.10.23.tar.gz
+# PATCH-FIX-OPENSUSE httplib2-pytest-forked-teardown.patch -- work around pytest-forked/pytest-forked#67:
+# a module whose last executed test is @pytest.mark.forked can leave pytest's
+# internal SetupState stale, making the next module's first test fail setup
+# with "AssertionError: previous item was not torn down properly".
+Patch0:         httplib2-pytest-forked-teardown.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -38,6 +43,7 @@ BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pyparsing >= 3.1}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 # /SECTION

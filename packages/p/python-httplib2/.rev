@@ -534,4 +534,12 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
     <comment>- update cert bundle to remove eMudra certs (bsc#1286261)</comment>
     <requestid>1392542</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>db10ee107c8e59bdc60a9ea1f06e2593</srcmd5>
+    <version>0.32.0</version>
+    <time>1793286691</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1393639</requestid>
+  </revision>
 </revisionlist>

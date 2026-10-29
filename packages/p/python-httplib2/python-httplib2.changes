@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 28 14:47:55 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Add BuildRequires: python-forked for slfo-main
+- Add httplib2-pytest-forked-teardown.patch: append a trailing
+  non-forked test to tests/test_proxy.py to work around
+  pytest-dev/pytest-forked#67. 
+
+-------------------------------------------------------------------
 Sun Oct 25 20:37:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update cert bundle to remove eMudra certs (bsc#1286261)
