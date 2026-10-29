@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 29 05:49:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.10.3:
+  * Bump version to v0.10.3
+  * Update CHANGELOG
+  * Fix the method for checking the OpenTofu version in testacc
+  * Add support for OpenTofu v1.13
+  * Add support for Terraform v1.17
+  * Update Go to v1.26.10
+  * Improve grammar
+  * Fix typos
+
+-------------------------------------------------------------------
 Tue Jul 14 11:28:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.10.2:
