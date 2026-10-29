@@ -19,7 +19,7 @@ Wed Sep  2 06:03:32 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
   * 2026-08-18: imbeats: rearm listener after failed TLS accept
   * 2026-08-18: msg: serialize turbo snapshot duplication
-  * 2026-08-18: omfile: harden dynafile default containment
+  * 2026-08-18: omfile: harden dynafile default containment (CVE-2026-92709 bsc#1286926)
   * 2026-08-18: fixup! omfwd: support PKCS#11 URIs with ossl TLS
   * 2026-07-02: omfwd: support PKCS#11 URIs with ossl TLS
   * 2026-07-21: mmkubernetes: reload SA token proactively and on HTTP 401

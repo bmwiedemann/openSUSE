@@ -1750,4 +1750,12 @@ Last accepted SR#253447 from opensuse132-syncer to rsyslog 8.4.1 contained an in
     <comment>1</comment>
     <requestid>1386723</requestid>
   </revision>
+  <revision rev="195" vrev="4">
+    <srcmd5>e38414aeba32e4ac179c22692978acb0</srcmd5>
+    <version>8.2608.0</version>
+    <time>1793294280</time>
+    <user>dimstar_suse</user>
+    <comment>update changelog to include CVE and bugnumber (bsc#1286926)</comment>
+    <requestid>1393384</requestid>
+  </revision>
 </revisionlist>
