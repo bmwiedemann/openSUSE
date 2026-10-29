@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Thu Oct 29 06:15:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.2:
+  * Fixed
+    - Upgrade pulldown-cmark to fix exponential parser event growth
+      and duplicate diagnostics after empty wikilink labels
+      (RUSTSEC-2026-0414), and upgrade Tokio to address its I/O
+      safety advisory (RUSTSEC-2026-0386). Release publication now
+      requires a fresh dependency security audit, including during
+      recovery runs.
+    - MD087 recognizes inline suppression of heading-capitalization
+      diagnostics, avoiding false unused-disable warnings (#973).
+    - MD022 enforces configured spacing below headings before lists
+      and code fences, including when MD031 or MD032 is disabled.
+      Overlapping spacing fixes insert the required blank lines
+      only once (#971).
+    - MD067 can safely reorder complete footnote definitions to
+      match their first references. Reordering is atomic, preserves
+      surrounding content and directive scope, and leaves ambiguous
+      Markdown or MDX cases report-only (#969).
+    - MD013 recognizes additional common abbreviations and titles,
+      including numeric references with formatted numbers, while
+      preserving sentence boundaries after ambiguous units and
+      labels. Sentence-spacing checks share this behavior (#966).
+    - MD013 preserves meaningful indentation inside multiline code
+      spans following a bare list marker when reflowing text.
+    - security: patch parser dependencies and gate release
+      publication (41d60e1)
+    - ci: install only the tools required by parity checks
+      (ce014aa)
+    - MD013: preserve code-span indentation after bare list markers
+      (9cf648f)
+- Update to version 0.3.1:
+  * Added
+    - rumdl check-assets reports assets unreferenced in complete
+      Markdown source scans, with explicit include/keep globs and
+      text or versioned JSON output.  Literal filename mentions are
+      kept separately; incomplete scans emit no findings.
+    - MD022 lines-above-mode = "exact" removes surplus blank lines
+      above headings while preserving comments and the existing
+      minimum-spacing default (#838).
+    - Opt-in code-block tool version verification against uv.lock,
+      declared pyproject.toml constraints, or pre-commit/prek hook
+      revisions for Ruff, Black, djLint and SQLFluff. Supports
+      automatic source selection and one configurable policy for
+      mismatched or unresolved versions.
+    - MD013 link-text-punctuation = "trailing" optionally
+      recognizes sentence endings in link text and image alt text
+      while keeping each construct intact.  When enabled, semantic
+      reflow also preserves detected sentence boundaries when
+      merging short lines.
+    - MD063 style = "consistent" infers heading capitalization per
+      document while respecting ignored words, proper names, level
+      filters, and inline disables.
+    - Independent code blocks can share the existing worker pool
+      when error policies permit parallel execution, preserving
+      tool order and applying formatted replacements together from
+      their original source ranges.
+    - MD013 break-words adds project-specific or localized words to
+      the semantic reflow defaults, with case-insensitive Unicode
+      matching.
+    - custom-rules: prototype versioned checker interchange
+      (602a8f7)
+    - code-block-tools: verify pre-commit and prek revisions
+      (0cfe861)
+    - MD096: add opt-in table sorting by named column (43a7858)
+  * Changed
+    - Code-block formatting warnings appear in source order,
+      including single-worker runs.
+    - MD013 semantic reflow joins wrapped list and blockquote prose
+      consistently with paragraphs, including items containing only
+      one semantic sentence.
+    - Reduce silent-formatting work for nested lists and
+      unsupported proof syntax, and avoid copying line text while
+      checking Python-Markdown list structure.
+  * Fixed
+    - Prevent stack overflows when releasing parsed MDX contexts
+      with deeply nested JSX, including headings checked in
+      parallel.
+    - MD013 sentence reflow uses surrounding context to distinguish
+      technical labels (service A., plan B.) from name initials
+      (#965).
+      A lone initial after a lowercase word (edited by A. Smith)
+      can now also split.
+      Custom abbreviations preserve ambiguous initials globally,
+      including when the same letter is used as a technical label.
+    - Silent formatting applies native bare-URL fixes in continued
+      reference definitions and reference labels with empty
+      destinations.
+    - Silent formatting applies native list-indentation fixes when
+      display-math delimiters span blocks and close inside a code
+      span.
+    - MD013 semantic break words keep offsets in the original
+      Unicode text, avoiding incorrect splits after characters
+      whose lowercase forms change byte length.
+    - MD013 semantic reflow keeps balanced parenthetical asides
+      together during sentence detection and counts them as single
+      units in paragraph diagnostics.
+      Overlong asides prefer inner sentence boundaries before
+      further width wrapping; explicit hard breaks remain separate
+      reflow segments.
+    - MD007: honor start-indent at nested list levels (fbf3d10)
+    - MD005: keep adjacent ordered and bullet lists separate (#970)
+      (2c1d543)
+    - MD033: guard HTML conversions with parser byte ranges
+      (dea14d8)
+    - docs: retire AI search and retain keyword search (f9f4f2e)
+    - MD070: detect collisions in list items opened on a quoted
+      item line (21c3149)
+    - MD070: judge nested fences relative to their list item or
+      blockquote (68dbb3e)
+    - mdx: bundle maintained parser and avoid redundant image scans
+      (c281ade)
+    - MD070: skip a fence that ends with its list item (#967)
+      (3be9c0c)
+    - MD030: stop auto-fixing '1.Foo' lines that are paragraph text
+      (abf05df)
+    - MD023: measure headings after quoted items from the quote
+      they sit in (632c88d)
+    - parser: treat the lines of an HTML block inside a blockquote
+      as raw HTML (751f025)
+    - MD044: preserve filename extension capitalization (25fef5b)
+    - code-block-tools: avoid parsing jq output as diagnostics
+      (79a3abd)
+  * Performance
+    - MD044: bound fallback code and link scans (3dedd68)
+    - MD044: index WikiLink destinations once (f1d5c0f)
+    - MD044: reuse URL ranges and character columns (a19906f)
+    - headings: retain anchor ranges across plain attributes
+      (538ecb3)
+    - headings: bound backtick run rescans (08a9f4d)
+    - headings: bound image delimiter rescans (9cb0aee)
+    - headings: build anchor display text in linear time (8945a71)
+    - headings: reuse trailing anchor ranges (fb4af16)
+    - MD063: avoid repeated unmatched tag scans (1303d3a)
+    - MD030: reuse indented block lookups (7797130)
+    - headings: sweep opaque ranges during anchor extraction
+      (80ec3bc)
+    - MD063: sweep heading regions in source order (51602e0)
+    - lint-context: reuse list continuation indentation (f0588d4)
+    - MD031: memoize textual list membership (9a6a4fd)
+    - avoid repeated fence scans in spacing rules (96f6873)
+    - inline-config: index directive code ranges (9415ab6)
+    - inline-config: reuse suppression and comment lookups
+      (692e326)
+    - MD077: index native fence queries (e8e1749)
+    - MD070: index fence closure lookups (37106d6)
+    - workspace: reuse link searches and source columns (f52e95b)
+    - MD057: cache link diagnostic columns (12ab11b)
+    - MD093: cache heading warning columns (8a23e39)
+    - MD084: cache fix offsets and defer Unicode formatting
+      (e4cdbce)
+    - parser: index heading link exclusions (e7a5ec6)
+    - MD089: index image links and warning columns (6c38dc2)
+    - MD095: reuse indexed source positions (93515db)
+    - parser: index comment exclusions and line containment
+      (87f6930)
+    - MD049: cache markup exclusions and source columns (1fb5463)
+    - MD037: index warning exclusions and columns (e5984c1)
+    - emphasis: bound delimiter pairing searches (ef1e7c2)
+    - emphasis: index skip checks and source columns (f612dd0)
+    - MD054: reuse parsed diagnostic positions (2102f60)
+    - MD054: avoid quadratic fix preparation (09873a9)
+    - MD033: index allowed-inside regions (ebb66a5)
+    - MD033: avoid rescanning diagnostic line prefixes (a4f4cdd)
+    - parser: reuse column indexes for inline elements (a4abcc4)
+    - parser: index link columns on long lines (143b17d)
+    - MD034: avoid quadratic scans on URL-heavy lines (5513676)
+    - stdin-batch: avoid rebuilding declared link targets (e4b902d)
+
+-------------------------------------------------------------------
 Mon Oct 19 04:57:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.0:
