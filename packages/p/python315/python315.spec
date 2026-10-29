@@ -124,7 +124,7 @@
 # %%define tarversion %%{version}
 # %%endif
 # We don't process beta signs well
-%define         folderversion 3.15.0
+%define         folderversion %{version}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3159
 %define         abi_kind   %{nil}
@@ -162,8 +162,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.15.0
-%define         tarversion 3.15.0
+Version:        3.15.2
+%define         tarversion %version
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -230,9 +230,6 @@ Patch43:        skip-test_array_alignment.patch
 # PATCH-FIX-OPENSUSE test_UDPLITE_support.patch gh#python/cpython#149078 mcepl@suse.com
 # improve testing of the presence of IPPROTO_UDPLITE support
 Patch49:        test_UDPLITE_support.patch
-# PATCH-FIX-UPSTREAM CVE-2026-82049-tarfile-hard-link.patch bsc#1280459 mcepl@suse.com
-# Follow symlinks when extracting tarfile hard links (GH-157191)
-Patch50:        CVE-2026-82049-tarfile-hard-link.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -620,7 +617,7 @@ EXCLUDE="test_gdb"
 # we patch out the message to recommend zypper in and thus this would fail
 EXCLUDE="$EXCLUDE test_pydoc"
 
-%ifarch %{arm} s390x
+%ifarch %{arm} aarch64 s390x
 # test_multiprocessing_forkserver is racy
 EXCLUDE="$EXCLUDE test_multiprocessing_forkserver"
 # gh#python/cpython#160102
