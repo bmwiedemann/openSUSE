@@ -23,7 +23,7 @@ Summary:        Yahtzee Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://live.gnome.org/Tali
-Source0:        https://download.gnome.org/sources/tali/40/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -32,7 +32,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
 BuildRequires:  pkgconfig(libgnome-games-support-1)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 

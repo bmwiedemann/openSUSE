@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 27 15:05:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Tue Oct 27 15:01:33 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix Source: Do not specify an URL, as the source is _service managed.
+
+-------------------------------------------------------------------
 Fri Jun  5 19:27:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.9+8:

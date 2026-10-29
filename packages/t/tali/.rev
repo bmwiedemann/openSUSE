@@ -302,4 +302,15 @@
   meson_test macro, validate desktop file during build.</comment>
     <requestid>1358743</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>faf0abcd3240a7698920dfc126dbe82f</srcmd5>
+    <version>40.9+8</version>
+    <time>1793286579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version dependencies according to meson.build.
+
+
+- Fix Source: Do not specify an URL, as the source is _service managed.</comment>
+    <requestid>1393566</requestid>
+  </revision>
 </revisionlist>
