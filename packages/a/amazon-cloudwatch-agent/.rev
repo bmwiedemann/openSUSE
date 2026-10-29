@@ -170,4 +170,13 @@
   (bsc#1287160, CVE-2026-78663) (bsc#1287504, CVE-2026-97032) (forwarded request 1392688 from glaubitz)</comment>
     <requestid>1392701</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>dc27ac7772ae4245c4faa9b48a81ad54</srcmd5>
+    <version>1.300073.2</version>
+    <time>1793294305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update github.com/klauspost/compress to v1.20.3
+  (bsc#1288503, CVE-2026-116591) (forwarded request 1393628 from glaubitz)</comment>
+    <requestid>1393648</requestid>
+  </revision>
 </revisionlist>
