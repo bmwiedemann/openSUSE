@@ -72,4 +72,18 @@
     --no-highlight, --supress-feedback.</comment>
     <requestid>1367932</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>068aad72ac96a638f6037fd5c360c222</srcmd5>
+    <version>0.21</version>
+    <time>1793286659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21:
+  * Fix segmentation fault after hiding the keyboard
+  * Add one-handed docking, baseplate opacity
+  * Add CLI argument --wayland-layer for setting layer shell position
+  * Fix missing release on hide after key press
+  * Fix repeat cancel on minimal touch motions
+  * Added Shift+Insert for primary paste</comment>
+    <requestid>1393591</requestid>
+  </revision>
 </revisionlist>

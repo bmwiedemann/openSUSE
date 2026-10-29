@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 29 09:22:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21:
+  * Fix segmentation fault after hiding the keyboard
+  * Add one-handed docking, baseplate opacity
+  * Add CLI argument --wayland-layer for setting layer shell position
+  * Fix missing release on hide after key press
+  * Fix repeat cancel on minimal touch motions
+  * Added Shift+Insert for primary paste
+
+-------------------------------------------------------------------
 Mon Jul 27 07:10:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20:
