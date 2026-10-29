@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 29 12:19:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.1:
+  * Preserve gateway tracing metadata in v3 streams
+  * Escape node metadata in Mermaid graph labels
+
+-------------------------------------------------------------------
 Fri Oct 23 08:25:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.0:

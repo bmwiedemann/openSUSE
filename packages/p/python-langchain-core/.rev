@@ -245,4 +245,12 @@ Built and checked locally on aarch64: 2076 tests pass under python3.13 and
     <comment>Update to 1.7.0</comment>
     <requestid>1392016</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>733fdf230d9dc8b091d15cf92d4688be</srcmd5>
+    <version>1.7.1</version>
+    <time>1793308953</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.7.1.</comment>
+    <requestid>1393708</requestid>
+  </revision>
 </revisionlist>
