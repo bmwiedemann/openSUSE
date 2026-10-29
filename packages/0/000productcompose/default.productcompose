@@ -3766,8 +3766,6 @@ packagesets:
    - quota # reason: dvd:patterns-media-rest_cd_core
    - quota-nfs # reason: dvd:quota-nfs
    - rdesktop # reason: dvd:patterns-media-rest_dvd
-   - rdma-core # reason: dvd:patterns-media-rest_dvd
-   - rdma-ndd # reason: dvd:patterns-media-rest_dvd
    - re2c # reason: dvd:patterns-server-mail_server
    - rgb # reason: dvd:patterns-media-rest_cd_core
    - ristretto # reason: dvd:patterns-xfce-xfce
