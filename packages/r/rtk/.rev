@@ -155,4 +155,12 @@ Local aarch64 build green, 3517 tests pass, rpmlint 0 badness.</comment>
     <comment>Update rtk 0.51.0 to 1.0.1 (major): pipeline engine, OpenCode V2 hooks, proxy renamed to bypass. Builds upstream's Apache-2.0 rtk-oss edition without the BUSL engine; Tumbleweed x86_64/aarch64 green, rpmlint clean.</comment>
     <requestid>1384927</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3560469914edf38267ea2686159d54c0</srcmd5>
+    <version>1.1.0</version>
+    <time>1793286652</time>
+    <user>dimstar_suse</user>
+    <comment>Update rtk to 1.1.0.</comment>
+    <requestid>1393585</requestid>
+  </revision>
 </revisionlist>

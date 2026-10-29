@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:39:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.1.0:
+  * hooks: opt-in wrapping of fish scripts as rtk run --shell fish,
+    integrity verification for rewritten commands
+  * ng: compact Angular build tables safely
+  * cli: -h, --help and help are now handed to the wrapped tool
+  * permissions: fail closed on unreadable settings, match deny
+    and ask rules past assignments and wrappers
+  * pytest: keep error and failure lines, locations and setup
+    errors in summaries; cargo keeps slow-test counts for nextest
+  * gain: exclude zero-input rows from exec time totals; recall
+    uses a 64-bit content hash so colliding outputs are kept
+  * hook, init, discover, json and js fixes, including leaving git
+    unrewritten in Claude Code managed worktrees, and more compact
+    Ruff and SQLFluff output
+- Refresh the vendored dependencies (243 crates); licence tag gains
+  Zlib (foldhash, linked via rusqlite and ratatui)
+- rtk-unbundle-sqlite.patch and rtk-no-deny-warnings.patch
+  still apply unchanged (upstream still bundles sqlite and
+  denies warnings)
+
+-------------------------------------------------------------------
 Thu Oct 15 04:44:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.1 (major 0.x -> 1.x):

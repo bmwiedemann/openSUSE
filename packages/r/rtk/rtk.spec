@@ -17,16 +17,18 @@
 
 
 Name:           rtk
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        CLI proxy that reduces LLM token consumption of dev commands
 # Legal-Review-Notice: rtk itself is Apache-2.0, but the binary statically links
 # the vendored Rust dependencies, so the tag below covers the whole linked set.
-# Derived on this re-vendor with "cargo tree --offline -p rtk --no-default-features
-# -e normal" over the vendored tree (243 crates vendored, 172 in the linked graph):
-# MPL-2.0 comes from colored and option-ext, Unicode-3.0 from the ICU/zerovec
-# crates, ISC from rustls-webpki and untrusted (and from ring, "Apache-2.0 AND ISC"),
-# CDLA-Permissive-2.0 from webpki-roots, BSD-3-Clause from subtle, and MIT from
+# Re-derived on the 1.1.0 re-vendor with "cargo tree --offline -p rtk
+# --no-default-features -e normal" over the vendored tree (243 crates vendored,
+# 162 in the linked graph): MPL-2.0 comes from colored and option-ext,
+# Unicode-3.0 from the ICU/zerovec crates, ISC from rustls-webpki and untrusted
+# (and from ring, "Apache-2.0 AND ISC"), CDLA-Permissive-2.0 from webpki-roots,
+# BSD-3-Clause from subtle, Zlib from foldhash (linked via rusqlite and
+# ratatui; already linked at 1.0.1, previously undeclared), and MIT from
 # twenty-five MIT-only crates (rusqlite, libsqlite3-sys, which, quick-xml, ...).
 # Every dual/triple "OR" expression in the graph is satisfied by Apache-2.0 or MIT,
 # both already named. r-efi offers an LGPL-2.1-or-later option but is
@@ -34,7 +36,7 @@ Summary:        CLI proxy that reduces LLM token consumption of dev commands
 # satisfied because the complete vendor.tar.zst ships in the src.rpm.
 # Built with --no-default-features (upstream's Apache-2.0 rtk-oss edition):
 # the default engine feature pulls the BUSL-1.1 rtk-engine, which is excluded here.
-License:        Apache-2.0 AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND Unicode-3.0
+License:        Apache-2.0 AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND Unicode-3.0 AND Zlib
 URL:            https://github.com/rtk-ai/rtk
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -74,6 +76,8 @@ passing output through unchanged for anything it does not recognise.
 export CARGO_PROFILE_RELEASE_STRIP=none
 # --no-default-features builds upstream's Apache-2.0 rtk-oss edition: the default
 # engine feature links the BUSL-1.1 rtk-engine, which Factory cannot ship.
+# NOTE: keep the braced %{cargo_*} form below — spec-cleaner unbraces it
+# and the unbraced form breaks the build (Unknown option - in cargo_build()).
 %{cargo_build} --no-default-features
 
 %install
