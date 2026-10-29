@@ -303,4 +303,12 @@
     <comment>- Update to release 5.2.1</comment>
     <requestid>1374323</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7712a547e69f971c8bbfd373c28c8359</srcmd5>
+    <version>5.3.0</version>
+    <time>1793286637</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.3.0</comment>
+    <requestid>1393570</requestid>
+  </revision>
 </revisionlist>
