@@ -23,7 +23,7 @@
 
 Name:           wpewebkit
 %define _lto_cflags %{nil}
-Version:        2.54.1
+Version:        2.54.2
 Release:        0
 Summary:        Library for rendering web content, WPE Port
 License:        BSD-3-Clause AND LGPL-2.1-only
