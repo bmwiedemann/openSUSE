@@ -415,4 +415,12 @@
     <comment>Oracle Octobre 2026 CPU fixes</comment>
     <requestid>1393093</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>811e962db5fe834e8a318dc24ae44064</srcmd5>
+    <version>17.0.21.0</version>
+    <time>1793286645</time>
+    <user>dimstar_suse</user>
+    <comment>Octobre 2026 CPU fixes</comment>
+    <requestid>1393598</requestid>
+  </revision>
 </revisionlist>

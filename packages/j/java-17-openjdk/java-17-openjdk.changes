@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 29 07:42:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * JDK-8395142-17u.patch
+    + augment the patch with upstream changes following the
+      annoucement of eMudhra's exit from global SSL/TLS certificate
+      business
+    + it removes the set of impacted root CA certificates related to
+      eMudhra (bsc#1287962, CVE-2026-114820)
+
+-------------------------------------------------------------------
 Tue Oct 27 13:17:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-17.0.21+9 (Octobre 2026 CPU)
