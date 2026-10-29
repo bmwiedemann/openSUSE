@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 29 06:37:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.24.stable.1:
+  * fix: upload rpm checksums to the github release
+  * feat: add sle policy for SLES 16 and SL Micro 6.x
+  * fix: use .microos release suffix for the microos rpm
+  * refactor: move build scripts out of the policy directories
+  * fix: race condition if the user does not have the container
+    selinux in SUSE OS
+  * Label runtime-created /opt/cni dirs as container_file_t
+  * feat: add a specific type for etcd snapshots
+  * adding none to catch-all rule for containerd policy
+  * Revert local-path-provisioner policy
+  * Fix github ownership in sign-and-upload
+  * Add support for Local Path Provisioner volumes in the default
+    path
+
+-------------------------------------------------------------------
 Thu Jun 04 05:30:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.stable.1:
