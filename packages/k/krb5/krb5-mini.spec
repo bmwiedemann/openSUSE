@@ -64,6 +64,7 @@ BuildRequires:  crypto-policies
 Requires:       crypto-policies
 %endif
 Requires(post): %fillup_prereq
+Requires:       logrotate
 Requires:       this-is-only-for-build-envs
 Conflicts:      krb5
 Conflicts:      krb5-client
@@ -201,6 +202,7 @@ install -m 644 %{vendorFiles}/sysconfig.krb5kdc %{buildroot}/%{_fillupdir}/
 # install logrotate files
 mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 644 %{vendorFiles}/krb5-server.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/krb5-server
+install -d -m 0700 %{buildroot}%{_localstatedir}/log/krb5
 find . -type f -name '*.ps' -exec gzip -9 {} \;
 # create rc* links
 mkdir -p %{buildroot}%{_bindir}/
@@ -312,6 +314,7 @@ done
 %config(noreplace,missingok) %{_sysconfdir}/krb5.conf.d/crypto-policies
 %endif
 %config(noreplace) %{_sysconfdir}/logrotate.d/krb5-server
+%dir %attr(0700,root,root) %{_localstatedir}/log/krb5
 %{_fillupdir}/sysconfig.*
 %{_unitdir}/kadmind.service
 %{_unitdir}/krb5kdc.service

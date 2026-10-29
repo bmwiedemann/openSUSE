@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 26 11:46:36 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Package /var/log/krb5 in krb5-server (mode 0700, as created by
+  krb5-log.tmpfiles) so the directory the krb5-server logrotate
+  config rotates is owned by a package, and move krb5-log.conf
+  (the tmpfiles entry creating it) and its %tmpfiles_create call
+  from the main package to krb5-server, where both belong;
+  client-only installs no longer create the server log directory
+- Mark the LDAP schema templates (kerberos.schema, kerberos.ldif)
+  %config(noreplace) like the package's other config files
+- Annotate the /var/lib/kerberos/krb5 and .../user %ghost state
+  directories with their real mode (0755, per krb5.tmpfiles)
+- Drop the duplicated kinit/klist entries from %files client
+- Drop three dead rpmlintrc filters (files-duplicate for css and
+  png files and shlib-policy-missing-suffix); nothing in the
+  current file lists matches them
+
+-------------------------------------------------------------------
 Wed Oct 21 10:05:19 UTC 2026 - Noel Power <nopower@suse.com>
 
 - Prevent denial of Service via crafted forwarded credentials

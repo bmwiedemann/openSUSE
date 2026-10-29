@@ -275,6 +275,7 @@ install -m 644 %{vendorFiles}/sysconfig.krb5kdc %{buildroot}/%{_fillupdir}/
 # install logrotate files
 mkdir -p %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 644 %{vendorFiles}/krb5-server.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/krb5-server
+install -d -m 0700 %{buildroot}%{_localstatedir}/log/krb5
 find . -type f -name '*.ps' -exec gzip -9 {} +
 # create rc* links
 mkdir -p %{buildroot}%{_bindir}/
@@ -327,7 +328,6 @@ done
 
 %post
 /sbin/ldconfig
-%tmpfiles_create krb5-log.conf
 
 %postun -p /sbin/ldconfig
 
@@ -340,6 +340,7 @@ done
 %post server
 %service_add_post krb5kdc.service kadmind.service kpropd.service
 %tmpfiles_create krb5.conf
+%tmpfiles_create krb5-log.conf
 %{fillup_only -n kadmind}
 %{fillup_only -n krb5kdc}
 %{fillup_only -n kpropd}
@@ -419,15 +420,16 @@ done
 %{_libdir}/libkrb5support.so.*
 %{_libdir}/libkrad.so.*
 %{_libdir}/krb5/plugins/tls/*.so
-%{_tmpfilesdir}/krb5-log.conf
 
 %files server
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/logrotate.d/krb5-server
+%dir %attr(0700,root,root) %{_localstatedir}/log/krb5
 %{_unitdir}/kadmind.service
 %{_unitdir}/krb5kdc.service
 %{_unitdir}/kpropd.service
 %{_tmpfilesdir}/krb5.conf
+%{_tmpfilesdir}/krb5-log.conf
 %dir %{krb5docdir}
 %dir %{_datadir}/kerberos/
 %dir %{_datadir}/kerberos/krb5kdc
@@ -442,8 +444,8 @@ done
 %attr(0600,root,root) %config(noreplace) %{_datadir}/kerberos/krb5kdc/kadm5.dict
 %ghost %dir %{_sharedstatedir}/kerberos/
 %ghost %dir %{_sharedstatedir}/kerberos/krb5kdc
-%ghost %dir %{_sharedstatedir}/kerberos/krb5
-%ghost %dir %{_sharedstatedir}/kerberos/krb5/user
+%ghost %dir %attr(0755,root,root) %{_sharedstatedir}/kerberos/krb5
+%ghost %dir %attr(0755,root,root) %{_sharedstatedir}/kerberos/krb5/user
 %ghost %attr(0600,root,root) %config(noreplace) %{_sharedstatedir}/kerberos/krb5kdc/kdc.conf
 %ghost %attr(0600,root,root) %config(noreplace) %{_sharedstatedir}/kerberos/krb5kdc/kadm5.acl
 %ghost %attr(0600,root,root) %config(noreplace) %{_sharedstatedir}/kerberos/krb5kdc/kadm5.dict
@@ -493,8 +495,6 @@ done
 %{_bindir}/sim_client
 %{_bindir}/uuclient
 %{_bindir}/kswitch
-%{_bindir}/kinit
-%{_bindir}/klist
 %{_mandir}/man1/kvno.1%{?ext_man}
 %{_mandir}/man1/kinit.1%{?ext_man}
 %{_mandir}/man1/kdestroy.1%{?ext_man}
@@ -517,8 +517,8 @@ done
 %{_sbindir}/kdb5_ldap_util
 %dir %{_datadir}/kerberos
 %dir %{_datadir}/kerberos/ldap
-%config %{_datadir}/kerberos/ldap/kerberos.schema
-%config %{_datadir}/kerberos/ldap/kerberos.ldif
+%config(noreplace) %{_datadir}/kerberos/ldap/kerberos.schema
+%config(noreplace) %{_datadir}/kerberos/ldap/kerberos.ldif
 %dir %{_libdir}/krb5
 %dir %{_libdir}/krb5/plugins
 %dir %{_libdir}/krb5/plugins/kdb
