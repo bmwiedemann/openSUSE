@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Oct 28 14:19:23 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Regenerate pattern-definition-32bit.txt from the current spec
+  (pre_checkin.sh), as a follow-up to SR 1392459: the file had
+  not been regenerated for several spec generations, so the
+  32-bit pattern definitions no longer matched the patterns:
+  drop entries whose packages left the patterns (yast2-apparmor,
+  systemd-sysvinit, nscd, dmraid, ifplugd, setserial, providers,
+  the system-user-*/system-group-* helpers, terminfo-iterm/
+  -screen, dbus-1-glib, dbus-1-x11, tigervnc and the YaST
+  control-centre packages), follow the renames (terminfo-base,
+  coreutils-systemd, opensuse-welcome-launcher) and the moves
+  between patterns (mailx, zypper, udev-configure-printer), and
+  add the entries added to the patterns since (lvm2, wtmpdb,
+  procps, fwupd, blog-plymouth, supportutils, systemd-coredump,
+  cockpit-packages, myrlyn)
+- Extend the pre_checkin.sh skip list with kdump,
+  kernel_livepatching, immutable_base and hardware: the spec
+  creates no 32-bit marker files for them ("These packages
+  don't generate a 32bit pattern"), so the generator must not
+  emit sections for them either; this also keeps future
+  regenerations free of the truncated rich-dependency lines
+  the generator produces for those patterns
+
+-------------------------------------------------------------------
+Mon Oct 26 21:26:55 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- x11_enhanced pattern: on openSUSE, drop the hard Requires on
+  pattern() = x11. x11_enhanced is session plumbing, not a
+  server, and the default openSUSE session is Wayland (X
+  applications run via Xwayland); the x11 pattern stays the
+  opt-in X session bundle and itself Recommends x11_enhanced,
+  so selecting X still pulls the enhanced plumbing in. The
+  non-openSUSE (SLE / SL Micro) branch keeps the hard
+  requirement unchanged
+
+-------------------------------------------------------------------
 Sun Oct 25 12:23:43 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Modernise the core patterns:

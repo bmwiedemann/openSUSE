@@ -988,7 +988,15 @@ Recommends:     myrlyn
 %endif
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts
+# pattern() = x11 is the opt-in X session bundle. On openSUSE the
+# default session is Wayland (X applications run via Xwayland), so
+# x11_enhanced - session plumbing, not a server - must not force
+# the X pattern in; the x11 pattern itself Recommends
+# x11_enhanced, so selecting X still pulls the enhanced plumbing
+# in. On SLE keep the historical hard requirement unchanged.
+%if !0%{?is_opensuse}
 Requires:       pattern() = x11
+%endif
 # 1057377
 Requires:       glibc-locale
 Requires:       glibc-locale-base
