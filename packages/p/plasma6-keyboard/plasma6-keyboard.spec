@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-keyboard
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Virtual Keyboard for Qt based desktops
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -40,19 +40,18 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-
 BuildRequires:  cmake >= 3.22
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  pkgconfig
-
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(PlasmaQuick)
+BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -62,13 +61,10 @@ BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6VirtualKeyboard) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClientPrivate) >= %{qt6_version}
-
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-scanner)
-
 Requires:       (plasma6-keyboard-kcm if systemsettings6)
-
 # qrc:/qt/qml/org/kde/plasma/keyboard/maim.qml
 Requires:       qt6qmlimport(org.kde.layershell)
 
@@ -108,18 +104,17 @@ desktop-file-validate %{buildroot}%{_kf6_applicationsdir}/org.kde.plasma.keyboar
 %files -f plasma-keyboard.lang
 %license LICENSES/*
 %doc README.md
-%dir %{_kf6_qmldir}/QtQuick/VirtualKeyboard
-%dir %{_kf6_qmldir}/QtQuick/VirtualKeyboard/Styles
-%{_kf6_qmldir}/QtQuick/VirtualKeyboard/Styles/Breeze/
-%dir %{_kf6_qmldir}/org/kde/plasma
-%{_kf6_bindir}/%{rname}
-%{_kf6_configkcfgdir}/plasmakeyboardsettings.kcfg
-%{_kf6_qmldir}/org/kde/plasma/keyboard/
 %{_kf6_applicationsdir}/org.kde.plasma.keyboard.desktop
 %{_kf6_appstreamdir}/org.kde.plasma.keyboard.metainfo.xml
+%{_kf6_bindir}/%{rname}
+%{_kf6_configkcfgdir}/plasmakeyboardsettings.kcfg
 %dir %{_kf6_plasmadir}/keyboard
-%{_kf6_plasmadir}/keyboard/layouts
-%{_kf6_plasmadir}//keyboard/diacritics/
+%{_kf6_plasmadir}/keyboard/diacritics/
+%{_kf6_plasmadir}/keyboard/layouts/
+%dir %{_kf6_qmldir}/org/kde/plasma
+%{_kf6_qmldir}/org/kde/plasma/keyboard/
+%dir %{_kf6_qmldir}/QtQuick
+%{_kf6_qmldir}/QtQuick/VirtualKeyboard/
 
 %files kcm -f kcm_plasmakeyboard.lang
 %{_kf6_applicationsdir}/kcm_plasmakeyboard.desktop
