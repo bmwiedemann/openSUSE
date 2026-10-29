@@ -899,4 +899,12 @@
     <comment>1</comment>
     <requestid>1374994</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>3003ab73a2fbf5253d13ca779ef01feb</srcmd5>
+    <version>1.46.0</version>
+    <time>1793294300</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.46.0 (forwarded request 1392641 from danishprakash)</comment>
+    <requestid>1393643</requestid>
+  </revision>
 </revisionlist>
