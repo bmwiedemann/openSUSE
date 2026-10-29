@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 29 06:15:29 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 5.3.2
+  * Core/LP/QF_LRA: Optimize simplex, bound propagation, LP kernel, and
+    rational ops
+  * Core/Solvers: Fix array solver soundness, lambda rewrites, and
+    store-equality bugs
+  * Core/Theories: Fixes for FP MBQI, integer feasibility, finite sets, and
+    sequences
+  * Proofs: Add clausal SMT proof logging (F*), extend Lean and finite-field
+    proofs
+  * Bindings: Fix and optimize Python FFI, Go/JS (wasm/cgo), and OCaml bindings
+
+-------------------------------------------------------------------
 Sat Oct 17 17:04:42 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 5.3.1:
