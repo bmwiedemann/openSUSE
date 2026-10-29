@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 28 12:05:17 UTC 2026 - Jean Delvare <jdelvare@suse.com>
+
+- drop obsolete patches:
+  * CVE-2019-20633.patch
+  * CVE-2021-45261.patch
+  Upstream fixed these bugs differently in v2.8 so these patches
+  will never be applied there.
+
+-------------------------------------------------------------------
 Sat Oct 24 07:16:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.8.1:
@@ -50,7 +59,7 @@ Sat Apr 12 19:05:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
     pointers
   * Assume C99 or later; previously it assumed C89 or later.
   * Port to current GCC, Autoconf, Gnulib, etc.
-- drop patches included pstream or obsolete:
+- drop patches included upstream or obsolete:
   * abort-when-cleaning-up-fails.patch
   * dont-follow-symlinks-unless-asked.patch
   * ed-style-01-missing-input-files.patch
