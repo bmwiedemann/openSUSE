@@ -1,4 +1,170 @@
 -------------------------------------------------------------------
+Thu Oct 29 07:12:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.1:
+  Large list of update, improvements etc, please check the full
+  release notes:
+  https://github.com/gruntwork-io/terragrunt/releases/tag/v1.2.1
+  * Features
+    - feat: Adding engine auto mTLS in #7182
+  * Bug Fixes
+    - fix: Improving error messages from hcl validate in #7122
+    - fix: Fixing discovery when combined with the symlink
+      experiment in #7178
+    - fix: Fixing unit cache dir race on down or flat runs in #7186
+    - fix: Show proper dependency outputs error in #7184
+    - fix: Keep a plan per Git reference under --out-dir in #7158
+    - fix: Adding support for use_path_style in #7192
+    - fix(config): key run_cmd cache on env and exact argv in #7154
+    - fix: Cleaning up more of v1.2.1 stuff in #7198
+  * Performance
+    - perf: Discovery walk narrowing in #6993
+    - perf: Improving find --json performance in #7055
+    - perf: Adding singleflight for run_cmd in #7008
+  * Documentation
+    - docs: clean up released version gates for v1.2.0 in #7175
+    - docs: Fixing HCL blocks page in #7179
+    - docs(getting-started): add Azure samples with synced
+      statefultabs in #7167
+    - docs: Updating stateful tabs so we know how useful these are
+      in #7181
+    - docs: GCP Getting Started guide in #7169
+    - docs: Docs clean-up for v1.2.1 in #7185
+    - docs: changelog updates in #7189
+    - docs: Upping GCP + Azure docs parity in #7190
+  * Chores
+    - chore(deps): bump jdx/mise-action from 5.1.1 to 5.1.2 in
+      #7174
+    - chore(deps): bump actions/stale from 10.4.0 to 11.0.0 in
+      #7172
+    - chore(deps): bump mikepenz/action-junit-report from 6.6.0 to
+      6.6.1 in #7171
+    - chore(deps): bump actions/upload-artifact from 7.0.1 to 7.0.2
+      in #7170
+    - chore: Bumping to Go v1.27.3 in #7176
+    - chore(security): suppress CVE-2026-93687 (braces,
+      docs/bun.lock) in #7177
+    - chore: Routing Getters through vexec in #7156
+    - chore: Asserting context cache is installed correctly in
+      #6842
+    - chore: Fixing lint issues in #7183
+    - chore: Adding additional linters in #7180
+    - chore(deps): bump go deps from #7187 plus newer patch
+      releases in #7191
+- Update to version 1.2.0:
+  This is a big minor release, and it introduces significant new
+  capabilities in Terragrunt.
+  For a brief overview of the changes in this release, read the
+  blog post.
+  https://www.gruntwork.io/blog/terragrunt-1-2-released
+
+  The changelog in this RPM only contains an overview and the
+  breaking changes. For new features, fixes etc. please check out
+  the full release notes:
+  https://github.com/gruntwork-io/terragrunt/releases/tag/v1.2.0
+
+  This release completes the following experiments:
+  - block-iteration
+    https://docs.terragrunt.com/reference/experiments/completed/#block-iteration
+  - oci
+    https://docs.terragrunt.com/reference/experiments/completed/#oci
+  - bounded-discovery
+    https://docs.terragrunt.com/reference/experiments/completed/#bounded-discovery
+  - catalog-format
+    https://docs.terragrunt.com/reference/experiments/completed/#catalog-format
+  - mutable-generate
+    https://docs.terragrunt.com/reference/experiments/completed/#mutable-generate
+  - optional-dependency-outputs
+    https://docs.terragrunt.com/reference/experiments/completed/#optional-dependency-outputs
+  - optional-hooks
+    https://docs.terragrunt.com/reference/experiments/completed/#optional-hooks
+  - azure-backend
+    https://docs.terragrunt.com/reference/experiments/completed/#azure-backend
+  - version-attribute
+    https://docs.terragrunt.com/reference/experiments/completed/#version-attribute
+  - profiling
+    https://docs.terragrunt.com/reference/experiments/completed/#profiling
+  - dependency-fetch-output-from-state
+    https://docs.terragrunt.com/reference/experiments/completed/#dependency-fetch-output-from-state
+  * Breaking Changes
+    - base64gzip() now uses the Go 1.27 gzip encoder
+      Go 1.27 changed the compressed output of its gzip encoder.
+      Terragrunt v1.1.5 kept base64gzip() on the older output and
+      warned once per run that this was legacy behavior.
+      base64gzip() now returns what the Go 1.27 encoder produces.
+      A resource that compares the encoded value can plan a
+      replacement on the first run after upgrading. An aws_instance
+      with user_data_base64 set from base64gzip() and
+      user_data_replace_on_change set to true is one such resource.
+      Where the encoded value has to stay stable, call the
+      experimental base64gzip_compat(), which returns the v1.1.3
+      output permanently. It is behind the base64gzip-compat
+      experiment and may be renamed or removed:
+
+        terragrunt run --all --experiment base64gzip-compat -- plan
+
+        inputs = {
+          user_data_base64 = base64gzip_compat(file("${get_terragrunt_dir()}/user-data.sh"))
+        }
+
+      This completes the legacy-base64gzip strict control.
+
+      Note
+      Within the 1.0 guarantees
+
+      The 1.0 guarantees make promises about how Terragrunt remains
+      backwards compatible. This change does not break those
+      promises. It is listed under breaking changes so you are
+      aware of it, in case it affects your workflows.
+      base64gzip() still takes a string and returns valid gzipped
+      base64 content that decompresses to the same value, but the
+      encoded value itself changes. base64gzip_compat() keeps the
+      old one.
+    - S3 bootstrapping no longer adds the RootAccess policy
+      statement
+      When bootstrapping an S3 state bucket, Terragrunt attached a
+      bucket policy statement with the Sid RootAccess that granted
+      s3:* on the bucket and its objects to
+      arn:aws:iam::<account-id>:root, an ARN that grants access to
+      the AWS account as a whole rather than only to its root user.
+      That statement has been removed. It widened reach to state
+      files that routinely hold secrets, and the account already
+      owns the bucket.
+      The skip_bucket_root_access config no longer has anything to
+      skip, and is now deprecated. Terragrunt still accepts it, and
+      warns about it when bootstrapping a backend whose config sets
+      it. Enable the skip-bucket-root-access strict control to turn
+      that warning into an error.
+      To grant the AWS account root user access to the state
+      bucket, set the new enable_bucket_root_access config:
+
+        # root.hcl
+        remote_state {
+          # ... other args omitted for brevity ...
+          config = {
+            # ... other config omitted for brevity ...
+            enable_bucket_root_access = true
+          }
+        }
+
+      Buckets that already have the statement keep it. The state
+      backend docs cover how to remove it yourself.
+
+      Note
+      Within the 1.0 guarantees
+
+      The 1.0 guarantees make promises about how Terragrunt remains
+      backwards compatible. This change does not break those
+      promises. It is listed under breaking changes so you are
+      aware of it, in case it affects your workflows.
+      The bucket policy Terragrunt writes is not part of the CLI,
+      HCL, or output schemas the guarantees pin, and
+      skip_bucket_root_access remains valid configuration. Removing
+      the statement is a bug fix, and enable_bucket_root_access
+      restores it. See Bugs in the guarantees for how a bug fix in
+      1.x can change your workflows.
+
+-------------------------------------------------------------------
 Tue Sep 22 04:38:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.6:
