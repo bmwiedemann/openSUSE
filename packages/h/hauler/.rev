@@ -515,4 +515,14 @@
     streaming decoder panic</comment>
     <requestid>1393463</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>4158ec21a39a9a88554cf300d7e8e70f</srcmd5>
+    <version>2.1.2</version>
+    <time>1793286653</time>
+    <user>dimstar_suse</user>
+    <comment>  FIXING WRONG BUG REFERENCE _ THE DROPPED BUG IS INTENTIONAL THANKS!
+
+  * bsc#1288460, CVE-2026-116591, github.com/klauspost/compress/zstd:</comment>
+    <requestid>1393593</requestid>
+  </revision>
 </revisionlist>

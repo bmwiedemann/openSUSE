@@ -2,7 +2,7 @@
 Wed Oct 28 18:29:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to address:
-  * bsc#1288488, CVE-2026-116591, github.com/klauspost/compress/zstd:
+  * bsc#1288460, CVE-2026-116591, github.com/klauspost/compress/zstd:
     crafted ~27 KB two-block zstd frame makes DecodeAll and the
     streaming decoder panic
 
