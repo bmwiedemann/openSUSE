@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 29 13:31:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.17
+  * Changes
+    + Add: Add support for configuring server-side TLSv1.2 and
+      TLSv1.3 pre-shared key callbacks.
+    + Fix: Align the OCSP checking performed by ssl_verify_OCSP()
+      with the behaviour of Tomcat's JSSE based SSLEngine
+      implementation so that a certificate that is itself a trust
+      anchor (whether a self-signed root or a certificate trusted
+      directly via the configured trust store) is not subject to
+      OCSP checking.
+    + Fix: Limit read and write access to a newly created
+      SSLKEYLOGFILE (if any) to the user under which Tomcat Native
+      is running.
+    + Update: Update the recommended minimum version of OpenSSL to
+      3.5.9.
+    + Fix: Generate the HTML changelog as UTF-8.
+
+-------------------------------------------------------------------
 Fri Sep 25 05:28:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.0.16
