@@ -1,0 +1,70 @@
+From 5bb71890754c4dc045ba7203d71fa32fb955bd53 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Tue, 25 Aug 2026 08:48:25 -0700
+Subject: [PATCH] rocm-llvm workaround __noinline__
+
+---
+ clang/lib/Headers/CMakeLists.txt       |  1 +
+ clang/lib/Headers/cuda_wrappers/format | 38 ++++++++++++++++++++++++++
+ 2 files changed, 39 insertions(+)
+ create mode 100644 clang/lib/Headers/cuda_wrappers/format
+
+diff --git a/clang/lib/Headers/CMakeLists.txt b/clang/lib/Headers/CMakeLists.txt
+index ec955c4cef0c..55596776727b 100644
+--- a/clang/lib/Headers/CMakeLists.txt
++++ b/clang/lib/Headers/CMakeLists.txt
+@@ -349,6 +349,7 @@ set(cuda_wrapper_files
+   cuda_wrappers/array
+   cuda_wrappers/cmath
+   cuda_wrappers/complex
++  cuda_wrappers/format
+   cuda_wrappers/new
+ )
+ 
+diff --git a/clang/lib/Headers/cuda_wrappers/format b/clang/lib/Headers/cuda_wrappers/format
+new file mode 100644
+index 000000000000..1d26da455848
+--- /dev/null
++++ b/clang/lib/Headers/cuda_wrappers/format
+@@ -0,0 +1,38 @@
++/*===---- format - CUDA wrapper for <format> ------------------------------===
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ *
++ *===-----------------------------------------------------------------------===
++ */
++
++#ifndef __CLANG_CUDA_WRAPPERS_FORMAT
++#define __CLANG_CUDA_WRAPPERS_FORMAT
++
++#if _GLIBCXX_RELEASE >= 16
++#pragma push_macro("__noinline__")
++#undef __noinline__
++#endif
++
++#include_next <format>
++
++#if _GLIBCXX_RELEASE >= 16
++#pragma pop_macro("__noinline__")
++#endif
++
++#endif // include guard
+-- 
+2.55.0
+

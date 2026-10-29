@@ -199,6 +199,8 @@ Patch6:         0001-SemaConcept.cpp-fix-MSVC-not-all-control-paths-retur.patch
 # Convert from an absolute path <path-to>/libamdhip64.so to using -lamdhip64
 Patch7:         0001-clang-23-link-libamdhip64.patch
 %endif
+# Workaround issue with newer GCC:
+Patch8:         0001-rocm-llvm-workaround-__noinline__.patch
 
 BuildRequires:  cmake
 %if 0%{?fedora} || 0%{?suse_version}
