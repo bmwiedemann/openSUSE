@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 29 05:49:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.99.7:
+  * Fix 7z and rar panics in the archive handler and log recovered panic stacks (#5474)
+  * feat(detectors): add Infisical service token detector (#5445)
+  * feat(detectors): add Fireworks AI API key detector (#5447)
+  * ci(lint): pin the semgrep container image by digest (#5245)
+  * Add xAI analyzer (#5456)
+  * fix(detectors/anypointoauth2): stop treating HTTP 422 as verified (#5386)
+  * Fix --include-wikis help typo and huggingface README description (#5471)
+- Update to version 3.99.6:
+  * Keep GoReleaser temp files off the tmpfs /tmp in releases (#5473)
+- Update to version 3.99.5:
+  * security: bump andybalholm/brotli to v1.2.7 (CVE-2026-111497) (#5472)
+  * Clean up Filesystem source logging for per-source debug (#5465)
+  * Prefer nearest client/tenant IDs for Azure SP secrets (#5449)
+  * Update github-actions (#5414)
+
+-------------------------------------------------------------------
 Fri Oct 23 10:58:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.99.4:
