@@ -30,9 +30,9 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 
-%define         git_ver .0.9589cf6f9
+%define         git_ver .0.58e40801b
 Name:           rdma-core
-Version:        63.0
+Version:        65.0
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -81,6 +81,7 @@ Source6:        get_build.py
 Source100:      README.md
 Patch0:         disable-rdma-interface-renaming.patch
 Patch1:         kernel-boot-do-not-load-module-unsupported-on-s390.patch
+Patch2:         kernel-boot-Remove-Wants-network-pre.target-from-ini.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -388,7 +389,6 @@ are used by the IB diagnostic and management tools, including OpenSM.
 %package -n     %rdmacm_lname
 Summary:        Userspace RDMA Connection Manager
 Group:          System/Libraries
-Requires:       %{name} = %{version}
 Provides:       librdmacm = %{version}
 Obsoletes:      librdmacm < %{version}
 
@@ -457,6 +457,7 @@ easy, object-oriented access to IB verbs.
 %ifarch s390 s390x
 %patch -P 1
 %endif
+%patch -P 2
 
 %build
 
@@ -663,6 +664,7 @@ done
 %{_modprobedir}/truescale.conf
 %{_unitdir}/rdma-hw.target
 %{_unitdir}/rdma-load-modules@.service
+%{_unitdir}/rdma-load-modules@.service.d/
 %dir %{dracutlibdir}
 %dir %{dracutlibdir}/modules.d
 %dir %{dracutlibdir}/modules.d/50rdma
@@ -702,11 +704,13 @@ done
 %if 0%{?dma_coherent}
 %{_mandir}/man3/efadv*
 %{_mandir}/man3/hnsdv*
+%{_mandir}/man3/ionic_dv*
 %{_mandir}/man3/manadv*
 %{_mandir}/man3/mlx5dv*
 %{_mandir}/man3/mlx4dv*
 %{_mandir}/man7/efadv*
 %{_mandir}/man7/hnsdv*
+%{_mandir}/man7/ionicdv*
 %{_mandir}/man7/manadv*
 %{_mandir}/man7/mlx5dv*
 %{_mandir}/man7/mlx4dv*

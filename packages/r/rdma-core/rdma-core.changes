@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct  2 17:55:49 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Remove librdmacm dependency on rdma-core to avoid systemd being pulled
+  in by valkey (bsc#1265295)
+
+-------------------------------------------------------------------
+Fri Sep 18 11:01:10 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add kernel-boot-Remove-Wants-network-pre.target-from-ini.patch
+  to fix network-pre.target being resolved during initrd (bsc#1276748)
+
+-------------------------------------------------------------------
+Mon Sep 14 09:09:43 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to rdma-core v65.0
+  - https://github.com/linux-rdma/rdma-core/releases/tag/v65.0
+
+
+-------------------------------------------------------------------
+Tue Jul  7 10:56:09 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to rdma-core v63.1
+  - https://github.com/linux-rdma/rdma-core/releases/tag/v63.1
+
+-------------------------------------------------------------------
 Tue Jun 23 11:32:03 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to rdma-core v63.0
