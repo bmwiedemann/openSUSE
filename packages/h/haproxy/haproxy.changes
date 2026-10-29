@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Oct 22 12:08:55 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 3.4.7+git57.0faeaeda6: (bsc#1286739)
+  * BUG/MEDIUM: task: do not destroy twice the tasks already killed in mworker_cleantasks()
+  * Revert "BUG/MAJOR: mux-quic: do not crash on connection error after glitch threshold"
+  * BUG/MINOR: h3: fix BUG_ON() crash with glitch on htx_set_eom() failure
+  * BUG/MINOR: h3: fix risk of BUG_ON() crash with glitch on unknown frame
+  * BUG/MEDIUM: h3: fix BUG_ON() crash with glitch after QPACK dec err
+  * BUG/MEDIUM: h3: fix BUG_ON() crash with glitch on GOAWAY parsing
+  * BUG/MEDIUM: h3: fix BUG_ON() crash with glitch on SETTINGS parsing
+  * BUG/MINOR: sample: Fix wrong 'base64urldec' return value check in 'jwt_member_query'
+  * BUG/MEDIUM: bwlim: never burst more than the pending data in input
+  * BUG/MEDIUM: h3: split absolute URIs like the HTTP analysers do on output
+  * BUG/MAJOR: mux-h2: split absolute URIs like the HTTP analysers do on output
+  * BUG/MAJOR: mux-quic: do not crash on connection error after glitch threshold
+  * BUG/MEDIUM: resolvers: reject too long labels when encoding a name
+  * BUILD: makefile: better support git worktrees
+  * BUG/MINOR: mux-h1: Don't subscribe for receives once read0 or error received
+  * BUG/MEDIUM: mux-h1: don't spread-close idle conns with idle-close-on-response
+  * BUG/MINOR: mux-h1: don't forward request trailers named like server name header
+  * BUG/MINOR: mux-h1: search the websocket key in the right message
+  * BUG/MINOR: mux-h1: only rely on the client's method for bodyless responses
+  * BUG/MINOR: mux-h1: convert the <from> argument of h1-case-adjust to lower case
+  * BUG/MEDIUM: mux-h1: don't send chunked responses to HTTP/1.0 clients
+  * BUG/MINOR: h1: forget a previous pass' results when parsing headers only
+  * BUG/MEDIUM: mux-h1: don't lose error responses once a content-length was parsed
+  * BUG/MINOR: mux-h1: report payload parsing glitches to the session
+  * BUG/MEDIUM: mux-h1: don't swap buffers when transferring data with a reserved offset
+  * BUG/MINOR: mux-h1: don't report a 408 error on timeout of a closed connection
+  * BUG/MINOR: mux-h1: don't keep fast-forwarding disabled for the next streams
+  * BUG/MINOR: mux-h1: reset the content-length/chunking state after a 1xx response
+  * BUG/MEDIUM: mux-h1: don't stall when draining more than a buffer of data
+  * BUG/MEDIUM: mux-h1: don't lose the end of the previous chunk in h1_make_chunk()
+  * BUG/MINOR: mux-h1: don't dereference a NULL opposite sedesc in h1_fastfwd()
+  * BUG/MINOR: mux-h1: fix the open streams counter on stream creation failure
+  * BUG/MINOR: mux-h1: only reset the session's timing info on the frontend side
+  * BUG/MINOR: h1: don't use uninitialized start line pointers when restarting
+  * BUG/MEDIUM: mux-h1: don't truncate responses on soft-stop
+  * BUG/MEDIUM: mux-h1: don't truncate the response when closing after draining
+  * BUG/MEDIUM: h1-htx: don't stall on messages ending exactly at the buffer's end
+  * BUG/MEDIUM: h1: don't rewrite the Upgrade header when not cleaning headers
+  * BUG/MINOR: h1: keep accepting unsafe violations after a parser reset
+  * BUG/MEDIUM: h1: make the Connection/Upgrade headers cleanup idempotent
+  * BUG/MEDIUM: mux-h1: Don't close the connection on a payload parsing error
+  * BUG/MEDIUM: cli: Fix parsing of big payloads with dynamically allocated buffer
+  * BUG/MINOR: quic: valid NEW_TOKEN connections are counted as half-open
+  * DOC: config: explain per ACL line limitations
+  * BUG/MEDIUM: peers: keep the earliest sync task deadline
+  * BUG/MINOR: mux_quic: do not crash on SE_SHR_DRAIN shut
+  * BUG/MINOR: check: do not inspect errno if conn FDLESS
+  * BUG/MINOR: mux_quic: prevent RS/SS on unistream with hq-interop
+  * BUG/MINOR: quic: handle EINTR on emission of packets without connection
+  * REGTESTS: quic: check Retry source address on a wildcard listener
+  * BUG/MINOR: quic: use datagram destination as source for version negotiation
+  * BUG/MINOR: quic: use datagram destination as source for stateless reset
+  * BUG/MEDIUM: quic: use datagram destination as source for Retry
+  * MINOR: quic: define a function to emit a datagram on a listener socket
+  * MINOR: quic: use the listener for Retry and Version Negotiation emission
+  * BUG/MEDIUM: stats-file: shm-stats-file be counters not working anymore
+  * DOC: configuration: document AWS-LC compatibility restrictions
+
+-------------------------------------------------------------------
 Wed Oct 14 14:19:11 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 3.4.7+git0.8872a2604: (boo#1285046)

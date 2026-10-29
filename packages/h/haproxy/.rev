@@ -2133,4 +2133,12 @@
     <comment>- Update to version 3.4.7+git0.8872a2604: (boo#1285046)</comment>
     <requestid>1385959</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>21c2794b78766a230716f825c8a705c7</srcmd5>
+    <version>3.4.7+git57.0faeaeda6</version>
+    <time>1793286684</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1393626</requestid>
+  </revision>
 </revisionlist>
