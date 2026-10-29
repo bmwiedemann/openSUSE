@@ -17,7 +17,7 @@
 
 
 Name:           wait4x
-Version:        3.7.2
+Version:        3.7.3
 Release:        0
 Summary:        Wait for a port or a service to enter the requested state
 License:        Apache-2.0
