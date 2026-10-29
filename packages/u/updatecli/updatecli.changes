@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Oct 29 05:37:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.123.0:
+  * Features
+    - refactor: reorganize console output (#10876)
+    - feat: various udash cleanup (#10831)
+    - perf: speed up org-wide sweeps and the e2e suite (#10706)
+  * Bug Fixes
+    - fix(httpclient): don't resend a write that may have reached
+      the server (#10950)
+    - fix(httpclient): honour Retry-After and rate limit reset
+      headers (#10949)
+    - fix(github): commit file deletions when using commitUsingApi
+      (#10946)
+    - fix(terraform/lock): record every platform hash on OpenTofu
+      registry (#10851)
+    - fix(gitlab): stop deriving the client rate limit from
+      response headers (#10878)
+    - fix(git): fetch working branch with singlebranch and
+      commitusingapi (#10822)
+  * Maintenance
+    - fix: add golangci-lint rule to catch httpclient usage
+      (#10877)
+    - deps(golang): Bump minor version for Golang module (#10943)
+    - deps: Bump Golang version to 1.27.3 (#10933)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.6.5 (#10926)
+    - test(maven): isolate HOME to stop tests reading
+      ~/.m2/settings.xml (#10875)
+    - deps(go): bump module github.com/drone/go-scm to v1.42.19
+      (#10918)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.9.6 (#10913)
+    - deps(go): bump module github.com/moby/buildkit to v0.34.0
+      (#10908)
+    - chore(ci): upgrade uv version (#10897)
+    - chore(dockerfile): upgrade node version (#10889)
+    - deps(go): bump module github.com/go-git/go-git/v5 to v5.19.3
+      (#10887)
+    - fix: update github.com/minamijoyo/tfupdate to v0.10.2
+      (#10852)
+    - deps: Bump Golang version to 1.27.2 (#10847)
+    - deps: update golangci-lint to v2.14.0 (#10838)
+    - deps(go): bump module golang.org/x/net to v0.60.0 (#10824)
+    - deps(go): bump module github.com/beevik/etree to v1.8.1
+      (#10815)
+    - deps(golang): Bump minor version for Golang module (#10811)
+    - deps(go): bump module github.com/ProtonMail/go-crypto to
+      v1.5.2 (#10804)
+    - deps(go): bump module github.com/drone/go-scm to v1.42.18
+      (#10798)
+    - deps(go): bump module helm.sh/helm/v3 to v3.22.0 (#10791)
+    - chore(dockerfile): upgrade node version (#10738)
+    - chore(ci): upgrade uv version (#10739)
+    - deps(go): bump module github.com/hashicorp/hcl/v2 to v2.25.0
+      (#10737)
+    - deps(go): bump module github.com/jferrl/go-githubauth to
+      v1.9.1 (#10703)
+
+-------------------------------------------------------------------
 Sun Oct 04 16:49:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.122.1:
