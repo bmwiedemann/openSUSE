@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Thu Oct 29 05:37:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.0:
+  * Notice
+    - VersityGW Security Update: Go crypto/x509 Certificate Distrust
+      This release updates VersityGW’s Go toolchain to include Go’s
+      fix for CVE-2026-111943 (Go issue 82345). The fix blocks
+      certificate chains containing compromised eMudhra
+      intermediate certificates.
+      VersityGW uses Go’s certificate verification when connecting
+      to TLS-protected services, including S3-compatible storage,
+      IAM/OIDC providers, Vault, LDAP, and webhooks. Before the
+      fix, a network attacker able to intercept or redirect one of
+      these connections could potentially use a certificate issued
+      through an affected intermediate to impersonate the service.
+      After the update, Go rejects those chains, and connections to
+      endpoints still presenting them may fail until their
+      certificates are replaced.
+      This fix applies to binaries rebuilt with a patched Go
+      toolchain. Go 1.26.10 and Go 1.27.3 contain the fix; use a
+      later patched release if available. Existing VersityGW
+      binaries must be rebuilt and redeployed. Connections
+      configured to skip certificate verification do not receive
+      this protection. These release artifacts are built with Go
+      1.27.3.
+      Action: Upgrade to this VersityGW release and redeploy. If
+      you operate a TLS endpoint that VersityGW connects to,
+      confirm its certificate chain does not use a distrusted
+      intermediate.
+  * Changelog
+    - 2bece2f chore(deps): bump the dev-dependencies group with 38
+      updates
+    - 626ec9a chore(deps): bump the dev-dependencies group with 8
+      updates
+    - 9503489 docs(helm): note tpl caveats for extraObjects
+    - 1f7e6dd feat(helm): add extraObjects for additional manifests
+    - a987fb2 feat: run functional tests on FreeBSD in CI
+    - 1207dd1 fix(posix): make the listing skip-directory list
+      configurable
+    - c07ffdc fix(webui): send the LocationConstraint when creating
+      a bucket outside us-east-1
+    - 7662573 fix: accept HTTP dates for LastModifiedTime in
+      DeleteObjects
+    - 9debca3 fix: echo the client ETag in InvalidPart errors and
+      stop duplicating request ID headers
+    - a7b91dd fix: honor encoding-type=url in ListObjects and
+      ListObjectsV2
+    - 416acd3 fix: keep object keys literal under fiber v3.6 path
+      normalization
+    - 5d5ece2 fix: keep the version id and delete marker in s3
+      backend GetObjectAttributes
+    - e63998f fix: log the client IP from a trusted proxy header
+    - e92ad0b fix: map quota and no-space errors when creating the
+      multipart upload directory
+    - 7edbd62 fix: only look up the parts count when ObjectParts is
+      requested
+    - 4a9748b fix: prevent OOM kills of FreeBSD functional tests in
+      CI
+    - a664004 fix: race between object uploads and deletes on
+      shared parent directories
+    - 5616f38 fix: reject posix object keys that resolve into the
+      .sgwtmp staging directory
+    - 3715b38 fix: return NoSuchUpload for malformed upload IDs
+      ahead of access and request checks
+    - f88fe63 fix: return the parts count in GetObjectAttributes
+      for multipart objects
+    - 112e50c fix: serialize concurrent CompleteMultipartUpload
+      claims under the publish lock
+    - b4f02dc fix: set the gateway region on the standalone admin
+      server
+    - f513678 fix: skip excluded directories and reserve their keys
+    - 81e287f fix: update staticcheck CI with Go 1.27.2 support
+
+-------------------------------------------------------------------
 Wed Oct 14 04:43:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.9.0:
