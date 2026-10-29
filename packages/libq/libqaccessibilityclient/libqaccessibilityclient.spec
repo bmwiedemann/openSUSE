@@ -24,13 +24,7 @@ ExclusiveArch: do_not_build
 %if "%{flavor}" == "qt6"
 %define qt6 1
 %define pkg_suffix -qt6
-# TODO add kf6-extra-cmake-modules when available
 %define qt6_version 6.5.0
-%endif
-%if "%{flavor}" == "qt5"
-%define qt5 1
-%define pkg_suffix -qt5
-%define qt5_version 5.15.2
 %endif
 %bcond_without released
 Name:           libqaccessibilityclient%{?pkg_suffix}
@@ -50,10 +44,6 @@ BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-%else
-BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Test) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
 %endif
 
 %description
@@ -85,16 +75,11 @@ This library is used when writing accessibility clients such as screen readers.
 %if 0%{?qt6}
 %cmake_qt6 -DBUILD_WITH_QT6:BOOL=TRUE %{extra_options}
 %qt6_build
-%else
-%cmake_kf5 -d build -- %{extra_options}
-%cmake_build
 %endif
 
 %install
 %if 0%{?qt6}
 %qt6_install
-%else
-%kf5_makeinstall -C build
 %endif
 
 # Not that useful for debugging
@@ -107,8 +92,6 @@ rm %{buildroot}%{_bindir}/dumper
 %files
 %if 0%{?qt6}
 %{_kf6_debugdir}/libqaccessibilityclient.categories
-%else
-%{_kf5_debugdir}/libqaccessibilityclient.categories
 %endif
 
 %files -n libqaccessibilityclient%{pkg_suffix}-0
@@ -121,9 +104,6 @@ rm %{buildroot}%{_bindir}/dumper
 %if 0%{?qt6}
 %{_includedir}/QAccessibilityClient6/
 %{_libdir}/cmake/QAccessibilityClient6/
-%else
-%{_kf5_cmakedir}/QAccessibilityClient/
-%{_includedir}/QAccessibilityClient/
 %endif
 
 %changelog

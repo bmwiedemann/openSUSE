@@ -15,4 +15,12 @@
     <comment>Update to 0.6.0</comment>
     <requestid>1171821</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>46671c1bf4214a9f999b6f001dad3ea3</srcmd5>
+    <version>0.6.0</version>
+    <time>1793294258</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the Qt 5 flavor</comment>
+    <requestid>1393189</requestid>
+  </revision>
 </revisionlist>
