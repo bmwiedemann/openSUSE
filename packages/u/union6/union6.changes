@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:10:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.2
+- Changes since 6.8.1:
+  * Update version for new release 6.8.2
+  * AbstractElement: Set elementQuery at construction
+  * IndicatorElement: Set indicator values at construction
+  * TabElement: set hSpace and vSpace at construction
+  * AbstractElement: Check if we already have this element and update it
+  * output/widgets: scale the widget animation duration with the animation speed (kde#527527)
+  * output/quick: Explicitly set the Style instance for TextArea's background (kde#527455)
+  * input/css/breeze: Only round delegate backgrounds in list when highlighted (kde#527087)
+  * output/quick: Also consider parent for inside-{list,table} hints
+  * input/css/breeze: Use large spacing for menubar item horizontal padding (kde#527213)
+  * output/widgets: Don't dereference potential nullptr value (kde#527459)
+
+-------------------------------------------------------------------
 Tue Oct 20 11:35:47 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.8.1:
