@@ -1675,4 +1675,12 @@
     <comment>Update to version 18.24.2 (forwarded request 1387086 from develop7)</comment>
     <requestid>1387087</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>733cb7f6cc42b51e59b32f2ba8d2b45e</srcmd5>
+    <version>18.24.3</version>
+    <time>1793302566</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 18.24.3 (forwarded request 1393679 from develop7)</comment>
+    <requestid>1393680</requestid>
+  </revision>
 </revisionlist>
