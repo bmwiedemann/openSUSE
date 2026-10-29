@@ -401,4 +401,15 @@ Changelog:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1034839</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>d86ba754675faca1437904a2d7074373</srcmd5>
+    <version>4.0~beta17</version>
+    <time>1793286214</time>
+    <user>dimstar_suse</user>
+    <comment>Beta release DAPS 4.0~beta17
+* New feature:
+  Proper revision date and description meta tags for each HTML
+  page for adoc sources</comment>
+    <requestid>1392074</requestid>
+  </revision>
 </revisionlist>

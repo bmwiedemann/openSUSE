@@ -1,4 +1,449 @@
 -------------------------------------------------------------------
+Fri Oct 16 10:39:04 UTC 2026 - Frank Sundermeyer <fs@suse.com> - 4.0~beta17
+
+Beta release DAPS 4.0~beta17
+
+* New feature:
+  For SEO/GEO purposes it is required to have a proper metadata
+  description and a reliable change date for each HTML page that
+  DAPS creates. For DocBook this is achieved by creating an <info>
+  element containing <meta name="description"> and a <revhistory>
+  entry on the HTML chunking  level (DAPS default: <chapter>).
+  This does not work out of the box with AsciiDoc sources. This
+  version adds the missing support by shipping a modified AsciiDoc
+  to DocBook converter, that is used by default (can be changed by
+  unsetting ADOC_CMD_OPTIONS in /etc/daps/config).
+  How to use:
+  In the adoc main file (the one that defines the book or article)
+  use the global attributes :revdate: and :description: in the
+  header (and only there).
+  For all other sections that get processed into separate HTML files
+  use the sectio-specific bracketed syntax:
+  
+  [#my-id]
+  [revdate="YYYY-MM-DD"]
+  [description="DESCRIPTION"]
+  == My Chapter
+
+  alternatively combine all three attributes:
+  
+  [#my-id,revdate="YYYY-MM-DD",description="DESCRIPTION"]
+  == My Chapter
+
+-------------------------------------------------------------------
+Wed Sep 15 14:24:21 UTC 2026 - Frank Sundermeyer <fs@suse.com> - 4.0~beta16
+
+Beta release DAPS 4.0 beta16
+
+* Bugfix:
+  - metadata: 
+    . Add "en-us" as fallback language when no Language
+      can be determnined from the sources
+    . dual character language codes (en,de,..) are expanded to
+      the default 4 character codes (en-us, de-de)
+    . Fix grouping problem with multiple product names
+  - spec file: corrected python requirements, overall cleanup
+  - replaced "which" with type -p
+
+* New features:
+  - list-srcfiles: Added --hashes to show md5sums
+    (https://github.com/openSUSE/daps/issues/756)
+  - possibility to specify your Python binary with $PYTHON in the
+    global settings 
+
+-------------------------------------------------------------------
+Sat Aug 29 12:23:19 UTC 2026 - Matej Cepl <mcepl@suse.com> - 4.0~beta15
+
+- Add explicit requirement for Python interpreter.
+- Overall clean up of the SPEC file, remove all rpmlint warnings
+
+-------------------------------------------------------------------
+Thu Mar 25 10:50:03 UTC 2026 - Frank Sundermeyer <fs@suse.com> - 4.0~beta15
+
+Beta release DAPS 4.0 beta15
+
+* Bugfix:
+  - adoc postprocessing stylesheet: some attributes were not
+    copied
+
+-------------------------------------------------------------------
+Thu Mar 19 18:03:41 UTC 2026 - Frank Sundermeyer <fs@suse.com> - 4.0~beta14
+
+Beta release DAPS 4.0 beta14
+
+* Bugfix:
+  - Fixed an error where remarks were shown by default on
+    HTML/PDF/Webhelp. This error was introduced with 4.0 beta13
+
+-------------------------------------------------------------------
+Tue Mar 17 16:15:51 UTC 2026 - Frank Sundermeyer <fs@suse.com> - 4.0~beta13
+
+Beta release DAPS 4.0 beta13
+
+* Bugfixes:
+  - Make sure no attributes (like xml:lang) get lost when
+    postprocessing adoc
+  - Remove unnecessary stringparams/params, because libxslt
+    (and therefore xsltproc) has a built-in limit for parameters
+    (64 on openSUSE). When exceeded DAPS fails with Error: 2
+  - The subcommand "metadata" now correctly reports multiple product
+    versions from <productname version="1;2;3:x">
+  - The subcommand list-srcfiles now also works with assemblies
+    (https://github.com/openSUSE/daps/issues/718)
+
+* New features:
+  - Allow asciidoc orderlists to be converted into DocBook
+    procedures when using [role="procedure"] with an ordered list
+  - Subcommand metadata now puts out json by default, use --pretty
+    to get human-redable text
+  - Subcommand list-srcfiles has got a new option (--graph) to
+    put out a file list in tree-style.
+  - With --extra-dir or HTML_EXTRA_DIR in the DC-file you can
+    specify an additional directory that is added to HTML builds
+    (e.g. for text files, PDFs, etc)
+    - works for HTML builds only
+    - the directory needs to be a subdirectory or link of the
+      project directory.
+    - link to it's content files from the XMl with a relative path
+      <directory>/FILE
+    - if present and used, it always needs to be added to the
+      subcommands "package-src", "package-html", and "locdrop", too
+      Therefore it is _strongly_ recommended to specify this directory
+      in the DC-file rather than on the command line
+    - (https://github.com/openSUSE/daps/issues/751)
+  - added two new helper stylesheets to daps-xslt/contrib
+     - change-products-on-assembly.xsl add <meta name="productname">
+       tags or move existing <productname> tage to a <meta> tag
+     - add missing metatags (required by the SUSE docs)
+  - asciidoc postprocess: if the conversion of an asciidoc book
+    generates a <preface> with an empty title (will create a
+    clickable empty space in the TOC), the <preface> is converted
+    into <info><abstract>
+
+* Removed features
+  - subcommand "stylecheck" is no longer supported by DAPS
+    It was based on the SUSE style checker, which is no longer
+    maintained and was replaced by
+    https://github.com/openSUSE/suse-vale-styleguide
+    This package can be used on the command line or as a plugin
+    for vim and VSCode/VSCodium and makes a DAPS implmentation
+    obsolete.
+ 
+-------------------------------------------------------------------
+Mon Sep 15 16:09:23 UTC 2025 - Frank Sundermeyer <fs@suse.com> - 4.0~beta12
+
+Beta release DAPS 4.0 beta12
+
+* Bugfixes:
+  - Quoting error in validation for IDs and inlines) caused shell
+    errors in certain cases
+  - elements with lone xrefs were incorrectly considered empty
+    when validating for empty inlines
+
+-------------------------------------------------------------------
+Tue Aug 12 06:44:32 UTC 2025 - Frank Sundermeyer <fs@suse.com> - 4.0~beta11
+
+Beta release DAPS 4.0 beta11
+
+* New features:
+  - Added assembly validation via the assembly rng schema
+    (is automatically done when DC file points to an assembly)
+    (https://github.com/openSUSE/daps/issues/732)
+  - the metadata command now supports json output as well
+    (daps -d <DC> metadata --param "json=1")
+* Bugfixes:
+  - several fixes and enhancements for create-revhistory.xsl
+  - properly distinguish between XSLT params and stringparams
+  - find-empty-inlines.xsl sometimes reported false errors
+
+-------------------------------------------------------------------
+Wed Jul 02 14:40:01 UTC 2025 - Frank Sundermeyer <fs@suse.com> - 4.0~beta10
+
+Beta release DAPS 4.0 beta10
+
+* New features:
+  - support for GIFs (will not be converted to any other format)
+  - added a new stylesheet to create a revhistory entry if missing
+    (daps-xslt/revhistory/create-revhistory.xsl)
+* Bugfixes:
+  - ADOC_POST_STYLE was not made an absolute path and therefore
+    daps failed when using it in a container
+  - Fixed missing BINDIR in Makefile issue
+    (https://github.com/openSUSE/daps/issues/705)
+* Engancemants
+  - improvements for the find-empty-inlines.xsl styleheets
+
+-------------------------------------------------------------------
+Thu Feb 27 10:14:26 UTC 2025 - Frank Sundermeyer <fs@suse.com> - 4.0~beta9
+
+Beta release DAPS 4.0 beta9
+
+* Bugfixes:
+  - rsvg-convert was called even if not installed
+
+-------------------------------------------------------------------
+Wed Feb 26 13:37:55 UTC 2025 - Frank Sundermeyer <fs@suse.com> - 4.0~beta8
+
+Beta release DAPS 4.0 beta8
+
+* Bugfixes:
+  - make rsvg-convert selection work
+  - Make DAPS _always_ exit with error when make fails (On subcommands
+    that do not write a logfile (validation, list-*, *-name, and
+    others) daps always exited with o, even if make failed. This has
+    been fixed.
+
+-------------------------------------------------------------------
+Wed Feb 05 11:37:05 UTC 2025 - Frank Sundermeyer <fs@suse.com> - 4.0~beta7
+
+Beta release DAPS 4.0 beta7
+
+* New feature:
+  - Use rsvg-convert for SVG to PNG conversion if available
+    (fall back to inkscape if not)
+* Bugfix:
+  - metadata: Get rootid from MAIN if not set in DCfile or on
+    command line
+
+-------------------------------------------------------------------
+Tue Sep 17 14:33:53 UTC 2024 - Frank Sundermeyer <fs@suse.com> - 4.0~beta6
+
+Beta release DAPS 4.0 beta6
+
+* Enhancement:
+  - subcommand metadata now also prints out the rootid
+
+-------------------------------------------------------------------
+Tue Sep 10 16:52:27 UTC 2024 - Frank Sundermeyer <fs@suse.com> - 4.0~beta5
+
+Beta release DAPS 4.0.beta5:
+
+* Bugfix:
+  -Adding an option to metadata for writing into file
+   Redirecting the output of to a file or pipe did not work, it
+   resulted in only displaying the last line of the output.
+   Using --output <filename> now writes the metadata to a file.
+
+-------------------------------------------------------------------
+Wed Aug 14 13:09:49 UTC 2024 - Frank Sundermeyer <fs@suse.com>
+
+Beta release DAPS 4.0.beta4:
+
+* New feature:
+  - new subcommand "metadata":
+    * extracts the following metadata from the profiled DocBook XML
+      that contains the given ROOTID (either from DC-file or from
+      --rootid parameter)
+        - meta[@name = 'productname'] and productname/productnumber
+        - info/title or title
+        - info/subtitle or subtitle
+        - meta[@name='title']
+        - meta[@name='description']
+        - meta[@name='social-descr']
+        - revhistory/revision[1]/date
+        - meta[@name='task']
+        - meta[@name='series']
+        - meta[@name='category']
+        - meta[@name='type']
+    * works for "regular" DocBook5 files, for DocBook 5.2 assemblies
+      and for ASCIIDic (via docinfo.xml)
+
+-------------------------------------------------------------------
+Mon Aug  5 12:24:50 UTC 2024 - Frank Sundermeyer <fs@suse.com> - 4.0.beta3
+
+Beta release DAPS 4.0.beta3:
+
+* Improvements
+  - ASCIIDoc: Copy namespaces to root element
+    During the postprocess step, the stylesheets copy some often used
+    namespaces (XLink, XInclude, ITS) to the root element of the result
+    tree.
+
+-------------------------------------------------------------------
+Fri Jul  5 13:54:17 UTC 2024 - Frank Sundermeyer <fsundermeyer@opensuse.org> - 4.0.beta2
+
+Beta release DAPS 4.0.beta2:
+
+* New features:
+  -new command line switch for the "validation" subcommand:
+   "--extended-validation=<VALUE>"
+    Comma-separated list of extended validation checks
+     Possible values:
+       all|ALL: shortcut for all checks listed below
+       ids:     checks for IDs that are not SEO friendly
+       images:  checks for missing and duplicated  images
+       inlines: checks for empty inline elements
+       tables:  checks for invalid tables
+     Example: --extended-validation="ids,tables"
+     Default: unset
+  - new subcommand "docinfo"
+    Shows the following information (if available)
+    Title:
+    Subtitle:
+    Product Name:
+    Product Version:
+    Authors:
+    Language:
+    Type:
+    Root ID:
+    (https://github.com/openSUSE/daps/issues/414)
+* Improvements
+  - debug/verbose output now also shows values for STYLEASSEMBLY
+    STRUCTID for DocBook assembly sources
+  - DAPS ships a customization layer of the assembly staylsheet
+    which prevents writing of xml:base attributes to avoid
+    problems with image paths in fo/pdf. To re-enable xml:base,
+    use the sring parameter
+  - "list-src-files" should work much more relaibly for ASCIIDOC
+    sources now
+  - Documentation has been completely reviewed and anhanced, some
+    4.0 updates are still missing, though
+* Bug fixes:
+  - Path to log file is shown when in debug mode
+    (https://github.com/openSUSE/daps/issues/154)
+  - proper error message is shown when processing dia or ditaa
+    images but the respective packages are not installed
+    (https://github.com/openSUSE/daps/issues/642)
+  - RPM packaging: made poppler-tools an optional dependency
+    (https://github.com/openSUSE/daps/issues/716)
+  - Assemblies: DAPS ships a customization for the assembly
+    stylesheet that removes adding xml:base to the bigfile that
+    is created. With the xml:base entries image paths in fo/pdf
+    are wrong.
+* Removed features:
+  - DC-file must not be a link anymore
+  - The option "--not-validate-tables" is deprecated since tables are
+    now only validated on demand via extended validation (see above)
+    IMPORTANT:
+     If you use "--not-validate-tables" in scripts, you must remove
+     this option, otherwise validation will fail because DAPS will
+     error out
+
+* patch for buggy adoc srcfile listing is obsolete now
+
+-------------------------------------------------------------------
+Thu Jun 20 11:04:35 UTC 2024 - pgajdos@suse.com
+
+- remove dependency on /usr/bin/python3 using
+  %python3_fix_shebang_path macro, [bsc#1212476]
+
+-------------------------------------------------------------------
+Wed Mar 27 13:23:55 UTC 2024 - Frank Sundermeyer <fsundermeyer@opensuse.org>
+
+- Added patch for buggy adoc srcfile listing 
+
+-------------------------------------------------------------------
+Tue Feb 21 11:02:00 UTC 2023 - fsundermeyer@opensuse.org
+
+Beta release DAPS 4.0.beta1:
+
+* New features:
+  - Support for DocBook assemblies
+    - DocBook's topic-based authoring approach, the Assemblies
+      (https://tdg.docbook.org/tdg/5.2/ch06.html) are now supported
+      by DAPS. IF MAIN in the DC-file is set to an assembly, it
+      will automatically be recognized as an assembly by DAPS and
+      be converted to a bigfile that is then processed like a
+      regular DocBook file.
+      In case you assembly consists more than one structure, create
+      a DC-file for each structure and set STRUCTID to the
+      respective structure ID(s) in the DC file(s).
+      NOTE: assembly-support in DocBook is still in development.
+            DAPS requires DocBook 5.2-pre or better!
+    - Limitations:
+      File list commands (e.g. list-srcfiles) will not show the
+      assembly files and included resources, but rather the bigfile.
+      Images will be correctly listed.
+      Similar limitations apply to the package-src and locdrop
+      commands - the packages will contain the bigfile rather
+      than the original sources.
+      Correctly supporting these features is planned for future
+      DAPS releases.
+  - Custom source directories:
+    - Previous DAPS versions required sources to be located in
+      directories xml/ (DocBook) or adoc/ (ASCIIDoc) and
+      images/src/<IMGFORMAT>. These directories had to be in the
+      same directory as the respective DC-file.
+      By setting SRC_DIR and IMG_SRC_DIR you now set custom
+      directories for xml/adoc sources and images. Placing images
+      in subdirectories representing their format is also no longer
+      necessary (but still supported). This allows a much more
+      flexible directory setup.
+      Default settings are the ones inherited from DAPS 3.x:
+      xml/ (DocBook) or adoc/ (ASCIIDoc) and
+      images/src/<IMGFORMAT> (images).
+      Values can be set via DC-file (for document-specific settings)
+      or globally in /etc/daps/config or via the command-line
+      (daps -d <DC> --imgsrcdir="foo/img" --srcdir="foo")
+	!! Refer to the documentation for more details
+      (incl. do's and dont's). !!
+  - Always rebuild:
+    - DAPS makes use of Makefiles to make sure only files that
+      really need to be touched get rebuild. So if you would, for
+      example build a PDF and then rebuild it again while the
+      sources have not changed, DAPS would do nothing but displaying
+      the link of the existing PDF. This considerably speeds up
+      build times for large projects.
+      However, it fails to recognize the necessity of a rebuild when
+      changing stylesheets, or sometimes produces unwanted
+      results. With DAPS 3.x you could specify daps --force to force
+      rebuilding everything.
+      With DAPS 4 rebuilding everything will become the new default.
+      To restore the old behavior, set ALWAYS_REBUILD=no in
+      /etc/daps.config (global setting), in ~/.config/daps/dapsrc
+      (user setting), or in the DC-file (document setting).
+  - New default spell-checker: hunspell
+    - Switching from aspell to hunspell as the default spell checker
+      To restore the old behavior, set SPELL_CHECLKER=aspell in
+      /etc/daps.config (global setting), in ~/.config/daps/dapsrc
+      (user setting), or in the DC-file (document setting). You can
+      specify the spell checker on the command line, see
+      daps spellcheck help
+  - PDF file names:
+    - In DAPS 3.x PDF file names for color PDFs followed the pattern
+      <NAME>_color.pdf. The string "_color" has been removed from the
+      filename. Note that graysacle PDFs continue to use the pattern
+      <NAME>_grayscale.pdf
+      (https://github.com/openSUSE/daps/issues/665)
+  - PNG optimization
+    - In DAPS 3.x, When optimizing PNGs with optipng an exif
+      comment "optipng" was added to the image. However, when
+      editing the image afterwards and saving it without
+      optimization, it would be skipped by subsequent optipng runs,
+      because the exif information was still there. The following
+      has been changed:
+      - exif information is no longer used (also removes dependency
+	on exiftool)
+      - with each optipng run, all images are scanned by optipng
+        using "optipng -o0 -simulate" (which should not introduce
+        a performance penalty compared to looking up EXIF information
+      - if the check reveals a requirement for optimization
+	the image is changed by a second optipng call
+      - using "optipng -fix" also ensures to fix iCCP warnings
+        with libpng > 1.6
+      (https://github.com/openSUSE/daps/issues/513)
+  - Improved file lists for ASCIIDoc sources
+    - list-srcfiles on adoc MAINs now also lists docinfo-files
+      and includes from includes. Conditionals are _not_
+      evaluated, list-srcfiles will always show _all_ included
+      adoc files.
+      (https://github.com/openSUSE/daps/issues/656)
+
+* Bug fixes:
+  - Added documentation on uppercase and lowercase file extensions
+    (good: *.png, bad: *.PNG)
+    (https://github.com/openSUSE/daps/issues/436)
+  - In case a variable was _initially_ assigned with "+=" (VAR+=value)
+    rather than with "=" (VAR=value) a space was added in front of
+    the value.
+  (https://github.com/openSUSE/daps/issues/650)
+
+* Removed features:
+  - automatic detection of a single or default DC-file has been
+    disabled, the DOCCONF_DEFAULT configuration option has been
+    removed
+
+-------------------------------------------------------------------
 Tue Oct 25 15:09:13 UTC 2022 - Frank Sundermeyer <fsundermeyer@opensuse.org>
 
 Stable release DAPS 3.3.2:
@@ -338,7 +783,6 @@ Public/final release DAPS 3.0.0
   - Improve help text for daps-xslt
   - Improve error message for IDs defined multiple times
 
-
 * Removed support for:
   - sourcing DC-files
   - help texts for deprecated daps 1.x commands
@@ -614,7 +1058,6 @@ Stable release DAPS 2.2.0:
   - the documentation has _not_ been updated for this release, so
     new features mentioned above are not yet covered
 
-
 -------------------------------------------------------------------
 Sun Apr 17 10:35:37 UTC 2016 - bwiedemann@suse.com
 
@@ -692,7 +1135,6 @@ Stable release DAPS 2.1.4:
   - Do not set -nocs, hurts us when building Arabic (related: 
     issue #108)
   - Avoid adding version attribute on all elements (commit 3a273d5)
-                                                    
 
 -------------------------------------------------------------------
 Tue Sep 22 13:50:13 UTC 2015 - fsundermeyer@opensuse.org
@@ -1276,7 +1718,6 @@ Version 1.1.6 (Bugfix release):
    - generating a uniquely named graphics tarball for each book
      (when export-dir is set) instead of one that gets overwritten
      with each build
- 
 
 -------------------------------------------------------------------
 Tue Mar 26 07:46:45 UTC 2013 - toms@suse.de
@@ -1427,7 +1868,6 @@ Bugfixes:
   * Only use optipng when it is available
   * Fixed targets warn-images and warn-cap
 
-
 -------------------------------------------------------------------
 Mon Aug  6 15:53:53 UTC 2012 - pgajdos@suse.com
 
@@ -1501,7 +1941,6 @@ Version 1.0.2 (Bugfix Release):
   - User Guide: Significant additions, but still work in progress
   - Updated README.upgrade_from_susedoc_4.x
 
-
 -------------------------------------------------------------------
 Tue Apr  3 10:04:42 UTC 2012 - fsundermeyer@opensuse.org
 
@@ -1527,7 +1966,6 @@ Version 1.0 RC4
 * Bugfix:
   - Not all links were dereferenced with --static
 
-
 -------------------------------------------------------------------
 Fri Mar 30 19:37:13 UTC 2012 - fsundermeyer@opensuse.org
 
@@ -1539,7 +1977,6 @@ Version 1.0 RC3
   - spec-file: Fixed typo on suse-xsl-stylesheet recommends
                python-xml needs to be a general requirement
   - fixed path to callouts and style images for FO
-
 
 * Lots of minor documentation fixes/enhancements 
 
@@ -1653,8 +2090,7 @@ Version 1.0beta1:
             etc/daps/fop/fop-daps.xml by default. A specific fop-daps.xml
             is installed for RedHat and SUSE by default)
   *_OPTIONS (Command line options)
-  
-      
+
 * renaming of parameters and variables
   In order to make parameters and variables "self-speaking" the
   following has been renamed:
@@ -1668,7 +2104,6 @@ Version 1.0beta1:
   - command line switch -e/--envfile has been renamed to
     -d/--docconfig (-e/--envfile will still be supported)
 
-    
 * global parameter --base_dir no longer supported
 
   Instead of specifying --base_dir with daps, you now need to specify a
@@ -2140,7 +2575,6 @@ Wed Jul 20 15:34:47 UTC 2011 - fsundermeyer@opensuse.org
 - added new target showenv that print variables ENVFILE and BASE_DIR;
   can output more variables if needed
 
-
 -------------------------------------------------------------------
 Tue Jul 19 21:16:20 UTC 2011 - fsundermeyer@opensuse.org
 
@@ -2263,6 +2697,4 @@ the successor of susedoc. Major changes compared to susedoc:
 * STDOUT output much less verbose, log file is written
 * Debugging function
 * bugfixes
-
-
 

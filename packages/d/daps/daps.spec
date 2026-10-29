@@ -1,7 +1,7 @@
 #
 # spec file for package daps
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,95 +16,81 @@
 #
 
 
+%define pkg_version 4.0beta17
+%define ourpython %{?primary_python}%{!?primary_python:python3}
+
 Name:           daps
-Version:        3.3.2
+Version:        4.0~beta17
 Release:        0
-
-%define docbuilddir    %{_datadir}/daps
-
 Summary:        DocBook Authoring and Publishing Suite
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Publishing/XML
 URL:            https://github.com/openSUSE/daps
-Source0:        %{name}-%{version}.tar.bz2
-Source1:        %{name}.rpmlintrc
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
+Source0:        %{name}-%{pkg_version}.tar.bz2
 BuildArch:      noarch
-
+BuildRequires:  %{ourpython}-base
+BuildRequires:  %{ourpython}-lxml
 BuildRequires:  ImageMagick
-BuildRequires:  automake
-BuildRequires:  bash >= 4
 BuildRequires:  dia
 BuildRequires:  docbook-xsl-stylesheets >= 1.77
 BuildRequires:  docbook_4
-BuildRequires:  docbook_5
 BuildRequires:  fdupes
-BuildRequires:  inkscape
 BuildRequires:  jing
 BuildRequires:  libxml2-tools
-BuildRequires:  libxslt
 BuildRequires:  libxslt-tools
-BuildRequires:  poppler-tools
-BuildRequires:  python3-lxml
+BuildRequires:  sgml-skel
 BuildRequires:  suse-xsl-stylesheets
 BuildRequires:  svg-dtd
-BuildRequires:  xerces-j2
-BuildRequires:  xml-apis
 BuildRequires:  xmlgraphics-fop >= 0.94
 BuildRequires:  xmlstarlet
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:asciidoctor)
+
+%if 0%{?suse_version} >= 1600
+BuildRequires:  rsvg-convert
+%else
+BuildRequires:  inkscape
+%endif
 
 # In order to keep the requirements list as short as possible, only packages
 # needed to build EPUB, HTML and PDF are really required
 # All other packages required for editing or more exotic output formats
 # are recommended rather than required
 
-PreReq:         libxml2
-PreReq:         sgml-skel
-
+Requires:       %{ourpython}-base
+Requires:       %{ourpython}-lxml
 Requires:       ImageMagick
-Requires:       bash >= 4
-Requires:       dia
 Requires:       docbook-xsl-stylesheets >= 1.77
 Requires:       docbook5-xsl-stylesheets >= 1.77
 Requires:       docbook_4
 Requires:       docbook_5
-Requires:       inkscape
 Requires:       java >= 1.8.0
 Requires:       jing
-Requires:       libxslt
-Requires:       make
-Requires:       poppler-tools
-Requires:       python3-lxml
+Requires:       (remake or make)
+# Prefer rsvg-convert if available
+Requires:       (rsvg-convert or inkscape)
 Requires:       suse-xsl-stylesheets
+Requires:       svg-dtd
 Requires:       svg-schema
-Requires:       xerces-j2
-Requires:       xml-apis
 Requires:       xmlgraphics-fop >= 0.94
 Requires:       xmlstarlet
 Requires:       zip
 Requires:       rubygem(%{rb_default_ruby_abi}:asciidoctor)
+Requires(post): sgml-skel
 
-Recommends:     aspell-en
 Recommends:     calibre
-Recommends:     ditaa
-Recommends:     epubcheck
-Recommends:     exiftool
-%ifarch aarch64 %{ix86} x86_64
+Recommends:     dia
 Recommends:     libreoffice-draw
-%endif
 Recommends:     optipng
-Recommends:     perl-checkbot
-Recommends:     remake
-Recommends:     suse-doc-style-checker
-Recommends:     suse-documentation-dicts-en
+Recommends:     poppler-tools
 Recommends:     w3m
 Recommends:     xmlformat
+Recommends:     (aspell-en or hunspell)
 
-# Internal XEP package:
-Suggests:       xep
+# Only in the Documentation:Tools project
+Recommends:     ditaa
+Recommends:     epubcheck
+Recommends:     perl-checkbot
+Recommends:     suse-documentation-dicts-en
 
 %description
 DocBook Authoring and Publishing Suite (DAPS)
@@ -118,80 +104,48 @@ DAPS also includes tools that assist you when writing DocBook XML:
 validator, link checker, spellchecker, editor macros and stylesheets for
 converting DocBook XML.
 
-
-
-
-
-
-
-
-
-
-#--------------------------------------------------------------------------
-
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -n %{name}-%{pkg_version}
 
-# Correct shebang line as suggested in
-# https://lists.opensuse.org/opensuse-packaging/2018-03/msg00017.html
-sed -i '1 s|/usr/bin/env python|/usr/bin/python|' libexec/daps-xmlwellformed \
-  libexec/getentityname.py \
-  libexec/validate-tables.py
+%python3_fix_shebang_path libexec/*
 
-#--------------------------------------------------------------------------
 %build
 %configure --docdir=%{_defaultdocdir}/%{name} --disable-edit-rootcatalog
-%__make %{?_smp_mflags}
+%make_build
 
-#--------------------------------------------------------------------------
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
+rm -v %{buildroot}%{_defaultdocdir}/%{name}/{COPYING*,INSTALL.adoc}
 
 # create symlinks:
-%fdupes -s $RPM_BUILD_ROOT/%{_datadir}
+%fdupes %{buildroot}/%{_datadir}
+%fdupes -s %{buildroot}/%{_sysconfdir}
 
-#----------------------
 %post
-update-xml-catalog
-exit 0
+update-xml-catalog || :
 
-#----------------------
 %postun
-update-xml-catalog
-exit 0
+update-xml-catalog || :
 
-#----------------------
-%posttrans
-
-#----------------------
 %files
-%defattr(-,root,root)
+%doc BUGS README* html
+%license COPYING*
 
-%dir %{_datadir}/%{name}
-%dir %{_sysconfdir}/%{name}
-%dir %{_defaultdocdir}/%{name}
-
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/xml/%{name}
-%dir %{_datadir}/xml/%{name}/schema
-
-# Catalogs
+%config %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/xml/catalog.d/%{name}.xml
 
-# Config files
-%config %{_sysconfdir}/%{name}/*
+%{_bindir}/ccecho
+%{_bindir}/daps
+%{_bindir}/daps-autobuild
+%{_bindir}/daps-check-deps
+%{_bindir}/daps-init
+%{_bindir}/daps-xmlformat
 
-# Man/Doc
-%doc %{_mandir}/man1/*.1%{ext_man}
-%doc %{_defaultdocdir}/%{name}/*
-
-%{_bindir}/*
 %{_datadir}/bash-completion/completions/%{name}
 %{_datadir}/emacs/site-lisp/docbook_macros.el
-%{_datadir}/xml/daps/schema/*
-%{docbuilddir}
-#----------------------
+%{_datadir}/%{name}
+%{_datadir}/xml/%{name}
+
+%{_mandir}/man1/*.1%{?ext_man}
 
 %changelog
