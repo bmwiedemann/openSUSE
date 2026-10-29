@@ -120,4 +120,38 @@
       [ DEPRECATED ]</comment>
     <requestid>1386249</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1775c51e3309d57dc6ec1dd40882cbd4</srcmd5>
+    <version>2.3.0</version>
+    <time>1793300714</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.3.0
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+  2.3.0     2026-10-26 19:55:58-04:00 America/New_York
+      [ SECURITY ]
+      * PR #1866: JSON serializer should not leak file/line detail
+        (Russell @veryrusty Jenkins)
+      [ BUG FIXES ]
+      * GH #1794: Add support for HTTP QUERY method. Old style plugins that
+        register query will die at load, and apps with their own sub query
+        will get a redefine warning. (Mohammad S Anwar)
+      * PR #1845: Fix Windows-only test failures (David Precious)
+      * GH #1861: Fix numbers being serialized to JSON as strings. The UTF-8
+        scan in Dancer2::Serializer::JSON gave numeric values a string form,
+        which JSON::XS and JSON::PP before 2.97 then encoded as quoted strings.
+        (David Precious)
+      * GH #1863: Fix the JSON serializer modifying the data it is given.
+        Hash keys needing UTF-8 decoding were deleted from the caller's hash,
+        losing those entries, and arrayrefs were decoded in place.
+        (David Precious)
+      [ ENHANCEMENTS ]
+      * None
+      [ DOCUMENTATION ]
+      * None
+      [ DEPRECATED ]
+      * None
+      [ MISC ]
+      * None</comment>
+    <requestid>1393665</requestid>
+  </revision>
 </revisionlist>
