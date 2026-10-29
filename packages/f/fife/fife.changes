@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:19:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.3 (upstream snapshot release with minor
+  fixes only):
+  * Raise cmake_minimum_required to 3.15, fixing the build with
+    current CMake
+  * Remove Python 2 compatibility remnants
+  * Drop upstream-adopted patches: swig4.patch (unsupported SWIG
+    flags removed in-tree) and fife-boost_1_77.patch (missing
+    <algorithm> include fixed upstream)
+- Keep fife-boost_1_85.patch: bfs::extension uses are still present
+  upstream
+- Add fife-cmake-cmp0078.patch: keep legacy swig_add_library target
+  names, fixing the configure failure with current CMake
+- Link against legacy libGL (OpenGL_GL_PREFERENCE=LEGACY):
+  renderbackendopengl.cpp uses fixed-function entry points absent
+  from libOpenGL
+- Add BuildRequires: make for the %make_build call
+- Spec cleanup (spec-cleaner: drop Group tags, https URL,
+  %make_build; name patches in tags, list only the shipped
+  python3 dir)
+
+-------------------------------------------------------------------
 Wed Sep 24 15:24:12 CEST 2025 - aschnell@suse.com
 
 - libboost_system was removed upstream (bsc#1249599)

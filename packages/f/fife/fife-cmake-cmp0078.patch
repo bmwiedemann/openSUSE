@@ -1,0 +1,20 @@
+diff -urN fifengine-0.4.3.orig/CMakeLists.txt fifengine-0.4.3/CMakeLists.txt
+--- fifengine-0.4.3.orig/CMakeLists.txt	2026-10-18 11:49:23.209716229 +0200
++++ fifengine-0.4.3/CMakeLists.txt	2026-10-18 11:49:23.461744469 +0200
+@@ -6,6 +6,16 @@
+ 
+ project(fifengine C CXX)
+ 
++# swig_add_library() names its target <name> with policy CMP0078 NEW
++# (the default with this cmake_minimum_required), colliding with the
++# core add_library(fife) below and breaking install(TARGETS _fife).
++# Keep the legacy _fife/_fifechan target names this build expects.
++# NOTE: this must precede include(${SWIG_USE_FILE}); function definitions
++# snapshot the policy state at parse time, so a later SET has no effect.
++if(POLICY CMP0078)
++  cmake_policy(SET CMP0078 OLD)
++endif()
++
+ #------------------------------------------------------------------------------
+ #                                 Version                                          
+ #------------------------------------------------------------------------------

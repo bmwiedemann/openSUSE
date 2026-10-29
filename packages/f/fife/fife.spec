@@ -1,7 +1,7 @@
 #
 # spec file for package fife
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Nelson Marques <nmarques@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,24 +20,25 @@
 %define sover 0_4_2
 %define oname fifengine
 Name:           fife
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        The Flexible Isometric Free Engine, a 2D game engine
 License:        LGPL-2.1-or-later
-Group:          Amusements/Games/Other
-URL:            http://www.fifengine.de
+URL:            https://www.fifengine.de
 Source:         https://github.com/fifengine/fifengine/archive/%{version}/%{oname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM swig4.patch -- removed flags that are not supported with swig 4.0
-# See https://github.com/fifengine/fifengine/commit/d14f232f4cd9a00b05d6872957070e8c020f515d
-Patch0:         swig4.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         fife-boost_1_77.patch
-# PATCH-FIX-UPSTREAM https://github.com/fifengine/fifengine/issues/1085
-Patch2:         fife-boost_1_85.patch
+# PATCH-FIX-UPSTREAM fife-boost_1_85.patch -- https://github.com/fifengine/fifengine/issues/1085
+Patch0:         fife-boost_1_85.patch
+# PATCH-FIX-OPENSUSE fife-cmake-cmp0078.patch -- keep legacy
+# swig_add_library target names (_fife, _fifechan): CMP0078 NEW (default
+# since this release raised cmake_minimum_required to 3.15) names the
+# module target <name>, which collides with the core add_library(fife)
+# and breaks install(TARGETS _fife)
+Patch1:         fife-cmake-cmp0078.patch
 BuildRequires:  cmake
 BuildRequires:  fifechan-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  swig
 BuildRequires:  tinyxml-devel
@@ -69,7 +70,6 @@ game using Python interfaces.
 
 %package -n libfife%{sover}
 Summary:        The Flexible Isometric Free Engine, a 2D game engine
-Group:          System/Libraries
 
 %description -n libfife%{sover}
 FIFE stands for Flexible Isometric Free Engine and is a cross platform
@@ -78,7 +78,6 @@ game using Python interfaces.
 
 %package -n python3-%{name}
 Summary:        Python 3 extensions for the FIFE engine
-Group:          Amusements/Games/Other
 Requires:       python3
 
 %description -n python3-%{name}
@@ -88,7 +87,6 @@ game using Python interfaces.
 
 %package devel
 Summary:        Development files for the FIFE 2D game engine
-Group:          Development/Libraries/Other
 Requires:       libfife%{sover} = %{version}
 Requires:       python3-fife = %{version}
 
@@ -99,16 +97,15 @@ game using Python interfaces.
 
 %prep
 %setup -q -n %{oname}-%{version}
-# only apply the patch if swig 4 is used (currently: Tumbleweed and Leap 15.6)
-%if 0%{?suse_version} > 1500 || (0%{?suse_version} == 1500 && 0%{?sle_version} > 150500)
 %patch -P 0 -p1
-%endif
 %patch -P 1 -p1
-%patch -P 2 -p1
 
 %build
 %define __builddir py3
+# renderbackendopengl.cpp uses legacy fixed-function entry points
+# (glColorPointer/glTexCoordPointer), only in libGL, not libOpenGL
 %cmake \
+    -DOpenGL_GL_PREFERENCE=LEGACY \
     -Dbuild-library=ON \
     -Drend-camzone=ON \
     -Drend-grid=ON \
@@ -116,7 +113,7 @@ game using Python interfaces.
     -Dbuild-python=ON \
     -DPYTHON_SITE_PACKAGES=%{python3_sitearch} \
     -DCMAKE_CXX_FLAGS='-DUSE_BOOST_FILESYSTEM_V3'
-make VERBOSE=1 %{?_smp_mflags}
+%make_build
 cd ..
 
 %install
@@ -142,7 +139,9 @@ cd ..
 %{_libdir}/*.so.*
 
 %files -n python3-%{name}
-%{python3_sitearch}/*
+# Only the fife dir is installed (no egg-info/dist-info); an extra
+# files glob matching nothing would fail the build
+%{python3_sitearch}/fife
 
 %files devel
 %doc CHANGELOG.md README.md

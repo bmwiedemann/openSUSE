@@ -105,4 +105,12 @@
     <comment>- libboost_system was removed upstream (bsc#1249599)</comment>
     <requestid>1307360</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c4551699cd3cc247caf82d2bd3d132d4</srcmd5>
+    <version>0.4.3</version>
+    <time>1793286400</time>
+    <user>dimstar_suse</user>
+    <comment>Update fife to 0.4.3 with current-CMake/SWIG/boost fixes (forwarded request 1392525 from pluskalm)</comment>
+    <requestid>1393494</requestid>
+  </revision>
 </revisionlist>
