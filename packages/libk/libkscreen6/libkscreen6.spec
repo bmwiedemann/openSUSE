@@ -23,7 +23,7 @@
 %define rname libkscreen
 %define sover   8
 Name:           libkscreen6
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -42,7 +42,7 @@ BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KWayland) >= %{_plasma6_bugfix}
-BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.21.0
+BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.23.0
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
