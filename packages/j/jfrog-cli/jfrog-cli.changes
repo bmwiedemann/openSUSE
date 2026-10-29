@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Oct 29 07:20:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.129.0:
+  * New Features
+    - [jfrog-cli-artifactory] XRAY-159079 - Send the lockfile's git
+      repository with Zero Touch Remediation on npm install #572
+    - [jfrog-cli-security] Support Remote And Virtual Repos In jf
+      xr status #926
+  * Bug Fixes
+    - [jfrog-cli-security] XRAY-145828 - Uv curation audit fix #925
+    - [jfrog-cli-security] XRAY-158874 - Exclude relative paths
+      #927
+    - [jfrog-cli-security] XRAY-167222 - Fixed ruby gems dep tree
+      creation #928
+  * Internal Changes
+    - [build-info-go] RTECO-000 - Bump Maven extractor to 2.44.0
+      and Gradle4 extractor to 4.35.10 #433
+    - [jfrog-cli-artifactory] RTECO-0000 - Bump go version to
+      1.26.9 in go.mod #577
+    - [jfrog-cli-core] RTECO-0000 - Bump Go to 1.26.10 #1626
+    - [jfrog-cli-security] Update dependencies #929
+    - [jfrog-client-go] RTECO-0000 - Bump Go to 1.26.10 #1401
+  * Other Changes
+    - [jfrog-cli] RTECO-00000 - Notify downstream repos on CLI
+      release 74873a984eed
+    - [jfrog-cli-artifactory] RTECO-485 - Search only platform
+      digest folders for multi-arch images #578
+
+-------------------------------------------------------------------
+Thu Oct 29 07:16:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.128.0:
+  * New Features
+    - [jfrog-cli-core] feat: add JFROG_CLI_CERTS_DIR env support
+      #1607
+  * Bug Fixes
+    - [jfrog-cli-security] Fix missing CA results when a watch with
+      no CVE rule applied #915
+    - [jfrog-cli-security] Fix License Violations On Unchanged Root
+      Components During PR Diff Scans #909
+  * Internal Changes
+    - [jfrog-cli-security] Addressed a gap in fully resolving the
+      CVE-2026-92892 vulnerability in JFrog CLI v2.127.0.
+  * Other Changes
+    - [jfrog-cli] RTECO-0000 - Skip NuGet release bundle test on
+      unsupported Artifactory versions #3728
+    - [jfrog-cli] JGC-537 - Skip stub FindOperation test in full
+      builds #3732
+    - [jfrog-cli-security] Remove unzip/7z from the Advanced
+      Security prerequisites check #920
+    - [jfrog-cli-security] XRAY-161169 - Normalization #916
+    - [jfrog-cli-security] XRAY-161169 - Rename config entity #921
+    - [jfrog-client-go] XRAY-159079 - Send the lockfile's git
+      repository with a Zero Touch Remediation request #1395
+
+-------------------------------------------------------------------
 Wed Oct 14 04:48:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.127.0:
