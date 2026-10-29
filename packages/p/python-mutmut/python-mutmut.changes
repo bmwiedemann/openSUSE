@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 29 10:14:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.8.1:
+  * Fix crash when mypy reports no errors, and stats
+    collection crash with pytest 9.2
+  * Fix enums with custom __init__ failing to import,
+    and float literals too large for a float
+  * No equivalent mutants inside string escape sequences;
+    honour "pragma: no mutate" in multi-line statements
+
+-------------------------------------------------------------------
 Sun Sep 13 17:03:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.8.0:

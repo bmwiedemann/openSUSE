@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-mutmut
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        Python mutation testing
 License:        BSD-3-Clause
@@ -104,7 +104,7 @@ sed -i -E 's/"uv_build>=[0-9.]+,<[0-9.]+"/"uv_build"/' pyproject.toml
 %pre
 %python_libalternatives_reset_alternative mutmut
 
-%files %{python_files}
+%files %python_files
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/mutmut
