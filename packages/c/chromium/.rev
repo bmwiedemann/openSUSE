@@ -6786,4 +6786,12 @@ v2: Remove ccache configuration and stat printing</comment>
 v3: with gn dependency</comment>
     <requestid>1386953</requestid>
   </revision>
+  <revision rev="557" vrev="1">
+    <srcmd5>f98cfe0169c7d933d5f02281cbce432b</srcmd5>
+    <version>156.0.8078.73</version>
+    <time>1793286345</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 156.0.8078.73 (boo#1288218)</comment>
+    <requestid>1393266</requestid>
+  </revision>
 </revisionlist>
