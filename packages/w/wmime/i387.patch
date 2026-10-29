@@ -1,0 +1,62 @@
+From 7e053d277ae0c738633dc226752a04864e27966a Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 29 Oct 2026 14:07:17 +0100
+Subject: [PATCH] vmime: quantize ascii percentage count in guessBestEncoding
+References: https://github.com/kisli/vmime/pull/373
+
+Workaround testsuite failures when the i387 FPU is used.
+
+---
+ src/vmime/text.cpp        | 6 +++---
+ src/vmime/wordEncoder.cpp | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/vmime/text.cpp b/src/vmime/text.cpp
+index 2c14110b..12d2916a 100644
+--- a/src/vmime/text.cpp
++++ b/src/vmime/text.cpp
+@@ -269,7 +269,7 @@ shared_ptr <text> text::newFromString(const string& in, const charset& ch) {
+ 
+ void text::createFromString(const string& in, const charset& ch) {
+ 
+-	double asciiPercent = 0;
++	unsigned int asciiPercent = 0;
+ 
+ 	removeAllWords();
+ 
+@@ -282,12 +282,12 @@ void text::createFromString(const string& in, const charset& ch) {
+ 
+ 	if (!alwaysEncode) {
+ 		const auto asciiCount = utility::stringUtils::countASCIIchars(in.begin(), in.end());
+-		asciiPercent = in.length() == 0 ? 1 : static_cast<double>(asciiCount) / static_cast<double>(in.length());
++		asciiPercent = in.length() == 0 ? 100 : static_cast<double>(asciiCount) * 100 / static_cast<double>(in.length());
+ 	}
+ 
+ 	// Cf. wordEncoder::guessBestEncoding for details
+ 
+-	if (alwaysEncode || asciiPercent < 0.60) {  // less than 60% ASCII chars
++	if (alwaysEncode || asciiPercent < 60) {  // less than 60% ASCII chars
+ 
+ 		appendWord(make_shared <word>(in, ch));
+ 		return;
+diff --git a/src/vmime/wordEncoder.cpp b/src/vmime/wordEncoder.cpp
+index 404a57b4..17488046 100644
+--- a/src/vmime/wordEncoder.cpp
++++ b/src/vmime/wordEncoder.cpp
+@@ -308,10 +308,10 @@ wordEncoder::Encoding wordEncoder::guessBestEncoding(
+ 	const size_t asciiCount =
+ 		utility::stringUtils::countASCIIchars(buffer.begin(), buffer.end());
+ 
+-	const double asciiPercent =
+-		buffer.length() == 0 ? 1 : static_cast<double>(asciiCount) / static_cast<double>(buffer.length());
++	const unsigned int asciiPercent =
++		buffer.length() == 0 ? 100 : static_cast<double>(asciiCount) * 100 / static_cast<double>(buffer.length());
+ 
+-	if (asciiPercent < 0.60) {
++	if (asciiPercent < 60) {
+ 		return ENCODING_B64;
+ 	} else {
+ 		return ENCODING_QP;
+-- 
+2.56.0
+

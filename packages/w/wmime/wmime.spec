@@ -1,7 +1,7 @@
 #
-# spec file for package libvmime
+# spec file for package wmime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,41 @@
 #
 
 
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%bcond_with gsasl
+%else
+%bcond_without gsasl
+%endif
+
 Name:           wmime
-%define lname	libwmime2
-Version:        1.1.0
+%define lname	libwmime3
+Version:        1.2.0
 Release:        0
 Summary:        Library for working with RFC 5322, MIME messages and IMAP/POP/SMTP
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/grommunio/wmime/
-
 Source:         https://github.com/grommunio/wmime/releases/download/wmime-%version/wmime-%version.tar.zst
 Source2:        https://github.com/grommunio/wmime/releases/download/wmime-%version/wmime-%version.tar.asc
 Patch1:         nodate.patch
+Patch2:         i387.patch
 BuildRequires:  cmake >= 2.8.3
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} >= 1600
+BuildRequires:  glibc-gconv-modules-extra
+%endif
 %if 0%{?rhel} || 0%{?fedora_version}
 BuildRequires:  gnutls-devel
 %else
 BuildRequires:  libgnutls-devel
 %endif
-%if !0%{?sle_version}
+%if %{with gsasl}
 BuildRequires:  libgsasl-devel
 %endif
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(cppunit)
 %if 0%{?with_pdf}
 BuildRequires:  ImageMagick
 BuildRequires:  doxygen
@@ -79,8 +89,8 @@ Internet. The library offers features to build a mail client.
 Summary:        Development files for vmime, an e-mail message library
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
-Obsoletes:      libvmime-devel < 0.9.2+git204
-Provides:       libvmime-devel = 0.9.2+git204
+Obsoletes:      libvmime-devel < 0.9.2+git224
+Provides:       libvmime-devel = 0.9.2+git224
 
 %description devel
 VMime is a C++ class library for working with RFC5322 and
@@ -94,20 +104,16 @@ This subpackage contains the headers for the library's API.
 
 %build
 %if 0%{?with_pdf}
-pushd doc/book/
+cd doc/book/
 make book_pdf
-popd
+cd -
 %endif
 
 %cmake \
-        -DCMAKE_INSTALL_PREFIX:PATH="%_prefix" \
-        -DINCLUDE_INSTALL_DIR:PATH="%_includedir" \
-        -DSYSCONF_INSTALL_DIR:PATH="%_sysconfdir" \
-        -DSHARE_INSTALL_PREFIX:PATH="%_datadir" \
-        -DCMAKE_INSTALL_LIBDIR:PATH="%_libdir" \
+	-DCMAKE_INSTALL_LIBDIR:PATH="%_libdir" \
 	-DVMIME_SENDMAIL_PATH:STRING="%_sbindir/sendmail" \
 	-DVMIME_BUILD_SAMPLES:BOOL=OFF \
-%if 0%{?sle_version}
+%if %{without gsasl}
 	-DVMIME_HAVE_SASL_SUPPORT:BOOL=OFF \
 %endif
 	-DVMIME_HAVE_TLS_SUPPORT:BOOL=ON \
@@ -129,11 +135,28 @@ cp -a doc/book/book.pdf "$b/%_docdir/%name/"
 %cmake_install
 find "$b" -type f -name "*.la" -delete
 
+%check
+# rebuild to workaround https://github.com/kisli/vmime/issues/369
+%define __builddir testbuild
+orig="$PWD"
+%cmake \
+%if %{without gsasl}
+	-DVMIME_HAVE_SASL_SUPPORT:BOOL=OFF \
+%endif
+	-DVMIME_SENDMAIL_PATH:STRING=/bin/true \
+	-DVMIME_BUILD_DOCUMENTATION:BOOL=OFF \
+	-DVMIME_BUILD_SAMPLES:BOOL=OFF \
+	-DVMIME_BUILD_TESTS:BOOL=ON \
+	-DBUILD_SHARED_LIBS:BOOL=OFF
+%cmake_build
+cd "$orig"
+%ctest
+
 %ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING
-%_libdir/libwmime.so.2*
+%_libdir/libwmime.so.*
 
 %files devel
 %_includedir/vmime

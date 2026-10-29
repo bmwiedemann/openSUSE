@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 27 16:02:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * Removed extraneous `const` qualifiers on return types that
+    prevented feeding generate() return values to another function
+    as movable rvalues.
+  * Over-encoding ASCII words in RFC 6532 mode is avoided.
+  * The Date: line parser is now in line with RFC 5322, abolishing
+    recognition for single-letter time zones previously availablein
+    RFC 822.
+  * Added support for IMAP ID extension.
+  * Added support for Cygwin.
+  * Header folding is now in accordance with RFC 5322/2047.
+  * In e.g. To: address lists, '(' and '<' were erroneously parsed
+    as comment and start of address even when they appeared in a
+    quoted display name, which has been fixed.
+- Add i387.patch
+
+-------------------------------------------------------------------
 Thu Jul 24 23:09:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.0

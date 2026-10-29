@@ -1,7 +1,7 @@
 Format: 1.0
 Source: wmime
 Architecture: any
-Version: 1.0.0
+Version: 1.2.0
 DEBTRANSFORM-RELEASE: 1
 Maintainer: openSUSE <opensuse@opensuse.org>
 Homepage: https://opensuse.org/
