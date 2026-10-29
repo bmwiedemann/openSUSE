@@ -44,4 +44,16 @@
 - enable generation of the profiling header in all cases</comment>
     <requestid>1379138</requestid>
   </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>47ef165f5d35483f4a3d3a03692c2246</srcmd5>
+    <version>7.2.2</version>
+    <time>1793294303</time>
+    <user>dimstar_suse</user>
+    <comment>- Cherrypick fix from newer release to fix reported bug
+  Adds:
+  0001-SWDEV-568260-Make-PAL-SetMemAccess-identical-in-beha.patch
+  0002-SWDEV-568260-Validate-sub-buffer-coverage-in-hipMemS.patch
+- Add 0001-clr-remove-__noinline__-keyword.patch to fix on newer GCC</comment>
+    <requestid>1393644</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 27 20:54:47 UTC 2026 - Jeremy Newton <alexjnewt@gmail.com>
+
+- Cherrypick fix from newer release to fix reported bug
+  Adds:
+  0001-SWDEV-568260-Make-PAL-SetMemAccess-identical-in-beha.patch
+  0002-SWDEV-568260-Validate-sub-buffer-coverage-in-hipMemS.patch
+- Add 0001-clr-remove-__noinline__-keyword.patch to fix on newer GCC
+
+-------------------------------------------------------------------
 Fri Sep 18 00:00:00 UTC 2026 - Jeremy Newton <Jeremy.Newton@amd.com>
 
 - Add reproducible.patch to fix reproducible builds

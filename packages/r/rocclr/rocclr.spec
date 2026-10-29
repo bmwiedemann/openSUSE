@@ -158,6 +158,13 @@ Patch3:         0001-rocclr-replace-std-filesystem-exists-with-access.patch
 # Fix for reproducible builds
 Patch4:         reproducible.patch
 
+# Backport: https://github.com/ROCm/rocm-systems/pull/2451
+Patch5:         0001-SWDEV-568260-Make-PAL-SetMemAccess-identical-in-beha.patch
+Patch6:         0002-SWDEV-568260-Validate-sub-buffer-coverage-in-hipMemS.patch
+
+# Fix for newer GC:C
+Patch7:         0001-clr-remove-__noinline__-keyword.patch
+
 BuildRequires:  cmake
 %if %{with docs}
 BuildRequires:  doxygen

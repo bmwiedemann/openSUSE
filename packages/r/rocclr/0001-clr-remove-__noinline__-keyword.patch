@@ -1,0 +1,24 @@
+From d199ff6777388dc04b00739a4211acefd0610f7f Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Tue, 25 Aug 2026 10:17:54 -0700
+Subject: [PATCH] clr remove __noinline__ keyword
+
+---
+ hipamd/include/hip/amd_detail/host_defines.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/projects/clr/hipamd/include/hip/amd_detail/host_defines.h b/projects/clr/hipamd/include/hip/amd_detail/host_defines.h
+index f0d1b573753c..eb334d2d8843 100644
+--- a/hipamd/include/hip/amd_detail/host_defines.h
++++ b/hipamd/include/hip/amd_detail/host_defines.h
+@@ -353,7 +353,6 @@ typedef __hip_internal::int64_t __hip_int64_t;
+ 
+ #define __global__
+ 
+-#define __noinline__
+ #define __forceinline__ inline
+ 
+ #define __shared__
+-- 
+2.55.0
+
