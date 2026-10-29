@@ -7,4 +7,12 @@
     <comment>Add oxygen6-sounds</comment>
     <requestid>1350027</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3352e03ca3e02438438a7035fc50e069</srcmd5>
+    <version>6.8.2</version>
+    <time>1793286283</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.8.2 (forwarded request 1393228 from krop)</comment>
+    <requestid>1393329</requestid>
+  </revision>
 </revisionlist>

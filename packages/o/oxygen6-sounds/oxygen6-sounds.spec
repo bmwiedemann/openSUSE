@@ -25,7 +25,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           oxygen6-sounds
-Version:        6.6.3
+Version:        6.8.2
 Release:        0
 Summary:        Oxygen sounds
 License:        LGPL-3.0-or-later AND CC-BY-3.0
@@ -36,6 +36,7 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core)
 Provides:       oxygen-sounds5 = %{version}
 Obsoletes:      oxygen-sounds5 < %{version}
 Provides:       oxygen5-sounds = %{version}
