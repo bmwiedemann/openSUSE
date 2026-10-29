@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 29 10:16:32 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- bump ruby gem crass-1.0.7 --> crass-1.0.8 (bsc#1288620):
+  * crass-1.0.8.gem
+
+-------------------------------------------------------------------
 Fri Oct 16 11:19:42 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Update to version 2.7.2+git.1792148770.648dcddb:

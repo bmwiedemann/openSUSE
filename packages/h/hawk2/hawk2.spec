@@ -66,7 +66,7 @@ Source17:       builder-3.3.0.gem
 Source18:       coercible-1.0.0.gem
 Source19:       concurrent-ruby-1.3.8.gem
 Source20:       connection_pool-3.0.2.gem
-Source21:       crass-1.0.7.gem
+Source21:       crass-1.0.8.gem
 Source22:       date-3.5.1.gem
 Source23:       descendants_tracker-0.0.4.gem
 Source24:       drb-2.2.3.gem
