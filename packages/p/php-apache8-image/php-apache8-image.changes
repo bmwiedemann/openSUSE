@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 29 17:17:48 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove redundant directory creation - already done via systemd-tmpfiles
+
+-------------------------------------------------------------------
 Mon Oct 26 12:34:43 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - set pipefail in case we need it
