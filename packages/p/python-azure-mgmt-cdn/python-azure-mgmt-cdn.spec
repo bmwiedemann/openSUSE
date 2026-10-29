@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-cdn
-Version:        14.0.0
+Version:        14.1.0
 Release:        0
 Summary:        Microsoft Azure CDN Management Client Library
 License:        MIT

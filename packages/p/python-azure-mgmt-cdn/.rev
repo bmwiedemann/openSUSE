@@ -179,4 +179,15 @@
 - Update Requires from pyproject.toml (forwarded request 1366338 from glaubitz)</comment>
     <requestid>1366383</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>203d4a3730c4f3b1ff94959d27b412e9</srcmd5>
+    <version>14.1.0</version>
+    <time>1793286686</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 14.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1393623 from glaubitz)</comment>
+    <requestid>1393627</requestid>
+  </revision>
 </revisionlist>
