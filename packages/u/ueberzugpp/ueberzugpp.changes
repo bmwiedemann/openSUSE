@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 22 16:59:33 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.9.10+git20260919.13c8618:
+  * be more exact with font size calculation
+  * add missing comma
+  * bump version and natural movement on old IPC
+  * add support for lua protocol on hyprland
+
+-------------------------------------------------------------------
+Mon May 18 16:58:00 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.9.10+git20260517.9eedfdc:
+  * fix ambiguos optional construction
+  * update CLI11 version
+  * use range-v3 instead of std::ranges on niri socket
+  * bump version
+  * fix hyprland socket commands for 0.54
+  * fix(niri): reuse socket read for IPC response
+  * feat(wayland): add niri compositor support
+  * apple.cpp: fix for missing PROC_PIDT_SHORTBSDINFO
+  * socket.cpp: define MSG_NOSIGNAL if undefined
+  * logic for checking if recent cache or not
+
+-------------------------------------------------------------------
 Tue Oct 28 18:38:17 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 2.9.8+git20251027.c1c76e3:

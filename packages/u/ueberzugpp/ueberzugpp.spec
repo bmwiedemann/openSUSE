@@ -1,7 +1,7 @@
 #
 # spec file for package ueberzugpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define short_name ueberzug
 Name:           ueberzugpp
-Version:        2.9.8+git20251027.c1c76e3
+Version:        2.9.10+git20260919.13c8618
 Release:        0
 Summary:        Utility to render images in terminals
 License:        GPL-3.0
