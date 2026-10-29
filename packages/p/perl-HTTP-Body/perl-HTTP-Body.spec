@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Body
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,24 @@
 
 %define cpan_name HTTP-Body
 Name:           perl-HTTP-Body
-Version:        1.230.0
+Version:        1.240.0
 Release:        0
-# 1.23 -> normalize -> 1.230.0
-%define cpan_version 1.23
+# 1.24 -> normalize -> 1.240.0
+%define cpan_version 1.24
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP Body Parser
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GE/GETTY/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(HTTP::Headers)
+BuildRequires:  perl(HTTP::Message)
 BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(IO::File) >= 1.14
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.86
-Requires:       perl(HTTP::Headers)
+Requires:       perl(HTTP::Message)
 Requires:       perl(IO::File) >= 1.14
 Provides:       perl(HTTP::Body) = %{version}
 Provides:       perl(HTTP::Body::MultiPart) = %{version}
@@ -55,7 +56,7 @@ Chunked bodies are supported by not passing a length value to new().
 It is currently used by Catalyst, Dancer, Maypole, Web::Simple and Jedi.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -70,7 +71,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README
+%doc Changes README README.md
 %license LICENSE
 
 %changelog

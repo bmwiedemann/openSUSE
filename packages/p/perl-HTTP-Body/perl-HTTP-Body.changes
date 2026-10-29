@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Oct 27 10:37:06 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.240.0 (1.24)
+   see /usr/share/doc/packages/perl-HTTP-Body/Changes
+
+  1.24      2026-10-26 18:28:01+01:00 Europe/Berlin
+  	- SECURITY, CVE-2026-116131: urlencoded bodies are limited to
+  	  $HTTP::Body::UrlEncoded::max_params fields and multipart bodies to
+  	  $HTTP::Body::MultiPart::max_parts parts (1000 each); reported and
+  	  patched by CPANSec. bsc#1288644
+  	- SECURITY, CVE-2026-116132: the temporary file of an upload that is
+  	  still incomplete at DESTROY-time is now always deleted; reported and
+  	  patched by CPANSec (also fixes RT#84004) bsc#1288645
+  	- SECURITY, CVE-2026-116133: a multipart body without a boundary or with
+  	  a malformed delimiter line no longer takes quadratic time; a malformed
+  	  delimiter line now croaks, and padding or an epilogue after the close
+  	  delimiter is accepted; reported and patched by CPANSec. bsc#1288646
+  	- SECURITY, CVE-2026-116134: a multipart part's header block is limited
+  	  to $HTTP::Body::MultiPart::max_header_size bytes (32768) and
+  	  $HTTP::Body::MultiPart::max_header_lines lines (100); reported and
+  	  patched by CPANSec. bsc#1288647
+  	- SECURITY, CVE-2026-116135: mixed-case percent escapes (e.g. %aB) in
+  	  urlencoded bodies are decoded instead of being dropped; reported and
+  	  patched by CPANSec. bsc#1288648
+  	- SECURITY, CVE-2026-116285: the chunk size line of a chunked body is
+  	  matched in linear instead of quadratic time bsc#1288649
+  	- SECURITY, CVE-2026-116531: a chunked body is now framed independently
+  	  of where the reads feeding add() fall; a read that split a chunk could
+  	  leave the parser never reaching 'done', hanging a server that reads
+  	  until done bsc#1288650
+  	- INCOMPATIBLE: add() now croaks when one of the new limits is exceeded.
+  	  Raise the variable, or set it to 0 to disable that limit, if your
+  	  forms need more. See NOTES in HTTP::Body.
+  	- RT#105021: temp-file write errors in MultiPart and OctetStream now
+  	  croak instead of silently truncating the stored body
+  	- RT#123615: a NUL byte in a multipart filename is stripped so it cannot
+  	  truncate a path handed on downstream
+  	- Moved repository from Shadowcat git to GitHub (libwww-perl/HTTP-Body)
+  	- Updated all metadata resources to point to GitHub
+  	- Fixed prerequisites: moved Digest::MD5 to test deps, changed HTTP::Headers to HTTP::Message
+  	- Added README.md for GitHub
+  	- Updated support section in documentation
+  	- Moved the POD, POD coverage and Perl::Critic tests to xt/release, so
+  	  they run on every release instead of being skipped
+
+-------------------------------------------------------------------
 Sun Mar 31 03:06:43 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.23
@@ -42,7 +88,6 @@ Mon Dec  9 11:18:02 UTC 2013 - coolo@suse.com
     - Added .gitignore
 
 -------------------------------------------------------------------
-
 Wed Jun  5 07:24:16 UTC 2013 - coolo@suse.com
 
 - updated to 1.17
