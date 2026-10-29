@@ -95,4 +95,12 @@
     <comment>Oracle Octobre 2026 CPU fixes</comment>
     <requestid>1393092</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>bd2848261e0d22033b01fadd8f565c63</srcmd5>
+    <version>25.0.5.0</version>
+    <time>1793286306</time>
+    <user>dimstar_suse</user>
+    <comment>Octobre 2026 CPU fixes</comment>
+    <requestid>1393600</requestid>
+  </revision>
 </revisionlist>
