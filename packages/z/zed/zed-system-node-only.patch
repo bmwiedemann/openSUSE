@@ -1,0 +1,28 @@
+From: openSUSE packaging
+Subject: Use only the distribution's Node.js
+Patch-mainline: Never, downstream packaging policy
+References: https://github.com/zed-industries/zed
+
+Zed downloads its own Node.js into the user's data directory when it cannot
+find a suitable one. A packaged build must not fetch and execute a second
+runtime behind the user's back, and the distribution already provides one
+(the package Requires nodejs and npm).
+
+Upstream marks this value "TODO: Expose this setting"; when it becomes a
+setting this patch can be replaced by shipping that default instead.
+
+--- a/crates/zed/src/main.rs
++++ b/crates/zed/src/main.rs
+@@ -534,8 +534,10 @@
+             let settings = &ProjectSettings::get_global(cx).node;
+             let options = NodeBinaryOptions {
+                 allow_path_lookup: !settings.ignore_system_version,
+-                // TODO: Expose this setting
+-                allow_binary_download: true,
++                // Downstream: the distribution packages Node, so never fetch a
++                // second copy at run time. Users can still point node.path at
++                // their own build.
++                allow_binary_download: false,
+                 use_paths: settings.path.as_ref().map(|node_path| {
+                     let node_path = PathBuf::from(shellexpand::tilde(node_path).as_ref());
+                     let npm_path = settings

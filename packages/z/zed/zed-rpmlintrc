@@ -1,0 +1,6 @@
+# blade, Zed's renderer, reaches Vulkan through dlopen("libvulkan.so.1") -- the
+# binary carries no DT_NEEDED entry for it (verified: 0 entries), so rpm's
+# automatic dependency generator cannot see the dependency and it has to be
+# stated explicitly. Without the loader installed Zed starts and renders
+# nothing, so this is a real requirement rather than an over-specified one.
+addFilter("explicit-lib-dependency libvulkan1")

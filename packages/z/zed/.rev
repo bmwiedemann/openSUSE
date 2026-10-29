@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c6a8b9cc86cafc84bdd446ccfd83c79</srcmd5>
+    <version>1.24.2</version>
+    <time>1793286343</time>
+    <user>dimstar_suse</user>
+    <comment>Update zed to 1.24.2 (fixes RUSTSEC-2026-0285 via rustls 0.23.45). Nothing is downloaded or installed without the user's explicit opt-in.</comment>
+    <requestid>1385174</requestid>
+  </revision>
+</revisionlist>

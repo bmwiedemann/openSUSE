@@ -1,0 +1,258 @@
+From: openSUSE packaging
+Subject: Add allow_binary_downloads, off by default
+Patch-mainline: No, not yet sent
+References: https://github.com/zed-industries/zed
+
+Zed fetches and runs code it did not ship with as soon as a file is
+opened: built-in language servers missing from $PATH, the default
+Prettier, and updates to every installed extension at start-up. It also
+auto-installs the html extension. A distribution package should not do
+that without the user asking for it.
+
+allow_binary_downloads is a user-level setting (a project's
+.zed/settings.json cannot set it) that gates all three. Built-in language
+servers downloaded in an earlier session are not used while it is off.
+Language servers provided by installed extensions are not covered:
+installing the extension is the consent. Enabling it takes effect on a
+language server's next start, and for the default Prettier and
+extension updates after a restart of Zed. Disabling it takes full
+effect after a restart of Zed: a server downloaded in the running
+session stays cached until then.
+Language servers found on $PATH or configured through
+lsp.<name>.binary.path, a project's own Prettier, and extensions the
+user installs or updates from the Extensions page keep working. A skipped
+download names the setting, in the language server status and the log.
+
+Upstream the default would stay true; the downstream parts are the false
+default and the empty auto_install_extensions.
+
+--- a/assets/settings/default.json
++++ b/assets/settings/default.json
+@@ -2335,15 +2335,24 @@
+     "path": null,
+     "npm_path": null,
+   },
++  // Whether Zed may download and run code it did not ship with: built-in
++  // language servers not found on $PATH (or in lsp.<name>.binary.path),
++  // the default Prettier, and automatic extension updates. While off,
++  // built-in language servers downloaded in earlier sessions are not
++  // used either. Language servers provided by installed extensions are
++  // not covered and download regardless. A project's own Prettier and
++  // extensions installed or updated from the Extensions page work either
++  // way. Enabling takes effect on a language server's next start (the
++  // default Prettier and extension updates: after a restart of Zed);
++  // disabling takes full effect after a restart of Zed.
++  "allow_binary_downloads": false,
+   // The extensions that Zed should automatically install on startup.
+   //
+   // If you don't want any of these extensions, add this field to your settings
+   // and change the value to `false`.
+-  "auto_install_extensions": {
+-    "html": true,
+-  },
++  "auto_install_extensions": {},
+   // Whether to suggest installing extensions based on the files you open.
+   "suggest_extensions": true,
+   // The capabilities granted to extensions.
+   //
+   // This list can be customized to restrict what extensions are able to do.
+--- a/crates/extension_host/src/extension_host.rs
++++ b/crates/extension_host/src/extension_host.rs
+@@ -749,6 +749,10 @@
+     }
+ 
+     pub fn check_for_updates(&mut self, cx: &mut Context<Self>) {
++        if !ExtensionSettings::get_global(cx).allow_binary_downloads {
++            log::info!("not updating extensions automatically, see allow_binary_downloads");
++            return;
++        }
+         let task = self.fetch_extensions_with_update_available(cx);
+         cx.spawn(async move |this, cx| Self::upgrade_extensions(this, task.await?, cx).await)
+             .detach();
+--- a/crates/extension_host/src/extension_settings.rs
++++ b/crates/extension_host/src/extension_settings.rs
+@@ -12,9 +12,11 @@
+     /// This is used to make functionality provided by extensions (e.g., language support)
+     /// available out-of-the-box.
+     ///
+-    /// Default: { "html": true }
++    /// Default: {}
+     pub auto_install_extensions: HashMap<Arc<str>, bool>,
+     pub auto_update_extensions: HashMap<Arc<str>, bool>,
++    /// Whether installed extensions are updated automatically.
++    pub allow_binary_downloads: bool,
+     pub suggest_extensions: bool,
+     pub granted_capabilities: Vec<ExtensionCapability>,
+ }
+@@ -41,7 +43,8 @@
+         Self {
+             auto_install_extensions: content.extension.auto_install_extensions.clone(),
+             auto_update_extensions: content.extension.auto_update_extensions.clone(),
++            allow_binary_downloads: content.allow_binary_downloads.unwrap(),
+             suggest_extensions: content.extension.suggest_extensions,
+             granted_capabilities: content
+                 .extension
+                 .granted_extension_capabilities
+--- a/crates/language/src/language.rs
++++ b/crates/language/src/language.rs
+@@ -840,7 +840,9 @@
+ 
+             if !binary_options.allow_binary_download {
+                 return (
+-                    Err(anyhow::anyhow!("downloading language servers disabled")),
++                    Err(anyhow::anyhow!(
++                        "downloading language servers is disabled, see allow_binary_downloads"
++                    )),
+                     None,
+                 );
+             }
+--- a/crates/project/src/lsp_store.rs
++++ b/crates/project/src/lsp_store.rs
+@@ -500,13 +500,14 @@
+             });
+         let update_binary_status = wait_until_worktree_trust.is_none();
+ 
++        let allow_binary_downloads = ProjectSettings::get_global(cx).allow_binary_downloads;
+         let binary = self.get_language_server_binary(
+             worktree_abs_path.clone(),
+             adapter.clone(),
+             settings,
+             toolchain.clone(),
+             delegate.clone(),
+-            true,
++            allow_binary_downloads,
+             wait_until_worktree_trust,
+             cx,
+         );
+--- a/crates/project/src/prettier_store.rs
++++ b/crates/project/src/prettier_store.rs
+@@ -615,7 +615,9 @@
+                         if prettier_path.is_some() {
+                             new_plugins.clear();
+                         }
+-                        let mut needs_install = should_write_prettier_server_file(fs.as_ref()).await;
++                        let mut needs_install = should_write_prettier_server_file(fs.as_ref()).await
++                            || (prettier_path.is_none()
++                                && !fs.is_dir(&default_prettier_dir().join("node_modules/prettier")).await);
+                         if let Some(previous_installation_task) = previous_installation_task
+                             && let Err(e) = previous_installation_task.await {
+                                 log::error!("Failed to install default prettier: {e:#}");
+@@ -651,6 +653,20 @@
+                             }
+                             needs_install |= !new_plugins.is_empty();
+                         })?;
++                        if needs_install
++                            && !prettier_store.update(cx, |_, cx| {
++                                ProjectSettings::get_global(cx).allow_binary_downloads
++                            })?
++                        {
++                            if prettier_path.is_none() {
++                                return Err(Arc::new(anyhow!(
++                                    "downloading the default prettier is disabled, see allow_binary_downloads"
++                                )));
++                            }
++                            // A project's own prettier only needs the bundled server file.
++                            save_prettier_server_file(fs.as_ref()).await.map_err(Arc::new)?;
++                            return Ok(());
++                        }
+                         if needs_install {
+                             log::info!("Initializing default prettier with plugins {new_plugins:?}");
+                             let installed_plugins = new_plugins.clone();
+--- a/crates/project/src/project_settings.rs
++++ b/crates/project/src/project_settings.rs
+@@ -74,6 +74,9 @@
+     /// Configuration for Node-related features
+     pub node: NodeBinarySettings,
+ 
++    /// Whether Zed may download language servers and the default Prettier.
++    pub allow_binary_downloads: bool,
++
+     /// Configuration for how direnv configuration should be loaded
+     pub load_direnv: DirenvSettings,
+ 
+@@ -795,6 +798,7 @@
+             },
+             git: git_settings,
+             node: content.node.clone().unwrap().into(),
++            allow_binary_downloads: content.allow_binary_downloads.unwrap(),
+             load_direnv: project.load_direnv.clone().unwrap(),
+             session: SessionSettings {
+                 restore_unsaved_buffers: content.session.unwrap().restore_unsaved_buffers.unwrap(),
+--- a/crates/settings/src/vscode_import.rs
++++ b/crates/settings/src/vscode_import.rs
+@@ -242,6 +242,7 @@
+             workspace: self.workspace_settings_content(),
+             which_key: None,
+             modeline_lines: None,
++            allow_binary_downloads: None,
+             feature_flags: None,
+             instrumentation: None,
+         }
+--- a/crates/settings_content/src/extension.rs
++++ b/crates/settings_content/src/extension.rs
+@@ -13,7 +13,7 @@
+     /// This is used to make functionality provided by extensions (e.g., language support)
+     /// available out-of-the-box.
+     ///
+-    /// Default: { "html": true }
++    /// Default: {}
+     #[serde(default)]
+     pub auto_install_extensions: HashMap<Arc<str>, bool>,
+     #[serde(default)]
+--- a/crates/settings_content/src/settings_content.rs
++++ b/crates/settings_content/src/settings_content.rs
+@@ -277,6 +277,13 @@
+     /// Configuration for Node-related features
+     pub node: Option<NodeBinarySettings>,
+ 
++    /// Whether Zed may download built-in language servers, the default
++    /// Prettier and extension updates on its own. Language servers provided
++    /// by installed extensions are not covered.
++    ///
++    /// Default: false
++    pub allow_binary_downloads: Option<bool>,
++
+     pub proxy: Option<String>,
+ 
+     /// Whether to reduce non-essential motion in the UI, such as loading
+@@ -407,7 +414,7 @@
+         git,
+         global_lsp_settings, image_viewer, markdown_preview, repl, helix_mode, hide_mouse,
+         journal, log, line_indicator_format, language_models, copilot, outline_panel, project_panel,
+-        node, proxy, reduce_motion, server_url, credentials_url, session, telemetry, terminal,
++        node, allow_binary_downloads, proxy, reduce_motion, server_url, credentials_url, session, telemetry, terminal,
+         title_bar, vim_mode, calls, which_key, vim, modeline_lines, feature_flags,
+         instrumentation,
+     },
+--- a/crates/settings_ui/src/page_data.rs
++++ b/crates/settings_ui/src/page_data.rs
+@@ -9151,7 +9151,7 @@
+ }
+ 
+ fn network_page() -> SettingsPage {
+-    fn network_section() -> [SettingsPageItem; 3] {
++    fn network_section() -> [SettingsPageItem; 4] {
+         [
+             SettingsPageItem::SectionHeader("Network"),
+             SettingsPageItem::SettingItem(SettingItem {
+@@ -9188,6 +9188,20 @@
+                 })),
+                 files: USER,
+             }),
++            SettingsPageItem::SettingItem(SettingItem {
++                title: "Allow Binary Downloads",
++                description: "Download built-in language servers, the default Prettier and extension updates. Language servers from installed extensions are not covered.",
++                field: Box::new(SettingField {
++                    organization_override: None,
++                    json_path: Some("allow_binary_downloads"),
++                    pick: |settings_content| settings_content.allow_binary_downloads.as_ref(),
++                    write: |settings_content, value, _| {
++                        settings_content.allow_binary_downloads = value;
++                    },
++                }),
++                metadata: None,
++                files: USER,
++            }),
+         ]
+     }
+ 

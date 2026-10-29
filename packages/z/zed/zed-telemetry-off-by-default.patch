@@ -1,0 +1,24 @@
+From: openSUSE packaging
+Subject: Ship with telemetry off by default
+Patch-mainline: Never, downstream packaging policy
+References: https://github.com/zed-industries/zed
+
+Diagnostics and usage metrics default to on upstream. A distribution package
+should not enable outbound reporting without the user choosing it; both
+remain switchable in the settings UI and in settings.json, so nothing is
+removed, only defaulted the other way.
+
+--- a/assets/settings/default.json
++++ b/assets/settings/default.json
+@@ -1650,9 +1650,9 @@
+   // Control what info is collected by Zed.
+   "telemetry": {
+     // Send debug info like crash reports.
+-    "diagnostics": true,
++    "diagnostics": false,
+     // Send anonymized usage data like what languages you're using Zed with.
+-    "metrics": true,
++    "metrics": false,
+     // Allow sending requests to Anthropic models that cannot be offered with
+     // Zero Data Retention
+     "anthropic_retention": false,
