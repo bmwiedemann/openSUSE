@@ -16,8 +16,12 @@
 #
 
 
+# The NVIDIA graphics driver Tumbleweed ships (G07 gfx flavour); NVENC
+# fails on a driver older than README's "Linux:" minimum, so raise
+# this only once a newer graphics driver is in Tumbleweed (boo#1287957)
+%define nvidia_driver 595
 Name:           ffnvcodec
-Version:        13.1.15.0
+Version:        13.0.19.0
 Release:        0
 Summary:        FFmpeg version of NVIDIA codec API headers
 License:        MIT
@@ -43,6 +47,14 @@ with NVIDIA codec APIs.
 
 %install
 make PREFIX=%{_prefix} LIBDIR=%{_lib} DESTDIR=%{buildroot} install
+
+%check
+min=$(sed -n 's/^Linux: \([0-9]*\).*/\1/p' README | head -n 1)
+test -n "$min"
+if [ "$min" -gt %{nvidia_driver} ]; then
+  echo "These headers need NVIDIA driver $min, Tumbleweed ships %{nvidia_driver}" >&2
+  exit 1
+fi
 
 %files -n %{name}-devel
 %doc README

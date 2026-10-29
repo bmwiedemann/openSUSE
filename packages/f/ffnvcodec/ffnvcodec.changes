@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:42:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Revert to 13.0.19.0 (boo#1287957): Video Codec SDK 13.1 needs
+  NVIDIA driver 610 or newer, Tumbleweed's G07 graphics driver is
+  595, so NVENC failed in software built against 13.1.15.0
+- Add a %check that fails when the headers need a newer NVIDIA
+  driver than the one Tumbleweed ships
+
+-------------------------------------------------------------------
 Sat Oct 17 16:58:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 13.1.15.0:
