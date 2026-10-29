@@ -24,7 +24,7 @@
 %global have_fwupd (0%{?suse_version} >= 1600)
 
 Name:           discover6
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
