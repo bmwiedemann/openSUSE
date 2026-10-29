@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20261027" schemaversion="4.1">
+<image name="OBS__openSUSE___20261028" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20261027</productvar>
+      <productvar name="VERSION">20261028</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261027,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261028,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261027/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261028/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1017,8 +1017,6 @@
       <repopackage name="kimap"/>
       <repopackage name="kinfocenter6"/>
       <repopackage name="kinfocenter6-lang"/>
-      <repopackage name="kinit"/>
-      <repopackage name="kinit-lang"/>
       <repopackage name="kio"/>
       <repopackage name="kio-core"/>
       <repopackage name="kio-extras"/>
@@ -2343,7 +2341,7 @@
       <repopackage name="libPlasma8"/>
       <repopackage name="libPlasmaActivities7"/>
       <repopackage name="libPlasmaActivitiesStats1"/>
-      <repopackage name="libplist-2_0-4"/>
+      <repopackage name="libplist-2_0-12"/>
       <repopackage name="libply-splash-core5"/>
       <repopackage name="libply-splash-graphics5"/>
       <repopackage name="libply5"/>

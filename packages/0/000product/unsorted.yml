@@ -949,6 +949,7 @@ unsorted:
   - arpwatch-ethercodes 
   - arpwatch-ethercodes-build 
   - art-ctlscripts 
+  - artcraft-launcher 
   - artem 
   - artha 
   - arti 
@@ -1913,6 +1914,8 @@ unsorted:
   - cadabra2-gui 
   - cadaver 
   - cadaver-lang 
+  - cadcraft 
+  - cadcraft-cli 
   - caddy 
   - caddy-bash-completion 
   - caddy-fish-completion 
@@ -3263,6 +3266,8 @@ unsorted:
   - decentxml-javadoc 
   - decibels 
   - decibels-lang 
+  - deckcraft 
+  - deckcraft-cli 
   - decker 
   - decker-doc 
   - deco 
@@ -3286,6 +3291,8 @@ unsorted:
   - deno-fish-completion 
   - deno-zsh-completion 
   - descent3 
+  - designcraft 
+  - designcraft-cli 
   - deskflow 
   - desktop-translations-devel 
   - desktopfolder 
@@ -3689,6 +3696,8 @@ unsorted:
   - ee4j 
   - eekboard-devel 
   - eeyek-fonts 
+  - effectcraft 
+  - effectcraft-cli 
   - efitools 
   - efivar 
   - efivar-devel 
@@ -4276,6 +4285,8 @@ unsorted:
   - fife-devel 
   - fifechan-devel 
   - fifth-leg-font 
+  - figcraft 
+  - figcraft-cli 
   - figlet 
   - file-devel 
   - file-unpack 
@@ -4290,6 +4301,8 @@ unsorted:
   - filezilla-lang 
   - fillets-ng 
   - fillets-ng-data 
+  - filmcraft 
+  - filmcraft-cli 
   - filter_audio-devel 
   - finalcut-bitmap-fonts 
   - finch 
@@ -8134,6 +8147,8 @@ unsorted:
   - grex 
   - grfcodec 
   - gri 
+  - gridcraft 
+  - gridcraft-cli 
   - grig 
   - grilo-devel 
   - grilo-plugin-dleyna 
@@ -8925,6 +8940,7 @@ unsorted:
   - ibus-cangjie 
   - ibus-chewing 
   - ibus-devel 
+  - ibus-googlepinyin 
   - ibus-gtk-32bit 
   - ibus-gtk3-32bit 
   - ibus-hangul 
@@ -10151,9 +10167,6 @@ unsorted:
   - kdesdk-scripts-kf6-porting 
   - kdesdk-scripts-lang 
   - kdesdk-thumbnailers 
-  - kdesignerplugin 
-  - kdesignerplugin-devel 
-  - kdesignerplugin-lang 
   - kdesvn 
   - kdevelop-pg-qt 
   - kdevelop-plugin-php 
@@ -10192,7 +10205,6 @@ unsorted:
   - keepassxc 
   - keepassxc-lang 
   - kelbt 
-  - kemoticons-devel 
   - kepler 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
@@ -10400,8 +10412,6 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
-  - kimageformats 
-  - kimageformats-eps 
   - kimagemapeditor 
   - kimagemapeditor-lang 
   - kimap-devel 
@@ -10416,7 +10426,6 @@ unsorted:
   - kind-bash-completion 
   - kind-fish-completion 
   - kind-zsh-completion 
-  - kinit-devel 
   - kio-admin 
   - kio-admin-lang 
   - kio-devel 
@@ -10547,7 +10556,6 @@ unsorted:
   - knot-utils 
   - knotifications-devel 
   - knotifications-imports 
-  - knotifyconfig-devel 
   - koan 
   - kochmorse 
   - kohsuke-pom 
@@ -11418,7 +11426,6 @@ unsorted:
   - libKF5Dcraw5 
   - libKF5Declarative5 
   - libKF5Declarative5-lang 
-  - libKF5Emoticons5 
   - libKF5GlobalAccelPrivate5 
   - libKF5ItemModels5 
   - libKF5KCMUtils5 
@@ -11429,8 +11436,6 @@ unsorted:
   - libKF5NewStuff5-lang 
   - libKF5NewStuffCore5 
   - libKF5NewStuffWidgets5 
-  - libKF5NotifyConfig5 
-  - libKF5NotifyConfig5-lang 
   - libKF5Parts5 
   - libKF5Parts5-lang 
   - libKF5QuickAddons5 
@@ -11489,7 +11494,7 @@ unsorted:
   - libMagick++-devel-32bit 
   - libMagickCore-7_Q16HDRI10-32bit 
   - libMagickWand-7_Q16HDRI10-32bit 
-  - libMpvQt3 
+  - libMpvQt4 
   - libMrm4 
   - libMyGUICommon3_4_3 
   - libMyGUIEngine3_4_3 
@@ -15143,9 +15148,9 @@ unsorted:
   - libnbd0 
   - libnblib_gmx0 
   - libncnn1 
-  - libnco-5_3_9 
+  - libnco-5_4_1 
   - libnco-devel 
-  - libnco_c++-5_3_9 
+  - libnco_c++-5_4_1 
   - libncurses5 
   - libncurses5-32bit 
   - libncurses6-32bit 
@@ -15674,7 +15679,7 @@ unsorted:
   - libplasma6-devel 
   - libplayerctl2 
   - libplib0 
-  - libplist++-2_0-4 
+  - libplist++-2_0-12 
   - libplist++-2_0-devel 
   - libplist-2_0-devel 
   - libplot2 
@@ -17785,6 +17790,8 @@ unsorted:
   - light-locker-lang 
   - lightcouch 
   - lightcouch-javadoc 
+  - lightcraft 
+  - lightcraft-cli 
   - lightdm-gobject-devel 
   - lightdm-gtk-greeter-branding-upstream 
   - lightdm-kde-greeter 
@@ -19417,6 +19424,7 @@ unsorted:
   - moka-icon-theme 
   - mold 
   - molecule 
+  - molecule-plugins 
   - molequeue 
   - molequeue-devel 
   - molequeue-doc 
@@ -21787,6 +21795,8 @@ unsorted:
   - pdf2svg 
   - pdfarranger 
   - pdfarranger-lang 
+  - pdfcraft 
+  - pdfcraft-cli 
   - pdfgrep 
   - pdfgrep-bash-completion 
   - pdfgrep-zsh-completion 
@@ -23280,6 +23290,8 @@ unsorted:
   - phonon4qt5-backend-mpv 
   - phonon4qt6-backend-mpv 
   - phoronix-test-suite 
+  - photocraft 
+  - photocraft-cli 
   - photon-node 
   - photoqt 
   - photorec 
@@ -35075,6 +35087,8 @@ unsorted:
   - sound-theme-yaru 
   - soundconverter 
   - soundconverter-lang 
+  - soundcraft 
+  - soundcraft-cli 
   - soundkonverter 
   - soundtouch 
   - soundtouch-devel 
@@ -46927,6 +46941,8 @@ unsorted:
   - vde2-slirp 
   - vdt-devel 
   - vdu_controls 
+  - vectorcraft 
+  - vectorcraft-cli 
   - vectorscan-devel 
   - vectorscan-examples 
   - ved 
@@ -47453,6 +47469,8 @@ unsorted:
   - woodstox-core 
   - woodstox-core-javadoc 
   - wooting-udev-rules 
+  - wordcraft 
+  - wordcraft-cli 
   - wordcut 
   - wordcut-devel 
   - wordnet 
