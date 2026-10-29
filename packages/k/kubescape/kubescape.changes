@@ -1,4 +1,364 @@
 -------------------------------------------------------------------
+Thu Oct 29 05:57:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.17:
+  * test(opaprocessor): cover cosignRekorURL from rule metadata to
+    a verified Rekor entry (#4429)
+  * fix(operator): remove duplicate withCapturableLogger test
+    helper (#4426)
+  * fix(diff): dispatch unreadable report pairings with
+    vulnerability reports to vulnerability loader (#4411)
+  * fix(diff): distinguish vulnerability package namespaces (#4407)
+  * feat(fix): add Helm --output-post-renderer and harden overlay
+    staging & boundaries (#4393)
+  * fix(list): validate controls config target (#4422)
+  * fix(imagescan): report incomplete Azure vulnerability results
+    (#4416)
+  * fix(imagescan): report incomplete GCP occurrence results
+    (#4415)
+  * feat(predict): read local manifests from stdin with "-" (#4418)
+  * fix(predict): report the running kubescape version in PSS SARIF
+    output (#4419)
+  * fix(mapreconcile): infer immutable namespace-name labels
+    (#4417)
+  * fix(scan): validate empty and whitespace-only policy names in
+    framework and control args (#4424)
+  * fix(policy): load YAML fixtures regardless of extension casing
+    (#4421)
+  * test(cautils): add unit tests for framework control filtering
+    and effective control ID resolution (#4395)
+  * fix(core): match imagePullSecret registry keys the way the
+    kubelet does (#4396)
+  * test(operator): add unit tests for remediation command payload
+    validation, warnings, and error handling (#4400)
+  * test(fixhandler): remove redundant and zero-behavior kustomize
+    tests (#4404)
+  * fix(imagescan): keep untriaged findings at unknown severity
+    (#4409)
+  * test(operator): add unit tests for configuration scan command
+    execution, flags, and error handling (#4398)
+  * fix(reports): preserve int64 values during anonymization and
+    decryption (#4408)
+  * test(operator): add unit tests for vulnerability scan command
+    execution, flags, and error handling (#4399)
+  * feat(opa): let C-0236 look up signatures in a configured Rekor
+    (#4403)
+  * fix: isolate framework-scoped exceptions in scan results
+    (#3867)
+  * ci: bump github.com/go-chi/chi/v5 from 5.3.0 to 5.4.0 (#4401)
+  * fix(pss): evaluate local ReplicationController and PodTemplate
+    manifests (#4391)
+  * refactor(sarif): pass framework names straight into
+    FilterExceptionsByFrameworks (#4379)
+  * fix(config): report a failure to delete the cached config
+    (#4384)
+  * test(update): add unit tests for development version, release
+    check failure, and output formatting (#4374)
+  * test(root): add unit tests for root command execution,
+    environment discovery errors, logger validation, and krew
+    plugin mode (#4378)
+  * fix(mcpserver): classify errors in list admission policies
+    (#4387)
+  * fix(list): reject an unknown --framework instead of listing
+    nothing (#4382)
+  * feat(diff): add semantic ANSI color highlights to image
+    vulnerability diff output (#4376)
+  * chore: remove unused policy color screenshots (#4380)
+  * fix(policy): sort equal-path fixes by value during fixture
+    comparison (#4388)
+  * feat(mcpserver): paginate list_controls responses (#4389)
+  * fix(list): validate format flag upfront before querying
+    policies (#4383)
+  * feat(fix): emit Kustomize JSON6902 patches for Helm-rendered
+    resources (#4034)
+  * test(download): add unit tests for empty name validation and
+    error handling (#4358)
+  * fix(scan): resolve exclusion roots above wildcard directories
+    (#4348)
+  * fix(pss): decode local manifests case-sensitively (#4331)
+  * ci: bump actions/setup-python from 7.0.0 to 7.1.0 (#4367)
+  * fix(scan): reject a whitespace-only --format (#4354)
+  * fix(vapreconcile): evaluate control status with framework
+    awareness in coverage (#4359)
+  * ci: bump github.com/santhosh-tekuri/jsonschema/v6 from 6.0.2 to
+    6.0.3 (#4364)
+  * feat(policy): add semantic ANSI colors to policy test and init
+    commands (#4361)
+  * ci: bump docker/login-action from 4.6.0 to 4.7.0 (#4368)
+  * test(shared): add unit tests for registry credential helpers in
+    cmd/shared (#4353)
+  * ci: bump github.com/bmatcuk/doublestar/v4 from 4.10.0 to 4.10.3
+    (#4366)
+  * ci: bump github/codeql-action/upload-sarif from 4.39.0 to
+    4.39.1 (#4369)
+  * fix(fleetscan): detect case-insensitive output path collisions
+    across contexts (#4357)
+  * fix(scan): validate items only in Kubernetes list envelopes
+    (#4351)
+  * fix(mcpserver): switch scan response to cautils.ResourceStatus
+    (#4350)
+  * fix(patch): allow omitted format flag in patch command (#4345)
+  * fix(scan): check every output path before opening any report
+    file (#4342)
+  * test(config): add unit tests for config delete and config
+    delete cache subcommands (#4333)
+  * fix(cli): name the flag and valid range in out-of-range
+    threshold errors (#4343)
+  * fix(mcpserver): support patch_type in dry_run_remediation
+    (#4321)
+  * chore(docs): remove unused CLI color screenshots (#4338)
+  * fix(v2): add nil safety guards for vulnerability metadata
+    (#4339)
+  * fix(cel): warn on validation evaluation errors (#4337)
+  * fix(cautils): correct account ID error typo (#4330)
+  * fix(mcpserver): classify advanced tool API errors correctly
+    (#4322)
+  * fix(cel): use namespaceselector for binding scope matching
+    (#4326) (#4327)
+  * fix(scan): do not dereference a nil envelope returned by
+    NewObject (#4325)
+  * fix(v2): add nil-safety guards for summary and report objects
+    (#4328)
+  * feat(list): add semantic ANSI colors to list tables and
+    configurations (#4324)
+  * fix(resourcehandler): preserve independent manifest sources
+    (#4335)
+  * fix(mcpserver): add missing workload kinds to advanced tools
+    (#4223)
+  * Test/cel upstream parity timestamp (#4314)
+  * feat(diff): add semantic ANSI colors to human-readable output
+    (#4310)
+  * fix(mcpserver): classify forbidden and timeout errors in
+    analyze_mutating_admission_policy_impact (#4318)
+  * fix(mcpserver): classify RBAC escalation list failures (#4317)
+  * Fix/cel variable cycle detection (#4315)
+  * fix(mcpserver): keep vulnerability package URLs distinct
+    (#4313)
+  * fix(pss): reject malformed Kubernetes List members (#4311)
+  * fix(mcpserver): support dot-separated keys in secret exposure
+    detection (#4308)
+  * fix(pss): preserve workload namespaces in prediction reports
+    (#4312)
+  * test(mcpserver): enforce an input-schema contract on every
+    registered tool (#4316)
+  * fix(scan): detect output path collisions when output is
+    whitespace or directory (#4307)
+  * fix(cel): normalize namespaceObject nulls like the typed decode
+    (#4303)
+  * feat(mcpserver): add list_configuration_security_scan_summaries
+    (#4301)
+  * fix(mcpserver): find the namespace by name in get tools when
+    none is given (#4306)
+  * fix(imagescan): clear GCP session before validating a new login
+    (#4297)
+  * fix(mcpserver): list configuration scans in all namespaces by
+    default (#4299)
+  * fix(imagescan): clear Harbor session state when login fails
+    (#4302)
+  * fix(cel): treat empty yaml fields as unset (#4289)
+  * feat(fleet): read fleet settings from a config file [lfx 2026]
+    (#4288)
+  * fix(cmd): propagate root context and cancellation to
+    subcommands (#4079)
+  * feat(printer): show CISA KEV and EPSS in image scan output
+    (#4207)
+  * fix(imagescan): clear ECR session before login attempts (#4292)
+  * fix(mcpserver): suppress URI credential exposure when parts are
+    variable references (#4201)
+  * fix(vapreconcile): honor policy selectors in resource coverage
+    (#4291)
+  * fix(pss): scope owner deduplication to the workload namespace
+    (#4293)
+  * fix(printer): break attack tree score ties by resource ID
+    (#4296)
+  * fix(attackpath): preserve ServiceAccount index snapshot
+    semantics (#4295)
+  * fix(imagescan): exclude closed ECR enhanced findings (#4294)
+  * fix(imagescan): clear GitLab session state when login fails
+    (#4286)
+  * fix(resourcehandler): resolve a wildcard version to the
+    registered one instead of an empty one (#4290)
+  * feat(attackpath): Phase 1 – shared input adapter and resolvers
+    (no CLI changes) (#3944)
+  * fix(prometheus): emit control, framework, and multi-image
+    metrics in deterministic order (#4287)
+  * fix(resourcehandler): collect APIServerInfo on every cluster
+    scan (#4272)
+  * fix(diff): only treat coverage gaps that affect the control as
+    inconclusive (#4258)
+  * fix(prometheus): emit resource and image metrics in
+    deterministic order (#4285)
+  * fix(cel): apply a scoped binding's paramRef to the objects it
+    binds (#4278) (#4279)
+  * fix(download): match the --output .json extension
+    case-insensitively (#4274)
+  * fix(vapreconcile): resolve immutable namespace-name selectors
+    (#4277)
+  * feat(mcpserver): add validate_scan_selection and share control
+    resolution (#4281)
+  * fix(pss): reject empty container specs during decoding (#4276)
+  * fix(imagescan): identify GCP vulnerabilities by their Grafeas
+    notes (#4283)
+  * fix(imagescan): clear Azure session state when login fails
+    (#4282)
+  * fix(imagescan): reject incomplete Harbor vulnerability reports
+    (#4284)
+  * fix(vap): neutralize spreadsheet formula injection in CSV
+    output (#4280)
+  * fix(list): neutralize spreadsheet formula injection in CSV
+    output (#4275)
+  * fix(vap): use GetWriterNoFallback in writeOutput (#4268)
+  * fix(storage): delete posture records the latest full scan no
+    longer reports (#4267)
+  * fix(mcpserver): detect secrets in ConfigMap binary content
+    (#4265)
+  * fix(pss): preserve distinct child workload violations (#4266)
+  * feat(mcpserver): count unchanged findings in diff_reports and
+    list them only on request (#4270)
+  * fix(exposure): apply framework-scoped exceptions in
+    per-resource output and fix  (#4219)
+  * feat(scan): add --notify webhook support for image scans
+    (#4230)
+  * feat(mcpserver): add create_admission_policy_binding tool
+    (#4260)
+  * fix(getter): resolve control section numbers in GetControl
+    (#4263)
+  * test(mcpserver): wait for the prior execution to retire in the
+    shutdown lifecycle test (#4264)
+  * feat(sarif): keep exception audit trail in SARIF results
+    (#4208)
+  * fix(pss): evaluate every workload in local JSON streams (#4237)
+  * feat(exposure): evaluate Gateway API ReferenceGrants for
+    cross-namespace backends (#4217)
+  * fix(gitlab-sast): report scan coverage gaps in scan.messages
+    (#4206)
+  * feat(k8scveindex): attribute Kubernetes CVEs to components
+    using the official feed (#4225)
+  * feat(clustercomponents): build a normalized inventory of
+    cluster components (#4216)
+  * docs: add refreshed Kubescape security self-assessment (#4085)
+  * fix: trim whitespace in severity thresholds (#4240)
+  * ci: bump github.com/go-openapi/runtime from 0.33.2 to 0.33.3
+    (#4253)
+  * fix: keep scores below 100 from printing as 100 (#4244)
+  * ci: bump github/codeql-action/upload-sarif from 4.38.3 to
+    4.39.0 (#4251)
+  * ci: bump actions/create-github-app-token from 3.2.0 to 3.3.0
+    (#4250)
+  * test(rbac): verify verb, apiGroup and resource matching against
+    kube-apiserver (#4210)
+  * feat(mcpserver): filter list_controls by framework (#4212)
+  * fix(mapreconcile): account for equivalent exclusion rules
+    (#4235)
+  * fix(httphandler): keep storing posture results after a build
+    error (#4241)
+  * fix(mcpserver): use structured argument helpers in
+    analyze_rbac_escalation_paths (#4221)
+  * fix(printer): preserve symlink parent paths in GetWriter and
+    GetWriterNoStdoutFallback (#4233)
+  * fix(pss): follow workload list continuation tokens (#4205)
+  * ci: bump github.com/aws/aws-sdk-go-v2/config from 1.32.39 to
+    1.33.9 (#4252)
+  * fix(scancache): isolate cached control verdicts (#4203)
+  * ci: bump github.com/go-git/go-git/v5 from 5.19.2 to 5.19.3
+    (#4246)
+  * fix(printer): fallback to Source.Path when RelativePath is
+    empty in JUnit and resource table (#4222)
+  * feat(mcpserver): add list_sboms and list_sbom_packages tools
+    (#4229)
+  * feat(imagescan): expose package-list matching for non-image
+    scans (#4215)
+  * ci: bump goreleaser/goreleaser-action from 7.2.3 to 7.3.0
+    (#4249)
+  * fix(mcp): handle marshal errors in advanced tools (#4262)
+  * fix: reject extra fix command arguments (#4256)
+  * fix(httphandler): remove markdown and exceptions results on
+    cleanup (#4254)
+  * test(networkpolicy): cover an empty podSelector peer, alone and
+    with a namespaceSelector (#4226)
+  * fix(diff): accept .yml extension case insensitively in
+    diffOutputPath (#4238)
+  * ci: bump ossf/scorecard-action from 2.4.4 to 2.5.0 (#4248)
+  * fix(imagescan): retain partial GitLab vulnerability data
+    (#4204)
+  * fix(scan): exclude computed status lookups from incremental
+    caching (#4236)
+  * fix(diff): neutralize spreadsheet formula injection in summary
+    CSV output (#4243)
+  * ci: bump github.com/Azure/azure-sdk-for-go/sdk/azidentity
+    (#4247)
+  * perf(core): skip redundant k8s dial in getInterfaces when
+    account ID is provided (#4008)
+  * fix(rbac): separate impersonation targets from permission
+    grants (#4176)
+  * docs: document actors, actions and external interfaces for OSPS
+    Baseline SA-01.01/SA-02.01 (#4095)
+  * feat(mcp): add include_identity to
+    analyze_vulnerability_exposure (#4191)
+  * chore(deps): bump github.com/kubescape/backend to v0.0.53
+    (#4259)
+  * fix(helm): scan only vendored chart dependencies (#4020)
+  * test(core): cover init and ephemeral container images in
+    --scan-images (#4193)
+  * Fix/scan reject include and exclude namespaces (#4194)
+  * fix(printer): neutralize spreadsheet formula injection in CSV
+    report output (#4195)
+  * fix(mcpserver): validate mutating policy impact arguments
+    (#4197)
+  * Fix/rbacgraph workload controller serviceaccount (#4181)
+  * feat(mcpserver): filter and page
+    list_vulnerabilities_in_manifest (#4187)
+  * feat(mcpserver): filter controls in
+    get_configuration_security_scan_manifest (#4199)
+  * fix(completion): honor command output and return write errors
+    (#4189)
+  * test(networkpolicy): cover the namespace half of a combined
+    namespace and pod selector peer (#4192)
+  * fix(printer): ensure deterministic output ordering in pretty
+    and markdown printers (#4190)
+  * feat(fleet): graded exit codes for fleet runs (#4184)
+  * fix(report): emit v1 ControlReports and RuleReports in
+    deterministic order (#4185)
+  * fix(fix): drop a placeholder fix that shadows a concrete fix
+    (#4183)
+  * fix(printer): keep parent components of a --output directory
+    (#4177)
+  * fix(mcpserver): shut down the SSE transport gracefully on
+    SIGINT/SIGTERM (#4178)
+  * fix(diff): bound and validate report file reads (#4180)
+  * test(rbac): verify binding scope and subject identity against
+    kube-apiserver (#4179)
+  * fix(exposure): include active Gateway request mirrors (#4175)
+  * fix(diff): write a diff file inside a --output directory
+    (#4172)
+  * fix(analysis): honor automatic namespace name labels (#4174)
+  * Feat/mcp apply remediation report items from posture reports
+    (#4163)
+  * fix(printer): fix HTML report table syntax and ensure
+    deterministic resource ordering (#4173)
+  * fix(printer): reject mixed GitLab posture and image reports
+    (#4157)
+  * test: remove tests with zero behavior (#4154)
+  * fix(printer): resolve JSON/YAML evidence from delete and review
+    paths (#3984)
+  * fix(cautils): carry delete/review paths and fix command into v1
+    reports (#3985)
+  * fix(config): require a UUID accountID in config set and config
+    validate (#4168)
+  * fix(printer): write the default report inside a --output
+    directory (#4166)
+  * feat(helm): render charts for the newest Kubernetes version
+    their kubeVersion allows (#4162)
+  * Fix/runtime profile drift safety (#4169)
+  * perf(mcpserver): deduplicate concurrent secret exposure
+    analysis (#4158)
+  * docs(mcp): remove documentation for the deleted
+    scan_container_image tool (#4159)
+  * test(pss): cover user-namespace policy relaxation boundaries
+    (#4160)
+  * fix(printer): return GitHub Actions output write errors (#4156)
+
+-------------------------------------------------------------------
 Thu Oct 15 05:02:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.16:
