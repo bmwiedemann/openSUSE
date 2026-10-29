@@ -51,4 +51,17 @@
     <comment></comment>
     <requestid>1216897</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b78202b815e98d9cc4511d4fa9215eea</srcmd5>
+    <version>5.0.0</version>
+    <time>1793286658</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.0:
+  * Option to execute command on idle timeout #149
+  * Preview mode #144
+  * Spanish translation #156
+  * French translation #150
+  * Fix use-after-free when the focused monitor is removed #158</comment>
+    <requestid>1393590</requestid>
+  </revision>
 </revisionlist>

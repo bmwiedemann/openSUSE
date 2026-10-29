@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 29 09:21:01 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.0.0:
+  * Option to execute command on idle timeout #149
+  * Preview mode #144
+  * Spanish translation #156
+  * French translation #150
+  * Fix use-after-free when the focused monitor is removed #158
+
+-------------------------------------------------------------------
 Tue Oct 22 01:39:13 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Package cleanup
