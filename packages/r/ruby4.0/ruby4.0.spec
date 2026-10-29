@@ -458,9 +458,9 @@ find %{buildroot} -type f -name \*.pem -delete
 
 %if %{without alts}
 %post
-full_bin_name="${bin}.ruby%{rb_binary_suffix}"
-ruby_versioned_name="${bin}%{rb_binary_suffix}"
 for bin in %{ua_binaries}; do
+  full_bin_name="${bin}.ruby%{rb_binary_suffix}"
+  ruby_versioned_name="${bin}%{rb_binary_suffix}"
   %{_sbindir}/update-alternatives --install \
     %{_bindir}/$bin $bin %{_bindir}/$bin.ruby%{rb_binary_suffix} %{rb_ua_weight}
   %{_sbindir}/update-alternatives --install \
@@ -468,10 +468,10 @@ for bin in %{ua_binaries}; do
 done
 
 %preun
-full_bin_name="${bin}.ruby%{rb_binary_suffix}"
-ruby_versioned_name="${bin}%{rb_binary_suffix}"
 if [ "$1" = 0 ] ; then
   for bin in %{ua_binaries}; do
+    full_bin_name="${bin}.ruby%{rb_binary_suffix}"
+    ruby_versioned_name="${bin}%{rb_binary_suffix}"
     %{_sbindir}/update-alternatives --remove $bin %{_bindir}/$bin.ruby%{rb_binary_suffix}
     %{_sbindir}/update-alternatives --remove ${ruby_versioned_name} %{_bindir}/$bin.ruby%{rb_binary_suffix}
   done

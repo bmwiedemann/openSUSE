@@ -345,4 +345,16 @@ Binary file ruby-4.0.1.tar.xz (revision 4) deleted</comment>
     Issue Tracking System</comment>
     <requestid>1391994</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>980c06e008123fccb4a6be44d82597df</srcmd5>
+    <version>4.0.9</version>
+    <time>1793294298</time>
+    <user>dimstar_suse</user>
+    <comment>- Set the alternative names inside the loop in %post and %preun.
+  They were set before it, while $bin was still empty, so without
+  libalternatives /usr/bin/.ruby4.0 was registered instead of the
+  versioned alternatives (bundle.ruby4.0, rake.ruby4.0, ...), and
+  their symlinks dangled.</comment>
+    <requestid>1393474</requestid>
+  </revision>
 </revisionlist>

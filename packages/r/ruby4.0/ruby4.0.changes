@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 28 16:17:49 UTC 2026 - Eduardo Navarro <enavarro@suse.com>
+
+- Set the alternative names inside the loop in %post and %preun.
+  They were set before it, while $bin was still empty, so without
+  libalternatives /usr/bin/.ruby4.0 was registered instead of the
+  versioned alternatives (bundle.ruby4.0, rake.ruby4.0, ...), and
+  their symlinks dangled.
+
+-------------------------------------------------------------------
 Fri Oct 23 10:04:57 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.0.9 (boo#1287171 CVE-2026-89078, CVE-2026-93577,
