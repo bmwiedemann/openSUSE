@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:10:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.2
+- Changes since 6.8.1:
+  * Update version for new release 6.8.2
+  * kcms/style: use consistent slider value
+  * applets/digital-clock: Keep the system font's OpenType features for the time (kde#524257)
+  * libnotificationmanager: Accept single-quoted attributes in notification markup (kde#506733)
+  * applets/kicker: port old favoriteId format to new one (kde#527651)
+  * components/timezoneselector: fix margins
+  * components/calendar: Don't navigate to years before year 1 (kde#525980)
+  * shell: Set entered edit mode to false on startup (kde#527738)
+  * libtaskmanager: Re-filter launchers when a window changes screen (kde#527507)
+  * wallpapers/color: Set the accent color from the configured color (kde#513851)
+  * libkmpris: Don't auto-repeat the global play/pause shortcut (kde#521448)
+  * Applets Layout Manager: don't take preferred size into account when restoring (kde#490687)
+  * libtaskmanager: Let the compositor name desktops created from the pager (kde#501808)
+  * libkmpris: Keep non-ASCII characters in the title and album fallbacks (kde#503405)
+  * applets/activitybar: fix tab focus and arrow nav (kde#527235)
+  * Image wallpaper: Make all image packages correctly load (kde#527150)
+  * appmenu: auto focus search field (kde#525569)
+  * launcher tasks model: Guard lookup to serviceMenuById
+  * libtaskmanager: put tasks in place of their launchers (kde#527189)
+
+-------------------------------------------------------------------
 Tue Oct 20 11:34:53 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.8.1:
