@@ -1006,4 +1006,13 @@
   * Do not add duplicate cmdline.d entries (forwarded request 1392713 from aplanas)</comment>
     <requestid>1392715</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>43b84b41b68ef6e31667912d5b382d5b</srcmd5>
+    <version>1+git20261028.5233b70</version>
+    <time>1793294295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1+git20261028.5233b70:
+  * Enroll recovery key if no one is provided via combustion (forwarded request 1393445 from aplanas)</comment>
+    <requestid>1393446</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 28 15:50:21 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20261028.5233b70:
+  * Enroll recovery key if no one is provided via combustion
+
+-------------------------------------------------------------------
+Tue Oct 27 19:26:41 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20261027.f17cbce:
+  * Support new kernel/initrd order for PCR9 in grub2 2.16
+  * Use the preferred boot entry in systemd-boot
+  * Serialize concurrent sdbootutil runs
+
+-------------------------------------------------------------------
 Mon Oct 26 11:51:26 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20261026.4e266f0:
