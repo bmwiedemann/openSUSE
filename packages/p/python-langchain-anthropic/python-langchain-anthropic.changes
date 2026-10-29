@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 29 12:19:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.7:
+  * Trace resolved reasoning effort: constructor-level effort
+    and reasoning_effort settings now appear in LangSmith
+    traces via _identifying_params (gh#41536)
+  * Drop precautionary upper bounds on anthropic and pydantic
+    deps (gh#41407); spec floors unchanged
+
+-------------------------------------------------------------------
 Thu Oct 15 04:53:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.6:

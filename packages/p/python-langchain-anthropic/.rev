@@ -209,4 +209,12 @@ Python flavour (3.13 + 3.14), rpmlint 0 badness.</comment>
     <comment>Update to 1.7.6: mid-conversation system handling follows the langchain-core 1.6.10 model profile; require langchain-core &gt;= 1.6.10.</comment>
     <requestid>1384900</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d1393516ebc7ebd32a688e747eefc8d1</srcmd5>
+    <version>1.7.7</version>
+    <time>1793308953</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.7.7.</comment>
+    <requestid>1393709</requestid>
+  </revision>
 </revisionlist>

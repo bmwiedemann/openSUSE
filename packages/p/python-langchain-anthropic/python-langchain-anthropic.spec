@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langchain-anthropic
-Version:        1.7.6
+Version:        1.7.7
 Release:        0
 Summary:        Integration package connecting Claude (Anthropic) APIs and LangChain
 License:        MIT
@@ -76,7 +76,7 @@ rm -f tests/conftest.py
 # Deselect the one chat-model test that imports langchain-tests as well.
 %pytest tests/unit_tests --ignore tests/unit_tests/test_standard.py --ignore tests/unit_tests/middleware --deselect tests/unit_tests/test_chat_models.py::test_anthropic_stream_events_v3_lifecycle
 
-%files %{python_files}
+%files %python_files
 %doc README.md
 %license LICENSE
 %{python_sitelib}/langchain_anthropic
