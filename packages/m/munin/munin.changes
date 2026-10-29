@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 25 10:06:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix last change
+
+-------------------------------------------------------------------
 Fri Oct  2 10:54:43 UTC 2026 - Tina Müller <tina.mueller@suse.com>
 
 - Replace deprecated /var/run with /run
@@ -105,7 +110,7 @@ Fri Apr 21 08:13:58 UTC 2023 - Max Lin <mlin@suse.com>
 -------------------------------------------------------------------
 Sun Mar 12 10:13:53 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
-- Update to 2.0.72 
+- Update to 2.0.72
   * Import custom css file in style-new.css
 
 -------------------------------------------------------------------
@@ -454,12 +459,12 @@ Wed Mar 13 18:46:16 UTC 2013 - vjt@openssl.it
 Thu Mar  7 11:06:49 UTC 2013 - vjt@openssl.it
 
 - Update to 2.0.11.1
-- Add nginx plugins from http://github.com/ifad/nginx-munin 
+- Add nginx plugins from http://github.com/ifad/nginx-munin
 
 -------------------------------------------------------------------
 Tue Mar  5 19:42:45 UTC 2013 - vjt@openssl.it
 
-- BuildRequire perl-IO-Socket-INET6 
+- BuildRequire perl-IO-Socket-INET6
 
 -------------------------------------------------------------------
 Thu May  3 15:09:14 UTC 2012 - wr@rosenauer.org

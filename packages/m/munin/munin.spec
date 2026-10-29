@@ -213,7 +213,7 @@ ln munin-gsa-master/README.md README.gsa
 
 # for boo#1246089
 sed -i 's,/var/log/munin/,/var/log/munin-node/,;
-        s,/var/run/munin/,/var/run/munin-node/,' \
+        s,/run/munin/,/run/munin-node/,' \
         %{buildroot}/etc/munin/munin-node.conf
 
 # Fix rpmlint warning: This script uses 'env' as an interpreter.
@@ -221,12 +221,12 @@ for F in \
 	%{buildroot}/%{_prefix}/lib/munin/plugins/ipmi_sensor_ \
 	%{buildroot}/%{_prefix}/lib/munin/plugins/smart_ \
 	; do
-	sed -i -e 's|^#!%{_bindir}/env python|#!%{_bindir}/python3|' $F
+	sed -i -e 's|^#!%{_bindir}/env python.*|#!%{_bindir}/python3|' $F
 done
 for F in \
 	%{buildroot}/%{_prefix}/lib/munin/plugins/tomcat_ \
 	; do
-	sed -i -e 's|^#!%{_bindir}/env ruby|#!%{_bindir}/ruby|' $F
+	sed -i -e 's|^#!%{_bindir}/env ruby.*|#!%{_bindir}/ruby|' $F
 done
 
 # firewalld
