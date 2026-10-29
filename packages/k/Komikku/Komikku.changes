@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 28 08:46:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.2.1:
+  * [Reader] General settings: Add `Inversion` filter
+  * [Servers] Anime-Sama (FR): Update
+  * [Servers] JManga (JA): Update
+  * [Servers] Armoni Scans (TR): Disabled
+  * [Servers] Comix (EN): Disabled
+  * [Servers] Flame Comics (EN): Disabled
+  * [Servers] KaliScan (EN): Disabled
+  * [Servers] KomikLovers (ID): Disabled
+  * [Servers] LanorTrad (FR): Update
+  * [Servers] Manga Stop (pt_BR): Disabled
+  * [Servers] MangaReader (cc) (EN): Disabled
+  * [Servers] Perf Scan (FR): Disabled
+  * [Servers] Raijin Scan (FR): Disabled
+  * [Servers] Read Comic Online (EN): Disabled
+  * [Servers] Shadow Manga (ES): Add `Adult Content` filter
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sat Oct  3 09:57:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 51.1.0:

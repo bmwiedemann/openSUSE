@@ -844,4 +844,28 @@
       translations</comment>
     <requestid>1382589</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>d6bfe809bea5df751d6826b5cf081550</srcmd5>
+    <version>51.2.1</version>
+    <time>1793286577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 51.2.1:
+  * [Reader] General settings: Add `Inversion` filter
+  * [Servers] Anime-Sama (FR): Update
+  * [Servers] JManga (JA): Update
+  * [Servers] Armoni Scans (TR): Disabled
+  * [Servers] Comix (EN): Disabled
+  * [Servers] Flame Comics (EN): Disabled
+  * [Servers] KaliScan (EN): Disabled
+  * [Servers] KomikLovers (ID): Disabled
+  * [Servers] LanorTrad (FR): Update
+  * [Servers] Manga Stop (pt_BR): Disabled
+  * [Servers] MangaReader (cc) (EN): Disabled
+  * [Servers] Perf Scan (FR): Disabled
+  * [Servers] Raijin Scan (FR): Disabled
+  * [Servers] Read Comic Online (EN): Disabled
+  * [Servers] Shadow Manga (ES): Add `Adult Content` filter
+  * Updated translations.</comment>
+    <requestid>1393558</requestid>
+  </revision>
 </revisionlist>
