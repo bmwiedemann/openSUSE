@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 29 20:14:31 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.8.5:
+  * Fix screencasting on older wlroots (<= 0.18) compositors.
+  * Fix various memory safety issues.
+
+-------------------------------------------------------------------
 Tue Jul 28 17:33:42 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 0.8.4:

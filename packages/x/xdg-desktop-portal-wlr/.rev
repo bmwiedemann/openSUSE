@@ -166,4 +166,14 @@
   * Fix stream freezing on PipeWire buffer starvation.</comment>
     <requestid>1368241</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>77d7b18c81daaabea98f36abcde895e4</srcmd5>
+    <version>0.8.5</version>
+    <time>1793309600</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.5:
+  * Fix screencasting on older wlroots (&lt;= 0.18) compositors.
+  * Fix various memory safety issues.</comment>
+    <requestid>1393728</requestid>
+  </revision>
 </revisionlist>
