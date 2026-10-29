@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 29 05:57:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.17:
+  * Update Go dependencies
+  * Bump Go version to 1.27
+
+-------------------------------------------------------------------
 Fri Aug 28 12:08:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.16:

@@ -17,14 +17,14 @@
 
 
 Name:           actuated-cli
-Version:        0.2.16
+Version:        0.2.17
 Release:        0
 Summary:        CLI for actuated
 License:        MIT
 URL:            https://github.com/self-actuated/actuated-cli
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.27
 
 %description
 CLI for actuated, which brings "blazingly fast, secure builds to self-hosted CI
