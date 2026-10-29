@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pynitrokey
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
