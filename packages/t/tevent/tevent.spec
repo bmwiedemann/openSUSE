@@ -16,56 +16,55 @@
 #
 
 
-%{!?py3_soflags:  %global py3_soflags cpython-%{python3_version_nodots}m}
-
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "man"
+%define psuffix -man
+%bcond_without man
+%else
+%define psuffix %{nil}
+%bcond_with man
+%endif # build_man
 %define talloc_version 2.5.0
-%define build_man 0
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+%if 0%{?suse_version} >= 1699
 %define bundle_cmocka 0
 %else
 %define bundle_cmocka 1
 %endif
 
-%if %{build_man}
-Name:           tevent-man
+Name:           tevent%{?psuffix}
+Version:        0.17.2
+Release:        0
+%if %{with man}
+Summary:        Man pages for the tevent library
+%else
+Summary:        An event system based on the talloc memory management library
+%endif
+License:        LGPL-3.0-or-later
+Group:          Development/Libraries/C and C++
+URL:            https://tevent.samba.org/
+Source:         https://download.samba.org/pub/tevent/tevent-%{version}.tar.gz
+Source1:        https://download.samba.org/pub/tevent/tevent-%{version}.tar.asc
+Source2:        tevent.keyring
+%if %{without man}
+Source4:        baselibs.conf
+%endif
+Patch0:         config-sitearch.patch
+%if %{with man}
 BuildRequires:  doxygen
 %else
-Name:           tevent
 BuildRequires:  libtalloc-devel >= %{talloc_version}
-%if 0%{?suse_version} >= 1330
 BuildRequires:  libtirpc-devel
-%endif
-%if 0%{?suse_version} > 1020
-BuildRequires:  pkg-config
-%else
 BuildRequires:  pkgconfig
-%endif
-BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-talloc >= %{talloc_version}
 BuildRequires:  python3-talloc-devel >= %{talloc_version}
 %if ! %{bundle_cmocka}
-BuildRequires:  pkgconfig(cmocka) >= 1.1.3
+BuildRequires:  pkgconfig(cmocka) >= 1.1.8
 %endif
-%endif # build_man
-%if 0%{?suse_version} == 0 || 0%{?suse_version} > 1140
-%define	build_make_smp_mflags %{?_smp_mflags}
-%else
-%define	build_make_smp_mflags %{?jobs:-j%jobs}
-%endif
-URL:            https://tevent.samba.org/
-Version:        0.17.2
-Release:        0
-Summary:        An event system based on the talloc memory management library
-License:        LGPL-3.0-or-later
-Group:          Development/Libraries/C and C++
-Source:         https://download.samba.org/pub/tevent/tevent-%{version}.tar.gz
-Source1:        https://download.samba.org/pub/tevent/tevent-%{version}.tar.asc
-Source2:        tevent.keyring
-Source4:        baselibs.conf
-Patch0:         config-sitearch.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%endif # with man
 
 %description
 Tevent is an event system based on the talloc memory management library. It
@@ -77,10 +76,12 @@ signals, and the classic file descriptor events.
 Tevent also provide helpers to deal with asynchronous code providing the
 tevent_req (tevent request) functions.
 
-%if ! %{build_man}
+%if %{with man}
+This package contains the manual pages for the tevent API.
+%endif
 
+%if %{without man}
 %package -n libtevent0
-PreReq:         /sbin/ldconfig
 Summary:        Samba tevent Library
 Group:          System/Libraries
 
@@ -95,18 +96,13 @@ This package contains the tevent0 library.
 
 %package -n libtevent-devel
 Summary:        Libraries and Header Files to Develop Programs with tevent0 Support
-# Man pages are built in a 2nd spec file in order to break a build cycle with doxygen->cmake->krb5->libtevent
+# Build man pages in the separate "man" flavor to break the
+# doxygen->cmake->krb5->libtevent build cycle.
 Group:          Development/Libraries/C and C++
-%if 0%{?suse_version} > 1030
-Recommends:     %{name}-man
-%endif
 Requires:       libtalloc-devel >= %{talloc_version}
 Requires:       libtevent0 = %{version}
-%if 0%{?suse_version} > 1020
-Requires:       pkg-config
-%else
 Requires:       pkgconfig
-%endif
+Recommends:     tevent-man
 
 %description -n libtevent-devel
 Tevent is an event system based on the talloc memory management library. It
@@ -124,30 +120,34 @@ This package contains libraries and header files need for development.
 Summary:        Python3 bindings for the Tevent library
 Group:          Development/Libraries/Python
 Requires:       libtevent0 = %{version}
-PreReq:         /sbin/ldconfig
 Obsoletes:      python-tevent
 
 %description -n python3-tevent
 This package contains the python bindings for the Tevent library.
 
-%endif # ! build_man
+%endif # without man
 
 %prep
-%setup -n tevent-%{version} -q
-%autopatch -p1
+%autosetup -p1 -n tevent-%{version}
 
 %build
-%if ! %{build_man}
-%if 0%{?suse_version} && 0%{?suse_version} < 911
-	OPTIMIZATION="-O"
+%if %{with man}
+doxygen doxy.config
+
+%install
+# Install API documentation
+mkdir -p "%{buildroot}/%{_mandir}"
+cp -a doc/man/* "%{buildroot}/%{_mandir}/"
+rm "%{buildroot}/%{_mandir}/man3/todo.3"
+
+%files
+%{_mandir}/man3/tevent*.*
+
 %else
-	# use the default optimization
-	unset OPTIMIZATION
-%endif
 %if %{bundle_cmocka}
-	BUNDLED_LIBS="cmocka"
+BUNDLED_LIBS="cmocka"
 %endif
-export CFLAGS="${RPM_OPT_FLAGS} -D_GNU_SOURCE ${OPTIMIZATION} -D_LARGEFILE64_SOURCE -DIDMAP_RID_SUPPORT_TRUSTED_DOMAINS"
+export CFLAGS="%{optflags} -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DIDMAP_RID_SUPPORT_TRUSTED_DOMAINS"
 CONFIGURE_OPTIONS="\
 	--prefix=%{_prefix} \
 	--libdir=%{_libdir} \
@@ -158,48 +158,28 @@ CONFIGURE_OPTIONS="\
 	--builtin-libraries=replace \
 	--pythonarchdir=%{python3_sitearch}
 "
+# The waf based build system does not understand the %%configure macro
 ./configure ${CONFIGURE_OPTIONS}
-%{__make} %{build_make_smp_mflags} \
-	all
-%else
+%make_build all
 
-doxygen doxy.config
-
-%endif # ! build_man
-
-%if ! %{build_man}
 %check
-LD_LIBRARY_PATH=bin/shared %{__make} test
-%endif # ! build_man
+LD_LIBRARY_PATH=bin/shared make test
 
 %install
-%if ! %{build_man}
-DESTDIR=${RPM_BUILD_ROOT} make install
+%make_install
+
+%python_compileall
 
 # Shared libraries need to be marked executable for rpmbuild to strip them and
 # include them in debuginfo
-find ${RPM_BUILD_ROOT} -name "*.so*" -exec chmod -c +x {} \;
+find %{buildroot} -name "*.so*" -exec chmod -c +x {} \;
 
-%else
-
-# install API docs
-mkdir -p $RPM_BUILD_ROOT/%{_mandir}
-cp -a doc/man/* $RPM_BUILD_ROOT/%{_mandir}
-rm $RPM_BUILD_ROOT/%{_mandir}/man3/todo.3
-
-%endif # ! build_man
-
-%if ! %{build_man}
 %post -n libtevent0 -p /sbin/ldconfig
-
 %postun -n libtevent0 -p /sbin/ldconfig
-
 %post -n python3-tevent -p /sbin/ldconfig
-
 %postun -n python3-tevent -p /sbin/ldconfig
 
 %files -n libtevent0
-%defattr(-,root,root)
 %{_libdir}/libtevent.so.*
 %if %{bundle_cmocka}
 %dir %{_libdir}/tevent
@@ -207,25 +187,15 @@ rm $RPM_BUILD_ROOT/%{_mandir}/man3/todo.3
 %endif
 
 %files -n libtevent-devel
-%defattr(-,root,root)
 %{_includedir}/tevent.h
 %{_libdir}/libtevent.so
 %{_libdir}/pkgconfig/tevent.pc
 
 %files -n python3-tevent
-%defattr(-,root,root)
-%{python3_sitearch}/_tevent.%{py3_soflags}.so
+%{python3_sitearch}/_tevent.%{python3_sysconfig_var SOABI}.so
 %{python3_sitearch}/tevent.py
-%if 0%{?centos_version} > 599 || 0%{?fedora_version} > 11 || 0%{?rhel_version} > 599
 %{python3_sitearch}/__pycache__/tevent.cpython-*.py[co]
-%endif
 
-%else
-
-%files
-%defattr(-,root,root)
-%{_mandir}/man3/tevent*.*
-
-%endif # ! build_man
+%endif # with man
 
 %changelog

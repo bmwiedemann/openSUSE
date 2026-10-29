@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 27 19:07:30 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Convert the package to _multibuild flavors: the man pages are
+  now built from the "man" flavor of tevent.spec instead of
+  a generated tevent-man.spec, so pre_checkin.sh, tevent-man.spec
+  and tevent-man.changes are gone. No need to maintain duplicate
+  files.
+- Merge the duplicated %if blocks in the spec file and give the
+  man flavor its own summary and description.
+- Remove use of obsolete %py3* macros, use only the maintained
+  ones from `python-rpm-macros` package.
+- Drop obsolete spec constructs (BuildRoot, %defattr, PreReq,
+  legacy suse_version conditionals).
+- Build and install pycache files
+
+-------------------------------------------------------------------
+Tue Oct 27 10:36:17 UTC 2026 - chris@computersalat.de
+
+- fix deps
+  * cmocka (>=1.1.8)
+
+-------------------------------------------------------------------
 Mon Sep 28 15:58:12 UTC 2026 - Noel Power <nopower@suse.com>
 
 - Update to 0.17.2
