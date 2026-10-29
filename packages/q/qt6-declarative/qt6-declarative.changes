@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 28 10:02:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (kde#527720)
+  * 0001-Fix-teardown-hang-with-QuickPixmapReader.patch
+
+-------------------------------------------------------------------
 Wed Sep 30 16:09:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0
