@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Thu Oct 29 06:43:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.20.0:
+  * Warning
+    - this release has an unintended breaking change [#7398]
+      backslashes outside ${...} are no longer unescaped in
+      pipeline configs, fix it by:
+
+        - "^v?[0-9]+\\\\.[0-9]+"
+        + "^v?[0-9]+\\.[0-9]+"
+
+  * Security
+    - Remove agent token from process os environments [#7412]
+    - Make sure CLI self-update can target cli install dir only
+      [#7400]
+    - Document security boundaries [#7281]
+    - Keep revoked env admins revoked until the server restarts
+      [#7403]
+    - Fix gitlab to set tag pipeline author from webhook metadata
+      [#7397]
+    - Update module github.com/woodpecker-ci/envsubst to v1.2.0
+      [#7398]
+    - Rotate repo JWT on repo repair [#7361]
+    - Fix and harden config fetching [#7386]
+    - Enhance matrix feature [#7353]
+    - Recover from config parsing panic in server [#7348]
+    - Fix server panics while parsing config [#7336]
+    - Only link http(s) error URIs on the login page [#7318]
+    - Do not log bearer credentials at trace level [#7317]
+    - Fall back to read only if the forge permission sync fails
+      [#7282]
+    - Quote all YAML line breaks in environment substitution
+      [#7283]
+  * Features
+    - Add support for selecting workflow to run for manual
+      pipelines [#7393]
+    - Add option to restrict organization and user to use its
+      agents only [#7359]
+    - Make CLI lint prefer detected Woodpecker config [#6634]
+  * Enhancement
+    - Send restart flag to the HTTP config extension [#7384]
+    - Harden store scoping for org-level secret and registry
+      retrieval [#7365]
+    - Add CI_REPO_ID environment variable [#7295]
+    - Replace pipeline author on deploy with session user [#7358]
+    - Switch to the woodpecker-ci envsubst fork [#7349]
+    - StepFinished of log store return error now [#7346]
+    - Speed up queue scheduling calculations [#7303]
+    - Allow selecting the forge when creating a user [#7314]
+    - Drop reviewer metadata when restarting a pipeline [#7287]
+    - Indicate permission fallback in webui [#7285]
+    - lint against tag align in golang [#7292]
+    - Rework dark theme [#7263]
+    - Persist queue paused state across server restarts [#7256]
+  * Bug Fixes
+    - Fix server panic when saving workflows fails [#7401]
+    - Fix depends_on workflows running after failed dependency on
+      queue reload [#7395]
+    - Resolve commit SHA for annotated tags for gitlab, gitea and
+      forgejo [#7394]
+    - Fix nushell quoting for command in local backend [#7294]
+    - Make workflow collapsible behavor consistent [#7367]
+    - For kubernetes do not report unknown deleted pods as
+      successful [#7357]
+    - Make agent respect keepalive time and timeout flags [#7351]
+    - Forward OOM error correctly [#7313]
+    - Enable crons created without enabled field [#7339]
+    - Fix file based logstore related bugs [#7323]
+    - Use merge request IID in GitLab pull request list [#7259]
+    - Retry pipeline creation on SQLite database lock [#7264]
+    - Do not retry extensions that respond with 204 No Content
+      [#7320]
+    - Return an error when Kubernetes backend options cannot be
+      parsed [#7312]
+    - Persist token expiry when existing users sign in [#7304]
+    - Fix quoting windows container [#7293]
+    - Fix PowerShell-specific quoting for commands in local backend
+      [#7290]
+    - Ignore GitLab tag deletion webhooks [#7289]
+    - Fix Docker backend with TLS and a custom host [#7269]
+    - Force oauth2 token exchange in forge Refresh for Gitea,
+      GitLab, Forgejo and GitHub [#7167]
+    - Fix 'Repair Repository' failing for Bitbucket Datacenter
+      repos with spaces in their name [#7261]
+    - For Gitlab resolve group-inherited project permissions for
+      repos [#7172]
+  * Tests
+    - Enable test context checks in usetesting [#7414]
+    - Enforce make syntax for empty maps [#7406]
+    - Require scheduler_mocks import name [#7341]
+    - Increase test coverage of server/forge and server/servies
+      [#7319]
+    - Count cross-package coverage in all Go test targets [#7316]
+  * Documentation
+    - Update dependency @types/node to v26 [#7422]
+    - Update docs npm deps non-major [#7420]
+    - Add Supabase Backup plugin [#7410]
+    - Document how to install the CLI [#7360]
+    - Add OpenArtifact plugin [#7378]
+    - Add concurrency option to Workflow Syntax docs [#7369]
+    - Add Reviewdog PHPCS, PHPMD and PHPStan plugins [#7347]
+    - Document missing server and backend environment variables
+      [#7335]
+    - Remove Codeberg Pages Deploy plugin [#7325]
+    - Update and extend development docs [#7248]
+    - Add Asyntai AI Chatbot Docs Sync to plugins [#7298]
+    - Extend / Update awesome list [#7243]
+  * Dependency
+    - Update Node.js to v26 [#7421]
+    - Update woodpeckerci/plugin-git to v2.11.0 [#7375]
+  * Misc
+    - Check for a migration note on breaking pull requests [#7249]
+
+-------------------------------------------------------------------
 Thu Oct 08 05:37:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.19.0:
