@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 11:13:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add merge-sysuser.patch: (boo#1287634)
+  This merges our pcsc-lite.sysusers into the upstream sysuser file
+  and also ensures that the pcscd user is also in the scard group
+  as an additional group.
+
+-------------------------------------------------------------------
 Mon Oct 19 13:12:11 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - version 2.5.3

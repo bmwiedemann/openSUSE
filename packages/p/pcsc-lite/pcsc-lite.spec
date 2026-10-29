@@ -39,8 +39,8 @@ Source4:        baselibs.conf
 Source6:        pcsc-lite-reader-conf
 Source7:        https://pcsclite.apdu.fr/files/%{name}-%{version}.tar.xz.asc
 Source8:        %{name}.keyring
-Source9:        %{name}.sysusers
 Patch0:         systemd-service.patch
+Patch1:         merge-sysuser.patch
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  gcc
@@ -120,7 +120,7 @@ compile plugins for the pcsc-lite package.
 cp -a %{SOURCE1} %{SOURCE2} %{SOURCE6} .
 
 %build
-%sysusers_generate_pre %{SOURCE9} %{PKG_USER} %{PKG_USER}.conf
+%sysusers_generate_pre etc/pcscd-sysusers.conf %{PKG_USER} %{PKG_USER}.conf
 %meson \
        -D usbdropdir=%{ifddir} \
        -D polkit=TRUE \
@@ -142,14 +142,13 @@ mkdir -p %{buildroot}%{_fillupdir}
 cp %{name}.sysconfig %{buildroot}%{_fillupdir}/sysconfig.pcscd
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -a AUTHORS ChangeLog COPYING HELP README README.SUSE SECURITY %{buildroot}%{_docdir}/%{name}
-##% cp -a etc/pcscd-sysusers.conf %{buildroot}%{_prefix}/lib/sysuser.d/.
 mv %{buildroot}/usr/share/doc/%{name}/* %{buildroot}%{_docdir}/%{name}
 rm -d %{buildroot}/usr/share/doc/%{name}
 mkdir -p %{buildroot}%{_sysconfdir}/default
 # Remove useless la files
 find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot} -type f -name "*.a" -delete -print
-install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
+install -Dm0644 etc/pcscd-sysusers.conf %{buildroot}%{_sysusersdir}/pcscd-sysusers.conf
 %python3_fix_shebang
 
 %pre -f %{PKG_USER}.pre
@@ -188,12 +187,10 @@ install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
 %{_sbindir}/*
 %dir %{_sysconfdir}/reader.conf.d
 %config(noreplace) %{_sysconfdir}/reader.conf.d/reader.conf
-%dir %{_prefix}/lib/sysusers.d
-%config(noreplace) %{_prefix}/lib/sysusers.d/pcscd-sysusers.conf
 %{_sysconfdir}/default/pcscd
 %{ifddir}
 %{_unitdir}/pcsc*
-%{_sysusersdir}/%{PKG_USER}.conf
+%{_sysusersdir}/pcscd-sysusers.conf
 %{_fillupdir}/sysconfig.pcscd
 # libpcsclite.so should stay in the main package (#732911). Third party packages may need it for dlopen().
 %{_libdir}/libpcsclite.so

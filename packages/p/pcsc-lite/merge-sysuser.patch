@@ -1,0 +1,10 @@
+Index: pcsc-lite-2.5.3/etc/pcscd-sysusers.conf
+===================================================================
+--- pcsc-lite-2.5.3.orig/etc/pcscd-sysusers.conf
++++ pcsc-lite-2.5.3/etc/pcscd-sysusers.conf
+@@ -1,3 +1,5 @@
+ # Add a locked pcscd system user and group.
+ # See man sysusers.d(5).
+ u! pcscd - "PC/SC Smart Card Daemon"
++u  scard - "Smart Card Reader" /run/pcscd     -
++m  pcscd scard
