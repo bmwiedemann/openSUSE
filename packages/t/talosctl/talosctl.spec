@@ -17,7 +17,7 @@
 
 
 Name:           talosctl
-Version:        1.14.4
+Version:        1.14.5
 Release:        0
 Summary:        CLI to interact with Talos Linux
 License:        MPL-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.26 >= 1.26.8
+BuildRequires:  go1.26 >= 1.26.10
 BuildRequires:  zsh
 
 %description

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 29 06:18:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.14.5:
+  * Changes from siderolabs/tools
+    - siderolabs/tools@8dad45e feat: update ca-certificates to
+      2026-10-20
+    - siderolabs/tools@c6b3f5c chore: update the toolchain
+  * Dependency Changes
+    - github.com/siderolabs/pkgs v1.14.0-42-g5fa47d1 ->
+      v1.14.0-48-gf4bda77
+    - github.com/siderolabs/talos/pkg/machinery v1.14.3 -> v1.14.5
+    - github.com/siderolabs/tools v1.14.0-9-g6b71647 ->
+      v1.14.0-11-g8dad45e
+    - go.etcd.io/etcd/api/v3 v3.7.2 -> v3.7.3
+    - go.etcd.io/etcd/client/pkg/v3 v3.7.2 -> v3.7.3
+    - go.etcd.io/etcd/client/v3 v3.7.2 -> v3.7.3
+    - go.etcd.io/etcd/etcdutl/v3 v3.7.2 -> v3.7.3
+    - golang.org/x/net v0.60.0 -> v0.61.0
+    - golang.org/x/sync v0.23.0 -> v0.24.0
+    - golang.org/x/sys v0.48.0 -> v0.49.0
+    - golang.org/x/term v0.46.0 -> v0.47.0
+    - golang.org/x/text v0.42.0 -> v0.43.0
+
+-------------------------------------------------------------------
 Sat Oct 17 07:27:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.14.4:
