@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:10:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.2
+- Changes since 6.8.1:
+  * Update version for new release 6.8.2
+  * Update version for new release 6.8.2
+  * applets/kickoff: Tie sidebar item spacing to the compact list style (kde#524003)
+  * applets/taskmanager: wrap labels anywhere (kde#526972)
+  * dwellclicker: fix after click keep open when pinned
+  * applets/kicker: use the containment's screen for the popup size limit (kde#527385)
+  * folder: make row/column arrangement settings match actual behavior (kde#512993)
+  * activitymanager: Crop activity wallpapers instead of stretching them (kde#478784)
+  * applets/pager: Keep desktop labels and window icons bound to the model (kde#522322)
+  * Do not use wallpaper context variable binding as it changes value incorrectly (kde#527569)
+  * applets/kickoff: directly scroll list in ListOfGridsView (kde#526911)
+  * applets/taskmanager: fix highlight effect signal order issue (kde#527229)
+  * Shell package: correct size and position for the activity switcher (kde#527158)
+  * runners/keys: Use KGlobalAccel QKeySequence (de)serialization code
+  * Fix disappearing desktop icons
+
+-------------------------------------------------------------------
 Tue Oct 20 11:33:55 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.8.1:
