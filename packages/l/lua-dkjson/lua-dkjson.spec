@@ -18,16 +18,18 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name dkjson
-%define uptag    2.8
-Version:        2.8.0
+%define uptag    2.11
+Version:        2.11.0
 Release:        0
 Summary:        David Kolf's JSON module for Lua
 License:        MIT
 Group:          Development/Libraries/Other
-URL:            http://dkjson.org/
-Source:         http://dkolf.de/dkjson-lua/dkjson-%{uptag}.tar.gz
+URL:            https://dkjson.org/
+Source:         https://dkolf.de/dkjson-lua/dkjson-%{uptag}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
+# For testing
+BuildRequires:  glibc-locale
 Requires:       %{flavor}
 Requires:       %{flavor}-lpeg
 BuildArch:      noarch
@@ -64,7 +66,7 @@ lua jsontest.lua
 
 %files
 # license is included in readme.txt file
-%doc versions.txt readme.txt
+%doc versions.md readme.md
 %{lua_noarchdir}/%{mod_name}*
 
 %changelog

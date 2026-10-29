@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 28 21:46:44 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.11:
+  -  Fix another regression introduced to the pure-Lua decoder in 2.9:
+     Certain inputs can result in the decode function to raise an error instead
+     of returning nil. Depending on the circumstances this can also be used as
+     a denial-of-service attack.
+  -  In response to those regressions, I have extended the test script with
+     some basic fuzzing tests.
+- Update to 2.10:
+  -  Fix regression in the pure-Lua decoder introduced in 2.9:
+     This is a security vulnerability enabling denial-of-service attacks
+     (unterminated loop) with a well-crafted (invalid JSON) input string.
+- Update to 2.9:
+  -  Performance improvements for the pure-Lua decoder.
+
+-------------------------------------------------------------------
 Fri Jan 23 21:37:57 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Enable lua55 build.
