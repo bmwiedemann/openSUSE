@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 16 08:10:39 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to v2.4.2
+  [CVE-2026-84304, bsc#1279217,
+   CVE-2026-53495, bsc#1280007,
+   CVE-2026-23493, bsc#1282669,
+   CVE-2026-95838, bsc#1285124]
+  * https://github.com/containerd/containerd/releases/tag/v2.4.2
+  * https://github.com/containerd/containerd/releases/tag/v2.4.0
+  * https://github.com/containerd/containerd/releases/tag/v2.3.7
+  * https://github.com/containerd/containerd/releases/tag/v2.3.6
+  * https://github.com/containerd/containerd/releases/tag/v2.3.5
+  * https://github.com/containerd/containerd/releases/tag/v2.3.4
+- Rebase patches:
+  * 0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
+
+-------------------------------------------------------------------
 Fri Jul 31 10:31:22 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to containerd v2.3.3, a major version upgrade from 1.7.33:
