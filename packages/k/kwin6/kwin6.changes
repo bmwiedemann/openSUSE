@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:10:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.2
+- Too many changes since 6.8.1, only listing bugfixes:
+  * keyboard_layout: Keep an application's layout after its last window closes (kde#476831, kde#452445)
+  * backends/drm: move direct scanout device check to the compositor (kde#527544)
+  * wayland/pointerconstraints_v1: fix state being overwritten (kde#527675)
+  * backends/drm: disable post-blend offloading if color pipelines aren't supported (kde#527628)
+  * multigpuswapchain: more correctly check the buffer type (kde#527591)
+  * multigpuswapchain: fix synchronization with EGL copy (kde#527591)
+  * Lower pip surfaces in the stack (kde#527648)
+  * plugins/stickykeys: Latch and lock modifiers on key release (kde#509714)
+  * plugins/slidingnotifications: Fix instant animation speed handling (kde#527478)
+  * backends/drm: don't allow post-blend offloading with legacy (kde#527421)
+  * plugins/startupfeedback: Fix icon sizing (kde#527308)
+  * inputmethod: Fix visible in virtual keyboard dbus API (kde#527067)
+  * outputconfigurationstore: allow generating a completely new config (kde#527401)
+  * qpa: Guard against resizes in EGLPlatformContext::swapBuffers() (kde#527269)
+
+-------------------------------------------------------------------
 Tue Oct 20 11:33:01 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.8.1:

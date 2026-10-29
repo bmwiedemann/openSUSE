@@ -29,7 +29,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.8.1
+Version:        6.8.2
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -242,7 +242,6 @@ This package provides development files.
 %{_kf6_applicationsdir}/org.kde.kwin.killer.desktop
 %{_kf6_bindir}/kwin_wayland_wrapper
 %{_kf6_bindir}/kwindowprop
-%{_kf6_configdir}/kwinrulesrc
 %{_kf6_configkcfgdir}/*
 %{_kf6_debugdir}/org_kde_kwin.categories
 %{_kf6_iconsdir}/hicolor/*/apps/kwin.png
@@ -286,9 +285,7 @@ This package provides development files.
 %{_kf6_plugindir}/kwin/plugins/krunnerintegration.so
 %{_kf6_plugindir}/kwin/plugins/nightlight.so
 %{_kf6_plugindir}/kwin/plugins/MouseKeysPlugin.so
-%if 0%{?suse_version} > 1500
 %{_kf6_plugindir}/kwin/plugins/screencast.so
-%endif
 %{_kf6_plugindir}/kwin/plugins/screenshot.so
 %{_kf6_plugindir}/kwin/plugins/TouchpadShortcutsPlugin.so
 %dir %{_kf6_plugindir}/kf6/packagestructure
