@@ -33,7 +33,7 @@
 %endif
 %bcond_without libalternatives
 %if %{with mold}
-%global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
+%global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=1 -C incremental=false -C strip=none
 %endif
 Name:           %{origname}%{psuffix}
 Version:        0.13.6
@@ -76,6 +76,7 @@ BuildRequires:  zstd
 # constructor error, not a network one, so it took out 38 tests across
 # uv-auth, uv-client and uv-test that never touch the network.
 BuildRequires:  ca-certificates-mozilla
+ExcludeArch:    %ix86 %{arm32} ppc s390
 %endif
 # The test flavour only builds and runs the Rust test suite. It needs no
 # Python at all, so it skips the singlespec machinery entirely - running

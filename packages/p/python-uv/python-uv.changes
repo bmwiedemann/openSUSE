@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 28 23:42:44 UTC 2026 - José Gómez <jose.gomez@suse.com>
+
+- lower debug info level from 2 to 1. Inspired from:
+  openSUSE-Rust/cargo-packaging#20
+
+-------------------------------------------------------------------
+Wed Oct 28 16:31:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- lower constraints after the fixes to lower the memory usage
+  (bsc#1245526)
+
+-------------------------------------------------------------------
 Tue Oct 27 06:37:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.13.6:

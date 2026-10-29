@@ -2,7 +2,7 @@
 <constraints>
   <hardware>
     <memory>
-      <size unit="G">21</size>
+      <size unit="G">8</size>
     </memory>
   </hardware>
   <overwrite>
@@ -11,7 +11,7 @@
     </conditions>
     <hardware>
       <memory>
-	<size unit="G">19</size>
+	<size unit="G">9</size>
       </memory>
     </hardware>
   </overwrite>
@@ -21,7 +21,7 @@
     </conditions>
     <hardware>
       <memory>
-	<size unit="G">21</size>
+	<size unit="G">9</size>
       </memory>
     </hardware>
   </overwrite>
@@ -31,7 +31,7 @@
     </conditions>
     <hardware>
       <memory>
-    <size unit="G">28</size>
+    <size unit="G">9</size>
       </memory>
     </hardware>
   </overwrite>
