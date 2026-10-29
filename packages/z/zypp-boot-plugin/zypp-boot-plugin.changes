@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 28 13:23:16 UTC 2026 - schubi@suse.com
+
+- Update to version 0.0.14:
+  * added [packages] section in zypp-boot-plugin.conf
+  * fixed tests for s390
+  * Drop 8.patch
+
+-------------------------------------------------------------------
 Mon Sep 15 20:48:40 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix build with Boost 1.89.0 (system is headers only)

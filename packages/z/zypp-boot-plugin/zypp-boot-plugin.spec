@@ -1,7 +1,7 @@
 #
 # spec file for package zypp-boot-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           zypp-boot-plugin
-Version:        0.0.13
+Version:        0.0.14
 Release:        0
 Summary:        Zypp plugin for checking if a reboot is needed
 License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://github.com/openSUSE/zypp-boot-plugin
 Source:         zypp-boot-plugin-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM - remove system library which is headers only
-Patch1:         https://github.com/openSUSE/zypp-boot-plugin/pull/8.patch
 BuildRequires:  boost-devel > 1.69.0
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gcc-c++
