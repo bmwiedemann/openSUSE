@@ -391,4 +391,12 @@
     <comment>Plasma 6.8.1, not even fully built yet (forwarded request 1386635 from Vogtinator)</comment>
     <requestid>1386821</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6d415fd4a8a8291e64e885df44d38226</srcmd5>
+    <version>6.8.2</version>
+    <time>1793286240</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.8.2 (forwarded request 1393228 from krop)</comment>
+    <requestid>1393303</requestid>
+  </revision>
 </revisionlist>
