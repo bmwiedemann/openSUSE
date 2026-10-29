@@ -20,11 +20,10 @@
 %define somajor 13
 %define libname libarchive%{somajor}
 Name:           libarchive
-Version:        3.8.9
+Version:        3.8.10
 Release:        0
 Summary:        Utility and C library to create and read several streaming archive formats
 License:        BSD-2-Clause
-Group:          Productivity/Archiving/Compression
 URL:            https://www.libarchive.org/
 Source0:        https://github.com/libarchive/libarchive/releases/download/v%{version}/libarchive-%{version}.tar.xz
 Source1:        https://github.com/libarchive/libarchive/releases/download/v%{version}/libarchive-%{version}.tar.xz.asc
@@ -40,7 +39,7 @@ BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.3
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib) >= 1.2.1
 
@@ -57,7 +56,6 @@ This package contains the bsdtar cmdline utility.
 
 %package -n bsdtar
 Summary:        Utility to read several different streaming archive formats
-Group:          Productivity/Archiving/Compression
 Requires:       %{libname} >= %{version}
 
 %description -n bsdtar
@@ -65,7 +63,6 @@ This package contains the bsdtar cmdline utility.
 
 %package -n %{libname}
 Summary:        Library to work with several different streaming archive formats
-Group:          System/Libraries
 
 %description -n %{libname}
 Libarchive is a programming library that can create and read several
@@ -122,7 +119,6 @@ methods, or new ways of reading/writing archives.
 
 %package devel
 Summary:        Development files for libarchive
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel

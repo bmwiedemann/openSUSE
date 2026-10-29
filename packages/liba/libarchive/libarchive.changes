@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:42:55 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 3.8.10 (security, bugfix and minor feature release):
+  * 7z: add Delta, RISCV, ARMTHUMB and IA64 filters for non-lzma
+    archives
+  * Support message digests via nettle 4 and mbedtls 3
+  * tar: add --mode option for GNU tar compatibility
+  * Hardening fixes: iso9660 boot-image block count overflow, two
+    reader use-after-free paths, compress flush 1-byte heap overflow,
+    bsdunzip use-after-free, rar5 integer overflow, integer
+    conversion hardening in lha and iso9660
+  * No soname change: libarchive.so.13 unchanged
+- Drop obsolete Group: tags; encode upstream libxml2 >= 2.7.3 floor.
+
+-------------------------------------------------------------------
 Tue Sep  8 08:58:16 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 3.8.9:
