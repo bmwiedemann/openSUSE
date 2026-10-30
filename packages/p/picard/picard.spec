@@ -17,13 +17,12 @@
 
 
 Name:           picard
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        The Next Generation MusicBrainz Tagger
 License:        GPL-2.0-or-later
 URL:            https://picard.musicbrainz.org
 Source0:        https://codeload.github.com/metabrainz/picard/tar.gz/release-%{version}#/%{name}-%{version}.tar.gz
-Patch0:         fix-test_article_insensitive_adapter.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
