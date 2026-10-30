@@ -18,12 +18,12 @@
 
 %bcond_with profiler
 
-%define api_major 18
+%define api_major 51
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 
 Name:           mutter
-Version:        50.5
+Version:        51.1
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -45,7 +45,7 @@ BuildRequires:  meson >= 1.3.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-argcomplete
 BuildRequires:  python3-docutils
-BuildRequires:  pkgconfig(atk)
+BuildRequires:  pkgconfig(atk) >= 2.5.3
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(colord) >= 1.4.5
@@ -53,25 +53,24 @@ BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(fribidi) >= 1.0.0
 BuildRequires:  pkgconfig(gbm) >= 21.3
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.69.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.81.1
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.81.1
-BuildRequires:  pkgconfig(glycin-2)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
-BuildRequires:  pkgconfig(graphene-gobject-1.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 47.beta
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(gudev-1.0) >= 232
+BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.10.2
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 51.rc
+BuildRequires:  pkgconfig(gtk4) >= 4.14.0
+BuildRequires:  pkgconfig(gudev-1.0) >= 238
 BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libcanberra) >= 0.26
-BuildRequires:  pkgconfig(libdisplay-info)
+BuildRequires:  pkgconfig(libdisplay-info) >= 0.2
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libeis-1.0) >= 1.3.901
-BuildRequires:  pkgconfig(libinput) >= 1.30.0
+BuildRequires:  pkgconfig(libinput) >= 1.31.0
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 1.6.0
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.7
 BuildRequires:  pkgconfig(libsystemd)
@@ -87,8 +86,8 @@ BuildRequires:  pkgconfig(sysprof-capture-4) >= 3.37.2
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
 BuildRequires:  pkgconfig(wayland-eglstream)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.47
-BuildRequires:  pkgconfig(wayland-server) >= 1.23
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.48
+BuildRequires:  pkgconfig(wayland-server) >= 1.26
 BuildRequires:  pkgconfig(xkbcommon) >= 0.4.3
 BuildRequires:  pkgconfig(xkbregistry)
 # Needed for Xwayland support
@@ -96,7 +95,7 @@ BuildRequires:  pkgconfig(xkbregistry)
 BuildRequires:  (libxcvt if xorg-x11-server > 21)
 %endif
 BuildRequires:  xorg-x11-server
-BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(x11) >= 1.7.0
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xcb-res)
@@ -104,7 +103,7 @@ BuildRequires:  pkgconfig(xcomposite) >= 0.4
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xfixes) >= 3
+BuildRequires:  pkgconfig(xfixes) >= 6
 BuildRequires:  pkgconfig(xi) >= 1.7.4
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xkeyboard-config-2)
@@ -151,8 +150,6 @@ popd
 
 %build
 %meson \
-	-Degl_device=true \
-	-Dwayland_eglstream=true \
 	-Dcogl_tests=false \
 	-Dclutter_tests=false \
 	-Dtests=disabled \
@@ -218,6 +215,7 @@ popd
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.devkit.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.mutter.experimental.gschema.xml
 
 %{_bindir}/gdctl
 %{_datadir}/bash-completion/completions/gdctl

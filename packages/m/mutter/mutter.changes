@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:28:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.1:
+  * Fix drag&drop between Wayland and Xwayland clients
+  * Update window's monitor after configure
+  * Use logical normal orientation when resetting panel rotation
+  * Preserve MRU order when windows become sticky
+  * Allow changing selections with the same serial
+  * Fix applying `workspaces-only-on-primary` after monitor changes
+  * Allow cursor implementations to fall back to Xcursor
+  * Enforce throttling of frame clock updates while power saving
+  * Misc. bug fixes and cleanups
+
+-------------------------------------------------------------------
+Mon Oct 12 10:58:55 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rebase mutter-disable-cvt-s390x.patch.
+
+-------------------------------------------------------------------
+Mon Oct 12 10:58:54 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Mon Oct 12 10:58:53 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Fix giving some X11 clients a wrong empty input mask
+  + Return correct xdg-shell error for illegal size requests
+  + Improve backlight detection
+  + Fix dma-buf screencasting with primary GPU FBO path
+  + Support custom acceleration profiles
+  + Add builtin key controller to handle binding pools
+  + Fix background blur in offscreen and clone paints
+  + Fix invisible cursor when magnified
+  + Fix assigning some X11 clients a wrong initial size
+  + Fix partial unmaximization
+  + Make WindowConfig maximize flag setters public
+  + Fixed crashes
+  + Plugged leaks
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 10:58:52 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc:
+  + Hook up stylus eraser button configuration
+  + Fix using hardware cursor for SVG cursors
+  + Do not require EDID to generate device color profile
+  + Fix auto-rotate on phones without tablet mode switch
+  + Decouple timelines from expected presentation times
+  + Add background effect policy
+  + Prevent modifier release from stopping key repeat
+  + Align drag icon coordinates to pixel grid
+  + Handle cross GPU buffer scanout
+  + Fix multiple monitors being reported as primary
+  + Fix desaturated SDR content in HDR mode
+  + Add primary GPU rendering path using FBOs
+  + Remove clutter_get_default_backend()
+  + Fix offscreen effect glitches on resource scale changes
+  + Fix hang on external monitor hotplug
+  + Throttle timelines that don't produce a frame every cycle
+  + Consider key alias for binding pool bindings
+  + Allow overriding client initial config
+  + Fix direct scanout handling for captures without dma-buf
+  + Make binding pool key activation case-insensitive
+  + Support Night Light on hardware without GAMMA_LUT
+  + Fix listing all supported fallback resolutions
+  + Make software cursor overlay visibility per-view
+  + Fixed crashes
+  + Plugged leaks
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop pkgconfig(glycin-2): dependency no longer required.
+
+-------------------------------------------------------------------
+Mon Oct 12 10:58:51 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Allow to get last input device from backend
+  + Send sprite object with grab-op-begin signal
+  + Hook up disable-while-typing timeout setting
+  + Hide cursor while input capture is active
+  + Add ext-background-effect-v1 blur support
+  + Fix blurred rendering with non-pixel-aligned monitors
+  + Use staging xdg_session_management_v1 protocol
+  + Allow for button scrolling on mice
+  + Allow external cursor implementations
+  + Do not add unsuported fallback monitor modes
+  + Improve frame scheduling
+  + Add dedicated "input panel" group
+  + Fix reapplying shader snippet after resize/scale operations
+  + Fill in mastering display metadata for HDR output
+  + Add transition-removed signal on ClutterActor
+  + Fix invalid redraw clips on rotated monitors
+  + Avoid using cairo in public screenshot API
+  + Split experimental features into separate settings
+  + Use MetaWindowConfig to process window state changes
+  + Allow global shortcut inhibitors to inhibit a11y shortcuts
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 10:58:50 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Allow input capture portal to integrate with clipboard
+  + Ignore repeated events for double click counting
+  + Do not unfullscreen fullscreened window on unmaximize
+  + Add format-aware window_actor_paint_to_content() variant
+  + Make DND with tablets work across surfaces
+  + Ensure preferred_scale event is sent to clients
+  + Remove support for legacy NVIDIA drivers
+  + De-prioritize focusing desktop windows
+  + Minimize stage paints and buffer copies in screencasts
+  + Remove CoglProgram/Shader API
+  + Fix erroneous stack order changes on workspace switches
+  + Allow creating Devkit monitors from the command line
+  + Fix triggering OSK for text_input_v3 version 1 clients
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Bump api_major define to 51 following upstream changes.
+- Disable mutter-disable-cvt-s390x.patch, needes rebase.
+- Stop passing egl_device=true and wayland_eglstream=true to meson
+  setup, no longer needed nor recognized.
+
+-------------------------------------------------------------------
 Sun Oct 11 19:22:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop 5370.patch: It fixes emacs, but breaks copy/paste from firefox and
