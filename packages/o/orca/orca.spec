@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Wnck\\)
 
 Name:           orca
-Version:        50.3
+Version:        51.1
 Release:        0
 Summary:        Screen reader for GNOME
 License:        LGPL-2.1-or-later
@@ -41,8 +41,8 @@ BuildRequires:  python3-gobject >= 3.18
 BuildRequires:  python3-louis
 BuildRequires:  python3-speechd
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(atk-bridge-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(atspi-2) >= 2.56.0
+BuildRequires:  pkgconfig(atk-bridge-2.0) >= 2.58.6
+BuildRequires:  pkgconfig(atspi-2) >= 2.58.6
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.18
 # the gsettings tool is used to know if a11y is enabled
@@ -70,7 +70,10 @@ braille, and/or magnification.
 %autosetup -p1
 
 %build
-%meson
+# MathCAT (MathML support) requires cargo/Rust; disabled until properly packaged
+%meson \
+	-Dmathcat=false
+	%{nil}
 %meson_build
 
 %install

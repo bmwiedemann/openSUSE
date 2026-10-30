@@ -1608,4 +1608,12 @@
     - Fix bug in which Orca went silent due to text elements</comment>
     <requestid>1381189</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>bafc3b9bb3d4a13a5f2aa4d9ce064b40</srcmd5>
+    <version>51.1</version>
+    <time>1793380094</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385456</requestid>
+  </revision>
 </revisionlist>
