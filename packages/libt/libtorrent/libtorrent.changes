@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 30 00:23:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.27
+  * Store chunk priority in download cache entries to avoid
+    re-lookup on pop.
+  * Balance high/normal chunk selection at a best-effort 3:1 ratio.
+  * Close pending listeners when dual-stack socket setup fails.
+
+-------------------------------------------------------------------
 Sat Oct 24 11:03:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.26
