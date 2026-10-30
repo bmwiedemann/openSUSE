@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 17 19:20:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add zsh BuildRequires: Needed due to zsh-completion dirs.
+
+-------------------------------------------------------------------
 Wed May 27 16:16:23 UTC 2026 - Rahul Jain <rahul.jain@suse.com>
 
   * Fix CVE-2026-4948: local unprivileged users can modify firewall

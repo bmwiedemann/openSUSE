@@ -157,6 +157,7 @@ Bash command line completion support for firewalld.
 Summary:        Zsh Completion for firewalld
 Group:          Productivity/Networking/Security
 Requires:       %{name} = %{version}-%{release}
+BuildRequires:  zsh
 Requires:       zsh
 Supplements:    (%{name} and zsh)
 
@@ -446,7 +447,6 @@ fi
 %{_datadir}/bash-completion/completions/firewall-cmd
 
 %files -n %{name}-zsh-completion
-%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_firewalld
 
 %files -n %{name}-lang -f %{name}.lang
