@@ -2774,4 +2774,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   (bsc#1278300 glgo#GNOME/libgnome-volume-control!38)</comment>
     <requestid>1383674</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>36a43b4389a3b3896099e06a8945ba58</srcmd5>
+    <version>51.1</version>
+    <time>1793380039</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385429</requestid>
+  </revision>
 </revisionlist>

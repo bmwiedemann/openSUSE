@@ -1,4 +1,234 @@
 -------------------------------------------------------------------
+Wed Oct 14 12:03:51 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.1:
+  * Improve web login and banner layout
+  * Fix workspace thumbnail centering in RTL
+  * Fix legacy auth services messages interfering with SSSD
+  * Fix applying color filter when using full grayscale
+  * Fix closing mount notification on drive disconnect
+  * Use gnome-autoar for extracting extensions
+  * Allow mutter to fall back to XCursor
+  * Fix clock position on lock screen
+  * Fix quick settings preventing direct scanout
+  * Plugged leaks
+  * Misc. bug fixes and cleanups
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:29:39 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Don't duplicate locale keyboard layout
+  + Fix activating network items in quick settings
+  + Improve lock/login screen styling
+  + Cancel mount password dialogs when locking screen
+  + Validate serilized image data before creating pixbuf
+  + Fixed crash
+  + Plugged leaks
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop e5c2018d.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:29:38 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add e5c2018d.patch: status/network: Restore chain up on
+  activate() with a Clutter.Event. Fixes VPN connection not being
+  activatable from the GNOME Shell menu.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:29:37 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc:
+  + Fix glitch when switching workspaces with direct scanout
+  + Use glycin to load and cache background images
+  + Support building with libical4
+  + Refuse to unlock screen after screen time limit was reached
+  + Fix blocking when toggling wireless toggle
+  + Continue port from raw event handlers to controllers
+  + Fix focusing calendar app from reminder notification
+  + Don't show busy cursor when activating actions
+  + Fix race condition that prevents password prompt from showing
+  + Fix glitch when cancelling lock screen prompt with Esc
+  + Track magnifier mouse position without polling
+  + Limit parallel texture loading operations
+  + Focus first menu item when opened via keyboard
+  + Fix race condition when enabling extensions
+  + Open windows created via new-window action on correct workspace
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add pkgconfig(glycin-2) BuildRequires: new dependency, moved to
+  gnome-shell from mutter.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:29:36 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Fix glitch when switching to minimized window on another
+    workspace
+  + Add initial support for 'reduced-motion' setting
+  + Explicitly disallow async disable() methods in extensions
+  + Add SVG-based cursor implementations
+  + Continue port from raw event handlers to controllers
+  + Improve keyboard navigation of screenshot area selection
+  + Support COPY, CUT and PASTE action keys in entries
+  + Fix miscaled magnified cursor on HiDPI
+  + Fix sound glitch when pushing redundant volume changes
+  + Refine auth prompt UX
+  + Add support for web login and unified auth mechanism
+  + Handle event reminder notifications
+  + Fix removing arbitrary provider when removing unregistered
+    search provider
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add pkgconfig(librsvg-2.0) BuildRequires: new dependency for SVG
+  based cursors.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:29:35 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Fix autorun notification for connected USB drives
+  + Fix reapplying layout on `xkb-options` changes
+  + Expose slow-down-factor in looking glass
+  + Improve app grid accessibility
+  + Support touch scrolling in ScrollView
+  + Use custom sound effects instead of sound theme
+  + Use more readable St.ButtonMask values
+  + Save and restore monitor brightness
+  + Support elogind as libsystemd provider
+  + Prevent workspaces from being removed mid-animation
+  + Support version 2 of text_input_v3 protocol
+  + Improve UI for conflicting sessions on login screen
+  + Announce search result description to screen readers
+  + Improve animation when expanding app grid label
+  + Replace GLSLEffect with ClutterShaderEffect
+  + Fix spacing in lock screen media notifications
+  + Add support for start/end text-align
+  + Pass params object to popupMenu open()/close() methods
+  + Split extensions-app into its own repository
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Bump mutter_api define to 51 and mutter_req define to 51.alpha
+  following upstream changes.
+- Drop gnome-extensions sub-package, split out to new stand-alone
+  package upstream
+
+-------------------------------------------------------------------
+Fri Oct  9 08:29:34 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Filter typelib(Malcontent) from the dependency list: the latest
+  upstream version cannot be included in openSUSE due to pending
+  CVEs, where upstream confirmed not having time to address them
+  timely.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:29:33 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Don't duplicate locale keyboard layout
+  + Fix activating network items in quick settings
+  + Improve lock/login screen styling
+  + Cancel mount password dialogs when locking screen
+  + Validate serilized image data before creating pixbuf
+  + Fixed crash
+  + Plugged leaks
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop e5c2018d.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:29:32 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add e5c2018d.patch: status/network: Restore chain up on
+  activate() with a Clutter.Event. Fixes VPN connection not being
+  activatable from the GNOME Shell menu.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:29:31 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc:
+  + Fix glitch when switching workspaces with direct scanout
+  + Use glycin to load and cache background images
+  + Support building with libical4
+  + Refuse to unlock screen after screen time limit was reached
+  + Fix blocking when toggling wireless toggle
+  + Continue port from raw event handlers to controllers
+  + Fix focusing calendar app from reminder notification
+  + Don't show busy cursor when activating actions
+  + Fix race condition that prevents password prompt from showing
+  + Fix glitch when cancelling lock screen prompt with Esc
+  + Track magnifier mouse position without polling
+  + Limit parallel texture loading operations
+  + Focus first menu item when opened via keyboard
+  + Fix race condition when enabling extensions
+  + Open windows created via new-window action on correct workspace
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add pkgconfig(glycin-2) BuildRequires: new dependency, moved to
+  gnome-shell from mutter.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:29:30 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Fix glitch when switching to minimized window on another
+    workspace
+  + Add initial support for 'reduced-motion' setting
+  + Explicitly disallow async disable() methods in extensions
+  + Add SVG-based cursor implementations
+  + Continue port from raw event handlers to controllers
+  + Improve keyboard navigation of screenshot area selection
+  + Support COPY, CUT and PASTE action keys in entries
+  + Fix miscaled magnified cursor on HiDPI
+  + Fix sound glitch when pushing redundant volume changes
+  + Refine auth prompt UX
+  + Add support for web login and unified auth mechanism
+  + Handle event reminder notifications
+  + Fix removing arbitrary provider when removing unregistered
+    search provider
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add pkgconfig(librsvg-2.0) BuildRequires: new dependency for SVG
+  based cursors.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:29:29 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Fix autorun notification for connected USB drives
+  + Fix reapplying layout on `xkb-options` changes
+  + Expose slow-down-factor in looking glass
+  + Improve app grid accessibility
+  + Support touch scrolling in ScrollView
+  + Use custom sound effects instead of sound theme
+  + Use more readable St.ButtonMask values
+  + Save and restore monitor brightness
+  + Support elogind as libsystemd provider
+  + Prevent workspaces from being removed mid-animation
+  + Support version 2 of text_input_v3 protocol
+  + Improve UI for conflicting sessions on login screen
+  + Announce search result description to screen readers
+  + Improve animation when expanding app grid label
+  + Replace GLSLEffect with ClutterShaderEffect
+  + Fix spacing in lock screen media notifications
+  + Add support for start/end text-align
+  + Pass params object to popupMenu open()/close() methods
+  + Split extensions-app into its own repository
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Bump mutter_api define to 51 and mutter_req define to 51.alpha
+  following upstream changes.
+- Drop gnome-extensions sub-package, split out to new stand-alone
+  package upstream
+
+-------------------------------------------------------------------
 Thu Oct  8 01:18:35 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add libgnome-volume-control-Avoid-NULL-deref.patch: Avoid NULL
@@ -938,7 +1168,7 @@ Thu Oct 26 18:30:06 UTC 2023 - bjorn.lie@gmail.com
   + status/system: Use Intl to format battery percentage
   + slider:
     - Ignore left/right scroll directions
-    - Fix check for emulated scroll events 
+    - Fix check for emulated scroll events
   + Updated translations.
 - Add gnome-shell_nb_fix_trans.patch: Fix typo in translation
   breaking gnome-shell calendar overview.
@@ -1293,7 +1523,7 @@ Sat Dec 10 09:03:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 Fri Dec  2 01:44:58 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gnome-shell-main-Leak-the-GJS-context-and-ShellGlobal.patch:
-  Leak the GJS context and ShellGlobal, the patch is from 
+  Leak the GJS context and ShellGlobal, the patch is from
   https://src.fedoraproject.org/rpms/gnome-shell/tree/rawhide
   (bsc#1205518)
 
@@ -2202,14 +2432,14 @@ Fri Oct 23 19:30:05 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 Fri Oct 23 01:44:34 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gnome-shell-CVE-2020-17489.patch: reset auth prompt on vt
-  switch before fade in in loginDialog 
+  switch before fade in in loginDialog
   (bsc#1175155 glgo#GNOME/gnome-shell!1377 CVE-2020-17489).
 
 -------------------------------------------------------------------
 Mon Oct 12 09:24:09 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Add gnome-shell-jscSLE16518-update-subprojects-libgvc.patch:
-  Update libgvc to revision 7a621180. This update is necessary to 
+  Update libgvc to revision 7a621180. This update is necessary to
   add support for recent UCM related changes in ALSA and PulseAudio
   (jsc#SLE-16518, glgo#GNOME/gnome-shell!1444).
 
@@ -2379,7 +2609,7 @@ Wed Aug 12 21:11:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Fri Aug  7 05:43:21 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
-- Update gnome-shell-fate324570-Make-GDM-background-image-configurable.patch: 
+- Update gnome-shell-fate324570-Make-GDM-background-image-configurable.patch:
   to be compatible with 3.36 (boo#1172826).
 
 -------------------------------------------------------------------
@@ -2423,7 +2653,7 @@ Wed Jul  8 07:35:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Thu Jun 11 02:44:58 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
-- Add gnome-shell-disable-screensaver-user-switch-when-remote.patch: 
+- Add gnome-shell-disable-screensaver-user-switch-when-remote.patch:
   This patch will set the button invisible when the user's can_switch
   is false (e.g. when the session is remote) or user-switch-enabled is
   disabled (bsc#1167276 glgo#GNOME/gnome-shell!1215).
@@ -2823,7 +3053,7 @@ Tue Nov 19 12:09:59 UTC 2019 - dimstar@opensuse.org
 Fri Nov  1 08:03:00 UTC 2019 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Rebase patch gnome-shell-domain.patch and
-  gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch. 
+  gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch.
 
 -------------------------------------------------------------------
 Wed Oct 30 15:41:25 UTC 2019 - dimstar@opensuse.org
@@ -2927,7 +3157,7 @@ Tue Sep 17 09:11:28 UTC 2019 - bjorn.lie@gmail.com
 -------------------------------------------------------------------
 Tue Sep 17 06:58:17 UTC 2019 - Chingkai Chu <qkzhu@suse.com>
 
-- Rebase gnome-shell-864872-unlock-by-mouse-motion.patch to 3.34. 
+- Rebase gnome-shell-864872-unlock-by-mouse-motion.patch to 3.34.
 
 -------------------------------------------------------------------
 Fri Sep 13 14:29:24 UTC 2019 - bjorn.lie@gmail.com
@@ -2940,14 +3170,14 @@ Fri Sep 13 14:29:24 UTC 2019 - bjorn.lie@gmail.com
   + cleanup: Don't assume hasOwnProperty() method on objects
   + cleanup: "Only" use two indentation styles for object literals
   + cleanup: Stop using Mainloop module
-- Switch to checkout from master, we need the fixes for stability. 
+- Switch to checkout from master, we need the fixes for stability.
 - Drop gnome-shell-remove-the-INITIALIZED-extensionState.patch:
   Fixed upstream.
 
 -------------------------------------------------------------------
 Thu Sep 12 15:32:19 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Add gnome-shell-remove-the-INITIALIZED-extensionState.patch: 
+- Add gnome-shell-remove-the-INITIALIZED-extensionState.patch:
   Completely remove the INITIALIZED ExtensionState
 
 -------------------------------------------------------------------

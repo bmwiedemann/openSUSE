@@ -16,12 +16,12 @@
 #
 
 
-%global __requires_exclude typelib\\(Meta|MetaTest|St|Cogl|Clutter|TelepathyGlib\\)
-%define mutter_api 18
-%define mutter_req 50.rc
+%global __requires_exclude typelib\\(Meta|MetaTest|St|Cogl|Clutter|TelepathyGlib|Malcontent\\)
+%define mutter_api 51
+%define mutter_req 51.0
 
 Name:           gnome-shell
-Version:        50.5
+Version:        51.1
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -87,29 +87,31 @@ BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.86.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.86.0
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.87.1
+BuildRequires:  pkgconfig(glycin-2) >= 2.0
 BuildRequires:  pkgconfig(gnome-autoar-0)
-BuildRequires:  pkgconfig(gnome-desktop-4)
+BuildRequires:  pkgconfig(gnome-desktop-4) >= 40
 BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.49.1
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 50.alpha
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.11.92
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.0
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.19
-BuildRequires:  pkgconfig(json-glib-1.0) >= 0.13.2
+BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.1
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
 BuildRequires:  pkgconfig(libmutter-%{mutter_api}) >= %{mutter_req}
-BuildRequires:  pkgconfig(libnm) >= 1.10.4
-BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libnm) >= 1.24
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.49
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.46
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.11
-BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libsystemd) >= 246
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(mutter-clutter-%{mutter_api}) >= %{mutter_req}
 BuildRequires:  pkgconfig(mutter-cogl-%{mutter_api}) >= %{mutter_req}
@@ -170,14 +172,6 @@ Supplements:    (%{name} and evolution-data-server)
 %description calendar
 This package adds support for Evolution Calendar, such as appointments
 into GNOME Shell calendar.
-
-%package -n gnome-extensions
-Summary:        Extensions app for GNOME Shell
-Group:          System/GUI/GNOME
-Requires:       %{name} = %{version}
-
-%description -n gnome-extensions
-This package contains an optional extensions app for managing GNOME Shell extensions.
 
 %lang_package
 
@@ -245,6 +239,7 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_libdir}/gnome-shell/libshell-%{mutter_api}.so
 %{_libdir}/gnome-shell/libgvc.so
 %{_libdir}/gnome-shell/libst-%{mutter_api}.so
+%{_datadir}/applications/org.gnome.Shell.CalendarServer.desktop
 %{_datadir}/applications/org.gnome.Shell.PortalHelper.desktop
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.ScreenTime.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Introspect.xml
@@ -255,7 +250,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider2.xml
 %{_datadir}/dbus-1/services/org.gnome.Shell.HotplugSniffer.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.PortalHelper.service
-%{_datadir}/glib-2.0/schemas/org.gnome.Extensions.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.gschema.xml
 %{_datadir}/gnome-control-center/keybindings/50-gnome-shell-launchers.xml
 %{_datadir}/gnome-control-center/keybindings/50-gnome-shell-system.xml
@@ -305,6 +299,12 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/gnome-shell/org.gnome.Shell.Extensions.src.gresource
 %{_datadir}/desktop-directories/X-GNOME-Shell-Utilities.directory
 %{_datadir}/desktop-directories/X-GNOME-Shell-System.directory
+%dir %{_datadir}/gnome-shell/sounds
+%{_datadir}/gnome-shell/sounds/audio-volume-change.oga
+%{_datadir}/gnome-shell/sounds/complete.oga
+%{_datadir}/gnome-shell/sounds/device-added.oga
+%{_datadir}/gnome-shell/sounds/device-removed.oga
+%{_datadir}/gnome-shell/sounds/screen-capture.oga
 
 %files devel
 %doc %{_datadir}/doc/shell/
@@ -314,17 +314,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %files calendar
 %{_libexecdir}/gnome-shell/gnome-shell-calendar-server
 %{_datadir}/dbus-1/services/org.gnome.Shell.CalendarServer.service
-
-%files -n gnome-extensions
-%{_bindir}/gnome-extensions-app
-%{_datadir}/applications/org.gnome.Extensions.desktop
-%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Extensions-symbolic.svg
-%{_datadir}/dbus-1/services/org.gnome.Extensions.service
-%{_datadir}/gnome-shell/org.gnome.Extensions
-%{_datadir}/gnome-shell/org.gnome.Extensions.data.gresource
-%{_datadir}/gnome-shell/org.gnome.Extensions.src.gresource
-%{_datadir}/metainfo/org.gnome.Extensions.metainfo.xml
 
 %files lang -f %{name}.lang
 
