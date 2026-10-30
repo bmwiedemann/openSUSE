@@ -16,7 +16,7 @@
 #
 
 Name:           foundry
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        IDE library and command-line companion tool
 # foundry: LGPL-2.1-or-later and GPL-3.0-or-later
@@ -29,21 +29,21 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(editorconfig)
 BuildRequires:  pkgconfig(flatpak)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.82
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.82
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gom-1.0)
+BuildRequires:  pkgconfig(gom-1.0) >= 0.5.0
 BuildRequires:  pkgconfig(gtk4) >= 4.20
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.18
-BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(json-glib-1.0) >= 1.8
 BuildRequires:  pkgconfig(jsonrpc-glib-1.0)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7
 BuildRequires:  pkgconfig(libcmark)
 BuildRequires:  pkgconfig(libdex-1) >= 1.1.alpha
 BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(libpanel-1)
-BuildRequires:  pkgconfig(libpeas-2)
+BuildRequires:  pkgconfig(libpeas-2) >= 2.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(libssh2)

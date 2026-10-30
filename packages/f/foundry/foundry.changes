@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:49:52 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Sun Sep 13 18:23:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.0:
+  + This stable release completes the 1.2 series with debugger
+    fixes, API annotation polish, improved GitLab CI shells, and
+    broader translation coverage.
+  + Debugger:
+    - Improve DAP thread, stop, continue, and stack-frame state
+      tracking
+    - Synchronize DAP source breakpoints, preserve breakpoint
+      objects across partial updates, and roll back rejected
+      breakpoint changes
+    - Propagate DAP adapter, stack-trace, and waiter errors more
+      reliably
+    - Handle adapter termination and pending breakpoint disposal
+      more robustly
+    - Add DAP debugger regression tests
+  + API and Build:
+    - Fix compilation as C++
+    - Fix FoundryUnixFDMap destination FD reporting
+    - Improve introspection annotations for arrays, nullable
+      values, out parameters, and ownership transfer across public
+      APIs
+    - Fix JSON-RPC message reads that span multiple stream reads or
+      UTF-8 character boundaries
+    - Fix JSON serialization buffer ownership and a JSON-RPC leak
+      found by LSAN
+  + Command Line, Plugins, and UI:
+    - Fix `foundry ci shell` interactive terminal handling under
+      Podman
+    - Set a user-agent header for GitLab requests
+    - Smooth line-change gutter rendering with merged rounded runs
+    - Delay on-type diagnostics slightly to reduce churn while
+      editing
+    - Correct the Gom branch in the Flatpak example manifest
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug  2 20:10:51 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.beta:
+  + This beta adds local GitLab CI execution, expands the public CI
+    and Git APIs, and improves command-line help and interactive
+    terminal handling.
+  + Continuous Integration:
+    - Add public abstractions for CI providers, pipelines, jobs,
+      runs, run options, and artifacts
+    - Add `foundry ci list`, `run`, `shell`, and `clean` commands
+    - Add a GitLab CI provider that resolves includes, inheritance,
+      variables, rules, stages, dependencies, needs, artifacts, and
+      common execution policies
+    - Run GitLab CI jobs locally in Podman with artifact collection
+    - Support Flatpak CI jobs, uncommitted and untracked worktree
+      content, and interactive shells inside supported jobs
+  + Version Control:
+    - Add bindable amend support and changed-file listing to
+      FoundryGitCommitBuilder
+    - Load commit templates and filter configured comment lines
+      from commit messages
+    - Add convenience APIs to stash all changes or discard worktree
+      changes
+    - Fix amended commits updating HEAD, UTF offset calculation,
+      unchanged staged deltas, and a baseline commit leak
+  + Command Line and Platform:
+    - Generate root, intermediate, and leaf command help from the
+      command tree
+    - Improve command synopses, shell completion, and the foundry
+      manual
+    - Preserve inherited controlling terminals so interactive
+      shells retain job control
+    - Use the default build PTY for incremental Meson test work
+  + API and Build:
+    - Add FoundryContext:title-with-fallback
+    - Improve YAML parsing and error handling for Flatpak manifests
+      and GitLab CI
+    - Stop exposing private dependencies to Meson subproject
+      consumers
+    - Fix pkg-config dependencies for libfoundry-gtk and
+      libfoundry-adw
+    - Link libfoundry-adw and the progress icon test against libm
+  + GTK and UI:
+    - Fix terminal cursor handling when a palette uses fallback
+      colors
+    - Add missing tweak sections and category titles
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul  3 20:28:55 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.alpha:
+  + Version Control:
+    - Add FoundryVcsGraph and FoundryVcsGraphEntry abstractions for
+      repository graph rendering
+    - Add Git-backed graph generation and helper APIs
+    - Add FoundryGitLanes GTK widget for drawing git-style commit
+      lanes
+    - Move git blame updates and clone operations onto worker
+      threads
+    - Existing git thread use has been condensed to DexThreadPool
+    - Add Sysprof trace marks around git operations
+  + Tracing and Diagnostics:
+    - Add a private Foundry tracing abstraction backed by
+      sysprof-capture when available
+    - Add optional sysprof build support
+    - Add tracing around Flatpak manifest loading and libflatpak
+      integration
+    - Give fibers more useful names across the codebase
+  + API:
+    - Add FoundryFutureItem for presenting a future-backed object
+      in model APIs
+    - Add foundry_file_canonicalize() DexFuture wrapper
+    - Add JSON-RPC await helper for completion notifications
+    - Add FoundryContext helpers for per-context local state
+    - Add foundry_git_oid_dup_string() helper
+  + GTK and Editor Integration:
+    - Implement apply_edit() for GtkSourceBuffer
+    - Fix source-buffer property names and documentation typos
+    - Fix Clang warnings in libfoundry-gtk
+  + Bug fixes:
+    - foundry: call dex_init() at startup
+    - libfoundry/jsonrpc: fix read_upto() return type and inverted
+      error check
+    - libfoundry/build: check optional vfuncs before calling them
+    - libfoundry/git: fix an erroneous NULL check
+    - plugins/devhelp: deduplicate .devhelp2 files by realpath()
+    - plugins/gitlab: improve request error handling
+    - testsuite: properly gate ACP tests
+    - subprojects: use an older Gom revision for compatibility
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:29:40 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
