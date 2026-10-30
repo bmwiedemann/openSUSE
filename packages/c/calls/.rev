@@ -176,4 +176,18 @@ Pushing GNOME 45.rc packages</comment>
   subproject into the source directory.</comment>
     <requestid>1354858</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c513d22774169e43ac1004b84cd84bdf</srcmd5>
+    <version>51.1</version>
+    <time>1793380256</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version dependencies according to meson.build.
+
+- Update to version 51.1:
+  * Fix segfault when dumping dot graph of GStreamer pipelines
+    (triggered when Calls gets signalled a USR2)
+  * Code Cleanups (mostly around the SIP plugin)
+  * Updated translations.</comment>
+    <requestid>1386703</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           calls
-Version:        50.0
+Version:        51.1
 Release:        0
 Summary:        A phone dialer and call handler
 License:        GPL-3.0-only AND MIT
@@ -44,8 +44,8 @@ BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(gtk4) >= 4.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.2
 BuildRequires:  pkgconfig(libcallaudio-0.1)
 BuildRequires:  pkgconfig(libebook-contacts-1.2)
 BuildRequires:  pkgconfig(libfeedback-0.0)

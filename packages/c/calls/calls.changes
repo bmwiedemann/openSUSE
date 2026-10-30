@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 20 19:28:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Wed Oct 14 07:24:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.1:
+  * Fix segfault when dumping dot graph of GStreamer pipelines
+    (triggered when Calls gets signalled a USR2)
+  * Code Cleanups (mostly around the SIP plugin)
+  * Updated translations.
+
+-------------------------------------------------------------------
 Thu May 21 07:48:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.0:
