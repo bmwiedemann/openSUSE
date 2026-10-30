@@ -24,7 +24,7 @@
 %endif
 
 Name:           nextcloud-desktop
-Version:        35.0.0
+Version:        35.0.1
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -272,7 +272,7 @@ needed to enable the plugin." || true
 %{_datadir}/applications/com.nextcloud.desktopclient.nextcloud.desktop
 %dir %{_datadir}/icons/hicolor/1024x1024/
 %dir %{_datadir}/icons/hicolor/1024x1024/apps/
-%{_datadir}/icons/hicolor/*/apps/Nextcloud*.*
+%{_datadir}/icons/hicolor/*/apps/*.*
 %{_datadir}/mime/packages/nextcloud.xml
 %{_userunitdir}/com.nextcloud.desktopclient.nextcloud.service
 

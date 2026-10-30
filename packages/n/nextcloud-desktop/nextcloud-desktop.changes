@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Oct 30 06:45:43 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
+
+- Update to version 35.0.1:
+  * Allow QML dialogs and windows to be closed with standard
+    window-closing shortcuts
+    (gh#nextcloud/desktop#11055)
+  * Make change delivery acknowledgements safe against late and
+    concurrent requests
+    (gh#nextcloud/desktop#11062)
+  * Use KDE's GitHub mirror of craftmaster in CI
+    (gh#nextcloud/desktop#11070)
+  * Re-enable network request timeouts
+    (gh#nextcloud/desktop#11079)
+  * Make the sign-up button customizable or hideable
+    (gh#nextcloud/desktop#11120)
+  * Do not follow directory symlinks and junctions
+    (gh#nextcloud/desktop#11125)
+  * Allow branding to hide the Self-host button
+    (gh#nextcloud/desktop#11122)
+  * Fix icon names in Flatpak packages
+    (gh#nextcloud/desktop#11129)
+  * Avoid duplicate and slow sync error entries in activities
+    (gh#nextcloud/desktop#11131)
+  * Ensure inode values are unique by adding an index
+    (gh#nextcloud/desktop#11134)
+  * Resolve overrideServerUrl and overrideLocalDir through
+    managed settings
+    (gh#nextcloud/desktop#11135)
+  * Keep Qt submenus attached to their parent menu
+    (gh#nextcloud/desktop#11142)
+  * Resolve installed icons from desktop entries in AppImage
+    (gh#nextcloud/desktop#11143)
+  * Update the Nextcloud development environment link in README
+    (gh#nextcloud/desktop#11149)
+  * Do not write through local symlinks during sync
+    (gh#nextcloud/desktop#11151) 
+
+-------------------------------------------------------------------
 Tue Oct 13 05:41:04 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
 
 - Update to version 35.0.0:
