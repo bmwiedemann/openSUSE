@@ -857,4 +857,12 @@ New stable rel</comment>
   + Updated translations.</comment>
     <requestid>1355933</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>c1fd284b6d91427faa140c4af5e4bc72</srcmd5>
+    <version>46.1</version>
+    <time>1793380246</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385461</requestid>
+  </revision>
 </revisionlist>
