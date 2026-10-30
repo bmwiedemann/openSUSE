@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:32:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Fri Sep 11 10:10:54 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.62.0:
+  + CVE-2026-88924: admin: Set socket ownership before creation
+- Fix patch application: apply patches numbered < 1000 also on SLE.
+
+-------------------------------------------------------------------
+Fri Sep 11 12:09:43 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.61.91:
+  + trash:
+    - Fix metadata handling when restoring or emptying
+    - Honour x-gvfs-trash/x-gvfs-notrash from fstab mount points
+  + dav: Fix response body leaks to prevent hangs
+  + Some other fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 12:09:42 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.61.90:
+  + admin/computer/http/network/recent/trash: Enable auto-unmount
+  + daemon: Add auto-unmount support for idle backends
+  + build: Drop G_GNUC_PURE from *_get_type() functions
+  + afp/dav/ftp/mtp/sftp: Harden input validation
+  + common: Clear password strings from memory before freeing
+  + mtp/onedrive/smb: Fix crashes in onedrive, mtp, and smb
+    backends
+  + Some other fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 12:09:41 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.61.1 (Unstable):
+  + udisks2: Add build option to select busy-processes command
+  + smb: Fix authentication fallback broken with Samba 4.24
+  + build: Mark AFP and archive backends as deprecated
+  + build: Remove burn backend and deprecated apis
+  + udisks2: Fix multi-seat drive filtering
+  + trash: Various fixes and performance improvements
+  + dav: Fix redirect handling to prevent HTTPS downgrade and
+    credential leakage
+  + Some other fixes
+  + Updated translations.
+- Stop passing burn=true to meson setup, no longer needed nor
+  recognized as burn backend was removed.
+- Pass afp=true and archive=true to meson setup, needed now as they
+  both have been marked deprecated and are no longer built by
+  default.
+
+-------------------------------------------------------------------
 Fri Sep 11 10:06:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.60.3:
@@ -73,7 +130,7 @@ Sun Apr  5 06:36:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 Fri Mar 27 09:44:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop google conditional and pkgconfig(libgdata), no longer
-  supported. 
+  supported.
 
 -------------------------------------------------------------------
 Mon Mar 23 08:52:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -679,7 +736,7 @@ Mon Oct  5 15:28:29 UTC 2020 - dimstar@opensuse.org
     used.
   + dav: Be sure that enumeration is possible when looking for a
     root.
- 
+
 -------------------------------------------------------------------
 Fri Sep 11 17:33:16 UTC 2020 - dimstar@opensuse.org
 
@@ -820,7 +877,7 @@ Mon Oct  7 07:47:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Sun Sep 15 19:24:28 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
-- Fix Requires on -fuse package: now needs fuse3, not fuse. 
+- Fix Requires on -fuse package: now needs fuse3, not fuse.
 
 -------------------------------------------------------------------
 Tue Sep 10 17:40:44 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -1011,8 +1068,8 @@ Mon Mar 11 15:19:51 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 Thu Feb 14 10:18:27 UTC 2019 - qkzhu@suse.com
 
 - Add gvfs-CVE-2019-3827.patch: Prevent access if any authentication
-  agent isn't available (glgo#GNOME/gvfs#355, bsc#1125084, 
-  CVE-2019-3827). 
+  agent isn't available (glgo#GNOME/gvfs#355, bsc#1125084,
+  CVE-2019-3827).
 
 -------------------------------------------------------------------
 Wed Sep 26 16:31:00 UTC 2018 - bjorn.lie@gmail.com

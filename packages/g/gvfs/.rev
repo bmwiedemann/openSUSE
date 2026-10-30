@@ -1728,4 +1728,12 @@ New stable rel</comment>
   read reply handling (bsc#1278159, CVE-2026-84269).</comment>
     <requestid>1377828</requestid>
   </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>c5ed98ec8f633ec2034a65b1eb0f8d13</srcmd5>
+    <version>1.62.0</version>
+    <time>1793380066</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385443</requestid>
+  </revision>
 </revisionlist>

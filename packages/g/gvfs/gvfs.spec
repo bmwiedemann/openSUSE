@@ -20,7 +20,7 @@
 %bcond_without  onedrive
 
 Name:           gvfs
-Version:        1.60.3
+Version:        1.62.0
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        GPL-3.0-only AND LGPL-2.0-or-later
@@ -67,7 +67,7 @@ BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 1.2
 BuildRequires:  pkgconfig(libmtp) >= 1.1.12
 BuildRequires:  pkgconfig(libnfs) >= 1.9.8
 BuildRequires:  pkgconfig(libsecret-unstable)
-BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.21
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -76,7 +76,7 @@ BuildRequires:  pkgconfig(msgraph-1) >= 0.3.0
 %endif
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
 BuildRequires:  pkgconfig(smbclient)
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(systemd) >= 206
 BuildRequires:  pkgconfig(udisks2) >= 1.97
 Recommends:     gvfs-backends
 Recommends:     gvfs-common
@@ -205,11 +205,9 @@ gvfs plugins.
 
 %prep
 %autosetup -N
-%if !0%{?sle_version}
 %autopatch -p1 -M 999
-%else
-%patch -P 1000 -p1
-%patch -P 1001 -p1
+%if 0%{?sle_version}
+%autopatch -p1 -m 1000
 %endif
 cp %{SOURCE1} .
 
@@ -219,9 +217,10 @@ cp %{SOURCE1} .
         -Dudisks2=true \
         %{!?with_cdda: -Dcdda=false} \
         -Dman=true \
-        -Dburn=true \
         -Dsystemduserunitdir=%{_userunitdir} \
         -Donedrive=%[%{with onedrive} ? "true" : "false" ] \
+        -Dafp=true \
+        -Darchive=true \
 	%{nil}
 %meson_build
 
@@ -335,8 +334,6 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_datadir}/%{name}/mounts/afp-browse.mount
 %{_libexecdir}/%{name}/gvfsd-archive
 %{_datadir}/%{name}/mounts/archive.mount
-%{_libexecdir}/%{name}/gvfsd-burn
-%{_datadir}/%{name}/mounts/burn.mount
 %{_libexecdir}/%{name}/gvfsd-computer
 %{_datadir}/%{name}/mounts/computer.mount
 %{_libexecdir}/%{name}/gvfsd-dav
