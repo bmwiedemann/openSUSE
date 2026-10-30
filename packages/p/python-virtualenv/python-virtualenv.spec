@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
-Version:        21.14.2
+Version:        21.15.1
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
@@ -41,20 +41,21 @@ Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virt
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
-Requires:       python-python-discovery >= 1.6
-Requires:       (python-distlib >= 0.3.7 with python-distlib < 1)
-Requires:       (python-filelock >= 3.20.3 with python-filelock < 4)
-Requires:       (python-platformdirs >= 3.9.1 with python-platformdirs < 5)
+Requires:       python-packaging >= 26.3
+Requires:       python-python-discovery >= 1.6.1
+Requires:       (python-distlib >= 0.4.3 with python-distlib < 1)
+Requires:       (python-filelock >= 3.24.2 with python-filelock < 5)
+Requires:       (python-platformdirs >= 4.4 with python-platformdirs < 5)
 BuildArch:      noarch
 %if !%{with test}
 # Don't install the build requirements during testing, see setuptools_scm comment below
+BuildRequires:  %{python_module hatch-fancy-pypi-readme >= 25.1}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
-BuildRequires:  %{python_module hatchling >= 1.17.1}
+BuildRequires:  %{python_module hatchling >= 1.28}
 BuildRequires:  fdupes
 %else
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flaky >= 3.7}
-BuildRequires:  %{python_module packaging >= 23.1}
 BuildRequires:  %{python_module pytest >= 7.4}
 BuildRequires:  %{python_module pytest-env >= 0.8.2}
 BuildRequires:  %{python_module pytest-mock >= 3.11.1}

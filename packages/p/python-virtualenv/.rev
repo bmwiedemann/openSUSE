@@ -1737,4 +1737,12 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1384861</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>f9bcf5e42ec8878e77b6f54423b15a9f</srcmd5>
+    <version>21.15.1</version>
+    <time>1793379842</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1393631</requestid>
+  </revision>
 </revisionlist>

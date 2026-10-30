@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct 29 10:54:00 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 21.15.1
+  * No significant changes
+  21.15.0
+  * Support Python 3.15
+  21.14.13 (CVE-2026-115586, bsc#1288119)
+  * Stop bash running commands from --prompt or an environment name
+    containing $(...), backticks or a backslash after shopt -s promptvars,
+    set -o posix, or in a child shell that inherits an exported PS1
+  * Write the .venv redirect and the wheel RECORD with exclusive create,
+    so a link planted after the existence check cannot redirect the write
+  21.14.9 (CVE-2026-113714, bsc#1287079, CVE-2026-113715, bsc#1286953,
+  CVE-2026-113716, bsc#1286949, CVE-2026-113717, bsc#1286948,
+  CVE-2026-113718, bsc#1286947, CVE-2026-113719, bsc#1287017,
+  CVE-2026-113720, bsc#1287057, CVE-2026-113721, bsc#1287076,
+  CVE-2026-113722, bsc#1287086, CVE-2026-113723, bsc#1287188,
+  CVE-2026-113724, bsc#1287194, CVE-2026-113725, bsc#1287269,
+  CVE-2026-113726, bsc#1287317)
+  * Parse VIRTUALENV_PERIODIC_UPDATE_INSECURE as a boolean, so 0, false,
+    no and off keep certificate verification enabled
+  * Reject destinations whose resolved path contains the platform’s PATH
+    separator, including separators inherited from the working directory
+    or a directory symlink
+  * Preserve an existing pyvenv.cfg when a prompt or configuration value
+    cannot be encoded as UTF-8, instead of leaving the file empty
+  * Skip writing a .venv redirect when the environment name contains a
+    line boundary
+  * Preserve non-ASCII values in activate_this.py when applications read
+    the script with a legacy text encoding before executing it
+  * Many more changes, see https://virtualenv.pypa.io/en/latest/changelog.html
+
+-------------------------------------------------------------------
 Wed Oct  7 20:29:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix description typo
@@ -6,7 +39,7 @@ Wed Oct  7 20:29:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Oct  1 10:52:07 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
-- Update to 21.14.2
+- Update to 21.14.2 (CVE-2026-113732, bsc#1287319, CVE-2026-113776, bsc#1287341)
   * Fix pyvenv.cfg getting an absolute path in python-version,
     include-system-site-packages and the other keys that hold no
     path when the working directory has an entry named like the
