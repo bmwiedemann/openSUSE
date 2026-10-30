@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 30 07:58:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.20.1:
+  * Keep block-quantized compressed weights contiguous
+  * Skip meta-device check for non-persistent buffers in
+    from_accelerate
+
+-------------------------------------------------------------------
 Tue Oct 27 06:31:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.20.0:

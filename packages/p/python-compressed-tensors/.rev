@@ -97,4 +97,12 @@ crossed range reaches compressed-tensors' shipped code.
     <comment>Update python-compressed-tensors to 0.20.0.</comment>
     <requestid>1393178</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fbb51c14c82e4eed3b147c774dc142f0</srcmd5>
+    <version>0.20.1</version>
+    <time>1793380653</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.20.1.</comment>
+    <requestid>1393853</requestid>
+  </revision>
 </revisionlist>
