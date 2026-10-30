@@ -512,6 +512,8 @@ done
 %config(noreplace) %{_sysconfdir}/bluetooth/main.conf
 
 %files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_bluetoothctl
 
 %changelog
