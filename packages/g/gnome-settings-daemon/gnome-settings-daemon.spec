@@ -27,10 +27,10 @@
 %bcond_without wacom
 %endif
 
-%define base_ver 50
+%define base_ver 51
 
 Name:           gnome-settings-daemon
-Version:        50.1+6
+Version:        51.1
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -42,8 +42,6 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         gnome-settings-daemon-initial-keyboard.patch
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch bnc#1029083 boo#1056289 qzhao@suse.com -- Switch new user's default input engine from "anthy" to "mozc" in gnome-desktop with Japanese language and ibus input frame-work condition.
 Patch1:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patch
-# PATCH-FIX-UPSTREAM 0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch glgo#GNOME/gnome-settings-daemon#780, bsc#1226423, CVE-2024-38394 sckang@suse.com -- usb-protection: Treat hubs and HID devices like any other USB gadget
-Patch4:         0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch
 # PATCH-FEATURE-OPENSUSE -- Sorry GNOME, but pestering users like this is not welcome. We will add a Support GNOME into our welcome app thogh
 Patch5:         g-s-d-skip-donation.patch
 # PATCH-FIX-UPSTREAM libgnome-volume-control-Avoid-NULL-deref.patch xwang@suse.com bsc#1278300 glgo#GNOME/libgnome-volume-control!38 -- Avoid NULL deref when card has no active profile
@@ -64,14 +62,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  polkit
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(colord) >= 1.3.5
+BuildRequires:  pkgconfig(colord) >= 1.4.5
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(gcr-4) >= 3.7.5
+BuildRequires:  pkgconfig(gcr-4) >= 3.90.0
 BuildRequires:  pkgconfig(geoclue-2.0) >= 2.1.2
-BuildRequires:  pkgconfig(geocode-glib-2.0) >= 3.10.0
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(geocode-glib-2.0) >= 3.26.3
+BuildRequires:  pkgconfig(gio-2.0) >= 2.53.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.70
+BuildRequires:  pkgconfig(glib-2.0) >= 2.80
 BuildRequires:  pkgconfig(gnome-desktop-4) >= 3.11.1
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 46.beta
 BuildRequires:  pkgconfig(gudev-1.0)
@@ -85,7 +83,7 @@ BuildRequires:  pkgconfig(libnotify) >= 0.8.7
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 2.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.36.2
-BuildRequires:  pkgconfig(mm-glib) >= 1.0
+BuildRequires:  pkgconfig(mm-glib) >= 1.18
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
 BuildRequires:  pkgconfig(systemd) >= 243
 BuildRequires:  pkgconfig(udev)

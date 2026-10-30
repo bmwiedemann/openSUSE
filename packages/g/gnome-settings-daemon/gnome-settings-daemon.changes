@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Oct 14 18:10:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.1:
+  * Housekeeping: Update donation notification to fetch the ongoing campaign
+    message from https://donate.gnome.org/api/campaign, and provide
+    distro/campaign information for analytics in the URL opened by the "Donate"
+    button in the notification.
+  * Updated translations.
+- Update version dependencies according to meson.build.
+- Rebase g-s-d-skip-donation.patch.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:32:59 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:32:58 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:32:57 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc:
+  + Power: Avoid overlap between panel dimming and idle sleep
+    notification
+  + CI improvements
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:32:56 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Usb-protection:
+    - Refactors and improvements
+    - Rely on newer gnome-session for active session tracking
+  + Updated translations.
+- Rebase patches with quilt.
+- Drop patch fixed differently upstream:
+  + 0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch
+
+-------------------------------------------------------------------
+Fri Oct  9 08:32:55 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Update gnome-volume-control dependency
+  + Housekeeping:
+    - Fix launching baobab
+    - Fix use-after free
+  + Power: Make temporary unidle play well with inhibitors
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct  8 01:18:35 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add libgnome-volume-control-Avoid-NULL-deref.patch: Avoid NULL
@@ -728,11 +783,11 @@ Thu Nov 26 10:46:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Tue Oct 13 02:29:11 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
-- Add gnome-settings-daemon-jscSLE16518-update-subprojects-libgvc.patch: 
-  Update libgvc to revision 7a621180. This update is necessary to 
+- Add gnome-settings-daemon-jscSLE16518-update-subprojects-libgvc.patch:
+  Update libgvc to revision 7a621180. This update is necessary to
   add support for recent UCM related changes in ALSA and PulseAudio.
 - Add gnome-settings-daemon-media-keys-warnings-cleanup-for-gvc-update.patch:
-  Don't throw warnings when we can't find a default source or sink 
+  Don't throw warnings when we can't find a default source or sink
   and the PulseAudio daemon is restarting (jsc#SLE-16518,
   glgo#GNOME/gnome-settings-daemon!203).
 
@@ -5633,3 +5688,4 @@ Wed Jan 16 17:44:05 CET 2008 - rodrigo@suse.de
 Wed Jan 16 14:24:29 CET 2008 - rodrigo@suse.de
 
 - First version of new gnome-settings-daemon package.
+

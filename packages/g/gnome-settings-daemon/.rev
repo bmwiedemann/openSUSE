@@ -1726,4 +1726,12 @@ work. (forwarded request 640069 from iznogood)</comment>
   (bsc#1278300 glgo#GNOME/libgnome-volume-control!38)</comment>
     <requestid>1383673</requestid>
   </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>6dc9b1865b78ccdfa270d0f4406d6205</srcmd5>
+    <version>51.1</version>
+    <time>1793380034</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385428</requestid>
+  </revision>
 </revisionlist>
