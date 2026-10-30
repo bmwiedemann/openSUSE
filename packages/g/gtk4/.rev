@@ -1204,4 +1204,12 @@ New upstream release</comment>
   + Updated translations.</comment>
     <requestid>1377057</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>af9b44063b6b1977f82a6d3af97d6815</srcmd5>
+    <version>4.24.1</version>
+    <time>1793380053</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385439</requestid>
+  </revision>
 </revisionlist>

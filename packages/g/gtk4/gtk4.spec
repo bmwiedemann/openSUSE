@@ -28,7 +28,7 @@
 %endif
 
 Name:           gtk4
-Version:        4.22.5
+Version:        4.24.1
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -66,26 +66,26 @@ BuildRequires:  shaderc
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk) >= 2.15.1
 BuildRequires:  pkgconfig(atk-bridge-2.0)
-BuildRequires:  pkgconfig(cairo) >= 1.14.0
-BuildRequires:  pkgconfig(cairo-gobject) >= 1.14.0
+BuildRequires:  pkgconfig(cairo) >= 1.18.2
+BuildRequires:  pkgconfig(cairo-gobject) >= 1.18.2
 BuildRequires:  pkgconfig(cloudproviders) >= 0.3.1
-BuildRequires:  pkgconfig(colord)
+BuildRequires:  pkgconfig(colord) >= 0.1.9
 BuildRequires:  pkgconfig(epoxy) >= 1.4
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
-BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.80.0
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.89.3
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.89.3
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.89.3
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.84
 BuildRequires:  pkgconfig(graphene-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.10.0
-BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(vulkan) >= 1.3
 %if %{with gst}
-BuildRequires:  pkgconfig(gstreamer-gl-1.0)
+BuildRequires:  pkgconfig(gstreamer-gl-1.0) >= 1.28.0
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 %endif
-BuildRequires:  pkgconfig(harfbuzz) >= 8.4
+BuildRequires:  pkgconfig(harfbuzz) >= 8.4.0
 BuildRequires:  pkgconfig(iso-codes)
 # Disabled until upstream enables ffmpeg support by default
 # BuildRequires:  pkgconfig(libavfilter)
@@ -94,12 +94,12 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(pango) >= 1.55.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.14.0
-BuildRequires:  pkgconfig(pangoft2)
+BuildRequires:  pkgconfig(pangoft2) >= pango_major_req.pango_minor_req
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
-BuildRequires:  pkgconfig(wayland-client) >= 1.21.0
+BuildRequires:  pkgconfig(wayland-client) >= 1.24.0
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.9.91
 BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.36
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.48
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
@@ -108,7 +108,7 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
-BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon) >= 0.2.0
 BuildRequires:  pkgconfig(xrandr) >= 1.2.99
 
 %description
@@ -347,12 +347,6 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_bindir}/gtk4-demo
 %{_datadir}/bash-completion/completions/gtk4-demo
 %{_bindir}/gtk4-demo-application
-%{_bindir}/gtk4-encode-symbolic-svg
-%{_bindir}/gtk4-icon-editor
-%{_datadir}/applications/org.gtk.Shaper.desktop
-%{_datadir}/icons/hicolor/scalable/apps/org.gtk.Shaper.Devel.svg
-%{_datadir}/icons/hicolor/scalable/apps/org.gtk.Shaper.svg
-%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.Shaper-symbolic.svg
 %{_bindir}/gtk4-image-tool
 %{_datadir}/bash-completion/completions/gtk4-image-tool
 %{_bindir}/gtk4-node-editor
@@ -388,7 +382,6 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_mandir}/man1/gtk4-builder-tool.1%{?ext_man}
 %{_mandir}/man1/gtk4-demo-application.1%{?ext_man}
 %{_mandir}/man1/gtk4-demo.1%{?ext_man}
-%{_mandir}/man1/gtk4-encode-symbolic-svg.1%{?ext_man}
 %{_mandir}/man1/gtk4-image-tool.1%{?ext_man}
 %{_mandir}/man1/gtk4-node-editor.1%{?ext_man}
 %{_mandir}/man1/gtk4-path-tool.1%{?ext_man}

@@ -1,4 +1,229 @@
 -------------------------------------------------------------------
+Fri Oct  2 06:08:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.24.1:
+  + Bugs fixed:
+    - search-entry: Needs extra touch to show OSK although it has
+      focus
+    - text-input: Preedit gets cleared due to text-change-cause
+    - GtkSvgWidget can't parse '@media' if it is not on a new line
+    - gtkmain: Split out debug code
+    - gtkgstsink: release GL context on disposal
+    - Post-release version bump
+    - Fix typo in CONTRIBUTING.md
+    - texthandle: fix transformation issues & relative movement
+    - Fix typo ('witten' should be 'written')
+    - searchbar: Show OSK when search-mode gets enabled
+    - docs: Correct docs for allocation functions
+    - textbuffer: Fix tag colors in accessible text attributes
+    - gtk/inscription: Refresh GtkInscription's PangoLayout when
+      rooted
+    - text: Protect against invalid offset
+    - macos: fix cursor keys
+    - various fixes
+    - gl: Create 2 fbos per frame instead of 1 per image
+    - textview: Make text handles visible after giving them a
+      position
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 30 19:33:30 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Fri Sep 11 17:52:32 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.24.0:
+  + Bugs fixed:
+    - Animated SVG frequently disappears
+    - Drop-performed class handlers read a phantom timestamp and
+      send it in XdndDrop
+    - GtkColumnView: sortable column headers expose no AT-SPI
+      action, so sorting is unreachable for assistive technology
+    - Media queries are not respected
+    - svg: if the only animations in an svg are visibility
+      animations elementa stay at initial value
+    - Crash triggered by gtk_text_accessible_text_get_extents()
+    - CUPS Secret Service authentication causes use-after-free in
+      lookup_auth_info_cb()
+    - Fix mismatches between parameters in four signal declarations
+      and the corresponding class slots
+    - gtkaccesskitcontext: Expose GActions as custom actions
+    - gtk: Repair action muxer subscriptions
+    - gsk: Allow conics with weight zero
+    - docs: Update release howto
+    - vulkan: Always update global buffer descriptor set
+    - svg: Fix run mode discrete
+    - memoryconvert: Pass the correct pointer address
+    - curve: Add gsk_curve_get_extrema
+    - Some frame clock fixes
+    - gdkclipboard-x11: don't call a NULL converter
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 10:24:34 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.23.4:
+  + Bugs fixed:
+    - AT-SPI attempts to use /org/a11y/atspi/cache before it is
+      ready w/gtk4 apps
+    - GtkListView misses items
+    - Issue: Fix Memory Leaks and Potential Crashes in GTK
+      Components
+    - GtkConstraintLayout: non-required inequality constraints
+      release an error variable twice
+    - Wayland: SIGSEGV in text_input_preedit_hint() when using IBus
+      Chewing in GTK 4 applications
+    - (GtkTextView) Cutting, pasting, or deleting text does not
+      reset virtual cursor position
+    - GtkText's input interceptor logic is too eager
+    - gtk4-demo empty context menu on tabs
+    - The menu bar focusing with F10 is wrong
+    - GtkAccessibleTextInterface mismatch between interface
+      documentation and its implementations
+    - `gtk_test_init` docs incorrect about locale
+    - Shortcut labels in menus started showing keypad/numpad keys
+      instead of regular ones
+    - Enable ubsan in the sanitizers CI build
+    - rendernode: Add bilevel opacity flag
+    - listbase: Sanity-check alignment values
+    - inspector: Add a frametime overlay
+    - gsk/vulkan: put the globals in a UBO instead of push constant
+    - demos/gtk-demo: Drop nonexistent session-id property
+    - android/contentfile: Return NOT_SUPPORTED for foreign copy
+      sources
+    - Update glib and GStreamer deps and move Fedora CI to F45
+    - svg: Make symbolic rendering opt-in
+    - svg: Add tests for symbolic rendering
+    - svg: Avoid a crash
+    - svg: Serialize gpa:rendering
+    - placesview: Small cleanup
+    - various fixes
+    - gsk: Fix a typo in quad printing
+    - gsk/gpu: avoid GPU draw ops for zero-ink glyphs
+    - rendernodeparser: Allow naming paths
+    - svg: Fix some state handling mishaps
+    - icons: Add folder-projects-symbolic
+    - adjustment: Respect the reduced-motion setting
+    - gdkcontentserializer: close the string serializer's converter
+      stream
+    - color scale: Make vertical alpha scales work
+    - svg: Avoid unnecessary rendering work
+    - Add a setting for accent color
+    - color scale: Make vertical alpha scales work
+    - shortcutswindow: Allow documenting clicks
+    - testutils: Small docs updates
+    - various cleanups
+    - svg: Be more careful
+    - svg: Really apply states if animation is off
+    - svg: Make svg_element_get_rect more robust
+    - android: Expose gtk-accent-color XSetting
+    - gdk/wayland: Set app_id on xdg-activation token
+    - Fix pomenubar behavior to match Gtk 3
+    - Add svg_element_get_polyline
+    - gtksettings: Add missing Since annotation
+    - label: Ensure the layout before computing accessible text
+      extents
+    - array: Assert that added items don't point into array
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 10:24:33 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.23.3:
+  + GTK supports the ext-background-effect Wayland protocol to
+    allow blurred background behind windows
+  + The visible focus timeout can be changed with the new
+    gtk-keyboard-focus-visible-timeout setting
+  + The GDK frameclock has been reworked to improve precision and
+    reduce frame drops
+  + Support for the CSS font-width property has been added
+  + Session save/restore functionality has been deferred to 4.26
+  + Various bugs fixed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 10:24:32 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.23.2:
+  + GTK now respects the reduced motion setting in various places
+    and avoids animations (GtkSpinner, GtkStack, GtkRevealer)
+  + New GtkShortcutTrigger functions it easier to handle synonymous
+    keys (in particular keypad keys). The new functions are
+    gtk_alternative_trigger_newv,
+    gtk_shortcut_trigger_create_with_aliases and
+    gtk_shortcut_trigger_create_for_menu
+  + Type-to-search (in particular interaction with input methods)
+    has been redone, switching from a "pull" to a "push" approach.
+    See gtk_editable_set_input_interceptor for more details.
+    As part of this, gtk_event_controller_key_forward has been
+    deprecated.
+  + The first part of ongoing frameclock work has landed, improving
+    our ability to deliver frames on time
+  + A number of GtkList/Grid/ColumnView size allocation issues
+    have been addressed. Please let us know if you spot any
+    remaining or new problems.
+  + GtkSvg:
+    - Support feTurbulence
+    - Improved text handling, including baseline-shift, whitespace
+      handling, text-decoration, proper fill+stroke, and more
+  + Build: The pango dependency has been bumped to 1.58.0
+  Bugs fixed: Please see upstream git:
+    https://gitlab.gnome.org/GNOME/gtk
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 10:24:31 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.23.1+21:
+  * css: Fix conic-gradient parsing of transition hints
+  * css: Fix infloop in conic-gradient() parsing
+  * css: Don't emit two errors in conicgradient parsing
+  * searchengine: Fix the build
+  * ci: Have one build with tracker
+  * doc: input-handling: fix link to event controllers
+
+-------------------------------------------------------------------
+Fri Sep 11 10:24:30 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.23.1 (Unstable):
+  + Snapping: GTK can now snap contents to device pixel boundaries,
+    for better control of rendering with fractional scales
+  + SVG:
+    - Support the dominant-baseline attribute for text
+    - Support media queries in CSS
+    - Fix priority order of styles and animations
+  + Touch: Long press on entries opens the touch menu
+  + Android: Frame timing is now aligned with vsync
+  + Bugs fixed: Please see upstream git:
+    https://gitlab.gnome.org/GNOME/gtk
+  + Updated translations.
+- Changes from version 4.23.0 (Unstable):
+  + SVG:
+    - GtkSvgWidget is a widget to display SVG, with some support
+      for interactive aspects of SVG
+    - We now handle <a>, <view>, <title> and <desc>
+    - Problems with recoloring of symbolic icons have been fixed
+    - GtkSvg is now used for all SVG icons
+    - GtkSpinner is using GtkSvg
+  + Wayland:
+    - Version 3.2 of the text protocol is supported
+    - xdg-session-management-v1 is used
+  + Session saving: The session saving support is back
+  + GSK:
+    - A number of 10bit image formats are supported
+    - The cache allocator has been rewritten
+    - We are now using clip masks to reduce the number of offscreens
+  + The Android backend has been ported to SDK 36
+  + The gtk4-encode-symbolic tool for producing symbolic
+    png icons has been dropped. If you were using it,
+    just ship the symbolic svg icons instead
+  + Bugs fixed: Please see upstream git:
+    https://gitlab.gnome.org/GNOME/gtk
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Sep 10 13:15:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.22.5:
@@ -1325,7 +1550,7 @@ Thu Feb 22 11:17:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.13.8.1+7:
   + Fix Crash in gtk_file_dialog_save() with initial filename.
-  + x11: Shadows require compositing 
+  + x11: Shadows require compositing
 
 -------------------------------------------------------------------
 Wed Feb 21 07:59:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -3972,3 +4197,4 @@ Fri Dec  9 12:38:11 UTC 2016 - jengelh@inai.de
 Mon Dec  5 13:13:47 UTC 2016 - dimstar@opensuse.org
 
 - Initial package, gtk4, version 3.89.1.
+
