@@ -1,4 +1,261 @@
 -------------------------------------------------------------------
+Fri Oct 30 07:13:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.22.0:
+  - This release contains a mix of new features, performance
+    improvements and bug fixes. Notably:
+    - New rego.v2 import
+    - Configurable log level for HTTP access logs
+    - Stricter handling of bundle signature filenames (breaking
+      change)
+    - Partial evaluation unrolls every over a known domain
+  * Configurable log level for HTTP access logs
+    Added --log-level-request (default info) to control the level
+    at which the HTTP server's "Received request."/"Sent response."
+    access log lines are emitted, independent of the general
+    --log-level. Set it to debug to keep those lines out of logs
+    unless
+    --log-level is also turned up.
+  * New rego.v2 import (#9224, #9269)
+    import rego.v2 enables the and and or keywords and the improved
+    not semantics in one import, in place of future.keywords.and,
+    future.keywords.or, and future.keywords.not.
+    In a v0 module it also implies rego.v1. It is gated by the new
+    rego_v2_import capability feature.
+
+    package example
+
+      import rego.v2
+
+      allow if input.user.admin or not (input.user.suspended or input.user.locked)
+
+    See Importing rego.v2.
+    https://www.openpolicyagent.org/docs/policy-reference/keywords/import#importing-regov2
+
+    Additionally: bundles can be declared as Rego v2 by setting the
+    rego_version manifest attribute to 2 (individua bundle modules
+    by setting file_rego_versions); and the Go API accepts the new
+    ast.RegoV2 rego-version when parsing, compiling, and formatting
+    Rego modules.
+    The rego.v2 import is a redundant no-op for modules loaded
+    these ways.
+    See bundle file format.
+    https://www.openpolicyagent.org/docs/management-bundles#bundle-file-format
+  * Stricter handling of bundle signature filenames (#9300)
+    Breaking change: We have corrected a long-standing bug in
+    bundle signing and verification, which will cause bundles
+    containing files matching the suffix pattern *signatures.json
+    to no longer pass verification in newer versions of OPA.
+    These bundles will need to be re-signed by this or newer
+    versions of OPA to have a correct .signatures.json file.
+    Bundles that do not contain filenames with the *signatures.json
+    pattern are unaffected, and will continue to verify correctly
+    across OPA versions.
+    OPA has historically been very lax in deciding where to source
+    bundle signature data from during bundle verification, and
+    would attempt to load bundle signatures data from any file in
+    the bundle that had the filename suffix pattern
+    *signatures.json.
+    This could cause surprising behavior at bundle verification
+    time, and resulted in all files with the *signatures.json
+    pattern being ignored for signing, allowing filenames like
+    foosignatures.json to be added to a bundle without being
+    integrity-checked by the bundle signature.
+    OPA now identifies the bundle signatures file by its exact
+    basename .signatures.json (the same way it locates the bundle
+    manifest and data files), so it is found regardless of any
+    directory prefix, and a bundle containing more than one
+    signatures file is rejected.
+    Additionally, OPA will now correctly detect and sign all other
+    files with the suffix pattern *signatures.json, which may cause
+    bundles signed by this and future versions of OPA to have
+    different signatures from the same content signed by older
+    versions of OPA.
+  * Partial evaluation unrolls every over a known domain
+    Partial evaluation now evaluates an every over a known
+    collection of at most 32 elements (counting nested everys
+    together) once per element, instead of keeping it in the result
+    when its body has unknowns. The result is the conjunction of
+    the body for each element, which the data filtering targets of
+    the Compile API can translate. See every.
+  * Runtime, SDK, Tooling
+    - bundle: Avoid using filepath in FS directory loader (#9418)
+    - bundle: Canonicalize data.yml for bundle signatures (#9301)
+      reported and
+    - bundle: Name the missing key when a signing block has a keyid
+      but no keys (#9408)
+    - bundle: Resolve wasm manifest paths against the base dir
+      (#5620)
+    - bundle: Stricter bundle signatures filename handling. (#9289)
+      reported and
+    - bundle: don't parse policies that activation deletes (#9339)
+    - cmd/version: Note that the '_static' binaries are deprecated
+      (#9441)
+    - cmd: Replace spf13/viper with os.LookupEnv (#9288)
+    - compile: Escape slashes in annotation entrypoint paths
+      (#6794)
+    - compile: Report untranslatable policies as fragment errors
+      (#9373)
+    - compile: mirror, not negate, a comparison with the unknown on
+      the right (#9373)
+    - debug: Add JSON tags to debugger struct fields (#9335)
+    - format: Adding ast.RegoV2 enum to Go API (#9377)
+    - format: Allow early exit on the fail condition (#9156)
+    - loader: Skip duplicate files and name the conflicting path in
+      merge errors (#2983)
+    - metrics: Replace rcrowley/go-metrics with in-tree sample
+      (#7536) reported and
+    - metrics: Tweak sample code (#9305)
+    - metrics_export: Support resource attributes on exported
+      metrics (#9393)
+    - plugins/bundle: Optionally send superseded etags in
+      If-None-Match (#9370)
+    - plugins/logs: Export decision log buffer size and upload
+      counters to Prometheus (#3812)
+    - plugins/logs: Include metrics and error in mask and drop
+      policy input (#9357) reported and
+    - plugins/logs: Keep full chunks in the size buffer with manual
+      trigger (#9349)
+    - plugins/logs: Support masking array-rooted input and result
+      (#9356) reported and
+    - plugins/status: Export decision log status and drop counters
+      to Prometheus (#9285)
+    - runtime: Allow configuring the HTTP access log level (#9290)
+    - runtime: Restart the serve routine to apply config file
+      changes (#9184)
+    - sdk: Convert ND builtins cache so decision log mask rules
+      apply (#9355) reported and
+    - server/types: Skip the extras decode when all top-level keys
+      are known (#9378)
+    - server: Create TLS file watcher before returning listeners
+      (#9420)
+    - server: Expose compile request body to the authorizer (#9427)
+    - server: Expose query API request body to the authorizer
+      (#9427)
+    - server: Name not activated bundles in /health?bundles error
+      (#6713)
+    - server: Report size and limit when request body is too large
+      (#3310)
+    - server: Resolve encoded request paths consistently in
+      authorizer and handlers (#9323)
+    - tester: Only trace tests that have test cases (#9409)
+      reported and
+  * Compiler, Topdown and Rego
+    - ast/parser: Set generated on true bodies (#9412)
+    - ast/scanner: Report non-breaking spaces as illegal characters
+      (#5796)
+    - ast: Add rego.v2 import (#9224) reported and
+    - ast: Add location to import aliases (#9414)
+    - ast: Attach annotations to statements in n log n time (#9392)
+    - ast: Attach rule annotations in linear time (#9339)
+    - ast: Bind hoisted vars in implicit not/and/or bodies (#9347)
+    - ast: Compare numbers of up to 15 digits as exact decimals
+      (#9331)
+    - ast: Decode related-resource URI references (#6770)
+    - ast: Hint why same-kind composites fail to unify (#2132)
+    - ast: Index references holding a local bound to a scalar
+      (#9449)
+    - ast: Keep the number range check off the plain number path
+      (#9390)
+    - ast: Make IntNumberTerm inlinable (#9375)
+    - ast: Narrow ref vars with known values in the rule graph
+      (#8255)
+    - ast: Only narrow ref vars with bindings ahead of the ref
+      (#9327)
+    - ast: Reject trailing minus in package declaration (#9272)
+    - ast: Report dynamic recursion as 'may be recursive' (#9336)
+    - ast: Report reserved names used as import aliases (#7255)
+    - ast: Treat SomeDecl/Every exprs as non-ground in
+      Expr.IsGround (#9280)
+    - ast: rego_v2 capability implies template_strings and
+      keywords_in_refs (#9424)
+    - ast: ast, topdown: reject numbers with an out-of-range
+      exponent (#9365)
+    - ast: don't keep the statements a module was parsed from
+      (#9395)
+    - ast: don't set a location on the interned zero term when
+      parsing unary minus (#9334)
+    - ast: don't state recursion conditions a builtin's result type
+      rules out (#9336)
+    - eval: Eliminate allocations in evalNot (#9270)
+    - fix: Reject some-in bindings that also appear in the domain
+      (#9052)
+    - index: Two correctness tweaks (#9318)
+    - internal/compiler: Limit authz schema check to the authz
+      package (#7185)
+    - rego: Preserve eval options when preparing with partial eval
+      (#6787)
+    - topdown: Allocate base cache children on first insert (#9450)
+    - topdown: Cache parsed JWT verification keys (#9314)
+    - topdown: Cache the tries of any_prefix_match and
+      any_suffix_match (#6363)
+    - topdown: Do arithmetic in the narrowest exact representation
+      (#9328)
+    - topdown: Fix net.cidr_contains false negatives on IPv6
+      subnets ending at ::ffff:ffff:ffff (#9396) reported and
+    - topdown: Fix partial eval panic on negated every (#9383)
+    - topdown: Fix substring overflow with huge length (#9366)
+    - topdown: List all conflicting rules in eval_conflict_error
+      (#9247) reported and
+    - topdown: Look up ground values in sets instead of scanning
+      (#6740)
+    - topdown: Match one string against strings.any_*_match search
+      strings in place (#9319)
+    - topdown: Memoize opa.runtime redaction (#9287)
+    - topdown: Replace go-patricia with sorted binary search
+      (#9296)
+    - topdown: Skip label tracking when the policy has no labels
+      (#9325)
+    - topdown: Skip rune conversion in indexof_n for ASCII (#9369)
+    - topdown: Unroll every over a known domain (#9374)
+    - topdown: Various tweaks (#9384)
+    - topdown: don't panic reversing strings that aren't valid
+      UTF-8 (#9321)
+    - topdown: don't use set lookup fast path for unresolved refs
+      (#9442)
+    - util: Correct JSON number comparison ordering (#9411)
+    - wasm: Mark eq and assign as wasm-enabled (#5866)
+  * Docs, Website, Ecosystem
+    - docs(ecosystem): Update OPA MCP install options (#9425)
+    - docs: Add OPA-AuthZEN to the OPA ecosystem (#9401)
+    - docs: Clarify tls_use_system_certs false behavior (#9358)
+      reported and
+    - docs: Explain peak memory during bundle updates (#7411)
+  * Miscellaneous
+    - Add James Alseth as a conftest maintainer (#9299)
+    - Dependency updates; notably:
+      - build(deps): Bump github.com/vektah/gqlparser/v2 from
+        2.5.37 to 2.5.58
+      - build(deps): Bump google.golang.org/grpc from 1.83.2 to
+        1.84.0
+      - build: Bump go (1.27.1 -> 1.27.3) (#9340, #9421)
+    - Remove claude agents.md hook (#9298)
+    - ast: Add regression test for rule conflict reporting (#5869)
+    - ast: Reword comments that were only relevant at review
+      (#9307)
+    - capabilities: Integrate patch release v1.21.1 (#9291)
+    - capabilities: Integrate patch release v1.21.3 (#9406)
+    - cmd: Give the malformed remote bundle exec tests a longer
+      timeout (#9381)
+    - e2e: Go mod tidy (#9373)
+    - golangci-lint v2.13 -> v2.14 (#9313)
+    - internal: Make better use of helpers (#9446)
+    - nightly: Raise the go get smoke test timeout to 30 minutes
+      (#9379)
+    - nightly: Test opa-envoy-plugin main instead of the latest
+      release (#9380)
+    - runtime: Serve TestTracingExcludePaths requests in-process
+      (#9268)
+    - runtime: Serve test servers without StartServer (#9261)
+    - topdown: Benchmark anyStartsWithAny across input shapes
+      (#9296)
+    - topdown: Benchmark naked refs to large base-doc arrays
+      (#5946)
+    - topdown: Enable more revive linter rules (#9312)
+    - topdown: Start the partial-eval test server on first use
+      (#9273)
+
+-------------------------------------------------------------------
 Tue Oct 27 06:54:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.21.4:
