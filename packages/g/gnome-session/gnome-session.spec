@@ -17,7 +17,7 @@
 
 
 Name:           gnome-session
-Version:        50.1
+Version:        51.0
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(systemd) >= 242
 Requires:       dbus-service
 Requires:       gnome-settings-daemon
 Requires:       gsettings-desktop-schemas >= 0.1.7
-Requires:       hicolor-icon-theme
 Requires:       xorg-x11-server-wayland
 # gnome-session-default-session merged into gnome-session; the alternative - fallback-session - disappeared
 # with GNOME 3.8

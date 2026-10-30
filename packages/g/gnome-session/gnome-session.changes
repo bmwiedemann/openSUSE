@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Sep 15 08:23:03 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Fixed bug where oo7-daemon.service never starts by default
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 07:18:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Switched to dbus for looking up logind graphical session
+  + Downgraded logout inhibitors from strong to weak, as a stop-gap
+    fix for buggy inhibitor behavior
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  5 06:34:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Added `SessionIsLocked` and `SessionClass` properties on D-Bus
+  + Updated mimeapps.list: removed Shaper, since it was split out
+    of GTK into its own app
+  + Fixed regression in screen blanking / idle handling
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul  2 07:37:54 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Enabled use of oo7-portal as the implementation of the Secret
+    portal
+  + Updated mimeapps.list for removal of gcr3, and expansion of
+    Loupe's supported mime types
+  + Applied various code cleanups from gobject linter
+  + Fixed a double-free bug
+
+-------------------------------------------------------------------
+Sat Jun 13 11:16:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop hicolor-icon-theme Requires, gnome-session does not need
+  this anymore.
+
+-------------------------------------------------------------------
 Thu May 28 20:56:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.1:

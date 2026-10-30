@@ -1724,4 +1724,12 @@ Index: gnome-session.changes
 - Drop gnome-session-fix-double-free-GError.patch: Fixed upstream.</comment>
     <requestid>1355872</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>9315dc560c8250d85e89150451e31d58</srcmd5>
+    <version>51.0</version>
+    <time>1793380030</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385427</requestid>
+  </revision>
 </revisionlist>
