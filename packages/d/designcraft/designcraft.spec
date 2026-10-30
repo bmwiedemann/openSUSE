@@ -17,32 +17,47 @@
 
 
 Name:           designcraft
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Page layout and publishing workbench
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND OFL-1.1 AND Ubuntu-font-1.0 AND Unicode-3.0 AND Zlib
 URL:            https://github.com/storytold/designcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor-cratesio.tar.zst
+# PATCH-FIX-OPENSUSE designcraft-no-self-update.patch -- distro builds
+# must not phone home at startup nor offer to install an upstream release
+# over RPM-owned files (the package manager owns updates); the manual
+# Help check outcome window stays. New upstream behaviour in 0.14.0, not
+# upstreamable (upstream ships self-updating intentionally).
+Patch0:         designcraft-no-self-update.patch
+# PATCH-FIX-OPENSUSE designcraft-drop-unused-egui-patches.patch -- drop four
+# unused [patch.crates-io] pins (egui_demo_lib, egui_extras,
+# egui_inspection, egui_system_font_provider) that nothing uses (Cargo.lock
+# [[patch.unused]]): cargo_vendor omits them from vendor.tar.zst, so any
+# --offline resolve fails; upstreamable as cleanup once upstream drops them.
+Patch1:         designcraft-drop-unused-egui-patches.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
+# craft-update's ureq -> rustls stack builds aws-lc-sys from source.
+BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  make
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.95
 Requires:       (libvulkan.so.1()(64bit) or libEGL.so.1()(64bit))
 Requires:       libxkbcommon.so.0()(64bit)
 Recommends:     designcraft-cli
-Recommends:     mesa-vulkan-drivers
-Recommends:     xdg-desktop-portal
 Recommends:     libX11.so.6()(64bit)
 Recommends:     libXcursor.so.1()(64bit)
 Recommends:     libXi.so.6()(64bit)
 Recommends:     libXrandr.so.2()(64bit)
 Recommends:     libwayland-client.so.0()(64bit)
+Recommends:     mesa-vulkan-drivers
+Recommends:     xdg-desktop-portal
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -63,7 +78,7 @@ Headless DesignCraft command runner: drive layouts, exports and conversions
 from scripts and CI, plus an opt-in MCP server for agents.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 # Trademarked ArtCraft marks must never ship: belt-and-braces removal even
 # though tar_scm already excludes docs/brand from the tarball.
 rm -rf docs/brand
@@ -73,6 +88,10 @@ sed -i 's|<icon type="stock">ai.storyteller.designcraft</icon>|<icon type="cache
 
 %build
 %limit_build -m 2000
+# NOTE: keep the cargo macros in this spec in braced form (spec-cleaner
+# 1.3.1 would unbrace them): bare cargo_build misparsed its trailing
+# arguments as rpm options and broke the adi:5 staging build
+# (Unknown option - in cargo_build()).
 # CRAFT_FONTS_DIR stays unset: use system fallback instead of embedding
 # the OFL craft-fonts checkout. Cargo.lock is committed upstream.
 # cargo_build already passes offline mode; only add locked flag.

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Oct 29 12:40:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.0 (upstream tag v0.14.0, 2026-10-28):
+  * Application bar uses craft-window's shared title bar; panels
+    move onto craft-ui's shared docking; shortcuts use the shared
+    craft-keymap crate with a new Keyboard Shortcuts dialog.
+  * Print color: overprint, knockout, CMYK blending and spot
+    gradients; PDF/X-1a export; Separations Preview of the
+    exported PDF's plates, spot plates included.
+  * Startup update prompt with direct self-updating; File Info
+    writes title, author, description and keywords on PDF export;
+    Story Editor gains a depth ruler.
+  * Footnotes, endnotes and notes keep the caret on the same text
+    when deleted or converted; Split Note splits a note at the
+    insertion point; column rules span ascent to descent.
+  * Fixes: ruler major tick spacing, empty paragraph after tables
+    in DOCX import, gradient cell fills in tables and PDF, MCP
+    parse errors on non-UTF-8 lines, dropdowns not growing back
+    after empty searches.
+  * Georgian interface translation; egui 0.37 migration.
+  * Many smaller fixes and UI improvements; see the upstream
+    release notes for the full list.
+  * Re-vendored (260 crates added, 108 removed with the new
+    self-update TLS stack); vendor-tree licence set unchanged.
+- Packaging: new BuildRequires cmake and make for aws-lc-sys,
+  built from source via craft-update's ureq/rustls stack; spec
+  cleanup (Recommends order, braced cargo_build macro).
+- Disable the new self-updating: no update check at startup and
+  no install prompt (designcraft-no-self-update.patch); the
+  package manager owns updates, manual Help check stays.
+- Add designcraft-drop-unused-egui-patches.patch:
+  drop unused [patch.crates-io] pins the vendor omits
+
+-------------------------------------------------------------------
 Mon Oct 26 11:20:19 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.13.0 (upstream tag v0.13.0, 2026-10-25):
