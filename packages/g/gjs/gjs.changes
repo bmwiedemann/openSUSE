@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Mon Oct 12 06:11:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.90.1:
+  * First bugfix release for GNOME 51. This release contains several fixes for
+    crashes related to toggle references and garbage collection, and a fix for
+    filtering of source files when generating code coverage reports.
+  * Closed bugs and merge requests:
+    + Object: Fix reference leak for GObject that already has a wrapper
+    + Object: Don't modify wrapped GObject list while iterating it
+    + Some other commits included
+    + Coverage: Fix source file filtering
+
+-------------------------------------------------------------------
+Tue Oct  6 06:29:50 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable testsuite run for arm, it currently fails all tests. Let it build
+  anyway as an best effort kind of thing.
+
+-------------------------------------------------------------------
+Wed Sep 30 16:48:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Tue Sep 15 11:15:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.90.0:
+  + build failure: tests don't specify dependency on
+    sysprof_capture
+
+-------------------------------------------------------------------
+Sun Aug 30 05:32:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.89.90:
+  + This is the release candidate for GNOME 51. This release brings
+    primarily minor bug fixes and internal type-safety
+    improvements.
+  + Backwards-incompatible change: Gio.DBus.makeProxyWrapper()
+    returns a class expression, which should be called as a
+    constructor, not as a function. Calling it as a function still
+    works, but will print a deprecation warning. To migrate your
+    code, just add `new`.
+  + Backwards-incompatible change: Don't use the
+    `GJS_ALWAYS_INLINE` macro from gjs/macros.h. It was not meant
+    to be public and will print a deprecation warning if used.
+  + Closed bugs and merge requests:
+    - Various maintenance
+    - Maps are terribly slow when planning for a route
+    - Check for char* returns of ambiguous ownership using
+      clang-tidy
+    - testConsole fails if source directory contains
+    - Revert "Gio: Rewrite _makeProxyWrapper as a class expression"
+      and print a deprecation warning instead
+
+-------------------------------------------------------------------
+Fri Aug  7 07:39:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.89.2:
+  + This is the beta release for the GNOME 51 cycle. There are no
+    notable changes since 1.89.1, only minor bug fixes.
+  + Closed bugs and merge requests: Various maintenance
+
+-------------------------------------------------------------------
+Fri Aug  7 07:39:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.89.1:
+  + This is the alpha release for the GNOME 51 cycle.
+  + Cairo.Context has gained a fontExtents() method, which returns
+    a property bag with properties corresponding to the fields of
+    `cairo_font_extents_t`, and a textPath() method, which renders
+    text as a path. Also, getFontMatrix() and setFontMatrix() which
+    return and accept property bags corresponding to the fields of
+    `cairo_matrix_t`.
+  + Gtk.Widget has gained static methods add_binding(),
+    add_binding_action(), and add_binding_signal() (GTK 4 only),
+    for conveniently adding keyboard shortcuts to call a function,
+    invoke a Gtk.ShortcutAction, or emit a signal.
+  + Some work-in-progress has been merged, making GNOME platform
+    objects more transparent to the JS garbage collector so that it
+    can make better choices about when to collect. This has the
+    additional bonus of making the info from System.dumpMemoryInfo
+    (visible in Sysprof or dumped to a JSON file) more accurate.
+  + Backwards-incompatible change: Creating a GObject.Interface no
+    longer installs its methods as unbound static methods on the
+    constructor. This was based on as old, nonstandard custom of
+    "generic methods" from the old Mozilla days and modern JS
+    doesn't work like that. Additionally, this never worked as you
+    might expect: `Interface.method(obj)` would not call obj's
+    implementation of the interface method, but Interface's default
+    implementation, which might do nothing or throw
+    NotImplementedError. The only thing it was good for was
+    slightly shorter syntax when chaining up to the default
+    implementation. If you were using it that way, here's how to
+    migrate your code:
+
+      class MyClass extends GObject.Object {
+          static [GObject.Implements] = [MyInterface];
+          static { GObject.registerClass(MyClass); }
+          myMethod() {
+              return MyInterface.myMethod(this);  // OLD
+              return MyInterface.prototype.myMethod.call(this);  // NEW
+          }
+      }
+
+  + Closed bugs and merge requests:
+    - Track memory usage for object prototypes
+    - Add Cairo font extents
+    - More accurate memory usage statistics for Cairo and GdkPixbuf
+      types
+    - Various maintenance
+    - Cairo/text path
+    - profiler: Write last value of memory counters
+    - testCommandLine's non UTF8 file names test fails on ZFS with
+      utf8only=on
+    - Cairo/fontMatrix
+    - overrides/Gtk: Support add_binding*() class methods
+    - More accurate memory usage statistics for GBytes type
+    - function: Avoid heap-allocating small argument arrays
+    - Arguments to `Gio.Application.run()` dropped by `runAsync()`
+      wrapper
+
+-------------------------------------------------------------------
 Fri Aug  7 07:39:42 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide GjsPrivate-by-GNOME by typelib-1_0-GjsPrivate-1 and
@@ -282,7 +404,7 @@ Mon Oct 21 05:27:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.82.1:
   + Fixed gnome-shell crash when switching user after upgrade from
-    Fedora 40 to Fedora 41 
+    Fedora 40 to Fedora 41
 
 -------------------------------------------------------------------
 Tue Sep 17 06:17:05 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>

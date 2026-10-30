@@ -1902,4 +1902,12 @@ New stable rel</comment>
   gjs, but that seems not actually to be true).</comment>
     <requestid>1370198</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>cadb1114807209ad6d54273b1d4a44fe</srcmd5>
+    <version>1.90.1</version>
+    <time>1793379959</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385403</requestid>
+  </revision>
 </revisionlist>

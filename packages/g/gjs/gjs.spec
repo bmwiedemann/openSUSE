@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(GioWin32|GIMarshallingTests!|GIMarshallingTests)|Gio!|Gio)|Regress!|Regress)|WarnLib!|WarnLib)\\)
 
 Name:           gjs
-Version:        1.88.1
+Version:        1.90.1
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
@@ -44,12 +44,12 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(cairo-xlib)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.85.1
-BuildRequires:  pkgconfig(girepository-2.0) >= 2.85.1
-BuildRequires:  pkgconfig(glib-2.0) >= 2.85.1
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.85.1
+BuildRequires:  pkgconfig(gio-2.0) >= 2.86.0
+BuildRequires:  pkgconfig(girepository-2.0) >= 2.86.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.86.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.86.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.85.1
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.86.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libffi)
@@ -127,7 +127,7 @@ the functionality of the installed gjs package.
 %fdupes -s %{buildroot}%{_libexecdir}/installed-tests
 
 %check
-%ifnarch s390x
+%ifnarch s390x %{arm}
 export DISPLAY=:98
 Xvfb :98 >& Xvfb.log & trap "kill $! || true" EXIT
 sleep 10
