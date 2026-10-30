@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:46:52 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Mon Sep 14 15:50:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 29 10:44:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + meson: Require meson 1.7
+  + flatpak: Disable gnome-desktop's qr and systemd features
+  + Updated translations.
+- Drop obsolete Groups tag.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:36:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

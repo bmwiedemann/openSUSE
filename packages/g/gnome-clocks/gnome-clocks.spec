@@ -18,30 +18,29 @@
 
 
 Name:           gnome-clocks
-Version:        50.0
+Version:        51.0
 Release:        0
 Summary:        Clock application designed for GNOME 3
 License:        GPL-2.0-or-later
-Group:          Productivity/Office/Other
 URL:            https://live.gnome.org/Design/Apps/Clock
 Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  meson >= 0.60.0
+BuildRequires:  meson >= 1.7
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.55.1
 BuildRequires:  vorbis-tools
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(geocode-glib-2.0)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.58
-BuildRequires:  pkgconfig(glib-2.0) >= 2.58
+BuildRequires:  pkgconfig(geocode-glib-2.0) >= 1.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.72
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72
 BuildRequires:  pkgconfig(gnome-desktop-4) >= 3.8
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.58
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.72
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsound) >= 0.98
-BuildRequires:  pkgconfig(gtk4) >= 4.5
+BuildRequires:  pkgconfig(gtk4) >= 4.15.3
 BuildRequires:  pkgconfig(gweather4) >= 3.32.0
 BuildRequires:  pkgconfig(icu-i18n) >= 60.0
 BuildRequires:  pkgconfig(icu-uc) >= 60.0
@@ -53,7 +52,6 @@ A nice simple app to show the time, date, and alarms.
 
 %package -n gnome-shell-search-provider-gnome-clocks
 Summary:        GNOME Clocks -- Search Provider for GNOME Shell
-Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}
 Supplements:    (gnome-shell and %{name})
 BuildArch:      noarch
