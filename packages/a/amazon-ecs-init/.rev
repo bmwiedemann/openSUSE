@@ -370,4 +370,25 @@
     and /agent (#5165) (forwarded request 1393215 from glaubitz)</comment>
     <requestid>1393403</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>06f502257ce868a131ca9ddf6959120a</srcmd5>
+    <version>1.108.2</version>
+    <time>1793380677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.108.2
+  * Enhancement - Update to golang 1.26.10 (#5183)
+  * Enhancement - Bump github.com/klauspost/compress from 1.16.7 to
+    1.18.7 in /ecs-init (#5175)
+  * Bugfix - Skip ACS reconnect when the session context is already
+    canceled (#5181)
+  * Enhancement - Bump github.com/moby/sys/user from 0.3.0 to 0.4.1
+    in /ecs-init (#5172)
+  * Enhancement - Narrow the Managed Instances daemon-bridge NAT
+    source to the daemon address (#5167)
+  * Bugfix - Skip CPU usage samples when the container CPU counter
+    decreases (#5179)
+  * Bugfix - Fix a data race when injecting AWS region environment
+    variables into containers (#5178) (forwarded request 1393841 from glaubitz)</comment>
+    <requestid>1393874</requestid>
+  </revision>
 </revisionlist>
