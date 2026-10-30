@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:49:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Fri Sep 11 19:41:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.4:
+  + This will be our stable release to correspond with the release
+    of GNOME 51.0. We will be skipping a formal GHex 51.x release
+    cycle.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Aug  5 14:03:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.3:
@@ -895,7 +909,7 @@ Sat Jan 31 20:46:59 CET 2009 - vuntz@novell.com
 -------------------------------------------------------------------
 Mon Jan 19 22:11:03 CET 2009 - crrodriguez@suse.de
 
-- remove "la" files [BNC#357465] 
+- remove "la" files [BNC#357465]
 
 -------------------------------------------------------------------
 Tue Sep 02 17:28:13 CEST 2008 - mboman@novell.com
@@ -906,7 +920,7 @@ Tue Sep 02 17:28:13 CEST 2008 - mboman@novell.com
 -------------------------------------------------------------------
 Thu May  8 17:28:13 CEST 2008 - rodrigo@suse.de
 
-- Upstream remaining patch 
+- Upstream remaining patch
 
 -------------------------------------------------------------------
 Mon Mar 31 19:57:05 CEST 2008 - vuntz@suse.de
@@ -970,7 +984,7 @@ Wed Jan  3 18:08:18 CET 2007 - sbrabec@suse.cz
 Tue Sep 19 18:54:10 CEST 2006 - jhargadon@suse.de
 
 - update to version 2.8.2
-- translation updates 
+- translation updates
 
 -------------------------------------------------------------------
 Wed Apr 19 19:44:35 CEST 2006 - sbrabec@suse.cz
@@ -1000,7 +1014,7 @@ Wed Jan 25 21:31:35 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Tue Feb 22 01:15:59 CET 2005 - ro@suse.de
 
-- change category to build 
+- change category to build
 
 -------------------------------------------------------------------
 Fri Feb 18 17:33:06 CET 2005 - sbrabec@suse.cz
@@ -1035,13 +1049,13 @@ Fri Jul 16 11:31:52 CEST 2004 - shprasad@suse.de
 Wed Jun 23 13:52:02 CEST 2004 - shprasad@suse.de
 
 - Fixes bug #60089 (Fix given by smadduri@novell.com)
-  Changed The Title Pattern. 
+  Changed The Title Pattern.
 
 -------------------------------------------------------------------
 Wed Jun 23 13:49:34 CEST 2004 - shprasad@suse.de
 
 - Fixes bug #59873 (Fix given by smadduri@novell.com)
-  Changed the default Fonts.  
+  Changed the default Fonts.
 
 -------------------------------------------------------------------
 Wed May 05 16:35:09 CEST 2004 - sbrabec@suse.cz
@@ -1091,7 +1105,7 @@ Wed May 28 12:41:34 CEST 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Wed May 28 01:02:49 CEST 2003 - ro@suse.de
 
-- remove unpackaged files from buildroot 
+- remove unpackaged files from buildroot
 
 -------------------------------------------------------------------
 Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
@@ -1102,7 +1116,7 @@ Mon Nov 11 11:26:13 CET 2002 - ro@suse.de
 Tue Oct 22 11:26:50 CEST 2002 - hhetter@suse.de
 
 - added libxslt to #neededforbuild to get scrollkeeper to run
-- removed wrong docdir 
+- removed wrong docdir
 
 -------------------------------------------------------------------
 Fri Sep 27 14:34:27 CEST 2002 - ro@suse.de
@@ -1117,7 +1131,7 @@ Fri Jul 26 22:21:07 CEST 2002 - adrian@suse.de
 -------------------------------------------------------------------
 Tue May 28 01:32:47 CEST 2002 - ro@suse.de
 
-- removed gpc from neededforbuild 
+- removed gpc from neededforbuild
 
 -------------------------------------------------------------------
 Fri Feb  1 00:26:13 CET 2002 - ro@suse.de
@@ -1132,13 +1146,13 @@ Fri Nov 30 15:08:32 CET 2001 - ro@suse.de
 -------------------------------------------------------------------
 Wed Nov 21 00:05:05 CET 2001 - ro@suse.de
 
-- added freetype2 to neededforbuild 
+- added freetype2 to neededforbuild
 
 -------------------------------------------------------------------
 Fri Jun 15 10:46:31 CEST 2001 - hhetter@suse.de
 
 - update to 1.2.1
-- use bz2 
+- use bz2
 - added scrollkeeper to neededforbuild
 - added suse_update_config
 
@@ -1156,11 +1170,11 @@ Thu Mar 22 17:22:29 CET 2001 - hhetter@suse.de
 -------------------------------------------------------------------
 Wed Mar 14 16:54:51 CET 2001 - ro@suse.de
 
-- changed neededforbuild <docbk_4> to <docbook_4> 
+- changed neededforbuild <docbk_4> to <docbook_4>
 
 -------------------------------------------------------------------
 Thu Feb 22 13:53:09 CET 2001 - hhetter@suse.de
 
 - initial build
-- tested on 7.1 in GNOME1.4 Environment 
+- tested on 7.1 in GNOME1.4 Environment
 

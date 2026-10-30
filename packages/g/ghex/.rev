@@ -680,4 +680,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
   + appwin: Fix GError memory leaks</comment>
     <requestid>1369970</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>6d2d86b26a21da2776589e9aa41e9138</srcmd5>
+    <version>50.4</version>
+    <time>1793380195</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385402</requestid>
+  </revision>
 </revisionlist>

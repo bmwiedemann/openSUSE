@@ -22,7 +22,7 @@
 %define soname libgtkhex-%{ghex_abi}-%{so_ver}
 
 Name:           ghex
-Version:        50.3
+Version:        50.4
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later
@@ -39,10 +39,10 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atk) >= 1.0.0
 BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.31.10
+BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
+BuildRequires:  pkgconfig(gtk4) >= 4.17.5
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7
 # Obsoletes libgtkhex-4-0 can be dropped when SLED/Leap 15.5 is out of support
 Obsoletes:      libgtkhex-4-0 < %{version}
 
