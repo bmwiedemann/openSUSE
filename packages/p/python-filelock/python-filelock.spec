@@ -27,28 +27,26 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-filelock%{?pkg_suffix}
-Version:        3.29.7
+Version:        4.2.4
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        MIT
 URL:            https://github.com/tox-dev/py-filelock
 Source:         https://files.pythonhosted.org/packages/source/f/filelock/filelock-%{version}.tar.gz
+BuildRequires:  %{python_module hatch-fancy-pypi-readme >= 25.1}
 BuildRequires:  %{python_module hatch_vcs >= 0.5}
 BuildRequires:  %{python_module hatchling >= 1.29}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 %if %{with test}
+BuildRequires:  %{python_module pytest >= 9.0.3}
 BuildRequires:  %{python_module pytest-asyncio >= 1.3}
 BuildRequires:  %{python_module pytest-mock >= 3.15.1}
 BuildRequires:  %{python_module pytest-timeout >= 2.4}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module virtualenv}
+BuildRequires:  %{python_module virtualenv >= 21.2}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{?python_version_nodots} < 311
-Requires:       python-typing_extensions >= 4.7.1
-%endif
 Requires:       python-asyncio
 Requires:       python-sqlite3
 BuildArch:      noarch

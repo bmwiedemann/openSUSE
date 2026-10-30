@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Thu Oct 29 11:43:13 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.4
+  * versions 4.2.1 and 4.0.9 fixed many security fixes:
+    CVE-2026-112909, bsc#1286520, CVE-2026-112915, bsc#1286524,
+    CVE-2026-112935, bsc#1286526, CVE-2026-112936, bsc#1286527,
+    CVE-2026-112939, bsc#1286530, CVE-2026-112940, bsc#1286531
+  * SoftReadWriteLock exposes generation as a fencing token for the
+    protected resource and reports a lost hold through on_compromise
+    and compromise
+  * Import OwnerMode, CompromiseReason and has_fcntl from filelock
+  * AcquireReturnProxy is generic in the lock type, so with
+    lock.acquire() as held: types held as the lock's own class
+  * A Timeout from a soft lock names a holder on another host or in
+    another PID namespace, which no contender ever reclaims
+  * Every option given in seconds takes a Decimal or Fraction, as a
+    file lock's timeout already did, and a read-write lock or lease
+    refuses a bool or string one
+  * import filelock is about twice as fast: lock types other than
+    FileLock load on first use
+
+-------------------------------------------------------------------
+Fri Aug 21 10:03:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.32.3:
+  * test(strict): deflake close-fault injections on graalpy
+  * docs: publish llms.txt from the docs build
+  * fix(fork): survive audit events during interpreter shutdown
+  * **Full Changelog**: https://github.com/tox-
+    dev/filelock/compare/3.32.2...3.32.3
+- update to 3.32.2:
+  * Fix test failures on NetBSD
+  * test(soft-rw): deflake writer phase-2 peer-marker test
+  * hand back the claim when a heartbeat thread fails to start
+  * test(unix): deflake sticky-bit concurrent-unlink on graalpy
+  * **Full Changelog**: https://github.com/tox-
+    dev/filelock/compare/3.32.1...3.32.2
+- update to 3.32.0:
+  * ci: add Python 3.15 to the test matrix
+  * fix(packaging): let an unpacked sdist run the test suite
+  * **Full Changelog**: https://github.com/tox-
+    dev/filelock/compare/3.31.2...3.32.0
+- update to 3.31.2:
+  * fix(strict): tolerate an errno without ENOTSUP
+  * **Full Changelog**: https://github.com/tox-
+    dev/filelock/compare/3.31.1...3.31.2
+- update to 3.31.1:
+  * refactor(coverage): key exclusions on probed capability
+  * scope a lease's claim to the context that acquired it
+  * **Full Changelog**: https://github.com/tox-
+    dev/filelock/compare/3.31.0...3.31.1
+- update to 3.31.0:
+  * feat(platform): support Termux/Android
+  * **Full Changelog**: https://github.com/tox-
+    dev/filelock/compare/3.30.3...3.31.0
+- update to 3.30.3:
+  * Keep both tables of contents on screen at any browser font
+    size
+  * docs(mermaid): follow the light and dark theme toggle
+  * asyncio: scope the reentrant-deadlock registry to the owning
+    task
+- update to 3.30.2:
+  * Document every lock type, and stop evicting a marker we
+    cannot read
+  * **Full Changelog**: https://github.com/tox-
+    dev/filelock/compare/3.30.1...3.30.2
+- update to 3.30.1:
+  * docs: separate changelog releases with a blank line
+  * fix: tolerate NFSv3 stale handle in strict claim read
+  * Match fork-reset protocol on the class object
+  * reject non-finite lease duration in marker records
+  * **Full Changelog**: https://github.com/tox-
+    dev/filelock/compare/3.30.0...3.30.1
+- update to 3.30.0:
+  * style: readability cleanup across the library
+  * fix(api): ignore lifetime on native OS locks
+  * fix(unix): don't mutate lock file before acquiring flock
+  * soft: evict a non-regular lock file without reading it
+  * fix(windows): bind reparse-point check to the locked handle
+  * fix(api): make native lock release transactional
+  * fix(soft): make marker writes and cleanup transactional
+  * fix(windows): open the lock file through NtCreateFile
+  * feat(api): add context_error_policy for dual context
+    failures
+  * docs: correct Unix lock-file cleanup and flock claims
+  * feat(api): add close_error_policy for post-unlock close
+    errors
+  * fix(api): canonicalize singleton keys without following a
+    final symlink
+  * feat(unix): add fallback_to_soft opt-out for native locks
+  * feat: add lock_descriptor for a caller-owned descriptor
+  * feat(api): add preserve_lock_file to keep the lock pathname
+  * feat(api): add on_acquired post-acquisition hook
+  * build(release): towncrier changelog pipeline, backfill, and
+    docs
+  * docs: drop bot entries and link code refs in the changelog
+  * fix(api): validate lifetime values
+  * fix(win32): capture process probe errors
+  * fix(api): reject dropped lock options
+  * fix(api): retain acquisition path identity
+  * fix(api): detach grouped release errors
+  * fix(descriptor): define unavailable behavior
+  * fix(ci): map absolute coverage paths
+  * fix(soft): relinquish fd before close
+  * fix(async): make cancellation atomic
+  * fix(sqlite): isolate forked connections
+  * test(conftest): scope the close mock to one descriptor
+  * feat(soft): add strict soft locks and leases
+  * feat(strict): replace shared markers with owner claims
+  * fix(soft): detect a reused PID via process start time
+  * fix(soft): fail safe on transient heartbeat errors
+  * docs: state the lock trust boundaries once
+  * ci(perf): add the performance and NFS matrix
+  * Replace prettier with mdformat and yamlfmt
+  * ci(matrix): add SMB, capability, and matrix docs
+  * **Full Changelog**: https://github.com/tox-
+    dev/filelock/compare/3.29.7...3.30.0
+
+-------------------------------------------------------------------
 Tue Jul 14 19:59:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.29.7:
