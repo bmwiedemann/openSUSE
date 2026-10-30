@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 30 13:43:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.1:
+  * chore(deps): bump envoy from 1.39.5 to 1.39.6 (#19285)
+  * chore(deps): bump golang.org/x/net from 0.61.0 to 0.62.0
+    (#19289)
+  * chore(deps): bump kumahq/kuma-gui to
+    2e448925ef58c11cc5d8664bfd5441d20e8baa03 (#19284)
+  * chore(deps): move kuma-init to registry.k8s.io
+    distroless-iptables v0.11.2 (backport of #19264) (#19276)
+  * chore(deps): move distroless base images to debian13 (backport
+    of #19224) (#19236)
+  * chore(deps): bump envoy from 1.39.4 to 1.39.5 (#19247)
+  * chore(deps): bump kumahq/kuma-gui to
+    72c3444c75fb0122abfa4c46edf126bb7864ebf4 (#19212)
+  * chore(deps/dev): bump go from 1.27.2 to 1.27.3 (#19223)
+
+-------------------------------------------------------------------
 Sat Oct 24 19:39:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.0.0 (major release, see upstream UPGRADE.md
