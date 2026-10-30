@@ -23,7 +23,7 @@
 %define plugin_ver 6
 %define appid org.gnome.Papers
 Name:           papers
-Version:        50.3
+Version:        51.1
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        %{name}-test-data-0.tar.xz
 
+BuildRequires:  AppStream
 BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
@@ -40,18 +41,17 @@ BuildRequires:  gsettings-desktop-schemas
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  nautilus-devel
 BuildRequires:  python3-gi-docgen
-BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(ddjvuapi)
-BuildRequires:  pkgconfig(exempi-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.22
+BuildRequires:  pkgconfig(exempi-2.0) >= 2.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.75.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.0
 BuildRequires:  pkgconfig(gtk4) >= 4.17.1
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
+BuildRequires:  pkgconfig(libarchive) >= 3.6.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libspectre)
-BuildRequires:  pkgconfig(libspelling-1)
+BuildRequires:  pkgconfig(libspelling-1) >= 0.2
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(poppler-glib) >= 25.07.0
 Recommends:     papers-plugin-pdfdocument

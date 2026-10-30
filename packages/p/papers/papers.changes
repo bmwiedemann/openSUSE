@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Mon Oct 12 11:41:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.1:
+  * Bug fixes:
+    + Improve accessibility of the password dialog
+    + Exclude internal resources from GIR
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Mon Sep 14 07:02:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0:
+  + Some changes we can highlight: In non-continuous mode, page
+    switching on scrolling
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 08:57:16 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(appstream-glib) BuildRequires: neither used nor
+  needed.
+
+-------------------------------------------------------------------
+Fri Sep 11 08:57:15 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Potentially of interest to packaging and other downstreams
+    might be:
+    - crate geo is no longer needed
+    - crate imageproc is now required to process signature images
+  + Some changes we can highlight:
+    - Ability to insert visual signatures within Papers
+    - More details on paper sizes
+    - Use new gtk snapping API for fractional scaling
+  + Bug fixes:
+    - Fix a crash when font names are not UTF-8
+    - Crate geo is no longer needed
+    - Fix GNUC_CONST usage
+    - Do not reset the cursor page on focus
+    - Several fixes for DJVU documents
+  + Other changes:
+    - Free text annotations are now printed by default
+    - More properties are now exposed in PpsView for apps using
+      Papers as a library
+
+-------------------------------------------------------------------
+Fri Sep 11 08:57:14 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Bug fixes:
+    - Fix build with latest gtk versions
+    - Adjust symbolic stroke icons to be compatible with GTK >=
+      4.22
+    - Add missing tooltips in annotations toolbar
+    - Default settings: don't allow documents to change zoom level
+      by default
+    - Center free text annotations on insertion
+    - Correctly detect some checkboxes
+    - Save and restore window size and maximized state in the
+      previewer
+    - Improved AppData keywords
+    - Rename "Creator" and "Producer" PDF metadata properties
+      fields labels to make them clearer
+    - Improve layout for multiple signatures in properties dialog
+    - Don't link buttons in document properties
+    - Free text annotations improvements
+  + Bug fixes already released in the 50.x series:
+    - PDF link jumps are off target for some files
+    - Scrolling stalls image loading for image-heavy PDFs and CBZs
+      with fractional scaling enabled
+    - Pinch to zoom sometimes causes huge page jumps
+    - Text jitter on fractional scaling
+    - Pencil size icons look broken
+    - shell: escape link arguments before spawning a new process,
+      related to CVE-2026-46529 of Evince
+    - build: Include gdk.h instead of gdkkeysyms.h
+    - Fix null pointer dereference in PpsPrintOperationPrint
+    - Chain up constructed vfuncs
+    - shell: Fix crash when navigating empty search results
+    - libview: Correct zoom in odd left dual page mode
+    - text annotation displayed in wrong colors
+    - Scrolling in presentation mode skips pages
+    - libview: Fix tool not pointing towards the ink in annotation
+      cursor
+    - shell: save load job and handler id when reloading
+    - Fix several criticals for the previewer
+    - libview: fix free text annotations position on insertion
+    - libview: fix detection of some form checkboxes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 08:57:13 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add missing AppStream BuildRequires, previously pulled in by
+  libadwaita.
+
+-------------------------------------------------------------------
 Fri Sep 11 06:13:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.3:

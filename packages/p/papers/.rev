@@ -229,4 +229,12 @@
   + Updated translations.</comment>
     <requestid>1377827</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ca367336f2066c9e97d48ba4746fc6b8</srcmd5>
+    <version>51.1</version>
+    <time>1793380239</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385458</requestid>
+  </revision>
 </revisionlist>
