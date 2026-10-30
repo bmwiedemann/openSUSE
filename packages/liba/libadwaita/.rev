@@ -645,4 +645,12 @@
   + AdwTabBar/AdwTabGrid: Clear a dangling idle callback in dispose</comment>
     <requestid>1378314</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>6b2caf8798caea25df20fb2b5c911b5b</srcmd5>
+    <version>1.10.0</version>
+    <time>1793380070</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385444</requestid>
+  </revision>
 </revisionlist>
