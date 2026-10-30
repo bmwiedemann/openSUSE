@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 29 12:49:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.0 (upstream tag v0.14.0, 2026-10-28):
+  * UI: move to egui 0.37; Tracks, Groups and Clips dock in
+    full-height columns; dropdown menus grow back after a search
+    with no matches; mixer labels clarified, host keys kept
+    during scripted input.
+  * Edit: Auto Pan keeps the stereo image; paste and Strip
+    Silence fixes; meters keep every block's peak until the UI
+    takes it; mix bounce about 20% faster, byte-identical.
+  * CLI: soundcraft-cli parses arguments with clap; error lines
+    now start with "error: ".
+  * Linux: default to XWayland for file drag-and-drop on
+    Wayland desktops.
+  * Startup update prompt with one-click in-app updating.
+  * Re-vendored with update=true (egui 0.37, clap 4, ureq 3,
+    MP1/MP2 decode, craft-libs 92d392c). License audit: one new
+    license, CDLA-Permissive-2.0 via webpki-root-certs (Mozilla
+    roots for the TLS fallback); dunce takes the Apache-2.0
+    option; no new copyleft in the Linux targets. No new
+    system deps.
+- Set the fixed AppStream release date to 2026-10-28 (v0.14.0).
+- Add soundcraft-no-self-update.patch (PATCH-FIX-OPENSUSE): no
+  startup update check, no self-update install prompt; the manual
+  Help check outcome window stays.
+- Add soundcraft-drop-unused-egui-patches.patch:
+  drop unused [patch.crates-io] pins the vendor omits
+
+-------------------------------------------------------------------
 Mon Oct 26 11:20:58 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.13.1 (upstream tag v0.13.1, 2026-10-25):

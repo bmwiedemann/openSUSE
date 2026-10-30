@@ -17,7 +17,7 @@
 
 
 Name:           soundcraft
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        Native digital audio workstation with multitrack editing and mixing
 # Legal-Review-Notice: scope is the two shipped targets (soundcraft, soundcraft-cli)
@@ -29,16 +29,31 @@ Summary:        Native digital audio workstation with multitrack editing and mix
 # Zlib foldhash; BSD-3-Clause encoding_rs. self_cell 1.3.0 declares Apache-2.0 OR
 # GPL-2.0-only; the build takes the Apache-2.0 option, so no GPL obligation is incurred.
 # docs/brand (trademarked, not open source, see NOTICE) is excluded from the tarball via
-# the tar_scm exclude and is never installed. v0.6.1 adds one git dependency,
-# craft-ui 0.1.0 (rev 5c874d5, MIT OR Apache-2.0), linked into the soundcraft GUI
-# via soundcraft-ui-egui; cargo_vendor vendors it, so nothing is fetched at build
-# time. Upstream ships no vendor/ directory, hence cargo_vendor runs with
-# update=true. Vendor-tree copyleft audit is recorded in the
-# .changes entry of each re-vendor.
-License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND BSD-3-Clause AND ISC AND MIT AND MPL-2.0 AND OFL-1.1 AND Ubuntu-font-1.0 AND Unicode-3.0 AND Zlib
+# the tar_scm exclude and is never installed. v0.14.0 pins four craft-libs 0.1.0 git
+# dependencies (rev 92d392c, MIT OR Apache-2.0), vendored so nothing is fetched at
+# build time: craft-ui (GUI, via soundcraft-ui-egui), craft-update (in-app updater,
+# pulls ureq/TLS incl. CDLA-Permissive-2.0 webpki-root-certs Mozilla roots, ISC
+# rustls, BSD-3-Clause subtle/verifysign), craft-docpath and craft-media. The egui
+# 0.37 family and winit come from reviewed storytold forks (egui rev 6d518fc, winit
+# rev a517b38, MIT OR Apache-2.0). dunce 1.0.5 declares CC0-1.0 OR MIT-0 OR
+# Apache-2.0; like self_cell below, the build takes the Apache-2.0 option. Upstream
+# ships no vendor/ directory, hence cargo_vendor runs with update=true. Vendor-tree
+# copyleft audit is recorded in the .changes entry of each re-vendor.
+License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND OFL-1.1 AND Ubuntu-font-1.0 AND Unicode-3.0 AND Zlib
 URL:            https://github.com/storytold/soundcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# PATCH-FIX-OPENSUSE soundcraft-no-self-update.patch -- distro builds
+# must not phone home at startup nor offer to install an upstream release
+# over RPM-owned files (the package manager owns updates); the manual
+# Help check outcome window stays. New upstream behaviour in 0.14.0, not
+# upstreamable (upstream ships self-updating intentionally).
+Patch0:         soundcraft-no-self-update.patch
+# PATCH-FIX-OPENSUSE soundcraft-drop-unused-egui-patches.patch -- drop
+# four unused [patch.crates-io] egui pins (plus their [[patch.unused]]
+# lock stanzas) that cargo_vendor omits from vendor.tar.zst, breaking
+# the offline resolve; downstream-only, not upstream.
+Patch1:         soundcraft-drop-unused-egui-patches.patch
 BuildRequires:  appstream-glib
 BuildRequires:  c_compiler
 BuildRequires:  cargo >= 1.90
@@ -49,7 +64,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-# cpal 0.16 links ALSA unconditionally on Linux (non-optional
+# cpal 0.18 links ALSA unconditionally on Linux (non-optional
 # target dependency; cargo tree on the shipped targets resolves
 # alsa 0.9.1 + alsa-sys 0.3.1). clap-host/vst3-host only dlopen
 # plugins (clap-sys, libloading, no link-time system dep) and au-host
@@ -90,7 +105,7 @@ subpackage provides headless editing, conversion, bounce and a command server.
 Summary:        Headless SoundCraft editor, converter and command server
 # Kept per packaging policy (declare License on every subpackage);
 # spec-cleaner would drop it as duplicate of the main package tag.
-License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND BSD-3-Clause AND ISC AND MIT AND MPL-2.0 AND OFL-1.1 AND Ubuntu-font-1.0 AND Unicode-3.0 AND Zlib
+License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND OFL-1.1 AND Ubuntu-font-1.0 AND Unicode-3.0 AND Zlib
 
 %description -n soundcraft-cli
 Headless SoundCraft: edit sessions, convert and inspect audio, bounce mixes
@@ -111,10 +126,10 @@ install -Dm0755 target/release/soundcraft-cli %{buildroot}%{_bindir}/soundcraft-
 install -Dm0644 packaging/linux/ai.storyteller.soundcraft.desktop %{buildroot}%{_datadir}/applications/ai.storyteller.soundcraft.desktop
 install -Dm0644 packaging/linux/ai.storyteller.soundcraft.mime.xml %{buildroot}%{_datadir}/mime/packages/ai.storyteller.soundcraft.xml
 install -d -m 0755 %{buildroot}%{_datadir}/metainfo
-# Fixed upstream release date (v0.13.1, 2026-10-25): a build-time date would
+# Fixed upstream release date (v0.14.0, 2026-10-28): a build-time date would
 # make the metainfo differ on every rebuild, and spec-cleaner macro-expands
 # the %-sequences of any date format string, so keep this a plain string.
-sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-25/g" packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.soundcraft.metainfo.xml
+sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-28/g" packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.soundcraft.metainfo.xml
 # Upstream declares the app icon as type="stock" but it is a custom hicolor
 # icon, so declare it as cached for appstream validation.
 sed -i 's|<icon type="stock">ai.storyteller.soundcraft</icon>|<icon type="cached" width="64" height="64">ai.storyteller.soundcraft.png</icon>|' %{buildroot}%{_datadir}/metainfo/ai.storyteller.soundcraft.metainfo.xml

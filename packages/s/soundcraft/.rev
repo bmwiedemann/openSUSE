@@ -7,4 +7,12 @@
     <comment>Update to 0.13.1</comment>
     <requestid>1392796</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>da53de17597e9e665fa4e1c0037c9150</srcmd5>
+    <version>0.14.0</version>
+    <time>1793380320</time>
+    <user>dimstar_suse</user>
+    <comment>Fix adi:5 build: drop unused egui pins.</comment>
+    <requestid>1393744</requestid>
+  </revision>
 </revisionlist>
