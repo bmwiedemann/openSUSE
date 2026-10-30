@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Sep 14 07:10:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0:
+  + Preparations for further keyboard navigation improvements
+  + Show a support URL in the About dialog
+  + Minor code cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 29 17:54:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Improve drag and drop behavior on the Month view. You can now
+    drop events on top of other events.
+  + More keyboard navigation improvements in the Month view.
+  + When an event is focused, pressing Ctrl+Tab focuses the month
+    cell behind it. When a month cell is focused, pressing
+    Shift+Tab focuses the first event in front of it.
+  + Fix a rare crash in the Month view when scrolling.
+  + Be a little more permissive with the headers of remote
+    iCalendar files. Files with LF line breaks are now accepted.
+    These files are not technically compliant with RFC 5545, but
+    some files are formatted like this in the wild and other
+    calendaring applications accept them without problem.
+  + Fix event popover showing outside the window when the left
+    mouse button is released outside the window.
+  + Fix inverted Ctrl+Scroll zoom direction in the Week view.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 31 19:56:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Fix sparodically disappearing horizontal line separators in the
+    month view
+  + Fix the event editor not saving changes to event durations
+  + Fix a crash in the week view that would occur for multiple
+    overlapping events
+  + Don't show the tooltip for the month cell's overflow button if
+    the button is invisible
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul  3 19:49:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Completely rework the internals of GNOME Calendar to be based
+    on GListModel. Notably, GcalTimeline and GcalTimelineSubscriber
+    all operate on GListModels, and so do the views (week, month,
+    and agenda).
+  + A number of performance improvements and rendering
+    optimizations to the Month view and to event widgets.
+  + Vastly reduce amount of data exchanged by Calendar and
+    Evolution Data Server.
+  + Support the maps URI for opening locations.
+  + Use a better month name formatting in various places.
+  + Make the Week view work with the high-contrast setting.
+  + Cleanup and improve the event editor dialog.
+  + Adapt CSS to the latest libadwaita and GTK standards.
+  + Don't change the refresh interval during startup. This avoids
+    changing values set by the user in Evolution.
+  + Explicitly state when app is not contained inside Flatpak in
+    the About dialog.
+  + Cleanup the Flatpak manifest.
+  + Add support for Teams links.
+  + Visual improvements to the Notes section of the event editor
+    dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:35:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
