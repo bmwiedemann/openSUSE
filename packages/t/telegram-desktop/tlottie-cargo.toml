@@ -1,0 +1,34 @@
+[package]
+name = "tlottie"
+version = "TLOTTIE_VER"
+edition = "2021"
+license = "MIT"
+
+[lib]
+name = "tlottie"
+crate-type = ["rlib", "staticlib"]
+
+[[bin]]
+name = "tlottie-cli"
+path = "src/cli/main.rs"
+required-features = ["cli"]
+
+[features]
+default = ["cpu", "std"]
+cpu = []
+std = []
+cli = ["cpu", "std"]
+c-api = ["cpu"]
+no-std = []
+wasm = ["cpu"]
+
+[lints.rust]
+dead_code = "allow"
+
+[profile.release]
+opt-level = 3
+debug = false
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"

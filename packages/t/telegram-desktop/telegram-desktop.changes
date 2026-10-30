@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 30 11:18:44 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Increased RAM to 32 GB.
+- Added wallet-engine-%{wallet_engine_ver}-full.tar.xz and fixed get script.
+- Added tlottie-cargo.toml to fix unnecessary dependencies and warnings.
+- Updated td to git20261016.
+  * No changes provides.
+- Updated telegram-desktop to 7.3.4
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.3.4
+
+-------------------------------------------------------------------
+Wed Oct 28 03:16:40 UTC 2026 - Leo Douglas <douglarek@gmail.com>
+
+- Updated telegram-desktop to 7.3.3
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.3.3
+  * Add BuildRequires: pkgconfig(pangocairo) required by cmake/external/pango
+  * Bundle and statically link tlottie 1.0.6 required by Telegram 7.3+
+  * Bundle and build wallet-engine 0.0.7 for full TON wallet support
+  * Add BuildRequires: zstd for wallet-engine source unpacking
+  * Update tg_owt to git20261023
+  * Drop tg_owt-gcc16.patch: merged upstream
+  * Disable mold on aarch64 to resolve linker gcs-report-dynamic conflict
+  * Generate minimal standalone Cargo.toml for tlottie to fix no-std dependency parsing error
+
+-------------------------------------------------------------------
 Fri Sep  4 16:53:03 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated telegram-desktop to 7.2.5

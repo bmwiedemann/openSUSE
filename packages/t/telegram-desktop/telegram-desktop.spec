@@ -21,10 +21,12 @@
 %define api_id    611335
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
 %define ada_ver   4.0.0
-%define owt_ver   git20260725
-%define td_ver    git20260729
+%define owt_ver   git20261023
+%define td_ver    git20261016
+%define tlottie_ver 1.0.6
+%define wallet_engine_ver 0.0.7
 Name:           telegram-desktop
-Version:        7.2.5
+Version:        7.3.4
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -35,8 +37,12 @@ Source1:        https://github.com/ada-url/ada/archive/refs/tags/v%{ada_ver}.tar
 Source2:        tg_owt-%{owt_ver}.tar.xz
 # n=td && cd /tmp && git clone --depth=1 https://github.com/tdlib/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source3:        td-%{td_ver}.tar.xz
-Patch0:         tg_owt-gcc16.patch
-BuildRequires:  cmake
+Source4:        https://github.com/dkaraush/tlottie/archive/refs/tags/v%{tlottie_ver}.tar.gz#/tlottie-%{tlottie_ver}.tar.gz
+Source5:        tlottie-cargo.toml
+# n=wallet-engine && v=0.0.7 && d=$n-$v && f=$d-full.tar.xz && cd /tmp && curl -fsSL https://github.com/i582/wallet-engine/archive/refs/tags/v$v.tar.gz | tar -xz && pushd $d && curl -fsSL https://github.com/desktop-app/patches/raw/refs/heads/master/wallet-engine.patch | patch -p1 --no-backup-if-mismatch && cargo xtask bindings cpp && rm -r .??* target && mkdir .cargo && cargo vendor vendor > .cargo/config.toml && for vd in vendor/*/; do if [ -d "$vd" ] && [ ! -f "$vd/.cargo-checksum.json" ]; then echo '{"files":{}}' > "$vd/.cargo-checksum.json"; fi; done && popd && tar c --remove-files "$d" | xz -9e > "$f"
+Source6:        wallet-engine-%{wallet_engine_ver}-full.tar.xz
+BuildRequires:  cargo
+BuildRequires:  cmake >= 4
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  gperf
@@ -93,6 +99,7 @@ BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openh264)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(protobuf-lite)
 BuildRequires:  pkgconfig(qrcodegen)
@@ -127,20 +134,19 @@ always immediately published, whereas its server-side code is closed-source and 
 The service also provides APIs to independent developers.
 
 %prep
-%setup -q -n tdesktop-%{version}-full -b1 -b2 -b3
+%setup -q -n tdesktop-%{version}-full -b1 -b2 -b3 -b4 -b6
 mv ../ada-%{ada_ver} Telegram/ThirdParty/ada
 mv ../tg_owt-%{owt_ver} Telegram/ThirdParty/tg_owt
 mv ../td-%{td_ver} Telegram/ThirdParty/td
-
-pushd Telegram/ThirdParty/tg_owt
-%autopatch -p1 0
-popd
+mv ../tlottie-%{tlottie_ver} Telegram/ThirdParty/tlottie
+install -pm0644 %{SOURCE5} Telegram/ThirdParty/tlottie/Cargo.toml
+sed -i 's/TLOTTIE_VER/%{tlottie_ver}/' Telegram/ThirdParty/tlottie/Cargo.toml
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -fPIC -g1 -Wl,-v -fuse-ld=mold"
-export CXXFLAGS=$CFLAGS
-export CMAKE_GENERATOR=Ninja
+export CXXFLAGS="$CFLAGS"
+export CMAKE_GENERATOR="Ninja"
 mkdir %{_builddir}/local
 
 cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/ada
@@ -174,14 +180,29 @@ cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/td
       -DBUILD_SHARED_LIBS=OFF \
       -DBUILD_TESTING=OFF \
       -DCMAKE_BUILD_TYPE="Release" \
+%ifarch aarch64
+      -DCMAKE_C_FLAGS="%{optflags} -fPIC -g1 -Wl,-v" \
+      -DCMAKE_CXX_FLAGS="%{optflags} -fPIC -g1 -Wl,-v" \
+%endif
       -DCMAKE_INSTALL_PREFIX="%{_builddir}/local" \
       -DTD_E2E_ONLY=ON
 %cmake_build
 ninja install
 
+cd %{_builddir}/tdesktop-%{version}-full/Telegram/ThirdParty/tlottie
+cargo build --release --features c-api
+install -Dpm0644 target/release/libtlottie.a %{_builddir}/local/lib64/libtlottie.a
+install -Dpm0644 include/tlottie.h %{_builddir}/local/include/tlottie/tlottie.h
+
+cd %{_builddir}/wallet-engine-%{wallet_engine_ver}
+cargo build --release --offline
+install -Dpm0644 target/release/libwallet_engine.a %{_builddir}/local/lib64/libwallet_engine.a
+mkdir -p %{_builddir}/local/include/wallet_engine
+install -pm0644 bindings/cpp-experimental/* %{_builddir}/local/include/wallet_engine
+
 cd %{_builddir}/tdesktop-%{version}-full
 %cmake -LA \
-      -DCMAKE_PREFIX_PATH="%{_builddir}/local/lib64/cmake;%{_builddir}/local/share/cmake" \
+      -DCMAKE_PREFIX_PATH="%{_builddir}/local" \
       -DDESKTOP_APP_DISABLE_QT_PLUGINS=ON \
       -DDESKTOP_APP_USE_PACKAGED=ON \
       -DDESKTOP_APP_USE_PACKAGED_FONTS=ON \
