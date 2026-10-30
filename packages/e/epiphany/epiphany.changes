@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:44:20 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Thu Sep 24 15:26:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.1:
+  + Bugs fixed:
+    - Wrong position of the suggestion popover at the first time
+    - Refilter, do not clear SearchEntry when using the "Clear"
+      action in History dialog
+    - (CVE-2026-94291) Epiphany allows insecure iframe through
+      view-source / ephy-reader scheme
+    - Bookmark search does not work when a tag is viewed
+    - Pantheon: Revive about menuitem for debugging information
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 06:30:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0:
+  + Bugs fixed:
+    - session: Append closed tab at end if recorded position is out
+      of bounds
+    - (CVE-2026-18487) Address Bar / Host Spoofing via userinfo in
+      ephy_uri_get_decoded_host
+    - Code Injection via ephy_web_view_get_best_web_app_icon in
+      `data:` URI
+    - `data` URI prettification returns invalid domain
+    - Some fixes for EphyHistoryDialogRow
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 27 19:01:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Bugs fixed:
+    - Invalid bookmark import crashes browser
+    - XSS/HTML injection in error page
+    - (CVE-2026-77682) Autofill JS Code Injection via CSS Selector
+    - (CVE-2026-77679) WebExtension XPI Path Traversal ZIPSLIP
+    - Link clicked in another app opens in the fullscreen window
+      during fullscreen video
+    - Caret in the address bar jumps to the start when I switch
+      keyboard layout
+    - "Not Secure" label in the address bar is truncated and glued
+      to the domain in translated locales
+    - Epiphany offers to save a password that it just autofilled
+      itself (after CSV import)
+    - Update to highlight.js 11.2.0
+    - web-process-extension: Target active frame when generating
+      password from context menu
+    - Canary: Fix WebKitGTK injected bundle path
+    - Do not trigger downloads on missing MIME type or failed HTTP
+      responses
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 21 08:57:14 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Bugs fixed:
+    - Colons in URL for Epiphany's app mode are converted to "A"
+    - Compile failures against libnettle 4.0
+    - Memory leak in the core string utility function
+      ephy_string_shorten()
+    - Out-of-bounds crash/assert failure in
+      ephy_json_array_get_string_with_default
+    - Invalid view-source: crashes browser
+    - add pinning support for URLs in history and overview mode
+    - window: update message when saving a password
+    - Remove incorrect use of G_GNUC_CONST for get_type() functions
+    - Update highlight.js to 11.11.2
+    - Add libpwquality to Canary manifest
+    - history-service: use G_SOURCE_REMOVE
+    - fix: check for invalid icon
+    - Fix code style check
+    - Adjust Reader Mode Line Spacing
+    - view-source-handler: fix crash when loading invalid URI
+    - Canary: Disable WebRTC for now
+    - Reland property registration code style changes
+    - Canary: Re-enable WebRTC (Philippe Normand)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 21 08:57:13 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Bugs fixed:
+    - [Feature Request] Keyboard shortcut to copy the current page
+      URL
+    - Search engine suggestions in addressbar autocompletion
+      dropdown are visually overloading due to their URLs being
+      shown
+    - webextension: Replace EphyWebExtension with
+      WebKitWebExtension
+    - Firefox sync OAuth token flow
+    - Use libportal API to detect sandbox
+    - window-commands: improve notification when failing to install
+    - Change default adblock filters back to bnema
+    - window: Set devel CSS also for Canary builds
+    - canary: Disable Vulkan support
+    - site-menu-button: add rudimentary debug logging
+
+-------------------------------------------------------------------
 Thu Aug 20 16:58:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete Group tag.
@@ -103,7 +209,7 @@ Thu Mar 12 19:56:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     - web-view: fix security status when restoring pages from
       session state
     - session: refuse to save window without tabs
-    - Revert "Fetch locale specific adlock list" 
+    - Revert "Fetch locale specific adlock list"
   + Updated translations.
 
 -------------------------------------------------------------------
@@ -1461,7 +1567,7 @@ Fri Feb 14 21:51:29 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix crash when parsing session state.
   + Fix improper warning when closing multiple tabs.
   + Fix occasional failure to start up.
-  + Fix memory corruption when loading adblock filters. 
+  + Fix memory corruption when loading adblock filters.
 
 -------------------------------------------------------------------
 Thu Jan 23 09:48:38 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -1777,7 +1883,6 @@ Tue Mar  5 05:48:11 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
   + Build libhandy as static lib.
   + Bundle newer libhandy to fix i18n.
   + Fix licence in appstream metadata to GPLv3+.
-
 
 -------------------------------------------------------------------
 Tue Feb 19 00:45:22 UTC 2019 - bjorn.lie@gmail.com

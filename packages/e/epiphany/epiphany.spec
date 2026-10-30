@@ -17,7 +17,7 @@
 
 
 Name:           epiphany
-Version:        50.6
+Version:        51.1
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
@@ -35,25 +35,26 @@ BuildRequires:  pkgconfig(cairo) >= 1.2
 BuildRequires:  pkgconfig(gck-2)
 BuildRequires:  pkgconfig(gcr-4) >= 3.9.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.5
-BuildRequires:  pkgconfig(gio-2.0) >= 2.74.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.74.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.74.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.84.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.84.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.21.0
-BuildRequires:  pkgconfig(gtk4-unix-print)
-BuildRequires:  pkgconfig(hogweed) >= 3.2
+BuildRequires:  pkgconfig(gtk4-unix-print) >= 4.21.0
+BuildRequires:  pkgconfig(hogweed) >= 3.4
 BuildRequires:  pkgconfig(icu-uc) >= 4.6
 BuildRequires:  pkgconfig(iso-codes) >= 0.35
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libportal-gtk4)
+BuildRequires:  pkgconfig(libportal-gtk4) >= 0.6
 BuildRequires:  pkgconfig(libsecret-1) >= 0.19.0
 BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.4
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.12
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(nettle) >= 3.4
+BuildRequires:  pkgconfig(pwquality)
 BuildRequires:  pkgconfig(sqlite3) >= 3.22
 BuildRequires:  pkgconfig(webkitgtk-6.0) >= 2.43.4
 BuildRequires:  pkgconfig(webkitgtk-web-process-extension-6.0) >= 2.43.4
