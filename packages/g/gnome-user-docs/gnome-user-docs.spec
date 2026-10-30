@@ -17,16 +17,19 @@
 
 
 Name:           gnome-user-docs
-Version:        50.5
+###FIXME### Make the buildsuite work, check again with beta/RC releases
+Version:        51.0
 Release:        0
 Summary:        GNOME Desktop Documentation
 License:        CC-BY-3.0
 Group:          Documentation/Other
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-user-docs/50/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  yelp-tools
+BuildRequires:  meson
+BuildRequires:  pkgconfig
 Requires:       yelp
 Supplements:    gnome-session
 BuildArch:      noarch
@@ -40,11 +43,15 @@ This package contains documents that are targeted for GNOME end-users.
 %autosetup -p1
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
+
+###FIXME### Make the buildsuite work, check again with beta/RC releases
+%dnl %check
+%dnl %meson_test
 
 %install
-%make_install
+%meson_install
 %find_lang gnome-help %{?no_lang_C}
 %find_lang system-admin-guide %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}

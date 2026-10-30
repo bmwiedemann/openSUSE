@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 24 16:12:03 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 24 16:12:02 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Updates to GNOME Help
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 24 16:12:01 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Port to Meson, and remove Autotools
+  + Updated translations.
+- Add meson and pkgconfig BuildRequires and macros following
+  upstreams port.
+- Switch to source service for tarball.
+
+-------------------------------------------------------------------
 Thu Sep 24 07:06:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.5:
@@ -519,7 +542,7 @@ Tue Sep 20 08:31:15 UTC 2016 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Fri May 27 12:02:58 UTC 2016 - idonmez@suse.com
 
-- Update to GNOME 3.20.2 FATE#318572 
+- Update to GNOME 3.20.2 FATE#318572
 
 -------------------------------------------------------------------
 Tue May 10 20:41:35 UTC 2016 - zaitor@opensuse.org
@@ -1117,7 +1140,7 @@ Wed Jan 28 23:16:27 CET 2009 - vuntz@novell.com
 Mon Jan 12 10:12:30 EST 2009 - mboman@suse.de
 
 - Update to version 2.24.2:
-  + Translation updates 
+  + Translation updates
 
 -------------------------------------------------------------------
 Sat Dec 20 10:38:05 EST 2008 - mboman@suse.de
@@ -1169,7 +1192,7 @@ Fri Feb  1 12:42:48 CET 2008 - rodrigo@suse.de
 - Update to version 2.20.1:
   * Massive updates from Matthew East and the Ubuntu documentation team
   * Terminology updates
-  * Updated translations 
+  * Updated translations
 
 -------------------------------------------------------------------
 Wed Sep 19 14:28:17 CEST 2007 - sbrabec@suse.cz
@@ -1214,7 +1237,7 @@ Tue Jan 30 18:59:01 CET 2007 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri Oct 13 00:25:10 CEST 2006 - ro@suse.de
 
-- added gnome-doc-utils-devel to buildreq 
+- added gnome-doc-utils-devel to buildreq
 
 -------------------------------------------------------------------
 Tue Oct  3 18:33:07 CEST 2006 - jhargadon@suse.de
@@ -1222,7 +1245,7 @@ Tue Oct  3 18:33:07 CEST 2006 - jhargadon@suse.de
 - update to version 2.16.1
 - User Guide
   Better wording for writing CDs
-- translation updates 
+- translation updates
 
 -------------------------------------------------------------------
 Sat Sep 30 13:46:03 CEST 2006 - aj@suse.de
@@ -1245,7 +1268,7 @@ Fri Sep 15 22:18:01 CEST 2006 - jhargadon@suse.de
 * System Administration Guide:
   - Numerous improvements by Don Scorgie
   - ScreenD should be Screen[D] to stop X complaining (Don Scorgie)
-  - Changed Desktop to System (Don Scorgie) 
+  - Changed Desktop to System (Don Scorgie)
 
 -------------------------------------------------------------------
 Wed Jan 25 21:45:15 CET 2006 - mls@suse.de
@@ -1260,7 +1283,7 @@ Thu Sep 29 00:42:07 CEST 2005 - dmueller@suse.de
 -------------------------------------------------------------------
 Mon Jan 24 16:51:35 CET 2005 - gekker@suse.de
 
-- Update to version 2.8.1 
+- Update to version 2.8.1
 
 -------------------------------------------------------------------
 Tue Aug 31 20:52:52 CEST 2004 - clahey@suse.de
@@ -1275,7 +1298,7 @@ Thu Aug 26 19:32:56 CEST 2004 - clahey@suse.de
 -------------------------------------------------------------------
 Fri May  7 09:51:35 CEST 2004 - hhetter@suse.de
 
-- updated to version 2.6.0.1 [GNOME2.6] 
+- updated to version 2.6.0.1 [GNOME2.6]
 
 -------------------------------------------------------------------
 Mon Oct 27 14:53:06 CET 2003 - sbrabec@suse.cz
@@ -1300,10 +1323,10 @@ Mon Jun 30 16:53:50 CEST 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Jun 30 15:39:27 CEST 2003 - ro@suse.de
 
-- added gnome-filesystem to neededforbuild 
+- added gnome-filesystem to neededforbuild
 
 -------------------------------------------------------------------
 Fri Feb  7 08:46:46 CET 2003 - hhetter@suse.de
 
-- initial package 
+- initial package
 

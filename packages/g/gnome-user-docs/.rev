@@ -907,4 +907,12 @@ New stable release</comment>
   + Updated translations.</comment>
     <requestid>1380110</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>b9708cf42ccc6f4e21ea6acc66752d19</srcmd5>
+    <version>51.0</version>
+    <time>1793380046</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385436</requestid>
+  </revision>
 </revisionlist>
