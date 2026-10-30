@@ -17,7 +17,7 @@
 
 
 Name:           gnome-initial-setup
-Version:        50.1
+Version:        51.1
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
@@ -26,12 +26,12 @@ URL:            https://wiki.gnome.org/Design/OS/InitialSetup
 Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  krb5-devel
-BuildRequires:  meson >= 0.53.0
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
 BuildRequires:  vala
 BuildRequires:  (pkgconfig(webkit2gtk-5.0) or pkgconfig(webkitgtk-6.0))
-BuildRequires:  pkgconfig(accountsservice)
+BuildRequires:  pkgconfig(accountsservice) >= 26.12.8
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdm) >= 3.8.3
 BuildRequires:  pkgconfig(geocode-glib-2.0) >= 2.6.0

@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Oct 12 12:42:56 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.1:
+  * Explicitly pull the secret service (oo7-daemon) into the session
+  * Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 12:04:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 14:52:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc:
+  + Migrate realm manager from GSimpleAsyncResult to GTask
+  + Fix potential command injection in keyboard preview
+  + Zeroise Kerberos password before freeing
+  + Fix markup injection in privacy policy URL
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 19 23:03:16 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Initial support for systemd-homed accounts
+  + Fix crash crash when ssid gets freed (network page)
+  + Add error indications and a11y states for enterprise user
+    accounts
+  + Stop marking non-const fns as const
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 19 23:03:15 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + network: Prevent crash when object-paths are gone
+  + account:
+    - Port error dialog to AdwAlertDialog
+    - Port full name and username entries to AdwEntryRows
+    - Fall back to g_str_to_ascii when iconv TRANSLIT is
+      unavailable
+  + summary: Quit when there's no GDM connection
+  + Make header buttons width match
+  + Fix Keyboard page search not showing matching layouts
+    immediately
+  + Get distro logo from os-release
+  + Various goblint (gobject linter) fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Aug  5 06:10:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.1:
@@ -409,7 +461,7 @@ Thu Aug 11 13:38:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
   + Drop pkgconfig(cheese) and pkgconfig(cheese-gtk) BuildRequires.
   + Replaced BuildRequires:
     - pkgconfig(libhandy-1) -> pkgconfig(libadaita-1)
-    - pkgconfig(libnma) -> pkgconfig(libnma-gtk4)    
+    - pkgconfig(libnma) -> pkgconfig(libnma-gtk4)
     - pkgconfig(webkit2gtk-4.1) -> pkgconfig(webkit2gtk-5.0)
 
 -------------------------------------------------------------------
@@ -604,8 +656,8 @@ Sun Aug 15 12:58:36 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Fri Jul 16 10:25:56 UTC 2021 - Cliff Zhao <qzhao@suse.com>
 
-- Drop gnome-initial-setup-smarter.patch: Because the function has 
-  moved to gnome-shell gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch 
+- Drop gnome-initial-setup-smarter.patch: Because the function has
+  moved to gnome-shell gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
   in the latest Epic (jsc#SLE-16051, bsc#1184106);
 
 -------------------------------------------------------------------
@@ -718,7 +770,7 @@ Fri Sep 11 12:31:39 UTC 2020 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Sun Sep  6 15:54:31 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 3.37.92: 
+- Update to version 3.37.92:
   + Bugs fixed: Exit gracefully if we are disabled systemwide by
     Anacontda.
   + Updated translations.
@@ -879,7 +931,7 @@ Thu Oct 24 09:47:45 UTC 2019 - Cliff Zhao <qzhao@suse.com>
   Drop gnome-initial-setup-mozc-engine-prioritized.patch
   Drop gnome-initial-setup-only-setup-keyboard.patch
   Drop gnome-initial-setup-only-launch-CJK.patch
-  to avoid blank docs window appear after gnome-initial-setup 
+  to avoid blank docs window appear after gnome-initial-setup
   finished (bnc#1125694, bnc#1131087).
 
 -------------------------------------------------------------------
@@ -1069,9 +1121,9 @@ Sat Feb 10 22:30:46 UTC 2018 - bjorn.lie@gmail.com
 -------------------------------------------------------------------
 Thu Nov  9 13:29:30 UTC 2017 - qzhao@suse.com
 
-- Add gnome-initial-setup-mozc-engine-prioritized.patch: Make the 
+- Add gnome-initial-setup-mozc-engine-prioritized.patch: Make the
   Mozc input engine as the 1st choice for Japanese environment
-  (boo#1067288,bnc#1029083). 
+  (boo#1067288,bnc#1029083).
 
 -------------------------------------------------------------------
 Fri Sep 15 06:07:09 UTC 2017 - qzhao@suse.com
@@ -1517,5 +1569,4 @@ Wed Mar  5 19:01:22 UTC 2014 - dimstar@opensuse.org
 
 - Update to version 3.11.91:
 - Initial package, version 3.11.91.
-
 
