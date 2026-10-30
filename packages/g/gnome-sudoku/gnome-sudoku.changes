@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Sep 12 17:20:30 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0.1:
+  + Fix flatpak.
+
+-------------------------------------------------------------------
+Fri Sep 11 15:56:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Update translations.
+
+-------------------------------------------------------------------
+Mon Aug 31 11:47:58 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Fix redo button visibility not updating when toggling Show
+    Timer
+  + Partly fix numbers sometimes leaving artifacts on removal
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 31 11:47:57 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Separate the vertical UI from the small UI
+  + Ship more icons with the application: clock, play and pause
+  + Use the sudoku namespace for icons shipped with the application
+  + Hide redo button over earmark mode button when size constrained
+  + Expand grid margin from top left, this is a 2 pixel difference
+  + Fix numbers rarely having different sizes
+  + Scale paused label with height aswell as width
+  + Scale paused label on resize
+  + Updated translations.
+- Replace appstream-glib with AppStream BuildRequires:
+  appstream-cli is what meson setup checks for.
+
+-------------------------------------------------------------------
+Mon Aug 31 11:47:56 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Add a new user interface for vertical aspect ratios and small
+    screens
+  + Limit long press to touch based devices
+  + Update slate, teal and pink accent colors in light mode
+  + Replace the clock by a medal if a highscore is achieved
+  + Always focus suggested responses in alert dialogs
+  + Add accessibility label for the clock
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Aug 29 10:49:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.4:
@@ -178,7 +228,7 @@ Fri Aug 29 11:11:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
   + Remove the details section in the about page
   + Fix clock moving
   + Updated translations:
-  
+
 -------------------------------------------------------------------
 Fri Apr 11 17:16:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
@@ -829,7 +879,7 @@ Fri Nov  6 22:39:37 UTC 2015 - zaitor@opensuse.org
 Sun Oct 11 21:25:56 UTC 2015 - zaitor@opensuse.org
 
 - Update to version 3.18.1:
-  + Updated translations. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Tue Sep 22 06:29:02 UTC 2015 - dimstar@opensuse.org
