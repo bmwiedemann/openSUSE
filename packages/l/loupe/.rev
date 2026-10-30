@@ -187,4 +187,42 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345373</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f5961e4760000b01b1191dcf40188a21</srcmd5>
+    <version>51.1</version>
+    <time>1793380146</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 51.1:
+  * Fixed:
+    + Print: Some images with physical dimensions attached could be printed in
+      the wrong size and not properly positioned on the page.
+    + Print: The PDF that's sent to the printer did report the wrong physical
+      dimensions. This could potentially cause issues with some printers.
+- Update version dependencies according to meson.build.
+
+
+- Update to version 51.0:
+  + Updated translations.
+
+
+- Update to version 51.rc:
+  + After editing a file and pressing cancel, ask for saving the
+    image instead of waiting for closing the global window.
+  + After editing a file, unsaved changes were still reported after
+    using the &quot;Save as…&quot; feature.
+
+
+- Update to version 51.beta:
+  + Added: Show ICC profile description or generated CICP
+    description if applicable.
+
+
+- Update to version 51.alpha:
+  + Added: Show creator, copyright information, camera lens, and
+    used software in image metadata.
+  + Fixed:
+    - Don't accumulate delays during animations.
+    -Don't keep showing saving overlay after error.</comment>
+    <requestid>1392235</requestid>
+  </revision>
 </revisionlist>

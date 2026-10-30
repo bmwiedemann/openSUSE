@@ -17,7 +17,7 @@
 
 
 Name:           loupe
-Version:        50.0
+Version:        51.1
 Release:        0
 Summary:        A simple image viewer application
 License:        GPL-3.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtk4) >= 4.13.6
+BuildRequires:  pkgconfig(gtk4) >= 4.16.0
 BuildRequires:  pkgconfig(gweather4) >= 4.0.0
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.0
