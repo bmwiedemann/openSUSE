@@ -21,7 +21,7 @@
 %define RPMtinysparqlAPI 3_0
 
 Name:           tinysparql
-Version:        3.11.1
+Version:        3.12.0
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
@@ -50,11 +50,11 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(icu-i18n) > 4.8.1.1
-BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0
+BuildRequires:  pkgconfig(json-glib-1.0) >= 1.4
 BuildRequires:  pkgconfig(libseccomp) >= 2.0
 BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.2
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(systemd) >= 242
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
 BuildRequires:  pkgconfig(uuid)
 # We want to index files by default, if possible

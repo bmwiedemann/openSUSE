@@ -80,4 +80,12 @@
     <comment>Update version</comment>
     <requestid>1348437</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>18555296166fe5a93a15d0a9254ec442</srcmd5>
+    <version>3.12.0</version>
+    <time>1793380116</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385467</requestid>
+  </revision>
 </revisionlist>

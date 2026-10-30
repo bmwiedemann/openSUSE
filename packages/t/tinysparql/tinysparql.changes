@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:06:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Mon Sep 14 06:52:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.12.0:
+  + No changes, version update only.
+
+-------------------------------------------------------------------
+Tue Sep  1 06:07:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.12.rc:
+  + Fix potential memory leaks in JSON-LD serializer
+  + Fix possible memory leaks in SPARQL parser
+
+-------------------------------------------------------------------
+Fri Jul  3 19:54:30 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.12.alpha:
+  + Performance improvements to ICU full-text search tokenizer
+  + Fix potential leaks with malformed ontology definitions
+  + Test suite changes to cater for SQLite >= 3.53.1
+
+-------------------------------------------------------------------
 Thu Apr 16 06:31:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.11.1:
