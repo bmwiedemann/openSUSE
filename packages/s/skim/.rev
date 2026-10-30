@@ -48,4 +48,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1386099</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b0b7a1cba038faeaf31af9b8b220b3f7</srcmd5>
+    <version>5.8.0</version>
+    <time>1793380394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.8.0:
+  * (lib) Add preview streaming
+  * Use --popup-name to name popup panes
+  * (fzy) Keep the best first-character match when computing indices
+  * (fzy) Make highlighted indices follow the scored path
+  * Quote args on windows too
+  * Add link to a live browser demo</comment>
+    <requestid>1393766</requestid>
+  </revision>
 </revisionlist>

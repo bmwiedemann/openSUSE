@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 29 11:47:20 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 5.8.0:
+  * (lib) Add preview streaming
+  * Use --popup-name to name popup panes
+  * (fzy) Keep the best first-character match when computing indices
+  * (fzy) Make highlighted indices follow the scored path
+  * Quote args on windows too
+  * Add link to a live browser demo
+
+-------------------------------------------------------------------
 Mon Oct 12 00:01:46 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 5.7.4:
