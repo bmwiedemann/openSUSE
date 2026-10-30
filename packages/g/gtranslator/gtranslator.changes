@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 17 07:12:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0:
+  + Add keybindings to navigate between plural forms
+  + Port profile configuration file to GKeyFile
+  + Remove direct dependency on libxml2
+  + Do not warn with alert dialog on untranslated strings
+  + Fix undo and redo actions
+  + Hide empty rows in the sidebar
+  + Display previous source test on fuzzy strings
+  + Code cleanups
+  + Plug some memory leaks
+  + Appdata file renamed to metainfo
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jun 12 07:39:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.0+157:
