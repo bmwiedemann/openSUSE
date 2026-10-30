@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 30 07:02:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update github.com/go-jose/go-jose/v4 to v4.1.6 (bsc#1288323,
+  CVE-2026-116585, CVE-2026-116586, CVE-2026-116587)
+
+-------------------------------------------------------------------
 Mon Oct 26 08:43:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 10.34.1

@@ -224,4 +224,13 @@
   (bsc#1287157, CVE-2026-78663) (bsc#1287496, CVE-2026-97032) (forwarded request 1392660 from glaubitz)</comment>
     <requestid>1392741</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c6e9250d28b0cff266df4de42d4e5256</srcmd5>
+    <version>10.34.1</version>
+    <time>1793380676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update github.com/go-jose/go-jose/v4 to v4.1.6 (bsc#1288323,
+  CVE-2026-116585, CVE-2026-116586, CVE-2026-116587) (forwarded request 1393812 from glaubitz)</comment>
+    <requestid>1393873</requestid>
+  </revision>
 </revisionlist>
