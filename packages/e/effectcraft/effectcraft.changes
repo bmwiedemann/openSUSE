@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct 29 12:41:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.18.0 (upstream tag v0.18.0, 2026-10-28):
+  * Interface on egui 0.37: panels share the craft-ui docking
+    (floating panels open in native windows), each open comp is
+    a timeline tab with an overflow menu, edit-menu keys reach
+    focused text fields
+  * Export: movie encoding overlaps rendering and transparent
+    pixels are skipped while compositing
+  * Software update prompt with direct self-updating
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Re-vendored (update=false, respect-lockfile=true): cargo_audit
+  clean, licence set unchanged
+- effectcraft-no-brand-assets.patch applies with a context
+  offset after the egui 0.37 migration (no fuzz); no new
+  docs/brand references in code, build scripts or packaging
+- Disable the new self-updating: no update check at startup and
+  no install prompt (effectcraft-no-self-update.patch); the
+  package manager owns updates, manual Help check stays
+- Stamp the metainfo release date for v0.18.0 (2026-10-28)
+- Spec cleanup to the spec-cleaner canonical form: drop the
+  subpackage License tag identical to the main package's and
+  use the bare cargo_build macro call
+- Add effectcraft-drop-unused-egui-patches.patch:
+  drop unused [patch.crates-io] pins the vendor omits
+
+-------------------------------------------------------------------
 Mon Oct 26 11:14:25 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.17.0 (upstream tag v0.17.0, 2026-10-25):

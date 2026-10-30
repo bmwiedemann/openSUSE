@@ -17,7 +17,7 @@
 
 
 Name:           effectcraft
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Motion graphics and VFX compositor
 # Legal-Review-Notice: licence set re-derived from the vendored tree
@@ -42,6 +42,18 @@ URL:            https://github.com/storytold/effectcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Patch0:         effectcraft-no-brand-assets.patch
+# PATCH-FIX-OPENSUSE effectcraft-no-self-update.patch -- distro builds
+# must not phone home at startup nor offer to install an upstream release
+# over RPM-owned files (the package manager owns updates); the manual
+# Help check outcome window stays. New upstream behaviour in 0.18.0, not
+# upstreamable (upstream ships self-updating intentionally).
+Patch1:         effectcraft-no-self-update.patch
+# PATCH-FIX-OPENSUSE effectcraft-drop-unused-egui-patches.patch -- drop four
+# [patch.crates-io] pins (egui_demo_lib, egui_extras, egui_inspection,
+# egui_system_font_provider) that nothing uses (Cargo.lock [[patch.unused]]):
+# cargo_vendor omits them from vendor.tar.zst, so any --offline resolve
+# fails; upstreamable as cleanup once upstream drops the pins.
+Patch2:         effectcraft-drop-unused-egui-patches.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
@@ -70,10 +82,6 @@ runner and command server.
 
 %package -n effectcraft-cli
 Summary:        Headless EffectCraft renderer, batch runner and command server
-# Same licence set as the main package: symphonia MPL-2.0 is linked into
-# both binaries (see Legal-Review-Notice above); kept per packaging policy
-# (declare License on every subpackage).
-License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Clause AND ISC AND MPL-2.0 AND OFL-1.1 AND Ubuntu-font-1.0 AND Unicode-3.0 AND Zlib
 
 %description -n effectcraft-cli
 Headless EffectCraft renderer: batch-render compositions from scripts
@@ -85,6 +93,10 @@ and CI, plus a command server for agents, without the desktop GUI.
 %build
 # Big workspace (eframe/wgpu/boa/wasmi/filmcraft): cap jobs by RAM.
 %limit_build -m 2000
+# NOTE: keep the cargo macros in this spec in braced form. The bare
+# parameterized form misparses (adi:5 staging failure: Unknown option -
+# in cargo_build()); spec-cleaner wants the bare form back, hence the
+# --cleaner-deviation on the gate call.
 # Cargo.lock is committed upstream and the vendor tree matches it
 # (cargo_vendor update=false); build locked and offline for reproducibility.
 %{cargo_build} --locked -p effectcraft -p effectcraft-cli
@@ -94,11 +106,11 @@ install -D -m 0755 target/release/effectcraft %{buildroot}%{_bindir}/effectcraft
 install -D -m 0755 target/release/effectcraft-cli %{buildroot}%{_bindir}/effectcraft-cli
 install -D -m 0644 packaging/linux/ai.storyteller.effectcraft.desktop %{buildroot}%{_datadir}/applications/ai.storyteller.effectcraft.desktop
 # Upstream metainfo is a template; stamp the release version and date.
-# Fixed release date (v0.17.0, 2026-10-25): a build-time date would differ
+# Fixed release date (v0.18.0, 2026-10-28): a build-time date would differ
 # on every rebuild. Upstream declares the app icon as type stock but it
 # is a custom hicolor icon, so declare it as cached for validation.
 mkdir -p %{buildroot}%{_datadir}/metainfo
-sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-25/g" \
+sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-28/g" \
   packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.effectcraft.metainfo.xml
 sed -i 's|<icon type="stock">ai.storyteller.effectcraft</icon>|<icon type="cached" width="64" height="64">ai.storyteller.effectcraft.png</icon>|' %{buildroot}%{_datadir}/metainfo/ai.storyteller.effectcraft.metainfo.xml
 mkdir -p %{buildroot}%{_datadir}/icons

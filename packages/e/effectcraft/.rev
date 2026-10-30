@@ -7,4 +7,12 @@
     <comment>Update to 0.17.0</comment>
     <requestid>1392799</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8a5007a4bdef15f644e8bd001c9f95a5</srcmd5>
+    <version>0.18.0</version>
+    <time>1793380311</time>
+    <user>dimstar_suse</user>
+    <comment>Fix adi:5 build: braced macros, drop unused egui pins.</comment>
+    <requestid>1393740</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,57 @@
+From: openSUSE Publishing <publishing@opensuse.org>
+Subject: [PATCH] No self-update in distro builds: no startup check, no install prompt
+Bug: none (downstream distribution policy, not upstreamable)
+
+The package manager owns updates on a distro install: do not phone
+home to the releases page on every GUI launch, and never offer to
+install an upstream release (UPDATE-AND-RESTART) over RPM-owned
+files. Upstream ships this machinery intentionally for its own
+builds. Help ▸ Check for Updates stays as an explicit manual action
+reporting through its outcome window; only the automatic startup
+check and the self-update install prompt are turned off.
+
+diff --git a/apps/effectcraft/src/main.rs b/apps/effectcraft/src/main.rs
+--- a/apps/effectcraft/src/main.rs
++++ b/apps/effectcraft/src/main.rs
+@@ -283,7 +283,10 @@
+             // reported in a toast and forgotten).
+             let _ = session.execute("window.restoreScriptPanels", json!({}));
+             let mut app = EffectcraftApp::new(session);
+-            app.set_startup_update_check(true);
++            // Downstream (openSUSE): the package manager owns updates, so the
++            // desktop app must not check for (and offer to install) upstream
++            // releases on its own at startup. Manual Help ▸ Check stays.
++            app.set_startup_update_check(false);
+             app.set_gpu_failure_bridge(gpu_failures);
+             app.ui.start_screen = show_home;
+             if let Some(n) = notice {
+diff --git a/crates/ui-egui/src/updates_ui.rs b/crates/ui-egui/src/updates_ui.rs
+--- a/crates/ui-egui/src/updates_ui.rs
++++ b/crates/ui-egui/src/updates_ui.rs
+@@ -3,7 +3,7 @@
+ use crate::EffectcraftApp;
+
+ #[cfg(not(target_arch = "wasm32"))]
+-use craft_update::updater::{Action, Status, Updater};
++use craft_update::updater::{Status, Updater};
+
+ pub(crate) struct Runtime {
+     #[cfg(not(target_arch = "wasm32"))]
+@@ -71,13 +71,10 @@
+ pub(crate) fn show(app: &mut EffectcraftApp, ctx: &egui::Context) {
+     #[cfg(not(target_arch = "wasm32"))]
+     {
+-        // The restart helper is scheduled before the app closes, so no update starts over unsaved work.
+-        let clean = !app.session.is_dirty();
+-        match app.updates_rt.updater.show_if(ctx, clean) {
+-            Action::OpenUrl(url) => ctx.open_url(egui::OpenUrl::new_tab(url)),
+-            Action::Close => ctx.send_viewport_cmd(egui::ViewportCommand::Close),
+-            Action::None => {}
+-        }
++        // Downstream (openSUSE): never draw the self-update prompt, so no
++        // upstream release is ever installed over RPM-owned files (neither
++        // at startup nor after a manual check). The manual Check for Updates
++        // outcome window below stays.
+         // The window answers Help ▸ Check for Updates, so it follows the updater's status.
+         let rt = &mut app.updates_rt;
+         (rt.manual_window_open, rt.status_message) = match rt.updater.status() {
