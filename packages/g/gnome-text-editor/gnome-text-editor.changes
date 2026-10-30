@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 15 08:33:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Fix tooltip for subtitle when using document portal
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug  1 10:11:48 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Allow move-next and previous when search bar is closed
+  + Build/CI updates
+  + Minor code cleanups
+
+-------------------------------------------------------------------
 Mon May 11 07:06:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.1:
