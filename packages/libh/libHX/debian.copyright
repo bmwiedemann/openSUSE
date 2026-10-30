@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://inai.de/projects/libhx/, https://codeberg.org/jengelh/libhx
+Upstream-Name: libHX
+Upstream-Contact: Jan Engelhardt <jengelh@inai.de>
+
+Files: *
+License: LGPL-2.1 or later
+Copyright: (c) 2003 till present Jan Engelhardt <jengelh@inai.de>
+
+License: Licenses can be found in /usr/share/common-licenses/LGPL-*
+

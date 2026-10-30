@@ -18,13 +18,12 @@
 
 Name:           libHX
 %define lname   libHX43
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        Collection of routines for C and C++ programming
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://inai.de/projects/libhx/
-
 Source:         https://inai.de/files/libhx/libHX-%version.tar.zst
 Source2:        https://inai.de/files/libhx/libHX-%version.tar.asc
 Source4:        %name.keyring
@@ -65,23 +64,18 @@ This subpackage contains the header files.
 %autosetup -p1
 
 %build
-mkdir obj
-cd obj/
-%define _configure ../configure
 %configure --includedir="%_includedir/%name" --docdir="%_docdir/%name"
 %make_build
-cd -
 
 %install
 b="%buildroot"
-%make_install -C obj
-mkdir -p "$b/%_docdir/%name"
+%make_install
+rm -fv "$b/%_libdir"/*.la
+mkdir -pv "$b/%_docdir/%name"
 install -pm0644 doc/* "$b/%_docdir/%name"
-rm -f "$b/%_docdir/%name"/Makefile*
-find "$b/%_libdir" -type f -name "*.la" -delete
 
 %check
-%make_build -C obj check
+%make_build check
 
 %ldconfig_scriptlets -n %lname
 

@@ -1,0 +1,32 @@
+Source: libhx
+Priority: optional
+Section: libs
+Maintainer: openSUSE <opensuse@opensuse.xz>
+Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 12)
+
+Package: libhx43
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: C library providing queue, tree, I/O and utility functions
+ a C library (with some C++ bindings available) that provides data
+ structures and functions commonly needed, such as maps, deques, linked lists,
+ string formatting and autoresizing, option and config file parsing, type
+ checking casts and more.
+ .
+ This package contains the shared libraries.
+
+Package: libhx-dev
+Section: libdevel
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libhx43 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Development files for libHX
+ a C library (with some C++ bindings available) that provides data
+ structures and functions commonly needed, such as maps, deques, linked lists,
+ string formatting and autoresizing, option and config file parsing, type
+ checking casts and more.
+ .
+ This package contains the development libraries, header files needed by
+ programs that want to compile with libHX.
