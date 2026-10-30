@@ -1,0 +1,57 @@
+From: openSUSE Publishing <publishing@opensuse.org>
+Subject: [PATCH] No self-update in distro builds: no startup check, no install prompt
+Bug: none (downstream distribution policy, not upstreamable)
+
+The package manager owns updates on a distro install: do not phone
+home to the releases page on every GUI launch, and never offer to
+install an upstream release (UPDATE-AND-RESTART) over RPM-owned
+files. Upstream ships this machinery intentionally for its own
+builds. Help ▸ Check for Updates stays as an explicit manual action
+reporting through its outcome window; only the automatic startup
+check and the self-update install prompt are turned off.
+
+diff --git a/apps/filmcraft/src/main.rs b/apps/filmcraft/src/main.rs
+--- a/apps/filmcraft/src/main.rs
++++ b/apps/filmcraft/src/main.rs
+@@ -254,7 +254,10 @@
+             }
+         }
+         let mut app = FilmcraftApp::new(session);
+-        app.set_startup_update_check(true);
++        // Downstream (openSUSE): the package manager owns updates, so the
++        // desktop app must not check for (and offer to install) upstream
++        // releases on its own at startup. Manual Help ▸ Check stays.
++        app.set_startup_update_check(false);
+         app.graphics_notice = notice;
+         if recover == Some(false) {
+             app.dialog = None;
+diff --git a/crates/ui-egui/src/updates_ui.rs b/crates/ui-egui/src/updates_ui.rs
+--- a/crates/ui-egui/src/updates_ui.rs
++++ b/crates/ui-egui/src/updates_ui.rs
+@@ -3,7 +3,7 @@
+ use crate::FilmcraftApp;
+
+ #[cfg(not(target_arch = "wasm32"))]
+-use craft_update::updater::{Action, Status, Updater};
++use craft_update::updater::{Status, Updater};
+
+ pub(crate) struct Runtime {
+     #[cfg(not(target_arch = "wasm32"))]
+@@ -85,13 +85,10 @@
+ pub(crate) fn show(app: &mut FilmcraftApp, ctx: &egui::Context) {
+     #[cfg(not(target_arch = "wasm32"))]
+     {
+-        // The restart helper is scheduled before the app closes, so no update starts over unsaved work.
+-        let clean = !app.session.is_dirty();
+-        match app.updates_rt.updater.show_if(ctx, clean) {
+-            Action::OpenUrl(url) => crate::links::open(app, ctx, &url),
+-            Action::Close => ctx.send_viewport_cmd(egui::ViewportCommand::Close),
+-            Action::None => {}
+-        }
++        // Downstream (openSUSE): never draw the self-update prompt, so no
++        // upstream release is ever installed over RPM-owned files (neither
++        // at startup nor after a manual check). The manual Check for Updates
++        // outcome window below stays.
+         // The window answers Help ▸ Check for Updates, so it follows the updater's status.
+         let rt = &mut app.updates_rt;
+         (rt.manual_window_open, rt.status_message) = match rt.updater.status() {

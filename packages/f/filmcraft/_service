@@ -1,6 +1,6 @@
 <services>
-  <!-- FilmCraft 0.12.0: upstream tags stable releases (v0.12.0 published
-       2026-10-23, draft=false prerelease=false); pin the tag, never main.
+  <!-- FilmCraft 0.14.0: upstream tags stable releases (v0.14.0 published
+       2026-10-28, draft=false prerelease=false); pin the tag, never main.
        docs/brand/ holds the ArtCraft trademarks (LICENSE-brand.txt: forks
        must remove them), so it is excluded from the tarball and the
        trademark include_bytes! in crates/ui-egui/src/brand.rs is patched
@@ -8,7 +8,7 @@
   <service mode="manual" name="tar_scm">
     <param name="url">https://github.com/storytold/filmcraft.git</param>
     <param name="scm">git</param>
-    <param name="revision">v0.12.0</param>
+    <param name="revision">v0.14.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>

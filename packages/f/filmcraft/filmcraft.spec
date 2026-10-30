@@ -17,7 +17,7 @@
 
 
 Name:           filmcraft
-Version:        0.12.0
+Version:        0.14.0
 Release:        0
 Summary:        Timeline video editor written in pure Rust
 # Legal-Review-Notice: scope is the two shipped binaries (filmcraft in
@@ -48,6 +48,18 @@ Source1:        vendor.tar.zst
 # with the open-source FilmCraft tile; permanent downstream carry, not
 # upstreamable (upstream ships the marks intentionally).
 Patch0:         filmcraft-no-brand-assets.patch
+# PATCH-FIX-OPENSUSE filmcraft-drop-unused-egui-patches.patch -- drop four
+# [patch.crates-io] pins (egui_demo_lib, egui_extras, egui_inspection,
+# egui_system_font_provider) that nothing uses (Cargo.lock [[patch.unused]]):
+# cargo_vendor omits them from vendor.tar.zst, so any --offline resolve
+# fails; upstreamable as cleanup once upstream drops the pins.
+Patch1:         filmcraft-drop-unused-egui-patches.patch
+# PATCH-FIX-OPENSUSE filmcraft-no-self-update.patch -- distro builds
+# must not phone home at startup nor offer to install an upstream release
+# over RPM-owned files (the package manager owns updates); the manual
+# Help check outcome window stays. New upstream behaviour in 0.14.0, not
+# upstreamable (upstream ships the machinery intentionally).
+Patch2:         filmcraft-no-self-update.patch
 BuildRequires:  appstream-glib
 BuildRequires:  c_compiler
 BuildRequires:  cargo >= 1.95
@@ -116,10 +128,10 @@ install -Dm0755 target/release/filmcraft-cli %{buildroot}%{_bindir}/filmcraft-cl
 install -Dm0644 packaging/linux/ai.storyteller.filmcraft.desktop %{buildroot}%{_datadir}/applications/ai.storyteller.filmcraft.desktop
 install -Dm0644 packaging/linux/ai.storyteller.filmcraft.mime.xml %{buildroot}%{_datadir}/mime/packages/ai.storyteller.filmcraft.xml
 install -d -m 0755 %{buildroot}%{_datadir}/metainfo
-# Fixed upstream release date (v0.12.0, 2026-10-23): a build-time date would
+# Fixed upstream release date (v0.14.0, 2026-10-28): a build-time date would
 # make the metainfo differ on every rebuild, and spec-cleaner would brace
 # the date-format placeholders as RPM macros, so keep this a plain string.
-sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-23/g" packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.filmcraft.metainfo.xml
+sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-28/g" packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.filmcraft.metainfo.xml
 # Upstream declares the app icon as type="stock" but it is a custom hicolor
 # icon, so declare it as cached for appstream validation.
 sed -i 's|<icon type="stock">ai.storyteller.filmcraft</icon>|<icon type="cached" width="64" height="64">ai.storyteller.filmcraft.png</icon>|' %{buildroot}%{_datadir}/metainfo/ai.storyteller.filmcraft.metainfo.xml

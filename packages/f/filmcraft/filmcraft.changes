@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Oct 29 12:41:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.0 (upstream tags v0.14.0, 2026-10-28 and
+  v0.13.0, 2026-10-25):
+  * Interface: migrated to egui 0.37, new startup update prompt,
+    XWayland file drag-and-drop on Wayland, work area bar, Razor
+    and Option-drag caption editing, captions list follows the
+    playhead, duplicate-frame markers, transparency grid, complete
+    French translation, Fujifilm F-Log colour spaces
+  * Media: uncompressed QuickTime video decodes, animated WebP
+    imports, PNG sequences honour the alpha toggle, export CPU
+    thread cap (maxThreads), H.264 export a fifth faster with
+    byte-identical output, TTML/DFXP overflow fix, stricter
+    timecode, colour-hex and parameter-range validation
+  * Harden parsers against hostile input (no CVE assigned):
+    bounded frame/render/image allocations across AV1, HEVC,
+    MPEG-2, VP8/VP9, ProRes, DNx, APV, AVIs, Ogg, MXF, OMF, AAF,
+    TTML/TTS text, captions burn-in, interchange indices and
+    stored-media filesystem confinement; new fuzz tests
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+  * Re-vendored with update=false against the new Cargo.lock
+    (respect-lockfile true): licence re-derived over the shipped
+    targets, no new copyleft (new crates MIT, Apache-2.0 or
+    Unicode-3.0 only), so the tag and Legal-Review-Notice stand;
+    no new system deps, MSRV still 1.95; cargo_vendor audit clean
+    (no RUSTSEC advisories)
+  * Add filmcraft-drop-unused-egui-patches.patch: drop four
+    unused [patch.crates-io] pins the vendor omits, which broke
+    the offline build; [[package]] set unchanged
+- filmcraft-no-brand-assets.patch still applies unchanged
+  (no fuzz);
+  no new docs/brand references in the 0.14.0 tree
+- Bump the fixed metainfo release date to 2026-10-28
+- Add filmcraft-no-self-update.patch: distro builds must not phone
+  home at startup nor install an upstream release over RPM-owned
+  files; the manual Help check outcome window stays
+
+-------------------------------------------------------------------
 Fri Oct 23 07:13:08 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.12.0 (upstream tag v0.12.0, 2026-10-23; includes
