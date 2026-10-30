@@ -17,7 +17,7 @@
 
 
 Name:           gnome-nibbles
-Version:        4.5.2
+Version:        4.6.2
 Release:        0
 Summary:        Worm Game for GNOME
 License:        GPL-3.0-or-later
@@ -26,12 +26,11 @@ URL:            https://gitlab.gnome.org/GNOME/gnome-nibbles/-/wikis/home
 Source0:        %{name}-%{version}.tar.xz
 BuildSystem:    meson
 
+BuildRequires:  c++_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gettext-devel
-BuildRequires:  meson >= 0.50.1
-BuildRequires:  vala
-BuildRequires:  yelp-tools
+BuildRequires:  itstool
+BuildRequires:  meson >= 1.1
 
 %description
 Nibbles is a worm game for GNOME. The player controls a 2D worm while
@@ -47,10 +46,9 @@ export BUILDREQ_IGNORE_DEP="gtk5"
 %install -a
 %fdupes %{buildroot}/%{_datadir}
 %find_lang %{name} %{?no_lang_C}
-%find_lang %{name}_libgnome-games-support %{?no_lang_C}
 
 %files
-%license COPYING
+%license gpl-3.0.txt
 %doc NEWS
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
@@ -62,6 +60,6 @@ export BUILDREQ_IGNORE_DEP="gtk5"
 %{_datadir}/metainfo/org.gnome.Nibbles.metainfo.xml
 %{_mandir}/man6/%{name}.6%{?ext_man}
 
-%files lang -f %{name}.lang -f %{name}_libgnome-games-support.lang
+%files lang -f %{name}.lang
 
 %changelog

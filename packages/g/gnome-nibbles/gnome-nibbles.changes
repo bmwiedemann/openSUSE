@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Oct 11 21:51:55 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.6.2:
+  * Fix meson check for gtkmm should be >= 4.24.0
+  * Updated translations.
+
+-------------------------------------------------------------------
+Sun Oct 11 09:35:29 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.6.1:
+  * Nibbles now compiles correctly with libc++ (clang 21 release)
+  * Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 13 16:57:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.6.0:
+  + Switched source code from Vala to C++, so there are far less
+    dependencies: gtkmm version > 4.23.2 see README.md for details.
+  + Fix various issues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 17 12:57:03 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.6.rc1:
+  + Switched from Vala to C++, so there are far less dependencies:
+    meson version >= 1.1
+    gsound version >= 1.0.2
+    gtkmm version >= 4.23.1
+    glibmm-2.68 version >= 2.88.1
+  + Updated translations.
+- Drop vala, gettext-devel and yelp-tools BuildRequires: no longer
+  needed.
+- Add c++_compiler and itstool BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
 Sun May 10 05:48:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.5.2:
@@ -736,7 +773,7 @@ Sun Oct 13 11:09:42 UTC 2013 - dimstar@opensuse.org
 Mon Sep 23 11:11:00 UTC 2013 - idonmez@suse.com
 
 - Create games user/group on demand (fate#314560)
-  + Depend on pwdutils for that to work. 
+  + Depend on pwdutils for that to work.
 
 -------------------------------------------------------------------
 Mon Sep 23 07:09:21 UTC 2013 - dimstar@opensuse.org
@@ -772,5 +809,5 @@ Wed Mar 27 07:39:24 UTC 2013 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Tue Mar  5 20:16:14 UTC 2013 - dimstar@opensuse.org
 
-- Initial package, version 3.7.90: split-off from gnome-games. 
+- Initial package, version 3.7.90: split-off from gnome-games.
 

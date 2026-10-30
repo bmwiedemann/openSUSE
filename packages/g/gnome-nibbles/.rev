@@ -468,4 +468,12 @@
   + Updated translations.</comment>
     <requestid>1352550</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>b00f6e6a8a9ffd7e12b29563e1e819e2</srcmd5>
+    <version>4.6.2</version>
+    <time>1793380220</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385425</requestid>
+  </revision>
 </revisionlist>
