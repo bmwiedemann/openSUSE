@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Oct 10 19:34:54 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.1:
+  * Made the game statistics in the compact mode into cards
+  * Made miscellaneous style changes
+  * Added a focus ring to the game cards
+  * Documented the Return key shortcut for starting a game
+  * Updated libgnome-games-support
+  * Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 13 13:31:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0:
+  + Changed preferred audio backend to pipewire
+  + Updated libgnome-games-support
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 31 07:56:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc.1:
+  + metainfo: add missing end tag.
+
+-------------------------------------------------------------------
+Sun Aug 30 06:07:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Removed the man page
+  + Modernized the 'Game Over' view
+  + Removed the pango, pangocairo, posix, and rsvg dependencies
+  + Replaced the cairo drawn blocks with css styling
+  + Removed the tango and tango flat styles
+  + Changed the game stats to use cards
+  + Replaced the 'Appearance' dialog with an 'Appearance' page in
+    the preferences
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 17 19:08:19 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Fixed a bug where blocks would not stop moving if the game lost
+    focus.
+  + Fixed a bug where game keys wouldn't work once if they were
+    pressed before to starting a game.
+  + Added a -1 difficulty, where the level never increases.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat May 23 19:44:40 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.2:
