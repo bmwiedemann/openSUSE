@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Oct 30 05:55:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.126.0:
+  * Features
+    - feat(api): detect GitHub Copilot CLI as coding agent
+      (a6652278)
+    - feat(df): add glab df go (a32c7988)
+    - feat(govern): send glab and agent versions with new sessions
+      (1bea3af3)
+    - feat(govern): send the Codex tool namespace with tool call
+      events (9be88b25)
+    - feat(release): explain why CI_JOB_TOKEN can't close
+      milestones (8eb5e17c)
+  * Bug Fixes
+    - fix(api): do not retry POST or PATCH on server errors
+      (f7503dc0)
+    - fix(cluster): show the real total in the list header
+      (e24e4adf)
+    - fix(config): send environment credentials only to trusted
+      hosts (6ab4be4d)
+    - fix(deps): bump golang.org/x/net to v0.62.0 for GO-2026-6860
+      (3454f28e)
+    - fix(orbit): require GitLab Orbit CLI 0.163.0 or later
+      (a1910803)
+    - fix(snap): rename kubeconfig plug to dot-kube-config
+      (a9dfffbb)
+  * Documentation
+    - docs(df): Update DFW docs (887df4a8)
+    - docs(security): list profile identifiers in config help
+      (9d7364ef)
+    - docs: fix contributor and maintainer doc gaps (31d08322)
+  * Maintenance
+    - chore: Add gitlab-bot to CODEOWNERS so automated approvals of
+      MRs satisfy requirements (edf45cc2)
+  * Dependencies
+    - chore(deps): update module github.com/docker/cli to
+      v29.9.2+incompatible (97b69284)
+    - chore(deps): update module
+      github.com/docker/docker-credential-helpers to v0.9.12
+      (bca2413e)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.39.1 (b690423b)
+  * Others
+    - build: use patch version 0 for the go directive (7f554826)
+
+-------------------------------------------------------------------
 Wed Oct 28 06:52:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.125.0:
