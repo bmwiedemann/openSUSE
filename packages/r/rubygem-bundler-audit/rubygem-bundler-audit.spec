@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bundler-audit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,25 @@
 #
 
 
+%define mod_name bundler-audit
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-bundler-audit
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
-%define mod_name bundler-audit
-%define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.0.0}
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  update-alternatives
+Summary:        Patch-level verification for Bundler
+License:        GPL-3.0-or-later
 URL:            https://github.com/rubysec/bundler-audit#readme
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        Patch-level verification for Bundler
-License:        GPL-3.0-or-later
+BuildRequires:  %{ruby >= 2.0.0}
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 
 %description
 bundler-audit provides patch-level verification for Bundled apps.
@@ -47,6 +45,7 @@ bundler-audit provides patch-level verification for Bundled apps.
 
 %install
 %gem_install \
+  --no-rdoc --no-ri \
   --symlink-binaries \
   --doc-files="COPYING.txt ChangeLog.md README.md" \
   -f
