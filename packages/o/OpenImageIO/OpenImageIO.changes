@@ -1,4 +1,163 @@
 -------------------------------------------------------------------
+Fri Oct 30 10:56:15 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Disable newly failing tests: sourceprovenance, 
+  python-imageinput-colorconfig, dicom
+
+-------------------------------------------------------------------
+Wed Oct 28 23:33:14 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.2.2.0
+  - color: Give the linear display identities their CICP codes.
+    #5540 (by @zachlewis / Zach Lewis)
+  - color: Add chromaticities and transfer gamma queries to
+    ColorConfig. #5521 #5557 (by @zachlewis / Zach Lewis)
+  - color: Resolve namespaced Color Interop IDs. #5546 (by
+    @zachlewis / Zach Lewis)
+  - color: Convert to and from Color Interop IDs the config lacks.
+    #5547 (by @zachlewis / Zach Lewis)
+  - color: Preserve gamma conversion order with OCIO 2.3 and 2.4.
+    #5517 (by @zachlewis / Zach Lewis)
+  - color: IsData() follows OCIO's lookup and its isdata flag.
+    #5539 (by @zachlewis / Zach Lewis)
+  - color: Keep the default view transform when copying configs on
+    OCIO < 2.3.2. #5538 (by @zachlewis / Zach Lewis)
+  - color: Load the color config on first use, not on construction.
+    #5507 (by @zachlewis / Zach Lewis)
+  - ImageSpec: Carry source provenance on higher-level image specs.
+    #5511 (by @zachlewis / Zach Lewis)
+  - oiiotool: Don't read past an empty --info result. #5537 (by
+    @zachlewis / Zach Lewis)
+  - perf: Resolve the color interop ID table's names once per
+    config. #5545 (by @zachlewis / Zach Lewis)
+  - perf: Reduce cache-line contention in ImageCache lookups. #5565
+    (by @lgritz / Larry Gritz)
+  - perf: Faster spin_mutex under contention; fix arm64 pause.
+    #5564 #5583 (by @lgritz / Larry Gritz)
+  - IBA: Properly clamp resample() channel range and Highway row
+    stride. #5541 (by @wingfiring / JacksonSun-adsk)
+  - IBA: Don't index channelnames past its size. #5607 (by @lgritz
+    / Larry Gritz)
+  - IBA: premult() rejects alpha_channel == nchannels. #5610 (by
+    @lgritz / Larry Gritz)
+  - ImageBuf: nmiplevels() returns 0 for non-ImageCache ImageBuf.
+    #5437 (by @luna-y-kim / Luna Kim)
+  - ImageInput: Reject absurd tile/display sizes, and related
+    fixes. #5519 (by @lgritz / Larry Gritz)
+  - ImageInput: Prevent integer overflow with large data window
+    origins. #5494 (by @lgritz / Larry Gritz)
+  - dicom: Fix rejected subimages, and reaching every frame. #5474
+    (by @lgritz / Larry Gritz)
+  - dpx: Better handling of truncated pixel data. #5554 (by @lgritz
+    / Larry Gritz)
+  - dpx: Fix integer overflow in scanline buffer offset. #5568 (by
+    @lgritz / Larry Gritz)
+  - dpx: Writer mishandled subimages that differ from the first.
+    #5608 (by @lgritz / Larry Gritz)
+  - exr: Report true file size to OpenEXRCore size callback. #5585
+    (by @lgritz / Larry Gritz)
+  - fits: Fix off-by-one scanline offset in reader and writer.
+    #5555 (by @lgritz / Larry Gritz)
+  - gif: Reject subimages whose resolution differs from the first.
+    #5609 (by @lgritz / Larry Gritz)
+  - heif: Don't let libheif exceptions escape open(). #5556 (by
+    @lgritz / Larry Gritz)
+  - iconvert: Use a private ImageCache to gather subimage specs.
+    #5508 (by @zachlewis / Zach Lewis)
+  - iff: Safety fixes: offsets in size_t, fix row flip. #5596 (by
+    @lgritz / Larry Gritz)
+  - jpeg2000: Reject HTJ2K tile layouts that bloat OpenJPH memory.
+    #5589 (by @lgritz / Larry Gritz)
+  - jpegxl: Propagate close-time encoder and write failures. #5509
+    (by @zachlewis / Zach Lewis)
+  - paramlist: Check span size in byte-span calls. #5615 (by
+    @jinhgkim / Jinnie Kim)
+  - png: Preserve mastering display metadata (mDCV). #5512 (by
+    @zachlewis / Zach Lewis)
+  - pnm: Reject out-of-range maxval; avoid int overflow when
+    scaling. #5592 (by @lgritz / Larry Gritz)
+  - psd: Skip empty layers when reading PSD files. #5562 (by
+    @jeevan6996 / Jeevan Mohan Pawar)
+  - psd: Reject layer missing a required channel id #5599, bound
+    RLE row lengths by available data #5591 (by @lgritz / Larry
+    Gritz)
+  - r3d: Check decode status, validate clip geometry, report
+    errors. #5413 (by @lgritz / Larry Gritz)
+  - raw: Include LibRaw error messages within ours #5573, apply the
+    compression-ratio check to the output spec #5618 (by @lgritz /
+    Larry Gritz)
+  - sgi: Bounds check RLE run value byte for 8 bit data. #5513 (by
+    @lgritz / Larry Gritz)
+  - softimage: Check read_next_scanline results. #5590 (by @lgritz
+    / Larry Gritz)
+  - tiff: 64-bit size for LONG-typed IPTC data. #5577 (by @lgritz /
+    Larry Gritz)
+  - tiff: Fix premultiply of unassociated alpha in subset and tiled
+    reads. #5614 (by @lgritz / Larry Gritz)
+  - tiff: Integer overflow safety in TIFF writer. #5613 (by @lgritz
+    / Larry Gritz)
+  - tiff: Cap libtiff internal allocations at limits:imagesize_MB.
+    #5616 (by @lgritz / Larry Gritz)
+  - tiff: Fix stack overflow reading InkNames of multi-ink files.
+    #5600 (by @lgritz / Larry Gritz)
+  - xml: Handle rational types in ImageSpec roundtrip. #5581 (by
+    @ayushactiveat / Ayush Singh)
+  - python: Render ImageSpec.format as a property and restore
+    __version__ in the python stubs. #5582 (by @linsen458-spec /
+    Ethan Lin)
+  - python: Fix overflow in read_scanlines/read_tiles/get_pixels.
+    #5569 (by @lgritz / Larry Gritz)
+  - python: Build python stubs with nanobind stubgen and a pattern
+    file. #5552 (by @linsen458-spec / Ethan Lin)
+  - int: Move errorfmt to strutil.h so both libs can use it. #5620
+    (by @jinhgkim / Jinnie Kim)
+  - int: Move IGNORE_HOMEBREWED_DEPS logic to
+    dependency_utils.cmake. #5501 (by @lgritz / Larry Gritz)
+  - platform.h: Add OIIO_NOINLINE. #5626 (by @lgritz / Larry Gritz)
+  - simd.h: Avoid misaligned typed stores in partial vint4/vfloat4
+    stores. #5566 (by @lgritz / Larry Gritz)
+  - span.h: Guard spancpy/spanset/spanzero against offset past end.
+    #5598 (by @lgritz / Larry Gritz)
+  - test: Fix the missing lock correctness check #5574, fix misused
+    lambda in std::all_of check #5575 (by @jinhgkim / Jinnie Kim)
+  - test: Fix spurious testsuite/texture-texture3d failures #5588,
+    fix texture-device-devicecheck needing fmt headers first #5542,
+    set PYTHONPATH to this build's bindings for every test #5553
+    (by @lgritz / Larry Gritz)
+  - test: Cover out-of-order and post-failure subimage seeks #5524,
+    runtest.py redirect_push()/redirect_pop() #5476, let
+    imageinout_test skip one format #5603, lower harness
+    limits:imagesize_MB to 512 #5617 (by @lgritz / Larry Gritz)
+  - build: Clear stale dep version before refinding a local build.
+    #5578 (by @lgritz / Larry Gritz)
+  - build: Accept commas in dependency list options. #5499 (by
+    @lgritz / Larry Gritz)
+  - build: Fix libc++ hardening mode never being enabled. #5523 (by
+    @lgritz / Larry Gritz)
+  - build: Detect FFmpeg 8.1 and 9.x correctly. #5535 (by @lgritz /
+    Larry Gritz)
+  - build: Don't pass our minimum OpenJPH version to find_package.
+    #5587 (by @lgritz / Larry Gritz)
+  - build: Python wheel fixes: upload wheels for 3.2.* #5572,
+    Python 3.15 wheels #5533, pin Linux wheel job to ubuntu-24.04
+    #5621 (by @lgritz / Larry Gritz)
+  - ci: Test better span of libuhdr versions, auto-build default
+    2.0.2. #5526 (by @lgritz / Larry Gritz)
+  - ci: Imath+OpenEXR CI and autobuild improvements #5529, adjust
+    dependency pins on oldest, latest, and bleeding #5543, adjust
+    freetype in 'latest' and 'oldest' jobs #5579 (by @lgritz /
+    Larry Gritz)
+  - ci: Remove MacOS14 tests, GitHub is retiring the runner. #5532
+    (by @lgritz / Larry Gritz)
+  - ci/fuzz: Coverage-instrument the libraries in fuzz builds.
+    #5586 (by @lgritz / Larry Gritz)
+  - docs: Clarify oiiotool --dup reference semantics and in-place
+    commands. #5548 (by @linsen458-spec / Ethan Lin)
+  - docs: Bump docs workflow dependency versions (sphinx, breathe,
+    etc). #5536 (by @lgritz / Larry Gritz)
+- Drop 5519.patch: included in update.
+
+-------------------------------------------------------------------
 Wed Oct 14 09:33:48 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Apply 5519.patch to address some input memory check issues

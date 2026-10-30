@@ -816,4 +816,41 @@ Updated oiio-detectplatform-others.patch to handle armv6l
   dev-3.3</comment>
     <requestid>1384799</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>32d9857cfa9472be8022cf120fad48d3</srcmd5>
+    <version>3.2.2.0</version>
+    <time>1793380276</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable newly failing tests: sourceprovenance, 
+  python-imageinput-colorconfig, dicom
+
+- Update to 3.2.2.0
+  - color: Give the linear display identities their CICP codes.
+    #5540 (by @zachlewis / Zach Lewis)
+  - color: Add chromaticities and transfer gamma queries to
+    ColorConfig. #5521 #5557 (by @zachlewis / Zach Lewis)
+  - color: Resolve namespaced Color Interop IDs. #5546 (by
+    @zachlewis / Zach Lewis)
+  - color: Convert to and from Color Interop IDs the config lacks.
+    #5547 (by @zachlewis / Zach Lewis)
+  - color: Preserve gamma conversion order with OCIO 2.3 and 2.4.
+    #5517 (by @zachlewis / Zach Lewis)
+  - color: IsData() follows OCIO's lookup and its isdata flag.
+    #5539 (by @zachlewis / Zach Lewis)
+  - color: Keep the default view transform when copying configs on
+    OCIO &lt; 2.3.2. #5538 (by @zachlewis / Zach Lewis)
+  - color: Load the color config on first use, not on construction.
+    #5507 (by @zachlewis / Zach Lewis)
+  - ImageSpec: Carry source provenance on higher-level image specs.
+    #5511 (by @zachlewis / Zach Lewis)
+  - oiiotool: Don't read past an empty --info result. #5537 (by
+    @zachlewis / Zach Lewis)
+  - perf: Resolve the color interop ID table's names once per
+    config. #5545 (by @zachlewis / Zach Lewis)
+  - perf: Reduce cache-line contention in ImageCache lookups. #5565
+    (by @lgritz / Larry Gritz)
+  - perf: Faster spin_mutex under contention; fix arm64 pause.
+    #5564 #5583 (by @lgritz / Larry Gritz)</comment>
+    <requestid>1393871</requestid>
+  </revision>
 </revisionlist>

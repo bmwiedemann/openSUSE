@@ -57,7 +57,7 @@
 %global major_minor_ver 3.2
 
 Name:           OpenImageIO
-Version:        3.2.1.1
+Version:        3.2.2.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        Apache-2.0
@@ -69,8 +69,6 @@ Source1:        OpenImageIO-images-%{images_ts}.tar.xz
 Source2:        series
 # PATCH-FIX-OPENSUSE skip-heif-tests.patch - We can not run heif tests in the official builds
 Patch1:         skip-heif-tests.patch
-# PATCH-FIX-UPSTREAM 5519.patch - apply https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/5519 to address some memory check issues
-Patch2:         5519.patch
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
 BuildRequires:  cmake >= 3.23
@@ -305,8 +303,12 @@ export PYTHONDONTWRITEBYTECODE=1
 # ffmpeg -> our factory ffmpeg does not fit the bill
 # sgi -> the tests does not cope with their own changed OIIO library outputs
 #
+# sourceprovenance ,python-imageinput-colorconfig -> FAIL heif: Unknown error (HEVC decoder, e.g. libde265 missing)
+#
+# dicom -> oiiotool ERROR: read : Unable to open DICOM file multiframe.dcm
+#
 #export disabled_tests="heif|ptex|jpeg-ultrahdr|cmake-consumer|docs-examples-cpp|docs-examples-python|imagebufalgo-opencv|openexr-partialtile|ffmpeg"
-export disabled_tests="cmake-consumer|docs-examples-cpp|docs-examples-python|heif|imagebufalgo-opencv|openexr-partialtile|ffmpeg|sgi"
+export disabled_tests="cmake-consumer|docs-examples-cpp|docs-examples-python|heif|imagebufalgo-opencv|openexr-partialtile|ffmpeg|sgi|sourceprovenance|python-imageinput-colorconfig|dicom"
 %ifarch x86_64
 %ctest '-E' ${disabled_tests}
 %else
