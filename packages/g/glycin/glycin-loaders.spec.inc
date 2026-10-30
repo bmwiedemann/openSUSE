@@ -5,13 +5,23 @@
 
 %build
 %meson \
-    -Dlibglycin=false \
+    -Dlibglycin=true \
     -Dlibglycin-gtk4=false \
     -Dtests=false
 %meson_build
 
 %install
 %meson_install
+
+# Nuke files packaged in libglycin already
+rm -vf %{buildroot}/usr/include/glycin-2/glycin.h \
+       %{buildroot}%{_libdir}/girepository-1.0/Gly-2.typelib \
+       %{buildroot}%{_libdir}/libglycin-2.so \
+       %{buildroot}%{_libdir}/libglycin-2.so.0 \
+       %{buildroot}%{_libdir}/pkgconfig/glycin-2.pc \
+       %{buildroot}/usr/share/gir-1.0/Gly-2.gir \
+       %{buildroot}/usr/share/vala/vapi/glycin-2.deps \
+       %{buildroot}/usr/share/vala/vapi/glycin-2.vapi
 
 %files
 %{_bindir}/glycin-thumbnailer

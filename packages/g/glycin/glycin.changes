@@ -1,4 +1,305 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:12:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.5:
+  * This release contains the following new component versions:
+    + Glycin-core 4.0.5
+    + Glycin 4.0.5
+    + Glycin-builtin 4.0.5
+    + Glycin-external 4.0.5
+    + Libglycin 2.2.5
+    + Libglycin-gtk4 2.2.5
+  * Fixed:
+    + Require gufo-exif 0.5.5 to avoid reading exif values from incorrect
+      positions in some images.
+    + Libglycin: Don't panic when trying to lookup an infinite pixel density.
+      Instead, don't return any pixel density.
+    + Meson/thumbnailer: Ensure that libglycin is built before
+      glycin-thumbnailer.
+- Pass libglycin=true to meson setup in glycin-loaders.spec.inc following
+  upstream changes.
+
+-------------------------------------------------------------------
+Fri Oct 23 13:26:54 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.4:
+  * This release contains the following new component versions:
+    + Glycin-core 4.0.4
+    + Glycin-image-rs 2.2.4
+    + Glycin 4.0.4
+    + Glycin-builtin 4.0.4
+    + Glycin-external 4.0.4
+    + Libglycin 2.2.4
+    + Libglycin-gtk4 2.2.4
+  * Fixed:
+    + Require gufo-exif 0.5.4 to avoid a panic in exif lookup for certain
+      images.
+    + Glycin: Longer magic byte strings in config identifiers now have a higher
+      priority. This fixes cursors being sometimes identified as TGAs.
+
+-------------------------------------------------------------------
+Thu Oct 15 14:09:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.3:
+  * This release contains the following new component versions:
+    + Glycin-core 4.0.3
+    + Glycin-image-rs 2.2.3
+    + Glycin 4.0.3
+    + Glycin-builtin 4.0.3
+    + Glycin-external 4.0.3
+    + Libglycin 2.2.3
+    + Libglycin-gtk4 2.2.3
+  * Fixed:
+    + Require gufo-exif 0.5.3 which fixes parsing issues with non-Canon
+      MakerNote entries. This can cause images not to be rotated according to
+      the Orientation tag.
+    + Image-rs/animation: Drop thread after the Image.done D-Bus method is
+      called.
+    + Image-rs: Prevent channel with animation frames from filling up, causing
+      a effective memory leak.
+    + Libglycin: Don't block main thead in `get_mime_types`.
+  * Changed: Glycin: Canonicalize paths of "Exec" keys when loading configs.
+
+-------------------------------------------------------------------
+Tue Oct  6 17:41:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.2:
+  * This release contains the following new component versions:
+    + Glycin-core 4.0.2
+    + Glycin 4.0.2
+    + Glycin-builtin 4.0.2
+    + Glycin-external 4.0.2
+    + Libglycin 2.2.2
+    + Libglycin-gtk4 2.2.2
+  * Fixed: Set the unix socket sending the image data to the loader to
+    non-blocking. Otherwise, small socket send buffer configurations might lead
+    to infinite blocking.
+
+-------------------------------------------------------------------
+Tue Sep 15 12:30:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.1:
+  + This release contains the following new component versions:
+    - glycin-utils 5.0.1
+  + Fixed: Don't mmap already write sealed memfds as shared. This
+    is only supported since Linux 6.7
+    <https://lkml.indiana.edu/2310.1/06395.html>.
+
+-------------------------------------------------------------------
+Wed Sep  9 12:24:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.2.0:
+  + This release contains the following new component versions:
+    - glycin-common 2.0.0
+    - glycin-core 4.0.0
+    - glycin-heif 2.2.0
+    - glycin-image-rs 2.2.0
+    - glycin-jxl 2.2.0
+    - glycin-raw 2.2.0
+    - glycin-svg 2.2.0
+    - glycin-test 2.2.0
+    - glycin-thumbnailer 2.2.0
+    - glycin-utils 5.0.0
+    - glycin 4.0.0
+    - glycin-builtin 4.0.0
+    - glycin-external 4.0.0
+    - libglycin-gtk4-rebind 0.2.0
+    - libglycin-gtk4-rebind-sys 0.2.0
+    - libglycin-rebind 0.2.0
+    - libglycin-rebind-sys 0.2.0
+    - libglycin 2.2.0
+   - libglycin-gtk4 2.2.0
+  + Fixed:
+    - glycin/sandbox: Fix compilation on 32 bit architectures
+
+-------------------------------------------------------------------
+Fri Aug 21 18:52:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.beta.1:
+  + This release contains the following new component versions:
+    - glycin-core 4.0.0-beta.1
+    - glycin-heif 2.2.0-beta.1
+    - glycin-image-rs 2.2.0-beta.1
+    - glycin-jxl 2.2.0-beta.1
+    - glycin-raw 2.2.0-beta.1
+    - glycin-svg 2.2.0-beta.1
+    - glycin-test 2.2.0-beta.1
+    - glycin-thumbnailer 2.2.0-beta.1
+    - glycin 4.0.0-beta.1
+    - glycin-builtin 4.0.0-beta.1
+    - glycin-external 4.0.0-beta.1
+    - libglycin 2.2.0-beta.1
+    - libglycin-gtk4 2.2.0-beta.1
+  + Fixed:
+    - Libglycin relied on the Gio.File async API working when used
+      via it's sync API. However, consumers like GNOME Shell,
+      gdk-pixbuf, and Nautilus are exhausting the GTask thread pool
+      via spawning a lot of threads via `g_task_run_in_thread()`
+      blocking on libglycin. Since libglycin can't make any
+      progress on opening or loading files, this leads to a
+      deadlock. While the practice of exhausting GTasks is
+      considered bad practice, there are too many library consumers
+      relying on this behavior to work. Libglycin now uses the sync
+      GIO operations when the sync API is used.
+    - Work around memory leak in gtk-rs
+
+-------------------------------------------------------------------
+Fri Jul 31 20:14:28 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.beta:
+  + This release contains the following new component versions:
+    - glycin-common 2.0.0-beta
+    - glycin-core 4.0.0-beta
+    - glycin-heif 2.2.0-beta
+    - glycin-image-rs 2.2.0-beta
+    - glycin-jxl 2.2.0-beta
+    - glycin-raw 2.2.0-beta
+    - glycin-svg 2.2.0-beta
+    - glycin-test 2.2.0-beta
+    - glycin-thumbnailer 2.2.0-beta
+    - glycin-utils 5.0.0-beta
+    - glycin 4.0.0-beta
+    - glycin-builtin 4.0.0-beta
+    - glycin-external 4.0.0-beta
+    - libglycin-gtk4-rebind 0.2.0-beta
+    - libglycin-gtk4-rebind-sys 0.2.0-beta
+    - libglycin-rebind 0.2.0-beta
+    - libglycin-rebind-sys 0.2.0-beta
+    - libglycin 2.2.0-beta
+    - libglycin-gtk4 2.2.0-beta
+  + Added:
+    - glycin: API to disable conversion of frames with ICC profile
+      to sRGB.
+    - glycin: Creator::set_transform_memory_format allows to
+      automatically transform frame textures to a memory format
+      supported by the image format.
+    - image-rs: Support XMP in GIF, TIFF, and WebP
+    - libglycin: Expose API to disable conversion to sRGB from ICC
+      profile and for obtaining the ICC profile.
+
+-------------------------------------------------------------------
+Sun Jul 19 07:20:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.alpha.7:
+  + This release contains the following new component versions:
+    - glycin-core 4.0.0-alpha.7
+    - glycin-heif 2.2.0-alpha.7
+    - glycin-image-rs 2.2.0-alpha.7
+    - glycin-jxl 2.2.0-alpha.7
+    - glycin-raw 2.2.0-alpha.7
+    - glycin-svg 2.2.0-alpha.7
+    - glycin-test 2.2.0-alpha.7
+    - glycin-thumbnailer 2.2.0-alpha.7
+    - glycin 4.0.0-alpha.7
+    - glycin-builtin 4.0.0-alpha.7
+    - glycin-external 4.0.0-alpha.7
+    - libglycin 2.2.0-alpha.7
+    - libglycin-gtk4 2.2.0-alpha.7
+  + Added:
+    - Add "test_disable_sandbox" option to disable use of sandbox
+      while running tests.
+    - Cross compilation should now work out of the box and not
+      require any patches.
+    - Setting `GLYCIN_DISABLE_SANDBOX=i-know-the-risks` will
+      disable the sandbox if `SandboxSelector::Auto` is used.
+    - Support conversion of pixel densities between different
+      units.
+  + Fixed:
+    - Don't report JPEG 2000 images as format name ICO.
+    - libglycin: Build errors on Windows MSVC and macOS. Builds
+      unter Windows GNU are still not completely working.
+  + Changed:
+    - The pixel density is now provided as it's own object. This is
+      a breaking change towards the previous alpha version.
+    - sandbox: Use seccomp blocklist instead of allowlist. The
+      allowlist has repeatedly caused issues because it's not clear
+      when new syscalls need to be added. Since seccomp is a second
+      line of defence on top of namespaces anyway, this should be
+      totally fine. Don't block socket calls for now since it's a
+      bit complicated and they were allowed before. This also fixes
+      issues where multiarch setups would run into a second arch
+      not being properly handled by seccomp.
+
+-------------------------------------------------------------------
+Fri Jul 10 08:09:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.alpha.6:
+  + This release contains the following new component versions:
+    - glycin-common 2.0.0-alpha.1
+    - glycin-core 4.0.0-alpha.1
+    - glycin-heif 2.2.0-alpha.6
+    - glycin-image-rs 2.2.0-alpha.6
+    - glycin-jxl 2.2.0-alpha.6
+    - glycin-raw 2.2.0-alpha.6
+    - glycin-svg 2.2.0-alpha.6
+    - glycin-test 2.2.0-alpha.6
+    - glycin-thumbnailer 2.2.0-alpha.6
+    - glycin-utils 5.0.0-alpha.1
+    - glycin 4.0.0-alpha.1
+    - glycin-builtin 4.0.0-alpha.1
+    - glycin-external 4.0.0-alpha.1
+    - libglycin 2.2.0-alpha.6
+    - libglycin-gtk4 2.2.0-alpha.6
+  + Added:
+    - Glycin now supports pixel density (like DPI) in the internal
+      Frame API. This allows to retrive and set the pixel density
+      for PNG, JPEG, and TIFF images. The feature is also
+      accessible via the libglycin API.
+    - image-rs: Support for the Radiance HDR format
+  + Changed:
+    - image-rs: Use custom openexr loader. This allows to load f16
+      images as half format. It also fixes loading openexr u32
+      images.
+- Changes from version 2.1.6 (Unreleased):
+  + Added: Recognize image/vnd.ms-dds as DDS that is used starting
+    with shared-mime-info 2.5.
+  + Changed: Require image-extras 0.1.1 to fix xpm loading issue.
+
+-------------------------------------------------------------------
+Fri Jul  3 20:22:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.alpha.5:
+  + Fixed: Let distribution script update the Cargo.lock file.
+- Changes from version 2.2.alpha.4:
+  + This release contains the following new component versions:
+    - glycin-common 2.0.0-alpha
+    - glycin-core 4.0.0-alpha
+    - glycin-heif 2.2.0-alpha
+    - glycin-image-rs 2.2.0-alpha
+    - glycin-jxl 2.2.0-alpha
+    - glycin-raw 2.2.0-alpha
+    - glycin-svg 2.2.0-alpha.2
+    - glycin-test 2.2.0-alpha
+    - glycin-thumbnailer 2.2.0-alpha
+    - glycin-utils 5.0.0-alpha
+    - glycin 4.0.0-alpha
+    - glycin-builtin 4.0.0-alpha
+    - glycin-external 4.0.0-alpha
+    - libglycin 2.2.0-alpha.4
+    - libglycin-gtk4 2.2.0-alpha.4
+  + Added:
+    - Added support for specifying in configs how to detect the
+      images of a type instead of relying on global mime-type
+      database. This is faster, more reliable, and works on systems
+      like Windows out of the box.
+    - Give proper error messages when processors panic instead of
+      waiting for results forever.
+    - Glycin can now be built with compiled-in (builtin)
+      processors. In that case, loaders don't have to be available
+      as separate binaries. While this mode doesn't provide
+      sandboxing and extendability, it supports non-Linux systems
+      like macOS and Windows. This mode will be used automatically
+      when not built on Linux.
+    - heif: Add animation support for AVIF and HEIC files
+    - image-rs: The loaders and editors now use gufo 0.5. This
+      brings support for more metadata extraction like key-value
+      medata from PNGs and `<metadata>` entries from SVGs. For
+      editing, this now supports changing the orientation of images
+      with a broken Exif orientation tag.
+    - svg: Load XMP metadata
+  + Changed: svg: Don't limit the size of elements in the SVG
+
+-------------------------------------------------------------------
 Thu Jun 25 20:46:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.1.5:
@@ -478,7 +779,7 @@ Tue Dec 17 08:46:52 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Wed Dec 11 08:45:45 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update vendor tarball (fixes build for i586). 
+- Update vendor tarball (fixes build for i586).
 
 -------------------------------------------------------------------
 Sat Nov 23 11:17:09 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
