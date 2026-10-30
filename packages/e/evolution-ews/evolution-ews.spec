@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution-ews
-Version:        3.60.2
+Version:        3.62.1
 Release:        0
 Summary:        Exchange Connector for Evolution, compatible with Exchange 2007 and later
 License:        LGPL-2.1-only
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(evolution-calendar-3.0) >= %{_version}
 BuildRequires:  pkgconfig(evolution-data-server-1.2) >= %{_version}
 BuildRequires:  pkgconfig(evolution-mail-3.0) >= %{_version}
 BuildRequires:  pkgconfig(evolution-shell-3.0) >= %{_version}
-BuildRequires:  pkgconfig(glib-2.0) >= 2.46
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
 BuildRequires:  pkgconfig(libebackend-1.2) >= %{_version}
 BuildRequires:  pkgconfig(libebook-1.2) >= %{_version}
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(libedataserver-1.2) >= %{_version}
 BuildRequires:  pkgconfig(libemail-engine) >= %{_version}
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(libmspack) >= 0.4
-BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0
 
 %description
 The EWS Exchange Connector for Evolution provides a Exchange

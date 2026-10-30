@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Oct  9 09:42:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.62.1:
+  * Bug Fixes
+  * Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 30 19:26:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to CMakeLists.txt.
+
+-------------------------------------------------------------------
+Fri Sep 11 08:28:36 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.62.0:
+  + Bug Fixes:
+	- Add a per-folder coalescing gate for sync and refresh
+	- camel: Do not save the folder summary in the subclass dispose
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 30 06:04:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.61.3:
+  + Bug Fixes:
+    - m365: Mail: Flagged and priority indicators are mixed
+    - Stuck on stream read after proxy error response
+    - m365: Incorrect timezone used with recurring events
+  + Miscellaneous:
+    - SetupBuildFlags.cmake: Add `-Wunused-function`
+    - Update windowsZones.xml to 2021a version
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 31 20:30:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.61.2:
+  + Miscellaneous:
+    - Camel: Reorder when a new folder flags are set and folder
+      summary created
+    - e-ms-oapxbc-util: Adapt to recent API changes in e-ms-oapxbc
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul  3 19:04:19 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.61.1:
+  + Bug Fixes:
+    - Calendar: Crash when cancelling meeting with empty notice
+    - m365: Event time in UTC incorrectly changes to local timezone
+    - ews-test-common: remove GLIB_CHECK_VERSION(2,35,0)
+    - m365: Use delta sync for calendar events
+    - Camel: Clean up provider conf entries definitions
+    - m365: Validate host of server-provided nextLink and deltaLink
+      URLs
+    - ews: Fix path traversal in attachment filename from server
+    - lzxd: Add bounds checks in lzxd_read_lens() to prevent buffer
+      overrun
+    - oab: Fix integer overflows, memory leaks, and decompression
+      bombs
+    - oab-decoder: Fix crash on unknown properties, string list
+      bug, and DoS
+    - m365: URI-escape id parameter in construct_uri to prevent
+      path injection
+    - e-cal-backend-m365: Fix a compiler warning
+    - Make CMAKE_BUILD_TYPE enumeration for cmake-gui
+    - Convert to CamelDataCache atomic write API
+    - build: Add CAMEL_LDFLAGS into oab-decode-test
+    - Use "--output-on-failure" for ctest in "make test"
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri May 22 05:32:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.60.2:
@@ -917,7 +989,7 @@ Thu Sep  5 13:37:26 NZST 2019 - luke@ljones.dev
   + Use lower-case "mailto:" consistently in the code.
   + Bugs fixed: glgo#GNOME/evolution-ews#41,
     glgo#GNOME/evolution-ews#39.
-  
+
 -------------------------------------------------------------------
 Mon May  6 18:13:56 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
