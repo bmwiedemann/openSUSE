@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Fri Oct 30 14:09:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.1.17:
+  * Python 3.16 added to the full test matrix.
+  * Experimental Python 3.16 support. Tested under 3.16.0a1.
+  * Since assertIsNone() and assertIsNotNone() are available
+    since Python 3.1, refactor some test code.
+  * If there is an error while building an exception, don't free
+    the wrong object anymore.
+  * Each subinterpreter has its own Capsule. A C module using a
+    BerkeleyDB Capsule should use the Capsule provided in the
+    subinterpreter calling the C module using that Capsule.
+  * Now, module name and module C capsule name are static
+    constants instead of rebuilding them in every import to the
+    same value always. The result is the same, but subinterpreter
+    linters are happier.
+  * We use Oracle Berkeley DB set_errcall() function to get extra
+    information when a DB function call fails. Unfortunately
+    Oracle Berkeley DB doesn't provide enough information to
+    correlate notifications with errors when multiple threads
+    fails simultaneously (we know the DB Environment but not the
+    DB handle). In this release, the buffer that gets the extra
+    error information is declared as _Thread_local, so we can
+    link errors and extra error information if the notification
+    is synchronous with the database call. Let's see how portable
+    this is, including MS Windows.  Warning An undesirable side
+    effect is that now EVERY thread in your program, using Oracle
+    Berkeley DB or not, requires extra 1024 bytes of RAM and
+    thread creation is slightly more costly. I think the effect
+    is negligible, but you can provide feedback.
+  * Warning WARNING - BREAKING CHANGE: Drop support for Python
+    3.10. This breaking change should usually require a major
+    and/or minor number update. Since berkeleydb traditional
+    numbering is related to the highest Oracle Berkeley DB
+    supported, I would usually wait until Oracle releases a new
+    version to upgrade my own version and deprecate old Python
+    support at the same time. Given that Oracle has not released
+    a new Oracle Berkeley DB since 2020, I must break this
+    practice for now. I am sorry if this update breaks your
+    Python 3.10 environment. In that case, please pin your
+    berkeleydb installation to version 18.1.15, the last Python
+    3.10 compatible release. Send me constructive feedback if
+    appropriate.
+  * Python 3.15 is officially supported.
+  * Since current minimum Python supported is 3.11:  We can
+    simplify code for database password management. We can use
+    PyType_GetName() instead of PyObject_GetAttrString().
+  * We can simplify code for database password management.
+  * We can use PyType_GetName() instead of
+    PyObject_GetAttrString().
+  * Remove setup.cfg and move its configuration to setup3.py.
+  * That change modifies what is included in the source
+    distribution. Update MANIFEST.in accordingly.
+  * Still not needed, but when minimal supported Python is 3.11
+    we need to do extra include in order to compile correctly. I
+    update the code now to forget about it when we drop Python
+    3.10 support.
+  * Still not needed, but when minimal supported Python is 3.11,
+    we must conform with PEP 670. Get ready for that.
+  * Fix usage of PyType_GetName().
+  * Now types DBCursor, DBLogCursor, DBSite, DBTxn and DBLock are
+    inmutable. If this change break your code, please let me
+    know.
+  * Highly experimental support for Python SubInterpreters under
+    Python >= 3.12. In order to enable this experimental feature
+    you must install the bindings defining the
+    BERKELEYDB_EXPERIMENTAL_SUBINTERPRETERS environment variable.
+    The environment variable is ignored if compiling the bindings
+    under Python 3.10 or 3.11. For now this feature is
+    experimental and unsupported, but let me know any issue you
+    find in order to improve support.
+  * The new function berkeleydb.py_support_subinterpreters()
+    returns a boolean signaling if the bindings are compiled with
+    support of Python subinterpreters or not. The return value is
+    always False under Python 3.10 and Python 3.11.
+  * You can override the directory where the tests are run with
+    TMPDIR environment variable. If that environment variable is
+    not defined, test will run in ~/ram/ if exists and in /tmp/
+    if ~/ram/ doesn't exists or it is not a directory. The idea
+    is that ~/ram/ is a ramdisk and the test will run faster.
+    Previously, the ramdisk directory was expected in /tmp/ram/.
+  * Python 3.15 added to the full test matrix.
+  * Update copyright to 2026.
+
+-------------------------------------------------------------------
 Mon Oct 13 09:15:02 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.1.15:

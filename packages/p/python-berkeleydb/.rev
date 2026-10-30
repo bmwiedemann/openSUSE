@@ -145,4 +145,41 @@
   * We don't need Py_tp_new anymore in PyType_Slot types.</comment>
     <requestid>1311039</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d53046aaf891afb9e3776ab1eb870d6</srcmd5>
+    <version>18.1.17</version>
+    <time>1793380736</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.1.17:
+  * Python 3.16 added to the full test matrix.
+  * Experimental Python 3.16 support. Tested under 3.16.0a1.
+  * Since assertIsNone() and assertIsNotNone() are available
+    since Python 3.1, refactor some test code.
+  * If there is an error while building an exception, don't free
+    the wrong object anymore.
+  * Each subinterpreter has its own Capsule. A C module using a
+    BerkeleyDB Capsule should use the Capsule provided in the
+    subinterpreter calling the C module using that Capsule.
+  * Now, module name and module C capsule name are static
+    constants instead of rebuilding them in every import to the
+    same value always. The result is the same, but subinterpreter
+    linters are happier.
+  * We use Oracle Berkeley DB set_errcall() function to get extra
+    information when a DB function call fails. Unfortunately
+    Oracle Berkeley DB doesn't provide enough information to
+    correlate notifications with errors when multiple threads
+    fails simultaneously (we know the DB Environment but not the
+    DB handle). In this release, the buffer that gets the extra
+    error information is declared as _Thread_local, so we can
+    link errors and extra error information if the notification
+    is synchronous with the database call. Let's see how portable
+    this is, including MS Windows.  Warning An undesirable side
+    effect is that now EVERY thread in your program, using Oracle
+    Berkeley DB or not, requires extra 1024 bytes of RAM and
+    thread creation is slightly more costly. I think the effect
+    is negligible, but you can provide feedback.
+  * Warning WARNING - BREAKING CHANGE: Drop support for Python
+    3.10. This breaking change should usually require a major</comment>
+    <requestid>1393906</requestid>
+  </revision>
 </revisionlist>
