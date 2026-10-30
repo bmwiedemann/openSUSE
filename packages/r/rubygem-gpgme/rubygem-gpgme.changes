@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:05:45 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.0.26:
+  * Replace deprecated Data_Wrap_Struct / Data_Get_Struct with
+    TypedData_Wrap_Struct / TypedData_Get_Struct for Ruby 3.x+
+    compatibility
+  * Use gpgme_op_interact instead of deprecated gpgme_op_edit and
+    gpgme_op_card_edit on GPGME 2.0.0+
+  * Add thread-safe serialization via GPGME.synchronize (enabled by
+    default) to prevent concurrent gpg-agent socket errors
+  * Expose additional GPGME_ENCRYPT_* flag constants
+  * Reuse recipient Key objects when resolving signers in
+    GPGME::Crypto
+  * Respect Encoding.default_internal and IO external encoding in
+    write callbacks
+- Spec file cleaned up
+
+-------------------------------------------------------------------
 Sat Jul 26 05:10:49 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.0.25:
