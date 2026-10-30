@@ -1228,4 +1228,12 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
   /var using systemd-tmpfiles (jsc#PED-14834).</comment>
     <requestid>1350039</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>7628531df98dc1c3581d0ad3111abe76</srcmd5>
+    <version>26.27.3</version>
+    <time>1793379913</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385387</requestid>
+  </revision>
 </revisionlist>

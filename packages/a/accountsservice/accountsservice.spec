@@ -20,19 +20,16 @@
 %bcond_without vala
 
 Name:           accountsservice
-Version:        23.13.9
+Version:        26.27.3
 Release:        0
 Summary:        D-Bus Service to Manipulate User Account Information
 License:        GPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://www.freedesktop.org/wiki/Software/AccountsService/
-Source0:        https://www.freedesktop.org/software/accountsservice/%{name}-%{version}.tar.xz
+Source0:        https://gitlab.freedesktop.org/accountsservice/accountsservice/-/archive/%{version}/%{name}-%{version}.tar.gz
 # Patched mocklibc source to fix build with GCC 14
-Source1:        mocklibc-1.0.tar.gz
 # Directories where the server stores user data
 Source2:        accountsservice.tmpfiles
-# PATCH-FIX-UPSTREAM accountsservice-mocklib-gcc14.patch -- Fix meson checksum to accept patched tarball
-Patch0:         accountsservice-mocklib-gcc14.patch
 
 # WARNING: do not remove/significantly change patch1 without updating the relevant patch in gdm too
 # PATCH-FIX-OPENSUSE accountsservice-sysconfig.patch bnc#688071 vuntz@opensuse.org -- Read/write autologin configuration from sysconfig, like gdm (see gdm-sysconfig-settings.patch) WAS PATCH-FIX-OPENSUSE
@@ -46,10 +43,11 @@ BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.63.5
+BuildRequires:  pkgconfig(gio-2.0) >= 2.70
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.63.5
+BuildRequires:  pkgconfig(glib-2.0) >= 2.70
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(json-c) >= 0.15
 BuildRequires:  pkgconfig(libsystemd) >= 186
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
@@ -62,13 +60,13 @@ querying and manipulating user account information.
 The implementation is based on the useradd, usermod and userdel
 commands.
 
-%package -n libaccountsservice0
+%package -n libaccountsservice1
 Summary:        Client library for the user account information manipulation D-Bus service
 # Clients do need the server to do something useful
 Group:          System/Libraries
 Requires:       %{name}
 
-%description -n libaccountsservice0
+%description -n libaccountsservice1
 The accountsservice server provides a set of D-Bus interfaces for
 querying and manipulating user account information.
 
@@ -88,7 +86,7 @@ client library.
 %package devel
 Summary:        Header files for the user account information manipulation service
 Group:          Development/Libraries/C and C++
-Requires:       libaccountsservice0 = %{version}
+Requires:       libaccountsservice1 = %{version}
 Requires:       typelib-1_0-AccountsService-1_0 = %{version}
 
 %description devel
@@ -99,8 +97,9 @@ querying and manipulating user account information.
 %package vala
 Summary:        Vala bindings for accountsservice
 Group:          Development/Libraries/C and C++
+BuildArch:      noarch
 BuildRequires:  vala
-Requires:       libaccountsservice0 = %{version}
+Requires:       libaccountsservice1 = %{version}
 Requires:       typelib-1_0-AccountsService-1_0 = %{version}
 
 %description vala
@@ -114,8 +113,6 @@ This package contains the Vala bindings for accountsservice.
 
 %prep
 %setup -q
-# inject patched mocklibc tarball into package cache
-cp %{SOURCE1} subprojects/packagecache/
 %autopatch -p1
 
 %build
@@ -151,8 +148,8 @@ install -m 644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/accountsservice.conf
 %postun
 %service_del_postun accounts-daemon.service
 
-%post -n libaccountsservice0 -p /sbin/ldconfig
-%postun -n libaccountsservice0 -p /sbin/ldconfig
+%post -n libaccountsservice1 -p /sbin/ldconfig
+%postun -n libaccountsservice1 -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -171,8 +168,8 @@ install -m 644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/accountsservice.conf
 %{_datadir}/locale/en/LC_MESSAGES/accounts-service.mo
 %{_datadir}/locale/en_GB/LC_MESSAGES/accounts-service.mo
 
-%files -n libaccountsservice0
-%{_libdir}/*.so.0*
+%files -n libaccountsservice1
+%{_libdir}/*.so.1*
 
 %files -n typelib-1_0-AccountsService-1_0
 %{_libdir}/girepository-1.0/AccountsService-1.0.typelib
