@@ -16,14 +16,14 @@
 #
 
 
-%global systemd_unit       gnome-remote-desktop.service gnome-remote-desktop-configuration.service
-%define freerdp_version    3.22.0
+%global systemd_unit       gnome-remote-desktop.service gnome-remote-desktop-configuration.service gnome-remote-desktop-pcscd.service
+%define freerdp_version    3.28.0
 %define glib_version       2.75.0
 %define gstreamer_version  1.10.0
-%define polkit_req >= 122
+%define polkit_version     122
 
 Name:           gnome-remote-desktop
-Version:        50.2
+Version:        51.0
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
@@ -64,20 +64,20 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libei-1.0) >= 1.3.901
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.0
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libvncclient)
 BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(libvncserver) >= 0.9.10
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(polkit-gobject-1) %polkit_req
+BuildRequires:  pkgconfig(polkit-gobject-1) >= %polkit_version
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(tss2-esys)
 BuildRequires:  pkgconfig(tss2-mu)
 BuildRequires:  pkgconfig(tss2-rc)
 BuildRequires:  pkgconfig(tss2-tctildr)
-BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(vulkan) >= 1.2.0
 BuildRequires:  pkgconfig(winpr3) >= %{freerdp_version}
 BuildRequires:  pkgconfig(xkbcommon) >= 1.0.0
 %{?systemd_ordering}
@@ -89,6 +89,12 @@ Requires:       pipewire >= 0.3.0
 %description
 GNOME Remote Desktop is a remote desktop and screen sharing service for the
 GNOME desktop environment.
+
+%package -n libgrdpcsc0
+Summary:    Shared library for %{name}
+
+%description -n libgrdpcsc0
+Shared library for %{name}.
 
 %lang_package
 
@@ -128,6 +134,8 @@ export CC=gcc-13
 %postun
 %service_del_postun %{systemd_unit}
 
+%ldconfig_scriptlets -n libgrdpcsc0
+
 %files
 %license COPYING
 %doc README.md
@@ -154,6 +162,16 @@ export CC=gcc-13
 %{_userunitdir}/gnome-remote-desktop-handover.service
 %{_userunitdir}/gnome-remote-desktop-headless.service
 %{_userunitdir}/gnome-remote-desktop.service
+%{_unitdir}/gnome-remote-desktop-pcscd.service
+%{_libexecdir}/grd-pcscd
+%{_datadir}/dbus-1/system-services/org.gnome.RemoteDesktop.Pcscd.service
+%{_datadir}/dbus-1/system.d/org.gnome.RemoteDesktop.Pcscd.conf
+%{_datadir}/polkit-1/actions/org.gnome.remotedesktop.use-grd-pcscd.policy
+
+%files -n libgrdpcsc0
+%{_libdir}/libgrdpcsc.so
+%{_libdir}/libgrdpcsc.so.0
+%{_libdir}/libgrdpcsc.so.0.0.0
 
 %files lang -f %{name}.lang
 

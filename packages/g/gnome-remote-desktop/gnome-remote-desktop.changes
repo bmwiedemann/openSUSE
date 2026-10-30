@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:35:39 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Tue Sep 15 08:32:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Fix pid reuse vulnerability in the smartcard redirection
+  + Add smartcard redirection documentation
+  + Signal full range BT.709 in the AVC bitstreams
+  + Misc bug fixes & cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 10 15:08:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc+4 (boo#1276523):
+  + daemon-utils:
+    - Use pidfd instead of pid to get session ID
+    - Add helper to get a session ID from a pidfd
+    - Remove unnecessary g_steal_pointer()
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 11:43:17 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc:
+  + Add support for Kerberos multi user remote login
+  + Fix Vulkan image allocation
+  + Fix building on 32 bit architectures
+  + Misc bug fixes & cleanups
+
+-------------------------------------------------------------------
+Tue Aug 25 11:17:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Register gnome-remote-desktop-pcscd.service as systemd_unit, to
+  ensure the rpm scriptlets handle that service too.
+
+-------------------------------------------------------------------
+Thu Aug 20 18:56:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Fix video corruption when using VA-API
+  + Add support for smartcard redirection
+  + Misc bug fixes & cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul  2 15:06:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Simplify GDM remote display handling
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Jul  1 20:11:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.2:
@@ -226,7 +282,7 @@ Mon Sep 16 09:12:41 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
   + Use access portal dialogs for warning about connection
     insecurity
   + Avoid crash when getting invalid PipeWire buffers
-  + Updated translations. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Sun Sep 15 13:44:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -1052,7 +1108,7 @@ Thu Dec 09 12:36:19 UTC 2021 - bjorn.lie@gmail.com
     - Fix small style issue
     - Only handle Selection* signals when clipboard is enabled
   + settings:
-    - Clear settings of type string before setting new values  
+    - Clear settings of type string before setting new values
     - Don't leak credentials, when username or password is NULL
     - Set error if username or password is NULL
   + clipboard-rdp:
@@ -1116,14 +1172,14 @@ Wed Sep 15 15:43:17 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
   + tests: Use bash from environment instead of hardcoded path
 - Changes from version 40.1:
   + clipboard-rdp:
-    - Also output client capabilities  
+    - Also output client capabilities
     - Add dummy handling for the Temporary Directory PDU
-    - Advertise clipboard data locking  
+    - Advertise clipboard data locking
     - Adapt to data locking changes
     - Add APIs to lock/unlock the clients clipboard data
     - Implement clipboard data locking
     - clipboard-rdp: Use g_idle_add() instead of g_timeout_add()
-  + rdp: Allow submitting clipDataIds for FileContentsRequests  
+  + rdp: Allow submitting clipDataIds for FileContentsRequests
   + rdp-fuse-clipboard:
     - Remove the old API
     - Use notify_delete() instead of notify_inval_entry()
