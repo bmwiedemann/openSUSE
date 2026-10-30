@@ -1,7 +1,7 @@
 #
 # spec file for package screen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,12 @@
 #
 
 
-%if 0%{?suse_version} > 1310
 %define rundir /run
-%else
-%define rundir %{_localstatedir}/run
-%endif
 Name:           screen
-Version:        4.9.1
+Version:        5.0.2
 Release:        0
 Summary:        A program to allow multiple screens on a VT100/ANSI Terminal
 License:        GPL-3.0-or-later
-Group:          System/Console
 URL:            https://www.gnu.org/software/screen/
 Source:         https://ftp.gnu.org/gnu/screen/%{name}-%{version}.tar.gz
 Source1:        screen.conf
@@ -34,21 +29,18 @@ Source2:        https://ftp.gnu.org/gnu/screen/%{name}-%{version}.tar.gz.sig
 Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=99366#/%{name}.keyring
 Source4:        screen.pam
 Patch0:         global_screenrc.patch
-Patch6:         libtinfo.diff
-Patch7:         sendfdcont.diff
-Patch8:         nottychmod.diff
-Patch9:         multicont.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  makeinfo
-BuildRequires:  ncurses-devel
-BuildRequires:  pam-devel
-%if 0%{?suse_version} < 1600
-BuildRequires:  utempter-devel
-%endif
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(pam)
 Requires:       terminfo-base
 Requires(post): permissions
 %systemd_ordering
+%if 0%{?suse_version} < 1600
+BuildRequires:  utempter-devel
+%endif
 
 %description
 With this program you can take advantage of the multitasking abilities
@@ -61,25 +53,18 @@ Documentation: man page
 %setup -q
 # global_screenrc.patch
 %patch -P 0
-# libtinfo.diff
-%patch -P 6
-%patch -P 7
-%patch -P 8
-%patch -P 9
 
 %build
 sh ./autogen.sh
 
-CFLAGS="-DMAXWIN=1000 %{optflags} -std=gnu89" %configure --prefix=%{_prefix} --infodir=%{_infodir} \
+CFLAGS="%{optflags}" %configure --prefix=%{_prefix} --infodir=%{_infodir} \
 				--mandir=%{_mandir} \
-				--with-socket-dir='(eff_uid ? "%{rundir}/uscreens" : "%{rundir}/screens")' \
-				--with-sys-screenrc=%{_sysconfdir}/screenrc \
+				--enable-socket-dir='%{rundir}/screens' \
+				--with-system_screenrc=%{_sysconfdir}/screenrc \
 				--with-pty-group=5 \
 				--with-pty-mode=0620 \
-				--enable-use-locale \
 				--enable-telnet \
 				--enable-pam \
-				--enable-colors256 \
 				--verbose
 
 # update Makefile so that make -j becomes reliable
@@ -106,7 +91,6 @@ mkdir -p %{buildroot}%{_prefix}/lib
 mkdir -p %{buildroot}%{_tmpfilesdir}
 mkdir -p %{buildroot}%{rundir}/screens
 chmod 755 %{buildroot}%{rundir}/screens
-mkdir -p %{buildroot}%{rundir}/uscreens
 install -m 644 screenrc %{buildroot}%{_sysconfdir}/screenrc
 install -m 644 %{SOURCE1} %{buildroot}%{_tmpfilesdir}
 %if 0%{?suse_version} > 1500
@@ -114,6 +98,13 @@ install -m 644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/screen
 %else
 install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/screen
 %endif
+
+%check
+# tests/test-detach-cli needs a live pty to start a session, which the
+# buildroot does not provide, so run only the unit tests
+make tests/test-winmsgbuf tests/test-winmsgcond
+./tests/test-winmsgbuf
+./tests/test-winmsgcond
 
 %files
 %config %{_sysconfdir}/screenrc

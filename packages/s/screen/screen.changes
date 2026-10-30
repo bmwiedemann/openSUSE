@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Oct 18 11:01:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.0.2 (major 5.x release):
+  * Rewritten authentication mechanism; new auth, status,
+    truecolor and multiinput commands; new %T, %O and %*
+    escapes. Removed time, debug, password, maxwin and
+    nethack commands.
+  * Behavior notes: single socket dir /run/screens (the old
+    screens/uscreens split is gone); bare -L only enables
+    logging, use -Logfile to set the logfile name;
+    screenrc files using
+    removed commands need updating; terminfo entries still
+    honored.
+  * CVE-2025-46805: no signals sent with root privileges.
+  * CVE-2025-46804: no file existence test information leaks.
+  * CVE-2025-46803: safe PTY default mode of 0620.
+  * CVE-2025-23395: reintroduce lf_secreopen for logfile.
+  * 5.0.2 also fixes a SendCmdMessage buffer overflow and a
+    detaching TOCTOU race with empty terminfo.
+- Drop libtinfo.diff (upstream rewrote termcap detection),
+  sendfdcont.diff, multicont.diff, nottychmod.diff (all
+  superseded by the 5.0 authentication rewrite).
+- Refresh screen.keyring from upstream (new upstream signing key).
+- Run the upstream unit tests in %%check (the detach
+  integration test needs a live pty, unavailable in the
+  buildroot).
+
+-------------------------------------------------------------------
 Thu May 22 13:30:23 CEST 2025 - mls@suse.de
 
 - also use tty fd passing after a suspend (MSG_CONT)
