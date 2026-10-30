@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 30 05:56:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.15.3:
+  * Update Rancher refs to v2.15.3 (#786)
+  * [v2.15] Dependency bumps for release/v2.15 HEAD (#764)
+
+-------------------------------------------------------------------
 Thu Sep 24 04:56:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.15.2:
