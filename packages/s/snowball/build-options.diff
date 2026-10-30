@@ -7,17 +7,17 @@ Forwarded: not-needed
  GNUmakefile | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/GNUmakefile b/GNUmakefile
-index e1403be..8c50ec5 100644
---- a/GNUmakefile
-+++ b/GNUmakefile
-@@ -190,8 +190,8 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.o)
+Index: snowball-3.1.1/GNUmakefile
+===================================================================
+--- snowball-3.1.1.orig/GNUmakefile
++++ snowball-3.1.1/GNUmakefile
+@@ -311,8 +311,8 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.
  JAVA_CLASSES = $(JAVA_SOURCES:.java=.class)
- JAVA_RUNTIME_CLASSES=$(JAVARUNTIME_SOURCES:.java=.class)
+ JAVA_RUNTIME_CLASSES=$(JAVA_RUNTIME_SOURCES:.java=.class)
  
--CFLAGS=-g -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
+-CFLAGS=-g -O2 -W -Wall -Wcast-qual -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
 -CPPFLAGS=
-+override CFLAGS += -g -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
++override CFLAGS=-g -O2 -W -Wall -Wcast-qual -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
 +CPPFLAGS?=
  
  INCLUDES=-Iinclude

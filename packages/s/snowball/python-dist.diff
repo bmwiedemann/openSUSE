@@ -7,11 +7,11 @@ Forwarded: not-needed
  GNUmakefile | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/GNUmakefile b/GNUmakefile
-index c9754be..fc05d93 100644
---- a/GNUmakefile
-+++ b/GNUmakefile
-@@ -487,9 +487,7 @@ dist_libstemmer_python: $(PYTHON_SOURCES) $(COMMON_FILES)
+Index: snowball-3.1.1/GNUmakefile
+===================================================================
+--- snowball-3.1.1.orig/GNUmakefile
++++ snowball-3.1.1/GNUmakefile
+@@ -781,9 +781,7 @@ dist_libstemmer_python: $(PYTHON_SOURCES
  	cp -a $(PYTHON_SOURCES) $${dest}/src/$(python_runtime_dir) && \
  	cp -a $(PYTHON_SAMPLE_SOURCES) $${dest}/src/$(python_sample_dir) && \
  	cp -a $(PYTHON_RUNTIME_SOURCES) $${dest}/src/$(python_runtime_dir) && \
@@ -20,6 +20,5 @@ index c9754be..fc05d93 100644
 -	rm -rf $${dest}
 +	cp -a $(COMMON_FILES) $(PYTHON_PACKAGE_FILES) $${dest}
  
- dist_libstemmer_js: $(JS_SOURCES) $(COMMON_FILES)
- 	destname=jsstemmer-$(SNOWBALL_VERSION); \
-
+ ###############################################################################
+ # Ada
