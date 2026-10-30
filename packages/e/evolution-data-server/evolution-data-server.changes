@@ -1,4 +1,187 @@
 -------------------------------------------------------------------
+Fri Oct  9 09:42:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.62.1:
+  * Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 30 19:28:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to CMakeLists.txt.
+
+-------------------------------------------------------------------
+Fri Sep 11 08:13:41 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.62.0:
+  + Bug Fixes:
+	- GOA EWS: Do not require OABUrl in autodiscover
+	- EBackend: Document how OAuth2 sources should ask to be
+	  authenticated
+	- CalDAV: Ignore Bad Request (400) on overwrite
+	- ESourceRegistry: Name the credentials source in failed-lookup
+	  debug message
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  5 12:26:35 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/GConf and %{_datadir}/GConf/gsettings: legacy
+  migration directories.
+
+-------------------------------------------------------------------
+Sat Sep  5 12:26:34 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.61.3:
+  + Bug Fixes:
+    - Use gnome-shell-calendar-server for Reminders in GNOME
+    - IMAPx:
+      . Sometimes removes message from local summary in error
+      . Use CHANGEDSINCE for UID FETCH with QRESYNC
+    - NNTP: Add an option to disconnect on idle
+    - Camel:
+      . Add NNTP unit tests
+      . Add POP3 provider unit tests
+    - OAuth2: Always set GError when getting an access token fails
+    - tests: Harden backend close on the factory side
+    - ESoupSession: Set timeout for error body read
+  + Miscellaneous:
+    - SetupBuildFlags.cmake: Add `-Wunused-function`
+    - IMAPx:
+      . Refresh folder in single-client mode on message count
+        mismatch
+      . Add STARTTLS/TLS connection tests to the unit tests
+      . Fix a memory leak
+    - NNTP: Enhance unit tests to optionally run also during `make
+      test`
+    - ECalBackendFile: Improve tracking of backend's 'writable'
+      state
+    - ESource: Claim ESource changed when D-Bus interfaces were
+      added/removed
+    - Correct some gtk-doc warnings in the developer comments
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  5 12:26:33 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.61.2:
+  + Bug Fixes:
+    - LDAP: Support Simple Paged Results Control (RFC 2696)
+    - Implement IMAP4 Multimailbox SEARCH Extension
+    - Camel: Real junk folder does not count unread junk-marked
+      messages
+    - e_cal_util_init_recur_task_sync: Due date incorrectly reset
+    - camel-lock-helper: No follow symlink on lock time change
+    - Correct some issues found by static analyzer
+    - Fix memory leaks detected by LeakSanitizer in CI
+    - CI: Run IMAPx tests also under Cyrus server
+    - CI: Make the sanitizer job fail on errors
+    - e-ms-oapc: fix prt_sso_request
+    - e-ms-oapxbc: Microsoft Identity Broker v3 fixes
+    - ESourceSelectable: Add 'groups' property
+    - source-registry: Deadlock when setting up m365 GOA account
+  + Miscellaneous:
+    - Camel: Fix a memory leak after folder unsubscribe/deletion
+    - IMAPx: Fix a memory leak in imapx_update_store_summary()
+    - camel: Add IMAPx provider integration tests
+    - ESource: Schedule D-Bus object change signal notification in
+      idle
+    - camel-iconv: Treat "gb2313" charset as "gb18030"
+  + Updated translations.
+- Bump so_edataserver define to 28, following upstream changes.
+
+-------------------------------------------------------------------
+Sat Sep  5 12:26:32 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.61.1:
+  + Bug Fixes:
+    - WebDAV: Implement sync-collection (RFC 6578)
+    - Allow message body indexing for local accounts again
+    - goa: Fix a race when reading accounts after start
+    - nntp: Chunk OVER requests with adaptive retry and
+      auto-reconnect
+    - nntp: Fix GSocket ref leak in stream timeout helpers
+    - Maildir: Prevent creating folders of a similar name
+    - Camel: Clean up provider conf entries definitions
+    - Maildir: Prefer flags from the file name (externally modified)
+    - OAuth2: Correct when using collection ESource for child sources
+    - Calendar: Atomic write breaks .ics file change monitoring
+    - camel: Use XDG_DATA_HOME for nssdb path
+    - Make CMAKE_BUILD_TYPE enumeration for cmake-gui
+    - CI: Avoid extra path in cmake invocation
+    - Remove unneeded GLIB_CHECK_VERSION macros
+    - GOA: Change how GOA accounts have set OAuth2 support
+    - Add per-account composer mode property to
+      ESourceMailComposition
+    - IMAP: Add "Manage subscriptions" into "Receiving options"
+    - ECredentialsPrompter: Inherit modality from the parent window
+  + Miscellaneous:
+    - nntp: Rename nntp_get_stream_socket() to
+      nntp_ref_stream_socket()
+    - ESoupSession: Correct
+      e_soup_session_get_authentication_requires_credentials()
+    - Remove function declarations with no implementation
+    - e-gdata-session: Ensure soup message body is filled on retry
+    - CamelStoreSearch: Remove dead code
+    - CamelStreamProcess: Handle the errno before doing other
+      system calls
+    - CamelSmtpTransport: Fix a potential double-free error
+    - camel: Add documentation
+    - camel: Fix DIGEST-MD5 setting authenticated on rspauth
+      mismatch
+    - camel: Fix off-by-one OOB read in RFC 2047 quoted_decode
+    - e-oauth2-service: Do not log secret contents on JSON parse
+      failure
+    - camel: Fix shell command injection in NTLM SASL
+      authentication
+    - pop3: Add maximum line buffer size to prevent unbounded
+      memory growth
+    - smtp: Sanitize ENVID parameter to prevent SMTP command
+      injection
+    - pop3: Reject credentials containing CRLF to prevent command
+      injection
+    - smtp: Fix heap out-of-bounds read in smtp_decode_status_code
+    - ESoupSession: Reject HTTPS-to-HTTP redirects
+    - camel: Add MIME nesting depth limit to prevent stack
+      exhaustion
+    - e-oauth2-service: Add state parameter to OAuth2 authorization
+      requests
+    - camel: Add size limits on MIME header blocks and body parts
+    - carddav: Validate photo/logo URI origin to prevent SSRF
+    - e-ms-oapxbc: Simplify error handling in MS-OAPXBC OIDC
+      extension
+    - e-ms-oapxbc: Fix error handling of broker response
+    - Fix some compiler warnings
+    - docs: Remove all "Contains only private data…" from structure
+      comments
+    - docs: Put Camel documentation into a subfolder
+    - Convert license/copyright comments into SPDX notation
+    - camel: Add atomic write API to CamelDataCache and convert all
+      providers
+    - POP3: Remove sentinel bytes and migrate existing cache files
+    - camel: Recognize all G_TLS_ERROR codes as network errors
+    - camel: Clean up test files and convert them to glib test API
+    - CI: Add a job to produce a test coverage report
+    - CI: add a job for static analysis with scan-build
+    - CI: Add a job to run the tests with address and
+      undefined-behavior sanitizers
+    - camel: Test substring body search with and without index
+    - Camel: Move search with index from the store search to
+      a common place
+    - camel: Fix CamelCertDB leak in camel_shutdown()
+    - Camel: Add GSETTINGS_SCHEMA_DIR into the tests
+    - Camel: Reorganize tests directories
+    - Use "--output-on-failure" for ctest in "make test"
+    - docs/index.html: Provide links to the coverage and static
+      analysis reports
+    - Make the scan-build page's title prettier
+    - Calendar: Do not use persistent refresh thread in the 'file'
+      backend
+    - tests: Flush main context when finishing server tests
+    - Drop optional gtk+ code from background processes
+  + Updated translations.
+- Bump so_camel define to 68 following upstream changes.
+
+-------------------------------------------------------------------
 Sat Sep  5 09:33:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move %{_libexecdir}/evolution-data-server/evolution-data-server
@@ -1562,7 +1745,6 @@ Fri Feb 14 10:28:19 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
       calendars only.
   + Various bug fixes.
   + Updated translations.
-
 
 -------------------------------------------------------------------
 Fri Feb 14 09:50:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -8075,3 +8257,4 @@ Tue May 18 18:54:04 CEST 2004 - clahey@suse.de
 Tue May 18 04:32:40 CEST 2004 - clahey@suse.de
 
 - Initial import of evolution-data-server.
+

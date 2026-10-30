@@ -19,9 +19,9 @@
 %global with_docs 0
 
 # Shared Library soNUMs, to make it easier for updates
-%define so_camel 67
+%define so_camel 68
 %define so_ebackend 11
-%define so_edataserver 27
+%define so_edataserver 28
 %define so_edataserverui 4
 %define so_edataserverui4 0
 %define so_ebook 21
@@ -32,7 +32,7 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.60.2
+Version:        3.62.1
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
@@ -63,19 +63,19 @@ BuildRequires:  libphonenumber-devel
 BuildRequires:  sqlite3-devel >= 3.7.17
 BuildRequires:  vala >= 0.22.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.8
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gweather4) >= 3.91
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0.4
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.25
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-unstable) >= 0.5
-BuildRequires:  pkgconfig(libsoup-3.0) >= 2.58
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.1.1
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(protobuf) >= 2.4
 BuildRequires:  pkgconfig(uuid) >= 2.0
-BuildRequires:  pkgconfig(webkit2gtk-4.1)
-BuildRequires:  pkgconfig(webkitgtk-6.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.34.0
+BuildRequires:  pkgconfig(webkitgtk-6.0) >= 2.36.0
 Requires:       mozilla-nss
 # typelib-1_0-ECalendar-1_2 was dropped with e-d-s 3.7.3 due to libical not being introspecatble.
 Obsoletes:      typelib-1_0-ECalendar-1_2 <= %{version}
@@ -393,6 +393,8 @@ sed -i 's/icu-i18n/icu-uc &/' CMakeLists.txt
 %license COPYING
 %doc NEWS README
 %{_datadir}/evolution-data-server/
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/evolution-data-server.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.Evolution.DefaultSources.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution.eds-shell.gschema.xml
