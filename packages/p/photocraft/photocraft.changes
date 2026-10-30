@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Oct 29 17:32:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.17.0 (upstream tag v0.17.0, 2026-10-28):
+  * 0.15.1: security-hardening patch release, no user-facing
+    changes: bounded codec, compose, plugin and GPU work and
+    allocations, linear-time table and gradient lookups, ICC
+    curve charge, PSD/RAW/TIFF buffer bounds.
+  * 0.16.0: crop box snaps the image under it, locked layers
+    become the Auto-Align reference, pick-on-press colour
+    pickers, resizable Curves graph and dialog, Slice tool
+    Fixed Ratio/Fixed Size styles, XCF import and PSD pattern
+    transparency fixes, WebP export keeps the resolution, GPU
+    canvas rebuilds after out-of-memory.
+  * 0.17.0: egui 0.37 UI stack, New Document artboards, Camera
+    Raw Calibration panel with Auto and sidecars, live Mixer
+    Brush strokes, History snapshots, TIFF spot/alpha extra
+    samples read and write, lossy-DNG Raw open, startup
+    self-update prompt, many tool, PSD, ATN and type fixes.
+  * Security hardening (no CVE ids): spaced-step and primitive
+    caps in paint, hostile geometry and raster bounds, refined
+    truncated-scan budgets, .pcraft manifest value cap.
+  * Re-vendored (update=false, lockfile respected): eframe/egui
+    0.36 to 0.37 on the reviewed storytold fork, new craft-update
+    self-update client, clap CLI parsing, ureq/zip stacks (all
+    MIT OR Apache-2.0) and Unicode-3.0 ICU crates; MPL-2.0
+    colored and CDLA webpki-root-certs stay unlinked leftovers
+    as in 0.14.0; license re-derived over the shipped targets,
+    no new copyleft, tag stands; no new system deps; the
+    cargo_vendor lockfile audit reports no advisories.
+- Set the fixed metainfo release date to 2026-10-28 (v0.17.0).
+- Disable the upstream self-update install path
+  (photocraft-no-self-update.patch): automatic update checks
+  default to off (opt-in via preferences), and the
+  Update-and-Restart prompt is removed, so upstream RPMs can never
+  be installed over distro files. The manual Help check stays.
+- Add photocraft-drop-unused-egui-patches.patch:
+  drop unused [patch.crates-io] pins the vendor omits
+
+-------------------------------------------------------------------
 Fri Oct 23 06:56:01 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.14.0 (upstream tag v0.14.0, 2026-10-23):

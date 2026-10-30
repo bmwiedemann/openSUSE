@@ -17,7 +17,7 @@
 
 
 Name:           photocraft
-Version:        0.14.0
+Version:        0.17.0
 Release:        0
 Summary:        Native image editor with layers, masks, type and PSD support
 # Legal-Review-Notice: scope is the two shipped targets (photocraft, photocraft-cli)
@@ -40,6 +40,16 @@ License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Cl
 URL:            https://github.com/storytold/photocraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# PATCH-FIX-OPENSUSE photocraft-no-self-update.patch: upstream's craft-update
+# client installs upstream RPMs over distro files; default checks to off
+# (opt-in via preferences) and drop the Update-and-Restart install prompt.
+Patch0:         photocraft-no-self-update.patch
+# PATCH-FIX-OPENSUSE photocraft-drop-unused-egui-patches.patch: NOT
+# UPSTREAM (downstream build fix). Upstream pins three egui crates in
+# [patch.crates-io] that nothing uses (lock [[patch.unused]]), which
+# cargo_vendor omits, breaking the offline resolve; drop those pins
+# (egui_extras stays, crates/ui-egui needs it). [[package]] unchanged.
+Patch1:         photocraft-drop-unused-egui-patches.patch
 BuildRequires:  appstream-glib
 BuildRequires:  c_compiler
 BuildRequires:  cargo >= 1.95
@@ -92,6 +102,9 @@ with an opt-in MCP server for agents.
 
 %build
 %limit_build -m 2000
+# NOTE: keep the cargo macros in this spec in braced form. The bare form
+# misparses trailing arguments (sibling craft packages of the adi:5 wave
+# broke the build this way); the braced form passes args through intact.
 # Upstream has no `cargo install` story; package.sh builds these two workspace
 # members by hand. heif matches the official builds (pure-Rust heic-rs, no
 # system library). CRAFT_FONTS_DIR stays unset: the build then uses the
@@ -104,10 +117,10 @@ install -Dm0755 target/release/photocraft-cli %{buildroot}%{_bindir}/photocraft-
 install -Dm0644 packaging/linux/ai.storyteller.photocraft.desktop %{buildroot}%{_datadir}/applications/ai.storyteller.photocraft.desktop
 install -Dm0644 packaging/linux/ai.storyteller.photocraft.mime.xml %{buildroot}%{_datadir}/mime/packages/ai.storyteller.photocraft.xml
 install -d -m 0755 %{buildroot}%{_datadir}/metainfo
-# Fixed upstream release date (v0.14.0, 2026-10-23): a build-time date would
+# Fixed upstream release date (v0.17.0, 2026-10-28): a build-time date would
 # make the metainfo differ on every rebuild, and spec-cleaner macro-expands
 # the %-sequences of any date format string, so keep this a plain string.
-sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-23/g" packaging/linux/ai.storyteller.photocraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.photocraft.metainfo.xml
+sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-28/g" packaging/linux/ai.storyteller.photocraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.photocraft.metainfo.xml
 # Upstream declares the app icon as type="stock" but it is a custom hicolor
 # icon, so declare it as cached for appstream validation.
 sed -i 's|<icon type="stock">ai.storyteller.photocraft</icon>|<icon type="cached" width="64" height="64">ai.storyteller.photocraft.png</icon>|' %{buildroot}%{_datadir}/metainfo/ai.storyteller.photocraft.metainfo.xml

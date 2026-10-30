@@ -1,0 +1,47 @@
+From: openSUSE Publishing <publishing@opensuse.org>
+Subject: [PATCH] Drop unused egui patch pins so the offline vendor build resolves
+
+PATCH-FIX-OPENSUSE: photocraft-drop-unused-egui-patches.patch: NOT
+UPSTREAM (downstream build fix). Upstream pins three egui crates
+(egui_demo_lib, egui_inspection, egui_system_font_provider) in
+[patch.crates-io] that nothing in the workspace uses (Cargo.lock lists
+all three under [[patch.unused]]; egui_extras stays pinned, it is a
+real dependency of crates/ui-egui). cargo_vendor therefore omits them
+from vendor.tar.zst, and any --offline/--locked resolve against the
+vendor directory fails with "patch location ... does not contain
+packages matching ...". Drop the three unused pins (plus their
+[[patch.unused]] lock stanzas, so --locked stays satisfied); the
+[[package]] set is unchanged.
+
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -194,8 +194,5 @@
+ egui_glow = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ egui_extras = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ egui_kittest = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+-egui_system_font_provider = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ eframe = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+-egui_demo_lib = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+-egui_inspection = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ winit = { git = "https://github.com/storytold/winit.git", rev = "a517b3846ee8457d84ee4975110bfda6797c44dc" }
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -9564,18 +9564,3 @@
+  "syn 3.0.6",
+  "winnow",
+ ]
+-
+-[[patch.unused]]
+-name = "egui_demo_lib"
+-version = "0.37.0"
+-source = "git+https://github.com/storytold/egui.git?rev=6d518fc799681571963842f95b55a6b68431b15a#6d518fc799681571963842f95b55a6b68431b15a"
+-
+-[[patch.unused]]
+-name = "egui_inspection"
+-version = "0.37.0"
+-source = "git+https://github.com/storytold/egui.git?rev=6d518fc799681571963842f95b55a6b68431b15a#6d518fc799681571963842f95b55a6b68431b15a"
+-
+-[[patch.unused]]
+-name = "egui_system_font_provider"
+-version = "0.37.0"
+-source = "git+https://github.com/storytold/egui.git?rev=6d518fc799681571963842f95b55a6b68431b15a#6d518fc799681571963842f95b55a6b68431b15a"

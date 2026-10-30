@@ -1,0 +1,174 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: [PATCH] Disable the craft-update self-update install path
+
+PATCH-FIX-OPENSUSE: photocraft-no-self-update.patch: upstream ships a
+craft-update self-update client that installs upstream RPMs over distro
+files (via zypper/rpm -U). Default automatic update checks to off
+(opt-in via the preferences toggle) and remove the Update-and-Restart
+install prompt, so no install-over-distro path remains on fresh
+preferences. The manual Help check and the toggle itself stay.
+
+--- a/crates/engine/src/cmd/updates_cmds.rs
++++ b/crates/engine/src/cmd/updates_cmds.rs
+@@ -211,7 +211,7 @@
+         s.execute("help.checkForUpdates", json!({})).unwrap();
+         assert_eq!(s.execute("updates.status", json!({})).unwrap()["result"]["status"], "failed");
+         s.load_prefs_json("{}").unwrap();
+-        assert!(s.prefs().general.automatically_check_updates);
++        assert!(!s.prefs().general.automatically_check_updates);
+         s.execute("prefs.set", json!({"path": "general.automaticallyCheckUpdates", "value": false})).unwrap();
+         let saved = s.prefs_to_json();
+         let mut restored = Session::new();
+--- a/crates/engine/src/prefs.rs
++++ b/crates/engine/src/prefs.rs
+@@ -247,7 +247,7 @@
+             zoom_resizes_windows: false,
+             use_legacy_free_transform: false,
+             auto_show_home_screen: true,
+-            automatically_check_updates: true,
++            automatically_check_updates: false,
+         }
+     }
+ }
+--- a/crates/ui-egui/src/updates_ui.rs
++++ b/crates/ui-egui/src/updates_ui.rs
+@@ -8,31 +8,11 @@
+ pub(crate) struct Runtime {
+     startup_checked: bool,
+     notified_version: Option<String>,
+-    /// The startup prompt and the self-update behind it (desktop).
+-    #[cfg(not(target_arch = "wasm32"))]
+-    updater: craft_update::updater::Updater,
+ }
+ 
+ impl Default for Runtime {
+     fn default() -> Self {
+-        Self {
+-            startup_checked: false,
+-            notified_version: None,
+-            #[cfg(not(target_arch = "wasm32"))]
+-            updater: craft_update::updater::Updater::new(&craft_update::suite::PHOTOCRAFT, photocraft_engine::build_info::VERSION),
+-        }
+-    }
+-}
+-
+-/// The release the engine found, as `craft-update` knows it.
+-#[cfg(not(target_arch = "wasm32"))]
+-fn release_of(found: &photocraft_engine::updates_cmds::Release) -> craft_update::Release {
+-    craft_update::Release {
+-        tag: format!("v{}", found.version),
+-        version: craft_update::parse_version(&found.version),
+-        name: format!("PhotoCraft {}", found.version),
+-        html_url: found.url.clone(),
+-        ..Default::default()
++        Self { startup_checked: false, notified_version: None }
+     }
+ }
+ 
+@@ -61,8 +41,6 @@
+     {
+         app.updates_rt.notified_version = Some(release.version.clone());
+         app.ui.updates_open = true;
+-        #[cfg(not(target_arch = "wasm32"))]
+-        app.updates_rt.updater.offer(release_of(release));
+     }
+     if app.session.updates.check.is_none() {
+         return;
+@@ -81,27 +59,6 @@
+ pub(crate) fn show(app: &mut PhotocraftApp, ctx: &egui::Context) {
+     let mut download: Option<String> = None;
+ 
+-    #[cfg(not(target_arch = "wasm32"))]
+-    {
+-        let was_open = app.updates_rt.updater.prompt_open();
+-        app.updates_rt.updater.tick(ctx);
+-        // The restart helper is scheduled before the app closes, so no update starts over unsaved work.
+-        let clean = !app.has_unsaved_work();
+-        match app.updates_rt.updater.show_if(ctx, clean) {
+-            craft_update::updater::Action::None => {}
+-            craft_update::updater::Action::OpenUrl(url) => download = Some(url),
+-            // The guarded close path asks about unsaved work and waits for saves; the restart helper
+-            // relaunches once the process exits.
+-            craft_update::updater::Action::Close => ctx.send_viewport_cmd(egui::ViewportCommand::Close),
+-        }
+-        if was_open && !app.updates_rt.updater.prompt_open() {
+-            app.ui.updates_open = false;
+-        }
+-        if app.updates_rt.updater.prompt_open() {
+-            return;
+-        }
+-    }
+-
+     if !app.ui.updates_open {
+         if let Some(url) = download {
+             crate::links::open(app, ctx, &url);
+@@ -131,13 +88,8 @@
+                 Status::Available { release } => {
+                     ui.label(crate::i18n::fmt(crate::i18n::t("PhotoCraft {version} is available."), &[("version", &release.version)]));
+                     #[cfg(not(target_arch = "wasm32"))]
+-                    {
+-                        if crate::widgets::primary_button(ui, tl!("Update and Restart"), 180.0).clicked() {
+-                            app.updates_rt.updater.offer(release_of(release));
+-                        }
+-                        if ui.button(tl!("Release Notes")).clicked() {
+-                            download = Some(release.url.clone());
+-                        }
++                    if ui.button(tl!("Release Notes")).clicked() {
++                        download = Some(release.url.clone());
+                     }
+                     #[cfg(target_arch = "wasm32")]
+                     if crate::widgets::primary_button(ui, tl!("Open Download Page"), 160.0).clicked() {
+@@ -205,6 +157,7 @@
+     #[test]
+     fn automatic_check_runs_once_per_launch_even_after_days_or_preference_changes() {
+         let (mut app, calls, sender) = app();
++        app.session.edit_prefs(|p| p.general.automatically_check_updates = true);
+         let ctx = egui::Context::default();
+         at(&mut app, &ctx, 0.0);
+         at(&mut app, &ctx, 1.0);
+@@ -235,6 +188,7 @@
+         assert_eq!(*calls.lock().unwrap(), 0, "opt-out is evaluated at startup");
+ 
+         let (mut failed, calls, sender) = app();
++        failed.session.edit_prefs(|p| p.general.automatically_check_updates = true);
+         at(&mut failed, &ctx, 0.0);
+         sender.lock().unwrap().as_ref().unwrap().send(Err("offline".into())).unwrap();
+         at(&mut failed, &ctx, 1.0);
+@@ -264,6 +218,7 @@
+     #[test]
+     fn available_release_notifies_once_even_when_automation_polls_first() {
+         let (mut app, _, sender) = app();
++        app.session.edit_prefs(|p| p.general.automatically_check_updates = true);
+         let ctx = egui::Context::default();
+         at(&mut app, &ctx, 0.0);
+         sender
+@@ -282,9 +237,9 @@
+     }
+ 
+     #[test]
+-    #[cfg(not(target_arch = "wasm32"))]
+-    fn startup_update_prompt_appears_and_can_be_dismissed() {
++    fn startup_release_notifies_without_an_install_prompt() {
+         let (mut app, _, sender) = app();
++        app.session.edit_prefs(|p| p.general.automatically_check_updates = true);
+         let ctx = egui::Context::default();
+         at(&mut app, &ctx, 0.0);
+         sender
+@@ -295,14 +250,14 @@
+             .send(Ok(Some(Release { version: "99.0.0".into(), url: "https://github.com/storytold/photocraft/releases/tag/v99.0.0".into() })))
+             .unwrap();
+         at(&mut app, &ctx, 1.0);
+-        assert!(app.updates_rt.updater.prompt_open(), "startup prompt initialized on available release");
++        assert!(app.ui.updates_open, "an available release still notifies");
+ 
+-        // Rendering show() renders the prompt modal
++        // Rendering show() shows the status window; there is no install prompt to dismiss.
+         let mut output = ctx.run_ui(egui::RawInput::default(), |ui| {
+             show(&mut app, ui.ctx());
+         });
+         output.textures_delta.clear();
+-        assert!(app.updates_rt.updater.prompt_open());
++        assert!(app.ui.updates_open);
+     }
+ 
+     #[test]
