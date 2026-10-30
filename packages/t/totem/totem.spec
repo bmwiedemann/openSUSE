@@ -37,24 +37,24 @@ BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo) >= 1.14.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.6.0
-BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
-BuildRequires:  pkgconfig(gstreamer-tag-1.0)
-BuildRequires:  pkgconfig(gstreamer-video-1.0)
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.21.1
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.21.1
+BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= 1.21.1
+BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.21.1
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(libpeas-2)
-BuildRequires:  pkgconfig(libportal-gtk3)
+BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
+BuildRequires:  pkgconfig(libpeas-2) >= 1.99.1
+BuildRequires:  pkgconfig(libportal-gtk3) >= 0.7
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 2.90.3
 BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(totem-plparser) >= 3.26.5
-BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(x11) >= 1.8
 
 # Set a hard requires on the new thumbnailer sub-package
 Requires:       totem-video-thumbnailer
@@ -144,6 +144,8 @@ This package contains the video thumbnailer.
 %license COPYING
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/totem.convert
 %{_datadir}/dbus-1/services/org.gnome.Totem.service
 %dir %{_datadir}/metainfo

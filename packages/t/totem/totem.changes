@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:05:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Wed Sep  2 11:38:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own %{_datadir}/GConf and %{_datadir}/GConf/gsettings: legacy
+  migration directories.
+
+-------------------------------------------------------------------
 Mon Mar 23 11:35:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
@@ -376,7 +387,7 @@ Tue Sep  3 10:32:38 CDT 2019 - mgorse@suse.com
 -------------------------------------------------------------------
 Fri Jul 12 19:26:12 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 3.32.1: 
+- Update to version 3.32.1:
   + Show the application window when opening a new file.
   + Work-around "Can't play a text file without video or
     visualizations" error.
@@ -452,7 +463,7 @@ Wed Feb 20 18:13:05 UTC 2019 - bjorn.lie@gmail.com
 -------------------------------------------------------------------
 Mon Feb  4 12:08:09 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
-- Fix req#663737 - build with translation-update-upstream 
+- Fix req#663737 - build with translation-update-upstream
   version 20181128 (bsc#1087076)
 
 -------------------------------------------------------------------
@@ -2358,7 +2369,7 @@ Thu Nov  6 17:26:59 CET 2008 - vuntz@novell.com
 -------------------------------------------------------------------
 Tue Nov  4 12:21:24 CET 2008 - ro@suse.de
 
-- no nvtv on ia64 either, add to ifarch lists 
+- no nvtv on ia64 either, add to ifarch lists
 
 -------------------------------------------------------------------
 Fri Oct 10 08:14:19 EST 2008 - mboman@suse.de
@@ -2647,7 +2658,7 @@ Bug fixes:
 Mon Jul  9 21:55:31 CEST 2007 - mauro@suse.de
 
 - Update to version 2.19.4
-- Bugfixes for #438934, #442371, #442673, #440911, #428291, 
+- Bugfixes for #438934, #442371, #442673, #440911, #428291,
   #439160, #428293, #401079, #435523.
 
 -------------------------------------------------------------------
@@ -2810,7 +2821,7 @@ Mon Oct  2 21:30:42 CEST 2006 - jhargadon@suse.de
 - Set volume up/down sensitivity properly when reaching a boundary
 - Use the builtin overwrite confirmation when saving playlists
 - Change the title when changing songs on Shoutcasts streams
-- Add support for multiple selections in the playlist popup menu 
+- Add support for multiple selections in the playlist popup menu
 
 -------------------------------------------------------------------
 Sat Sep 30 13:29:43 CEST 2006 - aj@suse.de
@@ -2821,8 +2832,8 @@ Sat Sep 30 13:29:43 CEST 2006 - aj@suse.de
 -------------------------------------------------------------------
 Wed Sep 27 00:40:45 CEST 2006 - jhargadon@suse.de
 
-- fixed the location of the plugin files to be in the correct 
-  location as specified in bug #208187 
+- fixed the location of the plugin files to be in the correct
+  location as specified in bug #208187
 
 -------------------------------------------------------------------
 Fri Sep 15 00:32:48 CEST 2006 - jhargadon@suse.de
@@ -2831,17 +2842,17 @@ Fri Sep 15 00:32:48 CEST 2006 - jhargadon@suse.de
 - Add keyboard support for the DVD keys: Up, Down, Left, Right
 - Add support for audio/AMR, audio/AMR-WB and Musepack
 - Remove old GStreamer 0.8 hacks
-- Avoid repeat being turned on when it shouldn't in the web browser plugin 
+- Avoid repeat being turned on when it shouldn't in the web browser plugin
 
 -------------------------------------------------------------------
 Wed Sep 13 02:16:44 CEST 2006 - ro@suse.de
 
-- own mozilla plugin dirs to fix build 
+- own mozilla plugin dirs to fix build
 
 -------------------------------------------------------------------
 Tue Sep 12 17:15:58 CEST 2006 - ro@suse.de
 
-- completely disable plugin to workaround rpm crash 
+- completely disable plugin to workaround rpm crash
 
 -------------------------------------------------------------------
 Thu Aug 31 01:19:58 CEST 2006 - jhargadon@suse.de
@@ -2868,7 +2879,7 @@ Thu Aug 31 01:19:58 CEST 2006 - jhargadon@suse.de
 - Fix the window title not changing when playing files with broken names
 - Fix Ctrl+Q not working in fullscreen
 - More logo mode fixes
-- Fix aspect ratio of visuals 
+- Fix aspect ratio of visuals
 
 -------------------------------------------------------------------
 Tue Aug  8 23:51:45 CEST 2006 - gekker@suse.de
@@ -2972,7 +2983,7 @@ Tue Feb 14 14:25:05 CET 2006 - ke@suse.de
 -------------------------------------------------------------------
 Tue Feb  7 01:22:54 CET 2006 - ro@suse.de
 
-- no nvtv for ppc/ppc64/s390/s390x 
+- no nvtv for ppc/ppc64/s390/s390x
 
 -------------------------------------------------------------------
 Thu Feb  2 16:58:49 CET 2006 - sbrabec@suse.cz
@@ -2997,12 +3008,12 @@ Wed Jan 18 15:23:07 CET 2006 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Wed Dec 21 02:31:54 CET 2005 - ro@suse.de
 
-- fix build with current dbus 
+- fix build with current dbus
 
 -------------------------------------------------------------------
 Thu Oct 13 16:42:16 CEST 2005 - ro@suse.de
 
-- fix build with xulrunner 
+- fix build with xulrunner
 
 -------------------------------------------------------------------
 Thu Sep 15 17:04:35 CEST 2005 - sbrabec@suse.cz
@@ -3030,27 +3041,27 @@ Mon Sep  5 12:51:44 CEST 2005 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Wed Aug 24 18:37:32 CEST 2005 - gekker@suse.de
 
-- Update to version 1.1.5 
+- Update to version 1.1.5
 
 -------------------------------------------------------------------
 Sat Jul 23 00:29:59 CEST 2005 - gekker@suse.de
 
-- Update to version 1.1.3 
+- Update to version 1.1.3
 
 -------------------------------------------------------------------
 Wed Jun 22 03:30:43 CEST 2005 - gekker@suse.de
 
-- Update to version 1.1.2 
+- Update to version 1.1.2
 
 -------------------------------------------------------------------
 Fri Mar 18 21:04:39 CET 2005 - gekker@suse.de
 
-- Fix typo in Requires 
+- Fix typo in Requires
 
 -------------------------------------------------------------------
 Thu Mar 17 22:05:14 CET 2005 - gekker@suse.de
 
-- Add gstreamer-plugins-extra to nfb and Requires (72273). 
+- Add gstreamer-plugins-extra to nfb and Requires (72273).
 
 -------------------------------------------------------------------
 Wed Mar 16 16:24:55 CET 2005 - sbrabec@suse.cz
@@ -3065,12 +3076,12 @@ Wed Mar 16 13:29:19 CET 2005 - ke@suse.de
 -------------------------------------------------------------------
 Thu Mar 10 01:13:58 CET 2005 - gekker@suse.de
 
-- Update to version 1.0 (GNOME 2.10). 
+- Update to version 1.0 (GNOME 2.10).
 
 -------------------------------------------------------------------
 Wed Jan 26 21:08:39 CET 2005 - gekker@suse.de
 
-- Update to version 0.101 
+- Update to version 0.101
 
 -------------------------------------------------------------------
 Tue Nov  2 10:13:13 CET 2004 - mmj@suse.de
@@ -3082,7 +3093,7 @@ Tue Nov  2 10:13:13 CET 2004 - mmj@suse.de
 Mon Aug 30 06:06:57 CEST 2004 - shprasad@suse.de
 
 - Fixes bug #63393.
-  Removed the Download button. 
+  Removed the Download button.
 
 -------------------------------------------------------------------
 Fri Aug 27 05:48:01 CEST 2004 - clahey@suse.de
@@ -3093,7 +3104,7 @@ Fri Aug 27 05:48:01 CEST 2004 - clahey@suse.de
 Fri Jul 30 11:03:32 CEST 2004 - shprasad@suse.de
 
 - Fixes bug #60102 (Fix given by svasista@novell.com)
-  Correctly displays the recent files opened. 
+  Correctly displays the recent files opened.
 
 -------------------------------------------------------------------
 Tue May 11 12:10:29 CEST 2004 - sbrabec@suse.cz
