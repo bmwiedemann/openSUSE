@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/crazy-max/diun</param>
-              <param name="changesrevision">00cf2319392aba30ab6b64c62414a4ba37c7cc15</param></service></servicedata>
+              <param name="changesrevision">00cf2319392aba30ab6b64c62414a4ba37c7cc15</param></service><service name="tar_scm">
+                <param name="url">https://github.com/crazy-max/diun.git</param>
+              <param name="changesrevision">9ea9ffdfe144834c7ac88d9873cfcfc06970b0df</param></service></servicedata>

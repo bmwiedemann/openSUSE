@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:29:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.33.1:
+  This release is built with Go 1.26.10 to address CVE-2026-111943.
+  Certificate verification now rejects chains containing eight
+  revoked eMudhra intermediate certificates whose private keys were
+  compromised.
+  The blocked intermediates are:
+  - Domain-validated TLS: EM DV TLS CA - G3B and EM DV TLS CA - G3C
+  - Organization-validated TLS: EM OV TLS CA - G3B and EM OV TLS CA
+    - G3C
+  - Extended-validation TLS: EM EV TLS CA - G3B and EM EV TLS CA -
+    G3C
+  - Code signing: EM OV CS CA - G3B and EM OV CS CA - G3C
+  The G3B intermediates belong to eMudhra BV, and the G3C
+  intermediates belong to eMudhra Inc. See the eMudhra Intermediate
+  CA Compromise for more details.
+  There are no functional changes in Diun itself compared to
+  v4.33.0.
+
+-------------------------------------------------------------------
 Mon Jun 01 05:23:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.33.0:
