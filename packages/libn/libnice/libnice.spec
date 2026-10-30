@@ -17,7 +17,7 @@
 
 
 Name:           libnice
-Version:        0.1.23
+Version:        0.1.24
 Release:        0
 Summary:        Interactive Connectivity Establishment implementation
 License:        LGPL-2.1-only OR MPL-1.1
@@ -28,13 +28,13 @@ Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM libnice-port-gupnp-igd-bump.patch -- Port to new gupnp-igd
 Patch1:         libnice-port-gupnp-igd-bump.patch
 
-BuildRequires:  meson
+BuildRequires:  meson >= 0.54
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
-BuildRequires:  pkgconfig(gnutls) >= 2.12.0
+BuildRequires:  pkgconfig(gnutls) >= 3.6.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.11.91
-BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 0.11.91
+BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 1.14.0
 BuildRequires:  pkgconfig(gupnp-igd-1.6)
 
 %description

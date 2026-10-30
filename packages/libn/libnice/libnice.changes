@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:31:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Wed Sep  2 15:15:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.1.24:
+  + API: nice_agent_attach_recv_ex() to retrieve extra message data
+    in recv callback
+  + API: nice_message_extra_data_get_tos() to enable access to
+    IP_TOS/IPV6_TCLASS IP header field of incoming packets
+  + API: stun_usage_bind_run_compat() to allow specifying
+    compatibility mode when sending a binding request
+  + Nicesrc: Attach GstNetControlMessageMeta containing the TOS
+    header field to buffers
+  + Ensure NICE_CANDIDATE_MAX_TURN_SERVERS is obeyed
+  + Ensure nice_agent_get_local_credentials() returns FALSE on
+    error
+  + Fix random crashes
+  + Fix potential heap buffer overflow in UDP-TURN over TCP
+  + Fix compilation on FreeBSD
+
+-------------------------------------------------------------------
 Mon Mar 23 08:04:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
@@ -204,7 +228,7 @@ Tue Apr 25 09:26:04 UTC 2017 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Fri Apr 15 12:23:54 UTC 2016 - idonmez@suse.com
 
-- Merge with factory for Gnome 3.20 fate#318572. 
+- Merge with factory for Gnome 3.20 fate#318572.
 
 -------------------------------------------------------------------
 Sat Apr  2 18:02:16 UTC 2016 - zaitor@opensuse.org
