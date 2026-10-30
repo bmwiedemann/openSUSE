@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct 29 11:24:18 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 4.3:
+  * Release version 4.3
+  * Use logind varlink interface for reboot
+  * rebootmgrd: more error handler fixes
+
+-------------------------------------------------------------------
+Tue Oct 27 11:03:10 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 4.2:
+  * Release version 4.2
+  * Fix error handling in case SELinux denies reboot [bsc#1287746]
+
+-------------------------------------------------------------------
+Fri Oct 23 13:08:26 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 4.1:
+  * Release version 4.1
+  * Use varlink for reboot, else posix_spawn
+  * Update basics.h
+  * calendarspec: check for error when resetting TZ
+  * Fix URL of github project
+  * supporting time_zones
+  * initialize seed with random value
+
+-------------------------------------------------------------------
 Thu Oct 08 08:00:58 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 4.0+git20261008.76d8ee7:

@@ -398,4 +398,28 @@
   * rebootmgr-metrics.conf: fix metrics vs report</comment>
     <requestid>1383243</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4c2a9b5c89e94c98a73fb0d168b7a391</srcmd5>
+    <version>4.3</version>
+    <time>1793379817</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.3:
+  * Release version 4.3
+  * Use logind varlink interface for reboot
+  * rebootmgrd: more error handler fixes
+
+- Update to version 4.2:
+  * Release version 4.2
+  * Fix error handling in case SELinux denies reboot [bsc#1287746]
+
+- Update to version 4.1:
+  * Release version 4.1
+  * Use varlink for reboot, else posix_spawn
+  * Update basics.h
+  * calendarspec: check for error when resetting TZ
+  * Fix URL of github project
+  * supporting time_zones
+  * initialize seed with random value</comment>
+    <requestid>1393609</requestid>
+  </revision>
 </revisionlist>
