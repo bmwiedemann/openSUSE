@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Sep 14 15:27:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 07:01:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc.1:
+  + Fixed Flatpak build
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 31 15:39:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug  3 16:28:16 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta2:
+  + Fixed focus chain of authentication dialog
+  + Added captions to app screenshots
+  + Fixed propagation of cursor changes
+  + Enabled h264 in flatpak
+  + Self-build libhandy
+  + Fixed connection to IPv6 URIs
+  + Actualized descriptions of protocols in assistant
+  + Handle NULL Common Name in RdpConnection
+  + Do not remove POINTER_MOTION_MASK
+  + Do not store already stored connections
+  + Updated gtk-frdp
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:36:20 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
