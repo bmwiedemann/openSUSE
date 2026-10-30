@@ -205,4 +205,12 @@ source_validator clean.</comment>
     <comment>Update python-modelscope-hub to 0.5.1.</comment>
     <requestid>1392947</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>644ea91ed5b67bf5066d9cd9357050e2</srcmd5>
+    <version>0.6.1</version>
+    <time>1793380610</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.6.1.</comment>
+    <requestid>1393838</requestid>
+  </revision>
 </revisionlist>

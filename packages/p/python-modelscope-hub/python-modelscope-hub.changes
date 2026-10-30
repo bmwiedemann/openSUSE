@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 30 07:58:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.1:
+  * 0.6.0: model and dataset writes (create_repo, settings,
+    file deletion) moved to OpenAPI with legacy fallback;
+    zone metadata (model/dataset categories), repository
+    detail reads, cached enum option endpoints and new
+    public enums; compat wrappers on LegacyHubApi
+  * 0.6.1: per-file download time budgets become opt-in
+    (default 0, uncapped); budget stops report pending and
+    resume on re-run; new CLI --total-timeout override
+
+-------------------------------------------------------------------
 Mon Oct 26 19:31:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.1:
