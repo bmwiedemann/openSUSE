@@ -22,7 +22,7 @@
 %define glib_version 2.76.0
 
 Name:           sysprof
-Version:        50.0
+Version:        51.0
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -52,7 +52,7 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.30.0
 BuildRequires:  pkgconfig(libdebuginfod)
-BuildRequires:  pkgconfig(libdex-1) >= 0.3
+BuildRequires:  pkgconfig(libdex-1) >= 1.2
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libpanel-1) >= 1.3.0
 BuildRequires:  pkgconfig(libsystemd) >= 222

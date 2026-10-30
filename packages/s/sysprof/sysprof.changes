@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 14 07:08:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 15:08:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc:
+  + Fix running sysprof-cli with --no-sysprofd and --no-perf
+  + Various optimizations to libsysprof
+  + Fix a warning when disposing some widget
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul  2 21:10:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Various optimizations to libsysprof-capture
+
+-------------------------------------------------------------------
 Fri Mar 20 16:09:55 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
