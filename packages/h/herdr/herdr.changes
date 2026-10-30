@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Oct 29 14:43:42 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Initial package, version 0.9.5
+  * Builds the vendored libghostty-vt with zig 0.16 from an
+    offline package cache (zig-deps.tar.zst, vendor-zig.sh)
+  * Run only the configuration unit tests in %check: most of the
+    suite needs git, agent CLIs, network access or a real terminal
+  * Add 0001-disable-background-update-checks-by-default.patch:
+    do not contact herdr.dev for new releases or agent-detection
+    manifests unless [update] version_check / manifest_check is
+    enabled in the configuration
+

@@ -1,0 +1,5 @@
+<package name="herdr" project="openSUSE:Factory">
+  <title>Terminal workspace manager for AI coding agents</title>
+  <description>herdr keeps AI coding agent terminals running in a background server, marks each pane as working, blocked or idle, and lets agents drive it through a CLI and socket API.</description>
+  <url>https://github.com/herdrdev/herdr</url>
+</package>

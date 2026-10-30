@@ -1,0 +1,48 @@
+From: Andrea Manzini <andrea.manzini@suse.com>
+Subject: Disable the background herdr.dev update checks by default
+
+The distribution package is updated by the package manager, so herdr must
+not contact herdr.dev for a newer release or for agent-detection manifests
+unless the user opts in with [update] version_check / manifest_check.
+
+--- a/src/config/model.rs
++++ b/src/config/model.rs
+@@ -40,8 +40,8 @@
+     fn default() -> Self {
+         Self {
+             channel: default_update_channel(),
+-            version_check: true,
+-            manifest_check: true,
++            version_check: false,
++            manifest_check: false,
+         }
+     }
+ }
+@@ -1338,8 +1338,8 @@
+     fn update_config_defaults_and_parses() {
+         let default_config = Config::default();
+         assert_eq!(default_config.update.channel, default_update_channel());
+-        assert!(default_config.update.version_check);
+-        assert!(default_config.update.manifest_check);
++        assert!(!default_config.update.version_check);
++        assert!(!default_config.update.manifest_check);
+ 
+         let toml = r#"
+ [update]
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -127,10 +127,12 @@
+ # channel = "stable"
+ 
+ # Check herdr.dev for new Herdr versions in the background.
+-# version_check = true
++# Off by default in the distribution package, which is updated by the package manager.
++# version_check = false
+ 
+ # Check herdr.dev for remote agent-detection manifest updates in the background.
+-# manifest_check = true
++# Off by default in the distribution package.
++# manifest_check = false
+ 
+ [keys]
+ # Prefix key to enter prefix mode (default: "ctrl+b")

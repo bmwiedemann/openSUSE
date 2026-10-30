@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>073d38bdc611f41e786ab0f56b9ed75f</srcmd5>
+    <version>0.9.5</version>
+    <time>1793380291</time>
+    <user>dimstar_suse</user>
+    <comment>New package herdr 0.9.5: terminal workspace manager for AI coding agents, builds its vendored libghostty-vt with zig 0.16.
+- Update checks off by default: 0001-disable-background-update-checks-by-default.patch
+- Legal: the embedded mp3 sounds carry no licence of their own upstream.
+- x86_64 and aarch64 only: upstream's build.rs knows no other Zig target.</comment>
+    <requestid>1393659</requestid>
+  </revision>
+</revisionlist>
