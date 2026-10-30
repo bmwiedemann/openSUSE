@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 30 08:12:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.15.post2:
+  * ORC JIT addon: build against the published PyPI LLVM
+    static SDK instead of downloading LLVM releases, add
+    native Windows ARM64 wheels
+  * Rust bindings: record type schemas and doc strings of
+    exported functions, register fields and methods of
+    object types defined in Rust, static init blocks
+
+-------------------------------------------------------------------
 Sun Oct 25 20:36:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.15.post1:

@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-apache-tvm-ffi
-Version:        0.1.15.post1
+Version:        0.1.15.post2
 Release:        0
 Summary:        Minimal FFI runtime and ABI for machine learning systems
 License:        Apache-2.0
@@ -102,7 +102,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_uninstall_alternative tvm-ffi-config
 %python_uninstall_alternative tvm-ffi-stubgen
 
-%files %{python_files}
+%files %python_files
 %license LICENSE NOTICE
 %doc README.md
 %python_alternative %{_bindir}/tvm-ffi-config

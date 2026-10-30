@@ -137,4 +137,12 @@ python3.13 and 3.14.
     <comment>Update python-apache-tvm-ffi to 0.1.15.post1.</comment>
     <requestid>1392609</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0e864dfbd1dfbe429bce008602aacfb6</srcmd5>
+    <version>0.1.15.post2</version>
+    <time>1793380631</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.1.15.post2.</comment>
+    <requestid>1393839</requestid>
+  </revision>
 </revisionlist>
