@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep  3 06:33:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.2:
+  + No changelog provided
+- Changes from version 0.5.0:
+  + format-filter: Add zstd to supported formats
+  + compressor: Don't use wildcard query string
+  + Remove gnome-autoar-gtk
+  + doc: migrate to gi-docgen
+  + build: Rename docs option
+  + Various CI fixes until it worked again
+  + Add release script
+- Change -Dgtk_doc meson parameter to -Ddocs: follow upstreams
+  rename of the otion.
+- Replace gtk-doc BuildRequires for pkgconfig(gi-docgen): follow
+  upstreams port to gi-docgen.
+- Drop gnome-autoar-gtk related subpackages:
+  libgnome-autoar-gtk-0-0, typelib-1_0-GnomeAutoarGtk-0_1, and
+  gnome-autoar-gtk-devel
+
+-------------------------------------------------------------------
 Mon Mar 23 08:34:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
