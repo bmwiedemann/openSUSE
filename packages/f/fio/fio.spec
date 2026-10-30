@@ -25,9 +25,6 @@
 %bcond_without librbd
 %endif
 %endif
-%ifarch x86_64
-%bcond_without libpmem
-%endif
 %ifnarch s390x s390 %{arm}
 %bcond_without libnuma
 %endif
@@ -68,9 +65,6 @@ BuildRequires:  libnuma-devel
 %endif
 %if %{with librbd}
 BuildRequires:  librbd-devel
-%endif
-%if %{with libpmem}
-BuildRequires:  pkgconfig(libpmem)
 %endif
 %if %{with librdmacm}
 BuildRequires:  librdmacm-devel

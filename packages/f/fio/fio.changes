@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 30 11:13:10 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Drop pmem hardware support (bsc#1288099). It's no longer a thing.
+
+-------------------------------------------------------------------
 Thu Oct  1 19:54:59 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Update to 3.43 (154 upstream commits since 3.42):
