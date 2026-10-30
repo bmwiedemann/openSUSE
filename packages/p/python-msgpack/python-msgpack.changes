@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 28 18:56:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Uppdate to 1.2.4: (GHSA-j586-36cw-2gc2)
+  - fallback: pass object_pairs_hook a list of pairs by @youdie006
+    in #744
+  - fallback: leave the object unread when a header type does not
+    match by @Shaisolaris in #748
+  - Bump the all-dependencies group with 3 updates by
+    @dependabot[bot] in #749
+  - fallback: return bytes from Unpacker.read_bytes by @Cherith1222
+    in #747
+  - Run tracemalloc tests sequentially by @methane in #758
+
+-------------------------------------------------------------------
 Sun Oct  4 17:47:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Uppdate to 1.2.3:
