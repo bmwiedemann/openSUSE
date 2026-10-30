@@ -18,7 +18,7 @@
 
 
 Name:           gsettings-desktop-schemas
-Version:        50.1
+Version:        51.0
 Release:        0
 Summary:        Shared GSettings Schemas for the Desktop
 License:        LGPL-2.1-or-later
@@ -118,10 +118,6 @@ glib-compile-schemas --dry-run --strict %{buildroot}%{_datadir}/glib-2.0/schemas
 %if 0%{?sle_version}
 %{_datadir}/glib-2.0/schemas/00_org.gnome.desktop.peripherals.gschema.override
 %endif
-%dir %{_datadir}/GConf
-%dir %{_datadir}/GConf/gsettings
-%{_datadir}/GConf/gsettings/gsettings-desktop-schemas.convert
-%{_datadir}/GConf/gsettings/wm-schemas.convert
 %{_libdir}/girepository-1.0/GDesktopEnums-3.0.typelib
 %{_datadir}/locale/en_GB/LC_MESSAGES/gsettings-desktop-schemas.mo
 %{_datadir}/locale/en_US/LC_MESSAGES/gsettings-desktop-schemas.mo

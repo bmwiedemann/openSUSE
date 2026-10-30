@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Sep 13 22:18:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  2 07:10:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Added setting for custom pointer acceleration profile
+  + Remove gconf schema migration files
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug  3 09:56:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Add setting to configure the focus ring visibility timeout
+  + Add 'orientation-lock' setting to take over the g-s-d setting
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul  2 07:41:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Add scroll speed setting for touchpads
+  + Add the ability to enable button scrolling on a mouse
+  + Increase default maximum thumbnail cache from 512MB to 2GB
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr 16 06:40:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.1:
