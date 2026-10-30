@@ -25,7 +25,7 @@ Summary:        Native Pandora Radio client for Linux
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Other
 URL:            https://pithos.github.io
-Source0:        https://github.com/pithos/pithos/releases/download/%{version}/pithos-%{version}.tar.xz
+Source0:        pithos-%{version}.tar.xz
 # Needed for automatic typelib() Requires.
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme

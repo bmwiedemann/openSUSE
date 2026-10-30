@@ -250,4 +250,12 @@
 - Migrate to _service managed git checkout.</comment>
     <requestid>1372899</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2ff1c97b0e1e466996462d3264795c7d</srcmd5>
+    <version>1.6.2</version>
+    <time>1793380642</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Source: Do not specify an URL, as the source is _service managed.</comment>
+    <requestid>1393848</requestid>
+  </revision>
 </revisionlist>
