@@ -588,4 +588,38 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     unsorted or duplicate entries in odd-indexed slots</comment>
     <requestid>1372776</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>515b1ddf3a4544abd0d28eb3311182cf</srcmd5>
+    <version>2026.5</version>
+    <time>1793380155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2026.5:
+  * static-delta: validate bspatch payload offset and length
+  * min-free-space: Use min(3%, 1GB) as default
+  * docs: drop parameters that are no longer in the signatures
+  * ostree-repo: Change argument name in header to match implementation
+  * generator: Skip boot.mount if /etc/fstab has a /boot entry by
+  * static-delta: validate on-disk checksum names when listing deltas
+  * static-delta: bound mode and xattr dict offsets
+  * bin/prune: Keep recent unreferenced commits
+  * prepare-root: Tolerate an existing /sysroot.tmp in the static path
+  * prepare-root: Guard against short digest in load_variant
+  * lib: Validate commit tree checksum length on read
+  * fetcher-curl: Bound header value copies to buffer length
+  * ostree-gpg-verify-result: Strictly match subkeys if suffixed with !
+  * otcore: Treat only 1 from EVP_DigestVerify as valid
+  * lib: Parse content object header as untrusted
+  * man: Document signed-delta and sign-verify behaviour
+  * core: Throw an error for short ostree.sizes entries
+  * static-delta: Avoid copying bspatch output
+  * static-delta: Simplify mapped content allocation
+  * Two security-related fixes reported
+
+  + various bug fixes
+  + Add basic support for handling overlayfs whiteouts on checkout
+  + A new repository option bls-append-except-default intended to
+- switch to upstream tarball
+  grub-mkconfig_lib. openSUSE installs those files to</comment>
+    <requestid>1392419</requestid>
+  </revision>
 </revisionlist>
