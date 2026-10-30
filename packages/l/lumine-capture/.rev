@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2275a6b1beebbc18d86b4ee26db3c3cf</srcmd5>
+    <version>0.3.0</version>
+    <time>1793380699</time>
+    <user>dimstar_suse</user>
+    <comment>New package lumine-capture 0.3.0: screenshot and annotation tool for Wayland with built-in offline OCR. Upstream author submitting. Builds against system onnxruntime, crates vendored via obs-service-cargo.</comment>
+    <requestid>1393889</requestid>
+  </revision>
+</revisionlist>
