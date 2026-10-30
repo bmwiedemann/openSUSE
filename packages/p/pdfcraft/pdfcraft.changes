@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Oct 29 16:50:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.15.0 (upstream tags v0.14.0, 2026-10-25 and v0.15.0,
+  2026-10-28):
+  * 0.14.0: hostile-file work bounding across the parser, renderer,
+    forms, XFA and redaction paths; ctutils 0.4.2 -> 0.4.5
+    (RUSTSEC-2026-0385) and crypto-bigint 0.7.5 -> 0.7.6
+    (RUSTSEC-2026-0387), both constant-time hardening with no CVE
+    ids; hayro-postscript 0.1.0 vendored as a path patch (CMap
+    stack overflow fixed); redaction follows nested forms and drops
+    the AcroForm on hidden-field redaction; typed XFA password
+    values cleared from datasets on save.
+  * 0.15.0: redaction drops confidential vector paths behind
+    clipping and unlinks unused Type 3 glyphs and fonts; XFA,
+    FormCalc and XFDF parsing fixes; egui 0.37; Persian interface
+    translation; page-image export on worker threads; searchable
+    All-tools view.
+  * Security hardening (no CVE ids): the two RUSTSEC fixes above;
+    bugzilla holds no open pdfcraft bugs.
+  * Re-vendored (update=false kept for --locked): in the shipped
+    graph ctutils 0.4.2 -> 0.4.5, crypto-bigint 0.7.5 -> 0.7.6 and
+    aws-lc-rs 1.18.1 -> 1.18.2 changed; new crates are all MIT,
+    Apache-2.0 or Unicode-3.0, plus path-patched hayro-postscript
+    0.1.0 (Apache-2.0 OR MIT). License tag unchanged, MSRV still
+    1.95, no new system deps; cargo_vendor and cargo_audit clean.
+- Rebase pdfcraft-no-brand-assets.patch onto 0.15.0 (same hunk,
+  moved 46 lines; still the three docs/brand include_bytes!
+  embeds, no new docs/brand references in the shipped crates).
+- Add pdfcraft-no-startup-update-check.patch: new in 0.15.0, the
+  desktop app checks upstream releases at startup and offers
+  in-place self-update; the package manager owns updates, so only
+  the automatic check is off, manual Help ▸ Check for updates
+  stays.
+- Extend pdfcraft-no-startup-update-check.patch: also gate the
+  self-update install prompt (UPDATE-AND-RESTART over RPM-owned
+  files); the manual Help ▸ Check for updates outcome dialog
+  stays.
+- Add pdfcraft-drop-unused-egui-patches.patch:
+  drop unused [patch.crates-io] pins the vendor omits
+
+-------------------------------------------------------------------
 Fri Oct 23 07:09:35 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.13.0 (upstream tag v0.13.0, 2026-10-23):

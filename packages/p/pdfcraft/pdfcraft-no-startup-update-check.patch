@@ -1,0 +1,58 @@
+From: openSUSE Publishing <publishing@opensuse.org>
+Subject: [PATCH] No self-update in distro builds: no startup check, no install prompt
+Bug: none (downstream distribution policy, not upstreamable)
+
+The package manager owns updates on a distro install: do not phone
+home to the releases page on every start, and never offer to install
+an upstream release (UPDATE-AND-RESTART) over RPM-owned files. Upstream
+ships this machinery intentionally for its own builds. Help ▸ Check for
+updates stays as an explicit manual action reporting through its outcome
+dialog; only the automatic startup check and the self-update install
+prompt are turned off.
+
+--- a/apps/pdfcraft/src/main.rs
++++ b/apps/pdfcraft/src/main.rs
+@@ -424,7 +424,10 @@
+         {
+             app.motion.source = Some(motion::source());
+         }
+-        app.set_startup_update_check(true);
++        // Downstream (openSUSE): the package manager owns updates, so the
++        // desktop app must not check for (and offer to install) upstream
++        // releases on its own at startup. Manual Help ▸ Check stays.
++        app.set_startup_update_check(false);
+         app.printer_source = Some(pdfcraft_ui_egui::system_printers());
+         app.os_key_store_ids = cfg!(any(target_os = "macos", target_os = "windows"));
+         #[cfg(target_os = "macos")]
+--- a/crates/ui-egui/src/platform/updates.rs
++++ b/crates/ui-egui/src/platform/updates.rs
+@@ -2,7 +2,7 @@
+ //! `Updater`; this module supplies the suite, the quit path and the status dialog.
+
+ #[cfg(not(target_arch = "wasm32"))]
+-use craft_update::updater::{Action, CheckSource, Status, Updater};
++use craft_update::updater::{CheckSource, Status, Updater};
+ use egui::{Align, Layout};
+
+ use crate::{PdfCraftApp, theme, widgets};
+@@ -86,16 +86,10 @@
+ pub(crate) fn dialog(app: &mut PdfCraftApp, ctx: &egui::Context) {
+     #[cfg(not(target_arch = "wasm32"))]
+     {
+-        // The restart helper is scheduled before the app closes, so no update starts over unsaved work.
+-        let clean = app.first_dirty().is_none();
+-        match app.updates.updater.show_if(ctx, clean) {
+-            Action::None => {}
+-            Action::OpenUrl(url) => app.open_url(&url),
+-            Action::Close => {
+-                app.request_quit(ctx);
+-            }
+-        }
+-        // A requested check that found a release is answered by the prompt, not by this dialog.
++        // Downstream (openSUSE): never draw the self-update prompt, so no
++        // upstream release is ever installed over RPM-owned files (neither
++        // at startup nor after a manual check). The manual Check for Updates
++        // outcome dialog below stays.
+         if app.updates.open && !app.updates.check_requested && matches!(app.updates.updater.status(), Status::Idle) {
+             app.updates.open = false;
+         }

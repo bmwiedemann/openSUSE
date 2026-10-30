@@ -17,14 +17,15 @@
 
 
 Name:           pdfcraft
-Version:        0.13.0
+Version:        0.15.0
 Release:        0
 Summary:        Open-source PDF workbench
 # Legal-Review-Notice: scope is the offline vendor build of the two
-# shipped targets (-p pdfcraft -p pdfcraft-cli, 498 crates via cargo
+# shipped targets (-p pdfcraft -p pdfcraft-cli, 501 crates via cargo
 # tree -e normal). Upstream code is MIT OR Apache-2.0. Patched vendor
 # crates (vendor/): hayro 0.7.1, hayro-interpret 0.7.0, hayro-syntax
-# 0.7.2, hayro-jbig2 0.3.0, hayro-cmap 0.1.0, vello_common 0.0.8 (all
+# 0.7.2, hayro-jbig2 0.3.0, hayro-cmap 0.1.0, hayro-postscript 0.1.0
+# (new path patch in 0.14.0, stack-overflow fix), vello_common 0.0.8 (all
 # Apache-2.0 OR MIT), lopdf 0.45.0 (MIT), winit 0.30.13 (Apache-2.0),
 # egui-wgpu 0.36.2 (MIT OR Apache-2.0); licence files unchanged.
 # Embedded hayro assets: Foxit standard-14 fonts (BSD-3-Clause), Adobe
@@ -53,6 +54,20 @@ Source1:        vendor-cratesio.tar.zst
 # with the open-source PdfCraft tile; permanent downstream carry, not
 # upstreamable (upstream ships the marks intentionally).
 Patch0:         pdfcraft-no-brand-assets.patch
+# PATCH-FIX-OPENSUSE pdfcraft-no-startup-update-check.patch -- distro builds
+# must not phone home at startup nor ever install an upstream release
+# (UPDATE-AND-RESTART) over RPM-owned files; Help ▸ Check for updates stays
+# as an explicit manual action with its outcome dialog. New upstream
+# behaviour in 0.15.0, not upstreamable (upstream ships the check and the
+# self-update intentionally for its own builds).
+Patch1:         pdfcraft-no-startup-update-check.patch
+# PATCH-FIX-OPENSUSE pdfcraft-drop-unused-egui-patches.patch -- drop the
+# three unused [patch.crates-io] egui pins (egui_demo_lib,
+# egui_inspection, egui_system_font_provider, all under
+# [[patch.unused]]) so the --offline/--locked vendor build resolves;
+# egui_extras stays, crates/ui-egui uses it. Downstream build fix, not
+# upstreamable.
+Patch2:         pdfcraft-drop-unused-egui-patches.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 # aws-lc-sys via pdfcraft-sign -> aws-lc-rs compiles C sources with cmake.
