@@ -18,7 +18,7 @@
 
 
 %global backend_dir %{_libdir}/ggml
-%global upstream_build 11669
+%global upstream_build 11960
 %global license_dir %{_datadir}/licenses
 
 %global llama_sover        %{version}
@@ -27,7 +27,7 @@
 %global mtmd_sover         %{llama_sover}
 %global mtmd_sover_suffix  0
 
-%global ggml_sover         0.27.0
+%global ggml_sover         0.28.0
 %global ggml_sover_suffix  0
 
 %if 0%{?suse_version} == 1500
@@ -42,8 +42,18 @@
 %endif
 %endif
 
+%if 0%{?suse_version} >= 1699
+%ifarch x86_64
+%bcond_without hip
+%else
+%bcond_with hip
+%endif
+%else
+%bcond_with hip
+%endif
+
 Name:           llamacpp
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND ISC AND MPL-2.0
@@ -54,7 +64,6 @@ Source2:        llamacpp-third-party-licenses.txt
 Source3:        LICENSE-Apache-2.0.txt
 Source4:        LICENSE-MPL-2.0.txt
 Patch0:         skip-sme-variants-when-unsupported.patch
-Patch1:         fix-negative-top-n.patch
 BuildRequires:  cmake >= 3.14
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc13-c++
@@ -77,6 +86,13 @@ BuildRequires:  spirv-headers
 %if %{with opencl}
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(OpenCL-CLHPP)
+%endif
+%if %{with hip}
+BuildRequires:  hipblas-devel
+BuildRequires:  hipcc
+BuildRequires:  rocblas-devel
+BuildRequires:  rocm-hip-devel
+BuildRequires:  rocm-rpm-macros
 %endif
 BuildRequires:  pkgconfig(libcurl)
 %if %{with openvino}
@@ -129,6 +145,9 @@ Requires:       libggml-cpu
 %if %{with opencl}
 Recommends:     libggml-opencl
 %endif
+%if %{with hip}
+Recommends:     libggml-hip
+%endif
 Recommends:     libggml-vulkan
 
 %description -n libggml%{ggml_sover_suffix}
@@ -171,6 +190,17 @@ A tensor library for C++. It was created originally to support llama.cpp
 and WhisperCpp projects.
 
 This package includes the OpenCL backend for ggml.
+%endif
+
+%if %{with hip}
+%package -n libggml-hip
+Summary:        A tensor library for C++ (HIP/ROCm backend)
+
+%description -n libggml-hip
+A tensor library for C++. It was created originally to support llama.cpp
+and WhisperCpp projects.
+
+This package includes the HIP (AMD ROCm) backend for ggml.
 %endif
 
 %if %{with openvino}
@@ -259,6 +289,13 @@ mkdir -p %{_libdir}
     -DGGML_CPU=ON \
     -DGGML_CPU_ALL_VARIANTS=ON \
     -DGGML_VULKAN=ON \
+%if %{with hip}
+    -DGGML_HIP=ON \
+    -DAMDGPU_TARGETS=%{rocm_gpu_list_default} \
+    -DCMAKE_HIP_FLAGS="--offload-compress" \
+%else
+    -DGGML_HIP=OFF \
+%endif
 %if %{with opencl}
     -DGGML_OPENCL=ON \
 %else
@@ -291,6 +328,9 @@ for package in \
     libggml-vulkan \
 %if %{with opencl}
     libggml-opencl \
+%endif
+%if %{with hip}
+    libggml-hip \
 %endif
 %if %{with openvino}
     libggml-openvino \
@@ -406,6 +446,17 @@ done
 %license %{license_dir}/libggml-opencl/LICENSE-MPL-2.0.txt
 %dir %{backend_dir}
 %{backend_dir}/libggml-opencl.so
+%endif
+
+%if %{with hip}
+%files -n libggml-hip
+%dir %{license_dir}/libggml-hip
+%license %{license_dir}/libggml-hip/LICENSE
+%license %{license_dir}/libggml-hip/THIRD_PARTY_NOTICES
+%license %{license_dir}/libggml-hip/LICENSE-Apache-2.0.txt
+%license %{license_dir}/libggml-hip/LICENSE-MPL-2.0.txt
+%dir %{backend_dir}
+%{backend_dir}/libggml-hip.so
 %endif
 
 %if %{with openvino}

@@ -13,7 +13,7 @@ diff --git a/ggml/src/CMakeLists.txt b/ggml/src/CMakeLists.txt
 index 6283fbcec..c017927f1 100644
 --- a/ggml/src/CMakeLists.txt
 +++ b/ggml/src/CMakeLists.txt
-@@ -525,8 +525,14 @@ if (GGML_CPU_ALL_VARIANTS)
+@@ -529,8 +529,14 @@ if (GGML_CPU_ALL_VARIANTS)
              ggml_add_cpu_backend_variant(armv8.2_3    DOTPROD FP16_VECTOR_ARITHMETIC SVE)
              ggml_add_cpu_backend_variant(armv8.6_1    DOTPROD FP16_VECTOR_ARITHMETIC SVE MATMUL_INT8)
              ggml_add_cpu_backend_variant(armv8.6_2    DOTPROD FP16_VECTOR_ARITHMETIC SVE MATMUL_INT8 SVE2)

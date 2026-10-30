@@ -616,4 +616,40 @@
     <comment>1</comment>
     <requestid>1385570</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>976f99993b372da33d7679f7823732c7</srcmd5>
+    <version>0.8.0</version>
+    <time>1793380269</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-118375: Fix stack buffer overflow in the RPC RDMA
+  transport when receiving data from an unauthenticated peer.
+  * Fixed upstream in version 0.8.0.
+- CVE-2026-119052: Fix RPC server denial of service via oversized
+  message lengths causing an uncaught exception.
+  * Fixed upstream in version 0.8.0.
+- Update to version 0.8.0
+  * Drop fix-negative-top-n.patch: fixed upstream.
+  * Refresh skip-sme-variants-when-unsupported.patch.
+  * Add LFM3 text, vision, audio and omni models, DeepSeek V4.1
+    Flash, SenseNova U1, Beam, Kolibri-1, Flint, Muse Spark,
+    Granite Switch Decision, and other decision and embedding
+    models.
+  * Add experimental streaming audio input and stateful audio
+    generation to mtmd, plus Soprano TTS and MiniCPM-OCR support.
+  * Add server /v1/realtime and /tts endpoints, expose reasoning
+    effort levels, and improve router memory management and tools.
+  * Require --model or -hf in the CLI; cap DRY sequence breakers at
+    64.
+  * Rework sparse attention masking, use an SLRU cache for
+    host-resident MoE experts, and improve memory handling.
+  * Add model discovery and downloads from Hugging Face Hub,
+    conversation search and compaction to the Web UI.
+  * Update the Web UI asset tag to b11960.
+  * Update ggml to 0.28.0 with fused sparse-attention masking,
+    skipped expert indices, and backend performance improvements.
+
+- Add support for HIP backend (AMD ROCm) on Tumbleweed x86_64:
+  * Add libggml-hip subpackage</comment>
+    <requestid>1393677</requestid>
+  </revision>
 </revisionlist>
