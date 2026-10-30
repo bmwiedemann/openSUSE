@@ -31,4 +31,36 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342963</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b6329d65edbbacd8148848f345e8e193</srcmd5>
+    <version>51.1.1</version>
+    <time>1793380260</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 51.1.1:
+  * Restore the gschema file
+- Changes from version 51.1.0:
+  * Added DnD support for Flatpak/Snap
+  * Fixed little message
+
+- Update to version 51.0.9:
+  * Drop dead X11 code
+  * Added new open/close emblems to stacks
+  * Don't show for a brief moment a window icon in Dash
+  * Use org.freedesktop.FileManager1 interface to open folders
+  * Use sandboxing by default in .appimage files
+  * Updated translations.
+
+- Update to version 51.0.8:
+  + Allows to change the extension name
+  + Updated translations.
+
+- Update to version 51.0.7:
+  + Switch to track gnome-desktop-igons-ng tree, developed at
+    https://gitlab.com/rastersoft/desktop-icons-ng
+- Drop obsolete patches: desktop-icon-gnome-40.patch and
+  desktop-icons-show-iso-file-icon.patch
+
+  * desktopGrid: Open the rename popup only when item menu is</comment>
+    <requestid>1392728</requestid>
+  </revision>
 </revisionlist>

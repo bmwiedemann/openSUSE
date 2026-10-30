@@ -17,47 +17,50 @@
 
 
 Name:           gnome-shell-extension-desktop-icons
-Version:        20.10.0
+Version:        51.1.1
 Release:        0
-Summary:        Desktop icon support for GNOME Shell
+Summary:        Desktop icon NG support for GNOME Shell
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
-URL:            https://gitlab.gnome.org/World/ShellExtensions/desktop-icons
-Source:         https://gitlab.gnome.org/World/ShellExtensions/desktop-icons/uploads/5e2d0748cf79d255d7c23df6a6e6901b/desktop-icons-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM desktop-icon-gnome-40.patch dimstar@opensuse.org -- Make extension compatible with GNOME 40
-Patch0:         desktop-icon-gnome-40.patch
-# PATCH-FIX-UPSTREAM desktop-icons-show-iso-file-icon.patch bsc#1183504 glgo#GNOME/World/ShellExtensions/desktop-icons!196 xwang@suse.com -- Show ISO file icon.
-Patch1:         desktop-icons-show-iso-file-icon.patch
+URL:            https://gitlab.com/rastersoft/desktop-icons-ng
+Source:         desktop-icons-ng-%{version}.tar.xz
 
 # Needed for directory ownership
 BuildRequires:  gnome-shell >= 3.30
 # gobject-introspection is needed for the typelib() rpm magic.
 BuildRequires:  gobject-introspection
-BuildRequires:  meson >= 0.44.0
+BuildRequires:  meson >= 1.1
 Requires:       gnome-shell
 Requires:       nautilus >= 3.30.4
 Requires:       xdg-desktop-portal-gtk
 BuildArch:      noarch
 
 %description
-This package provides a GNOME Shell extension for showing the contents
-of ~/Desktop on the desktop of the Shell. Common file management
-operations such as launching, copy/paste, rename and deleting are
-supported.
+What  is it
+Desktop Icons NG for GNOME Shell. It is a fork/rewrite of the official 'Desktop Icons' extension,
+with these advantages:
+
+Drag'n'Drop, both inside the desktop, between desktop and applications, and nautilus windows
+Allows to use "Open with..." option with several files
+When hovering or clicking on an icon with a name too large to fit, it shows the full name
+Doesn't hang the compositor when there is too much activity in the desktop folder
+And much more...
 
 %prep
-%autosetup -n desktop-icons-%{version}
+%autosetup -n desktop-icons-ng-%{version}
 
 %build
 %meson \
-    --localedir=share/gnome-shell/extensions/desktop-icons@csoriano/locale
+    --localedir=share/gnome-shell/extensions/ding@rastersoft.com/locale
 %meson_build
 
 %install
 %meson_install
 
 %files
-%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.desktop-icons.gschema.xml
-%{_datadir}/gnome-shell/extensions/desktop-icons@csoriano/
+%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.ding.gschema.xml
+%{_datadir}/gnome-shell/extensions/ding@rastersoft.com/
+%dir %{_sysconfdir}/apparmor.d/
+%config %{_sysconfdir}/apparmor.d/ding@rastersoft.com
 
 %changelog
