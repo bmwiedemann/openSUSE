@@ -2529,6 +2529,7 @@ unsorted:
   - collectl 
   - colm-devel 
   - colm-doc 
+  - colonadjuster 
   - color-filesystem 
   - colord-gtk 
   - colord-gtk-doc 
@@ -15864,9 +15865,6 @@ unsorted:
   - libpython3_15-1_0 
   - libpython3_15-1_0-x86-64-v3 
   - libpython3_15t-1_0 
-  - libqaccessibilityclient-qt5 
-  - libqaccessibilityclient-qt5-0 
-  - libqaccessibilityclient-qt5-devel 
   - libqaccessibilityclient-qt6-devel 
   - libqalculate-devel 
   - libqb-devel 
@@ -17405,7 +17403,7 @@ unsorted:
   - libwmf-gnome 
   - libwmf-gnome-32bit 
   - libwmf-tools 
-  - libwmime2 
+  - libwmime3 
   - libwnck-devel 
   - libwnck-tools 
   - libwoff2common1_0_2 
@@ -17609,6 +17607,7 @@ unsorted:
   - libxmi0 
   - libxml++-2_6-2 
   - libxml++-3_0-1-32bit 
+  - libxml++-4_0-1 
   - libxml++-5_0-1 
   - libxml++-devel 
   - libxml++26-devel 
@@ -17618,6 +17617,7 @@ unsorted:
   - libxml2-16-32bit 
   - libxml2-devel 
   - libxml2-devel-32bit 
+  - libxml__40-devel 
   - libxmlb-devel 
   - libxmlb-tests 
   - libxmlbird1 
@@ -33599,8 +33599,10 @@ unsorted:
   - rdiff 
   - rdiff-backup 
   - rdii-helper 
+  - rdma-core 
   - rdma-core-devel 
   - rdma-core-devel-32bit 
+  - rdma-ndd 
   - rds-tools 
   - rds-tools-devel 
   - rdtk0-devel 
@@ -48174,6 +48176,7 @@ unsorted:
   - zcode 
   - zdbsp 
   - zeal 
+  - zed 
   - zeitgeist 
   - zeitgeist-devel 
   - zellij 
