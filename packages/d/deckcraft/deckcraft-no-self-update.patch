@@ -1,0 +1,75 @@
+From: openSUSE Publishing <publishing@opensuse.org>
+Subject: [PATCH] No self-update in distro builds: no startup check, no install prompt
+Bug: none (downstream distribution policy, not upstreamable)
+
+The package manager owns updates on a distro install: do not phone
+home to the releases page on every GUI launch, and never offer to
+install an upstream release (UPDATE-AND-RESTART) over RPM-owned
+files. Upstream ships this machinery intentionally for its own
+builds. Help ▸ Check for Updates stays as an explicit manual action
+reporting through its outcome toast; only the automatic startup
+check and the self-update install prompt are turned off.
+
+--- a/apps/deckcraft/src/main.rs
++++ b/apps/deckcraft/src/main.rs
+@@ -268,7 +268,11 @@
+             deckcraft_ui_egui::install_ime_pass_hooks(&cc.egui_ctx);
+             let mut app = SlideApp::new(Session::new(), services());
+             load_prefs(&mut app);
+-            app.enable_update_checks();
++            // Downstream (openSUSE): the package manager owns updates, so the
++            // desktop app must not check for (and offer to install) upstream
++            // releases on its own at startup (enable_update_checks() left
++            // uncalled, keeping the updater disabled). Manual Help ▸ Check
++            // stays.
+             // AutoRecover: reopen what a previous run left unsaved, then keep it current.
+             if std::env::var_os("DECKCRAFT_NO_RECOVERY").is_none() {
+                 app.session.recovery_dir = deckcraft_engine::recovery::default_dir();
+--- a/crates/ui-egui/src/dialogs/updates_ui.rs
++++ b/crates/ui-egui/src/dialogs/updates_ui.rs
+@@ -1,7 +1,7 @@
+ //! One background check at start-up (and on demand from Help) for a newer release, and the modal
+ //! prompt that offers to update and restart. The flow itself is `craft_update::updater::Updater`.
+ 
+-use craft_update::updater::{Action, Status, Updater};
++use craft_update::updater::{Status, Updater};
+ 
+ use crate::SlideApp;
+ 
+@@ -51,15 +51,11 @@
+     }
+ }
+ 
+-pub(crate) fn show(app: &mut SlideApp, ctx: &egui::Context) {
+-    // The restart helper is scheduled before the app closes, so no update starts over unsaved work.
+-    let clean = !app.session.documents().iter().any(|d| d.is_dirty());
+-    match app.updates_rt.updater.show_if(ctx, clean) {
+-        Action::OpenUrl(url) => ctx.open_url(egui::OpenUrl::new_tab(url)),
+-        // The app's close path asks about unsaved work; the restart helper relaunches once the process exits.
+-        Action::Close => ctx.send_viewport_cmd(egui::ViewportCommand::Close),
+-        Action::None => {}
+-    }
++pub(crate) fn show(_app: &mut SlideApp, _ctx: &egui::Context) {
++    // Downstream (openSUSE): never draw the self-update prompt, so no
++    // upstream release is ever installed over RPM-owned files (neither
++    // at startup nor after a manual check). The manual Help ▸ Check for
++    // Updates outcome (tick() toast) stays.
+ }
+ 
+ #[cfg(test)]
+@@ -67,12 +63,13 @@
+     use super::*;
+ 
+     #[test]
+-    fn an_offered_release_opens_the_prompt() {
++    fn an_offered_release_never_opens_the_prompt() {
++        // Downstream (openSUSE): the self-update prompt is neutered.
+         let mut app = SlideApp::new(deckcraft_engine::Session::new(), crate::Services::default());
+         let ctx = egui::Context::default();
+         assert!(!app.updates_rt.updater.prompt_open());
+         app.updates_rt.updater.offer(craft_update::Release { tag: "v99.0.0".into(), ..Default::default() });
+         ctx.run_ui(egui::RawInput::default(), |ui| show(&mut app, ui.ctx())).textures_delta.clear();
+-        assert!(app.updates_rt.updater.prompt_open());
++        assert!(!app.updates_rt.updater.prompt_open());
+     }
+ }

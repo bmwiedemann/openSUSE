@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 29 12:40:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.0 (upstream tag v0.12.0, 2026-10-28):
+  * Startup update prompt with direct self-updating; new
+    craft-update/craft-ui/craft-i18n helpers from craft-libs
+  * UI toolkit egui 0.36 -> 0.37; every dropdown uses the
+    shared ComboBox; proofing language for the whole deck
+  * Fixes for HTML paste panics, picture/object preview
+    fills, trendline sums, table command errors, layout
+    index validation and PPTX import/export details
+  * Hardening (no CVE assigned): media decoders bounded
+    against resource amplification and unbound state
+  * Largely refactoring, installer and CI work otherwise;
+    no install layout change
+  * Re-vendor (update=true): new crates (ureq/rustls stack,
+    zip 9, time, tar, postcard, quick-xml 0.42, icu 2.3)
+    all under already-listed licences; webpki-root-certs
+    is dev/wasm-only and not linked; licence set and
+    Legal-Review-Notice unchanged; cargo_audit reports no
+    advisories.
+- Set the fixed metainfo release date to 2026-10-28 (v0.12.0).
+- Disable in-app self-update (PATCH-FIX-OPENSUSE
+  deckcraft-no-self-update.patch): no startup update check and no
+  install prompt, so upstream releases are never installed over
+  RPM-owned files; the manual Help check outcome toast stays.
+- Add deckcraft-drop-unused-egui-patches.patch:
+  drop unused [patch.crates-io] pins the vendor omits
+
+-------------------------------------------------------------------
 Mon Oct 26 11:11:12 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.11.1 (upstream tag v0.11.1, 2026-10-25):
