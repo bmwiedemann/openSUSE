@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Oct 10 16:04:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.1:
+  * Fix baseline race in direct connection test.
+  * Fix typecasting macros in atspi-application.h.
+  * At-spi-bus-launcher: Clean up dbus-daemon when terminating from signals
+    other than SIGTERM.
+
+-------------------------------------------------------------------
+Wed Sep 30 16:22:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Thu Sep 17 06:50:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.0.1:
+  + This is functionally equivalent to 2.62.0, but the tag for
+    2.62.0 was not signed.
+
+-------------------------------------------------------------------
+Wed Sep 16 21:41:47 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.0:
+  + atk-bridge: Release disconnected direct connections.
+
+-------------------------------------------------------------------
+Wed Sep 16 21:41:46 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.61.90:
+  + libatspi: Fix transfer annotation on
+    atspi_document_get_text_selections.
+  + Add a Ready signal to org.a11y.atspi.Cache.
+  + Add ATSPI_STATE_DEFAULT as an alias for ATSPI_STATE_IS_DEFAULT,
+    so that StateChanged signals for the equivalent atk state are
+    handled.
+
+-------------------------------------------------------------------
+Wed Sep 16 21:41:45 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.61.1 (synced fixes from 2.60.6):
+  + atk-bridge: Attempt to fix a crash in
+    get_registered_event_listeners
+  + AtspiDevice: Avoid assigning 0 as a grab id
+  + Remove G_GNUC_CONST from *_get_type_declarations
+
+-------------------------------------------------------------------
+Wed Sep 16 21:41:44 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.61.0:
+  + Add atspi_set_g_main_loop_reentrancy. If this is enabled, then
+    libatspi will use a GMainLoop when waiting for replies from
+    DBus calls. This is off by default but can be enabled in cases
+    where reentrancy is needed.
+  + at-spi-bus-launcher: Rework the way org.a11y.Status.IsEnabled
+    is handled. At-spi-bus-launcher now listens for ATs registering
+    events and assumes that accessibility is enabled if events are
+    registered, rather than relying on the value of a gsettings
+    key.
+  + meson: Build dbind with -DG_LOG_DOMAIN=atspi.
+  + libatspi: Disable direct DBus connections if ATSPI_DISABLE_P2P
+    is set.
+  + Do not call GetItems if ATSPI_NO_CACHE is set.
+
+-------------------------------------------------------------------
 Wed Sep 16 15:25:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.60.7:

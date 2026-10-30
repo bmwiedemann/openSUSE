@@ -23,7 +23,7 @@
 %define atspiconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}
 
 Name:           at-spi2-core
-Version:        2.60.7
+Version:        2.62.1
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
@@ -39,11 +39,11 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  pkgconfig(dbus-1) >= 1.5
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.28.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.67.4
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.1
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xtst)

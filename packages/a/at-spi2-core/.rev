@@ -2878,4 +2878,12 @@
   + atk-bridge: Release disconnected direct connections.</comment>
     <requestid>1378743</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>1cde9831e5a23005861339c338c64aad</srcmd5>
+    <version>2.62.1</version>
+    <time>1793379923</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385389</requestid>
+  </revision>
 </revisionlist>
