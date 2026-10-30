@@ -1,4 +1,161 @@
 -------------------------------------------------------------------
+Mon Oct 12 11:00:21 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.1:
+  * Bugfixes:
+    + Fix reusing tabs when opening locations from shell
+    + Fix unwritable file indicator
+    + Focus Replace button by default in conflict dialog
+    + Disable markup syntax on property extension rows
+    + Fix leak in audio/video extension
+    + Fix setting custom icons in properties
+    + Assure thumbnails in properties are fitted into a square
+    + Fix properties window not showing checker background
+    + Fix various leaks and errors without reports
+    + Don't abort on invalid boolean metadata
+    + Respect GTK4 file chooser's folder sorting default settings
+    + Fix properties dialog sometimes opening too small
+  * Cleanups:
+    + Require GTK 4.24
+    + Prevent unnecessary relinking on every build caused by Blueprint files
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Mon Oct 12 11:00:20 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Mon Oct 12 11:00:19 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Temp disable test-suite until we figure out the intermitten test
+  fail.
+
+-------------------------------------------------------------------
+Mon Oct 12 11:00:18 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0.1:
+  + Bugfix: Fix metainfo release description syntax.
+
+-------------------------------------------------------------------
+Mon Oct 12 11:00:17 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Bugfix: Fix a possible crash when changing app defaults after
+    closing the app chooser
+  + Cleanups: Adjust to renamed sushi devel name
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 11:00:16 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Enhancements:
+    - Add tests for image, files-view, properties
+    - Add shortcut to focus file chooser filename entry
+    - Delay clearing of the view for smoother navigation
+    - Add rename, trash and folder opening functionality to
+      previewer
+    - Use type-to-search pattern in app-chooser
+    - Mark network address entry invalid on the a11y layer when
+      appropriate
+    - Announce feedback text to screen readers in filename entries
+  + Bugfixes:
+    - Fix tab overview behavior with single tab
+    - Fix empty list state in app-chooser
+    - Only show apps in one section in app-chooser
+    - Show parent folder row when properties dialog is detached
+    - Fix memory trimming on window closure
+    - Correctly fix non-keypad shortcuts in menus
+    - Close app when only property windows are left
+    - Restore focus and selection if a file gets removed
+  + Cleanups:
+    - Drop view-related context menu entries
+    - Add and use recursive directory iterator helper
+    - Attempt using any sushi version
+  + Updated translations.
+- Enable tests during build again.
+
+-------------------------------------------------------------------
+Mon Oct 12 11:00:15 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Enhancements:
+    - Use AdwTabOverview in narrow mode
+    - Open locations from other apps in new tabs
+    - Add an empty document menu entry in case of empty templates
+      directory
+    - Ignore most duplicate app entries in the app chooser
+    - Add gobject-linter CI job
+    - Move search focus to higher relevance result
+    - Use AdwComboRow for open action preference
+    - Hide redundant 'Open Parent Folder' properties row
+    - Use dedicated symbolic for Projects bookmark icon
+    - Adjust sidebar width limit
+    - Don't duplicate loading locations
+  + Bugfixes:
+    - Show non-keypad shortcuts in menus
+    - Handle timed dialogs being destroyed before their timeout
+    - Put g_set_date_time behind a guard
+    - Fix memory leak in action_create_links_in_place
+    - Correctly position related apps in the app chooser
+  + Cleanups:
+    - Apply gobject-linter fixes
+    - Clean up NautilusWindowSlot internals
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct 12 11:00:14 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Enhancements:
+    - Show selected items count badge while dragging multiple files
+    - Combine '.' and '..' name errors in validators
+    - Hide parent folder for mount root children
+    - Don't show placeholder trashed info for multiple files or the
+      Trash in properties
+    - Add a tooltip to properties detach window button
+    - Show either an unreadable or read-only emblem
+    - Show symbolic link emblem before read-only/unreadable
+    - Adjust non-indexed search description in info popover
+    - Advertise notification categories for file and mount/unmount
+      operations
+    - Slightly enhance view reloading performance
+    - Add more tests for bookmarks list, icon-info, image widget,
+      file creation, and thumbnailing
+  + Bugfixes:
+    - Show the correct starred status and normal features of
+      properties in Recents
+    - Don't unselect when right clicking the view's background
+    - Don't override manual selection with file operation results
+    - Fix a bug where copied files are not selected after the
+      operation has ended
+    - Removed several usages of blocking IO in the main thread
+    - Fixed "Window is ready" notification when other apps call
+      "Open location" instead of raising the window
+    - Fix Escape not closing the app chooser dialog when the entry
+      is focused
+    - Fix accessibility label and description of view mode button
+    - Fix thumbnail not being updated while loading is some cases
+    - Fixed leaks
+    - Remove redundant bookmark list updates signals
+    - Fix loading getting stuck while thumbnailing in flatpak
+  + Cleanups:
+    - Various dead code removals and simplifications
+    - Reduce the usage of deprecated APIs
+    - Fix gdbus commands in CONTRIBUTING.md
+    - Renable compilation of localsearch test but keeep skipping
+      them
+    - Use newer image widget for previews in properties and
+      conflict dialog
+    - Use libgxdp for the file chooser window attachment and remove
+      the local copy
+    - Moved thumbnails test to display suite
+  + Updated translations.
+- Add libgxdp submodule and add as source.
+
+-------------------------------------------------------------------
 Sun Oct 11 08:33:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.4:
@@ -4895,7 +5052,6 @@ Wed Jul 23 11:53:46 CDT 2008 - maw@suse.de
   + Use UTF-8 dash for properties window instead of "--"
 - Drop nautilus-bnc397852-huge-memory-leak.patch, as it's now
   upstream.
-
 
 -------------------------------------------------------------------
 Fri Jul 18 10:49:52 CEST 2008 - rodrigo@suse.de

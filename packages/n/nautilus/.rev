@@ -1946,4 +1946,12 @@ Hence, recommended to be added to 12.3</comment>
 - Changes from SLE version 3.34.3 (bsc#1171506):</comment>
     <requestid>1384257</requestid>
   </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>8ef8ed3b2ba03821932c2b0062350a55</srcmd5>
+    <version>51.1</version>
+    <time>1793380090</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385455</requestid>
+  </revision>
 </revisionlist>
