@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 28 23:26:38 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Fix NetworkManager ca-certificates location
+  * By default /usr/share/ca-certificates is used. Set it to
+    /var/lib/ca-certificates/pem
+
+-------------------------------------------------------------------
 Wed Sep  9 08:20:40 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.1.0

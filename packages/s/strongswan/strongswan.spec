@@ -278,6 +278,7 @@ autoreconf --force --install
 %endif
 %if %{with nm}
 	--enable-nm \
+	--with-nm-ca-dir=%{_sharedstatedir}/ca-certificates/pem \
 %else
 	--disable-nm \
 %endif
