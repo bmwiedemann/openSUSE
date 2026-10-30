@@ -1,0 +1,22 @@
+Index: gdm-51.1.1/daemon/gdm-manager.c
+===================================================================
+--- gdm-51.1.1.orig/daemon/gdm-manager.c
++++ gdm-51.1.1/daemon/gdm-manager.c
+@@ -64,6 +64,8 @@
+ #define BLOCK_INITIAL_SETUP LOCALSTATEDIR "/lib/gdm/block-initial-setup"
+ #define INITIAL_SETUP_EXPORT_DIR GDM_RUN_DIR "/gnome-initial-setup"
+ 
++#define PLYMOUTH_QUIT_TIMEOUT 20
++
+ static GQuark gdm_display_user_session_quark;
+ static GQuark gdm_display_reauth_pid_of_caller_quark;
+ static GQuark gdm_session_remote_id_quark;
+@@ -762,7 +764,7 @@ gdm_manager_handle_register_session (Gdm
+ 
+                 if (display_is_local && self->plymouth_quit_timeout_id == 0) {
+                         self->plymouth_quit_timeout_id =
+-                                g_timeout_add_seconds_once (REGISTER_DISPLAY_TIMEOUT,
++                                g_timeout_add_seconds_once (PLYMOUTH_QUIT_TIMEOUT,
+                                                             plymouth_quit_timeout_cb,
+                                                             self);
+                 }

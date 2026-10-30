@@ -27,7 +27,7 @@
 %endif
 
 Name:           gdm
-Version:        50.3
+Version:        51.1.1
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
@@ -67,6 +67,8 @@ Patch2:         gdm-initial-setup-hardening.patch
 Patch3:         gdm-service-keytable.patch
 # PATCH-FIX-OPENSUSE gdm-fix-tty1-mode.patch bsc#1250688 xwang@suse.com -- Fix invalid tty1 state
 Patch4:         gdm-fix-tty1-mode.patch
+# PATCH-FIX-UPSTREAM gdm-timeout-for-plymouth-quit.patch bsc#1270027 glgo#GNOME/gdm!414 xwang@suse.com -- Use a separate timeout for the plymouth quit
+Patch5:         gdm-timeout-for-plymouth-quit.patch
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
@@ -85,17 +87,17 @@ BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.35
 BuildRequires:  pkgconfig(audit)
-BuildRequires:  pkgconfig(check)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(check) >= 0.9.4
+BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.12
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.1
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(libkeyutils)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ply-boot-client)
@@ -381,7 +383,6 @@ fi
 %files
 %license COPYING
 %doc AUTHORS NEWS README.md
-%doc %{_datadir}/help/C/%{name}/
 %dir %config %{_sysconfdir}/gdm
 %config %{_sysconfdir}/gdm/[IPXl]*
 %{_sbindir}/gdm

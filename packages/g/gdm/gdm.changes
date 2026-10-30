@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Mon Oct 26 03:17:22 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-timeout-for-plymouth-quit.patch: Use a separate timeout
+  for the plymouth quit (bsc#1270027 glgo#GNOME/gdm!414)
+
+-------------------------------------------------------------------
+Wed Oct 21 06:21:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.1.1:
+  * Fixed headless user display creation erroring out.
+
+-------------------------------------------------------------------
+Sat Oct 17 10:07:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.1:
+  * Improve the reliability of our GPU-is-ready detection (corrected the code
+    that checks for the boot_display sysfs attribute)
+  * Restricted which PAM stacks GDM will run, to defend against malicious
+    greeters
+  * Oo7 enablement for Arch Linux's PAM stacks
+  * Fixed bug where gnome-headless-session@<user>.service would stop working if
+    the user logs out from within the headless session
+  * Changed behavior of RemoteDisplayFactory API to wait for the new headless
+    display to have a `session-id` set before returning/exporting it. This is a
+    backwards-compatible change that makes it easier to use this API
+  * Code cleanups
+  * Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 30 16:49:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Tue Sep 15 08:31:20 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Fixed some memory leaks
+  + Correctness improvements to GDM's PAM extensions
+  + Fixes to remote login with Kerberos
+  + Updated translations.
+- Rebase gdm-initial-setup-hardening.patch.
+
+-------------------------------------------------------------------
+Fri Sep  4 15:20:32 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc:
+  + Follow-up bugfix for $GDM_AUTH_SESSION_ID
+  + Follow-up bugfix for redone PAM service loading logic
+  + Follow-up bugfix for pam_gdm keyring buffer bounds check
+  + Fixed a couple crashes and memory leaks
+  + Introduced pre-authenticated remote displays, for Kerberos
+    authentication in gnome-remote-desktop
+  + Updated Fedora's PAM rules to include support for oo7 instead
+    of gnome-keyring
+  + Translation updates
+
+-------------------------------------------------------------------
+Fri Sep  4 15:20:31 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Fixed autologin bypass where a compromised greeter could
+    request autologin for any local account by sending arbitrary
+    usernames via BeginAutoLogin
+  + Dropped unused `enable-web-authentication` and
+    `enable-passkey-authentication` gsettings keys from the
+    `org.gnome.login-screen` schema
+  + Introduced PAM substack safety net, such that authentication
+    cannot by bypassed on systems where authselect hasn't
+    configured a PAM service file for a specific authentication
+    method (i.e. `gdm-switchable-auth`)
+  + Fixed double-free in session worker
+  + Reworked build script for installing PAM service files into
+    modern search path
+  + Redid PAM service loading logic in GDM, to introduce meaningful
+    error messages whenever PAM services aren't found
+  + Fixed memory leaks in PAM extensions
+  + Fixed denial of service where an invalid session name from the
+    greeter would cause the entire daemon to exit, terminating all
+    active sessions
+  + Adjusted D-Bus object path generation for
+    /org/gnome/DisplayManager/Displays/* to fix ASLR leak
+  + Fixed input sanitation when forwarding unknown usernames to
+    audit subsystem
+  + Fixed passphrase handling in pam_gdm to wipe cached plaintext
+    passwords before freeing and to bound the keyring buffer walk
+    preventing out-of-bounds reads
+  + Fixed path traversal vulnerability where a compromised greeter
+    could load arbitrary .desktop files via SelectSession,
+    potentially executing attacker-controlled commands as the
+    authenticated user
+  + Introduced $GDM_AUTH_SESSION_ID environment variable, which
+    communicates the logind session ID of the caller that requested
+    authentication. This will be used for smartcard redirection for
+    remote sessions
+
+-------------------------------------------------------------------
+Fri Sep  4 15:20:30 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Compatibility with kmsconvt
+  + Add checks to make sure PAM plugins don't drop fsuid privilges
+    and break GDM
+  + Reworked the way GDM constructs XDG_DATA_DIRS for its launch
+    environment, so that it will no longer hard-code /usr/share at
+    a higher priority than /usr/local/share. This behavior would
+    prevent people from locally hacking on gnome-shell with
+    --prefix=/usr/local without also having to rebuild GDM with the
+    same prefix
+  + Reworked conflicting session logic to use logind for
+    enumeration. Previously, GDM would only look for sessions it
+    started itself, but that would cause it to miss conflicting
+    sessions started externally, such as those from ThinLinc or
+    TigerVNC
+  + Fixed bug where plymouth never quit on headless or no-monitor
+    systems, which would prevent the system from ever reaching
+    graphical.target
+  + Added setting to change the fallback session. This is the
+    session that gets used whenever a user doesn't have a preferred
+    session selected, or their preferred session is unusable.
+    Sysadmins can use this setting to change the selected session
+    for users that have never logged into the system before
+  + Fixed bug where GDM would start X11 sessions with
+    XDG_SESSION_TYPE=wayland
+  + Fixed PAM handling code to notify PAM modules when we've
+    switched user and are about to exec the session leader. This
+    fixes PAM modules like pam_cap.so in its `defer` mode
+  + Removed unnecessary `SetRemoteId` method from the remote
+    display DBus API
+  + Added setting to turn off local greeter sessions, for
+    headless-only systems
+  + Removed unused settings
+  + Documented remote display DBus API
+  + Documented GDM's settings
+  + Dropped dconf override of
+    org.gnome.desktop.session.session-name, and instead
+    gnome-session is now explicitly told to launch the GDM login
+    screen UI even if dconf overrides fail to get applied
+  + Addressed warnings from Fedora's static analyzer
+  + Fixed bug where the kernel's VT cursor may flicker during the
+    transition between graphical sessions (i.e. at log out)
+  + Dropped ancient GDM docs, which have been out of date for a
+    very long time and are entirely inaccurate now.
+  + Fixed some more misc. bugs: memory leaks, crashes, etc NOTE: In
+    the previous 50.X release series, we removed GDM's ability to
+    execute the various PreSession/PostSession/etc scripts as part
+    of the X11 removal. However, it turned out that some people
+    were using these hook points on Wayland, despite their limited
+    functionality there. Still, the feature is gone for good, and I
+    wanted to make sure it's listed in the changelog. See the issue
+    for more details and context:
+    https://gitlab.gnome.org/GNOME/gdm/-/work_items/1059
+
+-------------------------------------------------------------------
 Wed Sep  2 20:03:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.3:
@@ -420,9 +574,9 @@ Mon Apr  7 15:06:20 UTC 2025 - Joan Torres <joan.torres@suse.com>
 
 - Disable X11 support on SLE:
   * SLFO will only support Wayland
-  * This is required to avoid a fallback to X11 sessions which 
+  * This is required to avoid a fallback to X11 sessions which
     makes GDM crash
-  * With this change gdm-exclude-61-gdm-rules-file.patch is 
+  * With this change gdm-exclude-61-gdm-rules-file.patch is
     not needed anymore
 
 -------------------------------------------------------------------
@@ -1251,7 +1405,7 @@ Fri Apr 10 09:12:37 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 Wed Mar  4 09:44:06 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Add gdm-disable-wayland-on-mgag200-chipsets.patch: disable wayland
-  on mgag200 chipsets, this patch used to be part of 
+  on mgag200 chipsets, this patch used to be part of
   gdm-disable-wayland-on-unsupported-chipsets.patch which was dropped,
   however the mgag200 part is still not fixed by upstream. So we should
   keep this part to make sure GNOME works properly on mgag200 chipsets
@@ -5190,8 +5344,6 @@ Thu Aug 30 20:35:45 CEST 2007 - maw@suse.de
   validate with this dtd.  (Dave Fincher)
 
 - Plus translation updates for a plethora of locales.
-
-
 
 -------------------------------------------------------------------
 Fri Aug 17 00:20:34 CEST 2007 - hpj@suse.de
