@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 20:07:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Thu Jul 30 02:49:22 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add evince-CVE-2026-63729.patch: Fix use-after-free in
@@ -333,8 +338,8 @@ Mon May 23 14:06:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 Tue Apr 19 17:03:43 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 42.1
-  + Fix use-after-free. 
-  + Updated translations. 
+  + Fix use-after-free.
+  + Updated translations.
 
 -------------------------------------------------------------------
 Sat Mar 19 13:51:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -940,7 +945,7 @@ Mon Jun  3 18:51:09 UTC 2019 - mgorse@suse.com
 Fri May 17 20:03:45 UTC 2019 - mgorse@suse.com
 
 - Remove Supplements from psdocument package, so that it isn't
-  pulled in by default (boo#1122794). 
+  pulled in by default (boo#1122794).
 
 -------------------------------------------------------------------
 Thu Mar 14 18:54:57 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -1413,7 +1418,7 @@ Mon Jul  4 07:10:43 UTC 2016 - zaitor@opensuse.org
     - Allow to pass URIs to the previewer (bgo#766531).
     - Remove the MimeType association from the previewer desktop
       file (bgo#744893).
-  + Bugs fixed: 
+  + Bugs fixed:
     - Fix build with GCC 6.
     - Fix calculation of the maximum width of page selector
       (bgo#764771).
@@ -3367,7 +3372,7 @@ Thu Apr 16 14:16:22 CEST 2009 - vuntz@novell.com
 -------------------------------------------------------------------
 Thu Mar 26 15:17:16 CET 2009 - crrodriguez@suse.de
 
-- use --disable-static instead of removing static libraries at %install 
+- use --disable-static instead of removing static libraries at %install
 
 -------------------------------------------------------------------
 Mon Mar 16 23:16:39 CET 2009 - mboman@suse.de
@@ -3447,7 +3452,7 @@ Thu Feb  5 06:08:26 CET 2009 - mboman@suse.de
   + Use versioned directory for backends (bgo#569082)
   + Add EV_DEFINE_BOXED_TYPE and EV_DEFINE_INTERFACE macros
     (bgo#568228)
-  + Sync EggToolbarEditor with libegg 
+  + Sync EggToolbarEditor with libegg
   + Respect directory umask and setgid when saving files
     (bgo#568593)
   + Add libtool versioning, pkg-config files and single headers for
@@ -3632,7 +3637,7 @@ Thu Apr 10 16:56:09 CEST 2008 - maw@suse.de
 -------------------------------------------------------------------
 Mon Mar 17 19:11:30 CET 2008 - rodrigo@suse.de
 
-- Tag patches 
+- Tag patches
 
 -------------------------------------------------------------------
 Fri Mar 14 04:25:04 CET 2008 - maw@suse.de
@@ -3773,7 +3778,7 @@ Tue Sep 18 15:44:18 CEST 2007 - maw@suse.de
 -------------------------------------------------------------------
 Sun Sep 16 20:14:09 CEST 2007 - jpr@suse.de
 
-- Add evince-poppler-0.5.4-ifdef-cleanup.patch which augments 
+- Add evince-poppler-0.5.4-ifdef-cleanup.patch which augments
   evince-poppler-0.5.4.patch.  The original patch caused print
   rendering code to be #ifdef'ed out and overloaded the meaning of an
   #ifdef variable (#310058))
@@ -3846,17 +3851,17 @@ Tue Aug  7 22:53:47 CEST 2007 - maw@suse.de
 -------------------------------------------------------------------
 Thu Aug  2 19:56:41 CEST 2007 - mauro@suse.de
 
-- Remove the ExcludeArch per Ro request. 
+- Remove the ExcludeArch per Ro request.
 
 -------------------------------------------------------------------
-Wed Aug  1 18:19:32 CEST 2007 - mauro@suse.de 
+Wed Aug  1 18:19:32 CEST 2007 - mauro@suse.de
 
-- Update to version 0.9.3 
+- Update to version 0.9.3
 - Added an ExcludedArch for ia64 and s390
 - Fix a header problem with ev-link, use new gtk tooltips when available
- instead of ev-tooltip. 
-- Fix compile warnings, fix memory leak,  
-- Bugfix for bug #396535, #449462, #460862, #437681, #460909, #458111, 
+ instead of ev-tooltip.
+- Fix compile warnings, fix memory leak,
+- Bugfix for bug #396535, #449462, #460862, #437681, #460909, #458111,
   #455667, #452872, #449734, #452850, #349433,  #450148, #415032.
 
 -------------------------------------------------------------------
@@ -3891,7 +3896,7 @@ Thu Jun  7 13:06:39 CEST 2007 - sbrabec@suse.cz
 Mon May 14 19:10:54 CEST 2007 - pgajdos@suse.cz
 
 - removed gnome-icon-theme and hicolor-icon-theme from both
-  Requires and BuildRequires [#247450] 
+  Requires and BuildRequires [#247450]
 
 -------------------------------------------------------------------
 Fri Apr 20 14:53:31 CEST 2007 - aj@suse.de
@@ -3905,7 +3910,7 @@ Wed Apr 11 13:28:02 CDT 2007 - maw@suse.de
 - Bugfixes:
   * Default resolutions used  when it's not provided by TIFF
     document (Carlos Garcia Campos)
-  * Added support for ps, eps and compressed documents 
+  * Added support for ps, eps and compressed documents
     thumbnails (Carlos Garcia Campos)
   * Implemented font color specials in the DVI backend (Ricardo Markiewicz)
   * DOCUMENTS folder from xdg-data-dirs is used as default folder when
@@ -3961,7 +3966,7 @@ Thu Dec  7 13:00:35 CET 2006 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Nov 13 19:15:13 CET 2006 - jhargadon@suse.de
 
-- re-enabling evince-desktop.patch to resolve bug #220232 
+- re-enabling evince-desktop.patch to resolve bug #220232
 
 -------------------------------------------------------------------
 Tue Oct 17 22:10:06 CEST 2006 - jhargadon@suse.de
@@ -3973,12 +3978,12 @@ Tue Oct 17 22:10:06 CEST 2006 - jhargadon@suse.de
     * Document size is guessed correctly
     * Icons are installed in correct folders
     * Memory leak fixed, etc
-- translation updates 
+- translation updates
 
 -------------------------------------------------------------------
 Fri Oct 13 19:05:00 CEST 2006 - jhargadon@suse.de
 
-- Update for gnome-doc-utils-devel 
+- Update for gnome-doc-utils-devel
 
 -------------------------------------------------------------------
 Thu Sep 14 01:45:21 CEST 2006 - jhargadon@suse.de
@@ -3999,7 +4004,7 @@ Fri Aug 18 19:32:54 CEST 2006 - jhargadon@suse.de
 - Sidebar is unified with Epiphany
 - Escape unfocus page entry
 - Memory leak fixes
-- updated translations 
+- updated translations
 
 -------------------------------------------------------------------
 Thu Aug  3 00:07:37 CEST 2006 - gekker@suse.de
@@ -4085,18 +4090,18 @@ Wed Nov  9 13:03:56 CET 2005 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri Sep  2 19:01:40 CEST 2005 - gekker@suse.de
 
-- Update to version 0.4.0 
+- Update to version 0.4.0
 
 -------------------------------------------------------------------
 Thu Aug 18 22:36:36 CEST 2005 - gekker@suse.de
 
 - Update to version 0.3.4
-- Put evince in correct desktop category 
+- Put evince in correct desktop category
 
 -------------------------------------------------------------------
 Thu Jul 21 23:48:34 CEST 2005 - gekker@suse.de
 
-- Update to version 0.3.2 
+- Update to version 0.3.2
 
 -------------------------------------------------------------------
 Tue May 24 18:43:04 CEST 2005 - sbrabec@suse.cz

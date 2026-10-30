@@ -45,29 +45,29 @@ BuildRequires:  texlive-devel
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(adwaita-icon-theme) >= 2.17.1
 BuildRequires:  pkgconfig(appstream-glib)
-BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.22
-BuildRequires:  pkgconfig(gi-docgen)
+BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.29
+BuildRequires:  pkgconfig(gi-docgen) >= 2021.1
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.0
 BuildRequires:  pkgconfig(gspell-1) >= 1.6.0
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libarchive) >= 3.6.0
 BuildRequires:  pkgconfig(libgxps) >= 0.2.1
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.5
 BuildRequires:  pkgconfig(libspectre) >= 0.2.0
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
-BuildRequires:  pkgconfig(poppler-glib) >= 22.02.0
+BuildRequires:  pkgconfig(poppler-glib) >= 22.05.0
 BuildRequires:  pkgconfig(sm) >= 1.0.0
-BuildRequires:  pkgconfig(synctex) >= 1.18
+BuildRequires:  pkgconfig(synctex) >= 1.19
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 # Disable the browser plugin and package, and make main package provide-obsolete plugin package for upgrade; see bgo#738270
