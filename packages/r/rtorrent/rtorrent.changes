@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 30 00:21:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.27
+  * Keep a magnet's saved start flag and commands on session reload
+  * Refuse view and download changes from view filter and sort
+    commands
+  * Keep session saves when optional file mode adjustment fails
+
+-------------------------------------------------------------------
 Sat Oct 24 11:03:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.26
