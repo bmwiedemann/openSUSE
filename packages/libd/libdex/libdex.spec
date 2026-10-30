@@ -20,7 +20,7 @@
 %bcond_with profiling
 
 Name:           libdex
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Library supporting "Deferred Execution" for GNOME and GTK
 License:        LGPL-2.1-or-later
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(atomic_ops)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.87
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(liburing)
+BuildRequires:  pkgconfig(liburing) >= 0.7
 %if %{with profiling}
 BuildRequires:  pkgconfig(sysprof-capture-4)
 %endif

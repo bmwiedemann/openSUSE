@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:32:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Sun Sep 13 10:41:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.0:
+  + Testsuite additions to validate implementation
+
+-------------------------------------------------------------------
+Sun Aug  2 19:59:55 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.beta:
+  + DexStateMachine transition callbacks now use
+    DexStateTransitionContext, allowing callbacks to inspect
+    transition edges, publish intermediate states, and continue
+    directly through another edge
+  + Add dex_state_machine_wait_for_state(),
+    dex_state_machine_get_requested_state(), and cooperative
+    transition interruption with dex_state_machine_interrupt() and
+    dex_state_transition_context_wait_for_interrupt()
+  + Rework thread-pool work stealing so idle workers can sleep
+    instead of continuously scanning their peers, while improving
+    work distribution and fixing queue sizing and worker-set
+    lifetime issues
+  + Fix using libdex as a Meson subproject with GDBus code
+    generation enabled
+  + Remove incorrect G_GNUC_CONST annotations for compatibility
+    with newer GCC
+  + Expand state-machine, scheduler, and thread-pool documentation
+    and tests providing a simple API to track state machine
+    transitions, including in-fiber transition continuations with
+    DexStateTransitionContext and requested state tracking.
+
+-------------------------------------------------------------------
+Thu Jul  2 09:24:16 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.alpha:
+  + This is an alpha release for the upcoming GNOME 51.
+  + Dropped the gconstructor for `dex_init()` which means
+    applications must call `dex_init()` at startup themselves from
+    `main()`.
+  + New DexLimiter API for bounded concurrency with explicit
+    acquire/release, automatic permit management while running
+    fibers, and close/reject behavior for queued work
+  + New timeout wrappers for futures: dex_future_with_timeout(),
+    dex_future_with_timeout_msec(),
+    dex_future_with_timeout_seconds(), and
+    dex_future_with_deadline()
+  + Additional GFile async wrappers for temporary directories, copy
+    with progress, trash, append, partial content loading, byte
+    loading, filesystem info queries, default handler lookup,
+    enclosing mount lookup, display-name changes, read/write
+    open/create/replace variants, string content replacement, and
+    symbolic link creation
+  + Additional GIO async wrappers for GAppInfo, GDataInputStream,
+    GOutputStream, GSocketClient, GSocketConnection,
+    GTlsConnection, GDtlsConnection, GResolver, GNetworkMonitor,
+    GProxy, GProxyResolver, GSubprocess, GTlsDatabase,
+    GTlsInteraction, GPermission, and GUnixConnection
+  + New DexCoroutine stackless future type with helpers for
+    suspending on pending futures, plus
+    dex_scheduler_spawn_coroutine()
+  + New DexTaskGroup API for structured concurrency with close,
+    cancel, and cancel-on-error behavior
+  + New DexThreadPool API for bounded threaded work queues
+  + New dex_limiter_run_on_pool(), dex_limiter_run_coroutine(), and
+    dex_limiter_close_after_drain()
+  + New dex_aio_open() and dex_aio_close()
+  + New dex_fiber_yield()
+  + New DEX_DEFINE_CLOSURE_TYPE() helper for closure-like state
+    structs
+  + New dex_set_object() helper and DexObject property support for
+    DexFuture values
+  + New dex_promise_resolve_enum()
+  + New DexStateMachine API to simplify asynchronous state machines
+    with fibers providing a simple API to track state machine
+    transitions
+  + Future debug names are now enabled by default when compiling
+    with GCC and fibers emit Sysprof marks for their duration
+  + Fix DexObject weak-reference retargeting to avoid a possible
+    lock inversion during finalization
+  + Fix DexChannel receive_all() to unblock queued senders after
+    draining bounded channel capacity
+  + Fix DexDelayed chaining so release waits for the wrapped future
+    in the correct direction
+  + DexPosixAioBackend now delays threadpool startup until the
+    first work item is enqueued.
+  + Make DexSemaphore user-space only
+  + Build system fixes for gio-unix dependency propagation
+  + Fix clang testsuite compatibility around atomic addition
+  + Documentation additions for limiters, timeout-gated futures,
+    coroutines, task groups, thread pools, schedulers, debugging,
+    and GIO wrappers
+  + Testsuite additions for limiters, timeout passthrough behavior,
+    delayed futures, channel receive_all(), weak-reference
+    retargeting, GIO wrappers, AIO, coroutines, fibers, task
+    groups, thread pools, DexObject, and DexTest helpers
+
+-------------------------------------------------------------------
 Mon Apr  6 02:55:06 UTC 2026 - Federico Mena Quintero <federico@suse.com>
 
 - Update suse_version macro for 1610 (jsc#PED-15830)
