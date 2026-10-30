@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 30 17:12:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Mon Sep 14 15:48:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + No changes since 51.rc.
+
+-------------------------------------------------------------------
+Wed Sep  2 06:56:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Update overview regarding safe writer.
+
+-------------------------------------------------------------------
+Thu Aug  6 13:58:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Implement safe GVDB writer and use it by default for homes on
+    NFS
+  + docs:
+    - Describe DBDIR argument in man page
+    - Fix a typo
+
+-------------------------------------------------------------------
 Thu Nov 13 09:00:58 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix requires for dbus daemon, it's dbus-service, not dbus-1
@@ -142,7 +169,7 @@ Wed Feb 13 23:54:32 UTC 2019 - bjorn.lie@gmail.com
       information is shown on erroneous usage, but not otherwise.
     - Add a new database directory argument for the update command.
   + Build: Make dconf client vapi file installation optional, and
-    thus the Vala dependency optional (still built by default). 
+    thus the Vala dependency optional (still built by default).
 
 -------------------------------------------------------------------
 Tue Jan  8 13:22:01 UTC 2019 - bjorn.lie@gmail.com

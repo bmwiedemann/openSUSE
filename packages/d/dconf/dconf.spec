@@ -17,13 +17,13 @@
 
 
 Name:           dconf
-Version:        0.49.0
+Version:        51.0
 Release:        0
 Summary:        Key-based configuration system
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://live.gnome.org/dconf
-Source0:        https://download.gnome.org/sources/dconf/0.49/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 0001-gvdb-Restore-permissions-on-changed-files.patch bsc#971074 bgo#758066 bsc#1203344 fezhang@suse.com -- Restore permissions on files changed by dconf update.
 Patch0:         0001-gvdb-Restore-permissions-on-changed-files.patch
 BuildRequires:  docbook-xsl-stylesheets
@@ -34,8 +34,8 @@ BuildRequires:  vala >= 0.18.0
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.25.7
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 # dconf provides a dbus service, but has no dependency on dbus in any way
 # (because it uses gdbus), so we need an explicit Requires
