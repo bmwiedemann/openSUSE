@@ -10,6 +10,9 @@
       <!-- Maximal used memory: 13976 Mbyte -->
       <size unit="G">28</size>
     </physicalmemory>
+    <memory>
+      <size unit="G">32</size>
+    </memory>
   </hardware>
   <hostlabel exclude="true">SLOW_CPU</hostlabel>
 </constraints>

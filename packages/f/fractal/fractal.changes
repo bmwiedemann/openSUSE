@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct 26 18:01:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 14.3:
+  * Only a week went by since our previous security-related update, and several
+    upstream dependencies released even more security fixes so we bundled them
+    into Fractal 14.3 to make sure that everything keeps running smoothly until
+    the next release!
+- Add AppStream BuildRequires and add check section and meson_test macro.
+
+-------------------------------------------------------------------
+Wed Oct 21 16:42:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 14.2:
+  * Several upstream dependencies released security fixes so we bundled them
+    into Fractal 14.2 to make sure that everything runs smoothly until the next
+    release!
+
+-------------------------------------------------------------------
+Wed Oct  7 11:47:50 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Limit memory used during build via rpm_macro(limit_build) BuildRequires and
+  %limit_build -m 4000
+- Export clang(++) as compiler, ensure the build uses it.
+- Drop rustflags export, cargo handles this now.
+
+-------------------------------------------------------------------
+Sun Oct  4 20:57:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Set memory constraint to 32G, fix build on aarch64.
+
+-------------------------------------------------------------------
 Sun Jul 19 15:32:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 14.1:
@@ -366,7 +397,7 @@ Mon Jan  1 03:30:26 UTC 2024 - Richard Rahl <rrahl0@proton.me>
   + Times follow the format (12h or 24h) from the system settings
   + Media history works in encrypted rooms
   + The accessibility of the sidebar was improved
-  + More notifications settings were added, you can now set global 
+  + More notifications settings were added, you can now set global
     and per-room behavior and even manage your keywords
 
 -------------------------------------------------------------------
@@ -374,7 +405,7 @@ Tue Nov 28 03:32:07 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - update to version 5
 
-- switch to the newer obs-service-cargo as it simplifies the 
+- switch to the newer obs-service-cargo as it simplifies the
   spec file
 
 -------------------------------------------------------------------

@@ -20,14 +20,17 @@
 %define         appname org.gnome.Fractal
 %define         glib_version       2.82
 %define         gstreamer_version  1.20
+
 Name:           fractal
-Version:        14.1
+Version:        14.3
 Release:        0
 Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/fractal/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
+
+BuildRequires:  AppStream
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  clang-devel
@@ -57,6 +60,8 @@ BuildRequires:  pkgconfig(openssl) >= 1.0.1
 BuildRequires:  pkgconfig(shumate-1.0) >= 1.1.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.24.0
 BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.14.1
+BuildRequires:  rpm_macro(limit_build)
+
 Requires:       glycin-loaders
 Requires:       gstreamer-plugins-good-gtk
 ExclusiveArch:  %{rust_tier1_arches}
@@ -72,16 +77,23 @@ free software projects.
 %autosetup -p1 -a1
 
 %build
-export RUSTFLAGS="%{build_rustflags}"
+# Use less memory when building
+%limit_build -m 4000
+
+export CC=clang
+export CXX=clang++
+
 %meson \
-    -Dprofile=default \
-    ;
+	-Dprofile=default \
+	%{nil}
 %meson_build
 
 %install
-export RUSTFLAGS="%{build_rustflags}"
 %meson_install
 %find_lang %{name} %{?no_lang_C}
+
+%check
+%meson_test
 
 %files
 %license LICENSE

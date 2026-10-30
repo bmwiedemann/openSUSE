@@ -208,4 +208,32 @@
     minor release addresses this issue.</comment>
     <requestid>1366880</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e72fe454a3e87e0a012318bb844cafb7</srcmd5>
+    <version>14.3</version>
+    <time>1793380264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.3:
+  * Only a week went by since our previous security-related update, and several
+    upstream dependencies released even more security fixes so we bundled them
+    into Fractal 14.3 to make sure that everything keeps running smoothly until
+    the next release!
+- Add AppStream BuildRequires and add check section and meson_test macro.
+
+
+- Update to version 14.2:
+  * Several upstream dependencies released security fixes so we bundled them
+    into Fractal 14.2 to make sure that everything runs smoothly until the next
+    release!
+
+
+- Limit memory used during build via rpm_macro(limit_build) BuildRequires and
+  %limit_build -m 4000
+- Export clang(++) as compiler, ensure the build uses it.
+- Drop rustflags export, cargo handles this now.
+
+
+- Set memory constraint to 32G, fix build on aarch64.</comment>
+    <requestid>1393559</requestid>
+  </revision>
 </revisionlist>
