@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 30 11:29:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.200.0 (0.20)
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+
+  0.20  2026-10-29
+      - Security: limit ZIP entry counts and uncompressed sizes; read members
+        incrementally and reject inconsistent size metadata.
+      - Security: validate number format IDs and escape regex lookups to prevent
+        regex injection from crafted styles.
+      - Security: reject out-of-range date values to prevent excessive CPU usage.
+      - Security: validate cell references against XLSX worksheet limits before
+        indexing cell arrays, preventing excessive allocation from invalid rows.
+      - Add cpanfile for easy dependency installation.
+      - Improve Readme.
+  0.19  2026-10-29
+      - Security: replace string eval of number-format conditions with strict
+        numeric comparisons; invalid conditions use the fallback format section.
+        CVE-2026-115943 bsc#1288922
+        Prevents arbitrary Perl code execution when parsing crafted XLSX files.
+      - Add regression tests for numeric conditions and malicious XLSX formats.
+
+-------------------------------------------------------------------
 Fri Mar 22 16:39:06 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.18

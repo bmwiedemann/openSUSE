@@ -88,4 +88,29 @@
     <comment></comment>
     <requestid>1165839</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0bf409bf68688147593d1071c922a7ec</srcmd5>
+    <version>0.200.0</version>
+    <time>1793380707</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.200.0 (0.20)
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+  0.20  2026-10-29
+      - Security: limit ZIP entry counts and uncompressed sizes; read members
+        incrementally and reject inconsistent size metadata.
+      - Security: validate number format IDs and escape regex lookups to prevent
+        regex injection from crafted styles.
+      - Security: reject out-of-range date values to prevent excessive CPU usage.
+      - Security: validate cell references against XLSX worksheet limits before
+        indexing cell arrays, preventing excessive allocation from invalid rows.
+      - Add cpanfile for easy dependency installation.
+      - Improve Readme.
+  0.19  2026-10-29
+      - Security: replace string eval of number-format conditions with strict
+        numeric comparisons; invalid conditions use the fallback format section.
+        CVE-2026-115943 bsc#1288922
+        Prevents arbitrary Perl code execution when parsing crafted XLSX files.
+      - Add regression tests for numeric conditions and malicious XLSX formats.</comment>
+    <requestid>1393888</requestid>
+  </revision>
 </revisionlist>
