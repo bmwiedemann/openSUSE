@@ -1715,4 +1715,12 @@
   + Updated translations.</comment>
     <requestid>1362493</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>2f650dadaacb1323b2d0ac4bcdaf86d1</srcmd5>
+    <version>2.44.8</version>
+    <time>1793379951</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385400</requestid>
+  </revision>
 </revisionlist>
