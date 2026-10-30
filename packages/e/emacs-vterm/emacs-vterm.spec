@@ -58,12 +58,6 @@ install -d %{buildroot}/%{_emacs_sitelispdir}/
 install -D -m644 %{_name}.el %{_name}.elc %{buildroot}/%{_emacs_sitelispdir}/
 install -D -m755 %{_name}-module.so %{buildroot}/%{_libdir}/emacs/site-lisp/%{_name}-module.so
 
-install -dm755 %{buildroot}/%{_emacs_sitestartdir}/
-cat << EOF > %{buildroot}/%{_emacs_sitestartdir}/%{_name}-init.el
-;; -*- lexical-binding: t; -*-
-(add-to-list 'load-path "%{_libdir}/emacs/site-lisp")
-EOF
-
 install -d %{buildroot}/%{_emacs_etcdir}/vterm
 install -Dm644 etc/* %{buildroot}/%{_emacs_etcdir}/vterm
 
@@ -71,7 +65,6 @@ install -Dm644 etc/* %{buildroot}/%{_emacs_etcdir}/vterm
 %doc README.md
 %license LICENSE
 %{_emacs_sitelispdir}/%{_name}.el*
-%{_emacs_sitestartdir}/%{_name}-init.el
 %dir %{_libdir}/emacs
 %dir %{_emacs_archsitelispdir}
 %{_emacs_archsitelispdir}/%{_name}-module.so

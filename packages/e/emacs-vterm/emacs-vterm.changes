@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 29 21:14:50 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Remove the now redundant site-start.d script. boo#1277717
+
+-------------------------------------------------------------------
 Mon Oct 26 20:51:35 UTC 2026 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - Avoid lexical binding warning on Emacs 31.1+ boo#1277717
