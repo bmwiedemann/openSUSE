@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 28 08:40:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 9.3.3:
+  * Check the tail of the ASCII validators in place
+  * Check the tail of the UTF-8 validators in place
+  * base64: avoid overflow in base64_length_from_binary_with_lines
+  * arm64: fix base64 default_or_url tables accepting '['
+
+-------------------------------------------------------------------
 Sat Oct 17 11:50:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 9.3.2:
