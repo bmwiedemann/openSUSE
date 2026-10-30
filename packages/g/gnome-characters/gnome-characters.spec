@@ -17,7 +17,7 @@
 
 
 Name:           gnome-characters
-Version:        50.0
+Version:        51.0
 Release:        0
 Summary:        Character Map
 License:        GPL-3.0-or-later
@@ -33,9 +33,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.87.0
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.43.3
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.50
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.6
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.9.alpha
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
