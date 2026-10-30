@@ -17,7 +17,7 @@
 
 
 Name:           gnome-keyring
-Version:        50.0
+Version:        51.1
 Release:        0
 Summary:        GNOME Keyring
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Patch0:         gnome-keyring-pam-auth-prompt-password.patch
 Patch1:         gnome-keyring-bsc1039461-pam-man-page.patch
 # PATCH-FIX-UPSTREAM gnome-keyring-register-login-keyring.patch glgo#GNOME/gnome-keyring!78 fcrozat@suse.com -- Ensure login keyring is properly registered
 Patch2:         gnome-keyring-register-login-keyring.patch
-# PATCH-FIX-UPSTREAM 04a6bc68ff4350676c5fc55d1b244a17224fbea2.patch -- fix: avoid potential FD leak in gkm_rpc_layer_startup
-Patch3:         https://gitlab.gnome.org/GNOME/gnome-keyring/-/commit/04a6bc68ff4350676c5fc55d1b244a17224fbea2.patch
 # Work around https://gitlab.gnome.org/GNOME/gnome-keyring/-/work_items/178
 Patch4:         gnome-keyring-Drop-X-GNOME-Autostart-Phase.patch
 
@@ -99,9 +97,9 @@ certificates from different sources.
 Summary:        GNOME Keyring - PAM module
 Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         pam-config >= 0.72
-PreReq:         sed
+Requires(post): pam-config >= 0.72
+Requires(postun): pam-config >= 0.72
+Requires(post): sed
 # Package was present in OpenSUSE 10.2 and 10.3:
 Provides:       pam_keyring = 0.0.8
 Obsoletes:      pam_keyring < 0.0.8
@@ -144,6 +142,11 @@ done
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}
 
+%ifnarch %{ix86}
+%check
+dbus-run-session -- %{shrink:%meson_test}
+%endif
+
 ###
 # WARNING: when changing the pam-config calls in the scriptlets, please also
 # update them in baselibs.conf.
@@ -180,10 +183,6 @@ fi
 %{_datadir}/dbus-1/services/org.freedesktop.secrets.service
 %{_datadir}/dbus-1/services/org.gnome.keyring.service
 %{_datadir}/p11-kit/modules/gnome-keyring.module
-# Own the directory since we can't depend on gconf providing them
-%dir %{_datadir}/GConf
-%dir %{_datadir}/GConf/gsettings
-%{_datadir}/GConf/gsettings/org.gnome.crypto.cache.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.crypto.cache.gschema.xml
 %{_sysconfdir}/xdg/autostart/*.desktop
 %{_mandir}/man1/gnome-keyring.1%{?ext_man}

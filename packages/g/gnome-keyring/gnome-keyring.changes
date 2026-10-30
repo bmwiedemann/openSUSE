@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Sep 18 05:33:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.1:
+  + daemon: Fix double unref of session.
+
+-------------------------------------------------------------------
+Tue Sep 15 11:06:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0+1:
+  + fix: plug memory leaks on early returns.
+
+-------------------------------------------------------------------
+Mon Sep 14 08:27:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + daemon:
+    - Register the login collection on D-Bus on creation
+    - Fix D-Bus double response issue in secret service methods
+    - Fix crash when prompt is dismissed
+    - Don't leak session on GetSecret/Unlock
+    - Fix memory leaks in DH key exchange that grow with every
+      client connection
+  + build: Restore gettext i18n init broken during meson port
+  + Fix potential FD leak in gkm_rpc_layer_startup
+  + Drop conversion from GConf
+  + Updated translations.
+- Drop 04a6bc68ff4350676c5fc55d1b244a17224fbea2.patch: fixed
+  upstream.
+- Add check section and call meson_test therein through
+  dbus-run-session. (except on i586; test suite has no priority to
+  upstream on 32bit architectures).
+
+-------------------------------------------------------------------
 Thu Jul  2 16:08:35 UTC 2026 - Hendrik Vogelsang <hvogel@suse.com>
 
 - Add gnome-keyring-Drop-X-GNOME-Autostart-Phase.patch

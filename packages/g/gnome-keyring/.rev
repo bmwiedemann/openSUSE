@@ -1181,4 +1181,12 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
   systemd-xdg-autostart-generator or whatever) to act.</comment>
     <requestid>1363908</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>ada6332e6f648b4ebb6d261cdd7bca24</srcmd5>
+    <version>51.1</version>
+    <time>1793380020</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385421</requestid>
+  </revision>
 </revisionlist>
