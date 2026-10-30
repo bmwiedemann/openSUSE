@@ -225,4 +225,12 @@
   + Deselect markers before removing from layer</comment>
     <requestid>1369838</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>46e82d2110dc76e8622ee46a58d44291</srcmd5>
+    <version>1.7.0</version>
+    <time>1793380079</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385448</requestid>
+  </revision>
 </revisionlist>

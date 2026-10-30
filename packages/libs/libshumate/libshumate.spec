@@ -22,7 +22,7 @@
 %bcond_with profiling
 
 Name:           libshumate
-Version:        1.6.3
+Version:        1.7.0
 Release:        0
 Summary:        C library providing a GtkWidget to display maps
 License:        Apache-2.0 AND LGPL-2.1-or-later AND BSD-3-Clause AND CC0-1.0 AND CC-BY-3.0 AND GFDL-1.2-only
@@ -35,12 +35,12 @@ BuildRequires:  meson >= 0.62.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.4
 BuildRequires:  pkgconfig(gi-docgen) >= 2021.1
-BuildRequires:  pkgconfig(gio-2.0) >= 2.16.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.16.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.16.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.74.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.74.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.3
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0
 BuildRequires:  pkgconfig(sqlite3) >= 1.12.0

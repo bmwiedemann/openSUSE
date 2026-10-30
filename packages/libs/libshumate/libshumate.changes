@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:31:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Fri Sep 11 14:29:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.7.0:
+  + No changes since 1.7.0.
+
+-------------------------------------------------------------------
+Sat Aug 29 13:27:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.rc:
+  + No changes since 1.7.beta.
+
+-------------------------------------------------------------------
+Wed Aug 19 23:57:11 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.beta:
+  + Deselect markers before removing from layer
+  + Stop using G_GNUC_CONST in _get_type functions
+  + gi-docgen: List more dependencies
+
+-------------------------------------------------------------------
+Wed Aug 19 23:57:10 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.alpha:
+  + Added new APIs to refresh and get refresh notifications for map
+    sources
+  + Added missing translation text domains
+
+-------------------------------------------------------------------
 Sat Aug  1 11:51:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.3:
@@ -215,7 +248,7 @@ Sat Feb 17 10:18:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Fri Feb 16 10:34:16 UTC 2024 - Lubos Kocman <lubos.kocman@suse.com>
 
-- Update licenses based on legaldb review 
+- Update licenses based on legaldb review
 
 -------------------------------------------------------------------
 Thu Nov  2 09:03:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -339,3 +372,4 @@ Thu Sep  1 06:07:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 Fri Jan 14 16:26:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Initial packaging for openSUSE, version 1.0.0.alpha.1
+
