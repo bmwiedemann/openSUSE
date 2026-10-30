@@ -241,4 +241,13 @@
     strict-aliasing fix from tree-sitter-haskell for difftastic issue #1036. (forwarded request 1380181 from develop7)</comment>
     <requestid>1380182</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a0ba814b68b09f40711ec305cec437a3</srcmd5>
+    <version>0.72.0</version>
+    <time>1793380655</time>
+    <user>dimstar_suse</user>
+    <comment>- drop upstreamed tree-sitter-haskell-fix-heap-corruption.patch
+- update to 0.72.0</comment>
+    <requestid>1393849</requestid>
+  </revision>
 </revisionlist>

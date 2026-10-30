@@ -24,7 +24,7 @@
 %endif
 
 Name:           difftastic
-Version:        0.71.0
+Version:        0.72.0
 Release:        0
 Summary:        A structural diff that understands syntax
 License:        Apache-2.0 AND MIT
@@ -33,7 +33,6 @@ Source0:        https://github.com/Wilfred/difftastic/archive/%{version}/%{name}
 Source1:        vendor.tar.xz
 Patch0:         remove-jq-dependency.patch
 Patch1:         reproducible.patch
-Patch2:         tree-sitter-haskell-fix-heap-corruption.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
