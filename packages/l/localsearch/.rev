@@ -128,4 +128,12 @@
   + Updated translations.</comment>
     <requestid>1375999</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f50bb7d6080b0ab53ff3b12796746593</srcmd5>
+    <version>3.12.0</version>
+    <time>1793380082</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385452</requestid>
+  </revision>
 </revisionlist>

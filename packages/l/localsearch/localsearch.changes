@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:30:41 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Mon Sep 14 06:54:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.12.0:
+  + Sandbox fixes for musl libc
+  + Fix "localsearch index --remove" applying the configuration
+  + Memory leak fixes
+  + Add "localsearch list" alias to "localsearch search"
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  1 12:15:31 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.12.rc:
+  + Fix situations where files would be needlessly re-extracted
+  + Improve test coverage of CLI tools
+  + Improve test coverage of writeback service
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  1 12:15:30 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.12.beta:
+  + Handle soft page breaks correctly in ODF documents
+  + Cleanups to the control daemon
+  + Internal refactors to keep "common" code between processes
+    minimal
+  + Increased test coverage
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  1 12:15:29 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.12.alpha:
+  + Fix possible crash when deleting a directory recursively
+  + Fix `localsearch status --follow` output while extracting
+    metadata
+  + Fix potential metadata extractor stalls with many files
+    resulting in extraction errors
+  + New audio/video metadata extractor based on MediaInfo, it will
+    eventually supersede the libav extractor
+  + Drop use of GMarkup for XML parsing, replaced with libxml2
+  + Extract `nie:title` for album discs
+  + Refactors of indexer internals
+  + Fixes to Coverity warnings
+  + Improved checks for files remaining to have a pass through the
+    metadata extractor
+  + Cleanup leftover album/disc/artist metadata
+  + Improvements and fixes to XMP metadata extraction
+  + Preserve indexed data on unmounts of parent folders, e.g. '/'
+  + Updated translations.
+- Add c++_compiler and pkgconfig(libmediainfo) BuildRequires: New
+  dependencies.
+- Drop pkgconfig(libavcodec), pkgconfig(libavformat) and
+  pkgconfig(libavutil) BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
 Tue Sep  1 05:57:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.11.2:
@@ -258,3 +319,4 @@ Mon Sep 16 10:00:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 Wed Sep  4 05:48:06 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Inital build for openSUSE, version 3.8.rc.
+

@@ -20,7 +20,7 @@
 %define tinysparql_basever 3.11
 
 Name:           localsearch
-Version:        3.11.2
+Version:        3.12.0
 Release:        0
 Summary:        Search tool and indexer using tinysparql
 License:        GPL-2.0-or-later
@@ -29,6 +29,7 @@ URL:            https://gitlab.gnome.org/GNOME/localsearch
 Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  asciidoc
+BuildRequires:  c++_compiler
 BuildRequires:  giflib-devel
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  libtiff-devel
@@ -36,7 +37,7 @@ BuildRequires:  libtool
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
-BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(dbus-1) >= 1.3.1
 BuildRequires:  pkgconfig(enca) >= 1.9
 BuildRequires:  pkgconfig(exempi-2.0) >= 2.1.0
 BuildRequires:  pkgconfig(gexiv2-0.16)
@@ -47,16 +48,14 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
-BuildRequires:  pkgconfig(gupnp-dlna-2.0)
+BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
 BuildRequires:  pkgconfig(icu-i18n) >= 4.8.1.1
 BuildRequires:  pkgconfig(icu-uc) >= 4.8.1.1
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcue) >= 2.0.0
 BuildRequires:  pkgconfig(libgsf-1) >= 1.14.24
 BuildRequires:  pkgconfig(libgxps)
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libmediainfo)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libosinfo-1.0) >= 0.2.9
 BuildRequires:  pkgconfig(libseccomp) >= 2.0
@@ -64,7 +63,7 @@ BuildRequires:  pkgconfig(libwebpdemux)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(poppler-glib) >= 0.16.0
-BuildRequires:  pkgconfig(tinysparql-3.0) >= 3.10.1
+BuildRequires:  pkgconfig(tinysparql-3.0) >= 3.11
 BuildRequires:  pkgconfig(totem-plparser)
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
 # The schema files moved from libtracker-common to tracker-miners
@@ -151,12 +150,12 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_datadir}/localsearch3/extract-rules/11-msoffice-xml.rule
 %{_datadir}/localsearch3/extract-rules/15-executable.rule
 %{_datadir}/localsearch3/extract-rules/15-games.rule
-%{_datadir}/localsearch3/extract-rules/15-libav-guess.rule
+%{_datadir}/localsearch3/extract-rules/15-libmediainfo-guess.rule
 %{_datadir}/localsearch3/extract-rules/15-playlist.rule
 %{_datadir}/localsearch3/extract-rules/15-text.rule
 %{_datadir}/localsearch3/extract-rules/90-disc-generic.rule
-%{_datadir}/localsearch3/extract-rules/90-libav-audio-generic.rule
-%{_datadir}/localsearch3/extract-rules/90-libav-video-generic.rule
+%{_datadir}/localsearch3/extract-rules/90-libmediainfo-audio-generic.rule
+%{_datadir}/localsearch3/extract-rules/90-libmediainfo-video-generic.rule
 %dir %{_libdir}/localsearch-%{lsAPI}
 %dir %{_libdir}/localsearch-%{lsAPI}/extract-modules
 %dir %{_libdir}/localsearch-%{lsAPI}/trackertestutils
@@ -168,11 +167,11 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-dummy.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-epub.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-gif.so
-%{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-libav.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-html.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-icon.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-iso.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-jpeg.so
+%{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-mediainfo.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-mp3.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-msoffice-xml.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-msoffice.so
