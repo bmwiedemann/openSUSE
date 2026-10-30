@@ -17,7 +17,7 @@
 
 
 Name:           gnome-maps
-Version:        50.5
+Version:        51.2
 Release:        0
 Summary:        Maps Application for GNOME
 License:        Apache-2.0 AND CC-BY-3.0 AND GPL-2.0-or-later AND BSD-3-Clause AND ISC AND MIT
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(geocode-glib-2.0) >= 3.15.2
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.69.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.1
-BuildRequires:  pkgconfig(gtk4) >= 3.22.0
+BuildRequires:  pkgconfig(gtk4) >= 4.10
 # Needed for test run
 BuildRequires:  pkgconfig(gweather4) >= 3.90.0
 #

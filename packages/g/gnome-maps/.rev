@@ -1012,4 +1012,12 @@
   + Updated translations.</comment>
     <requestid>1377826</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>47e52c90be314801cc366f4714f37194</srcmd5>
+    <version>51.2</version>
+    <time>1793380027</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385424</requestid>
+  </revision>
 </revisionlist>

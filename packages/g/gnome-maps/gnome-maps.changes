@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sun Oct 11 19:47:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.2:
+  * Avoid some GTK warnings when rendering public transit itineraries
+  * Do not try rendering shape layers if loading is not complete
+  * Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 30 16:45:36 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Mon Sep 21 08:28:17 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.1:
+  + Fix showing correct POI type names in some cases that were
+    broken in our import script from id-tagging-schema since
+    changes lately
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 17:57:27 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Fix showing secondary icon for recent and favorite places in
+    initial search results
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 17:57:26 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Update appdata screenshots
+  + Update highway shields from OpenStreetMap-Americana
+  + Update OpenStreetMap POI types
+  + Update to use v6 of the MOTIS /plan endpoint for public transit
+    routing
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 17:57:25 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Moved settings for showing scale, user location, and
+    mesaurement systems from menus to the preference dialog
+  + Change shortcut for toggling showing the scale to avoid
+    confusion with other usages of ctrl+s (typically save
+    operations in other apps)
+  + Show shortcut for showing preferences in shortcuts overview
+  + Skip going-to animations for larger distances
+  + Allow public transit routing to places further from a routable
+    walking path (increased distance from 25 to 250 meters, to
+    match behavior in MOTIS web app)
+  + Show walking durations in public transit iteneraries overview
+  + Increase font size for place name in sidebar/bottom sheet to
+    better match the new pill-style buttons
+  + Updated icon for tombs
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 17:57:24 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Add offline map download support
+  + Add custom overrides for German Autobahn and Bundesstrße
+    highway shields
+  + Show departures and arrivals in the place information for
+    public transit places (stations and stops) when available from
+    Transitious
+  + Show delays and track information for public transit
+    itineraries (when available from provider)
+  + Use star icon for favorites menu
+  + Move goto current location button to overlay zoom buttons
+    ground and re-arrange headerbar buttons (move route button to
+    the left and layers button to the right)
+  + Add bicycle shops category to POI search interface
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 11 15:03:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.5:
@@ -88,7 +168,7 @@ Wed Feb 11 13:35:46 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
   + Always use Transitous for public transit routing
   + Port UI templates to Blueprint
 - Add blueprint-compiler BuildRequires: new dependency.
-  
+
 -------------------------------------------------------------------
 Thu Jan 29 09:57:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
