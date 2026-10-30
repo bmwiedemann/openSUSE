@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Jul  6 11:15:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Provide/Obsolete gnome-extensions: the legacy app that was
+  packaged as part of gnome-shell is obsolete.
+
+-------------------------------------------------------------------
+Sun Jul  5 16:00:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial packaging for openSUSE, version 51.alpha.
