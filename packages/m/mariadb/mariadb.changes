@@ -39,7 +39,7 @@ Tue Oct 20 14:23:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
             CVE-2026-107821 (bsc#1284999)
             CVE-2026-107822 (bsc#1284998)
             CVE-2026-107823 (bsc#1284997)
-            CVE-2026-102523
+            CVE-2026-102523 (bsc#1286682)
             CVE-2026-97380 (bsc#1286010)
             CVE-2026-92262 (bsc#1286011)
             CVE-2026-86047 (bsc#1285936)
@@ -47,12 +47,12 @@ Tue Oct 20 14:23:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
             CVE-2026-85748 (bsc#1285932)
             CVE-2026-85746 (bsc#1285931)
             CVE-2026-85745 (bsc#1285928)
-            CVE-2026-61081
-            CVE-2026-60585
-            CVE-2026-60331
-            CVE-2026-60747
-            CVE-2026-47023
-            CVE-2026-60184
+            CVE-2026-61081 (bsc#1286696)
+            CVE-2026-60585 (bsc#1286697)
+            CVE-2026-60331 (bsc#1286698)
+            CVE-2026-60747 (bsc#1286700)
+            CVE-2026-47023 (bsc#1286701)
+            CVE-2026-60184 (bsc#1286702)
 - Drop mariadb-fix-testsuite-openssl3.2.3.patch (fixed upstream).
 - Refresh fix-pamdir.patch and 0001-MDEV-38874-Make-tests-pass-
   after-2030.patch for the new sources; drop Group tags, use

@@ -2170,4 +2170,12 @@ I am aware of the git for packaging, but this file does not seem to be tracked t
     <comment>1</comment>
     <requestid>1386661</requestid>
   </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>1923b747f450750fdd3563c60d0aaff2</srcmd5>
+    <version>13.0.2</version>
+    <time>1793379828</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1393625</requestid>
+  </revision>
 </revisionlist>
