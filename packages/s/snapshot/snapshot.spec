@@ -19,7 +19,7 @@
 %define gstreamer_version 1.20
 
 Name:           snapshot
-Version:        50.0
+Version:        51.0
 Release:        0
 Summary:        Take pictures and videos
 License:        GPL-3.0-or-later
@@ -30,8 +30,6 @@ Source1:        vendor.tar.xz
 BuildRequires:  AppStream
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
-BuildRequires:  liblcms2-devel
-BuildRequires:  libseccomp-devel
 BuildRequires:  libxml2-tools
 BuildRequires:  meson
 BuildRequires:  pkgconfig
