@@ -571,4 +571,28 @@ test-z3 link against a 6 GB disk constraint.
   * Bindings: Fix and optimize Python FFI, Go/JS (wasm/cgo), and OCaml bindings</comment>
     <requestid>1393523</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6651413f02f3b2af4411f973e1b30a74</srcmd5>
+    <version>5.3.3</version>
+    <time>1793380565</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3.3
+  * Packaging/Java: Add bundled-native and universal JARs; improve Bazel/CMake
+    packaging
+  * MaxSMT: Improve performance via LP relaxation of hard constraints
+    (opt.maxres.lp_relaxation)
+  * Core/Arithmetic: Fix transcendental soundness, Real-to-FP rounding, and
+    modular inverse rewrites
+  * Theories: Fixes for BV modulus/rotations, datatypes, finite-set
+    cardinality, and sequence limits
+  * Robustness: Harden C API validation against crashes; fix division-by-zero
+    on zero parameters
+  * Spacer: Fix min-cut loops and preserve negated bounds in bound-expansion
+    generalizer
+  * Proofs: Expand F*/Pulse proof checking (finite fields, BV, arrays) and Lean
+    reconstruction
+  * Bindings: Fix JS/Wasm static registrations, OCaml link inputs, and Python
+    install paths</comment>
+    <requestid>1393811</requestid>
+  </revision>
 </revisionlist>
