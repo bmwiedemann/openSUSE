@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct 29 14:46:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.15.0 (upstream tags v0.14.0, 2026-10-25 and
+  v0.15.0, 2026-10-28):
+  * Startup update prompt with self-update; UI migrated to egui
+    0.37 with dockable side panels, dropdown and Flatpak fixes.
+  * Faster full-size exports (fewer copies and serial passes);
+    Highlights/Shadows median about 2x faster on the CPU.
+  * Library: Find Missing Photos by file name, smarter smart
+    albums, keyword list marks applied keywords, catalog import
+    asks merge or new library, PSD/PSB embedded metadata, month
+    names in date templates, manual slideshow, print templates
+    export and import.
+  * Develop: HDR merge preview zoom and pan, colour-grading wheel
+    holds the pointer, draggable tone curve from the renderer
+    model, histogram zones adjust Basic tones, Dehaze no longer
+    crushes dark pixels, Sony A7R V camera profile.
+  * Hardening: hostile-file bounds in HEIF handling, raw
+    decoders, codecs and keyword/repair/journal recovery;
+    quick-xml 0.38 -> 0.41 fixes two DoS advisories
+    (RUSTSEC-2026-0194, RUSTSEC-2026-0195).
+  * Workspace rust-version is now 1.95 (matches BuildRequires).
+  * Re-vendored (update=false kept for --locked, respect-lockfile
+    true); all new crates permissive, no License tag change.
+- Disable upstream self-update: no check at startup and no install
+  prompt (lightcraft-no-self-update.patch); the package manager
+  owns updates, manual Help check stays
+- Add lightcraft-drop-unused-egui-patches.patch:
+  drop unused [patch.crates-io] pins the vendor omits
+
+-------------------------------------------------------------------
 Fri Oct 23 06:52:21 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.13.0 (upstream tag v0.13.0, 2026-10-23):

@@ -17,7 +17,7 @@
 
 
 Name:           lightcraft
-Version:        0.13.0
+Version:        0.15.0
 Release:        0
 Summary:        Photo library and raw developer
 # Legal-Review-Notice: scope is the two shipped targets (lightcraft, lightcraft-cli)
@@ -31,7 +31,8 @@ Summary:        Photo library and raw developer
 # CDLA-Permissive-2.0 (model downloads over HTTPS); plus MIT/BSD-2-Clause/
 # BSD-3-Clause/ISC/Zlib permissive crates. self_cell 1.3.0 declares
 # Apache-2.0 OR GPL-2.0-only; the build takes the Apache-2.0 option, so no GPL
-# obligation is incurred. docs/brand (trademarked, not open source) is excluded
+# obligation is incurred. dunce 1.0.5 (via craft-update) declares CC0-1.0 OR
+# MIT-0 OR Apache-2.0; the build likewise takes Apache-2.0. docs/brand (trademarked, not open source) is excluded
 # from the tarball via the tar_scm exclude and is never installed. The heif
 # feature pulls in only the pure-Rust heic-rs 0.1.4 crate (no C, no system
 # library); HEVC patent comfort is still open -- this discloses the feature, it
@@ -43,9 +44,21 @@ License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Cl
 URL:            https://github.com/storytold/lightcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# PATCH-FIX-OPENSUSE lightcraft-no-self-update.patch -- distro builds
+# must not phone home at startup nor offer to install an upstream release
+# over RPM-owned files (the package manager owns updates); the manual
+# Help check outcome window stays. Upstream behaviour as of 0.15.0, not
+# upstreamable (upstream ships self-updating intentionally).
+Patch0:         lightcraft-no-self-update.patch
+# PATCH-FIX-OPENSUSE lightcraft-drop-unused-egui-patches.patch -- drop four
+# [patch.crates-io] pins (egui_demo_lib, egui_extras, egui_inspection,
+# egui_system_font_provider) that nothing uses (Cargo.lock [[patch.unused]]):
+# cargo_vendor omits them from vendor.tar.zst, so any offline resolve
+# fails; upstreamable as cleanup once upstream drops the pins.
+Patch1:         lightcraft-drop-unused-egui-patches.patch
 BuildRequires:  appstream-glib
 BuildRequires:  c_compiler
-BuildRequires:  cargo >= 1.90
+BuildRequires:  cargo >= 1.95
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
@@ -92,6 +105,12 @@ from scripts and CI, plus an opt-in MCP server for agents.
 # members by hand. heif matches the official builds (pure-Rust heic-rs, no
 # system library). CRAFT_FONTS_DIR stays unset: the build then uses the
 # bundled Inter plus the system CJK fallback.
+# NOTE: keep the cargo build and test macros in this spec in braced form.
+# The bare form misparses the leading dashes of the locked and feature
+# arguments in the Factory build root (staging adi:5 died at the build
+# macro with "Unknown option - in cargo_build()"); the sibling filmcraft
+# package passes the identical argument set braced and is green in the
+# same root. spec-cleaner wants to unbrace these; keep the braces anyway.
 %{cargo_build} --locked -p lightcraft -p lightcraft-cli --features heif
 
 %install
@@ -100,10 +119,10 @@ install -Dm0755 target/release/lightcraft-cli %{buildroot}%{_bindir}/lightcraft-
 install -Dm0644 packaging/linux/ai.storyteller.lightcraft.desktop %{buildroot}%{_datadir}/applications/ai.storyteller.lightcraft.desktop
 install -Dm0644 packaging/linux/ai.storyteller.lightcraft.mime.xml %{buildroot}%{_datadir}/mime/packages/ai.storyteller.lightcraft.xml
 install -d -m 0755 %{buildroot}%{_datadir}/metainfo
-# Fixed upstream release date (v0.13.0, 2026-10-23): a build-time date would
+# Fixed upstream release date (v0.15.0, 2026-10-28): a build-time date would
 # make the metainfo differ on every rebuild, and spec-cleaner macro-expands
 # the %-sequences of any date format string, so keep this a plain string.
-sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-23/g" packaging/linux/ai.storyteller.lightcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.lightcraft.metainfo.xml
+sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-28/g" packaging/linux/ai.storyteller.lightcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.lightcraft.metainfo.xml
 # Upstream declares the app icon as type="stock" but it is a custom hicolor
 # icon, so declare it as cached for appstream validation.
 sed -i 's|<icon type="stock">ai.storyteller.lightcraft</icon>|<icon type="cached" width="64" height="64">ai.storyteller.lightcraft.png</icon>|' %{buildroot}%{_datadir}/metainfo/ai.storyteller.lightcraft.metainfo.xml
