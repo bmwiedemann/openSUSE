@@ -329,4 +329,12 @@
   during build.</comment>
     <requestid>1358739</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>408d1024aa93f6e0324a4b5b2f9f116a</srcmd5>
+    <version>3.38.2+47</version>
+    <time>1793380640</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Source: Do not specify an URL, as the source is _service managed.</comment>
+    <requestid>1393847</requestid>
+  </revision>
 </revisionlist>

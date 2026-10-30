@@ -23,7 +23,7 @@ Summary:        Klotski Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/Klotski
-Source0:        https://download.gnome.org/sources/gnome-klotski/3.38/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
