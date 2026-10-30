@@ -1,4 +1,163 @@
 -------------------------------------------------------------------
+Tue Oct 13 08:04:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.2:
+  * Minor graphical app icon fixes
+  * Update vulnerable NPM packages
+  * Update and modernize flatpak manifest
+  * Add desktop file
+  * Set application name
+  * Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 20 19:54:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.1:
+  + Fix toolbar overlay from blocking content
+  + Fix release note tags
+  + Add metainfo validation
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 14 09:55:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Handle corrupted pdf documents
+  + Handle strings as errors from plugins
+  + Use ".Devel" suffix for the nightly version
+  + Add app icon
+  + Fix papers dependency version
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug 30 11:44:32 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Enhancements:
+    - Add Rename (`F2`) and Trash (`Del`) shortcuts
+    - Add `O` as a shortcut to open a file
+    - Open folders in currently previewed nautilus window
+    - Add play/pause (`P`) shortcut for audio and video
+    - Use dark background for videos
+    - Add foundry config
+    - Resize window on changed scale factor
+  + Bug Fixes:
+    - Fix playing animated images using glycin
+    - Fix re-attaching dialog to nautilus after previously closing
+      the window
+    - Ignore errors from stopped/cancelled renderers
+    - Fix HTML renderer without WebKit availability
+    - Fix attaching open-with portal dialogs
+    - Fix and rework user resizing detection
+    - Avoid resizes on opening of window
+    - Fix width/height ratio of image renderer
+    - Don't scale up small images
+    - Prefer Glycin over Papers to handle loading TIFF files
+    - Fix long filenames making the window too wide
+  + Plugins:
+    - Add example with UI file and shortcuts
+    - Add action group setup helper
+    - Add relative path resolving helper
+    - Rename markReady/markInitialized API functions
+    - Add explicit markFailed error API
+    - Remove ResizePolicy.CUSTOM, use ResizePolicy.SCALED instead
+  + Backend Changes:
+    - Create RendererWrapper that handles overlays and GTK window
+      size geometry
+    - Use SignalGroup for renderer signals
+    - Add cyclic heap dumping development mechanism
+    - Rework content type matching, remove legacy generated type
+      list
+    - Report (some) video stream errors
+    - Separate out LibreOffice conversion logic from pdf renderer
+    - Only initialize PapersDocument on demand
+    - Add an abstraction over GLib sources and connections
+    - Fix various signal-related leaks
+    - Port text UI to blueprint
+    - Make private renderer fields inaccessible to renderers
+    - Use correct wrap mode in text renderer
+    - Improve error handling
+    - Improve reactivity for large text files
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Aug  2 10:45:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + UI changes:
+    - Show a loading spinner when loading a file takes longer
+    - Ensure legibility of icons in statuspage
+    - Clamp MediaControls to limit width
+    - Wrap lines in text viewer
+    - Handle single- and double-click in video viewer
+    - Add double-click to fullscreen support to image viewer
+    - Enable context menu in HTML viewer
+    - Prompt user before loading remote resources in HTML viewer
+    - Improve loading states
+    - Tweak toolbar and headerbar
+    - Fix title for tagless files
+    - Always use integrated artwork
+    - Hide headerbar in fullscreen
+    - Use icon for file open button
+    - Preserve aspect ratio when showing images
+  + Known regressions: Only the first frame of animated GIFs is
+    shown
+  + Backend changes:
+    - Add more mime types to the LibreOffice viewer
+    - Add ESLint
+    - Replace use of deprecated GJS APIs with their suggested
+      replacements
+    - Use Blueprint
+    - Handle XHTML mime type
+    - Cancel pending operations when file is switched
+    - Plug memory leaks
+    - Overhaul plugin API and introduce a system-wide plugin path
+    - Document plugin API
+    - Promisify async calls
+    - Rework hovering
+    - Improve handling of renderer sizing
+    - Use fast-content-type as fallback
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul  5 14:45:29 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Epic: Port to GTK 4
+  + UI changes:
+    - Support auto dark theme for text
+    - Improve audio, error and fallback renderers
+    - Allow to fullscreen independent of file type
+    - Animate window size changes
+    - Keep window size unchanged once scaled by user
+    - Use at most a quarter of the current screen
+    - Show images at their real size
+    - Use flat headerbars for some file types
+    - Rework toolbar overlays
+    - Modernize media controls with Gtk.MediaControls
+    - Support custom icons
+    - Balance headerbar buttons
+    - Correct window sizing
+  + Known regressions: LibreOffice documents are rendered into
+    PDFs, as the previous method is not compatible with GTK4
+  + Backend changes:
+    - Adopt GtkPicture and GtkVideo
+    - Port Evince to Papers
+    - Use libadwaita
+    - Replace GdkPixbuf with Glycin
+    - Add metadata discoverer
+    - Port to ES Modules
+    - Use Blueprint
+    - Add CI checks for meson, Blueprint and potfiles
+    - Add editorconfig
+    - Use fribidi for text direction
+    - Document how to run Sushi
+    - Various code cleanups and simplifications
+    - Stop renderer when window is closed
+  + Updated translations.
+- Use meson BuildSystem and macros, autogenerate BuildRequires.
+
+-------------------------------------------------------------------
 Sun Apr 26 18:16:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.0:
@@ -505,7 +664,7 @@ Mon Aug 20 17:07:18 UTC 2012 - dimstar@opensuse.org
   GStreamer 1.0:
   + Old: clutter-gst-1.0, gstreamer-0.10, gstreamer-pbutils-0.10
     and gstreamer-tag-0.10.
-  + New: clutter-gst-2.0, gstreamer-1.0, gstreamer-pbutils-1.0 
+  + New: clutter-gst-2.0, gstreamer-1.0, gstreamer-pbutils-1.0
     and gstreamer-tag-1.0.
 - Drop xz BuildRequires as it now comes for free in the build
   system.

@@ -19,69 +19,43 @@
 %global __requires_exclude typelib\\(LOKDocView\\)
 
 Name:           sushi
-Version:        50.0
+Version:        51.2
 Release:        0
 Summary:        Quick Previewer for Nautilus
-License:        SUSE-GPL-2.0-with-plugin-exception
+License:        SUSE-GPL-2.0-with-plugin-exception and GPL-2.0-or-later
 Group:          Productivity/File utilities
-URL:            https://www.gnome.org
+URL:            https://gitlab.gnome.org/GNOME/sushi
 Source0:        %{name}-%{version}.tar.xz
 Source99:       sushi-rpmlintrc
 
+BuildRequires:  blueprint-compiler
+BuildRequires:  gjs
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(epoxy)
-BuildRequires:  pkgconfig(evince-document-3.0)
-BuildRequires:  pkgconfig(evince-view-3.0)
-BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.38.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.29.14
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-audio-1.0)
-BuildRequires:  pkgconfig(gstreamer-tag-1.0)
-BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.2
-BuildRequires:  pkgconfig(gtk+-wayland-3.0)
-BuildRequires:  pkgconfig(gtk+-x11-3.0)
-BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.3
-BuildRequires:  pkgconfig(harfbuzz) >= 0.9.9
-BuildRequires:  pkgconfig(webkit2gtk-4.1)
-Supplements:    nautilus
-Requires:       evince-plugin-pdfdocument
-Requires:       (typelib(LOKDocView) if libreoffice)
-Requires:       typelib(WebKit2) = 4.1
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildSystem:    meson
 
 %description
 Sushi is a quick previewer for Nautilus, the GNOME desktop file manager.
 
 %lang_package
 
-%prep
-%autosetup -p1
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-%meson \
-	-D wayland=enabled \
-	-D X11=enabled \
-	%{nil}
-%meson_build
-
-%install
-%meson_install
+%install -a
+sed -i 's|/usr/bin/env -S /usr/bin/gjs -m|/usr/bin/gjs -m|' %{buildroot}/usr/bin/sushi
+sed -i 's|/usr/bin/env -S /usr/bin/gjs -m|/usr/bin/gjs -m|' %{buildroot}/usr/libexec/org.gnome.NautilusPreviewer
 %find_lang %{name} %{?no_lang_C}
 
 %files
 %license COPYING
 %doc AUTHORS NEWS README.md
 %{_bindir}/%{name}
+%{_datadir}/applications/org.gnome.NautilusPreviewer.desktop
 %{_datadir}/dbus-1/services/org.gnome.NautilusPreviewer.service
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.NautilusPreviewer.svg
 %{_datadir}/metainfo/org.gnome.NautilusPreviewer.metainfo.xml
-%dir %{_datadir}/%{name}/gtksourceview-4
-%dir %{_datadir}/%{name}/gtksourceview-4/styles
-%{_datadir}/%{name}/gtksourceview-4/styles/builder-dark.style-scheme.xml
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/gir-1.0
 %{_datadir}/%{name}/gir-1.0/Sushi-1.0.gir
@@ -91,6 +65,8 @@ Sushi is a quick previewer for Nautilus, the GNOME desktop file manager.
 %dir %{_libdir}/%{name}/girepository-1.0
 %{_libdir}/%{name}/girepository-1.0/Sushi-1.0.typelib
 %{_libdir}/%{name}/libsushi-1.0.so
+%dir %{_libdir}/%{name}/web-process-extensions
+%{_libdir}/%{name}/web-process-extensions/libsushiwebprocessextension.so
 %{_libexecdir}/org.gnome.NautilusPreviewer
 
 %files lang -f %{name}.lang
