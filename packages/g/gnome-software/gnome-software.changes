@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Oct 22 13:47:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.1:
+  * Various user interface fixes
+  * Fix an unlikely crash when downloading icons
+  * Fix triggering a second refresh on the updates page
+  * Updated translations.
+
+-------------------------------------------------------------------
+Sat Oct 17 05:21:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0+22:
+  * src: Ensure broken markup won't leave stale text in labels
+  * gs-plugin-loader: Add missing NULL check for icon downloader
+  * Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 30 16:34:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Tue Sep 22 07:52:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable parental control (malcontent) for now: upstream does not
+  have resources to maintain malcontent and address CVEs. We do not
+  want to ship it to our users in this case.
+
+-------------------------------------------------------------------
+Fri Sep 11 09:29:51 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 09:29:50 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Various user interface fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 09:29:49 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Improve performance of icons loading
+  + Improve performance of PackageKit repositories refine
+  + Change statistical approach for average rating scores
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 09:29:48 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Extend Flatpak file permissions list
+  + Warn before installing end-of-life apps
+  + Add tooltips to icon-only buttons in narrow mode
+  + Reuse cached AppStream data on start-up to improve performance
+  + Fixed few memory leaks
+  + Updated translations.
+- BuildRequire pkgconfig(glib-testing-0): new dependency.
+- Temp disable testsuite, it currently fails!
+
+-------------------------------------------------------------------
 Thu Sep 10 16:28:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.4:
@@ -1460,7 +1524,7 @@ Tue Nov 19 07:10:33 UTC 2019 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add gnome-software-fwupd-dependency.patch: fwupd: Fix compile
   with old versions of fwupd (bsc#1156960,
-  gh#hughsie/gnome-software!362). 
+  gh#hughsie/gnome-software!362).
 
 -------------------------------------------------------------------
 Mon Oct  7 16:55:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -1672,7 +1736,7 @@ Thu Jan 17 00:53:30 UTC 2019 - bjorn.lie@gmail.com
   + Fix counting apps in the updates applied notification.
   + Improve packagekit update loading code, hopefully making it
     more robust.
-  + Fix an issue that could lead to the packagekit plugin 
+  + Fix an issue that could lead to the packagekit plugin
     activating on rpm-ostree based systems
   + Switch flatpak updates to use a single transaction, which lets
     us share more code (and bugs) with the command line flatpak

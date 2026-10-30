@@ -1414,4 +1414,40 @@ New stable release</comment>
     based systems.</comment>
     <requestid>1377055</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>d73285bc094008de9ef6852163b52ce8</srcmd5>
+    <version>51.1</version>
+    <time>1793380141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 51.1:
+  * Various user interface fixes
+  * Fix an unlikely crash when downloading icons
+  * Fix triggering a second refresh on the updates page
+  * Updated translations.
+
+- Update to version 51.0+22:
+  * src: Ensure broken markup won't leave stale text in labels
+  * gs-plugin-loader: Add missing NULL check for icon downloader
+  * Updated translations.
+
+- Update version dependencies according to meson.build.
+
+- Disable parental control (malcontent) for now: upstream does not
+  have resources to maintain malcontent and address CVEs. We do not
+  want to ship it to our users in this case.
+
+- Update to version 51.0:
+  + Updated translations.
+
+- Update to version 51.rc:
+  + Various user interface fixes
+  + Updated translations.
+
+- Update to version 51.beta:
+  + Improve performance of icons loading
+  + Improve performance of PackageKit repositories refine
+  + Change statistical approach for average rating scores
+  + Updated translations.</comment>
+    <requestid>1387148</requestid>
+  </revision>
 </revisionlist>
