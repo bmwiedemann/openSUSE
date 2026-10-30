@@ -37,7 +37,6 @@ Version:        84.87+git20260924.144354a1%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
-Group:          System/Fhs
 URL:            https://github.com/openSUSE/aaa_base
 Source:         aaa_base-%{version}.tar
 Source1:        README.packaging.txt
@@ -68,26 +67,26 @@ Conflicts:      sysvinit-init
 # run osc service mr to recreate
 
 %description
-This package installs several important configuration files and central scripts.
+This package installs several important configuration files and central
+scripts.
 
 %package extras
+BuildArch:      noarch
 Summary:        SUSE Linux Base Package (recommended part)
-Group:          System/Fhs
 Requires:       %{name} = %{version}
 Requires:       /usr/bin/cpio
 Requires:       /usr/bin/find
 Requires:       /usr/bin/gzip
 Requires:       /usr/bin/tar
 Requires(post): /usr/bin/fillup
-Provides:       aaa_base:/etc/DIR_COLORS
 
 %description extras
 The parts of aaa_base that should be installed by default but are not
 strictly required to run a system. (bash completions and convenience hacks).
 
 %package malloccheck
+BuildArch:      noarch
 Summary:        SUSE Linux Base Package (malloc checking)
-Group:          System/Fhs
 Requires:       %{name} = %{version}
 
 %description malloccheck
@@ -96,8 +95,8 @@ malloc checks to catch potential heap corruptions. It's not
 installed by default as it may degrade performance.
 
 %package wsl
+BuildArch:      noarch
 Summary:        SUSE Linux Base Package (Windows Subsystem for Linux)
-Group:          System/Fhs
 Requires:       %{name} = %{version}
 
 %description wsl
@@ -106,12 +105,12 @@ for Linux. It should only be installed on WSL and not on regular Linux
 systems.
 
 %package yama-enable-ptrace
+BuildArch:      noarch
 Summary:        Sysctl setting to allow ptrace with the YAMA LSM enabled
-Group:          System/Fhs
 Requires:       %{name} = %{version}
 
 %description yama-enable-ptrace
-When the YAMA LSM is enabled, ptrace is restriced by default. On
+When the YAMA LSM is enabled, ptrace is restricted by default. On
 developer systems this has an impact on e.g. strace and gdb. So
 this package contains a setting that allows ptrace again.
 
@@ -126,14 +125,12 @@ See https://docs.kernel.org/admin-guide/LSM/Yama.html
 %install
 %make_install
 mkdir -p %{buildroot}/etc/sysctl.d
+# keep the ghosted /etc/init.d directory present in the buildroot
+# so that its recorded permissions are real
+mkdir -p %{buildroot}/etc/init.d
 #
 # make sure it does not creep in again
 test -d %{buildroot}/root/.gnupg && exit 1
-# TODO: get rid of that at some point in the future
-mkdir -p %{buildroot}/etc/init.d
-for i in boot.local after.local ; do
-  install -m 755 /dev/null %{buildroot}/etc/init.d/$i
-done
 # keep as ghost for migration
 touch %buildroot/etc/inittab
 
@@ -262,8 +259,6 @@ fi
 %{_tmpfilesdir}/soft-reboot-cleanup.conf
 %config /etc/shells
 %ghost %dir /etc/init.d
-%ghost %config(noreplace) /etc/init.d/boot.local
-%ghost %config(noreplace) /etc/init.d/after.local
 %ghost %config /etc/inittab
 /usr/bin/get_kernel_version
 /usr/sbin/service

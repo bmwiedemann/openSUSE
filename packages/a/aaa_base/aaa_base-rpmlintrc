@@ -1,9 +1,18 @@
-# confirmed - but standard
-addFilter("non-root-group-log-file /var/log/wtmp utmp")
+# The %post of the main package backs up /etc/nsswitch.conf with cp before
+# patching it in place (usrfiles, bsc#1162916; systemd, bsc#1250513). The
+# backup has to happen synchronously in %post, ahead of the edit.
+addFilter("dangerous-command-in-%post")
 
-# aaa_base requires net-tools
-addFilter("dangling-symlink.*/usr/lib/restricted/bin/hostname.*/bin/hostname")
+# /usr/etc/skel/.emacs and /usr/etc/skel/.inputrc are skeleton templates
+# for the user dotfiles of the same name; they are hidden by design.
+addFilter("hidden-file-or-dir /usr/etc/skel/")
 
-# for /etc/init.d/*.local. To be removed at some point
-addFilter(".*suse-deprecated-init-script.*")
-addFilter(".*suse-deprecated-boot-script.*")
+# /var/adm is the distribution admin directory owned by the filesystem
+# package; /var/adm/backup is where the rpmdb/sysconfig backup units
+# keep their data.
+addFilter("non-standard-dir-in-var adm")
+
+# /etc/sysconfig/proxy and /etc/sysconfig/backup are the established
+# configuration interface for the proxy setup and the backup units,
+# written by other tools; fillup is the delivery mechanism for them.
+addFilter("sysconfig-fillup-usage")

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:32:15 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Remove the /etc/init.d/boot.local and /etc/init.d/after.local ghost
+  placeholders; nothing has executed these files since the sysvinit
+  era and the spec already recorded the intent to drop them. This
+  resolves the executable-marked-as-config-file errors on the pair
+- Build the text-only subpackages extras, malloccheck, wsl and
+  yama-enable-ptrace as noarch
+- Drop the legacy aaa_base:/etc/DIR_COLORS provides from
+  aaa_base-extras; nothing in Tumbleweed requires it
+- Fix a typo in the yama-enable-ptrace description and wrap the main
+  description line
+- Drop the Group tags from all package sections
+- Rework aaa_base-rpmlintrc: drop the filters whose targets no longer
+  exist in the package (the wtmp log file group, the restricted
+  hostname symlink and the deprecated init script filters for the
+  removed .local files) and add reasoned filters for the remaining
+  deliberate warnings (the nsswitch.conf backup copy in %post, the
+  skel dotfiles, /var/adm and the sysconfig fillup templates)
+
+-------------------------------------------------------------------
 Mon Sep 28 08:38:21 UTC 2026 - ro@suse.com
 
 - Update to version 84.87+git20260924.144354a1:
