@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 30 08:45:18 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Upgrade to Elixir 1.20.5:
+  * Changelog available at https://hexdocs.pm/elixir/1.20.5/changelog.html
+
+-------------------------------------------------------------------
 Sat Aug 29 14:38:29 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Add 005-skip-mix-compile-concurrent-listening-test.patch: skip the
