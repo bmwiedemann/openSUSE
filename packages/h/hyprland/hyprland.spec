@@ -19,8 +19,10 @@
 
 %define shortname hypr
 
+%bcond_without rtkit
+
 Name:           hyprland
-Version:        0.56.2
+Version:        0.57.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -42,6 +44,7 @@ BuildRequires:  glaze-devel
 BuildRequires:  glslang-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(aquamarine) >= 0.10.0
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(egl)
@@ -50,11 +53,13 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hyprcursor) >= 0.1.9
 BuildRequires:  pkgconfig(hyprgraphics) >= 0.5.1
+BuildRequires:  pkgconfig(hyprland-protocols) >= 0.8.0
 BuildRequires:  pkgconfig(hyprlang) >= 0.6.7
-BuildRequires:  pkgconfig(hyprutils) >= 0.14.0
+BuildRequires:  pkgconfig(hyprutils) >= 0.14.3
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.10
 BuildRequires:  pkgconfig(hyprwire) >= 0.3.0
 BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libeis-1.0)
 BuildRequires:  pkgconfig(libinput) >= 1.29.0
@@ -84,9 +89,16 @@ BuildRequires:  pkgconfig(xwayland)
 %if 0%{?suse_version}
 BuildRequires:  Mesa-libGLESv3-devel
 %endif
+%if %{with rtkit}
+BuildRequires:  pkgconfig(sdbus-c++) >= 2.0.0
+%endif
 Recommends:     %{name}-wallpapers
 Suggests:       %{name}-devel
 Obsoletes:      %{name}-plugin-hyprscrolling < 0.54.0
+# hyprland 0.57.0 dropped completions for being unmaintained
+Obsoletes:      %{name}-bash-completion < 0.57.0
+Obsoletes:      %{name}-fish-completion < 0.57.0
+Obsoletes:      %{name}-zsh-completion < 0.57.0
 
 %description
 Hyprland is a dynamic tiling Wayland compositor based on wlroots
@@ -115,42 +127,6 @@ Requires:       Mesa-libGLESv3-devel
 This package contains the neccessary files that are required to
 build plugins for hyprland.
 
-%package bash-completion
-Summary:        Bash Completion for %{name}
-Group:          System/Shells
-Requires:       %{name}
-Requires:       awk
-Requires:       bash-completion
-Supplements:    (%{name} and bash-completion)
-BuildArch:      noarch
-
-%description bash-completion
-The official bash completion script for %{name}.
-
-%package fish-completion
-Summary:        Fish Completion for %{name}
-Group:          System/Shells
-Requires:       %{name}
-Requires:       awk
-Requires:       fish
-Supplements:    (%{name} and fish)
-BuildArch:      noarch
-
-%description fish-completion
-The official fish completion script for %{name}.
-
-%package zsh-completion
-Summary:        ZSH Completion for %{name}
-Group:          System/Shells
-Requires:       %{name}
-Requires:       awk
-Requires:       zsh
-Supplements:    (%{name} and zsh)
-BuildArch:      noarch
-
-%description zsh-completion
-The official zsh completion script for %{name}.
-
 %prep
 %autosetup -p1
 
@@ -174,11 +150,19 @@ sed \
 %define __builder ninja
 %cmake \
 	-DNO_HYPRPM:STRING=True \
-	-DNO_UWSM:STRING=True
+	-DNO_UWSM:STRING=True \
+	-DNO_RTKIT:STRING=%{?with_rtkit:False}%{!?with_rtkit:True} \
+	%{nil}
 %cmake_build
 
 %install
 %cmake_install
+%if "%{_userunitdir}" != "%{_libdir}/systemd/user"
+mkdir -p %{buildroot}%{_userunitdir}
+mv %{buildroot}%{_libdir}/systemd/user/hyprland-session.target %{buildroot}%{_userunitdir}
+rmdir %{buildroot}%{_libdir}/systemd/user
+rmdir %{buildroot}%{_libdir}/systemd
+%endif
 
 %files
 %license LICENSE
@@ -199,6 +183,7 @@ sed \
 %{_datadir}/xdg-desktop-portal/%{name}-portals.conf
 %{_mandir}/man1/Hyprland.*
 %{_mandir}/man1/hyprctl.*
+%{_userunitdir}/hyprland-session.target
 
 %files wallpapers
 %{_datadir}/%{shortname}/wall*
@@ -206,20 +191,5 @@ sed \
 %files devel
 %{_includedir}/%{name}
 %{_datadir}/pkgconfig/%{name}.pc
-
-%files bash-completion
-%dir %{_datadir}/bash-completion/
-%dir %{_datadir}/bash-completion/completions/
-%{_datadir}/bash-completion/completions/hyprctl
-
-%files fish-completion
-%dir %{_datadir}/fish/
-%dir %{_datadir}/fish/vendor_completions.d/
-%{_datadir}/fish/vendor_completions.d/hyprctl.fish
-
-%files zsh-completion
-%dir %{_datadir}/zsh/
-%dir %{_datadir}/zsh/site-functions/
-%{_datadir}/zsh/site-functions/_hyprctl
 
 %changelog

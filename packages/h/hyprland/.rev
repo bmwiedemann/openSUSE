@@ -463,4 +463,12 @@ depends on 1159012</comment>
     <comment></comment>
     <requestid>1370011</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e46b713c0b1dbc96ccfe65f89dab98e4</srcmd5>
+    <version>0.57.0</version>
+    <time>1793380383</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1393771</requestid>
+  </revision>
 </revisionlist>
