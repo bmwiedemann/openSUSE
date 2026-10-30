@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 28 16:36:45 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.8.0:
+  * protocols: init workspace image source
+  * build: LANGUAGES NONE -> LANGUAGES C
+  * typo-fix: latin "C" instead of cyrillic "С"
+- Changes from version 0.7.1:
+  * input-capture-v1: add destroy destructor to the session interface
+- Moved from meson to cmake, as meson got dropped
+
+-------------------------------------------------------------------
 Thu Jul 30 07:31:09 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.7.0:

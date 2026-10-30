@@ -20,11 +20,11 @@ Name:           hyprland-protocols
 Summary:        Wayland extension protocol for Hyprland
 Group:          Development/Libraries/Other
 License:        BSD-3-Clause
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 URL:            https://github.com/hyprwm/hyprland-protocols
 Source0:        https://github.com/hyprwm/hyprland-protocols/archive/refs/tags/v%{version}.tar.gz#/hyprland-protocols-%{version}.tar.gz
-BuildRequires:  meson
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)
@@ -47,11 +47,11 @@ This provides additional extensions of the Wayland protocol for Hyprland.
 %autosetup -p1
 
 %build
-%meson
-%meson_build
+%cmake
+%cmake_build
 
 %install
-%meson_install
+%cmake_install
 
 %files devel
 %{_datadir}/pkgconfig/hyprland-protocols.pc
