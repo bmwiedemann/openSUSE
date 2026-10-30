@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Tue Jul 14 18:22:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.99.1:
+  + Upstream moved from https://gitlab.gnome.org/sp1rit/ministream
+    to https://gitlab.gnome.org/GNOME/ministream.
+  + Added -Dinstall-profile configure option intended for the
+    vendored copy of ministream inside libadwaita.
+
+-------------------------------------------------------------------
+Thu Jul  2 10:51:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial packaging for openSUSE.
