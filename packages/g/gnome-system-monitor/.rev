@@ -946,4 +946,12 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345391</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>c514c24e28a632a9dc0a82a6cc58d84f</srcmd5>
+    <version>51.1</version>
+    <time>1793380042</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385434</requestid>
+  </revision>
 </revisionlist>

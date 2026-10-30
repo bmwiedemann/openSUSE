@@ -1,7 +1,7 @@
-diff --git a/src/application.cpp b/src/application.cpp
-index 20a7db3a..adc56693 100644
---- a/src/application.cpp
-+++ b/src/application.cpp
+Index: gnome-system-monitor-51.beta/src/application.cpp
+===================================================================
+--- gnome-system-monitor-51.beta.orig/src/application.cpp
++++ gnome-system-monitor-51.beta/src/application.cpp
 @@ -360,7 +360,6 @@ GsmApplication::GsmApplication()
    app_menu_button (NULL),
  
@@ -25,10 +25,10 @@ index 20a7db3a..adc56693 100644
 -  pretty_table = new PrettyTable ();
    smooth_refresh = new SmoothRefresh (settings);
  }
-diff --git a/src/application.h b/src/application.h
-index 6f99770a..b94bd329 100644
---- a/src/application.h
-+++ b/src/application.h
+Index: gnome-system-monitor-51.beta/src/application.h
+===================================================================
+--- gnome-system-monitor-51.beta.orig/src/application.h
++++ gnome-system-monitor-51.beta/src/application.h
 @@ -104,7 +104,7 @@ public:
  
    ProcList processes;
@@ -38,11 +38,11 @@ index 6f99770a..b94bd329 100644
    GsmTreeView *tree;
    GtkRevealer *proc_actionbar_revealer;
    GtkPopover *proc_popover_menu;
-diff --git a/src/proctable.cpp b/src/proctable.cpp
-index 2b1ed622..f0e80a01 100644
---- a/src/proctable.cpp
-+++ b/src/proctable.cpp
-@@ -184,7 +184,7 @@ cb_refresh_icons (GtkIconTheme*,
+Index: gnome-system-monitor-51.beta/src/proctable.cpp
+===================================================================
+--- gnome-system-monitor-51.beta.orig/src/proctable.cpp
++++ gnome-system-monitor-51.beta/src/proctable.cpp
+@@ -188,7 +188,7 @@ cb_refresh_icons (GtkIconTheme*,
    GsmApplication *app = (GsmApplication *) data;
  
    for (auto&v : app->processes)
@@ -51,7 +51,7 @@ index 2b1ed622..f0e80a01 100644
  
    proctable_update (app);
  }
-@@ -850,7 +850,7 @@ insert_info_to_tree (ProcInfo       *info,
+@@ -859,7 +859,7 @@ insert_info_to_tree (ProcInfo       *inf
                        COL_SECURITYCONTEXT, info->security_context.c_str (),
                        -1);
  

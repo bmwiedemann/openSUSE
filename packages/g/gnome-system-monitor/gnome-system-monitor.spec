@@ -17,7 +17,7 @@
 
 
 Name:           gnome-system-monitor
-Version:        50.0
+Version:        51.1
 Release:        0
 Summary:        A process monitor for the GNOME desktop
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(catch2-with-main)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(giomm-2.68) >= 2.84
 BuildRequires:  pkgconfig(glib-2.0) >= 2.80
@@ -43,7 +42,7 @@ BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.17.5
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libgtop-2.0) >= 2.41.2
 BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
-BuildRequires:  pkgconfig(librsvg-2.0) >= 2.35
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.46
 BuildRequires:  pkgconfig(libsystemd) >= 44
 
 %description
