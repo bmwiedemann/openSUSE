@@ -1500,4 +1500,165 @@
   connection has been destroyed (bsc#1279238, CVE-2026-85197)</comment>
     <requestid>1378744</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>050c78557c94562f22423f14cfd185e8</srcmd5>
+    <version>3.8.1</version>
+    <time>1793380173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.1:
+  * Limit the size of intermediate (redirect and auth) response bodies
+  * Http2: Fix stalls when the reader is slower than the session timeout, and
+    propagate connection errors to response body streams
+  * Zstd: Support multiple concatenated frames, which previously truncated
+    responses
+  * Cookie-jar: Fix a `SoupConnection` leak when using an HTTP proxy
+  * Logger: Fix undefined behavior found by UBSan
+  * Build: Require brotli &gt;= 1.1.0 for brotli support
+  * Fix building the tests on Windows and update README.msvc
+  * Updated translations.
+- Add explicit pkgconfig(libbrotlienc) BuildRequires: meson setup checks for it
+
+
+- Update to version 3.8.0:
+  + Harden authentication:
+    - Check `nonce` validity in Digest authentication
+      (CVE-2026-3099)
+    - Do not send cached proxy credentials after a redirect to a
+      different origin
+  + Harden multipart handling:
+    - Fix an out-of-bounds read when less data than the boundary is
+      buffered (CVE-2026-66337)
+    - Limit the length of part headers
+    - Fix a leak of the current part's headers
+  + Prevent request smuggling in the server:
+    - Close the connection after an early response to `Expect:
+      100-continue`
+    - Reject `Host` headers containing URI delimiters
+    - Require chunk-size to begin with a hex digit
+  + Http2:
+    - Fix skipping over multiple buffered chunks of a response body
+    - Fix a `GCancellable` leak [Michael Catanzaro]
+  + Fix the build on platforms without `dlfcn.h`
+  + Updated translations.
+
+
+- Skip test-suite on non-64-bit architectures
+  (glgo#GNOME/libsoup#556).
+
+
+- Update to version 3.7.3:
+  + Add `soup_message_set_compression_dictionary_id()` and
+    `soup_message_get_compression_dictionary_id()` to send the
+    `Dictionary-ID` header alongside `Available-Dictionary`
+  + Add `soup_websocket_extension_process_incoming_message_with_limit()`
+    so extensions can bound how much they decompress
+  + Harden WebSocket handling:
+    - Bound decompressed message size during inflation
+      (CVE-2026-15709)
+    - Reject oversized control frames (CVE-2026-15711)
+    - Cap incoming frame payloads, message reassembly, and outgoing
+      frames at what the underlying buffer can hold
+    - Bound outgoing permessage-deflate buffer growth
+    - Cap the number of queued unsolicited pongs
+    - Emit `SoupWebsocketConnection::pong` with a `GBytes`, as
+      declared
+    - Store accepted WebSocket extensions per message rather than
+      per handler
+  + Harden authentication and caching:
+    - Do not send `Proxy-Authorization` through an established
+      CONNECT tunnel (CVE-2026-66339)
+    - Scope cached proxy credentials to the proxy they came from
+      (CVE-2026-12547)
+    - Reject caching authenticated responses in shared caches
+      (CVE-2026-15713)
+  + Tighten HTTP parsing and validation:
+    - Reject CRLF injection in the HTTP method (CVE-2026-3633)
+    - Fix `Range` parsing overflows and coalescing cost, and
+      validate `Content-Range` when parsing it
+    - Keep duplicate `Content-Length` headers when they are
+      identical
+    - Fix an out-of-bounds read in case of an excessively long
+      multipart boundary
+    - Do not treat base64 data URI content as a NUL-terminated
+      string
+  + http2:
+    - Never send more body bytes than nghttp2 requested
+      (CVE-2026-85534)
+    - Keep the message alive across `io_run_until()` in
+      `run_until_read()`
+    - Do not assume that `GOAWAY` opaque data is NUL-terminated
+  + server: Report the resource length in 416 responses
+  + session: Do not send a message cancelled while being queued
+  + cookie: Annotate constants' values
+- Drop libsoup-CVE-2026-85534.patch, - Drop
+  libsoup-CVE-2026-15711.patch, libsoup-CVE-2026-12547.patch,
+  libsoup-CVE-2026-15712.patch, libsoup-CVE-2026-15714.patch,
+  libsoup-CVE-2026-66339.patch: fixed upstream.
+
+
+- Update to version 3.7.2:
+  + Add support for compression dictionaries:
+    - Support the dcb and dcz encodings
+    - Add new `soup_message_set_compression_dictionary_hash()`,
+      `SoupMessage::request-compression-dictionary`, and
+      `SoupCompressionDictionaryRequest`
+  + Remove color codes from http2 debug logs
+  + Add missing autoptr defines for `SoupMessageBody`
+  + http2:
+    - Fix content-sniffer running while message is paused
+    - Consume buffered response body before cancel
+    - Fix requeuing failed messages when connection is not reusable
+  + soup-body-input-stream: Limit buffer read to the received
+    content
+
+
+- Update to version 3.7.1:
+  Use canonical signal names.
+  message: Use G_PARAM_STATIC_STRINGS.
+  http2: Add missing G_BEING_DECLS.
+  soup-auth-ntlm: Reject excessively long passwords.
+  (CVE-2026-0719, bsc#1256399)
+  websocket: add a way to restrict the total message size.
+  (CVE-2025-32049, bsc#1240751)
+  Do not allow adding multiple content length values to headers.
+  (CVE-2026-2708, bsc#1258508)
+  Also remove Proxy-Authorization header on cross origin redirect.
+  (CVE-2026-1539, bsc#1257441)
+  websocket: Fix out-of-bounds read when reading unmasked frame.
+  (CVE-2026-0716, bsc#1256418)
+  server: protect message io while reading and writing.
+  (CVE-2026-4271, bsc#1259767)
+- Drop merged fixes in 3.7.1:
+  libsoup-CVE-2025-32049.patch, libsoup-CVE-2026-12478.patch
+  libsoup-CVE-2026-0719.patch,  libsoup-CVE-2026-1539.patch
+  libsoup-CVE-2026-2708.patch,  libsoup-CVE-2026-4271.patch,
+  libsoup-CVE-2026-12548.patch, libsoup-CVE-2026-85197.patch
+- Drop fix-samsung-tv-playback.patch: fixed upstream
+
+
+- CVE-2026-15711: WebSocket denial of service via oversized control
+  frame protocol violation (bsc#1271446)
+  * libsoup-CVE-2026-15711.patch
+- CVE-2026-15712: HTTP/2 GOAWAY frame parsing heap buffer
+  over-read via invalid NUL-termination assumption (bsc#1271447)
+  * libsoup-CVE-2026-15712.patch
+- CVE-2026-15714: Out-of-bounds read in
+  soup_multipart_input_stream_read_headers via an oversized
+  multipart boundary string (bsc#1271449)
+  * libsoup-CVE-2026-15714.patch
+- CVE-2026-66339: proxy credentials leak to destination server via
+  `Proxy-Authorization` header in CONNECT tunnels (bsc#1273156)
+  * libsoup-CVE-2026-66339.patch
+- CVE-2026-12547: Header &quot;Proxy-Authorization&quot; leads to credentials
+  being send to different proxy after proxy switch (bsc#1272195)
+  * libsoup-CVE-2026-12547.patch
+- Drop SLE patches to revert the meson dependency. Meson is being
+  updated to version 0.63.3 in SLE-15-SP4, so, even if libsoup is
+  updated there, these patches would not be needed.
+  + libsoup-revert-dep-meson-0.62-part01-4209dbec.patch
+  + libsoup-revert-dep-meson-0.62-part02-fd7ce01a.patch
+  + libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch
+  + libsoup-revert-dep-meson-0.62-shim02-6b34bc58.patch</comment>
+    <requestid>1393563</requestid>
+  </revision>
 </revisionlist>

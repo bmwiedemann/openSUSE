@@ -16,9 +16,11 @@
 #
 
 
-%define api_version 3.0
+%global api_version 3.0
+%global gnome_version %(echo %{version} | sed -E 's/^([0-9]+\.[0-9]+).*/\1/')
+
 Name:           libsoup
-Version:        3.6.6
+Version:        3.8.1
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
@@ -26,36 +28,6 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libsoup
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-0719.patch bsc#1256399, CVE-2026-0719, glgo#GNOME/libsoup!493 alynx.zhou@suse.com -- Fix overflow for password md4sum
-Patch1:         libsoup-CVE-2026-0719.patch
-# PATCH-FIX-OPENSUSE libsoup-CVE-2025-32049.patch bsc#1240751 mgorse@suse.com -- add size limit for total message size.
-Patch2:         libsoup-CVE-2025-32049.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-2708.patch bsc#1258508 mgorse@suse.com -- do not allow adding multiple content length values to headers.
-Patch3:         libsoup-CVE-2026-2708.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-1539.patch bsc#1257441, CVE-2026-1539, glgo#GNOME/libsoup#489 -- Also remove Proxy-Authorization header on cross origin redirect
-Patch4:         libsoup-CVE-2026-1539.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-12478.patch bsc#1271401 mgorse@suse.com -- websocket: Fix out-of-bounds read when reading unmasked frame
-Patch5:         libsoup-CVE-2026-12478.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-4271.patch bsc#1259767 xwang@suse.com -- protect message io while reading and writing
-Patch6:         libsoup-CVE-2026-4271.patch
-# PATCH-FIX-UPSTREAM fix-samsung-tv-playback.patch -- Update the content length decimal value when encoding is set to SOUP_ENCODING_CONTENT_LENGTH
-Patch7:         fix-samsung-tv-playback.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-12548.patch bsc#1272196, glgo#GNOME/libsoup!524 alynx.zhou@suse.com -- Fix heap out-of-bounds read flaw when parsing multipart HTTP messages
-Patch8:         libsoup-CVE-2026-12548.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-85534.patch bsc#1279239 xwang@suse.com -- Never send more body bytes than nghttp2 requested
-Patch9:         libsoup-CVE-2026-85534.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-85197.patch bsc#1279238 xwang@suse.com -- fix crash in on_data_read after connection has been destroyed
-Patch10:        libsoup-CVE-2026-85197.patch
-
-# PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch qzhao@suse.com -- Revert upstream e315cf2d to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
-Patch1000:      libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch
-# PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-shim02-6b34bc58.patch qzhao@suse.com -- Revert upstream 6b34bc58 to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
-Patch1001:      libsoup-revert-dep-meson-0.62-shim02-6b34bc58.patch
-# PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-part01-4209dbec.patch qzhao@suse.com -- Revert upstream 4209dbec to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
-Patch1002:      libsoup-revert-dep-meson-0.62-part01-4209dbec.patch
-# PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-part02-fd7ce01a.patch qzhao@suse.com -- Revert upstream fd7ce01a to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
-Patch1003:      libsoup-revert-dep-meson-0.62-part02-fd7ce01a.patch
-
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
@@ -66,11 +38,13 @@ BuildRequires:  pkgconfig(gnutls) >= 3.6.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.69.1
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires:  pkgconfig(krb5-gssapi)
-BuildRequires:  pkgconfig(libbrotlidec)
+BuildRequires:  pkgconfig(libbrotlidec) >= 1.1.0
+BuildRequires:  pkgconfig(libbrotlienc) >= 1.1.0
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libpsl) >= 0.20
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(vapigen)
+BuildRequires:  pkgconfig(libzstd)
 # We do not need these dependencies needed only for tests.
 #BuildRequires:  apache2-mod_php5 php5-xmlrpc
 
@@ -155,11 +129,7 @@ Run with: gnome-desktop-testing-runner libsoup-3.0
 %lang_package
 
 %prep
-%autosetup -N
-%autopatch -p1 -M 999
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} <= 155000
-%autopatch -p1 -m 1000
-%endif
+%autosetup -p1
 
 %build
 %meson \
@@ -181,6 +151,7 @@ mkdir -p %{buildroot}%{_docdir}/%{name}-%{api_version}
 # Move docs from upstream docdir to openSUSE docdir standard
 mv %{buildroot}%{_datadir}/doc/%{name}-%{api_version} %{buildroot}%{_docdir}
 
+%if %__isa_bits == 64
 %check
 # Run the regression tests using GnuTLS NORMAL priority
 export G_TLS_GNUTLS_PRIORITY=NORMAL
@@ -188,6 +159,7 @@ export G_TLS_GNUTLS_PRIORITY=NORMAL
 %meson_test -t 5 || (%meson_test -t 5)
 %else
 %meson_test
+%endif
 %endif
 
 %ldconfig_scriptlets 3_0-0

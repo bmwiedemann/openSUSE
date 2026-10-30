@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Sun Oct 25 17:24:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.8.1:
+  * Limit the size of intermediate (redirect and auth) response bodies
+  * Http2: Fix stalls when the reader is slower than the session timeout, and
+    propagate connection errors to response body streams
+  * Zstd: Support multiple concatenated frames, which previously truncated
+    responses
+  * Cookie-jar: Fix a `SoupConnection` leak when using an HTTP proxy
+  * Logger: Fix undefined behavior found by UBSan
+  * Build: Require brotli >= 1.1.0 for brotli support
+  * Fix building the tests on Windows and update README.msvc
+  * Updated translations.
+- Add explicit pkgconfig(libbrotlienc) BuildRequires: meson setup checks for it
+
+-------------------------------------------------------------------
+Thu Oct  1 06:50:59 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.8.0:
+  + Harden authentication:
+    - Check `nonce` validity in Digest authentication
+      (CVE-2026-3099)
+    - Do not send cached proxy credentials after a redirect to a
+      different origin
+  + Harden multipart handling:
+    - Fix an out-of-bounds read when less data than the boundary is
+      buffered (CVE-2026-66337)
+    - Limit the length of part headers
+    - Fix a leak of the current part's headers
+  + Prevent request smuggling in the server:
+    - Close the connection after an early response to `Expect:
+      100-continue`
+    - Reject `Host` headers containing URI delimiters
+    - Require chunk-size to begin with a hex digit
+  + Http2:
+    - Fix skipping over multiple buffered chunks of a response body
+    - Fix a `GCancellable` leak [Michael Catanzaro]
+  + Fix the build on platforms without `dlfcn.h`
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 30 21:37:42 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip test-suite on non-64-bit architectures
+  (glgo#GNOME/libsoup#556).
+
+-------------------------------------------------------------------
+Wed Sep 30 21:37:41 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.7.3:
+  + Add `soup_message_set_compression_dictionary_id()` and
+    `soup_message_get_compression_dictionary_id()` to send the
+    `Dictionary-ID` header alongside `Available-Dictionary`
+  + Add `soup_websocket_extension_process_incoming_message_with_limit()`
+    so extensions can bound how much they decompress
+  + Harden WebSocket handling:
+    - Bound decompressed message size during inflation
+      (CVE-2026-15709)
+    - Reject oversized control frames (CVE-2026-15711)
+    - Cap incoming frame payloads, message reassembly, and outgoing
+      frames at what the underlying buffer can hold
+    - Bound outgoing permessage-deflate buffer growth
+    - Cap the number of queued unsolicited pongs
+    - Emit `SoupWebsocketConnection::pong` with a `GBytes`, as
+      declared
+    - Store accepted WebSocket extensions per message rather than
+      per handler
+  + Harden authentication and caching:
+    - Do not send `Proxy-Authorization` through an established
+      CONNECT tunnel (CVE-2026-66339)
+    - Scope cached proxy credentials to the proxy they came from
+      (CVE-2026-12547)
+    - Reject caching authenticated responses in shared caches
+      (CVE-2026-15713)
+  + Tighten HTTP parsing and validation:
+    - Reject CRLF injection in the HTTP method (CVE-2026-3633)
+    - Fix `Range` parsing overflows and coalescing cost, and
+      validate `Content-Range` when parsing it
+    - Keep duplicate `Content-Length` headers when they are
+      identical
+    - Fix an out-of-bounds read in case of an excessively long
+      multipart boundary
+    - Do not treat base64 data URI content as a NUL-terminated
+      string
+  + http2:
+    - Never send more body bytes than nghttp2 requested
+      (CVE-2026-85534)
+    - Keep the message alive across `io_run_until()` in
+      `run_until_read()`
+    - Do not assume that `GOAWAY` opaque data is NUL-terminated
+  + server: Report the resource length in 416 responses
+  + session: Do not send a message cancelled while being queued
+  + cookie: Annotate constants' values
+- Drop libsoup-CVE-2026-85534.patch, - Drop
+  libsoup-CVE-2026-15711.patch, libsoup-CVE-2026-12547.patch,
+  libsoup-CVE-2026-15712.patch, libsoup-CVE-2026-15714.patch,
+  libsoup-CVE-2026-66339.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Sep 30 21:37:40 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.7.2:
+  + Add support for compression dictionaries:
+    - Support the dcb and dcz encodings
+    - Add new `soup_message_set_compression_dictionary_hash()`,
+      `SoupMessage::request-compression-dictionary`, and
+      `SoupCompressionDictionaryRequest`
+  + Remove color codes from http2 debug logs
+  + Add missing autoptr defines for `SoupMessageBody`
+  + http2:
+    - Fix content-sniffer running while message is paused
+    - Consume buffered response body before cancel
+    - Fix requeuing failed messages when connection is not reusable
+  + soup-body-input-stream: Limit buffer read to the received
+    content
+
+-------------------------------------------------------------------
+Wed Sep 30 21:37:39 CEST 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 3.7.1:
+  Use canonical signal names.
+  message: Use G_PARAM_STATIC_STRINGS.
+  http2: Add missing G_BEING_DECLS.
+  soup-auth-ntlm: Reject excessively long passwords.
+  (CVE-2026-0719, bsc#1256399)
+  websocket: add a way to restrict the total message size.
+  (CVE-2025-32049, bsc#1240751)
+  Do not allow adding multiple content length values to headers.
+  (CVE-2026-2708, bsc#1258508)
+  Also remove Proxy-Authorization header on cross origin redirect.
+  (CVE-2026-1539, bsc#1257441)
+  websocket: Fix out-of-bounds read when reading unmasked frame.
+  (CVE-2026-0716, bsc#1256418)
+  server: protect message io while reading and writing.
+  (CVE-2026-4271, bsc#1259767)
+- Drop merged fixes in 3.7.1:
+  libsoup-CVE-2025-32049.patch, libsoup-CVE-2026-12478.patch
+  libsoup-CVE-2026-0719.patch,  libsoup-CVE-2026-1539.patch
+  libsoup-CVE-2026-2708.patch,  libsoup-CVE-2026-4271.patch,
+  libsoup-CVE-2026-12548.patch, libsoup-CVE-2026-85197.patch
+- Drop fix-samsung-tv-playback.patch: fixed upstream
+
+-------------------------------------------------------------------
+Mon Sep 28 15:30:42 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- CVE-2026-15711: WebSocket denial of service via oversized control
+  frame protocol violation (bsc#1271446)
+  * libsoup-CVE-2026-15711.patch
+- CVE-2026-15712: HTTP/2 GOAWAY frame parsing heap buffer
+  over-read via invalid NUL-termination assumption (bsc#1271447)
+  * libsoup-CVE-2026-15712.patch
+- CVE-2026-15714: Out-of-bounds read in
+  soup_multipart_input_stream_read_headers via an oversized
+  multipart boundary string (bsc#1271449)
+  * libsoup-CVE-2026-15714.patch
+- CVE-2026-66339: proxy credentials leak to destination server via
+  `Proxy-Authorization` header in CONNECT tunnels (bsc#1273156)
+  * libsoup-CVE-2026-66339.patch
+- CVE-2026-12547: Header "Proxy-Authorization" leads to credentials
+  being send to different proxy after proxy switch (bsc#1272195)
+  * libsoup-CVE-2026-12547.patch
+- Drop SLE patches to revert the meson dependency. Meson is being
+  updated to version 0.63.3 in SLE-15-SP4, so, even if libsoup is
+  updated there, these patches would not be needed.
+  + libsoup-revert-dep-meson-0.62-part01-4209dbec.patch
+  + libsoup-revert-dep-meson-0.62-part02-fd7ce01a.patch
+  + libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch
+  + libsoup-revert-dep-meson-0.62-shim02-6b34bc58.patch
+
+-------------------------------------------------------------------
 Wed Sep 16 06:35:12 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add libsoup-CVE-2026-85534.patch: Never send more body bytes than
@@ -60,7 +230,7 @@ Fri May 29 10:25:28 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 - This fix could enable the libsoup update to the latest verion in
   SLE-15-SP4 and SP5, which fix many CVE bugs.
 - This fix only enable on SLE-15-SP4 and SP5 in SPEC file.
-  
+
 -------------------------------------------------------------------
 Fri May 29 10:18:43 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
@@ -69,7 +239,7 @@ Fri May 29 10:18:43 UTC 2026 - Cliff Zhao <qzhao@suse.com>
   doc-format is gi-docgen, this version() check function requires
   meson 0.62.
 - This fix only enable on SLE-15-SP4 and SP5 in SPEC file.
-  
+
 -------------------------------------------------------------------
 Fri May 29 10:02:12 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
@@ -172,7 +342,7 @@ Fri Feb 20 15:30:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 Thu Feb 20 14:51:21 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add libsoup-CVE-2026-1467.patch: uri-utils: do host validation
-  when checking if a GUri is valid 
+  when checking if a GUri is valid
   (bsc#1257398, CVE-2026-1467, glgo#GNOME/libsoup#488).
 - Add libsoup-CVE-2026-1760.patch: server: close the connection
   after responsing a request containing...
@@ -3251,7 +3421,7 @@ Tue Jul 28 17:12:52 CEST 2009 - lmedinas@gmail.com
   + Fixed a hang when trying to create an attachment on certain
     bugzilla installations from epiphany. [bgo#584645]
   + Fixed verification of V1 TLS certificates [bgo#589323]
-  + Fixed compile problems on Windows (in the ssl code), and on 
+  + Fixed compile problems on Windows (in the ssl code), and on
     Linux (when the most recent version of gtk-doc was installed).
 
 -------------------------------------------------------------------
@@ -3524,7 +3694,7 @@ Fri Oct  3 15:28:27 EST 2008 - mboman@suse.de
 Tue Sep 23 08:55:50 EST 2008 - mboman@suse.de
 
 - Update to version 2.24.0:
-  + Cosmetic version bump 
+  + Cosmetic version bump
 
 -------------------------------------------------------------------
 Fri Sep 12 00:51:39 CDT 2008 - maw@suse.de
@@ -3569,7 +3739,7 @@ Mon Jun 16 20:44:40 CEST 2008 - maw@suse.de
 -------------------------------------------------------------------
 Tue Apr 29 17:47:13 CEST 2008 - cthiel@suse.de
 
-- obsolete libsoup-<arch> via baselibs.conf  
+- obsolete libsoup-<arch> via baselibs.conf
 
 -------------------------------------------------------------------
 Mon Apr 21 20:03:51 CEST 2008 - maw@suse.de
@@ -3747,7 +3917,7 @@ Thu Jan 31 19:32:20 CET 2008 - maw@suse.de
 Tue Jan 29 16:36:57 CET 2008 - rodrigo@suse.de
 
 - Update to version 2.3.0.1:
-  * SoupURI now correctly handles URIs with complex encoded queries 
+  * SoupURI now correctly handles URIs with complex encoded queries
   * It is now possible for a SoupServer to use Digest auth without
     needing to have the cleartext password available
   * Digest authentication now properly handles "stale=true" and
@@ -3818,7 +3988,7 @@ Tue Aug 15 23:01:32 CEST 2006 - jhargadon@suse.de
           encoding for the response.
 - WWW-Authenticate and Proxy-Authenticate responses with no
           realm parameter are now ignored
-- Fixed a bug in soup_mktime_utc() 
+- Fixed a bug in soup_mktime_utc()
 
 -------------------------------------------------------------------
 Wed Jul  5 18:30:02 CEST 2006 - dgollub@suse.de
@@ -3897,7 +4067,7 @@ Thu Nov 17 18:43:15 CET 2005 - danw@suse.de
 -------------------------------------------------------------------
 Wed Nov  2 21:58:25 CET 2005 - dmueller@suse.de
 
-- don't build as root 
+- don't build as root
 
 -------------------------------------------------------------------
 Mon Aug 22 19:22:19 CEST 2005 - jpr@suse.de
@@ -3913,17 +4083,17 @@ Thu Aug 18 20:51:39 CEST 2005 - ro@suse.de
 -------------------------------------------------------------------
 Thu Aug 18 10:08:36 CEST 2005 - ro@suse.de
 
-- added libsoup-2.2.3-danw-tambet-threading.patch 
+- added libsoup-2.2.3-danw-tambet-threading.patch
 
 -------------------------------------------------------------------
 Mon Aug 15 11:40:25 CEST 2005 - ro@suse.de
 
-- fixed memory leak (port of patch from #95454) 
+- fixed memory leak (port of patch from #95454)
 
 -------------------------------------------------------------------
 Fri Aug 12 15:44:45 CEST 2005 - ro@suse.de
 
-- updated and re-enabled patches... 
+- updated and re-enabled patches...
 
 -------------------------------------------------------------------
 Fri Aug 12 15:09:24 CEST 2005 - jpr@suse.de
@@ -3933,17 +4103,17 @@ Fri Aug 12 15:09:24 CEST 2005 - jpr@suse.de
 -------------------------------------------------------------------
 Fri Aug 12 00:24:52 CEST 2005 - gekker@suse.de
 
-- Update to version 2.2.5 
+- Update to version 2.2.5
 
 -------------------------------------------------------------------
 Wed Jun 29 01:45:10 CEST 2005 - gekker@suse.de
 
-- Update to version 2.2.3 
+- Update to version 2.2.3
 
 -------------------------------------------------------------------
 Tue Jun 28 23:17:05 CEST 2005 - gekker@suse.de
 
-- Add patch for close exec (62176). 
+- Add patch for close exec (62176).
 
 -------------------------------------------------------------------
 Thu Mar 10 11:27:33 CET 2005 - hvogel@suse.de
@@ -3953,7 +4123,7 @@ Thu Mar 10 11:27:33 CET 2005 - hvogel@suse.de
 -------------------------------------------------------------------
 Sat Feb  5 19:52:27 CET 2005 - gekker@suse.de
 
-- Update to version 2.2.2 
+- Update to version 2.2.2
 
 -------------------------------------------------------------------
 Fri Jan 28 12:07:16 CET 2005 - meissner@suse.de
@@ -4020,7 +4190,7 @@ Tue May 18 02:53:07 CEST 2004 - clahey@suse.de
 -------------------------------------------------------------------
 Mon Mar 22 13:46:09 CET 2004 - hhetter@suse.de
 
-- updated to version 1.99.28  
+- updated to version 1.99.28
 
 -------------------------------------------------------------------
 Tue Mar 16 09:44:15 CET 2004 - meissner@suse.de
@@ -4046,3 +4216,4 @@ Mon Jul 14 14:48:27 CEST 2003 - sbrabec@suse.cz
 Thu May 22 14:52:58 CEST 2003 - sbrabec@suse.cz
 
 - Initial SuSE version of GNOME2 port.
+
