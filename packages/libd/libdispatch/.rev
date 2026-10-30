@@ -125,4 +125,12 @@
     <comment>Update to 6.4.1 (swift-6.4.1-RELEASE): re-tag of the 6.4.0 tree, no source changes. Both distro patches re-tested OK. OBS green, rpmlint 0 errors, soname clean.</comment>
     <requestid>1384911</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2140e73c4c6e06c62a5155da6141389c</srcmd5>
+    <version>6.4.2</version>
+    <time>1793380608</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.4.2.</comment>
+    <requestid>1393837</requestid>
+  </revision>
 </revisionlist>
