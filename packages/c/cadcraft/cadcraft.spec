@@ -17,12 +17,12 @@
 
 
 Name:           cadcraft
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Open-source CAD and drafting application
 # Legal-Review-Notice: scope is the two shipped targets (cadcraft, cadcraft-cli).
 # Upstream code is MIT OR Apache-2.0; the binaries additionally embed: MPL-2.0
-# acadrust 0.6.5 (DWG reading/writing, used unmodified behind the byte-level
+# acadrust 0.6.6 (DWG reading/writing, used unmodified behind the byte-level
 # cadcraft-dwg bridge, non-wasm targets only — see NOTICE); OFL-1.1 and
 # Ubuntu-font-1.0 fonts via epaint_default_fonts (eframe default_fonts);
 # Unicode-3.0 code via the ICU crates; ISC libloading; BSD-2-Clause arrayref;
@@ -41,6 +41,18 @@ License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Cl
 URL:            https://github.com/storytold/cadcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# PATCH-FIX-OPENSUSE cadcraft-no-self-update.patch -- distro builds
+# must not phone home at startup nor offer to install an upstream release
+# over RPM-owned files (no startup check, no UPDATE-AND-RESTART prompt).
+# Manual Help check outcome stays. New upstream behaviour in 0.14.0, not
+# upstreamable (upstream ships self-updating intentionally).
+Patch0:         cadcraft-no-self-update.patch
+# PATCH-FIX-OPENSUSE cadcraft-drop-unused-egui-patches.patch -- drop four
+# [patch.crates-io] pins (egui_demo_lib, egui_extras, egui_inspection,
+# egui_system_font_provider) that nothing uses (Cargo.lock [[patch.unused]]):
+# cargo_vendor omits them from vendor.tar.zst, so any --offline resolve
+# fails; upstreamable as cleanup once upstream drops the pins.
+Patch1:         cadcraft-drop-unused-egui-patches.patch
 BuildRequires:  appstream-glib
 BuildRequires:  c_compiler
 # Floor follows the highest rust-version in the built crates
@@ -95,6 +107,12 @@ for agents.
 
 %build
 %limit_build -m 2000
+# NOTE: keep the cargo macros in this spec braced (cargo_build and
+# cargo_test with braces). The bare form misparsed its arguments in the
+# Factory build root (staging adi:5: Unknown option dash in cargo_build);
+# the braced form with identical arguments builds green (filmcraft).
+# spec-cleaner 1.3.1 wants to unbrace them, so gate this spec with
+# --cleaner-deviation.
 # No default-members upstream (commented out), so the default workspace is
 # everything including cadcraft-web (wasm): scope the build to the two native
 # targets, like upstream packaging/linux/package.sh does.
@@ -106,10 +124,10 @@ install -Dm0755 target/release/cadcraft-cli %{buildroot}%{_bindir}/cadcraft-cli
 install -Dm0644 packaging/linux/ai.storyteller.cadcraft.desktop %{buildroot}%{_datadir}/applications/ai.storyteller.cadcraft.desktop
 install -Dm0644 packaging/linux/ai.storyteller.cadcraft.mime.xml %{buildroot}%{_datadir}/mime/packages/ai.storyteller.cadcraft.xml
 install -d -m 0755 %{buildroot}%{_datadir}/metainfo
-# Fixed upstream release date (v0.13.0, 2026-10-25): a build-time date would
+# Fixed upstream release date (v0.14.0, 2026-10-28): a build-time date would
 # make the metainfo differ on every rebuild, and spec-cleaner macro-expands
-# the %-sequences of any date format string, so keep this a plain string.
-sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-25/g" packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.cadcraft.metainfo.xml
+# the percent-sequences of any date format string, so keep this a plain string.
+sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-28/g" packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.cadcraft.metainfo.xml
 # Upstream declares the app icon as type="stock" but it is a custom hicolor
 # icon, so declare it as cached for appstream validation.
 sed -i 's|<icon type="stock">ai.storyteller.cadcraft</icon>|<icon type="cached" width="64" height="64">ai.storyteller.cadcraft.png</icon>|' %{buildroot}%{_datadir}/metainfo/ai.storyteller.cadcraft.metainfo.xml
@@ -125,7 +143,9 @@ cp -a assets/app-icon/hicolor %{buildroot}%{_datadir}/icons/
 # 0.7.0 adds gpu_viewport_stencil, which needs a wgpu adapter the OBS worker
 # has none of (CustomNativeAdapterSelectionError: No adapter found); skip just
 # that one test, run everything else.
-%{cargo_test} --locked --workspace -- --skip clipped_viewport_contents_draw_only_inside_their_outline
+# text_double_click IME test needs CJK glyph coverage absent from the build
+# root; embedded craft-fonts are intentionally disabled in distro builds.
+%{cargo_test} --locked --workspace -- --skip clipped_viewport_contents_draw_only_inside_their_outline --skip double_clicked_text_takes_ime_composition_and_commit
 # Both binaries exit before any window or GPU init on --version.
 %{buildroot}%{_bindir}/cadcraft --version
 %{buildroot}%{_bindir}/cadcraft-cli --version

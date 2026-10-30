@@ -1,0 +1,56 @@
+From: openSUSE Publishing <publishing@opensuse.org>
+Subject: [PATCH] No self-update in distro builds: no startup check, no install prompt
+Bug: none (downstream distribution policy, not upstreamable)
+
+The package manager owns updates on a distro install: do not phone
+home to the releases page on every GUI launch, and never offer to
+install an upstream release (UPDATE-AND-RESTART) over RPM-owned
+files. Upstream ships this machinery intentionally for its own
+builds. Help ▸ Check for Updates stays as an explicit manual action
+reporting through tick(); only the automatic startup check and the
+self-update install prompt are turned off.
+
+diff --git a/apps/cadcraft/src/main.rs b/apps/cadcraft/src/main.rs
+--- a/apps/cadcraft/src/main.rs
++++ b/apps/cadcraft/src/main.rs
+@@ -328,7 +328,9 @@
+             // Autosave files (SAVEFILEPATH) default to `<settings dir>/autosave`.
+             if let Some(dir) = &vars.config_dir {
+                 app.enable_autosave(&dir.join("autosave"));
+-                app.enable_update_check();
++                // Downstream (openSUSE): the package manager owns updates, so the
++                // desktop app must not check for (and offer to install) upstream
++                // releases on its own at startup. Manual Help ▸ Check stays.
+                 // Startup LISP (acad.lsp, acaddoc.lsp) is read from `<settings>/support`; the
+                 // folder is made so it is there to put them in.
+                 let support = dir.join("support");
+diff --git a/crates/ui-egui/src/updates_ui.rs b/crates/ui-egui/src/updates_ui.rs
+--- a/crates/ui-egui/src/updates_ui.rs
++++ b/crates/ui-egui/src/updates_ui.rs
+@@ -3,7 +3,7 @@
+ //! `craft_update::updater::Updater`.
+
+ use craft_update::suite::CADCRAFT;
+-use craft_update::updater::{Action, Status, Updater};
++use craft_update::updater::{Status, Updater};
+
+ use crate::CadApp;
+
+@@ -60,12 +60,7 @@
+ /// Draw the prompt while there is one and act on its answer.
+-pub fn show(app: &mut CadApp, ctx: &egui::Context) {
+-    // The restart helper is scheduled before the app closes, so no update starts over unsaved work.
+-    let clean = !app.session.docs.iter().any(|d| d.is_dirty());
+-    match app.updates_rt.updater.show_if(ctx, clean) {
+-        Action::OpenUrl(url) => ctx.open_url(egui::OpenUrl::new_tab(url)),
+-        // The guarded close path asks about unsaved changes; the restart helper relaunches once the
+-        // process has exited.
+-        Action::Close => ctx.send_viewport_cmd(egui::ViewportCommand::Close),
+-        Action::None => {}
+-    }
++pub fn show(_app: &mut CadApp, _ctx: &egui::Context) {
++    // Downstream (openSUSE): never draw the self-update prompt, so no
++    // upstream release is ever installed over RPM-owned files (neither
++    // at startup nor after a manual check). The manual Check for Updates
++    // outcome reported through tick() above stays.
+ }

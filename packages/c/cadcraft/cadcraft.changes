@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Oct 29 12:36:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.0 (upstream tag v0.14.0, 2026-10-28):
+  * Interface now on egui 0.37; side panels dock left and
+    right, every dropdown uses craft-ui's ComboBox, layout
+    tabs stay stable, IME composition in in-place editing,
+    faster PNG export of hairline polylines, macOS menu and
+    shortcut fixes, Swedish translations
+  * New: startup update prompt with self-updating, Named
+    Viewports dialog, Block Description editing, LAYOUT
+    SAveas template save, AREA and DIST Arc option; AREA
+    refuses totals past f64 range
+  * cadcraft-cli parses arguments with clap now
+  * Fixes: DXF backslash escapes, polyline centroid bulge,
+    hex handle parsing, GETVAR CECOLOR text, format_angle,
+    ellipse constraints, MCP token resend, WIPEOUTFRAME,
+    xref array parameters, staged CLI writes, HATCH spline
+    degree cap, grid overflow, autosave recovery
+  * No CVE keywords in the 0.13.0-0.14.0 range;
+    cargo_vendor audit clean ("All lockfiles are audited").
+- Re-vendored at upstream's locked versions (update=false
+  kept): craft-libs crates at rev 92d392c, newly linked
+  craft-update (self-updater, MIT OR Apache-2.0) and
+  craft-window; clap 4.6.7 for the CLI; egui 0.37 family;
+  acadrust 0.6.5 to 0.6.6. Vendor-tree licence set and
+  License tag unchanged (dunce, zip, clipboard-win, wasi
+  and webpki-root-certs additions are Windows-, wasm- or
+  test-only and not linked on Linux); no new system deps;
+  cargo floor 1.95 still
+- Set the fixed metainfo release date to 2026-10-28
+  (v0.14.0)
+- Disable the new self-updating: no update check at startup and
+  no install prompt (cadcraft-no-self-update.patch); the
+  package manager owns updates, manual Help check stays
+- Legal-Review-Notice: acadrust is now 0.6.6 (locked
+  version)
+- Spec cleanup: cargo build/test macros in braced form
+- Add cadcraft-drop-unused-egui-patches.patch:
+  drop unused [patch.crates-io] pins the vendor omits
+
+-------------------------------------------------------------------
 Mon Oct 26 11:12:05 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.13.0 (upstream tag v0.13.0, 2026-10-25):
