@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Oct 29 14:46:02 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Initial package, version 1.3.2
+  * Build on x86_64, aarch64 and ppc64le only: Dolt does not build
+    on 32-bit and the other architectures are untested
+  * Build against the system sqlite (libsqlite3 tag) instead of
+    the copy bundled in go-sqlite3
+  * %check is a smoke test: upstream's suite is large and some
+    of its tests assume the opt-out metrics default
+  * Add 0001-make-usage-metrics-opt-in.patch: do not send
+    anonymous usage metrics unless the user runs "bd metrics on"
+

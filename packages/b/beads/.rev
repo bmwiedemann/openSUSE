@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>678ca014f73c13a115f4981cc4aade58</srcmd5>
+    <version>1.3.2</version>
+    <time>1793380293</time>
+    <user>dimstar_suse</user>
+    <comment>New package beads 1.3.2: bd, a graph issue tracker for AI coding agents on embedded Dolt; Go, 216 vendored modules.
+- Usage metrics off by default: 0001-make-usage-metrics-opt-in.patch
+- Legal: links MPL-2.0, LGPL-3.0 with exception, CC0, Unlicense and WTFPL modules; see spec.
+- x86_64, aarch64 and ppc64le only: Dolt does not build on 32-bit.</comment>
+    <requestid>1393660</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="beads" project="openSUSE:Factory">
+  <title>Distributed graph issue tracker for AI coding agents</title>
+  <description>Beads (bd) gives coding agents a persistent, structured memory: a dependency-aware graph of issues stored in an embedded Dolt database.</description>
+  <url>https://github.com/gastownhall/beads</url>
+</package>

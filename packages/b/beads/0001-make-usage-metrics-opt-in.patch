@@ -1,0 +1,48 @@
+From: Andrea Manzini <andrea.manzini@suse.com>
+Subject: Make anonymous usage metrics opt-in
+
+Upstream sends command usage metrics to gastownhall-eventsapi.com unless
+the user opts out. The distribution package keeps them off until the user
+runs "bd metrics on" (metrics.disabled: false in the user config.yaml).
+The tests that assume the opt-out default are not adjusted.
+
+--- a/internal/config/config.go
++++ b/internal/config/config.go
+@@ -268,7 +268,7 @@
+ 	// Sync configuration defaults (bd-4u8)
+ 	v.SetDefault("sync.require_confirmation_on_mass_delete", false)
+ 
+-	v.SetDefault("metrics.disabled", false)
++	v.SetDefault("metrics.disabled", true)
+ 	v.SetDefault("metrics.endpoint", "https://gastownhall-eventsapi.com/mp/collect")
+ 
+ 	// Federation configuration (optional Dolt remote)
+--- a/internal/config/yaml_config.go
++++ b/internal/config/yaml_config.go
+@@ -461,18 +461,20 @@
+ 	return strings.TrimSpace(raw)
+ }
+ 
+-// MetricsDisabledByUserConfig reports whether the user-global config.yaml sets
+-// metrics.disabled: true. Project/BEADS_DIR config is intentionally ignored so a
+-// repository can never re-enable metrics for a user who opted out globally.
+-// Absent or unparseable values read as "not disabled" (the default).
++// MetricsDisabledByUserConfig reports whether usage metrics are disabled. In
++// this build metrics are opt-in: they stay disabled until the user-global
++// config.yaml sets metrics.disabled: false (what `bd metrics on` writes).
++// Project/BEADS_DIR config is intentionally ignored so a repository can never
++// enable metrics for a user who did not opt in globally.
++// Absent or unparseable values read as "disabled" (the default).
+ func MetricsDisabledByUserConfig() bool {
+ 	raw, ok := readUserGlobalYamlValue("metrics.disabled")
+ 	if !ok {
+-		return false
++		return true
+ 	}
+ 	disabled, err := strconv.ParseBool(strings.TrimSpace(raw))
+ 	if err != nil {
+-		return false
++		return true
+ 	}
+ 	return disabled
+ }
