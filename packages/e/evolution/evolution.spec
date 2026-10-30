@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.60.2
+Version:        3.62.1
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
@@ -44,32 +44,31 @@ BuildRequires:  pkgconfig
 #BuildRequires:  libytnef-devel
 BuildRequires:  psmisc
 BuildRequires:  spamassassin
-BuildRequires:  sqlite3-devel
+BuildRequires:  sqlite3-devel >= 3.7.17
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(camel-1.2) >= %{_version}
-BuildRequires:  pkgconfig(enchant-2)
-BuildRequires:  pkgconfig(gail-3.0) >= 3.2.0
+BuildRequires:  pkgconfig(enchant-2) >= 2.2.0
+BuildRequires:  pkgconfig(gail-3.0) >= 3.22
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.24.0
-BuildRequires:  pkgconfig(geocode-glib-2.0)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.40.0
+BuildRequires:  pkgconfig(geocode-glib-2.0) >= 3.26.3
+BuildRequires:  pkgconfig(gio-2.0) >= 2.70
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.70
 BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.1.1
-BuildRequires:  pkgconfig(gnome-autoar-gtk-0) >= 0.1.1
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 2.91.3
-BuildRequires:  pkgconfig(gsettings-desktop-schemas)
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 2.91.92
 # NOTE when bumping this BR, bump the req in devel pac below
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.8.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 # /NOTE
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtkspell3-3.0)
 # NOTE when bumping this BR, bump the req in devel pac below
-BuildRequires:  pkgconfig(gweather4)
+BuildRequires:  pkgconfig(gweather4) >= 3.91
 # /NOTE
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(libcanberra-gtk3)
+BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.25
 BuildRequires:  pkgconfig(libcmark)
 BuildRequires:  pkgconfig(libebackend-1.2) >= %{_version}
 BuildRequires:  pkgconfig(libebook-1.2) >= %{_version}
@@ -80,13 +79,13 @@ BuildRequires:  pkgconfig(libnotify) >= 0.7
 # /NOTE
 BuildRequires:  pkgconfig(libpst) >= 0.6.54
 # NOTE when bumping this BR, bump the req in devel pac below
-BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0
 # /NOTE
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.3
 BuildRequires:  pkgconfig(nspr)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(shared-mime-info) >= 0.22
-BuildRequires:  pkgconfig(webkit2gtk-4.1)
+BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.40.0
 Requires:       evolution-data-server >= %{_version}
 # Mono and python plugins were available until evo 3.5.x
 Obsoletes:      evolution-mono-plugins < %{version}
@@ -184,6 +183,8 @@ to develop applications that require these.
 %doc %{_datadir}/help/C/%{name}/
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_bindir}/*
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/evolution.convert
 %{_datadir}/applications/*.desktop
 %{_datadir}/evolution
