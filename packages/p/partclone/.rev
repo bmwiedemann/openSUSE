@@ -317,4 +317,12 @@ verified to resolve via osc buildinfo on i586, x86_64, Leap 16.0 and 16.1.</comm
     <comment>Update partclone to 0.3.51.</comment>
     <requestid>1392922</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ecce526609a4cd469e9e69994c2666fc</srcmd5>
+    <version>0.3.52</version>
+    <time>1793380644</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.52.</comment>
+    <requestid>1393850</requestid>
+  </revision>
 </revisionlist>
