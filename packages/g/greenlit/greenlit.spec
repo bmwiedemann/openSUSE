@@ -18,7 +18,7 @@
 
 %define pythons %{primary_python}
 Name:           greenlit
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Test framework for Linux distributions on NVIDIA platforms
 # Legal-Review-Notice:
@@ -35,10 +35,8 @@ License:        Apache-2.0 AND GPL-2.0-only
 URL:            https://github.com/NVIDIA/GreenLiT
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM greenlit-unitdir.patch gh#NVIDIA/GreenLiT#1 martin@pluskal.org -- find the units in /usr/lib/systemd/system
-Patch0:         greenlit-unitdir.patch
 # PATCH-FIX-OPENSUSE greenlit-ste-test-endianness.patch martin@pluskal.org -- skip a host-byte-order test on big-endian hosts
-Patch1:         greenlit-ste-test-endianness.patch
+Patch0:         greenlit-ste-test-endianness.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}

@@ -7,4 +7,12 @@
     <comment>New package: GreenLiT 3.1.1, NVIDIA's test framework for Linux distributions on NVIDIA platforms. Its generic top-level Python modules live in /usr/share/greenlit; the Legal-Review-Notice covers the GPL test sources built on the target. Slowroll i586 is unresolvable project-wide.</comment>
     <requestid>1381650</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0312ddd031418a1e666835fff79a47fe</srcmd5>
+    <version>3.1.2</version>
+    <time>1793380606</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.1.2.</comment>
+    <requestid>1393840</requestid>
+  </revision>
 </revisionlist>

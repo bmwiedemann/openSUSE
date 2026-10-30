@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 30 08:13:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.1.2:
+  * New resctrl memory-bandwidth tests: max_lim reporting,
+    MB_HLIM exposure, MPAM domain completeness, SMMU groups
+  * New Arm64 BRBE and nVHE isolation checks plus KVM microVM API
+  * New PCI ASPM L1SS and bridge-window checks, Vera timer test
+  * Accept units in /usr/lib/systemd/system; correct license
+    headers and ship the GPL-2.0-only license text
+- Drop greenlit-unitdir.patch: merged upstream
+
+-------------------------------------------------------------------
 Wed Sep 30 08:47:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package of GreenLiT 3.1.1, NVIDIA's test framework for
