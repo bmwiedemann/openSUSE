@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 14 15:06:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 31 06:28:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 20 19:10:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + This cycle has seen a focus on stability with our ever
+    expanding testsuite helping us iron out some rough edges,
+    alongside tackling issues found in the wild, all whilst keeping
+    pace with developments in the wider platform.
+  + Updated translations.
+- Update source service to align with current packaging for git
+  managed GNOME.
+
+-------------------------------------------------------------------
 Mon Mar 16 09:04:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.0:
