@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 29 10:16:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.28.6:
+  * Upstream changes are limited to a refresh of the bundled
+    brotli copy, which is not shipped (the build uses system
+    brotli), so there are no user-visible changes.
+- Rename libmupdf28_5 to libmupdf28_6, following the SONAME
+  libmupdf.so.28.6 which upstream bumps on every release.
+- Use pkgconfig(jbig2dec) instead of jbig2dec-devel.
+
+-------------------------------------------------------------------
 Sun Sep 27 05:56:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.28.5:

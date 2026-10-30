@@ -19,10 +19,10 @@
 
 # mupdf sets the shared-library SONAME to libmupdf.so.<minor>.<patch>, so it
 # changes on every upstream release; keep %%sover in sync with the version.
-%define sover 28_5
-%define soversion 28.5
+%define sover 28_6
+%define soversion 28.6
 Name:           mupdf
-Version:        1.28.5
+Version:        1.28.6
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
@@ -42,7 +42,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  jbig2dec-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zstd
@@ -50,6 +49,7 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(jbig2dec)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(libcmark-gfm)
