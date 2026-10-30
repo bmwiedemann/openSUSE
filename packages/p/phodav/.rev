@@ -63,4 +63,41 @@
     <comment>- Drop rcFOO symlinks (PED-266). (forwarded request 1208121 from dimstar)</comment>
     <requestid>1208165</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b87de967ae79b9148b499f02785224ca</srcmd5>
+    <version>3.2</version>
+    <time>1793380182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2:
+  * Spice-webdavd: close the local client connection when the host drops it,
+    instead of leaving the webdav client waiting for the end of the response or
+    reusing a dropped connection, which led to dropped frames and hangs
+  * Spice-webdavd: announce the local mDNS service on loopback only, and run as
+    an unprivileged user in the systemd unit
+  * Libphodav: add debug tracing for the request lifecycle, the streamed
+    response pulls and the spice mux frames, silent unless G_MESSAGES_DEBUG is
+    set
+  * Windows testing fixes: read the virtual-dir server port from a file to
+    avoid the carriage return of the text-mode standard handles, and run the
+    Wine tests with their output to regular files, which a stray &quot;explorer.exe
+    /desktop&quot; process cannot keep open
+  * Updated translations.
+- Changes from version 3.1:
+  * CVE-2026-114417: reject the encoded slashes in the COPY/MOVE
+    Destination header, which allowed writing outside of the shared directory
+  * CVE-2026-114418: don't handle PUT when the request was already rejected:
+    with digest authentication configured, an unauthenticated client could
+    create or overwrite any file of the share
+  * CVE-2026-114419: chezdav: check the digest password, any password was
+    accepted for a user listed in the htdigest file
+  * refuse the oversized request bodies with 413, including the chunked ones,
+    and don't run the method handler of an already rejected request
+  * fix crash and hangs on invalid If headers
+  * fix a crash on PROPFIND/PROPPATCH requests without any property
+- Update version dependencies according to meson.build.
+- Drop harden_spice-webdavd.service.patch: fixed upstream.
+- Convert to _service for easier management.
+- Replace gtk-doc BuildRequires for scdoc and pkgconfig(gi-docgen): follow</comment>
+    <requestid>1393624</requestid>
+  </revision>
 </revisionlist>

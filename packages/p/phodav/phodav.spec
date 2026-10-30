@@ -18,28 +18,28 @@
 
 %define shlib libphodav-3_0-0
 Name:           phodav
-Version:        3.0
+Version:        3.2
 Release:        0
 Summary:        A WebDAV server using libsoup
 License:        LGPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            https://wiki.gnome.org/phodav
-Source0:        https://download.gnome.org/sources/%{name}/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE
-Patch0:         harden_spice-webdavd.service.patch
-
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  asciidoc
-BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
+BuildRequires:  scdoc
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(avahi-gobject)
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
+BuildRequires:  pkgconfig(gi-docgen)
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.80
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
-BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.2.0
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(neon)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 %{?systemd_ordering}
@@ -50,8 +50,19 @@ phodav is a WebDav server implementation using libsoup (RFC 4918).
 %package -n %{shlib}
 Summary:        A library for file sharing with WebDAV
 Group:          System/Libraries
+# Provides for the translations (-lang package)
+Provides:       phodav-3.0 = %{version}
 
 %description -n %{shlib}
+phodav is a WebDav server implementation using libsoup (RFC 4918).
+
+This package provides the shared library for %{name}.
+
+%package -n typelib-1_0-Phodav-3_0
+Summary:        A library for file sharing with WebDAV
+Group:          System/Libraries
+
+%description -n typelib-1_0-Phodav-3_0
 phodav is a WebDav server implementation using libsoup (RFC 4918).
 
 This package provides the shared library for %{name}.
@@ -60,6 +71,7 @@ This package provides the shared library for %{name}.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{shlib} = %{version}
+Requires:       typelib-1_0-Phodav-3_0 = %{version}
 
 %description devel
 phodav is a WebDav server implementation using libsoup (RFC 4918).
@@ -83,22 +95,24 @@ Group:          Productivity/Networking/Other
 The spice-webdavd package contains a daemon to proxy WebDAV request to
 the Spice virtio channel.
 
+%lang_package -n phodav-3.0
+
 %prep
 %autosetup -p1
+echo "%{version}" > .tarball-version
 
 %build
 %meson \
-	%{nil}
+    -Dlitmus=disabled \
+    %{nil}
 %meson_build
 
 %install
 %meson_install
-
 %find_lang phodav-3.0 --with-gnome
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
-
 %pre -n spice-webdavd
 %service_add_pre spice-webdavd.service
 
@@ -111,8 +125,13 @@ the Spice virtio channel.
 %postun -n spice-webdavd
 %service_del_postun spice-webdavd.service
 
-%files -n %{shlib} -f %{name}-3.0.lang
+%files -n phodav-3.0-lang -f phodav-3.0.lang
+
+%files -n %{shlib}
 %{_libdir}/libphodav-3.0.so.0*
+
+%files -n typelib-1_0-Phodav-3_0
+%{_libdir}/girepository-1.0/Phodav-3.0.typelib
 
 %files devel
 %license COPYING
@@ -120,7 +139,8 @@ the Spice virtio channel.
 %{_includedir}/libphodav-3.0/*
 %{_libdir}/libphodav-3.0.so
 %{_libdir}/pkgconfig/libphodav-3.0.pc
-%{_datadir}/gtk-doc/html/phodav-3.0/
+%{_datadir}/doc/phodav-3.0/
+%{_datadir}/gir-1.0/Phodav-3.0.gir
 
 %files -n chezdav
 %{_bindir}/chezdav
@@ -131,5 +151,6 @@ the Spice virtio channel.
 %{_sbindir}/spice-webdavd
 %{_udevrulesdir}/70-spice-webdavd.rules
 %{_unitdir}/spice-webdavd.service
+%{_sysusersdir}/spice-webdavd.conf
 
 %changelog
