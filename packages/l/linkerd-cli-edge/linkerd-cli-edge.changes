@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 30 06:20:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.10.2:
+  * chore(deps): upgrade proxy-init to v2.4.11 and cni-plugin to
+    v1.7.1 (#15754)
+  * build(deps): bump postcss-selector-parser in /web/app (#15751)
+  * build(deps): bump fast-uri from 3.1.8 to 3.1.9 in /web/app
+    (#15750)
+  * build(deps): bump github.com/go-test/deep from 1.1.1 to 1.1.2
+    (#15729)
+  * chore: update dependencies. (#15748)
+  * chore: update go version. (#15749)
+  * build(deps): bump golang.org/x/tools from 0.50.0 to 0.52.0
+    (#15721)
+  * chore(build): update golang to 1.26.9 (#15737)
+  * docs: update contribution guideilnes to include LLM code policy
+    (#15709)
+
+-------------------------------------------------------------------
 Tue Oct 06 04:53:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.10.1:
