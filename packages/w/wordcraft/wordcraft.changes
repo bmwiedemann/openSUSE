@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Oct 29 17:25:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.0 (upstream tag v0.12.0, 2026-10-28):
+  * UI: port to egui 0.37, several open documents with
+    per-document recovery and naming, View > New Window, task
+    panes dock left or right or float, filter-as-you-type command
+    search, File > Info custom document properties, mini toolbar
+    marks the alignment seen on the page.
+  * Formats: open AES-encrypted Word files, LaTeX genfrac import,
+    RTF soft breaks and zero-width spaces, Markdown code spans and
+    HTML comments, ODT metadata, Arabic-Indic digits and letter
+    numbering, regex Replace expands capture groups, AutoFormat
+    double-space period, style sets keep document styles, scale all
+    style font sizes at once, Tab indents a whole selection.
+  * Layout and export: faster layout and PDF export (plain-text
+    fast paths, kept-heading layout once), justified lines ending
+    in a manual break stretch, bookmark/no-break-space fixes.
+  * Hardening: bounds on layout, proofing, render/PDF/metafile,
+    font ingestion, DOCX writer, MCP stdio and engine authority
+    checks (no CVE IDs assigned upstream).
+  * Re-vendor with update=true (670 crates, up from 649): egui
+    0.36.2 to 0.37.0 with accesskit bumps, new self-update and
+    installer stack (ureq, zip, plist, time, verifysign) and the
+    craft-libs split (craft-update, craft-window,
+    craft-fonts-build). All 53 added crates are permissive
+    (MIT/Apache-2.0/BSD-3-Clause); no new copyleft, so the License
+    tag is unchanged. cargo_vendor's lockfile audit is clean.
+- Update the fixed metainfo release date to 2026-10-28.
+- Disable the upstream self-updater
+  (wordcraft-no-self-update.patch): no startup check, no install
+  prompt over RPM files; the manual Help check outcome stays.
+- Add wordcraft-drop-unused-egui-patches.patch:
+  drop unused [patch.crates-io] pins the vendor omits
+
+-------------------------------------------------------------------
 Mon Oct 26 11:15:19 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.11.0 (upstream tag v0.11.0, 2026-10-25):
