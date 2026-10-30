@@ -191,7 +191,8 @@ fi
 %files
 %{_unitdir}/lm_sensors.service
 %{_unitdir}/fancontrol.service
-%{_bindir}/*
+%{_bindir}/sensors
+%{_bindir}/sensors-conf-convert
 %{_sbindir}/fancontrol
 %ifarch i386 i486 i586 i686 x86_64
 %{_sbindir}/isadump
@@ -216,7 +217,10 @@ fi
 %{_mandir}/man8/pwmconfig.8%{?ext_man}
 %{_mandir}/man8/sensors-conf-convert.8%{?ext_man}
 %{_mandir}/man8/sensors-detect.8%{?ext_man}
-%{_datadir}/zsh/site-functions/
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_sensors
+%{_datadir}/zsh/site-functions/_sensors-detect
 
 %files -n sensord
 %{_unitdir}/sensord.service
