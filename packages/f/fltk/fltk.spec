@@ -1,7 +1,7 @@
 #
 # spec file for package fltk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source1:        baselibs.conf
 Patch0:         fltk-1.3.4-fltk_config.patch
 # PATCH-FIX-OPENSUSE fltk-1.3.2-verbose_build.patch reddwarf@opensuse.org -- Make the build verbose so the post build checks can verify the CFLAGS
 Patch2:         fltk-1.3.2-verbose_build.patch
+# CVE-2026-116723: stack-based buffer overflow in `Fl_BMP_Image:load_bmp_()` can lead to crash or code execution [bsc#1288053]|CVE-2026-116724: integer overflow in `Fl_BMP_Image:load_bmp_()` can lead to heap corruption [bsc#1288054]
+Patch3:         fltk-CVE-2026-116723,116724.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
