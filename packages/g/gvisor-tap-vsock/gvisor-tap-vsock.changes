@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Mon Oct 26 04:20:35 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
+
+- Update to version 0.9.0:
+  * gvproxy: Simplify pidfile creation
+  * win-ssh-proxy: Fix 'facilty' typo in help string
+  * build(deps): bump github.com/foxcpp/go-mockdns from 1.2.0 to 1.3.0
+  * Add structured audit logging for gvproxy HTTP API
+  * services: log previously ignored JSON encoding errors
+  * cmd/gvproxy: avoid rebuilding the virtual network handler repeatedly
+  * chore: replace "narrow no-break space" (u+202f) by regular space
+  * api: add Bearer token authentication to gateway API endpoints
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * build(deps): bump github.com/onsi/gomega from 1.43.1 to 1.44.0
+  * build(deps): bump github.com/onsi/gomega from 1.43.0 to 1.43.1
+  * build(deps): bump github.com/dustin/go-humanize from 1.0.1 to 1.1.0
+  * build(deps): bump github.com/onsi/ginkgo/v2 from 2.32.2 to 2.33.0
+  * dns: return NOERROR/NODATA instead of leaking zone-owned lookups upstream
+  * forwarder: Ignore net.ErrClosed returned from tcpproxy.Proxy.Wait()
+  * udp_proxy: Use net.ErrClosed
+  * Close listeners when gvproxy exits
+  * Don’t os.Remove unix sockets before calling net.Listen
+  * build(deps): bump the golang-x group with 2 updates
+  * build(deps): bump github.com/onsi/ginkgo/v2 from 2.32.1 to 2.32.2
+  * build(deps): bump golang.org/x/mod from 0.40.0 to 0.41.0
+  * build(deps): bump golang.org/x/sync from 0.22.0 to 0.23.0
+  * dependabot: group golang.org/x module updates
+  * build(deps): bump golang.org/x/sys from 0.47.0 to 0.48.0
+  * build(deps): bump golang.org/x/crypto from 0.55.0 to 0.56.0
+  * build(deps): bump github.com/onsi/gomega from 1.42.1 to 1.43.0
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * build(deps): bump github.com/sirupsen/logrus from 1.10.1 to 1.10.2
+  * build(deps): bump github.com/miekg/dns from 1.1.72 to 1.1.73
+  * build(deps): bump github.com/sirupsen/logrus from 1.10.0 to 1.10.1
+  * build(deps): bump github.com/stretchr/testify from 1.11.1 to 1.12.1
+  * Make TCP forwarder max in-flight connections and connect timeout configurable
+  * lint: Disable SA4023 in staticcheck
+  * gha: Update to go 1.26/1.27
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * forwarder: propagate source IP
+  * build(deps): bump golang.org/x/mod from 0.38.0 to 0.40.0
+  * build(deps): bump golang.org/x/net from 0.57.0 to 0.58.0
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.4 to 1.10.0
+  * build(deps): bump golang.org/x/crypto from 0.54.0 to 0.55.0
+  * build(deps): bump github.com/onsi/ginkgo/v2 from 2.32.0 to 2.32.1
+  * chore: use strict octal prefix
+  * fix(win-sshproxy): don't stop execution when setup log fails
+  * dns: add input validation to /add endpoint (RHDESK-553)
+  * build(deps): bump redhat-actions/podman-login from 1 to 2
+  * Remove dependency on apparentlymart/go-cidr
+  * lint: fix linter errors after rebase
+  * sockets: set gvproxy-created unix sockets to 0600
+  * OWNERS: Add praveenkumar as approver
+  * build(deps): bump actions/setup-go from 6 to 7
+  * fix(dns): forward SOA/PTR/AAAA and other unhandled query types
+  * OWNERS: Add vyasgun as approver
+  * Fix notification socket path handling on Windows
+  * build(deps): bump golang.org/x/mod from 0.37.0 to 0.38.0
+  * build(deps): bump golang.org/x/net from 0.56.0 to 0.57.0
+  * build(deps): bump golang.org/x/crypto from 0.53.0 to 0.54.0
+  * build(deps): bump golang.org/x/sync from 0.21.0 to 0.22.0
+  * build(deps): bump golang.org/x/sys from 0.46.0 to 0.47.0
+  * build(deps): bump github.com/crc-org/vfkit from 0.6.3 to 0.6.4
+  * build(deps): bump github.com/onsi/gomega from 1.41.0 to 1.42.1
+  * build(deps): bump github.com/onsi/ginkgo/v2 from 2.29.0 to 2.32.0
+  * build(deps): bump actions/checkout from 6 to 7
+  * security: cap the packet size in rxStream to prevent oversized packets
+  * build(deps): bump github.com/mdlayher/vsock from 1.2.1 to 1.3.0
+  * build(deps): bump golang.org/x/net from 0.54.0 to 0.55.0
+  * build(deps): bump golang.org/x/crypto from 0.51.0 to 0.52.0
+  * build(deps): bump github.com/onsi/ginkgo/v2 from 2.28.1 to 2.29.0
+  * build(deps): bump github.com/onsi/gomega from 1.40.0 to 1.41.0
+  * test-vfkit: Update comment
+  * test-qemu: Use generic WaitGvproxy/WaitSSH
+  * test-vfkit: Add generic WaitSSH/WaitGvproxy helpers
+  * test-qemu: Remove workaround for panic at boot
+  * test-vfkit: Remove unused code
+  * test-vfkit: Use go package to generate vfkit command line
+  * test-vfkit: Use GvproxyCommand to build cmdline
+  * test-qemu: Use GvproxyCommand to build cmdline
+  * test-qemu: Add higher level QemuCmd type
+  * test: Switch to github.com/onsi/ginkgo/v2
+  * tools: Add golangci-lint to .gitignore
+  * forwarder: improve error message for port conflicts
+  * build(deps): bump golang.org/x/mod from 0.35.0 to 0.36.0
+  * build(deps): bump golang.org/x/net from 0.53.0 to 0.54.0
+  * build(deps): bump golang.org/x/crypto from 0.50.0 to 0.51.0
+  * lint: suppress new gosec taint analysis warnings
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * build(deps): bump github.com/onsi/gomega from 1.39.1 to 1.40.0
+  * fix: ensure IPV4Broadcast check remains for UDP
+  * doc: clarify ec2-metadata-access setting
+  * fix: apply ec2MetadataAccess bypass to UDP forwarder for link-local traffic
+  * build(deps): bump github.com/apparentlymart/go-cidr from 1.1.0 to 1.1.1
+  * unixgram transport: build for all Unix(-like) platforms again - can be used by libkrun on Linux
+  * build(deps): bump golang.org/x/net from 0.52.0 to 0.53.0
+  * Fix issue where udp_proxy enters a tight loop polling the socket if the read returns 0 with err = nil.
+  * fix handling icmp response on windows
+  * Disable ping tests on CI
+  * feat: implement getExpectedReplyIdent for ICMP echo identifier handling
+  * Add ICMP forwarding support
+  * Update gitignore
+  * Update gvisor
+  * test-mac: Add ping tests
+  * build(deps): bump golang.org/x/mod from 0.34.0 to 0.35.0
+  * Remove duplicate check for `log-file`
+  * Fix support for 'log-file' arg
+  * test: Reword failure message
+  * test: fix stdio test cases missing deviceIP and hostIP fields
+  * build(deps): bump golang.org/x/crypto from 0.49.0 to 0.50.0
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * build(deps): bump golang.org/x/sys from 0.42.0 to 0.43.0
+  * build(deps): bump golang.org/x/mod from 0.33.0 to 0.34.0
+  * build(deps): bump golang.org/x/crypto from 0.48.0 to 0.49.0
+  * build(deps): bump golang.org/x/sys from 0.41.0 to 0.42.0
+  * ci: drop Go 1.24 from build matrix; align artifact upload with 1.25.x
+  * build(deps): bump golang.org/x/sync from 0.19.0 to 0.20.0
+  * config: add option to configure IP addresses through command line
+  * slight refactor of functions to retrieve IP addresses from subnet
+  * fix(gvproxy): propagate --listen-stdio flag into config
+  * build(deps): bump github.com/coreos/stream-metadata-go
+  * gvproxy: Fix --log-file having no effect
+  * build(deps): bump actions/upload-artifact from 6 to 7
+  * tap: move connLock into disconnect
+  * tap: release connLock before writing to connections
+  * tap: move writeLock from txPkt to txBuf
+  * tap: move disconnect from txBuf to txPkt
+  * build(deps): bump golang.org/x/mod from 0.32.0 to 0.33.0
+
+-------------------------------------------------------------------
 Thu Jun 25 06:10:02 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
 
 - Update to version 0.8.9:
