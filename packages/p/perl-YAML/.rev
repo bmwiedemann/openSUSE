@@ -412,4 +412,15 @@
      like 'if $YAML::VERSION &gt;= 1.15' work. issue#233</comment>
     <requestid>1367464</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>ffd2ddabdd963009fbeb8e1b65f6c588</srcmd5>
+    <version>1.321.0</version>
+    <time>1793379773</time>
+    <user>dimstar_suse</user>
+    <comment>Add CVE and bsc references:
+     CVE-2017-20285 bsc#1284169
+     CVE-2019-25777 bsc#1284168
+   - Add $YAML::LoadBlessed for disabling loading objects (PR#197) CVE-2017-20285 bsc#1284169</comment>
+    <requestid>1393483</requestid>
+  </revision>
 </revisionlist>
