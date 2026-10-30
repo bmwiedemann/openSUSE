@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 29 16:34:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.0 (upstream tag v0.13.0, 2026-10-28):
+  * Window per workbook (New Window sharing one workbook,
+    Arrange All), egui 0.37, faster XLSX worksheet writing,
+    stacked chart types, startup update prompt, XWayland
+    file drag-and-drop on Wayland desktops.
+  * Hardening: the --control server requires an auth token
+    and closes bad connections (upstream issue #777). No
+    CVE identifiers in the crossed range.
+  * Fixes: datetime/rounding/calendar formula edge cases,
+    trace arrows, dropdown regrow, note threads, sheet IDs
+    kept across rewrites, AutoSum row totals as in Excel.
+  * Re-vendored (update=true); cargo_vendor lockfile audit
+    clean (the cargo_audit service is a no-op). Licence set
+    of the linked crates unchanged: MPL-2.0 `colored` stays
+    dev-only (via egui_kittest), no new copyleft.
+- Raise the cargo floor to >= 1.95 (upstream rust-version).
+- Set the fixed metainfo release date to 2026-10-28.
+- Disable the upstream self-updater
+  (gridcraft-no-self-update.patch): no startup check, no install
+  prompt over RPM files; the manual Help check outcome stays.
+- Add gridcraft-drop-unused-egui-patches.patch:
+  drop unused [patch.crates-io] pins the vendor omits
+
+-------------------------------------------------------------------
 Mon Oct 26 11:21:06 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.12.1 (upstream tag v0.12.1, 2026-10-25):

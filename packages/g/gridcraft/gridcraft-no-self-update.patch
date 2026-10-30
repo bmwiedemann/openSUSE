@@ -1,0 +1,62 @@
+From: openSUSE Publishing <publishing@opensuse.org>
+Subject: [PATCH] No self-update in distro builds: no startup check, no install prompt
+Bug: none (downstream distribution policy, not upstreamable)
+
+The package manager owns updates on a distro install: do not phone
+home to the releases page on every GUI launch, and never offer to
+install an upstream release (UPDATE-AND-RESTART) over RPM-owned
+files. Upstream ships this machinery intentionally for its own
+builds. Help Check for Updates stays as an explicit manual action
+reporting through its outcome message in tick(); only the automatic
+startup check and the self-update install prompt are turned off.
+
+diff --git a/apps/gridcraft/src/main.rs b/apps/gridcraft/src/main.rs
+--- a/apps/gridcraft/src/main.rs
++++ b/apps/gridcraft/src/main.rs
+@@ -316,7 +316,9 @@
+     }
+     let mut app = SheetApp::new(session, services());
+     app.watch_desktop_theme();
+-    app.start_update_check();
++    // Downstream (openSUSE): the package manager owns updates, so the
++    // desktop app must not check for (and offer to install) upstream
++    // releases on its own at startup. Manual Help Check stays.
+     app.after_engine(); // Show warnings from the sample.
+     let control_port = control_port;
+     load_prefs(&mut app);
+diff --git a/crates/ui-egui/src/updates_ui.rs b/crates/ui-egui/src/updates_ui.rs
+--- a/crates/ui-egui/src/updates_ui.rs
++++ b/crates/ui-egui/src/updates_ui.rs
+@@ -3,7 +3,7 @@
+ //! itself is `craft_update::updater::Updater`.
+
+ use craft_update::suite::GRIDCRAFT;
+-use craft_update::updater::{Action, Status, Updater};
++use craft_update::updater::{Status, Updater};
+
+ use crate::SheetApp;
+
+@@ -52,18 +52,9 @@
+     }
+ }
+
+-pub(crate) fn show(app: &mut SheetApp, ctx: &egui::Context) {
+-    // The restart helper is scheduled before the app closes, so no update starts over unsaved work.
+-    let clean = !app.session.documents().iter().any(|d| d.is_dirty());
+-    match app.updates_rt.updater.show_if(ctx, clean) {
+-        Action::OpenUrl(url) => {
+-            if let Some(open) = &app.services.open_url {
+-                open(&url);
+-            }
+-        }
+-        // The guarded close path asks about unsaved work; the restart helper relaunches once the
+-        // process has exited.
+-        Action::Close => ctx.send_viewport_cmd(egui::ViewportCommand::Close),
+-        Action::None => {}
+-    }
++pub(crate) fn show(_app: &mut SheetApp, _ctx: &egui::Context) {
++    // Downstream (openSUSE): never draw the self-update prompt, so no
++    // upstream release is ever installed over RPM-owned files (neither
++    // at startup nor after a manual check). The manual Check for Updates
++    // outcome message in tick() stays.
+ }
