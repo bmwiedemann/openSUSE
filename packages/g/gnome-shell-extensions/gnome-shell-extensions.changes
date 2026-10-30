@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 16 21:44:29 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + window-list: Fix reappearing after unfullscreening
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 21:44:28 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc:
+  + Port to event controllers [Florian; !467]
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 21:44:27 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + auto-move-windows: Make workspace cleanup more robust
+  + window-list: Only perform allowed window actions
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep 16 11:29:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.4:
@@ -954,7 +977,6 @@ Thu Apr 18 11:16:42 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
   + Fix windowsNavigator extension after ES6 port.
   + screenshot-window-sizer: Add phone screenshot sizes.
   + Misc. bug fixes and cleanups
-
 
 -------------------------------------------------------------------
 Tue Apr  9 07:27:44 UTC 2019 - Chingkai <qkzhu@suse.com>
