@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 30 07:58:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.22.0:
+  * Add Mistral Large 4 natively multimodal MoE model
+    with 1M context window and configurable reasoning
+    effort
+  * Add Nemotron 3.5 Transcribe speech model and left
+    context support for Nemotron 3D diarization
+  * Allow training adapters such as LoRA on top of
+    FP8-quantized weights with lower peak memory
+  * Separate expert-parallel logic into its own module
+  * Fix rope_scaling setter for configs assigning it
+    during init, Janus processor string prompts and
+    NumPy integer label dtypes in data collators
+
+-------------------------------------------------------------------
 Tue Oct 27 06:30:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.21.0:
