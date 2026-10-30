@@ -930,4 +930,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
   + Fix memory leak when initializing GTK templates</comment>
     <requestid>1352553</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>e8bfe0d5d4a29fd2a9bc6c60aacf865a</srcmd5>
+    <version>3.58.1</version>
+    <time>1793380103</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385459</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Oct  9 18:36:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop glib_version, gi_version, pycairo_version and libffi_version defines:
+  set minimum versions on every (Build)Requires, geckopit handles this for us
+  now.
+
+-------------------------------------------------------------------
+Fri Oct  9 18:18:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.58.1:
+  * (backport) Fix GStreamer crash with python-debug
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Thu Aug 27 16:44:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.58.0:
+  + Stable release.
+
+-------------------------------------------------------------------
+Sun Aug 16 09:19:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.57.1:
+  + Add extra checks around construction of object destroy notifier
+  + `GLib.Pid` should be a number with a special `close` method
+  + Use `PathLike` objects for `Gtk.Template`
+  + Fast marshalling of `bytearray` to `GBytes`
+  + Prevent crashes where `GValue` is `NULL`
+
+-------------------------------------------------------------------
+Tue Jul 21 06:42:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.57.0:
+  + doc: Update tutorial and examples
+  + Fix potential buffer overflow errors where the C API exposes
+  + gio: Support creating `GFile` child with slash operator,
+    similar to `pathlib.Path`
+  + Refactor memory management for marshaller cache
+  + Add missing msg argument to asyncio cancel()
+  + Fix deprecation warning for register_object
+  + Find libraries automatically on Windows
+  + Fix crash when `user_data` is defined before callback
+  + Avoid extraneous deprecation warnings
+  + Support generic annotations on `Async`
+  + fix: Simplify string prefix handling
+  + doc: Use gobject-linter for linting GObject code
+
+-------------------------------------------------------------------
 Sat May  9 08:38:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.56.3:
