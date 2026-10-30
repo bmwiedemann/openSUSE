@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Sat Oct 24 17:20:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.63.4:
+  * Handle EXIF orientation in images, and handle the image-orientation
+    property. Note that the only values supported for this property are
+    'from-image' (the default) and 'none'. Note that this will change the
+    rendering of SVG documents which assume the images with EXIF orientation
+    data are not auto-oriented correctly. In this case, please add the
+    following attribute to the corresponding image elemnts:
+    style="image-orientation: none;"
+
+-------------------------------------------------------------------
+Sat Oct 17 10:09:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.63.3:
+  * Librsvg-rebind crate version 0.3.0:
+  * Let the image-rs crate enforce its default limit of 512 MB for allocated
+    memory for each decoded image. The `--unlimited` flag in rsvg-convert (or
+    the corresponding flags in the C and Rust APIs) now control whether the
+    limits are enforced or not.
+  * Fix panic when a feConvolveMatrix declaration has an invalid size.
+  * When fuzzing, don't decode raster images from data: URIs to avoid sinking
+    fuzz time in the image-rs crate.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Wed Sep 23 16:13:13 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.63.2 (RUSTSEC-2026-0305 / CVE-2026-96889):
+  + librsvg crate version 2.63.2
+  + librsvg-rebind crate version 0.3.0
+  + Fix use-after-free when there are duplicate XML entities in
+  nested Xinclude documents.
+- Changes from version 2.63.1:
+  + This version is to be considered non-working; the chacha20
+    0.10.1 crate was yanked from crates.io.
+
+-------------------------------------------------------------------
+Wed Sep 23 16:13:12 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.63.0:
+  + librsvg crate version 2.63.0
+  + librsvg-rebind crate version 0.3.0
+  + Limit the depth of files that reference other files, via XML
+    XInclude, inter-document references, and CSS includes. The Rust
+    API has a new
+    ImplementationLimit::MaximumFileNestingDepthExceeded error
+    variant to surface this to the loading functions.
+  + Fix blurry embeded SVG images by rasterizing them at device
+    resolution.
+  + Remove loading limits from image-rs.  This means that raster
+    images, when embedded in SVG documents, have no limits for
+    their size or memory consumption. The idea, for now, is that
+    security-sensitive applications that use librsvg should do
+    their own sandboxing if they want to impose memory limits.
+  + Raise the maximum nesting depth of layers for glibc systems.
+    The maximum on glibc is now 500 nested layers; the maximum for
+    musl systems remains at 50 layers. This is due to the amount of
+    stack space required, since musl has a reduced default stack
+    compared to glibc. Please see the comments in that bug if you
+    would like to help with the musl situation.
+- Disable bug1100_fuzz_layer_nesting_depth test and enable
+  svg1_1_text_text_03_b_svg test again.
+
+-------------------------------------------------------------------
+Wed Sep 23 16:13:11 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.91:
+  + librsvg crate version 2.63.0-beta.1
+  + librsvg-rebind crate version 0.3.0
+  + Update test suite for change in how Pango renders
+    underline/overline.
+  + Update Rust dependencies.
+  + Update C dependencies in the CI.
+- No longer disable librsvg --test reference.
+
+-------------------------------------------------------------------
+Wed Sep 23 16:13:10 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.90:
+  + librsvg crate version 2.63.0-beta.0
+  + Limit the depth of files that reference other files, via XML
+    XInclude, inter-document references, and CSS includes. The Rust
+    API has a new
+    ImplementationLimit::MaximumFileNestingDepthExceeded error
+    variant to surface this to the loading functions.
+  + Fix blurry embeded SVG images by rasterizing them at device
+    resolution.
+  + Fix build when gobject-introspection is enabled but gdk-pixbuf
+    is disabled.
+  + Document the crate's feature flags.
+  + Update the Rust dependencies.
+
+-------------------------------------------------------------------
 Tue Sep 22 06:52:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.62.4:
@@ -2818,7 +2912,7 @@ Tue Jan 29 19:44:48 CET 2008 - maw@suse.de
 Tue Jan 29 16:23:48 CET 2008 - rodrigo@suse.de
 
 - Update to version 2.20.0:
-  * Fixed memory leaks and segfaults 
+  * Fixed memory leaks and segfaults
 
 -------------------------------------------------------------------
 Mon Sep 10 18:00:28 CEST 2007 - maw@suse.de
@@ -2840,9 +2934,9 @@ Thu Aug 30 23:10:58 CEST 2007 - maw@suse.de
 -------------------------------------------------------------------
 Thu Aug  2 02:03:16 CEST 2007 - mauro@suse.de
 
-- Updated to 2.18.0 
+- Updated to 2.18.0
 - Bugfixes for #412682, #418823, #401115, #444462, #452823, #448327,
-  #444462, #444443, #435129, #409030, #375649, #421697, #421710, 
+  #444462, #444443, #435129, #409030, #375649, #421697, #421710,
   #427031, #407230, #402246, #402107, #393297, #388545.
 
 -------------------------------------------------------------------
@@ -2892,7 +2986,7 @@ Tue Jan  9 17:42:57 CET 2007 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Thu Dec 28 18:27:05 CET 2006 - jhargadon@suse.de
 
-- removed unused libtool archives (#223654) 
+- removed unused libtool archives (#223654)
 
 -------------------------------------------------------------------
 Fri Oct 13 22:39:39 CEST 2006 - danw@suse.de
@@ -2923,17 +3017,17 @@ Wed Aug 23 17:02:15 CEST 2006 - jhargadon@suse.de
 - update to version 2.15.90
 - Bug 348329 make gnome-print dependency optional
 - Don't leak PangoFt2 fonts (bug 344235)
-- Document _render_sub better (bug 346964) 
+- Document _render_sub better (bug 346964)
 
 -------------------------------------------------------------------
 Tue Aug 15 00:12:46 CEST 2006 - ro@suse.de
 
-- use wildcard in filelist for gtk2 version 
+- use wildcard in filelist for gtk2 version
 
 -------------------------------------------------------------------
 Fri Jul 28 12:11:06 CEST 2006 - ro@suse.de
 
-- include rsvg.devhelp2 in filelist 
+- include rsvg.devhelp2 in filelist
 
 -------------------------------------------------------------------
 Wed Jan 25 21:32:25 CET 2006 - mls@suse.de
@@ -2954,7 +3048,7 @@ Fri Sep 16 16:40:17 CEST 2005 - rodrigo@suse.de
 -------------------------------------------------------------------
 Mon Sep  5 20:41:40 CEST 2005 - gekker@suse.de
 
-- Update to version 2.11.1 (GNOME 2.12) 
+- Update to version 2.11.1 (GNOME 2.12)
 
 -------------------------------------------------------------------
 Fri Aug 12 12:12:43 CEST 2005 - sbrabec@suse.cz
@@ -2974,13 +3068,13 @@ Sun Feb  6 05:05:37 CET 2005 - gekker@suse.de
 -------------------------------------------------------------------
 Wed Jan 19 02:42:56 CET 2005 - ro@suse.de
 
-- fixed filelist 
+- fixed filelist
 
 -------------------------------------------------------------------
 Wed Dec 22 22:01:53 CET 2004 - gekker@suse.de
 
 - Update to version 2.8.1
-- Make *.svg and *.devhelp install 
+- Make *.svg and *.devhelp install
 
 -------------------------------------------------------------------
 Tue May 04 14:39:32 CEST 2004 - sbrabec@suse.cz
@@ -3026,7 +3120,7 @@ Tue Aug 19 15:22:00 CEST 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Sun Jul 27 23:21:01 CEST 2003 - hhetter@suse.de
 
-- fix build 
+- fix build
 
 -------------------------------------------------------------------
 Mon Jul 14 16:16:28 CEST 2003 - sbrabec@suse.cz
@@ -3049,20 +3143,21 @@ Wed Jun 25 15:54:17 CEST 2003 - sbrabec@suse.cz
 Wed Feb 12 12:19:31 CET 2003 - hhetter@suse.de
 
 - install the rsvg loader at the default gdk-pixbuf-loader
-  module location 
+  module location
 - updated to version 2.2.3 to critical bugs with SVG themes
+
 -------------------------------------------------------------------
 Thu Jan 30 10:18:06 CET 2003 - hhetter@suse.de
 
 - force running of SuSEconfig.gtk to register the
-  librsvg gdk-pixbuf loader 
+  librsvg gdk-pixbuf loader
 
 -------------------------------------------------------------------
 Tue Jan 28 09:39:25 CET 2003 - hhetter@suse.de
 
 - updated to version 2.2.1
 - update filelist
-- include gdk-pixbuf loaders 
+- include gdk-pixbuf loaders
 
 -------------------------------------------------------------------
 Mon Nov 11 23:49:53 CET 2002 - ro@suse.de
@@ -3072,7 +3167,7 @@ Mon Nov 11 23:49:53 CET 2002 - ro@suse.de
 -------------------------------------------------------------------
 Tue Oct 22 15:36:05 CEST 2002 - hhetter@suse.de
 
-- remove wrong docdir 
+- remove wrong docdir
 - use correct kde datadir
 
 -------------------------------------------------------------------
@@ -3083,7 +3178,7 @@ Fri Sep 27 14:35:50 CEST 2002 - ro@suse.de
 -------------------------------------------------------------------
 Tue Aug 13 01:37:38 CEST 2002 - ro@suse.de
 
-- removed control-center from neededforbuild 
+- removed control-center from neededforbuild
 
 -------------------------------------------------------------------
 Tue Jul 23 14:37:05 CEST 2002 - hhetter@suse.de
@@ -3094,17 +3189,17 @@ Tue Jul 23 14:37:05 CEST 2002 - hhetter@suse.de
 -------------------------------------------------------------------
 Tue Jul 23 08:08:30 CEST 2002 - hhetter@suse.de
 
-- updated to version 2.0.0 
+- updated to version 2.0.0
 
 -------------------------------------------------------------------
 Wed May 15 15:44:20 CEST 2002 - ro@suse.de
 
-- use libdir 
+- use libdir
 
 -------------------------------------------------------------------
 Mon Apr 15 14:18:04 CEST 2002 - hhetter@suse.de
 
-- update to version 1.1.6 [gnome desktop beta3] 
+- update to version 1.1.6 [gnome desktop beta3]
 
 -------------------------------------------------------------------
 Fri Feb  1 00:26:05 CET 2002 - ro@suse.de
@@ -3114,5 +3209,5 @@ Fri Feb  1 00:26:05 CET 2002 - ro@suse.de
 -------------------------------------------------------------------
 Thu Jan 24 14:47:49 CET 2002 - hhetter@suse.de
 
-- initial SuSE package for GNOME 2.0 platform 
+- initial SuSE package for GNOME 2.0 platform
 

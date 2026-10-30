@@ -20,7 +20,7 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.62.4
+Version:        2.63.4
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.1-or-later AND MIT
@@ -38,20 +38,20 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-docutils
 BuildRequires:  vala
 BuildRequires:  pkgconfig(cairo) >= 1.18.0
-BuildRequires:  pkgconfig(cairo-png) >= 1.2.0
-BuildRequires:  pkgconfig(dav1d)
+BuildRequires:  pkgconfig(cairo-png) >= 1.18.0
+BuildRequires:  pkgconfig(dav1d) >= 1.3.0
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2) >= 20.0.14
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.20
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.24.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gmodule-2.0)
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.12.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
-BuildRequires:  pkgconfig(pangocairo) >= 1.46.0
-BuildRequires:  pkgconfig(pangoft2) >= 1.46.0
+BuildRequires:  pkgconfig(pangocairo) >= 1.50.0
+BuildRequires:  pkgconfig(pangoft2) >= 1.50.0
 # Avoid cycle: we do not require the adwaita-icon-theme to be present. libgtk-3.0 requires this for end users
 #!BuildIgnore:  adwaita-icon-theme
 
@@ -129,7 +129,7 @@ http://www.w3c.org).
 export LANG=C
 %ifnarch %{ix86} %{arm}
 %{cargo_test}  -- \
- --skip svg1_1_text_text_03_b_svg
+ --skip bug1100_fuzz_layer_nesting_depth
 %endif
 
 %files -n librsvg-2-%{librsvg_sover}

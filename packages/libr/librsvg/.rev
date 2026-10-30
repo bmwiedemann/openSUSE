@@ -1429,4 +1429,41 @@
     crossbeam-epoch for RUSTSEC-2026-0204.</comment>
     <requestid>1379982</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>3f5b51aeafb71d96ff5a76bf2197e347</srcmd5>
+    <version>2.63.4</version>
+    <time>1793380150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.63.4:
+  * Handle EXIF orientation in images, and handle the image-orientation
+    property. Note that the only values supported for this property are
+    'from-image' (the default) and 'none'. Note that this will change the
+    rendering of SVG documents which assume the images with EXIF orientation
+    data are not auto-oriented correctly. In this case, please add the
+    following attribute to the corresponding image elemnts:
+    style=&quot;image-orientation: none;&quot;
+
+- Update to version 2.63.3:
+  * Librsvg-rebind crate version 0.3.0:
+  * Let the image-rs crate enforce its default limit of 512 MB for allocated
+    memory for each decoded image. The `--unlimited` flag in rsvg-convert (or
+    the corresponding flags in the C and Rust APIs) now control whether the
+    limits are enforced or not.
+  * Fix panic when a feConvolveMatrix declaration has an invalid size.
+  * When fuzzing, don't decode raster images from data: URIs to avoid sinking
+    fuzz time in the image-rs crate.
+- Update version dependencies according to meson.build.
+
+- Update to version 2.63.2 (RUSTSEC-2026-0305 / CVE-2026-96889):
+  + librsvg crate version 2.63.2
+  + librsvg-rebind crate version 0.3.0
+  + Fix use-after-free when there are duplicate XML entities in
+  nested Xinclude documents.
+- Changes from version 2.63.1:
+  + This version is to be considered non-working; the chacha20
+    0.10.1 crate was yanked from crates.io.
+
+- Update to version 2.63.0:</comment>
+    <requestid>1392418</requestid>
+  </revision>
 </revisionlist>
