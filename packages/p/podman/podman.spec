@@ -24,7 +24,7 @@
 %bcond_without  apparmor
 
 Name:           podman
-Version:        6.1.2
+Version:        6.1.4
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -197,9 +197,11 @@ ln -s %{_bindir}/catatonit %{buildroot}%{_libexecdir}/podman/catatonit
 %{_libexecdir}/podman/catatonit
 # Completion
 %{_datadir}/bash-completion/completions/podman
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_podman
 %dir %{_datadir}/fish/
-%dir %{_datadir}/fish/vendor_completions.d/
+%dir %{_datadir}/fish/vendor_completions.d
 %{_datadir}/fish/vendor_completions.d/podman.fish
 %{_unitdir}/podman.service
 %{_unitdir}/podman.socket

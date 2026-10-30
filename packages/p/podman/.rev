@@ -1454,4 +1454,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment>Update to version 6.1.2</comment>
     <requestid>1382644</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>e6fabf71e82c2896cb99e86e6eb21b36</srcmd5>
+    <version>6.1.4</version>
+    <time>1793380185</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1393802</requestid>
+  </revision>
 </revisionlist>
