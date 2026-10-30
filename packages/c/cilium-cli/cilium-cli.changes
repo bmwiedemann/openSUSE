@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Oct 30 06:26:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.20.2:
+  * Minor Changes:
+    - cilium-cli: Apply labels to all new test namespaces
+      (cilium/cilium#49190)
+    - cilium-cli: fall back to WebSocket when a proxy rejects the
+      SPDY upgrade (cilium/cilium#49229)
+  * Bugfixes:
+    - Fixes error when passing times of 60s or more to cilium
+      connectivity perf and throws an explicit error on fractional
+      seconds. (cilium/cilium#48965)
+  * CI Changes:
+    - cilium-cli/connectivity: remove unused
+      client-egress-to-echo-port-range manifest
+      (cilium/cilium#49676)
+    - cilium-cli: Fix two false passes in the connectivity test
+      (cilium/cilium#49493)
+    - cilium-cli: respect --ip-families in validateDeployment
+      (cilium/cilium#45325)
+    - cilium-cli: Retry execs cut by a konnectivity-agent roll
+      (cilium/cilium#49473)
+    - cli: connectivity: lrp: test skipRedirectFromBackend=false on
+      IPv6 with per-packet LB (cilium/cilium#49356)
+    - Retry connectivity test exec probes when the SPDY exec stream
+      times out (cilium/cilium#48860)
+    - workflows: Upgrade to RHEL9 (cilium/cilium#49508)
+  * Misc Changes:
+    - bgp: remove the deprecated v2alpha1 version of the BGP CRDs
+      (cilium/cilium#49329)
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#49026)
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#49148)
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#49272)
+    - chore(deps): update auto-merge-trusted-deps (main)
+      (cilium/cilium#49437)
+    - chore(deps): update auto-merge-trusted-deps (main)
+      (cilium/cilium#49527)
+    - chore(deps): update auto-merge-trusted-deps (main)
+      (cilium/cilium#49563)
+    - chore(deps): update base-images (main) (cilium/cilium#49142)
+    - cilium-cli/connectivity: use WithUnsafeTests() in HostFW test
+      (cilium/cilium#49307)
+    - cilium-cli: skip logs for rejected pods that never started
+      (cilium/cilium#48772)
+    - fix(deps): update all go dependencies main (major) (main)
+      (major) (cilium/cilium#49495)
+    - chore(deps): update go in #3311
+    - Update stable release to v0.20.1 in #3312
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v2.14.0 in #3314
+    - ci: Add support for OIDC in #3313
+    - chore(deps): update docker.io/library/golang:1.27.1 docker
+      digest to e0174e5 in #3315
+    - chore(deps): update go to v1.27.2 in #3317
+    - chore(deps): update gcr.io/distroless/static:latest docker
+      digest to 9e0130b in #3318
+    - chore(deps): update dependency cilium/cilium to v1.20.3 in
+      #3319
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v2.15.0 in #3320
+    - chore(deps): update gcr.io/distroless/static:latest docker
+      digest to 034df5c in #3321
+    - chore(deps): update docker.io/library/golang docker tag to
+      v1.27.2 in #3322
+    - chore(deps): update gcr.io/distroless/static:latest docker
+      digest to 15f8637 in #3323
+    - chore(deps): update dependency go to v1.27.3 in #3325
+    - chore(deps): update dependency cilium/cilium to v1.20.4 in
+      #3324
+    - chore(deps): update docker.io/library/golang docker tag to
+      v1.27.3 in #3326
+    - ci: kind: clean up test namespace during uninstall instead of
+      force-deploy in #3327
+
+-------------------------------------------------------------------
 Fri Sep 25 05:06:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.20.1:
