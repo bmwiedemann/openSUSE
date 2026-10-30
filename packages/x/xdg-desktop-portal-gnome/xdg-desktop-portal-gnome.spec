@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-gnome
-Version:        50.0
+Version:        51.0
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 47.alpha
 BuildRequires:  pkgconfig(gtk4) >= 4.0
 BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(systemd) >= 242
 BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.19.1
 Requires:       xdg-desktop-portal
 # Use rich deps to pull in this package when gnome-shell and flatpak (or snapd) are both installed
