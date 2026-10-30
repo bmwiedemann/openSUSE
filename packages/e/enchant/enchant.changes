@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:43:55 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to configure.ac.
+
+-------------------------------------------------------------------
+Fri Sep 11 10:49:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.8.21:
+  + This release fixes two bugs in composite dictionaries: first,
+    if any dictionary creation failed during creation of a
+    composite dictionary, dictionaries already created would be
+    leaked; and secondly, the broker error status could end up
+    indicating an error incorrectly when one provider or language
+    failed and a fallback later succeeded. Thanks to @lpyuu for the
+    report and fixes.
+- Changes from version 2.8.20:
+  + This release improves the man page for enchant(1), mostly by
+    documenting Ispell command-line options and pipe-mode commands
+    that it ignores.
+
+-------------------------------------------------------------------
 Thu Aug 20 15:36:41 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.8.19:

@@ -24,7 +24,7 @@
 %bcond_without aspell
 
 Name:           enchant
-Version:        2.8.19
+Version:        2.8.21
 Release:        0
 Summary:        Generic Spell Checking Library
 License:        LGPL-2.1-or-later
@@ -37,7 +37,7 @@ BuildRequires:  aspell-devel
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
-BuildRequires:  glib2-devel
+BuildRequires:  glib2-devel >= 2.76
 BuildRequires:  groff-full
 BuildRequires:  hunspell-devel
 BuildRequires:  libvoikko-devel
