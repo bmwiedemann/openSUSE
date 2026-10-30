@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Sep 15 09:50:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Update the CI for release.
+
+-------------------------------------------------------------------
+Thu Sep  3 09:38:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.rc:
+  + Load and cache background images from files using glycin
+  + Fix set-strut feedback loop during initial window configuration
+  + Restrict set-strut to dock windows only
+  + Fix memory leak in window configuration
+  + Adapt to mutter API changes
+  + Various code cleanup
+- Add pkgconfig(glycin-2) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Wed Aug  5 06:47:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Add a basic screensaver and session presence support
+  + Start gsd-power in systemd sessions
+  + Add "lock-move" and "lock-resize" window configuration options
+  + Add "set-strut" window configuration option
+  + Add "match-window-type" window configuration filter
+  + Add a sample root menu application and session
+    (gnome-kiosk-menu)
+  + Adapt to mutter API changes
+
+-------------------------------------------------------------------
+Fri Jul  3 20:18:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Update for mutter 51 API
+- Bump mutter_api to 51 following upstream changes.
+
+-------------------------------------------------------------------
 Fri May 29 10:43:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.1:

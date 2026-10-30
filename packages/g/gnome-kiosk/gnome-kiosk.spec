@@ -16,7 +16,7 @@
 #
 
 
-%define mutter_api 18
+%define mutter_api 51
 %ifarch armv6l armv6hl ppc ppc64 i586
 %define build_search_app 0
 %else
@@ -24,7 +24,7 @@
 %endif
 
 Name:           gnome-kiosk
-Version:        50.1
+Version:        51.0
 Release:        0
 Summary:        Mutter based compositor for kiosks
 License:        GPL-2.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glycin-2)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(ibus-1.0)

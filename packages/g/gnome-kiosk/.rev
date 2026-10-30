@@ -104,4 +104,12 @@
   + Various code cleanup and coding style fixes</comment>
     <requestid>1355924</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b430dc0f46f6c4af6e98994047681a7e</srcmd5>
+    <version>51.0</version>
+    <time>1793380023</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385422</requestid>
+  </revision>
 </revisionlist>
