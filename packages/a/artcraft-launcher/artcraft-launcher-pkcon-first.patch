@@ -1,9 +1,9 @@
 --- a/crates/native/src/backend.rs
 +++ b/crates/native/src/backend.rs
-@@ -503,6 +503,30 @@
+@@ -556,6 +556,30 @@
          shared.emit(Event::Progress { app: app.id.to_string(), phase: p });
      };
-     let mut job = Job { http, paths, stop, phase: &mut phase, install_locations: &options.install_locations, replace };
+     let mut job = Job { http, paths, stop, phase: &mut phase, install_locations: &options.install_locations, replace, downgrade };
 +    // PackageKit: the distro's own package, installed and upgraded with the distro's
 +    // signature, dependencies and authentication. A distro carrying no such package
 +    // resolves to a miss and gets the download below, unchanged.
@@ -33,10 +33,10 @@
          let mut updated = manifest.clone();
 --- a/crates/native/src/install.rs
 +++ b/crates/native/src/install.rs
-@@ -4,9 +4,11 @@
- //!
- //! - macOS: the signed `.app` from the release DMG into `/Applications`.
- //! - Windows: the release MSI (Windows Installer) into `C:\Program Files\<App>`.
+@@ -6,9 +6,11 @@
+ //! - Windows: the release MSI (Windows Installer), for the current user into
+ //!   `%LOCALAPPDATA%\Programs\ArtCraft\<App>` by default. An update keeps the installed copy's folder
+ //!   and scope (per-machine copies stay in `C:\Program Files\ArtCraft\<App>`).
 -//! - Linux: the distro's own package (`.deb` through apt on the Debian family, `.rpm` through
 -//!   dnf/zypper/rpm on the Fedora, Red Hat and SUSE families, read from `os-release`) with the
 -//!   system's polkit password prompt; otherwise a Flatpak, otherwise an AppImage in
@@ -48,7 +48,7 @@
  //!   `~/Applications` (the AppImage convention), with a menu entry and icon in
  //!   `~/.local/share` so it shows up like any other app. A Flatpak or AppImage launcher prefers
  //!   its own format.
-@@ -770,6 +772,7 @@
+@@ -964,6 +966,7 @@
  pub(crate) mod linux {
      use std::ffi::{OsStr, OsString};
      use std::os::unix::fs::PermissionsExt;
@@ -56,7 +56,7 @@
  
      use artcraft_launcher_core::distro;
      use artcraft_launcher_core::protocol::CANCELLED;
-@@ -796,6 +799,11 @@
+@@ -990,6 +993,11 @@
  
      const SYSTEM: Root<'static> = Root { queue: &INSTALLER, run: &run_as_root };
  
@@ -68,7 +68,7 @@
      /// Runs `command target` as root. Jobs waiting for the same command go into one call
      /// (`apt-get install a.deb b.deb`), so the password is asked for once.
      fn as_root(
-@@ -857,6 +865,10 @@
+@@ -1051,6 +1059,10 @@
          let flatpak = process::is_flatpak_available();
          let is_flatpak = process::in_sandbox();
          let is_appimage = std::env::var_os("APPIMAGE").is_some();
@@ -79,7 +79,7 @@
          let root = pkexec().is_some();
          let os = ["/etc/os-release", "/usr/lib/os-release"].iter().find_map(|p| std::fs::read_to_string(p).ok()).unwrap_or_default();
          let native = distro::native_package(&distro::parse_os_release(&os));
-@@ -954,8 +966,181 @@
+@@ -1148,9 +1160,181 @@
          }
      }
  
@@ -251,17 +251,17 @@
 +
      pub fn remove_package(app: &CraftApp, installed: &Installed, stop: &Stop, phase: &mut dyn FnMut(JobPhase)) -> Result<(), String> {
          let mut remove = |command: &[&str], package: &str| as_root(&SYSTEM, command, OsStr::new(package), stop, phase, JobPhase::Removing);
+         let package = installed.package.as_deref().unwrap_or(app.id);
 +        // PackageKit removes whatever put the package there — the launcher from a file, an
 +        // older launcher, the distro itself or the user's own `rpm -i` — under the name the
 +        // package manager gave it, and asks for permission itself.
 +        if pkcon_available() && matches!(installed.source, InstallSource::Deb | InstallSource::Rpm) {
-+            let package = installed.package.as_deref().unwrap_or(app.id);
 +            return as_root(&PKCON, &["-y", "remove"], OsStr::new(package), stop, phase, JobPhase::Removing);
 +        }
          match installed.source {
-             InstallSource::Deb if system_tool("apt-get").is_some() => remove(&["apt-get", "-o", APT_WAITS, "remove", "-y"], app.id),
-             InstallSource::Deb => remove(&["dpkg", "-r"], app.id),
-@@ -2672,6 +2857,104 @@
+             // The package detected (photocraft, or ai.storyteller.photocraft).
+             InstallSource::Deb if system_tool("apt-get").is_some() => remove(&["apt-get", "-o", APT_WAITS, "remove", "-y"], package),
+@@ -3245,6 +3429,104 @@
          }
      }
  

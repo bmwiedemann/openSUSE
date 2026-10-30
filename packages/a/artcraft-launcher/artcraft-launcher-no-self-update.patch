@@ -1,0 +1,136 @@
+--- a/crates/native/src/backend.rs
++++ b/crates/native/src/backend.rs
+@@ -2,7 +2,7 @@
+ 
+ use std::collections::HashMap;
+ use std::sync::atomic::{AtomicBool, Ordering};
+-use std::sync::{Arc, Mutex, OnceLock, PoisonError};
++use std::sync::{Arc, Mutex, PoisonError};
+ use std::time::{Duration, Instant};
+ 
+ use artcraft_launcher_core::catalog::{LAUNCHER, LAUNCHER_ID};
+@@ -64,12 +64,9 @@
+     /// A detection pass is running; another request waits for the next one.
+     detecting: AtomicBool,
+     last_check: Mutex<Option<i64>>,
+-    /// The newer ArtCraft Launcher release, once a check has found one.
+-    launcher_release: Mutex<Option<Release>>,
+-    /// How this launcher is installed, when it can replace itself. Worked out on the check thread
+-    /// just before a newer launcher is announced: finding out can ask the host's Flatpak, which
+-    /// mustn't hold up the first frame.
+-    self_install: OnceLock<Option<crate::self_update::Install>>,
++    // PATCH-FIX-OPENSUSE: this copy is rpm-managed, so there is no self-install
++    // state (no launcher_release/self_install): the backend can never offer or run
++    // an in-place self-update; the UI falls back to a download link.
+     /// When GitHub was last asked about each app (Unix seconds), to keep the fallback rare.
+     github_asked: Mutex<HashMap<String, i64>>,
+     /// Apps with an answer (a release or "none yet") from either service.
+@@ -161,8 +158,6 @@
+             options: Mutex::new(BackendOptions::default()),
+             checking: AtomicBool::new(false),
+             detecting: AtomicBool::new(false),
+-            launcher_release: Mutex::new(None),
+-            self_install: OnceLock::new(),
+             github_asked: Mutex::new(HashMap::new()),
+             answered: Mutex::new(std::collections::HashSet::new()),
+             loaded: AtomicBool::new(false),
+@@ -390,54 +385,16 @@
+         });
+     }
+ 
+-    /// Downloads the newer launcher, puts it in place and asks the UI to quit so it can start.
++    /// Refuses a launcher self-update: this copy is rpm-managed, replacing it from
++    /// upstream would clobber distro files.
++    ///
++    /// PATCH-FIX-OPENSUSE: `capabilities` reports `self_update: false`, so the UI offers
++    /// a download link instead of reaching this; any `UpdateLauncher` command arriving
++    /// anyway gets the same refusal.
+     fn update_launcher(&self) {
+-        let id = LAUNCHER_ID.to_string();
+-        let (Some(install), Some(platform)) = (self.shared.self_install.get().cloned().flatten(), self.platform) else {
+-            self.shared.emit(Event::JobFinished {
+-                app: id,
+-                result: Err("this copy of ArtCraft Launcher can't update itself; download the new version instead".into()),
+-            });
+-            return;
+-        };
+-        let Some(release) = self.shared.launcher_release.lock().unwrap_or_else(PoisonError::into_inner).clone() else { return };
+-        let stop = Arc::new(Stop::default());
+-        {
+-            let mut jobs = self.shared.jobs.lock().unwrap_or_else(PoisonError::into_inner);
+-            if jobs.contains_key(&id) {
+-                return;
+-            }
+-            jobs.insert(id.clone(), stop.clone());
+-        }
+-        let job = JobGuard { shared: self.shared.clone(), app_id: id.clone() };
+-        let (shared, paths, http) = (self.shared.clone(), self.paths.clone(), self.http.clone());
+-        std::thread::spawn(move || {
+-            let job = job;
+-            let mut last_emit = Instant::now() - Duration::from_secs(1);
+-            let mut phase = |p: JobPhase| {
+-                if matches!(p, JobPhase::Downloading { done, total } if done != total && done != 0) && last_emit.elapsed() < Duration::from_millis(50)
+-                {
+-                    return;
+-                }
+-                last_emit = Instant::now();
+-                shared.emit(Event::Progress { app: LAUNCHER_ID.to_string(), phase: p });
+-            };
+-            let last = || {
+-                let mut waiting = || shared.emit(Event::Progress { app: LAUNCHER_ID.to_string(), phase: JobPhase::Waiting });
+-                claim_restart(&shared.jobs, &shared.restarting, &stop, RESTART_WAIT, &mut waiting)
+-            };
+-            let result = match http.as_ref() {
+-                Some(http) => crate::self_update::update(&install, &release, platform, http, &paths, &stop, &mut phase, &last),
+-                None => Err("secure connections aren't available on this system".into()),
+-            };
+-            drop(job);
+-            match result {
+-                Ok(()) => shared.emit(Event::LauncherRestarting),
+-                Err(e) => {
+-                    shared.restarting.store(false, Ordering::SeqCst);
+-                    shared.emit(Event::JobFinished { app: LAUNCHER_ID.to_string(), result: Err(e) });
+-                }
+-            }
++        self.shared.emit(Event::JobFinished {
++            app: LAUNCHER_ID.to_string(),
++            result: Err("this copy of ArtCraft Launcher can't update itself; download the new version instead".into()),
+         });
+     }
+ 
+@@ -715,12 +672,13 @@
+ }
+ 
+ /// Offers the launcher's own update when its answer is a newer release than the running one.
++///
++/// PATCH-FIX-OPENSUSE: announces only, never arms an in-place install (rpm-managed copy).
++/// The release event still reaches the UI, which then offers a download link.
+ fn launcher_update(paths: &Paths, latest: Option<LatestRelease>, shared: &Arc<Shared>) {
+     let Some(LatestRelease::Found(r)) = latest else { return };
+     let (Some(newest), Some(current)) = (r.version.as_ref(), crate::self_update::current_version()) else { return };
+     if version::is_newer(newest, &current) && !crate::self_update::just_updated_to(paths, &r) {
+-        shared.self_install.get_or_init(crate::self_update::current);
+-        *shared.launcher_release.lock().unwrap_or_else(PoisonError::into_inner) = Some(r.clone());
+         shared.emit(Event::LauncherUpdate(r));
+     }
+ }
+@@ -1113,7 +1071,9 @@
+             Some(Os::Windows) => "Show in Explorer",
+             _ => "Show in Files",
+         };
+-        Capabilities { manage_apps: true, reveal_label, self_update: self.shared.self_install.get().is_some_and(Option::is_some) }
++        // PATCH-FIX-OPENSUSE: rpm-managed copy, never offer in-place self-update;
++        // the update dialog then offers a download link instead.
++        Capabilities { manage_apps: true, reveal_label, self_update: false }
+     }
+ 
+     fn platform(&self) -> Option<Platform> {
+@@ -1178,8 +1138,6 @@
+             checking: AtomicBool::new(false),
+             detecting: AtomicBool::new(false),
+             last_check: Mutex::new(None),
+-            launcher_release: Mutex::new(None),
+-            self_install: OnceLock::new(),
+             github_asked: Mutex::new(HashMap::new()),
+             answered: Mutex::new(std::collections::HashSet::new()),
+             loaded: AtomicBool::new(false),

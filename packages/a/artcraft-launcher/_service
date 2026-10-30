@@ -2,7 +2,7 @@
   <service mode="manual" name="tar_scm">
     <param name="url">https://github.com/storytold/craft-launcher.git</param>
     <param name="scm">git</param>
-    <param name="revision">v0.8.1</param>
+    <param name="revision">v0.10.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -22,7 +22,8 @@
   <service mode="manual" name="set_version"/>
   <service mode="manual" name="cargo_vendor">
     <param name="src">artcraft-launcher-*.tar.zst</param>
-    <param name="update">true</param>
+    <param name="update">false</param>
+    <param name="respect-lockfile">true</param>
   </service>
   <service mode="manual" name="cargo_audit"/>
 </services>

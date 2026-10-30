@@ -17,7 +17,7 @@
 
 
 Name:           artcraft-launcher
-Version:        0.8.1
+Version:        0.10.0
 Release:        0
 Summary:        Install, update and launch the Craft App Suite
 # Legal-Review-Notice: scope is the one shipped target (artcraft-launcher,
@@ -46,7 +46,7 @@ Summary:        Install, update and launch the Craft App Suite
 # present in the source tarball unmodified because the build needs it:
 # crates/ui-egui/src/icons.rs and apps/artcraft-launcher/src/tray.rs embed
 # five of its files at compile time (include_image!/include_bytes!), so a
-# tar_scm exclude breaks %build on every arch. Nothing from it is ever
+# tar_scm exclude breaks the build section on every arch. Nothing from it is ever
 # installed. The installed hicolor app icon is that same "A" mark rendered unmodified
 # by upstream packaging/icons.sh for use as this app's own icon
 # (assets/app-icon/LICENSE.txt permits it unmodified as part of this
@@ -61,6 +61,14 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 # PATCH-FIX-UPSTREAM artcraft-launcher-pkcon-first.patch -- Linux install/update/remove through PackageKit when the distro carries the app (storytold/craft-launcher#256, open): pkcon-first with download-flow fallback, OCR-reviewed
 Patch0:         artcraft-launcher-pkcon-first.patch
+# PATCH-FIX-OPENSUSE artcraft-launcher-no-self-update.patch -- rpm-managed copy must not replace itself from upstream: announce-only launcher update (download link), install path refused
+Patch1:         artcraft-launcher-no-self-update.patch
+# PATCH-FIX-OPENSUSE artcraft-launcher-drop-unused-egui-patches.patch -- drop three
+# [patch.crates-io] pins (egui_demo_lib, egui_inspection,
+# egui_system_font_provider) that nothing uses (Cargo.lock [[patch.unused]]):
+# cargo_vendor omits them from vendor.tar.zst, so any --offline resolve
+# fails; upstreamable as cleanup once upstream drops the pins.
+Patch2:         artcraft-launcher-drop-unused-egui-patches.patch
 BuildRequires:  appstream-glib
 BuildRequires:  c_compiler
 BuildRequires:  cargo >= 1.95
@@ -100,6 +108,10 @@ right build for your computer, and keeps it up to date.
 
 %build
 %limit_build -m 2000
+# NOTE: keep the parameterized cargo macros in this spec in braced form
+# (cargo_build, cargo_test). The bare form misparses its arguments
+# in the Factory build root (Unknown option - in cargo_build(), adi:5);
+# spec-cleaner wants to unbrace them, so this is a --cleaner-deviation.
 # Build only the desktop app; the web app (apps/artcraft-launcher-web) is
 # wasm-only and out of scope for this package.
 %{cargo_build} --locked -p artcraft-launcher
@@ -108,10 +120,10 @@ right build for your computer, and keeps it up to date.
 install -Dm0755 target/release/artcraft-launcher %{buildroot}%{_bindir}/artcraft-launcher
 install -Dm0644 packaging/linux/ai.storyteller.artcraft-launcher.desktop %{buildroot}%{_datadir}/applications/ai.storyteller.artcraft-launcher.desktop
 install -d -m 0755 %{buildroot}%{_datadir}/metainfo
-# Fixed upstream release date (v0.8.1, 2026-10-25): a build-time date would
+# Fixed upstream release date (v0.10.0, 2026-10-29): a build-time date would
 # make the metainfo differ on every rebuild, and spec-cleaner macro-expands
-# the %-sequences of any date format string, so keep this a plain string.
-sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-25/g" packaging/linux/ai.storyteller.artcraft-launcher.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.artcraft-launcher.metainfo.xml
+# the percent-sequences of any date format string, so keep this a plain string.
+sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-29/g" packaging/linux/ai.storyteller.artcraft-launcher.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.artcraft-launcher.metainfo.xml
 # Upstream declares the app icon as type="stock" but it is a custom hicolor
 # icon, so declare it as cached for appstream validation.
 sed -i 's|<icon type="stock">ai.storyteller.artcraft-launcher</icon>|<icon type="cached" width="64" height="64">ai.storyteller.artcraft-launcher.png</icon>|' %{buildroot}%{_datadir}/metainfo/ai.storyteller.artcraft-launcher.metainfo.xml

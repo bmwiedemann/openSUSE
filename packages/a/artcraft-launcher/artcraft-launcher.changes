@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct 30 08:16:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.0 (upstream tag v0.10.0, 2026-10-29):
+  * Per-app version choice: latest stable, nightly or a pinned
+    published version; pinned apps skip badges and Update all.
+  * Launcher version selectable in Settings, Updates; going
+    back uses a manual download, self-update moves forward.
+  * Windows: verified MSI downgrades with restore on failure,
+    Program Files default for new installs, batched prompts.
+  * SolidCraft joins the catalog as a community app with
+    Official and Community labels; refreshed descriptions.
+  * Re-vendored: dependency set unchanged (only the version
+    stamp moved), so the licence set is unchanged as well.
+  * Rebase artcraft-launcher-pkcon-first.patch for the new
+    sources; its remove hunk reuses upstream's package name.
+
+-------------------------------------------------------------------
+Thu Oct 29 12:39:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.0 (upstream tag v0.9.0, 2026-10-28):
+  * UI moved to egui 0.37; settings and sort dropdowns use the
+    shared craft-ui ComboBox; CJK text waits for its fonts.
+  * Self-update delegated to the shared craft-update helper.
+  * Windows: updates keep the installed copy's folder and scope
+    (per-user installs no longer duplicate per-machine and vice
+    versa); custom folders the account cannot write install for
+    everyone with an administrator prompt.
+  * Dependency refreshes (serde_json, winresource, plist, ureq,
+    tray-icon, egui stack).
+  * Re-vendored: new craft-update, craft-ui, craft-i18n and
+    craft-fonts-build (MIT OR Apache-2.0) plus ICU/Unicode crates
+    (Unicode-3.0); option-ext (MPL-2.0) still linked through dirs
+    6, X11-only libxdo crates gone. Licence set unchanged, no new
+    system deps.
+  * Rebase artcraft-launcher-pkcon-first.patch for the new
+    upstream sources (doc-comment hunk).
+  * Add artcraft-launcher-no-self-update.patch: the rpm-managed
+    copy only announces a newer launcher (download link), it never
+    installs upstream builds over distro files.
+- Add artcraft-launcher-drop-unused-egui-patches.patch:
+  drop unused [patch.crates-io] pins the vendor omits
+
+-------------------------------------------------------------------
 Mon Oct 26 11:07:42 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.8.1 (upstream tag v0.8.1, 2026-10-25):
