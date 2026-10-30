@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 16 08:20:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.58.0:
+  + Add enums FontColor, Width, RenderComponent.
+  + FontDescription: Add Add set/get_color().
+  + Attributes: Add create_attr_width().
+  + FontDescription: Add set/get_width().
+  + Layout: Add add_components_to_cairo_context().
+  + Renderer: Add set/get_components().
+  + Build: Require pango >= 1.58.0.
+
+-------------------------------------------------------------------
 Thu Jun 25 17:21:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.56.2:

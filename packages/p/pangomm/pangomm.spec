@@ -20,7 +20,7 @@
 %define libname  lib%{name}-2_48-1
 
 Name:           pangomm
-Version:        2.56.2
+Version:        2.58.0
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
@@ -43,7 +43,7 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairomm-1.16) >= 1.2.2
 BuildRequires:  pkgconfig(giomm-2.68)
 BuildRequires:  pkgconfig(glibmm-2.68)
-BuildRequires:  pkgconfig(pangocairo) >= 1.54.0
+BuildRequires:  pkgconfig(pangocairo) >= 1.58.0
 
 %description
 pangomm provides a C++ interface to the pango library.
