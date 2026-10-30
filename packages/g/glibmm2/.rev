@@ -949,4 +949,12 @@
       info</comment>
     <requestid>1363134</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>70b5439a55e8837f062a932a7b51832c</srcmd5>
+    <version>2.90.0</version>
+    <time>1793379973</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 51.1</comment>
+    <requestid>1385406</requestid>
+  </revision>
 </revisionlist>

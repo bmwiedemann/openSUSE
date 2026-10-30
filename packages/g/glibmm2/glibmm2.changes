@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:48:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Sun Sep 13 16:42:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.90.0:
+  + API is identical to glibmm 2.89.1.
+  + Meson build: Fix missing dependencies, making it possible to
+    build with https://github.com/michaelforney/samurai instead of
+    ninja. (syntheticsweet)
+
+-------------------------------------------------------------------
+Wed Aug 26 11:44:50 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.89.1 (Unstable):
+  + Glib:
+    - SignalTimeout: Add connect_ns(), connect_ns_once().
+    - Source: Add get_time_ns().
+  + Gio:
+    - ApplicationCommandLine: Add property_is_remote().
+    - DesktopAppInfo: Add property_filename().
+    - UnixFDList: Add peek(), lookup(), append_take().
+  + Build: Require glib >= 2.89.4
+
+-------------------------------------------------------------------
+Tue Aug 11 06:35:54 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.89.0 (Unstable):
+  + Drop G_GNUC_CONST as in GLib.
+  + Glib: Markup::ParseContext: Add get_attribute_position().
+  + Gio: Emblem and DBus::ActionGroup: Don't derive gtkmm__Gxxx
+    types. The underlying C classes are final types since GLib
+    2.89.2.
+  + Documentation: Remove duplicate of Glib::MarkupError
+    documentation.
+  + Build: Require glib >= 2.89.0
+
+-------------------------------------------------------------------
+Sun Jul 19 08:54:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.88.1+7:
+  + Gio::DBus::ActionGroup: Improve the test whether
+    GDBusActionGroup is final
+  + Gio: Emblem and DBus::ActionGroup: Don't derive gtkmm__Gxxx
+    types
+  + Glib::Markup::ParseContext: Add get_attribute_position()
+  + Regenerate docs.xml and .defs files, using files from glib
+    2.89.1
+- Use source service to generate tarball.
+- Add mm-common, libxslt-tools and perl-XML-Parser BuildRequries:
+  Needed now that we are using a git checkout.
+- Pass build-documentation=false to meson setup, skip building
+  documentation.
+- Pass maintainer-mode=true to meson setup, needed since we are
+  using a git checkout.
+
+-------------------------------------------------------------------
 Sun Jun 28 13:59:40 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.88.1:
@@ -280,7 +339,7 @@ Wed Aug 24 11:37:28 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
     - Notification: Add set_category().
     - TlsCertificate: Add property/get_not_valid_before(),
       property/get_not_valid_after(), property/get_subject_name(),
-      property/get_issuer_name(). 
+      property/get_issuer_name().
     - TlsConnection: Add property/get_protocol_version(),
       property/get_ciphersuite_name().
   + Tests: Add test of Glib::Environ
@@ -692,7 +751,7 @@ Tue May 30 19:34:57 UTC 2017 - zaitor@opensuse.org
 - Update to version 2.53.2:
   + Glib: ConstructParams: Do not increment allocation size twice.
   + Gio:
-    - ActionMap: Really fix add_action_with_parameter() 
+    - ActionMap: Really fix add_action_with_parameter()
       (bgo#774444).
     - UnixSocketAddress::create(): Remove a default value to avoid
       ambiguity (bgo#782592).
@@ -1134,7 +1193,7 @@ Fri Sep 18 22:42:42 UTC 2015 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Fri Sep 11 07:34:15 UTC 2015 - dimstar@opensuse.org
 
-- Add patch tags. 
+- Add patch tags.
 
 -------------------------------------------------------------------
 Fri Sep  4 19:26:45 UTC 2015 - zaitor@opensuse.org
@@ -1234,7 +1293,7 @@ Fri Jul 31 15:32:03 UTC 2015 - zaitor@opensuse.org
 Fri Jul 31 15:31:03 UTC 2015 - novell@tower-net.de
 
 - Added fix-deprecated-extra_object_base_data_mutex-auto_ptr.patch
-  + fixes gcc5 warning: ‘template<class> class std::auto_ptr’ is 
+  + fixes gcc5 warning: ‘template<class> class std::auto_ptr’ is
     deprecated [-Wdeprecated-declarations]
 
 -------------------------------------------------------------------
@@ -1396,7 +1455,7 @@ Sat Jul 12 22:50:55 UTC 2014 - dimstar@opensuse.org
     - MemoryInputStream: Add add_data() taking a sigc::slot,
       with a test.
     - Add Notification.
-    - Settings: Add get_user_value() and get_default_value(). 
+    - Settings: Add get_user_value() and get_default_value().
     - Socket: Add get/set_option().
     - TlsInteraction: Add invoke_request_certificate(),
       request_certificate(), request_certificate_async() and
@@ -1798,7 +1857,7 @@ Mon Sep 10 21:26:12 UTC 2012 - dimstar@opensuse.org
 
 - Update to version 2.33.12:
   + Gio:
-    - Add Converter, ZlibCompressor, ZlibDecompressor and 
+    - Add Converter, ZlibCompressor, ZlibDecompressor and
       CharsetConverter classes.
     - AppInfo: Added  get_display_name(),
       set_as_last_used_for_type() and get_supported_types().
@@ -1815,7 +1874,7 @@ Mon Sep 10 21:26:12 UTC 2012 - dimstar@opensuse.org
     - MenuModel: Added is_mutable() and get_n_items().
     - Mount: Added get_symbolic_icon().
     - ProxyAddress: Added get_destination_protocol() and get_uri().
-    - Socket: Added get_available_bytes(), get_ttl(), set_ttl(), 
+    - Socket: Added get_available_bytes(), get_ttl(), set_ttl(),
       get_broadcast(), set_broadcast(), get_multicast_loopback(),
       set_multicast_loopback(), get_multicast_ttl(),
       set_multicast_ttl(), join_multicast_group(),
@@ -2056,8 +2115,8 @@ Fri Oct 28 08:11:29 UTC 2011 - dimstar@opensuse.org
   + Move IOCondition from main.h to iochannel.h.
   + Don't include <glibmm.h> via init.h or wrap_init.h.
   + gmmproc:
-    - Don't include C code examples found in the XML docs 
-    - Don't include <glibmm.h> by default in generated files. 
+    - Don't include C code examples found in the XML docs
+    - Don't include <glibmm.h> by default in generated files.
   + Bugs fixed: bgo#650544, bgo#662597
 - Changes from version 2.31.0:
   + Glib:
@@ -2867,12 +2926,12 @@ Sun Feb  1 19:40:31 EST 2009 - mboman@suse.de
 - Update to version 2.19.2:
   + File: Added make_directory_with_parents() method overload with no
     parameter. bgo#566003
-  + NoteTree: Do not use a non-ASCII dash character in a comment, to 
+  + NoteTree: Do not use a non-ASCII dash character in a comment, to
     avoid the MSVC++ warning C4819 with Visual Studio 2008.
-  + spawn_*() functions: Added alternative API for when 
+  + spawn_*() functions: Added alternative API for when
     GLIBMM_EXCEPTIONS_ENABLED is not enabled.
   + uri_*() functions: Fix memory leak.
-  + ustring: Add an overload which takes only a format string and no arguments 
+  + ustring: Add an overload which takes only a format string and no arguments
     to be substituted.
 
 -------------------------------------------------------------------
@@ -2936,7 +2995,7 @@ Fri Sep 12 07:36:38 CEST 2008 - maw@suse.de
     * Move TraverseFlags inside the NodeTree class
   + New API:
     * Added the drive_eject_button signal
-  * Bugs fixed: bgo#423990, bgo#529496,  bgo#523043, and 
+  * Bugs fixed: bgo#423990, bgo#529496,  bgo#523043, and
     bgo#506410.
 
 -------------------------------------------------------------------
@@ -2995,7 +3054,7 @@ Fri Mar 14 15:22:19 CET 2008 - maw@suse.de
 
 - Update to version 2.16.0:
   + File: load_contents(), load_contents_finish(),
-    load_partial_contents_finish(): 
+    load_partial_contents_finish():
         Use char*& instead of char** for contents
         Use std::string& instead of char**  for etag_out
         Added method overloads without cancellable.
@@ -3014,10 +3073,10 @@ Mon Mar  3 20:32:41 CET 2008 - maw@suse.de
         and set_desktop_env(); renamed new_from_file() to
         create_from_file()
   - File:
-    + equal(), get_relative_file(), contains_file(): Take const File 
+    + equal(), get_relative_file(), contains_file(): Take const File
       parameters
     + FileAttributeInfoList: Added dup()
-    + Added query_filesystem_info_async() and 
+    + Added query_filesystem_info_async() and
       query_filesystem_info_finish() because these were added to
       the C API
     + Renamed contains_file() to file_has_prefix() because this
@@ -3048,11 +3107,11 @@ Tue Jan 29 11:46:55 CST 2008 - maw@suse.de
 
 - Update to version 2.15.3:
   + FilterInputStream: Really wrap this
-  + VolumeMonitor: Workaround a crash in gio due to the 
-    eccentric use of the GType system to discover GVolumeMonitor 
+  + VolumeMonitor: Workaround a crash in gio due to the
+    eccentric use of the GType system to discover GVolumeMonitor
     implementations; see gio bug #511814
   + Added Gio::Error exception
-  + Added more method overloads without optional parameters, and 
+  + Added more method overloads without optional parameters, and
     reordered more parameters to allow default values
   + giomm.h: Added includes
 - Remove libtool archives
@@ -3062,9 +3121,9 @@ Tue Jan 29 11:46:55 CST 2008 - maw@suse.de
 Thu Jan 24 10:38:06 CST 2008 - maw@suse.de
 
 - Update to version 2.15.2:
-  + New giomm library (check for giomm-2.4 with pkg-config) 
+  + New giomm library (check for giomm-2.4 with pkg-config)
     in the glibmm tarball. This wraps the new gio API in glib
-    2.15/16; this API could change considerably before the stable 
+    2.15/16; this API could change considerably before the stable
     glibmm 2.16 is released
   + Fixes for compilation with gcc 4.3
   + Many other changes.
@@ -3098,7 +3157,7 @@ Mon Sep 17 17:07:48 CEST 2007 - maw@suse.de
 Mon Jul 30 22:21:04 CEST 2007 - maw@suse.de
 
 - Update to version 2.13.9:
-* KeyFile: Added Added get_double(), set_double(), get_double_list() 
+* KeyFile: Added Added get_double(), set_double(), get_double_list()
   and set_double_list().
   (Murray Cumming)
 
@@ -3114,7 +3173,7 @@ Wed Jul 11 18:19:49 CEST 2007 - mauro@suse.de
 Tue Apr 10 12:39:21 CDT 2007 - maw@suse.de
 
 - Update to version 2.12.7
-- Bug fixes, including bugzilla.gnome.org #386990 and #397167. 
+- Bug fixes, including bugzilla.gnome.org #386990 and #397167.
 
 -------------------------------------------------------------------
 Fri Jan 12 15:10:02 CET 2007 - sbrabec@suse.cz
@@ -3135,7 +3194,7 @@ Tue Oct 17 22:18:52 CEST 2006 - jhargadon@suse.de
 - Support optional ifdef parameters in the .hg macros,
   to allow, for instance the --enable-atk=no option,
   to disable the build and use of the atkmm API,
-  for use in embedded environments. 
+  for use in embedded environments.
 
 -------------------------------------------------------------------
 Tue Oct 10 15:01:15 CEST 2006 - sbrabec@suse.cz
@@ -3165,7 +3224,7 @@ Sat Sep 16 00:10:17 CEST 2006 - jhargadon@suse.de
   of any type at runtime. Needed by the new branch of libgdamm
 - Added a #warning to warn about including X11/Xlib.h before a glibmm header,
   which would break things. Bug #316726 from Mert Tugcu and Javeed Shaikh
-- Quote some m4 macros to avoid warnings 
+- Quote some m4 macros to avoid warnings
 
 -------------------------------------------------------------------
 Wed Jan 25 21:31:39 CET 2006 - mls@suse.de

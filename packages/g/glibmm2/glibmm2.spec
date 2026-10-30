@@ -23,24 +23,27 @@
 %define _name glibmm
 
 Name:           glibmm2
-Version:        2.88.1
+Version:        2.90.0
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/glibmm/2.88/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
+BuildRequires:  libxslt-tools
 BuildRequires:  m4
 BuildRequires:  meson >= 0.62
+BuildRequires:  mm-common
+BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.85.2
-BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(sigc++-3.0) >= 2.99.5
+BuildRequires:  pkgconfig(gio-2.0) >= 2.89.4
+BuildRequires:  pkgconfig(glib-2.0) >= 2.89.4
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.89.4
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.89.4
+BuildRequires:  pkgconfig(sigc++-3.0) >= 3.0.0
 
 # Do not export private Perl modules
 %global __provides_exclude %{?__provides_exclude:%{__provides_exclude}|}^perl\\(
@@ -89,6 +92,8 @@ chmod -x glib/glibmm/environ.h
 
 %build
 %meson \
+	-D maintainer-mode=true \
+	-D build-documentation=false \
 	%{nil}
 %meson_build
 
