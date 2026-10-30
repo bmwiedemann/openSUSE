@@ -1,4 +1,163 @@
 -------------------------------------------------------------------
+Fri Oct  9 08:50:07 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.90.1:
+  * Bugs fixed:
+    + Add address and thread sanitizer scheduled CI job
+    + inotify: cancelling monitor through symlink alias removes watch
+      used by still-active monitors
+    + g_file_trash() returns FALSE without setting the GError when trashing a
+      non-empty directory for `DT_UNKNOWN` nodes
+    + tools: Add another variant of an existing suppression to glib.supp
+    + giochannel: Fix strncmp() off the end of the buffer
+    + gvariant: Handle get_data_as_bytes() for corrupted variants
+    + utils: Add missing ENUMERATOR_AVAILABLE_IN
+    + rcbox: Turn assertion into error
+    + gdbusauthmechanismsha1: Don't split into too many tokens
+    + logging: Don't stack overflow with too many fields
+    + regex: Handle empty matches at end
+    + unicode:
+      - Fix error handling in normalization
+      - Don't read past limits
+      - Prevent overflow in normalization
+    + gmarkup: Be careful in error paths
+    + gresource: Avoid underflow
+    + gcharsetconverter: Avoid closing invalid iconv descriptors
+    + gregex: Fix some trivial typos in the docs
+    + gfileenumerator: Reformat docs to fully use gi-docgen and match
+      style guide
+    + fileutils: Check the mode before creating the file
+    + Clarify various inconsistencies with g_socket_address_new_from_native()
+    + tests: Avoid a ubsan warning about passing NULL to strncmp()
+    + glib.supp: Mark a TLS variable as not really a leak
+  * Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:50:06 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gsettings.zsh (_gsettings completion) as source, no longer
+  needed as zsh ships its own gsettings completions (boo#1284142).
+
+-------------------------------------------------------------------
+Fri Oct  9 08:50:05 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.90.0:
+  + Bugs fixed:
+    - G_DEFINE_TYPE parent_class variable trips clang 23's
+      `-Wunused-but-set-global`
+    - `-Wtypedef-redefinition` warnings from `GDBusActionGroup`
+      when building 2.89.4 with clang
+    - fix: handle long filenames in trash by truncating from front
+    - tests: allocate an adequate alternate signal stack
+    - gtestutils: Mark a TLS variable as not really a leak
+    - goutputstream: Fix an unused-variable warning with
+      G_DISABLE_ASSERT
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:50:04 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.89.4 (Unstable):
+  + Improve support for nanosecond source timeouts
+  + Fix installed service file containing build path
+  + Support clicking notification icons on Windows
+  + Improve stream splice performance by increasing buffer size
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:50:03 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.89.3 (Unstable):
+  + Support systemd-style UAPI file masking and drop-ins for
+    `GKeyFile`
+  + Add some string and date convenience API,
+    `g_string_free_deep()` and `g_set_date_time()`
+  + Add some convenience API to `GUnixFDList`
+  + Bugs fixed:
+    - Support UAPI file masking and drop-ins in GKeyFile
+    - gio/tests: iptosmessage does not compile on Solaris
+    - fd leak in `g_file_set_contents_full()` on error?
+    - gio-tool: crash (assertion failed) when running 'gio help
+      help'
+    - Add g_string_free_deep
+    - datetime: Add g_set_date_time
+    - giostream: Clarify is_closed() method docs for streams
+    - gunixfdlist: Add g_unix_fd_list_append_take,
+      g_unix_fd_list_peek, g_unix_fd_list_lookup,
+      g_unix_fd_list_lookup_peek
+    - gtestutils: Fix a minor typo in a documentation comment
+    - tests: Minor compiler warning fixes for GCC16
+    - build: Fix a deprecation warning from Meson 1.12
+    - docs: Use dedicated docblocks for new enum members
+    - docs: Annotate callbacks rather than user_data
+    - Add finer accuracy g_timeout APIs
+    - gdbusnameowning: Don't print any logs when connection is
+      closed
+    - Avoid reserved identifiers in public macros
+
+-------------------------------------------------------------------
+Fri Oct  9 08:50:02 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.89.2 (Unstable):
+  + Fix potential miscompilation with GCC 17 with `G_GNUC_CONST` on
+    `get_type()` functions
+  + Update toolchain requirement to C11; previously this was just
+    strongly recommended
+  + Various bugs fixed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:50:01 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.89.1 (Unstable):
+  + g_thread_yield() may not yield control to another thread as
+    expected on Linux.
+  + gio: gmemorymonitordbus: Fix fallback backends can't be
+    properly loaded
+  + gregex: Remove "array length" annotations
+  + win32-build.md: Update Visual Studio build info
+  + Don't use slow content type for icons when only fast content is
+    queried
+  + Performance improvements to GVariant/GDBusMessage
+  + docs: fix wrong reference to gint16 for gint32 types in
+    glib/types.md
+  + Add missing finish-func annotations
+  + gregex: g_match_info_fetch_pos() and g_match_info_fetch_all()
+    will now work after partial matches as well
+  + gdatetime: Clarify docs around comparisons across time zones
+  + docs: GI annotation fixes for GCancellable
+  + tests: Fix various leaks spotted by ASAN
+  + docs + tests: fix docs and add unit test about g_try_new with
+    zero n_structs
+  + CI: Set msys2-clang64 as default job for merges
+  + docs: add missing reference to g_rc_box_new0 and
+    g_atomic_rc_box_new0 and others in Reference Counting page
+  + gutf8: Eliminate redundant double-traversal in g_utf8_substring
+  + gsocket: Improve docs for g_socket_get_fd()
+  + gerror: Add missing introspection annotations
+  + Use dlopen to access environ on FreeBSD
+  + gvariant: Check for overflow in g_variant_new_fixed_array()
+  + meson: Override girepository-2.0 when glib is used as
+    subproject
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:50:00 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.89.0 (Unstable):
+  + Integrate better with the System Trash on macOS
+  + Add `g_set_strv()`, `g_set_strv_take()` and `g_set_str_take()`
+    convenience functions
+  + Add support for `GTypeInstance`-derived types in generic
+    marshaller
+  + Change `g_get_num_processors()` to report number of performance
+    cores, rather than number of performance+low-power cores on
+    macOS
+  + Add support for `XDG_PROJECTS_DIR` special directory
+  + Lots of bugs fixed, please see upstream git for full changelog:
+    https://gitlab.gnome.org/GNOME/glib
+
+-------------------------------------------------------------------
 Thu Oct  8 18:43:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.88.4:
@@ -2664,6 +2823,7 @@ Thu Sep  5 20:24:54 NZST 2019 - luke@ljones.dev
     glgo#GNOME/GLib!1066, glgo#GNOME/GLib!1068,
     glgo#GNOME/GLib!1071, glgo#GNOME/GLib!1074,
     glgo#GNOME/GLib!1075.
+
 -------------------------------------------------------------------
 Mon Sep  2 18:04:38 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
@@ -8540,7 +8700,6 @@ Mon Jul 31 23:57:49 CEST 2006 - gekker@suse.de
 * New and updated translations (bg,bn_IN,ca,dz,eu,fi,
   fr,he,it,ja,mk,or,pt)
 
-
 -------------------------------------------------------------------
 Tue Jul 18 23:39:54 CEST 2006 - rml@suse.de
 
@@ -8931,7 +9090,6 @@ Mon Jun 17 18:32:00 CEST 2002 - jordi@suse.de
 	* Add note about Tru64 iconv to INSTALL
 	* Fix problem with timouts > MAXINT
 	* Updated translations
-
 
 -------------------------------------------------------------------
 Fri Jun 14 12:23:44 CEST 2002 - ro@suse.de

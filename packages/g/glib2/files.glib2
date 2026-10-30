@@ -16,9 +16,6 @@
 %{_datadir}/bash-completion/completions/gio
 %{_datadir}/bash-completion/completions/gresource
 %{_datadir}/bash-completion/completions/gsettings
-%dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_gsettings
 %{_mandir}/man1/gapplication.1%{?ext_man}
 %{_mandir}/man1/gdbus.1%{?ext_man}
 %{_mandir}/man1/gio.1%{?ext_man}

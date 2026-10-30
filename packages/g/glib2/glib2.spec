@@ -37,7 +37,7 @@
 %define libgthread libgthread-%{libver}
 %define libgirepository libgirepository-%{libver}
 Name:           glib2%{psuffix}
-Version:        2.88.4
+Version:        2.90.1
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
@@ -51,8 +51,6 @@ Source4:        glib2-upstream-gnome_defaults.conf
 # Some documentation for people writing branding packages, shipped in the branding-upstream package
 Source5:        README.Gsettings-overrides
 Source6:        macros.glib2
-# zsh completion from https://github.com/jmatsuzawa/zsh-comp-gsettings
-Source8:        gsettings.zsh
 # Use tmpfiles to create mimeapps.list files under /var to support transactional updates
 Source9:        glib2.tmpfiles
 Source10:       template-mimeapps.list
@@ -441,9 +439,6 @@ sed -i "s/1.32.1/1.32/" docs/reference/meson.build
   # Install rpm macros
   mkdir -p %{buildroot}%{_rpmmacrodir}
   cp -t%{buildroot}%{_rpmmacrodir} %{SOURCE6}
-  # Install zsh completion for gsettings
-  mkdir -p  %{buildroot}%{_datadir}/zsh/site-functions/
-  cp -T %{SOURCE8} %{buildroot}%{_datadir}/zsh/site-functions/_gsettings
 
   mkdir -p %{buildroot}%{_tmpfilesdir}
   install -m 644 %{SOURCE9} %{buildroot}%{_tmpfilesdir}/glib-2.0.conf
