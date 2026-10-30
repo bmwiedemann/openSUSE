@@ -34,13 +34,14 @@
 
 %define _name   ibus
 Name:           %{_name}%{?nsuffix}
-Version:        1.5.34
+Version:        1.5.35~rc1
+%global _version 1.5.35-rc1
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/ibus/
-Source:         https://github.com/ibus/ibus/releases/download/%{version}/%{_name}-%{version}.tar.gz
+Source:         https://github.com/ibus/ibus/releases/download/%{_version}/%{_name}-%{_version}.tar.gz
 Source2:        README.SUSE
 Source3:        xim.ibus.suse.template
 Source4:        xim.d-ibus-121
@@ -65,15 +66,14 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
-Patch13:        https://github.com/ibus/ibus/commit/5bbe88a1936246185a65f76e58cc85871401e59a.patch
-Patch14:        https://github.com/ibus/ibus/commit/1a331e695d84fc6bae8f2d11c52d4776df49647b.patch
+BuildRequires:  vala >= 0.31.1
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(systemd) >= 0.7.5
 BuildRequires:  pkgconfig(wayland-client) >= 1.2.0
 BuildRequires:  pkgconfig(wayland-protocols)
 %if ! 0%{?with_gtk4}
@@ -92,7 +92,6 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(python3)
 # copy_deep method is supported since 0.31.1
-BuildRequires:  vala >= 0.31.1
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  x11-tools
 BuildRequires:  pkgconfig(json-glib-1.0)
@@ -164,7 +163,6 @@ This package contains ibus im module for use by gtk2.
 %package gtk3
 Summary:        IBus input method support for gtk3 applications
 Group:          System/I18n/Chinese
-BuildRequires:  pkgconfig(gtk+-3.0)
 Requires:       %{_name} = %{version}
 Supplements:    (ibus and gtk3)
 %{gtk3_immodule_requires}
@@ -205,7 +203,9 @@ This package contains ibus im module for use by gtk4.
 %endif
 
 %prep
-%setup -q -n %{_name}-%{version}
+%setup -q -n %{_name}-%{_version}
+# drop the main.c file - ensure it's regenerated from vala
+rm -f tools/ibus_vala.stamp
 %patch -P 4 -p1
 %patch -P 8 -p1
 
@@ -219,8 +219,6 @@ cp -r %{SOURCE11} .
 %patch -P 10 -p1
 %patch -P 11 -p1
 %patch -P 12 -p1
-%patch -P 13 -p1
-%patch -P 14 -p1
 
 %build
 %configure --disable-static \

@@ -1245,4 +1245,12 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     <comment>1</comment>
     <requestid>1376193</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>2da1fb4b705e172d0a311fdbfac4e0cb</srcmd5>
+    <version>1.5.35~rc1</version>
+    <time>1793380162</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1393497</requestid>
+  </revision>
 </revisionlist>

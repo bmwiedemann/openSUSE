@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 26 16:36:40 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.5.35~rc1:
+  + Build with Meson 1.5 or later
+  + Support XKB latch keys in Wayland input-method
+  + Support use-system-keymap setting in Wayland input-method
+  + Support forwarding key events in Wayland input-method V2
+- Drop upstream merged patches:
+  + 1a331e695d84fc6bae8f2d11c52d4776df49647b.patch
+  + 5bbe88a1936246185a65f76e58cc85871401e59a.patch
+  + c534999a9dbea2666864250d74e058ecfb46e76f.patch
+
+-------------------------------------------------------------------
+Mon Oct 26 13:10:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Backport one more patch to fix another GNOME 51 / GTK4 crash:
+  + c534999a9dbea2666864250d74e058ecfb46e76f.patch (glgo#GNOME/gtk#8503)
+
+-------------------------------------------------------------------
 Mon Sep  7 14:40:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Backport patches to fix crashes with GNOME 51 (boo#1279542):
