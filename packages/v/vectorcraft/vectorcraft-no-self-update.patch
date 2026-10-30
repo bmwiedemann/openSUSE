@@ -1,0 +1,57 @@
+From: openSUSE Publishing <publishing@opensuse.org>
+Subject: [PATCH] No self-update in distro builds: no startup check, no install prompt
+Bug: none (downstream distribution policy, not upstreamable)
+
+The package manager owns updates on a distro install: do not phone
+home to the releases page on every GUI launch, and never offer to
+install an upstream release (UPDATE-AND-RESTART) over RPM-owned
+files. Upstream ships this machinery intentionally for its own
+builds. Help ▸ Check for Updates stays as an explicit manual action
+reporting through its outcome window; only the automatic startup
+check and the self-update install prompt are turned off.
+
+diff -Naur orig/apps/vectorcraft/src/main.rs mod/apps/vectorcraft/src/main.rs
+--- a/apps/vectorcraft/src/main.rs	2026-10-29 19:34:10.596959043 +0100
++++ b/apps/vectorcraft/src/main.rs	2026-10-29 19:34:13.521287345 +0100
+@@ -368,7 +368,10 @@
+                 prefs_dir::attach_profile_store(&mut session);
+                 prefs_dir::attach_plugin_store(&mut session);
+                 let mut app = VectorcraftApp::new(session, services(cc.winit_window().cloned(), cc.egui_ctx.clone()));
+-                app.set_startup_update_check(true);
++                // Downstream (openSUSE): the package manager owns updates, so the
++                // desktop app must not check for (and offer to install) upstream
++                // releases on its own at startup. Manual Help ▸ Check stays.
++                app.set_startup_update_check(false);
+                 load_prefs(&mut app, saved);
+                 // The saved PDF presets live in their own folder (also read by vectorcraft-cli),
+                 // which takes over from the copy the preferences file used to hold.
+diff -Naur orig/crates/ui-egui/src/updates_ui.rs mod/crates/ui-egui/src/updates_ui.rs
+--- a/crates/ui-egui/src/updates_ui.rs	2026-10-29 19:34:12.929220876 +0100
++++ b/crates/ui-egui/src/updates_ui.rs	2026-10-29 19:34:13.521287345 +0100
+@@ -5,7 +5,7 @@
+ use crate::VectorcraftApp;
+ 
+ #[cfg(not(target_arch = "wasm32"))]
+-use craft_update::updater::{Action, Status, Updater};
++use craft_update::updater::{Status, Updater};
+ 
+ pub(crate) struct Runtime {
+     #[cfg(not(target_arch = "wasm32"))]
+@@ -83,13 +83,10 @@
+ pub(crate) fn show(app: &mut VectorcraftApp, ctx: &egui::Context) {
+     #[cfg(not(target_arch = "wasm32"))]
+     {
+-        // The restart helper is scheduled before the app closes, so no update starts over unsaved work.
+-        let clean = !crate::unsaved::any_dirty(app);
+-        match app.updates_rt.updater.show_if(ctx, clean) {
+-            Action::OpenUrl(url) => app.open_url(&url),
+-            Action::Close => ctx.send_viewport_cmd(egui::ViewportCommand::Close),
+-            Action::None => {}
+-        }
++        // Downstream (openSUSE): never draw the self-update prompt, so no
++        // upstream release is ever installed over RPM-owned files (neither
++        // at startup nor after a manual check). The manual Check for Updates
++        // outcome window below stays.
+         // The window answers Help ▸ Check for Updates, so it follows the updater's status.
+         let rt = &mut app.updates_rt;
+         (rt.manual_window_open, rt.status_message) = match rt.updater.status() {

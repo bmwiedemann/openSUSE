@@ -1,0 +1,34 @@
+diff -Naur a/Cargo.lock b/Cargo.lock
+--- a/Cargo.lock	2026-10-29 17:58:48.486354938 +0100
++++ b/Cargo.lock	2026-10-29 17:58:48.558363027 +0100
+@@ -7998,18 +7998,3 @@
+  "syn 3.0.9",
+  "winnow",
+ ]
+-
+-[[patch.unused]]
+-name = "egui_demo_lib"
+-version = "0.37.0"
+-source = "git+https://github.com/storytold/egui.git?rev=6d518fc799681571963842f95b55a6b68431b15a#6d518fc799681571963842f95b55a6b68431b15a"
+-
+-[[patch.unused]]
+-name = "egui_inspection"
+-version = "0.37.0"
+-source = "git+https://github.com/storytold/egui.git?rev=6d518fc799681571963842f95b55a6b68431b15a#6d518fc799681571963842f95b55a6b68431b15a"
+-
+-[[patch.unused]]
+-name = "egui_system_font_provider"
+-version = "0.37.0"
+-source = "git+https://github.com/storytold/egui.git?rev=6d518fc799681571963842f95b55a6b68431b15a#6d518fc799681571963842f95b55a6b68431b15a"
+diff -Naur a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	2026-10-29 17:58:48.478354039 +0100
++++ b/Cargo.toml	2026-10-29 17:58:48.546361678 +0100
+@@ -157,8 +157,5 @@
+ egui_glow = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ egui_extras = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ egui_kittest = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+-egui_system_font_provider = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ eframe = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+-egui_demo_lib = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+-egui_inspection = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ winit = { git = "https://github.com/storytold/winit.git", rev = "a517b3846ee8457d84ee4975110bfda6797c44dc" }

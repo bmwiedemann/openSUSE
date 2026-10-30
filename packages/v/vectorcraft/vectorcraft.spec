@@ -17,22 +17,24 @@
 
 
 Name:           vectorcraft
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Open-source vector illustration app
-# Legal-Review-Notice: license audit 0.17.0, vendor-cratesio tag with locked
+# Legal-Review-Notice: license audit 0.18.0, vendor-cratesio tag with locked
 # offline build of vectorcraft plus vectorcraft-cli only. Upstream is MIT OR
 # Apache-2.0. Linked third-party code adds BSD-2-Clause (arrayref),
-# BSD-3-Clause (alloc-no-stdlib, brotli, tiny-skia and others), ISC
-# (libloading), OFL-1.1 plus Ubuntu-font-1.0 (epaint default fonts, also
+# BSD-3-Clause (alloc-no-stdlib, brotli, subtle, tiny-skia and others), ISC
+# (libloading, untrusted, ring and rustls-webpki under Apache-2.0 AND/OR
+# ISC), OFL-1.1 plus Ubuntu-font-1.0 (epaint default fonts, also
 # shipped under assets/fonts), IJG (jpeg-encoder), Unicode-3.0 (icu and
 # unicode-ident), Zlib (foldhash, zlib-rs). sctk-adwaita (MIT, Wayland
 # window controls) is built without its title-font features, so its
 # Cantarell font is not linked. Linked code has no MPL, LGPL, GPL, EPL,
 # CDDL or CC-BY-SA; the vendor set carries colored (MPL-2.0) only as a
 # dev-dependency of egui_kittest, never built. self_cell offers Apache-2.0
-# OR GPL-2.0-only and is used under the Apache-2.0 option. r-efi offers
-# MIT OR Apache-2.0 OR LGPL-2.1-or-later (MIT chosen). BSL-1.0, Unlicense,
+# OR GPL-2.0-only and is used under the Apache-2.0 option. r-efi (MIT OR
+# Apache-2.0 OR LGPL-2.1-or-later) is a UEFI-only optional dep of getrandom,
+# never compiled on Linux. BSL-1.0, Unlicense,
 # 0BSD and LLVM-exception appear only as OR alternatives alongside Apache
 # or MIT and are not the chosen option. Trademarked ArtCraft marks under
 # docs/brand are excluded from the tarball and never installed.
@@ -40,6 +42,16 @@ License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Clause AND IJG AN
 URL:            https://github.com/storytold/vectorcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor-cratesio.tar.zst
+# PATCH-FIX-OPENSUSE drop-unused-egui-patches.patch: drop three unused
+# [patch.crates-io] entries (egui_demo_lib, egui_inspection,
+# egui_system_font_provider): nothing references them, cargo itself marks
+# them [[patch.unused]], and the vendor tree — which rightly lacks them —
+# then fails offline resolution under --locked.
+Patch0:         drop-unused-egui-patches.patch
+# PATCH-FIX-OPENSUSE vectorcraft-no-self-update.patch: the package manager
+# owns updates on a distro install, so no startup phone-home check and no
+# self-update install prompt over RPM-owned files; manual Help check stays.
+Patch1:         vectorcraft-no-self-update.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
@@ -53,14 +65,14 @@ BuildRequires:  rust >= 1.95
 Requires:       (libvulkan.so.1()(64bit) or libEGL.so.1()(64bit))
 # winit keyboard handling.
 Requires:       libxkbcommon.so.0()(64bit)
-Recommends:     mesa-vulkan-drivers
-Recommends:     vectorcraft-cli
-Recommends:     xdg-desktop-portal
 Recommends:     libX11.so.6()(64bit)
 Recommends:     libXcursor.so.1()(64bit)
 Recommends:     libXi.so.6()(64bit)
 Recommends:     libXrandr.so.2()(64bit)
 Recommends:     libwayland-client.so.0()(64bit)
+Recommends:     mesa-vulkan-drivers
+Recommends:     vectorcraft-cli
+Recommends:     xdg-desktop-portal
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -96,6 +108,10 @@ sed -i 's|<icon type="stock">ai.storyteller.vectorcraft</icon>|<icon type="cache
 # fallback instead of embedding the craft-fonts checkout. Cargo.lock is
 # committed upstream. The cargo build macro already passes offline mode;
 # only add the locked flag.
+# NOTE: keep the cargo macros in this spec in braced form. The bare form
+# misparses the trailing build arguments (adi:5: Unknown option - in
+# cargo_build()); spec-cleaner 1.3.1 wants them unbraced, hence the
+# --cleaner-deviation on the gate call.
 %{cargo_build} --locked -p vectorcraft -p vectorcraft-cli
 
 %install
