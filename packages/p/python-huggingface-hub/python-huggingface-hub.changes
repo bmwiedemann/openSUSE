@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 30 07:59:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.4.0:
+  * HfFileSystem can copy files into Buckets (same or
+    another Bucket, or from model/dataset/Space repos);
+    mv and rename inside Buckets now work too
+  * hf extensions list gains VERSION and LATEST columns
+    with outdated hints; update repairs extensions whose
+    Python no longer starts
+  * Webhooks watch every domain by default and use the
+    discussion domain; cache loader rejects path-traversal
+    filenames; cache verify fixes
+
+-------------------------------------------------------------------
 Sun Oct 25 20:31:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.3.0:

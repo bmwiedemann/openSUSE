@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-huggingface-hub
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Client library for interaction with the huggingface hub
 License:        Apache-2.0
@@ -101,7 +101,7 @@ sed -i 's/click>=8.4.2,<9.0.0/click>=8.1.7,<9.0.0/' setup.py
 %python_uninstall_alternative hf
 %python_uninstall_alternative tiny-agents
 
-%files %{python_files}
+%files %python_files
 %python_alternative %{_bindir}/hf
 %python_alternative %{_bindir}/tiny-agents
 %{python_sitelib}/huggingface_hub
