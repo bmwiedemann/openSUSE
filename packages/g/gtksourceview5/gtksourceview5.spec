@@ -18,7 +18,7 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview5
-Version:        5.20.0
+Version:        5.22.0
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(fribidi) >= 0.19.7
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.76
 BuildRequires:  pkgconfig(glib-2.0) >= 2.76
-BuildRequires:  pkgconfig(gtk4) >= 4.6
+BuildRequires:  pkgconfig(gtk4) >= 4.17
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.21
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(pangoft2)

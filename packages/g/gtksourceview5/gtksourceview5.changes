@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:33:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Fri Sep 18 14:04:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.22.0:
+  + Reject non-regular files before opening them in
+    GtkSourceFileLoader
+  + Add a configurable GtkSourceFileLoader max-size limit,
+    defaulting to 1 GiB, for file, stream, and decompressed input
+  + Report oversized loads with
+    GTK_SOURCE_FILE_LOADER_ERROR_TOO_BIG
+  + Centralize checked arithmetic for input sizes and buffer growth
+  + Unwind buffer output streams when file loading fails
+  + Handle stream-based loads without a file location in profiler
+    marks
+  + Expand file loader tests for size limits, compressed input,
+    load failures, and arithmetic boundaries
+  + Fix gutter renderer list and gutter lines leaks
+  + Break a circular reference when line numbers are enabled
+  + Avoid temporary region and text mark allocations in search
+    context intersection checks
+  + Avoid per-line timer allocations in the syntax highlighting
+    engine
+  + Avoid rescanning UTF-8 text to determine line character counts
+  + Reduce scrolling overhead in GtkSourceMap
+  + Fix GtkSourceMap slider sizing and positioning when the map is
+    taller than its contents
+  + Reduce allocations and per-line work when drawing source mark
+    backgrounds
+  + Reduce array access overhead in gutter lines
+  + Fix vertical alignment when jumping to text positions
+  + Improve Vim emulation for command repetition, r, and cw/cW
+  + Add Vim support for +, X, gu, gU, g~, and visual-mode ~
+  + Add Vim Ctrl-A and Ctrl-X support for signed decimal numbers
+  + Add Vim :set aliases and :noh/:nohlsearch commands
+  + Expand Vim input tests for commands, motions, and repetition
+  + Use canonical property names and static strings for properties
+  + Add missing API version annotations and correct function
+    attributes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 20 08:17:17 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.21.0:
+  + This is an unstable release for GNOME 51.alpha
+  + GtkSourceFileLoader now rejects non-regular files before
+    opening
+  + GtkSourceFileLoader now bounds expanded input size, including
+    decompressed input, and reports oversized loads cleanly
+  + GtkSourceFileLoader now unwinds buffer output streams on load
+    failure
+  + Fix gutter and gutter lines leaks
+  + Break a circular reference when line numbers are enabled
+  + Improve Vim emulation for repeated commands, r, cw/cW, +, X,
+    gu, gU, g~, Ctrl-A, Ctrl-X, and :set aliases
+  + Fix vertical alignment when jumping to iters
+  + Improve context engine and search context performance
+  + Use canonical property names and static strings for properties
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug 17 10:11:41 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
 
 - Add gtksourceview5-tests subpackage with installed
@@ -138,7 +203,7 @@ Sun Sep 15 14:10:39 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 - Changes from version 5.13.0:
   + Ensure gutter renderers are released during dispose
   + Make default auto-indenter keep indentation when cursor is at
-    line start 
+    line start
   + python3.lang: Fix f-string in curly braces to have
     no-spellcheck applied
   + Updated translations.
@@ -461,7 +526,7 @@ Mon Jun 13 11:26:32 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 Fri Apr 22 10:06:46 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 5.4.1:
-  + Improved styling for style scheme preview widgets. 
+  + Improved styling for style scheme preview widgets.
   + Improved styling and positioning of completion windows.
   + Improved styling for various style schemes.
   + Unit test fixes.
@@ -598,3 +663,4 @@ Fri Sep  3 19:38:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 Wed Sep  1 16:53:10 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Initial package for openSUSE, version 5.1.0.
+
