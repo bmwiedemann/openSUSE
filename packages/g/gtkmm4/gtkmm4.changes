@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Wed Sep 30 16:33:42 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Mon Sep 14 13:47:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.24.0:
+  + Gdk:
+    - KeymapKey: New class.
+    - Add Display::map_keyval()
+  + Gtk: Add Settings::property_gtk_accent_color().
+  + Build:
+    - Require glibmm >= 2.89.0
+    - Require gtk >= 4.23.4
+    - Meson build: Fix missing dependencies, making it possible to
+      build with https://github.com/michaelforney/samurai instead
+      of ninja.
+
+-------------------------------------------------------------------
+Mon Aug 10 07:55:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.23.2:
+  + Some unstable API has been removed.
+  + The corresponding API was removed in gtk 4.23.3.
+  + Drop G_GNUC_CONST as in glib
+  + Gdk:
+    - Graphene::Point: Add Point(cobst Vec2& src), distance(),
+      interpolate().
+    - Graphene::Size: Add scale(), interpolate().
+    - Add Graphene::Vec2.
+    - Graphene::Rect: Add get_vertices(), join(), intersection(),
+      offset(), inset(), round_extents(), interpolate(), expand(),
+      scale().
+    - Don't derive gtkmm__GdkXxx GTypes from final types and
+      internal types.
+    - Such declarations have been added to many GdkXxx classes.
+    - Add enum FrameResult.
+    - FrameTimings: Add get_result().
+  + Gsk:
+    - tools/m4/enum.m4: Flags operators are constexpr also in
+      namespace Gsk.
+    - Add classes Path, PathBuilder, PathMeasure, PathPoint,
+      Stroke.
+    - Add enums LineCap, LineJoin, PathDirection.
+  + Gtk:
+    - Rename EnumList to EnumListBase, add template EnumList.
+    - Snapshot: Add push_fill(), push_stroke(), append_fill(),
+      append_stroke().
+    - Deprecate EventControllerKey::forward().
+    - Application: Remove save(), forget(),
+      property_support_save(), property_autosave_interval(),
+      signal_restore_window(), signal_save_state(),
+      signal_restore_state().
+    - ApplicationWindow: Remove signal_save_state().
+    - Remove enum RestoreReason.
+    - ATContext: Add property_realized().
+    - Editable: Add set/unset/get/property_input_interceptor(),
+      signal_input_intercepted().
+    - Settings: Add property_gtk_keyboard_focus_visible_timeout().
+    - ShortcutTrigger: Add ShortcutTrigger::create_with_aliases(),
+      create_for_menu().
+    - SvgWidget: Add property_svg().
+  + Documentation: Gtk::AlternativeTrigger: Update class
+    description.
+  + Demos: DropDown demo: Add a DropDown using EnumList.
+  + Build:
+    - Meson: Don't export Vulkan as an installed dependency.
+    - Require gtk4 >= 4.23.3
+
+-------------------------------------------------------------------
+Tue Aug 04 15:42:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.23.0+17:
+  + Gtk: Remove API as in gtk 4.23.3
+
+-------------------------------------------------------------------
+Mon Aug 03 16:12:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.23.0+16:
+  + meson: Don't export Vulkan as an installed dependency
+  + Drop G_GNUC_CONST as in glib
+  + Gdk: Don't derive gtkmm__GdkXxx GTypes from internal types
+  + Deprecate Gtk::EventControllerKey::forward()
+  + Gdk::Graphene::Rect: Add get_vertices(), etc.
+  + Update gtk_docs_override.xml
+  + Gdk::Graphene::Point: Remove distance_squared()
+  + Gtk::Snapshot: Add push_fill(), etc.
+  + Gsk: Add classes Path, PathBuilder, PathMeasure, PathPoint,
+    Stroke
+- Switch to source service for tarball:
+  + Pass -Dmaintainer-mode=true to meson: the generated C sources
+    are not in git and need thus be generated.
+  + Add mm-common, m4, and perl-XML-Parser BuildRequires: needed
+    for C source generation.
+
+-------------------------------------------------------------------
+Fri Jun 12 07:13:32 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.23.0:
+  + Gdk: contentformats.[ccg|hg]: Add Glib::Value wrapper for
+    GdkFileList. Add Value<std::vector<Glib::RefPtr<Gio::File>>>
+    specialization.
+  + Gtk:
+    - Gtk::AccelKey: include <gdk/gdk.h>. Since gtk 4.23.0 it's not
+      possible to include only gdk/gdkkeysyms.h.
+    - Application: Add save(), forget(), property_support_save(),
+      property_autosave_interval(), signal_restore_winodw(),
+      signal_save_state(), signal_restore_state().
+    - Editable: Add get/property_complete_text().
+    - Add enum RestoreReason
+    - Settings: Deprecate
+      property_gtk_application_prefer_dark_theme(),
+      property_gtk_shell_shows_app_menu(),
+      property_gtk_shell_shows_menubar(),
+      property_gtk_shell_shows_desktop().
+    - Svg: Add set/get/property_overflow(),
+      set/get/property_stylesheet(), set_settings().
+    - SvgErrorExtra: Add get_input().
+    - Window: Add signal_force_close().
+    - New classes: EnumList, EnumListItem, SvgWidget.
+  + Documentation: Gtk::Application: Update the class description.
+  + gmmproc:
+    - Add scripts that generate defs files with mmgir.
+    - Small fixes here and there to adapt to defs files generated
+      by mmgir.
+    - The .defs files have been generated with glibmm/tools/mmgir.
+  + Build: Require gtk4 >= 4.23.1
+  + Fix build with build-deprecated-api=false.
+
+-------------------------------------------------------------------
 Thu Mar 12 15:50:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.22.0:

@@ -20,27 +20,30 @@
 %define _name gtkmm
 
 Name:           gtkmm4
-Version:        4.22.0
+Version:        4.24.0
 Release:        0
 Summary:        C++ Interface for GTK4 (a GUI Library for X)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/gtkmm/4.22/%{_name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
 BuildRequires:  meson >= 0.56.0
+BuildRequires:  m4
+BuildRequires:  mm-common
+BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairomm-1.16) >= 1.15.4
-BuildRequires:  pkgconfig(epoxy)
+BuildRequires:  pkgconfig(epoxy) >= 1.2
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.35.5
 BuildRequires:  pkgconfig(giomm-2.68) >= 2.75.0
-BuildRequires:  pkgconfig(glibmm-2.68) >= 2.75.0
-BuildRequires:  pkgconfig(gtk4) >= 4.22.0
+BuildRequires:  pkgconfig(glibmm-2.68) >= 2.89.0
+BuildRequires:  pkgconfig(gtk4) >= 4.23.4
 BuildRequires:  pkgconfig(pangomm-2.48) >= 2.50.0
 
 %description
@@ -91,6 +94,7 @@ chmod -x NEWS
 
 %build
 %meson \
+	-D maintainer-mode=true \
 	-D build-documentation=true \
 	%{nil}
 %meson_build
