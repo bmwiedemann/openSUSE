@@ -1,4 +1,185 @@
 -------------------------------------------------------------------
+Mon Oct 12 11:24:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.1:
+  * Accessibility: Make text-size slider reflect changes under the hood
+  * Keyboard: Fix reverted condition for updating modifier option buttons
+  * Location: Hide invalid "last-access-time" app labels
+  * Mobile Networks: Fix APN dialog header bar buttons visibility
+  * Printers: Accept hyphenated supply marker types
+  * System: Fix class declaration macros typos
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:41:18 CEST 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0:
+  + Main Window: Revert "reparent sidebar on small screens" since
+    it broke sub page animations
+  + Remote Desktop: Add translation comments to "Verify
+    Fingerprint" string
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:41:17 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.rc.1:
+  + Build: Bump dependency on gsettings-desktop-schemas to 51.beta
+  + Main Window: Move focus to the panel content when activating
+    item in the sidebar
+  + Accessibility:
+    - Fix "Configure Screen Reader" button not launching Orca
+      settings
+    - Fix segfault when launching "Sound" settings from "Hearing"
+      page
+  + Apps:
+    - Add drop-shadow style to default app combo icons
+    - Fix a11y of default app combo items (so screen readers can
+      read it)
+    - Request global-shortcuts portal to rebind shortcuts on
+      removal
+  + Color: Improve keyboard navigation of devices list (a11y)
+  + Fingerprints:
+    - Fix margings in dialog status page
+    - Fix critical for packing verify button in AdwPreferencesPage
+      directly
+  + Keyboard: Fix crash when removing key combos for global
+    shortcuts
+  + Mobile Networks
+    - Align no-sim status page vertically
+    - Port APN selection dialog to AdwDialog
+  + Notifications: Hide apps not set for the current desktop
+    environment (.desktop OnlyShowIn)
+  + Users:
+    - Fix changing user avatar not updating visible page
+    - Rename fingerprint row title
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:41:16 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta:
+  + Build: Require libgnome-desktop >= 51.alpha
+  + About:
+    - Add button to open GNOME release notes
+    - Show "GNOME Shell Version" instead of "GNOME Version"
+  + Apps: Show icons in the default-apps drop down options
+  + Accessibility: Add setting to disable focus timeout
+  + Date and Time: Disable ellipzation for one AdwComboRow
+  + Global shortucts: Add "ConfigureShortcuts"
+  + Graphic Tablets (Wacom): Modernize the button mapping fallback
+    dialog
+  + Network: Hide automatic DNS and route toggle in Manual mode
+  + Main Window (Shell): Rework the navigation view and loading of
+    panel pages
+  + Users:
+    - Add new fingerprint management interface
+    - Disable keeping user data if deleting a homed user
+    - Disable auto-login for homed users
+  + Wi-Fi: Fix visible overflow on the Wi-Fi list widget
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  9 08:41:15 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.alpha:
+  + Remove Flatpak build support
+  + Merge all panels CSS files into a single global stylesheet
+  + Apply clang-format globally and update coding style
+  + Drop "development" profile
+  + Accessibility:
+    - Add description to the screen reader settings button
+    - Add semantic accessible names to cursor sizes
+    - Fix keyboard navigation between cursor sizes
+    - Give CcSplitRow's radio group a label and role
+  + About (System Details):
+    - Remove Windowing System field
+    - Reorder "Software/Hardware" information groups
+    - Merge system details into toplevel about page
+    - Port "Copy" button to AdwButtonRow
+  + Applications:
+    - Call GNOME Software via D-Bus instead of CLI
+    - Define GNOME Software desktop id only once
+  + Color: Avoid dead nested assignment
+  + Date & Time: Use GtkEnumList
+  + Display:
+    - Add "Auto Rotate" row for devices with accelerometer
+    - Add center-aligned snapping for horizontal edges
+    - Don't allow disabling if it's the last display available
+    - Update cursor styles for hover and drag interactions
+  + Keyboard:
+    - Fix compose key 'á' example
+    - Don't update shortcuts when closing dialog
+    - Improve "Press Esc to cancel [...]" hint
+    - Drop only the colliding combo when rebinding shortcuts
+    - Turn CcKeyboardShortcutDialog into a subpage
+    - Drop nested navigation view in shortcuts page
+    - Port GtkShortcutLabel to AdwShortcutLabel
+  + Mouse:
+    - Add ability to disable a touchpad while a mouse is plugged in
+    - Remove superfluous "Touchpad" string from Disable While
+      Typing
+  + Network:
+    - Add DNS domain search settings
+    - Use GNOME QR Code Widget for WiFi sharing
+    - Drop WEP support
+    - Fix confusing proxy descriptions
+    - Fix WireGuard peer reference ownership
+    - Fix "Wired" section appearing broken when empty
+    - Cache the VPN plugin list
+    - Port WiFi Hotspot dialog to AdwDialog and AdwToolbarView
+    - Always recreate hotspot dialog
+  + Power:
+    - Use @bg_color in battery levels
+    - Remove dead nested assignment for time string
+  + Printers:
+    - Make "samba" dependency optional
+    - Use AdwPreferencesPage/Group
+    - Fix adding location sub page
+    - Fit Device Security in mobile view
+    - Port Device Dialog to AdwToolbarView and AdwDialog
+    - Add mnemonics to device dialog action buttons
+    - Allow device dialog height to expand
+    - Do not leak AppInfo and time in location/camera pages
+    - Manage reference counts properly in light of duplicates
+  + Region: Initialize locale variables
+  + Remote Desktop:
+    - Set page description on AdwPreferencesPage
+    - Correctly handle nullable error from
+      secret_collection_for_alias_sync
+  + Remote Login:
+    - Support both sshd service and socket systemd units
+    - Add option to support SSH socket servers
+  + Sharing:
+    - Port Media Sharing dialog to a subpage
+    - Port File Sharing dialog to a subpage
+    - Save media sharing folder list whenever they change
+    - Add tooltip to the remove button in sharing-networks
+    - Use a GtkListBox placeholder widget
+  + Global Shortcuts Provider:
+    - Relax app-id validation
+    - Adjust to libgxdp init API change
+  + Sound:
+    - Set pa_stream sink monitor for input rows
+    - Order device name and origin correctly for RTL locales
+    - Expose selected device name to accessibility
+    - Improve accessibility label of volume slider
+    - Ensure newly added user have set an avatar
+    - Remove nested navigation view
+    - Justify title label of fingerprint empty state
+    - Set wrapping of fingerprint empty state title label
+    - Make select fingerprint popup scroll
+  + Wacom:
+    - Append the serial number to the tool description
+    - Remove an xf86-input-wacom-specific hack
+    - Fix -Wcast-align errors with clang
+  + Wellbeing: Fit into mobile width
+  + WWAN: Use early returns in APN data and EPS bearer getters
+- Update libgxdp sub-package to current commit.
+- Add pkgconfig(gnome-qr-gtk-4) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Thu Oct  8 01:18:35 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add libgnome-volume-control-Avoid-NULL-deref.patch: Avoid NULL
@@ -1307,7 +1488,7 @@ Mon Nov 13 12:47:50 UTC 2023 - bjorn.lie@gmail.com
   + default-apps: Workaround AdwComboRow item selection at startup
   + network-connection-editor: Align Routes labels
   + Updated translations.
- 
+
 -------------------------------------------------------------------
 Fri Oct 27 07:40:55 UTC 2023 - Jonathan Kang <sckang@suse.com>
 
@@ -1889,7 +2070,7 @@ Fri Aug 12 07:09:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
   + Network: Fix VPN empty state.
   + Sound: Update default sounds.
   + User Accounts: Fix back button not appearing sometimes.
-  + Updated translations. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Sun Jul 17 18:33:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -2076,8 +2257,8 @@ Wed Nov 10 03:42:53 UTC 2021 - QK ZHU <qkzhu@suse.com>
 
 - Add gnome-control-center-fix-autologin-shortcut.patch:
   If we don't add this property for autologin_row, the shortcut to
-  toggle the GtkSwitch won't work (bsc#1191887, 
-  glgo#GNOME/gnome-control-center!1084). 
+  toggle the GtkSwitch won't work (bsc#1191887,
+  glgo#GNOME/gnome-control-center!1084).
 
 -------------------------------------------------------------------
 Fri Oct 29 17:59:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -2276,7 +2457,7 @@ Thu Oct 15 02:45:41 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 Tue Oct 13 02:08:13 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Add gnome-control-center-jscSLE16518-update-subprojects-libgvc.patch:
-  Update libgvc to revision 7a621180. This update is necessary to 
+  Update libgvc to revision 7a621180. This update is necessary to
   add support for recent UCM related changes in ALSA and PulseAudio
   (jsc#SLE-16518, glgo#GNOME/gnome-control-center!843).
 
@@ -2375,7 +2556,7 @@ Wed Jun  3 16:38:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Wed May 13 20:08:38 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 3.34.6: 
+- Update to version 3.34.6:
   + Sound: fix translation of "System Sounds".
 
 -------------------------------------------------------------------

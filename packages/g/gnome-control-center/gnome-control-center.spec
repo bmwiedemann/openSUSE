@@ -27,7 +27,7 @@
 %bcond_with     malcontent
 
 Name:           gnome-control-center
-Version:        50.4
+Version:        51.1
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -58,7 +58,7 @@ BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-dbusmock
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(accountsservice) >= 0.6.39
+BuildRequires:  pkgconfig(accountsservice) >= 26.27.3
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(colord) >= 0.1.34
 BuildRequires:  pkgconfig(colord-gtk4)
@@ -70,24 +70,25 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.76.6
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gnome-bluetooth-3.0)
-BuildRequires:  pkgconfig(gnome-desktop-4)
-BuildRequires:  pkgconfig(gnome-settings-daemon) >= 41
+BuildRequires:  pkgconfig(gnome-desktop-4) >= 51.alpha
+BuildRequires:  pkgconfig(gnome-settings-daemon) >= 48.rc
+BuildRequires:  pkgconfig(gnome-qr-gtk-4)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(goa-1.0) >= 3.51.0
 BuildRequires:  pkgconfig(goa-backend-1.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 50.alpha
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 51.beta
 BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.15.2
-BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.beta
+BuildRequires:  pkgconfig(gtk4) >= 4.23.0
+BuildRequires:  pkgconfig(gudev-1.0) >= 232
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libgtop-2.0)
-BuildRequires:  pkgconfig(libnm) >= 1.24.0
-BuildRequires:  pkgconfig(libnma-gtk4)
+BuildRequires:  pkgconfig(libnm) >= 1.52.0
+BuildRequires:  pkgconfig(libnma-gtk4) >= 1.10.2
 BuildRequires:  pkgconfig(libpulse) >= 2.0
-BuildRequires:  pkgconfig(libpulse-mainloop-glib)
+BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 2.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libxml-2.0)
 %if %{with malcontent}
@@ -97,9 +98,9 @@ BuildRequires:  pkgconfig(mm-glib) >= 0.7
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(pwquality) >= 1.2.2
 BuildRequires:  pkgconfig(smbclient)
-BuildRequires:  pkgconfig(tecla)
+BuildRequires:  pkgconfig(tecla) >= 47.0
 BuildRequires:  pkgconfig(udisks2) >= 2.8.2
-BuildRequires:  pkgconfig(upower-glib) >= 0.99.8
+BuildRequires:  pkgconfig(upower-glib) >= 1.90.6
 ## CONDITIONAL BUILD REQUIREMENTS
 %if %{with wacom}
 BuildRequires:  pkgconfig(libwacom) >= 1.4
