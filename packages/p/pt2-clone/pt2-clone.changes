@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 30 18:40:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.93
+  * Paula emulation frequency/pitch precision improvements (back to
+    double-precision floats for delta/frac calculations, like in
+    v1.89).
+
+-------------------------------------------------------------------
 Sat Jul 25 08:21:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.92
