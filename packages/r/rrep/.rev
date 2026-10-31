@@ -7,4 +7,29 @@
     <comment>New package see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/HSBJ3C4XJSRJUDJYNA67BL3G3RLYUXKG/</comment>
     <requestid>1008627</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3c4c901813121d8f84f49f86e7478663</srcmd5>
+    <version>1.4.0</version>
+    <time>1793484508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0
+  * Added --verbose option for printing changed lines, also when
+    simulating replacement with the --dry-run option.
+  * Added support for multibyte characters.
+  * Added --dereference-recursive option to follow all symlinks.
+  * Made include and exclude options consistent with GNU grep.
+  * Made symbolic link following consistent with GNU grep.
+  * Changed backups to always be created as new files.
+  * Removed possibility to combine standard input with other files.
+  * Fixed memory leaks.
+  * Changed directory tree traversal to use GNU Gnulib module fts.
+  * Updated GNU Gnulib modules and changed module selection.
+- Moved upstream from SourceForge to sourcehut and updated URL and
+  Source0 accordingly.
+- Added upstream signature and keyring for source verification.
+- Removed unused autoconf and automake BuildRequires.
+- Removed obsolete install-info scriptlets and info requirements.
+</comment>
+    <requestid>1393984</requestid>
+  </revision>
 </revisionlist>

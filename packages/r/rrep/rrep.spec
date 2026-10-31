@@ -1,7 +1,7 @@
 #
 # spec file for package rrep
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,18 @@
 
 
 Name:           rrep
-Version:        1.3.7
+Version:        1.4.0
 Release:        1%{?dist}
 Summary:        Recursive pattern replacement utility
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
-URL:            http://sourceforge.net/projects/%{name}/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+URL:            https://sr.ht/~asnelt/%{name}/
+Source0:        https://git.sr.ht/~asnelt/%{name}/refs/download/upstream/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://git.sr.ht/~asnelt/%{name}/refs/download/upstream/%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
 BuildRequires:  gettext
 BuildRequires:  libacl-devel
 BuildRequires:  texinfo
-Requires(post): info
-Requires(preun): info
 
 %description
 rrep is a pattern replacement utility.  It comes with support for regular
@@ -44,14 +42,6 @@ the matched pattern.
 %build
 %configure
 %make_build
-
-%post
-/sbin/install-info %{_infodir}/%{name}.info %{_infodir}/dir || :
-
-%preun
-if [ $1 = 0 ] ; then
-/sbin/install-info --delete %{_infodir}/%{name}.info %{_infodir}/dir || :
-fi
 
 %install
 %make_install
