@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:54:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.1 (upstream tag v0.16.1, 2026-10-31):
+  * New: PDF to Markdown export; Alt+Left/Right view history;
+    Export Data as CSV keeps formula-like cells as text.
+  * Render: isolated CMYK transparency groups blend in CMYK,
+    ICCBased CMYK no longer taken as process tints, gray with
+    Color blend no longer black; malformed content-stream
+    tokens are stepped over instead of ending the page.
+  * Fixes: comment locks and replies, All-tools rows clear of
+    the scrollbar, Update preview parses its unmarked copy
+    once. No CVE identifiers in the crossed range.
+  * Re-vendored (update=false, tag cratesio); besides the
+    workspace crates only craft-update moves (git rev e11f9d9
+    to 04aa1703, still MIT OR Apache-2.0; its one new dep
+    `image` was already vendored) plus zip 9.1.0 to 9.1.3
+    (MIT), so the licence set of the linked crates is
+    unchanged, no new copyleft; the cargo_audit service
+    reports no advisories.
+- Keep pdfcraft-no-brand-assets.patch,
+  pdfcraft-no-startup-update-check.patch and
+  pdfcraft-drop-unused-egui-patches.patch unchanged (all
+  three still apply --fuzz=0; the updater neutering keeps
+  the manual Check outcome dialog).
+
+-------------------------------------------------------------------
 Thu Oct 29 16:50:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.15.0 (upstream tags v0.14.0, 2026-10-25 and v0.15.0,

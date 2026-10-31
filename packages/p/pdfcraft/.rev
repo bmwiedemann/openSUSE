@@ -15,4 +15,12 @@
     <comment>Fix adi:5 build: drop unused egui pins (supersedes 0.14.0).</comment>
     <requestid>1393743</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>850d151f939e36e00a6d1421006a47d7</srcmd5>
+    <version>0.16.1</version>
+    <time>1793484628</time>
+    <user>dimstar_suse</user>
+    <comment>Update pdfcraft (filtered vendor)</comment>
+    <requestid>1394163</requestid>
+  </revision>
 </revisionlist>

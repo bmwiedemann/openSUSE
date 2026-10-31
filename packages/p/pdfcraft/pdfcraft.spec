@@ -17,7 +17,7 @@
 
 
 Name:           pdfcraft
-Version:        0.15.0
+Version:        0.16.1
 Release:        0
 Summary:        Open-source PDF workbench
 # Legal-Review-Notice: scope is the offline vendor build of the two
@@ -49,6 +49,10 @@ License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Cl
 URL:            https://github.com/storytold/pdfcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor-cratesio.tar.zst
+# Vendor tree is filtered (cargo_vendor filter=true): Windows-only and
+# wasm-only crates are emptied to manifest stubs, so no import libs or
+# prebuilt wasm objects ship. The only prebuilt files left are test fixtures:
+# Source-Binary-Exception: vendor-cratesio.tar.zst:vendor-cratesio/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's #![cfg(windows)] tests, never on Linux
 # PATCH-FIX-OPENSUSE pdfcraft-no-brand-assets.patch -- replace trademarked
 # ArtCraft marks (docs/brand/, NOT open source) embedded via include_bytes!
 # with the open-source PdfCraft tile; permanent downstream carry, not
