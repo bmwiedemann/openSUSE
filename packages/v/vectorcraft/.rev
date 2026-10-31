@@ -15,4 +15,12 @@
     <comment>Fix adi:5 build: patch path prefixes.</comment>
     <requestid>1393787</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>208ee8a5213556289b8eddc102ae7032</srcmd5>
+    <version>0.19.0</version>
+    <time>1793484631</time>
+    <user>dimstar_suse</user>
+    <comment>Update vectorcraft (filtered vendor)</comment>
+    <requestid>1394165</requestid>
+  </revision>
 </revisionlist>

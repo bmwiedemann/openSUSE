@@ -17,10 +17,10 @@
 
 
 Name:           vectorcraft
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        Open-source vector illustration app
-# Legal-Review-Notice: license audit 0.18.0, vendor-cratesio tag with locked
+# Legal-Review-Notice: license audit 0.19.0, vendor-cratesio tag with locked
 # offline build of vectorcraft plus vectorcraft-cli only. Upstream is MIT OR
 # Apache-2.0. Linked third-party code adds BSD-2-Clause (arrayref),
 # BSD-3-Clause (alloc-no-stdlib, brotli, subtle, tiny-skia and others), ISC
@@ -42,6 +42,12 @@ License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Clause AND IJG AN
 URL:            https://github.com/storytold/vectorcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor-cratesio.tar.zst
+# Vendor tree is filtered (cargo_vendor filter=true): Windows-only and
+# wasm-only crates are emptied to manifest stubs, so no import libs or
+# prebuilt wasm objects ship. The only prebuilt files left are test fixtures:
+# Source-Binary-Exception: vendor-cratesio.tar.zst:vendor-cratesio/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's #![cfg(windows)] tests, never on Linux
+# Source-Binary-Exception: vendor-cratesio.tar.zst:vendor-cratesio/ruzstd-*/test_fixtures/*.zst -- test-data: zstd decode-test fixtures (window_256mib.zst needs a 256MiB window); decode to the crate's own test plaintext, never executed
+# Source-Binary-Exception: vectorcraft-0.19.0.tar.zst:vectorcraft-0.19.0/crates/plugins/tests/fixtures/*.wasm -- test-data: example plugin fixture embedded only in the crates/plugins test binary and run under its test-only interpreter, never executed natively or shipped
 # PATCH-FIX-OPENSUSE drop-unused-egui-patches.patch: drop three unused
 # [patch.crates-io] entries (egui_demo_lib, egui_inspection,
 # egui_system_font_provider): nothing references them, cargo itself marks
