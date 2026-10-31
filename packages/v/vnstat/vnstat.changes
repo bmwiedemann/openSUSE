@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sat Oct 31 19:10:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14
+  Fixed
+  * Buffer overflow in -hg / --hoursgraph text output when UnitMode
+    was configured with non-default value of either 1 or 2.
+  * Some higher traffic days could be missing from top days output
+    when the interface merge syntax (interface1+interface2) was
+    used.
+  * Database query with many short interfaces using merge syntax
+    could fail even when input length was within the 255 character
+    limit.
+  * Command execution, error reporting, interface selection, output
+    escaping and caching fixes in all example output scripts
+    (vnstat.cgi, vnstat-json.cgi, vnstat-json.php and
+    vnstat-metrics.cgi)
+  * Sample timestamps, empty resolutions, rx and tx value precision
+    and year sample alignment when MonthRotateAffectsYears is
+    enabled in Prometheus metrics example
+    (examples/vnstat-metrics.cgi)
+  * Reserved characters in interface name and alias in --json and
+    --xml outputs were not escaped and would make the output have
+    invalid syntax
+  * Interface name in --json -l and --json -tr outputs was not
+    escaped when the name contained a quote or a backslash.
+  New
+  * Add TrueType font support to image output with image size
+    scaling based on used font size, configurable with FontFile
+    and FontSize or --font
+  * Add --common-width to vnstati for getting images padded to
+    common width from different outputs when same font and font
+    size is used.
+  * Add XDG Base Directory support for configuration file,
+    $XDG_CONFIG_HOME/vnstat/vnstat.conf and
+    $HOME/.config/vnstat/vnstat.conf are tried before
+    $HOME/.vnstatrc, /etc/vnstat.conf and
+    /usr/local/etc/vnstat.conf
+  * Increased maximum supported MaxBandwidth value from 50000 to
+    400000.
+  * Show additional note at the end of outputs containing monthly
+    data if MonthRotate has been configured with a value other than
+    1, note visibility is configurable with MonthRotateVisible
+    configuration option.
+  * Add monthrotate and monthrotateaffectsyears fields to --json
+    and --xml output interface section.
+  * Increase debug verbosity if -D / --debug is used multiples
+    times.
+  * Image output example cgi (examples/vnstat.cgi) improvements
+    + Add option for selecting use of configuration file defined
+      list lengths instead of hardcoded values in single image pages
+    + Add automatic dark mode option, enabled by default.
+    + Add dark mode toggle to top right corner.
+    + Add back to summary link to single image pages.
+  * Prometheus metrics example (examples/vnstat-metrics.cgi)
+    improvements
+    + Add interface database updated timestamp gauge.
+    + Add Prometheus text format version to content type.
+
+-------------------------------------------------------------------
 Sat Feb  8 17:57:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.13

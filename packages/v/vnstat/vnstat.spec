@@ -1,7 +1,7 @@
 #
 # spec file for package vnstat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vnstat
-Version:        2.13
+Version:        2.14
 Release:        0
 Summary:        Network Traffic Monitor
 License:        GPL-2.0-only
