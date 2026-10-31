@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 31 12:34:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.9 (.8 was not released):
+  * Enhancements
+    - Add normalize-indentation builtin hook (#2967)
+    - Allow overriding the uv install version (#2923)
+    - Embed dependency metadata in release binaries (#2976)
+    - Select musl Bun builds when glibc is unavailable (#2972)
+  * Performance
+    - Improve workspace discovery performance (#2936)
+  * Bug fixes
+    - Preserve clean-filtered files during stashing (#2915)
+
+-------------------------------------------------------------------
 Wed Oct 21 05:05:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.7:
