@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Oct 31 12:30:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.14:
+  * apk: stop writing the uncompressed data tar into the cache
+    (#2622)
+  * paths: recursive permission mutations follow symlinks and
+    re-own files outside the tree (#2618)
+  * Use go-jose v4 directly for JWKS key discovery (#2621)
+  * build(deps): bump github.com/erofs/go-erofs from
+    0.3.2-0.20260804074615-52cc42c5291c to 0.3.2 (#2617)
+  * build: split a layered build's walk from how it writes layers
+    (#2615)
+  * build(deps): bump chainguard.dev/sdk from 0.1.424 to 0.1.426
+    (#2616)
+  * build(deps): bump chainguard.dev/sdk from 0.1.421 to 0.1.424
+    (#2614)
+  * tarfs: keep a package file's changes once it is opened to write
+    (#2612)
+  * fix(apk): don't write to an offline cache on a package cache
+    miss (#2611)
+  * build(deps): bump google.golang.org/api from 0.305.0 to 0.308.0
+    (#2604)
+  * build(deps): bump the codeql group across 1 directory with 2
+    updates (#2606)
+  * build(deps): bump chainguard.dev/sdk from 0.1.404 to 0.1.421
+    (#2605)
+  * build(deps): bump github.com/github/go-spdx/v2 from 2.7.1 to
+    2.8.0 (#2603)
+  * Regenerate apko-discover.lock.json golden file (#2608)
+
+-------------------------------------------------------------------
 Tue Oct 27 06:31:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.13:
