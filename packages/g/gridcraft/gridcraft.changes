@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:45:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.2 (upstream release 0.14.2, 2026-10-31;
+  covers 0.14.0 and 0.14.1, only v0.14.2 tagged):
+  * Automate menu: Record Macro and Macros dialogs, macro step
+    editor with debugger, Trust Scripts for file scripts.
+  * Status bar statistics copy on click; CSV export writes raw
+    values; IMSQRT/ECMA.CEILING Excel parity; F/T distribution
+    fixes; password-protected workbooks open again.
+  * Hardening: web links open with noopener, lifted lookups are
+    work-capped, the control channel enforces its token
+    deadline. No CVE identifiers in the crossed range.
+  * Re-vendored (update=true); besides the workspace crates
+    0.13.0 to 0.14.2 only craft-update moves (git rev 92d392c
+    to 04aa1703, still MIT OR Apache-2.0; its one new dep
+    `image` 0.25 was already vendored), so the licence set of
+    the linked crates is unchanged, no new copyleft; the
+    cargo_audit service reports no advisories.
+- Set the fixed metainfo release date to 2026-10-31.
+- Rebase gridcraft-no-self-update.patch onto 0.14.2 (startup
+  check call and prompt body moved, same neutering: no check
+  at startup, no install prompt, manual Help check stays).
+- gridcraft-drop-unused-egui-patches.patch still applies with
+  refreshed lock context (same four unused pins, same rev).
+
+-------------------------------------------------------------------
 Thu Oct 29 16:34:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.13.0 (upstream tag v0.13.0, 2026-10-28):

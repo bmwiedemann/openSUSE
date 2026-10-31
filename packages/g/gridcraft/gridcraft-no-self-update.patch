@@ -11,9 +11,10 @@ reporting through its outcome message in tick(); only the automatic
 startup check and the self-update install prompt are turned off.
 
 diff --git a/apps/gridcraft/src/main.rs b/apps/gridcraft/src/main.rs
+index 9357d07..6ec48c7 100644
 --- a/apps/gridcraft/src/main.rs
 +++ b/apps/gridcraft/src/main.rs
-@@ -316,7 +316,9 @@
+@@ -313,7 +313,9 @@ fn main() -> eframe::Result<()> {
      }
      let mut app = SheetApp::new(session, services());
      app.watch_desktop_theme();
@@ -21,25 +22,26 @@ diff --git a/apps/gridcraft/src/main.rs b/apps/gridcraft/src/main.rs
 +    // Downstream (openSUSE): the package manager owns updates, so the
 +    // desktop app must not check for (and offer to install) upstream
 +    // releases on its own at startup. Manual Help Check stays.
-     app.after_engine(); // Show warnings from the sample.
      let control_port = control_port;
      load_prefs(&mut app);
+     // Stamp the startup workbook's author from the persisted user name.
 diff --git a/crates/ui-egui/src/updates_ui.rs b/crates/ui-egui/src/updates_ui.rs
+index b741510..2978b38 100644
 --- a/crates/ui-egui/src/updates_ui.rs
 +++ b/crates/ui-egui/src/updates_ui.rs
-@@ -3,7 +3,7 @@
+@@ -2,7 +2,7 @@
+ //! offers the new release: Update and Restart (direct self-update), Download or Later. The flow
  //! itself is `craft_update::updater::Updater`.
-
- use craft_update::suite::GRIDCRAFT;
+ 
 -use craft_update::updater::{Action, Status, Updater};
 +use craft_update::updater::{Status, Updater};
-
+ 
  use crate::SheetApp;
-
-@@ -52,18 +52,9 @@
+ 
+@@ -51,18 +51,9 @@ pub(crate) fn tick(app: &mut SheetApp, ctx: &egui::Context) {
      }
  }
-
+ 
 -pub(crate) fn show(app: &mut SheetApp, ctx: &egui::Context) {
 -    // The restart helper is scheduled before the app closes, so no update starts over unsaved work.
 -    let clean = !app.session.documents().iter().any(|d| d.is_dirty());
