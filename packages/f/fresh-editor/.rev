@@ -143,4 +143,12 @@
     <comment>Update fresh-editor to 0.5.4: simple launch defaults, Markdown compose view, OSC 52 clipboard support, and re-enabled cargo_vendor updates.</comment>
     <requestid>1392057</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>487ac933265801a3caaf47e4347f4f99</srcmd5>
+    <version>0.5.5</version>
+    <time>1793484678</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.5.5</comment>
+    <requestid>1394147</requestid>
+  </revision>
 </revisionlist>

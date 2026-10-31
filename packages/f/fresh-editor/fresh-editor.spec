@@ -18,7 +18,7 @@
 
 %define shortname fresh
 Name:           fresh-editor
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        A terminal text editor you can just use
 # Legal-Review-Notice: MPL-2.0 comes from vendored option-ext 0.2.0, which is

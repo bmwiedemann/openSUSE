@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 31 14:34:00 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.5.5:
+  * Compare Files: side-by-side editable file comparison via
+    'fresh --diff A B'.
+  * Universal Search: toggle 'All workspaces' (Alt+A) to search
+    every local workspace's files, unsaved buffers, and terminals.
+  * Idle CPU and memory fix: file reads no longer trigger false
+    change events in git_statusbar on Linux.
+  * Search & Replace: honour Case Sensitive and Whole Word flags.
+  * Buffer safety: prevent multi-instance overwrites, crash-safe
+    sudo saves, and atomic hot-exit replacement.
+  * Terminal improvements: pass Ctrl+V when clipboard has no text,
+    enable kitty keyboard protocol with daemon, fix macOS clipboard
+    rendering.
+  * Performance: eliminate typing stutter on long wrapped lines and
+    reduce memory use during replace-all on large files.
+  * Keybindings: Shift+Home selects to first non-blank character.
+
+-------------------------------------------------------------------
 Fri Oct 23 13:39:01 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version v0.5.4:
