@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Oct 29 19:07:37 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.4.1:
+  * chore(version): bump
+  * chore(i18n): update
+  * refactor(umbriel): send compositor actions as typed IPC requests
+  * chore: i18n update
+  * feat(settings): show idle inhibitor list in idle status (#5097)
+  * fix(active-window): match tray icon size and render at display resolution (#4910)
+  * fix(settings): remove redundant lambda parameter list
+  * fix(tray): lay out drawer icons after a theme-index rebuild (#5105)
+  * docs: add Solus and Alpine Edge on user install guide (#5104)
+  * fix(tray): ignore empty item property replies
+  * fix(capture): anchor right-to-left annotation text at its start edge (#5103)
+  * fix(notification): encrypt persisted history and image sidecars (#4856)
+  * fix(dock): avoid revealing smart-hidden docks on reload (#4932)
+  * fix(lockscreen): verify the sender of logind and fprintd signals (#4852)
+  * fix(wallpaper): pass KDE wallpaper paths without shell or JS interpolation (#4854)
+  * fix(switcher): show previews on unrecognized compositors (#5008)
+  * fix(control-center): simplify hyprland version display (#5102)
+  * fix(tray): keep flipped submenus beside the parent menu (#5085)
+  * fix(mpris): account for playback rate in progress projection (#4960)
+  * fix(battery): show audio and gamepad icons for UPower devices (#4996)
+  * bluetooth: disable connection notifications by default
+  * fix(launcher): keep pinned apps first in the Full layout's All view (#4985)
+  * fix(network): best-effort SaveConfig and immediate saved-network tracking (#5064)
+  * chore: i18n update
+  * feat(calendar): add location of events in the event list  (#5081)
+  * fix(calendar): honor config changes made during a running refresh (#5098)
+  * feat(input): add mouse wheel adjusts all sliders by default (#5017)
+  * Couple more clang tidy fixes (#5099)
+  * fix(launcher): balance toolbar padding at fractional scales
+  * fix(launcher): expand search when session button is hidden
+  * build: add system_libraries option to link system Wuffs, Luau, fzy, and MCU
+  * fix(launcher): fit emoji badges within result rows
+  * docs: added void installation (#5092)
+  * fix(bluetooth): stop the device list churning during a scan (#5083)
+  * Even more clang tidy (#5079)
+  * Update star history image to animated version
+  * feat(taskbar): support preferred symbolic app icons (#4553)
+  * fix(calendar): stop re-expanding CalDAV instances that keep their RRULE (#5074)
+  * feat(dock): add compositor blur (#4997)
+  * fix(notification): mark notifications withdrawn by their sender as read (#4957)
+  * fix(ui): prevent initial variant color flash on newly mounted buttons (#5012)
+  * fix(sound): dispatch playback on a dedicated PipeWire loop (#4976)
+  * fix(bar): schedule sysmon updates in all modes (#5056)
+  * feat(calendar): show each account's sync status in Settings (#4902)
+  * fix(tray): call the external watcher asynchronously
+  * test: fix string_utils_test build failure on GCC 14 (#5060)
+  * doc(niri): fix conflicting config (#5077)
+  * ci: run clang-tidy in its own job and cache builds with ccache
+  * ci: build on fedora 44 to catch sdbus-c++ < 2.3 incompatibilities
+  * More clang-tidy (#5063)
+  * docs(compositors): list Umbriel first in guides and examples
+  * chore: i18n, delete size-advanced key
+  * feat(annotator): move colors and thickness into a stroke popover
+  * feat(annotator): add backdrop panel styling (#4802)
+  * fix(input): draw multiline text where its caret stops are (#5068)
+  * feat(osd): add media_volume toggle to disable only media volume (#4797)
+  * fix(idle): keep idle tracking alive across screensaver inhibits (#4002)
+  * fix(settings): unescape font family names (#5055)
+  * feat(clock): use tabular digits so clock width stays constant
+  * feat(language): added Romainan (#5061)
+  * chore: i18n update
+  * feat(ui): optional reference marker on ProgressBar (#5065)
+  * feat(control-center): delete the topmost notification with the delete keybind (#5013)
+  * chore(test): update comment about mandatory max_height when using height="content"
+  * feat(wallpaper): pause automation while a window is fullscreen (#4998)
+
+-------------------------------------------------------------------
 Mon Oct 26 15:20:43 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 5.4.0:
