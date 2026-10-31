@@ -6794,4 +6794,12 @@ v3: with gn dependency</comment>
     <comment>Chromium 156.0.8078.73 (boo#1288218)</comment>
     <requestid>1393266</requestid>
   </revision>
+  <revision rev="558" vrev="1">
+    <srcmd5>a3a9f4e5718f8c12e08e2a5a5dd356ea</srcmd5>
+    <version>156.0.8078.79</version>
+    <time>1793484413</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 156.0.8078.79 (boo#1288840)</comment>
+    <requestid>1393781</requestid>
+  </revision>
 </revisionlist>
