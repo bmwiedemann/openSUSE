@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Oct 30 18:40:50 UTC 2026 - zeus <dunning1kruger@mailfence.com>
+
+- Update to versions 0.20.3:
+  * Add overrideInhibition option to <mousebind>
+  * Add libinput options <clickfingerButtonMap> and <rotationAngle>
+  * Add opt-in native libinput custom acceleration through 
+  <accelProfile>, with separate <motionCurve>, <scrollCurve> and 
+  <fallbackCurve> profiles. This allows precise low-speed scrolling
+  while keeping faster scrolling responsive
+  * Add config option <snapping><overlay><placement> to optionally
+  place the snap-overlay above the dragged window
+  * Fix coordinate overflow due to unsigned offsets with touch 
+  devices
+  * Close menu on Super_L press
+  * Fix issue where the lock-screen does not get input focus if a 
+  popup with grab is active when the screen is locked
+  * Fix Lan Mouse input capture issue by applying pointer 
+  constraints to layer-shell surfaces
+  * Fix some rare XWayland window focus and geometry issues by 
+  delaying the connection of the commit signal to avoid using old 
+  dimensions
+  * Fix internal menus (for example client-list-combined-menu) 
+  breaking if a label is defined
+  * Fix xdg-shell regression whereby unmaximizing an initially 
+  maximized window keeps the maximized geometry
+  * Wait for pipemenus to open before entering via accelerator
+  * Fix <privilegedInterfaces><allow> logic to achieve intended 
+  behaviour which is to disable all on first encounter with 
+  <privilegedInterfaces> and then add interface specified by 
+  <allow>
+  * Allow xkbcommon to use getenv() which is required when 
+  labwc is running with elevated privileges, for example with a 
+  non-empty permitted capability set on the executable or when 
+  running on Android
+  * Limit tilde expansion to make it more POSIX shell compliant
+  * Allow Close and Kill actions while window switching
+
+-------------------------------------------------------------------
 Fri Aug 21 18:34:01 UTC 2026 - zeus <dunning1kruger@mailfence.com>
 
 - Update to version 0.20.2:
