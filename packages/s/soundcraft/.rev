@@ -15,4 +15,12 @@
     <comment>Fix adi:5 build: drop unused egui pins.</comment>
     <requestid>1393744</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>12e6a57f9078a9f06ec182d1039fb576</srcmd5>
+    <version>0.15.0</version>
+    <time>1793484629</time>
+    <user>dimstar_suse</user>
+    <comment>Update soundcraft (filtered vendor)</comment>
+    <requestid>1394164</requestid>
+  </revision>
 </revisionlist>

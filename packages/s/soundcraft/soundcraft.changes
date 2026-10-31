@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:56:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.15.0 (upstream tag v0.15.0, 2026-10-31):
+  * Score: MusicXML/SVG export strips XML-forbidden
+    characters, output size bounded, bar duration kept when
+    the item cap drops notes; send-level automation from the
+    send faders; key signatures move with Insert/Cut Time.
+  * Edit: bounded command journal, clip fades clamped after
+    AudioSuite/warp, crossfades kept on paste, MIDI spacing
+    kept past tick 0, BWF text cut at UTF-8 boundaries.
+  * Hardening: clip-group ".." names, out-of-range timecode,
+    oversized Matroska elements, stretch-render spans and
+    VST3 bus layouts bounded. No CVE ids in the crossed range.
+  * Re-vendored (update=true); besides the workspace crates
+    only craft-update moves (git rev 92d392c to 04aa1703,
+    still MIT OR Apache-2.0; its one new dep `image` was
+    already vendored) plus zip 9.1.1 to 9.1.3 (MIT), so the
+    licence set of the linked crates is unchanged, no new
+    copyleft; the cargo_audit service reports no advisories.
+- Set the fixed AppStream release date to 2026-10-31, note
+  the new craft-update git rev in the Legal-Review-Notice.
+- Keep soundcraft-no-self-update.patch and
+  soundcraft-drop-unused-egui-patches.patch unchanged (both
+  still apply --fuzz=0: same four unused pins, same rev).
+
+-------------------------------------------------------------------
 Thu Oct 29 12:49:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.0 (upstream tag v0.14.0, 2026-10-28):
