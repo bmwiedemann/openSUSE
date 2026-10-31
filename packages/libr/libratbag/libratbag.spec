@@ -1,7 +1,7 @@
 #
 # spec file for package libratbag
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,22 +18,27 @@
 
 
 Name:           libratbag
-Version:        0.18
+Version:        0.18+git20260917.8235b5b
 Release:        0
 Summary:        Configuration library for gaming mice
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/libratbag/libratbag
 Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
+Source2:        generate-ratbag-supplements.sh
 Patch1:         shebang-env.diff
 Patch3:         harden_ratbagd.service.patch
 Patch4:         use-python-3.6.patch
-# PATCH-FEATURE-UPSTREAM add-logitech-MX-Master-4.patch https://github.com/libratbag/libratbag/pull/1764
-Patch5:         add-logitech-MX-Master-4.patch
+# PATCH-FIX-UPSTREAM add-holtek-a09f-driver.patch https://github.com/libratbag/libratbag/pull/1915 -- add driver for Holtek 04d9:a09f gaming mice
+Patch5:         add-holtek-a09f-driver.patch
+# Refresh: zero-touch, ratbag_modalias_supplements is generated at build time from data/devices/*.device in Source0 plus device backport patches; no manual edits needed. (Stays after the Source/Patch tags: S-colon-N resolves only post-tag on rpm 4.20, and spec-cleaner's hoist plus SOURCE rename does not parse there.)
+%define ratbag_modalias_supplements %(sh %{S:2} %{S:0} %{_sourcedir}/*.patch %{_sourcedir}/*.diff)
+%define ratbag_modalias_count %(sh %{S:2} %{S:0} %{_sourcedir}/*.patch %{_sourcedir}/*.diff | wc -l)
+%if %{ratbag_modalias_count} == 0
+%error "ratbag_modalias_supplements generated zero IDs, refusing silent modalias loss"
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  json-glib-devel
 BuildRequires:  libunistring-devel
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -43,6 +48,7 @@ BuildRequires:  swig
 BuildRequires:  valgrind
 BuildRequires:  pkgconfig(check) >= 0.9.10
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libsystemd) >= 227
 BuildRequires:  pkgconfig(libudev) >= 196
@@ -56,7 +62,6 @@ abstracts away hardware-specific and kernel-specific quirks.
 
 %package -n liblur3
 Summary:        Logitech Unifying Receiver configuration library
-Group:          System/Libraries
 
 %description -n liblur3
 A library to configure and handle the /dev hidraw devices belonging
@@ -64,9 +69,9 @@ to the "Unifying" wireless receiver.
 
 %package -n ratbagd
 Summary:        Service granting access to the configuration options of gaming mice
-Group:          Hardware/Other
 Requires(pre):  group(games)
 Recommends:     libratbag-tools
+%{ratbag_modalias_supplements}
 
 %description -n ratbagd
 libratbag is a configuration library for gaming mice. It provides a
@@ -79,7 +84,6 @@ supported mice via ratbagctl or Piper.
 
 %package devel
 Summary:        Development files for the libratbag game mouse config library
-Group:          Development/Libraries/C and C++
 Requires:       liblur3 = %{version}
 
 %description devel
@@ -92,7 +96,6 @@ libratbag.
 
 %package tools
 Summary:        Utilities for configuring gaming mice
-Group:          Hardware/Other
 Requires:       python3-evdev
 Requires:       ratbagd
 
@@ -108,10 +111,10 @@ mice.
 %setup -q
 %patch -P1 -p1
 %patch -P3 -p1
+%patch -P5 -p1
 %if 0%{?suse_version} < 1550
 %patch -P4 -p1
 %endif
-%patch -P5 -p1
 cp %{SOURCE1} .
 
 %build

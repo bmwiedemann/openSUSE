@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 30 20:02:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add add-holtek-a09f-driver.patch: new holtek_a09f driver for
+  Holtek 04d9:a09f gaming mice.
+- Add USB modalias Supplements to ratbagd for automatic
+  installation with supported mice.
+
+-------------------------------------------------------------------
+Wed Oct 21 18:26:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18+git20260917.8235b5b (commit 8235b5bb):
+  * New supported devices: ASUS TUF Gaming M3 Gen II, ASUS ROG
+    Strix Impact III and its Wireless variant, ASUS TUF Gaming M4
+    Air, ASUS TUF Mini WL, ASUS ROG Keris (wired), Logitech MX
+    Master 4, Logitech G705 and Glorious Model O Eternal, plus new
+    USB IDs for the Logitech G502 X family, MX Vertical and ROG
+    Keris Wireless AimPoint.
+  * asus: support the Omni receiver and new data layouts.
+  * swig: use the Python 3 C API so the bindings build with SWIG
+    4.5.
+- Drop add-logitech-MX-Master-4.patch: merged upstream.
+
+-------------------------------------------------------------------
 Thu Oct  9 23:57:08 BST 2025 - Adam Spiers <suse@adamspiers.org>
 
 - Add add-logitech-MX-Master-4.patch
