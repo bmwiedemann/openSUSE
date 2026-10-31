@@ -418,9 +418,9 @@ packagesets:
    - etags # reason: dvd:patterns-base-console
    - ethtool # reason: dvd:patterns-base-console
    - eventviews # reason: dvd:patterns-kde-kde
-   - evince # reason: dvd:patterns-gnome-gnome
-   - evince-lang # reason: dvd:patterns-gnome-gnome
-   - evince-plugin-pdfdocument # reason: dvd:patterns-gnome-gnome
+   - evince # reason: dvd:patterns-xfce-xfce
+   - evince-lang # reason: dvd:patterns-xfce-xfce
+   - evince-plugin-pdfdocument # reason: dvd:patterns-xfce-xfce
    - evolution # reason: dvd:patterns-gnome-gnome
    - evolution-data-server # reason: dvd:patterns-gnome-gnome
    - evolution-data-server-lang # reason: dvd:patterns-gnome-gnome
@@ -579,7 +579,8 @@ packagesets:
    - gnome-desktop-lang # reason: dvd:patterns-gnome-gnome
    - gnome-disk-utility # reason: dvd:patterns-media-rest_dvd
    - gnome-disk-utility-lang # reason: dvd:patterns-media-rest_dvd
-   - gnome-extensions # reason: dvd:patterns-gnome-gnome
+   - gnome-extensions-app # reason: dvd:patterns-gnome-gnome
+   - gnome-extensions-app-lang # reason: dvd:patterns-gnome-gnome
    - gnome-keyring # reason: dvd:patterns-gnome-gnome
    - gnome-keyring-32bit # reason: dvd:patterns-media-rest_dvd
    - gnome-keyring-lang # reason: dvd:patterns-gnome-gnome
@@ -729,7 +730,7 @@ packagesets:
    - gtk4-metatheme-greybird-geeko # reason: dvd:patterns-media-rest_cd_core
    - gtk4-schema # reason: dvd:openSUSE-release
    - gtk4-tools # reason: dvd:openSUSE-release
-   - gtksourceview4-lang # reason: dvd:patterns-gnome-gnome
+   - gtksourceview4-lang # reason: dvd:patterns-xfce-xfce
    - gtksourceview5-lang # reason: dvd:patterns-gnome-gnome
    - gucharmap # reason: dvd:patterns-xfce-xfce
    - gucharmap-lang # reason: dvd:patterns-xfce-xfce
@@ -1670,7 +1671,7 @@ packagesets:
    - libabw-0_1-1 # reason: dvd:openSUSE-release
    - libaccounts-glib0 # reason: dvd:patterns-kde-kde
    - libaccounts-qt6-1 # reason: dvd:patterns-kde-kde
-   - libaccountsservice0 # reason: dvd:patterns-gnome-gnome
+   - libaccountsservice1 # reason: dvd:patterns-gnome-gnome
    - libacl1 # reason: dvd:openSUSE-release
    - libacl1-32bit # reason: dvd:patterns-media-rest_dvd
    - libadwaita-1-0 # reason: dvd:patterns-gnome-gnome
@@ -1785,7 +1786,7 @@ packagesets:
    - libcairomm-1_0-1 # reason: dvd:patterns-media-rest_cd_core
    - libcairomm-1_16-1 # reason: dvd:patterns-gnome-gnome
    - libcamd3 # reason: dvd:patterns-gnome-gnome
-   - libcamel-1_2-67 # reason: dvd:patterns-gnome-gnome
+   - libcamel-1_2-68 # reason: dvd:patterns-gnome-gnome
    - libcamera-base0_7 # reason: dvd:openSUSE-release
    - libcamera0_7 # reason: dvd:openSUSE-release
    - libcanberra-gtk-module-common # reason: dvd:patterns-gnome-gnome
@@ -1842,7 +1843,7 @@ packagesets:
    - libcolorhug2 # reason: dvd:patterns-media-rest_dvd
    - libcom_err2 # reason: dvd:openSUSE-release
    - libcom_err2-32bit # reason: dvd:patterns-media-rest_dvd
-   - libcomposefs1 # reason: dvd:patterns-gnome-gnome
+   - libcomposefs1 # reason: dvd:patterns-kde-kde
    - libconfig++15 # reason: dvd:openSUSE-release
    - libcpupower1 # reason: dvd:patterns-base-console
    - libcrack2 # reason: dvd:openSUSE-release
@@ -1924,7 +1925,7 @@ packagesets:
    - libeconf0-32bit # reason: dvd:patterns-media-rest_dvd
    - libedata-book-1_2-27 # reason: dvd:patterns-gnome-gnome
    - libedata-cal-2_0-2 # reason: dvd:patterns-gnome-gnome
-   - libedataserver-1_2-27 # reason: dvd:patterns-gnome-gnome
+   - libedataserver-1_2-28 # reason: dvd:patterns-gnome-gnome
    - libedataserverui-1_2-4 # reason: dvd:patterns-gnome-gnome
    - libedit0 # reason: dvd:openSUSE-release
    - libeditorconfig0 # reason: dvd:patterns-gnome-gnome
@@ -1945,9 +1946,9 @@ packagesets:
    - libetonyek-0_1-1 # reason: dvd:openSUSE-release
    - libev4 # reason: dvd:salt-master
    - libevdev2 # reason: dvd:openSUSE-release
-   - libevdocument3-4 # reason: dvd:patterns-gnome-gnome
+   - libevdocument3-4 # reason: dvd:patterns-xfce-xfce
    - libevent-2_1-7 # reason: dvd:patterns-base-console
-   - libevview3-3 # reason: dvd:patterns-gnome-gnome
+   - libevview3-3 # reason: dvd:patterns-xfce-xfce
    - libexempi8 # reason: dvd:patterns-gnome-gnome
    - libexif12 # reason: dvd:patterns-gnome-gnome
    - libexiv2-28 # reason: dvd:patterns-gnome-gnome
@@ -1974,7 +1975,7 @@ packagesets:
    - libfido2-udev # reason: dvd:patterns-gnome-gnome
    - libfile1_0 # reason: dvd:patterns-gnome-gnome
    - libfind4_0 # reason: dvd:patterns-gnome-gnome
-   - libflatpak0 # reason: dvd:patterns-gnome-gnome
+   - libflatpak0 # reason: dvd:patterns-kde-kde
    - libflite1 # reason: dvd:patterns-kde-kde
    - libfltk1_3 # reason: dvd:patterns-media-rest_dvd
    - libfolks-eds26 # reason: dvd:patterns-gnome-gnome
@@ -2061,14 +2062,17 @@ packagesets:
    - libgmp10 # reason: dvd:openSUSE-release
    - libgmp10-32bit # reason: dvd:patterns-media-rest_dvd
    - libgnome-autoar-0-0 # reason: dvd:patterns-gnome-gnome
+   - libgnome-bg-4-2 # reason: dvd:patterns-gnome-gnome
    - libgnome-bluetooth-3_0-13 # reason: dvd:patterns-gnome-gnome
    - libgnome-bluetooth-ui-3_0-13 # reason: dvd:patterns-gnome-gnome
-   - libgnome-desktop-3-20 # reason: dvd:patterns-gnome-gnome
+   - libgnome-desktop-3-21 # reason: dvd:patterns-gnome-gnome
    - libgnome-desktop-3_0-common # reason: dvd:patterns-gnome-gnome
    - libgnome-desktop-4-2 # reason: dvd:patterns-gnome-gnome
    - libgnome-keyring-lang # reason: dvd:patterns-gnome-gnome
    - libgnome-keyring0 # reason: dvd:patterns-gnome-gnome
    - libgnome-menu-3-0 # reason: dvd:patterns-xfce-xfce
+   - libgnome-qr-4-0 # reason: dvd:patterns-gnome-gnome
+   - libgnome-qr-gtk-4-0 # reason: dvd:patterns-gnome-gnome
    - libgnomesu # reason: dvd:patterns-gnome-gnome
    - libgnomesu-lang # reason: dvd:patterns-gnome-gnome
    - libgnomesu0 # reason: dvd:patterns-gnome-gnome
@@ -2152,7 +2156,7 @@ packagesets:
    - libgtk-vnc-2_0-0 # reason: dvd:patterns-gnome-gnome
    - libgtkmm-3_0-1 # reason: dvd:patterns-media-rest_cd_core
    - libgtkmm-4_0-0 # reason: dvd:patterns-gnome-gnome
-   - libgtksourceview-4-0 # reason: dvd:patterns-gnome-gnome
+   - libgtksourceview-4-0 # reason: dvd:patterns-xfce-xfce
    - libgtksourceview-5-0 # reason: dvd:patterns-gnome-gnome
    - libgtop-2_0-11 # reason: dvd:patterns-gnome-gnome
    - libgtop-lang # reason: dvd:patterns-gnome-gnome
@@ -2351,8 +2355,6 @@ packagesets:
    - libmad0 # reason: dvd:patterns-kde-kde
    - libmagic1 # reason: dvd:openSUSE-release
    - libmailutils9 # reason: dvd:patterns-base-console
-   - libmalcontent-0-0 # reason: dvd:patterns-gnome-gnome
-   - libmalcontent-ui-1-1 # reason: dvd:patterns-gnome-gnome
    - libmana1 # reason: dvd:patterns-media-rest_dvd
    - libmanette-0_2-0 # reason: dvd:patterns-gnome-gnome
    - libmariadb3 # reason: dvd:openSUSE-release
@@ -2366,9 +2368,11 @@ packagesets:
    - libmd4c0 # reason: dvd:openSUSE-release
    - libmediaart-2_0-0 # reason: dvd:patterns-gnome-gnome
    - libmediacheck7 # reason: dvd:patterns-kde-kde
+   - libmediainfo0 # reason: dvd:patterns-gnome-gnome
    - libmetalink3 # reason: dvd:patterns-base-console
    - libmicrodns1 # reason: dvd:patterns-gnome-gnome
    - libmilter1_0 # reason: common_locks:expansion
+   - libministream1 # reason: dvd:patterns-gnome-gnome
    - libminiupnpc21 # reason: dvd:patterns-xfce-xfce
    - libminizip1 # reason: dvd:patterns-kde-kde
    - libminizip1-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
@@ -2376,6 +2380,7 @@ packagesets:
    - libmlx4-1 # reason: dvd:patterns-media-rest_dvd
    - libmlx5-1 # reason: dvd:patterns-media-rest_dvd
    - libmm-glib0 # reason: dvd:patterns-gnome-gnome
+   - libmms0 # reason: dvd:patterns-gnome-gnome
    - libmng2 # reason: dvd:patterns-gnome-gnome
    - libmng2-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libmnl0 # reason: dvd:openSUSE-release
@@ -2483,7 +2488,7 @@ packagesets:
    - libosinfo-1_0-0 # reason: dvd:patterns-gnome-gnome
    - libosinfo-lang # reason: dvd:patterns-gnome-gnome
    - libostree # reason: dvd:patterns-kde-kde
-   - libostree-1-1 # reason: dvd:patterns-gnome-gnome
+   - libostree-1-1 # reason: dvd:patterns-kde-kde
    - libotf1 # reason: dvd:openSUSE-release
    - libp11-3 # reason: dvd:rng-tools
    - libp11-kit0 # reason: dvd:openSUSE-release
@@ -2559,6 +2564,8 @@ packagesets:
    - libpotrace0 # reason: dvd:inkscape
    - libppd # reason: dvd:patterns-gnome-gnome
    - libppd2 # reason: dvd:patterns-gnome-gnome
+   - libppsdocument4_0-6 # reason: dvd:patterns-gnome-gnome
+   - libppsview4_0-5 # reason: dvd:patterns-gnome-gnome
    - libpq5 # reason: dvd:patterns-server-mail_server
    - libproc2-1 # reason: dvd:patterns-gnome-gnome
    - libprotobuf-c1 # reason: dvd:patterns-gnome-gnome
@@ -2642,7 +2649,6 @@ packagesets:
    - libreoffice-qt6 # reason: dvd:patterns-kde-kde
    - libreoffice-share-linker # reason: dvd:openSUSE-release
    - libreoffice-writer # reason: dvd:openSUSE-release
-   - libreofficekit # reason: dvd:patterns-gnome-gnome
    - librest-1_0-0 # reason: dvd:patterns-gnome-gnome
    - librevenge-0_0-0 # reason: dvd:openSUSE-release
    - librevenge-stream-0_0-0 # reason: dvd:inkscape
@@ -2752,7 +2758,7 @@ packagesets:
    - libsvrcore0 # reason: dvd:patterns-media-rest_dvd
    - libswresample6 # reason: dvd:openSUSE-release
    - libswscale9 # reason: dvd:openSUSE-release
-   - libsynctex2 # reason: dvd:patterns-gnome-gnome
+   - libsynctex2 # reason: dvd:patterns-xfce-xfce
    - libsysfs2 # reason: dvd:patterns-media-rest_cd_core
    - libsystemd0 # reason: dvd:openSUSE-release
    - libsystemd0-32bit # reason: dvd:patterns-media-rest_dvd
@@ -2992,6 +2998,7 @@ packagesets:
    - libzbar0 # reason: dvd:patterns-gnome-gnome
    - libzck1 # reason: dvd:patterns-gnome-gnome
    - libzeitgeist-2_0-0 # reason: dvd:patterns-xfce-xfce
+   - libzen0 # reason: dvd:patterns-gnome-gnome
    - libzhuyin15 # reason: dvd:openSUSE-release
    - libzimg2 # reason: dvd:openSUSE-release
    - libzio1 # reason: dvd:patterns-gnome-gnome
@@ -3053,9 +3060,6 @@ packagesets:
    - make # reason: dvd:sendmail
    - make-lang # reason: dvd:sendmail
    - makedumpfile # reason: dvd:kdump
-   - malcontent # reason: dvd:patterns-gnome-gnome
-   - malcontent-control # reason: dvd:patterns-gnome-gnome
-   - malcontent-lang # reason: dvd:patterns-gnome-gnome
    - man # reason: dvd:patterns-base-console
    - man-pages-ja # reason: dvd:patterns-base-console
    - man-pages-zh_CN # reason: dvd:patterns-base-console
@@ -3414,6 +3418,7 @@ packagesets:
    - permissions # reason: dvd:openSUSE-release
    - permissions-config # reason: dvd:openSUSE-release
    - phalanx # reason: dvd:patterns-gnome-gnome
+   - phodav-3.0-lang # reason: dvd:patterns-gnome-gnome
    - phonon-vlc-lang # reason: dvd:patterns-kde-kde
    - phonon-vlc-qt5 # reason: dvd:patterns-kde-kde
    - phonon-vlc-qt6 # reason: dvd:patterns-kde-kde
@@ -4066,8 +4071,6 @@ packagesets:
    - typelib-1_0-Clutter-1_0 # reason: dvd:patterns-xfce-xfce
    - typelib-1_0-Cogl-1_0 # reason: dvd:patterns-xfce-xfce
    - typelib-1_0-CoglPango-1_0 # reason: dvd:patterns-xfce-xfce
-   - typelib-1_0-EvinceDocument-3_0 # reason: dvd:patterns-gnome-gnome
-   - typelib-1_0-EvinceView-3_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Fwupd-2_0 # reason: dvd:patterns-kde-kde
    - typelib-1_0-GExiv2-0_10 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-GIRepository-3_0 # reason: dvd:patterns-gnome-gnome
@@ -4088,9 +4091,13 @@ packagesets:
    - typelib-1_0-Gfls-1 # reason: dvd:gedit
    - typelib-1_0-Gio-2_0 # reason: dvd:openSUSE-release
    - typelib-1_0-GjsPrivate-1_0 # reason: dvd:patterns-gnome-gnome
+   - typelib-1_0-GlyGtk-2 # reason: dvd:patterns-gnome-gnome
+   - typelib-1_0-Gly_2 # reason: dvd:patterns-gnome-gnome
+   - typelib-1_0-GnomeAutoar-0_1 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-GnomeBG-4_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-GnomeBluetooth-3_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-GnomeDesktop-4_0 # reason: dvd:patterns-gnome-gnome
+   - typelib-1_0-GnomeQR-4_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Graphene-1_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Grl-0_3 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Gst-1_0 # reason: dvd:patterns-gnome-gnome
@@ -4102,24 +4109,24 @@ packagesets:
    - typelib-1_0-Gtk-4_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-GtkClutter-1_0 # reason: dvd:patterns-xfce-xfce
    - typelib-1_0-GtkSource-300 # reason: dvd:gedit
-   - typelib-1_0-GtkSource-4 # reason: dvd:patterns-gnome-gnome
+   - typelib-1_0-GtkSource-5 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Handy-1_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-HarfBuzz-0_0 # reason: dvd:openSUSE-release
    - typelib-1_0-IBus-1_0 # reason: dvd:openSUSE-release
-   - typelib-1_0-JavaScriptCore-4_1 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-JavaScriptCore-6_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Json-1_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Libxfce4ui-2_0 # reason: dvd:patterns-xfce-xfce
    - typelib-1_0-Libxfce4util-1_0 # reason: dvd:patterns-xfce-xfce
    - typelib-1_0-LunarCalendar-3_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-LunarDate-3_0 # reason: dvd:patterns-gnome-gnome
-   - typelib-1_0-Malcontent-0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-MediaArt-2_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-NM-1_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-NMA4-1_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Notify-0_7 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-PackageKitGlib-1_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Pango-1_0 # reason: dvd:openSUSE-release
+   - typelib-1_0-PapersDocument-4_0 # reason: dvd:patterns-gnome-gnome
+   - typelib-1_0-PapersView-4_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Polkit-1_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Rest-1_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Rsvg-2_0 # reason: dvd:patterns-gnome-gnome
@@ -4132,7 +4139,6 @@ packagesets:
    - typelib-1_0-Tracker-3_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-UpowerGlib-1_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-WebKit-6_0 # reason: dvd:patterns-gnome-gnome
-   - typelib-1_0-WebKit2-4_1 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Wnck-3_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Xdp-1_0 # reason: dvd:patterns-gnome-gnome
    - typelib-1_0-Xfconf-0 # reason: dvd:patterns-xfce-xfce

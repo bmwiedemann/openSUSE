@@ -1436,6 +1436,10 @@ unsorted:
   - bea-stax 
   - bea-stax-api 
   - bea-stax-javadoc 
+  - beads 
+  - beads-bash-completion 
+  - beads-fish-completion 
+  - beads-zsh-completion 
   - bean-validation-api 
   - bean-validation-api-javadoc 
   - beansbinding 
@@ -5138,13 +5142,7 @@ unsorted:
   - gede 
   - gede-qt6 
   - gedit-devel 
-  - gedit-plugin-bookmarks 
   - gedit-plugin-devhelp 
-  - gedit-plugin-drawspaces 
-  - gedit-plugin-smartspaces 
-  - gedit-plugin-wordcompletion 
-  - gedit-plugins 
-  - gedit-plugins-lang 
   - gedit-theme-adapta 
   - geeqie 
   - geeqie-lang 
@@ -7447,7 +7445,6 @@ unsorted:
   - gnome-2048 
   - gnome-2048-lang 
   - gnome-autoar-devel 
-  - gnome-autoar-gtk-devel 
   - gnome-backgrounds 
   - gnome-bluetooth-devel 
   - gnome-boxes 
@@ -8669,6 +8666,10 @@ unsorted:
   - herbstluftwm-examples 
   - herbstluftwm-fish-completion 
   - herbstluftwm-zsh-completion 
+  - herdr 
+  - herdr-bash-completion 
+  - herdr-fish-completion 
+  - herdr-zsh-completion 
   - heroes-tron 
   - heroic-epic-integration 
   - heroic-games-launcher 
@@ -8878,9 +8879,7 @@ unsorted:
   - hyprgraphics-devel 
   - hypridle 
   - hyprland 
-  - hyprland-bash-completion 
   - hyprland-devel 
-  - hyprland-fish-completion 
   - hyprland-guiutils 
   - hyprland-plugin-borders-plus-plus 
   - hyprland-plugin-csgo-vulkan-fix 
@@ -8890,7 +8889,6 @@ unsorted:
   - hyprland-qt-support 
   - hyprland-qtutils 
   - hyprland-wallpapers 
-  - hyprland-zsh-completion 
   - hyprlang-devel 
   - hyprlock 
   - hyprpaper 
@@ -13803,6 +13801,7 @@ unsorted:
   - libgfxdr0 
   - libggml-base0 
   - libggml-cpu 
+  - libggml-hip 
   - libggml-opencl 
   - libggml-openvino 
   - libggml-vulkan 
@@ -13870,7 +13869,6 @@ unsorted:
   - libgmsh4_15 
   - libgmxapi0 
   - libgmxapi_mpi0 
-  - libgnome-autoar-gtk-0-0 
   - libgnome-desktop-3-devel 
   - libgnome-desktop-4-devel 
   - libgnome-games-support-1-3 
@@ -13987,8 +13985,9 @@ unsorted:
   - libgovirt-devel 
   - libgovirt-lang 
   - libgovirt2 
-  - libgpaste-2-0 
-  - libgpaste-gtk4-1 
+  - libgpaste-3-2 
+  - libgpaste-daemon3 
+  - libgpaste-gtk4-2 
   - libgpg-error-devel 
   - libgpg-error-devel-32bit 
   - libgpgme45-32bit 
@@ -14029,6 +14028,7 @@ unsorted:
   - libgraphene-devel 
   - libgraphite2-3-32bit 
   - libgravatar-devel 
+  - libgrdpcsc0 
   - libgretl-1_0-51 
   - libgromacs11 
   - libgromacs_mpi11 
@@ -14938,7 +14938,6 @@ unsorted:
   - libmediaart-devel 
   - libmediacheck-devel 
   - libmediainfo-devel 
-  - libmediainfo0 
   - libmedimport0 
   - libmeep32 
   - libmemcache-devel 
@@ -15020,7 +15019,6 @@ unsorted:
   - libmlx4-1-32bit 
   - libmlx5-1-32bit 
   - libmms-devel 
-  - libmms0 
   - libmng-devel 
   - libmnl-devel 
   - libmnl-doc 
@@ -15121,7 +15119,7 @@ unsorted:
   - libmunge2 
   - libmuparser2_3_5 
   - libmuparserx4_0_12 
-  - libmupdf28_5 
+  - libmupdf28_6 
   - libmupen64plus-devel 
   - libmupen64plus2 
   - libmusicbrainz-devel 
@@ -15759,8 +15757,6 @@ unsorted:
   - libppl14 
   - libppl_c4 
   - libpplite7 
-  - libppsdocument4_0-6 
-  - libppsview4_0-5 
   - libpq5-32bit 
   - libpqos-devel 
   - libpqos7 
@@ -16288,6 +16284,7 @@ unsorted:
   - libreoffice-sdk-doc 
   - libreoffice-voikko 
   - libreoffice-writer-extensions 
+  - libreofficekit 
   - libreofficekit-devel 
   - libreplaygain-devel 
   - libreplaygain1 
@@ -16383,7 +16380,6 @@ unsorted:
   - librygel-db-2_8-0 
   - librygel-renderer-2_8-0 
   - librygel-renderer-gst-2_8-0 
-  - librygel-ruih-2_8-0 
   - librygel-server-2_8-0 
   - libryml0_16 
   - libryokucha0 
@@ -16964,7 +16960,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent54 
+  - libtorrent55 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -17736,7 +17732,6 @@ unsorted:
   - libzeitgeist-1_0-1 
   - libzeitgeist-devel 
   - libzen-devel 
-  - libzen0 
   - libzfp1 
   - libzia-4_73 
   - libzia-devel 
@@ -18480,6 +18475,7 @@ unsorted:
   - lugaru 
   - lugaru-data 
   - luksmeta 
+  - lumine-capture 
   - lunar-calendar-devel 
   - lunar-calendar-doc 
   - lunar-date-devel 
@@ -18648,7 +18644,6 @@ unsorted:
   - makewhat 
   - mako 
   - malaga-suomi 
-  - malcontent-devel 
   - maliit-framework 
   - maliit-framework-doc 
   - maliit-framework-tests 
@@ -19327,6 +19322,7 @@ unsorted:
   - minisat 
   - minisat-devel 
   - minisign 
+  - ministream-devel 
   - minitube 
   - minitube-lang 
   - miniupnpc 
@@ -46426,6 +46422,8 @@ unsorted:
   - typelib-1_0-Eek-0_90 
   - typelib-1_0-Entangle-0_1 
   - typelib-1_0-Eom-1_0 
+  - typelib-1_0-EvinceDocument-3_0 
+  - typelib-1_0-EvinceView-3_0 
   - typelib-1_0-FPrint-2_0 
   - typelib-1_0-Farstream-0_2 
   - typelib-1_0-FcitxG-1_0 
@@ -46440,7 +46438,8 @@ unsorted:
   - typelib-1_0-GExiv2-0_16 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
-  - typelib-1_0-GPaste-2 
+  - typelib-1_0-GPaste-3 
+  - typelib-1_0-GPasteDaemon-1 
   - typelib-1_0-GPasteGtk-4 
   - typelib-1_0-GPlugin-1_0 
   - typelib-1_0-GPluginGtk4-1_0 
@@ -46470,14 +46469,10 @@ unsorted:
   - typelib-1_0-GitgExt-1_0 
   - typelib-1_0-Gkbd-3_0 
   - typelib-1_0-Gladeui-2_0 
-  - typelib-1_0-GlyGtk-2 
-  - typelib-1_0-Gly_2 
   - typelib-1_0-Gm-0 
-  - typelib-1_0-GnomeAutoar-0_1 
-  - typelib-1_0-GnomeAutoarGtk-0_1 
   - typelib-1_0-GnomeDesktop-3_0 
   - typelib-1_0-GnomeKeyring-1_0 
-  - typelib-1_0-GnomeRR-4_0 
+  - typelib-1_0-GnomeQRGtk-4_0 
   - typelib-1_0-GoVirt-1_0 
   - typelib-1_0-Goa-1_0 
   - typelib-1_0-Gom-1_0 
@@ -46526,7 +46521,7 @@ unsorted:
   - typelib-1_0-GtkLayerShell-0_1 
   - typelib-1_0-GtkSessionLock-0_1 
   - typelib-1_0-GtkSource-3_0 
-  - typelib-1_0-GtkSource-5 
+  - typelib-1_0-GtkSource-4 
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
@@ -46537,6 +46532,7 @@ unsorted:
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ibis-1_0 
   - typelib-1_0-Ido3-0_1 
+  - typelib-1_0-JavaScriptCore-4_1 
   - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Jsonrpc-1_0 
   - typelib-1_0-Keybinder-3_0 
@@ -46555,13 +46551,13 @@ unsorted:
   - typelib-1_0-Libxfce4windowing-0_0 
   - typelib-1_0-Libxfce4windowingui-0_0 
   - typelib-1_0-LightDM-1 
-  - typelib-1_0-MalcontentUi-1 
   - typelib-1_0-Manette-0_2-0 
   - typelib-1_0-MateDesktop-2_0 
   - typelib-1_0-MateMenu-2_0 
   - typelib-1_0-MatePanelApplet-4_0 
   - typelib-1_0-Matekbd-1_0 
   - typelib-1_0-Mbim-1_0 
+  - typelib-1_0-Ministream-1 
   - typelib-1_0-ModemManager-1_0 
   - typelib-1_0-Modulemd-2_0 
   - typelib-1_0-Msg-1 
@@ -46574,11 +46570,10 @@ unsorted:
   - typelib-1_0-OsmGpsMap-1_0 
   - typelib-1_0-Panel-1 
   - typelib-1_0-PantheonWayland-1_0 
-  - typelib-1_0-PapersDocument-4_0 
-  - typelib-1_0-PapersView-4_0 
   - typelib-1_0-Peas-1_0 
   - typelib-1_0-Peas-2 
   - typelib-1_0-PeasGtk-1_0 
+  - typelib-1_0-Phodav-3_0 
   - typelib-1_0-Playerctl-2_0 
   - typelib-1_0-Pluma-1_0 
   - typelib-1_0-Poppler-0_18 
@@ -46608,6 +46603,7 @@ unsorted:
   - typelib-1_0-Vips-8.0 
   - typelib-1_0-Vte-2_91 
   - typelib-1_0-Vte-3_91 
+  - typelib-1_0-WebKit2-4_1 
   - typelib-1_0-WebKit2WebExtension-4_1 
   - typelib-1_0-WebKitWebProcessExtension-6_0 
   - typelib-1_0-Wp-0_5 
