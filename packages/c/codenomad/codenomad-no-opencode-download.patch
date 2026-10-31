@@ -1,0 +1,35 @@
+Never download OpenCode at runtime; use the system package.
+
+Upstream's update service installs @opencode/cli via npm into the
+user prefix when the configured binary is missing or outdated.
+On openSUSE OpenCode ships as an RPM dependency, so upgrades must
+flow through RPM. canUpgradeBinary reports false (the UI then hides
+the upgrader) and upgradeBinary fails loudly if reached.
+
+--- a/packages/server/src/opencode-update/service.ts	2026-10-30 16:29:51.185673263 +0100
++++ b/packages/server/src/opencode-update/service.ts	2026-10-30 16:29:51.189673711 +0100
+@@ -337,7 +337,9 @@
+     },
+     probeBinary: probeBinaryVersionAsync,
+     resolveLatestVersion: resolveLatestOpenCodeVersion,
+-    canUpgradeBinary: binary => defaultSelection(binary) && Boolean(bundledNpm()) && Boolean(sharedInstallPrefix()),
++    // Distro build: OpenCode comes from the system package, never via npm
++    // into the user prefix. Upgrades flow through RPM.
++    canUpgradeBinary: () => false,
+     inspectInstallation: binary => {
+       if (!defaultSelection(binary)) return {}
+       const plan = sharedInstallationPlan()
+@@ -348,9 +350,10 @@
+           ...(plan.foreign.blocked ? { blocked: plan.foreign.blocked } : {}) } } : {}),
+       }
+     },
+-    upgradeBinary: async (_binary, version, options) => {
+-      await installSharedOpenCode(version, { replaceLegacy: options.replaceLegacy })
+-      return { success: true, version }
++    upgradeBinary: async (_binary, _version, _options) => {
++      // Distro build: refuse runtime downloads; the caller surfaces this.
++      throw new OpenCodeUpdateError("upgrade_failed",
++        "OpenCode is managed by the distribution package; update it via RPM instead of the in-app upgrader.");
+     },
+     lifecycle: binary => workspaceManager.setupServiceOptions(binary.path).then(options => options.lifecycle),
+     reconnect: binary => workspaceManager.reconnectAfterSetup(binary.path),

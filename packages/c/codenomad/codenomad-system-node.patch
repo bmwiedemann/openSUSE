@@ -1,0 +1,70 @@
+Use the system Node.js instead of the pinned download.
+
+Upstream's prebuild downloads the exact Node release from nodejs.org
+at build time and the Rust backend resolves that bundled copy at
+runtime. OBS builds have no network, so skip the download and fall
+back to /usr/bin/node (or $NODE_BINARY). The system nodejs24
+satisfies the 24.x pin.
+
+--- a/packages/tauri-app/scripts/prebuild.js	2026-10-30 16:29:51.169671468 +0100
++++ b/packages/tauri-app/scripts/prebuild.js	2026-10-30 16:29:51.173671917 +0100
+@@ -180,7 +180,10 @@
+     fs.rmSync(staged.stagingRoot, { recursive: true, force: true })
+   }
+   copyUiLoadingAssets()
+-  await prepareBundledNodeRuntime({ resourcesRoot, target: staged.target })
++  // Distro build: use the system Node.js instead of downloading the pinned
++  // release at build time (no network on OBS). The Rust side falls back to
++  // /usr/bin/node (see managed_node.rs).
++  console.log("[prebuild] skipping bundled Node download; using system node")
+   execSync(
+     `${JSON.stringify(process.execPath)} ${JSON.stringify(path.join(workspaceRoot, "scripts", "smoke-packaged-resources.cjs"))} --resources ${JSON.stringify(resourcesRoot)} --loading ${JSON.stringify(uiLoadingDest)}`,
+     {
+--- a/packages/tauri-app/src-tauri/src/managed_node.rs	2026-10-30 16:29:51.177672365 +0100
++++ b/packages/tauri-app/src-tauri/src/managed_node.rs	2026-10-30 16:29:51.181672814 +0100
+@@ -2,6 +2,17 @@
+ use std::path::{Path, PathBuf};
+ 
+ pub fn resolve_bundled_node_binary() -> anyhow::Result<String> {
++    // Distro build: prefer the system Node.js over a downloaded bundle.
++    if let Ok(env_binary) = std::env::var("NODE_BINARY") {
++        if std::path::Path::new(&env_binary).is_file() {
++            return Ok(env_binary);
++        }
++    }
++    for system in ["/usr/bin/node", "/usr/local/bin/node"] {
++        if std::path::Path::new(system).is_file() {
++            return Ok(system.to_string());
++        }
++    }
+     let relative_binary = binary_relative_path();
+     let platform_dir = platform_dir_name()?;
+ 
+--- a/scripts/smoke-packaged-resources.cjs	2026-10-30 17:26:33.163232014 +0100
++++ b/scripts/smoke-packaged-resources.cjs	2026-10-30 17:26:33.167232463 +0100
+@@ -70,9 +70,12 @@
+   const remoteTunnel = path.join(serverRoot, "dist", "remote-control", "tunnel-runtime.js")
+   // The web app's icon, which also names Tauri's notifications on Windows.
+   const appIcon = path.join(serverRoot, "public", "pwa-192x192.png")
+-  const node = nodeBinary(resourcesRoot, target)
++  // Distro build: no downloaded bundle on OBS; smoke the system Node.js
++  // that the Rust backend resolves at runtime (see managed_node.rs).
++  const bundledNode = nodeBinary(resourcesRoot, target)
++  const node = fs.existsSync(bundledNode) ? bundledNode : "/usr/bin/node"
+ 
+-  for (const requiredPath of [node, entrypoint, remoteTunnel, appIcon, path.join(serverRoot, "node_modules")]) {
++  for (const requiredPath of [entrypoint, remoteTunnel, appIcon, path.join(serverRoot, "node_modules")]) {
+     if (!fs.existsSync(requiredPath)) throw new Error(`Missing packaged runtime path: ${requiredPath}`)
+   }
+ 
+@@ -89,7 +92,9 @@
+   }
+ 
+   const version = run(node, ["--version"], { stdio: "pipe", encoding: "utf8" }).stdout.trim()
+-  if (version !== MANAGED_NODE_VERSION) {
++  // Distro build: the system Node floats ahead of the pinned LTS (Factory
++  // has a newer 24.x); require the same major instead of the exact pin.
++  if (version.split(".")[0] !== MANAGED_NODE_VERSION.split(".")[0]) {
+     throw new Error(`Packaged Node version ${version} does not match ${MANAGED_NODE_VERSION}`)
+   }
+   console.log(`packaged Node version ok: ${version}`)

@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Fri Oct 30 19:11:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package 1.0.1 (Tauri flavor): AI coding command center.
+  System nodejs24 + system opencode; upstream updater disabled,
+  in-app OpenCode npm installer neutered.

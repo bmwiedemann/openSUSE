@@ -1,0 +1,21 @@
+Force the server's remote UI self-update off.
+
+Upstream leaves the remote UI update check on by default and the
+Tauri shell never passes --ui-no-update, so a running server would
+fetch UI assets over the network and overwrite the RPM payload.
+RPM owns updates: pass the flag alongside the other serve
+arguments (the desktop updater itself is already inert without a
+signing key).
+
+--- a/packages/tauri-app/src-tauri/src/cli_manager.rs	2026-10-30 18:28:01.392985244 +0100
++++ b/packages/tauri-app/src-tauri/src/cli_manager.rs	2026-10-30 18:28:01.404986591 +0100
+@@ -1735,6 +1735,9 @@
+             auth_cookie_name.to_string(),
+             "--generate-token".to_string(),
+             "--unrestricted-root".to_string(),
++            // Distro build: the server's remote UI self-update stays on by
++            // default upstream; RPM owns updates, so force it off here.
++            "--ui-no-update".to_string(),
+         ];
+ 
+         if dev {

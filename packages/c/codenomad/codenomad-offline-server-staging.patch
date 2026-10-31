@@ -1,0 +1,46 @@
+Stage server deps with install instead of ci for offline builds.
+
+Upstream stages production server dependencies with `npm ci` from
+the workspace lock. The OBS local-npm-registry proxy answers
+metadata and /-/file tarball requests but 400s the lock-style
+/<pkg>/-/<file> URLs ci requests, so the staging install dies
+offline. `install` without a staged lock resolves the same
+vendored tarballs through metadata instead; the workspace lock was
+already integrity-validated from the source tree above, and the
+missing sibling workspaces are tolerated (verified).
+
+--- a/scripts/desktop-server-resources.cjs	2026-10-30 17:03:26.251664434 +0100
++++ b/scripts/desktop-server-resources.cjs	2026-10-30 17:17:16.832825767 +0100
+@@ -73,12 +73,21 @@
+   try {
+     fs.mkdirSync(stagedServerRoot, { recursive: true })
+     fs.copyFileSync(path.join(workspaceRoot, "package.json"), path.join(stagingRoot, "package.json"))
+-    fs.copyFileSync(lockPath, path.join(stagingRoot, "package-lock.json"))
++    // Distro build: do NOT copy the workspace lock here. Any npm command
++    // run with a lock requests its `resolved` tarball URLs verbatim, and
++    // the offline proxy 400s the /<pkg>/-/<file> form (see above), so even
++    // `install` dies when a lock is present. Without it npm resolves the
++    // same vendored tarballs through metadata, like the top-level build.
++    // (The lock was already integrity-validated from the source tree above.)
+     fs.copyFileSync(path.join(serverRoot, "package.json"), path.join(stagedServerRoot, "package.json"))
+ 
+     log(`installing production server dependencies from the workspace lock for ${npmTarget.target}`)
++    // Distro build: the OBS local-npm-registry proxy serves metadata
++    // (/-/file) but not lock-style /<pkg>/-/<file> tarball URLs, so the
++    // pristine `npm ci` below 400s offline. `install` resolves the same
++    // vendored tarballs through metadata instead.
+     const npmArgs = [
+-      "ci",
++      "install",
+       "--workspace",
+       "@neuralnomads/codenomad",
+       "--include-workspace-root=false",
+@@ -96,7 +105,7 @@
+         : ["npm", npmArgs]
+     const result = spawnSync(npmCli[0], npmCli[1], { cwd: stagingRoot, stdio: "inherit", env })
+     if (result.error) throw result.error
+-    if (result.status !== 0) throw new Error(`npm ci exited with code ${result.status ?? 1}`)
++    if (result.status !== 0) throw new Error(`npm install exited with code ${result.status ?? 1}`)
+ 
+     const rootModules = path.join(stagingRoot, "node_modules")
+     const serverModules = path.join(stagedServerRoot, "node_modules")

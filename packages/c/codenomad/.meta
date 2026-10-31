@@ -1,0 +1,5 @@
+<package name="codenomad" project="openSUSE:Factory">
+  <title>AI coding command center (Tauri desktop)</title>
+  <description>CodeNomad desktop client (Tauri flavor): web UI for AI coding agents with a bundled server. This build uses the system Node.js and system opencode, with the upstream self-updater disabled.</description>
+  <url>https://github.com/NeuralNomadsAI/CodeNomad</url>
+</package>
