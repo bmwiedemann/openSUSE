@@ -303,4 +303,12 @@
     <comment>gn 0.20260928, for chromium 156</comment>
     <requestid>1386950</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>49bfff449f1af7336fa506b4bb4966d8</srcmd5>
+    <version>0.20261007</version>
+    <time>1793484412</time>
+    <user>dimstar_suse</user>
+    <comment>gn 0.20261007, dependency for Chromium 158</comment>
+    <requestid>1393778</requestid>
+  </revision>
 </revisionlist>

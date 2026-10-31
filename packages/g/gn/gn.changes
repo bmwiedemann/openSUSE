@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 29 23:53:37 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 0.20261007:
+  * Add no_check_generated_targets .gn variable
+  * Improve the suggestion heuristic for depending on targets.
+  * Do not generate last_commit_position.h in debug builds.
+  * Enable check_includes_strict by default.
+  * Disable rust formatter on main branch.
+  * Add include sorting configuration to .clang-format and reformat
+  * Delayed generated_file() writes if they collect validations metadata
+  * Stop forwarding private hard_deps on check_includes_strict targets
+  * Add `collect_validations_metadata` boolean flag to generated_file() targets.
+  * Add new experimental_collect_validations_metadata .gn variable
+  * Move generated_file() writes to dedicated function.
+  * Avoid canonicalization + string comparisons during metadata collection.
+  * Use internal state struct for Target::GetMetadata().
+  * Fix minor Scheduler data races.
+  * rust: Don't make rlibs depend on non-Rust link inputs
+
+-------------------------------------------------------------------
 Tue Sep 29 09:58:14 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 0.20260928:
