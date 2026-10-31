@@ -15,4 +15,12 @@
     <comment>Fix adi:5 build: braced macros, drop unused egui pins.</comment>
     <requestid>1393736</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>25c73773f3d8e2b1276d12d2c31cf9d9</srcmd5>
+    <version>0.13.1</version>
+    <time>1793484667</time>
+    <user>dimstar_suse</user>
+    <comment>Update deckcraft to 0.13.1</comment>
+    <requestid>1394153</requestid>
+  </revision>
 </revisionlist>

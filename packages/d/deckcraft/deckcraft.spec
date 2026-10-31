@@ -17,7 +17,7 @@
 
 
 Name:           deckcraft
-Version:        0.12.0
+Version:        0.13.1
 Release:        0
 Summary:        Native presentation app with slides, shows and an agent API
 # Legal-Review-Notice: scope is the two shipped targets (deckcraft, deckcraft-cli)
@@ -41,6 +41,9 @@ License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Cl
 URL:            https://github.com/storytold/deckcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# Of the vendor tree's prebuilt files only libloading's Windows-only test
+# fixtures remain; checksums forbid stripping them, so each is named below.
+# Source-Binary-Exception: vendor.tar.zst:vendor/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's #![cfg(windows)] tests, never on Linux
 # PATCH-FIX-OPENSUSE deckcraft-no-self-update.patch -- distro builds
 # must not phone home at startup nor offer to install an upstream release
 # over RPM-owned files (the package manager owns updates); the manual
@@ -126,10 +129,10 @@ install -Dm0755 target/release/deckcraft-cli %{buildroot}%{_bindir}/deckcraft-cl
 install -Dm0644 packaging/linux/ai.storyteller.deckcraft.desktop %{buildroot}%{_datadir}/applications/ai.storyteller.deckcraft.desktop
 install -Dm0644 packaging/linux/ai.storyteller.deckcraft.mime.xml %{buildroot}%{_datadir}/mime/packages/ai.storyteller.deckcraft.xml
 install -d -m 0755 %{buildroot}%{_datadir}/metainfo
-# Fixed upstream release date (v0.12.0, 2026-10-28): a build-time date would
+# Fixed upstream release date (v0.13.1, 2026-10-31): a build-time date would
 # make the metainfo differ on every rebuild, and spec-cleaner macro-expands
 # the %-sequences of any date format string, so keep this a plain string.
-sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-28/g" packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.deckcraft.metainfo.xml
+sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-31/g" packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.deckcraft.metainfo.xml
 # Upstream declares the app icon as type="stock" but it is a custom hicolor
 # icon, so declare it as cached for appstream validation.
 sed -i 's|<icon type="stock">ai.storyteller.deckcraft</icon>|<icon type="cached" width="64" height="64">ai.storyteller.deckcraft.png</icon>|' %{buildroot}%{_datadir}/metainfo/ai.storyteller.deckcraft.metainfo.xml
