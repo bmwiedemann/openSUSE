@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 31 17:00:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.2
+  * Re-segment GRO/LRO/TSO-merged TCP frames in the raw Ethernet
+    NIO.
+  * fix(tc): build against pre-6.6 kernel headers lacking
+    TCA_NETEM_PRNG_SEED.
+  * Drop frames on ENOBUFS instead of killing the process.
+
+-------------------------------------------------------------------
 Mon Oct 19 17:10:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.3.1
