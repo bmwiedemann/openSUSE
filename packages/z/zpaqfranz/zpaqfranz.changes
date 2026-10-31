@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:46:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.16:
+  * New 'repack'/'purge' command: rebuild an archive keeping only
+    wanted versions (lists, last-N, date rules like 7d4w12my),
+    with -test dry run and -quick whole-block copy
+  * Extract fixes: case-colliding and reserved-name files no longer
+    lost, renames reported; 'w'/'tw' over many archives list what
+    is not OK; -tar fixed on older builds
+
+-------------------------------------------------------------------
 Tue Oct 27 18:36:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 65.15 (upstream notes this release is still to be
