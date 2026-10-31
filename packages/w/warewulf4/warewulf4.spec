@@ -41,7 +41,8 @@ Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://warewulf.org
-Source0:        https://github.com/warewulf/warewulf/releases/download/v%{version}/warewulf-%{version}.tar.gz#/warewulf4-v%{version}.tar.gz
+# use src without ./vendor
+Source0:        https://github.com/warewulf/warewulf/archive/refs/tags/v%{version}.tar.gz#/warewulf4-v%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
@@ -52,6 +53,7 @@ Source21:       README.RKE2.md
 BuildRequires:  %{python_module Sphinx-latex}
 BuildRequires:  distribution-release
 BuildRequires:  dracut
+BuildRequires:  fdupes
 BuildRequires:  firewalld
 BuildRequires:  go >= 1.23
 BuildRequires:  golang-packaging
@@ -171,6 +173,7 @@ export OFFLINE_BUILD=1
 export LOCALSTATEDIR=%{_localstatedir}/lib
 %{makeinstall}
 
+
 # cleanup
 mkdir -p %{buildroot}%{_sbindir}/
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcwarewulfd
@@ -200,6 +203,8 @@ yq e '
 mv %{buildroot}%{ww4dir}/warewulf/overlays/host/rootfs/etc/dhcp/dhcpd.conf.ww %{buildroot}%{ww4dir}/warewulf/overlays/host/rootfs/etc/dhcpd.conf.ww
 rmdir %{buildroot}%{ww4dir}/warewulf/overlays/host/rootfs/etc/dhcp
 
+%fdupes %{buildroot}%{ww4dir}/warewulf/overlays
+
 # create systemuser
 echo "u warewulf -" > system-user-%{name}.conf
 echo "g warewulf -" >> system-user-%{name}.conf
@@ -207,6 +212,7 @@ echo "g warewulf -" >> system-user-%{name}.conf
 install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
 install -D -m 755 %{S:10} %{buildroot}%{ww4dir}/warewulf/scripts/config-warewulf.sh
 install -D -m 755 %{S:11} %{buildroot}%{ww4dir}/warewulf/scripts/adjust_overlays.sh
+touch %{buildroot}%{ww4dir}/warewulf/.upgraded-version
 
 # prepare RKE2 configuration template
 mkdir -p %{buildroot}%{ww4dir}/warewulf/overlays/rke2-config/etc/rancher/rke2
@@ -240,15 +246,17 @@ done
 %service_add_pre warewulfd.service
 
 %post
-%service_add_post warewulfd.service
-if [ $1 -eq 1 ] ; then
+if [ "$1" -eq 1 ] ; then
+    %{ww4dir}/warewulf/scripts/config-warewulf.sh
+elif [ "$1" -ge 2 ] && [ "$(cat %{ww4dir}/warewulf/.upgraded-version 2>/dev/null)" != "%{version}" ] ; then
+    # only upgrade the configuration on a version change, not on reinstall
     cp %{_sysconfdir}/warewulf/nodes.conf %{_sysconfdir}/warewulf/nodes.conf.4.6.x
     cp %{_sysconfdir}/warewulf/warewulf.conf %{_sysconfdir}/warewulf/warewulf.conf.4.6.x
     %{_bindir}/wwctl upgrade nodes --replace-overlays --add-defaults
     %{_bindir}/wwctl upgrade config
-else
-    %{ww4dir}/warewulf/scripts/config-warewulf.sh
 fi
+echo "%{version}" > %{ww4dir}/warewulf/.upgraded-version
+%service_add_post warewulfd.service
 
 %preun
 %service_del_preun warewulfd.service
@@ -283,6 +291,7 @@ fi
 %ghost %{_sysconfdir}/profile.d/ssh_setup.sh
 %ghost %{_sysconfdir}/profile.d/ssh_setup.csh
 %dir %{ww4dir}/warewulf
+%ghost %attr(0644,root,root) %{ww4dir}/warewulf/.upgraded-version
 
 %files man
 %{_mandir}/man1/wwctl*1.gz
