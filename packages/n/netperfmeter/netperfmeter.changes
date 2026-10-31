@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 31 08:25:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.14
+  * Bugfix: Parameter handling fix for --optimise.
+  * Bugfix: Fix for frame counting.
+  * Added wake-up pipe to remove timeout-based waiting for events.
+  * Shell completion fixes.
+- Update to version 2.0.13
+  * Improved script.
+  * Fixed hyphenation hint issue in manpage.
+  o Improved shell completion.
+  o Updated runtimeestimator as well.
+  o Some clean-ups and transformation to modern C++.
+  o Further improvements of the heartbeat configuration.
+  o Improved heartbeats handling, and added configuration options.
+  o Added TCP keep-alive on TCP control socket.
+  o Added test script.
+
+-------------------------------------------------------------------
 Wed Oct  7 05:55:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.12

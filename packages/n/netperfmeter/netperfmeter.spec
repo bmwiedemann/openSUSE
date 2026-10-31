@@ -18,7 +18,7 @@
 
 %define services netperfmeter.service netperfmeter-module-loader.service
 Name:           netperfmeter
-Version:        2.0.12
+Version:        2.0.14
 Release:        0
 Summary:        Network performance meter for the UDP, TCP, SCTP and DCCP protocols
 License:        GPL-3.0-or-later
@@ -62,6 +62,15 @@ The vector files can e.g. be used to create plots of the results.
 %cmake_install
 chmod +x %{buildroot}/%{_bindir}/*
 
+# Apply shebang fix for scripts
+for directory in %{_bindir} %{_datadir}/netperfmeter ; do
+   find "%{buildroot}/$directory" -type f -exec sed -i \
+      -e 's|^#!/usr/bin/env bash|#!/usr/bin/bash|' \
+      -e 's|^#!/usr/bin/env python3|#!/usr/bin/python3|' \
+      -e 's|^#!/usr/bin/env Rscript|#!/usr/bin/Rscript|' \
+      {} +
+done
+
 # don't package non-standard size icons
 for i in 150 20 310 40 42 44 8; do
   rm -rf %{buildroot}/%{_datadir}/icons/hicolor/"$i"x"$i"
@@ -101,7 +110,10 @@ done
 %{_datadir}/bash-completion/completions/combinesummaries
 %{_datadir}/bash-completion/completions/createsummary
 %{_datadir}/bash-completion/completions/extractvectors
+%{_datadir}/bash-completion/completions/getabstime
 %{_datadir}/bash-completion/completions/netperfmeter
+%{_datadir}/bash-completion/completions/netperfmeter-module-loader
+%{_datadir}/bash-completion/completions/runtimeestimator
 %{_datadir}/icons/hicolor/*/*/%{name}.*??g
 %{_datadir}/mime/packages/netperfmeter.xml
 %{_unitdir}/netperfmeter.service
