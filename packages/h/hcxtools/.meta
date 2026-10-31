@@ -1,0 +1,8 @@
+<package name="hcxtools" project="openSUSE:Factory">
+  <title>Capturing wlan traffic and conversion to hashcat and John the Ripper formats</title>
+  <description>Portable solution for capturing wlan traffic and conversion to
+hashcat and John the Ripper formats.
+
+</description>
+  <url>https://github.com/ZerBea/hcxtools</url>
+</package>

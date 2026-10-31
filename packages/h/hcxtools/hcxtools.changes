@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Fri Oct 30 20:34:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.0.0
+  * release v8.0.0 following hashcat v8.0.0
+  * support of WPA-FT-PSK.
+  * the new hash file is not(!) backwards compatible with hashcat
+    before commit hashcat/hashcat@6847f77.
+  * due to new hash lines WPA3 and WPA4 and new EAPOL limits.
+
+-------------------------------------------------------------------
+Tue Feb 24 19:16:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.1.2
+  * Another bug fix release.
+
+-------------------------------------------------------------------
+Sun Feb  8 10:58:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.1.1
+  * This is a bug fix release.
+
+-------------------------------------------------------------------
+Sun Feb  1 08:57:37 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.1.0
+  * added new tool (hcxpottool)
+  * several imrpvements
+  * several bug fixes
+
+-------------------------------------------------------------------
+Sun Sep 14 09:04:37 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.0.1
+  * hcxpcapngtool: fixed MxMxE3 MESSAGEPAIR handling on
+    option --all.
+- Update to version 7.0.0
+  * Several bug fixes and improvements.
+
+-------------------------------------------------------------------
+Mon Nov 11 14:33:30 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.3.5
+  * hcxhashtool: added new option to filter ESSID
+    --essid-regex= : filter ESSID by regular expression.
+  * several fixes and improvements.
+- Update to version 6.3.4
+  * several improvements and bug fixes.
+
+-------------------------------------------------------------------
+Wed Nov  1 19:47:32 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.3.2
+  * added simple pattern generator based on analysis of wpa-sec
+  * added -Wpedantic to compiler flags and fixed all warnings
+  * added several new weak candidates based on analysis of wpa-sec
+  * fixed some bugs
+- Update to version 6.3.2
+  * new options
+  * new weak candidates
+  * several bug fixes and improvements
+- Update to version 6.3.1
+  * do not overwrite oui.txt in case of download ERROR
+  * fixed several bugs
+  * fixed several typos
+- Update to version 6.3.0
+  * Completely refactored.
+  * Improved scan engine.
+  * Improved detection of EAPOL/EAP messages.
+  * Moved from to pselect() to epoll().
+  * Use timerfd() instead of counters.
+  * Changed several options.
+  * Removed all options and code that make hcxdumptool sluggish.
+  * Moved to RTNETLINK an NL80211 protocol.
+  * Removed entire WEXT code, because it is marked as deprecated
+    since Linux kernel 6.3.0.
+  * New real time status display instead of waterfall display.
+
+-------------------------------------------------------------------
+Mon Oct 25 21:07:06 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.2.4
+  * new options
+  * speed improvements
+  * bug fixes
+  * important notice: this is the last version supporting
+    OpenSSL 1.1
+
+-------------------------------------------------------------------
+Thu Aug 26 10:33:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 6.2.0
