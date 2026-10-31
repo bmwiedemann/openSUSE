@@ -17,7 +17,7 @@
 
 
 Name:           artcraft-launcher
-Version:        0.10.0
+Version:        0.11.1
 Release:        0
 Summary:        Install, update and launch the Craft App Suite
 # Legal-Review-Notice: scope is the one shipped target (artcraft-launcher,
@@ -59,6 +59,9 @@ License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Cl
 URL:            https://github.com/storytold/craft-launcher
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# Of the vendor tree's prebuilt files only libloading's Windows-only test
+# fixtures remain; checksums forbid stripping them, so each is named below.
+# Source-Binary-Exception: vendor.tar.zst:vendor/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's #![cfg(windows)] tests, never on Linux
 # PATCH-FIX-UPSTREAM artcraft-launcher-pkcon-first.patch -- Linux install/update/remove through PackageKit when the distro carries the app (storytold/craft-launcher#256, open): pkcon-first with download-flow fallback, OCR-reviewed
 Patch0:         artcraft-launcher-pkcon-first.patch
 # PATCH-FIX-OPENSUSE artcraft-launcher-no-self-update.patch -- rpm-managed copy must not replace itself from upstream: announce-only launcher update (download link), install path refused
@@ -120,10 +123,10 @@ right build for your computer, and keeps it up to date.
 install -Dm0755 target/release/artcraft-launcher %{buildroot}%{_bindir}/artcraft-launcher
 install -Dm0644 packaging/linux/ai.storyteller.artcraft-launcher.desktop %{buildroot}%{_datadir}/applications/ai.storyteller.artcraft-launcher.desktop
 install -d -m 0755 %{buildroot}%{_datadir}/metainfo
-# Fixed upstream release date (v0.10.0, 2026-10-29): a build-time date would
+# Fixed upstream release date (v0.11.1, 2026-10-31): a build-time date would
 # make the metainfo differ on every rebuild, and spec-cleaner macro-expands
 # the percent-sequences of any date format string, so keep this a plain string.
-sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-29/g" packaging/linux/ai.storyteller.artcraft-launcher.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.artcraft-launcher.metainfo.xml
+sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-31/g" packaging/linux/ai.storyteller.artcraft-launcher.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.artcraft-launcher.metainfo.xml
 # Upstream declares the app icon as type="stock" but it is a custom hicolor
 # icon, so declare it as cached for appstream validation.
 sed -i 's|<icon type="stock">ai.storyteller.artcraft-launcher</icon>|<icon type="cached" width="64" height="64">ai.storyteller.artcraft-launcher.png</icon>|' %{buildroot}%{_datadir}/metainfo/ai.storyteller.artcraft-launcher.metainfo.xml

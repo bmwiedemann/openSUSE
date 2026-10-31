@@ -1,6 +1,6 @@
 --- a/crates/native/src/backend.rs
 +++ b/crates/native/src/backend.rs
-@@ -556,6 +556,30 @@
+@@ -580,6 +580,30 @@
          shared.emit(Event::Progress { app: app.id.to_string(), phase: p });
      };
      let mut job = Job { http, paths, stop, phase: &mut phase, install_locations: &options.install_locations, replace, downgrade };
@@ -48,7 +48,7 @@
  //!   `~/Applications` (the AppImage convention), with a menu entry and icon in
  //!   `~/.local/share` so it shows up like any other app. A Flatpak or AppImage launcher prefers
  //!   its own format.
-@@ -964,6 +966,7 @@
+@@ -994,6 +996,7 @@
  pub(crate) mod linux {
      use std::ffi::{OsStr, OsString};
      use std::os::unix::fs::PermissionsExt;
@@ -56,7 +56,7 @@
  
      use artcraft_launcher_core::distro;
      use artcraft_launcher_core::protocol::CANCELLED;
-@@ -990,6 +993,11 @@
+@@ -1020,6 +1023,11 @@
  
      const SYSTEM: Root<'static> = Root { queue: &INSTALLER, run: &run_as_root };
  
@@ -68,7 +68,7 @@
      /// Runs `command target` as root. Jobs waiting for the same command go into one call
      /// (`apt-get install a.deb b.deb`), so the password is asked for once.
      fn as_root(
-@@ -1051,6 +1059,10 @@
+@@ -1081,6 +1089,10 @@
          let flatpak = process::is_flatpak_available();
          let is_flatpak = process::in_sandbox();
          let is_appimage = std::env::var_os("APPIMAGE").is_some();
@@ -79,7 +79,7 @@
          let root = pkexec().is_some();
          let os = ["/etc/os-release", "/usr/lib/os-release"].iter().find_map(|p| std::fs::read_to_string(p).ok()).unwrap_or_default();
          let native = distro::native_package(&distro::parse_os_release(&os));
-@@ -1148,9 +1160,181 @@
+@@ -1178,9 +1190,181 @@
          }
      }
  
@@ -261,7 +261,7 @@
          match installed.source {
              // The package detected (photocraft, or ai.storyteller.photocraft).
              InstallSource::Deb if system_tool("apt-get").is_some() => remove(&["apt-get", "-o", APT_WAITS, "remove", "-y"], package),
-@@ -3245,6 +3429,104 @@
+@@ -3354,6 +3538,104 @@
          }
      }
  

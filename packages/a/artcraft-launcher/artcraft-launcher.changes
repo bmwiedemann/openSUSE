@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:50:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.1 (upstream tags v0.10.0, v0.11.0, v0.11.1):
+  * Version choice: each app menu and Settings offer latest,
+    nightly or an exact release, with downgrade put-back.
+  * New community app SolidCraft (parametric 3D CAD); PdfCraft
+    icon and colour now red.
+  * Linux: user Flatpak installs win over system ones; host CJK
+    fonts found inside the sandbox; fixed StartupWMClass so the
+    dock icon pins; pkexec error 127 no longer a silent cancel;
+    log file created owner-only (0600).
+  * 0.11.1 proper: revert of the Windows all-users Update-all
+    permission prompt; docs and CI tidy. (0.10.0/0.11.0 also
+    rework Windows installs and macOS/AppImage downgrades.)
+  * Re-vendor (update=false, filter=true): own crates plus
+    rustls-webpki and zip patch bumps only; Windows-only crate
+    files filtered out; licence set and Legal-Review-Notice
+    unchanged; cargo_audit reports no advisories.
+  * Rebase artcraft-launcher-pkcon-first.patch for the new
+    upstream sources (run_install gained downgrade support).
+  * Keep artcraft-launcher-no-self-update.patch: the rpm-managed
+    copy only announces a newer launcher (download link), it never
+    installs upstream builds over distro files.
+- Set the fixed metainfo release date to 2026-10-31 (v0.11.1).
+
+
+-------------------------------------------------------------------
 Fri Oct 30 08:16:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.0 (upstream tag v0.10.0, 2026-10-29):
