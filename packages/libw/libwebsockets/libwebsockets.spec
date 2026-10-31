@@ -17,9 +17,9 @@
 #
 
 
-%define sover 22
+%define sover 23
 Name:           libwebsockets
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        A WebSockets library written in C
 # base64-decode.c and ssl-http2.c is under MIT license with FPC exception.
@@ -108,14 +108,14 @@ only if an application asks for it.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{sover} = %{version}
-Requires:       pkgconfig(dbus-1)
-Requires:       pkgconfig(libcrypto)
-Requires:       pkgconfig(libssl)
-Requires:       pkgconfig(sqlite3)
 Requires:       %{name}-evlib_ev
 Requires:       %{name}-evlib_event
 Requires:       %{name}-evlib_glib
 Requires:       %{name}-evlib_uv
+Requires:       pkgconfig(dbus-1)
+Requires:       pkgconfig(libcrypto)
+Requires:       pkgconfig(libssl)
+Requires:       pkgconfig(sqlite3)
 
 %description devel
 This subpackage contains libraries and header files for developing
@@ -234,10 +234,15 @@ rm %{buildroot}%{_libdir}/pkgconfig/libwebsockets_static.pc
 %files devel
 %license LICENSE
 %doc README.* changelog
-%{_includedir}/*
+%{_includedir}/lws_config.h
+%{_includedir}/libwebsockets.h
+%{_includedir}/libwebsockets
 %{_libdir}/libwebsockets.so
 %{_libdir}/pkgconfig/libwebsockets.pc
 %dir %{_libdir}/cmake/%{name}
 %{_libdir}/cmake/%{name}/*.cmake
+# exclude libwebsockets-test-server and fonts
+%exclude %{_datadir}/libwebsockets-test-server
+%exclude %{_datadir}/libwebsockets/fonts
 
 %changelog

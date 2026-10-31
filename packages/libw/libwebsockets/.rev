@@ -214,4 +214,12 @@
   the LibwebsocketsTargets.cmake INTERFACE_LINK_LIBRARIES</comment>
     <requestid>1376044</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b8d9d2aac31ac947455e8cba7ab8ca48</srcmd5>
+    <version>5.1.0</version>
+    <time>1793484693</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1394178</requestid>
+  </revision>
 </revisionlist>
