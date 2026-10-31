@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:50:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.15.2 (upstream tag v0.15.2, 2026-10-31):
+  * Non-blocking file and message dialogs; canvas repaint on
+    relink; IDML/RTF/Tagged-Text import-export fixes; PDF export
+    honors SOURCE_DATE_EPOCH; update prompt shows the app icon
+    and accent color; 43 reviewed PRs integrated.
+  * Re-vendor (update=false, filter=true): own crates plus the
+    new craft-dialogs helper (MIT OR Apache-2.0); Windows-only
+    crate files filtered out; licence set unchanged; cargo_audit
+    reports no advisories.
+- Keep designcraft-no-self-update.patch: no startup update check
+  and no install prompt, so upstream releases are never
+  installed over RPM-owned files; the manual Help check outcome
+  window stays.
+
+-------------------------------------------------------------------
 Thu Oct 29 12:40:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.0 (upstream tag v0.14.0, 2026-10-28):

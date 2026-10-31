@@ -17,13 +17,16 @@
 
 
 Name:           designcraft
-Version:        0.14.0
+Version:        0.15.2
 Release:        0
 Summary:        Page layout and publishing workbench
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND OFL-1.1 AND Ubuntu-font-1.0 AND Unicode-3.0 AND Zlib
 URL:            https://github.com/storytold/designcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor-cratesio.tar.zst
+# Of the vendor tree's prebuilt files only libloading's Windows-only test
+# fixtures remain; checksums forbid stripping them, so each is named below.
+# Source-Binary-Exception: vendor-cratesio.tar.zst:vendor-cratesio/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's #![cfg(windows)] tests, never on Linux
 # PATCH-FIX-OPENSUSE designcraft-no-self-update.patch -- distro builds
 # must not phone home at startup nor offer to install an upstream release
 # over RPM-owned files (the package manager owns updates); the manual
