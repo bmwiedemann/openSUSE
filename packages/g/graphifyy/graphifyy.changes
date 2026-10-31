@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:44:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.99 (stays on the 0.9.x track):
+  * path/shortest_path now reports the most conservative route when
+    several tie on length, noting it was the weakest of N
+    equal-length routes instead of overstating confidence
+  * Go: calls in package-level var initialisers and method values
+    passed as arguments now resolve; receiver fields typed across
+    sibling files of the same package
+  * Python: module.func values in dispatch tables resolve to the
+    real function
+  * serve: path/explain/neighbors print confidence_score as
+    [INFERRED 0.75]
+- Update to version 0.9.98:
+  * path reports weakest-hop confidence, Type.Member endpoints
+    resolve to the member; C# methods labelled OwningType.Method
+  * file/declaration id-collision and import-cycle fixes; JS ?query
+    imports, Go composite-literal receivers, Verilog constructors,
+    PowerShell/Solidity using-forms, Cypher MERGE by stable id
+
+-------------------------------------------------------------------
 Tue Oct 27 18:36:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.97:
