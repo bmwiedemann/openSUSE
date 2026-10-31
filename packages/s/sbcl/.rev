@@ -1916,4 +1916,41 @@ Add sb-manual-source-date-epoch.patch to make the manual
     structures.  (lp#2167568) (forwarded request 1381591 from glaubitz)</comment>
     <requestid>1381598</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>6012a5c74f4c620c4edcdb70f9bff9fe</srcmd5>
+    <version>2.6.10</version>
+    <time>1793484709</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.10
+  * minor incompatible change: testing for float equality using `=` is now a
+    quiet operation, not signalling when given NaNs as input.
+  * enhancement: Unicode support has been updated to support version 18.0.0 of
+    the Unicode standard, including support for new scripts and additional
+    characters, refinements to segmentation algorithms and a number of fixes
+    for bugs uncovered along the way:
+    ** minor incompatible change: SB-UNICODE:LINE-BREAK-CLASS no longer
+       accepts a :RESOLVE keyword argument.
+    ** enhancement: the implementation of line-breaking rules for numbers now
+       implements the full number-like state machine rather than the previous
+       table-based approximation.
+    ** enhancement: UTS10-style collation through SB-UNICODE:UNICODE&lt; and
+       similar functions now supports the use of #\uFFFE as a field separator
+       and #\uFFFF as an upper bound.
+    ** bug fix: the set of characters considered of type Close for sentence
+       breaking no longer includes Other Punctuation.
+    ** bug fix: in sentence breaking, do not attach a CR not followed by a LF
+       to its preceding character for the purpose of cluster class
+       determination.
+    ** bug fix: some characters corresponding to unallocated code points in
+       Hangul blocks are no longer treated as having Hangul syllable type T.
+    ** bug fix: Ahom vowel sounds A and AA are no longer treated as being of
+       class Spacing Break Mark in grapheme clustering.
+    ** bug fix: character corresponding to surrogate code points are no longer
+       treated as Control grapheme-break class.
+    ** bug fix: emoji extenders are now in the Extend sentence-break class.
+    ** bug fix: Complex Context-Dependent characters are handled as Alphabetic
+       or Combining Marks according to the default resolution in Unicode
+       line-breaking. (forwarded request 1394055 from glaubitz)</comment>
+    <requestid>1394197</requestid>
+  </revision>
 </revisionlist>
