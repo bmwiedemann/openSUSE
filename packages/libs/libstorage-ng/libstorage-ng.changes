@@ -1,4 +1,15 @@
 --------------------------------------------------------------------
+Fri Oct 30 11:15:17 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1102
+- Do not call the logger during the garbage collection in the Ruby
+  bindings
+- Remove unnecessary cast
+- Make the logger-gc test independent of the garbage collector timing
+- Do not sweep lazily in the logger-gc test
+- 4.5.367
+
+--------------------------------------------------------------------
 Tue Oct 27 13:23:51 UTC 2026 - bittin@opensuse.org
 
 - Translated using Weblate (Swedish) (bsc#1149754)
