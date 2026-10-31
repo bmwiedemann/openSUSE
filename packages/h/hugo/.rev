@@ -2161,4 +2161,41 @@
     <comment>- Update to version 0.168.0 (bsc#1287405, CVE-2026-78663):</comment>
     <requestid>1393104</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>6062614f1cc7590ef0db9dd230872843</srcmd5>
+    <version>0.169.0</version>
+    <time>1793484497</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.169.0:
+  * Templates are trusted in Hugo, but content (including front
+    matter) is not necessarily. This release tightens a few
+    places where values from content could end up rendered as
+    unescaped HTML:
+  * `pre` and `post` values in menu entries defined in **front
+    matter** are now HTML escaped, unless `text/html` is allowed
+    in `security.allowContent`, which already marks HTML in
+    `/content` as trusted. A warning (`warning-menu-pre-post-
+    html-escaped`) is logged when a value containing HTML markup
+    is escaped. Menu entries defined in the project configuration
+    are not affected. f63482bf
+  * `emojify` and `plainify` now return a `string` unless the
+    input is `template.HTML`, in which case the result is also
+    `template.HTML`. Previously both always returned
+    `template.HTML`, so e.g. `{{ .Title | emojify }}` would mark
+    a potentially unsafe title as safe HTML. If you relied on the
+    old behavior with trusted input, pipe the result through
+    `safeHTML`. Thanks to @Reload3d for reporting this. #15452
+  * hugolib: Fix template change detection when saving via temp
+    file and rename 46e51f30 @bep #15484
+  * markup/goldmark: Fix auto heading ID when link text starts
+    with a bracket c22158c1 @chanellebingham #15472
+  * urls: Fix JoinPath panic with empty slice ce5d232b
+    @Ferdinand-MZ #15473
+  * js: Fix js.Build with browser-disabled extensionless requires
+    2efee511 @bep #15481
+  * Fix Site.Key used in e.g. partialCached b86e0caa @bep #15466
+  * ci: Fix Windows running out of disk space and simplify test
+    runs 77230eba @bep</comment>
+    <requestid>1393981</requestid>
+  </revision>
 </revisionlist>
