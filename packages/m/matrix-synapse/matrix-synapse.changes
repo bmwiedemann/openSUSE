@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 28 18:53:08 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.164.1
+  - Bugfixes
+    - Fix clearing user status for clients that send a null profile
+      field value.
+    - When include_profile_updates_in_sync is enabled, Synapse will
+      continue to accept null custom profile field values until
+      clients have had a sufficient time to change their behaviour.
+      This special casing is tracked in this issue. (#20422)
+  - Internal Changes
+    - Bump msgpack from 1.2.1 to 1.2.4 to address
+      GHSA-j586-36cw-2gc2 which can cause memory exhaustion
+      problems when malformed tokens are used with the public room
+      list API's. (#20421)
+
+-------------------------------------------------------------------
 Tue Oct 27 18:48:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.164.0

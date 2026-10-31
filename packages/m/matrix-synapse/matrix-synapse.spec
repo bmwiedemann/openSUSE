@@ -44,7 +44,7 @@
 %global jsonschema_version            4.25.1
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
-%global msgpack_version               1.1.2
+%global msgpack_version               1.2.4
 %global netaddr_version               1.3.0
 %global phonenumbers_version          9.0.15
 %global prometheus_client_version     0.23.1
@@ -131,7 +131,7 @@
 %global jsonschema_version            3.0.0
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
-%global msgpack_version               0.5.2
+%global msgpack_version               1.4.2
 %global netaddr_version               0.7.18
 %global phonenumbers_version          8.13.37
 %global prometheus_client_version     0.6.0
@@ -233,7 +233,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.164.0
+Version:        1.164.1
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
