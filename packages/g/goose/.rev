@@ -229,4 +229,12 @@ all changelog gates clean.
     <comment>Update goose to 1.56.0.</comment>
     <requestid>1392939</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ea7923aa3f700f4791f9a2a6511b96ea</srcmd5>
+    <version>1.57.0</version>
+    <time>1793484576</time>
+    <user>dimstar_suse</user>
+    <comment>Update goose to 1.57.0 (filtered vendor)</comment>
+    <requestid>1394158</requestid>
+  </revision>
 </revisionlist>

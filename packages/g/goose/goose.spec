@@ -18,7 +18,7 @@
 
 %global goose_features aws-providers,otel,rustls-tls,system-keyring,disable-update
 Name:           goose
-Version:        1.56.0
+Version:        1.57.0
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
 # Legal-Review-Notice: goose itself is Apache-2.0, but the shipped binary
@@ -26,7 +26,7 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # whole linked set. Derived on this vendoring with
 # "cargo tree --offline -p goose-cli -e normal --no-default-features
 #  --features %%{goose_features}" over the vendored tree
-# (1142 crates vendored, 461 third-party crates in the linked graph plus the
+# (1097 crates vendored, 482 third-party crates in the linked graph plus the
 # nine goose workspace crates -- the code-mode and
 # local-inference branches, and with them v8/candle/llama-cpp, are not built,
 # and neither is the cuda branch, so the cudaforge git dependency is unused),
@@ -77,6 +77,13 @@ License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CDLA-Permissive
 URL:            https://github.com/aaif-goose/goose
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor-crates.tar.zst
+# cargo_vendor runs with filter=true, so crates no Linux target uses are
+# emptied at vendor time (the winapi-*/windows_* import libs and wit-bindgen's
+# wasm-only objects are gone from the tarball). What is left is test fixtures
+# under tests/ dirs, named below. Neither crate is in the linked binary's
+# cargo tree except async-compression, and only its test corpus touches it.
+# Source-Binary-Exception: vendor-crates.tar.zst:vendor-crates/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's #![cfg(windows)] tests/windows.rs
+# Source-Binary-Exception: vendor-crates.tar.zst:vendor-crates/async-compression-*/tests/artifacts/*.zst -- test-data: zstd decode-test corpus (lib.rs.zst needs its dictionary-rust file, long-window-size-lib.rs.zst needs a 2G window); both decode to the crate's own test lib.rs, never executed
 # PATCH-FIX-OPENSUSE goose-system-libdbus.patch mpluskal@suse.com -- link the system libdbus instead of the copy bundled in libdbus-sys; not sent upstream because upstream needs the vendored build for its portable/musl binaries
 Patch0:         goose-system-libdbus.patch
 BuildRequires:  cargo
@@ -97,7 +104,7 @@ BuildRequires:  pkgconfig(dbus-1) >= 1.6
 # pkg-config behind a feature/env switch neither sqlx nor bat sets; aws-lc-sys
 # (pulled in by rustls) has no system-library mode at all. Declare them so the
 # bundled CVE surface is visible to the distribution.
-Provides:       bundled(aws-lc) = 5.11.0
+Provides:       bundled(aws-lc) = 5.12.0
 Provides:       bundled(libzstd) = 1.5.7
 Provides:       bundled(oniguruma) = 6.9.10
 Provides:       bundled(sqlite3) = 3.51.3

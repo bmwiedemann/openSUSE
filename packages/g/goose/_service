@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/aaif-goose/goose.git</param>
     <param name="scm">git</param>
-    <param name="revision">v1.56.0</param>
+    <param name="revision">v1.57.0</param>
     <param name="match-tag">*</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
@@ -25,6 +25,9 @@
     <param name="src">goose</param>
     <param name="compression">zst</param>
     <param name="update">true</param>
+    <!-- filter=true empties crates no Linux target uses at vendor time
+         (winapi-*/windows_* import libs, wit-bindgen wasm-only objects) -->
+    <param name="filter">true</param>
     <!-- upstream ships a stub crate in vendor/v8, so the vendored crates need
          a tag to keep them out of its way -->
     <param name="tag">crates</param>

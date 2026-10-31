@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 31 06:50:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.57.0:
+  * extension allowlist requires HTTPS and validates redirects,
+    blocking on policy failure; callers can supply session IDs
+  * OpenRouter variant suffixes resolve to the base model, vision
+    lookup uses the catalog provider id, and Databricks sends the
+    system prompt as system on the MLflow chat route
+  * scheduled runs use recipe settings, the desktop agent starts
+    once after a fork, and owned shell process trees die on
+    cancellation
+  * zstd 0.14.3 for RUSTSEC advisories and jsonwebtoken removed
+- Refresh the vendored dependencies (1097 crates vendored, 482
+  third-party crates in the linked set); re-derive the License tag
+  from the new graph, unchanged at 12 SPDX identifiers
+- Bump the bundled(aws-lc) Provides to 5.12.0 with the new
+  vendoring; libzstd, oniguruma and sqlite3 keep their versions
+
+-------------------------------------------------------------------
 Mon Oct 26 19:40:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.56.0:
