@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:50:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.15.0 (upstream tag v0.15.0, 2026-10-31):
+  * Project-panel word search; contained Symphonia panics; WAV
+    and SCC validation; fast-start MP4 export; GIF transparency;
+    grouped-clip selection; captions export format prompt; wgpu
+    setup deadlock fix; update prompt shows the app icon and
+    accent color.
+  * Re-vendor (update=false, filter=true): own crates only;
+    Windows-only crate files filtered out; licence set and
+    Legal-Review-Notice unchanged; cargo_audit reports no
+    advisories.
+- Set the fixed metainfo release date to 2026-10-31 (v0.15.0).
+- Keep filmcraft-no-self-update.patch: no startup update check
+  and no install prompt, so upstream releases are never
+  installed over RPM-owned files; the manual Help check outcome
+  window stays.
+
+-------------------------------------------------------------------
 Thu Oct 29 12:41:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.0 (upstream tags v0.14.0, 2026-10-28 and

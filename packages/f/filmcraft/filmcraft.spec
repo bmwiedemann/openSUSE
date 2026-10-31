@@ -17,7 +17,7 @@
 
 
 Name:           filmcraft
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Timeline video editor written in pure Rust
 # Legal-Review-Notice: scope is the two shipped binaries (filmcraft in
@@ -43,6 +43,9 @@ License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Cl
 URL:            https://github.com/storytold/filmcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# Of the vendor tree's prebuilt files only libloading's Windows-only test
+# fixtures remain; checksums forbid stripping them, so each is named below.
+# Source-Binary-Exception: vendor.tar.zst:vendor/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's #![cfg(windows)] tests, never on Linux
 # PATCH-FIX-OPENSUSE filmcraft-no-brand-assets.patch -- replace trademarked
 # ArtCraft marks (docs/brand/, NOT open source) embedded via include_bytes!
 # with the open-source FilmCraft tile; permanent downstream carry, not
@@ -128,10 +131,10 @@ install -Dm0755 target/release/filmcraft-cli %{buildroot}%{_bindir}/filmcraft-cl
 install -Dm0644 packaging/linux/ai.storyteller.filmcraft.desktop %{buildroot}%{_datadir}/applications/ai.storyteller.filmcraft.desktop
 install -Dm0644 packaging/linux/ai.storyteller.filmcraft.mime.xml %{buildroot}%{_datadir}/mime/packages/ai.storyteller.filmcraft.xml
 install -d -m 0755 %{buildroot}%{_datadir}/metainfo
-# Fixed upstream release date (v0.14.0, 2026-10-28): a build-time date would
+# Fixed upstream release date (v0.15.0, 2026-10-31): a build-time date would
 # make the metainfo differ on every rebuild, and spec-cleaner would brace
 # the date-format placeholders as RPM macros, so keep this a plain string.
-sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-28/g" packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.filmcraft.metainfo.xml
+sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-31/g" packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.filmcraft.metainfo.xml
 # Upstream declares the app icon as type="stock" but it is a custom hicolor
 # icon, so declare it as cached for appstream validation.
 sed -i 's|<icon type="stock">ai.storyteller.filmcraft</icon>|<icon type="cached" width="64" height="64">ai.storyteller.filmcraft.png</icon>|' %{buildroot}%{_datadir}/metainfo/ai.storyteller.filmcraft.metainfo.xml
