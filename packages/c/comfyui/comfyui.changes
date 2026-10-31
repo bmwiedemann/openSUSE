@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 31 18:24:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix comfyui --version: the launcher answers it itself with
+  the packaged version baked in at build time instead of
+  passing it to main.py, which has no such option
+- Create models/checkpoints in the per-user base directory on
+  first start, so a fresh profile has somewhere to put
+  checkpoints
+- Add README.SUSE (profile path, model locations, CPU-only
+  note, loopback and --offline guidance)
+
+-------------------------------------------------------------------
+Sat Oct 31 15:07:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Use an unpredictable mktemp -d directory instead of the static
+  /tmp/comfyui fallback when neither XDG_DATA_HOME nor HOME is set
+  (boo#1288691)
+
+
+-------------------------------------------------------------------
 Tue Oct 27 06:35:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.43.0:

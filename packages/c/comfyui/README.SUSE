@@ -1,0 +1,46 @@
+ComfyUI on openSUSE
+==================
+
+This package ships the ComfyUI tree read-only under /usr/share/comfyui
+and the /usr/bin/comfyui launcher. Upstream's README assumes a git
+checkout; here everything writable lives in a per-user profile, and
+the server is started through the launcher.
+
+Profile location
+----------------
+
+Unless overridden, the launcher uses $XDG_DATA_HOME/comfyui, falling
+back to ~/.local/share/comfyui. It passes that directory to main.py
+as --base-directory and points the asset database at
+$base/user/comfyui.db via --database-url. Pass --base-directory or
+--database-url explicitly to use somewhere else.
+
+Where models go
+---------------
+
+Put checkpoints, LoRAs, VAEs and other assets under
+$base/models/ (checkpoints in $base/models/checkpoints, created on
+first start alongside $base/user). Point --extra-model-paths-config
+at an extra_model_paths.yaml file to share model directories with
+other installations.
+
+CPU-only
+--------
+
+The openSUSE PyTorch build has neither CUDA nor ROCm support, so
+ComfyUI runs on the CPU and falls back to it automatically. Expect
+generation to be slow; this is a packaging limitation, not a bug.
+
+Keep it on loopback
+-------------------
+
+The server listens on 127.0.0.1:8188 by default and has no login.
+Keep it on loopback; passing --listen with a public address exposes
+an unauthenticated API and web UI to the network.
+
+Offline use
+-----------
+
+The browser UI otherwise contacts api.comfy.org and Hugging Face.
+Start with --offline to stop that: it sets a restrictive
+Content-Security-Policy header and disables partner nodes.

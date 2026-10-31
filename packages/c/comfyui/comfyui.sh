@@ -5,6 +5,7 @@
 
 python="@@PYTHON@@"
 datadir="@@DATADIR@@"
+version="@@VERSION@@"
 
 has_base=0
 has_db=0
@@ -29,8 +30,14 @@ for arg in "$@"; do
         --database-url|--database-url=*)
             has_db=1
             ;;
-        -h|--help|--version|--list-feature-flags)
+        -h|--help|--list-feature-flags)
             query_only=1
+            ;;
+        --version)
+            # main.py has no --version option; answer from the
+            # version baked in at build time and touch nothing.
+            printf 'comfyui %s\n' "$version"
+            exit 0
             ;;
     esac
 done
@@ -41,7 +48,7 @@ if [ -z "$base" ]; then
     elif [ -n "${HOME:-}" ]; then
         base=$HOME/.local/share/comfyui
     else
-        base=/tmp/comfyui
+        base=$(mktemp -d /tmp/comfyui.XXXXXX)
     fi
 fi
 
@@ -54,6 +61,7 @@ if [ "$query_only" -eq 0 ]; then
     if [ "$has_db" -eq 0 ]; then
         mkdir -p "$base/user" || exit 1
     fi
+    mkdir -p "$base/models/checkpoints" || exit 1
 fi
 
 if [ "$has_base" -eq 0 ]; then

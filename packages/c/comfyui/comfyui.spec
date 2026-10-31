@@ -28,6 +28,7 @@ URL:            https://github.com/Comfy-Org/ComfyUI
 Source0:        https://github.com/Comfy-Org/ComfyUI/archive/refs/tags/v%{version}.tar.gz#/ComfyUI-%{version}.tar.gz
 Source1:        comfyui.sh
 Source2:        comfyui-packaged-paths.yaml
+Source3:        README.SUSE
 # PATCH-FIX-UPSTREAM comfyui-create-custom-nodes-directory.patch gh#Comfy-Org/ComfyUI#8110 gh#Comfy-Org/ComfyUI#8434 mpluskal@suse.com -- create custom_nodes under --base-directory, main.py lists it before the server starts
 Patch0:         comfyui-create-custom-nodes-directory.patch
 # PATCH-FIX-UPSTREAM comfyui-fall-back-to-cpu-without-accelerator.patch mpluskal@suse.com -- start on the CPU when no accelerator is present, instead of raising AssertionError while importing
@@ -158,12 +159,15 @@ find %{buildroot}%{_datadir}/comfyui -type f -exec chmod a-x {} +
 %python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{_datadir}/comfyui
 sed -e 's|@@PYTHON@@|%{_bindir}/python3|g' \
     -e 's|@@DATADIR@@|%{_datadir}/comfyui|g' \
+    -e 's|@@VERSION@@|%{version}|g' \
     %{SOURCE1} > %{buildroot}%{_bindir}/comfyui
 chmod 0755 %{buildroot}%{_bindir}/comfyui
 # --base-directory moves the custom_nodes search path into the user profile;
 # register the packaged one as an additional path so both are loaded.
 sed -e 's|@@DATADIR@@|%{_datadir}/comfyui|g' \
     %{SOURCE2} > %{buildroot}%{_datadir}/comfyui/comfyui-packaged-paths.yaml
+# Stage the SUSE notes for %doc (after cp -a, so they stay out of the app tree).
+cp %{SOURCE3} .
 %fdupes %{buildroot}%{_datadir}/comfyui
 
 %check
@@ -178,6 +182,13 @@ xdg=$(mktemp -d)
 XDG_DATA_HOME="$xdg" sh %{buildroot}%{_bindir}/comfyui --help >/dev/null 2>&1 || :
 test -z "$(ls -A "$xdg")"
 rm -rf "$xdg"
+# --version is answered by the launcher itself (main.py has no such
+# option) and must not create anything either.
+xdg=$(mktemp -d)
+verout=$(XDG_DATA_HOME="$xdg" sh %{buildroot}%{_bindir}/comfyui --version)
+test "$verout" = "comfyui %{version}"
+test -z "$(ls -A "$xdg")"
+rm -rf "$xdg"
 # The extra search path must resolve to the packaged custom nodes.
 grep -q '^  custom_nodes: %{_datadir}/comfyui/custom_nodes$' \
      %{buildroot}%{_datadir}/comfyui/comfyui-packaged-paths.yaml
@@ -185,7 +196,7 @@ test -f %{buildroot}%{_datadir}/comfyui/custom_nodes/websocket_image_save.py
 
 %files
 %license LICENSE
-%doc README.md extra_model_paths.yaml.example
+%doc README.md README.SUSE extra_model_paths.yaml.example
 %{_bindir}/comfyui
 %{_datadir}/comfyui
 
