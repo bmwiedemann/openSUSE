@@ -18,7 +18,7 @@
 
 %define lua_version 5.1
 Name:           lua-resty-mysql
-Version:        0.28
+Version:        0.31
 Release:        0
 Summary:        Lua MySQL client driver for ngx_lua based on the cosocket API
 License:        BSD-2-Clause

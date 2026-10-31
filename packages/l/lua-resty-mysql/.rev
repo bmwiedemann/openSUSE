@@ -16,4 +16,21 @@
   * https://github.com/openresty/lua-resty-mysql/compare/v0.27...v0.28</comment>
     <requestid>1292070</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>97fccca253e1169b1c8739441d10fd6b</srcmd5>
+    <version>0.31</version>
+    <time>1793484551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.31:
+  * bugfix: correct password scramble indexing in caching_sha2 auth
+    for passwords of length &gt;= 19 and guard nil return from
+    _encrypt_password
+- Update to 0.30:
+  * feature: add support for MariaDB client_ed25519 authentication
+    plugin via resty.mysql.auth_ed25519
+- Update to 0.29:
+  * tests: set character encoding to utf8mb4, update MySQL/MariaDB
+    and OpenSSL test cases, and bump NGINX core to 1.29.2</comment>
+    <requestid>1394054</requestid>
+  </revision>
 </revisionlist>

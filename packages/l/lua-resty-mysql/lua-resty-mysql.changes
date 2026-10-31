@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 16:04:54 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.31:
+  * bugfix: correct password scramble indexing in caching_sha2 auth
+    for passwords of length >= 19 and guard nil return from
+    _encrypt_password
+- Update to 0.30:
+  * feature: add support for MariaDB client_ed25519 authentication
+    plugin via resty.mysql.auth_ed25519
+- Update to 0.29:
+  * tests: set character encoding to utf8mb4, update MySQL/MariaDB
+    and OpenSSL test cases, and bump NGINX core to 1.29.2
+
+-------------------------------------------------------------------
 Wed Jul  9 19:38:37 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.28.
