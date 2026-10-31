@@ -134,4 +134,12 @@ Built locally on aarch64: rpmlint 0 errors, 0 warnings, 0 badness.</comment>
     <comment>Update python-langgraph to 1.2.18.</comment>
     <requestid>1392919</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3ffa7b93b6c156cfbb9c469d79a28d18</srcmd5>
+    <version>1.2.19</version>
+    <time>1793484641</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-langgraph to 1.2.19.</comment>
+    <requestid>1394125</requestid>
+  </revision>
 </revisionlist>

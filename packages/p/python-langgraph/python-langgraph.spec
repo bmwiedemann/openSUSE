@@ -17,7 +17,7 @@
 
 
 Name:           python-langgraph
-Version:        1.2.18
+Version:        1.2.19
 Release:        0
 Summary:        Library for building stateful, multi-actor applications with LLMs
 License:        MIT
@@ -74,7 +74,7 @@ ecosystem.
 # langgraph-checkpoint-sqlite, not packaged for Factory) plus psycopg and
 # redis, so pytest collection fails before any offline unit test executes.
 
-%files %{python_files}
+%files %python_files
 %doc README.md
 %license LICENSE
 %dir %{python_sitelib}/langgraph

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:48:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.19:
+  * List a ToolNode's tool names in its get_graph() metadata
+  * Apply a node's trace_policy to tracers only; streams keep
+    seeing the unfiltered events
+  * Give messages and tools events the namespace of the graph
+    they ran in; stream messages a node returns from a nested
+    graph
+  * Respect subgraphs=False in RemoteGraph.stream; stop
+    reporting an interrupt()-paused tool as failed on the tools
+    stream
+  * Return an awaited @task value while streaming instead
+    of None
+  * No new runtime dependencies
+  * Spec-cleaner modernization: %files %python_files
+
+-------------------------------------------------------------------
 Tue Oct 27 06:32:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.2.18:
