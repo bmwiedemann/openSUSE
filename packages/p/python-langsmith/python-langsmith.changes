@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:40:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.16:
+  * Agent and voice integrations accept address; wrapper
+    tracing_extra accepts address; stream v2 run, trace and
+    thread queries
+  * Sandboxes: HTTPS destination rewrite rules, non-persistent
+    mode for all tenants, disk capped at 16 GiB per vCPU,
+    recorded storage retained across sampling gaps
+  * Annotation queues gain rubric required_if/visible_if;
+    categorical feedback gains allows_multiple_categories
+  * Trace OpenAI Agents API sessions in wrap_openai; add
+    create_decision_model to the generated SDKs
+  * Drop the base workspace for write replicas on another
+    instance; revert disposable Engine sandbox provisioning
+  * No new runtime dependencies; requires-python stays >= 3.10
+
+-------------------------------------------------------------------
 Tue Oct 27 18:36:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.13:
