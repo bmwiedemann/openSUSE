@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:50:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.11:
+  * Retry failed stream reconnects with backoff; retry
+    runs.wait, join and cancel(wait=True) reconnects
+  * Preserve SSE data and cursor state across chunks; reset
+    the reconnect cursor on every empty id
+  * Warn when a stream reconnects without a Last-Event-ID
+  * Match the Auth.on overload to optional resources
+  * No new runtime dependencies
+  * Spec-cleaner modernization: %files %python_files
+
+-------------------------------------------------------------------
 Tue Oct 27 06:33:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.10:

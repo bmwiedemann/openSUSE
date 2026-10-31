@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langgraph-sdk
-Version:        0.4.10
+Version:        0.4.11
 Release:        0
 Summary:        SDK for interacting with the LangGraph API
 License:        MIT
@@ -73,7 +73,7 @@ runs, crons and the persistent store.
 # still imported at collection time, so skip the directory outright.
 %pytest tests --ignore=tests/integration
 
-%files %{python_files}
+%files %python_files
 %doc README.md
 %license LICENSE
 %{python_sitelib}/langgraph_sdk
