@@ -161,4 +161,29 @@
     <comment></comment>
     <requestid>1294557</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5488aea1b85cd682f51fc3f5ce856bdb</srcmd5>
+    <version>0.540.0</version>
+    <time>1793484517</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.540.0 (0.54)
+   see /usr/share/doc/packages/perl-Future/Changes
+  0.54    2026-10-20
+          [CHANGES]
+           * Update all Perl to `use v5.20`, using new perl features of
+             signatures and postfix deref
+          [BUGFIXES]
+           * Ensure that `Future-&gt;needs_any` immediate failure message actually
+             copies the message from its final failed component, rather than
+             referring to an array containing it
+           * Add unit tests for `-&gt;without_cancel` not weakening its sequence
+             future, as fixed by `Future::XS` version 0.16 (RT181389)
+  0.53    2026-09-30
+          [CHANGES]
+           * Add documentation to point at the `Future::XS` distribution
+           * Defend unit tests against changes to perl's reporting of line
+             numbers in code involving multi-line anonymous subroutines
+             (Perl #24396)</comment>
+    <requestid>1393991</requestid>
+  </revision>
 </revisionlist>

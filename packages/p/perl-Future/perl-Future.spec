@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Future
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Future
 Name:           perl-Future
-Version:        0.520.0
+Version:        0.540.0
 Release:        0
-# 0.52 -> normalize -> 0.520.0
-%define cpan_version 0.52
+# 0.54 -> normalize -> 0.540.0
+%define cpan_version 0.54
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Represent an operation awaiting completion
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
