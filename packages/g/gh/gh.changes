@@ -1,4 +1,268 @@
 -------------------------------------------------------------------
+Mon Oct 26 18:02:47 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.103.3:
+  * fix(gh auth status): only diagnose token expiry after HTTP 401
+  * fix(gh auth status): explain expired expiring tokens with --no-refresh
+
+-------------------------------------------------------------------
+Fri Oct 23 20:08:01 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.103.2:
+  * Defer --attach credential checks to the server
+  * Allow installation tokens to attach files
+
+-------------------------------------------------------------------
+Fri Oct 23 16:00:04 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.103.1:
+  * feat(gh auth login): hint at --expiring when no preference is set
+  * Document extrepo installation on Debian (#14796)
+  * Update github.com/digitorus/pkcs7 dependency
+  * Avoid repeating the skill installation safety warning
+
+-------------------------------------------------------------------
+Wed Oct 21 15:08:28 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.103.0:
+  * Update documentation on token refresh behavior
+  * docs(skills/gh): document expiring tokens
+  * fix(gh status): restore left column width under Lip Gloss v2
+  * chore(deps): bump github.com/cli/oauth to v1.3.0
+  * ci: build the ghdebug variant on ubuntu
+  * refactor(debug): parse overrides in an untagged function
+  * chore: rebuild bin/gh when build tags change
+  * test(script): assert auth token warning and refresh token kind in e2e
+  * refactor: read testing overrides through internal/debug
+  * feat(version): mark debug builds in the version output
+  * chore: add a debug make target
+  * feat(debug): add build-gated internal debug configuration
+  * test(text): stop TestFuzzyIn when timestamp parsing fails
+  * test(auth/status): cover an expiring token with no refresh token expiry
+  * fix(text): round FuzzyIn to the nearest unit instead of truncating
+  * feat(auth/status): show relative time-to-expiry for refreshable tokens
+  * test(config): cover login when the other credential kind survives purge
+  * test(auth): cover telemetry when storage or post-login setup fails
+  * docs(config): describe expiring_credentials as a login-only preference
+  * fix(auth/shared): choose the auth method before acting on expiring intent
+  * fix(config): create the refresh lock directory behind the lock seam
+  * fix(config): place the refresh lock in the state directory
+  * fix(auth): record expiring_received and auth_success at the right time
+  * fix(auth/refresh): keep the current token kind when --expiring is unset
+  * fix(auth/token): warn on stderr when printing an expiring token
+  * fix(auth/shared): offer token paste when expiring is config-derived
+  * perf(config): probe the ordinary keyring before the refreshable credential
+  * fix(auth/refresh): refine the expiring-token downgrade warning
+  * refactor(config): rename prefer_expiring_credentials to expiring_credentials
+  * docs(config): clarify the refresh lock godoc
+  * refactor(auth/shared): record only expiring cred-helper cancellations
+  * feat(auth/shared): report an error category for unreadable credential helpers
+  * feat(auth): rework login and refresh telemetry
+  * feat(auth): prompt for gh as git credential helper on expiring login
+  * feat(auth): add prefer_expiring_credentials config option
+  * refactor(auth): make --expiring a tri-state *bool flag
+  * refactor(auth): rename --short-lived flag to --expiring
+  * fix(config): run login under the shared refresh lock
+  * chore: fix formatting
+  * docs(script): prompt reviewer to confirm git auth during gitcredential e2e login
+  * fix(config): don't fail refresh when the config dir can't be created
+  * fix(config): skip destructive refresh cleanup when the lock is unavailable
+  * fix(config): run logout under the shared refresh lock
+  * fix(script): declare authtype capability in gitcredential e2e on git 2.46+
+  * docs(script): clarify refreshable-token e2e scripts
+  * fix(agent-task): accept plaintext refreshable OAuth credentials
+  * test(agent-task/capi): assert per-request token refresh in CAPI transport
+  * fix(auth/status): handle rejected refresh token without an empty-token request
+  * fix(auth/token): restore legacy unkeyed keyring lookup when --user is omitted
+  * refactor(auth/token): drop redundant RefreshStatusDone check under --secure-storage
+  * refactor(authflow): extract authResultFromToken for test coverage
+  * fix(auth/shared): clarify warning when declining gh helper setup
+  * fix(auth/shared): force web flow for short-lived interactive login
+  * fix(auth/shared): offer to set up gh when a non-gh helper meets a refreshable token
+  * fix(auth refresh): preserve scopes when refreshing an expired refreshable token
+  * fix(auth refresh): avoid printing short-lived downgrade warning twice
+  * fix(config): align TokenForUser precedence with setActiveCredential
+  * fix(config): purge refreshable record on non-refreshable login
+  * test(config): pin intentional active-token lookup behavior
+  * fix(api): keep public HTTP client token config backward compatible
+  * test: add git credential helper end-to-end verification script
+  * test: add guided end-to-end verification script for refreshable tokens
+  * fix(agent-task/capi): refresh short-lived tokens per CAPI request
+  * fix(auth status): show and refresh short-lived token details
+  * fix(auth token): refresh short-lived tokens before printing
+  * fix(auth gitcredential): refresh tokens and mark them non-cacheable for git
+  * fix(auth refresh): preserve or acquire refreshable credentials
+  * fix(auth login): add --short-lived flag
+  * fix(auth/shared): store refreshable credentials during login
+  * fix(auth/shared): do not store refreshable credentials in external git helpers
+  * fix(authflow): return an AuthResult with an optional refreshable credential
+  * fix(factory): wire the token refresher into the default factory
+  * fix(api): refresh expired tokens on API requests
+  * fix(config): integrate refreshable credentials into auth config
+  * fix(config): add refreshable credential storage
+  * fix(authflow): add OAuth token refresher
+  * fix(gh): add generated TokenRefresher mock
+  * fix(gh): add refreshable credential types and token refresher interface
+  * chore(deps): drop stale cli/oauth v1.2.2 go.sum entries
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.15 to 1.4.16 (#14766)
+  * Add specific test for link wrapping
+  * Update glamour to v2
+  * Bump Go to 1.27.3 (#14767)
+  * chore(deps): bump the codeql-actions group with 3 updates (#14751)
+  * Merge pull request #14750 from cli/williammartin-investigate-dependabot-aic
+  * Clarify release creation atomicity and immutability
+  * Add HTML documents to the gh skill
+  * Fix help text that references nonexistent flags
+  * Clarify PR comments output
+  * Clarify --comments behavior when piped in view commands
+  * Create HTML documents from .html files
+  * Support HTML documents in issue artifact commands
+  * Restore generated workflow locks
+  * chore(deps): bump goreleaser/goreleaser-action from 7.2.3 to 7.3.0
+  * chore(deps): bump actions/create-github-app-token from 3.2.0 to 3.3.0
+  * chore(deps): bump github.com/klauspost/compress from 1.20.1 to 1.20.3
+  * chore(deps): bump actions/setup-node from 7.0.0 to 7.1.0
+  * chore(deps): bump github.com/cli/go-gh/v2 from 2.16.1 to 2.16.2
+  * chore(deps): bump google.golang.org/grpc from 1.83.2 to 1.84.0
+  * chore(deps): bump actions/download-artifact from 8.0.1 to 8.0.2
+  * chore(deps): bump actions/upload-artifact from 7.0.1 to 7.0.2
+  * Keep v3.3.0 label for create-github-app-token pin
+  * Fix Go vendoring in Dependabot triage; bump gh-aw
+  * Document issue artifact URLs in the gh skill
+  * Accept artifact URLs in issue artifact commands
+  * Show issue artifact URLs in list and view
+  * Allow attachments only on generic and plan artifacts
+  * Document partial saves and safe retries in the gh skill
+  * Say that artifact create's --name can't go with a #<name> suffix
+  * Say that artifact create's body flags replace file and URL arguments
+  * Don't promise an order for artifact versions in the gh skill
+  * Say that artifact view's --version, --json and --web exclude each other
+  * List every piped artifact view field in the gh skill
+  * Say how to give a link artifact new content
+  * Name the step that failed in artifact create and edit errors
+  * Show usage for a blank artifact name after #
+  * Explain two checks in artifact create's validation
+  * Say when artifact create needs --name
+  * Format flag names as code in artifact command errors
+  * Drop the add alias from artifact create
+  * Reword artifact create and edit examples
+  * Reword artifact create help without naming gh
+  * Rename the --body source kind in artifact create
+  * Build artifact request bodies from ad hoc structs
+  * Remove the artifact shared package comment
+  * Test artifact download into an existing --dir
+  * Refuse a symlink at artifact download's --output path
+  * Explain the kept extension in artifact download file names
+  * chore(deps): bump golang.org/x/crypto from 0.57.0 to 0.58.0
+  * chore(deps): bump charm.land/bubbletea/v2 from 2.0.10 to 2.1.0
+  * chore(deps): bump the codeql-actions group with 3 updates
+  * Clarify --repo and --owner checks for attestation bundles
+  * Reset search code highlight only when open
+  * Fix the unclean background colors of gh-search-code
+  * Simplify the failure tracking in artifact download
+  * Refuse a blank --dir in artifact download
+  * Mention --dir in artifact download help
+  * chore(deps): bump github.com/mattn/go-colorable from 0.1.15 to 0.1.16
+  * chore(deps): bump golang.org/x/sync from 0.23.0 to 0.24.0
+  * Bump golang.org/x/net to v0.60.0
+  * Bump Go to 1.27.2
+  * Leave validation checks to CI in bump-go script (#14631)
+  * Name the lookup failure check in artifact delete
+  * Reword artifact delete help without naming gh
+  * Stub artifact deletes with the responses a delete can get
+  * Refuse repeated artifact numbers in delete and download
+  * Report artifact delete results like other gh delete commands
+  * Say which version artifact view shows by default
+  * Show usage for invalid artifact command arguments
+  * Remove exportTime from artifact JSON export
+  * Format --limit as code in artifact list help
+  * Document how artifact list finds the last page
+  * Test artifact list and view JSON fields with jsonfieldstest
+  * Preallocate the failures in UploadAndAttachDocuments
+  * Scope DocumentResult.Err to the document's own attachments
+  * Add cmdutil.ReadMarkdownBodyFile
+  * Test isRelativePath with Windows drive paths
+  * Bump shell-quote to 1.11.0 in cli-exercise skill
+  * Merge pull request #14578 from cli/williammartin-extension-browse-bubbletea
+  * Avoid spawning git for each extension at startup
+  * Clarify pull request view comment output modes
+  * Document mutually exclusive issue view output modes
+  * Initial plan
+  * Add accessibility statement
+  * docs: recommend nix-shell and declarative config for Nix/NixOS
+  * Document gh issue artifact edit --restore-version in the gh skill
+  * Add gh issue artifact edit --restore-version
+  * Add a shared result line for unchanged artifacts
+  * Bump go-runewidth to v0.0.30 for faster startup
+  * Document gh issue artifact in the gh skill
+  * Add gh issue artifact edit
+  * Move the artifact --attach uploader to the shared package
+  * Add issue artifact Update to the API client
+  * Add gh issue artifact create
+  * Export the --attach <file>#<text> parsing
+  * Add issue artifact Create to the API client
+  * Add gh issue artifact download
+  * Move artifact version lookup to the shared package
+  * Add gh issue artifact delete
+  * Add issue artifact Delete to the API client
+  * Add gh issue artifact view
+  * Add issue artifact Get to the API client
+  * Add gh issue artifact list
+  * Add issue artifact API client
+  * Attach one set of files to several Markdown documents
+  * Resolve --attach references against the body file's directory
+  * Remove CLAUDE.md in favor of AGENTS.md
+  * fix(flock): add blocking lock acquisition with timeout
+  * fix(config): migrate auth storage layer and callers to gh.Credential
+  * fix(gh): introduce gh.Credential and switch auth storage interface to it
+  * build(deps): bump go-gh and oauth for refreshable credentials
+- Packaging improvements:
+  * Drop gh-bump-x-net.patch: pinned golang.org/x/net version is
+    now 0.60.0 fixing excessive CPU consumption on repeated HTTP/2
+    initial window changes (CVE-2026-78669, bsc#1285291).
+  * Add BuildRequires: timezone required by TestTokenRefresherRefresh
+  * Reduce use of non-default GOFLAGS to simplify conditionals
+    necessary to build on all targets e.g. ppc64le cannot use PIE.
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64le GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Remove go build arg -trimpath. Since this is a packaged binary,
+    build environment paths do not leak private information. Other
+    build scenarios such as minimal container builds could have a
+    use for -trimpath. Absent a clear need, use go build defaults.
+  * Remove ldflags arg linkmode=external. Absent a clear need, use
+    go build defaults.
+  * Remove go build arg -modcacherw. Newly-created directories in
+    the module cache should be left read-only instead of making
+    them read-write. It is not normally not necessary to manually
+    edit the module cache in an OBS build. Absent a clear need, use
+    go build defaults.
+  * Remove go build ... which searches subdirectories. For control
+    in packaging build specific paths where wanted func main() is
+    defined. Typical paths are source root e.g. go build, or
+    subdirectory of cmd e.g. go build ./cmd/%{name}.
+  * Skip TestBrowseModelProvidesVisualHierarchyInWideLayout fails
+    on openSUSE_Tumbleweed i586 armv7l with issue matching TUI
+    decoration character.
+  * Disable go test on ppc64le due to multiple failures on Leap
+    15.7 ppc64le with nil pointer dereference. Failing tests
+    include but are not limited to Test_GhEditor_Prompt_skip
+    Test_GhEditor_Prompt_editorAppend
+    Test_GhEditor_Prompt_editorTruncate
+  * Syntax to skip multiple tests is hard to find in documentation:
+    go test -skip "TestA|TestB"
+    Where the skip list is a regex using shell quotes as needed.
+
+-------------------------------------------------------------------
+Tue Oct 20 18:47:53 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.102.1:
+  * Bump golang.org/x/net to v0.60.0
+  * Bump Go to 1.27.3
+
+-------------------------------------------------------------------
 Fri Oct 16 15:10:22 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.102.0, fixing four security issues
