@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.165.0
+Version:        0.166.0
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
@@ -127,6 +127,18 @@ License:        Apache-2.0 AND MIT AND Unicode-3.0 AND MPL-2.0 AND ISC AND BSD-3
 URL:            https://github.com/openai/codex
 Source0:        https://github.com/openai/codex/archive/refs/tags/rust-v%{version}.tar.gz#/codex-rust-v%{version}.tar.gz
 Source1:        vendor.tar.zst
+# The vendor closure carries test-only fixtures the prebuilt-binary scan
+# flags: libloading's Windows DLLs (loaded only by its Windows-only tests)
+# and flate2's corrupt-input fixture. Neither is built, linked, loaded or
+# shipped on Linux. Everything else the scan flags is unbundled, not
+# excepted: cargo_vendor filter=true keeps the Windows/wasm-only crates
+# (including wit-parser, whose UI-test inputs are gone with it) out of the
+# tarball, the two import libs and the WSL nupkg the filter leaves are
+# stripped at repack (with their .cargo-checksum.json entries), and
+# code-mode-protocol builds against the system protoc via PROTOC (Patch0)
+# instead of its vendored copy.
+# Source-Binary-Exception: vendor.tar.zst:vendor/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's Windows-only tests, never on Linux
+# Source-Binary-Exception: vendor.tar.zst:vendor/flate2-*/tests/corrupt-gz-file.bin -- test-data: gzip decode-error fixture read by flate2's corrupt-file tests, never executed
 # PATCH-FIX-OPENSUSE codex-drop-v8-code-mode.patch mpluskal@suse.com -- drop the workspace members whose v8 dependency downloads a prebuilt library at build time
 Patch0:         codex-drop-v8-code-mode.patch
 # PATCH-FIX-OPENSUSE codex-no-startup-update-check.patch mpluskal@suse.com -- distribution policy: do not probe github.com for updates on startup
@@ -151,6 +163,9 @@ BuildRequires:  pkgconfig(libzstd)
 # bindings need the 6.9.3 API; libsqlite3-sys asks pkg-config for 3.34.1.
 BuildRequires:  pkgconfig(oniguruma) >= 6.9.3
 BuildRequires:  pkgconfig(openssl)
+# code-mode-protocol's build script shells out to protoc (Patch0 drops its
+# vendored prebuilt protoc); the compiler comes from this package.
+BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3) >= 3.34.1
 # The Linux sandbox launcher looks up bwrap in PATH and panics when it is
 # absent, so this is a hard requirement rather than a recommendation.
@@ -268,6 +283,9 @@ export CARGO_PROFILE_RELEASE_LTO=off
 # which parallelises that step and brings the peak down to what _constraints
 # asks for.
 export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
+# code-mode-protocol's build script needs the system protoc (Patch0);
+# protobuf-devel provides %%{_bindir}/protoc (see the pkgconfig() BR above).
+export PROTOC=%{_bindir}/protoc
 cd codex-rs
 # Only codex-cli is built: a workspace-wide build would also pull the v8
 # crate through the code-mode members, which cannot be built offline.
@@ -347,6 +365,10 @@ install -d %{buildroot}%{_datadir}/zsh/site-functions
 # these the test profile would rebuild them with the library bundled.
 export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 export RUSTONIG_SYSTEM_LIBONIG=1
+# code-mode-protocol is outside the %%check allowlist today, but exporting
+# PROTOC here too keeps the suite green if the allowlist ever grows to
+# cover a crate that reaches it (same system protoc as %%build).
+export PROTOC=%{_bindir}/protoc
 # %%limit_build reaches %%build alone: it sets _threads inside that section's
 # shell, so %%check expands %%{?_smp_mflags} back to -j$(nproc) and links the
 # test harnesses with every core - 33 GB measured at -j32, on top of what

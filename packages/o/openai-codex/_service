@@ -11,11 +11,11 @@
     feature and leaves the lockfile, hence the vendored set, untouched.
     To regenerate:
 
-       tar xf codex-rust-v0.165.0.tar.gz
-       patch -p1 -d codex-rust-v0.165.0 < codex-drop-v8-code-mode.patch
-       rm -rf codex-rust-v0.165.0/codex-rs/vendor
+       tar xf codex-rust-v0.166.0.tar.gz
+       patch -p1 -d codex-rust-v0.166.0 < codex-drop-v8-code-mode.patch
+       rm -rf codex-rust-v0.166.0/codex-rs/vendor
       osc service manualrun cargo_vendor
-      rm -rf codex-rust-v0.165.0
+      rm -rf codex-rust-v0.166.0
 
     The codex-rs/vendor removal drops the bundled bubblewrap 0.11.2 C sources,
     which %prep removes as well - codex uses the system bubblewrap instead.
@@ -51,17 +51,36 @@
     and no dnssec-ring/dnssec-aws-lc-rs feature, which is 0118's own
     precondition, and the same missing feature keeps CVE-2026-93657 out
     (it needs DNSSEC validation on).  boo#1281744 (CVE-2026-91986) is the
-    same story for the other linked crate: the linked gix-transport 0.55.1
-    is pulled in with default features only, so the git-daemon connect
-    builder the CVE injects into is never compiled.  All three bugs are
-    WONTFIX on those grounds and are cited in openai-codex.changes, so the
-    next sweep does not redo the triage.  Re-run the bare-lockfile audit
-    on each bump - the fix for the linked four is an upstream dependency
-    bump, not anything this package can vendor around.
+    same story for the other linked crate: the linked gix-transport (0.61.0
+    at 0.166.0, re-verified) is pulled in with default features only, so
+    the git-daemon connect builder the CVE injects into is never compiled.
+    All three bugs are WONTFIX on those grounds and are cited in
+    openai-codex.changes, so the next sweep does not redo the triage.
+    As of 0.166.0 the bare lock reports ten: the same four (quick-xml
+    0.39.4 still via codex-tui -> syntect -> plist, with a fixed 0.41.0
+    linked in parallel via codex-protocol; hickory-proto 0.25.2 still via
+    codex-network-proxy -> rama-tcp -> rama-dns, hickory-resolver still
+    0.25.2 with system-config + tokio only, re-verified) plus
+    RUSTSEC-2026-0387 (crypto-bigint 0.5.5 timing, linked via
+    codex-secrets -> age -> p256; upstream PR #57206 records it ignored in
+    their own dependency checks), RUSTSEC-2026-0391 plus RUSTSEC-2026-0398,
+    -0403, -0404, -0405 (zstd 0.13.3 / zstd-safe 7.2.4, linked via
+    codex-app-server-protocol; the C library stays the system one via
+    Patch2, and upstream PR #57255 records reviewed exceptions for the
+    zstd advisories).  RUSTSEC-2026-0410 (zstd-sys) is WebAssembly-only and
+    RUSTSEC-2026-0418 (libz-sys 1.1.29) is not in the codex-cli closure at
+    all.  None of the ten carries a CVE id - the fix for every linked one
+    is an upstream dependency bump, not anything this package can vendor
+    around.  Re-run the bare-lockfile audit on each bump.
   -->
   <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">codex-rust-v0.165.0/codex-rs</param>
+    <param name="srcdir">codex-rust-v0.166.0/codex-rs</param>
     <param name="compression">zst</param>
     <param name="update">false</param>
+    <!-- filter=true drops the crates no Linux target uses (winapi import
+         libs, windows_* import libs, mxc-sdk, wasm-only helpers) so they
+         never enter vendor.tar.zst. Verified 0.166.0: the Linux closure is
+         unchanged (same linked set as the unfiltered tree). -->
+    <param name="filter">true</param>
   </service>
 </services>

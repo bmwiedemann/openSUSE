@@ -557,4 +557,12 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
     <comment>Fix staging build: braced cargo macros.</comment>
     <requestid>1393421</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>697069c12433e816f90dd998b6ef076b</srcmd5>
+    <version>0.166.0</version>
+    <time>1793484685</time>
+    <user>dimstar_suse</user>
+    <comment>Update openai-codex to 0.166.0 (filtered vendor)</comment>
+    <requestid>1394170</requestid>
+  </revision>
 </revisionlist>

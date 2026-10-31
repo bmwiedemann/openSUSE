@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 31 14:11:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.166.0:
+  * Keyboard-driven transcript selection with search and
+    consistent Markdown in async questions and replies
+  * GPT-6.1 Terra in the bundled, Vertex AI and Bedrock
+    catalogs; codex queue --resume; codex doctor
+    --network-only diagnostics
+  * Clearer safety-block explanations with safer follow-up
+    prompts; approval settings kept across resume and
+    fork; reasoning-token accounting across resume
+  * Rebased codex-drop-v8-code-mode.patch (workspace gained
+    plugin-host; also drop the now-unused v8 git patch
+    entry, which breaks offline resolution); licence set
+    re-derived unchanged; keeps upstream gix 0.89.0 /
+    gix-pack 0.76.0 and ctutils 0.4.5
+
+-------------------------------------------------------------------
 Wed Oct 28 13:03:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix staging build failure: keep the cargo build and test macros

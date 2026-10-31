@@ -16,21 +16,33 @@ codex-code-mode-host binary this patch drops; the in-process alternative lived
 in the removed code-mode-runtime.  Either way the code_mode tool is registered
 only when the UnderDevelopment code_mode flag is on.
 
+Since 0.166.0 the patch also removes the [patch.crates-io] entry pinning
+v8 to a git revision: with no workspace member left using the crate, cargo
+still resolves the git source at lock time, which fails offline.  Removing
+the one line restores the offline build; the remaining git patches
+(crossterm, tungstenite) are used and stay vendored.
+
+The surviving code-mode-protocol member's build script executes a vendored
+prebuilt protoc (protoc-bin-vendored) at build time, which cannot ship in
+the sources.  The patch drops that build-dependency and takes the compiler
+from the PROTOC environment variable instead, i.e. the distribution
+protobuf (BuildRequires: pkgconfig(protobuf), PROTOC export in %build).
+
 Downstream-only distribution policy, not suitable for upstream submission.
 
 --- a/codex-rs/Cargo.toml
 +++ b/codex-rs/Cargo.toml
-@@ -26,9 +26,7 @@
+@@ -27,9 +27,7 @@
      "install-context",
      "codex-backend-openapi-models",
      "code-mode",
 -    "code-mode-host",
      "code-mode-protocol",
 -    "code-mode-runtime",
+     "plugin-host",
      "codex-home",
      "cloud-config",
-     "cloud-tasks",
-@@ -107,7 +107,6 @@
+@@ -117,7 +115,6 @@
      "tui",
      "user-verification",
      "tools",
@@ -38,15 +50,15 @@ Downstream-only distribution policy, not suitable for upstream submission.
      "websocket-auth",
      "websocket-client",
      "windows-sandbox-rs/tests/support",
-@@ -198,7 +195,6 @@
+@@ -209,7 +206,6 @@
  codex-cloud-tasks-mock-client = { path = "cloud-tasks-mock-client" }
  codex-code-mode = { path = "code-mode" }
  codex-code-mode-protocol = { path = "code-mode-protocol" }
 -codex-code-mode-runtime = { path = "code-mode-runtime" }
+ codex-plugin-host = { path = "plugin-host" }
  codex-home = { path = "codex-home" }
  codex-http-client = { path = "http-client" }
- codex-websocket-auth = { path = "websocket-auth" }
-@@ -311,7 +310,6 @@
+@@ -331,7 +327,6 @@
  codex-utils-string = { path = "utils/string" }
  codex-utils-template = { path = "utils/template" }
  codex-user-verification = { path = "user-verification" }
@@ -54,7 +66,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  codex-workload-identity = { path = "workload-identity" }
  codex-windows-sandbox = { path = "windows-sandbox-rs" }
  codex-windows-sandbox-test-support = { path = "windows-sandbox-rs/tests/support" }
-@@ -536,7 +531,6 @@
+@@ -557,7 +552,6 @@
  url = "2"
  urlencoding = "2.1"
  uuid = "1"
@@ -62,7 +74,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  vt100 = "0.16.2"
  walkdir = "2.5.0"
  webbrowser = "1.2.2"
-@@ -597,7 +591,6 @@
+@@ -631,7 +625,6 @@
  ignored = [
      "icu_provider",
      "openssl-sys",
@@ -70,3 +82,40 @@ Downstream-only distribution policy, not suitable for upstream submission.
  ]
  
  [profile.dev]
+@@ -673,7 +666,6 @@
+ crossterm = { git = "https://github.com/openai-oss-forks/crossterm", rev = "ed1cdab335221515706178d68495bba2aed1924f" }
+ tokio-tungstenite = { git = "https://github.com/openai-oss-forks/tokio-tungstenite", rev = "0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186" }
+ tungstenite = { git = "https://github.com/openai-oss-forks/tungstenite-rs", rev = "4fffad30fe373adbdcffab9545e9e9bf4f2fc19f" }
+-v8 = { git = "https://github.com/seanh-oai/rusty_v8.git", rev = "350c5a859a9b3c84ab8701b3ad51e3b7699b30c0" }
+ 
+ # Uncomment to debug local changes.
+ # rmcp = { path = "../../rust-sdk/crates/rmcp" }
+--- a/codex-rs/code-mode-protocol/Cargo.toml
++++ b/codex-rs/code-mode-protocol/Cargo.toml
+@@ -24,7 +24,6 @@
+ 
+ [build-dependencies]
+ glob = { workspace = true }
+-protoc-bin-vendored = "3.2.0"
+ tonic-prost-build = { version = "=0.14.3", default-features = false, features = ["transport"] }
+ 
+ # Cargo-shear cannot inspect the prost and tonic-prost references in generated gRPC bindings.
+--- a/codex-rs/code-mode-protocol/build.rs
++++ b/codex-rs/code-mode-protocol/build.rs
+@@ -4,8 +4,15 @@
+     println!("cargo:rustc-check-cfg=cfg(codex_bazel)");
+     println!("cargo:rerun-if-changed=src/grpc");
+ 
++    // Distribution build: the protoc-bin-vendored prebuilt protoc cannot
++    // ship in the sources, so the compiler comes from PROTOC (the system
++    // protobuf, see the spec).  Fail fast when it is not set.
++    let protoc = std::env::var_os("PROTOC").map(PathBuf::from).ok_or(
++        "PROTOC must point at the system protoc (BuildRequires: pkgconfig(protobuf))",
++    )?;
++
+     let mut config = tonic_prost_build::Config::new();
+-    config.protoc_executable(protoc_bin_vendored::protoc_bin_path()?);
++    config.protoc_executable(protoc);
+     let proto_files = glob::glob("src/grpc/*.proto")?.collect::<Result<Vec<_>, _>>()?;
+ 
+     tonic_prost_build::configure()
