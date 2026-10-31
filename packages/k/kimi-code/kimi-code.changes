@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Oct 31 15:27:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the Linux NAPI clipboard helper from source instead of
+  shipping upstream's prebuilt binaries:
+  * Repack the npm tarball without package/native (6 prebuilt .node
+    files for darwin/linux/win32); the darwin/win32 legs never load
+    on Linux
+  * Compile the helper (one C11 file from the unpublished pi-tui
+    workspace package, vendored from the upstream release tag)
+    against the system libxcb in %build, and install it where the
+    inlined loader looks for the Linux prebuild
+
+-------------------------------------------------------------------
+Sat Oct 31 13:38:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4.1:
+  * Cap a single agent file read at 100,000 characters
+    (~25,000 tokens); raise both limits with max_chars
+    under [read] in config.toml
+  * Shorten built-in tool and subagent prompts and the
+    repeated goal and plan mode reminders
+  * Web dashboard interaction improvements and bug fixes
+
+-------------------------------------------------------------------
+Thu Oct 29 12:21:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4.0:
+  * Expand streaming thinking with Ctrl-O; import Claude Code
+    and Codex sessions with /import-sessions
+  * Plan mode is now opt-in with per-plan review; idle
+    sessions unload after 30 minutes and resume transparently
+  * Terminal status reporting, /provider refresh, higher
+    Tower concurrency, MCP reconnect and compaction fixes
+  * Drop the node-pty backend removed upstream (session
+    terminal service): node-pty-1.1.0.tgz and
+    node-addon-api-7.1.1.tgz go away with the native build
+
+-------------------------------------------------------------------
 Mon Oct 26 19:27:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.3.3:

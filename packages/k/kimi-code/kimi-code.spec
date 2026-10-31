@@ -21,42 +21,53 @@
 # runtime is vendored below.
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
-%define node_pty_version 1.1.0
-%define node_addon_api_version 7.1.1
 %define ws_version 8.21.3
 %define qrcode_version 1.5.4
 %define pngjs_version 5.0.0
 %define dijkstrajs_version 1.0.3
 %define chokidar_version 4.0.3
 %define readdirp_version 4.1.2
+# Commit of the @moonshot-ai/kimi-code@2.4.1 release tag the NAPI helper
+# sources below are vendored from (tag object 1fc1d165c83b175873a46897e1e9db73dc70c984).
+%define pi_tui_git 2c73f3f50af4fa7f2540ca0d2e33b07a1408e3a7
 Name:           kimi-code
-Version:        2.3.3
+Version:        2.4.1
 Release:        0
 Summary:        Command-line agentic coding assistant powered by Kimi models
 License:        MIT
 URL:            https://github.com/MoonshotAI/kimi-code
 # The published npm artifact is a prebuilt bundle (dist/main.mjs). Since 0.39.0
 # it no longer inlines ws and qrcode, so those - plus qrcode's own runtime
-# dependencies - are vendored alongside the optional native node-pty backend.
-# Since 2.3.0 the bundle also imports chokidar externally (file watching),
-# so it and its own dependency readdirp are vendored too.
-Source0:        https://registry.npmjs.org/@moonshot-ai/%{name}/-/%{name}-%{version}.tgz
-Source1:        https://registry.npmjs.org/node-pty/-/node-pty-%{node_pty_version}.tgz
-Source2:        https://registry.npmjs.org/node-addon-api/-/node-addon-api-%{node_addon_api_version}.tgz
-Source3:        https://registry.npmjs.org/ws/-/ws-%{ws_version}.tgz
-Source4:        https://registry.npmjs.org/qrcode/-/qrcode-%{qrcode_version}.tgz
-Source5:        https://registry.npmjs.org/pngjs/-/pngjs-%{pngjs_version}.tgz
-Source6:        https://registry.npmjs.org/dijkstrajs/-/dijkstrajs-%{dijkstrajs_version}.tgz
-Source7:        https://registry.npmjs.org/chokidar/-/chokidar-%{chokidar_version}.tgz
-Source8:        https://registry.npmjs.org/readdirp/-/readdirp-%{readdirp_version}.tgz
-Source99:       kimi-code-rpmlintrc
+# dependencies - are vendored below. Since 2.3.0 the bundle also imports
+# chokidar externally (file watching), so it and its own dependency readdirp
+# are vendored too. The node-pty backend went away upstream in 2.4.0
+# (session terminal service removed). The NAPI clipboard helper upstream only
+# ships as prebuilt .node files is compiled from source in %build instead.
+# Repacked npm tarball: package/native (6 prebuilt .node files for
+# darwin/linux/win32 on x64+arm64) is deleted; the darwin/win32 legs never
+# load on Linux and only the Linux leg is rebuilt.
+# Recipe: gunzip the registry tarball, tar --delete -f it package/native,
+# gzip -9 it again.
+# https://registry.npmjs.org/@moonshot-ai/kimi-code/-/kimi-code-2.4.1.tgz
+Source0:        kimi-code-%{version}.tgz
+Source1:        https://registry.npmjs.org/ws/-/ws-%{ws_version}.tgz
+Source2:        https://registry.npmjs.org/qrcode/-/qrcode-%{qrcode_version}.tgz
+Source3:        https://registry.npmjs.org/pngjs/-/pngjs-%{pngjs_version}.tgz
+Source4:        https://registry.npmjs.org/dijkstrajs/-/dijkstrajs-%{dijkstrajs_version}.tgz
+Source5:        https://registry.npmjs.org/chokidar/-/chokidar-%{chokidar_version}.tgz
+Source6:        https://registry.npmjs.org/readdirp/-/readdirp-%{readdirp_version}.tgz
+# Linux NAPI helper sources from the private @moonshot-ai/pi-tui workspace
+# package (never published to the registry), pinned to the release tag above.
+Source10:       https://raw.githubusercontent.com/MoonshotAI/kimi-code/%{pi_tui_git}/packages/pi-tui/native/napi.h
+Source11:       https://raw.githubusercontent.com/MoonshotAI/kimi-code/%{pi_tui_git}/packages/pi-tui/native/clipboard.h
+Source12:       https://raw.githubusercontent.com/MoonshotAI/kimi-code/%{pi_tui_git}/packages/pi-tui/native/linux/src/linux-platform-x11.c
+Source13:       https://raw.githubusercontent.com/MoonshotAI/kimi-code/%{pi_tui_git}/packages/pi-tui/native/linux/src/clipboard-worker.h
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  make
-BuildRequires:  nodejs-devel >= 22.19
+BuildRequires:  gcc
+BuildRequires:  nodejs >= 22.19
 BuildRequires:  nodejs-packaging
-BuildRequires:  npm
-BuildRequires:  python3
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(xcb)
 Requires:       fd
 Requires:       nodejs >= 22.19
 Requires:       ripgrep
@@ -65,14 +76,12 @@ Requires:       ripgrep
 # cannot be enumerated from the published artifact.
 Provides:       bundled(chokidar) = %{chokidar_version}
 Provides:       bundled(dijkstrajs) = %{dijkstrajs_version}
-Provides:       bundled(node-addon-api) = %{node_addon_api_version}
-Provides:       bundled(node-pty) = %{node_pty_version}
 Provides:       bundled(pngjs) = %{pngjs_version}
 Provides:       bundled(qrcode) = %{qrcode_version}
 Provides:       bundled(readdirp) = %{readdirp_version}
 Provides:       bundled(ws) = %{ws_version}
-# node-pty compiles a native addon; the pure-JS bundle is otherwise portable, but
-# only these arches are verified/relevant for the coding-agent workload.
+# Only the Linux arches are built: the NAPI helper is compiled from source in
+# %build, and the darwin/win32 prebuilds never load on Linux.
 ExclusiveArch:  x86_64 aarch64
 
 %description
@@ -80,8 +89,7 @@ Kimi Code is Moonshot AI's command-line coding agent: an interactive terminal
 assistant for software-engineering tasks, driven by the Kimi family of models.
 
 It bundles a prebuilt web dashboard and shells out to ripgrep and fd for fast
-code search. The interactive shell backend is provided by a compiled node-pty
-addon.
+code search.
 
 %prep
 %setup -q -c -T
@@ -94,33 +102,30 @@ unpack_npm() {
     mv package "$2"
 }
 unpack_npm %{SOURCE0} kimi-code
-unpack_npm %{SOURCE1} node-pty
-unpack_npm %{SOURCE2} node-addon-api
-unpack_npm %{SOURCE3} ws
-unpack_npm %{SOURCE4} qrcode
-unpack_npm %{SOURCE5} pngjs
-unpack_npm %{SOURCE6} dijkstrajs
-unpack_npm %{SOURCE7} chokidar
-unpack_npm %{SOURCE8} readdirp
+unpack_npm %{SOURCE1} ws
+unpack_npm %{SOURCE2} qrcode
+unpack_npm %{SOURCE3} pngjs
+unpack_npm %{SOURCE4} dijkstrajs
+unpack_npm %{SOURCE5} chokidar
+unpack_npm %{SOURCE6} readdirp
 chmod -R a+rX,u+w,go-w .
 
 %build
-# Compile the node-pty native addon fully offline.
-# node-pty's binding.gyp resolves node-addon-api via require(), so place it
-# where node-pty's own module resolution will find it.
-mkdir -p node-pty/node_modules
-cp -a node-addon-api node-pty/node_modules/node-addon-api
-# node-gyp ships bundled inside npm; locate it rather than assuming it is on PATH.
-node_gyp=$(find %{_prefix}/lib %{_libdir} -type f \
-    -path '*node-gyp/bin/node-gyp.js' 2>/dev/null | head -n1)
-pushd node-pty
-export npm_config_nodedir=%{_prefix}
-export npm_config_build_from_source=true
-# scripts/prebuild.js only checks local files (no network); with
-# build_from_source set it deletes the shipped darwin/win32 prebuilds and exits
-# non-zero, so build the Linux addon (pty.node + spawn-helper) from source here.
-node "$node_gyp" rebuild --nodedir=%{_prefix}
-popd
+# The Linux NAPI clipboard helper, compiled from source. Upstream ships it
+# only as prebuilt .node files (packages/pi-tui/native in the unpublished
+# pi-tui workspace package); the Linux helper is a single C11 file using
+# only libxcb, with the small N-API surface node provides declared in the
+# vendored napi.h. Flags mirror upstream's native/linux/build.sh.
+mkdir -p pi-tui-native/native/linux/src
+cp %{SOURCE10} pi-tui-native/native/napi.h
+cp %{SOURCE11} pi-tui-native/native/clipboard.h
+cp %{SOURCE12} pi-tui-native/native/linux/src/linux-platform-x11.c
+cp %{SOURCE13} pi-tui-native/native/linux/src/clipboard-worker.h
+cc %{optflags} -std=c11 -D_POSIX_C_SOURCE=200809L -Wall -Wextra -Werror \
+    -fPIC -pthread -fvisibility=hidden -fno-stack-protector -shared -nostdlib \
+    -Wl,--unresolved-symbols=ignore-all -Wl,--no-as-needed -Wl,--gc-sections \
+    -Wl,-z,nodelete pi-tui-native/native/linux/src/linux-platform-x11.c \
+    -lxcb -o linux-platform-x11.node
 
 %install
 # The bundle is installed by hand rather than with `npm install`: since 0.39.0
@@ -145,15 +150,6 @@ find "$kimiroot/node_modules" -name '.*' -prune -exec rm -rf {} +
 find "$kimiroot/node_modules" -type f -name '*.js' -exec chmod 0644 {} +
 find "$kimiroot/node_modules" -type f -name '*.js' -exec sed -i 's/\r$//' {} +
 
-# Inject the freshly compiled node-pty so `import("node-pty")` resolves.
-install -d "$kimiroot/node_modules/node-pty/build/Release"
-cp -a node-pty/lib "$kimiroot/node_modules/node-pty/lib"
-cp -a node-pty/package.json "$kimiroot/node_modules/node-pty/package.json"
-# Only pty.node is needed on Linux; spawn-helper is a macOS-only path in
-# node-pty's binding.gyp and pty.cc (the Linux fork path uses forkpty(3) and
-# never execs the helper), so it is neither built nor referenced at runtime here.
-cp -a node-pty/build/Release/pty.node "$kimiroot/node_modules/node-pty/build/Release/"
-
 # Use a concrete node interpreter (openSUSE convention) rather than /usr/bin/env.
 sed -i '1s|^#!%{_bindir}/env node|#!%{_bindir}/node|' "$kimiroot/dist/main.mjs"
 chmod 0755 "$kimiroot/dist/main.mjs"
@@ -164,9 +160,15 @@ ln -sr "$kimiroot/dist/main.mjs" %{buildroot}%{_bindir}/kimi
 # shim at npm-install time and are unused by the packaged CLI.
 rm -rf "$kimiroot/scripts"
 
-# Strip non-Linux prebuilt addons shipped in the bundle (darwin/win32 only).
-find %{buildroot}%{nodejs_sitelib} -type d -name 'darwin-*' -prune -exec rm -rf {} +
-find %{buildroot}%{nodejs_sitelib} -type d -name 'win32-*' -prune -exec rm -rf {} +
+# Install the from-source NAPI helper where the inlined pi-tui loader looks
+# for it: <kimiroot>/native/<platform>/prebuilds/<platform>-<arch>/. Only the
+# Linux leg is built (ExclusiveArch); darwin/win32 never load on Linux and
+# the repacked tarball ships no prebuilds at all.
+case "%{_target_cpu}" in
+    x86_64) nativearch="x64" ;;
+    aarch64) nativearch="arm64" ;;
+esac
+install -D -m 0755 linux-platform-x11.node "$kimiroot/native/linux/prebuilds/linux-$nativearch/linux-platform-x11.node"
 find %{buildroot}%{nodejs_sitelib} -type f \
     \( -name '*.cmd' -o -name '*.bat' -o -name '*.ps1' -o -name '*.pdb' \) -delete
 
@@ -176,9 +178,9 @@ find %{buildroot}%{nodejs_sitelib} -type f \
 # Starting the CLI evaluates dist/main.mjs, whose top-level imports of ws and
 # qrcode fail loudly if the vendored trees are missing or incomplete.
 %{buildroot}%{_bindir}/kimi --version
-# node-pty is only reached through a dynamic import at runtime, so load the
-# compiled addon explicitly to prove it works on this architecture.
-node -e 'require("%{buildroot}%{nodejs_sitelib}/@moonshot-ai/%{name}/node_modules/node-pty")'
+# The from-source NAPI helper must load and export the clipboard surface the
+# smoke path (KIMI_CODE_NATIVE_ASSET_SMOKE=1) requires of the Linux prebuild.
+node -e "const h = require('%{buildroot}%{nodejs_sitelib}/@moonshot-ai/kimi-code/native/linux/prebuilds/linux-' + (process.arch === 'arm64' ? 'arm64' : 'x64') + '/linux-platform-x11.node'); if (typeof h.getText !== 'function' || typeof h.getImage !== 'function') throw new Error('unexpected native helper exports')"
 
 %files
 %{_bindir}/kimi

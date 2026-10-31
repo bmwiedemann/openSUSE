@@ -218,4 +218,12 @@ satisfy their ranges; ws 8.21.3 is npm latest. No CVE or GHSA in the
     <comment>Update kimi-code to 2.3.3.</comment>
     <requestid>1392926</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dba9f5f466cb3cd206b89539988be032</srcmd5>
+    <version>2.4.1</version>
+    <time>1793484564</time>
+    <user>dimstar_suse</user>
+    <comment>Update kimi-code to 2.4.1: build NAPI helper from source</comment>
+    <requestid>1394172</requestid>
+  </revision>
 </revisionlist>
