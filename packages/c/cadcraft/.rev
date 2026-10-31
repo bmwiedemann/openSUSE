@@ -15,4 +15,12 @@
     <comment>Fix adi:5 %check: skip CJK-dependent IME test.</comment>
     <requestid>1393808</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9aacb02e18e4b10f7216983a27880844</srcmd5>
+    <version>0.15.1</version>
+    <time>1793484665</time>
+    <user>dimstar_suse</user>
+    <comment>Update cadcraft to 0.15.1</comment>
+    <requestid>1394152</requestid>
+  </revision>
 </revisionlist>

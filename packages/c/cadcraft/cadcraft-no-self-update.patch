@@ -27,16 +27,18 @@ diff --git a/apps/cadcraft/src/main.rs b/apps/cadcraft/src/main.rs
 diff --git a/crates/ui-egui/src/updates_ui.rs b/crates/ui-egui/src/updates_ui.rs
 --- a/crates/ui-egui/src/updates_ui.rs
 +++ b/crates/ui-egui/src/updates_ui.rs
-@@ -3,7 +3,7 @@
+@@ -2,7 +2,7 @@
+ //! Updates… (desktop only; the web build is always the latest). The flow itself is
  //! `craft_update::updater::Updater`.
-
- use craft_update::suite::CADCRAFT;
+ 
 -use craft_update::updater::{Action, Status, Updater};
 +use craft_update::updater::{Status, Updater};
-
+ 
  use crate::CadApp;
-
-@@ -60,12 +60,7 @@
+ 
+@@ -57,14 +57,9 @@
+ }
+ 
  /// Draw the prompt while there is one and act on its answer.
 -pub fn show(app: &mut CadApp, ctx: &egui::Context) {
 -    // The restart helper is scheduled before the app closes, so no update starts over unsaved work.
