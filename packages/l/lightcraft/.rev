@@ -15,4 +15,12 @@
     <comment>Fix adi:5 build: braced macros, drop unused egui pins.</comment>
     <requestid>1393742</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4e2a055f96906d4e4a0322756b6f76f9</srcmd5>
+    <version>0.16.0</version>
+    <time>1793484627</time>
+    <user>dimstar_suse</user>
+    <comment>Update lightcraft (filtered vendor)</comment>
+    <requestid>1394162</requestid>
+  </revision>
 </revisionlist>

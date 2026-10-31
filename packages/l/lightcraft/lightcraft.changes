@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:52:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.0 (upstream tag v0.16.0, 2026-10-31):
+  * Hardening: hostile ERF/MEF raw strips refused, .cube LUT
+    non-finite values rejected, IPTC trailing NULs stripped,
+    ZIP entries with inconsistent sizes refused, mismatched
+    XML tags rejected. No CVE identifiers in the crossed range.
+  * Fixes: hue clamped below 360, custom white balance reported
+    when a look omits it, translated open/save panels.
+  * Re-vendored (update=false, respect-lockfile true);
+    besides the workspace crates only craft-update moves (git
+    rev 92d392c to 04aa1703, still MIT OR Apache-2.0; its one
+    new dep `image` was already vendored) plus zip 9.1.0 to
+    9.1.3 (MIT) and rustls-webpki 0.103.15 to 0.103.16 (ISC),
+    so the licence set of the linked crates is unchanged, no
+    new copyleft; the cargo_audit service reports no
+    advisories.
+- Set the fixed metainfo release date to 2026-10-31.
+- Keep lightcraft-no-self-update.patch and
+  lightcraft-drop-unused-egui-patches.patch unchanged (both
+  still apply --fuzz=0: same four unused pins, same rev).
+
+-------------------------------------------------------------------
 Thu Oct 29 14:46:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.15.0 (upstream tags v0.14.0, 2026-10-25 and
