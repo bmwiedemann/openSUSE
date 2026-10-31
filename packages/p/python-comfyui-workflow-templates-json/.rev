@@ -309,4 +309,12 @@ entries are re-sorted. Data only, no code or dependency change.</comment>
     <comment>Update python-comfyui-workflow-templates-json to 0.1.123.</comment>
     <requestid>1392932</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>896dac342ed70eb6ded8f317538e2266</srcmd5>
+    <version>0.1.126</version>
+    <time>1793484649</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-comfyui-workflow-templates-json to 0.1.126.</comment>
+    <requestid>1394123</requestid>
+  </revision>
 </revisionlist>

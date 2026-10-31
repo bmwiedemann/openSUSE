@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:58:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.126 (crosses 0.1.124 and 0.1.125):
+  * 8 new templates: four Patina material workflows, three
+    Pika H3 Flex video workflows, and Veed dubbing; not
+    purely additive, api_ideogram_v4_5_precise_image_edit is
+    rewritten in place
+  * Index files advance to the upstream release revisions
+  * Spec-cleaner modernization: %files %python_files
+
+-------------------------------------------------------------------
 Mon Oct 26 19:29:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.123:
