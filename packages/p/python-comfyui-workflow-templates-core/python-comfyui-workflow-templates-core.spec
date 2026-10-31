@@ -17,7 +17,7 @@
 
 
 Name:           python-comfyui-workflow-templates-core
-Version:        0.3.388
+Version:        0.3.391
 Release:        0
 Summary:        Core helpers for ComfyUI workflow templates
 # Legal-Review-Notice: sdist ships no LICENSE file; upstream
@@ -31,12 +31,17 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # The manifest pins a sha256 per asset and names the owning bundle, so its
-# entries resolve only against these floors: without them 23 of the 608
-# entries name assets no installed bundle provides. Upstream rewrites the
-# index files when building the json sdist, so the 13 declared hashes for
-# those never match any published json build (upstream defect, not fixable
-# here) -- these floors are necessary, not sufficient.
-Requires:       python-comfyui-workflow-templates-json >= 0.1.102
+# entries resolve only against these floors. 0.3.391 adds 8 entries (all
+# owned by media-assets-02) and rewrites api_ideogram_v4_5_precise_image_edit
+# in place: the new .json files are byte-identical in json 0.1.125/0.1.126
+# while the rewritten one matches only 0.1.126, so the json floor is 0.1.126.
+# Upstream rewrites the index files when building the json sdist, so the 13
+# declared hashes for those never match any published json build (upstream
+# defect, not fixable here) -- these floors are necessary, not sufficient.
+# The 8 new previews live in media-assets-02 past the packaged 0.1.9, so
+# those entries stay preview-less until that bundle (separately maintained)
+# is updated; the floor is left alone rather than made unresolvable.
+Requires:       python-comfyui-workflow-templates-json >= 0.1.126
 Requires:       python-comfyui-workflow-templates-media-assets-02 >= 0.1.9
 BuildArch:      noarch
 %python_subpackages
@@ -63,7 +68,7 @@ comfyui-workflow-templates meta package.
 # in the sdist -- so only an import smoke test is possible here.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import comfyui_workflow_templates_core"
 
-%files %{python_files}
+%files %python_files
 %{python_sitelib}/comfyui_workflow_templates_core
 %{python_sitelib}/comfyui_workflow_templates_core-%{version}.dist-info
 

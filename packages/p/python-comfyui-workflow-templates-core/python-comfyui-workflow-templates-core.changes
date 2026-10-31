@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:59:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.391 (660 to 668 manifest entries):
+  * 8 new entries, all owned by media-assets-02: four Patina
+    material, three Pika H3 Flex video, and Veed dubbing
+    workflows
+  * Raise the json floor to >= 0.1.126: the rewritten
+    api_ideogram_v4_5_precise_image_edit matches only
+    0.1.126, the 8 new .json files are identical in
+    0.1.125/0.1.126
+  * The 8 new previews need media-assets-02 past the packaged
+    0.1.9, so those entries stay preview-less until that
+    separately-maintained bundle updates; the standing
+    13 index-hash mismatches are unchanged
+  * Spec-cleaner modernization: %files %python_files
+
+-------------------------------------------------------------------
 Mon Oct 26 19:28:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.388: the manifest grows from 651 to 660
