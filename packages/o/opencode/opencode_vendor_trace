@@ -29,8 +29,11 @@ command -v strace >/dev/null || { echo "strace is required for --retrace" >&2; e
 
 # The build refuses to run under a bun it does not recognise, and reads the
 # models catalogue and the version over the network. Same neutralisation the
-# spec applies, so the trace matches what the package will do.
+# spec applies, so the trace matches what the package will do. The SDK patch
+# keeps the proprietary Claude Agent SDK out of the traced closure, same as
+# Patch4 does at %prep.
 ( cd "$tree" && patch -p1 -s < "$here/opencode-relax-bun-version.patch" )
+( cd "$tree" && patch -p1 -s < "$here/opencode-externalize-claude-agent-sdk.patch" )
 
 models="$here/models.dev-api.tmp.json"
 curl -fsSL -o "$models" https://models.dev/api.json
@@ -99,7 +102,7 @@ echo "    rebuilding against the pruned tree"
   bun run ./script/build.ts --single --skip-install --skip-web-ui >/dev/null )
 echo "    pruned tree builds"
 
-# The patch is only so the retrace build can run under a bun that is not the
-# one upstream pins. Reverse it so Source0 stays the upstream tree and Patch0
-# still applies at %prep.
+# Both patches are only for the retrace build. Reverse them so Source0 stays
+# the upstream tree and Patch0/Patch4 still apply at %prep.
+( cd "$tree" && patch -p1 -s -R < "$here/opencode-externalize-claude-agent-sdk.patch" )
 ( cd "$tree" && patch -p1 -s -R < "$here/opencode-relax-bun-version.patch" )

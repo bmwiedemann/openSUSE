@@ -1,0 +1,23 @@
+@anthropic-ai/claude-agent-sdk declares "SEE LICENSE IN README.md" and ships
+a proprietary Anthropic licence (all rights reserved, Commercial Terms, no
+OSI grant). It must not be compiled into the executable. Nothing imports
+the SDK's values statically: every source import outside the single
+`export *` in claude/agent-sdk.ts is `import type` (erased at build time),
+and agent-sdk.ts is reached only through the dynamic import("#claude-agent-sdk")
+in claude/sdk.ts load(), whose .catch degrades to the designed "Claude Agent
+SDK isn't installed" error. Marking the package external leaves that dynamic
+import unresolved at bundle time, so the provider fails soft at runtime
+instead of shipping proprietary code. The SDK is already an optional
+peerDependency of @opencode/core for exactly this shape.
+
+--- a/packages/cli/script/build.ts
++++ b/packages/cli/script/build.ts
+@@ -169,7 +169,7 @@
+       simulationGraphPlugin,
+       modelsSnapshot,
+     ],
+-    external: ["node-gyp"],
++    external: ["node-gyp", "@anthropic-ai/claude-agent-sdk"],
+     format: "esm",
+     minify: true,
+     bytecode: true,

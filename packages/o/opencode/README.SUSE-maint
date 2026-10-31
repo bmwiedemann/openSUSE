@@ -35,11 +35,7 @@ Then, in order:
    is the pin and must match the spec.
 
 2. Rebase the five patches. They are small and all of them sit in code
-   upstream changes rarely, but the grammar patch in particular is a single
-   line in a large file. opencode-native-tree-sitter.patch replaces the
-   parser() block of packages/opencode/src/tool/shell.ts; if upstream
-   changes what shell.ts reads from a node, shell-native.ts (added by the
-   patch) must grow with it.
+   upstream changes rarely.
 
 3. Check the native pins. %prep fails if the vendor tree's @ff-labs/fff-bun,
    bun-pty, @silvia-odwyer/photon-node or @parcel/watcher moved away from
@@ -51,7 +47,12 @@ Then, in order:
    update in Factory makes this package unresolvable until the pin (and
    the bundled() version it feeds) follows - by design. On an opentui
    bump re-check its parsers-config.ts pins and highlight queries
-   against those versions. See "Native code" below.
+   against those versions. See "Native code" below. The @opencode/pty
+   npm pin is checked the same way, but it only guards the now-inert
+   binaries; the embedded helper comes from Source20/21/22, so on a tag
+   bump re-extract packages/process-daemon into Source20, re-run the
+   cargo_vendor service for Source21, and compare ghostty-revision
+   against Source22 (new tarball if it moved, else untouched).
 
 4. Build locally, then read %check. It runs the compiled binary, which is the
    only thing that proves the payload survived packaging.
@@ -102,7 +103,7 @@ it so Source0 stays the upstream tree and Patch0 still applies at %prep.
 The install runs with `--cpu '*' --os '*'`. Bun 1.4 resolves
 optionalDependencies for the host platform alone, so an install done on
 aarch64 contains no @opentui/core-linux-x64, @ff-labs/fff-bin-linux-x64-gnu,
-@parcel/watcher-linux-x64-glibc or @opencode-ai/pty-linux-x64-gnu. A plain run
+@parcel/watcher-linux-x64-glibc or @opencode/pty-linux-x64-gnu. A plain run
 notices - the script's keep list check stops with "keep list names packages
 the install did not produce" - but --retrace is what the list is regenerated
 with, and the counterpart step described below can only add packages the
@@ -213,11 +214,11 @@ descriptor list against opencode_system_grammars: a new language needs its
 grammar packaged (with -wasm and -queries) before it is added; until then
 Patch3 keeps it blocked.
 
-The remaining patch is unrelated to the network.
+The remaining two patches are unrelated to the network.
 
 opencode-relax-bun-version.patch carries the version skew instead. Upstream's
 build script fails unless bun satisfies a caret range around the version in
-the packageManager field: 2.1.4 pins bun@1.4.4 and Factory has 1.4.2, which
+the packageManager field: 2.2.5 pins bun@1.4.4 and Factory has 1.4.2, which
 does not satisfy ^1.4.4, so without the patch the check would fail the
 build. The patch turns it into a warning because both versions float
 independently, a distribution ships one bun, and the check is upstream's
@@ -225,6 +226,16 @@ convenience rather than a real incompatibility - the build
 itself is Bun.build() plus shell calls, and %check runs the resulting binary,
 so a bun that really is too new fails visibly on its own. A build log
 carries the "expected bun@" warning whenever the range is not satisfied.
+
+opencode-externalize-claude-agent-sdk.patch keeps a proprietary dependency
+out of the executable. @anthropic-ai/claude-agent-sdk declares "SEE LICENSE
+IN README.md" and ships a proprietary Anthropic licence, so it must not be
+compiled in; the patch adds it to `external` in packages/cli/script/build.ts.
+Nothing imports the SDK's values statically - every source import outside
+the single `export *` in claude/agent-sdk.ts is `import type`, and that file
+is reached only through the dynamic import in claude/sdk.ts load(), whose
+.catch degrades to the designed "Claude Agent SDK isn't installed" error -
+so the Claude Agent provider simply reports itself unavailable at runtime.
 
 Two things are deliberately left alone:
 
@@ -236,7 +247,11 @@ Two things are deliberately left alone:
     Requires: ripgrep in the spec removes the download entirely - which()
     searches PATH first and wins.
 
-There is no telemetry, no Sentry and no analytics anywhere in the CLI.
+There is no telemetry, no Sentry and no analytics anywhere in the
+shipped binary. The opt-in Claude Agent provider would send usage and
+conversation data to Anthropic when it runs, but its SDK is not bundled
+(see "Licensing"): the provider degrades to its designed "isn't installed"
+error, so that data path is unreachable.
 OpenTelemetry exists but returns empty layers unless
 OTEL_EXPORTER_OTLP_ENDPOINT is set.
 
@@ -250,13 +265,16 @@ Licensing
 ---------
 
 The dependency tree is compiled into the executable, so its licences are part
-of the binary and the License: tag has to cover all of them. As of 2.0.26,
-across the 363 shipped packages:
+of the binary and the License: tag has to cover all of them.
+As of 2.2.5, across the 346 shipped packages:
 
-    MIT 207, Apache-2.0 70, ISC 63, BlueOak-1.0.0 9, BSD-2-Clause 8,
+    MIT 191, Apache-2.0 67, ISC 65, BlueOak-1.0.0 9, BSD-2-Clause 8,
     BSD-3-Clause 2, 0BSD 1, CC0-1.0 1, CC-BY-3.0 1, CC-BY-4.0 1
 
-No copyleft, nothing non-free. Two declarations are inconsistent and neither
+No copyleft, no proprietary packages. The retraced keep list names 349
+entries; the tarball holds two fewer because opencode_vendor strips the
+@opencode/pty-linux-* entries after pruning (both MIT, superseded by the
+from-source pty build). Two declarations are inconsistent and neither
 matters: @npmcli/redact says ISC and ships MIT text, abbrev says ISC and its
 LICENSE says "ISC OR MIT".
 
@@ -276,13 +294,26 @@ Two things that read as findings and are not. A store entry also holds nested
 subpath packages at the same depth as its own manifest - zod's v3/v4/mini,
 solid-js's h/html/store/universal/web, effect's ai-docs, diff's esm/cjs, and
 tslib's modules - and those manifests carry no name, no version and no license
-field. Counting the first package.json found per entry therefore reports a
-handful of unlicensed packages that are not packages at all; take the manifest
-whose name matches the entry, and count 353 rather than the number of files.
+field. Counting the first package.json found per entry therefore reports
+dozens of unlicensed packages that are not packages at all (435 files for
+348 packages at 2.2.5); take the manifest
+whose name matches the entry instead.
 Separately, poe-oauth 0.0.8 (no license field, no LICENSE file in the npm
 tarball, MIT granted by the root LICENSE of github.com/poe-platform/poe-code)
 left the closure after 1.18.32 and is no longer shipped; if it comes back the
 note applies again.
+
+One package that would otherwise be here is deliberately absent.
+@anthropic-ai/claude-agent-sdk 0.3.301, new in the v2.2.0..v2.2.5 range for
+the Claude Agent provider, declares "SEE LICENSE IN README.md" and ships a
+proprietary Anthropic LICENSE.md (all rights reserved, Commercial Terms;
+the README grants nothing). opencode-externalize-claude-agent-sdk.patch
+adds it to `external` in the CLI build, so the retraced keep list drops its
+store entry and no byte of it ships: the vendor tarball holds only the ten
+dangling symlink-farm links that pointed at the dropped store entry. The provider stays in the
+source but degrades to its designed "Claude Agent SDK isn't installed"
+error, since nothing imports the SDK's values statically. See the spec's
+Legal-Review-Notice.
 
 
 Native code
@@ -291,21 +322,83 @@ Native code
 Everything compiled into the executable that is not JavaScript ends up there
 one of these ways:
 
-  - Embedded, taken from a prebuilt npm binary: @opencode-ai/pty-linux-arm64-gnu
-    and -linux-x64-gnu each ship an ELF bin/opencode-pty, and the built
-    executable carries one in its bun file table as
-    $bunfs/root/opencode-pty-<hash>. - the one native thing here that is
-    neither built here nor loaded from a package, so no Requires: covers
-    it. opencode_vendor's foreign-platform pass drops *.dylib, *.dll and
-    *.exe, but this file has no extension, so both survive and the
-    architecture not being built is simply never reached; that is why one
-    tarball serves both builds. Both packages are MIT. A distribution
-    wanting this built from source would have to take the crate and package
-    it; there is no such package today, so the prebuilt copy is what ships.
-    Note that %%check cannot see it: its embedded-file assertion matches
-    only .so, .node and .wasm, so the extensionless entry passes through
-unasserted. Verified on 2.0.26, where 2.0.24 shipped the same two
-binaries at 0.2.0.
+  - Embedded, built here from source: the pty helper behind the shell
+    tool's persistent terminals. %build compiles packages/process-daemon
+    0.4.0 (Source20, MIT) with `cargo build --release --offline --locked`
+    against its locked cargo closure (Source21, from the cargo_vendor
+    service in _service) and exports the result as OPENCODE_PTY_BIN, which
+    packages/cli/script/build.ts embeds as its bun file-table entry (the
+    build records its version as "local" plus its sha256). Only the build
+    arch's helper is ever embedded, which matches these per-arch builds;
+    cross-arch embedding is refused by upstream design. The @opencode/pty
+    npm package's two prebuilt ELF bin/opencode-pty files are stripped
+    from the vendor tree after pruning (opencode_vendor; the keep list
+    still names them because a retrace without OPENCODE_PTY_BIN follows
+    the npm fallback, so the strip lives in the script, not the list)
+    and are never opened with OPENCODE_PTY_BIN set; %check asserts the
+    payload carries the from-source sha256 and the npm binaries are gone
+    from the tree. To prove it by
+    hand: `sha256sum` the helper (its hex digest is in the built
+    executable, since the build records it).
+    Source21 carries no prebuilt binaries either: the cargo_vendor
+    service cannot filter and stay locked (its filter re-resolves the
+    graph and dies against --locked from respect-lockfile, verified),
+    so the Windows-only MinGW import libs (winapi-*-gnu lib/*.a) and the
+    wasm-only artifacts (wit-bindgen's src/rt/*.a/*.o plus its WASI
+    example .wasm) are deleted from the service output by hand, with each
+    crate's .cargo-checksum.json files map repaired to match (cargo
+    refuses listed-but-missing files). wit-bindgen's src/rt/*.rs sources
+    stay: lib.rs declares `pub mod rt` unconditionally, so they compile
+    on Linux too; only the binaries go. Recipe to redo after a
+    re-vendor: delete every *.a/*.o/*.wasm under process-daemon/vendor,
+    drop their entries from the owning crate's .cargo-checksum.json
+    (compact JSON, key order kept), and verify every remaining listed
+    file still hashes to its entry.
+    The helper statically links Ghostty's libghostty-vt, which its
+    build.rs compiles with zig: GHOSTTY_SOURCE_DIR points at Source22
+    (Ghostty ab0b9da9e88fcb4b0533a1854e84628f663930af with .git, which
+    satisfies build.rs's revision and clean-tree asserts without its
+    `git fetch` fallback) and OPENCODE_ZIG_CPU=baseline matches
+    upstream's release builds (packages/process-daemon
+    script/release-bin/zig). What ends up in the helper from Ghostty is
+    the VT parser plus uucode (MIT, grapheme breaks) and simdutf/highway
+    (Apache-2.0, SIMD); the font/UI C sources `zig build` also resolves
+    at configure time are never compiled into it (verified by the static
+    archive's object list: vt, simdutf, highway, compiler_rt only).
+    Source22 also carries a pre-fetched zig-pkg/ with the 25 zig deps
+    the configure step resolves, since OBS builds have no network; the
+    zig package cache itself starts empty. The deps' top-level test/
+    and examples/ dirs are stripped at repack time (about 104 MB
+    uncompressed: glfw VC2010 example libs, password-zip and
+    corrupt-bz2 test corpus among them), so no exception lines remain
+    for them. Two source-only paths stay because dep build scripts
+    open them at configure time (verified by audit and by failing
+    offline builds): translate_c's test/cases.zig, which its build.zig
+    @imports to wire its test steps (a 10 KB source), and libxev's
+    examples/ (five C/Zig sources), which its build.zig iterates to
+    wire example steps through ghostty's bench init. The N-V-* C blobs
+    carry no build.zig at all, and no other dep build.zig opens test/
+    or examples/ paths; neither kept path holds binary weight.
+    What else stays: four nested source-only dirs (expat
+    doc/examples, highway hwy/examples, libpng contrib/examples,
+    uucode src/test) hold no binaries and are never compiled into
+    libghostty-vt; dep-internal test/example steps never evaluate
+    during `zig build`, and Ghostty's own build.zig only wires its
+    test/ through test steps. Regenerating Source22: shallow
+    `git fetch --depth=1` the revision, check out, run the same
+    `zig build -Demit-lib-vt=true -Demit-xcframework=false
+    -Dapp-runtime=none -Doptimize=ReleaseFast -Dcpu=baseline --prefix`
+    once with network (zig = the spec's zig_version; plain `zig` on PATH
+    must be that version, because the translate_c step runs `zig env`),
+    then delete zig-pkg/*/test and zig-pkg/*/examples except
+    zig-pkg/translate_c-*/test/cases.zig and zig-pkg/libxev-*/examples
+    (see above) and pack the tree
+    with .git and zig-pkg/ but without .zig-cache.
+    The whole helper build was proven to run with no network
+    (`cargo build --release --offline --locked` under `unshare -Urn`
+    with an empty cargo home); without zig-pkg/ it fails fetching
+    uucode first, and without GHOSTTY_SOURCE_DIR build.rs tries to
+    `git fetch` Ghostty from GitHub.
 
   - Loaded from a package at run time (like libopentui.so): libfff_c.so
     from the fff package (the file finder behind the @ file picker,
@@ -338,12 +431,13 @@ binaries at 0.2.0.
     (patches/@silvia-odwyer%2Fphoton-node@*.patch: bundle under bun, read
     the module from where opencode embeds it) are re-applied by %prep.
 
-The shell tool's command parser no longer goes through wasm at all:
-opencode-native-tree-sitter.patch loads libtree-sitter and the
-tree-sitter-bash / tree-sitter-powershell packages' grammars through
-bun:ffi, with libopencode-tsshim.so (Source12, installed under %_libdir)
-walking the tree, because TSNode is returned by value and bun:ffi cannot
-receive that. %check parses a pipeline through the shipped shim.
+The shell tool's command parser is upstream's own portable scanner
+(packages/core/src/shell/scan.ts): the web-tree-sitter route the
+distribution used to replace with libtree-sitter through bun:ffi is gone
+upstream, so opencode-native-tree-sitter.patch, opencode-tsshim.c and the
+tree-sitter-bash / tree-sitter-powershell runtime requirements are retired
+as of 2.2.5. If upstream ever goes back to a wasm parser, that patch wants
+its placeholders re-added to the spec.
 
 One module is still the npm file: web-tree-sitter's tree-sitter.wasm
 (205 KB, MIT), used by @opentui/core's highlighter. Its build needs
@@ -379,8 +473,8 @@ Things that will surprise you
     checked against 1.3.14 the only content difference was @vitest/coverage-v8
     and its closure - test tooling this build does not use.
 
-  - --production does not work. @opencode-ai/core is a devDependency of
-    packages/opencode and is compiled into the binary anyway.
+  - --production does not work. @opencode/script is a devDependency of
+    packages/cli and is compiled into the binary anyway.
 
   - bun --compile needs to find a .bun section in /proc/self/exe. Running bun
     through an explicit ld-linux wrapper breaks it with a confusing

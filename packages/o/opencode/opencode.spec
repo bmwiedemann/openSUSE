@@ -25,7 +25,7 @@
 # The TypeScript and libopentui.so talk over a private FFI ABI with no
 # versioning of its own, so the runtime opentui package must be the
 # release this tree pins. %%prep checks that this still matches.
-%global opentui_version 0.7.0
+%global opentui_version 0.8.0
 # The two native libraries loaded through bun:ffi at run time. Both ABIs are
 # private to the TypeScript that ships in the vendor tree, so the packages
 # are required at exactly the version that tree was generated from; %%prep
@@ -47,6 +47,15 @@
 # -queries packages (grammar names as in the upstream descriptor list; the
 # c_sharp module lives in tree-sitter-c-sharp).
 %global opencode_system_grammars python rust go cpp csharp bash c java ruby php scala html json yaml haskell css julia lua ocaml clojure swift toml nix diff elixir fsharp r make vim xml agda
+# The pty helper (@opencode/pty 0.4.0, packages/process-daemon) is built
+# from source in %%build instead of shipping upstream's prebuilt binaries.
+%global opencode_pty_version 0.4.0
+# Ghostty revision the helper's build.rs pins (packages/process-daemon
+# ghostty-revision), and the zig that builds its libghostty-vt. Ghostty's
+# build.zig.zon sets minimum_zig_version 0.16.0, so this is an equality
+# pin like the grammar modules above: a Factory zig move makes this
+# package unresolvable until the revision is re-verified against it.
+%global zig_version 0.16.0
 # Node's names for the platform, not RPM's: the build target is derived from
 # them, and @opentui/core resolves its native library by the same names.
 %ifarch x86_64
@@ -56,21 +65,50 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        2.2.0
+Version:        2.2.5
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 2.2.0 from the declared license field
-# of all 356 packages in the vendor tarball (357 store entries: one entry
+# Legal-Review-Notice: rederived for 2.2.5 from the declared license field
+# of all 346 packages in the vendor tarball (347 store entries: one entry
 # is the symlink farm, which is not a package; several names resolve at two
-# or three versions, same as before). No copyleft of any kind. The
-# SPDX set is unchanged from 2.1.4; the counts moved slightly (MIT 197,
-# ISC 65, Apache-2.0 71, BlueOak-1.0.0 9, rest as before). @opencode-ai/pty-linux-{arm64,x64}-gnu ship a
-# prebuilt ELF bin/opencode-pty that ends up embedded in the payload rather
-# than loaded from a package like the rest of the native code; both are MIT
-# and both shipped that way at 2.0.23 too. See README.SUSE-maint "Native code".
+# versions, same as before). The retraced keep list still names 349 entries:
+# the two @opencode/pty-linux-* entries it names are stripped from the
+# tarball after pruning (see below), so the tarball holds two fewer. No
+# copyleft, no proprietary packages. The SPDX
+# set is unchanged from 2.2.0 except for those two MIT entries leaving
+# (MIT 191, Apache-2.0 67,
+# ISC 65, BlueOak-1.0.0 9, rest as before). The pty helper embedded in the
+# payload is built from source in %%build (see "Native code" below), so its
+# own closure joins the binary too: the process-daemon 0.4.0 crate (MIT)
+# with 42 crates in its linux normal closure (3 proc-macro plugins plus
+# their syn/quote/unicode-ident inputs are build-time only), everything
+# linked into the helper MIT, Apache-2.0, ISC or BSD-2-Clause (memchr
+# under its MIT option), plus Ghostty libghostty-vt (MIT) with uucode
+# (MIT) and simdutf/highway (Apache-2.0) compiled in. No copyleft, no
+# proprietary code; the License tag already covers all of it.
+# The two @opencode/pty-linux-{arm64,x64}-gnu prebuilt ELF
+# bin/opencode-pty files are stripped from the vendor tarball after
+# pruning (opencode_vendor, like the native .so files it already drops):
+# superseded by the from-source pty build embedded via OPENCODE_PTY_BIN,
+# never opened, never executed at build time. Only the build arch's one
+# would ever have been used; the other was already inert. Both were MIT,
+# same shape @opencode-ai/pty shipped at 2.2.0, renamed upstream in the
+# v2.2.0..v2.2.4 range. %%check proves the payload carries the from-source
+# bytes (sha256) and the npm binaries are gone from the tree. See
+# README.SUSE-maint "Native code".
+# @anthropic-ai/claude-agent-sdk 0.3.301, new in this range for the Claude
+# Agent provider, declares "SEE LICENSE IN README.md" and ships a
+# proprietary Anthropic LICENSE.md ("All rights reserved", Commercial Terms;
+# no OSI grant in the README either), so it must not be compiled into the
+# executable. Patch4 adds it to `external` in packages/cli/script/build.ts;
+# nothing imports its values statically (every other source import is
+# `import type`), so the retraced keep list drops its store entry and the
+# provider degrades at runtime to its designed "isn't installed" error. The
+# License tag below therefore covers everything shipped. See README.SUSE-maint
+# "Licensing".
 # Three conclusions are not visible from the packages themselves:
 # @npmcli/redact says ISC and ships MIT text, abbrev says ISC and its LICENSE
 # says "ISC OR MIT", and caniuse-lite is CC-BY-4.0, whose attribution clause
@@ -89,6 +127,24 @@ Source0:        %{name}-%{version}.tar.zst
 # The npm dependency tree. bun build --compile needs it on disk and there is
 # no way to build from a plain release tarball.
 Source1:        %{name}-vendor-%{version}.tar.zst
+# The 2.2.5 vendor closure carries one prebuilt file.
+# tree-sitter.wasm is the runtime grammar asset the web-tree-sitter
+# highlighter loads (reached through @opentui/core's parser worker, which
+# peer-depends on web-tree-sitter; %%check asserts it is embedded and loads
+# every system grammar through it). Kept for the same reason as the npm
+# file it is: building it needs emscripten, which the distribution does
+# not have. Embedded at build time, never executed at build time.
+# (A full strip of the web-tree-sitter entry was verified to break the
+# build: @opentui/core's runtime-assets import it, the retraced keep list
+# keeps it, and the TUI highlights through it. Deleting it wants an
+# emscripten build or a highlighter without it first.)
+# Source-Binary-Exception: opencode-vendor-2.2.5.tar.zst:node_modules/.bun/web-tree-sitter@*/node_modules/web-tree-sitter/tree-sitter.wasm -- bootstrap: runtime grammar asset the highlighter loads, embedded at build time, never executed at build time
+# Everything else that used to be excepted is stripped at tarball time
+# instead: the @opencode/pty-linux-* ELFs (opencode_vendor drops the two
+# entries after pruning), the cargo vendor's Windows-only import libs and
+# wasm-only artifacts (stripped with .cargo-checksum.json repair per
+# crate), and Ghostty zig-pkg's test/ and examples/ dirs. No exception
+# lines for any of them remain.
 # The models.dev catalogue, which the build otherwise fetches at build time.
 Source2:        models.dev-api-%{version}.json
 Source3:        %{name}_vendor
@@ -97,13 +153,26 @@ Source5:        %{name}-vendor-keep.txt
 Source6:        README.SUSE-maint
 # Header-only N-API wrapper @parcel/watcher's addon is compiled against.
 Source11:       https://registry.npmjs.org/node-addon-api/-/node-addon-api-%{node_addon_api_version}.tgz
-# C side of the native shell parser (Patch4).
-Source12:       %{name}-tsshim.c
+# The pty helper crate (packages/process-daemon from the 2.2.5 tree).
+Source20:       %{name}-process-daemon-%{version}.tar.zst
+# Its locked cargo closure, from the cargo_vendor service (_service,
+# respect-lockfile) with the non-Linux weight stripped afterwards (see
+# above). Unpacks into the crate dir in %%prep.
+Source21:       vendor.tar.zst
+# Ghostty at ab0b9da9e88fcb4b0533a1854e84628f663930af (short
+# ab0b9da9, as in the file name) with .git (build.rs asserts the revision
+# and a clean include/ghostty) and a pre-fetched zig-pkg/ with the 25 zig
+# deps `zig build` resolves at configure time (OBS builds have no
+# network), minus their top-level test/ and examples/ dirs except
+# translate_c's test/cases.zig and libxev's examples/ (their build.zig
+# files open them at configure; see above). Regeneration recipe in
+# README.SUSE-maint "Native code".
+Source22:       ghostty-ab0b9da9.tar.zst
 # Upstream's build script fails unless bun satisfies a caret range around the
 # version it pins. It pins 1.4.4 and Factory has 1.4.2, so without this the
 # check would fail the build; the patch warns instead, because both versions
 # float and the check is upstream's convenience rather than a real
-# incompatibility (the build is Bun.build() plus shell calls, and %check
+# incompatibility (the build is Bun.build() plus shell calls, and %%check
 # runs the resulting binary). See README.SUSE-maint.
 Patch0:         %{name}-relax-bun-version.patch
 # The next three stop the binary fetching code over the network at runtime.
@@ -112,17 +181,26 @@ Patch0:         %{name}-relax-bun-version.patch
 Patch1:         %{name}-no-self-update.patch
 Patch2:         %{name}-no-runtime-npm-install.patch
 Patch3:         %{name}-no-grammar-download.patch
-# Parses shell commands with the system libtree-sitter and grammar packages
-# through bun:ffi; the wasm route needs a runtime module only emscripten can
-# build. Placeholders are filled in below.
-Patch4:         %{name}-native-tree-sitter.patch
+# @anthropic-ai/claude-agent-sdk is proprietary (SEE LICENSE IN README.md,
+# Anthropic Commercial Terms) and must not be compiled into the executable.
+# The Claude Agent provider already degrades to its designed "isn't
+# installed" error when the SDK is absent (dynamic import with a .catch in
+# claude/sdk.ts; every other source import is `import type`), so leaving the
+# package external only turns that provider off. See README.SUSE-maint.
+# PATCH-FIX-OPENSUSE %{name}-externalize-claude-agent-sdk.patch mpluskal@suse.com -- proprietary SDK must not be compiled in, upstream will not drop it
+Patch4:         %{name}-externalize-claude-agent-sdk.patch
 # No floor. Which bun upstream wants changes with every release and Patch0
 # turns a mismatch into a warning; a floor here would be a guess at which
 # older bun still works, and the package is a git snapshot anyway, so
 # 1.4.0~git sorts below 1.4.0.
 BuildRequires:  bun
-BuildRequires:  gcc
+# The pty helper toolchain: cargo with the rust it comes with (the crate
+# asks rust 1.90.0 in rust-toolchain.toml, which Factory's rust satisfies;
+# the file is inert without rustup), git for build.rs's Ghostty revision
+# asserts, and exactly the zig Ghostty's build.zig.zon asks for.
+BuildRequires:  cargo-packaging
 BuildRequires:  gcc-c++
+BuildRequires:  git-core
 BuildRequires:  nodejs26-devel
 BuildRequires:  photon-node = %{photon_version}
 BuildRequires:  pkgconfig
@@ -132,7 +210,6 @@ BuildRequires:  python3-base
 # queries the way the highlighter will.
 BuildRequires:  tree-sitter-agda-queries
 BuildRequires:  tree-sitter-agda-wasm
-BuildRequires:  tree-sitter-bash
 BuildRequires:  tree-sitter-bash-queries
 BuildRequires:  tree-sitter-bash-wasm
 BuildRequires:  tree-sitter-c-queries
@@ -175,7 +252,6 @@ BuildRequires:  tree-sitter-ocaml-queries
 BuildRequires:  tree-sitter-ocaml-wasm
 BuildRequires:  tree-sitter-php-queries
 BuildRequires:  tree-sitter-php-wasm
-BuildRequires:  tree-sitter-powershell
 BuildRequires:  tree-sitter-python-queries
 BuildRequires:  tree-sitter-python-wasm
 BuildRequires:  tree-sitter-r-queries
@@ -198,8 +274,8 @@ BuildRequires:  tree-sitter-xml-wasm
 BuildRequires:  tree-sitter-yaml-queries
 BuildRequires:  tree-sitter-yaml-wasm
 BuildRequires:  tree-sitter-zig-wasm = %{ts_zig_version}
+BuildRequires:  zig = %{zig_version}
 BuildRequires:  zstd
-BuildRequires:  pkgconfig(tree-sitter)
 # The two native libraries are loaded from their packages at run time;
 # the floor is the tree's version, but newer binaries stay compatible:
 # the vendored bun-pty 0.4.11 binds exactly the eight cdylib symbols 0.4.9
@@ -218,8 +294,6 @@ Requires:       git-core
 Requires:       opentui = %{opentui_version}
 # Downloaded on first use otherwise; opencode shells out to it for grep.
 Requires:       ripgrep
-Requires:       tree-sitter-bash
-Requires:       tree-sitter-powershell
 # The 31 languages the TUI highlighter can load from the distribution
 # (see %%prep): a missing pair means plain text for that language.
 Recommends:     tree-sitter-agda-queries
@@ -286,6 +360,7 @@ Recommends:     tree-sitter-yaml-queries
 Recommends:     tree-sitter-yaml-wasm
 # Compiled into the executable from source during this build.
 Provides:       bundled(node-addon-api) = %{node_addon_api_version}
+Provides:       bundled(opencode-pty) = %{opencode_pty_version}
 Provides:       bundled(parcel-watcher) = %{parcel_watcher_version}
 # Embedded from the distribution's own packages (the exact BuildRequires
 # above keep these versions truthful; an update of one of those packages
@@ -355,7 +430,10 @@ EOF
 
 # The two native libraries are loaded from their packages at run time, like
 # libopentui.so above: the vendor tree's loaders get literal paths and the
-# npm binaries are removed so nothing embeds them. Pins first.
+# npm binaries are removed so nothing embeds them. Pins first. The
+# @opencode/pty-linux-* entries are stripped from the tarball (see above),
+# so their absence is asserted rather than their presence: with
+# OPENCODE_PTY_BIN set the build never opens them.
 for pin in "@ff-labs+fff-bun@%{fff_version}" "bun-pty@%{bun_pty_version}" \
            "@silvia-odwyer+photon-node@%{photon_version}" \
            "@parcel+watcher@%{parcel_watcher_version}"; do
@@ -364,6 +442,10 @@ for pin in "@ff-labs+fff-bun@%{fff_version}" "bun-pty@%{bun_pty_version}" \
         exit 1
     }
 done
+test ! -e "node_modules/.bun/@opencode+pty-linux-%{node_arch}-gnu@%{opencode_pty_version}" || {
+    echo "vendor tree still ships the superseded prebuilt pty helper; opencode_vendor must strip it" >&2
+    exit 1
+}
 fffbun="node_modules/.bun/@ff-labs+fff-bun@%{fff_version}/node_modules/@ff-labs/fff-bun/src"
 cat > "$fffbun/embedded.ts" <<EOF
 export const embeddedLibPath: string | null = "%{_libdir}/fff/libfff_c.so"
@@ -405,11 +487,6 @@ assert old in s, "wasm path line not found"
 s = s.replace(old, "const path = globalThis.__OPENCODE_PHOTON_WASM_PATH || require('path').join(__dirname, 'photon_rs_bg.wasm');")
 open(p, "w").write(s)
 EOF
-
-# Patch4's placeholders, and the npm modules the shell tool no longer loads.
-sed -i 's|@OPENCODE_LIBDIR@|%{_libdir}/%{name}|; s|@TREE_SITTER_GRAMMARS@|%{_libdir}/tree-sitter|' \
-    packages/core/src/shell/parse.ts packages/core/src/shell/parser-native.ts
-grep -q '%{_libdir}/tree-sitter/libtree-sitter-bash.so' packages/core/src/shell/parse.ts
 
 # The TUI highlighter's other languages: upstream downloads the grammar
 # module and a highlights.scm per language on first use (blocked by
@@ -454,12 +531,18 @@ missing = sorted(set(langs) - set(done))
 assert not missing, "not in upstream parsers-config: " + " ".join(missing)
 open(p, "w").write("".join(out))
 EOF
-rm -rf node_modules/.bun/tree-sitter-bash@*/node_modules/tree-sitter-bash/prebuilds
-rm -f node_modules/.bun/tree-sitter-bash@*/node_modules/tree-sitter-bash/tree-sitter-bash.wasm \
-      node_modules/.bun/tree-sitter-powershell@*/node_modules/tree-sitter-powershell/tree-sitter-powershell.wasm \
-      node_modules/.bun/web-tree-sitter@*/node_modules/web-tree-sitter/lib/tree-sitter.wasm \
+rm -f node_modules/.bun/web-tree-sitter@*/node_modules/web-tree-sitter/lib/tree-sitter.wasm \
       node_modules/.bun/web-tree-sitter@*/node_modules/web-tree-sitter/lib/tree-sitter.wasm.map \
       node_modules/.bun/web-tree-sitter@*/node_modules/web-tree-sitter/tree-sitter.wasm.map
+
+# The pty helper sources: the process-daemon crate (Source20), its locked
+# cargo vendor (Source21, cargo_vendor service output) overlaid into the
+# crate dir, and Ghostty with .git plus pre-fetched zig deps (Source22).
+# They unpack at the build root, next to this tree, not into it.
+tar --use-compress-program=unzstd -xf %{SOURCE20} -C %{_builddir}
+tar --use-compress-program=unzstd -xf %{SOURCE21} --strip-components=1 \
+    -C %{_builddir}/%{name}-process-daemon-%{version}/process-daemon
+tar --use-compress-program=unzstd -xf %{SOURCE22} -C %{_builddir}
 
 %build
 # @parcel/watcher's addon, compiled from the source in its own npm package:
@@ -498,6 +581,27 @@ export HOME="$PWD/.home"
 export BUN_INSTALL_CACHE_DIR="$PWD/.bun-cache"
 mkdir -p "$HOME" "$BUN_INSTALL_CACHE_DIR"
 
+# The pty helper, built from source: process-daemon %{opencode_pty_version}
+# (MIT) with its locked cargo closure, statically linking Ghostty's
+# libghostty-vt (Ghostty ab0b9da9, MIT; uucode MIT and
+# simdutf/highway Apache-2.0 compiled in). GHOSTTY_SOURCE_DIR satisfies
+# build.rs without its git-fetch fallback; OPENCODE_ZIG_CPU=baseline
+# matches upstream's release builds (packages/process-daemon
+# script/release-bin/zig); the zig package cache starts empty because
+# Ghostty's pre-fetched zig-pkg/ carries the configure closure (see
+# README.SUSE-maint "Native code"). Everything is --offline --locked.
+export GHOSTTY_SOURCE_DIR="%{_builddir}/ghostty-ab0b9da9"
+export OPENCODE_ZIG_CPU=baseline
+export ZIG_GLOBAL_CACHE_DIR="$PWD/.zig-global-cache"
+mkdir -p "$ZIG_GLOBAL_CACHE_DIR"
+pushd %{_builddir}/%{name}-process-daemon-%{version}/process-daemon
+cargo build --release --offline --locked
+popd
+# The CLI build below embeds this file (version "local", sha256 recorded)
+# instead of @opencode/pty's prebuilt binaries. Only the build arch's
+# helper is ever embedded, which matches these per-arch builds.
+export OPENCODE_PTY_BIN="%{_builddir}/%{name}-process-daemon-%{version}/process-daemon/target/release/opencode-pty"
+
 # Everything the build would otherwise reach the network for:
 #   MODELS_DEV_API_JSON  the catalogue, instead of fetching models.dev/api.json
 #   OPENCODE_VERSION     instead of asking the npm registry what is latest
@@ -509,8 +613,6 @@ export OPENCODE_CHANNEL=latest
 
 # No DWARF and stripped by hand: this package has no debuginfo subpackage
 # (see the top of the file) and brp stripping is off for the payload's sake.
-gcc %{optflags} -g0 -shared -fPIC -o libopencode-tsshim.so %{SOURCE12} -ltree-sitter
-strip --strip-unneeded libopencode-tsshim.so
 cd packages/cli
 # --single builds only the host platform. --skip-web-ui leaves out the
 # browser interface, which needs another 101 npm packages and embeds two fonts
@@ -526,7 +628,6 @@ bun run ./script/build.ts --single --skip-install --skip-web-ui
 export NO_BRP_STRIP_DEBUG=true
 install -Dpm 0755 packages/cli/dist/cli-linux-%{node_arch}/bin/%{name} \
     %{buildroot}%{_bindir}/%{name}
-install -Dpm 0755 libopencode-tsshim.so %{buildroot}%{_libdir}/%{name}/libopencode-tsshim.so
 
 %check
 # The executable carries its own runtime and payload; if anything stripped or
@@ -544,10 +645,11 @@ test "$(ls -d node_modules/.bun/@opentui+core@* 2>/dev/null | wc -l)" = "1" || {
     exit 1
 }
 
-# What the payload carries: the distribution's modules and the addon
-# built above, plus one prebuilt ELF helper @opencode-ai/pty ships - the
-# variant matching the target's arch and libc. It carries no extension,
-# so the embedded-file assertion below cannot see it; see
+# What the payload carries: the distribution's modules, the addon
+# built above, and the pty helper built from source above (embedded via
+# OPENCODE_PTY_BIN; the npm binaries are stripped from the tree). It carries no
+# extension, so the embedded-file assertion below cannot see it; the
+# sha256 assertion after it covers it instead. See
 # README.SUSE-maint "Native code".
 python3 - %{buildroot}%{_bindir}/%{name} %{_datadir}/tree-sitter/wasm %{_datadir}/photon-node/photon_rs_bg.wasm watcher.node <<'EOF'
 import sys
@@ -564,26 +666,19 @@ expected = sorted([(b"photon_rs_bg", b"wasm"), (b"tree-sitter", b"wasm"), (b"wat
                    ("javascript", "typescript", "markdown", "markdown_inline", "zig", "tsx")])
 assert found == expected, "embedded native/wasm files: {}".format(found)
 EOF
-# The native shell parser through the shim that ships and the grammar
-# packages: a pipeline yields its two commands.
-cat > check-parse.ts <<'EOF'
-import { NativeParser, loadLanguage } from "./packages/core/src/shell/parser-native"
-const bash = new NativeParser(loadLanguage("%{_libdir}/tree-sitter/libtree-sitter-bash.so", "tree_sitter_bash"))
-const tree = bash.parse("cat foo | grep -i bar > out")
-const cmds = tree.rootNode.descendantsOfType("command").map((n) => n.text)
-if (cmds.length !== 2 || cmds[0] !== "cat foo") { console.log(cmds); process.exit(1) }
-// Everything else shell.ts reads from a node or a tree.
-const root = tree.rootNode
-const first = root.child(0)
-if (root.childCount < 1 || first === null || first.parent !== root || first.type === "" || cmds[1] !== "grep -i bar") {
-  console.log({ childCount: root.childCount, first: first?.type, parent: first?.parent?.type, cmds })
-  process.exit(1)
-}
-tree.delete()
-const ps = new NativeParser(loadLanguage("%{_libdir}/tree-sitter/libtree-sitter-powershell.so", "tree_sitter_powershell"))
-if (ps.parse("Get-ChildItem -Recurse | Select-Object -First 5").rootNode.descendantsOfType("command").length < 1) process.exit(1)
+# The embedded pty helper is the from-source build: the CLI build records
+# its sha256 into the payload. The npm binaries are stripped from the
+# vendor tree (see above), so their absence is asserted rather than their
+# non-embedding: there is nothing left to embed.
+python3 - %{buildroot}%{_bindir}/%{name} \
+    %{_builddir}/%{name}-process-daemon-%{version}/process-daemon/target/release/opencode-pty <<'EOF'
+import hashlib, sys
+exe = open(sys.argv[1], "rb").read()
+ours = open(sys.argv[2], "rb").read()
+assert hashlib.sha256(ours).hexdigest().encode() in exe, "from-source pty sha256 not recorded in payload"
 EOF
-OPENCODE_TSSHIM=%{buildroot}%{_libdir}/%{name}/libopencode-tsshim.so bun check-parse.ts
+test ! -e node_modules/.bun/@opencode+pty-linux-x64-gnu@%{opencode_pty_version}/node_modules/@opencode/pty-linux-x64-gnu/bin/opencode-pty
+test ! -e node_modules/.bun/@opencode+pty-linux-arm64-gnu@%{opencode_pty_version}/node_modules/@opencode/pty-linux-arm64-gnu/bin/opencode-pty
 # Every language the descriptors now point at the distribution for: the
 # module loads in the web-tree-sitter runtime opencode ships, its
 # highlights.scm compiles against it, and a parse works. A query naming a
@@ -618,7 +713,5 @@ grep -B1 -E 'wasm: "https://' packages/tui/src/parsers-config.ts | grep -oE 'fil
 %license LICENSE licenses/LICENSE.caniuse-lite
 %doc README.md README.SUSE-maint
 %{_bindir}/%{name}
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/libopencode-tsshim.so
 
 %changelog

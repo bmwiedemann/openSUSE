@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Sat Oct 31 14:42:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the pty helper from source instead of shipping upstream's
+  prebuilt binaries
+  * %build compiles packages/process-daemon 0.4.0 (new Source20)
+    with `cargo build --release --offline --locked` against its
+    locked cargo closure (new Source21, from the cargo_vendor
+    service), statically linking Ghostty libghostty-vt built with
+    zig 0.16.0 from Source22, and exports it as OPENCODE_PTY_BIN
+    for the CLI build to embed (version "local", sha256 recorded)
+  * Strip the prebuilt weight at tarball time instead of
+    excepting it: the @opencode/pty-linux-* ELF binaries leave
+    the vendor tree (opencode_vendor drops the two entries after
+    pruning), the cargo closure loses its Windows-only import
+    libs and wasm-only artifacts (with .cargo-checksum.json
+    repair per crate), and Ghostty's zig-pkg/ loses its test/
+    and examples/ dirs; %check proves the payload carries the
+    from-source sha256 and the npm binaries are gone
+  * OPENCODE_ZIG_CPU=baseline matches upstream's release builds;
+    Ghostty ab0b9da9 ships with .git plus a pre-fetched zig-pkg/
+    so the whole helper build runs with no network
+  * New BuildRequires: cargo-packaging, git-core and zig 0.16.0;
+    new Provides: bundled(opencode-pty); legal review extended
+    for the helper's closure, still no copyleft and no
+    proprietary code
+
+-------------------------------------------------------------------
+Sat Oct 31 13:43:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.2.5 (the full list is the v2.2.4..v2.2.5 release
+  notes upstream publishes)
+  * Core: compaction buffer as a share of the context window;
+    read and edit failures name the file's closest lines; calls
+    to a tool named `bash` run as `shell`; large MCP stdio
+    messages no longer disconnect the server; idle MCP servers
+    stay shut down; LiteLLM context errors compact instead of
+    stopping; reasoning survives model switches and resumes
+  * TUI and desktop: worktree and shell-mode shortcuts, send
+    from the quote popup, flat and compact input surfaces; the
+    connect menu no longer lists MCP servers
+- OpenTUI stays 0.8.0: the tag pins it, so the %prep pin check
+  passes unmodified; no new mandatory dependencies
+- Retrace the vendor keep list, which comes back byte-identical
+  at 349 of 1822 store entries: the closure is unchanged
+- Legal review re-derived for the new tree: 348 packages, same
+  10-licence set (MIT 193, Apache-2.0 67, ISC 65, rest as
+  before), no copyleft, no proprietary packages - the
+  @anthropic-ai/claude-agent-sdk 0.3.301 stays externalized
+  (see below), and the retraced tree still drops its store
+  entry with zero SDK bytes in the tarball
+- All five patches apply clean against 2.2.5 (Patch1-3 targets
+  byte-identical to 2.2.4; Patch4 verified by dry-run
+  --fuzz=0); fff 0.10.5, bun-pty 0.4.11, photon-node 0.3.4
+  and parcel 2.5.1 are unchanged, so the %prep pin checks pass
+  unmodified
+
+-------------------------------------------------------------------
+Fri Oct 30 20:09:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.2.4 (the full list is the v2.2.0..v2.2.4 release
+  notes upstream publishes)
+  * Core: /goal sessions that run until a reviewer confirms the
+    objective; opt-in schedules, artifacts and image generation
+    (on by default where the provider supports it); upstream's
+    new Claude Agent provider (degrades here, see below);
+    persistent desktop terminals
+  * Breaking for plugin authors: TUI plugins need OpenTUI 0.8;
+    @opencode/ai drops some providers and renames entries;
+    managed policy splits integration.use into mcp.use,
+    skill.use and plugin.use
+  * Many more fixes and improvements
+- Needs the opentui 0.8.0 runtime: 2.2.4 pins @opentui/*
+  0.8.0 over a private FFI ABI, and %prep checks the pin
+  still matches
+- Regenerate the vendor tree: 349 of 1822 store entries kept
+  (was 357 of 2021; closure moved for opentui 0.8.0, effect
+  4.0.6 and the @opencode-ai/pty to @opencode/pty 0.4.0
+  rename; seroval 1.6.11 returns)
+- Legal review re-derived for the new tree: 348 packages, same
+  10-licence set (MIT 193, Apache-2.0 67, ISC 65, rest as
+  before), no copyleft, no proprietary packages - the new
+  @anthropic-ai/claude-agent-sdk 0.3.301 (proprietary Anthropic
+  licence) is externalized, not bundled (see below)
+- Drop opencode-native-tree-sitter.patch and opencode-tsshim.c:
+  upstream replaced the wasm shell parser with its portable
+  scanner, so there is nothing left to re-target at the system
+  tree-sitter; the tree-sitter-bash and -powershell runtime
+  requirements and the gcc and pkgconfig(tree-sitter) build
+  requirements go with them
+- All five patches apply clean against 2.2.4 (Patch0-3 with
+  offsets only, no rebases; the new externalization patch is
+  verified by dry-run); fff 0.10.5, bun-pty 0.4.11,
+  photon-node 0.3.4 and parcel 2.5.1 are unchanged, so the
+  %prep pin checks pass unmodified; no new mandatory
+  dependencies
+- Keep the proprietary Claude Agent SDK out of the executable:
+  @anthropic-ai/claude-agent-sdk 0.3.301, new in this range,
+  declares "SEE LICENSE IN README.md" and ships a proprietary
+  Anthropic licence, so opencode-externalize-claude-agent-sdk.patch
+  adds it to `external` in the CLI build instead of compiling
+  it in. Nothing imports
+  its values statically, so the retraced vendor tree drops its
+  store entry and the provider degrades at runtime to its
+  designed "isn't installed" error
+
+-------------------------------------------------------------------
 Wed Oct 28 07:10:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix TUI crash at startup: `e.replace is not a function`

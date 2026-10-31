@@ -1,0 +1,26 @@
+<services>
+  <!-- Locked cargo closure for Source20 (process-daemon). Regenerate with
+       `osc service manualrun` after a version bump, then `osc add` the
+       result if the name changed. respect-lockfile keeps the service on
+       upstream's Cargo.lock (same as the locked build flag).
+       NOTE on filter: cargo_vendor's filter (drop non-Linux inputs) was
+       tried and reverted: it re-resolves the graph to the newest Rust
+       1.90-compatible versions (13 bumps) and then dies against
+       the locked flag from respect-lockfile, so the two params are
+       mutually exclusive in this service version. The non-Linux weight
+       (Windows import libs, wasm-only artifacts) is instead stripped
+       from the tarball by hand after the service run, with
+       .cargo-checksum.json repair per crate (cargo refuses
+       listed-but-missing files), so no Source-Binary-Exception remains.
+       The recipe lives in README.SUSE-maint "Native code".
+       NOTE: the crate tarball must keep the manifest in a SUBDIRECTORY of
+       its top dir (here process-daemon/ under opencode-process-daemon-*/);
+       a tarball whose top dir IS the crate makes this service die with
+       "No such file or directory" after the manifest line. -->
+  <service name="cargo_vendor" mode="manual">
+    <param name="srctar">opencode-process-daemon-2.2.5.tar.zst</param>
+    <param name="cargotoml">process-daemon/Cargo.toml</param>
+    <param name="compression">zst</param>
+    <param name="respect-lockfile">true</param>
+  </service>
+</services>

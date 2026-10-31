@@ -28,7 +28,7 @@ retrace=""
 # FFI ABI ties the tree to the opentui RPM 1:1, so on a lockstep bump this
 # leads and the tag's pin is rebased up to it (same %global opentui_version
 # as the spec). Must stay in sync with the opentui package.
-opentui_version="0.7.0"
+opentui_version="0.8.0"
 
 here="$(cd "$(dirname "$0")" && pwd)"
 src="$here/opencode-$version.orig.tar.gz"
@@ -217,6 +217,20 @@ find "$store" \( -name 'libfff_c.so' -o -name 'librust_pty*.so' -o -name 'watche
     -o -name 'tree-sitter-*.wasm' -o -name 'tree-sitter.wasm.map' \) -delete -printf '    removed %P\n'
 find "$store" -path '*/tree-sitter-bash/prebuilds' -prune -exec rm -rf {} \; -printf '    removed %P\n'
 find "$store" -path '*/web-tree-sitter/lib/tree-sitter.wasm*' -delete -printf '    removed %P\n'
+# The @opencode/pty-linux-* prebuilt helpers: superseded by the from-source
+# pty build (%build embeds OPENCODE_PTY_BIN without ever opening them; only
+# the build arch's one would have been used). Drop the two store entries
+# after pruning -- the keep list still names them, because a --retrace run
+# without OPENCODE_PTY_BIN traces the npm fallback and would re-add them,
+# so the strip has to live here rather than in the list. The symlinks into
+# them (inside @opencode/pty and the farm root) stay dangling, same as the
+# musl and SDK links already do. The @opencode/pty entry itself stays: the
+# build script resolves its package.json.
+for entry in "$store"/@opencode+pty-linux-arm64-gnu@* "$store"/@opencode+pty-linux-x64-gnu@*; do
+    [[ -d $entry ]] || continue
+    rm -rf "$entry"
+    echo "    removed ${entry#"$store"/}"
+done
 
 echo "==> packing the dependency tree"
 # The per-workspace node_modules are symlink farms into node_modules/.bun and
