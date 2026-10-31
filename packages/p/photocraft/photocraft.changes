@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:54:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.18.0 (upstream tag v0.18.0, 2026-10-31):
+  * Arabic interface translation with right-to-left display order,
+    the first RTL UI language.
+  * Swedish, Finnish, Danish and Norwegian interface languages,
+    combined from the community catalogs.
+  * Engine now damages only the tiles that changed on a pixel
+    change; every frame records its stages and slow frames are
+    kept, logged and reported.
+  * Arrange step that cannot move the layer plays on instead of
+    stopping; Reduce Noise reuses guide statistics with
+    bit-identical output.
+  * Re-vendored (update=false, lockfile respected): the vendor
+    crate set is identical to 0.17.0 (848 crates, zero added or
+    removed), so the license derivation stands unchanged with no
+    new copyleft; no new system deps; the cargo audit reports no
+    advisories.
+  * Set the fixed metainfo release date to 2026-10-31 (v0.18.0).
+
+-------------------------------------------------------------------
 Thu Oct 29 17:32:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.17.0 (upstream tag v0.17.0, 2026-10-28):

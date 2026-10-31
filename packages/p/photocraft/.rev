@@ -15,4 +15,12 @@
     <comment>update</comment>
     <requestid>1393779</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>49c04b85fca4a08ef9eae93dc0fa764a</srcmd5>
+    <version>0.18.0</version>
+    <time>1793484635</time>
+    <user>dimstar_suse</user>
+    <comment>Update photocraft to 0.18.0 (filtered vendor)</comment>
+    <requestid>1394168</requestid>
+  </revision>
 </revisionlist>
