@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 29 10:14:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.13.2:
+  * No more false parser-limit reports on bare command
+    wrappers (timeout, sudo, nice, xargs) at clause
+    boundaries in tables and prose references
+  * sudo -n parsed as flag; descriptor redirections
+    (e.g. 2>&1) count as complete; MCP batch cap
+    aligned with the 128-file limit
+  * Direct template messages on verified built-in Node
+    assertion imports no longer trip shell-substitution
+    limits; .mjs/.cjs classified consistently
+- Deselect two wall-clock-bound tests on aarch64 (pre-existing,
+  untouched by this update): the 10 s subprocess and 1 s worker
+  bounds overrun slow interpreter teardown, with all detection
+  assertions passing.
+
+-------------------------------------------------------------------
 Mon Oct 26 06:18:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.13.1:

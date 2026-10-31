@@ -21,7 +21,7 @@
 # %%{primary_python} so it stays correct as the primary interpreter moves.
 %define pythons %{primary_python}
 Name:           skillspector
-Version:        2.13.1
+Version:        2.13.2
 Release:        0
 Summary:        Security scanner for AI agent skills
 License:        Apache-2.0
@@ -205,13 +205,25 @@ cp -a .skillspector-baseline.example.yaml skillspector-baseline.example.yaml
 #     scan finishes in under 1.0 s; aarch64 needs 1.28 s. Pure wall-clock
 #     bound with no detection content (its zero-PE3-finding assertion holds).
 #
+# 2.13.2 adds two more of the same wall-clock family (both pre-existing
+# tests, untouched by the update; upstream x86_64 CI is green):
+#   * test_typescript_declaration_near_misses... spawns a fresh interpreter
+#     with a hardcoded 10 s timeout. The child completes all 15 assertions
+#     (it prints the completion marker) -- only interpreter teardown past a
+#     ~10 s cold import overruns the bound on aarch64.
+#   * test_worker_startup_has_a_separate_bound joins a spawned worker 1 s
+#     after startup. The worker's whole job is setting an event and writing
+#     a 100-byte result file -- correct by construction -- but teardown of
+#     the spawned cone import overruns the 1 s bound on aarch64 (cold
+#     "import skillspector" alone measures 9.8 s here).
+#
 # Deselecting keeps the build gate meaningful without hiding a detection
 # failure: the same resource bounds are asserted deterministically by the
 # tests that monkeypatch the budget rather than racing it (e.g.
 # test_static_runtime_limit_is_reported_as_partial,
 # test_static_output_limit_is_reported_as_partial, and the build_context
 # deadline tests), and those do run.
-%pytest --deselect tests/unit/test_mcp_server.py::test_mcp_stdio_initialize_registers_scan_skill --deselect tests/unit/test_baseline_mcp.py::test_stdio_mcp_preserves_compact_verdicts_and_ignores_shipped_baseline --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_github_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_gitlab_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_raw_githubusercontent_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_download_does_not_follow_redirects --deselect tests/unit/test_input_handler.py::test_validate_url_host_scp_extracts_github --deselect tests/unit/test_input_handler.py::test_scp_valid_host_clones --deselect tests/unit/test_input_handler.py::test_https_url_unchanged --deselect "tests/nodes/analyzers/test_bundled_execution_surface.py::test_discovery_parser_bounds_and_ledger_table[malformed_schema]" --deselect tests/test_bundled_execution_surface_acceptance.py::test_public_cli_exit_contract --deselect tests/test_bundled_execution_surface_acceptance.py::test_recursive_single_child_routes_execution_surfaces_from_child_root --deselect tests/test_bundled_execution_surface_acceptance.py::test_cli_fail_on_incomplete_is_opt_in --deselect tests/nodes/test_security_end_to_end.py::test_rd04_large_file_pair_detects_start_boundary_and_end --deselect tests/nodes/test_security_end_to_end.py::test_nine_case_contract_across_public_surfaces --deselect tests/nodes/test_security_remediation.py::test_five_megabyte_normalized_static_scan_stays_below_memory_ceiling --deselect tests/nodes/test_security_end_to_end.py::test_cross_window_separator_pair_across_public_surfaces --deselect tests/unit/test_patterns.py::TestPrivilegeEscalation::test_pe3_repeated_nouns_have_bounded_qualifier_cost --deselect tests/unit/test_cli_subprocess.py::test_registry_unsupported_options_stop_before_input_or_output_access --deselect tests/unit/test_cli_subprocess.py::test_registry_default_options_still_scan --deselect tests/unit/test_cli_subprocess.py::test_recursive_medium_recommendation_matches_direct_scan
+%pytest --deselect tests/unit/test_mcp_server.py::test_mcp_stdio_initialize_registers_scan_skill --deselect tests/unit/test_baseline_mcp.py::test_stdio_mcp_preserves_compact_verdicts_and_ignores_shipped_baseline --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_github_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestGitCloneSSRF::test_gitlab_url_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_raw_githubusercontent_allowed --deselect tests/unit/test_input_handler_ssrf.py::TestDownloadSSRF::test_download_does_not_follow_redirects --deselect tests/unit/test_input_handler.py::test_validate_url_host_scp_extracts_github --deselect tests/unit/test_input_handler.py::test_scp_valid_host_clones --deselect tests/unit/test_input_handler.py::test_https_url_unchanged --deselect "tests/nodes/analyzers/test_bundled_execution_surface.py::test_discovery_parser_bounds_and_ledger_table[malformed_schema]" --deselect tests/test_bundled_execution_surface_acceptance.py::test_public_cli_exit_contract --deselect tests/test_bundled_execution_surface_acceptance.py::test_recursive_single_child_routes_execution_surfaces_from_child_root --deselect tests/test_bundled_execution_surface_acceptance.py::test_cli_fail_on_incomplete_is_opt_in --deselect tests/nodes/test_security_end_to_end.py::test_rd04_large_file_pair_detects_start_boundary_and_end --deselect tests/nodes/test_security_end_to_end.py::test_nine_case_contract_across_public_surfaces --deselect tests/nodes/test_security_remediation.py::test_five_megabyte_normalized_static_scan_stays_below_memory_ceiling --deselect tests/nodes/test_security_end_to_end.py::test_cross_window_separator_pair_across_public_surfaces --deselect tests/unit/test_patterns.py::TestPrivilegeEscalation::test_pe3_repeated_nouns_have_bounded_qualifier_cost --deselect tests/unit/test_cli_subprocess.py::test_registry_unsupported_options_stop_before_input_or_output_access --deselect tests/unit/test_cli_subprocess.py::test_registry_default_options_still_scan --deselect tests/unit/test_cli_subprocess.py::test_recursive_medium_recommendation_matches_direct_scan --deselect tests/nodes/test_nested_artifacts.py::test_typescript_declaration_near_misses_are_bounded_and_stay_executable --deselect tests/test_batch_scan_security.py::test_worker_startup_has_a_separate_bound
 
 %files
 %license LICENSE
