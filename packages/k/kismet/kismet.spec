@@ -20,9 +20,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2025-09-R1
+%define realver 2026-10-R1
 Name:           kismet
-Version:        2025_09_R1
+Version:        2026_10_R1
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -31,6 +31,7 @@ URL:            https://www.kismetwireless.net/
 #Git-Clone:     https://github.com/kismetwireless/kismet.git
 Source:         https://github.com/kismetwireless/kismet/archive/%{name}-%{realver}.tar.gz
 Source2:        %{name}.sysusers
+Source3:        %{name}-rpmlintrc
 Patch0:         kismet-fix-build.patch
 Patch1:         harden_kismet.service.patch
 BuildRequires:  fdupes
@@ -50,6 +51,7 @@ BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libmosquitto)
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnm)
@@ -58,6 +60,7 @@ BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libwebsockets) >= 3.2.0
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
@@ -123,11 +126,32 @@ Kismet is a wireless network and device detector, sniffer, wardriving
 tool, and WIDS (wireless intrusion detection) framework.
 
 This subpackage contains several kismetdb log tools
+ - kismetdb_clean
  - kismetdb_dump_devices
  - kismetdb_statistics
  - kismetdb_strip_packets
+ - kismetdb_to_gpx
  - kismetdb_to_kml
+ - kismetdb_to_pcap
  - kismetdb_to_wiglecsv
+ - kismetdb_to_atlog
+ - kismetdb_to_celllog
+ - kismetdb_to_cellndjson
+ - kismetdb_to_hdlc
+
+%package firmware
+Summary:        Firmware for some Kismet plugins
+License:        SUSE-Firmware
+BuildArch:      noarch
+Group:          Productivity/Networking/Diagnostic
+Requires:       kismet = %{version}
+
+%description firmware
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains several firmware files needed by some
+of the plugins.
 
 %package capture-linux-bluetooth
 Summary:        Kismet Linux Bluetooth capture helper
@@ -176,6 +200,35 @@ Kismet is a wireless network and device detector, sniffer, wardriving
 tool, and WIDS (wireless intrusion detection) framework.
 
 This subpackage contains the SDR rtladsb capture helper.
+
+%package capture-cell-at
+Summary:        Kismet cell modem (AT command) capture helper
+Group:          Productivity/Networking/Diagnostic
+BuildRequires:  group(kismet)
+Requires(pre):  group(kismet)
+Requires(pre):  %{name}-common = %{version}
+Requires(pre):  permissions
+
+%description capture-cell-at
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains cell modem (AT command) capture helper and
+USB modem serial bridge.
+
+%package capture-cell-diag
+Summary:        Kismet cell modem (Qualcomm DIAG) capture helper
+Group:          Productivity/Networking/Diagnostic
+BuildRequires:  group(kismet)
+Requires(pre):  group(kismet)
+Requires(pre):  %{name}-common = %{version}
+Requires(pre):  permissions
+
+%description capture-cell-diag
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains cell modem (QUalcomm DIAG) capture helper.
 
 %package capture-nrf-mousejack
 Summary:        Kismet nRF MouseJack capture helper
@@ -308,6 +361,92 @@ tool, and WIDS (wireless intrusion detection) framework.
 This subpackage contains the Radview geiger counter capture
 helper.
 
+%package capture-wch-ble-analyzer-pro
+Summary:        Kismet WCH BLE Analyzer Pro capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-wch-ble-analyzer-pro
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the WCH BLE Analyzer Pro capture helper.
+
+%package capture-lorapipe
+Summary:        Kismet LoRaPipe LoRa capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-lorapipe
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the LoRaPipe LoRa capture helper.
+
+%package capture-mm8108-halow
+Summary:        Kismet Morse Micro MM8108 USB Wi-Fi HaLow capture helper
+Group:          Productivity/Networking/Diagnostic
+Requires:       kismet-firmware = %{version}
+
+%description capture-mm8108-halow
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the Morse Micro MM8108 USB Wi-Fi HaLow capture
+helper.
+
+%package capture-usbwifi
+Summary:        Kismet userspace USB Wi-Fi (MediaTek mt76, Realtek rtw88) capture helper
+Group:          Productivity/Networking/Diagnostic
+Requires:       kismet-firmware = %{version}
+
+%description capture-usbwifi
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the userspace USB Wi-Fi (MediaTek mt76,
+Realtek rtw88) capture helper.
+
+%package capture-rtlais
+Summary:        Kismet rtlsdr AIS capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-rtlais
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the rtlsdr AIS capture helper.
+
+%package capture-rtlaisadsb
+Summary:        Kismet rtlsdr combined AIS and ADS-B capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-rtlaisadsb
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the rtlsdr combined AIS and ADS-B capture
+helper.
+
+%package capture-catsniffer-zigbee
+Summary:        Kismet Electronic Cats CatSniffer Zigbee capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-catsniffer-zigbee
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the Electronic Cats CatSniffer Zigbee
+capture helper.
+
+%package capture-sniffle-ble
+Summary:        Kismet Sniffle BTLE capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-sniffle-ble
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the Sniffle BTLE capture helper.
+
 %package devel
 Summary:        Development files for kismet
 Group:          Development/Libraries/C and C++
@@ -402,8 +541,11 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %config %{_sysconfdir}/kismet/kismet_httpd.conf
 %config %{_sysconfdir}/kismet/kismet_logging.conf
 %config %{_sysconfdir}/kismet/kismet_memory.conf
+%config %{_sysconfdir}/kismet/kismet_meshcore.conf
+%config %{_sysconfdir}/kismet/kismet_meshtastic.conf
 %config %{_sysconfdir}/kismet/kismet_uav.conf
 %config %{_sysconfdir}/kismet/kismet_wardrive.conf
+%config %{_sysconfdir}/kismet/kismet_zigbee.conf
 %{_bindir}/kismet
 %{_bindir}/kismet_discovery
 %{_bindir}/kismet_server
@@ -411,6 +553,8 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %{_bindir}/kismet_cap_pcapfile
 %dir %{_datadir}/kismet
 %{_datadir}/kismet/kismet_adsb_icao.txt.gz
+%{_datadir}/kismet/kismet_bluetooth_ids.txt.gz
+%{_datadir}/kismet/kismet_bluetooth_manuf.txt.gz
 %{_datadir}/kismet/kismet_manuf.txt.gz
 %{_datadir}/kismet/httpd
 %{_unitdir}/%{name}.service
@@ -433,12 +577,23 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %{_bindir}/kismetdb_to_kml
 %{_bindir}/kismetdb_to_pcap
 %{_bindir}/kismetdb_to_wiglecsv
+%{_bindir}/kismetdb_to_atlog
+%{_bindir}/kismetdb_to_celllog
+%{_bindir}/kismetdb_to_cellndjson
+%{_bindir}/kismetdb_to_hdlc
 
 %files capture-linux-bluetooth
 %verify(not mode caps) %attr(0750,root,kismet) %{_bindir}/kismet_cap_linux_bluetooth
 
 %files capture-linux-wifi
 %verify(not mode caps) %attr(0750,root,kismet) %{_bindir}/kismet_cap_linux_wifi
+
+%files capture-cell-at
+%{_bindir}/kismet_cap_cell_at
+%{_bindir}/kismet_usbserial
+
+%files capture-cell-diag
+%{_bindir}/kismet_cap_cell_diag
 
 %files capture-nrf-mousejack
 %{_bindir}/kismet_cap_nrf_mousejack
@@ -483,6 +638,37 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 
 %files capture-serial-radview
 %{_bindir}/kismet_cap_serial_radview
+
+%files capture-wch-ble-analyzer-pro
+%{_bindir}/kismet_cap_wch_ble_analyzer_pro
+
+%files capture-lorapipe
+%{_bindir}/kismet_cap_lorapipe
+
+%files capture-mm8108-halow
+%{_bindir}/kismet_cap_mm8108_halow
+
+%files capture-usbwifi
+%{_bindir}/kismet_cap_usbwifi
+
+%files capture-rtlais
+%{_bindir}/kismet_cap_sdr_rtlais
+
+%files capture-rtlaisadsb
+%{_bindir}/kismet_cap_sdr_rtlaisadsb
+
+%files capture-catsniffer-zigbee
+%{_bindir}/kismet_cap_catsniffer_zigbee
+
+%files capture-sniffle-ble
+%{_bindir}/kismet_cap_sniffle_ble
+
+%files firmware
+%license %{_datadir}/kismet/firmware/mediatek/LICENCE.mediatek
+%license %{_datadir}/kismet/firmware/mediatek/LICENCE.ralink_a_mediatek_company_firmware
+%license %{_datadir}/kismet/firmware/morse/LICENSE.morse
+%license %{_datadir}/kismet/firmware/rtw88/LICENCE.rtlwifi_firmware.txt
+%{_datadir}/kismet/firmware
 
 %files devel
 %{_libdir}/pkgconfig/kismet.pc

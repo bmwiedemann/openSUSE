@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 31 16:16:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2026-10-R1
+  * A major release with big performance and memory improvements,
+    new datasources for cellular modems, userspace USB Wi-Fi, HaLow,
+    AIS, and more, expanded Bluetooth, Zigbee, and Meshtastic
+    decoding, and lots of bug fixes.
+    Full release Notes:
+    https://kismetwireless.net/posts/kismet-2026-10-r1/
+- Add subpackages for new capture plugins
+  * kismet-capture-cell-at
+  * kismet-capture-cell-diag
+  * kismet-capture-wch-ble-analyzer-pro
+  * kismet-capture-lorapipe
+  * kismet-capture-mm8108-halow
+  * kismet-capture-usbwifi
+  * kismet-capture-rtlais
+  * kismet-capture-rtlaisadsb
+  * kismet-capture-rtlaisadsb
+  * kismet-capture-catsniffer-zigbee
+  * kismet-capture-sniffle-ble
+- Add subpackage for firmware needed by some of the capture plugins
+- Add kismet-rpmlintrc
+
+-------------------------------------------------------------------
 Thu Jul 23 08:58:41 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - don't package capabilities in RPM directly, but rely on the permissions

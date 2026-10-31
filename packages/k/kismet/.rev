@@ -683,4 +683,12 @@ better packaging for distros, and various other quirks.
   invocation of permctl during %post. (forwarded request 1367359 from mgerstner)</comment>
     <requestid>1367371</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>adc2a898ea92f0647e6f1362cbbfcf8d</srcmd5>
+    <version>2026_10_R1</version>
+    <time>1793484701</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1394182</requestid>
+  </revision>
 </revisionlist>

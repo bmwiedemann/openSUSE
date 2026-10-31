@@ -1,0 +1,3 @@
+# Firmware files
+addFilter("E: arch-dependent-file-in-usr-share /usr/share/kismet/firmware/*")
+addFilter("E: arch-independent-package-contains-binary-or-object /usr/share/kismet/firmware/*")
