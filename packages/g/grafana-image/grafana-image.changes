@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 31 08:25:46 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- avoid printing credentials to the log
+
+-------------------------------------------------------------------
 Fri Sep 18 16:25:06 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove bashisms from entrypoint script
