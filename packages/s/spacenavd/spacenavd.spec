@@ -1,7 +1,7 @@
 #
 # spec file for package spacenavd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2009,2011,2013 Herbert Graeber
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           spacenavd
-Version:        1.3.1
+Version:        1.4
 Release:        0
 Summary:        Daemon for 3Dconnexion devices
 License:        GPL-3.0-or-later
@@ -28,8 +28,6 @@ Source:         https://github.com/FreeSpacenav/spacenavd/releases/download/v%{v
 Source1:        spacenavd.8.gz
 Source2:        spnavrc
 Source3:        xinitrc-%{name}
-Patch1:         spacenavd-fix-pidfile.patch
-Patch2:         harden_spacenavd.service.patch
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(x11)
@@ -55,6 +53,8 @@ Supplements:    modalias(usb:v256FpC633d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v256FpC634d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v256FpC635d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v256FpC636d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v256FpC638d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v256FpC63Ad*dc*dsc*dp*ic*isc*ip*)
 
 %description
 Spacenavd is a free software replacement user-space driver (daemon)
@@ -81,6 +81,8 @@ install -D -m 755 %{SOURCE3} %{buildroot}%{_distconfdir}/X11/xinit/xinitrc.d/%{n
 install -D -m 755 %{SOURCE3} %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/%{name}
 %endif
 install -D -m 644 contrib/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
+
+%check
 
 %post
 %fillup_only -n %{name}
@@ -122,7 +124,6 @@ done
 %{_mandir}/man8/spacenavd.8%{?ext_man}
 %{_mandir}/man8/spnavd_ctl.8%{?ext_man}
 %if 0%{?suse_version} > 1500
-%dir %{_distconfdir}
 %dir %{_distconfdir}/X11
 %dir %{_distconfdir}/X11/xinit
 %dir %{_distconfdir}/X11/xinit/xinitrc.d
