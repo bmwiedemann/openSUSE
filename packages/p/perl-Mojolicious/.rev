@@ -1810,4 +1810,41 @@ Tons of changes, just the peak of the ice berg:
       Cpanel::JSON::XS. CVE-2026-68914 bsc#1281637</comment>
     <requestid>1379464</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>dee441e2b699689407bca7e466e69aca</srcmd5>
+    <version>9.530.0</version>
+    <time>1793484529</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 9.530.0 (9.53)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  9.53  2026-10-25
+    - Added any, delete, get, options, patch, post, put, query, under and websocket methods to Mojolicious, as shortcuts
+      for the same methods on the routes attribute.
+    - Added support for all server commands to morbo, like &quot;morbo ./myapp.pl prefork -w 2&quot;. The server now runs in a
+      separate process, so the daemon attribute of Mojo::Server::Morbo is only used to create listen sockets, and server
+      settings need to be passed to the command instead, like &quot;morbo ./myapp.pl daemon -p -i 30&quot;. That also means Morbo
+      no longer works on platforms with fork emulation, such as native Windows (use WSL instead).
+    - Added exec attribute to Mojo::Server::Morbo and -x/--exec option to morbo, to start additional commands like asset
+      bundlers in watch mode alongside the server.
+    - Improved url_for_asset in Mojolicious::Controller to find assets that have been rebuilt with different names in
+      development mode.
+    - Improved at performance in Mojo::DOM for selectors without combinators, it now stops at the first match.
+    - Improved HTML/XML parsing performance in Mojo::DOM by up to 35%, the tokenizer now matches attributes only once.
+    - Fixed a bug in Mojo::DOM where many unclosed comments, CDATA sections, processing instructions or RCDATA elements
+      could make parsing extremely slow.
+  9.52  2026-10-24
+    - Improved multipart/form-data performance in Mojo::Message.
+    - Improved Mojo::Server::Daemon performance by up to 27% for keep-alive requests, by finishing static responses
+      without an extra write cycle and caching socket addresses per connection.
+    - Improved header parsing performance in Mojo::Headers by up to 2x.
+    - Improved route matching performance in Mojolicious::Routes by up to 8x for real world applications, routes are now
+      indexed by the text their patterns start with, so the cost no longer grows with the number of routes.
+    - Improved encode and decode performance in Mojo::Util by up to 3x for ASCII strings, which speeds up parameter
+      parsing by up to 35%.
+    - Improved url_for performance in Mojolicious::Controller by up to 15%.
+    - Improved xor_encode performance in Mojo::Util by up to 3x, which speeds up WebSocket frame masking.
+    - Fixed a bug in Mojo::Util where gzip did not accept Mojo::ByteStream objects, causing compressed responses
+      rendered from them to fail.</comment>
+    <requestid>1393996</requestid>
+  </revision>
 </revisionlist>
