@@ -24,9 +24,8 @@ so --locked stays satisfied); the [[package]] set is unchanged.
 -egui_demo_lib = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
 -egui_inspection = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
  winit = { git = "https://github.com/storytold/winit.git", rev = "a517b3846ee8457d84ee4975110bfda6797c44dc" }
---- a/Cargo.lock
-+++ b/Cargo.lock
-@@ -7465,23 +7465,3 @@
+--- a/Cargo.lock b/Cargo.lock
+@@ -7478,23 +7478,3 @@
   "syn 3.0.9",
   "winnow",
  ]

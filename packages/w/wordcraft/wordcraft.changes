@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 31 14:02:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.2 (upstream tag v0.13.2, 2026-10-31):
+  * Tables can be copied and cut, zero-sized paragraph frames
+    stay in normal flow; Traditional Chinese interface;
+    content controls; DOCX fixes.
+  * Hardening: NUL in document titles no longer crashes X11
+    backends. No CVE identifiers in the crossed range.
+  * Re-vendored (update=true); besides the workspace crates
+    only craft-update moves (new git rev 04aa1703, still MIT
+    OR Apache-2.0; its one new dep `image` was already
+    vendored) plus ctutils 0.4.3 to 0.4.7 (Apache-2.0 OR MIT)
+    and clipboard-win 5.4.1 to 5.4.3 (BSL-1.0, Windows-only,
+    not linked on Linux), so the licence set of the linked
+    crates is unchanged, no new copyleft; the cargo_audit
+    service reports no advisories.
+- Set the fixed metainfo release date to 2026-10-31.
+- Refresh the lock context of
+  wordcraft-drop-unused-egui-patches.patch (same four unused
+  pins, same rev); wordcraft-no-self-update.patch still
+  applies unchanged (same neutering, manual Help check
+  stays).
+
+-------------------------------------------------------------------
 Thu Oct 29 17:25:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.0 (upstream tag v0.12.0, 2026-10-28):

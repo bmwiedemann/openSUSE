@@ -15,4 +15,12 @@
     <comment>Fix adi:5 build: drop unused egui pins.</comment>
     <requestid>1393745</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0526956230e7ca4b39d4a18ed1bccfa4</srcmd5>
+    <version>0.13.2</version>
+    <time>1793484633</time>
+    <user>dimstar_suse</user>
+    <comment>Update wordcraft (filtered vendor)</comment>
+    <requestid>1394166</requestid>
+  </revision>
 </revisionlist>
