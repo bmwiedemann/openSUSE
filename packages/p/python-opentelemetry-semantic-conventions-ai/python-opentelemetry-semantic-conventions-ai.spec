@@ -70,7 +70,7 @@ cd %{pkgsubdir}
 cd %{pkgsubdir}
 %pytest tests
 
-%files %{python_files}
+%files %python_files
 %doc %{pkgsubdir}/README.md
 %{python_sitelib}/opentelemetry/semconv_ai
 %{python_sitelib}/opentelemetry_semantic_conventions_ai-%{version}.dist-info

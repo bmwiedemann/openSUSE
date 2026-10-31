@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 31 14:09:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Normalize %files to the canonical unbraced %python_files form
+  (no functional change)
+
+-------------------------------------------------------------------
 Sat Oct  3 16:11:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Bump monorepo_ver to 0.62.4; this package's own version stays
