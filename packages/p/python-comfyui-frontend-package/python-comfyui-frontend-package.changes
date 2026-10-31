@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:54:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.58.3 (crosses 1.58.2):
+  * Fetch layer retries idempotent requests on 429/502/503/504
+  * Canvas: re-resolve rich widget nodes after an undo reloads
+    the graph; clear widget references to deleted media
+  * Restore a run's outputs when it finished while the socket
+    was down; skip null image entries in node output URLs
+  * Guard touch handlers against a missing canvas
+  * Billing: show the server's message when a top-up is rate
+    limited or purchases are paused
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+  * Spec-cleaner modernization: %files %python_files
+
+-------------------------------------------------------------------
 Tue Oct 27 06:30:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.58.1 (crosses 1.58.0; 1.57.5 skipped, same-day

@@ -16,7 +16,7 @@
 #
 
 Name:           python-comfyui-frontend-package
-Version:        1.58.1
+Version:        1.58.3
 Release:        0
 Summary:        Official ComfyUI frontend as a Python package
 # Legal-Review-Notice: sdist ships no LICENSE file; upstream
@@ -56,7 +56,7 @@ export COMFYUI_FRONTEND_VERSION=%{version}
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import comfyui_frontend_package"
 
-%files %{python_files}
+%files %python_files
 %doc README.md
 %{python_sitelib}/comfyui_frontend_package
 %{python_sitelib}/comfyui_frontend_package-%{version}.dist-info

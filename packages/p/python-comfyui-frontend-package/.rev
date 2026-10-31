@@ -238,4 +238,12 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
     <comment>Update python-comfyui-frontend-package to 1.58.1.</comment>
     <requestid>1392946</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>843a25e2f8312b63c84fdb1a1b8e9383</srcmd5>
+    <version>1.58.3</version>
+    <time>1793484660</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-comfyui-frontend-package to 1.58.3.</comment>
+    <requestid>1394131</requestid>
+  </revision>
 </revisionlist>
