@@ -19,7 +19,7 @@
 %define executable_name digger
 
 Name:           digger-cli
-Version:        0.6.154
+Version:        0.6.155
 Release:        0
 Summary:        CLI for the digger open source IaC orchestration tool
 License:        Apache-2.0
@@ -28,8 +28,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
 
 %description
 CI/CD for Terraform is tricky. To make life easier, specialised CI systems aka

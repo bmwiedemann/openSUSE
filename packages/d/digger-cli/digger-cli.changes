@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 31 12:30:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.155:
+  * perf: reuse GitHub installation tokens between clients (#2745)
+  * feat: fetch management repo policies once per job with a sparse
+    clone (#2744)
+
+-------------------------------------------------------------------
 Thu Oct 08 05:19:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.154:
