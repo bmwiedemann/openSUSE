@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 31 14:00:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.100 (crosses 0.11.98 and 0.11.99):
+  * Tracks upstream releases: pins move to core 0.3.391,
+    json 0.1.126 and media-assets-02 0.1.26; the shim ships
+    no manifest and its code is unchanged, so the RPM keeps
+    floors instead of the upstream == pins
+  * Content delta rides the bundles: 8 new core entries and
+    the json adds/rewrites recorded in those packages
+  * Spec-cleaner modernization: %files %python_files
+
+-------------------------------------------------------------------
 Mon Oct 26 19:28:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.97: release-train pin roll, the
