@@ -17,7 +17,7 @@
 
 
 Name:           xfr
-Version:        0.9.3
+Version:        0.14.0
 Release:        0
 Summary:        Network bandwidth testing tool with TUI
 License:        Apache-2.0 OR MIT
@@ -47,10 +47,11 @@ Features:
 %autosetup -p 1 -a 1
 
 %build
-%{cargo_build}
+%{cargo_build} --no-default-features
 
 %install
 %{cargo_install}
+install -D -m 0644 examples/config.toml %{buildroot}%{_sysconfdir}/xfr/config.toml
 
 %check
 %{cargo_test}
@@ -59,5 +60,7 @@ Features:
 %license LICENSE-APACHE LICENSE-MIT
 %doc CHANGELOG.md README.md
 %{_bindir}/xfr
+%dir %{_sysconfdir}/xfr
+%config(noreplace) %{_sysconfdir}/xfr/config.toml
 
 %changelog

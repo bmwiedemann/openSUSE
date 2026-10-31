@@ -1,4 +1,514 @@
 -------------------------------------------------------------------
+Sat Oct 31 10:27:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.0:
+  * fix: raise the QUIC idle timeout to 10 s for high-latency lossy
+    links.
+  * fix: preserve completed results after stdout closes.
+  * test: avoid occupied ports and bound the legacy UDP fixture.
+  * fix: review follow-ups for QUIC keep-alive, discover link-locals
+    and -n TCP_INFO.
+  * feat: --config, XFR_CONFIG and /etc/xfr/config.toml.
+  * fix: let UDP receivers drain reordered stragglers before
+    finalizing loss.
+  * test: run the 64-stream TCP load test in its own binary.
+  * fix: PSK mismatch wording, -n durations, zoneless link-local,
+    push retry noise.
+  * fix: one discover line per server, no wrong link-local zones.
+  * fix: QUIC clients give up on a silent server within seconds.
+  * feat: client port from [client] port or a host:port target.
+
+-------------------------------------------------------------------
+Fri Oct 30 20:18:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.13.0:
+  * fix: bound server metric pushes and tidy push gateway output.
+  * fix: clearer wrong-PSK and port-in-use startup errors.
+  * fix: name the port when the server's listen address is in use.
+  * fix: report progress for initial control read timeouts.
+  * feat: add operator labels and stable client snapshots.
+  * fix: accept restricted systemd credential ACLs.
+  * feat: expose directional UDP push metrics (#278).
+  * feat: push finalized client metrics with endpoint labels (#277).
+  * Bump the rust-dependencies.
+
+-------------------------------------------------------------------
+Fri Oct 23 18:40:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.12.1:
+  * Update webpki-roots and rustls-webpki for the emSign distrust.
+
+-------------------------------------------------------------------
+Sun Oct 18 08:21:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.12.0:
+  * Merge the Unreleased additive library API lines.
+  * List Server::run_until under the additive library API changes.
+  * Make the TCP send loop yield to the tokio scheduler.
+  * Warn when a TCP stream carries no data.
+  * Close QUIC connections explicitly at test end and on server
+    shutdown.
+  * Retire per-test Prometheus series after 16 finished tests.
+  * Log the actual new UDP loss per interval in TUI History.
+  * Fit the server dashboard header, table and footer to small
+    terminals.
+  * Keep the help hint and a whole rate on tiny client terminals.
+  * Warn about --random with QUIC only when it was given explicitly.
+  * Drop change arrows from a locked update-check row in Settings.
+  * Fall back to plain output when stdout or stdin is not a terminal.
+  * Align help descriptions and draw them in body text colour.
+  * Suggest the fix when a client option precedes a subcommand.
+  * Use a fixed mid grey for default and monochrome secondary text.
+  * Check the -o destination before starting a client test.
+  * Overwrite writable files in read-only directories and clarify
+    save errors.
+  * Note that atomic saves do not keep owner, ACLs, xattrs or hard
+    links.
+  * Mark bidir direction splits as shipped in v0.11.0 in the roadmap
+  * Clarify man page interrupt exit status and escape option hyphens
+  * Write plain and CSV reports directly into output buffers.
+  * Aggregate interval gauges without temporary vectors.
+  * Format Push Gateway metrics directly into the payload.
+  * Reduce allocation in TUI reporting.
+  * Fix the TUI force-exit description and man page option macros.
+  * Correct the --bitrate and --connect-timeout help text.
+  * Bring the man page in line with the current CLI.
+  * Fold the UDP port-reuse entry into the Unreleased Fixed list.
+  * Stop setting SO_REUSEADDR on ephemeral UDP data sockets.
+  * Save CSV results atomically.
+  * Make the save_json test detect in-place writes.
+  * Expose atomic_write as a public bytes API.
+  * Sync the parent directory after replacing a save.
+  * Drop the post-write chmod in atomic_write.
+  * Keep the metrics server alive across accept errors.
+  * Name the destination in save access errors.
+  * Write through existing non-regular save destinations.
+  * Lead client hints with help and keep compact paused rate visible
+  * Theme stream bar dim color and pin default theme to ANSI palette
+  * Hint help scrolling in the border and restore styled key column.
+  * Let the server table shrink before the header and help footer.
+  * Close client Settings when Ctrl-C starts a cancel.
+  * Extract TUI interrupt routing into testable helpers.
+  * Reject ignored client options and write CSV for --csv -o.
+  * Resolve hostnames asynchronously inside the connect deadline.
+  * Check destination write access before replacing saved files.
+  * Preserve errors and final averages in compact client views.
+  * Apply destination permissions when creating temporary saves.
+  * Bound metrics headers and connection lifetimes.
+  * Keep throughput and help accessible in small terminals.
+  * Lock update-check settings controlled by higher-priority
+    overrides.
+  * Improve terminal foreground and dark-theme text readability.
+  * Save preferences and JSON results with atomic replacement.
+  * Fix Ctrl-C handling across client and server TUIs.
+  * chore(deps): bump rustls to 0.23.46 (RUSTSEC-2026-0346..0349).
+
+-------------------------------------------------------------------
+Tue Oct 13 16:30:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.11.0:
+  * fix(output): print bidir CSV interval jitter at the
+    jitter_ms column's precision.
+  * fix(output): wrap bidir per-stream summary split to fit 80
+    columns.
+  * fix(udp): hold far-future sequence jumps until a second packet
+    confirms them.
+    reordered streams.
+    loss.
+  * fix(udp): repair reordered packet loss and deduplicate arrivals.
+  * fix(serve): send UDP from the address the client targeted.
+  * fix(tui): keep per-stream UDP jitter when the final result
+    arrives.
+  * fix(output): keep bidir UDP plain rows fixed-width and within
+    80 columns.
+  * feat(udp): report bidirectional receiver quality and stream
+    splits.
+  * fix(server): wait for the QUIC Result to be acknowledged before
+    closing.
+  * fix(server): keep timed tests at their usual interval count.
+  * fix(server): keep stalled control writes from blocking test
+    lifecycle.
+  * fix(net): honor IPv6 zone IDs for link-local hosts.
+  * fix(serve): report single-port UDP setup failures once.
+  * fix(udp): warn once per stream on repeated send failures.
+  * fix(udp): report UDP send errors to the client.
+  * fix(tui): keep OSC 7501 docs and test fixtures lint-clean.
+  * feat(tui): report test status to the terminal via OSC 7501.
+  * fix(tui): resolve zero-copy per run after a settings protocol
+    switch.
+  * Clarify report sampling and negotiated protocol extensions.
+  * fix(client): keep cancellation responsive and clean up dropped
+    runs.
+  * fix(rate-limit): keep the cleanup ticker period non-zero.
+  * fix(client): ignore -l for TCP and QUIC runs instead of failing
+    them.
+  * fix: reject active zero rate-limit windows before binding.
+  * fix(cli): name the offending [client] key in config validation
+    errors.
+  * fix(cli): let --json-stream and --csv override a config JSON
+    default.
+  * Refresh pinned port assignment after TUI settings edits.
+  * fix: reject client durations that wrap protocol seconds.
+  * Refresh documented network limits and completed TUI behavior.
+  * fix: fingerprint only visible history timestamps.
+  * Group protocol restart regressions with TUI key tests.
+  * Keep diff threshold parsing beside command helpers.
+  * fix: identify invalid client settings accurately.
+  * Bound QUIC control-stream setup by the handshake timeout.
+  * fix: resolve and save theme preferences consistently.
+  * fix: honor and validate client stream and buffer defaults.
+  * fix: keep settings controls visible in compact terminals.
+  * fix: validate effective address-family settings.
+  * fix: scope TUI transport options to the selected protocol.
+  * Cancel legacy UDP peer discovery promptly.
+  * fix: honor explicit server ports equal to the default.
+  * fix: apply timestamp choices to TUI history.
+  * Cancel blocked QUIC download stream opens.
+  * fix: validate and honor server rate-limit windows.
+  * Bound QUIC cancellation control writes.
+  * fix: preserve loss markers when throughput bars disappear.
+  * fix: validate diff thresholds before comparing results.
+  * fix: validate report intervals before starting a test.
+  * fix: keep JSON summary and stream output parseable.
+  * fix: pass latest Rust checks and read MTU results from JSON
+    files.
+  * fix: support configurable UDP payload sizes for lower-MTU paths
+  * build(deps): bump the rust-dependencies group across 1
+    directory with 10 updates.
+  * build(deps): bump the github-actions group with 2 updates.
+  * build(deps): bump the rust-dependencies group across 1
+    directory with 4 updates.
+  * build(deps): update rustls to 0.23.45 (RUSTSEC-2026-0285).
+  * build(deps): bump taiki-e/install-action in the github-actions
+    group.
+  * test(quic): make the 2-stream pacing assertion able to fail.
+  * test(quic): cover multi-stream bitrate pacing.
+
+-------------------------------------------------------------------
+Sat Sep 05 08:17:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.1:
+  * fix(discover): clamp mDNS hostname to 63-byte DNS labels.
+  * fix: server, tui, and transport reliability improvements
+    post-#195.
+  * fix(tui): correct throughput reporting, sparkline bounds, and
+    connection logging.
+  * fix(tui): mark heavy loss without inverting the bar.
+  * feat(quic): implement bitrate pacing for QUIC transport
+    (LAN-1497).
+  * fix(tui): quiet the title, block-glyph progress bar, and
+    80-column footer.
+  * docs: correct claims invalidated by the QUIC pacing and TUI work
+
+-------------------------------------------------------------------
+Tue Sep  1 12:11:30 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.0:
+  * build(deps): bump the rust-dependencies.
+  * perf(tui): skip redraws when frame state is unchanged.
+  * perf(tui): skip unchanged server dashboard frames.
+  * fix(quic): admit all 128 data streams.
+  * perf(udp): smooth high-rate pacing batches.
+  * fix(config): reject unusable existing files.
+  * fix(udp): reject stale feedback snapshots.
+  * perf(udp): remove per-packet receive timers.
+  * fix(config): protect embedded PSKs.
+  * fix(auth): validate library PSKs before I/O.
+  * fix(rate-limit): serialize cleanup with admission.
+  * fix(tcp): report Linux cwnd in bytes.
+  * fix(auth): bind PSK permissions to opened file.
+  * test(net): tolerate UDP packet loss in dual-stack check.
+  * build(deps): update typos and preserve MSRV check.
+  * docs: correct security, ACL, and metrics contracts.
+  * fix(quic): bind PSK authentication to TLS session.
+
+-------------------------------------------------------------------
+Sat Aug 01 08:23:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.25:
+  * fix(tui): stop reverse-video loss marking from inverting the
+    sparkline.
+
+-------------------------------------------------------------------
+Fri Jul 31 07:00:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.24:
+  * fix(tui): bound quit on a dead control channel and show the
+    wait.
+  * fix(tui): make the monochrome theme survive sunlight, encode
+    loss without hue.
+
+-------------------------------------------------------------------
+Wed Jul 29 18:41:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.23:
+  * fix(client): suppress UDP/QUIC send-error noise on graceful
+    teardown.
+  * fix(output): surface live loss in scripted output when
+    interval reports stall.
+  * feat(cli): group --help output into sections.
+  * fix(tui): stop the -u -R local metronome once the timed test
+    ends.
+  * fix(tui): drive -u -R progress from a local clock, not server
+    Intervals.
+  * fix(-n): cap sendfile at the claimed length, and show byte
+    progress in the TUI.
+  * feat: transfer a fixed number of bytes with -n/--bytes
+  * test: wait out the bar-flush guard in the live-loss e2e path.
+  * fix(tui): rate-limit sparkline bars against control-channel
+    backlog flushes.
+
+-------------------------------------------------------------------
+Sat Jul 25 08:34:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.22:
+  * fix(udp): live jitter in download mode reads the client's
+    receiver stats.
+  * fix(tui): satisfy stable clippy.
+  * feat(config): add client transport defaults.
+  * fix(update): let config.toml override a stale prefs toggle.
+  * feat(update): allow disabling the update check (LAN-235).
+- Build with "--no-default-features" to disable the automatic
+  update check (update-informer).
+
+-------------------------------------------------------------------
+Tue Jul  7 07:42:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.21:
+  Security
+  * Preset allowlists are now enforced by xfr serve --preset.
+  * PSK handling is stricter and safer by default.
+  * PSK sessions now require AEAD-protected control channels.
+  Fixed
+  * Dual-stack sockets now apply address-family policy consistently
+  * Cancel, MPTCP validation, and the QUIC UDP tee no longer spin
+    on closed or diverted channels.
+  * Client control reads no longer desynchronize on cancel or pause
+  * Pause time is excluded from test clocks.
+  * Cancel and pause take effect immediately on the server.
+  * UDP paced sender no longer bursts after resume.
+  * Pause channel closure and QUIC task teardown.
+  * TCP send paths no longer replay bytes after short writes.
+  * Server active-test state is cleaned up on abort, cancel, and
+    early error.
+  * Server final TCP_INFO now aggregates all TCP streams.
+  * TCP RTT averages no longer truncate fractional microseconds.
+  * Diff zero baselines now register as regressions.
+  * Push Gateway timeout no longer silently dropped.
+  * JSON output now propagates serialization errors.
+  * Push Gateway metrics emit # HELP/# TYPE once per family.
+  * Malformed protocol versions are no longer treated as compatible
+  * Receive-side TCP resets at normal teardown are treated as EOF
+    without hiding mid-test failures.
+  * Socket buffer tuning once again degrades gracefully on OS
+    rejection.
+  * xfr diff no longer fails default comparisons on tiny TCP metric
+    noise.
+  * Server bidirectional TCP no longer double-counts send-half
+    retransmits.
+  * Failed tests are distinct in the server TUI.
+  * Bare-major protocol versions are accepted again.
+  * TestAck and MTU probe packets reject invalid wire shapes.
+  * MTU probing handles echo-only success and IPv6 literals
+    correctly.
+  * TUI average speed and retransmit fallback are no longer biased.
+  * Server preset max duration is applied with CLI precedence.
+  * Explicit --probe-mtu -t 10s duration is preserved.
+  * IPv6 MTU probe ladder uses IPv6 overhead for both bounds.
+  Maintenance
+  * Rate-limit integration coverage now asserts rejection.
+  * --no-default-features no longer warns on the mDNS fallback stub
+
+-------------------------------------------------------------------
+Tue Jun 23 20:37:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update version 0.9.20:
+  * Updated 'quinn-proto' to 0.11.15 to address [RUSTSEC-2026-0185]
+    (https://rustsec.org/advisories/RUSTSEC-2026-0185) (High, 7.5),
+    a remote memory-exhaustion denial of service in QUIC stream
+    reassembly, where unbounded buffering of out-of-order stream
+    data could let a peer drive a server's memory usage without
+    bound. This affects xfr's QUIC server path (any host running
+    'xfr -s' reachable by an untrusted QUIC client). Lockfile-only
+    update — no source or API changes, and no configuration change
+    is required.
+
+-------------------------------------------------------------------
+Sun Jun 14 15:37:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.19:
+  * Add safe TUI restart controls.
+
+-------------------------------------------------------------------
+Fri Jun 12 06:14:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.18:
+  * Single-port UDP data plane (single_port_udp_v1).
+  * Connect timeout, QUIC ignored-flag warnings, client hello
+    logging.
+  * Add per-direction split columns to CSV interval output.
+  * Propagate --tcp-nodelay to the server (wire intent, no behavior
+    change).
+
+-------------------------------------------------------------------
+Thu Jun 11 17:24:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.17:
+  * Relax MPTCP 10-stream CI threshold to 17 Mbps.
+  * Enable zero-copy TCP sends by default.
+  * Fix bidir UDP download-half inflation in split reporting.
+  * Add path-MTU probe mode: --probe-mtu
+  * Keep the TUI sparkline advancing when the control channel
+    stalls.
+
+-------------------------------------------------------------------
+Wed Jun 10 19:19:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.16:
+  * zerocopy: use raw memfd_create syscall instead of glibc wrapper
+- Update to version 0.9.15:
+  * Fix -R UDP reporting sender-side rate as throughput (#81).
+  * Bump the rust-dependencies group across 1 directory with 10
+    updates.
+  * Document --zerocopy: README, FEATURES, man page, ROADMAP,
+    CHANGELOG.
+  * Add zero-copy TCP sends via sendfile (-Z/--zerocopy, issue #33)
+  * ROADMAP: link -R UDP throughput follow-up to #81.
+
+-------------------------------------------------------------------
+Mon May 04 05:45:02 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.14:
+  Fixed
+  * Live UDP loss counter no longer stalls under upload-mode
+    saturation.
+  * --omit no longer folds hidden UDP loss into the first visible
+    interval. 
+  Added
+  * UDP receiver feedback (udp_feedback_v1 capability).
+  * Producer-side monotonic-denominator filter on the client.
+  * Live UDP loss now surfaces in non-TUI output.
+  Changed
+  * UDP receiver feedback (udp_feedback_v1).
+
+-------------------------------------------------------------------
+Sun May 03 17:11:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.13:
+  * Set TCP_NODELAY on the control connection.
+  * Bump the rust-dependencies group with 2 updates.
+
+-------------------------------------------------------------------
+Sun May 03 08:42:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.12:
+  * Attempt both UDP setsockopts even if one fails.
+  * Surface UDP setsockopt failures, fix CLI help wording.
+  * Apply -w to UDP SO_SNDBUF / SO_RCVBUF on both ends.
+
+-------------------------------------------------------------------
+Sat May 02 12:46:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.11:
+  Fixed
+  * Live UDP packet-loss counter during the run.
+  * Final UDP loss accounting only counts valid xfr packets.
+  Added
+  * Throughput sparkline tints by per-interval loss severity.
+  * Freshness signal for the Packet Loss line.
+  Changed
+  * Jitter rolling-window label. The running display now reads
+    Jitter: 0.86 ms (10s avg: 0.03 ms). The previous (10s: ...)
+    form read like a stuck timer.
+
+-------------------------------------------------------------------
+Thu Apr 23 06:35:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.10:
+  Fixed
+  * TCP teardown no longer hangs under rate-limited paths.
+  * TUI elapsed time stays live during data gaps.
+  * Infinite-duration (-t 0) TUI now shows a live elapsed counter.
+  Added
+  * Client/server version in the Configuration panel.
+  Changed
+  * TUI jitter line shows latest + smoothed together.
+  Security
+  * Sanitize server-advertised version before rendering.
+  * Bump rustls-webpki 0.103.12 → 0.103.13 (RUSTSEC-2026-0104).
+
+-------------------------------------------------------------------
+Tue Apr 21 12:11:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.9:
+  * Smooth TUI jitter, add max jitter and packet size to UDP
+    summary.
+  * Accept bare integers as seconds for duration arguments.
+  * Default to kernel TCP autotuning; add -w short alias.
+
+-------------------------------------------------------------------
+Sat Apr 18 16:52:01 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.8:
+  Added
+  * Per-direction reporting in --bidir results.
+  Fixed
+  * TCP teardown no longer blocks on shutdown() drain (#54).
+  * Sender-side byte counts clamped to tcpi_bytes_acked to remove
+    ~5-10% overcount on bufferbloated/rate-limited links.
+
+-------------------------------------------------------------------
+Thu Apr 16 19:22:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.7:
+  * Display summary on early exit (Ctrl+C), propagate DSCP to
+    server.
+  * Update rustls-webpki 0.103.10 → 0.103.12
+    (RUSTSEC-2026-0098, RUSTSEC-2026-0099)
+  * Update rustls-webpki 0.103.9 → 0.103.10 (RUSTSEC-2026-0049)
+
+-------------------------------------------------------------------
+Wed Mar 18 17:36:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.6:
+  * Add --dscp flag and omit_secs config support.
+
+-------------------------------------------------------------------
+Tue Mar 17 17:03:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.5:
+  Added
+  * TCP --cport support (#44) — --cport now pins client-side TCP
+    data-stream source ports for ECMP load balancing and strict
+    egress firewall scenarios. Multi-stream TCP (-P N) uses
+    sequential ports (cport, cport+1, ..., cport+N-1), matching
+    existing UDP behavior.
+  Changed
+  * TCP --cport semantics — TCP control connection remains on an
+    ephemeral source port while data streams use the requested port
+    or range. TCP data binds now match the remote address family
+    (dual-stack fix). Overlap between control and data ports is
+    detected and rejected.
+
+-------------------------------------------------------------------
+Wed Mar 11 17:02:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.4:
+  Added
+  * --no-mdns flag (#41) — xfr serve --no-mdns disables mDNS
+    service registration for environments where multicast is
+    unwanted or another service already uses mDNS.
+  * server.no_mdns config support — also configurable via [server]
+    no_mdns = true in ~/.config/xfr/config.toml.
+  Changed
+  * Delta retransmits in interval reports (#36) — plain text
+    interval lines now show per-interval retransmit deltas instead
+    of cumulative totals, making it easier to spot when retransmits
+    actually occur. Hidden intervals from --omit, --quiet, or
+    larger --interval settings no longer get folded into the next
+    visible rtx: value. Final summary still shows cumulative totals
+
+-------------------------------------------------------------------
 Wed Mar 11 10:40:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.9.3:
