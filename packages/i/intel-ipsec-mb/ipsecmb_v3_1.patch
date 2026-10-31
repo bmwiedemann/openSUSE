@@ -1,0 +1,89 @@
+diff --git a/lib/openssl/crypto/sha/asm/keccak1600x4-avx512vl.pl b/lib/openssl/crypto/sha/asm/keccak1600x4-avx512vl.pl
+index 8d80aed6..27fba7cc 100755
+--- a/lib/openssl/crypto/sha/asm/keccak1600x4-avx512vl.pl
++++ b/lib/openssl/crypto/sha/asm/keccak1600x4-avx512vl.pl
+@@ -95,7 +95,8 @@ $sf_size="856";       # 48 + 808 = 856 bytes
+ # Emit an internal helper call used by one-shot wrappers.
+ # - Win64: call the provided *_internal shim and bracket it with 32-byte
+ #   shadow space so shim entry can use xlate-compatible [rsp+8]/[rsp+16].
+-# - non-Win64: call the public API symbol (same base name without _internal).
++# - non-Win64: call the local .L_ entry label of the public API function
++#   (same base name without _internal).
+ # The argument must be the shim/internal symbol name, e.g.
+ #   SHA3_shake128_x4_inc_squeeze_avx512vl_internal
+ sub call_internal {
+@@ -110,8 +111,11 @@ sub call_internal {
+     add     \$32, %rsp
+ ___
+ 
++    # Call the file-local entry label rather than the global symbol so
++    # no PC32 relocation against a preemptible symbol is emitted
++    # (rejected by older linkers when building a shared object).
+     return <<___;
+-    call    $external_name
++    call    .L_$external_name
+ ___
+ }
+ 
+diff --git a/perf/ipsec_perf.c b/perf/ipsec_perf.c
+index 3ce86d96..dbf0fdbc 100644
+--- a/perf/ipsec_perf.c
++++ b/perf/ipsec_perf.c
+@@ -1774,7 +1774,7 @@ static inline void
+ set_job_fields(IMB_JOB *job, uint8_t *p_buffer, imb_uint128_t *p_keys, const uint32_t i,
+                const uint32_t index, const IMB_JOB *template)
+ {
+-        uint32_t list_idx;
++        uint32_t list_idx = 0;
+ 
+         /* If IMIX testing is being done, set the buffer size to cipher and hash
+          * going through the list of sizes precalculated */
+@@ -1792,10 +1792,7 @@ set_job_fields(IMB_JOB *job, uint8_t *p_buffer, imb_uint128_t *p_keys, const uin
+                 uint64_t *p_src = (uint64_t *) get_src_buffer(index, p_buffer);
+ 
+                 job->src = (const uint8_t *) p_src;
+-                if (imix_list_count != 0)
+-                        p_src[0] = xgem_hdr_list[list_idx];
+-                else
+-                        p_src[0] = xgem_hdr_list[0];
++                p_src[0] = xgem_hdr_list[list_idx];
+         } else
+                 job->src = get_src_buffer(index, p_buffer);
+ 
+diff --git a/test/oob-app/oob_test.c b/test/oob-app/oob_test.c
+index e3517ed5..badbdd5a 100644
+--- a/test/oob-app/oob_test.c
++++ b/test/oob-app/oob_test.c
+@@ -2151,7 +2151,7 @@ test_ml_dsa_keyops_oob(struct pqc_test_ctx *t, IMB_ML_DSA *ctx, const struct ml_
+                 /* volatile: live across the TEST_SETJMP() checkpoint below */
+                 uint8_t *const volatile sk = oob_buf(&mem->privkey, tv->sk_len, t->oob);
+                 uint8_t *const volatile pk = oob_buf(&mem->pubkey, tv->pk_len, t->oob);
+-                int ok = 0;
++                volatile int ok = 0;
+ 
+                 memcpy(sk, ref_sk, tv->sk_len);
+ 
+@@ -2213,8 +2213,9 @@ test_ml_dsa_sign_verify_oob(struct pqc_test_ctx *t, IMB_ML_DSA *ctx,
+                             const unsigned msg_len, const unsigned ctx_len, const int hedged,
+                             const int msg_is_mu)
+ {
+-        uint8_t *msg = oob_buf(&mem->msg, msg_len, t->oob);
+-        uint8_t *sig = oob_buf(&mem->sig, tv->sig_len, t->oob);
++        /* volatile: reassigned between TEST_SETJMP() checkpoints below */
++        uint8_t *volatile msg = oob_buf(&mem->msg, msg_len, t->oob);
++        uint8_t *volatile sig = oob_buf(&mem->sig, tv->sig_len, t->oob);
+         uint8_t *cstr = oob_buf(&mem->ctxstr, ctx_len, t->oob);
+         uint8_t *rnd = oob_buf(&mem->seed, IMB_ML_DSA_SIGN_RND_BYTES, t->oob);
+         IMB_ML_DSA_SIGN_PARAMS sp;
+@@ -2534,8 +2535,9 @@ test_ml_kem_encap_decap_oob(struct pqc_test_ctx *t, IMB_ML_KEM *ctx,
+                             const int seeded)
+ {
+         uint8_t ref_ss[IMB_ML_KEM_SHARED_SECRET_BYTES];
+-        uint8_t *ct = oob_buf(&mem->sig, tv->ct_len, t->oob);
+-        uint8_t *ss = oob_buf(&mem->ss, IMB_ML_KEM_SHARED_SECRET_BYTES, t->oob);
++        /* volatile: reassigned between TEST_SETJMP() checkpoints below */
++        uint8_t *volatile ct = oob_buf(&mem->sig, tv->ct_len, t->oob);
++        uint8_t *volatile ss = oob_buf(&mem->ss, IMB_ML_KEM_SHARED_SECRET_BYTES, t->oob);
+         uint8_t *const m = oob_buf(&mem->seed, IMB_ML_KEM_ENCAP_SEED_BYTES, t->oob);
+         IMB_ML_KEM_ENCAP_PARAMS params;
+ 

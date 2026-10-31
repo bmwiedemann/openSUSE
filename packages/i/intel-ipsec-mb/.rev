@@ -123,4 +123,41 @@
   * Fix message handling for XGEM header size on AVX512 Type 2 systems.</comment>
     <requestid>1355705</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>616241314f581b30955b6095f8cb32d3</srcmd5>
+    <version>3.0.1</version>
+    <time>1793484400</time>
+    <user>dimstar_suse</user>
+    <comment>- Added ipsecmb_v3_1.patch file fixing 15.7 x86_64 compilation errors and warnings
+- Added intel-ipsec-mb-rpmlintrc file to fix one rpmlint warning
+
+- Removed installation of the man page
+- Fixed rpmlint warning
+- Fixed compilation errors and warnings on 15.7 x86_64
+
+- Fixed spec file references to README and ReleaseNotes.txt
+
+- Update to v3.0.1:
+  * Build system: removed legacy Makefile and Windows `.mak` builds; CMake is now the only supported build flow.
+  * Build system: GCC and Clang builds now use the C11 standard.
+  * Licensing: replaced full BSD-3-Clause license text in source files with SPDX identifiers.
+  * OpenSSL: added `imb-provider`, an OpenSSL 3.x test provider supporting symmetric crypto, hash/HMAC and PQC operations, including asynchronous operation.
+  * Self-tests: library initialization now fails closed on self-test failure, preventing cryptographic operations on the affected manager until successful reinitialization.
+  * Architecture support: added AVX10 architecture support.
+  * AES: added AVX2 Type 2 implementations for AES-CFB, AES-CBC, AES-CMAC and AES-CCM.
+  * HMAC-SHA1: added variable tag sizes from 4 to 20 bytes.
+  * SHA3/SHAKE: added SHA3-224/256/384/512, SHAKE128/256 and HMAC-SHA3 support, including optimized AVX2 and AVX512 implementations.
+  * Zero-length messages: extended support across HMAC and AES-CBC algorithms.
+  * 3GPP: added implementations of the new 256-bit confidentiality, integrity and combined algorithms based on AES, SNOW5G and ZUC.
+  * DES/3DES: added a new common SSE Type 1 DES block encryption implementation.
+  * PQC: added ML-DSA (FIPS 204) and ML-KEM (FIPS 203), including all standardized parameter sets.
+  * CRC: added AVX2 Type 2 implementations using 256-bit VPCLMULQDQ polynomial folding.
+  * Constant-time validation: added `CONSTANT_TIME_VALIDATION` build option for detecting secret-dependent branches and memory accesses using Valgrind.
+  * Wireless algorithms: removed bit-length APIs and non-byte-aligned message length/offset support.
+  * Direct APIs: removed direct API support for ZUC-EEA3/EIA3, SNOW3G-UEA2/UIA2, KASUMI-F8/F9 and CRC; these algorithms remain available through the job API.
+  * Removed AES-CTR bit-length, AES-CBCS 1:9, SNOW-V/AEAD SNOW-V, ZUC-EEA3-256 and ZUC-EIA3-256 support.
+  * Removed QUIC API, custom cipher and custom hash support.
+  * API validation: added AES-CBC/AES-CFB message length checks and updated CFB APIs to return operation status.</comment>
+    <requestid>1393977</requestid>
+  </revision>
 </revisionlist>

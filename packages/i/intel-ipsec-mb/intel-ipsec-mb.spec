@@ -17,9 +17,9 @@
 #
 
 
-%global major        2
+%global major        3
 %global minor        0
-%global patch        2
+%global patch        1
 
 # GitHub properties
 %global githubver    %{major}.%{minor}.%{patch}
@@ -30,11 +30,13 @@
 Name:           intel-ipsec-mb
 Summary:        IPSec cryptography library optimized for Intel Architecture
 Release:        0
-Version:        2.0.2
-License:        BSD-3-Clause
+Version:        3.0.1
+License:        Apache-2.0 AND BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/%{name}
 Source0:        https://github.com/intel/%{name}/archive/v%{githubver}.tar.gz#/%{githubfull}.tar.gz
+Source1:        intel-ipsec-mb-rpmlintrc
+Patch1:         ipsecmb_v3_1.patch
 ExclusiveArch:  x86_64
 BuildRequires:  cmake
 BuildRequires:  gcc >= 4.8.3
@@ -65,28 +67,29 @@ An IPSec cryptography library optimized for Intel Architecture
 and primarily targeted at packet processing applications.
 
 %prep
-%autosetup -n %{name}-%{githubver}
+%autosetup -p1 -n %{name}-%{githubver}
 
 %build
-%cmake
+%cmake --no-warn-unused-cli
 %cmake_build
 
 %install
 %cmake_install
+# Do not install the library and development man pages
+rm -f %{buildroot}%{_mandir}/man7/libipsec-mb.7*
+rm -f %{buildroot}%{_mandir}/man7/libipsec-mb-dev.7*
 
 %check
 %ctest
 
 %files -n %{rpm_name}%{major}
 %license LICENSE
-%doc README ReleaseNotes.txt
+%doc README.md ReleaseNotes.md
 %{_libdir}/libIPSec_MB.so.%{version}
 %{_libdir}/libIPSec_MB.so.%{major}
-%{_mandir}/man7/libipsec-mb.7.gz
 
 %files devel
 %{_includedir}/intel-ipsec-mb.h
-%{_mandir}/man7/libipsec-mb-dev.7.gz
 %{_libdir}/libIPSec_MB.so
 
 %post  -n %{rpm_name}%{major} -p /sbin/ldconfig
