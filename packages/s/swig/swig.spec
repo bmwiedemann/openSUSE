@@ -1,7 +1,7 @@
 #
 # spec file for package swig
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,23 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+# This flavour packages nothing -- it exists only to run the test suite --
+# so do not leave a swig-test-debugsource behind either.
+%global debug_package %{nil}
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+# %%{name} carries the flavour suffix, so everything naming the upstream
+# project -- sources, docdir, the unpacked tree -- goes through %%{origname}.
+%define origname swig
+
 %if 0%{?fedora} + 0%{?rhel_version} + 0%{?centos_version} > 0
-%define docpath %{_docdir}/%{name}-%{version}
+%define docpath %{_docdir}/%{origname}-%{version}
 BuildRequires:  perl-Test-Simple
 BuildRequires:  perl-devel
 %if 0%{?centos_version} < 800
@@ -26,18 +41,20 @@ BuildRequires:  ruby
 %endif
 %endif
 %if 0%{?suse_version} > 0
-%define docpath %{_docdir}/%{name}
+%define docpath %{_docdir}/%{origname}
+%if %{with test}
 BuildRequires:  ruby-devel
 %endif
-Name:           swig
-Version:        4.4.1
+%endif
+Name:           %{origname}%{psuffix}
+Version:        4.5.1
 Release:        0
 Summary:        Simplified Wrapper and Interface Generator
 License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            https://www.swig.org/
-Source:         https://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-Source1:        %{name}.rpmlintrc
+Source:         https://prdownloads.sourceforge.net/%{origname}/%{origname}-%{version}.tar.gz
+Source1:        %{origname}.rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 3.5
@@ -53,6 +70,12 @@ BuildRequires:  gcc12-c++
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %endif
+# Python, Ruby and Boost are needed ONLY to compile and run the generated
+# bindings in the test suite -- swig itself is a C++ program that emits source
+# code and links nothing but pcre2 (Debian builds it with none of these).
+# Keeping them out of the default flavour also stops swig being rebuilt every
+# time the python, ruby or boost stacks move.
+%if %{with test}
 %if 0%{?centos_version} >= 800
 BuildRequires:  boost-devel
 BuildRequires:  python3-devel
@@ -67,6 +90,7 @@ BuildRequires:  boost-devel
 BuildRequires:  python-devel > 2.6
 %endif
 %endif
+%endif
 
 %description
 SWIG is a compiler that attempts to make it easy to integrate C, C++,
@@ -78,6 +102,7 @@ can do--some of its more advanced features include automatic
 documentation generation, module and library management, extensive
 customization options, and more.
 
+%if %{without test}
 %package doc
 Summary:        SWIG Manual
 License:        BSD-3-Clause
@@ -115,10 +140,11 @@ documentation generation, module and library management, extensive
 customization options, and more.
 
 This package contains SWIG examples, useful both for testing and
-understandig SWIG usage.
+understanding SWIG usage.
+%endif
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1 -n %{origname}-%{version}
 
 %build
 %if 0%{?suse_version} < 1600
@@ -135,6 +161,7 @@ export CCSHARED="-fPIC"
 %make_build
 
 %check
+%if %{with test}
 %if 0%{?suse_version} >= 1500 || 0%{?centos_version} >= 800
 export PY3=true
 %endif
@@ -143,8 +170,10 @@ export CC=gcc-12
 export CXX=g++-12
 %endif
 %make_build check EXTRA_CXXFLAGS="-fexcess-precision=fast"
+%endif
 
 %install
+%if %{without test}
 %make_install
 
 install -d %{buildroot}%{docpath}
@@ -157,7 +186,7 @@ rm -rf %{buildroot}%{_datadir}/swig/examples/test-suite
 # rm files that are not needed for running or rebuilding the examples
 find %{buildroot}%{_datadir}/swig \
 	-name '*.dsp' -o -name '*.vcproj' -o -name '*.sln' -o \
-	-name '*.o' -o -name '*_wrap.c' | xargs rm
+	-name '*.o' -o -name '*_wrap.c' -print0 | xargs --no-run-if-empty -0 rm
 
 # fix perms
 chmod -x %{buildroot}%{docpath}/Manual/*
@@ -166,7 +195,9 @@ find %{buildroot}%{_datadir}/swig -name '*.h' -perm /111 | \
 ln -s %{_datadir}/swig/examples %{buildroot}%{docpath}/Examples
 
 %fdupes %{buildroot}
+%endif
 
+%if %{without test}
 %files
 %license LICENSE
 %dir %{docpath}
@@ -184,5 +215,6 @@ ln -s %{_datadir}/swig/examples %{buildroot}%{docpath}/Examples
 %license LICENSE
 %{docpath}/Examples
 %{_datadir}/swig/examples
+%endif
 
 %changelog

@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Mon Sep 28 12:50:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix typo
+- avoid running rm if no match found
+
+-------------------------------------------------------------------
+Fri Sep  4 13:02:47 UTC 2026 - Klaus Kämpf <kkaempf@suse.de>
+
+- Update to 4.5.1
+  * Regression fix for %rename using a format string, such as Ruby's
+    -autorename, dropping a class template's partial specializations.
+  * Regression fix restoring the %typemaps_string_alloc macro for string
+    classes using custom allocators.
+  * Python fix for compile errors in a module that %imports another module
+    already using the STL containers.
+  * MinGW configure and CMake PCRE2 version build fixes.
+
+-------------------------------------------------------------------
+Tue Aug 11 09:35:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Move the test suite into a separate multibuild flavour:
+  * the test suite is 595s of a 649s build, of which only 23s is
+    compiling swig itself, and llvm builds depend on swig, so a
+    large part of the distribution waits for it
+  * the default flavour now builds and packages only, the new test
+    flavour runs the same suite unchanged
+  * the test flavour ships no packages, so a red run blocks no
+    rebuild
+- Build the Python, Ruby and Boost dependencies only in the test
+  flavour, they are needed to compile and run the generated bindings
+  but not to build swig itself, which links nothing but pcre2:
+  * this also stops swig being rebuilt whenever those stacks move
+
+-------------------------------------------------------------------
+Thu Aug  6 10:12:54 UTC 2026 - Klaus Kämpf <kkaempf@suse.de>
+
+- Update to 4.5.0
+  * New C++20 support: concepts, requires-clauses and
+    requires-expressions, type-constrained template parameters,
+    constrained alias templates and abbreviated function templates
+    (auto parameters).
+  * New C++17 support: class template argument deduction (CTAD)
+    handling, user-defined deduction guides and pack expansion in
+    using-declarations.
+  * C++14 generic lambdas and variable templates.
+  * Add support for wrapping std::function via the new
+    std_function.i library.
+  * Template partial specialization fixes for function types and
+    parameter packs.
+  * Numerous using-declaration, inherited-constructor and
+    typedef-scope name resolution fixes.
+  * User-defined literal operators emitted without deprecated
+    whitespace and multicharacter constants corrected to
+    use int type.
+  * More powerful %rename for instantiated templates.
+  * cdata.i now uses a binary data type (e.g. Python bytes,
+    JavaScript Uint8Array) so all byte values round-trip correctly.
+  * char *& string typemaps added to all remaining target languages.
+  * Runtime type system fixes, including cross-module type casts and
+    a strict weak ordering fix in the type lookup.
+  * Memory allocation failure protection added to several typemaps.
+  * %typedef is deprecated; embed.i and the %new_copy_array macro
+    are removed.
+  * Fewer compiler warnings in generated code.
+  * Python 2 is no longer supported; SWIG now targets Python 3.5 and
+    later. Python 2 code paths and compatibility macros are removed
+    from the generated wrappers and the SWIG library and the
+    keyword/built-in warning list now tracks Python 3.
+  * Python: PEP 484 type annotations support added, new -typehints and
+    .pyi stub generation, -builtin docstring parity, metaclass and
+    director reference counting fixes and %nokwargs fixes.
+  * Lua: director support added; std::array, std::set,
+    std::unordered_set, std::unordered_map, shared_ptr and nested
+    class support added. Minimum Lua version is now 5.1.
+  * Ruby: generated wrappers migrated to the TypedData API (the
+    deprecated Data API is removed in Ruby 4.1) and use embedded
+    TypedData storage on Ruby 3.3 and later; GC compaction crash fix
+    for STL containers of Ruby objects.
+  * Go: %rename of enums honoured, new -unique-id/-no-unique-id
+    flags, Windows build and test support and various
+    rvalue-reference and director fixes.
+  * R: %rename of enums and enum items honoured, scoped enum fixes
+    and R 4.6.0 compatibility.
+  * JavaScript: v8 and node engines support v8 13.x and 14.x, as used by
+    Node.js 24 and 26, with improved node-addon-api detection.
+  * Tcl 9 support.
+  * Minor fixes and improvements specific to: C#, D, Guile, Java,
+    Octave, OCaml, Perl, PHP, Scilab.
+
+-------------------------------------------------------------------
 Thu Jun 25 10:00:00 UTC 2026 - olaf@aepfle.de
 
 - Remove stale ocaml support
@@ -9,7 +99,7 @@ Mon Dec  8 09:00:20 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
 - Update to 4.4.1:
   * Fix errors with some combinations of Py_LIMITED_API and recent
     Python versions.
-  * A couple of other minor fixes/improvements.	
+  * A couple of other minor fixes/improvements.
 
 -------------------------------------------------------------------
 Tue Oct 21 09:00:34 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
@@ -30,7 +120,7 @@ Tue Oct 21 09:00:34 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
   * Runtime type system thread safety fixes.
   * Minor fixes and improvements specific to:
     C#, D, Guile, Java, Javascript, Lua, Perl, PHP, Python, Tcl.
-	
+
 
 -------------------------------------------------------------------
 Mon Jun  9 08:48:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
@@ -943,7 +1033,7 @@ Wed Jun 10 07:27:02 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
   0002-Add-support-for-Ruby-2.7.patch
   0003-Move-new-macros-for-Ruby-to-their-dedicated-namespac.patch
   0004-Improve-description-of-cast-macros-for-Ruby.patch
-        
+
 -------------------------------------------------------------------
 Sat May 23 07:04:09 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
@@ -977,7 +1067,7 @@ Mon Sep  9 08:17:39 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
     code.
   - Minor improvements/fixes for C#, Java, Javascript, Lua, MzScheme,
     Ocaml, Octave and Python.
-  
+
   See https://raw.githubusercontent.com/swig/swig/master/CHANGES
 
 -------------------------------------------------------------------
@@ -1167,7 +1257,7 @@ Mon Jul  6 06:22:21 UTC 2015 - kkaempf@suse.com
 -------------------------------------------------------------------
 Sun Feb  1 18:32:16 UTC 2015 - dmitry_r@opensuse.org
 
-- Update to version 3.0.5 
+- Update to version 3.0.5
   * Added support for Scilab.
   * Important Python regression fix when wrapping C++ default arguments.
   * Minor improvements for C#, Go, Octave, PHP and Python.
@@ -1215,7 +1305,7 @@ Wed May 28 06:33:31 UTC 2014 - kkaempf@suse.com
   - A few notable regressions introduced in 3.0.0 have been fixed - in
     Lua, nested classes and parsing of operator <<.
   - The usual round of bug fixes and minor improvements for:
-    C#, GCJ, Go, Java, Lua, PHP and Python.      
+    C#, GCJ, Go, Java, Lua, PHP and Python.
 
 -------------------------------------------------------------------
 Mon Mar 17 07:46:53 UTC 2014 - kkaempf@suse.com
@@ -1254,7 +1344,7 @@ Mon Mar 17 07:46:53 UTC 2014 - kkaempf@suse.com
 -------------------------------------------------------------------
 Mon Mar 10 01:00:30 CET 2014 - ro@suse.de
 
-- set CCSHARED to "-fPIC" on s390/s390x 
+- set CCSHARED to "-fPIC" on s390/s390x
 
 -------------------------------------------------------------------
 Sun Feb  9 18:30:13 UTC 2014 - kkaempf@suse.com
@@ -1267,7 +1357,7 @@ Sun Feb  9 18:30:13 UTC 2014 - kkaempf@suse.com
     containers.
   - Compilation fixes on some systems for the generated Lua, PHP,
     Python and R wrappers.
- 
+
   - Drop upstreamed patches:
     swig-lua-fix-void-return-for-int-functions.patch
     swig-support-octave-3.8.0.patch
@@ -1278,7 +1368,7 @@ Wed Jan 29 19:57:02 UTC 2014 - badshah400@gmail.com
 
 - Add patch swig-support-octave-3.8.0.patch: adds support for
   octave version 3.8.0 to swig; patch taken from upstream git
-  and rebased for present version. 
+  and rebased for present version.
 
 -------------------------------------------------------------------
 Mon Sep 30 20:18:08 UTC 2013 - badshah400@gmail.com
@@ -1332,14 +1422,14 @@ Tue May 28 06:43:48 UTC 2013 - kkaempf@suse.com
     Java, Octave, PHP, Python,
   - Minor bug fix in ccache-swig.
   - Development has moved to Github with Travis continuous integration
-    testing - patches using https://github.com/swig/swig are welcome.     
+    testing - patches using https://github.com/swig/swig are welcome.
 
 - drop 0012-Python-Disable-broken-test-in-threads_exception.patch
 
 -------------------------------------------------------------------
 Thu Mar 28 11:56:54 CET 2013 - pth@suse.de
 
-- Add swig-fix_ocaml_type.patch to change the declaration of 
+- Add swig-fix_ocaml_type.patch to change the declaration of
   caml_array_length to match that in ocaml's header.
 
 -------------------------------------------------------------------
@@ -1426,11 +1516,11 @@ Mon Apr  9 19:29:34 UTC 2012 - asterios.dramis@gmail.com
 -------------------------------------------------------------------
 Tue Mar  6 19:24:07 UTC 2012 - dvaleev@suse.com
 
-- The perl 5.12 packages are compiled with -Duse64bitint, which 
-  means that IVs are 64-bits even on 32-bit architectures. When 
-  converting IVs, SWIG assumes that an IV is the same size as a 
-  long, which causes OverflowErrors with  unsigned longs when 
-  the value is greater than 2^31. 
+- The perl 5.12 packages are compiled with -Duse64bitint, which
+  means that IVs are 64-bits even on 32-bit architectures. When
+  converting IVs, SWIG assumes that an IV is the same size as a
+  long, which causes OverflowErrors with  unsigned longs when
+  the value is greater than 2^31.
 
 -------------------------------------------------------------------
 Tue Mar  6 09:15:47 UTC 2012 - kkaempf@suse.com
@@ -1457,7 +1547,7 @@ Tue Sep 20 09:31:28 UTC 2011 - kkaempf@suse.com
 
 - Update to swig 2.0.4
   (see CHANGES.current for complete list)
-  * [Perl] Patch #3260265 fixing overloading of non-primitive types and integers in 
+  * [Perl] Patch #3260265 fixing overloading of non-primitive types and integers in
     Perl 5.12 and later.
   * [Ruby] Fix %import where one of the imported files %include one of the STL include
     files such as std_vector.i.
@@ -1486,28 +1576,28 @@ Thu May 19 19:50:42 UTC 2011 - idoenmez@novell.com
 -------------------------------------------------------------------
 Thu May 19 08:47:42 UTC 2011 - idoenmez@novell.com
 
-- Add swig-2.0.3-perl514.patch: fix test failures with Perl 5.14 
+- Add swig-2.0.3-perl514.patch: fix test failures with Perl 5.14
 
 -------------------------------------------------------------------
 Mon May  2 15:36:04 UTC 2011 - idoenmez@novell.com
 
-- Update to swig 2.0.3 
+- Update to swig 2.0.3
   * Much better nested class/struct support.
-  * Much improved template partial specialization and explicit 
+  * Much improved template partial specialization and explicit
     specialization handling.
-  * Namespace support improved with the 'nspace' feature where 
+  * Namespace support improved with the 'nspace' feature where
     namespaces can be automatically translated into Java packages or C# namespaces.
   * Improved typemap and symbol table debugging.
-  * Numerous subtle typemap matching rule changes when using the 
-    default (SWIGTYPE) type. These now work much like C++ class template 
+  * Numerous subtle typemap matching rule changes when using the
+    default (SWIGTYPE) type. These now work much like C++ class template
     partial specialization matching.
-  * Other small enhancements for typemaps. 
+  * Other small enhancements for typemaps.
     Typemap fragments are also now official and documented.
   * Warning and error display refinements.
   * Wrapping of shared_ptr is improved and documented now.
   * Numerous C++ unary scope operator (::) fixes.
   * Better support for boolean expressions.
-  * Various bug fixes and improvements in the Allegrocl, C#, Java, 
+  * Various bug fixes and improvements in the Allegrocl, C#, Java,
     Lua, Octave, PHP, Python, R, Ruby and XML modules.
 
 -------------------------------------------------------------------
@@ -1703,7 +1793,7 @@ Wed Jul 26 13:21:08 CEST 2006 - mmarek@suse.cz
   (autoconf260.patch)
 - added python-devel to buildrequires to test the Python module
   during build
-  
+
 -------------------------------------------------------------------
 Thu Jul 20 16:06:53 CEST 2006 - schwab@suse.de
 
@@ -1739,12 +1829,12 @@ Tue Jan 10 17:51:17 CET 2006 - mmarek@suse.cz
 -------------------------------------------------------------------
 Wed Nov 16 15:09:33 CET 2005 - ro@suse.de
 
-- fix build on x86_64 (fPIC in gifplot) 
+- fix build on x86_64 (fPIC in gifplot)
 
 -------------------------------------------------------------------
 Wed Nov  2 22:27:06 CET 2005 - dmueller@suse.de
 
-- don't build as root 
+- don't build as root
 
 -------------------------------------------------------------------
 Wed Nov  2 17:48:11 CET 2005 - uli@suse.de
@@ -1762,7 +1852,7 @@ Mon Apr 11 11:56:46 CEST 2005 - mcihar@suse.cz
 -------------------------------------------------------------------
 Mon Jan 24 01:49:21 CET 2005 - ro@suse.de
 
-- fix swigpy build on lib64 
+- fix swigpy build on lib64
 
 -------------------------------------------------------------------
 Thu Jan  6 11:51:21 CET 2005 - mcihar@suse.cz
@@ -1873,7 +1963,7 @@ Mon Jan 06 12:20:08 CET 2003 - mcihar@suse.cz
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Wed Aug 14 14:39:41 MEST 2002 - mls@suse.de
@@ -1899,7 +1989,7 @@ Tue May 21 14:41:20 CEST 2002 - meissner@suse.de
 -------------------------------------------------------------------
 Tue May 21 13:39:50 CEST 2002 - ro@suse.de
 
-- fix libdir usage 
+- fix libdir usage
 
 -------------------------------------------------------------------
 Mon Jan 28 10:58:32 CET 2002 - tcrhak@suse.cz
@@ -1949,7 +2039,7 @@ Mon Nov 27 08:14:56 CET 2000 - cihlar@suse.cz
 -------------------------------------------------------------------
 Fri Nov 17 09:23:28 CET 2000 - ro@suse.de
 
-- fixed filelist 
+- fixed filelist
 
 -------------------------------------------------------------------
 Thu Nov 16 10:34:29 CET 2000 - cihlar@suse.cz
@@ -1984,14 +2074,14 @@ Fri Jun  2 11:28:17 CEST 2000 - kukuk@suse.de
 Mon Jan 31 18:39:02 CET 2000 - ro@suse.de
 
 - fixed to compile
-- man to /usr/share 
+- man to /usr/share
 
 -------------------------------------------------------------------
 Sun Oct 17 02:24:35 CEST 1999 - ro@suse.de
 
-- fixed neededforbuild 
+- fixed neededforbuild
 
--------------------------------------------------------------------                                 
+-------------------------------------------------------------------
 Fri Sep 17 11:28:09 MEST 1999 - kettner@suse.de
 
 - Reinserted old # Commandline: line.
