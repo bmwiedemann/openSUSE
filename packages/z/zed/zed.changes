@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:57:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.26.2 (from 1.24.2):
+  * Own the zsh completion directories so the package
+    installs cleanly where zsh is absent
+  * Pyrefly as an optional built-in Python language server;
+    expandable variable trees in debugger hovers; DWARF
+    debugging for WebAssembly sources in the JS debugger
+  * ACP configuration defaults apply to new conversations
+    only; better File Finder ranking; group project panel
+    files by extension
+  * Git Panel fix for discarding unstaged changes; agent
+    thread restore, authentication and reconnection fixes
+
+-------------------------------------------------------------------
 Fri Oct 16 09:09:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.24.2 (from 1.20.2):

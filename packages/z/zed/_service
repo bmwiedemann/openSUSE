@@ -2,13 +2,19 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/zed-industries/zed.git</param>
-    <param name="revision">v1.24.2</param>
+    <param name="revision">v1.26.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="package-meta">yes</param>
     <param name="submodules">enable</param>
     <param name="changesgenerate">disable</param>
+    <!-- OpenConsole.exe is a prebuilt Windows terminal image for the
+         Inno-Setup installer; nothing the Linux build compiles or runs
+         references it (all resources/windows uses are cfg(windows)-gated,
+         the Linux icon comes from resources/app-icon*.png), so it stays
+         out of the source tarball instead of an exception line. -->
+    <param name="exclude">crates/zed/resources/windows/bin/*</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
@@ -28,5 +34,10 @@
     <param name="srcdir">zed</param>
     <param name="update">false</param>
     <param name="compression">zst</param>
+    <!-- filter=true drops the crates no Linux target uses (winapi import
+         libs, windows_* import libs, wasm-only helpers) so they never enter
+         vendor.tar.zst. Verified 1.26.2: the Linux closure is unchanged
+         (same linked set as the unfiltered tree). -->
+    <param name="filter">true</param>
   </service>
 </services>

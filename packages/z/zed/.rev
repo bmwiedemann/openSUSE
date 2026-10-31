@@ -7,4 +7,12 @@
     <comment>Update zed to 1.24.2 (fixes RUSTSEC-2026-0285 via rustls 0.23.45). Nothing is downloaded or installed without the user's explicit opt-in.</comment>
     <requestid>1385174</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>837a536c75ad9d1bf0444c6f5231e8ab</srcmd5>
+    <version>1.26.2</version>
+    <time>1793484687</time>
+    <user>dimstar_suse</user>
+    <comment>Update zed to 1.26.2 (filtered vendor; own zsh dirs)</comment>
+    <requestid>1394190</requestid>
+  </revision>
 </revisionlist>

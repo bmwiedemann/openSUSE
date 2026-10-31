@@ -22,7 +22,7 @@
 %global build_rustflags "-C" "linker=clang" "-C" "link-arg=-fuse-ld=%{_bindir}/mold" "-C" "debuginfo=1" "-C" "incremental=false" "-C" "strip=none"
 %global appid dev.zed.Zed
 Name:           zed
-Version:        1.24.2
+Version:        1.26.2
 Release:        0
 Summary:        A high-performance, multiplayer code editor
 # The zed and cli crates are GPL-3.0-or-later. The rest of the tag is the
@@ -34,7 +34,7 @@ Summary:        A high-performance, multiplayer code editor
 # cssparser 0.36.0, cssparser-macros, dtoa-short, nucleo-matcher,
 # selectors 0.37.0, option-ext, yawc); cbindgen, dwrote, mdbook, cssparser
 # 0.37.0, nvim-rs and webpki-roots 0.26.8 are vendored but not linked. The
-# webpki-roots that does link is 1.0.8, whose license is CDLA-Permissive-2.0,
+# webpki-roots that does link is 1.0.10, whose license is CDLA-Permissive-2.0,
 # not MPL-2.0.
 # OFL-1.1 is the IBM Plex Sans and Lilex faces embedded in the binary. nvim-rs
 # is LGPL-3.0 but sits behind the non-default "neovim" feature that nothing
@@ -44,6 +44,28 @@ URL:            https://zed.dev
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        %{name}-rpmlintrc
+# The vendor closure carries test-only fixtures the prebuilt-binary scan
+# flags: libloading's Windows DLLs, wit-parser UI-test inputs, minidump's
+# ELF fixture and the async-compression/async_zip/flate2/zip decode-error
+# corpora. None is built, linked, loaded or shipped on Linux. Everything
+# else the scan flags is unbundled, not excepted: cargo_vendor filter=true
+# keeps the Windows/wasm-only crates out of the tarball, and the few files
+# the filter leaves are stripped at repack with their .cargo-checksum.json
+# entries (psm's wasm32-only object, wit-bindgen's wasm-only runfiles).
+# wit-component's prebuilt libdl.so is embedded by its Linker through
+# include_bytes!, so the tarball carries a patched tree: the
+# use_built_in_libdl option (field, setter, use-site and test-harness
+# block) is removed — nothing in the vendored closure calls it — and the
+# payload is deleted. OpenConsole.exe stays out of the source tarball via
+# the _service exclude (Windows-installer-only, cfg(windows)-gated).
+# Source-Binary-Exception: vendor.tar.zst:vendor/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's Windows-only tests, never on Linux
+# Source-Binary-Exception: vendor.tar.zst:vendor/wit-parser-*/tests/ui/kinds-of-deps/deps/*.wasm -- test-data: WIT parser UI-test inputs parsed as data, never executed
+# Source-Binary-Exception: vendor.tar.zst:vendor/minidump-writer-*/tests/tiny.elf -- test-data: tiny ELF fixture parsed as data by minidump-writer's tests, never executed
+# Source-Binary-Exception: vendor.tar.zst:vendor/async-compression-*/tests/artifacts/*.zst -- test-data: zstd decode-test corpus (lib.rs.zst needs its dictionary-rust file, long-window-size-lib.rs.zst needs a 2G window); both decode to the crate's own test lib.rs, never executed
+# Source-Binary-Exception: vendor.tar.zst:vendor/async_zip-*/src/tests/read/compression/zstd.data -- test-data: zstd decode fixture read by async_zip's read tests, never executed
+# Source-Binary-Exception: vendor.tar.zst:vendor/async_zip-*/tests/test_inputs/sample_data.zstd.zip* -- test-data: zip corpus with zstd-compressed members read by async_zip's tests, never executed
+# Source-Binary-Exception: vendor.tar.zst:vendor/flate2-*/tests/corrupt-gz-file.bin -- test-data: gzip decode-error fixture read by flate2's corrupt-file tests, never executed
+# Source-Binary-Exception: vendor.tar.zst:vendor/zip-*/tests/data/* -- test-data: AES and bad-offset zip fixtures read by zip's encryption and invalid-input tests, never executed
 # PATCH-FIX-OPENSUSE zed-system-node-only.patch -- never download a second Node.js at run time; the package Requires the distribution's
 Patch0:         zed-system-node-only.patch
 # PATCH-FIX-OPENSUSE zed-telemetry-off-by-default.patch -- diagnostics/metrics default off; still switchable in the settings UI
@@ -158,6 +180,12 @@ export PROTOC_INCLUDE=%{_includedir}
 # system glib flags. -fno-lto undoes the -flto=auto in %%optflags: rustc
 # calls mold without -plugin, so an LTO bitcode object is fatal at link.
 export CXXFLAGS="%{optflags} -fno-lto $(pkg-config --cflags gio-2.0 glib-2.0 gobject-2.0)"
+# NOTE for spec-cleaner: the cargo build invocation below must keep the
+# braced macro form, with the cargo arguments appended as plain shell text.
+# Unbracing it makes rpm parse the first argument as a macro option, and the
+# build fails at spec-parse time with a cargo_build invalid-option error
+# (same class as devel:tools/openai-codex 0.165.0, staging decline). Do not
+# "fix".
 %{cargo_build} --package zed --package cli
 
 target/release/cli --completions bash > completions.bash
@@ -215,6 +243,8 @@ readelf -d %{buildroot}%{_libexecdir}/zed-editor | grep -q 'NEEDED.*libwebrtc-su
 %dir %{_datadir}/fish
 %dir %{_datadir}/fish/vendor_completions.d
 %{_datadir}/fish/vendor_completions.d/%{name}.fish
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_%{name}
 
 %changelog
