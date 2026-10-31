@@ -1,7 +1,7 @@
 #
 # spec file for package quakespasm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017 Luke Jones <luke.nukem.jones@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           quakespasm
-Version:        0.96.3
+Version:        0.97.0
 Release:        0
 Summary:        A Quake Engine
 License:        GPL-2.0-or-later
@@ -28,10 +28,10 @@ Source:         https://sourceforge.net/projects/quakespasm/files/Source/%{name}
 Source99:       %{name}.changes
 Source100:      quakespasm.appdata.xml
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(vorbis)
-BuildRequires:  update-desktop-files
 
 %description
 QuakeSpasm is a Quake 1 engine based on the SDL2 port of FitzQuake.  It includes

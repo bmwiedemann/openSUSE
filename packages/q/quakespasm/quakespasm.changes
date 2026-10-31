@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Oct 30 20:39:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.97.0
+  * Quake rerelease: Support for playing 2026 (30th aniversary)
+    update: Proper loading of localization file and word-wrapped
+    centerprints.
+  * Valve BSP, WAD, and external texture support.
+  * The maps console command now takes an optional ModName, e.g.:
+    'maps ad' or 'maps id1'.
+  * New maps_mod console command to list maps only from the active
+    mod.
+  * Add support for -userdir cmdline arg to override the hardcoded
+    user directory.
+  * Reset r_skyfog between maps.
+  * Bump MAXALIASVERTS from 2000 to 2400 (needed by start map of the
+    RoofTop Jam.)
+  * Bump MAX_MODELS/MAX_MOD_KNOWN from 2048 to 4096 (needed by
+    bj3_hcm from Quake Brutalist Jam 3.)
+  * Support for type 3 (uncompressed grayscale) TGA files (needed by
+    qbj3_rabbit from Quake Brutalist Jam 3.)
+  * Fixes to type 1 (paletted) TGA files support.
+    SV_PushMove: preserve pusher solid field instead of overwriting
+    with SOLID_BSP.
+  * Fix svc_clientdata weapon byte potentially not being written for
+    mission packs.
+  * Don't spawn monsters when starting map with nomonsters 1.
+  * Disable EXT_packed_pixels support on big endian systems.
+  * Allow any supported music type to be considered as cdrip.
+  * snd_mpg123 now uses 64 bit-only libmpg123 api if built against
+    mpg123 >= 1.33.0
+  * Increase default heap size to 384 MB
+  * Fix potential buffer overrun in condump command
+  * Code cleanups, minor fixes, updates to third party code.
+
+-------------------------------------------------------------------
 Sat Apr 26 16:46:24 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add BuildRequires pkgconfig(gl), fixes building
