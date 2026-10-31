@@ -1,0 +1,4 @@
+<package name="uefisettings" project="openSUSE:Factory">
+  <title>Read/Get/Extract and Write/Change/Modify BIOS/UEFI settings from CLI</title>
+  <description>CLI tool to read/get/extract and write/change/modify BIOS/UEFI settings from Linux terminal (HiiDB, HPE iLO BlobStore).</description>
+</package>

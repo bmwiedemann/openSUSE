@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Oct 28 19:35:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial Factory packaging of the 0.1.6 tagged release
+- Thanks to Martin Hauke for the earlier home:mnhauke snapshot
+  package this builds on in structure
+- iLO backend dlopens HPE's closed-source ilorest_chif library
+  at runtime; it is neither shipped nor required here
+
