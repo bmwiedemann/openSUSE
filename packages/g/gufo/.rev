@@ -7,4 +7,41 @@
     <comment>request for new package</comment>
     <requestid>1382497</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>efcbb0b414e29432681f4ffe28bb5162</srcmd5>
+    <version>0.28.0</version>
+    <time>1793484419</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 0.28.0
+  * embedding: per-request EmbeddingGemma 2 image budget (#870)
+  * embeddings: support video inputs (#869)
+  * qwen-image: stream safetensors weights, not mapping (#830)
+  * qwen: tune Qwen3.8-27B verification GEMM rows 2-8 (#874)
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.28.0
+- Update generated using pbuild-ai
+
+- Updated to version 0.27.0
+  * serve: add cache_persist=false to skip disk cache (#811)
+  * serve: support generated token logprobs (#814)
+  * loader: retry failed unbuffered weight reads (#858)
+  * qwen-flash: bound draft-ID remapping and blocks (#849)
+  * qwen-flash: preserve YaRN in batched MTP catch-up (#854)
+  * qwen38-flash-next: run Q8_0 weights on F32 kernels (#788)
+  * qwen38-flash-next: grow qfn_mmq stream arenas (#740)
+  * qwen: size Q8_0 prefill GEMM activation scratch (#777)
+  * qwen-flash: keep fused WMMA prefill past 262,144 (#866)
+  * qwen: run split K-quant prefill GEMM as 16-row pass (#779)
+  * Release notes: https://github.com/gufo-
+    org/gufo/releases/tag/v0.27.0
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.27.0
+- Update generated using pbuild-ai
+
+- Updated to version 0.26.0
+  * embedding: support native audio embeddings (#819)
+  * serve: add llama-server's /apply-template (#821)
+  * serve: let --cache-ram-bytes turn the RAM cache off (#783)
+  * serve: select EmbeddingGemma 2 checkpoint prompts by name (#823)
+  * audio: drop resident safetensors pages after the</comment>
+    <requestid>1393918</requestid>
+  </revision>
 </revisionlist>

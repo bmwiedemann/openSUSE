@@ -7,15 +7,9 @@ Wants=rocminfo.target
 [Service]
 Type=simple
 User=gufo
-EnvironmentFile=-/etc/sysconfig/gufo-server
+EnvironmentFile=-/etc/sysconfig/gufo
 # The bash wrapper is needed to expand multiple parameters from GUFO_PARAMETER
-ExecStart=bash -c "/usr/bin/gufo-server serve \
-    --host $GUFO_HOST \
-    --port $GUFO_PORT \
-    --model $GUFO_MODEL_FILE \
-    --context $GUFO_CONTEXT_LENGTH \
-    $GUFO_PARAMETER
-"
+ExecStart=bash -c "/usr/bin/gufo-server serve $GUFO_MODE --host $GUFO_HOST --port $GUFO_PORT --model $GUFO_MODEL_FILE --context $GUFO_CONTEXT_LENGTH $GUFO_PARAMETER"
 Restart=on-failure
 RestartSec=5s
 StandardOutput=journal

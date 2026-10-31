@@ -1,18 +1,341 @@
 -------------------------------------------------------------------
-Mon Oct  5 08:16:03 UTC 2026 - Adrian Schröter <adrian@suse.de>
+Fri Oct 30 14:30:24 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
+- Updated to version 0.28.0
+  * embedding: per-request EmbeddingGemma 2 image budget (#870)
+  * embeddings: support video inputs (#869)
+  * qwen-image: stream safetensors weights, not mapping (#830)
+  * qwen: tune Qwen3.8-27B verification GEMM rows 2-8 (#874)
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.28.0
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Fri Oct 30 09:24:11 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.27.0
+  * serve: add cache_persist=false to skip disk cache (#811)
+  * serve: support generated token logprobs (#814)
+  * loader: retry failed unbuffered weight reads (#858)
+  * qwen-flash: bound draft-ID remapping and blocks (#849)
+  * qwen-flash: preserve YaRN in batched MTP catch-up (#854)
+  * qwen38-flash-next: run Q8_0 weights on F32 kernels (#788)
+  * qwen38-flash-next: grow qfn_mmq stream arenas (#740)
+  * qwen: size Q8_0 prefill GEMM activation scratch (#777)
+  * qwen-flash: keep fused WMMA prefill past 262,144 (#866)
+  * qwen: run split K-quant prefill GEMM as 16-row pass (#779)
+  * Release notes: https://github.com/gufo-
+    org/gufo/releases/tag/v0.27.0
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.27.0
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Wed Oct 28 13:07:09 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.26.0
+  * embedding: support native audio embeddings (#819)
+  * serve: add llama-server's /apply-template (#821)
+  * serve: let --cache-ram-bytes turn the RAM cache off (#783)
+  * serve: select EmbeddingGemma 2 checkpoint prompts by name (#823)
+  * audio: drop resident safetensors pages after the
+    TTS and ASR uploads (#845)
+  * build: load the patched ROCr from build-tree HIP binaries (#841)
+  * embedding: accept MP3s without a Xing header and
+    audio in llama.cpp multimodal_data (#828)
+  * qwen-flash: remove lossy chunked DeltaNet prefill (#850)
+  * qwen: keep model weights in device memory when the
+    heap has room (#708)
+  * rocm: qualify image, H3, DeepSeek and Qwen on 10.1 (#768)
+  * serve: accept more than 128 function tools (#827)
+  * server: drain the request before loading responder closes (#795)
+  * qwen-flash: faster Flash-Next prefill with chunked
+    DeltaNet and stream overlap (#758)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Tue Oct 27 08:32:05 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- use gcc 16 on Factory
+
+-------------------------------------------------------------------
+Mon Oct 26 16:15:43 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.25.0
+  * server: bound Qwen resolution for image_url.detail low (#774)
+  * serve: truncate over-length embedding inputs on request (#765)
+  * gcc16: force-include <format> before HIP headers (#782)
+  * qwen: fill device weights from shard file, not mapping (#794)
+  * embedding: batch concurrent requests on the device (#778)
+  * qwen: keep a stable cache boundary after system
+    instructions (#773)
+  * qwen: revert stable cache boundary after system
+    instructions (#815)
+- Updated to version 0.24.0
+  * embeddings: support image inputs (#759)
+  * serve: allow repeated --served-model-name for one model (#736)
+  * serve: accept neutral llama.cpp sampler fields (#732)
+  * serve: stop counting a connection once response sent (#750)
+  * embedding: run EmbeddingGemma 2 attention on matrix cores (#770)
+  * docs: note client settings for LangChain and paperless-ngx (#785)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Sun Oct 25 08:54:41 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.23.0
+  * embedding: serve EmbeddingGemma 2 on /v1/embeddings (#700)
+  * models: read model weights through the mapped_file leaf
+    (#738)
+  * platform: map GGUF shards through the mapped_file leaf (#734)
+  * embedding: tune GEMMs per shape with hipBLASLt (#751)
+  * qwen-flash: reduce selector spills and improve sampled
+    drafting (#742)
+  * qwen38_flash_next: let a lone greedy MTP request use
+    the small draft head (#733)
+  * qwen38_flash_next: let greedy requests with penalties or
+    constraints use the small draft head (#739)
+  * agents: describe where Windows portability code lives (#754)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Fri Oct 23 15:20:50 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.22.0
+  * platform: add the net leaf (#711)
+  * platform: add the publish and prefault leaves (#729)
+  * platform: add the shutdown_signal leaf (#713)
+  * cache: free RAM before writing oversized checkpoints
+    to disk (#677)
+  * qwen38-flash-next: give each HIP stream its own
+    qfn_mmq scratch arena (#707)
+  * qwen38-flash-next: sum BF16 indexer projections
+    in K order for every token (#714)
+  * serve: accept standard image detail values as
+    automatic detail (#722)
+  * qwen38_flash_next: price unseeded sampled MTP drafts
+    at the decoding occupancy (#703)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Fri Oct 23 06:46:58 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.21.0
+  * platform: add the os_info leaf (#709)
+  * qwen-flash: opt-in YaRN context extension (#350)
+  * bench: stop the benchmark server when startup interrupted (#702)
+  * qwen: reduce Flash-Next sampled decoding overhead (#699)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Thu Oct 22 06:15:56 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.20.0
+  * cache: add Qwen 27B AR and DFlash2 cache continuation
+  * rocm: let DeepSeek V4 Flash load when weights exceed the
+  device pool
+  * serve: answer Expect: 100-continue before reading the body
+  * serve: report no content for whitespace between parallel tool
+  calls
+  * cache: avoid repeated resets and full checkpoint lookups
+  * qwen-flash: prefetch n-gram rows across cache checkpoints
+  * qwen38_flash_next: take the vector-load small projection path
+  for F16 and BF16 weights
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Wed Oct 21 07:00:44 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.19.0
+  * serve: report model, build, context, sessions and vision
+    in /props (#669)
+  * ci: refresh the release app token after waiting for release
+    checks (#665)
+  * ds4: stop the batched greedy DSpark frontier before an
+    accepted EOS (#668)
+  * qwen-flash: store d*sum(q) as the q8_1 block sum (#667)
+  * qwen-flash: let sampled requests use the small MTP draft
+    head on multi-session servers (#655)
+  * qwen27b: run verification attention rows > 1 as wave64
+    with shared per-head steps (#660)
+  * qwen38_flash_next: price greedy MTP drafts at the decoding
+    occupancy (#664)
+  * note Claude Code is unsupported with Qwen (#672)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Tue Oct 20 06:42:26 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.18.0
+  * serve: honor the Messages thinking budget (#524)
+  * serve: prepare the structured-output vocabulary before serving
+  * cache: keep disk-cache snapshots out of the page cache (#477)
+  * ci: keep the devlab report when later jobs start (#659)
+  * qwen-flash: pin square-accumulation order in all
+    HcCombineMoeF16Kernel
+    instantiations (#624)
+  * qwen: reuse historical image preprocessing (#645)
+  * serve: reclaimable page cache is available in cgroup space (#637)
+  * tools: preserve optional arguments in native calls (#643)
+  * flash-next: reduce prompt and decode stalls (#653)
+  * qwen: fork the recurrent state across two buffers instead of
+    copying
+    it (#650)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Mon Oct 19 06:49:48 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.17.1
+  * cache: reject capacity retries before reading payloads (#636)
+    (778061d)
+  * inference: reduce Flash-Next cache and cold-prompt stalls (#633)
+    (1f97092)
+  * qwen-flash: copy repeated context into MTP drafts (#613)
+    (8497711)
+  * qwen-flash: cut prefill and decode attention cost at depth (#626)
+    (5a1669a)
+- Updated to version 0.17.0
+  * serve: prepare the Qwen vision sidecar before serving (#616)
+    (0604e9e)
+  * cache: bound publication waits by observed prefill cost (#621)
+    (e8e508f)
+  * cache: let disk eviction wait for startup orphan reclamation (#625)
+    (78248de)
+  * serve: keep the decimal spelling of integer JSON numbers (#614)
+    (22e3676)
+  * serve: preserve cache reuse when tool choice changes (#623)
+    (23d970d)
+  * qwen-flash: compact sparse attention selections once per row
+    (#622) (baf5a1b)
+- Updated to version 0.16.0
+  * serve: keep /health answering while the model and disk tier load
+    (#610) (f6ca085)
+  * cache: reduce long-context checkpoint overhead (#615) (f8be547)
+  * qwen-flash: score MTP drafts over request vocabulary (#603)
+    (51a8b00)
+  * serve: move tool-call dialect parsing next to its renderers (#592)
+    (b6ba33d)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Thu Oct 15 11:21:37 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.15.1
+  * cache: avoid artifact hashing for RAM-only Flash-Next (#602)
+    (43ad9a5)
+  * cache: repair flash-next functional cache regressions (#596)
+    (ec69aa3)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Wed Oct 14 06:29:40 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.15.0
+  * serve: accept IPv6 listen addresses (#585) (a690704)
+  * cache: pin Flash-Next cache pages without compacting host memory
+    (#589) (10c40b0)
+  * serve: accept response schemas without additionalProperties (#582)
+    (c406e40)
+  * qwen-flash: speed up wide prefill kernels (#571) (a33e989)
+- Updated to version 0.14.0
+  * cache: wire Flash-Next serving to the component cache (#573)
+    (058d6e8)
+  * rocm: managed-alloc fallback (#460) (248d902)
+  * update readme (#574) (8d4e1a2)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Tue Oct 13 06:15:38 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.13.0
+  * exit as device_lost when generation stops making progress (#541)
+  * accept boolean or null stream on compatibility routes (#544)
+  * honor cache_prompt on raw completion routes (#557)
+  * use 128 n-gram readers for qwen-flash (#551)
+  * warn that automatic RAM budget ignores co-resident servers (#556)
+  * record rejected fork prefill kernels (#565)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Mon Oct 12 06:44:41 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.12.0
+  * add Flash-Next continuation adapter for cache ([#536])
+  * accept image blocks in Messages user/tool results (#510)
+  * implement /v1/messages/count_tokens endpoint ([#512])
+  * keep mixed string/number enum values reachable ([#535])
+  * keep Flash-Next snapshots within device headroom ([#549])
+  * exclude cache reads from Messages input_tokens (#530)
+  * keep listening WebSocket clients past idle timeout (#527)
+- Updated to version 0.11.0
+  * add committed HIP backing and transfer pools for cache (#504)
+  * define disk manifests and metadata startup index (#507)
+  * preserve borrowed rows while slots are idle (#505)
+  * publish checkpoints with crash-safe recovery (#509)
+  * select and evict resident and durable checkpoints (#517)
+  * stream checkpoints through bounded transfer pieces (#515)
+  keep a live frontier when branch restores borrowed checkpoint (#476)
+- Updated to version 0.10.0
+  * support tools and streaming on /v1/messages (#469)
+  * accelerate prefill and MTP catch-up for qwen-flash (#485)
+  * unroll the fused attention value halves for qwen-image (#481)
+  * keep the 8-row IQ2 gate/up tiles out of scratch (#482)
+  * add cache redesign implementation cards and RFC (#489)
+- Updated to version 0.9.1
+  * drop the fixed 1 GiB cap on automatic disk staging (#473)
+  * keep prefill GEMMs spill-free on clang 23 for hip (#459)
+  use 4096-token prefill chunks with overlapped gather (#470)
+  * centralize control-token literals in one header (#464)
+- Updated to version 0.9.0
+  * add opt-in --trace for text request content (#458)
+  * exclude free CMA pages from the automatic RAM budget (88d2139)
+  * keep learned branch points under RAM pressure (#466)
+  * default the per-client queue cap to --max-pending (#467)
+  * hoist mid-conversation system messages to leading block (#449)
+  * reduce prefill work at long context for qwen-flash (#463)
+  * avoid flash-next prompt checkpoint copies for qwen (#445)
+- Updated to version 0.8.1
+  * keep tool calls in native model syntax (#441)
+  * remove leading answer blank lines after reasoning (#446)
+  * accept image histories within model context (#447)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Thu Oct  5 00:00:00 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.8.0
+  * added OpenAI Responses compatibility (#434)
 - Updated to version 0.7.1
-  * 0.7.1 (2026-10-05)
-  * Bug Fixes
+  * keep stable checkpoint before replaced trailing user context (#407)
+  * accept reasoning fields Claude Code sends to /v1/messages (#405)
+  * preserve active disk-cache writes during startup (#392)
+  * reclaim output capacity from abandoned streams (#394)
+  * end DeepSeek tool output after the call block (#397)
+  * keep DeepSeek client markup as content, as llama.cpp does (#420)
+  * keep tool-call framing out of assistant content (#400)
+  * preserve literal reasoning tags when thinking is disabled (#391)
 - Updated to version 0.7.0
-  * 0.7.0 (2026-10-04)
-  * Features
+  * learn shared-prefix boundaries in the RAM cache (#386)
+  * let an explicit RAM cache limit exceed the automatic budget (#384)
+  * report live sessions and llama.cpp-compatible metrics (#389)
+  * export speculative verification round metrics (#403)
+  * detect idle GPU loss and defer streaming success (#406)
+  * parse tool output using the admitted request format (#393)
+  * reuse replayed tool turns with union and typed arguments (#404)
 - Updated to version 0.6.0
-  * 0.6.0 (2026-10-03)
-  * Features
+  * share in-flight prefixes between concurrent requests (#382)
+  * exit and report device_lost when GPU context is lost (#390)
+  * improve error messaging on streaming generation failure (#385)
+  * preserve JSON string ownership during tool recovery (#396)
+  * separate Messages thinking blocks and accept the thinking field (#380)
 - Updated to version 0.5.0
-  * 0.5.0 (2026-10-02)
-  * Features
+  * accept WebP and other spellings of image data URLs (#352)
+  * keep cache reuse advancing as conversations grow (#358)
+  * keep cached conversations independent of execution sessions (#369)
+  * retain prefixes across conversation history edits (#362)
+  * prevent source-noise reuse in image edits (#377)
+  * advertise loaded model input modalities (#367)
+  * keep literal tool markers inside constrained reasoning (#361)
+  * preserve native tool schemas and historical calls (#373)
 - Update generated using pbuild-ai
 
 -------------------------------------------------------------------

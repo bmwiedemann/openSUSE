@@ -17,21 +17,19 @@
 
 
 Name:           gufo
-Version:        0.7.1
+Version:        0.28.0
 Release:        0
 Summary:        Local inference engine for AMD Strix Halo hardware
 License:        MIT
 URL:            https://github.com/gufo-org/gufo
-Source:         %name-%{version}.tar.gz
-Source1:        gufo-server.service
-Source2:        90-gufo-server.preset
-Source3:        sysconfig.%{name}-server
+Source:         https://github.com/gufo-org/gufo/archive/refs/tags/v%{version}.tar.gz#/gufo-%{version}.tar.gz
+Source1:        gufo.service
+Source2:        90-gufo.preset
+Source3:        sysconfig.%{name}
 Source4:        gufo-user.conf
 
 ExclusiveArch:  x86_64
 
-# gcc 16 is incompatible atm
-%define gcc_version 15
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  gcc%{gcc_version}-c++
@@ -44,6 +42,7 @@ BuildRequires:  libavutil-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libsndfile-devel
 BuildRequires:  libswresample-devel
 BuildRequires:  libwebp-devel
 BuildRequires:  openssl-devel
@@ -52,6 +51,7 @@ BuildRequires:  rocblas-devel
 BuildRequires:  rocfft-devel
 BuildRequires:  rocprim-devel
 BuildRequires:  rocwmma-devel
+BuildRequires:  soxr-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  group(render)
@@ -86,22 +86,23 @@ export CXXFLAGS="$CXXFLAGS -fPIC"
 
 %install
 %cmake_install
-install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}-server
-install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/gufo-server.service
-install -D -m 644 %{SOURCE2} %{buildroot}%{_presetdir}/90-gufo-server.preset
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
+install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/gufo.service
+%service_add_pre gufo.service
+install -D -m 644 %{SOURCE2} %{buildroot}%{_presetdir}/90-gufo.preset
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/gufo-user.conf
 
 %post
-%service_add_post gufo-server.service
-%fillup_only -n %{name}-server
 %sysusers_create gufo-user.conf
+%fillup_only -n %{name}
+%service_add_post gufo.service
 
 %preun
-%service_del_preun gufo-server.service
+%service_del_preun gufo.service
 
 %postun
 if [ $1 -ge 1 ]; then
-  %service_del_postun gufo-server.service
+  %service_del_postun gufo.service
 fi
 
 %files
@@ -111,9 +112,9 @@ fi
 %{_bindir}/gufo-server
 %{_datadir}/gufo
 %{_datadir}/licenses/gufo
-%{_unitdir}/gufo-server.service
-%{_presetdir}/90-gufo-server.preset
+%{_unitdir}/gufo.service
+%{_presetdir}/90-gufo.preset
 %{_sysusersdir}/gufo-user.conf
-%{_fillupdir}/sysconfig.%{name}-server
+%{_fillupdir}/sysconfig.%{name}
 
 %changelog
