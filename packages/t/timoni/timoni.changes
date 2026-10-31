@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 31 12:30:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.0:
+  * Breaking changes
+    - Modules and artifacts whose files carry other permissions,
+      such as 0664 files and 0775 directories created with a 0002
+      umask or any content built on Windows, get a new digest the
+      first time they are built with this version. Artifacts
+      already published and the digests pinned in bundles are not
+      affected. Publish the rebuilt content under a new version, as
+      re-pushing an existing tag changes its digest.
+    - Pulled files no longer keep restrictive permissions: files
+      pushed as 0600 or 0444 are extracted as 0644, and files
+      executable only by group or others lose the execute bit.
+  * What's Changed
+    - test: replace Distribution with the go-containerregistry test
+      registry by @stefanprodan in #672
+    - fix(oci): normalize file modes in artifact layers by
+      @stefanprodan in #673
+    - build(deps): update Go dependencies, GitHub Actions and
+      controller-gen by @stefanprodan in #674
+
+-------------------------------------------------------------------
 Sat Oct 24 16:58:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.36.0:
