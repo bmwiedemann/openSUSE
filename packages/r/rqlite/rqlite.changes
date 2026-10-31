@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 31 07:26:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.6.6: 
+  * Keep the local auto-backup file if the metadata rename fails
+  * Reject local auto-backup filenames reserved for internal use
+  * POST /demote and POST /promote return a JSON error body, and
+    404 when the target node is not in the cluster.
+  * DELETE /remove returns a JSON error body.
+- Includes changes from  version 10.6.5:
+  * Guard the inter-node backup stream handler directly against a
+    missing backup request
+  * POST /leader returns a JSON error body, and 404 when the target
+    node is not in the cluster
+
+-------------------------------------------------------------------
 Thu Oct 22 18:54:08 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.6.4:

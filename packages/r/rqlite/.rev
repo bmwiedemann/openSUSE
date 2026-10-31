@@ -481,4 +481,12 @@
     <comment>rqlite 10.6.4 boo#1286934 (forwarded request 1387162 from AndreasStieger)</comment>
     <requestid>1387163</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>917b20585ce34ae7b11ae54205850f9c</srcmd5>
+    <version>10.6.6</version>
+    <time>1793484535</time>
+    <user>dimstar_suse</user>
+    <comment>rqlite 10.6.6 (forwarded request 1394034 from AndreasStieger)</comment>
+    <requestid>1394035</requestid>
+  </revision>
 </revisionlist>
