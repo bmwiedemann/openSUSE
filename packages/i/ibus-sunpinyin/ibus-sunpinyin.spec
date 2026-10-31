@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-sunpinyin
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,22 @@
 
 
 Name:           ibus-sunpinyin
-Version:        2.0.99.2
+Version:        3.1.0
 Release:        0
 Summary:        Sunpinyin module for ibus
 License:        CDDL-1.0 OR LGPL-2.1-only
 Group:          System/I18n/Chinese
-URL:            https://github.com/sunpinyin/sunpinyin
-Source:         https://github.com/sunpinyin/sunpinyin/archive/v3.0.0-rc2/sunpinyin-3.0.0-rc2.tar.gz
-# PATCH-FIX-UPSTREAM ibus-sunpinyin-fix-libexecdir.patch hillwood@opensuse.org -- libexecdir should be in %{_libdir}/ibus/
-Patch0:         ibus-sunpinyin-fix-libexecdir.patch
+URL:            https://github.com/openSUSE/ibus-sunpinyin
+Source:         https://github.com/openSUSE/ibus-sunpinyin/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  intltool
-BuildRequires:  scons >= 1.2.0
+BuildRequires:  meson
 BuildRequires:  pkgconfig(ibus-1.0)
+BuildRequires:  pkgconfig(opencc)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(sunpinyin-2.0)
 Requires:       sunpinyin-data
+Provides:       locale(ibus:zh_CN;zh_SG)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -41,34 +40,24 @@ ibus-sunpinyin is a wrapper around SunPinyin which enables user to use
 SunPinyin with IBus framework.
 
 %prep
-%autosetup -p1 -n sunpinyin-3.0.0-rc2
-sed -i "s/LIBEXECDIR'\].*ibus-sunpinyin.*/LIBEXECDIR'\]/" SConstruct
-sed -i "s/exec python /exec python3 /g" wrapper/ibus/setup/ibus-setup-sunpinyin.in
+%autosetup -p1 -n %{name}-%{version}
 
 %build
-cd wrapper/ibus/
-scons --prefix=%{_prefix} \
-      --libdir=%{_libdir} \
-      --libexecdir=%{_ibus_libexecdir}
+%meson
+%meson_build
 
 %install
-pushd wrapper/ibus/
-scons install --prefix=%{_prefix} \
-              --libdir=%{_libdir} \
-              --libexecdir=%{_ibus_libexecdir} \
-              --install-sandbox=%{buildroot}
-popd
-
-chmod 755 %{buildroot}%{_datadir}/%{name}/setup/main.py
+%meson_install
 
 %find_lang %{name}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc wrapper/ibus/README
-%license wrapper/ibus/COPYING wrapper/ibus/LGPL.LICENSE wrapper/ibus/OPENSOLARIS.LICENSE
-%{_ibus_libexecdir}/ibus-engine-sunpinyin
-%{_ibus_libexecdir}/ibus-setup-sunpinyin
+%doc README.md
+%license COPYING LGPL.LICENSE OPENSOLARIS.LICENSE
+%dir %{_libexecdir}/%{name}/
+%{_libexecdir}/%{name}/ibus-engine-sunpinyin
+%{_libexecdir}/%{name}/ibus-setup-sunpinyin
 %{_datadir}/%{name}
 %{_datadir}/ibus/component/sunpinyin.xml
 

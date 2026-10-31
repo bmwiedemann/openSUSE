@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 31 14:32:24 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.1.0
+  * Change upstream to openSUSE community branch
+  * Supports traditional Chinese input via OpenCC
+  * Fix translations for setting window
+- Drop ibus-sunpinyin-fix-libexecdir.patch
+
+-------------------------------------------------------------------
 Sat Jan 20 15:15:37 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)
