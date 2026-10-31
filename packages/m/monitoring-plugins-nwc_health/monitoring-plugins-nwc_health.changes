@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 30 21:14:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 12.17.2:
+  * use Check Point CPU core metrics from JHF Take 115.
+  * fix printf warning in Audiocodes alarm dump (severity is a
+    string, not a number).
+  * fix Audiocodes alarm handling: active alarm table was never read,
+    minor alarms now report warning.
+  * add OneOS devices.
+  * add ZPE Systems Nodegrid (hardware-health, cpu-load,
+    memory-usage).
+  * add a 5-minute cache for the device class detection (opt-in via
+    USE_CLASSIFICATION_CACHE).
+
+-------------------------------------------------------------------
 Thu Oct  1 04:57:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 12.14.1:
