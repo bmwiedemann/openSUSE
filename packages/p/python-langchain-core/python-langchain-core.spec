@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-core
-Version:        1.7.1
+Version:        1.7.3
 Release:        0
 Summary:        Building applications with LLMs through composability
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.3
+Requires:       python-certifi >= 2026.10.19
 Requires:       python-httpx >= 0.23.0
 Requires:       python-jsonpatch >= 1.33
 Requires:       python-langchain-protocol >= 0.0.20
@@ -43,6 +44,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.3}
 BuildRequires:  %{python_module blockbuster}
+BuildRequires:  %{python_module certifi >= 2026.10.19}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module httpx >= 0.23.0}
 BuildRequires:  %{python_module jsonpatch >= 1.33}
@@ -100,7 +102,7 @@ ecosystem.
 #   and already fails on slower OBS i586 workers (same fail on devel 1.5.6).
 %pytest tests/unit_tests --ignore tests/unit_tests/indexing/test_in_memory_indexer.py --ignore tests/unit_tests/language_models/test_compat_bridge.py --ignore tests/unit_tests/stores/test_in_memory.py --ignore tests/unit_tests/vectorstores/test_in_memory.py --ignore tests/unit_tests/test_ssrf_policy_transport.py --deselect tests/unit_tests/runnables/test_graph.py::test_graph_single_runnable --deselect tests/unit_tests/runnables/test_graph.py::test_graph_sequence --deselect tests/unit_tests/runnables/test_graph.py::test_graph_sequence_map --deselect tests/unit_tests/test_ssrf_protection.py::TestValidateSafeUrl::test_valid_public_https_url --deselect tests/unit_tests/test_ssrf_protection.py::TestValidateSafeUrl::test_valid_public_http_url --deselect tests/unit_tests/test_ssrf_protection.py::TestValidateSafeUrl::test_https_only_mode --deselect tests/unit_tests/test_ssrf_protection.py::TestIsSafeUrl::test_safe_url_returns_true --deselect tests/unit_tests/test_ssrf_protection.py::TestSSRFProtectedUrlType::test_valid_url_accepted --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_slack_webhook --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_discord_webhook --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_webhook_site --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_ngrok_url --deselect tests/unit_tests/language_models/chat_models/test_benchmark.py::test_benchmark_model
 
-%files %{python_files}
+%files %python_files
 %doc README.md
 %license LICENSE
 %{python_sitelib}/langchain_core

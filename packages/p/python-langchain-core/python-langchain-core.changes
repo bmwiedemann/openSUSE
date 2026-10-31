@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:45:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.3:
+  * New notification metadata API: add_notification_metadata
+    and get_notification_metadata
+  * Fix merge_content mutating the first message: traced output
+    no longer repeats text following a reasoning block or other
+    list content when the stream passes a later step
+  * Require python-certifi >= 2026.10.19 to exclude bundles
+    affected by compromised emSign CA keys
+    (GHSA-6q48-6c7w-9gw2); temporary direct requirement until
+    the minimum httpx enforces the same floor
+  * requires-python stays >= 3.10
+  * Spec-cleaner modernization: %files %python_files
+
+-------------------------------------------------------------------
 Thu Oct 29 12:19:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.1:
