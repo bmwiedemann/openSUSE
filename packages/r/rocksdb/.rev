@@ -298,4 +298,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment>1</comment>
     <requestid>1373848</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>edd31160eaede41e892de1d26dd655ed</srcmd5>
+    <version>11.12</version>
+    <time>1793484722</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1394192</requestid>
+  </revision>
 </revisionlist>

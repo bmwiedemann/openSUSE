@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 31 14:33:50 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 11.12:
+  * Added FullExternalTableFactory and related full-mode external
+    table APIs.
+  * Added experimental coroutine capability interfaces for basic
+    and full ExternalTableReader implementations.
+  * Added experimental lazy wide-column read API
+    (DB::GetEntityLazy / DB::MultiGetEntityLazy).
+  * Added DB::AbortCompactions() and DB::ResumeCompactions() for
+    per-column-family compaction abort and resume.
+  * Added CoroDB capability with lazy native coroutine variants of
+    Get and MultiGet.
+  * Fixed full recovery from retryable background errors to
+    atomically advance WAL replay boundaries.
+  * Fixed big-endian builds by disabling the little-endian-only
+    persistent fault-injection log.
+  * Fixed DB::ClipColumnFamily() deleting a non-L0 SST file whose
+    largest key equals begin_key.
+  * Many more fixes and improvements; see upstream HISTORY.md for
+    details.
+
+-------------------------------------------------------------------
 Wed Aug 26 14:17:48 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 11.8.1 (from 11.1.2, covering 11.2.0 through 11.8.1):
