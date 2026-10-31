@@ -19,11 +19,10 @@
 
 %define sover	0
 Name:           SDL3_mixer
-Version:        3.2.2
+Version:        3.2.4
 Release:        0
 Summary:        SDL3 sound mixer library
 License:        Zlib
-Group:          Development/Libraries/C and C++
 URL:            https://wiki.libsdl.org/SDL3_mixer
 #Git-Clone:     https://github.com/libsdl-org/SDL_mixer
 Source:         https://github.com/libsdl-org/SDL_mixer/releases/download/release-%{version}/%{name}-%{version}.tar.gz
@@ -49,7 +48,6 @@ Timidity MIDI, and mpg123 MP3 libraries.
 
 %package -n lib%{name}%{sover}
 Summary:        Simple DirectMedia Layer 3 – Sound mixer library
-Group:          System/Libraries
 Provides:       SDL3_mixer = %{version}-%{release}
 
 %description -n lib%{name}%{sover}
@@ -59,7 +57,6 @@ Timidity MIDI, and mpg123 MP3 libraries.
 
 %package devel
 Summary:        Development files for the SDL3 sound mixer library
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
 
 %description devel

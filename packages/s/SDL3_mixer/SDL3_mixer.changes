@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 31 15:24:22 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 3.2.4:
+  * Added MIX_PROP_AUDIO_LOAD_IGNORE_LOOPS_BOOLEAN to ignore
+    looping information in an audio file's metadata.
+  * Fixed crash bug in MIX_SetTrackGroup().
+  * Fixed crash in MIX_StopTrack(t, 0) if callback destroys track.
+  * Fixed crash when MIX_PROP_PLAY_MAX_* is less than track start.
+  * Fixed unexpected decoding failures when using MIX_AudioDecoder.
+  * Fixed .OXM files being treated as Ogg Vorbis.
+  * Support custom FluidSynth string settings.
+  * Various small bug fixes and memory leaks.
+
+-------------------------------------------------------------------
 Tue May 12 07:37:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.2
