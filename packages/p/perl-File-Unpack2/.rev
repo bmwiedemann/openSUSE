@@ -7,4 +7,41 @@
     <comment>New dependency for Cavil. Since the old perl-File-Unpack has been unmaintained for many years and requires a lot of patching.</comment>
     <requestid>1130352</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b34a07267eccf4f69af00c25efcfb1f5</srcmd5>
+    <version>2.30.0</version>
+    <time>1793484525</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.30.0 (2.03)
+   see /usr/share/doc/packages/perl-File-Unpack2/Changes
+  2.03	kraih Thu Oct 22 17:30:00 CEST 2026
+    - Fixed the cached cpio command being returned as an array reference on
+      every lookup after the first, which broke unpacking cpio archives when an
+      rpm had been unpacked before them in the same run.
+
+- updated to 2.20.0 (2.02)
+   see /usr/share/doc/packages/perl-File-Unpack2/Changes
+  2.02	kraih Mon Jul 28 14:00:00 CEST 2026
+    - Clean release tarball.
+
+- updated to 2.10.0 (2.01)
+   see /usr/share/doc/packages/perl-File-Unpack2/Changes
+  2.01	kraih Mon Jul 27 15:48:00 CEST 2026
+    - Require BSD::Resource and Filesys::Statvfs again, so the maxfilesize and
+      free-space safeguards are always enforced (they were silently disabled when
+      the modules were only recommended and thus absent from build environments).
+    - Skip the PDF tests when pdftotext (poppler-tools) is not installed, so the
+      test suite passes in minimal build environments.
+  2.0	kraih Thu Jul 23 13:50:00 CEST 2026
+    - Big module cleanup to make packaging for Linux distributions easier.
+    - Removed bundled mime helper scripts.
+  1.5	kraih Tue Jul 22 14:30:00 CEST 2026
+    - Fixed non-portable tests failing.
+  1.4	kraih Tue Jul 22 14:00:00 CEST 2026
+    - Improved service restart handling.
+  1.3	kraih Tue Jul 16 14:00:00 CEST 2026
+    - Improved handling of malicious archives.
+  1.2	kraih Tue May 22 14:00:00 CEST 2026</comment>
+    <requestid>1393995</requestid>
+  </revision>
 </revisionlist>

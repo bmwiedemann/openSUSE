@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Oct 23 10:05:19 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.30.0 (2.03)
+   see /usr/share/doc/packages/perl-File-Unpack2/Changes
+
+  2.03	kraih Thu Oct 22 17:30:00 CEST 2026
+    - Fixed the cached cpio command being returned as an array reference on
+      every lookup after the first, which broke unpacking cpio archives when an
+      rpm had been unpacked before them in the same run.
+
+-------------------------------------------------------------------
+Wed Jul 29 07:53:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.20.0 (2.02)
+   see /usr/share/doc/packages/perl-File-Unpack2/Changes
+
+  2.02	kraih Mon Jul 28 14:00:00 CEST 2026
+    - Clean release tarball.
+
+-------------------------------------------------------------------
+Tue Jul 28 07:47:33 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.10.0 (2.01)
+   see /usr/share/doc/packages/perl-File-Unpack2/Changes
+
+  2.01	kraih Mon Jul 27 15:48:00 CEST 2026
+    - Require BSD::Resource and Filesys::Statvfs again, so the maxfilesize and
+      free-space safeguards are always enforced (they were silently disabled when
+      the modules were only recommended and thus absent from build environments).
+    - Skip the PDF tests when pdftotext (poppler-tools) is not installed, so the
+      test suite passes in minimal build environments.
+  2.0	kraih Thu Jul 23 13:50:00 CEST 2026
+    - Big module cleanup to make packaging for Linux distributions easier.
+    - Removed bundled mime helper scripts.
+  1.5	kraih Tue Jul 22 14:30:00 CEST 2026
+    - Fixed non-portable tests failing.
+  1.4	kraih Tue Jul 22 14:00:00 CEST 2026
+    - Improved service restart handling.
+  1.3	kraih Tue Jul 16 14:00:00 CEST 2026
+    - Improved handling of malicious archives.
+  1.2	kraih Tue May 22 14:00:00 CEST 2026
+    - Fixed a race condition that could create invalid JSON files.
+  1.1	kraih Tue Apr 28 17:00:00 CEST 2026
+    - Fixed a problem where temporary archives created during unpacking were not cleaned up.
+
+-------------------------------------------------------------------
 Fri Dec 01 18:55:00 UTC 2023 - Sebastian Riedel <sriedel@suse.com>
 
 - First 1.0 release from CPAN
