@@ -106,4 +106,12 @@
     <comment>1</comment>
     <requestid>1378629</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7b0ada6ddb2f3b1d45729187c0fed424</srcmd5>
+    <version>3.43.5</version>
+    <time>1793484622</time>
+    <user>dimstar_suse</user>
+    <comment>Update lout to 3.43.5.</comment>
+    <requestid>1394114</requestid>
+  </revision>
 </revisionlist>

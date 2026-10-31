@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:43:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.43.5 (upstream tag, same maintained fork):
+  * Plain text output now splits long tables across pages instead
+    of stopping (z19.c only, plus whatsnew entry)
+
+-------------------------------------------------------------------
 Sun Sep 13 14:09:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.43.4 (maintained fork by William Bader, same lineage

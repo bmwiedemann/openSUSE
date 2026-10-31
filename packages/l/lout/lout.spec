@@ -17,7 +17,7 @@
 
 
 Name:           lout
-Version:        3.43.4
+Version:        3.43.5
 Release:        0
 Summary:        A document formatting system
 License:        GPL-3.0-or-later
