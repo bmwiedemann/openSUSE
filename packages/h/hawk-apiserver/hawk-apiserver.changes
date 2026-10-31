@@ -1,25 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 30 18:24:30 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.5.0+git.1793384507.8daa0a1: 
+  * Dev: implement /cib/live/commands (Comand Log) menu
+
+-------------------------------------------------------------------
+Fri Oct 30 16:57:48 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.4.0+git.1793379026.30023a0:
+  * Dev: implement /reports menu
+
+-------------------------------------------------------------------
 Thu Oct 22 11:07:56 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
-- Vesion 0.3.0+git.1792666618.1a1aedc:
-  * Dev: implement /dashboard submenu
+- Version 0.3.0+git.1792666618.1a1aedc:
+  * Dev: implement /dashboard menu
 
 -------------------------------------------------------------------
 Mon Oct 19 11:02:29 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
-- Vesion 0.2.4+git.1792406875.6ed758a:
+- Version 0.2.4+git.1792406875.6ed758a:
   * Doc: update HA documentation URLs (bsc#1280368) 
 
 -------------------------------------------------------------------
 Mon Aug 24 13:10:08 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
-- Vesion 0.2.3+git.1787575068.680f9de:
+- Version 0.2.3+git.1787575068.680f9de:
   * Dev: decouple Action and OpDefaults (code refactory)
 
 -------------------------------------------------------------------
 Wed Aug 19 10:57:30 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
-- Vesion 0.2.2+git.1787135908.0b1b73e:
+- Version 0.2.2+git.1787135908.0b1b73e:
   * enable custom user parameters (bsc#1274860)
 
 -------------------------------------------------------------------
