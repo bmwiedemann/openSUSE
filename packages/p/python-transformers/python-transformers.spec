@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-transformers
-Version:        5.22.0
+Version:        5.22.1
 Release:        0
 Summary:        State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow
 License:        Apache-2.0
@@ -95,7 +95,7 @@ unified API.
 %pre
 %python_libalternatives_reset_alternative transformers
 
-%files %{python_files}
+%files %python_files
 %license LICENSE
 %doc README.md
 %python_alternative %{_bindir}/transformers

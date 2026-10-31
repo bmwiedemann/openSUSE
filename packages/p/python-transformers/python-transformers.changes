@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:52:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.22.1:
+  * No user-visible changes; upstream 5.22.1 is a
+    documentation-only patch release (remove WIP Ml4 doc)
+  * No new runtime dependencies
+  * Spec-cleaner modernization: %files %python_files
+
+-------------------------------------------------------------------
 Fri Oct 30 07:58:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.22.0:
