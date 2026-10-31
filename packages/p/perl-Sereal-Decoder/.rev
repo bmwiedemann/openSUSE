@@ -169,4 +169,17 @@
         See https://github.com/Sereal/Sereal/pull/316</comment>
     <requestid>1371821</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7c01e6d97f154cde4ad27d154b954a15</srcmd5>
+    <version>5.11.0</version>
+    <time>1793484523</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.11.0 (5.011)
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+  5.011
+      * Robustness fixes. Thanks to Steffen Mueller and kumar-Prakash07.
+      * Preserve zstd deprecation warnings when building with IBM XL C on AIX.
+      * Raise the minimum supported Perl version to 5.14.</comment>
+    <requestid>1393994</requestid>
+  </revision>
 </revisionlist>
