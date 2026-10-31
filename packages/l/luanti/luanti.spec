@@ -22,7 +22,7 @@
 %bcond_without redis
 %bcond_without postgresql
 Name:           luanti
-Version:        5.17.0
+Version:        5.18.0
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
@@ -59,6 +59,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2)
@@ -188,7 +189,7 @@ for font in Arimo-Regular Cousine-Regular DroidSansFallbackFull; do
       %{buildroot}%{_datadir}/%{name}/fonts/$font.ttf
 done
 
-# Clean up.
+# Clean up files.
 %fdupes %{buildroot}%{_datadir}/
 
 install -Dpm 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}@.service

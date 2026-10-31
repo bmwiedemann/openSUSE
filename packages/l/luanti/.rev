@@ -89,4 +89,12 @@
 (No CVE/BSC ID available at the moment, for more info, read: https://github.com/luanti-org/luanti/security/advisories/GHSA-j2v5-g52g-685j)</comment>
     <requestid>1372674</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>62207e3ad9525817c9d8bc38a714d6d8</srcmd5>
+    <version>5.18.0</version>
+    <time>1793484501</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1393983</requestid>
+  </revision>
 </revisionlist>
