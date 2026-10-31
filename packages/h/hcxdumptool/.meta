@@ -1,0 +1,9 @@
+<package name="hcxdumptool" project="openSUSE:Factory">
+  <title>A tool to capture packets wlan devices</title>
+  <description>A tool to capture packets from wlan devices and detect weak
+point within own WiFi networks - designed to run on Raspberry Pi's.
+Capture format pcapng is compatible to Wireshark and tshark.
+
+</description>
+  <url>https://github.com/ZerBea/hcxdumptool</url>
+</package>
