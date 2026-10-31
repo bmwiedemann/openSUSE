@@ -17,7 +17,7 @@
 
 
 Name:           effectcraft
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        Motion graphics and VFX compositor
 # Legal-Review-Notice: licence set re-derived from the vendored tree
@@ -41,6 +41,9 @@ License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND BSD-3-Clause AND ISC AN
 URL:            https://github.com/storytold/effectcraft
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# Of the vendor tree's prebuilt files only libloading's Windows-only test
+# fixtures remain; checksums forbid stripping them, so each is named below.
+# Source-Binary-Exception: vendor.tar.zst:vendor/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's #![cfg(windows)] tests, never on Linux
 Patch0:         effectcraft-no-brand-assets.patch
 # PATCH-FIX-OPENSUSE effectcraft-no-self-update.patch -- distro builds
 # must not phone home at startup nor offer to install an upstream release
@@ -106,11 +109,11 @@ install -D -m 0755 target/release/effectcraft %{buildroot}%{_bindir}/effectcraft
 install -D -m 0755 target/release/effectcraft-cli %{buildroot}%{_bindir}/effectcraft-cli
 install -D -m 0644 packaging/linux/ai.storyteller.effectcraft.desktop %{buildroot}%{_datadir}/applications/ai.storyteller.effectcraft.desktop
 # Upstream metainfo is a template; stamp the release version and date.
-# Fixed release date (v0.18.0, 2026-10-28): a build-time date would differ
+# Fixed release date (v0.19.0, 2026-10-31): a build-time date would differ
 # on every rebuild. Upstream declares the app icon as type stock but it
 # is a custom hicolor icon, so declare it as cached for validation.
 mkdir -p %{buildroot}%{_datadir}/metainfo
-sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-28/g" \
+sed -e "s/@VERSION@/%{version}/g" -e "s/@DATE@/2026-10-31/g" \
   packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in > %{buildroot}%{_datadir}/metainfo/ai.storyteller.effectcraft.metainfo.xml
 sed -i 's|<icon type="stock">ai.storyteller.effectcraft</icon>|<icon type="cached" width="64" height="64">ai.storyteller.effectcraft.png</icon>|' %{buildroot}%{_datadir}/metainfo/ai.storyteller.effectcraft.metainfo.xml
 mkdir -p %{buildroot}%{_datadir}/icons

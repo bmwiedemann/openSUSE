@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 31 13:50:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.19.0 (upstream tag v0.19.0, 2026-10-31):
+  * GPU YUV 4:2:0 conversion for H.264 export; disk cache with
+    free-space reserve; Cryptomatte hover probe; Classic 3D on
+    DirectX 12; XML entity-expansion bounds; encoder, tracker and
+    camera-solver performance work.
+  * Re-vendor (update=false, filter=true): own crates plus new
+    candle-core / candle-nn, filmcraft media helpers and small
+    utility crates, all under already-listed licences;
+    Windows-only crate files filtered out; licence set and
+    Legal-Review-Notice unchanged; cargo_audit reports no
+    advisories.
+- Set the fixed metainfo release date to 2026-10-31 (v0.19.0).
+- Keep effectcraft-no-self-update.patch: no startup update check
+  and no install prompt, so upstream releases are never
+  installed over RPM-owned files; the manual Help check outcome
+  window stays.
+
+-------------------------------------------------------------------
 Thu Oct 29 12:41:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.18.0 (upstream tag v0.18.0, 2026-10-28):

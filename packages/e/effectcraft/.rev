@@ -15,4 +15,12 @@
     <comment>Fix adi:5 build: braced macros, drop unused egui pins.</comment>
     <requestid>1393740</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bf432d0b3df4fe1898b27444bf179b1f</srcmd5>
+    <version>0.19.0</version>
+    <time>1793484673</time>
+    <user>dimstar_suse</user>
+    <comment>Update effectcraft to 0.19.0</comment>
+    <requestid>1394155</requestid>
+  </revision>
 </revisionlist>
