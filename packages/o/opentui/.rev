@@ -85,4 +85,12 @@ opentui = 0.5.14 exactly.</comment>
     <comment>Update opentui to 0.7.0 (stage with opencode 2.2.0).</comment>
     <requestid>1393193</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2d4a1c7f2b62fc09338d9f7029e183a0</srcmd5>
+    <version>0.8.0</version>
+    <time>1793484450</time>
+    <user>dimstar_suse</user>
+    <comment>Update opentui to 0.8.0 (opencode 2.2.4 runtime requirement).</comment>
+    <requestid>1393959</requestid>
+  </revision>
 </revisionlist>

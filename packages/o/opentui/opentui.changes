@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 30 19:49:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.0:
+  * Cheaper frames: an unchanged frame paints nothing, and a
+    small change repaints only the rows around it; animations
+    share one clock through renderer.onAnimationTick
+  * ScrollBox scrolls and follows new content in native code:
+    one box with a native scroll control instead of twelve
+    scene nodes. Code reaching into the wrapper, viewport,
+    content or scrollbar parts needs the 0.8.0 facade shapes,
+    and a custom RenderContext implements clock and
+    onAnimationTick
+  * The native input parser stays opt-in and keeps a mouse
+    wheel report a slow link splits; wide emoji sequences draw
+    at full width
+  * Moves in lockstep with opencode 2.2.4, which pins
+    @opentui/* 0.8.0 over the private FFI ABI
+  * Zig stays 0.16.0, the six grammar assets and their pins
+    are unchanged, and both patches apply clean (offsets
+    only); licence and vendored dependency pins unchanged
+
+-------------------------------------------------------------------
 Tue Oct 27 19:18:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.7.0:
