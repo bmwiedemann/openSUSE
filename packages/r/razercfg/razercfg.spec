@@ -31,6 +31,10 @@ Source99:       %{name}.keyring
 # Reported upstream 21. July 2015
 Patch0:         razercfg-fix-install-in-libdir.patch
 Patch1:         harden_razerd.service.patch
+# PATCH-FIX-OPENSUSE razercfg-ssp-strong -- Drop -fstack-protector which would
+# downgrade the distro-wide -fstack-protector-strong from the optflags.
+# -fstack-check is kept as it is a separate mechanism.
+Patch2:         razercfg-ssp-strong.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme

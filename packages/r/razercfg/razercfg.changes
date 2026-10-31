@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 29 10:04:55 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- razercfg-ssp-strong.patch: drop -fstack-protector from
+  GENERIC_COMPILE_FLAGS in scripts/cmake.global which would downgrade
+  the distro-wide -fstack-protector-strong from the optflags
+  (keep -fstack-check, a separate mechanism)
+
+-------------------------------------------------------------------
 Sat May 23 18:36:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.44:
