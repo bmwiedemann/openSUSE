@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-torchaudio
-Version:        2.11.0
+Version:        2.11.1
 Release:        0
 Summary:        Audio signal processing for PyTorch
 # Legal-Review-Notice: third_party/cuctc (BSD-2-Clause / BSD-3-Clause /
@@ -27,17 +27,22 @@ License:        BSD-2-Clause
 URL:            https://github.com/pytorch/audio
 Source:         https://github.com/pytorch/audio/archive/refs/tags/v%{version}.tar.gz#/torchaudio-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module torch-devel}
 BuildRequires:  %{python_module torch}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
+Requires:       python-filelock
 # setup.py install_requires is empty; declare the runtime torch dep by hand.
+# torch 2.15 imports typing_extensions, so it is needed at runtime too.
 Requires:       python-torch
+Requires:       python-typing_extensions
 # Match Factory python-torch (ExcludeArch: %%ix86 %%{arm})
 ExcludeArch:    %{ix86} %{arm}
 %python_subpackages
@@ -47,7 +52,7 @@ TorchAudio applies PyTorch to the audio domain: GPU-optional
 autograd-friendly transforms and a small set of C++ extensions
 (lfilter, RNNT loss, forced alignment, overdrive). This build is
 CPU-only against Factory python-torch 2.12 (CUDA disabled). Upstream
-2.11.0 is the latest release and is documented as compatible with
+2.11.1 is the latest release and is documented as compatible with
 later torch versions; there is no 2.12.0 torchaudio tag.
 
 %prep
@@ -86,7 +91,7 @@ export PYTHONPATH="$PWD${PYTHONPATH:+:$PYTHONPATH}"
 cd %{_tmppath}
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -B -c "import torchaudio; assert torchaudio.__version__ == '%{version}', torchaudio.__version__"
 
-%files %{python_files}
+%files %python_files
 %license LICENSE
 %doc README.md
 %{python_sitearch}/torchaudio

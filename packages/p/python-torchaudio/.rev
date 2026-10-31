@@ -21,4 +21,12 @@ Fri Aug 21 08:56:25 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
 </comment>
     <requestid>1372805</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7428f43cd5a03590cd0425d5d2084f8d</srcmd5>
+    <version>2.11.1</version>
+    <time>1793484594</time>
+    <user>dimstar_suse</user>
+    <comment>Require typing_extensions and filelock at build and run time.</comment>
+    <requestid>1394081</requestid>
+  </revision>
 </revisionlist>

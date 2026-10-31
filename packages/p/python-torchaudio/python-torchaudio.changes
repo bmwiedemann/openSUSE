@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 31 11:47:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Require typing_extensions at build and run time: setup.py
+  imports torch, which needs it since 2.15.
+- Require filelock at build and run time for the same reason.
+
+-------------------------------------------------------------------
+Thu Oct 29 12:19:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.11.1 (compatible with torch 2.11 and later):
+  * Single py3-none wheel per platform, covering all supported
+    CPython versions including free-threaded builds
+  * Declare the torch>=2.11 dependency in the wheel metadata
+  * Add the Python 3.15 classifier and python_requires>=3.10
+  * CUDA: only error on torch/torchaudio CUDA major version
+    mismatch; minor mismatches are now allowed
+
+-------------------------------------------------------------------
 Fri Aug 21 08:56:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package of python-torchaudio 2.11.0:
