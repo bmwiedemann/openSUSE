@@ -4,7 +4,6 @@ Recommends:     bind-32bit
 Recommends:     kea-32bit
 Recommends:     bind-doc-32bit
 Recommends:     kea-hooks-32bit
-Recommends:     dhcp-tools-32bit
 Provides:       pattern() = dhcp_dns_server%2d32bit
 Group:          Metapackages
 Supplements:    packageand(patterns-server-32bit:patterns-server-dhcp_dns_server)
@@ -22,8 +21,8 @@ The 32bit pattern complementing dhcp_dns_server.
 %package directory_server-32bit
 Summary:        Directory Server (LDAP)
 Recommends:     389-ds-32bit
-Recommends:     nss_ldap-32bit
-Recommends:     pam_ldap-32bit
+Recommends:     sssd-32bit
+Recommends:     sssd-ldap-32bit
 Provides:       pattern() = directory_server%2d32bit
 Group:          Metapackages
 Supplements:    packageand(patterns-server-32bit:patterns-server-directory_server)
@@ -88,7 +87,7 @@ The 32bit pattern complementing gateway_server.
 Summary:        Web and LAMP Server
 Recommends:     apache2-32bit
 Recommends:     apache2-manual-32bit
-Recommends:     apache2-mod_php7-32bit
+Recommends:     apache2-mod_php8-32bit
 Recommends:     apache2-prefork-32bit
 Recommends:     libapr-util1-0-32bit
 Recommends:     libapr1-0-32bit
@@ -113,7 +112,8 @@ Summary:        Mail and News Server
 Recommends:     vacation-32bit
 Recommends:     amavisd-new-32bit
 Recommends:     clamav-32bit
-Recommends:     mailman-32bit
+Recommends:     dovecot-32bit
+Recommends:     postfix-32bit
 Recommends:     spamassassin-32bit
 Provides:       pattern() = mail_server%2d32bit
 Group:          Metapackages
@@ -132,6 +132,9 @@ The 32bit pattern complementing mail_server.
 %package printing-32bit
 Summary:        Print Server
 Recommends:     cups-32bit
+Recommends:     OpenPrintingPPDs-ghostscript-32bit
+Recommends:     OpenPrintingPPDs-hpijs-32bit
+Recommends:     OpenPrintingPPDs-postscript-32bit
 Recommends:     cups-backends-32bit
 Recommends:     cups-filters-32bit
 Recommends:     cups-filters-cups-browsed-32bit
@@ -139,9 +142,6 @@ Recommends:     epson-inkjet-printer-escpr-32bit
 Recommends:     gutenprint-32bit
 Recommends:     hplip-driver-hpcups-32bit
 Recommends:     manufacturer-PPDs-32bit
-Recommends:     OpenPrintingPPDs-ghostscript-32bit
-Recommends:     OpenPrintingPPDs-hpijs-32bit
-Recommends:     OpenPrintingPPDs-postscript-32bit
 Recommends:     samba-32bit
 Recommends:     splix-32bit
 Provides:       pattern() = printing%2d32bit

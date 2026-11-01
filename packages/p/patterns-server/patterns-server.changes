@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 29 21:01:41 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Regenerate pattern-definition-32bit.txt with the package's own
+  pre_checkin.sh (follow-up to SR 1392454, which hand-mirrored the
+  file and missed the postfix/dovecot additions): mail_server now
+  recommends postfix and dovecot; drop stale entries (dhcp-tools,
+  nss_ldap/pam_ldap, mailman, apache2-mod_php7) and pick up current
+  ones (sssd/sssd-ldap, apache2-mod_php8). Extend pre_checkin.sh's
+  skip list with hwcrypto and oracle_server, which have no 32bit
+  pattern marker, so regeneration stays idempotent.
+
+-------------------------------------------------------------------
 Sun Oct 25 13:24:47 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - dhcp_dns_server: build the DHCP half on Kea on openSUSE too, as
