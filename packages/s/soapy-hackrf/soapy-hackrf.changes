@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:36:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.6:
+  * Add support for getSampleRateRange, allowing fractional
+    sample rates in the 2-20 MHz range the hardware supports
+  * Track the upstream soapy-hackrf-0.3.6 release tag
+
+-------------------------------------------------------------------
 Sun Oct 11 09:26:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.5:

@@ -20,7 +20,7 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-hackrf
 Name:           soapy-hackrf
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Summary:        SoapySDR HackRF module
 License:        MIT

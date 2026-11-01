@@ -2,11 +2,11 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/pothosware/SoapyHackRF.git</param>
     <param name="scm">git</param>
-    <!-- upstream tagged 0.3.5 with the bandwidth/amp fixes; track the tag -->
-    <param name="revision">soapy-hackrf-0.3.5</param>
+    <!-- upstream tagged 0.3.6 with getSampleRateRange support; track the tag -->
+    <param name="revision">soapy-hackrf-0.3.6</param>
     <param name="changesgenerate">disable</param>
     <param name="filename">soapy-hackrf</param>
-    <param name="versionformat">0.3.5</param>
+    <param name="versionformat">0.3.6</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
