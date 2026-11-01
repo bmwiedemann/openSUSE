@@ -1250,4 +1250,33 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
   * removed whitespace</comment>
     <requestid>1361141</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>626131c3bcc202f0d631dbb5fdcd1299</srcmd5>
+    <version>2.48</version>
+    <time>1793568136</time>
+    <user>dimstar_suse</user>
+    <comment>- added xkeyboard-config-rpmlintrc as Source to Specfile
+
+- Drop the %ghost entries for /var and /var/lib; both directories
+  are owned by the filesystem package. The /var/lib/xkb
+  directories themselves stay as ghosts and keep being created
+  by tmpfiles (jsc#PED-14831).
+- Drop the trailing slash from the /var/lib/xkb tmpfiles entry
+  so the path matches the packaged file list.
+- Run fdupes over /usr/share/xkeyboard-config-2 and the locale
+  tree: the base and evdev rules files and the xkeyboard-config
+  and xkeyboard-config-2 message catalogues are byte-identical
+  pairs, now linked instead of duplicated (about 4 MB of
+  duplicated payload).
+- Collect the xkeyboard-config-2 message catalogues with
+  %find_lang as well, so they carry %lang attributes like the
+  xkeyboard-config ones.
+- Drop unused BuildRequires: intltool and perl(XML::Parser);
+  nothing in the build uses either.
+- Add an rpmlintrc for the %post keymap-cache cleanup findings;
+  the cleanup itself stays (bnc#662014).
+- Drop the Group tag, fix a spelling error in the description
+  and add the missing patch tags.</comment>
+    <requestid>1393775</requestid>
+  </revision>
 </revisionlist>

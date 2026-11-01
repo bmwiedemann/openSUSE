@@ -21,19 +21,20 @@ Version:        2.48
 Release:        0
 Summary:        The X Keyboard Extension
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
-Group:          System/X11/Utilities
 URL:            https://www.freedesktop.org/Software/XKeyboardConfig
 Source:         https://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.xz
 # Immutable mode (jsc#PED-14831)
 Source1:        xkeyboard-config.tmpfiles
+Source2:        xkeyboard-config-rpmlintrc
 # PATCH-FIX-OPENSUSE disable-2xalt_2xctrl-toggle.diff fdo#4927 -- This is just a workaround until fdo#4927 is fixed
 Patch109:       n_disable-2xalt_2xctrl-toggle.diff
+# PATCH-FIX-OPENSUSE n_fi-kotoistus-metainfo.patch -- Register the Finnish Kotoistus layout variant in the rules registry
 Patch110:       n_fi-kotoistus-metainfo.patch
 %if 0%{?suse_version} < 1550
+# PATCH-FIX-OPENSUSE python-3.11.patch -- The build scripts need python3.11 there; the default python3 is too old for them
 Patch0:         python-3.11.patch
 %endif
 BuildRequires:  fdupes
-BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} < 1550
@@ -42,7 +43,6 @@ BuildRequires:  python311-base
 BuildRequires:  python3-base
 %endif
 BuildRequires:  xsltproc
-BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.12
 Requires(post): coreutils
 BuildArch:      noarch
@@ -50,7 +50,7 @@ BuildArch:      noarch
 %description
 The X Keyboard Extension essentially replaces the core protocol
 definition of keyboard. The extension makes possible to clearly and
-explicitly specify most aspects of keyboard behaviour on per-key basis
+explicitly specify most aspects of keyboard behavior on per-key basis
 and to more closely track the logical and physical state of the
 keyboard. It also includes a number of keyboard controls designed to
 make keyboards more accessible to people with physical impairments.
@@ -72,7 +72,10 @@ make keyboards more accessible to people with physical impairments.
 mkdir -p %{buildroot}%{_localstatedir}/lib/xkb/compiled/
 ln -snf %{_localstatedir}/lib/xkb/compiled/ %{buildroot}%{_datadir}/xkeyboard-config-2/compiled
 %find_lang %{name}
-%fdupes -s %{buildroot}%{_datadir}/X11/xkb
+%find_lang %{name}-2
+cat %{name}-2.lang >> %{name}.lang
+%fdupes -s %{buildroot}%{_datadir}/xkeyboard-config-2
+%fdupes -s %{buildroot}%{_datadir}/locale
 # Immutable mode (jsc#PED-14831)
 mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
 install -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/tmpfiles.d/xkeyboard-config.conf
@@ -114,8 +117,6 @@ rm -rf %{_localstatedir}/lib/xkb/compiled/server*.xkm
 %doc AUTHORS docs/HOWTO.* docs/README.*
 # Immutable mode (jsc#PED-14831)
 %{_tmpfilesdir}/xkeyboard-config.conf
-%ghost %dir %{_localstatedir}/
-%ghost %dir %{_localstatedir}/lib/
 %ghost %dir %{_localstatedir}/lib/xkb/
 %ghost %dir %{_localstatedir}/lib/xkb/compiled/
 %dir %{_datadir}/X11
@@ -128,6 +129,5 @@ rm -rf %{_localstatedir}/lib/xkb/compiled/server*.xkm
 
 %files lang -f %{name}.lang
 %license COPYING
-%{_datadir}/locale/*/LC_MESSAGES/xkeyboard-config-2.mo
 
 %changelog

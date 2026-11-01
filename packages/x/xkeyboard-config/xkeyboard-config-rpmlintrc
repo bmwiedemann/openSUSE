@@ -1,0 +1,7 @@
+# The %post removes stale compiled keymaps (server*.xkm) that the X server
+# cached in /var/lib/xkb/compiled, so an upgrade cannot resurrect a keymap
+# compiled from the previous data (bnc#662014). The write targets the
+# package's own tmpfiles-managed cache directory and has to happen in
+# %post, synchronously with the data update, not deferred to first boot.
+addFilter("scriptlet-writes-outside-snapshot")
+addFilter("dangerous-command-in-%post")

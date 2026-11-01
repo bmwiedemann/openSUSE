@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct 30 02:03:29 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- added xkeyboard-config-rpmlintrc as Source to Specfile
+
+-------------------------------------------------------------------
+Sun Oct 25 21:16:17 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop the %ghost entries for /var and /var/lib; both directories
+  are owned by the filesystem package. The /var/lib/xkb
+  directories themselves stay as ghosts and keep being created
+  by tmpfiles (jsc#PED-14831).
+- Drop the trailing slash from the /var/lib/xkb tmpfiles entry
+  so the path matches the packaged file list.
+- Run fdupes over /usr/share/xkeyboard-config-2 and the locale
+  tree: the base and evdev rules files and the xkeyboard-config
+  and xkeyboard-config-2 message catalogues are byte-identical
+  pairs, now linked instead of duplicated (about 4 MB of
+  duplicated payload).
+- Collect the xkeyboard-config-2 message catalogues with
+  %find_lang as well, so they carry %lang attributes like the
+  xkeyboard-config ones.
+- Drop unused BuildRequires: intltool and perl(XML::Parser);
+  nothing in the build uses either.
+- Add an rpmlintrc for the %post keymap-cache cleanup findings;
+  the cleanup itself stays (bnc#662014).
+- Drop the Group tag, fix a spelling error in the description
+  and add the missing patch tags.
+
+-------------------------------------------------------------------
 Mon Jun 22 12:42:48 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 2.48
