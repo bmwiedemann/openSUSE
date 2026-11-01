@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 30 00:19:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22.1.10
+  * Reject CR and LF in the service type of a SOAP action.
+
+-------------------------------------------------------------------
+Thu Oct 29 07:32:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22.1.9
+  * Reject an HTTP response whose status code is not three digits.
+  * Fix denial of service of the miniserver worker threads.
+  * Fix a heap over-read when sending a GENA event.
+  * Fix a path traversal in the web server.
+  * Fix a corrupted attribute list when
+    ixmlElement_setAttributeNode() or
+    ixmlElement_setAttributeNodeNS() was called with an attribute
+    the element already owned and the lookup did not return that
+    same attribute.
+  * Send "Content-Range: bytes */<length>" in the 416 response of
+    the web server to a Range request that cannot be satisfied.
+
+-------------------------------------------------------------------
 Fri Oct  2 13:16:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 22.1.8
