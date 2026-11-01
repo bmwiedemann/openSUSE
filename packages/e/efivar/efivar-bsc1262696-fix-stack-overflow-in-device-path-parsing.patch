@@ -1,0 +1,31 @@
+From 3a1229ad8e0738823703df30a166228c9fcfaccb Mon Sep 17 00:00:00 2001
+From: Marta Lewandowska <mlewando@redhat.com>
+Date: Thu, 23 Apr 2026 13:04:50 +0200
+Subject: [PATCH] Fix stack overflow caused by infinite recursion
+
+If an EFI device path node has 0 length, loop will never terminate.
+
+Resolves: bz#2459982
+Resolves: CVE-2026-6862
+
+Signed-off-by: Marta Lewandowska <mlewando@redhat.com>
+---
+ src/include/efivar/efivar-dp.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/include/efivar/efivar-dp.h b/src/include/efivar/efivar-dp.h
+index 85a7f54..61d6002 100644
+--- a/src/include/efivar/efivar-dp.h
++++ b/src/include/efivar/efivar-dp.h
+@@ -1122,6 +1122,8 @@ efidp_is_valid(const_efidp dp, ssize_t limit)
+ 		efidp_header *next;
+ 		if (limit < (int64_t)(sizeof (efidp_header)))
+ 			return 0;
++		if (hdr->length < 4)
++			return 0;
+ 
+ 		switch (hdr->type) {
+ 		case EFIDP_HARDWARE_TYPE:
+-- 
+2.51.0
+

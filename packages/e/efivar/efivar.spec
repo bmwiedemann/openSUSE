@@ -1,7 +1,7 @@
 #
 # spec file for package efivar
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,16 @@
 
 %define major 1
 Name:           efivar
-Version:        38
+Version:        39
 Release:        0
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1-only
-Group:          Development/Libraries/C and C++
-URL:            https://github.com/rhinstaller/efivar
-Source:         https://github.com/rhinstaller/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
+URL:            https://github.com/rhboot/efivar
+Source:         https://github.com/rhboot/efivar/archive/refs/tags/%{version}.tar.gz#/efivar-%{version}.tar.gz
 Patch0:         libefiboot-export-disk_get_partition_info.patch
-Patch1:         efivar-bsc1202209-fix-glibc-2.36-build.patch
-Patch2:         efivar-adjust-dependency.patch
-Patch3:         efivar-filter-gcc-march.patch
-Patch4:         efivar-bsc1206388-revamp-efi_well_known-variable-handling.patch
+Patch1:         efivar-filter-gcc-march.patch
+Patch2:         efivar-bsc1286645-revert-file-wrapper-removal.patch
+Patch3:         efivar-bsc1262696-fix-stack-overflow-in-device-path-parsing.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(popt)
@@ -40,14 +38,12 @@ efivar provides a simple command line interface to the UEFI variable facility.
 
 %package -n libefivar%{major}
 Summary:        Library to manage UEFI variables
-Group:          System/Libraries
 
 %description -n libefivar%{major}
 Library to allow for the simple manipulation of UEFI variables.
 
 %package devel
 Summary:        Development headers for libefivar
-Group:          Development/Libraries/C and C++
 Requires:       libefivar%{major} = %{version}-%{release}
 
 %description devel

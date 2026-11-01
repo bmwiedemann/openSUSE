@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Oct 30 07:11:02 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add efivar-bsc1286645-revert-file-wrapper-removal.patch to revert
+  the removal of "File()" (bsc#1286645)
+- CVE-2026-6862: efivar: stack overflow in device path node parsing
+  can cause a denial of service (bsc#1262696)
+  * efivar-bsc1262696-fix-stack-overflow-in-device-path-parsing.patch
+
+-------------------------------------------------------------------
+Sun Oct 18 10:56:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 39:
+  * efivar CLI: -A accepts hex values, -a can create a
+    non-existent variable
+  * Revamped efi_well_known variable handling
+  * File device paths no longer print "File(" or ")"
+  * Fixed IPv4 and IPv6 device path printing
+  * Handle non-ACPI systems in device_get
+  * Headers gained extern "C" for easier use by C++
+  * Build fixes: musl libc, i686 format error, riscv64 -march,
+    gcc-13, invalid free in main
+  * Make-based build: LLD detection fixes, removed deprecated
+    --add-needed linker flag, docs can be disabled
+  * Upstream moved from rhinstaller to the rhboot organization
+- Drop efivar-bsc1202209-fix-glibc-2.36-build.patch,
+  efivar-adjust-dependency.patch and
+  efivar-bsc1206388-revamp-efi_well_known-variable-handling.patch:
+  all fixed upstream in this release
+- Rebase efivar-filter-gcc-march.patch for the upstream riscv64
+  rework (boo#1231368)
+- Rebase libefiboot-export-disk_get_partition_info.patch for the
+  upstream extern "C" header rework
+- Switch Source to the rhboot tag archive: upstream published no
+  release tarball for 39
+
+-------------------------------------------------------------------
 Tue Oct  8 02:18:42 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Adapt efivar-filter-gcc-march.patch to drop -march=native (boo#1231368)

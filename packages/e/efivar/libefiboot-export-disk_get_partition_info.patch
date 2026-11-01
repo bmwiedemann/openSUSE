@@ -78,11 +78,15 @@ Index: efivar-38/src/include/efivar/efiboot.h
 ===================================================================
 --- efivar-38.orig/src/include/efivar/efiboot.h
 +++ efivar-38/src/include/efivar/efiboot.h
-@@ -20,6 +20,7 @@
- 
+@@ -20,8 +20,9 @@
+
  #include <efivar/efiboot-creator.h>
  #include <efivar/efiboot-loadopt.h>
 +#include <efivar/efiboot-disk.h>
+
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
  
  extern uint32_t efi_get_libefiboot_version(void)
  	__attribute__((__visibility__("default")));
