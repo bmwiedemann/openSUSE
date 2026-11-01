@@ -821,4 +821,41 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
   * Do not use pkg_resouces in the brains or the testsuite.</comment>
     <requestid>1380283</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>5edbbf7e1514bf72896b639466acabb3</srcmd5>
+    <version>4.3.4</version>
+    <time>1793568186</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.4:
+  * Fix a ``RecursionError`` when building a module from a live
+    object that holds a container containing itself.
+  * ``Arguments.default_value()`` no longer raises ``IndexError``
+    when a keyword-only argument repeats the name of ``*args`` or
+    ``**kwargs``, as in ``def f(x, *y, y)``.
+  * Fix an infinite loop when introspecting a live class that
+    exposes itself, or a sibling class, as one of its own attributes.
+  * Fix a ``TypeError`` crash when inferring ``random.sample()``
+    on a sequence whose elements are inferred as ``Instance``.
+  * Catch ``ValueError`` during comparison inference (such as
+    invalid byte values in bytes membership checks) and return
+    ``Uninferable`` instead of raising an uncaught exception.
+  * A function whose body is only ``...`` is now inferred to
+    return ``Uninferable`` instead of ``None``, the same as a
+    function whose body is only ``pass``. This
+    is the astroid part of the fix for a false positive ``not-
+    callable`` in pylint when calling a ``...`` property stub,
+    such as the ``sqlalchemy.func`` helpers.
+- update to 4.3.3:
+  * Preserve the length of inferred list and tuple concatenations
+    when an element has multiple possible values. An ambiguous or
+    uninferable element is now represented as unknown instead of
+    being expanded into multiple sequence items.
+- update to 4.3.2:
+  * Fix a crash when a ``namedtuple`` or ``Enum`` type name or
+    field name contains ``str.format`` markup, as in ``namedtuple(&quot;{0}&quot;,
+    &quot;abc&quot;)``. The name is interpolated into an error message that
+    astroid then reformats, so building the message raised
+    ``IndexError``. Inference now falls back to its default.</comment>
+    <requestid>1393911</requestid>
+  </revision>
 </revisionlist>
