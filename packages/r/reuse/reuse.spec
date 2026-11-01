@@ -19,7 +19,7 @@
 
 %define pythons python3
 Name:           reuse
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        A tool for compliance with the REUSE recommendations
 License:        Apache-2.0 AND CC-BY-SA-4.0 AND GPL-3.0-or-later AND CC0-1.0
@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/r/reuse/reuse-%{v
 Patch0:         sphinx-docs.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext
+# git-core for the vcs tests (spec-cleaner --perl wrongly explodes this into perl(Git::*))
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3 >= 3.10
 # runtime dependencies
@@ -35,29 +37,28 @@ BuildRequires:  python3-Jinja2 >= 3.0.0
 # doc dependencies (manpage)
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-attrs >= 23.2
+# test dependencies
+BuildRequires:  python3-chardet
+BuildRequires:  python3-charset-normalizer
 BuildRequires:  python3-click >= 8.1
 BuildRequires:  python3-freezegun
 BuildRequires:  python3-license-expression >= 21.6.14
 BuildRequires:  python3-myst-parser
 BuildRequires:  python3-pip
 BuildRequires:  python3-poetry-core
-# test dependencies
-BuildRequires:  python3-chardet
-BuildRequires:  python3-charset-normalizer
 BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-lazy-fixtures >= 1.1.1
 BuildRequires:  python3-python-debian >= 0.1.48
 BuildRequires:  python3-python-magic >= 0.4.12
 BuildRequires:  python3-sphinxcontrib-apidoc
-BuildRequires:  python3-tomlkit >= 0.8
-# git-core for the vcs tests (spec-cleaner --perl wrongly explodes this into perl(Git::*))
-BuildRequires:  git-core
+BuildRequires:  python3-tomlkit >= 0.11.7
 Requires:       python3-Jinja2 >= 3.0.0
 Requires:       python3-attrs >= 23.2
 Requires:       python3-click >= 8.1
 Requires:       python3-license-expression >= 21.6.14
 Requires:       python3-python-debian >= 0.1.48
 Requires:       python3-python-magic >= 0.4.12
-Requires:       python3-tomlkit >= 0.8
+Requires:       python3-tomlkit >= 0.11.7
 Recommends:     git-core
 
 %description

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov  1 14:40:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.3.0:
+  * Fix broken `reuse download` (stored SPDX
+    license-list-data URL changed upstream)
+  * Add `--replace-license` flag to `reuse download`
+  * Add `--skip-global` and `--skip-precedence` to
+    `reuse annotate`; keep unknown REUSE.toml keys
+  * Add Fossil SCM support and lowercase (c)
+    copyright prefix
+  * Recognize new file types: Perl, Odin, Pascal,
+    Bazel/Buck2, Crystal, Twig, Zon and more
+  * Raise python3-tomlkit floor to >= 0.11.7
+    (upstream requirement)
+  * Add python3-pytest-lazy-fixtures to the test
+    BuildRequires (needed by the 6.3.0 testsuite)
+- Reorder BuildRequires alphabetically (spec-cleaner)
+
+-------------------------------------------------------------------
 Thu Jun 18 16:02:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.2.0 (fixes the build; the package was flagged
