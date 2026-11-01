@@ -177,4 +177,12 @@
     <comment>Update to 6.2.0</comment>
     <requestid>1341701</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>70a7611d76e1b2815ee81576b9a1cc9a</srcmd5>
+    <version>6.2.0</version>
+    <time>1793568268</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the phonon build dependency</comment>
+    <requestid>1394246</requestid>
+  </revision>
 </revisionlist>
