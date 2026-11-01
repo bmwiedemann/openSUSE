@@ -716,6 +716,7 @@
     <package name="ibus-m17n-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-mozc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-mozc-candidate-window" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="ibus-sunpinyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-table" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-table-chinese-array" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-table-chinese-cangjie" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2670,6 +2671,7 @@
     <package name="libstorage-ng1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libsubid6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsuitesparseconfig7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libsunpinyin3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsvrcore0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libswresample6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libswscale9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3825,6 +3827,7 @@
     <package name="sudo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="sudo-plugin-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="sudo-policy-wheel-auth-self" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="sunpinyin-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="suse-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="suse-module-tools-scriptlets" supportstatus="unsupported"/> <!-- reason: dvd:suse-module-tools-scriptlets -->

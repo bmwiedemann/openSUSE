@@ -2484,6 +2484,7 @@ unsorted:
   - codehaus-parent 
   - codemodel 
   - codemodel-javadoc 
+  - codenomad 
   - codespell 
   - coeurl-devel 
   - cog 
@@ -4306,7 +4307,6 @@ unsorted:
   - figlet 
   - file-devel 
   - file-unpack 
-  - file-unpack2 
   - fileb0x 
   - filelight 
   - filelight-lang 
@@ -8530,6 +8530,8 @@ unsorted:
   - gwenhywfar-lang 
   - gwenhywfar-qt6-devel 
   - gwenhywfar-tools 
+  - gxmessage 
+  - gxmessage-lang 
   - gxml-devel 
   - gxml-doc 
   - gxml-lang 
@@ -8614,6 +8616,8 @@ unsorted:
   - hcloud-upload-image-bash-completion 
   - hcloud-upload-image-fish-completion 
   - hcloud-upload-image-zsh-completion 
+  - hcxdumptool 
+  - hcxtools 
   - hda-verb 
   - hdajackretask 
   - hdajacksensetest 
@@ -8965,7 +8969,6 @@ unsorted:
   - ibus-kkc 
   - ibus-rime 
   - ibus-skk 
-  - ibus-sunpinyin 
   - ibus-table-cns11643 
   - ibus-table-compose 
   - ibus-table-devel 
@@ -10470,22 +10473,33 @@ unsorted:
   - kiriki-lang 
   - kismet 
   - kismet-capture-antsdr-droneid 
+  - kismet-capture-catsniffer-zigbee 
+  - kismet-capture-cell-at 
+  - kismet-capture-cell-diag 
   - kismet-capture-freaklabs-zigbee 
   - kismet-capture-linux-bluetooth 
   - kismet-capture-linux-wifi 
+  - kismet-capture-lorapipe 
+  - kismet-capture-mm8108-halow 
   - kismet-capture-nrf-51822 
   - kismet-capture-nrf-52840 
   - kismet-capture-nrf-mousejack 
   - kismet-capture-nrf-nxp-kw41z 
   - kismet-capture-radiacode-usb 
+  - kismet-capture-rtlais 
+  - kismet-capture-rtlaisadsb 
   - kismet-capture-rz-killerbee 
   - kismet-capture-sdr-rtl433 
   - kismet-capture-sdr-rtladsb 
   - kismet-capture-serial-radview 
+  - kismet-capture-sniffle-ble 
   - kismet-capture-ti-cc-2531 
   - kismet-capture-ti-cc2540 
+  - kismet-capture-usbwifi 
+  - kismet-capture-wch-ble-analyzer-pro 
   - kismet-common 
   - kismet-devel 
+  - kismet-firmware 
   - kismet-logtools 
   - kissfft 
   - kissfft-devel 
@@ -11427,7 +11441,7 @@ unsorted:
   - libIMECore0 
   - libIMEPinyin0 
   - libIMETable0 
-  - libIPSec_MB2 
+  - libIPSec_MB3 
   - libIccXML-devel 
   - libIccXML2 
   - libIex-3_5-34-32bit 
@@ -16825,7 +16839,6 @@ unsorted:
   - libsundials_sunnonlin4-mvapich2 
   - libsundials_sunnonlin4-openmpi4 
   - libsundials_sunnonlin4-openmpi5 
-  - libsunpinyin3 
   - libsuperlu7 
   - libsuperlu7-32bit 
   - libsurgescript0_6_1 
@@ -17415,7 +17428,7 @@ unsorted:
   - libwebsockets-evlib_event 
   - libwebsockets-evlib_glib 
   - libwebsockets-evlib_uv 
-  - libwebsockets22 
+  - libwebsockets23 
   - libweston-16 
   - libweston-16-0 
   - libwf-config1 
@@ -35421,7 +35434,6 @@ unsorted:
   - sundials-mvapich2-devel 
   - sundials-openmpi4-devel 
   - sundials-openmpi5-devel 
-  - sunpinyin-data 
   - sunpinyin-devel 
   - sunpinyin-tools 
   - sunwait 
@@ -46725,6 +46737,7 @@ unsorted:
   - uefi-shell-aarch64 
   - uefi-shell-riscv64 
   - uefi-shell-x86_64 
+  - uefisettings 
   - ufiformat 
   - ufraw 
   - ufraw-lang 
@@ -48244,12 +48257,15 @@ unsorted:
   - zig-libs0.14 
   - zig-libs0.15 
   - zig-libs0.16 
+  - zig-libs0.17 
   - zig-rpm-macros0.14 
   - zig-rpm-macros0.15 
   - zig-rpm-macros0.16 
+  - zig-rpm-macros0.17 
   - zig0.14 
   - zig0.15 
   - zig0.16 
+  - zig0.17 
   - zile 
   - zim 
   - zim-lang 
