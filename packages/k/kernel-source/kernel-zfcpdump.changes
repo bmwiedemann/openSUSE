@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Sat Oct 31 12:17:07 CET 2026 - jslaby@suse.cz
+
+- Linux 7.3.1 (bsc#1012628).
+- io_uring/poll: don't loop on HUP with multiple references
+  (bsc#1012628).
+- pid_namespace: prevent TIF_NOTIFY_SIGNAL from interrupting
+  the reaper (bsc#1012628).
+- coredump: prevent TIF_NOTIFY_SIGNAL from interrupting coredumps
+  (bsc#1012628).
+- signal: allow taks to temporarily block TIF_NOTIFY_SIGNAL
+  (bsc#1012628).
+- exit: hang up the tty before closing the files (bsc#1012628).
+- fork: release the files of a failed fork after
+  sched_cancel_fork() (bsc#1012628).
+- ptrace: refuse to change the signal mask of a user worker
+  (bsc#1012628).
+- io-wq: order the exit bit against worker creation task work
+  (bsc#1012628).
+- signal: only SIGKILL and the freezers interrupt a coredumping
+  task (bsc#1012628).
+- signal: don't retarget shared signals in a dying thread group
+  (bsc#1012628).
+- coredump: hold RCU while releasing parked threads (bsc#1012628).
+- ftrace: Initialize modname and offset in print_rec()
+  (bsc#1012628).
+- asymmetric_keys: reject trust keys without IDs (bsc#1012628).
+- keys/trusted_keys: return immediately after TPM unseal failure
+  (bsc#1012628).
+- KEYS: trusted: Fix blob allocation size in tpm2_key_decode()
+  (bsc#1012628).
+- KEYS: Fix key_reject_and_link() race with keyring restriction
+  (bsc#1012628).
+- keys: Protect the read method check against type removal
+  (bsc#1012628).
+- keys: make keyring indexes independent of kernel addresses
+  (bsc#1012628).
+- keys: Protect the type name while describing a key
+  (bsc#1012628).
+- keys: Check the authorization payload in process keyring
+  searches (bsc#1012628).
+- keys: Avoid the owner account dereference in named keyring
+  lookup (bsc#1012628).
+- io_uring: end the drain when the drain request completes
+  (bsc#1012628).
+- io_uring/waitid: prevent cancel reference wrap (bsc#1012628).
+- io_uring/net: keep recv buffer select length within MAX_RW_COUNT
+  (bsc#1012628).
+- io_uring/wait: wake real-time waiters from hard interrupt
+  context (bsc#1012628).
+- io_uring/poll: avoid retry wakeup loss when dropping ownership
+  (bsc#1012628).
+- tracing/syscalls: Use copy_from_user for the faultable syscall
+  buffer (bsc#1012628).
+- tracing/histograms: Verify event_call identity when updating
+  synth_event refcount (bsc#1012628).
+- tracing: Fix 64-bit and signed histogram fields on 32-bit
+  kernels (bsc#1012628).
+- tracing: Add the bucket size to expr_field_str() (bsc#1012628).
+- tracing: Unregister field variable histograms when the command
+  fails (bsc#1012628).
+- tracing: Save the event file instead of the compatible histogram
+  (bsc#1012628).
+- tracing: Reject incomplete event filter expressions
+  (bsc#1012628).
+- tracing: Hold trace_types_lock when resetting last boot data
+  from readers (bsc#1012628).
+- tracing: Hold trace_types_lock when updating modules in
+  persistent instances (bsc#1012628).
+- tools/dma: fix building with O= (bsc#1012628).
+- Bluetooth: L2CAP: refuse __l2cap_chan_add if chan already has
+  conn (bsc#1012628).
+- mm/damon/core: error damos_commit_quota_goal() for zero
+  target_value (bsc#1012628).
+- genirq/proc: Fix missing CPU header in /proc/interrupts
+  (bsc#1012628).
+- commit 8815021
+
+-------------------------------------------------------------------
+Fri Oct 30 13:41:39 CET 2026 - msuchanek@suse.de
+
+- rpm/release-projects: Add SUSE:SLFO:Kernel:1.0
+- commit 2b42edb
+
+-------------------------------------------------------------------
+Thu Oct 29 17:06:31 CET 2026 - msuchanek@suse.de
+
+- rpm/mkspec: Adjust for 32bit arch rename again
+  There is a discrepancy between OBS architecture and rpm architecture for
+  32bit arm. Specify both variants.
+  Fixes: 38dbb311314 ("rpm/mkspec: Adjust for 32bit Arm arch rename")
+- commit 09b332e
+
+-------------------------------------------------------------------
+Mon Oct 26 13:19:51 CET 2026 - msuchanek@suse.de
+
+- Revert "mkspec: Exclude rt flavor from kernel-syms dependencies (bsc#1244337)."
+  This reverts commit 7c95ae0ac0bb4a4481565e3a3ead1e221ced817c.
+- commit ee3b323
+
+-------------------------------------------------------------------
+Mon Oct 26 13:19:41 CET 2026 - msuchanek@suse.de
+
+- Revert "rpm/mkspec: Fix missing kernel-syms-rt creation (bsc#1244337)"
+  This reverts commit 630f139a764a8ea61dfc0bb46f3675769d8ac1e0.
+- commit ebcac98
+
+-------------------------------------------------------------------
+Mon Oct 26 13:18:28 CET 2026 - msuchanek@suse.de
+
+- Revert "rpm/mkspec: Exclude azure from kernel-syms dependencies"
+  This reverts commit c174e9bd96115668914bc3ed97c2df3525bf7930.
+- commit 16115a3
+
+-------------------------------------------------------------------
+Fri Oct 23 08:39:50 CEST 2026 - jslaby@suse.cz
+
+- series.conf: move a patch to sorted section
+  patches.suse/ALSA-usb-audio-Avoid-applying-boot-quirk-for-Behring.patch
+  is upstream now.
+- commit 2c911cd
+
+-------------------------------------------------------------------
+Fri Oct 23 08:38:09 CEST 2026 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/powerpc-ftrace-Don-t-restore-r13-during-ftrace_regs_caller.patch.
+  Update upstream status.
+- commit 22d516d
+
+-------------------------------------------------------------------
+Fri Oct 23 08:26:17 CEST 2026 - jslaby@suse.cz
+
+- x86/mm/pat: Use pr_warn() for early W^X warnings (bsc#1284523).
+- commit f130505
+
+-------------------------------------------------------------------
+Wed Oct 21 20:34:40 CEST 2026 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- move a patch to correct place
+  (No effect on expanded tree.)
+- commit 1101379
+
+-------------------------------------------------------------------
+Wed Oct 21 14:52:30 CEST 2026 - tiwai@suse.de
+
+- ALSA: usb-audio: Avoid applying boot quirk for Behringer
+  UMC204HD (bsc#1285896).
+- commit 71bace3
+
+-------------------------------------------------------------------
 Mon Oct 19 14:53:53 CEST 2026 - jslaby@suse.cz
 
 - Refresh
