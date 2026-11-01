@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 31 14:33:42 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.10.11:
+  * Added cross-DBMS security configuration audit switch (--audit)
+  * Implemented --links switch to crawl targets for links
+  * Fixed REST API multi-target scans returning only the last
+    target's results (gh#sqlmapproject/sqlmap#2503)
+  * Fixed parsing of current Bing result links in web search
+    fallback (gh#sqlmapproject/sqlmap#6150)
+  * Fixed Ctrl-C hang on Python 3.14 due to leaked cache locks
+  * Made test_ssti and test_xpath runnable standalone
+
+-------------------------------------------------------------------
 Tue Oct  6 07:39:52 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.10.10:
