@@ -22,13 +22,11 @@ Version:        1.0.8
 Release:        0
 Summary:        A Program for Compressing Files
 License:        BSD-3-Clause
-Group:          Productivity/Archiving/Compression
 URL:            https://sourceware.org/bzip2
 Source0:        https://sourceware.org/pub/bzip2/%{name}-%{version}.tar.gz
 Source1:        bznew.gz
 Source2:        bznew.1.gz
 Source3:        baselibs.conf
-Source100:      bzip2-rpmlintrc
 # PATCH-FEATURE-OPENSUSE bzip2-1.0.6-autoconfiscated.patch sbrabec@suse.cz -- Convert to a standard autoconf based package.
 #Patch0:         ftp://ftp.suse.com/pub/people/sbrabec/bzip2/for_downstream/bzip2-1.0.6.2-autoconfiscated.patch
 Patch0:         bzip2-1.0.6.2-autoconfiscated.patch
@@ -38,10 +36,9 @@ Patch4:         bzip2-ocloexec.patch
 # CVE-2026-42250: off‑by‑one error in the bzip2recover utility when processing a specially crafted file can lead to a crash
 Patch5:         CVE-2026-42250.patch
 BuildRequires:  autoconf >= 2.57
+BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-# The following is a kludge to get updating bzip2 to after the split work
-Requires(pre):  %{libname}
 Provides:       bzip = %{version}
 Obsoletes:      bzip < %{version}
 %{?suse_build_hwcaps_libs}
@@ -51,7 +48,6 @@ The bzip2 program is a program for compressing files.
 
 %package doc
 Summary:        The bzip2 program and Library Documentation
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
@@ -59,14 +55,12 @@ The bzip2 program and library documentation.
 
 %package -n %{libname}
 Summary:        The bzip2 runtime library
-Group:          System/Libraries
 
 %description -n %{libname}
 The bzip2 runtime library
 
 %package -n libbz2-devel
 Summary:        The bzip2 runtime library development files
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       glibc-devel
 
@@ -101,6 +95,8 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_mandir}/man1
 ln -s libbz2.so.1 %{buildroot}/%{_libdir}/libbz2.so.1.0
 
 find %{buildroot} -type f -name "*.la" -delete -print
+# The alias man pages are identical .so stubs; hardlink the duplicates
+%fdupes %{buildroot}%{_mandir}/man1
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname}  -p /sbin/ldconfig

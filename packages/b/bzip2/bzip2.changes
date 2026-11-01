@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 26 10:47:04 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Remove the explicit Requires(pre) on libbz2-1: the bzip2 binaries
+  already generate a libbz2.so.1()(64bit) dependency, which only
+  libbz2-1 provides, so the effective requirement is unchanged, and
+  bzip2 ships no %pre scriptlet for the (pre) qualifier to serve.
+  Drop bzip2-rpmlintrc with it; its only filter hid the resulting
+  explicit-lib-dependency error
+- Hardlink the duplicated alias man-page stubs (bzcat.1/bunzip2.1
+  and bzfgrep.1/bzegrep.1) with %fdupes
+- Drop the Group tags
+
+-------------------------------------------------------------------
 Wed Aug 26 17:37:34 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Fix CVE-2026-42250, off‑by‑one error in the bzip2recover utility when
