@@ -764,6 +764,7 @@ packagesets:
    - ibus-m17n-lang # reason: dvd:openSUSE-release
    - ibus-mozc # reason: dvd:openSUSE-release
    - ibus-mozc-candidate-window # reason: dvd:openSUSE-release
+   - ibus-sunpinyin # reason: dvd:openSUSE-release
    - ibus-table # reason: dvd:openSUSE-release
    - ibus-table-chinese-array # reason: dvd:openSUSE-release
    - ibus-table-chinese-cangjie # reason: dvd:openSUSE-release
@@ -2718,6 +2719,7 @@ packagesets:
    - libstorage-ng1 # reason: dvd:patterns-kde-kde
    - libsubid6 # reason: dvd:patterns-gnome-gnome
    - libsuitesparseconfig7 # reason: dvd:patterns-gnome-gnome
+   - libsunpinyin3 # reason: dvd:openSUSE-release
    - libsvrcore0 # reason: dvd:patterns-media-rest_dvd
    - libswresample6 # reason: dvd:openSUSE-release
    - libswscale9 # reason: dvd:openSUSE-release
@@ -3873,6 +3875,7 @@ packagesets:
    - sudo # reason: dvd:patterns-base-console
    - sudo-plugin-python # reason: dvd:patterns-base-console
    - sudo-policy-wheel-auth-self # reason: dvd:patterns-media-rest_dvd
+   - sunpinyin-data # reason: dvd:openSUSE-release
    - suse-fonts # reason: dvd:patterns-gnome-gnome
    - suse-module-tools # reason: dvd:grub2
    - suse-module-tools-scriptlets # reason: dvd:suse-module-tools-scriptlets
