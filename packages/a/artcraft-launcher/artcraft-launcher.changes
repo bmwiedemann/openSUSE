@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov  1 10:00:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.0 (upstream tag v0.12.0):
+  * New community app Craft Anything in the catalog, with its
+    app icon, details page and translations; Flatpak OCI image
+    build helper and a Windows antivirus incident note.
+  * Re-vendor (update=false, filter=true): dependency set
+    unchanged (workspace version stamps only); Windows-only
+    crate files filtered out; licence set and Legal-Review-Notice
+    unchanged; cargo_audit reports no advisories.
+  * All three patches apply unchanged (no upstream changes in
+    the patched files); the rpm-managed copy still only
+    announces a newer launcher, it never installs upstream
+    builds over distro files.
+  * Strip ring's Windows-only pregenerated objects from the
+    vendor with checksum repair (Linux builds them from sources).
+- Set the fixed metainfo release date to 2026-11-01 (v0.12.0).
+
+-------------------------------------------------------------------
 Sat Oct 31 13:50:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.1 (upstream tags v0.10.0, v0.11.0, v0.11.1):
