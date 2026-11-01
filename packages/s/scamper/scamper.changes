@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Oct 25 10:21:23 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 20261019:
+  * scamper:
+    when running with privsep, have the child process become the
+    unprivileged process.  the parent process continues to run as the
+    user that started scamper, and is the process that should receive
+    signals.  previously, the child process was the process that could
+    receive signals from the user that started scamper.
+    remove "get pid" non-feature from scamper control socket
+    make ipfw code work on FreeBSD 15
+  * libscamperctrl:
+    factor out duplicate code in scamper_ctrl_wait, put per-platform
+    code in helper functions
+    have fd_write() loop on tx queue when scamper_ctrl_wait is called,
+    instead of sending one item from the top of the queue.
+    bump library version
+  * sc_hoiho:
+    fix typos.
+    for asnames dictionary file, skip over empty lines, reject malformed
+    lines, strip whitespace.
+    update FNU code to process new class quantifiers added since 2019.
+    options processing:
+    - do not accept -r <regex-str> with -O learngeo.
+    - require -O learngeo with -f / -l
+    - sanity check -r <regex-str> input
+    - do not allow -l 0
+    exit with a message if -D was provided but there are no routers
+    in specified domain
+    lint manual page
+  * sc_rxifd:
+    remove bioaddr_from_sockaddr, silencing gcc false positive
+  * sc_radargun, sc_tbitblind, sc_tbitpmtud:
+    convert to libscamperctrl
+  * sc_uptime:
+    convert to libscamperctrl
+    update examples in man page to match code
+
+-------------------------------------------------------------------
 Sun Sep  6 17:53:01 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
 
 * update to version 20260902:
