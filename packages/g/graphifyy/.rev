@@ -63,4 +63,12 @@
     <comment>Update graphifyy to 0.9.99 (0.9.x track).</comment>
     <requestid>1394112</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>15227beb052b06aa128d7f06c6f7be84</srcmd5>
+    <version>0.9.100</version>
+    <time>1793568295</time>
+    <user>dimstar_suse</user>
+    <comment>Update graphifyy to 0.9.100</comment>
+    <requestid>1394295</requestid>
+  </revision>
 </revisionlist>

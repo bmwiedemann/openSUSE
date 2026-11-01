@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Nov  1 14:38:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.100 (stays on the 0.9.x track):
+  * ids: names differing only in case no longer collide into
+    one node with a bogus self-loop
+  * PHP: class-level Scope::MEMBER accesses emit
+    references_constant edges
+  * resolve: reference edges indexed once, speeding JS/TS
+    import resolution with unchanged output
+  * JVM: Java/Kotlin imports, extends/implements and member
+    calls resolve across files and languages
+  * affected/query seeds accept explain's path and dotted
+    forms, exiting 3 on ambiguity, 4 when not found
+  * export lists parallel relations; raw writes stay
+    multigraph across reload
+  * extractors: R S4/R5 contains=, Fortran extends(), Dart
+    mixin on-clauses, Scala extension scoping, Elixir
+    same-module preference fixes
+  * video extra caps PyAV below 19 (faster-whisper needs
+    the metadata_errors argument 19 removed)
+  * LLM: Claude system-prompt caching, disabled via
+    GRAPHIFY_CLAUDE_PROMPT_CACHE=0
+  * uninstall removes every platform skill; moved Terraform
+    project dirs keep stable ids
+
+-------------------------------------------------------------------
 Sat Oct 31 13:44:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.99 (stays on the 0.9.x track):
