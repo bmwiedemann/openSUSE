@@ -22,15 +22,13 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name:           lsp-plugins
-Version:        1.2.34
+Version:        1.2.37
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://lsp-plug.in/
 Source0:        https://github.com/sadko4u/lsp-plugins/releases/download/%{version}/%{name}-src-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM empty_url.patch
-Patch0:         empty_url.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
@@ -42,6 +40,7 @@ BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
@@ -165,7 +164,6 @@ Development files for Linux Studio Plugins
 
 %prep
 %setup -q -n %{name}
-%autopatch -p1
 
 %build
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
