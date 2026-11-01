@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 30 10:13:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix:
+  * CVE-2026-105924-qtbase-6.12.diff (CVE-2026-105924)
+
+-------------------------------------------------------------------
 Tue Oct 13 12:14:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes:

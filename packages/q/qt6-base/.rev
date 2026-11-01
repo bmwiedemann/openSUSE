@@ -754,4 +754,13 @@
     <comment>Qt 6.12.0</comment>
     <requestid>1384606</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>521ff82eea7ec1aa6a8a6b1d33f368a3</srcmd5>
+    <version>6.12.0</version>
+    <time>1793568065</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream fix:
+  * CVE-2026-105924-qtbase-6.12.diff (CVE-2026-105924)</comment>
+    <requestid>1393864</requestid>
+  </revision>
 </revisionlist>
