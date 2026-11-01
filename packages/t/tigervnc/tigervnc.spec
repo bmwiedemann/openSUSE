@@ -42,7 +42,6 @@ Version:        1.16.1
 Release:        0
 Summary:        An implementation of VNC
 License:        GPL-2.0-only AND MIT
-Group:          System/X11/Servers/XF86_4
 URL:            https://tigervnc.org/
 Source0:        https://github.com/TigerVNC/tigervnc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        10-libvnc.conf
@@ -102,7 +101,6 @@ BuildRequires:  libXdamage-devel
 BuildRequires:  libXrandr-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpg-error-devel
-BuildRequires:  mozilla-nss
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
@@ -169,10 +167,8 @@ extensions for advanced authentication methods and TLS encryption.
 
 %package -n xorg-x11-Xvnc
 Summary:        TigerVNC implementation of Xvnc
-Group:          System/X11/Servers/XF86_4
 Requires(pre):  group(shadow)
 %sysusers_requires
-Requires(post): /bin/awk
 Requires(post): systemd
 %if %{use_firewalld}
 BuildRequires:  firewall-macros
@@ -204,8 +200,6 @@ This is the TigerVNC implementation of Xvnc.
 
 %package -n xorg-x11-Xvnc-module
 Summary:        VNC module for X server
-#%%{x11_abi_extension_req}
-Group:          System/X11/Servers/XF86_4
 Requires:       xorg-x11-Xvnc
 
 %description -n xorg-x11-Xvnc-module
@@ -215,7 +209,6 @@ configuration.
 
 %package -n xorg-x11-Xvnc-novnc
 Summary:        NoVNC service for Xvnc
-Group:          System/X11/Servers/XF86_4
 Requires:       novnc
 Requires:       python3-websockify
 Requires:       xorg-x11-Xvnc
@@ -227,7 +220,6 @@ A service that starts noVNC linked to Xvnc server.
 
 %package -n xorg-x11-Xvnc-java
 Summary:        VNC viewer in java
-Group:          System/X11/Servers/XF86_4
 BuildArch:      noarch
 %{?systemd_requires}
 
@@ -237,14 +229,12 @@ an applet inside web page.
 
 %package -n libXvnc1
 Summary:        X extension to control VNC module
-Group:          System/Libraries
 
 %description -n libXvnc1
 Xvnc extension allows X clients to read and change VNC configuration.
 
 %package -n libXvnc-devel
 Summary:        X extension to control VNC module
-Group:          Development/Libraries/C and C++
 Requires:       libXvnc1 = %version
 
 %description -n libXvnc-devel
@@ -252,7 +242,6 @@ Xvnc extension allows X clients to read and change VNC configuration.
 
 %package x11vnc
 Summary:        Wrapper that starts x0vncserver
-Group:          System/X11/Servers/XF86_4
 Requires:       xorg-x11-Xvnc
 Conflicts:      x11vnc
 Provides:       x11vnc
@@ -442,20 +431,6 @@ done
 %{firewalld_reload}
 %endif
 
-# If there is old xinetd configuration file and VNC service was enabled, enable the systemd service too.
-# Once we are done, RPM will rename the file to /etc/xinetd.d/vnc.rpmsave, so this won't happen
-# during future updates.
-if [ -e %{_sysconfdir}/xinetd.d/vnc ] && awk '
-  BEGIN { in_vnc1_section = 0 }
-  /service.*vnc1/ { in_vnc1_section = 1 }
-  in_vnc1_section && /disable\s*=\s*yes/ { exit 1 }
-  in_vnc1_section && /}/ { exit 0 }
-  ' %{_sysconfdir}/xinetd.d/vnc;
-then
-  echo "Found old xinetd configuration with enabled VNC service. Enabling xvnc.socket."
-  systemctl enable xvnc.socket
-fi
-
 %preun -n xorg-x11-Xvnc
 %service_del_preun xvnc.socket xvnc.target
 
@@ -632,8 +607,8 @@ fi
 
 %if %{with selinux}
 %files selinux
-%{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.bz2
-%ghost %verify(not md5 size mtime) %{_selinux_store_path}/%{selinuxtype}/active/modules/200/%{modulename}
+%attr(0644,root,root) %{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.bz2
+%ghost %attr(0644,root,root) %verify(not md5 size mtime) %{_selinux_store_path}/%{selinuxtype}/active/modules/200/%{modulename}
 %endif
 
 %changelog

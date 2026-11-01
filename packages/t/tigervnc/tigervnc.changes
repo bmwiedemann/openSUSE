@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 26 10:53:22 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Remove the xinetd migration block from the xorg-x11-Xvnc %post.
+  It enabled xvnc.socket with a direct systemctl call when an
+  enabled /etc/xinetd.d/vnc was found (bnc#1085974); the migration
+  is one-shot by design, has shipped since 2018, and enablement is
+  preset-driven via %service_add_post. The block was also the only
+  consumer of Requires(post): /bin/awk, which goes with it
+- Ship the SELinux policy module with 0644 permissions (it is data,
+  not an executable) and annotate the SELinux store %ghost with
+  its mode
+- Drop the unused mozilla-nss BuildRequires: the Java client is no
+  longer signed and nothing in the build invokes the NSS tools
+- Drop the obsolete Group tags and a dead commented-out macro line
+
+-------------------------------------------------------------------
 Tue Jul 14 08:40:48 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Add nettle4 compatibility [b434432] (bsc#1257934)
