@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 26 10:48:01 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Remove the leftover update-alternatives %post fragment and its
+  Requires(post) from the mt subpackage. cpio-mt migrated away from
+  update-alternatives to a Conflicts strategy (bsc#1240092) and the
+  SLE 16 band already ships without the fragment (jsc#PED-15643);
+  as written it could never fire, since it deregisters the
+  alternative only when gnumt is absent, while cpio-mt’s own %post
+  always runs with gnumt installed
+- Annotate the two %ghost files of the mt subpackage with %attr
+  (0755 for the /usr/bin/mt symlink path, 0644 for its man page)
+  to silence the zero-permission ghost warnings; the ghosts stay
+  so a stale /usr/bin/mt keeps an owning package
+- Drop the obsolete Group tags and the commented-out install-info
+  prereq lines
+
+-------------------------------------------------------------------
 Sun Aug 30 03:47:05 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Adjust doc mtime for reproducible cpio.info (boo#1047218)

@@ -21,7 +21,6 @@ Version:        2.15
 Release:        0
 Summary:        A Backup and Archiving Utility
 License:        GPL-3.0-only
-Group:          Productivity/Archiving/Backup
 URL:            https://www.gnu.org/software/cpio/cpio.html
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2.sig
@@ -54,8 +53,6 @@ Patch13:        CVE-2026-66486.patch
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 BuildRequires:  makeinfo
-#Requires(post): %{xinstall_info_prereq}
-#Requires(preun): %{xinstall_info_prereq}
 Suggests:       rmt
 Suggests:       %{name}-mt = %{version}
 
@@ -68,11 +65,7 @@ the disk, a magnetic tape, or a pipe.
 
 %package mt
 Summary:        Tape drive control utility
-Group:          Productivity/Archiving/Backup
 Requires:       %{name} = %{version}
-%if %{suse_version} <= 1600 || %{suse_version} >= 1699
-Requires(post): update-alternatives
-%endif
 Provides:       mt
 Conflicts:      mt
 
@@ -110,13 +103,6 @@ ln -sf %{_bindir}/cpio %{buildroot}/bin
 %check
 make %{?_smp_mflags} check
 
-%if %{suse_version} <= 1600 || %{suse_version} >= 1699
-%post mt
-if [ ! -f %{_bindir}/gnumt ] ; then
-   "%{_sbindir}/update-alternatives" --remove mt %{_bindir}/gnumt
-fi
-%endif
-
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
@@ -134,9 +120,9 @@ fi
 %{_mandir}/man1/cpio.1%{?ext_man}
 
 %files mt
-%ghost %{_bindir}/mt
+%ghost %attr(0755,root,root) %{_bindir}/mt
 %{_bindir}/gnumt
-%ghost %{_mandir}/man1/mt.1%{ext_man}
+%ghost %attr(0644,root,root) %{_mandir}/man1/mt.1%{ext_man}
 %{_mandir}/man1/gnumt.1%{?ext_man}
 
 %files lang -f %{name}.lang
