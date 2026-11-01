@@ -34,6 +34,8 @@ License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-3d-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         CVE-2026-111487.patch
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
@@ -57,6 +59,10 @@ BuildRequires:  pkgconfig(zlib)
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
+%endif
+%if !%{qt6_docs_flavor}
+# system imgui can't be used
+Provides:       bundled(imgui) = 1.91.0
 %endif
 
 %description
@@ -519,6 +525,8 @@ Qt 6 3D QML imports.
 
 %prep
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
+
+rm -r src/3rdparty/assimp/{src,unzip}
 
 # Empty file used for the meta packages
 touch meta_package

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 31 11:33:50 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * CVE-2026-111487.patch (CVE-2026-111487, QTBUG-150977)
+
+-------------------------------------------------------------------
 Wed Sep 30 16:08:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

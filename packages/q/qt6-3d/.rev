@@ -369,4 +369,13 @@
     <comment>Qt 6.12.0 (forwarded request 1384293 from krop)</comment>
     <requestid>1384383</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>6deda5650603428f9bdbe5a905130d89</srcmd5>
+    <version>6.12.0</version>
+    <time>1793568105</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change:
+  * CVE-2026-111487.patch (CVE-2026-111487, QTBUG-150977)</comment>
+    <requestid>1394080</requestid>
+  </revision>
 </revisionlist>
