@@ -1,0 +1,78 @@
+Do not generate PWA icons at build time (drop vite-plugin-pwa pwaAssets).
+
+The pwaAssets generator (preset minimal-2023) runs
+@vite-pwa/assets-generator on sharp with its prebuilt libvips
+binaries to render icon variants. Nothing else in the tree uses
+sharp: no workspace depends on it and no source imports it, so
+without this option the generator module is never imported and
+sharp never loads. The generated icons (pwa-192x192.png and
+friends) are gone from the PWA output; the manifest text and the
+precache of every other asset are unchanged. The two consumers
+of the generated icon now use the static app icon that the UI
+build already stages as public/logo.png: the packaged-resources
+smoke check and the Windows toast identity (test path updated
+to match).
+
+--- a/packages/ui/vite.config.ts	2026-11-01 00:00:00.000000000 +0100
++++ b/packages/ui/vite.config.ts	2026-11-01 00:00:00.000000000 +0100
+@@ -51,7 +51,7 @@
+       name: "prepare-pwa-source-icon",
+       apply: "build",
+       buildStart() {
+-        // vite-pwa-assets requires the source image inside root/public/
++        // Stage the static app icon inside root/public/ for packaging
+         const source = resolve(__dirname, "src/images/CodeNomad-Icon.png")
+         const publicDir = resolve(__dirname, "src/renderer/public")
+         const dest = resolve(publicDir, "logo.png")
+@@ -62,10 +62,6 @@
+     VitePWA({
+       registerType: "autoUpdate",
+       injectRegister: "auto",
+-      pwaAssets: {
+-        preset: "minimal-2023",
+-        image: "public/logo.png",
+-      },
+       manifest: {
+         name: "CodeNomad",
+         short_name: "CodeNomad",
+--- a/scripts/smoke-packaged-resources.cjs	2026-11-01 00:00:00.000000000 +0100
++++ b/scripts/smoke-packaged-resources.cjs	2026-11-01 00:00:00.000000000 +0100
+@@ -68,8 +68,8 @@
+   const entrypoint = path.join(serverRoot, "dist", "bin.js")
+   // Remote Control's self-contained OpenTunnel bundle, loaded on demand.
+   const remoteTunnel = path.join(serverRoot, "dist", "remote-control", "tunnel-runtime.js")
+-  // The web app's icon, which also names Tauri's notifications on Windows.
+-  const appIcon = path.join(serverRoot, "public", "pwa-192x192.png")
++  // The web app's static icon, which also names Tauri's notifications on Windows.
++  const appIcon = path.join(serverRoot, "public", "logo.png")
+   // Distro build: no downloaded bundle on OBS; smoke the system Node.js
+   // that the Rust backend resolves at runtime (see managed_node.rs).
+   const bundledNode = nodeBinary(resourcesRoot, target)
+--- a/packages/tauri-app/src-tauri/src/windows_notification_identity.rs	2026-11-01 00:00:00.000000000 +0100
++++ b/packages/tauri-app/src-tauri/src/windows_notification_identity.rs	2026-11-01 00:00:00.000000000 +0100
+@@ -25,13 +25,13 @@
+     format!(r"Software\Classes\AppUserModelId\{identifier}")
+ }
+ 
+-/// The web app's icon, which the bundled server's UI build always ships (its manifest
+-/// references it; `scripts/smoke-packaged-resources.cjs` checks it).
++/// The web app's static icon, which the bundled server's UI build always ships
++/// (`scripts/smoke-packaged-resources.cjs` checks it).
+ fn toast_icon() -> Option<PathBuf> {
+     let icon = std::env::current_exe()
+         .ok()?
+         .parent()?
+-        .join(r"resources\server\public\pwa-192x192.png");
++        .join(r"resources\server\public\logo.png");
+     icon.is_file().then_some(icon)
+ }
+ 
+@@ -98,7 +98,7 @@
+     fn registers_the_identifier_with_a_name_and_icon_under_the_current_user() {
+         let identifier = format!("ai.neuralnomads.codenomad.test.s{}", std::process::id());
+         let path = key_path(&identifier);
+-        let icon = Path::new(r"C:\CodeNomad\resources\server\public\pwa-192x192.png");
++        let icon = Path::new(r"C:\CodeNomad\resources\server\public\logo.png");
+         write(&path, Some(icon)).unwrap();
+         let key = format!(r"HKCU\{path}");
+         let query = Command::new("reg").args(["query", &key]).output().unwrap();

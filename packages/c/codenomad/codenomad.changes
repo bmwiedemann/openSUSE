@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 31 18:33:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Recommend git-core for the repo/worktree features,
+  trim source maps and upstream test files from the
+  staged resources, re-derive License over the shipped
+  trees, and check the shipped crate like upstream CI does.
+- Add codenomad-wayland-default.patch: default to native Wayland
+  instead of upstream's X11-first GTK pin, with the
+  StartupWMClass aligned to the application ID.
+- Add codenomad-no-pwa-assets.patch: drop the PWA pwaAssets
+  icon generation, the only sharp consumer, and delete the
+  sharp/libvips Linux binaries from the vendored tarballs.
+  Cost: the generated PWA icons are gone from the build
+  output; smoke check and Windows toast use static logo.png.
+- Build esbuild 0.21.5 + 0.25.12 from source in %build
+  (new Sources 20-22) and delete the 4 prebuilt platform
+  binaries from the vendored tarballs.
+- Build the rollup 4.52.5 NAPI binding from source in %build
+  (new Sources 23-24) and delete the 2 prebuilt .node files
+  from the vendored tarballs.
+- Add missing BuildRequires: cmake for the vendored cmake
+  build scripts (rollup NAPI, mimalloc).
+
+-------------------------------------------------------------------
 Fri Oct 30 19:11:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - New package 1.0.1 (Tauri flavor): AI coding command center.

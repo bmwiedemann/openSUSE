@@ -1,0 +1,49 @@
+Default to native Wayland instead of preferring X11.
+
+Upstream pins the GTK backend order to X11-first (XWayland) for its
+F11 fullscreen key grab. That grab backend (global-hotkey on Linux)
+is X11-only and stays inert without an X connection, so the pin
+buys nothing on Wayland sessions while forcing everything through
+XWayland. Drop the override so GTK takes the session default;
+an explicit GDK_BACKEND keeps working, handled by GTK itself.
+The desktop entry already carries the application ID, and its
+StartupWMClass is aligned with it for correct Wayland grouping.
+
+--- a/packages/tauri-app/src-tauri/src/main.rs	2026-10-31 00:00:00.000000000 +0100
++++ b/packages/tauri-app/src-tauri/src/main.rs	2026-10-31 00:00:00.000000000 +0100
+@@ -1753,8 +1753,9 @@
+         std::env::remove_var("CLI_CONFIG");
+     }
+     configure_developer_environment();
+-    #[cfg(target_os = "linux")]
+-    appimage_environment::prefer_x11_display();
++    // Distro build: default to native Wayland. Upstream pins X11-first
++    // for its F11 key grab, but that grab backend is X11-only and stays
++    // inert without an X connection, so the pin buys nothing on Wayland.
+     let identity::LaunchProfile {
+         key: profile,
+         pinned: profile_pinned,
+--- a/packages/tauri-app/src-tauri/src/appimage_environment.rs	2026-10-31 00:00:00.000000000 +0100
++++ b/packages/tauri-app/src-tauri/src/appimage_environment.rs	2026-10-31 00:00:00.000000000 +0100
+@@ -12,14 +12,13 @@
+ use std::os::unix::ffi::{OsStrExt, OsStringExt};
+ use std::process::Command;
+
+-/// GTK prefers X11 (XWayland) and falls back to Wayland where no X server runs,
+-/// unless the session chooses: the F11 fullscreen shortcut is an X11 key grab.
+-/// Only this process's GTK: children keep the session's own backend choice.
+-pub(crate) fn prefer_x11_display() {
+-    if std::env::var_os("GDK_BACKEND").is_none() {
+-        gtk::gdk::set_allowed_backends("x11,wayland");
+-    }
+-}
++// Distro build: no backend override here, so GTK takes the session default
++// (native Wayland on Wayland sessions, X11 elsewhere). Upstream pinned
++// X11-first for its F11 key grab, but that grab backend is X11-only
++// and stays inert without an X connection, so the pin buys nothing
++// on Wayland sessions. Only this process's GTK is affected: children
++// keep the session's own backend choice, as before. An explicit
++// GDK_BACKEND keeps working, handled by GTK itself.
+
+ /// `environment`, to replace a child's whole environment, without this AppImage's mount paths.
+ pub(crate) fn host_environment(environment: HashMap<String, String>) -> HashMap<String, String> {
