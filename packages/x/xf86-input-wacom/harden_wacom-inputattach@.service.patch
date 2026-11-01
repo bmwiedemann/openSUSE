@@ -1,7 +1,7 @@
-Index: xf86-input-wacom-0.40.0/conf/wacom-inputattach@.service.in
+Index: b/conf/wacom-inputattach@.service.in
 ===================================================================
---- xf86-input-wacom-0.40.0.orig/conf/wacom-inputattach@.service.in
-+++ xf86-input-wacom-0.40.0/conf/wacom-inputattach@.service.in
+--- a/conf/wacom-inputattach@.service.in
++++ b/conf/wacom-inputattach@.service.in
 @@ -2,6 +2,17 @@
  Description=inputattach for Wacom ISDv4-compatible serial devices
  
@@ -18,5 +18,5 @@ Index: xf86-input-wacom-0.40.0/conf/wacom-inputattach@.service.in
 +RestrictRealtime=true
 +# end of automatic additions 
  Type=simple
- ExecStart=__BIN_PREFIX__/isdv4-serial-inputattach /dev/%I
+ ExecStart=@BIN_PREFIX@/isdv4-serial-inputattach /dev/%I
  Restart=on-success

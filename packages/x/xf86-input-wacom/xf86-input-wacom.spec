@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-wacom
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,14 @@
 
 
 Name:           xf86-input-wacom
-Version:        0.40.0
+Version:        1.2.0
 Release:        0
 Summary:        Wacom input driver for the Xorg X server
 License:        GPL-2.0-or-later
 Group:          System/X11/Servers/XF86_4
 URL:            https://github.com/linuxwacom/xf86-input-wacom
 Source0:        https://github.com/linuxwacom/xf86-input-wacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
-Patch7:         n_01-Add-option-to-enable-logging.patch
-Patch8:         n_02-Log-PROXIMITY-LOW-LEVEL-events.patch
-Patch9:         n_03-Log-PRESSURE-low-level-events.patch
-Patch10:        n_04-Log-BUTTON-HIGH-LEVEL-events.patch
-Patch12:        n_disable-touchscreen.patch
-Patch13:	harden_wacom-inputattach@.service.patch
+Patch1:         harden_wacom-inputattach@.service.patch
 # For directory ownership
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

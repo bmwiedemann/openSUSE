@@ -1,8 +1,336 @@
 -------------------------------------------------------------------
+Fri Oct 30 02:07:34 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- remove older tarball from sources
+
+-------------------------------------------------------------------
 Mon Feb 26 12:10:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
   PatchN.
+
+-------------------------------------------------------------------
+Sun Jan 14 18:42:18 UTC 2024 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 1.2.0:
+  * Fixing discrepancy in naxes
+  * Replace valuator array with valuator mask in convertAxes
+  * Implement smooth panscrolling
+  * Remove a comment referring to the wrong function
+  * Remove useless Wacom action name setting
+  * x11: de-duplicate the valuator number assignment
+  * gwacom: add support for special runtime options
+  * CI: update some actions to v3
+  * wacom 1.2.0
+  * Don't report error when waiting for serial number
+  * Bring two finger right-click function back
+  * Move wcmDeviceTypeKeys to wcmConfig.c
+  * Assign Wacom specific keys only to Wacom devices
+- Update to version 1.1.0:
+  * Don't report "wheel" valuator unless it exists on tool
+  * Added vim modelines to python files.
+  * meson: Fix fuzzinterface build option
+  * scan-build: xsetwacom: Avoid dead-store when parsing actions
+  * scan-build: Silence spurious null pointer warning when
+    initializing tools
+  * scan-build: Remove dead-store to subproperty variable
+  * scan-build: Silence dead-store warning from intentionally-
+    ignored value
+  * cppcheck: Avoid uninitalized variable warning
+  * Avoid Wformat-overflow warning
+  * Fix -Wformat-signedness warnings
+  * Use locally-declared unsigned loop variables to eliminate
+    warnings
+  * tools: Report when the entire buffer is garbage
+  * Store button state as unsigned int
+  * Make wcmEventCnt an unsigned int
+  * gesture: Use unsigned integers for finger indicies
+  * gesture: Make gesture distances and counts unsigned
+  * xsetwacom: Make prop_offset unsigned
+  * Make devicestate sample and time variables unsigned
+  * Change signature of Parse function to take unsigned packet
+    length
+  * Store serial numbers as unsigned values
+  * Treat value of proxout property as signed
+  * Misc. unsigned warning fixes
+  * Explicitly check for WTYPE_INVALID in switch statements
+  * wacom-record: Print unsigned values with %u rather than %d
+  * wacom-record: Change syntax for null struct initalization
+  * Fix sign-compare warnings caused by clang's integer abs()
+  * Correct buffer size passed to wcmAxisValue
+  * Avoid truncated output warning in wcmAxisDump
+  * Remove superflous 'invalid' label in wcmSetFlags
+  * autotools: Use the same set of CFLAGS as Meson builds
+  * Move -Wall and -Wextra from Github-only to default CFLAGS
+  * Enable additional compiler warnings by default
+  * Allow negative panscroll threshold for inverted scrolling
+  * Fix xsetwacom returning 0 even when there's an error (#266)
+  * test: add a pytest test suite
+  * test: add a test for the relative motion issue
+  * test: add a test for the single-axis updates
+  * meson.build: only build libgwacom.so, not the static one
+  * meson: use gnu_symbol_visibility - sort-of
+  * meson.build: comment out -Wall -Wextra
+  * Make a debug message easier to understand
+  * Add a few missing breaks for the default case
+  * Document the rotation/wheel axes, they're not what you'd expect
+  * test: add a helper script to set up the environment
+  * test: fix the ID assignment when parsing a device file
+  * test: increase the count of events for axis update tests
+  * test: swap the axis checks for an iterator-based approach
+  * test: ensure a device prox out after our events
+  * test: add a test for the artpen rotation
+  * test: fix a typo
+  * test: ignore test devices, or real devices during test suite
+    runs
+  * test: Ensure standard pen does not report the "wheel" axis
+  * meson.build: default to verbose pytest logging
+  * test: raise an InputError with better info if modules are
+    missing
+  * meson: default to pytest-3 first, then pytest
+  * test: add a test for the artpen/airbrush wheel updates
+  * gitignore: add __pycache__
+  * meson.build: fixate the GIR namespace version to 1.0
+  * wacom 1.1.0
+- Update to version 1.0.0:
+  * Correct typo in calculation of relative-mode non-pad RING2
+    values
+  * CI: add a job to build with the exact meson version we require
+  * meson.build: use datadir, not sysconfdir, for the xorg.conf
+    files
+  * meson.build: install the SDK headers
+  * wacom-record: silence a compiler warning
+  * test: skip the wacom tests if we can't open the .so file
+  * configure.ac: fix the check for unittests
+  * wacom 1.0.0
+- Update to version 0.99.3:
+  * Rotate / scale coordinates before storing them in axes
+  * Revamp debug printing of axis data
+  * gwacom: declare the WacomEventData as GBoxedType
+  * gwacom: make the enums GIR-compatible
+  * release.sh: markdown-ify the announce "email"
+  * CI: name the artifacts after the job name/options
+  * meson.build: set the LD_LIBRARY_PATH explicitly for the wacom-
+    tests
+  * test: mark the test section entries as no_sanitize_address
+  * Drop the build system checks for -wrap
+  * autotools: add missing files to the tarball
+  * meson.build: pass -Wno-error=format to the asprintf check
+  * CI: missing field initializers are not errors
+  * CI: build with all meson auto features enabled
+  * A few whitespace fixes
+  * gwacom: fix crash if the first device fails to initialize
+  * wacom-record: assert if device allocation fails
+  * gwacom: allow for listing of WacomOptions keys
+  * gwacom: add function to get the device options from the device
+  * wacom-record: fix printing for multiple devices
+  * Don't crash wcmAllocate if name is NULL
+  * test: remove a superfluous file
+  * Consolidate .gitignore files
+  * autotools: add autogen and README to EXTRA_DIST
+  * CI: capture meson testlogs from the tarball build too
+  * CI: add a job to check for missing files in the tarball
+  * CI: use the Ubuntu python version
+  * Print the device id, device type and serial number as hex
+  * wacom 0.99.3
+- Update to version 0.99.2:
+  * test: Enforce "zero minimum" workaround only for touch device
+  * Update configure.ac to point to our issue tracker if a unit
+    test fails
+  * autotools: make sure the gwacom sources are in the tarball
+  * CI: add jobs to build from tarballs
+  * Remove a declaration and some comments referring to serial
+    devices
+  * x11: handle valuators with a first_valuator != 0 correctly
+  * wacom-record: fix segfault if no argument was supplied
+  * wacom-record: handle the extra device paths with g_autofree too
+  * wacom-record: print the mode for motion events
+  * wacom-record: print the mask of available values
+  * meson.build: remove an unused variable
+  * autotools: remove the libudev dependency from the driver
+  * meson.build: remove udev dep from wacom-tests
+  * Replace our unit-test suite with something more magic and
+    easier
+  * test: add a test for the convertAxes helper
+  * test: fix long-standing typo in the initial size tests
+  * tools: switch the xsetwacom tests to use the new test suite
+    approach too
+  * meson.build: use dep.get_variable() instead of the deprecated
+    one
+  * xsetwacom: shut up two compiler warnings
+  * configure.ac: require C99
+  * wacom 0.99.2
+- Update to version 0.99.1:
+  * Stop logging "Invalid type" error messages when auto-detecting
+    type
+  * Cleanup `wcmIsAValidType`
+  * Fix null dereference warning from Coverity
+  * Correct contents of config-ver.h when using autotools
+  * Disallow initalization of unknown device axis by wcmInitAxis
+  * Report puck "throttle" (absolute scrollwheel) data in correct
+    axis
+  * Remove trailing whitespaces
+  * Require xserver 1.10 as minimum version
+  * Use xf86IDrvMsg wherever possible
+  * test: always build the tests
+  * Remove a write-only variable
+  * Drop the gWacomModule function set
+  * github: don't warn about unused parameters
+  * Replace xf86ReadSerial and xf86WriteSerial with libc calls
+  * Remove a few #defines no longer needed
+  * Group two include statements
+  * Remove two obsolete includes
+  * Fix indentation for the WacomDeviceClass decls
+  * Change wcmOpen to return the fd or a negative errno
+  * Make wcmCheckSource()'s control flow simpler
+  * Include limits.h for INT_MAX, math.h for round()
+  * Hardcode the USB ids for the few non-wacom tablets we support
+  * Drop two unused arguments in wcmResetAction
+  * Use strcasecmp instead of xf86NameCmp
+  * Move device/type option fetching to after allocation
+  * Move axis number clamping to where we assign it
+  * Remove the doxygen bits
+  * man: replace the various suffixes with their actual numbers
+  * man: use @PACKAGE_VERSION@ as version sub in the man page
+  * Switch two #if DEBUG to #ifdef DEBUG to be consistent
+  * Unifdef HAVE_CONFIG_H
+  * Simplify the git version generation
+  * Explicitly include the config-ver.h header file
+  * conf: use @ instead of __ for a sed replacement
+  * Use __attribute__((fallthrough)) to mark one of the fallthrough
+    cases
+  * Add support for building the driver with meson
+  * Integrate the meson build into our github workflow
+  * Require xserver 1.13
+  * Use the ABI_XINPUT_VERSION macro directly to compare
+    major+minor
+  * Remove a pointer indirection from static void wcmResetAction
+  * Add a struct for WacomActions
+  * Make sure action properties initialize with the right count
+  * Split action and property update/init into two separate paths
+  * Rename the action property arrays to foo_action_props
+  * Rename the key/wheel/strip actions to foo_actions
+  * Initialize button actions during DEVICE_INIT
+  * Move the setup of the property handlers into InitWcmProperties
+  * Simplify axis resolution initialization a bit
+  * Store the boolean to check for grabs or not in the USB data
+  * Move a header to a more localized position
+  * Drop the type name from the debug message
+  * Return an errno from wcmReady()
+  * Return an errno from wcmReadPacket()
+  * Skip opening a device without a common path
+  * Remove unused variable from WacomDeviceState
+  * Move the function pointer setup out of wcmAllocate
+  * Don't call wcmClose if we failed to open
+  * Split listing models into the core and the X-specific part
+  * Split setting the serial property into two logical parts
+  * Split setting the HW touch property in two
+  * wcmIsWacomDevice can be static
+  * sendWheelStripEvent should take pInfo as first arg like
+    everything else
+  * Require kernel 2.6.30 or newer
+  * Decouple priv->name and pInfo->name
+  * Store the input properties in the driver
+  * Change the order of functions in the device class
+  * Drop the unused GetResolution hook
+  * Remove write-only version and id assignment
+  * Move GetRanges into Initialize
+  * Use named initializers in the ISDV4 model struct
+  * Change the WacomDeviceModel funcs to the order they're called
+    in
+  * Define XI86_DRV_CAP_SERVER_FD to get rid of an ifdef
+  * ISDV4: switch a message to sigsafe logging
+  * tests: make sure priv->pInfo is initialized correctly
+  * Make wcmRotateAndScaleCoordinates easier to read
+  * Don't check for the X devices' proximity class
+  * Drop declaration for wcmReady(), not needed
+  * Define DBG as do while(0) loop if undefined
+  * Remove unused macro IsUSBDevice
+  * Hide the WACOM_DRIVER struct a bit better
+  * Replace the options correctly
+  * Move resetting pInfo->private out of wcmFree()
+  * meson.build: link libm into the driver
+  * Enable subdir-objects to stop autotools from complaining
+  * github: use the meson/pkginstall actions from libwacom directly
+  * release.sh: compress an if condition, drop another one
+  * release.sh: use find's printf instead of a separate dirname
+  * release.sh: check for local changes before doing any hard work
+  * release.sh: ignore tar.gz, we're not doing anything with them
+  * release.sh: simplify tarball handling
+  * release.sh: support meson as build system
+  * Add an editorconfig file
+  * release.sh: re-indent with 4-spaces
+  * Use WacomDevicePtr as primary context argument
+  * Move the X module bits into xf86Wacom.c
+  * Move a few functions into the driver core
+  * Move some init functions to PreInit
+  * Switch a set of functions to use priv instead of common
+  * Add a custom log handler
+  * Switch all uses of xf86IDrvMsg and others over to our custom
+    logger
+  * Add a copy of xf86ScaleAxis for our use
+  * Abstract initializing the device into several helpers
+  * Abstract the event interface to pass a struct with axis data
+    around
+  * Store the WacomDevicePtr in the tool
+  * Print the priv->name instead of pInfo->name
+  * Move starting the tablet into a separate helper function
+  * Remove side-effects of wcmOpen(), set pInfo->fd in the caller
+  * Move the server FD handling to the caller of
+    wcmDevOpen/wcmDevClose
+  * Move wcmDevOpen/Close/Start to the common driver layer
+  * Add a wcmDevStop() and move it to the driver layer
+  * Move the device initialization bits into the core driver layer
+  * Add a helper function to iterate over local devices to the
+    driver layer
+  * Move wcmLog to the driver implementation
+  * Add the WacomInterface header file
+  * Add an emulation of the X server's option handling
+  * Use the option API we provide in the interface
+  * Add an emulation of the X server's timer API
+  * Declare the three special property update functions
+  * Add the interface declaration for queuing device hotplug
+  * Split type name and flag assignment
+  * Switch the type handling to an enum
+  * Prefer priv->name over pInfo->name
+  * Replace pInfo->fd direct access with a get/set abstraction
+    layer
+  * Add a hook to update the device's name in the driver
+  * Store the valuator range we initialized our axes with
+  * Move model listing to the X driver layer
+  * Allow building the driver without serial ISDV4 support
+  * Abstract the pInfo pointer as a generic frontend void pointer
+  * Move a function to the core driver layer
+  * Wrap GetTimeInMillis()
+  * Allocate the touch valuators in the driver layer
+  * Change return type of wcmDevInit for better readability
+  * Decide on the hotplugged device's name in the driver
+  * Pass the context to two helper functions
+  * Split the various logging functions into several calls
+  * Move the X-driver-specific files into src/x11
+  * Add a GObject-based interface to the driver
+  * Drop include of linux/version.h
+  * Add a debugging hook for evdev events
+  * Remove an outdated comment
+  * Change wcmDevSwitchModeCall to take and return a Bool
+  * Remove an outdated comment
+  * Bail out if wcmDevStar() fails
+  * github: make the workflow names a bit smarter
+  * Remove support for serial devices from the driver
+  * github: skip the coverity workflow in the forks
+  * Remove an unused variable
+  * Remove duplicate setting of v5/v6
+  * Change the v3-v6 debug holders to an array
+  * Escape an unused variable with ifdef DEBUG
+  * Fix a compilation error when DEBUG is undefined
+  * meson: default to the module dir from xorg-server.pc
+  * wacom 0.99.1
+- Removed n_01-Add-option-to-enable-logging.patch
+- Removed n_02-Log-PROXIMITY-LOW-LEVEL-events.patch
+- Removed n_03-Log-PRESSURE-low-level-events.patch
+- Removed n_04-Log-BUTTON-HIGH-LEVEL-events.patch
+- Removed n_disable-touchscreen.patch
+- Refreshed harden_wacom-inputattach@.service.patch
 
 -------------------------------------------------------------------
 Mon Jan 10 09:55:03 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
