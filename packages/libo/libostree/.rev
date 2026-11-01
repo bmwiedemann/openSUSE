@@ -622,4 +622,20 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
   grub-mkconfig_lib. openSUSE installs those files to</comment>
     <requestid>1392419</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>af9e7d0d32aa78979941e4579983eb15</srcmd5>
+    <version>2026.6</version>
+    <time>1793568102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2026.6:
+  * sign: Compare OpenSSL sign results against 1, test more spki cases
+  * core: Reject duplicate names in dirtree objects
+  * static-delta: Parse superblock files as untrusted
+  * prepare-root: Allow /run/ostree to exist already
+  * fetcher-uri: Keep https scheme when dropping default port
+  * rofiles-fuse: Check hardlinks for O_TRUNC opens and removexattr
+  * sign-spki: Pass GBytes when looking up revoked keys
+  * static-delta: Avoid mapping BSPATCH output on FUSE</comment>
+    <requestid>1394078</requestid>
+  </revision>
 </revisionlist>
