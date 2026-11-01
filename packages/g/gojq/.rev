@@ -164,4 +164,43 @@
     <comment>1</comment>
     <requestid>1381360</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4db4a45e5e2225d864a3dcc5d92076ce</srcmd5>
+    <version>0.12.20</version>
+    <time>1793568315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.12.20
+  * Fix destructuring alternative operator `?//` to reset variables of
+    later alternatives, and to propagate `break` and `halt` errors.
+  * Fix update-assignment operator against object with overlapping paths
+  * Fix `delpaths` function to delete ancestor paths before descendant paths
+  * Fix `getpath` function against string input
+  * Fix indexing and slicing a number literal written after a unary operator
+  * Fix slice indices of floating point numbers for jq compatibility
+  * Fix date and time functions against fractional, non-finite, and out of range numbers
+  * Fix `strptime` function to accept the zero time instant
+  * Fix `match`, `test`, and `capture` functions to support array arguments
+  * Fix `match` function to report an empty match after a non-empty one
+  * Fix `split/1` function against empty input string
+  * Fix math functions against large number literals like `1e1000`
+  * Fix `jn/2` and `yn/2` functions to avoid long recurrence on large orders
+  * Fix `abs` function against non-numbers for jq compatibility
+  * Fix `isnan` function to return false for non-numbers for jq compatibility
+  * Fix `halt_error` function not to print a newline after non-string values
+  * Fix `--argjson` and `--jsonargs` options to reject empty and multiple JSON values
+  * Fix `--stream` option error message against unterminated input
+  * Fix JSON parse error message after a large value in non-seekable input like stdin
+  * Fix offset of YAML parse error on multi-byte characters
+  * Fix panic on continuing iteration after an invalid path error
+  * Fix data race on input iterator when running code concurrently
+  * Fix add function to handle a nil map and slice as the first value
+  * Support destructuring alternative operator `?//` in reduce and foreach syntax
+  * Allow optional operator followed by alternative operator without spaces (`.a?//1`)
+  * Improve performance of function calls by avoiding copies of scope values,
+    and path tracking in `path`, `paths`, `|=`, and `del` by reducing allocations
+- Patches:
+  * Remove 0001-Disable-test-that-fails-with-golang-v1.27.patch .
+    Fixed upstream.</comment>
+    <requestid>1394311</requestid>
+  </revision>
 </revisionlist>
