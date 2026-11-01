@@ -1,7 +1,52 @@
 -------------------------------------------------------------------
+Sun Nov  1 06:54:59 UTC 2026 - Hunter Wardlaw <wardlawhunter@opensuse.org>
+
+- Update to 4.10.2:
+
+  Fixed
+  * core: fix freeze when displaying a very long message, for example 
+  a corrupted log file displayed in backlog (#637)
+  * core: fix memory leak when the last buffer is closed
+  * api: fix compilation error with macro weechat_file_compare
+  * guile: fix return value of functions mkdir_home, mkdir and 
+    mkdir_parents when the directory cannot be created
+  * perl: fix wrong arguments error in function nicklist_remove_all
+  * relay/api: fix memory leak when a message without body is sent to 
+  a client connected with websocket
+  * tcl: return 0 instead of raising an error in functions mkdir_home, 
+    mkdir and mkdir_parents when the directory cannot be created
+  * tcl: add missing function completion_free
+
+  Security
+  * core: fix integer overflow in dynamic strings when their size 
+    exceeds 4 GiB (GHSA-h394-85x4-68c7)
+  * core: fix heap buffer overflow in charset conversion when the 
+    converted string is more than 4 times longer than the input and 
+    contains invalid chars, for example with charset TSCII 
+    (GHSA-q32h-5qvq-3936)
+  * irc: limit number of prefix modes in PREFIX of message 005 to 
+    prevent memory exhaustion
+  * irc: escape ${ in values of variables $nick, $channel and $server 
+    in commands /allchan, /allpv and /allserv, to prevent evaluation 
+    of untrusted values
+  * irc: escape ${ in server options addresses, nicks, password and 
+    autojoin set from an IRC URL (irc://...), to prevent evaluation of 
+    untrusted values
+  * irc: escape ${ in channel names saved in server option autojoin, 
+    to prevent evaluation of channel names received from the server 
+    (for example on channel forward)
+  * irc: fix heap buffer overflow in nick prefixes when the server 
+    sends an empty PREFIX in message 005 and the connection is lost 
+    before message 001 (GHSA-xj8h-x2w9-m8m6)
+  * relay: limit size of HTTP headers received from a client to 
+    prevent memory exhaustion (GHSA-h394-85x4-68c7)
+  * relay: fix heap buffer overflow in path of hdata sent to clients 
+    with "weechat" protocol (GHSA-8wr2-x42m-7fxv)
+
+-------------------------------------------------------------------
 Sun Sep  6 09:19:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 4.10.1:
+- Update to 4.10.1:
   * irc: fix memory leak in SASL authentication with mechanism
     "ecdsa-nist256p-challenge"
   * irc: reject an empty SASL challenge received with mechanism
@@ -24,7 +69,7 @@ Sun Sep  6 09:19:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
     to prevent writing the file outside the download directory
 
 -------------------------------------------------------------------
-Fri Aug  7 18:39:06 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Fri Aug  7 18:39:06 UTC 2026 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.10.0:
 
@@ -114,7 +159,7 @@ Fri Aug  7 18:39:06 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * xfer: fix out-of-bounds write in xfer file transfer resume (#2326)
 
 -------------------------------------------------------------------
-Fri Aug  7 18:32:30 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Fri Aug  7 18:32:30 UTC 2026 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.9.5:
   * core: fix buffer overflow in display of time in chat area with a
@@ -128,7 +173,7 @@ Fri Aug  7 18:32:30 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * relay: increase max size for decompressed websocket frame
 
 -------------------------------------------------------------------
-Mon Jul 20 14:50:08 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Jul 20 14:50:08 UTC 2026 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.9.4:
 
@@ -147,7 +192,7 @@ Mon Jul 20 14:50:08 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
     algorithm (GHSA-68ff-gq39-pqjm)
 
 -------------------------------------------------------------------
-Sun Jul  5 14:25:38 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Sun Jul  5 14:25:38 UTC 2026 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.9.3:
   * core: fix buffer overflow in connection to SOCKS5 proxy (#2325)
@@ -161,7 +206,7 @@ Sun Jul  5 14:25:38 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * xfer: fix out-of-bounds write in xfer file transfer resume (#2326)
 
 -------------------------------------------------------------------
-Mon Jun  8 14:32:55 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Jun  8 14:32:55 UTC 2026 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.9.2:
   * api: fix infinite loop in function string_replace when the search
@@ -182,7 +227,7 @@ Mon Jun  8 14:32:55 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
     chat (#2323)
 
 -------------------------------------------------------------------
-Mon Jun  1 13:01:54 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Jun  1 13:01:54 UTC 2026 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 -  Update to 4.9.1:
   * core: fix option weechat.look.color_real_white not applied when
@@ -194,7 +239,7 @@ Mon Jun  1 13:01:54 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * api, relay: fix timing attack on TOTP validation (GHSA-vhv8-g2r9-cwcc)
 
 -------------------------------------------------------------------
-Mon Mar 30 11:28:55 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Mar 30 11:28:55 UTC 2026 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.9.0:
 
@@ -216,7 +261,7 @@ Mon Mar 30 11:28:55 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * relay/api: fix memory leak in receive of message from remote WeeChat
 
 -------------------------------------------------------------------
-Mon Mar  9 14:55:24 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Mar  9 14:55:24 UTC 2026 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.8.2:
   * irc: ignore self join if the channel is already joined (#2291)
@@ -224,7 +269,7 @@ Mon Mar  9 14:55:24 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * relay/api: fix memory leak in receive of message from remote WeeChat
 
 -------------------------------------------------------------------
-Tue Dec  2 01:51:43 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Tue Dec  2 01:51:43 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.8.1:
   * core: fix buffer size in function util_parse_time, causing buffer
@@ -232,7 +277,7 @@ Tue Dec  2 01:51:43 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * irc: fix creation of irc.msgbuffer option without a server name
 
 -------------------------------------------------------------------
-Mon Dec  1 06:17:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Dec  1 06:17:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.8.0:
 
@@ -292,7 +337,7 @@ Mon Dec  1 06:17:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
     resource ping
 
 -------------------------------------------------------------------
-Tue Nov 25 00:21:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Tue Nov 25 00:21:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.7.2:
 
@@ -310,7 +355,7 @@ Sat Nov 22 21:26:34 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 - Remove unused BuildRequires: update-desktop-files.
 
 -------------------------------------------------------------------
-Mon Aug 18 19:29:05 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Aug 18 19:29:05 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.7.1:
 
@@ -319,7 +364,7 @@ Mon Aug 18 19:29:05 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
     from a client
 
 -------------------------------------------------------------------
-Mon Jul 21 18:37:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Jul 21 18:37:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.7.0:
 
@@ -372,12 +417,12 @@ Mon Jul 21 18:37:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * build: fix build on Solaris/illumos (#2251)
 
 -------------------------------------------------------------------
-Fri Jul 18 16:57:24 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Fri Jul 18 16:57:24 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Migrate from enchant-1 to enchant-2
 
 -------------------------------------------------------------------
-Mon May 12 18:32:07 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon May 12 18:32:07 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.6.3:
   * core: fix integer overflow with decimal numbers in calculation of
@@ -391,7 +436,7 @@ Mon May 12 18:32:07 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * core: fix memory leak in function util_parse_delay
 
 -------------------------------------------------------------------
-Tue Apr 22 03:56:22 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Tue Apr 22 03:56:22 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.6.2:
   * core: fix write of weechat.log to stdout with weechat-headless --stdout
@@ -399,7 +444,7 @@ Tue Apr 22 03:56:22 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
     weechat.look.window_title is set
 
 -------------------------------------------------------------------
-Wed Apr  9 19:16:41 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Wed Apr  9 19:16:41 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.6.1:
 
@@ -410,7 +455,7 @@ Wed Apr  9 19:16:41 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 
 -------------------------------------------------------------------
-Mon Mar 24 14:53:08 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Mar 24 14:53:08 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 4.6.0:
 
@@ -442,12 +487,12 @@ Mon Mar 24 14:53:08 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * python: enable subinterpreters (#2222)
 
 -------------------------------------------------------------------
-Mon Mar 10 06:49:57 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Mar 10 06:49:57 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Re-add update-desktop-files to spec file
 
 -------------------------------------------------------------------
-Fri Feb 21 22:33:17 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Fri Feb 21 22:33:17 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to version 4.5.2:
 
@@ -455,7 +500,7 @@ Fri Feb 21 22:33:17 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * core: fix build with gcc 15 (#2229, #2230)
 
 -------------------------------------------------------------------
-Mon Jan 06 04:50:15 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Jan 06 04:50:15 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to version 4.5.1:
 
