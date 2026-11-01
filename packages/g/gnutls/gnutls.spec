@@ -84,6 +84,14 @@ Patch11:        gnutls-FIPS-Deprecate-HMAC-with-less-that-128-bit-keys.patch
 Patch12:        gnutls-FIPS-SHA224-SHA3224-Legacy-Status.patch
 # PATCH-FIX-SUSE bsc#1265613 FIPS: Deprecate ECDSA siggen with less than 128-bit
 Patch13:        gnutls-FIPS-Deprecate-ECDSA-with-less-that-128-bit.patch
+# PATCH-FIX-UPSTREAM bsc#1284344 FIPS: TLS 1.3 initialized using empty input
+Patch14:        gnutls-FIPS-zeros-in_tls13_init_secret2.patch
+# PATCH-FIX-SUSE bsc#1284343 FIPS: Mark SHA-1 in TLS v1.0 PRF as non approved
+Patch15:        gnutls-FIPS-SLI-tls10-PRF.patch
+# PATCH-FIX-SUSE bsc#1284341 FIPS: Add an additional GNUTLS_MAC_AEAD check to independently evaluate the MAC algorithm
+Patch16:        gnutls-FIPS-SLI-record-MAC.patch
+# PATCH-FIX-SUSE bsc#1284342 FIPS: Mark internal HMAC-SHA-1 when session tickets are enabled as non approved
+Patch17:        gnutls-FIPS-SLI-session-ticket.patch
 
 BuildRequires:  autogen
 BuildRequires:  automake

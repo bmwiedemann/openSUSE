@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Oct 20 15:40:00 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Perform RSA-PSS self-tests. (bsc#1286296)
+  * fips: perform RSA self-tests using RSA-PSS instead of PKCS#1
+    v1.5 (ed0c45d)
+  * pk: use deterministic RNG for RSA-PSS in self-tests (35c56812)
+
+-------------------------------------------------------------------
+Wed Oct  7 14:26:26 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Mark internal HMAC-SHA-1 when session tickets are enabled
+  as non approved (bsc#1284342)
+  * Add gnutls-FIPS-SLI-session-ticket.patch
+
+-------------------------------------------------------------------
+Wed Oct  7 14:20:07 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Mark TLS 1.2 cipher suites using HMAC-SHA-1 for record
+  authentication as non approved (bsc#1284341)
+  * Add an additional GNUTLS_MAC_AEAD check to independently
+    evaluate the MAC algorithm
+  * Add gnutls-FIPS-SLI-record-MAC.patch
+
+-------------------------------------------------------------------
+Wed Oct  7 13:48:09 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Mark SHA-1 in TLS v1.0 PRF as non approved (bsc#1284343)
+  * Add gnutls-FIPS-SLI-tls10-PRF.patch
+
+-------------------------------------------------------------------
+Wed Oct  7 12:58:43 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: TLS 1.3 initialized using empty input (bsc#1284344)
+  * TLS 1.3 key schedule was initialized using an empty input
+    instead of the zero-filled value specified by RFC 8446.
+  * secrets: pass actual zeroes in _tls13_init_secret2 (7fad16dc)
+  * Add gnutls-FIPS-zeros-in_tls13_init_secret2.patch
+
+-------------------------------------------------------------------
 Sat Jul 25 15:15:41 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Deprecate ECDSA siggen with less than 128-bit (bsc#1265613)

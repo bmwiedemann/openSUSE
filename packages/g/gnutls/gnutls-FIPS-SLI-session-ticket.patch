@@ -1,0 +1,20 @@
+Index: gnutls-3.8.10/lib/ext/session_ticket.c
+===================================================================
+--- gnutls-3.8.10.orig/lib/ext/session_ticket.c
++++ gnutls-3.8.10/lib/ext/session_ticket.c
+@@ -178,6 +178,15 @@ static int digest_ticket(const gnutls_da
+ 		    ticket->encrypted_state_len);
+ 	_gnutls_mac_deinit(&digest_hd, digest);
+ 
++	/* The ticket is authenticated with HMAC-SHA1 through the internal
++	 * MAC functions, which do not update the FIPS service indicator.
++	 * Mark the operation as not approved explicitly. Once in this state,
++	 * the indicator cannot be switched back to approved by the
++	 * subsequent cipher operations on the ticket.
++	 */
++	if (!is_mac_algo_approved_in_fips(TICKET_MAC_ALGO))
++		_gnutls_switch_fips_state(GNUTLS_FIPS140_OP_NOT_APPROVED);
++
+ 	return 0;
+ }
+ 

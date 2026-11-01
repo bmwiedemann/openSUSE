@@ -1,0 +1,17 @@
+Index: gnutls-3.8.10/lib/nettle/int/tls1-prf.c
+===================================================================
+--- gnutls-3.8.10.orig/lib/nettle/int/tls1-prf.c
++++ gnutls-3.8.10/lib/nettle/int/tls1-prf.c
+@@ -116,6 +116,12 @@ int tls10_prf(size_t secret_size, const
+ 
+ 	memxor(dst, o1, length);
+ 
++	/* The TLS 1.0/1.1 PRF relies on HMAC-MD5 and HMAC-SHA1, and
++	 * SHA-1 is no longer approved in FIPS 140-3. Mark this usage
++	 * as non-approved.
++	 */
++	_gnutls_switch_fips_state(GNUTLS_FIPS140_OP_NOT_APPROVED);
++
+ 	return 1;
+ }
+ 
