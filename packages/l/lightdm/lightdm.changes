@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 15 19:00:00 UTC 2026 - Sander van Dragt <sander@vandragt.com>
+
+- Add lightdm-wayland-session-tty.patch from upstream PR#483
+- Fix greeter not starting with SELinux enforcing (gh#canonical/lightdm#480)
+(AI-assisted)
+
+-------------------------------------------------------------------
 Wed Sep 16 20:30:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.33.1:

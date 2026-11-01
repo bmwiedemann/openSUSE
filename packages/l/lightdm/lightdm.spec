@@ -61,6 +61,8 @@ Patch3:         lightdm-disable-utmp-handling.patch
 Patch4:         lightdm-use-run-dir.patch
 # PATCH-FIX-OPENSUSE ignore-known-symlink-sessions.patch boo#1030873 -- Ignore known synlink sessions.
 Patch5:         lightdm-ignore-known-symlink-sessions.patch
+# PATCH-FIX-UPSTREAM lightdm-wayland-session-tty.patch gh#canonical/lightdm#480 gh#canonical/lightdm#483 -- Use /dev/ttyN, not /dev/tty/N, for Wayland sessions; pam_selinux fails on the latter and the greeter does not start
+Patch6:         lightdm-wayland-session-tty.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc

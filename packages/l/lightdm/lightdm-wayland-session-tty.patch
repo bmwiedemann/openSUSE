@@ -1,0 +1,41 @@
+From: Daniel Kühl <oi@eusou.dk>
+Date: Thu, 24 Sep 2026 04:05:20 -0300
+Subject: [PATCH] Fix tty for Wayland sessions
+Upstream: https://github.com/canonical/lightdm/pull/483
+References: gh#canonical/lightdm#480
+
+Use /dev/ttyN instead of /dev/tty/N as the tty path.
+
+Set PAM_TTY to the session tty before pam_open_session. The session can
+run on a different VT than the greeter. A stale PAM_TTY makes logind
+reject the session with InvalidParameter.
+
+Fixes #480
+---
+diff --git a/src/session-child.c b/src/session-child.c
+index 42831e2f..169691a9 100644
+--- a/src/session-child.c
++++ b/src/session-child.c
+@@ -479,6 +479,9 @@ session_child_run (int argc, char **argv)
+         g_clear_object (&x_authority);
+         x_authority = read_xauth ();
+     }
++    /* The session can run on a different VT than the greeter used during authentication */
++    if (!xdisplay && tty)
++        pam_set_item (pam_handle, PAM_TTY, tty);
+     gsize env_length;
+     read_data (&env_length, sizeof (env_length));
+     for (int i = 0; i < env_length; i++)
+diff --git a/src/wayland-session.c b/src/wayland-session.c
+index 48bcb6be..779781ee 100644
+--- a/src/wayland-session.c
++++ b/src/wayland-session.c
+@@ -67,7 +67,7 @@ wayland_session_connect_session (DisplayServer *display_server, Session *session
+         session_set_env (session, "XDG_VTNR", value);
+         
+         g_autofree gchar *tty_text = NULL;
+-        tty_text = g_strdup_printf("/dev/tty/%d",priv->vt);
++        tty_text = g_strdup_printf("/dev/tty%d",priv->vt);
+         session_set_tty(session,tty_text);
+     }
+ }
