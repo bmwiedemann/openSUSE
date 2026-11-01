@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon Oct 26 21:49:43 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 9.1.3 (boo#1288118)
+  Upgrade urgency SECURITY: This release includes security fixes we
+  recommend you apply as soon as possible.
+
+  - Security Fixes
+    - GHSA-f4q9-j22m-xqq9: Fix a heap buffer overflow in cluster
+      Pub/Sub message construction that could allow an
+      authenticated client to crash the server or potentially
+      execute arbitrary code by publishing an oversized message by
+      @roshkhatri (#5030)
+  - Bug Fixes
+    - Fix a double-free crash when a module timer callback stops
+      its own timer with ValkeyModule_StopTimer by @quanyeyang
+      (#4211)
+    - Truncate a partially written MULTI block from the AOF on
+      short read, preventing loss of newer writes after a later
+      restart by @chzhoo (#4342)
+    - Fix an ACL bypass where duplicate STORE/STOREDIST options let
+      GEORADIUS write or delete keys outside the user's permitted
+      patterns by @tjade273 (#3971)
+    - Fix a use-after-free crash when a module's cluster message
+      type is received after the module is unloaded by
+      @enjoy-binbin (#4360)
+    - Fix out-of-bounds access for cluster module message type 255,
+      which is now a valid, dispatchable message type by
+      @enjoy-binbin (#4410)
+    - AOF loading no longer performs ACL checks on replayed
+      commands, preventing silent data loss when the default user
+      is disabled by @lukepalmer (#3984)
+    - Listpacks are now always validated on RDB load and RESTORE,
+      preventing deferred assertion crashes; sanitize-dump-payload
+      and its ACL flags become no-ops by @jjuleslasarte (#3721)
+    - Fix a client memory accounting leak on replicas that inflated
+      the mem_clients_normal INFO field after primary
+      disconnections by @enjoy-binbin (#4395)
+    - Fix stream commands that mutate consumer-group or PEL state
+      (XGROUP, XSETID, XREADGROUP, XACK, XCLAIM, XAUTOCLAIM) not
+      triggering WATCH and client-side tracking invalidation by
+      @Tarte12 (#3459)
+    - Fix a server abort on a RESTORE payload declaring a string
+      length that overflows the allocation size; such payloads are
+      now rejected as bad data by @enjoy-binbin (#4733)
+    - Fix ZINTER/ZINTERSTORE returning input-order-dependent scores
+      when a weighted term is 0*inf; a NaN weighted score now
+      counts as 0, matching ZUNION by @leomurillo (#4997)
+    - Harden stream validation on RDB load and RESTORE so crafted
+      payloads can no longer crash the server on later commands by
+      @madolson (#3922)
+    - Fix a use-after-free crash when serving clients blocked on
+      the same key if one client is freed during processing by
+      @quanyeyang (#4212)
+    - Fix a stack overflow crash in TLS connections when retrying a
+      large write after a write failure by @murphyjacob4 (#4307)
+    - Fix a crash from forged cluster bus PUBLISH or MODULE packets
+      declaring payload lengths that exceed the packet size by
+      @tjade273 (#3972)
+    - Correct ValkeyModule_FreeModuleUser,
+      ValkeyModule_ACLAddLogEntry and
+      ValkeyModule_ACLAddLogEntryByUserName declarations to return
+      int as implemented, fixing undefined behavior on targets with
+      strict call signature checks by @rainsupreme (#4676)
+    - Fix valkey-benchmark spinning on would-block writes, which
+      could starve reply processing and the --duration timer by
+      @thweetkomputer (#4567)
+    - Fix a huge memory allocation when a command such as COMMAND
+      GETKEYS EVAL declares a far larger key count than the
+      arguments provided by @murphyjacob4 (#3598)
+    - Reject stream payloads with mismatched live/deleted record
+      counts, preventing XDEL from destroying unaccounted entries
+      by @roshkhatri (#4381)
+    - Fix a server crash when loading an ACL file containing a
+      selector with an unmatched parenthesis by @magic-peach
+      (#4214)
+    - Fix cluster config saving to avoid publishing truncated
+      nodes.conf files, losing the startup lock after the first
+      save, and failing every save on SMB filesystems such as Azure
+      Files; the lock now lives on a separate nodes.conf.lock file
+      by @KewangZhili (#4489)
+    - Fix LSET on 64-bit builds silently modifying the wrong
+      element for out-of-range indexes instead of returning an
+      index out of range error by @charsyam (#4823)
+
+-------------------------------------------------------------------
 Tue Sep 29 18:52:37 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Fix CVE-2026-92925, failure to properly validate string-carrying extensions
