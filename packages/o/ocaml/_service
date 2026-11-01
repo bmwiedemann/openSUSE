@@ -166,7 +166,7 @@
     <param name="exclude">utils/HACKING.adoc</param>
     <param name="exclude">utils/dune</param>
     <param name="filename">ocaml</param>
-    <param name="revision">46e1c324fb9e9f21f52c9cc3399020f7ef8b9b91</param>
+    <param name="revision">c7b6787eb4c2b4a89e2c190e7ffdfa25082d1a6d</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml/ocaml.git</param>
