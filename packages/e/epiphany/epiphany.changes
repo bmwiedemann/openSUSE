@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 29 16:03:56 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.2:
+  * Bugs fixed:
+    + WebApp Epiphany Argument Injection with data URI
+    + Crash when restoring first pinned tab
+    + Making a tag with an empty name and removing it crashes GNOME Web
+    + Unresponsive page dialog reappears even after page became responsive
+      again
+    + HTML injection in Epiphany Reader mode
+    + CVE-2026-118598: Allowing a Clipboard or Website-Data-Access prompt
+      grants camera AND microphone access
+    + CVE-2026-115683: TLS/SSL Error Page Bypass
+      window.webkit.messageHandlers.tlsErrorPage
+    + Epiphany installs XPI extensions even when the Web Extensions feature is
+      disabled
+    + CVE-2026-118599: XPI extraction allows hard-link targets -  TAR .xpi
+      overwrites an existing user file
+    + Epiphany loads installed WebExtensions when the feature is disabled
+    + Do not focus location entry when opening web URIs
+    + Reader: Escape reading time before inserting it into the page
+  * Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep 30 16:44:20 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update version dependencies according to meson.build.
