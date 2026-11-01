@@ -32,7 +32,7 @@
 %endif
 
 Name:           kanidm
-Version:        1.11.2~git0.547933867
+Version:        1.12.0~git0.a52b723ce
 Release:        0
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND 0BSD AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND CDLA-Permissive-2.0 AND ISC AND LGPL-3.0-only AND MIT AND MIT-0 AND MPL-2.0 AND MPL-2.0+ AND Unicode-3.0 AND Zlib

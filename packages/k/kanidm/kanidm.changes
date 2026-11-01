@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sun Nov 01 03:34:39 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.12.0~git0.a52b723ce:
+  * Release 1.12.0
+  * Release 1.12.0-pre
+  * chore: Release Notes (#4661)
+  * 20261031 update webauthn rs (#4660)
+  * Handle the transports flag in js (#4597)
+  *  Improve admin groups & persons (#4611)
+  * Add account signup feature (#4625)
+  * Handle dead unix sockets better. (#4658)
+  * Fix bind-mount not mounting user home on Debian (#4634)
+  * Bump pylint in /pykanidm in the uv group across 1 directory (#4656)
+  * Support abandon request (#4654)
+  * Admin UI fixes (#4610)
+  * Bump the all group in /rlm_python with 2 updates (#4652)
+  * Bump certifi in /pykanidm in the uv group across 1 directory (#4650)
+  * Bump aiohttp in /pykanidm in the uv group across 1 directory (#4645)
+  * Bump multidict in /pykanidm in the uv group across 1 directory (#4633)
+  * Bump the all group in /rlm_python with 2 updates (#4639)
+  * Bump brace-expansion (#4632)
+  * Bump the uv group across 1 directory with 2 updates (#4615)
+  * using a locked sharing method on zypper cache to avoid file contention while building multi-arch images
+  * Bump the all group in /rlm_python with 2 updates
+  * Correct OpenTelemetry endpoint option (#4622)
+  * Detect if schema attrs are multivalue (#4438)
+  * 20260929 account signup internals (#4598)
+  * Fix displaying primary e-mail in admin (#4609)
+  * Update ruff requirement in /rlm_python in the all group (#4612)
+  * Show Kanidm version in Web UI (#4603)
+  * Set appropriate HTML titles for admin pages (#4602)
+  * Various admin UI & layout improvements. (#4601)
+  * Improve Credentials UI when a UNIX password is set (#4600)
+  * Fix SSH key icon color in dark mode (#4599)
+  * Fmt (#4590)
+  * Update ty requirement in /rlm_python in the all group (#4595)
+  * Update OAuth2 md with key rotation section (#4588)
+  * Update account signup requests to expire (#4581)
+  * WIP: Implement person/group creation/deletion from admin UI (#4388)
+  * update `run_insecure_dev_server.sh` path in scripts and docs (#4589)
+  * Bump the all group in /rlm_python with 2 updates (#4585)
+  * Fix invalid state error during password set operation (#4580)
+  * Update crypto glue to 2.1 (#4573)
+  * Add some freebsd port notes (#4571)
+  * Add link to the official python package. (#4576)
+  * Update OAuth2 to use AES256GCM
+  * Allow setting the provided http protocol versions (#4543)
+  * Add example & description of max_ber_size opt for ldap-sync (#4544)
+  * Resolve new database index creation issue (#4539)
+  * Fix pam.h constants for FreeBSD/MacOS (#4568)
+  * Bump the all group in /rlm_python with 2 updates (#4574)
+  * Security: medium - ldap bind state reset on failure (#4569)
+  * Update SECURITY.md
+  * Bump the all group with 3 updates (#4563)
+  * Bump the all group in /rlm_python with 2 updates (#4562)
+  * Bump mkdocs-material in /pykanidm in the uv group across 1 directory (#4561)
+  * Bump the all group across 1 directory with 5 updates (#4557)
+  * 20260825 clippy (#4550)
+  * Bump the all group in /rlm_python with 2 updates (#4556)
+  * authorisation response error  should redirect in some cases (#4549)
+  * Extend security headers (#4541)
+  * ldap-sync: Add usage example of mail and ssh person_attr opts (#4547)
+  * Bump jsonschema from 0.49.9 to 0.50.0 in the all group (#4546)
+  * Bump the all group in /rlm_python with 3 updates (#4545)
+  * Update admin_person_details_partial.html (#4540)
+  * Bump the all group across 1 directory with 14 updates (#4538)
+  * Bump the all group in /rlm_python with 2 updates (#4535)
+  * 20260724 user sign up - groundwork (#4510)
+  * Unable webauthn on freebsd cli (#4531)
+  * Update user_settings_profile_partial.html (#4537)
+  * Resolve renew-cert timeout issue (#4524)
+  * Resolve a minor possible deadlock in actor tests (#4523)
+  * Enforce consent on localhost redirections to protect against malicious clients (#4516)
+  * Resolve incorrect URN in access token type response (#4526)
+  * OAuth2Error return json error response (#4515)
+  * Bump the all group with 6 updates (#4520)
+  * Bump pymdown-extensions in /pykanidm in the uv group across 1 directory (#4517)
+  * Update ty requirement in /rlm_python in the all group (#4519)
+  * Better JS guard for WebAuthn buttons (#4511)
+  * Fix documented command syntax for credential reset token (#4512)
+  * 20260805 oauth2 scopes (#4506)
+  * Bump the all group across 1 directory with 2 updates (#4497)
+  * Bump mozilla-actions/sccache-action in the all group (#4498)
+  * Handle existing cache dir (#4502)
+  * Fix incorrect OAuth2 Metadata values (#4504)
+  * Bump cryptography in /pykanidm in the uv group across 1 directory (#4503)
+  * Container build cleanup part uno (#4500)
+  * Return correct OAuth2 HTTP Code on invalid token responses (#4496)
+  * Merge commit from fork
+  * 20260731 dev version (#4493)
+
+-------------------------------------------------------------------
+Wed Oct 28 03:29:34 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.11.2~git1.23a61684d:
+  * Update dependencies
+
+-------------------------------------------------------------------
 Tue Sep 29 11:35:28 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update License tag to cover statically linked vendored crates
