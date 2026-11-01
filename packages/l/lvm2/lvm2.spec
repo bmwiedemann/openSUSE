@@ -75,7 +75,8 @@ Source2:        lvm2-rpmlintrc
 Source42:       https://sourceware.org/pub/lvm2/LVM2.%{version}.tgz.asc
 Source99:       baselibs.conf
 # Upstream patches
-#Patch0001:      n/a
+Patch0001:      bug-1288220_pvscan-preserve-preferred-device-name-when-importing.patch
+
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1002:      fate-309425_display-dm-name-for-lv-name.patch
@@ -144,6 +145,8 @@ Volume Manager.
 
 %prep
 %setup -q -n LVM2.%{version}
+
+%patch -P 0001 -p1
 %patch -P 1002 -p1
 %patch -P 1003 -p1
 %patch -P 1004 -p1

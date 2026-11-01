@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 29 21:41:28 UTC 2026 - Glass Su <glass.su@suse.com>
+- lvm2 on LUKS: failed to activate VG after unencrypted device appears during boot (bsc#1288220)
+  * Add upstream patch
+    + bug-1288220_pvscan-preserve-preferred-device-name-when-importing.patch
+    
+-------------------------------------------------------------------
 Sun Oct 18 11:04:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.03.43:
