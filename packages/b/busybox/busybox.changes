@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Oct 30 08:33:50 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Note we are not affected by the following CVEs with no fixes upstream.
+  The relevant applets are disabled in our config. Add comments to the
+  config file warning that enabling them would expose the unfixed CVEs:
+  * dpkg-deb extraction-root escape via per-ar-member deferred
+    symlink flush, CONFIG_DPKG disabled
+    (CVE-2026-90954, bsc#1285581)
+  * dpkg stale field_start pointer causing out-of-bounds read and
+    status file corruption, CONFIG_DPKG disabled
+    (CVE-2026-88842, bsc#1285579)
+  * HTTP request smuggling via pipelined requests in httpd reverse
+    proxy, CONFIG_FEATURE_HTTPD_PROXY disabled
+    (CVE-2026-88829, bsc#1285577)
+
+-------------------------------------------------------------------
+Fri Oct 30 08:06:02 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Fix denial of service via terminal escape sequences in process
+  names displayed by netstat (CVE-2024-58251, bsc#1241700)
+  * 0001-Fix-CVE-2024-58251-sanitize-process-names-when-calli.patch
+- Fix tar extraction-root escape via deferred symlink/hardlink
+  creation (CVE-2026-108119, bsc#1284987)
+  * 0001-tar-protect-against-Symlink-Hardlink-attack.patch
+- Fix integer underflow in udhcpc d4_recv_raw_packet() leading to
+  a crash when processing short untrusted DHCP packets
+  (CVE-2026-88833, bsc#1285315)
+  * 0001-udhcpc-ensure-packet.data.cookie-exists-before-we-ac.patch
+- Fix httpd authentication timing difference between existing and
+  non-existing system users caused by a missing else clause after
+  a failed getspnam_r() call (CVE-2026-88834, bsc#1285314)
+  * 0001-httpd-do-not-try-to-use-obviously-bogus-password-fro.patch
+- Fix path traversal in libarchive allowing a crafted archive with
+  a ".." member name to create files outside the extraction
+  directory (CVE-2026-92205, bsc#1286932)
+  * 0001-tar-.-is-also-an-unsafe-filename-treat-as-such.patch
+
+-------------------------------------------------------------------
 Thu Oct  1 00:00:00 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - Fix pre-authentication heap buffer overflow in TLS caused by unit

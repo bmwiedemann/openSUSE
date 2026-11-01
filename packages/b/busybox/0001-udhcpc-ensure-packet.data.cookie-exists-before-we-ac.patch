@@ -1,0 +1,43 @@
+From fd1972099f28636b5deea200022b528f3a0bd523 Mon Sep 17 00:00:00 2001
+From: Denys Vlasenko <vda.linux@googlemail.com>
+Date: Mon, 21 Sep 2026 12:15:19 +0200
+Subject: [PATCH] udhcpc: ensure packet.data.cookie exists before we access it
+
+function                                             old     new   delta
+d4_recv_raw_packet                                   497     500      +3
+
+Signed-off-by: Denys Vlasenko <vda.linux@googlemail.com>
+---
+ networking/udhcp/dhcpc.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/networking/udhcp/dhcpc.c b/networking/udhcp/dhcpc.c
+index e44086c2e..936687e13 100644
+--- a/networking/udhcp/dhcpc.c
++++ b/networking/udhcp/dhcpc.c
+@@ -900,7 +900,12 @@ static NOINLINE int d4_recv_raw_packet(struct dhcp_packet *dhcp_pkt, int fd)
+ 		break;
+ 	}
+ 
+-	if (bytes < (int) (sizeof(packet.ip) + sizeof(packet.udp))) {
++	if (bytes < (int) (
++			sizeof(packet.ip) + sizeof(packet.udp)
++			+ offsetof(struct dhcp_packet, options)
++			/* DHCP requires option 255 is always present, IOW: at least one byte in options[]: */
++			+ 1
++	)) {
+ 		log1s("packet is too short, ignoring");
+ 		return -2;
+ 	}
+@@ -954,7 +959,7 @@ static NOINLINE int d4_recv_raw_packet(struct dhcp_packet *dhcp_pkt, int fd)
+ 	packet.ip.tot_len = packet.udp.len; /* yes, this is needed */
+ 	check = packet.udp.check;
+ 	packet.udp.check = 0;
+-	if (check && check != inet_cksum(&packet, bytes)) {
++	if (check != 0 && check != inet_cksum(&packet, bytes)) {
+ 		log1s("packet with bad UDP checksum, ignoring");
+ 		return -2;
+ 	}
+-- 
+2.52.0
+

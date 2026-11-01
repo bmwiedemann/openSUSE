@@ -79,6 +79,16 @@ Patch19:        0004-dpkg-fix-field-handling-in-write_status_file.patch
 Patch20:        0001-httpd-allow-yescrypt-passwords-y.patch
 # PATCH-FIX-UPSTREAM - Fix bsc#1282568 (CVE-2026-88839), passwd/group parser OOB write on stale tokenize() endpoint (upstream commit c2dec52d3)
 Patch21:        0001-libpwdgrp-tokenizer-fix-for-trailing-whitespace-remo.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1241700 (CVE-2024-58251), DoS via terminal escape sequences in netstat process names
+Patch22:        0001-Fix-CVE-2024-58251-sanitize-process-names-when-calli.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1284987 (CVE-2026-108119), tar extraction-root escape via deferred symlink/hardlink creation (upstream commit 382008b3f)
+Patch23:        0001-tar-protect-against-Symlink-Hardlink-attack.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1285315 (CVE-2026-88833), integer underflow in udhcpc d4_recv_raw_packet() on short DHCP packets (upstream commit fd1972099)
+Patch24:        0001-udhcpc-ensure-packet.data.cookie-exists-before-we-ac.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1285314 (CVE-2026-88834), httpd user enumeration via missing else after failed getspnam_r() (upstream commit b829bba95)
+Patch25:        0001-httpd-do-not-try-to-use-obviously-bogus-password-fro.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1286932 (CVE-2026-92205), libarchive path traversal via ".." filename (upstream commit 5da20102b)
+Patch26:        0001-tar-.-is-also-an-unsafe-filename-treat-as-such.patch
 
 # other patches
 Patch100:       busybox.install.patch
