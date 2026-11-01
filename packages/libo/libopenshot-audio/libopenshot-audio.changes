@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov  1 01:40:30 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.2:
+  * Windows ARM64 support: Add native audio-library build readiness and
+    compatible alignment queries for the Windows ARM toolchain.
+  * Native ARM64 validation: Automatically check Linux and Windows ARM64
+    builds, with improved dependency validation and CI compatibility.
+  * Stable ABI: Version 1.0.2 keeps SO 10 unchanged and provides the audio
+    dependency required by libopenshot 1.1.0.
+
+-------------------------------------------------------------------
 Mon Sep 28 07:16:00 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.1:
