@@ -53,4 +53,12 @@ Built locally on aarch64 for Tumbleweed and Leap 16.0: rpmlint clean, tests
 pass, binary runs.</comment>
     <requestid>1374729</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0039ce274eb6d8465f2893ef614def2f</srcmd5>
+    <version>0.9.6</version>
+    <time>1793568306</time>
+    <user>dimstar_suse</user>
+    <comment>Update rtlamr to 0.9.6</comment>
+    <requestid>1394296</requestid>
+  </revision>
 </revisionlist>

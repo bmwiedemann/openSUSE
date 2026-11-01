@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov  1 14:39:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.6:
+  * Signal processing switched from float64 to float32, with
+    combined filter and quantize step in the R900 stage
+  * Reworked error handling on top of stdlib errors: exit 1 when
+    the receiver stops on an error, propagate csv write errors,
+    fail gracefully on invalid message types
+  * Set the missed-sample threshold to 90% and log slow sample
+    consumption as a warning
+  * rtltcp connection arguments moved into rtlamr flags
+  * Fix nil-pointer dereference and IDM message handling
+  * Pin the scmplus JSON field name PacketCRC for compatibility
+- Drop rtlamr-no-debug-stdout-print.patch, contained upstream:
+  no more build directory printed to stdout, which corrupted
+  the first line of csv/json output
+- Regenerate vendor.tar.gz, now shipping only rtltcp
+- License is AGPL-3.0-only AND BSD-3-Clause: pkg/errors is gone,
+  so the BSD-2-Clause grant no longer applies
+
+-------------------------------------------------------------------
 Sun Aug 30 17:13:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.5:
