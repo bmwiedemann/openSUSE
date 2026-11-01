@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 21 13:20:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.3
+  * ip: add OVPN device mode support
+  * ss: stop displaying dccp sockets
+  * seg6: add support for lookup attribute in SRv6 encap routes
+  * ip nexthop: support fdb destination port
+  * ip/bond: add lacp_strict support
+
+-------------------------------------------------------------------
 Wed Sep  2 15:27:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.2
