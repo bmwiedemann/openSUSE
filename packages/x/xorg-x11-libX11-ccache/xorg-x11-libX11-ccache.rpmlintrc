@@ -1,0 +1,10 @@
+# This package is not compatible with transactional (frozen) update
+# systems. It ships pre-generated libX11 compose caches under
+# /var/cache/libx11/compose, a directory that is compiled into libX11
+# and cannot be relocated from this package. The cache file names
+# embed a hash of the source compose file, so stale entries
+# self-invalidate, and the cache must persist across
+# snapshots/rollbacks rather than roll back with the system. The
+# dir-or-file-outside-snapshot finding is therefore not actionable
+# from this package.
+addFilter("dir-or-file-outside-snapshot")

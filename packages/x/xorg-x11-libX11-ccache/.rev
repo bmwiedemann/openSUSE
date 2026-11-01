@@ -181,4 +181,27 @@
     <comment></comment>
     <requestid>953308</requestid>
   </revision>
+  <revision rev="26" vrev="23">
+    <srcmd5>ef36395c01f9aa6cdb56df78fe465140</srcmd5>
+    <version>7.6</version>
+    <time>1793568132</time>
+    <user>dimstar_suse</user>
+    <comment>- added xorg-x11-libX11-ccache.rpmlintrc as source to Specfile
+
+- Replace the one-letter Summary (&quot;X&quot;) with the package's actual
+  description text
+- Drop the deprecated Group: tag
+- Convert the xkeyboard-config BuildRequires to pkgconfig form
+  (resolves to the same package) and use %{_fontsdir}; spec-cleaner
+  canonical pass
+- Suppress the dir-or-file-outside-snapshot error in the package
+  rpmlintrc: this package is not compatible with transactional
+  (frozen) update systems - it ships pre-generated libX11 compose
+  caches in /var/cache/libx11/compose, a directory compiled into
+  libX11 that cannot be relocated from this package, and the
+  content-hashed cache must persist across snapshots/rollbacks
+  rather than roll back with the system; the finding is not
+  actionable from this package</comment>
+    <requestid>1393774</requestid>
+  </revision>
 </revisionlist>

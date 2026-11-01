@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-libX11-ccache
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,18 @@
 Name:           xorg-x11-libX11-ccache
 Version:        7.6
 Release:        0
-Summary:        X
+Summary:        Cache for X.Org compose files
 License:        MIT
-Group:          System/Libraries
 URL:            https://xorg.freedesktop.org/
 Source:         https://xorg.freedesktop.org/archive/individual/app/%{mkcomposecache}.tar.bz2
 Source1:        LICENSE
+Source2:        xorg-x11-libX11-ccache.rpmlintrc
 BuildRequires:  mkcomposecache
+BuildRequires:  pkgconfig
 BuildRequires:  xbiff
-BuildRequires:  xkeyboard-config
 BuildRequires:  xorg-x11-Xvfb
 BuildRequires:  xorg-x11-fonts
+BuildRequires:  pkgconfig(xkeyboard-config)
 Provides:       xorg-x11:%{_localstatedir}/X11R6/compose-cache/
 
 %description
@@ -45,7 +46,7 @@ Cache for X.Org compose files.
 cp -t. '%{SOURCE1}'
 bash ./mkallcomposecaches.sh \
  'prefix=%{_prefix}' \
- cachedir="%{buildroot}/%{_localstatedir}/cache/libx11/compose" xvfbopts="'-fp '\''%{_datadir}/fonts/misc'\'" /
+ cachedir="%{buildroot}/%{_localstatedir}/cache/libx11/compose" xvfbopts="'-fp '\''%{_fontsdir}/misc'\'" /
 
 %files
 %license LICENSE
