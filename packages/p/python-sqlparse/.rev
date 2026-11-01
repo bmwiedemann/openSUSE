@@ -342,4 +342,14 @@
   ## Enhancements</comment>
     <requestid>1371681</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>22c2b6c4a3da7f0efbcba22f2224618e</srcmd5>
+    <version>0.6.0</version>
+    <time>1793568148</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-112307: Prevents arbitrary PHP code injection by escaping
+  dollar-signs. (bsc#1286096)
+  * Add patch CVE-2026-112307-php-output-filter-injection.patch</comment>
+    <requestid>1393786</requestid>
+  </revision>
 </revisionlist>

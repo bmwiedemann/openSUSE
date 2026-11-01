@@ -29,6 +29,8 @@ Summary:        Non-validating SQL parser
 License:        BSD-3-Clause
 URL:            https://github.com/andialbrecht/sqlparse
 Source:         https://files.pythonhosted.org/packages/source/s/sqlparse/sqlparse-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM bsc#1286096 Based on gh#andialbrecht/sqlparse#930
+Patch0:         CVE-2026-112307-php-output-filter-injection.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -51,7 +53,7 @@ sqlparse is a non-validating SQL parser module.  It provides support for
 parsing, splitting and formatting SQL statements.
 
 %prep
-%setup -q -n sqlparse-%{version}
+%autosetup -p1 -n sqlparse-%{version}
 sed -i -e '1{\,^#!%{_bindir}/env python,d}' sqlparse/__main__.py sqlparse/cli.py
 chmod -x sqlparse/cli.py
 

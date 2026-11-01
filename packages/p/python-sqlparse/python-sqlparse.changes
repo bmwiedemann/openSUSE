@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 30 05:53:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- CVE-2026-112307: Prevents arbitrary PHP code injection by escaping
+  dollar-signs. (bsc#1286096)
+  * Add patch CVE-2026-112307-php-output-filter-injection.patch
+
+-------------------------------------------------------------------
 Tue Aug 18 07:43:22 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update to 0.6.0 (bsc#1275459, bsc#1275460, bsc#1275461, bsc#1275466):
