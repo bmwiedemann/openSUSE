@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Nov  1 06:22:21 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.9.0
+  Features:
+  * open folder, available in the file menu, hamburger menu,
+    context menu and through the Ctrl+Alt+O shortcut
+  * Osd settings page, with control over which actions show the
+    osd
+  * transcript panel that shows the subtitles, can be accessed
+    with Ctrl-P and from the subtitles menu
+  * explanatory tooltips can be turned off in Settings > General
+    > Show explanatory tooltips (can still be shown by pressing
+    alt key)
+  * for youtube urls the seekbar shows the buffered part of the
+    video that can be immediately seeked to
+  * youtube urls are resolved in a better way, instead of one
+    yt-dlp process per url, now one process handles multiple
+    urls and only 3 processes run at the same time
+  * Database settings page, allows clearing database tables
+  * file metadata is cached in the database for faster loading,
+    can be updated through the playlist's context menu
+  * simplified chapter marker to just a vertical line, chapter
+    title is shown in a tooltip together with the time position
+    and preview thumbnail
+  Playlist:
+  * only active playlist is loaded at startup, the others are
+    loaded when switched to
+  * playlist tabs are closed immediately with middle click
+    rather than having to hold the button pressed
+  * moved toolbar under the tabs
+  * default playlist is saved and restored like the other
+    playlists too, rather than being populated based on last
+    played item
+  * extended M3U playlists are supported now, only title and
+    duration
+  * removed compact style
+  Bugfixes:
+  * wrong playlist item marked as playing after removing an item
+    before the playing one
+  * broken thumbnail generation
+  * subtitles settings page being slow to open
+
+-------------------------------------------------------------------
 Sun Oct 18 08:46:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(libpostproc) BuildRequires: Not stricly needed,

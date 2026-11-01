@@ -17,7 +17,7 @@
 
 
 Name:           haruna
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
@@ -27,14 +27,14 @@ Source1:        https://download.kde.org/stable/haruna/%{version}/%{name}-%{vers
 Source2:        haruna.keyring
 BuildRequires:  cmake >= 3.15
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  kf6-extra-cmake-modules >= 6.0
+BuildRequires:  kf6-extra-cmake-modules >= 6.24.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Breeze)
 %if 0%{?suse_version} > 1500
 BuildRequires:  cmake(KDSingleApplication-qt6)
 %endif
-BuildRequires:  cmake(KF6ColorScheme) >= 6.6.0
-BuildRequires:  cmake(KF6Config) >= 6.10.0
+BuildRequires:  cmake(KF6ColorScheme)
+BuildRequires:  cmake(KF6Config) >= 6.24.0
 BuildRequires:  cmake(KF6CoreAddons)
 BuildRequires:  cmake(KF6Crash)
 BuildRequires:  cmake(KF6DocTools)
@@ -45,14 +45,14 @@ BuildRequires:  cmake(KF6KIO)
 BuildRequires:  cmake(KF6Kirigami)
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(MpvQt)
-BuildRequires:  cmake(Qt6Core) >= 6.6.0
+BuildRequires:  cmake(Qt6Core) >= 6.9.0
 BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickControls2)
-BuildRequires:  cmake(Qt6ShaderTools) >= 6.6.0
+BuildRequires:  cmake(Qt6ShaderTools)
 BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
