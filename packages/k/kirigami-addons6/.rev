@@ -127,4 +127,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1380259</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c70cf9dd0e8ce5aed5b3704edef93b99</srcmd5>
+    <version>1.16.0</version>
+    <time>1793568110</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.16.0
+  https://carlschwan.eu/2026/10/29/kirigami-addons-1.16.0.-the-material-updates/</comment>
+    <requestid>1394106</requestid>
+  </revision>
 </revisionlist>
