@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Twisted%{psuffix}
-Version:        26.4.0
+Version:        26.10.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
@@ -46,10 +46,8 @@ Patch1:         1521_delegate_parseqs_stdlib_bpo42967.patch
 Patch2:         no-cython_test_exception_raiser.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch3:         remove-dependency-version-upper-bounds.patch
-# PATCH-FIX-UPSTREAM: https://github.com/twisted/twisted/pull/12661
-Patch4:         pycryptography-use-csr.patch
-# PATCH-FIX-UPSTREAM CVE-2026-106454.patch bsc#1284420 gh#twisted/twisted@f570190
-Patch5:         CVE-2026-106454.patch
+# PATCH-FIX-UPSTREAM py315.patch https://github.com/twisted/twisted/pull/12602 Fix Python 3.15 compatibility issues in trial - #12602
+Patch4:         py315.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
@@ -62,13 +60,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Twisted-tls = %{version}
 BuildArch:      noarch
 # SECTION install requires
-Requires:       python-Automat >= 24.8.0
+Requires:       python-Automat >= 24.8.1
 Requires:       python-attrs >= 22.2
 Requires:       python-constantly >= 15.1
-Requires:       python-hyperlink >= 17.1.1
+Requires:       python-hyperlink >= 18.0.0
 Requires:       python-incremental >= 24.7.0
-Requires:       python-typing_extensions >= 4.2
-Requires:       python-zope.interface >= 5
+Requires:       python-typing_extensions >= 4.13.2
+Requires:       python-zope.interface >= 8
 # /SECTION
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -84,6 +82,8 @@ BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module hypothesis}
 # declared nowhere but required to pass 8 tests with timezone checks
 BuildRequires:  %{python_module pytz}
+# needs the ssh command for conch tests
+BuildRequires:  openssh
 %endif
 %python_subpackages
 
@@ -105,9 +105,9 @@ This package contains the documentation for python-Twisted
 %package tls
 Summary:        TLS support for Twisted
 Requires:       python-Twisted = %{version}
-Requires:       python-idna >= 2.4
-Requires:       python-pyOpenSSL >= 25.2
-Requires:       python-service_identity >= 18.1.0
+Requires:       python-idna >= 2.5
+Requires:       python-pyOpenSSL >= 25.3
+Requires:       python-service_identity >= 21.1.0
 
 %description tls
 Twisted is an extensible framework for Python programming, with special focus
@@ -120,7 +120,7 @@ Summary:        Conch for Twisted
 Requires:       python-Twisted = %{version}
 Requires:       python-appdirs >= 1.4.0
 Requires:       python-bcrypt >= 3.2.1
-Requires:       python-cryptography >= 38
+Requires:       python-cryptography >= 46
 
 %description conch
 Twisted is an extensible framework for Python programming, with special focus

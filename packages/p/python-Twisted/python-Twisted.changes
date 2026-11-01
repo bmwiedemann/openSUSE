@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Oct 30 12:47:48 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 26.10.0 (CVE-2026-83813, bsc#1287833,
+  CVE-2026-115778, bsc#1287678, CVE-2026-115775, bsc#1287675,
+  CVE-2026-115877, bsc#1287848, CVE-2026-115774, bsc#1287671,
+  CVE-2026-115776, bsc#1287676)
+  * It is now possible to set the SO_REUSEPORT and SO_REUSEADDR TCP
+    socket flags from user code.
+  * Python 3.14 is now supported.
+  * twisted.internet.defer.Deferred.__iter__, used when awaiting a
+    Deferred, is now about 2-3% faster.
+  * twisted.internet.tcp.Connection no longer supports returning a
+    non-None value from a protocol's dataReceived method
+  * Implementations of twisted.internet.interfaces.IProcessProtocol
+    are now required to provide a processExited method
+  * twisted.internet.tcp.Port.startListening() now closes the socket
+    when raising CannotListenError
+  * twisted.logger.LoggingFile.fileno now raises io.UnsupportedOperation
+    instead of returning -1. This fixes an interoperability issue with
+    multiprocessing.
+  * twistd now exits with a non-zero status given an unknown subcommand.
+  * twisted.protocols.ftp.FTPClient now uses ip address of the original
+    ftp server to open passive data connections by default, instead of
+    trusting PASV responses.
+  * _makeGetterFactory method in twisted.web.client has been removed.
+  * twisted.trial.runner.samefile is deprecated and replaced by
+    os.path.samefile.
+- Drop merged pycryptography-use-csr.patch and CVE-2026-106454.patch
+- Add upstream py315.patch to fix tests with python 3.15
+
+-------------------------------------------------------------------
 Tue Oct 13 12:22:23 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - CVE-2026-106454: allowing nested or otherwise expensive regular

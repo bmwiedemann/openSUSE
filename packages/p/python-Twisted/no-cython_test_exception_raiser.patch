@@ -1,9 +1,9 @@
-Index: twisted-26.4.0/src/twisted/test/test_failure.py
+Index: twisted-26.10.0/src/twisted/test/test_failure.py
 ===================================================================
---- twisted-26.4.0.orig/src/twisted/test/test_failure.py
-+++ twisted-26.4.0/src/twisted/test/test_failure.py
+--- twisted-26.10.0.orig/src/twisted/test/test_failure.py
++++ twisted-26.10.0/src/twisted/test/test_failure.py
 @@ -20,7 +20,8 @@ from types import TracebackType
- from typing import Any, cast
+ from typing import Any
  from unittest import skipIf
  
 -from cython_test_exception_raiser import raiser
