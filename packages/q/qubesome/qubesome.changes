@@ -1,4 +1,234 @@
 -------------------------------------------------------------------
+Sun Nov 01 07:57:15 UTC 2026 - Paulo Gomes <pjbgf@linux.com>
+
+- Update to version 0.1.0:
+  * fix(deps): update module go.yaml.in/yaml/v3 to v3.0.6
+  * fix(deps): update module github.com/godbus/dbus/v5 to v5.2.4
+  * gateway: keep interface names and the spoofed counter in the guard check
+  * gateway: name the gateway an address came from under the same lock
+  * gateway: refuse to register with a gateway started since allocation
+  * sandbox: open a record's lock read-only
+  * gateway: compare a microVM's guard rule by rule
+  * sandbox: lock a record between reading and removing it
+  * gateway, workloads: unregister only from the gateway a workload was wired to
+  * gateway: keep workloads recorded before the gateway was named
+  * gateway, doctor: read a microVM's guard back whole
+  * doctor: report a microVM wired to a gateway that has gone
+  * gateway, sandbox, workloads: tie a workload's record to the gateway it was wired to
+  * sandbox: bring a guest's loopback up
+  * types: drop a machine's microvm block in limited mode
+  * gateway: let a test gateway be stopped before it serves
+  * README: give secret-tool the login collection by its path
+  * types: refuse a gateway name only for a reading a workload can have
+  * gateway: skip a new gateway's reload only for a policy it has loaded
+  * gateway: record the policy a gateway started from as an absolute path
+  * gateway: reload a policy edited during start, and refuse an unrecorded gateway
+  * gateway, types: check a gateway name where its address is handed out
+  * gateway: deliver host keyring secrets for injection
+  * runners: leave a record and a gateway name a reaper no longer owns
+  * workloads, cli: list the workloads that are running, and kill or restart them
+  * chore: update agent tooling config
+  * start: stop --detach from forking without end
+  * files, profiles, cli: remember the last config that opened
+  * types, qubesome, cli: run a workload stripped down with --limited
+  * headless: fall back to the active profile the way run does
+  * cli: unhide gateway and usb, and say what each flag is for
+  * clipboard: stop waiting on a pipe the forked xclip keeps open
+  * runners: unregister a workload whose launch fails after registering it
+  * runners, session: refuse a sandbox left running by a session that ended
+  * gateway, sandbox: report only the workloads this session wired
+  * launch, runners: record the sandbox's own init rather than the outer bwrap
+  * session: end and announce a session only from the holder that owns it
+  * qubesome, types: check a workload against the runner it will run under
+  * types: warn when a console takes an address it does not need
+  * firecracker: point a guest's ssh at the gateway proxy
+  * log, launch: say what a launch did, at INFO, on stderr
+  * gateway, session: replace a gateway left behind by a session that has gone
+  * gateway: hand the tap to the uid the session namespace maps
+  * sandbox: say why a guest's supervisor takes no gate
+  * gateway: show which workloads this session has wired
+  * doctor: report a microVM's wiring and its guard
+  * gateway: read a microVM's wiring back out of its namespace
+  * types, qubesome: let a microVM hold NET_ADMIN on the gateway
+  * firecracker: describe the sandbox the VMM runs in
+  * firecracker, sandbox: give a guest the network it was allocated
+  * firecracker: give a machine on the gateway an interface
+  * gateway: wire a microVM to the session gateway
+  * runners: share the gated launcher between the two runners
+  * sandbox: record the gateway address a workload holds
+  * hack: measure what a microVM's tap and guard need
+  * fix(deps): update module github.com/godbus/dbus/v5 to v5.2.3
+  * fix(deps): update module github.com/go-git/go-git/v6 to v6.0.0-beta.1
+  * fix(deps): update golang
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.14.0
+  * chore(deps): update dependency golangci/golangci-lint to v2.14.0
+  * chore(deps): update dependency protocolbuffers/protobuf to v36.2
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.13.0
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.12.0
+  * fix(deps): update module google.golang.org/grpc to v1.84.0
+  * gateway: record which config the gateway was started from
+  * cmd: keep the Wayland warning off stdout
+  * gateway: undo slog's escapes when reading a log field
+  * gateway: keep a log's lines whole, and bound what reading one costs
+  * gateway, bwrap: give a workload's ssh a way through the gateway
+  * cmd: write an error to stderr, not to stdout
+  * gateway: say the subnet mismatch the same way in both places
+  * gateway: describe the address record, not a gateway that is not running
+  * gateway: wait for a stopped gateway to go before forgetting it
+  * gateway: say when the log will not close
+  * bwrap: tell a workload where to ask the gateway for a tunnel
+  * gateway: do not report a config the running gateway may not have
+  * doctor: report what the gateway has been doing with egress
+  * gateway: narrow the logs to one profile or one workload
+  * profiles: name the profile's display for the window manager
+  * xkb: prefer the running layout on an X11 session
+  * host-run: leave the launching session's variables behind
+  * gateway: keep the gateway's log where it can be read
+  * host-run: return while the command runs
+  * host-run: authorize the command against the profile's display
+  * profiles, bwrap: carry the host timezone with TZ, not a mount
+  * gateway: add a hidden gateway command with status and stop
+  * fix(deps): update module golang.org/x/net to v0.59.0
+  * gateway, session: stop opening a lock writable, and report a failed write
+  * sandbox: say what sharing the whole of /sys costs
+  * gateway: let qubesome ask the gateway to re-read its policy
+  * gateway: create the veth in a namespace the session owns
+  * images: count the gateway among the images a config names
+  * doctor: stop reporting a config it never read as a config with no gateway
+  * profiles: ask about preloading once, and never without a terminal
+  * gateway: own the network namespace the rules are programmed in
+  * doctor: tell an idle session from a broken one
+  * doctor: diagnose the session gateway
+  * images: call it refresh, and let the store go three days stale
+  * types: refuse the two configurations the gateway cannot serve
+  * bwrap: give a workload its gateway address
+  * gateway: wire a workload to the gateway with a veth
+  * gateway: give the gateway its uplink from its own image
+  * gateway: start one gateway for a session and wait for it
+  * session: hold one user namespace open for a session
+  * hack: record the answer the gateway was waiting on
+  * hack: record check 7, and ask the half of it that was missed
+  * hack: ask whether CAP_NET_ADMIN reaches a descendant's namespace
+  * xkb: prefer the configured layout to the running one
+  * sandbox, xkb: read a mounted /dev and a Wayland keymap correctly
+  * deps: drop the container runner from the firecracker path
+  * firecracker: boot any image, without docker
+  * firecracker: give a microvm a persistent data disk
+  * sandbox: carry a guest pty over the supervisor connection
+  * sandbox: run the supervisor as a guest init
+  * sandbox: reach a supervisor over vsock
+  * firecracker: build the rootfs from the unpacked bundle
+  * control: own the gateway wire contract
+  * gateway: speak to the gateway over its control socket
+  * clipboard, profiles: say why, instead of exit status 1
+  * clipboard: authenticate against both displays, not one
+  * profiles: give the compositor the keyboard layout of its host
+  * firecracker: say that a single instance machine is not built yet
+  * types: describe a backing microVM and refuse what it cannot do
+  * hack: measure what a microVM rootfs build needs
+  * types: describe the gateway in the config
+  * hack: record the veth result the gateway was waiting on
+  * bwrap: split a mapped path into all three of its fields
+  * deps: stop asking for bwrap to fill the image store
+  * deps: require the sandbox tools for workloads
+  * types: retire the container runner from the config
+  * doctor: diagnose a sandbox rather than a container
+  * images, profiles: expose what a sandbox diagnosis needs
+  * gpu: report what a sandbox gets, not a runner argument
+  * runners: delete the container runners
+  * runners: launch workloads under bwrap
+  * files: restore the rooted profile path
+  * sandbox: supervise a workload from inside its sandbox
+  * sandbox: let a workload outlive the launch that started it
+  * hack: record what the host answered, and fix the veth check
+  * bwrap: build a workload sandbox spec
+  * images: stop a workload launch waiting on every image in the config
+  * build: drop the filepath-securejoin dependency
+  * files: refuse a path that leaves its base instead of clamping it
+  * files: read config and workload files through an os.Root
+  * hack: also ask whether a veth can cross into a sibling namespace
+  * images: retire the container runner image store
+  * hack: answer whether a running sandbox can be re-entered
+  * types: decode workload YAML strictly, matching the config loader
+  * types: remove privileged from the workload grant
+  * profiles: stop reporting a closed profile as a failed one
+  * inception: give a launch call a deadline that fits a launch
+  * doctor: do not judge a profile whose container could not be inspected
+  * doctor: stop reporting a disabled network as a granted one
+  * doctor: separate a runner that failed from a profile that is not running
+  * doctor: tell a workload to drop a request, not a grant
+  * doctor: give the runner advice the runner it is talking about
+  * container: read the image home dir from the unpacked bundle
+  * sandbox: Add cap hint for args
+  * fix(deps): update golang
+  * profiles: name the compositor when it is the one that died
+  * dbus: send notifications with the hints type the spec requires
+  * sandbox: leave /run to the image and always create the runtime dir
+  * sandbox: share /sys so the GPU can be found
+  * profiles: fail the start when the profile's sandbox does
+  * images: give skopeo and umoci the image argument each one parses
+  * seccomp: deny the terminal injection ioctls
+  * sandbox: disable nested user namespaces for the profile
+  * images: keep a store key within its stated bound
+  * profiles: give the sandbox a home and a working directory
+  * profiles: gate every start on the running sandbox
+  * profiles: keep the profile devices out of the sandbox
+  * images: key the store on the whole reference
+  * deps: check the sandbox host requirements
+  * images: only pull a profile image the store cannot provide
+  * sandbox: pass bwrap its options through a descriptor
+  * profiles: launch the profile under bwrap
+  * sandbox: record and check sandbox liveness
+  * sandbox: fix devices preallocation to its exact element count
+  * sandbox: render a spec into bwrap arguments
+  * gpu: expose the CDI edits a bwrap sandbox needs
+  * images: reuse the bundle when a concurrent unpack wins the rename
+  * seccomp: deny a syscall an argument free group denies
+  * images: pull with skopeo and unpack with umoci
+  * images: read digests and bundle metadata from an OCI store
+  * seccomp: write the assembled filter to a memfd
+  * syscallgen: wrap the write error and record two assumptions
+  * seccomp: emit the profile as a BPF program
+  * seccomp: generate the syscall name to number tables
+  * seccomp: reject unknown fields during profile parsing
+  * seccomp: vendor and parse the containers/common profile
+  * doctor: report on the profile that is running
+  * cli: root a started profile's config where it was sourced from
+  * env: guard the expansion mapping against concurrent use
+  * doctor: report host devices a profile or workload asks for and lacks
+  * doctor: explain why a workload is not working, and wire the command up
+  * doctor: explain why a profile is not working
+  * doctor: check that the host can actually run qubesome
+  * profiles: only remove the profile socket when it is a socket
+  * profiles: satisfy the linter and relabel every podman mount
+  * profiles: stop when the profile does, and say when its socket is dead
+  * profiles: one display type, and cover the child environments
+  * profiles: point at host passthrough without naming a shortcut
+  * profiles: let a profile name the host passthrough shortcut
+  * profiles: add a fullscreen option, and stop advertising a dead shortcut
+  * profiles: connect the window manager with qubesome's X cookie
+  * profiles: put the compositor runtime dir somewhere the profile can write
+  * profiles: watch for an early exit rather than checking once
+  * files: move workload shared memory out of the shared runtime dir
+  * podman: send workloads to the profile display and isolate their shm
+  * profiles: present through the host X server on every host
+  * types: document the config fields against the new X server
+  * docker: send workloads to the profile display and isolate their shm
+  * profiles: stop sharing the host runtime dir with profiles
+  * profiles: quote the interactive hint and detect a dead container
+  * profiles: start the display through profile-display
+  * cli: add the hidden profile-display command
+  * profiles: log why the compositor went away
+  * profiles: run the compositor and Xwayland as the profile display
+  * profiles: close the test listener on the test goroutine
+  * profiles: wait for the compositor socket before starting Xwayland
+  * profiles: guard the disabled X extensions with a test
+  * profiles: build the profile Xwayland arguments
+  * profiles: say which half of the resolution was malformed
+  * profiles: build the profile compositor arguments
+  * files: add compositor and in-profile binary paths
+
+-------------------------------------------------------------------
 Sun Sep 06 10:21:05 UTC 2026 - Paulo Gomes <pjbgf@linux.com>
 
 - Update to version 0.0.21:
