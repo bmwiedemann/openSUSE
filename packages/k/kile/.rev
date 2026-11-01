@@ -531,4 +531,18 @@ Thi should also go to 12.2 IMHO. Please tell me if you will forward this or if I
     <comment>Update snapshot</comment>
     <requestid>1369306</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>7a45ca013022620ba320b59c59d0f81d</srcmd5>
+    <version>2.9.95git.20261101T131242~7f89ffe2</version>
+    <time>1793568287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.95git.20261101T131242~7f89ffe2:
+  * Fix crash when saving a document under a name with a different type (kde#421239)
+  * Don't warn about already loaded documents when restoring projects
+  * Sort the results of &quot;Find in Project&quot; alphabetically (kde#217467)
+  * Live preview: update the preview when a document is reloaded from disk
+  * Update copyright year.
+  * Silence various warnings with GCC 16.1</comment>
+    <requestid>1394291</requestid>
+  </revision>
 </revisionlist>

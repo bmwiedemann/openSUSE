@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 01 13:15:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to version 2.9.95git.20261101T131242~7f89ffe2:
+  * Fix crash when saving a document under a name with a different type (kde#421239)
+  * Don't warn about already loaded documents when restoring projects
+  * Sort the results of "Find in Project" alphabetically (kde#217467)
+  * Live preview: update the preview when a document is reloaded from disk
+  * Update copyright year.
+  * Silence various warnings with GCC 16.1
+
+-------------------------------------------------------------------
 Mon Aug 03 16:45:51 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to version 2.9.95git.20260802T020133~eeeb6da4:

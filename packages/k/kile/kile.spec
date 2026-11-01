@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kile
-Version:        2.9.95git.20260802T020133~eeeb6da4
+Version:        2.9.95git.20261101T131242~7f89ffe2
 Release:        0
 Summary:        A LaTeX Source Editor and TeX Shell
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
