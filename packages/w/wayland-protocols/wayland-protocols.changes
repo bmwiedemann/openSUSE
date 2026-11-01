@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 30 05:08:48 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50:
+  * stable/linux-dmabuf: Spell out rules around format_table events
+  * xx-zones: Clarify that the the item position always includes
+    its frame
+  * xx-hotkey-v1: global hotkey protocol
+  * xx-image-capture-color-management-v1: new protocol
+  * staging/color-management: fix a link to the book
+  * presentation-time: add flags to differentiate variable and
+    fixed refresh rates
+  * meson: Don't build enum headers in strict mode
+- Drop conditional gcc11 and gcc11-c++ BuildRequires: No longer
+  applies for any current supported version of openSUSE.
+- Replace keyring with Daniel Stone key from
+  https://gitlab.freedesktop.org/daniels.gpg
+
+-------------------------------------------------------------------
 Mon Jun  8 07:18:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.49:

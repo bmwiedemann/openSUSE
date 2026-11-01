@@ -18,7 +18,7 @@
 
 
 Name:           wayland-protocols
-Version:        1.49
+Version:        1.50
 Release:        0
 Summary:        Wayland protocols that add functionality not available in the core protocol
 License:        MIT
@@ -27,13 +27,9 @@ URL:            https://wayland.freedesktop.org
 Source:         https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/%{version}/downloads/%{name}-%{version}.tar.xz
 Source2:        https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/%{version}/downloads/%{name}-%{version}.tar.xz.sig
 Source3:        %{name}.keyring
-%if 0%{?suse_version} > 1500
+
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
-%else
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
-%endif
 BuildRequires:  meson >= 0.55.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -62,18 +58,10 @@ wayland-protocols.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} <= 1500
-export CC=gcc-11
-export CXX=gcc-11
-%endif
 %meson
 %meson_build
 
 %install
-%if 0%{?suse_version} <= 1500
-export CC=gcc-11
-export CXX=gcc-11
-%endif
 %meson_install
 
 %check
