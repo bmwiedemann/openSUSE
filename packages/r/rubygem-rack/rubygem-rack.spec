@@ -24,16 +24,16 @@
 #
 
 Name:           rubygem-rack
-Version:        3.2.7
+Version:        3.2.8
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
 BuildRequires:  fdupes
 # /MANUAL
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/rack/rack
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-rack-rpmlintrc

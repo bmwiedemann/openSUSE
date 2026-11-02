@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  2 14:32:13 UTC 2026 - Hendrik Vogelsang <hvogel@suse.com>
+
+- New upstream release 3.2.8
+  - Fix GHSA-5v64-555j-wjxm Multipart parser retains parsed data in its scan
+    buffer, allowing denial of service via memory exhaustion.
+  - Fix GHSA-wvg4-6p58-3gh3 Rack::Static header rules were matched against an
+    unnormalized path, allowing dot segments to bypass them.
+  - Fix GHSA-2j8w-xcrc-x985 Rack::Request#host_with_port, #base_url, and #url
+    returned the raw authority when it was invalid; host_with_port now returns
+    nil in that case.
+  - Fix GHSA-p8x9-v4hv-2w4g Multipart requests with more than one boundary
+    parameter were accepted when the first value was empty or began with a
+    quote, semicolon, or comma, bypassing the guard added for CVE-2026-26961.
+  - For the rest see bundled CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Aug 17 09:11:35 UTC 2026 - Jay Michalska <jay.michalska@suse.com>
 
 - New upstream release 3.2.7, see bundled CHANGELOG.md
