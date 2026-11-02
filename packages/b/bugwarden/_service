@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/plusky/bugwarden.git</param>
     <param name="scm">git</param>
-    <param name="revision">0.6.0</param>
+    <param name="revision">0.7.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="exclude">.git</param>
   </service>
@@ -12,17 +12,17 @@
     <param name="compression">zst</param>
   </service>
   <service name="set_version" mode="manual"/>
-  <!-- Vendor upstream's own Cargo.lock. Updating past that lock pulls
-       rmcp 3.2.0, which the "3.1" requirement accepts but which no longer
-       negotiates the 2026-07-28 protocol revision this release serves:
-       three %check tests then fail on the fallback to 2025-11-25.
-       source_validator's "missing update=true" note is expected here;
-       cargo_audit still runs, and it is clean for this lock. Re-test
-       update=true on the next release rather than carrying this blind. -->
+  <!-- update=false keeps upstream's Cargo.lock as it is: the crate
+       set upstream's CI tests and checks with cargo deny, which cargo_audit
+       re-checks here. source_validator's "missing update=true" note is
+       expected. filter=true empties the crates no Linux target uses; the
+       Windows objects it keeps in ring and aws-lc-sys are stripped
+       afterwards, see the spec comment above Source1. -->
   <service name="cargo_vendor" mode="manual">
     <param name="srcdir">bugwarden</param>
     <param name="compression">zst</param>
     <param name="update">false</param>
+    <param name="filter">true</param>
   </service>
   <service name="cargo_audit" mode="manual">
     <param name="srcdir">bugwarden</param>

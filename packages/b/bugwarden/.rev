@@ -147,4 +147,12 @@ workaround was added, because the fix belongs in the test helper.</comment>
 - Vendored chacha20 is now 0.10.2; 0.5.0 shipped the yanked 0.10.1</comment>
     <requestid>1376024</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4b140cde4883e9eeb0c84175c60e7bfe</srcmd5>
+    <version>0.7.0</version>
+    <time>1793633989</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.7.0</comment>
+    <requestid>1394424</requestid>
+  </revision>
 </revisionlist>

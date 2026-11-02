@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov  2 08:57:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.0:
+  * Add a changed_since filter to bugs_quicksearch
+  * Keep Bugzilla's error text out of read and write tool results
+  * Scrub Bug ID custom fields from served bugs, bug history and
+    write responses, and assess their targets before a write
+  * Refuse self-dependency and self-duplicate writes, quicksearch
+    predicates over hidden fields, and all-digit or path-unsafe
+    bug field names before any request
+  * Judge create_bug as Bugzilla will file it, and drop BMO's
+    comment_count from served bugs
+  * Audit stdio calls abandoned mid-dispatch and upstream errors
+    with Bugzilla's code; bound OTLP batches by encoded size
+  * By design, an initialize asking for 2026-07-28 now negotiates
+    2025-11-25: that revision has no handshake and is served to
+    clients that skip initialize
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Vendored rustls 0.23.46 and rustls-webpki 0.103.16:
+  * CVE-2026-111943: rustls-webpki could accept distrusted eMudhra
+    intermediates (RUSTSEC-2026-0382, boo#1286261)
+  * RUSTSEC-2026-0285: rustls accepted TLS 1.3 handshake messages
+    across encryption levels
+  * RUSTSEC-2026-0349: an unauthenticated ServerHello could
+    downgrade later rustls connections to classical key exchange
+- Vendor with cargo_vendor filter=true and strip the prebuilt
+  Windows objects left in ring and aws-lc-sys
+
+-------------------------------------------------------------------
 Sun Sep  6 14:52:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.6.0:
