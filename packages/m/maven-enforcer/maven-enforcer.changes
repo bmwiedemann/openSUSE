@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Sun Nov  1 22:48:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.7.0
+  * Deprecated
+    + Name enforcer 4.0.0 as the release that removes the legacy
+      rule API
+    + Deprecate the evaluateBeanshell rule
+  * New features and improvements
+    + Improve RequireUpperBoundDeps error message
+    + MENFORCER-433: Add banPropertyPrefix rule to ban Maven
+      properties by configured prefixes
+    + Improve RequireUpperBoundDeps error message
+    + ENFORCER-939: Support enforcer.skip without a POM
+  * Bug Fixes
+    + Fix RequireUpperBoundDeps with test-scope mediation
+    + Fix EnforcerRuleCache concurrency across plugin realms
+    + Resolve plugins on copies of the model plugins
+    + MENFORCER-517: RequireReleaseDeps checks now also for optional
+      dependencies
+    + fix: avoid misleading legacy warning for unknown rules
+    + requireFilesExist should accept a symbolic link
+    + Fix/916 require same versions for managed report plugins
+    + fix: correct enforceBytecodeVersion excludes filtering
+    + Fix: support custom output for 9 enforcer rules that ignored
+      getMessage()
+    + RequireFilesExist should accept a file reached through ..
+  * Documentation updates
+    + Deprecate the evaluateBeanshell rule
+    + javadoc grammar
+    + Restore the common wording on the download page
+    + Use <a id> rather than <a name> for the FAQ anchors
+    + Convert the FAQ from FML to Markdown
+    + Remove obsolete note, clean up typos
+    + Add enforceBytecodeVersion to rules index
+    + Add AGENTS.md + SECURITY.md security-model pointer for scanner
+      discoverability
+  * Maintenance
+    + Ignore SLF4J 2.x in Dependabot
+    + Remove redundant rat configuration
+    + Fix ATR project name
+    + Use push for PR Automation
+    + Use workflow_run for PR check
+    + Add project metadata for ATR
+    + Use ReaderInputStream builder in RequireTextFileChecksum
+    + Use Resolver RemoteRepository in BannedRepositories
+    + Add PR check workflow
+    + Replace plexus-utils StringUtils with commons-lang3 in
+      enforcer-rules
+    + Skip banDuplicatePomDependencyVersions ITs on Maven 3.10+
+    + Match both log levels in the BUILD FAILURE IT assertions
+    + Use junit instead of hibernate-annotations as corrupted-jar IT
+      fixture
+    + Use JSR-330 for components injection
+    + Add tests for requireJavaVersion five-part JDK strings
+    + Build artifact stubs locally instead of via the testing
+      harness
+    + Stop dependabot from updating test fixtures
+    + Drop backslash escapes that Markdown does not need
+    + Restore the document metadata dropped when the pages were
+      ported
+    + Port the site documentation from APT to Markdown
+    + Add AGENTS.md + SECURITY.md security-model pointer for scanner
+      discoverability
+  * Build
+    + Keep Dependabot off Mockito 5
+  * Dependency updates
+    + Bump commons-codec:commons-codec from 1.22.0 to 1.23.0
+    + Bump mavenVersion from 3.9.15 to 3.10.0
+    + Bump org.apache.commons:commons-lang3 from 3.20.0 to 3.21.0
+    + Bump org.apache.maven:maven-parent from 48 to 50
+    + Drop Hamcrest from tests
+    + Ignore mrm-maven-plugin 2.x in Dependabot
+    + Decouple enforceBytecodeVersion ITs from the log4j-api fixture
+      version
+    + Build artifact stubs locally instead of via the testing
+      harness
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /stale.yml from 4 to 5
+    + Bump org.codehaus.plexus:plexus-archiver from 4.11.0 to 4.12.0
+
+-------------------------------------------------------------------
 Mon May 18 17:21:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 3.6.3
@@ -83,8 +170,7 @@ Tue Jul 22 07:11:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
   * Bug Fixes
     + RequireSameVersions rule: consider entries in <plugins> when
       analyzing build- and report-plugins
-    + [MENFORCER-495] - Remove "JAVA_HOME" from rule violation
-      message
+    + MENFORCER-495: Remove "JAVA_HOME" from rule violation message
   * Documentation updates
     + Improve example of custom rule
     + Make documentation explicit about java versions for custom

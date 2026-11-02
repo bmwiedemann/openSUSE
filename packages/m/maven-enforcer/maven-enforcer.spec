@@ -17,7 +17,7 @@
 
 
 Name:           maven-enforcer
-Version:        3.6.3
+Version:        3.7.0
 Release:        0
 Summary:        A build rule execution framework
 License:        Apache-2.0
@@ -100,17 +100,11 @@ pom.xml, but you can enforce a set of rules.
 %prep
 %setup -q -n enforcer-%{version}
 
-%pom_remove_plugin :apache-rat-plugin
-
-find -name '*.java' -exec sed -i 's/\r//' {} +
-
 %build
 %{mvn_build} -s -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
-    -Dversion.maven-enforcer-plugin=SYSTEM \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dsource=8
 
 %install
