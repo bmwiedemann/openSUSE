@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 26 08:20:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Added optional support for USB FIDO2 security keys, installed
+    with the fido2 extra.
+  * Added Launchpad.register_hardware_key() to register security
+    keys on the logged-in account.
+  * Added Launchpad.issue_hardware_bound_oauth_token() and
+    Launchpad.revoke_hardware_bound_oauth_token() to manage OAuth
+    refresh grants bound to a security key.
+  * Added Launchpad.login_with_hardware_token(), which exchanges
+    a hardware-bound grant for short-lived access tokens and
+    stores only the grant.
+  * Hardened security posture.
+  * Updated link to homepage.
+  * Added pysocks dependency for proxy support in httplib2.
+  * Added support for Python 3.14.
+  * Replaced deprecated pkg_resources usage with
+    importlib.resources.
+  * Fixed login_with() so that consumer_name performs a single-
+    application integration instead of being discarded in favour
+    of a desktop-wide one, and forwarded allow_access_levels so
+    applications can request narrower permissions than
+    DESKTOP_INTEGRATION.
+
+-------------------------------------------------------------------
 Thu Jun 12 08:55:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.1.0
