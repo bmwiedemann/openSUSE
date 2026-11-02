@@ -375,4 +375,15 @@
 - Update Requires from pyproject.toml (forwarded request 1381861 from glaubitz)</comment>
     <requestid>1381898</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>668d0dbc613ecc4d68185c1569f53b09</srcmd5>
+    <version>12.18.1</version>
+    <time>1793634018</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 12.18.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1394414 from glaubitz)</comment>
+    <requestid>1394443</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-storage-queue
-Version:        12.18.0
+Version:        12.18.1
 Release:        0
 Summary:        Microsoft Azure Storage Queue Client Library for Python
 License:        MIT
