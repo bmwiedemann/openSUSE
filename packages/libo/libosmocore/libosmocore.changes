@@ -5,10 +5,13 @@ Fri Aug 21 09:34:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
   * Fix buffer overflows/overreads in `bssgp_rx_paging`,
     `parse_process_uss_req`, `osmo_dec_gcr`, `osmo_pbit2ubit`, in
     the CBSP WRITE-REPLACE decoder, and in TLV tag logging.
+    [boo#1289028, CVE-2026-104592]
   * iuup: Cure stack buffer-overflow rx IuUP with payload
-    larger than 1024 bytes.
+    larger than 1024 bytes. [boo#1289027, CVE-2026-104591]
+    [boo#1288875, CVE-2026-104597]
   * gsm: Reject BSSMAP Encryption Information IE with no selected
     algo or key length != 8.
+  * Resolve [boo#1289029, CVE-2026-104594]
 
 -------------------------------------------------------------------
 Wed Jul 22 14:39:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
