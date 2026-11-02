@@ -17,7 +17,7 @@
 
 
 Name:           python-uuid-utils
-Version:        0.14.1
+Version:        1.0.0
 Release:        0
 Summary:        Fast, drop-in replacement for Python's uuid module, powered by Rust
 License:        BSD-3-Clause

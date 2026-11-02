@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov  1 15:21:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.0.0:
+  * Intentional break: uuid6, uuid7 and uuid8 follow the
+    signatures Python 3.14 added to the standard library;
+    the legacy 0.x signatures are removed.
+  * uuid6(node, clock_seq), uuid7(nanoseconds=...),
+    uuid8(a, b, c); uuid1, uuid3, uuid4, uuid5 and the UUID
+    type are unchanged.
+  * UUID(..., version=N) now sets the RFC 4122 variant.
+  * Raise the Python floor to 3.10.
+  * Refresh the vendored Rust crates (pyo3 0.29, uuid 1.26,
+    rand 0.10).
+
+-------------------------------------------------------------------
 Fri Apr 24 05:35:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.14.1.
