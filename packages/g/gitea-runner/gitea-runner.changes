@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:11:40 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 5.3.0:
+  * fix(dind): double-fork in s6-notifyoncheck to eliminate zombie processes (#1364)
+  * enhance(kubernetes): fetch job pod copies from the runner over the pod network (#1354)
+  * fix(exec): load local reusable workflows from disk with --no-skip-checkout (#1362)
+  * enhance(cache): scope cache entries by ref like GitHub (#1361)
+  * enhance: add GITEA_* aliases for built-in workflow environment variables (#1358)
+  * fix: scope the action identity to the step executing an action (#1359)
+  * fix: stop the docker proxy probe from leaking its container (#1357)
+
+-------------------------------------------------------------------
 Wed Oct 28 11:05:15 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 5.2.4:
