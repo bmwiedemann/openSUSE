@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 30 18:16:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.4:
+  * Add validation of lxw_datetime fields to ensure that they are
+    within Excel's allowable ranges
+  * Fix an issue where setting the x or y scales to math.h INFINITY
+    resulted in an infinite loop
+  * Add validation checks for various enum values.
+  * Fix handling of invalid chart types
+- includes changes from 1.2.3:
+  * Add support for handling dates in the Excel 1904 epoch
+  * Fix undefined behavior bugs in string indexing
+
+-------------------------------------------------------------------
 Sat Apr  5 01:10:45 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.2.2:
