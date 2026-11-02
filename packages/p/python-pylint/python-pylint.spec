@@ -24,36 +24,34 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pylint
-Version:        4.0.7
+Version:        4.1.3
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
 URL:            https://github.com/pylint-dev/pylint
 # Tests are no longer packaged in the PyPI sdist, use GitHub archive
 Source:         https://github.com/pylint-dev/pylint/archive/refs/tags/v%{version}.tar.gz#/pylint-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#pylint-dev/pylint#11153
-Patch0:         support-astroid-4.3.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dill >= 0.3.7
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
-Requires:       (python-astroid >= 4.3.0 with python-astroid < 4.4.0)
-Requires:       (python-isort >= 5 with python-isort < 9)
+Requires:       (python-astroid >= 4.3.4 with python-astroid < 4.4.0)
+Requires:       (python-isort >= 5 with python-isort < 10)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Requires:       (python-typing-extensions >= 3.10 if python-base < 3.10)
 BuildArch:      noarch
 %if %{with tests}
 # SECTION pylint deps
-BuildRequires:  %{python_module astroid >= 4.3.0 with %python-astroid < 4.4.0}
+BuildRequires:  %{python_module astroid >= 4.3.4 with %python-astroid < 4.4.0}
 BuildRequires:  %{python_module dill >= 0.3.7}
 BuildRequires:  %{python_module enchant}
-BuildRequires:  %{python_module isort >= 5 with %python-isort < 9}
+BuildRequires:  %{python_module isort >= 5 with %python-isort < 10}
 BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
 BuildRequires:  %{python_module platformdirs >= 2.2}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
@@ -120,7 +118,9 @@ donttest="test_linter_with_unpickleable_plugins_is_pickleable"
 donttest+=" or test_functional or test_progress_reporting"
 # gh#pylint-dev/pylint#11009
 donttest+=" or test_enable_message_block"
-%pytest -vv -n auto --ignore tests/benchmark --reruns 5 -rsfER -k "not ($donttest)"
+# fails due to execnet update
+donttest+=" or test_main_module_exception_is_narrow"
+%pytest -vv -n auto --ignore tests/benchmark --ignore tests/reporters/unittest_junit_reporter.py --reruns 5 -rsfER -k "not ($donttest)"
 %endif
 
 %pre
