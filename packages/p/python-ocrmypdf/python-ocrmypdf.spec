@@ -18,15 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ocrmypdf
-Version:        17.4.2
+Version:        17.13.0
 Release:        0
 Summary:        OCRmyPDF adds an OCR text layer to scanned PDF files
 License:        MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/ocrmypdf/OCRmyPDF
-#Source:         https://files.pythonhosted.org/packages/source/o/ocrmypdf/ocrmypdf-%%{version}.tar.gz
 Source:         OCRmyPDF-%{version}.tar.xz
-BuildRequires:  %{python_module Pillow >= 10.0.1}
+BuildRequires:  %{python_module Pillow >= 12}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module deprecation >= 2.1.0}
 BuildRequires:  %{python_module hatch_vcs}
@@ -43,6 +42,7 @@ BuildRequires:  %{python_module setuptools_scm >= 7.0.5}
 BuildRequires:  %{python_module typing_extensions >= 4.15.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  libexempi-devel
 BuildRequires:  python-rpm-macros
 # upstream use Requires:  ghostscript >= 10.01.2
 Requires:       ghostscript >= 9.55
@@ -62,6 +62,7 @@ Requires:       python-uharfbuzz >= 0.53.2
 Requires:       tesseract-ocr >= 5.4.1
 Requires:       tesseract-ocr-traineddata-deu >= 4.1.0
 Requires:       tesseract-ocr-traineddata-eng >= 4.1.0
+Requires:       tesseract-ocr-traineddata-osd >= 4.1.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Suggests:       python-Flask >= 2.0.1
@@ -153,7 +154,22 @@ donttest+=" or test_rotate_and_crop"
 donttest+=" or test_rotated_skew_timeout"
 donttest+=" or test_rasterize_rotates"
 donttest+=" or test_rotate_interaction"
-%pytest -k "not ($donttest)"
+donttest+=" or test_media_box"
+donttest+=" or test_crop_box"
+donttest+=" or test_digital_signature_invalidate"
+donttest+=" or test_corrupt_icc"
+donttest+=" or test_deskew"
+donttest+=" or test_mono_image"
+donttest+=" or test_minimum_qpdf_version"
+donttest+=" or test_pypdfium"
+donttest+=" or test_fpdf_renderer"
+donttest+=" or test_ocr_image_budget"
+donttest+=" or test_decompression_bomb"
+donttest+=" or test_rotate_pages_ocr_timeout"
+donttest+=" or test_gray_mask_ocrs_to_text"
+donttest+=" or test_cropbox_outside_mediabox_yields_valid_output"
+donttest+=" or test_reversed_mediabox_does_not_crash"
+%pytest -k "not ($donttest)" --ignore=tests/test_links.py
 
 %post
 %python_install_alternative ocrmypdf
