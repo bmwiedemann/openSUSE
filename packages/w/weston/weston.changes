@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  2 12:03:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 16.0.2
+  * Make use of all hardware overlay planes in the system when
+    using the DRM backend.
+  * Do not fallback to TLS-only authentication if the NLA db is
+    missing when using the RDP backend.
+  * Be able load lua modules when using the LUA shell.
+
+-------------------------------------------------------------------
 Sat Oct 24 09:58:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 16.0.1
