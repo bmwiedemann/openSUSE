@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon Nov  2 15:02:01 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.13.0
+  * Set the minimum requested AAudio buffer capacity
+    gh#cmus/cmus#1386
+  * Check for libavutil pkg-config
+    gh#cmus/cmus#1388
+  * Add sort by duration
+    gh#cmus/cmus#1440
+  * Respect scroll_offset setting when resizing window
+    gh#cmus/cmus#1413
+  * Try to fallback to any plugin upon failure to init output
+    plugin
+    gh#cmus/cmus#1416
+  * PulseAudio bugfixes and APPLICATION_ID
+    gh#cmus/cmus#1405
+  * ip/ffmpeg fixes and ffmpeg 8.0 support
+    gh#cmus/cmus#1444
+  * CUE handling improvements and replaygain/genre support
+    gh#cmus/cmus#1406
+  * Fix for missing Icecast streaming bitrate display.
+    gh#cmus/cmus#1451
+  * op/mixer_alsa: alsamixer's volume scale; setting mixer control
+    like aplay does it
+    gh#cmus/cmus#1445
+  * ip/ffmpeg: fix seeking and compiler warning about %lld
+    gh#cmus/cmus#1454
+  * Fix libmp4v2 check
+    gh#cmus/cmus#1458
+  * Make sure to not try freeing an uninitialized pointer
+    gh#cmus/cmus#1463
+  * op/alsa: remove polling for events before pause
+    gh#cmus/cmus#1461
+  * Fix unterminated-string-initialization warnings
+    gh#cmus/cmus#1472
+  * Fix stringop-truncation warning
+    gh#cmus/cmus#1473
+  * Standardise in using xmalloc
+    gh#cmus/cmus#1478
+  * Fix memory leak in bass.c
+    gh#cmus/cmus#1477
+  * Fix compiler warning about uninitialized rb_parent_color
+    gh#cmus/cmus#1484
+  * op/aaudio: fix dsp.aaudio.sharing_mode getter
+    gh#cmus/cmus#1508
+  * Properly handle directory listing errors in browser
+    gh#cmus/cmus#1509
+  * Fix old colors being left behind when applying an incomplete
+    theme
+    gh#cmus/cmus#1510
+  * Define _XOPEN_SOURCE so wcwidth can be found
+    gh#cmus/cmus#1498
+  * Pass playback position to status_display_program
+    gh#cmus/cmus#1502
+  * Do not delete missing files from playlists.
+    gh#cmus/cmus#1470
+  * op/aaudio: fix remap buffer size
+    gh#cmus/cmus#1511
+  * ip/wavpack: don't leak fd on failure
+    gh#cmus/cmus#1517
+  * Fix buffer overflow caused by invalid UTF-8
+    gh#cmus/cmus#1520
+  * ip/opus: fix opusfile callbacks and fdsan abort on invalid
+    files
+    gh#cmus/cmus#1518
+  * mpris: set xesam:url
+    gh#cmus/cmus#1521
+  * Make :clear -p work properly for playlists
+    gh#cmus/cmus#1523
+  * Add auto_mark_selected_playlist option
+    gh#cmus/cmus#1524
+  * mpris: report the correct position in Seeked
+    gh#cmus/cmus#1522
+  * Silence clang warnings
+    gh#cmus/cmus#1533
+- Drop ffmpeg-8-compat.patch
+
+-------------------------------------------------------------------
 Sat Nov 22 21:16:12 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

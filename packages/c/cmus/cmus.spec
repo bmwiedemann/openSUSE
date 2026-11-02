@@ -1,7 +1,7 @@
 #
 # spec file for package cmus
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2007-2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,15 +19,13 @@
 
 %bcond_without sndio
 Name:           cmus
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 Summary:        Text-mode music player
 License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://cmus.github.io/
 Source:         https://github.com/cmus/cmus/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - https://github.com/cmus/cmus/pull/1444
-Patch1:         ffmpeg-8-compat.patch
 BuildRequires:  libmpcdec-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa) >= 1.0.11

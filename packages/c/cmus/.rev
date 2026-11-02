@@ -319,4 +319,41 @@ The program’s features have stabilized and it receives mostly bugfixes and min
     <comment></comment>
     <requestid>1319555</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>76956c5179414a0b652d89c562796fac</srcmd5>
+    <version>2.13.0</version>
+    <time>1793638447</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.13.0
+  * Set the minimum requested AAudio buffer capacity
+    gh#cmus/cmus#1386
+  * Check for libavutil pkg-config
+    gh#cmus/cmus#1388
+  * Add sort by duration
+    gh#cmus/cmus#1440
+  * Respect scroll_offset setting when resizing window
+    gh#cmus/cmus#1413
+  * Try to fallback to any plugin upon failure to init output
+    plugin
+    gh#cmus/cmus#1416
+  * PulseAudio bugfixes and APPLICATION_ID
+    gh#cmus/cmus#1405
+  * ip/ffmpeg fixes and ffmpeg 8.0 support
+    gh#cmus/cmus#1444
+  * CUE handling improvements and replaygain/genre support
+    gh#cmus/cmus#1406
+  * Fix for missing Icecast streaming bitrate display.
+    gh#cmus/cmus#1451
+  * op/mixer_alsa: alsamixer's volume scale; setting mixer control
+    like aplay does it
+    gh#cmus/cmus#1445
+  * ip/ffmpeg: fix seeking and compiler warning about %lld
+    gh#cmus/cmus#1454
+  * Fix libmp4v2 check
+    gh#cmus/cmus#1458
+  * Make sure to not try freeing an uninitialized pointer
+    gh#cmus/cmus#1463
+  * op/alsa: remove polling for events before pause</comment>
+    <requestid>1394501</requestid>
+  </revision>
 </revisionlist>
