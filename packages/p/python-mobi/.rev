@@ -40,4 +40,29 @@
     <comment>- reset alternative for TW</comment>
     <requestid>1349429</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d87dd062c7d2e84832f6edad919b4eb</srcmd5>
+    <version>0.4.1</version>
+    <time>1793633920</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.1:
+  * Fix DeprecationWarning for deprecated datetime.utcnow() by
+    using timezone-aware alternative
+  * Fix DeprecationWarning for count being passed as positional
+    argument in re.sub()
+  * Fix DeprecationWarning by using array.array.tobytes() instead
+    of deprecated tostring() method
+  * Exclude development files from source distribution to reduce
+    package size
+  * BREAKING: Drop Python 2 support, modernize codebase
+  * BREAKING: Bump minimum Python version to 3.9
+  * Replace deprecated imghdr module with standard-imghdr
+    for Python 3.11+ compatibility
+  * Update loguru dependency to v0.7+ for Python 3.11 support
+  * Migrate build system from Poetry to uv/hatchling
+  * Add Python 3.10 and 3.11 to CI testing
+  * Add pre-commit hooks for code quality
+  * Code formatting updates with latest black</comment>
+    <requestid>1353620</requestid>
+  </revision>
 </revisionlist>

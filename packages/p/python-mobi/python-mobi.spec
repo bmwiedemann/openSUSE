@@ -24,18 +24,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mobi
-Version:        0.3.3
+Version:        0.4.1
 Release:        0
 Summary:        Library for unpacking unencrypted mobi files
 License:        GPL-3.0-only
 URL:            https://github.com/iscc/mobi
 Source:         https://files.pythonhosted.org/packages/source/m/mobi/mobi-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-loguru >= 0.4
+Requires:       python-loguru >= 0.6
+Requires:       python-standard-imghdr >= 3.13.0
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts

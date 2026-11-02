@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun May 17 19:31:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.1:
+  * Fix DeprecationWarning for deprecated datetime.utcnow() by
+    using timezone-aware alternative
+  * Fix DeprecationWarning for count being passed as positional
+    argument in re.sub()
+  * Fix DeprecationWarning by using array.array.tobytes() instead
+    of deprecated tostring() method
+  * Exclude development files from source distribution to reduce
+    package size
+  * BREAKING: Drop Python 2 support, modernize codebase
+  * BREAKING: Bump minimum Python version to 3.9
+  * Replace deprecated imghdr module with standard-imghdr
+    for Python 3.11+ compatibility
+  * Update loguru dependency to v0.7+ for Python 3.11 support
+  * Migrate build system from Poetry to uv/hatchling
+  * Add Python 3.10 and 3.11 to CI testing
+  * Add pre-commit hooks for code quality
+  * Code formatting updates with latest black
+
+-------------------------------------------------------------------
 Sun Apr 26 19:20:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - reset alternative for TW
