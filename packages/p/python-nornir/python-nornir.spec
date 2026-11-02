@@ -1,8 +1,8 @@
 #
 # spec file for package python-nornir
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2019-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,20 @@
 
 
 Name:           python-nornir
-Version:        3.5.0
+Version:        3.6.1
 Release:        0
 Summary:        Network automation framework written in Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/nornir-automation/nornir
 Source:         https://github.com/nornir-automation/nornir/archive/v%{version}.tar.gz#/nornir-%{version}.tar.gz
+BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1}
+BuildRequires:  %{python_module uv-build}
+BuildRequires:  %{python_module uv}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-jinja2
 Requires:       python-ruamel.yaml >= 0.17
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}

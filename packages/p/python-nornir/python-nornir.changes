@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 31 08:35:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.6.1
+  * Added Python 3.15 support (#1118).
+  * InitNornir now declares its configuration sections as explicit
+    keyword.
+  * arguments instead of **kwargs (#1083)..
+  * Removed unused legacy core helpers and validator methods
+    (#1104).
+  * Deprecated nornir.core.helpers.jinja_helper rendering functions
+    in favor of nornir_jinja2 (#1077).
+
+-------------------------------------------------------------------
+Mon Aug  3 07:32:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.6.0
+  * Added Python 3.14 support and removed Python 3.9 support.
+  * Fixed pickling of Result objects (#995).
+  * Handle empty YAML inventory files gracefully (#1054).
+  * Removed setuptools from the runtime dependencies (#1018).
+  * Migrated project tooling from Poetry to uv.
+  * Upgraded Ruff from 0.4.x to 0.15.x.
+  * Upgraded various dependencies.
+
+-------------------------------------------------------------------
 Wed Jan 21 12:11:55 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Build with poetry-core
