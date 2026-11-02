@@ -1,0 +1,28 @@
+<services>
+  <service mode="manual" name="tar_scm">
+    <param name="url">https://github.com/storytold/texturecraft.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.2.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="exclude">docs/brand</param>
+  </service>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service mode="manual" name="cargo_vendor">
+    <param name="src">texturecraft-*.tar.zst</param>
+    <param name="update">false</param>
+    <param name="respect-lockfile">true</param>
+    <!-- Upstream already has a vendor/ directory (the patched egui-phosphor
+         path dependency), so the service refuses to vendor without a tag:
+         the crates go to vendor-texturecraft/ in vendor-texturecraft.tar.zst. -->
+    <param name="tag">texturecraft</param>
+    <!-- filter=true: cargo-vendor-filterer empties crates no Linux target uses; nothing is stripped afterwards, see the spec comment above Source1. -->
+    <param name="filter">true</param>
+  </service>
+  <service mode="manual" name="cargo_audit"/>
+</services>

@@ -1,0 +1,26 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: [PATCH] Write the --control token owner-only (0600), like the CLI
+
+texturecraft --control writes its control token to
+<temp>/texturecraft-control-<port>.token with std::fs::write, so the file
+gets the umask's default mode (0644 under umask 022). texturecraft-cli's
+token file (crates/automation/src/security.rs, server_token) is opened
+with mode 0600 instead. Open the app's token file the same way, so it is
+created owner-only.
+
+--- a/apps/texturecraft/src/control_server.rs
++++ b/apps/texturecraft/src/control_server.rs
+@@ -29,7 +29,12 @@
+         out.push_str(&format!("{:016x}", h.finish()));
+     }
+     let path = std::env::temp_dir().join(format!("texturecraft-control-{port}.token"));
+-    if let Err(e) = std::fs::write(&path, &out) {
++    // Owner-only, created with that mode, like texturecraft-cli's token file (automation::security).
++    let mut o = std::fs::OpenOptions::new();
++    o.write(true).create(true).truncate(true);
++    #[cfg(unix)]
++    std::os::unix::fs::OpenOptionsExt::mode(&mut o, 0o600);
++    if let Err(e) = o.open(&path).and_then(|mut f| f.write_all(out.as_bytes())) {
+         eprintln!("texturecraft: could not write the control token to {}: {e}", path.display());
+     } else {
+         eprintln!("texturecraft: control token written to {}", path.display());
