@@ -949,7 +949,6 @@ unsorted:
   - arpwatch-ethercodes 
   - arpwatch-ethercodes-build 
   - art-ctlscripts 
-  - artcraft-launcher 
   - artem 
   - artha 
   - arti 
@@ -1920,8 +1919,6 @@ unsorted:
   - cadabra2-gui 
   - cadaver 
   - cadaver-lang 
-  - cadcraft 
-  - cadcraft-cli 
   - caddy 
   - caddy-bash-completion 
   - caddy-fish-completion 
@@ -3281,8 +3278,6 @@ unsorted:
   - decentxml-javadoc 
   - decibels 
   - decibels-lang 
-  - deckcraft 
-  - deckcraft-cli 
   - decker 
   - decker-doc 
   - deco 
@@ -3306,8 +3301,6 @@ unsorted:
   - deno-fish-completion 
   - deno-zsh-completion 
   - descent3 
-  - designcraft 
-  - designcraft-cli 
   - deskflow 
   - desktop-translations-devel 
   - desktopfolder 
@@ -3711,8 +3704,6 @@ unsorted:
   - ee4j 
   - eekboard-devel 
   - eeyek-fonts 
-  - effectcraft 
-  - effectcraft-cli 
   - efitools 
   - efivar 
   - efivar-devel 
@@ -4302,8 +4293,6 @@ unsorted:
   - fife-devel 
   - fifechan-devel 
   - fifth-leg-font 
-  - figcraft 
-  - figcraft-cli 
   - figlet 
   - file-devel 
   - file-unpack 
@@ -4317,8 +4306,6 @@ unsorted:
   - filezilla-lang 
   - fillets-ng 
   - fillets-ng-data 
-  - filmcraft 
-  - filmcraft-cli 
   - filter_audio-devel 
   - finalcut-bitmap-fonts 
   - finch 
@@ -8160,8 +8147,6 @@ unsorted:
   - grex 
   - grfcodec 
   - gri 
-  - gridcraft 
-  - gridcraft-cli 
   - grig 
   - grilo-devel 
   - grilo-plugin-dleyna 
@@ -9465,6 +9450,8 @@ unsorted:
   - janet 
   - janet-devel 
   - janet-devel-static 
+  - janet-spork 
+  - janet-spork-devel 
   - jansi 
   - jansi-javadoc 
   - jaq 
@@ -10464,6 +10451,7 @@ unsorted:
   - kirigami-addons6-devel 
   - kirigami-app-components6 
   - kirigami-app-components6-devel 
+  - kirigami-app-components6-lang 
   - kirigami-gallery 
   - kirigami-gallery-lang 
   - kirigami2 
@@ -11459,7 +11447,6 @@ unsorted:
   - libKDb3-4 
   - libKF5Attica5 
   - libKF5CalendarEvents5 
-  - libKF5Cddb5 
   - libKF5ConfigQml5 
   - libKF5Dcraw5 
   - libKF5Declarative5 
@@ -14551,9 +14538,6 @@ unsorted:
   - libkcapi-devel 
   - libkcapi-tools 
   - libkcapi1 
-  - libkcddb 
-  - libkcddb-devel 
-  - libkcddb-lang 
   - libkcddb-qt6-devel 
   - libkchart-lang 
   - libkcompactdisc-lang 
@@ -17117,7 +17101,7 @@ unsorted:
   - libudunits2-0 
   - libuev-devel 
   - libuev3 
-  - libuhd4_10_0 
+  - libuhd4_11_0 
   - libuhttpmock-1_0-1 
   - libulfius2_7 
   - libulockmgr1 
@@ -17650,7 +17634,7 @@ unsorted:
   - libxls-tools 
   - libxlsreader8 
   - libxlsxwriter-devel 
-  - libxlsxwriter9 
+  - libxlsxwriter11 
   - libxmi0 
   - libxml++-2_6-2 
   - libxml++-3_0-1-32bit 
@@ -17836,8 +17820,6 @@ unsorted:
   - light-locker-lang 
   - lightcouch 
   - lightcouch-javadoc 
-  - lightcraft 
-  - lightcraft-cli 
   - lightdm-gobject-devel 
   - lightdm-gtk-greeter-branding-upstream 
   - lightdm-kde-greeter 
@@ -21847,8 +21829,6 @@ unsorted:
   - pdf2svg 
   - pdfarranger 
   - pdfarranger-lang 
-  - pdfcraft 
-  - pdfcraft-cli 
   - pdfgrep 
   - pdfgrep-bash-completion 
   - pdfgrep-zsh-completion 
@@ -23343,8 +23323,6 @@ unsorted:
   - phonon4qt5-backend-mpv 
   - phonon4qt6-backend-mpv 
   - phoronix-test-suite 
-  - photocraft 
-  - photocraft-cli 
   - photon-node 
   - photoqt 
   - photorec 
@@ -26153,6 +26131,7 @@ unsorted:
   - python313-fastapi 
   - python313-fastavro 
   - python313-fastbencode 
+  - python313-fastcrc 
   - python313-fasteners 
   - python313-fastimport 
   - python313-fastjet 
@@ -26934,6 +26913,7 @@ unsorted:
   - python313-modern-colorthief 
   - python313-mohawk 
   - python313-mongoengine 
+  - python313-moocore 
   - python313-more-itertools 
   - python313-moreorless 
   - python313-moto 
@@ -30232,6 +30212,7 @@ unsorted:
   - python314-fastapi 
   - python314-fastavro 
   - python314-fastbencode 
+  - python314-fastcrc 
   - python314-fasteners 
   - python314-fastimport 
   - python314-fastjet 
@@ -31031,6 +31012,7 @@ unsorted:
   - python314-modern-colorthief 
   - python314-mohawk 
   - python314-mongoengine 
+  - python314-moocore 
   - python314-more-itertools 
   - python314-moreorless 
   - python314-moto 
@@ -35143,8 +35125,6 @@ unsorted:
   - sound-theme-yaru 
   - soundconverter 
   - soundconverter-lang 
-  - soundcraft 
-  - soundcraft-cli 
   - soundkonverter 
   - soundtouch 
   - soundtouch-devel 
@@ -47001,8 +46981,6 @@ unsorted:
   - vde2-slirp 
   - vdt-devel 
   - vdu_controls 
-  - vectorcraft 
-  - vectorcraft-cli 
   - vectorscan-devel 
   - vectorscan-examples 
   - ved 
@@ -47530,8 +47508,6 @@ unsorted:
   - woodstox-core 
   - woodstox-core-javadoc 
   - wooting-udev-rules 
-  - wordcraft 
-  - wordcraft-cli 
   - wordcut 
   - wordcut-devel 
   - wordnet 
