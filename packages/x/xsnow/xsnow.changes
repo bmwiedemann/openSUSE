@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 30 21:56:32 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.9.10
+  * 01: Again! some adaptions on determining the size of the
+        transparent click-through window. Problem was that
+        transparent panels loose the transparency in cinnamon.
+        see: src/main.c: make_fullmaxscreen()
+  * 02: some code cleanup
+        scenery.c: scenery_draw(): wait a little bit before drawing,
+                   with multiple monitors the scenery changes after
+                   startup.
+        many files: change Flags.Done into global.Done
+        main.c: sometimes, ending xsnow results in a core dump.
+                - give threads some time o properly finish
+
+-------------------------------------------------------------------
 Thu Oct 22 14:55:18 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.9.9
