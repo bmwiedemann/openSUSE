@@ -19,17 +19,17 @@
 %define major   1
 %define libname lib%{name}%{major}
 Name:           blosc
-Version:        1.21.6
+Version:        1.21.7
 Release:        0
 Summary:        A blocking, shuffling and lossless compression library
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
 URL:            https://www.blosc.org/
 Source:         https://github.com/Blosc/c-blosc/archive/v%{version}.tar.gz#/c-blosc-%{version}.tar.gz
-BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake >= 3.10
 BuildRequires:  pkgconfig
-BuildRequires:  snappy-devel
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(snappy)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -78,7 +78,7 @@ export CFLAGS="%{optflags} -std=gnu17"
   -DPREFER_EXTERNAL_ZSTD:BOOL=ON \
   -DPREFER_EXTERNAL_LZ4:BOOL=ON \
   -DBUILD_STATIC:BOOL=OFF \
-  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.10
 %cmake_build
 
 %install
@@ -89,8 +89,7 @@ rm -rf %{buildroot}%{_libdir}/libblosc.a
 export LD_PRELOAD="$LD_PRELOAD  %{buildroot}%{_libdir}/libblosc.so  %{buildroot}%{_libdir}/libblosc.so.%{major} `pwd`/build/blosc/libblosc_testing.so"
 %ctest
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %doc LICENSES/*.txt

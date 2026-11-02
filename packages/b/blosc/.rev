@@ -279,4 +279,12 @@ I have fixed the issues from the previous submit requests.</comment>
     <comment>1</comment>
     <requestid>1384312</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>db8efb320fb4607e31ae6a8f9f7f152e</srcmd5>
+    <version>1.21.7</version>
+    <time>1793634087</time>
+    <user>anag_factory</user>
+    <comment>Update blosc to 1.21.7 (buffer-validation hardening, GCC 15 fix, RISC-V, CMake 3.10 minimum).</comment>
+    <requestid>1394473</requestid>
+  </revision>
 </revisionlist>
