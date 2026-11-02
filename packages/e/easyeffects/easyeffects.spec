@@ -17,7 +17,7 @@
 
 
 Name:           easyeffects
-Version:        8.3.0
+Version:        8.3.2
 Release:        0
 Summary:        Simple audio effects
 License:        GPL-3.0-or-later
@@ -70,6 +70,7 @@ Recommends:     lv2-lsp-plugins
 Recommends:     lv2-x42-plugins
 Recommends:     lv2-zam-plugins
 Recommends:     mda-lv2
+Recommends:     rakarrack-plus
 
 %description
 Easy Effects is a collection of audio effects, providing limiter,
