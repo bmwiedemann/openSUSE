@@ -27,6 +27,7 @@ URL:            https://fontmanager.github.io
 Source0:        https://github.com/FontManager/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Patch1:         0001-reproducible-build.patch
 # PATCH-FIX-UPSTREAM 0002-Fix-compilation-error-with-newer-Vala-versions.patch -- based on commit e2ad529a
+# Needs vala >= 0.56.19 (Tumbleweed only); Leap 16.x ships 0.56.18
 Patch2:         0002-Fix-compilation-error-with-newer-Vala-versions.patch
 BuildRequires:  appstream-glib
 BuildRequires:  gettext-runtime
@@ -110,7 +111,7 @@ This package provides integration with the Thunar file manager.
 %prep
 %setup -q
 %patch -P 1 -p1
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %patch -P 2 -p1
 %endif
 

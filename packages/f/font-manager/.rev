@@ -119,4 +119,14 @@
     <comment>Fix compilation error with newer Vala versions</comment>
     <requestid>1350386</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b6f2a7ec73896758614216f6a19d54c5</srcmd5>
+    <version>0.9.4</version>
+    <time>1793634007</time>
+    <user>anag_factory</user>
+    <comment>- Apply 0002-Fix-compilation-error-with-newer-Vala-versions.patch
+  only on Tumbleweed, Leap 16.1 has an older vala (0.56.18)
+</comment>
+    <requestid>1394439</requestid>
+  </revision>
 </revisionlist>
