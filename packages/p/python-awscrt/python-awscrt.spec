@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-awscrt
-Version:        0.37.0
+Version:        0.38.0
 Release:        0
 Summary:        A common runtime for AWS Python projects
 License:        Apache-2.0

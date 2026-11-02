@@ -1,6 +1,6 @@
-diff -Nru aws-crt-python-0.32.0.orig/test/test_aiohttp_client.py aws-crt-python-0.32.0/test/test_aiohttp_client.py
---- aws-crt-python-0.32.0.orig/test/test_aiohttp_client.py	2026-03-27 00:11:43.000000000 +0100
-+++ aws-crt-python-0.32.0/test/test_aiohttp_client.py	2026-04-09 13:47:45.883983789 +0200
+diff -Nru aws-crt-python-0.38.0.orig/test/test_aiohttp_client.py aws-crt-python-0.38.0/test/test_aiohttp_client.py
+--- aws-crt-python-0.38.0.orig/test/test_aiohttp_client.py	2026-10-16 16:15:10.000000000 +0200
++++ aws-crt-python-0.38.0/test/test_aiohttp_client.py	2026-10-31 16:01:08.480019617 +0100
 @@ -296,6 +296,7 @@
  
          return connection
@@ -57,17 +57,999 @@ diff -Nru aws-crt-python-0.32.0.orig/test/test_aiohttp_client.py aws-crt-python-
      async def _test_h2_stream_flow_control_blocks_and_resumes(self):
          """Test that HTTP/2 stream flow control actually blocks and resumes"""
          connection = await self._new_mock_h2_connection(
-@@ -940,6 +947,7 @@
- 
-         return connection
+@@ -921,6 +928,7 @@
+     """Test suite for HTTP/2 on_h2_remote_end_stream callback in asyncio"""
+     timeout = 10.0
  
 +    @unittest.skip("Requires network")
      async def _test_h2_remote_end_stream_ordering(self):
          """Test that on_h2_remote_end_stream fires before on_complete when server finishes first"""
-         connection = await self._new_httpbin_h2_connection()
-diff -Nru aws-crt-python-0.32.0.orig/test/test_http_client.py aws-crt-python-0.32.0/test/test_http_client.py
---- aws-crt-python-0.32.0.orig/test/test_http_client.py	2026-03-27 00:11:43.000000000 +0100
-+++ aws-crt-python-0.32.0/test/test_http_client.py	2026-04-09 13:49:32.250254694 +0200
+         connection = await self._new_mock_h2_connection()
+diff -Nru aws-crt-python-0.38.0.orig/test/test_aiohttp_client.py.orig aws-crt-python-0.38.0/test/test_aiohttp_client.py.orig
+--- aws-crt-python-0.38.0.orig/test/test_aiohttp_client.py.orig	1970-01-01 01:00:00.000000000 +0100
++++ aws-crt-python-0.38.0/test/test_aiohttp_client.py.orig	2026-10-16 16:15:10.000000000 +0200
+@@ -0,0 +1,978 @@
++# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
++# SPDX-License-Identifier: Apache-2.0.
++
++import time
++import socket
++import sys
++import asyncio
++import unittest
++import threading
++import subprocess
++import concurrent.futures
++from urllib.parse import urlparse
++from test import NativeResourceTest
++import ssl
++import os
++import json
++from io import BytesIO
++from http.server import HTTPServer, SimpleHTTPRequestHandler
++from awscrt import io
++from awscrt.io import ClientBootstrap, ClientTlsContext, DefaultHostResolver, EventLoopGroup, TlsContextOptions, TlsCipherPref
++from awscrt.http import HttpHeaders, HttpRequest, HttpVersion, Http2Setting, Http2SettingID
++from awscrt.aio.http import AIOHttpClientConnection, AIOHttp2ClientConnection
++import threading
++
++
++class Response:
++    """Holds contents of incoming response"""
++
++    def __init__(self):
++        self.status_code = None
++        self.headers = None
++        self.body = bytearray()
++
++    async def collect_response(self, stream):
++        """Collects complete response from a stream"""
++        # Get status code and headers
++        self.status_code = await stream.get_response_status_code()
++        headers_list = await stream.get_response_headers()
++        self.headers = HttpHeaders(headers_list)
++        # Collect body chunks
++        while True:
++            chunk = await stream.get_next_response_chunk()
++            if not chunk:
++                break
++            self.body.extend(chunk)
++            if hasattr(stream, 'update_window'):
++                stream.update_window(len(chunk))
++
++        # Return status code for convenience
++        return self.status_code
++
++
++class TestRequestHandler(SimpleHTTPRequestHandler):
++    """Request handler for test server"""
++
++    def do_PUT(self):
++        content_length = int(self.headers['Content-Length'])
++        # store put request on the server object
++        incoming_body_bytes = self.rfile.read(content_length)
++        self.server.put_requests[self.path] = incoming_body_bytes
++        self.send_response(200, 'OK')
++        self.end_headers()
++
++
++class AsyncLocalServerTestBase(NativeResourceTest):
++    """Base class for async tests that use local HTTP/1.x server"""
++    hostname = 'localhost'
++    timeout = 5  # seconds
++
++    def _start_server(self, secure, http_1_0=False):
++        """Start local HTTP server"""
++        # HTTP/1.0 closes the connection at the end of each request
++        # HTTP/1.1 will keep the connection alive
++        if http_1_0:
++            TestRequestHandler.protocol_version = "HTTP/1.0"
++        else:
++            TestRequestHandler.protocol_version = "HTTP/1.1"
++
++        self.server = HTTPServer((self.hostname, 0), TestRequestHandler)
++        if secure:
++            context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
++            context.minimum_version = ssl.TLSVersion.TLSv1_2
++            context.load_cert_chain(certfile='test/resources/unittest.crt', keyfile="test/resources/unittest.key")
++            self.server.socket = context.wrap_socket(self.server.socket, server_side=True)
++        self.port = self.server.server_address[1]
++
++        # put requests are stored in this dict
++        self.server.put_requests = {}
++
++        self.server_thread = threading.Thread(target=self.server.serve_forever, name='test_server')
++        self.server_thread.start()
++
++    def _stop_server(self):
++        """Stop local HTTP server"""
++        self.server.shutdown()
++        self.server.server_close()
++        self.server_thread.join()
++
++
++class TestAsyncClient(AsyncLocalServerTestBase):
++
++    async def _new_client_connection(self, secure, proxy_options=None):
++        if secure:
++            tls_ctx_opt = TlsContextOptions()
++            tls_ctx_opt.verify_peer = False
++            tls_ctx = ClientTlsContext(tls_ctx_opt)
++            tls_conn_opt = tls_ctx.new_connection_options()
++            tls_conn_opt.set_server_name(self.hostname)
++        else:
++            tls_conn_opt = None
++
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++        bootstrap = ClientBootstrap(event_loop_group, host_resolver)
++        return await AIOHttpClientConnection.new(
++            host_name=self.hostname,
++            port=self.port,
++            bootstrap=bootstrap,
++            tls_connection_options=tls_conn_opt,
++            proxy_options=proxy_options)
++
++    async def _test_connect(self, secure):
++        self._start_server(secure)
++        try:
++            connection = await self._new_client_connection(secure)
++
++            # close connection
++            await connection.close()
++            self.assertFalse(connection.is_open())
++
++        finally:
++            self._stop_server()
++
++    async def _test_get(self, secure):
++        # GET request receives this very file from the server
++        self._start_server(secure)
++        try:
++            connection = await self._new_client_connection(secure)
++            self.assertTrue(connection.is_open())
++
++            test_asset_path = 'test/test_aiohttp_client.py'
++
++            # Create request and get stream - stream is already activated
++            request = HttpRequest('GET', '/' + test_asset_path)
++            stream = connection.request(request)
++
++            # Collect and process response
++            response = Response()
++            status_code = await response.collect_response(stream)
++
++            # Verify results
++            self.assertEqual(200, status_code)
++            self.assertEqual(200, response.status_code)
++
++            with open(test_asset_path, 'rb') as test_asset:
++                test_asset_bytes = test_asset.read()
++                self.assertEqual(test_asset_bytes, response.body)
++
++            await connection.close()
++
++        finally:
++            self._stop_server()
++
++    async def _test_put(self, secure):
++        # PUT request sends this very file to the server
++        self._start_server(secure)
++        try:
++            connection = await self._new_client_connection(secure)
++            test_asset_path = 'test/test_aiohttp_client.py'
++            with open(test_asset_path, 'rb') as outgoing_body_stream:
++                outgoing_body_bytes = outgoing_body_stream.read()
++                headers = HttpHeaders([
++                    ('Content-Length', str(len(outgoing_body_bytes))),
++                ])
++
++                # seek back to start of stream before trying to send it
++                outgoing_body_stream.seek(0)
++
++                # Create request and get stream - stream is already activated
++                request = HttpRequest('PUT', '/' + test_asset_path, headers, outgoing_body_stream)
++                stream = connection.request(request)
++
++                # Collect and process response
++                response = Response()
++                status_code = await response.collect_response(stream)
++
++                # Verify results
++                self.assertEqual(200, status_code)
++                self.assertEqual(200, response.status_code)
++
++                # compare what we sent against what the server received
++                server_received = self.server.put_requests.get('/' + test_asset_path)
++                self.assertIsNotNone(server_received)
++                self.assertEqual(server_received, outgoing_body_bytes)
++
++            await connection.close()
++
++        finally:
++            self._stop_server()
++
++    async def _test_shutdown_error(self, secure):
++        # Use HTTP/1.0 connection to force a connection close after request completes
++        self._start_server(secure, http_1_0=True)
++        try:
++            connection = await self._new_client_connection(secure)
++
++            # Send request
++            request = HttpRequest('GET', '/')
++            stream = connection.request(request)
++
++            # Collect response
++            response = Response()
++            await response.collect_response(stream)
++
++            # With HTTP/1.0, the server should close the connection
++            # We'll wait a bit and verify the connection is closed
++            await asyncio.sleep(0.5)  # Give time for the server to close connection
++            self.assertFalse(connection.is_open())
++
++        finally:
++            self._stop_server()
++
++    async def _test_stream_lives_until_complete(self, secure):
++        # Ensure that stream and connection classes stay alive until work is complete
++        self._start_server(secure)
++        try:
++            connection = await self._new_client_connection(secure)
++
++            request = HttpRequest('GET', '/test/test_aiohttp_client.py')
++            stream = connection.request(request)
++
++            # Store stream but delete all local references
++            response = Response()
++
++            # Schedule task to collect response but don't await it yet
++            collect_task = asyncio.create_task(response.collect_response(stream))
++
++            # Delete references to stream and connection
++            del stream
++            del connection
++
++            # Now await the collection task - stream should still complete successfully
++            status_code = await collect_task
++            self.assertEqual(200, status_code)
++
++        finally:
++            self._stop_server()
++
++    async def _test_request_lives_until_stream_complete(self, secure):
++        # Ensure HttpRequest and body InputStream stay alive until HttpClientStream completes
++        self._start_server(secure)
++        try:
++            connection = await self._new_client_connection(secure)
++
++            request = HttpRequest(
++                method='PUT',
++                path='/test/test_request_refcounts.txt',
++                headers=HttpHeaders([('Host', self.hostname), ('Content-Length', '5')]),
++                body_stream=BytesIO(b'hello'))
++
++            # Create stream but delete the request
++            stream = connection.request(request)
++            del request
++
++            # Now collect the response - should still work since the stream keeps the request alive
++            response = Response()
++            status_code = await response.collect_response(stream)
++            self.assertEqual(200, status_code)
++
++            await connection.close()
++
++        finally:
++            self._stop_server()
++
++    async def _new_h2_client_connection(self, url):
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++        bootstrap = ClientBootstrap(event_loop_group, host_resolver)
++
++        port = url.port
++        if port is None:
++            port = 443
++
++        tls_ctx_options = TlsContextOptions()
++        tls_ctx_options.verify_peer = False  # Allow localhost
++        tls_ctx = ClientTlsContext(tls_ctx_options)
++        tls_conn_opt = tls_ctx.new_connection_options()
++        tls_conn_opt.set_server_name(url.hostname)
++        tls_conn_opt.set_alpn_list(["h2"])
++
++        connection = await AIOHttp2ClientConnection.new(
++            host_name=url.hostname,
++            port=port,
++            bootstrap=bootstrap,
++            tls_connection_options=tls_conn_opt)
++
++        return connection
++
++    async def _test_h2_client(self):
++        url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
++        connection = await self._new_h2_client_connection(url)
++
++        # Check we set an h2 connection
++        self.assertEqual(connection.version, HttpVersion.Http2)
++
++        request = HttpRequest('GET', url.path)
++        request.headers.add('host', url.hostname)
++        stream = connection.request(request)
++
++        response = Response()
++        status_code = await response.collect_response(stream)
++
++        # Check result
++        self.assertEqual(200, status_code)
++        self.assertEqual(200, response.status_code)
++        self.assertEqual(14428801, len(response.body))
++
++        await connection.close()
++
++    async def _test_h2_manual_write_exception(self):
++        url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
++        connection = await self._new_h2_client_connection(url)
++
++        # Check we set an h2 connection
++        self.assertEqual(connection.version, HttpVersion.Http2)
++
++        request = HttpRequest('GET', url.path)
++        request.headers.add('host', url.hostname)
++
++        # Create stream without using request_body_generator parameter
++        # (which would be needed to properly configure it for writing)
++        stream = connection.request(request)
++
++        # The stream should have write_data attribute but using it should raise an exception
++        # since the stream isn't properly configured for manual writing
++        exception = None
++        try:
++            # Attempt to access internal write_data method which should raise an exception
++            # since the stream wasn't created with request_body_generator
++            await stream._write_data(BytesIO(b'hello'), False)
++        except (RuntimeError, AttributeError) as e:
++            exception = e
++
++        self.assertIsNotNone(exception)
++        await connection.close()
++
++    def test_connect_http(self):
++        asyncio.run(self._test_connect(secure=False))
++
++    def test_connect_https(self):
++        asyncio.run(self._test_connect(secure=True))
++
++    def test_get_http(self):
++        asyncio.run(self._test_get(secure=False))
++
++    def test_get_https(self):
++        asyncio.run(self._test_get(secure=True))
++
++    def test_put_http(self):
++        asyncio.run(self._test_put(secure=False))
++
++    def test_put_https(self):
++        asyncio.run(self._test_put(secure=True))
++
++    def test_shutdown_error_http(self):
++        asyncio.run(self._test_shutdown_error(secure=False))
++
++    def test_shutdown_error_https(self):
++        asyncio.run(self._test_shutdown_error(secure=True))
++
++    def test_stream_lives_until_complete_http(self):
++        asyncio.run(self._test_stream_lives_until_complete(secure=False))
++
++    def test_stream_lives_until_complete_https(self):
++        asyncio.run(self._test_stream_lives_until_complete(secure=True))
++
++    def test_request_lives_until_stream_complete_http(self):
++        asyncio.run(self._test_request_lives_until_stream_complete(secure=False))
++
++    def test_request_lives_until_stream_complete_https(self):
++        asyncio.run(self._test_request_lives_until_stream_complete(secure=True))
++
++    def test_h2_client(self):
++        asyncio.run(self._test_h2_client())
++
++    def test_h2_manual_write_exception(self):
++        asyncio.run(self._test_h2_manual_write_exception())
++
++    @unittest.skipIf(not TlsCipherPref.PQ_DEFAULT.is_supported(), "Cipher pref not supported")
++    def test_connect_pq_default(self):
++        async def _test():
++            await self._test_connect(secure=True)
++        asyncio.run(_test())
++
++    async def _test_cross_thread_http_client(self, secure):
++        """Test using an HTTP client from a different thread/event loop."""
++        self._start_server(secure)
++        try:
++            # Create connection in the main thread
++            connection = await self._new_client_connection(secure)
++            self.assertTrue(connection.is_open())
++
++            # Function to run in a different thread with a different event loop
++            async def thread_func(conn):
++                # Create new event loop for this thread
++                test_asset_path = 'test/test_aiohttp_client.py'
++                request = HttpRequest('GET', '/' + test_asset_path)
++
++                # Use the connection but with the current thread's event loop
++                thread_loop = asyncio.get_event_loop()
++                stream = conn.request(request, loop=thread_loop)
++
++                # Collect and process response
++                response = Response()
++                status_code = await response.collect_response(stream)
++
++                # Verify results
++                assert status_code == 200
++
++                with open(test_asset_path, 'rb') as test_asset:
++                    test_asset_bytes = test_asset.read()
++                    assert test_asset_bytes == response.body
++
++                return True
++
++            # Run in executor to get a different thread
++            with concurrent.futures.ThreadPoolExecutor() as executor:
++                future = executor.submit(
++                    lambda: asyncio.run(thread_func(connection))
++                )
++                result = future.result()
++                self.assertTrue(result)
++
++            await connection.close()
++
++        finally:
++            self._stop_server()
++
++    async def _test_cross_thread_http2_client(self):
++        """Test using an HTTP/2 client from a different thread/event loop."""
++        url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
++        connection = await self._new_h2_client_connection(url)
++
++        # Check we set an h2 connection
++        self.assertEqual(connection.version, HttpVersion.Http2)
++
++        # Function to run in a different thread with a different event loop
++        async def thread_func(conn):
++            request = HttpRequest('GET', url.path)
++            request.headers.add('host', url.hostname)
++
++            # Use the connection but with the current thread's event loop
++            thread_loop = asyncio.get_event_loop()
++            stream = conn.request(request, loop=thread_loop)
++
++            response = Response()
++            status_code = await response.collect_response(stream)
++            # Check result
++            assert status_code == 200
++            return len(response.body)
++
++        # Run in executor to get a different thread
++        with concurrent.futures.ThreadPoolExecutor() as executor:
++            future = executor.submit(
++                lambda: asyncio.run(thread_func(connection))
++            )
++            body_length = future.result()
++            self.assertEqual(14428801, body_length)
++
++        await connection.close()
++
++    def test_cross_thread_http_client(self):
++        asyncio.run(self._test_cross_thread_http_client(secure=False))
++
++    def test_cross_thread_https_client(self):
++        asyncio.run(self._test_cross_thread_http_client(secure=True))
++
++    def test_cross_thread_http2_client(self):
++        asyncio.run(self._test_cross_thread_http2_client())
++
++
++class AsyncMockServerTestBase(NativeResourceTest):
++    """Base class for async tests that use the H2 mock server"""
++    timeout = 5  # seconds
++    p_server = None
++    mock_server_url = None
++
++    def setUp(self):
++        super().setUp()
++        # Start the mock server from the aws-c-http
++        server_path = os.path.join(
++            os.path.dirname(__file__),
++            '..',
++            'crt',
++            'aws-c-http',
++            'tests',
++            'mock_server',
++            'h2tls_mock_server.py')
++        python_path = sys.executable
++        self.mock_server_url = urlparse("https://localhost:3443/echo")
++        self.p_server = subprocess.Popen([python_path, server_path])
++        # Wait for server to be ready
++        self._wait_for_server_ready()
++
++    def _wait_for_server_ready(self):
++        """Wait until server is accepting connections."""
++        max_attempts = 20
++        for attempt in range(max_attempts):
++            try:
++                with socket.create_connection(("127.0.0.1", self.mock_server_url.port), timeout=1):
++                    return  # Server is ready
++            except (ConnectionRefusedError, socket.timeout):
++                time.sleep(0.5)
++
++        # If we get here, server failed to start
++        stdout, stderr = self.p_server.communicate(timeout=0.5)
++        raise RuntimeError(f"Server failed to start after {max_attempts} attempts.\n"
++                           f"STDOUT: {stdout.decode()}\nSTDERR: {stderr.decode()}")
++
++    def tearDown(self):
++        self.p_server.terminate()
++        try:
++            self.p_server.wait(timeout=5)
++        except subprocess.TimeoutExpired:
++            self.p_server.kill()
++        super().tearDown()
++
++    async def _new_mock_h2_connection(
++            self,
++            manual_window_management=False,
++            initial_window_size=None,
++            initial_settings=None):
++        """Create HTTP/2 async client connection to local mock server"""
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++        bootstrap = ClientBootstrap(event_loop_group, host_resolver)
++
++        port = self.mock_server_url.port
++        if port is None:
++            port = 443
++
++        tls_ctx_options = TlsContextOptions()
++        tls_ctx_options.verify_peer = False
++        tls_ctx = ClientTlsContext(tls_ctx_options)
++        tls_conn_opt = tls_ctx.new_connection_options()
++        tls_conn_opt.set_server_name(self.mock_server_url.hostname)
++        tls_conn_opt.set_alpn_list(["h2"])
++
++        if initial_settings is None:
++            initial_settings = [Http2Setting(Http2SettingID.ENABLE_PUSH, 0)]
++
++        kwargs = {
++            'host_name': self.mock_server_url.hostname,
++            'port': port,
++            'bootstrap': bootstrap,
++            'tls_connection_options': tls_conn_opt,
++            'initial_settings': initial_settings,
++            'manual_window_management': manual_window_management
++        }
++        if initial_window_size is not None:
++            kwargs['initial_window_size'] = initial_window_size
++
++        return await AIOHttp2ClientConnection.new(**kwargs)
++
++
++@unittest.skipUnless(os.environ.get('AWS_TEST_LOCALHOST'), 'set env var to run test: AWS_TEST_LOCALHOST')
++class TestAsyncClientMockServer(AsyncMockServerTestBase):
++
++    def _on_remote_settings_changed(self, settings):
++        # The mock server has the default settings with
++        # ENABLE_PUSH = 0
++        # MAX_CONCURRENT_STREAMS = 100
++        # MAX_HEADER_LIST_SIZE = 2**16
++        # Check the settings here
++        self.assertEqual(len(settings), 3)
++        for i in settings:
++            if i.id == Http2SettingID.ENABLE_PUSH:
++                self.assertEqual(i.value, 0)
++            if i.id == Http2SettingID.MAX_CONCURRENT_STREAMS:
++                self.assertEqual(i.value, 100)
++            if i.id == Http2SettingID.MAX_HEADER_LIST_SIZE:
++                self.assertEqual(i.value, 2**16)
++
++    async def _new_mock_connection(self, initial_settings=None):
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++        bootstrap = ClientBootstrap(event_loop_group, host_resolver)
++
++        port = self.mock_server_url.port
++        # only test https
++        if port is None:
++            port = 443
++        tls_ctx_options = TlsContextOptions()
++        tls_ctx_options.verify_peer = False  # allow localhost
++        tls_ctx = ClientTlsContext(tls_ctx_options)
++        tls_conn_opt = tls_ctx.new_connection_options()
++        tls_conn_opt.set_server_name(self.mock_server_url.hostname)
++        tls_conn_opt.set_alpn_list(["h2"])
++
++        if initial_settings is None:
++            initial_settings = [Http2Setting(Http2SettingID.ENABLE_PUSH, 0)]
++
++        connection = await AIOHttp2ClientConnection.new(
++            host_name=self.mock_server_url.hostname,
++            port=port,
++            bootstrap=bootstrap,
++            tls_connection_options=tls_conn_opt,
++            initial_settings=initial_settings,
++            on_remote_settings_changed=self._on_remote_settings_changed)
++
++        return connection
++
++    async def _test_h2_mock_server_manual_write(self):
++        connection = await self._new_mock_connection()
++        # check we set an h2 connection
++        self.assertEqual(connection.version, HttpVersion.Http2)
++
++        request = HttpRequest('POST', self.mock_server_url.path)
++        request.headers.add('host', self.mock_server_url.hostname)
++
++        # Create an async generator for the request body
++        body_chunks = [b'hello', b'he123123', b'', b'hello']
++        total_length = 0
++        content = b''
++        for i in body_chunks:
++            total_length = total_length + len(i)
++            content += i
++
++        async def body_generator():
++            for i in body_chunks:
++                yield i
++
++        stream = connection.request(request, request_body_generator=body_generator())
++
++        # Collect response
++        response = Response()
++        status_code = await response.collect_response(stream)
++
++        # Check result
++        self.assertEqual(200, status_code)
++        self.assertEqual(200, response.status_code)
++        # Parse the response from mock server which has format:
++        # {
++        #   "body": <str of data received>,
++        #   "bytes": <byte count of data received>
++        # }
++        parsed_response = json.loads(response.body.decode())
++        self.assertEqual(total_length, int(parsed_response["bytes"]))
++        self.assertEqual(content.decode(), parsed_response["body"])
++        await connection.close()
++
++    class DelayStream:
++        def __init__(self, bad_read=False):
++            self._read = False
++            self.bad_read = bad_read
++
++        def read(self, _len):
++            if self.bad_read:
++                # simulate a bad read that raises an exception
++                # this will cause the stream to fail
++                raise RuntimeError("bad read exception")
++            if self._read:
++                # return empty as EOS
++                return b''
++            else:
++                self._read = True
++                return b'hello'
++
++    async def _test_h2_mock_server_settings(self):
++        # Test with invalid settings - should throw an exception
++        exception = None
++        try:
++            # Invalid settings type
++            initial_settings = [100]
++            await self._new_mock_connection(initial_settings)
++        except Exception as e:
++            exception = e
++        self.assertIsNotNone(exception)
++
++        # Test with valid settings
++        connection = await self._new_mock_connection()
++        self.assertEqual(connection.version, HttpVersion.Http2)
++
++        request = HttpRequest('POST', self.mock_server_url.path)
++        request.headers.add('host', self.mock_server_url.hostname)
++
++        # Create an async generator for the request body
++        async def body_generator():
++            yield b'hello'
++
++        stream = connection.request(request, request_body_generator=body_generator())
++
++        response = Response()
++        status_code = await response.collect_response(stream)
++
++        self.assertEqual(200, status_code)
++        self.assertEqual(200, response.status_code)
++
++        await connection.close()
++
++    def test_h2_mock_server_manual_write(self):
++        asyncio.run(self._test_h2_mock_server_manual_write())
++
++    def test_h2_mock_server_settings(self):
++        asyncio.run(self._test_h2_mock_server_settings())
++
++
++class AIOFlowControlTest(AsyncLocalServerTestBase):
++    """HTTP/1.1 async flow control tests using local server"""
++    timeout = 10.0
++
++    async def _new_h1_client_connection(
++            self,
++            secure,
++            manual_window_management=False,
++            initial_window_size=None,
++            read_buffer_capacity=None):
++        """Create HTTP/1.1 async client connection to local server"""
++        if secure:
++            tls_ctx_opt = TlsContextOptions()
++            tls_ctx_opt.verify_peer = False
++            tls_ctx = ClientTlsContext(tls_ctx_opt)
++            tls_conn_opt = tls_ctx.new_connection_options()
++            tls_conn_opt.set_server_name(self.hostname)
++        else:
++            tls_conn_opt = None
++
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++        bootstrap = ClientBootstrap(event_loop_group, host_resolver)
++
++        kwargs = {
++            'host_name': self.hostname,
++            'port': self.port,
++            'bootstrap': bootstrap,
++            'tls_connection_options': tls_conn_opt,
++            'manual_window_management': manual_window_management
++        }
++        if initial_window_size is not None:
++            kwargs['initial_window_size'] = initial_window_size
++        if read_buffer_capacity is not None:
++            kwargs['read_buffer_capacity'] = read_buffer_capacity
++
++        return await AIOHttpClientConnection.new(**kwargs)
++
++    async def _test_h1_manual_window_management_happy_path(self):
++        """Test HTTP/1.1 manual window management happy path"""
++        self._start_server(secure=True)
++        try:
++            connection = await self._new_h1_client_connection(
++                secure=True,
++                manual_window_management=True,
++                initial_window_size=5,
++                read_buffer_capacity=1000
++            )
++
++            # Create a file with known size for testing
++            test_data = b'0123456789'  # 10 bytes
++            test_file_path = 'test_aio_flow_control_data.txt'
++            with open(test_file_path, 'wb') as f:
++                f.write(test_data)
++
++            try:
++                request = HttpRequest('GET', '/' + test_file_path)
++                request.headers.add('host', self.hostname)
++                stream = connection.request(request)
++
++                chunks_received = []
++                body = bytearray()
++
++                await stream.get_response_status_code()
++                while True:
++                    chunk = await stream.get_next_response_chunk()
++                    if not chunk:
++                        break
++                    chunks_received.append(len(chunk))
++                    body.extend(chunk)
++                    stream.update_window(len(chunk))
++
++                self.assertEqual(test_data, bytes(body))
++                self.assertGreater(len(chunks_received), 0, "No data chunks received")
++
++                await connection.close()
++            finally:
++                # Clean up test file
++                if os.path.exists(test_file_path):
++                    os.remove(test_file_path)
++        finally:
++            self._stop_server()
++
++    def test_h1_manual_window_management_happy_path(self):
++        asyncio.run(self._test_h1_manual_window_management_happy_path())
++
++    async def _test_h1_stream_flow_control_blocks_and_resumes(self):
++        """Test that HTTP/1.1 stream flow control actually blocks and resumes"""
++        self._start_server(secure=True)
++        try:
++            connection = await self._new_h1_client_connection(
++                secure=True,
++                manual_window_management=True,
++                initial_window_size=1,
++                read_buffer_capacity=1000
++            )
++
++            # Create a file with 100 bytes for testing
++            test_data = bytes(range(100))
++            test_file_path = 'test_aio_flow_control_100.txt'
++            with open(test_file_path, 'wb') as f:
++                f.write(test_data)
++
++            try:
++                request = HttpRequest('GET', '/' + test_file_path)
++                request.headers.add('host', self.hostname)
++                stream = connection.request(request)
++
++                chunks_received = []
++                body = bytearray()
++
++                await stream.get_response_status_code()
++                while True:
++                    chunk = await stream.get_next_response_chunk()
++                    if not chunk:
++                        break
++                    chunks_received.append(len(chunk))
++                    body.extend(chunk)
++                    stream.update_window(len(chunk))
++
++                self.assertEqual(test_data, bytes(body))
++                # With window=1, we should receive many small chunks
++                self.assertGreater(len(chunks_received), 1, "Should receive multiple chunks with tiny window")
++
++                await connection.close()
++            finally:
++                # Clean up test file
++                if os.path.exists(test_file_path):
++                    os.remove(test_file_path)
++        finally:
++            self._stop_server()
++
++    def test_h1_stream_flow_control_blocks_and_resumes(self):
++        asyncio.run(self._test_h1_stream_flow_control_blocks_and_resumes())
++
++
++@unittest.skipUnless(os.environ.get('AWS_TEST_LOCALHOST'), 'set env var to run test: AWS_TEST_LOCALHOST')
++class AIOFlowControlH2Test(AsyncMockServerTestBase):
++    """HTTP/2 async flow control tests using local mock server"""
++    timeout = 10.0
++
++    async def _test_h2_manual_window_management_happy_path(self):
++        """Test HTTP/2 manual window management happy path"""
++        connection = await self._new_mock_h2_connection(
++            manual_window_management=True,
++            initial_window_size=65536
++        )
++
++        # GET request with x-repeat-data header to download data
++        request = HttpRequest('GET', self.mock_server_url.path)
++        request.headers.add('host', self.mock_server_url.hostname)
++        request.headers.add('x-repeat-data', '100')  # Request 100 bytes of data
++
++        stream = connection.request(request)
++
++        chunks_received = []
++        body = bytearray()
++
++        await stream.get_response_status_code()
++        while True:
++            chunk = await stream.get_next_response_chunk()
++            if not chunk:
++                break
++            chunks_received.append(len(chunk))
++            body.extend(chunk)
++            stream.update_window(len(chunk))
++
++        self.assertGreater(len(body), 0, "No response body received")
++        self.assertGreater(len(chunks_received), 0, "No data chunks received")
++
++        await connection.close()
++
++    def test_h2_manual_window_management_happy_path(self):
++        asyncio.run(self._test_h2_manual_window_management_happy_path())
++
++    async def _test_h2_stream_flow_control_blocks_and_resumes(self):
++        """Test that HTTP/2 stream flow control actually blocks and resumes"""
++        connection = await self._new_mock_h2_connection(
++            manual_window_management=True,
++            initial_window_size=10  # Small window to force multiple chunks
++        )
++
++        # GET request with x-repeat-data header to download data
++        request = HttpRequest('GET', self.mock_server_url.path)
++        request.headers.add('host', self.mock_server_url.hostname)
++        request.headers.add('x-repeat-data', '100')  # Request 100 bytes of data
++
++        stream = connection.request(request)
++
++        chunks_received = []
++        body = bytearray()
++
++        await stream.get_response_status_code()
++        while True:
++            chunk = await stream.get_next_response_chunk()
++            if not chunk:
++                break
++            chunks_received.append(len(chunk))
++            body.extend(chunk)
++            stream.update_window(len(chunk))
++
++        self.assertGreater(len(body), 0, "No response body received")
++        # With small window, we should receive multiple chunks
++        self.assertGreater(len(chunks_received), 1, "Should receive multiple chunks with small window")
++
++        await connection.close()
++
++    def test_h2_stream_flow_control_blocks_and_resumes(self):
++        asyncio.run(self._test_h2_stream_flow_control_blocks_and_resumes())
++
++
++@unittest.skipUnless(os.environ.get('AWS_TEST_LOCALHOST'), 'set env var to run test: AWS_TEST_LOCALHOST')
++class AIOHttp2RemoteEndStreamTest(AsyncMockServerTestBase):
++    """Test suite for HTTP/2 on_h2_remote_end_stream callback in asyncio"""
++    timeout = 10.0
++
++    async def _test_h2_remote_end_stream_ordering(self):
++        """Test that on_h2_remote_end_stream fires before on_complete when server finishes first"""
++        connection = await self._new_mock_h2_connection()
++
++        # POST to the mock server's early-response path: the server returns 404
++        # as soon as the request headers arrive, before the client finishes
++        # sending its body.
++        request = HttpRequest('POST', '/respond-immediately')
++        request.headers.add('host', self.mock_server_url.hostname)
++
++        complete_success = asyncio.Event()
++        remote_finished = asyncio.Event()
++        complete_fired = asyncio.Event()
++
++        async def slow_body_generator():
++            # Send first chunk WITHOUT end_stream
++            yield b'chunk1'
++            # Wait for server to finish
++            await remote_finished.wait()
++            if not complete_fired.is_set():
++                # Verify complete hasn't fired yet
++                complete_success.set()
++            # Now finish sending
++            yield b'chunk2'
++
++        stream = connection.request(request, request_body_generator=slow_body_generator())
++
++        # Read response
++        status_code = await stream.get_response_status_code()
++        self.assertEqual(404, status_code)
++
++        # Read all response body
++        while True:
++            chunk = await stream.get_next_response_chunk()
++            if not chunk:
++                break
++
++        # set remove stream
++        remote_finished.set()
++
++        # Wait for stream to complete successfully
++        await stream.wait_for_completion()
++        complete_fired.set()
++
++        self.assertTrue(complete_success.is_set())
++
++        await connection.close()
++
++    def test_h2_remote_end_stream_ordering(self):
++        """Test callback ordering with early server response"""
++        asyncio.run(self._test_h2_remote_end_stream_ordering())
++
++
++if __name__ == '__main__':
++    unittest.main()
+diff -Nru aws-crt-python-0.38.0.orig/test/test_http_client.py aws-crt-python-0.38.0/test/test_http_client.py
+--- aws-crt-python-0.38.0.orig/test/test_http_client.py	2026-10-16 16:15:10.000000000 +0200
++++ aws-crt-python-0.38.0/test/test_http_client.py	2026-10-31 16:01:08.480585173 +0100
 @@ -360,6 +360,7 @@
                                                        tls_connection_options=tls_conn_opt)
          return connection_future.result(self.timeout)
@@ -84,18 +1066,970 @@ diff -Nru aws-crt-python-0.32.0.orig/test/test_http_client.py aws-crt-python-0.3
      def test_h2_manual_write_exception(self):
          url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
          connection = self._new_h2_client_connection(url)
-@@ -927,6 +929,7 @@
- 
-         return connection_future.result(self.timeout)
+@@ -908,6 +910,7 @@
+     """Test suite for HTTP/2 on_h2_remote_end_stream callback"""
+     timeout = 10  # seconds
  
 +    @unittest.skip("Requires network")
      def test_h2_remote_end_stream_ordering(self):
          """Test that on_h2_remote_end_stream fires before on_complete when server finishes first"""
-         connection = self._new_httpbin_h2_connection()
-diff -Nru aws-crt-python-0.32.0.orig/test/test_io.py aws-crt-python-0.32.0/test/test_io.py
---- aws-crt-python-0.32.0.orig/test/test_io.py	2026-03-27 00:11:43.000000000 +0100
-+++ aws-crt-python-0.32.0/test/test_io.py	2026-04-09 13:44:01.482192866 +0200
-@@ -33,6 +33,7 @@
+         connection = self._new_mock_h2_connection()
+diff -Nru aws-crt-python-0.38.0.orig/test/test_http_client.py.orig aws-crt-python-0.38.0/test/test_http_client.py.orig
+--- aws-crt-python-0.38.0.orig/test/test_http_client.py.orig	1970-01-01 01:00:00.000000000 +0100
++++ aws-crt-python-0.38.0/test/test_http_client.py.orig	2026-10-16 16:15:10.000000000 +0200
+@@ -0,0 +1,948 @@
++# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
++# SPDX-License-Identifier: Apache-2.0.
++
++import time
++import socket
++import sys
++import subprocess
++from urllib.parse import urlparse
++import unittest
++import threading
++from test import NativeResourceTest
++import ssl
++import json
++import os
++from io import BytesIO
++from http.server import HTTPServer, SimpleHTTPRequestHandler
++from concurrent.futures import Future, thread
++from awscrt.io import ClientBootstrap, ClientTlsContext, DefaultHostResolver, EventLoopGroup, TlsConnectionOptions, TlsContextOptions, TlsCipherPref
++from awscrt.http import HttpClientConnection, HttpClientStreamBase, HttpHeaders, HttpProxyOptions, HttpRequest, HttpVersion, Http2ClientConnection, Http2Setting, Http2SettingID
++import awscrt.exceptions
++
++
++class Response:
++    """Holds contents of incoming response"""
++
++    def __init__(self):
++        self.status_code = None
++        self.headers = None
++        self.body = bytearray()
++
++    def on_response(self, http_stream, status_code, headers, **kwargs):
++        self.status_code = status_code
++        self.headers = HttpHeaders(headers)
++
++    def on_body(self, http_stream, chunk, **kwargs):
++        self.body.extend(chunk)
++
++
++class TestRequestHandler(SimpleHTTPRequestHandler):
++    """Request handler for test server"""
++
++    def do_PUT(self):
++        content_length = int(self.headers['Content-Length'])
++        # store put request on the server object
++        incoming_body_bytes = self.rfile.read(content_length)
++        self.server.put_requests[self.path] = incoming_body_bytes
++        self.send_response(200, 'OK')
++        self.end_headers()
++
++
++class LocalServerTestBase(NativeResourceTest):
++    """Base class for tests that use local HTTP/1.x server"""
++    hostname = 'localhost'
++    timeout = 5  # seconds
++
++    def _start_server(self, secure, http_1_0=False):
++        """Start local HTTP server"""
++        # HTTP/1.0 closes the connection at the end of each request
++        # HTTP/1.1 will keep the connection alive
++        if http_1_0:
++            TestRequestHandler.protocol_version = "HTTP/1.0"
++        else:
++            TestRequestHandler.protocol_version = "HTTP/1.1"
++
++        self.server = HTTPServer((self.hostname, 0), TestRequestHandler)
++        if secure:
++            context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
++            context.load_cert_chain(certfile='test/resources/unittest.crt', keyfile="test/resources/unittest.key")
++            self.server.socket = context.wrap_socket(self.server.socket, server_side=True)
++        self.port = self.server.server_address[1]
++
++        # put requests are stored in this dict
++        self.server.put_requests = {}
++
++        self.server_thread = threading.Thread(target=self.server.serve_forever, name='test_server')
++        self.server_thread.start()
++
++    def _stop_server(self):
++        """Stop local HTTP server"""
++        self.server.shutdown()
++        self.server.server_close()
++        self.server_thread.join()
++
++
++class TestClient(LocalServerTestBase):
++
++    def _new_client_connection(self, secure, proxy_options=None, cipher_pref=TlsCipherPref.DEFAULT):
++        if secure:
++            tls_ctx_opt = TlsContextOptions()
++            tls_ctx_opt.cipher_pref = cipher_pref
++            tls_ctx_opt.verify_peer = False
++            tls_ctx = ClientTlsContext(tls_ctx_opt)
++            tls_conn_opt = tls_ctx.new_connection_options()
++            tls_conn_opt.set_server_name(self.hostname)
++        else:
++            tls_conn_opt = None
++
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++        bootstrap = ClientBootstrap(event_loop_group, host_resolver)
++        connection_future = HttpClientConnection.new(host_name=self.hostname,
++                                                     port=self.port,
++                                                     bootstrap=bootstrap,
++                                                     tls_connection_options=tls_conn_opt,
++                                                     proxy_options=proxy_options)
++        return connection_future.result(self.timeout)
++
++    def _test_connect(self, secure, cipher_pref=TlsCipherPref.DEFAULT):
++        self._start_server(secure)
++        try:
++            connection = self._new_client_connection(secure, cipher_pref=cipher_pref)
++
++            # close connection
++            shutdown_error_from_close_future = connection.close().exception(self.timeout)
++
++            # assert that error was reported via close_future and shutdown callback
++            # error should be None (normal shutdown)
++            self.assertEqual(None, shutdown_error_from_close_future)
++            self.assertFalse(connection.is_open())
++
++        finally:
++            self._stop_server()
++
++    def test_connect_http(self):
++        self._test_connect(secure=False)
++
++    def test_connect_https(self):
++        self._test_connect(secure=True)
++
++    def _test_connection_closes_on_zero_refcount(self, secure):
++        # The connection should shut itself down cleanly when the GC collects the HttpClientConnection Python object.
++        self._start_server(secure)
++        try:
++            connection = self._new_client_connection(secure)
++
++            # referencing the shutdown_future does not keep the connection alive
++            close_future = connection.shutdown_future
++
++            # This should cause the GC to collect the HttpClientConnection
++            del connection
++
++            close_error = close_future.exception(self.timeout)
++            self.assertEqual(None, close_error)
++
++        finally:
++            self._stop_server()
++
++    def test_connection_closes_on_zero_refcount_http(self):
++        self._test_connection_closes_on_zero_refcount(secure=False)
++
++    def test_connection_closes_on_zero_refcount_https(self):
++        self._test_connection_closes_on_zero_refcount(secure=True)
++
++    def _test_get(self, secure, proxy_options=None):
++        # GET request receives this very file from the server. Super meta.
++
++        # Use HTTP/1.0 in proxy tests or server will keep connection with proxy alive
++        # and refuse to shut down for 1 minute at the end of each proxy test
++        http_1_0 = proxy_options is not None
++
++        self._start_server(secure, http_1_0)
++        try:
++            connection = self._new_client_connection(secure, proxy_options)
++
++            test_asset_path = 'test/test_http_client.py'
++
++            request = HttpRequest('GET', '/' + test_asset_path)
++            response = Response()
++            stream = connection.request(request, response.on_response, response.on_body)
++            stream.activate()
++
++            # wait for stream to complete
++            stream_completion_result = stream.completion_future.result(self.timeout)
++
++            self.assertEqual(200, response.status_code)
++            self.assertEqual(200, stream_completion_result)
++
++            with open(test_asset_path, 'rb') as test_asset:
++                test_asset_bytes = test_asset.read()
++                self.assertEqual(test_asset_bytes, response.body)
++
++            self.assertEqual(None, connection.close().exception(self.timeout))
++
++        finally:
++            self._stop_server()
++
++    def test_get_http(self):
++        self._test_get(secure=False)
++
++    def test_get_https(self):
++        self._test_get(secure=True)
++
++    def _test_shutdown_error(self, secure):
++        # Use HTTP/1.0 connection to force a SOCKET_CLOSED error after request completes
++        self._start_server(secure, http_1_0=True)
++        try:
++            connection = self._new_client_connection(secure)
++
++            # Send request, don't care what happens
++            request = HttpRequest('GET', '/')
++            response = Response()
++            stream = connection.request(request, response.on_response, response.on_body)
++            stream.activate()
++            stream.completion_future.result(self.timeout)
++
++            # Wait for server to hang up, which should be immediate since it's using HTTP/1.0
++            shutdown_error = connection.shutdown_future.exception(self.timeout)
++            self.assertIsInstance(shutdown_error, awscrt.exceptions.AwsCrtError)
++
++        finally:
++            self._stop_server()
++
++    def test_shutdown_error_http(self):
++        return self._test_shutdown_error(secure=False)
++
++    def test_shutdown_error_https(self):
++        return self._test_shutdown_error(secure=True)
++
++    def _test_put(self, secure):
++        # PUT request sends this very file to the server.
++        self._start_server(secure)
++        try:
++            connection = self._new_client_connection(secure)
++            test_asset_path = 'test/test_http_client.py'
++            with open(test_asset_path, 'rb') as outgoing_body_stream:
++                outgoing_body_bytes = outgoing_body_stream.read()
++                headers = HttpHeaders([
++                    ('Content-Length', str(len(outgoing_body_bytes))),
++                ])
++
++                # seek back to start of stream before trying to send it
++                outgoing_body_stream.seek(0)
++
++                request = HttpRequest('PUT', '/' + test_asset_path, headers, outgoing_body_stream)
++                response = Response()
++                http_stream = connection.request(request, response.on_response, response.on_body)
++                http_stream.activate()
++                # wait for stream to complete
++                stream_completion_result = http_stream.completion_future.result(self.timeout)
++
++                self.assertEqual(200, response.status_code)
++                self.assertEqual(200, stream_completion_result)
++
++                # compare what we sent against what the server received
++                server_received = self.server.put_requests.get('/' + test_asset_path)
++                self.assertIsNotNone(server_received)
++                self.assertEqual(server_received, outgoing_body_bytes)
++
++            self.assertEqual(None, connection.close().result(self.timeout))
++
++        finally:
++            self._stop_server()
++
++    def test_put_http(self):
++        self._test_put(secure=False)
++
++    def test_put_https(self):
++        self._test_put(secure=True)
++
++    def _test_stream_lives_until_complete(self, secure):
++        # Ensure that stream and connection classes stay alive until work is complete
++        self._start_server(secure)
++        try:
++            connection = self._new_client_connection(secure)
++
++            request = HttpRequest('GET', '/test/test_http_client.py')
++            stream = connection.request(request)
++            stream.activate()
++            completion_future = stream.completion_future
++
++            # delete all local references
++            del stream
++            del connection
++
++            # stream should still complete successfully
++            completion_future.result(self.timeout)
++
++        finally:
++            self._stop_server()
++
++    def test_stream_lives_until_complete_http(self):
++        self._test_stream_lives_until_complete(secure=False)
++
++    def test_stream_lives_until_complete_https(self):
++        self._test_stream_lives_until_complete(secure=True)
++
++    def _test_request_lives_until_stream_complete(self, secure):
++        # Ensure HttpRequest and body InputStream stay alive until HttpClientStream completes (regression test)
++        self._start_server(secure)
++        try:
++            connection = self._new_client_connection(secure)
++
++            request = HttpRequest(
++                method='PUT',
++                path='/test/test_request_refcounts.txt',
++                headers=HttpHeaders([('Host', self.hostname), ('Content-Length', '5')]),
++                body_stream=BytesIO(b'hello'))
++
++            response = Response()
++            http_stream = connection.request(request, response.on_response, response.on_body)
++
++            # HttpClientStream should keep the dependencies (HttpRequest, HttpHeaders, InputStream)
++            # alive as long as it needs them
++            del request
++
++            http_stream.activate()
++            http_stream.completion_future.result(self.timeout)
++
++            self.assertEqual(None, connection.close().result(self.timeout))
++
++        finally:
++            self._stop_server()
++
++    def test_request_lives_until_stream_complete_http(self):
++        return self._test_request_lives_until_stream_complete(secure=False)
++
++    def test_request_lives_until_stream_complete_https(self):
++        return self._test_request_lives_until_stream_complete(secure=True)
++
++    def _test_stream_cleans_up_if_never_activated(self, secure):
++        # If a stream is never activated, it should just clean itself up
++        self._start_server(secure)
++        try:
++            connection = self._new_client_connection(secure)
++            stream = connection.request(HttpRequest('GET', '/test/test_http_client.py'))
++            # note we do NOT activate the stream
++
++            # delete local references, stream should clean itself up, connection should shut itself down
++            del stream
++            del connection
++
++        finally:
++            self._stop_server()
++
++    def test_stream_cleans_up_if_never_activated_http(self):
++        self._test_stream_cleans_up_if_never_activated(secure=False)
++
++    def test_stream_cleans_up_if_never_activated_https(self):
++        self._test_stream_cleans_up_if_never_activated(secure=True)
++
++    def _new_h2_client_connection(self, url):
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++        bootstrap = ClientBootstrap(event_loop_group, host_resolver)
++
++        port = url.port
++        # only test https
++        if port is None:
++            port = 443
++        tls_ctx_options = TlsContextOptions()
++        tls_ctx_options.verify_peer = False  # allow localhost
++        tls_ctx = ClientTlsContext(tls_ctx_options)
++        tls_conn_opt = tls_ctx.new_connection_options()
++        tls_conn_opt.set_server_name(url.hostname)
++        tls_conn_opt.set_alpn_list(["h2"])
++
++        connection_future = Http2ClientConnection.new(host_name=url.hostname,
++                                                      port=port,
++                                                      bootstrap=bootstrap,
++                                                      tls_connection_options=tls_conn_opt)
++        return connection_future.result(self.timeout)
++
++    def test_h2_client(self):
++        url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
++        connection = self._new_h2_client_connection(url)
++        # check we set an h2 connection
++        self.assertEqual(connection.version, HttpVersion.Http2)
++
++        request = HttpRequest('GET', url.path)
++        request.headers.add('host', url.hostname)
++        response = Response()
++        stream = connection.request(request, response.on_response, response.on_body)
++        stream.activate()
++
++        # wait for stream to complete (use long timeout, it's a big file)
++        stream_completion_result = stream.completion_future.result(80)
++
++        # check result
++        self.assertEqual(200, response.status_code)
++        self.assertEqual(200, stream_completion_result)
++        self.assertEqual(14428801, len(response.body))
++
++        self.assertEqual(None, connection.close().exception(self.timeout))
++
++    def test_h2_manual_write_exception(self):
++        url = urlparse("https://d1cz66xoahf9cl.cloudfront.net/http_test_doc.txt")
++        connection = self._new_h2_client_connection(url)
++        # check we set an h2 connection
++        self.assertEqual(connection.version, HttpVersion.Http2)
++
++        request = HttpRequest('GET', url.path)
++        request.headers.add('host', url.hostname)
++        response = Response()
++        stream = connection.request(request, response.on_response, response.on_body)
++        stream.activate()
++        exception = None
++        try:
++            # If the stream is not configured to allow manual writes, this should throw an exception directly
++            stream.write_data(BytesIO(b'hello'), False)
++        except RuntimeError as e:
++            exception = e
++        self.assertIsNotNone(exception)
++
++        self.assertEqual(None, connection.close().exception(self.timeout))
++
++    @unittest.skipIf(not TlsCipherPref.PQ_DEFAULT.is_supported(), "Cipher pref not supported")
++    def test_connect_pq_default(self):
++        self._test_connect(secure=True, cipher_pref=TlsCipherPref.PQ_DEFAULT)
++
++
++class MockServerTestBase(NativeResourceTest):
++    """Base class for tests that use the H2 mock server"""
++    timeout = 5  # seconds
++    p_server = None
++    mock_server_url = None
++
++    def setUp(self):
++        super().setUp()
++        # Start the mock server from the aws-c-http
++        server_path = os.path.join(
++            os.path.dirname(__file__),
++            '..',
++            'crt',
++            'aws-c-http',
++            'tests',
++            'mock_server',
++            'h2tls_mock_server.py')
++        python_path = sys.executable
++        self.mock_server_url = urlparse("https://localhost:3443/echo")
++        self.p_server = subprocess.Popen([python_path, server_path])
++        # Wait for server to be ready
++        self._wait_for_server_ready()
++
++    def _wait_for_server_ready(self):
++        """Wait until server is accepting connections."""
++        max_attempts = 20
++        for attempt in range(max_attempts):
++            try:
++                with socket.create_connection(("127.0.0.1", self.mock_server_url.port), timeout=1):
++                    return  # Server is ready
++            except (ConnectionRefusedError, socket.timeout):
++                time.sleep(0.5)
++
++        # If we get here, server failed to start
++        stdout, stderr = self.p_server.communicate(timeout=0.5)
++        raise RuntimeError(f"Server failed to start after {max_attempts} attempts.\n"
++                           f"STDOUT: {stdout.decode()}\nSTDERR: {stderr.decode()}")
++
++    def tearDown(self):
++        self.p_server.terminate()
++        try:
++            self.p_server.wait(timeout=5)
++        except subprocess.TimeoutExpired:
++            self.p_server.kill()
++        super().tearDown()
++
++    def _new_mock_h2_connection(self, manual_window_management=False, initial_window_size=None, initial_settings=None):
++        """Create HTTP/2 client connection to local mock server"""
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++        bootstrap = ClientBootstrap(event_loop_group, host_resolver)
++
++        port = self.mock_server_url.port
++        if port is None:
++            port = 443
++
++        tls_ctx_options = TlsContextOptions()
++        tls_ctx_options.verify_peer = False
++        tls_ctx = ClientTlsContext(tls_ctx_options)
++        tls_conn_opt = tls_ctx.new_connection_options()
++        tls_conn_opt.set_server_name(self.mock_server_url.hostname)
++        tls_conn_opt.set_alpn_list(["h2"])
++
++        if initial_settings is None:
++            initial_settings = [Http2Setting(Http2SettingID.ENABLE_PUSH, 0)]
++
++        kwargs = {
++            'host_name': self.mock_server_url.hostname,
++            'port': port,
++            'bootstrap': bootstrap,
++            'tls_connection_options': tls_conn_opt,
++            'initial_settings': initial_settings,
++            'manual_window_management': manual_window_management
++        }
++        if initial_window_size is not None:
++            kwargs['initial_window_size'] = initial_window_size
++
++        connection_future = Http2ClientConnection.new(**kwargs)
++        return connection_future.result(self.timeout)
++
++
++@unittest.skipUnless(os.environ.get('AWS_TEST_LOCALHOST'), 'set env var to run test: AWS_TEST_LOCALHOST')
++class TestClientMockServer(MockServerTestBase):
++
++    def _on_remote_settings_changed(self, settings):
++        # The mock server has the default settings with
++        # ENABLE_PUSH = 0
++        # MAX_CONCURRENT_STREAMS = 100
++        # MAX_HEADER_LIST_SIZE = 2**16
++        # Check the settings here
++        self.assertEqual(len(settings), 3)
++        for i in settings:
++            if i.id == Http2SettingID.ENABLE_PUSH:
++                self.assertEqual(i.value, 0)
++            if i.id == Http2SettingID.MAX_CONCURRENT_STREAMS:
++                self.assertEqual(i.value, 100)
++            if i.id == Http2SettingID.MAX_HEADER_LIST_SIZE:
++                self.assertEqual(i.value, 2**16)
++
++    def _new_mock_connection(self, initial_settings=None):
++        """Create connection with remote settings callback"""
++        kwargs = {'initial_settings': initial_settings}
++        connection_future = Http2ClientConnection.new(
++            host_name=self.mock_server_url.hostname,
++            port=self.mock_server_url.port if self.mock_server_url.port else 443,
++            bootstrap=self._create_client_bootstrap(),
++            tls_connection_options=self._create_tls_connection_options(),
++            initial_settings=initial_settings if initial_settings else [Http2Setting(Http2SettingID.ENABLE_PUSH, 0)],
++            on_remote_settings_changed=self._on_remote_settings_changed)
++        return connection_future.result(self.timeout)
++
++    def _create_client_bootstrap(self):
++        """Create client bootstrap"""
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++        return ClientBootstrap(event_loop_group, host_resolver)
++
++    def _create_tls_connection_options(self):
++        """Create TLS connection options for mock server"""
++        tls_ctx_options = TlsContextOptions()
++        tls_ctx_options.verify_peer = False
++        tls_ctx = ClientTlsContext(tls_ctx_options)
++        tls_conn_opt = tls_ctx.new_connection_options()
++        tls_conn_opt.set_server_name(self.mock_server_url.hostname)
++        tls_conn_opt.set_alpn_list(["h2"])
++        return tls_conn_opt
++
++    def test_h2_mock_server_manual_write(self):
++        connection = self._new_mock_connection()
++        # check we set an h2 connection
++        self.assertEqual(connection.version, HttpVersion.Http2)
++
++        request = HttpRequest('POST', self.mock_server_url.path)
++        request.headers.add('host', self.mock_server_url.hostname)
++        response = Response()
++        stream = connection.request(request, response.on_response, response.on_body, manual_write=True)
++        stream.activate()
++        exception = None
++        body_chunks = [b'hello', b'he123123', b'hello']
++        total_length = 0
++        content = b''
++        for i in body_chunks:
++            total_length = total_length + len(i)
++            content += i
++        try:
++            # If the stream is not configured to allow manual writes, this should throw an exception directly
++            f = stream.write_data(BytesIO(body_chunks[0]), False)
++            f.result(self.timeout)
++            stream.write_data(BytesIO(body_chunks[1]), False)
++            stream.write_data(None, False)
++            stream.write_data(BytesIO(body_chunks[2]), True)
++        except RuntimeError as e:
++            exception = e
++        self.assertIsNone(exception)
++        stream_completion_result = stream.completion_future.result(80)
++        # check result
++        self.assertEqual(200, response.status_code)
++        self.assertEqual(200, stream_completion_result)
++        # Parse the response from mock server which has format:
++        # {
++        #   "body": <str of data received>,
++        #   "bytes": <byte count of data received>
++        # }
++        parsed_response = json.loads(response.body.decode())
++        self.assertEqual(total_length, int(parsed_response["bytes"]))
++        self.assertEqual(content.decode(), parsed_response["body"])
++
++        self.assertEqual(None, connection.close().exception(self.timeout))
++
++    class DelayStream:
++        def __init__(self, bad_read=False):
++            self._read = False
++            self.bad_read = bad_read
++
++        def read(self, _len):
++            if self.bad_read:
++                # simulate a bad read that raises an exception
++                # this will cause the stream to fail
++                raise RuntimeError("bad read exception")
++            if self._read:
++                # return empty as EOS
++                return b''
++            else:
++                self._read = True
++                return b'hello'
++
++    def test_h2_mock_server_manual_write_read_exception(self):
++        connection = self._new_mock_connection()
++        # check we set an h2 connection
++        self.assertEqual(connection.version, HttpVersion.Http2)
++
++        request = HttpRequest('POST', self.mock_server_url.path)
++        request.headers.add('host', self.mock_server_url.hostname)
++        response = Response()
++        stream = connection.request(request, response.on_response, response.on_body, manual_write=True)
++        stream.activate()
++        exception = None
++        data = self.DelayStream(bad_read=True)
++        try:
++            f = stream.write_data(data, False)
++            f.result(self.timeout)
++        except Exception as e:
++            # future will raise the exception from the write_data call.
++            exception = e
++        self.assertIsNotNone(exception)
++        # stream will complete with same exception.
++        stream_completion_exception = stream.completion_future.exception()
++        self.assertIsNotNone(stream_completion_exception)
++        # assert that the exception is the same as the one we got from write_data.
++        self.assertEqual(str(exception), str(stream_completion_exception))
++        self.assertEqual(None, connection.close().exception(self.timeout))
++
++    def test_h2_mock_server_manual_write_lifetime(self):
++        connection = self._new_mock_connection()
++        # check we set an h2 connection
++        self.assertEqual(connection.version, HttpVersion.Http2)
++
++        request = HttpRequest('POST', self.mock_server_url.path)
++        request.headers.add('host', self.mock_server_url.hostname)
++        response = Response()
++        stream = connection.request(request, response.on_response, response.on_body, manual_write=True)
++        stream.activate()
++        exception = None
++        data = self.DelayStream(bad_read=False)
++        try:
++            f = stream.write_data(data, False)
++            # make sure when the python object was dropped, things are still ok
++            del data
++            f.result(self.timeout)
++            f = stream.write_data(None, True)
++            f.result(self.timeout)
++        except Exception as e:
++            # future will raise the exception from the write_data call.
++            exception = e
++        self.assertIsNone(exception)
++        # stream will complete with another exception.
++        stream.completion_future.result()
++        self.assertEqual(None, connection.close().exception(self.timeout))
++
++    def test_h2_mock_server_settings(self):
++        exception = None
++        try:
++            # invalid settings, should throw an exception
++            initial_settings = [100]
++            connection = self._new_mock_connection(initial_settings)
++        except Exception as e:
++            exception = e
++        self.assertIsNotNone(exception)
++
++        connection = self._new_mock_connection()
++        # check we set an h2 connection
++        self.assertEqual(connection.version, HttpVersion.Http2)
++
++        request = HttpRequest('POST', self.mock_server_url.path)
++        request.headers.add('host', self.mock_server_url.hostname)
++        response = Response()
++        stream = connection.request(request, response.on_response, response.on_body, manual_write=True)
++        stream.activate()
++        exception = None
++        stream.write_data(BytesIO(b'hello'), True)
++
++        self.assertIsNone(exception)
++        stream_completion_result = stream.completion_future.result(80)
++        # check result
++        self.assertEqual(200, response.status_code)
++        self.assertEqual(200, stream_completion_result)
++        print(response.body)
++
++        self.assertEqual(None, connection.close().exception(self.timeout))
++
++
++class Response:
++    def __init__(self):
++        self.status_code = None
++        self.headers = None
++        self.body = bytearray()
++
++    def on_response(self, http_stream, status_code, headers, **kwargs):
++        self.status_code = status_code
++        self.headers = HttpHeaders(headers)
++
++    def on_body(self, http_stream, chunk, **kwargs):
++        self.body.extend(chunk)
++
++
++class FlowControlTest(LocalServerTestBase):
++    """HTTP/1.1 flow control tests using local server"""
++    timeout = 10.0
++
++    def _new_h1_client_connection(
++            self,
++            secure,
++            manual_window_management=False,
++            initial_window_size=None,
++            read_buffer_capacity=None):
++        """Create HTTP/1.1 client connection to local server"""
++        if secure:
++            tls_ctx_opt = TlsContextOptions()
++            tls_ctx_opt.verify_peer = False
++            tls_ctx = ClientTlsContext(tls_ctx_opt)
++            tls_conn_opt = tls_ctx.new_connection_options()
++            tls_conn_opt.set_server_name(self.hostname)
++        else:
++            tls_conn_opt = None
++
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++        bootstrap = ClientBootstrap(event_loop_group, host_resolver)
++
++        kwargs = {
++            'host_name': self.hostname,
++            'port': self.port,
++            'bootstrap': bootstrap,
++            'tls_connection_options': tls_conn_opt,
++            'manual_window_management': manual_window_management
++        }
++        if initial_window_size is not None:
++            kwargs['initial_window_size'] = initial_window_size
++        if read_buffer_capacity is not None:
++            kwargs['read_buffer_capacity'] = read_buffer_capacity
++
++        connection_future = HttpClientConnection.new(**kwargs)
++        return connection_future.result(self.timeout)
++
++    def test_h1_manual_window_management_happy_path(self):
++        """Test HTTP/1.1 manual window management happy path"""
++        self._start_server(secure=True)
++        try:
++            connection = self._new_h1_client_connection(
++                secure=True,
++                manual_window_management=True,
++                initial_window_size=5,
++                read_buffer_capacity=1000
++            )
++
++            # Create a file with known size for testing
++            test_data = b'0123456789'  # 10 bytes
++            test_file_path = 'test_flow_control_data.txt'
++            with open(test_file_path, 'wb') as f:
++                f.write(test_data)
++
++            try:
++                request = HttpRequest('GET', '/' + test_file_path)
++                request.headers.add('host', self.hostname)
++
++                response = Response()
++                received_chunks = []
++                window_updates_sent = []
++
++                def on_body_with_window_update(http_stream, chunk, **kwargs):
++                    received_chunks.append(len(chunk))
++                    response.body.extend(chunk)
++                    http_stream.update_window(len(chunk))
++                    window_updates_sent.append(len(chunk))
++
++                stream = connection.request(request, response.on_response, on_body_with_window_update)
++                stream.activate()
++                stream_completion_result = stream.completion_future.result(timeout=self.timeout)
++
++                self.assertEqual(200, response.status_code)
++                self.assertEqual(200, stream_completion_result)
++                self.assertEqual(test_data, bytes(response.body))
++                self.assertGreater(len(received_chunks), 0, "No data chunks received")
++                self.assertGreater(len(window_updates_sent), 0, "No window updates sent")
++                self.assertEqual(sum(received_chunks), sum(window_updates_sent),
++                                 "Window updates don't match received data")
++
++                self.assertEqual(None, connection.close().result(self.timeout))
++            finally:
++                # Clean up test file
++                if os.path.exists(test_file_path):
++                    os.remove(test_file_path)
++        finally:
++            self._stop_server()
++
++    def test_h1_stream_flow_control_blocks_and_resumes(self):
++        """Test that HTTP/1.1 stream flow control actually blocks and resumes"""
++        self._start_server(secure=True)
++        try:
++            connection = self._new_h1_client_connection(
++                secure=True,
++                manual_window_management=True,
++                initial_window_size=1,
++                read_buffer_capacity=1000
++            )
++
++            # Create a file with 100 bytes for testing
++            test_data = bytes(range(100))
++            test_file_path = 'test_flow_control_100.txt'
++            with open(test_file_path, 'wb') as f:
++                f.write(test_data)
++
++            try:
++                request = HttpRequest('GET', '/' + test_file_path)
++                request.headers.add('host', self.hostname)
++
++                response = Response()
++                chunks_received = []
++
++                def on_body(http_stream, chunk, **kwargs):
++                    chunks_received.append(len(chunk))
++                    response.body.extend(chunk)
++                    http_stream.update_window(len(chunk))
++
++                stream = connection.request(request, response.on_response, on_body)
++                stream.activate()
++                stream.completion_future.result(timeout=self.timeout)
++
++                self.assertEqual(test_data, bytes(response.body))
++                # With window=1, we should receive many small chunks
++                self.assertGreater(len(chunks_received), 1, "Should receive multiple chunks with tiny window")
++
++                self.assertEqual(None, connection.close().result(self.timeout))
++            finally:
++                # Clean up test file
++                if os.path.exists(test_file_path):
++                    os.remove(test_file_path)
++        finally:
++            self._stop_server()
++
++
++@unittest.skipUnless(os.environ.get('AWS_TEST_LOCALHOST'), 'set env var to run test: AWS_TEST_LOCALHOST')
++class FlowControlH2Test(MockServerTestBase):
++    """HTTP/2 flow control tests using local mock server"""
++    timeout = 10.0
++
++    def test_h2_manual_window_management_happy_path(self):
++        """Test HTTP/2 manual window management happy path"""
++        connection = self._new_mock_h2_connection(
++            manual_window_management=True,
++            initial_window_size=65536
++        )
++
++        # GET request with x-repeat-data header to download data
++        request = HttpRequest('GET', self.mock_server_url.path)
++        request.headers.add('host', self.mock_server_url.hostname)
++        request.headers.add('x-repeat-data', '100')  # Request 100 bytes of data
++
++        response = Response()
++        received_chunks = []
++        window_updates_sent = []
++
++        def on_body_with_window_update(http_stream, chunk, **kwargs):
++            received_chunks.append(len(chunk))
++            response.body.extend(chunk)
++            http_stream.update_window(len(chunk))
++            window_updates_sent.append(len(chunk))
++
++        stream = connection.request(request, response.on_response, on_body_with_window_update)
++        stream.activate()
++
++        stream_completion_result = stream.completion_future.result(timeout=self.timeout)
++
++        self.assertEqual(200, response.status_code)
++        self.assertEqual(200, stream_completion_result)
++        self.assertGreater(len(response.body), 0, "No response body received")
++        self.assertGreater(len(received_chunks), 0, "No data chunks received")
++        self.assertGreater(len(window_updates_sent), 0, "No window updates sent")
++
++        self.assertEqual(None, connection.close().result(self.timeout))
++
++    def test_h2_stream_flow_control_blocks_and_resumes(self):
++        """Test that HTTP/2 stream flow control actually blocks and resumes"""
++        connection = self._new_mock_h2_connection(
++            manual_window_management=True,
++            initial_window_size=10  # Small window to force multiple chunks
++        )
++
++        # GET request with x-repeat-data header to download data
++        request = HttpRequest('GET', self.mock_server_url.path)
++        request.headers.add('host', self.mock_server_url.hostname)
++        request.headers.add('x-repeat-data', '100')  # Request 100 bytes of data
++
++        response = Response()
++        chunks_received = []
++
++        def on_body(http_stream, chunk, **kwargs):
++            chunks_received.append(len(chunk))
++            response.body.extend(chunk)
++            # Update window to allow more data
++            http_stream.update_window(len(chunk))
++
++        stream = connection.request(request, response.on_response, on_body)
++        stream.activate()
++
++        stream.completion_future.result(timeout=self.timeout)
++
++        self.assertEqual(200, response.status_code)
++        self.assertGreater(len(response.body), 0, "No response body received")
++        # With small window, we should receive multiple chunks
++        self.assertGreater(len(chunks_received), 1, "Should receive multiple chunks with small window")
++
++        self.assertEqual(None, connection.close().result(self.timeout))
++
++
++@unittest.skipUnless(os.environ.get('AWS_TEST_LOCALHOST'), 'set env var to run test: AWS_TEST_LOCALHOST')
++class Http2RemoteEndStreamTest(MockServerTestBase):
++    """Test suite for HTTP/2 on_h2_remote_end_stream callback"""
++    timeout = 10  # seconds
++
++    def test_h2_remote_end_stream_ordering(self):
++        """Test that on_h2_remote_end_stream fires before on_complete when server finishes first"""
++        connection = self._new_mock_h2_connection()
++
++        # POST to the mock server's early-response path: the server returns 404
++        # as soon as the request headers arrive, before the client finishes
++        # sending its body.
++        request = HttpRequest('POST', '/respond-immediately')
++        request.headers.add('host', self.mock_server_url.hostname)
++        response = Response()
++
++        stream = connection.request(request, response.on_response, response.on_body, manual_write=True)
++        stream.activate()
++
++        # Send first chunk WITHOUT end_stream - keeping the client side open
++        stream.write_data(BytesIO(b'chunk1'), end_stream=False).result(self.timeout)
++
++        # Wait for server to finish (remote_end_stream_future completes)
++        # Server will respond immediately with 404 and send END_STREAM
++        remote_result = stream.remote_end_stream_future.result(self.timeout)
++        self.assertIsNone(remote_result, "remote_end_stream_future should complete with None")
++
++        # Verify completion_future has NOT completed yet (stream still open)
++        self.assertFalse(stream.completion_future.done(),
++                         "completion_future should not be done until client closes")
++
++        # Now send final chunk WITH end_stream to close client side
++        stream.write_data(BytesIO(b'chunk2'), end_stream=True).result(self.timeout)
++
++        # Wait for stream completion
++        completion_result = stream.completion_future.result(self.timeout)
++        self.assertEqual(404, completion_result, "Should get 404 status code")
++
++        connection.close().result(self.timeout)
++
++
++if __name__ == '__main__':
++    unittest.main()
+diff -Nru aws-crt-python-0.38.0.orig/test/test_io.py aws-crt-python-0.38.0/test/test_io.py
+--- aws-crt-python-0.38.0.orig/test/test_io.py	2026-10-16 16:15:10.000000000 +0200
++++ aws-crt-python-0.38.0/test/test_io.py	2026-10-31 16:01:08.481044097 +0100
+@@ -35,6 +35,7 @@
          event_loop_group_two = EventLoopGroup.get_or_create_static_default()
          self.assertTrue(event_loop_group_one == event_loop_group_two)
  
@@ -103,3 +2037,404 @@ diff -Nru aws-crt-python-0.32.0.orig/test/test_io.py aws-crt-python-0.32.0/test/
      def test_shutdown_complete_singleton(self):
          event_loop_group = EventLoopGroup.get_or_create_static_default()
          shutdown_event = event_loop_group.shutdown_event
+diff -Nru aws-crt-python-0.38.0.orig/test/test_io.py.orig aws-crt-python-0.38.0/test/test_io.py.orig
+--- aws-crt-python-0.38.0.orig/test/test_io.py.orig	1970-01-01 01:00:00.000000000 +0100
++++ aws-crt-python-0.38.0/test/test_io.py.orig	2026-10-16 16:15:10.000000000 +0200
+@@ -0,0 +1,397 @@
++# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
++# SPDX-License-Identifier: Apache-2.0.
++
++from awscrt.io import *
++from awscrt.logging import init_logging, set_log_level, log, LogSubject
++from test import NativeResourceTest, TIMEOUT
++import io
++import logging
++import os
++import sys
++import unittest
++
++
++class EventLoopGroupTest(NativeResourceTest):
++    def test_init_defaults(self):
++        event_loop_group = EventLoopGroup()
++
++    def test_1_thread(self):
++        event_loop_group = EventLoopGroup(1)
++
++    def test_cpu_group(self):
++        event_loop_group = EventLoopGroup(cpu_group=0)
++
++    def test_shutdown_complete(self):
++        event_loop_group = EventLoopGroup()
++        shutdown_event = event_loop_group.shutdown_event
++        del event_loop_group
++        self.assertTrue(shutdown_event.wait(TIMEOUT))
++
++    def test_init_defaults_singleton(self):
++        event_loop_group = EventLoopGroup.get_or_create_static_default()
++
++    def test_init_defaults_singleton_is_singleton(self):
++        event_loop_group_one = EventLoopGroup.get_or_create_static_default()
++        event_loop_group_two = EventLoopGroup.get_or_create_static_default()
++        self.assertTrue(event_loop_group_one == event_loop_group_two)
++
++    def test_shutdown_complete_singleton(self):
++        event_loop_group = EventLoopGroup.get_or_create_static_default()
++        shutdown_event = event_loop_group.shutdown_event
++        del event_loop_group
++        EventLoopGroup.release_static_default()
++        self.assertTrue(shutdown_event.wait(TIMEOUT))
++
++
++class DefaultHostResolverTest(NativeResourceTest):
++    def test_init(self):
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++
++    def test_init_singleton(self):
++        host_resolver = DefaultHostResolver.get_or_create_static_default()
++
++    def test_init_singleton_is_singleton(self):
++        host_resolver_one = DefaultHostResolver.get_or_create_static_default()
++        host_resolver_two = DefaultHostResolver.get_or_create_static_default()
++        self.assertTrue(host_resolver_one == host_resolver_two)
++
++
++class ClientBootstrapTest(NativeResourceTest):
++    def test_create_destroy(self):
++        event_loop_group = EventLoopGroup()
++        host_resolver = DefaultHostResolver(event_loop_group)
++        bootstrap = ClientBootstrap(event_loop_group, host_resolver)
++
++        # ensure shutdown_event fires
++        bootstrap_shutdown_event = bootstrap.shutdown_event
++        del bootstrap
++        self.assertTrue(bootstrap_shutdown_event.wait(TIMEOUT))
++
++    def test_create_destroy_singleton(self):
++        bootstrap = ClientBootstrap.get_or_create_static_default()
++
++        # ensure shutdown_event fires
++        bootstrap_shutdown_event = bootstrap.shutdown_event
++        del bootstrap
++        ClientBootstrap.release_static_default()
++        self.assertTrue(bootstrap_shutdown_event.wait(TIMEOUT))
++
++    def test_init_singleton_is_singleton(self):
++        client_one = ClientBootstrap.get_or_create_static_default()
++        client_two = ClientBootstrap.get_or_create_static_default()
++        self.assertTrue(client_one == client_two)
++
++
++class ClientTlsContextTest(NativeResourceTest):
++    def test_init_defaults(self):
++        opt = TlsContextOptions()
++        ctx = ClientTlsContext(opt)
++
++    def test_with_mtls_from_path(self):
++        opt = TlsContextOptions.create_client_with_mtls_from_path(
++            'test/resources/unittest.crt', 'test/resources/unittest.key')
++        ctx = ClientTlsContext(opt)
++
++    def test_with_mtls_pkcs12(self):
++        try:
++            opt = TlsContextOptions.create_client_with_mtls_pkcs12(
++                'test/resources/unittest.p12', '1234')
++            ctx = ClientTlsContext(opt)
++        except Exception as e:
++            if 'PLATFORM_NOT_SUPPORTED' in str(e):
++                raise unittest.SkipTest(f'PKCS#12 not supported on this platform ({sys.platform})')
++            else:
++                # well then this is a real error
++                raise e
++
++    def test_override_default_trust_store_dir(self):
++        opt = TlsContextOptions()
++        opt.override_default_trust_store_from_path('test/resources', None)
++        ctx = ClientTlsContext(opt)
++
++    def test_override_default_trust_store_file(self):
++        opt = TlsContextOptions()
++        opt.override_default_trust_store_from_path(None, 'test/resources/ca.crt')
++        ctx = ClientTlsContext(opt)
++
++    def test_set_cipher_preference_tlsv1_2_2025(self):
++        opt = TlsContextOptions()
++        opt.cipher_pref = TlsCipherPref.TLSv1_2_2025_07
++
++        try:
++            ctx = ClientTlsContext(opt)
++        except Exception as e:
++            if sys.platform.startswith("linux"):
++                # On Linux, this should not fail
++                self.fail(f"Unexpected error on Linux: {e}")
++            else:
++                # On non-Linux platforms, verify we get the expected error and skip
++                self.assertIn('AWS_IO_TLS_CIPHER_PREF_UNSUPPORTED', str(e))
++                self.skipTest(f"TLSv1_2_2025_07 not supported on {sys.platform}")
++
++
++class TlsConnectionOptionsTest(NativeResourceTest):
++    def test_init(self):
++        opt = TlsContextOptions()
++        ctx = ClientTlsContext(opt)
++        conn_opt = TlsConnectionOptions(ctx)
++
++    def test_alpn_list(self):
++        opt = TlsContextOptions()
++        ctx = ClientTlsContext(opt)
++        conn_opt = TlsConnectionOptions(ctx)
++        conn_opt.set_alpn_list(['h2', 'http/1.1'])
++
++    def test_server_name(self):
++        opt = TlsContextOptions()
++        ctx = ClientTlsContext(opt)
++        conn_opt = TlsConnectionOptions(ctx)
++        conn_opt.set_server_name('localhost')
++
++
++class MockPythonStream:
++    """For testing duck-typed stream classes.
++    Doesn't inherit from io.IOBase. Doesn't implement readinto()"""
++
++    def __init__(self, src_data):
++        self.data = bytes(src_data)
++        self.len = len(src_data)
++        self.pos = 0
++
++    def seek(self, where):
++        self.pos = where
++
++    def tell(self):
++        return self.pos
++
++    def read(self, amount=None):
++        if amount is None:
++            amount = self.len - self.pos
++        else:
++            amount = min(amount, self.len - self.pos)
++        prev_pos = self.pos
++        self.pos += amount
++        return self.data[prev_pos: self.pos]
++
++
++class InputStreamTest(NativeResourceTest):
++    def _test(self, python_stream, expected):
++        input_stream = InputStream(python_stream)
++        result = bytearray()
++        fixed_mv_len = 4
++        fixed_mv = memoryview(bytearray(fixed_mv_len))
++        while True:
++            read_len = input_stream._read_into_memoryview(fixed_mv)
++            if read_len is None:
++                continue
++            if read_len == 0:
++                break
++            if read_len > 0:
++                self.assertLessEqual(read_len, fixed_mv_len)
++                result += fixed_mv[0:read_len]
++
++        self.assertEqual(expected, result)
++
++    def test_read_official_io(self):
++        # Read from a class defined in the io module
++        src_data = b'a long string here'
++        python_stream = io.BytesIO(src_data)
++        self._test(python_stream, src_data)
++
++    def test_read_duck_typed_io(self):
++        # Read from a class defined in the io module
++        src_data = b'a man a can a planal canada'
++        python_stream = MockPythonStream(src_data)
++        self._test(python_stream, src_data)
++
++
++class Pkcs11LibTest(NativeResourceTest):
++    def _lib_path(self):
++        val = os.environ.get("AWS_TEST_PKCS11_LIB")
++        if not val:
++            raise unittest.SkipTest(f"test requires env var: AWS_TEST_PKCS11_LIB")
++        return val
++
++    def test_init(self):
++        # sanity check that we can create/destroy
++        lib_path = self._lib_path()
++        pcks11_lib = Pkcs11Lib(file=lib_path, behavior=Pkcs11Lib.InitializeFinalizeBehavior.STRICT)
++
++    def test_exceptions(self):
++        # check that initialization errors bubble up as exceptions
++        with self.assertRaises(Exception):
++            pkcs11_lib = Pkcs11Lib(file='obviously-invalid-path.so')
++
++        with self.assertRaises(Exception):
++            with open(self._lib_path()) as literal_open_file:
++                # a filepath str should passed, not a literal open file
++                pkcs11_lib = Pkcs11Lib(file=literal_open_file)
++
++    def test_strict_behavior(self):
++        lib_path = self._lib_path()
++        lib1 = Pkcs11Lib(file=lib_path, behavior=Pkcs11Lib.InitializeFinalizeBehavior.STRICT)
++        # InitializeFinalizeBehavior.STRICT behavior should fail if the PKCS#11 lib is already loaded
++        with self.assertRaises(Exception):
++            lib2 = Pkcs11Lib(file=lib_path, behavior=Pkcs11Lib.InitializeFinalizeBehavior.STRICT)
++
++    def test_omit_behavior(self):
++        lib_path = self._lib_path()
++        # InitializeFinalizeBehavior.OMIT should fail unless another instance of the PKCS#11 lib is already loaded
++        with self.assertRaises(Exception):
++            lib = Pkcs11Lib(file=lib_path, behavior=Pkcs11Lib.InitializeFinalizeBehavior.OMIT)
++
++        # InitializeFinalizeBehavior.OMIT behavior should be fine when another
++        # instance of the PKCS#11 lib is already loaded
++        strict_lib = Pkcs11Lib(file=lib_path, behavior=Pkcs11Lib.InitializeFinalizeBehavior.STRICT)
++        omit_lib = Pkcs11Lib(file=lib_path, behavior=Pkcs11Lib.InitializeFinalizeBehavior.OMIT)
++
++    def test_is_tls_cipher_supported(self):
++        self.assertEqual(True, TlsCipherPref.DEFAULT.is_supported())
++
++
++class PythonLoggingTest(NativeResourceTest):
++    @classmethod
++    def setUpClass(cls):
++        init_logging(logging.DEBUG)
++
++    def test_log_level_and_message(self):
++        handler = logging.Handler()
++        handler.records = []
++        handler.emit = lambda record: handler.records.append(record)
++
++        logger = logging.getLogger('awscrt')
++        logger.setLevel(logging.DEBUG)
++        logger.addHandler(handler)
++
++        try:
++            log(logging.INFO, LogSubject.COMMON_GENERAL, "test message")
++
++            self.assertEqual(len(handler.records), 1)
++            self.assertEqual(handler.records[0].levelno, logging.INFO)
++            self.assertIn("test message", handler.records[0].getMessage())
++        finally:
++            logger.removeHandler(handler)
++
++    def test_log_subject(self):
++        handler = logging.Handler()
++        handler.records = []
++        handler.emit = lambda record: handler.records.append(record)
++
++        logger = logging.getLogger('awscrt')
++        logger.setLevel(logging.DEBUG)
++        logger.addHandler(handler)
++
++        try:
++            log(logging.DEBUG, LogSubject.IO_EVENT_LOOP, "event loop test")
++
++            self.assertEqual(len(handler.records), 1)
++            self.assertEqual(handler.records[0].name, "awscrt.io.event-loop")
++            self.assertIn("event loop test", handler.records[0].getMessage())
++        finally:
++            logger.removeHandler(handler)
++
++    def test_log_subject_hierarchy(self):
++        """Verify that log subjects from different CRT packages produce correct hierarchical logger names."""
++        cases = [
++            (LogSubject.COMMON_GENERAL, "awscrt.common."),
++            (LogSubject.IO_EVENT_LOOP, "awscrt.io."),
++            (LogSubject.HTTP_GENERAL, "awscrt.http."),
++            (LogSubject.EVENT_STREAM_GENERAL, "awscrt.event-stream."),
++            (LogSubject.MQTT_GENERAL, "awscrt.mqtt."),
++            (LogSubject.AUTH_GENERAL, "awscrt.auth."),
++            (LogSubject.CAL_GENERAL, "awscrt.cal."),
++            (LogSubject.S3_GENERAL, "awscrt.s3."),
++            (LogSubject.SDKUTILS_GENERAL, "awscrt.sdkutils."),
++        ]
++
++        handler = logging.Handler()
++        handler.records = []
++        handler.emit = lambda record: handler.records.append(record)
++
++        logger = logging.getLogger('awscrt')
++        logger.setLevel(logging.DEBUG)
++        logger.addHandler(handler)
++
++        try:
++            for subject, expected_prefix in cases:
++                handler.records.clear()
++                log(logging.DEBUG, subject, "test")
++                self.assertEqual(len(handler.records), 1)
++                self.assertTrue(
++                    handler.records[0].name.startswith(expected_prefix),
++                    f"Subject {subject.name}: expected logger starting with "
++                    f"'{expected_prefix}', got '{handler.records[0].name}'"
++                )
++        finally:
++            logger.removeHandler(handler)
++
++    def _emit_all_subjects_and_levels(self):
++        """Emit logs across all subjects at INFO and DEBUG levels."""
++        for subject in (LogSubject.IO_EVENT_LOOP, LogSubject.HTTP_GENERAL,
++                        LogSubject.EVENT_STREAM_GENERAL, LogSubject.MQTT_GENERAL,
++                        LogSubject.S3_GENERAL, LogSubject.AUTH_GENERAL,
++                        LogSubject.CAL_GENERAL, LogSubject.SDKUTILS_GENERAL,
++                        LogSubject.COMMON_GENERAL):
++            log(logging.INFO, subject, f"{subject.name} info")
++            log(logging.DEBUG, subject, f"{subject.name} debug")
++
++    def test_logging_filters(self):
++        """Verify level and subject filtering across different logger configurations."""
++        handler = logging.Handler()
++        handler.records = []
++        handler.emit = lambda record: handler.records.append(record)
++
++        root = logging.getLogger('awscrt')
++        root.addHandler(handler)
++
++        try:
++            # All at DEBUG: should get all 18 records (9 subjects x 2 levels)
++            root.setLevel(logging.DEBUG)
++            self._emit_all_subjects_and_levels()
++            self.assertEqual(len(handler.records), 18)
++            handler.records.clear()
++
++            # All at INFO: should get only 9 INFO records
++            root.setLevel(logging.INFO)
++            self._emit_all_subjects_and_levels()
++            self.assertEqual(len(handler.records), 9)
++            self.assertTrue(all(r.levelno == logging.INFO for r in handler.records))
++            handler.records.clear()
++
++            # All at WARNING: nothing should pass
++            root.setLevel(logging.WARNING)
++            self._emit_all_subjects_and_levels()
++            self.assertEqual(len(handler.records), 0)
++
++            # Enable only HTTP at DEBUG: should get 2 HTTP records
++            logging.getLogger('awscrt.http').setLevel(logging.DEBUG)
++            self._emit_all_subjects_and_levels()
++            self.assertEqual(len(handler.records), 2)
++            self.assertTrue(all(r.name.startswith("awscrt.http.") for r in handler.records))
++            handler.records.clear()
++
++            # Also enable S3 at INFO: should get 2 HTTP + 1 S3 INFO
++            logging.getLogger('awscrt.s3').setLevel(logging.INFO)
++            self._emit_all_subjects_and_levels()
++            http_records = [r for r in handler.records if r.name.startswith("awscrt.http.")]
++            s3_records = [r for r in handler.records if r.name.startswith("awscrt.s3.")]
++            self.assertEqual(len(http_records), 2)
++            self.assertEqual(len(s3_records), 1)
++            self.assertEqual(s3_records[0].levelno, logging.INFO)
++            self.assertEqual(len(handler.records), 3)
++            handler.records.clear()
++
++        finally:
++            root.setLevel(logging.DEBUG)
++            logging.getLogger('awscrt.http').setLevel(logging.NOTSET)
++            logging.getLogger('awscrt.s3').setLevel(logging.NOTSET)
++            root.removeHandler(handler)
++
++    @classmethod
++    def tearDownClass(cls):
++        set_log_level(logging.NOTSET)
++
++
++if __name__ == '__main__':
++    unittest.main()

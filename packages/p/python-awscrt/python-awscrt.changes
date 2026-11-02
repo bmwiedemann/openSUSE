@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 31 15:01:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.38.0
+  * Python 3.15 by @sbSteveK in (#768)
+  * bind out expected checksum by @DmitriyMusatkin in (#770)
+  * feat: add support for windows-arm64 by @azkrishpy in (#767)
+  * Add eventual consistency to fix mqtt test failures
+    by @xiazhvera in (#771)
+- Refresh skip-test-requiring-network.patch
+
+-------------------------------------------------------------------
 Wed Oct  7 13:40:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.37.0
