@@ -17,7 +17,7 @@
 
 
 Name:           geary
-Version:        46.0+122
+Version:        46.0+126
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        BSD-2-Clause AND CC-BY-3.0 AND LGPL-2.1-or-later

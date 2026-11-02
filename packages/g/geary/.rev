@@ -695,4 +695,13 @@
 - Update version dependencies according to meson.build.</comment>
     <requestid>1387017</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>0279c221bf92c72f7576b96425bf04ea</srcmd5>
+    <version>46.0+126</version>
+    <time>1793633977</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 46.0+126:
+  * Updated translations.</comment>
+    <requestid>1394402</requestid>
+  </revision>
 </revisionlist>
