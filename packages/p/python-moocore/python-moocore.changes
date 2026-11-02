@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Wed Jul 15 07:11:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.3.2); provides the compiled
+  multi-objective optimization core (hypervolume, EAF) required by
+  python-deap >= 1.4.4
+
