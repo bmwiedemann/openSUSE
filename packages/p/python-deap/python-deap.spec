@@ -1,7 +1,7 @@
 #
 # spec file for package python-deap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-deap
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Distributed Evolutionary Algorithms in Python
 License:        LGPL-3.0-only
 URL:            https://github.com/DEAP/deap
 Source:         https://files.pythonhosted.org/packages/source/d/deap/deap-%{version}.tar.gz
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module moocore}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+Requires:       python-moocore
+Requires:       python-numpy
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-numpy
 %python_subpackages
 
 %description
@@ -48,20 +50,19 @@ part is the Evolutionary Algorithms in Python (EAP) framework.
 %setup -q -n deap-%{version}
 
 %build
-export CFLAGS="%{optflags}"
 %pyproject_wheel
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest_arch
+%pytest
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitearch}/deap
-%{python_sitearch}/deap-%{version}.dist-info
+%{python_sitelib}/deap
+%{python_sitelib}/deap-%{version}.dist-info
 
 %changelog

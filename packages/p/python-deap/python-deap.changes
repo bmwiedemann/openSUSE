@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 15 06:43:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.4:
+  * Maintenance release with build and compatibility fixes
+    (upstream does not publish per-release changelog entries)
+- Build as noarch: 1.4.4 ships no compiled C extension (the sdist
+  builds a pure-Python py3-none-any wheel), so drop the arch-only
+  BuildRequires (gcc-c++, numpy-devel) and install under sitelib
+
+-------------------------------------------------------------------
 Sat Jul 12 17:34:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3:
