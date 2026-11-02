@@ -1,4 +1,178 @@
 -------------------------------------------------------------------
+Fri Aug 21 19:33:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.1:
+  * #3902 Fix background callbacks trusting the client-supplied
+    `job`/`oldJob`/`cancelJob` and `cacheKey` query parameters
+    verbatim, which let an unauthenticated client terminate an
+    arbitrary process (with `DiskcacheManager`, by sending its
+    PID) or read and delete arbitrary result-cache entries. The
+    `cacheKey`/`job` handles are now HMAC-signed by the server
+    and bound to a per-page-load token, so forged or replayed
+    values are rejected. Handles stay opaque to the renderer, so
+    no app or callback code changes are required.
+  * 3883 Fix callbacks being registered twice when running the
+    app file as a script with a server that loads it by import
+    string, e.g. `uvicorn.run("app:server", reload=True)` with
+    `backend="fastapi"`. The spawned worker re-executes the main
+    module as `__mp_main__` and the import string then executed
+    the same file a second time, duplicating every callback in
+    `_dash-dependencies` and triggering `Duplicate callback
+    outputs` errors in the renderer. `Dash()` now pre-registers
+    the running main module in `sys.modules` under its canonical
+    import name so the second import reuses it instead of re-
+    executing the file. Fixes #3818.
+  * 3885 Fix Flask-WTF `CSRFProtect` (and Quart-WTF) exemptions
+    breaking after the backend refactor. The callback dispatch
+    view is now exposed with the fully-qualified name
+    `dash.dash.dispatch` again, so
+    `csrf._exempt_views.add("dash.dash.dispatch")` works as it
+    did in Dash 4.1.0. Fixes #3827.
+  * #3882 Fix `dcc.Graph` user interactions (pan, zoom, edited
+    shapes & annotations, ...) being reverted by a subsequent
+    `Patch` update, by syncing all relayout changes back to the
+    `figure` prop instead of only shapes. Fixes #3810.
+  * #3903 Fix missing comm dependency, fix #3657.
+  * Updated radix-ui to fix #3786
+- update to 4.4.0:
+  * #3826 WebSocket callback dispatch no longer lets long-lived
+    callbacks limit the number of concurrent users. Async
+    callbacks (including session-persistent ones) run directly on
+    the connection event loop instead of occupying a worker
+    thread, and synchronous callbacks run on a shared
+    `ThreadPoolExecutor` whose size is configurable via the new
+    `websocket_max_workers` argument to `Dash` (default `4`). A
+    synchronous persistent (no-output) callback now warns at
+    registration since it would tie up a worker thread.
+  * ## Fixed
+  * #3861 Fix synchronous WebSocket callbacks not inheriting
+    `ContextVar` values bound by ASGI middleware.
+    `copy_context()` is now captured on the event-loop thread
+    before the callback is submitted to the thread pool, instead
+    of inside the worker thread where only default values were
+    visible.
+  * #3779 Fix `dash.testing` `Browser.get_logs()` returning
+    `None` on non-Chrome webdrivers, which broke assertions like
+    `assert dash_duo.get_logs() == []`. It now returns `[]`,
+    matching the Chrome code path.
+  * #3822 Fix `UnboundLocalError` for `user_callback_output` in
+    async background callbacks (Celery and Diskcache managers)
+    when the callback raises `PreventUpdate` or another exception
+    before the variable is assigned.
+  * #3819 Fix `RuntimeError: No active request in context` when a
+    non-Dash path falls through to the FastAPI catch-all route.
+    Fixes #3812.
+  * #3838 Replace `mcp` dependency with inline types.
+  * #3824 Fix `dash.testing` `ThreadedRunner.stop()` hanging at
+    teardown for Quart apps. Fixes #3823.
+  * #3425 dcc.DatePicker: Fix `updatemode="bothdates"` not always
+    respected
+  * ## Changed
+  * Drop support for Python 3.8 (end-of-life since October 2024).
+    The minimum supported version is now Python 3.9.
+- update to 4.3.0:
+  * ## Added
+  * #3796 MCP: Add `configure_mcp_server()` to toggle which
+    content the MCP server exposes (`include_layout`,
+    `include_callbacks`, `include_clientside_callbacks`,
+    `include_pages`, `expose_callback_docstrings`). Only the
+    parameters explicitly passed are updated; omitted parameters
+    retain their current value.
+  * #3710 MCP: Framework utilities, types for interacting with
+    layout
+  * #3711 MCP: `CallbackAdapter` for representing callback-
+    related data in MCP-friendly format
+  * #3712 MCP: `Resources` for exposing app layout, components,
+    and pages
+  * #3731 MCP: Expose callbacks as `Tools`
+  * #3747 MCP: Support pattern-matching callbacks in Tools
+  * #3748 MCP: Format callback results for LLM consumption
+    (rendered graphs, markdown tables)
+  * #3749 MCP: `get_dash_component` Tool and callback execution
+  * #3750 MCP: Server routes, `mcp_enabled` function decorator,
+    and Streamable HTTP transport
+  * #3766 MCP: Support background callbacks in Tools
+  * ## Changed
+  * #3796 MCP: Remove the `mcp_expose_docstrings` `Dash()`
+    constructor argument; callback docstring exposure is now
+    controlled via
+    `configure_mcp_server(expose_callback_docstrings=...)`.
+  * ## Fixed
+  * #3817 Fix background callback context serialisation for non-
+    dict request args on the FastAPI and Quart backends. Fixes
+    #3816.
+  * #3805 Fix FastAPI POST routes deadlock caused by middleware
+    consuming request body. Fixes #3801.
+  * #3813 Fix websockets using incorrect path when deployed
+    behind a proxy
+  * #3830 MCP: Respond to the Streamable HTTP `GET` (SSE) request
+    with an empty event stream instead of `405 Method Not
+    Allowed`
+- update to 4.2.0:
+  * Dash is no longer tied to Flask. You can now run your Dash
+    apps on **FastAPI** or **Quart**, or even bring your own
+    backend implementation:
+  * #3783 Add batching/debouncing for websocket `set_props`
+    messages to reduce lag when updating multiple components in a
+    loop. Configurable via `websocket_batch_delay` (default 5ms,
+    set to 0 to disable).
+  * #3669 Selection for DataTable cleared with custom action
+    settings.
+  * #3680 Added `search_order` prop to `Dropdown` to allow users
+    to preserve original option order during search.
+  * #3745 Added `csrf_token_name` and `csrf_header_name` config
+    options to allow configuring the CSRF cookie and header
+    names. Fixes #729.
+  * #3797 Improved websocket callback management with heartbeat
+    configuration and proper reconnection handling.
+  * #3523 Fall back to background callback function names if
+    source cannot be found.
+  * #3771 Add persistent callbacks and no inputs/no outputs
+    callback support.
+  * #3742 Add websocket callbacks to fastapi and quart backends.
+  * #3737 Add `displayNotifier` to `dcc.Graph` config props.
+  * ## Changed
+  * #3746 Improve static typing for `dash.callback` by preserving
+    wrapped callback signatures, and add callback typing coverage
+    in compliance plus new callback decorator unit and
+    integration tests. Fixes #3691.
+  * Rename `ctx.get_websocket` to `ctx.websocket`.
+  * Add threadpool for running websocket callbacks.
+  * ## Fixed
+  * #3690 Fix `dcc.Input` when min or max is set to None.
+  * #3723 Fix misaligned `dcc.Slider` marks when some labels are
+    empty strings.
+  * #3738 Add missing `stacklevel=2` to `warnings.warn()` calls
+    so warnings report the caller's location instead of internal
+    Dash source lines.
+  * #3740 Fix cannot tab into dropdowns in Safari.
+  * #3756 Allow `MATCH` in `Input`/`State` when the callback's
+    `Output` has no wildcards (fixed-id Output, no Output, or
+    `ALL`-only wildcard Output). `ALLSMALLER` still requires a
+    corresponding `MATCH` in an Output. Fixes #2462.
+  * #3768 Improved `Dropdown` search performance for large
+    options lists.
+  * #3759 Fix the issue where `Patch` objects cannot be updated
+    via `set_props()` in `websocket` callback. Fix #3742.
+  * #3789 Fixed extra wrapper in `DatePickerRange` and
+    `DatePickerSingle` causing styling and layout issues.
+  * #3799 Fixed dropdown crash when filtering large datasets with
+    component-based labels by using stable item keys for
+    virtualized rows.
+  * #3785 Fix patch with `dcc.Graph` figure. Fix `dcc.Graph` not
+    sending duplicate clicks because it had the same payload by
+    adding a timestamp in the click event object.
+  * #3798 Fix blueprint registering and double init when using
+    `flask run` command. Fixes #3787.
+  * #3734 Fix websocket used in the same FastAPI server. Fixes
+    #3636.
+  * #3668 Fix FastAPI url paths order. Fixes #3667.
+  * #3641 Fix `dcc.Loading` spinner not triggering when callback
+    `Output` uses the `ALL` wildcard. Fixes #3619.
+  * #3570 Fix components not remounting when passed from a parent
+    object. Fixes #3330.
+
+-------------------------------------------------------------------
 Tue Mar 31 13:34:02 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
 
 - Update to 4.1.0:

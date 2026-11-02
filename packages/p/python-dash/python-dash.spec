@@ -1,7 +1,7 @@
 #
 # spec file for package python-dash
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 # We can't test currenty, see below.
 %bcond_with test
-%define distver 4.1
+%define distver 4.4.1
 %{?sle15_python_module_pythons}
 Name:           python-dash
-Version:        4.1.0
+Version:        4.4.1
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
@@ -29,42 +29,39 @@ URL:            https://github.com/plotly/dash
 # PyPI package does not contain unit tests. GitHub does, but does not contain the js stuff,
 # but we don't test right now: trying to build from js sources and use local-npm-registry fails
 # due to "independent" component packages installed in a weird order
-Source0:         https://files.pythonhosted.org/packages/source/d/dash/dash-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/dash/dash-%{version}.tar.gz
 #Source1:         https://github.com/plotly/dash/archive/refs/tags/v%{version}.tar.gz#/dash-%%{version}-gh.tar.gz
 Source99:       python-dash.rpmlintrc
-BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module Flask >= 1.0.4}
-BuildRequires:  %{python_module percy}
-BuildRequires:  %{python_module plotly >= 5.0.0}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module typing-extensions >= 4.1.1}
+BuildRequires:  %{python_module nest-asyncio}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module plotly >= 5.0.0}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module retrying}
-BuildRequires:  %{python_module nest-asyncio}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module Werkzeug}
-BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions >= 4.1.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildRequires:  jupyter-rpm-macros
+BuildRequires:  python-rpm-macros
+Requires:       jupyter-dash = %{version}-%{release}
 Requires:       python-Flask >= 1.0.4
 Requires:       python-Werkzeug
 Requires:       python-importlib-metadata
-Requires:       python-typing-extensions >= 4.1.1
+Requires:       python-nest-asyncio
+Requires:       python-plotly >= 5.0.0
 Requires:       python-requests
 Requires:       python-retrying
-Requires:       python-nest-asyncio
 Requires:       python-setuptools
-Requires:       python-plotly >= 5.0.0
-Requires:       jupyter-dash = %{version}-%{release}
+Requires:       python-typing-extensions >= 4.1.1
 # SECTION testing extras
 # dash/testing/dash_page.py
 Requires:       python-beautifulsoup4
-# needed for dash/testing/browser.py
-Requires:       python-percy
 # /SECTION
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -91,9 +88,9 @@ elements like dropdowns, sliders, and graphs directly to your
 analytical python code.
 
 %package -n jupyter-dash
-Summary: Jupyter configuration for python-dash
-Requires: python3dist(dash) = %{distver}
-Suggests: python3-dash
+Summary:        Jupyter configuration for python-dash
+Requires:       python3dist(dash) = %{distver}
+Suggests:       python3-dash
 
 %description -n jupyter-dash
 
@@ -101,7 +98,6 @@ Dash is a Python framework for building analytical web applications.
 
 This package provides the jupyter notebook and jupyterlab configuration
 for python-dash
-
 
 %prep
 %setup -q -n dash-%{version}
