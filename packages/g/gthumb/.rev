@@ -1174,4 +1174,18 @@
     <comment>- Update version dependencies according to meson.build.</comment>
     <requestid>1384259</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>e528340404976697d4edaa0d548bb452</srcmd5>
+    <version>4.0.1</version>
+    <time>1793633979</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.0.1:
+  * Features: Added the general filter to the browser preferences as well
+  * Bugfixes:
+    + Tiff loader: crash when reading orientation tag
+    + ColorManager: crash when the monitor has no description
+    + Fixed opening remote locations from Nautilus
+  * Updated translations.</comment>
+    <requestid>1394403</requestid>
+  </revision>
 </revisionlist>
