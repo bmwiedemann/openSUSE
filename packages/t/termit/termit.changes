@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  1 18:28:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.2:
+  * Switch to Lua 5.4
+  * New option tabCloseButton
+  * New Gruvbox Light and Dark colormaps
+  * Clean up deprecated GTK and VTE functions
+  * Remove geometry hints
+  * New Dutch and Catalan translations, locale fixes
+- Adjust build requirements to upstream minimums:
+  cmake >= 3.6.0, lua-devel >= 5.4,
+  gtk+-3.0 >= 3.22, vte-2.91 >= 0.68
+- Follow upstream rename of doc/lua_api.txt to lua_api.md
+- Spec cleanup via spec-cleaner
+
+-------------------------------------------------------------------
 Mon Jan 11 22:16:50 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Fix build (link vte)

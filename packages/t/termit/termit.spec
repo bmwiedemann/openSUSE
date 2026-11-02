@@ -17,23 +17,22 @@
 
 
 Name:           termit
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        Vte-based Terminal Emulator
 License:        GPL-3.0-or-later
-Group:          System/X11/Terminals
 URL:            https://github.com/nonstop/termit/wiki
 Source:         https://github.com/nonstop/termit/archive/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 2.6.0
+BuildRequires:  cmake >= 3.6.0
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  gettext-devel
 BuildRequires:  libstdc++-devel
-BuildRequires:  lua-devel >= 5.1
+BuildRequires:  lua-devel >= 5.4
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(vte-2.91) >= 0.60.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(vte-2.91) >= 0.68
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
@@ -64,7 +63,7 @@ rm -rf "%{buildroot}%{_prefix}/src"
 %doc ChangeLog TODO
 %doc doc/README
 %doc doc/rc.lua.example
-%doc doc/lua_api.txt
+%doc doc/lua_api.md
 %dir %{_sysconfdir}/xdg/%{name}
 %{_datadir}/locale/**/LC_MESSAGES/termit.mo
 %config %{_sysconfdir}/xdg/%{name}/colormaps.lua
