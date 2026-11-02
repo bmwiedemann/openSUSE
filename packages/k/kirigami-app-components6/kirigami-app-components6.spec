@@ -16,14 +16,14 @@
 #
 
 
-%define kf6_version 6.22.0
+%define kf6_version 6.29.0
 %define qt6_version 6.8.0
 #
 %bcond_without released
 #
 %define rname kirigami-app-components
 Name:           kirigami-app-components6
-Version:        1.0.1
+Version:        1.1.1
 Release:        0
 Summary:        Kirigami addons and modules
 License:        LGPL-2.1-or-later
@@ -76,8 +76,7 @@ such as integration with configurable keyboard shortcuts and standard actions.
 %install
 %kf6_install
 
-# TODO missing ki18n_install(po) upstream
-%dnl %find_lang %{name} --all-name
+%find_lang %{name} --all-name
 
 %ldconfig_scriptlets -n libKirigamiActionCollection6
 
@@ -97,7 +96,6 @@ such as integration with configurable keyboard shortcuts and standard actions.
 %{_kf6_includedir}/Kirigami/ActionCollection/
 %{_kf6_libdir}/libKirigamiActionCollection.so
 
-%dnl %files lang -f %{name}.lang
+%files lang -f %{name}.lang
 
 %changelog
-

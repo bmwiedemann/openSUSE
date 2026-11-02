@@ -7,4 +7,27 @@
     <comment>New kirigami package needed by KDE applications soon™</comment>
     <requestid>1366595</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3486430705f0c2bcb027c7da7641e9c8</srcmd5>
+    <version>1.1.1</version>
+    <time>1793634046</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.1:
+  * ActionCollection: add a removeAction() API, by name or by
+    standard action
+  * ShortcutsEditor: add an allowModifierlessShortcuts opt-in to
+    record single-key shortcuts
+  * Use the KStandardActions::StandardAction enum in QML instead
+    of a private copy
+  * Fix the HelpContents action text (kde#522072)
+  * Return a QKeySequence for a shortcut instead of a localized
+    string that cannot be parsed back
+  * Fix a memory leak in ActionModel
+  * Install the translations under the kirigami-app-components
+    translation domain
+  * Install KF6KirigamiAppComponentsConfigVersion.cmake
+  * Requires KF6 &gt;= 6.29
+- Package the translations in a new -lang subpackage</comment>
+    <requestid>1394456</requestid>
+  </revision>
 </revisionlist>

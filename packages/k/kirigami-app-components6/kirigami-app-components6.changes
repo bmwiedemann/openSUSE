@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  1 17:08:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.1.1:
+  * ActionCollection: add a removeAction() API, by name or by
+    standard action
+  * ShortcutsEditor: add an allowModifierlessShortcuts opt-in to
+    record single-key shortcuts
+  * Use the KStandardActions::StandardAction enum in QML instead
+    of a private copy
+  * Fix the HelpContents action text (kde#522072)
+  * Return a QKeySequence for a shortcut instead of a localized
+    string that cannot be parsed back
+  * Fix a memory leak in ActionModel
+  * Install the translations under the kirigami-app-components
+    translation domain
+  * Install KF6KirigamiAppComponentsConfigVersion.cmake
+  * Requires KF6 >= 6.29
+- Package the translations in a new -lang subpackage
+
+-------------------------------------------------------------------
 Sat Jul 18 13:26:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.0.1
