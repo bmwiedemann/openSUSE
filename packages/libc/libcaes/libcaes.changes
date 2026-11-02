@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  2 12:17:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20261028
+  * Fix potential double free involving openssl code
+
+-------------------------------------------------------------------
 Sun Sep  6 13:05:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260905
