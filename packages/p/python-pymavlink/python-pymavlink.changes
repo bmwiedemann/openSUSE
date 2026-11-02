@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:51:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.49:
+  * Tools: mavlogdump: preseve units allong with format when
+    trimming logs
+  * DFReader: fixed instance indexing for most messages
+  * tools/mavextra.py: use the correct origin
+  * mavutil: dump both in-link (from timestamp bits) and out-link
+    (if sig…
+  * Replace cast(...) in generated Python code with type
+    annotations
+  * mavgen_objc.py: rename BOOL to MAV_BOOL
+  * allow javascript generator to work with both node and browser
+  * .github: Bump pypa/cibuildwheel from 3.0.1 to 3.1.1 in the
+    github-actions group
+  * Fixed several issues in the spin2 generator implmentation.
+  * build(deps): bump nanoid and mocha in
+    /generator/javascript_stable
+  * build(deps): bump cross-spawn from 6.0.5 to 6.0.6 in
+    /generator/javascript
+  * tools: Add mavtranslatelog.py for updating tlog files
+  * mavutil: websocket fixes
+- update to 2.4.48:
+  * DFReader: add rewind_event to DFReaderClock_usec
+  * mavftp: increase idle detection time
+  * Saving send_callback after the use of auto_mavlink_version
+  * WLua: add custom dissector for FTP Mavlink message
+  * setup.py: remove 2.7 from supported version list
+  * README.md: remove Python2 from README
+  * Stop importing print_function
+  * Correct shebang lines to reference python3, not python
+  * DFReader_text: fix loading bugs
+  * Correct Python3 invocations to python3 not python
+  * CI Speedup and More Wheels
+  * generator: schema: add decidegrees per second units
+  * DFReader: init_arrays_fast: fix key error
+  * Mavgen C: Use strncpy instead of memcpy to pack char[n]
+    fields
+  * Support for Parallax Propeller Spin2 Language
+  * Fix typos discovered by codespell
+  * mavutil: support ws:host:port for websocket client
+  * .github: Keep Actions up to date with GitHub's Dependabot
+  * mavwp: DO_RETURN_PATH_START is not somewhere you fly
+  * cibuildwheel updates
+  * drop broken Arch PKGBUILD
+  * pyproject.toml: Add tool.ruff.lint.extend-ignore
+  * .github: Let's drop the `--exit-zero` tests that are being
+    ignored
+  * .github: Bump the github-actions group across 1 directory
+    with 3 updates
+  * mavlogdump: make it easier to find cause of lost messages
+  * mavgen_python: fixed signature timestamp update
+  * mavextra: speedup radio_margin() with a LRU cache
+  * Remove miscellaneous Python 2 anachronisms
+  * Remove future imports and python-future code
+  * .github: Upgrade to pylint v3.3.7
+  * generator: Remove dead code sha256_test.py
+  * Delegate CRC calculation to fastcrc when it is installed
+  * .github: Test on the latest Long Term Support versions of
+    Node.js and Python
+  * fixed CRC bypass issue
+  * Robust parsing returns BAD_DATA up to the next magic byte
+  * WLua: Only truncate hex dump lines for test case output
+    checks
+  * Apply more flake8 rules when linting generated code
+  * delete unused arg error_limit of mavgen.py
+  * .github: Bump pypa/cibuildwheel from 3.0.0 to 3.0.1 in the
+    github-actions group
+- update to 2.4.47:
+  * CI: ensure we build properly tagged wheels
+  * **Full Changelog**: https://github.com/ArduPilot/pymavlink/co
+    mpare/v2.4.46...v2.4.47
+- update to 2.4.46:
+  * DFReader Param Init
+  * Fix deployment
+  * **Full Changelog**: https://github.com/ArduPilot/pymavlink/co
+    mpare/v2.4.45...v2.4.46
+- update to 2.4.45:
+  * fixed dfindexer wheel build
+  * **Full Changelog**: https://github.com/ArduPilot/pymavlink/co
+    mpare/v2.4.44...v2.4.45
+- update to 2.4.44:
+  * mavutil.py: work with minimal.xml
+  * Flake8 fixes for new flake8 version
+  * mavextra: add feet and meters
+  * Add .bitmask attribute to enumerations
+  * mavftp: handle file transfer to local path in cmd_get
+  * mavutil.py: set flightmode, mav_type and base_mode only
+    within sysid_…
+  * .github: move workflows onto 22.04
+  * Remove Python2 support; inline typing markup into templates
+  * .github: use pip to install pymavlink
+  * DFReader Speedup
+  * DFReader bugfix
+  * dfindexer: add progress callback
+- update to 2.4.43:
+  * mavwp: remove old fences-in-waypoints code
+  * generator/C: Don't parse messages outside CRC_EXTRA
+  * DFReader: In dump verbose show hex value for bitmask fields
+  * Mode:add Plane AUTOLAND mode
+  * mavfft_pid.py: handle logs using fast rate control
+  * DFReader: change to python3 only
+  * Mavgen WLua: Pass unix time as integer to os.date
+  * Generator: python: set display bitmask based on enum if no
+    value is provided directly
+  * mavwp: display DO_LAND_START paths as different edge colours
+    and no "to" edge
+  * Update mavgen_c to python3
+- update to 2.4.42:
+  * mavextra: fixed distance_two(GPS,XKF1[0])
+  * mavutil: Do not use unknown messages to calculate number of
+    lost packets
+  * [Java] Use longs for values too big to store in int
+  * mavschema.xsd - max, min, increment on fields
+  * Mavgen WLua: Updates to displayed field values in Wireshark
+  * Mavutil: Output updates to dump_message_verbose
+  * mavutil: cope with enum entry rename
+  * DFReader.py: fix MAVProxy dump command on .log files
+  * mavparm: allow param load of files containing 0x hex values
+  * fix close function in DFReader
+  * mavextra: correct radian conversion in distance_lat_lon
+    function
+  * Fix condition data discarding when --meta is set
+  * DFReader_text: some meta-data dicts are indexed by bytes
+    instead of str
+  * VER messages should not be affected by --condition nor
+    --reduction
+  * mavparm: only look for 0x in strings
+  * DFReader: Read unit data from log and add dump_verbose
+    function to DFMessage
+  * mavlogdump: CSV option: Don't cut out messages with same
+    timestamp
+  * Tools: fix mlog attribute in mavplayback
+  * MavSchema: Allow 64-bit enum values to be specified
+  * CI: Use pytest<=7.4.4 as 8.0.0 will not run the tests
+  * mavparm: fixed mavset with float
+  * Mavschema: Allow enum values to be powers of 2
+  * Mavgen JS: Heartbeat message mavlink_version should be
+    automaticlly completed
+  * mavlogdump: show clear error message when mat_file arg is
+    missing
+  * mavlogdump: Use sys.exit instead of quit on error
+  * Mavgen JS: Add require('buffer') statement to allow JS output
+    to work in React Native
+  * mavutil: Raise ValueError instead of exiting
+  * DFReader: Create DFMetaData class to handle logger metadata
+  * generator/mavgen.py: honour MDEF from environment in dynamic
+    generation
+  * tools: added mavfixtimedrift.py
+  * DFReader.py: add bitmask data to verbose print output
+  * mavgen: cope with python 3.12
+  * Javascript: Fix wrong crc calculation
+  * use fastcrc if available
+  * Mavgen WLUA: Fix incorrect display of negative ints on mac
+  * mavschema - 1E2 for scaled unitless values
+  * Fixed typo
+  * Add multiplier value for GPS_STATUS.satellite_azimuth where
+    255 means 360deg
+  * Mavgen WLua: Handle multiplier attribute in XML parser
+  * DFReader: Fix some missing bitmask info in dump verbose
+  * WLua: Handle LUA error with %Z date format on Windows
+  * mavextra.py: don't skip data for cores other than 0
+  * DFReader.py: emit enumeration value name when verbose-dumping
+  * generator: remove written-only bufferIndex state
+  * Mavutil: fix wrong sysid_state update from sysid mismatch
+  * mavgen: always report generator errors in the exit code
+  * A simple "Print flight controller banner statustext message
+    contents"…
+  * mavutil: add WebSocket Server mavlink_connection type
+  * mavutil: import websocket libs in init function
+  * mavutil: correct processing of zero-length logs
+  * DFReader: add support for float16 in BIN files
+  * Add mavftp library and example code that uses it
+  * mavutil: WebSockets: fix wsproto import for newer python
+    versions
+  * mavexpression.py: cope with imp module being removed in 3.12
+  * mavwp: mark re.match pattern as regex string
+  * Update MavFTP code, add MavFTPfs example/tool
+  * .github: Use / as a file path separator
+  * mavextra.py: return None if nan passed as new value to
+    lowpass
+  * added rewrite_log.py example
+  * mavlogdump: added some more messages for --meta
+  * added a tool that combines 2 logs into one
+  * mavtogpx.py: allow specification of which message to actually
+    plot
+  * mavplayback.py: explicit error if trying to replay a .BIN
+    file
+  * Generator: Lua: add support for checksum on decode
+- drop remove-future-requirement.patch (obsolete)
+
+-------------------------------------------------------------------
 Mon Jun 16 12:12:27 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

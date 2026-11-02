@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymavlink
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,26 +17,26 @@
 #
 
 
-%define binaries mavtomfile mavtogpx mavsummarize mavsigloss mavsearch mavplayback mavparms mavparmdiff mavmission mavloss mavlogdump mavlink_bitmask_decoder mavkml mavgraph mavgpslock mavgen mavflighttime mavflightmodes mavfft_isb mavfft mavextract magfit_motors magfit_gps magfit_delta magfit_WMM magfit MPU6KSearch
+%define binaries mavsearch mavsigloss mavsummarize mavplayback mavparms mavparmdiff mavmission mavloss mavlogdump mavlink_bitmask_decoder mavkml mavgraph mavgpslock mavgen mavflighttime mavflightmodes mavfft_isb mavfft mavextract magfit_motors magfit_gps magfit_delta magfit_WMM magfit mavtogpx mavtomfile
 %bcond_without libalternatives
 Name:           python-pymavlink
-Version:        2.4.41
+Version:        2.4.49
 Release:        0
 Summary:        Python MAVLink code
 License:        LGPL-3.0-only
 URL:            https://github.com/ArduPilot/pymavlink/
 Source:         https://files.pythonhosted.org/packages/source/p/pymavlink/pymavlink-%{version}.tar.gz
-Patch0:         remove-future-requirement.patch
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
+Requires:       python-fastcrc
 Requires:       python-lxml
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module lxml}
 # /SECTION
@@ -55,21 +55,20 @@ logs from autopilots such as ArduPilot which use the MAVLink protocol.
 
 %install
 %pyproject_install
-# drop shebang
-%python_expand find %{buildroot}%{$python_sitelib} -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
 # FIXME: remove devel files for now
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/pymavlink/generator/C
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/pymavlink/generator/CPP11
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/pymavlink/mavnative/mavlink_defaults.h
+%python_expand rm -rf %{buildroot}%{$python_sitearch}/pymavlink/generator/C
+%python_expand rm -rf %{buildroot}%{$python_sitearch}/pymavlink/generator/CPP11
+%python_expand rm -rf %{buildroot}%{$python_sitearch}/pymavlink/mavnative/mavlink_defaults.h
 # fix spurious exec permissions
-%python_expand find %{buildroot}%{$python_sitelib} -name "*.xml" -exec chmod -x '{}' \;
+#python_expand find %{buildroot}%{$python_sitelib} -name "*.xml" -exec chmod -x '{}' \;
 # strip .py file extension from scripts
 %python_expand cd %{buildroot}%{_bindir} && find . -name "*.py" -exec sh -c 'mv $0 `basename "$0" .py`' '{}' \;
+
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_bindir}/$b
 done
 #
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 # remove unneeded files
 rm -f %{buildroot}%{_bindir}/_current_flavor
 
@@ -83,7 +82,6 @@ done
 
 %files %{python_files}
 %doc README.md
-%python_alternative %{_bindir}/MPU6KSearch
 %python_alternative %{_bindir}/magfit
 %python_alternative %{_bindir}/magfit_WMM
 %python_alternative %{_bindir}/magfit_delta
@@ -110,7 +108,7 @@ done
 %python_alternative %{_bindir}/mavsummarize
 %python_alternative %{_bindir}/mavtogpx
 %python_alternative %{_bindir}/mavtomfile
-%{python_sitelib}/pymavlink
-%{python_sitelib}/pymavlink-%{version}.dist-info
+%{python_sitearch}/pymavlink
+%{python_sitearch}/pymavlink-%{version}.dist-info
 
 %changelog

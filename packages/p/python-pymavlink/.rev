@@ -143,4 +143,41 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1286094</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>68bb1adbabad3bd074e3124d36ef7c4e</srcmd5>
+    <version>2.4.49</version>
+    <time>1793633923</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.49:
+  * Tools: mavlogdump: preseve units allong with format when
+    trimming logs
+  * DFReader: fixed instance indexing for most messages
+  * tools/mavextra.py: use the correct origin
+  * mavutil: dump both in-link (from timestamp bits) and out-link
+    (if sig…
+  * Replace cast(...) in generated Python code with type
+    annotations
+  * mavgen_objc.py: rename BOOL to MAV_BOOL
+  * allow javascript generator to work with both node and browser
+  * .github: Bump pypa/cibuildwheel from 3.0.1 to 3.1.1 in the
+    github-actions group
+  * Fixed several issues in the spin2 generator implmentation.
+  * build(deps): bump nanoid and mocha in
+    /generator/javascript_stable
+  * build(deps): bump cross-spawn from 6.0.5 to 6.0.6 in
+    /generator/javascript
+  * tools: Add mavtranslatelog.py for updating tlog files
+  * mavutil: websocket fixes
+- update to 2.4.48:
+  * DFReader: add rewind_event to DFReaderClock_usec
+  * mavftp: increase idle detection time
+  * Saving send_callback after the use of auto_mavlink_version
+  * WLua: add custom dissector for FTP Mavlink message
+  * setup.py: remove 2.7 from supported version list
+  * README.md: remove Python2 from README
+  * Stop importing print_function
+  * Correct shebang lines to reference python3, not python
+  * DFReader_text: fix loading bugs</comment>
+    <requestid>1359277</requestid>
+  </revision>
 </revisionlist>
