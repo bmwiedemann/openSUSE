@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Oct 25 22:06:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.10.15:
+  * Fix TiffWriter truncating existing file on invalid kind
+    argument.
+  * Fix TiffPage.asarray not closing reopened file handle on
+    exceptions.
+  * Fix ZarrTiffStore not releasing file cache reference on
+    decode errors.
+  * Fix Tiff codec configuration not JSON-serializable with slice
+    key.
+  * Fix ZarrStore listing methods omitting chunk keys.
+  * Fix FileSequence.asarray leaving missing chunks
+    uninitialized.
+  * Fix 'axes' file name pattern matching characters in file name
+    prefix.
+  * Fix parse_filenames with _shape argument.
+  * Raise ValueError if FileSequence files map to same index
+    (breaking).
+  * Disallow writable ZarrFileSequenceStore (breaking).
+  * Use struct.unpack_from when possible.
+  * Fix TiffPage.delete corrupting NDPI files.
+  * Fix unwrapping offsets in LSM files > 4GB with T, P, and M
+    dimensions.
+  * Support Mikroscan and Motic formats (structurally identical
+    to SVS).
+  * Support MedScan Trestle series and metadata.
+  * Fix MMStack series when numeric Summary metadata values are
+    strings (#334).
+  * Fix TiffSeries(squeeze=None) incorrectly squeezes 'shaped'
+    series (breaking).
+  * Add methods to delete pages from main IFD chain and erase
+    their content.
+  * Fix fsspec v3 stores with big-endian floatpred codec
+    (breaking).
+  * Require imagecodecs >= 2026.8.16.
+  * Fsspec v3 stores using big-endian floatpred are incompatible
+    with zarr>=3.3.
+  * Specify bytes codec endian configuration in
+    ZarrFileSequenceStore.
+  * Add additional NDPI tags from specification (#331).
+  * Fix series.asxarray returns wrong series for sublevels.
+  * Support Huron TIFF series and metadata.
+  * Support FLIMage FLIM series and metadata.
+  * Support DECTRIS IFD and tags.
+  * Allow subsampling with any image compression scheme.
+  * Detect DICOM-TIFF dual-personality format.
+
+-------------------------------------------------------------------
 Sun Jun 28 14:38:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.6.1:

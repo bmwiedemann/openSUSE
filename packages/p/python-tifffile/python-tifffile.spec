@@ -24,37 +24,36 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%global skip_python311 1
 Name:           python-tifffile%{psuffix}
-Version:        2026.6.1
+Version:        2026.10.15
 Release:        0
 Summary:        Read and write TIFF files
 License:        BSD-3-Clause
 URL:            https://github.com/cgohlke/tifffile/
 Source:         https://github.com/cgohlke/tifffile/archive/v%{version}.tar.gz#/tifffile-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.12}
-BuildRequires:  %{python_module numpy >= 2.0}
+BuildRequires:  %{python_module numpy >= 2.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 2.0
+Requires:       python-numpy >= 2.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-fsspec
-Recommends:     python-imagecodecs >= 2026.3.6
+Recommends:     python-imagecodecs >= 2026.8.16
 Recommends:     python-kerchunk
 Recommends:     python-lxml
 Recommends:     python-matplotlib >= 3.3
-Recommends:     python-zarr >= 3.1.5
+Recommends:     python-zarr >= 3.3.0
 # SECTION test
 %if %{with test}
 BuildRequires:  %{python_module cmapfile}
 BuildRequires:  %{python_module czifile}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module fsspec}
-BuildRequires:  %{python_module imagecodecs >= 2026.3.6}
+BuildRequires:  %{python_module imagecodecs >= 2026.8.16}
 BuildRequires:  %{python_module lfdfiles}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module matplotlib}
@@ -66,7 +65,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module roifile}
 BuildRequires:  %{python_module xarray}
-BuildRequires:  %{python_module zarr >= 3.1.5}
+BuildRequires:  %{python_module zarr >= 3.3.0}
 %endif
 # /SECTION
 BuildArch:      noarch

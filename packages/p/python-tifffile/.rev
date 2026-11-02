@@ -396,4 +396,12 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
   * Verify origin of codecs.</comment>
     <requestid>1362180</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d8a41254d212e56868ac1e4719f6d2a7</srcmd5>
+    <version>2026.10.15</version>
+    <time>1793634052</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1394457</requestid>
+  </revision>
 </revisionlist>
