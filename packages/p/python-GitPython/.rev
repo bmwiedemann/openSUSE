@@ -1175,4 +1175,41 @@ bsc#1273781, bsc#1273783, bsc#1273785, bsc#1278787):
     <comment>1</comment>
     <requestid>1381869</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c499bb0a8949b6f18707a9e1f4a4b7b0</srcmd5>
+    <version>3.2.1</version>
+    <time>1793633783</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2.1:
+  * prepare changelog prior to release
+  * review
+  * fix(util): wait for contended locks with relative filenames
+  * fix: resolve IterableList names independently of list attributes
+  * fix(config): preserve exact large integer values
+  * test(stats): avoid normalizing fixture paths on Windows
+  * fix(stats): preserve whitespace in filenames
+  * review
+  * fix: send one object name or path per git stdin record
+  * review
+  * fix(util): reject symbolic links that alias `.gitmodules`
+  * fix: stop stalled remote commands when their timeout expires (#2276)
+  * change line for changelogs
+  * fix(commit): reject identity fields that alter commit headers
+  * review
+  * fix(util): redact URL credentials without corrupting the host
+  * fix(index): accept a single PathLike in checkout
+  * review
+  * fix(commit): accumulate gpgsig continuation lines in linear time
+  * fix(util): acquire Windows locks without following symlinks
+  * fix(util): create lock files in one exclusive step
+  * fix(submodule): validate destinations before mutation
+  * build(deps): bump https://github.com/astral-sh/ruff-pre-commit
+  * objects: decode a byte mode before reading its digits
+
+- Update to version 3.2.1:
+  - prepare for next release, v3.2
+  - objects: decode a byte mode before reading its digits
+  - build(deps): bump</comment>
+    <requestid>1394292</requestid>
+  </revision>
 </revisionlist>

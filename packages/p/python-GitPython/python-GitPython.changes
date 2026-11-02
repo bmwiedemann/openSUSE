@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Nov 01 13:41:13 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 3.2.1:
+  * prepare changelog prior to release
+  * review
+  * fix(util): wait for contended locks with relative filenames
+  * fix: resolve IterableList names independently of list attributes
+  * fix(config): preserve exact large integer values
+  * test(stats): avoid normalizing fixture paths on Windows
+  * fix(stats): preserve whitespace in filenames
+  * review
+  * fix: send one object name or path per git stdin record
+  * review
+  * fix(util): reject symbolic links that alias `.gitmodules`
+  * fix: stop stalled remote commands when their timeout expires (#2276)
+  * change line for changelogs
+  * fix(commit): reject identity fields that alter commit headers
+  * review
+  * fix(util): redact URL credentials without corrupting the host
+  * fix(index): accept a single PathLike in checkout
+  * review
+  * fix(commit): accumulate gpgsig continuation lines in linear time
+  * fix(util): acquire Windows locks without following symlinks
+  * fix(util): create lock files in one exclusive step
+  * fix(submodule): validate destinations before mutation
+  * build(deps): bump https://github.com/astral-sh/ruff-pre-commit
+  * objects: decode a byte mode before reading its digits
+
+-------------------------------------------------------------------
+Sun Nov  1 12:24:49 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 3.2.1:
+  - prepare for next release, v3.2
+  - objects: decode a byte mode before reading its digits
+  - build(deps): bump
+    https://github.com/astral-sh/ruff-pre-commit from v0.16.5 to
+    0.16.9 in the pre-commit group
+  - fix(submodule): validate destinations before mutation
+  - fix(util): create lock files in one exclusive step
+  - fix(commit): accumulate gpgsig continuation lines in linear
+    time
+  - fix(index): accept a single PathLike in checkout
+  - fix(util): redact URL credentials without corrupting the host
+  - change line for changelogs
+  - fix(commit): reject identity fields that alter commit headers
+  - fix: stop stalled remote commands when their timeout expires
+  - fix(util): reject symbolic links that alias .gitmodules
+  - fix: send one object name or path per git stdin record
+  - fix(stats): preserve whitespace in filenames
+  - fix(config): preserve exact large integer values
+  - fix: resolve IterableList names independently of list
+    attributes
+  - fix relative blocking lock 20261011
+
+-------------------------------------------------------------------
 Wed Sep 30 12:49:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to version 3.2.0:
@@ -16,14 +71,14 @@ Wed Sep 30 12:49:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
   * refactor(db): deprecate the pure-Python `GitDB` backend
   * fix(commit): bound co_authors trailer parsing
   * fix: validate size lookups and preserve binary SHAs (#2254)
-  * fix(repo): preserve literal separate Git directory paths
-  * fix: bound actor and date parsing
+  * fix(repo): preserve literal separate Git directory paths (bsc#1285615, CVE-2026-110855)
+  * fix: bound actor and date parsing (bsc#1285617, CVE-2026-110856)
   * build(deps): bump astral-sh/setup-uv from 10.1.0 to 10.2.0
-  * fix: complete safety checks in Git command wrappers
+  * fix: complete safety checks in Git command wrappers (bsc#1285618, CVE-2026-110857)
   * fix: skip a UTF-8 BOM when reading config files
   * bump minor version to indicate drop of python 3.7 support
   * feat(submodule): option to update without fetching
-  * fix(remote): reject option-shaped update targets
+  * fix(remote): reject option-shaped update targets (bsc#1285619, CVE-2026-110858)
   * fix(index): preserve path operands when moving and checking ignores
   * fix(refs): keep branch and tag operands out of option parsing
   * fix(remote): reject option-shaped pull operands
@@ -36,13 +91,13 @@ Wed Sep 30 12:49:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
   * fix: preserve implicit boolean config keys (#2237)
   * Correct public API typing and add portable runtime checks
   * Fix timeout child-process lookup on non-GNU systems
-  * fix: validate checkout positional reference options
+  * fix: validate checkout positional reference options (bsc#1285620, CVE-2026-110859)
   * test: Pass strings to readlink for Windows Python 3.7
   * fix: Clone into dangling submodule metadata symlink targets on Windows
   * test: Disable automatic maintenance in remote timeout tests
   * test: Simplify submodule path simulation and verify metadata removal
   * fix: Preserve submodule paths and release checkout handles on Windows
-  * fix: Validate submodule checkout and metadata paths before mutation
+  * fix: Validate submodule checkout and metadata paths before mutation (bsc#1286699, CVE-2026-114145)
   * fix: Reject submodule move destinations through intermediate symlinks
   * Clarify detached HEAD access and attach writable test fixtures (#2230)
   * Read git's yes/no and on/off booleans in get_value
