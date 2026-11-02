@@ -764,4 +764,12 @@ Let's see which package is missing in ringX for test flavor</comment>
     the codebase `isort` needs to inspect.</comment>
     <requestid>1392645</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>178c9cf0820ad90c426aa62f63eab9a6</srcmd5>
+    <version>9.0.2</version>
+    <time>1793633955</time>
+    <user>anag_factory</user>
+    <comment>- add mypy_extensions requires (needed for pylint)</comment>
+    <requestid>1393884</requestid>
+  </revision>
 </revisionlist>

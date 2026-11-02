@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 26 09:42:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add mypy_extensions requires (needed for pylint)
+
+-------------------------------------------------------------------
 Mon Oct 26 07:39:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.0.2:

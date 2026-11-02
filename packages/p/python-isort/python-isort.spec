@@ -46,6 +46,7 @@ BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
+Requires:       python-mypy_extensions >= 1.1.0
 Recommends:     python-colorama >= 0.4.6
 Suggests:       git-core
 BuildArch:      noarch
