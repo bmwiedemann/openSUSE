@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 31 15:28:38 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 4.11.0.0:
+  * Add support for the new USRP B310 device.
+  * Add support for X410, X420 and X440 variants with locked FPGA.
+  * Migrate MPM RPC transport from mprpc to gRPC/Protobuf.
+  * RFNoC 2.0 control operations support and wideband DDC/DUC.
+  * Remove Boost.Thread, Boost.Date_Time, and Boost.Chrono
+    dependencies.
+  * Various bug fixes and improvements.
+- Shared library package rename: libuhd4_10_0 -> libuhd4_11_0
+  due to SOVERSION bump (4.10.0 -> 4.11.0).
+- Drop boost-1.89-cmake-config.patch: upstreamed.
+- Add uhd-cmake-protobuf-config.patch: use protobuf CONFIG mode on
+  Linux to prevent target redefinition conflict with gRPC.
+- Rebase reproducible.patch.
+
+-------------------------------------------------------------------
 Thu Aug 13 15:32:00 UTC 2026 - Mikhail Paulyshka <me@mixaill.net>
 
 - Add explicit Boost component requirements to uhd-devel matching the

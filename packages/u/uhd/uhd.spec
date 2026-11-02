@@ -16,24 +16,24 @@
 #
 
 
-%define libname libuhd4_10_0
+%define libname libuhd4_11_0
 Name:           uhd
-Version:        4.10.0.0
+Version:        4.11.0.0
 Release:        0
 Summary:        The driver for USRP SDR boards
 License:        GPL-3.0-or-later
 URL:            https://files.ettus.com/manual/
 Source0:        https://github.com/EttusResearch/uhd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{version}/uhd-images_%{version}.tar.xz
+# PATCH-FIX-OPENSUSE reproducible.patch -- drop build timestamps for reproducible builds
 Patch0:         reproducible.patch
-# PATCH-FIX-UPSTREAM boost-1.89-cmake-config.patch gh#EttusResearch/uhd#939 -- drop the Boost system component, removed in Boost 1.89
-Patch1:         boost-1.89-cmake-config.patch
+# PATCH-FIX-OPENSUSE uhd-cmake-protobuf-config.patch -- use protobuf CONFIG mode on Linux to prevent target redefinition conflict with gRPC
+Patch1:         uhd-cmake-protobuf-config.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gpsd-devel
 BuildRequires:  libboost_chrono-devel >= 1.71
 BuildRequires:  libboost_date_time-devel >= 1.71
 BuildRequires:  libboost_filesystem-devel >= 1.71
@@ -44,16 +44,19 @@ BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  memory-constraints
-BuildRequires:  orc
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Mako >= 0.4.2
-BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig(grpc++)
+BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(orc-0.4)
+BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(udev)
-Requires:       udev
+Requires:       pkgconfig(udev)
 
 %description
 The UHD is the "Universal Software Radio Peripheral" hardware driver.
@@ -123,7 +126,6 @@ This package contains udev rules for UHD.
 %package        devel
 Summary:        Development files for uhd
 Requires:       %{libname} = %{version}
-Recommends:     %{name}-doc
 Requires:       libboost_chrono-devel
 Requires:       libboost_date_time-devel
 Requires:       libboost_filesystem-devel
@@ -132,6 +134,7 @@ Requires:       libboost_program_options-devel
 Requires:       libboost_serialization-devel
 Requires:       libboost_test-devel
 Requires:       libboost_thread-devel
+Recommends:     %{name}-doc
 
 %description    devel
 The UHD is the "Universal Software Radio Peripheral" hardware driver.
@@ -173,7 +176,7 @@ cd host
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
   -DENABLE_TESTS=OFF \
   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-%ifarch %arm
+%ifarch %{arm}
   -DNEON_SIMD_ENABLE=OFF \
 %endif
   -DENABLE_GPSD=OFF

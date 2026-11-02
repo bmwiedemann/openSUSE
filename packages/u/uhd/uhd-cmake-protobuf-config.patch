@@ -1,0 +1,24 @@
+--- a/host/lib/usrp/common/CMakeLists.txt	2026-10-31 17:28:57.375433175 +0100
++++ b/host/lib/usrp/common/CMakeLists.txt	2026-10-31 17:28:57.375469133 +0100
+@@ -62,15 +62,12 @@
+ 
+ # Generate protobuf stubs for MPM server
+ if(ENABLE_MPMD)
+-    if(WIN32)
+-        # On Windows: use CONFIG mode to get full dependency chain (utf8_range etc.).
+-        # Use CACHE FORCE so that option() inside protobuf-config.cmake (CMP0077 old
+-        # behavior) does not clear our hint before it is evaluated.
+-        set(protobuf_MODULE_COMPATIBLE ON CACHE BOOL "" FORCE)
+-        find_package(Protobuf CONFIG REQUIRED)
+-    else()
+-        find_package(Protobuf REQUIRED)
+-    endif()
++    # Use CONFIG mode to get full dependency chain (utf8_range etc.) and avoid
++    # target definition conflicts when gRPC loads protobuf-config.cmake.
++    # Use CACHE FORCE so that option() inside protobuf-config.cmake (CMP0077 old
++    # behavior) does not clear our hint before it is evaluated.
++    set(protobuf_MODULE_COMPATIBLE ON CACHE BOOL "" FORCE)
++    find_package(Protobuf CONFIG REQUIRED)
+     find_package(gRPC REQUIRED)
+ 
+     if(NOT Protobuf_PROTOC_EXECUTABLE)
