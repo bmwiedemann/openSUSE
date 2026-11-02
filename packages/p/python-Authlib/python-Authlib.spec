@@ -26,24 +26,26 @@
 %bcond_with test
 %endif
 ##################################
-
 %define modname authlib
 %{?sle15_python_module_pythons}
 Name:           python-Authlib%{psuffix}
-Version:        1.7.2
+Version:        1.9.1
 Release:        0
 Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
 URL:            https://authlib.org/
 Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-oauth-tests.patch gh#authlib/authlib@aaac6e5
-Patch0:         fix-oauth-tests.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-
+Requires:       python-cryptography >= 45.0.1
+Requires:       python-joserfc >= 1.6.8
+Suggests:       python-requests
+Provides:       python-authlib
+BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module Authlib = %{version}}
@@ -54,9 +56,10 @@ BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module cachelib}
-BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module cryptography >= 45.0.1}
+BuildRequires:  %{python_module httpx2}
 BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module joserfc >= 1.6.0}
+BuildRequires:  %{python_module joserfc >= 1.6.8}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
@@ -65,13 +68,6 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module starlette}
 %endif
 # /SECTION
-
-BuildRequires:  fdupes
-Requires:       python-cryptography
-Requires:       python-joserfc >= 1.6.0
-Suggests:       python-requests
-Provides:       python-authlib
-BuildArch:      noarch
 %python_subpackages
 
 %description
