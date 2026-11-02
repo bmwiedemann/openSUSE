@@ -16,5 +16,6 @@
   </service>
   <service name="go_modules" mode="disabled">
     <param name="archive">guest-agent-20261022.00.tar.gz</param>
+    <param name="replace">github.com/go-jose/go-jose/v4=github.com/go-jose/go-jose/v4@v4.1.6</param>
   </service>
 </services>
