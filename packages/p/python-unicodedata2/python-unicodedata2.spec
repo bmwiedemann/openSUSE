@@ -1,7 +1,7 @@
 #
 # spec file for package python-unicodedata2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unicodedata2
-Version:        16.0.0
+Version:        18.0.0
 Release:        0
 Summary:        Python unicodedata backport/updates
 License:        Apache-2.0 AND Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/fonttools/unicodedata2
 Source:         https://github.com/fonttools/unicodedata2/archive/%{version}.tar.gz#/unicodedata2-%{version}.tar.gz
+Source1:        https://www.unicode.org/Public/%{version}/ucd/NormalizationTest.txt#/NormalizationTest-%{version}.txt
+Source2:        https://www.unicode.org/Public/3.2-Update/NormalizationTest-3.2.0.txt
+Source3:        https://www.unicode.org/Public/%{version}/ucd/extracted/DerivedName.txt#/DerivedName-%{version}.txt
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -32,6 +35,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  tree
 %python_subpackages
 
 %description
@@ -51,6 +55,8 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+mkdir tests/data
+cp %{SOURCE1} %{SOURCE2} %{SOURCE3} tests/data
 %pytest_arch
 
 %files %{python_files}
