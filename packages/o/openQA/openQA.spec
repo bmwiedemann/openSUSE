@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1793118173.1c8a4cde
+Version:        5.1793612038.36a015f4
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other
@@ -763,6 +763,8 @@ fi
 %{_datadir}/bash-completion/completions/openqa-cli
 
 %files client-zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_openqa-cli
 
 %files common
