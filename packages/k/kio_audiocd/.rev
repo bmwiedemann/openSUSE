@@ -1404,4 +1404,12 @@
     <comment>KDE release gear 26.08.2 (forwarded request 1383113 from krop)</comment>
     <requestid>1383481</requestid>
   </revision>
+  <revision rev="177" vrev="2">
+    <srcmd5>80b4da22eafe6ee67d589e8ba4c7b3a6</srcmd5>
+    <version>26.08.2</version>
+    <time>1793633779</time>
+    <user>anag_factory</user>
+    <comment>- Drop the obsolete libkcompactdisc dependency</comment>
+    <requestid>1394286</requestid>
+  </revision>
 </revisionlist>
