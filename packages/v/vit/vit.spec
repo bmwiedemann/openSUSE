@@ -17,7 +17,7 @@
 
 
 Name:           vit
-Version:        2.3.4
+Version:        2.3.5
 Release:        0
 Summary:        Visual Interactive Taskwarrior full-screen terminal interface
 License:        MIT
@@ -28,6 +28,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
 BuildRequires:  python3-pip
+BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tasklib
 BuildRequires:  python3-typing_extensions
@@ -60,6 +61,7 @@ Features:
 %install
 %python3_pyproject_install
 install -Dm644 scripts/bash/vit.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/vit
+sed -i 's,#!%{_bindir}/env.*,,' %{buildroot}%{python3_sitelib}/vit/application.py
 %fdupes %{buildroot}%{python3_sitelib}
 
 %check

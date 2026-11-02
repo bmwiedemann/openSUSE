@@ -169,4 +169,21 @@ their configuration.
   * vit-watchdog: fix signal include</comment>
     <requestid>1343634</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>98cc8737b96efd8cf474b3dacc0e2e30</srcmd5>
+    <version>2.3.5</version>
+    <time>1793638452</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.5
+  * Preserve command input when quote validation fails
+    gh#vit-project/vit#367
+  * Protect VIT workflows with isolated Taskwarrior integration
+    tests
+  * Defer terminal initialization until the screen is cleared
+  * add LSP/linting tools to dev package
+  * Import calc_width from the public Urwid API
+  * Modernize VIT packaging for Python 3.11 through 3.15
+  * Add instructions for running custom scripts in VIT</comment>
+    <requestid>1394515</requestid>
+  </revision>
 </revisionlist>
