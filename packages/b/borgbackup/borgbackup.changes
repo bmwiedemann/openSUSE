@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  1 10:57:16 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add support-msgpack-1_2_4.patch (boo#1284139): Support ver 1.2.4
+  msgpack 1.2.4 limits container preallocation in the C unpacker to
+  10000 items, so a large declared array/map length can no longer
+  force an excessive memory allocation (GHSA-j8c6-9vc5-hj6x).
+  max_array_len and max_map_len still limit the total container
+  size.
+- Drop support-msgpack-1_2_3.patch: No longer needed.
+
+-------------------------------------------------------------------
 Sun Oct  4 17:37:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Add support-msgpack-1_2_3.patch: Support msgpack 1.2.3. msgpack
+- Add support-msgpack-1_2_3.patch (boo#1284139): Support ver 1.2.3
   1.2.3 brings fixes relevant to borg's usage of the C extension:
   memory leaks when map key validation or container hooks fail
   (GHSA-j586-36cw-2gc2) and a use-after-free when cleaning up an

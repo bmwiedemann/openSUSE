@@ -66,8 +66,8 @@ Source2:        %{name}.keyring
 # python3-guzzle_sphinx_theme isn't available everywhere,
 # fall back to Sphinx default theme for older distributions
 Patch0:         borgbackup-1.1.4-sphinx-default-theme.patch
-# PATCH-FIX-UPSTREAM support-msgpack-1_2_3.patch -- support msgpack 1.2.3
-Patch1:         support-msgpack-1_2_3.patch
+# PATCH-FIX-UPSTREAM support-msgpack-1_2_4.patch -- support msgpack 1.2.4
+Patch1:         support-msgpack-1_2_4.patch
 # SECTION build dependencies
 BuildRequires:  bash
 BuildRequires:  %{py3pkg}-Cython >= 3.0.10
@@ -98,9 +98,9 @@ BuildRequires:  libzstd-devel >= 1.3.0
 # msgpack is not included with borg version >= 1.2.0 anymore
 # The metadata is very specific about the version, the command will fail if msgpack is out of range -- boo#1198267
 # See https://github.com/borgbackup/borg/blob/1.4-maint/pyproject.toml#L39 and update this for every version bump!
-BuildRequires:  (%{py3pkg}-msgpack >= 1.0.3 with %{py3pkg}-msgpack <= 1.2.3)
+BuildRequires:  (%{py3pkg}-msgpack >= 1.0.3 with %{py3pkg}-msgpack <= 1.2.4)
 Requires:       %{py3pkg}-packaging
-Requires:       (%{py3pkg}-msgpack >= 1.0.3 with %{py3pkg}-msgpack <= 1.2.3)
+Requires:       (%{py3pkg}-msgpack >= 1.0.3 with %{py3pkg}-msgpack <= 1.2.4)
 %if 0%{?suse_version} > 1500
 # upstream recommends a "Requires" if pyfuse3 is available
 Requires:       %{py3pkg}-pyfuse3 >= 3.1.1
