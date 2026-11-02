@@ -17,7 +17,7 @@
 
 
 Name:           gnome-shell-extension-desktop-icons
-Version:        51.1.1
+Version:        51.2.0
 Release:        0
 Summary:        Desktop icon NG support for GNOME Shell
 License:        GPL-3.0-or-later

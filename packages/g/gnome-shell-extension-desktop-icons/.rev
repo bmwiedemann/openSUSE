@@ -63,4 +63,13 @@
   * desktopGrid: Open the rename popup only when item menu is</comment>
     <requestid>1392728</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4ef8599273d4e57b91431b2c377a474c</srcmd5>
+    <version>51.2.0</version>
+    <time>1793633983</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.2.0:
+  * Fixed process respawn during logout</comment>
+    <requestid>1394419</requestid>
+  </revision>
 </revisionlist>
