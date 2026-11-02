@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May  6 16:31:33 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Sphinx >= 9.0.0 is required by upstream.
+
+-------------------------------------------------------------------
+Tue Apr 21 19:28:27 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 4.12.0:
+  * Add dark mode to notmyidea template (#3490)
+  * Support CSS_FILE setting in Simple theme (#3555)
+  * Improve Simple theme template inheritance (#3570)
+  * Strip table-of-contents elements from article summaries (#3512)
+  * Use slug in category/tag feed titles (#3569)
+  * Fix raising exceptions on filtered logs (#3547)
+  * Fix disabled category output (#3589)
+  * Fix default FEED_DOMAIN to fall back to SITEURL (#3477)
+  * Don't log feed warning if FEED_DOMAIN is set (#3544)
+  * Fix livereload import in docserve() task (#3583)
+  * Fix JavaScript MIME detection on Windows (#3594)
+  * Fix linking to individual settings in docs (#3458)
+  * Overhaul installation instructions; add pipx and uv (#3549)
+  * Enhance GitHub Pages workflow (#3452) & (#3529)
+  * Require Docutils 0.22+ and Sphinx 9.0+ (#3579)
+  * Require Python 3.11 and above; add Python 3.14 to test matrix
+    (#3514)
+- drop support-new-bs4.patch: merged upstream
+- drop support-docutils-0.22.patch: fixed upstream
+- increase the minimum version of:
+  * python to 3.11
+  * python-beautifulsoup4 to 4.13.3
+  * python-docutils to 0.22.0
+  * python-Sphinx to 9.0.0
+
+-------------------------------------------------------------------
 Thu Sep 18 02:34:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-docutils-0.22.patch:

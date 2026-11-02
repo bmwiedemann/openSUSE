@@ -1,7 +1,7 @@
 #
 # spec file for package python-pelican
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pelican
-Version:        4.11.0
+Version:        4.12.0
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
 URL:            https://getpelican.com/
 Source:         https://github.com/getpelican/pelican/archive/refs/tags/%{version}.tar.gz#/pelican-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM gh#getpelican/pelican#3461
-Patch0:         support-new-bs4.patch
-# PATCH-FIX-OPENSUSE Support docutils 0.22 changes
-Patch1:         support-docutils-0.22.patch
 BuildRequires:  %{python_module Jinja2 >= 3.1.2}
 BuildRequires:  %{python_module Pygments >= 2.16.1}
 BuildRequires:  %{python_module Unidecode >= 1.3.7}
-BuildRequires:  %{python_module base >= 3.8.1}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module blinker >= 1.7.0}
-BuildRequires:  %{python_module docutils >= 0.20.1}
+BuildRequires:  %{python_module docutils >= 0.22.0}
 BuildRequires:  %{python_module feedgenerator >= 2.1.0}
 BuildRequires:  %{python_module ordered-set >= 4.1.0}
 BuildRequires:  %{python_module pdm-backend}
@@ -44,13 +40,13 @@ BuildRequires:  %{python_module rich >= 13.6.0}
 BuildRequires:  %{python_module watchfiles >= 0.21.0}
 BuildRequires:  fdupes
 BuildRequires:  git-core
-BuildRequires:  pandoc
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 3.1.2
 Requires:       python-Pygments >= 2.16.1
+Requires:       python-Sphinx >= 9.0.0
 Requires:       python-Unidecode >= 1.3.7
 Requires:       python-blinker >= 1.7.0
-Requires:       python-docutils >= 0.20.1
+Requires:       python-docutils >= 0.22.0
 Requires:       python-feedgenerator >= 2.1.0
 Requires:       python-ordered-set >= 4.1.0
 Requires:       python-python-dateutil >= 2.8.2
@@ -66,8 +62,8 @@ BuildArch:      noarch
 ExcludeArch:    %{ix86}
 # SECTION test
 BuildRequires:  %{python_module Markdown >= 3.5.1}
-BuildRequires:  %{python_module Sphinx >= 7.1.2}
-BuildRequires:  %{python_module beautifulsoup4 >= 4.12.2}
+BuildRequires:  %{python_module Sphinx >= 9.0.0}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.13.3}
 BuildRequires:  %{python_module invoke >= 2.2.0}
 BuildRequires:  %{python_module livereload >= 2.6.3}
 BuildRequires:  %{python_module lxml >= 4.9.3}
