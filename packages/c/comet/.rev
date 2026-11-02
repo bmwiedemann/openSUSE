@@ -42,4 +42,17 @@ This is also a dependency for heroic-games-launcher package.</comment>
   * fix: Recover from a stale overlay socket left by a killed session (#93)</comment>
     <requestid>1393126</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5d30ad078fbe24eaafb8a1b2bf230c04</srcmd5>
+    <version>0.4.1</version>
+    <time>1793634063</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.1:
+  * tech: update rest of deps
+  * feat: remove pinned certifiates
+  * release: v0.4.1
+  * chore: update pinned certs
+  * fix: wiki link</comment>
+    <requestid>1394461</requestid>
+  </revision>
 </revisionlist>
