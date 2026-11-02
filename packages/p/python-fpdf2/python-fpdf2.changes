@@ -1,4 +1,268 @@
 -------------------------------------------------------------------
+Fri Oct 30 19:26:22 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.0
+  Added
+  * support for transform, style, opacity, and
+    preserveAspectRatio="none" on SVG <image> tags.
+  * support for colored and uncolored tiling patterns with
+    FPDF.create_pattern() and FPDF.use_pattern(), including SVG
+    <pattern> elements and pattern fills and strokes on referenced
+    <use> shapes.
+  * support for unordered lists in multi_cell(markdown=True), using
+    *, - or + as bullet markers.
+  * documentation on generating rMQR Codes.
+  * Python 3.15 is now officially supported.
+  * Unicode font detection and enhanced error handling: when text
+    cannot be encoded with the current font, the
+    FPDFUnicodeEncodingException message now identifies the Unicode
+    script (Cyrillic, Arabic, Chinese, etc.) and suggests a suitable
+    font available on the system, via the new internal
+    UnicodeFontManager.
+  Fixed
+  * None values in PDF dictionaries are serialized as null instead
+    of an invalid Python literal.
+  * Homogeneous arrays of PDF string and name objects use their PDF
+    serialization, including encryption when applicable.
+  * PDF dates pad years below 1000 to four digits.
+  * FPDF.set_display_mode() rejects infinite numeric zoom values
+    instead of writing invalid PDF numbers.
+  * Page-count aliases honor center and right alignment with core
+    fonts when text shaping is enabled.
+  * 16-bit grayscale images, like 16-bit grayscale PNG files, are
+    scaled down to 8 bits instead of being converted to RGBA, which
+    made every value above 255 white, and keep the transparency of
+    their tRNS color key.
+  * Tables inside FPDF.unbreakable() are replayed with their rows
+    and cells intact when the block is moved to a new page.
+  * FPDF.table() raises a clear ValueError naming the column when
+    text_align is a tuple with fewer values than the table has
+    columns, like it does for col_widths, instead of an IndexError.
+  * FPDF.table(): a cell with a colspan below 1 spans one column,
+    like a rowspan below 1 already spans one row, instead of raising
+    ZeroDivisionError or FPDFException or breaking the column layout
+  * Synchronize font_style and emphasis setters with font selection
+    and state tracking - cf. issue #1223.
+  * FPDF.table() raises ValueError: ... is not a valid
+    TableBordersLayout for an unknown borders_layout name, like it
+    does for cell_fill_mode and v_align, instead of a bare
+    AttributeError.
+  * FPDF.set_font() and FPDF.add_font() treat a repeated style
+    letter as the same style: style="BB" is bold, instead of raising
+    FPDFException: Undefined font: helveticaBB.
+  * Document outlines count all visible descendants and link
+    siblings by parent, retaining bookmarks when the hierarchy
+    starts below the top level.
+  * Annotation colors and border widths are serialized as PDF
+    numbers without exponent notation.
+  * Checksums for compressed embedded files are calculated from the
+    original file bytes, as required by the PDF specification.
+  * Repeated annotation flags no longer change unrelated flag bits;
+    annotation flags are combined with bitwise OR.
+  * FPDF.ink_annotation() raises a clear ValueError for an empty
+    coords sequence, instead of ValueError: min() iterable argument
+    is empty.
+  * SVG images with a zero width or height disable rendering instead
+    of using viewport dimensions.
+  * FPDF.write_html() uses the first available font of a <font face>
+    list, like browsers, as in face="Arial, Helvetica, sans-serif",
+    with the generic serif, sans-serif and monospace families
+    rendered by the core fonts, instead of raising FPDFException:
+    Undefined font.
+  * SVG gradient stop-opacity accepts percentages, clamps
+    out-of-range values to 0-1, and combines with the color's alpha
+    channel instead of replacing it.
+  * SVG basic-shape coordinates and corner radii now accept absolute
+    length units.
+  * SVG transforms accept numbers written in scientific notation,
+    such as scale(1e-3), instead of silently ignoring the transform.
+  * SVG gradient stops honor inline style declarations of
+    stop-opacity over the corresponding presentation attribute.
+  * SVG length and angle attributes accept scientific notation, such
+    as width="1e2pt", instead of raising ValueError.
+  * Floating-point numbers in PDF arrays, dictionaries and
+    destinations are written without exponent notation, preserving
+    their values and allowing very small numeric zoom factors to be
+    read correctly.
+  * SVG byte strings and BytesIO inputs accept a UTF-8 BOM and XML
+    whitespace after <svg or <?xml, instead of being sent to the
+    raster image loader.
+  * SVG import: a <polygon> or <polyline> whose points has an error
+    (an invalid coordinate or an odd number of them) is drawn up to
+    the last complete point before it, and one with empty points
+    draws nothing, as the SVG specification says, instead of
+    raising IndexError.
+  * FPDF.write_html() ignores an unsupported align value on <td>,
+    <th> and <tr>, such as middle, like it already does for <p>,
+    instead of raising ValueError.
+  * FPDF.regular_polygon() raises ValueError: 'numSides' parameter
+    must be equal or greater than 1 for numSides below 1, instead of
+    silently writing a path with no points (a bare h S, which closes
+    a path that was never started).
+  * Bulleted text-column paragraphs now honor their top margins,
+    indented paragraphs retain the column's right boundary, and HTML
+    list items honor their TextStyle.t_margin - based on PR #1218.
+  * FPDF.text_columns() raises a clear ValueError for ncols below
+    1, like insert_toc_placeholder() does for pages, instead of a
+    ZeroDivisionError or an unrelated Not enough horizontal space
+    error when rendering.
+  * FPDF() and FPDF.add_page() raise FPDFPageFormatException: Width
+    and height must be positive numbers for a page format whose
+    width or height is zero or negative, such as (0, 0), instead of
+    writing a page with an empty or inverted /MediaBox.
+  * FPDF.write_html() now supports CSS length units (px, pt) and
+    surrounding whitespace in dimension attributes for <table>,
+    <td>, <th>, <hr>, and <img> elements without raising ValueError.
+  * FPDF.write_html() reads a CSS font-size on <font> with its unit,
+    like browsers, as in style="font-size: 14pt" or "12px", instead
+    of silently ignoring it; a number without a unit is still in
+    points.
+  * FPDF.write_html() supports <ul type="square">, the third
+    standard HTML bullet type, instead of raising
+    NotImplementedError: Unicode fonts use ▪ and core fonts fall
+    back to the bullet.
+  * FPDF.write_html() accepts the <ul type> keywords in any case,
+    like browsers: <ul type="CIRCLE"> and <ul type="Square"> no
+    longer raise NotImplementedError.
+  * FPDF.write_html() supports <ul type="none">, rendering the list
+    items without a marker like browsers do, instead of raising
+    NotImplementedError.
+  * FPDF.write_html() keeps the default bullet for an empty or
+    unknown <ul type>, such as type="" or a misspelled type="disk",
+    like browsers and like <ol> already does, instead of raising
+    NotImplementedError.
+  * SVG import: color keywords are case-insensitive (fill="RED"),
+    and fill / stroke accept transparent, painting nothing like
+    none, instead of raising ValueError
+  * FPDF.write_html() accepts css rgb(R, G, B) colors, and colors
+    with surrounding spaces, in color and bgcolor attributes
+    instead of raising ValueError.
+  * FPDF.write_html() accepts a legacy HTML color of six hex
+    digits without the leading #, like browsers do, as in
+    bgcolor="eeeeee" or <font color="ff0000">, instead of raising
+    ValueError.
+  * FPDF.write_html() ignores color="transparent" and
+    bgcolor="transparent" like browsers, keeping the inherited text
+    or background color, instead of raising ValueError.
+  * FPDF.write_html() ignores an invalid CSS color on a heading,
+    like browsers, as in <h1 style="color: nope">, keeping the color
+    attribute or the heading's default color, instead of raising
+    ValueError.
+  * FPDF.write_html() no longer raises IndexError on an
+    <ol type="a"> or <ol type="A"> list with more than 26 items:
+    like browsers, letters continue with aa, ab... and a start
+    below 1 shows as a number.
+  * FPDF.write_html() numbers an <ol> with an unknown type, such as
+    type="disc", as 1, 2, 3, like browsers, instead of raising
+    NotImplementedError.
+  * FPDF.write_html() supports <li value="N"> in ordered lists:
+    like browsers, the item is numbered N and the following ones
+    continue from it.
+  * FPDF.write_html() no longer raises KeyError: 'href' on an <a>
+    element without an href attribute, such as a named anchor (<a
+    name="intro">); its text is rendered as plain text.
+  * FPDF.set_display_mode() raises FPDFException: Incorrect zoom
+    display mode for a negative or non-numeric zoom, such as -50
+    or None, like it does for an unknown zoom name, instead of
+    writing an invalid /OpenAction zoom or failing later in
+    output().
+  * FPDF.write_html() no longer warns about a missing end tag for
+    the HTML void elements <meta>, <link>, <col>, <wbr>, <input>,
+    <base>, <area>, <embed>, <source> and <track>, which never
+    have one, as in the <head> of an HTML email.
+  * FPDF.write_html() treats an invalid colspan or rowspan on <td>
+    / <th>, or one below 1, as 1 like browsers do, instead of
+    raising ValueError or ZeroDivisionError.
+  * FPDF.write_html() stops a rowspan that goes past the last row
+    of a <table> at the last row, like browsers, instead of
+    raising FPDFException: Rowspan extends beyond end of table.
+  * FPDF.write_html() renders a <table> whose width is wider than
+    the page, such as width="150%", at the page width with a
+    warning, and ignores a negative width like browsers, instead
+    of raising ValueError.
+  * FPDF.write_html() no longer raises ValueError: Invalid
+    .col_widths specified on a table whose first row gives a width
+    to only some of its cells, such as
+    <td width="50%">a</td><td>b</td>: like browsers, the other
+    cells share the remaining space, after the gaps of cellspacing;
+    a cell with a colspan gives each column it spans an equal part
+    of its width.
+  * warning detection during FPDFRecorder.replay() now correctly
+    identifies context managers (contextlib.AbstractContextManager,
+    @contextmanager, custom context managers) within unbreakable()
+    sections.
+  * SVG import: opacity, fill-opacity and stroke-opacity accept
+    percentages (50%), and an out-of-range opacity is clamped to
+    0-1 like the other two instead of raising ValueError.
+  * css rgb() colors accept percentages, as in rgb(100%, 0%, 50%)
+    (clamped to 0%-100%), in SVG import and FPDF.write_html()
+    instead of raising ValueError.
+  * hex color strings, such as in set_fill_color("#..."), must
+    contain only hexadecimal digits: "#1 2345" and "#+12345" were
+    silently read as #012345, and "#xyz" raised an unclear invalid
+    literal for int() error; all now raise ValueError: ... could
+    not be interpreted as a RGB(A) hex string.
+  * FPDF.ink_annotation() computes the horizontal position of the
+    annotation rectangle (/Rect) from the x coordinates of the path
+    instead of the y coordinates, so the rectangle encloses the
+    drawn path; it could previously lie outside the page.
+  * FPDF.set_auto_page_break() and FPDF.set_margin() raise
+    ValueError: Bottom margin must be zero or a positive number for
+    a negative margin, instead of placing the page break below the
+    bottom edge of the page, so that the last lines before each
+    break were written off the page and lost.
+  * FPDF.embed_file() accepts empty byte content and rejects
+    simultaneous path and byte sources even when the bytes are
+    empty.
+  * FPDF.set_line_width() raises ValueError: Line width must be
+    zero or a positive number for a negative width, like
+    set_dash_pattern() does for a negative dash length, instead of
+    writing a negative line width that the PDF specification does
+    not allow.
+  * FPDF.star() raises ValueError: 'corners' parameter must be
+    equal or greater than 1 for corners below 1, instead of a bare
+    ZeroDivisionError for corners=0 and silently drawing nothing
+    for a negative value.
+  * set_text_color(), set_fill_color() and set_draw_color() report
+    a component outside 0-255 as given: set_text_color(300) now
+    raises ValueError: color component 300 not in range [0, 255]
+    instead of 1.1764705882352942 not in range [0.0, 1.0].
+  * An internal link with an index that FPDF.add_link() did not
+    return now raises a clear ValueError, like a link without a
+    page number, instead of a bare AssertionError (or a KeyError
+    with python -O).
+  * FPDF.write_html() no longer writes the content of <style> and
+    <script> elements into the document as text, like browsers, so
+    an HTML page or email with a <style> block no longer shows its
+    CSS.
+  * FPDF.add_page() and FPDF.set_page_label() raise ValueError:
+    'label_start' parameter must be equal or greater than 1 for a
+    label_start below 1, instead of writing an invalid /St value
+    that the PDF specification requires to be 1 or greater.
+  * FPDF.set_stretching() raises ValueError: Stretching must be a
+    positive number for a stretching of zero or below, instead of
+    laying out text with no width: justified text was all put on a
+    single line, and other text raised an unrelated Not enough
+    horizontal space to render a single character error.
+  * FPDF.write_html() raises NotImplementedError: Unsupported
+    nested HTML tags inside <td> element: <table> for a <table>
+    nested in a table cell, like for the other unsupported nested
+    tags, instead of a bare AssertionError with no message.
+  Changed
+  * Updated the Portuguese tutorial, including tutorials 4 and 5
+    and the new PDF/A tutorial 7 - cf. PR #2038.
+  * Modernized type annotations for Python 3.11+, using union
+    syntax, standard collection types, and typing.Self
+  * Removed redundant trailing zeros from numbers in PDF
+    dictionaries and arrays outside content streams, preserving
+    existing numeric precision.
+  Removed
+  * Removed the defusedxml dependency: SVG parsing now relies on
+    the standard-library ElementTree parser and Expat amplification
+    limits; bounded internal entities are accepted, cf. issue #1793
+  * support for Python 3.10, that reached end-of-life.
+
+-------------------------------------------------------------------
 Mon Oct 12 13:21:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.9

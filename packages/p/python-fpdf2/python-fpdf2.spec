@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fpdf2
-Version:        2.8.9
+Version:        2.9.0
 Release:        0
 Summary:        Simple & fast PDF generation for Python
 License:        LGPL-3.0-or-later
@@ -27,7 +27,6 @@ URL:            https://py-pdf.github.io/fpdf2/
 # that has non-commercial license. boo#1232452
 Source:         fpdf2-%{version}.tar.xz
 BuildRequires:  %{python_module Pillow >= 8.3.2}
-BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module fonttools >= 4.59.2}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
@@ -52,7 +51,6 @@ BuildRequires:  qpdf
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Pillow >= 8.3.2
-Requires:       python-defusedxml
 # uses features from newer version than is documented upstream
 Requires:       python-fonttools >= 4.59.2
 BuildArch:      noarch
@@ -76,9 +74,11 @@ donttest="test_png_url or test_bidi_conformance or test_bidi_character or test_p
 # Requires non-commercial licensed file SBL_Hbrw.ttf
 donttest+=" or test_bidi_paragraph_direction or test_hebrew_diacritics or test_text_with_parentheses or test_alias_in_rtl_text or test_alias_and_literal_side_by_side_in_rtl"
 # Exclude tests that fail due to SVG/fontTools floating-point rendering diffs on modern Python toolchains:
-donttest+=" or test_twitter_emoji_shaping or test_twitter_emoji_text"
+donttest+=" or test_twitter_emoji_shaping or test_twitter_emoji_text "
 # Fails due to QPDF fun and games
 donttest+=" or test_image_with_explicit_dimensions"
+# Fails due to Python3.14 logging changes
+donttest+=" or test_svg_image_preserve_aspect_ratio_unsupported_mode_warning"
 %pytest -s -k "not ($donttest)"
 
 %files %{python_files}
