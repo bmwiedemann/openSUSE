@@ -19,7 +19,7 @@
 %global __requires_exclude GLib
 %define full_name org.gnome.Weather
 Name:           gnome-weather
-Version:        50.0
+Version:        50.0+30
 Release:        0
 Summary:        Weather App for GNOME
 License:        GPL-2.0-or-later
@@ -43,8 +43,8 @@ BuildRequires:  pkgconfig(gjs-1.0) >= 1.71.0
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(gweather4)
+BuildRequires:  pkgconfig(gtk4) >= 4.5
+BuildRequires:  pkgconfig(gweather4) >= 3.90.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.3.1
 BuildArch:      noarch
