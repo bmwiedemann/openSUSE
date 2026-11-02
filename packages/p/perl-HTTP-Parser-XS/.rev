@@ -24,4 +24,17 @@
   See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
     <requestid>1310644</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>389d014d7fdfa973e20e4a50a62c6dcc</srcmd5>
+    <version>0.180.0</version>
+    <time>1793634010</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.180.0 (0.18)
+   see /usr/share/doc/packages/perl-HTTP-Parser-XS/Changes
+  0.18
+  	- preserve the full URL-decoded PATH_INFO when it contains NUL bytes (Robert Rothenberg)
+      CVE-2026-116130 bsc#1289063
+  	- fix documentation typos (Sergey Romanov)</comment>
+    <requestid>1394437</requestid>
+  </revision>
 </revisionlist>

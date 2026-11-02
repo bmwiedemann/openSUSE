@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Parser-XS
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name HTTP-Parser-XS
 Name:           perl-HTTP-Parser-XS
-Version:        0.170.0
+Version:        0.180.0
 Release:        0
-# 0.17 -> normalize -> 0.170.0
-%define cpan_version 0.17
+# 0.18 -> normalize -> 0.180.0
+%define cpan_version 0.18
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Fast, primitive HTTP request parser
 URL:            https://metacpan.org/release/%{cpan_name}

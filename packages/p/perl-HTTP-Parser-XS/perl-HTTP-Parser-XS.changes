@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 29 11:32:58 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.180.0 (0.18)
+   see /usr/share/doc/packages/perl-HTTP-Parser-XS/Changes
+
+  0.18
+  	- preserve the full URL-decoded PATH_INFO when it contains NUL bytes (Robert Rothenberg)
+      CVE-2026-116130 bsc#1289063
+  	- fix documentation typos (Sergey Romanov)
+
+-------------------------------------------------------------------
 Fri Oct 10 15:55:46 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
