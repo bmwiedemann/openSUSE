@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 02 12:43:11 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Update to version 2.7.2+git.1793623271.f7e3c177:
+  * Test: enable verify_primitive test params in different order
+  * CI/CD: Add 16.1 and tumbleweed to the test mash
+  * CI/CD: Fixup the git pipeline for 16.0
+
+-------------------------------------------------------------------
 Thu Oct 29 10:16:32 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - bump ruby gem crass-1.0.7 --> crass-1.0.8 (bsc#1288620):
