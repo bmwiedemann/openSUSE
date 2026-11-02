@@ -125,4 +125,14 @@ Requires python-setuptools 78 to build successfully.
     booleanOperations</comment>
     <requestid>1339155</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0f290bd231472ff924f60dee093bdf6e</srcmd5>
+    <version>1.0.0</version>
+    <time>1793633941</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.0:
+  * insertGlyph bug fixed (#875), thank you @typemytype
+- add fontParts-tests-fontPens-0.2.4.patch</comment>
+    <requestid>1394372</requestid>
+  </revision>
 </revisionlist>

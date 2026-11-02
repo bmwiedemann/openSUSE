@@ -26,12 +26,13 @@
 %endif
 
 Name:           python-fontParts%{psuffix}
-Version:        0.14.1
+Version:        1.0.0
 Release:        0
 Summary:        API for interacting with the parts of fonts
 License:        MIT
 URL:            https://github.com/robotools/fontParts
 Source:         https://files.pythonhosted.org/packages/source/f/fontparts/fontparts-%{version}.tar.gz
+Patch0:         fontParts-tests-fontPens-0.2.4.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

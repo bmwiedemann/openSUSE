@@ -1,0 +1,28 @@
+--- a/Lib/fontParts/test/test_component.py
++++ b/Lib/fontParts/test/test_component.py
+@@ -615,7 +615,11 @@
+             ((100, 0), "line", False, "point 3"),
+             "endPath",
+         )
+-        self.assertEqual(pointPen.getDigest(), expected)
++        digest = pointPen.getDigest()
++        # fontPens < 0.3.1 includes the path identifier in the digest.
++        if digest and digest[0] == ("beginPath", None):
++            digest = ("beginPath",) + digest[1:]
++        self.assertEqual(digest, expected)
+ 
+     def test_decompose_identifiers(self):
+         component = self.getComponent_generic()
+@@ -649,7 +653,11 @@
+             ((200, 0), "line", False, "point 3"),
+             "endPath",
+         )
+-        self.assertEqual(pointPen.getDigest(), expected)
++        digest = pointPen.getDigest()
++        # fontPens < 0.3.1 includes the path identifier in the digest.
++        if digest and digest[0] == ("beginPath", None):
++            digest = ("beginPath",) + digest[1:]
++        self.assertEqual(digest, expected)
+ 
+     # ------------
+     # Data Queries
