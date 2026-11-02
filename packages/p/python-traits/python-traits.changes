@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Oct 26 06:55:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.0:
+  * Python versions earlier than 3.10 are no longer supported.
+  * Removed pkg_resources and requires_pkg_resources from
+    traits.testing.optional_dependencies. Traits no longer makes
+    any use of pkg_resources, which is absent from recent
+    versions of setuptools.
+  * Fix the etsdemo_data entry point, which failed with recent
+    versions of setuptools that no longer provide pkg_resources.
+  * Fix a TraitDocumenter crash on module-level traits.
+  * Fix trait_documenter to properly document traits of base
+    classes.
+  * Fix the documentation build with Sphinx 9.
+  * Modernize some bits of the introduction.
+  * Remove the EDM-based developer tooling: etstool.py and
+    edm.yaml.
+  * Build wheels for Python 3.15, and test against Python 3.15 in
+    CI.
+  * Switch PyPI publishing to trusted publishing.
+  * Pin GitHub Actions to commit hashes, and add a dependabot
+    cooldown so that freshly-published action releases aren't
+    proposed immediately.
+  * Build the documentation on Python 3.14, and update the Read
+    the Docs configuration to the current schema.
+  * Pin the copyright end year, and add a strict, non-blocking
+    style check.
+
+-------------------------------------------------------------------
 Fri Jul 17 06:02:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.1.0:

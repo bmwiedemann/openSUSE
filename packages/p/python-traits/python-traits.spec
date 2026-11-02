@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-traits%{psuffix}
-Version:        7.1.0
+Version:        7.2.0
 Release:        0
 Summary:        Explicitly typed attributes for Python
 # Images have different licenses. For image license breakdown check

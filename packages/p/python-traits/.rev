@@ -205,4 +205,12 @@
   * Fixed build error on Python 3.13 triggered by removal of the</comment>
     <requestid>1366317</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7a61d73492aabe85430f4075600aa505</srcmd5>
+    <version>7.2.0</version>
+    <time>1793633961</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1394386</requestid>
+  </revision>
 </revisionlist>
