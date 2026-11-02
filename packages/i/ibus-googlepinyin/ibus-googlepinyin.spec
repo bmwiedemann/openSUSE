@@ -17,7 +17,7 @@
 
 
 Name:           ibus-googlepinyin
-Version:        0.42.0
+Version:        0.43.0
 Release:        0
 Summary:        This package is for IBus to use libgooglepinyin
 License:        GPL-2.0+
@@ -40,9 +40,10 @@ BuildRequires:  sqlite-devel
 BuildRequires:  xfce4-notifyd
 %endif
 Source:         https://github.com/openSUSE/ibus-googlepinyin/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         do-not-install-gschemas_compiled.patch
+# Patch0:         do-not-install-gschemas_compiled.patch
 Requires:       ibus
 Requires:       libgooglepinyin0
+Requires:       typelib-1_0-Soup-3_0
 
 %description
 GooglePinyin

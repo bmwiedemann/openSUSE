@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:26:50 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.43.0
+  * Support google cloud pinyin
+  * Add "拼" as the symbol in ibus menu
+  * Update IBus indicator when switching input modes
+- Drop do-not-install-gschemas_compiled.patch
+
+-------------------------------------------------------------------
 Wed Oct 28 13:19:44 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add do-not-install-gschemas_compiled.patch 
