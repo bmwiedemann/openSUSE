@@ -294,4 +294,12 @@ Use SPDX format and include the LGPL as well (forwarded request 131772 from babe
   * Apply security updates.</comment>
     <requestid>1392152</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>fc7a2025f8f1a03988ab245181c60164</srcmd5>
+    <version>0.2.46</version>
+    <time>1793633861</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394477</requestid>
+  </revision>
 </revisionlist>
