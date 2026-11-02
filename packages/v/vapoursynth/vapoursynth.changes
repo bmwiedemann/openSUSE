@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:25:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to R82:
+  * vspipe matroska output is now playable by mpv and sets
+    track properties from the first frame values
+  * vspipe no longer downloads GPU resident frames when there
+    is no output
+  * Enable VK_KHR_pipeline_executable_properties when available
+    for GPU filter pipeline inspection
+  * Fix GPU filters running at PCIe speed on NVIDIA cards with
+    resizable BAR: exportable GPU memory stays out of host
+    visible VRAM on discrete cards
+  * Fix plugins using vs_use_api_43 getting the deprecated
+    full/limited color range constants swapped
+- No ABI or soname change: 82 is the release counter, not the
+  API level, so out-of-tree plugins stay compatible
+- Use pkgconfig(python3) and pkgconfig(python3-embed) instead
+  of python3-devel in BuildRequires
+
+-------------------------------------------------------------------
 Mon Oct  5 06:46:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to R81:

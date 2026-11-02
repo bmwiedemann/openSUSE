@@ -419,4 +419,12 @@ Rebase vapoursynth-fhs-install.patch: use system glslang instead of wrap-git. Bu
 - boo#1214012 NOT AFFECTED: mpv 0.36 on FFmpeg 6.0, VapourSynth only in feature list.</comment>
     <requestid>1382544</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d22cbb782c7c9546fb5b37d99b007d9b</srcmd5>
+    <version>82</version>
+    <time>1793634082</time>
+    <user>anag_factory</user>
+    <comment>Update vapoursynth to R82: vspipe matroska fixes, GPU memory placement fix, no ABI change.</comment>
+    <requestid>1394470</requestid>
+  </revision>
 </revisionlist>

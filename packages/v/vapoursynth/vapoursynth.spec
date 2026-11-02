@@ -18,7 +18,7 @@
 
 %define sover 4
 Name:           vapoursynth
-Version:        81
+Version:        82
 Release:        0
 Summary:        A video processing framework
 # upstream's meson.build declares license: 'LGPL-2.1-or-later' and
@@ -36,9 +36,6 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython
-# spec-cleaner --pkgconfig rewrites this to pkgconfig(python-3.6) +
-# pkgconfig(python-3.6m), stale hardcoded numbers; no such .pc exists
-BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(Magick++) >= 7.0
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libass)
@@ -46,6 +43,7 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(python3-embed)
 BuildRequires:  pkgconfig(tesseract)
 # R80 GPU path: headers only at build time (loader is dlopened); glslang C API
 # for runtime GLSL->SPIR-V. Wrap-git subprojects cannot fetch in OBS.
