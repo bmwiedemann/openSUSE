@@ -77,4 +77,15 @@
 - Update Requires from pyproject.toml (forwarded request 1359403 from glaubitz)</comment>
     <requestid>1359540</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>312a30a7a64b2e04c76fc4fc53873542</srcmd5>
+    <version>3.2.0</version>
+    <time>1793634028</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 3.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1394407 from glaubitz)</comment>
+    <requestid>1394453</requestid>
+  </revision>
 </revisionlist>

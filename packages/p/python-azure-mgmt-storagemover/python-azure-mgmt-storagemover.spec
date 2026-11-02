@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-storagemover
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Microsoft Azure Storagemover Management Client Library for Python
 License:        MIT
