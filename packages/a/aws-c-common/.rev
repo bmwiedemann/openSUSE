@@ -304,4 +304,19 @@
     <comment>1</comment>
     <requestid>1385011</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6e31a39e2d745fd856bf354ffcecf82f</srcmd5>
+    <version>1.0.5</version>
+    <time>1793633873</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.5:
+  * Fix version
+  * **Full Changelog**: https://github.com/awslabs/aws-c-
+    common/compare/v1.0.4...v1.0.5
+- update to 1.0.4:
+  * Make UBSan errors fatal
+  * add bignum
+  * Set sticky bit on cross process lock file</comment>
+    <requestid>1394330</requestid>
+  </revision>
 </revisionlist>
