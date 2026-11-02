@@ -19,7 +19,7 @@
 %define _atlas_version 0.14.7
 %define _sat_commit 9d52513b3c68bfb929dbd687d4fb2836cfee6936
 Name:           nim
-Version:        2.2.12
+Version:        2.4.0
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
@@ -28,10 +28,13 @@ Source0:        https://nim-lang.org/download/nim-%{version}.tar.xz
 Source1:        https://github.com/nim-lang/atlas/archive/refs/tags/%{_atlas_version}.tar.gz#/atlas-%{_atlas_version}.tar.gz
 Source2:        nim-rpmlintrc
 Source3:        https://github.com/nim-lang/sat/archive/%{_sat_commit}.tar.gz#/sat-%{_sat_commit}.tar.gz
+# PATCH-FIX-OPENSUSE nim-nim-gdb_fix_interpreter.patch andrea.manzini@suse.com -- bin/nim-gdb: use /usr/bin/bash shebang
 Patch0:         nim-nim-gdb_fix_interpreter.patch
+# PATCH-FIX-OPENSUSE nim-fix-tests-i586.patch andrea.manzini@suse.com -- skip tests that fail on i586
 Patch1:         nim-fix-tests-i586.patch
 # https://github.com/nim-lang/Nim/issues/23668
-# https://github.com/nim-lang/Nim/pull/24405
+# https://github.com/nim-lang/Nim/pull/24405 (closed, not merged)
+# PATCH-FIX-OPENSUSE nim-2.2.2-pcre2.patch andrea.manzini@suse.com -- port re.nim and nre.nim to pcre2, libpcre1 not in Factory
 Patch2:         nim-2.2.2-pcre2.patch
 BuildRequires:  binutils-devel
 BuildRequires:  ca-certificates
@@ -150,26 +153,16 @@ cat << EOT >> tests_to_skip
   tests/cpp/tasync_cpp.nim
   # expects Nim to be in PATH...
   tests/stdlib/tosproc.nim
-  # following tests are flaky
-  tests/stdlib/tio.nim
+  # needs network: nimble install unicodedb/regex (new in 2.4.0)
+  tests/stdlib/tnre2.nim
+  # gcc rejects -march=native on ppc64le
   tests/arc/thard_alignment.nim
-  # this one needs NodeJS althought its not required by the build
+  # needs NodeJS, which the SLE 15 / Leap 15 build roots lack
   tests/nimdoc/trunnableexamples.nim
+  # this one needs NodeJS although its not required by the build
   tests/js/tnativeexc.nim
-  # broken in Leap 15.3
-  tests/exception/t13115.nim
   # no SFML in plain SLE and missing in backport repos
   tests/niminaction/Chapter8/sfml/sfml_test.nim
-  # GCC 14 related errors
-  #tests/objects/toop1.nim
-  #tests/vm/tvmmisc.nim
-  #tests/cpp/tmanual_exception.nim
-  #tests/objects/tobjcov.nim
-  # GCC 15 related errors
-  tests/stdlib/concurrency/tatomics.nim
-  # exits with 1 for some reason
-  tests/stdlib/tmath.nim
-  tests/generics/t22305.nim
 EOT
 
 %ifarch i586
@@ -218,6 +211,14 @@ cat << EOT >> tests_to_skip
   tests/misc/tvcc.nim
   tests/threads/t7172.nim
   tests/dll/nimhcr_basic.nim
+  tests/dll/nimhcr_async.nim
+  tests/dll/nimhcr_logging.nim
+  tests/dll/nimhcr_integration.nim
+  tests/dll/nimhcr_global_ref.nim
+  tests/dll/nimhcr_methods.nim
+  tests/dll/nimhcr_threadvar.nim
+  tests/misc/thcr_threadvars.nim
+  lib/nimhcr.nim
   tests/threads/t8535.nim
   tests/threads/threadex.nim
   tests/threads/tmanyjoin.nim
@@ -227,6 +228,15 @@ cat << EOT >> tests_to_skip
   tests/arc/tasyncorc.nim
   tests/compiler/tasm.nim
   tests/compiler/tasm2.nim
+EOT
+%endif
+
+%ifarch ppc64le
+cat << EOT >> tests_to_skip
+  # tatomics: weak compare-exchange fails in cpp --mm:orc;
+  # tstrtabs: memory accounting check fails
+  tests/stdlib/concurrency/tatomics.nim
+  tests/stdlib/tstrtabs.nim
 EOT
 %endif
 
@@ -324,6 +334,8 @@ strip --strip-all %{buildroot}%{_libdir}/nim/bin/nim_dbg
 strip --strip-all %{buildroot}%{_libdir}/nim/bin/nimgrep
 strip --strip-all %{buildroot}%{_libdir}/nim/bin/nimpretty
 strip --strip-all %{buildroot}%{_libdir}/nim/bin/nimsuggest
+strip --strip-all %{buildroot}%{_libdir}/nim/bin/nifler
+strip --strip-all %{buildroot}%{_libdir}/nim/bin/nifmake
 
 # nim requires symlinks to executables, as it looks for its
 # standard library by resolving the link and then checking for
@@ -335,6 +347,8 @@ ln -s %{_libdir}/nim/bin/nimble     %{buildroot}%{_bindir}
 ln -s %{_libdir}/nim/bin/nimgrep    %{buildroot}%{_bindir}
 ln -s %{_libdir}/nim/bin/nimpretty  %{buildroot}%{_bindir}
 ln -s %{_libdir}/nim/bin/nimsuggest %{buildroot}%{_bindir}
+ln -s %{_libdir}/nim/bin/nifler     %{buildroot}%{_bindir}
+ln -s %{_libdir}/nim/bin/nifmake    %{buildroot}%{_bindir}
 
 mv $TARGET/nim/compiler* %{buildroot}%{_libdir}/nim/
 mv $TARGET/nim/lib       %{buildroot}%{_libdir}/nim/
@@ -353,6 +367,8 @@ mv $TARGET/nim/config/*  %{buildroot}%{_sysconfdir}/nim/
 %{_bindir}/nimgrep
 %{_bindir}/nimpretty
 %{_bindir}/nimsuggest
+%{_bindir}/nifler
+%{_bindir}/nifmake
 
 %dir %{_sysconfdir}/nim
 %config %{_sysconfdir}/nim/*

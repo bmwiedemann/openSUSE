@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct 29 07:56:33 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.4.0:
+  * SSO-based strings API
+  * Incremental compilation via --ic:on
+  * Support for cyclic module dependencies
+  * New --mm:yrc thread-safe cycle collector
+  * Stdlib security hardening: httpclient drops Authorization,
+    Cookie and Host on cross-origin redirects and rejects CR/LF/NUL
+    in requests; asyncnet checks TLS IP SANs; asynchttpserver
+    rejects ambiguous body framing; xmlparser and htmlparser cap
+    nesting depth
+- Package the new nifler and nifmake tools used by incremental
+  compilation
+- Refreshed patches to apply cleanly:
+  * nim-fix-tests-i586.patch
+  * nim-nim-gdb_fix_interpreter.patch
+- Rebase nim-2.2.2-pcre2.patch for 2.4.0 (pcre2 port of re and
+  nre from closed upstream PR #24405; upstream's fix for #23668
+  is std/nre2, which needs nim-regex)
+- Re-enable tests (tmath, t22305, tio, t13115, tatomics except
+  on ppc64le)
+- Skip nimhcr hot code reloading tests on aarch64 and ppc64le, and
+  tstrtabs on ppc64le
+- Exclude tests/stdlib/tnre2.nim (needs network for nimble install)
+
+-------------------------------------------------------------------
 Tue Sep  8 13:23:05 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.2.12:

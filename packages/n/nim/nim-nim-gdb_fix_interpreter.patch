@@ -1,7 +1,5 @@
-Index: nim-2.2.12/bin/nim-gdb
-===================================================================
---- nim-2.2.12.orig/bin/nim-gdb
-+++ nim-2.2.12/bin/nim-gdb
+--- nim-2.4.0.orig/bin/nim-gdb	2026-10-28 06:14:50.000000000 +0100
++++ nim-2.4.0.patched/bin/nim-gdb	2026-10-29 09:02:39.862603494 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
 +#!/usr/bin/bash
