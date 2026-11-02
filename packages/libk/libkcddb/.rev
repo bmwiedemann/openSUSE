@@ -967,4 +967,12 @@
     <comment>KDE release gear 26.08.2 (forwarded request 1383113 from krop)</comment>
     <requestid>1383559</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>e9d6e6be8b374068f6b66e244d893eef</srcmd5>
+    <version>26.08.2</version>
+    <time>1793633776</time>
+    <user>anag_factory</user>
+    <comment>- Drop the Qt 5 flavor</comment>
+    <requestid>1394283</requestid>
+  </revision>
 </revisionlist>

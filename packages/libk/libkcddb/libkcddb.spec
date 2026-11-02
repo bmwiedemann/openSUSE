@@ -16,97 +16,87 @@
 #
 
 
-%define kf5_version 5.92.0
-%define qt5_version 5.15.2
-# For KDE unstable applications repository
-%define rversion 25.04.3
+%define kf6_version 6.27.0
+%define qt6_version 6.9.0
+
 %bcond_without released
 Name:           libkcddb
-Version:        25.04.3
+Version:        26.08.2
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source0:        %{name}-%{rversion}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{name}-%{rversion}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Config) >= %{kf5_version}
-BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
-BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
-BuildRequires:  cmake(Qt5Network) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libmusicbrainz5)
-Provides:       libkcddb5 = %{rversion}
-Obsoletes:      libkcddb5 < %{rversion}
-Provides:       libkcddb16 = %{rversion}
-Obsoletes:      libkcddb16 < %{rversion}
 
 %description
 The KDE Compact Disc DataBase library provides an API for applications to fetch
 and submit audio CD information over the Internet.
 
-%package -n libKF5Cddb5
+%package -n libKCddb5
 Summary:        CDDB library for KDE Applications
-Recommends:     %{name} >= %{rversion}
+Recommends:     libkcddb >= %{version}
 
-%description -n libKF5Cddb5
+%description -n libKCddb5
 The KDE Compact Disc DataBase library provides an API for applications to fetch
 and submit audio CD information over the Internet.
 
-%package devel
+%package -n libkcddb-qt6-devel
 Summary:        Development files for KDE CDDB library
-Requires:       libKF5Cddb5 = %{rversion}
-Provides:       libkcddb5-devel = %{rversion}
-Obsoletes:      libkcddb5-devel < %{rversion}
+Requires:       libKCddb5 = %{version}
 
-%description devel
+%description -n libkcddb-qt6-devel
 This package includes the development headers for libkcddb.
 
 %lang_package
 
 %prep
-%autosetup -p1 -n %{name}-%{rversion}
+%autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %find_lang %{name} --with-html --all-name
 
-%ldconfig_scriptlets -n libKF5Cddb5
+%ldconfig_scriptlets -n libKCddb5
 
 %files
-%doc %lang(en) %{_kf5_htmldir}/en/*/
-%{_kf5_applicationsdir}/kcm_cddb.desktop
-%{_kf5_configkcfgdir}/libkcddb5.kcfg
-%{_kf5_debugdir}/libkcddb.categories
-%dir %{_kf5_plugindir}/plasma
-%dir %{_kf5_plugindir}/plasma/kcms
-%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets
-%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_cddb.so
+%doc %lang(en) %{_kf6_htmldir}/en/*/
+%{_kf6_applicationsdir}/kcm_cddb.desktop
+%{_kf6_configkcfgdir}/libkcddb5.kcfg
+%{_kf6_debugdir}/libkcddb.categories
+%{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_cddb.so
 
-%files -n libKF5Cddb5
+%files -n libKCddb5
 %license LICENSES/*
-%{_kf5_libdir}/libKF5Cddb.so.*
+%{_kf6_libdir}/libKCddb6.so.*
 
-%files devel
-%{_includedir}/KCddb5/
-%{_kf5_cmakedir}/KF5Cddb/
-%{_kf5_includedir}/KCddb/
-%{_kf5_libdir}/libKF5Cddb.so
-%{_kf5_mkspecsdir}/qt_KCddb.pri
+%files -n libkcddb-qt6-devel
+%{_includedir}/KCddb6/
+%{_kf6_cmakedir}/KCddb6/
+%{_kf6_libdir}/libKCddb6.so
+%{_kf6_mkspecsdir}/qt_KCddb.pri
 
 %files lang -f %{name}.lang
-%exclude %{_kf5_htmldir}/en/*/
+%exclude %{_kf6_htmldir}/en/*/
 
 %changelog
