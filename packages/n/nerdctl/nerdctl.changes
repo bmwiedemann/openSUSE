@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Nov 02 07:49:05 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Update to version 2.4.2:
+  * docs: fix dead links in cosign, cvmfs, faq, registry and IPFS docs
+  * build(deps): bump github.com/moby/sys/user
+  * fix: correct typos in error and log messages
+  * feat(healthcheck): add --health-start-interval for run/create
+  * test: migrate Ubuntu image from ECR to GHCR
+  * fix(image): reject an empty until filter value
+  * fix TestRunWithLogBinary for BuildKit 0.34
+  * update golangci-lint (2.15.0)
+  * update gosocialcheck (0.2.1)
+  * update Docker (29.9.2)
+  * update RootlessKit (3.3.0)
+  * update BuildKit (0.34.1)
+  * update containerd for Windows (2.4.2)
+  * update containerd (2.4.2)
+  * CI: FreeBSD: pin runj package
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.1.5 to 4.1.6
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * cmd: test verifier detects invalid images
+  * pkg: enable stargz-snapshotter verifier
+  * go.mod: bump up stargz-snapshotter to v0.19.1
+  * Dockerfile: bump up stargz-snapshotter to v0.19.1
+  * build(deps): bump docker/login-action from 4.6.0 to 4.7.0
+  * build(deps): bump zizmorcore/zizmor-action from 0.7.1 to 0.8.0
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump the docker group across 1 directory with 2 updates
+  * build(deps): bump github.com/Microsoft/hcsshim
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump zizmorcore/zizmor-action from 0.6.4 to 0.7.1
+  * fix(attach): exit with status 1 when detaching
+  * fix(volume): reject invalid volume ls filters
+  * build(deps): bump github.com/klauspost/compress from 1.20.1 to 1.20.3
+  * build(deps): bump github.com/Microsoft/go-winio from 0.6.3 to 0.6.4
+  * build(deps): bump golang.org/x/net
+  * test(windows): do not run TestNetworkInspectWithContainers in parallel
+  * build(deps): bump the docker group across 1 directory with 3 updates
+  * build(deps): bump the golang-x group across 1 directory with 4 updates
+  * build(deps): bump tonistiigi/xx from 1.9.0 to 1.10.0
+  * fix(compose): do not default --hostname to the service name on Windows
+  * fix(logging): open followed log files with FILE_SHARE_DELETE on Windows
+  * fix(compose): report pinned images after retagging
+  * test: disable TestRunRmTime on gomodjail mode
+  * feat: add --device-cgroup-rule to run and create
+  * test: verify --timeout=0 parses for container commit
+  * fix: add --timeout flag to container commit
+  * build(deps): bump github.com/Microsoft/go-winio
+  * build(deps): bump the golang-x group with 2 updates
+  * reflectutil: walk embedded structs in UnknownNonEmptyFields
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * fix(container): inherit only user mounts with volumes-from
+  * build(deps): bump the docker group across 1 directory with 2 updates
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/fluent/fluent-logger-golang
+  * fix(image): avoid dangling-ref name collision on `rmi -f` for running images
+  * fix: reject invalid network ls filters
+
+-------------------------------------------------------------------
 Mon Oct 05 05:29:05 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
 
 - Update to version 2.4.1:
