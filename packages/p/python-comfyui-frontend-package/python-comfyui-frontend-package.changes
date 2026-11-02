@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:26:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.58.4 (backport fixes only):
+  * Agent: stale-page notice no longer promises a reload shows
+    the agent's changes; tour card targeting and click
+    passthrough; keep a first message unsent when its release
+    closes the panel; move an inserted workflow clear of the
+    nodes it lands on; hold human edits made while the doc
+    socket is down; authenticate the local agent with the
+    active workspace's token; persist tour completion in user
+    settings; keep the answer on screen while a memory note
+    waits on approval
+  * Auth: one sign-in notice per local SSO attempt; recover the
+    menu after a token outage
+  * Audio: handle rejected play() in wave and preview players;
+    keep the preview button in sync; tag agent audio failures
+    with the agent surface
+  * Browser compat: polyfill AbortSignal.any; guard URL.parse
+    and URL.canParse; parse reply asset URLs on older browsers
+  * Canvas: send a replayed reconnect output to its display
+    node; stop reactive proxies breaking workflow loads
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+
+-------------------------------------------------------------------
 Sat Oct 31 13:54:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.58.3 (crosses 1.58.2):

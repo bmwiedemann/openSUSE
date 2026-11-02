@@ -246,4 +246,12 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
     <comment>Update python-comfyui-frontend-package to 1.58.3.</comment>
     <requestid>1394131</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>953dadeef993ff69b1a925fb180fb1b2</srcmd5>
+    <version>1.58.4</version>
+    <time>1793634085</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.58.4 (backport fixes only: agent, auth, audio, browser-compat and canvas fixes; vendored DOMPurify stays 3.4.13).</comment>
+    <requestid>1394467</requestid>
+  </revision>
 </revisionlist>
