@@ -473,4 +473,20 @@
   (gh#python-lsp/python-lsp-server!711).</comment>
     <requestid>1354814</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>cabcae377d53a1fd6bfc918692e32cfa</srcmd5>
+    <version>1.15.0</version>
+    <time>1793633951</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.15.0:
+  * Add compatibility with Jedi 0.20, which comes with official
+    support for Python 3.14.
+  * Issue 712 - Compatibility with Jedi 0.20
+  * Issue 705 - ValueError when opening notebooks on UNC network
+    shares
+  * Issue 623 - TypeError in definitions when handling line and
+    column values
+- drop compatibility_with_current_jedi.patch (upstream)</comment>
+    <requestid>1392847</requestid>
+  </revision>
 </revisionlist>

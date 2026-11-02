@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 26 21:27:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.0:
+  * Add compatibility with Jedi 0.20, which comes with official
+    support for Python 3.14.
+  * Issue 712 - Compatibility with Jedi 0.20
+  * Issue 705 - ValueError when opening notebooks on UNC network
+    shares
+  * Issue 623 - TypeError in definitions when handling line and
+    column values
+- drop compatibility_with_current_jedi.patch (upstream)
+
+-------------------------------------------------------------------
 Fri May 22 22:26:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Rename unpin-autopep8.patch to unpin.patch (it unpins jedi as

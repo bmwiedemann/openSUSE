@@ -24,19 +24,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-lsp-server
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python_lsp_server-%{version}.tar.gz
 Patch1:         unpin.patch
-# PATCH-FIX-UPSTREAM compatibility_with_current_jedi.patch gh#python-lsp/python-lsp-server!711 mcepl@suse.com
-# make python-lsp-server compatible with the current jedi 0.20.*
-Patch2:         compatibility_with_current_jedi.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 61.2}
+BuildRequires:  %{python_module setuptools >= 69.0.0}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210628
@@ -53,7 +50,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pydocstyle >= 6.3.0 with %python-pydocstyle < 6.4.0}
-BuildRequires:  %{python_module pylint >= 3.1 with %python-pylint < 4.1}
+BuildRequires:  %{python_module pylint >= 3.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.1.0 with %python-python-lsp-jsonrpc < 2}
 BuildRequires:  %{python_module rope >= 1.2.0}
@@ -63,9 +60,6 @@ BuildRequires:  %{python_module whatthepatch >= 1.0.2 with %python-whatthepatch 
 BuildRequires:  %{python_module yapf >= 0.33}
 # flake8 is special, see below
 BuildRequires:  %{python_module flake8 >= 7.2 with %python-flake8 < 8}
-BuildRequires:  %{python_module mccabe >= 0.7.0 with %python-mccabe < 0.8.0}
-BuildRequires:  %{python_module pycodestyle >= 2.14.0 with %python-pycodestyle < 2.15.0}
-BuildRequires:  %{python_module pyflakes >= 3.4.0 with %python-pyflakes < 3.5.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-black
@@ -105,18 +99,15 @@ will be enabled:
 %package all
 Summary:        The python-lsp-server[all] extra
 Requires:       python-autopep8 >= 2.0.4
+Requires:       python-pylint >= 3.1
 Requires:       python-python-lsp-server = %{version}-%{release}
 Requires:       python-rope >= 1.11.0
 Requires:       python-yapf >= 0.33
 Requires:       (python-pydocstyle >= 6.3.0 with python-pydocstyle < 6.4.0)
-Requires:       (python-pylint >= 3.1 with python-pylint < 4.1)
 Requires:       (python-whatthepatch >= 1.0.2 with python-whatthepatch < 2)
 # Let's bump this in sync with flake8 and ignore pylsp upstream being still behind
 # https://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
 Requires:       (python-flake8 >= 7.2 with python-flake8 < 8)
-Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
-Requires:       (python-pycodestyle >= 2.14.0 with python-pycodestyle < 2.15.0)
-Requires:       (python-pyflakes >= 3.3.0 with python-pyflakes < 3.5.0)
 
 %description all
 Python Language Server for the Language Server Protocol
