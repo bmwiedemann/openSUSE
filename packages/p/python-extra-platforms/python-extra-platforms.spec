@@ -23,13 +23,13 @@
 %bcond_with libalternatives
 %endif
 Name:           python-extra-platforms
-Version:        13.12.0
+Version:        14.0.0
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        Apache-2.0
 URL:            https://github.com/kdeldycke/extra-platforms
 Source:         https://github.com/kdeldycke/extra-platforms/archive/refs/tags/v%{version}.tar.gz#/extra_platforms-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module uv-build}
 BuildRequires:  %{python_module uv}
@@ -72,18 +72,14 @@ Detect platforms and group them by family
 %python_clone -a %{buildroot}%{_bindir}/extra-platforms
 
 %check
-# remove coverage configuration
-sed -i '/cov=/d' pyproject.toml
-sed -i '/cov-report=/d' pyproject.toml
-sed -i '/--cov/d' pyproject.toml
-sed -i '/--cov-branch/d' pyproject.toml
-sed -i '/--cov-precision=2/d' pyproject.toml
 # do not run tests that try to connect to websites
 rm -f tests/test_platform_data.py
 # remove sphinx tests
 rm -f tests/test_sphinx_crossrefs.py
 
 IGNORED_CHECKS="test_pyproject_classifiers"
+# https://github.com/kdeldycke/extra-platforms/issues/745
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_typing_is_not_imported"
 %pytest -k "not (${IGNORED_CHECKS})"
 
 %if %{with libalternatives}

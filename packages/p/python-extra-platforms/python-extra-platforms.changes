@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Oct 31 12:46:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 14.0.0:
+  * Breaking: Drop Python 3.10, past its end of life:
+    extra-platforms now needs Python 3.11 or newer.
+  * Breaking: Remove the deprecated aliases EXTRA_GROUPS,
+    NON_OVERLAPPING_GROUPS, GUIX_BUILD, TUMBLEWEED,
+    is_guix_build(), is_tumbleweed() and their skip_* and unless_*
+    decorators. Use NON_CANONICAL_GROUPS, CANONICAL_GROUPS,
+    HERMETIC_BUILD and OPENSUSE instead.
+  * Breaking: is_unknown(), @skip_unknown and @unless_unknown now
+    match when a trait category resolves to its unknown trait,
+    instead of never.
+  * Breaking: Trait.aliases is now a tuple of strings, like
+    Shell.executables, instead of a frozenset.
+  * Breaking: symbol_id, detection_func_id, skip_decorator_id and
+    unless_decorator_id are now properties, absent from
+    dataclasses.fields() and dataclasses.asdict().
+  * Accept the class metadata of a Trait or Group subclass as class
+    keyword arguments, like class Fruit(Trait, type_name="fruit").
+  * Accept a trait ID in any case, or an alias, in Group.remove(),
+    Group.discard() and Group.pop(), like in Group.add().
+  * Run a group detection function on its own members only:
+    is_any_windows() no longer spawns ps on macOS.
+  * Stop importing typing at runtime, which shortens the cold
+    import of the package.
+  * Require pytest 8.4 or newer in the pytest extra.
+  * Fix Group.add() adding only the first member of a group whose
+    ID it received: it now raises ValueError.
+  * Fix Group.remove() and Trait.groups matching a trait that only
+    shares its ID with a group member.
+  * Fix reduce() returning the empty groups of its target_pool.
+  * Fix the PyPI sdist missing AGENTS.md and
+    .github/code-of-conduct.md, which the documentation includes.
+- update to 13.13.0:
+  * Detect Artix Linux through the artix ID its own /etc/os-release
+    carries. Closes #720.
+  * Detect a Linux distribution with an unrecognized os-release ID
+    as GENERIC_LINUX instead of UNKNOWN_PLATFORM, so it stays in
+    the LINUX group.
+  * Fix platform detection raising on an os-release file that
+    cannot be read, holds invalid UTF-8 or leaves a quote unclosed.
+  * Fix shell detection raising where it reads the process tree
+    from ps, like on macOS, when a process argument holds invalid
+    UTF-8.
+  * Fix the warning for a trait alias like amd64 pointing inside
+    the package instead of at the line that used it.
+  * Fix reading the docstring of a trait or group raising TypeError
+    when its data module has no __file__.
+  * Fix the documentation examples of reduce() and
+    Architecture.info(), which showed output the current code does
+    not produce.
+  * Measure test coverage with coverage run instead of pytest-cov,
+    which the test dependency group no longer installs.
+  * Fix the test suite aborting with Different tests were collected
+    under pytest-xdist when pytest-randomly is disabled.
+
+-------------------------------------------------------------------
 Fri Oct 16 05:00:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.12.0:
