@@ -302,4 +302,12 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
     <comment>Update python-comfyui-frontend-package to 1.59.10: backport fixes on core/1.59.</comment>
     <requestid>1398891</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0ed68ab8edb15cd46e8cf4a35fc2a2be</srcmd5>
+    <version>1.59.11</version>
+    <time>1795294064</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-comfyui-frontend-package to 1.59.11: backport fixes on core/1.59</comment>
+    <requestid>1399603</requestid>
+  </revision>
 </revisionlist>

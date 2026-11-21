@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 21 07:06:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.59.11 (backport fixes only on core/1.59):
+  * Agent: storage-flush binding kept; downloading model named;
+    Input-needed kept in tab title; approvals recover after
+    socket drops
+  * Workflows stay cloneable via plain-array link types; canvas
+    keeps drawing on non-string color/combo; unreadable saved
+    file reports a reason
+  * Execution websocket updates routed per workflow; Open on
+    Cloud shown before local sign-in; rollout revalidated
+    before local handoff; Run-on-Cloud clicks tracked
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+
+-------------------------------------------------------------------
 Fri Nov 20 06:25:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.59.10 (backport fixes only on core/1.59,
