@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Nov 18 18:08:09 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 4.3.0:
+  * zpk: new native @zpk class
+- Update to version 4.2.3:
+  * stepinfo: New function providing characteristic values of
+    the step response of a system. Input argument is an LTI system,
+    passing data of a measured step response is not yet implemented
+  * bode: More robust computation of the gain for tf systems
+    (again bug #68196)
+  * c2d: Fix algorithm for matched poles/zeros discretization
+- Update to version 4.2.2:
+  * compreal: New function for controllable or observable
+    companion form
+  * bode: Fix wrong phase for systems with negative gain
+  * bode: Fix poles and zeros at z=1 for discr.-time
+    systems (bug#68196)
+  * bode: Convert tf-systems into state space for mimo and higher
+    order systems as well as for tf with spreaded
+    coefficients (bug #68195)
+  * bode: Improved handling of conjugate complex poles and zeros on
+    the imag. axis (cont.-time) or on the unit circle (discr.-time)
+  * initial: Error for systems not given as state space model
+    since initial condition is unclear
+  * lsim: For input-output models, the initial condition is set to
+    zero because initial condition is unclear, new parameter metrhod
+    for the used discretization method; improved graphical output
+  * Added demos and tests to more functions (like e.g. arx)
+  * pdf and qch documentation includes demo code, results and
+    resulting figures if package is installed by "pkg install control"
+
+-------------------------------------------------------------------
 Sun Apr 19 15:27:20 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.2.1:

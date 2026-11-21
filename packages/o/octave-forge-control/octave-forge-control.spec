@@ -18,7 +18,7 @@
 
 %define octpkg  control
 Name:           octave-forge-%{octpkg}
-Version:        4.2.1
+Version:        4.3.0
 Release:        0
 Summary:        Computer-Aided Control System Design (CACSD) Tools
 License:        GPL-3.0-or-later
