@@ -18,7 +18,7 @@
 
 
 Name:           python-cma
-Version:        4.4.4
+Version:        4.6.0
 Release:        0
 Summary:        Covariance Matrix Adaptation Evolution Strategy numerical optimizer
 License:        BSD-3-Clause
