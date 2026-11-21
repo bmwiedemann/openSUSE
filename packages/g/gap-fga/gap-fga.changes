@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 20 10:27:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.1
+  * Install the `PreImagesRepresentative` method for free group
+    homomorphisms as `PreImagesRepresentativeNC`, for GAP versions
+    that have it.
+
+-------------------------------------------------------------------
 Wed Feb 14 19:39:40 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.0
