@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 16 14:37:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libsmi-flex-yybuffer.patch
+    + rename static yybuffer array, clashes with yybuffer typedef
+      in new flex
+
+-------------------------------------------------------------------
 Thu Jul  3 07:19:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix automake.am files to locate egrep / grep -E in a portable

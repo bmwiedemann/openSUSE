@@ -1,0 +1,58 @@
+--- libsmi-0.4.8.orig/lib/scanner-smi.l
++++ libsmi-0.4.8/lib/scanner-smi.l
+@@ -66,7 +66,7 @@
+ #define yylval (*lvalp)
+ 
+ 
+-static YY_BUFFER_STATE yybuffer[MAX_LEX_DEPTH];
++static YY_BUFFER_STATE lexBuffer[MAX_LEX_DEPTH];
+ 
+ static int lexDepth = 0; 
+ 
+@@ -78,7 +78,7 @@
+     if (lexDepth >= MAX_LEX_DEPTH) {
+ 	return (-1);
+     }
+-    yybuffer[lexDepth++] = YY_CURRENT_BUFFER;
++    lexBuffer[lexDepth++] = YY_CURRENT_BUFFER;
+     yy_switch_to_buffer(yy_create_buffer(file, YY_BUF_SIZE));
+     return (lexDepth);
+ }
+@@ -89,7 +89,7 @@
+ smiLeaveLexRecursion()
+ {    
+     yy_delete_buffer(YY_CURRENT_BUFFER);
+-    yy_switch_to_buffer(yybuffer[--lexDepth]);
++    yy_switch_to_buffer(lexBuffer[--lexDepth]);
+ }
+ 
+ 
+--- libsmi-0.4.8.orig/lib/scanner-sming.l
++++ libsmi-0.4.8/lib/scanner-sming.l
+@@ -64,7 +64,7 @@
+ #define yylval (*lvalp)
+ 
+ 
+-static YY_BUFFER_STATE yybuffer[MAX_LEX_DEPTH];
++static YY_BUFFER_STATE lexBuffer[MAX_LEX_DEPTH];
+ 
+ static int lexDepth = 0; 
+ 
+@@ -76,7 +76,7 @@
+     if (lexDepth >= MAX_LEX_DEPTH) {
+ 	return (-1);
+     }
+-    yybuffer[lexDepth++] = YY_CURRENT_BUFFER;
++    lexBuffer[lexDepth++] = YY_CURRENT_BUFFER;
+     yy_switch_to_buffer(yy_create_buffer(file, YY_BUF_SIZE));
+     return (lexDepth);
+ }
+@@ -87,7 +87,7 @@
+ smingLeaveLexRecursion()
+ {    
+     yy_delete_buffer(YY_CURRENT_BUFFER);
+-    yy_switch_to_buffer(yybuffer[--lexDepth]);
++    yy_switch_to_buffer(lexBuffer[--lexDepth]);
+ }
+ 
+ 

@@ -1,7 +1,7 @@
 #
 # spec file for package libsmi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Patch4:         libsmi-bison-3.0.patch
 Patch5:         libsmi-exports.patch
 Patch6:         libsmi-c99.patch
 Patch7:         libsmi-0.4.8-egrep.patch
+# new flex typedefs yybuffer
+Patch8:         libsmi-flex-yybuffer.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libtool
@@ -89,6 +91,7 @@ libsmi.
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 autoreconf --force --install

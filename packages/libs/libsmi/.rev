@@ -214,4 +214,12 @@
     <comment></comment>
     <requestid>1293110</requestid>
   </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>4191d2a994145527d6d721df566b6b80</srcmd5>
+    <version>0.4.8</version>
+    <time>1795293878</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with new flex</comment>
+    <requestid>1397931</requestid>
+  </revision>
 </revisionlist>
