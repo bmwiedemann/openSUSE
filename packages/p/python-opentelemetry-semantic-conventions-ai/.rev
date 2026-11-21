@@ -98,4 +98,12 @@ range, which fixes 7 issues in other instrumentors. No CVE.</comment>
     <comment>Normalize %files form (no functional change).</comment>
     <requestid>1394116</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>85f2e821a3a1a44888e68a7b7919baac</srcmd5>
+    <version>0.5.2</version>
+    <time>1795294054</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-opentelemetry-semantic-conventions-ai monorepo to 0.63.1: Version stays 0.5.2, subdir byte-identical, no code change.</comment>
+    <requestid>1399598</requestid>
+  </revision>
 </revisionlist>
