@@ -18,14 +18,14 @@
 
 %define lname   libhomfly0
 Name:           libhomfly
-Version:        1.04
+Version:        1.05
 Release:        0
 Summary:        Library to compute the homfly polynomial of a link
 License:        LicenseRef-SUSE-Public-Domain
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/miguelmarco/libhomfly
 Source:         https://github.com/miguelmarco/libhomfly/releases/download/%version/%name-%version.tar.gz
-BuildRequires:  gc-devel
+BuildRequires:  pkgconfig(bdw-gc)
 
 %description
 A library to compute the homfly polynomial of a link.
