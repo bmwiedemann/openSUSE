@@ -1,7 +1,7 @@
 #
 # spec file for package med-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,12 +42,12 @@ Patch2:         use_installed_python_modules_for_tests.patch
 Patch3:         Fix-no_return_in_nonvoid_function.patch
 # PATCH-FIX-OPENSUSE
 Patch4:         0001-Fix-AppendOutput-signature-for-Swig-4.3.patch
-# PATCH-FIX-UPSTREAM
-Patch5:         https://src.fedoraproject.org/rpms/med/raw/rawhide/f/hdf5-1.14.patch#/med-tools-hdf1_14.patch
+# PATCH-FIX-UPSTREAM rebase based on ref:https://src.fedoraproject.org/rpms/med/blob/rawhide/f/hdf5-1.14.patch
+Patch5:         med-tools-hdf1_14.patch
 # PATCH-FIX-UPSTREAM rebase based on ref:https://src.fedoraproject.org/rpms/med/blob/rawhide/f/med-py3.13.patch
 Patch6:         med-tools-python3_13.patch
-# PATCH-FIX-UPSTREAM
-Patch7:         https://src.fedoraproject.org/rpms/med/raw/rawhide/f/med-gcc15.patch#/med-tools-gcc15.patch
+# PATCH-FIX-UPSTREAM rebase based on ref:https://src.fedoraproject.org/rpms/med/blob/rawhide/f/med-gcc15.patch
+Patch7:         med-tools-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc

@@ -24,4 +24,18 @@ Index: med-5.0.0/python/med_enum_typemap.i
    if (pinst == NULL) printf("%s\n","Can't instanciate class $1_basetype");
    $result=SWIG_AppendOutput($result, pinst);
  }
-
+Index: med-5.0.0/python/med_common.i
+===================================================================
+--- med-5.0.0.orig/python/med_common.i
++++ med-5.0.0/python/med_common.i
+@@ -14,8 +14,8 @@
+     if ( result < 0 ) {
+       /* fprintf(stderr,"Code erreur MED : %2d\n",result); */
+       PyObject* exobj = PyTuple_New(2);
+-      PyTuple_SetItem(exobj,0,PyString_FromString("Error returned from MEDfichier API (funcname)."));
+-      PyTuple_SetItem(exobj,1,PyInt_FromLong((long) result));
++      PyTuple_SetItem(exobj,0,PyUnicode_FromString("Error returned from MEDfichier API (funcname)."));
++      PyTuple_SetItem(exobj,1,PyLong_FromLong((long) result));
+       SWIG_Python_SetErrorObj(PyExc_RuntimeError,exobj);
+       SWIG_fail;
+     }

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 20 09:35:00 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Stop downloading the Fedora patches via URLs in the spec file and
+  use the committed local copies instead. Otherwise the
+  download_files service fails whenever Fedora regenerates a patch
+  and this happens often changing only the timestamps.
+
+-------------------------------------------------------------------
+Mon Nov 16 15:26:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update med-tools-python3_13.patch: replace obsolete Python 2 calls
+  (PyString_FromString, PyInt_FromLong) with Python 3 C API in
+  python/med_common.i.
+
+-------------------------------------------------------------------
 Tue Mar 25 09:38:28 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop full URL for source tarball as the upstream web-server is
