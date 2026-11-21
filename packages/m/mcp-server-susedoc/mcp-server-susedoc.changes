@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Fri Nov 20 14:39:35 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Initial package of mcp-server-susedoc 0.1.4:
+  * MCP server and web interface for openSUSE/SUSE documentation
+    in DocBook, AsciiDoc, Markdown and plain text
+  * tools list_documents, read_document, find_command and define_term
+
