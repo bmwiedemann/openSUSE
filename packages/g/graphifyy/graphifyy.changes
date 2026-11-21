@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Nov 21 07:26:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Skip 10 %check tests needing the optional tree-sitter-sql
+  and tree-sitter-pascal grammars (not in Factory): upstream
+  0.9.112-0.9.114 added them without importorskip/fallback cover.
+
+-------------------------------------------------------------------
+Sat Nov 21 07:06:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.114:
+  * 0.9.112: Java overloads split by arity, Go bare receivers
+    stay in-package, Rust crate imports stay in-crate; C angle
+    includes, SQL empty-id guard, dedup prefix fix; install
+    targets the file Claude Code reads, Kilo parse guard;
+    AST schema 48
+  * 0.9.113: minimum Python is now 3.11.5 (was 3.11), soupsieve
+    pinned to 4.1.1 in svg/all/pdf extras only; Ruby, Lua, Scala
+    and Elixir underscore/case twins get distinct ids; Go stub
+    collision, Python generic bases and tsconfig extends fixes;
+    AST schema 49
+  * 0.9.114: extract/build pipeline speed-ups with identical
+    output; Lombok getters, Kotlin typed receivers, PL/pgSQL
+    reads, T-SQL dedup, std type rewire guard and sys.path
+    imports; AST schema 50
+  * Many more fixes; see upstream release notes for full list
+
+-------------------------------------------------------------------
 Mon Nov 16 20:33:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.111:

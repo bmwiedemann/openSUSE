@@ -127,4 +127,12 @@
     <comment>Update graphifyy to 0.9.111: extractor fixes, AST schemas 45/46/47, Python 3.11 floor, Pillow 13 extras.</comment>
     <requestid>1398012</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e315c9988117ad4d18721e2405715a2a</srcmd5>
+    <version>0.9.114</version>
+    <time>1795294059</time>
+    <user>dimstar_suse</user>
+    <comment>Update graphifyy to 0.9.114: pipeline speed-ups, extractor fixes, skip sql/pascal tests needing optional grammars.</comment>
+    <requestid>1399609</requestid>
+  </revision>
 </revisionlist>
