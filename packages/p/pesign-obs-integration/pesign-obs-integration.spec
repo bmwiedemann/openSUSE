@@ -22,7 +22,7 @@
 %endif
 
 Name:           pesign-obs-integration
-Version:        10.2+git20260731.2d86941
+Version:        10.2+git20261118.9b25f14
 Release:        0
 Summary:        Macros and scripts to sign the kernel and bootloader
 License:        GPL-2.0-or-later
@@ -37,15 +37,14 @@ Requires:       mozilla-nss-tools
 Requires:       nss-tools
 %endif
 Requires:       openssl
+# For pesign-pcrsig
+Requires:       perl
 # suse-module-tools <= 15.0.10 contains modsign-verify
 %if 0%{?suse_version}
 Requires:       suse-module-tools >= 15.0.10
 %endif
 %ifarch %{ix86} x86_64 ia64 aarch64 %{arm} riscv64 loongarch64
 Requires:       pesign
-%endif
-%ifarch x86_64 aarch64
-Requires:       efitools
 %endif
 
 %description
@@ -60,7 +59,7 @@ boot loader, kernel and kernel modules in the openSUSE Buildservice.
 %install
 
 mkdir -p %{buildroot}%{_prefix}/lib/rpm/brp-suse.d %{buildroot}%{_prefix}/lib/rpm/pesign
-install pesign-gen-repackage-spec kernel-sign-file gen-hmac %{buildroot}%{_prefix}/lib/rpm/pesign
+install pesign-gen-repackage-spec pesign-pcrsig kernel-sign-file gen-hmac %{buildroot}%{_prefix}/lib/rpm/pesign
 install brp-99-pesign %{buildroot}%{_prefix}/lib/rpm/brp-suse.d
 # brp-99-compress-vmlinux has nothing to do with signing. It is packaged in
 # pesign-obs-integration because this package is already used by the kernel

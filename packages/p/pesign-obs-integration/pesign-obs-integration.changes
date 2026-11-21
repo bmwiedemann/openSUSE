@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 18 06:32:50 UTC 2026 - jlee@suse.com
+
+- Update to version 10.2+git20261118.9b25f14:
+  * README.md: Add note for BRP_PESIGN_PCRSIG_FILES does not support RemovePathPostFixes
+  * Sign the TPM2 PCR policies of Unified Kernel Images
+  * modsign-repackage: fix PIPESTATUS scoping when verifying detached signature
+  * fix: correct RemovePathPostFixes typo in brp-99-pesign
+
+-------------------------------------------------------------------
 Wed Aug 12 05:14:49 UTC 2026 - Joey Lee <jlee@suse.com>
 
 - Add efitools as a runtime requires package on x86_64 and aarch64.
