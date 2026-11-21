@@ -35,9 +35,9 @@ to match).
        manifest: {
          name: "CodeNomad",
          short_name: "CodeNomad",
---- a/scripts/smoke-packaged-resources.cjs
-+++ b/scripts/smoke-packaged-resources.cjs
-@@ -70,8 +70,8 @@
+--- a/scripts/smoke-packaged-resources.cjs	2026-11-01 00:00:00.000000000 +0100
++++ b/scripts/smoke-packaged-resources.cjs	2026-11-01 00:00:00.000000000 +0100
+@@ -68,8 +68,8 @@
    const entrypoint = path.join(serverRoot, "dist", "bin.js")
    // Remote Control's self-contained OpenTunnel bundle, loaded on demand.
    const remoteTunnel = path.join(serverRoot, "dist", "remote-control", "tunnel-runtime.js")
@@ -47,7 +47,7 @@ to match).
 +  const appIcon = path.join(serverRoot, "public", "logo.png")
    // Distro build: no downloaded bundle on OBS; smoke the system Node.js
    // that the Rust backend resolves at runtime (see managed_node.rs).
-   const bundledNode = electron ? path.resolve(electron) : nodeBinary(resourcesRoot, target)
+   const bundledNode = nodeBinary(resourcesRoot, target)
 --- a/packages/tauri-app/src-tauri/src/windows_notification_identity.rs	2026-11-01 00:00:00.000000000 +0100
 +++ b/packages/tauri-app/src-tauri/src/windows_notification_identity.rs	2026-11-01 00:00:00.000000000 +0100
 @@ -25,13 +25,13 @@

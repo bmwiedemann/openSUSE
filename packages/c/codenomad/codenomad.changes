@@ -1,28 +1,14 @@
 -------------------------------------------------------------------
-Fri Nov 20 06:36:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+Fri Nov 20 06:17:32 UTC 2026 - Bernhard M. Wiedemann <bwiedemann@suse.de>
 
-- Update to 1.1.0:
-  * Design agent with Images, memory, Missions and workspaces.
-  * Hardening, Tauri 2.12, Node 24.22.3; opencode >= 2.3.0 minimum.
-  * CVE-2026-120222: undici DoS in cache interceptor (boo#1290279)
-  * CVE-2026-120415: undici leak via tuple headers (boo#1290311)
-  * CVE-2026-120423: undici SRI bypass via whitespace (boo#1290322)
-  * CVE-2026-116630: undici leak via revalidation (boo#1290340)
-  * CVE-2026-116592: undici poisoning via redirects (boo#1290356)
-  * CVE-2026-120474: undici leak via same-origin (boo#1290376)
-- Requires nodejs24 >= 24.22 and opencode >= 2.3.0.
-- Rebase codenomad-system-node.patch and
-  codenomad-no-pwa-assets.patch for the new resources script.
-- Drop esbuild-0.21.5.tar.gz and esbuild-0.25.12.tar.gz, add
-  esbuild-0.28.2.tar.gz; refresh rollup-4.52.5.tar.gz to
-  rollup-4.68.1.tar.gz and both vendor trees (566/195 crates).
-- Re-strip node_modules.obscpio (110 tarballs, 162 binaries) and
-  regen package-lock.json integrity and node_modules.sums.
-- Re-derive License over the shipped trees (366 crates, drop
-  BSD-2-Clause) and keep legacy-container true in _service
-  (service aborts without it).
-  * Many more fixes and improvements; see upstream's release notes
-    for the full list
+- Make the build reproducible:
+  * drop npm's hidden node_modules/.package-lock.json from the staged
+    server resources; its resolved URLs carried the ephemeral localhost
+    port of the offline registry proxy.
+  * backport the embedded-asset determinism half of tauri PR #15777
+    (tauri-codegen 2.7.0) into the vendored tauri-codegen 2.5.5
+    (codenomad-deterministic-csp-hashes.patch): the CSP hash list baked
+    into the binary was emitted in file system directory order.
 
 -------------------------------------------------------------------
 Sat Oct 31 18:33:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
