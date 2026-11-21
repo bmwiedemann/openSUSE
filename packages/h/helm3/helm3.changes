@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 20 17:02:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to address:
+  * bsc#1283642, CVE-2026-63209: signed integer overflow in
+    s2.NewDict() allows an attacker to bypass repeat index
+    validation and cause a process crash
+
+-------------------------------------------------------------------
 Wed Oct 28 17:50:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to address:
