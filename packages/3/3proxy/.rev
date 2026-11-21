@@ -133,4 +133,13 @@
   * https://github.com/3proxy/3proxy/releases/tag/1.0.3</comment>
     <requestid>1396040</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1a77dcd6283c1570346f8bfde5ea83ab</srcmd5>
+    <version>1.0.4</version>
+    <time>1795294076</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.0.4
+  * https://github.com/3proxy/3proxy/releases/tag/1.0.4</comment>
+    <requestid>1399620</requestid>
+  </revision>
 </revisionlist>
