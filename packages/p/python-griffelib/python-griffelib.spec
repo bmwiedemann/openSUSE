@@ -1,7 +1,7 @@
 #
 # spec file for package python-griffelib
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           python-griffelib
-Version:        2.0.2
+Version:        2.4.1
 Release:        0
 Summary:        Signatures for entire Python programs (library)
 License:        ISC
@@ -25,12 +26,12 @@ Source0:        https://files.pythonhosted.org/packages/source/g/griffelib/griff
 # PATCH-FEATURE-OPENSUSE static-version.patch mcepl@suse.com
 # Don't use uv-dynamic-versioning, just set it statically
 Patch0:         static-version.patch
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Suggests:       python-pip >= 24.0
 Suggests:       python-platformdirs >= 4.2
 Suggests:       python-wheel >= 0.42
@@ -55,7 +56,7 @@ sed -i -e '/^version =/s/@VERSION@/%{version}/' pyproject.toml
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE LICENSE
+%license LICENSE
 %{python_sitelib}/griffe
 %{python_sitelib}/griffelib-%{version}.dist-info
 
