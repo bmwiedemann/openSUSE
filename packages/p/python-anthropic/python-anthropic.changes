@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 21 07:06:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.12.0:
+  * API: add the image_dimensions_too_large error code
+  * Fix Bedrock clients to send the user profile ID in the
+    request body, which Bedrock reads, instead of the
+    anthropic-user-profile-id header, which it ignores;
+    a body value takes priority over the header
+  * Docs: clarify billing_policy in batches and two billing
+    errors
+
+-------------------------------------------------------------------
 Fri Nov 20 06:24:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.11.0:

@@ -396,4 +396,12 @@ claude-sonnet-4-5 is deprecated. No new dependencies.
     <comment>Update python-anthropic to 2.11.0: Admin API managed settings, SigV4 space-encoding fix, cached schema perf.</comment>
     <requestid>1398890</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b167decd9e4dcb012a749853e0a6b880</srcmd5>
+    <version>2.12.0</version>
+    <time>1795294053</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-anthropic to 2.12.0: image_dimensions_too_large error code, Bedrock user-profile-ID body fix, billing-policy docs.</comment>
+    <requestid>1399596</requestid>
+  </revision>
 </revisionlist>
