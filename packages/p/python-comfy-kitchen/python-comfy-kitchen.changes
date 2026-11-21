@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Nov 21 07:50:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add BuildRequires: python-torch-devel (workaround:
+  torch 2.15.0 ships torch/_inductor/codegen in -devel
+  only, breaking %check import via torch._dynamo).
+
+-------------------------------------------------------------------
+Sat Nov 21 07:40:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add BuildRequires: python-sympy (workaround: torch
+  lacks the Requires on python3.14, breaking %check
+  import via torch._dynamo).
+
+-------------------------------------------------------------------
+Sat Nov 21 07:29:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add BuildRequires: python-typing_extensions (workaround: torch
+  lacks the Requires on python3.14, breaking %check import).
+
+-------------------------------------------------------------------
+Sat Nov 21 07:18:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.41:
+  * New window_attention op for local 2D attention over stacked
+    key planes, with a pure-PyTorch eager implementation used
+    by this CPU-only build (plus native CUDA and HIP kernels)
+  * New memmove op for overlapping copies within one allocation
+    (CUDA/HIP kernel, plain copy fallback on CPU)
+  * New closest_hit_on_mesh CUDA op for nearest ray hits on
+    a mesh BVH
+  * Remainder of the release is CUDA and HIP kernel work
+    (block quantization, fused RMS-RoPE), not compiled in
+    this CPU-only build
+
+-------------------------------------------------------------------
 Thu Oct 22 11:43:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.40:
