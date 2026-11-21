@@ -525,4 +525,15 @@
   * bsc#1288460, CVE-2026-116591, github.com/klauspost/compress/zstd:</comment>
     <requestid>1393593</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>6f5142f0c8bd2362428decf27debae47</srcmd5>
+    <version>2.1.2</version>
+    <time>1795293933</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1288356, CVE-2026-116585,CVE-2026-116586,CVE-2026-116587:
+  github.com/go-jose/go-jose/v4: multiple security issues in
+  github.com/go-jose/go-jose before 4.1.6</comment>
+    <requestid>1398951</requestid>
+  </revision>
 </revisionlist>

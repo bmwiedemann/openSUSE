@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 20 09:50:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to address:
+  * bsc#1288356, CVE-2026-116585,CVE-2026-116586,CVE-2026-116587:
+  github.com/go-jose/go-jose/v4: multiple security issues in
+  github.com/go-jose/go-jose before 4.1.6
+
+-------------------------------------------------------------------
 Wed Oct 28 18:29:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to address:

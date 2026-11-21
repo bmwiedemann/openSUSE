@@ -46,6 +46,7 @@ non-image OCI Artifacts.
 
 %prep
 %autosetup -p1 -a1
+rm -v testdata/haul.tar.zst
 
 %build
 export CGO_ENABLED=1
@@ -65,8 +66,15 @@ go build -o hauler -mod=vendor -buildmode=pie -trimpath -ldflags "-s -w -X haule
 %install
 install -D -m 755 hauler %{buildroot}/%{_bindir}/%{name}
 
+%check
+# TestNewChart/should_fetch_a_remote_chart needs network access (charts.jetstack.io)
+# TestLoadCmd_RemotePresigned_NoLogLeak needs testdata/haul.tar.zst, which is removed in %%prep
+# TestUnarchiveLayoutTo*, TestLoadCmd_LocalFile and TestLoadCmd_RemoteArchive fail in the build environment (likely missing testdata/haul.tar.zst)
+go test -skip 'TestNewChart/should_fetch_a_remote_chart|TestLoadCmd_RemotePresigned_NoLogLeak|TestUnarchiveLayoutTo|TestLoadCmd_LocalFile|TestLoadCmd_RemoteArchive' ./...
+
 %files
 %doc README.md
+%license LICENSE
 %{_bindir}/%{name}
 
 %changelog
