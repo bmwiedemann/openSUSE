@@ -1,11 +1,11 @@
 <services>
-  <!-- Upstream tags releases again; track the tag (0.1.2 sorts above
-       the old 0.1.1+git snapshot and ships the hamlib fixes patch-free). -->
+  <!-- Upstream tags releases again; track the tag (0.2.0 carries
+       the RtAudio 6.0.1 upgrade and the #24/#25 compat fixes). -->
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/pothosware/SoapyAudio.git</param>
     <param name="scm">git</param>
-    <param name="revision">soapy-audio-0.1.2</param>
-    <param name="versionformat">0.1.2</param>
+    <param name="revision">soapy-audio-0.2.0</param>
+    <param name="versionformat">0.2.0</param>
     <param name="exclude">.git*</param>
     <param name="filename">soapy-audio</param>
   </service>

@@ -21,9 +21,8 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-audio
 Name:           soapy-audio
-# Upstream tags releases again; the 0.1.2 tag ships the hamlib fixes
-# patch-free.
-Version:        0.1.2
+# Upstream tags releases again; track the tag.
+Version:        0.2.0
 Release:        0
 Summary:        SoapySDR module for audio devices
 # Legal-Review-Notice: cmake/Modules/FindRtAudio.cmake is BSD-3-Clause (Idiap
@@ -35,8 +34,9 @@ Summary:        SoapySDR module for audio devices
 License:        MIT
 URL:            https://github.com/pothosware/SoapyAudio
 Source:         %{name}-%{version}.tar.zst
-# NB: nothing here may pull in rtaudio-devel - upstream's FindRtAudio.cmake
-# would then prefer the system rtaudio 6 and fail to compile (see %%build).
+# NB: nothing here may pull in rtaudio-devel - with EXTERNAL_RTAUDIO=AUTO
+# upstream's FindRtAudio.cmake would then prefer system rtaudio 6 over
+# the in-tree copy built below (see %%build).
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -56,7 +56,7 @@ Summary:        SoapySDR module for audio devices
 # soname dep pulls only libSoapySDR, which is what dlopens the module;
 # require the package too so SoapySDRUtil is there to probe and use it
 Requires:       soapy-sdr
-Provides:       bundled(rtaudio) = 5.1.0
+Provides:       bundled(rtaudio) = 6.0.1
 
 %description -n %{soapy_modname}
 Soapy Audio - audio device support for Soapy SDR.
@@ -74,9 +74,8 @@ sed -n '/RtAudio: realtime audio/,/OTHER DEALINGS IN THE SOFTWARE/p' \
     RtAudio/RtAudio.h > LICENSE.RtAudio.txt
 
 %build
-# rtaudio 6 dropped the RtAudioError API upstream still uses, and moved device
-# enumeration from a 0..count-1 index to opaque ids, which upstream does not
-# do - so the in-tree RtAudio 5.1.0 is built instead of linking system rtaudio.
+# 0.2.0 supports RtAudio 6 (opaque device ids, RtAudioErrorType API);
+# build the in-tree RtAudio 6.0.1 instead of linking system rtaudio.
 # PulseAudio only: RtAudio picks the first compiled API whose getDeviceCount()
 # is non-zero, and RtApiPulse always claims one device, so any other backend
 # compiled in beside it is unreachable dead code.
