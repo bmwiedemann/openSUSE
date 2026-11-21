@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 17 20:14:37 UTC 2026 - David Anes <david.anes@suse.com>
+
+- Update to 12.8.1:
+  * sadf, iostat, pidstat, mpstat, cifsiostat and tapestat: add the
+    NDJSON output format (one JSON object per line)
+  * sar and sadf: fix an out-of-bounds write in check_file_actlst().
+    No CVE assigned
+  * Fix a security issue with crafted sa data files. No CVE assigned
+  * ioconf: fix the buffer overflows when parsing sysstat.ioconf
+  * common: check the pointer before use in extract_wwnid()
+  * sar: fix the min and max values of the serial line statistics
+  * iostat: fix the %util value for groups of disks
+  * pidstat: fix the JSON output when the PID list is empty
+  * sadf and pidstat: escape the forbidden characters in the JSON
+    output. sadf: escape double quotes in the XML output
+  * sar, sadc and sadf: save the flags in a 64-bit unsigned int
+  * rd_stats: do not drop CPUs from the interrupt statistics
+- The four local patches apply unchanged. The upstream configure.ac now
+  checks jq for the NDJSON test, but the spec does not run the
+  simulation tests, so no new BuildRequires.
+
+-------------------------------------------------------------------
 Sun Oct 18 10:56:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 12.8.0:
