@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Nov 20 21:56:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.3:
+  * Add airport_weather dataset with daily observations for six
+    US airports.
+  * Add wind_observations dataset with a worldwide METAR
+    snapshot.
+  * Remove world_countries dataset, API, and boundary data.
+  * Store geographic boundaries in an internal SQLite database
+    (geographic_boundaries.db) using WKB geometries.
+  * Add records() API to us_states and us_counties returning
+    Shapely Polygon/MultiPolygon geometries.
+  * Consolidate stock tables into stocks.csv.gz and add unified
+    stocks.data DataFrame.
+  * Consolidate Gapminder tables into gapminder.csv.gz and add
+    unified gapminder.data DataFrame.
+  * Compress large CSV and JSON datasets with gzip (CGM,
+    SampleSuperstore, cycling, emissions, population, routes,
+    unemployment09, us_cities, world_cities).
+  * Replace static daylight CSV with daylight_for_year()
+    calculating solar times using NOAA formulas.
+  * Add unemployment.by_fips mapping to join with county
+    records.
+  * Update airport_routes to July 2026 BTS domestic flights and
+    OurAirports identifiers.
+  * Replace browser icons with Font Awesome Free 6.7.2 assets.
+  * Generate us_holidays programmatically from calendar rules
+    and OPM federal guidelines.
+  * Load large dataset attributes lazily via __getattr__.
+  * Defer pandas import during package initialization.
+  * Add comprehensive dataset provenance and license metadata
+    under licenses/ and datasets.json.
+  * Update dependencies to pandas >= 2.2.3, numpy >= 1.26.4,
+    shapely >= 2.0, tzdata, and setuptools >= 77.0.3.
+
+-------------------------------------------------------------------
 Mon Oct 13 09:28:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.0:

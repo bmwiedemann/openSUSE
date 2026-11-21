@@ -1,7 +1,7 @@
 #
 # spec file for package python-bokeh_sampledata
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_modules_python}
 # gh#bokeh/bokeh_sampledata#7
 Name:           python-bokeh_sampledata
-Version:        2025.0
+Version:        2026.3
 Release:        0
 Summary:        Sample datasets for Bokeh examples
 License:        BSD-3-Clause
@@ -29,16 +29,23 @@ URL:            https://bokeh.org
 Source:         https://github.com/bokeh/bokeh_sampledata/archive/refs/tags/%{version}.tar.gz#/bokeh_sampledata-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 69.5.1}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module icalendar}
-BuildRequires:  %{python_module pandas >= 1.2}
+BuildRequires:  %{python_module numpy >= 1.26.4}
+BuildRequires:  %{python_module pandas >= 2.2.3}
+BuildRequires:  %{python_module shapely >= 2.0}
+BuildRequires:  %{python_module sqlite3}
+BuildRequires:  %{python_module tzdata}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-icalendar
-Requires:       python-pandas >= 1.2
+Requires:       python-numpy >= 1.26.4
+Requires:       python-pandas >= 2.2.3
+
+Requires:       python-tzdata
 Provides:       python-bokeh-sampledata = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
@@ -58,7 +65,8 @@ sed -i 's/dynamic = \["version"\]/version = "%{version}"/' pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# runs python directly without respecting PYTHONPATH
+%pytest -k "not test_timezones_without_system_database"
 
 %files %{python_files}
 %doc README.md
