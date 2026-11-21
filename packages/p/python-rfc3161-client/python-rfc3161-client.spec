@@ -82,6 +82,7 @@ Protocol (TSP) described in RFC 3161.
 
 %if !%{with test}
 %files %{python_files}
+%license LICENSE
 %{python_sitearch}/rfc3161_client
 %{python_sitearch}/rfc3161_client-%{version}.dist-info
 %endif

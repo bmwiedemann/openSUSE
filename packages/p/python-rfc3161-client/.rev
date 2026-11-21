@@ -44,4 +44,14 @@
     <comment></comment>
     <requestid>1346480</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e058e024e810e1241e13c4d37732d403</srcmd5>
+    <version>1.0.6</version>
+    <time>1795294035</time>
+    <user>dimstar_suse</user>
+    <comment>- add license
+
+    fromTSA-B.</comment>
+    <requestid>1399560</requestid>
+  </revision>
 </revisionlist>
