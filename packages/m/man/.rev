@@ -1204,4 +1204,41 @@
     <comment>- Enable multi compression with libzio</comment>
     <requestid>1378823</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>6235f4ce57df0f1f4704b46f640739b5</srcmd5>
+    <version>2.13.3</version>
+    <time>1795293879</time>
+    <user>dimstar_suse</user>
+    <comment>- Define YY_BUF_SIZE if not defined with flex 2.6.13
+
+- Update to man-db 2.13.3 (16 November 2026)
+  Fixes:
+  * Fix crash in some cases when pages are located via the database.
+    Regression introduced in 2.13.2.
+
+- Update to man-db 2.13.2 (15 November 2026)
+  Fixes:
+   * `man -T` no longer implies `-t` if the given device is suitable for use
+     with `nroff`.
+   * Fix test failures with groff 1.25.0.
+   * Fix test failures with `-fsanitize=address` and
+     `ASAN_OPTIONS=detect_leaks=0`.
+   * Fix most of the memory leaks detected by LeakSanitizer.
+  Improvements:
+   * Recognize Latvian translation of the `NAME` section.
+    Program translation updates:
+   * **New**: Latvian (Rihards Priedītis)
+   * Spanish (Cristian Othón Martínez Vera)
+  Manual page translation updates:
+   * **New**: Latvian (Rihards Priedītis)
+   * **New**: Traditional Chinese (Alang Hsu)
+   * Romanian (Remus-Gabriel Chelu)
+   * Serbian (Мирослав Николић)
+   * Simplified Chinese (Boyuan Yang)
+   * Swedish (Sebastian Rasmussen)
+- Port patches:
+  * man-db-2.13.0-no_abort.patch
+  * man-db-2.6.3-listall.dif</comment>
+    <requestid>1398117</requestid>
+  </revision>
 </revisionlist>

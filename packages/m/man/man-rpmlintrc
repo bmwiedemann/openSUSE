@@ -1,4 +1,0 @@
-# We use %posttrans
-addFilter(".*W:.*post-without-tmpfile-creation.*/usr/lib/tmpfiles\.d/man-db\.conf.*")
-addFilter(".*W:.*name-repeated-in-summary.*man.*")
-addFilter(".*E:.*missing-call-to-setgroups-before-setuid.*/usr/lib64/libman-.*\.so.*")

@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue Nov 17 09:35:29 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Define YY_BUF_SIZE if not defined with flex 2.6.13
+
+-------------------------------------------------------------------
+Tue Nov 17 07:45:21 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to man-db 2.13.3 (16 November 2026)
+  Fixes:
+  * Fix crash in some cases when pages are located via the database.
+    Regression introduced in 2.13.2.
+
+-------------------------------------------------------------------
+Mon Nov 16 09:06:37 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to man-db 2.13.2 (15 November 2026)
+  Fixes:
+   * `man -T` no longer implies `-t` if the given device is suitable for use
+     with `nroff`.
+   * Fix test failures with groff 1.25.0.
+   * Fix test failures with `-fsanitize=address` and
+     `ASAN_OPTIONS=detect_leaks=0`.
+   * Fix most of the memory leaks detected by LeakSanitizer.
+  Improvements:
+   * Recognize Latvian translation of the `NAME` section.
+    Program translation updates:
+   * **New**: Latvian (Rihards Priedītis)
+   * Spanish (Cristian Othón Martínez Vera)
+  Manual page translation updates:
+   * **New**: Latvian (Rihards Priedītis)
+   * **New**: Traditional Chinese (Alang Hsu)
+   * Romanian (Remus-Gabriel Chelu)
+   * Serbian (Мирослав Николић)
+   * Simplified Chinese (Boyuan Yang)
+   * Swedish (Sebastian Rasmussen)
+- Port patches:
+  * man-db-2.13.0-no_abort.patch
+  * man-db-2.6.3-listall.dif
+  * man-db-2.7.1-zio.dif
+  * man-db-2.9.4-alternatives.dif
+  * man-db-2.9.4-no-chown.patch
+  * man-db-2.9.4.patch
+  * man-db-4_alpha_po4a.dif
+  * man-propose-online.patch
+
+-------------------------------------------------------------------
+Wed Nov  4 16:15:06 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop -Wl,--no-as-needed for the compression libraries in
+  man-db-2.7.1-zio.dif, so binaries no longer carry unused direct
+  shared-library dependencies
+- Drop -funroll-loops from optflags
+- Build the mandb wrapper with -fstack-protector-all so it carries
+  a stack canary
+- Reword the summary to avoid repeating the package name
+- Drop the fillup template for sysconfig.cron-man and the dead
+  pre-1500 and pre-1030 branches; daily database updates use the
+  systemd timer
+- Drop man-rpmlintrc, whose filters are all stale
+- Apply spec-cleaner in full mode
+- Drop the add_optflags macro (a 50-parameter macro used once to
+  append three -D defines) and the no-op -pipe -Wall optflags
+  line; the defines are now appended to optflags directly
+- Drop the no-op rm -rf of %{_localstatedir}/cache/man at the
+  start of %install: it runs before %make_install in a fresh
+  buildroot, so it removes nothing
+- Drop the dead _tmpfilesdir fallback (_has_tmpfiled check):
+  the macro is defined by systemd-rpm-macros on all products
+  and filesystem owns /usr/lib/tmpfiles.d, so the fallback
+  never runs; the %dir claim for it goes too
+- Drop the self-referential %global _sysconfdir %{_sysconfdir}:
+  the macro is already defined by RPM as /etc, so the line
+  only redefined it to its own value
+- Drop the dead cron.daily.do_mandb script: daily database
+  updates use the systemd timer (man-db.timer runs upstream
+  man-db.service, which calls mandb directly), and nothing
+  ever invoked do_mandb
+
+-------------------------------------------------------------------
 Fri Sep 18 13:13:07 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Enable multi compression with libzio 

@@ -64,31 +64,31 @@ Signed-off-by: Werner Fink <werner@suse.de>
 +      AC_CHECK_HEADER(zlib.h,[
 +	for lib in z gz
 +	do
-+	  AC_CHECK_LIB($lib, gzopen,             [LIBS="$LIBS -Wl,--no-as-needed -l$lib"; break])
++	  AC_CHECK_LIB($lib, gzopen,             [LIBS="$LIBS -l$lib"; break])
 +	done
 +      ])
 +      AC_CHECK_HEADER(bzlib.h,[
 +	for lib in bz2 bzip2
 +	do
-+	  AC_CHECK_LIB($lib, BZ2_bzopen,         [LIBS="$LIBS -Wl,--no-as-needed -l$lib"; break])
++	  AC_CHECK_LIB($lib, BZ2_bzopen,         [LIBS="$LIBS -l$lib"; break])
 +	done
 +      ])
 +      AC_CHECK_HEADER(lzma.h, [
 +	for lib in lzma
 +	do
-+	  AC_CHECK_LIB($lib, lzma_easy_encoder,       [LIBS="$LIBS -Wl,--no-as-needed -l$lib"; break])
++	  AC_CHECK_LIB($lib, lzma_easy_encoder,       [LIBS="$LIBS -l$lib"; break])
 +	done
 +      ])
 +      AC_CHECK_HEADER(zstd.h, [
 +	for lib in zstd
 +	do
-+	  AC_CHECK_LIB($lib, ZSTD_createCCtx,  [LIBS="$LIBS -Wl,--no-as-needed -l$lib"; break])
++	  AC_CHECK_LIB($lib, ZSTD_createCCtx,  [LIBS="$LIBS -l$lib"; break])
 +	done
 +      ])
 +      AC_CHECK_HEADER(lzlib.h, [
 +	for lib in lz
 +	do
-+	  AC_CHECK_LIB($lib, LZ_decompress_read, [LIBS="$LIBS -Wl,--no-as-needed -l$lib"; break])
++	  AC_CHECK_LIB($lib, LZ_decompress_read, [LIBS="$LIBS -l$lib"; break])
 +	done
 +      ], [], [#include <stdint.h>])
 +    fi
@@ -272,7 +272,7 @@ Signed-off-by: Werner Fink <werner@suse.de>
  	size_t filename_len;
 +#  endif
  #endif /* HAVE_LIBZ */
--	char *ext;
+-	const char *ext;
  	struct compression *comp;
  
  	if (stat (filename, &st) < 0 || S_ISDIR (st.st_mode))

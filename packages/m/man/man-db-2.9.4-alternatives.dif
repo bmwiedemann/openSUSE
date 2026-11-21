@@ -7,7 +7,7 @@ used in the SUSE/OpenSUSE ecosystem.
 
 --- a/src/man.c
 +++ b/src/man.c	2025-08-08 06:51:32.192263735 +0000
-@@ -56,6 +56,7 @@
+@@ -55,6 +55,7 @@
  #include <termios.h>
  #include <time.h>
  #include <unistd.h>
@@ -15,7 +15,7 @@ used in the SUSE/OpenSUSE ecosystem.
  
  #include "argp.h"
  #include "attribute.h"
-@@ -3989,9 +3990,25 @@ static void locate_page_in_manpath (cons
+@@ -3985,9 +3986,25 @@ static void locate_page_in_manpath (cons
  {
  	char *mp;
  

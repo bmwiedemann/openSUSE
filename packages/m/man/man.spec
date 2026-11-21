@@ -16,29 +16,17 @@
 #
 
 
-%global         _sysconfdir %{_sysconfdir}
-%global         _has_tmpfiled  %(rpm -q -f %{_prefix}/lib/tmpfiles.d | grep -c filesystem)
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
-%define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
-%global optflags %{optflags} %{**}
 %bcond_without  sdtimer
 Name:           man
-Version:        2.13.1
+Version:        2.13.3
 Release:        0
-Summary:        A Program for Displaying man Pages
+Summary:        A Program for Displaying Manual Pages
 License:        GPL-2.0-or-later
-Group:          System/Base
 URL:            https://savannah.nongnu.org/projects/man-db
 Source0:        https://download.savannah.gnu.org/releases/man-db/man-db-%{version}.tar.xz
 Source1:        https://download.savannah.gnu.org/releases/man-db/man-db-%{version}.tar.xz.asc
 Source2:        https://savannah.nongnu.org/people/viewgpg.php?user_id=10653#/%{name}.keyring
-Source3:        sysconfig.cron-man
-Source4:        cron.daily.do_mandb
 Source5:        wrapper.c
-Source6:        man-rpmlintrc
 Source7:        man-db-create.service
 Source8:        manpath.csh
 Source9:        manpath.sh
@@ -71,37 +59,30 @@ BuildRequires:  gettext-runtime
 BuildRequires:  gettext-tools
 BuildRequires:  groff
 BuildRequires:  less
-BuildRequires:  libalternatives-devel
-BuildRequires:  libbz2-devel
-BuildRequires:  libpipeline-devel >= 1.5.0
 BuildRequires:  libzio-devel >= 1.17
-BuildRequires:  libzstd-devel
 BuildRequires:  lzip
 BuildRequires:  lzlib-devel
 BuildRequires:  man-pages
 BuildRequires:  pkgconfig
 BuildRequires:  po4a
 BuildRequires:  xz
-BuildRequires:  xz-devel
-BuildRequires:  zlib-devel
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(libalternatives)
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libpipeline) >= 1.5.0
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(systemd)
-Conflicts:      mandoc
+BuildRequires:  pkgconfig(zlib)
 Requires:       glibc-locale-base
-Suggests:       glibc-locale
 Requires:       groff >= 1.18
 Requires:       less
-Requires(post): %fillup_prereq
 Requires(pre):  coreutils
 Requires(pre):  group(man)
 Requires(pre):  user(man)
+Suggests:       glibc-locale
+Conflicts:      mandoc
 Provides:       man_db
-%if 0%{?suse_version} < 1500
-Requires:       cron
-%endif
-%if 0%{?_has_tmpfiled} == 0
-%define _tmpfilesdir %{_prefix}/lib/tmpfiles.d
-%endif
 
 %description
 A program for displaying man pages on the screen or sending them to a
@@ -123,7 +104,6 @@ rm -f configure
 %patch -P12 -p1 -b .p12
 
 %build
-%global optflags %{optflags} -funroll-loops -pipe -Wall
 
 #gettextize --copy --no-changelog
 SEC=(0 1 n l 8 3 2 5 4 9 6 7
@@ -171,7 +151,7 @@ automake --add-missing
 find -name 'Makefile.*' | xargs \
 	sed -ri -e '/^pkglibdir/{ s@^(pkglibdir[[:blank:]]+=[[:blank:]]+\$\(libdir\)).*@\1@p }'
 # Configure
-%add_optflags -D_GNU_SOURCE -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=500
+%global optflags %{optflags} -D_GNU_SOURCE -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=500
 %configure \
 %if %{without sdtimer}
 	--with-systemdtmpfilesdir=no \
@@ -210,7 +190,7 @@ for man in $(find man/ -type f -a -name '*.[0-9]'); do
 	esac
 done
 #
-gcc $CFLAGS -I gl/lib/ -I ./ -I include/ --include config.h \
+gcc $CFLAGS -fstack-protector-all -I gl/lib/ -I ./ -I include/ --include config.h \
 	-D LOCALEDIR="\"%{_datarootdir}/locale\"" \
 	-D LIBEXECDIR="\"%{_libexecdir}\"" -o wrapper %{SOURCE5} -L gl/lib/.libs/ -lgnu
 
@@ -221,10 +201,6 @@ if ! make check; then
 fi
 
 %install
-%if 0%{?suse_version} <= 1030
-    export MKDIR_P="mkdir -p"
-%endif
-rm -rf   %{buildroot}%{_localstatedir}/cache/man
 %make_install nls=all LOCALE_FR_UTF8=fr_FR.UTF-8
 find %{buildroot} -type f -name "*.la" -delete -print
 # Move manual
@@ -253,17 +229,7 @@ sh ./mk_catdirs %{buildroot}
 mkdir -p %{buildroot}%{_datadir}/groff/site-tmac
 install -m 0644 groff/tmac.andb     %{buildroot}%{_datadir}/groff/site-tmac/
 install -m 0644 groff/tmac.andocdb  %{buildroot}%{_datadir}/groff/site-tmac/
-mkdir -p %{buildroot}%{_fillupdir}
 mkdir -p %{buildroot}%{_unitdir}/
-%if 0%{?suse_version} < 1500
-    mkdir -p %{buildroot}%{_sysconfdir}/cron.daily
-%endif
-    install -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}
-%if 0%{?suse_version} < 1500
-    install -m 0744 %{SOURCE4} %{buildroot}%{_sysconfdir}/cron.daily/suse-do_mandb
-%else
-    install -m 0744 %{SOURCE4} %{buildroot}/%{_libexecdir}/man-db/do_mandb
-%endif
 %if %{with sdtimer}
     install -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/
 %endif
@@ -298,7 +264,7 @@ end
 
 %if %{lua: print(rpm.vercmp(rpm.expand("%rpmversion"), "4.13") >= 0 and 1 or 0)}
 %transfiletriggerin -p <lua> -- %{_mandir}
-%trigger_functions
+%{trigger_functions}
 stat = posix.stat("%{_localstatedir}/cache/man/index.db")
 if stat then
     execute("%{_bindir}/mandb", "--quiet")
@@ -321,7 +287,7 @@ end
 
 %if %{lua: print(rpm.vercmp(rpm.expand("%rpmversion"), "4.13") >= 0 and 1 or 0)}
 %transfiletriggerpostun -p <lua> -- %{_mandir}
-%trigger_functions
+%{trigger_functions}
 stat = posix.stat("%{_localstatedir}/cache/man/index.db")
 if stat then
     execute("%{_bindir}/mandb", "--quiet")
@@ -377,9 +343,6 @@ then
 fi
 
 %post
-%if 0%{?suse_version} < 1500
-%{fillup_only -an cron}
-%endif
 /sbin/ldconfig
 %if %{with sdtimer}
 %service_add_post man-db-create.service
@@ -417,9 +380,6 @@ fi
 %doc ChangeLog
 %doc %{_docdir}/man/man-db-manual*
 %config %{_sysconfdir}/manpath.config
-%if 0%{?suse_version} < 1500
-%attr(0744,root,root) %{_sysconfdir}/cron.daily/suse-do_mandb
-%endif
 %dir %{_prefix}/etc/profile.d/
 %{_prefix}/etc/profile.d/manpath.*
 %{_bindir}/apropos
@@ -435,15 +395,9 @@ fi
 %attr(0755,root,root) %{_libexecdir}/man-db/manconv
 %attr(0755,root,root) %{_libexecdir}/man-db/globbing
 %attr(0755,root,root) %{_libexecdir}/man-db/wrapper
-%if 0%{?suse_version} >= 1500
-%attr(0755,root,root) %{_libexecdir}/man-db/do_mandb
-%endif
 %{_sbindir}/accessdb
 %{_libdir}/libman*.so
 %{_libexecdir}/man-db/zsoelim
-%if 0%{?_has_tmpfiled} == 0
-%dir %{_tmpfilesdir}
-%endif
 %{_tmpfilesdir}/man-db.conf
 %if %{with sdtimer}
 %{_unitdir}/man-db-create.service
@@ -462,7 +416,7 @@ fi
 %dir %{_mandir}/sr
 %dir %{_mandir}/ro
 %dir %{_mandir}/tr
-%{_fillupdir}/sysconfig.cron-man
+%dir %{_mandir}/lv
 %defattr(-,man,man)
 %ghost %{_localstatedir}/cache/man
 

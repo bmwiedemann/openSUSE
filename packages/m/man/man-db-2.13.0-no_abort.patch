@@ -48,7 +48,7 @@ that is always initialize saved_uid and saved_gid!
     Return 0 if successful, or -1 with errno set upon failure. The recommended
 --- lib/security.c	2024-11-11 09:10:13.044830286 +0100
 +++ lib/security.c	2024-11-11 09:51:16.688162468 +0100
-@@ -138,7 +138,8 @@
+@@ -137,7 +137,8 @@
  			gripe_set_euid ();
  		uid = ruid;
  		gid = rgid;

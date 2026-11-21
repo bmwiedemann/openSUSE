@@ -5,7 +5,7 @@
 
 --- man-db-2.13.0/src/man.c
 +++ man-db-2.13.0/src/man.c	2024-10-18 12:56:52.431247186 +0000
-@@ -769,11 +769,16 @@ static void gripe_no_man (const char *na
+@@ -764,11 +764,16 @@ static void gripe_no_man (const char *na
  	}
  #endif
  
