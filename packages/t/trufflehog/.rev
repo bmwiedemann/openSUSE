@@ -2887,4 +2887,12 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
     <comment>update to 3.99.9 (forwarded request 1397674 from ojkastl_buildservice)</comment>
     <requestid>1397753</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>810615b351e7ed2510652649eb9762f3</srcmd5>
+    <version>3.100.0</version>
+    <time>1795293961</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.100.0 (forwarded request 1398874 from ojkastl_buildservice)</comment>
+    <requestid>1398985</requestid>
+  </revision>
 </revisionlist>
