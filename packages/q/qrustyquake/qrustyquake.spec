@@ -17,7 +17,7 @@
 
 
 Name:           qrustyquake
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Quake using software rendering with modern maps and mods support
 License:        GPL-3.0-or-later
