@@ -18,13 +18,13 @@
 
 %define octpkg  general
 Name:           octave-forge-%{octpkg}
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        General tools for Octave
 License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gnu-octave.github.io/packages/%{octpkg}/
-Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+Source0:        https://github.com/gnu-octave/octave-general/releases/download/release-%{version}/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  libnettle-devel
