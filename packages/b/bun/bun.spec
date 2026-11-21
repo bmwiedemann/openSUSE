@@ -27,7 +27,7 @@
 # The SQLite amalgamation in Bun's tree. Used for both the bundled() Provides
 # and the %%check that asserts it against sqlite_version(), so the two cannot
 # drift apart on a version bump.
-%define bundled_sqlite 3.53.4
+%define bundled_sqlite 3.54.1
 %define bootstrap_version 1.3.14
 %define dl_boot https://github.com/oven-sh/bun/releases/download/bun-v%{bootstrap_version}
 # Building Bun requires an existing Bun. The build driver runs on Node, but 24
@@ -51,7 +51,7 @@
 # slower but keeps the package free of foreign binaries.
 %bcond_without webkit_source
 Name:           bun
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        Fast all-in-one JavaScript runtime and toolkit
 # Bun itself is MIT, but it is one statically linked executable and everything

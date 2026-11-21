@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Nov 19 15:41:24 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to 1.4.5:
+  * Security
+    - This release includes security fixes for HTTP/3, TLS and DNS. 
+    These protocols, APIs and commands are affected:
+      - HTTP/3, HTTP/1.1, TLS, DNS, Zstandard, Bun.serve, Bun.connect, 
+        Bun.dns, Bun.zstdDecompress, node:tls, node:https, node:http, 
+        node:quic, node:dns, node:zlib, fetch, DecompressionStream
+  * Updated dependencies
+    - `lsquic` v4.9.4 -> v4.11.2
+    - `c-ares` v1.34.8 -> v1.34.9
+    - `SQLite` v3.53.4 -> v3.54.1
+    - `llhttp` v9.4.2 -> v9.4.4
+    - `BoringSSL` August 2026 -> November 2026
+      - SQLite 3.54 no longer lets ALTER TABLE add, rename or drop 
+        a column named rowid, oid or _rowid_, and runs the 
+        setAuthorizer() callback for functions in DEFAULT expressions. 
+        On macOS, Bun uses the system's SQLite.
+  * Bugfixes
+    - Fixed: various stability issues in HTTP/3 and node:quic.
+    - Fixed: RSA signatures with SHA-3, SHA-512/224, SHA-512/256 and 
+    RIPEMD-160 threw ERR_OSSL_RSA_UNKNOWN_ALGORITHM_TYPE in node:crypto.
+    - Fixed: an expired certificate from an unknown issuer now 
+    reports CERT_HAS_EXPIRED, like Node.js.
+    - Fixed: allowPartialTrustChain with crl now requires the chain 
+    to end at a self-issued certificate, like Node.js.
+    - Improved: custom root certificates are validated more strictly, 
+    so some legacy ones are rejected. Bun's bundled roots are not affected.
+
+-------------------------------------------------------------------
 Mon Oct 26 07:27:49 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to 1.4.4:
