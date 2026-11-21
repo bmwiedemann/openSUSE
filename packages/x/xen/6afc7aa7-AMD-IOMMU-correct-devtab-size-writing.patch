@@ -1,0 +1,32 @@
+Subject: AMD/IOMMU: correct devtab size writing
+From: Jan Beulich jbeulich@suse.com Tue Nov 17 17:28:34 2026 +0100
+Date: Tue Nov 17 17:28:34 2026 +0100:
+Git: fe0fee1d15cf3e63d03d688c18833b348b29ae5d
+
+The fix for XSA-524 inadvertently converted a page-granular value to a
+byte-granular one, thus always setting maximum size (2Mb) without the
+table always being that size.
+
+Fixes: d7378932b1fc ("AMD/IOMMU: allocate (at least) one spare device table entry")
+Reported-by: Roger Pau Monné <roger.pau@amd.com>
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Roger Pau Monné <roger.pau@amd.com>
+master commit: ab77da87e9b38022341eb6a54593e681485d203a
+master date: 2026-11-17 17:02:47 +0100
+
+diff --git a/xen/drivers/passthrough/amd/iommu_init.c b/xen/drivers/passthrough/amd/iommu_init.c
+index 9376ca6120..2be7534c70 100644
+--- a/xen/drivers/passthrough/amd/iommu_init.c
++++ b/xen/drivers/passthrough/amd/iommu_init.c
+@@ -80,9 +80,8 @@ static void register_iommu_dev_table_in_mmio_space(struct amd_iommu *iommu)
+ 
+     entry = 0;
+     iommu_set_addr_lo_to_reg(&entry, addr_lo >> PAGE_SHIFT);
+-    set_field_in_reg_u32(ROUNDUP(iommu->dev_table.entries *
+-                                 IOMMU_DEV_TABLE_ENTRY_SIZE,
+-                                 PAGE_SIZE) - 1,
++    set_field_in_reg_u32(PFN_UP(iommu->dev_table.entries *
++                                IOMMU_DEV_TABLE_ENTRY_SIZE) - 1,
+                          entry, IOMMU_DEV_TABLE_SIZE_MASK,
+                          IOMMU_DEV_TABLE_SIZE_SHIFT, &entry);
+     writel(entry, iommu->mmio_base + IOMMU_DEV_TABLE_BASE_LOW_OFFSET);

@@ -3222,4 +3222,12 @@
     <comment>Security Update. Fix for bsc#1288663 CVE-2026-102703,CVE-2026-102704 XSA-523</comment>
     <requestid>1394713</requestid>
   </revision>
+  <revision rev="381" vrev="1">
+    <srcmd5>0e21338bd81efb3c0129c86f040f3601</srcmd5>
+    <version>4.22.0_10</version>
+    <time>1795293908</time>
+    <user>dimstar_suse</user>
+    <comment>Security Update. Fix for bsc#1290016 CVE-2024-21963 XSA-524, bsc#1290020 CVE-2024-36350,CVE-2024-36357,CVE-2026-0004 XSA-525</comment>
+    <requestid>1398712</requestid>
+  </revision>
 </revisionlist>

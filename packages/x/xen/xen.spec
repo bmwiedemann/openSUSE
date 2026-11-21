@@ -126,7 +126,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.22.0_08
+Version:        4.22.0_10
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -175,6 +175,11 @@ Patch11:        6abbe20c-gnttab-address-fallout-from-XSA-501.patch
 Patch12:        6abbe28e-vmx-Rework-#DB-intercept-logic-to-fix-VMEntry-failure-with-BTF.patch
 Patch13:        6ae9cd89-gnttab-complete-checking-in-gnttab_copy_buf_valid.patch
 Patch14:        6ae9cd89-gnttab-move-only-local-domain-may-copy-by-frame-check.patch
+Patch15:        6af35c5a-AMD-IOMMU-allocate-at-least-one-spare-device-table-entry.patch
+Patch16:        6af35c5a-spec-ctrl-Rename-tsa_calculations.patch
+Patch17:        6af35c5a-spec-ctrl-Extend-TSA-SQ-L1-mitigations-to-Zen5-CPUs.patch
+Patch18:        6af35c5a-spec-ctrl-Mitigate-the-new-TSA-Fill-variant.patch
+Patch19:        6afc7aa7-AMD-IOMMU-correct-devtab-size-writing.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch

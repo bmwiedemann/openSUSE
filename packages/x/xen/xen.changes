@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:21:23 MST 2026 - carnold@suse.com
+
+- bsc#1290016 - VUL-0: CVE-2024-21963: xen: AMD IOMMU Out-of-Bounds
+  Device Table Read (XSA-524)
+  6af35c5a-AMD-IOMMU-allocate-at-least-one-spare-device-table-entry.patch
+  6afc7aa7-AMD-IOMMU-correct-devtab-size-writing.patch
+- bsc#1290020 - VUL-0: CVE-2024-36350,CVE-2024-36357,CVE-2026-0004:
+  xen: x86: Transient Scheduler Attacks (XSA-525)
+  6af35c5a-spec-ctrl-Rename-tsa_calculations.patch
+  6af35c5a-spec-ctrl-Extend-TSA-SQ-L1-mitigations-to-Zen5-CPUs.patch
+  6af35c5a-spec-ctrl-Mitigate-the-new-TSA-Fill-variant.patch
+
+-------------------------------------------------------------------
 Tue Nov  3 06:35:14 MST 2026 - carnold@suse.com
 
 - bsc#1288663 - VUL-0: CVE-2026-102703,CVE-2026-102704: xen:
