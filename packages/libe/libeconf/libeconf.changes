@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 19 15:50:18 UTC 2026 - schubi@suse.com
+
+- Update to version 0.8.8:
+  * update bindings docu
+  * removed unneeded GO "close" call
+  * fix Python 3 binding test
+  * building doc while installation
+  * merging: Do also merge line number, comments,...
+  * cmake: allow test builds outside of source tree
+  * removed go bindings
+  * added native Go API
+
+-------------------------------------------------------------------
 Thu Oct 15 12:44:55 UTC 2026 - schubi@suse.com
 
 - Update to version 0.8.6:
