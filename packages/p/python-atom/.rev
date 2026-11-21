@@ -205,4 +205,22 @@
   * Do not call PyWeakref_GET_OBJECT, use PyWeakref_GetRef instead.</comment>
     <requestid>1376524</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bf2faf151b215b12b10525fbb2e171b2</srcmd5>
+    <version>0.14.1</version>
+    <time>1795294019</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.1:
+  * fix support for generic aliases in annotations used to
+    generate a member PR #281
+  * add support for type aliases in annotations used to generate
+    a member PR #280
+  * fix corner cases in C API closing #277 and #278 PR #279
+  * add support for Python 3.15 PR #273
+  * improve type stubs and checks them against mypy, pyrefly and
+    ty PR #274
+  * C API improvements
+- Drop no-pyweakref-get-object.patch (merged upstream).</comment>
+    <requestid>1399550</requestid>
+  </revision>
 </revisionlist>

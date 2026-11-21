@@ -18,19 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-atom
-Version:        0.12.1
+Version:        0.14.1
 Release:        0
 Summary:        Memory efficient Python objects
 License:        BSD-3-Clause
 URL:            https://github.com/nucleic/atom
 Source:         https://files.pythonhosted.org/packages/source/a/atom/atom-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#nucleic/atom#273
-Patch0:         no-pyweakref-get-object.patch
 BuildRequires:  %{python_module cppy >= 1.2.0}
-BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 61.2}
+BuildRequires:  %{python_module setuptools >= 77.0}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler

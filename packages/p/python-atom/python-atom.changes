@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 20 20:38:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  * fix support for generic aliases in annotations used to
+    generate a member PR #281
+  * add support for type aliases in annotations used to generate
+    a member PR #280
+  * fix corner cases in C API closing #277 and #278 PR #279
+  * add support for Python 3.15 PR #273
+  * improve type stubs and checks them against mypy, pyrefly and
+    ty PR #274
+  * C API improvements
+- Drop no-pyweakref-get-object.patch (merged upstream).
+
+-------------------------------------------------------------------
 Wed Sep  9 05:19:27 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch no-pyweakref-get-object.patch:
