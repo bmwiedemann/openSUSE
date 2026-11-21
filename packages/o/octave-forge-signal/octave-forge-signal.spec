@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-signal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define octpkg  signal
 Name:           octave-forge-%{octpkg}
-Version:        1.4.6
+Version:        1.4.8
 Release:        0
 Summary:        Signal processing tools for Octave
-License:        GPL-3.0-or-later AND SUSE-Public-Domain
+License:        GPL-3.0-or-later AND LicenseRef-SUSE-Public-Domain
 Group:          Productivity/Scientific/Math
 URL:            https://gnu-octave.github.io/packages/%{octpkg}/
-Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+Source0:        https://github.com/gnu-octave/octave-%{octpkg}/releases/download/%{version}/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
+BuildRequires:  gnuplot
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel
 BuildRequires:  octave-forge-control >= 2.4.5
@@ -45,6 +46,11 @@ This is part of Octave-Forge project.
 
 %install
 %octave_pkg_install
+
+# Fix shebangs
+sed -i '1s|#!/usr/bin/env octave|#!/usr/bin/octave|' %{buildroot}%{_datadir}/octave/packages/signal-%{version}/doc/mkdoccache.m
+sed -i '1s|^#!/usr/bin/env python3|#!/usr/bin/python3|' %{buildroot}%{_datadir}/octave/packages/signal-%{version}/doc/mkfuncdocs.py
+sed -i '1s|^#!/usr/bin/env python3|#!/usr/bin/python3|' %{buildroot}%{_datadir}/octave/packages/signal-%{version}/doc/mkqhcp.py
 
 %check
 %octave_pkg_test

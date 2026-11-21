@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 18 16:29:40 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 1.4.8:
+  * Minor bug fixes and documentation improvements have been made
+    to the following functions: besselap, buffer, buttord, cheb1ord,
+    cheb2ord, db, downsample, findpeaks, firls, freqs, freqs_plot,
+    gauspuls, gmonopuls, impz, istable, levinson, medfilt1, mmfir,
+    specgram, square, statelevels, upfirdn, upsample, vco, zplane,
+    __ultrwin__
+  * The following new functions have been added to the signal
+    package: ac2poly, ac2rc, cell2sos, corrmtx, db, enbw, eqtflength,
+    freqspace, gaussdesign, is2rc, impzlength, lar2rc, lp2bs, lp2bp,
+    lp2hp, lp2lp, rc2is, rc2lar, rcosdesign, stepz, strips
+- Update to version 1.4.7:
+  * Minor bug fixes and documentation improvements have been made
+    to the following functions: digitrevorder, findpeaks, impz,
+    pwelch, rssq, zplane
+  * The following new functions have been added to the signal
+    package: sos2cell, wvtool
+  * The following old functions have been removed from the signal
+    package: rms
+- Add gnuplot build dependency required for tests
+
+-------------------------------------------------------------------
 Tue Aug 26 19:27:56 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.4.6:
