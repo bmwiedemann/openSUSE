@@ -1,0 +1,27 @@
+From: Yehyeong Lee <yhlee@isslab.korea.ac.kr>
+Date: Sat, 19 Sep 2026 15:01:43 +0000
+Subject: [PATCH] tftp: don't overflow the receive buffer after blocksize fallback
+
+When a client requests a blksize smaller than 512 with -b, the receive
+buffer is allocated at blksize + 4. If the server ignores the "blksize"
+option (no OACK), the client falls back to a 512-byte blocksize and sets
+io_bufsize = TFTP_BLKSIZE_DEFAULT + 4 without reallocating the buffer.
+
+Buffer must be large enough for the fallback blocksize too.
+---
+ networking/tftp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/networking/tftp.c b/networking/tftp.c
+index 920f26937..3506cd640 100644
+--- a/networking/tftp.c
++++ b/networking/tftp.c
+@@ -320,7 +320,7 @@ static int tftp_protocol(
+ 	uint16_t recv_blk;
+ 	int local_fd = -1;
+ 	int retries, waittime_ms;
+-	int io_bufsize = blksize + 4;
++	int io_bufsize = (blksize < TFTP_BLKSIZE_DEFAULT ? TFTP_BLKSIZE_DEFAULT : blksize) + 4;
+ 	char *cp;
+ 	/* Can't use RESERVE_CONFIG_BUFFER here since the allocation
+ 	 * size varies meaning BUFFERS_GO_ON_STACK would fail.

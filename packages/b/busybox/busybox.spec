@@ -89,6 +89,8 @@ Patch24:        0001-udhcpc-ensure-packet.data.cookie-exists-before-we-ac.patch
 Patch25:        0001-httpd-do-not-try-to-use-obviously-bogus-password-fro.patch
 # PATCH-FIX-UPSTREAM - Fix bsc#1286932 (CVE-2026-92205), libarchive path traversal via ".." filename (upstream commit 5da20102b)
 Patch26:        0001-tar-.-is-also-an-unsafe-filename-treat-as-such.patch
+# PATCH-FIX-UPSTREAM 0001-tftp-don-t-overflow-the-receive-buffer-after-blocksi.patch bsc#1285578 -- tftp heap buffer overflow on fallback to default block size (submitted upstream)
+Patch27:        0001-tftp-don-t-overflow-the-receive-buffer-after-blocksi.patch
 
 # other patches
 Patch100:       busybox.install.patch
@@ -148,6 +150,7 @@ PATH=%{_datadir}/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
 %prep
 #SLE12 needs an empty line after autosetup for it to expand properly (bsc#1205420)
 %autosetup -p1
+
 
 find "(" -name CVS -o -name .cvsignore -o -name .svn -o -name .gitignore ")" \
 	-exec rm -Rf {} +

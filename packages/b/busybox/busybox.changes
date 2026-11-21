@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:15:20 UTC 2026 - Radoslav Kolev <radoslav@kolev.info>
+
+- CVE-2026-124737: BusyBox TFTP client heap buffer overflow
+  on fallback to default block size (bsc#1285578)
+  * 0001-tftp-don-t-overflow-the-receive-buffer-after-blocksi.patch
+
+-------------------------------------------------------------------
 Fri Oct 30 08:33:50 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - Note we are not affected by the following CVEs with no fixes upstream.
