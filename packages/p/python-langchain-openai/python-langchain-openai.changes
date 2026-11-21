@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:24:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.8.5 (includes 1.8.4):
+  * Classify in-stream server errors as retryable: server_error
+    events raise retryable ModelAPIError subclasses instead of
+    ending the turn as a permanent failure
+  * Preserve streamed Responses tool call arguments when argument
+    deltas are omitted or parallel calls interleave
+  * Standardize finish reason: ChatOpenAI adds
+    normalized_finish_reason to response_metadata and
+    message-finish events carry the same fields
+- Raise the langchain-core requirement to 1.8.4, as upstream does
+
+-------------------------------------------------------------------
+Thu Nov 19 07:29:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.8.3 (includes 1.8.1 and 1.8.2):
+  * Fix streaming tool calls with empty arguments when the
+    Responses API omits argument delta events
+  * Give each model its own async HTTP client instead of sharing
+    one, fixing Event loop is closed errors
+  * Add model profiles for GPT-6.2 Astra and Sol
+  * Send LangSmith gateway headers with chat requests
+  * Enable Codex prompt caching on GPT-6.2: system prompt as
+    first developer message plus session-id header
+- Raise the langchain-core requirement to 1.8.2, as upstream does
+
+-------------------------------------------------------------------
 Sat Nov 14 07:44:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.8.0:
