@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Nov 20 15:37:16 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.7.1:
+  * chore(meson): bump version
+  * fix(clock): load the system locale when greetd omits it
+  * chore(flake): update flake.lock
+  * fix(auth): cancel active logins before switching users
+  * feat(input): add configurable pointer acceleration and speed
+  * fix(config): preserve declarative settings during startup migration
+  * fix(config): preserve read-only defaults during migration
+  * fix(input): preserve pointer capture during menu relayout
+  * fix(compositor): skip outputs without a usable mode
+  * fix(compositor): reposition active outputs without recreating their globals (#166)
+  * feat: configurable wallpaper blur and tint (#10)
+  * fix(compositor): size the first configure and center the pointer before showing it (#180)
+  * fix(meson): add native_optimizations option allowing portable builds (#109)
+  * chore(image): add wuffs license (#185)
+  * doc(install): document stonking (Ubuntu 26.10) package (#188)
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * Add Star History section to README
+  * chore(flake): update flake.lock
+  * fix(packaging.md): add mention of nlohmann_json and tomlplusplus dependencies (#174)
+  * feat(clock): add configurable time and date font sizes
+  * docs(auth): explain greetd keyring unlocking
+
+-------------------------------------------------------------------
 Mon Oct 19 10:36:42 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 1.7.0:

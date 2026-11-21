@@ -17,7 +17,7 @@
 
 
 Name:           noctalia-greeter
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Greeter for Noctalia v5
 License:        MIT
