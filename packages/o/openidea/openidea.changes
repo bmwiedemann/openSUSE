@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 20 11:47:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update the vendored undici npm package from 8.12.2 to 8.12.4:
+  * CVE-2026-120222: denial of service via unhandled exception in
+    cache-interceptor response replay (boo#1290302)
+  * CVE-2026-120415: cross-origin credential disclosure via
+    array-of-tuples headers bypassing redirect stripping
+    (boo#1290309)
+  * CVE-2026-120423: Subresource Integrity bypass via whitespace
+    in integrity metadata (boo#1290336)
+  * CVE-2026-116630: cross-user information disclosure via
+    cross-origin redirect revalidation (boo#1290341)
+  * CVE-2026-116592: cache poisoning and cross-user disclosure
+    via intermediate redirect hops (boo#1290360)
+  * CVE-2026-120474: cross-user cache disclosure via same-origin
+    redirect (boo#1290378)
+  * undici is vendored as a build-time dev dependency of the
+    offline npm install; it is not embedded in the shipped IDE
+
+-------------------------------------------------------------------
 Sat Nov  7 13:48:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.38:
