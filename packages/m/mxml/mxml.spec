@@ -1,7 +1,7 @@
 #
 # spec file for package mxml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,89 +16,86 @@
 #
 
 
-%define library_name libmxml1
-
+%define         library_name lib%{name}4_2
+%define         git_url https://github.com/michaelrsweet/mxml/releases/download
 Name:           mxml
-Version:        3.3.1
+Version:        4.0.6
 Release:        0
-Summary:        Small XML Parsing Library
+Summary:        Mini-XML - Tiny XML Parsing Library
 # The Mini-XML library is licensed under the Apache License Version 2.0 with an
 # exception to allow linking against GPL2/LGPL2-only software.
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://www.msweet.org/mxml
-Source:         https://github.com/michaelrsweet/mxml/releases/download/v%{version}/mxml-%{version}.tar.gz
-Source1:        https://github.com/michaelrsweet/mxml/releases/download/v%{version}/mxml-%{version}.tar.gz.sig
-# key from https://www.msweet.org/pgp.html
+Source0:        %{git_url}/v%{version}/%{name}-%{version}.tar.gz
+Source1:        %{git_url}/v%{version}/%{name}-%{version}.tar.gz.sig
+# Key from https://www.msweet.org/pgp.html
 Source2:        mxml.keyring
-Source10:       baselibs.conf
-BuildRequires:  pkgconfig
 
 %description
 Mini-XML is a small XML parsing library that you can use to read XML
-and XML-like data files in your application without requiring large
-nonstandard libraries.
+data files or strings in your application without requiring large
+non-standard libraries.
 
 This package holds the commandline tools for mxml.
 
 %package -n %{library_name}
-Summary:        Shared library for mxml
-Group:          System/Libraries
+Summary:        Mini-XML - Tiny XML Parsing Library
 
 %description -n %{library_name}
 Mini-XML is a small XML parsing library that you can use to read XML
-and XML-like data files in your application without requiring large
-nonstandard libraries.
+data files or strings in your application without requiring large
+non-standard libraries.
 
-This package holds the shared library for mxml.
+This package holds the shared library.
 
 %package devel
 Summary:        Development files for mxml
-Group:          Development/Libraries/C and C++
 Requires:       %{library_name} = %{version}
-Suggests:       mxml-doc = %{version}
+Suggests:       %{name}-doc = %{version}
 
 %description devel
 Mini-XML is a small XML parsing library that you can use to read XML
-and XML-like data files in your application without requiring large
-nonstandard libraries.
+data files or strings in your application without requiring large
+non-standard libraries.
 
 This package holds the development files for mxml.
 
 %package doc
 Summary:        Documentation for mxml
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description doc
 Mini-XML is a small XML parsing library that you can use to read XML
-and XML-like data files in your application without requiring large
-nonstandard libraries.
+data files or strings in your application without requiring large
+non-standard libraries.
 
-This package holds the HTML documentation for mxml.
+This package holds the documentation for mxml.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%configure --enable-threads --enable-shared --with-docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%configure --with-docdir=%{_docdir}/%{name} --disable-static
+%make_build
 
 %install
-%make_install DSTROOT=%{buildroot}
-rm -v %{buildroot}%{_libdir}/libmxml.a
+%make_install DOCFILES="doc/mxml.epub doc/mxml.html doc/mxml-cover.png README.md" \
+              INSTALL_LIB='$(INSTALL) -s -m 755'
 
-%post   -n %{library_name} -p /sbin/ldconfig
-%postun -n %{library_name} -p /sbin/ldconfig
+%check
+./testmxml test.xml
+
+%ldconfig_scriptlets -n %{library_name}
 
 %files -n %{library_name}
-%{_libdir}/libmxml.so.1*
+%{_libdir}/lib%{name}4.so.*
 
 %files devel
-%{_includedir}/mxml.h
-%{_libdir}/libmxml.so
-%{_libdir}/pkgconfig/mxml.pc
-%{_mandir}/man3/mxml.3%{?ext_man}
+%license LICENSE NOTICE
+%{_includedir}/%{name}.h
+%{_libdir}/lib%{name}4.so
+%{_libdir}/pkgconfig/%{name}4.pc
+%{_mandir}/man3/%{name}4.3%{?ext_man}
 
 %files doc
 %{_docdir}/%{name}

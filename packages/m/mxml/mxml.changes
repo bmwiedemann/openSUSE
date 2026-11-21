@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Nov 18 12:59:51 UTC 2026 - Alexey Svistunov <svalx@svalx.net>
+
+- Update to 4.0.6:
+  * Fixed a potential memory leak when loading bad XML (Issue #356)
+  * Fixed reporting of bad characters to use the U+XXXX format (Issue #357)
+- 4.0.5
+  * Added support for the "apos" entity (Issue #346)
+  * Added support for Windows on ARM64 (Issue #352)
+  * Fixed build issues with MingW (Issue #347)
+  * Fixed an access issue in `mxmlIndexNew` (Issue #350)
+  * Fixed a potential memory leak when loading bad XML (Issue #354)
+- 4.0.4
+  * Added Linux-specific build files and dropped unused `long long` config tests
+    (Issue #335)
+  * Documentation fixes (Issue #334, Issue #337)
+  * Fixed an issue when reporting errors with a `NULL` options pointer
+    (Issue #329)
+  * Fixed some compiler warnings (Issue #333)
+  * Fixed installation on MingW (Issue #336)
+- 4.0.3
+  * Now default the `DSOFLAGS` value to `LDFLAGS` in the configure script
+    (Issue #325)
+  * Now install the man page as "mxml4" to allow parallel installation of Mini-XML
+    4.x and 3.x (Issue #324)
+  * Added `MXML_ALLOC_SIZE` define to control the allocation increment for
+    attributes and indices (Issue #318)
+  * Fixed `mxmlSetDeclarationf` implementation (Issue #322)
+- 4.0.2
+  * Fixed an issue with GNU make and parallel builds (Issue #314)
+- 4.0.1
+  * Fixed missing "docdir" definition in makefile (Issue #313)
+  * Fixed missing CPPFLAGS, OPTIM, and WARNINGS in CFLAGS in makefile.
+  * Fixed configure script issues.
+- 4.0.0
+  * Now require C99 support (Issue #300)
+  * Now install as "libmxml4" to support installing both Mini-XML 3.x and 4.x at
+    the same time (use `--disable-libmxml4-prefix` configure option to disable)
+  * Added `mxmlLoadIO` and `mxmlSaveIO` functions to load and save XML via
+    callbacks (Issue #98)
+  * Added new `MXML_TYPE_CDATA`, `MXML_TYPE_COMMENT`, `MXML_TYPE_DECLARATION`, and
+    `MXML_TYPE_DIRECTIVE` node types (Issue #250)
+  * Added `mxmlLoadFilename` and `mxmlSaveFilename` functions (Issue #291)
+  * Added AFL fuzzing support (Issue #306)
+  * Added `mxmlOptions` APIs to replace the long list of callbacks and options for
+    each of the load and save functions (Issue #312)
+  * Added string copy/free callbacks to support alternate memory management of
+    strings.
+  * Renamed `mxml_type_t` enumerations to `MXML_TYPE_xxx` (Issue #251)
+  * Updated APIs to use bool type instead of an int representing a boolean value.
+  * Updated the SAX callback to return a `bool` value to control processing
+    (Issue #51)
+  * Updated the load and save callbacks to include a context pointer (Issue #106)
+  * Fixed some warnings (Issue #301)
+  * Fixed real number support in non-English locales (Issue #311)
+- Specfile refactoring and cleanup
+- Enable test in check section
+- Drop baselibs.conf, there seem to be no downstream packages
+  that themselves would need it.
+
+-------------------------------------------------------------------
 Mon Aug  1 21:33:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.1:
