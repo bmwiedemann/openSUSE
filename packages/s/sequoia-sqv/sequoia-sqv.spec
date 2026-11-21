@@ -17,7 +17,7 @@
 
 
 Name:           sequoia-sqv
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        A simple signature verification program
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildRequires:  clang
 BuildRequires:  fish
 BuildRequires:  rust >= 1.79
 BuildRequires:  zsh
-BuildRequires:  pkgconfig(nettle)
+BuildRequires:  pkgconfig(openssl)
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -68,10 +68,10 @@ Fish command line completion support for %{name}.
 %autosetup -p1 -a1
 
 %build
-%{cargo_build}
+%{cargo_build} --no-default-features --features crypto-openssl
 
 %install
-%{cargo_install}
+%{cargo_install} --no-default-features --features crypto-openssl
 
 install -Dm644 %{_builddir}/%{name}-%{version}/target/release/build/%{name}-*/out/shell-completions/sqv.bash %{buildroot}%{_datadir}/bash-completion/completions/sqv
 install -Dm644 %{_builddir}/%{name}-%{version}/target/release/build/%{name}-*/out/shell-completions/_sqv %{buildroot}%{_datadir}/zsh/site-functions/_sqv
@@ -79,7 +79,7 @@ install -Dm644 %{_builddir}/%{name}-%{version}/target/release/build/%{name}-*/ou
 install -Dm644 %{_builddir}/%{name}-%{version}/target/release/build/%{name}-*/out/man-pages/sqv*.1 -t %{buildroot}%{_mandir}/man1/
 
 %check
-%{cargo_test}
+%{cargo_test} --no-default-features --features crypto-openssl
 
 %files
 %license LICENSE.txt

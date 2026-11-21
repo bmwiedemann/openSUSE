@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 09 12:08:12 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 1.5.0:
+  * Enable PQC support
+- includes changes from 1.4.0:
+  * New option `sqv --overwrite` to force sqv to overwrite the
+    output file, if it exists
+  * Add a `--time` option to set the reference time.  This is
+    similar to `sq --time`.
+  * Detect keybox files and display a more helpful error message
+  * Support using `-` to mean `sqv` should read from `stdin` instead
+    of a file
+- Switch to the OpenSSL crypto backend: vendored nettle 7.5 is
+  incompatible with Nettle 4.0.
+
+-------------------------------------------------------------------
 Tue Jun 16 06:18:48 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update nettle-sys in vendored dependencies to fix compilation
