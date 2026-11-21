@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 20 16:03:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.9
+  libmongoc
+  * Redact URI values in errors and logs. CVE-2026-129939
+
+-------------------------------------------------------------------
 Tue Nov  3 20:04:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.8
