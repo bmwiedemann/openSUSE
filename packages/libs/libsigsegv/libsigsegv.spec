@@ -2,6 +2,7 @@
 # spec file for package libsigsegv
 #
 # Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +22,7 @@
 %define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
 %global optflags %{optflags} %{**}
 Name:           libsigsegv
-Version:        2.15
+Version:        2.16
 Release:        0
 Summary:        Library for Handling Page Faults in User Mode
 License:        GPL-2.0-or-later
@@ -29,7 +30,7 @@ Group:          System/Libraries
 URL:            https://www.gnu.org/software/libsigsegv/
 Source0:        https://ftp.gnu.org/pub/gnu/libsigsegv/libsigsegv-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/libsigsegv/libsigsegv-%{version}.tar.gz.sig
-Source2:        http://savannah.gnu.org/people/viewgpg.php?user_id=1871#/%{name}.keyring
+Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=1871#/%{name}.keyring
 BuildRequires:  pkgconfig
 
 %description
@@ -95,17 +96,18 @@ export XFAIL_TESTS="test-catch-stackoverflow1 test-catch-stackoverflow2"
 %endif
 %make_build check
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files doc
 %license COPYING
 %doc ChangeLog* NEWS README
 
 %files -n %{lname}
-%{_libdir}/libsigsegv.so.%{somajor}*
+%license COPYING
+%{_libdir}/libsigsegv.so.%{somajor}{,.*}
 
 %files devel
+%license COPYING
 %{_includedir}/sigsegv.h
 %{_libdir}/libsigsegv.so
 %{_libdir}/libsigsegv.a
