@@ -479,4 +479,12 @@
     <comment>%pyproject-* macros where it is possible</comment>
     <requestid>1356838</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>bc7d82abd4c39ad7b8b588d0e22e842c</srcmd5>
+    <version>6.5.1</version>
+    <time>1795293883</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with python 3.15</comment>
+    <requestid>1398648</requestid>
+  </revision>
 </revisionlist>

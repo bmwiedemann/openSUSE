@@ -1,0 +1,25 @@
+From 9cfa98f9c78bc08905c93be669fb2a9fb97793c1 Mon Sep 17 00:00:00 2001
+From: Marian Koncek <marian.koncek@mailbox.org>
+Date: Wed, 27 May 2026 11:16:39 +0200
+Subject: [PATCH] Harcode a specific GZIP compression level
+
+---
+ java-utils/mvn_build.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/java-utils/mvn_build.py b/java-utils/mvn_build.py
+index ce12e905..ee1335b9 100644
+--- a/java-utils/mvn_build.py
++++ b/java-utils/mvn_build.py
+@@ -193,7 +193,7 @@ if __name__ == "__main__":
+             builddep_data = file.read()
+         #compressed = gzip.compress(builddep_data, mtime=0)
+         buf = io.BytesIO()
+-        with gzip.GzipFile(fileobj=buf, mode='wb', mtime=0) as f:
++        with gzip.GzipFile(fileobj=buf, mode='wb', mtime=0, compresslevel=9) as f:
+             f.write(builddep_data)
+         compressed = buf.getvalue()
+         encoded = base64.b64encode(compressed).decode()
+-- 
+2.56.1
+

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 19 09:49:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Harcode-a-specific-GZIP-compression-level.patch
+    + Harcode a specific GZIP compression level. Python 3.15 lowered
+      gzip's default compresslevel from 9 to 6, thus the gzip bytes
+      changed too.
+
+-------------------------------------------------------------------
 Thu May 28 11:14:13 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Outside of the ancient distros (< SLE-15-SP5) for the

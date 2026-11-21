@@ -55,7 +55,8 @@ Patch1:         python-optional.patch
 #PATCH-FIX-SUSE: SUSE did not bump epoch of openjdk packages, whereas Fedora did
 #               Avoid generating unresolvable requires
 Patch2:         suse-no-epoch.patch
-
+#PATCH-FIX-UPSTREAM: Harcode a specific GZIP compression level
+Patch3:         0001-Harcode-a-specific-GZIP-compression-level.patch
 BuildRequires:  fdupes
 BuildRequires:  perl
 BuildRequires:  rpm
