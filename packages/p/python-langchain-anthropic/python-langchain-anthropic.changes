@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:24:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.12:
+  * Emit standardized finish_reason, normalized_finish_reason and
+    finish_state in response_metadata
+  * Give each ChatAnthropic instance its own async HTTP client,
+    fixing failed requests and retry delays across event loops
+  * Preserve caller on tool_search_tool_result blocks
+  * Raise langchain-core floor to >= 1.8.4 per upstream metadata
+
+-------------------------------------------------------------------
+Thu Nov 19 09:32:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Deselect test_gateway_credentials_survive_nested_revalidation
+  (6 cases): asserts x-api-key of anthropic SDK 1.x, but SDK >= 2
+  sends Authorization: Bearer instead.
+
+-------------------------------------------------------------------
+Thu Nov 19 07:29:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.11:
+  * Send LangSmith gateway headers with chat and token-counting
+    requests; requires langchain-core >= 1.8.2
+  * Add Claude Fable 5.2 and Mythos 5.2 profiles with
+    adaptive-thinking compatibility; pin API version 2023-06-01
+  * Emit a thinking chunk when an empty thinking block starts so
+    streaming shows the thinking indicator earlier
+  * Raise ModelRefusalError for refusals when tool calls are not
+    forced (e.g. Sonnet 5.5, thinking enabled) instead of a
+    generic parsing error
+  * Preserve nested caller on server calls and results, fixing
+    replay of dynamic-filtering conversations
+  * Refresh model profile data; drop EOL Python 3.10
+- Spec cleanup: use the braced %{python_files} macro form
+
+-------------------------------------------------------------------
 Sat Nov  7 12:43:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.10:

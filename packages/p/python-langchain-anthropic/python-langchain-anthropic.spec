@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langchain-anthropic
-Version:        1.7.10
+Version:        1.7.12
 Release:        0
 Summary:        Integration package connecting Claude (Anthropic) APIs and LangChain
 License:        MIT
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-anthropic >= 0.120.0
-Requires:       python-langchain-core >= 1.7.5
+Requires:       python-langchain-core >= 1.8.4
 Requires:       python-pydantic >= 2.7.4
 BuildArch:      noarch
 # SECTION test requirements
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module anthropic >= 0.120.0}
 BuildRequires:  %{python_module blockbuster}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module langchain-core >= 1.7.5}
+BuildRequires:  %{python_module langchain-core >= 1.8.4}
 BuildRequires:  %{python_module pydantic >= 2.7.4}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
@@ -74,9 +74,11 @@ rm -f tests/conftest.py
 # and pytest-benchmark, not in Factory) and the middleware tests (need
 # langgraph / langchain, not in Factory); both also require network providers.
 # Deselect the one chat-model test that imports langchain-tests as well.
-%pytest tests/unit_tests --ignore tests/unit_tests/test_standard.py --ignore tests/unit_tests/middleware --deselect tests/unit_tests/test_chat_models.py::test_anthropic_stream_events_v3_lifecycle
+# Deselect gateway revalidation: asserts x-api-key (SDK 1.x), SDK >= 2
+# sends Authorization: Bearer instead.
+%pytest tests/unit_tests --ignore tests/unit_tests/test_standard.py --ignore tests/unit_tests/middleware --deselect tests/unit_tests/test_chat_models.py::test_anthropic_stream_events_v3_lifecycle --deselect tests/unit_tests/test_gateway_headers.py::test_gateway_credentials_survive_nested_revalidation
 
-%files %python_files
+%files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/langchain_anthropic

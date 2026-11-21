@@ -234,4 +234,12 @@ Python flavour (3.13 + 3.14), rpmlint 0 badness.</comment>
 - langchain-core floor &gt;= 1.7.5, refusal content blocks support</comment>
     <requestid>1396003</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7fcfed39e161c20e5eb8e4f817dac086</srcmd5>
+    <version>1.7.12</version>
+    <time>1795294052</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-langchain-anthropic to 1.7.12: standardized finish_reason metadata, per-client async HTTP, core floor 1.8.4.</comment>
+    <requestid>1399594</requestid>
+  </revision>
 </revisionlist>
