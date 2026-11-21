@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:38:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.4.0
+  * Fix aruba_aoscx show interface with L3 counters.
+  * Fix missing indentation in show_interface9.raw (aruba_aoscx).
+  * Fix nxos LLDP neighbors with spaces in sys name.
+  * Test space consistency and unused states by.
+  * Fix trailing spaces in cisco_ios show inventory VID.
+  * Fix several security advisories, including certifi.
+  * Bump mkdocs dependencies to patch vulnerability.
+  * Fix handle multi-word wrapped lines and Allow V2 Modules in
+    hp_procurve_show_system.
+  * Add lantronix_itmgos show sysconfig.
+  * Fix truncated SN and PID in cisco_ios show inventory.
+  * Ignore tunnel VRF in cisco_ios show ip interface.
+  * Fix RouterOS 7 interface print terse.
+
+-------------------------------------------------------------------
 Mon Sep 14 18:45:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 9.3.0

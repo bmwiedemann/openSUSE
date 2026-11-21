@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ntc-templates
-Version:        9.3.0
+Version:        9.4.0
 Release:        0
 Summary:        Package to return structured data from the output of network devices
 License:        Apache-2.0
@@ -37,10 +37,10 @@ Suggests:       python-yamllint
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module invoke}
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module textfsm >= 1.1.0}
+BuildRequires:  %{python_module tomli}
 BuildRequires:  %{python_module toml}
 # /SECTION
 %python_subpackages
