@@ -19,7 +19,7 @@
 # Single-flavour application: build against the primary python only, tracking it as it moves.
 %define pythons %{primary_python}
 Name:           gputaskman
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        GPU task manager with per-process VRAM and LLM insights
 License:        MIT

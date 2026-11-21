@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 21 07:06:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.4:
+  * Show macOS compressed graphics memory in Paged column.
+  * Resolve relative model flags against the target process cwd.
+  * Clarify Apple Foundation Models runs on Neural Engine, not GPU.
+  * Detect NVIDIA MCDM compute GPUs through NVML on Windows.
+
+-------------------------------------------------------------------
 Mon Nov 16 20:32:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.4.3:
