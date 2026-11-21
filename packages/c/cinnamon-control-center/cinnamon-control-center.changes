@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 20 18:12:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.8.0:
+  * l10n: Update POT
+  * display: snap monitors to aligned centers in the arrangement view
+  * cc-display-config-dbus.c: Don't warn on invalid monitor positions
+  * cc-display-config.c: Use logical_monitors to determine monitor
+    order
+  * display panel: Don't restrict mirror mode to two monitors,
+    ignore a closed laptop panel when offering mirroring.
+  * cc-display-settings.ui: Wire up the underscan switch callback.
+  * display panel: Call new ResetMonitorsConfig for reset-to-defaults.
+  * display: Use a ComboBox (once more) to select monitor scales.
+  * cc-display-settings.c: Fix permanently disabled underscan switch.
+  * build: Remove desktop-file-links.py, bump meson requirement.
+
+-------------------------------------------------------------------
 Wed Mar 25 23:07:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.6.0:

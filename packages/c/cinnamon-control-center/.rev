@@ -357,4 +357,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1344239</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>650aba1c7c0855e832b4b798bc32657d</srcmd5>
+    <version>6.8.0</version>
+    <time>1795294006</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.8.0:
+  * l10n: Update POT
+  * display: snap monitors to aligned centers in the arrangement view
+  * cc-display-config-dbus.c: Don't warn on invalid monitor positions
+  * cc-display-config.c: Use logical_monitors to determine monitor
+    order
+  * display panel: Don't restrict mirror mode to two monitors,
+    ignore a closed laptop panel when offering mirroring.
+  * cc-display-settings.ui: Wire up the underscan switch callback.
+  * display panel: Call new ResetMonitorsConfig for reset-to-defaults.
+  * display: Use a ComboBox (once more) to select monitor scales.
+  * cc-display-settings.c: Fix permanently disabled underscan switch.
+  * build: Remove desktop-file-links.py, bump meson requirement.</comment>
+    <requestid>1399535</requestid>
+  </revision>
 </revisionlist>
