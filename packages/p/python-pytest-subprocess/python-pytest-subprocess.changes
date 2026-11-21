@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 13:50:20 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add normalize.patch to fix build with python 3.15
+
+-------------------------------------------------------------------
 Tue May 12 02:20:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.6.0:

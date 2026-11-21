@@ -1,0 +1,120 @@
+From 2207cd7c63bd03270382d59ae98804d621499fc6 Mon Sep 17 00:00:00 2001
+From: Edson Henrique <edsonsims@gmail.com>
+Date: Fri, 6 Nov 2026 14:53:53 -0500
+Subject: [PATCH] fix: normalize captured output in every text mode (#219)
+
+* fix: normalize captured output in every text mode
+
+* docs: link newline correction to PR 219
+
+* Use native exception formatting in check_call assertions
+
+Retain exact exception type, command, return code and message checks.
+
+* Test normalized decoding for LF and CRLF output lines
+---
+ changelog.d/bug.7a1b8898.entry.yaml |  5 +++
+ pytest_subprocess/fake_popen.py     |  4 +--
+ tests/test_output_decoding.py       | 22 +++++++++---
+ tests/test_subprocess.py            | 10 +++---
+ tests/test_text_newlines.py         | 54 +++++++++++++++++++++++++++++
+ 5 files changed, 84 insertions(+), 11 deletions(-)
+ create mode 100644 changelog.d/bug.7a1b8898.entry.yaml
+ create mode 100644 tests/test_text_newlines.py
+
+Index: pytest-subprocess-1.6.0/pytest_subprocess/fake_popen.py
+===================================================================
+--- pytest-subprocess-1.6.0.orig/pytest_subprocess/fake_popen.py
++++ pytest-subprocess-1.6.0/pytest_subprocess/fake_popen.py
+@@ -266,8 +266,8 @@ class FakePopen:
+         if isinstance(input, bytes) and self.text_mode:
+             input = input.decode()
+ 
+-        if input and self.__universal_newlines and isinstance(input, str):
+-            input = input.replace("\r\n", "\n")
++        if input and self.text_mode and isinstance(input, str):
++            input = input.replace("\r\n", "\n").replace("\r", "\n")
+ 
+         if (
+             io_base
+Index: pytest-subprocess-1.6.0/tests/test_subprocess.py
+===================================================================
+--- pytest-subprocess-1.6.0.orig/tests/test_subprocess.py
++++ pytest-subprocess-1.6.0/tests/test_subprocess.py
+@@ -310,12 +310,11 @@ def test_check_call(fp, fake):
+     with pytest.raises(subprocess.CalledProcessError) as exc:
+         assert subprocess.check_call((PYTHON, "example_script.py", "non-zero")) == 1
+ 
+-    if sys.version_info >= (3, 6):
+-        assert (
+-            str(exc.value).replace("\\\\", "\\")
+-            == f"Command '('{PYTHON}', 'example_script.py', 'non-zero')' "
+-            "returned non-zero exit status 1."
+-        )
++    command = (PYTHON, "example_script.py", "non-zero")
++    assert type(exc.value) is subprocess.CalledProcessError
++    assert exc.value.returncode == 1
++    assert exc.value.cmd == command
++    assert str(exc.value) == str(subprocess.CalledProcessError(1, command))
+ 
+ 
+ @pytest.mark.parametrize("fake", [False, True])
+Index: pytest-subprocess-1.6.0/tests/test_text_newlines.py
+===================================================================
+--- /dev/null
++++ pytest-subprocess-1.6.0/tests/test_text_newlines.py
+@@ -0,0 +1,54 @@
++import subprocess
++import sys
++
++import pytest
++
++
++def _real_output(options, merge_stderr, _popen=subprocess.Popen):
++    command = [
++        sys.executable,
++        "-c",
++        "import sys; sys.stdout.buffer.write(b'first\\r\\nsecond\\rthird\\n'); "
++        "sys.stdout.buffer.flush(); "
++        "sys.stderr.buffer.write(b'error\\r\\nnext\\rlast\\n')",
++    ]
++    with _popen(
++        command,
++        stdout=subprocess.PIPE,
++        stderr=subprocess.STDOUT if merge_stderr else subprocess.PIPE,
++        **options,
++    ) as process:
++        return process.communicate()
++
++
++@pytest.mark.parametrize(
++    "options",
++    [
++        {"text": True},
++        {"universal_newlines": True},
++        {"encoding": "utf-8"},
++        {"errors": "replace"},
++        {"text": False},
++        {"universal_newlines": False},
++    ],
++)
++@pytest.mark.parametrize("registered_as_text", [False, True])
++@pytest.mark.parametrize("merge_stderr", [False, True])
++def test_captured_newlines_match_subprocess(
++    fp, options, registered_as_text, merge_stderr
++):
++    expected = _real_output(options, merge_stderr)
++    stdout = b"first\r\nsecond\rthird\n"
++    stderr = b"error\r\nnext\rlast\n"
++    if registered_as_text:
++        stdout = stdout.decode("ascii")
++        stderr = stderr.decode("ascii")
++    fp.register(["command"], stdout=stdout, stderr=stderr)
++    process = subprocess.Popen(
++        ["command"],
++        stdout=subprocess.PIPE,
++        stderr=subprocess.STDOUT if merge_stderr else subprocess.PIPE,
++        **options,
++    )
++
++    assert process.communicate() == expected

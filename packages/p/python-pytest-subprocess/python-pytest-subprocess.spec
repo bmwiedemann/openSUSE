@@ -24,6 +24,8 @@ Summary:        A plugin to fake subprocess for pytest
 License:        MIT
 URL:            https://github.com/aklajnert/pytest-subprocess
 Source0:        https://github.com/aklajnert/pytest-subprocess/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/aklajnert/pytest-subprocess/pull/219 fix: normalize captured output in every text mode
+Patch0:         normalize.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
