@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov 21 07:09:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.90.1:
+  * Browser `login` now uses OAuth2 Authorization Code + PKCE
+    at pa-authorization-server (same server and client as
+    `login --device`), replacing the mini-apps token exchange;
+    new sessions are tagged `auth-server` and refresh there,
+    the legacy mini-apps refresh stays only for older sessions
+  * cli.js bundle grows 1077988 -> 1078415 bytes; the npm
+    manifest (same deps and engines), README, skills and
+    launcher are unchanged, so the delta is the auth rework
+- Re-vendor: the dependency set is unchanged (73 lock entries,
+  71 tarballs, no floats); licences re-derived over the new tree,
+  unchanged (MIT, ISC, Apache-2.0, BlueOak-1.0.0, MIT OR CC0-1.0),
+  no copyleft
+
+-------------------------------------------------------------------
 Mon Nov 16 20:35:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.89.1:

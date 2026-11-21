@@ -299,4 +299,12 @@ unchanged; re-vendoring moves ansi-regex 6.3.0 -&gt; 6.4.0.
     <comment>Update picsart-gen-ai to 2.89.1: new credits history subcommand, unchanged deps, no copyleft</comment>
     <requestid>1397998</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0c8c4f991d8f5aac22ab9988009c9b78</srcmd5>
+    <version>2.90.1</version>
+    <time>1795294056</time>
+    <user>dimstar_suse</user>
+    <comment>Update picsart-gen-ai to 2.90.1: browser login now OAuth2 Auth Code + PKCE, legacy mini-apps refresh kept for old sessions.</comment>
+    <requestid>1399597</requestid>
+  </revision>
 </revisionlist>
