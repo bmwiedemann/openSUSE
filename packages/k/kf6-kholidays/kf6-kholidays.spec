@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kholidays
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH Upstream from https://invent.kde.org/frameworks/kholidays/-/merge_requests/197
+Patch1:         kholidays-drop-flex-header.patch
 BuildRequires:  bison >= 3.3.2
 BuildRequires:  flex
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}

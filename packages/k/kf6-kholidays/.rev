@@ -263,4 +263,14 @@
     <comment>KDE Frameworks 6.32 (forwarded request 1396584 from krop)</comment>
     <requestid>1397424</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>c9cc391192ce76b3d4152636976bc816</srcmd5>
+    <version>6.32.0</version>
+    <time>1795293877</time>
+    <user>dimstar_suse</user>
+    <comment>- Add kholidays-drop-flex-header.patch to stay compatible
+  with flex 2.6.5 and newer from
+  https://invent.kde.org/frameworks/kholidays/-/merge_requests/197 (forwarded request 1397754 from mathletic)</comment>
+    <requestid>1397913</requestid>
+  </revision>
 </revisionlist>

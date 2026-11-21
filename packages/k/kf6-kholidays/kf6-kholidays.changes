@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 15 17:01:57 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Add kholidays-drop-flex-header.patch to stay compatible
+  with flex 2.6.5 and newer from
+  https://invent.kde.org/frameworks/kholidays/-/merge_requests/197
+
+-------------------------------------------------------------------
 Sun Nov  8 10:36:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.32.0
