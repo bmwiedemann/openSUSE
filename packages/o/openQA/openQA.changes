@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 20 16:09:23 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795190948.0362803c:
+  * feat(dump-db): add folder and retention flags
+  * fix(dump-db): write dumps atomically
+  * test(bugs): Describe repeated implicit insert accurately
+  * feat(container): upgrade LLM server to gemma-4-26B-A4B-it MoE
+
+-------------------------------------------------------------------
+Fri Nov 20 12:54:20 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795177469.dc135093:
+  * feat(munin): Add plugin for DB table sizes
+
+-------------------------------------------------------------------
+Fri Nov 20 11:26:35 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795173981.28f5c976:
+  * fix(mcp): use plain text comments in openqa_get_job_info
+  * fix(db): avoid duplicate key error on bugs_bugid
+
+-------------------------------------------------------------------
 Thu Nov 19 20:54:20 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1795089075.1f7748a4:
