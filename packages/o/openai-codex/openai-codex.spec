@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.166.0
+Version:        0.171.0
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
@@ -133,7 +133,10 @@ Summary:        OpenAI Codex coding agent for the terminal
 #  - matchit (MIT AND BSD-3-Clause), encoding_rs, ring and aws-lc-rs similarly
 #    keep ISC / BSD-3-Clause in the tag even when Apache-2.0 is elected as the
 #    crate's primary licence.
-License:        Apache-2.0 AND MIT AND Unicode-3.0 AND MPL-2.0 AND ISC AND BSD-3-Clause AND Zlib AND BSD-2-Clause AND CC0-1.0 AND CDLA-Permissive-2.0 AND bzip2-1.0.6
+# - 0.171.0: 796 crates (795 tallied) - Apache 556, MIT 180, 0BSD 2
+#   for managed/smoltcp via linux-sandbox; tag gains 0BSD.
+# - MPL-2.0 still 12, self_cell elects Apache, aws-lc-sys 0.45.0.
+License:        Apache-2.0 AND MIT AND Unicode-3.0 AND MPL-2.0 AND ISC AND BSD-3-Clause AND Zlib AND BSD-2-Clause AND CC0-1.0 AND CDLA-Permissive-2.0 AND bzip2-1.0.6 AND 0BSD
 URL:            https://github.com/openai/codex
 Source0:        https://github.com/openai/codex/archive/refs/tags/rust-v%{version}.tar.gz#/codex-rust-v%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -142,6 +145,12 @@ Source1:        vendor.tar.zst
 # filter=true) or stripped at repack with checksums dropped.
 # Source-Binary-Exception: vendor.tar.zst:vendor/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's Windows-only tests, never on Linux
 # Source-Binary-Exception: vendor.tar.zst:vendor/flate2-*/tests/corrupt-gz-file.bin -- test-data: gzip decode-error fixture read by flate2's corrupt-file tests, never executed
+# Source-Binary-Exception: vendor.tar.zst:vendor/aws-lc-sys-*/builder/prebuilt-nasm/* -- other-platform: Windows objects for builds without nasm
+# Source-Binary-Exception: vendor.tar.zst:vendor/ring-*/pregenerated/* -- other-platform: Windows objects for builds without nasm
+# Source-Binary-Exception: vendor.tar.zst:vendor/windows_*_gnu-*/lib/* -- other-platform: Windows import libraries for GNU targets, unused on Linux
+# Repack strip: the mxc-sdk WSL-only NuGet fallback (build/wslc_common/*.nupkg)
+# is removed with its .cargo-checksum.json key; the Linux build never reads it.
+# Source-Binary-Exception: vendor.tar.zst:vendor/async-compression-*/tests/artifacts/*.zst -- test-data: dictionary-compressed fixtures read by async-compression decode tests, never executed
 # PATCH-FIX-OPENSUSE codex-drop-v8-code-mode.patch mpluskal@suse.com -- drop the workspace members whose v8 dependency downloads a prebuilt library at build time
 Patch0:         codex-drop-v8-code-mode.patch
 # PATCH-FIX-OPENSUSE codex-no-startup-update-check.patch mpluskal@suse.com -- distribution policy: do not probe github.com for updates on startup

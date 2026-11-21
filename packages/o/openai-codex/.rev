@@ -581,4 +581,12 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
     <comment>Re-vendor with zip 9.0.0 -&gt; 9.0.5 (boo#1287915, CVE-2026-115905): fixed zip line plus lockstep knock-ons.</comment>
     <requestid>1396092</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>863c084171ca55f0313bc7462e3d07bf</srcmd5>
+    <version>0.171.0</version>
+    <time>1795294078</time>
+    <user>dimstar_suse</user>
+    <comment>Update openai-codex to 0.171.0: TUI workspace default, Sol/Astra models, undo/redo, exec --remote, WebRTC/OTLP fixes, licence gains 0BSD.</comment>
+    <requestid>1399632</requestid>
+  </revision>
 </revisionlist>

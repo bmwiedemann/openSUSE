@@ -32,7 +32,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
 
 --- a/codex-rs/Cargo.toml
 +++ b/codex-rs/Cargo.toml
-@@ -27,9 +27,7 @@
+@@ -28,9 +28,7 @@
      "install-context",
      "codex-backend-openapi-models",
      "code-mode",
@@ -42,15 +42,15 @@ Downstream-only distribution policy, not suitable for upstream submission.
      "plugin-host",
      "codex-home",
      "cloud-config",
-@@ -117,7 +115,6 @@
-     "tui",
+@@ -120,7 +118,6 @@
+     "user-input",
      "user-verification",
      "tools",
 -    "v8-poc",
      "websocket-auth",
      "websocket-client",
      "windows-sandbox-rs/tests/support",
-@@ -209,7 +206,6 @@
+@@ -213,7 +210,6 @@
  codex-cloud-tasks-mock-client = { path = "cloud-tasks-mock-client" }
  codex-code-mode = { path = "code-mode" }
  codex-code-mode-protocol = { path = "code-mode-protocol" }
@@ -58,54 +58,38 @@ Downstream-only distribution policy, not suitable for upstream submission.
  codex-plugin-host = { path = "plugin-host" }
  codex-home = { path = "codex-home" }
  codex-http-client = { path = "http-client" }
-@@ -331,7 +327,6 @@
- codex-utils-string = { path = "utils/string" }
- codex-utils-template = { path = "utils/template" }
- codex-user-verification = { path = "user-verification" }
--codex-v8-poc = { path = "v8-poc" }
- codex-workload-identity = { path = "workload-identity" }
- codex-windows-sandbox = { path = "windows-sandbox-rs" }
- codex-windows-sandbox-test-support = { path = "windows-sandbox-rs/tests/support" }
-@@ -557,7 +552,6 @@
+@@ -569,7 +565,6 @@
  url = "2"
  urlencoding = "2.1"
  uuid = "1"
 -v8 = "=152.2.0"
  vt100 = "0.16.2"
+ vtparse = "0.6.2"
  walkdir = "2.5.0"
- webbrowser = "1.2.2"
-@@ -631,7 +625,6 @@
- ignored = [
-     "icu_provider",
-     "openssl-sys",
--    "codex-v8-poc",
- ]
- 
- [profile.dev]
-@@ -673,7 +666,6 @@
- crossterm = { git = "https://github.com/openai-oss-forks/crossterm", rev = "ed1cdab335221515706178d68495bba2aed1924f" }
- tokio-tungstenite = { git = "https://github.com/openai-oss-forks/tokio-tungstenite", rev = "0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186" }
- tungstenite = { git = "https://github.com/openai-oss-forks/tungstenite-rs", rev = "4fffad30fe373adbdcffab9545e9e9bf4f2fc19f" }
--v8 = { git = "https://github.com/seanh-oai/rusty_v8.git", rev = "350c5a859a9b3c84ab8701b3ad51e3b7699b30c0" }
+@@ -689,7 +684,6 @@
+ sqlx-sqlite = { git = "https://github.com/transact-rs/sqlx", rev = "10462fa4414c6c7f1ed1d39bb31678e3b726878c" }
+ tokio-tungstenite = { git = "https://github.com/openai-oss-forks/tokio-tungstenite", rev = "7447c427513cfe685f236e1ac0513c4ea3dd9c0b" }
+ tungstenite = { git = "https://github.com/openai-oss-forks/tungstenite-rs", rev = "bc589d684755a8c02da0fc7e58d0861cbfc306f1" }
+-v8 = { git = "https://github.com/openai-oss-forks/rusty_v8.git", rev = "90a65f887a0c0f048f3784afbcb320b373c8a2e0" }
  
  # Uncomment to debug local changes.
  # rmcp = { path = "../../rust-sdk/crates/rmcp" }
 --- a/codex-rs/code-mode-protocol/Cargo.toml
 +++ b/codex-rs/code-mode-protocol/Cargo.toml
 @@ -24,7 +24,6 @@
- 
+
  [build-dependencies]
  glob = { workspace = true }
 -protoc-bin-vendored = "3.2.0"
  tonic-prost-build = { version = "=0.14.3", default-features = false, features = ["transport"] }
- 
+
  # Cargo-shear cannot inspect the prost and tonic-prost references in generated gRPC bindings.
 --- a/codex-rs/code-mode-protocol/build.rs
 +++ b/codex-rs/code-mode-protocol/build.rs
 @@ -4,8 +4,15 @@
      println!("cargo:rustc-check-cfg=cfg(codex_bazel)");
      println!("cargo:rerun-if-changed=src/grpc");
- 
+
 +    // Distribution build: the protoc-bin-vendored prebuilt protoc cannot
 +    // ship in the sources, so the compiler comes from PROTOC (the system
 +    // protobuf, see the spec).  Fail fast when it is not set.
@@ -117,5 +101,5 @@ Downstream-only distribution policy, not suitable for upstream submission.
 -    config.protoc_executable(protoc_bin_vendored::protoc_bin_path()?);
 +    config.protoc_executable(protoc);
      let proto_files = glob::glob("src/grpc/*.proto")?.collect::<Result<Vec<_>, _>>()?;
- 
+
      tonic_prost_build::configure()

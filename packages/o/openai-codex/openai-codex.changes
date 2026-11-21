@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Nov 21 07:19:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.171.0:
+  * TUI workspace on by default with searchable document
+    previews, image previews and subagent transcripts
+  * GPT-6.2 Sol and Astra catalogs (Sol default); undo/redo,
+    codex exec --remote, custom MCP statuslines
+  * Drafts and input kept across switch/resume, permission
+    profiles intact, approval races and scroll caret fixes
+  * 0.170.0: WebRTC voice, OTLP auth refresh, same-name
+    MCP servers, Cloud reconnect, Windows sandbox fixes
+  * 0.169.0/0.168.0/0.167.0: side-chat tabs, collapsible
+    turns, custom providers, audio attach, side workspace,
+    agent command center and Vertex AI setup; micros bring
+    incremental-tool updates (GCP, Bedrock, gating)
+  * Rust 1.99.1 toolchain, XML deps refreshed
+  * Rebased codex-drop-v8-code-mode.patch; licence re-derived,
+    tag gains 0BSD (managed/smoltcp via linux-sandbox)
+  * Strip the mxc-sdk WSL-only NuGet fallback (with checksum
+    key); 45 Windows-only objects declared other-platform
+
+-------------------------------------------------------------------
 Sat Nov  7 19:20:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Re-vendor with zip 9.0.0 -> 9.0.5 (boo#1287915,
