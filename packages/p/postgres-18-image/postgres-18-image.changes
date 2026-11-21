@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 20 18:35:47 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- adjust for /run
+
+-------------------------------------------------------------------
 Wed Oct  7 16:33:39 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - split the ownership change into two operations to catch all cases
