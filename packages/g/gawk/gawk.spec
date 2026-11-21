@@ -18,7 +18,7 @@
 
 
 Name:           gawk
-Version:        5.4.1
+Version:        5.4.2
 Release:        0
 Summary:        Domain-specific language for text processing
 License:        GPL-3.0-or-later

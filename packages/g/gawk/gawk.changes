@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 18 19:21:55 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.4.2:
+  * Gawk should now once again work correctly when compiled
+    without the GMP and MPFR libraries
+  * The testing infrastructure has been improved
+  * Performance improvements in minrx.c's memory management should
+    filter through to performance improvements in gawk,
+    particularly when matching short patterns against lots of data.
+    Additional algorithmic changes for "does it match?" cases
+    (where start/length data aren't needed) improve performance
+    even more.
+  * New translations: Traditional Chinese, Latvian
+  * small bug fixes
+
+-------------------------------------------------------------------
 Fri Jul 10 19:49:57 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 5.4.1:
