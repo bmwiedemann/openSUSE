@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Nov 21 13:54:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.16
+  * Improved RPM spec.
+  * Improved documentation.
+  * DCCP fix: DCCP_SOCKOPT_QPOLICY_TXQLEN is required for frames
+    exceeding 5 packets.
+  * MPTCP compatibility fix for older Linux kernels.
+- Update to version 2.0.15
+  * sctp_bindx() parametrisation improvements.
+  * CPU status improvement.
+  * Bugfix: Fixed if { ... } block issues in certain build cases in
+    combination with logging.
+  * Bugfix: --no-control-over-sctp is fine even without SCTP
+    support compiled in.
+  * Updated and improved tests.
+  * Bugfix: IPv4/IPv6 multi-homing fixes for createSocket() and
+    bindSocket().
+  * Bugfix: Option parsing fix for debug=on.
+  * Bugfix: Measurement abort clean-up fix.
+  * Bugfix: Fixed DCCP options handling.
+  * Added MPTCP tests.
+  * Updated shell completion.
+  * Updated manpage.
+  * Upgrade of the QUIC handling code with a backport from the
+    development version.
+  * QUIC support improvements.
+  * Bugfix: QUIC MSG_QUIC_STREAM_NEW may only be set on the first
+    message of the first frame.
+  * Bugfix: QUIC options parametrisation fix.
+  * Using MSG_MORE for data messages over TCP if isFrameEnd ==
+    false.
+  * Bugfix: Fixed and simplified flow clean-up in FlowManager
+    destructor.
+  * Bugfix: Fixed UDP flow removal in case of multiple UDP flows.
+  * Bugfix: Fixed flow identification for UDP multi-flow handling.
+  * Bugfix: Fixes for SCTP multi-streaming association teardown
+    and locking issue.
+  * Bugfix: Fixed issue with counting a successful frame
+    transmission when sending a packet failed.
+  * Bugfix: Ensure that the last vector statistics is written before
+    removing the flows.
+  * Bugfix: Fix for using old byte sequence number in case of
+    multiple fragments.
+
+-------------------------------------------------------------------
 Sat Oct 31 08:25:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.14

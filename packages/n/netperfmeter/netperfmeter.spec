@@ -18,7 +18,7 @@
 
 %define services netperfmeter.service netperfmeter-module-loader.service
 Name:           netperfmeter
-Version:        2.0.14
+Version:        2.0.16
 Release:        0
 Summary:        Network performance meter for the UDP, TCP, SCTP and DCCP protocols
 License:        GPL-3.0-or-later
@@ -65,6 +65,7 @@ chmod +x %{buildroot}/%{_bindir}/*
 # Apply shebang fix for scripts
 for directory in %{_bindir} %{_datadir}/netperfmeter ; do
    find "%{buildroot}/$directory" -type f -exec sed -i \
+      -e 's|^#!/usr/bin/env perl|#!/usr/bin/perl|' \
       -e 's|^#!/usr/bin/env bash|#!/usr/bin/bash|' \
       -e 's|^#!/usr/bin/env python3|#!/usr/bin/python3|' \
       -e 's|^#!/usr/bin/env Rscript|#!/usr/bin/Rscript|' \
@@ -91,7 +92,7 @@ done
 %files
 %license COPYING
 %doc AUTHORS ChangeLog
-%config %{_sysconfdir}/netperfmeter.conf
+%config(noreplace) %{_sysconfdir}/netperfmeter.conf
 %{_bindir}/combinesummaries
 %{_bindir}/createsummary
 %{_bindir}/extractvectors
