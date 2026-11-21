@@ -1,7 +1,7 @@
 #
 # spec file for package system-users
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -248,7 +248,7 @@ Group:          System/Fhs
 This package provides the system user and group 'ntp'.
 
 %prep
-%autosetup -c
+%autosetup -c -T
 
 %build
 %sysusers_generate_pre %{SOURCE1} uucp system-user-uucp.conf

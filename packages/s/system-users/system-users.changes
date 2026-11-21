@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 16 10:05:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass -T to %autosetup: do not instruct autosetup to unpack
+  sources, if there are none.
+
+-------------------------------------------------------------------
 Mon Aug 25 09:01:05 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old and now implicit %defattr lines
