@@ -17,18 +17,19 @@
 
 
 Name:           rtk
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        CLI proxy that reduces LLM token consumption of dev commands
 # Legal-Review-Notice: rtk itself is Apache-2.0, but the binary statically links
 # the vendored Rust dependencies, so the tag below covers the whole linked set.
-# - Re-derived on the 1.2.0 re-vendor with "cargo tree --offline -p rtk
-#   --no-default-features -e normal" (254 vendored, 179 linked).
+# - Re-derived on the 1.2.1 re-vendor with "cargo tree --offline -p rtk
+#   --no-default-features -e normal" (343 vendored, 163 linked).
 # - MPL-2.0: colored, option-ext.
-# - Unicode-3.0: the ICU/zerovec crates. ISC: rustls-webpki, untrusted,
-#   and ring ("Apache-2.0 AND ISC"). CDLA-Permissive-2.0: webpki-roots.
-# - BSD-3-Clause: subtle. Zlib: foldhash (via rusqlite and ratatui).
-# - MIT: twenty-nine MIT-only crates (rusqlite, libsqlite3-sys, ...).
+# - Unicode-3.0: unicode-ident (ICU gone with ureq 3). ISC:
+#   rustls-webpki, untrusted, ring; CDLA-Permissive-2.0: webpki-roots.
+# - BSD-3-Clause: subtle and encoding_rs. Zlib: foldhash 0.1.5 and 0.2.0
+#   (via rusqlite and ratatui).
+# - MIT: thirty-one MIT-only crates (rusqlite, libsqlite3-sys, ...).
 # Every dual/triple "OR" expression in the graph is satisfied by Apache-2.0 or MIT,
 # both already named. r-efi offers an LGPL-2.1-or-later option but is
 # UEFI-target-only and absent from the Linux graph. MPL-2.0 section 3.2 is
@@ -42,6 +43,7 @@ Source1:        vendor.tar.zst
 # Source-Binary-Exception: vendor.tar.zst:vendor/ring-*/pregenerated/*.o -- other-platform: pregenerated Windows COFF objects of the ring crate, never used by the Linux build
 # Source-Binary-Exception: vendor.tar.zst:vendor/winapi-*/lib/*.a -- other-platform: Windows import libraries of the winapi crates, only linked by Windows GNU targets
 # Source-Binary-Exception: vendor.tar.zst:vendor/windows_*/lib/* -- other-platform: Windows import libraries of the windows crates, only linked by Windows targets
+# Source-Binary-Exception: vendor.tar.zst:vendor/psm-*/src/arch/wasm32.o -- other-platform: wasm32 object for the wasm target, never used by the Linux build
 # PATCH-FIX-UPSTREAM rtk-unbundle-sqlite.patch mpluskal@suse.com -- link the system SQLite instead of the copy bundled in libsqlite3-sys, https://github.com/rtk-ai/rtk/pull/3446 (upstream keeps bundling as an opt-out default feature; drop this and build with --no-default-features once it lands)
 Patch0:         rtk-unbundle-sqlite.patch
 # PATCH-FIX-UPSTREAM rtk-no-deny-warnings.patch mpluskal@suse.com -- do not turn rustc warnings into errors, the distribution rustc moves independently of upstream's floor, https://github.com/rtk-ai/rtk/pull/3447

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:30:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.1:
+  * cargo: filter toolchain and global-prefix invocations, honor
+    exclusions
+  * core: migrate to ureq 3, hex sha2 digests, classifier key and
+    direct local hosts
+  * db: version tracking and recall schema migrations; dotnet:
+    distinct test projects, quick-xml 0.42
+  * proxy: bound upstream requests, keep error status, relaunch
+    dead Windows proxy, explain bind conflicts
+  * hooks: integrity check, compound hooks, legacy hook match;
+    opencode path, Copilot hook without rtk
+  * tracking: honor history_days, RFC 3339 dates; gain Pro line
+    alone
+- Refresh the vendored dependencies (343 crates, filtered);
+  licence tag unchanged (Unicode-3.0 now via unicode-ident, ICU
+  dropped with ureq 3); declare psm wasm32.o other-platform
+- rtk-no-deny-warnings.patch still applies unchanged (upstream
+  still denies warnings); rtk-unbundle-sqlite.patch drops the
+  bundled copy but keeps rusqlite modern_sqlite (1.2.1 needs
+  SqlInputError, which bundled implied)
+
+-------------------------------------------------------------------
 Mon Nov  9 08:56:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.2.0:

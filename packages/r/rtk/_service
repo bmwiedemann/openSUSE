@@ -1,7 +1,8 @@
 <services>
   <service name="cargo_vendor" mode="manual">
-    <param name="srctar">rtk-1.2.0.tar.gz</param>
+    <param name="srctar">rtk-1.2.1.tar.gz</param>
     <param name="compression">zst</param>
     <param name="update">true</param>
+    <param name="filter">true</param>
   </service>
 </services>

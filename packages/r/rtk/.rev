@@ -171,4 +171,12 @@ Local aarch64 build green, 3517 tests pass, rpmlint 0 badness.</comment>
     <comment>Update to 1.2.0</comment>
     <requestid>1396323</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3e4541bffca1a4b7ad8fd14800b2dc2f</srcmd5>
+    <version>1.2.1</version>
+    <time>1795294068</time>
+    <user>dimstar_suse</user>
+    <comment>Update rtk to 1.2.1: ureq 3 migration, quick-xml 0.42, ratatui 0.30, proxy/hook/tracking fixes.</comment>
+    <requestid>1399610</requestid>
+  </revision>
 </revisionlist>
