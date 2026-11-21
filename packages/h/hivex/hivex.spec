@@ -17,7 +17,7 @@
 #
 
 
-%bcond_without perl_bingings
+%bcond_without perl_bindings
 %bcond_without python_bindings
 %bcond_without ocaml_bindings
 Name:           hivex
@@ -62,7 +62,7 @@ Summary:        Windows Registry Hive extraction library
 %description -n libhivex0
 Hivex is a Windows Registry Hive extraction library.
 
-%if %{with perl_bingings}
+%if %{with perl_bindings}
 %package -n perl-Win-Hivex
 Summary:        Perl bindings for hivex
 BuildRequires:  perl(ExtUtils::MakeMaker)
@@ -108,7 +108,7 @@ Requires:       %{name}-devel = %{version}
 Requires:       ocaml-hivex = %{version}
 
 %description -n ocaml-hivex-devel
-This subpackage contains the OCAML bindings development file
+This subpackage contains the OCAML bindings development files
 for hivex. Hivex is a Windows Registry Hive extraction library.
 %endif
 
@@ -136,7 +136,7 @@ fi
 %install
 %make_install INSTALLDIRS=vendor
 
-%if %{with perl_bingings}
+%if %{with perl_bindings}
 %perl_process_packlist
 %perl_gen_filelist
 # the macro above packages everything, here only the perl files are desrired
@@ -169,7 +169,7 @@ touch %{name}.lang
 %{python3_sitearch}/*
 %endif
 
-%if %{with perl_bingings}
+%if %{with perl_bindings}
 %post -n perl-Win-Hivex -p /sbin/ldconfig
 %postun -n perl-Win-Hivex -p /sbin/ldconfig
 
