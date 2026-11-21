@@ -244,6 +244,12 @@ for entry in "$store"/@opencode+pty-linux-arm64-gnu@* "$store"/@opencode+pty-lin
     rm -rf "$entry"
     echo "    removed ${entry#"$store"/}"
 done
+# bun's download cache (node_modules/.cache) is not part of the dependency
+# tree: it holds the tarballs/git checkouts every install re-fetches and,
+# since the filtered install, lives inside the tree (5+ GB). The 2.3.0 tree
+# family ships no .cache; drop it before packing.
+rm -rf "$tree/node_modules/.cache"
+echo "    removed node_modules/.cache"
 
 echo "==> packing the dependency tree"
 # The per-workspace node_modules are symlink farms into node_modules/.bun and

@@ -47,9 +47,9 @@
 # -queries packages (grammar names as in the upstream descriptor list; the
 # c_sharp module lives in tree-sitter-c-sharp).
 %global opencode_system_grammars python rust go cpp csharp bash c java ruby php scala html json yaml haskell css julia lua ocaml clojure swift toml nix diff elixir fsharp r make vim xml agda
-# The pty helper (@opencode/pty 0.5.2, packages/process-daemon) is built
+# The pty helper (@opencode/pty 0.6.0, packages/process-daemon) is built
 # from source in %%build instead of shipping upstream's prebuilt binaries.
-%global opencode_pty_version 0.5.2
+%global opencode_pty_version 0.6.0
 # Ghostty revision the helper's build.rs pins (packages/process-daemon
 # ghostty-revision), and the zig that builds its libghostty-vt. Ghostty's
 # build.zig.zon sets minimum_zig_version 0.16.0, so this is an equality
@@ -65,13 +65,13 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        2.3.0
+Version:        2.3.2
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 2.3.0 from the declared license
+# Legal-Review-Notice: rederived for 2.3.2 from the declared license
 # field of all 346 vendor-tarball packages.
 # - 349 store entries (one is the symlink farm, not a package); several
 #   names resolve at two versions, same as before.
@@ -84,7 +84,7 @@ Summary:        AI coding agent for the terminal
 # - Their prebuilt .so files are deleted from the tree; the runtime
 #   loads the opentui package's build, so no copyleft ships here.
 # - The pty helper is built from source in %%build: process-daemon
-#   0.5.0 (MIT) with 42 crates in its linux normal closure.
+#   0.6.0 (MIT) with 42 crates in its linux normal closure.
 # - Everything linked into the helper is MIT, Apache-2.0, ISC or
 #   BSD-2-Clause (memchr under its MIT option).
 # - Ghostty libghostty-vt (MIT) with uucode (MIT) and simdutf/highway
@@ -139,7 +139,7 @@ Source5:        %{name}-vendor-keep.txt
 Source6:        README.SUSE-maint
 # Header-only N-API wrapper @parcel/watcher's addon is compiled against.
 Source11:       https://registry.npmjs.org/node-addon-api/-/node-addon-api-%{node_addon_api_version}.tgz
-# The pty helper crate (packages/process-daemon from the 2.3.0 tree).
+# The pty helper crate (packages/process-daemon from the 2.3.2 tree).
 Source20:       %{name}-process-daemon-%{version}.tar.zst
 # Its locked cargo closure, from the cargo_vendor service (_service,
 # respect-lockfile) with the non-Linux weight stripped afterwards (see
@@ -534,8 +534,11 @@ EOF
 # cargo vendor (Source21, cargo_vendor service output) overlaid into the
 # crate dir, and Ghostty with .git plus pre-fetched zig deps (Source22).
 # They unpack at the build root, next to this tree, not into it.
+# Keep the crate's own Cargo.lock: the vendor archive's copy is stale and
+# breaks the --offline --locked cargo build when it overwrites the good one.
 tar --use-compress-program=unzstd -xf %{SOURCE20} -C %{_builddir}
 tar --use-compress-program=unzstd -xf %{SOURCE21} --strip-components=1 \
+    --exclude='process-daemon/Cargo.lock' \
     -C %{_builddir}/%{name}-process-daemon-%{version}/process-daemon
 tar --use-compress-program=unzstd -xf %{SOURCE22} -C %{_builddir}
 
@@ -604,7 +607,7 @@ export HOME="$PWD/.home"
 export BUN_INSTALL_CACHE_DIR="$PWD/.bun-cache"
 mkdir -p "$HOME" "$BUN_INSTALL_CACHE_DIR"
 
-# The pty helper, built from source: process-daemon 0.5.2
+# The pty helper, built from source: process-daemon 0.6.0
 # (MIT) with its locked cargo closure, statically linking Ghostty's
 # libghostty-vt (Ghostty ab0b9da9, MIT; uucode MIT and
 # simdutf/highway Apache-2.0 compiled in). GHOSTTY_SOURCE_DIR satisfies

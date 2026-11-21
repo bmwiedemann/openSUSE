@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Nov 20 11:14:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix pty helper build: keep the crate's Cargo.lock, excluding
+  the vendor archive's stale copy that broke the --offline
+  --locked cargo build
+
+-------------------------------------------------------------------
+Thu Nov 19 07:51:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.3.2 (the full list is the v2.3.0..v2.3.2 release
+  notes upstream publishes)
+  * Shell commands that hit their timeout now move to the
+    background instead of being killed
+  * Session summaries are written ahead of automatic compaction
+    in the background; GPT 6.2 models join ChatGPT sign-in
+  * Check for plugin updates from Settings; comment on selected
+    code; CLAUDE.md is read again where no AGENTS.md exists
+  * Schedules are now automations: time, interval, cron or
+    MCP-event triggers running a prompt or program
+  * GPT-6.2 prompt caching fixed on Responses routes; many core,
+    TUI, desktop and SDK fixes
+- process-daemon (pty helper) 0.5.2 -> 0.6.0 and the @opencode/pty
+  pin to match (ghostty-revision unchanged, cargo closure
+  re-vendored identical)
+- Refresh the vendor keep list for the moved closure (still 349
+  entries: pty 0.6.0, babel hash, browserslist rename)
+- opencode_vendor drops bun's in-tree download cache before
+  packing the vendor tarball
+- Legal review re-derived for the new tree: same 346 packages,
+  same 10-licence set, SDK still externalized
+
+-------------------------------------------------------------------
 Sun Nov 15 17:10:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.3.0:

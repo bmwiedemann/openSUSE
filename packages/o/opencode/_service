@@ -25,7 +25,7 @@
       (byte-identical to the tag); the vendor set was verified equal to
       a manual locked cargo vendor run plus the hand-strip below. -->
     <param name="update">false</param>
-    <param name="srctar">opencode-process-daemon-2.3.0.tar.zst</param>
+    <param name="srctar">opencode-process-daemon-2.3.2.tar.zst</param>
     <param name="cargotoml">process-daemon/Cargo.toml</param>
     <param name="compression">zst</param>
     <param name="respect-lockfile">true</param>

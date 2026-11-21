@@ -21,7 +21,7 @@
 @aws-sdk+xml-builder@3.972.39
 @babel+code-frame@7.29.7
 @babel+compat-data@7.29.7
-@babel+core@7.29.7+497cea1c68b2b111
+@babel+core@7.29.7+759ce506b1ed1a42
 @babel+generator@7.29.8
 @babel+helper-annotate-as-pure@7.29.7
 @babel+helper-compilation-targets@7.29.7
@@ -82,9 +82,9 @@
 @npmcli+query@5.0.0
 @npmcli+redact@4.0.0
 @npmcli+run-script@10.0.4
-@opencode+pty-linux-arm64-gnu@0.5.2
-@opencode+pty-linux-x64-gnu@0.5.2
-@opencode+pty@0.5.2
+@opencode+pty-linux-arm64-gnu@0.6.0
+@opencode+pty-linux-x64-gnu@0.6.0
+@opencode+pty@0.6.0
 @opentelemetry+api-logs@0.219.0
 @opentelemetry+api@1.9.0
 @opentelemetry+context-async-hooks@2.8.0+460773ef8ff1e07c
@@ -149,7 +149,7 @@ bowser@2.14.1
 brace-expansion@2.1.7
 brace-expansion@5.0.12
 braces@3.0.3
-browserslist@4.28.8+12f0098455ff50cb
+browserslist@4.28.8
 buffer-equal-constant-time@1.0.1
 bun-pty@0.4.11
 bundle-name@4.1.0

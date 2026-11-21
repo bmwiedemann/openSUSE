@@ -536,4 +536,12 @@ aarch64, all 5 patches still apply.</comment>
     <comment>Update to 2.3.0 (stage with opentui 0.8.4, which it pins exactly)</comment>
     <requestid>1398390</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>770217fb7c875042dc1ce90f3a91a296</srcmd5>
+    <version>2.3.2</version>
+    <time>1795293945</time>
+    <user>dimstar_suse</user>
+    <comment>Update opencode to 2.3.2: keep crate Cargo.lock, exclude stale vendor copy breaking --offline --locked pty helper build.</comment>
+    <requestid>1398971</requestid>
+  </revision>
 </revisionlist>
