@@ -1,0 +1,13 @@
+Index: calls-51.1/po/hr.po
+===================================================================
+--- calls-51.1.orig/po/hr.po
++++ calls-51.1/po/hr.po
+@@ -35,7 +35,7 @@ msgstr "Telefonsko biranje i upravljanje
+ #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+ #: data/org.gnome.Calls.desktop.in:7 data/org.gnome.Calls-daemon.desktop.in:7
+ msgid "Telephone;Call;Phone;Dial;Dialer;PSTN;"
+-msgstr "Telefon;Poziv;;Biranje;Birač;PSTN;"
++msgstr "Telefon;Poziv;Biranje;Birač;PSTN;"
+
+ #: data/org.gnome.Calls-daemon.desktop.in:3
+ msgid "Calls (daemon)"

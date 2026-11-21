@@ -1,0 +1,41 @@
+From a20e8f205413bfcc5171717e208861ce095c40f2 Mon Sep 17 00:00:00 2001
+From: David Anes <david.anes@suse.com>
+Date: Wed, 4 Nov 2026 16:21:50 +0100
+Subject: [PATCH] Make r_timeout in tftp_sendfile/recvfile uintmax_t
+
+client_recv_time() takes a uintmax_t *timeout_us_p parameter. On
+32-bit architectures (i586), unsigned long is 32-bit while uintmax_t
+is 64-bit, so passing &r_timeout fails with
+-Wincompatible-pointer-types, which GCC 14+ treats as an error. On
+x86_64 both types are the same 64-bit unsigned long, so the bug is
+invisible. This also removes the truncation in
+"r_timeout = timeout;" on 32-bit.
+---
+ tftp/tftp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tftp/tftp.c b/tftp/tftp.c
+index 2fd4bdf..a28ed9c 100644
+--- a/tftp/tftp.c
++++ b/tftp/tftp.c
+@@ -280,7 +280,7 @@ int tftp_sendfile(int fd, const char *name, const char *mode)
+     bool convert = !strcmp(mode, "netascii");
+     struct optreq optreq, optack;
+     uint16_t ap_opcode, ap_block;
+-    unsigned long r_timeout;
++    uintmax_t r_timeout;
+     volatile uintmax_t amount = 0;
+     struct stat st;
+ 
+@@ -448,7 +448,7 @@ int tftp_recvfile(int fd, const char *name, const char *mode)
+     bool convert = !strcmp(mode, "netascii");
+     struct optreq optreq, optack;
+     uint16_t opcode;
+-    unsigned long r_timeout;
++    uintmax_t r_timeout;
+     volatile uintmax_t amount = 0;
+ 
+     optreq_init(&optreq);
+-- 
+2.56.0
+

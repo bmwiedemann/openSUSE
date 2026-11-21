@@ -1,0 +1,105 @@
+From c8465d1121f8fa530a90536427848caaa5f519c5 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 19 Nov 2026 10:57:22 +1100
+Subject: [PATCH 1/2] Move git_setup fixture to conftest
+
+The git_setup fixture was duplicated into both test files, with the same
+content, move it into conftest, and also exclude .git from
+repo.index.add(), to support GitPython 3.2+ path validation.
+---
+ tests/conftest.py           | 10 ++++++++++
+ tests/test_parallel_mode.py |  9 ---------
+ tests/test_simple.py        |  9 ---------
+ 3 files changed, 10 insertions(+), 18 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 5332dce..7ae660d 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1,5 +1,7 @@
++import os
+ from pathlib import Path
+ 
++from git import Repo
+ import pytest
+ import sphinx
+ 
+@@ -22,3 +24,11 @@ def rootdir():
+         return path(__file__).parent.abspath() / "roots"
+ 
+     return Path(__file__).resolve().parent / "roots"
++
++
++@pytest.fixture(autouse=True, scope="function")
++def git_setup(app):
++    repo = Repo.init(app.srcdir)
++    repo.index.add([p for p in os.listdir(app.srcdir) if p != ".git"])
++    repo.index.commit("test: creating git record for files")
++    yield
+diff --git a/tests/test_parallel_mode.py b/tests/test_parallel_mode.py
+index 88fc4fd..0a1e480 100644
+--- a/tests/test_parallel_mode.py
++++ b/tests/test_parallel_mode.py
+@@ -2,15 +2,6 @@
+ from xml.etree import ElementTree as etree
+ 
+ import pytest
+-from git import Repo
+-
+-
+-@pytest.fixture(autouse=True, scope="function")
+-def git_setup(app):
+-    repo = Repo.init(app.srcdir)
+-    repo.index.add(os.listdir(app.srcdir))
+-    repo.index.commit("test: creating git record for files")
+-    yield
+ 
+ 
+ @pytest.mark.sphinx(
+diff --git a/tests/test_simple.py b/tests/test_simple.py
+index bd58268..25ae841 100644
+--- a/tests/test_simple.py
++++ b/tests/test_simple.py
+@@ -2,15 +2,6 @@
+ from xml.etree import ElementTree as etree
+ 
+ import pytest
+-from git import Repo
+-
+-
+-@pytest.fixture(autouse=True, scope="function")
+-def git_setup(app):
+-    repo = Repo.init(app.srcdir)
+-    repo.index.add(os.listdir(app.srcdir))
+-    repo.index.commit("test: creating git record for files")
+-    yield
+ 
+ 
+ @pytest.mark.sphinx(
+
+From 223637b3f80f518911768ce9e80c1a975fd1e858 Mon Sep 17 00:00:00 2001
+From: "pre-commit-ci[bot]"
+ <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+Date: Wed, 18 Nov 2026 23:59:34 +0000
+Subject: [PATCH 2/2] [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+---
+ tests/conftest.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 7ae660d..e78e8aa 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1,9 +1,9 @@
+ import os
+ from pathlib import Path
+ 
+-from git import Repo
+ import pytest
+ import sphinx
++from git import Repo
+ 
+ pytest_plugins = "sphinx.testing.fixtures"
+ # Exclude 'roots' dirs for pytest test collector

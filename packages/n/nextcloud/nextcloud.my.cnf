@@ -1,0 +1,12 @@
+# for nextcloud
+[mysqld]
+# Logging
+slow_query_log = ON
+long_query_time = 2
+# Memory
+tmp_table_size = 64M
+max_heap_table_size = 64M
+# Performance
+table_open_cache = 8000
+innodb_log_file_size = 256M
+

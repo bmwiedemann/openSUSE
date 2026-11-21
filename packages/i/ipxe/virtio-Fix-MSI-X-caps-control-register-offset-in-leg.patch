@@ -1,0 +1,41 @@
+From cd2df04f7e82e6978d50a644e6ac5b6bad29746f Mon Sep 17 00:00:00 2001
+From: Dario Faggioli <dfaggioli@suse.com>
+Date: Fri, 18 Sep 2026 10:13:46 +0200
+Subject: [PATCH] [virtio] Fix MSI-X caps control register offset in legacy
+ fallback mode
+
+In fallback mode when checking if MSI-X is enabled to calculate the
+device-specific region offset, the code accesses the base of the MSI-X
+capability structure instead of the Message Control register and, if
+the Next Pointer value exceeds 0x80, the subsequent check of
+PCI_MSIX_CTRL_ENABLE mask incorrectly evaluates to true.
+
+This false positive forces an erroneous 24-byte base offset, shifting
+subsequent configuration reads by 4 bytes. This manifests as a mangled
+MAC address during device probe (e.g. reading 34:56:01:00:ff:ff).
+
+Fix the read offset to target the Message Control register.
+
+Reported-by: Kent Konishi <konishi.kento@fujitsu.com>
+References: https://bugzilla.suse.com/show_bug.cgi?id=1271200
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ src/drivers/bus/virtio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/drivers/bus/virtio.c b/src/drivers/bus/virtio.c
+index 7a307683a..8e4f65722 100644
+--- a/src/drivers/bus/virtio.c
++++ b/src/drivers/bus/virtio.c
+@@ -495,7 +495,7 @@ int virtio_pci_map ( struct virtio_device *virtio, struct pci_device *pci ) {
+ 	/* Check if MSI-X is enabled */
+ 	msix = pci_find_capability ( pci, PCI_CAP_ID_MSIX );
+ 	if ( msix ) {
+-		pci_read_config_word ( pci, msix, &ctrl );
++		pci_read_config_word ( pci, msix + PCI_MSIX_CTRL, &ctrl );
+ 		if ( ! ( ctrl & PCI_MSIX_CTRL_ENABLE ) )
+ 			msix = 0;
+ 	}
+-- 
+2.55.0
+

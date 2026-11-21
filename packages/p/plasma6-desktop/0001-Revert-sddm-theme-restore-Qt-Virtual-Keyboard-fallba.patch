@@ -1,0 +1,319 @@
+From f843eb45b0392f51f6bc9fb15f9a0919b5cbb563 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Thu, 12 Nov 2026 10:12:04 +0100
+Subject: [PATCH] Revert "sddm-theme: restore Qt Virtual Keyboard fallback on
+ X11"
+
+This reverts commit 765971adc342925592af181037bf37540ecedf9a.
+---
+ sddm-theme/Main.qml              |  32 +++---
+ sddm-theme/QtVirtualKeyboard.qml |  28 -----
+ sddm-theme/VirtualKeyboard.qml   | 183 -------------------------------
+ 3 files changed, 15 insertions(+), 228 deletions(-)
+ delete mode 100644 sddm-theme/QtVirtualKeyboard.qml
+ delete mode 100644 sddm-theme/VirtualKeyboard.qml
+
+diff --git a/sddm-theme/Main.qml b/sddm-theme/Main.qml
+index 99a2b479b7..ab75d3db99 100644
+--- a/sddm-theme/Main.qml
++++ b/sddm-theme/Main.qml
+@@ -12,6 +12,7 @@ import Qt5Compat.GraphicalEffects
+ 
+ import org.kde.plasma.components as PlasmaComponents3
+ import org.kde.plasma.private.keyboardindicator as KeyboardIndicator
++import org.kde.plasma.workspace.keyboardlayout as Keyboards
+ import org.kde.kirigami as Kirigami
+ 
+ import org.kde.breeze.components
+@@ -64,7 +65,7 @@ Item {
+         anchors.fill: parent
+ 
+         property bool uiVisible: true
+-        property bool blockUI: mainStack.depth > 1 || userListComponent.mainPasswordBox.text.length > 0 || inputPanel.keyboardVisible || config.type !== "image"
++        property bool blockUI: mainStack.depth > 1 || userListComponent.mainPasswordBox.text.length > 0 || Keyboards.KWinVirtualKeyboard.visible || config.type !== "image"
+ 
+         hoverEnabled: true
+         drag.filterChildren: true
+@@ -206,7 +207,7 @@ Item {
+                     return parts.join(" • ");
+                 }
+ 
+-                actionItemsVisible: !inputPanel.keyboardVisible
++                actionItemsVisible: !Keyboards.KWinVirtualKeyboard.visible
+                 actionItems: [
+                     ActionButton {
+                         icon.name: "system-hibernate"
+@@ -314,17 +315,6 @@ Item {
+             }
+         }
+ 
+-        VirtualKeyboard {
+-            id: inputPanel
+-
+-            z: 1
+-
+-            screenRoot: root
+-            mainStack: mainStack
+-            mainBlock: userListComponent
+-            passwordField: userListComponent.mainPasswordBox
+-        }
+-
+         Component {
+             id: userPromptComponent
+             Login {
+@@ -351,7 +341,7 @@ Item {
+                     sddm.login(username, password, sessionButton.currentIndex)
+                 }
+ 
+-                actionItemsVisible: !inputPanel.keyboardVisible
++                actionItemsVisible: !Keyboards.KWinVirtualKeyboard.visible
+                 actionItems: [
+                     ActionButton {
+                         icon.name: "system-suspend"
+@@ -448,9 +438,17 @@ Item {
+                 id: virtualKeyboardButton
+ 
+                 text: i18ndc("plasma-desktop-sddm-theme", "Button to show/hide virtual keyboard", "Virtual Keyboard")
+-                icon.name: inputPanel.keyboardVisible ? "input-keyboard-virtual-on" : "input-keyboard-virtual-off"
+-                onClicked: inputPanel.toggle()
+-                visible: inputPanel.available
++                icon.name: Keyboards.KWinVirtualKeyboard.visible ? "input-keyboard-virtual-on" : "input-keyboard-virtual-off"
++                onClicked: {
++                    if (Keyboards.KWinVirtualKeyboard.visible) {
++                        Keyboards.KWinVirtualKeyboard.active = false;
++                    } else {
++                        // Otherwise the password field loses focus and on-screen keyboard
++                        // keystrokes get eaten
++                        userListComponent.mainPasswordBox.forceActiveFocus();
++                        Keyboards.KWinVirtualKeyboard.forceActivate();
++                    }
++                }
+ 
+                 Layout.fillHeight: true
+                 containmentMask: Item {
+diff --git a/sddm-theme/QtVirtualKeyboard.qml b/sddm-theme/QtVirtualKeyboard.qml
+deleted file mode 100644
+index bdc3d2f9d1..0000000000
+--- a/sddm-theme/QtVirtualKeyboard.qml
++++ /dev/null
+@@ -1,28 +0,0 @@
+-/*
+-    SPDX-FileCopyrightText: 2017 Martin Gräßlin <mgraesslin@kde.org>
+-
+-    SPDX-License-Identifier: GPL-2.0-or-later
+-*/
+-
+-import QtQuick
+-import QtQuick.VirtualKeyboard as QtVK
+-
+-/*
+- * Qt Virtual Keyboard's input panel. Instantiating it is what keeps Qt from
+- * creating its own DesktopInputPanel, which pops up whenever a text field
+- * gains focus, mouse clicks included.
+- *
+- * The panel has no animation of its own: VirtualKeyboard.qml slides and fades
+- * the loader instead. That way the keyboard also animates out when Qt hides
+- * the input method on its own, which its built-in hide key does.
+- */
+-QtVK.InputPanel {
+-    id: inputPanel
+-    property bool activated: false
+-    active: activated && InputMethod.visible
+-    // Stay visible while the loader slides the panel off-screen. Hiding it as
+-    // soon as InputMethod.visible turns false, which Qt Virtual Keyboard's own
+-    // hide key does, makes the keyboard disappear in a single frame.
+-    visible: activated
+-    width: parent.width
+-}
+diff --git a/sddm-theme/VirtualKeyboard.qml b/sddm-theme/VirtualKeyboard.qml
+deleted file mode 100644
+index dfd673e106..0000000000
+--- a/sddm-theme/VirtualKeyboard.qml
++++ /dev/null
+@@ -1,183 +0,0 @@
+-/*
+-    SPDX-FileCopyrightText: 2016 David Edmundson <davidedmundson@kde.org>
+-    SPDX-FileCopyrightText: 2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+-    SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
+-
+-    SPDX-License-Identifier: LGPL-2.0-or-later
+-*/
+-
+-import QtQuick
+-import QtQuick.Templates as T
+-
+-import org.kde.kirigami as Kirigami
+-import org.kde.plasma.workspace.keyboardlayout as Keyboards
+-
+-/*
+- * Shows and hides the virtual keyboard and keeps the login form above it.
+- *
+- * On Wayland the keyboard is drawn by KWin, so all we do is forward to
+- * Keyboards.KWinVirtualKeyboard. On X11, which is still what SDDM uses by
+- * default, there is no KWin to talk to, so the greeter falls back to Qt
+- * Virtual Keyboard instead.
+- *
+- * Instantiating Qt Virtual Keyboard's input panel is also what keeps Qt from
+- * creating its own DesktopInputPanel, which pops up whenever a text field
+- * gains focus, mouse clicks included. See
+- * https://bugs.kde.org/show_bug.cgi?id=527138
+- */
+-Loader {
+-    id: loader
+-
+-    // Usually, anchors on a top-level component is a bad idea, but this is a
+-    // tightly integrated component sharing the screen with the theme.
+-    anchors {
+-        left: parent.left
+-        right: parent.right
+-    }
+-
+-    required property Item screenRoot
+-    required property T.StackView mainStack
+-    required property /* MainBlock | Login */ Item mainBlock
+-    required property Item passwordField
+-
+-    // Whether the keyboard is currently on screen.
+-    readonly property bool keyboardVisible: active ? state === "visible" : Keyboards.KWinVirtualKeyboard.visible
+-    // Whether this platform has a virtual keyboard at all.
+-    readonly property bool available: active ? status === Loader.Ready : Keyboards.KWinVirtualKeyboard.available
+-    readonly property bool keyboardActive: (item as QtVirtualKeyboard)?.active ?? false
+-
+-    active: !Qt.platform.pluginName.includes("wayland")
+-    source: Qt.resolvedUrl("QtVirtualKeyboard.qml")
+-
+-    function toggle() {
+-        if (!active) {
+-            if (Keyboards.KWinVirtualKeyboard.visible) {
+-                Keyboards.KWinVirtualKeyboard.active = false;
+-            } else {
+-                // Otherwise the password field loses focus and on-screen
+-                // keyboard keystrokes get eaten
+-                passwordField.forceActiveFocus();
+-                Keyboards.KWinVirtualKeyboard.forceActivate();
+-            }
+-            return;
+-        }
+-        if (!item) {
+-            return;
+-        }
+-        if (state === "hidden") {
+-            // Otherwise the password field loses focus and on-screen keyboard
+-            // keystrokes get eaten
+-            passwordField.forceActiveFocus();
+-            state = "visible";
+-        } else {
+-            state = "hidden";
+-        }
+-    }
+-
+-    onKeyboardActiveChanged: {
+-        // The keyboard was hidden by something other than the button, e.g. Qt
+-        // Virtual Keyboard's own hide key, which turns InputMethod.visible off
+-        // before the theme is notified. Animate it out.
+-        if (!keyboardActive && state === "visible") {
+-            state = "hidden";
+-        }
+-    }
+-
+-    state: "hidden"
+-
+-    states: [
+-        State {
+-            name: "visible"
+-            PropertyChanges {
+-                mainStack.y: Math.min(0, screenRoot.height - loader.height - mainBlock.visibleBoundary)
+-            }
+-            PropertyChanges {
+-                loader.y: screenRoot.height - loader.height
+-                loader.opacity: 1
+-            }
+-        },
+-        State {
+-            name: "hidden"
+-            PropertyChanges {
+-                mainStack.y: 0
+-            }
+-            PropertyChanges {
+-                loader.y: screenRoot.height
+-                loader.opacity: 0
+-            }
+-        }
+-    ]
+-
+-    transitions: [
+-        Transition {
+-            from: "hidden"
+-            to: "visible"
+-            SequentialAnimation {
+-                ScriptAction {
+-                    script: {
+-                        loader.item.activated = true;
+-                        Qt.inputMethod.show();
+-                    }
+-                }
+-                // The loader slides the keyboard in from below the screen
+-                // while fading it in, and moves the form out of the way
+-                ParallelAnimation {
+-                    NumberAnimation {
+-                        target: loader.mainStack
+-                        property: "y"
+-                        duration: Kirigami.Units.longDuration
+-                        easing.type: Easing.InOutQuad
+-                    }
+-                    NumberAnimation {
+-                        target: loader
+-                        property: "y"
+-                        duration: Kirigami.Units.longDuration
+-                        easing.type: Easing.OutQuad
+-                    }
+-                    NumberAnimation {
+-                        target: loader
+-                        property: "opacity"
+-                        duration: Kirigami.Units.longDuration
+-                        easing.type: Easing.OutQuad
+-                    }
+-                }
+-            }
+-        },
+-        Transition {
+-            from: "visible"
+-            to: "hidden"
+-            SequentialAnimation {
+-                ParallelAnimation {
+-                    NumberAnimation {
+-                        target: loader.mainStack
+-                        property: "y"
+-                        duration: Kirigami.Units.longDuration
+-                        easing.type: Easing.InOutQuad
+-                    }
+-                    // Nothing animates the keyboard out of the way, so slide
+-                    // it off-screen and fade it out ourselves
+-                    NumberAnimation {
+-                        target: loader
+-                        property: "y"
+-                        duration: Kirigami.Units.longDuration
+-                        easing.type: Easing.InQuad
+-                    }
+-                    NumberAnimation {
+-                        target: loader
+-                        property: "opacity"
+-                        duration: Kirigami.Units.longDuration
+-                        easing.type: Easing.InQuad
+-                    }
+-                }
+-                // Deactivate only once the keyboard has slid out, otherwise it
+-                // vanishes before the animation starts
+-                ScriptAction {
+-                    script: {
+-                        loader.item.activated = false;
+-                        Qt.inputMethod.hide();
+-                    }
+-                }
+-            }
+-        }
+-    ]
+-}
+-- 
+2.56.0
+

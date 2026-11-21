@@ -1,0 +1,51 @@
+OpenShell gateway on SUSE Linux Enterprise and openSUSE
+=======================================================
+
+The gateway runs as a systemd user service and drives rootless podman. Five
+steps are needed once before the first start; step 4 is where SUSE hosts
+differ from upstream's documentation.
+
+1. cgroup v2 (SLE 15 SP7 boots cgroup v1 by default; SLE 16 and openSUSE
+   boot v2): "stat -fc %T /sys/fs/cgroup" must print cgroup2fs. Otherwise
+   add systemd.unified_cgroup_hierarchy=1 to the kernel command line and
+   reboot.
+
+2. Subordinate IDs for the gateway user:
+   ```
+   OSUSER=<user>
+   grep ^$OSUSER: /etc/subuid /etc/subgid || \
+     usermod --add-subuids 100000-165535 --add-subgids 100000-165535 $OSUSER
+   ```.
+
+3. Lingering, so that the gateway outlives the login session:
+   "loginctl enable-linger USER".
+
+4. cgroup controller delegation. SUSE delegates no controller to user
+   sessions (/usr/lib/systemd/system/user@.service.d/20-defaults-SUSE.conf,
+   for performance reasons). The Podman driver sets a CPU quota, a memory
+   limit and a pids limit on every sandbox container, so the gateway starts
+   but "openshell sandbox create" fails with an error such as
+   "memory.swap.max: no such file or directory". The example drop-in
+   /usr/share/openshell-gateway/80-openshell-delegate.conf restores the
+   upstream systemd default (Delegate=pids memory cpu) for every user
+   manager on the host:
+
+       install -D -m 0644 /usr/share/openshell-gateway/80-openshell-delegate.conf \
+           /etc/systemd/system/user@.service.d/80-openshell-delegate.conf
+       systemctl daemon-reload
+
+   Then, as the gateway user: "systemctl --user daemon-reexec", and check
+   that cpu, memory and pids appear in
+   /sys/fs/cgroup/user.slice/user-UID.slice/user@UID.service/cgroup.controllers.
+   To limit the change to the gateway user, install the file under
+   /etc/systemd/system/user@UID.service.d/ instead. A delegated controller
+   is also enabled for the cgroups on the path to the user manager and
+   their siblings, system.slice included; that accounting is the cost
+   SUSE's default avoids.
+
+5. As the gateway user: "systemctl --user enable --now podman.socket", then
+   "systemctl --user enable --now openshell-gateway" and
+   "openshell gateway add --local https://127.0.0.1:17670".
+
+SELinux (SLE 16 default) and AppArmor (SLE 15) need no configuration; the
+driver labels its bind mounts itself.

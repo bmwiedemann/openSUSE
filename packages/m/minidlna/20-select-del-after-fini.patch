@@ -1,0 +1,44 @@
+Description: Make select_del() safe after select_fini() and on double delete
+ A child forked by process_fork() calls event_module.fini(), which frees
+ the events table but leaves nevents untouched.  When the child later
+ closes its HTTP socket, select_del() dereferences the freed (NULL)
+ table and the child crashes with SIGSEGV whenever the connection is not
+ the last registered event.  A second select_del() on the same event
+ would also write to events[-1].
+ Reset nevents in select_fini() and make select_del() a no-op for events
+ that are not registered.
+Author: Alexander GQ Gerasiov <gq@debian.org>
+Bug-Debian: https://bugs.debian.org/989828
+Bug-Debian: https://bugs.debian.org/1138586
+Forwarded: no
+Last-Update: 2026-11-08
+---
+diff --git a/select.c b/select.c
+index e287760..70e9820 100644
+--- a/select.c
++++ b/select.c
+@@ -83,6 +83,7 @@ select_fini(void)
+ 
+ 	free(events);
+ 	events = NULL;
++	nevents = 0;
+ }
+ 
+ static int
+@@ -115,6 +116,16 @@ static int
+ select_del(struct event *ev, int flags)
+ {
+ 
++	/*
++	 * Nothing to do if the event is not registered: it was already
++	 * deleted, or select_fini() has been called, which happens in a
++	 * child forked by process_fork() before it closes its sockets.
++	 */
++	if (events == NULL || ev->index < 0) {
++		ev->index = -1;
++		return (0);
++	}
++
+ 	assert(ev->fd < FD_SETSIZE);
+ 
+ 	switch (ev->rdwr) {

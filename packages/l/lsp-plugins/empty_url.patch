@@ -1,0 +1,31 @@
+From c6ec866cda49d38f12d101ae2bf5a32ef68f6c3c Mon Sep 17 00:00:00 2001
+From: Vladimir Sadovnikov <sadko4u@gmail.com>
+Date: Sat, 15 Aug 2026 19:05:25 +0300
+Subject: [PATCH] Interpreting empty URL as missing server name
+
+---
+ modules/lsp-audio-jack-lib/src/main/backend.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modules/lsp-audio-jack-lib/src/main/backend.cpp b/modules/lsp-audio-jack-lib/src/main/backend.cpp
+index b98e9cb..fc4c5cb 100644
+--- a/modules/lsp-audio-jack-lib/src/main/backend.cpp
++++ b/modules/lsp-audio-jack-lib/src/main/backend.cpp
+@@ -187,7 +187,7 @@ namespace lsp
+                         free(client_name);
+                 };
+ 
+-                if (params->client_name != NULL)
++                if ((params->client_name != NULL) && (strlen(params->client_name) > 0))
+                 {
+                     const size_t max_client_size    = jack_client_name_size();
+                     client_name         = static_cast<char *>(malloc(max_client_size));
+@@ -200,7 +200,7 @@ namespace lsp
+ 
+                 // Get JACK client
+                 jack_status_t jack_status;
+-                jack_client_t *client = (params->url != NULL) ?
++                jack_client_t *client = ((params->url != NULL) && (strlen(params->url) > 0)) ?
+                     jack_client_open(client_name, jack_options_t(JackNoStartServer | JackServerName), &jack_status, params->url) :
+                     jack_client_open(client_name, JackNoStartServer, &jack_status);
+                 if (client == NULL)

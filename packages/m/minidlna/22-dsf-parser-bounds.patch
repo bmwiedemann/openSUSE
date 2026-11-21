@@ -1,0 +1,93 @@
+Description: Fix memory safety issues in the DSF parser
+ The DSF reader, like the DFF one (CVE-2026-29508), trusted values taken
+ from the file:
+  - the sampling frequency was used as a divisor without checking it for
+    zero (SIGFPE);
+  - the metadata chunk was malloc()ed and memset() with a size computed
+    from the header, with no upper bound, so a crafted header could make
+    the scanner allocate and touch gigabytes of memory;
+  - GET_DSF_INT32 shifted uint8_t values promoted to int by 24 bits,
+    which is undefined behaviour for bytes >= 0x80.
+ Bound the metadata chunk by the real file size and by 64 MiB, guard the
+ division, do the shifts on uint32_t and check the cover art malloc().
+Author: Alexander GQ Gerasiov <gq@debian.org>
+Forwarded: no
+Last-Update: 2026-11-08
+---
+--- a/tagutils/tagutils-dsf.c
++++ b/tagutils/tagutils-dsf.c
+@@ -30,10 +30,14 @@
+ 			  (((uint64_t)((p)[1])) << 8) |    \
+ 			  (((uint64_t)((p)[0]))))
+ 
+-#define GET_DSF_INT32(p) ((((uint8_t)((p)[3])) << 24) |   \
+-			  (((uint8_t)((p)[2])) << 16) |   \
+-			  (((uint8_t)((p)[1])) << 8) |     \
+-			  (((uint8_t)((p)[0]))))
++#define GET_DSF_INT32(p) ((((uint32_t)((p)[3])) << 24) |   \
++			  (((uint32_t)((p)[2])) << 16) |   \
++			  (((uint32_t)((p)[1])) << 8) |     \
++			  (((uint32_t)((p)[0]))))
++
++/* Upper bound for the ID3 metadata chunk, which is read into memory as a
++ * whole.  Large enough for tags with embedded cover art. */
++#define DSF_MAX_METADATA_SIZE (64 * 1024 * 1024)
+ 
+ static int
+ _get_dsftags(char *file, struct song_metadata *psong)
+@@ -61,6 +65,7 @@
+ 	uint64_t pointer_to_metadata_chunk = 0;
+ 	uint64_t metadata_chunk_size = 0;
+ 	unsigned char *id3tagbuf = NULL;
++	struct stat st;
+ 
+ 	//DEBUG DPRINTF(E_DEBUG,L_SCANNER,"Getting DSF file info\n");
+ 
+@@ -118,6 +123,23 @@
+ 		return 0;
+ 	}
+ 
++	/* The sizes come from the file: do not trust them beyond the real
++	 * file size, and do not read huge chunks into memory. */
++	if (fstat(fileno(fp), &st) != 0 || (uint64_t)st.st_size <= pointer_to_metadata_chunk)
++	{
++		fclose(fp);
++		DPRINTF(E_INFO, L_SCANNER, "Invalid PointerToMetadata in %s\n", file);
++		return 0;
++	}
++	if (metadata_chunk_size > (uint64_t)st.st_size - pointer_to_metadata_chunk)
++		metadata_chunk_size = (uint64_t)st.st_size - pointer_to_metadata_chunk;
++	if (metadata_chunk_size > DSF_MAX_METADATA_SIZE)
++	{
++		fclose(fp);
++		DPRINTF(E_WARN, L_SCANNER, "Metadata chunk too big in %s\n", file);
++		return 0;
++	}
++
+ 	fseeko(fp, pointer_to_metadata_chunk, SEEK_SET);
+ 
+ 	id3tagbuf = (unsigned char*)malloc(sizeof(unsigned char) * metadata_chunk_size);
+@@ -186,8 +208,11 @@
+ 				if (image_size)
+ 				{
+ 					psong->image = malloc(image_size);
+-					memcpy(psong->image, image, image_size);
+-					psong->image_size = image_size;
++					if (psong->image)
++					{
++						memcpy(psong->image, image, image_size);
++						psong->image_size = image_size;
++					}
+ 					//DEBUG DPRINTF(E_DEBUG, L_SCANNER, "Found thumbnail: %d\n", psong->image_size);
+ 				}
+ 			}
+@@ -410,7 +435,8 @@
+ 	psong->bitrate = channelnum * samplingfrequency * bitpersample;
+ 	psong->samplesize = bitpersample;
+ 	psong->samplerate = samplingfrequency;
+-	psong->song_length = (samplecount / samplingfrequency) * 1000;
++	if (samplingfrequency)
++		psong->song_length = (samplecount / samplingfrequency) * 1000;
+ 	psong->channels = channelnum;
+ 
+ 	DPRINTF(E_MAXDEBUG, L_SCANNER, "Got file info successfully for %s\n", file);

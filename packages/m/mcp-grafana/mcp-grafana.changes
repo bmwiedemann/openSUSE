@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Nov 11 15:15:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package for version 2.3.0
+- Add mcp-grafana-usage-stats-opt-in.patch: anonymous usage
+  statistics to stats.grafana.org are sent only after an explicit
+  --usage-stats=enabled or GRAFANA_USAGE_STATS=enabled
+- Build with Go 1.26 as upstream does: Go 1.27 TLS ClientHellos are
+  reset by F5 BIG-IP and Palo Alto middleboxes (golang/go#81199)
+

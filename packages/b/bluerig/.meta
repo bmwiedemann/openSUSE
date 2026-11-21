@@ -1,0 +1,7 @@
+<package name="bluerig" project="openSUSE:Factory">
+  <title>Terminal IDE, a continuation of cooledit</title>
+  <description>bluerig is a terminal IDE: an editor that works with language servers, with the tree of a project, its build and its debugger (gdb and debug adapters), a Git window, and the queries of PostgreSQL and MongoDB. It runs full screen in a terminal, from the Linux console to tmux and a remote session over ssh.
+
+bluerig continues cooledit, the editor written by Paul Sheer, whose terminal version lived on for many years as the internal editor of GNU Midnight Commander.</description>
+  <url>https://github.com/blue-panels/bluerig</url>
+</package>

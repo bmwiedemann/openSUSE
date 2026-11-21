@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Nov  9 20:20:51 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Disable SIMD on non-x86_64 architectures to make the build
+  succeed everywhere.
+
+-------------------------------------------------------------------
+Thu Apr  9 15:48:34 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Add blake3 at version 0.3.1.

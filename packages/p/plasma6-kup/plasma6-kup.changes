@@ -1,0 +1,244 @@
+-------------------------------------------------------------------
+Wed Nov 11 08:32:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update plasma.keyring
+
+-------------------------------------------------------------------
+Tue Nov 10 09:43:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.3
+- Changes since 6.8.2:
+  * Update version for new release 6.8.3
+
+-------------------------------------------------------------------
+Tue Oct 27 18:10:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.2
+- Changes since 6.8.1:
+  * Update version for new release 6.8.2
+  * Fix incorrect checkbox connection for the 'Exclude user-level Flatpaks' setting
+
+-------------------------------------------------------------------
+Tue Oct 20 11:34:10 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.1
+
+-------------------------------------------------------------------
+Thu Oct  8 16:53:58 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.8.0:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.8.0
+- Changes since 6.7.91:
+  * Update version for new release 6.8.0
+
+-------------------------------------------------------------------
+Fri Sep 25 07:20:03 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.91
+
+-------------------------------------------------------------------
+Sun Sep 13 08:47:08 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.90:
+  * Now part of Plasma
+  * For more details see https://kde.org/announcements/plasma/6/6.7.90
+- Changes since 0.10.0:
+  * Update version for new release 6.7.90
+  * cmake: update variables to match with Plasma release scripts
+  * plasmoid: fix metadata
+  * Port plasmoid and daemon to use DBus, and generally port away from Qt 5
+  * backupjob: make sure to convert our backup path into a url (kde#518494)
+  * Omit user-level Flatpak apps and runtimes by default
+  * Better exclusions system
+  * kcm: fix markup error in a message
+  * Drop Qt5 CI
+  * Fix warning when initializing
+  * applet: display "configure" and "refresh" as standalone icons
+  * Modernize applet UI
+  * Use default DEFAULT_SEVERITY for logging
+  * Downgrade qCInfo to qCDebug
+  * Add a default excluded folder path (kde#516555)
+  * Change order for updating data in data engine (kde#518361)
+  * Ensure that notifications and jobs by the daemon have a nice title
+  * Show warning when saving plan without files (kde#513136)
+  * Update CI configuration
+  * Exclude ~/Vaults by default
+  * Add ellipses to two buttons that require further input to take effect
+  * Remove icon from appstream xml (kde#516089)
+  * Improve file item action plugin name
+  * Add a fileitemaction plugin (kde#499455)
+  * Make UI strings adhere to KDE HIG
+  * Change rsync behavior on FAT destinations (kde#494969)
+  * Port to KUiServerV2JobTracker
+  * Fix linter warnings
+  * Fix deprecation warnings
+  * Fix executable name for kcmshell
+  * Add path option to filedigger
+  * Edit kup.po
+  * DriveSelectionDelegate: Pass QStyle state to KCapacityBar paint
+  * BackupJob: Set destUrl
+  * Exclude XDG_STATE_HOME by default
+  * Improve link text in KCM UI
+  * Add warnings for exFAT
+  * Fix minor typo (missing space)
+  * Simplify descriptions of backup types
+  * Rephrase yes/no questions
+  * Fix some strings
+  * Enable KCrash
+  * Add new release to appdata
+- Rename to plasma6-kup
+
+-------------------------------------------------------------------
+Mon Jun 15 10:20:32 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Switch to Qt6.
+
+-------------------------------------------------------------------
+Mon Jun 15 10:20:32 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.10.0.
+
+-------------------------------------------------------------------
+Mon Oct  4 09:17:09 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.9.1
+  - Fix build with Qt 5.12
+  - Bugfix for unintentional start of kup-purger (kde#438078)
+- Changes from 0.9.0
+  - Added detection of when a source folder has been removed.
+    Aborts saving backup and prompts user to review what should be
+    included.
+  - Added a way to prune old backup snapshots, with new small app
+    kup-purger.
+  - Bug: fix for detecting harmless errors from bup and ignoring
+    them, bup version 0.31 had changed output format and this
+    update follows that change.
+  - Bug: fix detection of mount event for systemd automounts.
+  - Bug: fix source selection tree view handling a selected source
+    folder that has been removed.
+  - Bug: fix source selection tree view when opening and selection
+    is empty.
+  - Bug: fix trying to open a file from a backup repo passed as
+    a relative path as argument to kup-filedigger.
+  - New icon.
+- Rename package from kup-kf5 to kup.
+
+-------------------------------------------------------------------
+Sat Jan 23 10:23:17 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Cleanup spec file and run spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jun 12 12:53:18 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.8.0
+
+-------------------------------------------------------------------
+Sat Feb  2 09:37:43 UTC 2019 - ecsos@opensuse.org
+
+- update to 0.7.3
+  - Fixes problem with plasma applet not showing any text or icons
+    when used together with qt version 5.12.
+  - Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan  3 01:10:55 UTC 2019 - ecsos@opensuse.org
+
+- update to 0.7.2
+  - Improve solution for restoring files from bup archive on a 
+    fresh OS installation. You can now launch the file digger app 
+    from the backup settings module, then select where your backups 
+    are stored and start restoring.
+  - Improve many translations, add hungarian and chinese(china).
+  - improve diagnostics
+
+-------------------------------------------------------------------
+Mon Jan 15 22:56:33 UTC 2018 - ecsos@opensuse.org
+
+- update to 0.7.1
+  - Important bugfix: saving big backups could cause plasma 
+    workspace to freeze for a very long time.
+  - Change to not show list of every file that has ever been 
+    deleted in the bup log file anymore.
+  - Updated translations, adding two new languages: Czech and 
+    Dutch.
+
+-------------------------------------------------------------------
+Sat Jun  3 08:27:46 UTC 2017 - ecsos@opensuse.org
+
+- update to 0.7.0
+  - Change system tray icon from simple popup menu to plasma 
+    applet - allows you to see status of backup plans there 
+    instead of having to open configuration window.
+  - Add progress reporting with percentage and transfer speed.
+  - Add option to pause and abort the saving of backups.
+  - Change folder layout of backups of sync type. Before you would 
+    need to go through layers of folders inside folders before 
+    reaching your files, now Kup tries to minimize this problem 
+    while still making sure that the folders have different names.
+  - Detect if user is shutting down system while saving of backup 
+    is ongoing - shows a warning and gives user a way to cancel 
+    shutting down.
+  - Kup now prevents power saving system from suspending or 
+    hibernating the computer while backup saving is ongoing.
+  - Kup now detects if laptop is on battery and in that case even 
+    fully automatic backups that normally don't ask first will now 
+    ask if a new backup should be saved.
+  - System tray icon will now stay hidden until saving of backup is
+    long overdue. Before it would be shown anytime the backup drive 
+    was plugged in.
+  - Improve wording of some phrases and the icon choices in a few 
+    places to make things clearer.
+  - Add button for duplicating an existing backup plan.
+  - Add notification for successful completion of backup saving, 
+    before Kup would only notify you in case of problem.
+  - Fix a crash that could sometimes happen when loading a new 
+    configuration.
+  - A bunch of smaller bug fixes and layout improvements, 
+    mostly in the configuration module.
+
+-------------------------------------------------------------------
+Tue Jun 14 10:15:07 UTC 2016 - ecsos@opensuse.org
+
+- update to 0.6.1
+  - Show hard drives that are not listed as hotpluggable, but still 
+    considered removable. Fixes some cases where a plugged in USB3 
+    harddrive did not show up and could not be selected as backup 
+    destination.
+  - Now allows free selection of unreadable folders but instead 
+    warns the user about any unreadable files or folders in the set
+    of current folders to be backed up.
+  - Now detects if there are any symbolic links being backed up 
+    that points to something not being backed up. Shows a warning 
+    in that case.
+  - Updated translations, added Bosnian language.
+  - Improved messages in the log file.
+  - Bugfix for the case of no folder selected in the source 
+    selection. The entire folder selection tree was impossible 
+    to use because of a bug in Qt.
+
+-------------------------------------------------------------------
+Wed Jul  8 14:48:06 UTC 2015 - ecsos@opensuse.org
+
+- update to 0.6.0
+  - Ported the whole application to KDE Frameworks 5.
+  - Small bugfix for detecting problem with write permission 
+    for the backup destination.
+
+-------------------------------------------------------------------
+Wed Jul  8 14:47:49 UTC 2015 - ecsos@opensuse.org
+
+- branch from 
+
+-------------------------------------------------------------------
+Fri Jan 27 04:14:28 UTC 2012 - simonop@spray.se
+
+- initial release, version 0.1
+

@@ -1,0 +1,13 @@
+--- a/setup.py	2026-11-05 02:03:22.000000000 +0000
++++ b/setup.py	2026-11-07 00:00:00.000000000 +0000
+@@ -106,6 +106,10 @@
+       cflags, libs = get_cflags_and_libs('./build')
+       abseil_libs = find_abseil_lib('./build')
+
++    # openSUSE: protobuf comes from the system (SPM_PROTOBUF_PROVIDER=package),
++    # so no static libprotobuf-lite sits in ./build — link the system library.
++    abseil_libs.append('-lprotobuf-lite')
++
+     if len(libs) == 0:
+       subprocess.check_call(['./build_bundled.sh'])
+       cflags, libs = get_cflags_and_libs('./build')

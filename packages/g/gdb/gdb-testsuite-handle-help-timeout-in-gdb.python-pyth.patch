@@ -1,0 +1,58 @@
+From f907320e755721a39233720bf58e5d984abe20a3 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sun, 1 Nov 2026 15:07:14 +0100
+Subject: [PATCH 2/3] [gdb/testsuite] Handle help() timeout in
+ gdb.python/python.exp
+
+I ran into the following timeout in test-case gdb.python/python.exp:
+...
+(gdb) python
+>help()
+>end
+FAIL: $exp: python interactive help: python; help(); end (timeout)
+define zzq
+Welcome to Python 3.13's help utility! If this is your first time using
+Python, you should definitely check out the tutorial at
+https://docs.python.org/3.13/tutorial/.
+
+Enter the name of any module, keyword, or topic to get help on writing
+Python programs and using Python modules.  To get a list of available
+modules, keywords, symbols, or topics, enter "modules", "keywords",
+"symbols", or "topics".
+
+Each module also comes with a one-line summary of what it does; to list
+the modules whose name or summary contain a given string such as "spam",
+enter "modules spam".
+
+To quit this help utility and return to the interpreter,
+enter "q", "quit" or "exit".
+
+help> No Python documentation found for 'define zzq'.
+...
+
+The timeout means that gdb is stuck at the "help>" prompt, making all the
+following tests fail.
+
+Fix this using a clean_restart.
+---
+ gdb/testsuite/gdb.python/python.exp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.python/python.exp b/gdb/testsuite/gdb.python/python.exp
+index 96977dff629..f5be68e0f22 100644
+--- a/gdb/testsuite/gdb.python/python.exp
++++ b/gdb/testsuite/gdb.python/python.exp
+@@ -74,6 +74,10 @@ with_test_prefix "python interactive help" {
+     }
+ }
+ 
++# A timeout in the previous test would have gdb stuck at the "help>" prompt,
++# causing all following tests to fail.  Start a clean session.
++clean_restart
++
+ gdb_test_multiline "show python command" \
+   "define zzq" "Type commands for definition of .* just \"end\"\\.*" \
+   "python" "" \
+-- 
+2.51.0
+

@@ -1,0 +1,100 @@
+From 5205fac9b11236f5bfd1cd47c78425a23c086135 Mon Sep 17 00:00:00 2001
+From: Chun-Yi Lee <jlee@suse.com>
+Date: Fri, 30 Oct 2026 17:43:36 +0800
+Subject: [PATCH] Allow overriding debug symbol filenames via preprocessor
+ macros
+
+Currently, the debug symbol filenames printed by debug_hook() in shim
+and fallback are hardcoded to "shim<EFI_ARCH>.efi.debug" and
+"fb<EFI_ARCH>.efi.debug".
+
+Downstream distributions or custom build environments may install or
+package debug symbol files under standardized filenames (e.g.,
+"shim.debug" or "fallback.debug") to align with distro-wide debuginfo
+packaging policies. Because the filenames are hardcoded directly in the
+C source files, build systems cannot adjust the printed GDB
+add-symbol-file paths to match distribution-specific naming schemes.
+
+Introduce SHIM_DEBUG_FILE and FB_DEBUG_FILE macros in shim.c and
+fallback.c, respectively. Fall back to the default filenames when these
+macros are not defined externally. This allows build systems to override
+the debug symbol filenames at compile time (e.g., via EXTRA_DEFINES)
+while preserving the default behavior.
+
+This patch is sent to upstream for reviewing.
+
+Link: https://github.com/rhboot/shim/pull/837
+Signed-off-by: Chun-Yi Lee <jlee@suse.com>
+---
+ BUILDING   | 2 +-
+ fallback.c | 9 ++++++---
+ shim.c     | 9 ++++++---
+ 3 files changed, 13 insertions(+), 7 deletions(-)
+
+Index: shim-16.1/BUILDING
+===================================================================
+--- shim-16.1.orig/BUILDING
++++ shim-16.1/BUILDING
+@@ -80,7 +80,7 @@ Variables you could set to customize the
+   without overriding the internal DEFINES set by the build system.
+   For example, to customize the embedded debug directory path:
+ 
+-    make EXTRA_DEFINES='-UDEBUGDIR -DDEBUGDIR=L\"/usr/lib/debug/usr/share/efi/$(ARCH)/\"'
++    make EXTRA_DEFINES='-UDEBUGDIR -DDEBUGDIR=L\"/usr/lib/debug/usr/share/efi/$(ARCH)/\" -DSHIM_DEBUG_FILE=L\"shim.debug\"'
+ 
+ Vendor SBAT data:
+ It will sometimes be requested by reviewers that a build includes extra
+Index: shim-16.1/fallback.c
+===================================================================
+--- shim-16.1.orig/fallback.c
++++ shim-16.1/fallback.c
+@@ -7,6 +7,10 @@
+ 
+ #define NO_REBOOT L"FB_NO_REBOOT"
+ 
++#ifndef FB_DEBUG_FILE
++#define FB_DEBUG_FILE L"fb" EFI_ARCH L".efi.debug"
++#endif
++
+ EFI_LOADED_IMAGE *this_image = NULL;
+ 
+ int
+@@ -1087,9 +1091,8 @@ debug_hook(void)
+ 		return;
+ 
+ 	x = 1;
+-	console_print(L"add-symbol-file "DEBUGDIR
+-		      L"fb" EFI_ARCH L".efi.debug %p -s .data %p\n",
+-		      &_etext, &_edata);
++	console_print(L"add-symbol-file " DEBUGDIR FB_DEBUG_FILE
++		      L" %p -s .data %p\n", &_etext, &_edata);
+ }
+ 
+ EFI_STATUS
+Index: shim-16.1/shim.c
+===================================================================
+--- shim-16.1.orig/shim.c
++++ shim-16.1/shim.c
+@@ -18,6 +18,10 @@
+ 
+ #include <stdint.h>
+ 
++#ifndef SHIM_DEBUG_FILE
++#define SHIM_DEBUG_FILE L"shim" EFI_ARCH L".efi.debug"
++#endif
++
+ static EFI_SYSTEM_TABLE *systab;
+ static EFI_HANDLE global_image_handle;
+ static EFI_LOADED_IMAGE *shim_li;
+@@ -1079,9 +1083,8 @@ debug_hook(void)
+ 
+ 	FreePool(data);
+ 
+-	console_print(L"add-symbol-file "DEBUGDIR
+-		      L"shim" EFI_ARCH L".efi.debug 0x%08x -s .data 0x%08x\n",
+-		      &_text, &_data);
++	console_print(L"add-symbol-file "DEBUGDIR SHIM_DEBUG_FILE
++		      L" 0x%08x -s .data 0x%08x\n", &_text, &_data);
+ 
+ 	console_print(L"Pausing for debugger attachment.\n");
+ 	console_print(L"To disable this, remove the EFI variable %s-%g .\n",

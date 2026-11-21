@@ -1,0 +1,42 @@
+From 035e74b5778f84b67f86ca4dce35028bb3d42e53 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 6 Oct 2026 15:23:44 +0800
+Subject: [PATCH] configure.ac: bump SBAT for September 2026 CVE
+
+Update configure.ac to raise GLOBAL_SBAT_LEVEL from 6 to 7.
+
+Add the CVE-2026-97876 reference alongside the SBAT level history
+comment for the new revocation level.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Sudhakar Kuppusamy <sudhakar@linux.ibm.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/295>
+---
+ configure.ac | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4b7ba96c0..c86ed14d6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -36,13 +36,15 @@ dnl description of the relationships between them.
+ 
+ AC_INIT([GRUB2],[2.16],[bug-grub@gnu.org])
+ 
++# The SBAT level should always be in sync with https://github.com/rhboot/shim/blob/main/SbatLevel_Variable.txt
+ # 1: Initial value
+ # 2: https://lists.gnu.org/archive/html/grub-devel/2022-06/msg00035.html
+ # 3: https://lists.gnu.org/archive/html/grub-devel/2022-11/msg00059.html
+ # 4: https://lists.gnu.org/archive/html/grub-devel/2023-10/msg00028.html
+ # 5: https://lists.gnu.org/archive/html/grub-devel/2025-02/msg00024.html
+ # 6: https://lists.gnu.org/archive/html/grub-devel/2025-11/msg00155.html
+-GLOBAL_SBAT_LEVEL=6
++# 7: https://www.cve.org/CVERecord?id=CVE-2026-97876
++GLOBAL_SBAT_LEVEL=7
+ AC_SUBST([GLOBAL_SBAT_LEVEL])
+ AC_DEFINE_UNQUOTED([GLOBAL_SBAT_LEVEL], [$GLOBAL_SBAT_LEVEL], [GRUB Global SBAT level])
+ 
+-- 
+2.56.0
+

@@ -1,0 +1,187 @@
+Index: graphene-3.4.3/graphene/tests/issues/test_1394.py
+===================================================================
+--- graphene-3.4.3.orig/graphene/tests/issues/test_1394.py
++++ graphene-3.4.3/graphene/tests/issues/test_1394.py
+@@ -32,5 +32,5 @@ def test_required_input_missing():
+     assert len(result.errors) == 1
+     assert (
+         result.errors[0].message
+-        == "Field 'hello' argument 'input' of type 'String!' is required, but it was not provided."
++        == "Argument 'Query.hello(input:)' of type 'String!' is required, but it was not provided."
+     )
+Index: graphene-3.4.3/graphene/types/tests/test_decimal.py
+===================================================================
+--- graphene-3.4.3.orig/graphene/types/tests/test_decimal.py
++++ graphene-3.4.3/graphene/types/tests/test_decimal.py
+@@ -44,20 +44,20 @@ def test_bad_decimal_query():
+     assert result.data is None
+     assert (
+         result.errors[0].message
+-        == "Expected value of type 'Decimal', found \"Nobody expects the Spanish Inquisition!\"."
++        == "Expected value of type 'Decimal', found: \"Nobody expects the Spanish Inquisition!\"."
+     )
+ 
+     result = schema.execute("{ decimal(input: true) }")
+     assert result.errors
+     assert len(result.errors) == 1
+     assert result.data is None
+-    assert result.errors[0].message == "Expected value of type 'Decimal', found true."
++    assert result.errors[0].message == "Expected value of type 'Decimal', found: true."
+ 
+     result = schema.execute("{ decimal(input: 1.2) }")
+     assert result.errors
+     assert len(result.errors) == 1
+     assert result.data is None
+-    assert result.errors[0].message == "Expected value of type 'Decimal', found 1.2."
++    assert result.errors[0].message == "Expected value of type 'Decimal', found: 1.2."
+ 
+ 
+ def test_decimal_string_query_integer():
+Index: graphene-3.4.3/graphene/types/tests/test_json.py
+===================================================================
+--- graphene-3.4.3.orig/graphene/types/tests/test_json.py
++++ graphene-3.4.3/graphene/types/tests/test_json.py
+@@ -52,19 +52,19 @@ def test_jsonstring_invalid_query():
+     """
+     result = schema.execute("{ json(input: 1) }")
+     assert result.errors == [
+-        {"message": "Expected value of type 'JSONString', found 1."},
++        {"message": "Expected value of type 'JSONString', found: 1."},
+     ]
+ 
+     result = schema.execute("{ json(input: {}) }")
+     assert result.errors == [
+-        {"message": "Expected value of type 'JSONString', found {}."},
++        {"message": "Expected value of type 'JSONString', found: {  }."},
+     ]
+ 
+     result = schema.execute('{ json(input: "a") }')
+     assert result.errors == [
+         {
+-            "message": "Expected value of type 'JSONString', found \"a\"; "
+-            "Badly formed JSONString: Expecting value: line 1 column 1 (char 0)",
++            "message": "Expected value of type 'JSONString', but encountered error "
++            "'Badly formed JSONString: Expecting value: line 1 column 1 (char 0)'; found: \"a\".",
+         },
+     ]
+ 
+@@ -76,5 +76,5 @@ def test_jsonstring_invalid_query():
+     result = schema.execute("""{ json(input: "{\\"key\\": 0,}") }""")
+     assert len(result.errors) == 1
+     assert result.errors[0].message.startswith(
+-        'Expected value of type \'JSONString\', found "{\\"key\\": 0,}"; Badly formed JSONString:'
++        'Expected value of type \'JSONString\', but encountered error \'Badly formed JSONString:'
+     )
+Index: graphene-3.4.3/graphene/types/tests/test_scalar.py
+===================================================================
+--- graphene-3.4.3.orig/graphene/types/tests/test_scalar.py
++++ graphene-3.4.3/graphene/types/tests/test_scalar.py
+@@ -124,21 +124,21 @@ class TestBigInt:
+         assert result.errors
+         assert len(result.errors) == 1
+         assert (
+-            result.errors[0].message == "Expected value of type 'BigInt', found \"20\"."
++            result.errors[0].message == "Expected value of type 'BigInt', found: \"20\"."
+         )
+ 
+         result = schema.execute('{ optional { bigInt(input: "a") } }')
+         assert result.errors
+         assert len(result.errors) == 1
+         assert (
+-            result.errors[0].message == "Expected value of type 'BigInt', found \"a\"."
++            result.errors[0].message == "Expected value of type 'BigInt', found: \"a\"."
+         )
+ 
+         result = schema.execute("{ optional { bigInt(input: true) } }")
+         assert result.errors
+         assert len(result.errors) == 1
+         assert (
+-            result.errors[0].message == "Expected value of type 'BigInt', found true."
++            result.errors[0].message == "Expected value of type 'BigInt', found: true."
+         )
+ 
+ 
+Index: graphene-3.4.3/graphene/types/tests/test_uuid.py
+===================================================================
+--- graphene-3.4.3.orig/graphene/types/tests/test_uuid.py
++++ graphene-3.4.3/graphene/types/tests/test_uuid.py
+@@ -47,7 +47,7 @@ def test_uuidstring_invalid_argument():
+     assert len(result.errors) == 1
+     assert (
+         result.errors[0].message
+-        == "Variable '$uuid' got invalid value {'not': 'a string'}; UUID cannot represent value: {'not': 'a string'}"
++        == "Variable '$uuid' has invalid value: UUID cannot represent value: {'not': 'a string'}"
+     )
+ 
+ 
+@@ -67,17 +67,17 @@ def test_uuidstring_invalid_query():
+     result = schema.execute("{ uuid(input: 1) }")
+     assert result.errors
+     assert len(result.errors) == 1
+-    assert result.errors[0].message == "Expected value of type 'UUID', found 1."
++    assert result.errors[0].message == "Expected value of type 'UUID', found: 1."
+ 
+     result = schema.execute('{ uuid(input: "a") }')
+     assert result.errors
+     assert len(result.errors) == 1
+     assert (
+         result.errors[0].message
+-        == "Expected value of type 'UUID', found \"a\"; badly formed hexadecimal UUID string"
++        == "Expected value of type 'UUID', but encountered error 'badly formed hexadecimal UUID string'; found: \"a\"."
+     )
+ 
+     result = schema.execute("{ requiredUuid(input: null) }")
+     assert result.errors
+     assert len(result.errors) == 1
+-    assert result.errors[0].message == "Expected value of type 'UUID!', found null."
++    assert result.errors[0].message == "Expected value of non-null type 'UUID!' not to be None."
+Index: graphene-3.4.3/graphene/types/definitions.py
+===================================================================
+--- graphene-3.4.3.orig/graphene/types/definitions.py
++++ graphene-3.4.3/graphene/types/definitions.py
+@@ -43,7 +43,7 @@ class GrapheneScalarType(GrapheneGraphQL
+ 
+ 
+ class GrapheneEnumType(GrapheneGraphQLType, GraphQLEnumType):
+-    def serialize(self, value):
++    def _coerce_enum_value(self, value):
+         if not isinstance(value, PyEnum):
+             enum = self.graphene_type._meta.enum
+             try:
+@@ -55,7 +55,19 @@ class GrapheneEnumType(GrapheneGraphQLTy
+                     value = enum[value]
+                 except KeyError:
+                     pass
+-        return super(GrapheneEnumType, self).serialize(value)
++        return value
++
++    def coerce_output_value(self, value):
++        return super(GrapheneEnumType, self).coerce_output_value(
++            self._coerce_enum_value(value)
++        )
++
++    def serialize(self, value):
++        if hasattr(GraphQLEnumType, "coerce_output_value"):
++            return super(GrapheneEnumType, self).serialize(value)
++        return super(GrapheneEnumType, self).serialize(
++            self._coerce_enum_value(value)
++        )
+ 
+ 
+ class GrapheneInputObjectType(GrapheneGraphQLType, GraphQLInputObjectType):
+Index: graphene-3.4.3/graphene/types/schema.py
+===================================================================
+--- graphene-3.4.3.orig/graphene/types/schema.py
++++ graphene-3.4.3/graphene/types/schema.py
+@@ -513,7 +513,10 @@ class Schema:
+ 
+         # Execute the query
+         kwargs = normalize_execute_kwargs(kwargs)
+-        return await subscribe(self.graphql_schema, document, *args, **kwargs)
++        result = subscribe(self.graphql_schema, document, *args, **kwargs)
++        if inspect.isawaitable(result):
++            return await result
++        return result
+ 
+     def introspect(self):
+         introspection = self.execute(introspection_query)

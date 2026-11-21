@@ -1,0 +1,5 @@
+<package name="gitea-cli" project="openSUSE:Factory">
+  <title>Rework of tea cli</title>
+  <description>`gitea-cli` manages repositories, issues, pull requests, releases, and other Gitea resources with explicit commands suitable for local development and CI.</description>
+  <url>https://gitea.com/gitea/cli</url>
+</package>

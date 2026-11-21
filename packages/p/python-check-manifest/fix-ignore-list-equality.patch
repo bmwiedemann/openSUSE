@@ -1,0 +1,137 @@
+Subject: Compare IgnoreList rules instead of setuptools matchers
+
+Setuptools 83 introduced Unicode-normalising matcher wrappers without
+value-based equality. Comparing independently constructed IgnoreList
+instances therefore fails even when their rules are identical.
+
+Record the glob patterns separately for equality and diagnostics while
+retaining setuptools' matchers for filtering. Keep both lists in sync
+when adding, clearing or combining rules. Add regression tests, including
+opaque matchers that reproduce the failure with older setuptools too.
+--- check_manifest-0.51.orig/check_manifest.py
++++ check_manifest-0.51/check_manifest.py
+@@ -558,6 +558,7 @@
+ class IgnoreList:
+ 
+     def __init__(self):
++        self._patterns = []
+         self._regexps = []
+ 
+     @classmethod
+@@ -588,44 +589,53 @@
+         )
+ 
+     def clear(self):
++        self._patterns = []
+         self._regexps = []
+ 
+     def __repr__(self):
+-        return 'IgnoreList(%r)' % (self._regexps)
++        return 'IgnoreList(%r)' % (self._patterns)
+ 
+     def __eq__(self, other):
+-        return isinstance(other, IgnoreList) and self._regexps == other._regexps
++        return (
++            isinstance(other, IgnoreList)
++            and self._patterns == other._patterns
++        )
+ 
+     def __iadd__(self, other):
+         assert isinstance(other, IgnoreList)
++        self._patterns += other._patterns
+         self._regexps += other._regexps
+         return self
+ 
+     def _path(self, path):
+         return path.replace('/', os.path.sep)
+ 
++    def _add_pattern(self, pat):
++        self._regexps.append(translate_pattern(pat))
++        self._patterns.append(pat)
++
+     def exclude(self, *patterns):
+         for pat in patterns:
+             pat = self._path(pat)
+-            self._regexps.append(translate_pattern(pat))
++            self._add_pattern(pat)
+         return self
+ 
+     def global_exclude(self, *patterns):
+         for pat in patterns:
+             pat = os.path.join('**', self._path(pat))
+-            self._regexps.append(translate_pattern(pat))
++            self._add_pattern(pat)
+         return self
+ 
+     def recursive_exclude(self, dirname, *patterns):
+         dirname = self._path(dirname)
+         for pat in patterns:
+             pat = os.path.join(dirname, '**', self._path(pat))
+-            self._regexps.append(translate_pattern(pat))
++            self._add_pattern(pat)
+         return self
+ 
+     def prune(self, subdir):
+         pat = os.path.join(self._path(subdir), '**')
+-        self._regexps.append(translate_pattern(pat))
++        self._add_pattern(pat)
+         return self
+ 
+     def filter(self, filelist):
+--- check_manifest-0.51.orig/tests.py
++++ check_manifest-0.51/tests.py
+@@ -1401,6 +1401,54 @@
+         from check_manifest import IgnoreList
+         ignore = IgnoreList()
+         self.assertEqual(repr(ignore), "IgnoreList([])")
++        ignore.exclude('*.txt')
++        self.assertEqual(repr(ignore), "IgnoreList(['*.txt'])")
++
++    def test_equality(self):
++        from check_manifest import IgnoreList
++        self.assertEqual(
++            IgnoreList().exclude('*.txt'),
++            IgnoreList().exclude('*.txt'),
++        )
++        self.assertNotEqual(
++            IgnoreList().exclude('*.txt'),
++            IgnoreList().exclude('*.cfg'),
++        )
++        self.assertNotEqual(
++            IgnoreList().exclude('*.txt'),
++            IgnoreList().global_exclude('*.txt'),
++        )
++
++    def test_equality_with_identity_matchers(self):
++        from check_manifest import IgnoreList
++        # Like setuptools >= 83, each call returns a distinct matcher
++        # without value-based equality, even for the same pattern.
++        with mock.patch('check_manifest.translate_pattern',
++                        side_effect=lambda pat: mock.Mock(spec=['match'])):
++            self.assertEqual(
++                IgnoreList().exclude('*.txt'),
++                IgnoreList().exclude('*.txt'),
++            )
++
++    def test_clear(self):
++        from check_manifest import IgnoreList
++        self.ignore.exclude('*.txt')
++        self.ignore.clear()
++        self.assertEqual(self.ignore, IgnoreList())
++        self.assertEqual(self.ignore.filter(['file.txt']), ['file.txt'])
++
++    def test_iadd(self):
++        from check_manifest import IgnoreList
++        self.ignore.exclude('*.txt')
++        self.ignore += IgnoreList().exclude('*.cfg')
++        self.assertEqual(
++            self.ignore,
++            IgnoreList().exclude('*.txt', '*.cfg'),
++        )
++        self.assertEqual(
++            self.ignore.filter(['a.txt', 'b.cfg', 'c.rst']),
++            ['c.rst'],
++        )
+ 
+     def test_exclude_pattern(self):
+         self.ignore.exclude('*.txt')

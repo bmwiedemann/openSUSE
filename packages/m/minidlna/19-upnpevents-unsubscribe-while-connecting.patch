@@ -1,0 +1,31 @@
+Description: Do not abort when a subscriber goes away while connecting
+ If a client unsubscribes while the initial event notification is still
+ connecting to its callback URL, upnpevents_removeSubscriber() clears
+ notify->sub, and upnp_event_prepare() then hits assert(obj->sub) and
+ aborts the whole daemon.  Any host on the LAN can trigger this with a
+ SUBSCRIBE to an unresponsive callback followed by an UNSUBSCRIBE.
+ Drop such notifications instead.
+Author: Alexander GQ Gerasiov <gq@debian.org>
+Bug-Debian: https://bugs.debian.org/1144655
+Forwarded: no
+Last-Update: 2026-11-08
+---
+diff --git a/upnpevents.c b/upnpevents.c
+index 1e44ffe..23033a0 100644
+--- a/upnpevents.c
++++ b/upnpevents.c
+@@ -408,6 +408,14 @@ upnp_event_process_notify(struct event *ev)
+ 	switch(obj->state) {
+ 	case EConnecting:
+ 		/* now connected or failed to connect */
++		if (!obj->sub) {
++			/* The subscriber was removed (UNSUBSCRIBE) while
++			 * we were connecting: drop the notification. */
++			DPRINTF(E_DEBUG, L_HTTP, "upnp_event_process_notify: subscriber gone, dropping notify\n");
++			obj->state = EFinished;
++			event_module.del(&obj->ev, EV_FLAG_CLOSING);
++			break;
++		}
+ 		upnp_event_prepare(obj);
+ 		upnp_event_send(obj);
+ 		break;

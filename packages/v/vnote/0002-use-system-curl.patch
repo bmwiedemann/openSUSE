@@ -1,0 +1,84 @@
+From: Yunhe Guo <i@guoyunhe.me>
+Subject: [PATCH] Allow building against the system libcurl
+
+Add VXCORE_USE_SYSTEM_CURL, which links the platform libcurl instead of
+building the pinned static copy. The replacing TLS certificate verifier is
+OpenSSL specific, so it stays enabled only when the system libcurl was built
+with OpenSSL. Distribution packages use the shared library they already
+maintain instead of embedding their own copy.
+
+VNote then has no bundled curl license to install, so both install rules are
+skipped when vxcore does not provide one.
+
+---
+ libs/vxcore/third_party/CMakeLists.txt | 27 +++++++++++++++++++++++++--
+ src/CMakeLists.txt                     |  8 ++++++--
+ 2 files changed, 31 insertions(+), 4 deletions(-)
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -248,7 +248,9 @@
+     install(FILES "${VX_SODIUM_SOURCE_DIR}/LICENSE"
+         DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.libsodium-cmake)
+     install(FILES "${VX_PUGIXML_LICENSE}" DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.pugixml)
+-    install(FILES "${VX_CURL_LICENSE}" DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.curl)
++    if(VX_CURL_LICENSE)
++        install(FILES "${VX_CURL_LICENSE}" DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.curl)
++    endif()
+     install(FILES "${PROJECT_SOURCE_DIR}/libs/m3/LICENSE"
+         DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.m3)
+     install(FILES "${PROJECT_SOURCE_DIR}/libs/m3/third_party/nlohmann/LICENSE.MIT"
+@@ -293,7 +295,9 @@
+     install(FILES "${VX_SODIUM_SOURCE_DIR}/LICENSE"
+         DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.libsodium-cmake)
+     install(FILES "${VX_PUGIXML_LICENSE}" DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.pugixml)
+-    install(FILES "${VX_CURL_LICENSE}" DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.curl)
++    if(VX_CURL_LICENSE)
++        install(FILES "${VX_CURL_LICENSE}" DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.curl)
++    endif()
+     install(FILES "${PROJECT_SOURCE_DIR}/libs/m3/LICENSE"
+         DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.m3)
+     install(FILES "${PROJECT_SOURCE_DIR}/libs/m3/third_party/nlohmann/LICENSE.MIT"
+--- a/libs/vxcore/third_party/CMakeLists.txt
++++ b/libs/vxcore/third_party/CMakeLists.txt
+@@ -107,6 +107,8 @@
+ 
+ 
+ # Keep WebDAV dependency options local, just like the sodium adapter above.
++option(VXCORE_USE_SYSTEM_CURL "Use the system libcurl instead of the pinned copy" OFF)
++
+ function(vxcore_add_webdav_dependencies)
+   include(FetchContent)
+   set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+@@ -120,7 +122,30 @@
+   set(BUILD_EXAMPLES OFF)
+ 
+   add_library(vxcore_webdav_curl INTERFACE)
+-  if(APPLE AND NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
++  if(VXCORE_USE_SYSTEM_CURL)
++    # Use the platform libcurl instead of the pinned copy.
++    find_package(CURL 7.64 REQUIRED)
++    target_link_libraries(vxcore_webdav_curl INTERFACE CURL::libcurl)
++    # Only the OpenSSL backend exposes the replacing certificate verifier.
++    find_package(PkgConfig QUIET)
++    if(PkgConfig_FOUND)
++      pkg_check_modules(_vxcore_system_curl QUIET libcurl)
++    endif()
++    if(_vxcore_system_curl_FOUND)
++      execute_process(COMMAND "${PKG_CONFIG_EXECUTABLE}" --libs --static libcurl
++        OUTPUT_VARIABLE _vxcore_curl_static_libs
++        OUTPUT_STRIP_TRAILING_WHITESPACE
++        ERROR_QUIET)
++    endif()
++    if(_vxcore_curl_static_libs MATCHES "(^| )-lssl([ .]|$)")
++      find_package(OpenSSL REQUIRED COMPONENTS SSL Crypto)
++      target_compile_definitions(vxcore_webdav_curl INTERFACE VXCORE_SYNC_TLS_OPENSSL=1)
++      target_link_libraries(vxcore_webdav_curl INTERFACE OpenSSL::SSL OpenSSL::Crypto)
++    else()
++      message(WARNING "WebDAV: the system libcurl does not use OpenSSL, "
++                      "so the replacing TLS certificate verifier is unavailable")
++    endif()
++  elseif(APPLE AND NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
+     if(IS_DIRECTORY "${CMAKE_OSX_SYSROOT}")
+       set(_dav_sdk "${CMAKE_OSX_SYSROOT}")
+     else()

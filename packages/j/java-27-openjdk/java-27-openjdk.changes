@@ -1,0 +1,181 @@
+-------------------------------------------------------------------
+Thu Nov 19 08:35:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-27.0.1.1+4 (November 2026 CSPU)
+  * Fixes
+    + JDK-8393212, CVE-2026-114938, bsc#1290745: Base64 optimization
+      improvements
+    + JDK-8387162, CVE-2026-114939, bsc#1290781: Enhance Kerberos
+      tickets
+    + JDK-8390694, CVE-2026-114942, bsc#1290785: Enhance vector
+      masks
+    + JDK-8393456, CVE-2026-114940, bsc#1290782: Improve TLS client
+      connections
+    + JDK-8393337: (tz) Update Timezone Data to 2026e
+    + JDK-8389830, CVE-2026-114943, bsc#1290784: Enhance JFR Events
+    + JDK-8387541, CVE-2026-114945, bsc#1290787: Enhance
+      StringBuilder checks
+    + JDK-8391595, CVE-2026-114944, bsc#1290786: [REDO] Enhance JMX
+      Connections
+    + JDK-8387351, CVE-2026-114947, bsc#1290789: Enhance TLS
+      connections
+    + JDK-8389989, CVE-2026-114946, bsc#1290788: Enhance loop
+      handling
+    + JDK-8392979: Update the Nov CPU26_11 release date to the newly
+      created stabilization branches
+
+-------------------------------------------------------------------
+Thu Nov 19 08:21:23 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-27.0.1.0.3+1 (Octobre 2026 CPU)
+  * Security fixes
+    + JDK-8395690, CVE-2026-114820, bsc#1287962: CA certificate
+      improvements
+    + JDK-8395142, CVE-2026-91403, bsc#1287264: CA Enhancements
+    + JDK-8390400, CVE-2026-91487, bsc#1286551: Enhance C2
+      comparisons
+    + JDK-8384746, CVE-2026-91380, bsc#1286500: Enhance Preferences
+    + JDK-8384688, CVE-2026-91375, bsc#1286497: Enhance jmod
+      handling
+    + JDK-8387152, CVE-2026-91462, bsc#1286547: Enhance krb5 tokens
+    + JDK-8382178, CVE-2026-83376, bsc#1286474: Enhance TLS
+      certificate handling
+    + JDK-8386525, CVE-2026-91452, bsc#1286544: Enhance HTTP Server
+      Handler
+    + JDK-8387238, CVE-2026-91464, bsc#1286550: Enhance Kerberos
+      validation
+    + JDK-8387217, CVE-2026-91463, bsc#1286549: Enhance krb5 client
+    + JDK-8386535, CVE-2026-91453, bsc#1286545: Improve HTTP headers
+    + JDK-8384654, CVE-2026-87367, bsc#1286943: Enhance Template
+      Handling
+    + JDK-8386515, CVE-2026-91451, bsc#1286542: Enhance HTTP server
+      parsing
+    + JDK-8384872, CVE-2026-91332, bsc#1286491: Enhance HTTP Client
+    + JDK-8386923, CVE-2026-91461, bsc#1286546: Enhance TLS
+      Extensions
+    + JDK-8385209, CVE-2026-91394, bsc#1286507: Enhance HTTP client
+      caching
+    + JDK-8383076, CVE-2026-83381, bsc#1286477: Enhance SASL
+      Authentication
+    + JDK-8380715, CVE-2026-83374, bsc#1286472: Enhance PKCS5
+      padding
+    + JDK-8386013: Enhance EventListenerList
+    + JDK-8385260, CVE-2026-91398, bsc#1286515: Enhance SOCKS5
+      support
+    + JDK-8384771, CVE-2026-91373, bsc#1286495: Enhance TLS
+      handshakes
+    + JDK-8386033, CVE-2026-91409, bsc#1286944: Enhance QUIC
+      connections
+    + JDK-8386783: WebRowSet empty elements read value of previous
+      element
+    + JDK-8384736, CVE-2026-91379, bsc#1286498: Enhance JShell
+    + JDK-8383699, CVE-2026-87290, bsc#1286484: Enhance XPath
+      Expressions
+    + JDK-8383047, CVE-2026-83380, bsc#1286476: Enhance LDAP logins
+    + JDK-8383439, CVE-2026-83395, bsc#1286479: Enhance HTTP Client
+      Response Handling
+    + JDK-8383745, CVE-2026-87291, bsc#1286485: Enhance HTTP Server
+    + JDK-8385476, CVE-2026-91400, bsc#1286517: Enhance MIDI file
+      handling
+    + JDK-8384031, CVE-2026-83400, bsc#1286480: Enhance XML
+      Processing
+    + JDK-8386552, CVE-2026-91418, bsc#1286539: Enhance GIF loading
+    + JDK-8387075: RemoteHostImpl constructor correction (jstatd)
+    + JDK-8386298, CVE-2026-70906, bsc#1275763: Improve font loading
+    + JDK-8386187, CVE-2026-91415, bsc#1286537: Enhance font
+      rendering
+    + JDK-8383530: Enhance Javadoc Searching
+    + JDK-8382378, CVE-2026-83378, bsc#1286475: Improve C2 loop
+      transformations
+    + JDK-8384708, CVE-2026-61308, bsc#1275778: Enhance HTTP
+      Connections
+    + JDK-8384021, CVE-2026-101516, bsc#1286395: Enhance Certificate
+      Constraint Checking
+    + JDK-8383679, CVE-2026-87294, bsc#1286490: Enhance Certificate
+      Name Checks
+    + JDK-8385076: Follow-on fix for Improve certification checking
+    + JDK-8380672: Improve certification checking
+    + JDK-8383301, CVE-2026-83387, bsc#1286478: Enhance WebRowSets
+    + JDK-8384930, CVE-2026-91374, bsc#1286496: Enhance jstatd
+    + JDK-8383689, CVE-2026-87255, bsc#1286483: Enhance Vector
+      Processing
+    + JDK-8384445, CVE-2026-91334, bsc#1286493: Enhance JPEG loading
+    + JDK-8384165, CVE-2026-91333, bsc#1286492: Improve ciphertext
+      handling
+    + JDK-8382407: Enhance LDAP Lookups
+    + JDK-8383756, CVE-2026-87292, bsc#1286486: Enhance Network
+      Clients
+    + JDK-8385249, CVE-2026-91397, bsc#1286513: Enhance diagnostic
+      sessions
+    + JDK-8384455: Enhance DataFlavor
+    + JDK-8384468: Enhance jpackage Packaging
+    + JDK-8383281: Enhance MD5 Digesting
+    + JDK-8384664, CVE-2026-91335, bsc#1286494: Enhance Image
+      Handling
+  * Other fixes
+    + JDK-8387235: JShell tests failing
+    + JDK-8395790: Update fix version for JDK 27.0.1.0.3
+    + JDK-8393848: Align the JDK with Microsoft's new timezone name
+      for Manitoba
+    + JDK-8393344: Cherry-pick metazone changes from CLDR to support
+      tzdata2026e for JDK update releases
+    + JDK-8392538: Align the JDK with Microsoft's new timezone names
+      for British Columbia/Alberta
+    + JDK-8392377: (tz) Update Timezone Data to 2026d
+    + JDK-8392526: Cherry-pick BCP 47 time zone changes from CLDR
+      for tzdata2026d, for JDK update releases
+    + JDK-8392519: Cherry-pick metazone changes from CLDR for
+      tzdata2026d, for JDK update release
+    + JDK-8395457: Update fix version for JDK 27.0.1.0.2
+    + JDK-8391256: TestZoneTextPrinterParser.java assertion fails
+      with expected: <Mountain Standard Time> but was: <Mountain
+      Daylight Time>
+    + JDK-8388214: (tz) Update Timezone Data to 2026c
+    + JDK-8390380: Cherry-pick metazone changes from CLDR to support
+      tzdata2026c for JDK update releases
+    + JDK-8387123: Remove LuxTrust Global Root CA
+    + JDK-8388866: Change milestone to fcs for all releases
+    + JDK-8388080: Increase static size of some stubs for APX code
+    + JDK-8388117: [s390x] is_z_illtrap should recognise all forms
+    + JDK-8388284: [s390] resolve_jobject uses wrong branch
+      condition after tmll
+    + JDK-8387985: sun/tools/jstat shell tests fail on platforms
+      that do not support ParallelGC
+    + JDK-8286300: Port JEP 425 to S390X
+    + JDK-8377034: Enable full JSR166TestCase.java test for s390x
+    + JDK-8380035: compiler/intrinsics/
+      /TestReturnOopSetForJFRWriteCheckpoint.java crashes on s390x
+    + JDK-8335163: [s390x] test failure - PrintClasses.java
+    + JDK-8385817: Headless jdk still contains bin/jconsole
+    + JDK-8386852: Lower peak throughput with AOTCache
+    + JDK-8380993: [REDO] Incorrect Interpretation of POSIX TZ
+      Environment Variable on AIX
+    + JDK-8385454: Provide more NUMA related information in
+      hsinfo/hserr files
+    + JDK-8386089: Bump update version for OpenJDK: jdk27u to 27.0.1
+
+-------------------------------------------------------------------
+Wed Nov 18 15:28:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Build with external native debug symbols, merged back into the
+  binaries before packaging: the jmods no longer carry debug info,
+  the -debuginfo packages stay as they were (bsc#1282358)
+- Check the debug symbols with eu-readelf instead of nm
+- Keep internal debug symbols on SLE12: its eu-unstrip
+  (elfutils 0.158) cannot merge them
+
+-------------------------------------------------------------------
+Tue Sep 15 20:14:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of OpenJDK 27 release (tag jdk-27+35)
+  * Features
+    + 523: Make G1 the Default Garbage Collector in All Environments
+    + 527: Post-Quantum Hybrid Key Exchange for TLS 1.3
+    + 531: Lazy Constants (Third Preview)
+    + 532: Primitive Types in Patterns, instanceof, and switch
+      (Fifth Preview)
+    + 533: Structured Concurrency (Seventh Preview)
+    + 534: Compact Object Headers by Default
+    + 536: JFR In-Process Data Redaction
+    + 537: Vector API (Twelfth Incubator)
+    + 538: PEM Encodings of Cryptographic Objects (Third Preview)

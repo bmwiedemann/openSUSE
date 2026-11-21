@@ -1,0 +1,4 @@
+# sysroot headers and runtime sources are emcc's input, not devel files
+addFilter("devel-file-in-non-devel-package /usr/share/emscripten/")
+# musl and llvm-libc keep some headers and sources empty on purpose
+addFilter("zero-length /usr/share/emscripten/system/lib/")

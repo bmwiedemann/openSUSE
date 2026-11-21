@@ -1,0 +1,8 @@
+<package name="tela" project="openSUSE:Factory">
+  <title>tela</title>
+  <description>A framework for running tests that supports dynamic resource matching.
+
+tela is a framework for running tests. Test execution is controlled by a Makefile. Test output is shown in human-readable format, or in TAP13 format. Test programs can be written in any language, but additional support APIs are only available for Bash and C programs.
+
+tela supports dynamic resource matching: test authors can specify resource requirements (e.g. number of CPUs, a certain type of PCI device, or a remote system) that are dynamically matched against a list of available resources. This removes the need to hard-code IDs of required resources in test cases, allowing them to be run without changes on different test systems.</description>
+</package>

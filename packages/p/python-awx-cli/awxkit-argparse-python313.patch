@@ -1,0 +1,26 @@
+cli: fix TypeError in HelpfulArgumentParser for python 3.12.8 and 3.13.1
+
+Backport of upstream ansible/awx commit 3eb809696aaf: drop the
+_parse_known_args() override, whose private argparse signature changed.
+
+Upstream: https://github.com/ansible/awx/pull/15692
+---
+diff --git a/awxkit/cli/utils.py b/awxkit/cli/utils.py
+index 61c2fe8f5e9e..9e6b5d38ff0f 100644
+--- a/awxkit/cli/utils.py
++++ b/awxkit/cli/utils.py
+@@ -40,14 +40,6 @@ def error(self, message):  # pragma: nocover
+         self._print_message('\n')
+         self.exit(2, '%s: %s\n' % (self.prog, message))
+ 
+-    def _parse_known_args(self, args, ns):
+-        for arg in ('-h', '--help'):
+-            # the -h argument is extraneous; if you leave it off,
+-            # awx-cli will just print usage info
+-            if arg in args:
+-                args.remove(arg)
+-        return super(HelpfulArgumentParser, self)._parse_known_args(args, ns)
+-
+ 
+ def color_enabled():
+     return _color.enabled

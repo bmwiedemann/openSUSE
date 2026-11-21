@@ -1,0 +1,6 @@
+<package name="qrustyquake" project="openSUSE:Factory">
+  <title>Qrusty Quake</title>
+  <description>A modernized SDL3-based WinQuake port (software rendering only) aimed at faithfulness
+to the original while being compatible with most modern maps and mods.</description>
+  <url>https://github.com/cyanbun96/qrustyquake</url>
+</package>

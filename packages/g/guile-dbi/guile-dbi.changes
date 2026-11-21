@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Nov 10 18:17:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package (version 3.2.0), DBI database abstraction for GNU
+  Guile, needed by GNU Artanis.
+- Upstream is the maintained opencog/guile-dbi tree (signed 3.2.0
+  tag); builds the database-independent core with its test DBD
+  back end.
+- Add guile-dbi-doc-subdirs.patch: fix TAB-indented conditional
+  doc SUBDIRS append that make misparsed as a recipe, so the user
+  manual is built and shipped.
+- Add guile-dbi-rpmlintrc: filter devel-file-in-non-devel-package
+  for libguile-dbd-test.so, a DBD plugin dlopened by its
+  unversioned name at runtime that must ship in main.
+

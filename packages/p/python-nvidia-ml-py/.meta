@@ -1,0 +1,5 @@
+<package name="python-nvidia-ml-py" project="openSUSE:Factory">
+  <title>Python bindings for the NVIDIA Management Library</title>
+  <description>Python bindings for the NVIDIA Management Library (NVML), providing GPU management and monitoring functions.</description>
+  <url>https://pypi.org/project/nvidia-ml-py/</url>
+</package>

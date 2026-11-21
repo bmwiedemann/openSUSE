@@ -1,0 +1,53 @@
+From 84076fccdc9e099e5546fe15548a4c0f8ea70e8a Mon Sep 17 00:00:00 2001
+From: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+Date: Wed, 8 Jul 2026 14:48:54 -0300
+Subject: [PATCH] GDB: aarch64: Fix inferior function call if GCS is present
+ but disabled
+
+On AArch64, even if the Guarded Control Stack feature is present on the
+system the inferior may not have enabled it.
+
+There's a bug in GDB's GCS support in that if the system supports GCS,
+GDB will always push a GCS entry when doing an inferior function call
+even if the inferior doesn't have it enabled.  This causes inferior
+function calls to fail. E.g.:
+
+  (gdb) p foo ()
+  Can't write to Guarded Control Stack.
+
+The error message is because the GCSPR doesn't point to a valid memory
+address.
+
+Fix by checking whether GCS is enabled in the inferior before trying to
+push a GCS entry.
+
+Regression tested on an aarch64-linux-gnu QEMU VM with GCS present.
+
+Approved-By: Luis Machado <luis.machado.foss@gmail.com>
+(cherry picked from commit 4410648da673eb72a456a7a2d925d6201bf2e2a2)
+---
+ gdb/aarch64-tdep.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/aarch64-tdep.c b/gdb/aarch64-tdep.c
+index 500ac77d75a..84344010b14 100644
+--- a/gdb/aarch64-tdep.c
++++ b/gdb/aarch64-tdep.c
+@@ -1939,7 +1939,11 @@ static void
+ aarch64_shadow_stack_push (gdbarch *gdbarch, CORE_ADDR new_addr,
+ 			   regcache *regcache)
+ {
+-  aarch64_push_gcs_entry (regcache, new_addr);
++  bool gcs_is_enabled;
++
++  (void) gdbarch_get_shadow_stack_pointer (gdbarch, regcache, gcs_is_enabled);
++  if (gcs_is_enabled)
++    aarch64_push_gcs_entry (regcache, new_addr);
+ }
+ 
+ /* Implement the "push_dummy_call" gdbarch method.  */
+
+base-commit: cc25b5318c37590e3ce9d25d20ef9ccdc73f087e
+-- 
+2.51.0
+

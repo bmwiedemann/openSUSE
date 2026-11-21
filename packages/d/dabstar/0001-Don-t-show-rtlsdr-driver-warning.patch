@@ -1,0 +1,26 @@
+From dbeb0bf62e38d60e8f11de3fef83e8e6cde81bbd Mon Sep 17 00:00:00 2001
+From: Martin Hauke <mardnh@gmx.de>
+Date: Sun, 8 Nov 2026 10:45:24 +0100
+Subject: [PATCH] Don't show rtlsdr driver warning
+
+We ship DABstar with the system provided rtlsdr library.
+---
+ src/devices/rtlsdr_handler/rtlsdr_handler.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/devices/rtlsdr_handler/rtlsdr_handler.cpp b/src/devices/rtlsdr_handler/rtlsdr_handler.cpp
+index f2ff92e0..b1f51e29 100644
+--- a/src/devices/rtlsdr_handler/rtlsdr_handler.cpp
++++ b/src/devices/rtlsdr_handler/rtlsdr_handler.cpp
+@@ -181,7 +181,7 @@ RtlSdrHandler::RtlSdrHandler(QSettings * ipSettings,
+     QString s = "<html><body><font color=\"orange\"><h2>RtlSdr driver found but not the recommended one</h2></font>";
+     s += cRecommText;
+     s += "</body></html>";
+-    QMessageBox::critical(nullptr, "RtlSdr driver", s);
++    // QMessageBox::critical(nullptr, "RtlSdr driver", s);
+   }
+ 
+   //    Ok, from here we have the library functions accessible
+-- 
+2.56.0
+

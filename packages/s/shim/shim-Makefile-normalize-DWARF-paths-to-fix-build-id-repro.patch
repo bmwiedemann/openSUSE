@@ -1,0 +1,63 @@
+From 69a53b85fa8f2edff58371368d3bf056023f3ad9 Mon Sep 17 00:00:00 2001
+From: Chun-Yi Lee <jlee@suse.com>
+Date: Tue, 3 Nov 2026 18:45:26 +0800
+Subject: [PATCH] Makefile: normalize DWARF paths to fix build-id
+ reproducibility
+
+When building shim from different directory paths (or renamed source
+trees), the generated ELF/PE binaries produce differing --build-id
+values and SHA-1 checksums, preventing reproducible builds.
+
+While commit/macro settings previously added -fmacro-prefix-map, this
+flag only rewrites C preprocessor macros (such as __FILE__) and does
+not affect DWARF debug sections. Consequently, the compilation
+directory (DW_AT_comp_dir) and file path tables in DWARF debug
+sections (.debug_info, .debug_line) continue to record the host's
+absolute working directory path.
+
+Fix this by:
+1. Probing and passing -fdebug-prefix-map='$(TOPDIR)=.' in Make.defaults
+   so that all shim object files rewrite the source root to relative
+   paths in DWARF metadata.
+2. Explicitly passing CFLAGS="-fdebug-prefix-map=$(TOPDIR)=." when
+   invoking the gnu-efi submodule in Makefile, ensuring the bundled
+   gnu-efi objects and static libraries are also normalized.
+
+With these changes, DW_AT_comp_dir consistently points to relative
+paths, ensuring bit-for-bit identical object files and consistent
+build-id hashes regardless of the parent build directory.
+
+Link: https://github.com/rhboot/shim/pull/838
+Signed-off-by: Chun-Yi Lee <jlee@suse.com>
+---
+ Make.defaults | 1 +
+ Makefile      | 1 +
+ 2 files changed, 2 insertions(+)
+
+Index: shim-16.1/Make.defaults
+===================================================================
+--- shim-16.1.orig/Make.defaults
++++ shim-16.1/Make.defaults
+@@ -112,6 +112,7 @@ override DEFAULT_FEATUREFLAGS = \
+ 		-ggdb -gdwarf-4 -gstrict-dwarf \
+ 		-ffreestanding \
+ 		$(shell $(CC) -fmacro-prefix-map=./=./ -E -x c /dev/null >/dev/null 2>&1 && echo -fmacro-prefix-map='$(TOPDIR)/=$(DEBUGSRC)') \
++		$(shell $(CC) -fdebug-prefix-map=./=./ -E -x c /dev/null >/dev/null 2>&1 && echo -fdebug-prefix-map='$(TOPDIR)=.') \
+ 		-fno-stack-protector \
+ 		-fno-strict-aliasing \
+ 		-fpic \
+Index: shim-16.1/Makefile
+===================================================================
+--- shim-16.1.orig/Makefile
++++ shim-16.1/Makefile
+@@ -166,9 +166,9 @@ MokManager.o: $(MOK_SOURCES)
+ $(MMSONAME): $(MOK_OBJS) $(LIBS)
+ 	$(LD) -o $@ $(LDFLAGS) $^ $(EFI_LIBS) lib/lib.a
+ 
+-gnu-efi/$(ARCH_GNUEFI)/gnuefi/libgnuefi.a gnu-efi/$(ARCH_GNUEFI)/lib/libefi.a: CFLAGS+=-DGNU_EFI_USE_EXTERNAL_STDARG
+ gnu-efi/$(ARCH_GNUEFI)/gnuefi/libgnuefi.a gnu-efi/$(ARCH_GNUEFI)/lib/libefi.a:
+ 	mkdir -p gnu-efi/lib gnu-efi/gnuefi
++	CFLAGS="-DGNU_EFI_USE_EXTERNAL_STDARG -fdebug-prefix-map=$(TOPDIR)/=." \
+ 	$(MAKE) -C gnu-efi \
+ 		COMPILER="$(COMPILER)" \
+ 		CCC_CC="$(COMPILER)" \

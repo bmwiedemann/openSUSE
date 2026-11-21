@@ -1,0 +1,71 @@
+From 3e2074347cb6d4a963845e72f257587ef6285c85 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 2 Nov 2026 10:39:15 +0100
+Subject: [PATCH 3/3] [gdb/testsuite] Fix FAIL in
+ gdb.server/multi-ui-errors.exp
+
+With a gdb 17.2 based package and test-case gdb.server/multi-ui-errors.exp I
+ran into:
+...
+(gdb) continue
+Continuing.
+PASS: $exp: continue
+Executing on target: kill -9 471636    (timeout = 300)
+builtin_spawn -ignore SIGHUP kill -9 471636
+Remote communication error.  Target disconnected: error while reading: \
+  Connection reset by peer.
+Command aborted.
+(gdb) FAIL: $exp: remote connection closed - main UI
+...
+
+This is caused by a race between gdbserver reading packets and the KILL signal.
+
+If gdbserver reads all the packets before receiving the KILL signal, we get
+the usual "Remote connection closed".  If not, we get this
+"Remote communication error".
+
+I can reproduce this reliably with current trunk by sending a STOP signal to
+the gdbserver before the continue.
+
+The point of the test-case is to see whether gdb gets stuck when running into
+an error while having multiple UIs, so fix this by just accepting the output.
+
+The updated regexp is generic enough to allow other errors, like
+"Broken pipe", and makes "Command aborted" entirely optional.
+
+Tested on x86_64-linux.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34929
+---
+ gdb/testsuite/gdb.server/multi-ui-errors.exp | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.server/multi-ui-errors.exp b/gdb/testsuite/gdb.server/multi-ui-errors.exp
+index 2cdf63135b4..110beacf3cc 100644
+--- a/gdb/testsuite/gdb.server/multi-ui-errors.exp
++++ b/gdb/testsuite/gdb.server/multi-ui-errors.exp
+@@ -141,9 +141,20 @@ remote_exec target "kill -9 $gdbserver_pid"
+ # The point is that we should be able to interact with GDB from either
+ # interpreter now.
+ 
++# Handle a variety of error messages that occur depending on when the KILL
++# signal arrives.
++set re_closed_1 "Remote connection closed"
++set re_closed_2 \
++    {Remote communication error[.]  Target disconnected: [^\r\n]*[.]}
++set re_command_aborted [string_to_regexp "Command aborted."]
++set re_closed \
++    [multi_line \
++	 "($re_closed_1|$re_closed_2)(" \
++	 "$re_command_aborted)?"]
++
+ with_spawn_id $gdb_main_spawn_id {
+     gdb_test_multiple "" "remote connection closed - main UI" {
+-	-re -wrap "Remote connection closed" {
++	-re -wrap $re_closed {
+ 	    pass $gdb_test_name
+ 	}
+     }
+-- 
+2.51.0
+

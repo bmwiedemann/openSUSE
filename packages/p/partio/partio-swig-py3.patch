@@ -1,0 +1,100 @@
+--- a/src/py/partio.i	2026-11-16 15:18:59.282058135 +0100
++++ b/src/py/partio.i	2026-11-16 15:18:59.301143602 +0100
+@@ -287,7 +287,7 @@
+         // build the python return type
+         PyObject* list=PyList_New(points.size());
+         for(unsigned int i=0;i<points.size();i++){
+-            PyList_SetItem(list,i,PyInt_FromLong(points[i])); // tuple reference is stolen, so no decref needed
++            PyList_SetItem(list,i,PyLong_FromLong(points[i])); // tuple reference is stolen, so no decref needed
+         }
+         return list;
+     }
+@@ -299,7 +299,7 @@
+         PyObject* tuple=PyTuple_New(attr.count);
+         if(attr.type==Partio::INT || attr.type==Partio::INDEXEDSTR){
+             const int* p=$self->data<int>(attr,particleIndex);
+-            for(int k=0;k<attr.count;k++) PyTuple_SetItem(tuple,k,PyInt_FromLong(p[k]));
++            for(int k=0;k<attr.count;k++) PyTuple_SetItem(tuple,k,PyLong_FromLong(p[k]));
+         }else if(attr.type==Partio::FLOAT || attr.type==Partio::VECTOR){
+             const float* p=$self->data<float>(attr,particleIndex);
+             for(int k=0;k<attr.count;k++) PyTuple_SetItem(tuple,k,PyFloat_FromDouble(p[k]));
+@@ -318,7 +318,7 @@
+         PyObject* tuple=PyTuple_New(attr.count);
+         if(attr.type==Partio::INT || attr.type==Partio::INDEXEDSTR){
+             const int* p=$self->fixedData<int>(attr);
+-            for(int k=0;k<attr.count;k++) PyTuple_SetItem(tuple,k,PyInt_FromLong(p[k]));
++            for(int k=0;k<attr.count;k++) PyTuple_SetItem(tuple,k,PyLong_FromLong(p[k]));
+         }else if(attr.type==Partio::FLOAT || attr.type==Partio::VECTOR){
+             const float* p=$self->fixedData<float>(attr);
+             for(int k=0;k<attr.count;k++) PyTuple_SetItem(tuple,k,PyFloat_FromDouble(p[k]));
+@@ -336,7 +336,7 @@
+     {
+         const std::vector<std::string>& indexes=self->indexedStrs(attr);
+         PyObject* list=PyList_New(indexes.size());
+-        for(size_t k=0;k<indexes.size();k++) PyList_SetItem(list,k,PyString_FromString(indexes[k].c_str()));
++        for(size_t k=0;k<indexes.size();k++) PyList_SetItem(list,k,PyUnicode_FromString(indexes[k].c_str()));
+         return list;
+     }
+ 
+@@ -346,7 +346,7 @@
+     {
+         const std::vector<std::string>& indexes=self->fixedIndexedStrs(attr);
+         PyObject* list=PyList_New(indexes.size());
+-        for(size_t k=0;k<indexes.size();k++) PyList_SetItem(list,k,PyString_FromString(indexes[k].c_str()));
++        for(size_t k=0;k<indexes.size();k++) PyList_SetItem(list,k,PyUnicode_FromString(indexes[k].c_str()));
+         return list;
+     }
+ }
+@@ -373,8 +373,8 @@
+             if (p) {
+                 for(int i=0;i<size;i++){
+                     PyObject* o=PySequence_GetItem(tuple,i);
+-                    if(PyInt_Check(o)){
+-                        p[i]=PyInt_AsLong(o);
++                    if(PyLong_Check(o)){
++                        p[i]=PyLong_AsLong(o);
+                     }else{
+                         Py_XDECREF(o);
+                         PyErr_SetString(PyExc_ValueError,"Expecting a sequence of ints");
+@@ -391,8 +391,8 @@
+                     //fprintf(stderr,"checking %d\n",i);
+                     if(PyFloat_Check(o)){
+                         p[i]=PyFloat_AsDouble(o);
+-                    }else if(PyInt_Check(o)){
+-                        p[i]=(float)PyInt_AsLong(o);
++                    }else if(PyLong_Check(o)){
++                        p[i]=(float)PyLong_AsLong(o);
+                     }else{
+                         Py_XDECREF(o);
+                         PyErr_SetString(PyExc_ValueError,"Expecting a sequence of floats or ints");
+@@ -429,8 +429,8 @@
+             int* p=$self->fixedDataWrite<int>(attr);
+             for(int i=0;i<size;i++){
+                 PyObject* o=PySequence_GetItem(tuple,i);
+-                if(PyInt_Check(o)){
+-                    p[i]=PyInt_AsLong(o);
++                if(PyLong_Check(o)){
++                    p[i]=PyLong_AsLong(o);
+                 }else{
+                     Py_XDECREF(o);
+                     PyErr_SetString(PyExc_ValueError,"Expecting a sequence of ints");
+@@ -445,8 +445,8 @@
+                 //fprintf(stderr,"checking %d\n",i);
+                 if(PyFloat_Check(o)){
+                     p[i]=PyFloat_AsDouble(o);
+-                }else if(PyInt_Check(o)){
+-                    p[i]=(float)PyInt_AsLong(o);
++                }else if(PyLong_Check(o)){
++                    p[i]=(float)PyLong_AsLong(o);
+                 }else{
+                     Py_XDECREF(o);
+                     PyErr_SetString(PyExc_ValueError,"Expecting a sequence of floats or ints");
+@@ -538,7 +538,7 @@
+         PyObject* tuple=PyTuple_New(2);
+         PyObject* instance = SWIG_NewPointerObj(SWIG_as_voidptr(ptr), SWIGTYPE_p_ParticlesDataMutable, SWIG_POINTER_OWN);
+         PyTuple_SetItem(tuple,0,instance);
+-        PyTuple_SetItem(tuple,1,PyString_FromString(ss.str().c_str()));
++        PyTuple_SetItem(tuple,1,PyUnicode_FromString(ss.str().c_str()));
+         return tuple;
+     }
+ %}

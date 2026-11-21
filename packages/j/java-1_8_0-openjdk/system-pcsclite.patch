@@ -1,0 +1,159 @@
+diff --git a/jdk/make/lib/SecurityLibraries.gmk b/jdk/make/lib/SecurityLibraries.gmk
+index 23c6419bdb..39f7e46c55 100644
+--- a/jdk/make/lib/SecurityLibraries.gmk
++++ b/jdk/make/lib/SecurityLibraries.gmk
+@@ -64,6 +64,14 @@ BUILD_LIBRARIES += $(BUILD_LIBJAAS)
+ 
+ ##########################################################################################
+ 
++ifeq ($(USE_EXTERNAL_PCSC), true)
++  J2PCSC_CFLAGS := -DUSE_SYSTEM_PCSC $(PCSC_CFLAGS)
++  J2PCSC_LIBS := $(PCSC_LIBS)
++else
++  J2PCSC_CFLAGS := -I$(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/sun/security/smartcardio/MUSCLE
++  J2PCSC_LIBS := $(LIBDL)
++endif
++
+ $(eval $(call SetupNativeCompilation,BUILD_LIBJ2PCSC, \
+     LIBRARY := j2pcsc, \
+     OUTPUT_DIR := $(INSTALL_LIBRARIES_HERE), \
+@@ -72,14 +80,13 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBJ2PCSC, \
+     LANG := C, \
+     CFLAGS_posix := -D__sun_jdk, \
+     OPTIMIZATION := LOW, \
+-    CFLAGS := $(CFLAGS_JDKLIB) \
++    CFLAGS := $(CFLAGS_JDKLIB) $(J2PCSC_CFLAGS) \
+         -I$(JDK_TOPDIR)/src/share/native/sun/security/smartcardio \
+-        -I$(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/sun/security/smartcardio \
+-        -I$(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/sun/security/smartcardio/MUSCLE, \
++        -I$(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/sun/security/smartcardio, \
+     MAPFILE := $(JDK_TOPDIR)/make/mapfiles/libj2pcsc/mapfile-vers, \
+     LDFLAGS := $(LDFLAGS_JDKLIB) \
+         $(call SET_SHARED_LIBRARY_ORIGIN), \
+-    LDFLAGS_SUFFIX_posix := $(LIBDL), \
++    LDFLAGS_SUFFIX_posix := $(J2PCSC_LIBS), \
+     LDFLAGS_SUFFIX_windows := winscard.lib, \
+     LDFLAGS_SUFFIX_solaris := -lc, \
+     VERSIONINFO_RESOURCE := $(JDK_TOPDIR)/src/windows/resource/version.rc, \
+@@ -154,6 +161,10 @@ ifneq ($(BUILD_CRYPTO), no)
+     BUILD_LIBKRB5_NAME := osxkrb5
+     BUILD_LIBKRB5_SRC := $(JDK_TOPDIR)/src/share/native/sun/security/krb5
+     BUILD_LIBKRB5_LIBS := -framework Kerberos
++  else ifeq ($(USE_EXTERNAL_KRB5), true)
++    BUILD_LIBKRB5_NAME := j2krb5
++    BUILD_LIBKRB5_SRC := $(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/sun/security/krb5
++    BUILD_LIBKRB5_LIBS := $(KRB5_LIBS)
+   endif
+ 
+   ifneq ($(BUILD_LIBKRB5_NAME), )
+@@ -165,7 +176,7 @@ ifneq ($(BUILD_CRYPTO), no)
+         SRC := $(BUILD_LIBKRB5_SRC), \
+         LANG := C, \
+         OPTIMIZATION := LOW, \
+-        CFLAGS := $(CFLAGS_JDKLIB) \
++        CFLAGS := $(CFLAGS_JDKLIB) $(KRB5_CFLAGS) \
+             -I$(JDK_TOPDIR)/src/share/native/sun/security/krb5 \
+             -I$(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/sun/security/krb5, \
+         LDFLAGS := $(LDFLAGS_JDKLIB) \
+diff --git a/jdk/src/solaris/native/sun/security/smartcardio/pcsc_md.c b/jdk/src/solaris/native/sun/security/smartcardio/pcsc_md.c
+index f344f4a00d..29d874e3e3 100644
+--- a/jdk/src/solaris/native/sun/security/smartcardio/pcsc_md.c
++++ b/jdk/src/solaris/native/sun/security/smartcardio/pcsc_md.c
+@@ -36,6 +36,7 @@
+ 
+ #include "pcsc_md.h"
+ 
++#ifndef USE_SYSTEM_PCSC
+ void *hModule;
+ FPTR_SCardEstablishContext scardEstablishContext;
+ FPTR_SCardConnect scardConnect;
+@@ -47,6 +48,7 @@ FPTR_SCardListReaders scardListReaders;
+ FPTR_SCardBeginTransaction scardBeginTransaction;
+ FPTR_SCardEndTransaction scardEndTransaction;
+ FPTR_SCardControl scardControl;
++#endif
+ 
+ /*
+  * Throws a Java Exception by name
+@@ -75,6 +77,7 @@ void throwIOException(JNIEnv *env, const char *msg)
+     throwByName(env, "java/io/IOException", msg);
+ }
+ 
++#ifndef USE_SYSTEM_PCSC
+ void *findFunction(JNIEnv *env, void *hModule, char *functionName) {
+     void *fAddress = dlsym(hModule, functionName);
+     if (fAddress == NULL) {
+@@ -85,9 +88,11 @@ void *findFunction(JNIEnv *env, void *hModule, char *functionName) {
+     }
+     return fAddress;
+ }
++#endif
+ 
+ JNIEXPORT void JNICALL Java_sun_security_smartcardio_PlatformPCSC_initialize
+         (JNIEnv *env, jclass thisClass, jstring jLibName) {
++#ifndef USE_SYSTEM_PCSC
+     const char *libName = (*env)->GetStringUTFChars(env, jLibName, NULL);
+     if (libName == NULL) {
+         throwNullPointerException(env, "PCSC library name is null");
+@@ -141,4 +146,6 @@ JNIEXPORT void JNICALL Java_sun_security_smartcardio_PlatformPCSC_initialize
+ #else
+     scardControl          = (FPTR_SCardControl)         findFunction(env, hModule, "SCardControl132");
+ #endif // __APPLE__
++
++#endif // USE_SYSTEM_PCSC
+ }
+diff --git a/jdk/src/solaris/native/sun/security/smartcardio/pcsc_md.h b/jdk/src/solaris/native/sun/security/smartcardio/pcsc_md.h
+index db93c9cd93..cead5f73a8 100644
+--- a/jdk/src/solaris/native/sun/security/smartcardio/pcsc_md.h
++++ b/jdk/src/solaris/native/sun/security/smartcardio/pcsc_md.h
+@@ -23,6 +23,8 @@
+  * questions.
+  */
+ 
++#ifndef USE_SYSTEM_PCSC
++
+ typedef LONG (*FPTR_SCardEstablishContext)(DWORD dwScope,
+                 LPCVOID pvReserved1,
+                 LPCVOID pvReserved2,
+@@ -111,3 +113,41 @@ extern FPTR_SCardListReaders scardListReaders;
+ extern FPTR_SCardBeginTransaction scardBeginTransaction;
+ extern FPTR_SCardEndTransaction scardEndTransaction;
+ extern FPTR_SCardControl scardControl;
++
++#else
++
++#define CALL_SCardEstablishContext(dwScope, pvReserved1, pvReserved2, phContext) \
++    (SCardEstablishContext(dwScope, pvReserved1, pvReserved2, phContext))
++
++#define CALL_SCardConnect(hContext, szReader, dwSharedMode, dwPreferredProtocols, phCard, pdwActiveProtocols) \
++    (SCardConnect(hContext, szReader, dwSharedMode, dwPreferredProtocols, phCard, pdwActiveProtocols))
++
++#define CALL_SCardDisconnect(hCard, dwDisposition) \
++    (SCardDisconnect(hCard, dwDisposition))
++
++#define CALL_SCardStatus(hCard, mszReaderNames, pcchReaderLen, pdwState, pdwProtocol, pbAtr, pcbAtrLen) \
++    (SCardStatus(hCard, mszReaderNames, pcchReaderLen, pdwState, pdwProtocol, pbAtr, pcbAtrLen))
++
++#define CALL_SCardGetStatusChange(hContext, dwTimeout, rgReaderStates, cReaders) \
++    (SCardGetStatusChange(hContext, dwTimeout, rgReaderStates, cReaders))
++
++#define CALL_SCardTransmit(hCard, pioSendPci, pbSendBuffer, cbSendLength, \
++                            pioRecvPci, pbRecvBuffer, pcbRecvLength) \
++    (SCardTransmit(hCard, pioSendPci, pbSendBuffer, cbSendLength, \
++                            pioRecvPci, pbRecvBuffer, pcbRecvLength))
++
++#define CALL_SCardListReaders(hContext, mszGroups, mszReaders, pcchReaders) \
++    (SCardListReaders(hContext, mszGroups, mszReaders, pcchReaders))
++
++#define CALL_SCardBeginTransaction(hCard) \
++    (SCardBeginTransaction(hCard))
++
++#define CALL_SCardEndTransaction(hCard, dwDisposition) \
++    (SCardEndTransaction(hCard, dwDisposition))
++
++#define CALL_SCardControl(hCard, dwControlCode, pbSendBuffer, cbSendLength, \
++            pbRecvBuffer, pcbRecvLength, lpBytesReturned) \
++    (SCardControl(hCard, dwControlCode, pbSendBuffer, cbSendLength, \
++            pbRecvBuffer, pcbRecvLength, lpBytesReturned))
++
++#endif

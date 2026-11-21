@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed Nov 11 07:25:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of the everything, filesystem, memory and
+  sequential-thinking servers from release 2.4.0
+- Replace the fast-uri 3.1.8 sources inlined in the MCP SDK with
+  those of release 3.1.9 (replace-fast-uri.mjs):
+  * CVE-2026-110306: URI scheme spoofing via percent-encoded
+    scheme decoding (bsc#1286297)
+  * CVE-2026-110180: host confusion via unchecked WHATWG host
+    canonicalization (bsc#1286297)
+  * CVE-2026-110095: improper path equivalence in relative
+    reference normalization (bsc#1286297)
+  * CVE-2026-110725: scheme injection via an unescaped
+    first-segment colon in suffix references (bsc#1286297)
+- mcp-server-memory: keep the graph under XDG_DATA_HOME by
+  default, the location next to the server code is not writable
+

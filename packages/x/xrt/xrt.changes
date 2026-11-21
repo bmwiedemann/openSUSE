@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Nov 17 13:44:31 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Initial package of xrt 202610.2.21.21
+  Xilinx Runtime (XRT) provides runtime libraries and tools for
+  programming and managing AMD/Xilinx FPGA accelerator cards. It
+  supports OpenCL applications, device administration, accelerator
+  image handling, kernel driver sources, and Python bindings.
+

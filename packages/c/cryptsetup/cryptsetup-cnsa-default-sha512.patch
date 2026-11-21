@@ -1,0 +1,91 @@
+CNSA 1.0: use SHA-512 instead of hardcoded SHA-256 defaults for the LUKS2
+header checksum and the LUKS2 reencryption checksum resilience hash.
+
+Index: cryptsetup-2.8.8/lib/luks2/luks2_json_format.c
+===================================================================
+--- cryptsetup-2.8.8.orig/lib/luks2/luks2_json_format.c
++++ cryptsetup-2.8.8/lib/luks2/luks2_json_format.c
+@@ -223,7 +223,7 @@ int LUKS2_generate_hdr(
+ 	hdr->seqid = 1;
+ 	hdr->version = 2;
+ 	memset(hdr->label, 0, LUKS2_LABEL_L);
+-	strcpy(hdr->checksum_alg, "sha256");
++	strcpy(hdr->checksum_alg, "sha512");
+ 
+ 	r = crypt_random_get(cd, (char*)hdr->salt1, LUKS2_SALT_L, CRYPT_RND_SALT);
+ 	if (r < 0) {
+Index: cryptsetup-2.8.8/lib/luks2/luks2_luks1_convert.c
+===================================================================
+--- cryptsetup-2.8.8.orig/lib/luks2/luks2_luks1_convert.c
++++ cryptsetup-2.8.8/lib/luks2/luks2_luks1_convert.c
+@@ -599,7 +599,7 @@ int LUKS2_luks1_to_luks2(struct crypt_de
+ 	hdr2->hdr_size = LUKS2_HDR_16K_LEN;
+ 	hdr2->seqid = 1;
+ 	hdr2->version = 2;
+-	strncpy(hdr2->checksum_alg, "sha256", LUKS2_CHECKSUM_ALG_L);
++	strncpy(hdr2->checksum_alg, "sha512", LUKS2_CHECKSUM_ALG_L);
+ 	r = crypt_random_get(cd, (char*)hdr2->salt1, sizeof(hdr2->salt1), CRYPT_RND_SALT);
+ 	if (r < 0) {
+ 		log_dbg(cd, "Cannot generate header salt.");
+Index: cryptsetup-2.8.8/man/common_options.adoc
+===================================================================
+--- cryptsetup-2.8.8.orig/man/common_options.adoc
++++ cryptsetup-2.8.8/man/common_options.adoc
+@@ -917,7 +917,7 @@ endif::[]
+ ifdef::ACTION_REENCRYPT[]
+ *--resilience-hash* _hash_ (LUKS2 only)::
+ The _hash_ algorithm is used with "--resilience checksum" only.
+-The default hash is sha256.
++The default hash is sha512.
+ With other resilience modes, the hash parameter is ignored.
+ endif::[]
+ 
+Index: cryptsetup-2.8.8/src/utils_reencrypt.c
+===================================================================
+--- cryptsetup-2.8.8.orig/src/utils_reencrypt.c
++++ cryptsetup-2.8.8/src/utils_reencrypt.c
+@@ -220,7 +220,7 @@ static int reencrypt_verify_and_update_p
+ 		if (!params->hash && !ARG_SET(OPT_RESILIENCE_HASH_ID) &&
+ 		    (!strcmp(params->resilience, "checksum") ||
+ 		    !strcmp(params->resilience, "datashift-checksum")))
+-			params->hash = "sha256";
++			params->hash = "sha512";
+ 
+ 		if (ARG_SET(OPT_RESILIENCE_HASH_ID))
+ 			params->hash = ARG_STR(OPT_RESILIENCE_HASH_ID);
+@@ -662,7 +662,7 @@ static int encrypt_luks2_init(struct cry
+ 		.mode = CRYPT_REENCRYPT_ENCRYPT,
+ 		.direction = data_shift < 0 ? CRYPT_REENCRYPT_BACKWARD : CRYPT_REENCRYPT_FORWARD,
+ 		.resilience = ARG_STR(OPT_RESILIENCE_ID) ?: "checksum",
+-		.hash = ARG_STR(OPT_RESILIENCE_HASH_ID) ?: "sha256",
++		.hash = ARG_STR(OPT_RESILIENCE_HASH_ID) ?: "sha512",
+ 		.max_hotzone_size = ARG_UINT64(OPT_HOTZONE_SIZE_ID) / SECTOR_SIZE,
+ 		.device_size = ARG_UINT64(OPT_DEVICE_SIZE_ID) / SECTOR_SIZE,
+ 		.luks2 = &luks2_params,
+@@ -901,7 +901,7 @@ static int decrypt_luks2_datashift_init(
+ 		.mode = CRYPT_REENCRYPT_DECRYPT,
+ 		.direction = CRYPT_REENCRYPT_FORWARD,
+ 		.resilience = "datashift-checksum",
+-		.hash = ARG_STR(OPT_RESILIENCE_HASH_ID) ?: "sha256",
++		.hash = ARG_STR(OPT_RESILIENCE_HASH_ID) ?: "sha512",
+ 		.device_size = ARG_UINT64(OPT_DEVICE_SIZE_ID) / SECTOR_SIZE,
+ 		.max_hotzone_size = ARG_UINT64(OPT_HOTZONE_SIZE_ID) / SECTOR_SIZE,
+ 		.flags = CRYPT_REENCRYPT_MOVE_FIRST_SEGMENT
+@@ -1030,7 +1030,7 @@ static int decrypt_luks2_init(struct cry
+ 		.mode = CRYPT_REENCRYPT_DECRYPT,
+ 		.direction = data_shift > 0 ? CRYPT_REENCRYPT_FORWARD : CRYPT_REENCRYPT_BACKWARD,
+ 		.resilience = data_shift ? "datashift" : (ARG_STR(OPT_RESILIENCE_ID) ?: "checksum"),
+-		.hash = ARG_STR(OPT_RESILIENCE_HASH_ID) ?: "sha256",
++		.hash = ARG_STR(OPT_RESILIENCE_HASH_ID) ?: "sha512",
+ 		.data_shift = imaxabs(data_shift) / SECTOR_SIZE,
+ 		.device_size = ARG_UINT64(OPT_DEVICE_SIZE_ID) / SECTOR_SIZE,
+ 		.max_hotzone_size = ARG_UINT64(OPT_HOTZONE_SIZE_ID) / SECTOR_SIZE,
+@@ -1886,7 +1886,7 @@ static int reencrypt_luks2_init(struct c
+ 		.mode = CRYPT_REENCRYPT_REENCRYPT,
+ 		.direction = data_shift < 0 ? CRYPT_REENCRYPT_BACKWARD : CRYPT_REENCRYPT_FORWARD,
+ 		.resilience = data_shift ? "datashift" : (ARG_STR(OPT_RESILIENCE_ID) ?: "checksum"),
+-		.hash = ARG_STR(OPT_RESILIENCE_HASH_ID) ?: "sha256",
++		.hash = ARG_STR(OPT_RESILIENCE_HASH_ID) ?: "sha512",
+ 		.data_shift = imaxabs(data_shift) / SECTOR_SIZE,
+ 		.max_hotzone_size = ARG_UINT64(OPT_HOTZONE_SIZE_ID) / SECTOR_SIZE,
+ 		.device_size = ARG_UINT64(OPT_DEVICE_SIZE_ID) / SECTOR_SIZE,

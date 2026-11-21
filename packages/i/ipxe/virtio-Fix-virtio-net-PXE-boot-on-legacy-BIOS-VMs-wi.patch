@@ -1,0 +1,60 @@
+From eaacf3ccfe02728a6252df34bddb2674910670c9 Mon Sep 17 00:00:00 2001
+From: Dario Faggioli <dfaggioli@suse.com>
+Date: Tue, 29 Sep 2026 13:18:21 +0200
+Subject: [PATCH] [virtio] Fix virtio-net PXE boot on legacy BIOS VMs with >
+ 4GB RAM (bsc#1271200)
+
+The virtio driver rewrite introduced by commit ca85200809eb ("[virtio]
+Replace the virtio core and network device driver") broke PXE boot for
+legacy BIOS VMs with more than 4GB of RAM due to inaccessible 64-bit
+MMIO BARs.
+
+This commits applies a temporary downstream workaround to restore
+network boot functionality while a definitive architectural fix is being
+discussed upstream.
+
+Worksaround: ca85200809eb ("[virtio] Replace the virtio core and network device driver")
+References: bsc#1271200
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ src/drivers/bus/pci.c | 24 +++++++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/src/drivers/bus/pci.c b/src/drivers/bus/pci.c
+index 9e47dd93c..32386ced7 100644
+--- a/src/drivers/bus/pci.c
++++ b/src/drivers/bus/pci.c
+@@ -73,7 +73,29 @@ static unsigned long pci_bar ( struct pci_device *pci, unsigned int reg ) {
+ 				DBGC ( pci, PCI_FMT " unhandled 64-bit BAR "
+ 				       "%08x%08x\n",
+ 				       PCI_ARGS ( pci ), high, low );
+-				return PCI_BASE_ADDRESS_MEM_TYPE_64;
++
++				/*  WORKAROUND for bsc#1271200: Steal routing window from 32-bit MSI-X BAR */
++				uint32_t bar1;
++				pci_read_config_dword ( pci, PCI_BASE_ADDRESS_1, &bar1 );
++				
++				/* Verify BAR1 exists, is Memory (not I/O), and is 32-bit */
++				if ( bar1 && ( ( bar1 & PCI_BASE_ADDRESS_SPACE_IO ) == 0 ) &&
++				     ( ( bar1 & PCI_BASE_ADDRESS_MEM_TYPE_MASK ) == 0 ) ) {
++					uint32_t safe_addr = bar1 & ~0xf;
++					
++					/* Move BAR1 to unrouted PCI hole to avoid overlapping Memory Regions */
++					pci_write_config_dword ( pci, PCI_BASE_ADDRESS_1, 0xF0000000 | ( bar1 & 0xf ) );
++					
++					/* Map this 64-bit BAR into the perfectly routed stolen address */
++					uint32_t temp_bar = safe_addr | ( low & 0xf );
++					pci_write_config_dword ( pci, reg + 4, 0 );
++					pci_write_config_dword ( pci, reg, temp_bar );
++					
++					DBGC ( pci, PCI_FMT " stole BAR1 routing: remapped 64-bit BAR to %08x\n",
++					       PCI_ARGS ( pci ), temp_bar );
++					return temp_bar;
++				}
++
+ 			}
+ 		}
+ 	}
+-- 
+2.55.0
+

@@ -1,0 +1,62 @@
+From 1ccaf15a378846a13614d914d3953ad7ed81f47a Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 20 Mar 2026 10:13:27 +0100
+Subject: [PATCH 3/9] [gdb/testsuite, Tcl 9.0] Fix error: no such variable:
+ Dwarf::_line_unit_version
+
+With test-case gdb.base/until-trailing-insns.exp and Tcl 9.0, I run into:
+...
+ERROR: tcl error sourcing gdb.base/until-trailing-insns.exp.
+ERROR: tcl error code TCL LOOKUP VARNAME Dwarf::_line_unit_version
+ERROR: can't read "Dwarf::_line_unit_version": no such variable
+    while executing
+"if { $Dwarf::_line_unit_version >= 5 } {
+                return [expr {[llength $_line_include_dirs] - 1}]
+            } else {
+                return [llength $_line_include_dirs]
+           ..."
+    (procedure "include_dir" line 5)
+...
+
+Fix this by dropping the Dwarf prefix.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33948
+---
+ gdb/testsuite/lib/dwarf.exp | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/testsuite/lib/dwarf.exp b/gdb/testsuite/lib/dwarf.exp
+index 8dbc93a4249..d0218a883fb 100644
+--- a/gdb/testsuite/lib/dwarf.exp
++++ b/gdb/testsuite/lib/dwarf.exp
+@@ -2591,8 +2591,9 @@ namespace eval Dwarf {
+ 	    variable _line_include_dirs
+ 	    lappend _line_include_dirs $dirname
+ 
+-	    if { $Dwarf::_line_unit_version >= 5 } {
+-		return [expr [llength $_line_include_dirs] - 1]
++	    variable _line_unit_version
++	    if { $_line_unit_version >= 5 } {
++		return [expr {[llength $_line_include_dirs] - 1}]
+ 	    } else {
+ 		return [llength $_line_include_dirs]
+ 	    }
+@@ -2605,9 +2606,10 @@ namespace eval Dwarf {
+ 	    variable _line_file_names
+ 	    lappend _line_file_names $filename $diridx
+ 
+-	    set nr_filenames [expr [llength $_line_file_names] / 2]
+-	    if { $Dwarf::_line_unit_version >= 5 } {
+-		return [expr $nr_filenames - 1]
++	    set nr_filenames [expr {[llength $_line_file_names] / 2}]
++	    variable _line_unit_version
++	    if { $_line_unit_version >= 5 } {
++		return [expr {$nr_filenames - 1}]
+ 	    } else {
+ 		return $nr_filenames
+ 	    }
+-- 
+2.51.0
+

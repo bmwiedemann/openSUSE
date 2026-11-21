@@ -1,0 +1,1287 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Tom Tromey <tom@tromey.com>
+Date: Tue, 11 Feb 2025 11:48:09 -0700
+Subject: gdb-index-generation-fixes.patch
+
+;; Backport of three upstream patches.  The first two relate to index
+;; generation, while the third relates to symbol lookup, but is needed
+;; so that the tests from the earlier two patches will pass.
+;;
+;; These backports will all drop out when rebasing onto GDB 18.
+
+Upstream commit: 0fa4f62568b1deeb071c4a6ae8a1671c8ec7ba6e
+=========================================================
+
+Emit some type declarations in .gdb_index
+
+If you run struct-decl.exp with the .gdb_index board, you will see
+that "the_type" is not emitted in the index.  This would cause a
+failure in this series.  The fix is to ensure that certain necessary
+type declarations are emitted.
+
+However, a naive fix here will regress stub-array-size.exp, where a
+type declaration and a type definition are both seen -- but the
+declaration is seen first and causes a failure.  This is handled by
+adding some code (including a mild hack) to filter out type
+declarations when a corresponding type definition is seen.
+
+Acked-By: Simon Marchi <simon.marchi@efficios.com>
+
+Upstream commit: ccd56e22703c094e5b6d0025e28059277ed8d8c5
+=========================================================
+
+gdb: remove attempted type de-duplication when building gdb-index
+
+This commit removes the attempted de-duplication of types when
+building the gdb-index.  This commit is the natural extension of this
+earlier commit:
+
+  commit aef36dee93bf194cb0b976a4ae49a79a736a188d
+  Date:   Sun Aug 13 14:08:06 2023 +0200
+
+      [gdb/symtab] Don't deduplicate variables in gdb-index
+
+Which removed the de-duplication of variables.  It is worth reading
+the earlier commit as all the justifications for that patch also
+apply to this one.
+
+Currently, when building the gdb-index we sort the type entries,
+moving declarations to the end of the entry list, and non-declarations
+to the front.  Then within each group, declarations, and
+non-declarations, the index entries are sorted by CU offset.
+
+We then emit the first entry for any given type name.
+
+There are two problems with this.
+
+First, a non-declaration entry could be a definition, but it could
+also be a typedef.  Now sure, a typedef is a type definition, but not
+necessarily a useful one.
+
+If we have a header file that contains:
+
+  typedef struct foo_t foo_t;
+
+And a CU which makes use of 'foo_t', then the CU will include both a
+typedef and a type declaration.  The target of the typedef will be the
+declaration.  But notice, the CU will not include a type definition.
+
+If we have two CUs, one which only sees the above typedef and
+declaration, and another which sees the typedef and an actual type
+definition, then the final list of entries for this type's name will
+be:
+
+  1. A typedef entry that points at the declaration.
+  2. A typedef entry that points at the definition.
+  3. A definition.
+  4. A declaration.
+
+Now (4) will get sorted to the end of the entry list.  But the order
+of (1), (2), and (3) will depend on the CU offset.  If the CU which
+containing the typedef and declaration has the smallest offset,
+then (1) will be sorted to the front of the list of entries for this
+type name.  Due to the de-duplication code this means that only (1)
+will be added to the gdb-index.
+
+After GDB starts and parses the index, if a user references 'foo_t'
+GDB will look in the index and find just (1).  GDB loads the CU
+containing (1) and finds both the typedef and the declaration.  But
+GDB does not find the full type definition.  As a result GDB will
+display 'foo_t' as an incomplete type.
+
+This differs from the behaviour when no index is used.  With no index
+GDB expands the first CU containing 'foo_t', finds the typedef and
+type declaration, decides that this is not good enough and carries on.
+GDB will then expand the second CU and find the type's definition, GDB
+now has a full understanding of the type, and can print the type
+correctly.
+
+We could solve this problem by marking typedefs as a distinct
+sub-category of types, just as we do with declarations.  Then we could
+sort definitions to the front of the list, then typedefs, and finally,
+declarations after that.  This would, I think, mean that we always
+prefer emitting a definition for a type, which would resolve this
+first problem, or at least, it would resolve it well enough, but it
+wouldn't fix the second problem.
+
+The second problem is that the Python API and the 'info types' command
+can be used to query all type symbols.  As such, GDB needs to be able
+to find all the CUs which contain a given type.  Especially as it is
+possible that a type might be defined differently within different
+CUs.
+
+NOTE: Obviously a program doing this (defining a type differently in
+  different CUs) would need to be mindful of the One Definition Rule,
+  but so long as the type doesn't escape outside of a single CU then
+  reusing a type name isn't, as I understand it, wrong.  And even if
+  it is, the fact that it compiles, and could be a source of bugs,
+  means (in my opinion) that GDB should handle this case to enable
+  debugging of it.
+
+Even something as simple as 'info types ....' relies on GDB being able
+to find multiple entries for a given type in different CUs.  If the
+index only contains a single type entry, then this means GDB will see
+different things depending on which CUs happen to have been expanded.
+
+Given all of the above, I think that any attempt to remove type
+entries from the gdb-index is unsafe and can result in GDB behaving
+differently when using the gdb-index compared to using no index.
+
+The solution is to remove the de-duplication code, which is what this
+patch does.
+
+Now that we no longer need to sort declarations to the end of the
+entry list, I've removed all the code related to the special use of
+GDB_INDEX_SYMBOL_KIND_UNUSED5 (which is how we marked declarations),
+this cleans things up a little bit.
+
+I've also renamed some of the functions away from minimize, now that
+there's no minimization being done.
+
+A problem was revealed by this change.  When running the test
+gdb.cp/stub-array-size.exp with the --target_board=cc-with-gdb-index,
+I was seeing a failure using gcc 15.1.0.
+
+This test has two CUs, and a type 'A'.  The test description says:
+
+  Test size of arrays of stubbed types (structures where the full
+  definition is not immediately available).
+
+Which I don't really understand given the test's source code.  The
+type 'A' is defined in a header, which is included in both CUs.
+However, the test description does seem to be accurate; in one CU the
+type looks like this:
+
+ <1><4a>: Abbrev Number: 8 (DW_TAG_structure_type)
+    <4b>   DW_AT_name        : A
+    <4d>   DW_AT_declaration : 1
+    <4d>   DW_AT_sibling     : <0x6d>
+ <2><51>: Abbrev Number: 9 (DW_TAG_subprogram)
+    <52>   DW_AT_external    : 1
+    <52>   DW_AT_name        : ~A
+    <55>   DW_AT_decl_file   : 2
+    <56>   DW_AT_decl_line   : 20
+    <57>   DW_AT_decl_column : 11
+    <58>   DW_AT_linkage_name: (indirect string, offset: 0x103): _ZN1AD4Ev
+    <5c>   DW_AT_virtuality  : 1        (virtual)
+    <5d>   DW_AT_containing_type: <0x4a>
+    <61>   DW_AT_declaration : 1
+    <61>   DW_AT_object_pointer: <0x66>
+    <65>   DW_AT_inline      : 0        (not inlined)
+ <3><66>: Abbrev Number: 10 (DW_TAG_formal_parameter)
+    <67>   DW_AT_type        : <0x8c>
+    <6b>   DW_AT_artificial  : 1
+ <3><6b>: Abbrev Number: 0
+ <2><6c>: Abbrev Number: 0
+
+while in the second CU, the type looks like this:
+
+ <1><178>: Abbrev Number: 4 (DW_TAG_structure_type)
+    <179>   DW_AT_name        : A
+    <17b>   DW_AT_byte_size   : 8
+    <17c>   DW_AT_decl_file   : 2
+    <17d>   DW_AT_decl_line   : 18
+    <17e>   DW_AT_decl_column : 8
+    <17f>   DW_AT_containing_type: <0x178>
+    <183>   DW_AT_sibling     : <0x1ac>
+ <2><187>: Abbrev Number: 5 (DW_TAG_member)
+    <188>   DW_AT_name        : (indirect string, offset: 0x19e): _vptr.A
+    <18c>   DW_AT_type        : <0x1be>
+    <190>   DW_AT_data_member_location: 0
+    <191>   DW_AT_artificial  : 1
+ <2><191>: Abbrev Number: 6 (DW_TAG_subprogram)
+    <192>   DW_AT_external    : 1
+    <192>   DW_AT_name        : ~A
+    <195>   DW_AT_decl_file   : 1
+    <196>   DW_AT_decl_line   : 20
+    <197>   DW_AT_decl_column : 1
+    <198>   DW_AT_linkage_name: (indirect string, offset: 0x103): _ZN1AD4Ev
+    <19c>   DW_AT_virtuality  : 1       (virtual)
+    <19d>   DW_AT_containing_type: <0x178>
+    <1a1>   DW_AT_declaration : 1
+    <1a1>   DW_AT_object_pointer: <0x1a5>
+ <3><1a5>: Abbrev Number: 7 (DW_TAG_formal_parameter)
+    <1a6>   DW_AT_type        : <0x1cd>
+    <1aa>   DW_AT_artificial  : 1
+ <3><1aa>: Abbrev Number: 0
+ <2><1ab>: Abbrev Number: 0
+
+So, for reasons that I don't understand, the type, despite (as far as
+I can see) having its full definition available, is recorded only as
+declared in one CU.
+
+The test then performs some actions that rely on 'sizeof(A)' and
+expects GDB to correctly figure out the size.  This requires GDB to
+find, and expand the CU containing the real definition of 'A'.
+
+Prior to this patch GDB would sort the two type entries for 'A',
+placing the declaration second, and then record only one entry, the
+definition.  When it came to expansion there was only one thing to
+expand, and this is the declaration we needed.  It happens that in
+this test the definition is in the second CU, that is, the CU with the
+biggest offset.  This means that, if all index entries were considered
+equal, the definition entry would be second.  However, currently, due
+to the way GDB forces definitions to the front, the entry for the
+second CU, the definition, is placed first in the index, and with
+de-duplication, this is the only entry added to the index.
+
+After this patch, both the declaration and the definition are placed
+in the index, and as the declaration is in the CU at offset 0, the
+declaration is added first to the index.
+
+This should be fine.  When looking for 'A' GDB should expand the CU
+containing the declaration, see that all we have is a declaration, and
+so continue, next expanding the definition, at which point we're done.
+
+However, in read-gdb-index.c, in the function
+mapped_gdb_index::build_name_components, there is a work around for
+gold bug PR gold/15646.  Ironically, the bug here is that gold was not
+removing duplicate index entries, and it is noted that this has a
+performance impact on GDB.  A work around for this was added to GDB in
+commit:
+
+  commit 8943b874760d9cf35b71890a70af9866e4fab2a6
+  Date:   Tue Nov 12 09:43:17 2013 -0800
+
+      Work around gold/15646.
+
+A test for this was added in:
+
+  commit 40d22035a7fc239ac1e944b75a2e3ee9029d1b76
+  Date:   Tue May 26 11:35:32 2020 +0200
+
+      [gdb/testsuite] Add test-case gold-gdb-index.exp
+
+And the fix was tweaked in commit:
+
+  commit f030440daa989ae3dadc1fa4342cfa16d690db3c
+  Date:   Thu May 28 17:26:22 2020 +0200
+
+      [gdb/symtab] Make gold index workaround more precise
+
+The problem specifically called out in the bug report is that
+namespaces can appear in multiple CUs, and that trying to complete
+'ns::misspelled' would expand every CU containing namespace 'ns' due
+to the duplicate 'ns' type symbols.
+
+The work around that was added in 8943b874760d9cf3 was to ignore
+duplicate global symbols when expanding entries from the index.  In
+commit f030440daa989ae3 this work around was restricted to only ignore
+duplicate type entries.  This restriction was required to allow the
+earlier de-duplication patch aef36dee93bf194c to function correctly.
+
+Now that I'm taking the work started in aef36dee93bf194c to its
+logical conclusion, and allowing duplicate type entries, the work
+around of ignoring duplicate global type symbols is no longer needed,
+and can be removed.
+
+The associated test for this, added in 40d22035a7fc239a, is also
+removed in this commit.
+
+To be clear; the performance issue mentioned in PR gold/15646 is now
+back again.  But my claim is that gold was right all along to include
+the duplicate index entries, and any performance hit we see as a
+result, though unfortunate, is just a consequence of doing it right.
+
+That doesn't mean there's not room for optimisation and improvement in
+the future, though I don't have any immediate ideas, or plans in this
+area.  It's just we can't throw out a bunch of index entries that are
+critical, and claim this as a performance optimisation.
+
+I am seeing some failure with this patch when using the board file
+dwarf5-fission-debug-types.  These failures all have the error:
+
+  DWARF Error: wrong unit_type in unit header (is DW_UT_skeleton, should be DW_UT_type) [in module ....]
+
+However, I ran the whole testsuite with this board, and this error
+crops up often, so I don't think this is something specific to my
+patch, so I'm choosing to ignore this.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=15646
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=15035
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Upstream commit: c09ebee0d3ae9148e33aa861cbd857bf2d4100ba
+=========================================================
+
+gdb: symbol_search objects of different types are not the same
+
+Consider the C construct:
+
+  typedef struct foo
+  {
+    int a;
+    int b;
+  } foo;
+
+GDB will see two types here, 'struct foo' and the typedef 'foo'.
+However, if we use 'info types foo' we will see this:
+
+  File test.c:
+  18:	struct foo;
+
+At least that's what I see with current HEAD of master.  However, it
+is really just luck that we see the 'struct' here.  See more below.
+
+When searching for symbols matching 'foo' GDB ends up in the function
+global_symbol_searcher::add_matching_symbols, where we consider all
+possible matching symbols.  This will include the 'struct foo' and the
+typedef 'foo'.  However, before a new symbols is added to the results,
+we attempt to remove duplicates with this code:
+
+  /* Match, insert if not already in the results.  */
+  symbol_search ss (block, sym);
+  if (result_set->find (ss) == result_set->end ())
+    result_set->insert (ss);
+
+If a symbol is already present in result_set then it will not be added
+a second time.
+
+The symbol_search equality check is done using the function
+symbol_search::compare_search_syms, this function does a number of
+checks, but at the end, any two symbols that are in the same block
+within the same file, with the same name, are considered the same,
+even if the types of those symbols are different.
+
+This makes sense in most cases, it usually wouldn't make sense to have
+two symbols within a single block with different types.  But the
+'struct foo' and typedef 'foo' case is a bit of a strange one.  Within
+DWARF and GDB we consider both of these as just types.  But in C
+types and structure names live in different namespaces, and so we can
+have both in the same block.  I don't think that GDB should consider
+these two as the same, especially if we consider something really
+ill-advised like this:
+
+  struct foo
+  {
+    int a;
+    int b;
+  };
+
+  typedef int foo;
+
+This is perfectly valid C code, 'struct foo' and the typedef 'foo' are
+in different namespaces, and can be used within the same block.  But
+please, never write C code like this.
+
+Given the above, I think, when asked about 'foo', GDB should, report
+both 'struct foo' and the typedef 'foo'.
+
+To do this I propose extending symbol_search::compare_search_syms such
+that if two symbol_search objects are in the same block, within the
+same file, and they have the same name, then if just one of them is a
+typedef, the two objects will not be considered equal.  The results
+will be sorted by line number if the line numbers are different, or,
+if the line numbers are the same, the non-typedef will be sorted
+first.  This means that for something like this:
+
+  typedef struct foo { int a; } foo;
+
+We'll get an 'info types foo' result like:
+
+  File test.c:
+  18:	struct foo;
+  18:	typedef struct foo foo;
+
+I mentioned earlier that it is really just luck that we see 'struct
+foo'.  I ran into this problem while working on another patch.  When
+testing with the 'debug-types' board file I was seeing the typedef
+being reported rather than the struct.  In "normal" DWARF given the
+'typedef struct foo { ...} foo;' construct, the compiler will usually
+emit the struct definition first, and then the typedef definition.  So
+when GDB parses the DWARF it sees the struct first.  It is the typedef
+that becomes the duplicate which is not added to the results list.
+
+But with the 'debug-types' board the compiler moves the struct
+definition out to the .debug_types section.  And GDB now parses the CU
+containing the typedef first, and then expands the structure
+definition from the separate section afterwards.  As a result, it is
+the structure that is now considered the duplicate, and the typedef is
+the result that gets reported.
+
+I think this is yet another motivation for this patch.  Changes like
+this (the use of .debug_types section) shouldn't impact what results
+GDB shows to the user.
+
+There is an interesting update to the gdb.base/info-types.exp.tcl test
+script.  In this case the C results only needed to change to include
+the typedef.  The C++ results already included both the struct and the
+typedef in the expected results.  The reason for this is that C places
+both the struct baz_t and the typedef for baz_t into the global block,
+while C++ places the struct in the global block, and the typedef into
+the static block.  I have no idea why there's a difference in the
+placement, but I'm choosing to believe the difference is correct.  But
+this explains why only the C results needed to change.  If anything
+this (I think) is yet another justification for this change; having C
+not show the typedef in this case seems weird when the same source
+code compiled as C++ does show the typedef.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+diff --git a/gdb/NEWS b/gdb/NEWS
+--- a/gdb/NEWS
++++ b/gdb/NEWS
+@@ -61,6 +61,11 @@
+   translation mode of its stdout/stderr to binary mode.  This disables
+   Line Feed translation.  MS-Windows only.
+ 
++* GDB now adds all type symbols to the .gdb_index section.  The index
++  version number has not increased as a consequence of this change.
++  This fixes an issue where GDB could fail to find a type when relying
++  on the index.  Any existing indexes should be regenerated.
++
+ * New commands
+ 
+ maintenance check psymtabs
+diff --git a/gdb/dwarf2/index-write.c b/gdb/dwarf2/index-write.c
+--- a/gdb/dwarf2/index-write.c
++++ b/gdb/dwarf2/index-write.c
+@@ -55,7 +55,7 @@
+ #define DW2_GDB_INDEX_SYMBOL_KIND_SET_VALUE(cu_index, value) \
+   do { \
+     gdb_assert ((value) >= GDB_INDEX_SYMBOL_KIND_TYPE \
+-		&& (value) <= GDB_INDEX_SYMBOL_KIND_OTHER); \
++		&& (value) < GDB_INDEX_SYMBOL_KIND_UNUSED5); \
+     GDB_INDEX_SYMBOL_KIND_SET_VALUE((cu_index), (value)); \
+   } while (0)
+ 
+@@ -184,9 +184,8 @@ struct symtab_index_entry
+      of this name.  */
+   std::vector<offset_type> cu_indices;
+ 
+-  /* Minimize CU_INDICES, sorting them and removing duplicates as
+-     appropriate.  */
+-  void minimize ();
++  /* Sort CU_INDICES.  */
++  void sort ();
+ };
+ 
+ /* The symbol table.  This is a power-of-2-sized hash table.  */
+@@ -198,16 +197,16 @@ struct mapped_symtab
+   }
+ 
+   /* If there are no elements in the symbol table, then reduce the table
+-     size to zero.  Otherwise call symtab_index_entry::minimize each entry
++     size to zero.  Otherwise call symtab_index_entry::sort each entry
+      in the symbol table.  */
+ 
+-  void minimize ()
++  void minimize_and_sort ()
+   {
+     if (m_element_count == 0)
+       m_data.resize (0);
+ 
+     for (symtab_index_entry &item : m_data)
+-      item.minimize ();
++      item.sort ();
+   }
+ 
+   /* Add an entry to SYMTAB.  NAME is the name of the symbol.  CU_INDEX is
+@@ -417,32 +416,19 @@ mapped_symtab::add_index_entry (const char *name, int is_static,
+ /* See symtab_index_entry.  */
+ 
+ void
+-symtab_index_entry::minimize ()
++symtab_index_entry::sort ()
+ {
+   if (name == nullptr || cu_indices.empty ())
+     return;
+ 
+-  std::sort (cu_indices.begin (), cu_indices.end ());
++  /* Sort the entries based on the CU offset.  */
++  std::sort (cu_indices.begin (), cu_indices.end (),
++	     [] (offset_type vala, offset_type valb)
++	       {
++		 return vala < valb;
++	       });
+   auto from = std::unique (cu_indices.begin (), cu_indices.end ());
+   cu_indices.erase (from, cu_indices.end ());
+-
+-  /* We don't want to enter a type more than once, so
+-     remove any such duplicates from the list as well.  When doing
+-     this, we want to keep the entry from the first CU -- but this is
+-     implicit due to the sort.  This choice is done because it's
+-     similar to what gdb historically did for partial symbols.  */
+-  gdb::unordered_set<offset_type> seen;
+-  from = std::remove_if (cu_indices.begin (), cu_indices.end (),
+-			 [&] (offset_type val)
+-    {
+-      gdb_index_symbol_kind kind = GDB_INDEX_SYMBOL_KIND_VALUE (val);
+-      if (kind != GDB_INDEX_SYMBOL_KIND_TYPE)
+-	return false;
+-
+-      val &= ~GDB_INDEX_CU_MASK;
+-      return !seen.insert (val).second;
+-    });
+-  cu_indices.erase (from, cu_indices.end ());
+ }
+ 
+ /* A form of 'const char *' suitable for container keys.  Only the
+@@ -1212,6 +1198,21 @@ write_cooked_index (cooked_index *table,
+ 		    const cu_index_map &cu_index_htab,
+ 		    struct mapped_symtab *symtab)
+ {
++  gdb::unordered_set<const cooked_index_entry *> required_decl_entries;
++  for (const cooked_index_entry *entry : table->all_entries ())
++    {
++      /* Any type declaration that is used as a (non-trivial) parent
++	 entry must be written out.  */
++      if ((entry->flags & IS_TYPE_DECLARATION) == 0)
++	{
++	  for (const cooked_index_entry *parent = entry->get_parent ();
++	       parent != nullptr;
++	       parent = parent->get_parent ())
++	    if ((parent->flags & IS_TYPE_DECLARATION) != 0)
++	      required_decl_entries.insert (parent);
++	}
++    }
++
+   for (const cooked_index_entry *entry : table->all_entries ())
+     {
+       const auto it = cu_index_htab.find (entry->per_cu);
+@@ -1237,11 +1238,10 @@ write_cooked_index (cooked_index *table,
+ 	     be redundant are rare and not worth supporting.  */
+ 	  continue;
+ 	}
+-      else if ((entry->flags & IS_TYPE_DECLARATION) != 0)
+-	{
+-	  /* Don't add type declarations to the index.  */
+-	  continue;
+-	}
++      /* Don't add most type declarations to the index.  */
++      else if ((entry->flags & IS_TYPE_DECLARATION) != 0
++	       && !required_decl_entries.contains (entry))
++	continue;
+ 
+       gdb_index_symbol_kind kind;
+       if (entry->tag == DW_TAG_subprogram
+@@ -1394,7 +1394,7 @@ write_gdbindex (dwarf2_per_bfd *per_bfd, cooked_index *table,
+ 
+   /* Now that we've processed all symbols we can shrink their cu_indices
+      lists.  */
+-  symtab.minimize ();
++  symtab.minimize_and_sort ();
+ 
+   data_buf symtab_vec, constant_pool;
+ 
+diff --git a/gdb/dwarf2/read-gdb-index.c b/gdb/dwarf2/read-gdb-index.c
+--- a/gdb/dwarf2/read-gdb-index.c
++++ b/gdb/dwarf2/read-gdb-index.c
+@@ -1041,7 +1041,6 @@ dw2_expand_marked_cus (dwarf2_per_objfile *per_objfile, offset_type idx,
+ 		       expand_symtabs_lang_matcher lang_matcher)
+ {
+   offset_type vec_len, vec_idx;
+-  bool global_seen = false;
+   mapped_gdb_index &index
+     = *(gdb::checked_static_cast<mapped_gdb_index *>
+ 	(per_objfile->per_bfd->index_table.get ()));
+@@ -1064,17 +1063,6 @@ dw2_expand_marked_cus (dwarf2_per_objfile *per_objfile, offset_type idx,
+ 	(index.version >= 7
+ 	 && symbol_kind != GDB_INDEX_SYMBOL_KIND_NONE);
+ 
+-      /* Work around gold/15646.  */
+-      if (attrs_valid
+-	  && !is_static
+-	  && symbol_kind == GDB_INDEX_SYMBOL_KIND_TYPE)
+-	{
+-	  if (global_seen)
+-	    continue;
+-
+-	  global_seen = true;
+-	}
+-
+       /* Only check the symbol's kind if it has one.  */
+       if (attrs_valid)
+ 	{
+diff --git a/gdb/symtab.c b/gdb/symtab.c
+--- a/gdb/symtab.c
++++ b/gdb/symtab.c
+@@ -4869,7 +4869,50 @@ symbol_search::compare_search_syms (const symbol_search &sym_a,
+   if (sym_a.block != sym_b.block)
+     return sym_a.block - sym_b.block;
+ 
+-  return strcmp (sym_a.symbol->print_name (), sym_b.symbol->print_name ());
++  c = strcmp (sym_a.symbol->print_name (), sym_b.symbol->print_name ());
++
++  if (c != 0)
++    return c;
++
++  /* These two symbols have the same name.  It is possible, with types,
++     that we can see two symbols with the same name, but different types,
++     consider in C: 'typedef struct foo { ... } foo;' which creates a
++     'struct foo' type and a 'foo' typedef type.  For now this is the only
++     case we handle.  In all other cases, we treat symbols with the same
++     name as being the same.
++
++
++     First, check the types, if they are the same, then consider these
++     symbols as the same.  */
++  if (sym_a.symbol->type ()->code () == sym_b.symbol->type ()->code ())
++    return 0;
++
++  /* The types are different, but if neither is a typedef then we still
++     consider these symbols as the same.  */
++  if (sym_a.symbol->type ()->code () != TYPE_CODE_TYPEDEF
++      && sym_b.symbol->type ()->code () != TYPE_CODE_TYPEDEF)
++    return 0;
++
++  /* The symbols have different types, and one is a typedef.  They cannot
++     both be typedefs or we'd have taken the "types are the same" exit path
++     above.  If the two types are defined on different lines then order by
++     line number.  As line numbers are unsigned, don't subtract one from
++     the other in order to avoid underflow.  */
++  if (sym_a.symbol->line () != sym_b.symbol->line ())
++    return (sym_a.symbol->line () > sym_b.symbol->line () ? 1 : -1);
++
++  /* The symbols have different types, and one is a typedef, but both
++     symbols are defined on the same line.  For example:
++
++     typedef struct foo { int a; } foo;
++
++     In this case we sort the typedef after the non-typedef.  This is an
++     arbitrary decision, but I think looks slightly nicer in the 'info
++     types' output; first we get the type, then the typedef.  */
++  if (sym_a.symbol->type ()->code () == TYPE_CODE_TYPEDEF)
++    return 1;
++  else
++    return -1;
+ }
+ 
+ /* Returns true if the type_name of symbol_type of SYM matches TREG.
+diff --git a/gdb/testsuite/gdb.base/gold-gdb-index.c b/gdb/testsuite/gdb.base/gdb-index-many-types-1.c
+similarity index 68%
+rename from gdb/testsuite/gdb.base/gold-gdb-index.c
+rename to gdb/testsuite/gdb.base/gdb-index-many-types-1.c
+--- a/gdb/testsuite/gdb.base/gold-gdb-index.c
++++ b/gdb/testsuite/gdb.base/gdb-index-many-types-1.c
+@@ -1,6 +1,6 @@
+ /* This testcase is part of GDB, the GNU debugger.
+ 
+-   Copyright 2020-2025 Free Software Foundation, Inc.
++   Copyright 2025 Free Software Foundation, Inc.
+ 
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+@@ -15,15 +15,34 @@
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+ 
+-#include "gold-gdb-index.h"
+-
+-namespace N1
+-{
+-  void foo () { C1::baz (); }
+-}
++#include "gdb-index-many-types.h"
+ 
+ int
+ main ()
+ {
++  foo_func_a (0);
++  foo_func_b (0);
++  bar_func_a (0);
++  bar_func_b (0);
++  baz_func_a (0);
++  baz_func_b (0);
+   return 0;
+ }
++
++void
++foo_func_c (foo_t *obj)
++{
++  (void) obj;
++}
++
++void
++bar_func_c (bar_t *obj)
++{
++  (void) obj;
++}
++
++void
++baz_func_c (baz_t *obj)
++{
++  (void) obj;
++}
+diff --git a/gdb/testsuite/gdb.base/gold-gdb-index-2.c b/gdb/testsuite/gdb.base/gdb-index-many-types-2.c
+similarity index 61%
+rename from gdb/testsuite/gdb.base/gold-gdb-index-2.c
+rename to gdb/testsuite/gdb.base/gdb-index-many-types-2.c
+--- a/gdb/testsuite/gdb.base/gold-gdb-index-2.c
++++ b/gdb/testsuite/gdb.base/gdb-index-many-types-2.c
+@@ -1,6 +1,6 @@
+ /* This testcase is part of GDB, the GNU debugger.
+ 
+-   Copyright 2020-2025 Free Software Foundation, Inc.
++   Copyright 2025 Free Software Foundation, Inc.
+ 
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+@@ -15,9 +15,42 @@
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+ 
+-#include "gold-gdb-index.h"
++#include "gdb-index-many-types.h"
+ 
+-namespace N1
++typedef struct foo_t
+ {
+-  void bar () { C1::baz (); }
++  int foo_t_1;
++  int foo_t_2;
++} foo_t;
++
++typedef struct woof_t
++{
++  int woof_t_1;
++  int woof_t_2;
++} woof_t;
++
++static void
++woof_func (woof_t *obj)
++{
++  (void) obj;
++}
++
++void
++foo_func_a (foo_t *obj)
++{
++  woof_func (0);
++  (void) obj;
++}
++
++void
++baz_func_a (baz_t *obj)
++{
++  (void) obj;
++}
++
++void
++bar_func_a (bar_t *obj)
++{
++  woof_func (0);
++  (void) obj;
+ }
+diff --git a/gdb/testsuite/gdb.base/gold-gdb-index.h b/gdb/testsuite/gdb.base/gdb-index-many-types-3.c
+similarity index 61%
+rename from gdb/testsuite/gdb.base/gold-gdb-index.h
+rename to gdb/testsuite/gdb.base/gdb-index-many-types-3.c
+--- a/gdb/testsuite/gdb.base/gold-gdb-index.h
++++ b/gdb/testsuite/gdb.base/gdb-index-many-types-3.c
+@@ -1,6 +1,6 @@
+ /* This testcase is part of GDB, the GNU debugger.
+ 
+-   Copyright 2020-2025 Free Software Foundation, Inc.
++   Copyright 2025 Free Software Foundation, Inc.
+ 
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+@@ -15,11 +15,42 @@
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+ 
+-namespace N1
++#include "gdb-index-many-types.h"
++
++typedef struct woof_t
++{
++  double woof_t_3;
++  double woof_t_4;
++} woof_t;
++
++static void
++woof_func (woof_t *obj)
++{
++  (void) obj;
++}
++
++typedef struct bar_t
++{
++  int bar_t_1;
++  int bar_t_2;
++} bar_t;
++
++void
++bar_func_b (bar_t *obj)
++{
++  woof_func (0);
++  (void) obj;
++}
++
++void
++baz_func_b (baz_t *obj)
++{
++  (void) obj;
++}
++
++void
++foo_func_b (foo_t *obj)
+ {
+-  class C1
+-  {
+-   public:
+-    static void baz () {}
+-  };
++  woof_func (0);
++  (void) obj;
+ }
+diff --git a/gdb/testsuite/gdb.base/gdb-index-many-types.exp b/gdb/testsuite/gdb.base/gdb-index-many-types.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/gdb-index-many-types.exp
+@@ -0,0 +1,157 @@
++# Copyright 2025 Free Software Foundation, Inc.
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Check that adding an index to an executable (both a gdb index and a
++# dwarf-5 index are tested), doesn't prevent GDB from seeing the
++# expected types.
++
++standard_testfile -1.c -2.c -3.c .h
++
++# One of the tests uses this Python file.  The test_* proc checks that
++# GDB supports Python tests.  Some of the other procs don't use this
++# Python file.
++set pyfile [gdb_remote_download host ${srcdir}/${subdir}/${testfile}.py]
++
++if {[build_executable "building" $testfile \
++	 [list $srcfile $srcfile2 $srcfile3]] == -1} {
++    return
++}
++
++# Run 'info types TYPENAME', expect to see an entry from FILENAME for
++# the line matching PATTERN.
++proc check_info_types { testfile typename filename pattern } {
++    with_test_prefix "$filename '$pattern'" {
++	clean_restart $testfile
++
++	set line_num [gdb_get_line_number $pattern $filename]
++	gdb_test "info types $typename" \
++	    "File \[^\r\n\]+/${filename}:(?:\r\n${::decimal}:\[^\r\n\]+)*\r\n${line_num}:\[^\r\n\]+.*"
++    }
++}
++
++# Start GDB with FILENAME, and examine some of the types.  This proc
++# might seem to be using clean_restart a little too much, but we need
++# to be really careful here.  As we examine one type, e.g. foo_t, this
++# might cause GDB to fully parse a CU, which then means examining
++# bar_t gives the expected result.  When, if we'd first looked for
++# bar_t, then (due to an index bug) we might not have found the
++# correct type definition.
++#
++# The only way we can be sure that an earlier test isn't going to
++# trigger CU expansion is to restart GDB before every query.
++proc run_test { filename } {
++    # Print all the types for which there is only one representation.
++    foreach type { foo_t bar_t baz_t } {
++	clean_restart $filename
++	gdb_test "ptype $type" \
++	    [multi_line \
++		 "type = struct $type {" \
++		 "\\s+int ${type}_1;" \
++		 "\\s+int ${type}_2;" \
++		 "}"]
++    }
++
++    # There are two different versions of woof_t.  For now, when using
++    # `ptype` GDB will just display the first one it finds, which could
++    # legitimately be either.
++    set woof_int_re [multi_line \
++			 "type = struct woof_t {" \
++			 "\\s+int woof_t_1;" \
++			 "\\s+int woof_t_2;" \
++			 "}"]
++    set woof_double_re [multi_line \
++			    "type = struct woof_t {" \
++			    "\\s+double woof_t_3;" \
++			    "\\s+double woof_t_4;" \
++			    "}"]
++    clean_restart $filename
++    gdb_test_multiple "ptype woof_t" "" {
++	-re -wrap $woof_int_re {
++	    pass $gdb_test_name
++	}
++	-re -wrap $woof_double_re {
++	    pass $gdb_test_name
++	}
++    }
++
++    # Check for declarations and definitions of some types.
++    check_info_types $filename foo_t $::srcfile2 "typedef struct foo_t"
++    check_info_types $filename foo_t $::srcfile4 "typedef struct foo_t foo_t;"
++    check_info_types $filename bar_t $::srcfile3 "typedef struct bar_t"
++    check_info_types $filename bar_t $::srcfile4 "typedef struct bar_t bar_t;"
++    check_info_types $filename baz_t $::srcfile4 "typedef struct baz_t"
++    check_info_types $filename baz_t $::srcfile4 "\} baz_t;"
++    check_info_types $filename woof_t $::srcfile2 "typedef struct woof_t"
++    check_info_types $filename woof_t $::srcfile3 "typedef struct woof_t"
++
++    # Use Python to look for type symbols.
++    if { [allow_python_tests] } {
++	foreach_with_prefix type { foo_t bar_t baz_t } {
++	    clean_restart $filename
++	    gdb_test_no_output "source $::pyfile" "import python scripts"
++	    gdb_test "py-show-type $type" \
++		[multi_line \
++		     "Looking for type '$type':" \
++		     "  Found 3 type symbols" \
++		     "    1: struct $type \\{ int ${type}_1; int ${type}_2; \\}" \
++		     "    2: struct $type \\{ int ${type}_1; int ${type}_2; \\}" \
++		     "    3: struct $type \\{ int ${type}_1; int ${type}_2; \\}"]
++	}
++
++	clean_restart $filename
++	gdb_test_no_output "source $::pyfile" "import python scripts"
++	gdb_test "py-show-type woof_t" \
++	    [multi_line \
++		 "Looking for type 'woof_t':" \
++		 "  Found 2 type symbols" \
++		 "    1: struct woof_t \\{ (?:int|double) woof_t_(?:1|3); (?:int|double) woof_t_(?:2|4); \\}" \
++		 "    2: struct woof_t \\{ (?:int|double) woof_t_(?:1|3); (?:int|double) woof_t_(?:2|4); \\}"]
++
++    }
++}
++
++with_test_prefix "no index" {
++    run_test $testfile
++}
++
++# The previous call to 'run_test' will have left GDB active.  Check if
++# BINFILE already has an index.  If it does then we must be running
++# with one of the boardfiles that adds an index.  We could possibly
++# try to remove the index, but for now, just don't run the following
++# parts which rely on adding an index.
++set index_type [get_index_type $binfile "check debug style"]
++if { $index_type ne "cooked" } {
++    unsupported "cannot test without a cooked index"
++    return
++}
++
++foreach_with_prefix index_type { gdb dwarf5 } {
++    set binfile_with_index ${binfile}-idx-${index_type}
++
++    remote_exec build "cp $binfile $binfile_with_index"
++
++    if { $index_type eq "gdb" } {
++	set style ""
++    } else {
++	set style "-dwarf-5"
++    }
++
++    if {[ensure_gdb_index $binfile_with_index $style] != 1} {
++	unsupported "couldn't add $index_type index"
++	return
++    }
++
++    run_test [file tail $binfile_with_index]
++}
+diff --git a/gdb/testsuite/gdb.base/gdb-index-many-types.h b/gdb/testsuite/gdb.base/gdb-index-many-types.h
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/gdb-index-many-types.h
+@@ -0,0 +1,42 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2025 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#ifndef GDB_INDEX_MANY_TYPES_H
++#define GDB_INDEX_MANY_TYPES_H
++
++typedef struct foo_t foo_t;
++typedef struct bar_t bar_t;
++
++extern void foo_func_a (foo_t *obj);
++extern void foo_func_b (foo_t *obj);
++extern void foo_func_c (foo_t *obj);
++
++extern void bar_func_a (bar_t *obj);
++extern void bar_func_b (bar_t *obj);
++extern void bar_func_c (bar_t *obj);
++
++typedef struct baz_t
++{
++  int baz_t_1;
++  int baz_t_2;
++} baz_t;
++
++extern void baz_func_a (baz_t *obj);
++extern void baz_func_b (baz_t *obj);
++extern void baz_func_c (baz_t *obj);
++
++#endif /* GDB_INDEX_MANY_TYPES_H */
+diff --git a/gdb/testsuite/gdb.base/gdb-index-many-types.py b/gdb/testsuite/gdb.base/gdb-index-many-types.py
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/gdb-index-many-types.py
+@@ -0,0 +1,54 @@
++# Copyright 2025 Free Software Foundation, Inc.
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++
++class TypeViewer(gdb.Command):
++    """A command which takes a string and looks up types with that name.
++
++    The types are expected to all be structs.  This command prints a
++    basic representation of the struct.  This is only going to work when
++    used with the types defined in the gdb-index-many-types test source
++    files."""
++
++    def __init__(self):
++        super().__init__("py-show-type", gdb.COMMAND_USER)
++
++    def invoke(self, args, from_tty):
++        argv = gdb.string_to_argv(args)
++        if argv[0] == "":
++            raise gdb.GdbError("missing argument")
++        print("Looking for type '" + argv[0] + "':")
++        syms = gdb.lookup_static_symbols(argv[0], gdb.SYMBOL_TYPE_DOMAIN)
++        count = len(syms)
++        print("  Found %d type symbol%s" % (count, "" if count == 1 else "s"))
++        for i, s in enumerate(syms, start=1):
++            t = s.type
++            if t is None:
++                print("    %d: No type." % i)
++            else:
++                fields = "struct " + argv[0] + " {"
++                try:
++                    for f in t.fields():
++                        if len(fields) > 0:
++                            fields = fields + " "
++                        fields = fields + "%s %s;" % (str(f.type), f.name)
++                except:
++                    pass
++                fields = fields + " }"
++
++                print("    %d: %s" % (i, fields))
++
++
++TypeViewer()
+diff --git a/gdb/testsuite/gdb.base/gold-gdb-index.exp b/gdb/testsuite/gdb.base/gold-gdb-index.exp
+deleted file mode 100644
+--- a/gdb/testsuite/gdb.base/gold-gdb-index.exp
++++ /dev/null
+@@ -1,51 +0,0 @@
+-# Copyright 2020-2025 Free Software Foundation, Inc.
+-
+-# This program is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 3 of the License, or
+-# (at your option) any later version.
+-#
+-# This program is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+-
+-# This tests the gdb workaround for PR binutils/15646.
+-
+-standard_testfile .c gold-gdb-index-2.c
+-
+-if { [have_fuse_ld_gold] == 0} {
+-    return -1
+-}
+-
+-if {[prepare_for_testing "failed to prepare" $testfile "$srcfile $srcfile2" \
+-	 {debug c++ additional_flags=-fuse-ld=gold \
+-	      ldflags=-Wl,--gdb-index \
+-	      additional_flags=-ggnu-pubnames}]} {
+-    return -1
+-}
+-
+-if { [have_index $binfile] != "gdb_index" } {
+-    return -1
+-}
+-
+-if {![runto_main]} {
+-    return 0
+-}
+-
+-gdb_test_no_output "nosharedlibrary"
+-
+-gdb_test_no_output "set breakpoint pending off"
+-gdb_test "break N1::misspelled" "Function \"N1::misspelled\" not defined\."
+-
+-gdb_test_multiple "maint info symtabs" "" {
+-    -re -wrap "\{ symtab \[^\r\n\]*gold-gdb-index-2.c.*" {
+-	fail $gdb_test_name
+-    }
+-    -re -wrap "" {
+-	pass $gdb_test_name
+-    }
+-}
+diff --git a/gdb/testsuite/gdb.base/info-types.exp.tcl b/gdb/testsuite/gdb.base/info-types.exp.tcl
+--- a/gdb/testsuite/gdb.base/info-types.exp.tcl
++++ b/gdb/testsuite/gdb.base/info-types.exp.tcl
+@@ -90,6 +90,7 @@ proc run_test { lang } {
+ 		 "28:\[\t \]+typedef struct baz_t baz;" \
+ 		 "31:\[\t \]+typedef struct baz_t \\* baz_ptr;" \
+ 		 "21:\[\t \]+struct baz_t;" \
++		 "27:\[\t \]+typedef struct baz_t baz_t;" \
+ 		 "\[\t \]+double" \
+ 		 "33:\[\t \]+enum enum_t;" \
+ 		 "\[\t \]+float" \
+diff --git a/gdb/testsuite/gdb.base/type-and-typedef.c b/gdb/testsuite/gdb.base/type-and-typedef.c
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/type-and-typedef.c
+@@ -0,0 +1,48 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2025 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++typedef struct foo	/* struct foo defined here.  */
++{
++  int a;
++  int b;
++} foo;			/* typedef foo defined here.  */
++
++struct bar		/* struct bar defined here.  */
++{
++  int a;
++  int b;
++};
++
++/* Yes, this really is typedef-ing 'bar' to something other than 'struct
++   bar'.  Just testing that GDB handles this.  This is not good code.  */
++typedef struct foo bar;	/* typedef bar defined here.  */
++
++/* The following must be a single line.  This tests the 'struct baz' and
++   the 'typedef ... baz;' being on the same line.  */
++typedef struct baz { int a; int b; } baz;	/* baz defined here.  */
++
++volatile struct foo obj1 = { 1, 2 };
++volatile foo obj2 = { 1, 2 };
++volatile struct bar obj3 = { 1, 2 };
++volatile bar obj4 = { 1, 2 };
++volatile baz obj5 = { 1, 2 };
++
++int
++main ()
++{
++  return obj1.b + obj2.b + obj3.b + obj4.b + obj5.b;
++}
+diff --git a/gdb/testsuite/gdb.base/type-and-typedef.exp b/gdb/testsuite/gdb.base/type-and-typedef.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/type-and-typedef.exp
+@@ -0,0 +1,65 @@
++# Copyright 2025 Free Software Foundation, Inc.
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Compile a single CU containing a type and a typedef with the same
++# name (think C's "typedef struct foo { ... } foo;").  Check that
++# 'info types' shows both types.
++
++standard_testfile
++
++if { [prepare_for_testing "failed to prepare" $testfile $srcfile] } {
++    return
++}
++
++# Line numbers needed by the test.
++set struct_foo_lineno [gdb_get_line_number "struct foo defined here"]
++set typedef_foo_lineno [gdb_get_line_number "typedef foo defined here"]
++set struct_bar_lineno [gdb_get_line_number "struct bar defined here"]
++set typedef_bar_lineno [gdb_get_line_number "typedef bar defined here"]
++set baz_lineno [gdb_get_line_number "baz defined here"]
++
++# Check that the expected two types show up in global SRCFILE.
++proc check_types { testname } {
++    gdb_test "info types foo" \
++	[multi_line \
++	     "File (?:\[^\r\n\]+/)?[string_to_regexp $::srcfile]:" \
++	     "${::struct_foo_lineno}:\\s+struct foo;" \
++	     "${::typedef_foo_lineno}:\\s+typedef struct foo foo;"] \
++	"$testname, check foo"
++
++    gdb_test "info types bar" \
++	[multi_line \
++	     "File (?:\[^\r\n\]+/)?[string_to_regexp $::srcfile]:" \
++	     "${::struct_bar_lineno}:\\s+struct bar;" \
++	     "${::typedef_bar_lineno}:\\s+typedef struct foo bar;"] \
++	"$testname, check bar"
++
++    gdb_test "info types baz" \
++	[multi_line \
++	     "File (?:\[^\r\n\]+/)?[string_to_regexp $::srcfile]:" \
++	     "${::baz_lineno}:\\s+struct baz;" \
++	     "${::baz_lineno}:\\s+typedef struct baz baz;"] \
++	"$testname, check baz"
++}
++
++check_types "before inferior is started"
++
++clean_restart $testfile
++
++if {![runto_main]} {
++    return
++}
++
++check_types "after starting the inferior"

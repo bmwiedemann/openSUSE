@@ -1,0 +1,3 @@
+# /usr/share/pkgconfig is sometimes used for non-development purposes,
+# and this is one such case
+addFilter("devel-file-in-non-devel-package")

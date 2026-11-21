@@ -1,0 +1,62 @@
+From 540778df1e4fccd2944176262dbece4de589e96a Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 29 Oct 2026 15:08:34 +0100
+Subject: [PATCH 3/3] [gdb/testsuite] Fix timeout in
+ gdb.mi/mi-dprintf-modified.exp
+
+With a gdb 17.2 based package, I ran into a timeout in test-case
+gdb.mi/mi-dprintf-modified.exp:
+...
+(gdb)
+PASS: $exp: get number for dprintf breakpoint
+Expecting: ^(220-exec-next[
+]+)?(.*[
+]+[(]gdb[)]
+[ ]*)
+220-exec-next
+220^running
+*running,thread-id="all"
+(gdb)
+=library-loaded,id="/home/abuild/rpmbuild/BUILD/gdb-17.2/build-x86_64-suse-linux/gdb/testsuite.unix.-m64/outputs/gdb.mi/mi-dprintf-modified/mi-dprintf-modified-lib",target-name="/home/abuild/rpmbuild/BUILD/gdb-17.2/build-x86_64-suse-linux/gdb/testsuite.unix.-m64/outputs/gdb.mi/mi-dprintf-modified/mi-dprintf-modified-lib",host-name="/home/abuild/rpmbuild/BUILD/gdb-17.2/build-x86_64-suse-linux/gdb/testsuite.unix.-m64/outputs/gdb.mi/mi-dprintf-modified/mi-dprintf-modified-lib",symbols-loaded="0",thread-group="i1",ranges=[{from="0x00007ffff7fc7000",to="0x00007ffff7fca000"}]
+*stopped,reason="end-stepping-range",frame={addr="0x000055555555480e",func="main",args=[],file="/home/abuild/rpmbuild/BUILD/gdb-17.2/gdb/testsuite/gdb.mi/mi-dprintf-modified.c",fullname="/home/abuild/rpmbuild/BUILD/gdb-17.2/gdb/testsuite/gdb.mi/mi-dprintf-modified.c",line="44",arch="i386:x86-64"},thread-id="1",stopped-threads="all",core="3"
+(gdb)
+PASS: $exp: next over dlopen
+FAIL: $exp: wait for 'next' to complete (timeout)
+...
+
+This can be reliably reproduced on current trunk using:
+...
+-mi_gdb_test "220-exec-next" ".*" "next over dlopen"
++send_gdb "220-exec-next\n"
++sleep 1
++mi_gdb_test "" ".*" "next over dlopen"
+...
+
+The problem is the ".*", which consumes an MI prompt.
+
+Fix this by anchoring the regexp on the output before the prompt.
+
+Tested on x86_64-linux.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34915
+---
+ gdb/testsuite/gdb.mi/mi-dprintf-modified.exp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.mi/mi-dprintf-modified.exp b/gdb/testsuite/gdb.mi/mi-dprintf-modified.exp
+index 0584a860bf8..a8399b4da7e 100644
+--- a/gdb/testsuite/gdb.mi/mi-dprintf-modified.exp
++++ b/gdb/testsuite/gdb.mi/mi-dprintf-modified.exp
+@@ -74,7 +74,8 @@ set bpnum [mi_get_valueof "/d" "\$bpnum" "INVALID" \
+ 	       "get number for dprintf breakpoint"]
+ 
+ # Use 'next' to step over loading the shared library.
+-mi_gdb_test "220-exec-next" ".*" "next over dlopen"
++set re_last_line [string_to_regexp {*running,thread-id="all"}]
++mi_gdb_test "220-exec-next" ".*$re_last_line" "next over dlopen"
+ 
+ # Now wait for the 'stopped' notification.  While we wait we should
+ # see a 'library-loaded' notification for the loading of the shared
+-- 
+2.51.0
+

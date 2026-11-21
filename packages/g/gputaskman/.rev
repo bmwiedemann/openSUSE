@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>110ebe99fc22c6bb39f47457230493cb</srcmd5>
+    <version>0.3.4</version>
+    <time>1794236847</time>
+    <user>anag_factory</user>
+    <comment>Add gputaskman 0.3.4 with Intel i915/xe support (new package: GPU task manager with per-process VRAM and LLM insights)
+- Needs sr#1396277 (python-nvidia-ml-py) first</comment>
+    <requestid>1396306</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a1307c407b3333c023edd4863222b8bc</srcmd5>
+    <version>0.3.5</version>
+    <time>1794324602</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.3.5</comment>
+    <requestid>1396526</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>51b690833b4b3cae33c0154e1737016c</srcmd5>
+    <version>0.4.0</version>
+    <time>1794428285</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.4.0</comment>
+    <requestid>1396892</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f637832584ac9fd272a5fd160f2ae12c</srcmd5>
+    <version>0.4.3</version>
+    <time>1794932336</time>
+    <user>anag_factory</user>
+    <comment>Update gputaskman to 0.4.3: vLLM/KV-cache gauges, Handy py3.11 fix, linkify Requires (boo#1290249)</comment>
+    <requestid>1398000</requestid>
+  </revision>
+</revisionlist>

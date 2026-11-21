@@ -1,0 +1,137 @@
+diff -u -r a/interfaces/coin.i b/interfaces/coin.i
+--- a/interfaces/coin.i	2026-11-17 13:04:38.637390083 +0100
++++ b/interfaces/coin.i	2026-11-17 13:04:38.723556205 +0100
+@@ -33,6 +33,27 @@
+ %}
+ 
+ %{
++#if PY_MAJOR_VERSION >= 3
++# ifndef PyInt_AsLong
++#  define PyInt_AsLong PyLong_AsLong
++# endif
++# ifndef PyInt_FromLong
++#  define PyInt_FromLong PyLong_FromLong
++# endif
++# ifndef PyInt_Check
++#  define PyInt_Check PyLong_Check
++# endif
++# ifndef PyString_Check
++#  define PyString_Check PyBytes_Check
++# endif
++# ifndef PyString_FromString
++#  define PyString_FromString PyUnicode_FromString
++# endif
++# ifndef PyString_AsStringAndSize
++#  define PyString_AsStringAndSize PyBytes_AsStringAndSize
++# endif
++#endif
++
+ #if defined(_WIN32) || defined(__WIN32__)
+ #include <windows.h>
+ #undef max
+diff -u -r a/interfaces/soqt.i b/interfaces/soqt.i
+--- a/interfaces/soqt.i	2026-11-17 13:04:38.638041675 +0100
++++ b/interfaces/soqt.i	2026-11-17 13:04:38.723703673 +0100
+@@ -34,6 +34,26 @@
+   Copied from: https://github.com/Kagami/pygraphviz/commit/fe442dc16accb629c3feaf157af75f67ccabbd6e
+ */
+ #if PY_MAJOR_VERSION >= 3
++#if PY_MAJOR_VERSION >= 3
++# ifndef PyInt_AsLong
++#  define PyInt_AsLong PyLong_AsLong
++# endif
++# ifndef PyInt_FromLong
++#  define PyInt_FromLong PyLong_FromLong
++# endif
++# ifndef PyInt_Check
++#  define PyInt_Check PyLong_Check
++# endif
++# ifndef PyString_Check
++#  define PyString_Check PyBytes_Check
++# endif
++# ifndef PyString_FromString
++#  define PyString_FromString PyUnicode_FromString
++# endif
++# ifndef PyString_AsStringAndSize
++#  define PyString_AsStringAndSize PyBytes_AsStringAndSize
++# endif
++#endif
+ static PyObject *PyIOBase_TypeObj = NULL;
+ 
+ static int init_file_emulator(void)
+diff -u -r a/Inventor/SbImage.i b/Inventor/SbImage.i
+--- a/Inventor/SbImage.i	2026-11-17 13:04:38.585137188 +0100
++++ b/Inventor/SbImage.i	2026-11-17 13:04:38.723414108 +0100
+@@ -8,7 +8,7 @@
+   if ($2 == NULL) {
+     PyErr_SetString(PyExc_TypeError,"null reference"); SWIG_fail;
+   }
+-  $3 = PyInt_AsLong(nc);
++  $3 = PyLong_AsLong(nc);
+ #ifdef PY_2
+   if (PyString_Check(buf))
+ #else
+@@ -37,8 +37,13 @@
+   if ($2 == NULL) {
+     PyErr_SetString(PyExc_TypeError,"null reference"); SWIG_fail;
+   }
+-  $3 = PyInt_AsLong(nc);
+-  if (PyString_Check(buf)) {
++  $3 = PyLong_AsLong(nc);
++#ifdef PY_2
++  if (PyString_Check(buf))
++#else
++  if (PyBytes_Check(buf))
++#endif
++  {
+     Py_ssize_t len = (*$2)[0] * (*$2)[1] * (*$2)[2] * $3;
+ #ifdef PY_2
+     PyString_AsStringAndSize(buf, (char **)&image, &len);
+@@ -61,7 +66,7 @@
+   if ($1 == NULL) {
+     PyErr_SetString(PyExc_TypeError,"null reference"); SWIG_fail;
+   }
+-  $2 = PyInt_AsLong(nc);
++  $2 = PyLong_AsLong(nc);
+ #ifdef PY_2
+   if (PyString_Check(buf))
+ #else
+@@ -90,7 +95,7 @@
+   if ($1 == NULL) {
+     PyErr_SetString(PyExc_TypeError,"null reference"); SWIG_fail;
+   }
+-  $2 = PyInt_AsLong(nc);
++  $2 = PyLong_AsLong(nc);
+ #ifdef PY_2
+   if (PyString_Check(buf))
+ #else
+diff -u -r a/Inventor/SbVec2s.i b/Inventor/SbVec2s.i
+--- a/Inventor/SbVec2s.i	2026-11-17 13:04:38.586041305 +0100
++++ b/Inventor/SbVec2s.i	2026-11-17 13:04:38.723169597 +0100
+@@ -5,8 +5,8 @@
+   if (PySequence_Check(input) && (PySequence_Size(input) == 2) &&
+       PyNumber_Check(PySequence_GetItem(input, 0)) && 
+       PyNumber_Check(PySequence_GetItem(input, 1))) {
+-    temp[0] = PyInt_AsLong(PySequence_GetItem(input, 0));
+-    temp[1] = PyInt_AsLong(PySequence_GetItem(input, 1));
++    temp[0] = PyLong_AsLong(PySequence_GetItem(input, 0));
++    temp[1] = PyLong_AsLong(PySequence_GetItem(input, 1));
+   } else {
+     PyErr_SetString(PyExc_TypeError, "expected a sequence with 2 shorts");
+     PyErr_Print();
+diff -u -r a/Inventor/SbVec3s.i b/Inventor/SbVec3s.i
+--- a/Inventor/SbVec3s.i	2026-11-17 13:04:38.587041312 +0100
++++ b/Inventor/SbVec3s.i	2026-11-17 13:04:38.723290345 +0100
+@@ -6,9 +6,9 @@
+       PyNumber_Check(PySequence_GetItem(input, 0)) && 
+       PyNumber_Check(PySequence_GetItem(input, 1)) &&
+       PyNumber_Check(PySequence_GetItem(input, 2))) {
+-    temp[0] = PyInt_AsLong(PySequence_GetItem(input, 0));
+-    temp[1] = PyInt_AsLong(PySequence_GetItem(input, 1));
+-    temp[2] = PyInt_AsLong(PySequence_GetItem(input, 2));
++    temp[0] = PyLong_AsLong(PySequence_GetItem(input, 0));
++    temp[1] = PyLong_AsLong(PySequence_GetItem(input, 1));
++    temp[2] = PyLong_AsLong(PySequence_GetItem(input, 2));
+   } else {
+     PyErr_SetString(PyExc_TypeError, "expected a sequence with 3 shorts");
+     PyErr_Print();

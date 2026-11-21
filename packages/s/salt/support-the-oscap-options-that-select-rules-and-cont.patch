@@ -1,0 +1,292 @@
+From 7c02051b8d95ae253e4272bb82102f7f4b7e4546 Mon Sep 17 00:00:00 2001
+From: jniedergang <julien.niedergang@suse.com>
+Date: Wed, 4 Nov 2026 13:08:38 +0100
+Subject: [PATCH] Support the oscap options that select rules and content in
+ xccdf_eval (#780)
+
+* Support the oscap options that select rules and content in xccdf_eval
+
+xccdf_eval rebuilds the oscap command line from a fixed set of keyword
+arguments, so anything else a caller asks for is dropped without a word.
+SUSE Multi-Linux Manager exposes an oscap arguments field that ends up
+here, which means a user asking to skip a rule gets a compliance report
+where that rule was evaluated anyway.
+
+Add the options that select which rules are evaluated and where the
+content comes from: skip_rule, reference, cpe, local_files, datastream_id,
+xccdf_id and benchmark_id. rule and skip_rule now accept either a single
+string or a list, since oscap accepts those options more than once.
+
+The options that write result files (results, results-arf, report,
+stig-viewer, thin-results) are deliberately left out: the caller owns
+those paths and already passes them explicitly.
+---
+ changelog/780.added.md              |   1 +
+ salt/modules/openscap.py            |  60 +++++++++++-
+ tests/unit/modules/test_openscap.py | 146 ++++++++++++++++++++++++++++
+ 3 files changed, 204 insertions(+), 3 deletions(-)
+ create mode 100644 changelog/780.added.md
+
+diff --git a/changelog/780.added.md b/changelog/780.added.md
+new file mode 100644
+index 0000000000..dc535ef125
+--- /dev/null
++++ b/changelog/780.added.md
+@@ -0,0 +1 @@
++Added the oscap options selecting rules and content to `openscap.xccdf_eval`: `skip_rule`, `reference`, `cpe`, `local_files`, `datastream_id`, `xccdf_id` and `benchmark_id`. `rule` and `skip_rule` now accept a list, since oscap accepts those options more than once.
+diff --git a/salt/modules/openscap.py b/salt/modules/openscap.py
+index 926c98db9e..50210884a0 100644
+--- a/salt/modules/openscap.py
++++ b/salt/modules/openscap.py
+@@ -56,6 +56,18 @@ _OSCAP_EXIT_CODES_MAP = {
+ }
+ 
+ 
++def _append_repeatable(cmd_opts, option, value):
++    """
++    Append one occurrence of a repeatable oscap option per value.
++
++    The value is either a single string or a list of strings.
++    """
++    values = [value] if isinstance(value, str) else value
++    for item in values:
++        cmd_opts.append(option)
++        cmd_opts.append(item)
++
++
+ def xccdf_eval(xccdffile, ovalfiles=None, **kwargs):
+     """
+     Run ``oscap xccdf eval`` commands on minions.
+@@ -75,7 +87,13 @@ def xccdf_eval(xccdffile, ovalfiles=None, **kwargs):
+         the name of Profile to be evaluated
+ 
+     rule
+-        the name of a single rule to be evaluated
++        the name of a rule to be evaluated, or a list of rules, such as ``[rule1, rule2]``
++
++    skip_rule
++        the name of a rule to be skipped, or a list of rules, such as ``[rule1, rule2]``
++
++    reference
++        evaluate only the rules carrying the given reference, as ``NAME:ID``
+ 
+     oval_results
+         save OVAL results as well (True or False)
+@@ -89,6 +107,23 @@ def xccdf_eval(xccdffile, ovalfiles=None, **kwargs):
+     fetch_remote_resources
+         download remote content referenced by XCCDF (True or False)
+ 
++    local_files
++        use the locally downloaded copies of the remote resources stored in
++        the given directory instead of downloading them
++
++    cpe
++        use given CPE dictionary or language for applicability checks
++
++    datastream_id
++        ID of the data stream in the collection to use
++
++    xccdf_id
++        ID of the component reference holding the XCCDF to evaluate
++
++    benchmark_id
++        ID of the XCCDF benchmark to evaluate, when neither datastream_id nor
++        xccdf_id is given
++
+     tailoring_file
+         use given XCCDF Tailoring file
+ 
+@@ -126,8 +161,24 @@ def xccdf_eval(xccdffile, ovalfiles=None, **kwargs):
+         cmd_opts.append("--profile")
+         cmd_opts.append(kwargs["profile"])
+     if "rule" in kwargs:
+-        cmd_opts.append("--rule")
+-        cmd_opts.append(kwargs["rule"])
++        _append_repeatable(cmd_opts, "--rule", kwargs["rule"])
++    if "skip_rule" in kwargs:
++        _append_repeatable(cmd_opts, "--skip-rule", kwargs["skip_rule"])
++    if "reference" in kwargs:
++        cmd_opts.append("--reference")
++        cmd_opts.append(kwargs["reference"])
++    if "cpe" in kwargs:
++        cmd_opts.append("--cpe")
++        cmd_opts.append(kwargs["cpe"])
++    if "datastream_id" in kwargs:
++        cmd_opts.append("--datastream-id")
++        cmd_opts.append(kwargs["datastream_id"])
++    if "xccdf_id" in kwargs:
++        cmd_opts.append("--xccdf-id")
++        cmd_opts.append(kwargs["xccdf_id"])
++    if "benchmark_id" in kwargs:
++        cmd_opts.append("--benchmark-id")
++        cmd_opts.append(kwargs["benchmark_id"])
+     if "tailoring_file" in kwargs:
+         cmd_opts.append("--tailoring-file")
+         cmd_opts.append(kwargs["tailoring_file"])
+@@ -136,6 +187,9 @@ def xccdf_eval(xccdffile, ovalfiles=None, **kwargs):
+         cmd_opts.append(kwargs["tailoring_id"])
+     if kwargs.get("fetch_remote_resources"):
+         cmd_opts.append("--fetch-remote-resources")
++    if "local_files" in kwargs:
++        cmd_opts.append("--local-files")
++        cmd_opts.append(kwargs["local_files"])
+     if kwargs.get("remediate"):
+         cmd_opts.append("--remediate")
+     cmd_opts.append(xccdffile)
+diff --git a/tests/unit/modules/test_openscap.py b/tests/unit/modules/test_openscap.py
+index c20220ea97..fbf4ed1cc0 100644
+--- a/tests/unit/modules/test_openscap.py
++++ b/tests/unit/modules/test_openscap.py
+@@ -445,3 +445,149 @@ class OpenscapTestCase(TestCase):
+                     "returncode": 1,
+                 },
+             )
++
++    def test_new_openscap_xccdf_eval_success_with_skip_rules(self):
++        with patch(
++            "salt.modules.openscap.Popen",
++            MagicMock(
++                return_value=Mock(
++                    **{
++                        "returncode": 0,
++                        "communicate.return_value": (bytes(0), bytes(0)),
++                    }
++                )
++            ),
++        ):
++            response = openscap.xccdf_eval(
++                self.policy_file,
++                profile="Default",
++                skip_rule=["rule-one", "rule-two"],
++                oval_results=True,
++                results="results.xml",
++                report="report.html",
++            )
++
++            expected_cmd = [
++                "oscap",
++                "xccdf",
++                "eval",
++                "--oval-results",
++                "--results",
++                "results.xml",
++                "--report",
++                "report.html",
++                "--profile",
++                "Default",
++                "--skip-rule",
++                "rule-one",
++                "--skip-rule",
++                "rule-two",
++                self.policy_file,
++            ]
++            openscap.Popen.assert_called_once_with(
++                expected_cmd,
++                cwd=openscap.tempfile.mkdtemp.return_value,
++                stderr=subprocess.PIPE,
++                stdout=subprocess.PIPE,
++            )
++            self.assertEqual(
++                response,
++                {
++                    "upload_dir": self.random_temp_dir,
++                    "error": "",
++                    "success": True,
++                    "returncode": 0,
++                },
++            )
++
++    def test_new_openscap_xccdf_eval_success_with_single_rules_as_string(self):
++        with patch(
++            "salt.modules.openscap.Popen",
++            MagicMock(
++                return_value=Mock(
++                    **{
++                        "returncode": 0,
++                        "communicate.return_value": (bytes(0), bytes(0)),
++                    }
++                )
++            ),
++        ):
++            openscap.xccdf_eval(
++                self.policy_file,
++                profile="Default",
++                rule="rule-one",
++                skip_rule="rule-two",
++                oval_results=True,
++            )
++
++            expected_cmd = [
++                "oscap",
++                "xccdf",
++                "eval",
++                "--oval-results",
++                "--profile",
++                "Default",
++                "--rule",
++                "rule-one",
++                "--skip-rule",
++                "rule-two",
++                self.policy_file,
++            ]
++            openscap.Popen.assert_called_once_with(
++                expected_cmd,
++                cwd=openscap.tempfile.mkdtemp.return_value,
++                stderr=subprocess.PIPE,
++                stdout=subprocess.PIPE,
++            )
++
++    def test_new_openscap_xccdf_eval_success_with_content_selection(self):
++        with patch(
++            "salt.modules.openscap.Popen",
++            MagicMock(
++                return_value=Mock(
++                    **{
++                        "returncode": 0,
++                        "communicate.return_value": (bytes(0), bytes(0)),
++                    }
++                )
++            ),
++        ):
++            openscap.xccdf_eval(
++                self.policy_file,
++                profile="Default",
++                reference="stigid:RHEL-09-211010",
++                cpe="/usr/share/openscap/cpe/openscap-cpe-dict.xml",
++                datastream_id="scap_org.open-scap_datastream_from_xccdf",
++                xccdf_id="scap_org.open-scap_cref_xccdf.xml",
++                benchmark_id="xccdf_org.ssgproject.content_benchmark_RHEL-9",
++                local_files="/var/cache/openscap",
++                fetch_remote_resources=True,
++            )
++
++            expected_cmd = [
++                "oscap",
++                "xccdf",
++                "eval",
++                "--profile",
++                "Default",
++                "--reference",
++                "stigid:RHEL-09-211010",
++                "--cpe",
++                "/usr/share/openscap/cpe/openscap-cpe-dict.xml",
++                "--datastream-id",
++                "scap_org.open-scap_datastream_from_xccdf",
++                "--xccdf-id",
++                "scap_org.open-scap_cref_xccdf.xml",
++                "--benchmark-id",
++                "xccdf_org.ssgproject.content_benchmark_RHEL-9",
++                "--fetch-remote-resources",
++                "--local-files",
++                "/var/cache/openscap",
++                self.policy_file,
++            ]
++            openscap.Popen.assert_called_once_with(
++                expected_cmd,
++                cwd=openscap.tempfile.mkdtemp.return_value,
++                stderr=subprocess.PIPE,
++                stdout=subprocess.PIPE,
++            )
+-- 
+2.56.0
+

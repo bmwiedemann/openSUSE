@@ -1,0 +1,4 @@
+# libguile-dbd-test.so is dlopened at runtime by its unversioned name
+# (lt_dlopenext("libguile-dbd-<backend>") in src/guile-dbi.c), so the .so
+# link must ship in the main package, not -devel.
+addFilter("devel-file-in-non-devel-package.*/libguile-dbd-test.so")

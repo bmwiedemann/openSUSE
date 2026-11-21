@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1f7556426e2efb6e127878b689dbca2</srcmd5>
+    <version>0.1.7</version>
+    <time>1794410664</time>
+    <user>dimstar_suse</user>
+    <comment>OpenShell, created by NVIDIA, is an open source sandboxing
+framework. It works also without any AI hardware or accelerators,
+in other words, it is fully portable and hardware independent.</comment>
+    <requestid>1395978</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b1f1002765951330b4e4c03d4989cfe1</srcmd5>
+    <version>0.1.8</version>
+    <time>1794828484</time>
+    <user>anag_factory</user>
+    <comment>- Prepare for configuation of the SUSE registry in the gateway
+  for supervisor and sandbox images.
+  Values get added once the paths are known.
+- Improve documentation.
+
+- Updated to 0.1.8.
+  * Breaking changes:
+    - Credential placement is stricter: static provider credentials are
+      now only injected into the Authorization header or an explicit
+      body/WebSocket rewrite. If you use custom headers, query parameters
+      or path slots, your policy must now declare where the credential goes.
+    - WebSockets need explicit config: REST endpoints now reject HTTP upgrade
+      requests with 403. WebSocket traffic needs its own protocol and rules
+      in the policy.
+    - Symlinks in writable workspaces can block launch: a sandbox won't
+      start if a filesystem policy path goes through a symlink in a writable
+      workspace.
+  * SDK changes:
+    - Go: move from github.com/NVIDIA/OpenShell/sdk/go to
+      github.com/ai-openshell/sdk-go. The Go SDK now shares oidc_token.json
+      with the CLI, so run openshell gateway login once.
+    - Python: still pip install openshell, but it's now published from a
+      separate repo.
+  * User visible changes:
+    - Stability: deleted sandboxes no longer leak memory, so repeated
+      create/delete cycles no longer end in an OOM kill. Kubernetes sandbox
+      deletion is faster, and stopped sandboxes no longer flip back to
+      &quot;provisioning&quot;.
+    - CLI:
+      - openshell sandbox download now works on busybox-based images.</comment>
+    <requestid>1397257</requestid>
+  </revision>
+</revisionlist>

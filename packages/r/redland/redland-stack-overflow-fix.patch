@@ -1,0 +1,88 @@
+From 50632b416588e58f77adf375d3cd33aafc765fbb Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <stephan.bergmann@collabora.com>
+Date: Sun, 3 May 2026 20:07:55 +0000
+Subject: [PATCH] Fix stack-buffer-overflow on key dereference
+
+...as seen once during CppunitTest_sw_odfexport4,
+
+> ==866789==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7b809fb6b840 at pc 0x7f80a848e8fe bp 0x7ffe1b257020 sp 0x7ffe1b2567d0
+> READ of size 141 at 0x7b809fb6b840 thread T0
+>  #0 in MemcmpInterceptorCommon(void*, int (*)(void const*, void const*, unsigned long), void const*, void const*, unsigned long) at ~/github.com/llvm/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:849:7
+>  #1 in memcmp at ~/github.com/llvm/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:881:10
+>  #2 in librdf_hash_memory_delete_key_value at engine/workdir/UnpackedTarball/redland/src/rdf_hash_memory.c:913:41
+>  #3 in librdf_hash_delete at engine/workdir/UnpackedTarball/redland/src/rdf_hash.c:965:10
+>  #4 in librdf_storage_hashes_add_remove_statement at engine/workdir/UnpackedTarball/redland/src/rdf_storage_hashes.c:713:14
+>  #5 in librdf_storage_hashes_context_remove_statement at engine/workdir/UnpackedTarball/redland/src/rdf_storage_hashes.c:1537:6
+>  #6 in librdf_storage_context_remove_statement at engine/workdir/UnpackedTarball/redland/src/rdf_storage.c:1595:10
+>  #7 in librdf_model_storage_context_remove_statement at engine/workdir/UnpackedTarball/redland/src/rdf_model_storage.c:470:10
+>  #8 in librdf_model_context_remove_statement at engine/workdir/UnpackedTarball/redland/src/rdf_model.c:1338:10
+>  #9 in (anonymous namespace)::librdf_Repository::removeStatementsGraph_NoLock(com::sun::star::uno::Reference<com::sun::star::rdf::XResource> const&, com::sun::star::uno::Reference<com::sun::star::rdf::XURI> const&, com::sun::star::uno::Reference<com::sun::star::rdf::XNode> const&, com::sun::star::uno::Reference<com::sun::star::rdf::XURI> const&) at engine/unoxml/source/rdf/librdf_repository.cxx:1935:13
+>  #10 in (anonymous namespace)::librdf_NamedGraph::removeStatements(com::sun::star::uno::Reference<com::sun::star::rdf::XResource> const&, com::sun::star::uno::Reference<com::sun::star::rdf::XURI> const&, com::sun::star::uno::Reference<com::sun::star::rdf::XNode> const&) at engine/unoxml/source/rdf/librdf_repository.cxx:821:11
+>  #11 in SwRDFHelper::clearStatements(rtl::Reference<SwXTextDocument> const&, rtl::OUString const&, com::sun::star::uno::Reference<com::sun::star::rdf::XResource> const&) at engine/sw/source/core/doc/rdfhelper.cxx:164:21
+>  #12 in SwTextNode::DestroyAttr(SwTextAttr*) at engine/sw/source/core/txtnode/thints.cxx:1294:17
+>  #13 in SwTextNode::EraseText(SwContentIndex const&, int, SwInsertFlags) at engine/sw/source/core/txtnode/ndtxt.cxx:2920:13
+>  #14 in SwTextNode::EraseText(SwPosition const&, int, SwInsertFlags) at engine/sw/source/core/txtnode/ndtxt.cxx:2848:5
+>  #15 in SwUndoDelete::SaveContent(SwPosition const*, SwPosition const*, SwTextNode*, SwTextNode*) at engine/sw/source/core/undo/undel.cxx:476:21
+>  #16 in SwUndoDelete::SwUndoDelete(SwPaM&, SwDeleteFlags, bool, bool) at engine/sw/source/core/undo/undel.cxx:264:22
+>  #17 in std::__detail::_MakeUniq<SwUndoDelete>::__single_object std::make_unique<SwUndoDelete, SwPaM&, SwDeleteFlags const&>(SwPaM&, SwDeleteFlags const&) at ~/gcc/inst/lib/gcc/x86_64-pc-linux-gnu/17.0.0/../../../../include/c++/17.0.0/bits/unique_ptr.h:1086:34
+>  #18 in sw::DocumentContentOperationsManager::DeleteRangeImplImpl(SwPaM&, SwDeleteFlags) at engine/sw/source/core/doc/DocumentContentOperationsManager.cxx:4600:54
+>  #19 in sw::DocumentContentOperationsManager::DeleteRangeImpl(SwPaM&, SwDeleteFlags) at engine/sw/source/core/doc/DocumentContentOperationsManager.cxx:4526:26
+>  #20 in sw::DocumentContentOperationsManager::DeleteAndJoinImpl(SwPaM&, SwDeleteFlags) at engine/sw/source/core/doc/DocumentContentOperationsManager.cxx:4497:26
+>  #21 in (anonymous namespace)::lcl_DoWithBreaks(sw::DocumentContentOperationsManager&, SwPaM&, SwDeleteFlags, bool (sw::DocumentContentOperationsManager::*)(SwPaM&, SwDeleteFlags)) at engine/sw/source/core/doc/DocumentContentOperationsManager.cxx:688:20
+>  #22 in sw::DocumentContentOperationsManager::DeleteAndJoin(SwPaM&, SwDeleteFlags) at engine/sw/source/core/doc/DocumentContentOperationsManager.cxx:2395:22
+>  #23 in SwXMeta::dispose() at engine/sw/source/core/unocore/unorefmk.cxx:868:50
+>  #24 in SwXMetaField::dispose() at engine/sw/source/core/unocore/unorefmk.cxx:1241:21
+>  #25 in SwXText::removeTextContent(com::sun::star::uno::Reference<com::sun::star::text::XTextContent> const&) at engine/sw/source/core/unocore/unotext.cxx:745:15
+>  #26 in (anonymous namespace)::lcl_RemoveParagraphMetadataField(com::sun::star::uno::Reference<com::sun::star::text::XTextField> const&) at engine/sw/source/core/edit/edfcol.cxx:539:28
+>  #27 in lcl_ApplyParagraphClassification(SwDoc*, rtl::Reference<SwXTextDocument> const&, rtl::Reference<SwXParagraph> const&, com::sun::star::uno::Reference<com::sun::star::rdf::XResource> const&, std::__debug::vector<svx::ClassificationResult, std::allocator<svx::ClassificationResult>>) at engine/sw/source/core/edit/edfcol.cxx:1182:9
+>  #28 in SwEditShell::RestoreMetadataFieldsAndValidateParagraphSignatures() at engine/sw/source/core/edit/edfcol.cxx:2010:13
+>  #29 in SwEditShell::SwEditShell(SwDoc&, vcl::Window*, SwViewOption const*) at engine/sw/source/core/edit/edws.cxx:58:5
+>  #30 in SwFEShell::SwFEShell(SwDoc&, vcl::Window*, SwViewOption const*) at engine/sw/source/core/frmedt/fews.cxx:688:7
+>  #31 in SwWrtShell::SwWrtShell(SwDoc&, vcl::Window*, SwView&, SwViewOption const*) at engine/sw/source/uibase/wrtsh/wrtsh1.cxx:2141:7
+>  #32 in SwView::SwView(SfxViewFrame&, SfxViewShell*) at engine/sw/source/uibase/uiview/view.cxx:924:31
+>  #33 in SwView::CreateInstance(SfxViewFrame&, SfxViewShell*) at engine/sw/source/uibase/uiview/view0.cxx:82:28
+>  #34 in SfxViewFactory::CreateInstance(SfxViewFrame&, SfxViewShell*) at engine/sfx2/source/view/viewfac.cxx:26:12
+>  #35 in SfxBaseModel::createViewController(rtl::OUString const&, com::sun::star::uno::Sequence<com::sun::star::beans::PropertyValue> const&, com::sun::star::uno::Reference<com::sun::star::frame::XFrame> const&) at engine/sfx2/source/doc/sfxbasemodel.cxx:4346:46
+>  #36 in non-virtual thunk to SfxBaseModel::createViewController(rtl::OUString const&, com::sun::star::uno::Sequence<com::sun::star::beans::PropertyValue> const&, com::sun::star::uno::Reference<com::sun::star::frame::XFrame> const&) at engine/sfx2/source/doc/sfxbasemodel.cxx
+>  #37 in (anonymous namespace)::SfxFrameLoader_Impl::impl_createDocumentView(com::sun::star::uno::Reference<com::sun::star::frame::XModel2> const&, com::sun::star::uno::Reference<com::sun::star::frame::XFrame> const&, comphelper::NamedValueCollection const&, rtl::OUString const&) at engine/sfx2/source/view/frmload.cxx:586:60
+>  #38 in (anonymous namespace)::SfxFrameLoader_Impl::load(com::sun::star::uno::Sequence<com::sun::star::beans::PropertyValue> const&, com::sun::star::uno::Reference<com::sun::star::frame::XFrame> const&) at engine/sfx2/source/view/frmload.cxx:813:13
+>  #39 in framework::LoadEnv::impl_loadContent() at engine/framework/source/loadenv/loadenv.cxx:1172:37
+>  #40 in framework::LoadEnv::start() at engine/framework/source/loadenv/loadenv.cxx:408:20
+>  #41 in framework::LoadEnv::startLoading(rtl::OUString const&, com::sun::star::uno::Sequence<com::sun::star::beans::PropertyValue> const&, com::sun::star::uno::Reference<com::sun::star::frame::XFrame> const&, rtl::OUString const&, int, LoadEnvFeatures) at engine/framework/source/loadenv/loadenv.cxx:304:5
+>  #42 in framework::LoadEnv::loadComponentFromURL(com::sun::star::uno::Reference<com::sun::star::frame::XComponentLoader> const&, com::sun::star::uno::Reference<com::sun::star::uno::XComponentContext> const&, rtl::OUString const&, rtl::OUString const&, int, com::sun::star::uno::Sequence<com::sun::star::beans::PropertyValue> const&) at engine/framework/source/loadenv/loadenv.cxx:168:14
+>  #43 in framework::Desktop::loadComponentFromURL(rtl::OUString const&, rtl::OUString const&, int, com::sun::star::uno::Sequence<com::sun::star::beans::PropertyValue> const&) at engine/framework/source/services/desktop.cxx:594:16
+>  #44 in non-virtual thunk to framework::Desktop::loadComponentFromURL(rtl::OUString const&, rtl::OUString const&, int, com::sun::star::uno::Sequence<com::sun::star::beans::PropertyValue> const&) at engine/framework/source/services/desktop.cxx
+>  #45 in unotest::MacrosTest::loadFromDesktop(rtl::OUString const&, rtl::OUString const&, com::sun::star::uno::Sequence<com::sun::star::beans::PropertyValue> const&) at engine/unotest/source/cpp/macros_test.cxx:74:62
+>  #46 in UnoApiTest::loadWithParams(rtl::OUString const&, com::sun::star::uno::Sequence<com::sun::star::beans::PropertyValue> const&) at engine/test/source/unoapi_test.cxx:323:19
+>  #47 in UnoApiTest::loadFromURL(rtl::OUString const&, char const*) at engine/test/source/unoapi_test.cxx:305:5
+>  #48 in SwModelTestBase::loadURL(rtl::OUString const&, char const*) at engine/sw/qa/unit/swmodeltestbase.cxx:382:5
+>  #49 in SwModelTestBase::saveAndReload(TestFilter, char const*) at engine/sw/qa/unit/swmodeltestbase.cxx:393:5
+>  #50 in SwModelTestBase::executeLoadVerifyReloadVerify(char const*, TestFilter) at engine/sw/qa/unit/swmodeltestbase.cxx:69:5
+>  #51 in (anonymous namespace)::testTdf160877::Load_Verify_Reload_Verify() at engine/sw/qa/extras/odfexport/odfexport4.cxx:1199:1
+>
+> Address 0x7b809fb6b840 is located in stack of thread T0 at offset 64 in frame
+>  #0 in librdf_storage_hashes_add_remove_statement at engine/workdir/UnpackedTarball/redland/src/rdf_storage_hashes.c:632
+>
+>   This frame has 2 object(s):
+>     [32, 64) 'hd_key' (line 648)
+>     [96, 128) 'hd_value' (line 648) <== Memory access at offset 64 partially underflows this variable
+
+Reviewed-on: https://gerrit.collaboraoffice.com/c/online/+/1896
+Reviewed-by: Michael Stahl <michael.stahl@collabora.com>
+---
+ src/rdf_hash_memory.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rdf_hash_memory.c b/src/rdf_hash_memory.c
+index cbc47f93..763ae223 100644
+--- a/src/rdf_hash_memory.c
++++ b/src/rdf_hash_memory.c
+@@ -910,7 +910,7 @@ librdf_hash_memory_delete_key_value(void* context, librdf_hash_datum *key,
+     
+     node=next;
+     while(node) {
+-      if(key->size == node->key_len && !memcmp(key, node->key, key->size)){
++      if(key->size == node->key_len && !memcmp(key->data, node->key, key->size)){
+         found=1;
+         break;
+       }

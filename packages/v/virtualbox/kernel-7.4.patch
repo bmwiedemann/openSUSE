@@ -1,0 +1,139 @@
+From: Jiri Slaby <jirislaby@kernel.org>
+Date: Thu, 5 Nov 2026 08:24:44 +0100
+Subject: support kernel 7.4
+References: 7.4 build fix
+Patch-mainline: submitted https://github.com/VirtualBox/virtualbox/pull/956
+
+* PageWriteback() was dropped.
+* mnt_idmap became const in vfs callbacks.
+
+Signed-off-by: Jiri Slaby <jirislaby@kernel.org>
+---
+ .../Additions/linux/sharedfolders/dirops.c     | 18 ++++++++++++++----
+ .../Additions/linux/sharedfolders/regops.c     |  4 ++--
+ src/VBox/Additions/linux/sharedfolders/utils.c |  9 +++++++--
+ .../Additions/linux/sharedfolders/vfsmod.h     |  9 +++++++--
+ 4 files changed, 30 insertions(+), 10 deletions(-)
+
+diff --git a/src/VBox/Additions/linux/sharedfolders/dirops.c b/src/VBox/Additions/linux/sharedfolders/dirops.c
+index 933a83394f52..cf57baacffee 100644
+--- a/src/VBox/Additions/linux/sharedfolders/dirops.c
++++ b/src/VBox/Additions/linux/sharedfolders/dirops.c
+@@ -1045,7 +1045,9 @@ static int vbsf_inode_atomic_open(struct inode *pDirInode, struct dentry *dentry
+  * @param   mode    file mode
+  * @returns 0 on success, Linux error code otherwise
+  */
+-#if RTLNX_VER_MIN(7,3,0) || defined(DOXYGEN_RUNNING)
++#if RTLNX_VER_MIN(7,4,0) || defined(DOXYGEN_RUNNING)
++static int vbsf_inode_create(const struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, umode_t mode)
++#elif RTLNX_VER_MIN(7,3,0)
+ static int vbsf_inode_create(struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, umode_t mode)
+ #elif RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
+ static int vbsf_inode_create(struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, umode_t mode, bool excl)
+@@ -1089,7 +1091,9 @@ static int vbsf_inode_create(struct inode *parent, struct dentry *dentry, int mo
+  * @param   mode    file mode
+  * @returns 0 on success, Linux error code otherwise
+  */
+-#if RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(10,3, 10,99)
++#if RTLNX_VER_MIN(7,4,0)
++static struct dentry *vbsf_inode_mkdir(const struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, umode_t mode)
++#elif RTLNX_VER_MIN(6,15,0) || RTLNX_RHEL_RANGE(10,3, 10,99)
+ static struct dentry *vbsf_inode_mkdir(struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, umode_t mode)
+ #elif RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99) || defined(DOXYGEN_RUNNING)
+ static int vbsf_inode_mkdir(struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, umode_t mode)
+@@ -1216,7 +1220,11 @@ static int vbsf_inode_rmdir(struct inode *parent, struct dentry *dentry)
+  * @param   flags       flags
+  * @returns 0 on success, Linux error code otherwise
+  */
+-#if RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99) || defined(DOXYGEN_RUNNING)
++#if RTLNX_VER_MIN(7,4,0) || defined(DOXYGEN_RUNNING)
++static int vbsf_inode_rename(const struct mnt_idmap *idmap,
++                             struct inode *old_parent, struct dentry *old_dentry,
++                             struct inode *new_parent, struct dentry *new_dentry, unsigned flags)
++#elif RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
+ static int vbsf_inode_rename(struct mnt_idmap *idmap,
+                              struct inode *old_parent, struct dentry *old_dentry,
+                              struct inode *new_parent, struct dentry *new_dentry, unsigned flags)
+@@ -1332,7 +1340,9 @@ static int vbsf_inode_rename_no_flags(struct inode *old_parent, struct dentry *o
+ /**
+  * Create a symbolic link.
+  */
+-#if RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
++#if RTLNX_VER_MIN(7,4,0)
++static int vbsf_inode_symlink(const struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, const char *target)
++#elif RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
+ static int vbsf_inode_symlink(struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, const char *target)
+ #elif RTLNX_VER_MIN(5,12,0)
+ static int vbsf_inode_symlink(struct user_namespace *ns, struct inode *parent, struct dentry *dentry, const char *target)
+diff --git a/src/VBox/Additions/linux/sharedfolders/regops.c b/src/VBox/Additions/linux/sharedfolders/regops.c
+index 81cc8b560dc4..a4644f1af767 100644
+--- a/src/VBox/Additions/linux/sharedfolders/regops.c
++++ b/src/VBox/Additions/linux/sharedfolders/regops.c
+@@ -610,8 +610,8 @@ DECLINLINE(bool) mapping_writably_mapped(struct address_space const *mapping)
+ #endif
+ 
+ 
+-#if RTLNX_VER_MAX(2,5,12)
+-/** Missing in 2.4.x, so just stub it for now. */
++#if RTLNX_VER_MAX(2,5,12) || RTLNX_VER_MIN(7,4,0)
++/** Missing in 2.4.x and 7.4+, so just stub it for now. */
+ DECLINLINE(bool) PageWriteback(struct page const *page)
+ {
+     return false;
+diff --git a/src/VBox/Additions/linux/sharedfolders/utils.c b/src/VBox/Additions/linux/sharedfolders/utils.c
+index 9105a0e80eb5..8408ae201a5c 100644
+--- a/src/VBox/Additions/linux/sharedfolders/utils.c
++++ b/src/VBox/Additions/linux/sharedfolders/utils.c
+@@ -724,7 +724,10 @@ int vbsf_inode_revalidate_with_handle(struct dentry *dentry, SHFLHANDLE hHostFil
+    has inode at all) from these new attributes we derive [kstat] via
+    [generic_fillattr] */
+ #if RTLNX_VER_MIN(2,5,18)
+-# if RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
++# if RTLNX_VER_MIN(7,4,0)
++int vbsf_inode_getattr(const struct mnt_idmap *idmap, const struct path *path,
++                       struct kstat *kstat, u32 request_mask, unsigned int flags)
++# elif RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
+ int vbsf_inode_getattr(struct mnt_idmap *idmap, const struct path *path,
+                        struct kstat *kstat, u32 request_mask, unsigned int flags)
+ # elif RTLNX_VER_MIN(5,12,0)
+@@ -824,7 +827,9 @@ int vbsf_inode_getattr(struct vfsmount *mnt, struct dentry *dentry, struct kstat
+ /**
+  * Modify inode attributes.
+  */
+-#if RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
++#if RTLNX_VER_MIN(7,4,0)
++int vbsf_inode_setattr(const struct mnt_idmap *idmap, struct dentry *dentry, struct iattr *iattr)
++#elif RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
+ int vbsf_inode_setattr(struct mnt_idmap *idmap, struct dentry *dentry, struct iattr *iattr)
+ #elif RTLNX_VER_MIN(5,12,0)
+ int vbsf_inode_setattr(struct user_namespace *ns, struct dentry *dentry, struct iattr *iattr)
+diff --git a/src/VBox/Additions/linux/sharedfolders/vfsmod.h b/src/VBox/Additions/linux/sharedfolders/vfsmod.h
+index 28b77a2c0055..e3a47dee1724 100644
+--- a/src/VBox/Additions/linux/sharedfolders/vfsmod.h
++++ b/src/VBox/Additions/linux/sharedfolders/vfsmod.h
+@@ -265,7 +265,10 @@ extern void vbsf_update_inode(struct inode *pInode, struct vbsf_inode_info *pIno
+ extern int  vbsf_inode_revalidate_worker(struct dentry *dentry, bool fForced, bool fInodeLocked);
+ extern int  vbsf_inode_revalidate_with_handle(struct dentry *dentry, SHFLHANDLE hHostFile, bool fForced, bool fInodeLocked);
+ #if RTLNX_VER_MIN(2,5,18)
+-# if RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
++# if RTLNX_VER_MIN(7,4,0)
++extern int  vbsf_inode_getattr(const struct mnt_idmap *idmap, const struct path *path,
++                               struct kstat *kstat, u32 request_mask, unsigned int query_flags);
++# elif RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
+ extern int  vbsf_inode_getattr(struct mnt_idmap *idmap, const struct path *path,
+                                struct kstat *kstat, u32 request_mask, unsigned int query_flags);
+ # elif RTLNX_VER_MIN(5,12,0)
+@@ -279,7 +282,9 @@ extern int  vbsf_inode_getattr(struct vfsmount *mnt, struct dentry *dentry, stru
+ #else  /* < 2.5.44 */
+ extern int  vbsf_inode_revalidate(struct dentry *dentry);
+ #endif /* < 2.5.44 */
+-#if RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
++#if RTLNX_VER_MIN(7,4,0)
++extern int vbsf_inode_setattr(const struct mnt_idmap *idmap, struct dentry *dentry, struct iattr *iattr);
++#elif RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99)
+ extern int  vbsf_inode_setattr(struct mnt_idmap *idmap, struct dentry *dentry, struct iattr *iattr);
+ #elif RTLNX_VER_MIN(5,12,0)
+ extern int  vbsf_inode_setattr(struct user_namespace *ns, struct dentry *dentry, struct iattr *iattr);
+-- 
+2.56.0
+

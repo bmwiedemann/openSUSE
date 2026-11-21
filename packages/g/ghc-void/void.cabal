@@ -1,0 +1,58 @@
+name:          void
+category:      Data Structures
+version:       0.7.4
+x-revision: 1
+license:       BSD3
+cabal-version: >= 1.10
+license-file:  LICENSE
+author:        Edward A. Kmett
+maintainer:    Edward A. Kmett <ekmett@gmail.com>
+stability:     portable
+homepage:      http://github.com/ekmett/void
+bug-reports:   http://github.com/ekmett/void/issues
+copyright:     Copyright (C) 2008-2015 Edward A. Kmett
+synopsis:      A Haskell 98 logically uninhabited data type
+description:   A Haskell 98 logically uninhabited data type, used to indicate that a given term should not exist.
+build-type:    Simple
+tested-with:   GHC==9.12.2
+             , GHC==9.10.3
+             , GHC==9.8.4
+             , GHC==9.6.6
+             , GHC==9.4.8
+             , GHC==9.2.8
+             , GHC==9.0.2
+             , GHC==8.10.7
+             , GHC==8.8.4
+             , GHC==8.6.5
+             , GHC==8.4.4
+             , GHC==8.2.2
+             , GHC==8.0.2
+
+extra-source-files:
+  .ghci
+  .gitignore
+  .vim.custom
+  CHANGELOG.markdown
+  README.markdown
+
+source-repository head
+  type: git
+  location: https://github.com/ekmett/void.git
+
+flag safe
+  manual: True
+  default: False
+
+library
+  default-language: Haskell98
+  hs-source-dirs: src
+  exposed-modules:
+    Data.Void.Unsafe
+
+  -- void-0.7.4 dropped support for GHC < 8
+  build-depends: base >= 4.9 && < 10
+
+  ghc-options: -Wall
+
+  if flag(safe)
+    cpp-options: -DSAFE

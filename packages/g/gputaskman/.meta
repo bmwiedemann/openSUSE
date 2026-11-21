@@ -1,0 +1,5 @@
+<package name="gputaskman" project="openSUSE:Factory">
+  <title>GPU task manager with per-process VRAM and LLM insights</title>
+  <description>An htop for what's inside your GPU: per-process VRAM, engine load, and LLM weights / KV-cache breakdown. Supports NVIDIA everywhere and AMD/Intel on native Linux.</description>
+  <url>https://github.com/shanselman/gputaskman</url>
+</package>

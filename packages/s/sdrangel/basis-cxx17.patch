@@ -1,0 +1,11 @@
+--- a/webgl/transcoder/CMakeLists.txt
++++ b/webgl/transcoder/CMakeLists.txt
+@@ -15,7 +15,7 @@
+ message("KTX2_ZSTANDARD=${KTX2_ZSTANDARD}")
+ 
+ if (EMSCRIPTEN)
+-  set(CMAKE_CXX_STANDARD 11)
++  set(CMAKE_CXX_STANDARD 17)
+   
+   set(SRC_LIST
+   	../../transcoder/basisu_transcoder.cpp

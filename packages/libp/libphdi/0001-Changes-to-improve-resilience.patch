@@ -1,0 +1,69 @@
+From 61e3e1f6b4c5e15ce827b11858ba51f0dba254e3 Mon Sep 17 00:00:00 2001
+From: Joachim Metz <joachim.metz@gmail.com>
+Date: Thu, 22 Oct 2026 09:50:37 +0200
+Subject: [PATCH] Changes to improve resilience
+
+---
+ .github/workflows/build_macos.yml |  4 ++--
+ libphdi/libphdi_data_files.c      | 30 ++++++++++++++++--------------
+ m4/python.m4                      |  8 +++++---
+ 3 files changed, 23 insertions(+), 19 deletions(-)
+
+diff --git a/libphdi/libphdi_data_files.c b/libphdi/libphdi_data_files.c
+index 5118ffe..4ab5329 100644
+--- a/libphdi/libphdi_data_files.c
++++ b/libphdi/libphdi_data_files.c
+@@ -892,18 +892,19 @@ int libphdi_data_files_get_extent_data_file_path(
+ 	                        (int) LIBCPATH_SEPARATOR,
+ 	                        narrow_filename_size );
+ 
+-	if( extent_data_filename != NULL )
++	extent_data_filename_size = narrow_filename_size;
++
++	if( extent_data_filename == NULL )
++	{
++		extent_data_filename = narrow_filename;
++	}
++	else
+ 	{
+ 		/* Ignore the path separator itself
+ 		 */
+ 		extent_data_filename++;
+ 
+-		extent_data_filename_size = (size_t) ( extent_data_filename - narrow_filename );
+-	}
+-	else
+-	{
+-		extent_data_filename      = narrow_filename;
+-		extent_data_filename_size = narrow_filename_size;
++		extent_data_filename_size -= (size_t) ( extent_data_filename - narrow_filename );
+ 	}
+ 	if( libphdi_data_files_join_extent_data_file_path(
+ 	     data_files,
+@@ -1368,18 +1369,19 @@ int libphdi_data_files_get_extent_data_file_path_wide(
+ 	                        (wint_t) LIBCPATH_SEPARATOR,
+ 	                        wide_filename_size );
+ 
+-	if( extent_data_filename != NULL )
++	extent_data_filename_size = wide_filename_size;
++
++	if( extent_data_filename == NULL )
++	{
++		extent_data_filename = wide_filename;
++	}
++	else
+ 	{
+ 		/* Ignore the path separator itself
+ 		 */
+ 		extent_data_filename++;
+ 
+-		extent_data_filename_size = (size_t) ( extent_data_filename - wide_filename );
+-	}
+-	else
+-	{
+-		extent_data_filename      = wide_filename;
+-		extent_data_filename_size = wide_filename_size;
++		extent_data_filename_size -= (size_t) ( extent_data_filename - wide_filename );
+ 	}
+ 	if( libphdi_data_files_join_extent_data_file_path_wide(
+ 	     data_files,

@@ -1,0 +1,24 @@
+str_to_long() ignored strtol() ERANGE overflow, storing the clamped
+LONG_MAX/MIN and reporting success.  On ILP32 (i586) str_to_int() then
+wrongly succeeds for out-of-range input such as "9999999999", failing
+the unit test that asserts refusal (on LP64 the value fits in long and
+the int-narrowing check catches it, so only 32-bit builds break).
+Check errno after strtol() and fail on ERANGE.
+
+Index: ddcutil-3.0.2/src/util/string_util.c
+===================================================================
+--- ddcutil-3.0.2.orig/src/util/string_util.c
++++ ddcutil-3.0.2/src/util/string_util.c
+@@ -1119,10 +1119,11 @@
+             printf("(%s) work = %s\n", __func__, work);
+ 
+          if (has_digits) {
++            errno = 0;
+             long result = strtol(work, &endptr, base); // allow hex
+             // printf("(%s) sval=%p, endptr=%p, *endptr=|%c| (0x%02x), result=%ld\n",
+             //        __func__, sval, endptr, *endptr, *endptr, result);
+-            if (*endptr == '\0') {
++            if (*endptr == '\0' && errno != ERANGE) {
+                *p_ival = result;
+                ok = true;
+             }

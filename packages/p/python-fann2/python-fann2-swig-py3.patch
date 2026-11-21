@@ -1,0 +1,36 @@
+--- a/fann2/fann2.i	2026-11-16 15:14:48.697869672 +0100
++++ b/fann2/fann2.i	2026-11-16 15:14:48.713728716 +0100
+@@ -173,7 +173,7 @@
+ %import "../include/fann_error.h"
+ %import "../include/fann_activation.h"
+ 
+-HELPER_ARRAY_TEMPLATE( FANN::helper_array, unsigned int, PyInt_AsLong    , PyInt_FromLong    , long   );
++HELPER_ARRAY_TEMPLATE( FANN::helper_array, unsigned int, PyLong_AsLong    , PyLong_FromLong    , long   );
+ HELPER_ARRAY_TEMPLATE( FANN::helper_array, fann_type   , PyFloat_AsDouble, PyFloat_FromDouble, double );
+ 
+ HELPER_ARRAY_ARRAY_TEMPLATE( FANN::helper_array_array, fann_type   , PyFloat_AsDouble, PyFloat_FromDouble, double );
+@@ -205,10 +205,10 @@
+         PyObject *from_neuron = PySequence_GetItem(o,0);
+         PyObject *to_neuron = PySequence_GetItem(o,1);
+         PyObject *weight = PySequence_GetItem(o,2);
+-        if (PyInt_Check(from_neuron) && PyInt_Check(to_neuron) &&
++        if (PyLong_Check(from_neuron) && PyLong_Check(to_neuron) &&
+                 PyNumber_Check(weight)) {
+-            $1->array[i].from_neuron = (unsigned int) PyInt_AsLong(from_neuron);
+-            $1->array[i].to_neuron = (unsigned int) PyInt_AsLong(to_neuron);
++            $1->array[i].from_neuron = (unsigned int) PyLong_AsLong(from_neuron);
++            $1->array[i].to_neuron = (unsigned int) PyLong_AsLong(to_neuron);
+             $1->array[i].weight = (fann_type) PyFloat_AsDouble(weight);
+         } else {
+             PyErr_SetString(PyExc_ValueError,"Connection elements must be (int, int, float)");
+@@ -239,8 +239,8 @@
+     for (unsigned int i = 0; i < $1->array_len; i++)
+     {
+         PyObject *o = PyTuple_Pack (3,
+-                PyInt_FromLong( (long) ($1->array[i].from_neuron)),
+-                PyInt_FromLong( (long) ($1->array[i].to_neuron)),
++                PyLong_FromLong( (long) ($1->array[i].from_neuron)),
++                PyLong_FromLong( (long) ($1->array[i].to_neuron)),
+                 PyFloat_FromDouble( (double) ($1->array[i].weight)));
+         PyList_SetItem($result,i,o);
+     }

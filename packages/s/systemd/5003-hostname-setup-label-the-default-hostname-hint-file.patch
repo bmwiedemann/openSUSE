@@ -1,0 +1,32 @@
+From 68e09205d602dd1d06becebee27f4016256b4042 Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Mon, 9 Nov 2026 15:36:18 +0100
+Subject: [PATCH] hostname-setup: label the default-hostname hint file
+
+The hint is written atomically via a temporary file, so SELinux
+name-based type transitions for "default-hostname" never match and the
+file inherits the label of /run/systemd/ (init_var_run_t).
+
+Follow-up for 7c7cbe02b68a179c378668fb3ead474759fca1ee
+
+[fbui: fixes bsc#1289683]
+---
+ src/shared/hostname-setup.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/shared/hostname-setup.c b/src/shared/hostname-setup.c
+index 0924f3bf09..dedd4402c4 100644
+--- a/src/shared/hostname-setup.c
++++ b/src/shared/hostname-setup.c
+@@ -220,7 +220,7 @@ void hostname_update_source_hint(const char *hostname, HostnameSource source) {
+ 
+         if (source == HOSTNAME_DEFAULT) {
+                 r = write_string_file(path, hostname,
+-                                      WRITE_STRING_FILE_CREATE | WRITE_STRING_FILE_ATOMIC);
++                                      WRITE_STRING_FILE_CREATE | WRITE_STRING_FILE_ATOMIC | WRITE_STRING_FILE_LABEL);
+                 if (r < 0)
+                         log_warning_errno(r, "Failed to create \"%s\", ignoring: %m", path);
+         } else
+-- 
+2.51.0
+

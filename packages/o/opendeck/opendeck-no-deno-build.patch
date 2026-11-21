@@ -1,0 +1,64 @@
+--- a/src-tauri/build.rs
++++ b/src-tauri/build.rs
+@@ -1,4 +1,18 @@
+ use std::fs;
++
++fn copy_dir_recursive(src: &std::path::Path, dst: &std::path::Path) -> std::io::Result<()> {
++	fs::create_dir_all(dst)?;
++	for entry in fs::read_dir(src)?.flatten() {
++		let dest = dst.join(entry.file_name());
++		let file_type = entry.file_type()?;
++		if file_type.is_dir() {
++			copy_dir_recursive(&entry.path(), &dest)?;
++		} else if file_type.is_file() {
++			fs::copy(entry.path(), dest)?;
++		}
++	}
++	Ok(())
++}
+ 
+ fn main() {
+ 	#[cfg(not(debug_assertions))]
+@@ -6,17 +20,34 @@
+ 	if let Err(error) = || -> Result<(), std::io::Error> {
+ 		for entry in fs::read_dir("../plugins")?.flatten() {
+ 			let out_dir = std::path::Path::new("target").join("plugins").join(entry.file_name());
+-			fs::create_dir_all(&out_dir)?;
+-			let status = std::process::Command::new("deno")
++			// No Deno in the distribution: replicate build.ts natively (clear the
++			// output dir, stage the plugin assets, install the plugin binary).
++			let _ = fs::remove_dir_all(&out_dir);
++			copy_dir_recursive(&entry.path().join("assets"), &out_dir)?;
++			// Absolute: the cargo child resolves its --root against its own
++			// directory (the plugin's), not this one (cf. canonicalize in
++			// the upstream build.ts invocation this replaces).
++			let out_dir = fs::canonicalize(&out_dir)?;
++			let target = std::env::var("TARGET").unwrap();
++			// A cargo inside a cargo build inherits the parent's target dir
++			// and home: both would take the same build and cache locks.
++			// (A temp home, so nothing extra lands in the staged plugin.)
++			let cargo_home = std::env::temp_dir().join("opendeck-plugin-cargo-home");
++			let status = std::process::Command::new("cargo")
+ 				.args([
+-					"run",
+-					"--lock=target/deno.lock",
+-					"--allow-all",
+-					"build.ts",
+-					fs::canonicalize(out_dir)?.to_string_lossy().as_ref(),
+-					&std::env::var("TARGET").unwrap(),
++					"install",
++					"--locked",
++					"--path",
++					".",
++					"--target",
++					target.as_str(),
++					"--root",
++					out_dir.join(&target).to_string_lossy().as_ref(),
++					"--offline",
+ 				])
+ 				.current_dir(entry.path())
++				.env_remove("CARGO_TARGET_DIR")
++				.env("CARGO_HOME", &cargo_home)
+ 				.status()?;
+ 			if !status.success() {
+ 				panic!("Failed to build plugin {}: status code {}", entry.file_name().to_string_lossy(), status.code().unwrap());

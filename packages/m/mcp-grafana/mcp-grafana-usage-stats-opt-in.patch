@@ -1,0 +1,30 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: usagestats: report only on explicit opt-in
+
+openSUSE builds send nothing to stats.grafana.org unless the user
+sets --usage-stats=enabled or GRAFANA_USAGE_STATS=enabled.
+
+--- a/usagestats/mode.go
++++ b/usagestats/mode.go
+@@ -26,7 +26,7 @@
+ 
+ // DefaultMode is the mode used when neither the flag nor the environment
+ // variable selects one.
+-const DefaultMode = ModeEnabled
++const DefaultMode = ModeDisabled
+ 
+ const (
+ 	// ModeEnvVar selects the reporting mode. The --usage-stats flag wins over it.
+--- a/usagestats/mode_test.go
++++ b/usagestats/mode_test.go
+@@ -80,8 +80,8 @@
+ }
+ 
+ func TestDefaultModeIsEnabled(t *testing.T) {
+-	assert.Equal(t, ModeEnabled, DefaultMode)
+-	assert.Equal(t, ModeEnabled, ResolveMode("", false, "", ""))
++	assert.Equal(t, ModeDisabled, DefaultMode)
++	assert.Equal(t, ModeDisabled, ResolveMode("", false, "", ""))
+ }
+ 
+ // TestZeroConfigIsInert: Mode is a string, so a Config built without one has

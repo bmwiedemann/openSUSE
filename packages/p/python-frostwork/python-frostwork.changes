@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sat Nov  7 14:59:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 0.2.2
+  * Treeless, one-pass HTML extraction: CSS/XPath selectors matched
+    on a streaming scan, no DOM
+  * New mandatory runtime dependency of w3lib >= 2.6.0

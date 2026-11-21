@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+	<id>opendeck</id>
+	<metadata_license>CC-BY-SA-4.0</metadata_license>
+	<project_license>GPL-3.0-or-later</project_license>
+	<name>OpenDeck</name>
+	<summary>Use stream controllers like the Elgato Stream Deck</summary>
+	<description>
+		<p>OpenDeck is a desktop application for using stream controller devices like the Elgato Stream Deck.</p>
+		<p>OpenDeck supports plugins made for the original Stream Deck SDK, allowing many plugins made for the Elgato software ecosystem to be used, from multi actions and toggle actions to profile switching and device brightness control.</p>
+		<p>The bundled starterpack plugin, udev rules for device access and URL-scheme handlers ship in the box. Telemetry stays off unless enabled in the settings, and updates come from RPM: the in-app update check is disabled.</p>
+	</description>
+	<launchable type="desktop-id">opendeck.desktop</launchable>
+	<url type="homepage">https://github.com/nekename/OpenDeck</url>
+	<url type="bugtracker">https://github.com/nekename/OpenDeck/issues</url>
+	<url type="donation">https://github.com/sponsors/nekename</url>
+	<developer id="me.amankhanna">
+		<name>Aman Khanna</name>
+	</developer>
+	<content_rating type="oars-1.1" />
+</component>

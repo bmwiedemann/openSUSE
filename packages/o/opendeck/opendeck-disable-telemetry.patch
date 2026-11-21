@@ -1,0 +1,32 @@
+--- a/src-tauri/src/store/mod.rs
++++ b/src-tauri/src/store/mod.rs
+@@ -155,8 +155,8 @@
+ 			background: !is_flatpak(),
+ 			autolaunch: false,
+ 			updatecheck: option_env!("OPENDECK_DISABLE_UPDATE_CHECK").is_none() && !is_flatpak(),
+-			// Consent is given by the user on install so it is OK to have the default be `true`
+-			statistics: true,
++			// Telemetry stays off until the user opts in through the settings interface
++			statistics: false,
+ 			separatewine: false,
+ 			developer: false,
+ 			disableelgato: false,
+--- a/src-tauri/src/main.rs
++++ b/src-tauri/src/main.rs
+@@ -154,15 +154,13 @@
+ 								r#"Thanks for installing {PRODUCT_NAME}!
+ If you have any issues, please reach out on any of the support channels listed on GitHub (and make sure to star the project while you're there!).
+ 
+-Some minimal statistics (such as operating system and plugins installed) will be collected from the next time the app starts.
+-If you do not wish to support development in this way, please disable statistics in the settings.
++No usage statistics are collected. If you wish to support development in this way, you can enable statistics in the settings.
+ 
+ Enjoy!"#,
+ 							))
+ 							.title(format!("{PRODUCT_NAME} has successfully been installed"))
+ 							.kind(MessageDialogKind::Info)
+ 							.show(|_| ());
+-						settings.value.statistics = false;
+ 					} else {
+ 						app.dialog()
+ 							.message(format!(

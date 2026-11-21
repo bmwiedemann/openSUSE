@@ -1,0 +1,35 @@
+--- a/AddOns/Python/MEProcess.i	2026-11-16 15:54:23.680705582 +0100
++++ b/AddOns/Python/MEProcess.i	2026-11-16 15:54:23.705340798 +0100
+@@ -66,7 +66,7 @@
+ 					    PyFloat_AsDouble(PySequence_GetItem(momentum,3)) ));
+ 	  $self->SetMomenta(vec4_vec);
+ 	}
+-      return PyInt_FromLong(1);
++      return PyLong_FromLong(1);
+     };
+   }
+ 
+--- a/AddOns/Python/Exception.i	2026-11-16 15:54:23.684070087 +0100
++++ b/AddOns/Python/Exception.i	2026-11-16 15:54:23.705477526 +0100
+@@ -89,7 +89,7 @@
+       PyObject* __str__() {
+ 	MyStrStream conv;
+ 	conv<<*self;
+-	return PyString_FromString(conv.str().c_str());
++	return PyUnicode_FromString(conv.str().c_str());
+       };
+     };
+ 
+--- a/AddOns/Python/Sherpa.i	2026-11-16 15:54:23.685940662 +0100
++++ b/AddOns/Python/Sherpa.i	2026-11-16 15:54:23.705602191 +0100
+@@ -25,8 +25,8 @@
+     $1 = (char **) malloc((size+1)*sizeof(char *));
+     for (i = 0; i < size; i++) {
+       PyObject *o = PyList_GetItem($input,i);
+-      if (PyString_Check(o))
+-	$1[i] = PyString_AsString(PyList_GetItem($input,i));
++      if (PyUnicode_Check(o))
++	$1[i] = (char *) PyUnicode_AsUTF8(PyList_GetItem($input,i));
+       else {
+ 	PyErr_SetString(PyExc_TypeError,"Sherpa execution argument list must contain strings");
+ 	free($1);

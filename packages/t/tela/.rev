@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a768142ee9683b7d24f444766d9a2bac</srcmd5>
+    <version>1.0+git20260112.dcbc9c0</version>
+    <time>1794236900</time>
+    <user>anag_factory</user>
+    <comment>- Initial submission of tela (test execution framework with dynamic
+  hardware/system resource matching and TAP13 reporting).
+- Developed by IBM Linux on Z for automated hardware qualification
+  (DASD, QETH, APQN, CPACF, and virtualization).
+- Tested and builds cleanly across all architectures (s390x, x86_64,
+  aarch64, ppc64le).
+- License: MIT (verified).
+- Includes tela-test subpackage with upstream test suite and a verified,
+  non-destructive s390x sample test archive.
+- Already reviewed and accepted in devel:tools.
+- Fix Factory Auto review error &quot;Source URLs are not valid&quot;:
+  * Set Source0 to %{name}-%{version}.tar.gz as the git snapshot archive
+    is generated via _service (tar_scm) from commit dcbc9c0, avoiding
+    404 download errors during automated source verification.
+</comment>
+    <requestid>1396334</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7aeac64782bc4b34c449b3b93aa87129</srcmd5>
+    <version>1.0+git20260112.dcbc9c0</version>
+    <time>1794838494</time>
+    <user>anag_factory</user>
+    <comment>- Implement hypervisor profiles in tela-s390x-tests.tar.gz:
+  * Add .telarc and telastate profiles for bare-metal LPAR, z/VM,
+    and KVM hypervisors (telarc.lpar, telastate.lpar, telarc.zvm,
+    telastate.zvm, telarc.kvm, telastate.kvm).
+  * Add dedicated non-destructive test cases for z/VM (test_zvm_guest.sh:
+    CP query, minidisk, Virt.NIC QDIO, CHPIDs) and KVM (test_kvm_guest.sh:
+    vCPUs, VirtIO SCSI CCW, firmware IPL facilities).
+  * Enhance run_tests.sh to support hypervisor selection in mock,
+    match, tap, and live modes (e.g. ./run_tests.sh mock all).
+  * Update s390x-tests/README.md and USER-GUIDE.md with multi-hypervisor
+    testing instructions.
+</comment>
+    <requestid>1397898</requestid>
+  </revision>
+</revisionlist>

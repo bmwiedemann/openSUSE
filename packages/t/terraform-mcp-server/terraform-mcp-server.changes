@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Wed Nov 11 15:13:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package terraform-mcp-server 1.4.1: MCP server exposing
+  the Terraform Registry and HCP Terraform APIs to AI assistants
+- %check skips e2e/ (needs docker) and four client tests that
+  need registry.terraform.io / app.terraform.io network
+

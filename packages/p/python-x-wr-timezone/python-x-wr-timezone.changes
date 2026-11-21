@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Nov  5 16:43:55 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Switch Source to the GitHub tag tarball: the PyPI sdist lacks
+  test/conftest.py and the test/calendars fixtures, so %check
+  failed with missing fixtures
+- Rename package to python-x-wr-timezone and update URL to
+  github.com/pycalendar/x-wr-timezone
+- Add BuildRequires on pygments for the tests
+- Add Requires(post/postun) on update-alternatives
+
+-------------------------------------------------------------------
+Thu Nov  5 15:45:23 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- version 2.0.1: initial build

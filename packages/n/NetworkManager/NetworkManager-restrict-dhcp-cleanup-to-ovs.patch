@@ -1,0 +1,88 @@
+From 3df71dc9b0622934acfb9a62c655326ea63377a1 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Fri, 23 Oct 2026 10:27:19 +0800
+Subject: [PATCH] device: Restrict DHCP cleanup in DEACTIVATING to OVS devices
+
+Commit 09784fcc performs a full DHCP cleanup in DEACTIVATING. This
+removes the DHCP addresses before the pre-down scripts run. As a
+result, no IP is available for some devices in the pre-down dispatcher
+phase since version 1.58.
+
+Fix this by only cleaning up DHCP for OVS devices that have
+ipv4/6.dhcp-send-release set to TRUE.
+
+https://bugzilla.suse.com/show_bug.cgi?id=1284486
+---
+ src/core/devices/nm-device.c | 49 +++++++++++++++++++++++++++++++-----
+ 1 file changed, 43 insertions(+), 6 deletions(-)
+
+diff --git a/src/core/devices/nm-device.c b/src/core/devices/nm-device.c
+index 6e154d0a92..e5c31cc79c 100644
+--- a/src/core/devices/nm-device.c
++++ b/src/core/devices/nm-device.c
+@@ -2233,6 +2233,35 @@ _prop_get_ipvx_dhcp_send_hostname(NMDevice *self, int addr_family)
+     return send_hostname_v2;
+ }
+ 
++static gboolean
++_prop_get_ipvx_dhcp_send_release(NMDevice *self, int addr_family)
++{
++    const int          IS_IPv4 = NM_IS_IPv4(addr_family);
++    NMSettingIPConfig *s_ip = IS_IPv4
++                                  ? nm_device_get_applied_setting(self, NM_TYPE_SETTING_IP4_CONFIG)
++                                  : nm_device_get_applied_setting(self, NM_TYPE_SETTING_IP6_CONFIG);
++    NMTernary          send_release;
++
++    g_return_val_if_fail(s_ip, FALSE);
++
++    send_release = nm_setting_ip_config_get_dhcp_send_release(s_ip);
++
++    /* If it is explicitly configured, respect it.
++     * Otherwise check if NetworkManager's global default is enabled,
++     * or evaluate ternary truthiness: */
++    if (send_release != NM_TERNARY_DEFAULT)
++        return (send_release == NM_TERNARY_TRUE);
++
++    return nm_config_data_get_connection_default_int64(
++        NM_CONFIG_GET_DATA,
++        IS_IPv4 ? NM_CON_DEFAULT("ipv4.dhcp-send-release")
++                : NM_CON_DEFAULT("ipv6.dhcp-send-release"),
++        self,
++        NM_TERNARY_FALSE,
++        NM_TERNARY_TRUE,
++        NM_TERNARY_FALSE) == NM_TERNARY_TRUE;
++}
++
+ static NMSettingIPConfigForwarding
+ _prop_get_ipv4_forwarding(NMDevice *self)
+ {
+@@ -18002,12 +18031,20 @@ _set_state_full(NMDevice *self, NMDeviceState state, NMDeviceStateReason reason,
+         }
+         break;
+     case NM_DEVICE_STATE_DEACTIVATING:
+-        /* When deactivating, certain devices are removed/disconnected after the
+-         * STATE_CHANGED signal is sent and before the DHCP release packet
+-         * can be sent. To ensure the release packet is sent, we cleanup DHCP
+-         * before the signal is emitted*/
+-        _dev_ipdhcpx_cleanup(self, AF_INET, TRUE, FALSE);
+-        _dev_ipdhcpx_cleanup(self, AF_INET6, TRUE, FALSE);
++        gboolean is_ovs_interface = (nm_device_get_device_type(self) == NM_DEVICE_TYPE_OVS_INTERFACE)
++                            || (priv->controller && nm_device_get_device_type(priv->controller) == NM_DEVICE_TYPE_OVS_PORT);
++
++        /* For OVS interfaces, the controller removes the link from ovsdb as soon
++         * as the STATE_CHANGED signal is emitted. If dhcp-send-release is enabled,
++         * the release packet must be sent prior to signal emission to avoid
++         * packet loss from an already-removed interface. */
++        if (is_ovs_interface) {
++            if (_prop_get_ipvx_dhcp_send_release(self, AF_INET))
++                _dev_ipdhcpx_cleanup(self, AF_INET, TRUE, FALSE);
++
++            if (_prop_get_ipvx_dhcp_send_release(self, AF_INET6))
++                _dev_ipdhcpx_cleanup(self, AF_INET6, TRUE, FALSE);
++        }
+         break;
+     case NM_DEVICE_STATE_DISCONNECTED:
+         if (old_state > NM_DEVICE_STATE_DISCONNECTED) {
+-- 
+2.55.0
+

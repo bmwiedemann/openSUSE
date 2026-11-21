@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Tue Nov 10 18:16:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 2.2.0 (Savannah tarball, GitHub sources
+  https://github.com/aconchillo/guile-redis):
+  * Redis 7.0 commands, pipelining and Pub/Sub support
+  * No test suite upstream, no patches
+

@@ -1,0 +1,5 @@
+<package name="opendeck" project="openSUSE:Factory">
+  <title>Use stream controllers like the Elgato Stream Deck</title>
+  <description>OpenDeck is a desktop application for using stream controller devices like the Elgato Stream Deck, including support for plugins made for the original Stream Deck SDK.</description>
+  <url>https://github.com/nekename/OpenDeck</url>
+</package>

@@ -1,0 +1,119 @@
+From: Yunhe Guo <i@guoyunhe.me>
+Subject: [PATCH] Allow building against the system libsodium
+
+Add VXCORE_USE_SYSTEM_SODIUM, which links the platform libsodium instead of
+building the pinned libsodium-cmake copy. vxcore only uses the stable
+high-level API (secretstream, aead, pwhash, hashing, randombytes).
+
+The bundled sources are then gone, so the sodium license files have nothing to
+install. Replace the SOURCE_DIR lookup with a VXCORE_LICENSE_DIR property that
+only the bundled branch sets, and skip the install rules without it.
+
+Apply on top of 0003-use-system-pugixml.patch.
+
+---
+ libs/vxcore/CMakeLists.txt             |  8 ++++++--
+ libs/vxcore/third_party/CMakeLists.txt | 19 +++++++++++++++++++
+ src/CMakeLists.txt                     | 12 ++++++++----
+ 3 files changed, 34 insertions(+), 5 deletions(-)
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -178,7 +178,8 @@
+     target_link_libraries(vnote PRIVATE ${VX_APPKIT_LIBRARY})
+ endif()
+ 
+-get_target_property(VX_SODIUM_SOURCE_DIR sodium SOURCE_DIR)
++# Set only when sodium is built from the bundled sources.
++get_target_property(VX_SODIUM_SOURCE_DIR sodium VXCORE_LICENSE_DIR)
+ # A system pugixml ships no license file to install, and its CMake package does
+ # not provide the plain pugixml target.
+ if(TARGET pugixml)
+@@ -247,10 +248,12 @@
+     install(FILES "${PROJECT_SOURCE_DIR}/scripts/windows-context-menu.ps1"
+         DESTINATION ${CMAKE_INSTALL_BINDIR})
+     install(FILES ${VX_EXTRA_RESOURCE_FILES_RCC} DESTINATION ${CMAKE_INSTALL_BINDIR})
+-    install(FILES "${VX_SODIUM_SOURCE_DIR}/libsodium/LICENSE"
+-        DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.libsodium)
+-    install(FILES "${VX_SODIUM_SOURCE_DIR}/LICENSE"
+-        DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.libsodium-cmake)
++    if(VX_SODIUM_SOURCE_DIR)
++        install(FILES "${VX_SODIUM_SOURCE_DIR}/libsodium/LICENSE"
++            DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.libsodium)
++        install(FILES "${VX_SODIUM_SOURCE_DIR}/LICENSE"
++            DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.libsodium-cmake)
++    endif()
+     if(VX_PUGIXML_LICENSE)
+         install(FILES "${VX_PUGIXML_LICENSE}" DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.pugixml)
+     endif()
+@@ -296,10 +299,12 @@
+         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+     )
+     install(FILES ${VX_EXTRA_RESOURCE_FILES_RCC} DESTINATION ${CMAKE_INSTALL_DATADIR})
+-    install(FILES "${VX_SODIUM_SOURCE_DIR}/libsodium/LICENSE"
+-        DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.libsodium)
+-    install(FILES "${VX_SODIUM_SOURCE_DIR}/LICENSE"
+-        DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.libsodium-cmake)
++    if(VX_SODIUM_SOURCE_DIR)
++        install(FILES "${VX_SODIUM_SOURCE_DIR}/libsodium/LICENSE"
++            DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.libsodium)
++        install(FILES "${VX_SODIUM_SOURCE_DIR}/LICENSE"
++            DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.libsodium-cmake)
++    endif()
+     if(VX_PUGIXML_LICENSE)
+         install(FILES "${VX_PUGIXML_LICENSE}" DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.pugixml)
+     endif()
+--- a/libs/vxcore/CMakeLists.txt
++++ b/libs/vxcore/CMakeLists.txt
+@@ -99,11 +99,14 @@
+ if(VXCORE_INSTALL)
+     include(GNUInstallDirs)
+ 
+-    get_target_property(_vxcore_sodium_source_dir sodium SOURCE_DIR)
+-    install(FILES "${_vxcore_sodium_source_dir}/libsodium/LICENSE"
+-        DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vxcore RENAME LICENSE.libsodium)
+-    install(FILES "${_vxcore_sodium_source_dir}/LICENSE"
+-        DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vxcore RENAME LICENSE.libsodium-cmake)
++    # Set only when sodium is built from the bundled sources.
++    get_target_property(_vxcore_sodium_license_dir sodium VXCORE_LICENSE_DIR)
++    if(_vxcore_sodium_license_dir)
++        install(FILES "${_vxcore_sodium_license_dir}/libsodium/LICENSE"
++            DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vxcore RENAME LICENSE.libsodium)
++        install(FILES "${_vxcore_sodium_license_dir}/LICENSE"
++            DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vxcore RENAME LICENSE.libsodium-cmake)
++    endif()
+ 
+     get_target_property(_vxcore_pugixml_license pugixml VXCORE_LICENSE_FILE)
+     install(FILES "${_vxcore_pugixml_license}"
+--- a/libs/vxcore/third_party/CMakeLists.txt
++++ b/libs/vxcore/third_party/CMakeLists.txt
+@@ -86,6 +86,16 @@
+ 
+ # Function scope keeps sodium's options from changing other dependencies.
+ function(vxcore_add_sodium)
++  if(VXCORE_USE_SYSTEM_SODIUM)
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(vxcore_system_sodium REQUIRED IMPORTED_TARGET libsodium)
++    # vxcore/src links this target from another directory.
++    set_property(TARGET PkgConfig::vxcore_system_sodium PROPERTY IMPORTED_GLOBAL TRUE)
++    add_library(sodium INTERFACE)
++    target_link_libraries(sodium INTERFACE PkgConfig::vxcore_system_sodium)
++    return()
++  endif()
++
+   include(FetchContent)
+   set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+   set(BUILD_SHARED_LIBS OFF)
+@@ -100,9 +110,12 @@
+   FetchContent_MakeAvailable(vxcore_sodium)
+   set_target_properties(sodium PROPERTIES
+     MSVC_RUNTIME_LIBRARY "${CMAKE_MSVC_RUNTIME_LIBRARY}"
++    VXCORE_LICENSE_DIR "${vxcore_sodium_SOURCE_DIR}"
+   )
+ endfunction()
+ 
++option(VXCORE_USE_SYSTEM_SODIUM "Use the system libsodium instead of the pinned copy" OFF)
++
+ vxcore_add_sodium()
+ 
+ 

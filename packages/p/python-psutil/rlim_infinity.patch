@@ -1,0 +1,106 @@
+From 4c78c02a00ea3a30c7ab237e80dfe36e4c0c175e Mon Sep 17 00:00:00 2001
+From: Giampaolo Rodola <g.rodola@gmail.com>
+Date: Sun, 8 Nov 2026 23:10:35 +0100
+Subject: [PATCH] Make RLIM_INFINITY match resource.RLIM_INFINITY
+
+---
+ psutil/__init__.py       |  8 ++++++--
+ psutil/arch/posix/init.c | 15 ---------------
+ tests/test_process.py    | 11 ++++++++++-
+ 3 files changed, 16 insertions(+), 18 deletions(-)
+
+Index: psutil-7.2.2/psutil/__init__.py
+===================================================================
+--- psutil-7.2.2.orig/psutil/__init__.py
++++ psutil-7.2.2/psutil/__init__.py
+@@ -191,14 +191,18 @@ __all__.extend(_psplatform.__extra__all_
+ 
+ # Linux, FreeBSD
+ if hasattr(_psplatform.Process, "rlimit"):
+-    # Populate global namespace with RLIM* constants.
++    import resource
++
++    # Populate global namespace with RLIMIT_* constants.
+     _globals = globals()
+     _name = None
+     for _name in dir(_psplatform.cext):
+-        if _name.startswith('RLIM') and _name.isupper():
++        if _name.startswith('RLIMIT_') and _name.isupper():
+             _globals[_name] = getattr(_psplatform.cext, _name)
+             __all__.append(_name)
+     del _globals, _name
++    RLIM_INFINITY = resource.RLIM_INFINITY
++    __all__.append("RLIM_INFINITY")
+ 
+ AF_LINK = _psplatform.AF_LINK
+ 
+Index: psutil-7.2.2/psutil/arch/posix/init.c
+===================================================================
+--- psutil-7.2.2.orig/psutil/arch/posix/init.c
++++ psutil-7.2.2/psutil/arch/posix/init.c
+@@ -107,8 +107,6 @@ psutil_posix_add_constants(PyObject *mod
+ #endif
+ 
+ #if defined(PSUTIL_LINUX) || defined(PSUTIL_FREEBSD)
+-    PyObject *v;
+-
+ #ifdef RLIMIT_AS
+     if (PyModule_AddIntConstant(mod, "RLIMIT_AS", RLIMIT_AS))
+         return -1;
+@@ -208,19 +206,6 @@ psutil_posix_add_constants(PyObject *mod
+         return -1;
+ #endif
+ 
+-#if defined(HAVE_LONG_LONG)
+-    if (sizeof(RLIM_INFINITY) > sizeof(long)) {
+-        v = PyLong_FromLongLong((PY_LONG_LONG)RLIM_INFINITY);
+-    }
+-    else
+-#endif
+-    {
+-        v = PyLong_FromLong((long)RLIM_INFINITY);
+-    }
+-    if (v) {
+-        if (PyModule_AddObject(mod, "RLIM_INFINITY", v))
+-            return -1;
+-    }
+ #endif  // defined(PSUTIL_LINUX) || defined(PSUTIL_FREEBSD)
+ 
+     return 0;
+Index: psutil-7.2.2/tests/test_process.py
+===================================================================
+--- psutil-7.2.2.orig/tests/test_process.py
++++ psutil-7.2.2/tests/test_process.py
+@@ -24,6 +24,7 @@ import subprocess
+ import sys
+ import textwrap
+ import time
++import warnings
+ from unittest import mock
+ 
+ import psutil
+@@ -363,7 +364,10 @@ class TestProcess(PsutilTestCase):
+         soft, hard = p.rlimit(psutil.RLIMIT_FSIZE)
+         try:
+             p.rlimit(psutil.RLIMIT_FSIZE, (1024, hard))
+-            p.rlimit(psutil.RLIMIT_FSIZE, (psutil.RLIM_INFINITY, hard))
++            # Python 3.15 deprecates negative limits
++            with warnings.catch_warnings():
++                warnings.simplefilter("error")
++                p.rlimit(psutil.RLIMIT_FSIZE, (psutil.RLIM_INFINITY, hard))
+             with open(self.get_testfn(), "wb") as f:
+                 f.write(b"X" * 2048)
+         finally:
+@@ -382,6 +386,12 @@ class TestProcess(PsutilTestCase):
+         assert hard == psutil.RLIM_INFINITY
+         p.rlimit(psutil.RLIMIT_FSIZE, (soft, hard))
+ 
++    @pytest.mark.skipif(not HAS_RLIMIT, reason="not supported")
++    def test_rlimit_infinity_matches_resource(self):
++        import resource
++
++        assert psutil.RLIM_INFINITY == resource.RLIM_INFINITY
++
+     @pytest.mark.xdist_group(name="serial")
+     def test_num_threads(self):
+         # on certain platforms such as Linux we might test for exact

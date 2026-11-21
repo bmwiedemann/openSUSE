@@ -1,0 +1,157 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Kevin Buettner <kevinb@redhat.com>
+Date: Sun, 24 May 2026 21:02:34 -0700
+Subject: gdb-tcl9-utf8-encoding-fix.patch
+
+;; Fix EILSEQ problems for UTF8 related tests when using expect
+;; enabled with Tcl 9 and full set of Tcl 9 compatibility fixes
+;; from upstream PR80674 branch.  Required for testing GDB on
+;; Fedora 44 and rawhide (Fedora 45).
+;;
+;; At the time of this Fedora commit, this patch was not upstream yet.
+;; For its status, see:
+;;
+;; https://inbox.sourceware.org/gdb-patches/20260526192701.3835262-2-kevinb@redhat.com/T/#u
+
+Fix EILSEQ problems for UTF8 related tests
+
+On Fedora 44 and Rawhide (Fedora 45), these tests...
+
+  gdb.ada/non-ascii-utf-8.exp
+  gdb.base/utf8-identifiers.exp
+  gdb.rust/unicode.exp
+
+...all die due to these errors:
+
+  Running ...gdb/testsuite/gdb.base/utf8-identifiers.exp ...
+  ERROR: tcl error sourcing .../gdb/testsuite/gdb.base/utf8-identifiers.exp.
+  ERROR: tcl error code POSIX EILSEQ {invalid or incomplete multibyte or wide character}
+  error writing "file6": invalid or incomplete multibyte or wide character
+  ...
+
+(I've shortened some of the pathnames for brevity.)
+
+These Fedora systems are using Tcl 9 and also an updated version of
+dejagnu with this change applied:
+
+  * Thu Apr 16 2026 Jakub Jelinek <jakub@redhat.com> - 1:1.6.3-17
+  - Apply full set of Tcl 9 compatibility fixes from upstream PR80674 branch
+    (#2448542)
+
+That runtest change is responsible for the POSIX EILSEQ errors on
+machines with that change.  The change to runtest causing the change
+in behavior for GDB is the addition of these lines near the top of
+the runtest script:
+
+  # Ensure that DejaGnu will be run in the POSIX locale
+  LC_ALL=C
+  export LC_ALL
+
+Tcl 8 used a permissive encoding strategy: bytes that could not be
+represented in the current encoding were silently mangled or
+substituted.  Tcl 9 changed this default to a strict profile, which
+means that any attempt to write a character that cannot be expressed
+in the channel's encoding raises a POSIX EILSEQ error ("invalid or
+incomplete multibyte or wide character").
+
+So, together, this Tcl 9 behavior combined with the dejagnu change
+to runtest causes the EILSEQ error for the tests mentioned earlier.
+
+Fix it by using "fconfigure $handle -encoding utf-8 -profile replace"
+in proc spawn_capture_tty_name, and proc gdb_stdin_log_init.  Also,
+the open_logs wrapper has been changed to invoke fconfigure using only
+"-encoding utf-8".  Testing showed that "-profile replace" wasn't
+necessary there.
+
+Tested on Fedora 28 (Tcl 8.6.8), Fedora 43 (Tcl 9.0.2 / 8.6.16; expect
+uses 8.6.16), Fedora 44 (Tcl 9.0.2 / 8.6.17; expect uses 9.0.2), and
+Rawhide / Fedora 45 (Tcl 9.0.3 / 8.6.18; expect uses 9.0.3).
+
+With regard to the Bug noted below, I haven't been able to reproduce
+the failures in gdb.ada/lazy-string.exp, but I've been informed that
+this commit fixes it.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34146
+Reviewed-By: Tom de Vries <tdevries@suse.de>
+
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -152,6 +152,35 @@ proc load_lib { file } {
+     return $result
+ }
+ 
++# Tcl 9.0 changed the default channel encoding profile to "strict".
++# When runtest sets LC_ALL=C the system encoding is iso8859-1, so file
++# channels opened by DejaGNU (gdb.sum, gdb.log) and spawn channels
++# (for GDB and subprocesses) default to iso8859-1 with strict profile.
++# Writing non-Latin-1 characters in test names then raises EILSEQ, and
++# sending them to GDB truncates the command at the unrepresentable
++# character.
++#
++# Fix this by:
++# 1. Overriding open_logs to reconfigure gdb.sum to UTF-8 after
++#    DejaGNU opens it with the system (iso8859-1) encoding.  Only
++#    "-encoding utf-8" is needed here, not "-profile replace".  The
++#    test names written to gdb.sum are Unicode strings, and since
++#    UTF-8 can represent every Unicode character, the encode
++#    operation cannot fail.  This use of "fconfigure" lacks a Tcl
++#    version guard since "-encoding utf-8" works in both Tcl 8 and
++#    Tcl 9.  (Use of "-profile replace" requires a guard, as that
++#    option did not exist before Tcl 9.)
++# 2. Reconfiguring each new spawn channel to UTF-8 and to also use
++#    "-profile replace" in spawn_capture_tty_name, which wraps every
++#    spawn call.
++# 3. Likewise for gdb_stdin_log_init.
++
++rename open_logs saved_open_logs
++proc open_logs {} {
++    saved_open_logs
++    fconfigure $::sum_file -encoding utf-8
++}
++
+ load_lib libgloss.exp
+ load_lib cache.exp
+ load_lib gdb-utils.exp
+@@ -2685,6 +2714,7 @@ proc gdb_file_cmd { arg {kill_flag 1} } {
+ proc spawn_capture_tty_name { args } {
+     set result [uplevel builtin_spawn $args]
+     upvar spawn_out spawn_out
++    upvar spawn_id spawn_id
+     if { [info exists spawn_out(slave,name)] } {
+ 	set ::last_spawn_tty_name $spawn_out(slave,name)
+     } else {
+@@ -2700,6 +2730,21 @@ proc spawn_capture_tty_name { args } {
+ 	# use -nocomplain here we would otherwise get an error.
+ 	unset -nocomplain ::last_spawn_tty_name
+     }
++    # Tcl 9.0 defaults spawn channels to iso8859-1/strict, which
++    # raises EILSEQ when non-Latin-1 characters (e.g. identifiers
++    # with UTF-8 letters) are written to or read from the channel.
++    # Use utf-8 instead.
++    #
++    # "catch" is used here because, unlike the other sites in this
++    # file where fconfigure is used, this use of fconfigure could
++    # attempt to modify channels which do not support these options.
++    # Those other sites use "fconfigure" on recently opened files
++    # where it will almost certainly work.  (And, for those other sites,
++    # if it doesn't work, we want to be notified of that fact via the
++    # normal Tcl error reporting mechanisms.)
++    if {[tcl_version_at_least 9 0 0]} {
++	catch {fconfigure $spawn_id -encoding utf-8 -profile replace}
++    }
+     return $result
+ }
+ 
+@@ -10387,6 +10432,11 @@ proc gdb_stdin_log_init { } {
+     set logfile [standard_output_file_with_gdb_instance gdb.in]
+     set in_file [open $logfile w]
+ 
++    if {[tcl_version_at_least 9 0 0]} {
++	# Tcl 9 strict profile: gdb.in must accept UTF-8 command strings.
++	fconfigure $in_file -encoding utf-8 -profile replace
++    }
++
+     verbose -log ""
+     verbose -log "Starting logfile: $logfile"
+     verbose -log ""

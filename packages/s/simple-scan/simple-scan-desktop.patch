@@ -1,0 +1,13 @@
+Index: simple-scan-50.0/po/ka.po
+===================================================================
+--- simple-scan-50.0.orig/po/ka.po
++++ simple-scan-50.0/po/ka.po
+@@ -33,7 +33,7 @@ msgstr "შექმენით თქ�
+ #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+ #: data/org.gnome.SimpleScan.desktop.in:5
+ msgid "scan;scanner;flatbed;adf;simple-scan;simplescan;"
+-msgstr "scan;scanner;flatbed;adf;სკანირება;სკანერი;;simplescan;"
++msgstr "scan;scanner;flatbed;adf;სკანირება;სკანერი;simplescan;"
+
+ #: data/org.gnome.SimpleScan.gschema.xml:11
+ msgid "Device to scan from"

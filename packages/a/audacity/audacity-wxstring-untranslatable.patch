@@ -1,0 +1,449 @@
+au3 passes wxString to APIs taking (const char*) or (const wxChar*) in
+several places -- TranslatableString::untranslatable() (which only
+overloads on (const char*) and (const QString&)), sqlite3_exec()/
+sqlite3_prepare_v2()/GetValue() (which take UTF-8 SQL strings),
+SettingsVisitorBase::Define() and ExportFFmpegOptions::
+FetchCompatibleCodecList() (whose key/format parameters are
+const wxChar*), Nyquist cvstring() (which takes const char*), and a
+(const char*) cast.  That compiles only when wxWidgets still allows
+the unsafe implicit wxString conversion (wxUSE_UNSAFE_WXSTRING_CONV);
+with it disabled (e.g. openSUSE wxWidgets 3.2) it is a hard error:
+
+  error: no matching function for call to
+         'TranslatableString::untranslatable(wxString&)'
+  error: cannot convert 'wxString' to 'const char*'
+  error: invalid cast from type 'wxString' to type 'const char*'
+
+Route the TranslatableString arguments through the au3::untranslatable(
+const wxString&) bridge from WxMuseStringCompat.h -- the same idiom
+Internat.h's Verbatim(const wxString&) already uses --, convert the
+sqlite3 SQL strings explicitly with .ToUTF8().data() (the idiom
+ProjectFileIO.cpp already uses for sqlite3_open_v2), and pass setting
+keys as static_cast<const wxChar*>(key.c_str()) (the idiom NyquistBase
+already uses for the other Define() call sites).  UTF-8 round-trip
+preserves non-ASCII names on every platform.  Call sites passing
+(const char*), (const XML_Char*), char arrays, string literals, or
+wxCharBuffer-returning .mb_str()/.fn_str()/.ToUTF8() are left untouched.
+
+PATCH-FIX-UPSTREAM: upstream relies on wxUSE_UNSAFE_WXSTRING_CONV.
+
+Index: audacity-4.0.1/au3/libraries/au3-audio-io/AudioIO.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/libraries/au3-audio-io/AudioIO.cpp
++++ audacity-4.0.1/au3/libraries/au3-audio-io/AudioIO.cpp
+@@ -1228,7 +1228,7 @@
+             StartStreamCleanup();
+             // PRL: PortAudio error messages are sadly not internationalized
+             BasicUI::ShowMessageBox(
+-                TranslatableString::untranslatable(LAT1CTOWX(Pa_GetErrorText(err))));
++                au3::untranslatable(LAT1CTOWX(Pa_GetErrorText(err))));
+             return 0;
+         }
+     }
+
+Index: audacity-4.0.1/au3/libraries/au3-builtin-effects/EqualizationBase.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/libraries/au3-builtin-effects/EqualizationBase.cpp
++++ audacity-4.0.1/au3/libraries/au3-builtin-effects/EqualizationBase.cpp
+@@ -114,9 +114,9 @@
+             const wxString nameFreq = wxString::Format("f%i", point);
+             const wxString nameVal = wxString::Format("v%i", point);
+             visitor.Define(
+-                curves[0].points[point].Freq, nameFreq, 0.0, 0.0, 0.0, 0.0);
++                curves[0].points[point].Freq, static_cast<const wxChar*>(nameFreq.c_str()), 0.0, 0.0, 0.0, 0.0);
+             visitor.Define(
+-                curves[0].points[point].dB, nameVal, 0.0, 0.0, 0.0, 0.0);
++                curves[0].points[point].dB, static_cast<const wxChar*>(nameVal.c_str()), 0.0, 0.0, 0.0, 0.0);
+         }
+     }
+     return true;
+@@ -137,8 +137,8 @@
+             const wxString nameVal = wxString::Format("v%i", i);
+             double f = -1000.0;
+             double d = 0.0;
+-            visitor.Define(f, nameFreq, 0.0, -10000.0, 1000000.0, 0.0);
+-            visitor.Define(d, nameVal, 0.0, -10000.0, 10000.0, 0.0);
++            visitor.Define(f, static_cast<const wxChar*>(nameFreq.c_str()), 0.0, -10000.0, 1000000.0, 0.0);
++            visitor.Define(d, static_cast<const wxChar*>(nameVal.c_str()), 0.0, -10000.0, 10000.0, 0.0);
+             if (f <= 0.0) {
+                 break;
+             }
+
+Index: audacity-4.0.1/au3/libraries/au3-cloud-audiocom/sync/MixdownUploader.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/libraries/au3-cloud-audiocom/sync/MixdownUploader.cpp
++++ audacity-4.0.1/au3/libraries/au3-cloud-audiocom/sync/MixdownUploader.cpp
+@@ -186,7 +186,7 @@
+         BasicUI::CallAfter(
+             [this, message = error.What()]
+         {
+-            ShowExportErrorDialog(TranslatableString::untranslatable(message), TranslatableString("cloud-audiocom", "Export failed"), true);
++            ShowExportErrorDialog(au3::untranslatable(message), TranslatableString("cloud-audiocom", "Export failed"), true);
+         });
+     }
+
+Index: audacity-4.0.1/au3/libraries/au3-components/ComponentInterfaceSymbol.h
+===================================================================
+--- audacity-4.0.1.orig/au3/libraries/au3-components/ComponentInterfaceSymbol.h
++++ audacity-4.0.1/au3/libraries/au3-components/ComponentInterfaceSymbol.h
+@@ -35,12 +35,12 @@
+ 
+     // Allows implicit construction from an internal string re-used as a msgid
+     ComponentInterfaceSymbol(const wxString& internal)
+-        : mInternal{internal}, mMsgid{::TranslatableString::untranslatable(internal)}
++        : mInternal{internal}, mMsgid{au3::untranslatable(internal)}
+     {}
+ 
+     // Allows implicit construction from an internal string re-used as a msgid
+     ComponentInterfaceSymbol(const wxChar* msgid)
+-        : mInternal{msgid}, mMsgid{::TranslatableString::untranslatable(wxString(msgid))}
++        : mInternal{msgid}, mMsgid{au3::untranslatable(wxString(msgid))}
+     {}
+ 
+     // Two-argument version distinguishes internal from translatable string
+
+Index: audacity-4.0.1/au3/libraries/au3-import-export/ExportProgressUI.h
+===================================================================
+--- audacity-4.0.1.orig/au3/libraries/au3-import-export/ExportProgressUI.h
++++ audacity-4.0.1/au3/libraries/au3-import-export/ExportProgressUI.h
+@@ -42,7 +42,7 @@
+     }
+     catch (ExportException& e)
+     {
+-        BasicUI::ShowMessageBox(TranslatableString::untranslatable(e.What()));
++        BasicUI::ShowMessageBox(au3::untranslatable(e.What()));
+     }
+     catch (...)
+     {
+
+Index: audacity-4.0.1/au3/libraries/au3-module-manager/PluginManager.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/libraries/au3-module-manager/PluginManager.cpp
++++ audacity-4.0.1/au3/libraries/au3-module-manager/PluginManager.cpp
+@@ -470,7 +470,7 @@
+                     auto message = TranslatableString(
+                         "module-manager", "Enable this plug-in?\n", "plug-ins", static_cast<int>(nIds));
+                     for (const auto& name : names) {
+-                        message.Join(TranslatableString::untranslatable(name), "\n");
++                        message.Join(au3::untranslatable(name), "\n");
+                     }
+                     bool enable = (MessageBoxResult::Yes == ShowMessageBox(
+                                        message,
+
+Index: audacity-4.0.1/au3/libraries/au3-nyquist-effects/NyquistBase.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/libraries/au3-nyquist-effects/NyquistBase.cpp
++++ audacity-4.0.1/au3/libraries/au3-nyquist-effects/NyquistBase.cpp
+@@ -104,7 +104,7 @@
+     mFileName = fName;
+     // Use the file name verbatim as effect name.
+     // This is only a default name, overridden if we find a $name line:
+-    mName = TranslatableString::untranslatable(mFileName.GetName());
++    mName = au3::untranslatable(mFileName.GetName());
+     mFileModified = mFileName.GetModificationTime();
+     ParseFile();
+ 
+@@ -280,7 +280,7 @@
+                 ctrl.choices.data(), ctrl.choices.size());
+         } else if (ctrl.type == NYQ_CTRL_STRING || ctrl.type == NYQ_CTRL_FILE) {
+             visitor.Define(
+-                ctrl.valStr, ctrl.var, wxString {}, ctrl.lowStr, ctrl.highStr);
++                ctrl.valStr, static_cast<const wxChar*>(ctrl.var.c_str()), wxString {}, ctrl.lowStr, ctrl.highStr);
+             // parms.Write(ctrl.var, ctrl.valStr);
+         }
+     }
+@@ -1439,7 +1439,7 @@
+         // Assume the string has already been translated within the Lisp runtime
+         // if necessary, by one of the gettext functions defined below, before it
+         // is communicated back to C++
+-        auto msg = TranslatableString::untranslatable(NyquistToWxString(nyx_get_string()));
++        auto msg = au3::untranslatable(NyquistToWxString(nyx_get_string()));
+         if (!msg.empty()) { // Empty string may be used as a No-Op return value.
+             if (!isOk) {
+                 mLastError = msg.Translation();
+@@ -1726,7 +1726,7 @@
+                     extensions.push_back(ext);
+                 }
+             }
+-            results.push_back({ TranslatableString::untranslatable(pieces[ii]), extensions });
++            results.push_back({ au3::untranslatable(pieces[ii]), extensions });
+         }
+     }
+     return results;
+@@ -1776,7 +1776,7 @@
+         // would make the effectId differ from the URL-captured one and break
+         // plugin lookup. Display labels are translated separately at dialog
+         // time (convertControl in nyquistparameterextractorservice.cpp).
+-        return TranslatableString::untranslatable(unquoted);
++        return au3::untranslatable(unquoted);
+     } else if (
+         allowParens && len >= 2 && s[0] == wxT('(') && s[len - 1] == wxT(')')) {
+         Tokenizer tzer;
+@@ -1800,7 +1800,7 @@
+         }
+     } else {
+         // If string was not quoted, assume no translation exists
+-        return TranslatableString::untranslatable(s);
++        return au3::untranslatable(s);
+     }
+ }
+ 
+@@ -2080,17 +2080,17 @@
+         if (name.EndsWith(wxT("..."))) {
+             name = name.RemoveLast(3);
+         }
+-        mName = TranslatableString::untranslatable(name);
++        mName = au3::untranslatable(name);
+         return true;
+     }
+ 
+     if (len >= 2 && tokens[0] == wxT("action")) {
+-        mAction = TranslatableString::untranslatable(UnQuote(tokens[1]));
++        mAction = au3::untranslatable(UnQuote(tokens[1]));
+         return true;
+     }
+ 
+     if (len >= 2 && tokens[0] == wxT("info")) {
+-        mInfo = TranslatableString::untranslatable(UnQuote(tokens[1]));
++        mInfo = au3::untranslatable(UnQuote(tokens[1]));
+         return true;
+     }
+ 
+@@ -2139,18 +2139,18 @@
+     }
+ 
+     if (len >= 2 && tokens[0] == wxT("author")) {
+-        mAuthor = TranslatableString::untranslatable(UnQuote(tokens[1]));
++        mAuthor = au3::untranslatable(UnQuote(tokens[1]));
+         return true;
+     }
+ 
+     if (len >= 2 && tokens[0] == wxT("release")) {
+         // Value must be quoted if the release version string contains spaces.
+-        mReleaseVersion = TranslatableString::untranslatable(UnQuote(tokens[1]));
++        mReleaseVersion = au3::untranslatable(UnQuote(tokens[1]));
+         return true;
+     }
+ 
+     if (len >= 2 && tokens[0] == wxT("copyright")) {
+-        mCopyright = TranslatableString::untranslatable(UnQuote(tokens[1]));
++        mCopyright = au3::untranslatable(UnQuote(tokens[1]));
+         return true;
+     }
+ 
+@@ -2732,7 +2732,7 @@
+     LVAL success;
+     wxString Left = Str.BeforeLast('\n').BeforeLast('\n').ToAscii();
+     wxString Right = Str.BeforeLast('\n').AfterLast('\n').ToAscii();
+-    message = cvstring(Left);
++    message = cvstring(Left.ToUTF8());
+     success = Right.EndsWith("OK") ? s_true : nullptr;
+     dst = cons(message, success);
+     return (void*)dst;
+
+Index: audacity-4.0.1/au3/libraries/au3-project-file-io/DBConnection.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/libraries/au3-project-file-io/DBConnection.cpp
++++ audacity-4.0.1/au3/libraries/au3-project-file-io/DBConnection.cpp
+@@ -392,7 +392,7 @@
+     sql.Replace(wxT("<schema>"), schema);
+ 
+     // Set the configuration
+-    rc = sqlite3_exec(db, sql, nullptr, nullptr, nullptr);
++    rc = sqlite3_exec(db, sql.ToUTF8().data(), nullptr, nullptr, nullptr);
+     if (rc != SQLITE_OK) {
+         ADD_EXCEPTION_CONTEXT("sqlite3.rc", std::to_string(rc));
+         ADD_EXCEPTION_CONTEXT("sqlite3.context", "DBConnection::ModeConfig");
+@@ -625,7 +625,7 @@
+     char* errmsg = nullptr;
+ 
+     int rc = sqlite3_exec(mConnection.DB(),
+-                          wxT("SAVEPOINT ") + name + wxT(";"),
++                          (wxT("SAVEPOINT ") + name + wxT(";")).ToUTF8().data(),
+                           nullptr,
+                           nullptr,
+                           &errmsg);
+@@ -649,7 +649,7 @@
+     char* errmsg = nullptr;
+ 
+     int rc = sqlite3_exec(mConnection.DB(),
+-                          wxT("RELEASE ") + name + wxT(";"),
++                          (wxT("RELEASE ") + name + wxT(";")).ToUTF8().data(),
+                           nullptr,
+                           nullptr,
+                           &errmsg);
+@@ -673,7 +673,7 @@
+     char* errmsg = nullptr;
+ 
+     int rc = sqlite3_exec(mConnection.DB(),
+-                          wxT("ROLLBACK TO ") + name + wxT(";"),
++                          (wxT("ROLLBACK TO ") + name + wxT(";")).ToUTF8().data(),
+                           nullptr,
+                           nullptr,
+                           &errmsg);
+
+Index: audacity-4.0.1/au3/libraries/au3-project-file-io/ProjectFileIO.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/libraries/au3-project-file-io/ProjectFileIO.cpp
++++ audacity-4.0.1/au3/libraries/au3-project-file-io/ProjectFileIO.cpp
+@@ -839,7 +839,7 @@
+     sql.Printf(ProjectFileSchema, ProjectFileID, ProjectSchemaVersion.GetPacked());
+     sql.Replace("<schema>", schema);
+ 
+-    rc = sqlite3_exec(db, sql, nullptr, nullptr, nullptr);
++    rc = sqlite3_exec(db, sql.ToUTF8().data(), nullptr, nullptr, nullptr);
+     if (rc != SQLITE_OK) {
+         SetDBError(
+             TranslatableString("project-file-io", "Unable to initialize the project file")
+@@ -906,7 +906,7 @@
+     auto sql = wxString::Format(
+         "DELETE FROM sampleblocks WHERE %sinset(blockid);",
+         complement ? "NOT " : "");
+-    rc = sqlite3_exec(db, sql, nullptr, nullptr, nullptr);
++    rc = sqlite3_exec(db, sql.ToUTF8().data(), nullptr, nullptr, nullptr);
+     if (rc != SQLITE_OK) {
+         ADD_EXCEPTION_CONTEXT("sqlite3.query", sql.ToStdString());
+         ADD_EXCEPTION_CONTEXT("sqlite3.rc", std::to_string(rc));
+@@ -1046,7 +1046,7 @@
+     dbName.Replace("'", "''");
+     sql.Printf("ATTACH DATABASE '%s' AS outbound;", dbName.ToUTF8());
+ 
+-    rc = sqlite3_exec(db, sql, nullptr, nullptr, nullptr);
++    rc = sqlite3_exec(db, sql.ToUTF8().data(), nullptr, nullptr, nullptr);
+     if (rc != SQLITE_OK) {
+         SetDBError(
+             TranslatableString("project-file-io", "Unable to attach destination database")
+@@ -1683,7 +1683,7 @@
+             =/*: %1 is the project number, %2 is the project name.*/
+               TranslatableString("project-file-io", "[Project %1] Audacity “%2”")
+               .Format(number + 1,
+-                      name.empty() ? TranslatableString("project-file-io", "<untitled>") : TranslatableString::untranslatable((const char*)name))
++                      name.empty() ? TranslatableString("project-file-io", "<untitled>") : au3::untranslatable(name))
+               .Translation();
+     }
+     // If we are not showing numbers, then <untitled> shows as 'Audacity'.
+@@ -2011,7 +2011,7 @@
+     const wxString rowIDSql
+         =wxString::Format("SELECT ROWID FROM %s.%s WHERE id = 1;", schema, table);
+ 
+-    if (!GetValue(rowIDSql, rowID, true)) {
++    if (!GetValue(rowIDSql.ToUTF8().data(), rowID, true)) {
+         ADD_EXCEPTION_CONTEXT("sqlite3.rc", std::to_string(sqlite3_errcode(db)));
+         ADD_EXCEPTION_CONTEXT("sqlite3.context", "ProjectGileIO::WriteDoc::rowid");
+
+Index: audacity-4.0.1/au3/libraries/au3-strings/Languages.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/libraries/au3-strings/Languages.cpp
++++ audacity-4.0.1/au3/libraries/au3-strings/Languages.cpp
+@@ -210,7 +210,7 @@
+             auto str = wxString::FromUTF8(utf8Name);
+             auto code = str.BeforeFirst(' ');
+             auto name = str.AfterFirst(' ');
+-            localLanguageName[code] = TranslatableString::untranslatable(name);
++            localLanguageName[code] = au3::untranslatable(name);
+         }
+         return localLanguageName;
+     }();
+@@ -240,7 +240,7 @@
+ 
+         wxString fullCode = info->CanonicalName;
+         wxString code = fullCode.Left(2);
+-        auto name = TranslatableString::untranslatable(info->Description);
++        auto name = au3::untranslatable(info->Description);
+ 
+         // Logic: Languages codes are sometimes hierarchical, with a
+         // general language code and then a subheading.  For example,
+
+Index: audacity-4.0.1/au3/modules/import-export/mod-ffmpeg/ExportFFmpeg.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/modules/import-export/mod-ffmpeg/ExportFFmpeg.cpp
++++ audacity-4.0.1/au3/modules/import-export/mod-ffmpeg/ExportFFmpeg.cpp
+@@ -1599,7 +1599,7 @@
+                         int label = sampRates[i];
+                         if ((!lowrate || label >= lowrate) && (!highrate || label <= highrate)) {
+                             wxString name = wxString::Format(wxT("%d"), label);
+-                            choices.push_back(TranslatableString::untranslatable(name));
++                            choices.push_back(au3::untranslatable(name));
+                             if (label <= rate) {
+                                 selected = i;
+                             }
+
+Index: audacity-4.0.1/au3/modules/import-export/mod-ffmpeg/ExportFFmpegOptions.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/modules/import-export/mod-ffmpeg/ExportFFmpegOptions.cpp
++++ audacity-4.0.1/au3/modules/import-export/mod-ffmpeg/ExportFFmpegOptions.cpp
+@@ -892,7 +892,7 @@
+         }
+     }
+ 
+-    FetchCompatibleCodecList(selcdcid, wxString(format));
++    FetchCompatibleCodecList(selcdcid, static_cast<const wxChar*>(wxString(format).c_str()));
+ 
+     return;
+ }
+
+Index: audacity-4.0.1/au3/modules/import-export/mod-ffmpeg/FFmpeg.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/modules/import-export/mod-ffmpeg/FFmpeg.cpp
++++ audacity-4.0.1/au3/modules/import-export/mod-ffmpeg/FFmpeg.cpp
+@@ -63,7 +63,7 @@
+     auto ffmpeg = FFmpegFunctions::Load();
+ 
+     if (ffmpeg) {
+-        return TranslatableString::untranslatable(wxString::Format(
++        return au3::untranslatable(wxString::Format(
+                 wxT("F(%d.%d.%d),C(%d.%d.%d),U(%d.%d.%d)"),
+                 ffmpeg->AVFormatVersion.Major, ffmpeg->AVFormatVersion.Minor, ffmpeg->AVFormatVersion.Micro,
+                 ffmpeg->AVCodecVersion.Major, ffmpeg->AVCodecVersion.Minor, ffmpeg->AVCodecVersion.Micro,
+
+Index: audacity-4.0.1/au3/modules/import-export/mod-mp3/ExportMP3.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/modules/import-export/mod-mp3/ExportMP3.cpp
++++ audacity-4.0.1/au3/modules/import-export/mod-mp3/ExportMP3.cpp
+@@ -1738,7 +1738,7 @@
+ #ifndef DISABLE_DYNAMIC_LOADING_LAME
+     if (exporter.LoadEncoderLibrary(prompt ? MP3Exporter::Yes : MP3Exporter::No)) {
+ #endif // DISABLE_DYNAMIC_LOADING_LAME
+-    versionString = TranslatableString::untranslatable(exporter.GetLibraryVersion());
++    versionString = au3::untranslatable(exporter.GetLibraryVersion());
+ #ifdef MP3_EXPORT_BUILT_IN
+     versionString.Join(TranslatableString("import-export", "(Built-in)"), " ");
+ #endif
+
+Index: audacity-4.0.1/au3/modules/import-export/mod-pcm/ExportPCM.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/modules/import-export/mod-pcm/ExportPCM.cpp
++++ audacity-4.0.1/au3/modules/import-export/mod-pcm/ExportPCM.cpp
+@@ -110,7 +110,7 @@
+         if (sf_format_check(&info)) {
+             // Store subtype and name
+             values.emplace_back(sub);
+-            names.push_back(TranslatableString::untranslatable(sf_encoding_index_name(i)));
++            names.push_back(au3::untranslatable(sf_encoding_index_name(i)));
+         }
+     }
+ }
+@@ -213,7 +213,7 @@
+         default:
+         {
+             typeOption.values.emplace_back(type);
+-            typeOption.names.push_back(TranslatableString::untranslatable(sf_header_index_name(i)));
++            typeOption.names.push_back(au3::untranslatable(sf_header_index_name(i)));
+             ExportOption encodingOption {
+                 type,
+                 TranslatableString("import-export", "Encoding"),
+
+Index: audacity-4.0.1/au3/modules/import-export/mod-pcm/ImportPCM.cpp
+===================================================================
+--- audacity-4.0.1.orig/au3/modules/import-export/mod-pcm/ImportPCM.cpp
++++ audacity-4.0.1/au3/modules/import-export/mod-pcm/ImportPCM.cpp
+@@ -234,7 +234,7 @@
+         );
+ 
+     auto untranslated = SFCall<wxString>(sf_header_name, mInfo.format);
+-    return TranslatableString::untranslatable(untranslated);
++    return au3::untranslatable(untranslated);
+ }
+ 
+ double PCMImportFileHandle::GetDuration() const
+

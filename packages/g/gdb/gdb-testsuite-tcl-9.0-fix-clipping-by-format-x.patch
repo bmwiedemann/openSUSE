@@ -1,0 +1,107 @@
+From 0d80f970b65db784bacfee4232de6ac5e29c955b Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 20 Mar 2026 10:13:27 +0100
+Subject: [PATCH 7/9] [gdb/testsuite, Tcl 9.0] Fix clipping by format %x
+
+With test-case gdb.fortran/logical.exp and Tcl 9.0, I ran into:
+...
+(gdb) set *((character *) 0x7fffffffd8ec) = 0xff^M
+(gdb) PASS: $exp: var=l: byte 0: set contents of byte at offset 0
+p l^M
+$8 = .TRUE.^M
+(gdb) PASS: gdb.fortran/logical.exp: var=l: byte 0: p l
+set *((character *) 0xffffd8ed) = 0xff^M
+Cannot access memory at address 0xffffd8ed^M
+(gdb) FAIL: $exp: var=l: byte 1: set contents of byte at offset 1
+...
+
+So there are two writes:
+- for the first write at offset 0, we use address:  0x7fffffffd8ec
+- for the second write at offset 1, we use address:     0xffffd8ed.
+
+The address got clipped by using %x with command format:
+...
+	    incr addr
+	    set addr [format "0x%x" $addr]
+...
+
+Fix this by using "%lx" instead.
+
+Likewise in two other test-cases.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33948
+---
+ gdb/testsuite/gdb.arch/amd64-disp-step-self-call.exp  | 4 ++--
+ gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp | 6 +++---
+ gdb/testsuite/gdb.fortran/logical.exp                 | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.arch/amd64-disp-step-self-call.exp b/gdb/testsuite/gdb.arch/amd64-disp-step-self-call.exp
+index 61ce4bebe2d..71c4abfed03 100644
+--- a/gdb/testsuite/gdb.arch/amd64-disp-step-self-call.exp
++++ b/gdb/testsuite/gdb.arch/amd64-disp-step-self-call.exp
+@@ -63,7 +63,7 @@ set sp [expr $sp - 0x8]
+ gdb_test_no_output "set {unsigned long long} $sp = 0" \
+     "clear stack slot"
+ set zero_val 0x[format %016x 0]
+-gdb_test "x/1gx 0x[format %x $sp]" "$hex:\\s+${zero_val}" \
++gdb_test "x/1gx 0x[format %lx $sp]" "$hex:\\s+${zero_val}" \
+     "check return address slot was set to zero"
+ 
+ # Single step.
+@@ -78,5 +78,5 @@ gdb_assert {[expr $sp == $new_sp]} \
+ 
+ # Check the contents of the stack were updated to the expected value.
+ set next_insn_addr 0x[format %016x $next_insn_addr]
+-gdb_test "x/1gx 0x[format %x $sp]" "$hex:\\s+$next_insn_addr" \
++gdb_test "x/1gx 0x[format %lx $sp]" "$hex:\\s+$next_insn_addr" \
+     "check return address was updated correctly"
+diff --git a/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp b/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp
+index 6519575cf23..f27f648005d 100644
+--- a/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp
++++ b/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp
+@@ -104,7 +104,7 @@ gdb_test_multiple "info proc mappings" "" {
+ 
+ 	if {[expr $ptr_address >= $low_addr] && [expr $ptr_address < $high_addr]} {
+ 	    set mapping_offset [expr $ptr_address - $low_addr]
+-	    set ptr_offset [format 0x%x [expr $file_offset + $mapping_offset]]
++	    set ptr_offset [format 0x%lx [expr $file_offset + $mapping_offset]]
+ 	}
+ 
+ 	exp_continue
+@@ -178,7 +178,7 @@ gdb_continue_to_breakpoint "run to breakpoint"
+ 
+ set library_base_address \
+     [get_hexadecimal_valueof "library_base_address" "unknown"]
+-set ptr_address [format 0x%x [expr $library_base_address + $ptr_offset]]
++set ptr_address [format 0x%lx [expr {$library_base_address + $ptr_offset}]]
+ 
+ set ptr_value [read_ptr_value]
+ gdb_assert { $ptr_value == $ptr_expected_value } \
+@@ -278,7 +278,7 @@ load_core_file "load core file"
+ 
+ set library_base_address [get_hexadecimal_valueof "library_base_address" \
+ 			      "unknown" "get library_base_address in core-file"]
+-set ptr_address [format 0x%x [expr $library_base_address + $ptr_offset]]
++set ptr_address [format 0x%lx [expr {$library_base_address + $ptr_offset}]]
+ 
+ set ptr_value [read_ptr_value]
+ gdb_assert { $ptr_value == $ptr_expected_value } \
+diff --git a/gdb/testsuite/gdb.fortran/logical.exp b/gdb/testsuite/gdb.fortran/logical.exp
+index 6a9cf1488c7..80a742b6a77 100644
+--- a/gdb/testsuite/gdb.fortran/logical.exp
++++ b/gdb/testsuite/gdb.fortran/logical.exp
+@@ -50,7 +50,7 @@ foreach_with_prefix var { l l1 l2 l4 l8 } {
+ 		"set contents of byte at offset $i"
+ 	    gdb_test "p l" " = \\.TRUE\\."
+ 	    incr addr
+-	    set addr [format "0x%x" $addr]
++	    set addr [format "0x%lx" $addr]
+ 	}
+     }
+ }
+-- 
+2.51.0
+

@@ -1,0 +1,68 @@
+cabal-version:       2.2
+name:                hslua-module-doclayout
+version:             1.2.1.1
+x-revision: 1
+synopsis:            Lua module wrapping Text.DocLayout.
+description:         Lua module wrapping @Text.DocLayout@.
+homepage:            https://github.com/hslua/hslua-module-doclayout
+bug-reports:         https://github.com/hslua/hslua-module-doclayout/issues
+license:             MIT
+license-file:        LICENSE
+author:              Albert Krewinkel
+maintainer:          Albert Krewinkel <albert@zeitkraut.de>
+copyright:           © 2020-2026 Albert Krewinkel
+category:            Foreign
+build-type:          Simple
+extra-doc-files:     README.md
+                     CHANGELOG.md
+extra-source-files:  test/test-doclayout.lua
+tested-with:         GHC == 9.6
+                   , GHC == 9.8
+
+source-repository head
+  type:                git
+  location:            https://github.com/hslua/hslua-module-doclayout.git
+
+common common-options
+  build-depends:       base              >= 4.11   && < 5
+                     , doclayout         >= 0.5    && < 0.7
+                     , hslua             >= 2.5    && < 2.6
+                     , text              >= 1.2    && < 2.2
+
+  default-language:    Haskell2010
+  other-extensions:    OverloadedStrings
+                     , TypeApplications
+  ghc-options:         -Wall
+                       -Wcompat
+                       -Widentities
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+  if impl(ghc >= 8.0)
+    ghc-options:       -Wredundant-constraints
+  if impl(ghc >= 8.2)
+    ghc-options:       -fhide-source-paths
+  if impl(ghc >= 8.4)
+    ghc-options:       -Wmissing-export-lists
+                       -Wpartial-fields
+  if impl(ghc >= 8.8)
+    ghc-options:       -Wmissing-deriving-strategies
+
+library
+  import:              common-options
+  hs-source-dirs:      src
+  exposed-modules:     HsLua.Module.DocLayout
+  other-extensions:    CPP
+                     , FlexibleInstances
+                     , LambdaCase
+
+test-suite hslua-module-doclayout-test
+  import:              common-options
+  build-depends:       hslua-module-doclayout
+                     , tasty
+                     , tasty-hunit
+                     , tasty-lua               >= 1.1 && < 1.2
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             test-hslua-module-doclayout.hs
+  build-depends:       hslua-module-doclayout
+  ghc-options:         -threaded

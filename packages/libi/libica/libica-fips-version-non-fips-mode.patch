@@ -1,0 +1,111 @@
+From ef01fa7cd72dff41934e2c28312e17916e015f07 Mon Sep 17 00:00:00 2001
+From: Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+Date: Mon, 16 Nov 2026 07:31:27 +0000
+Subject: [PATCH] fips: indicate non-FIPS mode in version string
+
+Under FIPS 140-3, CMVP requires that the operator can determine directly
+from the module's name and version service whether the module is running
+in the approved mode and validated configuration.
+
+When FIPS mode is inactive, append " (non-FIPS mode)" to the build version
+string returned by ica_get_build_version() and displayed by icainfo -v.
+When FIPS mode is active, return the approved FIPS build version string.
+
+Signed-off-by: Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+---
+ src/ica_api.c           | 10 ++++++++++
+ src/icainfo.c           |  6 ++++--
+ test/get_version_test.c | 26 ++++++++++++++++++++++++++
+ 3 files changed, 40 insertions(+), 2 deletions(-)
+
+diff --git a/src/ica_api.c b/src/ica_api.c
+index 87a9496..a9bf25c 100644
+--- a/src/ica_api.c
++++ b/src/ica_api.c
+@@ -4517,6 +4517,16 @@ int ica_get_hw_info(libica_hw_info *hw_info)
+ 
+ const char* ica_get_build_version(void)
+ {
++#ifdef ICA_FIPS
++	if (!(ica_fips_status() & ICA_FIPS_MODE)) {
++#ifndef DEFAULT_BUILD_VERSION
++#define DEFAULT_BUILD_VERSION "UNSPECIFIED"
++#endif
++		if (strcmp(BUILD_VERSION, DEFAULT_BUILD_VERSION) == 0)
++			return BUILD_VERSION;
++		return BUILD_VERSION " (non-FIPS mode)";
++	}
++#endif
+ 	return BUILD_VERSION;
+ }
+ 
+diff --git a/src/icainfo.c b/src/icainfo.c
+index 2f6af87..bc4a79d 100644
+--- a/src/icainfo.c
++++ b/src/icainfo.c
+@@ -419,14 +419,16 @@ void print_ec_curves(void)
+ 
+ void print_version(void)
+ {
++	const char *build_version = ica_get_build_version();
++
+ #if defined(NO_SW_FALLBACKS) && defined(NO_CPACF)
+ 	printf(CMD_NAME ": libica-cex version " VERSION "\n" COPYRIGHT "\n");
+ #else
+ 	printf(CMD_NAME ": libica version " VERSION "\n" COPYRIGHT "\n");
+ #endif
+ 
+-	if (strcmp(BUILD_VERSION, DEFAULT_BUILD_VERSION) != 0)
+-		printf("build: " BUILD_VERSION "\n");
++	if (build_version != NULL && strcmp(build_version, DEFAULT_BUILD_VERSION) != 0)
++		printf("build: %s\n", build_version);
+ }
+ 
+ void print_help(char *cmd)
+diff --git a/test/get_version_test.c b/test/get_version_test.c
+index dc4cb3f..be9a8bf 100644
+--- a/test/get_version_test.c
++++ b/test/get_version_test.c
+@@ -22,6 +22,7 @@
+ int main(int argc, char **argv)
+ {
+ 	libica_version_info version_info;
++	const char *build_version;
+ 	int rc;
+ 	int failed = 0;
+ 
+@@ -50,6 +51,31 @@ int main(int argc, char **argv)
+ 		failed++;
+ 	}
+ 
++	V_(printf("Testing libica API ica_get_build_version().\n"));
++	build_version = ica_get_build_version();
++	if (build_version == NULL) {
++		printf("Test failed: ica_get_build_version() returned NULL\n");
++		failed++;
++	} else {
++		V_(printf("Build version: %s\n", build_version));
++#ifdef ICA_FIPS
++		if (ica_fips_status() & ICA_FIPS_MODE) {
++			if (strstr(build_version, "(non-FIPS mode)") != NULL) {
++				printf("Test failed: FIPS mode active but build version indicates non-FIPS: %s\n",
++				       build_version);
++				failed++;
++			}
++		} else {
++			if (strcmp(build_version, "UNSPECIFIED") != 0 &&
++			    strstr(build_version, "(non-FIPS mode)") == NULL) {
++				printf("Test failed: non-FIPS mode active but build version missing notice: %s\n",
++				       build_version);
++				failed++;
++			}
++		}
++#endif
++	}
++
+ 	if (failed) {
+ 		printf("Failed ica_get_version tests: %d\n", failed);
+ 		return TEST_FAIL;
+-- 
+2.51.0
+

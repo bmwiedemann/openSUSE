@@ -1,0 +1,23 @@
+--- a/tools/link.py
++++ b/tools/link.py
+@@ -2580,6 +2580,11 @@
+   if settings.DEBUG_LEVEL >= 2:
+     return
+ 
++  minifier = shared.get_npm_cmd('html-minifier-terser', missing_ok=True)
++  if not minifier:
++    logger.debug('html-minifier-terser is not installed, skipping HTML minification')
++    return
++
+   opts = []
+   # -g1 and greater retain whitespace and comments in source
+   if settings.DEBUG_LEVEL == 0:
+@@ -2614,7 +2619,7 @@
+ 
+   logger.debug(f'minifying HTML file {filename}')
+   size_before = os.path.getsize(filename)
+-  shared.check_call([*shared.get_npm_cmd('html-minifier-terser'), filename, '-o', filename, *opts], env=shared.env_with_node_in_path())
++  shared.check_call([*minifier, filename, '-o', filename, *opts], env=shared.env_with_node_in_path())
+ 
+   # HTML minifier will turn all null bytes into an escaped two-byte sequence "\0". Turn those back to single byte sequences.
+   def unescape_nulls(filename):

@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Mon Nov 16 20:32:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.3:
+  * 0.4.1: custom model-path arguments with provenance, Intel
+    WDDM activity, NVIDIA TCC-mode GPUs on Windows, Foundry Local
+    models on Snapdragon, Qualcomm shared RAM, Windows driver
+    version from PnP and integrated-GPU memory fixes.
+  * 0.4.2: vLLM request and KV-cache gauges plus llama-server
+    KV-cache and concurrency from /metrics, AMD GPUs in WSL via
+    ROCm, record summary and offline replay, Xe fdinfo memory
+    and GT frequency/throttle readings, integer percents.
+  * 0.4.3: Windows Intel/Qualcomm device line shows GPU percent
+    with one reason instead of all-N/A; JSON unchanged.
+  * Handy Windows path backslash fix for Python 3.11.
+- Add linkify-it-py to Requires: help screen ('?') crashed with
+  ModuleNotFoundError without it (boo#1290249).
+
+-------------------------------------------------------------------
+Wed Nov 11 12:58:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.0:
+  * Intel whole-GPU load, video load and power readings
+    (root only).
+  * New Huawei Ascend NPU backend (310P) on Linux.
+  * Fixed vLLM topology flag values being evaluated before skipping
+    API discovery.
+
+-------------------------------------------------------------------
+Tue Nov 10 07:28:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.5:
+  * Linux Intel GPU (i915/xe) support is now upstream, including
+    GT clock, throttle status, private iGPU memory accounting and
+    a CPU-package temperature fallback: drop
+    gputaskman-intel-i915-xe.patch.
+  * New system RAM/CPU panel with per-process RAM/CPU columns and
+    a 'gputaskman record' command for append-only JSON snapshots.
+  * More reliable identity: exact-LUID Windows ROOT display
+    adapter names, vLLM model IDs with parent API provenance, and
+    snapshot diffs rejecting different adapters and reused PIDs.
+  * Safer model inspection: deduplicated GGUF paths, null-safe
+    Ollama manifests, authenticated local llama-server probes.
+  * WSL2 NVML discovery in Nix, no NVML sweep on non-NVIDIA GPUs.
+
+-------------------------------------------------------------------
+Mon Nov  9 10:20:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add Intel i915/xe support on Linux, backported from upstream
+  (gh#shanselman/gputaskman#13):
+  new gputaskman-intel-i915-xe.patch.
+
+-------------------------------------------------------------------
+Mon Nov  9 08:51:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package 0.3.4
+

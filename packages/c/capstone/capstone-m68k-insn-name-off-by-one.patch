@@ -1,0 +1,13 @@
+# PATCH-FIX-UPSTREAM capstone-m68k-insn-name-off-by-one.patch -- https://github.com/capstone-engine/capstone/commit/7441aee2280516042561035ebca99a600c66d57d
+# CVE-2026-49282: M68K_insn_name() still read one entry past the table
+--- a/arch/M68K/M68KInstPrinter.c
++++ b/arch/M68K/M68KInstPrinter.c
+@@ -362,7 +362,7 @@ const char* M68K_insn_name(csh handle, unsigned int id)
+ #ifdef CAPSTONE_DIET
+ 	return NULL;
+ #else
+-	if (id > ARR_SIZE(s_instruction_names)) {
++	if (id >= ARR_SIZE(s_instruction_names)) {
+ 		return NULL;
+ 	}
+ 	return s_instruction_names[id];

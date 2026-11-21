@@ -1,0 +1,22 @@
+Find libiio 1.x headers in their new location too.
+
+libiio 1.0 moved the public headers from %{_includedir}/iio.h to
+%{_includedir}/iio/iio.h. The finder's PATH_SUFFIXES only knew the
+Homebrew "libiio" layout, so with the system sysroot it looked for
+/usr/include/iio.h (gone) and never /usr/include/iio/iio.h, failing
+the configure with "missing LibIIO_INCLUDE_DIR" even though the
+right libiio was present. Searching the "iio" suffix as well finds
+either layout; the include directory then points at the headers and
+the in-tree "#include <iio.h>" keeps working unchanged.
+
+--- a/FindLibIIO.cmake
++++ b/FindLibIIO.cmake
+@@ -27,7 +27,7 @@
+           /opt/local/Library/Frameworks
+           ${HOMEBREW_PREFIX}/Cellar/libiio/${PC_LibIIO_VERSION}/Frameworks
+           ${HOMEBREW_PREFIX}/Cellar/libiio/${PC_LibIIO_VERSION}
+-          PATH_SUFFIXES libiio)
++          PATH_SUFFIXES libiio iio)
+ 
+ find_library(LibIIO_LIBRARY NAMES iio libiio
+              HINTS ${PC_LibIIO_LIBDIR} ${PC_LibIIO_LIBRARY_DIRS}

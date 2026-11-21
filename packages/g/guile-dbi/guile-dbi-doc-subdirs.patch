@@ -1,0 +1,32 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Date: Tue, 10 Nov 2026 19:00:00 +0000
+Subject: [PATCH] Fix automake conditional append swallowed as recipe
+
+Upstream indents the conditional SUBDIRS append with a TAB:
+
+  if HAVE_MAKEINFO
+  	SUBDIRS += doc
+  endif
+
+automake does not parse TAB-indented assignments, so it passes the
+line through literally as "@HAVE_MAKEINFO_TRUE@<TAB>SUBDIRS += doc".
+In the generated Makefile that line lands right after the
+".PRECIOUS: Makefile" rule, where GNU make reads the TAB-prefixed
+line as that rule's recipe instead of a variable append.  The doc
+subdirectory (the user manual) is then silently never built nor
+installed even when makeinfo is present.
+
+Use a space-indented append, which automake handles via its
+conditional mechanism.
+
+--- a/guile-dbi/Makefile.am
++++ b/guile-dbi/Makefile.am
+@@ -24,7 +24,7 @@
+ 
+ SUBDIRS = libltdl src include
+ if HAVE_MAKEINFO
+-	SUBDIRS += doc
++SUBDIRS += doc
+ endif
+ 
+ MAKEFLAGS = --no-print-directory

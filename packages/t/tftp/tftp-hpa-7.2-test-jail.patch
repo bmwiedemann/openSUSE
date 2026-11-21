@@ -1,0 +1,65 @@
+From eec7538a86802ee25baec7577ecdce170d3c4e74 Mon Sep 17 00:00:00 2001
+From: David Anes <david.anes@suse.com>
+Date: Wed, 4 Nov 2026 17:09:11 +0100
+Subject: [PATCH] Support tftpd builds without --jail in the test suite
+
+The --jail option needs openat2() (glibc >= 2.34, kernel >= 5.6).
+On systems where tftpd is built without --jail support, the test
+suite now drops the option and uses absolute request paths, which
+the server validate mode requires.
+---
+ tests/test-tftp.sh | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test-tftp.sh b/tests/test-tftp.sh
+index 9b32964..c260197 100755
+--- a/tests/test-tftp.sh
++++ b/tests/test-tftp.sh
+@@ -18,6 +18,17 @@ ANYADDR="${ANYADDR:-0}"
+ TSIZE="${TSIZE:-1}"
+ TESTROOT=$(mktemp -d)
+ SERVER_DIR="$TESTROOT"
++
++# --jail needs openat2() (glibc >= 2.34, kernel >= 5.6). If this tftpd
++# build does not support it, run the server without --jail. The server
++# then validates the requests and requires absolute paths under the
++# served directory.
++JAIL_OPT=--jail
++REQ_PREFIX=
++if $TFTPD --jail 2>&1 | grep -q "not supported by this OS"; then
++    JAIL_OPT=
++    REQ_PREFIX="$SERVER_DIR/"
++fi
+ FILES_DIR="$TESTROOT/files"
+ DL_DIR="$TESTROOT/download"
+ UL_DIR="$TESTROOT/upload"
+@@ -122,7 +133,7 @@ start_server() {
+ 			      -e "s/([^[:space:]]+)/-a \\1:$PORT/g")
+ 	TFTPD_CMD+=($addrs)
+     fi
+-    TFTPD_CMD+=(-c --jail "$SERVER_DIR")
++    TFTPD_CMD+=(-c $JAIL_OPT "$SERVER_DIR")
+     print_info "${TFTPD_CMD[*]}"
+     "${TFTPD_CMD[@]}" &
+     TFTPD_PID=$!
+@@ -223,7 +234,7 @@ test_download() {
+     # Use non-interactive tftp with get command
+     local -a TFTP_CMD=("$TFTP" "${tftp_options[@]}" "-m" $mode
+ 		       "$LOCALHOST" "$PORT"
+-		       -c get files/"$filename" "$download_file")
++		       -c get ${REQ_PREFIX}files/"$filename" "$download_file")
+     print_info "${TFTP_CMD[*]}"
+     rm -f "$logfile"
+     local start=$(date -u +%s.%N)
+@@ -278,7 +289,7 @@ test_upload() {
+     # The server will write it to SERVER_DIR
+     local -a TFTP_CMD=("$TFTP" "${tftp_options[@]}" "-m" "$mode"
+ 		       "$LOCALHOST" "$PORT"
+-		       -c put "$FILES_DIR/$filename" upload/"$filename")
++		       -c put "$FILES_DIR/$filename" ${REQ_PREFIX}upload/"$filename")
+     print_info "${TFTP_CMD[*]}"
+     rm -f "$logfile"
+     local start=$(date -u +%s.%N)
+-- 
+2.56.0
+

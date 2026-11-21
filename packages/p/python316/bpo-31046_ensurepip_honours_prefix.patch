@@ -1,0 +1,159 @@
+From 5754521af1d51aa8e445cba07a093bbc0c88596d Mon Sep 17 00:00:00 2001
+From: Zackery Spytz <zspytz@gmail.com>
+Date: Mon, 16 Dec 2019 18:24:08 -0700
+Subject: [PATCH] bpo-31046: ensurepip does not honour the value of $(prefix)
+
+Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
+---
+ Doc/library/ensurepip.rst  |   10 ++++++++--
+ Lib/ensurepip/__init__.py  |   18 +++++++++++++-----
+ Lib/test/test_ensurepip.py |   11 +++++++++++
+ Makefile.pre.in            |    4 ++--
+ 4 files changed, 34 insertions(+), 9 deletions(-)
+ create mode 100644 Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
+
+Index: Python-3.16.0a2/Doc/library/ensurepip.rst
+===================================================================
+--- Python-3.16.0a2.orig/Doc/library/ensurepip.rst	2026-11-10 17:57:17.000000000 +0100
++++ Python-3.16.0a2/Doc/library/ensurepip.rst	2026-11-11 00:21:13.825036650 +0100
+@@ -65,7 +65,11 @@
+ By default, ``pip`` is installed into the current virtual environment
+ (if one is active) or into the system site packages (if there is no
+ active virtual environment). The installation location can be controlled
+-through two additional command line options:
++through some additional command line options:
++
++.. option:: --prefix <dir>
++
++   Installs ``pip`` using the given directory prefix.
+ 
+ .. option:: --root <dir>
+ 
+@@ -106,7 +110,7 @@
+    Returns a string specifying the available version of pip that will be
+    installed when bootstrapping an environment.
+ 
+-.. function:: bootstrap(root=None, upgrade=False, user=False, \
++.. function:: bootstrap(root=None, prefix=None, upgrade=False, user=False, \
+                         altinstall=False, default_pip=False, \
+                         verbosity=0)
+ 
+@@ -116,6 +120,8 @@
+    If *root* is ``None``, then installation uses the default install location
+    for the current environment.
+ 
++   *prefix* specifies the directory prefix to use when installing.
++
+    *upgrade* indicates whether or not to upgrade an existing installation
+    of an earlier version of ``pip`` to the available version.
+ 
+Index: Python-3.16.0a2/Lib/ensurepip/__init__.py
+===================================================================
+--- Python-3.16.0a2.orig/Lib/ensurepip/__init__.py	2026-11-11 00:17:09.124296872 +0100
++++ Python-3.16.0a2/Lib/ensurepip/__init__.py	2026-11-11 00:21:13.825527265 +0100
+@@ -107,27 +107,27 @@
+     os.environ['PIP_CONFIG_FILE'] = os.devnull
+ 
+ 
+-def bootstrap(*, root=None, upgrade=False, user=False,
++def bootstrap(*, root=None, prefix=None, upgrade=False, user=False,
+               altinstall=False, default_pip=False,
+               verbosity=0):
+     """
+     Bootstrap pip into the current Python installation (or the given root
+-    directory).
++    and directory prefix).
+ 
+     Note that calling this function will alter both sys.path and os.environ.
+     """
+     # Discard the return value
+-    _bootstrap(root=root, upgrade=upgrade, user=user,
++    _bootstrap(root=root, prefix=prefix, upgrade=upgrade, user=user,
+                altinstall=altinstall, default_pip=default_pip,
+                verbosity=verbosity)
+ 
+ 
+-def _bootstrap(*, root=None, upgrade=False, user=False,
++def _bootstrap(*, root=None, prefix=None, upgrade=False, user=False,
+               altinstall=False, default_pip=False,
+               verbosity=0):
+     """
+     Bootstrap pip into the current Python installation (or the given root
+-    directory). Returns pip command status code.
++    and directory prefix). Returns pip command status code.
+ 
+     Note that calling this function will alter both sys.path and os.environ.
+     """
+@@ -172,6 +172,8 @@
+         args = ["install", "--no-cache-dir", "--no-index", "--find-links", tmpdir]
+         if root:
+             args += ["--root", root]
++        if prefix:
++            args += ["--prefix", prefix]
+         if upgrade:
+             args += ["--upgrade"]
+         if user:
+@@ -250,6 +252,11 @@
+         help="Install everything relative to this alternate root directory.",
+     )
+     parser.add_argument(
++        "--prefix",
++        default=None,
++        help="Install everything using this prefix.",
++    )
++    parser.add_argument(
+         "--altinstall",
+         action="store_true",
+         default=False,
+@@ -268,6 +275,7 @@
+ 
+     return _bootstrap(
+         root=args.root,
++        prefix=args.prefix,
+         upgrade=args.upgrade,
+         user=args.user,
+         verbosity=args.verbosity,
+Index: Python-3.16.0a2/Lib/test/test_ensurepip.py
+===================================================================
+--- Python-3.16.0a2.orig/Lib/test/test_ensurepip.py	2026-11-11 00:17:15.370775147 +0100
++++ Python-3.16.0a2/Lib/test/test_ensurepip.py	2026-11-11 00:21:13.825803296 +0100
+@@ -121,6 +121,17 @@
+             unittest.mock.ANY,
+         )
+ 
++    def test_bootstrapping_with_prefix(self):
++        ensurepip.bootstrap(prefix="/foo/bar/")
++        self.run_pip.assert_called_once_with(
++            [
++                "install", "--no-cache-dir", "--no-index", "--find-links",
++                unittest.mock.ANY, "--prefix", "/foo/bar/",
++                "pip",
++            ],
++            unittest.mock.ANY,
++        )
++
+     def test_bootstrapping_with_user(self):
+         ensurepip.bootstrap(user=True)
+ 
+Index: Python-3.16.0a2/Makefile.pre.in
+===================================================================
+--- Python-3.16.0a2.orig/Makefile.pre.in	2026-11-11 00:20:36.190676708 +0100
++++ Python-3.16.0a2/Makefile.pre.in	2026-11-11 00:22:24.880821676 +0100
+@@ -2446,7 +2446,7 @@
+ 			install|*) ensurepip="" ;; \
+ 		esac; \
+ 		$(RUNSHARED_FOR_BUILD) $(PYTHON_FOR_BUILD) -m ensurepip \
+-			$$ensurepip --root=$(DESTDIR)/ ; \
++			$$ensurepip --root=$(DESTDIR)/ --prefix=$(prefix) ; \
+ 	fi
+ 
+ .PHONY: altinstall
+@@ -2457,7 +2457,7 @@
+ 			install|*) ensurepip="--altinstall" ;; \
+ 		esac; \
+ 		$(RUNSHARED_FOR_BUILD) $(PYTHON_FOR_BUILD) -m ensurepip \
+-			$$ensurepip --root=$(DESTDIR)/ ; \
++			$$ensurepip --root=$(DESTDIR)/ --prefix=$(prefix) ; \
+ 	fi
+ 
+ .PHONY: commoninstall

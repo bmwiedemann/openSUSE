@@ -1,0 +1,18 @@
+--- /dev/null	2026-10-28 11:27:30.444062691 +0100
++++ b/hip-build-compat.h	2026-11-18 08:23:16.248505691 +0100
+@@ -0,0 +1,15 @@
++#ifndef HIP_BUILD_COMPAT_H
++#define HIP_BUILD_COMPAT_H
++
++#if !defined(__HIP_PLATFORM_AMD__) && !defined(__HIP_PLATFORM_NVIDIA__)
++#define __HIP_PLATFORM_AMD__ 1
++#endif
++
++#include <cstdint>
++#include <cstddef>
++#include <cstdlib>
++#include <cstring>
++#include <limits>
++
++#endif
++

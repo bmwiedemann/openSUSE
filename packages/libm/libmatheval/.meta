@@ -1,0 +1,10 @@
+<package name="libmatheval" project="openSUSE:Factory">
+  <title>Library for evaluating mathematical expressions</title>
+  <description>GNU libmatheval is a library (callable from C and Fortran) to parse and
+evaluate symbolic expressions input as text. It supports expressions in any
+number of variables of arbitrary names, decimal and symbolic constants, basic
+unary and binary operators, and elementary mathematical functions. In addition
+to parsing and evaluation, libmatheval can also compute symbolic derivatives
+and output expressions to strings.</description>
+  <url>https://www.gnu.org/software/libmatheval/</url>
+</package>

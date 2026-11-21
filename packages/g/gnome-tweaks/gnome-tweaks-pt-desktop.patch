@@ -1,0 +1,13 @@
+Index: gnome-tweaks-49.0/po/pt.po
+===================================================================
+--- gnome-tweaks-49.0.orig/po/pt.po
++++ gnome-tweaks-49.0/po/pt.po
+@@ -60,7 +60,7 @@ msgstr "Ajustes"
+ #: data/org.gnome.tweaks.desktop.in:14
+ msgid "Settings;Advanced;Preferences;Fonts;Theme;XKB;Keyboard;Typing;Startup;"
+ msgstr ""
+-"Definições;Avançadas;Preferências;;Letras;Fontes;Tema;XKB;Teclado;Escrita;"
++"Definições;Avançadas;Preferências;Letras;Fontes;Tema;XKB;Teclado;Escrita;"
+ "Arranque;"
+
+ #: data/shell.ui:6

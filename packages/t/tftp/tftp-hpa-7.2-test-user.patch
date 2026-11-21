@@ -1,0 +1,21 @@
+diff --git a/tests/test-tftp.sh b/tests/test-tftp.sh
+index 89df8fe..9b32964 100755
+--- a/tests/test-tftp.sh
++++ b/tests/test-tftp.sh
+@@ -24,6 +24,7 @@ UL_DIR="$TESTROOT/upload"
+ PCAP_LOG="$SCRIPT_DIR/test-tftp.pcap.gz"
+ TFTP_TEST_WINSIZES="${TFTP_TEST_WINSIZES:-1 4 64 256}"
+ TFTP_TEST_BLKSIZES="${TFTP_TEST_BLKSIZES:-mtu mtu-16 512 1468 9001 65464 199}"
++TFTP_TEST_USER="${TFTP_TEST_USER:-nobody}"
+ 
+ trap 'exit 127' INT TERM
+ trap 'cleanup' EXIT
+@@ -110,7 +111,7 @@ start_server() {
+ 	TFTPD_CMD+=(strace -o "$STRACE_LOG" -f)
+     fi
+ 
+-    TFTPD_CMD+=("$TFTPD" --stderr -vv -L -p --port-range $PORTRANGE)
++    TFTPD_CMD+=("$TFTPD" --stderr -vv -L -p --port-range $PORTRANGE -u "$TFTP_TEST_USER")
+     if [ $ANYADDR -ne 0 ]; then
+ 	if [ $PORT -ne 69 ]; then
+ 	    TFTPD_CMD+=(-a :$PORT)

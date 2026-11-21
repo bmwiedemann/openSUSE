@@ -1,0 +1,16 @@
+Index: ImageMagick-7.1.2-35/coders/tiff.c
+===================================================================
+--- ImageMagick-7.1.2-35.orig/coders/tiff.c
++++ ImageMagick-7.1.2-35/coders/tiff.c
+@@ -4200,7 +4200,11 @@ static MagickBooleanType WriteTIFFImage(
+       }
+     if (compress_tag == COMPRESSION_CCITTFAX4)
+       (void) TIFFSetField(tiff,TIFFTAG_ROWSPERSTRIP,(uint32) image->rows);
++#if defined(WORDS_BIGENDIAN)
++    (void) SetQuantumEndian(image,quantum_info,MSBEndian);
++#else
+     (void) SetQuantumEndian(image,quantum_info,LSBEndian);
++#endif
+     pixels=(unsigned char *) GetQuantumPixels(quantum_info);
+     tiff_info.scanline=(unsigned char *) GetQuantumPixels(quantum_info);
+     switch (photometric)

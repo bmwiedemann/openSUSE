@@ -1,0 +1,19 @@
+commit 9917d7b865ecf3c3101aed68c70c9f20a650f809
+Author: Robert Frohl <rfrohl@suse.com>
+Date:   Mon Nov 2 09:52:53 2026 +0100
+
+    Adjust for drm_fb_helper_restore_fbdev_mode_unlocked() backport to 6.18.55
+
+diff --git a/src/VBox/Additions/linux/drm/vbox_main.c b/src/VBox/Additions/linux/drm/vbox_main.c
+index 1fa4d139cc4..5b82e105edb 100644
+--- a/src/VBox/Additions/linux/drm/vbox_main.c
++++ b/src/VBox/Additions/linux/drm/vbox_main.c
+@@ -558,7 +558,7 @@ void vbox_driver_lastclose(struct drm_device *dev)
+ {
+ 	struct vbox_private *vbox = dev->dev_private;
+ 
+-#if RTLNX_VER_MIN(6,19,0) || RTLNX_RHEL_RANGE(9,9, 9,99)
++#if RTLNX_VER_MIN(6,18,55) || RTLNX_RHEL_RANGE(9,9, 9,99)
+ 	if (vbox->fbdev)
+ 		drm_fb_helper_restore_fbdev_mode_unlocked(&vbox->fbdev->helper, false);
+ #elif RTLNX_VER_MIN(3,16,0) || RTLNX_RHEL_MAJ_PREREQ(7,1)

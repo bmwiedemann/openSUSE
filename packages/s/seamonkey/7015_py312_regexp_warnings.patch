@@ -1,0 +1,376 @@
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozboot/mozboot/base.py seamonkey-2.53.24/python/mozboot/mozboot/base.py
+--- seamonkey-2.53.24.orig/python/mozboot/mozboot/base.py	2026-08-22 22:18:42.710836737 +0200
++++ seamonkey-2.53.24/python/mozboot/mozboot/base.py	2026-08-22 23:02:24.270469487 +0200
+@@ -509,7 +509,7 @@
+             # path and move on.
+             return None
+ 
+-        match = re.search(name + ' ([a-z0-9\.]+)', process.stdout)
++        match = re.search(name + r' ([a-z0-9\.]+)', process.stdout)
+         if not match:
+             print('ERROR! Unable to identify %s version.' % name)
+             return None
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozboot/mozboot/osx.py seamonkey-2.53.24/python/mozboot/mozboot/osx.py
+--- seamonkey-2.53.24.orig/python/mozboot/mozboot/osx.py	2026-08-22 22:18:42.711637608 +0200
++++ seamonkey-2.53.24/python/mozboot/mozboot/osx.py	2026-08-22 23:02:24.270872177 +0200
+@@ -36,7 +36,7 @@
+     '7': 'https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.7-Lion.pkg',
+     '6': 'https://distfiles.macports.org/MacPorts/MacPorts-2.5.4-10.6-SnowLeopard.pkg', }
+ 
+-RE_CLANG_VERSION = re.compile('Apple (?:clang|LLVM) version (\d+\.\d+)')
++RE_CLANG_VERSION = re.compile(r'Apple (?:clang|LLVM) version (\d+\.\d+)')
+ 
+ APPLE_CLANG_MINIMUM_VERSION = Version('4.2')
+ 
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/backend/recursivemake.py seamonkey-2.53.24/python/mozbuild/mozbuild/backend/recursivemake.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/backend/recursivemake.py	2026-05-30 15:08:55.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/backend/recursivemake.py	2026-08-22 23:02:24.271333246 +0200
+@@ -164,7 +164,7 @@
+ 
+ 
+ def make_quote(s):
+-    return s.replace('#', '\#').replace('$', '$$')
++    return s.replace("#", r"\#").replace("$", "$$")
+ 
+ 
+ class BackendMakeFile(object):
+@@ -996,7 +996,7 @@
+                     for t in ('XPI_PKGNAME', 'INSTALL_EXTENSION_ID', 'tools'):
+                         if t not in content:
+                             continue
+-                        if t == 'tools' and not re.search('(?:^|\s)tools.*::', content, re.M):
++                        if t == 'tools' and not re.search(r'(?:^|\s)tools.*::', content, re.M):
+                             continue
+                         if objdir == self.environment.topobjdir:
+                             continue
+@@ -1005,7 +1005,7 @@
+ 
+                     # Directories with a Makefile containing a check target
+                     # can't be skipped and must run during the 'check' tier.
+-                    if re.search('(?:^|\s)check.*::', content, re.M):
++                    if re.search(r'(?:^|\s)check.*::', content, re.M):
+                         self._no_skip['check'].add(mozpath.relpath(objdir,
+                                                                    self.environment.topobjdir))
+ 
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/configure/__init__.py seamonkey-2.53.24/python/mozbuild/mozbuild/configure/__init__.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/configure/__init__.py	2026-08-22 23:00:56.185723973 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/configure/__init__.py	2026-08-22 23:02:24.271878240 +0200
+@@ -840,7 +840,7 @@
+     def wraps(self, func):
+         return wraps(func)
+ 
+-    RE_MODULE = re.compile(r"^[a-zA-Z0-9_.]+$")
++    RE_MODULE = re.compile("^[a-zA-Z0-9_.]+$")
+ 
+     def imports_impl(self, _import, _from=None, _as=None):
+         '''Implementation of @imports.
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/frontend/context.py seamonkey-2.53.24/python/mozbuild/mozbuild/frontend/context.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/frontend/context.py	2026-05-30 15:08:55.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/frontend/context.py	2026-08-22 23:02:24.272498064 +0200
+@@ -1908,7 +1908,7 @@
+                                   """Names of example WebIDL interfaces to build as part of the build.
+ 
+         Names in this list correspond to WebIDL interface names defined in
+-        WebIDL files included in the build from one of the \*WEBIDL_FILES
++        WebIDL files included in the build from one of the *WEBIDL_FILES
+         variables.
+         """),
+ 
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/jar.py seamonkey-2.53.24/python/mozbuild/mozbuild/jar.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/jar.py	2026-05-30 14:18:44.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/jar.py	2026-08-22 23:02:24.273106227 +0200
+@@ -98,8 +98,8 @@
+ 
+ class JarManifestParser(object):
+ 
+-    ignore = re.compile('\s*(\#.*)?$')
+-    jarline = re.compile('''
++    ignore = re.compile(r"\s*(#.*)?$")
++    jarline = re.compile(r'''
+         (?:
+             (?:\[(?P<base>[\w\d.\-\_\\\/{}@]+)\]\s*)? # optional [base/path]
+             (?P<jarfile>[\w\d.\-\_\\\/{}]+).jar\:    # filename.jar:
+@@ -107,12 +107,12 @@
+             (?:\s*(\#.*)?)                           # comment
+         )\s*$                                        # whitespaces
+         ''', re.VERBOSE)
+-    relsrcline = re.compile('relativesrcdir\s+(?P<relativesrcdir>.+?):')
+-    regline = re.compile('\%\s+(.*)$')
+-    entryre = '(?P<optPreprocess>\*)?(?P<optOverwrite>\+?)\s+'
++    relsrcline = re.compile(r'relativesrcdir\s+(?P<relativesrcdir>.+?):')
++    regline = re.compile(r'\%\s+(.*)$')
++    entryre = r'(?P<optPreprocess>\*)?(?P<optOverwrite>\+?)\s+'
+     entryline = re.compile(
+-        entryre + ('(?P<output>[\w\d.\-\_\\\/\+\@]+)\s*'
+-                   '(\((?P<locale>\%?)(?P<source>[\w\d.\-\_\\\/\@\*]+)\))?\s*$')
++        entryre + (r'(?P<output>[\w\d.\-\_\\\/\+\@]+)\s*'
++                   r'(\((?P<locale>\%?)(?P<source>[\w\d.\-\_\\\/\@\*]+)\))?\s*$')
+         )
+ 
+     def __init__(self):
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/mozconfig.py seamonkey-2.53.24/python/mozbuild/mozbuild/mozconfig.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/mozconfig.py	2026-05-30 15:08:55.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/mozconfig.py	2026-08-22 23:02:24.273473053 +0200
+@@ -60,7 +60,7 @@
+ class MozconfigLoader(object):
+     """Handles loading and parsing of mozconfig files."""
+ 
+-    RE_MAKE_VARIABLE = re.compile('''
++    RE_MAKE_VARIABLE = re.compile(r'''
+         ^\s*                    # Leading whitespace
+         (?P<var>[a-zA-Z_0-9]+)  # Variable name
+         \s* [?:]?= \s*          # Assignment operator surrounded by optional
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/preprocessor.py seamonkey-2.53.24/python/mozbuild/mozbuild/preprocessor.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/preprocessor.py	2026-05-30 14:18:44.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/preprocessor.py	2026-08-22 23:02:24.273821016 +0200
+@@ -1,7 +1,7 @@
+ # This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-"""
++r"""
+ This is a very primitive line based preprocessor, for times when using
+ a C preprocessor isn't an option.
+ 
+@@ -134,7 +134,7 @@
+         # unary
+         rv.append(self.__get_unary())
+         self.__ignore_whitespace()
+-        if not re.match('[=!]=', self.content):
++        if not re.match(r'[=!]=', self.content):
+             # no equality needed, short cut to our prime unary
+             return rv[0]
+         # append operator
+@@ -150,7 +150,7 @@
+         Production: '!'? value
+         """
+         # eat whitespace right away, too
+-        not_ws = re.match('!\s*', self.content)
++        not_ws = re.match(r'!\s*', self.content)
+         if not not_ws:
+             return self.__get_value()
+         rv = Expression.__AST('not')
+@@ -160,24 +160,24 @@
+         return rv
+ 
+     def __get_value(self):
+-        """
++        r"""
+         Production: ( [0-9]+ | 'defined(' \w+ ')' | \w+ )
+         Note that the order is important, and the expression is kind-of
+         ambiguous as \w includes 0-9. One could make it unambiguous by
+         removing 0-9 from the first char of a string literal.
+         """
+         rv = None
+-        m = re.match('defined\s*\(\s*(\w+)\s*\)', self.content)
++        m = re.match(r'defined\s*\(\s*(\w+)\s*\)', self.content)
+         if m:
+             word_len = m.end()
+             rv = Expression.__ASTLeaf('defined', m.group(1))
+         else:
+-            word_len = re.match('[0-9]*', self.content).end()
++            word_len = re.match(r'[0-9]*', self.content).end()
+             if word_len:
+                 value = int(self.content[:word_len])
+                 rv = Expression.__ASTLeaf('int', value)
+             else:
+-                word_len = re.match('\w*', self.content).end()
++                word_len = re.match(r'\w*', self.content).end()
+                 if word_len:
+                     rv = Expression.__ASTLeaf('string', self.content[:word_len])
+                 else:
+@@ -187,7 +187,7 @@
+         return rv
+ 
+     def __ignore_whitespace(self):
+-        ws_len = re.match('\s*', self.content).end()
++        ws_len = re.match(r'\s*', self.content).end()
+         self.__strip(ws_len)
+         return
+ 
+@@ -355,7 +355,7 @@
+             self.cmds[cmd] = (level, getattr(self, 'do_' + cmd))
+         self.out = sys.stdout
+         self.setMarker(marker)
+-        self.varsubst = re.compile('@(?P<VAR>\w+)@', re.U)
++        self.varsubst = re.compile(r'@(?P<VAR>\w+)@', re.U)
+         self.includes = set()
+         self.silenceMissingDirectiveWarnings = False
+         if defines:
+@@ -385,7 +385,7 @@
+         """
+         self.marker = aMarker
+         if aMarker:
+-            self.instruction = re.compile('\s*{0}(?P<cmd>[a-z]+)(?:\s+(?P<args>.*?))?\s*$'
++            self.instruction = re.compile(r'\s*{0}(?P<cmd>[a-z]+)(?:\s+(?P<args>.*?))?\s*$'
+                                           .format(aMarker))
+             self.comment = re.compile(aMarker, re.U)
+         else:
+@@ -531,8 +531,8 @@
+             out.close()
+ 
+     def getCommandLineParser(self, unescapeDefines=False):
+-        escapedValue = re.compile('".*"$')
+-        numberValue = re.compile('\d+$')
++        escapedValue = re.compile(r'".*"$')
++        numberValue = re.compile(r'\d+$')
+ 
+         def handleD(option, opt, value, parser):
+             vals = value.split('=', 1)
+@@ -605,7 +605,7 @@
+ 
+     # Variables
+     def do_define(self, args):
+-        m = re.match('(?P<name>\w+)(?:\s(?P<value>.*))?', args, re.U)
++        m = re.match(r'(?P<name>\w+)(?:\s(?P<value>.*))?', args, re.U)
+         if not m:
+             raise Preprocessor.Error(self, 'SYNTAX_DEF', args)
+         val = ''
+@@ -618,7 +618,7 @@
+         self.context[m.group('name')] = val
+ 
+     def do_undef(self, args):
+-        m = re.match('(?P<name>\w+)$', args, re.U)
++        m = re.match(r'(?P<name>\w+)$', args, re.U)
+         if not m:
+             raise Preprocessor.Error(self, 'SYNTAX_DEF', args)
+         if args in self.context:
+@@ -656,7 +656,7 @@
+         if self.disableLevel and not replace:
+             self.disableLevel += 1
+             return
+-        if re.search('\W', args, re.U):
++        if re.search(r'\W', args, re.U):
+             raise Preprocessor.Error(self, 'INVALID_VAR', args)
+         if args not in self.context:
+             self.disableLevel = 1
+@@ -671,7 +671,7 @@
+         if self.disableLevel and not replace:
+             self.disableLevel += 1
+             return
+-        if re.search('\W', args, re.U):
++        if re.search(r'\W', args, re.U):
+             raise Preprocessor.Error(self, 'INVALID_VAR', args)
+         if args in self.context:
+             self.disableLevel = 1
+@@ -720,7 +720,7 @@
+ 
+     # output processing
+     def do_expand(self, args):
+-        lst = re.split('__(\w+)__', args, re.U)
++        lst = re.split(r'__(\w+)__', args, re.U)
+ 
+         def vsubst(v):
+             if v in self.context:
+@@ -772,7 +772,7 @@
+ 
+     # spaces: Collapses sequences of spaces into a single space.
+     def filter_spaces(self, aLine):
+-        return re.sub(' +', ' ', aLine).strip(' ')
++        return re.sub(r' +', ' ', aLine).strip(' ')
+ 
+     # substitution: variables wrapped in @ are replaced with their value.
+     def filter_substitution(self, aLine, fatal=True):
+@@ -812,7 +812,7 @@
+                 raise
+             except Exception:
+                 raise Preprocessor.Error(self, 'FILE_NOT_FOUND', _to_text(args))
+-        self.checkLineNumbers = bool(re.search('\.(js|jsm|java|webidl)(?:\.in)?$', args.name))
++        self.checkLineNumbers = bool(re.search(r'\.(js|jsm|java|webidl)(?:\.in)?$', args.name))
+         oldFile = self.context['FILE']
+         oldLine = self.context['LINE']
+         oldDir = self.context['DIRECTORY']
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/shellutil.py seamonkey-2.53.24/python/mozbuild/mozbuild/shellutil.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/shellutil.py	2026-05-30 14:18:44.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/shellutil.py	2026-08-22 23:02:24.274265098 +0200
+@@ -22,7 +22,7 @@
+ 
+     # The final pattern matches either the above pattern, or an escaped
+     # backslash, captured in the "escape" match group.
+-    return re.compile('(?:%s|%s)' % (nonescaped, r'(?P<escape>\\\\)'))
++    return re.compile(r'(?:%s|%s)' % (nonescaped, r'(?P<escape>\\\\)'))
+ 
+ 
+ UNQUOTED_TOKENS_RE = _tokens2re(
+@@ -36,7 +36,7 @@
+ DOUBLY_QUOTED_TOKENS_RE = _tokens2re(
+   quote='"',
+   backslashedquote=r'\\"',
+-  special='\$',
++  special=r'\$',
+   backslashed=r'\\[^\\"]',
+ )
+ 
+@@ -173,7 +173,7 @@
+     '''
+     Split the given command line string.
+     '''
+-    s = ESCAPED_NEWLINES_RE.sub('', cline)
++    s = ESCAPED_NEWLINES_RE.sub(r'', cline)
+     return _ClineSplitter(s).result
+ 
+ 
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/util.py seamonkey-2.53.24/python/mozbuild/mozbuild/util.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/util.py	2026-05-30 14:18:44.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/util.py	2026-08-22 23:02:24.274601769 +0200
+@@ -1211,7 +1211,7 @@
+     return zip(a, b)
+ 
+ 
+-VARIABLES_RE = re.compile('\$\((\w+)\)')
++VARIABLES_RE = re.compile(r'\$\((\w+)\)')
+ 
+ 
+ def expand_variables(s, variables):
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozpack/packager/__init__.py seamonkey-2.53.24/python/mozbuild/mozpack/packager/__init__.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozpack/packager/__init__.py	2026-05-30 15:08:55.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozpack/packager/__init__.py	2026-08-22 23:02:24.275079651 +0200
+@@ -112,7 +112,7 @@
+         component = splits[0].strip()
+         if not component:
+             raise ValueError('No component found')
+-        if not re.match('[a-zA-Z0-9_\-]+$', component):
++        if not re.match(r'[a-zA-Z0-9_\-]+$', component):
+             raise ValueError('Bad component name ' + component)
+         options = Component._split_options(splits[1]) if len(splits) > 1 else {}
+         return component, options
+diff '--color=auto' -urN seamonkey-2.53.24.orig/testing/mozbase/mozinfo/mozinfo/mozinfo.py seamonkey-2.53.24/testing/mozbase/mozinfo/mozinfo/mozinfo.py
+--- seamonkey-2.53.24.orig/testing/mozbase/mozinfo/mozinfo/mozinfo.py	2026-05-30 15:08:56.000000000 +0200
++++ seamonkey-2.53.24/testing/mozbase/mozinfo/mozinfo/mozinfo.py	2026-08-22 23:02:24.275347668 +0200
+@@ -156,7 +156,7 @@
+     processor = "aarch64"
+ elif processor == "Power Macintosh":
+     processor = "ppc"
+-bits = re.search('(\d+)bit', bits).group(1)
++bits = re.search(r'(\d+)bit', bits).group(1)
+ info.update({'processor': processor,
+              'bits': int(bits),
+              })
+diff '--color=auto' -urN seamonkey-2.53.24.orig/testing/mozbase/mozinstall/mozinstall/mozinstall.py seamonkey-2.53.24/testing/mozbase/mozinstall/mozinstall/mozinstall.py
+--- seamonkey-2.53.24.orig/testing/mozbase/mozinstall/mozinstall/mozinstall.py	2026-05-30 14:18:45.000000000 +0200
++++ seamonkey-2.53.24/testing/mozbase/mozinstall/mozinstall/mozinstall.py	2026-08-22 23:02:24.275628772 +0200
+@@ -222,7 +222,7 @@
+         if os.path.isfile(log_file):
+             trbk = None
+             try:
+-                cmdArgs = ['%s\\uninstall\helper.exe' % install_folder, '/S']
++                cmdArgs = ['%s\\uninstall\\helper.exe' % install_folder, '/S']
+                 result = subprocess.call(cmdArgs)
+                 if result != 0:
+                     raise Exception('Execution of uninstaller failed.')
+diff '--color=auto' -urN seamonkey-2.53.24.orig/testing/mozharness/mach_commands.py seamonkey-2.53.24/testing/mozharness/mach_commands.py
+--- seamonkey-2.53.24.orig/testing/mozharness/mach_commands.py	2026-05-30 15:08:56.000000000 +0200
++++ seamonkey-2.53.24/testing/mozharness/mach_commands.py	2026-08-22 23:02:24.275887878 +0200
+@@ -134,9 +134,9 @@
+ 
+     def _installer_url(self):
+         package_re = {
+-            "linux": re.compile("^firefox-\d+\..+\.tar\.bz2$"),
+-            "win": re.compile("^firefox-\d+\..+\.installer\.exe$"),
+-            "mac": re.compile("^firefox-\d+\..+\.mac(?:64)?\.dmg$"),
++            "linux": re.compile(r"^firefox-\d+\..+\.tar\.bz2$"),
++            "win": re.compile(r"^firefox-\d+\..+\.installer\.exe$"),
++            "mac": re.compile(r"^firefox-\d+\..+\.mac(?:64)?\.dmg$"),
+         }[mozinfo.info['os']]
+         dist_path = os.path.join(self.topobjdir, "dist")
+         filenames = [item for item in os.listdir(dist_path) if

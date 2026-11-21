@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=OpenIDEA
+GenericName=Integrated Development Environment
+Comment=Open-source IDE inspired by IntelliJ IDEA
+Exec=openidea %f
+Icon=openidea
+Terminal=false
+StartupNotify=true
+StartupWMClass=openidea
+Categories=Development;IDE;
+Keywords=IDE;editor;code;debugger;git;

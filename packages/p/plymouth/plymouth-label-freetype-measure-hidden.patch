@@ -1,0 +1,43 @@
+From 8af62d12848353292b03d3982c8cffc6c084de82 Mon Sep 17 00:00:00 2001
+From: nerdopolis <bluescreen_avenger@verizon.net>
+Date: Mon, 8 May 2023 19:24:19 -0400
+Subject: [PATCH] label-freetype: Allow the label size to be set and calculated
+ even when hidden
+
+---
+ src/plugins/controls/label-freetype/plugin.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/src/plugins/controls/label-freetype/plugin.c b/src/plugins/controls/label-freetype/plugin.c
+index 0fbf094..9c9120c 100644
+--- a/src/plugins/controls/label-freetype/plugin.c
++++ b/src/plugins/controls/label-freetype/plugin.c
+@@ -184,9 +184,6 @@ size_control (ply_label_plugin_control_t *label)
+         FT_Int width;
+         const char *text = label->text;
+ 
+-        if (label->is_hidden)
+-                return;
+-
+         label->area.width = 0;
+         label->area.height = 0;
+ 
+@@ -216,12 +213,12 @@ trigger_redraw (ply_label_plugin_control_t *label,
+ {
+         ply_rectangle_t dirty_area = label->area;
+ 
+-        if (label->is_hidden || label->display == NULL)
+-                return;
+-
+         if (adjust_size)
+                 size_control (label);
+ 
++        if (label->is_hidden || label->display == NULL)
++                return;
++
+         ply_pixel_display_draw_area (label->display,
+                                      dirty_area.x, dirty_area.y,
+                                      dirty_area.width, dirty_area.height);
+-- 
+2.56.0
+

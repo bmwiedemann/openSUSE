@@ -1,0 +1,30 @@
+Fix empty result from librdf_hash_to_string with recent raptor
+
+raptor_stringbuffer_copy_to_string() now expects the size of the
+destination buffer including the terminating NUL and fails when the
+content does not fit (as changed by the raptor CVE-2025-71436 fix).
+Redland passed only the string length, so the copy failed and the
+functions returned empty strings. Pass len + 1 as buffer size.
+
+Index: redland-1.0.17/src/rdf_hash.c
+===================================================================
+--- redland-1.0.17.orig/src/rdf_hash.c
++++ redland-1.0.17/src/rdf_hash.c
+@@ -1640,7 +1640,7 @@
+   len=raptor_stringbuffer_length(sb);
+   result = (char *)librdf_alloc_memory(len + 1);
+   if (result)
+-    raptor_stringbuffer_copy_to_string(sb, (unsigned char*)result, len);
++    raptor_stringbuffer_copy_to_string(sb, (unsigned char*)result, len + 1);
+ 
+ 
+   tidy:
+@@ -1856,7 +1856,7 @@
+   len=raptor_stringbuffer_length(sb);
+   if(len) {
+     result = LIBRDF_MALLOC(unsigned char*, len + 1);
+-    raptor_stringbuffer_copy_to_string(sb, result, len);
++    raptor_stringbuffer_copy_to_string(sb, result, len + 1);
+   }
+   
+   raptor_free_stringbuffer(sb);

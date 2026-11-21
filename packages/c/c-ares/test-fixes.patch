@@ -1,0 +1,47 @@
+commit d96b3fa9146f71ec77cd1dd536ad4b62307c1a76
+Author: Adam Majer <amajer@suse.com>
+Date:   Mon Nov 9 16:26:28 2026 +0100
+
+    test: use loopback for dead-server endpoints in SockStateDeliveryTest
+    
+    SockStateDeliveryTest used 192.0.2.1:53 and 198.51.100.1:53 as
+    unreachable DNS server endpoints to keep the connection open during
+    channel teardown operations.
+    
+    In isolated build environments and VMs lacking a default network routea,
+    UDP connect() to these external subnets fails immediately with ENETUNREACH.
+    c-ares maps this to ARES_ECONNREFUSED and terminates the query synchronously
+    inside ares_query_dnsrec(), failing the ASSERT_FALSE(result->done_) check
+    and causing subsequent SawClose() assertions to fail across all three tests
+    (CancelReportsSocketClose, SetServersReportsSocketClose, and
+    DestroyReportsSocketClose).
+    
+    Switch the dead-server addresses to 127.0.0.1:53055 and 127.0.0.1:53056,
+    matching the convention used by other mock tests in ares-test-mock.cc.
+
+diff --git a/test/ares-test-mock.cc b/test/ares-test-mock.cc
+index cc5e6482..77aa0f9c 100644
+--- a/test/ares-test-mock.cc
++++ b/test/ares-test-mock.cc
+@@ -4008,9 +4008,9 @@ protected:
+     ASSERT_EQ(ARES_SUCCESS,
+               ares_init_options(chan, &opts, ARES_OPT_SOCK_STATE_CB));
+     ASSERT_NE(nullptr, *chan);
+-    /* TEST-NET-1, guaranteed not to answer, so the socket is still open when
+-     * the call under test runs. */
+-    ASSERT_EQ(ARES_SUCCESS, ares_set_servers_csv(*chan, "192.0.2.1:53"));
++    /* Dead server on loopback, guaranteed not to answer, so the socket is still
++     * open when the call under test runs. */
++    ASSERT_EQ(ARES_SUCCESS, ares_set_servers_csv(*chan, "127.0.0.1:53055"));
+ 
+     ares_query_dnsrec(*chan, "www.google.com", ARES_CLASS_IN, ARES_REC_TYPE_A,
+                       QueryCallback, result, NULL);
+@@ -4039,7 +4039,7 @@ TEST_F(SockStateDeliveryTest, SetServersReportsSocketClose) {
+   QueryResult         result;
+ 
+   OpenConnection(&chan, &data, &result);
+-  EXPECT_EQ(ARES_SUCCESS, ares_set_servers_csv(chan, "198.51.100.1:53"));
++  EXPECT_EQ(ARES_SUCCESS, ares_set_servers_csv(chan, "127.0.0.1:53056"));
+   EXPECT_TRUE(SawClose(data)) << "ares_set_servers_csv() closed the socket "
+                                  "without telling the application";
+   ares_destroy(chan);

@@ -1,0 +1,696 @@
+Port the driver to the libiio 1.x streaming and attribute API.
+
+libiio 1.0 removed the 0.x scan-context, context-creation-helper,
+channel-attr and buffer object APIs. Without this the driver cannot
+be built against the libiio 1.0 in Factory at all:
+- scan (PlutoSDR_Registration.cpp already ported separately):
+  iio_scan + iio_scan_get_results_count/_uri/_destroy, iio_err
+  error-pointer checks, "ip:"+host URIs via iio_create_context
+- contexts: iio_create_context(NULL, uri-or-NULL) everywhere;
+  versions via iio_context_get_version_major/minor/tag (NULL gives
+  the library itself); context attrs via iio_attr_get_name and
+  the static value or a raw read
+- channel attrs: local iio_channel_attr_* shims over
+  iio_channel_find_attr + iio_attr_* (same signatures and return
+  semantics as the removed helpers, so all call sites are unchanged)
+- channels are now enabled into an iio_channels_mask, and the sample
+  size comes from iio_device_get_sample_size(dev, mask)
+- streaming is rebuilt on the explicit block queue: iio_buffer_open,
+  iio_buffer_stream_create_block, iio_block_enqueue/dequeue around
+  one reusable block, iio_block_start/first/end for access and
+  iio_channel_read/_inverse for conversion. RX keeps its partial
+  block consumption across calls; TX keeps its accumulate-then-push
+  batching (enqueue byte count replaces the zero-fill + full push)
+
+--- a/SoapyPlutoSDR.hpp
++++ b/SoapyPlutoSDR.hpp
+@@ -1,4 +1,6 @@
+ #include <iio.h>
++#include <cerrno>
++#include <cstring>
+ #include <vector>
+ #include <mutex>
+ #include <thread>
+@@ -9,6 +11,42 @@
+ #include <SoapySDR/Types.hpp>
+ #include <SoapySDR/Formats.hpp>
+ 
++
++// libiio 1.x removed the iio_channel_attr_* compat helpers. These one-liners
++// over iio_channel_find_attr + iio_attr_* preserve the old call sites (and
++// their return-value semantics: byte counts for raw/string access, 0/-errno
++// for the typed ones) exactly.
++static inline ssize_t iio_channel_attr_read(const struct iio_channel *chn, const char *name, char *dst, size_t len) {
++    if (!chn) return -ENODEV;
++    const struct iio_attr *attr = iio_channel_find_attr(chn, name);
++    if (!attr) return -ENOENT;
++    return iio_attr_read_raw(attr, dst, len);
++}
++static inline ssize_t iio_channel_attr_write(const struct iio_channel *chn, const char *name, const char *src) {
++    if (!chn) return -ENODEV;
++    const struct iio_attr *attr = iio_channel_find_attr(chn, name);
++    if (!attr) return -ENOENT;
++    return iio_attr_write_string(attr, src);
++}
++static inline int iio_channel_attr_read_longlong(const struct iio_channel *chn, const char *name, long long *val) {
++    if (!chn) return -ENODEV;
++    const struct iio_attr *attr = iio_channel_find_attr(chn, name);
++    if (!attr) return -ENOENT;
++    return iio_attr_read_longlong(attr, val);
++}
++static inline int iio_channel_attr_write_longlong(const struct iio_channel *chn, const char *name, long long val) {
++    if (!chn) return -ENODEV;
++    const struct iio_attr *attr = iio_channel_find_attr(chn, name);
++    if (!attr) return -ENOENT;
++    return iio_attr_write_longlong(attr, val);
++}
++static inline int iio_channel_attr_write_bool(const struct iio_channel *chn, const char *name, bool val) {
++    if (!chn) return -ENODEV;
++    const struct iio_attr *attr = iio_channel_find_attr(chn, name);
++    if (!attr) return -ENOENT;
++    return iio_attr_write_bool(attr, val);
++}
++
+ typedef enum plutosdrStreamFormat {
+ 	PLUTO_SDR_CF32,
+ 	PLUTO_SDR_CS16,
+@@ -42,6 +80,8 @@
+         void set_mtu_size(const size_t mtu_size);
+ 
+ 		bool has_direct_copy();
++		void teardown_stream();
++		void setup_stream();
+ 
+ 		std::vector<iio_channel* > channel_list;
+ 		const iio_device  *dev;
+@@ -51,6 +91,10 @@
+ 		size_t byte_offset;
+ 		size_t items_in_buffer;
+ 		iio_buffer  *buf;
++		iio_channels_mask *mask;
++		iio_buffer_stream *stream;
++		iio_block *block;
++		size_t sample_size;
+ 		const plutosdrStreamFormat format;
+ 		bool direct_copy;
+         size_t mtu_size;
+@@ -72,12 +116,18 @@
+ 		void set_mtu_size(const size_t mtu_size);
+ 		int send_buf();
+ 		bool has_direct_copy();
++		void teardown_stream();
++		void setup_stream();
+ 
+ 		std::vector<iio_channel* > channel_list;
+ 		const iio_device  *dev;
+ 		const plutosdrStreamFormat format;
+ 		
+ 		iio_buffer  *buf;
++		iio_channels_mask *mask;
++		iio_buffer_stream *stream;
++		iio_block *block;
++		size_t sample_size;
+ 		size_t items_in_buf;
+ 		bool direct_copy;
+ 		size_t buffer_size;
+--- a/PlutoSDR_Settings.cpp
++++ b/PlutoSDR_Settings.cpp
+@@ -18,16 +18,17 @@
+ 	{
+ 	  if(args.count("uri") != 0) {
+ 
+-		  ctx = iio_create_context_from_uri(args.at("uri").c_str());
++		  ctx = iio_create_context(NULL, args.at("uri").c_str());
+ 
+ 	  }else if(args.count("hostname")!=0){
+-		  ctx = iio_create_network_context(args.at("hostname").c_str());
++		  std::string uri = std::string("ip:") + args.at("hostname");
++		  ctx = iio_create_context(NULL, uri.c_str());
+ 	  }else{
+-		  ctx = iio_create_default_context();
++		  ctx = iio_create_context(NULL, NULL);
+ 	  }
+ 	}
+ 
+-	if (ctx == nullptr) {
++	if (iio_err(ctx)) {
+ 		SoapySDR_logf(SOAPY_SDR_ERROR, "no device context found.");
+ 		throw std::runtime_error("no device context found");
+ 	}
+@@ -95,23 +96,35 @@
+ {
+ 	SoapySDR::Kwargs info;
+ 
+-	unsigned int major, minor;
+-	char git_tag[8];
+-	iio_library_get_version(&major, &minor, git_tag);
++	unsigned int major = iio_context_get_version_major(NULL);
++	unsigned int minor = iio_context_get_version_minor(NULL);
++	const char *tag = iio_context_get_version_tag(NULL);
+ 	char lib_ver[100];
+-	snprintf(lib_ver, 100, "%u.%u (git tag: %s)", major, minor, git_tag);
++	snprintf(lib_ver, 100, "%u.%u (git tag: %s)", major, minor, tag ? tag : "unknown");
+ 	info["library_version"] = lib_ver;
+ 
+-	iio_context_get_version(ctx, &major, &minor, git_tag);
++	major = iio_context_get_version_major(ctx);
++	minor = iio_context_get_version_minor(ctx);
++	tag = iio_context_get_version_tag(ctx);
+ 	char backend_ver[100];
+-	snprintf(backend_ver, 100, "%u.%u (git tag: %s)", major, minor, git_tag);
++	snprintf(backend_ver, 100, "%u.%u (git tag: %s)", major, minor, tag ? tag : "unknown");
+ 	info["backend_version"] = backend_ver;
+ 
+ 	unsigned int nb_ctx_attrs = iio_context_get_attrs_count(ctx);
+ 	for (unsigned int i = 0; i < nb_ctx_attrs; i++) {
+-		const char *key, *value;
+-		iio_context_get_attr(ctx, i, &key, &value);
+-		info[key] = value;
++		const struct iio_attr *attr = iio_context_get_attr(ctx, i);
++		if (!attr) continue;
++		const char *key = iio_attr_get_name(attr);
++		const char *value = iio_attr_get_static_value(attr);
++		char buf[256];
++		if (!value) {
++			ssize_t n = iio_attr_read_raw(attr, buf, sizeof(buf) - 1);
++			if (n > 0) {
++				buf[n] = '\0';
++				value = buf;
++			}
++		}
++		if (key && value) info[key] = value;
+ 	}
+ 
+ 	return info;
+--- a/PlutoSDR_Streaming.cpp
++++ b/PlutoSDR_Streaming.cpp
+@@ -322,7 +322,7 @@
+ 
+ 
+ rx_streamer::rx_streamer(const iio_device *_dev, const plutosdrStreamFormat _format, const std::vector<size_t> &channels, const SoapySDR::Kwargs &args):
+-	dev(_dev), buffer_size(DEFAULT_RX_BUFFER_SIZE), buf(nullptr), format(_format), mtu_size(DEFAULT_RX_BUFFER_SIZE)
++	dev(_dev), buffer_size(DEFAULT_RX_BUFFER_SIZE), buf(nullptr), mask(nullptr), stream(nullptr), block(nullptr), sample_size(0), format(_format), mtu_size(DEFAULT_RX_BUFFER_SIZE)
+ 
+ {
+ 	if (dev == nullptr) {
+@@ -330,18 +330,28 @@
+ 		throw std::runtime_error("cf-ad9361-lpc not found!");
+ 	}
+ 	unsigned int nb_channels = iio_device_get_channels_count(dev), i;
++	mask = iio_create_channels_mask(nb_channels);
++	if (!mask) {
++		throw std::runtime_error("Unable to create channels mask!");
++	}
+ 	for (i = 0; i < nb_channels; i++)
+-		iio_channel_disable(iio_device_get_channel(dev, i));
++		iio_channel_disable(iio_device_get_channel(dev, i), mask);
+ 
+ 	//default to channel 0, if none were specified
+ 	const std::vector<size_t> &channelIDs = channels.empty() ? std::vector<size_t>{0} : channels;
+ 
+ 	for (i = 0; i < channelIDs.size() * 2; i++) {
+ 		struct iio_channel *chn = iio_device_get_channel(dev, i);
+-		iio_channel_enable(chn);
++		iio_channel_enable(chn, mask);
+ 		channel_list.push_back(chn);
+ 	}
+ 
++	ssize_t sample_sz = iio_device_get_sample_size(dev, mask);
++	if (sample_sz <= 0) {
++		throw std::runtime_error("Unable to determine sample size!");
++	}
++	sample_size = (size_t)sample_sz;
++
+ 	if ( args.count( "bufflen" ) != 0 ) {
+ 		try
+ 		{
+@@ -367,16 +377,16 @@
+ 
+ rx_streamer::~rx_streamer()
+ {
+-	if (buf) {
+-        iio_buffer_cancel(buf);
+-        iio_buffer_destroy(buf);
+-    }
++	teardown_stream();
+ 
+     for (unsigned int i = 0; i < channel_list.size(); ++i) {
+-        iio_channel_disable(channel_list[i]);
++        iio_channel_disable(channel_list[i], mask);
+     }
+ 
+-
++    if (mask) {
++        iio_channels_mask_destroy(mask);
++        mask = nullptr;
++    }
+ 
+ }
+ 
+@@ -389,34 +399,30 @@
+     //
+ 	if (items_in_buffer <= 0) {
+ 
+-       // auto before = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+-
+-	    if (!buf) {
++	    if (!block) {
+ 		    return 0;
+ 	    }
+ 
+-		ssize_t ret = iio_buffer_refill(buf);
+-
+-        // auto after = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+-
+-		if (ret < 0)
++		// hand the empty block back, then wait until it is filled
++		if (iio_block_enqueue(block, 0, false) < 0)
+ 			return SOAPY_SDR_TIMEOUT;
+ 
+-		items_in_buffer = (unsigned long)ret / iio_buffer_step(buf);
++		if (iio_block_dequeue(block, false) < 0)
++			return SOAPY_SDR_TIMEOUT;
+ 
+-        // SoapySDR_logf(SOAPY_SDR_INFO, "iio_buffer_refill took %d ms to refill %d items", (int)(after - before), items_in_buffer);
++		items_in_buffer = (size_t)((uint8_t *)iio_block_end(block) - (uint8_t *)iio_block_start(block)) / sample_size;
+ 
+ 		byte_offset = 0;
+ 	}
+ 
+ 	size_t items = std::min(items_in_buffer,numElems);
+ 
+-	ptrdiff_t buf_step = iio_buffer_step(buf);
++	size_t buf_step = sample_size;
+ 
+ 	if (direct_copy) {
+ 		// optimize for single RX, 2 channel (I/Q), same endianess direct copy
+ 		// note that RX is 12 bits LSB aligned, i.e. fullscale 2048
+-		uint8_t *src = (uint8_t *)iio_buffer_start(buf) + byte_offset;
++		uint8_t *src = (uint8_t *)iio_block_start(block) + byte_offset;
+ 		int16_t const *src_ptr = (int16_t *)src;
+ 
+ 		if (format == PLUTO_SDR_CS16) {
+@@ -467,7 +473,7 @@
+ 			iio_channel *chn = channel_list[i];
+ 			unsigned int index = i / 2;
+ 
+-			uint8_t *src = (uint8_t *)iio_buffer_first(buf, chn) + byte_offset;
++			uint8_t *src = (uint8_t *)iio_block_first(block, chn) + byte_offset;
+ 
+ 			if (format == PLUTO_SDR_CS16) {
+ 
+@@ -504,7 +510,7 @@
+ 	}
+ 
+ 	items_in_buffer -= items;
+-	byte_offset += items * iio_buffer_step(buf);
++	byte_offset += items * sample_size;
+ 
+ 	return(items);
+ 
+@@ -517,13 +523,7 @@
+     //force proper stop before
+     stop(flags, timeNs);
+ 
+-    // re-create buffer
+-	buf = iio_device_create_buffer(dev, buffer_size, false);
+-
+-	if (!buf) {
+-		SoapySDR_logf(SOAPY_SDR_ERROR, "Unable to create buffer!");
+-		throw std::runtime_error("Unable to create buffer!\n");
+-	}
++	setup_stream();
+ 
+ 	direct_copy = has_direct_copy();
+ 
+@@ -536,44 +536,67 @@
+ int rx_streamer::stop(const int flags,
+ 		const long long timeNs)
+ {
+-    //cancel first
+-    if (buf) {
+-        iio_buffer_cancel(buf);
+-    }
+-    //then destroy
+-	if (buf) {
+-		iio_buffer_destroy(buf);
+-		buf = nullptr;
++	teardown_stream();
++
++	return 0;
++}
++
++void rx_streamer::teardown_stream()
++{
++	if (stream) {
++		iio_buffer_stream_cancel(stream);
++	}
++	if (block) {
++		iio_block_destroy(block);
++		block = nullptr;
++	}
++	if (stream) {
++		iio_buffer_close(stream);
++		stream = nullptr;
+ 	}
+ 
+-    items_in_buffer = 0;
+-    byte_offset = 0;
++	items_in_buffer = 0;
++	byte_offset = 0;
++}
+ 
+-	return 0;
++void rx_streamer::setup_stream()
++{
++	buf = iio_device_get_buffer(dev, 0);
++	if (!buf) {
++		SoapySDR_logf(SOAPY_SDR_ERROR, "Unable to get buffer!");
++		throw std::runtime_error("Unable to get buffer!\n");
++	}
+ 
++	stream = iio_buffer_open(buf, mask);
++	if (!stream || iio_err(stream)) {
++		stream = nullptr;
++		SoapySDR_logf(SOAPY_SDR_ERROR, "Unable to open buffer!");
++		throw std::runtime_error("Unable to open buffer!\n");
++	}
++
++	block = iio_buffer_stream_create_block(stream, buffer_size * sample_size);
++	if (!block || iio_err(block)) {
++		block = nullptr;
++		iio_buffer_close(stream);
++		stream = nullptr;
++		SoapySDR_logf(SOAPY_SDR_ERROR, "Unable to create block!");
++		throw std::runtime_error("Unable to create block!\n");
++	}
++
++	if (iio_buffer_stream_start(stream) < 0) {
++		teardown_stream();
++		SoapySDR_logf(SOAPY_SDR_ERROR, "Unable to start streaming!");
++		throw std::runtime_error("Unable to start streaming!\n");
++	}
+ }
+ 
+ void rx_streamer::set_buffer_size(const size_t _buffer_size){
+ 
+-	if (!buf || this->buffer_size != _buffer_size) {
+-        //cancel first
+-        if (buf) {
+-            iio_buffer_cancel(buf);
+-        }
+-        //then destroy
+-        if (buf) {
+-            iio_buffer_destroy(buf);
+-        }
+-
+-		items_in_buffer = 0;
+-        byte_offset = 0;
+-
+-		buf = iio_device_create_buffer(dev, _buffer_size, false);
+-		if (!buf) {
+-			SoapySDR_logf(SOAPY_SDR_ERROR, "Unable to create buffer!");
+-			throw std::runtime_error("Unable to create buffer!\n");
+-		}
+-
++	if (!block || this->buffer_size != _buffer_size) {
++		this->buffer_size = _buffer_size;
++		teardown_stream();
++		setup_stream();
++		return;
+ 	}
+ 
+ 	this->buffer_size=_buffer_size;
+@@ -589,12 +612,10 @@
+ 	if (channel_list.size() != 2) // one RX with I + Q
+ 		return false;
+ 
+-	ptrdiff_t buf_step = iio_buffer_step(buf);
+-
+-	if (buf_step != 2 * sizeof(int16_t))
++	if (sample_size != 2 * sizeof(int16_t))
+ 		return false;
+ 
+-	if (iio_buffer_start(buf) != iio_buffer_first(buf, channel_list[0]))
++	if (iio_block_start(block) != iio_block_first(block, channel_list[0]))
+ 		return false;
+ 
+ 	int16_t test_dst, test_src = 0x1234;
+@@ -606,7 +627,7 @@
+ 
+ 
+ tx_streamer::tx_streamer(const iio_device *_dev, const plutosdrStreamFormat _format, const std::vector<size_t> &channels, const SoapySDR::Kwargs &args) :
+-	dev(_dev), format(_format), buf(nullptr)
++	dev(_dev), format(_format), buf(nullptr), mask(nullptr), stream(nullptr), block(nullptr), sample_size(0)
+ {
+ 
+ 	if (dev == nullptr) {
+@@ -615,18 +636,28 @@
+ 	}
+ 
+ 	unsigned int nb_channels = iio_device_get_channels_count(dev), i;
++	mask = iio_create_channels_mask(nb_channels);
++	if (!mask) {
++		throw std::runtime_error("Unable to create channels mask!");
++	}
+ 	for (i = 0; i < nb_channels; i++)
+-		iio_channel_disable(iio_device_get_channel(dev, i));
++		iio_channel_disable(iio_device_get_channel(dev, i), mask);
+ 
+ 	//default to channel 0, if none were specified
+ 	const std::vector<size_t> &channelIDs = channels.empty() ? std::vector<size_t>{0} : channels;
+ 
+ 	for (i = 0; i < channelIDs.size() * 2; i++) {
+ 		iio_channel *chn = iio_device_get_channel(dev, i);
+-		iio_channel_enable(chn);
++		iio_channel_enable(chn, mask);
+ 		channel_list.push_back(chn);
+ 	}
+ 
++	ssize_t sample_sz = iio_device_get_sample_size(dev, mask);
++	if (sample_sz <= 0) {
++		throw std::runtime_error("Unable to determine sample size!");
++	}
++	sample_size = (size_t)sample_sz;
++
+ 	if ( args.count( "bufflen" ) != 0 ) {
+ 		try
+ 		{
+@@ -655,10 +686,15 @@
+ 
+ tx_streamer::~tx_streamer(){
+ 
+-	if (buf) { iio_buffer_destroy(buf); }
++	teardown_stream();
+ 
+ 	for(unsigned int i=0;i<channel_list.size(); ++i)
+-		iio_channel_disable(channel_list[i]);
++		iio_channel_disable(channel_list[i], mask);
++
++	if (mask) {
++		iio_channels_mask_destroy(mask);
++		mask = nullptr;
++	}
+ 
+ }
+ 
+@@ -700,27 +736,62 @@
+ 
+ void tx_streamer::set_buffer_size(const size_t _buffer_size){
+ 
+-	if (!buf || this->buffer_size != _buffer_size) {
+-        //cancel first
+-        if (buf) {
+-            iio_buffer_cancel(buf);
+-        }
+-        //then destroy
+-        if (buf) {
+-            iio_buffer_destroy(buf);
+-        }
++	if (!block || this->buffer_size != _buffer_size) {
++		this->buffer_size = _buffer_size;
++		teardown_stream();
++		setup_stream();
++		return;
++	}
+ 
+-		items_in_buf = 0;
++	this->buffer_size=_buffer_size;
++}
+ 
+-		buf = iio_device_create_buffer(dev, _buffer_size, false);
+-		if (!buf) {
+-			SoapySDR_logf(SOAPY_SDR_ERROR, "Unable to create TX buffer!");
+-			throw std::runtime_error("Unable to create TX buffer!\n");
+-		}
++void tx_streamer::teardown_stream()
++{
++	if (stream) {
++		iio_buffer_stream_cancel(stream);
++	}
++	if (block) {
++		iio_block_destroy(block);
++		block = nullptr;
++	}
++	if (stream) {
++		iio_buffer_close(stream);
++		stream = nullptr;
++	}
++
++	items_in_buf = 0;
++}
+ 
++void tx_streamer::setup_stream()
++{
++	buf = iio_device_get_buffer(dev, 0);
++	if (!buf) {
++		SoapySDR_logf(SOAPY_SDR_ERROR, "Unable to get buffer!");
++		throw std::runtime_error("Unable to get buffer!\n");
+ 	}
+ 
+-	this->buffer_size=_buffer_size;
++	stream = iio_buffer_open(buf, mask);
++	if (!stream || iio_err(stream)) {
++		stream = nullptr;
++		SoapySDR_logf(SOAPY_SDR_ERROR, "Unable to open buffer!");
++		throw std::runtime_error("Unable to open buffer!\n");
++	}
++
++	block = iio_buffer_stream_create_block(stream, buffer_size * sample_size);
++	if (!block || iio_err(block)) {
++		block = nullptr;
++		iio_buffer_close(stream);
++		stream = nullptr;
++		SoapySDR_logf(SOAPY_SDR_ERROR, "Unable to create block!");
++		throw std::runtime_error("Unable to create block!\n");
++	}
++
++	if (iio_buffer_stream_start(stream) < 0) {
++		teardown_stream();
++		SoapySDR_logf(SOAPY_SDR_ERROR, "Unable to start streaming!");
++		throw std::runtime_error("Unable to start streaming!\n");
++	}
+ }
+ 
+ size_t tx_streamer::get_mtu_size() {
+@@ -734,7 +805,7 @@
+ 		const long timeoutUs )
+ 
+ {
+-    if (!buf) {
++    if (!block) {
+         return 0;
+     }
+ 
+@@ -742,16 +813,16 @@
+ 
+ 	int16_t src = 0;
+ 	int16_t const *src_ptr = &src;
+-	ptrdiff_t buf_step = iio_buffer_step(buf); //in bytes
++	size_t buf_step = sample_size; //in bytes
+ 
+ 	if (direct_copy && format == PLUTO_SDR_CS16) {
+ 		// optimize for single TX, 2 channel (I/Q), same endianess direct copy
+-		int16_t *dst_ptr = (int16_t *)iio_buffer_start(buf) + items_in_buf * 2;
++		int16_t *dst_ptr = (int16_t *)iio_block_start(block) + items_in_buf * 2;
+ 		memcpy(dst_ptr, buffs[0], 2 * sizeof(int16_t) * items);
+ 	}
+ 	else if (direct_copy && format == PLUTO_SDR_CS12) {
+ 
+-		int16_t *dst_ptr = (int16_t *)iio_buffer_start(buf) + items_in_buf * 2;
++		int16_t *dst_ptr = (int16_t *)iio_block_start(block) + items_in_buf * 2;
+ 		uint8_t const *samples_cs12 = (uint8_t *)buffs[0];
+ 
+ 		for (size_t index = 0; index < items; ++index) {
+@@ -769,7 +840,7 @@
+ 	}
+ 	else if (direct_copy && format == PLUTO_SDR_CS8) {
+ 
+-		int16_t *dst_ptr = (int16_t *)iio_buffer_start(buf) + items_in_buf * 2;
++		int16_t *dst_ptr = (int16_t *)iio_block_start(block) + items_in_buf * 2;
+ 		int8_t const *samples_cs8 = (int8_t *)buffs[0];
+ 
+ 		for (size_t index = 0; index < items * 2; ++index) {
+@@ -790,7 +861,7 @@
+ 		iio_channel *chn = channel_list[k];
+ 		unsigned int index = k / 2;
+ 
+-		uint8_t *dst_ptr = (uint8_t *)iio_buffer_first(buf, chn) + items_in_buf * buf_step;
++		uint8_t *dst_ptr = (uint8_t *)iio_block_first(block, chn) + items_in_buf * buf_step;
+ 
+ 		// note that TX expects samples MSB aligned, unlike RX which is LSB aligned
+ 		if (format == PLUTO_SDR_CS16) {
+@@ -828,15 +899,10 @@
+ 	items_in_buf += items;
+ 
+ 	if (items_in_buf == this->buffer_size || (flags & SOAPY_SDR_END_BURST && numElems == items)) {
+-		int ret = send_buf();
+-
+-		if (ret < 0) {
++		if (send_buf() < 0) {
+ 			return SOAPY_SDR_ERROR;
+ 		}
+ 
+-		if ((size_t)ret != this->buffer_size) {
+-			return SOAPY_SDR_ERROR;
+-		}
+ 	}
+ 
+ 	return items;
+@@ -850,27 +916,23 @@
+ 
+ int tx_streamer::send_buf()
+ {
+-    if (!buf) {
++    if (!block) {
+         return 0;
+     }
+ 
+ 	if (items_in_buf > 0) {
+-		if (items_in_buf < this->buffer_size) {
+-			ptrdiff_t buf_step = iio_buffer_step(buf);
+-			uint8_t *buf_ptr = (uint8_t *)iio_buffer_start(buf) + items_in_buf * buf_step;
+-			uint8_t *buf_end = (uint8_t *)iio_buffer_end(buf);
++		size_t bytes_used = items_in_buf * sample_size;
+ 
+-			memset(buf_ptr, 0, buf_end - buf_ptr);
++		if (iio_block_enqueue(block, bytes_used, false) < 0) {
++			return SOAPY_SDR_ERROR;
+ 		}
+-
+-		ssize_t ret = iio_buffer_push(buf);
+-		items_in_buf = 0;
+-
+-		if (ret < 0) {
+-			return ret;
++		if (iio_block_dequeue(block, false) < 0) {
++			return SOAPY_SDR_ERROR;
+ 		}
++		int sent = (int)items_in_buf;
++		items_in_buf = 0;
+ 
+-		return int(ret / iio_buffer_step(buf));
++		return sent;
+ 	}
+ 
+ 	return 0;
+@@ -884,17 +946,14 @@
+ 	if (channel_list.size() != 2) // one TX with I/Q
+ 		return false;
+ 
+-	ptrdiff_t buf_step = iio_buffer_step(buf);
+-
+-	if (buf_step != 2 * sizeof(int16_t))
++	if (sample_size != 2 * sizeof(int16_t))
+ 		return false;
+ 
+-	if (iio_buffer_start(buf) != iio_buffer_first(buf, channel_list[0]))
++	if (iio_block_start(block) != iio_block_first(block, channel_list[0]))
+ 		return false;
+ 
+ 	int16_t test_dst, test_src = 0x1234;
+ 	iio_channel_convert_inverse(channel_list[0], &test_dst, (const void *)&test_src);
+ 
+ 	return test_src == test_dst;
+-
+ }

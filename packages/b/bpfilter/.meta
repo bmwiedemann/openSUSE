@@ -1,0 +1,6 @@
+<package name="bpfilter" project="openSUSE:Factory">
+  <title>BPF-based packet filtering framework</title>
+  <description>BPF-based packet filtering framework to convert text-format filtering rules
+into BPF programs attach to your kernel.</description>
+  <url>https://bpfilter.io</url>
+</package>

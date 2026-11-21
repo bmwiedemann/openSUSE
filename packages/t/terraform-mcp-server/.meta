@@ -1,0 +1,5 @@
+<package name="terraform-mcp-server" project="openSUSE:Factory">
+  <title>Official Terraform MCP server for Infrastructure as Code</title>
+  <description>The Terraform MCP Server is a Model Context Protocol (MCP) server that integrates with the Terraform Registry and HCP Terraform (Terraform Cloud) APIs, enabling automation and interaction capabilities for Infrastructure as Code (IaC) development. It exposes Terraform Registry modules, providers and policies as MCP tools and resources for AI assistants.</description>
+  <url>https://github.com/hashicorp/terraform-mcp-server</url>
+</package>

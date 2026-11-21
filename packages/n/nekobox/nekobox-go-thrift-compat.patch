@@ -1,0 +1,116 @@
+diff -u -r a/core/CMakeLists.txt b/core/CMakeLists.txt
+--- a/core/CMakeLists.txt	2026-11-17 15:55:21.172792324 +0100
++++ b/core/CMakeLists.txt	2026-11-17 15:55:21.201120436 +0100
+@@ -212,6 +212,7 @@
+ add_env_var("GOROOT" "${GOROOT}")
+ add_env_var("CGO_ENABLED" "1")
+ add_env_var("GOTOOLCHAIN" "local")
++add_env_var("GOEXPERIMENT" "nojsonv2")
+ 
+ # ----------------------------
+ # Updater build (optional)
+diff -u -r a/core/server/vendor/github.com/apache/thrift/lib/go/thrift/protocol.go b/core/server/vendor/github.com/apache/thrift/lib/go/thrift/protocol.go
+--- a/core/server/vendor/github.com/apache/thrift/lib/go/thrift/protocol.go	2026-11-17 15:55:21.173550121 +0100
++++ b/core/server/vendor/github.com/apache/thrift/lib/go/thrift/protocol.go	2026-11-17 15:55:21.201329720 +0100
+@@ -186,3 +186,15 @@
+ 		return NewTProtocolExceptionWithType(INVALID_DATA, fmt.Errorf("Unknown data type %d", fieldType))
+ 	}
+ }
++
++const maxPreallocSize = 1024
++
++func PreallocSize(size int) int {
++	if size < 0 {
++		return 0
++	}
++	if size > maxPreallocSize {
++		return maxPreallocSize
++	}
++	return size
++}
+diff -u -r a/core/server/vendor/github.com/sagernet/sing-box/transport/v2rayhttp/force_close.go b/core/server/vendor/github.com/sagernet/sing-box/transport/v2rayhttp/force_close.go
+--- a/core/server/vendor/github.com/sagernet/sing-box/transport/v2rayhttp/force_close.go	2026-11-17 15:55:21.174251371 +0100
++++ b/core/server/vendor/github.com/sagernet/sing-box/transport/v2rayhttp/force_close.go	2026-11-17 15:55:21.201455907 +0100
+@@ -28,20 +28,11 @@
+ 		transport.CloseIdleConnections()
+ 		return transport.Clone()
+ 	case *http2.Transport:
+-		connPool := transportConnPool(transport)
+-		p := (*clientConnPool)((*efaceWords)(unsafe.Pointer(&connPool)).data)
+-		p.mu.Lock()
+-		defer p.mu.Unlock()
+-		for _, vv := range p.conns {
+-			for _, cc := range vv {
+-				cc.Close()
+-			}
+-		}
++		transport.CloseIdleConnections()
+ 		return transport
+ 	default:
+ 		panic(E.New("unknown transport type: ", reflect.TypeOf(transport)))
+ 	}
+ }
+ 
+-//go:linkname transportConnPool golang.org/x/net/http2.(*Transport).connPool
+-func transportConnPool(t *http2.Transport) http2.ClientConnPool
++
+diff -u -r a/core/server/vendor/github.com/sagernet/sing-box/transport/v2rayxhttp/dialer.go b/core/server/vendor/github.com/sagernet/sing-box/transport/v2rayxhttp/dialer.go
+--- a/core/server/vendor/github.com/sagernet/sing-box/transport/v2rayxhttp/dialer.go	2026-11-17 15:55:21.174431250 +0100
++++ b/core/server/vendor/github.com/sagernet/sing-box/transport/v2rayxhttp/dialer.go	2026-11-17 15:55:21.201572547 +0100
+@@ -56,8 +56,7 @@
+ 	data unsafe.Pointer
+ }
+ 
+-//go:linkname transportConnPool golang.org/x/net/http2.(*Transport).connPool
+-func transportConnPool(t *http2.Transport) http2.ClientConnPool
++
+ 
+ func (c *DefaultDialerClient) Close() {
+ 	c.mtx.Lock()
+@@ -70,15 +69,7 @@
+ 		case *http.Transport:
+ 			transport.CloseIdleConnections()
+ 		case *http2.Transport:
+-			connPool := transportConnPool(transport)
+-			p := (*clientConnPool)((*efaceWords)(unsafe.Pointer(&connPool)).data)
+-			p.mu.Lock()
+-			defer p.mu.Unlock()
+-			for _, vv := range p.conns {
+-				for _, cc := range vv {
+-					cc.Close()
+-				}
+-			}
++			transport.CloseIdleConnections()
+ 		case *http3.Transport:
+ 			transport.Close()
+ 		default:
+diff -u -r a/core/server/vendor/github.com/xchacha20-poly1305/sing-trusttunnel/force_close.go b/core/server/vendor/github.com/xchacha20-poly1305/sing-trusttunnel/force_close.go
+--- a/core/server/vendor/github.com/xchacha20-poly1305/sing-trusttunnel/force_close.go	2026-11-17 15:55:21.174725263 +0100
++++ b/core/server/vendor/github.com/xchacha20-poly1305/sing-trusttunnel/force_close.go	2026-11-17 15:55:21.201716848 +0100
+@@ -16,15 +16,7 @@
+ 	roundTripper.CloseIdleConnections()
+ 	_ = common.Close(roundTripper) // Can close http3 connections
+ 	if h2Transport, isH2Transport := roundTripper.(*http2.Transport); isH2Transport {
+-		connPool := transportConnPool(h2Transport)
+-		p := (*h2ClientConnPool)((*efaceWords)(unsafe.Pointer(&connPool)).data)
+-		p.mu.Lock()
+-		defer p.mu.Unlock()
+-		for _, clientConns := range p.conns {
+-			for _, clientConn := range clientConns {
+-				_ = clientConn.Close()
+-			}
+-		}
++		h2Transport.CloseIdleConnections()
+ 		return
+ 	}
+ }
+@@ -34,8 +26,7 @@
+ 	data unsafe.Pointer
+ }
+ 
+-//go:linkname transportConnPool golang.org/x/net/http2.(*Transport).connPool
+-func transportConnPool(t *http2.Transport) http2.ClientConnPool
++
+ 
+ type h2ClientConnPool struct {
+ 	t *http2.Transport

@@ -1,0 +1,98 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: [PATCH] Do not install language servers, debuggers or other tools
+
+The Language Servers page and the missing-server notice offer to download
+and install a tool into the IDE's data directory (npm, pip, go install,
+gem, dotnet, rustup, or a GitHub, Open VSX or Maven Central release) and
+then run it. Report every tool as not installable instead, with a
+message that names the openSUSE package where one exists (zypper install
+clang, gopls, python3-pyright, ...) or says it is not packaged.
+The missing-server notice shows that message without an Install button.
+Tools on PATH, set in the settings or installed earlier are still found
+and used; the detection test now checks the message as well.
+
+--- a/crates/ide-tools/src/lib.rs
++++ b/crates/ide-tools/src/lib.rs
+@@ -622,8 +622,32 @@
+ 
+     /// Requirement check for installing `spec` right now.
+     fn unavailable_reason(&self, spec: &ToolSpec) -> Option<String> {
+-        self.method_missing(self.install_method(spec))
+-            .or_else(|| spec.needs.iter().find(|(cmd, _)| self.which(cmd).is_none()).map(|(_, why)| why.to_string()))
++        // Distribution build: tools are never downloaded or installed here; they come
++        // from the distribution and are still found on PATH as before.
++        let package = match spec.name {
++            "clangd" => Some("clang"),
++            "debugpy" => Some("python3-debugpy"),
++            "delve" => Some("delve"),
++            "gopls" => Some("gopls"),
++            "lua-language-server" => Some("lua-language-server"),
++            "neocmakelsp" => Some("neocmakelsp"),
++            "pyright" => Some("python3-pyright"),
++            "taplo" => Some("taplo"),
++            "texlab" => Some("texlab"),
++            "ty" => Some("python3-ty"),
++            "zls" => Some("zls"),
++            _ => None,
++        };
++        Some(match package {
++            Some(pkg) => format!(
++                "Installing tools is disabled in this build: install {} from your distribution (zypper install {pkg}).",
++                spec.display
++            ),
++            None => format!(
++                "Installing tools is disabled in this build, and {} is not packaged for openSUSE: install it yourself.",
++                spec.display
++            ),
++        })
+     }
+ 
+     /// What the install method itself lacks (npm, a build for this platform, …).
+--- a/crates/ide-tools/src/tests.rs
++++ b/crates/ide-tools/src/tests.rs
+@@ -146,9 +146,11 @@
+     assert_eq!(gopls.path.as_deref(), Some(env.sys.join("gopls").as_path()));
+     assert!(!gopls.can_uninstall);
+     assert_eq!(find(&list, "solargraph").status, ToolStatus::OnPath);
+-    // curl present → release tools are installable (on platforms with a build).
++    // Distribution build: nothing is installable; the reason names the package, if any.
+     let marksman = find(&list, "marksman");
+-    assert!(marksman.can_install, "{:?}", marksman.unavailable_reason);
++    assert!(!marksman.can_install);
++    assert!(marksman.unavailable_reason.as_deref().unwrap().contains("not packaged for openSUSE"));
++    assert!(gopls.unavailable_reason.as_deref().unwrap().contains("(zypper install gopls)"));
+ }
+ 
+ #[cfg(unix)]
+--- a/src/features/tools/missing.ts
++++ b/src/features/tools/missing.ts
+@@ -25,7 +25,8 @@
+ ): Promise<boolean> {
+   if (!useTools.getState().loaded) await refreshTools();
+   const tool = toolByName(name);
+-  if (!tool || !tool.canInstall || tool.status !== "missing") return false;
++  // Distribution build: say where to get a tool that cannot be installed here.
++  if (!tool || tool.status !== "missing" || (!tool.canInstall && !tool.unavailableReason)) return false;
+   const position = tool.alternatives.indexOf(name);
+   if (position > 0 && tool.alternatives.slice(0, position).some((n) => offered.has(n))) return false;
+   formatter ||= tool.kind === "formatter";
+@@ -46,13 +47,15 @@
+     group: "tools",
+     level: "warning",
+     title: tx`${tool.displayName} is not installed`,
+-    body: formatter
+-      ? tx`Reformat Code needs ${tool.displayName}. Install it via ${tool.installMethod}?`
+-      : tx`Code insight for ${langs} needs ${tool.command}. Install it via ${tool.installMethod}?`,
++    body: !tool.canInstall
++      ? tool.unavailableReason
++      : formatter
++        ? tx`Reformat Code needs ${tool.displayName}. Install it via ${tool.installMethod}?`
++        : tx`Code insight for ${langs} needs ${tool.command}. Install it via ${tool.installMethod}?`,
+     key,
+     sticky,
+     actions: [
+-      { label: "Install", run: () => void installTool(name, { notificationKey: key }) },
++      ...(tool.canInstall ? [{ label: "Install", run: () => void installTool(name, { notificationKey: key }) }] : []),
+       { label: "Language Servers…", run: () => void executeAction("file.settings", SETTINGS_PAGE_ID) },
+     ],
+   });

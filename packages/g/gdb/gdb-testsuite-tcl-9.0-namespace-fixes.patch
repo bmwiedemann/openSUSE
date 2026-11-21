@@ -1,0 +1,137 @@
+From d6d9ba7290fda61404de91b491f62ed880b9897e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 20 Mar 2026 10:13:27 +0100
+Subject: [PATCH 2/9] [gdb/testsuite, Tcl 9.0] Namespace fixes
+
+A few test-cases wrap code in namespaces.
+
+Since Tcl 9.0, globals are no longer directly available inside namespaces.
+
+Fix this by redeclaring using upvar.
+
+Also, referring to variables in namespaces needs to be done using fully
+qualified names.  Fix this by adding a :: prefix.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33948
+---
+ gdb/testsuite/gdb.dap/bt-nodebug.exp       | 2 +-
+ gdb/testsuite/gdb.dwarf2/implptr-64bit.exp | 4 ++--
+ gdb/testsuite/gdb.linespec/cpexplicit.exp  | 2 ++
+ gdb/testsuite/gdb.linespec/explicit.exp    | 7 +++++--
+ gdb/testsuite/gdb.multi/multi-kill.exp     | 2 ++
+ gdb/testsuite/gdb.tui/tuiterm-2.exp        | 4 ++--
+ 6 files changed, 14 insertions(+), 7 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.dap/bt-nodebug.exp b/gdb/testsuite/gdb.dap/bt-nodebug.exp
+index 3053f8c446f..378e80933b8 100644
+--- a/gdb/testsuite/gdb.dap/bt-nodebug.exp
++++ b/gdb/testsuite/gdb.dap/bt-nodebug.exp
+@@ -73,7 +73,7 @@ gdb_assert {[dict exists [lindex $breakpoints 0] instructionReference]} \
+ # TON form.
+ set list_form [namespace eval ton::2list $last_ton]
+ set ref [namespace eval ton::2list {
+-    get $list_form body breakpoints 0 instructionReference
++    get $::list_form body breakpoints 0 instructionReference
+ }]
+ gdb_assert {[regexp "^$hex\$" $ref]} \
+     "instructionReference is a hex string"
+diff --git a/gdb/testsuite/gdb.dwarf2/implptr-64bit.exp b/gdb/testsuite/gdb.dwarf2/implptr-64bit.exp
+index c4496f183d4..b519300122e 100644
+--- a/gdb/testsuite/gdb.dwarf2/implptr-64bit.exp
++++ b/gdb/testsuite/gdb.dwarf2/implptr-64bit.exp
+@@ -63,8 +63,8 @@ proc test_1 { name dwarf_version offset_size addr_size ref_addr_size two_cu } {
+ 		}
+ 
+ 		pointer_label: pointer_type {
+-		    { byte_size $Dwarf::_cu_addr_size sdata }
+-		    { type  :$struct_label }
++		    { DW_AT_byte_size $::Dwarf::_cu_addr_size sdata }
++		    { DW_AT_type :$struct_label }
+ 		}
+ 
+ 		variable_label: DW_TAG_variable {
+diff --git a/gdb/testsuite/gdb.linespec/cpexplicit.exp b/gdb/testsuite/gdb.linespec/cpexplicit.exp
+index bd414a4bc08..32ff0c15be4 100644
+--- a/gdb/testsuite/gdb.linespec/cpexplicit.exp
++++ b/gdb/testsuite/gdb.linespec/cpexplicit.exp
+@@ -27,6 +27,8 @@ if {[prepare_for_testing "failed to prepare" $exefile $srcfile \
+ 
+ # Wrap this whole test in a namespace to avoid contaminating other tests.
+ namespace eval $testfile {
++    upvar #0 ::srcfile srcfile
++
+     # Test the given (explicit) LINESPEC which should cause gdb to break
+     # at LOCATION.
+     proc test_breakpoint {linespec location} {
+diff --git a/gdb/testsuite/gdb.linespec/explicit.exp b/gdb/testsuite/gdb.linespec/explicit.exp
+index b859b4443ee..4b30ea924f8 100644
+--- a/gdb/testsuite/gdb.linespec/explicit.exp
++++ b/gdb/testsuite/gdb.linespec/explicit.exp
+@@ -32,6 +32,9 @@ if {[prepare_for_testing "failed to prepare" $exefile \
+ 
+ # Wrap the entire test in a namespace to avoid contaminating other tests.
+ namespace eval $testfile {
++    upvar #0 ::srcfile srcfile
++    upvar #0 ::gdb_prompt gdb_prompt
++    upvar #0 ::exefile exefile
+ 
+     # Test the given (explicit) LINESPEC which should cause gdb to break
+     # at LOCATION.
+@@ -232,7 +235,7 @@ namespace eval $testfile {
+ 	}
+ 
+ 	with_test_prefix "complete unique file name" {
+-	    foreach qc $completion::maybe_quoted_list {
++	    foreach qc $::completion::maybe_quoted_list {
+ 		set cmd "break -source ${qc}3explicit.c${qc}"
+ 		test_gdb_complete_unique \
+ 		    "break -source ${qc}3ex" \
+@@ -342,7 +345,7 @@ namespace eval $testfile {
+ 	}
+ 
+ 	with_test_prefix "complete unique label name" {
+-	    foreach qc $completion::maybe_quoted_list {
++	    foreach qc $::completion::maybe_quoted_list {
+ 		test_gdb_complete_unique \
+ 		    "break -function myfunction -label ${qc}to" \
+ 		    "break -function myfunction -label ${qc}top${qc}"
+diff --git a/gdb/testsuite/gdb.multi/multi-kill.exp b/gdb/testsuite/gdb.multi/multi-kill.exp
+index 1473372da75..a9f60a732e1 100644
+--- a/gdb/testsuite/gdb.multi/multi-kill.exp
++++ b/gdb/testsuite/gdb.multi/multi-kill.exp
+@@ -41,6 +41,8 @@ save_vars { GDBFLAGS } {
+ 
+ # Wrap the entire test in a namespace to avoid contaminating other tests.
+ namespace eval $testfile {
++    upvar #0 ::gdb_prompt gdb_prompt
++    upvar #0 ::decimal decimal
+ 
+ # Start inferior NUM and record its PID in the TESTPID array.
+ 
+diff --git a/gdb/testsuite/gdb.tui/tuiterm-2.exp b/gdb/testsuite/gdb.tui/tuiterm-2.exp
+index a451834b640..3f46b5cd02f 100644
+--- a/gdb/testsuite/gdb.tui/tuiterm-2.exp
++++ b/gdb/testsuite/gdb.tui/tuiterm-2.exp
+@@ -117,7 +117,7 @@ with_override Term::accept_gdb_output test_accept_gdb_output {
+ 			Term::_move_cursor 0 0
+ 
+ 			Term::_insert "${::border}(gdb) "
+-			set pos $Term::_cur_col
++			set pos $::Term::_cur_col
+ 
+ 			Term::_insert "foo"
+ 
+@@ -130,7 +130,7 @@ with_override Term::accept_gdb_output test_accept_gdb_output {
+ 			Term::_move_cursor 0 1
+ 
+ 			Term::_insert "${::border}(gdb) "
+-			set pos $Term::_cur_col
++			set pos $::Term::_cur_col
+ 
+ 			Term::_move_cursor 19 1
+ 			Term::_insert "$::border"
+-- 
+2.51.0
+

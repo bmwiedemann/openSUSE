@@ -1,0 +1,42 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Mon, 9 Nov 2026 09:10:46 +0100
+Subject: drbd/drbd_nl: include umh.h for call_usermodehelper()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+References: 7.4 build fix
+Patch-mainline: https://github.com/LINBIT/drbd/pull/163
+
+To fix build against 7.4:
+drbd_nl.c: In function ‘drbd_khelper’:
+drbd_nl.c:701:15: error: implicit declaration of function ‘call_usermodehelper’ [-Wimplicit-function-declaration]
+  701 |         ret = call_usermodehelper(drbd_usermode_helper, argv, envp, UMH_WAIT_PROC);
+      |               ^~~~~~~~~~~~~~~~~~~
+drbd_nl.c:701:69: error: ‘UMH_WAIT_PROC’ undeclared (first use in this function)
+  701 |         ret = call_usermodehelper(drbd_usermode_helper, argv, envp, UMH_WAIT_PROC);
+      |                                                                     ^~~~~~~~~~~~~
+drbd_nl.c:701:69: note: each undeclared identifier is reported only once for each function it appears in
+
+In 7.4, commit d6bfb4a05aff ("module: Bring includes in linux/kmod.h up
+to date") removed umh.h include from kmod.h.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ drbd/drbd_nl.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index ec9027e973e9..340b7025e148 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -22,6 +22,7 @@
+ #include <linux/blkpg.h>
+ #include <linux/cpumask.h>
+ #include <linux/random.h>
++#include <linux/umh.h>
+ #include "drbd_int.h"
+ #include "drbd_protocol.h"
+ #include "drbd_req.h"
+-- 
+2.56.0
+

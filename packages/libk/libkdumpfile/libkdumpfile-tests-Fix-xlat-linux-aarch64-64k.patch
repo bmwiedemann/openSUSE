@@ -1,0 +1,35 @@
+From cf58d08100cc4eed37cfe09afd43243f4f7dd744 Mon Sep 17 00:00:00 2001
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Tue, 3 Nov 2026 23:01:46 +0100
+Subject: tests: Fix xlat-linux-aarch64-5.16-64k configured VA
+Upstream: merged
+Git-commit: cf58d08100cc4eed37cfe09afd43243f4f7dd744
+
+This test in fact checks a Linux kernel configured for 48-bit VA, but
+NUMBER(VA_BITS) is incorrect (probably incorrectly copied from another
+test).
+
+Acked-by: Petr Tesarik <ptesarik@suse.com>
+---
+ tests/xlat-linux-aarch64-5.16-64k.sym | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/xlat-linux-aarch64-5.16-64k.sym b/tests/xlat-linux-aarch64-5.16-64k.sym
+index b37a59b..638cfa6 100644
+--- a/tests/xlat-linux-aarch64-5.16-64k.sym
++++ b/tests/xlat-linux-aarch64-5.16-64k.sym
+@@ -3,9 +3,9 @@ ffffd6d243410000
+ @VALUE(swapper_pg_dir)
+ ffffd6d244f00000
+ 
+-# Configured for 52-bit VA:
++# Configured for 48-bit VA:
+ @NUMBER(VA_BITS)
+-34
++30
+ 
+ # Booted with 48-bit VA:
+ @NUMBER(TCR_EL1_T1SZ)
+-- 
+2.55.0
+

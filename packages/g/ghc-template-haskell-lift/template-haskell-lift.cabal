@@ -1,0 +1,34 @@
+cabal-version: 3.0
+name: template-haskell-lift
+version: 0.1.0.0
+synopsis: The 'Lift' typeclass.
+description: The stable home of TemplateHaskell's 'Lift' typeclass, which implements cross-stage persistence for Template Haskell.
+category: Development
+license: BSD-2-Clause
+license-file: LICENSE
+author: Teo Camarasu
+maintainer: Teo Camarasu <teofilcamarasu@gmail.com>, GHC developers <ghc-devs@haskell.org>
+copyright: template-haskell-lift contributors
+bug-reports: https://gitlab.haskell.org/ghc/template-haskell-lift/-/issues
+build-type: Simple
+extra-doc-files: CHANGELOG.md
+tested-with:
+  ghc ==8.10.7 || ==9.0.2 || ==9.2.8 || ==9.4.8 || ==9.6.7 || ==9.8.4 || ==9.10.2 || ==9.12.2
+x-revision: 1
+
+source-repository head
+  type: git
+  location: https://gitlab.haskell.org/ghc/template-haskell-lift.git
+
+library
+  ghc-options: -Wall
+  exposed-modules: Language.Haskell.TH.Lift
+  build-depends: base >=4.14 && <4.23
+
+  if impl(ghc >=9.12)
+    build-depends: ghc-internal >=9.1000 && <9.1600
+  else
+    build-depends: template-haskell >=2.16 && <2.23
+
+  hs-source-dirs: src
+  default-language: Haskell2010

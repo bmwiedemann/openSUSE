@@ -1,0 +1,96 @@
+From: lbonn <github@lbonnans.net>
+Date: Fri, 13 Nov 2026 12:23:01 +0100
+Subject: wayland: fix race with wlr layer configuration
+References: https://github.com/davatorium/rofi/issues/2353
+Patch-mainline: Submitted, https://github.com/davatorium/rofi/pull/2359
+Git-commit: ada8e969ef5f3d50f0755b60cf77a9c677bb557b
+
+A single wl_display_roundtrip does not guarantee that the layer will be
+ready after that. In some conditions we would then start the view
+without a layer which led to hangs or crashes (observed on somewm)
+
+The .gitignore change is omitted because release tarballs do not
+include that file. All source changes are retained.
+---
+ include/wayland-internal.h |    1 +
+ source/wayland/display.c   |   13 ++++++++++++-
+ source/wayland/view.c      |   12 +++---------
+ 3 files changed, 16 insertions(+), 10 deletions(-)
+
+--- a/include/wayland-internal.h
++++ b/include/wayland-internal.h
+@@ -92,6 +92,7 @@
+ 
+   uint32_t layer_width;
+   uint32_t layer_height;
++  gboolean layer_configured;
+ 
+   struct zwp_text_input_manager_v3 *text_input_manager;
+ } wayland_stuff;
+--- a/source/wayland/display.c
++++ b/source/wayland/display.c
+@@ -1825,6 +1825,7 @@
+     uint32_t width, uint32_t height) {
+   wayland->layer_width = width;
+   wayland->layer_height = height;
++  wayland->layer_configured = TRUE;
+   zwlr_layer_surface_v1_ack_configure(surface, serial);
+ }
+ 
+@@ -2010,8 +2011,18 @@
+ 
+   wl_surface_add_listener(wayland->surface, &wayland_surface_interface,
+                           wayland);
++  wayland->layer_configured = FALSE;
+   wl_surface_commit(wayland->surface);
+-  wl_display_roundtrip(wayland->display);
++
++  // The contract is that layer shell configure callback should be called before
++  // we return and the view is started.
++  // As late_setup is assumed to be synchronous, we run the loop until the
++  // condition is reached.
++  while (!wayland->layer_configured) {
++    if (wl_display_dispatch(wayland->display) < 0) {
++      return FALSE;
++    }
++  }
+   wayland_frame_callback(wayland, wayland->frame_cb, 0);
+ 
+   return TRUE;
+--- a/source/wayland/view.c
++++ b/source/wayland/view.c
+@@ -29,14 +29,7 @@
+ #define G_LOG_DOMAIN "View"
+ 
+ #include <config.h>
+-#include <errno.h>
+-#include <locale.h>
+-#include <signal.h>
+ #include <stdint.h>
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <time.h>
+ #include <unistd.h>
+ 
+ #include <cairo.h>
+@@ -47,9 +40,7 @@
+ 
+ #include "display.h"
+ #include "helper-theme.h"
+-#include "helper.h"
+ #include "mode.h"
+-#include "modes/modes.h"
+ 
+ #include "view-internal.h"
+ #include "view.h"
+@@ -430,6 +421,9 @@
+ 
+   if (state->pool == NULL) {
+     state->pool = display_buffer_pool_new(buffer_width, buffer_height);
++    if (state->pool == NULL) {
++      return;
++    }
+   }
+ 
+   cairo_surface_t *surface = display_buffer_pool_get_next_buffer(state->pool);

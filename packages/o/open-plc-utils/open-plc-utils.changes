@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Nov  5 16:08:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package open-plc-utils 0.0.6~git20260908.5e02957:
+  Qualcomm Atheros HomePlug powerline toolkit (plcstat, plctool,
+  int6k and 106 more tools with man pages). Upstream has no
+  versioned releases, so this is a pinned git snapshot. Installed
+  to /usr with no setuid bits; the tools open raw sockets, so
+  they run as root or with cap_net_raw.
+- Use the default %setup top dir, which matches the service
+  tarball; the fixed short name does not exist in it.
+- Drop the redundant DESTDIR from %make_install (the macro
+  already sets it).

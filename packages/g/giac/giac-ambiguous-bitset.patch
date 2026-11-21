@@ -1,0 +1,11 @@
+--- a/src/optimization.cc	2026-11-17 15:31:57.599132266 +0100
++++ b/src/optimization.cc	2026-11-17 15:31:57.615560150 +0100
+@@ -1271,7 +1271,7 @@
+     vector<ulong> sets(comb(n,m).val);
+     int i=0;
+     for (ulong k=1;k<N;++k) {
+-        bitset<32> b(k);
++        std::bitset<32> b(k);
+         if (b.count()==(size_t)m)
+             sets[i++]=k;
+     }

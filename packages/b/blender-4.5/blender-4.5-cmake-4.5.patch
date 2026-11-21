@@ -1,0 +1,13 @@
+Index: blender-4.5.16/source/creator/CMakeLists.txt
+===================================================================
+--- blender-4.5.16.orig/source/creator/CMakeLists.txt
++++ blender-4.5.16/source/creator/CMakeLists.txt
+@@ -2089,7 +2089,7 @@ detect_leaks=0\"\n\
+   )\n\
+ endif()\n\
+ "
+-        DEPENDS blender
++        BUILD_DEPENDS blender
+       )
+ 
+       if(WITH_INSTALL_PORTABLE)

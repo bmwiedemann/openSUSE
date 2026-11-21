@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d8a4986cb7f5e99d47b5cc2f4cb877f</srcmd5>
+    <version>0.1.8</version>
+    <time>1793724841</time>
+    <user>anag_factory</user>
+    <comment>Initial package hatchzip 0.1.8</comment>
+    <requestid>1393954</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3e1dbf6d4535c71eb0c6b763cfc2eb16</srcmd5>
+    <version>0.1.9</version>
+    <time>1793991457</time>
+    <user>anag_factory</user>
+    <comment>Update hatchzip to 0.1.9: harden archive extraction against traversal, verify files before truncate.</comment>
+    <requestid>1395752</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>34da4a1e3c7f4af5da94646d5057ab2f</srcmd5>
+    <version>0.1.10</version>
+    <time>1794318250</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.10</comment>
+    <requestid>1396477</requestid>
+  </revision>
+</revisionlist>

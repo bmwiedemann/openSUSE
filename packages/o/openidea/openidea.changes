@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Sat Nov  7 13:48:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.38:
+  * Plugins: Plugin API 1.2 (user prompts, selected files,
+    context keys, file clauses, item menus, custom icons);
+    background document indexer; API 1.0 and 1.1 keep loading
+  * Run/debug: Docker and Compose run targets; PHP Remote Debug
+    (Xdebug) with php-debug and Bash Debug install offers;
+    debug console search; Ruby test tree with gutter actions
+    and SimpleCov coverage; rerun uses the edited configuration
+  * Languages: Astro support; PHPStan on save, PHP-CS-Fixer
+    reformat, composer.json namespaces and install offer;
+    Python semantic highlighting and Ruff with config dirs;
+    log highlighting
+  * Database: Oracle data sources; one-row extractor; keyboard
+    table edits
+  * Version control: added/removed lines in the Git log; diff
+    marks; preview diff; delete from Changes view
+  * Desktop: update-source choice (CNB mirror); restored
+    terminal tabs; trusted folders; middle-click close;
+    Wayland on NVIDIA
+  * Rebase distro patches (Lombok agent 1.18.48-openidea.3,
+    java-usages 1.7.0); node modules unchanged; skip the new
+    ruby-lsp installer test
+
+-------------------------------------------------------------------
+Fri Nov  6 08:05:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.37 (through 0.1.36):
+  * Plugins: Plugin API 1.1 (1.0 frozen and still loads);
+    marketplace index loads on first open; components must link
+    against the host
+  * Remote: open WSL projects through a WSL transport; failed
+    SSH uploads reported instead of hanging
+  * Run/debug: Flutter apps through the debug adapter; Spring
+    Boot and Application from the project root; Python -m for
+    relative imports; Gradle tests stream into the test tree
+  * Java: link/unlink independent Gradle builds; Maven
+    settings.xml profiles and mvnd; Android Logcat tool window
+  * Version control: Git Blame on either side of a diff;
+    current worktree marked; delete unversioned files
+  * Editor: PHP level switch and live templates; Unity
+    detection; gutter colour swatches; per-file find bar
+  * Database: global data sources; paginated query results
+  * From 0.1.36: plugin system preview and marketplace,
+    run-configuration import, merge editor, Tomcat from built
+    classes, CMake builds, terminal tab groups, French and
+    Korean translations
+  * Rebase distro patches (jar exclusions moved to java/)
+
+-------------------------------------------------------------------
+Tue Nov  3 18:30:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.35 (through 0.1.34):
+  * Java/Spring: find endpoints by request path, navigate
+    configuration keys, Maven resolves with the tool-window
+    profiles, library classes behind jar: URIs open
+  * Python: Ruff and Pyrefly language servers, Django test
+    configurations, scripts run with the project interpreter
+  * Editor: D and ERB modes, JSP highlighting, Go Module
+    template, npm scripts from package.json gutter icons
+  * Run/debug: .NET configurations, Cargo dependency updates,
+    CMake profiles
+  * Git: inline blame, Local Changes diff preview, worktree
+    discovery
+  * Agents: configurable executable per built-in agent,
+    one-click Copilot ACP registry install
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Rebase openidea-no-server-download.patch (upstream renamed
+  data_dir to local_data_dir), openidea-no-prebuilt-jars.patch
+  (Lombok agent 1.18.48-openidea.2 with the ECJ constructor fix,
+  java-usages 1.2.1) and openidea-no-agent-installs.patch (new
+  one-click ACP registry install: PATH adapters stay editable
+  and hide their registry twins); skip the new
+  python_servers_name_uv test, which exercises the disabled
+  tool installers
+- Vendored npm set gains @codemirror/lang-java and @lezer/java
+  for JSP highlighting; the cargo vendor tree is unchanged
+
+-------------------------------------------------------------------
+Sun Nov  1 20:56:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package openidea 0.1.33: an IntelliJ IDEA-style IDE with a
+  Rust core, built as a Tauri desktop app on the system WebKitGTK.
+  * The frontend is built offline with the system Node.js from
+    vendored npm tarballs; the rolldown and lightningcss bindings
+    vite needs are built from source.
+  * Prebuilt jars and wasm modules are removed from the sources.
+  * Pass -fno-strict-aliasing to the vendored tree-sitter grammars,
+    avoiding the heap corruption of their old array.h on aarch64
+    (gh#tree-sitter/tree-sitter-haskell#144).
+  * openidea-server subpackage: the remote development server,
+    which the IDE uploads to Linux hosts of the same architecture;
+    they need libsqlite3 and a glibc at least as new as
+    Tumbleweed's.
+- Add openidea-no-self-update.patch: disable the in-app updater,
+  updates come from the distribution.
+- Add openidea-no-server-download.patch: do not download upstream's
+  prebuilt openidea-server for remote development hosts.
+- Add openidea-no-prebuilt-jars.patch: drop the embedded prebuilt
+  JDT LS extensions and patched Lombok agent; jdtls takes Lombok
+  from the project's Maven or Gradle cache or a -javaagent option.
+- Add openidea-npm-build-deps.patch: vendor only the npm packages
+  the build and the frontend tests use.
+- Add openidea-rlib-only.patch: skip the mobile staticlib and
+  cdylib library types, which cost two extra LTO passes.
+- Add openidea-no-tool-installs.patch: do not download or install
+  language servers, debuggers and formatters; name the openSUSE
+  package to install instead.
+- Add openidea-no-jdk-downloads.patch: do not download JDKs or a
+  Java runtime for jdtls, and find the JDKs in /usr/lib64/jvm.
+- Add openidea-no-agent-installs.patch: do not fetch the ACP
+  Registry or install agents from it, and run the Claude Code and
+  Codex ACP adapters from PATH instead of fetching them with npx.
+- Add openidea-no-coverage-installs.patch: do not offer to install
+  coverage and profiling tools (cargo-llvm-cov, c8, the vitest
+  coverage provider, coverage.py, py-spy) from Run with Coverage
+  and Profile.
+

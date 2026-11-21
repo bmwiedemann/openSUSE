@@ -1,0 +1,148 @@
+From 84b2c6c7c8170ef784bbfebf0ffdffca4eba75e4 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 20 Oct 2026 14:50:47 +0800
+Subject: [PATCH 3/4] blsuki: clean up UTF-16 size handling in LoaderEntries
+ merge
+
+Add UTF16_BYTES() and UTF16_CHARS() helpers and use them in
+set_bli_loader_entries() for allocation, bounds accounting, memcpy
+sizes, and EFI variable write size.
+
+Also simplify visible entry filtering by early-continue, initialize
+prev_id_u16 at declaration, and free prev_entry immediately after
+filevercmp() so cleanup is centralized and duplicated free paths are
+removed.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/blsuki.c | 35 +++++++++++++++++------------------
+ 1 file changed, 17 insertions(+), 18 deletions(-)
+
+diff --git a/grub-core/commands/blsuki.c b/grub-core/commands/blsuki.c
+index 38caf5a66..f5f80a499 100644
+--- a/grub-core/commands/blsuki.c
++++ b/grub-core/commands/blsuki.c
+@@ -59,6 +59,9 @@ GRUB_MOD_LICENSE ("GPLv3+");
+ #define BLS_EXT_LEN (sizeof (".conf") - 1)
+ #define UKI_EXT_LEN (sizeof (".efi") - 1)
+ 
++#define UTF16_BYTES(num_chars) ((num_chars) * sizeof (grub_efi_char16_t))
++#define UTF16_CHARS(num_bytes) ((num_bytes) / sizeof (grub_efi_char16_t))
++
+ /*
+  * It is highly unlikely to ever receive a large amount of keyval pairs. A
+  * limit of 10000 is more than enough.
+@@ -1660,20 +1663,21 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+ 	  prev_total_bytes = 0;
+ 	}
+     }
+-  efi_entries = grub_malloc (total_u16 * sizeof (grub_efi_char16_t) + prev_total_bytes);
++  efi_entries = grub_malloc (UTF16_BYTES(total_u16) + prev_total_bytes);
+   if (efi_entries == NULL)
+     goto fail;
+ 
+   prev_entries = prev_entries_start;
+   prev_remaining_bytes = prev_total_bytes;
+   p = efi_entries;
+-  remaining_u16 = total_u16 + (prev_total_bytes / sizeof (*efi_entries));
++  remaining_u16 = total_u16 + UTF16_CHARS(prev_total_bytes);
+   /* Create a null separated list of all entries (with the extension removed) */
+   FOR_BLSUKI_ENTRIES (entry)
+     {
+-      if (entry->visible)
+-	{
+-	  grub_size_t id_u8, written_u16;
++      grub_size_t id_u8, written_u16;
++
++      if (!entry->visible)
++        continue;
+ 
+ 	  id_u8 = blsuki_entry_id_len (entry->filename);
+ 
+@@ -1686,12 +1690,11 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+ 	  if (prev_remaining_bytes != 0 && prev_entries)
+ 	    {
+ 	      do {
+-		grub_size_t prev_id_u16;
++		grub_size_t prev_id_u16 = 0;
+ 		grub_size_t prev_utf8_bytes;
+-		grub_size_t prev_remaining_u16 = prev_remaining_bytes / sizeof (*prev_entries);
++		grub_size_t prev_remaining_u16 = UTF16_CHARS(prev_remaining_bytes);
+ 		char *prev_entry = NULL;
+ 
+-		prev_id_u16 = 0;
+ 		/*
+ 		 * LoaderEntries comes from EFI variable storage, so it is only
+ 		 * trusted up to prev_entries_size16 UTF-16 code units. Bound
+@@ -1725,9 +1728,9 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+ 
+ 		*grub_utf16_to_utf8 ((grub_uint8_t*) prev_entry, prev_entries, prev_id_u16) = '\0';
+ 		rc = filevercmp (prev_entry, entry->filename);
++		grub_free (prev_entry);
+ 		if (rc == 0)
+ 		  {
+-		    grub_free (prev_entry);
+ 		    grub_error (GRUB_ERR_BAD_ARGUMENT, N_("duplicate file: `%s'"), entry->filename);
+ 		    goto fail;
+ 		  }
+@@ -1736,18 +1739,16 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+ 		  {
+ 		    if (remaining_u16 < prev_id_u16 + 1)
+ 		      {
+-			grub_free (prev_entry);
+ 			grub_error (GRUB_ERR_OUT_OF_RANGE, "LoaderEntries buffer too small for previous entries");
+ 			goto fail;
+ 		      }
+-		    grub_memcpy (p, prev_entries, prev_id_u16 * sizeof (*prev_entries));
++		    grub_memcpy (p, prev_entries, UTF16_BYTES(prev_id_u16));
+ 		    p += prev_id_u16;
+ 		    *p++ = (grub_efi_char16_t) '\0';
+ 		    remaining_u16 -= prev_id_u16 + 1;
+ 		    prev_entries += prev_id_u16 + 1;
+-		    prev_remaining_bytes -= (prev_id_u16 + 1) * sizeof (*prev_entries);
++		    prev_remaining_bytes -= UTF16_BYTES(prev_id_u16 + 1);
+ 		  }
+-		grub_free (prev_entry);
+ 	      } while (prev_remaining_bytes > 0 && rc > 0);
+ 	    }
+ 
+@@ -1761,7 +1762,6 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+ 	  p += written_u16;
+ 	  *p++ = (grub_efi_char16_t) '\0';
+ 	  remaining_u16 -= written_u16 + 1;
+-	}
+     }
+ 
+     /*
+@@ -1772,9 +1772,8 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+      */
+     if (prev_remaining_bytes != 0 && prev_entries != NULL)
+       {
+-	grub_size_t prev_remaining_u16;
++	grub_size_t prev_remaining_u16 = UTF16_CHARS(prev_remaining_bytes);
+ 
+-	prev_remaining_u16 = prev_remaining_bytes / sizeof (*prev_entries);
+ 	/*
+ 	 * remaining_u16 is tracked in UTF-16 code units, so compare it
+ 	 * against the number of UTF-16 elements left in the previous buffer.
+@@ -1785,7 +1784,7 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+ 	    goto fail;
+ 	  }
+ 
+-	grub_memcpy (p, prev_entries, prev_remaining_u16 * sizeof (*prev_entries));
++	grub_memcpy (p, prev_entries, UTF16_BYTES(prev_remaining_u16));
+ 	p += prev_remaining_u16;
+ 	remaining_u16 -= prev_remaining_u16;
+ 	prev_remaining_bytes = 0;
+@@ -1793,7 +1792,7 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+ 
+   status = grub_efi_set_variable_with_attributes ("LoaderEntries", &bli_vendor_guid,
+ 					 efi_entries,
+-					 (p - efi_entries) * sizeof (*efi_entries),
++					 UTF16_BYTES(p - efi_entries),
+ 					 GRUB_EFI_VARIABLE_BOOTSERVICE_ACCESS |
+ 					 GRUB_EFI_VARIABLE_RUNTIME_ACCESS);
+   /* Record that we set the generated entries by this command to LoaderEntries */
+-- 
+2.56.0
+

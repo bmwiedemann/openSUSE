@@ -1,0 +1,16 @@
+Index: limnoria-2026.5.8/plugins/SedRegex/test.py
+===================================================================
+--- limnoria-2026.5.8.orig/plugins/SedRegex/test.py
++++ limnoria-2026.5.8/plugins/SedRegex/test.py
+@@ -336,7 +336,10 @@ class SedRegexTestCase(ChannelPluginTest
+     def testSpawnContext(self):
+         """Test that SedRegex works with 'spawn' multiprocessing context
+         (Windows compatibility)."""
+-        with useSpawnContext():
++        with (
++            conf.supybot.plugins.sedregex.processTimeout.context(5.0),
++            useSpawnContext(),
++        ):
+             self.feedMsg('hello world')
+             self.feedMsg('s/world/everyone/')
+             m = self.getMsg(' ')

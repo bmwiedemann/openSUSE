@@ -1,0 +1,27 @@
+diff '--color=auto' -urN seamonkey-2.53.23.orig/netwerk/dns/prepare_tlds.py seamonkey-2.53.23/netwerk/dns/prepare_tlds.py
+--- seamonkey-2.53.23.orig/netwerk/dns/prepare_tlds.py	2026-01-14 11:27:37.086575350 +0100
++++ seamonkey-2.53.23/netwerk/dns/prepare_tlds.py	2026-01-14 12:43:25.296604790 +0100
+@@ -4,10 +4,11 @@
+ 
+ import codecs
+ import encodings.idna
++import os
+ import re
+ import sys
+ 
+-from make_dafsa import words_to_bin, words_to_cxx
++from mozfile import load_source
+ 
+ """
+ Processes a file containing effective TLD data.  See the following URL for a
+@@ -107,9 +108,7 @@
+   tld_dir = os.path.dirname(effective_tld_filename)
+   make_dafsa_py = os.path.join(tld_dir, '../../xpcom/ds/make_dafsa.py')
+   sys.path.append(os.path.dirname(make_dafsa_py))
+-  with open(make_dafsa_py, 'r') as fh:
+-    make_dafsa = imp.load_module('script', fh, make_dafsa_py,
+-                                 ('.py', 'r', imp.PY_SOURCE))
++  make_dafsa = load_source("make_dafsa", make_dafsa_py)
+ 
+   def typeEnum(etld):
+     """

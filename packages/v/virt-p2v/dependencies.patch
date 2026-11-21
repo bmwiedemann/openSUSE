@@ -1,0 +1,23 @@
+--- virt-p2v-1.42.4/dependencies.m4.ori	2026-11-19 09:04:01.659184085 -0400
++++ virt-p2v-1.42.4/dependencies.m4	2026-11-19 09:05:38.139808514 -0400
+@@ -111,7 +111,7 @@
+ )
+ 
+ ifelse(SUSE,1,
+-  pcre2
++  libpcre2-8-0
+   libxml2
+   librsvg
+   gtk3
+@@ -129,10 +129,9 @@
+   NetworkManager
+   xf86-input-*
+   icewm-lite
+-  dbus-1-x11
++  dbus-1-daemon
+   yast2-network
+   libyui-qt
+-  SuSEfirewall2
+ )
+ 
+ ifelse(OPENMANDRIVA,1,

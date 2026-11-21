@@ -1,0 +1,21 @@
+--- a/libr/meson.build
++++ b/libr/meson.build
+@@ -242,6 +242,7 @@
+ 
+   bin_plugins += [
+     'art',
++    'pcap',
+     'pyc',
+     'avr',
+     'bflt',
+--- a/libr/bin/meson.build
++++ b/libr/bin/meson.build
+@@ -65,6 +65,8 @@
+   'p/bin_nso.c',
+   'p/bin_omf.c',
+   'p/bin_p9.c',
++  'p/bin_pcap.c',
++  'format/pcap/pcap.c',
+   'p/bin_pe.c',
+   'p/bin_pe64.c',
+   'p/bin_pebble.c',

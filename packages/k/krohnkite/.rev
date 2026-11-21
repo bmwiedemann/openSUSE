@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e6a7c434ee35ef0dbb57caed515515d6</srcmd5>
+    <version>0.9.10.0</version>
+    <time>1795022976</time>
+    <user>anag_factory</user>
+    <comment>Hello,
+
+I would like to submit the `krohnkite` package to `X11:windowmanager`.
+
+`X11:windowmanager` is the ideal home for this package because Krohnkite is a window management tool—specifically, a dynamic tiling extension for KWin 6 that brings advanced tiling (dwm-style) capabilities to the desktop environment. Placing it here makes it easily discoverable for openSUSE users looking for window management and tiling enhancements.
+
+Name: krohnkite
+Summary: Dynamic tiling extension for KWin 6
+Upstream URL: https://codeberg.org/anametologin/Krohnkite
+License: MIT
+Status: Builds cleanly and uses automated `tar_scm` source services.
+
+Thank you for reviewing!</comment>
+    <requestid>1395952</requestid>
+  </revision>
+</revisionlist>

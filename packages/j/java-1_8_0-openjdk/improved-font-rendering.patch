@@ -1,0 +1,1153 @@
+diff --git a/jdk/src/share/classes/sun/font/CMap.java b/jdk/src/share/classes/sun/font/CMap.java
+index 1565a652a5..25108b8bf1 100644
+--- a/jdk/src/share/classes/sun/font/CMap.java
++++ b/jdk/src/share/classes/sun/font/CMap.java
+@@ -191,7 +191,7 @@ abstract class CMap {
+                  * The primary purpose of these mappings was to facilitate
+                  * display of symbol chars etc in composite fonts, however
+                  * this is not needed as all these code points are covered
+-                 * by Lucida Sans Regular.
++                 * by some other platform symbol font.
+                  * Commenting this out reduces the role of these two files
+                  * (assuming that they continue to be used in font.properties)
+                  * to just one of contributing to the overall composite
+diff --git a/jdk/src/share/classes/sun/font/CompositeGlyphMapper.java b/jdk/src/share/classes/sun/font/CompositeGlyphMapper.java
+index f3095e00eb..12c9345913 100644
+--- a/jdk/src/share/classes/sun/font/CompositeGlyphMapper.java
++++ b/jdk/src/share/classes/sun/font/CompositeGlyphMapper.java
+@@ -28,7 +28,7 @@ package sun.font;
+ /* remember that the API requires a Font use a
+  * consistent glyph id. for a code point, and this is a
+  * problem if a particular strike uses native scaler sometimes
+- * and T2K others. That needs to be dealt with somewhere, but
++ * and the JDK scaler others. That needs to be dealt with somewhere, but
+  * here we can just always get the same glyph code without
+  * needing a strike.
+  *
+diff --git a/jdk/src/share/classes/sun/font/ExtendedTextSourceLabel.java b/jdk/src/share/classes/sun/font/ExtendedTextSourceLabel.java
+index 433170b4e3..ce4abeeb04 100644
+--- a/jdk/src/share/classes/sun/font/ExtendedTextSourceLabel.java
++++ b/jdk/src/share/classes/sun/font/ExtendedTextSourceLabel.java
+@@ -550,13 +550,16 @@ class ExtendedTextSourceLabel extends ExtendedTextLabel implements Decoration.La
+     return charinfo;
+   }
+ 
++  private static final boolean DEBUG = FontUtilities.debugFonts();
+ /*
+ * This takes the glyph info record obtained from the glyph vector and converts it into a similar record
+ * adjusted to represent character data instead.  For economy we don't use glyph info records in this processing.
+ *
+ * Here are some constraints:
+ * - there can be more glyphs than characters (glyph insertion, perhaps based on normalization, has taken place)
+-* - there can not be fewer glyphs than characters (0xffff glyphs are inserted for characters ligaturized away)
++* - there can be fewer glyphs than characters
++*   Some layout engines may insert 0xffff glyphs for characters ligaturized away, but
++*   not all do, and it cannot be relied upon.
+ * - each glyph maps to a single character, when multiple glyphs exist for a character they all map to it, but
+ *   no two characters map to the same glyph
+ * - multiple glyphs mapping to the same character need not be in sequence (thai, tamil have split characters)
+@@ -578,7 +581,8 @@ class ExtendedTextSourceLabel extends ExtendedTextLabel implements Decoration.La
+ *
+ * The algorithm works in the following way:
+ * 1) we scan the glyphs ltr or rtl based on the bidi run direction
+-* 2) we can work in place, since we always consume a glyph for each char we write
++* 2) Since the may be fewer glyphs than chars we cannot work in place.
++*    A new array is allocated for output.
+ *    a) if the line is ltr, we start writing at position 0 until we finish, there may be leftver space
+ *    b) if the line is rtl and 1-1, we start writing at position numChars/glyphs - 1 until we finish at 0
+ *    c) otherwise if we don't finish at 0, we have to copy the data down
+@@ -594,7 +598,7 @@ class ExtendedTextSourceLabel extends ExtendedTextLabel implements Decoration.La
+ *       iii) the x advance is the distance to the maximum x + adv of all glyphs whose advance is not zero
+ *       iv) the y advance is the baseline
+ *       v) vis x,y,w,h tightly encloses the vis x,y,w,h of all the glyphs with nonzero w and h
+-* 4) we can make some simple optimizations if we know some things:
++* 4) In the future, we can make some simple optimizations to avoid copying if we know some things:
+ *    a) if the mapping is 1-1, unidirectional, and there are no zero-adv glyphs, we just return the glyphinfo
+ *    b) if the mapping is 1-1, unidirectional, we just adjust the remaining glyphs to originate at right/left of the base
+ *    c) if the mapping is 1-1, we compute the base position and advance as we go, then go back to adjust the remaining glyphs
+@@ -625,23 +629,20 @@ class ExtendedTextSourceLabel extends ExtendedTextLabel implements Decoration.La
+         System.out.println(source);
+     }
+ 
+-    /*
+-    if ((gv.getDescriptionFlags() & 0x7) == 0) {
+-        return glyphinfo;
+-    }
+-    */
+-
+     int numGlyphs = gv.getNumGlyphs();
+     if (numGlyphs == 0) {
+         return glyphinfo;
+     }
+     int[] indices = gv.getGlyphCharIndices(0, numGlyphs, null);
++    float[] charInfo = new float[source.getLength() * numvals];
+ 
+-    boolean DEBUG = false;
+     if (DEBUG) {
+       System.err.println("number of glyphs: " + numGlyphs);
++      System.err.println("glyphinfo.len: " + glyphinfo.length);
++      System.err.println("indices.len: " + indices.length);
+       for (int i = 0; i < numGlyphs; ++i) {
+         System.err.println("g: " + i +
++            "  v: " + gv.getGlyphCode(i) +
+             ", x: " + glyphinfo[i*numvals+posx] +
+             ", a: " + glyphinfo[i*numvals+advx] +
+             ", n: " + indices[i]);
+@@ -650,22 +651,19 @@ class ExtendedTextSourceLabel extends ExtendedTextLabel implements Decoration.La
+ 
+     int minIndex = indices[0];  // smallest index seen this cluster
+     int maxIndex = minIndex;    // largest index seen this cluster
+-    int nextMin = 0;            // expected smallest index for this cluster
+     int cp = 0;                 // character position
+-    int cx = 0;                 // character index (logical)
++    int cc = 0;
+     int gp = 0;                 // glyph position
+     int gx = 0;                 // glyph index (visual)
+     int gxlimit = numGlyphs;    // limit of gx, when we reach this we're done
+     int pdelta = numvals;       // delta for incrementing positions
+     int xdelta = 1;             // delta for incrementing indices
+ 
+-    boolean ltr = (source.getLayoutFlags() & 0x1) == 0;
+-    if (!ltr) {
++    boolean rtl = (source.getLayoutFlags() & 0x1) == 1;
++    if (rtl) {
+         minIndex = indices[numGlyphs - 1];
+         maxIndex = minIndex;
+-        nextMin  = 0; // still logical
+-        cp = glyphinfo.length - numvals;
+-        cx = 0; // still logical
++        cp = charInfo.length - numvals;
+         gp = glyphinfo.length - numvals;
+         gx = numGlyphs - 1;
+         gxlimit = -1;
+@@ -693,46 +691,35 @@ class ExtendedTextSourceLabel extends ExtendedTextLabel implements Decoration.La
+     float cposl = 0, cposr = 0, cvisl = 0, cvist = 0, cvisr = 0, cvisb = 0;
+     float baseline = 0;
+ 
+-    // record if we have to copy data even when no cluster
+-    boolean mustCopy = false;
+-
+     while (gx != gxlimit) {
+         // start of new cluster
+-        boolean haveCopy = false;
+         int clusterExtraGlyphs = 0;
+ 
+         minIndex = indices[gx];
+         maxIndex = minIndex;
+ 
++        cposl = glyphinfo[gp + posx];
++        cposr = cposl + glyphinfo[gp + advx];
++        cvisl = glyphinfo[gp + visx];
++        cvist = glyphinfo[gp + visy];
++        cvisr = cvisl + glyphinfo[gp + visw];
++        cvisb = cvist + glyphinfo[gp + vish];
++
+         // advance to next glyph
+         gx += xdelta;
+         gp += pdelta;
+ 
+- /*
+-        while (gx != gxlimit && (glyphinfo[gp + advx] == 0 ||
+-                           minIndex != nextMin || indices[gx] <= maxIndex)) {
+-  */
+         while (gx != gxlimit &&
+                ((glyphinfo[gp + advx] == 0) ||
+-               (minIndex != nextMin) ||
+                (indices[gx] <= maxIndex) ||
+                (maxIndex - minIndex > clusterExtraGlyphs))) {
+-            // initialize base data first time through, using base glyph
+-            if (!haveCopy) {
+-                int gps = gp - pdelta;
+-
+-                cposl = glyphinfo[gps + posx];
+-                cposr = cposl + glyphinfo[gps + advx];
+-                cvisl = glyphinfo[gps + visx];
+-                cvist = glyphinfo[gps + visy];
+-                cvisr = cvisl + glyphinfo[gps + visw];
+-                cvisb = cvist + glyphinfo[gps + vish];
+-
+-                haveCopy = true;
+-            }
+ 
+-            // have an extra glyph in this cluster
+-            ++clusterExtraGlyphs;
++            ++clusterExtraGlyphs; // have an extra glyph in this cluster
++            if (DEBUG) {
++                System.err.println("gp=" +gp +" adv=" + glyphinfo[gp + advx] +
++                                   " gx="+ gx+ " i[gx]="+indices[gx] +
++                                   " clusterExtraGlyphs="+clusterExtraGlyphs);
++            }
+ 
+             // adjust advance only if new glyph has non-zero advance
+             float radvx = glyphinfo[gp + advx];
+@@ -764,110 +751,90 @@ class ExtendedTextSourceLabel extends ExtendedTextLabel implements Decoration.La
+         // done with cluster, gx and gp are set for next glyph
+ 
+         if (DEBUG) {
+-            System.out.println("minIndex = " + minIndex + ", maxIndex = " + maxIndex);
++            System.err.println("minIndex = " + minIndex + ", maxIndex = " + maxIndex);
+         }
+ 
+-        nextMin = maxIndex + 1;
+-
+-        // do common character adjustments
+-        glyphinfo[cp + posy] = baseline;
+-        glyphinfo[cp + advy] = 0;
+-
+-        if (haveCopy) {
+-            // save adjustments to the base character
+-            glyphinfo[cp + posx] = cposl;
+-            glyphinfo[cp + advx] = cposr - cposl;
+-            glyphinfo[cp + visx] = cvisl;
+-            glyphinfo[cp + visy] = cvist;
+-            glyphinfo[cp + visw] = cvisr - cvisl;
+-            glyphinfo[cp + vish] = cvisb - cvist;
+-
+-            // compare number of chars read with number of glyphs read.
+-            // if more glyphs than chars, set mustCopy to true, as we'll always have
+-            // to copy the data from here on out.
+-            if (maxIndex - minIndex < clusterExtraGlyphs) {
+-                mustCopy = true;
++        // save adjustments to the base character and do common adjustments.
++        charInfo[cp + posx] = cposl;
++        charInfo[cp + posy] = baseline;
++        charInfo[cp + advx] = cposr - cposl;
++        charInfo[cp + advy] = 0;
++        charInfo[cp + visx] = cvisl;
++        charInfo[cp + visy] = cvist;
++        charInfo[cp + visw] = cvisr - cvisl;
++        charInfo[cp + vish] = cvisb - cvist;
++        cc++;
++
++        /* We may have consumed multiple glyphs for this char position.
++         * Map those extra consumed glyphs to char positions that would follow
++         * up to the index prior to that which begins the next cluster.
++         * If we have reached the last glyph (reached gxlimit) then we need to
++         * map remaining unmapped chars to the same location as the last one.
++         */
++        int tgt;
++        if (gx == gxlimit) {
++           tgt = charInfo.length / numvals;
++        } else {
++           tgt = indices[gx]-1;
++        }
++        if (DEBUG) {
++           System.err.println("gx=" + gx + " gxlimit=" + gxlimit +
++                              " charInfo.len=" + charInfo.length +
++                              " tgt=" + tgt + " cc=" + cc + " cp=" + cp);
++        }
++        while (cc < tgt) {
++            if (rtl) {
++                // if rtl, characters to left of base, else to right.  reuse cposr.
++                cposr = cposl;
+             }
++            cvisr -= cvisl; // reuse, convert to deltas.
++            cvisb -= cvist;
+ 
+-            // Fix the characters that follow the base character.
+-            // New values are all the same.  Note we fix the number of characters
+-            // we saw, not the number of glyphs we saw.
+-            if (minIndex < maxIndex) {
+-                if (!ltr) {
+-                    // if rtl, characters to left of base, else to right.  reuse cposr.
+-                    cposr = cposl;
+-                }
+-                cvisr -= cvisl; // reuse, convert to deltas.
+-                cvisb -= cvist;
+-
+-                int iMinIndex = minIndex, icp = cp / 8;
+-
+-                while (minIndex < maxIndex) {
+-                    ++minIndex;
+-                    cx += xdelta;
+-                    cp += pdelta;
+-
+-                    if (cp < 0 || cp >= glyphinfo.length) {
+-                        if (DEBUG) System.out.println("minIndex = " + iMinIndex + ", maxIndex = " + maxIndex + ", cp = " + icp);
+-                    }
+-
+-                    glyphinfo[cp + posx] = cposr;
+-                    glyphinfo[cp + posy] = baseline;
+-                    glyphinfo[cp + advx] = 0;
+-                    glyphinfo[cp + advy] = 0;
+-                    glyphinfo[cp + visx] = cvisl;
+-                    glyphinfo[cp + visy] = cvist;
+-                    glyphinfo[cp + visw] = cvisr;
+-                    glyphinfo[cp + vish] = cvisb;
++            cp += pdelta;
++
++            if (cp < 0 || cp >= charInfo.length) {
++                if (DEBUG)  {
++                    System.err.println("Error : cp=" + cp +
++                                       " charInfo.length=" + charInfo.length);
+                 }
++                break;
+             }
+ 
+-            // no longer using this copy
+-            haveCopy = false;
+-        } else if (mustCopy) {
+-            // out of synch, so we have to copy all the time now
+-            int gpr = gp - pdelta;
+-
+-            glyphinfo[cp + posx] = glyphinfo[gpr + posx];
+-            glyphinfo[cp + advx] = glyphinfo[gpr + advx];
+-            glyphinfo[cp + visx] = glyphinfo[gpr + visx];
+-            glyphinfo[cp + visy] = glyphinfo[gpr + visy];
+-            glyphinfo[cp + visw] = glyphinfo[gpr + visw];
+-            glyphinfo[cp + vish] = glyphinfo[gpr + vish];
++            if (DEBUG) {
++                System.err.println("Insert charIndex " + cc + " at pos="+cp);
++            }
++            charInfo[cp + posx] = cposr;
++            charInfo[cp + posy] = baseline;
++            charInfo[cp + advx] = 0;
++            charInfo[cp + advy] = 0;
++            charInfo[cp + visx] = cvisl;
++            charInfo[cp + visy] = cvist;
++            charInfo[cp + visw] = cvisr;
++            charInfo[cp + vish] = cvisb;
++            cc++;
+         }
+-        // else glyphinfo is already at the correct character position, and is unchanged, so just leave it
+-
+-        // reset for new cluster
+-        cp += pdelta;
+-        cx += xdelta;
+-    }
+-
+-    if (mustCopy && !ltr) {
+-        // data written to wrong end of array, need to shift down
+-
+-        cp -= pdelta; // undo last increment, get start of valid character data in array
+-        System.arraycopy(glyphinfo, cp, glyphinfo, 0, glyphinfo.length - cp);
++        cp += pdelta; // reset for new cluster
+     }
+ 
+     if (DEBUG) {
+-      char[] chars = source.getChars();
+-      int start = source.getStart();
+-      int length = source.getLength();
+-      System.out.println("char info for " + length + " characters");
+-      for(int i = 0; i < length * numvals;) {
+-        System.out.println(" ch: " + Integer.toHexString(chars[start + v2l(i / numvals)]) +
+-                           " x: " + glyphinfo[i++] +
+-                           " y: " + glyphinfo[i++] +
+-                           " xa: " + glyphinfo[i++] +
+-                           " ya: " + glyphinfo[i++] +
+-                           " l: " + glyphinfo[i++] +
+-                           " t: " + glyphinfo[i++] +
+-                           " w: " + glyphinfo[i++] +
+-                           " h: " + glyphinfo[i++]);
++        char[] chars = source.getChars();
++        int start = source.getStart();
++        int length = source.getLength();
++        System.err.println("char info for " + length + " characters");
++
++        for (int i = 0; i < length * numvals;) {
++            System.err.println(" ch: " + Integer.toHexString(chars[start + v2l(i / numvals)]) +
++                               " x: " + charInfo[i++] +
++                               " y: " + charInfo[i++] +
++                               " xa: " + charInfo[i++] +
++                               " ya: " + charInfo[i++] +
++                               " l: " + charInfo[i++] +
++                               " t: " + charInfo[i++] +
++                               " w: " + charInfo[i++] +
++                               " h: " + charInfo[i++]);
+       }
+     }
+-
+-    return glyphinfo;
++    return charInfo;
+   }
+ 
+   /**
+diff --git a/jdk/src/share/classes/sun/font/FontManagerNativeLibrary.java b/jdk/src/share/classes/sun/font/FontManagerNativeLibrary.java
+index 47cfe92a92..4b9cd488a1 100644
+--- a/jdk/src/share/classes/sun/font/FontManagerNativeLibrary.java
++++ b/jdk/src/share/classes/sun/font/FontManagerNativeLibrary.java
+@@ -34,8 +34,7 @@ public class FontManagerNativeLibrary {
+             public Object run() {
+                /* REMIND do we really have to load awt here? */
+                System.loadLibrary("awt");
+-               if (FontUtilities.isOpenJDK &&
+-                   System.getProperty("os.name").startsWith("Windows")) {
++               if (System.getProperty("os.name").startsWith("Windows")) {
+                    /* Ideally fontmanager library should not depend on
+                       particular implementation of the font scaler.
+                       However, freetype scaler is basically small wrapper on
+@@ -51,9 +50,6 @@ public class FontManagerNativeLibrary {
+                       To avoid link error we have to load freetype explicitly
+                       before we load fontmanager.
+ 
+-                      Note that we do not need to do this for T2K because
+-                      fontmanager.dll does not depend on t2k.dll.
+-
+                       NB: consider moving freetype wrapper part to separate
+                           shared library in order to avoid dependency. */
+                    System.loadLibrary("freetype");
+diff --git a/jdk/src/share/classes/sun/font/FontScaler.java b/jdk/src/share/classes/sun/font/FontScaler.java
+index 840236e763..efc3f0e53a 100644
+--- a/jdk/src/share/classes/sun/font/FontScaler.java
++++ b/jdk/src/share/classes/sun/font/FontScaler.java
+@@ -29,7 +29,6 @@ import java.awt.geom.GeneralPath;
+ import java.awt.geom.Point2D;
+ import java.awt.geom.Rectangle2D;
+ import java.lang.ref.WeakReference;
+-import java.lang.reflect.Constructor;
+ 
+ import sun.java2d.Disposer;
+ import sun.java2d.DisposerRecord;
+@@ -82,39 +81,11 @@ import sun.java2d.DisposerRecord;
+ public abstract class FontScaler implements DisposerRecord {
+ 
+     private static FontScaler nullScaler = null;
+-    private static Constructor<FontScaler> scalerConstructor = null;
+-
+-    //Find preferred font scaler
+-    //
+-    //NB: we can allow property based preferences
+-    //   (theoretically logic can be font type specific)
+-    static {
+-        Class scalerClass = null;
+-        Class arglst[] = new Class[] {Font2D.class, int.class,
+-        boolean.class, int.class};
+-
+-        try {
+-            if (!FontUtilities.useT2K) {
+-                scalerClass = Class.forName("sun.font.FreetypeFontScaler");
+-            } else {
+-                scalerClass = Class.forName("sun.font.T2KFontScaler");
+-            }
+-        } catch (ClassNotFoundException e) {
+-                scalerClass = NullFontScaler.class;
+-        }
+-
+-        //NB: rewrite using factory? constructor is ugly way
+-        try {
+-            scalerConstructor = scalerClass.getConstructor(arglst);
+-        } catch (NoSuchMethodException e) {
+-            //should not happen
+-        }
+-    }
+ 
+     /* This is the only place to instantiate new FontScaler.
+      * Therefore this is very convinient place to register
+-     * scaler with Disposer as well as trigger deregistring bad font
+-     * in case when scaler reports this.
++     * scaler with Disposer as well as trigger deregistering a bad font
++     * when the scaler reports this.
+      */
+     public static FontScaler getScaler(Font2D font,
+                                 int indexInCollection,
+@@ -123,14 +94,13 @@ public abstract class FontScaler implements DisposerRecord {
+         FontScaler scaler = null;
+ 
+         try {
+-            Object args[] = new Object[] {font, indexInCollection,
+-                                          supportsCJK, filesize};
+-            scaler = scalerConstructor.newInstance(args);
++            scaler = new FreetypeFontScaler(font, indexInCollection,
++                                            supportsCJK, filesize);
+             Disposer.addObjectRecord(font, scaler);
+         } catch (Throwable e) {
+-            scaler = nullScaler;
++            scaler = getNullScaler();
+ 
+-            //if we can not instantiate scaler assume bad font
++            //if we can not instantiate scaler assume a bad font
+             //NB: technically it could be also because of internal scaler
+             //    error but here we are assuming scaler is ok.
+             FontManager fm = FontManagerFactory.getInstance();
+diff --git a/jdk/src/share/classes/sun/font/FontUtilities.java b/jdk/src/share/classes/sun/font/FontUtilities.java
+index 3f6bc7db4d..a36ed75ed4 100644
+--- a/jdk/src/share/classes/sun/font/FontUtilities.java
++++ b/jdk/src/share/classes/sun/font/FontUtilities.java
+@@ -59,14 +59,8 @@ public final class FontUtilities {
+ 
+     public static boolean useJDKScaler;
+ 
+-    public static boolean useT2K;
+-
+     public static boolean isWindows;
+ 
+-    public static boolean isOpenJDK;
+-
+-    static final String LUCIDA_FILE_NAME = "LucidaSansRegular.ttf";
+-
+     private static boolean debugFonts = false;
+     private static PlatformLogger logger = null;
+     private static boolean logging;
+@@ -102,25 +96,16 @@ public final class FontUtilities {
+                     }
+                 }
+ 
+-                /* Support a value of "t2k" as meaning use the JDK internal
+-                 * scaler over the platform scaler whether or not t2k is
+-                 * actually available.
+-                 * This can be considered transitional support for some
+-                 * level of compatibility, as in it avoids the native scaler
+-                 * as before but cannot guarantee rendering equivalence
+-                 * with T2K.
+-                 * It will also use t2k instead of freetype if t2k is
+-                 * available - this is the same as before.
+-                 * The new value of "jdk" means even if t2k is available,
+-                 * the decision as to whether to use that or freetype is
+-                 * not affected by this setting.
++                /* If set to "jdk", use the JDK's scaler rather than
++                 * the platform one. This may be a no-op on platforms where
++                 * JDK has been configured so that it always relies on the
++                 * platform scaler. The principal case where it has an
++                 * effect is that on Windows, 2D will never use GDI.
+                  */
+                 String scalerStr = System.getProperty("sun.java2d.font.scaler");
+                 if (scalerStr != null) {
+-                    useT2K = "t2k".equals(scalerStr);
+-                    useJDKScaler = useT2K || "jdk".equals(scalerStr);
++                    useJDKScaler = "jdk".equals(scalerStr);
+                 } else {
+-                    useT2K = false;
+                     useJDKScaler = false;
+                 }
+                 if (isSolaris) {
+@@ -155,14 +140,6 @@ public final class FontUtilities {
+                     isOpenSolaris = false;
+                 }
+                 isWindows = osName.startsWith("Windows");
+-                String jreLibDirName = System.getProperty("java.home", "")
+-                                                      + File.separator + "lib";
+-                String jreFontDirName =
+-                        jreLibDirName + File.separator + "fonts";
+-                File lucidaFile = new File(jreFontDirName + File.separator
+-                                           + LUCIDA_FILE_NAME);
+-                isOpenJDK = !lucidaFile.exists();
+-
+                 String debugLevel =
+                     System.getProperty("sun.java2d.debugfonts");
+ 
+diff --git a/jdk/src/share/classes/sun/font/SunFontManager.java b/jdk/src/share/classes/sun/font/SunFontManager.java
+index 2f34b8cab5..8bf2e41a73 100644
+--- a/jdk/src/share/classes/sun/font/SunFontManager.java
++++ b/jdk/src/share/classes/sun/font/SunFontManager.java
+@@ -131,10 +131,9 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+      public static final int FONTFORMAT_NONE = -1;
+      public static final int FONTFORMAT_TRUETYPE = 0;
+      public static final int FONTFORMAT_TYPE1 = 1;
+-     public static final int FONTFORMAT_T2K = 2;
+-     public static final int FONTFORMAT_TTC = 3;
+-     public static final int FONTFORMAT_COMPOSITE = 4;
+-     public static final int FONTFORMAT_NATIVE = 5;
++     public static final int FONTFORMAT_TTC = 2;
++     public static final int FONTFORMAT_COMPOSITE = 3;
++     public static final int FONTFORMAT_NATIVE = 4;
+ 
+      /* Pool of 20 font file channels chosen because some UTF-8 locale
+       * composite fonts can use up to 16 platform fonts (including the
+@@ -187,12 +186,9 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+     private boolean loaded1dot0Fonts = false;
+     boolean loadedAllFonts = false;
+     boolean loadedAllFontFiles = false;
+-    HashMap<String,String> jreFontMap;
+-    HashSet<String> jreLucidaFontFiles;
+     String[] jreOtherFontFiles;
+     boolean noOtherJREFontFiles = false; // initial assumption.
+ 
+-    public static final String lucidaFontName = "Lucida Sans Regular";
+     public static String jreLibDirName;
+     public static String jreFontDirName;
+     private static HashSet<String> missingFontFiles = null;
+@@ -264,72 +260,6 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+         return _usingPerAppContextComposites;
+     }
+ 
+-    private void initJREFontMap() {
+-
+-        /* Key is familyname+style value as an int.
+-         * Value is filename containing the font.
+-         * If no mapping exists, it means there is no font file for the style
+-         * If the mapping exists but the file doesn't exist in the deferred
+-         * list then it means its not installed.
+-         * This looks like a lot of code and strings but if it saves even
+-         * a single file being opened at JRE start-up there's a big payoff.
+-         * Lucida Sans is probably the only important case as the others
+-         * are rarely used. Consider removing the other mappings if there's
+-         * no evidence they are useful in practice.
+-         */
+-        jreFontMap = new HashMap<String,String>();
+-        jreLucidaFontFiles = new HashSet<String>();
+-        if (isOpenJDK()) {
+-            return;
+-        }
+-        /* Lucida Sans Family */
+-        jreFontMap.put("lucida sans0",   "LucidaSansRegular.ttf");
+-        jreFontMap.put("lucida sans1",   "LucidaSansDemiBold.ttf");
+-        /* Lucida Sans full names (map Bold and DemiBold to same file) */
+-        jreFontMap.put("lucida sans regular0", "LucidaSansRegular.ttf");
+-        jreFontMap.put("lucida sans regular1", "LucidaSansDemiBold.ttf");
+-        jreFontMap.put("lucida sans bold1", "LucidaSansDemiBold.ttf");
+-        jreFontMap.put("lucida sans demibold1", "LucidaSansDemiBold.ttf");
+-
+-        /* Lucida Sans Typewriter Family */
+-        jreFontMap.put("lucida sans typewriter0",
+-                       "LucidaTypewriterRegular.ttf");
+-        jreFontMap.put("lucida sans typewriter1", "LucidaTypewriterBold.ttf");
+-        /* Typewriter full names (map Bold and DemiBold to same file) */
+-        jreFontMap.put("lucida sans typewriter regular0",
+-                       "LucidaTypewriter.ttf");
+-        jreFontMap.put("lucida sans typewriter regular1",
+-                       "LucidaTypewriterBold.ttf");
+-        jreFontMap.put("lucida sans typewriter bold1",
+-                       "LucidaTypewriterBold.ttf");
+-        jreFontMap.put("lucida sans typewriter demibold1",
+-                       "LucidaTypewriterBold.ttf");
+-
+-        /* Lucida Bright Family */
+-        jreFontMap.put("lucida bright0", "LucidaBrightRegular.ttf");
+-        jreFontMap.put("lucida bright1", "LucidaBrightDemiBold.ttf");
+-        jreFontMap.put("lucida bright2", "LucidaBrightItalic.ttf");
+-        jreFontMap.put("lucida bright3", "LucidaBrightDemiItalic.ttf");
+-        /* Lucida Bright full names (map Bold and DemiBold to same file) */
+-        jreFontMap.put("lucida bright regular0", "LucidaBrightRegular.ttf");
+-        jreFontMap.put("lucida bright regular1", "LucidaBrightDemiBold.ttf");
+-        jreFontMap.put("lucida bright regular2", "LucidaBrightItalic.ttf");
+-        jreFontMap.put("lucida bright regular3", "LucidaBrightDemiItalic.ttf");
+-        jreFontMap.put("lucida bright bold1", "LucidaBrightDemiBold.ttf");
+-        jreFontMap.put("lucida bright bold3", "LucidaBrightDemiItalic.ttf");
+-        jreFontMap.put("lucida bright demibold1", "LucidaBrightDemiBold.ttf");
+-        jreFontMap.put("lucida bright demibold3","LucidaBrightDemiItalic.ttf");
+-        jreFontMap.put("lucida bright italic2", "LucidaBrightItalic.ttf");
+-        jreFontMap.put("lucida bright italic3", "LucidaBrightDemiItalic.ttf");
+-        jreFontMap.put("lucida bright bold italic3",
+-                       "LucidaBrightDemiItalic.ttf");
+-        jreFontMap.put("lucida bright demibold italic3",
+-                       "LucidaBrightDemiItalic.ttf");
+-        for (String ffile : jreFontMap.values()) {
+-            jreLucidaFontFiles.add(ffile);
+-        }
+-    }
+-
+     /* After we reach MAXSOFTREFCNT, use weak refs for created fonts.
+      * This means that a small number of created fonts as used in a UI app
+      * will not be eagerly collected, but an app that create many will
+@@ -360,8 +290,6 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+                jreLibDirName =
+                    System.getProperty("java.home","") + File.separator + "lib";
+                jreFontDirName = jreLibDirName + File.separator + "fonts";
+-               File lucidaFile =
+-                   new File(jreFontDirName + File.separator + FontUtilities.LUCIDA_FILE_NAME);
+ 
+                 maxSoftRefCnt =
+                     Integer.getInteger("sun.java2d.font.maxSoftRefs", 10);
+@@ -382,7 +310,6 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+     @SuppressWarnings("unchecked")
+     protected SunFontManager() {
+ 
+-        initJREFontMap();
+         java.security.AccessController.doPrivileged(
+                 new java.security.PrivilegedAction() {
+                     public Object run() {
+@@ -426,7 +353,7 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+                          * handle two fonts of the same name, so the JRE one
+                          * must be the first one registered. Pass "true" to
+                          * registerFonts method as on-screen these JRE fonts
+-                         * always go through the T2K rasteriser.
++                         * always go through the JDK rasteriser.
+                          */
+                         if (FontUtilities.isLinux) {
+                             /* Linux font configuration uses these fonts */
+@@ -439,11 +366,10 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+                          * that might be specified.
+                          */
+                         fontConfig = createFontConfiguration();
+-                        if (isOpenJDK()) {
+-                            String[] fontInfo = getDefaultPlatformFont();
+-                            defaultFontName = fontInfo[0];
+-                            defaultFontFileName = fontInfo[1];
+-                        }
++
++                        String[] fontInfo = getDefaultPlatformFont();
++                        defaultFontName = fontInfo[0];
++                        defaultFontFileName = fontInfo[1];
+ 
+                         String extraFontPath = fontConfig.getExtraFontPath();
+ 
+@@ -951,47 +877,20 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+         return deferredFontFiles.containsKey(fileName);
+     }
+ 
+-    /* We keep a map of the files which contain the Lucida fonts so we
+-     * don't need to search for them.
+-     * But since we know what fonts these files contain, we can also avoid
+-     * opening them to look for a font name we don't recognise - see
+-     * findDeferredFont().
+-     * For typical cases where the font isn't a JRE one the overhead is
+-     * this method call, HashMap.get() and null reference test, then
+-     * a boolean test of noOtherJREFontFiles.
+-     */
+-    public
+-    /*private*/ PhysicalFont findJREDeferredFont(String name, int style) {
+-
+-        PhysicalFont physicalFont;
+-        String nameAndStyle = name.toLowerCase(Locale.ENGLISH) + style;
+-        String fileName = jreFontMap.get(nameAndStyle);
+-        if (fileName != null) {
+-            fileName = jreFontDirName + File.separator + fileName;
+-            if (deferredFontFiles.get(fileName) != null) {
+-                physicalFont = initialiseDeferredFont(fileName);
+-                if (physicalFont != null &&
+-                    (physicalFont.getFontName(null).equalsIgnoreCase(name) ||
+-                     physicalFont.getFamilyName(null).equalsIgnoreCase(name))
+-                    && physicalFont.style == style) {
+-                    return physicalFont;
+-                }
+-            }
+-        }
++    PhysicalFont findJREDeferredFont(String name, int style) {
+ 
+         /* Iterate over the deferred font files looking for any in the
+          * jre directory that we didn't recognise, open each of these.
+          * In almost all installations this will quickly fall through
+-         * because only the Lucidas will be present and jreOtherFontFiles
+-         * will be empty.
++         * because jreOtherFontFiles will be empty.
+          * noOtherJREFontFiles is used so we can skip this block as soon
+-         * as its determined that its not needed - almost always after the
++         * as its determined that it's not needed - almost always after the
+          * very first time through.
+          */
+         if (noOtherJREFontFiles) {
+             return null;
+         }
+-        synchronized (jreLucidaFontFiles) {
++        synchronized (jreFontDirName) {
+             if (jreOtherFontFiles == null) {
+                 HashSet<String> otherFontFiles = new HashSet<String>();
+                 for (String deferredFile : deferredFontFiles.keySet()) {
+@@ -1001,9 +900,7 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+                     /* skip names which aren't absolute, aren't in the JRE
+                      * directory, or are known Lucida fonts.
+                      */
+-                    if (dir == null ||
+-                        !dir.equals(jreFontDirName) ||
+-                        jreLucidaFontFiles.contains(fname)) {
++                    if (dir == null || !dir.equals(jreFontDirName)) {
+                         continue;
+                     }
+                     otherFontFiles.add(deferredFile);
+@@ -1015,12 +912,12 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+             }
+ 
+             for (int i=0; i<jreOtherFontFiles.length;i++) {
+-                fileName = jreOtherFontFiles[i];
++                String fileName = jreOtherFontFiles[i];
+                 if (fileName == null) {
+                     continue;
+                 }
+                 jreOtherFontFiles[i] = null;
+-                physicalFont = initialiseDeferredFont(fileName);
++                PhysicalFont physicalFont = initialiseDeferredFont(fileName);
+                 if (physicalFont != null &&
+                     (physicalFont.getFontName(null).equalsIgnoreCase(name) ||
+                      physicalFont.getFamilyName(null).equalsIgnoreCase(name))
+@@ -1033,17 +930,8 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+         return null;
+     }
+ 
+-    /* This skips JRE installed fonts. */
+     private PhysicalFont findOtherDeferredFont(String name, int style) {
+         for (String fileName : deferredFontFiles.keySet()) {
+-            File file = new File(fileName);
+-            String dir = file.getParent();
+-            String fname = file.getName();
+-            if (dir != null &&
+-                dir.equals(jreFontDirName) &&
+-                jreLucidaFontFiles.contains(fname)) {
+-                continue;
+-            }
+             PhysicalFont physicalFont = initialiseDeferredFont(fileName);
+             if (physicalFont != null &&
+                 (physicalFont.getFontName(null).equalsIgnoreCase(name) ||
+@@ -1056,7 +944,6 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+     }
+ 
+     private PhysicalFont findDeferredFont(String name, int style) {
+-
+         PhysicalFont physicalFont = findJREDeferredFont(name, style);
+         if (physicalFont != null) {
+             return physicalFont;
+@@ -1227,11 +1114,7 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+              * misconfiguration and this is probably a reasonable substitution.
+              */
+             defaultPhysicalFont = (PhysicalFont)
+-                findFont2D("Lucida Sans Regular", Font.PLAIN, NO_FALLBACK);
+-            if (defaultPhysicalFont == null) {
+-                defaultPhysicalFont = (PhysicalFont)
+-                    findFont2D("Arial", Font.PLAIN, NO_FALLBACK);
+-            }
++                findFont2D(getDefaultFontFaceName(), Font.PLAIN, NO_FALLBACK);
+             if (defaultPhysicalFont == null) {
+                 /* Because of the findFont2D call above, if we reach here, we
+                  * know all fonts have already been loaded, just accept any
+@@ -2226,9 +2109,9 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+                 fontNameCache.put(mapName, font);
+                 return font;
+             }
+-
+-            /* Don't want Windows to return a Lucida Sans font from
+-             * C:\Windows\Fonts
++            /* Don't want Windows to return a font from C:\Windows\Fonts
++             * if someone has installed a font with the same name
++             * in the JRE.
+              */
+             if (deferredFontFiles.size() > 0) {
+                 font = findJREDeferredFont(lowerCaseName, style);
+@@ -3310,7 +3193,7 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+     }
+ 
+     public static boolean isOpenJDK() {
+-        return FontUtilities.isOpenJDK;
++        return true;
+     }
+ 
+     protected void loadFonts() {
+@@ -3403,24 +3286,9 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+      * or relative as needed by registerFontFile.
+      */
+     public synchronized String getDefaultFontFile() {
+-        if (defaultFontFileName == null) {
+-            initDefaultFonts();
+-        }
+         return defaultFontFileName;
+     }
+ 
+-    private void initDefaultFonts() {
+-        if (!isOpenJDK()) {
+-            defaultFontName = lucidaFontName;
+-            if (useAbsoluteFontFileNames()) {
+-                defaultFontFileName =
+-                    jreFontDirName + File.separator + FontUtilities.LUCIDA_FILE_NAME;
+-            } else {
+-                defaultFontFileName = FontUtilities.LUCIDA_FILE_NAME;
+-            }
+-        }
+-    }
+-
+     /**
+      * Whether registerFontFile expects absolute or relative
+      * font file names.
+@@ -3444,9 +3312,6 @@ public abstract class SunFontManager implements FontSupport, FontManagerForSGE {
+      * for this platform.
+      */
+     public synchronized String getDefaultFontFaceName() {
+-        if (defaultFontName == null) {
+-            initDefaultFonts();
+-        }
+         return defaultFontName;
+     }
+ 
+diff --git a/jdk/src/share/native/sun/font/freetypeScaler.c b/jdk/src/share/native/sun/font/freetypeScaler.c
+index a02434fc54..ba8fe45bcf 100644
+--- a/jdk/src/share/native/sun/font/freetypeScaler.c
++++ b/jdk/src/share/native/sun/font/freetypeScaler.c
+@@ -43,6 +43,10 @@
+ #include FT_SYNTHESIS_H
+ #include FT_LCD_FILTER_H
+ #include FT_MODULE_H
++#ifdef IMPROVED_FONT_RENDERING
++#include FT_LCD_FILTER_H
++#include <fontconfig/fontconfig.h>
++#endif
+ 
+ #include "fontscaler.h"
+ 
+@@ -811,6 +815,162 @@ static void CopyFTSubpixelVToSubpixel(const void* srcImage, int srcRowBytes,
+     }
+ }
+ 
++#ifdef IMPROVED_FONT_RENDERING
++typedef struct {
++    FT_Render_Mode ftRenderMode;
++    int ftLoadFlags;
++    FT_LcdFilter ftLcdFilter;
++} RenderingProperties;
++
++static FcPattern* matchedPattern(const FcChar8* family, double ptSize) {
++    /*
++      we will create pattern to find our family and size in
++      fontconfig configuration, and then will return it's
++      properties:
++    */
++    FcPattern* fcPattern = 0;
++    fcPattern = FcPatternCreate();
++    FcValue fcValue;
++    fcValue.type = FcTypeString;
++    fcValue.u.s = family;
++    FcPatternAdd(fcPattern, FC_FAMILY, fcValue, FcTrue);
++    FcPatternAddBool(fcPattern, FC_SCALABLE, FcTrue);
++    FcPatternAddDouble(fcPattern, FC_SIZE, ptSize);
++    // TODO FcPatternAddInteger(pattern, FC_WEIGHT, weight_value);
++    // TODO FcPatternAddInteger(pattern, FC_SLANT, slant_value);
++    // TODO FcPatternAddDouble(pattern, FC_PIXEL_SIZE, size_value);
++    // TODO FcPatternAddInteger(pattern, FC_WIDTH, stretch); 100 in most cases
++    FcConfigSubstitute(0, fcPattern, FcMatchPattern);
++    FcConfigSubstitute(0, fcPattern, FcMatchFont);
++    FcDefaultSubstitute(fcPattern);
++    FcResult res;
++
++    FcPattern *pattern = 0;
++    pattern = FcFontMatch(0, fcPattern, &res);
++    FcPatternDestroy(fcPattern);
++    return pattern;
++}
++
++static void readFontconfig(const FcChar8* family, FTScalerContext *context, RenderingProperties* rp) {
++
++    FcPattern *pattern = matchedPattern(family, context->ptsz);
++
++    int ftLoadFalgs = FT_LOAD_DEFAULT;
++    FT_Render_Mode ftRenderMode;
++    FT_LcdFilter ftLcdFilter;
++    char horizontal = 1;
++    FcBool fcAntialias = false, fcBool;
++
++    // If the user has no antialias information set in their fontconfig directory
++    // and the font itself does not provide any hints either (which is common),
++    // Fontconfig may not return any antialias hint about the selected font since
++    // it does not set any default for this key internally.
++    // Use the antialias hint when it is available but only if antialiasing was
++    // actually requested by the caller.
++    // If antialiasing was requested but Fontconfig states to use no antialiasing,
++    // that takes precedence and also modifies the supplied context to account for
++    // the change (sets context->aaType to TEXT_AA_OFF as a side-effect in the render
++    // mode conditional block down below).
++    if (context->aaType != TEXT_AA_OFF) {
++        if (FcPatternGetBool(pattern, FC_ANTIALIAS, 0, &fcAntialias) != FcResultMatch)
++            fcAntialias = true;
++    }
++
++    // render mode:
++    if (fcAntialias) {
++        if (context->aaType == TEXT_AA_ON)
++            ftRenderMode = FT_RENDER_MODE_NORMAL;
++        else {
++            // subpixel order:
++            int subpixel = FC_RGBA_UNKNOWN;
++            FcPatternGetInteger(pattern, FC_RGBA, 0, &subpixel);
++            if (subpixel == FC_RGBA_UNKNOWN)
++                subpixel = FC_RGBA_NONE;
++            switch (subpixel) {
++            case FC_RGBA_NONE:
++                ftRenderMode = FT_RENDER_MODE_NORMAL;
++                break;
++            case FC_RGBA_RGB:
++            case FC_RGBA_BGR:
++                ftRenderMode = FT_RENDER_MODE_LCD;
++                horizontal = 1;
++                break;
++            case FC_RGBA_VRGB:
++            case FC_RGBA_VBGR:
++                ftRenderMode = FT_RENDER_MODE_LCD_V;
++                horizontal = 0;
++                break;
++            default:
++                break;
++            }
++        }
++    } else {
++        ftRenderMode = FT_RENDER_MODE_MONO;
++        context->aaType = TEXT_AA_OFF; // if this was forced through Fontconfig
++   }
++
++    // loading mode:
++    if (!fcAntialias)
++        ftLoadFalgs |= FT_LOAD_TARGET_MONO;
++    else {
++        int hint_style = FC_HINT_NONE;
++        FcPatternGetInteger(pattern, FC_HINT_STYLE, 0, &hint_style);
++        switch (hint_style) {
++        case FC_HINT_NONE:
++            ftLoadFalgs |= FT_LOAD_NO_HINTING;
++            break;
++        case FC_HINT_SLIGHT:
++            ftLoadFalgs |= FT_LOAD_TARGET_LIGHT;
++            break;
++        case FC_HINT_MEDIUM:
++            ftLoadFalgs |= FT_LOAD_TARGET_NORMAL;
++            break;
++        case FC_HINT_FULL:
++            if (fcAntialias)
++                ftLoadFalgs |= FT_LOAD_TARGET_NORMAL;
++            else
++                ftLoadFalgs |= horizontal ? FT_LOAD_TARGET_LCD : FT_LOAD_TARGET_LCD_V;
++            break;
++        default:
++            // what else to use as default?
++            ftLoadFalgs |= FT_LOAD_TARGET_NORMAL;
++            break;
++        }
++    }
++
++    // autohinting:
++    if (FcPatternGetBool(pattern, FC_AUTOHINT, 0, &fcBool) == FcResultMatch && fcBool)
++        ftLoadFalgs |= FT_LOAD_FORCE_AUTOHINT;
++
++    // LCD filter:
++    int filter = FC_LCD_DEFAULT;
++    FcPatternGetInteger(pattern, FC_LCD_FILTER, 0, &filter);
++    switch (filter) {
++    case FC_LCD_NONE:
++        ftLcdFilter = FT_LCD_FILTER_NONE;
++        break;
++    case FC_LCD_DEFAULT:
++        ftLcdFilter = FT_LCD_FILTER_DEFAULT;
++        break;
++    case FC_LCD_LIGHT:
++        ftLcdFilter = FT_LCD_FILTER_LIGHT;
++        break;
++    case FC_LCD_LEGACY:
++        ftLcdFilter = FT_LCD_FILTER_LEGACY;
++        break;
++    default:
++        // new unknown lcd filter type?! will use default one:
++        ftLcdFilter = FT_LCD_FILTER_DEFAULT;
++        break;
++    }
++
++    FcPatternDestroy(pattern);
++
++    rp->ftRenderMode = ftRenderMode;
++    rp->ftLoadFlags = ftLoadFalgs;
++    rp->ftLcdFilter = ftLcdFilter;
++}
++#endif
+ 
+ /* JDK does not use glyph images for fonts with a
+  * pixel size > 100 (see THRESHOLD in OutlineTextRenderer.java)
+@@ -844,8 +1004,10 @@ static jlong
+     UInt16 width, height;
+     GlyphInfo *glyphInfo;
+     int glyph_index;
+-    int renderFlags = FT_LOAD_DEFAULT, target;
+     FT_GlyphSlot ftglyph;
++#ifndef IMPROVED_FONT_RENDERING
++    int renderFlags = FT_LOAD_DEFAULT, target;
++#endif
+ 
+     FTScalerContext* context =
+         (FTScalerContext*) jlong_to_ptr(pScalerContext);
+@@ -862,6 +1024,16 @@ static jlong
+         return ptr_to_jlong(getNullGlyphImage());
+     }
+ 
++#ifdef IMPROVED_FONT_RENDERING
++    RenderingProperties renderingProperties;
++    readFontconfig((const FcChar8 *) scalerInfo->face->family_name,
++                   context, &renderingProperties);
++#else
++    /* if algorithmic styling is required then we do not request bitmap */
++    if (context->doBold || context->doItalize) {
++        renderFlags =  FT_LOAD_DEFAULT;
++    }
++
+     if (!context->useSbits) {
+         renderFlags |= FT_LOAD_NO_BITMAP;
+     }
+@@ -883,10 +1055,17 @@ static jlong
+         target = FT_LOAD_TARGET_LCD_V;
+     }
+     renderFlags |= target;
++#endif
+ 
+     glyph_index = FT_Get_Char_Index(scalerInfo->face, glyphCode);
+ 
++#ifdef IMPROVED_FONT_RENDERING
++    FT_Library_SetLcdFilter(scalerInfo->library, renderingProperties.ftLcdFilter);
++    error = FT_Load_Glyph(scalerInfo->face, glyphCode, renderingProperties.ftLoadFlags);
++#else
+     error = FT_Load_Glyph(scalerInfo->face, glyphCode, renderFlags);
++#endif
++
+     if (error) {
+         //do not destroy scaler yet.
+         //this can be problem of particular context (e.g. with bad transform)
+@@ -902,6 +1081,9 @@ static jlong
+ 
+     /* generate bitmap if it is not done yet
+      e.g. if algorithmic styling is performed and style was added to outline */
++#ifdef IMPROVED_FONT_RENDERING
++    FT_Render_Glyph(ftglyph, renderingProperties.ftRenderMode);
++#else
+     if (renderImage && (ftglyph->format == FT_GLYPH_FORMAT_OUTLINE)) {
+         FT_BBox bbox;
+         int w, h;
+@@ -917,6 +1099,7 @@ static jlong
+             return ptr_to_jlong(getNullGlyphImage());
+         }
+     }
++#endif
+ 
+     if (renderImage) {
+         width  = (UInt16) ftglyph->bitmap.width;
+@@ -1143,7 +1326,9 @@ Java_sun_font_FreetypeFontScaler_getGlyphCodeNative(
+ static FT_Outline* getFTOutline(JNIEnv* env, jobject font2D,
+         FTScalerContext *context, FTScalerInfo* scalerInfo,
+         jint glyphCode, jfloat xpos, jfloat ypos) {
++#ifndef IMPROVED_FONT_RENDERING
+     int renderFlags;
++#endif
+     int glyph_index;
+     FT_Error error;
+     FT_GlyphSlot ftglyph;
+@@ -1158,11 +1343,22 @@ static FT_Outline* getFTOutline(JNIEnv* env, jobject font2D,
+         return NULL;
+     }
+ 
++#ifdef IMPROVED_FONT_RENDERING
++    RenderingProperties renderingProperties;
++    readFontconfig((const FcChar8 *) scalerInfo->face->family_name,
++                   context, &renderingProperties);
++#else
+     renderFlags = FT_LOAD_NO_HINTING | FT_LOAD_NO_BITMAP;
++#endif
+ 
+     glyph_index = FT_Get_Char_Index(scalerInfo->face, glyphCode);
+ 
++#ifdef IMPROVED_FONT_RENDERING
++    error = FT_Load_Glyph(scalerInfo->face, glyphCode, renderingProperties.ftLoadFlags);
++#else
+     error = FT_Load_Glyph(scalerInfo->face, glyphCode, renderFlags);
++#endif
++
+     if (error) {
+         return NULL;
+     }
+diff --git a/jdk/src/solaris/native/sun/awt/fontpath.c b/jdk/src/solaris/native/sun/awt/fontpath.c
+index 66db1911f2..159d75a719 100644
+--- a/jdk/src/solaris/native/sun/awt/fontpath.c
++++ b/jdk/src/solaris/native/sun/awt/fontpath.c
+@@ -1051,16 +1051,6 @@ Java_sun_font_FontConfigManager_getFontConfig
+     CHECK_NULL(fontFileID = (*env)->GetFieldID(env, fcFontClass,
+                                     "fontFile", "Ljava/lang/String;"));
+ 
+-    jclass fontUtilitiesClass =
+-        (*env)->FindClass(env, "sun/font/FontUtilities");
+-    CHECK_NULL(fontUtilitiesClass);
+-    jfieldID isOpenJDKID =
+-        (*env)->GetStaticFieldID(env, fontUtilitiesClass, "isOpenJDK", "Z");
+-    CHECK_NULL(isOpenJDKID);
+-    jboolean isOpenJDK =
+-        (*env)->GetStaticBooleanField(env, fontUtilitiesClass, isOpenJDKID);
+-
+-
+     if ((libfontconfig = openFontConfig()) == NULL) {
+         return;
+     }
+@@ -1249,7 +1239,7 @@ Java_sun_font_FontConfigManager_getFontConfig
+                 && (strcmp((char*)fontformat, "TrueType") != 0)
+ #if defined(__linux__) || defined(_AIX)
+                 && (strcmp((char*)fontformat, "Type 1") != 0)
+-                && !(isOpenJDK && (strcmp((char*)fontformat, "CFF") == 0))
++                && (strcmp((char*)fontformat, "CFF") != 0)
+ #endif
+              ) {
+                 continue;

@@ -1,0 +1,73 @@
+Index: drf_spectacular-0.30.0/tests/test_fields.py
+===================================================================
+--- drf_spectacular-0.30.0.orig/tests/test_fields.py
++++ drf_spectacular-0.30.0/tests/test_fields.py
+@@ -1,5 +1,6 @@
+ import functools
+ import json
++import re
+ import sys
+ import tempfile
+ import uuid
+@@ -15,6 +16,7 @@ from django.core.files.storage import Fi
+ from django.db import models
+ from django.urls import reverse
+ from django.utils.functional import cached_property
++from rest_framework import __version__ as DRF_VERSION
+ from rest_framework import serializers, viewsets
+ from rest_framework.routers import SimpleRouter
+ from rest_framework.test import APIClient
+@@ -295,12 +297,21 @@ router.register('aux', AuxModelViewset)
+ urlpatterns = router.urls
+ 
+ 
++def _strip_ipv6_format(s):
++    return re.sub(
++        r'(field_ip_generic:\n *type: string\n) *format: ipv6\n',
++        r'\1',
++        s,
++    )
++
++
+ @pytest.mark.urls(__name__)
+ def test_fields(no_warnings, django_transforms):
+     assert_schema(
+         SchemaGenerator().get_schema(request=None, public=True),
+         'tests/test_fields.yml',
+         transforms=django_transforms,
++        reverse_transforms=[_strip_ipv6_format] if DRF_VERSION < '3.18' else None,
+     )
+ 
+ 
+@@ -311,6 +322,7 @@ def test_fields_oas_3_1(no_warnings, dja
+         SchemaGenerator().get_schema(request=None, public=True),
+         'tests/test_fields_oas_3_1.yml',
+         transforms=django_transforms,
++        reverse_transforms=[_strip_ipv6_format] if DRF_VERSION < '3.18' else None,
+     )
+ 
+ 
+Index: drf_spectacular-0.30.0/tests/test_fields.yml
+===================================================================
+--- drf_spectacular-0.30.0.orig/tests/test_fields.yml
++++ drf_spectacular-0.30.0/tests/test_fields.yml
+@@ -263,6 +263,7 @@ components:
+           maxLength: 200
+         field_ip_generic:
+           type: string
++          format: ipv6
+         field_decimal:
+           type: string
+           format: decimal
+Index: drf_spectacular-0.30.0/tests/test_fields_oas_3_1.yml
+===================================================================
+--- drf_spectacular-0.30.0.orig/tests/test_fields_oas_3_1.yml
++++ drf_spectacular-0.30.0/tests/test_fields_oas_3_1.yml
+@@ -264,6 +264,7 @@ components:
+           maxLength: 200
+         field_ip_generic:
+           type: string
++          format: ipv6
+         field_decimal:
+           type: string
+           format: decimal

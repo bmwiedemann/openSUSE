@@ -1,0 +1,15 @@
+{
+  "curses": "Module 'curses' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@-curses\nto install it.",
+  "_curses": "Module '_curses' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@-curses\nto install it.",
+  "_curses_panel": "Module '_curses_panel' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@-curses\nto install it.",
+  "dbm": "Module 'dbm' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@-dbm\nto install it.",
+  "_dbm": "Module '_dbm' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@-dbm\nto install it.",
+  "_gdbm": "Module '_gdbm' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@-dbm\nto install it.",
+  "idlelib": "Module 'idlelib' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@-idle\nto install it.",
+  "tkinter": "Module 'tkinter' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@-tk\nto install it.",
+  "_tkinter": "Module '_tkinter' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@-tk\nto install it.",
+  "turtledemo": "Module 'turtledemo' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@-tools\nto install it.",
+  "sqlite3": "Module 'sqlite3' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@\nto install it.",
+  "_sqlite3": "Module '_sqlite3' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@\nto install it.",
+  "readline": "Module 'readline' is not installed. Use:\n  sudo zypper install @PYTHON_PKG_NAME@\nto install it."
+}

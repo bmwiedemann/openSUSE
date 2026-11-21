@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Tue Nov 10 18:17:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 0.10:
+  * CURL bindings for GNU Guile, based on libcurl.
+  * Upstream: https://github.com/spk121/guile-curl, tag v0.10.
+  * Run upstream test suite in %check.

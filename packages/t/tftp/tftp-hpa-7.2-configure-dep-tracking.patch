@@ -1,0 +1,17 @@
+diff --git a/configure.ac b/configure.ac
+index d8621ca..ba35de1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,6 +28,12 @@ dnl Options for debugging and profiling
+ PA_OPTION_DEBUG
+ PA_OPTION_PROFILING
+ 
++dnl The PA_ build system has no dependency tracking. Accept the
++dnl --disable-dependency-tracking option passed by the SUSE
++dnl %configure macro as a no-op.
++PA_ARG_DISABLED([dependency-tracking],
++ [track build dependencies (not supported, no-op)])
++
+ dnl Force gcc and gcc-compatible compilers treat signed integers
+ dnl as 2's complement
+ PA_ADD_CFLAGS([-fwrapv])

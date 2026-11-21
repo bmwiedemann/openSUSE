@@ -1,0 +1,103 @@
+From 2d6faf3a3bb596869f24537392596393e1406067 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 20 Mar 2026 10:13:27 +0100
+Subject: [PATCH 6/9] [gdb/testsuite, Tcl 9.0] Fix error: invalid character in
+ array index
+
+With test-case gdb.cp/inherit.exp and Tcl 9.0, I run into:
+...
+ERROR: tcl error sourcing gdb.cp/inherit.exp.
+ERROR: tcl error code NONE
+ERROR: invalid character in array index
+    while executing
+"set in_class_table $cp_class_table_history("
+    invoked from within
+"if {$in_class_table == "ibid"} {
+	if {![info exists cp_class_table_history("$in_key,$in_tag")]} {
+...
+
+Fix this by dropping the double quotes in
+'cp_class_table_history("$in_key,$in_tag")'.
+
+Likewise in gdb.cp/ovldbreak.exp.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33948
+---
+ gdb/testsuite/gdb.cp/ovldbreak.exp | 16 ++++++++--------
+ gdb/testsuite/lib/cp-support.exp   |  6 +++---
+ 2 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.cp/ovldbreak.exp b/gdb/testsuite/gdb.cp/ovldbreak.exp
+index fd9fb949003..8cc7d10b1ce 100644
+--- a/gdb/testsuite/gdb.cp/ovldbreak.exp
++++ b/gdb/testsuite/gdb.cp/ovldbreak.exp
+@@ -194,10 +194,10 @@ foreach type $all_types {
+ 	        # Store the real type into TYPES.
+ 	        set types($type) [string trim $real_type {()}]
+ 
+-	        # Create an inverse mapping of the actual type to
+-	        # the synthetic type.
+-	        set type_map("$types($type)") $type
+-	        pass "detect $type"
++		# Create an inverse mapping of the actual type to
++		# the synthetic type.
++		set type_map($types($type)) $type
++		pass "detect $type"
+ 	    }
+     }
+ }
+@@ -237,7 +237,7 @@ set method "foo::overload1arg"
+ for {set idx 0} {$idx < [llength $overloads]} {incr idx} {
+     set type [lindex $overloads $idx]
+     set_bp_overloaded $method $menu_overload1arg \
+-	[expr {$idx + 2}] [incr bpnum] $line($type_map("$type"))
++	[expr {$idx + 2}] [incr bpnum] $line($type_map($type))
+ }
+ 
+ # Verify the breakpoints.
+@@ -245,8 +245,8 @@ set bptable "Num\[\t \]+Type\[\t \]+Disp Enb Address\[\t \]+What\\s*\r\n"
+ append bptable "\[0-9\]+\[\t \]+breakpoint\[\t \]+keep\[\t \]y\[\t \]+$hex\[\t \]+in main(\\((|void)\\))? at.*$srcfile:49\r\n"
+ append bptable "\[\t \]+breakpoint already hit 1 time"
+ foreach ovld $overloads {
+-    append bptable [format "\r\n\[0-9\]+\[\t \]+breakpoint\[\t \]+keep y\[\t \]+$hex\[\t \]+in foo::overload1arg\\(%s\\) at.*$srcfile:%d" $ovld \
+-			$line($type_map("$ovld"))]
++    append bptable [format "\r\n${::decimal}\[\t \]+breakpoint\[\t \]+keep y\[\t \]+$hex\[\t \]+in foo::overload1arg\\(%s\\) at.*$srcfile:%d" $ovld \
++			$line($type_map($ovld))]
+ }
+ gdb_test "info break" $bptable "breakpoint info, after setting one-by-one"
+ 
+@@ -298,7 +298,7 @@ with_test_prefix "multiple breakpoints" {
+     set expected_lines {}
+     for {set i 0} {$i < 2} {incr i} {
+ 	set type [lindex $overloads $i]
+-	lappend expected_lines $line($type_map("$type"))
++	lappend expected_lines $line($type_map($type))
+     }
+     set_bp_overloaded $method $menu_overload1arg \
+ 	"2-3" [incr bpnum] $expected_lines
+diff --git a/gdb/testsuite/lib/cp-support.exp b/gdb/testsuite/lib/cp-support.exp
+index 40351c65bfe..5cb72e21837 100644
+--- a/gdb/testsuite/lib/cp-support.exp
++++ b/gdb/testsuite/lib/cp-support.exp
+@@ -260,13 +260,13 @@ proc cp_test_ptype_class { in_exp in_testname in_key in_tag in_class_table
+ 
+     global cp_class_table_history
+     if {$in_class_table == "ibid"} {
+-	if {![info exists cp_class_table_history("$in_key,$in_tag")]} {
++	if {![info exists cp_class_table_history($in_key,$in_tag)]} {
+ 	    fail "$in_testname // bad ibid"
+ 	    return false
+ 	}
+-	set in_class_table $cp_class_table_history("$in_key,$in_tag")
++	set in_class_table $cp_class_table_history($in_key,$in_tag)
+     } else {
+-	set cp_class_table_history("$in_key,$in_tag") $in_class_table
++	set cp_class_table_history($in_key,$in_tag) $in_class_table
+     }
+ 
+     # Split the class table into separate tables.
+-- 
+2.51.0
+

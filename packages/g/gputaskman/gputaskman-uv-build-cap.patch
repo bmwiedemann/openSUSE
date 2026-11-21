@@ -1,0 +1,16 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: Relax uv_build upper bound for newer toolchains
+
+Upstream pins uv_build>=0.9.26,<0.10.0, but Factory ships 0.13.x and
+upstream's own release workflow already builds with uv 0.13.6.
+Keep only the floor.
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -36,1 +36,1 @@
+-requires = ["uv_build>=0.9.26,<0.10.0"]
++requires = ["uv_build>=0.9.26"]

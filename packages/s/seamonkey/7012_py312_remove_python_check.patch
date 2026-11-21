@@ -1,0 +1,12 @@
+diff '--color=auto' -urN seamonkey-2.53.23.orig/python/mozbuild/mozbuild/virtualenv.py seamonkey-2.53.23/python/mozbuild/mozbuild/virtualenv.py
+--- seamonkey-2.53.23.orig/python/mozbuild/mozbuild/virtualenv.py	2026-01-14 10:21:39.180268741 +0100
++++ seamonkey-2.53.23/python/mozbuild/mozbuild/virtualenv.py	2026-01-14 10:47:59.748276524 +0100
+@@ -692,8 +669,6 @@
+ 
+ 
+ if __name__ == '__main__':
+-    verify_python_version(sys.stdout)
+-
+     if len(sys.argv) < 2:
+         print('Too few arguments', file=sys.stderr)
+         sys.exit(1)

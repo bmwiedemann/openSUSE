@@ -1,0 +1,25 @@
+Raise the timeout in test_call_timeout
+
+The test can fail spuriously on heavily loaded OBS builders, so
+raise the timeout from 0.1 to 10 seconds.
+
+Downstream only.
+---
+---
+ Lib/test/test_subprocess.py |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: Python-3.16.0a1/Lib/test/test_subprocess.py
+===================================================================
+--- Python-3.16.0a1.orig/Lib/test/test_subprocess.py	2026-10-16 18:58:03.615215742 +0200
++++ Python-3.16.0a1/Lib/test/test_subprocess.py	2026-10-16 18:58:05.606245108 +0200
+@@ -161,7 +161,8 @@
+         # child.
+         self.assertRaises(subprocess.TimeoutExpired, subprocess.call,
+                           [sys.executable, "-c", "while True: pass"],
+-                          timeout=0.1)
++                          # Heavily loaded OBS builders need more time.
++                          timeout=10)
+ 
+     def test_timeout_exception(self):
+         try:

@@ -1,0 +1,88 @@
+From: Yunhe Guo <i@guoyunhe.me>
+Subject: [PATCH] Allow building against the system pugixml
+
+Add VXCORE_USE_SYSTEM_PUGIXML, which uses the CMake package of the platform
+pugixml instead of building the pinned copy. Distribution packages ship the
+same 1.16 release already.
+
+VNote then has no bundled pugixml license to install, and the system package
+exports only the namespaced target, so both the property lookup and the two
+install rules are skipped.
+
+Apply on top of 0002-use-system-curl.patch.
+
+---
+ libs/vxcore/third_party/CMakeLists.txt | 19 ++++++++++++-------
+ src/CMakeLists.txt                     | 12 ++++++++++--
+ 2 files changed, 24 insertions(+), 7 deletions(-)
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -179,7 +179,11 @@
+ endif()
+ 
+ get_target_property(VX_SODIUM_SOURCE_DIR sodium SOURCE_DIR)
+-get_target_property(VX_PUGIXML_LICENSE pugixml VXCORE_LICENSE_FILE)
++# A system pugixml ships no license file to install, and its CMake package does
++# not provide the plain pugixml target.
++if(TARGET pugixml)
++    get_target_property(VX_PUGIXML_LICENSE pugixml VXCORE_LICENSE_FILE)
++endif()
+ get_target_property(VX_HTTP_LICENSE vnote_http VNOTE_HTTP_LICENSE_FILE)
+ if(NOT APPLE)
+     get_target_property(VX_CURL_LICENSE vxcore_webdav_curl VXCORE_LICENSE_FILE)
+@@ -247,7 +251,9 @@
+         DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.libsodium)
+     install(FILES "${VX_SODIUM_SOURCE_DIR}/LICENSE"
+         DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.libsodium-cmake)
+-    install(FILES "${VX_PUGIXML_LICENSE}" DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.pugixml)
++    if(VX_PUGIXML_LICENSE)
++        install(FILES "${VX_PUGIXML_LICENSE}" DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.pugixml)
++    endif()
+     if(VX_CURL_LICENSE)
+         install(FILES "${VX_CURL_LICENSE}" DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME LICENSE.curl)
+     endif()
+@@ -294,7 +300,9 @@
+         DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.libsodium)
+     install(FILES "${VX_SODIUM_SOURCE_DIR}/LICENSE"
+         DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.libsodium-cmake)
+-    install(FILES "${VX_PUGIXML_LICENSE}" DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.pugixml)
++    if(VX_PUGIXML_LICENSE)
++        install(FILES "${VX_PUGIXML_LICENSE}" DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.pugixml)
++    endif()
+     if(VX_CURL_LICENSE)
+         install(FILES "${VX_CURL_LICENSE}" DESTINATION ${CMAKE_INSTALL_DATADIR}/licenses/vnote RENAME LICENSE.curl)
+     endif()
+--- a/libs/vxcore/third_party/CMakeLists.txt
++++ b/libs/vxcore/third_party/CMakeLists.txt
+@@ -257,15 +257,22 @@
+     set_property(TARGET vxcore_webdav_curl PROPERTY VXCORE_LICENSE_FILE "${vxcore_curl_SOURCE_DIR}/COPYING")
+   endif()
+ 
+-  set(PUGIXML_BUILD_TESTS OFF)
+-  set(PUGIXML_BUILD_SHARED_AND_STATIC_LIBS OFF)
+-  set(PUGIXML_INSTALL OFF)
+-  FetchContent_Declare(vxcore_pugixml
+-    URL https://github.com/zeux/pugixml/releases/download/v1.16/pugixml-1.16.tar.gz
+-    URL_HASH SHA256=4cee1ca4aad395170f4c7a07824f3bdd41f28316c6e1e1090a1425b278ec0b4b
+-  )
+-  FetchContent_MakeAvailable(vxcore_pugixml)
+-  set_property(TARGET pugixml PROPERTY VXCORE_LICENSE_FILE "${vxcore_pugixml_SOURCE_DIR}/LICENSE.md")
++  option(VXCORE_USE_SYSTEM_PUGIXML "Use the system pugixml instead of the pinned copy" OFF)
++  if(VXCORE_USE_SYSTEM_PUGIXML)
++    find_package(pugixml 1.16 REQUIRED)
++    # The imported target is directory scoped, but vxcore/src links it too.
++    set_property(TARGET pugixml::pugixml PROPERTY IMPORTED_GLOBAL TRUE)
++  else()
++    set(PUGIXML_BUILD_TESTS OFF)
++    set(PUGIXML_BUILD_SHARED_AND_STATIC_LIBS OFF)
++    set(PUGIXML_INSTALL OFF)
++    FetchContent_Declare(vxcore_pugixml
++      URL https://github.com/zeux/pugixml/releases/download/v1.16/pugixml-1.16.tar.gz
++      URL_HASH SHA256=4cee1ca4aad395170f4c7a07824f3bdd41f28316c6e1e1090a1425b278ec0b4b
++    )
++    FetchContent_MakeAvailable(vxcore_pugixml)
++    set_property(TARGET pugixml PROPERTY VXCORE_LICENSE_FILE "${vxcore_pugixml_SOURCE_DIR}/LICENSE.md")
++  endif()
+ endfunction()
+ 
+ vxcore_add_webdav_dependencies()

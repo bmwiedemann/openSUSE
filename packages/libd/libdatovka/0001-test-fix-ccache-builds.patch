@@ -1,0 +1,60 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 10 Nov 2026 07:54:51 +0100
+Subject: test: fix ccache builds
+References: test+ccache build fix
+Patch-mainline: https://gitlab.nic.cz/datovka/libdatovka/-/work_items/47
+
+ccache expects HOME to be absolute.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ test/offline/Makefile.am |    2 +-
+ test/offline/Makefile.in |    2 +-
+ test/simline/Makefile.am |    2 +-
+ test/simline/Makefile.in |    2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+--- a/test/offline/Makefile.am
++++ b/test/offline/Makefile.am
+@@ -17,7 +17,7 @@ LDADD = @XML_LIBS@ @LIBCURL@ @LIBGCRYPT_
+ 		@LTLIBINTL@ @JSON_C_LIBS@
+ 
+ # To fake home dir for gnupg2
+-export HOME=@top_builddir@
++export HOME=@abs_top_builddir@
+ 
+ TESTS = prepare_environment \
+ 		b64decode b64encode \
+--- a/test/offline/Makefile.in
++++ b/test/offline/Makefile.in
+@@ -4187,7 +4187,7 @@ uninstall-am:
+ export VERBOSE=1
+ 
+ # To fake home dir for gnupg2
+-export HOME=@top_builddir@
++export HOME=@abs_top_builddir@
+ 
+ # Tests that need .gnupg
+ guess_raw_type.log load_raw.log: prepare_environment.log
+--- a/test/simline/Makefile.am
++++ b/test/simline/Makefile.am
+@@ -11,7 +11,7 @@ AM_CFLAGS = -I$(INCLUDEDIR) -DSRCDIR=\"$
+ LDADD = -L$(LIBDIR) $(LIBDIR)/libdatovka.la -L. ./libserver.la
+ 
+ # To fake home dir for gnupg2
+-export HOME=@top_builddir@
++export HOME=@abs_top_builddir@
+ 
+ TESTS =
+ if BUILD_CURL
+--- a/test/simline/Makefile.in
++++ b/test/simline/Makefile.in
+@@ -1547,7 +1547,7 @@ uninstall-am:
+ export VERBOSE=1
+ 
+ # To fake home dir for gnupg2
+-export HOME=@top_builddir@
++export HOME=@abs_top_builddir@
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

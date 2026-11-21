@@ -1,0 +1,132 @@
+From 2a858deb74196340df8ae2249e0c545a14a9334e Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 14 Oct 2026 11:45:42 +0800
+Subject: [PATCH] commands/crypttab: harden cryptokey update path
+
+Fix `grub_cryptokey_add_or_update()` to safely handle updates and
+allocation failures.
+
+Validate required UUID input, use bounded UUID comparison with
+`GRUB_CRYPTODISK_MAX_UUID_LENGTH`, and stage new allocations (`uuid`,
+`key`, `path`) before mutating an existing entry.  On failure, free only
+temporary allocations and preserve existing list entries and state. When
+replacing key material, wipe the old key before freeing it.
+
+This avoids incorrect UUID matching and prevents destructive behavior on
+failed updates while keeping key handling robust.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/crypttab.c | 69 ++++++++++++++++++++++++-----------
+ 1 file changed, 47 insertions(+), 22 deletions(-)
+
+diff --git a/grub-core/commands/crypttab.c b/grub-core/commands/crypttab.c
+index 66b3915f7..fd5e4c237 100644
+--- a/grub-core/commands/crypttab.c
++++ b/grub-core/commands/crypttab.c
+@@ -7,6 +7,7 @@
+ #include <grub/list.h>
+ #include <grub/crypttab.h>
+ #include <grub/file.h>
++#include <grub/cryptodisk.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -51,48 +52,72 @@ grub_err_t
+ grub_cryptokey_add_or_update (const char *uuid, const char *key, grub_size_t key_len, const char *path, int is_tpmkey)
+ {
+   grub_crypto_key_list_t *cur = NULL;
++  char *key_copy = NULL;
++  char *path_copy = NULL;
++
++  if (!uuid)
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("UUID is required"));
+ 
+   FOR_LIST_ELEMENTS (cur, cryptokey_lst)
+-    if (grub_uuidcasecmp (cur->name, uuid, sizeof (cur->name)) == 0)
++    if (cur->name && grub_uuidcasecmp (cur->name, uuid, GRUB_CRYPTODISK_MAX_UUID_LENGTH) == 0)
+       break;
+ 
+-  if (!cur && !uuid)
+-    return GRUB_ERR_NONE;
++  if (key && key_len)
++    {
++      key_copy = grub_malloc (key_len);
++      if (!key_copy)
++	goto fail;
++      grub_memcpy (key_copy, key, key_len);
++    }
+ 
+-  if (!cur)
+-    cur = grub_zalloc (sizeof (*cur));
+-  if (!cur)
+-    return grub_errno;
++  if (path)
++    {
++      path_copy = grub_strdup (path);
++      if (!path_copy)
++	goto fail;
++    }
+ 
+-  if (key && key_len)
++  if (!cur)
+     {
+-      grub_free (cur->key);
+-      cur->key = grub_malloc (key_len);
+-      if (!cur->key)
++      char *uuid_copy = grub_strdup (uuid);
++      if (!uuid_copy)
++	goto fail;
++      cur = grub_zalloc (sizeof (*cur));
++      if (!cur)
+ 	{
+-	  grub_free (cur);
+-	  return grub_errno;
++	  grub_free (uuid_copy);
++	  goto fail;
+ 	}
+-      grub_memcpy (cur->key, key, key_len);
++      cur->name = uuid_copy;
++      grub_list_push (GRUB_AS_LIST_P (&cryptokey_lst), GRUB_AS_LIST (cur));
++    }
++
++  if (key_copy)
++    {
++      if (cur->key)
++	grub_memset (cur->key, 0, cur->key_len);
++      grub_free (cur->key);
++      cur->key = key_copy;
+       cur->key_len = key_len;
+     }
+ 
+-  if (path)
++  if (path_copy)
+     {
+       grub_free (cur->path);
+-      cur->path = grub_strdup (path);
++      cur->path = path_copy;
+     }
+ 
+   if (is_tpmkey >= 0)
+     cur->is_tpmkey = is_tpmkey;
+ 
+-  if (!cur->name)
+-    {
+-      cur->name = grub_strdup (uuid);
+-      grub_list_push (GRUB_AS_LIST_P (&cryptokey_lst), GRUB_AS_LIST (cur));
+-    }
+-
+   return GRUB_ERR_NONE;
++
++ fail:
++  grub_error_push ();
++  grub_free (key_copy);
++  grub_free (path_copy);
++  grub_error_pop ();
++  return grub_errno;
+ }
+ 
+ void
+-- 
+2.56.0
+

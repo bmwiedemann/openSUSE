@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/qca/open-plc-utils.git</param>
+    <param name="scm">git</param>
+    <param name="revision">5e0295719d70058221273ac0e780fcd82e28ea0f</param>
+    <param name="versionformat">0.0.6~git%cd.%h</param>
+    <param name="exclude">.git*</param>
+    <param name="exclude">VisualStudioNET/library/*</param>
+    <param name="filename">open-plc-utils</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">zst</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="buildtime"/>
+</services>

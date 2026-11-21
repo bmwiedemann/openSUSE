@@ -1,0 +1,24 @@
+Add /usr/local to site.PREFIXES
+
+Packages installed into /usr/local (see
+F00251-change-user-install-location.patch) must also be importable.
+
+Downstream only.
+---
+---
+ Lib/site.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: Python-3.16.0a1/Lib/site.py
+===================================================================
+--- Python-3.16.0a1.orig/Lib/site.py	2026-10-16 18:58:03.958220801 +0200
++++ Python-3.16.0a1/Lib/site.py	2026-10-16 18:58:04.765232704 +0200
+@@ -54,7 +54,7 @@
+ lazy import warnings
+ 
+ # Prefixes for site-packages; add additional prefixes like /usr/local here
+-PREFIXES = [sys.prefix, sys.exec_prefix]
++PREFIXES = [sys.prefix, sys.exec_prefix, '/usr/local']
+ # Enable per user site-packages directory
+ # set it to False to disable the feature or True to force the feature
+ ENABLE_USER_SITE = None

@@ -1,0 +1,27 @@
+From 95dccbe55eefe73e526563296beded4a8407b8a8 Mon Sep 17 00:00:00 2001
+From: Rui Chen <rui@chenrui.dev>
+Date: Sat, 14 Nov 2026 03:46:50 -0500
+Subject: [PATCH] cmake: use CODE signature for inline install commands
+
+CMake 4.5 now rejects install(SCRIPT CODE ...) because SCRIPT has no filename. Use the CODE signature for the existing inline directory-creation commands, preserving their install-time behavior.
+
+Observed while building fish 4.9.3 in Homebrew/homebrew-core#325151; the failure occurs during CMake configuration, before Rust compilation.
+
+Signed-off-by: Rui Chen <rui@chenrui.dev>
+---
+ cmake/Install.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/Install.cmake b/cmake/Install.cmake
+index 37c2ebe7c28e..d9d5625d9134 100644
+--- a/cmake/Install.cmake
++++ b/cmake/Install.cmake
+@@ -71,7 +71,7 @@ function(FISH_TRY_CREATE_DIRS)
+         else()
+             set(abs_dir "\$ENV{DESTDIR}${dir}")
+         endif()
+-        install(SCRIPT CODE "
++        install(CODE "
+             EXECUTE_PROCESS(COMMAND mkdir -p ${abs_dir} OUTPUT_QUIET ERROR_QUIET)
+             execute_process(COMMAND chmod 755 ${abs_dir} OUTPUT_QUIET ERROR_QUIET)
+         ")

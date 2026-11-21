@@ -1,0 +1,13 @@
+Index: firefox-158.0/python/mach/mach/site.py
+===================================================================
+--- firefox-158.0.orig/python/mach/mach/site.py
++++ firefox-158.0/python/mach/mach/site.py
+@@ -660,7 +660,7 @@ class CommandSiteManager:
+         first to ensure that the virtualenv doesn't have obsolete references or packages.
+         """
+         lock_file = Path(self.virtualenv_root).with_suffix(".lock")
+-        timeout = 60
++        timeout = 240
+ 
+         # In the scenario where multiple processes use the same site that does not yet exist,
+         # they will trample each other when attempting to create it. To resolve this, we use

@@ -1,0 +1,191 @@
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/nodeutil.py seamonkey-2.53.24/python/mozbuild/mozbuild/nodeutil.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/nodeutil.py	2026-05-30 14:18:44.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/nodeutil.py	2026-08-22 22:19:16.672487444 +0200
+@@ -8,16 +8,13 @@
+ import subprocess
+ import platform
+ 
+-from distutils.version import (
+-    StrictVersion,
+-)
+-
+ from mozboot.util import get_state_dir
+ from mozfile import which
++from packaging.version import Version
+ from six import PY3
+ 
+-NODE_MIN_VERSION = StrictVersion("8.11.0")
+-NPM_MIN_VERSION = StrictVersion("5.6.0")
++NODE_MIN_VERSION = Version("12.22.12")
++NPM_MIN_VERSION = Version("6.14.16")
+ 
+ 
+ def find_node_paths():
+@@ -70,7 +67,7 @@
+     if not out:
+         out = subprocess.check_output([exe, "--version"],
+                                       universal_newlines=PY3).lstrip('v').rstrip()
+-    return StrictVersion(out)
++    return Version(out)
+ 
+ 
+ def find_node_executable(nodejs_exe=os.environ.get('NODEJS'), min_version=NODE_MIN_VERSION):
+@@ -87,7 +84,7 @@
+             return None, None
+ 
+         if version >= min_version:
+-            return nodejs_exe, version.version
++            return nodejs_exe, version.release
+ 
+         return None, None
+ 
+@@ -128,6 +125,6 @@
+             continue
+ 
+         if version >= min_version:
+-            return exe, version.version
++            return exe, version.release
+ 
+     return found_exe, None
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozrelease/mozrelease/versions.py seamonkey-2.53.24/python/mozrelease/mozrelease/versions.py
+--- seamonkey-2.53.24.orig/python/mozrelease/mozrelease/versions.py	2026-08-22 22:10:25.142104118 +0200
++++ seamonkey-2.53.24/python/mozrelease/mozrelease/versions.py	2026-08-22 22:19:16.672836107 +0200
+@@ -4,11 +4,60 @@
+ 
+ from __future__ import absolute_import
+ 
+-from distutils.version import StrictVersion
+ from looseversion import LooseVersion
+ import re
++from packaging.version import InvalidVersion
+ 
+ 
++class StrictVersion:
++    def __init__(self, vstring):
++        self.parse(vstring)
++
++    def __repr__(self):
++        return "%s ('%s')" % (self.__class__.__name__, str(self))
++
++    def __eq__(self, other):
++        return self._cmp(other) == 0
++
++    def __lt__(self, other):
++        return self._cmp(other) < 0
++
++    def parse(self, vstring):
++        match = self.version_re.match(vstring)
++        if not match:
++            raise InvalidVersion("invalid version number '%s'" % vstring)
++
++        major, minor, patch, pre, pre_num = match.group(1, 2, 4, 5, 6)
++        self.version = int(major), int(minor), int(patch or 0)
++        self.pre = (pre[0], int(pre_num)) if pre else ()
++
++    def __str__(self):
++        return ".".join(map(str, self.version)) + (
++            "".join(map(str, self.pre)) if self.pre else ""
++        )
++
++    def _cmp(self, other):
++        if isinstance(other, str):
++            other = StrictVersion(other)
++        elif not isinstance(other, StrictVersion):
++            raise NotImplementedError
++
++        if self.version < other.version:
++            return -1
++        elif self.version == other.version:
++            if self.pre == other.pre:
++                return 0
++            elif not self.pre:
++                return 1
++            elif not other.pre:
++                return -1
++            elif self.pre < other.pre:
++                return -1
++            else:
++                return 1
++        else:
++            return 1
++
+ class MozillaVersionCompareMixin():
+     def __cmp__(self, other):
+         # We expect this function to never be called.
+@@ -82,12 +131,12 @@
+ def MozillaVersion(version):
+     try:
+         return ModernMozillaVersion(version)
+-    except ValueError:
++    except InvalidVersion:
+         pass
+     try:
+         if version.count('.') == 3:
+             return AncientMozillaVersion(version)
+-    except ValueError:
++    except InvalidVersion:
+         pass
+     try:
+         return LooseModernMozillaVersion(version)
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozrelease/test/test_versions.py seamonkey-2.53.24/python/mozrelease/test/test_versions.py
+--- seamonkey-2.53.24.orig/python/mozrelease/test/test_versions.py	2026-05-30 14:18:44.000000000 +0200
++++ seamonkey-2.53.24/python/mozrelease/test/test_versions.py	2026-08-22 22:19:16.673117478 +0200
+@@ -3,7 +3,11 @@
+ import mozunit
+ import pytest
+ 
+-from mozrelease.versions import MozillaVersion
++from mozrelease.versions import (
++    AncientMozillaVersion,
++    ModernMozillaVersion,
++    MozillaVersion,
++)
+ 
+ 
+ ALL_VERSIONS = [  # Keep this sorted
+@@ -91,6 +95,21 @@
+     smaller_version, larger_version = comparable_versions
+     assert MozillaVersion(larger_version) > MozillaVersion(smaller_version)
+ 
++def test_ModernMozillaVersion():
++    """Test properties specific to ModernMozillaVersion"""
++    assert isinstance(MozillaVersion("1.2.4"), ModernMozillaVersion)
++    assert isinstance(MozillaVersion("1.2.4rc3"), ModernMozillaVersion)
++    assert MozillaVersion("1.2rc3") == MozillaVersion("1.2.0rc3")
++
++
++def test_AncientMozillaVersion():
++    """Test properties specific to AncientMozillaVersion"""
++    assert isinstance(MozillaVersion("1.2.0.4"), AncientMozillaVersion)
++    assert isinstance(MozillaVersion("1.2.0.4pre1"), AncientMozillaVersion)
++    assert MozillaVersion("1.2pre1") == MozillaVersion("1.2.0pre1")
++    assert MozillaVersion("1.2.0.4pre1") == MozillaVersion("1.2.4pre1")
++
++
+ 
+ @pytest.mark.parametrize('version', ALL_VERSIONS)
+ def test_versions_compare_equal(version):
+diff '--color=auto' -urN seamonkey-2.53.24.orig/tools/power/mach_commands.py seamonkey-2.53.24/tools/power/mach_commands.py
+--- seamonkey-2.53.24.orig/tools/power/mach_commands.py	2026-05-30 15:08:56.000000000 +0200
++++ seamonkey-2.53.24/tools/power/mach_commands.py	2026-08-22 22:20:37.476019776 +0200
+@@ -4,18 +4,17 @@
+ 
+ from __future__ import print_function
+ 
+-from distutils.version import StrictVersion
+-
+ from mach.decorators import (
+     Command,
+     CommandArgument,
+ )
++from packaging.version import Version
+ 
+ 
+ def is_osx_10_10_or_greater(cls):
+     import platform
+     release = platform.mac_ver()[0]
+-    return release and StrictVersion(release) >= StrictVersion('10.10')
++    return release and Version(release) >= Version("10.10")
+ 
+ 
+ # Get system power consumption and related measurements.

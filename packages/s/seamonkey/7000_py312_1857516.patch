@@ -1,0 +1,302 @@
+diff '--color=auto' -urN seamonkey-2.53.24.orig/dom/bindings/mozwebidlcodegen/test/test_mozwebidlcodegen.py seamonkey-2.53.24/dom/bindings/mozwebidlcodegen/test/test_mozwebidlcodegen.py
+--- seamonkey-2.53.24.orig/dom/bindings/mozwebidlcodegen/test/test_mozwebidlcodegen.py	2026-05-30 15:08:55.000000000 +0200
++++ seamonkey-2.53.24/dom/bindings/mozwebidlcodegen/test/test_mozwebidlcodegen.py	2026-08-22 21:02:47.608168953 +0200
+@@ -4,7 +4,6 @@
+ 
+ from __future__ import unicode_literals
+ 
+-import imp
+ import io
+ import json
+ import os
+@@ -20,7 +19,7 @@
+     WebIDLCodegenManagerState,
+ )
+ 
+-from mozfile import NamedTemporaryFile
++from mozfile import NamedTemporaryFile, load_source
+ 
+ from mozunit import (
+     MockedOpen,
+@@ -245,7 +244,7 @@
+         with NamedTemporaryFile('wt') as fh:
+             fh.write('# Original content')
+             fh.flush()
+-            mod = imp.load_source('mozwebidlcodegen.fakemodule', fh.name)
++            mod = load_source("mozwebidlcodegen.fakemodule", fh.name)
+             mod.__file__ = fake_path
+ 
+             args = self._get_manager_args()
+diff '--color=auto' -urN seamonkey-2.53.24.orig/netwerk/dns/prepare_tlds.py seamonkey-2.53.24/netwerk/dns/prepare_tlds.py
+--- seamonkey-2.53.24.orig/netwerk/dns/prepare_tlds.py	2026-05-30 14:18:44.000000000 +0200
++++ seamonkey-2.53.24/netwerk/dns/prepare_tlds.py	2026-08-22 21:02:47.622169559 +0200
+@@ -4,11 +4,11 @@
+ 
+ import codecs
+ import encodings.idna
+-import imp
+-import os
+ import re
+ import sys
+ 
++from make_dafsa import words_to_bin, words_to_cxx
++
+ """
+ Processes a file containing effective TLD data.  See the following URL for a
+ description of effective TLDs and of the file format that this script
+@@ -20,7 +20,6 @@
+ 
+ def getEffectiveTLDs(path):
+   file = codecs.open(path, "r", "UTF-8")
+-  entries = []
+   domains = set()
+   for line in file:
+     # line always contains a line terminator unless the file is empty
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mach/mach/main.py seamonkey-2.53.24/python/mach/mach/main.py
+--- seamonkey-2.53.24.orig/python/mach/mach/main.py	2026-05-30 15:08:55.000000000 +0200
++++ seamonkey-2.53.24/python/mach/mach/main.py	2026-08-22 21:02:47.634170078 +0200
+@@ -10,16 +10,18 @@
+ import argparse
+ import codecs
+ import errno
+-import imp
+ import logging
+ import os
+ import sys
+ import traceback
++import types
+ import uuid
+ from collections.abc import Iterable
+ 
+ from six import string_types
+ 
++from mozfile import load_source
++
+ from .base import (
+     CommandContext,
+     MachError,
+@@ -246,13 +248,13 @@
+             # Ensure parent module is present otherwise we'll (likely) get
+             # an error due to unknown parent.
+             if 'mach.commands' not in sys.modules:
+-                mod = imp.new_module('mach.commands')
++                mod = types.ModuleType("mach.commands")
+                 sys.modules['mach.commands'] = mod
+ 
+             module_name = 'mach.commands.%s' % uuid.uuid4().hex
+ 
+         try:
+-            imp.load_source(module_name, path)
++            load_source(module_name, str(path))
+         except IOError as e:
+             if e.errno != errno.ENOENT:
+                 raise
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mach/mach/test/test_entry_point.py seamonkey-2.53.24/python/mach/mach/test/test_entry_point.py
+--- seamonkey-2.53.24.orig/python/mach/mach/test/test_entry_point.py	2026-05-30 14:18:44.000000000 +0200
++++ seamonkey-2.53.24/python/mach/mach/test/test_entry_point.py	2026-08-22 21:02:47.636235761 +0200
+@@ -4,9 +4,9 @@
+ from __future__ import absolute_import
+ from __future__ import unicode_literals
+ 
+-import imp
+ import os
+ import sys
++import types
+ 
+ from mach.base import MachError
+ from mach.test.conftest import TestBase
+@@ -41,7 +41,7 @@
+         # Ensure parent module is present otherwise we'll (likely) get
+         # an error due to unknown parent.
+         if 'mach.commands' not in sys.modules:
+-            mod = imp.new_module('mach.commands')
++            mod = types.ModuleType("mach.commands")
+             sys.modules['mach.commands'] = mod
+ 
+         mock.return_value = [Entry([self.provider_dir])]
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/mach_commands.py seamonkey-2.53.24/python/mozbuild/mozbuild/mach_commands.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/mach_commands.py	2026-07-19 19:08:19.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/mach_commands.py	2026-08-22 21:02:47.644170511 +0200
+@@ -25,6 +25,7 @@
+     SettingsProvider,
+     SubCommand,
+ )
++from mozfile import load_source
+ 
+ from mozbuild.base import (
+     BinaryNotFoundException,
+diff '--color=auto' -urN seamonkey-2.53.24.orig/testing/marionette/harness/marionette_harness/marionette_test/testcases.py seamonkey-2.53.24/testing/marionette/harness/marionette_harness/marionette_test/testcases.py
+--- seamonkey-2.53.24.orig/testing/marionette/harness/marionette_harness/marionette_test/testcases.py	2026-05-30 15:08:56.000000000 +0200
++++ seamonkey-2.53.24/testing/marionette/harness/marionette_harness/marionette_test/testcases.py	2026-08-22 21:02:47.645791182 +0200
+@@ -4,7 +4,7 @@
+ 
+ from __future__ import absolute_import
+ 
+-import imp
++
+ import os
+ import re
+ import sys
+@@ -21,6 +21,7 @@
+     TimeoutException,
+     UnresponsiveInstanceException
+ )
++from mozfile import load_source
+ from mozlog import get_default_logger
+ 
+ 
+@@ -330,21 +331,20 @@
+     @classmethod
+     def add_tests_to_suite(cls, mod_name, filepath, suite, testloader, marionette,
+                            fixtures, testvars, **kwargs):
+-        # since we use imp.load_source to load test modules, if a module
+-        # is loaded with the same name as another one the module would just be
+-        # reloaded.
++        # since load_source caches modules, if a module is loaded with the same
++        # name as another one the module would just be reloaded.
+         #
+-        # We may end up by finding too many test in a module then since
+-        # reload() only update the module dict (so old keys are still there!)
+-        # see https://docs.python.org/2/library/functions.html#reload
++        # We may end up by finding too many test in a module then since reload()
++        # only update the module dict (so old keys are still there!) see
++        # https://docs.python.org/2/library/functions.html#reload
+         #
+-        # we get rid of that by removing the module from sys.modules,
+-        # so we ensure that it will be fully loaded by the
+-        # imp.load_source call.
++        # we get rid of that by removing the module from sys.modules, so we
++        # ensure that it will be fully loaded by the imp.load_source call.
++
+         if mod_name in sys.modules:
+             del sys.modules[mod_name]
+ 
+-        test_mod = imp.load_source(mod_name, filepath)
++        test_mod = load_source(mod_name, filepath)
+ 
+         for name in dir(test_mod):
+             obj = getattr(test_mod, name)
+diff '--color=auto' -urN seamonkey-2.53.24.orig/testing/mochitest/mach_commands.py seamonkey-2.53.24/testing/mochitest/mach_commands.py
+--- seamonkey-2.53.24.orig/testing/mochitest/mach_commands.py	2026-05-30 15:08:56.000000000 +0200
++++ seamonkey-2.53.24/testing/mochitest/mach_commands.py	2026-08-22 21:04:56.549496631 +0200
+@@ -17,6 +17,7 @@
+     MachCommandConditions as conditions,
+     MozbuildObject,
+ )
++from mozfile import load_source
+ 
+ from mach.decorators import (
+     CommandArgument,
+@@ -104,11 +105,8 @@
+         """
+         # runtests.py is ambiguous, so we load the file/module manually.
+         if 'mochitest' not in sys.modules:
+-            import imp
+             path = os.path.join(command_context.mochitest_dir, 'runtests.py')
+-            with open(path, 'r') as fh:
+-                imp.load_module('mochitest', fh, path,
+-                                ('.py', 'r', imp.PY_SOURCE))
++            load_source("mochitest", path)
+ 
+         import mochitest
+ 
+@@ -159,14 +157,11 @@
+     with warnings.catch_warnings():
+         warnings.simplefilter('ignore')
+ 
+-        import imp
+         path = os.path.join(build_obj.topobjdir, mochitest_dir, 'runtests.py')
+         if not os.path.exists(path):
+             path = os.path.join(here, "runtests.py")
+ 
+-        with open(path, 'r') as fh:
+-            imp.load_module('mochitest', fh, path,
+-                            ('.py', 'r', imp.PY_SOURCE))
++        load_source("mochitest", path)
+ 
+         from mochitest_options import MochitestArgumentParser
+ 
+diff '--color=auto' -urN seamonkey-2.53.24.orig/testing/mozbase/mozfile/mozfile/mozfile.py seamonkey-2.53.24/testing/mozbase/mozfile/mozfile/mozfile.py
+--- seamonkey-2.53.24.orig/testing/mozbase/mozfile/mozfile/mozfile.py	2026-05-30 15:08:56.000000000 +0200
++++ seamonkey-2.53.24/testing/mozbase/mozfile/mozfile/mozfile.py	2026-08-22 21:02:47.646677047 +0200
+@@ -26,6 +26,7 @@
+     "extract",
+     "is_url",
+     "load",
++    "load_source",
+     "copy_contents",
+     "match",
+     "move",
+@@ -575,6 +576,20 @@
+     return urllib.request.urlopen(resource)
+ 
+ 
++
++# see https://docs.python.org/3/whatsnew/3.12.html#imp
++def load_source(modname, filename):
++    import importlib.machinery
++    import importlib.util
++
++    loader = importlib.machinery.SourceFileLoader(modname, filename)
++    spec = importlib.util.spec_from_file_location(modname, filename, loader=loader)
++    module = importlib.util.module_from_spec(spec)
++    sys.modules[module.__name__] = module
++    loader.exec_module(module)
++    return module
++
++
+ # We can't depend on mozpack.path here, so copy the 'match' function over.
+ 
+ re_cache = {}
+diff '--color=auto' -urN seamonkey-2.53.24.orig/testing/mozharness/scripts/desktop_unittest.py seamonkey-2.53.24/testing/mozharness/scripts/desktop_unittest.py
+--- seamonkey-2.53.24.orig/testing/mozharness/scripts/desktop_unittest.py	2026-05-30 15:08:56.000000000 +0200
++++ seamonkey-2.53.24/testing/mozharness/scripts/desktop_unittest.py	2026-08-22 21:06:20.792495491 +0200
+@@ -17,7 +17,6 @@
+ import copy
+ import shutil
+ import glob
+-import imp
+ 
+ from datetime import datetime, timedelta
+ 
+@@ -25,6 +24,7 @@
+ here = os.path.abspath(os.path.dirname(__file__))
+ sys.path.insert(1, os.path.dirname(here))
+ 
++from mozfile import load_source
+ from mozharness.base.errors import BaseErrorList
+ from mozharness.base.log import INFO
+ from mozharness.base.script import PreScriptAction
+@@ -882,7 +882,7 @@
+                                                      log_obj=self.log_obj)
+ 
+                 if suite_category == "reftest":
+-                    ref_formatter = imp.load_source(
++                    ref_formatter = load_source(
+                         "ReftestFormatter",
+                         os.path.abspath(
+                             os.path.join(dirs["abs_reftest_dir"], "output.py")))
+diff '--color=auto' -urN seamonkey-2.53.24.orig/tools/moztreedocs/mach_commands.py seamonkey-2.53.24/tools/moztreedocs/mach_commands.py
+--- seamonkey-2.53.24.orig/tools/moztreedocs/mach_commands.py	2026-05-30 15:08:56.000000000 +0200
++++ seamonkey-2.53.24/tools/moztreedocs/mach_commands.py	2026-08-22 21:08:02.731880953 +0200
+@@ -24,6 +24,7 @@
+     CommandArgument,
+     SubCommand,
+ )
++from mozfile import load_source
+ 
+ here = os.path.abspath(os.path.dirname(__file__))
+ topsrcdir = os.path.abspath(os.path.dirname(os.path.dirname(here)))
+@@ -204,11 +205,8 @@
+ 
+ @memoize
+ def _read_project_properties():
+-    import imp
+     path = os.path.normpath(self.manager.conf_py_path)
+-    with open(path, 'r') as fh:
+-        conf = imp.load_module('doc_conf', fh, path,
+-                               ('.py', 'r', imp.PY_SOURCE))
++    conf = load_source("doc_conf", path)
+ 
+     # Prefer the Mozilla project name, falling back to Sphinx's
+     # default variable if it isn't defined.

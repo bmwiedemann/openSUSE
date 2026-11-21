@@ -1,0 +1,49 @@
+From 2bdf58d97577892653d18f4b328fe1273dbee6c9 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Mon, 9 Nov 2026 12:58:20 +0100
+Subject: [PATCH] Fix asyncio_loop AttributeError in SyncWrapper on Python
+ <3.11 (#792)
+
+SyncWrapper.close() reads self.asyncio_loop, but it is not
+set or used  on Python < 3.11. This caused cosmetic error
+"<Class> object has no attribute 'asyncio_loop'"
+being logged on every minion shutdown.
+
+Related to 016cbde7805
+---
+ salt/utils/asynchronous.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/salt/utils/asynchronous.py b/salt/utils/asynchronous.py
+index 5e22a12b5ae..c64d0eb8aab 100644
+--- a/salt/utils/asynchronous.py
++++ b/salt/utils/asynchronous.py
+@@ -183,7 +183,7 @@ class SyncWrapper:
+         # never even *construct* the inner coroutine when the loop can't drive
+         # it to completion.
+         try:
+-            if self._loop_can_run_until_complete(self.asyncio_loop):
++            if hasattr(self, "asyncio_loop") and self._loop_can_run_until_complete(self.asyncio_loop):
+                 pending_tasks = [
+                     task
+                     for task in asyncio.all_tasks(self.asyncio_loop)
+@@ -203,14 +203,14 @@ class SyncWrapper:
+                         if not gathered.done():
+                             gathered.cancel()
+ 
+-            if self._loop_can_run_until_complete(self.asyncio_loop):
++            if hasattr(self, "asyncio_loop") and self._loop_can_run_until_complete(self.asyncio_loop):
+                 shutdown_agens = self.asyncio_loop.shutdown_asyncgens()
+                 try:
+                     self.asyncio_loop.run_until_complete(shutdown_agens)
+                 except Exception:  # pylint: disable=broad-except
+                     shutdown_agens.close()
+ 
+-            if self._loop_can_run_until_complete(self.asyncio_loop):
++            if hasattr(self, "asyncio_loop") and self._loop_can_run_until_complete(self.asyncio_loop):
+                 shutdown_exec = self.asyncio_loop.shutdown_default_executor()
+                 try:
+                     self.asyncio_loop.run_until_complete(shutdown_exec)
+-- 
+2.56.0
+

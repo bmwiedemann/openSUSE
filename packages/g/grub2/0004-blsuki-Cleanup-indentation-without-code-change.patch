@@ -1,0 +1,183 @@
+From 6cadcdb200e5d5e03678f25e8749d69c7f1819cf Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 20 Oct 2026 14:56:18 +0800
+Subject: [PATCH 4/4] blsuki: Cleanup indentation without code change.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/blsuki.c | 152 ++++++++++++++++++------------------
+ 1 file changed, 76 insertions(+), 76 deletions(-)
+
+diff --git a/grub-core/commands/blsuki.c b/grub-core/commands/blsuki.c
+index f5f80a499..98bfacf13 100644
+--- a/grub-core/commands/blsuki.c
++++ b/grub-core/commands/blsuki.c
+@@ -1679,89 +1679,89 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+       if (!entry->visible)
+         continue;
+ 
+-	  id_u8 = blsuki_entry_id_len (entry->filename);
++      id_u8 = blsuki_entry_id_len (entry->filename);
+ 
+-	  if (remaining_u16 < id_u8 + 1)
+-	    {
+-	      grub_dprintf ("blsuki", "LoaderEntries buffer too small\n");
+-	      break;
+-	    }
+-
+-	  if (prev_remaining_bytes != 0 && prev_entries)
+-	    {
+-	      do {
+-		grub_size_t prev_id_u16 = 0;
+-		grub_size_t prev_utf8_bytes;
+-		grub_size_t prev_remaining_u16 = UTF16_CHARS(prev_remaining_bytes);
+-		char *prev_entry = NULL;
+-
+-		/*
+-		 * LoaderEntries comes from EFI variable storage, so it is only
+-		 * trusted up to prev_entries_size16 UTF-16 code units. Bound
+-		 * the scan in case a malformed variable is missing a
+-		 * terminator.
+-		 */
+-		while (prev_id_u16 < prev_remaining_u16 && prev_entries[prev_id_u16] != '\0')
+-		  prev_id_u16++;
+-
+-		/*
+-		 * If we reached the end of the buffer without finding a null
+-		 * terminator, the variable is malformed and we should bail
+-		 * instead of risking an out-of-bounds read.
+-		 */
+-		if (prev_id_u16 == prev_remaining_u16)
+-		  {
+-		    grub_error (GRUB_ERR_BAD_ARGUMENT, "malformed LoaderEntries variable");
+-		    goto fail;
+-		  }
+-
+-		if (grub_mul (prev_id_u16, GRUB_MAX_UTF8_PER_UTF16, &prev_utf8_bytes) ||
+-		    grub_add (prev_utf8_bytes, 1, &prev_utf8_bytes))
+-		  {
+-		    grub_error (GRUB_ERR_OUT_OF_RANGE, "LoaderEntries entry is too large");
+-		    goto fail;
+-		  }
++      if (remaining_u16 < id_u8 + 1)
++	{
++	  grub_dprintf ("blsuki", "LoaderEntries buffer too small\n");
++	  break;
++	}
+ 
+-		prev_entry = grub_malloc (prev_utf8_bytes);
+-		if (prev_entry == NULL)
+-		  goto fail;
++      if (prev_remaining_bytes != 0 && prev_entries)
++	{
++	  do {
++	    grub_size_t prev_id_u16 = 0;
++	    grub_size_t prev_utf8_bytes;
++	    grub_size_t prev_remaining_u16 = UTF16_CHARS(prev_remaining_bytes);
++	    char *prev_entry = NULL;
++
++	    /*
++	     * LoaderEntries comes from EFI variable storage, so it is only
++	     * trusted up to prev_entries_size16 UTF-16 code units. Bound
++	     * the scan in case a malformed variable is missing a
++	     * terminator.
++	     */
++	    while (prev_id_u16 < prev_remaining_u16 && prev_entries[prev_id_u16] != '\0')
++	      prev_id_u16++;
++
++	    /*
++	     * If we reached the end of the buffer without finding a null
++	     * terminator, the variable is malformed and we should bail
++	     * instead of risking an out-of-bounds read.
++	     */
++	    if (prev_id_u16 == prev_remaining_u16)
++	      {
++		grub_error (GRUB_ERR_BAD_ARGUMENT, "malformed LoaderEntries variable");
++		goto fail;
++	      }
++
++	    if (grub_mul (prev_id_u16, GRUB_MAX_UTF8_PER_UTF16, &prev_utf8_bytes) ||
++		grub_add (prev_utf8_bytes, 1, &prev_utf8_bytes))
++	      {
++		grub_error (GRUB_ERR_OUT_OF_RANGE, "LoaderEntries entry is too large");
++		goto fail;
++	      }
++
++	    prev_entry = grub_malloc (prev_utf8_bytes);
++	    if (prev_entry == NULL)
++	      goto fail;
+ 
+-		*grub_utf16_to_utf8 ((grub_uint8_t*) prev_entry, prev_entries, prev_id_u16) = '\0';
+-		rc = filevercmp (prev_entry, entry->filename);
+-		grub_free (prev_entry);
+-		if (rc == 0)
++	    *grub_utf16_to_utf8 ((grub_uint8_t*) prev_entry, prev_entries, prev_id_u16) = '\0';
++	    rc = filevercmp (prev_entry, entry->filename);
++	    grub_free (prev_entry);
++	    if (rc == 0)
++	      {
++		grub_error (GRUB_ERR_BAD_ARGUMENT, N_("duplicate file: `%s'"), entry->filename);
++		goto fail;
++	      }
++
++	    if (rc > 0)
++	      {
++		if (remaining_u16 < prev_id_u16 + 1)
+ 		  {
+-		    grub_error (GRUB_ERR_BAD_ARGUMENT, N_("duplicate file: `%s'"), entry->filename);
++		    grub_error (GRUB_ERR_OUT_OF_RANGE, "LoaderEntries buffer too small for previous entries");
+ 		    goto fail;
+ 		  }
++		grub_memcpy (p, prev_entries, UTF16_BYTES(prev_id_u16));
++		p += prev_id_u16;
++		*p++ = (grub_efi_char16_t) '\0';
++		remaining_u16 -= prev_id_u16 + 1;
++		prev_entries += prev_id_u16 + 1;
++		prev_remaining_bytes -= UTF16_BYTES(prev_id_u16 + 1);
++	      }
++	  } while (prev_remaining_bytes > 0 && rc > 0);
++	}
+ 
+-		if (rc > 0)
+-		  {
+-		    if (remaining_u16 < prev_id_u16 + 1)
+-		      {
+-			grub_error (GRUB_ERR_OUT_OF_RANGE, "LoaderEntries buffer too small for previous entries");
+-			goto fail;
+-		      }
+-		    grub_memcpy (p, prev_entries, UTF16_BYTES(prev_id_u16));
+-		    p += prev_id_u16;
+-		    *p++ = (grub_efi_char16_t) '\0';
+-		    remaining_u16 -= prev_id_u16 + 1;
+-		    prev_entries += prev_id_u16 + 1;
+-		    prev_remaining_bytes -= UTF16_BYTES(prev_id_u16 + 1);
+-		  }
+-	      } while (prev_remaining_bytes > 0 && rc > 0);
+-	    }
+-
+-	  if (remaining_u16 < id_u8 + 1)
+-	    {
+-	      grub_error (GRUB_ERR_OUT_OF_RANGE, "LoaderEntries buffer too small for new entry");
+-	      goto fail;
+-	    }
+-	  written_u16 = grub_utf8_to_utf16 (p, remaining_u16 - 1,
+-					(grub_uint8_t*) entry->filename, id_u8, NULL);
+-	  p += written_u16;
+-	  *p++ = (grub_efi_char16_t) '\0';
+-	  remaining_u16 -= written_u16 + 1;
++      if (remaining_u16 < id_u8 + 1)
++	{
++	  grub_error (GRUB_ERR_OUT_OF_RANGE, "LoaderEntries buffer too small for new entry");
++	  goto fail;
++	}
++      written_u16 = grub_utf8_to_utf16 (p, remaining_u16 - 1,
++				    (grub_uint8_t*) entry->filename, id_u8, NULL);
++      p += written_u16;
++      *p++ = (grub_efi_char16_t) '\0';
++      remaining_u16 -= written_u16 + 1;
+     }
+ 
+     /*
+-- 
+2.56.0
+

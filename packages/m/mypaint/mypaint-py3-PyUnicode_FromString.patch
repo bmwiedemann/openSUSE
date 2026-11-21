@@ -1,0 +1,11 @@
+--- a/lib/tiledsurface.hpp	2026-11-16 16:17:00.054820100 +0100
++++ b/lib/tiledsurface.hpp	2026-11-16 16:17:00.073495596 +0100
+@@ -131,7 +131,7 @@
+ static PyObject *
+ get_module(char *name)
+ {
+-    PyObject *pName = PyString_FromString(name);
++    PyObject *pName = PyUnicode_FromString(name);
+     PyObject *pModule = PyImport_Import(pName);
+     Py_DECREF(pName);
+ 

@@ -1,0 +1,45 @@
+From e20b9be8bb6b6f9ddc4565da411e12f65e062577 Mon Sep 17 00:00:00 2001
+From: Alessandro de Oliveira Faria <cabelo@opensuse.org>
+Date: Tue, 30 Jun 2026 09:20:54 +0200
+Subject: [PATCH 5/6] rsutils: build as shared
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+> I added two patches which fix the issue with the installation of
+> static .a libs by forcing their build as shared library
+> Thanks  David Lanzendörfer (leviathanch)
+---
+ src/log.cpp                        | 2 +-
+ third-party/rsutils/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/log.cpp b/src/log.cpp
+index 1bc02d6a001a..91f508a50b37 100644
+--- a/src/log.cpp
++++ b/src/log.cpp
+@@ -5,7 +5,7 @@
+ 
+ 
+ #ifdef BUILD_EASYLOGGINGPP
+-INITIALIZE_EASYLOGGINGPP
++//INITIALIZE_EASYLOGGINGPP
+ 
+ namespace librealsense
+ {
+diff --git a/third-party/rsutils/CMakeLists.txt b/third-party/rsutils/CMakeLists.txt
+index 2034511ede71..8bce1e6ce9ad 100644
+--- a/third-party/rsutils/CMakeLists.txt
++++ b/third-party/rsutils/CMakeLists.txt
+@@ -59,7 +59,7 @@ if( BUILD_EASYLOGGINGPP )
+         PRIVATE "${REPO_ROOT}/third-party/easyloggingpp/src/easylogging++.cc" )
+     # We want to disable any default ELPP log-file!
+     target_compile_definitions( ${PROJECT_NAME}
+-        PUBLIC ELPP_NO_DEFAULT_LOG_FILE )
++        PUBLIC ELPP_NO_DEFAULT_LOG_FILE AUTO_INITIALIZE_EASYLOGGINGPP )
+ endif()
+ target_sources( ${PROJECT_NAME} PRIVATE ${UTILITIES_SOURCE_FILES} )
+ source_group(
+-- 
+2.56.0
+

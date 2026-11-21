@@ -1,0 +1,77 @@
+Subject: compatibility with SWIG 4.5
+
+SWIG 4.5 dropped Python 2 support. LAL needs three small adjustments to keep
+building and passing its Python tests with that version:
+
+- %typemaps_string_alloc requires a named fragment for the copy helper, so
+  define %swiglal_new_copy_char_array and pass that instead of the bare macro.
+- PyInt_AsLong no longer exists; use PyLong_AsLong.
+- The python:slot feature nb_nonzero was renamed to nb_bool. Wire __nonzero__
+  to nb_bool as well, otherwise types such as LIGOTimeGPS and LALUnit become
+  truthy even when they are zero and test_LIGOTimeGPS_operations fails with
+  "assert (not LIGOTimeGPS(0, 0))".
+
+--- a/swig/SWIGCommon.i
++++ b/swig/SWIGCommon.i
+@@ -182,6 +182,8 @@ MACRO(A, B, C, X);
+ #define %swiglal_new_copy(VAL, TYPE...) %reinterpret_cast(memcpy(%swiglal_new_instance(TYPE), &(VAL), sizeof(TYPE)), TYPE*)
+ #define %swiglal_new_array(SIZE, TYPE...) %reinterpret_cast(XLALCalloc(SIZE, sizeof(TYPE)), TYPE*)
+ #define %swiglal_new_copy_array(PTR, SIZE, TYPE...) %reinterpret_cast(memcpy(%swiglal_new_array(SIZE, TYPE), PTR, sizeof(TYPE)*(SIZE)), TYPE*)
++#define %swiglal_new_copy_char_array(PTR, SIZE) %swiglal_new_copy_array(PTR, SIZE, char)
++%fragment("%swiglal_new_copy_char_array", "header") {}
+ 
+ ///
+ /// # General interface code
+@@ -1800,12 +1802,12 @@ if (strides[I-1] == 0) {
+ %typemaps_string_alloc(%checkcode(STRING), %checkcode(char),
+                        SWIGWARN_TYPEMAP_CHARLEAK_MSG, char, LALchar,
+                        SWIG_AsLALcharPtrAndSize, SWIG_FromLALcharPtrAndSize,
+-                       strlen, SWIG_strnlen, %swiglal_new_copy_array, XLALFree,
++                       strlen, SWIG_strnlen, %swiglal_new_copy_char_array, XLALFree,
+                        "<limits.h>", CHAR_MIN, CHAR_MAX);
+ #else
+ %typemaps_string_alloc(%checkcode(STRING), %checkcode(char), char, LALchar,
+                        SWIG_AsLALcharPtrAndSize, SWIG_FromLALcharPtrAndSize,
+-                       strlen, SWIG_strnlen, %swiglal_new_copy_array, XLALFree,
++                       strlen, SWIG_strnlen, %swiglal_new_copy_char_array, XLALFree,
+                        "<limits.h>", CHAR_MIN, CHAR_MAX);
+ #endif
+ 
+--- a/swig/SWIGPython.i
++++ b/swig/SWIGPython.i
+@@ -160,6 +160,10 @@ SWIGINTERN int swiglal_output_stdouterr(void) {
+ %swiglal_py_ury_op(int, unaryfunc, nb_int);
+ %swiglal_py_ury_op(long, unaryfunc, nb_long);
+ %swiglal_py_ury_op(nonzero, inquiry, nb_nonzero);
++#if SWIG_VERSION >= 0x040500
++// SWIG 4.5 removed Python 2 support: nb_nonzero was renamed to nb_bool.
++%swiglal_py_ury_op(nonzero, inquiry, nb_bool);
++#endif
+ %swiglal_py_ury_op(repr, reprfunc, tp_repr);
+ %swiglal_py_ury_op(str, reprfunc, tp_str);
+ 
+@@ -420,15 +424,15 @@ SWIGINTERN int swiglal_SWIG_AsVal_COMPLEX16(PyObject *obj, COMPLEX16* val) {
+       %argument_fail(SWIG_ValueError, "$type (must have 9 elements)", $symname, $argnum);
+     }
+     PyObject *seq = PySequence_Fast($input, "$type (not a sequence)");
+-    temptm.tm_year  = %static_cast(PyInt_AsLong(PySequence_Fast_GET_ITEM($input, 0)), int);
+-    temptm.tm_mon   = %static_cast(PyInt_AsLong(PySequence_Fast_GET_ITEM($input, 1)), int);
+-    temptm.tm_mday  = %static_cast(PyInt_AsLong(PySequence_Fast_GET_ITEM($input, 2)), int);
+-    temptm.tm_hour  = %static_cast(PyInt_AsLong(PySequence_Fast_GET_ITEM($input, 3)), int);
+-    temptm.tm_min   = %static_cast(PyInt_AsLong(PySequence_Fast_GET_ITEM($input, 4)), int);
+-    temptm.tm_sec   = %static_cast(PyInt_AsLong(PySequence_Fast_GET_ITEM($input, 5)), int);
+-    temptm.tm_wday  = %static_cast(PyInt_AsLong(PySequence_Fast_GET_ITEM($input, 6)), int);
+-    temptm.tm_yday  = %static_cast(PyInt_AsLong(PySequence_Fast_GET_ITEM($input, 7)), int);
+-    temptm.tm_isdst = %static_cast(PyInt_AsLong(PySequence_Fast_GET_ITEM($input, 8)), int);
++    temptm.tm_year  = %static_cast(PyLong_AsLong(PySequence_Fast_GET_ITEM($input, 0)), int);
++    temptm.tm_mon   = %static_cast(PyLong_AsLong(PySequence_Fast_GET_ITEM($input, 1)), int);
++    temptm.tm_mday  = %static_cast(PyLong_AsLong(PySequence_Fast_GET_ITEM($input, 2)), int);
++    temptm.tm_hour  = %static_cast(PyLong_AsLong(PySequence_Fast_GET_ITEM($input, 3)), int);
++    temptm.tm_min   = %static_cast(PyLong_AsLong(PySequence_Fast_GET_ITEM($input, 4)), int);
++    temptm.tm_sec   = %static_cast(PyLong_AsLong(PySequence_Fast_GET_ITEM($input, 5)), int);
++    temptm.tm_wday  = %static_cast(PyLong_AsLong(PySequence_Fast_GET_ITEM($input, 6)), int);
++    temptm.tm_yday  = %static_cast(PyLong_AsLong(PySequence_Fast_GET_ITEM($input, 7)), int);
++    temptm.tm_isdst = %static_cast(PyLong_AsLong(PySequence_Fast_GET_ITEM($input, 8)), int);
+     Py_CLEAR(seq);
+     if (PyErr_Occurred()) {  // Catch any errors while converting items to integers
+       SWIG_fail;

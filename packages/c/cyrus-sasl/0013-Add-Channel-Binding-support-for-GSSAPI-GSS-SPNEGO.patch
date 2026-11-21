@@ -1,0 +1,1121 @@
+From 05ae95906552d8a0d58e8d3704ceae87f0e02a7c Mon Sep 17 00:00:00 2001
+From: Simo Sorce <simo@redhat.com>
+Date: Sat, 14 Mar 2020 10:50:19 -0400
+Subject: [PATCH 1/3] Add basic test infrastructure
+
+First test is for SASL/GSSAPI
+
+Signed-off-by: Simo Sorce <simo@redhat.com>
+
+:x
+
+(cherry picked from commit 18ff41d5d18f61c2ded7235dad1d9618aa84784b)
+---
+ Makefile.am          |   2 +-
+ configure.ac         |   3 +-
+ tests/Makefile.am    |  79 +++++++++++++++++++
+ tests/runtests.py    | 179 +++++++++++++++++++++++++++++++++++++++++++
+ tests/t_common.c     |  68 ++++++++++++++++
+ tests/t_common.h     |  15 ++++
+ tests/t_gssapi_cli.c |  95 +++++++++++++++++++++++
+ tests/t_gssapi_srv.c | 111 +++++++++++++++++++++++++++
+ 10 files changed, 559 insertions(+), 4 deletions(-)
+ create mode 100644 tests/Makefile.am
+ create mode 100755 tests/runtests.py
+ create mode 100644 tests/t_common.c
+ create mode 100644 tests/t_common.h
+ create mode 100644 tests/t_gssapi_cli.c
+ create mode 100644 tests/t_gssapi_srv.c
+
+diff --git a/Makefile.am b/Makefile.am
+index 4af661de..d5ef5e53 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -66,7 +66,7 @@ else
+ INSTALLOSX = 
+ endif
+ 
+-SUBDIRS=include sasldb common lib plugins utils $(PWC) $(SAM) $(SAD)
++SUBDIRS=include sasldb common lib plugins utils $(PWC) $(SAM) $(SAD) tests
+ EXTRA_DIST=config doc docsrc win32 mac dlcompat-20010505 NTMakefile \
+     INSTALL.TXT libsasl2.pc.in
+ 
+diff --git a/configure.ac b/configure.ac
+index 2bf7977f..c351efa9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1506,7 +1506,8 @@ plugins/Makefile
+ lib/Makefile
+ utils/Makefile
+ sample/Makefile
+-pwcheck/Makefile])
++pwcheck/Makefile
++tests/Makefile])
+ AC_OUTPUT
+ 
+ AC_MSG_NOTICE([
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+new file mode 100644
+index 00000000..1edf010a
+--- /dev/null
++++ b/tests/Makefile.am
+@@ -0,0 +1,79 @@
++# Makefile.am -- automake input for cyrus-sasl tests
++# Simo Sorce
++#
++################################################################
++# Copyright (c) 2000 Carnegie Mellon University.  All rights reserved.
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++#
++# 1. Redistributions of source code must retain the above copyright
++#    notice, this list of conditions and the following disclaimer.
++#
++# 2. Redistributions in binary form must reproduce the above copyright
++#    notice, this list of conditions and the following disclaimer in
++#    the documentation and/or other materials provided with the
++#    distribution.
++#
++# 3. The name "Carnegie Mellon University" must not be used to
++#    endorse or promote products derived from this software without
++#    prior written permission. For permission or any other legal
++#    details, please contact
++#      Office of Technology Transfer
++#      Carnegie Mellon University
++#      5000 Forbes Avenue
++#      Pittsburgh, PA  15213-3890
++#      (412) 268-4387, fax: (412) 268-7395
++#      tech-transfer@andrew.cmu.edu
++#
++# 4. Redistributions of any form whatsoever must retain the following
++#    acknowledgment:
++#    "This product includes software developed by Computing Services
++#     at Carnegie Mellon University (http://www.cmu.edu/computing/)."
++#
++# CARNEGIE MELLON UNIVERSITY DISCLAIMS ALL WARRANTIES WITH REGARD TO
++# THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
++# AND FITNESS, IN NO EVENT SHALL CARNEGIE MELLON UNIVERSITY BE LIABLE
++# FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN
++# AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING
++# OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++#
++################################################################
++
++AM_CPPFLAGS=-I$(top_srcdir)/include -DPLUGINDIR='"${top_srcdir}/plugins/.libs"'
++
++COMMON_LDADD = ../lib/libsasl2.la $(GSSAPIBASE_LIBS) $(GSSAPI_LIBS) $(LIB_SOCKET)
++
++t_gssapi_cli_SOURCES = \
++	t_common.c \
++	t_gssapi_cli.c
++
++t_gssapi_cli_LDADD = $(COMMON_LDADD)
++
++t_gssapi_srv_SOURCES = \
++	t_common.c \
++	t_gssapi_srv.c
++
++t_gssapi_srv_LDADD = $(COMMON_LDADD)
++
++check_PROGRAMS = \
++	t_gssapi_cli \
++	t_gssapi_srv \
++	$(NULL)
++
++noinst_PROGRAMS = $(check_PROGRAMS)
++
++EXTRA_DIST = \
++	runtests.py \
++	$(NULL)
++
++all: $(check_PROGRAMS)
++
++check:
++if MACOSX
++# skip Mac OSX for now
++else
++	$(srcdir)/runtests.py $(CHECKARGS)
++endif
+diff --git a/tests/runtests.py b/tests/runtests.py
+new file mode 100755
+index 00000000..f645adf4
+--- /dev/null
++++ b/tests/runtests.py
+@@ -0,0 +1,179 @@
++#!/usr/bin/python3
++
++import argparse
++import os
++import shutil
++import signal
++import subprocess
++import time
++from string import Template
++
++
++def setup_socket_wrappers(testdir):
++    """ Try to set up socket wrappers """
++    wrapdir = os.path.join(testdir, 'w')
++    os.makedirs(wrapdir)
++
++    wrappers = subprocess.Popen(['pkg-config', '--exists', 'socket_wrapper'])
++    wrappers.wait()
++    if wrappers.returncode != 0:
++        raise Exception('Socket Wrappers not available')
++
++    wrappers = subprocess.Popen(['pkg-config', '--exists', 'nss_wrapper'])
++    wrappers.wait()
++    if wrappers.returncode != 0:
++        raise Exception('NSS Wrappers not available')
++
++    hosts = os.path.join(wrapdir, 'hosts')
++    with open(hosts, 'w+') as conffile:
++        conffile.write('127.0.0.9 host.realm.test')
++
++    return {'LD_PRELOAD': 'libsocket_wrapper.so libnss_wrapper.so',
++            'SOCKET_WRAPPER_DIR': wrapdir,
++            'SOCKET_WRAPPER_DEFAULT_IFACE': '9',
++            'NSS_WRAPPER_HOSTNAME': 'host.realm.test',
++            'NSS_WRAPPER_HOSTS': hosts}
++
++
++KERBEROS_CONF = '''
++[libdefaults]
++  default_realm = REALM.TEST
++  dns_lookup_realm = false
++  dns_lookup_kdc = false
++  rdns = false
++  ticket_lifetime = 24h
++  forwardable = yes
++  default_ccache_name = FILE://${TESTDIR}/ccache
++  udp_preference_limit = 1
++
++[domain_realm]
++  .realm.test = REALM.TEST
++  realm.test = REALM.TEST
++
++[realms]
++ REALM.TEST = {
++  kdc = 127.0.0.9
++  admin_server = 127.0.0.9
++  acl_file = ${TESTDIR}/kadm.acl
++  dict_file = /usr/share/dict/words
++  admin_keytab = ${TESTDIR}/kadm.keytab
++  database_name = ${TESTDIR}/kdc.db
++  key_stash_file = ${TESTDIR}/kdc.stash
++ }
++
++[kdcdefaults]
++ kdc_ports = 88
++ kdc_tcp_ports = 88
++
++[logging]
++  kdc = FILE:${TESTDIR}/kdc.log
++  admin_server = FILE:${TESTDIR}/kadm.log
++  default = FILE:${TESTDIR}/krb5.log
++'''
++
++
++def setup_kdc(testdir, env):
++    """ Setup KDC and start process """
++    krbconf = os.path.join(testdir, 'krb.conf')
++    env['KRB5_CONFIG'] = krbconf
++
++    kenv = {'KRB5_KDC_PROFILE': krbconf,
++            'PATH': '/sbin:/bin:/usr/sbin:/usr/bin'}
++    kenv.update(env)
++
++    # KDC/KRB5 CONFIG
++    templ = Template(KERBEROS_CONF)
++    text = templ.substitute({'TESTDIR': testdir})
++    with open(krbconf, 'w+') as conffile:
++        conffile.write(text)
++
++    testlog = os.path.join(testdir, 'kdc.log')
++    log = open(testlog, 'a')
++
++    subprocess.check_call([
++        "kdb5_util", "create",
++        "-r", "REALM.TEST", "-s", "-P", "password"
++        ], stdout=log, stderr=log, env=kenv, timeout=5)
++
++    kdc = subprocess.Popen(['krb5kdc', '-n'], env=kenv, preexec_fn=os.setsid)
++    time.sleep(5)
++
++    # Add a user and genrate a keytab
++    keytab = os.path.join(testdir, "user.keytab")
++    subprocess.check_call([
++        "kadmin.local", "-q",
++        "addprinc -randkey user"
++        ], stdout=log, stderr=log, env=kenv, timeout=5)
++
++    subprocess.check_call([
++        "kadmin.local", "-q",
++        "ktadd -k {} user".format(keytab)
++        ], stdout=log, stderr=log, env=kenv, timeout=5)
++    env['KRB5_CLIENT_KTNAME'] = keytab
++
++    # Add a service and genrate a keytab
++    keytab = os.path.join(testdir, "test.keytab")
++    subprocess.check_call([
++        "kadmin.local", "-q",
++        "addprinc -randkey test/host.realm.test"
++        ], stdout=log, stderr=log, env=kenv, timeout=5)
++
++    subprocess.check_call([
++        "kadmin.local", "-q",
++        "ktadd -k {} test/host.realm.test".format(keytab)
++        ], stdout=log, stderr=log, env=kenv, timeout=5)
++    env['KRB5_KTNAME'] = keytab
++
++    return kdc, env
++
++
++def gssapi_tests(testdir):
++    """ SASL/GSSAPI Tests """
++    env = setup_socket_wrappers(testdir)
++    kdc, kenv = setup_kdc(testdir, env)
++    #print("KDC: {}, ENV: {}".format(kdc, kenv))
++    kenv['KRB5_TRACE'] = os.path.join(testdir, 'trace.log')
++
++    try:
++        srv = subprocess.Popen(["../tests/t_gssapi_srv"],
++                               stdout=subprocess.PIPE,
++                               stderr=subprocess.PIPE, env=kenv)
++        srv.stdout.readline() # Wait for srv to say it is ready
++        cli = subprocess.Popen(["../tests/t_gssapi_cli"],
++                               stdout=subprocess.PIPE,
++                               stderr=subprocess.PIPE, env=kenv)
++        try:
++            cli.wait(timeout=5)
++            srv.wait(timeout=5)
++        except Exception as e:
++            print("Failed on {}".format(e));
++            cli.kill()
++            srv.kill()
++        if cli.returncode != 0 or srv.returncode != 0:
++            raise Exception("CLI ({}): {} --> SRV ({}): {}".format(
++                cli.returncode, cli.stderr.read().decode('utf-8'),
++                srv.returncode, srv.stderr.read().decode('utf-8')))
++    except Exception as e:
++        print("FAIL: {}".format(e))
++
++    print("PASS: CLI({}) SRV({})".format(
++        cli.stdout.read().decode('utf-8').strip(),
++        srv.stdout.read().decode('utf-8').strip()))
++
++    os.killpg(kdc.pid, signal.SIGTERM)
++
++
++if __name__ == "__main__":
++
++    P = argparse.ArgumentParser(description='Cyrus SASL Tests')
++    P.add_argument('--testdir', default=os.path.join(os.getcwd(), '.tests'),
++                   help="Directory for running tests")
++    A = vars(P.parse_args())
++
++    T = A['testdir']
++
++    if os.path.exists(T):
++        shutil.rmtree(T)
++    os.makedirs(T)
++
++    gssapi_tests(T)
+diff --git a/tests/t_common.c b/tests/t_common.c
+new file mode 100644
+index 00000000..7168b2f1
+--- /dev/null
++++ b/tests/t_common.c
+@@ -0,0 +1,68 @@
++/* TBD, add (C) */
++
++#include <t_common.h>
++
++void s_error(const char *hdr, ssize_t ret, ssize_t len, int err)
++{
++    fprintf(stderr, "%s l:%ld/%ld [%d] %s",
++            hdr, ret, len, err, strerror(err));
++    exit(-1);
++}
++
++void send_string(int sd, const char *s, unsigned int l)
++{
++    ssize_t ret;
++
++fprintf(stderr, "s:%u ", l);
++fflush(stderr);
++
++    ret = send(sd, &l, sizeof(l), 0);
++    if (ret != sizeof(l)) s_error("send size", ret, sizeof(l), errno);
++
++    if (l == 0) return;
++
++    ret = send(sd, s, l, 0);
++    if (ret != l) s_error("send data", ret, l, errno);
++}
++
++void recv_string(int sd, char *buf, unsigned int *buflen)
++{
++    unsigned int l;
++    ssize_t ret;
++
++    ret = recv(sd, &l, sizeof(l), MSG_WAITALL);
++    if (ret != sizeof(l)) s_error("recv size", ret, sizeof(l), errno);
++
++    if (l == 0) {
++fprintf(stderr, "r:0 ");
++fflush(stderr);
++        *buflen = 0;
++        return;
++    }
++
++    if (*buflen < l) s_error("recv len", l, *buflen, E2BIG);
++
++    ret = recv(sd, buf, l, 0);
++    if (ret != l) s_error("recv data", ret, l, errno);
++
++fprintf(stderr, "r:%ld ", ret);
++fflush(stderr);
++    *buflen = ret;
++}
++
++void saslerr(int why, const char *what)
++{
++    fprintf(stderr, "%s: %s", what, sasl_errstring(why, NULL, NULL));
++}
++
++int getpath(void *context __attribute__((unused)), const char **path)
++{
++    if (! path) {
++        return SASL_BADPARAM;
++    }
++
++    *path = PLUGINDIR;
++    return SASL_OK;
++}
++
++
+diff --git a/tests/t_common.h b/tests/t_common.h
+new file mode 100644
+index 00000000..4ee1976c
+--- /dev/null
++++ b/tests/t_common.h
+@@ -0,0 +1,15 @@
++/* TBD, add (C) */
++
++#include "config.h"
++
++#include <errno.h>
++#include <stdio.h>
++#include <sys/socket.h>
++
++#include <sasl.h>
++
++void s_error(const char *hdr, ssize_t ret, ssize_t len, int err);
++void send_string(int sd, const char *s, unsigned int l);
++void recv_string(int sd, char *buf, unsigned int *buflen);
++void saslerr(int why, const char *what);
++int getpath(void *context __attribute__((unused)), const char **path);
+diff --git a/tests/t_gssapi_cli.c b/tests/t_gssapi_cli.c
+new file mode 100644
+index 00000000..c833c055
+--- /dev/null
++++ b/tests/t_gssapi_cli.c
+@@ -0,0 +1,95 @@
++/* TBD, add (C) */
++
++#include "t_common.h"
++
++#include <stdlib.h>
++#include <stdarg.h>
++#include <ctype.h>
++#include <string.h>
++
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
++#endif
++
++#include <arpa/inet.h>
++#include <saslplug.h>
++
++static int setup_socket(void)
++{
++    struct sockaddr_in addr;
++    int sock, ret;
++
++    sock = socket(AF_INET, SOCK_STREAM, 0);
++    if (sock < 0) s_error("socket", 0, 0, errno);
++
++    addr.sin_family = AF_INET;
++    addr.sin_addr.s_addr = inet_addr("127.0.0.9");
++    addr.sin_port = htons(9000);
++
++    ret = connect(sock, (struct sockaddr *)&addr, sizeof(addr));
++    if (ret != 0) s_error("connect", 0, 0, errno);
++
++    return sock;
++}
++
++int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
++{
++    sasl_callback_t callbacks[2] = {};
++    char buf[8192];
++    const char *chosenmech;
++    sasl_conn_t *conn;
++    const char *data;
++    unsigned int len;
++    int sd;
++    int r;
++
++    /* initialize the sasl library */
++    callbacks[0].id = SASL_CB_GETPATH;
++    callbacks[0].proc = (sasl_callback_ft)&getpath;
++    callbacks[0].context = NULL;
++    callbacks[1].id = SASL_CB_LIST_END;
++    callbacks[1].proc = NULL;
++    callbacks[1].context = NULL;
++
++    r = sasl_client_init(callbacks);
++    if (r != SASL_OK) exit(-1);
++
++    r = sasl_client_new("test", "host.realm.test", NULL, NULL, NULL, 0, &conn);
++    if (r != SASL_OK) {
++        saslerr(r, "allocating connection state");
++        exit(-1);
++    }
++
++    r = sasl_client_start(conn, "GSSAPI", NULL, &data, &len, &chosenmech);
++    if (r != SASL_OK && r != SASL_CONTINUE) {
++	saslerr(r, "starting SASL negotiation");
++	printf("\n%s\n", sasl_errdetail(conn));
++	exit(-1);
++    }
++
++    sd = setup_socket();
++
++    while (r == SASL_CONTINUE) {
++        send_string(sd, data, len);
++        len = 8192;
++        recv_string(sd, buf, &len);
++
++	r = sasl_client_step(conn, buf, len, NULL, &data, &len);
++	if (r != SASL_OK && r != SASL_CONTINUE) {
++	    saslerr(r, "performing SASL negotiation");
++	    printf("\n%s\n", sasl_errdetail(conn));
++	    exit(-1);
++        }
++    }
++
++    if (r != SASL_OK) exit(-1);
++
++    if (len > 0) {
++        send_string(sd, data, len);
++    }
++
++    fprintf(stdout, "DONE\n");
++    fflush(stdout);
++    return 0;
++}
++
+diff --git a/tests/t_gssapi_srv.c b/tests/t_gssapi_srv.c
+new file mode 100644
+index 00000000..29f538dd
+--- /dev/null
++++ b/tests/t_gssapi_srv.c
+@@ -0,0 +1,111 @@
++/* TBD, add (C) */
++
++#include "t_common.h"
++
++#include <stdlib.h>
++#include <stdarg.h>
++#include <ctype.h>
++#include <string.h>
++
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
++#endif
++
++#include <arpa/inet.h>
++#include <saslplug.h>
++
++static int setup_socket(void)
++{
++    struct sockaddr_in addr;
++    int sock, ret, sd;
++
++    sock = socket(AF_INET, SOCK_STREAM, 0);
++    if (sock < 0) s_error("socket", 0, 0, errno);
++
++    addr.sin_family = AF_INET;
++    addr.sin_addr.s_addr = inet_addr("127.0.0.9");
++    addr.sin_port = htons(9000);
++
++    ret = bind(sock, (struct sockaddr *)&addr, sizeof(addr));
++    if (ret != 0) s_error("bind", 0, 0, errno);
++
++    ret = listen(sock, 1);
++    if (ret != 0) s_error("listen", 0, 0, errno);
++
++    /* signal we are ready */
++    fprintf(stdout, "READY\n");
++    fflush(stdout);
++
++    /* block until the client connects */
++    sd = accept(sock, NULL, NULL);
++    if (sd < 0) s_error("accept", 0, 0, errno);
++
++    close(sock);
++    return sd;
++}
++
++int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
++{
++    sasl_callback_t callbacks[2] = {};
++    char buf[8192];
++    sasl_conn_t *conn;
++    const char *data;
++    unsigned int len;
++    int sd;
++    int r;
++
++    /* initialize the sasl library */
++    callbacks[0].id = SASL_CB_GETPATH;
++    callbacks[0].proc = (sasl_callback_ft)&getpath;
++    callbacks[0].context = NULL;
++    callbacks[1].id = SASL_CB_LIST_END;
++    callbacks[1].proc = NULL;
++    callbacks[1].context = NULL;
++
++    r = sasl_server_init(callbacks, "t_gssapi_srv");
++    if (r != SASL_OK) exit(-1);
++
++    r = sasl_server_new("test", "host.realm.test", NULL, NULL, NULL,
++                        callbacks, 0, &conn);
++    if (r != SASL_OK) {
++        saslerr(r, "allocating connection state");
++        exit(-1);
++    }
++
++    sd = setup_socket();
++
++    len = 8192;
++    recv_string(sd, buf, &len);
++
++    r = sasl_server_start(conn, "GSSAPI", buf, len, &data, &len);
++    if (r != SASL_OK && r != SASL_CONTINUE) {
++	saslerr(r, "starting SASL negotiation");
++	printf("\n%s\n", sasl_errdetail(conn));
++	exit(-1);
++    }
++
++    while (r == SASL_CONTINUE) {
++        send_string(sd, data, len);
++        len = 8192;
++        recv_string(sd, buf, &len);
++
++	r = sasl_server_step(conn, buf, len, &data, &len);
++	if (r != SASL_OK && r != SASL_CONTINUE) {
++	    saslerr(r, "performing SASL negotiation");
++	    printf("\n%s\n", sasl_errdetail(conn));
++	    exit(-1);
++	}
++
++    }
++
++    if (r != SASL_OK) exit(-1);
++
++    if (len > 0) {
++        send_string(sd, data, len);
++    }
++
++    fprintf(stdout, "DONE\n");
++    fflush(stdout);
++    return 0;
++}
++
+-- 
+2.46.0
+
+
+From 352637bbab17aaea261052e9b509a618f2dd447d Mon Sep 17 00:00:00 2001
+From: Simo Sorce <simo@redhat.com>
+Date: Fri, 20 Mar 2020 14:51:04 -0400
+Subject: [PATCH 2/3] Add Channel Binding support for GSSAPI/GSS-SPNEGO
+
+Signed-off-by: Simo Sorce <simo@redhat.com>
+(cherry picked from commit 975edbb69070eba6b035f08776de771a129cfb57)
+---
+ plugins/gssapi.c     | 30 +++++++++++---
+ tests/runtests.py    | 93 ++++++++++++++++++++++++++++++++++++++++----
+ tests/t_common.c     | 14 +++++++
+ tests/t_common.h     |  2 +
+ tests/t_gssapi_cli.c | 21 +++++++++-
+ tests/t_gssapi_srv.c | 21 +++++++++-
+ 6 files changed, 164 insertions(+), 17 deletions(-)
+
+diff --git a/plugins/gssapi.c b/plugins/gssapi.c
+index 0230785e..5e0aa5ac 100644
+--- a/plugins/gssapi.c
++++ b/plugins/gssapi.c
+@@ -830,7 +830,9 @@ gssapi_server_mech_authneg(context_t *text,
+     gss_buffer_desc name_without_realm;
+     gss_name_t client_name_MN = NULL, without = NULL;
+     gss_OID mech_type;
+-	
++    gss_channel_bindings_t bindings = GSS_C_NO_CHANNEL_BINDINGS;
++    struct gss_channel_bindings_struct cb = {0};
++
+     input_token = &real_input_token;
+     output_token = &real_output_token;
+     output_token->value = NULL; output_token->length = 0;
+@@ -902,6 +904,12 @@ gssapi_server_mech_authneg(context_t *text,
+ 	real_input_token.length = clientinlen;
+     }
+ 
++    if (params->cbinding != NULL) {
++        cb.application_data.length = params->cbinding->len;
++        cb.application_data.value = params->cbinding->data;
++        bindings = &cb;
++    }
++
+ 
+     GSS_LOCK_MUTEX_CTX(params->utils, text);
+     maj_stat =
+@@ -909,7 +917,7 @@ gssapi_server_mech_authneg(context_t *text,
+ 			       &(text->gss_ctx),
+ 			       server_creds,
+ 			       input_token,
+-			       GSS_C_NO_CHANNEL_BINDINGS,
++			       bindings,
+ 			       &text->client_name,
+ 			       &mech_type,
+ 			       output_token,
+@@ -1505,7 +1513,8 @@ static sasl_server_plug_t gssapi_server_plugins[] =
+ 	| SASL_SEC_PASS_CREDENTIALS,
+ 	SASL_FEAT_WANT_CLIENT_FIRST
+ 	| SASL_FEAT_ALLOWS_PROXY
+-	| SASL_FEAT_DONTUSE_USERPASSWD,	/* features */
++	| SASL_FEAT_DONTUSE_USERPASSWD
++	| SASL_FEAT_CHANNEL_BINDING,	/* features */
+ 	NULL,				/* glob_context */
+ 	&gssapi_server_mech_new,	/* mech_new */
+ 	&gssapi_server_mech_step,	/* mech_step */
+@@ -1529,6 +1538,7 @@ static sasl_server_plug_t gssapi_server_plugins[] =
+ 	SASL_FEAT_WANT_CLIENT_FIRST
+ 	| SASL_FEAT_ALLOWS_PROXY
+ 	| SASL_FEAT_DONTUSE_USERPASSWD
++	| SASL_FEAT_CHANNEL_BINDING
+ 	| SASL_FEAT_SUPPORTS_HTTP,	/* features */
+ 	&gss_spnego_oid,		/* glob_context */
+ 	&gssapi_server_mech_new,	/* mech_new */
+@@ -1662,6 +1672,8 @@ static int gssapi_client_mech_step(void *conn_context,
+     input_token->value = NULL; 
+     input_token->length = 0;
+     gss_cred_id_t client_creds = (gss_cred_id_t)params->gss_creds;
++    gss_channel_bindings_t bindings = GSS_C_NO_CHANNEL_BINDINGS;
++    struct gss_channel_bindings_struct cb = {0};
+ 
+     if (clientout)
+         *clientout = NULL;
+@@ -1777,6 +1789,12 @@ static int gssapi_client_mech_step(void *conn_context,
+ 	    req_flags = req_flags |  GSS_C_DELEG_FLAG;
+ 	}
+ 
++        if (params->cbinding != NULL) {
++            cb.application_data.length = params->cbinding->len;
++            cb.application_data.value = params->cbinding->data;
++            bindings = &cb;
++        }
++
+ 	GSS_LOCK_MUTEX_CTX(params->utils, text);
+ 	maj_stat = gss_init_sec_context(&min_stat,
+ 					client_creds, /* GSS_C_NO_CREDENTIAL */
+@@ -1785,7 +1803,7 @@ static int gssapi_client_mech_step(void *conn_context,
+ 					text->mech_type,
+ 					req_flags,
+ 					0,
+-					GSS_C_NO_CHANNEL_BINDINGS,
++					bindings,
+ 					input_token,
+ 					NULL,
+ 					output_token,
+@@ -2190,7 +2208,8 @@ static sasl_client_plug_t gssapi_client_plugins[] =
+ 	| SASL_SEC_PASS_CREDENTIALS,    /* security_flags */
+ 	SASL_FEAT_NEEDSERVERFQDN
+ 	| SASL_FEAT_WANT_CLIENT_FIRST
+-	| SASL_FEAT_ALLOWS_PROXY,	/* features */
++	| SASL_FEAT_ALLOWS_PROXY
++	| SASL_FEAT_CHANNEL_BINDING,	/* features */
+ 	gssapi_required_prompts,	/* required_prompts */
+ 	GSS_C_NO_OID,			/* glob_context */
+ 	&gssapi_client_mech_new,	/* mech_new */
+@@ -2213,6 +2232,7 @@ static sasl_client_plug_t gssapi_client_plugins[] =
+ 	SASL_FEAT_NEEDSERVERFQDN
+ 	| SASL_FEAT_WANT_CLIENT_FIRST
+ 	| SASL_FEAT_ALLOWS_PROXY
++	| SASL_FEAT_CHANNEL_BINDING
+ 	| SASL_FEAT_SUPPORTS_HTTP,	/* features */
+ 	gssapi_required_prompts,	/* required_prompts */
+ 	&gss_spnego_oid,		/* glob_context */
+diff --git a/tests/runtests.py b/tests/runtests.py
+index f645adf4..fc9cf244 100755
+--- a/tests/runtests.py
++++ b/tests/runtests.py
+@@ -1,6 +1,7 @@
+ #!/usr/bin/python3
+ 
+ import argparse
++import base64
+ import os
+ import shutil
+ import signal
+@@ -126,14 +127,7 @@ def setup_kdc(testdir, env):
+ 
+     return kdc, env
+ 
+-
+-def gssapi_tests(testdir):
+-    """ SASL/GSSAPI Tests """
+-    env = setup_socket_wrappers(testdir)
+-    kdc, kenv = setup_kdc(testdir, env)
+-    #print("KDC: {}, ENV: {}".format(kdc, kenv))
+-    kenv['KRB5_TRACE'] = os.path.join(testdir, 'trace.log')
+-
++def gssapi_basic_test(kenv):
+     try:
+         srv = subprocess.Popen(["../tests/t_gssapi_srv"],
+                                stdout=subprocess.PIPE,
+@@ -155,11 +149,94 @@ def gssapi_tests(testdir):
+                 srv.returncode, srv.stderr.read().decode('utf-8')))
+     except Exception as e:
+         print("FAIL: {}".format(e))
++        return
++
++    print("PASS: CLI({}) SRV({})".format(
++        cli.stdout.read().decode('utf-8').strip(),
++        srv.stdout.read().decode('utf-8').strip()))
++
++def gssapi_channel_binding_test(kenv):
++    try:
++        bindings = base64.b64encode("MATCHING CBS".encode('utf-8'))
++        srv = subprocess.Popen(["../tests/t_gssapi_srv", "-c", bindings],
++                               stdout=subprocess.PIPE,
++                               stderr=subprocess.PIPE, env=kenv)
++        srv.stdout.readline() # Wait for srv to say it is ready
++        cli = subprocess.Popen(["../tests/t_gssapi_cli", "-c", bindings],
++                               stdout=subprocess.PIPE,
++                               stderr=subprocess.PIPE, env=kenv)
++        try:
++            cli.wait(timeout=5)
++            srv.wait(timeout=5)
++        except Exception as e:
++            print("Failed on {}".format(e));
++            cli.kill()
++            srv.kill()
++        if cli.returncode != 0 or srv.returncode != 0:
++            raise Exception("CLI ({}): {} --> SRV ({}): {}".format(
++                cli.returncode, cli.stderr.read().decode('utf-8'),
++                srv.returncode, srv.stderr.read().decode('utf-8')))
++    except Exception as e:
++        print("FAIL: {}".format(e))
++        return
+ 
+     print("PASS: CLI({}) SRV({})".format(
+         cli.stdout.read().decode('utf-8').strip(),
+         srv.stdout.read().decode('utf-8').strip()))
+ 
++def gssapi_channel_binding_mismatch_test(kenv):
++    result = "FAIL"
++    try:
++        bindings = base64.b64encode("SRV CBS".encode('utf-8'))
++        srv = subprocess.Popen(["../tests/t_gssapi_srv", "-c", bindings],
++                               stdout=subprocess.PIPE,
++                               stderr=subprocess.PIPE, env=kenv)
++        srv.stdout.readline() # Wait for srv to say it is ready
++        bindings = base64.b64encode("CLI CBS".encode('utf-8'))
++        cli = subprocess.Popen(["../tests/t_gssapi_cli", "-c", bindings],
++                               stdout=subprocess.PIPE,
++                               stderr=subprocess.PIPE, env=kenv)
++        try:
++            cli.wait(timeout=5)
++            srv.wait(timeout=5)
++        except Exception as e:
++            print("Failed on {}".format(e));
++            cli.kill()
++            srv.kill()
++        if cli.returncode != 0 or srv.returncode != 0:
++            cli_err = cli.stderr.read().decode('utf-8').strip()
++            srv_err = srv.stderr.read().decode('utf-8').strip()
++            if "authentication failure" in srv_err:
++                result = "PASS"
++            raise Exception("CLI ({}): {} --> SRV ({}): {}".format(
++                cli.returncode, cli_err, srv.returncode, srv_err))
++    except Exception as e:
++        print("{}: {}".format(result, e))
++        return
++
++    print("FAIL: This test should fail [CLI({}) SRV({})]".format(
++        cli.stdout.read().decode('utf-8').strip(),
++        srv.stdout.read().decode('utf-8').strip()))
++
++def gssapi_tests(testdir):
++    """ SASL/GSSAPI Tests """
++    env = setup_socket_wrappers(testdir)
++    kdc, kenv = setup_kdc(testdir, env)
++    #print("KDC: {}, ENV: {}".format(kdc, kenv))
++    kenv['KRB5_TRACE'] = os.path.join(testdir, 'trace.log')
++
++    print('GSSAPI BASIC:')
++    print('    ', end='')
++    gssapi_basic_test(kenv)
++
++    print('GSSAPI CHANNEL BINDING:')
++    print('    ', end='')
++    gssapi_channel_binding_test(kenv)
++
++    print('GSSAPI CHANNEL BINDING MISMTACH:')
++    print('    ', end='')
++    gssapi_channel_binding_mismatch_test(kenv)
++
+     os.killpg(kdc.pid, signal.SIGTERM)
+ 
+ 
+diff --git a/tests/t_common.c b/tests/t_common.c
+index 7168b2f1..87875b48 100644
+--- a/tests/t_common.c
++++ b/tests/t_common.c
+@@ -65,4 +65,18 @@ int getpath(void *context __attribute__((unused)), const char **path)
+     return SASL_OK;
+ }
+ 
++void parse_cb(sasl_channel_binding_t *cb, char *buf, unsigned max, char *in)
++{
++    unsigned len;
++    int r;
+ 
++    r = sasl_decode64(in, strlen(in), buf, max, &len);
++    if (r != SASL_OK) {
++        saslerr(r, "failed to parse channel bindings");
++        exit(-1);
++    }
++    cb->name = "TEST BINDINGS";
++    cb->critical = 0;
++    cb->data = (unsigned char *)buf;
++    cb->len = len;
++}
+diff --git a/tests/t_common.h b/tests/t_common.h
+index 4ee1976c..0d08d8ba 100644
+--- a/tests/t_common.h
++++ b/tests/t_common.h
+@@ -7,9 +7,11 @@
+ #include <sys/socket.h>
+ 
+ #include <sasl.h>
++#include <saslutil.h>
+ 
+ void s_error(const char *hdr, ssize_t ret, ssize_t len, int err);
+ void send_string(int sd, const char *s, unsigned int l);
+ void recv_string(int sd, char *buf, unsigned int *buflen);
+ void saslerr(int why, const char *what);
+ int getpath(void *context __attribute__((unused)), const char **path);
++void parse_cb(sasl_channel_binding_t *cb, char *buf, unsigned max, char *in);
+diff --git a/tests/t_gssapi_cli.c b/tests/t_gssapi_cli.c
+index c833c055..6b5664eb 100644
+--- a/tests/t_gssapi_cli.c
++++ b/tests/t_gssapi_cli.c
+@@ -13,6 +13,7 @@
+ 
+ #include <arpa/inet.h>
+ #include <saslplug.h>
++#include <saslutil.h>
+ 
+ static int setup_socket(void)
+ {
+@@ -32,7 +33,7 @@ static int setup_socket(void)
+     return sock;
+ }
+ 
+-int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
++int main(int argc, char *argv[])
+ {
+     sasl_callback_t callbacks[2] = {};
+     char buf[8192];
+@@ -40,8 +41,20 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
+     sasl_conn_t *conn;
+     const char *data;
+     unsigned int len;
++    sasl_channel_binding_t cb = {0};
++    char cb_buf[256];
+     int sd;
+-    int r;
++    int c, r;
++
++    while ((c = getopt(argc, argv, "c:")) != EOF) {
++        switch (c) {
++        case 'c':
++            parse_cb(&cb, cb_buf, 256, optarg);
++            break;
++        default:
++            break;
++        }
++    }
+ 
+     /* initialize the sasl library */
+     callbacks[0].id = SASL_CB_GETPATH;
+@@ -60,6 +73,10 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
+         exit(-1);
+     }
+ 
++    if (cb.name) {
++        sasl_setprop(conn, SASL_CHANNEL_BINDING, &cb);
++    }
++
+     r = sasl_client_start(conn, "GSSAPI", NULL, &data, &len, &chosenmech);
+     if (r != SASL_OK && r != SASL_CONTINUE) {
+ 	saslerr(r, "starting SASL negotiation");
+diff --git a/tests/t_gssapi_srv.c b/tests/t_gssapi_srv.c
+index 29f538dd..3a8a5d44 100644
+--- a/tests/t_gssapi_srv.c
++++ b/tests/t_gssapi_srv.c
+@@ -44,15 +44,28 @@ static int setup_socket(void)
+     return sd;
+ }
+ 
+-int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
++int main(int argc, char *argv[])
+ {
+     sasl_callback_t callbacks[2] = {};
+     char buf[8192];
+     sasl_conn_t *conn;
+     const char *data;
+     unsigned int len;
++    sasl_channel_binding_t cb = {0};
++    unsigned char cb_buf[256];
+     int sd;
+-    int r;
++    int c, r;
++
++    while ((c = getopt(argc, argv, "c:")) != EOF) {
++        switch (c) {
++        case 'c':
++            parse_cb(&cb, cb_buf, 256, optarg);
++            break;
++        default:
++            break;
++        }
++    }
++
+ 
+     /* initialize the sasl library */
+     callbacks[0].id = SASL_CB_GETPATH;
+@@ -72,6 +85,10 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
+         exit(-1);
+     }
+ 
++    if (cb.name) {
++        sasl_setprop(conn, SASL_CHANNEL_BINDING, &cb);
++    }
++
+     sd = setup_socket();
+ 
+     len = 8192;
+-- 
+2.46.0
+
+
+From d7aafa42fd3adeaf278aed8a7c93f3f868c47b60 Mon Sep 17 00:00:00 2001
+From: Simo Sorce <simo@redhat.com>
+Date: Fri, 20 Mar 2020 14:52:15 -0400
+Subject: [PATCH 3/3] Fixup minor issues in previous PR.
+
+Remove spurious debugging code, this was left in by mistake.
+Add C notices, this was omitted by mistake.
+
+Signed-off-by: Simo Sorce <simo@redhat.com>
+(cherry picked from commit ea8eb892e44129ac3890298da91c868d5592ed20)
+---
+ tests/t_common.c     | 10 ++--------
+ tests/t_common.h     |  3 ++-
+ tests/t_gssapi_cli.c |  3 ++-
+ tests/t_gssapi_srv.c |  3 ++-
+ 4 files changed, 8 insertions(+), 11 deletions(-)
+
+diff --git a/tests/t_common.c b/tests/t_common.c
+index 87875b48..478e6a1f 100644
+--- a/tests/t_common.c
++++ b/tests/t_common.c
+@@ -1,4 +1,5 @@
+-/* TBD, add (C) */
++/* Copyright (C) Simo Sorce <simo@redhat.com>
++ * See COPYING file for License */
+ 
+ #include <t_common.h>
+ 
+@@ -13,9 +14,6 @@ void send_string(int sd, const char *s, unsigned int l)
+ {
+     ssize_t ret;
+ 
+-fprintf(stderr, "s:%u ", l);
+-fflush(stderr);
+-
+     ret = send(sd, &l, sizeof(l), 0);
+     if (ret != sizeof(l)) s_error("send size", ret, sizeof(l), errno);
+ 
+@@ -34,8 +32,6 @@ void recv_string(int sd, char *buf, unsigned int *buflen)
+     if (ret != sizeof(l)) s_error("recv size", ret, sizeof(l), errno);
+ 
+     if (l == 0) {
+-fprintf(stderr, "r:0 ");
+-fflush(stderr);
+         *buflen = 0;
+         return;
+     }
+@@ -45,8 +41,6 @@ fflush(stderr);
+     ret = recv(sd, buf, l, 0);
+     if (ret != l) s_error("recv data", ret, l, errno);
+ 
+-fprintf(stderr, "r:%ld ", ret);
+-fflush(stderr);
+     *buflen = ret;
+ }
+ 
+diff --git a/tests/t_common.h b/tests/t_common.h
+index 0d08d8ba..a10def17 100644
+--- a/tests/t_common.h
++++ b/tests/t_common.h
+@@ -1,4 +1,5 @@
+-/* TBD, add (C) */
++/* Copyright (C) Simo Sorce <simo@redhat.com>
++ * See COPYING file for License */
+ 
+ #include "config.h"
+ 
+diff --git a/tests/t_gssapi_cli.c b/tests/t_gssapi_cli.c
+index 6b5664eb..a44a3f58 100644
+--- a/tests/t_gssapi_cli.c
++++ b/tests/t_gssapi_cli.c
+@@ -1,4 +1,5 @@
+-/* TBD, add (C) */
++/* Copyright (C) Simo Sorce <simo@redhat.com>
++ * See COPYING file for License */
+ 
+ #include "t_common.h"
+ 
+diff --git a/tests/t_gssapi_srv.c b/tests/t_gssapi_srv.c
+index 3a8a5d44..ef1217f6 100644
+--- a/tests/t_gssapi_srv.c
++++ b/tests/t_gssapi_srv.c
+@@ -1,4 +1,5 @@
+-/* TBD, add (C) */
++/* Copyright (C) Simo Sorce <simo@redhat.com>
++ * See COPYING file for License */
+ 
+ #include "t_common.h"
+ 
+-- 
+2.46.0
+

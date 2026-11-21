@@ -1,0 +1,119 @@
+diff '--color=auto' -urN seamonkey-2.53.24.orig/config/check_macroassembler_style.py seamonkey-2.53.24/config/check_macroassembler_style.py
+--- seamonkey-2.53.24.orig/config/check_macroassembler_style.py	2026-05-30 14:18:36.000000000 +0200
++++ seamonkey-2.53.24/config/check_macroassembler_style.py	2026-08-22 22:53:16.795072707 +0200
+@@ -33,10 +33,10 @@
+ all_architecture_names = set(['x86', 'x64', 'arm', 'arm64'])
+ all_shared_architecture_names = set(['x86_shared', 'arm', 'arm64'])
+ 
+-reBeforeArg = "(?<=[(,\s])"
+-reArgType = "(?P<type>[\w\s:*&]+)"
+-reArgName = "(?P<name>\s\w+)"
+-reArgDefault = "(?P<default>(?:\s=[^,)]+)?)"
++reBeforeArg = r"(?<=[(,\s])"
++reArgType = r"(?P<type>[\w\s:*&<>]+)"
++reArgName = r"(?P<name>\s\w+)"
++reArgDefault = r"(?P<default>(?:\s=(?:(?:\s[\w:]+\(\))|[^,)]+))?)"
+ reAfterArg = "(?=[,)])"
+ reMatchArg = re.compile(reBeforeArg + reArgType +
+                         reArgName + reArgDefault + reAfterArg)
+@@ -50,7 +50,7 @@
+     # Normalize spaces.
+     signature = re.sub(r'\s+', ' ', signature).strip()
+     # Match arguments, and keep only the type.
+-    signature = reMatchArg.sub('\g<type>', signature)
++    signature = reMatchArg.sub(r"\g<type>", signature)
+     # Remove class name
+     signature = signature.replace('MacroAssembler::', '')
+ 
+@@ -61,7 +61,7 @@
+ 
+     if 'DEFINED_ON(' in signature:
+         archs = re.sub(
+-            r'.*DEFINED_ON\((?P<archs>[^()]*)\).*', '\g<archs>', signature).split(',')
++            r".*DEFINED_ON\((?P<archs>[^()]*)\).*", r"\g<archs>", signature).split(',')
+         archs = [a.strip() for a in archs]
+         signature = re.sub(r'\s+DEFINED_ON\([^()]*\)', '', signature)
+ 
+diff '--color=auto' -urN seamonkey-2.53.24.orig/js/src/builtin/embedjs.py seamonkey-2.53.24/js/src/builtin/embedjs.py
+--- seamonkey-2.53.24.orig/js/src/builtin/embedjs.py	2026-05-30 15:08:55.000000000 +0200
++++ seamonkey-2.53.24/js/src/builtin/embedjs.py	2026-08-22 22:55:55.592426043 +0200
+@@ -153,7 +153,7 @@
+ def messages(jsmsg):
+     defines = []
+     for line in open(jsmsg):
+-        match = re.match("MSG_DEF\((JSMSG_(\w+))", line)
++        match = re.match(r"MSG_DEF\((JSMSG_(\w+))", line)
+         if match:
+             defines.append("#define %s %i" % (match.group(1), len(defines)))
+         else:
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/action/process_define_files.py seamonkey-2.53.24/python/mozbuild/mozbuild/action/process_define_files.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/action/process_define_files.py	2026-05-30 14:18:44.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/action/process_define_files.py	2026-08-22 22:53:16.795921179 +0200
+@@ -37,7 +37,9 @@
+         config = PartialConfigEnvironment(mozpath.join(topobjdir, 'js', 'src'))
+ 
+     with open(path, 'r') as input:
+-        r = re.compile('^\s*#\s*(?P<cmd>[a-z]+)(?:\s+(?P<name>\S+)(?:\s+(?P<value>\S+))?)?', re.U)
++        r = re.compile(
++            r"^\s*#\s*(?P<cmd>[a-z]+)(?:\s+(?P<name>\S+)(?:\s+(?P<value>\S+))?)?", re.U
++        )
+         for l in input:
+             m = r.match(l)
+             if m:
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/configure/__init__.py seamonkey-2.53.24/python/mozbuild/mozbuild/configure/__init__.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/configure/__init__.py	2026-05-30 15:08:55.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/configure/__init__.py	2026-08-22 22:53:16.796268307 +0200
+@@ -840,7 +840,7 @@
+     def wraps(self, func):
+         return wraps(func)
+ 
+-    RE_MODULE = re.compile('^[a-zA-Z0-9_\.]+$')
++    RE_MODULE = re.compile(r"^[a-zA-Z0-9_.]+$")
+ 
+     def imports_impl(self, _import, _from=None, _as=None):
+         '''Implementation of @imports.
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozversioncontrol/mozversioncontrol/__init__.py seamonkey-2.53.24/python/mozversioncontrol/mozversioncontrol/__init__.py
+--- seamonkey-2.53.24.orig/python/mozversioncontrol/mozversioncontrol/__init__.py	2026-05-30 15:08:55.000000000 +0200
++++ seamonkey-2.53.24/python/mozversioncontrol/mozversioncontrol/__init__.py	2026-08-22 22:53:16.796673984 +0200
+@@ -125,7 +125,7 @@
+         if self._version:
+             return self._version
+         info = self._run('--version').strip()
+-        match = re.search('version ([^\+\)]+)', info)
++        match = re.search(r"version ([^+)]+)", info)
+         if not match:
+             raise Exception('Unable to identify tool version.')
+ 
+diff '--color=auto' -urN seamonkey-2.53.24.orig/testing/mozbase/manifestparser/manifestparser/expression.py seamonkey-2.53.24/testing/mozbase/manifestparser/manifestparser/expression.py
+--- seamonkey-2.53.24.orig/testing/mozbase/manifestparser/manifestparser/expression.py	2026-05-30 14:18:45.000000000 +0200
++++ seamonkey-2.53.24/testing/mozbase/manifestparser/manifestparser/expression.py	2026-08-22 22:53:16.796977512 +0200
+@@ -190,7 +190,7 @@
+ 
+ 
+ class ExpressionParser(object):
+-    """
++    r"""
+     A parser for a simple expression language.
+ 
+     The expression language can be described as follows::
+diff '--color=auto' -urN seamonkey-2.53.24.orig/toolkit/library/dependentlibs.py seamonkey-2.53.24/toolkit/library/dependentlibs.py
+--- seamonkey-2.53.24.orig/toolkit/library/dependentlibs.py	2026-05-30 14:18:47.000000000 +0200
++++ seamonkey-2.53.24/toolkit/library/dependentlibs.py	2026-08-22 22:53:16.797344800 +0200
+@@ -24,7 +24,7 @@
+                             universal_newlines=True)
+     deps = []
+     for line in proc.stdout:
+-        match = re.match('\s+DLL Name: (\S+)', line)
++        match = re.match(r"\s+DLL Name: (\S+)", line)
+         if match:
+             deps.append(match.group(1))
+     proc.wait()
+@@ -47,7 +47,7 @@
+             # 0x00000001 (NEEDED)             Shared library: [libname]
+             # or with BSD readelf:
+             # 0x00000001 NEEDED               Shared library: [libname]
+-            match = re.search('\[(.*)\]', tmp[3])
++            match = re.search(r"\[(.*)\]", tmp[3])
+             if match:
+                 deps.append(match.group(1))
+     proc.wait()

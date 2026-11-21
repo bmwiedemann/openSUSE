@@ -1,0 +1,11 @@
+--- a/tests/mutation/test_mutation.py
++++ b/tests/mutation/test_mutation.py
+@@ -57,7 +57,7 @@
+             None,
+             [
+                 {
+-                    "message": "Field 'someMutation' argument 'input'"
++                    "message": "Argument 'Mutation.someMutation(input:)'"
+                     " of type 'SomeMutationInput!' is required,"
+                     " but it was not provided.",
+                     "locations": [(3, 15)],

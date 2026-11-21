@@ -1,0 +1,34 @@
+from https://gitlab.com/apparmor/apparmor/-/merge_requests/2246
+
+From 96bc49e50239e62d3f166cfada4f414f4b26f169 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Mon, 2 Nov 2026 20:49:00 +0100
+Subject: [PATCH] [5.0] transmission: allow locking its lock file
+
+This was probably introduced with
+https://github.com/transmission/transmission/pull/9022
+
+Fixes: https://bugs.launchpad.net/ubuntu/+source/apparmor/+bug/2172354
+
+Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1289007
+
+This is the 5.0 variant of https://gitlab.com/apparmor/apparmor-profiles/-/merge_requests/80
+---
+ profiles/apparmor.d/transmission | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/profiles/apparmor.d/transmission b/profiles/apparmor.d/transmission
+index 1f6d20e0f..6a1634c31 100644
+--- a/profiles/apparmor.d/transmission
++++ b/profiles/apparmor.d/transmission
+@@ -36,6 +36,7 @@ profile transmission-daemon /usr/bin/transmission-daemon flags=(attach_disconnec
+   owner /var/lib/transmission{-daemon,}/.config/ rw,
+   owner /var/lib/transmission{-daemon,}/.config/transmission-daemon/ rw,
+   owner /var/lib/transmission{-daemon,}/.config/transmission-daemon/** rw,
++  owner /var/lib/transmission{-daemon,}/.config/transmission-daemon/lock rwk,
+   owner /var/lib/transmission{-daemon,}/downloads/** rw,
+   owner /var/lib/transmission{-daemon,}/info/**      rw,
+ 
+-- 
+GitLab
+

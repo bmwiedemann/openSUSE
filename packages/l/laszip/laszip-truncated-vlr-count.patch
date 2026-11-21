@@ -1,0 +1,42 @@
+A crafted LAS/LAZ file with an inflated number_of_variable_length_records
+allocates a VLR array the truncated header cannot fill; the read then fails
+but the partially-initialized entries (uninitialized .data pointers) crash
+laszip_destroy() through the C API (boo#1285759, CVE-2026-110603). Clamp the
+count to what fits before the point block (each VLR needs its 54-byte header)
+and zero the array so unread entries are destroy-safe.
+
+PATCH-FIX-UPSTREAM laszip-truncated-vlr-count.patch -- boo#1285759 (CVE-2026-110603)
+--- LASzip-3.5.0/src/laszip_dll.cpp	2025-12-08 17:36:04.000000000 +0100
++++ LASzip-3.5.0/src/laszip_dll.cpp	2026-11-07 19:41:16.629135783 +0100
+@@ -3968,6 +3968,20 @@
+   {
+     U32 i;
+ 
++    /* An inflated count on truncated VLR data would allocate an array the
++       reads below cannot fill, leaving uninitialized .data pointers that
++       crash the destroy path. Each VLR needs at least its 54-byte header
++       before the point block starts. */
++    {
++      I32 bytes_until_point_block = (I32)laszip_dll->header.offset_to_point_data - (I32)laszip_dll->header.header_size;
++      U32 max_vlrs = (bytes_until_point_block >= 54 ? (U32)(bytes_until_point_block / 54) : 0);
++      if (laszip_dll->header.number_of_variable_length_records > max_vlrs)
++      {
++        snprintf(laszip_dll->warning, sizeof(laszip_dll->warning), "header.number_of_variable_length_records is %u but only %u vlrs fit before the point block. reading %u vlrs ...", laszip_dll->header.number_of_variable_length_records, max_vlrs, max_vlrs);
++        laszip_dll->header.number_of_variable_length_records = max_vlrs;
++      }
++    }
++
+     laszip_dll->header.vlrs = (laszip_vlr*)malloc_las(sizeof(laszip_vlr) * laszip_dll->header.number_of_variable_length_records);
+ 
+     if (laszip_dll->header.vlrs == 0)
+@@ -3976,6 +3990,10 @@
+       return 1;
+     }
+ 
++    /* Zero the array so entries the truncated reads below never reach stay
++       destroy-safe (NULL .data, zero length). */
++    memset(laszip_dll->header.vlrs, 0, sizeof(laszip_vlr) * laszip_dll->header.number_of_variable_length_records);
++
+     for (i = 0; i < laszip_dll->header.number_of_variable_length_records; i++)
+     {
+       // make sure there are enough bytes left to read a variable length record before the point block starts

@@ -1,0 +1,28 @@
+From 1dfd8ccc8a1c2c192987584ec72067001dad6780 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 14 Oct 2026 11:59:19 +0800
+Subject: [PATCH] linux: fix insert_dir OOM error return
+
+Return grub_errno on grub_zalloc() failure instead of 0 (GRUB_ERR_NONE).
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/loader/linux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grub-core/loader/linux.c b/grub-core/loader/linux.c
+index b68886add..5cfb403b5 100644
+--- a/grub-core/loader/linux.c
++++ b/grub-core/loader/linux.c
+@@ -130,7 +130,7 @@ insert_dir (const char *name, struct dir **root,
+ 	  struct dir *n;
+ 	  n = grub_zalloc (sizeof (*n));
+ 	  if (!n)
+-	    return 0;
++	    return grub_errno;
+ 	  n->next = *head;
+ 	  n->name = grub_strndup (cb, ce - cb);
+ 	  if (ptr)
+-- 
+2.56.0
+

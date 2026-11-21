@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sun Nov  8 12:22:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of emscripten 6.0.3, the last release that
+  targets LLVM 23:
+  * uses the system clang23, lld23, llvm23 and binaryen instead of
+    upstream's LLVM snapshot; C/C++ runtime libraries are built on
+    first use into ~/.cache/emscripten
+  * emcc expects the binaryen version it is built against, so
+    -Werror links do not fail on -Wversion-check
+  * acorn and acorn-import-phases vendored via the node_modules
+    service; the Closure Compiler is not shipped, so --closure is
+    unsupported
+  * emscripten-html-minifier-optional.patch: html-minifier-terser
+    is not shipped either; skip HTML minification instead of
+    failing
+  * webidl_binder uses python3-ply and -sSTB_IMAGE uses stb-devel
+    instead of the bundled copies
+

@@ -1,0 +1,40 @@
+From 04eabed2c52f758c2cd96e97673c5fa68a6da3c2 Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Fri, 6 Nov 2026 10:24:19 +0100
+Subject: [PATCH] ICA: Only use libica for AES-CTR with byte-sized counters
+
+libica's ica_aes_ctr() only supports counter widths that are a multiple
+of 8 bits. Handle all other counter widths with the generic OpenSSL
+implementation.
+
+Note that libica versions without the fix for the counter increment in
+__inc_aes_ctr() and __fill_aes_ctrlist() return wrong results for
+counter widths above 64 bits, and for a 128 bit counter whose lower 64
+bits wrap around.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ usr/lib/ica_s390_stdll/ica_specific.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/usr/lib/ica_s390_stdll/ica_specific.c b/usr/lib/ica_s390_stdll/ica_specific.c
+index 2c33e0d56..e1420aa3a 100644
+--- a/usr/lib/ica_s390_stdll/ica_specific.c
++++ b/usr/lib/ica_s390_stdll/ica_specific.c
+@@ -4286,7 +4286,15 @@ CK_RV token_specific_aes_ctr(STDLL_TokData_t *tokdata,
+     CK_RV rc;
+     CK_ATTRIBUTE *attr = NULL;
+ 
+-    if (!ica_data->ica_aes_available)
++    /*
++     * libica supports any data length, but only counter widths that are a
++     * multiple of 8 bits. A counter width that is not a multiple of 8 bits
++     * is handled by the generic OpenSSL implementation.
++     * Note: libica versions without the fix for the counter increment in
++     * __inc_aes_ctr()/__fill_aes_ctrlist() produce wrong results for
++     * counter widths above 64 bits.
++     */
++    if (!ica_data->ica_aes_available || counter_width % 8 != 0)
+         return openssl_specific_aes_ctr(tokdata, in_data, in_data_len,
+                                         out_data, out_data_len, key,
+                                         counterblock, counter_width, encrypt);

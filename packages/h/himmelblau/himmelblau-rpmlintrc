@@ -1,0 +1,29 @@
+# rpmlint filters for the himmelblau package
+
+# libnss_himmelblau2 deliberately requires "himmelblau = %{version}-%{release}".
+#
+# The Shared Library Policy warns about fixed-version dependencies in library
+# packages because they get in the way of installing several versions of the
+# same library in parallel (libfoo1 / libfoo2). That does not apply here:
+#
+# * libnss_himmelblau.so.2 is a glibc NSS plugin. The ".2" is glibc's NSS
+#   interface version, not a Himmelblau ABI version. nsswitch.conf loads it
+#   by name, from a single fixed path, and only one himmelblaud can run on a
+#   host, so parallel installation of two versions is impossible anyway.
+# * The module is a client of himmelblaud. It links the daemon's
+#   request/response types (himmelblau_unix_common) and talks to the daemon
+#   over a unix socket using serde_json-serialized messages, with no protocol
+#   version negotiation. A partial upgrade, with the NSS module and the daemon
+#   from different builds, can silently misparse messages and break user
+#   lookups for every process on the system, so both must always be the same
+#   build. See "rpm: couple interdependent package versions" (84bd98c3).
+#
+# Moving the dependency to "the runtime users of the library" as the policy
+# suggests would not help: nothing else uses the library, nsswitch does.
+addFilter("libnss_himmelblau2.*: W: shlib-fixed-dependency")
+
+# himmelblau-selinux requires selinux-policy-devel on purpose: the policy module
+# is compiled from the shipped sources at install time (posttrans), against the
+# policy installed on the host, as there is no prebuilt module that fits every
+# distribution's base policy.
+addFilter("himmelblau.*: E: devel-dependency selinux-policy-devel")

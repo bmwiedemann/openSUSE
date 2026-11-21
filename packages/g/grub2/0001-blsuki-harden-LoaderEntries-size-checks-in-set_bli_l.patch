@@ -1,0 +1,73 @@
+From e3e7d3a48ad4c20020d8cc4daa66e917df0776f1 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 14 Oct 2026 15:22:15 +0800
+Subject: [PATCH 1/4] blsuki: harden LoaderEntries size checks in
+ set_bli_loader_entries()
+
+Prevent integer underflow and potential heap buffer overflow when
+composing the EFI LoaderEntries variable.
+
+Add explicit bounds checks before copying previous UTF-16 entries and
+before appending a new entry, ensuring `remaining_size` can hold data
+plus the terminating NUL. Also reserve space for the explicit terminator
+by passing `remaining_size - 1` to `grub_utf8_to_utf16()`.
+
+Additionally, free `prev_entries_start` on `efi_entries` allocation
+failure to avoid leaking the previously fetched variable buffer.
+
+This fixes unsafe `remaining_size` subtraction and out-of-bounds write
+cases triggered by malformed or crafted LoaderEntries contents.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/blsuki.c | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/commands/blsuki.c b/grub-core/commands/blsuki.c
+index f878290e9..5101e4f59 100644
+--- a/grub-core/commands/blsuki.c
++++ b/grub-core/commands/blsuki.c
+@@ -1654,7 +1654,10 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+     }
+   efi_entries = grub_malloc (size * sizeof (grub_efi_char16_t) + prev_entries_start_size);
+   if (efi_entries == NULL)
+-    return grub_errno;
++    {
++      grub_free (prev_entries_start);
++      return grub_errno;
++    }
+ 
+   prev_entries = prev_entries_start;
+   prev_entries_size = prev_entries_start_size;
+@@ -1740,6 +1743,13 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+ 
+ 		if (rc > 0)
+ 		  {
++		    if (remaining_size < len16 + 1)
++		      {
++			grub_free (prev_entry);
++			grub_free (prev_entries_start);
++			grub_free (efi_entries);
++			return grub_error (GRUB_ERR_OUT_OF_RANGE, "LoaderEntries buffer too small for previous entries");
++		      }
+ 		    grub_memcpy (p, prev_entries, len16 * sizeof (*prev_entries));
+ 		    p += len16;
+ 		    *p++ = (grub_efi_char16_t) '\0';
+@@ -1751,7 +1761,13 @@ set_bli_loader_entries (enum blsuki_cmd_type cmd_type)
+ 	      } while (prev_entries_size > 0 && rc > 0);
+ 	    }
+ 
+-	  written = grub_utf8_to_utf16 (p, remaining_size,
++	  if (remaining_size < len + 1)
++	    {
++	      grub_free (prev_entries_start);
++	      grub_free (efi_entries);
++	      return grub_error (GRUB_ERR_OUT_OF_RANGE, "LoaderEntries buffer too small for new entry");
++	    }
++	  written = grub_utf8_to_utf16 (p, remaining_size - 1,
+ 					(grub_uint8_t*) entry->filename, len, NULL);
+ 	  p += written;
+ 	  *p++ = (grub_efi_char16_t) '\0';
+-- 
+2.56.0
+

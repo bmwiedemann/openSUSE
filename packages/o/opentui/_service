@@ -1,0 +1,21 @@
+<services>
+  <!-- The release archive carries prebuilt tree-sitter .wasm modules that
+       %install replaces with the system wasm packages, plus one test
+       fixture; none of them may sit in the sources, so the tarball comes
+       from git with those members excluded instead of from the archive URL. -->
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/anomalyco/opentui.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.8.4</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="filename">opentui</param>
+    <param name="exclude">packages/core/src/lib/tree-sitter/assets/*/*.wasm</param>
+    <param name="exclude">packages/core/src/tests/fixtures/json/*.wasm</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

@@ -1,0 +1,258 @@
+-------------------------------------------------------------------
+Mon Nov  9 23:03:42 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.2.0:
+  - Features
+    - gt commit reads commits on the server with list, view,
+      diff, compare, status and pr, where a ref is a SHA, branch
+      or tag. status exits 1 when a status failed and 8 while one
+      is pending, so gt commit status main && deploy waits for
+      green (#92).
+    - gt commit diff and gt pr diff filter a diff with --path and
+      --exclude, which take a file, a dir/ or a glob and can be
+      repeated, and summarize it with --name-only, --name-status
+      and --stat. What is left is still a diff that git apply
+      takes (#92).
+    - gt tag lists, views, creates and deletes tags without a
+      clone, and protect, unprotect and protection list manage
+      tag protection rules. create --message makes an annotated
+      tag (#93).
+    - gt branch protection list and view show the protection
+      rules in the order Gitea applies them: the approvals, who
+      may push, the status checks and the other protections that
+      are on (#95).
+    - gt activity [<owner>] shows the activity feed of a user or
+      organization, yours without an owner, and gt repo activity
+      that of a repository. --date keeps one day and
+      --only-performed-by keeps what the user did (#100).
+    - gt time start, stop, cancel and status work with the issue
+      stopwatch. stop logs the elapsed time, cancel discards it
+      and status lists every active stopwatch across repositories
+      (#101).
+    - gt pr merge --admin merges past the branch protection, for
+      those who administer the repository. --match-head-commit
+      SHA merges only while the head is still that commit, and
+      --disable-auto cancels the merge that --auto scheduled
+      (#97).
+    - gt pr checks --required shows and awaits only the checks
+      that the protection rule of the base branch requires, so a
+      flaky optional check no longer holds --watch back (#97).
+    - gt pr create --fill-first takes the title and body from the
+      first commit of the branch, and --fill-verbose takes the
+      body from the full message of every commit (#97).
+    - gt release list takes --exclude-drafts,
+      --exclude-pre-releases and --order asc|desc, which sorts by
+      when the releases were published (#98).
+    - gt run view --log-failed prints the logs of the jobs that
+      failed or were canceled, and --job NAME|ID views one job
+      or, with --log, prints its log (#98).
+    - gt api --paginate --slurp prints the pages as one JSON
+      array, so a script parses one document (#98).
+  - Performance
+    - Commands run inside a clone are about twice as fast: gt pr
+      status, gt pr view, gt pr checks and gt status take roughly
+      half the time. Git is asked once per command instead of up
+      to 11 times, and list pages and independent searches are
+      read concurrently (#103).
+  - Fixes
+    - gt upgrade --nightly and the nightly option of the install
+      scripts no longer fail with a checksum mismatch or install
+      an old build. Nightly builds are now published to
+      gitea-cli/main-nightly, which is not cached for a year. The
+      1.0.0 and 1.1.0 binaries still look in the old location, so
+      upgrade to 1.2.0 before using --nightly again (#102).
+    - On Windows, gt no longer fails to read its settings while
+      another gt process is writing them (#105).
+  - Documentation
+    - The README lists the official gitea-cli package in the Arch
+      Linux extra repository: sudo pacman -S gitea-cli (#96).
+  - Internal
+    - Integration tests cover gt runner, gt gpg-key, locking,
+      pinning, deleting, dependencies, --template and --dry-run
+      on a real Gitea (#94).
+    - The golangci-lint configuration matches Gitea's, and make
+      fmt runs golangci-lint fmt (#104).
+    - Update charm.land/bubbletea/v2 to v2.1.1, which includes a
+      security fix for terminal size reports, and
+      github.com/itchyny/gojq to v0.12.20 (#107).
+    - Fix a flaky test that counted requests during concurrent
+      page reads (#106).
+
+
+-------------------------------------------------------------------
+Thu Nov  5 19:37:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.1.0:
+  - Features:
+    - --dry-run previews write requests without sending them on
+      commands that only change Gitea.
+    - --template formats JSON output with Go templates and gh
+      functions.
+    - gt schema lists JSON fields of every command.
+    - GITEA_CLI_ERROR_FORMAT=json reports failures as JSON on
+      stderr.
+    - gt gpg-key manages GPG keys with token verification.
+    - gt issue and gt pr lock, unlock, pin, unpin and delete
+      support batch operations.
+    - gt pr edit and gt issue edit support bi-directional
+      dependency changes.
+    - --select interactive selector on issue, pr, release, and
+      repo lists.
+    - gt notification list --all-accounts lists notifications
+      across all logged-in accounts.
+    - gt repo license and gt repo gitignore manage repository
+      templates.
+    - gt project workflow manages project board workflows
+      (needs Gitea 29).
+    - gt admin adds user, org, cron, and email administration
+      commands.
+  - Internal:
+    - Update gitea.dev/sdk to v1.5.1.
+
+-------------------------------------------------------------------
+Tue Nov  3 15:36:39 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix crash on ppc64le (gh#golang/go#82324 bsc#1289089 bsc#1287612)
+  + unix-set-R12-before-the-ppc64x-syscall-branch.patch
+
+-------------------------------------------------------------------
+Mon Nov  2 20:53:48 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.0.0:
+  It is the first stable release and replaces tea as Gitea's
+  official CLI.
+  From now on gt follows semantic versioning: within 1.x,
+  commands, flags, --json fields, exit codes and GITEA_CLI_*
+  environment variables are not removed, renamed or changed in
+  meaning.
+  gt supports Gitea 28 and newer.
+  - Features
+    - gt upgrade replaces gt with its latest release, after
+      verifying its SHA-256 checksum, or with the release
+      --version names or the latest build of the main branch with
+      --nightly. When Homebrew, a Linux package, Nix or go
+      install installed gt, it names the command that upgrades it
+      instead.
+    - After a command, gt tells at most once a day when a newer
+      release is out. It stays quiet in CI and when stdout or
+      stderr is not a terminal; set GITEA_CLI_NO_UPDATE_NOTIFIER
+      to turn the check off.
+    - gt extension installs, upgrades, runs and removes
+      extensions from repositories on any Gitea instance, GitHub
+      CLI extensions included. Extensions can declare top-level
+      aliases in gt-extension.yml.
+    - gt pr backport cherry-picks what a merged pull request
+      landed onto release branches and opens a pull request for
+      each, keeping going across targets when one conflicts.
+    - gt project lists, views, creates, edits, closes, reopens
+      and deletes project boards of a repository, an organization
+      (--org) or your account (--account).
+    - gt runner lists, views, enables, disables and deletes
+      Actions runners, and prints the registration token, for a
+      repository, an organization, your account or the instance
+      (--global).
+    - gt issue move moves an issue between the columns of its
+      project board.
+    - gt pr update-branch brings the base branch into a pull
+      request, by merge or with --rebase.
+    - gt issue comment attachment and gt pr comment attachment
+      manage the files attached to comments.
+    - --csv prints list and view output as CSV, with the same
+      optional field list as --json.
+    - gt pr list --local shows the pull request of each local
+      branch and whether it is open, closed or merged.
+  - Enhancements
+    - In Gitea Actions, GITEA_TOKEN is enough: gt picks up the
+      instance from the job, like gh on GitHub.
+    - gt repo clone --find-instance looks the repository up on
+      every instance with an account when none is selected.
+    - gt pr create links the open pull request when one already
+      exists for the same branches.
+    - tea's command names point to their gt equivalents.
+    - On servers without workflow or job listing, gt run list, gt
+      run view and gt run delete warn and continue, and commands
+      that need these listings say why they cannot run instead of
+      "not found".
+  - Fixes
+    - A round of fixes went through every command group: auth,
+      config and doctor, repositories, issues and milestones,
+      pull requests (checkout, merge, clean, backport), Actions,
+      releases, branches, wiki, packages, webhooks,
+      organizations, teams, SSH keys and administration.
+    - Repositories are discovered and Git is run the way Git
+      itself does.
+    - gt repo create --source uses the object format of the local
+      repository.
+    - Replacing a settings or credential file that another reader
+      holds open no longer fails on Windows, and gt upgrade
+      removes the replaced executable there.
+  - Packaging
+    - .deb, .rpm, .apk and Arch packages are published with each
+      release.
+    - OpenBSD builds, also installed by install.sh.
+  - Security
+    - Update golang.org/x/net to v0.62.0.
+  - Documentation
+    - Fix the PowerShell install command.
+  - Internal
+    - The unit tests run weekly on Windows Server.
+    - Every package that does real work has more than 80% test
+      coverage (87% overall), with new end-to-end tests.
+    - Update gitea.dev/sdk to v1.5.0, and other dependencies.
+
+-------------------------------------------------------------------
+Tue Oct 27 19:23:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.2.0:
+  - Features
+    - gt pr merge can mark a pull request as manually merged with
+      --commit SHA.
+    - gt repo edit adds --allow-manual-merge and
+      --autodetect-manual-merge.
+    - gt run logs --tail N prints only the last N lines of each
+      job's log, also with --failed.
+    - gt run watch --expect-head fails before waiting when the
+      run is for another commit.
+  - Enhancements
+    - gt run watch and gt workflow run --follow exit with 5 when
+      the run completes without success, so a red build can be
+      told apart from a failure of gt itself (still 1), and with
+      6 when --expect-head doesn't match.
+    - gt pr edit, gt release edit and gt label edit open a form
+      when no fields are given.
+    - gt release create and gt repo create ask for release
+      details and repository settings when run interactively.
+      --project accepts project IDs.
+    - Every required prompt is marked as required.
+  - Fixes
+    - gt release create in a clone refuses to tag a different
+      commit than the local one. It resolves --target HEAD and
+      short SHAs to the local commit and, without --target, only
+      creates a new tag when HEAD is the head of the default
+      branch.
+    - The remote preference in config.yml is tried first, and gt
+      falls back to another remote when it is missing or points
+      elsewhere. --remote stays strict.
+    - Projects owned by the repository's user are found.
+    - gt pr create seeds the form with the pull request template
+      of the chosen base branch.
+    - gt pr view keeps a request for changes in the reviewers
+      when there are later comments.
+    - gt pr list lists no pull requests in a repository without
+      commits, instead of failing.
+    - gt browse takes the SHA from --commit SHA written with a
+      space.
+    - The error for a GITEA_TOKEN without an instance names the
+      variables it needs.
+  - Documentation
+    - Install with Homebrew.
+    - New agent skill for gt.
+- Add provided skills to %%{_datadir}/skills/gt
+
+-------------------------------------------------------------------
+Sat Oct 24 14:24:28 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Initial package of gitea-cli 0.1.0:
+  * Official Gitea command-line client, installed as gt.
+  * Include generated manual pages and bash, zsh, and fish completions.
+  * Vendor Go module dependencies for offline builds.

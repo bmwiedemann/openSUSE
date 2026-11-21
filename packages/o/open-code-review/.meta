@@ -1,0 +1,8 @@
+<package name="open-code-review" project="openSUSE:Factory">
+  <title>AI-powered code review CLI</title>
+  <description>Open Code Review is an AI-powered code review CLI tool from Alibaba. It
+reads Git diffs, sends changed files to a configurable LLM via an agent
+with tool-use capabilities, and generates structured review comments with
+line-level precision.</description>
+  <url>https://github.com/alibaba/open-code-review</url>
+</package>

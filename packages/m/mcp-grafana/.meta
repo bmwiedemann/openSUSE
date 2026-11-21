@@ -1,0 +1,5 @@
+<package name="mcp-grafana" project="openSUSE:Factory">
+  <title>MCP server for Grafana</title>
+  <description>A Model Context Protocol (MCP) server for Grafana. It provides access to a Grafana instance and the surrounding observability ecosystem (dashboards, logs, traces) to MCP-compatible clients.</description>
+  <url>https://github.com/grafana/mcp-grafana</url>
+</package>

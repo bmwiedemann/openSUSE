@@ -1,0 +1,92 @@
+From 1cf4d34c54649cdbac1f7ffd10e6c522e847d5af Mon Sep 17 00:00:00 2001
+From: Andrew Burgess <aburgess@redhat.com>
+Date: Thu, 12 Feb 2026 18:22:50 +0000
+Subject: [PATCH 4/9] gdb/testsuite: update C++ tests for volatile changes in
+ C++20
+
+I ran the testsuite on a machine where the C++ compiler was C++20 by
+default, and noticed a bunch of errors like this:
+
+  gdb compile failed, /tmp/BUILD/gdb-17.1-build/gdb-17.1/gdb/testsuite/gdb.base/infcall-nested-structs.c: In function 'void breakpt()':
+  /tmp/BUILD/gdb-17.1-build/gdb-17.1/gdb/testsuite/gdb.base/infcall-nested-structs.c:414:3: warning: '++' expression of 'volatile'-qualified type is deprecated [-Wvolatile]
+    414 |   v++;
+        |   ^
+  UNRESOLVED: gdb.base/infcall-nested-structs-c++.exp: types-tl: failed to compile
+
+My understanding is that, in C++20, some operations on volatile
+variables are now deprecated.  So things like:
+
+  volatile int var = 0;
+  ++var;
+  --var
+  var += 1;
+  var -= 1;
+
+Are now, I believe, all deprecated.  However, this is still allowed:
+
+  var = var + 1;
+
+There are a few test cases where this impacts us, though in every case
+the increment of the volatile only existed in order to create filler
+work, as far as I can tell the volatile variable is never inspected
+from GDB.
+
+In gdb.base/infcall-nested-structs.c I just deleted the volatile
+completely.
+
+In the other tests I replaced the '++' with 'var = var + 1' type code.
+
+I don't believe there should be any change in what is actually being
+tested after this patch.
+---
+ gdb/testsuite/gdb.base/infcall-nested-structs.c              | 4 +---
+ gdb/testsuite/gdb.cp/breakpoint-locs.h                       | 2 +-
+ gdb/testsuite/gdb.threads/next-while-other-thread-longjmps.c | 2 +-
+ 3 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/infcall-nested-structs.c b/gdb/testsuite/gdb.base/infcall-nested-structs.c
+index 98568a39fb1..0b7ac4a0fa5 100644
+--- a/gdb/testsuite/gdb.base/infcall-nested-structs.c
++++ b/gdb/testsuite/gdb.base/infcall-nested-structs.c
+@@ -406,12 +406,10 @@ call_all ()
+   return val;
+ }
+ 
+-int volatile v = 1;
+-
+ void __attribute__((noinline)) ATTRIBUTE_NOCLONE
+ breakpt (void)
+ {
+-  v++;
++  /* Nothing.  */
+ }
+ 
+ int
+diff --git a/gdb/testsuite/gdb.cp/breakpoint-locs.h b/gdb/testsuite/gdb.cp/breakpoint-locs.h
+index 93a25543ed3..88e58bf7a88 100644
+--- a/gdb/testsuite/gdb.cp/breakpoint-locs.h
++++ b/gdb/testsuite/gdb.cp/breakpoint-locs.h
+@@ -20,6 +20,6 @@ namespace N1
+   class C1
+   {
+    public:
+-    static void __attribute__((always_inline)) baz () { volatile unsigned i; i++; }
++    static void __attribute__((always_inline)) baz () { volatile unsigned i; i = i + 1; }
+   };
+ }
+diff --git a/gdb/testsuite/gdb.threads/next-while-other-thread-longjmps.c b/gdb/testsuite/gdb.threads/next-while-other-thread-longjmps.c
+index 26ae6ca95bd..cfcaf2ea10e 100644
+--- a/gdb/testsuite/gdb.threads/next-while-other-thread-longjmps.c
++++ b/gdb/testsuite/gdb.threads/next-while-other-thread-longjmps.c
+@@ -64,7 +64,7 @@ thread_try_catch (void *arg)
+ 	}
+       catch (...)
+ 	{
+-	  counter++;
++	  counter = counter + 1;
+ 	}
+ 
+       usleep (1);
+-- 
+2.51.0
+

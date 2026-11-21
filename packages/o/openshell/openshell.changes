@@ -1,0 +1,88 @@
+-------------------------------------------------------------------
+Wed Nov 11 20:10:22 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Prepare for configuation of the SUSE registry in the gateway
+  for supervisor and sandbox images.
+  Values get added once the paths are known.
+- Improve documentation.
+
+-------------------------------------------------------------------
+Wed Nov 11 09:20:20 UTC 2026 - Matthias Eckermann <mge@suse.com>
+
+- Updated to 0.1.8.
+  * Breaking changes:
+    - Credential placement is stricter: static provider credentials are
+      now only injected into the Authorization header or an explicit
+      body/WebSocket rewrite. If you use custom headers, query parameters
+      or path slots, your policy must now declare where the credential goes.
+    - WebSockets need explicit config: REST endpoints now reject HTTP upgrade
+      requests with 403. WebSocket traffic needs its own protocol and rules
+      in the policy.
+    - Symlinks in writable workspaces can block launch: a sandbox won't
+      start if a filesystem policy path goes through a symlink in a writable
+      workspace.
+  * SDK changes:
+    - Go: move from github.com/NVIDIA/OpenShell/sdk/go to
+      github.com/ai-openshell/sdk-go. The Go SDK now shares oidc_token.json
+      with the CLI, so run openshell gateway login once.
+    - Python: still pip install openshell, but it's now published from a
+      separate repo.
+  * User visible changes:
+    - Stability: deleted sandboxes no longer leak memory, so repeated
+      create/delete cycles no longer end in an OOM kill. Kubernetes sandbox
+      deletion is faster, and stopped sandboxes no longer flip back to
+      "provisioning".
+    - CLI:
+      - openshell sandbox download now works on busybox-based images.
+      - policy update --add-endpoint accepts allow-encoded-slash.
+      - status --gateway <name> exits non-zero for unknown gateways.
+      - Expired OIDC client-credentials tokens are renewed automatically if
+        OPENSHELL_OIDC_CLIENT_SECRET is set.
+      - TUI: the policy viewer shows the actual allowed/denied MCP tool names
+        instead of wildcard patterns.
+    - SDKs:
+      - TypeScript: forward().close() now revokes the SSH forward token.
+      - Go: falls back to the system-wide active gateway and sets up Listen
+        tunnels in parallel.
+      - Python: new optional delete_timeout_seconds.
+  * New features
+    - Tracing: the CLI passes TRACEPARENT/TRACESTATE on to the gateway, so CI
+      pipeline traces can be linked to it.
+    - Security warnings: you now get a warning when allow_unauthenticated_users
+      is enabled, and when Docker Engine is older than 28.0.
+
+-------------------------------------------------------------------
+Sun Nov  1 12:17:28 UTC 2026 - Matthias Eckermann <mge@suse.com>
+
+- Update to 0.1.7
+
+-------------------------------------------------------------------
+Fri Oct 30 13:47:57 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- added _sevice file for downloading and vendoring the rust deps
+
+-------------------------------------------------------------------
+Tue Oct 27 12:00:00 UTC 2026 - Matthias Eckermann <mge@suse.com>
+
+- gateway: ship an example systemd drop-in for cgroup controller
+  delegation (/usr/share/openshell-gateway/80-openshell-delegate.conf,
+  Delegate=pids memory cpu). SUSE delegates no controller to user
+  sessions; without cpu, memory and pids the Podman driver's limits
+  make "openshell sandbox create" fail ("memory.swap.max: no such
+  file or directory"). The administrator activates the file; the
+  package never writes to /etc.
+- gateway: README.SUSE with the host prerequisites on SUSE
+
+-------------------------------------------------------------------
+Tue Oct 27 09:00:00 UTC 2026 - Matthias Eckermann <mge@suse.com>
+
+- Ship the example provider profiles and the policy quickstart under
+  /usr/share/openshell/ (providers/, examples/); operators copy and
+  import a profile instead of fetching it from GitHub
+- rpmlintrc: filter shared-lib-without-dependency-information for the
+  static sandbox runtime
+
+-------------------------------------------------------------------
+Thu Oct 22 11:08:26 UTC 2026 - Matthias Eckermann <mge@suse.com>
+
+- Initial checking, OpenShell 0.1.5

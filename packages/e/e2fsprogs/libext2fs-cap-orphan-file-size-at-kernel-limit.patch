@@ -1,0 +1,63 @@
+From a9f482e55f3ca384226e76fceb15f274698cce93 Mon Sep 17 00:00:00 2001
+From: Baokun Li <libaokun1@huawei.com>
+Date: Thu, 20 Nov 2025 21:55:14 +0800
+Subject: [PATCH] libext2fs: fix orphan file size > kernel limit with large
+ blocksize
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Kernel commit 0a6ce20c1564 ("ext4: verify orphan file size is not too big")
+limits the maximum supported orphan file size to 8 << 20.
+
+However, in e2fsprogs, the orphan file size is set to 32–512 filesystem
+blocks when creating a filesystem.
+
+With 64k block size, formatting an ext4 fs >32G gives an orphan file bigger
+than the kernel allows, so mount prints an error and fails:
+
+    EXT4-fs (vdb): orphan file too big: 8650752
+    EXT4-fs (vdb): mount failed
+
+Thus, orphan file size is capped at 512 filesystem blocks in both e2fsprogs
+and the kernel.
+
+Signed-off-by: Baokun Li <libaokun1@huawei.com>
+Reviewed-by: Jan Kara <jack@suse.cz>
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+Message-ID: <20251120135514.3013973-1-libaokun@huaweicloud.com>
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+
+Git-repo: https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
+Git-commit: a9f482e55f3ca384226e76fceb15f274698cce93
+Patch-mainline: Merged upstream (maint and master branches), not yet released
+---
+ lib/ext2fs/orphan.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/lib/ext2fs/orphan.c b/lib/ext2fs/orphan.c
+index 14ac3569..0f1889cb 100644
+--- a/lib/ext2fs/orphan.c
++++ b/lib/ext2fs/orphan.c
+@@ -15,6 +15,8 @@
+ #include "ext2_fs.h"
+ #include "ext2fsP.h"
+ 
++#define EXT4_MAX_ORPHAN_FILE_BLOCKS 512
++
+ errcode_t ext2fs_truncate_orphan_file(ext2_filsys fs)
+ {
+ 	struct ext2_inode inode;
+@@ -129,6 +131,9 @@ errcode_t ext2fs_create_orphan_file(ext2_filsys fs, blk_t num_blocks)
+ 	struct ext4_orphan_block_tail *ob_tail;
+ 	time_t now;
+ 
++	if (num_blocks > EXT4_MAX_ORPHAN_FILE_BLOCKS)
++		num_blocks = EXT4_MAX_ORPHAN_FILE_BLOCKS;
++
+ 	if (ino) {
+ 		err = ext2fs_read_inode(fs, ino, &inode);
+ 		if (err)
+-- 
+2.55.0
+

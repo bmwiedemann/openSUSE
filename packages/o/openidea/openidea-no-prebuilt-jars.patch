@@ -1,0 +1,258 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: [PATCH] Drop the embedded prebuilt JDT LS jars
+
+Upstream embeds three prebuilt jars with include_bytes!: the Java usages
+and Kotlin bridge JDT LS extensions, which only build against the Eclipse
+JDT LS jars, and a patched Lombok agent. They are removed from the source
+archive. Without the extensions Find Usages falls back to standard LSP
+references and Kotlin libraries are not bridged into the Java model, as
+upstream already does when they fail to install. The Lombok tool entry
+goes back to its 0.1.30 form; jdtls takes Lombok from the project's
+Maven or Gradle cache or a -javaagent option. The tests of the embedded
+jars go with them.
+
+--- a/crates/ide-sdk/src/java.rs
++++ b/crates/ide-sdk/src/java.rs
+@@ -1153,137 +1155,16 @@
+ 
+ /// The same jar supplies the JDT command and the private Maven output redirector.
+ pub fn kotlin_bridge_bundle(data_dir: &Path) -> Option<PathBuf> {
+-    let extension = data_dir.join("kotlin-bridge-1.0.0.jar");
+-    let bytes = include_bytes!("../../../java/kotlin-bridge/openidea-kotlin-bridge.jar");
+-    if std::fs::read(&extension).is_ok_and(|old| old == bytes) {
+-        return Some(extension);
+-    }
+-    let temporary = data_dir.join(format!(
+-        "kotlin-bridge-{}-{}.tmp",
+-        std::process::id(),
+-        std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).ok()?.as_nanos()
+-    ));
+-    let result = std::fs::create_dir_all(data_dir)
+-        .and_then(|_| std::fs::write(&temporary, bytes))
+-        .and_then(|_| std::fs::rename(&temporary, &extension));
+-    if let Err(error) = result {
+-        let _ = std::fs::remove_file(temporary);
+-        tracing::warn!("Kotlin bridge extension unavailable: {error}");
+-        return std::fs::read(&extension).is_ok_and(|old| old == bytes).then_some(extension);
+-    }
+-    Some(extension)
+-}
+-
+-#[cfg(test)]
+-mod kotlin_bridge_bundle_tests {
+-    #[test]
+-    fn embeds_both_runtime_targets_and_repairs_a_damaged_installation() {
+-        let directory = tempfile::tempdir().unwrap();
+-        let path = super::kotlin_bridge_bundle(directory.path()).unwrap();
+-        let expected = std::fs::read(&path).unwrap();
+-        let mut archive = zip::ZipArchive::new(std::io::Cursor::new(&expected)).unwrap();
+-        for (class, major) in [("KotlinLibraries", 65), ("IsolatedOutput", 52)] {
+-            use std::io::Read;
+-            let mut bytes = Vec::new();
+-            archive.by_name(&format!("ai/openidea/kotlin/{class}.class")).unwrap().read_to_end(&mut bytes).unwrap();
+-            assert_eq!(u16::from_be_bytes([bytes[6], bytes[7]]), major);
+-        }
+-        std::fs::write(&path, "incomplete").unwrap();
+-        assert_eq!(super::kotlin_bridge_bundle(directory.path()), Some(path.clone()));
+-        assert_eq!(std::fs::read(path).unwrap(), expected);
+-    }
++    // Distribution build: the prebuilt bridge jar is not shipped (it needs the
++    // JDT LS jars to build); Kotlin libraries then stay out of the Java model.
++    let _ = data_dir;
++    None
+ }
+ 
+ /// Installs the app-owned JDT LS command bundle, falling back to ordinary LSP on IO failure.
+ pub fn usages_bundle(data_dir: &Path) -> Option<PathBuf> {
+-    let extension = data_dir.join("java-usages-1.7.0.jar");
+-    let bytes = include_bytes!("../../../java/java-usages/openidea-java-usages.jar");
+-    if std::fs::read(&extension).is_ok_and(|old| old == bytes) {
+-        clean_usages_bundles(data_dir, &extension);
+-        return Some(extension);
+-    }
+-    // Write then rename: another window must never read a partially written jar.
+-    let nonce = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).ok()?.as_nanos();
+-    let temporary = data_dir.join(format!("java-usages-{}-{nonce}.tmp", std::process::id()));
+-    let result = std::fs::create_dir_all(data_dir)
+-        .and_then(|_| std::fs::write(&temporary, bytes))
+-        .and_then(|_| std::fs::rename(&temporary, &extension));
+-    match result {
+-        Ok(()) => {
+-            clean_usages_bundles(data_dir, &extension);
+-            Some(extension)
+-        }
+-        Err(e) => {
+-            let _ = std::fs::remove_file(&temporary);
+-            if std::fs::read(&extension).is_ok_and(|old| old == bytes) {
+-                clean_usages_bundles(data_dir, &extension);
+-                return Some(extension);
+-            }
+-            tracing::warn!("Java usages extension unavailable; using standard references: {e}");
+-            None
+-        }
+-    }
+-}
+-
+-fn clean_usages_bundles(data_dir: &Path, current: &Path) {
+-    let Ok(entries) = std::fs::read_dir(data_dir) else { return };
+-    for entry in entries.flatten() {
+-        let path = entry.path();
+-        let Some(name) = path.file_name().and_then(|n| n.to_str()) else { continue };
+-        let Some(suffix) = name.strip_prefix("java-usages-") else { continue };
+-        let numeric = |s: &str| !s.is_empty() && s.bytes().all(|c| c.is_ascii_digit());
+-        let old_jar = suffix.strip_suffix(".jar").is_some_and(|v| {
+-            let parts: Vec<_> = v.split('.').collect();
+-            parts.len() == 3 && parts.into_iter().all(numeric)
+-        }) && path != current;
+-        // Preserve recent temporary files: another window may still be installing.
+-        let stale_temp = suffix
+-            .strip_suffix(".tmp")
+-            .and_then(|v| v.split_once('-'))
+-            .is_some_and(|(pid, nonce)| numeric(pid) && numeric(nonce))
+-            && entry
+-                .metadata()
+-                .ok()
+-                .and_then(|m| m.modified().ok())
+-                .and_then(|t| t.elapsed().ok())
+-                .is_some_and(|age| age.as_secs() > 24 * 60 * 60);
+-        if old_jar || stale_temp {
+-            // A running server can hold an old bundle open on Windows.
+-            let _ = std::fs::remove_file(path);
+-        }
+-    }
+-}
+-
+-#[cfg(test)]
+-mod usages_bundle_tests {
+-    #[test]
+-    fn cleans_old_bundles_and_abandoned_temporary_files_on_install_and_reuse() {
+-        let dir = tempfile::tempdir().unwrap();
+-        for reuse in [false, true] {
+-            let old = dir.path().join("java-usages-1.0.0.jar");
+-            let stale = dir.path().join("java-usages-123-456.tmp");
+-            std::fs::write(&old, b"old").unwrap();
+-            std::fs::write(&stale, b"partial").unwrap();
+-            let times = std::fs::FileTimes::new()
+-                .set_modified(std::time::SystemTime::now() - std::time::Duration::from_secs(48 * 60 * 60));
+-            std::fs::File::options().write(true).open(&stale).unwrap().set_times(times).unwrap();
+-            for name in ["java-usages-123-789.tmp", "java-usages-custom.jar", "other.jar", "java-usages-not-ours.tmp"] {
+-                std::fs::write(dir.path().join(name), b"keep").unwrap();
+-            }
+-            let jar = super::usages_bundle(dir.path()).unwrap();
+-            assert!(jar.exists());
+-            assert!(!old.exists(), "reuse={reuse}");
+-            assert!(!stale.exists(), "reuse={reuse}");
+-            assert_eq!(std::fs::read_dir(dir.path()).unwrap().count(), 5);
+-        }
+-    }
+-
+-    #[test]
+-    fn installs_the_exact_bundle_and_reuses_it() {
+-        let dir = tempfile::tempdir().unwrap();
+-        let jar = super::usages_bundle(dir.path()).unwrap();
+-        assert_eq!(std::fs::read(&jar).unwrap(), include_bytes!("../../../java/java-usages/openidea-java-usages.jar"));
+-        assert_eq!(super::usages_bundle(dir.path()), Some(jar));
+-        assert_eq!(std::fs::read_dir(dir.path()).unwrap().count(), 1);
+-    }
++    // Distribution build: the prebuilt usages jar is not shipped (it needs the
++    // JDT LS jars to build); Find Usages uses standard LSP references.
++    let _ = data_dir;
++    None
+ }
+--- a/crates/ide-tools/src/registry.rs
++++ b/crates/ide-tools/src/registry.rs
+@@ -643,16 +643,16 @@
+         display: "Lombok (jdtls agent)",
+         kind: Plugin,
+         commands: &["lombok.jar"],
+-        // Equinox removed getModuleClassLoader(boolean), breaking lombok.config lookup (lombok#4059);
+-        // ECJ 3.46.200 keeps the constructor call in a constructor's statements, which
+-        // @SneakyThrows / @NonNull must not wrap or precede (lombok#4089).
+-        // Builders on compact record constructors need the patch in java/lombok/patches.
+-        // Return to Maven Central once an official release includes all of these fixes.
+-        // Source commit, build instructions and checksum: java/lombok/README.md.
+-        method: Method::Bundled {
+-            filename: "lombok-1.18.48-openidea.3.jar",
+-            version: "1.18.48-openidea.3",
+-            bytes: include_bytes!("../../../java/lombok/lombok-1.18.48-openidea.3.jar"),
++        // Distribution build: the prebuilt patched agent is not shipped; jdtls
++        // takes Lombok from the Maven or Gradle cache or a -javaagent option.
++        method: Method::Release {
++            source: ReleaseSource::MavenCentral { group: "org.projectlombok", artifact: "lombok" },
++            assets: &[
++                any_arch(Mac, "lombok-*.jar"),
++                any_arch(Linux, "lombok-*.jar"),
++                any_arch(Windows, "lombok-*.jar"),
++            ],
++            locate: &["lombok.jar"],
+         },
+         fallback: None,
+         version: V,
+--- a/crates/ide-tools/src/tests.rs
++++ b/crates/ide-tools/src/tests.rs
+@@ -50,65 +50,6 @@
+ }
+ 
+ #[test]
+-fn bundled_lombok_replaces_legacy_installs_on_every_platform_without_downloads() {
+-    for os in [Os::Mac, Os::Linux, Os::Windows] {
+-        for arch in [platform::Arch::Arm64, platform::Arch::X64] {
+-            let env = Env::new();
+-            let legacy = env.root.join("lombok/bin/lombok.jar");
+-            fs::create_dir_all(legacy.parent().unwrap()).unwrap();
+-            fs::write(&legacy, b"old official agent").unwrap();
+-            fs::write(env.root.join("lombok").join(MANIFEST), r#"{"version":"1.18.48"}"#).unwrap();
+-            let previous = env.root.join("lombok/bin/lombok-1.18.48-openidea.2.jar");
+-            fs::write(&previous, b"previous bundled agent").unwrap();
+-            let tools = Tools::with_paths(env.root.clone(), OsString::new(), Platform { os, arch });
+-            let info = tools.info("lombok", &[]).unwrap();
+-            let path = managed_bundle(env.root.parent().unwrap(), "lombok").unwrap();
+-            assert_eq!(info.status, ToolStatus::Installed);
+-            assert_eq!(info.version.as_deref(), Some("1.18.48-openidea.3"));
+-            assert_eq!(info.path, Some(path.clone().into()));
+-            assert_eq!(path.file_name().unwrap(), "lombok-1.18.48-openidea.3.jar");
+-            assert!(!info.can_install && !info.can_uninstall);
+-            assert_eq!(tools.unavailable_reason(registry::find("lombok").unwrap()), None);
+-            assert_eq!(fs::read(&legacy).unwrap(), b"old official agent", "other windows may still use it");
+-            assert_ne!(path, previous, "new agent path must invalidate the JDT LS workspace");
+-            assert_eq!(fs::read(&previous).unwrap(), b"previous bundled agent", "other windows may still use it");
+-        }
+-    }
+-}
+-
+-#[test]
+-fn bundled_lombok_is_available_offline_and_repairs_missing_or_corrupt_files() {
+-    let env = Env::new();
+-    let data = env.root.parent().unwrap();
+-    let agent = managed_bundle(data, "lombok").unwrap();
+-    let checksum = include_str!("../../../java/lombok/SHA256SUMS").split_whitespace().next().unwrap();
+-    assert_eq!(sources::sha256_file(&agent).unwrap(), checksum);
+-    for contents in [None, Some(b"incomplete jar".as_slice())] {
+-        if let Some(contents) = contents {
+-            fs::write(&agent, contents).unwrap();
+-        } else {
+-            fs::remove_file(&agent).unwrap();
+-        }
+-        assert_eq!(managed_bundle(data, "lombok"), Some(agent.clone()));
+-        assert_eq!(sources::sha256_file(&agent).unwrap(), checksum);
+-    }
+-    assert_eq!(fs::read_dir(agent.parent().unwrap()).unwrap().count(), 1, "no temporary jars left behind");
+-}
+-
+-#[test]
+-fn concurrent_windows_get_the_same_complete_bundled_lombok() {
+-    let env = Env::new();
+-    let data = env.root.parent().unwrap();
+-    std::thread::scope(|scope| {
+-        let windows: Vec<_> = (0..8).map(|_| scope.spawn(|| managed_bundle(data, "lombok").unwrap())).collect();
+-        let paths: Vec<_> = windows.into_iter().map(|window| window.join().unwrap()).collect();
+-        assert!(paths.iter().all(|path| path == &paths[0]));
+-        let checksum = include_str!("../../../java/lombok/SHA256SUMS").split_whitespace().next().unwrap();
+-        assert_eq!(sources::sha256_file(&paths[0]).unwrap(), checksum);
+-    });
+-}
+-
+-#[test]
+ fn version_parsing() {
+     assert_eq!(parse_version("rust-analyzer 1.85.0 (4d91de4e 2025-02-17)").as_deref(), Some("1.85.0"));
+     assert_eq!(

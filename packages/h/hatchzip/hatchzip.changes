@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Tue Nov 10 07:35:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.10:
+  * Security: refuse entries whose names fold to the same file
+    (e.g. Unicode variants), which could overwrite each other
+    (GHSA-rrfc-2x66-j7xh)
+  * Decode LZ4 and Brotli in 7z archives made with 7-Zip ZS
+  * Restore folder permissions and mtimes on extraction
+  * Refuse 7z archives with undecodable methods before changing
+    anything, instead of stopping with the archive partly freed
+  * Allow ':' in entry names outside Windows
+  * GUI: actions stay reachable at minimum window size; Spanish
+    translation
+  * Vendor the locked dependency tree (new brotli, lz4_flex,
+    twox-hash and unicode-normalization crates; main package
+    License gains Unicode-3.0 for unicode-normalization)
+  * Rebase hatchzip-no-unrar.patch for the new Cargo feature layout
+
+-------------------------------------------------------------------
+Fri Nov  6 07:57:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.9:
+  * Security: dot-only archive names can no longer escape the
+    output folder; crafted 34-byte RAR refused as damaged;
+    hard-linked archives refused in place; batch files verified
+    on disk before the archive bytes are freed
+  * Extract tar.xz, in place one block at a time
+  * Read tar mtimes from pax records, ZIP mtimes from NTFS
+    fields in the local time zone
+  * Extract names differing only in case where kept apart
+  * GUI: browse archive contents as a folder tree; Hindi
+    translation
+  * Drop upstream-adopted patches (all in 0.1.9):
+    hatchzip-verify-files-before-truncate.patch,
+    hatchzip-refuse-hard-linked-in-place.patch,
+    hatchzip-tar-pax-mtime.patch, hatchzip-zip-ntfs-mtime.patch
+  * Vendor the locked dependency tree (keep upstream-tested
+    sevenz-rust2 0.24.1; a floated 0.24.2 breaks a crafted test)
+
+-------------------------------------------------------------------
+Fri Oct 30 16:39:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package hatchzip 0.1.8
+  * Built without RAR support: UnRAR's licence is not open source,
+    so unrar-ng-sys is left out of vendor.tar.zst
+  * Add hatchzip-no-unrar.patch: drop the unrar-ng-sys dependency,
+    and RAR from the desktop entry and AppStream metainfo
+  * Add hatchzip-verify-files-before-truncate.patch: check the
+    extracted files are still on disk before a batch is cut off
+    the archive, so a file removed mid-run is not lost
+  * Add hatchzip-refuse-hard-linked-in-place.patch: refuse to
+    extract in place an archive that has another hard link, which
+    emptied the other name
+  * Add hatchzip-tar-pax-mtime.patch: keep the dates of pax tar
+    files from before 1970 or after 2242
+  * Add hatchzip-zip-ntfs-mtime.patch: take the modification time
+    of a ZIP entry from its NTFS field, which 7-Zip writes, so the
+    file is no longer off by the time zone
+

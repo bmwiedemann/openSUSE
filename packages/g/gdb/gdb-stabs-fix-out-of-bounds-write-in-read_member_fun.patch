@@ -1,0 +1,246 @@
+From 94b56370e1ad51295aa124690aa2b01923de2bfa Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 9 Sep 2026 15:09:03 +0200
+Subject: [PATCH] [gdb/stabs] Fix out-of-bounds write in read_member_functions
+
+CVE-2026-13732 reports:
+...
+gdb: out-of-bounds write in stabs parser read_member_functions() via crafted elf
+
+A flaw was found in GDB's STABS debug format parser. The read_member_functions()
+function in gdb/stabsread.c contains a linked list removal bug in the code that
+separates destructor and non-destructor member functions of C++ classes. The bug
+causes the destructor entries to remain in the main function list while the list
+length counter is decremented, resulting in an out-of-bounds write when the
+function list is copied to its final allocated array. An attacker can craft an
+ELF binary with malicious .stab and .stabstr sections that triggers this
+out-of-bounds write when a user opens the file in GDB and performs any
+symbol-inspection operation such as setting a breakpoint. The inferior process
+does not need to be executed. Under controlled conditions, this was demonstrated
+to achieve execution of arbitrary commands within the GDB process.
+...
+
+AFAIU from gdb/SECURITY.txt:
+...
+  There are known bugs in GDB related to loading malformed executables
+  and parsing the debug information, a consequence of these bugs is
+  that a malicious program could trigger undefined behavior in GDB,
+  which could be used to trigger arbitrary code execution.
+
+  Given these risks, the advice of the GDB project is that, when using
+  GDB with an untrusted binary, always do so in a secure, sandboxed
+  environment.
+
+  As there are already known bugs in GDB relating to undefined
+  behavior triggered from malformed programs, further bugs in this
+  area should still be reported, but are unlikely to be given high
+  priority.  Bugs in GDB that are triggered by well-formed programs
+  should also be reported, and are likely to be treated as higher
+  priority as these are more likely to impact normal use of GDB.
+...
+this is not a high priority.  Still, it's worthwhile fixing this.
+
+The problem is single-linked list update logic.
+
+I wrote a stand alone reproducer containing fix and unit test:
+...
+ #include <stdio.h>
+ #include <assert.h>
+
+ #ifndef FIX
+ #define FIX 0
+ #endif
+
+ #ifndef VERBOSE
+ #define VERBOSE 0
+ #endif
+
+struct s
+{
+  int i;
+  struct s *next;
+};
+
+static int test_mode = 0;
+static int max_test_mode = 11;
+
+static int
+test (int i)
+{
+  switch (test_mode)
+    {
+    case 0:
+      return 0;
+    case 1:
+      return 1;
+    case 2:
+      return i % 2 == 0;
+    case 3:
+      return i % 2 == 1;
+    case 4:
+      return i == 1;
+    case 5:
+      return i != 1;
+    case 6:
+      return i == 6;
+    case 7:
+      return i != 6;
+    case 8:
+      return i >= 5;
+    case 9:
+      return !(i >= 5);
+    case 10:
+      return (i == 3 || i == 4);
+    case 11:
+      return !(i == 3 || i == 4);
+    default:
+      assert (0);
+    }
+}
+
+static struct s *
+filter (struct s *sublist)
+{
+  struct s *tmp_sublist;
+  struct s *last_sublist;
+
+  tmp_sublist = sublist;
+  last_sublist = NULL;
+  while (tmp_sublist != NULL)
+    {
+      if (test (tmp_sublist->i))
+	{
+	  if (FIX)
+	    last_sublist = tmp_sublist;
+	  tmp_sublist = tmp_sublist->next;
+	  continue;
+	}
+
+      if (last_sublist)
+	last_sublist->next = tmp_sublist->next;
+      else
+	sublist = tmp_sublist->next;
+      if (!FIX)
+	last_sublist = tmp_sublist;
+      tmp_sublist = tmp_sublist->next;
+    }
+
+  return sublist;
+}
+
+struct s s1, s2, s3, s4, s5, s6;
+
+static int
+init (int i)
+{
+  s1.i = 1;
+  s2.i = 2;
+  s3.i = 3;
+  s4.i = 4;
+  s5.i = 5;
+  s6.i = 6;
+
+  s1.next = NULL;
+  s2.next = &s1;
+  s3.next = &s2;
+  s4.next = &s3;
+  s5.next = &s4;
+  s6.next = &s5;
+
+  switch (i)
+    {
+    case 0:
+      return 6;
+    case 1:
+      s5.next = NULL;
+      return 2;
+    case 2:
+      s6.next = NULL;
+      return 1;
+    default:
+      assert (false);
+    }
+}
+
+int
+main ()
+{
+  assert (filter (NULL) == NULL);
+
+  for (int i = 0; i < 3; ++i)
+    for (test_mode = 0; test_mode <= max_test_mode; ++test_mode)
+      {
+	int len = init (i);
+
+	struct s *res = filter (&s6);
+
+	if (VERBOSE)
+	  {
+	    printf ("EXPECTED: ");
+	    for (int i = 6; i > 6 - len; --i)
+	      if (test (i))
+		printf (" %d", i);
+	    printf ("\n");
+
+	    printf ("ACTUAL  : ");
+	    for (struct s *elem = res; elem != NULL; elem = elem->next)
+	      printf (" %d", elem->i);
+	    printf ("\n");
+	  }
+
+	for (struct s *elem = res; elem != NULL; elem = elem->next)
+	  assert (test (elem->i));
+
+	struct s *elem = res;
+	for (int i = 6; i > 6 - len; --i)
+	  if (test (i))
+	    {
+	      assert (i == elem->i);
+	      elem = elem->next;
+	    }
+	assert (elem == NULL);
+      }
+
+  return 0;
+}
+...
+
+This patch applies the same fix in read_member_functions.
+
+Relevant links:
+- http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2026-13732
+- https://www.cve.org/CVERecord?id=CVE-2026-13732
+- https://access.redhat.com/security/cve/CVE-2026-13732
+- https://bugzilla.redhat.com/show_bug.cgi?id=2494416
+
+Approved-By: Simon Marchi <simon.marchi@efficios.com>
+(cherry picked from commit 496e05a32afe498db1f1cc76cde5defce9cbd185)
+---
+ gdb/stabsread.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/stabsread.c b/gdb/stabsread.c
+index e4798203fbb..5bb0e658937 100644
+--- a/gdb/stabsread.c
++++ b/gdb/stabsread.c
+@@ -5109,6 +5109,7 @@ read_member_functions (struct stab_field_info *fip, const char **pp,
+ 		{
+ 		  if (!is_destructor_name (tmp_sublist->fn_field.physname))
+ 		    {
++		      last_sublist = tmp_sublist;
+ 		      tmp_sublist = tmp_sublist->next;
+ 		      continue;
+ 		    }
+@@ -5119,7 +5120,6 @@ read_member_functions (struct stab_field_info *fip, const char **pp,
+ 		    last_sublist->next = tmp_sublist->next;
+ 		  else
+ 		    sublist = tmp_sublist->next;
+-		  last_sublist = tmp_sublist;
+ 		  tmp_sublist = tmp_sublist->next;
+ 		}
+ 
+
+base-commit: 022afe0ea7ae148ad21a0ada3b9715d04b23b756
+-- 
+2.51.0
+

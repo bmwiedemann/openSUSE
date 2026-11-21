@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Thu Nov 19 08:55:18 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.0.0
+  * Highlights
+    - Multithreaded rendering: r_threads is on by default as Auto (-1),
+      which picks and tunes the worker count itself. 0 turns it off.
+      It's also in the Performance menu. At 1080p it gave about 1.5–3x
+      the FPS, and less on heavy maps. timedemo_threads benchmarks each
+      worker count
+    - Much faster on big maps: the edge and span code was rewritten,
+      edge caching fixed, and coarse occlusion and BSP culling improved.
+      Brush entities are now culled too (r_entocclusion and r_bmodelocclusion,
+      both Auto). That's up to 50% more fps on heavy maps
+    - Faster at high resolutions: with SDL 3.4+ on a GPU renderer, the palette
+      lookup runs on the GPU (1440p went from 87 to 129 fps in testing)
+    - Interpolation, ported from Mark V: model animation (r_lerpmodels),
+      movement (r_lerpmove), light styles (r_lerplightstyles) and
+      sky (r_skysmooth), with an exclusion list in r_nolerp_list.
+      There's a new Interpolation menu, and v_gunkick 2 gives smooth recoil.
+      All of it is off by default and on in the Fancy preset.
+    - New fog: it now follows Ironwail's curve and fades, and is dithered
+      toward the exact fog colour (r_fogdither)
+    - Huge maps load without -heapsize (Immortal and others), because memory
+      now grows as needed. The max_edicts default went up to 16384 and static
+      entities to 4096
+    - Quake 64 map support
+  * Rendering
+    - The z-buffer is now 32-bit, so distant models no longer show through walls.
+      Entities pressed against walls or water no longer poke through either
+    - The picture matches the original WinQuake more closely: spans, rounding,
+      model clipping and lighting, and sky projection
+    - Several translucent layers can now overlap
+    * Skyboxes:
+      - PNG files and any size now load
+      - They're dithered more smoothly
+      - A map can use any number of skies
+      - Sky names are case-insensitive
+      - Sky on brush entities draws correctly
+    - The scale entity field now works on models and sprites
+    * Map fixes:
+      -  Missing floors and walls around ericw fence brushes are drawn again,
+         along with areas vis had hidden
+      -  Doors set in solid no longer vanish
+      -  Huge brush models and coordinates draw correctly
+      -  Lit and black liquids are fixed
+    * Textures:
+      -  Broken or all-black mipmaps are rebuilt (r_rebuildmips)
+      -  New r_cutoutmipscale cvar
+      -  Fullbright pixels stay on distant models
+      -  Coloured lighting no longer makes holes in models
+    - The picture is sharp on scaled (HiDPI) Wayland and macOS displays
+    - The Modern FOV mode (r_fovmode 1) now widens the view on widescreens like
+      QuakeSpasm and Ironwail. fov now means the horizontal FOV at 4:3
+  * Mods and gameplay
+    - New sv_gameplayfix_elevators and sv_gameplayfix_random, from Ironwail
+    - You can no longer look around during camera cutscenes
+    - The weapon is kept through resurrect
+    - mg1's fog triggers work
+    - Screen tints reset on disconnect (AD's books)
+    - The game command now properly resets the palette, sounds, CSQC and demo list
+    - File names are case-insensitive, and Windows-style paths in mods work
+    - Saves with braces in strings load
+    - Corrupt models are tolerated (the vore in The Purifier)
+    - Fixed the "PR_GetString: invalid string offset" error in some mods
+    - Skin colour 255 is cut out only on models flagged as holey
+  * Console and UI
+    - New commands: apropos/find, condump, bindlist, setpos, viewpos, and ban
+    * New cvars:
+      - r_flatlightstyles: steady lights, for players bothered by flicker
+      - scr_showspeed: shows your speed
+      - snd_allowpause: pauses world sounds with the game (off by default)
+    - Typing a cvar name on its own now shows its default value
+    - New menu pages: Sound (under New Options), Interpolation, and Multithreading
+  * Sound
+    - Ambient sounds work above 100 fps
+    - No loud second of music at startup
+    - sndspeed is now saved
+  * Stability
+     Many crashes and undefined-behaviour bugs were fixed:
+      - malformed maps, models, textures, WAVs, TGAs and gfx.wad files
+      - very long names
+      - demos inside paks
+      - misaligned data, which crashed ARM builds
+  * Platforms and build
+    - New MinGW toolchain files for Windows XP (32-bit) and 64-bit Windows
+    - MSVC, Android, ARM, and RISC-V fixes
+  * Removed cvars
+    - Replaced by the new fog: r_fogstyle, r_fognoise, r_fogfactor, r_fogscale
+    - Unused: r_timegraph, r_graphheight, r_dspeeds, r_polymodelstats, screensize,
+      external_textures, snd_mixspeed, snd_noextraupdate
+
+-------------------------------------------------------------------
+Thu Sep 10 16:20:34 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 0.9.0
+  - Dawn of the Machine from 2026 rerelease is fairly playable, with the
+    new r_coarseocclusion (set to "Auto" by default, activating on BSP2 maps only)
+    helping to improve performance a lot in some cases with a lot of
+    unseen geometry being processed anyway
+  - Lots of other minor adjustments to make Dawn of the Machine work as intended
+  - vid_scalemode command
+  - keepmusic cvar
+  - "Saturn" text and notification styles
+  - "Startup Behavior" options
+  - Page scrolling in Maps/Mods menus on controllers with AUX1 and AUX2
+  - deletesave command, deleting saves in Save/Load menus with Delete key
+  - r_showtris and r_showtris_color cvars
+  - "Previous Weapon" option in controls
+  - A bunch of other minor improvements/features
+  - This version also fixed some platform specific bugs
+
+-------------------------------------------------------------------
+Sun Jun 21 11:54:29 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 0.8.3:
+  - Mouse menu controls have been added! They're off by default, enable in
+    the "Modern Options" menu (renamed from "New Options")
+  - cl_gun_fovscale cvar that allows for non-distorted gun models on high FOVs
+  -  Fixed lit water on maps where not all water is lit (like QFM e2m1)
+  - Fixed lit water on maps without colored lighting (like Ritual start)
+  - Fixed SoA Track 02 not playing
+  - Fixed resurrect command after using LG underwater (thanks @puppluka)
+  - Other minor fixes
+
+-------------------------------------------------------------------
+Thu Jun  4 13:54:35 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Initial release 

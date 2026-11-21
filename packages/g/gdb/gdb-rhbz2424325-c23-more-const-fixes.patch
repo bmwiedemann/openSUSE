@@ -1,0 +1,175 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Keith Seitz <keiths@redhat.com>
+Date: Wed, 7 Jan 2026 09:36:28 -0800
+Subject: gdb-rhbz2424325-c23-more-const-fixes.patch
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+;; Backport Keith Seitz's C23 const-correctness fixes (pending upstream review).
+;; Mailing list: https://sourceware.org/pipermail/binutils/2026-January/...
+;; Posted 2026-01-07, not yet approved.
+
+Fix some more C23 const-correctness issues
+
+Fedora Rawhide is failing to build due to new glibc header changes
+enforcing const-correctness in functions like strchr and memchr.
+For example:
+
+../../opcodes/aarch64-dis.c: In function ‘remove_dot_suffix’:
+../../opcodes/aarch64-dis.c:4027:7: error: assignment discards ‘const’ qualifier from po
+inter target type [-Werror=discarded-qualifiers]
+ 4027 |   ptr = strchr (inst->opcode->name, '.');
+      |       ^
+cc1: all warnings being treated as errors
+
+This patch addresses all the discovered issues with --enable-targets=all
+and regenerates a few cgen files along the way.
+
+diff --git a/bfd/elf32-arc.c b/bfd/elf32-arc.c
+--- a/bfd/elf32-arc.c
++++ b/bfd/elf32-arc.c
+@@ -550,7 +550,7 @@ arc_extract_features (const char *p)
+ 
+   for (i = 0; i < ARRAY_SIZE (bfd_feature_list); i++)
+     {
+-      char *t = strstr (p, bfd_feature_list[i].attr);
++      const char *t = strstr (p, bfd_feature_list[i].attr);
+       unsigned l = strlen (bfd_feature_list[i].attr);
+       if ((t != NULL)
+ 	  && (t[l] == ','
+diff --git a/bfd/vms-misc.c b/bfd/vms-misc.c
+--- a/bfd/vms-misc.c
++++ b/bfd/vms-misc.c
+@@ -492,14 +492,14 @@ get_vms_time_string (unsigned char *tbuf)
+ }
+ 
+ /* Create module name from filename (ie, extract the basename and convert it
+-   in upper cases).  Works on both VMS and UNIX pathes.
++   in upper cases).  Works on both VMS and UNIX paths.
+    The result has to be free().  */
+ 
+ char *
+ vms_get_module_name (const char *filename, bool upcase)
+ {
+   char *fname, *fptr;
+-  const char *fout;
++  const char *fout, *p;
+ 
+   /* Strip VMS path.  */
+   fout = strrchr (filename, ']');
+@@ -511,9 +511,9 @@ vms_get_module_name (const char *filename, bool upcase)
+     fout = filename;
+ 
+   /* Strip UNIX path.  */
+-  fptr = strrchr (fout, '/');
+-  if (fptr != NULL)
+-    fout = fptr + 1;
++  p = strrchr (fout, '/');
++  if (p != NULL)
++    fout = p + 1;
+ 
+   fname = strdup (fout);
+ 
+diff --git a/cpu/ip2k.opc b/cpu/ip2k.opc
+--- a/cpu/ip2k.opc
++++ b/cpu/ip2k.opc
+@@ -94,7 +94,7 @@ parse_fr (CGEN_CPU_DESC cd,
+ {
+   const char *errmsg;
+   const char *old_strp;
+-  char *afteroffset; 
++  const char *afteroffset;
+   enum cgen_parse_operand_result result_type;
+   bfd_vma value;
+   extern CGEN_KEYWORD ip2k_cgen_opval_register_names;
+diff --git a/opcodes/aarch64-dis.c b/opcodes/aarch64-dis.c
+--- a/opcodes/aarch64-dis.c
++++ b/opcodes/aarch64-dis.c
+@@ -4061,7 +4061,7 @@ print_operands (bfd_vma pc, const aarch64_opcode *opcode,
+ static void
+ remove_dot_suffix (char *name, const aarch64_inst *inst)
+ {
+-  char *ptr;
++  const char *ptr;
+   size_t len;
+ 
+   ptr = strchr (inst->opcode->name, '.');
+diff --git a/opcodes/ia64-opc.c b/opcodes/ia64-opc.c
+--- a/opcodes/ia64-opc.c
++++ b/opcodes/ia64-opc.c
+@@ -66,7 +66,7 @@ const struct ia64_templ_desc ia64_templ_desc[16] =
+ static void
+ get_opc_prefix (const char **ptr, char *dest)
+ {
+-  char *c = strchr (*ptr, '.');
++  const char *c = strchr (*ptr, '.');
+   if (c != NULL)
+     {
+       memcpy (dest, *ptr, c - *ptr);
+diff --git a/opcodes/ip2k-asm.c b/opcodes/ip2k-asm.c
+--- a/opcodes/ip2k-asm.c
++++ b/opcodes/ip2k-asm.c
+@@ -59,7 +59,7 @@ parse_fr (CGEN_CPU_DESC cd,
+ {
+   const char *errmsg;
+   const char *old_strp;
+-  char *afteroffset;
++  const char *afteroffset;
+   enum cgen_parse_operand_result result_type;
+   bfd_vma value;
+   extern CGEN_KEYWORD ip2k_cgen_opval_register_names;
+diff --git a/opcodes/riscv-dis.c b/opcodes/riscv-dis.c
+--- a/opcodes/riscv-dis.c
++++ b/opcodes/riscv-dis.c
+@@ -110,7 +110,7 @@ parse_riscv_dis_option_without_args (const char *option,
+ /* Parse RISC-V disassembler option (possibly with arguments).  */
+ 
+ static void
+-parse_riscv_dis_option (const char *option, struct disassemble_info *info)
++parse_riscv_dis_option (char *option, struct disassemble_info *info)
+ {
+   char *equal, *value;
+ 
+@@ -1140,7 +1140,7 @@ riscv_update_map_state (int n,
+ 
+       /* ISA mapping string may be numbered, suffixed with '.n'. Do not
+ 	 consider this as part of the ISA string.  */
+-      char *suffix = strchr (name, '.');
++      const char *suffix = strchr (name, '.');
+       if (suffix)
+ 	{
+ 	  int suffix_index = (int)(suffix - name);
+diff --git a/opcodes/tilegx-opc.c b/opcodes/tilegx-opc.c
+--- a/opcodes/tilegx-opc.c
++++ b/opcodes/tilegx-opc.c
+@@ -8003,7 +8003,7 @@ tilegx_spr_compare (const void *a_ptr, const void *b_ptr)
+ const char *
+ get_tilegx_spr_name (int num)
+ {
+-  void *result;
++  const void *result;
+   struct tilegx_spr key;
+ 
+   key.number = num;
+diff --git a/opcodes/tilepro-opc.c b/opcodes/tilepro-opc.c
+--- a/opcodes/tilepro-opc.c
++++ b/opcodes/tilepro-opc.c
+@@ -10119,7 +10119,7 @@ tilepro_spr_compare (const void *a_ptr, const void *b_ptr)
+ const char *
+ get_tilepro_spr_name (int num)
+ {
+-  void *result;
++  const void *result;
+   struct tilepro_spr key;
+ 
+   key.number = num;
+@@ -10131,7 +10131,7 @@ get_tilepro_spr_name (int num)
+     return NULL;
+ 
+   {
+-    struct tilepro_spr *result_ptr = (struct tilepro_spr *) result;
++    const struct tilepro_spr *result_ptr = (const struct tilepro_spr *) result;
+ 
+     return result_ptr->name;
+   }

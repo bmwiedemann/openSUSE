@@ -1,0 +1,84 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Date: Thu, 12 Nov 2026 08:20:00 +0000
+Subject: [PATCH] use bool instead of removed bfd_boolean/FALSE
+
+binutils removed the deprecated bfd_boolean typedef and the FALSE/TRUE
+macros (bfd_check_format and friends now return bool), so the build fails:
+opagent.c:81:9: error: unknown type name bfd_boolean
+create_bfd.c:68:18: error: FALSE undeclared
+
+--- oprofile-1.4.0/libopagent/opagent.c	2015-07-07 16:04:37.000000000 +0200
++++ oprofile-1.4.0/libopagent/opagent.c	2026-11-12 13:21:46.241166112 +0100
+@@ -56,6 +56,7 @@
+ #include <string.h>
+ #include <stdint.h>
+ #include <limits.h>
++#include <stdbool.h>
+ #include <sys/types.h>
+ #include <dirent.h>
+ #include <sys/stat.h>
+@@ -78,7 +79,7 @@
+ static int define_bfd_vars(void)
+ {
+ 	bfd * bfd;
+-	bfd_boolean r;
++	bool r;
+ 	int len;
+ #define MAX_PATHLENGTH 2048
+ 	char mypath[MAX_PATHLENGTH];
+--- oprofile-1.4.0/opjitconv/create_bfd.c	2020-03-23 17:14:14.000000000 +0100
++++ oprofile-1.4.0/opjitconv/create_bfd.c	2026-11-12 13:21:46.249167011 +0100
+@@ -20,6 +20,7 @@
+ 
+ #include <bfd.h>
+ #include <assert.h>
++#include <stdbool.h>
+ #include <stdint.h>
+ #include <stdio.h>
+ 
+@@ -65,7 +66,7 @@
+ 		syms[i] = s;
+ 	}
+ 	r = bfd_set_symtab(cur_bfd, syms, entry_count);
+-	if (r == FALSE) {
++	if (r == false) {
+ 		bfd_perror("bfd_set_symtab");
+ 		rc = OP_JIT_CONV_FAIL;
+ 	}
+@@ -88,11 +89,11 @@
+ 		goto error;
+ 	}
+ 	op_bfd_set_section_vma(abfd, section, vma);
+-	if (op_bfd_set_section_size(abfd, section, size) == FALSE) {
++	if (op_bfd_set_section_size(abfd, section, size) == false) {
+ 		bfd_perror("bfd_set_section_size");
+ 		goto error;
+ 	}
+-	if (op_bfd_set_section_flags(abfd, section, flags) == FALSE) {
++	if (op_bfd_set_section_flags(abfd, section, flags) == false) {
+ 		bfd_perror("bfd_set_section_flags");
+ 		goto error;
+ 	}
+@@ -134,7 +135,7 @@
+ int fill_section_content(bfd * abfd, asection * section,
+ 			 void const * b, file_ptr offset, size_t sz)
+ {
+-	if (bfd_set_section_contents(abfd, section, b, offset, sz) == FALSE) {
++	if (bfd_set_section_contents(abfd, section, b, offset, sz) == false) {
+ 		bfd_perror("bfd_set_section_contents");
+ 		return OP_JIT_CONV_FAIL;
+ 	}
+@@ -257,11 +258,11 @@
+ 		bfd_perror("bfd_openw");
+ 		goto error1;
+ 	}
+-	if (bfd_set_format(abfd, bfd_object) == FALSE) {
++	if (bfd_set_format(abfd, bfd_object) == false) {
+ 		bfd_perror("bfd_set_format");
+ 		goto error;
+ 	}
+-	if (bfd_set_arch_mach(abfd, dump_bfd_arch, dump_bfd_mach) == FALSE) {
++	if (bfd_set_arch_mach(abfd, dump_bfd_arch, dump_bfd_mach) == false) {
+ 		bfd_perror("bfd_set_arch_mach");
+ 		goto error;
+ 	}

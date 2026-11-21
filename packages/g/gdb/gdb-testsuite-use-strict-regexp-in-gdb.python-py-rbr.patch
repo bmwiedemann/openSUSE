@@ -1,0 +1,103 @@
+From cc25b5318c37590e3ce9d25d20ef9ccdc73f087e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 16 Sep 2026 18:56:02 +0200
+Subject: [PATCH] [gdb/testsuite] Use strict regexp in gdb.python/py-rbreak.exp
+
+With a 16.3 based package and test-case gdb.python/py-rbreak.exp I ran into:
+...
+(gdb) py sl = gdb.rbreak("func.*",minsyms=False,throttle=10)
+Breakpoint 17 at 0x4011ad: file py-rbreak-func2.c, line 21.
+Breakpoint 18 at 0x4011b8: file py-rbreak-func2.c, line 27.
+Breakpoint 19 at 0x4011c3: file py-rbreak-func2.c, line 33.
+Breakpoint 20 at 0x40113a: file py-rbreak.c, line 21.
+Breakpoint 21 at 0x401145: file py-rbreak.c, line 27.
+Breakpoint 22 at 0x401150: file py-rbreak.c, line 33.
+Breakpoint 23 at 0x40115b: file py-rbreak.c, line 39.
+Breakpoint 24 at 0x401166: file py-rbreak.c, line 45.
+Breakpoint 25 at 0x401171: file py-rbreak.c, line 51.
+Breakpoint 26 at 0x40107e: file static-reloc.c, line 29.
+(gdb) py print(len(sl))
+10
+(gdb) FAIL: $exp: check number of returned breakpoints is 9
+...
+
+The extra match is for _dl_relocate_static_pie_ifunc, which has a debug info
+entry with address:
+...
+ <1><295>: Abbrev Number: 2 (DW_TAG_subprogram)
+    <296>   DW_AT_external    : 1
+    <296>   DW_AT_name        : _dl_relocate_static_pie_ifunc
+    <29a>   DW_AT_decl_file   : 1
+    <29a>   DW_AT_decl_line   : 28
+    <29b>   DW_AT_decl_column : 1
+    <29b>   DW_AT_prototyped  : 1
+    <29b>   DW_AT_low_pc      : 0x40107e
+    <2a3>   DW_AT_high_pc     : 0x7
+    <2ab>   DW_AT_frame_base  : 1 byte block: 9c 	(DW_OP_call_frame_cfa)
+    <2ad>   DW_AT_call_all_calls: 1
+...
+
+Previously, that was just a declaration:
+...
+ <1><295>: Abbrev Number: 4 (DW_TAG_subprogram)
+    <296>   DW_AT_external    : 1
+    <296>   DW_AT_name        : _dl_relocate_static_pie_ifunc
+    <29a>   DW_AT_decl_file   : 1
+    <29b>   DW_AT_decl_line   : 28
+    <29c>   DW_AT_decl_column : 1
+    <29d>   DW_AT_prototyped  : 1
+...
+
+I'm not sure what the exact cause for this difference is, but it breaks the
+test-case.
+
+Fix this by using a regexp that only matches the 9 functions defined in the
+sources: func[1-6] and efunc[1-3].
+
+I didn't consider it a good idea to update the test names using "func.*",
+because the intention stays the same, and changing it would unnecessarily
+disturb test summary comparisons.
+
+Tested on x86-64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/gdb.python/py-rbreak.exp | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.python/py-rbreak.exp b/gdb/testsuite/gdb.python/py-rbreak.exp
+index fe1e0fc02b8..d7780589be9 100644
+--- a/gdb/testsuite/gdb.python/py-rbreak.exp
++++ b/gdb/testsuite/gdb.python/py-rbreak.exp
+@@ -45,11 +45,15 @@ gdb_py_test_silent_cmd "py sl = gdb.rbreak(\"main\.\*\",minsyms=False)" \
+     "get main function breakpoint" 0
+ gdb_test "py print(len(sl))" "1" \
+     "check number of returned breakpoints is 1"
+-gdb_py_test_silent_cmd "py sl = gdb.rbreak(\"func\.\*\",minsyms=False,throttle=10)" \
++
++# BRE matching func[1-6] and efunc[1-3].
++set re_func_efunc {r"^\(func[1-6]\|efunc[1-3]\)$"}
++
++gdb_py_test_silent_cmd "py sl = gdb.rbreak($re_func_efunc,minsyms=False,throttle=10)" \
+     "get functions matching func.*" 0
+ gdb_test "py print(len(sl))" "9" \
+     "check number of returned breakpoints is 9"
+-gdb_test "py gdb.rbreak(\"func\.\*\",minsyms=False,throttle=5)" \
++gdb_test "py gdb.rbreak($re_func_efunc,minsyms=False,throttle=5)" \
+     "Number of breakpoints exceeds throttled maximum.*" \
+     "check throttle errors on too many breakpoints"
+ gdb_py_test_silent_cmd "py sl = gdb.rbreak(\"func1\",minsyms=True)" \
+@@ -60,7 +64,7 @@ gdb_py_test_silent_cmd "python sym = gdb.lookup_symbol(\"efunc1\")" \
+     "find a symbol in objfile" 1
+ gdb_py_test_silent_cmd "python symtab = sym\[0\].symtab" \
+     "get backing symbol table" 1
+-gdb_py_test_silent_cmd "py sl = gdb.rbreak(\"func\.\*\",minsyms=False,throttle=10,symtabs=\[symtab\])" \
++gdb_py_test_silent_cmd "py sl = gdb.rbreak($re_func_efunc,minsyms=False,throttle=10,symtabs=\[symtab\])" \
+     "get functions matching func.* in one symtab only" 0
+ gdb_test "py print(len(sl))" "3" \
+     "check number of returned breakpoints is 3"
+
+base-commit: e5745011a63e1fc074201818b56aaf90a8d5a0e1
+-- 
+2.51.0
+

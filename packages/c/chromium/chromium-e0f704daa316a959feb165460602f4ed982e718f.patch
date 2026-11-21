@@ -1,0 +1,180 @@
+commit e0f704daa316a959feb165460602f4ed982e718f
+Author: Christopher Cameron <ccameron@google.com>
+Date:   Mon Sep 28 18:40:10 2026 -0700
+
+    media: Reset timed metadata on seek in FFmpegDemuxer
+    
+    The last patch in this sequence added a TODO indicating that seeking to
+    a timestamp in the seeking stream could, in principle, skip over the
+    timed metadata samples that apply to the frames being resumed at.
+    
+    This turned out not to be the case! FFmpeg's demuxer seeks each stream
+    individually by default, so each metadata stream is seeked back to the
+    sample covering the resume point, so no change was needed to address the
+    TODO.
+    
+    Add a test with a file where all metadata samples precede all video
+    samples, which seeks to the middle of the file and back to the start,
+    and verifies that the correct metadata is attached to the first frame
+    read after each seek.
+    
+    Discard all cached timed metadata after seeking (except for seeks when
+    changing tracks).
+    
+    Bug: 480162031
+    Change-Id: I29b4dadb4d8073dee476fbde9a219fdf6208156a
+    Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/8462587
+    Commit-Queue: ccameron chromium <ccameron@chromium.org>
+    Reviewed-by: Dale Curtis <dalecurtis@chromium.org>
+    Cr-Commit-Position: refs/heads/main@{#1706582}
+
+diff --git a/media/filters/ffmpeg_demuxer.cc b/media/filters/ffmpeg_demuxer.cc
+index f9e132f98b0f6..3df3cceb27629 100644
+--- a/media/filters/ffmpeg_demuxer.cc
++++ b/media/filters/ffmpeg_demuxer.cc
+@@ -656,10 +656,6 @@ void FFmpegDemuxerStream::FlushBuffers(bool preserve_packet_position) {
+   last_packet_timestamp_ = kNoTimestamp;
+   last_packet_duration_ = kNoTimestamp;
+   aborted_ = false;
+-
+-  // The demuxer's timed metadata is deliberately not reset. Seeking does not
+-  // re-demux the metadata samples that were skipped over, so the only metadata
+-  // available after seeking backwards is what was cached before.
+ }
+ 
+ void FFmpegDemuxerStream::Abort() {
+@@ -1143,9 +1139,8 @@ void FFmpegDemuxer::SeekInternal(base::TimeDelta time,
+   const int64_t seek_timestamp =
+       ConvertToTimeBase(demux_stream->stream_time_base(), seek_time);
+ 
+-  // TODO(https://crbug.com/480162031): Seeking to `seek_timestamp` in
+-  // `seeking_stream` may skip over the corresponding metadata samples. Collect
+-  // these samples and cache them before seeking.
++  // The MP4 demuxer seeks each stream individually, so metadata samples needed
++  // after the seek will be demuxed again.
+   blocking_task_runner_->PostTaskAndReplyWithResult(
+       FROM_HERE,
+       base::BindOnce(&AVSeekFrame, glue_->format_context(),
+@@ -1777,6 +1772,12 @@ void FFmpegDemuxer::OnSeekFrameDone(int result) {
+       stream->FlushBuffers(false);
+   }
+ 
++  // Needed metadata will be demuxed again (see SeekInternal()). Track-change
++  // seeks (which keep other streams' buffers) don't reset.
++  for (auto& it : metadata_tracks_) {
++    it.second.track->Reset();
++  }
++
+   // Resume reading until capacity.
+   ReadFrameIfNeeded();
+ 
+diff --git a/media/filters/ffmpeg_demuxer.h b/media/filters/ffmpeg_demuxer.h
+index f2586f54de7f7..79954b86a61fa 100644
+--- a/media/filters/ffmpeg_demuxer.h
++++ b/media/filters/ffmpeg_demuxer.h
+@@ -378,9 +378,9 @@ class MEDIA_EXPORT FFmpegDemuxer : public Demuxer {
+ 
+   // The timed metadata tracks and the render streams that reference them.
+   //
+-  // Nothing prunes the metadata that these accumulate, so they grow for the
+-  // duration of playback, and are invisible to IsMaxMemoryUsageReached(),
+-  // however adjacent samples are deduped.
++  // The metadata that these accumulate is only discarded when seeking, so they
++  // grow for the duration of linear playback, and are invisible to
++  // IsMaxMemoryUsageReached(), however adjacent samples are deduped.
+   MetadataTrackMap metadata_tracks_;
+ 
+   // |streams_| mirrors the AVStream array in AVFormatContext. It contains
+diff --git a/media/filters/ffmpeg_demuxer_unittest.cc b/media/filters/ffmpeg_demuxer_unittest.cc
+index 1f683d35bb342..3f1b487745b40 100644
+--- a/media/filters/ffmpeg_demuxer_unittest.cc
++++ b/media/filters/ffmpeg_demuxer_unittest.cc
+@@ -9,6 +9,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <cmath>
+ #include <memory>
+ #include <string>
+ #include <utility>
+@@ -50,6 +50,7 @@
+ #include "media/mojo/services/gpu_mojo_media_client_test_util.h"
+ #include "testing/gtest/include/gtest/gtest.h"
+ #include "ui/gfx/color_space.h"
++#include "ui/gfx/hdr_metadata.h"
+ 
+ using ::testing::_;
+ using ::testing::AnyNumber;
+@@ -346,6 +348,23 @@ class FFmpegDemuxerTest : public testing::Test {
+     event.RunAndWaitForStatus(PIPELINE_OK);
+   }
+ 
++  // Reads a single buffer from `stream`, which must succeed.
++  scoped_refptr<DecoderBuffer> ReadBuffer(DemuxerStream* stream) {
++    scoped_refptr<DecoderBuffer> buffer;
++    base::RunLoop run_loop;
++    stream->Read(1, base::BindLambdaForTesting(
++                        [&](DemuxerStream::Status status,
++                            DemuxerStream::DecoderBufferVector buffers) {
++                          CHECK_EQ(status, DemuxerStream::kOk);
++                          CHECK_EQ(buffers.size(), 1u);
++                          buffer = std::move(buffers[0]);
++                          run_loop.Quit();
++                        }));
++    run_loop.Run();
++    task_environment_.RunUntilIdle();
++    return buffer;
++  }
++
+   int64_t GetExpectedMemoryUsage(int number_of_buffers, int data_size) const {
+     return number_of_buffers * sizeof(DecoderBuffer) + data_size;
+   }
+@@ -1971,6 +1972,48 @@
+        base::TimeDelta(), true);
+ }
+ 
++// All of the metadata samples are at the start of the file, so seeking to the
++// middle of the file skips over them. Seeking discards all cached metadata, so
++// verify that the metadata that applies to the frames that are read after
++// seeking is demuxed again and attached to them.
++TEST_F(FFmpegDemuxerTest, AgtmMetadataMp4Seek) {
++  base::test::ScopedFeatureList scoped_feature_list(
++      kFFmpegDemuxerIT35MetadataTrack);
++  CreateDemuxer("staircase-pq-av1-st-2094-50-rndr.mp4");
++  InitializeDemuxer();
++  DemuxerStream* video = GetStream(DemuxerStream::VIDEO);
++
++  // Reads a buffer from `video`, and verifies that it is the keyframe at
++  // `timestamp_us` with the AGTM metadata `serialized_agtm`.
++  auto read_and_verify = [&](int64_t timestamp_us,
++                             base::span<const uint8_t> serialized_agtm) {
++    scoped_refptr<DecoderBuffer> buffer = ReadBuffer(video);
++    ASSERT_TRUE(buffer);
++    EXPECT_TRUE(buffer->is_key_frame());
++    EXPECT_EQ(buffer->timestamp().InMicroseconds(), timestamp_us);
++    ASSERT_TRUE(buffer->side_data());
++    ASSERT_TRUE(buffer->side_data()->hdr_metadata.HasAgtm());
++
++    gfx::HDRMetadata expected;
++    expected.SetSerializedAgtm(serialized_agtm);
++    ASSERT_TRUE(expected.HasAgtm());
++    EXPECT_EQ(buffer->side_data()->hdr_metadata.GetAgtm(), expected.GetAgtm());
++  };
++
++  // Reading resumes at the keyframe at 161/30 seconds, which is in the
++  // metadata sample for [5, 6).
++  Seek(base::Seconds(6));
++  read_and_verify(
++      std::lround(161.0 * base::Time::kMicrosecondsPerSecond / 30),
++      std::to_array<uint8_t>({0x00, 0xc0, 0x03, 0xf7, 0x59, 0xdc, 0x04}));
++
++  // Seeking back to the start resumes at the first keyframe, which is in the
++  // metadata sample for [0, 1).
++  Seek(base::TimeDelta());
++  read_and_verify(
++      0, std::to_array<uint8_t>({0x00, 0xc0, 0x00, 0x05, 0xea, 0x60, 0x04}));
++}
++
+ #endif  // BUILDFLAG(ENABLE_AV1_DECODER)
+ 
+ }  // namespace media

@@ -1,0 +1,529 @@
+-------------------------------------------------------------------
+Mon Nov 16 15:13:53 UTC 2026 - Javier Ramirez <javilinux@gmail.com>
+
+- Fix build failure (E0432) by updating vendor tarball with full crate features (including rsa::Pkcs1v15Sign)
+- Add man page for yr(1) generated via help2man
+
+-------------------------------------------------------------------
+Wed Nov 11 18:19:16 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Drop subpackage for bash-completion due to the RPM package
+  overhead.
+
+-------------------------------------------------------------------
+Tue Nov 10 13:12:38 UTC 2026 - Javier Ramirez <javilinux@gmail.com>
+
+- Enable %check section running %{cargo_test}
+
+-------------------------------------------------------------------
+Thu Nov  5 19:55:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.23.0
+  * Compile Unicode character classes in regular expressions using
+   UTF-8 byte sequences for smaller and faster PikeVM code (1baf65c).
+  * Add support for \b{start-half} and \b{end-half} word boundary
+    assertions in regular expressions (e89aaae).
+  * Auto-discover libmagic library search path when building with
+    the magic-module feature (64dd140).
+  * BUGFIX: Allow --ignore-module to ignore modules implemented by
+    YARA-X (#833).
+  * BUGFIX: Don't mistake maps containing encoding and value keys
+    for encoded values in the Python API (#832).
+  * BUGFIX: Fix memory leaks in the Go API when Destroy isn't
+    called on Scanner or Rules (c465b46).
+  * BUGFIX: Fix false positive E048 (ConditionTooLarge) errors
+    when multiple rules share a WASM function (71cfcc9).
+  * BUGFIX: Support regular expressions in with statements without
+    panicking (6b7bbb7).
+  * BUGFIX: Handle literal null bytes in metadata strings without
+    panicking (c557033, d970018).
+  * BUGFIX: Fix overlapping undefined-variable bitmaps in WASM
+    memory when rules use more than 8 variables (2fcf36e).
+  * BUGFIX: Roll back anchored_sub_patterns when restoring
+    compiler snapshots after a rule fails to compile (e2153a9).
+  * BUGFIX: Fix multiple loop hoisting and variable stack issues in
+    the compiler (3b09b1e, 1cdf204, a2a4823, 0165856, 14ec84b).
+  * BUGFIX: Fix panics, integer overflows, and excessive memory
+    usage when compiling large patterns, wide patterns, hex jumps,
+    and multi-pattern regex sets (f2fa044, ac2e94b, 7883874,
+    294a49a, c46e2a7, 0f71e3b, eed7687).
+  * BUGFIX: Fix panics, infinite loops, and error span mapping in
+    relaxed_re_syntax mode (64c2a16, 431834f, e3a6a23, 95cd52e,
+    fb2332a).
+  * BUGFIX: Fix stack overflows on deeply nested expressions, span
+    overflows on large inputs, and Unicode whitespace handling in
+    parser and formatter (9e89546, 9137a19, 64d4d90, b107e9d,
+    985d3cd, 46ea1af, c7d4afb, 24d964f).
+  * BUGFIX: Fix integer overflows, 32-bit offset truncation, WASM
+    page boundary slices, and large runtime string handling in
+    compiler and scanner (02c6d37, 3af8e05, 852fed0, 77d84c8).
+  * BUGFIX: Fix arithmetic overflows and panics on unset fields in
+    math, hash, console, and pe modules (e7510e2, 220a268, 30074ca,
+    8001188, 8f4999a).
+  * BUGFIX: Fix panics and unbounded recursion in yr check, yr deps,
+    yr fix warnings, and the tags linter (360f42f, d90d431, b2293bd,
+    f489e2d).
+  * BUGFIX: Fix multiple issues in the Language Server, including
+    unbounded recursion, lexical scoping in find_declaration, UTF-16
+    column mapping, and stale CST caching (2c0360c, b4b9192, 5a1c488,
+    8b6d7f1, 1973e8a, b3e1ffe).
+
+-------------------------------------------------------------------
+Mon Oct 26 19:43:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.22.1
+  * BUGFIX: panic when a regex is translated to a masked literal
+    and it has the fullword modifier (a0b49a4).
+  * BUGFIX: panic when compiling regexes with deeply nested fixed
+    repetitions (834e697).
+- Update to version 1.22.0
+  * Add int64, int64be, uint64, and uint64be built-in functions,
+    and support for unsigned 64-bit integers and integer literals.
+    greater than i64::MAX (#806).
+  * Add pe.offset_to_rva function to pe module to convert file
+    offsets to RVAs (07f7a94).
+  * Keep the width and signedness of protobuf integer fields (#806)
+  * Implement constant folding for integer division and modulus
+    operations (#806).
+  * Raise warnings on implicit sign conversions that change
+    constant values and unary operations on unsigned integers
+    (#806).
+  * Allow the yr dump command to show information from the zip
+    module (3bbe876).
+  * Link compiler errors and warnings to their documentation
+    pages (d34819c).
+  * Expose xor_key for matching patterns in the C and Go APIs
+    (#814).
+  * Performance and memory consumption improvements (#808, #810,
+    9c2b3c7).
+  * Improve Language Server with Workspace Symbols support, better
+    Code Completion documentation, auto-importing modules on
+    non-top-level symbol completion, and --help/--version CLI flags
+    (#788, #792, #795, #797, #798).
+  * Improve documentation for math.entropy function (#783).
+  * BUGFIX: Limit the size of emitted WASM functions and return
+    error when a rule condition is too large (#813).
+  * BUGFIX: Don't force yara-x default features in yara-x-capi
+    (#802).
+  * BUGFIX: Avoid WASM trap when dividing i64::MIN by -1
+    (7d16c1f).
+  * BUGFIX: Ensure quantifiers computed at runtime that are out of
+    range are never satisfied (af690da).
+  * BUGFIX: Dix the number of iterations in loops over ranges when
+    bounds overflow (697e36e).
+  * BUGFIX: Don't truncate 64-bit offsets and indexes on 32-bit
+    platforms (9e00369).
+  * BUGFIX: Improve robustness of deserialized rule data validation
+    (9d6a1d8).
+  * BUGFIX: Enhance C API robustness with comprehensive null checks
+    and detailed error reporting (0ed7485).
+  * BUGFIX: Correct output line termination when progress bar is
+    active in yr scan (029e9c9).
+
+-------------------------------------------------------------------
+Wed Sep 30 07:55:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.21.1
+  * Add debug command for showing atoms.
+  * Allow reading scan lists from stdin.
+  * Performance improvements.
+  * Add support for more ELF machine types in elf module.
+  * BUGFIX: make yara-x-py's module features actually work.
+  * BUGFIX: allow passing pathlib.Path to add_include_dir in the
+    Python API.
+  * BUGFIX: reduce memory usage in parser.
+  * BUGFIX: exclude non-matching files in NDJSON output.
+
+-------------------------------------------------------------------
+Mon Aug 31 11:05:06 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.20.0
+  * Implement SIMD-accelerated masked literal matching.
+  * Improve atom extraction heuristics for better performance.
+  * Improve scan performance by applying file size and file header
+    constraints only to regular expressions.
+  * Serialize Aho-Corasick automata directly with compiled rules
+    for faster deserialization.
+  * Add --ignore-invalid-rules CLI option to skip rules that fail
+    to compile.
+  * Expose ignore_invalid_rules in Python API.
+  * Add type annotations to match and return data in Python API.
+  * Add yrx_scanner_max_matches_per_pattern to C API and
+    Scanner.MaxMatchedPerPattern to Go API.
+  * Add rlib crate types to yara-x-capi and yara-x-py to allow
+    linking into wrapper crates.
+  * Implement experimental msi, vba, and olecf modules.
+  * Parse ShellItems and malformed sections in lnk module.
+  * Raise warning when patterns are unintendedly included in a set.
+  * Improve code completion in language server by distinguishing
+    enums from other fields.
+  * Improve playground usability and add light/dark theme support.
+  * BUGFIX: Prevent panics and provide clear error message for
+    regular expressions exceeding size limits.
+  * BUGFIX: Prevent panic when filesize is compared to float values
+  * BUGFIX: Allow Teddy pattern matching algorithm to propagate
+    early termination and respect timeouts.
+  * BUGFIX: Correctly anchor patterns in of expressions with
+    explicit offsets.
+  * BUGFIX: Properly report compile error when exceeding maximum
+    local variables limit.
+  * BUGFIX: Escape special control characters in JSON and YAML
+    serialization.
+  * BUGFIX: Do not ignore private modifier on hex and regular
+    expression patterns.
+  * BUGFIX: Cap ZIP buffer pre-allocation to compressed size.
+  * BUGFIX: Robustly encode 64-bit string handles for WASM.
+  * BUGFIX: Align completions with default formatting in language
+    server.
+  * BUGFIX: Fix accuracy issues when computing profiling time spent
+    on each rule.
+  * BUGFIX: Prevent naming conflicts in Python bindings by setting
+    module name explicitly to yara_x.
+  * BUGFIX: Add protection against null pointers in C API.
+
+-------------------------------------------------------------------
+Wed Jun 24 20:01:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19.0
+  * Add missing machine architecture types to pe module (#687).
+  * Add warning for single-byte patterns (71baa67).
+  * Add warning for duplicate patterns in a rule (9061803).
+  * Small optimization when generating structures from a
+    protobuf (9255a3e).
+  * BUGFIX: Don't derive header constraints from patterns with
+    certain flags (#689).
+  * BUGFIX: Prevent undefined behavior when deserializing rules
+    from untrusted binary data (25efa37).
+
+-------------------------------------------------------------------
+Mon Jun 15 13:53:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.18.0
+  * Improve scan performance by ignoring patterns that can't match
+    due to file header constraints.
+  * Optimize regular expression evaluation.
+  * New --cpu-limit option for the CLI (e9ee494).
+  * BUGFIX: fix issues in atom extraction logic from regular
+    expressions (#673).
+  * BUGFIX: stack overflow when compiling rules if YARA-X uses musl
+    (#666).
+
+-------------------------------------------------------------------
+Thu May 28 07:42:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.0
+  * Add support for modules developed in external crates (#655).
+  * Implement the fast scan mode and --fast-scan option for the CLI
+  * Improve performance by grouping multiple matches expressions
+    inside or conditions into a RegexSet (#657).
+  * Better YAML output for multi-line strings.
+  * Faster rendering of error and warning messages.
+  * BUGFIX: Multile issues in dex module, including incorrect
+    parsing and out-of-memory errors (efb5cad, eccf374, 833660e,
+    38fdf8b, 5e89e5b).
+
+-------------------------------------------------------------------
+Thu May  7 09:32:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.16.0
+  * Multiple performance improvements.
+  * Implement constant folding for bitwise operations.
+  * Allow specifying context size for matches.
+  * Improvements in Language Server for better integration with
+    neovim.
+  * BUGFIX: Avoid panic while parsing certain rules (#640).
+  * BUGFIX: Avoid panic on bad reader input in the Python API
+    (#643).
+  * BUGFIX: Handle null values while deserializing Cuckoo reports
+    in cuckoo module. (#646).
+  * BUGFIX: Validate bool metadata as bool in Language Server
+    diagnostics (#621).
+
+-------------------------------------------------------------------
+Mon Apr 13 12:41:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.15.0
+  * Add full support for WASM. The whole yara-x create now can be
+    built for WASM.
+  * New playground at
+    https://virustotal.github.io/yara-x/playground/
+  * The yr check command now notifies users of all errors.
+  * The yr check command will ignore warnings if errors exist.
+  * Allow for logging arbitrary byte sequences.
+  * Expose linter API of compiler to Python bindings.
+  * Multiple improvements to Language Server.
+  * BUGFIX: Language Server now relative includes.
+
+-------------------------------------------------------------------
+Fri Mar  6 20:18:02 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.14.0
+  * Multiple improvements in language server.
+  * Added deps command to the CLI tool that shows rule dependencies
+  * Improve macho module by parsing DYLD_CHAINED_IMPORT_ADDEND64
+    fixup format (#554).
+  * Some optimizations in WASM code generation.
+  * BUGFIX: return error when define_global receives a structure
+    with some key that is not a valid identifier (946665d).
+
+-------------------------------------------------------------------
+Fri Feb  6 18:29:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.13.0
+  * Add crx and dex modules to Python invoke API.
+  * Add Python API for specifying the metadata that should be
+    passed to modules.
+  * Output filenames that needs reformatting when using
+    yr fmt --check (#538)
+  * Improve code completion suggestions in language server.
+  * BUGFIX: issue while parsing imports in macho module.
+  * BUGFIX: preserve duplicate metadata entries when using
+    -output-format=json (#550).
+  * BUGFIX: logic error causing a use-after-free in the block
+    scanning API (0d1763e).
+  * BUGFIX: panic when an error occurs at the end of a source
+    file, but the last character is a multi-byte UTF-8 character.
+
+-------------------------------------------------------------------
+Mon Jan 26 12:02:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12.0
+  * Improvements in the parser to produce better Concrete Syntax
+    Trees (#531, c46b3bd).
+  * BUGFIX: avoid panic when parsing some regular expressions.
+
+-------------------------------------------------------------------
+Fri Jan  9 14:42:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.0
+  * https://github.com/VirusTotal/yara-x/releases/tag/v1.11.0
+
+-------------------------------------------------------------------
+Thu Nov 20 11:45:32 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.0
+  * New yr fix warnings command.
+  * Generate more efficient WASM code for some expressions,
+    reducing the size of compiled rules.
+  * Improve the API for traversing the AST in DFS order.
+  * Raise invariant_expr warning in some for loops that can't be
+    true (#499).
+
+-------------------------------------------------------------------
+Mon Nov  3 12:13:49 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.9.0
+  * Add function for scanning files by path to the C and Go APIs.
+  * Add version number to the Rust API.
+  * Add osabi field to elf module.
+  * Avoid verifying patterns when the file size is not in the
+    range specified in the rule condition.
+  * Avoid emitting code that invokes search_for_patterns if not
+    necessary.
+  * Implement DFS iterator for AST.
+  * BUGFIX: Check if AddressOfFunctions is zero while parsing
+    PE files.
+
+-------------------------------------------------------------------
+Tue Oct  7 19:14:50 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.1
+  * BUGFIX: don't mangle the C API function yrx_finalize and
+    include it in the header files.
+  * BUGFIX: fix some issues and edge cases in block scanning.
+
+-------------------------------------------------------------------
+Mon Oct  6 14:49:06 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  * Implement block scanning API for Rust and C.
+  * Implement Golang and C APIs for setting global variables of
+    type array and structure.
+  * Add iterator for Rules object in Python.
+  * BUGFIX: Inconsistency with legacy YARA in PE certificate
+    subjects.
+
+-------------------------------------------------------------------
+Fri Sep 19 13:37:25 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.1
+  * BUGFIX: fix compilation in 32-bits platforms (#453).
+
+-------------------------------------------------------------------
+Wed Sep 17 17:48:48 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  * New warning suggesting the use of none of them instead of 0 of
+    them.
+  * Added option --max-matches-per-pattern to the CLI and the
+    max_matches_per_pattern method to the Python API.
+  * New yrx_finalize function to the C API that allows dynamically
+    unloading the YARA-X library.
+  * Add yrx_compiler_add_include_dir function to the C API.
+  * Replace the Formatter::ident_spaces method with
+    Formatter::indentation.
+  * BUGFIX: Indentation issues in code formatter.
+  * BUGFIX: Inconsistencies in code formatter with empty lines at
+    the end of the code.
+  * BUGFIX: High memory consumption while parsing some PE files.
+  * BUGFIX: Prevent panic when assertions like \b and \B are used
+    in Unicode regexps.
+
+-------------------------------------------------------------------
+Thu Sep 11 14:50:39 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.0
+  * Implement --no-mmap option for disabling the use of
+    memory-mapped files (9ff675f).
+  * Support relative includes for compatibility with YARA.
+  * Support metadata validation using regular expressions (#434).
+  * Added support for global variables of type dict in the
+    Python API (#433).
+  * BUGFIX: Detect circular includes and raise an error instead of
+    panicking (624429f).
+  * BUGFIX: Issue in hoisting algorithm causing false-positive in
+    some with statements (f0f5b0a).
+  * BUGFIX: Multiple issues with Python stub file yara_x.pyi.
+- Update to version 1.5.0
+  * Implement the crx module for parsing Chrome Extension files.
+  * Allow underscores in integer and float literals.
+  * Adopt Anomali's symhash algorithm for Mach-O files.
+  * Support boolean type in console.log() (#406).
+  * Allow specifying include directories in the C, Go and Python
+    APIs (45a03c6).
+  * Improvements while parsing imports and exports in Mach-O files.
+  * Improve performance for patterns with the xor modifier. The
+    performance gain can be noticeable for certain rules (0122fa9).
+  * Return an error with rules that can have arbitrarily long
+    prefixes (c8bbede).
+  * BUGFIX: Fix misleading help text in text_as_hex warning.
+  * BUGFIX: Minor formatting issues in yr fmt command (43fbdc5).
+  * BUGFIX: Fix panic when a rule contains an invalid regexp and
+    the rule name is reused (a50f3db).
+  * BUGFIX: Fix panic with regular expressions that contain too
+    many alternatives (7ad6d8f).
+  * BUGFIX: Make some functions in cuckoo module
+    backward-compatible with YARA (#424).
+
+-------------------------------------------------------------------
+Fri Jul 11 16:04:32 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.0
+  * Allow suppressing warnings using // suppress: warning_id
+    comments (#398).
+  * Implement built-in functions float32, float64, float32be and
+    float64be (#396).
+  * BUGFIX: fix wrong text_as_hex warning (0baf08b, #397).
+  * BUGFIX: false positive in wide regular expressions
+    (5fd5015, #395).
+
+-------------------------------------------------------------------
+Sun Jul  6 15:49:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.0
+  * Add span information to Event::Begin and Event::End (f4259f0).
+  * Add support for private patterns. Private patterns were being
+    accepted but ignored. (21a9090).
+  * BUGFIX: add YRX_ prefix to constants in the C API to avoid
+    name collisions (#382).
+  * BUGFIX: increase MAX_ATOMS_PER_REGEXP from 8192 to 10000.
+- Update to version 1.2.1
+  * BUGFIX: regression introduced in #368.
+  * BUGFIX: more robust LNK file parsing than handles maliciously
+    crafted files (7e1c8b3, #379).
+
+-------------------------------------------------------------------
+Wed Jun 18 10:51:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.0
+  * Allow disabling specific warnings via the configuration file.
+  * BUGFIX: Another JSON encoding issue (1a41075, #376).
+  * BUGFIX: Return a proper error message when passing invalid
+    metadata to a module (#368).
+- Update to version 1.1.0
+  * Add the yrx_scanner_set_module_data function to the C API.
+  * Show warnings when comparing the result of intXX and uintXX
+    functions with values outside their valid ranges.
+  * BUGFIX: Less strict schema for Cuckoo reports (#369).
+  * BUGFIX: CLI reports UTF-8 encoding errors instead of ignoring
+    them silently (2372d68).
+  * BUGFIX: Fix issue in the Python API while parsing JSON data.
+
+-------------------------------------------------------------------
+Wed Jun  4 15:13:53 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.0
+  * Raise warning when loops can have too many iterations (#352).
+  * Raise warning when comparing a string that is known to be
+    lowercase (like the result of hash.md5) with a string that
+    contains uppercase characters (150500b).
+  * Better handling of raw bytes and timestamps when decoding
+    module outputs from Python.
+
+-------------------------------------------------------------------
+Wed May 21 19:41:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.15.0
+  * Implement include statements.
+  * Add module invoke support to Python API.
+  * BUGFIX: Parsing aborted when too many rules had the global or
+    private modifiers.
+- Update to version 0.14.0
+  * Parse LC_DYLD_EXPORTS_TRIE in Mach-O files.
+  * Parse chained fixup imports via LC_DYLD_CHAINED_FIXUPS in
+    Mach-O files.
+  * Implement tag linter.
+  * Implement regex anchors ^ and $ in multi-line mode.
+  * Add support for 32-bits targets.
+  * Improve performance by memoizing some function calls.
+  * Open source the vt module..
+  * BUGFIX: Do not abort parsing when .NET file has a table with
+    more than MAX_ROWS_PER_TABLE.
+  * BUGFIX: Prevent infinite loop due to cycles in certificate
+    chain.
+
+-------------------------------------------------------------------
+Mon Feb  3 18:20:39 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.13.0
+  * Implemented basic linting via the check command.
+  * Refactor the format of JSON output.
+  * Parse Mach-O certificates.
+  * Allow using previously defined variables in with statements.
+  * BUGFIX: prevent the fmt command from modifying binary files
+    accidentally.
+  * BUGFIX: fix panic when path starts with.
+  * BUGFIX: reduce consumption of process address space.
+- Update to version 0.12.0
+  * The macho module now parses and exposesLC_LINKER_OPTION
+    commands.
+  * Raise warning with some patterns that have too many 2-byte
+    atoms and are potentially slow.
+  * Extract more information from the SpcSpOpusInfo structure
+    contained in PE signatures.
+  * BUGFIX: add missing MEAN_BYTES constant to math module.
+  * BUGFIX: panic when calling dylib_hash in some corrupted
+    Mach-O files.
+
+-------------------------------------------------------------------
+Fri Nov 29 19:07:30 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 0.11.1
+  * BUGFIX: large memory consumption while parsing corrupted
+    PE files.
+
+-------------------------------------------------------------------
+Tue Nov 26 19:14:04 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.11.0
+  * Added JSON as a new output format.
+  * Added the --profiling option to the scan command.
+  * Implement loop-invariant code motion (hoisting).
+  * Implement sym_hash() function for macho module.
+  * Allow larger jumps in hex patterns.
+  * BUGFIX: issue with undefined expression in with statements.
+
+-------------------------------------------------------------------
+Tue Nov  5 20:24:20 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.10.0

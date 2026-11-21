@@ -1,0 +1,28 @@
+Fix waliter.test on systems with 64KB pages
+
+Each shm mapping covers a whole number of system pages (see
+unixShmRegionPerMap() in os_unix.c), so with 64KB pages the shm file of
+the 10000 frame WAL in test 1.2 is rounded up from three to four 32KB
+regions.  Derive the expected file size from the system page size
+instead of hard-coding three regions.
+
+--- a/test/waliter.test
++++ b/test/waliter.test
+@@ -65,9 +65,16 @@
+   UPDATE t1 SET b = randomblob(900);
+ } {0}
+ 
++# Each shm mapping covers a whole number of system pages, so the number of
++# 32KB shm regions is rounded up to a multiple of the number of regions per
++# page.  This matters with 64KB pages, where it is two.
++if {[catch {exec getconf PAGESIZE} pgsz]} { set pgsz 4096 }
++set nShmPerMap [expr {$pgsz>32768 ? $pgsz/32768 : 1}]
++set nShmRegion [expr {(3 + $nShmPerMap - 1) / $nShmPerMap * $nShmPerMap}]
++
+ do_test 1.2 {
+   file size test.db-shm
+-} [expr 32768 * 3]
++} [expr 32768 * $nShmRegion]
+ 
+ do_execsql_test 1.3 {
+   PRAGMA wal_checkpoint

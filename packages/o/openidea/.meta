@@ -1,0 +1,5 @@
+<package name="openidea" project="openSUSE:Factory">
+  <title>IntelliJ IDEA-style IDE with a Rust core</title>
+  <description>OpenIDEA is an IntelliJ IDEA-style IDE with a Rust core, built as a Tauri desktop app. Includes the remote development server.</description>
+  <url>https://github.com/l0ng-ai/openidea</url>
+</package>

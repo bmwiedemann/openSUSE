@@ -1,0 +1,11 @@
+diff '--color=auto' -urN seamonkey-2.53.23.orig/configure.py seamonkey-2.53.23/configure.py
+--- seamonkey-2.53.23.orig/configure.py	2025-11-15 21:08:07.000000000 +0100
++++ seamonkey-2.53.23/configure.py	2026-01-11 14:51:44.148373998 +0100
+@@ -19,6 +19,7 @@
+ sys.path.insert(0, os.path.join(base_dir, 'python', 'mozboot'))
+ sys.path.insert(0, os.path.join(base_dir, 'python', 'mozbuild'))
+ sys.path.insert(0, os.path.join(base_dir, 'third_party', 'python', 'six'))
++sys.path.insert(0, os.path.join(base_dir, "third_party", "python", "looseversion"))
+ from mozbuild.configure import (
+     ConfigureSandbox,
+     TRACE,

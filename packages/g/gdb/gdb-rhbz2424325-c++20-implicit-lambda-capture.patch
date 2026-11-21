@@ -1,0 +1,27 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Kevin Buettner <kevinb@redhat.com>
+Date: Wed, 7 Jan 2026 23:51:38 -0700
+Subject: gdb-rhbz2424325-c++20-implicit-lambda-capture.patch
+
+;; Backport Tom de Vries fix regarding implicit lambda captures
+;; (RH BZ 2424325).
+
+[gdb/build, c++20] Fix deprecated implicit capture in cooked_index::set_contents
+
+Fix deprecated implicit capture of this in cooked_index::set_contents, by
+removing the capture default, and explicitly listing all captures.
+
+Tested on x86_64-linux.
+
+diff --git a/gdb/dwarf2/cooked-index.c b/gdb/dwarf2/cooked-index.c
+--- a/gdb/dwarf2/cooked-index.c
++++ b/gdb/dwarf2/cooked-index.c
+@@ -102,7 +102,7 @@ cooked_index::set_contents ()
+     {
+       auto this_shard = shard.get ();
+       const parent_map_map *parent_maps = m_state->get_parent_map_map ();
+-      finalizers.add_task ([=] ()
++      finalizers.add_task ([this, this_shard, parent_maps] ()
+ 	{
+ 	  scoped_time_it time_it ("DWARF finalize worker",
+ 				  m_state->m_per_command_time);

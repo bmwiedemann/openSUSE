@@ -1,0 +1,131 @@
+commit 91282adf5ba0ac86f668a334469bb92af11e3f38
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Tue Nov 10 23:49:34 2026 +0100
+
+    Revert "Run legacy romio tests against the build tree"
+    
+    This reverts commit 455b7f737b589dfad93de497058d71442a01e9ab.
+
+diff --git Makefile.am Makefile.am
+index 529168bc8fe2..896cf33b6bbf 100644
+--- Makefile.am
++++ Makefile.am
+@@ -52,9 +52,6 @@ external_subdirs = @mplsrcdir@ @hwlocsrcdir@ @jsonsrcdir@ @yaksasrcdir@ @pmisrcd
+ external_ldflags = @RPATHS@ @mpllibdir@ @yaksalibdir@
+ external_libs = @WRAPPER_LIBS@
+ 
+-ROMIO_TEST_MPIEXEC = @ROMIO_TEST_MPIEXEC@
+-export ROMIO_TEST_MPIEXEC
+-
+ # convenience libs that do not depend on MPI
+ pmpi_convenience_libs = @mpllib@ @hwloclib@ @jsonlib@ @yaksalib@ @pmilib@
+ 
+diff --git configure.ac configure.ac
+index 52624cb60031..cfdfb7b2f64d 100644
+--- configure.ac
++++ configure.ac
+@@ -912,9 +912,6 @@ AC_ARG_VAR([PMPIABILIBNAME],[can be used to override the name of the MPI profili
+ AC_ARG_VAR([MPICXXLIBNAME],[can be used to override the name of the MPI C++ library (default: "${MPILIBNAME}cxx")])
+ AC_ARG_VAR([MPIFCLIBNAME],[can be used to override the name of the MPI fortran library (default: "${MPILIBNAME}fort")])
+ MPILIBNAME=${MPILIBNAME:-"mpi"}
+-# ROMIO is configured as a subdirectory and needs the resolved library name
+-# when building its legacy tests against the top-level build tree.
+-export MPILIBNAME
+ PMPILIBNAME_set=no
+ if test -n "$PMPILIBNAME" ; then
+    PMPILIBNAME_set=yes
+@@ -1623,25 +1620,6 @@ fi
+ pm_name=$first_pm_name
+ AC_SUBST(pm_name)
+ 
+-# Legacy ROMIO tests run before the configured installation prefix is
+-# populated.  Use the primary process manager built in this tree instead of
+-# the future $(bindir)/mpiexec path.
+-case "$pm_name" in
+-  hydra)
+-    ROMIO_TEST_MPIEXEC="${main_top_builddir}/src/pm/hydra/mpiexec.hydra"
+-    ;;
+-  gforker)
+-    ROMIO_TEST_MPIEXEC="${main_top_builddir}/src/pm/gforker/mpiexec"
+-    ;;
+-  remshell)
+-    ROMIO_TEST_MPIEXEC="${main_top_builddir}/src/pm/remshell/mpiexec"
+-    ;;
+-  *)
+-    ROMIO_TEST_MPIEXEC=""
+-    ;;
+-esac
+-AC_SUBST(ROMIO_TEST_MPIEXEC)
+-
+ dnl
+ dnl gforker and remshell does not use separate configure. 
+ dnl
+diff --git src/mpi/romio/configure.ac src/mpi/romio/configure.ac
+index 4e9ed9502f1e..2443e5597588 100644
+--- src/mpi/romio/configure.ac
++++ src/mpi/romio/configure.ac
+@@ -1261,15 +1261,24 @@ elif test $FROM_MPICH = yes ; then
+    MPICH_HOME=`dirname $MPICH_HOME`
+    MPICH_HOME=`dirname $MPICH_HOME`
+    if test -z "$MPI_BIN_DIR" ; then MPI_BIN_DIR=$MPICH_HOME/bin ; fi
+-   # Run the tests against the uninstalled MPICH build tree.  Use the
+-   # configured C compiler and let libtool resolve the dependencies recorded
+-   # in the top-level MPI library, rather than using an installed wrapper.
+-   TEST_CC="$CC"
+-   TEST_LIBNAME="${main_top_builddir}/lib/lib${MPILIBNAME}.la"
++   # No special compiler script.
++   # BUT we need the include paths
++   # CC="$CC -I${use_top_srcdir}/src/include -I${top_build_dir}/src/include"
++   # TEST_CC="$CC"
++   # MPI_LIB="$LIBNAME"
++   # To allow ROMIO to work with the LIBTOOL scripts, we want to
++   # work directly with the CC, not the mpicc, compiler.
++   # Note that in the "FROM_MPICH" case, the CPPFLAGS and INCLUDES are already
++   # properly set
++   #CC=${top_build_dir}/bin/mpicc
++   #
++   # set the compilers to the ones in MPICH bin directory (main_top_builddir/bin)
++   TEST_CC='$(bindir)/mpicc'
+    MPI_H_INCLUDE="-I${main_top_builddir}/src/include -I${main_top_srcdir}/src/include"
+    ROMIO_INCLUDE=""
+    USER_CFLAGS=""
+-   MPIRUN=""
++   TEST_LIBNAME=""
++   MPIRUN='${bindir}/mpiexec'
+    #
+    # Turn off the building of the Fortran interface and the Info routines
+    EXTRA_DIRS=""
+diff --git src/mpi/romio/test/Makefile.am src/mpi/romio/test/Makefile.am
+index e416bcdb043c..a642619e5187 100644
+--- src/mpi/romio/test/Makefile.am
++++ src/mpi/romio/test/Makefile.am
+@@ -17,7 +17,7 @@ OUR_LIBS = @TEST_LIBNAME@ @MPI_LIB@
+ 
+ LDADD = $(OUR_LIBS)
+ 
+-AM_CPPFLAGS = $(ROMIO_INCLUDE) @MPI_H_INCLUDE@
++AM_CPPFLAGS = $(ROMIO_INCLUDE)
+ AM_CPPFLAGS += -I$(top_builddir)/include -I$(top_srcdir)/include
+ AM_CPPFLAGS += -I$(top_builddir)/adio/include -I$(top_srcdir)/adio/include @mpl_includedir@
+ AM_CFLAGS = $(USER_CFLAGS)
+diff --git src/mpi/romio/test/parallel_run.sh.in src/mpi/romio/test/parallel_run.sh.in
+index 2e854cdd3b85..6a2c01ce0c07 100755
+--- src/mpi/romio/test/parallel_run.sh.in
++++ src/mpi/romio/test/parallel_run.sh.in
+@@ -12,15 +12,7 @@ set -e
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ bindir=@bindir@
+-# MPICH exports ROMIO_TEST_MPIEXEC from the top-level Makefile.  It points
+-# to the process manager built in this tree rather than the launcher that will
+-# later be installed in $(bindir).
+-mpirun="${ROMIO_TEST_MPIEXEC:-@MPIRUN@}"
+-
+-if test -z "$mpirun" ; then
+-    echo "SKIP: no usable MPI launcher in the build tree" >&2
+-    exit 77
+-fi
++mpirun="@MPIRUN@"
+ 
+ # valgrind_opt="libtool --mode=execute valgrind --quiet --leak-check=full"
+ 

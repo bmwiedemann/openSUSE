@@ -1,0 +1,54 @@
+From a71ffc41cc49e1fed3a7900d1dc1df72b1f379b7 Mon Sep 17 00:00:00 2001
+From: zhzy0077 <zhzy0077@users.noreply.github.com>
+Date: Tue, 10 Nov 2026 17:39:02 +0800
+Subject: [PATCH] clutter/text: Return handled status from the input
+ interceptor
+
+ClutterKeyController::key-press expects a boolean return value and uses
+an accumulator that stops emission when a handler returns true. The
+input interceptor callback returns void, leaving its handled status
+unspecified.
+
+On Fedora aarch64, the callback's function epilogue leaves a nonzero
+value in the return register when skipping Escape. This consumes the
+key before GNOME Shell's overview handler can process it, preventing
+Escape from leaving the application grid.
+
+Return CLUTTER_EVENT_PROPAGATE when key data is unavailable or the
+character is not graphical, and forward the text handler's result
+when processing graphical input.
+---
+ clutter/clutter/pango/clutter-text.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/clutter/clutter/pango/clutter-text.c b/clutter/clutter/pango/clutter-text.c
+index c7566e30f1e..1349cc85742 100644
+--- a/clutter/clutter/pango/clutter-text.c
++++ b/clutter/clutter/pango/clutter-text.c
+@@ -6748,19 +6748,19 @@ on_key_input_interceptor_focus_out (ClutterText *self)
+   clutter_text_im_unfocus (self);
+ }
+ 
+-static void
++static gboolean
+ on_intercepted_key_pressed (ClutterKeyController *key_controller,
+                             ClutterText          *self)
+ {
+   gunichar unicode;
+ 
+   if (!clutter_key_controller_get_key (key_controller, NULL, NULL, &unicode))
+-    return;
++    return CLUTTER_EVENT_PROPAGATE;
+   if (!g_unichar_isgraph (unicode))
+-    return;
++    return CLUTTER_EVENT_PROPAGATE;
+ 
+   clutter_actor_grab_key_focus (CLUTTER_ACTOR (self));
+-  on_key_controller_key_pressed (key_controller, self);
++  return on_key_controller_key_pressed (key_controller, self);
+ }
+ 
+ /**
+-- 
+GitLab
+

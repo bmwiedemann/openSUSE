@@ -1,0 +1,1213 @@
+diff --git a/common/autoconf/libraries.m4 b/common/autoconf/libraries.m4
+index 687f6ad82e..85cfe1fe19 100644
+--- a/common/autoconf/libraries.m4
++++ b/common/autoconf/libraries.m4
+@@ -161,7 +161,7 @@ AC_DEFUN_ONCE([LIB_SETUP_X11],
+   CFLAGS="$CFLAGS $X_CFLAGS"
+ 
+   # Need to include Xlib.h and Xutil.h to avoid "present but cannot be compiled" warnings on Solaris 10
+-  AC_CHECK_HEADERS([X11/extensions/shape.h X11/extensions/Xrender.h X11/extensions/XTest.h X11/Intrinsic.h],
++  AC_CHECK_HEADERS([X11/extensions/shape.h X11/extensions/Xrender.h X11/extensions/XTest.h X11/Intrinsic.h X11/extensions/Xcomposite.h],
+       [X11_A_OK=yes],
+       [X11_A_OK=no; break],
+       [
+@@ -175,7 +175,7 @@ AC_DEFUN_ONCE([LIB_SETUP_X11],
+ 
+   if test "x$X11_A_OK" = xno && test "x$X11_NOT_NEEDED" != xyes; then
+     HELP_MSG_MISSING_DEPENDENCY([x11])
+-    AC_MSG_ERROR([Could not find all X11 headers (shape.h Xrender.h XTest.h Intrinsic.h). $HELP_MSG])
++    AC_MSG_ERROR([Could not find all X11 headers (shape.h Xrender.h XTest.h Intrinsic.h Xcomposite.h). $HELP_MSG])
+   fi
+ 
+   AC_SUBST(X_CFLAGS)
+@@ -601,11 +601,36 @@ AC_DEFUN_ONCE([LIB_SETUP_MISC_LIBS],
+   # Check for the jpeg library
+   #
+ 
+-  USE_EXTERNAL_LIBJPEG=true
+-  AC_CHECK_LIB(jpeg, main, [],
+-      [ USE_EXTERNAL_LIBJPEG=false
+-      AC_MSG_NOTICE([Will use jpeg decoder bundled with the OpenJDK source])
+-  ])
++  AC_ARG_WITH(libjpeg, [AS_HELP_STRING([--with-libjpeg],
++      [use libjpeg from build system or OpenJDK source (system, bundled) @<:@bundled@:>@])])
++
++  AC_MSG_CHECKING([for which libjpeg to use])
++
++  # default is bundled
++  DEFAULT_LIBJPEG=bundled
++
++  #
++  # if user didn't specify, use DEFAULT_LIBJPEG
++  #
++  if test "x${with_libjpeg}" = "x"; then
++    with_libjpeg=${DEFAULT_LIBJPEG}
++  fi
++
++  AC_MSG_RESULT(${with_libjpeg})
++
++  if test "x${with_libjpeg}" = "xbundled"; then
++    USE_EXTERNAL_LIBJPEG=false
++  elif test "x${with_libjpeg}" = "xsystem"; then
++    AC_CHECK_HEADER(jpeglib.h, [],
++        [ AC_MSG_ERROR([--with-libjpeg=system specified, but jpeglib.h not found!])])
++    AC_CHECK_LIB(jpeg, jpeg_CreateDecompress, [],
++        [ AC_MSG_ERROR([--with-libjpeg=system specified, but no libjpeg found])])
++
++    USE_EXTERNAL_LIBJPEG=true
++  else
++    AC_MSG_ERROR([Invalid use of --with-libjpeg: ${with_libjpeg}, use 'system' or 'bundled'])
++  fi
++
+   AC_SUBST(USE_EXTERNAL_LIBJPEG)
+ 
+   ###############################################################################
+@@ -645,6 +670,82 @@ AC_DEFUN_ONCE([LIB_SETUP_MISC_LIBS],
+   fi
+   AC_SUBST(USE_EXTERNAL_LIBGIF)
+ 
++  ###############################################################################
++  #
++  # Check for the lcms2 library
++  #
++
++  AC_ARG_WITH(lcms, [AS_HELP_STRING([--with-lcms],
++  	[use lcms2 from build system or OpenJDK source (system, bundled) @<:@bundled@:>@])])
++
++  AC_MSG_CHECKING([for which lcms to use])
++
++  DEFAULT_LCMS=bundled
++
++  #
++  # If user didn't specify, use DEFAULT_LCMS
++  #
++  if test "x${with_lcms}" = "x"; then
++      with_lcms=${DEFAULT_LCMS}
++  fi
++
++  if test "x${with_lcms}" = "xbundled"; then
++    USE_EXTERNAL_LCMS=false
++    AC_MSG_RESULT([bundled])
++  elif test "x${with_lcms}" = "xsystem"; then
++    AC_MSG_RESULT([system])
++    PKG_CHECK_MODULES([LCMS], [lcms2], [LCMS_FOUND=yes], [LCMS_FOUND=no])
++    if test "x${LCMS_FOUND}" = "xyes"; then
++      USE_EXTERNAL_LCMS=true
++    else
++      AC_MSG_ERROR([--with-lcms=system specified, but no lcms found!])
++    fi
++  else
++    AC_MSG_ERROR([Invalid value for --with-lcms: ${with_lcms}, use 'system' or 'bundled'])
++  fi
++
++  AC_SUBST(USE_EXTERNAL_LCMS)
++
++  ###############################################################################
++  #
++  # Check for the png library
++  #
++
++  AC_ARG_WITH(libpng, [AS_HELP_STRING([--with-libpng],
++     [use libpng from build system or OpenJDK source (system, bundled) @<:@bundled@:>@])])
++
++
++  AC_MSG_CHECKING([for which libpng to use])
++
++  # default is bundled
++  DEFAULT_LIBPNG=bundled
++
++  #
++  # if user didn't specify, use DEFAULT_LIBPNG
++  #
++  if test "x${with_libpng}" = "x"; then
++      with_libpng=${DEFAULT_LIBPNG}
++  fi
++
++  if test "x${with_libpng}" = "xbundled"; then
++      USE_EXTERNAL_LIBPNG=false
++      AC_MSG_RESULT([bundled])
++  elif test "x${with_libpng}" = "xsystem"; then
++      PKG_CHECK_MODULES(PNG, libpng,
++                   [ LIBPNG_FOUND=yes ],
++                   [ LIBPNG_FOUND=no ])
++      if test "x${LIBPNG_FOUND}" = "xyes"; then
++          USE_EXTERNAL_LIBPNG=true
++          AC_MSG_RESULT([system])
++      else
++          AC_MSG_RESULT([system not found])
++          AC_MSG_ERROR([--with-libpng=system specified, but no libpng found!])
++      fi
++  else
++      AC_MSG_ERROR([Invalid value of --with-libpng: ${with_libpng}, use 'system' or 'bundled'])
++  fi
++  AC_SUBST(USE_EXTERNAL_LIBPNG)
++
+   ###############################################################################
+   #
+   # Check for the zlib library
+@@ -737,6 +838,172 @@ AC_DEFUN_ONCE([LIB_SETUP_MISC_LIBS],
+   LIBDL="$LIBS"
+   AC_SUBST(LIBDL)
+   LIBS="$save_LIBS"
++
++  ###############################################################################
++  #
++  # Check whether infinality support is required (requires fontconfig)
++  #
++
++  AC_MSG_CHECKING([whether to use fontconfig to provide better font rendering])
++
++  # default is no
++  DEFAULT_IMPROVED_FONT_RENDERING=no
++
++  AC_ARG_ENABLE([improved-font-rendering], [AS_HELP_STRING([--enable-improved-font-rendering],
++     [build with fontconfig-enhanced font rendering @<:@disabled@:>@])],
++  [
++    case "${enableval}" in
++      yes)
++        enable_improved_font_rendering=yes
++        ;;
++      *)
++        enable_improved_font_rendering=no
++        ;;
++    esac
++  ],
++  [
++    enable_improved_font_rendering=${DEFAULT_IMPROVED_FONT_RENDERING}
++  ])
++  AC_MSG_RESULT([$enable_improved_font_rendering])
++
++  if test "x${enable_improved_font_rendering}" = "xyes"; then
++    PKG_CHECK_MODULES(FONTCONFIG, fontconfig,[FONTCONFIG_FOUND=yes],[FONTCONFIG_FOUND=no])
++    if test "x${FONTCONFIG_FOUND}" = xno
++    then
++      AC_MSG_ERROR([Could not find fontconfig; improved font rendering support requires fontconfig.])
++    fi
++    IMPROVED_FONT_RENDERING_SUPPORT=true
++  fi
++  AC_SUBST(IMPROVED_FONT_RENDERING_SUPPORT)
++
++  ###############################################################################
++  #
++  # Check for the Kerberos libraries
++  #
++
++  AC_MSG_CHECKING([whether to use the system Kerberos installation to obtain the cache location])
++
++  # default is bundled
++  DEFAULT_SYSTEM_KRB5=no
++
++  AC_ARG_ENABLE([system-kerberos], [AS_HELP_STRING([--enable-system-kerberos],
++     [use the system Kerberos to get the cache location @<:@disabled@:>@])],
++  [
++    case "${enableval}" in
++      yes)
++        system_krb5=yes
++        ;;
++      *)
++        system_krb5=no
++        ;;
++    esac
++  ],
++  [
++    system_krb5=${DEFAULT_SYSTEM_KRB5}
++  ])
++  AC_MSG_RESULT([$system_krb5])
++
++  if test "x${system_krb5}" = "xyes"; then
++      PKG_CHECK_MODULES(KRB5, krb5, [KRB5_FOUND=yes], [KRB5_FOUND=no])
++      if test "x${KRB5_FOUND}" = "xyes"; then
++	  USE_EXTERNAL_KRB5=true
++      else
++	  AC_MSG_NOTICE([Could not find Kerberos using pkg-config; trying via krb5.h and krb5 library])
++          AC_CHECK_LIB([krb5], [krb5_cc_default],
++            , [AC_MSG_ERROR([Could not find Kerberos library; install Kerberos or build with --disable-system-kerberos to use the default cache location.])])
++          AC_CHECK_HEADER([krb5.h],
++            , [AC_MSG_ERROR([Could not find Kerberos header; install Kerberos or build with --disable-system-kerberos to use the default cache location.])])
++      	  KRB5_LIBS="-lkrb5"
++      fi
++  else
++      USE_EXTERNAL_KRB5=false
++  fi
++  AC_SUBST(USE_EXTERNAL_KRB5)
++
++  ###############################################################################
++  #
++  # Check for the PCSC libraries
++  #
++
++  AC_MSG_CHECKING([whether to use the system libpcsclite installation])
++
++  # default is bundled
++  DEFAULT_SYSTEM_PCSC=no
++
++  AC_ARG_ENABLE([system-pcsc], [AS_HELP_STRING([--enable-system-pcsc],
++     [use the system libpcsclite @<:@disabled@:>@])],
++  [
++    case "${enableval}" in
++      yes)
++        system_pcsc=yes
++        ;;
++      *)
++        system_pcsc=no
++        ;;
++    esac
++  ],
++  [
++    system_pcsc=${DEFAULT_SYSTEM_PCSC}
++  ])
++  AC_MSG_RESULT([$system_pcsc])
++
++  if test "x${system_pcsc}" = "xyes"; then
++      PKG_CHECK_MODULES(PCSC, libpcsclite, [PCSC_FOUND=yes], [PCSC_FOUND=no])
++      if test "x${PCSC_FOUND}" = "xyes"; then
++	  USE_EXTERNAL_PCSC=true
++      else
++	  AC_MSG_ERROR([--enable-system-pcsc specified, but libpcsclite not found.])
++      fi
++  else
++      USE_EXTERNAL_PCSC=false
++  fi
++  AC_SUBST(USE_EXTERNAL_PCSC)
++
++  ###############################################################################
++  #
++  # Check for the SCTP libraries
++  #
++
++  AC_MSG_CHECKING([whether to use the system libsctp installation])
++
++  # default is bundled
++  DEFAULT_SYSTEM_SCTP=no
++
++  AC_ARG_ENABLE([system-sctp], [AS_HELP_STRING([--enable-system-sctp],
++     [use the system SCTP library @<:@disabled@:>@])],
++  [
++    case "${enableval}" in
++      yes)
++        system_sctp=yes
++        ;;
++      *)
++        system_sctp=no
++        ;;
++    esac
++  ],
++  [
++    system_sctp=${DEFAULT_SYSTEM_SCTP}
++  ])
++  AC_MSG_RESULT([$system_sctp])
++
++  if test "x${system_sctp}" = "xyes"; then
++      dnl Check for SCTP headers and libraries.
++      if test "x${SCTP_CFLAGS}" = "x"; then
++          AC_CHECK_HEADER([netinet/sctp.h],
++            , [AC_MSG_ERROR([Could not find SCTP header; install SCTP or build with --disable-system-sctp to use the in-tree copy.])])
++      fi
++      if test "x${SCTP_LIBS}" = "x"; then
++          AC_CHECK_LIB([sctp], [sctp_bindx],
++            , [AC_MSG_ERROR([Could not find SCTP library; install SCTP or build with --disable-system-sctp to use the in-tree copy.])])
++          SCTP_LIBS="-lsctp"
++      fi
++      USE_EXTERNAL_SCTP=true
++  else
++      USE_EXTERNAL_SCTP=false
++  fi
++  AC_ARG_VAR(SCTP_CFLAGS, [C compiler flags for the SCTP library])
++  AC_ARG_VAR(SCTP_LIBS, [linker flags for the SCTP library, overriding -lsctp])
++  AC_SUBST(USE_EXTERNAL_SCTP)
+ ])
+ 
+ AC_DEFUN_ONCE([LIB_SETUP_STATIC_LINK_LIBSTDCPP],
+diff --git a/common/autoconf/spec.gmk.in b/common/autoconf/spec.gmk.in
+index ea4ec8e125..8ce3f216c6 100644
+--- a/common/autoconf/spec.gmk.in
++++ b/common/autoconf/spec.gmk.in
+@@ -688,6 +688,36 @@ INSTALL_SHAREDSTATEDIR=@sharedstatedir@
+ # Read-only single-machine data
+ INSTALL_SYSCONFDIR=@sysconfdir@
+ 
++####################################################
++#
++# Libraries
++#
++
++USE_EXTERNAL_LCMS:=@USE_EXTERNAL_LCMS@
++LCMS_CFLAGS:=@LCMS_CFLAGS@
++LCMS_LIBS:=@LCMS_LIBS@
++
++USE_EXTERNAL_LIBPNG:=@USE_EXTERNAL_LIBPNG@
++PNG_LIBS:=@PNG_LIBS@
++PNG_CFLAGS:=@PNG_CFLAGS@
++
++USE_EXTERNAL_KRB5:=@USE_EXTERNAL_KRB5@
++KRB5_LIBS:=@KRB5_LIBS@
++KRB5_CFLAGS:=@KRB5_CFLAGS@
++
++USE_EXTERNAL_PCSC:=@USE_EXTERNAL_PCSC@
++PCSC_LIBS:=@PCSC_LIBS@
++PCSC_CFLAGS:=@PCSC_CFLAGS@
++
++USE_EXTERNAL_SCTP:=@USE_EXTERNAL_SCTP@
++SCTP_LIBS:=@SCTP_LIBS@
++SCTP_CFLAGS:=@SCTP_CFLAGS@
++
++IMPROVED_FONT_RENDERING:=@IMPROVED_FONT_RENDERING_SUPPORT@
++FONTCONFIG_LIBS:=@FONTCONFIG_LIBS@
++FONTCONFIG_CFLAGS:=@FONTCONFIG_CFLAGS@
++
++
+ 
+ ####################################################
+ #
+diff --git a/jdk/make/CompileLaunchers.gmk b/jdk/make/CompileLaunchers.gmk
+index 61973b3bd6..b1f728050b 100644
+--- a/jdk/make/CompileLaunchers.gmk
++++ b/jdk/make/CompileLaunchers.gmk
+@@ -471,7 +471,7 @@ endif
+ # binary (at least on linux) which causes the size to differ between old and new build.
+ ifeq ($(USE_EXTERNAL_LIBZ), true)
+   UNPACKEXE_CFLAGS := -DSYSTEM_ZLIB
+-  UNPACKEXE_ZIPOBJS := -lz
++  UNPACKEXE_LIBS := -lz
+ else
+   UNPACKEXE_CFLAGS := -I$(JDK_TOPDIR)/src/share/native/java/util/zip/zlib
+   UNPACKEXE_ZIPOBJS := $(JDK_OUTPUTDIR)/objs/libzip/zcrc32$(OBJ_SUFFIX) \
+@@ -533,7 +533,7 @@ $(eval $(call SetupNativeCompilation,BUILD_UNPACKEXE, \
+         $(call SET_SHARED_LIBRARY_ORIGIN), \
+     LDFLAGS_linux := -lc, \
+     LDFLAGS_solaris := $(UNPACKEXE_LDFLAGS_solaris) -lc, \
+-    LDFLAGS_SUFFIX := $(LIBCXX), \
++    LDFLAGS_SUFFIX := $(UNPACKEXE_LIBS) $(LIBCXX), \
+     OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/unpackexe$(OUTPUT_SUBDIR), \
+     OUTPUT_DIR := $(JDK_OUTPUTDIR)/objs/unpackexe$(OUTPUT_SUBDIR), \
+     PROGRAM := unpack200, \
+diff --git a/jdk/make/lib/Awt2dLibraries.gmk b/jdk/make/lib/Awt2dLibraries.gmk
+index dc140de77f..51f1834c90 100644
+--- a/jdk/make/lib/Awt2dLibraries.gmk
++++ b/jdk/make/lib/Awt2dLibraries.gmk
+@@ -617,7 +617,7 @@ ifeq ($(findstring $(OPENJDK_TARGET_OS),windows macosx),)
+         XRSurfaceData.c \
+         XRBackendNative.c
+ 
+-    LIBAWT_XAWT_LDFLAGS_SUFFIX := $(LIBM) -lawt -lXext -lX11 -lXrender $(LIBDL) -lXtst -lXi -ljava -ljvm -lc
++    LIBAWT_XAWT_LDFLAGS_SUFFIX := $(LIBM) -lawt -lXext -lX11 -lXrender -lXcomposite $(LIBDL) -lXtst -lXi -ljava -ljvm -lc
+ 
+     ifeq ($(OPENJDK_TARGET_OS), linux)
+       # To match old build, add this to LDFLAGS instead of suffix.
+@@ -658,25 +658,42 @@ endif
+ 
+ ##########################################################################################
+ 
++LIBJAVALCMS_DIR := $(JDK_TOPDIR)/src/share/native/sun/java2d/cmm/lcms
++
++ifeq ($(USE_EXTERNAL_LCMS), true)
++  # If we're using an external library, we'll just need the wrapper part.
++  # By including it explicitely, all other files will be excluded.
++  BUILD_LIBJAVALCMS_INCLUDE_FILES := LCMS.c
++  BUILD_LIBJAVALCMS_HEADERS :=
++else
++  BUILD_LIBJAVALCMS_INCLUDE_FILES :=
++  # If we're using the bundled library, we'll need to include it in the
++  # include path explicitly. Otherwise the system headers will be used.
++  BUILD_LIBJAVALCMS_HEADERS := -I$(LIBJAVALCMS_DIR)
++endif
++
+ ifeq ($(TOOLCHAIN_TYPE), clang)
+  ifeq ($(TOOLCHAIN_VERSION), 10.1)
+    # Work around an optimizer bug seen with Xcode 10.1, but fixed by 10.3
+-   BUILD_LIBLCMS_cmsopt.c_CFLAGS := -O0
++   BUILD_LIBJAVALCMS_cmsopt.c_CFLAGS := -O0
+  endif
+ endif
+ 
+ # TODO: Update awt lib path when awt is converted
+-$(eval $(call SetupNativeCompilation,BUILD_LIBLCMS, \
+-    LIBRARY := lcms, \
++$(eval $(call SetupNativeCompilation,BUILD_LIBJAVALCMS, \
++    LIBRARY := javalcms, \
+     OUTPUT_DIR := $(INSTALL_LIBRARIES_HERE), \
+-    SRC := $(JDK_TOPDIR)/src/share/native/sun/java2d/cmm/lcms, \
++    SRC := $(LIBJAVALCMS_DIR), \
++    INCLUDE_FILES := $(BUILD_LIBJAVALCMS_INCLUDE_FILES), \
+     LANG := C, \
+     OPTIMIZATION := HIGHEST, \
+     CFLAGS := $(filter-out -xc99=%none, $(CFLAGS_JDKLIB)) \
+         -DCMS_DONT_USE_FAST_FLOOR \
+         $(SHARED_LIBRARY_FLAGS) \
+         -I$(JDK_TOPDIR)/src/share/native/sun/java2d \
+-        -I$(JDK_TOPDIR)/src/share/native/sun/awt/debug, \
++        -I$(JDK_TOPDIR)/src/share/native/sun/awt/debug \
++        $(BUILD_LIBJAVALCMS_HEADERS) \
++        $(LCMS_CFLAGS), \
+     CFLAGS_solaris := -xc99=no_lib, \
+     CFLAGS_windows := -DCMS_IS_WINDOWS_, \
+     MAPFILE := $(JDK_TOPDIR)/make/mapfiles/liblcms/mapfile-vers, \
+@@ -684,39 +701,42 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBLCMS, \
+         $(call SET_SHARED_LIBRARY_ORIGIN), \
+     LDFLAGS_solaris := /usr/lib$(OPENJDK_TARGET_CPU_ISADIR)/libm.so.2, \
+     LDFLAGS_windows := $(WIN_AWT_LIB) $(WIN_JAVA_LIB), \
+-    LDFLAGS_SUFFIX_solaris := -lawt -ljava -ljvm -lc, \
+-    LDFLAGS_SUFFIX_macosx := $(LIBM) -lawt -ljava -ljvm, \
+-    LDFLAGS_SUFFIX_linux := -lm -lawt -ljava -ljvm, \
+-    LDFLAGS_SUFFIX_aix := -lm -lawt -ljava -ljvm,\
++    LDFLAGS_SUFFIX_solaris := -lawt -ljava -ljvm -lc $(LCMS_LIBS), \
++    LDFLAGS_SUFFIX_macosx := $(LIBM) -lawt -ljava -ljvm $(LCMS_LIBS), \
++    LDFLAGS_SUFFIX_linux := -lm -lawt -ljava -ljvm $(LCMS_LIBS), \
++    LDFLAGS_SUFFIX_aix := -lm -lawt -ljava -ljvm $(LCMS_LIBS),\
+     VERSIONINFO_RESOURCE := $(JDK_TOPDIR)/src/windows/resource/version.rc, \
+     RC_FLAGS := $(RC_FLAGS) \
+         -D "JDK_FNAME=lcms.dll" \
+         -D "JDK_INTERNAL_NAME=lcms" \
+         -D "JDK_FTYPE=0x2L", \
+-    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/liblcms, \
++    OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjavalcms, \
+     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
+ 
+-BUILD_LIBRARIES += $(BUILD_LIBLCMS)
++BUILD_LIBRARIES += $(BUILD_LIBJAVALCMS)
+ 
+-$(BUILD_LIBLCMS): $(BUILD_LIBAWT)
++$(BUILD_LIBJAVALCMS): $(BUILD_LIBAWT)
+ 
+ ##########################################################################################
+ 
++BUILD_LIBJAVAJPEG_DIR := $(JDK_TOPDIR)/src/share/native/sun/awt/image/jpeg
++
+ ifdef OPENJDK
+-  BUILD_LIBJPEG_MAPFILE := $(JDK_TOPDIR)/make/mapfiles/libjpeg/mapfile-vers
++  BUILD_LIBJAVAJPEG_MAPFILE := $(JDK_TOPDIR)/make/mapfiles/libjpeg/mapfile-vers
+ else
+-  BUILD_LIBJPEG_MAPFILE := $(JDK_TOPDIR)/make/mapfiles/libjpeg/mapfile-vers-closed
+-  BUILD_LIBJPEG_CLOSED_SRC := $(JDK_TOPDIR)/src/closed/share/native/sun/awt/image/jpeg
+-  BUILD_LIBJPEG_CLOSED_INCLUDES := -I$(BUILD_LIBJPEG_CLOSED_SRC)
++  BUILD_LIBJAVAJPEG_MAPFILE := $(JDK_TOPDIR)/make/mapfiles/libjpeg/mapfile-vers-closed
++  BUILD_LIBJAVAJPEG_CLOSED_SRC := $(JDK_TOPDIR)/src/closed/share/native/sun/awt/image/jpeg
++  BUILD_LIBJAVAJPEG_CLOSED_INCLUDES := -I$(BUILD_LIBJAVAJPEG_CLOSED_SRC)
+ endif
+ 
+-BUILD_LIBJPEG_REORDER :=
++BUILD_LIBJAVAJPEG_REORDER :=
+ ifeq ($(OPENJDK_TARGET_OS), solaris)
+   ifneq ($(OPENJDK_TARGET_CPU), x86_64)
+-    BUILD_LIBJPEG_REORDER := $(JDK_TOPDIR)/make/mapfiles/libjpeg/reorder-$(OPENJDK_TARGET_CPU)
++    BUILD_LIBJAVAJPEG_REORDER := $(JDK_TOPDIR)/make/mapfiles/libjpeg/reorder-$(OPENJDK_TARGET_CPU)
+   endif
+ endif
+ 
++
+ # Suppress gcc warnings like "variable might be clobbered by 'longjmp'
+ # or 'vfork'": this warning indicates that some variable is placed to
+ # a register by optimized compiler and it's value might be lost on longjmp().
+@@ -728,37 +748,50 @@ endif
+ #      $(shell $(EXPR) $(CC_MAJORVER) \> 4 \| \
+ #          \( $(CC_MAJORVER) = 4 \& $(CC_MINORVER) \>= 3 \) )
+ #  ifeq ($(CC_43_OR_NEWER), 1)
+-#    BUILD_LIBJPEG_CFLAGS_linux += -Wno-clobbered
++#    BUILD_LIBJAVAJPEG_CFLAGS_linux += -Wno-clobbered
+ #  endif
+ #endif
+ 
+-$(eval $(call SetupNativeCompilation,BUILD_LIBJPEG, \
+-    LIBRARY := jpeg, \
++ifeq ($(USE_EXTERNAL_LIBJPEG), true)
++  LIBJPEG_LIBS := -ljpeg
++  BUILD_LIBJAVAJPEG_INCLUDE_FILES := \
++      imageioJPEG.c \
++      jpegdecoder.c
++  BUILD_LIBJAVAJPEG_HEADERS :=
++else
++  LIBJPEG_LIBS :=
++  BUILD_LIBJAVAJPEG_INCLUDE_FILES :=
++  BUILD_LIBJAVAJPEG_HEADERS := -I$(BUILD_LIBJAVAJPEG_DIR)
++endif
++
++$(eval $(call SetupNativeCompilation,BUILD_LIBJAVAJPEG, \
++    LIBRARY := javajpeg, \
+     OUTPUT_DIR := $(INSTALL_LIBRARIES_HERE), \
+-    SRC := $(BUILD_LIBJPEG_CLOSED_SRC) \
+-        $(JDK_TOPDIR)/src/share/native/sun/awt/image/jpeg, \
++    SRC := $(BUILD_LIBJAVAJPEG_CLOSED_SRC) \
++        $(BUILD_LIBJAVAJPEG_DIR), \
++    INCLUDE_FILES := $(BUILD_LIBJAVAJPEG_INCLUDE_FILES), \
+     LANG := C, \
+     OPTIMIZATION := HIGHEST, \
+     CFLAGS := $(CFLAGS_JDKLIB) \
+-        $(BUILD_LIBJPEG_CLOSED_INCLUDES) \
+-        -I$(JDK_TOPDIR)/src/share/native/sun/awt/image/jpeg, \
+-    MAPFILE := $(BUILD_LIBJPEG_MAPFILE), \
++        $(BUILD_LIBJAVAJPEG_CLOSED_INCLUDES) \
++        $(BUILD_LIBJAVAJPEG_HEADERS), \
++    MAPFILE := $(BUILD_LIBJAVAJPEG_MAPFILE), \
+     LDFLAGS := $(LDFLAGS_JDKLIB) \
+         $(call SET_SHARED_LIBRARY_ORIGIN), \
+     LDFLAGS_windows := $(WIN_JAVA_LIB) jvm.lib, \
+-    LDFLAGS_SUFFIX := $(LDFLAGS_JDKLIB_SUFFIX), \
++    LDFLAGS_SUFFIX := $(LIBJPEG_LIBS) $(LDFLAGS_JDKLIB_SUFFIX), \
+     VERSIONINFO_RESOURCE := $(JDK_TOPDIR)/src/windows/resource/version.rc, \
+     RC_FLAGS := $(RC_FLAGS) \
+-        -D "JDK_FNAME=jpeg.dll" \
+-        -D "JDK_INTERNAL_NAME=jpeg" \
++        -D "JDK_FNAME=javajpeg.dll" \
++        -D "JDK_INTERNAL_NAME=javajpeg" \
+         -D "JDK_FTYPE=0x2L", \
+-    REORDER := $(BUILD_LIBJPEG_REORDER), \
++    REORDER := $(BUILD_LIBJAVAJPEG_REORDER), \
+     OBJECT_DIR := $(JDK_OUTPUTDIR)/objs/libjpeg, \
+     DEBUG_SYMBOLS := $(DEBUG_ALL_BINARIES)))
+ 
+-$(BUILD_LIBJPEG): $(BUILD_LIBJAVA)
++$(BUILD_LIBJAVAJPEG): $(BUILD_LIBJAVA)
+ 
+-BUILD_LIBRARIES += $(BUILD_LIBJPEG)
++BUILD_LIBRARIES += $(BUILD_LIBJAVAJPEG)
+ 
+ ##########################################################################################
+ 
+@@ -915,6 +948,11 @@ ifndef OPENJDK
+   LIBFONTMANAGER_EXCLUDE_FILES += freetypeScaler.c
+ else
+   FONT_HEADERS := $(FREETYPE_CFLAGS)
++  ifeq ($(IMPROVED_FONT_RENDERING),true)
++    FONT_HEADERS += $(FONTCONFIG_CFLAGS)
++    IMPROVED_FONT_RENDERING_DEFINES := -DIMPROVED_FONT_RENDERING
++    IMPROVED_FONT_RENDERING_LIBS := $(FONTCONFIG_LIBS)
++  endif
+   BUILD_LIBFONTMANAGER_MAPFILE := $(JDK_TOPDIR)/make/mapfiles/libfontmanager/mapfile-vers.openjdk
+   BUILD_LIBFONTMANAGER_FONTLIB := $(FREETYPE_LIBS)
+ endif
+@@ -937,7 +975,7 @@ endif
+ 
+ BUILD_LIBFONTMANAGER_CFLAGS_COMMON := \
+     $(X_CFLAGS) \
+-    -DLE_STANDALONE -DHEADLESS \
++    -DLE_STANDALONE -DHEADLESS $(IMPROVED_FONT_RENDERING_DEFINES) \
+     $(FONT_HEADERS) \
+     -I$(JDK_TOPDIR)/src/share/native/sun/font \
+     -I$(JDK_TOPDIR)/src/share/native/sun/font/layout \
+@@ -978,7 +1016,7 @@ $(eval $(call SetupNativeCompilation,BUILD_LIBFONTMANAGER, \
+     LDFLAGS := $(subst -Xlinker -z -Xlinker defs,, \
+         $(subst -Wl$(COMMA)-z$(COMMA)defs,,$(LDFLAGS_JDKLIB))) $(LDFLAGS_CXX_JDK) \
+         $(call SET_SHARED_LIBRARY_ORIGIN), \
+-    LDFLAGS_SUFFIX := $(BUILD_LIBFONTMANAGER_FONTLIB), \
++    LDFLAGS_SUFFIX := $(BUILD_LIBFONTMANAGER_FONTLIB) $(IMPROVED_FONT_RENDERING_LIBS), \
+     LDFLAGS_SUFFIX_linux := -lawt $(LIBM) $(LIBCXX) -ljava -ljvm -lc, \
+     LDFLAGS_SUFFIX_solaris := -lawt -lawt_headless -lc $(LIBM) $(LIBCXX) -ljava -ljvm, \
+     LDFLAGS_SUFFIX_aix := -lawt -lawt_headless $(LIBM) $(LIBCXX) -ljava -ljvm,\
+@@ -1194,7 +1232,6 @@ endif
+ ifndef BUILD_HEADLESS_ONLY
+   LIBSPLASHSCREEN_DIRS := \
+     $(JDK_TOPDIR)/src/share/native/sun/awt/image/jpeg \
+-    $(JDK_TOPDIR)/src/share/native/sun/awt/libpng \
+     $(JDK_TOPDIR)/src/share/native/sun/awt/splashscreen
+ 
+   ifeq ($(USE_EXTERNAL_LIBGIF), true)
+@@ -1204,6 +1241,18 @@ ifndef BUILD_HEADLESS_ONLY
+     GIFLIB_CFLAGS := -I$(JDK_TOPDIR)/src/share/native/sun/awt/giflib
+   endif
+ 
++  ifeq ($(USE_EXTERNAL_LIBJPEG), true)
++    LIBJPEG_LDFLAGS := -ljpeg
++  else
++    LIBSPLASHSCREEN_DIRS += $(JDK_TOPDIR)/src/share/native/sun/awt/image/jpeg
++    LIBJPEG_CFLAGS := -I$(JDK_TOPDIR)/src/share/native/sun/awt/image/jpeg
++  endif
++
++  ifeq ($(USE_EXTERNAL_LIBPNG), false)
++    LIBSPLASHSCREEN_DIRS += $(JDK_TOPDIR)/src/share/native/sun/awt/libpng
++    LIBPNG_CFLAGS := -I$(JDK_TOPDIR)/src/share/native/sun/awt/libpng
++  endif
++
+   ifneq ($(OPENJDK_TARGET_OS), macosx)
+     LIBSPLASHSCREEN_DIRS += $(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/sun/awt/splashscreen
+   else
+@@ -1266,11 +1315,13 @@ ifndef BUILD_HEADLESS_ONLY
+       EXCLUDE_FILES := imageioJPEG.c jpegdecoder.c pngtest.c, \
+       LANG := C, \
+       OPTIMIZATION := LOW, \
+-      CFLAGS := $(LIBSPLASHSCREEN_CFLAGS) $(CFLAGS_JDKLIB) $(GIFLIB_CFLAGS), \
++      CFLAGS := $(LIBSPLASHSCREEN_CFLAGS) $(CFLAGS_JDKLIB) \
++                $(GIFLIB_CFLAGS) $(LIBJPEG_CFLAGS) $(PNG_CFLAGS), \
+       MAPFILE := $(JDK_TOPDIR)/make/mapfiles/libsplashscreen/mapfile-vers, \
+       LDFLAGS := $(LDFLAGS_JDKLIB) \
+           $(call SET_SHARED_LIBRARY_ORIGIN), \
+-      LDFLAGS_SUFFIX := $(LIBSPLASHSCREEN_LDFLAGS_SUFFIX) $(LIBZ) $(GIFLIB_LDFLAGS), \
++      LDFLAGS_SUFFIX := $(LIBSPLASHSCREEN_LDFLAGS_SUFFIX) $(LIBZ) \
++                        $(GIFLIB_LDFLAGS) $(LIBJPEG_LDFLAGS) $(PNG_LIBS), \
+       LDFLAGS_SUFFIX_solaris := -lc, \
+       VERSIONINFO_RESOURCE := $(JDK_TOPDIR)/src/windows/resource/version.rc, \
+       RC_FLAGS := $(RC_FLAGS) \
+diff --git a/jdk/make/lib/NioLibraries.gmk b/jdk/make/lib/NioLibraries.gmk
+index 6c9c46a3f3..5be6fc3757 100644
+--- a/jdk/make/lib/NioLibraries.gmk
++++ b/jdk/make/lib/NioLibraries.gmk
+@@ -169,14 +169,19 @@ ifeq ($(OPENJDK_TARGET_OS_API), posix)
+ 
+   ifeq (, $(filter $(OPENJDK_TARGET_OS), macosx aix))
+ 
+-    # Suppress unused parameters required by exported JNI functions.
+-    SCTP_WERROR := -Werror -Wno-error=unused-parameter
+-    ifeq ($(OPENJDK_TARGET_CPU_ARCH), ppc)
+-      SCTP_WERROR :=
++    ifeq ($(USE_EXTERNAL_SCTP), true)
++      J2SCTP_CFLAGS := -DUSE_SYSTEM_SCTP $(SCTP_CFLAGS)
++      J2SCTP_LIBS := $(SCTP_LIBS)
++    else
++      J2SCTP_CFLAGS := 
++      J2SCTP_LIBS := $(LIBDL)
+     endif
+ 
++    # Suppress unused parameters required by exported JNI functions.
++    SCTP_WERROR := $(CFLAGS_WARNINGS_ARE_ERRORS)
++
+     $(eval $(call SetupNativeCompilation,BUILD_LIBSCTP, \
+-        LIBRARY := sctp, \
++        LIBRARY := j2sctp, \
+         OUTPUT_DIR := $(INSTALL_LIBRARIES_HERE), \
+         SRC := $(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/sun/nio/ch/sctp, \
+         LANG := C, \
+@@ -187,11 +192,11 @@ ifeq ($(OPENJDK_TARGET_OS_API), posix)
+             -I$(JDK_TOPDIR)/src/share/native/java/net \
+             -I$(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/sun/nio/ch \
+             -I$(JDK_TOPDIR)/src/$(OPENJDK_TARGET_OS_API_DIR)/native/java/net, \
+-        CFLAGS_linux := $(SCTP_WERROR), \
++        CFLAGS_linux := $(SCTP_WERROR) $(J2SCTP_CFLAGS), \
+         MAPFILE := $(JDK_TOPDIR)/make/mapfiles/libsctp/mapfile-vers, \
+         LDFLAGS := $(LDFLAGS_JDKLIB) \
+             $(call SET_SHARED_LIBRARY_ORIGIN), \
+-        LDFLAGS_SUFFIX_linux := -lpthread $(LIBDL) -ljava -ljvm, \
++        LDFLAGS_SUFFIX_linux := -lpthread $(J2SCTP_LIBS) -ljava -ljvm, \
+         LDFLAGS_SUFFIX_posix := -lnio -lnet, \
+         LDFLAGS_SUFFIX_solaris := -lsocket -ljava -ljvm -lc, \
+         LDFLAGS_SUFFIX_macosx := -ljava -ljvm, \
+diff --git a/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageReader.java b/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageReader.java
+index ba6a7f727f..a57f8514a9 100644
+--- a/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageReader.java
++++ b/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageReader.java
+@@ -89,7 +89,7 @@ public class JPEGImageReader extends ImageReader {
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("jpeg");
++                    System.loadLibrary("javajpeg");
+                     return null;
+                 }
+             });
+diff --git a/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageWriter.java b/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageWriter.java
+index 6a33bd5a15..dca189ed85 100644
+--- a/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageWriter.java
++++ b/jdk/src/share/classes/com/sun/imageio/plugins/jpeg/JPEGImageWriter.java
+@@ -177,7 +177,7 @@ public class JPEGImageWriter extends ImageWriter {
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("jpeg");
++                    System.loadLibrary("javajpeg");
+                     return null;
+                 }
+             });
+diff --git a/jdk/src/share/classes/sun/java2d/cmm/lcms/LCMS.java b/jdk/src/share/classes/sun/java2d/cmm/lcms/LCMS.java
+index d01dff66c4..ebe04425cb 100644
+--- a/jdk/src/share/classes/sun/java2d/cmm/lcms/LCMS.java
++++ b/jdk/src/share/classes/sun/java2d/cmm/lcms/LCMS.java
+@@ -207,7 +207,7 @@ public class LCMS implements PCMM {
+                          * disposer frameworks
+                          */
+                         System.loadLibrary("awt");
+-                        System.loadLibrary("lcms");
++                        System.loadLibrary("javalcms");
+                         return null;
+                     }
+                 });
+diff --git a/jdk/src/share/classes/sun/security/krb5/internal/ccache/FileCredentialsCache.java b/jdk/src/share/classes/sun/security/krb5/internal/ccache/FileCredentialsCache.java
+index 91828292d7..1f6f391a02 100644
+--- a/jdk/src/share/classes/sun/security/krb5/internal/ccache/FileCredentialsCache.java
++++ b/jdk/src/share/classes/sun/security/krb5/internal/ccache/FileCredentialsCache.java
+@@ -1,5 +1,6 @@
+ /*
+  * Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2013 Red Hat, Inc. and/or its affiliates.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -49,7 +50,9 @@ import java.io.FileInputStream;
+ import java.io.FileOutputStream;
+ import java.io.BufferedReader;
+ import java.io.InputStreamReader;
+-import java.lang.reflect.*;
++
++import java.lang.reflect.Constructor;
++import java.lang.reflect.Method;
+ 
+ /**
+  * CredentialsCache stores credentials(tickets, session keys, etc) in a
+@@ -68,6 +71,8 @@ public class FileCredentialsCache extends CredentialsCache
+     private Vector<Credentials> credentialsList;
+     private static String dir;
+     private static boolean DEBUG = Krb5.DEBUG;
++    private static boolean alreadyLoaded = false;
++    private static boolean alreadyTried = false;
+ 
+     public static synchronized FileCredentialsCache acquireInstance(
+                 PrincipalName principal, String cache) {
+@@ -448,9 +453,10 @@ public class FileCredentialsCache extends CredentialsCache
+      * The path name is searched in the following order:
+      *
+      * 1. KRB5CCNAME (bare file name without FILE:)
+-     * 2. /tmp/krb5cc_<uid> on unix systems
+-     * 3. <user.home>/krb5cc_<user.name>
+-     * 4. <user.home>/krb5cc (if can't get <user.name>)
++     * 2. location specified by Kerberos API on unix systems
++     * 3. /tmp/krb5cc_<uid> on unix systems
++     * 4. <user.home>/krb5cc_<user.name>
++     * 5. <user.home>/krb5cc (if can't get <user.name>)
+      */
+ 
+     public static String getDefaultCacheName() {
+@@ -497,25 +503,61 @@ public class FileCredentialsCache extends CredentialsCache
+          */
+ 
+         if (osname != null) {
+-            String cmd = null;
+-            String uidStr = null;
+-            long uid = 0;
+-
+             if (!osname.startsWith("Windows")) {
+                 try {
+-                    Class<?> c = Class.forName
+-                        ("com.sun.security.auth.module.UnixSystem");
+-                    Constructor<?> constructor = c.getConstructor();
+-                    Object obj = constructor.newInstance();
+-                    Method method = c.getMethod("getUid");
+-                    uid =  ((Long)method.invoke(obj)).longValue();
+-                    name = File.separator + "tmp" +
+-                        File.separator + stdCacheNameComponent + "_" + uid;
+-                    if (DEBUG) {
+-                        System.out.println(">>>KinitOptions cache name is " +
+-                                           name);
++                    // Load the native code if necessary
++                    if (!alreadyTried) {
++                        // See if there's any native code to load
++                        try {
++                            ensureLoaded();
++                        } catch (Exception e) {
++                            if (DEBUG) {
++                                System.out.println("Could not load native Kerberos bridge");
++                                e.printStackTrace();
++                            }
++                            alreadyTried = true;
++                        }
++                    }
++                    if (alreadyLoaded) {
++                        // There is some native code
++                        if (DEBUG) {
++                           System.out.println(">> Look up native default credential cache");
++                        }
++                        // Query the native Kerberos API for the cache location
++                        name = nativeGetDefaultCacheName();
++                    }
++
++                    /*
++                     * We require the default cache location to be a file name.
++                     * DIR: can point to a cache collection, while DIR:: points
++                     * to a specific cache file.
++                     *
++                     * http://k5wiki.kerberos.org/wiki?title=Projects/Client_principal_selection&oldid=4118
++                     */
++                    if (name != null && (name.startsWith("FILE:") || name.startsWith("DIR::"))) {
++                        name = name.substring(5);
++                        if (DEBUG) {
++                            System.out.println(">>>KinitOptions cache name is " +
++                                    name);
++                        }
++                        return name;
++                    } else {
++                        long uid = 0;
++
++                        Class<?> c = Class.forName
++                            ("com.sun.security.auth.module.UnixSystem");
++                        Constructor<?> constructor = c.getConstructor();
++                        Object obj = constructor.newInstance();
++                        Method method = c.getMethod("getUid");
++                        uid =  ((Long)method.invoke(obj)).longValue();
++                        name = File.separator + "tmp" +
++                            File.separator + stdCacheNameComponent + "_" + uid;
++                        if (DEBUG) {
++                            System.out.println(">>>KinitOptions cache name is " +
++                                               name);
++                        }
++                        return name;
+                     }
+-                    return name;
+                 } catch (Exception e) {
+                     if (DEBUG) {
+                         System.out.println("Exception in obtaining uid " +
+@@ -560,6 +602,8 @@ public class FileCredentialsCache extends CredentialsCache
+         return name;
+     }
+ 
++    private native static String nativeGetDefaultCacheName() throws Exception;
++
+     public static String checkValidation(String name) {
+         String fullname = null;
+         if (name == null) {
+@@ -640,4 +684,16 @@ public class FileCredentialsCache extends CredentialsCache
+         }
+         return null;
+     }
++
++    private static void ensureLoaded() {
++        java.security.AccessController.doPrivileged(
++                new java.security.PrivilegedAction<Void> () {
++                    public Void run() {
++                            System.loadLibrary("j2krb5");
++                        return null;
++                    }
++                });
++        alreadyLoaded = true;
++    }
++
+ }
+diff --git a/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c b/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c
+index 4c523e497f..a04660644b 100644
+--- a/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c
++++ b/jdk/src/share/native/sun/awt/image/jpeg/imageioJPEG.c
+@@ -51,7 +51,7 @@
+ 
+ /* headers from the JPEG library */
+ #include <jpeglib.h>
+-#include "jerror.h"
++#include <jerror.h>
+ 
+ #undef MAX
+ #define MAX(a,b)        ((a) > (b) ? (a) : (b))
+diff --git a/jdk/src/share/native/sun/awt/splashscreen/splashscreen_jpeg.c b/jdk/src/share/native/sun/awt/splashscreen/splashscreen_jpeg.c
+index 356e3a621e..ba91abbed4 100644
+--- a/jdk/src/share/native/sun/awt/splashscreen/splashscreen_jpeg.c
++++ b/jdk/src/share/native/sun/awt/splashscreen/splashscreen_jpeg.c
+@@ -25,7 +25,6 @@
+ 
+ #include "splashscreen_impl.h"
+ 
+-#include "jinclude.h"
+ #include "jpeglib.h"
+ #include "jerror.h"
+ 
+@@ -113,11 +112,11 @@ set_stream_src(j_decompress_ptr cinfo, SplashStream * stream)
+     if (cinfo->src == NULL) {   /* first time for this JPEG object? */
+         cinfo->src = (struct jpeg_source_mgr *)
+             (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo,
+-            JPOOL_PERMANENT, SIZEOF(stream_source_mgr));
++            JPOOL_PERMANENT, sizeof(stream_source_mgr));
+         src = (stream_src_ptr) cinfo->src;
+         src->buffer = (JOCTET *)
+             (*cinfo->mem->alloc_small) ((j_common_ptr) cinfo,
+-            JPOOL_PERMANENT, INPUT_BUF_SIZE * SIZEOF(JOCTET));
++            JPOOL_PERMANENT, INPUT_BUF_SIZE * sizeof(JOCTET));
+     }
+ 
+     src = (stream_src_ptr) cinfo->src;
+@@ -238,13 +237,14 @@ int
+ SplashDecodeJpegStream(Splash * splash, SplashStream * stream)
+ {
+     struct jpeg_decompress_struct cinfo;
+-    int success = 0;
++    int success;
+     struct my_error_mgr jerr;
+ 
+     cinfo.err = jpeg_std_error(&jerr.pub);
+     jerr.pub.error_exit = my_error_exit;
+ 
+     if (setjmp(jerr.setjmp_buffer)) {
++        success = 0;
+         goto done;
+     }
+     jpeg_create_decompress(&cinfo);
+diff --git a/jdk/src/share/native/sun/awt/splashscreen/splashscreen_png.c b/jdk/src/share/native/sun/awt/splashscreen/splashscreen_png.c
+index 3599433e42..d759418489 100644
+--- a/jdk/src/share/native/sun/awt/splashscreen/splashscreen_png.c
++++ b/jdk/src/share/native/sun/awt/splashscreen/splashscreen_png.c
+@@ -25,7 +25,7 @@
+ 
+ #include "splashscreen_impl.h"
+ 
+-#include "../libpng/png.h"
++#include <png.h>
+ 
+ #include <setjmp.h>
+ 
+diff --git a/jdk/src/share/native/sun/java2d/cmm/lcms/LCMS.c b/jdk/src/share/native/sun/java2d/cmm/lcms/LCMS.c
+index cb648dda30..7534c2cca5 100644
+--- a/jdk/src/share/native/sun/java2d/cmm/lcms/LCMS.c
++++ b/jdk/src/share/native/sun/java2d/cmm/lcms/LCMS.c
+@@ -30,7 +30,7 @@
+ #include "jni_util.h"
+ #include "Trace.h"
+ #include "Disposer.h"
+-#include "lcms2.h"
++#include <lcms2.h>
+ #include "jlong.h"
+ 
+ 
+diff --git a/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpChannelImpl.java b/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpChannelImpl.java
+index 4961e5a29a..6e805897e9 100644
+--- a/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpChannelImpl.java
++++ b/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpChannelImpl.java
+@@ -1114,7 +1114,7 @@ public class SctpChannelImpl extends SctpChannel
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("sctp");
++                    System.loadLibrary("j2sctp");
+                     return null;
+                 }
+             });
+diff --git a/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpMultiChannelImpl.java b/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpMultiChannelImpl.java
+index 629c1ca1e5..db3fac22ac 100644
+--- a/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpMultiChannelImpl.java
++++ b/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpMultiChannelImpl.java
+@@ -999,7 +999,7 @@ public class SctpMultiChannelImpl extends SctpMultiChannel
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("sctp");
++                    System.loadLibrary("j2sctp");
+                     return null;
+                 }
+             });
+diff --git a/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpServerChannelImpl.java b/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpServerChannelImpl.java
+index ba7051c117..3ff0022b99 100644
+--- a/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpServerChannelImpl.java
++++ b/jdk/src/solaris/classes/sun/nio/ch/sctp/SctpServerChannelImpl.java
+@@ -430,7 +430,7 @@ public class SctpServerChannelImpl extends SctpServerChannel
+         java.security.AccessController.doPrivileged(
+             new java.security.PrivilegedAction<Void>() {
+                 public Void run() {
+-                    System.loadLibrary("sctp");
++                    System.loadLibrary("j2sctp");
+                     return null;
+                 }
+             });
+diff --git a/jdk/src/solaris/native/sun/nio/ch/sctp/Sctp.h b/jdk/src/solaris/native/sun/nio/ch/sctp/Sctp.h
+index d6810d61be..934974933b 100644
+--- a/jdk/src/solaris/native/sun/nio/ch/sctp/Sctp.h
++++ b/jdk/src/solaris/native/sun/nio/ch/sctp/Sctp.h
+@@ -74,19 +74,20 @@ typedef int sctp_peeloff_func(int sock, sctp_assoc_t id);
+ #include <netinet/in.h>
+ #include "jni.h"
+ 
+-//Causes compiler error if not found, should make warning and uncomment
+-/*#include <netinet/sctp.h>*/
+-
+-#ifndef IPPROTO_SCTP
+-#define IPPROTO_SCTP    132
+-#endif
+-
+ /* The current version of lksctp does
+  * not define the following option that the Java API (optionally) supports */
+ #ifndef SCTP_EXPLICIT_EOR
+ #define SCTP_EXPLICIT_EOR -1
+ #endif
+ 
++#ifdef USE_SYSTEM_SCTP
++#include <netinet/sctp.h>
++#else
++
++#ifndef IPPROTO_SCTP
++#define IPPROTO_SCTP    132
++#endif
++
+ /* Definitions taken from lksctp-tools-1.0.8/src/include/netinet/sctp.h */
+ #ifndef SCTP_INITMSG
+ 
+@@ -319,15 +320,25 @@ typedef int sctp_freepaddrs_func(struct sockaddr *addrs);
+ typedef int sctp_bindx_func(int sd, struct sockaddr *addrs, int addrcnt, int flags);
+ typedef int sctp_peeloff_func(int sock, sctp_assoc_t id);
+ 
++#endif
+ 
+ #endif /* __linux__ */
+ 
++#ifdef USE_SYSTEM_SCTP
++#define nio_sctp_getladdrs sctp_getladdrs
++#define nio_sctp_freeladdrs sctp_freeladdrs
++#define nio_sctp_getpaddrs sctp_getpaddrs
++#define nio_sctp_freepaddrs sctp_freepaddrs
++#define nio_sctp_bindx sctp_bindx
++#define nio_sctp_peeloff sctp_peeloff
++#else
+ extern sctp_getladdrs_func* nio_sctp_getladdrs;
+ extern sctp_freeladdrs_func* nio_sctp_freeladdrs;
+ extern sctp_getpaddrs_func* nio_sctp_getpaddrs;
+ extern sctp_freepaddrs_func* nio_sctp_freepaddrs;
+ extern sctp_bindx_func* nio_sctp_bindx;
+ extern sctp_peeloff_func* nio_sctp_peeloff;
++#endif
+ 
+ jboolean loadSocketExtensionFuncs(JNIEnv* env);
+ 
+diff --git a/jdk/src/solaris/native/sun/nio/ch/sctp/SctpNet.c b/jdk/src/solaris/native/sun/nio/ch/sctp/SctpNet.c
+index 51ffa2404d..9adff81a5c 100644
+--- a/jdk/src/solaris/native/sun/nio/ch/sctp/SctpNet.c
++++ b/jdk/src/solaris/native/sun/nio/ch/sctp/SctpNet.c
+@@ -25,7 +25,10 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
++
++#ifndef USE_SYSTEM_SCTP
+ #include <dlfcn.h>
++#endif
+ 
+ #include "Sctp.h"
+ #include "jni.h"
+@@ -43,12 +46,14 @@ static jmethodID isaCtrID = 0;
+ static const char* nativeSctpLib = "libsctp.so.1";
+ static jboolean funcsLoaded = JNI_FALSE;
+ 
++#ifndef USE_SYSTEM_SCTP
+ sctp_getladdrs_func* nio_sctp_getladdrs;
+ sctp_freeladdrs_func* nio_sctp_freeladdrs;
+ sctp_getpaddrs_func* nio_sctp_getpaddrs;
+ sctp_freepaddrs_func* nio_sctp_freepaddrs;
+ sctp_bindx_func* nio_sctp_bindx;
+ sctp_peeloff_func* nio_sctp_peeloff;
++#endif
+ 
+ JNIEXPORT jint JNICALL JNI_OnLoad
+   (JavaVM *vm, void *reserved) {
+@@ -65,6 +70,7 @@ static int preCloseFD = -1;     /* File descriptor to which we dup other fd's
+  */
+ jboolean loadSocketExtensionFuncs
+   (JNIEnv* env) {
++#ifndef USE_SYSTEM_SCTP
+     if (dlopen(nativeSctpLib, RTLD_GLOBAL | RTLD_LAZY) == NULL) {
+         JNU_ThrowByName(env, "java/lang/UnsupportedOperationException",
+               dlerror());
+@@ -112,7 +118,7 @@ jboolean loadSocketExtensionFuncs
+               dlerror());
+         return JNI_FALSE;
+     }
+-
++#endif
+     funcsLoaded = JNI_TRUE;
+     return JNI_TRUE;
+ }
+diff --git a/jdk/src/solaris/native/sun/security/krb5/krb5ccache.c b/jdk/src/solaris/native/sun/security/krb5/krb5ccache.c
+new file mode 100644
+index 0000000000..79d50ef252
+--- /dev/null
++++ b/jdk/src/solaris/native/sun/security/krb5/krb5ccache.c
+@@ -0,0 +1,113 @@
++/*
++ * Copyright (c) 2013 Red Hat Inc. and/or its affiliates.
++ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
++ *
++ * This code is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License version 2 only, as
++ * published by the Free Software Foundation.  Oracle designates this
++ * particular file as subject to the "Classpath" exception as provided
++ * by Oracle in the LICENSE file that accompanied this code.
++ *
++ * This code is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
++ * version 2 for more details (a copy is included in the LICENSE file that
++ * accompanied this code).
++ *
++ * You should have received a copy of the GNU General Public License version
++ * 2 along with this work; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
++ * or visit www.oracle.com if you need additional information or have any
++ * questions.
++ */
++
++#ifndef _GNU_SOURCE
++#define _GNU_SOURCE
++#endif
++
++#include <krb5.h>
++#include <stdlib.h>
++#include <stdio.h>
++
++#include "sun_security_krb5_internal_ccache_FileCredentialsCache.h"
++
++static void handle_error(JNIEnv *env, krb5_context context, krb5_error_code err, const char *func_name);
++static jint throw_Exception(JNIEnv *env, const char *class_name, const char *message);
++
++/*
++ * Class:     sun_security_krb5_internal_ccache_FileCredentialsCache
++ * Method:    nativeGetDefaultCacheName
++ * Signature: ()Ljava/lang/String;
++ */
++JNIEXPORT jstring JNICALL Java_sun_security_krb5_internal_ccache_FileCredentialsCache_nativeGetDefaultCacheName
++(JNIEnv *env, jclass krbcredsClass)
++{
++    krb5_context context;
++    krb5_error_code err;
++    krb5_ccache cache;
++    const char *cc_type, *cc_name;
++    char *cc_full_name;
++    jstring result;
++
++    /* Need a krb5_context to proceed further */
++    err = krb5_init_context(&context);
++    if (err) {
++        handle_error(env, context, err, "krb5_init_context");
++        return NULL;
++    }
++
++    /* Get the default credential cache.
++     * We intentionally do not use krb5_cc_default_name because when the cache
++     * is a collection, krb5_cc_default_name returns the collection directory.
++     * By using krb5_cc_default and then krb5_cc_get_name, we get the primary
++     * cache file within the collection. */
++    err = krb5_cc_default(context, &cache);
++    if (err) {
++        handle_error(env, context, err, "krb5_cc_default");
++        krb5_free_context(context);
++        return NULL;
++    }
++
++    /* Get the type and name of the default cache and construct a string
++     * of the form 'type:name'. */
++    cc_type = krb5_cc_get_type(context, cache);
++    cc_name = krb5_cc_get_name(context, cache);
++    if (asprintf(&cc_full_name, "%s:%s", cc_type, cc_name) < 0) {
++        throw_Exception(env, "java/lang/OutOfMemoryError", "Unable to construct credential cache string");
++        krb5_free_context(context);
++        return NULL;
++    }
++
++    result = (*env)->NewStringUTF(env, cc_full_name);
++
++    free(cc_full_name);
++    krb5_free_context(context);
++    return result;
++}
++
++static void handle_error(JNIEnv *env, krb5_context context, krb5_error_code err, const char *func_name) {
++    const char *err_msg;
++    char *result;
++
++    err_msg = krb5_get_error_message(context, err);
++    if (asprintf(&result, "%s: %s", func_name, err_msg) < 0) {
++        throw_Exception(env, "java/lang/OutOfMemoryError", "Unable to construct error message");
++        return;
++    }
++    throw_Exception(env, "java/lang/Exception", result);
++
++    free(result);
++    krb5_free_error_message(context, err_msg);
++}
++
++static jint throw_Exception(JNIEnv *env, const char *class_name, const char *message) {
++    jclass class;
++
++    class = (*env)->FindClass(env, class_name);
++    if (class == NULL) {
++        return -1;
++    }
++    return (*env)->ThrowNew(env, class, message);
++}

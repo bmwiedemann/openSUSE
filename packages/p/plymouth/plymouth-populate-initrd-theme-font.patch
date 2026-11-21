@@ -1,0 +1,27 @@
+diff -Nura plymouth-22.02.122+94.4bd41a3/scripts/plymouth-populate-initrd.in plymouth-22.02.122+94.4bd41a3_new/scripts/plymouth-populate-initrd.in
+--- plymouth-22.02.122+94.4bd41a3/scripts/plymouth-populate-initrd.in	2026-11-10 19:46:56.553155926 +0100
++++ plymouth-22.02.122+94.4bd41a3_new/scripts/plymouth-populate-initrd.in	2026-11-10 19:46:56.627278613 +0100
+@@ -518,11 +518,18 @@
+ 
+ if [ -f "${PLYMOUTH_PLUGIN_PATH}/label-freetype.so" ]; then
+      inst ${PLYMOUTH_PLUGIN_PATH}/label-freetype.so $INITRDDIR
+-     font=$(fc-match -f %{file})
+-     inst "$font" $INITRDDIR
+-     # The label-freetype plugin expects it at this location
+-     mkdir -p $INITRDDIR/usr/share/fonts
+-     ln -s "$font" $INITRDDIR/usr/share/fonts/Plymouth.ttf
++     # Use the font of the theme (a Pango font description, like
++     # "Cantarell 12", without the size), or the default font
++     theme_font=$(sed -n 's/^Font *= *//p' "${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth" | head -n 1 | sed 's/ *[0-9.]*$//')
++     font=$(fc-match -f %{file} "$theme_font")
++     if [ -f "$font" ]; then
++         inst "$font" $INITRDDIR
++         # The label-freetype plugin expects it at this location
++         mkdir -p $INITRDDIR/usr/share/fonts
++         ln -s "$font" $INITRDDIR/usr/share/fonts/Plymouth.ttf
++     else
++         echo "No font found for the label-freetype plugin" >&2
++     fi
+ fi
+ 
+ if [ -L ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/default.plymouth ]; then

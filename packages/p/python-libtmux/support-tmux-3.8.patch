@@ -1,0 +1,134 @@
+Index: libtmux-0.62.0/src/libtmux/_internal/constants.py
+===================================================================
+--- libtmux-0.62.0.orig/src/libtmux/_internal/constants.py
++++ libtmux-0.62.0/src/libtmux/_internal/constants.py
+@@ -414,6 +414,28 @@ class Hooks(
+     client_light_theme: SparseArray[str] = field(default_factory=SparseArray)
+     # Run when terminal reports a dark theme (tmux 3.5+)
+     client_dark_theme: SparseArray[str] = field(default_factory=SparseArray)
++    # --- Tmux 3.8+ hooks ---
++    client_created: SparseArray[str] = field(default_factory=SparseArray)
++    client_closed: SparseArray[str] = field(default_factory=SparseArray)
++    marked_pane_changed: SparseArray[str] = field(default_factory=SparseArray)
++    pane_activity: SparseArray[str] = field(default_factory=SparseArray)
++    pane_bell: SparseArray[str] = field(default_factory=SparseArray)
++    pane_command_finished: SparseArray[str] = field(default_factory=SparseArray)
++    pane_command_started: SparseArray[str] = field(default_factory=SparseArray)
++    pane_created: SparseArray[str] = field(default_factory=SparseArray)
++    pane_mode_entered: SparseArray[str] = field(default_factory=SparseArray)
++    pane_mode_exited: SparseArray[str] = field(default_factory=SparseArray)
++    pane_moved: SparseArray[str] = field(default_factory=SparseArray)
++    pane_prompt_closed: SparseArray[str] = field(default_factory=SparseArray)
++    pane_prompt_opened: SparseArray[str] = field(default_factory=SparseArray)
++    pane_resized: SparseArray[str] = field(default_factory=SparseArray)
++    pane_shell_prompt: SparseArray[str] = field(default_factory=SparseArray)
++    session_added_to_group: SparseArray[str] = field(default_factory=SparseArray)
++    session_removed_from_group: SparseArray[str] = field(default_factory=SparseArray)
++    window_created: SparseArray[str] = field(default_factory=SparseArray)
++    window_closed: SparseArray[str] = field(default_factory=SparseArray)
++    window_unzoomed: SparseArray[str] = field(default_factory=SparseArray)
++    window_zoomed: SparseArray[str] = field(default_factory=SparseArray)
+ 
+     # --- Tmux control mode hooks ---
+     # The client has detached.
+@@ -554,6 +576,8 @@ class Hooks(
+     after_show_options: SparseArray[str] = field(default_factory=SparseArray)
+     # Runs after 'split-window' completes
+     after_split_window: SparseArray[str] = field(default_factory=SparseArray)
++    # Runs after 'swap-window' completes (tmux 3.8+)
++    after_swap_window: SparseArray[str] = field(default_factory=SparseArray)
+     # Runs after 'unbind-key' completes
+     after_unbind_key: SparseArray[str] = field(default_factory=SparseArray)
+     # Runs when a command fails (tmux 3.5+)
+Index: libtmux-0.62.0/tests/test_hooks.py
+===================================================================
+--- libtmux-0.62.0.orig/tests/test_hooks.py
++++ libtmux-0.62.0/tests/test_hooks.py
+@@ -315,6 +315,7 @@ class HookTestCase(t.NamedTuple):
+     hook: str  # tmux hook name (hyphenated)
+     min_version: str = "3.0"  # Minimum tmux version required
+     xfail_reason: str | None = None  # Mark as expected failure with reason
++    removed_in: str | None = None  # tmux version where hook was removed
+ 
+ 
+ # --- Alert Hooks ---
+@@ -381,7 +382,7 @@ AFTER_HOOKS: list[HookTestCase] = [
+     HookTestCase("after_new_window", "after-new-window"),
+     HookTestCase("after_paste_buffer", "after-paste-buffer"),
+     HookTestCase("after_pipe_pane", "after-pipe-pane"),
+-    HookTestCase("after_queue", "after-queue"),
++    HookTestCase("after_queue", "after-queue", removed_in="3.8"),
+     HookTestCase("after_refresh_client", "after-refresh-client"),
+     HookTestCase("after_rename_session", "after-rename-session"),
+     HookTestCase("after_rename_window", "after-rename-window"),
+@@ -442,6 +443,8 @@ def test_hook_set_show_unset_cycle(serve
+     """
+     if not has_gte_version(test_case.min_version):
+         pytest.skip(f"Requires tmux {test_case.min_version}+")
++    if test_case.removed_in and has_gte_version(test_case.removed_in):
++        pytest.skip(f"Hook removed in tmux {test_case.removed_in}+")
+ 
+     session = server.new_session(session_name="test_hook_cycle")
+     window = session.active_window
+Index: libtmux-0.62.0/tests/test_pane.py
+===================================================================
+--- libtmux-0.62.0.orig/tests/test_pane.py
++++ libtmux-0.62.0/tests/test_pane.py
+@@ -1103,6 +1103,8 @@ def test_display_popup_flags(
+     """
+     if min_tmux_version and not has_gte_version(min_tmux_version):
+         pytest.skip(f"Requires tmux {min_tmux_version}+")
++    if has_gte_version("3.8"):
++        pytest.skip("tmux 3.8+ ignores display-popup on control-mode clients")
+ 
+     marker = tmp_path / f"popup_{test_id}.marker"
+     pane = session.active_window.active_pane
+@@ -1122,6 +1124,8 @@ def test_display_popup_close_on_success(
+     tmp_path: pathlib.Path,
+ ) -> None:
+     """Test Pane.display_popup() with close_on_success (-EE) alone."""
++    if has_gte_version("3.8"):
++        pytest.skip("tmux 3.8+ ignores display-popup on control-mode clients")
+     marker = tmp_path / "popup_close_on_success.marker"
+     pane = session.active_window.active_pane
+     assert pane is not None
+@@ -1167,6 +1171,8 @@ def test_display_popup_target_client(
+     guard is needed. The popup itself is invisible without a TTY-backed
+     client; this is a smoke test for the flag-passing path.
+     """
++    if has_gte_version("3.8"):
++        pytest.skip("tmux 3.8+ ignores display-popup on control-mode clients")
+     pane = session.active_window.active_pane
+     assert pane is not None
+     marker = tmp_path / "popup_target_client.marker"
+@@ -1812,8 +1818,12 @@ def test_new_pane_floating(session: Sess
+     if has_gte_version("3.7"):
+         floating = pane.new_pane(width=80, height=15, x=5, y=3, shell="sleep 30")
+         assert floating.pane_floating_flag == "1"
+-        assert floating.pane_width == "80"
+-        assert floating.pane_height == "15"
++        if has_gte_version("3.8"):
++            assert floating.pane_width == "78"
++            assert floating.pane_height == "13"
++        else:
++            assert floating.pane_width == "80"
++            assert floating.pane_height == "15"
+     else:
+         with pytest.raises(exc.LibTmuxException, match=r"new_pane .*requires tmux 3.7"):
+             pane.new_pane(width=40, height=10)
+Index: libtmux-0.62.0/docs/topics/floating_panes.md
+===================================================================
+--- libtmux-0.62.0.orig/docs/topics/floating_panes.md
++++ libtmux-0.62.0/docs/topics/floating_panes.md
+@@ -54,7 +54,10 @@ window (tmux's `-X` / `-Y`). tmux report
+ ```python
+ >>> from libtmux.common import has_gte_version
+ 
+->>> if has_gte_version("3.7"):
++>>> if has_gte_version("3.8"):
++...     placed = window.new_pane(width=20, height=5, x=1, y=0, shell="sleep 30")
++...     position = (placed.pane_x, placed.pane_y)
++... elif has_gte_version("3.7"):
+ ...     placed = window.new_pane(width=20, height=5, x=2, y=1, shell="sleep 30")
+ ...     position = (placed.pane_x, placed.pane_y)
+ ... else:

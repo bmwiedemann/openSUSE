@@ -1,0 +1,77 @@
+From 6b7765ebb35912b129b4360c1a4e621dd28297ab Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sun, 1 Nov 2026 11:31:24 +0100
+Subject: [PATCH 2/2] [gdb/testsuite] Fix timeout in
+ gdb.base/foll-fork-syscall.exp
+
+With a gdb 17.2 based package, and test-case gdb.base/foll-fork-syscall.exp, I
+ran into:
+...
+(gdb) continue
+Continuing.
+[Detaching after fork from child process 30816]
+
+Breakpoint 2, main (argc=1, argv=0x7fffffffd648) at foll-fork-syscall.c:27
+27        if (pid == 0) /* set breakpoint here */
+(gdb) I am the child
+FAIL: $exp: follow-fork-mode=parent: detach-on-fork=on: test_catch_syscall: \
+  continue to breakpoint after fork (timeout)
+continue
+Continuing.
+I am the parent
+
+Catchpoint 5 (call to syscall chdir), 0x00007ffff7ed4cc7 in chdir () from /lib64/libc.so.6
+(gdb) PASS: $exp: follow-fork-mode=parent: detach-on-fork=on: test_catch_syscall: \
+  continue to chdir syscall
+...
+
+I can reliably reproduce this on trunk using the readmore target board with
+READMORE_SLEEP=2000 and this change in gdb.base/foll-fork-syscall.c:
+...
+-    printf ("I am the child\n");
++    {
++      sleep (1);
++      printf ("I am the child\n");
++    }
+...
+
+With a longer delay before the printf, the timeout moves to the following test.
+
+The breakpoint only triggers in the fork parent, not in the fork child, so the
+"I am the child" message can happen at any moment following the fork.
+
+Fix this using -no-prompt-anchor in two gdb_tests.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34925
+---
+ gdb/testsuite/gdb.base/foll-fork-syscall.exp | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/foll-fork-syscall.exp b/gdb/testsuite/gdb.base/foll-fork-syscall.exp
+index 21ef3347dc1..fec98abde82 100644
+--- a/gdb/testsuite/gdb.base/foll-fork-syscall.exp
++++ b/gdb/testsuite/gdb.base/foll-fork-syscall.exp
+@@ -119,11 +119,18 @@ proc_with_prefix test_catch_syscall {follow-fork-mode detach-on-fork} {
+ 	append expected_re " process.*"
+     }
+     append expected_re "Breakpoint .*set breakpoint here.*"
+-    gdb_test "continue" $expected_re "continue to breakpoint after fork"
++
++    # Use -no-prompt-anchor in the following tests to account for an
++    # "I am the child" message which may occur at any moment following the
++    # fork, for follow-fork-mode=parent and detach-on-fork=on.  Likewise for
++    # an "I am the parent" message and follow-fork-mode=child.
++    gdb_test -no-prompt-anchor continue $expected_re \
++	"continue to breakpoint after fork"
+ 
+     # Next stop should be the syscall catchpoint.
+     set expected_re ".*Catchpoint . \\(call to syscall chdir\\).*"
+-    gdb_test continue $expected_re "continue to chdir syscall"
++    gdb_test -no-prompt-anchor continue $expected_re \
++	"continue to chdir syscall"
+ }
+ 
+ # Check for follow-fork support.
+-- 
+2.51.0
+

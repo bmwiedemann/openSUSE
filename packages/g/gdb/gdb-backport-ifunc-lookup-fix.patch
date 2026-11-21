@@ -1,0 +1,348 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Muhammad Kamran <muhammad.kamran@arm.com>
+Date: Tue, 11 Aug 2026 13:12:18 +0000
+Subject: gdb-backport-ifunc-lookup-fix.patch
+
+;; Backport upstream commits de930032d8832195 and ca0908d623605250 to
+;; fix an issue where the function being looked up is a GNU IFUNC.
+;; Both of these patches have been added to the gdb-18-branch, so this
+;; backport will drop out once GDB is rebased to GDB 18.
+
+Backport of upstream commit: de930032d883219559d1dba575f2c0f5359e80fc
+=====================================================================
+
+gdb: Preserve IFUNC marker when finding inferior functions
+
+GDB calls find_function_in_inferior ("malloc") when expression
+evaluation needs to allocate memory in the inferior, e.g. for string
+literal arguments.
+
+The minimal-symbol fallback created a synthetic ordinary function
+pointer from msymbol.value_address ().  If the symbol was a GNU IFUNC,
+this discarded the IFUNC marker, so call_function_by_hand did not
+resolve the symbol before calling it.
+
+Check the minimal symbol kind directly and propagate the GNU IFUNC
+marker to the synthetic function type for mst_text_gnu_ifunc and
+mst_data_gnu_ifunc symbols.  This keeps the existing fallback address
+and return type while allowing inferior calls through IFUNC symbols to
+be resolved correctly.
+
+Extend gdb.base/gnu-ifunc.exp with an internal inferior-call test that
+uses an IFUNC malloc.  The test runs through the existing IFUNC matrix
+for resolver attr, resolver debug info, and resolved-target debug
+info.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34330
+Reviewed-By: Kevin Buettner <kevinb@redhat.com>
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+
+Backport of upstream commit: ca0908d623605250e6d84afb90d742c328e6bb90
+=====================================================================
+
+gdb: Keep original IFUNC return type when target type is unknown
+
+When find_function_addr resolves a GNU IFUNC, it tries to replace the
+original function type with the resolved target type, or with the type
+returned by the resolver.  If neither source provides a useful return
+type, keep the return type from the original function value.
+
+This matters for internal inferior calls such as
+find_function_in_inferior ("malloc"), where GDB creates a synthetic
+function type with a known fallback return type.
+
+Remove the guard from the IFUNC inferior-call test so the no-debug
+resolver/no-debug target variants are tested too.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34330
+Reviewed-By: Kevin Buettner <kevinb@redhat.com>
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+
+diff --git a/gdb/infcall.c b/gdb/infcall.c
+--- a/gdb/infcall.c
++++ b/gdb/infcall.c
+@@ -383,6 +383,9 @@ find_function_addr (struct value *function,
+ 	     FUNCTION_TYPE have been asked for.  */
+ 	  if (retval_type != NULL || function_type != NULL)
+ 	    {
++	      /* Default to original function type's return type.  Target type
++		 replaces this only if it provides a usable return type.  */
++	      value_type = ftype->target_type ();
+ 	      type *target_ftype = find_function_type (funaddr);
+ 	      /* If we don't have debug info for the target function,
+ 		 see if we can instead extract the target function's
+@@ -391,8 +394,13 @@ find_function_addr (struct value *function,
+ 		target_ftype = find_gnu_ifunc_target_type (resolver_addr);
+ 	      if (target_ftype != NULL)
+ 		{
+-		  value_type = check_typedef (target_ftype)->target_type ();
+-		  ftype = target_ftype;
++		  type *target_value_type
++		    = check_typedef (target_ftype)->target_type ();
++		  if (target_value_type != nullptr)
++		    {
++		      value_type = target_value_type;
++		      ftype = target_ftype;
++		    }
+ 		}
+ 	    }
+ 	}
+diff --git a/gdb/testsuite/gdb.base/gnu-ifunc-inferior-call-final.c b/gdb/testsuite/gdb.base/gnu-ifunc-inferior-call-final.c
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/gnu-ifunc-inferior-call-final.c
+@@ -0,0 +1,27 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2026 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include <stddef.h>
++
++extern char arena[32];
++
++void *
++dummy_malloc (size_t size)
++{
++  (void) size;
++  return arena;
++}
+diff --git a/gdb/testsuite/gdb.base/gnu-ifunc-inferior-call-resolver.c b/gdb/testsuite/gdb.base/gnu-ifunc-inferior-call-resolver.c
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/gnu-ifunc-inferior-call-resolver.c
+@@ -0,0 +1,43 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2026 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include <stddef.h>
++
++extern void *dummy_malloc (size_t size);
++
++typedef void *(*malloc_t) (size_t size);
++
++#ifndef IFUNC_RESOLVER_ATTR
++asm (".type malloc, %gnu_indirect_function");
++malloc_t
++malloc (unsigned long hwcap)
++#else
++static malloc_t
++resolve_malloc (void)
++#endif
++{
++#ifndef IFUNC_RESOLVER_ATTR
++  (void) hwcap;
++#endif
++  return dummy_malloc;
++}
++
++#ifdef IFUNC_RESOLVER_ATTR
++extern void *malloc (size_t size);
++
++__typeof (malloc) malloc __attribute__ ((ifunc ("resolve_malloc")));
++#endif
+diff --git a/gdb/testsuite/gdb.base/gnu-ifunc-inferior-call.c b/gdb/testsuite/gdb.base/gnu-ifunc-inferior-call.c
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/gnu-ifunc-inferior-call.c
+@@ -0,0 +1,37 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2026 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++char arena[32];
++const char *str;
++
++int
++str_in_arena (void)
++{
++  return str == arena;
++}
++
++void
++get_string (const char *s)
++{
++  str = s;
++}
++
++int
++main (void)
++{
++  return 0;
++}
+diff --git a/gdb/testsuite/gdb.base/gnu-ifunc.exp b/gdb/testsuite/gdb.base/gnu-ifunc.exp
+--- a/gdb/testsuite/gdb.base/gnu-ifunc.exp
++++ b/gdb/testsuite/gdb.base/gnu-ifunc.exp
+@@ -25,6 +25,13 @@ set libsrc ${libfile}.c
+ set final_file "${testfile}-final"
+ set final_src ${final_file}.c
+ 
++set infcall_file "${testfile}-inferior-call"
++set infcall_src ${infcall_file}.c
++set infcall_resolver_file "${testfile}-inferior-call-resolver"
++set infcall_resolver_src ${infcall_resolver_file}.c
++set infcall_final_file "${testfile}-inferior-call-final"
++set infcall_final_src ${infcall_final_file}.c
++
+ # Return the binary suffix appended to program and library names to
+ # make each testcase variant unique.
+ proc make_binsuffix {resolver_attr resolver_debug final_debug} {
+@@ -358,6 +365,96 @@ proc misc_tests {resolver_attr resolver_debug final_debug} {
+     }
+ }
+ 
++# Test that GDB resolves a GNU IFUNC minimal symbol when it uses
++# find_function_in_inferior to make an internal inferior call.  String
++# literals are copied into the inferior with a call to malloc, so an
++# IFUNC malloc exercises this path.
++
++proc_with_prefix test_inferior_call {resolver_attr resolver_debug final_debug} {
++    global srcdir subdir
++    global infcall_file infcall_src
++    global infcall_resolver_file infcall_resolver_src
++    global infcall_final_file infcall_final_src
++
++    set suffix [make_binsuffix $resolver_attr $resolver_debug $final_debug]
++    set executable ${infcall_file}-$suffix
++    set binfile [standard_output_file $executable]
++    set infcall_lib_so [standard_output_file ${infcall_file}-$suffix.so]
++    set resolver_obj [standard_output_file ${infcall_resolver_file}-$suffix.o]
++    set final_obj [standard_output_file ${infcall_final_file}-$suffix.o]
++
++    set resolver_opts {additional_flags=-fno-builtin-malloc additional_flags=-fpic}
++    set final_opts {additional_flags=-fpic}
++    set shlib_opts {ldflags=-Wl,-z,lazy}
++    set exec_opts [list debug shlib=$infcall_lib_so]
++    lappend exec_opts "ldflags=-Wl,-z,lazy"
++
++    if {$resolver_attr} {
++	lappend resolver_opts "additional_flags=-DIFUNC_RESOLVER_ATTR"
++    }
++
++    if {$resolver_debug} {
++	lappend resolver_opts "debug"
++    }
++
++    if {$final_debug} {
++	lappend final_opts "debug"
++    }
++
++    if { [gdb_compile ${srcdir}/${subdir}/${infcall_resolver_src} \
++	      $resolver_obj object $resolver_opts] != ""
++	 || [gdb_compile ${srcdir}/${subdir}/${infcall_final_src} \
++		 $final_obj object $final_opts] != ""
++	 || [gdb_compile_shlib [list $resolver_obj $final_obj] \
++		 $infcall_lib_so $shlib_opts] != ""
++	 || [gdb_compile ${srcdir}/${subdir}/${infcall_src} \
++		 $binfile executable $exec_opts] != "" } {
++	untested "failed to compile inferior call testcase"
++	return
++    }
++
++    clean_restart $executable
++    gdb_load_shlib $infcall_lib_so
++    if {![runto_main]} {
++	return
++    }
++
++    set malloc_addr {}
++    gdb_test_multiple "pipe maint print msymbols | grep \" malloc \"" \
++	"look for malloc msyms" {
++	-re "($::hex) malloc section \[^\r\n\]+\r\n" {
++	    lappend malloc_addr $expect_out(1,string)
++	    exp_continue
++	}
++
++	-re "$::gdb_prompt $" {
++	    gdb_assert {[llength $malloc_addr] > 0} \
++	       "found at least one malloc symbol"
++	}
++    }
++
++    set found_correct_malloc false
++    set first_addr [lindex $malloc_addr 0]
++    set infcall_lib_tail [file tail $infcall_lib_so]
++    gdb_test_multiple "info symbol $first_addr" "check first malloc symbol" {
++	-re -wrap " in section \[^\r\n\]+ of \[^\r\n\]+/$infcall_lib_tail" {
++	    set found_correct_malloc true
++	}
++
++	-re -wrap " in section \[^\r\n\]+" {
++	    # Nothing to do.
++	}
++    }
++    if { !$found_correct_malloc } {
++       unsupported "found some other malloc symbol"
++       return
++    }
++
++    gdb_test "print (get_string (\"hello-ifunc\"), str_in_arena ())" \
++	" = 1" \
++	"internal call resolves IFUNC malloc"
++}
++
+ # Test all the combinations of:
+ #
+ # - An ifunc resolver with the same name as the ifunc symbol vs an
+@@ -376,6 +473,7 @@ foreach_with_prefix resolver_attr {0 1} {
+ 	    if { [build $resolver_attr $resolver_debug $final_debug] != 0 } {
+ 		misc_tests $resolver_attr $resolver_debug $final_debug
+ 		set-break $resolver_attr $resolver_debug $final_debug
++		test_inferior_call $resolver_attr $resolver_debug $final_debug
+ 	    }
+ 	}
+     }
+diff --git a/gdb/valops.c b/gdb/valops.c
+--- a/gdb/valops.c
++++ b/gdb/valops.c
+@@ -139,6 +139,11 @@ find_function_in_inferior (const char *name, struct objfile **objf_p)
+ 	  type = lookup_function_type (type);
+ 	  type = lookup_pointer_type (type);
+ 	  maddr = msymbol.value_address ();
++	  minimal_symbol_type minsym_type = msymbol.minsym->type ();
++
++	  if (minsym_type == mst_text_gnu_ifunc
++	      || minsym_type == mst_data_gnu_ifunc)
++	    type->target_type ()->set_is_gnu_ifunc (true);
+ 
+ 	  if (objf_p)
+ 	    *objf_p = objfile;

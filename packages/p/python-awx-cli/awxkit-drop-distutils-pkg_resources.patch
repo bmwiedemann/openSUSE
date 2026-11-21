@@ -1,0 +1,107 @@
+Drop distutils and pkg_resources (Python 3.12+, setuptools without pkg_resources)
+
+Backport of upstream ansible/awx commits, limited to awxkit runtime code:
+- e68370f2aa2d "Replace `pkg_resources` with `importlib.metadata`" (#15441)
+- de86b93690bd "AAP-59874: Update to Python 3.12" (#16208): strtobool and
+  LooseVersion replacements
+
+Upstream: https://github.com/ansible/awx/pull/15441
+Upstream: https://github.com/ansible/awx/pull/16208
+---
+diff --git a/awxkit/cli/client.py b/awxkit/cli/client.py
+index 46dc4fa3330d..de790e184e78 100755
+--- a/awxkit/cli/client.py
++++ b/awxkit/cli/client.py
+@@ -2,8 +2,8 @@
+ 
+ import logging
+ import os
+-import pkg_resources
+ import sys
++from importlib.metadata import version as _get_version
+ 
+ from requests.exceptions import RequestException
+ 
+@@ -16,7 +16,7 @@
+ from awxkit.awx.utils import uses_sessions  # noqa
+ 
+ 
+-__version__ = pkg_resources.get_distribution('awxkit').version
++__version__ = _get_version('awxkit')
+ 
+ 
+ class CLI(object):
+diff --git a/awxkit/awx/__init__.py b/awxkit/awx/__init__.py
+index 16fb42da3891..02350adf8810 100644
+--- a/awxkit/awx/__init__.py
++++ b/awxkit/awx/__init__.py
+@@ -1,5 +1,15 @@
+-from distutils.version import LooseVersion
++from packaging.version import Version
+ 
+ 
+ def version_cmp(x, y):
+-    return LooseVersion(x)._cmp(y)
++    """Compare two version strings.
++    Returns -1 if x < y, 0 if x == y, 1 if x > y
++    """
++    vx = Version(x)
++    vy = Version(y)
++    if vx < vy:
++        return -1
++    elif vx > vy:
++        return 1
++    else:
++        return 0
+diff --git a/awxkit/cli/format.py b/awxkit/cli/format.py
+index f294a9e04565..5e81e3295c57 100644
+--- a/awxkit/cli/format.py
++++ b/awxkit/cli/format.py
+@@ -1,13 +1,29 @@
+ import locale
+ import json
+-from distutils.util import strtobool
+-
+ import yaml
+ 
+ from awxkit.cli.utils import colored
+ from awxkit import config
+ 
+ 
++def strtobool(val):
++    """Convert a string representation of truth to true (1) or false (0).
++
++    True values are 'y', 'yes', 't', 'true', 'on', and '1'.
++    False values are 'n', 'no', 'f', 'false', 'off', and '0'.
++    Raises ValueError if 'val' is anything else.
++
++    This replaces the deprecated distutils.util.strtobool removed in Python 3.12.
++    """
++    val = val.lower()
++    if val in ('y', 'yes', 't', 'true', 'on', '1'):
++        return 1
++    elif val in ('n', 'no', 'f', 'false', 'off', '0'):
++        return 0
++    else:
++        raise ValueError(f"invalid truth value {val!r}")
++
++
+ def get_config_credentials():
+     """Load username and password from config.credentials.default.
+ 
+diff --git a/awxkit/cli/options.py b/awxkit/cli/options.py
+index ecedf3918d23..a6dcbe9dedca 100644
+--- a/awxkit/cli/options.py
++++ b/awxkit/cli/options.py
+@@ -6,10 +6,8 @@
+ import sys
+ import yaml
+ 
+-from distutils.util import strtobool
+-
+ from .custom import CustomAction
+-from .format import add_output_formatting_arguments
++from .format import add_output_formatting_arguments, strtobool
+ from .resource import DEPRECATED_RESOURCES_REVERSE
+ 
+ 

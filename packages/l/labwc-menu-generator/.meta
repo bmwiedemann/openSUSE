@@ -1,0 +1,5 @@
+<package name="labwc-menu-generator" project="openSUSE:Factory">
+  <title></title>
+  <description>A simple, lightweight, easily configurable C program that generates a full Labwc/Openbox XML-menu based on the information present in .desktop application files.</description>
+  <url>https://github.com/labwc/labwc-menu-generator</url>
+</package>

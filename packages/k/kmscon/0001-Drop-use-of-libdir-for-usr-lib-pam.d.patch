@@ -1,0 +1,27 @@
+From 93850541ed7b42088c779afee414720c6c9e6dc2 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Tue, 17 Nov 2026 10:58:54 +0100
+Subject: [PATCH] Drop use of libdir for /usr/lib/pam.d/
+
+It is always "lib", independent of the libdir option, which may be something
+architecture-specific like lib64.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 8c58f60..aade32a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -285,7 +285,7 @@ install_data(
+ if enable_libseat
+     install_data(
+         'scripts/pam/kmscon',
+-        install_dir: prefix / get_option('libdir') / 'pam.d',
++        install_dir: prefix / 'lib' / 'pam.d',
+         rename: 'kmscon',
+     )
+ endif
+-- 
+2.56.0
+

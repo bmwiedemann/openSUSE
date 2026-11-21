@@ -1,0 +1,60 @@
+--- a/src/wayland/hyprland/ipc/hyprland_toplevel.hpp
++++ b/src/wayland/hyprland/ipc/hyprland_toplevel.hpp
+@@ -10,6 +10,7 @@
+ #include "../../toplevel_management/handle.hpp"
+ #include "../../toplevel_management/qml.hpp"
+ #include "connection.hpp"
++#include "workspace.hpp"
+ 
+ namespace qs::hyprland::ipc {
+ 
+--- a/src/wayland/hyprland/ipc/monitor.hpp
++++ b/src/wayland/hyprland/ipc/monitor.hpp
+@@ -9,6 +9,7 @@
+ #include <qtypes.h>
+ 
+ #include "connection.hpp"
++#include "workspace.hpp"
+ 
+ namespace qs::hyprland::ipc {
+ 
+--- a/src/wayland/hyprland/ipc/workspace.hpp
++++ b/src/wayland/hyprland/ipc/workspace.hpp
+@@ -10,6 +10,7 @@
+ 
+ #include "connection.hpp"
+ #include "hyprland_toplevel.hpp"
++#include "monitor.hpp"
+ 
+ namespace qs::hyprland::ipc {
+ 
+--- a/src/x11/i3/ipc/monitor.hpp
++++ b/src/x11/i3/ipc/monitor.hpp
+@@ -5,6 +5,7 @@
+ 
+ #include "connection.hpp"
+ #include "controller.hpp"
++#include "workspace.hpp"
+ 
+ namespace qs::i3::ipc {
+ 
+--- a/src/x11/i3/ipc/workspace.hpp
++++ b/src/x11/i3/ipc/workspace.hpp
+@@ -6,6 +6,7 @@
+ 
+ #include "connection.hpp"
+ #include "controller.hpp"
++#include "monitor.hpp"
+ 
+ namespace qs::i3::ipc {
+ 
+--- a/src/services/pipewire/peak.hpp
++++ b/src/services/pipewire/peak.hpp
+@@ -9,6 +9,7 @@
+ #include <qvector.h>
+ 
+ #include "node.hpp"
++#include "qml.hpp"
+ 
+ namespace qs::service::pipewire {
+ 

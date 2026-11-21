@@ -1,0 +1,24 @@
+From: Yunhe Guo <i@guoyunhe.me>
+Subject: [PATCH] Add the QtKeychain header directory to the include path
+
+The Qt6Keychain package installs keychain.h below include/qt6keychain, but
+the exported imported target only propagates the plain include directory,
+so #include <keychain.h> fails. Add the subdirectory explicitly.
+
+---
+ src/core/services/CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/src/core/services/CMakeLists.txt
++++ b/src/core/services/CMakeLists.txt
+@@ -175,6 +175,10 @@
+   target_compile_definitions(core_services PRIVATE VNOTE_KEYCHAIN_AVAILABLE)
+   if(TARGET Qt6Keychain::Qt6Keychain)
+     target_link_libraries(core_services PRIVATE Qt6Keychain::Qt6Keychain)
++    # The Qt6Keychain package here installs its headers in a versioned
++    # subdirectory that the exported target does not add to the include path.
++    target_include_directories(core_services PRIVATE
++      ${CMAKE_INSTALL_PREFIX}/include/qt6keychain)
+   elseif(TARGET qt6keychain)
+     target_link_libraries(core_services PRIVATE qt6keychain)
+   endif()

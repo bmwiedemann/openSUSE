@@ -1,0 +1,11 @@
+--- a/plists/get_info_response.xml
++++ b/plists/get_info_response.xml
+@@ -46,7 +46,7 @@
+ 		<!-- 0x00000400000 is AAC-LC/44.1K/F24/2 -->
+ 		<!-- 0x00000200000 is ALAC/48K/F24/2 -->
+ 
+-	</dict>
++	<!-- </dict> -->
+ 	<!-- <key>sourceVersion</key> --> <!-- added programmatically -->
+ 	<!-- <string>620.8.2</string> -->
+ 	<!-- <key>macAddress</key> --> <!-- hoping we don't need this -->

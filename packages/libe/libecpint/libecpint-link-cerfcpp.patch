@@ -1,0 +1,25 @@
+--- a/src/CMakeLists.txt	2026-11-16 16:50:13.738463766 +0100
++++ b/src/CMakeLists.txt	2026-11-16 16:50:13.776152225 +0100
+@@ -57,7 +57,12 @@
+     find_package(cerf CONFIG REQUIRED) # QUIET)  # COMPONENTS C)
+ 
+     if(${cerf_FOUND})
+-        get_property(_loc TARGET cerf::cerf PROPERTY LOCATION)
++        if(TARGET cerf::cerfcpp)
++            set(CERF_TARGET cerf::cerfcpp)
++        else()
++            set(CERF_TARGET cerf::cerf)
++        endif()
++        get_property(_loc TARGET ${CERF_TARGET} PROPERTY LOCATION)
+         message(STATUS "${Cyan}Found cerf${ColourReset}: ${_loc}")
+     else()
+         if(${CMAKE_INSIST_FIND_PACKAGE_cerf})
+@@ -67,7 +72,7 @@
+     target_compile_definitions(ecpint PRIVATE USING_CERF=1)
+     target_link_libraries(ecpint
+      PRIVATE
+-      cerf::cerf
++      ${CERF_TARGET}
+     )
+ else()
+     message(STATUS "${Cyan}Using Faddeeva${ColourReset}: internal")

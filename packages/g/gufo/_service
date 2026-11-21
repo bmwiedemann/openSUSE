@@ -1,0 +1,11 @@
+<services>
+  <!-- Generate Rust packages vendor archive, for offline crates installation -->
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">*.tar.gz</param>
+    <param name="cargotoml">Cargo.toml</param>
+    <param name="compression">zst</param>
+    <param name="update">false</param>
+    <param name="tag">cargo</param>
+  </service>
+</services>
+

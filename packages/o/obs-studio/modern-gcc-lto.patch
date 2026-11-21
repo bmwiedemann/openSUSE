@@ -1,0 +1,48 @@
+diff '--color=auto' -rub obs-studio.orig/cmake/finders/FindFFmpeg.cmake obs-studio/cmake/finders/FindFFmpeg.cmake
+--- obs-studio.orig/cmake/finders/FindFFmpeg.cmake	2026-10-10 10:44:05.754140330 -0300
++++ obs-studio/cmake/finders/FindFFmpeg.cmake	2026-10-10 19:12:55.223778075 -0300
+@@ -232,7 +232,7 @@
+     unset(_version_patch)
+   else()
+     if(NOT FFmpeg_FIND_QUIETLY)
+-      message(AUTHOR_WARNING "Failed to find ${component_name} version.")
++      set(FFmpeg_${component}_VERSION "8.1.0")
+     endif()
+     set(FFmpeg_${component}_VERSION 0.0.0)
+   endif()
+diff '--color=auto' -rub obs-studio.orig/deps/libcaption/src/mpeg.c obs-studio/deps/libcaption/src/mpeg.c
+--- obs-studio.orig/deps/libcaption/src/mpeg.c	2026-10-10 10:44:05.773955362 -0300
++++ obs-studio/deps/libcaption/src/mpeg.c	2026-10-10 19:12:19.795894170 -0300
+@@ -325,7 +325,7 @@
+ libcaption_stauts_t sei_parse(sei_t* sei, const uint8_t* data, size_t size, double timestamp)
+ {
+     sei_init(sei, timestamp);
+-    int ret = 0;
++    int ret = 0; (void)ret;
+ 
+     // SEI may contain more than one payload
+     while (1 < size) {
+diff '--color=auto' -rub obs-studio.orig/libobs/CMakeLists.txt obs-studio/libobs/CMakeLists.txt
+--- obs-studio.orig/libobs/CMakeLists.txt	2026-10-10 10:44:05.959433846 -0300
++++ obs-studio/libobs/CMakeLists.txt	2026-10-10 20:03:11.287694823 -0300
+@@ -256,6 +256,9 @@
+     FFmpeg::swscale
+     FFmpeg::swresample
+     jansson::jansson
++    glib-2.0
++    gobject-2.0
++    m
+     Uthash::Uthash
+     ZLIB::ZLIB
+   PUBLIC SIMDe::SIMDe Threads::Threads
+diff '--color=auto' -rub obs-studio.orig/libobs-opengl/CMakeLists.txt obs-studio/libobs-opengl/CMakeLists.txt
+--- obs-studio.orig/libobs-opengl/CMakeLists.txt	2026-10-10 10:44:05.957205336 -0300
++++ obs-studio/libobs-opengl/CMakeLists.txt	2026-10-10 19:18:31.440858721 -0300
+@@ -60,6 +60,7 @@
+     $<$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>:X11::XCB>
+     $<$<AND:$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>,$<BOOL:${ENABLE_WAYLAND}>>:OpenGL::EGL>
+     $<$<AND:$<PLATFORM_ID:Linux,FreeBSD,OpenBSD>,$<BOOL:${ENABLE_WAYLAND}>>:Wayland::Egl>
++    X11
+ )
+ 
+ if(OS_WINDOWS)

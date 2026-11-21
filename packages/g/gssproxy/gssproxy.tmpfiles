@@ -1,0 +1,2 @@
+d /var/lib/gssproxy 0755 root root
+d /var/lib/gssproxy/rcache 0700 root root

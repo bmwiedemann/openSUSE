@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sun Nov 15 19:51:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package: bpfilter 0.8.0, an eBPF-based packet filtering
+  framework translating text rules into BPF programs.
+  * Provides bfcli CLI and libbpfilter (soname 0).
+  * Shared library split into libbpfilter0 per shlib policy.
+  * License GPL-2.0-only AND MIT (mpack is MIT).
+  * Built with CMake; tests disabled for packaging.
+  * Supports x86_64 and aarch64 only.
+  * Add gcc-c++ BuildRequires (CMake project uses C and C++).
+  * Use Release build type (upstream accepts debug/release only).
+  * Disable unit tests (cmocka ABI mismatch in Tumbleweed).
+

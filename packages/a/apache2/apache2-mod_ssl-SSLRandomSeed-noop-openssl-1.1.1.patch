@@ -1,0 +1,221 @@
+From: Martin Schreiner <martin.schreiner@suse.com>
+Subject: mod_ssl, ab: Ignore SSLRandomSeed / skip own PRNG seeding with OpenSSL 1.1.1+
+References: bsc#1282733 bsc#1246913
+Upstream: backport of
+  https://github.com/apache/httpd/commit/c2321e5b8fa6792662deaaeb05f1c24bd71503eb (r1877467)
+  https://github.com/apache/httpd/commit/5be0a5fe0ad85448bf7c4ed3c88cd84ba57534d9 (r1895659)
+
+With OpenSSL 1.1.1 and later, the library seeds its DRBG itself and
+handles fork() safety on its own, so there is no need for mod_ssl to
+feed it entropy.  "SSLRandomSeed connect builtin" made mod_ssl call
+RAND_seed() on every new connection; with OpenSSL 3.5 each such call
+reseeds the primary DRBG from jitterentropy, which costs several ms of
+CPU per handshake and saturates loaded servers.
+
+With OpenSSL >= 1.1.1, SSLRandomSeed is now accepted but ignored (a
+warning is logged), and mod_ssl fails startup if the library PRNG is not
+properly seeded.  ab gets the same treatment.
+
+Differences to upstream:
+  - pid and aRandSeed are kept in SSLModConfigRec (and aRandSeed is
+    still initialised), because that structure is cached in the process
+    pool and reused across graceful restarts after mod_ssl.so is
+    reloaded, so its layout must not change within the 2.4.x series.
+  - CHANGES and docs/log-message-tags hunks dropped.
+
+diff -uprN a/modules/ssl/ssl_engine_config.c b/modules/ssl/ssl_engine_config.c
+--- a/modules/ssl/ssl_engine_config.c	2026-09-29 05:34:48.000000000 -0300
++++ b/modules/ssl/ssl_engine_config.c	2026-11-04 04:53:14.732165052 -0300
+@@ -644,6 +644,7 @@ const char *ssl_cmd_SSLRandomSeed(cmd_pa
+                                   const char *arg2,
+                                   const char *arg3)
+ {
++#ifdef MODSSL_USE_SSLRAND
+     SSLModConfigRec *mc = myModConfig(cmd->server);
+     const char *err;
+     ssl_randseed_t *seed;
+@@ -728,6 +729,12 @@ const char *ssl_cmd_SSLRandomSeed(cmd_pa
+         }
+     }
+ 
++#else
++    ap_log_error(APLOG_MARK, APLOG_WARNING, 0, cmd->server, APLOGNO(10235)
++                 "SSLRandomSeed is deprecated and has no effect "
++                 "with OpenSSL 1.1.1 and later");
++#endif
++
+     return NULL;
+ }
+ 
+diff -uprN a/modules/ssl/ssl_engine_init.c b/modules/ssl/ssl_engine_init.c
+--- a/modules/ssl/ssl_engine_init.c	2025-11-06 06:09:18.000000000 -0300
++++ b/modules/ssl/ssl_engine_init.c	2026-11-04 04:53:14.732382344 -0300
+@@ -358,11 +358,13 @@ apr_status_t ssl_init_Module(apr_pool_t
+                     runtime_lib_version);
+     }
+ 
++#ifdef MODSSL_USE_SSLRAND
+     /* We initialize mc->pid per-process in the child init,
+      * but it should be initialized for startup before we
+      * call ssl_rand_seed() below.
+      */
+     mc->pid = getpid();
++#endif
+ 
+     /*
+      * Let us cleanup on restarts and exits
+@@ -446,6 +448,14 @@ apr_status_t ssl_init_Module(apr_pool_t
+      */
+     ssl_rand_seed(base_server, ptemp, SSL_RSCTX_STARTUP, "Init: ");
+ 
++    if (RAND_status() == 0) {
++        ap_log_error(APLOG_MARK, APLOG_CRIT, 0, base_server, APLOGNO(01990)
++                     MODSSL_LIBRARY_NAME " PRNG does not contain sufficient "
++                     "randomness.  Build the SSL library with a suitable "
++                     "entropy source configured.");
++        return APR_EGENERAL;
++    }
++
+ #ifdef HAVE_FIPS
+     if (!modssl_fips_is_enabled() && mc->fips == TRUE) {
+         if (!modssl_fips_enable(1)) {
+@@ -2459,11 +2469,13 @@ STACK_OF(X509_NAME) *ssl_init_FindCAList
+ 
+ void ssl_init_Child(apr_pool_t *p, server_rec *s)
+ {
++#ifdef MODSSL_USE_SSLRAND
+     SSLModConfigRec *mc = myModConfig(s);
+     mc->pid = getpid(); /* only call getpid() once per-process */
+ 
+     /* XXX: there should be an ap_srand() function */
+     srand((unsigned int)time(NULL));
++#endif
+ 
+     /* open the mutex lockfile */
+     ssl_mutex_reinit(s, p);
+diff -uprN a/modules/ssl/ssl_engine_rand.c b/modules/ssl/ssl_engine_rand.c
+--- a/modules/ssl/ssl_engine_rand.c	2015-05-13 09:48:13.000000000 -0300
++++ b/modules/ssl/ssl_engine_rand.c	2026-11-04 04:53:14.732555651 -0300
+@@ -29,6 +29,8 @@
+ 
+ #include "ssl_private.h"
+ 
++#ifdef MODSSL_USE_SSLRAND
++
+ /*  _________________________________________________________________
+ **
+ **  Support for better seeding of SSL library's RNG
+@@ -38,7 +40,7 @@
+ static int ssl_rand_choosenum(int, int);
+ static int ssl_rand_feedfp(apr_pool_t *, apr_file_t *, int);
+ 
+-int ssl_rand_seed(server_rec *s, apr_pool_t *p, ssl_rsctx_t nCtx, char *prefix)
++void ssl_rand_seed(server_rec *s, apr_pool_t *p, ssl_rsctx_t nCtx, char *prefix)
+ {
+     SSLModConfigRec *mc;
+     apr_array_header_t *apRandSeed;
+@@ -124,12 +126,6 @@ int ssl_rand_seed(server_rec *s, apr_poo
+     }
+     ap_log_error(APLOG_MARK, APLOG_TRACE2, 0, s,
+                  "%sSeeding PRNG with %d bytes of entropy", prefix, nDone);
+-
+-    if (RAND_status() == 0)
+-        ap_log_error(APLOG_MARK, APLOG_WARNING, 0, s, APLOGNO(01990)
+-                     "%sPRNG still contains insufficient entropy!", prefix);
+-
+-    return nDone;
+ }
+ 
+ #define BUFSIZE 8192
+@@ -175,3 +171,4 @@ static int ssl_rand_choosenum(int l, int
+     return i;
+ }
+ 
++#endif /* MODSSL_USE_SSLRAND */
+diff -uprN a/modules/ssl/ssl_private.h b/modules/ssl/ssl_private.h
+--- a/modules/ssl/ssl_private.h	2026-09-18 03:54:37.000000000 -0300
++++ b/modules/ssl/ssl_private.h	2026-11-04 04:53:14.732638092 -0300
+@@ -178,6 +178,10 @@
+ #endif
+ #endif /* defined(LIBRESSL_VERSION_NUMBER) */
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10101000
++#define MODSSL_USE_SSLRAND
++#endif
++
+ #if defined(OPENSSL_FIPS) || OPENSSL_VERSION_NUMBER >= 0x30000000L
+ #define HAVE_FIPS
+ #endif
+@@ -677,7 +681,8 @@ typedef struct {
+  * for safety.
+  */
+ typedef struct {
+-    pid_t           pid;
++    pid_t           pid; /* used for seeding after fork(), only
++                          * with MODSSL_USE_SSLRAND; kept for ABI */
+     apr_pool_t     *pPool;
+     BOOL            bFixed;
+ 
+@@ -690,7 +695,8 @@ typedef struct {
+     ap_socache_instance_t *sesscache_context;
+ 
+     apr_global_mutex_t   *pMutex;
+-    apr_array_header_t   *aRandSeed;
++    apr_array_header_t   *aRandSeed; /* only used with MODSSL_USE_SSLRAND;
++                                      * kept for ABI */
+     apr_hash_t     *tVHostKeys;
+ 
+     /* A hash table of pointers to ssl_asn1_t structures.  The structures
+@@ -1101,8 +1107,12 @@ void         modssl_set_io_callbacks(SSL
+  * to allow an SSL renegotiation to take place. */
+ int          ssl_io_buffer_fill(request_rec *r, apr_size_t maxlen);
+ 
++#ifdef MODSSL_USE_SSLRAND
+ /**  PRNG  */
+-int          ssl_rand_seed(server_rec *, apr_pool_t *, ssl_rsctx_t, char *);
++void         ssl_rand_seed(server_rec *, apr_pool_t *, ssl_rsctx_t, char *);
++#else
++#define      ssl_rand_seed(s, p, ctx, c) /* noop */
++#endif
+ 
+ /**  Utility Functions  */
+ char        *ssl_util_vhostid(apr_pool_t *, server_rec *);
+diff -uprN a/support/ab.c b/support/ab.c
+--- a/support/ab.c	2026-06-04 05:50:44.000000000 -0300
++++ b/support/ab.c	2026-11-04 04:53:14.732813242 -0300
+@@ -610,6 +610,8 @@ static void ssl_state_cb(const SSL *s, i
+     }
+ }
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10101000
++
+ #ifndef RAND_MAX
+ #define RAND_MAX INT_MAX
+ #endif
+@@ -655,6 +657,9 @@ static void ssl_rand_seed(void)
+     n = ssl_rand_choosenum(0, sizeof(stackdata)-128-1);
+     RAND_seed(stackdata+n, 128);
+ }
++#else
++#define ssl_rand_seed() /* noop */
++#endif
+ 
+ static int ssl_print_connection_info(BIO *bio, SSL *ssl)
+ {
+@@ -2685,6 +2690,16 @@ int main(int argc, const char * const ar
+     bio_out=BIO_new_fp(stdout,BIO_NOCLOSE);
+     bio_err=BIO_new_fp(stderr,BIO_NOCLOSE);
+ 
++#if OPENSSL_VERSION_NUMBER >= 0x10101000
++    if (RAND_status() == 0) {
++        fprintf(stderr, "%s: Error: Crypto library PRNG does not contain "
++                "sufficient randomness.\n"
++                "%s: Build the library with a suitable entropy source configured.\n",
++                argv[0], argv[0]);
++        exit(1);
++    }
++#endif
++    
+     if (!(ssl_ctx = SSL_CTX_new(meth))) {
+         BIO_printf(bio_err, "Could not initialize SSL Context.\n");
+         ERR_print_errors(bio_err);

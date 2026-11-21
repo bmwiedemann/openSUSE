@@ -1,0 +1,16 @@
+# Add the <stdbool.h> include to tftpd/path.h.
+# 7.2 uses bool in tftpd/path.h, tftpd/path.c, and tftpd/tftpd.c without
+# <stdbool.h>. The spec builds with -std=gnu11, so the build fails. The
+# include in path.h covers the three files.
+
+--- a/tftpd/path.h
++++ b/tftpd/path.h
+@@ -4,6 +4,8 @@
+ #ifndef TFTPD_PATH_H
+ #define TFTPD_PATH_H 1
+ 
++#include <stdbool.h>
++
+ #include "config.h"
+ 
+ const char **parse_path(const char *path, bool strict);

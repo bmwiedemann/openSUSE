@@ -1,0 +1,62 @@
+--- a/package.json
++++ b/package.json
+@@ -12,30 +12,26 @@
+ 		"format": "prettier --write ."
+ 	},
+ 	"devDependencies": {
+-		"@sveltejs/adapter-static": "^3.0",
+-		"@sveltejs/kit": "^2.50",
+-		"@sveltejs/vite-plugin-svelte": "^3.1",
+-		"@tailwindcss/vite": "^4.1",
+-		"@tauri-apps/cli": "^2.12",
+-		"lightningcss": "^1.31",
+-		"prettier": "^3.8",
+-		"prettier-plugin-svelte": "^3.5",
+-		"svelte": "^4.2",
+-		"svelte-check": "^4.3",
+-		"tailwindcss": "^4.1",
+-		"typescript": "^5.9",
+-		"vite": "^5.4"
++		"@sveltejs/adapter-static": "3.0.10",
++		"@sveltejs/kit": "2.50.2",
++		"@sveltejs/vite-plugin-svelte": "3.1.2",
++		"@tailwindcss/vite": "4.1.18",
++		"lightningcss": "1.31.1",
++		"svelte": "4.2.20",
++		"tailwindcss": "4.1.18",
++		"typescript": "5.9.3",
++		"vite": "5.4.21"
+ 	},
+ 	"type": "module",
+ 	"dependencies": {
+-		"@tauri-apps/api": "^2.12",
+-		"@tauri-apps/plugin-deep-link": "^2.4",
+-		"@tauri-apps/plugin-dialog": "^2.6",
+-		"dompurify": "^3.3",
+-		"marked": "^17.0",
+-		"marked-alert": "^2.1",
+-		"marked-base-url": "^1.1",
+-		"phosphor-svelte": "^2.0"
++		"@tauri-apps/api": "2.12.1",
++		"@tauri-apps/plugin-deep-link": "2.4.7",
++		"@tauri-apps/plugin-dialog": "2.6.0",
++		"dompurify": "3.3.1",
++		"marked": "17.0.1",
++		"marked-alert": "2.1.2",
++		"marked-base-url": "1.1.8",
++		"phosphor-svelte": "2.0.1"
+ 	},
+ 	"prettier": {
+ 		"useTabs": true,
+@@ -43,5 +39,11 @@
+ 		"plugins": [
+ 			"prettier-plugin-svelte"
+ 		]
++	},
++	"overrides": {
++		"@tailwindcss/node": {
++			"lightningcss": "1.31.1"
++		},
++		"rollup": "4.57.1"
+ 	}
+ }

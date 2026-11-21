@@ -1,0 +1,60 @@
+From 24193ca80f07d02156e02863bd720b94a6a07918 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 13 Oct 2026 15:32:02 +0200
+Subject: [PATCH 1/2] [gdb/testsuite] Handle CSI ? 1034 l/h
+
+On Tumbleweed aarch64-linux, I ran into:
+...
+Running gdb.tui/tui-mode-switch.exp ...
+ERROR: unsupported
+    while executing
+"error "unsupported""
+    (procedure "_csi_0x3f_l" line 21)
+...
+
+The test-case is the only TUI test-case that uses TERM=xterm.
+
+The unsupported sequence is CSI ? 1034 l, meaning "Don't interpret meta
+key" [1].
+
+Fix this by ignoring the sequence.  While we're at it, likewise ignore its
+counterpart CSI ? 1034 h.
+
+Tested on aarch64-linux.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34720
+
+[1] https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+---
+ gdb/testsuite/lib/tuiterm.exp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/gdb/testsuite/lib/tuiterm.exp b/gdb/testsuite/lib/tuiterm.exp
+index 9aa90c7d26c..d7290e3d5d2 100644
+--- a/gdb/testsuite/lib/tuiterm.exp
++++ b/gdb/testsuite/lib/tuiterm.exp
+@@ -705,6 +705,9 @@ proc Term::_csi_0x3f_h { args } {
+ 	    1006 {
+ 		_log "ignored: Enable SGR Mouse Mode"
+ 	    }
++	    1034 {
++		_log "ignored: Interpret meta key"
++	    }
+ 	    1049 {
+ 		_log "switch to alternate screen"
+ 		_set_alternate 1
+@@ -734,6 +737,9 @@ proc Term::_csi_0x3f_l { args } {
+ 	    1006 {
+ 		_log "ignored: Disable SGR Mouse Mode"
+ 	    }
++	    1034 {
++		_log "ignored: Don't interpret meta key"
++	    }
+ 	    1049 {
+ 		_log "switch from alternate screen"
+ 		_set_alternate 0
+
+base-commit: a83f6955ab525b5d151ad5ae74d70adad7d2b893
+-- 
+2.51.0
+

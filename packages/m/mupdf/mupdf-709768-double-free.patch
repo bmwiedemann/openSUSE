@@ -1,0 +1,16 @@
+Upstream commit 3984925b660a (Bug 709768): clear list pointer to
+avoid double free when a crafted PDF signature object has two
+reference dicts (one specific field, one /All). Without the NULL,
+the second free_char_list() call frees the stale pointer.
+
+PATCH-FIX-UPSTREAM mupdf-709768-double-free.patch -- Bug 709768, boo#1285930 (CVE-2026-112036)
+--- mupdf-1.28.6-source/source/pdf/pdf-xref.c.orig
++++ mupdf-1.28.6-source/source/pdf/pdf-xref.c
+@@ -4180,6 +4180,7 @@
+ 	for (i = c->len-1; i >= 0; i--)
+ 		fz_free(ctx, c->list[i]);
+ 	fz_free(ctx, c->list);
++	c->list = NULL;
+ 	c->len = 0;
+ 	c->max = 0;
+ }

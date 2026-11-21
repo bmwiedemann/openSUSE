@@ -1,0 +1,59 @@
+From 187b76c5e9c207d4240a7ade023652f6ae748877 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 21 Feb 2026 22:38:30 +0100
+Subject: [PATCH 5/9] [gdb/testsuite] Fix gdb.base/infcall-nested-structs.c
+ regression
+
+Since commit 120072c7cdc ("gdb/testsuite: update C++ tests for volatile
+changes in C++20") I see regressions in two test-cases:
+...
+$ ./sum.sh
+   4300 gdb.base/infcall-nested-structs-c++.exp:
+   2500 gdb.base/infcall-nested-structs-c.exp:
+...
+
+In more detail, in test-case gdb.base/infcall-nested-structs-c++.exp:
+...
+(gdb) tbreak 421^M
+No compiled code for line 421 in the current file.^M
+Make breakpoint pending on future shared library load? (y or [n]) n^M
+(gdb) FAIL: $exp: types-tc: gdb_breakpoint: set breakpoint at 421
+...
+
+Fix this by reverting the change done by the commit, and applying the same fix
+as the commit applied elsewhere:
+...
+-  v++;
++  v = v + 1;
+...
+
+Tested on x86_64-linux, with target boards unix and unix/-std=c++20.
+
+Approved-By: Andrew Burgess <aburgess@redhat.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33915
+---
+ gdb/testsuite/gdb.base/infcall-nested-structs.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/infcall-nested-structs.c b/gdb/testsuite/gdb.base/infcall-nested-structs.c
+index 0b7ac4a0fa5..a6dcfe935e3 100644
+--- a/gdb/testsuite/gdb.base/infcall-nested-structs.c
++++ b/gdb/testsuite/gdb.base/infcall-nested-structs.c
+@@ -406,10 +406,12 @@ call_all ()
+   return val;
+ }
+ 
++int volatile v = 1;
++
+ void __attribute__((noinline)) ATTRIBUTE_NOCLONE
+ breakpt (void)
+ {
+-  /* Nothing.  */
++  v = v + 1;
+ }
+ 
+ int
+-- 
+2.51.0
+

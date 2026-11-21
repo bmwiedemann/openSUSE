@@ -1,0 +1,75 @@
+From 65322d695be76ffba78168e7b4560003b500b6b8 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 25 Jul 2026 08:29:16 +0200
+Subject: [PATCH 1/3] [gdb/testsuite] Fix timeout in
+ gdb.threads/vfork-multi-inferior.exp
+
+With test-case gdb.threads/vfork-multi-inferior.exp I get either:
+...
+(gdb) run &
+Starting program: vfork-multi-inferior-sleep
+(gdb) PASS: $exp: method=non-stop: run inferior 2
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+inferior 1
+[Switching to inferior 1 [<null>] (<noexec>)]
+(gdb) PASS: $exp: method=non-stop: inferior 1
+...
+or:
+...
+(gdb) run &
+Starting program: vfork-multi-inferior-sleep
+(gdb) PASS: $exp: method=non-stop: run inferior 2
+inferior 1^M
+[Switching to inferior 1 [<null>] (<noexec>)]^M
+(gdb) PASS: $exp: method=non-stop: inferior 1
+[Thread debugging using libthread_db enabled]^M
+Using host libthread_db library "/lib64/libthread_db.so.1".^M
+...
+
+With a 16.3-based package on aarch64-linux, I ran into:
+...
+(gdb) run &
+Starting program: vfork-multi-inferior-sleep
+(gdb) PASS: $exp: method=non-stop: run inferior 2
+inferior 1
+[Switching to inferior 1 [<null>] (<noexec>)]
+(gdb) [Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+FAIL: $exp: method=non-stop: inferior 1
+(timeout)
+...
+
+Unfortunately I have not been able to reproduce this.
+
+Fix this using -no-prompt-anchor.
+
+See also commit 5f69c00a6e0 ("[gdb/testsuite] Fix timeout in
+gdb.base/async-shell.exp").
+
+Reviewed-By: Keith Seitz <keiths@redhat.com>
+Approved-By: Kevin Buettner <kevinb@redhat.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34427
+---
+ gdb/testsuite/gdb.threads/vfork-multi-inferior.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.threads/vfork-multi-inferior.exp b/gdb/testsuite/gdb.threads/vfork-multi-inferior.exp
+index 1f87427755d..b2791984760 100644
+--- a/gdb/testsuite/gdb.threads/vfork-multi-inferior.exp
++++ b/gdb/testsuite/gdb.threads/vfork-multi-inferior.exp
+@@ -86,7 +86,7 @@ proc do_test {method} {
+     }
+ 
+     # Start the first inferior.
+-    gdb_test "inferior 1" "Switching to inferior 1 .*"
++    gdb_test -no-prompt-anchor "inferior 1" "Switching to inferior 1 .*"
+     gdb_file_cmd ${::binfile}
+     gdb_test "break should_break_here" "Breakpoint $::decimal at .*"
+     gdb_test "start" "Thread 1.1 .* hit Temporary breakpoint.*" \
+
+base-commit: 6b7765ebb35912b129b4360c1a4e621dd28297ab
+-- 
+2.51.0
+

@@ -1,0 +1,30 @@
+From 047cc564335a4f349a3186a19eed5dea389ddc59 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 20 Nov 2026 12:27:05 +1100
+Subject: [PATCH] Avoid test failure with multiple pytest runs
+
+test_get_closes_file_when_read_fails creates a file in TMPDIR, and does
+not remove it on teardown, which means if you run pytest and then run it
+a second time with the same TMPDIR, the test will fail because the file
+still exists. Mock gettempdir() to write it into the directory that does
+get cleaned up during teardown.
+---
+ t/unit/transport/test_filesystem.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/t/unit/transport/test_filesystem.py b/t/unit/transport/test_filesystem.py
+index 5fff33cf3b..b1052315fb 100644
+--- a/t/unit/transport/test_filesystem.py
++++ b/t/unit/transport/test_filesystem.py
+@@ -601,7 +601,10 @@ def test_get_closes_file_when_read_fails(self):
+             f.write(dumps({"body": "x"}))
+         broken = mock_open()
+         broken.return_value.read.side_effect = OSError("read failed")
+-        with patch("builtins.open", broken):
++        with (
++            patch("tempfile.gettempdir", return_value=self.data_folder_out),
++            patch("builtins.open", broken),
++        ):
+             with pytest.raises(ChannelError) as excinfo:
+                 self.channel._get("q")
+         assert isinstance(excinfo.value.__cause__, OSError)

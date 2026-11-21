@@ -1,0 +1,2 @@
+# type-only modules of hono's CommonJS build
+addFilter("zero-length .*/node_modules/hono/dist/cjs/")

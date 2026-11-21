@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Sat Oct 31 11:40:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.2 (still needs boo#1288451)
+- Pass LIBEXECDIR to packaging/install.sh, which supports it
+  since this release; drop the manual owlyd move.
+- Drop Requires: dbus-1: owly talks to the system bus via zbus
+  and works with either daemon (dbus-broker has no dbus-1
+  provide, so the Require dragged in dbus-daemon everywhere).
+
+-------------------------------------------------------------------
+Wed Oct 28 13:17:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package owly 0.4.1 (boo#1288451)
+- Install owlyd in /usr/libexec/owly, not upstream's /usr/lib/owly:
+  SELinux labels that lib_t, so systemd would run owlyd as init_t,
+  which may not use nl80211, and owlyd would find no Wi-Fi card
+

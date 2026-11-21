@@ -1,0 +1,16 @@
+--- a/bindings/python/helpers.h	2026-11-16 16:22:41.915257340 +0100
++++ b/bindings/python/helpers.h	2026-11-16 16:22:41.929563432 +0100
+@@ -102,10 +102,10 @@
+     }
+     puser = PyTuple_GetItem(prv, 0); 
+     ppass = PyTuple_GetItem(prv, 0); 
+-    if (PyString_Check(puser) && PyString_Check(ppass))
++    if (PyUnicode_Check(puser) && PyUnicode_Check(ppass))
+     {
+-        *username = strdup(PyString_AsString(puser));
+-        *password = strdup(PyString_AsString(ppass));
++        *username = strdup(PyUnicode_AsUTF8(puser));
++        *password = strdup(PyUnicode_AsUTF8(ppass));
+     }
+ 
+ cleanup:

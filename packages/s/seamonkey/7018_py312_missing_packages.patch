@@ -1,0 +1,12 @@
+diff '--color=auto' -urN seamonkey-2.53.23.orig/configure.py seamonkey-2.53.23/configure.py
+--- seamonkey-2.53.23.orig/configure.py	2026-01-15 17:24:17.894234554 +0100
++++ seamonkey-2.53.23/configure.py	2026-01-15 17:43:10.470371257 +0100
+@@ -18,6 +18,8 @@
+ base_dir = os.path.abspath(os.path.dirname(__file__))
+ sys.path.insert(0, os.path.join(base_dir, 'python', 'mozboot'))
+ sys.path.insert(0, os.path.join(base_dir, 'python', 'mozbuild'))
++sys.path.insert(0, os.path.join(base_dir, "third_party", "python", "packaging"))
++sys.path.insert(0, os.path.join(base_dir, "third_party", "python", "pyparsing"))
+ sys.path.insert(0, os.path.join(base_dir, 'third_party', 'python', 'setuptools'))
+ sys.path.insert(0, os.path.join(base_dir, 'third_party', 'python', 'six'))
+ sys.path.insert(0, os.path.join(base_dir, "third_party", "python", "looseversion"))

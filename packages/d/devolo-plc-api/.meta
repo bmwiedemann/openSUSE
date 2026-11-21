@@ -1,0 +1,5 @@
+<package name="devolo-plc-api" project="openSUSE:Factory">
+  <title>Python API for devolo PLC devices</title>
+  <description>Python API for devolo PLC powerline devices. Communication to the devices is formatted in protobuf.</description>
+  <url>https://github.com/2Fake/devolo_plc_api</url>
+</package>

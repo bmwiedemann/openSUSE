@@ -1,0 +1,134 @@
+From: Simon Tatham <anakin@pobox.com>
+Date: Sun, 15 Sep 2024 20:39:29 +0100
+Subject: [PATCH] Replace 'rm -rf' with in-process deletion code.
+
+This fixes two edge-case bugs in the code that cleans up minidlna's
+previous cache directory.
+
+Firstly, the 'rm -rf' command wasn't properly quoted, so if a user had
+configured a more interesting cache directory than the typical
+/var/cache/minidlna, the rm might have unwanted effects.
+
+Secondly, at the time of the call in check_db(), a SIGCHLD handler has
+been installed which waits for any available process, and also
+multiple threads are running, meaning that if race conditions work out
+wrongly, the other thread can reap system()'s subprocess before
+system() does, causing the wait in glibc's implementation of system()
+to get ECHILD and system() to report failure.
+---
+ minidlna.c | 88 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 84 insertions(+), 4 deletions(-)
+
+diff --git a/minidlna.c b/minidlna.c
+index 5c19a34..0c3c762 100644
+--- a/minidlna.c
++++ b/minidlna.c
+@@ -338,6 +338,88 @@ open_db(sqlite3 **sq3)
+ 	return new_db;
+ }
+ 
++/* Recursive deletion function. 'path' is interpreted relative to the
++ * fd 'wherefd' (which can be AT_FDCWD to use the cwd, and also, if
++ * 'path' is an absolute path it doesn't matter what wherefd is).
++ *
++ * If the thing you're trying to delete doesn't even exist, that's all
++ * right. */
++static int
++recursive_delete(int wherefd, const char *path)
++{
++	int fd;
++	DIR *dir;
++	struct dirent *de;
++
++	/* First try to delete the given entry using ordinary unlink */
++	if (unlinkat(wherefd, path, 0) == 0)
++		return 0;
++	/* We just want it gone, so if it's already not there, that's fine */
++	if (errno == ENOENT)
++		return 0;
++	/* Any error _other_ than EISDIR constitutes failure to delete */
++	if (errno != EISDIR)
++		return -1;
++
++	/* OK, it's a directory. Open it to read filenames from. We
++	 * must do this using openat so that it's relative to wherefd,
++	 * and then we pass that fd to fdopendir to make a convenient
++	 * DIR * out of it. Also this means we still have the fd later
++	 * to use for further unlinkat/openat/etc. */
++	fd = openat(wherefd, path, O_RDONLY | O_DIRECTORY);
++	if (fd < 0)
++		return -1;
++	dir = fdopendir(fd);
++	if (dir == NULL) {
++		/* Not sure why fdopendir might fail to handle a
++		 * perfectly good directory fd, but let's be careful
++		 * anyway */
++		close(fd);
++		return -1;
++	}
++
++	/* Now we have a DIR *. Read entries from it and delete them. */
++	while ((de = readdir(dir)) != NULL) {
++		/* Except these two! */
++		if (!strcmp(de->d_name, ".") || !strcmp(de->d_name, ".."))
++			continue;
++
++		/* In the recursive call, we pass the bare leaf
++		 * pathname, and give the fd of the containing
++		 * directory as 'wherefd', which saves us (a)
++		 * allocating a fresh pathname, (b) race conditions
++		 * from repeatedly traversing the path from our
++		 * starting location to here. */
++		if (recursive_delete(fd, de->d_name) != 0) {
++			closedir(dir);
++			return -1;
++		}
++	}
++	closedir(dir);
++
++	/* With any luck, we can now rmdir the directory. */
++	if (unlinkat(wherefd, path, AT_REMOVEDIR) == 0)
++		return 0;
++	/* Again, if somehow it's already vanished by now, fine by us! */
++	if (errno == ENOENT)
++		return 0;
++	/* But any other failure is now fatal: we have no more fallbacks. */
++	return -1;
++}
++
++static int
++clean_cache(void)
++{
++	char path[PATH_MAX];
++	snprintf(path, sizeof(path), "%s/files.db", db_path);
++	if (recursive_delete(AT_FDCWD, path) != 0)
++		return -1;
++	snprintf(path, sizeof(path), "%s/art_cache", db_path);
++	if (recursive_delete(AT_FDCWD, path) != 0)
++		return -1;
++	return 0;
++}
++
+ static void
+ check_db(sqlite3 *db, int new_db, pid_t *scanner_pid)
+ {
+@@ -399,8 +481,7 @@ rescan:
+ 				ret, DB_VERSION);
+ 		sqlite3_close(db);
+ 
+-		snprintf(cmd, sizeof(cmd), "rm -rf %s/files.db %s/art_cache", db_path, db_path);
+-		if (system(cmd) != 0)
++		if (clean_cache() != 0)
+ 			DPRINTF(E_FATAL, L_GENERAL, "Failed to clean old file cache!  Exiting...\n");
+ 
+ 		open_db(&db);
+@@ -939,8 +1020,7 @@ init(int argc, char **argv)
+ 			SETFLAG(RESCAN_MASK);
+ 			break;
+ 		case 'R':
+-			snprintf(buf, sizeof(buf), "rm -rf %s/files.db %s/art_cache", db_path, db_path);
+-			if (system(buf) != 0)
++			if (clean_cache() != 0)
+ 				DPRINTF(E_FATAL, L_GENERAL, "Failed to clean old file cache %s. EXITING\n", db_path);
+ 			break;
+ 		case 'u':

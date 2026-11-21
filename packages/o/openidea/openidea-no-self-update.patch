@@ -1,0 +1,25 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: [PATCH] Disable the in-app self-updater
+
+Upstream configures the Tauri updater with its release feed (GitHub, or the
+CNB mirror), checks it once per start and offers to download a release over
+the installed files. Updates come from the package manager in a distribution
+build, so
+report the updater as unconfigured: no startup check, no request, and the
+Check for Updates actions are hidden.
+
+--- a/src-tauri/src/commands/window.rs
++++ b/src-tauri/src/commands/window.rs
+@@ -332,8 +332,10 @@
+ /// Whether an update endpoint is configured: `plugins.updater.endpoints` in
+ /// tauri.conf.json, or the `OPENIDEA_UPDATE_ENDPOINT` environment variable. Empty by
+ /// default, and "Check for Updates…" is hidden then.
+-pub fn updates_configured<R: tauri::Runtime>(app: &AppHandle<R>) -> bool {
+-    !config_endpoints(app).is_empty() || update_endpoint_env().is_some()
++pub fn updates_configured<R: tauri::Runtime>(_app: &AppHandle<R>) -> bool {
++    // Distribution build: the package manager owns updates, so never query
++    // the release feed or write a downloaded release over the installed files.
++    false
+ }
+ 
+ /// Where updates are downloaded from (System Settings › Updates).

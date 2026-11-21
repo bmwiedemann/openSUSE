@@ -1,0 +1,50 @@
+From 8b1f23e04391f60f9e2c7566c39d93e53fb54e33 Mon Sep 17 00:00:00 2001
+From: upstream google/draco main
+Date: backported to v1.5.7
+Subject: [PATCH] Use FindPython module for Emscripten builds
+
+CMake >= 4 removed the FindPythonInterp module, so the Emscripten
+configure step fails. Switch to find_package(Python COMPONENTS
+Interpreter) like upstream main does (commits 8b1f23e04391 and the
+a4365c7935ca follow-up fix).
+
+--- a/draco-1.5.7/CMakeLists.txt
++++ b/draco-1.5.7/CMakeLists.txt
+@@ -37,7 +37,7 @@ if("${draco_root}" STREQUAL "${draco_bu
+       "And re-run CMake from the draco_build directory.")
+ endif()
+ 
+-include(FindPythonInterp)
++find_package(Python COMPONENTS Interpreter)
+ include("${draco_root}/cmake/draco_build_definitions.cmake")
+ include("${draco_root}/cmake/draco_cpu_detection.cmake")
+ include("${draco_root}/cmake/draco_dependencies.cmake")
+--- a/draco-1.5.7/cmake/draco_emscripten.cmake
++++ b/draco-1.5.7/cmake/draco_emscripten.cmake
+@@ -18,7 +18,7 @@ endif() # DRACO_CMAKE_DRACO_EMSCRIPTEN_C
+ 
+ # Checks environment for Emscripten prerequisites.
+ macro(draco_check_emscripten_environment)
+-  if(NOT PYTHONINTERP_FOUND)
++  if(NOT Python_Interpreter_FOUND)
+     message(
+         FATAL_ERROR
+         "Python required for Emscripten builds, but cmake cannot find it.")
+@@ -118,7 +118,7 @@ macro(draco_generate_emscripten_glue)
+ 
+   # Generate the glue source.
+   execute_process(
+-    COMMAND ${PYTHON_EXECUTABLE} $ENV{EMSCRIPTEN}/tools/webidl_binder.py
++    COMMAND ${Python_EXECUTABLE} $ENV{EMSCRIPTEN}/tools/webidl_binder.py
+             ${glue_INPUT_IDL} ${glue_OUTPUT_PATH})
+   if(NOT EXISTS "${glue_OUTPUT_PATH}.cpp")
+     message(FATAL_ERROR "JS glue generation failed for ${glue_INPUT_IDL}.")
+@@ -129,7 +129,7 @@ macro(draco_generate_emscripten_glue)
+   # Create a dependency so that it regenerated on edits.
+   add_custom_command(
+     OUTPUT "${glue_OUTPUT_PATH}.cpp"
+-    COMMAND ${PYTHON_EXECUTABLE} $ENV{EMSCRIPTEN}/tools/webidl_binder.py
++    COMMAND ${Python_EXECUTABLE} $ENV{EMSCRIPTEN}/tools/webidl_binder.py
+             ${glue_INPUT_IDL} ${glue_OUTPUT_PATH}
+     DEPENDS ${draco_js_dec_idl}
+     COMMENT "Generating ${glue_OUTPUT_PATH}.cpp."

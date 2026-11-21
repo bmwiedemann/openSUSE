@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Sun Nov 15 20:33:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.13.10:
+  * feat(review): default --to to HEAD when only --from is given
+  * feat(cli): render Markdown summaries and style progress output
+  * feat(review): support --resume for workspace mode
+  * feat(workspace): support comparison-side code access
+- Refresh vendored Go modules for the new dependencies
+
+-------------------------------------------------------------------
+Sat Nov 14 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add BuildRequires: zstd so vendor.tar.zst unpacks in any build
+  environment
+
+-------------------------------------------------------------------
+Sat Nov 14 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Split shell completions into bash-completion, zsh-completion and
+  fish-completion subpackages
+
+-------------------------------------------------------------------
+Sat Nov 14 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Initial package 1.13.9
+- Ship README.local-llm.md: point OCR at a local LLM via Ollama

@@ -1,0 +1,88 @@
+From 4c6ac383d58d7fb90ad59549158c4c847e7ca371 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 20 Mar 2026 10:13:27 +0100
+Subject: [PATCH 1/9] [gdb/testsuite, Tcl 9.0] Fix error: no such variable:
+ Term::_TERM
+
+With test-case gdb.base/color-prompt.exp and Tcl 9.0, I run into:
+...
+Running gdb.base/color-prompt.exp ...
+ERROR: tcl error sourcing gdb.base/color-prompt.exp.
+ERROR: tcl error code TCL LOOKUP VARNAME Term::_TERM
+ERROR: can't read "Term::_TERM": no such variable
+    while executing
+"if { $Term::_TERM != "" } {
+	    setenv TERM $Term::_TERM
+	} elseif { [ishost *-*-*bsd*] } {
+	    setenv TERM ansiw
+	} else {
+	    setenv TERM ansi
+	}"
+...
+
+Fix this by dropping the Term prefix in Term::with_tuiterm.
+
+Likewise in Term::with_term and Term::_have_bw, fixing gdb.tui/tui-mode-switch.exp.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33948
+---
+ gdb/testsuite/lib/tuiterm.exp | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/gdb/testsuite/lib/tuiterm.exp b/gdb/testsuite/lib/tuiterm.exp
+index e1af2231b94..9aa90c7d26c 100644
+--- a/gdb/testsuite/lib/tuiterm.exp
++++ b/gdb/testsuite/lib/tuiterm.exp
+@@ -101,9 +101,10 @@ proc Term::_ctl_0x07 {} {
+ 
+ # Return 1 if tuiterm has the bw/auto_left_margin enabled.
+ proc Term::_have_bw {} {
++    variable _TERM
+     return [expr \
+-		[string equal $Term::_TERM "ansiw"] \
+-		|| [string equal $Term::_TERM "ansis"]]
++		{ [string equal $_TERM "ansiw"] \
++		      || [string equal $_TERM "ansis"] }]
+ }
+ 
+ # Backspace.
+@@ -1234,8 +1235,9 @@ proc Term::wait_for_line { regexp {pos ""} } {
+ # In BODY, when using Term::with_tuiterm, use TERM instead of the default.
+ 
+ proc Term::with_term { term body } {
+-    save_vars { Term::_TERM } {
+-	set Term::_TERM $term
++    variable _TERM
++    save_vars { _TERM } {
++	set _TERM $term
+ 	uplevel $body
+     }
+ }
+@@ -1245,16 +1247,16 @@ proc Term::with_term { term body } {
+ proc Term::with_tuiterm {rows cols body} {
+     global env stty_init
+     variable _TERM
+-    save_vars {env(TERM) env(NO_COLOR) stty_init} {
+-	if { $Term::_TERM != "" } {
+-	    setenv TERM $Term::_TERM
++    save_vars {env(TERM) _TERM env(NO_COLOR) stty_init} {
++	if { $_TERM != "" } {
++	    setenv TERM $_TERM
+ 	} elseif { [ishost *-*-*bsd*] } {
+ 	    setenv TERM ansiw
+ 	} else {
+ 	    setenv TERM ansi
+ 	}
+ 	# Save active TERM variable.
+-	set Term::_TERM $env(TERM)
++	set _TERM $env(TERM)
+ 
+ 	setenv NO_COLOR ""
+ 	_setup $rows $cols
+
+base-commit: d527b48005204f94c024eab468e200372a92a5cd
+-- 
+2.51.0
+

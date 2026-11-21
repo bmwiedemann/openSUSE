@@ -1,0 +1,70 @@
+From 4e73cb21f9a64afaff87f7b8cdaf84e4f9336c5a Mon Sep 17 00:00:00 2001
+From: Andreas Kloeckner <inform@tiker.net>
+Date: Sun, 13 Sep 2026 14:05:37 -0500
+Subject: [PATCH] Fix test_xdg_cache_home failing because platformdirs now
+ rejects relative directories
+
+x-ref: https://github.com/tox-dev/platformdirs/pull/540
+
+Assisted-by: Zed:gpt-5.6-terra
+---
+ pytools/test/test_persistent_dict.py | 28 +++++++++++-----------------
+ 1 file changed, 11 insertions(+), 17 deletions(-)
+
+Index: pytools-2026.1.1/pytools/test/test_persistent_dict.py
+===================================================================
+--- pytools-2026.1.1.orig/pytools/test/test_persistent_dict.py
++++ pytools-2026.1.1/pytools/test/test_persistent_dict.py
+@@ -6,7 +6,7 @@ import sys
+ import tempfile
+ from dataclasses import dataclass
+ from enum import Enum, IntEnum
+-from typing import Any
++from typing import TYPE_CHECKING, Any
+ 
+ import pytest
+ 
+@@ -22,6 +22,10 @@ from pytools.persistent_dict import (
+ from pytools.tag import Tag, tag_dataclass
+ 
+ 
++if TYPE_CHECKING:
++    from pathlib import Path
++
++
+ # {{{ type for testing
+ 
+ class PDictTestingKeyOrValue:
+@@ -710,26 +714,16 @@ def test_datetime_hashing() -> None:
+     # }}}
+ 
+ 
+-def test_xdg_cache_home() -> None:
+-    import os
+-    xdg_dir = "tmpdir_pytools_xdg_test"
++def test_xdg_cache_home(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
++    xdg_dir = tmp_path / "xdg-cache"
+ 
+-    assert not os.path.exists(xdg_dir)
+-
+-    old_xdg_cache_home = os.environ.get("XDG_CACHE_HOME")
+-    try:
+-        os.environ["XDG_CACHE_HOME"] = xdg_dir
++    assert not xdg_dir.exists()
+ 
+-        PersistentDict("pytools-test", safe_sync=False)
++    monkeypatch.setenv("XDG_CACHE_HOME", str(xdg_dir))
+ 
+-        assert os.path.exists(xdg_dir)
+-    finally:
+-        if old_xdg_cache_home is not None:
+-            os.environ["XDG_CACHE_HOME"] = old_xdg_cache_home
+-        else:
+-            del os.environ["XDG_CACHE_HOME"]
++    PersistentDict("pytools-test", safe_sync=False)
+ 
+-        shutil.rmtree(xdg_dir)
++    assert xdg_dir.exists()
+ 
+ 
+ def test_speed():

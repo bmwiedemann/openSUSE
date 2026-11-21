@@ -1,0 +1,138 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: [PATCH] Do not offer to install coverage and profiling tools
+
+Run with Coverage and Profile offer an Install button for a missing
+tool that runs a package manager: cargo install cargo-llvm-cov, npm
+install -g c8, adding @vitest/coverage-v8 or coverage.py to the
+project, or pip install py-spy. Offer no install command; the message
+and the homepage link stay, and the coverage.py one names the openSUSE
+package (python3-coverage) for the system Python. The tests that
+checked the install commands now check that none is offered.
+
+--- a/crates/ide-coverage/src/plan.rs
++++ b/crates/ide-coverage/src/plan.rs
+@@ -1,6 +1,6 @@
+ //! Which coverage tool runs a configuration, and how its command line changes.
+ 
+-use crate::{CoveragePrepared, CoverageReportSpec, InstallCommand};
++use crate::{CoveragePrepared, CoverageReportSpec};
+ use ide_run::RunConfig;
+ use ide_run::wrap::{self, program_name};
+ use std::path::Path;
+@@ -28,14 +28,9 @@
+ }
+ 
+ fn missing(tool: &str, message: impl Into<String>, install: Option<(Vec<String>, &Path)>) -> CoveragePrepared {
+-    CoveragePrepared::MissingTool {
+-        tool: tool.to_owned(),
+-        message: message.into(),
+-        install: install.and_then(|(argv, cwd)| {
+-            let (command, args) = argv.split_first()?;
+-            Some(InstallCommand { command: command.clone(), args: args.to_vec(), cwd: Some(cwd.to_path_buf().into()) })
+-        }),
+-    }
++    // Distribution build: never offer to run a package manager that installs the tool.
++    let _ = install;
++    CoveragePrepared::MissingTool { tool: tool.to_owned(), message: message.into(), install: None }
+ }
+ 
+ fn ready(
+@@ -312,7 +307,8 @@
+         };
+         return missing(
+             "coverage",
+-            "Python coverage needs coverage.py in the project's interpreter.",
++            "Python coverage needs coverage.py in the project's interpreter; for the system Python, \
++             install it from your distribution (zypper install python3-coverage).",
+             Some((install, dir)),
+         );
+     }
+@@ -401,11 +397,9 @@
+         let root = dir.path();
+         std::fs::write(root.join("package.json"), r#"{"scripts":{"test":"vitest run","t2":"tsc && jest"}}"#).unwrap();
+         let config = cfg("npm", "pnpm", &["run", "test", "--", "a.test.ts"]);
+-        // No provider package: install hint.
++        // No provider package: missing, with no install command in a distribution build.
+         match prepare(root, &config, root) {
+-            CoveragePrepared::MissingTool { install: Some(i), .. } => {
+-                assert_eq!(i.args, ["add", "-D", "@vitest/coverage-v8"])
+-            }
++            CoveragePrepared::MissingTool { install: None, .. } => {}
+             other => panic!("{other:?}"),
+         }
+         // ... pinned to the installed vitest.
+@@ -413,9 +407,7 @@
+         std::fs::create_dir_all(&vitest).unwrap();
+         std::fs::write(vitest.join("package.json"), r#"{"version":"2.1.9"}"#).unwrap();
+         match prepare(root, &config, root) {
+-            CoveragePrepared::MissingTool { install: Some(i), .. } => {
+-                assert_eq!(i.args, ["add", "-D", "@vitest/coverage-v8@2.1.9"])
+-            }
++            CoveragePrepared::MissingTool { install: None, .. } => {}
+             other => panic!("{other:?}"),
+         }
+         let pkg = root.join("node_modules/@vitest/coverage-v8");
+@@ -446,10 +438,7 @@
+         config.env.insert("PATH".into(), dir.path().to_string_lossy().into_owned());
+         config.command = dir.path().join("cargo").to_string_lossy().into_owned();
+         match prepare(dir.path(), &config, dir.path()) {
+-            CoveragePrepared::MissingTool { tool, install: Some(i), .. } => {
+-                assert_eq!(tool, "cargo-llvm-cov");
+-                assert_eq!(i.args, ["install", "cargo-llvm-cov"]);
+-            }
++            CoveragePrepared::MissingTool { tool, install: None, .. } => assert_eq!(tool, "cargo-llvm-cov"),
+             other => panic!("{other:?}"),
+         }
+         assert!(matches!(
+@@ -488,11 +477,11 @@
+         std::fs::create_dir_all(&out).unwrap();
+         std::fs::write(root.join("Gemfile"), "source 'https://rubygems.org'\n").unwrap();
+         let config = cfg("rspec", "bundle", &["exec", "rspec"]);
+-        // Bundler project without the gem: install hint.
++        // Bundler project without the gem: missing, with no install command
++        // in a distribution build.
+         match prepare(root, &config, &out) {
+-            CoveragePrepared::MissingTool { tool, install: Some(i), .. } => {
++            CoveragePrepared::MissingTool { tool, install: None, .. } => {
+                 assert_eq!(tool, "simplecov");
+-                assert_eq!(i.args, ["add", "simplecov", "--group", "test"]);
+             }
+             other => panic!("{other:?}"),
+         }
+--- a/crates/ide-profiler/src/plan.rs
++++ b/crates/ide-profiler/src/plan.rs
+@@ -1,6 +1,6 @@
+ //! Which profiler samples a configuration, and how its command line changes.
+ 
+-use crate::{ProfilePrepared, ProfileSpec, ProfilerInstall};
++use crate::{ProfilePrepared, ProfileSpec};
+ use ide_run::RunConfig;
+ use ide_run::wrap::{self, program_name};
+ use std::path::{Path, PathBuf};
+@@ -73,12 +73,8 @@
+     let beside =
+         Path::new(&py.interpreter[0]).parent().map(|d| d.join(if cfg!(windows) { "py-spy.exe" } else { "py-spy" }));
+     let Some(py_spy) = beside.filter(|p| p.is_file()).or_else(|| wrap::find_tool("py-spy", config, dir, root)) else {
+-        let install = (py.manager.is_none()).then(|| {
+-            let mut argv = py.interpreter.clone();
+-            argv.extend([s("-m"), s("pip"), s("install"), s("py-spy")]);
+-            let (command, args) = argv.split_first().map(|(c, a)| (c.clone(), a.to_vec())).unwrap_or_default();
+-            ProfilerInstall { command, args, cwd: Some(dir.to_path_buf().into()) }
+-        });
++        // Distribution build: never offer to pip install py-spy.
++        let install = None;
+         return ProfilePrepared::MissingTool {
+             tool: s("py-spy"),
+             message: s("Profiling Python needs py-spy."),
+@@ -263,10 +259,7 @@
+         let mut c = cfg("python", &python.to_string_lossy(), &["main.py"]);
+         c.env.insert("PATH".into(), dir.path().join("nothing").to_string_lossy().into_owned());
+         match prepare(dir.path(), &c, dir.path()) {
+-            ProfilePrepared::MissingTool { tool, install: Some(i), .. } => {
+-                assert_eq!(tool, "py-spy");
+-                assert_eq!(i.args, ["-m", "pip", "install", "py-spy"]);
+-            }
++            ProfilePrepared::MissingTool { tool, install: None, .. } => assert_eq!(tool, "py-spy"),
+             other => panic!("{other:?}"),
+         }
+         let spy = bin.join(if cfg!(windows) { "py-spy.exe" } else { "py-spy" });

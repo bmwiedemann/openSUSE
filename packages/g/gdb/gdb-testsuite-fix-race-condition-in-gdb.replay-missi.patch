@@ -1,0 +1,103 @@
+From a83f6955ab525b5d151ad5ae74d70adad7d2b893 Mon Sep 17 00:00:00 2001
+From: Simon Marchi <simon.marchi@polymtl.ca>
+Date: Fri, 6 Feb 2026 12:57:56 -0500
+Subject: [PATCH 9/9] gdb/testsuite: fix race condition in
+ gdb.replay/missing-thread.c
+
+I get frequent failures in gdb.replay/missing-thread.exp, starting with:
+
+    FAIL: gdb.replay/missing-thread.exp: non_stop=on: record_initial_logfile: continue (timeout)
+
+I tracked this down to a race condition in the test program, causing it
+not to generate the expected SIGTRAP.  This can be reproduced by adding
+a sleep(1) just after the pthread_create.
+
+The expected behavior is:
+
+ - The main thread starts a second thread
+ - The main thread blocks on pthread_cond_wait, waiting to be notified
+   by the second thread (to make sure the second thread had time to
+   start)
+ - The second thread notifies the main thread using pthread_cond_signal
+ - The main thread sends a SIGTRAP to the second thread
+
+However, this can happen:
+
+ - The main thread starts a second thread
+ - The second thread calls pthread_cond_signal, while no one is waiting
+   to the condvar
+ - The main thread blocks on pthread_cond_wait forever
+
+Fix it by introducing a separate boolean predicate protected by the
+shared mutex, and looping until it is true.  This is the way
+pthread_cond_wait is meant to be used. From pthread_cond_wait(3):
+
+    When using condition variables there is always a boolean predicate
+    involving shared variables associated with each condition wait that
+    is true if the thread should proceed. Spurious wakeups from the
+    pthread_cond_wait() or pthread_cond_timedwait() functions may occur.
+    Since the return from pthread_cond_wait() or
+    pthread_cond_timedwait() does not imply anything about the value of
+    this predicate, the predicate should be re-evaluated upon such
+    return.
+
+Finally, make things static, just out of principle, and fix minor
+formatting issues.
+
+Change-Id: I62ba2085a2d506dc3d91e32cd5de48c43a3ff55e
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/gdb.replay/missing-thread.c | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.replay/missing-thread.c b/gdb/testsuite/gdb.replay/missing-thread.c
+index 8edb2402b26..73b3e54bc1b 100644
+--- a/gdb/testsuite/gdb.replay/missing-thread.c
++++ b/gdb/testsuite/gdb.replay/missing-thread.c
+@@ -22,23 +22,28 @@
+ #include <unistd.h>
+ #include <stdbool.h>
+ 
+-pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
+-pthread_cond_t g_condvar = PTHREAD_COND_INITIALIZER;
++static pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
++static pthread_cond_t g_condvar = PTHREAD_COND_INITIALIZER;
++static bool g_ready = false;
+ 
+-void *
++static void *
+ worker_function (void *arg)
+ {
+   printf ("In worker, about to notify\n");
++
++  pthread_mutex_lock (&g_mutex);
++  g_ready = true;
++  pthread_mutex_unlock (&g_mutex);
+   pthread_cond_signal (&g_condvar);
+ 
+   while (true)
+-    sleep(1);
++    sleep (1);
+ 
+   return NULL;
+ }
+ 
+ int
+-main()
++main ()
+ {
+   pthread_t my_thread;
+ 
+@@ -46,7 +51,8 @@ main()
+   assert (result == 0);
+ 
+   pthread_mutex_lock (&g_mutex);
+-  pthread_cond_wait (&g_condvar, &g_mutex);
++  while (!g_ready)
++    pthread_cond_wait (&g_condvar, &g_mutex);
+ 
+   printf ("In main, have been woken.\n");
+   pthread_mutex_unlock (&g_mutex);
+-- 
+2.51.0
+

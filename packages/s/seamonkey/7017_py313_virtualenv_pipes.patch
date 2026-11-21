@@ -1,0 +1,32 @@
+diff '--color=auto' -urN seamonkey-2.53.23.orig/third_party/python/virtualenv/virtualenv/discovery/cached_py_info.py seamonkey-2.53.23/third_party/python/virtualenv/virtualenv/discovery/cached_py_info.py
+--- seamonkey-2.53.23.orig/third_party/python/virtualenv/virtualenv/discovery/cached_py_info.py	2025-11-15 21:08:20.000000000 +0100
++++ seamonkey-2.53.23/third_party/python/virtualenv/virtualenv/discovery/cached_py_info.py	2026-01-15 14:37:26.330691340 +0100
+@@ -8,7 +8,6 @@
+ 
+ import logging
+ import os
+-import pipes
+ import sys
+ from collections import OrderedDict
+ 
+@@ -19,6 +18,11 @@
+ from virtualenv.util.six import ensure_text
+ from virtualenv.util.subprocess import Popen, subprocess
+ 
++if PY2:
++    from pipes import quote
++else:
++    from shlex import quote
++
+ _CACHE = OrderedDict()
+ _CACHE[Path(sys.executable)] = PythonInfo()
+ 
+@@ -122,7 +126,7 @@
+         def e(v):
+             return v.decode("utf-8") if isinstance(v, bytes) else v
+ 
+-        cmd_repr = e(" ").join(pipes.quote(e(c)) for c in self.cmd)
++        cmd_repr = e(" ").join(quote(e(c)) for c in self.cmd)
+         if self.env is not None:
+             cmd_repr += e(" env of {!r}").format(self.env)
+         if PY2:

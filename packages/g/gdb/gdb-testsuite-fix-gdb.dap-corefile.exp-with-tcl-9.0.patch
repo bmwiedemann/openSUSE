@@ -1,0 +1,42 @@
+From ca055ab7aac40f2a488d2266a8a764df0c8aea6b Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 11 May 2026 11:50:13 +0200
+Subject: [PATCH 8/9] [gdb/testsuite] Fix gdb.dap/corefile.exp with Tcl 9.0
+
+With test-case gdb.dap/corefile.exp and Tcl 9.0 I run into:
+...
+ERROR: tcl error sourcing gdb/testsuite/gdb.dap/corefile.exp.
+ERROR: tcl error code TCL LOOKUP VARNAME reg_name
+ERROR: can't read "reg_name": no such variable
+    while executing
+"s \$$reg_name"
+    (in namespace eval "::ton::2json" script line 1)
+    invoked from within
+"namespace eval ton::2json $obj"
+...
+
+Fix this by making clear that reg_name is a variable in the global namespace.
+
+Likewise for variable new_value.
+
+Tested on aarch64-linux.
+---
+ gdb/testsuite/gdb.dap/corefile.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.dap/corefile.exp b/gdb/testsuite/gdb.dap/corefile.exp
+index 0a47b39a22e..8311b2d1a9e 100644
+--- a/gdb/testsuite/gdb.dap/corefile.exp
++++ b/gdb/testsuite/gdb.dap/corefile.exp
+@@ -97,7 +97,7 @@ set expected_exception_count 1
+ if {[string is integer -strict $reg_value]} {
+     set new_value [expr {$reg_value + 1}]
+     set obj [dap_request_and_response setExpression \
+-		 {o expression [s \$$reg_name] value [s $new_value]}]
++		 {o expression [s \$$::reg_name] value [s $::new_value]}]
+     set response [lindex $obj 0]
+     gdb_assert { [dict get $response success] == "false" } \
+ 	"set register fails"
+-- 
+2.51.0
+

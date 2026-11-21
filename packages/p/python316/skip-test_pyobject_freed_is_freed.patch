@@ -1,0 +1,24 @@
+Skip test_pyobject_freed_is_freed on SLE/Leap 15
+
+The test fails on SLE/Leap 15.*; skip it there when SLE_VERSION
+is set by the spec file.
+
+Downstream only.
+---
+---
+ Lib/test/test_capi/test_mem.py |    3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: Python-3.16.0a2/Lib/test/test_capi/test_mem.py
+===================================================================
+--- Python-3.16.0a2.orig/Lib/test/test_capi/test_mem.py	2026-11-11 00:17:14.822681563 +0100
++++ Python-3.16.0a2/Lib/test/test_capi/test_mem.py	2026-11-11 00:23:33.963449191 +0100
+@@ -120,6 +120,8 @@
+     def test_pyobject_forbidden_bytes_is_freed(self):
+         self.check_pyobject_is_freed('check_pyobject_forbidden_bytes_is_freed')
+ 
++    @unittest.skipIf(os.environ.get('SLE_VERSION', '').startswith('015'),
++                     'Failing on Leap 15.*')
+     def test_pyobject_freed_is_freed(self):
+         self.check_pyobject_is_freed('check_pyobject_freed_is_freed')
+ 

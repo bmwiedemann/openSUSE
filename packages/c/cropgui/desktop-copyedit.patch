@@ -1,0 +1,14 @@
+diff -uNr cropgui.old/cropgui.desktop cropgui/cropgui.desktop
+--- cropgui.old/cropgui.desktop	2024-09-24 10:34:36.000000000 -0500
++++ cropgui/cropgui.desktop	2026-11-17 20:32:28.959591091 -0500
+@@ -4,8 +4,8 @@
+ Icon=cropgui
+ X-GNOME-DocPath=
+ Terminal=false
+-Name=Crop Photos
+-Comment=Losslessly Crop JPEG and other images.
++Name=Crop photos
++Comment=Losslessly crop JPEGs and other images
+ StartupNotify=false
+ Categories=Graphics;2DGraphics;RasterGraphics;GTK;
+ MimeType=image/*;

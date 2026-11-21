@@ -1,0 +1,106 @@
+Support openSUSE and SUSE products in OS detection and packages resource script,
+prevent parallel make build race conditions, and ensure COLOR is unset during build tests.
+
+* In src/Makefile:
+  - Define _TELA_COMPILED := 1 to prevent recursive sub-make invocations of tela
+    from running concurrently with parent make in parallel builds (-j).
+  - Add explicit link recipe for tela target using $(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@.
+* In src/libexec/os, fall back to /usr/lib/os-release if /etc/os-release does not exist,
+  per openSUSE guidance (https://en.opensuse.org/SDB:SUSE_and_openSUSE_Products_Version_Outputs).
+* In src/libexec/resources/packages:
+  - Define die() function.
+  - Query ../os if TELA_OS_ID is not set in the environment.
+  - Add opensuse*, suse*, sled, and caasp to RPM-based distribution case in get_state().
+  - Fall back to check_rpm (or check_dpkg) if package manager is present rather than dying when OS ID is unrecognized or empty.
+* Unset COLOR in src/tests/build_make.sh to ensure tests pass in colored terminals.
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,3 +1,4 @@
++_TELA_COMPILED := 1
+ include ../tela.mak
+ 
+ CFLAGS += -fPIC
+@@ -10,6 +11,7 @@ objects := $(patsubst %.c,%.o,$(wildcard *.c))
+ all: tela tela_api.o
+ 
+ tela: tela.o config.o misc.o log.o pretty.o record.o yaml.o resource.o console_zvm.o
++	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o $@
+ 
+ clean:
+ 	rm -f tela *.o
+--- a/src/libexec/os
++++ b/src/libexec/os
+@@ -9,6 +9,7 @@
+ OS_RELEASE=/etc/os-release
+ REDHAT_RELEASE=/etc/redhat-release
+ SUSE_RELEASE=/etc/SuSE-release
++[ ! -e "$OS_RELEASE" ] && [ -e /usr/lib/os-release ] && OS_RELEASE=/usr/lib/os-release
+ 
+ function print_os() {
+ 	local id="$1" ver="$2"
+--- a/src/libexec/resources/packages
++++ b/src/libexec/resources/packages
+@@ -24,6 +24,11 @@
+ #     perl: 5.8
+ #
+ 
++function die() {
++	echo "Error: $*" >&2
++	exit 1
++}
++
+ DATAFILE="$1"
+ 
+ # Compare versions a and b using comparison operator op (< > <= >= == !=).
+@@ -123,18 +128,37 @@ function check_dpkg() {
+ function get_state() {
+ 	local check line id
+ 
++	if [ -z "$TELA_OS_ID" ] ; then
++		local ostool
++		ostool="$(dirname "$0")/../os"
++		if [ -x "$ostool" ] ; then
++			while read -r line ; do
++				case "$line" in
++				"    id:"*)	 export TELA_OS_ID="${line#*: }" ;;
++				"    version:"*) export TELA_OS_VERSION="${line#*: }" ;;
++				esac
++			done < <("$ostool")
++		fi
++	fi
++
+ 	# Determine package manager
+ 	check=
+ 	case "$TELA_OS_ID" in
+-		rhel|sles|fedora|linuxonzdriver)
++		rhel|sles|sled|caasp|fedora|linuxonzdriver|opensuse*|suse*)
+ 			check=check_rpm
+ 			;;
+ 		ubuntu|debian)
+ 			check=check_dpkg
+ 			;;
+ 		*)
+-			die "Unsupported OS '$TELA_OS_ID'"
++			if command -v rpm >/dev/null 2>&1 ; then
++				check=check_rpm
++			elif command -v dpkg-query >/dev/null 2>&1 ; then
++				check=check_dpkg
++			else
++				die "Unsupported OS '$TELA_OS_ID'"
++			fi
+ 			;;
+ 	esac
+ 
+ 	IFS=$'\n'
+--- a/src/tests/build_make.sh
++++ b/src/tests/build_make.sh
+@@ -4,7 +4,7 @@
+ #
+ 
+ # Unset all tela-specific variables to prevent side-effects in sub-make
+-unset V PRETTY SCOPE LOG CACHE MAKEFLAGS FILTER RUNLOG
++unset V PRETTY SCOPE LOG CACHE MAKEFLAGS FILTER RUNLOG COLOR
+ for VAR in $(env) ; do
+ 	VAR=${VAR%%=*}
+ 	[[ $VAR =~ ^_?TELA ]] && unset $VAR

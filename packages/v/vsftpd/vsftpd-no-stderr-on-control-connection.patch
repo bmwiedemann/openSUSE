@@ -1,0 +1,125 @@
+From: Peter Simons <psimons@suse.com>
+Subject: Never send stderr output to the FTP client
+
+In standalone mode the session process got the client socket on fds 0,
+1 and 2, and in inetd mode the super server usually does the same.
+vsftpd itself only talks to the client through fd 0, but library code
+it calls into prints diagnostics to stderr. For example, libnsl prints
+"yp_bind_client_create_v3: RPC: Unable to send" when ypbind is not
+reachable during a getpwnam() lookup. That text was injected into the
+control connection, which confuses clients and leaks server internals.
+
+Standalone mode no longer puts the client socket on fd 2, so session
+processes inherit the listener's stderr instead (the journal when running
+in the foreground under systemd, /dev/null in background mode). In
+addition, if fd 1 or 2 refers to the client socket (inetd mode) or is
+closed, it is pointed at /dev/null before any NSS, PAM or libwrap code
+runs.
+
+--- a/main.c
++++ b/main.c
+@@ -156,6 +156,11 @@ main(int argc, const char* argv[])
+     the_session.num_this_ip = ret.num_this_ip;
+   }
+ 
++  /* Make sure stdout / stderr do not point to the client connection before
++   * we call into any library code that might print to them.
++   */
++  vsf_sysutil_detach_stdio_from_socket(VSFTP_COMMAND_FD);
++
+   die_init(&the_session);
+ 
+   if (tunable_tcp_wrappers)
+--- a/standalone.c
++++ b/standalone.c
+@@ -201,10 +201,13 @@ vsf_standalone_main(void)
+ static void
+ prepare_child(int new_client_sock)
+ {
+-  /* We must satisfy the contract: command socket on fd 0, 1, 2 */
++  /* We must satisfy the contract: command socket on fd 0, 1. Do not put it
++   * on fd 2: stderr is inherited from the listener (/dev/null in background
++   * mode, otherwise e.g. the journal), so that diagnostics printed by library
++   * code end up there instead of being sent to the FTP client.
++   */
+   vsf_sysutil_dupfd2(new_client_sock, 0);
+   vsf_sysutil_dupfd2(new_client_sock, 1);
+-  vsf_sysutil_dupfd2(new_client_sock, 2);
+   if (new_client_sock > 2)
+   {
+     vsf_sysutil_close(new_client_sock);
+--- a/sysutil.c
++++ b/sysutil.c
+@@ -2555,6 +2555,62 @@ error:
+ }
+ 
+ void
++vsf_sysutil_detach_stdio_from_socket(int sock_fd)
++{
++  /* stdout and stderr must never refer to the client connection. Library
++   * code we call into (NSS modules such as NIS, PAM modules, libwrap, ...)
++   * may print diagnostics there, which would then end up being injected into
++   * the FTP control connection. This happens in inetd mode, where the super
++   * server typically passes the connected socket on fds 0, 1 and 2.
++   */
++  struct stat sock_stat;
++  int fd;
++  int null_fd = -1;
++  if (fstat(sock_fd, &sock_stat) != 0)
++  {
++    /* Leave reporting this to the regular sanity checks. */
++    return;
++  }
++  for (fd = STDOUT_FILENO; fd <= STDERR_FILENO; ++fd)
++  {
++    struct stat fd_stat;
++    if (fd == sock_fd)
++    {
++      continue;
++    }
++    if (fstat(fd, &fd_stat) == 0)
++    {
++      if (fd_stat.st_dev != sock_stat.st_dev ||
++          fd_stat.st_ino != sock_stat.st_ino)
++      {
++        /* Something else, e.g. the journal or a log file - keep it. */
++        continue;
++      }
++    }
++    else if (errno != EBADF)
++    {
++      continue;
++    }
++    /* Either the client socket, or closed. A closed fd would be handed out
++     * by the next open()/socket() call, so plug it with /dev/null as well.
++     */
++    if (null_fd < 0)
++    {
++      null_fd = open("/dev/null", O_WRONLY, 0);
++      if (null_fd < 0)
++      {
++        die("open /dev/null");
++      }
++    }
++    vsf_sysutil_dupfd2(null_fd, fd);
++  }
++  if (null_fd > STDERR_FILENO)
++  {
++    vsf_sysutil_close(null_fd);
++  }
++}
++
++void
+ vsf_sysutil_tzset(void)
+ {
+   int retval;
+--- a/sysutil.h
++++ b/sysutil.h
+@@ -303,6 +303,7 @@ unsigned int vsf_sysutil_get_umask(void)
+ void vsf_sysutil_set_umask(unsigned int umask);
+ void vsf_sysutil_make_session_leader(void);
+ void vsf_sysutil_reopen_standard_fds(void);
++void vsf_sysutil_detach_stdio_from_socket(int sock_fd);
+ void vsf_sysutil_tzset(void);
+ const char* vsf_sysutil_get_current_date(void);
+ void vsf_sysutil_qsort(void* p_base, unsigned int num_elem,

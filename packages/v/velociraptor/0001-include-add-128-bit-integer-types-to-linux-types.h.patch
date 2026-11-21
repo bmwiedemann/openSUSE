@@ -1,0 +1,38 @@
+From f90a9c487d7542d91fa584b83b6a624a4fbeb341 Mon Sep 17 00:00:00 2001
+From: Daniel Golle <daniel@makrotopia.org>
+Date: Mon, 7 Sep 2026 16:54:26 +0100
+Subject: [PATCH] include: add 128-bit integer types to linux/types.h
+
+Linux 7.3 declares the fpsimd registers in the arm64 sigcontext as
+__u128 instead of __uint128_t, see kernel commit d4bf9e08d412 ("arm64:
+uapi: Use __u128 instead of __uint128_t in UAPI headers"). The private
+linux/types.h in include/ shadows the kernel's linux/types.h while
+building libbpf, so with glibc, whose signal.h pulls in
+asm/sigcontext.h, the build fails with an unknown type name __u128.
+Add the __s128 and __u128 typedefs as the kernel's uapi and tools
+headers define them.
+
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ third_party/libbpfgo/libbpf/include/linux/types.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/third_party/libbpfgo/libbpf/include/linux/types.h b/third_party/libbpfgo/libbpf/include/linux/types.h
+index cfb558a..3560e95 100644
+--- a/third_party/libbpfgo/libbpf/include/linux/types.h
++++ b/third_party/libbpfgo/libbpf/include/linux/types.h
+@@ -12,6 +12,11 @@
+ #include <asm/types.h>
+ #include <asm/posix_types.h>
+ 
++#ifdef __SIZEOF_INT128__
++typedef __signed__ __int128 __s128 __attribute__((aligned(16)));
++typedef unsigned __int128 __u128 __attribute__((aligned(16)));
++#endif
++
+ #define __bitwise__
+ #define __bitwise __bitwise__
+ 
+-- 
+2.50.0
+

@@ -1,0 +1,3355 @@
+diff --git a/jdk/src/share/classes/sun/awt/SunHints.java b/jdk/src/share/classes/sun/awt/SunHints.java
+index 15c7e54490..b82e056445 100644
+--- a/jdk/src/share/classes/sun/awt/SunHints.java
++++ b/jdk/src/share/classes/sun/awt/SunHints.java
+@@ -257,8 +257,10 @@ public class SunHints {
+      */
+     @Native public static final int INTKEY_RESOLUTION_VARIANT = 9;
+     @Native public static final int INTVAL_RESOLUTION_VARIANT_DEFAULT = 0;
+-    @Native public static final int INTVAL_RESOLUTION_VARIANT_OFF = 1;
+-    @Native public static final int INTVAL_RESOLUTION_VARIANT_ON = 2;
++    @Native public static final int INTVAL_RESOLUTION_VARIANT_BASE = 1;
++    @Native public static final int INTVAL_RESOLUTION_VARIANT_SIZE_FIT = 2;
++    @Native public static final int INTVAL_RESOLUTION_VARIANT_DPI_FIT = 3;
++
+     /**
+      * LCD text contrast control hint key.
+      * Value is "100" to make discontiguous with the others which
+@@ -466,15 +468,23 @@ public class SunHints {
+     public static final Object VALUE_RESOLUTION_VARIANT_DEFAULT =
+         new SunHints.Value(KEY_RESOLUTION_VARIANT,
+                            SunHints.INTVAL_RESOLUTION_VARIANT_DEFAULT,
+-                           "Choose image resolutions based on a default heuristic");
+-    public static final Object VALUE_RESOLUTION_VARIANT_OFF =
++                           "Choose image resolutions based on a default"
++                                   + "heuristic");
++    public static final Object VALUE_RESOLUTION_VARIANT_BASE =
+         new SunHints.Value(KEY_RESOLUTION_VARIANT,
+-                           SunHints.INTVAL_RESOLUTION_VARIANT_OFF,
++                           SunHints.INTVAL_RESOLUTION_VARIANT_BASE,
+                            "Use only the standard resolution of an image");
+-    public static final Object VALUE_RESOLUTION_VARIANT_ON =
++    public static final Object VALUE_RESOLUTION_VARIANT_SIZE_FIT =
++        new SunHints.Value(KEY_RESOLUTION_VARIANT,
++                           SunHints.INTVAL_RESOLUTION_VARIANT_SIZE_FIT,
++                           "Choose image resolutions based on the DPI"
++                                   + "of the screen and transform"
++                                   + "in the Graphics2D context");
++    public static final Object VALUE_RESOLUTION_VARIANT_DPI_FIT =
+         new SunHints.Value(KEY_RESOLUTION_VARIANT,
+-                           SunHints.INTVAL_RESOLUTION_VARIANT_ON,
+-                           "Always use resolution-specific variants of images");
++                           SunHints.INTVAL_RESOLUTION_VARIANT_DPI_FIT,
++                           "Choose image resolutions based only on the DPI"
++                                   + " of the screen");
+ 
+     public static class LCDContrastKey extends Key {
+ 
+diff --git a/jdk/src/share/classes/sun/awt/image/AbstractMultiResolutionImage.java b/jdk/src/share/classes/sun/awt/image/AbstractMultiResolutionImage.java
+index 94c0709166..176c0596f9 100644
+--- a/jdk/src/share/classes/sun/awt/image/AbstractMultiResolutionImage.java
++++ b/jdk/src/share/classes/sun/awt/image/AbstractMultiResolutionImage.java
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -29,43 +29,33 @@ import java.awt.Image;
+ import java.awt.image.*;
+ 
+ /**
+- * This class provides default implementations for the
+- * <code>MultiResolutionImage</code> interface. The developer needs only
+- * to subclass this abstract class and define the <code>getResolutionVariant</code>,
+- * <code>getResolutionVariants</code>, and <code>getBaseImage</code> methods.
+- *
++ * This class provides default implementations of several {@code Image} methods
++ * for classes that want to implement the {@MultiResolutionImage} interface.
+  *
+  * For example,
+- * {@code
++ * <pre> {@code
+  * public class CustomMultiResolutionImage extends AbstractMultiResolutionImage {
+  *
+- *     int baseImageIndex;
+- *     Image[] resolutionVariants;
++ *     final Image[] resolutionVariants;
+  *
+- *     public CustomMultiResolutionImage(int baseImageIndex,
+- *             Image... resolutionVariants) {
+- *          this.baseImageIndex = baseImageIndex;
++ *     public CustomMultiResolutionImage(Image... resolutionVariants) {
+  *          this.resolutionVariants = resolutionVariants;
+  *     }
+  *
+- *     @Override
+- *     public Image getResolutionVariant(float logicalDPIX, float logicalDPIY,
+- *             float baseImageWidth, float baseImageHeight,
+- *             float destImageWidth, float destImageHeight) {
+- *         // return a resolution variant based on the given logical DPI,
+- *         // base image size, or destination image size
++ *     public Image getResolutionVariant(
++ *             double destImageWidth, double destImageHeight) {
++ *         // return a resolution variant based on the given destination image size
+  *     }
+  *
+- *     @Override
+  *     public List<Image> getResolutionVariants() {
+- *         return Arrays.asList(resolutionVariants);
++ *         return Collections.unmodifiableList(Arrays.asList(resolutionVariants));
+  *     }
+  *
+  *     protected Image getBaseImage() {
+- *         return resolutionVariants[baseImageIndex];
++ *         return resolutionVariants[0];
+  *     }
+  * }
+- * }
++ * } </pre>
+  *
+  * @see java.awt.Image
+  * @see java.awt.image.MultiResolutionImage
+@@ -74,49 +64,39 @@ import java.awt.image.*;
+ public abstract class AbstractMultiResolutionImage extends java.awt.Image
+         implements MultiResolutionImage {
+ 
+-    /**
+-     * @inheritDoc
+-     */
+     @Override
+     public int getWidth(ImageObserver observer) {
+-        return getBaseImage().getWidth(null);
++        return getBaseImage().getWidth(observer);
+     }
+ 
+-    /**
+-     * @inheritDoc
+-     */
+     @Override
+     public int getHeight(ImageObserver observer) {
+-        return getBaseImage().getHeight(null);
++        return getBaseImage().getHeight(observer);
+     }
+ 
+-    /**
+-     * @inheritDoc
+-     */
+     @Override
+     public ImageProducer getSource() {
+         return getBaseImage().getSource();
+     }
+ 
+-    /**
+-     * @inheritDoc
+-     */
+     @Override
+     public Graphics getGraphics() {
+-        return getBaseImage().getGraphics();
+-
++        throw new UnsupportedOperationException("getGraphics() not supported"
++                + " on Multi-Resolution Images");
+     }
+ 
+-    /**
+-     * @inheritDoc
+-     */
+     @Override
+     public Object getProperty(String name, ImageObserver observer) {
+         return getBaseImage().getProperty(name, observer);
+     }
+ 
+     /**
+-     * @return base image
++     * Return the base image representing the best version of the image for
++     * rendering at the default width and height.
++     *
++     * @return the base image of the set of multi-resolution images
++     *
++     * @since 1.9
+      */
+     protected abstract Image getBaseImage();
+ }
+diff --git a/jdk/src/share/classes/sun/awt/image/BaseMultiResolutionImage.java b/jdk/src/share/classes/sun/awt/image/BaseMultiResolutionImage.java
+new file mode 100644
+index 0000000000..47bb4f6fba
+--- /dev/null
++++ b/jdk/src/share/classes/sun/awt/image/BaseMultiResolutionImage.java
+@@ -0,0 +1,150 @@
++/*
++ * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
++ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
++ *
++ * This code is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License version 2 only, as
++ * published by the Free Software Foundation.  Oracle designates this
++ * particular file as subject to the "Classpath" exception as provided
++ * by Oracle in the LICENSE file that accompanied this code.
++ *
++ * This code is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
++ * version 2 for more details (a copy is included in the LICENSE file that
++ * accompanied this code).
++ *
++ * You should have received a copy of the GNU General Public License version
++ * 2 along with this work; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
++ * or visit www.oracle.com if you need additional information or have any
++ * questions.
++ */
++package sun.awt.image;
++
++import java.awt.Image;
++import java.util.List;
++import java.util.Arrays;
++import java.util.Collections;
++import java.util.Objects;
++
++/**
++ * This class is an array-based implementation of
++ * the {@code AbstractMultiResolutionImage} class.
++ *
++ * This class will implement the
++ * {@code getResolutionVariant(double destImageWidth, double destImageHeight)}
++ * method using a simple algorithm which will return the first image variant
++ * in the array that is large enough to satisfy the rendering request. The
++ * last image in the array will be returned if no suitable image is found
++ * that is as large as the rendering request.
++ * <p>
++ * For best effect the array of images should be sorted with each image being
++ * both wider and taller than the previous image.  The base image need not be
++ * the first image in the array. No exception will be thrown if the images
++ * are not sorted as suggested.
++ *
++ * @see java.awt.Image
++ * @see java.awt.image.MultiResolutionImage
++ * @see java.awt.image.AbstractMultiResolutionImage
++ *
++ * @since 1.9
++ */
++public class BaseMultiResolutionImage extends AbstractMultiResolutionImage {
++
++    private final int baseImageIndex;
++    private final Image[] resolutionVariants;
++
++    /**
++     * Creates a multi-resolution image with the given resolution variants.
++     * The first resolution variant is used as the base image.
++     *
++     * @param resolutionVariants array of resolution variants sorted by image size
++     * @throws IllegalArgumentException if null or zero-length array is passed
++     * @throws NullPointerException if the specified {@code resolutionVariants}
++     *          contains one or more null elements
++     *
++     * @since 1.9
++     */
++    public BaseMultiResolutionImage(Image... resolutionVariants) {
++        this(0, resolutionVariants);
++    }
++
++    /**
++     * Creates a multi-resolution image with the given base image index and
++     * resolution variants.
++     *
++     * @param baseImageIndex the index of base image in the resolution variants
++     *        array
++     * @param resolutionVariants array of resolution variants sorted by image size
++     * @throws IllegalArgumentException if null or zero-length array is passed
++     * @throws NullPointerException if the specified {@code resolutionVariants}
++     *          contains one or more null elements
++     * @throws IndexOutOfBoundsException if {@code baseImageIndex} is
++     *          negative or greater than or equal to {@code resolutionVariants}
++     *          length.
++     *
++     * @since 1.9
++     */
++    public BaseMultiResolutionImage(int baseImageIndex,
++                                    Image... resolutionVariants) {
++
++        if (resolutionVariants == null || resolutionVariants.length == 0) {
++            throw new IllegalArgumentException(
++                    "Null or zero-length array is passed");
++        }
++
++        if (baseImageIndex < 0 || baseImageIndex >= resolutionVariants.length) {
++            throw new IndexOutOfBoundsException("Invalid base image index: "
++                    + baseImageIndex);
++        }
++
++        this.baseImageIndex = baseImageIndex;
++        this.resolutionVariants = Arrays.copyOf(resolutionVariants,
++                                                resolutionVariants.length);
++
++        for (Image resolutionVariant : this.resolutionVariants) {
++            Objects.requireNonNull(resolutionVariant,
++                                   "Resolution variant can't be null");
++        }
++    }
++
++    @Override
++    public Image getResolutionVariant(double destImageWidth,
++                                      double destImageHeight) {
++
++        checkSize(destImageWidth, destImageHeight);
++
++        for (Image rvImage : resolutionVariants) {
++            if (destImageWidth <= rvImage.getWidth(null)
++                    && destImageHeight <= rvImage.getHeight(null)) {
++                return rvImage;
++            }
++        }
++        return resolutionVariants[resolutionVariants.length - 1];
++    }
++
++    private static void checkSize(double width, double height) {
++        if (width <= 0 || height <= 0) {
++            throw new IllegalArgumentException(String.format(
++                    "Width (%s) or height (%s) cannot be <= 0", width, height));
++        }
++
++        if (!Double.isFinite(width) || !Double.isFinite(height)) {
++            throw new IllegalArgumentException(String.format(
++                    "Width (%s) or height (%s) is not finite", width, height));
++        }
++    }
++
++    @Override
++    public List<Image> getResolutionVariants() {
++        return Collections.unmodifiableList(Arrays.asList(resolutionVariants));
++    }
++
++    @Override
++    protected Image getBaseImage() {
++        return resolutionVariants[baseImageIndex];
++    }
++}
+diff --git a/jdk/src/share/classes/sun/awt/image/BufImgSurfaceData.java b/jdk/src/share/classes/sun/awt/image/BufImgSurfaceData.java
+index 755e0f38d6..5a9e2aeb98 100644
+--- a/jdk/src/share/classes/sun/awt/image/BufImgSurfaceData.java
++++ b/jdk/src/share/classes/sun/awt/image/BufImgSurfaceData.java
+@@ -46,6 +46,8 @@ public class BufImgSurfaceData extends SurfaceData {
+     BufferedImage bufImg;
+     private BufferedImageGraphicsConfig graphicsConfig;
+     RenderLoops solidloops;
++    private final double scaleX;
++    private final double scaleY;
+ 
+     private static native void initIDs(Class ICM, Class ICMColorData);
+ 
+@@ -69,6 +71,12 @@ public class BufImgSurfaceData extends SurfaceData {
+     }
+ 
+     public static SurfaceData createData(BufferedImage bufImg) {
++        return createData(bufImg, 1, 1);
++    }
++
++    public static SurfaceData createData(BufferedImage bufImg,
++                                         double scaleX, double scaleY)
++    {
+         if (bufImg == null) {
+             throw new NullPointerException("BufferedImage cannot be null");
+         }
+@@ -78,31 +86,36 @@ public class BufImgSurfaceData extends SurfaceData {
+         // REMIND: Check the image type and pick an appropriate subclass
+         switch (type) {
+         case BufferedImage.TYPE_INT_BGR:
+-            sData = createDataIC(bufImg, SurfaceType.IntBgr);
++            sData = createDataIC(bufImg, SurfaceType.IntBgr, scaleX, scaleY);
+             break;
+         case BufferedImage.TYPE_INT_RGB:
+-            sData = createDataIC(bufImg, SurfaceType.IntRgb);
++            sData = createDataIC(bufImg, SurfaceType.IntRgb, scaleX, scaleY);
+             break;
+         case BufferedImage.TYPE_INT_ARGB:
+-            sData = createDataIC(bufImg, SurfaceType.IntArgb);
++            sData = createDataIC(bufImg, SurfaceType.IntArgb, scaleX, scaleY);
+             break;
+         case BufferedImage.TYPE_INT_ARGB_PRE:
+-            sData = createDataIC(bufImg, SurfaceType.IntArgbPre);
++            sData = createDataIC(bufImg, SurfaceType.IntArgbPre, scaleX, scaleY);
+             break;
+         case BufferedImage.TYPE_3BYTE_BGR:
+-            sData = createDataBC(bufImg, SurfaceType.ThreeByteBgr, 2);
++            sData = createDataBC(bufImg, SurfaceType.ThreeByteBgr, 2,
++                                 scaleX, scaleY);
+             break;
+         case BufferedImage.TYPE_4BYTE_ABGR:
+-            sData = createDataBC(bufImg, SurfaceType.FourByteAbgr, 3);
++            sData = createDataBC(bufImg, SurfaceType.FourByteAbgr, 3,
++                                 scaleX, scaleY);
+             break;
+         case BufferedImage.TYPE_4BYTE_ABGR_PRE:
+-            sData = createDataBC(bufImg, SurfaceType.FourByteAbgrPre, 3);
++            sData = createDataBC(bufImg, SurfaceType.FourByteAbgrPre, 3,
++                                 scaleX, scaleY);
+             break;
+         case BufferedImage.TYPE_USHORT_565_RGB:
+-            sData = createDataSC(bufImg, SurfaceType.Ushort565Rgb, null);
++            sData = createDataSC(bufImg, SurfaceType.Ushort565Rgb, null,
++                                 scaleX, scaleY);
+             break;
+         case BufferedImage.TYPE_USHORT_555_RGB:
+-            sData = createDataSC(bufImg, SurfaceType.Ushort555Rgb, null);
++            sData = createDataSC(bufImg, SurfaceType.Ushort555Rgb, null,
++                                 scaleX, scaleY);
+             break;
+         case BufferedImage.TYPE_BYTE_INDEXED:
+             {
+@@ -124,14 +137,16 @@ public class BufImgSurfaceData extends SurfaceData {
+                 default:
+                     throw new InternalError("Unrecognized transparency");
+                 }
+-                sData = createDataBC(bufImg, sType, 0);
++                sData = createDataBC(bufImg, sType, 0, scaleX, scaleY);
+             }
+             break;
+         case BufferedImage.TYPE_BYTE_GRAY:
+-            sData = createDataBC(bufImg, SurfaceType.ByteGray, 0);
++            sData = createDataBC(bufImg, SurfaceType.ByteGray, 0,
++                                 scaleX, scaleY);
+             break;
+         case BufferedImage.TYPE_USHORT_GRAY:
+-            sData = createDataSC(bufImg, SurfaceType.UshortGray, null);
++            sData = createDataSC(bufImg, SurfaceType.UshortGray, null,
++                                 scaleX, scaleY);
+             break;
+         case BufferedImage.TYPE_BYTE_BINARY:
+             {
+@@ -150,7 +165,7 @@ public class BufImgSurfaceData extends SurfaceData {
+                 default:
+                     throw new InternalError("Unrecognized pixel size");
+                 }
+-                sData = createDataBP(bufImg, sType);
++                sData = createDataBP(bufImg, sType, scaleX, scaleY);
+             }
+             break;
+         case BufferedImage.TYPE_CUSTOM:
+@@ -187,7 +202,7 @@ public class BufImgSurfaceData extends SurfaceData {
+                             sType = SurfaceType.AnyDcm;
+                         }
+                     }
+-                    sData = createDataIC(bufImg, sType);
++                    sData = createDataIC(bufImg, sType, scaleX, scaleY);
+                     break;
+                 } else if (raster instanceof ShortComponentRaster &&
+                            raster.getNumDataElements() == 1 &&
+@@ -229,11 +244,12 @@ public class BufImgSurfaceData extends SurfaceData {
+                             icm = null;
+                         }
+                     }
+-                    sData = createDataSC(bufImg, sType, icm);
++                    sData = createDataSC(bufImg, sType, icm, scaleX, scaleY);
+                     break;
+                 }
+-                sData = new BufImgSurfaceData(raster.getDataBuffer(),
+-                                              bufImg, SurfaceType.Custom);
++                sData = new BufImgSurfaceData(raster.getDataBuffer(), bufImg,
++                                              SurfaceType.Custom,
++                                              scaleX, scaleY);
+             }
+             break;
+         }
+@@ -246,11 +262,15 @@ public class BufImgSurfaceData extends SurfaceData {
+     }
+ 
+     public static SurfaceData createDataIC(BufferedImage bImg,
+-                                           SurfaceType sType) {
++                                           SurfaceType sType,
++                                           double scaleX,
++                                           double scaleY)
++    {
+         IntegerComponentRaster icRaster =
+             (IntegerComponentRaster)bImg.getRaster();
+         BufImgSurfaceData bisd =
+-            new BufImgSurfaceData(icRaster.getDataBuffer(), bImg, sType);
++            new BufImgSurfaceData(icRaster.getDataBuffer(), bImg, sType,
++                                  scaleX, scaleY);
+         bisd.initRaster(icRaster.getDataStorage(),
+                         icRaster.getDataOffset(0) * 4, 0,
+                         icRaster.getWidth(),
+@@ -263,11 +283,14 @@ public class BufImgSurfaceData extends SurfaceData {
+ 
+     public static SurfaceData createDataSC(BufferedImage bImg,
+                                            SurfaceType sType,
+-                                           IndexColorModel icm) {
++                                           IndexColorModel icm,
++                                           double scaleX, double scaleY)
++    {
+         ShortComponentRaster scRaster =
+             (ShortComponentRaster)bImg.getRaster();
+         BufImgSurfaceData bisd =
+-            new BufImgSurfaceData(scRaster.getDataBuffer(), bImg, sType);
++            new BufImgSurfaceData(scRaster.getDataBuffer(), bImg, sType,
++                                  scaleX, scaleY);
+         bisd.initRaster(scRaster.getDataStorage(),
+                         scRaster.getDataOffset(0) * 2, 0,
+                         scRaster.getWidth(),
+@@ -280,11 +303,14 @@ public class BufImgSurfaceData extends SurfaceData {
+ 
+     public static SurfaceData createDataBC(BufferedImage bImg,
+                                            SurfaceType sType,
+-                                           int primaryBank) {
++                                           int primaryBank,
++                                           double scaleX, double scaleY)
++    {
+         ByteComponentRaster bcRaster =
+             (ByteComponentRaster)bImg.getRaster();
+         BufImgSurfaceData bisd =
+-            new BufImgSurfaceData(bcRaster.getDataBuffer(), bImg, sType);
++            new BufImgSurfaceData(bcRaster.getDataBuffer(), bImg, sType,
++                                  scaleX, scaleY);
+         ColorModel cm = bImg.getColorModel();
+         IndexColorModel icm = ((cm instanceof IndexColorModel)
+                                ? (IndexColorModel) cm
+@@ -300,11 +326,14 @@ public class BufImgSurfaceData extends SurfaceData {
+     }
+ 
+     public static SurfaceData createDataBP(BufferedImage bImg,
+-                                           SurfaceType sType) {
++                                           SurfaceType sType,
++                                           double scaleX, double scaleY)
++    {
+         BytePackedRaster bpRaster =
+             (BytePackedRaster)bImg.getRaster();
+         BufImgSurfaceData bisd =
+-            new BufImgSurfaceData(bpRaster.getDataBuffer(), bImg, sType);
++            new BufImgSurfaceData(bpRaster.getDataBuffer(), bImg, sType,
++                                  scaleX, scaleY);
+         ColorModel cm = bImg.getColorModel();
+         IndexColorModel icm = ((cm instanceof IndexColorModel)
+                                ? (IndexColorModel) cm
+@@ -346,15 +375,22 @@ public class BufImgSurfaceData extends SurfaceData {
+                                      IndexColorModel icm);
+ 
+     public BufImgSurfaceData(DataBuffer db,
+-                             BufferedImage bufImg, SurfaceType sType)
++                             BufferedImage bufImg,
++                             SurfaceType sType,
++                             double scaleX,
++                             double scaleY)
+     {
+         super(SunWritableRaster.stealTrackable(db),
+               sType, bufImg.getColorModel());
+         this.bufImg = bufImg;
++        this.scaleX = scaleX;
++        this.scaleY = scaleY;
+     }
+ 
+     protected BufImgSurfaceData(SurfaceType surfaceType, ColorModel cm) {
+         super(surfaceType, cm);
++        this.scaleX = 1;
++        this.scaleY = 1;
+     }
+ 
+     public void initSolidLoops() {
+@@ -391,7 +427,8 @@ public class BufImgSurfaceData extends SurfaceData {
+ 
+     public synchronized GraphicsConfiguration getDeviceConfiguration() {
+         if (graphicsConfig == null) {
+-            graphicsConfig = BufferedImageGraphicsConfig.getConfig(bufImg);
++            graphicsConfig = BufferedImageGraphicsConfig
++                    .getConfig(bufImg, scaleX, scaleY);
+         }
+         return graphicsConfig;
+     }
+@@ -412,6 +449,16 @@ public class BufImgSurfaceData extends SurfaceData {
+         return bufImg;
+     }
+ 
++    @Override
++    public double getDefaultScaleX() {
++        return scaleX;
++    }
++
++    @Override
++    public double getDefaultScaleY() {
++        return scaleY;
++    }
++
+     public static final class ICMColorData {
+         private long pData = 0L;
+ 
+diff --git a/jdk/src/share/classes/sun/awt/image/BufferedImageGraphicsConfig.java b/jdk/src/share/classes/sun/awt/image/BufferedImageGraphicsConfig.java
+index dd831a65bf..778a082ff5 100644
+--- a/jdk/src/share/classes/sun/awt/image/BufferedImageGraphicsConfig.java
++++ b/jdk/src/share/classes/sun/awt/image/BufferedImageGraphicsConfig.java
+@@ -45,19 +45,32 @@ public class BufferedImageGraphicsConfig
+     extends GraphicsConfiguration
+ {
+     private static final int numconfigs = BufferedImage.TYPE_BYTE_BINARY;
+-    private static BufferedImageGraphicsConfig configs[] =
++    private static BufferedImageGraphicsConfig standardConfigs[] =
++        new BufferedImageGraphicsConfig[numconfigs];
++    private static BufferedImageGraphicsConfig scaledConfigs[] =
+         new BufferedImageGraphicsConfig[numconfigs];
+ 
+     public static BufferedImageGraphicsConfig getConfig(BufferedImage bImg) {
++        return getConfig(bImg, 1, 1);
++    }
++
++    public static BufferedImageGraphicsConfig getConfig(BufferedImage bImg,
++                                                        double scaleX,
++                                                        double scaleY)
++    {
+         BufferedImageGraphicsConfig ret;
+         int type = bImg.getType();
++
++        BufferedImageGraphicsConfig[] configs = (scaleX == 1 && scaleY == 1)
++                ? standardConfigs : scaledConfigs;
++
+         if (type > 0 && type < numconfigs) {
+             ret = configs[type];
+-            if (ret != null) {
++            if (ret != null && ret.scaleX == scaleX && ret.scaleY == scaleY) {
+                 return ret;
+             }
+         }
+-        ret = new BufferedImageGraphicsConfig(bImg, null);
++        ret = new BufferedImageGraphicsConfig(bImg, null, scaleX, scaleY);
+         if (type > 0 && type < numconfigs) {
+             configs[type] = ret;
+         }
+@@ -68,8 +81,16 @@ public class BufferedImageGraphicsConfig
+     ColorModel model;
+     Raster raster;
+     int width, height;
++    private final double scaleX;
++    private final double scaleY;
+ 
+     public BufferedImageGraphicsConfig(BufferedImage bufImg, Component comp) {
++        this(bufImg, comp, 1, 1);
++    }
++
++    public BufferedImageGraphicsConfig(BufferedImage bufImg, Component comp,
++                                       double scaleX, double scaleY)
++    {
+         if (comp == null) {
+             this.gd = new BufferedImageDevice(this);
+         } else {
+@@ -80,6 +101,8 @@ public class BufferedImageGraphicsConfig
+         this.raster = bufImg.getRaster().createCompatibleWritableRaster(1, 1);
+         this.width = bufImg.getWidth();
+         this.height = bufImg.getHeight();
++        this.scaleX = scaleX;
++        this.scaleY = scaleY;
+     }
+ 
+     /**
+@@ -141,7 +164,7 @@ public class BufferedImageGraphicsConfig
+      * For image buffers, this Transform will be the Identity transform.
+      */
+     public AffineTransform getDefaultTransform() {
+-        return new AffineTransform();
++        return AffineTransform.getScaleInstance(scaleX, scaleY);
+     }
+ 
+     /**
+diff --git a/jdk/src/share/classes/sun/awt/image/MultiResolutionCachedImage.java b/jdk/src/share/classes/sun/awt/image/MultiResolutionCachedImage.java
+index b1c6dae2c4..be98751e18 100644
+--- a/jdk/src/share/classes/sun/awt/image/MultiResolutionCachedImage.java
++++ b/jdk/src/share/classes/sun/awt/image/MultiResolutionCachedImage.java
+@@ -58,7 +58,10 @@ public class MultiResolutionCachedImage extends AbstractMultiResolutionImage {
+     }
+ 
+     @Override
+-    public Image getResolutionVariant(int width, int height) {
++    public Image getResolutionVariant(double destWidth, double destHeight) {
++        checkSize(destWidth, destHeight);
++        int width = (int) Math.ceil(destWidth);
++        int height = (int) Math.ceil(destHeight);
+         ImageCache cache = ImageCache.getInstance();
+         ImageCacheKey key = new ImageCacheKey(this, width, height);
+         Image resolutionVariant = cache.getImage(key);
+@@ -70,11 +73,23 @@ public class MultiResolutionCachedImage extends AbstractMultiResolutionImage {
+         return resolutionVariant;
+     }
+ 
++    private static void checkSize(double width, double height) {
++        if (width <= 0 || height <= 0) {
++            throw new IllegalArgumentException(String.format(
++                    "Width (%s) or height (%s) cannot be <= 0", width, height));
++        }
++
++        if (!Double.isFinite(width) || !Double.isFinite(height)) {
++            throw new IllegalArgumentException(String.format(
++                    "Width (%s) or height (%s) is not finite", width, height));
++        }
++    }
++
+     @Override
+     public List<Image> getResolutionVariants() {
+         return Arrays.stream(sizes).map((Function<Dimension2D, Image>) size
+-                -> getResolutionVariant((int) size.getWidth(),
+-                        (int) size.getHeight())).collect(Collectors.toList());
++                -> getResolutionVariant(size.getWidth(), size.getHeight()))
++                .collect(Collectors.toList());
+     }
+ 
+     public MultiResolutionCachedImage map(Function<Image, Image> mapper) {
+@@ -86,19 +101,24 @@ public class MultiResolutionCachedImage extends AbstractMultiResolutionImage {
+     @Override
+     public int getWidth(ImageObserver observer) {
+         updateInfo(observer, ImageObserver.WIDTH);
+-        return super.getWidth(observer);
++        return baseImageWidth;
+     }
+ 
+     @Override
+     public int getHeight(ImageObserver observer) {
+         updateInfo(observer, ImageObserver.HEIGHT);
+-        return super.getHeight(observer);
++        return baseImageHeight;
+     }
+ 
+     @Override
+     public Object getProperty(String name, ImageObserver observer) {
+         updateInfo(observer, ImageObserver.PROPERTIES);
+-        return super.getProperty(name, observer);
++        return Image.UndefinedProperty;
++    }
++
++    @Override
++    public Image getScaledInstance(int width, int height, int hints) {
++        return getResolutionVariant(width, height);
+     }
+ 
+     @Override
+@@ -178,4 +198,4 @@ public class MultiResolutionCachedImage extends AbstractMultiResolutionImage {
+             return false;
+         }
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/jdk/src/share/classes/sun/awt/image/MultiResolutionImage.java b/jdk/src/share/classes/sun/awt/image/MultiResolutionImage.java
+index 40be02e367..31aba8d51f 100644
+--- a/jdk/src/share/classes/sun/awt/image/MultiResolutionImage.java
++++ b/jdk/src/share/classes/sun/awt/image/MultiResolutionImage.java
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2013, 2015, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -28,54 +28,54 @@ import java.awt.Image;
+ import java.util.List;
+ 
+ /**
+- * This interface is designed to provide a set of images at various resolutions.
++ * This interface is designed to be an optional additional API supported by
++ * some implementations of {@link java.awt.Image} to allow them to provide
++ * alternate images for various rendering resolutions. The various
++ * {@code Graphics.drawImage(...)} variant methods will consult the methods
++ * of this interface if it is implemented on the argument {@code Image} object
++ * in order to choose the best representation to use for each rendering operation.
++ * <p>
++ * The {@code MultiResolutionImage} interface should be implemented by any
++ * subclass of {@code java.awt.Image} whose instances are intended to provide
++ * image resolution variants according to the given image width and height.
++ * For convenience, toolkit images obtained from
++ * {@code Toolkit.getImage(String name)} and {@code Toolkit.getImage(URL url)}
++ * will implement this interface on platforms that support naming conventions
++ * for resolution variants of stored image media and the
++ * {@code AbstractMultiResolutionImage} and {@code BaseMultiResolutionImage}
++ * classes are provided to facilitate easy construction of custom multi-resolution
++ * images from a list of related images.
+  *
+- * The <code>MultiResolutionImage</code> interface should be implemented by any
+- * class whose instances are intended to provide image resolution variants
+- * according to the given image width and height.
++ * @see java.awt.Image
++ * @see sun.awt.image.AbstractMultiResolutionImage
++ * @see sun.awt.image.BaseMultiResolutionImage
++ * @see java.awt.Toolkit#getImage(java.lang.String filename)
++ * @see java.awt.Toolkit#getImage(java.net.URL url)
+  *
+- * For example,
+- * <pre>
+- * {@code
+- *  public class ScaledImage extends BufferedImage
+- *         implements MultiResolutionImage {
+- *
+- *    @Override
+- *    public Image getResolutionVariant(int width, int height) {
+- *      return ((width <= getWidth() && height <= getHeight()))
+- *             ? this : highResolutionImage;
+- *    }
+- *
+- *    @Override
+- *    public List<Image> getResolutionVariants() {
+- *        return Arrays.asList(this, highResolutionImage);
+- *    }
+- *  }
+- * }</pre>
+- *
+- * It is recommended to cache image variants for performance reasons.
+- *
+- * <b>WARNING</b>: This class is an implementation detail. This API may change
+- * between update release, and it may even be removed or be moved in some other
+- * package(s)/class(es).
+  */
+ public interface MultiResolutionImage {
+ 
+     /**
+-     * Provides an image with necessary resolution which best fits to the given
+-     * image width and height.
++     * Gets a specific image that is the best variant to represent
++     * this logical image at the indicated size.
+      *
+-     * @param width the desired image resolution width.
+-     * @param height the desired image resolution height.
++     * @param destImageWidth the width of the destination image, in pixels.
++     * @param destImageHeight the height of the destination image, in pixels.
+      * @return image resolution variant.
++     * @throws IllegalArgumentException if {@code destImageWidth} or
++     *         {@code destImageHeight} is less than or equal to zero, infinity,
++     *         or NaN.
+      *
+      * @since JDK1.8
+      */
+-    public Image getResolutionVariant(int width, int height);
++    Image getResolutionVariant(double destImageWidth, double destImageHeight);
+ 
+     /**
+-     * Gets list of all resolution variants including the base image
+-     *
++     * Gets a readable list of all resolution variants.
++     * The list must be nonempty and contain at least one resolution variant.
++     * <p>
++     * Note that many implementations might return an unmodifiable list.
++     * <p>
+      * @return list of resolution variants.
+      * @since JDK1.8
+      */
+diff --git a/jdk/src/share/classes/sun/awt/image/MultiResolutionToolkitImage.java b/jdk/src/share/classes/sun/awt/image/MultiResolutionToolkitImage.java
+index 46ef09fdbe..9ab82f0d47 100644
+--- a/jdk/src/share/classes/sun/awt/image/MultiResolutionToolkitImage.java
++++ b/jdk/src/share/classes/sun/awt/image/MultiResolutionToolkitImage.java
+@@ -40,11 +40,24 @@ public class MultiResolutionToolkitImage extends ToolkitImage implements MultiRe
+     }
+ 
+     @Override
+-    public Image getResolutionVariant(int width, int height) {
+-        return ((width <= getWidth() && height <= getHeight()))
++    public Image getResolutionVariant(double destWidth, double destHeight) {
++        checkSize(destWidth, destHeight);
++        return ((destWidth <= getWidth() && destHeight <= getHeight()))
+                 ? this : resolutionVariant;
+     }
+ 
++    private static void checkSize(double width, double height) {
++        if (width <= 0 || height <= 0) {
++            throw new IllegalArgumentException(String.format(
++                    "Width (%s) or height (%s) cannot be <= 0", width, height));
++        }
++
++        if (!Double.isFinite(width) || !Double.isFinite(height)) {
++            throw new IllegalArgumentException(String.format(
++                    "Width (%s) or height (%s) is not finite", width, height));
++        }
++    }
++
+     public Image getResolutionVariant() {
+         return resolutionVariant;
+     }
+diff --git a/jdk/src/share/classes/sun/awt/image/SunVolatileImage.java b/jdk/src/share/classes/sun/awt/image/SunVolatileImage.java
+index e5e8ca95af..1ee5c4019f 100644
+--- a/jdk/src/share/classes/sun/awt/image/SunVolatileImage.java
++++ b/jdk/src/share/classes/sun/awt/image/SunVolatileImage.java
+@@ -237,8 +237,17 @@ public class SunVolatileImage extends VolatileImage
+      * or a backup surface.
+      */
+     public BufferedImage getBackupImage() {
+-        return graphicsConfig.createCompatibleImage(getWidth(), getHeight(),
+-                                                    getTransparency());
++        return getBackupImage(1, 1);
++    }
++
++    /**
++     * This method creates a BufferedImage intended for use as a "snapshot"
++     * or a backup surface with the given horizontal and vertical scale factors.
++     */
++    public BufferedImage getBackupImage(double scaleX, double scaleY) {
++        int w = (int) Math.ceil(getWidth() * scaleX);
++        int h = (int) Math.ceil(getHeight() * scaleY);
++        return graphicsConfig.createCompatibleImage(w, h, getTransparency());
+     }
+ 
+     public BufferedImage getSnapshot() {
+diff --git a/jdk/src/share/classes/sun/awt/image/SurfaceManager.java b/jdk/src/share/classes/sun/awt/image/SurfaceManager.java
+index 887ad5ae28..384bf5a092 100644
+--- a/jdk/src/share/classes/sun/awt/image/SurfaceManager.java
++++ b/jdk/src/share/classes/sun/awt/image/SurfaceManager.java
+@@ -290,16 +290,30 @@ public abstract class SurfaceManager {
+     }
+ 
+     /**
+-     * Returns a scale factor of the image. This is utility method, which
+-     * fetches information from the SurfaceData of the image.
++     * Returns a horizontal scale factor of the image. This is utility method,
++     * which fetches information from the SurfaceData of the image.
+      *
+-     * @see SurfaceData#getDefaultScale
++     * @see SurfaceData#getDefaultScaleX
+      */
+-    public static int getImageScale(final Image img) {
++    public static double getImageScaleX(final Image img) {
+         if (!(img instanceof VolatileImage)) {
+             return 1;
+         }
+         final SurfaceManager sm = getManager(img);
+-        return sm.getPrimarySurfaceData().getDefaultScale();
++        return sm.getPrimarySurfaceData().getDefaultScaleX();
++    }
++
++    /**
++     * Returns a vertical scale factor of the image. This is utility method,
++     * which fetches information from the SurfaceData of the image.
++     *
++     * @see SurfaceData#getDefaultScaleY
++     */
++    public static double getImageScaleY(final Image img) {
++        if (!(img instanceof VolatileImage)) {
++            return 1;
++        }
++        final SurfaceManager sm = getManager(img);
++        return sm.getPrimarySurfaceData().getDefaultScaleY();
+     }
+ }
+diff --git a/jdk/src/share/classes/sun/awt/image/VolatileSurfaceManager.java b/jdk/src/share/classes/sun/awt/image/VolatileSurfaceManager.java
+index e3aa4fdb99..ef2abf1caf 100644
+--- a/jdk/src/share/classes/sun/awt/image/VolatileSurfaceManager.java
++++ b/jdk/src/share/classes/sun/awt/image/VolatileSurfaceManager.java
+@@ -25,18 +25,16 @@
+ 
+ package sun.awt.image;
+ 
+-import java.awt.Color;
+ import java.awt.Graphics;
+ import java.awt.GraphicsConfiguration;
+ import java.awt.GraphicsEnvironment;
+ import java.awt.ImageCapabilities;
++import java.awt.geom.AffineTransform;
+ import java.awt.image.BufferedImage;
+ import java.awt.image.VolatileImage;
+ import sun.awt.DisplayChangedListener;
+-import sun.awt.image.SunVolatileImage;
+ import sun.java2d.SunGraphicsEnvironment;
+ import sun.java2d.SurfaceData;
+-import sun.java2d.loops.CompositeType;
+ import static sun.java2d.pipe.hw.AccelSurface.*;
+ 
+ /**
+@@ -260,12 +258,16 @@ public abstract class VolatileSurfaceManager
+      */
+     protected SurfaceData getBackupSurface() {
+         if (sdBackup == null) {
+-            BufferedImage bImg = vImg.getBackupImage();
++            GraphicsConfiguration gc = vImg.getGraphicsConfig();
++            AffineTransform tx = gc.getDefaultTransform();
++            double scaleX = tx.getScaleX();
++            double scaleY = tx.getScaleY();
++            BufferedImage bImg = vImg.getBackupImage(scaleX, scaleY);
+             // Sabotage the acceleration capabilities of the BufImg surface
+             SunWritableRaster.stealTrackable(bImg
+                                              .getRaster()
+                                              .getDataBuffer()).setUntrackable();
+-            sdBackup = BufImgSurfaceData.createData(bImg);
++            sdBackup = BufImgSurfaceData.createData(bImg, scaleX, scaleY);
+         }
+         return sdBackup;
+     }
+diff --git a/jdk/src/share/classes/sun/java2d/SunGraphics2D.java b/jdk/src/share/classes/sun/java2d/SunGraphics2D.java
+index 590b53de38..c8854f4101 100644
+--- a/jdk/src/share/classes/sun/java2d/SunGraphics2D.java
++++ b/jdk/src/share/classes/sun/java2d/SunGraphics2D.java
+@@ -61,7 +61,6 @@ import java.awt.FontMetrics;
+ import java.awt.Rectangle;
+ import java.text.AttributedCharacterIterator;
+ import java.awt.Font;
+-import java.awt.Point;
+ import java.awt.image.ImageObserver;
+ import java.awt.Transparency;
+ import java.awt.font.GlyphVector;
+@@ -99,6 +98,7 @@ import sun.awt.image.MultiResolutionImage;
+ import static java.awt.geom.AffineTransform.TYPE_FLIP;
+ import static java.awt.geom.AffineTransform.TYPE_MASK_SCALE;
+ import static java.awt.geom.AffineTransform.TYPE_TRANSLATION;
++import java.awt.image.VolatileImage;
+ import sun.awt.image.MultiResolutionToolkitImage;
+ import sun.awt.image.ToolkitImage;
+ 
+@@ -244,7 +244,6 @@ public final class SunGraphics2D
+     public Shape usrClip;
+     protected Region devClip;           // Actual physical drawable in pixels
+ 
+-    private final int devScale;         // Actual physical scale factor
+     private int resolutionVariantHint;
+ 
+     // cached state for text rendering
+@@ -268,8 +267,6 @@ public final class SunGraphics2D
+         surfaceData = sd;
+         foregroundColor = fg;
+         backgroundColor = bg;
+-
+-        transform = new AffineTransform();
+         stroke = defaultStroke;
+         composite = defaultComposite;
+         paint = foregroundColor;
+@@ -287,14 +284,13 @@ public final class SunGraphics2D
+ 
+         interpolationType = AffineTransformOp.TYPE_NEAREST_NEIGHBOR;
+ 
+-        validateColor();
+-
+-        devScale = sd.getDefaultScale();
+-        if (devScale != 1) {
+-            transform.setToScale(devScale, devScale);
++        transform = getDefaultTransform();
++        if (!transform.isIdentity()) {
+             invalidateTransform();
+         }
+ 
++        validateColor();
++
+         font = f;
+         if (font == null) {
+             font = defaultFont;
+@@ -304,6 +300,11 @@ public final class SunGraphics2D
+         invalidatePipe();
+     }
+ 
++    private AffineTransform getDefaultTransform() {
++        GraphicsConfiguration gc = getDeviceConfiguration();
++        return (gc == null) ? new AffineTransform() : gc.getDefaultTransform();
++    }
++
+     protected Object clone() {
+         try {
+             SunGraphics2D g = (SunGraphics2D) super.clone();
+@@ -1612,11 +1613,10 @@ public final class SunGraphics2D
+      */
+     @Override
+     public void setTransform(AffineTransform Tx) {
+-        if ((constrainX | constrainY) == 0 && devScale == 1) {
++        if ((constrainX | constrainY) == 0) {
+             transform.setTransform(Tx);
+         } else {
+-            transform.setTransform(devScale, 0, 0, devScale, constrainX,
+-                                   constrainY);
++            transform.setToTranslation(constrainX, constrainY);
+             transform.concatenate(Tx);
+         }
+         invalidateTransform();
+@@ -1676,13 +1676,11 @@ public final class SunGraphics2D
+      */
+     @Override
+     public AffineTransform getTransform() {
+-        if ((constrainX | constrainY) == 0 && devScale == 1) {
++        if ((constrainX | constrainY) == 0) {
+             return new AffineTransform(transform);
+         }
+-        final double invScale = 1.0 / devScale;
+-        AffineTransform tx = new AffineTransform(invScale, 0, 0, invScale,
+-                                                 -constrainX * invScale,
+-                                                 -constrainY * invScale);
++        AffineTransform tx
++                = AffineTransform.getTranslateInstance(-constrainX, -constrainY);
+         tx.concatenate(transform);
+         return tx;
+     }
+@@ -3099,31 +3097,50 @@ public final class SunGraphics2D
+     }
+ // end of text rendering methods
+ 
+-    private boolean isHiDPIImage(final Image img) {
+-        return (SurfaceManager.getImageScale(img) != 1) ||
+-               (resolutionVariantHint != SunHints.INTVAL_RESOLUTION_VARIANT_OFF
+-                    && img instanceof MultiResolutionImage);
+-    }
+-
+-    private boolean drawHiDPIImage(Image img, int dx1, int dy1, int dx2,
+-                                   int dy2, int sx1, int sy1, int sx2, int sy2,
+-                                   Color bgcolor, ImageObserver observer) {
++    private Boolean drawHiDPIImage(Image img,
++                                   int dx1, int dy1, int dx2, int dy2,
++                                   int sx1, int sy1, int sx2, int sy2,
++                                   Color bgcolor, ImageObserver observer,
++                                   AffineTransform xform) {
++
++        if (img instanceof VolatileImage) {
++            final SurfaceData sd = SurfaceManager.getManager(img)
++                    .getPrimarySurfaceData();
++            final double scaleX = sd.getDefaultScaleX();
++            final double scaleY = sd.getDefaultScaleY();
++            if (scaleX == 1 && scaleY == 1) {
++                return null;
++            }
++            sx1 = Region.clipScale(sx1, scaleX);
++            sx2 = Region.clipScale(sx2, scaleX);
++            sy1 = Region.clipScale(sy1, scaleY);
++            sy2 = Region.clipScale(sy2, scaleY);
+ 
+-        if (SurfaceManager.getImageScale(img) != 1) {  // Volatile Image
+-            final int scale = SurfaceManager.getImageScale(img);
+-            sx1 = Region.clipScale(sx1, scale);
+-            sx2 = Region.clipScale(sx2, scale);
+-            sy1 = Region.clipScale(sy1, scale);
+-            sy2 = Region.clipScale(sy2, scale);
+-        } else if (img instanceof MultiResolutionImage) {
++            AffineTransform tx = null;
++            if (xform != null) {
++                tx = new AffineTransform(transform);
++                transform(xform);
++            }
++            boolean result = scaleImage(img, dx1, dy1, dx2, dy2,
++                                        sx1, sy1, sx2, sy2,
++                                        bgcolor, observer);
++            if (tx != null) {
++                transform.setTransform(tx);
++                invalidateTransform();
++            }
++            return result;
++        } else if (resolutionVariantHint != SunHints.INTVAL_RESOLUTION_VARIANT_BASE
++                   && (img instanceof MultiResolutionImage)) {
+             // get scaled destination image size
+ 
+             int width = img.getWidth(observer);
+             int height = img.getHeight(observer);
+ 
+-            Image resolutionVariant = getResolutionVariant(
+-                    (MultiResolutionImage) img, width, height,
+-                    dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2);
++            MultiResolutionImage mrImage = (MultiResolutionImage) img;
++            Image resolutionVariant = getResolutionVariant(mrImage, width, height,
++                                                           dx1, dy1, dx2, dy2,
++                                                           sx1, sy1, sx2, sy2,
++                                                           xform);
+ 
+             if (resolutionVariant != img && resolutionVariant != null) {
+                 // recalculate source region for the resolution variant
+@@ -3137,8 +3154,8 @@ public final class SunGraphics2D
+ 
+                 if (0 < width && 0 < height && 0 < rvWidth && 0 < rvHeight) {
+ 
+-                    float widthScale = ((float) rvWidth) / width;
+-                    float heightScale = ((float) rvHeight) / height;
++                    double widthScale = ((double) rvWidth) / width;
++                    double heightScale = ((double) rvHeight) / height;
+ 
+                     sx1 = Region.clipScale(sx1, widthScale);
+                     sy1 = Region.clipScale(sy1, heightScale);
+@@ -3147,10 +3164,29 @@ public final class SunGraphics2D
+ 
+                     observer = rvObserver;
+                     img = resolutionVariant;
++
++                    if (xform != null) {
++                        assert dx1 == 0 && dy1 == 0;
++                        assert dx2 == img.getWidth(observer);
++                        assert dy2 == img.getHeight(observer);
++                        AffineTransform renderTX = new AffineTransform(xform);
++                        renderTX.scale(1 / widthScale, 1 / heightScale);
++                        return transformImage(img, renderTX, observer);
++                    }
++
++                    return scaleImage(img, dx1, dy1, dx2, dy2,
++                                      sx1, sy1, sx2, sy2,
++                                      bgcolor, observer);
+                 }
+             }
+         }
++        return null;
++    }
+ 
++    private boolean scaleImage(Image img, int dx1, int dy1, int dx2, int dy2,
++                               int sx1, int sy1, int sx2, int sy2,
++                               Color bgcolor, ImageObserver observer)
++    {
+         try {
+             return imagepipe.scaleImage(this, img, dx1, dy1, dx2, dy2, sx1, sy1,
+                                         sx2, sy2, bgcolor, observer);
+@@ -3170,9 +3206,30 @@ public final class SunGraphics2D
+         }
+     }
+ 
++    private boolean transformImage(Image img,
++                                   AffineTransform xform,
++                                   ImageObserver observer)
++    {
++        try {
++            return imagepipe.transformImage(this, img, xform, observer);
++        } catch (InvalidPipeException e) {
++            try {
++                revalidateAll();
++                return imagepipe.transformImage(this, img, xform, observer);
++            } catch (InvalidPipeException e2) {
++                // Still catching the exception; we are not yet ready to
++                // validate the surfaceData correctly.  Fail for now and
++                // try again next time around.
++                return false;
++            }
++        } finally {
++            surfaceData.markDirty();
++        }
++    }
++
+     private Image getResolutionVariant(MultiResolutionImage img,
+             int srcWidth, int srcHeight, int dx1, int dy1, int dx2, int dy2,
+-            int sx1, int sy1, int sx2, int sy2) {
++            int sx1, int sy1, int sx2, int sy2, AffineTransform xform) {
+ 
+         if (srcWidth <= 0 || srcHeight <= 0) {
+             return null;
+@@ -3185,28 +3242,54 @@ public final class SunGraphics2D
+             return null;
+         }
+ 
+-        int type = transform.getType();
++        AffineTransform tx;
++
++        if (xform == null) {
++            tx = transform;
++        } else {
++            tx = new AffineTransform(transform);
++            tx.concatenate(xform);
++        }
++
++        int type = tx.getType();
+         int dw = dx2 - dx1;
+         int dh = dy2 - dy1;
+-        double destRegionWidth;
+-        double destRegionHeight;
+-
+-        if ((type & ~(TYPE_TRANSLATION | TYPE_FLIP)) == 0) {
+-            destRegionWidth = dw;
+-            destRegionHeight = dh;
+-        } else if ((type & ~(TYPE_TRANSLATION | TYPE_FLIP | TYPE_MASK_SCALE)) == 0) {
+-            destRegionWidth = dw * transform.getScaleX();
+-            destRegionHeight = dh * transform.getScaleY();
++
++        double destImageWidth;
++        double destImageHeight;
++
++        if (resolutionVariantHint == SunHints.INTVAL_RESOLUTION_VARIANT_BASE) {
++            destImageWidth = srcWidth;
++            destImageHeight = srcHeight;
++        } else if (resolutionVariantHint == SunHints.INTVAL_RESOLUTION_VARIANT_DPI_FIT) {
++            AffineTransform configTransform = getDefaultTransform();
++            if (configTransform.isIdentity()) {
++                destImageWidth = srcWidth;
++                destImageHeight = srcHeight;
++            } else {
++                destImageWidth = srcWidth * configTransform.getScaleX();
++                destImageHeight = srcHeight * configTransform.getScaleY();
++            }
+         } else {
+-            destRegionWidth = dw * Math.hypot(
+-                    transform.getScaleX(), transform.getShearY());
+-            destRegionHeight = dh * Math.hypot(
+-                    transform.getShearX(), transform.getScaleY());
++            double destRegionWidth;
++            double destRegionHeight;
++
++            if ((type & ~(TYPE_TRANSLATION | TYPE_FLIP)) == 0) {
++                destRegionWidth = dw;
++                destRegionHeight = dh;
++            } else if ((type & ~(TYPE_TRANSLATION | TYPE_FLIP | TYPE_MASK_SCALE)) == 0) {
++                destRegionWidth = dw * tx.getScaleX();
++                destRegionHeight = dh * tx.getScaleY();
++            } else {
++                destRegionWidth = dw * Math.hypot(
++                        tx.getScaleX(), tx.getShearY());
++                destRegionHeight = dh * Math.hypot(
++                        tx.getShearX(), tx.getScaleY());
++            }
++            destImageWidth = Math.abs(srcWidth * destRegionWidth / sw);
++            destImageHeight = Math.abs(srcHeight * destRegionHeight / sh);
+         }
+ 
+-        int destImageWidth = (int) Math.abs(srcWidth * destRegionWidth / sw);
+-        int destImageHeight = (int) Math.abs(srcHeight * destRegionHeight / sh);
+-
+         Image resolutionVariant
+                 = img.getResolutionVariant(destImageWidth, destImageHeight);
+ 
+@@ -3274,9 +3357,11 @@ public final class SunGraphics2D
+ 
+         final int imgW = img.getWidth(null);
+         final int imgH = img.getHeight(null);
+-        if (isHiDPIImage(img)) {
+-            return drawHiDPIImage(img, x, y, x + width, y + height, 0, 0, imgW,
+-                                  imgH, bg, observer);
++        Boolean hidpiImageDrawn = drawHiDPIImage(img, x, y, x + width, y + height,
++                                                 0, 0, imgW, imgH, bg, observer,
++                                                 null);
++        if (hidpiImageDrawn != null) {
++            return hidpiImageDrawn;
+         }
+ 
+         if (width == imgW && height == imgH) {
+@@ -3320,11 +3405,13 @@ public final class SunGraphics2D
+             return true;
+         }
+ 
+-        if (isHiDPIImage(img)) {
+-            final int imgW = img.getWidth(null);
+-            final int imgH = img.getHeight(null);
+-            return drawHiDPIImage(img, x, y, x + imgW, y + imgH, 0, 0, imgW,
+-                                  imgH, bg, observer);
++        final int imgW = img.getWidth(null);
++        final int imgH = img.getHeight(null);
++        Boolean hidpiImageDrawn = drawHiDPIImage(img, x, y, x + imgW, y + imgH,
++                                                 0, 0, imgW, imgH, bg, observer,
++                                                 null);
++        if (hidpiImageDrawn != null) {
++            return hidpiImageDrawn;
+         }
+ 
+         try {
+@@ -3375,9 +3462,12 @@ public final class SunGraphics2D
+             return true;
+         }
+ 
+-        if (isHiDPIImage(img)) {
+-            return drawHiDPIImage(img, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2,
+-                                  bgcolor, observer);
++        Boolean hidpiImageDrawn = drawHiDPIImage(img, dx1, dy1, dx2, dy2,
++                                                 sx1, sy1, sx2, sy2,
++                                                 bgcolor, observer, null);
++
++        if (hidpiImageDrawn != null) {
++            return hidpiImageDrawn;
+         }
+ 
+         if (((sx2 - sx1) == (dx2 - dx1)) &&
+@@ -3458,33 +3548,16 @@ public final class SunGraphics2D
+             return drawImage(img, 0, 0, null, observer);
+         }
+ 
+-        if (isHiDPIImage(img)) {
+-            final int w = img.getWidth(null);
+-            final int h = img.getHeight(null);
+-            final AffineTransform tx = new AffineTransform(transform);
+-            transform(xform);
+-            boolean result = drawHiDPIImage(img, 0, 0, w, h, 0, 0, w, h, null,
+-                                            observer);
+-            transform.setTransform(tx);
+-            invalidateTransform();
+-            return result;
+-        }
++        final int w = img.getWidth(null);
++        final int h = img.getHeight(null);
++        Boolean hidpiImageDrawn = drawHiDPIImage(img, 0, 0, w, h, 0, 0, w, h,
++                                                 null, observer, xform);
+ 
+-        try {
+-            return imagepipe.transformImage(this, img, xform, observer);
+-        } catch (InvalidPipeException e) {
+-            try {
+-                revalidateAll();
+-                return imagepipe.transformImage(this, img, xform, observer);
+-            } catch (InvalidPipeException e2) {
+-                // Still catching the exception; we are not yet ready to
+-                // validate the surfaceData correctly.  Fail for now and
+-                // try again next time around.
+-                return false;
+-            }
+-        } finally {
+-            surfaceData.markDirty();
++        if (hidpiImageDrawn != null) {
++            return hidpiImageDrawn;
+         }
++
++        return transformImage(img, xform, observer);
+     }
+ 
+     public void drawImage(BufferedImage bImg,
+diff --git a/jdk/src/share/classes/sun/java2d/SunGraphicsEnvironment.java b/jdk/src/share/classes/sun/java2d/SunGraphicsEnvironment.java
+index b43a0719f8..11e5df9ab9 100644
+--- a/jdk/src/share/classes/sun/java2d/SunGraphicsEnvironment.java
++++ b/jdk/src/share/classes/sun/java2d/SunGraphicsEnvironment.java
+@@ -66,6 +66,8 @@ import sun.font.FontManager;
+ import sun.font.FontManagerFactory;
+ import sun.font.FontManagerForSGE;
+ import sun.font.NativeFont;
++import java.security.AccessController;
++import sun.security.action.GetPropertyAction;
+ 
+ /**
+  * This is an implementation of a GraphicsEnvironment object for the
+@@ -80,6 +82,15 @@ public abstract class SunGraphicsEnvironment extends GraphicsEnvironment
+     public static boolean isOpenSolaris;
+     private static Font defaultFont;
+ 
++    private static final boolean uiScaleEnabled;
++    private static final double debugScale;
++
++    static {
++        uiScaleEnabled = "true".equals(AccessController.doPrivileged(
++                new GetPropertyAction("sun.java2d.uiScale.enabled", "true")));
++        debugScale = uiScaleEnabled ? getScaleFactor("sun.java2d.uiScale") : -1;
++    }
++
+     public SunGraphicsEnvironment() {
+         java.security.AccessController.doPrivileged(
+                                     new java.security.PrivilegedAction() {
+@@ -339,4 +350,41 @@ public abstract class SunGraphicsEnvironment extends GraphicsEnvironment
+     public boolean isFlipStrategyPreferred(ComponentPeer peer) {
+         return false;
+     }
++
++    public static boolean isUIScaleEnabled() {
++        return uiScaleEnabled;
++    }
++
++    public static double getDebugScale() {
++        return debugScale;
++    }
++
++    public static double getScaleFactor(String propertyName) {
++
++        String scaleFactor = AccessController.doPrivileged(
++                new GetPropertyAction(propertyName, "-1"));
++
++        if (scaleFactor == null || scaleFactor.equals("-1")) {
++            return -1;
++        }
++
++        try {
++            double units = 1.0;
++
++            if (scaleFactor.endsWith("x")) {
++                scaleFactor = scaleFactor.substring(0, scaleFactor.length() - 1);
++            } else if (scaleFactor.endsWith("dpi")) {
++                units = 96;
++                scaleFactor = scaleFactor.substring(0, scaleFactor.length() - 3);
++            } else if (scaleFactor.endsWith("%")) {
++                units = 100;
++                scaleFactor = scaleFactor.substring(0, scaleFactor.length() - 1);
++            }
++
++            double scale = Double.parseDouble(scaleFactor);
++            return scale <= 0 ? -1 : scale / units;
++        } catch (NumberFormatException ignored) {
++            return -1;
++        }
++    }
+ }
+diff --git a/jdk/src/share/classes/sun/java2d/SurfaceData.java b/jdk/src/share/classes/sun/java2d/SurfaceData.java
+index 2aae32e2f0..f44de2aeb5 100644
+--- a/jdk/src/share/classes/sun/java2d/SurfaceData.java
++++ b/jdk/src/share/classes/sun/java2d/SurfaceData.java
+@@ -1064,12 +1064,22 @@ public abstract class SurfaceData
+     public abstract Object getDestination();
+ 
+     /**
+-     * Returns default scale factor of the destination surface. Scale factor
+-     * describes the mapping between virtual and physical coordinates of the
++     * Returns default horizontal scale factor of the destination surface. Scale
++     * factor describes the mapping between virtual and physical coordinates of the
+      * SurfaceData. If the scale is 2 then virtual pixel coordinates need to be
+      * doubled for physical pixels.
+      */
+-    public int getDefaultScale() {
++    public double getDefaultScaleX() {
++        return 1;
++    }
++
++    /**
++     * Returns default vertical scale factor of the destination surface. Scale
++     * factor describes the mapping between virtual and physical coordinates of the
++     * SurfaceData. If the scale is 2 then virtual pixel coordinates need to be
++     * doubled for physical pixels.
++     */
++    public double getDefaultScaleY() {
+         return 1;
+     }
+ }
+diff --git a/jdk/src/share/classes/sun/java2d/pipe/DrawImage.java b/jdk/src/share/classes/sun/java2d/pipe/DrawImage.java
+index 3f43977292..d1247aec00 100644
+--- a/jdk/src/share/classes/sun/java2d/pipe/DrawImage.java
++++ b/jdk/src/share/classes/sun/java2d/pipe/DrawImage.java
+@@ -743,9 +743,10 @@ public class DrawImage implements DrawImagePipe
+         atfm.scale(m00, m11);
+         atfm.translate(srcX-sx1, srcY-sy1);
+ 
+-        final int scale = SurfaceManager.getImageScale(img);
+-        final int imgW = img.getWidth(null) * scale;
+-        final int imgH = img.getHeight(null) * scale;
++        final double scaleX = SurfaceManager.getImageScaleX(img);
++        final double scaleY = SurfaceManager.getImageScaleY(img);
++        final int imgW = (int) Math.ceil(img.getWidth(null) * scaleX);
++        final int imgH = (int) Math.ceil(img.getHeight(null) * scaleY);
+         srcW += srcX;
+         srcH += srcY;
+         // Make sure we are not out of bounds
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/InfoWindow.java b/jdk/src/solaris/classes/sun/awt/X11/InfoWindow.java
+index fef9704d02..3c6c6a4615 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/InfoWindow.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/InfoWindow.java
+@@ -76,9 +76,7 @@ public abstract class InfoWindow extends Window {
+         pack();
+ 
+         Dimension size = getSize();
+-        // TODO: When 6356322 is fixed we should get screen bounds in
+-        // this way: eframe.getGraphicsConfiguration().getBounds().
+-        Dimension scrSize = Toolkit.getDefaultToolkit().getScreenSize();
++        Rectangle scrSize = getGraphicsConfiguration().getBounds();
+ 
+         if (corner.x < scrSize.width/2 && corner.y < scrSize.height/2) { // 1st square
+             setLocation(corner.x + indent, corner.y + indent);
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XBaseWindow.java b/jdk/src/solaris/classes/sun/awt/X11/XBaseWindow.java
+index 0569fc0980..e5a2621095 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XBaseWindow.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XBaseWindow.java
+@@ -295,6 +295,22 @@ public class XBaseWindow {
+         params.put(EVENT_MASK, Long.valueOf(eventMask));
+     }
+ 
++    /**
++     * Returns scale factor of the window. It is used to convert native
++     * coordinates to local and vice verse.
++     */
++    protected int getScale() {
++        return 1;
++    }
++
++    protected int scaleUp(int x) {
++        return x;
++    }
++
++    protected int scaleDown(int x) {
++        return x;
++    }
++
+     /**
+      * Creates window with parameters specified by <code>params</code>
+      * @see #init
+@@ -362,15 +378,17 @@ public class XBaseWindow {
+                     log.fine("Creating window for " + this + " with the following attributes: \n" + params);
+                 }
+                 window = XlibWrapper.XCreateWindow(XToolkit.getDisplay(),
+-                                   parentWindow.longValue(),
+-                                   bounds.x, bounds.y, // location
+-                                   bounds.width, bounds.height, // size
+-                                   0, // border
+-                                   depth.intValue(), // depth
+-                                   visual_class.intValue(), // class
+-                                   visual.longValue(), // visual
+-                                   value_mask,  // value mask
+-                                   xattr.pData); // attributes
++                                                   parentWindow.longValue(),
++                                                   scaleUp(bounds.x),
++                                                   scaleUp(bounds.y),
++                                                   scaleUp(bounds.width),
++                                                   scaleUp(bounds.height),
++                                                   0, // border
++                                                   depth.intValue(), // depth
++                                                   visual_class.intValue(), // class
++                                                   visual.longValue(), // visual
++                                                   value_mask,  // value mask
++                                                   xattr.pData); // attributes
+ 
+                 if (window == 0) {
+                     throw new IllegalStateException("Couldn't create window because of wrong parameters. Run with NOISY_AWT to see details");
+@@ -488,18 +506,18 @@ public class XBaseWindow {
+             // we want to reset PPosition in hints.  This is necessary
+             // for locationByPlatform functionality
+             if ((flags & XUtilConstants.PPosition) != 0) {
+-                hints.set_x(x);
+-                hints.set_y(y);
++                hints.set_x(scaleUp(x));
++                hints.set_y(scaleUp(y));
+             }
+             if ((flags & XUtilConstants.PSize) != 0) {
+-                hints.set_width(width);
+-                hints.set_height(height);
++                hints.set_width(scaleUp(width));
++                hints.set_height(scaleUp(height));
+             } else if ((hints.get_flags() & XUtilConstants.PSize) != 0) {
+                 flags |= XUtilConstants.PSize;
+             }
+             if ((flags & XUtilConstants.PMinSize) != 0) {
+-                hints.set_min_width(width);
+-                hints.set_min_height(height);
++                hints.set_min_width(scaleUp(width));
++                hints.set_min_height(scaleUp(height));
+             } else if ((hints.get_flags() & XUtilConstants.PMinSize) != 0) {
+                 flags |= XUtilConstants.PMinSize;
+                 //Fix for 4320050: Minimum size for java.awt.Frame is not being enforced.
+@@ -508,31 +526,31 @@ public class XBaseWindow {
+             if ((flags & XUtilConstants.PMaxSize) != 0) {
+                 if (maxBounds != null) {
+                     if (maxBounds.width != Integer.MAX_VALUE) {
+-                        hints.set_max_width(maxBounds.width);
++                        hints.set_max_width(scaleUp(maxBounds.width));
+                     } else {
+                         hints.set_max_width(XToolkit.getDefaultScreenWidth());
+                     }
+                     if (maxBounds.height != Integer.MAX_VALUE) {
+-                        hints.set_max_height(maxBounds.height);
++                        hints.set_max_height(scaleUp(maxBounds.height));
+                     } else {
+                         hints.set_max_height(XToolkit.getDefaultScreenHeight());
+                     }
+                 } else {
+-                    hints.set_max_width(width);
+-                    hints.set_max_height(height);
++                    hints.set_max_width(scaleUp(width));
++                    hints.set_max_height(scaleUp(height));
+                 }
+             } else if ((hints.get_flags() & XUtilConstants.PMaxSize) != 0) {
+                 flags |= XUtilConstants.PMaxSize;
+                 if (maxBounds != null) {
+                     if (maxBounds.width != Integer.MAX_VALUE) {
+-                        hints.set_max_width(maxBounds.width);
++                        hints.set_max_width(scaleUp(maxBounds.width));
+                     } else {
+-                        hints.set_max_width(XToolkit.getDefaultScreenWidth());
++                        hints.set_max_width(scaleUp(XToolkit.getDefaultScreenWidth()));
+                     }
+                     if (maxBounds.height != Integer.MAX_VALUE) {
+-                        hints.set_max_height(maxBounds.height);
++                        hints.set_max_height(scaleUp(maxBounds.height));
+                     } else {
+-                        hints.set_max_height(XToolkit.getDefaultScreenHeight());
++                        hints.set_max_height(scaleUp(XToolkit.getDefaultScreenHeight()));
+                     }
+                 } else {
+                     // Leave intact
+@@ -719,7 +737,9 @@ public class XBaseWindow {
+         height = Math.max(MIN_SIZE, height);
+         XToolkit.awtLock();
+         try {
+-             XlibWrapper.XMoveResizeWindow(XToolkit.getDisplay(), getWindow(), x,y,width,height);
++            XlibWrapper.XMoveResizeWindow(XToolkit.getDisplay(), getWindow(),
++                                          scaleUp(x), scaleUp(y),
++                                          scaleUp(width), scaleUp(height));
+         } finally {
+             XToolkit.awtUnlock();
+         }
+@@ -752,7 +772,8 @@ public class XBaseWindow {
+             rpt.x = x + srcPeer.getAbsoluteX();
+             rpt.y = y + srcPeer.getAbsoluteY();
+         } else {
+-            rpt = XlibUtil.translateCoordinates(src, dst, new Point(x, y));
++            int scale = srcPeer == null ? 1 : srcPeer.getScale();
++            rpt = XlibUtil.translateCoordinates(src, dst, new Point(x, y), scale);
+         }
+         return rpt;
+     }
+@@ -1046,10 +1067,11 @@ public class XBaseWindow {
+         if (insLog.isLoggable(PlatformLogger.Level.FINER)) {
+             insLog.finer("Configure, {0}", xe);
+         }
+-        x = xe.get_x();
+-        y = xe.get_y();
+-        width = xe.get_width();
+-        height = xe.get_height();
++
++        x = scaleDown(xe.get_x());
++        y = scaleDown(xe.get_y());
++        width = scaleDown(xe.get_width());
++        height = scaleDown(xe.get_height());
+     }
+     /**
+      * Checks ButtonRelease released all Mouse buttons
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XChoicePeer.java b/jdk/src/solaris/classes/sun/awt/X11/XChoicePeer.java
+index ddd40822c0..8c368ad6b3 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XChoicePeer.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XChoicePeer.java
+@@ -784,7 +784,7 @@ public class XChoicePeer extends XComponentPeer implements ChoicePeer, ToplevelS
+                 numItemsDisplayed = Math.min(MAX_UNFURLED_ITEMS, numItems);
+             }
+             Point global = XChoicePeer.this.toGlobal(0,0);
+-            Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
++            Rectangle screen = graphicsConfig.getBounds();
+ 
+             if (alignUnder != null) {
+                 Rectangle choiceRec = XChoicePeer.this.getBounds();
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XComponentPeer.java b/jdk/src/solaris/classes/sun/awt/X11/XComponentPeer.java
+index c3cb2649c1..6ff4d2c578 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XComponentPeer.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XComponentPeer.java
+@@ -157,7 +157,9 @@ public class XComponentPeer extends XWindow implements ComponentPeer, DropTarget
+         XComponentPeer newPeer = (XComponentPeer)newNativeParent;
+         XToolkit.awtLock();
+         try {
+-            XlibWrapper.XReparentWindow(XToolkit.getDisplay(), getWindow(), newPeer.getContentWindow(), x, y);
++            XlibWrapper.XReparentWindow(XToolkit.getDisplay(),
++                                        getWindow(), newPeer.getContentWindow(),
++                                        scaleUp(x), scaleUp(y));
+             parentWindow = newPeer;
+         } finally {
+             XToolkit.awtUnlock();
+@@ -1385,6 +1387,12 @@ public class XComponentPeer extends XWindow implements ComponentPeer, DropTarget
+             XToolkit.awtLock();
+             try {
+                 if (shape != null) {
++
++                    int scale = getScale();
++                    if (scale != 1) {
++                        shape = shape.getScaledRegion(scale, scale);
++                    }
++
+                     XlibWrapper.SetRectangularShape(
+                             XToolkit.getDisplay(),
+                             getWindow(),
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XDecoratedPeer.java b/jdk/src/solaris/classes/sun/awt/X11/XDecoratedPeer.java
+index fa5c884020..500d8e3539 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XDecoratedPeer.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XDecoratedPeer.java
+@@ -737,16 +737,13 @@ abstract class XDecoratedPeer extends XWindowPeer {
+ 
+         updateChildrenSizes();
+ 
+-        // Bounds of the window
+-        Rectangle targetBounds = AWTAccessor.getComponentAccessor().getBounds((Component)target);
+-
+         Point newLocation = getNewLocation(xe, currentInsets.left, currentInsets.top);
+ 
+         WindowDimensions newDimensions =
+                 new WindowDimensions(newLocation,
+-                new Dimension(xe.get_width(), xe.get_height()),
+-                copy(currentInsets),
+-                true);
++                                     new Dimension(scaleDown(xe.get_width()),
++                                                   scaleDown(xe.get_height())),
++                                     copy(currentInsets), true);
+ 
+         if (insLog.isLoggable(PlatformLogger.Level.FINER)) {
+             insLog.finer("Insets are {0}, new dimensions {1}",
+@@ -792,8 +789,9 @@ abstract class XDecoratedPeer extends XWindowPeer {
+         XToolkit.awtLock();
+         try {
+             updateSizeHints(rec.x, rec.y, rec.width, rec.height);
+-            XlibWrapper.XResizeWindow(XToolkit.getDisplay(), getShell(), rec.width, rec.height);
+-            XlibWrapper.XMoveWindow(XToolkit.getDisplay(), getShell(), rec.x, rec.y);
++            XlibWrapper.XMoveResizeWindow(XToolkit.getDisplay(), getShell(),
++                                          scaleUp(rec.x), scaleUp(rec.y),
++                                          scaleUp(rec.width), scaleUp(rec.height));
+         }
+         finally {
+             XToolkit.awtUnlock();
+@@ -806,7 +804,8 @@ abstract class XDecoratedPeer extends XWindowPeer {
+         XToolkit.awtLock();
+         try {
+             updateSizeHints(rec.x, rec.y, rec.width, rec.height);
+-            XlibWrapper.XResizeWindow(XToolkit.getDisplay(), getShell(), rec.width, rec.height);
++            XlibWrapper.XResizeWindow(XToolkit.getDisplay(), getShell(),
++                                      scaleUp(rec.width), scaleUp(rec.height));
+         }
+         finally {
+             XToolkit.awtUnlock();
+@@ -819,7 +818,8 @@ abstract class XDecoratedPeer extends XWindowPeer {
+         XToolkit.awtLock();
+         try {
+             updateSizeHints(rec.x, rec.y, rec.width, rec.height);
+-            XlibWrapper.XMoveWindow(XToolkit.getDisplay(), getShell(), rec.x, rec.y);
++            XlibWrapper.XMoveWindow(XToolkit.getDisplay(), getShell(),
++                                    scaleUp(rec.x), scaleUp(rec.y));
+         }
+         finally {
+             XToolkit.awtUnlock();
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XDesktopPeer.java b/jdk/src/solaris/classes/sun/awt/X11/XDesktopPeer.java
+index de916889be..a7d9430930 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XDesktopPeer.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XDesktopPeer.java
+@@ -27,6 +27,8 @@ package sun.awt.X11;
+ 
+ import sun.awt.UNIXToolkit;
+ 
++import sun.awt.UNIXToolkit;
++
+ import java.io.File;
+ import java.io.IOException;
+ import java.net.MalformedURLException;
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XDragSourceContextPeer.java b/jdk/src/solaris/classes/sun/awt/X11/XDragSourceContextPeer.java
+index 7b6f761d42..7cab2ca44f 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XDragSourceContextPeer.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XDragSourceContextPeer.java
+@@ -82,6 +82,8 @@ public final class XDragSourceContextPeer
+     private long[] sourceFormats = null;
+     /* The XID of the root subwindow that contains the current target. */
+     private long targetRootSubwindow = 0;
++    /* window scale factor */
++    int windowScale = 1;
+     /* The pointer location. */
+     private int xRoot = 0;
+     private int yRoot = 0;
+@@ -129,8 +131,8 @@ public final class XDragSourceContextPeer
+ 
+         long xcursor = 0;
+         long rootWindow = 0;
+-        long dragWindow = 0;
+         long timeStamp = 0;
++        windowScale = wpeer.getScale();
+ 
+         /* Retrieve the X cursor for the drag operation. */
+         {
+@@ -155,8 +157,6 @@ public final class XDragSourceContextPeer
+                 rootWindow = XlibWrapper.RootWindow(XToolkit.getDisplay(), screen);
+             }
+ 
+-            dragWindow = XWindow.getXAWTRootWindow().getWindow();
+-
+             timeStamp = XToolkit.getCurrentServerTime();
+ 
+             int dropActions = getDragSourceContext().getSourceActions();
+@@ -437,8 +437,8 @@ public final class XDragSourceContextPeer
+     private void updateTargetWindow(XMotionEvent xmotion) {
+         assert XToolkit.isAWTLockHeldByCurrentThread();
+ 
+-        int x = xmotion.get_x_root();
+-        int y = xmotion.get_y_root();
++        int x = scaleDown(xmotion.get_x_root());
++        int y = scaleDown(xmotion.get_y_root());
+         long time = xmotion.get_time();
+         long subwindow = xmotion.get_subwindow();
+ 
+@@ -494,9 +494,13 @@ public final class XDragSourceContextPeer
+         if (!dragInProgress) {
+             return;
+         }
+-        if (xRoot != xmotion.get_x_root() || yRoot != xmotion.get_y_root()) {
+-            xRoot = xmotion.get_x_root();
+-            yRoot = xmotion.get_y_root();
++
++        int motionXRoot = scaleDown(xmotion.get_x_root());
++        int motionYRoot = scaleDown(xmotion.get_y_root());
++
++        if (xRoot != motionXRoot || yRoot != motionYRoot) {
++            xRoot = motionXRoot;
++            yRoot = motionYRoot;
+ 
+             postDragSourceDragEvent(targetAction,
+                                     XWindow.getModifiers(xmotion.get_state(),0,0),
+@@ -515,8 +519,8 @@ public final class XDragSourceContextPeer
+         updateTargetWindow(xmotion);
+ 
+         if (dragProtocol != null) {
+-            dragProtocol.sendMoveMessage(xmotion.get_x_root(),
+-                                         xmotion.get_y_root(),
++            dragProtocol.sendMoveMessage(scaleDown(xmotion.get_x_root()),
++                                         scaleDown(xmotion.get_y_root()),
+                                          sourceAction, sourceActions,
+                                          xmotion.get_time());
+         }
+@@ -524,8 +528,8 @@ public final class XDragSourceContextPeer
+ 
+     private void processDrop(XButtonEvent xbutton) {
+         try {
+-            dragProtocol.initiateDrop(xbutton.get_x_root(),
+-                                      xbutton.get_y_root(),
++            dragProtocol.initiateDrop(scaleDown(xbutton.get_x_root()),
++                                      scaleDown(xbutton.get_y_root()),
+                                       sourceAction, sourceActions,
+                                       xbutton.get_time());
+         } catch (XException e) {
+@@ -801,4 +805,12 @@ public final class XDragSourceContextPeer
+         dndInProgress = false;
+         cleanup(XConstants.CurrentTime);
+     }
++
++    public int scaleUp(int x) {
++        return x * windowScale;
++    }
++
++    public int scaleDown(int x) {
++        return x / windowScale;
++    }
+ }
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XEmbedClientHelper.java b/jdk/src/solaris/classes/sun/awt/X11/XEmbedClientHelper.java
+index afbaaaaeb4..f8a8c8a5e0 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XEmbedClientHelper.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XEmbedClientHelper.java
+@@ -182,7 +182,7 @@ public class XEmbedClientHelper extends XEmbedHelper implements XEventDispatcher
+             embedded.notifyStopped();
+             // check if newParent is a root window
+             X11GraphicsConfig gc = (X11GraphicsConfig)embedded.getGraphicsConfiguration();
+-            X11GraphicsDevice gd = (X11GraphicsDevice)gc.getDevice();
++            X11GraphicsDevice gd = gc.getDevice();
+             if ((newParent == XlibUtil.getRootWindow(gd.getScreen())) ||
+                 (newParent == XToolkit.getDefaultRootWindow()))
+             {
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XEmbeddedFramePeer.java b/jdk/src/solaris/classes/sun/awt/X11/XEmbeddedFramePeer.java
+index e9b365b1c2..6d6726a875 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XEmbeddedFramePeer.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XEmbeddedFramePeer.java
+@@ -146,18 +146,18 @@ public class XEmbeddedFramePeer extends XFramePeer {
+         // fix for 5063031
+         // if we use super.handleConfigureNotifyEvent() we would get wrong
+         // size and position because embedded frame really is NOT a decorated one
+-        checkIfOnNewScreen(toGlobal(new Rectangle(xe.get_x(),
+-                xe.get_y(),
+-                xe.get_width(),
+-                xe.get_height())));
++        checkIfOnNewScreen(toGlobal(new Rectangle(scaleDown(xe.get_x()),
++                                                  scaleDown(xe.get_y()),
++                                                  scaleDown(xe.get_width()),
++                                                  scaleDown(xe.get_height()))));
+ 
+         Rectangle oldBounds = getBounds();
+ 
+         synchronized (getStateLock()) {
+-            x = xe.get_x();
+-            y = xe.get_y();
+-            width = xe.get_width();
+-            height = xe.get_height();
++            x = scaleDown(xe.get_x());
++            y = scaleDown(xe.get_y());
++            width = scaleDown(xe.get_width());
++            height = scaleDown(xe.get_height());
+ 
+             dimensions.setClientSize(width, height);
+             dimensions.setLocation(x, y);
+@@ -215,10 +215,10 @@ public class XEmbeddedFramePeer extends XFramePeer {
+         try {
+             XlibWrapper.XGetWindowAttributes(XToolkit.getDisplay(),
+                 getWindow(), attr.pData);
+-            x = attr.get_x();
+-            y = attr.get_y();
+-            w = attr.get_width();
+-            h = attr.get_height();
++            x = scaleDown(attr.get_x());
++            y = scaleDown(attr.get_y());
++            w = scaleDown(attr.get_width());
++            h = scaleDown(attr.get_height());
+         } finally {
+             XToolkit.awtUnlock();
+         }
+@@ -276,7 +276,7 @@ public class XEmbeddedFramePeer extends XFramePeer {
+     {
+         Point absoluteLoc = XlibUtil.translateCoordinates(getWindow(),
+                                                           XToolkit.getDefaultRootWindow(),
+-                                                          new Point(0, 0));
++                                                          new Point(0, 0), getScale());
+         return absoluteLoc != null ? absoluteLoc.x : 0;
+     }
+ 
+@@ -284,7 +284,7 @@ public class XEmbeddedFramePeer extends XFramePeer {
+     {
+         Point absoluteLoc = XlibUtil.translateCoordinates(getWindow(),
+                                                           XToolkit.getDefaultRootWindow(),
+-                                                          new Point(0, 0));
++                                                          new Point(0, 0), getScale());
+         return absoluteLoc != null ? absoluteLoc.y : 0;
+     }
+ 
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XMenuBarPeer.java b/jdk/src/solaris/classes/sun/awt/X11/XMenuBarPeer.java
+index 3f544ebc55..6728b91664 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XMenuBarPeer.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XMenuBarPeer.java
+@@ -298,7 +298,7 @@ public class XMenuBarPeer extends XBaseMenuWindow implements MenuBarPeer {
+      */
+     protected Rectangle getSubmenuBounds(Rectangle itemBounds, Dimension windowSize) {
+         Rectangle globalBounds = toGlobal(itemBounds);
+-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
++        Dimension screenSize = graphicsConfig.getBounds().getSize();
+         Rectangle res;
+         res = fitWindowBelow(globalBounds, windowSize, screenSize);
+         if (res != null) {
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XMenuWindow.java b/jdk/src/solaris/classes/sun/awt/X11/XMenuWindow.java
+index 843aa69e1a..583fef708d 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XMenuWindow.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XMenuWindow.java
+@@ -278,7 +278,7 @@ public class XMenuWindow extends XBaseMenuWindow {
+      */
+     protected Rectangle getSubmenuBounds(Rectangle itemBounds, Dimension windowSize) {
+         Rectangle globalBounds = toGlobal(itemBounds);
+-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
++        Dimension screenSize = graphicsConfig.getBounds().getSize();
+         Rectangle res;
+         res = fitWindowRight(globalBounds, windowSize, screenSize);
+         if (res != null) {
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XMouseInfoPeer.java b/jdk/src/solaris/classes/sun/awt/X11/XMouseInfoPeer.java
+index eb36d5aeb9..c04e504ef6 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XMouseInfoPeer.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XMouseInfoPeer.java
+@@ -30,6 +30,7 @@ import java.awt.GraphicsEnvironment;
+ import java.awt.Point;
+ import java.awt.Window;
+ import java.awt.peer.MouseInfoPeer;
++import sun.awt.X11GraphicsDevice;
+ 
+ public class XMouseInfoPeer implements MouseInfoPeer {
+ 
+@@ -62,6 +63,12 @@ public class XMouseInfoPeer implements MouseInfoPeer {
+                 if (pointerFound) {
+                     point.x = Native.getInt(XlibWrapper.larg3);
+                     point.y = Native.getInt(XlibWrapper.larg4);
++                    GraphicsDevice device = gds[i];
++                    if (device instanceof X11GraphicsDevice) {
++                        int scale = ((X11GraphicsDevice) device).getScaleFactor();
++                        point.x = XlibUtil.scaleDown(point.x, scale);
++                        point.y = XlibUtil.scaleDown(point.y, scale);
++                    }
+                     return i;
+                 }
+             }
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XPopupMenuPeer.java b/jdk/src/solaris/classes/sun/awt/X11/XPopupMenuPeer.java
+index 7d093638b7..44a793a691 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XPopupMenuPeer.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XPopupMenuPeer.java
+@@ -215,7 +215,7 @@ public class XPopupMenuPeer extends XMenuWindow implements PopupMenuPeer {
+      */
+     protected Rectangle getWindowBounds(Point origin, Dimension windowSize) {
+         Rectangle globalBounds = new Rectangle(origin.x, origin.y, 0, 0);
+-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
++        Dimension screenSize = graphicsConfig.getBounds().getSize();
+         Rectangle res;
+         res = fitWindowRight(globalBounds, windowSize, screenSize);
+         if (res != null) {
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XRobotPeer.java b/jdk/src/solaris/classes/sun/awt/X11/XRobotPeer.java
+index 8eef29431a..3d798104ea 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XRobotPeer.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XRobotPeer.java
+@@ -34,10 +34,6 @@ import sun.awt.X11GraphicsConfig;
+ 
+ class XRobotPeer implements RobotPeer {
+ 
+-    static {
+-        loadNativeLibraries();
+-    }
+-
+     private X11GraphicsConfig   xgc = null;
+     /*
+      * native implementation uses some static shared data (pipes, processes)
+@@ -56,7 +52,7 @@ class XRobotPeer implements RobotPeer {
+     }
+ 
+     public void mouseMove(int x, int y) {
+-        mouseMoveImpl(xgc, x, y);
++        mouseMoveImpl(xgc, xgc.scaleUp(x), xgc.scaleUp(y));
+     }
+ 
+     public void mousePress(int buttons) {
+@@ -81,13 +77,14 @@ class XRobotPeer implements RobotPeer {
+ 
+     public int getRGBPixel(int x, int y) {
+         int pixelArray[] = new int[1];
+-        getRGBPixelsImpl(xgc, x, y, 1, 1, pixelArray);
++        getRGBPixelsImpl(xgc, x, y, 1, 1, xgc.getScale(), pixelArray);
+         return pixelArray[0];
+     }
+ 
+     public int [] getRGBPixels(Rectangle bounds) {
+         int pixelArray[] = new int[bounds.width*bounds.height];
+-        getRGBPixelsImpl(xgc, bounds.x, bounds.y, bounds.width, bounds.height, pixelArray);
++        getRGBPixelsImpl(xgc, bounds.x, bounds.y, bounds.width, bounds.height,
++                         xgc.getScale(), pixelArray);
+         return pixelArray;
+     }
+ 
+@@ -101,6 +98,7 @@ class XRobotPeer implements RobotPeer {
+     private static native synchronized void keyPressImpl(int keycode);
+     private static native synchronized void keyReleaseImpl(int keycode);
+ 
+-    private static native synchronized void getRGBPixelsImpl(X11GraphicsConfig xgc, int x, int y, int width, int height, int pixelArray[]);
+-    private static native void loadNativeLibraries();
++    private static native synchronized void getRGBPixelsImpl(X11GraphicsConfig xgc,
++            int x, int y, int width, int height, int scale,
++            int pixelArray[]);
+ }
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XToolkit.java b/jdk/src/solaris/classes/sun/awt/X11/XToolkit.java
+index b07fc87921..49eb1e324a 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XToolkit.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XToolkit.java
+@@ -56,6 +56,7 @@ import sun.security.action.GetPropertyAction;
+ import sun.security.action.GetBooleanAction;
+ import sun.util.logging.PlatformLogger;
+ import sun.security.util.SecurityConstants;
++import static sun.awt.X11.XlibUtil.scaleDown;
+ 
+ public final class XToolkit extends UNIXToolkit implements Runnable {
+     private static final PlatformLogger log = PlatformLogger.getLogger("sun.awt.X11.XToolkit");
+@@ -415,7 +416,7 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+         }
+     }
+ 
+-    private void processGlobalMotionEvent(XEvent e) {
++    private void processGlobalMotionEvent(XEvent e, XBaseWindow win) {
+         // Only our windows guaranteely generate MotionNotify, so we
+         // should track enter/leave, to catch the moment when to
+         // switch to XQueryPointer
+@@ -424,9 +425,11 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+             awtLock();
+             try {
+                 if (lastCursorPos == null) {
+-                    lastCursorPos = new Point(ev.get_x_root(), ev.get_y_root());
++                    lastCursorPos = new Point(win.scaleDown(ev.get_x_root()),
++                                              win.scaleDown(ev.get_y_root()));
+                 } else {
+-                    lastCursorPos.setLocation(ev.get_x_root(), ev.get_y_root());
++                    lastCursorPos.setLocation(win.scaleDown(ev.get_x_root()),
++                                              win.scaleDown(ev.get_y_root()));
+                 }
+             } finally {
+                 awtUnlock();
+@@ -445,9 +448,11 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+             awtLock();
+             try {
+                 if (lastCursorPos == null) {
+-                    lastCursorPos = new Point(ev.get_x_root(), ev.get_y_root());
++                    lastCursorPos = new Point(win.scaleDown(ev.get_x_root()),
++                                              win.scaleDown(ev.get_y_root()));
+                 } else {
+-                    lastCursorPos.setLocation(ev.get_x_root(), ev.get_y_root());
++                    lastCursorPos.setLocation(win.scaleDown(ev.get_x_root()),
++                                              win.scaleDown(ev.get_y_root()));
+                 }
+             } finally {
+                 awtUnlock();
+@@ -485,10 +490,11 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+     private void dispatchEvent(XEvent ev) {
+         final XAnyEvent xany = ev.get_xany();
+ 
+-        if (windowToXWindow(xany.get_window()) != null &&
+-             (ev.get_type() == XConstants.MotionNotify || ev.get_type() == XConstants.EnterNotify || ev.get_type() == XConstants.LeaveNotify))
+-        {
+-            processGlobalMotionEvent(ev);
++        XBaseWindow baseWindow = windowToXWindow(xany.get_window());
++        if (baseWindow != null && (ev.get_type() == XConstants.MotionNotify
++                || ev.get_type() == XConstants.EnterNotify
++                || ev.get_type() == XConstants.LeaveNotify)) {
++            processGlobalMotionEvent(ev, baseWindow);
+         }
+ 
+         if( ev.get_type() == XConstants.MappingNotify ) {
+@@ -662,8 +668,8 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+                     XlibWrapper.XGetWindowAttributes(XToolkit.getDisplay(),
+                                                      XToolkit.getDefaultRootWindow(),
+                                                      pattr.pData);
+-                    screenWidth  = (int) pattr.get_width();
+-                    screenHeight = (int) pattr.get_height();
++                    screenWidth  = config.scaleDown(pattr.get_width());
++                    screenHeight = config.scaleDown(pattr.get_height());
+                 } finally {
+                     pattr.dispose();
+                 }
+@@ -691,7 +697,7 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+         return getDefaultScreenHeight();
+     }
+ 
+-    private static Rectangle getWorkArea(long root)
++    private static Rectangle getWorkArea(long root, int scale)
+     {
+         XAtom XA_NET_WORKAREA = XAtom.get("_NET_WORKAREA");
+ 
+@@ -707,7 +713,10 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+                 int rootWidth = (int)Native.getLong(native_ptr, 2);
+                 int rootHeight = (int)Native.getLong(native_ptr, 3);
+ 
+-                return new Rectangle(rootX, rootY, rootWidth, rootHeight);
++                return new Rectangle(scaleDown(rootX, scale),
++                                     scaleDown(rootY, scale),
++                                     scaleDown(rootWidth, scale),
++                                     scaleDown(rootHeight, scale));
+             }
+         }
+         finally
+@@ -751,22 +760,22 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+         XToolkit.awtLock();
+         try
+         {
+-            X11GraphicsConfig x11gc = (X11GraphicsConfig)gc;
+-            X11GraphicsDevice x11gd = (X11GraphicsDevice)x11gc.getDevice();
+-            long root = XlibUtil.getRootWindow(x11gd.getScreen());
+             X11GraphicsEnvironment x11ge = (X11GraphicsEnvironment)
+-                GraphicsEnvironment.getLocalGraphicsEnvironment();
++                    GraphicsEnvironment.getLocalGraphicsEnvironment();
++            X11GraphicsConfig x11gc = (X11GraphicsConfig) gc;
++            long root = XlibUtil.getRootWindow(x11gc.getDevice().getScreen());
++            int scale = x11gc.getScale();
+             if (x11ge.runningXinerama() && checkSTRUT()) {
+                 // implementation based on _NET_WM_STRUT/_NET_WM_STRUT_PARTIAL
+-                Rectangle rootBounds = XlibUtil.getWindowGeometry(root);
++                Rectangle rootBounds = XlibUtil.getWindowGeometry(root, scale);
+                 Insets insets = getScreenInsetsManually(root, rootBounds,
+-                                                        gc.getBounds());
++                                                        gc.getBounds(), scale);
+                 if ((insets.left | insets.top | insets.bottom | insets.right) != 0
+                         || rootBounds == null) {
+                     return insets;
+                 }
+             }
+-            Rectangle workArea = XToolkit.getWorkArea(root);
++            Rectangle workArea = XToolkit.getWorkArea(root, scale);
+             Rectangle screen = gc.getBounds();
+             if (workArea != null && screen.contains(workArea.getLocation())) {
+                 workArea = workArea.intersection(screen);
+@@ -776,6 +785,7 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+                 int right = screen.width - workArea.width - left;
+                 return new Insets(top, left, bottom, right);
+             }
++
+             // Note that it is better to return zeros than inadequate values
+             return new Insets(0, 0, 0, 0);
+         }
+@@ -812,7 +822,8 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+      *    calculated, but the system panels do not necessarily contain these
+      *    hints(Gnome 3 for example).
+      */
+-    private Insets getScreenInsetsManually(long root, Rectangle rootBounds, Rectangle screenBounds)
++    private Insets getScreenInsetsManually(long root, Rectangle rootBounds,
++                                           Rectangle screenBounds, int scale)
+     {
+         /*
+          * During the manual calculation of screen insets we iterate
+@@ -860,20 +871,23 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+                 if (strutPresent)
+                 {
+                     // second, verify that window is located on the proper screen
+-                    Rectangle windowBounds = XlibUtil.getWindowGeometry(window);
++                    Rectangle windowBounds = XlibUtil.getWindowGeometry(window,
++                                                                        scale);
+                     if (windowLevel > 1)
+                     {
+-                        windowBounds = XlibUtil.translateCoordinates(window, root, windowBounds);
++                        windowBounds = XlibUtil.translateCoordinates(window, root,
++                                                                     windowBounds,
++                                                                     scale);
+                     }
+                     // if _NET_WM_STRUT_PARTIAL is present, we should use its values to detect
+                     // if the struts area intersects with screenBounds, however some window
+                     // managers don't set this hint correctly, so we just get intersection with windowBounds
+                     if (windowBounds != null && windowBounds.intersects(screenBounds))
+                     {
+-                        int left = (int)Native.getLong(native_ptr, 0);
+-                        int right = (int)Native.getLong(native_ptr, 1);
+-                        int top = (int)Native.getLong(native_ptr, 2);
+-                        int bottom = (int)Native.getLong(native_ptr, 3);
++                        int left = scaleDown((int)Native.getLong(native_ptr, 0), scale);
++                        int right = scaleDown((int)Native.getLong(native_ptr, 1), scale);
++                        int top = scaleDown((int)Native.getLong(native_ptr, 2), scale);
++                        int bottom = scaleDown((int)Native.getLong(native_ptr, 3), scale);
+ 
+                         /*
+                          * struts could be relative to root window bounds, so
+@@ -2466,7 +2480,8 @@ public final class XToolkit extends UNIXToolkit implements Runnable {
+             oops_updated = false;
+             long event_number = getEventNumber();
+             // Generate OOPS ConfigureNotify event
+-            XlibWrapper.XMoveWindow(getDisplay(), win.getWindow(), ++oops_position, 0);
++            XlibWrapper.XMoveWindow(getDisplay(), win.getWindow(),
++                                    win.scaleUp(++oops_position), 0);
+             // Change win position each time to avoid system optimization
+             if (oops_position > 50) {
+                 oops_position = 0;
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XWM.java b/jdk/src/solaris/classes/sun/awt/X11/XWM.java
+index 33776d7b8b..1e2127d4f6 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XWM.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XWM.java
+@@ -781,7 +781,7 @@ final class XWM
+             } else if (isSawfish()) {
+                 awt_wmgr = XWM.SAWFISH_WM;
+             } else if (isKDE2()) {
+-                awt_wmgr =XWM.KDE2_WM;
++                awt_wmgr = XWM.KDE2_WM;
+             } else if (isCompiz()) {
+                 awt_wmgr = XWM.COMPIZ_WM;
+             } else if (isLookingGlass()) {
+@@ -1024,8 +1024,12 @@ final class XWM
+             shellBounds.translate(-window.currentInsets.left, -window.currentInsets.top);
+             window.updateSizeHints(window.getDimensions());
+             requestWMExtents(window.getWindow());
+-            XlibWrapper.XMoveResizeWindow(XToolkit.getDisplay(), window.getShell(),
+-                                          shellBounds.x, shellBounds.y, shellBounds.width, shellBounds.height);
++            XlibWrapper.XMoveResizeWindow(XToolkit.getDisplay(),
++                                          window.getShell(),
++                                          window.scaleUp(shellBounds.x),
++                                          window.scaleUp(shellBounds.y),
++                                          window.scaleUp(shellBounds.width),
++                                          window.scaleUp(shellBounds.height));
+             /* REMINDER: will need to revisit when setExtendedStateBounds is added */
+             //Fix for 4320050: Minimum size for java.awt.Frame is not being enforced.
+             //We need to update frame's minimum size, not to reset it
+@@ -1058,8 +1062,12 @@ final class XWM
+                 window.updateSizeHints(newDimensions);
+                 requestWMExtents(window.getWindow());
+                 XToolkit.XSync();
+-                XlibWrapper.XMoveResizeWindow(XToolkit.getDisplay(), window.getShell(),
+-                                              shellBounds.x, shellBounds.y, shellBounds.width, shellBounds.height);
++                XlibWrapper.XMoveResizeWindow(XToolkit.getDisplay(),
++                                              window.getShell(),
++                                              window.scaleUp(shellBounds.x),
++                                              window.scaleUp(shellBounds.y),
++                                              window.scaleUp(shellBounds.width),
++                                              window.scaleUp(shellBounds.height));
+             }
+             if (!justChangeSize) {  /* update decorations */
+                 setShellDecor(window);
+@@ -1698,6 +1706,12 @@ final class XWM
+                 pattr.dispose();
+             }
+         }
++
++        correctWM.top = win.scaleUp(correctWM.top);
++        correctWM.bottom = win.scaleUp(correctWM.bottom);
++        correctWM.left = win.scaleUp(correctWM.left);
++        correctWM.right = win.scaleUp(correctWM.right);
++
+         if (storedInsets.get(win.getClass()) == null) {
+             storedInsets.put(win.getClass(), correctWM);
+         }
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XWarningWindow.java b/jdk/src/solaris/classes/sun/awt/X11/XWarningWindow.java
+index 0717dee347..86d2ece3bc 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XWarningWindow.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XWarningWindow.java
+@@ -258,10 +258,10 @@ class XWarningWindow extends XWindow {
+         super.handleExposeEvent(xev);
+ 
+         XExposeEvent xe = xev.get_xexpose();
+-        final int x = xe.get_x();
+-        final int y = xe.get_y();
+-        final int width = xe.get_width();
+-        final int height = xe.get_height();
++        final int x = scaleDown(xe.get_x());
++        final int y = scaleDown(xe.get_y());
++        final int width = scaleDown(xe.get_width());
++        final int height = scaleDown(xe.get_height());
+         SunToolkit.executeOnEventHandlerThread(target,
+                 new Runnable() {
+                     public void run() {
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XWindow.java b/jdk/src/solaris/classes/sun/awt/X11/XWindow.java
+index 9ce735323a..45b814f2fc 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XWindow.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XWindow.java
+@@ -536,10 +536,11 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+         if (isEventDisabled(xev)) {
+             return;
+         }
+-        int x = xe.get_x();
+-        int y = xe.get_y();
+-        int w = xe.get_width();
+-        int h = xe.get_height();
++
++        int x = scaleDown(xe.get_x());
++        int y = scaleDown(xe.get_y());
++        int w = scaleDown(xe.get_width());
++        int h = scaleDown(xe.get_height());
+ 
+         Component target = (Component)getEventSource();
+         AWTAccessor.ComponentAccessor compAccessor = AWTAccessor.getComponentAccessor();
+@@ -656,10 +657,11 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+         when = xbe.get_time();
+         long jWhen = XToolkit.nowMillisUTC_offset(when);
+ 
+-        int x = xbe.get_x();
+-        int y = xbe.get_y();
++        int x = scaleDown(xbe.get_x());
++        int y = scaleDown(xbe.get_y());
+         if (xev.get_xany().get_window() != window) {
+-            Point localXY = toLocal(xbe.get_x_root(), xbe.get_y_root());
++            Point localXY = toLocal(scaleDown(xbe.get_x_root()),
++                                    scaleDown(xbe.get_y_root()));
+             x = localXY.x;
+             y = localXY.y;
+         }
+@@ -710,8 +712,8 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+             MouseEvent me = new MouseEvent((Component)getEventSource(),
+                                            type == XConstants.ButtonPress ? MouseEvent.MOUSE_PRESSED : MouseEvent.MOUSE_RELEASED,
+                                            jWhen,modifiers, x, y,
+-                                           xbe.get_x_root(),
+-                                           xbe.get_y_root(),
++                                           scaleDown(xbe.get_x_root()),
++                                           scaleDown(xbe.get_y_root()),
+                                            clickCount,popupTrigger,button);
+ 
+             postEventToEventQueue(me);
+@@ -724,8 +726,8 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+                                                      jWhen,
+                                                      modifiers,
+                                                      x, y,
+-                                                     xbe.get_x_root(),
+-                                                     xbe.get_y_root(),
++                                                     scaleDown(xbe.get_x_root()),
++                                                     scaleDown(xbe.get_y_root()),
+                                                      clickCount,
+                                                      false, button));
+             }
+@@ -736,8 +738,8 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+                 MouseWheelEvent mwe = new MouseWheelEvent((Component)getEventSource(),MouseEvent.MOUSE_WHEEL, jWhen,
+                                                           modifiers,
+                                                           x, y,
+-                                                          xbe.get_x_root(),
+-                                                          xbe.get_y_root(),
++                                                          scaleDown(xbe.get_x_root()),
++                                                          scaleDown(xbe.get_y_root()),
+                                                           1,false,MouseWheelEvent.WHEEL_UNIT_SCROLL,
+                                                           3,button==4 ?  -1 : 1);
+                 postEventToEventQueue(mwe);
+@@ -784,8 +786,8 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+         /*
+            Fix for 6176814 .  Add multiclick checking.
+         */
+-        int x = xme.get_x();
+-        int y = xme.get_y();
++        int x = scaleDown(xme.get_x());
++        int y = scaleDown(xme.get_y());
+         XWindow lastWindow = (lastWindowRef != null) ? ((XWindow)lastWindowRef.get()):(null);
+ 
+         if (!(lastWindow == this &&
+@@ -807,7 +809,8 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+         Component source = (Component)getEventSource();
+ 
+         if (xme.get_window() != window) {
+-            Point localXY = toLocal(xme.get_x_root(), xme.get_y_root());
++            Point localXY = toLocal(scaleDown(xme.get_x_root()),
++                                    scaleDown(xme.get_y_root()));
+             x = localXY.x;
+             y = localXY.y;
+         }
+@@ -816,7 +819,9 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+          */
+         if ((isDragging && clickCount == 0) || !isDragging) {
+             MouseEvent mme = new MouseEvent(source, mouseEventType, jWhen,
+-                                            modifiers, x, y, xme.get_x_root(), xme.get_y_root(),
++                                            modifiers, x, y,
++                                            scaleDown(xme.get_x_root()),
++                                            scaleDown(xme.get_y_root()),
+                                             clickCount, popupTrigger, MouseEvent.NOBUTTON);
+             postEventToEventQueue(mme);
+         }
+@@ -928,10 +933,11 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+         int modifiers = getModifiers(xce.get_state(),0,0);
+         int clickCount = 0;
+         boolean popupTrigger = false;
+-        int x = xce.get_x();
+-        int y = xce.get_y();
++        int x = scaleDown(xce.get_x());
++        int y = scaleDown(xce.get_y());
+         if (xce.get_window() != window) {
+-            Point localXY = toLocal(xce.get_x_root(), xce.get_y_root());
++            Point localXY = toLocal(scaleDown(xce.get_x_root()),
++                                    scaleDown(xce.get_y_root()));
+             x = localXY.x;
+             y = localXY.y;
+         }
+@@ -939,18 +945,27 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+         // This code tracks boundary crossing and ensures MOUSE_ENTER/EXIT
+         // are posted in alternate pairs
+         if (compWithMouse != null) {
+-            MouseEvent me = new MouseEvent(compWithMouse,
+-                MouseEvent.MOUSE_EXITED, jWhen, modifiers, xce.get_x(),
+-                xce.get_y(), xce.get_x_root(), xce.get_y_root(), clickCount, popupTrigger,
+-                MouseEvent.NOBUTTON);
++            MouseEvent me = new MouseEvent(compWithMouse, MouseEvent.MOUSE_EXITED,
++                                           jWhen, modifiers,
++                                           scaleDown(xce.get_x()),
++                                           scaleDown(xce.get_y()),
++                                           scaleDown(xce.get_x_root()),
++                                           scaleDown(xce.get_y_root()),
++                                           clickCount, popupTrigger,
++                                           MouseEvent.NOBUTTON);
+             postEventToEventQueue(me);
+             eventLog.finest("Clearing last window ref");
+             lastWindowRef = null;
+         }
+         if (xce.get_type() == XConstants.EnterNotify) {
+             MouseEvent me = new MouseEvent(getEventSource(), MouseEvent.MOUSE_ENTERED,
+-                jWhen, modifiers, xce.get_x(), xce.get_y(), xce.get_x_root(), xce.get_y_root(), clickCount,
+-                popupTrigger, MouseEvent.NOBUTTON);
++                                           jWhen, modifiers,
++                                           scaleDown(xce.get_x()),
++                                           scaleDown(xce.get_y()),
++                                           scaleDown(xce.get_x_root()),
++                                           scaleDown(xce.get_y_root()),
++                                           clickCount, popupTrigger,
++                                           MouseEvent.NOBUTTON);
+             postEventToEventQueue(me);
+         }
+     }
+@@ -1507,4 +1522,18 @@ class XWindow extends XBaseWindow implements X11ComponentPeer {
+         }
+     }
+ 
++    @Override
++    protected int getScale() {
++        return graphicsConfig.getScale();
++    }
++
++    @Override
++    protected int scaleUp(int x) {
++        return graphicsConfig.scaleUp(x);
++    }
++
++    @Override
++    protected int scaleDown(int x) {
++        return graphicsConfig.scaleDown(x);
++    }
+ }
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XWindowPeer.java b/jdk/src/solaris/classes/sun/awt/X11/XWindowPeer.java
+index b45277355d..c98a68cb5c 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XWindowPeer.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XWindowPeer.java
+@@ -29,6 +29,7 @@ import java.awt.*;
+ import java.awt.event.ComponentEvent;
+ import java.awt.event.FocusEvent;
+ import java.awt.event.WindowEvent;
++import java.awt.geom.AffineTransform;
+ 
+ import java.awt.peer.ComponentPeer;
+ import java.awt.peer.WindowPeer;
+@@ -747,10 +748,10 @@ class XWindowPeer extends XPanelPeer implements WindowPeer,
+ 
+     private Point queryXLocation()
+     {
+-        return XlibUtil.translateCoordinates(
+-            getContentWindow(),
+-            XlibWrapper.RootWindow(XToolkit.getDisplay(), getScreenNumber()),
+-            new Point(0, 0));
++        return XlibUtil.translateCoordinates(getContentWindow(), XlibWrapper
++                                             .RootWindow(XToolkit.getDisplay(),
++                                             getScreenNumber()),
++                                             new Point(0, 0), getScale());
+     }
+ 
+     protected Point getNewLocation(XConfigureEvent xe, int leftInset, int topInset) {
+@@ -761,7 +762,8 @@ class XWindowPeer extends XPanelPeer implements WindowPeer,
+         Point newLocation = targetBounds.getLocation();
+         if (xe.get_send_event() || runningWM == XWM.NO_WM || XWM.isNonReparentingWM()) {
+             // Location, Client size + insets
+-            newLocation = new Point(xe.get_x() - leftInset, xe.get_y() - topInset);
++            newLocation = new Point(scaleDown(xe.get_x()) - leftInset,
++                                    scaleDown(xe.get_y()) - topInset);
+         } else {
+             // ICCCM 4.1.5 states that a real ConfigureNotify will be sent when
+             // a window is resized but the client can not tell if the window was
+@@ -804,12 +806,12 @@ class XWindowPeer extends XPanelPeer implements WindowPeer,
+          * See getNewLocation() for the details.
+          */
+         Point newLocation = getNewLocation(xe, 0, 0);
+-        xe.set_x(newLocation.x);
+-        xe.set_y(newLocation.y);
+-        checkIfOnNewScreen(new Rectangle(xe.get_x(),
+-                                         xe.get_y(),
+-                                         xe.get_width(),
+-                                         xe.get_height()));
++        xe.set_x(scaleUp(newLocation.x));
++        xe.set_y(scaleUp(newLocation.y));
++        checkIfOnNewScreen(new Rectangle(newLocation.x,
++                                         newLocation.y,
++                                         scaleDown(xe.get_width()),
++                                         scaleDown(xe.get_height())));
+ 
+         // Don't call super until we've handled a screen change.  Otherwise
+         // there could be a race condition in which a ComponentListener could
+@@ -2151,7 +2153,9 @@ class XWindowPeer extends XPanelPeer implements WindowPeer,
+         XCrossingEvent xce = xev.get_xcrossing();
+         if (grabLog.isLoggable(PlatformLogger.Level.FINE)) {
+             grabLog.fine("{0}, when grabbed {1}, contains {2}",
+-                         xce, isGrabbed(), containsGlobal(xce.get_x_root(), xce.get_y_root()));
++                         xce, isGrabbed(),
++                         containsGlobal(scaleDown(xce.get_x_root()),
++                                        scaleDown(xce.get_y_root())));
+         }
+         if (isGrabbed()) {
+             // When window is grabbed, all events are dispatched to
+@@ -2177,7 +2181,9 @@ class XWindowPeer extends XPanelPeer implements WindowPeer,
+         XMotionEvent xme = xev.get_xmotion();
+         if (grabLog.isLoggable(PlatformLogger.Level.FINER)) {
+             grabLog.finer("{0}, when grabbed {1}, contains {2}",
+-                          xme, isGrabbed(), containsGlobal(xme.get_x_root(), xme.get_y_root()));
++                          xme, isGrabbed(),
++                          containsGlobal(scaleDown(xme.get_x_root()),
++                                         scaleDown(xme.get_y_root())));
+         }
+         if (isGrabbed()) {
+             boolean dragging = false;
+@@ -2202,9 +2208,10 @@ class XWindowPeer extends XPanelPeer implements WindowPeer,
+                 // So, I do not want to implement complicated logic for better retargeting.
+                 target = pressTarget.isVisible() ? pressTarget : this;
+                 xme.set_window(target.getWindow());
+-                Point localCoord = target.toLocal(xme.get_x_root(), xme.get_y_root());
+-                xme.set_x(localCoord.x);
+-                xme.set_y(localCoord.y);
++                Point localCoord = target.toLocal(scaleDown(xme.get_x_root()),
++                                                  scaleDown(xme.get_y_root()));
++                xme.set_x(scaleUp(localCoord.x));
++                xme.set_y(scaleUp(localCoord.y));
+             }
+             if (grabLog.isLoggable(PlatformLogger.Level.FINER)) {
+                 grabLog.finer("  -  Grab event target {0}", target);
+@@ -2218,7 +2225,9 @@ class XWindowPeer extends XPanelPeer implements WindowPeer,
+ 
+             // note that we need to pass dragging events to the grabber (6390326)
+             // see comment above for more inforamtion.
+-            if (!containsGlobal(xme.get_x_root(), xme.get_y_root()) && !dragging) {
++            if (!containsGlobal(scaleDown(xme.get_x_root()),
++                                scaleDown(xme.get_y_root()))
++                    && !dragging) {
+                 // Outside of Java
+                 return;
+             }
+@@ -2231,7 +2240,6 @@ class XWindowPeer extends XPanelPeer implements WindowPeer,
+ 
+     public void handleButtonPressRelease(XEvent xev) {
+         XButtonEvent xbe = xev.get_xbutton();
+-
+         /*
+          * Ignore the buttons above 20 due to the bit limit for
+          * InputEvent.BUTTON_DOWN_MASK.
+@@ -2242,7 +2250,11 @@ class XWindowPeer extends XPanelPeer implements WindowPeer,
+         }
+         if (grabLog.isLoggable(PlatformLogger.Level.FINE)) {
+             grabLog.fine("{0}, when grabbed {1}, contains {2} ({3}, {4}, {5}x{6})",
+-                         xbe, isGrabbed(), containsGlobal(xbe.get_x_root(), xbe.get_y_root()), getAbsoluteX(), getAbsoluteY(), getWidth(), getHeight());
++                         xbe, isGrabbed(),
++                         containsGlobal(scaleDown(xbe.get_x_root()),
++                                        scaleDown(xbe.get_y_root())),
++                         getAbsoluteX(), getAbsoluteY(),
++                         getWidth(), getHeight());
+         }
+         if (isGrabbed()) {
+             // When window is grabbed, all events are dispatched to
+@@ -2268,9 +2280,10 @@ class XWindowPeer extends XPanelPeer implements WindowPeer,
+                     // see 6390326 for more information.
+                     target = pressTarget.isVisible() ? pressTarget : this;
+                     xbe.set_window(target.getWindow());
+-                    Point localCoord = target.toLocal(xbe.get_x_root(), xbe.get_y_root());
+-                    xbe.set_x(localCoord.x);
+-                    xbe.set_y(localCoord.y);
++                    Point localCoord = target.toLocal(scaleDown(xbe.get_x_root()),
++                                                      scaleDown(xbe.get_y_root()));
++                    xbe.set_x(scaleUp(localCoord.x));
++                    xbe.set_y(scaleUp(localCoord.y));
+                     pressTarget = this;
+                 }
+                 if (target != null && target != getContentXWindow() && target != this) {
+@@ -2282,7 +2295,10 @@ class XWindowPeer extends XPanelPeer implements WindowPeer,
+                     // Target is either us or our content window -
+                     // check that event is inside.  'Us' in case of
+                     // shell will mean that this will also filter out press on title
+-                    if ((target == this || target == getContentXWindow()) && !containsGlobal(xbe.get_x_root(), xbe.get_y_root())) {
++                    if ((target == this || target == getContentXWindow())
++                            && !containsGlobal(scaleDown(xbe.get_x_root()),
++                                               scaleDown(xbe.get_y_root())))
++                    {
+                         // Outside this toplevel hierarchy
+                         // According to the specification of UngrabEvent, post it
+                         // when press occurs outside of the window and not on its owned windows
+diff --git a/jdk/src/solaris/classes/sun/awt/X11/XlibUtil.java b/jdk/src/solaris/classes/sun/awt/X11/XlibUtil.java
+index f06af9856a..27d6eef57d 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11/XlibUtil.java
++++ b/jdk/src/solaris/classes/sun/awt/X11/XlibUtil.java
+@@ -102,7 +102,7 @@ public class XlibUtil
+     /**
+      * Returns the bounds of the given window, in absolute coordinates
+      */
+-    static Rectangle getWindowGeometry(long window)
++    static Rectangle getWindowGeometry(long window, int scale)
+     {
+         XToolkit.awtLock();
+         try
+@@ -126,7 +126,9 @@ public class XlibUtil
+             long width = Native.getUInt(XlibWrapper.larg4);
+             long height = Native.getUInt(XlibWrapper.larg5);
+ 
+-            return new Rectangle(x, y, (int)width, (int)height);
++            return new Rectangle(scaleDown(x, scale), scaleDown(y, scale),
++                                 scaleDown((int) width, scale),
++                                 scaleDown((int) height, scale));
+         }
+         finally
+         {
+@@ -138,7 +140,7 @@ public class XlibUtil
+      * Translates the given point from one window to another. Returns
+      * null if the translation is failed
+      */
+-    static Point translateCoordinates(long src, long dst, Point p)
++    static Point translateCoordinates(long src, long dst, Point p, int scale)
+     {
+         Point translated = null;
+ 
+@@ -146,7 +148,7 @@ public class XlibUtil
+         try
+         {
+             XTranslateCoordinates xtc =
+-                new XTranslateCoordinates(src, dst, p.x, p.y);
++                new XTranslateCoordinates(src, dst, p.x * scale, p.y * scale);
+             try
+             {
+                 int status = xtc.execute(XErrorHandler.IgnoreBadWindowHandler.getInstance());
+@@ -154,7 +156,8 @@ public class XlibUtil
+                     ((XErrorHandlerUtil.saved_error == null) ||
+                     (XErrorHandlerUtil.saved_error.get_error_code() == XConstants.Success)))
+                 {
+-                    translated = new Point(xtc.get_dest_x(), xtc.get_dest_y());
++                    translated = new Point(scaleDown(xtc.get_dest_x(), scale),
++                                           scaleDown(xtc.get_dest_y(), scale));
+                 }
+             }
+             finally
+@@ -174,9 +177,12 @@ public class XlibUtil
+      * Translates the given rectangle from one window to another.
+      * Returns null if the translation is failed
+      */
+-    static Rectangle translateCoordinates(long src, long dst, Rectangle r)
++    static Rectangle translateCoordinates(long src, long dst, Rectangle r,
++                                          int scale)
+     {
+-        Point translatedLoc = translateCoordinates(src, dst, r.getLocation());
++        Point translatedLoc = translateCoordinates(src, dst, r.getLocation(),
++                                                   scale);
++
+         if (translatedLoc == null)
+         {
+             return null;
+@@ -406,4 +412,8 @@ public class XlibUtil
+             return 1 << (7 + button);
+         }
+     }
++
++    static int scaleDown(int x, int scale) {
++        return x / scale;
++    }
+ }
+diff --git a/jdk/src/solaris/classes/sun/awt/X11GraphicsConfig.java b/jdk/src/solaris/classes/sun/awt/X11GraphicsConfig.java
+index d1ddc22bca..5c975a4784 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11GraphicsConfig.java
++++ b/jdk/src/solaris/classes/sun/awt/X11GraphicsConfig.java
+@@ -136,7 +136,7 @@ public class X11GraphicsConfig extends GraphicsConfiguration
+     /**
+      * Return the graphics device associated with this configuration.
+      */
+-    public GraphicsDevice getDevice() {
++    public X11GraphicsDevice getDevice() {
+         return screen;
+     }
+ 
+@@ -259,7 +259,20 @@ public class X11GraphicsConfig extends GraphicsConfiguration
+      * For image buffers, this Transform will be the Identity transform.
+      */
+     public AffineTransform getDefaultTransform() {
+-        return new AffineTransform();
++        double scale = getScale();
++        return AffineTransform.getScaleInstance(scale, scale);
++    }
++
++    public int getScale() {
++        return getDevice().getScaleFactor();
++    }
++
++    public int scaleUp(int x) {
++        return x * getScale();
++    }
++
++    public int scaleDown(int x) {
++        return x / getScale();
+     }
+ 
+     /**
+@@ -311,7 +324,14 @@ public class X11GraphicsConfig extends GraphicsConfiguration
+     }
+ 
+     public Rectangle getBounds() {
+-        return pGetBounds(screen.getScreen());
++        Rectangle rect = pGetBounds(screen.getScreen());
++        if (getScale() != 1) {
++            rect.x = scaleDown(rect.x);
++            rect.y = scaleDown(rect.y);
++            rect.width = scaleDown(rect.width);
++            rect.height = scaleDown(rect.height);
++        }
++        return rect;
+     }
+ 
+     public native Rectangle pGetBounds(int screenNum);
+diff --git a/jdk/src/solaris/classes/sun/awt/X11GraphicsDevice.java b/jdk/src/solaris/classes/sun/awt/X11GraphicsDevice.java
+index d40a38383e..0e0cce2a0e 100644
+--- a/jdk/src/solaris/classes/sun/awt/X11GraphicsDevice.java
++++ b/jdk/src/solaris/classes/sun/awt/X11GraphicsDevice.java
+@@ -42,6 +42,7 @@ import sun.java2d.opengl.GLXGraphicsConfig;
+ import sun.java2d.xr.XRGraphicsConfig;
+ import sun.java2d.loops.SurfaceType;
+ 
++import sun.java2d.SunGraphicsEnvironment;
+ import sun.misc.ThreadGroupUtils;
+ 
+ /**
+@@ -64,9 +65,11 @@ public class X11GraphicsDevice
+     private SunDisplayChanger topLevels = new SunDisplayChanger();
+     private DisplayMode origDisplayMode;
+     private boolean shutdownHookRegistered;
++    private final int scale;
+ 
+     public X11GraphicsDevice(int screennum) {
+         this.screen = screennum;
++        this.scale = initScaleFactor();
+     }
+ 
+     /*
+@@ -281,6 +284,7 @@ public class X11GraphicsDevice
+                                                  int width, int height,
+                                                  int displayMode);
+     private static native void resetNativeData(int screen);
++    private static native int getNativeScaleFactor(int screen);
+ 
+     /**
+      * Returns true only if:
+@@ -510,6 +514,27 @@ public class X11GraphicsDevice
+         topLevels.add(client);
+     }
+ 
++    public int getScaleFactor() {
++        return scale;
++    }
++
++    private int initScaleFactor() {
++
++        if (SunGraphicsEnvironment.isUIScaleEnabled()) {
++
++            double debugScale = SunGraphicsEnvironment.getDebugScale();
++
++            if (debugScale >= 1) {
++                return (int) debugScale;
++            }
++
++            int nativeScale = getNativeScaleFactor(screen);
++            return nativeScale >= 1 ? nativeScale : 1;
++        }
++
++        return 1;
++    }
++
+     /**
+      * Remove a DisplayChangeListener from this X11GraphicsDevice.
+      */
+diff --git a/jdk/src/solaris/classes/sun/java2d/xr/XRSurfaceData.java b/jdk/src/solaris/classes/sun/java2d/xr/XRSurfaceData.java
+index 296bf4b62f..48f28e3202 100644
+--- a/jdk/src/solaris/classes/sun/java2d/xr/XRSurfaceData.java
++++ b/jdk/src/solaris/classes/sun/java2d/xr/XRSurfaceData.java
+@@ -244,7 +244,8 @@ public abstract class XRSurfaceData extends XSurfaceData {
+                                                  int width, int height,
+                                                  ColorModel cm, Image image,
+                                                  long drawable,
+-                                                 int transparency) {
++                                                 int transparency,
++                                                 boolean isTexture) {
+         int depth;
+         // If we have a 32 bit color model for the window it needs
+         // alpha to support translucency of the window so we need
+@@ -267,7 +268,7 @@ public abstract class XRSurfaceData extends XSurfaceData {
+         return new XRPixmapSurfaceData
+             (gc, width, height, image, getSurfaceType(gc, transparency),
+              cm, drawable, transparency,
+-             XRUtils.getPictureFormatForTransparency(transparency), depth);
++             XRUtils.getPictureFormatForTransparency(transparency), depth, isTexture);
+     }
+ 
+     protected XRSurfaceData(X11ComponentPeer peer, XRGraphicsConfig gc,
+@@ -542,11 +543,16 @@ public abstract class XRSurfaceData extends XSurfaceData {
+     }
+ 
+     public static class XRWindowSurfaceData extends XRSurfaceData {
++
++        protected final int scale;
++
+         public XRWindowSurfaceData(X11ComponentPeer peer,
+                                    XRGraphicsConfig gc, SurfaceType sType) {
+             super(peer, gc, sType, peer.getColorModel(),
+                   peer.getColorModel().getPixelSize(), Transparency.OPAQUE);
+ 
++            this.scale = gc.getScale();
++
+             if (isXRDrawableValid()) {
+                 initXRender(XRUtils.
+                     getPictureFormatForTransparency(Transparency.OPAQUE));
+@@ -561,6 +567,8 @@ public abstract class XRSurfaceData extends XSurfaceData {
+         public Rectangle getBounds() {
+             Rectangle r = peer.getBounds();
+             r.x = r.y = 0;
++            r.width *= scale;
++            r.height *= scale;
+             return r;
+         }
+ 
+@@ -586,6 +594,16 @@ public abstract class XRSurfaceData extends XSurfaceData {
+ 
+            super.invalidate();
+        }
++
++        @Override
++        public double getDefaultScaleX() {
++            return scale;
++        }
++
++        @Override
++        public double getDefaultScaleY() {
++            return scale;
++        }
+     }
+ 
+     public static class XRInternalSurfaceData extends XRSurfaceData {
+@@ -617,18 +635,20 @@ public abstract class XRSurfaceData extends XSurfaceData {
+         int width;
+         int height;
+         int transparency;
++        private final int scale;
+ 
+         public XRPixmapSurfaceData(XRGraphicsConfig gc, int width, int height,
+                                    Image image, SurfaceType sType,
+                                    ColorModel cm, long drawable,
+                                    int transparency, int pictFormat,
+-                                   int depth) {
++                                   int depth, boolean isTexture) {
+             super(null, gc, sType, cm, depth, transparency);
+-            this.width = width;
+-            this.height = height;
++            this.scale = isTexture ? 1 : gc.getDevice().getScaleFactor();
++            this.width = width * scale;
++            this.height = height * scale;
+             offscreenImage = image;
+             this.transparency = transparency;
+-            initSurface(depth, width, height, drawable, pictFormat);
++            initSurface(depth, this.width, this.height, drawable, pictFormat);
+ 
+             initXRender(pictFormat);
+             makePipes();
+@@ -686,6 +706,16 @@ public abstract class XRSurfaceData extends XSurfaceData {
+         public Object getDestination() {
+             return offscreenImage;
+         }
++
++        @Override
++        public double getDefaultScaleX() {
++            return scale;
++        }
++
++        @Override
++        public double getDefaultScaleY() {
++            return scale;
++        }
+     }
+ 
+     public long getGC() {
+diff --git a/jdk/src/solaris/classes/sun/java2d/xr/XRSurfaceDataProxy.java b/jdk/src/solaris/classes/sun/java2d/xr/XRSurfaceDataProxy.java
+index c84fa26c3a..2c82e30197 100644
+--- a/jdk/src/solaris/classes/sun/java2d/xr/XRSurfaceDataProxy.java
++++ b/jdk/src/solaris/classes/sun/java2d/xr/XRSurfaceDataProxy.java
+@@ -62,7 +62,7 @@ public class XRSurfaceDataProxy extends SurfaceDataProxy implements Transparency
+             try {
+                 cachedData = XRSurfaceData.createData(xrgc, w, h,
+                                                       xrgc.getColorModel(), null, 0,
+-                                                      getTransparency());
++                                                      getTransparency(), true);
+             } catch (OutOfMemoryError oome) {
+             }
+         }
+diff --git a/jdk/src/solaris/classes/sun/java2d/xr/XRVolatileSurfaceManager.java b/jdk/src/solaris/classes/sun/java2d/xr/XRVolatileSurfaceManager.java
+index 8c99f25b30..12a3034cf2 100644
+--- a/jdk/src/solaris/classes/sun/java2d/xr/XRVolatileSurfaceManager.java
++++ b/jdk/src/solaris/classes/sun/java2d/xr/XRVolatileSurfaceManager.java
+@@ -59,10 +59,10 @@ public class XRVolatileSurfaceManager extends VolatileSurfaceManager {
+                 drawable = ((Long)context).longValue();
+             }
+             sData = XRSurfaceData.createData(gc,
+-                                              vImg.getWidth(),
+-                                              vImg.getHeight(),
+-                                              cm, vImg, drawable,
+-                                              vImg.getTransparency());
++                                             vImg.getWidth(),
++                                             vImg.getHeight(),
++                                             cm, vImg, drawable,
++                                             vImg.getTransparency(), false);
+         } catch (NullPointerException ex) {
+             sData = null;
+         } catch (OutOfMemoryError er) {
+diff --git a/jdk/src/solaris/native/sun/awt/awt_GraphicsEnv.c b/jdk/src/solaris/native/sun/awt/awt_GraphicsEnv.c
+index 94f0228191..4d58c767c2 100644
+--- a/jdk/src/solaris/native/sun/awt/awt_GraphicsEnv.c
++++ b/jdk/src/solaris/native/sun/awt/awt_GraphicsEnv.c
+@@ -2092,3 +2092,38 @@ Java_sun_awt_X11GraphicsDevice_exitFullScreenExclusive
+ /**
+  * End DisplayMode/FullScreen support
+  */
++
++int getScale(const char *name) {
++    char *uiScale = getenv(name);
++    if (uiScale != NULL) {
++        double scale = strtod(uiScale, NULL);
++        if (errno == ERANGE || scale < 1) {
++            return -1;
++        }
++        return (int) scale;
++    }
++    return -1;
++}
++
++/*
++ * Class:     sun_awt_X11GraphicsDevice
++ * Method:    getNativeScaleFactor
++ * Signature: (I)I
++ */
++JNIEXPORT jint JNICALL
++Java_sun_awt_X11GraphicsDevice_getNativeScaleFactor
++    (JNIEnv *env, jobject this, jint screen) {
++
++    // for debug purposes
++    static int scale = -2.0;
++
++    if (scale == -2) {
++        scale = getScale("J2D_UISCALE");
++    }
++
++    if (scale >= 1) {
++        return scale;
++    }
++
++    return getScale("GDK_SCALE");
++}
+diff --git a/jdk/src/solaris/native/sun/awt/awt_Robot.c b/jdk/src/solaris/native/sun/awt/awt_Robot.c
+index 35ff9478ad..dd8dd02965 100644
+--- a/jdk/src/solaris/native/sun/awt/awt_Robot.c
++++ b/jdk/src/solaris/native/sun/awt/awt_Robot.c
+@@ -27,9 +27,6 @@
+     #error This file should not be included in headless library
+ #endif
+ 
+-#include "jvm_md.h"
+-#include <dlfcn.h>
+-
+ #include "awt_p.h"
+ #include "awt_GraphicsEnv.h"
+ #define XK_MISCELLANY
+@@ -41,6 +38,7 @@
+ #include <X11/extensions/XTest.h>
+ #include <X11/extensions/XInput.h>
+ #include <X11/extensions/XI.h>
++#include <X11/extensions/Xcomposite.h>
+ #include <jni.h>
+ #include <sizecalc.h>
+ #include "canvas.h"
+@@ -54,46 +52,11 @@
+ #include <sys/socket.h>
+ #endif
+ 
+-static Bool   (*compositeQueryExtension)   (Display*, int*, int*);
+-static Status (*compositeQueryVersion)     (Display*, int*, int*);
+-static Window (*compositeGetOverlayWindow) (Display *, Window);
+-
+ extern struct X11GraphicsConfigIDs x11GraphicsConfigIDs;
+ 
+ static jint * masks;
+ static jint num_buttons;
+ 
+-static void *xCompositeHandle;
+-
+-static const char* XCOMPOSITE = JNI_LIB_NAME("Xcomposite");
+-static const char* XCOMPOSITE_VERSIONED = VERSIONED_JNI_LIB_NAME("Xcomposite", "1");
+-
+-static Bool checkXCompositeFunctions(void) {
+-    return (compositeQueryExtension   != NULL   &&
+-            compositeQueryVersion     != NULL   &&
+-            compositeGetOverlayWindow != NULL);
+-}
+-
+-static void initXCompositeFunctions(void) {
+-
+-    if (xCompositeHandle == NULL) {
+-        xCompositeHandle = dlopen(XCOMPOSITE, RTLD_LAZY | RTLD_GLOBAL);
+-        if (xCompositeHandle == NULL) {
+-            xCompositeHandle = dlopen(XCOMPOSITE_VERSIONED, RTLD_LAZY | RTLD_GLOBAL);
+-        }
+-    }
+-    //*(void **)(&asyncGetCallTraceFunction)
+-    if (xCompositeHandle != NULL) {
+-        *(void **)(&compositeQueryExtension) = dlsym(xCompositeHandle, "XCompositeQueryExtension");
+-        *(void **)(&compositeQueryVersion) = dlsym(xCompositeHandle, "XCompositeQueryVersion");
+-        *(void **)(&compositeGetOverlayWindow) = dlsym(xCompositeHandle, "XCompositeGetOverlayWindow");
+-    }
+-
+-    if (xCompositeHandle && !checkXCompositeFunctions()) {
+-        dlclose(xCompositeHandle);
+-    }
+-}
+-
+ static int32_t isXTestAvailable() {
+     int32_t major_opcode, first_event, first_error;
+     int32_t  event_basep, error_basep, majorp, minorp;
+@@ -132,16 +95,13 @@ static Bool hasXCompositeOverlayExtension(Display *display) {
+ 
+     int xoverlay = False;
+     int eventBase, errorBase;
+-    if (checkXCompositeFunctions() &&
+-        compositeQueryExtension(display, &eventBase, &errorBase))
+-    {
++    if (XCompositeQueryExtension(display, &eventBase, &errorBase)) {
+         int major = 0;
+         int minor = 0;
+ 
+-        compositeQueryVersion(display, &major, &minor);
+-        if (major > 0 || minor >= 3) {
++        XCompositeQueryVersion(display, &major, &minor);
++        if (major > 0 || minor >= 3)
+             xoverlay = True;
+-        }
+     }
+ 
+     return xoverlay;
+@@ -273,69 +233,97 @@ JNIEXPORT void JNICALL
+ Java_sun_awt_X11_XRobotPeer_getRGBPixelsImpl( JNIEnv *env,
+                              jclass cls,
+                              jobject xgc,
+-                             jint x,
+-                             jint y,
+-                             jint width,
+-                             jint height,
++                             jint jx,
++                             jint jy,
++                             jint jwidth,
++                             jint jheight,
++                             jint scale,
+                              jintArray pixelArray) {
+-
+     XImage *image;
+     jint *ary;               /* Array of jints for sending pixel values back
+                               * to parent process.
+                               */
+     Window rootWindow;
++    XWindowAttributes attr;
+     AwtGraphicsConfigDataPtr adata;
+ 
+-    DTRACE_PRINTLN6("RobotPeer: getRGBPixelsImpl(%lx, %d, %d, %d, %d, %x)", xgc, x, y, width, height, pixelArray);
++    DTRACE_PRINTLN6("RobotPeer: getRGBPixelsImpl(%lx, %d, %d, %d, %d, %x)", xgc, jx, jy, jwidth, jheight, pixelArray);
+ 
+-    AWT_LOCK();
+-
+-    /* avoid a lot of work for empty rectangles */
+-    if ((width * height) == 0) {
+-        AWT_UNLOCK();
++    if (jwidth <= 0 || jheight <= 0) {
+         return;
+     }
+-    DASSERT(width * height > 0); /* only allow positive size */
+ 
+     adata = (AwtGraphicsConfigDataPtr) JNU_GetLongFieldAsPtr(env, xgc, x11GraphicsConfigIDs.aData);
+     DASSERT(adata != NULL);
+ 
++    AWT_LOCK();
++
++    jint sx = jx * scale;
++    jint sy = jy * scale;
++    jint swidth = jwidth * scale;
++    jint sheight = jheight * scale;
++
+     rootWindow = XRootWindow(awt_display, adata->awt_visInfo.screen);
+     if (hasXCompositeOverlayExtension(awt_display) &&
+         isXCompositeDisplay(awt_display, adata->awt_visInfo.screen))
+     {
+-        rootWindow = compositeGetOverlayWindow(awt_display, rootWindow);
++        rootWindow = XCompositeGetOverlayWindow(awt_display, rootWindow);
+     }
+ 
+-    image = getWindowImage(awt_display, rootWindow, x, y, width, height);
++    if (!XGetWindowAttributes(awt_display, rootWindow, &attr)
++            || sx + swidth <= attr.x
++            || attr.x + attr.width <= sx
++            || sy + sheight <= attr.y
++            || attr.y + attr.height <= sy) {
+ 
+-    /* Array to use to crunch around the pixel values */
+-    if (!IS_SAFE_SIZE_MUL(width, height) ||
+-        !(ary = (jint *) SAFE_SIZE_ARRAY_ALLOC(malloc, width * height, sizeof (jint))))
+-    {
+-        JNU_ThrowOutOfMemoryError(env, "OutOfMemoryError");
+-        XDestroyImage(image);
+         AWT_UNLOCK();
+-        return;
++        return; // Does not intersect with root window
+     }
+-    /* convert to Java ARGB pixels */
+-    for (y = 0; y < height; y++) {
+-        for (x = 0; x < width; x++) {
+-            jint pixel = (jint) XGetPixel(image, x, y); /* Note ignore upper
+-                                                         * 32-bits on 64-bit
+-                                                         * OSes.
+-                                                         */
+ 
+-            pixel |= 0xff000000; /* alpha - full opacity */
++    jint _x, _y;
++    jint x = MAX(sx, attr.x);
++    jint y = MAX(sy, attr.y);
++    jint width = MIN(sx + swidth, attr.x + attr.width) - x;
++    jint height = MIN(sy + sheight, attr.y + attr.height) - y;
+ 
+-            ary[(y * width) + x] = pixel;
+-        }
++
++    int dx = attr.x > sx ? attr.x - sx : 0;
++    int dy = attr.y > sy ? attr.y - sy : 0;
++
++    int index;
++
++    image = getWindowImage(awt_display, rootWindow, sx, sy, swidth, sheight);
++
++    ary = (*env)->GetPrimitiveArrayCritical(env, pixelArray, NULL);
++
++    if (!ary) {
++	XDestroyImage(image);
++	AWT_UNLOCK();
++	return;
+     }
+-    (*env)->SetIntArrayRegion(env, pixelArray, 0, height * width, ary);
+-    free(ary);
+ 
+-    XDestroyImage(image);
++    dx /= scale;
++    dy /= scale;
++    width /= scale;
++    height /= scale;
+ 
++    /* convert to Java ARGB pixels */
++    for (_y = 0; _y < height; _y++) {
++	for (_x = 0; _x < width; _x++) {
++                jint pixel = (jint) XGetPixel(image, _x * scale, _y * scale);
++                                                              /* Note ignore upper
++							   * 32-bits on 64-bit
++							   * OSes.
++							   */
++	    pixel |= 0xff000000; /* alpha - full opacity */
++
++	    index = (_y + dy) * jwidth + (_x + dx);
++	    ary[index] = pixel;
++	}
++    }
++    
++    XDestroyImage(image);
++    (*env)->ReleasePrimitiveArrayCritical(env, pixelArray, ary, 0);
+     AWT_UNLOCK();
+ }
+ 
+@@ -487,8 +475,3 @@ Java_sun_awt_X11_XRobotPeer_mouseWheelImpl (JNIEnv *env,
+ 
+     AWT_UNLOCK();
+ }
+-
+-JNIEXPORT void JNICALL
+-Java_sun_awt_X11_XRobotPeer_loadNativeLibraries (JNIEnv *env, jclass cls) {
+-    initXCompositeFunctions();
+-}
+diff --git a/jdk/src/solaris/native/sun/awt/gtk2_interface.c b/jdk/src/solaris/native/sun/awt/gtk2_interface.c
+index 201565a18c..b0073c92e5 100644
+--- a/jdk/src/solaris/native/sun/awt/gtk2_interface.c
++++ b/jdk/src/solaris/native/sun/awt/gtk2_interface.c
+@@ -117,9 +117,6 @@ static void (*fp_gdk_draw_rectangle)(GdkDrawable*, GdkGC*, gboolean,
+         gint, gint, gint, gint);
+ static GdkPixbuf *(*fp_gdk_pixbuf_new)(GdkColorspace colorspace,
+         gboolean has_alpha, int bits_per_sample, int width, int height);
+-static GdkPixbuf *(*fp_gdk_pixbuf_get_from_drawable)(GdkPixbuf *dest,
+-        GdkDrawable *src, GdkColormap *cmap, int src_x, int src_y,
+-        int dest_x, int dest_y, int width, int height);
+ static void (*fp_gdk_drawable_get_size)(GdkDrawable *drawable,
+         gint* width, gint* height);
+ 
+@@ -318,7 +315,7 @@ gboolean gtk2_check(const char* lib_name, gboolean load)
+         return TRUE;
+     } else {
+         void *lib = NULL;
+-        #ifdef RTLD_NOLOAD
++#ifdef RTLD_NOLOAD
+         /* Just check if gtk libs are already in the process space */
+         lib = dlopen(lib_name, RTLD_LAZY | RTLD_NOLOAD);
+         if (!load || lib != NULL) {
+@@ -341,7 +338,7 @@ gboolean gtk2_check(const char* lib_name, gboolean load)
+         fp_gtk_check_version = dlsym(lib, "gtk_check_version");
+         /* Check for GTK 2.2+ */
+         if (!fp_gtk_check_version(2, 2, 0)) {
+-            return  TRUE;
++            return TRUE;
+         }
+ 
+         // 8048289: workaround for https://bugzilla.gnome.org/show_bug.cgi?id=733065
+@@ -554,9 +551,13 @@ GtkApi* gtk2_load(JNIEnv *env, const char* lib_name)
+         fp_g_object_set = dl_symbol("g_object_set");
+ 
+         /* GDK */
++        fp_gdk_get_default_root_window =
++            dl_symbol("gdk_get_default_root_window");
+         fp_gdk_pixmap_new = dl_symbol("gdk_pixmap_new");
+         fp_gdk_pixbuf_get_from_drawable =
+             dl_symbol("gdk_pixbuf_get_from_drawable");
++        fp_gdk_pixbuf_scale_simple =
++            dl_symbol("gdk_pixbuf_scale_simple");
+         fp_gdk_gc_new = dl_symbol("gdk_gc_new");
+         fp_gdk_rgb_gc_set_foreground =
+             dl_symbol("gdk_rgb_gc_set_foreground");
+@@ -578,6 +579,8 @@ GtkApi* gtk2_load(JNIEnv *env, const char* lib_name)
+                 dl_symbol("gdk_pixbuf_get_bits_per_sample");
+         fp_gdk_pixbuf_get_n_channels =
+                 dl_symbol("gdk_pixbuf_get_n_channels");
++        fp_gdk_pixbuf_get_colorspace =
++                dl_symbol("gdk_pixbuf_get_colorspace");
+ 
+         /* GTK painting */
+         fp_gtk_init_check = dl_symbol("gtk_init_check");
+@@ -2481,6 +2484,8 @@ static jobject gtk2_get_setting(JNIEnv *env, Setting property)
+             return get_boolean_property(env, settings, "gtk-cursor-blink");
+         case GTK_CURSOR_BLINK_TIME:
+             return get_integer_property(env, settings, "gtk-cursor-blink-time");
++        case GTK_BUTTON_ORDER:
++	    return get_boolean_property(env, settings, "gtk-alternative-button-order");
+     }
+ 
+     return NULL;
+diff --git a/jdk/src/solaris/native/sun/awt/gtk2_interface.h b/jdk/src/solaris/native/sun/awt/gtk2_interface.h
+index 38dfcd4c92..1e550411fe 100644
+--- a/jdk/src/solaris/native/sun/awt/gtk2_interface.h
++++ b/jdk/src/solaris/native/sun/awt/gtk2_interface.h
+@@ -378,6 +378,7 @@ static gchar* (*fp_gtk_check_version)(guint required_major, guint required_minor
+ static void gtk2_init(GtkApi* gtk);
+ static void (*fp_g_free)(gpointer mem);
+ static void (*fp_g_object_unref)(gpointer object);
++static GdkWindow *(*fp_gdk_get_default_root_window) (void);
+ 
+ static int (*fp_gdk_pixbuf_get_bits_per_sample)(const GdkPixbuf *pixbuf);
+ static guchar *(*fp_gdk_pixbuf_get_pixels)(const GdkPixbuf *pixbuf);
+@@ -387,6 +388,14 @@ static int (*fp_gdk_pixbuf_get_n_channels)(const GdkPixbuf *pixbuf);
+ static int (*fp_gdk_pixbuf_get_rowstride)(const GdkPixbuf *pixbuf);
+ static int (*fp_gdk_pixbuf_get_width)(const GdkPixbuf *pixbuf);
+ static GdkPixbuf *(*fp_gdk_pixbuf_new_from_file)(const char *filename, GError **error);
++static GdkColorspace (*fp_gdk_pixbuf_get_colorspace)(const GdkPixbuf *pixbuf);
++
++static GdkPixbuf *(*fp_gdk_pixbuf_get_from_drawable)(GdkPixbuf *dest,
++        GdkDrawable *src, GdkColormap *cmap, int src_x, int src_y,
++        int dest_x, int dest_y, int width, int height);
++static GdkPixbuf *(*fp_gdk_pixbuf_scale_simple)(GdkPixbuf *src,
++        int dest_width, int dest_heigh, GdkInterpType interp_type);
++
+ 
+ static void (*fp_gtk_widget_destroy)(void *widget);
+ static void (*fp_gtk_window_present)(GtkWindow *window);
+diff --git a/jdk/src/solaris/native/sun/awt/gtk3_interface.c b/jdk/src/solaris/native/sun/awt/gtk3_interface.c
+index da27ae9928..8ef51589ec 100644
+--- a/jdk/src/solaris/native/sun/awt/gtk3_interface.c
++++ b/jdk/src/solaris/native/sun/awt/gtk3_interface.c
+@@ -2732,6 +2732,8 @@ static jobject gtk3_get_setting(JNIEnv *env, Setting property)
+             return get_boolean_property(env, settings, "gtk-cursor-blink");
+         case GTK_CURSOR_BLINK_TIME:
+             return get_integer_property(env, settings, "gtk-cursor-blink-time");
++        case GTK_BUTTON_ORDER:
++	    return get_boolean_property(env, settings, "gtk-alternative-button-order");
+     }
+ 
+     return NULL;
+diff --git a/jdk/src/solaris/native/sun/awt/gtk_interface.h b/jdk/src/solaris/native/sun/awt/gtk_interface.h
+index 9a16d6ea0b..1a68e9d50a 100644
+--- a/jdk/src/solaris/native/sun/awt/gtk_interface.h
++++ b/jdk/src/solaris/native/sun/awt/gtk_interface.h
+@@ -312,7 +312,8 @@ typedef enum
+     GTK_FONT_NAME,
+     GTK_ICON_SIZES,
+     GTK_CURSOR_BLINK,
+-    GTK_CURSOR_BLINK_TIME
++    GTK_CURSOR_BLINK_TIME,
++    GTK_BUTTON_ORDER
+ } Setting;
+ 
+ typedef enum

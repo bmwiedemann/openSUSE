@@ -1,0 +1,70 @@
+https://github.com/cilynx/rtl88x2bu/pull/292
+
+Since Linux v7.3, cfg80211 pre-assigns the cookie for remain_on_channel and mgmt_tx and passes it to the driver by value instead of expecting the driver to fill in a u64 *cookie. See upstream commit 914781c72813 ("wifi: cfg80211: convert cookie output to input parameter").
+
+Accept the cookie by value on v7.3+ and use it as provided instead of generating our own. The rest of the code keeps working on a pointer to it, so it is still stored in remain_on_ch_cookie and reported via cfg80211_ready_on_channel() and the mgmt tx status.
+
+Builds for older kernels are unchanged. Build-tested on openSUSE Tumbleweed with kernel 7.3.3 and openSUSE Slowroll with kernel 6.18.62.
+Note: Not runtime tested.
+
+--- os_dep/linux/ioctl_cfg80211.c	2026-08-18 08:59:03.000000000 +0200
++++ os_dep/linux/ioctl_cfg80211.c	2026-11-12 12:37:04.406142589 +0100
+@@ -7077,12 +7077,20 @@
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(3, 8, 0))
+ 	enum nl80211_channel_type channel_type,
+ #endif
+-	unsigned int duration, u64 *cookie
++	unsigned int duration,
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 3, 0))
++	u64 cookie_val
++#else
++	u64 *cookie
++#endif
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0))
+     ,const u8 *rx_addr
+ #endif
+ )
+ {
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 3, 0))
++	u64 *cookie = &cookie_val;
++#endif
+ 	s32 err = 0;
+ 	u8 remain_ch = (u8) ieee80211_frequency_to_channel(channel->center_freq);
+ 	_adapter *padapter = NULL;
+@@ -7123,7 +7131,9 @@
+ 	is_p2p_find = (duration < (pwdinfo->ext_listen_interval)) ? _TRUE : _FALSE;
+ #endif
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(7, 3, 0))
+ 	*cookie = ATOMIC_INC_RETURN(&pcfg80211_wdinfo->ro_ch_cookie_gen);
++#endif
+ 
+ 	RTW_INFO(FUNC_ADPT_FMT"%s ch:%u duration:%d, cookie:0x%llx\n"
+ 		, FUNC_ADPT_ARG(padapter), wdev == wiphy_to_pd_wdev(wiphy) ? " PD" : ""
+@@ -7681,8 +7691,15 @@
+ #else
+ 	struct cfg80211_mgmt_tx_params *params,
+ #endif
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 3, 0))
++	u64 cookie_val)
++#else
+ 	u64 *cookie)
++#endif
+ {
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 3, 0))
++	u64 *cookie = &cookie_val;
++#endif
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0)) || defined(COMPAT_KERNEL_RELEASE)
+ 	struct ieee80211_channel *chan = params->chan;
+ 	const u8 *buf = params->buf;
+@@ -7757,8 +7774,10 @@
+ 	dvobj = adapter_to_dvobj(padapter);
+ 	pwdev_priv = adapter_wdev_data(padapter);
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(7, 3, 0))
+ 	/* cookie generation */
+ 	*cookie = pwdev_priv->mgmt_tx_cookie++;
++#endif
+ 
+ #ifdef CONFIG_DEBUG_CFG80211
+ 	RTW_INFO(FUNC_ADPT_FMT"%s len=%zu, ch=%d"

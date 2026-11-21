@@ -1,0 +1,211 @@
+From e9dda5bbd37ecc614d06778b6e08fc8c59208032 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 4 Nov 2026 10:07:43 +0100
+Subject: [PATCH] Bump soversion for each release
+
+This is a modified version of https://invent.kde.org/libraries/ktextaddons/-/merge_requests/63
+
+ktextaddons doesn't have binary compatibility guarantees and already broke our packages.
+These changes will force a rebuild of dependent packages after every release.
+---
+ textaddonswidgets/CMakeLists.txt                       | 2 +-
+ textautocorrection/core/CMakeLists.txt                 | 2 +-
+ textautocorrection/widgets/CMakeLists.txt              | 2 +-
+ textautogeneratetext/CMakeLists.txt                    | 2 +-
+ textautogeneratetextmcpprotocol/core/CMakeLists.txt    | 2 +-
+ textautogeneratetextmcpprotocol/widgets/CMakeLists.txt | 2 +-
+ textcustomeditor/CMakeLists.txt                        | 2 +-
+ textedittexttospeech/CMakeLists.txt                    | 2 +-
+ textemoticons/core/CMakeLists.txt                      | 2 +-
+ textemoticons/widgets/CMakeLists.txt                   | 2 +-
+ textgrammarcheck/CMakeLists.txt                        | 2 +-
+ textspeechtotext/CMakeLists.txt                        | 2 +-
+ texttranslator/CMakeLists.txt                          | 2 +-
+ textutils/CMakeLists.txt                               | 2 +-
+ 14 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/textaddonswidgets/CMakeLists.txt b/textaddonswidgets/CMakeLists.txt
+index 4fd7ea2..3987c01 100644
+--- a/textaddonswidgets/CMakeLists.txt
++++ b/textaddonswidgets/CMakeLists.txt
+@@ -8,7 +8,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextAddonsWidgets
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTADDONSWIDGETS
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textaddonswidgets_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextAddonsWidgetsConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ configure_file(config-textaddonswidgets.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-textaddonswidgets.h)
+diff --git a/textautocorrection/core/CMakeLists.txt b/textautocorrection/core/CMakeLists.txt
+index 66ee616..f89abfc 100644
+--- a/textautocorrection/core/CMakeLists.txt
++++ b/textautocorrection/core/CMakeLists.txt
+@@ -6,7 +6,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextAutoCorrectio
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTAUTOCORRECTIONCORE
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textautocorrectioncore_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextAutoCorrectionCoreConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ install(
+diff --git a/textautocorrection/widgets/CMakeLists.txt b/textautocorrection/widgets/CMakeLists.txt
+index dbb1454..6fce1db 100644
+--- a/textautocorrection/widgets/CMakeLists.txt
++++ b/textautocorrection/widgets/CMakeLists.txt
+@@ -6,7 +6,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextAutoCorrectio
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTAUTOCORRECTIONWIDGETS
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textautocorrectionwidgets_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextAutoCorrectionWidgetsConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ install(
+diff --git a/textautogeneratetext/CMakeLists.txt b/textautogeneratetext/CMakeLists.txt
+index 6918cfa..e6cb105 100644
+--- a/textautogeneratetext/CMakeLists.txt
++++ b/textautogeneratetext/CMakeLists.txt
+@@ -6,7 +6,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextAutoGenerateT
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTAUTOGENERATETEXT
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textautogeneratetext_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextAutoGenerateTextConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ install(
+diff --git a/textautogeneratetextmcpprotocol/core/CMakeLists.txt b/textautogeneratetextmcpprotocol/core/CMakeLists.txt
+index 4d06f54..43bbf51 100644
+--- a/textautogeneratetextmcpprotocol/core/CMakeLists.txt
++++ b/textautogeneratetextmcpprotocol/core/CMakeLists.txt
+@@ -5,7 +5,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextAutoGenerateT
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTAUTOGENERATETEXTMCPPROTOCOLCORE
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textautogeneratetextmcpprotocolcore_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextAutoGenerateTextMcpProtocolCoreConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ add_library(KF6TextAutoGenerateTextMcpProtocolCore)
+diff --git a/textautogeneratetextmcpprotocol/widgets/CMakeLists.txt b/textautogeneratetextmcpprotocol/widgets/CMakeLists.txt
+index 4cbd361..5ce665c 100644
+--- a/textautogeneratetextmcpprotocol/widgets/CMakeLists.txt
++++ b/textautogeneratetextmcpprotocol/widgets/CMakeLists.txt
+@@ -5,7 +5,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextAutoGenerateT
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTAUTOGENERATETEXTMCPPROTOCOLWIDGETS
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textautogeneratetextmcpprotocolwidgets_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextAutoGenerateTextMcpProtocolWidgetsConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ add_library(KF6TextAutoGenerateTextMcpProtocolWidgets)
+diff --git a/textcustomeditor/CMakeLists.txt b/textcustomeditor/CMakeLists.txt
+index 73b8d3b..fa2293d 100644
+--- a/textcustomeditor/CMakeLists.txt
++++ b/textcustomeditor/CMakeLists.txt
+@@ -18,7 +18,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextCustomEditor"
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTCUSTOMEDITOR
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textcustomeditor_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextCustomEditorConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ add_library(KF6TextCustomEditor)
+diff --git a/textedittexttospeech/CMakeLists.txt b/textedittexttospeech/CMakeLists.txt
+index da11d52..104ae96 100644
+--- a/textedittexttospeech/CMakeLists.txt
++++ b/textedittexttospeech/CMakeLists.txt
+@@ -8,7 +8,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextEditTextToSpe
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTEDITTEXTTOSPEECH
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textedittexttospeech_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextEditTextToSpeechConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ add_subdirectory(kokoroinstall)
+diff --git a/textemoticons/core/CMakeLists.txt b/textemoticons/core/CMakeLists.txt
+index ecd7d90..5cc17cf 100644
+--- a/textemoticons/core/CMakeLists.txt
++++ b/textemoticons/core/CMakeLists.txt
+@@ -6,7 +6,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextEmoticonsCore
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTEMOTICONSCORE
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textemoticonscore_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextEmoticonsCoreConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ add_library(KF6TextEmoticonsCore)
+diff --git a/textemoticons/widgets/CMakeLists.txt b/textemoticons/widgets/CMakeLists.txt
+index 05b445a..e901dd4 100644
+--- a/textemoticons/widgets/CMakeLists.txt
++++ b/textemoticons/widgets/CMakeLists.txt
+@@ -6,7 +6,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextEmoticonsWidg
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTEMOTICONSWIDGETS
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textemoticonswidgets_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextEmoticonsWidgetsConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ add_library(KF6TextEmoticonsWidgets)
+diff --git a/textgrammarcheck/CMakeLists.txt b/textgrammarcheck/CMakeLists.txt
+index 29ae26e..c0f3324 100644
+--- a/textgrammarcheck/CMakeLists.txt
++++ b/textgrammarcheck/CMakeLists.txt
+@@ -13,7 +13,7 @@ configure_package_config_file(
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTGRAMMARCHECK
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textgrammarcheck_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextGrammarCheckConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ install(
+diff --git a/textspeechtotext/CMakeLists.txt b/textspeechtotext/CMakeLists.txt
+index 0fd43b0..e8809d3 100644
+--- a/textspeechtotext/CMakeLists.txt
++++ b/textspeechtotext/CMakeLists.txt
+@@ -6,7 +6,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextSpeechToText"
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTSPEECHTOTEXT
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textspeechtotext_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextSpeechToTextConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ install(
+diff --git a/texttranslator/CMakeLists.txt b/texttranslator/CMakeLists.txt
+index 2d561dd..4d1c00e 100644
+--- a/texttranslator/CMakeLists.txt
++++ b/texttranslator/CMakeLists.txt
+@@ -6,7 +6,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextTranslator")
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTTRANSLATE
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/texttranslator_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextTranslatorConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ install(
+diff --git a/textutils/CMakeLists.txt b/textutils/CMakeLists.txt
+index 95e7c7f..d80c6a1 100644
+--- a/textutils/CMakeLists.txt
++++ b/textutils/CMakeLists.txt
+@@ -8,7 +8,7 @@ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6TextUtils")
+ ecm_setup_version(PROJECT VARIABLE_PREFIX TEXTUTILS
+     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/textutils_version.h"
+     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6TextUtilsConfigVersion.cmake"
+-    SOVERSION 1
++    SOVERSION ${KTEXTADDONS_CURRENT_VERSION}
+ )
+ 
+ add_subdirectory(cmark-rc)
+-- 
+2.56.0
+

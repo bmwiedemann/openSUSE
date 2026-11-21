@@ -1,0 +1,49 @@
+From 17a44c1b9ddfb1ff0e9f9372c29f106918d70e0e Mon Sep 17 00:00:00 2001
+From: Chun-Yi Lee <jlee@suse.com>
+Date: Fri, 6 Nov 2026 15:48:36 +0800
+Subject: [PATCH] shim: Allow overriding FALLBACK and MOK_MANAGER filenames at
+ compile time
+
+Currently, the fallback and MokManager binary paths in shim are
+hardcoded to "fb<EFI_ARCH>.efi" and "mm<EFI_ARCH>.efi" via the
+FALLBACK and MOK_MANAGER macros.
+
+Downstream distributions or specific bootloader setups may rename or
+install these binaries under different filenames (for instance,
+standardized names like "fallback.efi" and "MokManager.efi", or
+names tailored to distribution-specific filesystem layouts). Because
+these macros are unconditionally defined in the source header/file,
+build environments cannot adjust the target binaries at build time
+without patching the source tree.
+
+Guard the definitions of FALLBACK and MOK_MANAGER with #ifndef checks.
+Fall back to the upstream default filenames when these macros are not
+defined externally. This allows downstream build systems to override the
+target binary filenames at compile time (e.g., via EXTRA_DEFINES) while
+preserving existing default behavior.
+
+This patch is sent to upstream for reviewing.
+
+Link: https://github.com/rhboot/shim/pull/837
+Signed-off-by: Chun-Yi Lee <jlee@suse.com>
+---
+ shim.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: shim-16.1/shim.h
+===================================================================
+--- shim-16.1.orig/shim.h
++++ shim-16.1/shim.h
+@@ -133,8 +133,12 @@
+ #define DEBUGSRC L"/usr/src/debug/shim-" VERSIONSTR "." EFI_ARCH
+ #endif
+ 
++#ifndef FALLBACK
+ #define FALLBACK L"\\fb" EFI_ARCH L".efi"
++#endif
++#ifndef MOK_MANAGER
+ #define MOK_MANAGER L"\\mm" EFI_ARCH L".efi"
++#endif
+ 
+ #if defined(VENDOR_DB_FILE)
+ # define vendor_authorized vendor_db

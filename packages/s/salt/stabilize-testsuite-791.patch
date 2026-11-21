@@ -1,0 +1,364 @@
+From c23049bd10376709e05122bb93b172a73e1e9228 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Tue, 3 Nov 2026 12:58:29 +0100
+Subject: [PATCH] Stabilize testsuite (#791)
+
+* SSH test fixes for debian 13
+
+* Ensure test_suse cleans up defined repositories
+
+* Fix test_master::test_mworker_pass_context
+
+* Fix test_events_api_handler test
+
+---------
+
+Co-authored-by: Daniel A. Wozniak <daniel.wozniak@broadcom.com>
+---
+ salt/utils/event.py                           |  2 +-
+ .../pytests/functional/modules/test_aptpkg.py |  2 +
+ tests/pytests/functional/modules/test_pkg.py  |  2 +
+ .../functional/states/pkgrepo/test_debian.py  | 86 +++++++++++++------
+ .../functional/states/pkgrepo/test_suse.py    | 10 +--
+ tests/pytests/unit/test_master.py             | 23 +++--
+ tests/support/case.py                         |  3 +
+ 7 files changed, 88 insertions(+), 40 deletions(-)
+
+diff --git a/salt/utils/event.py b/salt/utils/event.py
+index 20fa5702f7a..7beee14ef1e 100644
+--- a/salt/utils/event.py
++++ b/salt/utils/event.py
+@@ -238,7 +238,7 @@ class SaltEvent:
+             self.io_loop = io_loop
+             self._run_io_loop_sync = False
+         else:
+-            self.io_loop = tornado.ioloop.IOLoop()
++            self.io_loop = tornado.ioloop.IOLoop(make_current=False)
+             self._run_io_loop_sync = True
+         self.cpub = False
+         self.cpush = False
+diff --git a/tests/pytests/functional/modules/test_aptpkg.py b/tests/pytests/functional/modules/test_aptpkg.py
+index 5bc8209f4c7..12f5e10b5d5 100644
+--- a/tests/pytests/functional/modules/test_aptpkg.py
++++ b/tests/pytests/functional/modules/test_aptpkg.py
+@@ -302,6 +302,8 @@ def test_get_repo_keys_keydir_not_exist(key):
+     Test aptpkg.get_repo_keys when aptkey is False and True
+     and keydir does not exist
+     """
++    if key is True and not salt.utils.path.which("apt-key"):
++        pytest.xfail("Test should fail when on apt-key binary exists.")
+     ret = aptpkg.get_repo_keys(aptkey=key, keydir="/doesnotexist/")
+     if not key:
+         assert not ret
+diff --git a/tests/pytests/functional/modules/test_pkg.py b/tests/pytests/functional/modules/test_pkg.py
+index 84e999cad81..b73f14ca9fc 100644
+--- a/tests/pytests/functional/modules/test_pkg.py
++++ b/tests/pytests/functional/modules/test_pkg.py
+@@ -211,6 +211,8 @@ def test_owner(modules, grains):
+     binary = "/bin/ls"
+     if grains["os"] == "Ubuntu" and grains["osmajorrelease"] >= 24:
+         binary = "/usr/bin/ls"
++    if grains["os"] == "Debian" and grains["osmajorrelease"] >= 13:
++        binary = "/usr/bin/ls"
+ 
+     ret = modules.pkg.owner(binary)
+     assert len(ret) != 0
+diff --git a/tests/pytests/functional/states/pkgrepo/test_debian.py b/tests/pytests/functional/states/pkgrepo/test_debian.py
+index 8d91f2168ca..b4d39670b12 100644
+--- a/tests/pytests/functional/states/pkgrepo/test_debian.py
++++ b/tests/pytests/functional/states/pkgrepo/test_debian.py
+@@ -38,12 +38,18 @@ def test_adding_repo_file(pkgrepo, repo_uri, tmp_path):
+     """
+     test adding a repo file using pkgrepo.managed
+     """
++    aptkey = True if salt.utils.path.which("apt-key") else False
++    signedby = ""
++    if not aptkey:
++        signedby = " [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg]"
+     repo_file = str(tmp_path / "stable-binary.list")
+-    repo_content = f"deb {repo_uri} stable main"
+-    ret = pkgrepo.managed(name=repo_content, file=repo_file, clean_file=True)
++    repo_content = f"deb{signedby} {repo_uri} stable main"
++    ret = pkgrepo.managed(
++        name=repo_content, file=repo_file, clean_file=True, aptkey=aptkey
++    )
+     with salt.utils.files.fopen(repo_file, "r") as fp:
+-        file_content = fp.read()
+-    assert file_content.strip() == repo_content
++        file_content = fp.read().strip()
++    assert file_content == repo_content
+ 
+ 
+ @pytest.mark.requires_salt_states("pkgrepo.managed")
+@@ -52,19 +58,24 @@ def test_adding_repo_file_arch(pkgrepo, repo_uri, tmp_path, subtests):
+     test adding a repo file using pkgrepo.managed
+     and setting architecture
+     """
++    aptkey = True if salt.utils.path.which("apt-key") else False
++    signedby = ""
++    if not aptkey:
++        signedby = " signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg"
+     repo_file = str(tmp_path / "stable-binary.list")
+-    repo_content = f"deb [arch=amd64  ] {repo_uri} stable main"
+-    pkgrepo.managed(name=repo_content, file=repo_file, clean_file=True)
++    repo_content = f"deb [arch=amd64{signedby} ] {repo_uri} stable main"
++    ret = pkgrepo.managed(name=repo_content, file=repo_file, clean_file=True)
+     with salt.utils.files.fopen(repo_file, "r") as fp:
+-        file_content = fp.read()
+-        assert file_content.strip() == f"deb [arch=amd64] {repo_uri} stable main"
++        file_content = fp.read().strip()
++        assert file_content == f"deb [arch=amd64{signedby}] {repo_uri} stable main"
+     with subtests.test("With multiple archs"):
+-        repo_content = f"deb [arch=amd64,i386  ] {repo_uri} stable main"
++        repo_content = f"deb [arch=amd64,i386{signedby}  ] {repo_uri} stable main"
+         pkgrepo.managed(name=repo_content, file=repo_file, clean_file=True)
+         with salt.utils.files.fopen(repo_file, "r") as fp:
+-            file_content = fp.read()
++            file_content = fp.read().strip()
+             assert (
+-                file_content.strip() == f"deb [arch=amd64,i386] {repo_uri} stable main"
++                file_content
++                == f"deb [arch=amd64,i386{signedby}] {repo_uri} stable main"
+             )
+ 
+ 
+@@ -75,14 +86,18 @@ def test_adding_repo_file_cdrom(pkgrepo, tmp_path):
+     The issue is that CDROM installs often have [] in the line, and we
+     should still add the repo even though it's not setting arch(for example)
+     """
++    aptkey = True if salt.utils.path.which("apt-key") else False
++    signedby = ""
++    if not aptkey:
++        signedby = " [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg]"
+     repo_file = str(tmp_path / "cdrom.list")
+-    repo_content = "deb cdrom:[Debian GNU/Linux 11.4.0 _Bullseye_ - Official amd64 NETINST 20220709-10:31]/ stable main"
+-    pkgrepo.managed(name=repo_content, file=repo_file, clean_file=True)
++    repo_content = f"deb{signedby} cdrom:[Debian GNU/Linux 11.4.0 _Bullseye_ - Official amd64 NETINST 20220709-10:31]/ stable main"
++    ret = pkgrepo.managed(name=repo_content, file=repo_file, clean_file=True)
+     with salt.utils.files.fopen(repo_file, "r") as fp:
+-        file_content = fp.read()
++        file_content = fp.read().strip()
+         assert (
+-            file_content.strip()
+-            == "deb cdrom:[Debian GNU/Linux 11.4.0 _Bullseye_ - Official amd64 NETINST 20220709-10:31]/ stable main"
++            file_content
++            == f"deb{signedby} cdrom:[Debian GNU/Linux 11.4.0 _Bullseye_ - Official amd64 NETINST 20220709-10:31]/ stable main"
+         )
+ 
+ 
+@@ -272,12 +287,19 @@ def test_pkgrepo_with_architectures(pkgrepo, grains, sources_list_file, subtests
+     """
+     Test managing a repo with architectures specified
+     """
++    aptkey = True if salt.utils.path.which("apt-key") else False
++    signedby = ""
++    if not aptkey:
++        signedby = "signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg"
+     name = "deb {{arch}}http://foo.com/bar/latest {oscodename} main".format(
+         oscodename=grains["oscodename"]
+     )
+ 
+     def _get_arch(arch):
+-        return f"[arch={arch}] " if arch else ""
++        if signedby:
++            return f"[arch={arch} {signedby}] " if arch else f"[{signedby}] "
++        else:
++            return f"[arch={arch}] " if arch else ""
+ 
+     def _run(arch=None, test=False):
+         return pkgrepo.managed(
+@@ -290,14 +312,14 @@ def test_pkgrepo_with_architectures(pkgrepo, grains, sources_list_file, subtests
+     with subtests.test("test=True"):
+         # Run with test=True
+         ret = _run(test=True)
+-        assert ret.changes == {"repo": name.format(arch="")}
++        assert ret.changes == {"repo": name.format(arch=_get_arch(""))}
+         assert "would be" in ret.comment
+         assert ret.result is None
+ 
+     with subtests.test("test=False"):
+         # Run for real
+         ret = _run()
+-        assert ret.changes == {"repo": name.format(arch="")}
++        assert ret.changes == {"repo": name.format(arch=_get_arch(""))}
+         assert ret.comment.startswith("Configured")
+         assert ret.result is True
+ 
+@@ -320,7 +342,7 @@ def test_pkgrepo_with_architectures(pkgrepo, grains, sources_list_file, subtests
+     expected_changes = {
+         "line": {
+             "new": name.format(arch=_get_arch("amd64")),
+-            "old": name.format(arch=""),
++            "old": name.format(arch=_get_arch("")),
+         },
+         "architectures": {"new": ["amd64"], "old": []},
+     }
+@@ -358,7 +380,7 @@ def test_pkgrepo_with_architectures(pkgrepo, grains, sources_list_file, subtests
+ 
+     expected_changes = {
+         "line": {
+-            "new": name.format(arch=""),
++            "new": name.format(arch=_get_arch("")),
+             "old": name.format(arch=_get_arch("amd64")),
+         },
+         "architectures": {"new": [], "old": ["amd64"]},
+@@ -427,15 +449,19 @@ def test_repo_present_absent_trailing_slash_uri(
+     """
+     test adding a repo with a trailing slash in the uri
+     """
++    aptkey = True if salt.utils.path.which("apt-key") else False
++    signedby = ""
++    if not aptkey:
++        signedby = " [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg]"
+     # with the trailing slash
+-    repo_content = f"deb {repo_uri}/ stable main"
++    repo_content = f"deb{signedby} {repo_uri}/ stable main"
+     # initial creation
+     ret = pkgrepo.managed(
+         name=repo_content, file=trailing_slash_repo_file, refresh=False, clean_file=True
+     )
+     with salt.utils.files.fopen(trailing_slash_repo_file, "r") as fp:
+         file_content = fp.read()
+-    assert file_content.strip() == f"deb {repo_uri}/ stable main"
++    assert file_content.strip() == f"deb{signedby} {repo_uri}/ stable main"
+     assert ret.changes
+     # no changes
+     ret = pkgrepo.managed(
+@@ -454,8 +480,12 @@ def test_repo_present_absent_no_trailing_slash_uri(
+     """
+     test adding a repo with a trailing slash in the uri
+     """
++    aptkey = True if salt.utils.path.which("apt-key") else False
++    signedby = ""
++    if not aptkey:
++        signedby = " [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg]"
+     # without the trailing slash
+-    repo_content = f"deb {repo_uri} stable main"
++    repo_content = f"deb{signedby} {repo_uri} stable main"
+     # initial creation
+     ret = pkgrepo.managed(
+         name=repo_content, file=trailing_slash_repo_file, refresh=False, clean_file=True
+@@ -482,8 +512,12 @@ def test_repo_present_absent_no_trailing_slash_uri_add_slash(
+     test adding a repo without a trailing slash, and then running it
+     again with a trailing slash.
+     """
++    aptkey = True if salt.utils.path.which("apt-key") else False
++    signedby = ""
++    if not aptkey:
++        signedby = " [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg]"
+     # without the trailing slash
+-    repo_content = f"deb {repo_uri} stable main"
++    repo_content = f"deb{signedby} {repo_uri} stable main"
+     # initial creation
+     ret = pkgrepo.managed(
+         name=repo_content, file=trailing_slash_repo_file, refresh=False, clean_file=True
+@@ -493,7 +527,7 @@ def test_repo_present_absent_no_trailing_slash_uri_add_slash(
+     assert file_content.strip() == repo_content
+     assert ret.changes
+     # now add a trailing slash in the name
+-    repo_content = f"deb {repo_uri}/ stable main"
++    repo_content = f"deb{signedby} {repo_uri}/ stable main"
+     ret = pkgrepo.managed(
+         name=repo_content, file=trailing_slash_repo_file, refresh=False
+     )
+diff --git a/tests/pytests/functional/states/pkgrepo/test_suse.py b/tests/pytests/functional/states/pkgrepo/test_suse.py
+index b864352dfd9..2f4871d060d 100644
+--- a/tests/pytests/functional/states/pkgrepo/test_suse.py
++++ b/tests/pytests/functional/states/pkgrepo/test_suse.py
+@@ -19,7 +19,7 @@ def pkgrepo(states, grains):
+ 
+ 
+ @pytest.fixture
+-def suse_state_tree(grains, pkgrepo, state_tree):
++def suse_state_tree(grains, pkgrepo, state_tree, modules):
+     managed_sls_contents = """
+     salttest:
+       pkgrepo.managed:
+@@ -74,11 +74,11 @@ def suse_state_tree(grains, pkgrepo, state_tree):
+         "pkgrepo/modified.sls", modified_sls_contents, state_tree
+     )
+ 
+-    try:
+-        with managed_state_file, absent_state_file, modified_state_file:
++    with managed_state_file, absent_state_file, modified_state_file:
++        try:
+             yield
+-    finally:
+-        pass
++        finally:
++            modules.state.sls(mods="pkgrepo.absent")
+ 
+ 
+ @pytest.mark.requires_salt_states("pkgrepo.managed", "pkgrepo.absent")
+diff --git a/tests/pytests/unit/test_master.py b/tests/pytests/unit/test_master.py
+index 012986a4916..15a9fc873a8 100644
+--- a/tests/pytests/unit/test_master.py
++++ b/tests/pytests/unit/test_master.py
+@@ -215,6 +215,19 @@ def test_mworker_pass_context():
+     def mworker_bind_mock():
+         mworker.aes_funcs.run_func(data["cmd"], data)
+ 
++    def get_pillar_loader_context(loader_mock):
++        # LazyLoader can also be called for other loaders before the pillar one
++        # (e.g. log_handlers when MWorker.run sets up logging, or anything else
++        # running while salt.loader.LazyLoader is patched), so pick the pillar
++        # loader call by its tag.
++        pillar_calls = [
++            call
++            for call in loader_mock.call_args_list
++            if call[1].get("tag") == "pillar"
++        ]
++        assert len(pillar_calls) == 1, loader_mock.call_args_list
++        return pillar_calls[0][1]["pack"]["__context__"]
++
+     with patch("salt.client.get_local_client", local_client_mock), patch(
+         "salt.master.ClearFuncs", MagicMock()
+     ), patch("salt.minion.MasterMinion", MagicMock()), patch(
+@@ -240,10 +253,7 @@ def test_mworker_pass_context():
+             mworker.context, test_context
+         ):
+             mworker.run()
+-            assert (
+-                loadler_pillars_mock.call_args_list[0][1].get("pack").get("__context__")
+-                == test_context
+-            )
++            assert get_pillar_loader_context(loadler_pillars_mock) == test_context
+ 
+         loadler_pillars_mock.reset_mock()
+ 
+@@ -262,10 +272,7 @@ def test_mworker_pass_context():
+             mworker.context, test_context
+         ), patch("salt.utils.cache.CacheFactory.factory", MagicMock()):
+             mworker.run()
+-            assert (
+-                loadler_pillars_mock.call_args_list[0][1].get("pack").get("__context__")
+-                == test_context
+-            )
++            assert get_pillar_loader_context(loadler_pillars_mock) == test_context
+ 
+ 
+ def test_syndic_return_cache_dir_creation(encrypted_requests):
+diff --git a/tests/support/case.py b/tests/support/case.py
+index 55b537f6ffd..3bb653705ee 100644
+--- a/tests/support/case.py
++++ b/tests/support/case.py
+@@ -389,6 +389,8 @@ class ShellCase(TestCase, AdaptedConfigurationTestCaseMixin, ScriptPathMixin):
+             cmd = "python "
+         else:
+             cmd = "python{}.{} ".format(*sys.version_info)
++            if not salt.utils.path.which(cmd):
++                cmd = f"{sys.executable} "
+ 
+         cmd += "{} --config-dir={} {} ".format(
+             script_path, config_dir or RUNTIME_VARS.TMP_CONF_DIR, arg_str
+@@ -477,6 +479,7 @@ class ShellCase(TestCase, AdaptedConfigurationTestCaseMixin, ScriptPathMixin):
+ 
+         log.debug("Running Popen(%r, %r)", cmd, popen_kwargs)
+         process = subprocess.Popen(cmd, **popen_kwargs)
++        log.debug("Result %r", process)
+ 
+         if timeout is not None:
+             stop_at = datetime.now() + timedelta(seconds=timeout)
+-- 
+2.56.0
+

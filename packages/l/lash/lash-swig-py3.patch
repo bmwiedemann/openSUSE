@@ -1,0 +1,27 @@
+--- a/pylash/lash.i	2026-11-16 16:09:01.458458572 +0100
++++ b/pylash/lash.i	2026-11-16 16:09:01.476075940 +0100
+@@ -63,13 +63,13 @@
+   for (i = 0; i < *$1; i++)
+   {
+     PyObject *s = PyList_GetItem($input,i);
+-    if (!PyString_Check(s))
++    if (!PyUnicode_Check(s))
+     {
+         PyErr_SetString(PyExc_ValueError, "List items must be strings");
+         goto fail;
+     }
+ 
+-    (*$2)[i] = PyString_AsString(s);
++    (*$2)[i] = (char *) PyUnicode_AsUTF8(s);
+   }
+ 
+   (*$2)[i] = 0;
+@@ -81,7 +81,7 @@
+ 
+   for (i = 0; i < *$1; i++)
+   {
+-    PyObject *s = PyString_FromString((*$2)[i]);
++    PyObject *s = PyUnicode_FromString((*$2)[i]);
+     PyList_SetItem($input,i,s);
+   }
+ 

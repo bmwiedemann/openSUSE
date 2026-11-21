@@ -1,0 +1,215 @@
+From dcb8aaacd231f52c4fe4e05044018c0281ad92c5 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sun, 2 Aug 2026 05:09:26 +0200
+Subject: [PATCH] Fail the build on compile errors and keep object order stable
+
+The parallel path of compile_objects_inner() logged a failed job but
+still returned Ok with a reduced result list, so missing symbols only
+surfaced later at link time. Track the first failure and return it, and
+include the failing file name in compile errors.
+
+The parallel path also concatenated results from the calling thread and
+the helper thread in completion order, so the returned object list (and
+from there the .a member order and linked binary layout) changed from
+run to run. Carry each file's index through the work list and place
+results in one slot per input file.
+
+Add regression tests for failure propagation, error messages naming the
+file, and deterministic object order.
+---
+ src/lib.rs | 127 ++++++++++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 112 insertions(+), 15 deletions(-)
+
+Index: rav1e-0.8.1/vendor/nasm-rs-0.3.2/src/lib.rs
+===================================================================
+--- rav1e-0.8.1.orig/vendor/nasm-rs-0.3.2/src/lib.rs
++++ rav1e-0.8.1/vendor/nasm-rs-0.3.2/src/lib.rs
+@@ -301,12 +301,21 @@ impl Build {
+         });
+         //we'll be making use of Vec::pop() which removes the last element. Reverse the list so
+         //we're doing things in the order given (it might be important).
++        //Each entry carries its index, so that a job can put its object straight into the
++        //slot the caller expects it in no matter what order the jobs finish in.
+         let list = sync::Arc::new(sync::RwLock::new(
+-            files.iter().rev().collect::<Vec<&PathBuf>>(),
++            files
++                .iter()
++                .enumerate()
++                .rev()
++                .collect::<Vec<(usize, &PathBuf)>>(),
+         ));
+ 
+-        let thread_results: Vec<_> = std::thread::scope(|s| {
+-            let mut outputs: Vec<PathBuf> = Vec::with_capacity(files.len());
++        std::thread::scope(|s| {
++            // one slot per input file, filled in as the jobs come back
++            let mut outputs: Vec<Option<PathBuf>> = vec![None; files.len()];
++            // report every failure, but fail the build on the first one
++            let mut failure: Option<String> = None;
+             let helper_thread_list = sync::Arc::clone(&list);
+             let helper_thread_handle = s.spawn(move || {
+                 let mut handles = Vec::with_capacity(files.len());
+@@ -340,11 +349,11 @@ impl Build {
+                     }
+ 
+                     let handle = s.spawn(move || {
+-                        let result =
+-                            self.compile_file(nasm, file.unwrap().as_path(), args, src, dst);
++                        let (index, file) = file.unwrap();
++                        let result = self.compile_file(nasm, file.as_path(), args, src, dst);
+                         // Release the token ASAP so that another job can start
+                         drop(token);
+-                        result
++                        (index, result)
+                     });
+                     handles.push(handle);
+                 }
+@@ -369,10 +378,12 @@ impl Build {
+                 if file.is_none() {
+                     break;
+                 }
+-                match self.compile_file(nasm, file.unwrap().as_path(), args, src, dst) {
+-                    Ok(r) => outputs.push(r),
++                let (index, file) = file.unwrap();
++                match self.compile_file(nasm, file.as_path(), args, src, dst) {
++                    Ok(r) => outputs[index] = Some(r),
+                     Err(e) => {
+                         error!("{}", e);
++                        failure.get_or_insert(e);
+                     }
+                 }
+             }
+@@ -381,17 +392,21 @@ impl Build {
+                 .join()
+                 .unwrap_or_else(|e| panic::resume_unwind(e));
+ 
+-            for out in thread_outputs {
++            for (index, out) in thread_outputs {
+                 match out {
+-                    Ok(p) => outputs.push(p),
++                    Ok(p) => outputs[index] = Some(p),
+                     Err(e) => {
+-                        error!("{}", e)
++                        error!("{}", e);
++                        failure.get_or_insert(e);
+                     }
+                 }
+             }
+-            outputs
+-        });
+-        Ok(thread_results)
++
++            match failure {
++                Some(e) => Err(e),
++                None => Ok(outputs.into_iter().flatten().collect()),
++            }
++        })
+     }
+ 
+     #[cfg(not(feature = "parallel"))]
+@@ -437,7 +452,8 @@ impl Build {
+         cmd.args(new_args);
+         std::fs::create_dir_all(obj.parent().unwrap()).unwrap();
+ 
+-        run(cmd.arg(src.join(file)).arg("-o").arg(&obj))?;
++        run(cmd.arg(src.join(file)).arg("-o").arg(&obj))
++            .map_err(|e| format!("{}: {}", file.display(), e))?;
+         Ok(obj)
+     }
+ 
+@@ -597,6 +613,87 @@ fn test_build() {
+ }
+ 
+ #[test]
++fn test_compile_objects_inner_fails_on_error() {
++    let build = Build::new();
++    let files = [PathBuf::from("a.asm"), PathBuf::from("b.asm")];
++    let dst = env::temp_dir();
++    let res = build.compile_objects_inner(
++        Path::new("./no-such-assembler"),
++        &files,
++        &[],
++        Path::new("."),
++        &dst,
++    );
++    assert!(res.unwrap_err().contains(".asm"));
++}
++
++/// The parallel path only spawns threads when it finds a jobserver that
++/// supports non-blocking acquire, which a self-created one does not.
++/// So run the test again in a child process that gets a fifo jobserver.
++/// Returns true in the parent, which then has nothing left to do.
++#[cfg(all(unix, feature = "parallel"))]
++fn rerun_with_jobserver(test: &str) -> bool {
++    use std::io::Write;
++
++    if env::var_os("NASM_RS_TEST_JOBSERVER").is_some() {
++        return false;
++    }
++    let fifo = env::temp_dir().join(format!("{}.fifo", test));
++    let _ = std::fs::remove_file(&fifo);
++    assert!(Command::new("mkfifo")
++        .arg(&fifo)
++        .status()
++        .unwrap()
++        .success());
++    let mut tokens = std::fs::OpenOptions::new()
++        .read(true)
++        .write(true)
++        .open(&fifo)
++        .unwrap();
++    tokens.write_all(b"++++++++").unwrap();
++
++    let status = Command::new(env::current_exe().unwrap())
++        .args([test, "--exact"])
++        .env("NASM_RS_TEST_JOBSERVER", "1")
++        .env(
++            "MAKEFLAGS",
++            format!("--jobserver-auth=fifo:{}", fifo.display()),
++        )
++        .stdout(Stdio::null())
++        .status()
++        .unwrap();
++    let _ = std::fs::remove_file(&fifo);
++    assert!(status.success());
++    true
++}
++
++#[cfg(all(unix, not(feature = "parallel")))]
++fn rerun_with_jobserver(_test: &str) -> bool {
++    false
++}
++
++#[test]
++#[cfg(unix)]
++fn test_compile_objects_inner_keeps_order() {
++    if rerun_with_jobserver("test_compile_objects_inner_keeps_order") {
++        return;
++    }
++    let build = Build::new();
++    let files: Vec<PathBuf> = (0..16)
++        .map(|i| PathBuf::from(format!("{}.asm", i)))
++        .collect();
++    let dst = env::temp_dir();
++    let objs = build
++        .compile_objects_inner(Path::new("/bin/true"), &files, &[], Path::new("."), &dst)
++        .unwrap();
++    let expected: Vec<PathBuf> = files
++        .iter()
++        .map(|f| dst.join(f).with_extension("o"))
++        .collect();
++    assert_eq!(objs, expected);
++}
++
++#[test]
+ fn test_parse_nasm_version() {
+     let ver_str = "NASM version 2.14.02 compiled on Jan 22 2019";
+     assert_eq!((2, 14, 2), parse_nasm_version(ver_str).unwrap());
+Index: rav1e-0.8.1/vendor/nasm-rs-0.3.2/.cargo-checksum.json
+===================================================================
+--- rav1e-0.8.1.orig/vendor/nasm-rs-0.3.2/.cargo-checksum.json
++++ rav1e-0.8.1/vendor/nasm-rs-0.3.2/.cargo-checksum.json
+@@ -1 +1 @@
+-{"files":{".cargo_vcs_info.json":"56a22e6d7557b7062caffad83c2db700ab8d22bb49f9583c1fc2dd55c6254e79","Cargo.lock":"6146039f99d3b92fb3b41d98294f94813733d6de4dbd9f894c06d81e89a15d83","Cargo.toml":"c1699f11e96910a583645c3364ac729bb70da3936a31aeaba981b4601bc28697","Cargo.toml.orig":"5ff02567537663236981f69fa75ee89372e57799dc9708e9b3a72c8d944528c5","LICENSE-APACHE":"a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2","LICENSE-MIT":"c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5","README.markdown":"a2b5235b6f16ead0246cb9aa12453a0d80b6db4d626f15629f01a80c2290284e","src/lib.rs":"144f85ff9541521892ff9f5d63cd371453a79b7a3fdd537409b06c1038b13d2e"},"package":"706bf8a5e8c8ddb99128c3291d31bd21f4bcde17f0f4c20ec678d85c74faa149"}
+\ No newline at end of file
++{"files":{".cargo_vcs_info.json":"56a22e6d7557b7062caffad83c2db700ab8d22bb49f9583c1fc2dd55c6254e79","Cargo.lock":"6146039f99d3b92fb3b41d98294f94813733d6de4dbd9f894c06d81e89a15d83","Cargo.toml":"c1699f11e96910a583645c3364ac729bb70da3936a31aeaba981b4601bc28697","Cargo.toml.orig":"5ff02567537663236981f69fa75ee89372e57799dc9708e9b3a72c8d944528c5","LICENSE-APACHE":"a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2","LICENSE-MIT":"c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5","README.markdown":"a2b5235b6f16ead0246cb9aa12453a0d80b6db4d626f15629f01a80c2290284e","src/lib.rs":"0c19dd88b4f4728e452525ac61e5e0c3673e67c9024c81d9b2517306fa3f7cdc"},"package":"706bf8a5e8c8ddb99128c3291d31bd21f4bcde17f0f4c20ec678d85c74faa149"}

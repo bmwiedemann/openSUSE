@@ -1,0 +1,11 @@
+--- a/cmake/FindStb.cmake	2026-11-17 13:22:16.411361364 +0100
++++ b/cmake/FindStb.cmake	2026-11-17 13:22:16.426862556 +0100
+@@ -13,7 +13,7 @@
+ find_package(PkgConfig QUIET)
+ pkg_check_modules(PC_Stb QUIET Stb)
+ 
+-find_path(Stb_INCLUDE_DIRS stb/stb_image_resize.h #Search for something that is a little less prone to false positives than just stb.h.
++find_path(Stb_INCLUDE_DIRS stb/stb_image.h #Search for something that is a little less prone to false positives than just stb.h.
+     HINTS ${PC_Stb_INCLUDEDIR} ${PC_Stb_INCLUDE_DIRS}
+     PATHS "$ENV{PROGRAMFILES}" "$ENV{PROGRAMW6432}" "/usr/include"
+     PATH_SUFFIXES include/stb stb include

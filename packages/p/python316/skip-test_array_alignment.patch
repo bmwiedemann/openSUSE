@@ -1,0 +1,23 @@
+Skip test_array_alignment when built with mimalloc
+
+The test fails when Python is built with mimalloc.
+
+Upstream issue: https://github.com/python/cpython/issues/144725
+---
+---
+ Lib/test/test_buffer.py |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: Python-3.16.0a2/Lib/test/test_buffer.py
+===================================================================
+--- Python-3.16.0a2.orig/Lib/test/test_buffer.py	2026-11-11 00:17:14.689700145 +0100
++++ Python-3.16.0a2/Lib/test/test_buffer.py	2026-11-11 00:26:04.862162943 +0100
+@@ -4517,6 +4517,8 @@
+         self.assertEqual([ptr % align for ptr in ptrs], [0]*len(ptrs))
+ 
+     @support.cpython_only
++    @unittest.skipIf(_testcapi is not None and _testcapi.WITH_MIMALLOC,
++                     'fails with mimalloc; gh#python/cpython#144725')
+     @unittest.skipIf(_testcapi is None, "requires _testcapi")
+     def test_array_alignment(self):
+         # gh-140557: buffer pointers, including for empty arrays, must be

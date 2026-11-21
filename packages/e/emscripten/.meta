@@ -1,0 +1,5 @@
+<package name="emscripten" project="openSUSE:Factory">
+  <title>LLVM-to-WebAssembly compiler toolchain</title>
+  <description>Emscripten compiles C and C++ to WebAssembly using LLVM and Binaryen.</description>
+  <url>https://emscripten.org</url>
+</package>

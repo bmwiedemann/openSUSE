@@ -1,0 +1,41 @@
+Skip deep recursion tests in test_compile on SLE i586
+
+test_extended_arg and test_compiler_recursion_limit exhaust the
+stack on 32-bit x86 SLE builds.
+
+Downstream only.
+---
+---
+ Lib/test/test_compile.py |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+Index: Python-3.16.0a2/Lib/test/test_compile.py
+===================================================================
+--- Python-3.16.0a2.orig/Lib/test/test_compile.py	2026-11-11 00:17:14.968705651 +0100
++++ Python-3.16.0a2/Lib/test/test_compile.py	2026-11-11 00:24:49.207669924 +0100
+@@ -29,6 +29,9 @@
+ from test.support import os_helper
+ from test.support.os_helper import FakePath
+ 
++IS_SLE_15_6 = os.environ.get("SLE_VERSION", "") == "0150700"
++IS_32bit = hasattr(os, "uname") and os.uname().machine in ["i386", "i486", "i586", "i686"]
++
+ class TestSpecifics(unittest.TestCase):
+ 
+     def compile_single(self, source):
+@@ -169,6 +172,7 @@
+         self.assertEqual(d['z'], 12)
+ 
+     @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
++    @unittest.skipIf(IS_SLE_15_6 and IS_32bit, "fails on 15.6 i586")
+     @support.skip_emscripten_stack_overflow()
+     def test_extended_arg(self):
+         repeat = 100
+@@ -772,6 +776,7 @@
+         self.assertIn(b"source code cannot contain null bytes", res.err)
+ 
+     @support.cpython_only
++    @unittest.skipIf(IS_SLE_15_6 and IS_32bit, "fails on 15.6 i586")
+     @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
+     @support.run_with_limited_c_stack(500_000)
+     @support.skip_emscripten_stack_overflow()

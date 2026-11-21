@@ -1,0 +1,102 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: [PATCH] Do not install agents from the ACP Registry or with npx
+
+The Agents settings list the ACP Registry, refresh its index daily once
+an agent was installed from it, and install a registry agent by
+downloading a release archive, an npm package or a uv tool and running
+it. Never fetch the index and refuse the install with a message telling
+the user to install the agent and add it as a custom agent. The
+built-in Claude Code and Codex ACP adapters are fetched from npm and run
+with npx -y: run claude-agent-acp and codex-acp from PATH instead, like
+the other built-in agents (Gemini CLI, OpenCode, Goose, ...).
+
+--- a/crates/ide-agent/src/provider.rs
++++ b/crates/ide-agent/src/provider.rs
+@@ -39,18 +39,19 @@
+ const BUILTIN: &[(&str, &str, Driver, &[&str], &str)] = &[
+     ("claude", "Claude Code", Driver::Claude, &["claude"], "Run `claude` in a terminal and sign in."),
+     ("codex", "Codex", Driver::Codex, &["codex", "app-server"], "Run `codex login` in a terminal."),
++    // Distribution build: the ACP adapters run from PATH instead of being fetched with npx.
+     (
+         "claude-acp",
+         "Claude Code (ACP)",
+         Driver::Acp,
+-        &["npx", "-y", "@agentclientprotocol/claude-agent-acp@0.97.0"],
++        &["claude-agent-acp"],
+         "Run `claude` in a terminal and sign in.",
+     ),
+     (
+         "codex-acp",
+         "Codex (ACP)",
+         Driver::Acp,
+-        &["npx", "-y", "@agentclientprotocol/codex-acp@2.3.0"],
++        &["codex-acp"],
+         "Run `codex login` in a terminal.",
+     ),
+     ("gemini", "Gemini CLI", Driver::Acp, &["gemini", "--experimental-acp"], "Run `gemini` in a terminal and sign in."),
+@@ -329,10 +330,14 @@
+         for p in &defaults {
+             assert_eq!(p.source, AgentSource::Builtin);
+             assert!(p.default_program.is_some());
+-            assert_eq!(p.command_editable, !p.id.ends_with("-acp"));
++            // Distribution build: the ACP adapters run from PATH, so their
++            // commands are editable like the other PATH-based built-ins;
++            // upstream's npx-fetched adapters stay read-only (PackageRunner).
++            let package_runner = matches!(p.default_program.as_deref(), Some("npx" | "bunx" | "uvx"));
++            assert_eq!(p.command_editable, !package_runner);
+             assert_eq!(
+                 p.command_read_only_reason,
+-                p.id.ends_with("-acp").then_some(AgentCommandReadOnlyReason::PackageRunner)
++                package_runner.then_some(AgentCommandReadOnlyReason::PackageRunner)
+             );
+         }
+         set_builtin_command(dir.path(), "codex", Some("/path with spaces/codex")).unwrap();
+--- a/crates/ide-agent/src/registry.rs
++++ b/crates/ide-agent/src/registry.rs
+@@ -25,6 +25,8 @@
+ 
+ pub const REGISTRY_URL: &str = "https://cdn.agentclientprotocol.com/registry/v1/latest/registry.json";
+ const MAX_REGISTRY_BYTES: u64 = 1024 * 1024;
++/// Distribution build: agents are never downloaded from the registry, nor its index.
++const DISTRIBUTION_BUILD: bool = true;
+ /// [`maintain`] refreshes a saved index older than this, so updates show without opening
+ /// the registry.
+ const REFRESH_AFTER: Duration = Duration::from_secs(24 * 60 * 60);
+@@ -250,7 +252,10 @@
+ }
+ 
+ fn is_builtin(id: &str) -> bool {
+-    provider::is_builtin(canonical_id(id))
++    // Distribution build: the ACP adapters run from PATH, so
++    // provider::is_builtin (which dedups only npx-fetched ACP built-ins)
++    // misses them; hide their registry twins explicitly.
++    (DISTRIBUTION_BUILD && matches!(id, "claude-acp" | "codex-acp")) || provider::is_builtin(canonical_id(id))
+ }
+ 
+ fn on_path(command: &str) -> bool {
+@@ -379,6 +384,11 @@
+ }
+ 
+ fn fetch(paths: &RegistryPaths, cancel: &CancellationToken) -> IdeResult<String> {
++    if DISTRIBUTION_BUILD {
++        return Err(IdeError::unavailable(
++            "The ACP Registry is not used in this build: install an agent yourself, then add it as a custom agent.",
++        ));
++    }
+     let http = http()?;
+     let text = http.get_text_limited(REGISTRY_URL, Some(MAX_REGISTRY_BYTES), cancel)?;
+     parse(&text)?;
+@@ -413,6 +423,13 @@
+         .iter()
+         .find(|e| e.id == id)
+         .ok_or_else(|| IdeError::not_found(format!("{id} is not in the ACP Registry")))?;
++    if DISTRIBUTION_BUILD {
++        return Err(IdeError::unavailable(format!(
++            "Installing agents is disabled in this build, and {} is not packaged for openSUSE: \
++             install it yourself, then add it as a custom agent.",
++            entry.name
++        )));
++    }
+     install_entry(paths, entry, Platform::current(), &on_path, cancel, emit)
+ }
+ 

@@ -1,0 +1,13 @@
+Index: gnome-connections-51.0/po/da.po
+===================================================================
+--- gnome-connections-51.0.orig/po/da.po
++++ gnome-connections-51.0/po/da.po
+@@ -27,7 +27,7 @@ msgstr "Forbindelser"
+ #. not a desktop window or a pane of glass in the side of a building
+ #: data/org.gnome.Connections.desktop.in:9
+ msgid "vnc;rdp;remote;desktop;windows;support;access;view"
+-msgstr "vnc;rdp;fjern;remote;desktop;;skrivebord;windows;support;hjælp;adgang;tilgang;tilgå;vis"
++msgstr "vnc;rdp;fjern;remote;desktop;skrivebord;windows;support;hjælp;adgang;tilgang;tilgå;vis"
+
+ #: data/org.gnome.Connections.metainfo.xml.in:8
+ msgid "View and use other desktops"

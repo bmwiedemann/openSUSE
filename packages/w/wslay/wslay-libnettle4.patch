@@ -1,0 +1,63 @@
+diff -purN a/examples/echoserv.cc b/examples/echoserv.cc
+--- a/examples/echoserv.cc	2020-06-20 08:51:51.000000000 +0200
++++ b/examples/echoserv.cc	2026-11-08 18:21:16.054240291 +0100
+@@ -50,7 +50,7 @@
+ #include <fstream>
+ 
+ #include <nettle/base64.h>
+-#include <nettle/sha.h>
++#include <nettle/sha1.h>
+ #include <wslay/wslay.h>
+ 
+ int create_listen_socket(const char *service)
+@@ -112,7 +112,7 @@ std::string sha1(const std::string& src)
+   sha1_init(&ctx);
+   sha1_update(&ctx, src.size(), reinterpret_cast<const uint8_t*>(src.c_str()));
+   uint8_t temp[SHA1_DIGEST_SIZE];
+-  sha1_digest(&ctx, SHA1_DIGEST_SIZE, temp);
++  sha1_digest(&ctx, temp);
+   std::string res(&temp[0], &temp[SHA1_DIGEST_SIZE]);
+   return res;
+ }
+diff -purN a/examples/fork-echoserv.c b/examples/fork-echoserv.c
+--- a/examples/fork-echoserv.c	2020-06-20 08:51:51.000000000 +0200
++++ b/examples/fork-echoserv.c	2026-11-08 18:21:46.692471721 +0100
+@@ -53,7 +53,7 @@
+ #include <ctype.h>
+ 
+ #include <nettle/base64.h>
+-#include <nettle/sha.h>
++#include <nettle/sha1.h>
+ #include <wslay/wslay.h>
+ 
+ /*
+@@ -127,7 +127,7 @@ void sha1(uint8_t *dst, const uint8_t *s
+   struct sha1_ctx ctx;
+   sha1_init(&ctx);
+   sha1_update(&ctx, src_length, src);
+-  sha1_digest(&ctx, SHA1_DIGEST_SIZE, dst);
++  sha1_digest(&ctx, dst);
+ }
+ 
+ /*
+diff -purN a/examples/testclient.cc b/examples/testclient.cc
+--- a/examples/testclient.cc	2020-06-20 08:51:51.000000000 +0200
++++ b/examples/testclient.cc	2026-11-08 18:22:21.970445832 +0100
+@@ -49,7 +49,7 @@
+ #include <fstream>
+ 
+ #include <nettle/base64.h>
+-#include <nettle/sha.h>
++#include <nettle/sha1.h>
+ #include <wslay/wslay.h>
+ 
+ int connect_to(const char *host, const char *service)
+@@ -103,7 +103,7 @@ std::string sha1(const std::string& src)
+   sha1_init(&ctx);
+   sha1_update(&ctx, src.size(), reinterpret_cast<const uint8_t*>(src.c_str()));
+   uint8_t temp[SHA1_DIGEST_SIZE];
+-  sha1_digest(&ctx, SHA1_DIGEST_SIZE, temp);
++  sha1_digest(&ctx, temp);
+   std::string res(&temp[0], &temp[SHA1_DIGEST_SIZE]);
+   return res;
+ }

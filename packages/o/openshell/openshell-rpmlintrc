@@ -1,0 +1,6 @@
+# The sandbox runtime is static on purpose: the Podman driver executes it
+# inside workload containers built from images OpenShell did not build, so it
+# must not depend on the image's libc (see the openshell-sandbox subpackage).
+addFilter("openshell-sandbox.*statically-linked-binary")
+# rpmlint classifies the static PIE as a shared library without NEEDED entries
+addFilter("openshell-sandbox.*shared-lib-without-dependency-information")

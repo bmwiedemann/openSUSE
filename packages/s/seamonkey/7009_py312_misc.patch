@@ -1,0 +1,114 @@
+diff '--color=auto' -urN seamonkey-2.53.24.orig/build/moz.configure/init.configure seamonkey-2.53.24/build/moz.configure/init.configure
+--- seamonkey-2.53.24.orig/build/moz.configure/init.configure	2026-05-30 15:08:55.000000000 +0200
++++ seamonkey-2.53.24/build/moz.configure/init.configure	2026-08-22 22:24:08.690797433 +0200
+@@ -226,7 +226,7 @@
+ @imports('os')
+ @imports('sys')
+ @imports('subprocess')
+-@imports('distutils.sysconfig')
++@imports('sysconfig')
+ @imports(_from='mozbuild.configure.util', _import='LineIO')
+ @imports(_from='mozbuild.virtualenv', _import='VirtualenvManager')
+ @imports(_from='mozbuild.virtualenv', _import='verify_python_version')
+@@ -355,7 +355,7 @@
+         sys.exit(subprocess.call([python] + sys.argv))
+ 
+     # We are now in the virtualenv
+-    if not distutils.sysconfig.get_python_lib():
++    if not sysconfig.get_path('purelib'):
+         die('Could not determine python site packages directory')
+ 
+     # We may have set PYTHONEXECUTABLE above, and that affects python
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/pythonutil.py seamonkey-2.53.24/python/mozbuild/mozbuild/pythonutil.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/pythonutil.py	2026-05-30 14:18:44.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/pythonutil.py	2026-08-22 22:24:08.691265974 +0200
+@@ -9,9 +9,7 @@
+ import subprocess
+ import sys
+ 
+-from distutils.version import (
+-    StrictVersion,
+-)
++from packaging.version import Version
+ 
+ 
+ def iter_modules_in_path(*paths):
+@@ -40,7 +38,7 @@
+     program = "import sys; print('.'.join(map(str, sys.version_info[0:3])))"
+     out = six.ensure_text(subprocess.check_output(
+         [exe, '-c', program], universal_newlines=True)).rstrip()
+-    return StrictVersion(out)
++    return Version(out)
+ 
+ 
+ def _find_python_executable(major):
+@@ -56,16 +54,17 @@
+             raise ValueError('min_version expected a %sx string, got %s' %
+                              (prefix, min_version))
+ 
+-        min_version = StrictVersion(min_version)
+-        major = min_version.version[0]
++        min_version = Version(min_version)
++        major = min_version.major
+ 
+         if sys.version_info.major == major:
+-            our_version = StrictVersion('%s.%s.%s' % (sys.version_info[0:3]))
++            our_version = Version('%s.%s.%s' % (sys.version_info[0:3]))
+ 
+             if our_version >= min_version:
+                 # This will potentially return a virtualenv Python. It's probably
+                 # OK for now...
+-                return sys.executable, our_version.version
++                our_out_version = tuple(int(num) for num in str(our_version).split('.'))
++                return sys.executable, our_out_version
+ 
+             # Else fall back to finding another binary.
+ 
+@@ -81,7 +80,7 @@
+         names = ['python%d' % major]
+ 
+         # Look for `pythonX.Y` down to our minimum version.
+-        for minor in range(9, min_version.version[1] - 1, -1):
++        for minor in range(9, min_version.minor - 1, -1):
+             names.append('python%d.%d' % (major, minor))
+ 
+         for name in names:
+diff '--color=auto' -urN seamonkey-2.53.24.orig/python/mozbuild/mozbuild/virtualenv.py seamonkey-2.53.24/python/mozbuild/mozbuild/virtualenv.py
+--- seamonkey-2.53.24.orig/python/mozbuild/mozbuild/virtualenv.py	2026-05-30 15:08:55.000000000 +0200
++++ seamonkey-2.53.24/python/mozbuild/mozbuild/virtualenv.py	2026-08-22 22:24:08.691553819 +0200
+@@ -324,7 +324,7 @@
+         environment is not configured properly, packages could be installed
+         into the wrong place. This is how virtualenv's work.
+         """
+-        import distutils.sysconfig
++        import sysconfig
+ 
+         # We always target the OS X deployment target that Python itself was
+         # built with, regardless of what's in the current environment. If we
+@@ -346,7 +346,7 @@
+         try:
+             old_target = os.environ.get('MACOSX_DEPLOYMENT_TARGET', None)
+             sysconfig_target = \
+-                distutils.sysconfig.get_config_var('MACOSX_DEPLOYMENT_TARGET')
++                sysconfig.get_config_var('MACOSX_DEPLOYMENT_TARGET')
+ 
+             if sysconfig_target is not None:
+                 # MACOSX_DEPLOYMENT_TARGET is usually a string (e.g.: "10.14.6"), but
+@@ -364,7 +364,7 @@
+ 
+             env_requirements = self._requirements()
+             if self.populate_local_paths:
+-                python_lib = distutils.sysconfig.get_python_lib()
++                python_lib = sysconfig.get_path('purelib')
+                 with open(os.path.join(python_lib, PTH_FILENAME), "a") as f:
+                     for pth_requirement in env_requirements.pth_requirements:
+                         path = os.path.join(self.topsrcdir, pth_requirement.path)
+@@ -641,7 +641,7 @@
+ 
+ def verify_python_version(log_handle):
+     """Ensure the current version of Python is sufficient."""
+-    from distutils.version import LooseVersion
++    from looseversion import LooseVersion
+ 
+     major, minor, micro = sys.version_info[:3]
+     minimum_python_versions = {2: LooseVersion("2.7.3"), 3: LooseVersion("3.6.0")}

@@ -1,0 +1,209 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Kevin Buettner <kevinb@redhat.com>
+Date: Wed, 7 Jan 2026 22:12:42 -0700
+Subject: gdb-rhbz2424325-c23-const-build-warnings.patch
+
+;; Backport Guinevere Larsen's build warning fixes (RH BZ 2424325).
+
+bfd: fix build with C23
+
+Starting in C23, strchr and strrchr will return const char *, if fed a
+const char *.  This means that several files in the BFD directory will
+fail to build as they are assigning the return of those functions to a
+char *.
+
+Fix this by const-ifying several variables. The only place where that
+wasn't just that was in targets.c, where a variable was being used in
+subsequent strrchr invocations to change the underlying string, so a new
+variable had to be introduced.
+
+No user-visible change should happen after this commit.
+
+diff --git a/bfd/bfd.c b/bfd/bfd.c
+--- a/bfd/bfd.c
++++ b/bfd/bfd.c
+@@ -1060,7 +1060,7 @@ _bfd_doprnt (bfd_print_callback print, void *stream, const char *format,
+       if (*ptr != '%')
+ 	{
+ 	  /* While we have regular characters, print them.  */
+-	  char *end = strchr (ptr, '%');
++	  const char *end = strchr (ptr, '%');
+ 	  if (end != NULL)
+ 	    result = print (stream, "%.*s", (int) (end - ptr), ptr);
+ 	  else
+diff --git a/bfd/elflink.c b/bfd/elflink.c
+--- a/bfd/elflink.c
++++ b/bfd/elflink.c
+@@ -148,7 +148,7 @@ _bfd_elf_section_for_symbol (struct elf_reloc_cookie *cookie,
+   struct elf_link_hash_entry *h;
+ 
+   h = get_ext_sym_hash_from_cookie (cookie, r_symndx);
+-  
++
+   if (h != NULL)
+     {
+       if ((h->root.type == bfd_link_hash_defined
+@@ -588,7 +588,7 @@ bfd_elf_link_record_dynamic_symbol (struct bfd_link_info *info,
+   if (h->dynindx == -1)
+     {
+       struct elf_strtab_hash *dynstr;
+-      char *p;
++      const char *p;
+       const char *name;
+       size_t indx;
+ 
+@@ -718,7 +718,7 @@ bfd_elf_record_link_assignment (bfd *output_bfd,
+   if (h->versioned == unknown)
+     {
+       /* Set versioned if symbol version is unknown.  */
+-      char *version = strrchr (name, ELF_VER_CHR);
++      const char *version = strrchr (name, ELF_VER_CHR);
+       if (version)
+ 	{
+ 	  if (version > name && version[-1] != ELF_VER_CHR)
+@@ -1152,7 +1152,7 @@ _bfd_elf_merge_symbol (bfd *abfd,
+   bool newdyn, olddyn, olddef, newdef, newdyncommon, olddyncommon;
+   bool newweak, oldweak, newfunc, oldfunc;
+   const struct elf_backend_data *bed;
+-  char *new_version;
++  const char *new_version;
+   bool default_sym = *matched;
+   struct elf_link_hash_table *htab;
+ 
+@@ -1224,7 +1224,7 @@ _bfd_elf_merge_symbol (bfd *abfd,
+ 	    {
+ 	      /* OLD_VERSION is the symbol version of the existing
+ 		 symbol. */
+-	      char *old_version;
++	      const char *old_version;
+ 
+ 	      if (h->versioned >= versioned)
+ 		old_version = strrchr (h->root.root.string,
+@@ -1950,7 +1950,7 @@ _bfd_elf_add_default_symbol (bfd *abfd,
+   bool collect;
+   bool dynamic;
+   bfd *override;
+-  char *p;
++  const char *p;
+   size_t len, shortlen;
+   asection *tmp_sec;
+   bool matched;
+@@ -2642,7 +2642,7 @@ _bfd_elf_link_assign_sym_version (struct elf_link_hash_entry *h, void *data)
+   struct bfd_link_info *info;
+   const struct elf_backend_data *bed;
+   struct elf_info_failed eif;
+-  char *p;
++  const char *p;
+   bool hide;
+ 
+   sinfo = (struct elf_info_failed *) data;
+@@ -5641,7 +5641,7 @@ elf_link_add_object_symbols (bfd *abfd, struct bfd_link_info *info)
+ 	      && !dynamic
+ 	      && (abfd->flags & BFD_PLUGIN) == 0)
+ 	    {
+-	      char *p = strchr (name, ELF_VER_CHR);
++	      const char *p = strchr (name, ELF_VER_CHR);
+ 	      if (p != NULL && p[1] != ELF_VER_CHR)
+ 		{
+ 		  /* Queue non-default versions so that .symver x, x@FOO
+@@ -5891,7 +5891,8 @@ elf_link_add_object_symbols (bfd *abfd, struct bfd_link_info *info)
+       for (cnt = 0; cnt < nondeflt_vers_cnt; ++cnt)
+ 	{
+ 	  struct elf_link_hash_entry *h = nondeflt_vers[cnt], *hi;
+-	  char *shortname, *p;
++	  char *shortname;
++	  const char *p;
+ 	  size_t amt;
+ 
+ 	  p = strchr (h->root.root.string, ELF_VER_CHR);
+@@ -6171,7 +6172,8 @@ _bfd_elf_archive_symbol_lookup (bfd *abfd,
+ 				const char *name)
+ {
+   struct bfd_link_hash_entry *h;
+-  char *p, *copy;
++  const char *p;
++  char *copy;
+   size_t len, first;
+ 
+   h = bfd_link_hash_lookup (info->hash, name, false, false, true);
+@@ -6466,7 +6468,7 @@ elf_collect_hash_codes (struct elf_link_hash_entry *h, void *data)
+   name = h->root.root.string;
+   if (h->versioned >= versioned)
+     {
+-      char *p = strchr (name, ELF_VER_CHR);
++      const char *p = strchr (name, ELF_VER_CHR);
+       if (p != NULL)
+ 	{
+ 	  alc = (char *) bfd_malloc (p - name + 1);
+@@ -6539,7 +6541,7 @@ elf_collect_gnu_hash_codes (struct elf_link_hash_entry *h, void *data)
+   name = h->root.root.string;
+   if (h->versioned >= versioned)
+     {
+-      char *p = strchr (name, ELF_VER_CHR);
++      const char *p = strchr (name, ELF_VER_CHR);
+       if (p != NULL)
+ 	{
+ 	  alc = (char *) bfd_malloc (p - name + 1);
+@@ -10378,8 +10380,8 @@ elf_link_output_symstrtab (void *finf,
+ 	    {
+ 	      /* Keep only one '@' for versioned symbols defined in
+ 	         shared objects.  */
+-	      char *version = strrchr (name, ELF_VER_CHR);
+-	      char *base_end = strchr (name, ELF_VER_CHR);
++	      const char *version = strrchr (name, ELF_VER_CHR);
++	      const char *base_end = strchr (name, ELF_VER_CHR);
+ 	      if (version != base_end)
+ 		{
+ 		  size_t base_len;
+@@ -11118,7 +11120,7 @@ elf_link_output_extsym (struct bfd_hash_entry *bh, void *data)
+ 	      || h->ref_dynamic
+ 	      || !h->def_regular))
+ 	{
+-	  char *p = strrchr (h->root.root.string, ELF_VER_CHR);
++	  const char *p = strrchr (h->root.root.string, ELF_VER_CHR);
+ 
+ 	  if (p && p [1] != '\0')
+ 	    {
+@@ -11670,7 +11672,7 @@ elf_link_input_bfd (struct elf_final_link_info *flinfo, bfd *input_bfd)
+ 		     input_bfd);
+ 		  bfd_set_error (bfd_error_bad_value);
+ 		  return false;
+-		}	      
++		}
+ 
+ 	      /* Arrange for symbol to be output.  */
+ 	      h->indx = -2;
+@@ -15142,7 +15144,7 @@ bfd_elf_reloc_symbol_deleted_p (bfd_vma offset, void *cookie)
+       struct elf_link_hash_entry *h;
+ 
+       h = get_ext_sym_hash_from_cookie (rcookie, r_symndx);
+-      
++
+       if (h != NULL)
+ 	{
+ 	  if ((h->root.type == bfd_link_hash_defined
+diff --git a/bfd/targets.c b/bfd/targets.c
+--- a/bfd/targets.c
++++ b/bfd/targets.c
+@@ -1660,7 +1660,7 @@ bfd_get_target_info (const char *target_name, bfd *abfd,
+ 
+       if (arches && tname)
+ 	{
+-	  char *hyp = strchr (tname, '-');
++	  const char *hyp = strchr (tname, '-');
+ 
+ 	  if (hyp != NULL)
+ 	    {
+@@ -1673,9 +1673,10 @@ bfd_get_target_info (const char *target_name, bfd *abfd,
+ 		  char new_tname[50];
+ 
+ 		  strcpy (new_tname, hyp);
+-		  while ((hyp = strrchr (new_tname, '-')) != NULL)
++		  char *new_hyp;
++		  while ((new_hyp = strrchr (new_tname, '-')) != NULL)
+ 		    {
+-		      *hyp = 0;
++		      *new_hyp = 0;
+ 		      if (_bfd_find_arch_match (new_tname, arches,
+ 						def_target_arch))
+ 			break;

@@ -1,0 +1,48 @@
+From 084f3fbce66c29334ad0a1d83324011398339547 Mon Sep 17 00:00:00 2001
+From: Thomas Waldmann <tw@waldmann-edv.de>
+Date: Tue, 29 Sep 2026 20:03:48 +0200
+Subject: [PATCH] support msgpack 1.2.3
+
+msgpack 1.2.3 brings fixes relevant to borg's usage of the C extension:
+memory leaks when map key validation or container hooks fail
+(GHSA-j586-36cw-2gc2) and a use-after-free when cleaning up an
+incomplete Unpacker.skip().
+
+The C Unpacker now raises ValueError when switching between unpack,
+skip, header readers or read_bytes() while an object is incomplete.
+borg only uses feed() plus unpack()/iteration (and RobustUnpacker
+creates a fresh Unpacker on each resync attempt), so this does not
+affect borg.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ pyproject.toml              | 2 +-
+ src/borg/helpers/msgpack.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 14751c461d..c5b37836ef 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -36,7 +36,7 @@ dependencies = [
+     # Please note:
+     # Using any other msgpack version is not supported by Borg development and
+     # any feedback related to issues caused by this will be ignored.
+-    "msgpack >=1.0.3, <=1.2.1",
++    "msgpack >=1.0.3, <=1.2.3",
+     "packaging",
+ ]
+ 
+diff --git a/src/borg/helpers/msgpack.py b/src/borg/helpers/msgpack.py
+index 9d3405a307..1bbcdd2312 100644
+--- a/src/borg/helpers/msgpack.py
++++ b/src/borg/helpers/msgpack.py
+@@ -145,7 +145,7 @@ def is_supported_msgpack():
+     version_check = os.environ.get('BORG_MSGPACK_VERSION_CHECK', 'yes').strip().lower()
+ 
+     return version_check == 'no' or (
+-        (1, 0, 3) <= msgpack.version[:3] <= (1, 2, 1) and
++        (1, 0, 3) <= msgpack.version[:3] <= (1, 2, 3) and
+         msgpack.version not in []
+     )
+ 

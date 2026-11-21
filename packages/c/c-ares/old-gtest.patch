@@ -1,0 +1,53 @@
+diff --git a/test/ares-test-main.cc b/test/ares-test-main.cc
+index d16f34b1..568118af 100644
+--- a/test/ares-test-main.cc
++++ b/test/ares-test-main.cc
+@@ -28,6 +28,14 @@
+ 
+ #include "ares-test.h"
+ 
++#ifdef ARES_TEST_OLD_GTEST
++namespace testing {
++namespace internal {
++extern ::std::vector< ::std::string> g_argvs;
++}
++}
++#endif
++
+ #ifdef __APPLE__
+ #  include <mach/mach.h>
+ #  include <mach/mach_time.h>
+@@ -110,5 +118,11 @@ int main(int argc, char* argv[]) {
+   WSACleanup();
+ #endif
+ 
++#ifdef ARES_TEST_OLD_GTEST
++  // Workaround for GTest 1.8.0 double-free of g_argvs upon exit
++  // across multiple linked shared libraries (libgtest.so and libgmock.so)
++  std::vector<std::string>().swap(testing::internal::g_argvs);
++#endif
++
+   return rc;
+ }
+diff --git a/test/ares-test.h b/test/ares-test.h
+index e65b264c..494fd097 100644
+--- a/test/ares-test.h
++++ b/test/ares-test.h
+@@ -35,6 +35,17 @@
+ #include "gtest/gtest.h"
+ #include "gmock/gmock.h"
+ 
++#ifndef INSTANTIATE_TEST_SUITE_P
++#  define INSTANTIATE_TEST_SUITE_P INSTANTIATE_TEST_CASE_P
++#  define ARES_TEST_OLD_GTEST 1
++#  define GetTestSuitePatternHolder GetTestCasePatternHolder
++#  define GET_5TH_ARG(arg1, arg2, arg3, arg4, arg5, ...) arg5
++#  define AddTestPattern_MACRO_CHOOSER(...) GET_5TH_ARG(__VA_ARGS__, AddTestPattern_4, AddTestPattern_3, dummy)
++#  define AddTestPattern_3(a, b, c) AddTestPattern(a, b, c)
++#  define AddTestPattern_4(a, b, c, d) AddTestPattern(a, b, c)
++#  define AddTestPattern(...) AddTestPattern_MACRO_CHOOSER(__VA_ARGS__)(__VA_ARGS__)
++#endif
++
+ #if defined(HAVE_USER_NAMESPACE) && defined(HAVE_UTS_NAMESPACE)
+ #  define HAVE_CONTAINER
+ #endif

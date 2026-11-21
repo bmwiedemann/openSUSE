@@ -1,0 +1,72 @@
+cabal-version:      >=1.10
+name:               crypton-x509
+version:            1.9.1
+x-revision: 2
+license:            BSD3
+license-file:       LICENSE
+copyright:          Vincent Hanquez <vincent@snarc.org>
+maintainer:         Kazu Yamamoto <kazu@iij.ad.jp>
+author:             Vincent Hanquez <vincent@snarc.org>
+stability:          experimental
+homepage:           https://github.com/kazu-yamamoto/crypton-certificate
+synopsis:           X509 reader and writer
+description:        X509 reader and writer. please see README
+category:           Data
+build-type:         Simple
+extra-source-files: ChangeLog.md
+
+source-repository head
+    type:     git
+    location: https://github.com/kazu-yamamoto/crypton-certificate
+    subdir:   x509
+
+library
+    exposed-modules:
+        Data.X509
+        Data.X509.EC
+
+    other-modules:
+        Data.X509.Internal
+        Data.X509.CertificateChain
+        Data.X509.AlgorithmIdentifier
+        Data.X509.DistinguishedName
+        Data.X509.Cert
+        Data.X509.PublicKey
+        Data.X509.PrivateKey
+        Data.X509.Ext
+        Data.X509.ExtensionRaw
+        Data.X509.CRL
+        Data.X509.OID
+        Data.X509.Signed
+
+    default-language: Haskell2010
+    ghc-options:      -Wall
+    build-depends:
+        base >=4.7 && <5,
+        bytestring,
+        containers,
+        crypton >=1.1 && <2.2,
+        crypton-asn1-encoding >=0.10.0 && <0.11,
+        crypton-asn1-parse >=0.10.0 && <0.11,
+        crypton-asn1-types >=0.4.1 && <0.5,
+        crypton-pem >=0.2.4 && <0.4,
+        ram,
+        time-hourglass,
+        transformers >=0.4
+
+test-suite test-x509
+    type:             exitcode-stdio-1.0
+    main-is:          Tests.hs
+    hs-source-dirs:   Tests
+    default-language: Haskell2010
+    ghc-options:      -Wall -fno-warn-orphans -fno-warn-missing-signatures
+    build-depends:
+        base >=3 && <5,
+        bytestring,
+        crypton,
+        crypton-x509,
+        crypton-asn1-types,
+        mtl,
+        tasty,
+        tasty-quickcheck,
+        time-hourglass

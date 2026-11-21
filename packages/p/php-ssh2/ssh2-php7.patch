@@ -1,0 +1,11 @@
+diff -purN a/ssh2-1.6.0/ssh2.c b/ssh2-1.6.0/ssh2.c
+--- a/ssh2.c	2026-11-12 00:21:04.000000000 +0100
++++ b/ssh2.c	2026-11-14 20:45:11.406298385 +0100
+@@ -21,7 +21,6 @@
+ #endif
+ 
+ #include "php.h"
+-#include "Zend/zend_attributes.h"
+ #include "ext/standard/info.h"
+ #include "ext/standard/file.h"
+ #include "php_ssh2.h"

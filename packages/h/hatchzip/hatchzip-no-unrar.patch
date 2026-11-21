@@ -1,0 +1,57 @@
+diff -uNr a/crates/core/Cargo.toml b/crates/core/Cargo.toml
+--- a/crates/core/Cargo.toml
++++ b/crates/core/Cargo.toml
+@@ -32,12 +32,6 @@
+ # Comparing names the way filesystems fold them: APFS, HFS+ and casefolded
+ # ext4 folders treat the NFC and NFD forms of a name as one.
+ unicode-normalization = "0.1.24"
+-# The UnRAR decoder, bound without the safe wrapper: it needs the data
+-# callback, which the safe crates don't expose. The bindings are MIT or
+-# Apache; the UnRAR C++ source they build is under its own license, see
+-# LICENSE-UNRAR and docs/formats.md. Pinned, since a new version brings new
+-# vendored C++.
+-unrar-ng-sys = { version = "=0.7.7", optional = true }
+ # The RAR 5 password check value and header key, PBKDF2-HMAC-SHA256, and
+ # AES-CBC for encrypted RAR headers; all already in the tree through zip and
+ # sevenz-rust2.
+@@ -75,7 +69,7 @@
+ # RAR archives, decoded by UnRAR. Off by default: without it the build is
+ # open source throughout and needs no C++ compiler, and a RAR archive is
+ # refused before anything is touched. The release builds turn it on.
+-rar = ["dep:unrar-ng-sys", "dep:aes", "dep:cbc", "dep:pbkdf2", "dep:sha2"]
++rar = ["dep:aes", "dep:cbc", "dep:pbkdf2", "dep:sha2"]
+ 
+ [target."cfg(unix)".dependencies]
+ libc = "0.2.191"
+diff -uNr a/packaging/linux/io.github.xevrion.hatchzip.desktop b/packaging/linux/io.github.xevrion.hatchzip.desktop
+--- a/packaging/linux/io.github.xevrion.hatchzip.desktop
++++ b/packaging/linux/io.github.xevrion.hatchzip.desktop
+@@ -7,5 +7,5 @@
+ Icon=io.github.xevrion.hatchzip
+ Terminal=false
+ Categories=Utility;Archiving;Compression;
+-MimeType=application/zip;application/x-zip-compressed;application/x-7z-compressed;application/x-tar;application/x-compressed-tar;application/x-xz-compressed-tar;application/vnd.rar;application/x-rar;application/x-rar-compressed;
++MimeType=application/zip;application/x-zip-compressed;application/x-7z-compressed;application/x-tar;application/x-compressed-tar;application/x-xz-compressed-tar;
+ Keywords=zip;7z;tar;unzip;extract;archive;split;
+diff -uNr a/packaging/linux/io.github.xevrion.hatchzip.metainfo.xml b/packaging/linux/io.github.xevrion.hatchzip.metainfo.xml
+--- a/packaging/linux/io.github.xevrion.hatchzip.metainfo.xml
++++ b/packaging/linux/io.github.xevrion.hatchzip.metainfo.xml
+@@ -24,7 +24,7 @@
+       <li>Checks that the extraction fits before it changes anything</li>
+       <li>Keeps a margin of free space the whole way through</li>
+       <li>Can be stopped or crash at any moment and continues where it left off</li>
+-      <li>Reads ZIP, 7z, tar, tar.gz, tar.xz, RAR and split archives</li>
++      <li>Reads ZIP, 7z, tar, tar.gz, tar.xz and split archives</li>
+     </ul>
+     <p>
+       The archive is gone when the extraction finishes. For an archive that
+@@ -63,9 +63,6 @@
+     <mediatype>application/x-tar</mediatype>
+     <mediatype>application/x-compressed-tar</mediatype>
+     <mediatype>application/x-xz-compressed-tar</mediatype>
+-    <mediatype>application/vnd.rar</mediatype>
+-    <mediatype>application/x-rar</mediatype>
+-    <mediatype>application/x-rar-compressed</mediatype>
+   </provides>
+ 
+   <supports>

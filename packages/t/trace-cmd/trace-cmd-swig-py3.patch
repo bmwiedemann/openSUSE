@@ -1,0 +1,11 @@
+--- a/python/ctracecmd.i	2026-11-16 15:14:17.685590493 +0100
++++ b/python/ctracecmd.i	2026-11-16 15:14:17.703765993 +0100
+@@ -218,7 +218,7 @@
+ 	result = PyObject_Call(context, arglist, NULL);
+ 	Py_XDECREF(arglist);
+ 	if (result && result != Py_None) {
+-		if (!PyInt_Check(result)) {
++		if (!PyLong_Check(result)) {
+ 			PyErr_SetString(PyExc_TypeError,
+ 					"callback must return int");
+ 			PyErr_Print();

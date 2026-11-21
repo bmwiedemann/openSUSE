@@ -1,0 +1,13 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 25ccc9ab1222..412b1678fc7d 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -103,7 +103,7 @@ shlex = "1.3.0"
+ 
+ [target.'cfg(not(any(target_os = "windows", target_os = "macos")))'.dependencies]
+ # A current embedded FreeType is required for Skia to render COLRv1 color fonts.
+-skia-safe = { version = "=0.156.0", features = ["embed-freetype", "gl", "textlayout"] }
++skia-safe = { version = "=0.156.0", features = ["gl", "textlayout"] }
+ 
+ [target.'cfg(not(target_os = "windows"))'.dependencies]
+ fork = "0.4.0"

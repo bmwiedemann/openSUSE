@@ -1,0 +1,33 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: [PATCH] Trim devDependencies to what the build and the unit tests use
+
+The lint, format, type-check, end-to-end and Tauri CLI tools ship
+prebuilt native binaries for every platform and are not needed to build
+the frontend with vite or to run its vitest suite. Dropping them keeps
+the vendored npm set free of prebuilt binaries.
+
+--- a/package.json
++++ b/package.json
+@@ -82,22 +82,11 @@
+   },
+   "devDependencies": {
+     "@lezer/generator": "^1.8.1",
+-    "@playwright/test": "^1.64.1",
+-    "@tauri-apps/cli": "^2",
+     "@testing-library/jest-dom": "^7.0.1",
+     "@testing-library/react": "^16.3.3",
+     "@testing-library/user-event": "^14.6.8",
+-    "@types/node": "^26.6.5",
+-    "@types/react": "^19.1.8",
+-    "@types/react-dom": "^19.1.6",
+     "@vitejs/plugin-react": "^6.0.2",
+     "jsdom": "^30.1.3",
+-    "knip": "^6.43.0",
+-    "lint-staged": "^17.6.0",
+-    "oxfmt": "^0.74.0",
+-    "oxlint": "^1.89.0",
+-    "simple-git-hooks": "^2.14.0",
+-    "tsrs": "^0.20.0-ts7.1.0-beta",
+     "typescript": "~6.0.3",
+     "vite": "^8.0.16",
+     "vitest": "^5.0.5"

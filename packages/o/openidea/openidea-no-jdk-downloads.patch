@@ -1,0 +1,69 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: [PATCH] Do not download JDKs or a Java runtime for jdtls
+
+The Download JDK dialog fetches Eclipse Temurin builds from Adoptium, and
+jdtls silently downloads a Temurin runtime when no installed Java is new
+enough. Refuse both with a message naming the openSUSE OpenJDK package,
+and look for JDKs in /usr/lib64/jvm, where openSUSE installs them, so the
+one installed is found as well as the default java on PATH.
+
+--- a/crates/ide-tools/src/jdk.rs
++++ b/crates/ide-tools/src/jdk.rs
+@@ -64,6 +64,24 @@
+     if vendor == TEMURIN { Ok(()) } else { Err(IdeError::invalid(format!("unknown JDK vendor `{vendor}`"))) }
+ }
+ 
++/// Distribution build: never download a JDK or a language server's Java runtime.
++fn no_java_download(feature: u32, runtime: bool) -> IdeResult<()> {
++    let package = match feature {
++        8 => Some("java-1_8_0-openjdk".to_string()),
++        11 | 17 | 21 | 25 | 26 => Some(format!("java-{feature}-openjdk")),
++        _ => None,
++    };
++    let devel = if runtime { "" } else { "-devel" };
++    Err(IdeError::unavailable(match package {
++        Some(pkg) => format!(
++            "Downloading Java is disabled in this build: install Java {feature} from your distribution (zypper install {pkg}{devel})."
++        ),
++        None => format!(
++            "Downloading Java is disabled in this build, and Java {feature} is not packaged for openSUSE: install it yourself."
++        ),
++    }))
++}
++
+ pub fn adoptium_releases_url() -> String {
+     format!("{ADOPTIUM_API}/info/available_releases")
+ }
+@@ -247,7 +265,12 @@
+     /// Java versions `vendor` publishes.
+     pub fn jdk_releases(&self, vendor: &str, cancel: &CancellationToken) -> IdeResult<JdkReleases> {
+         vendor_or_err(vendor)?;
+-        parse_releases(&self.http()?.get_text(&adoptium_releases_url(), cancel)?)
++        // Distribution build: JDKs come from the distribution and are found as before.
++        let _ = cancel;
++        Err(IdeError::unavailable(
++            "Downloading JDKs is disabled in this build: install one from your distribution \
++             (zypper install java-25-openjdk-devel); it is then detected like any installed JDK.",
++        ))
+     }
+ 
+     /// Downloads the latest `vendor` JDK of Java `feature` into
+@@ -287,6 +310,7 @@
+         emit: Emit,
+     ) -> IdeResult<DownloadedJdk> {
+         vendor_or_err(vendor)?;
++        no_java_download(feature, runtime)?;
+         let _guard = InstallGuard::acquire(&format!("jdk-{vendor}-{feature}"))?;
+         let http = self.http()?;
+         let location = location.map(Path::to_path_buf).unwrap_or_else(|| self.root.join("jdks"));
+--- a/crates/ide-sdk/src/java.rs
++++ b/crates/ide-sdk/src/java.rs
+@@ -95,6 +95,8 @@
+     let mut roots: Vec<PathBuf> = vec![
+         PathBuf::from("/Library/Java/JavaVirtualMachines"),
+         PathBuf::from("/usr/lib/jvm"),
++        // Distribution build: where openSUSE installs its JDKs.
++        PathBuf::from("/usr/lib64/jvm"),
+         PathBuf::from("/opt/homebrew/opt"),
+         PathBuf::from("/usr/local/opt"),
+     ];

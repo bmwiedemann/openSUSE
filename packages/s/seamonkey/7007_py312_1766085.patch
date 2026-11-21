@@ -1,0 +1,126 @@
+diff '--color=auto' -urN seamonkey-2.53.23.orig/python/mozbuild/mozbuild/doctor.py seamonkey-2.53.23/python/mozbuild/mozbuild/doctor.py
+--- seamonkey-2.53.23.orig/python/mozbuild/mozbuild/doctor.py	2025-11-15 21:08:17.000000000 +0100
++++ seamonkey-2.53.23/python/mozbuild/mozbuild/doctor.py	2026-01-11 14:23:33.630832240 +0100
+@@ -12,7 +12,7 @@
+ import psutil
+ 
+ from distutils.util import strtobool
+-from distutils.version import LooseVersion
++from packaging.version import Version
+ 
+ import mozpack.path as mozpath
+ 
+@@ -26,7 +26,7 @@
+ FREESPACE_THRESHOLD = 10
+ 
+ # Latest MozillaBuild version
+-LATEST_MOZILLABUILD_VERSION = '1.11.0'
++LATEST_MOZILLABUILD_VERSION = Version("4.0")
+ 
+ DISABLE_LASTACCESS_WIN = '''
+ Disable the last access time feature?
+@@ -291,7 +291,7 @@
+                 version = fh.readline()
+             if not version:
+                 raise ValueError()
+-            if LooseVersion(version) < LooseVersion(LATEST_MOZILLABUILD_VERSION):
++            if Version(local_version) < LATEST_MOZILLABUILD_VERSION:
+                 status = 'BAD'
+                 desc = 'MozillaBuild %s in use, <%s' % (
+                     version, LATEST_MOZILLABUILD_VERSION
+diff '--color=auto' -urN seamonkey-2.53.23.orig/python/mozbuild/mozpack/chrome/flags.py seamonkey-2.53.23/python/mozbuild/mozpack/chrome/flags.py
+--- seamonkey-2.53.23.orig/python/mozbuild/mozpack/chrome/flags.py	2025-11-15 21:08:17.000000000 +0100
++++ seamonkey-2.53.23/python/mozbuild/mozpack/chrome/flags.py	2026-01-11 14:25:29.610783666 +0100
+@@ -6,7 +6,7 @@
+ 
+ import re
+ import six
+-from distutils.version import LooseVersion
++from packaging.version import Version
+ from mozpack.errors import errors
+ from collections import OrderedDict
+ 
+@@ -160,14 +160,14 @@
+         assert(definition.startswith(self.name))
+         value = definition[len(self.name):]
+         if value.startswith('='):
+-            self.values.append(('==', LooseVersion(value[1:])))
++            self.values.append(("==", Version(value[1:])))
+         elif len(value) > 1 and value[0] in ['<', '>']:
+             if value[1] == '=':
+                 if len(value) < 3:
+                     return errors.fatal('Malformed flag: %s' % definition)
+-                self.values.append((value[0:2], LooseVersion(value[2:])))
++                self.values.append((value[0:2], Version(value[2:])))
+             else:
+-                self.values.append((value[0], LooseVersion(value[1:])))
++                self.values.append((value[0], Version(value[1:])))
+         else:
+             return errors.fatal('Malformed flag: %s' % definition)
+ 
+@@ -189,7 +189,7 @@
+             flag.matches('1.0') returns True
+             flag.matches('0.6') returns False
+         '''
+-        value = LooseVersion(value)
++        value = Version(value)
+         if not self.values:
+             return True
+         for comparison, val in self.values:
+diff '--color=auto' -urN seamonkey-2.53.23.orig/testing/mozbase/versioninfo.py seamonkey-2.53.23/testing/mozbase/versioninfo.py
+--- seamonkey-2.53.23.orig/testing/mozbase/versioninfo.py	2025-11-15 21:08:19.000000000 +0100
++++ seamonkey-2.53.23/testing/mozbase/versioninfo.py	2026-01-11 14:27:20.751412498 +0100
+@@ -12,7 +12,7 @@
+ from __future__ import absolute_import, print_function
+ 
+ from collections.abc import Iterable
+-from distutils.version import StrictVersion
++from packaging.version import Version
+ import argparse
+ import os
+ import subprocess
+@@ -47,12 +47,12 @@
+             for line in diff.splitlines():
+                 if line.startswith('-PACKAGE_VERSION'):
+                     try:
+-                        minus_version = StrictVersion(line.split()[-1].strip('"\''))
++                        minus_version = Version(line.split()[-1].strip("\"'"))
+                     except ValueError:
+                         pass
+                 elif line.startswith('+PACKAGE_VERSION'):
+                     try:
+-                        plus_version = StrictVersion(line.split()[-1].strip('"\''))
++                        plus_version = Version(line.split()[-1].strip("\"'"))
+                     except ValueError:
+                         break
+ 
+@@ -61,7 +61,7 @@
+                         if not v:
+                             return rev
+ 
+-                        if StrictVersion(v) == plus_version:
++                        if Version(v) == plus_version:
+                             return rev
+ 
+         print("Could not find %s revision for version %s." % (args.module, v or 'latest'))
+diff '--color=auto' -urN seamonkey-2.53.23.orig/tools/lint/eslint/setup_helper.py seamonkey-2.53.23/tools/lint/eslint/setup_helper.py
+--- seamonkey-2.53.23.orig/tools/lint/eslint/setup_helper.py	2025-11-15 21:08:22.000000000 +0100
++++ seamonkey-2.53.23/tools/lint/eslint/setup_helper.py	2026-01-11 14:31:02.326920823 +0100
+@@ -12,7 +12,7 @@
+ import subprocess
+ import sys
+ import tempfile
+-from distutils.version import LooseVersion, StrictVersion
++from packaging.version import Version
+ from filecmp import dircmp
+ 
+ from mozbuild.nodeutil import (find_node_executable, find_npm_executable,
+@@ -104,7 +104,7 @@
+ 
+     # If we have an npm version newer than 5.8.0, just use 'ci', as that's much
+     # simpler and does exactly what we want.
+-    npm_is_older_version = version < StrictVersion("5.8.0").version
++    npm_is_older_version = version < Version("5.8.0").version
+ 
+     if npm_is_older_version:
+         cmd = [npm_path, "install"]

@@ -1,0 +1,499 @@
+diff '--color=auto' -urN seamonkey-2.53.23.orig/build/common_virtualenv_packages.txt seamonkey-2.53.23/build/common_virtualenv_packages.txt
+--- seamonkey-2.53.23.orig/build/common_virtualenv_packages.txt	2025-11-15 21:08:07.000000000 +0100
++++ seamonkey-2.53.23/build/common_virtualenv_packages.txt	2026-01-10 21:30:16.012900125 +0100
+@@ -58,6 +58,7 @@
+ pth:third_party/python/importlib_metadata
+ pth:third_party/python/jsmin
+ pth:third_party/python/json-e
++pth:third_party/python/looseversion
+ pth:third_party/python/mock-1.0.0
+ pth:third_party/python/more_itertools
+ pth:third_party/python/packaging
+diff '--color=auto' -urN seamonkey-2.53.23.orig/dom/canvas/test/webgl-conf/checkout/closure-library/closure/bin/calcdeps.py seamonkey-2.53.23/dom/canvas/test/webgl-conf/checkout/closure-library/closure/bin/calcdeps.py
+--- seamonkey-2.53.23.orig/dom/canvas/test/webgl-conf/checkout/closure-library/closure/bin/calcdeps.py	2025-11-15 21:08:08.000000000 +0100
++++ seamonkey-2.53.23/dom/canvas/test/webgl-conf/checkout/closure-library/closure/bin/calcdeps.py	2026-01-10 21:41:38.677875529 +0100
+@@ -25,15 +25,7 @@
+ required for compilation.
+ """
+ 
+-
+-
+-
+-
+-try:
+-  import distutils.version
+-except ImportError:
+-  # distutils is not available in all environments
+-  distutils = None
++from looseversion import LooseVersion
+ 
+ import logging
+ import optparse
+@@ -574,8 +566,7 @@
+       sys.exit(1)
+ 
+     # User friendly version check.
+-    if distutils and not (distutils.version.LooseVersion(GetJavaVersion()) >
+-        distutils.version.LooseVersion('1.6')):
++    if not LooseVersion(GetJavaVersion()) > LooseVersion('1.6'):
+       logging.error('Closure Compiler requires Java 1.6 or higher.')
+       logging.error('Please visit http://www.java.com/getjava')
+       sys.exit(1)
+diff '--color=auto' -urN seamonkey-2.53.23.orig/python/mozbuild/mozbuild/configure/util.py seamonkey-2.53.23/python/mozbuild/mozbuild/configure/util.py
+--- seamonkey-2.53.23.orig/python/mozbuild/mozbuild/configure/util.py	2025-11-15 21:08:17.000000000 +0100
++++ seamonkey-2.53.23/python/mozbuild/mozbuild/configure/util.py	2026-01-10 21:53:17.926554871 +0100
+@@ -14,7 +14,7 @@
+ import sys
+ from collections import deque
+ from contextlib import contextmanager
+-from distutils.version import LooseVersion
++from looseversion import LooseVersion
+ 
+ 
+ def getpreferredencoding():
+@@ -34,7 +34,7 @@
+ 
+ 
+ class Version(LooseVersion):
+-    '''A simple subclass of distutils.version.LooseVersion.
++    '''A simple subclass of looseversion.LooseVersion.
+     Adds attributes for `major`, `minor`, `patch` for the first three
+     version components so users can easily pull out major/minor
+     versions, like:
+@@ -54,31 +54,6 @@
+             itertools.takewhile(lambda x: isinstance(x, int), self.version),
+             (0, 0, 0)))[:3]
+ 
+-    def _cmp(self, other):
+-        # LooseVersion checks isinstance(StringType), so work around it.
+-        if six.PY2 and isinstance(other, six.text_type):
+-            other = other.encode('ascii')
+-        if six.PY2:
+-            return LooseVersion.__cmp__(self, other)
+-        return LooseVersion._cmp(self, other)
+-
+-    # These method definitions can be deleted when we remove support for Python
+-    # 2.
+-    def __eq__(self, other):
+-        return self._cmp(other) == 0
+-
+-    def __lt__(self, other):
+-        return self._cmp(other) < 0
+-
+-    def __le__(self, other):
+-        return self._cmp(other) <= 0
+-
+-    def __gt__(self, other):
+-        return self._cmp(other) > 0
+-
+-    def __ge__(self, other):
+-        return self._cmp(other) >= 0
+-
+ 
+ class ConfigureOutputHandler(logging.Handler):
+     '''A logging handler class that sends info messages to stdout and other
+diff '--color=auto' -urN seamonkey-2.53.23.orig/python/mozbuild/mozbuild/vendor/vendor_rust.py seamonkey-2.53.23/python/mozbuild/mozbuild/vendor/vendor_rust.py
+--- seamonkey-2.53.23.orig/python/mozbuild/mozbuild/vendor/vendor_rust.py	2025-11-15 21:08:17.000000000 +0100
++++ seamonkey-2.53.23/python/mozbuild/mozbuild/vendor/vendor_rust.py	2026-01-10 21:43:24.602371449 +0100
+@@ -12,7 +12,7 @@
+ import re
+ import subprocess
+ import sys
+-from distutils.version import LooseVersion
++from looseversion import LooseVersion
+ 
+ import mozpack.path as mozpath
+ from mozbuild.base import (
+diff '--color=auto' -urN seamonkey-2.53.23.orig/python/mozrelease/mozrelease/versions.py seamonkey-2.53.23/python/mozrelease/mozrelease/versions.py
+--- seamonkey-2.53.23.orig/python/mozrelease/mozrelease/versions.py	2025-11-15 21:08:17.000000000 +0100
++++ seamonkey-2.53.23/python/mozrelease/mozrelease/versions.py	2026-01-10 21:43:56.770736821 +0100
+@@ -4,7 +4,8 @@
+ 
+ from __future__ import absolute_import
+ 
+-from distutils.version import StrictVersion, LooseVersion
++from distutils.version import StrictVersion
++from looseversion import LooseVersion
+ import re
+ 
+ 
+diff '--color=auto' -urN seamonkey-2.53.23.orig/testing/mozharness/scripts/release/update-verify-config-creator.py seamonkey-2.53.23/testing/mozharness/scripts/release/update-verify-config-creator.py
+--- seamonkey-2.53.23.orig/testing/mozharness/scripts/release/update-verify-config-creator.py	2025-11-15 21:08:19.000000000 +0100
++++ seamonkey-2.53.23/testing/mozharness/scripts/release/update-verify-config-creator.py	2026-01-10 21:46:20.575840569 +0100
+@@ -1,4 +1,4 @@
+-from distutils.version import LooseVersion
++from looseversion import LooseVersion
+ import json
+ import math
+ import os
+diff '--color=auto' -urN seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion-1.0.1.dist-info/LICENSE seamonkey-2.53.23/third_party/python/looseversion/looseversion-1.0.1.dist-info/LICENSE
+--- seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion-1.0.1.dist-info/LICENSE	1970-01-01 01:00:00.000000000 +0100
++++ seamonkey-2.53.23/third_party/python/looseversion/looseversion-1.0.1.dist-info/LICENSE	2026-01-10 21:31:56.433162415 +0100
+@@ -0,0 +1,48 @@
++PYTHON SOFTWARE FOUNDATION LICENSE VERSION 2
++--------------------------------------------
++
++1. This LICENSE AGREEMENT is between the Python Software Foundation
++("PSF"), and the Individual or Organization ("Licensee") accessing and
++otherwise using this software ("Python") in source or binary form and
++its associated documentation.
++
++2. Subject to the terms and conditions of this License Agreement, PSF hereby
++grants Licensee a nonexclusive, royalty-free, world-wide license to reproduce,
++analyze, test, perform and/or display publicly, prepare derivative works,
++distribute, and otherwise use Python alone or in any derivative version,
++provided, however, that PSF's License Agreement and PSF's notice of copyright,
++i.e., "Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
++2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 Python Software Foundation;
++All Rights Reserved" are retained in Python alone or in any derivative version
++prepared by Licensee.
++
++3. In the event Licensee prepares a derivative work that is based on
++or incorporates Python or any part thereof, and wants to make
++the derivative work available to others as provided herein, then
++Licensee hereby agrees to include in any such work a brief summary of
++the changes made to Python.
++
++4. PSF is making Python available to Licensee on an "AS IS"
++basis.  PSF MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR
++IMPLIED.  BY WAY OF EXAMPLE, BUT NOT LIMITATION, PSF MAKES NO AND
++DISCLAIMS ANY REPRESENTATION OR WARRANTY OF MERCHANTABILITY OR FITNESS
++FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF PYTHON WILL NOT
++INFRINGE ANY THIRD PARTY RIGHTS.
++
++5. PSF SHALL NOT BE LIABLE TO LICENSEE OR ANY OTHER USERS OF PYTHON
++FOR ANY INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES OR LOSS AS
++A RESULT OF MODIFYING, DISTRIBUTING, OR OTHERWISE USING PYTHON,
++OR ANY DERIVATIVE THEREOF, EVEN IF ADVISED OF THE POSSIBILITY THEREOF.
++
++6. This License Agreement will automatically terminate upon a material
++breach of its terms and conditions.
++
++7. Nothing in this License Agreement shall be deemed to create any
++relationship of agency, partnership, or joint venture between PSF and
++Licensee.  This License Agreement does not grant permission to use PSF
++trademarks or trade name in a trademark sense to endorse or promote
++products or services of Licensee, or any third party.
++
++8. By copying, installing or otherwise using Python, Licensee
++agrees to be bound by the terms and conditions of this License
++Agreement.
+\ Geen regeleindeteken (LF) aan einde van bestand
+diff '--color=auto' -urN seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion-1.0.1.dist-info/METADATA seamonkey-2.53.23/third_party/python/looseversion/looseversion-1.0.1.dist-info/METADATA
+--- seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion-1.0.1.dist-info/METADATA	1970-01-01 01:00:00.000000000 +0100
++++ seamonkey-2.53.23/third_party/python/looseversion/looseversion-1.0.1.dist-info/METADATA	2026-01-10 21:33:02.714975718 +0100
+@@ -0,0 +1,56 @@
++Metadata-Version: 2.1
++Name: looseversion
++Version: 1.0.1
++Summary: Version numbering for anarchists and software realists
++Home-page: https://github.com/effigies/looseversion
++Author: Chris Markiewicz
++Author-email: effigies@gmail.com
++License: PSF-2.0
++Classifier: Programming Language :: Python :: 3
++Classifier: Development Status :: 6 - Mature
++Classifier: License :: OSI Approved :: Python Software Foundation License
++Requires-Python: >=3
++Description-Content-Type: text/markdown
++License-File: LICENSE
++
++# looseversion - Version numbering for anarchists and software realists
++
++A backwards/forwards-compatible fork of `distutils.version.LooseVersion`,
++for times when PEP-440 isn't what you need.
++
++The goal of this package is to be a drop-in replacement for the original `LooseVersion`.
++It implements an identical interface and comparison logic to `LooseVersion`.
++The only major change is that a `looseversion.LooseVersion` is comparable to a
++`distutils.version.LooseVersion`, which means tools should not need to worry whether
++all dependencies that use LooseVersion have migrated.
++
++If you are simply comparing versions of Python packages, consider moving to
++[packaging.version.Version](https://packaging.pypa.io/en/latest/version.html#packaging.version.Version),
++which follows [PEP-440](https://peps.python.org/pep-0440).
++`LooseVersion` is better suited to interacting with heterogeneous version schemes that
++do not follow PEP-440.
++
++## Installation
++
++### From PyPI
++
++```
++pip install looseversion
++```
++
++### From source
++
++```
++git clone https://github.com/effigies/looseversion.git
++pip install looseversion/
++```
++
++## Usage
++
++```Python
++>>> from looseversion import LooseVersion
++>>> LooseVersion("1.0.0") < LooseVersion("2.0.0")
++True
++>>> LooseVersion("1.0.0") < "2"
++True
++```
+diff '--color=auto' -urN seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion-1.0.1.dist-info/RECORD seamonkey-2.53.23/third_party/python/looseversion/looseversion-1.0.1.dist-info/RECORD
+--- seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion-1.0.1.dist-info/RECORD	1970-01-01 01:00:00.000000000 +0100
++++ seamonkey-2.53.23/third_party/python/looseversion/looseversion-1.0.1.dist-info/RECORD	2026-01-10 21:33:29.484111918 +0100
+@@ -0,0 +1,6 @@
++looseversion.py,sha256=ZcTnLvMPdx3yVGbgcaUuwK3-s40QkaOR0_usF_VbrHU,8029
++looseversion-1.0.1.dist-info/LICENSE,sha256=9PgMmBYfVjIATURxO1y5XkABRbQMvAKX8fUMJ7VL79s,2490
++looseversion-1.0.1.dist-info/METADATA,sha256=-c48feSKsGGyLOWaWQfPNMawhA6OGKNoy5PjUhLlCk8,1757
++looseversion-1.0.1.dist-info/WHEEL,sha256=G16H4A3IeoQmnOrYV4ueZGKSjhipXx8zc8nu9FGlvMA,92
++looseversion-1.0.1.dist-info/top_level.txt,sha256=gZsH8AUlCFqOEpKD_foyCUB2uKao5ePwjMqWWO7hpoM,13
++looseversion-1.0.1.dist-info/RECORD,,
+\ Geen regeleindeteken (LF) aan einde van bestand
+diff '--color=auto' -urN seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion-1.0.1.dist-info/top_level.txt seamonkey-2.53.23/third_party/python/looseversion/looseversion-1.0.1.dist-info/top_level.txt
+--- seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion-1.0.1.dist-info/top_level.txt	1970-01-01 01:00:00.000000000 +0100
++++ seamonkey-2.53.23/third_party/python/looseversion/looseversion-1.0.1.dist-info/top_level.txt	2026-01-10 21:34:16.494107242 +0100
+@@ -0,0 +1 @@
++looseversion
+\ Geen regeleindeteken (LF) aan einde van bestand
+diff '--color=auto' -urN seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion-1.0.1.dist-info/WHEEL seamonkey-2.53.23/third_party/python/looseversion/looseversion-1.0.1.dist-info/WHEEL
+--- seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion-1.0.1.dist-info/WHEEL	1970-01-01 01:00:00.000000000 +0100
++++ seamonkey-2.53.23/third_party/python/looseversion/looseversion-1.0.1.dist-info/WHEEL	2026-01-10 21:33:53.829145235 +0100
+@@ -0,0 +1,4 @@
++Wheel-Version: 1.0
++Generator: bdist_wheel (0.37.1)
++Root-Is-Purelib: true
++Tag: py3-none-any
+diff '--color=auto' -urN seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion.py seamonkey-2.53.23/third_party/python/looseversion/looseversion.py
+--- seamonkey-2.53.23.orig/third_party/python/looseversion/looseversion.py	1970-01-01 01:00:00.000000000 +0100
++++ seamonkey-2.53.23/third_party/python/looseversion/looseversion.py	2026-01-10 21:37:39.068705432 +0100
+@@ -0,0 +1,204 @@
++"""Provides classes to represent module version numbers (one class for
++each style of version numbering).  There are currently two such classes
++implemented: StrictVersion and LooseVersion.
++
++Every version number class implements the following interface:
++  * the 'parse' method takes a string and parses it to some internal
++    representation; if the string is an invalid version number,
++    'parse' raises a ValueError exception
++  * the class constructor takes an optional string argument which,
++    if supplied, is passed to 'parse'
++  * __str__ reconstructs the string that was passed to 'parse' (or
++    an equivalent string -- ie. one that will generate an equivalent
++    version number instance)
++  * __repr__ generates Python code to recreate the version number instance
++  * _cmp compares the current instance with either another instance
++    of the same class or a string (which will be parsed to an instance
++    of the same class, thus must follow the same rules)
++"""
++
++import sys
++import re
++
++
++# The rules according to Greg Stein:
++# 1) a version number has 1 or more numbers separated by a period or by
++#    sequences of letters. If only periods, then these are compared
++#    left-to-right to determine an ordering.
++# 2) sequences of letters are part of the tuple for comparison and are
++#    compared lexicographically
++# 3) recognize the numeric components may have leading zeroes
++#
++# The LooseVersion class below implements these rules: a version number
++# string is split up into a tuple of integer and string components, and
++# comparison is a simple tuple comparison.  This means that version
++# numbers behave in a predictable and obvious way, but a way that might
++# not necessarily be how people *want* version numbers to behave.  There
++# wouldn't be a problem if people could stick to purely numeric version
++# numbers: just split on period and compare the numbers as tuples.
++# However, people insist on putting letters into their version numbers;
++# the most common purpose seems to be:
++#   - indicating a "pre-release" version
++#     ('alpha', 'beta', 'a', 'b', 'pre', 'p')
++#   - indicating a post-release patch ('p', 'pl', 'patch')
++# but of course this can't cover all version number schemes, and there's
++# no way to know what a programmer means without asking him.
++#
++# The problem is what to do with letters (and other non-numeric
++# characters) in a version number.  The current implementation does the
++# obvious and predictable thing: keep them as strings and compare
++# lexically within a tuple comparison.  This has the desired effect if
++# an appended letter sequence implies something "post-release":
++# eg. "0.99" < "0.99pl14" < "1.0", and "5.001" < "5.001m" < "5.002".
++#
++# However, if letters in a version number imply a pre-release version,
++# the "obvious" thing isn't correct.  Eg. you would expect that
++# "1.5.1" < "1.5.2a2" < "1.5.2", but under the tuple/lexical comparison
++# implemented here, this just isn't so.
++#
++# Two possible solutions come to mind.  The first is to tie the
++# comparison algorithm to a particular set of semantic rules, as has
++# been done in the StrictVersion class above.  This works great as long
++# as everyone can go along with bondage and discipline.  Hopefully a
++# (large) subset of Python module programmers will agree that the
++# particular flavour of bondage and discipline provided by StrictVersion
++# provides enough benefit to be worth using, and will submit their
++# version numbering scheme to its domination.  The free-thinking
++# anarchists in the lot will never give in, though, and something needs
++# to be done to accommodate them.
++#
++# Perhaps a "moderately strict" version class could be implemented that
++# lets almost anything slide (syntactically), and makes some heuristic
++# assumptions about non-digits in version number strings.  This could
++# sink into special-case-hell, though; if I was as talented and
++# idiosyncratic as Larry Wall, I'd go ahead and implement a class that
++# somehow knows that "1.2.1" < "1.2.2a2" < "1.2.2" < "1.2.2pl3", and is
++# just as happy dealing with things like "2g6" and "1.13++".  I don't
++# think I'm smart enough to do it right though.
++#
++# In any case, I've coded the test suite for this module (see
++# ../test/test_version.py) specifically to fail on things like comparing
++# "1.2a2" and "1.2".  That's not because the *code* is doing anything
++# wrong, it's because the simple, obvious design doesn't match my
++# complicated, hairy expectations for real-world version numbers.  It
++# would be a snap to fix the test suite to say, "Yep, LooseVersion does
++# the Right Thing" (ie. the code matches the conception).  But I'd rather
++# have a conception that matches common notions about version numbers.
++
++
++class LooseVersion:
++
++    """Version numbering for anarchists and software realists.
++    Implements the standard interface for version number classes as
++    described above.  A version number consists of a series of numbers,
++    separated by either periods or strings of letters.  When comparing
++    version numbers, the numeric components will be compared
++    numerically, and the alphabetic components lexically.  The following
++    are all valid version numbers, in no particular order:
++
++        1.5.1
++        1.5.2b2
++        161
++        3.10a
++        8.02
++        3.4j
++        1996.07.12
++        3.2.pl0
++        3.1.1.6
++        2g6
++        11g
++        0.960923
++        2.2beta29
++        1.13++
++        5.5.kw
++        2.0b1pl0
++
++    In fact, there is no such thing as an invalid version number under
++    this scheme; the rules for comparison are simple and predictable,
++    but may not always give the results you want (for some definition
++    of "want").
++    """
++
++    component_re = re.compile(r"(\d+ | [a-z]+ | \.)", re.VERBOSE)
++
++    def __init__(self, vstring=None):
++        if vstring:
++            self.parse(vstring)
++
++    def __eq__(self, other):
++        c = self._cmp(other)
++        if c is NotImplemented:
++            return c
++        return c == 0
++
++    def __lt__(self, other):
++        c = self._cmp(other)
++        if c is NotImplemented:
++            return c
++        return c < 0
++
++    def __le__(self, other):
++        c = self._cmp(other)
++        if c is NotImplemented:
++            return c
++        return c <= 0
++
++    def __gt__(self, other):
++        c = self._cmp(other)
++        if c is NotImplemented:
++            return c
++        return c > 0
++
++    def __ge__(self, other):
++        c = self._cmp(other)
++        if c is NotImplemented:
++            return c
++        return c >= 0
++
++    def parse(self, vstring):
++        # I've given up on thinking I can reconstruct the version string
++        # from the parsed tuple -- so I just store the string here for
++        # use by __str__
++        self.vstring = vstring
++        components = [x for x in self.component_re.split(vstring) if x and x != "."]
++        for i, obj in enumerate(components):
++            try:
++                components[i] = int(obj)
++            except ValueError:
++                pass
++
++        self.version = components
++
++    def __str__(self):
++        return self.vstring
++
++    def __repr__(self):
++        return "LooseVersion ('%s')" % str(self)
++
++    def _cmp(self, other):
++        other = self._coerce(other)
++        if other is NotImplemented:
++            return NotImplemented
++
++        if self.version == other.version:
++            return 0
++        if self.version < other.version:
++            return -1
++        if self.version > other.version:
++            return 1
++
++    @staticmethod
++    def _coerce(other):
++        if isinstance(other, LooseVersion):
++            return other
++        elif isinstance(other, str):
++            return LooseVersion(other)
++        elif "distutils" in sys.modules:
++            # Using this check to avoid importing distutils and suppressing the warning
++            try:
++                from distutils.version import LooseVersion as deprecated
++            except ImportError:
++                return NotImplemented
++            if isinstance(other, deprecated):
++                return LooseVersion(str(other))
++        return NotImplemented
+\ Geen regeleindeteken (LF) aan einde van bestand
+diff '--color=auto' -urN seamonkey-2.53.23.orig/third_party/python/requirements.in seamonkey-2.53.23/third_party/python/requirements.in
+--- seamonkey-2.53.23.orig/third_party/python/requirements.in	2025-11-15 21:08:20.000000000 +0100
++++ seamonkey-2.53.23/third_party/python/requirements.in	2026-01-10 21:38:25.582679693 +0100
+@@ -27,6 +27,7 @@
+ fluent.syntax==0.18.1
+ jsmin==2.1.0
+ json-e==2.7.0
++looseversion==1.0.1
+ packaging==21.0
+ pathspec==0.8
+ pip-tools==5.5.0
+diff '--color=auto' -urN seamonkey-2.53.23.orig/third_party/python/requirements.txt seamonkey-2.53.23/third_party/python/requirements.txt
+--- seamonkey-2.53.23.orig/third_party/python/requirements.txt	2025-11-15 21:08:20.000000000 +0100
++++ seamonkey-2.53.23/third_party/python/requirements.txt	2026-01-10 21:38:54.719916410 +0100
+@@ -92,6 +92,9 @@
+ json-e==2.7.0 \
+     --hash=sha256:d8c1ec3f5bbc7728c3a504ebe58829f283c64eca230871e4eefe974b4cdaae4a
+     # via -r requirements-mach-vendor-python.in
++looseversion==1.0.1; python_version >= "3" \
++    --hash=sha256:a205beabd0ffd40488edb9ccb3a39134510fc7c0c2847a25079f559e59c004ac \
++    --hash=sha256:b339dfde67680e9c5c2e96673e52bee9f94d2f0e1b8f4cbfd86d32311e86b952
+ more-itertools==4.3.0 \
+     --hash=sha256:c187a73da93e7a8acc0001572aebc7e3c69daf7bf6881a2cea10650bd4420092 \
+     --hash=sha256:c476b5d3a34e12d40130bc2f935028b5f636df8f372dc2c1c01dc19681b2039e \

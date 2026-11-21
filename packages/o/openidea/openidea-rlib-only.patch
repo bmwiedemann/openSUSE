@@ -1,0 +1,19 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: [PATCH] Build the desktop library as an rlib only
+
+The staticlib and cdylib crate types of openidea_lib serve upstream's
+mobile targets. Building them runs two extra whole-program LTO passes
+(over 19 GB of memory on aarch64) for files nothing installs; the
+desktop binary only links the rlib.
+
+--- a/src-tauri/Cargo.toml
++++ b/src-tauri/Cargo.toml
+@@ -7,7 +7,7 @@
+ 
+ [lib]
+ name = "openidea_lib"
+-crate-type = ["staticlib", "cdylib", "rlib"]
++crate-type = ["rlib"]
+ 
+ [build-dependencies]
+ tauri-build = { version = "2", features = [] }

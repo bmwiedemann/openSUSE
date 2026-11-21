@@ -1,0 +1,4 @@
+# Collections are scripts by definition but are executed from ansible not directly
+addFilter("non-executable-script.*/usr/lib/python.*/site-packages/ansible_collections/.*");
+# ignore hidden files inside collections
+addFilter("hidden-file-or-dir /usr/lib/python.*/site-packages/ansible_collections/");

@@ -1,0 +1,182 @@
+commit 7922b8c68eaf86f430937fa424d4769ced518fcd
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Tue Nov 10 23:49:29 2026 +0100
+
+    Revert "build: fix ROMIO make check using portable makefile"
+    
+    This reverts commit 9628ceee92427af8447f152ae17c0a2b14cc35a1.
+
+diff --git Makefile.am Makefile.am
+index 896cf33b6bbf..529168bc8fe2 100644
+--- Makefile.am
++++ Makefile.am
+@@ -52,6 +52,9 @@ external_subdirs = @mplsrcdir@ @hwlocsrcdir@ @jsonsrcdir@ @yaksasrcdir@ @pmisrcd
+ external_ldflags = @RPATHS@ @mpllibdir@ @yaksalibdir@
+ external_libs = @WRAPPER_LIBS@
+ 
++ROMIO_TEST_MPIEXEC = @ROMIO_TEST_MPIEXEC@
++export ROMIO_TEST_MPIEXEC
++
+ # convenience libs that do not depend on MPI
+ pmpi_convenience_libs = @mpllib@ @hwloclib@ @jsonlib@ @yaksalib@ @pmilib@
+ 
+diff --git configure.ac configure.ac
+index 5cedf80ebc11..52624cb60031 100644
+--- configure.ac
++++ configure.ac
+@@ -1440,6 +1440,41 @@ if test "$with_cross" != "no" ; then
+     fi
+ fi
+ 
++# This goes here because we need the top_srcdir
++if test "$enable_romio" = "yes" ; then
++   if test -d $use_top_srcdir/src/mpi/romio ; then
++       AC_DEFINE(HAVE_ROMIO,1,[Define if ROMIO is enabled])
++
++       # make it possible to "#include" mpio.h at build time
++       #
++       # This ought to be sufficient, but there is also a symlink setup in
++       # src/include to accommodate current mpicc limitations.  See
++       # src/mpi/Makefile.mk for more info.
++       PAC_APPEND_FLAG([-I${main_top_builddir}/src/mpi/romio/include],[CPPFLAGS])
++
++       # Set environment variables that the romio configure expects
++       export use_top_srcdir
++       top_build_dir=`pwd`
++       export top_build_dir
++       # if there is no $top_build_dir/lib, romio puts lib in wrong place
++       # This test used -e under Linux, but not all test programs understand
++       # -e
++       if test ! -d lib ; then mkdir lib ; fi
++       # define ROMIO_VERSION in mpi.h so application can check whether ROMIO is included
++       ROMIO_VERSION='#define ROMIO_VERSION 126'
++
++       romio_subdir_args=""
++       if test "$enable_mpi_abi" = "yes" ; then
++           romio_subdir_args="--enable-mpi-abi"
++       fi
++       PAC_CONFIG_SUBDIR_ARGS([src/mpi/romio],[$romio_subdir_args],[],[AC_MSG_ERROR([src/mpi/romio configure failed])])
++   else
++       AC_MSG_WARN([ROMIO src directory is not available])
++   fi
++fi
++AC_SUBST(ROMIO_VERSION)
++
++AM_CONDITIONAL([BUILD_ROMIO], [test x$enable_romio = xyes])
+ #
+ # FIXME: If an external device, don't necessarily complain (e.g.,
+ # if the device is already built)
+@@ -1588,22 +1623,24 @@ fi
+ pm_name=$first_pm_name
+ AC_SUBST(pm_name)
+ 
+-# export TEST_MPIEXEC so subdirs (ROMIO) can run pre-install tests
++# Legacy ROMIO tests run before the configured installation prefix is
++# populated.  Use the primary process manager built in this tree instead of
++# the future $(bindir)/mpiexec path.
+ case "$pm_name" in
+   hydra)
+-    TEST_MPIEXEC="${main_top_builddir}/src/pm/hydra/mpiexec.hydra"
++    ROMIO_TEST_MPIEXEC="${main_top_builddir}/src/pm/hydra/mpiexec.hydra"
+     ;;
+   gforker)
+-    TEST_MPIEXEC="${main_top_builddir}/src/pm/gforker/mpiexec"
++    ROMIO_TEST_MPIEXEC="${main_top_builddir}/src/pm/gforker/mpiexec"
+     ;;
+   remshell)
+-    TEST_MPIEXEC="${main_top_builddir}/src/pm/remshell/mpiexec"
++    ROMIO_TEST_MPIEXEC="${main_top_builddir}/src/pm/remshell/mpiexec"
+     ;;
+   *)
+-    TEST_MPIEXEC=
++    ROMIO_TEST_MPIEXEC=""
+     ;;
+ esac
+-export TEST_MPIEXEC
++AC_SUBST(ROMIO_TEST_MPIEXEC)
+ 
+ dnl
+ dnl gforker and remshell does not use separate configure. 
+@@ -1725,43 +1762,6 @@ if test "$enable_pmix" = "yes"; then
+     AC_DEFINE([ENABLE_PMIX], 1, [Define to enable PMIX protocol])
+ fi
+ 
+-# -----------------------------------
+-# This goes here because we need the top_srcdir
+-if test "$enable_romio" = "yes" ; then
+-   if test -d $use_top_srcdir/src/mpi/romio ; then
+-       AC_DEFINE(HAVE_ROMIO,1,[Define if ROMIO is enabled])
+-
+-       # make it possible to "#include" mpio.h at build time
+-       #
+-       # This ought to be sufficient, but there is also a symlink setup in
+-       # src/include to accommodate current mpicc limitations.  See
+-       # src/mpi/Makefile.mk for more info.
+-       PAC_APPEND_FLAG([-I${main_top_builddir}/src/mpi/romio/include],[CPPFLAGS])
+-
+-       # Set environment variables that the romio configure expects
+-       export use_top_srcdir
+-       top_build_dir=`pwd`
+-       export top_build_dir
+-       # if there is no $top_build_dir/lib, romio puts lib in wrong place
+-       # This test used -e under Linux, but not all test programs understand
+-       # -e
+-       if test ! -d lib ; then mkdir lib ; fi
+-       # define ROMIO_VERSION in mpi.h so application can check whether ROMIO is included
+-       ROMIO_VERSION='#define ROMIO_VERSION 126'
+-
+-       romio_subdir_args=""
+-       if test "$enable_mpi_abi" = "yes" ; then
+-           romio_subdir_args="--enable-mpi-abi"
+-       fi
+-       PAC_CONFIG_SUBDIR_ARGS([src/mpi/romio],[$romio_subdir_args],[],[AC_MSG_ERROR([src/mpi/romio configure failed])])
+-   else
+-       AC_MSG_WARN([ROMIO src directory is not available])
+-   fi
+-fi
+-AC_SUBST(ROMIO_VERSION)
+-
+-AM_CONDITIONAL([BUILD_ROMIO], [test x$enable_romio = xyes])
+-
+ # ---------------------------------------------------------------------------
+ # Check for whether the compiler defines a symbol that contains the
+ # function name. The MPICH code uses this for debugging purposes.
+diff --git src/mpi/romio/configure.ac src/mpi/romio/configure.ac
+index 0ac28f45f998..4e9ed9502f1e 100644
+--- src/mpi/romio/configure.ac
++++ src/mpi/romio/configure.ac
+@@ -1269,7 +1269,7 @@ elif test $FROM_MPICH = yes ; then
+    MPI_H_INCLUDE="-I${main_top_builddir}/src/include -I${main_top_srcdir}/src/include"
+    ROMIO_INCLUDE=""
+    USER_CFLAGS=""
+-   MPIRUN="$TEST_MPIEXEC"
++   MPIRUN=""
+    #
+    # Turn off the building of the Fortran interface and the Info routines
+    EXTRA_DIRS=""
+diff --git src/mpi/romio/test/parallel_run.sh.in src/mpi/romio/test/parallel_run.sh.in
+index 7adf3382c826..2e854cdd3b85 100755
+--- src/mpi/romio/test/parallel_run.sh.in
++++ src/mpi/romio/test/parallel_run.sh.in
+@@ -12,15 +12,14 @@ set -e
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ bindir=@bindir@
+-mpirun="@MPIRUN@"
++# MPICH exports ROMIO_TEST_MPIEXEC from the top-level Makefile.  It points
++# to the process manager built in this tree rather than the launcher that will
++# later be installed in $(bindir).
++mpirun="${ROMIO_TEST_MPIEXEC:-@MPIRUN@}"
+ 
+ if test -z "$mpirun" ; then
+-    if test -n "$MPIEXEC"; then
+-        mpirun="$MPIEXEC"
+-    else
+-        echo "SKIP: mpi launcher not defined. Define MPIEXEC and rerun the test." >&2
+-        exit 77
+-    fi
++    echo "SKIP: no usable MPI launcher in the build tree" >&2
++    exit 77
+ fi
+ 
+ # valgrind_opt="libtool --mode=execute valgrind --quiet --leak-check=full"

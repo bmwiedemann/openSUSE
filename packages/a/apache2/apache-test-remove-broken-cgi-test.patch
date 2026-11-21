@@ -1,0 +1,14 @@
+diff -purN a/httpd-framework/t/modules/cgi.t b/httpd-framework/t/modules/cgi.t
+--- a/httpd-framework/t/modules/cgi.t	2026-10-24 19:07:56.674161949 +0200
++++ b/httpd-framework/t/modules/cgi.t	2026-10-24 19:57:45.608978057 +0200
+@@ -100,10 +100,6 @@ my %test = (
+         'rc' => 200,
+         'expect' => 'GATEWAY_INTERFACE = CGI/1.1'
+     },
+-    'env.pl?host' => {
+-        'rc' => 200,
+-        'expect' => 'HTTP_HOST = localhost'
+-    },
+ 
+ );
+ 

@@ -1,0 +1,5 @@
+<package name="kubernetes-mcp-server" project="openSUSE:Factory">
+  <title>Kubernetes MCP server</title>
+  <description>Model Context Protocol (MCP) server for Kubernetes and OpenShift. Native Go implementation talking directly to the Kubernetes API server: generic resource CRUD, pods, namespaces, events, Helm releases, Tekton, and observability.</description>
+  <url>https://github.com/containers/kubernetes-mcp-server</url>
+</package>

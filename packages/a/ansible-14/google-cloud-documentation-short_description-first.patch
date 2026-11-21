@@ -1,0 +1,98 @@
+From: Jorge Gallegos <jgallego@redhat.com>
+Subject: google.cloud: list short_description first in the containeranalysis note modules
+
+ansible-doc --list reads short_description with a line-based reader that
+takes the first "short_description:" it finds. gcp_containeranalysis_note
+has an option named short_description before the module's own key, so
+ansible-doc --list crashed with "'_AnsibleTaggedDict' object has no
+attribute 'strip'". The module template now puts module and
+short_description at the top of DOCUMENTATION.
+
+Upstream: https://github.com/ansible-collections/google.cloud/pull/785
+  (commit 1538d876bba9d9054048d7fdd5f2625879351f11, not yet released)
+References: bsc#1285531, gh#ansible-collections/google.cloud#789
+
+diff --git a/ansible_collections/google/cloud/plugins/modules/gcp_containeranalysis_note.py b/ansible_collections/google/cloud/plugins/modules/gcp_containeranalysis_note.py
+index 6319483cb..d83d0f962 100644
+--- a/ansible_collections/google/cloud/plugins/modules/gcp_containeranalysis_note.py
++++ b/ansible_collections/google/cloud/plugins/modules/gcp_containeranalysis_note.py
+@@ -31,18 +31,13 @@
+ 
+ DOCUMENTATION = r"""
+ ---
+-author:
+-  - Google Inc. (@googlecloudplatform)
++module: gcp_containeranalysis_note
++short_description: Manages a ContainerAnalysis.Note resource
+ description:
+   - A Container Analysis note is a high-level piece of metadata that
+   - describes a type of analysis that can be done for a resource.
+-extends_documentation_fragment:
+-  - google.cloud.gcp
+-module: gcp_containeranalysis_note
+-notes:
+-  - 'API Reference: U(https://cloud.google.com/container-analysis/api/reference/rest/)'
+-  - 'Creating Attestations (Occurrences) Guide: U(https://cloud.google.com/binary-authorization/docs/making-attestations)'
+-  - 'Official Documentation Guide: U(https://cloud.google.com/container-analysis/)'
++author:
++  - Google Inc. (@googlecloudplatform)
+ options:
+   attestation_authority:
+     description:
+@@ -118,7 +113,12 @@
+   - python >= 3.8
+   - requests >= 2.18.4
+   - google-auth >= 2.25.1
+-short_description: Manages a ContainerAnalysis.Note resource
++notes:
++  - 'API Reference: U(https://cloud.google.com/container-analysis/api/reference/rest/)'
++  - 'Creating Attestations (Occurrences) Guide: U(https://cloud.google.com/binary-authorization/docs/making-attestations)'
++  - 'Official Documentation Guide: U(https://cloud.google.com/container-analysis/)'
++extends_documentation_fragment:
++  - google.cloud.gcp
+ """  # noqa: E501
+ 
+ EXAMPLES = r"""
+diff --git a/ansible_collections/google/cloud/plugins/modules/gcp_containeranalysis_note_info.py b/ansible_collections/google/cloud/plugins/modules/gcp_containeranalysis_note_info.py
+index fdfc1e7af..7d59985d5 100644
+--- a/ansible_collections/google/cloud/plugins/modules/gcp_containeranalysis_note_info.py
++++ b/ansible_collections/google/cloud/plugins/modules/gcp_containeranalysis_note_info.py
+@@ -31,19 +31,13 @@
+ 
+ DOCUMENTATION = r"""
+ ---
+-author:
+-  - Google Inc. (@googlecloudplatform)
++module: gcp_containeranalysis_note_info
++short_description: List ContainerAnalysis.Note resources
+ description:
+   - A Container Analysis note is a high-level piece of metadata that
+   - describes a type of analysis that can be done for a resource.
+-extends_documentation_fragment:
+-  - google.cloud.gcp
+-  - google.cloud.info
+-module: gcp_containeranalysis_note_info
+-notes:
+-  - 'API Reference: U(https://cloud.google.com/container-analysis/api/reference/rest/)'
+-  - 'Creating Attestations (Occurrences) Guide: U(https://cloud.google.com/binary-authorization/docs/making-attestations)'
+-  - 'Official Documentation Guide: U(https://cloud.google.com/container-analysis/)'
++author:
++  - Google Inc. (@googlecloudplatform)
+ options:
+   filters:
+     elements: str
+@@ -52,7 +46,13 @@
+   - python >= 3.8
+   - requests >= 2.18.4
+   - google-auth >= 2.25.1
+-short_description: List ContainerAnalysis.Note resources
++notes:
++  - 'API Reference: U(https://cloud.google.com/container-analysis/api/reference/rest/)'
++  - 'Creating Attestations (Occurrences) Guide: U(https://cloud.google.com/binary-authorization/docs/making-attestations)'
++  - 'Official Documentation Guide: U(https://cloud.google.com/container-analysis/)'
++extends_documentation_fragment:
++  - google.cloud.gcp
++  - google.cloud.info
+ """  # noqa: E501
+ 
+ EXAMPLES = r"""

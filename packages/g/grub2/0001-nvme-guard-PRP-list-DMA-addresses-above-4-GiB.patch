@@ -1,0 +1,37 @@
+From 8ac1e9554ed5b6c5544fd0b8d306ebe03bbe8eda Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 16 Oct 2026 12:56:11 +0800
+Subject: [PATCH] nvme: guard PRP list DMA addresses above 4 GiB
+
+nvme_readwrite() builds a PRP list for multi-page transfers. The PRP
+list is allocated with grub_memalign_dma32(), so it is expected to stay
+below 4 GiB by design.
+
+Add an explicit assertion to fail cleanly if that assumption is ever
+violated, instead of silently passing an invalid PRP list address to the
+controller.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/disk/nvme.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/grub-core/disk/nvme.c b/grub-core/disk/nvme.c
+index 8f299682e..123300f0d 100644
+--- a/grub-core/disk/nvme.c
++++ b/grub-core/disk/nvme.c
+@@ -632,6 +632,11 @@ nvme_readwrite (struct grub_nvme_device *dev, int namespace,
+     /* Use a single page as PRP list, PRP2 points to the list */
+     unsigned int i;
+     volatile grub_uint64_t *prp_list = grub_dma_get_virt(dev->prp_list);
++    grub_uint64_t prp_list_phys = grub_dma_get_phys (dev->prp_list);
++    /* The PRP list is allocated with grub_memalign_dma32(), so it must be below 4 GiB. */
++    if (prp_list_phys >> 32)
++      return grub_error (GRUB_ERR_BAD_ARGUMENT,
++			 "NVMe PRP list above 4 GiB is not supported");
+     for (i = 0; i < end_page - start_page; ++i) {
+       buffer_phys += 0x1000;
+       prp_list[i] = buffer_phys & ~0xfff;
+-- 
+2.56.0
+

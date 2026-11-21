@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>816a25938a50ec97cde2399e4364ae17</srcmd5>
+    <version>1.0.0</version>
+    <time>1793725073</time>
+    <user>anag_factory</user>
+    <comment>`gitea-cli` manages repositories, issues, pull requests,
+releases, and other Gitea resources with explicit commands
+suitable for local development and CI.</comment>
+    <requestid>1394568</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5dcd748c84c5546d20e3ee370fb8866f</srcmd5>
+    <version>1.1.0</version>
+    <time>1793991579</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.0:
+  - Features:
+    - --dry-run previews write requests without sending them on
+      commands that only change Gitea.
+    - --template formats JSON output with Go templates and gh
+      functions.
+    - gt schema lists JSON fields of every command.
+    - GITEA_CLI_ERROR_FORMAT=json reports failures as JSON on
+      stderr.
+    - gt gpg-key manages GPG keys with token verification.
+    - gt issue and gt pr lock, unlock, pin, unpin and delete
+      support batch operations.
+    - gt pr edit and gt issue edit support bi-directional
+      dependency changes.
+    - --select interactive selector on issue, pr, release, and
+      repo lists.
+    - gt notification list --all-accounts lists notifications
+      across all logged-in accounts.
+    - gt repo license and gt repo gitignore manage repository
+      templates.
+    - gt project workflow manages project board workflows
+      (needs Gitea 29).
+    - gt admin adds user, org, cron, and email administration
+      commands.
+  - Internal:
+    - Update gitea.dev/sdk to v1.5.1.
+
+- Fix crash on ppc64le (gh#golang/go#82324 bsc#1289089 bsc#1287612)
+  + unix-set-R12-before-the-ppc64x-syscall-branch.patch</comment>
+    <requestid>1395888</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8df911971f578c4ae9afcadf17e01f1</srcmd5>
+    <version>1.2.0</version>
+    <time>1794318266</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2.0:
+  - Features
+    - gt commit reads commits on the server with list, view,
+      diff, compare, status and pr, where a ref is a SHA, branch
+      or tag. status exits 1 when a status failed and 8 while one
+      is pending, so gt commit status main &amp;&amp; deploy waits for
+      green (#92).
+    - gt commit diff and gt pr diff filter a diff with --path and
+      --exclude, which take a file, a dir/ or a glob and can be
+      repeated, and summarize it with --name-only, --name-status
+      and --stat. What is left is still a diff that git apply
+      takes (#92).
+    - gt tag lists, views, creates and deletes tags without a
+      clone, and protect, unprotect and protection list manage
+      tag protection rules. create --message makes an annotated
+      tag (#93).
+    - gt branch protection list and view show the protection
+      rules in the order Gitea applies them: the approvals, who
+      may push, the status checks and the other protections that
+      are on (#95).
+    - gt activity [&lt;owner&gt;] shows the activity feed of a user or
+      organization, yours without an owner, and gt repo activity
+      that of a repository. --date keeps one day and
+      --only-performed-by keeps what the user did (#100).
+    - gt time start, stop, cancel and status work with the issue
+      stopwatch. stop logs the elapsed time, cancel discards it
+      and status lists every active stopwatch across repositories
+      (#101).
+    - gt pr merge --admin merges past the branch protection, for
+      those who administer the repository. --match-head-commit</comment>
+    <requestid>1396488</requestid>
+  </revision>
+</revisionlist>

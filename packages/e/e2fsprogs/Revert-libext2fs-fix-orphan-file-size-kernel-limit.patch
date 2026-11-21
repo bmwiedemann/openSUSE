@@ -1,0 +1,95 @@
+From 782f43e32b58b37277f0ec6af405d5c45245b8c1 Mon Sep 17 00:00:00 2001
+From: Theodore Ts'o <tytso@mit.edu>
+Date: Thu, 12 Mar 2026 15:35:05 -0400
+Subject: [PATCH] Revert "libext2fs: fix orphan file size > kernel limit with
+ large blocksize"
+
+This reverts commit 6f03c698ef53bb9d0cd42c9bd0b68e8ce72f8345.
+
+    Due to missing parenthesis around the #defines for
+    EXT4_{MAX,DEFAULT}_ORPHAN_FILE_SIZE, the default number of blocks
+    assigned to the orphan file was calculated as 2 when the file system
+    has more than 2**21 blocks:
+
+       % mke2fs  -t ext4 -Fq /tmp/foo.img 8191M
+       /tmp/foo.img contains a ext4 file system
+               created on Wed Mar 11 09:54:04 2026
+       % debugfs -R "extents <12>" /tmp/foo.img
+       debugfs 1.47.4 (6-Mar-2025)
+       Level Entries       Logical          Physical Length Flags
+        0/ 0   1/  1     0 -   510    9255 -    9765    511
+
+       % mke2fs  -t ext4 -Fq /tmp/foo.img 8192M
+       /tmp/foo.img contains a ext4 file system
+               created on Wed Mar 11 09:54:11 2026
+       % debugfs -R "extents <12>" /tmp/foo.img
+       debugfs 1.47.4 (6-Mar-2025)
+       Level Entries       Logical          Physical Length Flags
+        0/ 0   1/  1     0 -     1    9255 -    9256      2  <======
+
+The problem addressed by the reverted commit will fixed via the next
+commit.
+
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+
+Git-repo: https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
+Git-commit: 782f43e32b58b37277f0ec6af405d5c45245b8c1
+Patch-mainline: Merged upstream (maint and master branches), not yet released
+---
+ lib/ext2fs/ext2fs.h |  2 --
+ lib/ext2fs/orphan.c | 12 +++++-------
+ 2 files changed, 5 insertions(+), 9 deletions(-)
+
+diff --git a/lib/ext2fs/ext2fs.h b/lib/ext2fs/ext2fs.h
+index d9df007c..bb2170b7 100644
+--- a/lib/ext2fs/ext2fs.h
++++ b/lib/ext2fs/ext2fs.h
+@@ -1819,8 +1819,6 @@ errcode_t ext2fs_set_data_io(ext2_filsys fs, io_channel new_io);
+ errcode_t ext2fs_rewrite_to_io(ext2_filsys fs, io_channel new_io);
+ 
+ /* orphan.c */
+-#define EXT4_MAX_ORPHAN_FILE_SIZE	8 << 20
+-#define EXT4_DEFAULT_ORPHAN_FILE_SIZE	2 << 20
+ extern errcode_t ext2fs_create_orphan_file(ext2_filsys fs, blk_t num_blocks);
+ extern errcode_t ext2fs_truncate_orphan_file(ext2_filsys fs);
+ extern e2_blkcnt_t ext2fs_default_orphan_file_blocks(ext2_filsys fs);
+diff --git a/lib/ext2fs/orphan.c b/lib/ext2fs/orphan.c
+index 40b1c5c7..14ac3569 100644
+--- a/lib/ext2fs/orphan.c
++++ b/lib/ext2fs/orphan.c
+@@ -164,8 +164,6 @@ errcode_t ext2fs_create_orphan_file(ext2_filsys fs, blk_t num_blocks)
+ 	memset(zerobuf, 0, fs->blocksize);
+ 	ob_tail = ext2fs_orphan_block_tail(fs, buf);
+ 	ob_tail->ob_magic = ext2fs_cpu_to_le32(EXT4_ORPHAN_BLOCK_MAGIC);
+-	if (num_blocks * fs->blocksize > EXT4_MAX_ORPHAN_FILE_SIZE)
+-		num_blocks = EXT4_MAX_ORPHAN_FILE_SIZE / fs->blocksize;
+ 	oi.num_blocks = num_blocks;
+ 	oi.alloc_blocks = 0;
+ 	oi.last_blk = 0;
+@@ -218,18 +216,18 @@ out:
+ 
+ /*
+  * Find reasonable size for orphan file. We choose orphan file size to be
+- * between 32 filesystem blocks and EXT4_DEFAULT_ORPHAN_FILE_SIZE, and not
+- * more than 1/fs->blocksize of the filesystem unless it is really small.
++ * between 32 and 512 filesystem blocks and not more than 1/4096 of the
++ * filesystem unless it is really small.
+  */
+ e2_blkcnt_t ext2fs_default_orphan_file_blocks(ext2_filsys fs)
+ {
+ 	__u64 num_blocks = ext2fs_blocks_count(fs->super);
+-	e2_blkcnt_t blks = EXT4_DEFAULT_ORPHAN_FILE_SIZE / fs->blocksize;
++	e2_blkcnt_t blks = 512;
+ 
+ 	if (num_blocks < 128 * 1024)
+ 		blks = 32;
+-	else if (num_blocks < EXT4_DEFAULT_ORPHAN_FILE_SIZE)
+-		blks = num_blocks / fs->blocksize;
++	else if (num_blocks < 2 * 1024 * 1024)
++		blks = num_blocks / 4096;
+ 	return (blks + EXT2FS_CLUSTER_MASK(fs)) & ~EXT2FS_CLUSTER_MASK(fs);
+ }
+ 
+-- 
+2.55.0
+

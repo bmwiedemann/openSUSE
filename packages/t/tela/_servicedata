@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/ibm-s390-linux/tela.git</param>
+              <param name="changesrevision">dcbc9c03edd2e2588775296105594abf6cd2c9a8</param></service></servicedata>

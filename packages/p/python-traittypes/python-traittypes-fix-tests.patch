@@ -1,0 +1,46 @@
+Index: traittypes-0.2.3/traittypes/tests/test_traittypes.py
+===================================================================
+--- traittypes-0.2.3.orig/traittypes/tests/test_traittypes.py
++++ traittypes-0.2.3/traittypes/tests/test_traittypes.py
+@@ -166,9 +166,9 @@ class TestSeries(TestCase):
+             c = Series([])
+             d = Series(Undefined)
+         foo = Foo()
+-        self.assertTrue(foo.a.equals(pd.Series()))
++        self.assertTrue(foo.a.equals(pd.Series(dtype=float)))
+         self.assertTrue(foo.b is None)
+-        self.assertTrue(foo.c.equals(pd.Series([])))
++        self.assertTrue(foo.c.equals(pd.Series([], dtype=float)))
+         self.assertTrue(foo.d is Undefined)
+ 
+     def test_allow_none(self):
+Index: traittypes-0.2.3/traittypes/traittypes.py
+===================================================================
+--- traittypes-0.2.3.orig/traittypes/traittypes.py
++++ traittypes-0.2.3/traittypes/traittypes.py
+@@ -225,10 +225,11 @@ class XarrayType(SciType):
+             self.error(obj, value)
+         if value is None or value is Undefined:
+             return super(XarrayType, self).validate(obj, value)
+-        try:
+-            value = self.klass(value)
+-        except (ValueError, TypeError) as e:
+-            raise TraitError(e)
++        if not isinstance(value, self.klass):
++            try:
++                value = self.klass(value)
++            except (ValueError, TypeError) as e:
++                raise TraitError(e)
+         return super(XarrayType, self).validate(obj, value)
+ 
+     def set(self, obj, value):
+@@ -251,7 +252,8 @@ class XarrayType(SciType):
+         if default_value is Empty:
+             default_value = klass()
+         elif default_value is not None and default_value is not Undefined:
+-            default_value = klass(default_value)
++            if not isinstance(default_value, klass):
++                default_value = klass(default_value)
+         super(XarrayType, self).__init__(default_value=default_value, allow_none=allow_none, **kwargs)
+ 
+     def make_dynamic_default(self):

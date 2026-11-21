@@ -1,0 +1,36 @@
+From: Jens Axboe <axboe@kernel.dk>
+Date: Mon, 19 Oct 2026 11:19:38 -0600
+Subject: test/waitid: accept -ETIME for a fired linked timeout
+References: 7.4 build fix
+Git-repo: https://github.com/axboe/liburing
+Git-commit: 5ff75106b614b3e8f28ad578a45179f295ff56da
+Patch-mainline: yes
+
+A linked timeout that fires and cancels a waitid request now completes
+with -ETIME, like it does for other requests. Older kernels completed
+it with 1. Accept both.
+
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ test/waitid.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/test/waitid.c b/test/waitid.c
+index 54e187fc384f..1bbfbe0dcbb6 100644
+--- a/test/waitid.c
++++ b/test/waitid.c
+@@ -89,7 +89,9 @@ static int test_noexit(struct io_uring *ring)
+ 			fprintf(stderr, "cqe wait: %d\n", ret);
+ 			return T_EXIT_FAIL;
+ 		}
+-		if (cqe->user_data == 2 && cqe->res != 1) {
++		/* older kernels complete a fired linked timeout with 1 */
++		if (cqe->user_data == 2 &&
++		    !(cqe->res == -ETIME || cqe->res == 1)) {
+ 			fprintf(stderr, "timeout res: %d\n", cqe->res);
+ 			return T_EXIT_FAIL;
+ 		}
+-- 
+2.56.0
+

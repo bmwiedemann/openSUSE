@@ -1,0 +1,44 @@
+--- a/src/common/hmac.c	2026-11-16 14:23:32.222544850 +0100
++++ b/src/common/hmac.c	2026-11-16 14:23:32.239191289 +0100
+@@ -26,6 +26,7 @@
+ #include <gnutls/crypto.h>
+ #include <gnutls/abstract.h>
+ #include <nettle/hmac.h>
++#include <nettle/version.h>
+ #include <common.h>
+ #include <hmac.h>
+ #include <stdbool.h>
+@@ -51,7 +52,11 @@
+ 		}
+ 	}
+ 
++	#if NETTLE_VERSION_MAJOR >= 4
++	hmac_sha256_digest(&ctx, digest);
++#else
+ 	hmac_sha256_digest(&ctx, HMAC_DIGEST_SIZE, digest);
++#endif
+ 
+ 	safe_memset(&ctx, 0, sizeof(ctx));
+ }
+--- a/src/common/common.c	2026-11-16 14:23:32.224288025 +0100
++++ b/src/common/common.c	2026-11-16 14:23:32.239335131 +0100
+@@ -33,6 +33,7 @@
+ #include <limits.h>
+ #include <assert.h>
+ #include <nettle/sha1.h>
++#include <nettle/version.h>
+ #include "common.h"
+ #include "defs.h"
+ #include "common/base64-helper.h"
+@@ -59,7 +60,11 @@
+ 	sha1_init(&ctx);
+ 
+ 	sha1_update(&ctx, data_size, data);
++	#if NETTLE_VERSION_MAJOR >= 4
++	sha1_digest(&ctx, output);
++#else
+ 	sha1_digest(&ctx, 20, output);
++#endif
+ }
+ 
+ char *calc_safe_id(const uint8_t *data, unsigned int size, char *output,

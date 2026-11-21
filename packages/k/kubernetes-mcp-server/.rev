@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8ded24645111517da41b1e7f06a73bb3</srcmd5>
+    <version>0.1.2</version>
+    <time>1794428309</time>
+    <user>dimstar_suse</user>
+    <comment>New package kubernetes-mcp-server 0.1.2 (Kubernetes MCP server)</comment>
+    <requestid>1396917</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fe63c57d9362f584e6793d6e5858bc8a</srcmd5>
+    <version>0.1.2</version>
+    <time>1794590978</time>
+    <user>anag_factory</user>
+    <comment>Stamp version, link against glibc, vendor via go_modules service</comment>
+    <requestid>1396989</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>efb735e5443b197e59b746b89f9144b1</srcmd5>
+    <version>0.1.3</version>
+    <time>1794932342</time>
+    <user>anag_factory</user>
+    <comment>Update kubernetes-mcp-server to 0.1.3: opt-in tools, namespace param, NodePort, OTEL name, route metrics.</comment>
+    <requestid>1398009</requestid>
+  </revision>
+</revisionlist>

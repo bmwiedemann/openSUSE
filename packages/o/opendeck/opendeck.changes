@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Nov 12 20:25:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (2.14.2):
+  * Support Stream Deck MK.2 with Scissor Keys Module
+  * Keep custom action state images and text on plugin events
+  * Harden plugin and device event handling: validate device ID
+    length and plugin namespace ownership, reject duplicate
+    WebSocket registrations
+  * Packaging (opendeck-disable-telemetry.patch,
+    opendeck-no-deno-build.patch, opendeck-npm-build-deps.patch):
+    telemetry opt-in (off by default), in-app update check off,
+    system Node.js build, native helpers compiled from source
+

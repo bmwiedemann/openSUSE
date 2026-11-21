@@ -1,0 +1,19 @@
+Index: oo7-0.6.0/portal/meson.build
+===================================================================
+--- oo7-0.6.0.orig/portal/meson.build
++++ oo7-0.6.0/portal/meson.build
+@@ -45,4 +45,3 @@ summary({
+ })
+ 
+ subdir('data')
+-subdir('src')
+Index: oo7-0.6.0/server/meson.build
+===================================================================
+--- oo7-0.6.0.orig/server/meson.build
++++ oo7-0.6.0/server/meson.build
+@@ -47,5 +47,4 @@ summary({
+ })
+ 
+ subdir('data')
+-subdir('src')
+ subdir('po')

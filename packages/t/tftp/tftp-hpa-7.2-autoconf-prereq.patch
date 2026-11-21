@@ -1,0 +1,36 @@
+From eea76919e7160ea1797af7095d1d3657999d2f6e Mon Sep 17 00:00:00 2001
+From: David Anes <david.anes@suse.com>
+Date: Wed, 4 Nov 2026 16:30:40 +0100
+Subject: [PATCH] Build configure.ac with autoconf 2.69
+
+SLE-15 and SLE-12 ship autoconf 2.69, but configure.ac requires
+2.71. Two changes are needed:
+  * lower AC_PREREQ from 2.71 to 2.69
+  * remove AC_CHECK_INCLUDES_DEFAULT (an autoconf 2.70+ macro)
+
+The remaining macros used by configure.ac (AS_IF, AC_CHECK_TYPES,
+AC_CHECK_FUNCS, AC_CHECK_MEMBERS, AC_USE_SYSTEM_EXTENSIONS, ...) are
+all available in autoconf 2.69.
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index d8621ca..f910913 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,3 +8,3 @@
+ dnl a configure script.
+-AC_PREREQ([2.71])
++AC_PREREQ([2.69])
+ AC_INIT
+@@ -56,7 +56,6 @@ dnl Check now to declare noreturn functions
+ PA_C_NORETURN
+ 
+ dnl Checks for header files.
+-AC_CHECK_INCLUDES_DEFAULT
+ 
+ dnl See if we need extra libraries
+ XTRA=false
+-- 
+2.56.0

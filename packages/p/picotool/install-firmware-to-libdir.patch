@@ -1,0 +1,46 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: Install device firmware ELF blobs to libdir instead of datadir
+
+The enc_bootloader.elf and xip_ram_perms.elf files are firmware for the
+attached RP2040/RP2350 device, not host binaries. Installing them to
+/usr/share trips arch-dependent-file-in-usr-share and aborts the build.
+Install them to %{_libdir}/picotool instead and add that directory to
+the compiled-in data file search path (DATA_LOCS), so the tool still
+finds them at runtime. The arch-independent OTP JSON stays in datadir.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,7 +41,7 @@
+ endif()
+ 
+ # todo better install paths for this
+-set(DATA_LOCS "./" "${CMAKE_INSTALL_PREFIX}/${INSTALL_DATADIR}/")
++set(DATA_LOCS "./" "${CMAKE_INSTALL_PREFIX}/${INSTALL_DATADIR}/" "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/picotool/")
+ string(REGEX REPLACE ";" "\",\"" DATA_LOCS_VEC "${DATA_LOCS}")
+ configure_file(data_locs.template.cpp ${CMAKE_CURRENT_BINARY_DIR}/data_locs.cpp)
+ 
+@@ -396,14 +396,14 @@
+ #Install enc_bootloader.elf
+ install(FILES
+     ${ENC_BOOTLOADER_ELF}
+-    DESTINATION ${INSTALL_DATADIR}
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/picotool
+ )
+ 
+ if (TARGET mbedtls)
+     #Install enc_bootloader_mbedtls.elf
+     install(FILES
+         ${ENC_BOOTLOADER_MBEDTLS_ELF}
+-        DESTINATION ${INSTALL_DATADIR}
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/picotool
+         RENAME enc_bootloader_mbedtls.elf
+     )
+ endif()
+@@ -420,6 +420,6 @@
+     #Install xip_ram_perms.elf
+     install(FILES
+         ${XIP_RAM_PERMS_ELF}
+-        DESTINATION ${INSTALL_DATADIR}
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/picotool
+     )
+ endif()

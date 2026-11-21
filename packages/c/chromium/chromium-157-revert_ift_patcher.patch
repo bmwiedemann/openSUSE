@@ -1,0 +1,126 @@
+--- chromium-157.0.8103.15/third_party/blink/renderer/core/BUILD.gn	2026/10/28 16:21:08	1.1
++++ chromium-157.0.8103.15/third_party/blink/renderer/core/BUILD.gn	2026/10/28 16:22:37
+@@ -407,7 +407,6 @@
+   deps = [
+     ":font_resource",
+     ":generate_eventhandler_names",
+-    ":ift_custom_font_data",
+     ":make_deprecation_info",
+     ":xml_ffi",
+     "//base",
+@@ -463,7 +462,6 @@
+   allow_circular_includes_from = [
+     ":core_generated",
+     ":core_hot",
+-    ":ift_custom_font_data",
+     "//third_party/blink/renderer/core/animation",
+     "//third_party/blink/renderer/core/exported",
+     "//third_party/blink/renderer/core/probe",
+@@ -504,23 +502,6 @@
+     "//third_party/blink/public/common",
+     "//third_party/blink/renderer/platform:font_rust_headers",
+   ]
+-}
+-
+-# Like ":font_resource", css/ift_custom_font_data.cc includes
+-# //third_party/blink/renderer/platform:font_rust_headers, so it is kept on a
+-# headerless target. Its header (in core's sources) only forward declares the
+-# Crubit-backed types. It includes core headers, so ":core" lists it in
+-# allow_circular_includes_from.
+-blink_core_sources("ift_custom_font_data") {
+-  public = []
+-  sources = [ "css/ift_custom_font_data.cc" ]
+-
+-  deps = [
+-    ":font_resource_header",
+-    "//services/network/public/cpp",
+-    "//third_party/blink/public/common",
+-    "//third_party/blink/renderer/platform:font_rust_headers",
+-  ]
+ }
+ 
+ # Certain sources should be compiled with heavy optimization enabled.
+--- chromium-157.0.8103.15/third_party/blink/renderer/core/css/build.gni	2026/10/28 16:22:45	1.1
++++ chromium-157.0.8103.15/third_party/blink/renderer/core/css/build.gni	2026/10/28 16:22:51
+@@ -531,7 +531,6 @@
+   "hash_tools.h",
+   "if_condition.cc",
+   "if_condition.h",
+-  "ift_custom_font_data.h",
+   "inline_css_style_declaration.cc",
+   "inline_css_style_declaration.h",
+   "invalidation/invalidation_flags.cc",
+@@ -936,7 +935,6 @@
+   "font_size_functions_test.cc",
+   "font_update_invalidation_test.cc",
+   "force_dark_test.cc",
+-  "ift_custom_font_data_test.cc",
+   "invalidation/invalidation_set_test.cc",
+   "invalidation/pending_invalidations_test.cc",
+   "invalidation/style_invalidator_test.cc",
+--- chromium-157.0.8103.15/third_party/blink/renderer/core/css/remote_font_face_source.cc	2026/10/28 16:23:12	1.1
++++ chromium-157.0.8103.15/third_party/blink/renderer/core/css/remote_font_face_source.cc	2026/10/28 16:24:25
+@@ -14,7 +14,6 @@
+ #include "third_party/blink/renderer/core/css/css_custom_font_data.h"
+ #include "third_party/blink/renderer/core/css/css_font_face.h"
+ #include "third_party/blink/renderer/core/css/font_face_set_document.h"
+-#include "third_party/blink/renderer/core/css/ift_custom_font_data.h"
+ #include "third_party/blink/renderer/core/dom/document.h"
+ #include "third_party/blink/renderer/core/frame/local_dom_window.h"
+ #include "third_party/blink/renderer/core/frame/local_frame.h"
+@@ -219,9 +218,6 @@
+   DCHECK(!custom_font_data_);
+   if (resource->PassedIntegrityChecks() || !check_integrity) {
+     custom_font_data_ = font->GetCustomFontData();
+-    if (RuntimeEnabledFeatures::IncrementalFontTransferEnabled()) {
+-      ift_custom_font_data_ = IftCustomFontData::MaybeCreate(this, *font);
+-    }
+   }
+   url_ = resource->Url().GetString();
+ 
+@@ -349,9 +345,6 @@
+ 
+   histograms_.RecordFallbackTime();
+ 
+-  CustomFontData* custom_font_data =
+-      ift_custom_font_data_ ? ift_custom_font_data_.Get()
+-                            : MakeGarbageCollected<CustomFontData>();
+   return MakeGarbageCollected<SimpleFontData>(
+       custom_font_data_->GetFontPlatformData(
+           font_description.EffectiveFontSize(),
+@@ -368,7 +361,7 @@
+           font_description.ResolveFontFeatures(),
+           font_description.Orientation(), font_description.VariationSettings(),
+           font_description.GetFontPalette()),
+-      custom_font_data);
++      MakeGarbageCollected<CustomFontData>());
+ }
+ 
+ const SimpleFontData* RemoteFontFaceSource::CreateLoadingFallbackFontData(
+@@ -451,7 +444,6 @@
+   visitor->Trace(face_);
+   visitor->Trace(font_selector_);
+   visitor->Trace(custom_font_data_);
+-  visitor->Trace(ift_custom_font_data_);
+   CSSFontFaceSource::Trace(visitor);
+   FontResourceClient::Trace(visitor);
+ }
+--- chromium-157.0.8103.15/third_party/blink/renderer/core/css/remote_font_face_source.h	2026/10/28 16:24:29	1.1
++++ chromium-157.0.8103.15/third_party/blink/renderer/core/css/remote_font_face_source.h	2026/10/28 16:24:48
+@@ -18,7 +18,6 @@
+ class Document;
+ class FontCustomPlatformData;
+ class FontSelector;
+-class IftCustomFontData;
+ 
+ class RemoteFontFaceSource final : public CSSFontFaceSource,
+                                    public FontResourceClient {
+@@ -158,8 +157,6 @@
+ 
+   // |nullptr| if font is not loaded or failed to decode.
+   Member<const FontCustomPlatformData> custom_font_data_;
+-  // |nullptr| if font is not an IFT font.
+-  Member<IftCustomFontData> ift_custom_font_data_;
+   // |nullptr| if font is not loaded or failed to decode.
+   String url_;
+ 

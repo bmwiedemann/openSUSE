@@ -1,0 +1,5 @@
+<package name="modelcontextprotocol-servers" project="openSUSE:Factory">
+  <title>Model Context Protocol reference servers</title>
+  <description>Reference servers of the Model Context Protocol (MCP): mcp-server-everything, mcp-server-filesystem, mcp-server-memory and mcp-server-sequential-thinking, built from source.</description>
+  <url>https://github.com/modelcontextprotocol/servers</url>
+</package>

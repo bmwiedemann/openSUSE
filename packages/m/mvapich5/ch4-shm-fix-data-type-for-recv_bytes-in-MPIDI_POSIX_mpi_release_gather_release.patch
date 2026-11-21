@@ -1,0 +1,27 @@
+commit 6d7dd1286b64afac5d7ff4d49cdbb73c4313328d
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Tue Nov 10 16:05:21 2026 +0100
+
+    ch4: shm: fix data type for recv_bytes in MPIDI_POSIX_mpi_release_gather_release
+    
+    The number of received bytes in release_gather_release is badly cast between
+    int and MPI_Aint. On most arch this is not an issue, but for Big-Endian 64b arch (s390x)
+    it ends up losing the actual value as we only copy the first 4 MSB.
+    Fix the issue by writing the whole MPI_AInt in the shm_buf instead of just an int.
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git src/mpid/ch4/shm/posix/release_gather/release_gather.h src/mpid/ch4/shm/posix/release_gather/release_gather.h
+index 441b434f1882..88fd150923d7 100644
+--- src/mpid/ch4/shm/posix/release_gather/release_gather.h
++++ src/mpid/ch4/shm/posix/release_gather/release_gather.h
+@@ -221,7 +221,8 @@ MPL_STATIC_INLINE_PREFIX int MPIDI_POSIX_mpi_release_gather_release(void *local_
+              * datasize is copied out from shm_buffer and compared against the count a rank was
+              * expecting. Also, the coll_attr is copied out. In case of mismatch mpi_errno is set.
+              * Actual data starts after (2*cacheline_size) bytes */
+-            int recv_bytes, recv_errflag;
++            MPI_Aint recv_bytes;
++	    int recv_errflag;
+             MPIR_Typerep_copy(&recv_bytes, bcast_data_addr, sizeof(MPI_Aint),
+                               MPIR_TYPEREP_FLAG_NONE);
+             MPIR_Typerep_copy(&recv_errflag, (char *) bcast_data_addr + MPIDU_SHM_CACHE_LINE_LEN,

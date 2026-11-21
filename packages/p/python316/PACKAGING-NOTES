@@ -1,0 +1,23 @@
+Notes for packagers of Python3
+==============================
+
+0. Faster build turnaround
+--------------------------
+
+By default, python builds with profile-guided optimization. This needs
+an additional run of the test suite and it is generally slow.
+PGO build takes around 50 minutes.
+
+For development, use "--without profileopt" option to disable PGO. This
+shortens the build time to ~5 minutes including test suite.
+
+1. missing-stdlib-config.json.in
+--------------------------------
+
+Several stdlib modules are split into subpackages. So that users get a useful
+hint when such a module is missing, we pass --with-missing-stdlib-config to
+configure. The JSON file maps module names to the full error message that the
+traceback module prints for a ModuleNotFoundError of that module.
+
+Only names in sys.stdlib_module_names are eligible, so the test-only modules
+from the testsuite subpackage cannot be given a custom message.

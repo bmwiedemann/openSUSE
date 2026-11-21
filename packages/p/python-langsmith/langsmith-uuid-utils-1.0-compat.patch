@@ -1,0 +1,29 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: Support uuid-utils >= 1.0 uuid7(nanoseconds=...) signature
+
+uuid-utils 1.0 intentionally changed uuid7/uuid6/uuid8 to the
+signatures Python 3.14 added to the standard library and removed the
+legacy 0.x keywords (timestamp=, nanos=). langsmith calls
+uuid_utils.compat.uuid7(timestamp=seconds, nanos=nanos), which raises
+TypeError: uuid7() got an unexpected keyword argument 'timestamp' and
+fails 159 unit tests in %check.
+
+Try the 1.0 nanoseconds= keyword first, fall back to the 0.x
+timestamp=/nanos= pair so the same code works with both.
+
+--- langsmith-0.14.17.orig/src/langsmith/_internal/_uuid.py
++++ langsmith-0.14.17/src/langsmith/_internal/_uuid.py
+@@ -42,8 +42,11 @@
+     # For now, just delegate to the uuid_utils implementation
+     if nanoseconds is None:
+         return _uuid_utils_uuid7()
+-    seconds, nanos = _to_timestamp_and_nanos(nanoseconds)
+-    return _uuid_utils_uuid7(timestamp=seconds, nanos=nanos)
++    try:
++        return _uuid_utils_uuid7(nanoseconds=nanoseconds)
++    except TypeError:
++        seconds, nanos = _to_timestamp_and_nanos(nanoseconds)
++        return _uuid_utils_uuid7(timestamp=seconds, nanos=nanos)
+ 
+ 
+ def is_uuid_v7(uuid_obj: uuid.UUID) -> bool:

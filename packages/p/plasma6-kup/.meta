@@ -1,0 +1,10 @@
+<package name="plasma6-kup" project="openSUSE:Factory">
+  <title>A KDE-based frontend for the bup backup software</title>
+  <description>Kup consists of multiple parts:
+
+- A configuration module, available in systemsettings
+- A small program running in the background for monitoring and running the schedule plans
+- A KIO worker for accessing bup archives
+- A file browsing application for bup archives</description>
+  <url>https://invent.kde.org/plasma/kup</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="hatchzip" project="openSUSE:Factory">
+  <title>Extract archives in place, freeing the archive as it goes</title>
+  <description>HatchZip extracts ZIP, 7z and tar archives in place: the archive shrinks as the files come out, so it needs free space for the extracted files only. Command-line tool and desktop app.</description>
+  <url>https://hatchzip.dev</url>
+</package>

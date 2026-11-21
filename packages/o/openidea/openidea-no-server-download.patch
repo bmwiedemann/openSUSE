@@ -1,0 +1,37 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: [PATCH] Do not download a prebuilt openidea-server for remote hosts
+
+Remote development fetches upstream's release build of openidea-server
+from GitHub and runs it on the remote host when no local build is found.
+Refuse that download. The openidea-server package installs the server
+next to the app, which serves remote hosts of the same OS and
+architecture; a server already installed on the host, one set with
+OPENIDEA_SERVER_BINARY or one placed in the data directory is still
+used, and the error says how to provide one.
+
+--- a/src-tauri/src/remote_dev.rs
++++ b/src-tauri/src/remote_dev.rs
+@@ -254,15 +254,14 @@
+     arch: &str,
+     progress: Arc<Progress>,
+ ) -> IdeResult<std::path::PathBuf> {
+-    let (data, version, os, arch) = (state.local_data_dir.clone(), version.to_owned(), os.to_owned(), arch.to_owned());
+-    tokio::task::spawn_blocking(move || {
+-        ide_tools::server::fetch(&data, &version, &os, &arch, &ide_core::CancellationToken::new(), &|e| match e {
+-            ide_tools::InstallEvent::Line { text } => tracing::info!("openidea-server download: {text}"),
+-            ide_tools::InstallEvent::Progress { fraction, .. } => progress(RemoteStage::Downloading, fraction),
+-        })
+-    })
+-    .await
+-    .map_err(|e| IdeError::internal(e.to_string()))?
++    // Distribution build: never fetch a prebuilt server to run on the host. The
++    // openidea-server package, next to this app, serves hosts of its own platform.
++    let _ = (state, version, os, arch, progress);
++    Err(IdeError::unavailable(format!(
++        "downloading openidea-server is disabled in this build; zypper install openidea-server provides one for {}-{} hosts",
++        std::env::consts::OS,
++        std::env::consts::ARCH
++    )))
+ }
+ 
+ /// `uname -sm` → (`linux` | `macos`, `x86_64` | `aarch64`), as Rust names them.

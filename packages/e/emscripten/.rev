@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a84e9c33c3897248ceeff86a2f17d153</srcmd5>
+    <version>6.0.3</version>
+    <time>1794162155</time>
+    <user>dimstar_suse</user>
+    <comment>New package emscripten 6.0.3 (last release on LLVM 23, uses system clang23/binaryen); needed to build web-tree-sitter from source for opencode.</comment>
+    <requestid>1396154</requestid>
+  </revision>
+</revisionlist>

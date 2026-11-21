@@ -1,0 +1,17 @@
+# Add AC_CONFIG_MACRO_DIRS([autoconf/m4]) to configure.ac.
+# 5.4 uses project m4 macros in autoconf/m4/ and ships no pre-generated
+# aclocal.m4. Without the macro dir, aclocal does not find the macros and
+# does not generate aclocal.m4. autoreconf -fiv then fails with an
+# "undefined macro" error. This line tells aclocal and autoconf where to
+# find the project m4 macros, so autoreconf -fiv works.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,6 +8,7 @@
+ dnl a configure script.
+ AC_PREREQ([2.71])
+ AC_INIT
++AC_CONFIG_MACRO_DIRS([autoconf/m4])
+ AC_CONFIG_SRCDIR([MRULES])
+ AC_PREFIX_DEFAULT([/usr])
+ AC_CONFIG_AUX_DIR([autoconf/helpers])

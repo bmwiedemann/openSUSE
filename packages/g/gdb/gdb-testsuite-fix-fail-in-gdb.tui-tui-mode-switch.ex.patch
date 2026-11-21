@@ -1,0 +1,107 @@
+From 69f3d1c82cddae0de8187d73be07cbde0d27a36c Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 13 Oct 2026 15:05:48 +0200
+Subject: [PATCH 1/3] [gdb/testsuite] Fix FAIL in gdb.tui/tui-mode-switch.exp
+
+With test-case gdb.tui/tui-mode-switch.exp I ran into:
+...
+PASS: $exp: enter TUI
+^[[?1006;1000l^[[12;1H^[[?1049l^[[23;0;0t^M^[[?1l^[>PASS: $exp: exit TUI
+Box Dump (40 x 1) @ (0, 11):
+   11
+Box Dump (40 x 1) @ (0, 11):
+   11
+Box Dump (40 x 1) @ (0, 11):
+   11
+Box Dump (40 x 1) @ (0, 11):
+   11
+Box Dump (40 x 1) @ (0, 11):
+   11
+Box Dump (40 x 1) @ (0, 11):
+   11
+b(gdb) bBox Dump (40 x 1) @ (0, 11):
+   11 b(gdb) b
+WARNING: timeout in accept_gdb_output
+Screen Dump (size 40 columns x 12 rows, cursor at column 8, row 11):
+    0 (gdb)
+    1 (gdb)
+    2 (gdb)
+    3 (gdb)
+    4 (gdb)
+    5 (gdb)
+    6 (gdb)
+    7 (gdb)
+    8 (gdb)
+    9 (gdb)
+   10 (gdb)
+   11 b(gdb) b
+FAIL: $exp: type b
+...
+
+The FAIL happens in this part of the test:
+...
+ # Enter TUI.
+ send_gdb "\030\001"
+ gdb_assert { [Term::wait_for ""] } "enter TUI"
+
+ # Exit TUI.
+ send_gdb "\030\001"
+ gdb_assert { [Term::wait_for ""] } "exit TUI"
+
+ # Type b.
+ send_gdb "b"
+...
+
+It's a bit easier to see what happens if we switch on logging in Term::_log
+using verbose -log:
+...
+PASS: $exp: enter TUI
+^[[?1006;1000l^[[12;1H^[[?1049l^[[23;0;0t^M^[[?1l^[>+++ wait_for: ESC
++++ wait_for: CSI
++++ wait_for: _csi_0x3f_l <<<?>>>
++++ ignored: Disable SGR Mouse Mode
++++ ignored: Don't send Mouse X & Y on button press and release
+PASS: $exp: exit TUI
+...
+
+The wait_for for "exit TUI" triggers on the prompt of the TUI that's still
+there, so "b" is typed too early.
+
+From there on, there's a short window between endwin in tui_disable and
+emitting the prompt where echo is enabled.  If the b arrives in that window,
+we get "b(gdb) b".
+
+We can reproduce the FAIL reliably by adding a 200ms sleep after endwin in
+tui_disable.
+
+Fix this by waiting on the CLI prompt on the line where we're expecting it.
+
+I checked that reverting commit ee3c07a28be ("[gdb/tui] Clear readline buffer
+on switching to TUI") still makes the test-case fail.
+
+Tested on x86_64-linux, both with and without the reproducer delay.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34737
+---
+ gdb/testsuite/gdb.tui/tui-mode-switch.exp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.tui/tui-mode-switch.exp b/gdb/testsuite/gdb.tui/tui-mode-switch.exp
+index c60596213b8..e9318dadf8b 100644
+--- a/gdb/testsuite/gdb.tui/tui-mode-switch.exp
++++ b/gdb/testsuite/gdb.tui/tui-mode-switch.exp
+@@ -39,7 +39,8 @@ gdb_assert { [Term::wait_for ""] } "enter TUI"
+ 
+ # Exit TUI.
+ send_gdb "\030\001"
+-gdb_assert { [Term::wait_for ""] } "exit TUI"
++gdb_assert { [Term::wait_for_region_contents {*}$line "^$gdb_prompt "] } \
++    "exit TUI"
+ 
+ # Type b.
+ send_gdb "b"
+
+base-commit: 4b53431d4a10daf67548936275a996e84324cdc4
+-- 
+2.51.0
+

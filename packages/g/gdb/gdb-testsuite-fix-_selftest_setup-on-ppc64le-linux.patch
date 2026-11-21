@@ -1,0 +1,76 @@
+From 4b53431d4a10daf67548936275a996e84324cdc4 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 14 Aug 2026 13:07:40 +0200
+Subject: [PATCH 2/2] [gdb/testsuite] Fix _selftest_setup on ppc64le-linux
+
+On ppc64le-linux, with gcc 7.5.0 and an O0 gdb build and test-case
+gdb.gdb/python-helper.exp, I get:
+...
+(gdb) run ...
+  ...
+Breakpoint 1, main (argc=12, argv=0x7fffffffea78) at .../gdb.c:30^M
+30        gdb_assert (is_main_thread ());^M
+(gdb) PASS: $exp: run until breakpoint at main
+...
+
+But with an O2 gdb build, I run into:
+...
+(gdb) run ...
+  ...
+Breakpoint 1, 0x000000001003b438 in main (argc=12, argv=0x7fffffffea78) at \
+  .../gdb.c:25
+25      {
+(gdb) FAIL: $exp: run until breakpoint at main
+...
+
+The breakpoint is indeed set at address 0x1003b438:
+...
+(gdb) break main^M
+Breakpoint 1 at 0x1003b438: file /space/vries/gdb/src/gdb/gdb.c, line 25.^M
+...
+which is the local entry point:
+...
+(gdb) disassemble main
+Dump of assembler code for function main(int, char**):
+   0x000000001003b430 <+0>:	lis     r2,4606
+   0x000000001003b434 <+4>:	addi    r2,r2,28416
+   0x000000001003b438 <+8>:	mflr    r0
+...
+
+And indeed, at that address, there's no "recommended breakpoint location":
+...
+gdb.c:
+File name                Line number    Starting address    View    Stmt
+gdb.c                             25          0x1003b430               x
+gdb.c                             30          0x1003b454               x
+gdb.c                             37          0x1003b464               x
+...
+
+So gdb behaves as expected.
+
+Fix this by updating the pass regexp to allow this type of gdb output.
+
+This fixes both test-case gdb.gdb/python-helper.exp and gdb.gdb/selftest.exp.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=34463
+---
+ gdb/testsuite/lib/selftest-support.exp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/lib/selftest-support.exp b/gdb/testsuite/lib/selftest-support.exp
+index af8ec6fb982..7048afeb8ce 100644
+--- a/gdb/testsuite/lib/selftest-support.exp
++++ b/gdb/testsuite/lib/selftest-support.exp
+@@ -163,7 +163,8 @@ proc _selftest_setup { } {
+ 	[multi_line \
+ 	     "Starting program: $re_hs" \
+ 	     ".*" \
+-	     [string cat "Breakpoint $::decimal, $function $re_args at" \
++	     [string cat \
++		  "Breakpoint $::decimal,( $::hex in)? $function $re_args at" \
+ 		  " ${re_hs}gdb.c:$re_hs"] \
+ 	     ".*"]
+     set re_xfail \
+-- 
+2.51.0
+

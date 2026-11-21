@@ -1,0 +1,20 @@
+Fix the line count shown by ".import" on 32-bit big-endian platforms
+
+The number of lines of input in the summary printed by ".import" is
+computed as "sCtx.nLine-1-iLineOffset".  Because iLineOffset is an i64
+this is a 64-bit value, but it was formatted with %d, which reads a
+32-bit int.  On 32-bit big-endian platforms (s390) the high word of the
+64-bit value is read, which is always 0, so test/import01.sql fails
+there.  Use %lld.
+
+--- a/src/shell.c.in
++++ b/src/shell.c.in
+@@ -8731,7 +8731,7 @@
+   if( needCommit ) sqlite3_exec(p->db, "COMMIT", 0, 0, 0);
+   if( eVerbose>0 ){
+     cli_printf(p->out,
+-          "Added %d rows with %d errors using %d lines of input\n",
++          "Added %d rows with %d errors using %lld lines of input\n",
+           sCtx.nRow, sCtx.nErr, sCtx.nLine-1-iLineOffset);
+   }
+   return sCtx.nErr ? 1 : 0;

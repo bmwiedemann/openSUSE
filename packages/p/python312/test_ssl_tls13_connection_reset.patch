@@ -1,0 +1,23 @@
+Accept connection resets in the TLS 1.3 wrong-certificate test
+
+The server rejects the invalid client certificate and closes the socket.
+Depending on the platform, the client may see a TCP reset or broken pipe
+instead of an SSL exception. Accept these expected socket errors while
+checking the error message.
+Index: Python-3.12.16/Lib/test/test_ssl.py
+===================================================================
+--- Python-3.12.16.orig/Lib/test/test_ssl.py	2026-10-25 19:24:37.000000000 +0100
++++ Python-3.12.16/Lib/test/test_ssl.py	2026-11-06 23:30:58.192825215 +0100
+@@ -3358,8 +3358,10 @@
+                                         suppress_ragged_eofs=False) as s:
+             s.connect((HOST, server.port))
+             with self.assertRaisesRegex(
+-                ssl.SSLError,
+-                'alert unknown ca|EOF occurred|TLSV1_ALERT_UNKNOWN_CA'
++                OSError,
++                'alert unknown ca|EOF occurred|TLSV1_ALERT_UNKNOWN_CA|'
++                'closed by the remote host|Connection reset by peer|'
++                'Broken pipe'
+             ):
+                 # TLS 1.3 perform client cert exchange after handshake
+                 s.write(b'data')

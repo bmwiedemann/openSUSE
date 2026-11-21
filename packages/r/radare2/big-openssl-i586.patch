@@ -1,0 +1,96 @@
+From 6190d612b07b25269c3cd57abc9195620c900fa6 Mon Sep 17 00:00:00 2001
+From: Eyad Issa <eyadlorenzo@gmail.com>
+Date: Sun, 8 Nov 2026 12:49:33 +0100
+Subject: [PATCH] Fix OpenSSL big-number conversions on 32-bit hosts
+
+OpenSSL BN_ULONG is 32 bits on i586, so conversions truncate 64-bit
+values and unsigned arithmetic corrupts negative results. The bitwise
+operations also lose chunks when BN_get_word overflows.
+
+Convert through an eight-byte representation independently of the
+OpenSSL word size. Add tests for signed 64-bit boundaries and a value
+wider than 32 bits.
+---
+ libr/util/big_ssl.c  | 40 ++++++++++++++++++++++++----------------
+ test/unit/test_big.c |  9 +++++++++
+ 2 files changed, 33 insertions(+), 16 deletions(-)
+
+diff --git a/libr/util/big_ssl.c b/libr/util/big_ssl.c
+index 4e0cd2e..2252c71 100644
+--- a/libr/util/big_ssl.c
++++ b/libr/util/big_ssl.c
+@@ -20,27 +20,35 @@ R_API void r_big_fini(RNumBig *b) {
+ }
+ 
+ R_API void r_big_from_int(RNumBig *b, st64 v) {
+-	if (v < 0) {
+-		BN_set_word (b, -v);
+-		BN_set_negative (b, v);
+-	} else {
+-		BN_set_word (b, v);
++	ut64 magnitude = v < 0? 0 - (ut64)v: (ut64)v;
++	ut8 bytes[8];
++	for (int i = 7; i >= 0; i--) {
++		bytes[i] = magnitude & 0xff;
++		magnitude >>= 8;
+ 	}
++	BN_bin2bn (bytes, sizeof (bytes), b);
++	BN_set_negative (b, v < 0);
+ }
+ 
+ R_API st64 r_big_to_int(RNumBig *b) {
+-	BN_ULONG maxx = 0;
+-	maxx = ~maxx;
+-	BN_ULONG res = BN_get_word (b);
+-	if (res == maxx) {
+-		RNumBig *B = r_big_new ();
+-		r_big_assign (B, b);
+-		BN_mask_bits (B, BN_BYTES * 8 - 1);
+-		res = BN_get_word (B);
+-		r_big_free (B);
++	ut8 bytes[8];
++	RNumBig *low = BN_dup (b);
++	if (!low) {
++		return 0;
+ 	}
+-	res *= (BN_is_negative (b)? -1: 1);
+-	return res;
++	if (BN_num_bits (low) > 64) {
++		BN_mask_bits (low, 64);
++	}
++	int len = BN_bn2binpad (low, bytes, sizeof (bytes));
++	BN_free (low);
++	if (len < 0) {
++		return 0;
++	}
++	ut64 value = 0;
++	for (size_t i = 0; i < sizeof (bytes); i++) {
++		value = (value << 8) | bytes[i];
++	}
++	return (st64)(BN_is_negative (b)? 0 - value: value);
+ }
+ 
+ R_API void r_big_from_hexstr(RNumBig *b, const char *str) {
+diff --git a/test/unit/test_big.c b/test/unit/test_big.c
+index 3536162..0d1bb8e 100644
+--- a/test/unit/test_big.c
++++ b/test/unit/test_big.c
+@@ -12,6 +12,15 @@ static bool test_r_big_from_to_int(void) {
+ 	r_big_from_int (a, -0x7fff);
+ 	mu_assert_eq (-0x7fff, r_big_to_int (a), "Failed r_big_from_int");
+ 
++#if HAVE_LIB_SSL
++	r_big_from_int (a, ST64_MIN);
++	mu_assert_eq (ST64_MIN, r_big_to_int (a), "minimum signed value");
++	r_big_from_int (a, ST64_MAX);
++	mu_assert_eq (ST64_MAX, r_big_to_int (a), "maximum signed value");
++	r_big_from_int (a, 0x12345678abcdef01LL);
++	mu_assert_eq (0x12345678abcdef01LL, r_big_to_int (a), "64-bit value");
++#endif
++
+ 	r_big_free (a);
+ 	mu_end;
+ }
+-- 
+2.56.0
+

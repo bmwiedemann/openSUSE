@@ -1,0 +1,1128 @@
+From: Mateusz Jablonski <mateusz.jablonski@intel.com>
+Date: Thu, 29 Oct 2026 12:14:45 +0000
+Subject: [PATCH] Align command visit extension with Level Zero 1.35 headers
+Upstream-commit: f62ce187bf8fe2920f3549472adf70fd76af9940
+Origin: backport, https://github.com/intel/compute-runtime/commit/f62ce187bf8fe2920f3549472adf70fd76af9940
+
+Level Zero 1.35.0 ships the command visit extension in ze_api.h. The
+ZE_COMMAND_VISIT_EXT_NAME guard then disables the runtime's experimental
+fallback, but this release still uses its pre-specification identifiers.
+
+Use the official type, member, flag, callback, and structure names; retain
+fallback definitions for Level Zero 1.34 and accept legacy concrete visitor
+structure identifiers. Update the existing tests and add the upstream
+legacy-structure regression test.
+
+Backported to compute-runtime 26.40.40196.8 used by openSUSE:Factory rev 29.
+Adapted to the inline CommandList::visit implementation and the older graph
+implementation; omitted upstream hunks for APIs not present in this release.
+
+Signed-off-by: Mateusz Jablonski <mateusz.jablonski@intel.com>
+---
+diff --git a/level_zero/api/core/ze_graph_api_entrypoints.cpp b/level_zero/api/core/ze_graph_api_entrypoints.cpp
+--- a/level_zero/api/core/ze_graph_api_entrypoints.cpp
++++ b/level_zero/api/core/ze_graph_api_entrypoints.cpp
+@@ -279,7 +279,7 @@
+     return ZE_RESULT_SUCCESS;
+ }
+ 
+-ze_result_t ZE_APICALL zeGraphVisitExt(ze_graph_handle_t hGraph, const ze_visit_ext_desc_t *desc) {
++ze_result_t ZE_APICALL zeGraphVisitExt(ze_graph_handle_t hGraph, const ze_command_visit_ext_desc_t *desc) {
+     auto *graph = L0::Graph::fromHandle(hGraph);
+     if (nullptr == graph) {
+         return ZE_RESULT_ERROR_INVALID_NULL_HANDLE;
+diff --git a/level_zero/api/driver_experimental/public/zex_cmdlist.cpp b/level_zero/api/driver_experimental/public/zex_cmdlist.cpp
+--- a/level_zero/api/driver_experimental/public/zex_cmdlist.cpp
++++ b/level_zero/api/driver_experimental/public/zex_cmdlist.cpp
+@@ -139,7 +139,7 @@
+ 
+ ze_result_t ZE_APICALL
+ zeCommandListVisitExt(ze_command_list_handle_t cmdlist,
+-                      const ze_visit_ext_desc_t *desc) {
++                      const ze_command_visit_ext_desc_t *desc) {
+     auto commandList = L0::CommandList::fromHandle(cmdlist);
+ 
+     if (nullptr == commandList) {
+diff --git a/level_zero/api/internal/l0_cmdlist.h b/level_zero/api/internal/l0_cmdlist.h
+--- a/level_zero/api/internal/l0_cmdlist.h
++++ b/level_zero/api/internal/l0_cmdlist.h
+@@ -72,6 +72,6 @@
+ ze_result_t ZE_APICALL
+ zeCommandListVisitExt(
+     ze_command_list_handle_t cmdlist,
+-    const ze_visit_ext_desc_t *desc);
++    const ze_command_visit_ext_desc_t *desc);
+ 
+ } // namespace L0
+diff --git a/level_zero/api/internal/l0_graph.h b/level_zero/api/internal/l0_graph.h
+--- a/level_zero/api/internal/l0_graph.h
++++ b/level_zero/api/internal/l0_graph.h
+@@ -29,6 +29,6 @@
+ ze_result_t ZE_APICALL zeGraphSetDestructionCallbackExp(ze_graph_handle_t hGraph, zex_mem_graph_free_callback_fn_t pfnCallback, void *pUserData, void *pNext);
+ 
+ ze_result_t ZE_APICALL zeGraphVisitExt(ze_graph_handle_t graph,
+-                                       const ze_visit_ext_desc_t *desc);
++                                       const ze_command_visit_ext_desc_t *desc);
+ 
+ } // namespace L0
+diff --git a/level_zero/core/source/cmdlist/cmdlist.h b/level_zero/core/source/cmdlist/cmdlist.h
+--- a/level_zero/core/source/cmdlist/cmdlist.h
++++ b/level_zero/core/source/cmdlist/cmdlist.h
+@@ -274,7 +274,7 @@
+     ze_result_t getImmediatePriority(ze_command_queue_priority_t *pPriority);
+     virtual ze_result_t isImmediate(ze_bool_t *pIsImmediate);
+     ze_result_t isMutableExp(ze_bool_t *pIsMutable);
+-    MOCKABLE_VIRTUAL ze_result_t visit(const ze_visit_ext_desc_t *desc) {
++    MOCKABLE_VIRTUAL ze_result_t visit(const ze_command_visit_ext_desc_t *desc) {
+         if (nullptr == this->flatCapture) {
+             return ZE_RESULT_ERROR_UNSUPPORTED_FEATURE;
+         }
+diff --git a/level_zero/core/source/cmdlist/cmdlist_hw.inl b/level_zero/core/source/cmdlist/cmdlist_hw.inl
+--- a/level_zero/core/source/cmdlist/cmdlist_hw.inl
++++ b/level_zero/core/source/cmdlist/cmdlist_hw.inl
+@@ -410,8 +410,8 @@
+     }
+ 
+     if (isImmediateType() == false) {
+-        if ((this->flags & ZE_COMMAND_LIST_FLAG_ENABLE_CMD_VISITING) || NEO::debugManager.flags.ExperimentalFlatCommandListApiRecording.get()) {
+-            this->flags |= ZE_COMMAND_LIST_FLAG_ENABLE_CMD_VISITING;
++        if ((this->flags & ZE_COMMAND_LIST_FLAG_ENABLE_COMMAND_VISIT) || NEO::debugManager.flags.ExperimentalFlatCommandListApiRecording.get()) {
++            this->flags |= ZE_COMMAND_LIST_FLAG_ENABLE_COMMAND_VISIT;
+             this->flatCapture = std::make_unique<RecordedApiCommands>();
+         }
+     }
+diff --git a/level_zero/core/test/black_box_tests/common/zello_common.h b/level_zero/core/test/black_box_tests/common/zello_common.h
+--- a/level_zero/core/test/black_box_tests/common/zello_common.h
++++ b/level_zero/core/test/black_box_tests/common/zello_common.h
+@@ -401,8 +401,8 @@
+ void prepareScratchTestBuffers(void *srcBuffer, void *idxBuffer, void *expectedMemory, uint32_t arraySize, uint32_t vectorSize, uint32_t expectedMemorySize, uint32_t srcAdditionalMul);
+ 
+ namespace VisitExtension {
+-using zeCommandListVisitExtFP = ze_result_t(ZE_APICALL *)(ze_command_list_handle_t, const ze_visit_ext_desc_t *);
+-using zeGraphVisitExtFP = ze_result_t(ZE_APICALL *)(ze_graph_handle_t, const ze_visit_ext_desc_t *);
++using zeCommandListVisitExtFP = ze_result_t(ZE_APICALL *)(ze_command_list_handle_t, const ze_command_visit_ext_desc_t *);
++using zeGraphVisitExtFP = ze_result_t(ZE_APICALL *)(ze_graph_handle_t, const ze_command_visit_ext_desc_t *);
+ 
+ struct VisitApi {
+     zeCommandListVisitExtFP commandListVisit = nullptr;
+diff --git a/level_zero/core/test/black_box_tests/zello_graph.cpp b/level_zero/core/test/black_box_tests/zello_graph.cpp
+--- a/level_zero/core/test/black_box_tests/zello_graph.cpp
++++ b/level_zero/core/test/black_box_tests/zello_graph.cpp
+@@ -1639,8 +1639,8 @@
+         if (executeUsingVisitor == false) {
+             SUCCESS_OR_TERMINATE(zeCommandListAppendGraphExt(cmdListRoot, physicalGraph, nullptr, nullptr, 0, nullptr));
+         } else {
+-            ze_visit_ext_desc_t visitDesc{static_cast<decltype(ze_visit_ext_desc_t::stype)>(0x00030032)};
+-            visitDesc.defaultOp = ZE_VISIT_EXT_DEFAULT_OP_REAPPEND;
++            ze_command_visit_ext_desc_t visitDesc{ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC};
++            visitDesc.defaultOp = ZE_COMMAND_VISIT_EXT_DEFAULT_OP_REAPPEND;
+             SUCCESS_OR_TERMINATE(visitApi->graphVisit(virtualGraph, &visitDesc));
+         }
+     }
+diff --git a/level_zero/core/test/black_box_tests/zello_visit.cpp b/level_zero/core/test/black_box_tests/zello_visit.cpp
+--- a/level_zero/core/test/black_box_tests/zello_visit.cpp
++++ b/level_zero/core/test/black_box_tests/zello_visit.cpp
+@@ -35,7 +35,7 @@
+     bool overflow = false;
+ };
+ 
+-static ze_result_t VISITOR_CCONV appendMemoryCopyVisitor(ze_command_list_handle_t,
++static ze_result_t ZE_VISITOR_CCONV appendMemoryCopyVisitor(ze_command_list_handle_t,
+                                                          void *dstptr,
+                                                          const void *srcptr,
+                                                          size_t size,
+@@ -57,7 +57,7 @@
+     return zeCommandListAppendMemoryCopy(visitUserData->targetCmdList, dstptr, srcptr, size, effectiveSignalEvent, numWaitEvents, phWaitEvents);
+ }
+ 
+-static ze_result_t VISITOR_CCONV appendBarrierVisitor(ze_command_list_handle_t,
++static ze_result_t ZE_VISITOR_CCONV appendBarrierVisitor(ze_command_list_handle_t,
+                                                       ze_event_handle_t hSignalEvent,
+                                                       uint32_t numWaitEvents,
+                                                       ze_event_handle_t *phWaitEvents,
+@@ -76,7 +76,7 @@
+     return zeCommandListAppendBarrier(visitUserData->targetCmdList, effectiveSignalEvent, numWaitEvents, phWaitEvents);
+ }
+ 
+-static ze_result_t VISITOR_CCONV appendLaunchKernelVisitor(ze_command_list_handle_t,
++static ze_result_t ZE_VISITOR_CCONV appendLaunchKernelVisitor(ze_command_list_handle_t,
+                                                            ze_kernel_handle_t hKernel,
+                                                            const ze_group_count_t *pLaunchFuncArgs,
+                                                            ze_event_handle_t hSignalEvent,
+@@ -97,7 +97,7 @@
+     return zeCommandListAppendLaunchKernel(visitUserData->targetCmdList, hKernel, pLaunchFuncArgs, effectiveSignalEvent, numWaitEvents, phWaitEvents);
+ }
+ 
+-static void VISITOR_CCONV beforeDefaultOpProfiling(const char *,
++static void ZE_VISITOR_CCONV beforeDefaultOpProfiling(const char *,
+                                                    void *userData,
+                                                    uint32_t *,
+                                                    ze_event_handle_t **,
+@@ -111,7 +111,7 @@
+     *hSignalEvent = profilingData->events[profilingData->nextEventIndex];
+ }
+ 
+-static void VISITOR_CCONV afterDefaultOpProfiling(const char *fname,
++static void ZE_VISITOR_CCONV afterDefaultOpProfiling(const char *fname,
+                                                   void *userData,
+                                                   uint32_t *,
+                                                   ze_event_handle_t **,
+@@ -175,7 +175,7 @@
+ 
+     // ---------- build the non-immediate command list ----------
+     ze_command_list_handle_t recordCmdList = nullptr;
+-    SUCCESS_OR_TERMINATE(LevelZeroBlackBoxTests::createCommandList(context, device, recordCmdList, false, ZE_COMMAND_LIST_FLAG_ENABLE_CMD_VISITING));
++    SUCCESS_OR_TERMINATE(LevelZeroBlackBoxTests::createCommandList(context, device, recordCmdList, false, ZE_COMMAND_LIST_FLAG_ENABLE_COMMAND_VISIT));
+ 
+     // host src -> device interim
+     SUCCESS_OR_TERMINATE(zeCommandListAppendMemoryCopy(recordCmdList, interimBuffer, srcBuffer, allocSize, nullptr, 0, nullptr));
+@@ -213,7 +213,7 @@
+ 
+     // ---------- visit with REAPPEND ----------
+ 
+-    ze_visit_ext_desc_t visitDesc{ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC};
++    ze_command_visit_ext_desc_t visitDesc{ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC};
+     VisitUserData visitUserData{};
+     visitUserData.targetCmdList = immCmdList;
+ 
+@@ -223,9 +223,9 @@
+         visitUserData.profilingEvents = profilingData.events;
+     }
+ 
+-    ze_concrete_visitor_ext_desc_t launchKernelVisitorDesc{ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC};
+-    ze_concrete_visitor_ext_desc_t barrierVisitorDesc{ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC};
+-    ze_concrete_visitor_ext_desc_t memoryCopyVisitorDesc{ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC};
++    ze_concrete_visitor_ext_desc_t launchKernelVisitorDesc{ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC};
++    ze_concrete_visitor_ext_desc_t barrierVisitorDesc{ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC};
++    ze_concrete_visitor_ext_desc_t memoryCopyVisitorDesc{ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC};
+ 
+     if (useConcreteVisitors) {
+         launchKernelVisitorDesc.pNext = nullptr;
+@@ -243,9 +243,9 @@
+ 
+     visitDesc.pNext = useConcreteVisitors ? &memoryCopyVisitorDesc : nullptr;
+     visitDesc.userData = useConcreteVisitors ? static_cast<void *>(&visitUserData) : (useProfilingCallbacks ? static_cast<void *>(&profilingData) : nullptr);
+-    visitDesc.hReappendTargetCmdList = useConcreteVisitors ? nullptr : immCmdList;
++    visitDesc.hReappendTargetCommandList = useConcreteVisitors ? nullptr : immCmdList;
+     visitDesc.beforeDefaultOpClb = (useProfilingCallbacks && !useConcreteVisitors) ? beforeDefaultOpProfiling : nullptr;
+-    visitDesc.defaultOp = useConcreteVisitors ? ZE_VISIT_EXT_DEFAULT_OP_IGNORE : ZE_VISIT_EXT_DEFAULT_OP_REAPPEND;
++    visitDesc.defaultOp = useConcreteVisitors ? ZE_COMMAND_VISIT_EXT_DEFAULT_OP_IGNORE : ZE_COMMAND_VISIT_EXT_DEFAULT_OP_REAPPEND;
+     visitDesc.afterDefaultOpClb = (useProfilingCallbacks && !useConcreteVisitors) ? afterDefaultOpProfiling : nullptr;
+ 
+     SUCCESS_OR_TERMINATE(visitApi.commandListVisit(recordCmdList, &visitDesc));
+diff --git a/level_zero/core/test/unit_tests/experimental/test_cmdlist_exp.cpp b/level_zero/core/test/unit_tests/experimental/test_cmdlist_exp.cpp
+--- a/level_zero/core/test/unit_tests/experimental/test_cmdlist_exp.cpp
++++ b/level_zero/core/test/unit_tests/experimental/test_cmdlist_exp.cpp
+@@ -33,7 +33,7 @@
+     ze_event_handle_t injectedWaitEvents[2] = {nullptr, nullptr};
+ };
+ 
+-static ze_result_t VISITOR_CCONV barrierConcreteVisitor(ze_command_list_handle_t,
++static ze_result_t ZE_VISITOR_CCONV barrierConcreteVisitor(ze_command_list_handle_t,
+                                                         ze_event_handle_t,
+                                                         uint32_t,
+                                                         ze_event_handle_t *,
+@@ -43,7 +43,7 @@
+     return ZE_RESULT_SUCCESS;
+ }
+ 
+-static ze_result_t VISITOR_CCONV barrierConcreteVisitorFail(ze_command_list_handle_t,
++static ze_result_t ZE_VISITOR_CCONV barrierConcreteVisitorFail(ze_command_list_handle_t,
+                                                             ze_event_handle_t,
+                                                             uint32_t,
+                                                             ze_event_handle_t *,
+@@ -51,7 +51,7 @@
+     return ZE_RESULT_ERROR_UNKNOWN;
+ }
+ 
+-static void VISITOR_CCONV beforeDefaultBarrierVisitor(const char *,
++static void ZE_VISITOR_CCONV beforeDefaultBarrierVisitor(const char *,
+                                                       void *userData,
+                                                       uint32_t *numWaitEvents,
+                                                       ze_event_handle_t **phWaitEvents,
+@@ -63,7 +63,7 @@
+     *hSignalEvent = state->injectedSignalEvent;
+ }
+ 
+-static void VISITOR_CCONV afterDefaultBarrierVisitor(const char *,
++static void ZE_VISITOR_CCONV afterDefaultBarrierVisitor(const char *,
+                                                      void *userData,
+                                                      uint32_t *numWaitEvents,
+                                                      ze_event_handle_t **,
+@@ -132,7 +132,7 @@
+ }
+ 
+ HWTEST_F(CommandListExpTest, givenVisitExtWhenNullParametersArePassedThenErrorIsReturned) {
+-    ze_visit_ext_desc_t desc = {};
++    ze_command_visit_ext_desc_t desc = {};
+ 
+     EXPECT_EQ(ZE_RESULT_ERROR_INVALID_NULL_HANDLE, L0::zeCommandListVisitExt(nullptr, &desc));
+ 
+@@ -146,9 +146,9 @@
+     ze_result_t returnValue;
+     std::unique_ptr<L0::CommandList> commandList(CommandList::create(productFamily, device, NEO::EngineGroupType::renderCompute, 0, returnValue, false));
+ 
+-    ze_visit_ext_desc_t desc = {};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+-    desc.defaultOp = ZE_VISIT_EXT_DEFAULT_OP_IGNORE;
++    ze_command_visit_ext_desc_t desc = {};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    desc.defaultOp = ZE_COMMAND_VISIT_EXT_DEFAULT_OP_IGNORE;
+ 
+     EXPECT_EQ(ZE_RESULT_ERROR_UNSUPPORTED_FEATURE, L0::zeCommandListVisitExt(commandList->toHandle(), &desc));
+ }
+@@ -161,10 +161,10 @@
+     ze_base_desc_t invalidDesc{};
+     invalidDesc.stype = ZE_STRUCTURE_TYPE_DEVICE_PROPERTIES;
+ 
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.pNext = &invalidDesc;
+-    desc.defaultOp = ZE_VISIT_EXT_DEFAULT_OP_IGNORE;
++    desc.defaultOp = ZE_COMMAND_VISIT_EXT_DEFAULT_OP_IGNORE;
+ 
+     EXPECT_EQ(ZE_RESULT_ERROR_INVALID_ENUMERATION, L0::zeCommandListVisitExt(cmdList.toHandle(), &desc));
+ }
+@@ -175,14 +175,14 @@
+     ASSERT_EQ(ZE_RESULT_SUCCESS, zeCommandListAppendBarrier(cmdList.toHandle(), nullptr, 0, nullptr));
+ 
+     ze_concrete_visitor_ext_desc_t concreteVisitor{};
+-    concreteVisitor.stype = ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
++    concreteVisitor.stype = ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
+     concreteVisitor.fname = nullptr;
+     concreteVisitor.callback = reinterpret_cast<void *>(barrierConcreteVisitor);
+ 
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.pNext = &concreteVisitor;
+-    desc.defaultOp = ZE_VISIT_EXT_DEFAULT_OP_IGNORE;
++    desc.defaultOp = ZE_COMMAND_VISIT_EXT_DEFAULT_OP_IGNORE;
+ 
+     EXPECT_EQ(ZE_RESULT_ERROR_INVALID_NULL_POINTER, L0::zeCommandListVisitExt(cmdList.toHandle(), &desc));
+ }
+@@ -193,14 +193,14 @@
+     ASSERT_EQ(ZE_RESULT_SUCCESS, zeCommandListAppendBarrier(cmdList.toHandle(), nullptr, 0, nullptr));
+ 
+     ze_concrete_visitor_ext_desc_t concreteVisitor{};
+-    concreteVisitor.stype = ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
++    concreteVisitor.stype = ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
+     concreteVisitor.fname = "unknownApiName";
+     concreteVisitor.callback = reinterpret_cast<void *>(barrierConcreteVisitor);
+ 
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.pNext = &concreteVisitor;
+-    desc.defaultOp = ZE_VISIT_EXT_DEFAULT_OP_IGNORE;
++    desc.defaultOp = ZE_COMMAND_VISIT_EXT_DEFAULT_OP_IGNORE;
+ 
+     EXPECT_EQ(ZE_RESULT_ERROR_INVALID_ARGUMENT, L0::zeCommandListVisitExt(cmdList.toHandle(), &desc));
+ }
+@@ -214,16 +214,16 @@
+     VisitExtCounters state{};
+ 
+     ze_concrete_visitor_ext_desc_t concreteVisitor{};
+-    concreteVisitor.stype = ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
++    concreteVisitor.stype = ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
+     concreteVisitor.fname = "zeCommandListAppendBarrier";
+     concreteVisitor.callback = reinterpret_cast<void *>(barrierConcreteVisitor);
+ 
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.pNext = &concreteVisitor;
+     desc.userData = &state;
+-    desc.defaultOp = ZE_VISIT_EXT_DEFAULT_OP_REAPPEND;
+-    desc.hReappendTargetCmdList = reappendTargetCmdList.toHandle();
++    desc.defaultOp = ZE_COMMAND_VISIT_EXT_DEFAULT_OP_REAPPEND;
++    desc.hReappendTargetCommandList = reappendTargetCmdList.toHandle();
+     desc.beforeDefaultOpClb = beforeDefaultBarrierVisitor;
+     desc.afterDefaultOpClb = afterDefaultBarrierVisitor;
+ 
+@@ -240,14 +240,14 @@
+     ASSERT_EQ(ZE_RESULT_SUCCESS, zeCommandListAppendBarrier(srcCmdList.toHandle(), nullptr, 0, nullptr));
+ 
+     ze_concrete_visitor_ext_desc_t concreteVisitor{};
+-    concreteVisitor.stype = ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
++    concreteVisitor.stype = ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
+     concreteVisitor.fname = "zeCommandListAppendBarrier";
+     concreteVisitor.callback = reinterpret_cast<void *>(barrierConcreteVisitorFail);
+ 
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.pNext = &concreteVisitor;
+-    desc.defaultOp = ZE_VISIT_EXT_DEFAULT_OP_REAPPEND;
++    desc.defaultOp = ZE_COMMAND_VISIT_EXT_DEFAULT_OP_REAPPEND;
+ 
+     EXPECT_EQ(ZE_RESULT_ERROR_UNKNOWN, L0::zeCommandListVisitExt(srcCmdList.toHandle(), &desc));
+ }
+@@ -262,10 +262,10 @@
+     state.injectedWaitEvents[0] = reinterpret_cast<ze_event_handle_t>(static_cast<uintptr_t>(0x111));
+     state.injectedWaitEvents[1] = reinterpret_cast<ze_event_handle_t>(static_cast<uintptr_t>(0x121));
+ 
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.userData = &state;
+-    desc.defaultOp = ZE_VISIT_EXT_DEFAULT_OP_IGNORE;
++    desc.defaultOp = ZE_COMMAND_VISIT_EXT_DEFAULT_OP_IGNORE;
+     desc.beforeDefaultOpClb = beforeDefaultBarrierVisitor;
+     desc.afterDefaultOpClb = afterDefaultBarrierVisitor;
+ 
+@@ -291,11 +291,11 @@
+     state.injectedWaitEvents[0] = waitEvent0.toHandle();
+     state.injectedWaitEvents[1] = waitEvent1.toHandle();
+ 
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.userData = &state;
+-    desc.hReappendTargetCmdList = reappendTargetCmdList.toHandle();
+-    desc.defaultOp = ZE_VISIT_EXT_DEFAULT_OP_REAPPEND;
++    desc.hReappendTargetCommandList = reappendTargetCmdList.toHandle();
++    desc.defaultOp = ZE_COMMAND_VISIT_EXT_DEFAULT_OP_REAPPEND;
+     desc.beforeDefaultOpClb = beforeDefaultBarrierVisitor;
+     desc.afterDefaultOpClb = afterDefaultBarrierVisitor;
+ 
+diff --git a/level_zero/core/test/unit_tests/experimental/test_graph.cpp b/level_zero/core/test/unit_tests/experimental/test_graph.cpp
+--- a/level_zero/core/test/unit_tests/experimental/test_graph.cpp
++++ b/level_zero/core/test/unit_tests/experimental/test_graph.cpp
+@@ -93,7 +93,7 @@
+     bool wasCalled = false;
+ };
+ 
+-static ze_result_t VISITOR_CCONV launchKernelWithArgumentsVisitor(
++static ze_result_t ZE_VISITOR_CCONV launchKernelWithArgumentsVisitor(
+     ze_command_list_handle_t hCommandList,
+     ze_kernel_handle_t hKernel,
+     ze_group_count_t groupCounts,
+@@ -5491,14 +5491,14 @@
+ struct TestableGraphForVisitApi : public L0::Graph {
+     using L0::Graph::Graph;
+ 
+-    ze_result_t visit(const ze_visit_ext_desc_t *desc) override {
++    ze_result_t visit(const ze_command_visit_ext_desc_t *desc) override {
+         ++visitCalled;
+         passedDesc = desc;
+         return returnValue;
+     }
+ 
+     uint32_t visitCalled = 0;
+-    const ze_visit_ext_desc_t *passedDesc = nullptr;
++    const ze_command_visit_ext_desc_t *passedDesc = nullptr;
+     ze_result_t returnValue = ZE_RESULT_SUCCESS;
+ };
+ 
+@@ -5506,7 +5506,7 @@
+     GraphsCleanupGuard graphCleanup;
+     ContextStubMock ctx;
+     TestableGraphForVisitApi graph{&ctx, true};
+-    ze_visit_ext_desc_t desc{};
++    ze_command_visit_ext_desc_t desc{};
+ 
+     EXPECT_EQ(ZE_RESULT_ERROR_INVALID_NULL_HANDLE, L0::zeGraphVisitExt(nullptr, &desc));
+     EXPECT_EQ(ZE_RESULT_ERROR_INVALID_NULL_POINTER, L0::zeGraphVisitExt(graph.toHandle(), nullptr));
+@@ -5516,8 +5516,8 @@
+     GraphsCleanupGuard graphCleanup;
+     ContextStubMock ctx;
+     TestableGraphForVisitApi graph{&ctx, true};
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+ 
+     graph.returnValue = ZE_RESULT_ERROR_UNSUPPORTED_FEATURE;
+     EXPECT_EQ(ZE_RESULT_ERROR_UNSUPPORTED_FEATURE, L0::zeGraphVisitExt(graph.toHandle(), &desc));
+@@ -5593,10 +5593,10 @@
+             ASSERT_EQ(ZE_RESULT_SUCCESS, commands.capture<CaptureApi::zeCommandListAppendSignalExternalSemaphoreExt>(hOriginalCmdList, 1u, &hSemaphore, &signalParams, hSignalEvent, numWaitEvents, phWaitEvents));
+             ASSERT_EQ(ZE_RESULT_SUCCESS, commands.capture<CaptureApi::zeCommandListAppendWaitExternalSemaphoreExt>(hOriginalCmdList, 1u, &hSemaphore, &waitParams, hSignalEvent, numWaitEvents, phWaitEvents));
+ 
+-            ze_visit_ext_desc_t desc{};
+-            desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+-            desc.defaultOp = ZE_VISIT_EXT_DEFAULT_OP_REAPPEND;
+-            desc.hReappendTargetCmdList = explicitTarget ? reappendCmdList.toHandle() : nullptr;
++            ze_command_visit_ext_desc_t desc{};
++            desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++            desc.defaultOp = ZE_COMMAND_VISIT_EXT_DEFAULT_OP_REAPPEND;
++            desc.hReappendTargetCommandList = explicitTarget ? reappendCmdList.toHandle() : nullptr;
+             ASSERT_EQ(ZE_RESULT_SUCCESS, commands.visit(&desc)) << "explicitTarget: " << explicitTarget << ", numWaitEvents: " << numWaitEvents;
+ 
+             EXPECT_EQ(1u, target.appendMetricQueryEndCalled);
+@@ -5621,8 +5621,8 @@
+     MockGraph graph{&ctx, true};
+     ze_base_desc_t invalidDesc{};
+     invalidDesc.stype = ZE_STRUCTURE_TYPE_DEVICE_PROPERTIES;
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.pNext = &invalidDesc;
+ 
+     EXPECT_EQ(ZE_RESULT_ERROR_INVALID_ENUMERATION, graph.visit(&desc));
+@@ -5633,10 +5633,10 @@
+     ContextStubMock ctx;
+     MockGraph graph{&ctx, true};
+     ze_concrete_visitor_ext_desc_t concreteVisitor{};
+-    concreteVisitor.stype = ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
++    concreteVisitor.stype = ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
+     concreteVisitor.fname = nullptr;
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.pNext = &concreteVisitor;
+ 
+     EXPECT_EQ(ZE_RESULT_ERROR_INVALID_NULL_POINTER, graph.visit(&desc));
+@@ -5647,11 +5647,11 @@
+     ContextStubMock ctx;
+     MockGraph graph{&ctx, true};
+     ze_concrete_visitor_ext_desc_t concreteVisitor{};
+-    concreteVisitor.stype = ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
++    concreteVisitor.stype = ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
+     concreteVisitor.fname = "unknownApiName";
+     concreteVisitor.callback = nullptr;
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.pNext = &concreteVisitor;
+ 
+     EXPECT_EQ(ZE_RESULT_ERROR_INVALID_ARGUMENT, graph.visit(&desc));
+@@ -5663,27 +5663,43 @@
+     MockGraph graph{&ctx, true};
+     graph.stopCapturing();
+     ze_concrete_visitor_ext_desc_t concreteVisitor{};
+-    concreteVisitor.stype = ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
++    concreteVisitor.stype = ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
+     concreteVisitor.fname = "zeCommandListGetNextCommandIdExp";
+     concreteVisitor.callback = nullptr;
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.pNext = &concreteVisitor;
+ 
+     EXPECT_EQ(ZE_RESULT_SUCCESS, graph.visit(&desc));
+ }
+ 
+-TEST(GraphTestVisit, GivenConcreteVisitorForGetNextCommandIdWithKernelsWhenVisitingThenInitializationSucceeds) {
++TEST(GraphTestVisit, GivenConcreteVisitorWithLegacyStypeWhenVisitingThenInitializationSucceeds) {
+     GraphsCleanupGuard graphCleanup;
+     ContextStubMock ctx;
+     MockGraph graph{&ctx, true};
+     graph.stopCapturing();
+     ze_concrete_visitor_ext_desc_t concreteVisitor{};
+-    concreteVisitor.stype = ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
++    concreteVisitor.stype = static_cast<ze_structure_type_t>(ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC);
++    concreteVisitor.fname = "zeCommandListGetNextCommandIdExp";
++    concreteVisitor.callback = nullptr;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    desc.pNext = &concreteVisitor;
++
++    EXPECT_EQ(ZE_RESULT_SUCCESS, graph.visit(&desc));
++}
++
++TEST(GraphTestVisit, GivenConcreteVisitorForGetNextCommandIdWithKernelsWhenVisitingThenInitializationSucceeds) {
++    GraphsCleanupGuard graphCleanup;
++    ContextStubMock ctx;
++    MockGraph graph{&ctx, true};
++    graph.stopCapturing();
++    ze_concrete_visitor_ext_desc_t concreteVisitor{};
++    concreteVisitor.stype = ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC;
+     concreteVisitor.fname = "zeCommandListGetNextCommandIdWithKernelsExp";
+     concreteVisitor.callback = nullptr;
+-    ze_visit_ext_desc_t desc{};
+-    desc.stype = ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
++    ze_command_visit_ext_desc_t desc{};
++    desc.stype = ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC;
+     desc.pNext = &concreteVisitor;
+ 
+     EXPECT_EQ(ZE_RESULT_SUCCESS, graph.visit(&desc));
+diff --git a/level_zero/core/test/unit_tests/sources/cmdlist/test_cmdlist_1.cpp b/level_zero/core/test/unit_tests/sources/cmdlist/test_cmdlist_1.cpp
+--- a/level_zero/core/test/unit_tests/sources/cmdlist/test_cmdlist_1.cpp
++++ b/level_zero/core/test/unit_tests/sources/cmdlist/test_cmdlist_1.cpp
+@@ -297,12 +297,12 @@
+     auto *whiteBoxCmdList = CommandList::whiteboxCast(commandList.get());
+     EXPECT_NE(nullptr, whiteBoxCmdList->flatCapture);
+ 
+-    EXPECT_NE(0u, (commandList->getCmdListFlags() & ZE_COMMAND_LIST_FLAG_ENABLE_CMD_VISITING));
++    EXPECT_NE(0u, (commandList->getCmdListFlags() & ZE_COMMAND_LIST_FLAG_ENABLE_COMMAND_VISIT));
+ }
+ 
+ TEST_F(CommandListCreateTests, givenRegularCommandListWhenFlatApiRecordingApiFlagEnabledThenFlatCaptureIsAllocated) {
+     ze_result_t returnValue;
+-    std::unique_ptr<L0::CommandList> commandList(CommandList::create(productFamily, device, NEO::EngineGroupType::renderCompute, ZE_COMMAND_LIST_FLAG_ENABLE_CMD_VISITING, returnValue, false));
++    std::unique_ptr<L0::CommandList> commandList(CommandList::create(productFamily, device, NEO::EngineGroupType::renderCompute, ZE_COMMAND_LIST_FLAG_ENABLE_COMMAND_VISIT, returnValue, false));
+ 
+     ASSERT_NE(nullptr, commandList);
+     EXPECT_EQ(ZE_RESULT_SUCCESS, returnValue);
+diff --git a/level_zero/core/test/unit_tests/sources/driver/test_driver.cpp b/level_zero/core/test/unit_tests/sources/driver/test_driver.cpp
+--- a/level_zero/core/test/unit_tests/sources/driver/test_driver.cpp
++++ b/level_zero/core/test/unit_tests/sources/driver/test_driver.cpp
+@@ -2191,7 +2191,7 @@
+     verifyExtensionDefinition(ZE_EU_COUNT_EXT_NAME, ZE_EU_COUNT_EXT_VERSION_CURRENT);
+     verifyExtensionDefinition(ZE_EVENT_QUERY_KERNEL_TIMESTAMPS_EXT_NAME, ZE_EVENT_QUERY_KERNEL_TIMESTAMPS_EXT_VERSION_CURRENT);
+     verifyExtensionDefinition(ZE_EXTERNAL_MEMORY_MAPPING_EXT_NAME, ZE_EXTERNAL_MEMMAP_SYSMEM_EXT_VERSION_CURRENT);
+-    verifyExtensionDefinition(ZE_EXTERNAL_SEMAPHORES_EXTENSION_NAME, ZE_EXTERNAL_SEMAPHORE_EXT_VERSION_CURRENT);
++    verifyExtensionDefinition(ZE_EXTERNAL_SEMAPHORES_EXTENSION_NAME, ZE_EXTERNAL_SEMAPHORE_EXT_VERSION_1_0);
+     verifyExtensionDefinition(ZE_FLOAT_ATOMICS_EXT_NAME, ZE_FLOAT_ATOMICS_EXT_VERSION_CURRENT);
+     verifyExtensionDefinition(ZE_IMAGE_COPY_EXT_NAME, ZE_IMAGE_COPY_EXT_VERSION_CURRENT);
+     verifyExtensionDefinition(ZE_IMAGE_QUERY_ALLOC_PROPERTIES_EXT_NAME, ZE_IMAGE_QUERY_ALLOC_PROPERTIES_EXT_VERSION_CURRENT);
+diff --git a/level_zero/experimental/source/graph/graph.cpp b/level_zero/experimental/source/graph/graph.cpp
+--- a/level_zero/experimental/source/graph/graph.cpp
++++ b/level_zero/experimental/source/graph/graph.cpp
+@@ -1161,51 +1161,51 @@
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendMemoryCopy>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, void *, const void *, size_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, void *, const void *, size_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendMemoryCopy>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.dstptr, apiArgs.srcptr, apiArgs.size, apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendBarrier>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendBarrier>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendWaitOnEvents>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendWaitOnEvents>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendWaitOnEventsWithParameters>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, const void *, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, const void *, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendWaitOnEventsWithParameters>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, indirectArgs.clonedPNext, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendWriteGlobalTimestamp>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, uint64_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, uint64_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendWriteGlobalTimestamp>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.dstptr, apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendMemoryRangesBarrier>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, const size_t *, const void **, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, const size_t *, const void **, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendMemoryRangesBarrier>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.numRanges, getOptionalData(indirectArgs.rangeSizes), const_cast<const void **>(getOptionalData(indirectArgs.ranges)),
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendMemoryFill>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, void *, const void *, size_t, size_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, void *, const void *, size_t, size_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendMemoryFill>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.ptr, getOptionalData(indirectArgs.pattern), apiArgs.patternSize, apiArgs.size,
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendMemoryCopyRegion>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, void *, const ze_copy_region_t *, uint32_t, uint32_t, const void *, const ze_copy_region_t *, uint32_t, uint32_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, void *, const ze_copy_region_t *, uint32_t, uint32_t, const void *, const ze_copy_region_t *, uint32_t, uint32_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendMemoryCopyRegion>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.dstptr, externalStorage.getCopyRegion(indirectArgs.dstRegion), apiArgs.dstPitch, apiArgs.dstSlicePitch,
+               apiArgs.srcptr, externalStorage.getCopyRegion(indirectArgs.srcRegion), apiArgs.srcPitch, apiArgs.srcSlicePitch,
+@@ -1213,21 +1213,21 @@
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendMemoryCopyFromContext>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, void *, ze_context_handle_t, const void *, size_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, void *, ze_context_handle_t, const void *, size_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendMemoryCopyFromContext>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.dstptr, apiArgs.hContextSrc, apiArgs.srcptr, apiArgs.size,
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendImageCopy>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_image_handle_t, ze_image_handle_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_image_handle_t, ze_image_handle_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendImageCopy>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.hDstImage, apiArgs.hSrcImage,
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendImageCopyRegion>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_image_handle_t, ze_image_handle_t, const ze_image_region_t *, const ze_image_region_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_image_handle_t, ze_image_handle_t, const ze_image_region_t *, const ze_image_region_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendImageCopyRegion>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.hDstImage, apiArgs.hSrcImage,
+               externalStorage.getImageRegion(indirectArgs.dstRegion), externalStorage.getImageRegion(indirectArgs.srcRegion),
+@@ -1235,46 +1235,46 @@
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendImageCopyToMemory>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, void *, ze_image_handle_t, const ze_image_region_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, void *, ze_image_handle_t, const ze_image_region_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendImageCopyToMemory>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.dstptr, apiArgs.hSrcImage, externalStorage.getImageRegion(indirectArgs.srcRegion),
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendImageCopyFromMemory>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_image_handle_t, const void *, const ze_image_region_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_image_handle_t, const void *, const ze_image_region_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendImageCopyFromMemory>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.hDstImage, apiArgs.srcptr, externalStorage.getImageRegion(indirectArgs.dstRegion),
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendMemoryPrefetch>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, const void *, size_t, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, const void *, size_t, void *)>(visitorCallback);
+     return cb(apiArgs.hCommandList, apiArgs.ptr, apiArgs.size, userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendMemAdvise>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_device_handle_t, const void *, size_t, ze_memory_advice_t, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_device_handle_t, const void *, size_t, ze_memory_advice_t, void *)>(visitorCallback);
+     return cb(apiArgs.hCommandList, apiArgs.hDevice, apiArgs.ptr, apiArgs.size, apiArgs.advice, userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendSignalEvent>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_event_handle_t, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_event_handle_t, void *)>(visitorCallback);
+     return cb(apiArgs.hCommandList, apiArgs.hEvent, userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendSignalEventWithParameters>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, const void *, ze_event_handle_t, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, const void *, ze_event_handle_t, void *)>(visitorCallback);
+     return cb(apiArgs.hCommandList, indirectArgs.clonedPNext, apiArgs.hEvent, userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendEventReset>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_event_handle_t, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_event_handle_t, void *)>(visitorCallback);
+     return cb(apiArgs.hCommandList, apiArgs.hEvent, userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendQueryKernelTimestamps>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, ze_event_handle_t *, void *, const size_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, ze_event_handle_t *, void *, const size_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendQueryKernelTimestamps>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.numEvents,
+               const_cast<ze_event_handle_t *>(getOptionalData(indirectArgs.events)),
+@@ -1283,7 +1283,7 @@
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendSignalExternalSemaphoreExt>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, ze_external_semaphore_ext_handle_t *, ze_external_semaphore_signal_params_ext_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, ze_external_semaphore_ext_handle_t *, ze_external_semaphore_signal_params_ext_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendSignalExternalSemaphoreExt>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.numSemaphores,
+               const_cast<ze_external_semaphore_ext_handle_t *>(getOptionalData(indirectArgs.semaphores)),
+@@ -1292,7 +1292,7 @@
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendWaitExternalSemaphoreExt>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, ze_external_semaphore_ext_handle_t *, ze_external_semaphore_wait_params_ext_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, ze_external_semaphore_ext_handle_t *, ze_external_semaphore_wait_params_ext_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendWaitExternalSemaphoreExt>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.numSemaphores,
+               const_cast<ze_external_semaphore_ext_handle_t *>(getOptionalData(indirectArgs.semaphores)),
+@@ -1301,7 +1301,7 @@
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendImageCopyToMemoryExt>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, void *, ze_image_handle_t, const ze_image_region_t *, uint32_t, uint32_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, void *, ze_image_handle_t, const ze_image_region_t *, uint32_t, uint32_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendImageCopyToMemoryExt>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.dstptr, apiArgs.hSrcImage, externalStorage.getImageRegion(indirectArgs.srcRegion),
+               apiArgs.destRowPitch, apiArgs.destSlicePitch,
+@@ -1309,7 +1309,7 @@
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendImageCopyFromMemoryExt>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_image_handle_t, const void *, const ze_image_region_t *, uint32_t, uint32_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_image_handle_t, const void *, const ze_image_region_t *, uint32_t, uint32_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendImageCopyFromMemoryExt>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.hDstImage, apiArgs.srcptr, externalStorage.getImageRegion(indirectArgs.dstRegion),
+               apiArgs.srcRowPitch, apiArgs.srcSlicePitch,
+@@ -1317,28 +1317,28 @@
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendLaunchKernel>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_kernel_handle_t, const ze_group_count_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_kernel_handle_t, const ze_group_count_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendLaunchKernel>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, indirectArgs.capturedKernel.get(), &indirectArgs.launchKernelArgs,
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendLaunchCooperativeKernel>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_kernel_handle_t, const ze_group_count_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_kernel_handle_t, const ze_group_count_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendLaunchCooperativeKernel>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, indirectArgs.capturedKernel.get(), &indirectArgs.launchKernelArgs,
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendLaunchKernelIndirect>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_kernel_handle_t, const ze_group_count_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_kernel_handle_t, const ze_group_count_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendLaunchKernelIndirect>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, indirectArgs.capturedKernel.get(), apiArgs.launchArgsBuffer,
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendLaunchMultipleKernelsIndirect>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, ze_kernel_handle_t *, const uint32_t *, const ze_group_count_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, uint32_t, ze_kernel_handle_t *, const uint32_t *, const ze_group_count_t *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendLaunchMultipleKernelsIndirect>(apiArgs, indirectArgs, externalStorage);
+     std::vector<ze_kernel_handle_t> phKernelClones(apiArgs.numKernels);
+     for (uint32_t i{0U}; i < apiArgs.numKernels; ++i) {
+@@ -1349,14 +1349,14 @@
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendLaunchKernelWithParameters>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_kernel_handle_t, const ze_group_count_t *, const void *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_kernel_handle_t, const ze_group_count_t *, const void *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendLaunchKernelWithParameters>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, indirectArgs.capturedKernel.get(), &indirectArgs.groupCounts, indirectArgs.clonedPNext,
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendLaunchKernelWithArguments>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_kernel_handle_t, const ze_group_count_t, const ze_group_size_t, void **, const void *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_kernel_handle_t, const ze_group_count_t, const ze_group_size_t, void **, const void *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendLaunchKernelWithArguments>(apiArgs, indirectArgs, externalStorage);
+     auto *kernelHandle = this->indirectArgs.capturedKernel.get();
+     auto kernel = static_cast<KernelImp *>(Kernel::fromHandle(kernelHandle));
+@@ -1367,61 +1367,61 @@
+ }
+ 
+ ze_result_t Closure<CaptureApi::zetCommandListAppendMetricStreamerMarker>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(zet_command_list_handle_t, zet_metric_streamer_handle_t, uint32_t, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(zet_command_list_handle_t, zet_metric_streamer_handle_t, uint32_t, void *)>(visitorCallback);
+     return cb(apiArgs.hCommandList, apiArgs.hMetricStreamer, apiArgs.value, userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zetCommandListAppendMetricQueryBegin>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(zet_command_list_handle_t, zet_metric_query_handle_t, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(zet_command_list_handle_t, zet_metric_query_handle_t, void *)>(visitorCallback);
+     return cb(apiArgs.hCommandList, apiArgs.hMetricQuery, userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zetCommandListAppendMetricQueryEnd>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(zet_command_list_handle_t, zet_metric_query_handle_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(zet_command_list_handle_t, zet_metric_query_handle_t, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zetCommandListAppendMetricQueryEnd>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.hMetricQuery,
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zetCommandListAppendMetricMemoryBarrier>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(zet_command_list_handle_t, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(zet_command_list_handle_t, void *)>(visitorCallback);
+     return cb(apiArgs.hCommandList, userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zetCommandListAppendMarkerExp>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(zet_command_list_handle_t, zet_metric_group_handle_t, uint32_t, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(zet_command_list_handle_t, zet_metric_group_handle_t, uint32_t, void *)>(visitorCallback);
+     return cb(apiArgs.hCommandList, apiArgs.hMetricGroup, apiArgs.value, userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendMemoryCopyWithParameters>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, void *, const void *, size_t, const void *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, void *, const void *, size_t, const void *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendMemoryCopyWithParameters>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.dstptr, apiArgs.srcptr, apiArgs.size, indirectArgs.clonedPNext,
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendMemoryFillWithParameters>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, void *, const void *, size_t, size_t, const void *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, void *, const void *, size_t, size_t, const void *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendMemoryFillWithParameters>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.ptr, getOptionalData(indirectArgs.pattern), apiArgs.patternSize, apiArgs.size, indirectArgs.clonedPNext,
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListAppendHostFunction>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &externalStorage) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, ze_host_function_callback_t, void *, const void *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, ze_host_function_callback_t, void *, const void *, ze_event_handle_t, uint32_t, ze_event_handle_t *, void *)>(visitorCallback);
+     auto waitEventsList = getClosureWaitEventsList<CaptureApi::zeCommandListAppendHostFunction>(apiArgs, indirectArgs, externalStorage);
+     return cb(apiArgs.hCommandList, apiArgs.pHostFunction, apiArgs.pUserData, apiArgs.pNext,
+               apiArgs.hSignalEvent, static_cast<uint32_t>(waitEventsList.size()), waitEventsList.empty() ? nullptr : waitEventsList.data(), userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListGetNextCommandIdExp>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, const ze_mutable_command_id_exp_desc_t *, uint64_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, const ze_mutable_command_id_exp_desc_t *, uint64_t *, void *)>(visitorCallback);
+     uint64_t commandId = indirectArgs.commandId;
+     return cb(apiArgs.hCommandList, &indirectArgs.desc, &commandId, userData);
+ }
+ 
+ ze_result_t Closure<CaptureApi::zeCommandListGetNextCommandIdWithKernelsExp>::invokeVisitor(void *visitorCallback, void *userData, ClosureExternalStorage &) const {
+-    auto cb = reinterpret_cast<ze_result_t(VISITOR_CCONV *)(ze_command_list_handle_t, const ze_mutable_command_id_exp_desc_t *, uint32_t, ze_kernel_handle_t *, uint64_t *, void *)>(visitorCallback);
++    auto cb = reinterpret_cast<ze_result_t(ZE_VISITOR_CCONV *)(ze_command_list_handle_t, const ze_mutable_command_id_exp_desc_t *, uint32_t, ze_kernel_handle_t *, uint64_t *, void *)>(visitorCallback);
+     uint64_t commandId = indirectArgs.commandId;
+     auto kernelHandles = indirectArgs.kernels.empty() ? nullptr : const_cast<ze_kernel_handle_t *>(indirectArgs.kernels.data());
+     return cb(apiArgs.hCommandList, &indirectArgs.desc, static_cast<uint32_t>(indirectArgs.kernels.size()), kernelHandles, &commandId, userData);
+@@ -1854,10 +1854,10 @@
+ }
+ 
+ struct VisitContext {
+-    explicit VisitContext(const ze_visit_ext_desc_t *desc)
++    explicit VisitContext(const ze_command_visit_ext_desc_t *desc)
+         : desc(desc),
+           userData(desc->userData),
+-          hReappendTargetCmdList(desc->hReappendTargetCmdList),
++          hReappendTargetCommandList(desc->hReappendTargetCommandList),
+           preAction(desc->beforeDefaultOpClb),
+           defaultOp(desc->defaultOp),
+           postAction(desc->afterDefaultOpClb) {
+@@ -1866,7 +1866,7 @@
+     ze_result_t initialize() {
+         L0::PNextRange pnexts{desc->pNext};
+         for (auto &pnext : pnexts) {
+-            if (pnext.stype != ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC) {
++            if ((pnext.stype != ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC) && (pnext.stype != ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC)) {
+                 return ZE_RESULT_ERROR_INVALID_ENUMERATION;
+             }
+             const auto &concreteVisitor = reinterpret_cast<const ze_concrete_visitor_ext_desc_t &>(pnext);
+@@ -1891,16 +1891,16 @@
+         return ZE_RESULT_SUCCESS;
+     }
+ 
+-    const ze_visit_ext_desc_t *desc = nullptr;
++    const ze_command_visit_ext_desc_t *desc = nullptr;
+     void *userData = nullptr;
+-    ze_command_list_handle_t hReappendTargetCmdList = nullptr;
+-    ze_visit_ext_default_op_callback_t preAction = nullptr;
+-    ze_visit_ext_default_op_t defaultOp = ZE_VISIT_EXT_DEFAULT_OP_IGNORE;
+-    ze_visit_ext_default_op_callback_t postAction = nullptr;
++    ze_command_list_handle_t hReappendTargetCommandList = nullptr;
++    ze_command_visit_ext_default_op_callback_t preAction = nullptr;
++    ze_command_visit_ext_default_op_t defaultOp = ZE_COMMAND_VISIT_EXT_DEFAULT_OP_IGNORE;
++    ze_command_visit_ext_default_op_callback_t postAction = nullptr;
+     void *visitorCallbacks[numCapturedApis] = {};
+ };
+ 
+-ze_result_t Graph::visit(const ze_visit_ext_desc_t *desc) {
++ze_result_t Graph::visit(const ze_command_visit_ext_desc_t *desc) {
+     if (nullptr == desc) {
+         return ZE_RESULT_ERROR_INVALID_NULL_POINTER;
+     }
+@@ -1924,7 +1924,7 @@
+     return ZE_RESULT_SUCCESS;
+ }
+ 
+-ze_result_t RecordedApiCommands::visit(const ze_visit_ext_desc_t *desc) {
++ze_result_t RecordedApiCommands::visit(const ze_command_visit_ext_desc_t *desc) {
+     VisitContext visitContext{desc};
+     auto visitCtxInitResult = visitContext.initialize();
+     if (ZE_RESULT_SUCCESS != visitCtxInitResult) {
+@@ -1967,9 +1967,9 @@
+             if (visitContext.preAction) {                                                                                                                \
+                 visitContext.preAction(apiName, visitContext.userData, &numWaitEvents, &waitEvents, &signalEvent);                                       \
+             }                                                                                                                                            \
+-            if (ZE_VISIT_EXT_DEFAULT_OP_REAPPEND == visitContext.defaultOp) {                                                                            \
++            if (ZE_COMMAND_VISIT_EXT_DEFAULT_OP_REAPPEND == visitContext.defaultOp) {                                                                            \
+                 EventParams events{.hSignalEvent = signalEvent, .numWaitEvents = numWaitEvents, .phWaitEvents = waitEvents};                             \
+-                auto ret = cmd.instantiateTo(L0::CommandList::fromHandle(visitContext.hReappendTargetCmdList), externalStorage, cbEventContext, events); \
++                auto ret = cmd.instantiateTo(L0::CommandList::fromHandle(visitContext.hReappendTargetCommandList), externalStorage, cbEventContext, events); \
+                 if (ZE_RESULT_SUCCESS != ret) {                                                                                                          \
+                     return ret;                                                                                                                          \
+                 }                                                                                                                                        \
+diff --git a/level_zero/experimental/source/graph/graph.h b/level_zero/experimental/source/graph/graph.h
+--- a/level_zero/experimental/source/graph/graph.h
++++ b/level_zero/experimental/source/graph/graph.h
+@@ -186,7 +186,7 @@
+     void updateWaitEvents(MclCommandId commandId, uint32_t numWaitEvents, ze_event_handle_t *phWaitEvents);
+     void updateKernel(MclCommandId commandId, ze_kernel_handle_t kernelHandle);
+ 
+-    MOCKABLE_VIRTUAL ze_result_t visit(const ze_visit_ext_desc_t *desc);
++    MOCKABLE_VIRTUAL ze_result_t visit(const ze_command_visit_ext_desc_t *desc);
+     ze_result_t visit(CapturedCommandId id, VisitContext &visitCtx);
+ 
+     template <CaptureApi api, typename... TArgs>
+@@ -407,7 +407,7 @@
+         return multiEngineGraph;
+     }
+ 
+-    MOCKABLE_VIRTUAL ze_result_t visit(const ze_visit_ext_desc_t *desc);
++    MOCKABLE_VIRTUAL ze_result_t visit(const ze_command_visit_ext_desc_t *desc);
+ 
+     ze_result_t addDestructorCallback(zex_mem_graph_free_callback_fn_t pfnCallback, void *pUserData, void *pNext) {
+         if (pNext) {
+diff --git a/level_zero/include/level_zero/driver_experimental/zex_visit.h b/level_zero/include/level_zero/driver_experimental/zex_visit.h
+--- a/level_zero/include/level_zero/driver_experimental/zex_visit.h
++++ b/level_zero/include/level_zero/driver_experimental/zex_visit.h
+@@ -16,77 +16,99 @@
+ #include "zex_common.h"
+ 
+ #ifndef ZE_COMMAND_VISIT_EXT_NAME
+-/// @brief Command List Visit Extension Name
++/// @brief Command Visit Extension Name
+ #define ZE_COMMAND_VISIT_EXT_NAME "ZE_extension_command_visit"
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+-/// @brief Command List Visit Extension version(s)
++/// @brief Command Visit Extension version(s)
+ typedef enum _ze_command_visit_ext_version_t {
+     ZE_COMMAND_VISIT_EXT_VERSION_1_0 = ZE_MAKE_VERSION(1, 0),     ///< version 1.0
+     ZE_COMMAND_VISIT_EXT_VERSION_CURRENT = ZE_MAKE_VERSION(1, 0), ///< latest known version
+     ZE_COMMAND_VISIT_EXT_VERSION_FORCE_UINT32 = 0x7fffffff,       ///< Value marking end of ZE_COMMAND_VISIT_EXT_VERSION_* ENUMs
+ } ze_command_visit_ext_version_t;
+ 
+-#define ZE_COMMAND_LIST_FLAG_ENABLE_CMD_VISITING (static_cast<uint32_t>(ZE_BIT(6)))
++#define ZE_COMMAND_LIST_FLAG_ENABLE_COMMAND_VISIT (static_cast<uint32_t>(ZE_BIT(6)))
+ 
+ #if defined(__cplusplus)
+ extern "C" {
+ #endif
+ 
+-#ifdef _WIN32
+-#define VISITOR_CCONV __cdecl
++#ifndef ZE_VISITOR_CCONV
++#if defined(_WIN32)
++/// @brief Calling convention for visit extension callbacks
++#define ZE_VISITOR_CCONV __cdecl
+ #else
+-#define VISITOR_CCONV
+-#endif
++#define ZE_VISITOR_CCONV
++#endif // defined(_WIN32)
++#endif // ZE_VISITOR_CCONV
+ 
+-typedef void(VISITOR_CCONV *ze_visit_ext_default_op_callback_t)(const char *fname, void *userData, uint32_t *numWaitEvents, ze_event_handle_t **phWaitEvents, ze_event_handle_t *hSignalEvent);
++///////////////////////////////////////////////////////////////////////////////
++/// @brief Callback function pointer type for hooks executed before and after the
++///        default operation during command visit.
++typedef void(ZE_VISITOR_CCONV *ze_command_visit_ext_default_op_callback_t)(
++    const char *fname,                 ///< [in] function name of the visited API command
++    void *userData,                    ///< [in] user-defined data passed from ::ze_command_visit_ext_desc_t
++    uint32_t *pNumWaitEvents,          ///< [in,out] pointer to wait event count for the current command
++    ze_event_handle_t **pphWaitEvents, ///< [in,out] pointer to wait event list for the current command
++    ze_event_handle_t *phSignalEvent   ///< [in,out] pointer to command signal event handle
++);
++
+ typedef struct _ze_graph_handle_t *ze_graph_handle_t;
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+-/// @brief Defines specialized behavior of zeCommandListVisitExt visit operation for given L0 API function
+-///        One or more instances of this structure can be chained in pNext of ze_visit_ext_desc_t to define behavior for multiple L0 API functions
++/// @brief Defines specialized command visit behavior for a specific Level Zero
++///        API function.
+ typedef struct _ze_concrete_visitor_ext_desc_t {
+-    ze_structure_type_ext_t stype;
+-    const void *pNext;
+-
+-    const char *fname; ///< [in] L0 API function name for which the behavior is defined, for example "zeCommandListAppendMemoryCopyWithParameters"
+-    void *callback;    ///< [in] The implementation of the behavior, the type of the function pointer must match the signature of the L0 API function for which the behavior is defined with one extra parameter at the end - void*
+-                       ///       Note : calling convention must match VISITOR_CCONV
++    ze_structure_type_t stype; ///< [in] type of this structure
++    const void *pNext;         ///< [in][optional] must be null or a pointer to an extension-specific
++                               ///< structure (i.e. contains stype and pNext).
++    const char *fname;         ///< [in] Level Zero API function name for which callback behavior is
++                               ///< defined
++    void *callback;            ///< [in] callback function pointer; must have the same return type and
++                               ///< parameter list as the visited API function named by `fname`, followed
++                               ///< by one additional trailing `void*` parameter that receives `userData`
++                               ///< from ::ze_command_visit_ext_desc_t, and must use the
++                               ///< ::ZE_VISITOR_CCONV calling convention
+ } ze_concrete_visitor_ext_desc_t;
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+-/// @brief Defines default operation for visit call
+-typedef enum _ze_visit_ext_default_op_t {
+-    ZE_VISIT_EXT_DEFAULT_OP_IGNORE = 0,   // if concrete visitor callback is not provided, ignore the command
+-    ZE_VISIT_EXT_DEFAULT_OP_REAPPEND = 1, // if concrete visitor callback is not provided, reappend the command
+-} ze_visit_ext_default_op_t;
++/// @brief Defines default operation for command visit.
++typedef enum _ze_command_visit_ext_default_op_t {
++    ZE_COMMAND_VISIT_EXT_DEFAULT_OP_IGNORE = 0,               ///< ignore command if concrete callback is not provided
++    ZE_COMMAND_VISIT_EXT_DEFAULT_OP_REAPPEND = 1,             ///< re-append command if concrete callback is not provided
++    ZE_COMMAND_VISIT_EXT_DEFAULT_OP_FORCE_UINT32 = 0x7fffffff ///< Value marking end of ZE_COMMAND_VISIT_EXT_DEFAULT_OP_* ENUMs
++} ze_command_visit_ext_default_op_t;
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+-/// @brief Defines behavior of visit operations
+-typedef struct _ze_visit_ext_desc_t {
+-    ze_structure_type_ext_t stype;
+-    const void *pNext;
+-
+-    void *userData; // optional user data to be passed to callbacks
+-
+-    ze_command_list_handle_t hReappendTargetCmdList; ///< [in][optional]  target commandlist for ZE_VISIT_EXT_DEFAULT_OP_REAPPEND
+-                                                     ///                  if visiting a graph, then hReappendTargetCmdList will be used only for root level recording (i.e. not used in forks)
+-                                                     ///                  If hReappendTargetCmdList is not set then reappends the command to the same commandlist as originally recorded.
+-
+-    ze_visit_ext_default_op_callback_t beforeDefaultOpClb; ///< [in][optional] callback to be called before executing default operation, can be null if no action is needed before default operation
+-    ze_visit_ext_default_op_t defaultOp;                   ///< [in]           default operation to be taken if concrete visitor callback is not provided
+-    ze_visit_ext_default_op_callback_t afterDefaultOpClb;  ///< [in][optional] callback to be called after executing default operation, can be null if no action is needed after default operation
+-} ze_visit_ext_desc_t;
++/// @brief Defines behavior of command visit.
++typedef struct _ze_command_visit_ext_desc_t {
++    ze_structure_type_t stype;                                     ///< [in] type of this structure
++    const void *pNext;                                             ///< [in][optional] must be null or a pointer to an extension-specific
++                                                                   ///< structure (i.e. contains stype and pNext).
++    void *userData;                                                ///< [in][optional] user-defined data passed to callbacks
++    ze_command_list_handle_t hReappendTargetCommandList;           ///< [in][optional] target command list handle used for default re-append
++                                                                   ///< operation
++    ze_command_visit_ext_default_op_callback_t beforeDefaultOpClb; ///< [in][optional] callback invoked before `defaultOp` for each command
++                                                                   ///< that has no concrete visitor
++    ze_command_visit_ext_default_op_t defaultOp;                   ///< [in] default operation to execute for a given command when no concrete
++                                                                   ///< callback is provided for it (via ::ze_concrete_visitor_ext_desc_t)
++    ze_command_visit_ext_default_op_callback_t afterDefaultOpClb;  ///< [in][optional] callback invoked after `defaultOp` for each command
++                                                                   ///< that has no concrete visitor
++} ze_command_visit_ext_desc_t;
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+-/// @brief Visits all commands in a commandlist in order of recording operations
+-ze_result_t ZE_APICALL zeCommandListVisitExt(ze_command_list_handle_t cmdlist,
+-                                             const ze_visit_ext_desc_t *desc);
++/// @brief Visits all commands in a command list in recorded order.
++ze_result_t ZE_APICALL zeCommandListVisitExt(
++    ze_command_list_handle_t hCommandList,   ///< [in] handle of command list to visit
++    const ze_command_visit_ext_desc_t *pDesc ///< [in] pointer to command visit descriptor
++);
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+-/// @brief Visits all commands in a graph in order of recording operations
+-ze_result_t ZE_APICALL zeGraphVisitExt(ze_graph_handle_t graph,
+-                                       const ze_visit_ext_desc_t *desc);
++/// @brief Visits all commands in a graph in recorded order.
++ze_result_t ZE_APICALL zeGraphVisitExt(
++    ze_graph_handle_t hGraph,                ///< [in] handle of graph to visit
++    const ze_command_visit_ext_desc_t *pDesc ///< [in] pointer to command visit descriptor
++);
+ 
+ #if defined(__cplusplus)
+ } // extern "C"
+diff --git a/level_zero/include/level_zero/ze_stypes.h b/level_zero/include/level_zero/ze_stypes.h
+--- a/level_zero/include/level_zero/ze_stypes.h
++++ b/level_zero/include/level_zero/ze_stypes.h
+@@ -46,6 +46,10 @@
+ #endif // ZE_RECORD_REPLAY_GRAPH_EXP_NAME
+ #define ZEX_STRUCTURE_TYPE_MEMORY_FREE_CALLBACK_EXT_DESC static_cast<ze_structure_type_ext_t>(0x00030030)
+ 
++#if ZE_API_VERSION_CURRENT_M <= ZE_MAKE_VERSION(1, 19)
++#define ZE_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC static_cast<ze_structure_type_t>(0x00020059)
++#define ZE_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC static_cast<ze_structure_type_t>(0x0002005A)
++#endif
+ #define ZEX_STRUCTURE_TYPE_CONCRETE_VISITOR_EXT_DESC static_cast<ze_structure_type_ext_t>(0x00030031)
+ #define ZEX_STRUCTURE_TYPE_COMMAND_VISIT_EXT_DESC static_cast<ze_structure_type_ext_t>(0x00030032)
+ 
