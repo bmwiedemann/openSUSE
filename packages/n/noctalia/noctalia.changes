@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Nov 20 15:36:02 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.6.0:
+  * chore(version): bump version
+  * test(plugins): isolate lifecycle fixtures from git sources
+  * chore(i18n): update
+  * Revert "chore(i18n): update"
+  * chore(i18n): update
+  * feat(settings): follow the system font size in the settings window only
+  * refactor(settings): group bar Font Scale with font family and weight
+  * feat(ui): add accessibility font_scale and stop following the GTK font size
+  * fix(label): match scrolling to the text buffer grid (#5441)
+  * refactor(ui): load file images only through the async texture cache
+  * fix(ipc): explicitly wrap JSON replies in optionals
+  * fix(text): align glyphs with rounded buffers
+  * fix(bar): avoid shadowing the bar instance
+  * fix(ui): snap all images to the buffer pixel grid and decode at drawn size
+  * fix(ui): draw avatars pixel-aligned at their exact buffer size
+  * fix(ui): reset dropped style props on retained ui tree nodes (#5353)
+  * feat(bar): Smart Wayland Layer Option (#4183)
+  * fix(shell): count a presented scratchpad as content for smart auto-hide (#5381)
+  * feat(lib): hide close buttons live without rebuilding the scene (#5422)
+  * feat(notifications): add action buttons to plugin and screenshot notifications
+  * perf(process): wait for child exit on a pidfd instead of polling every 100 ms (#5395)
+  * fix(render): reapply pending window resizes in makeCurrent() (#5429)
+  * fix(osd): apply corner radius changes live (#5418)
+  * fix(plugins): read store thumbnails at the catalog revision
+  * fix(wayland): preserve preferred fractional scale across output changes
+  * fix(render): interpolate colors in premultiplied alpha (#5420)
+  * refactor(ui): follow the system GTK font family and size
+  * feat(icons): draw color-scheme icon themes with the shell palette
+  * fix(ui): skip signal slots disconnected during emit
+  * refactor(ui): name the disabled alpha and use it in the search picker
+  * feat(ui): rescale corner radii live when the corner radius scale changes (#5410)
+  * fix(ui): adjust/decrease scrollbar thickness at rest and on hover
+  * fix(dock): preserve app order across instance recreation and visibility changes (#5398)
+  * chore: i18n update
+  * feat(bar): add hide_label_when_muted option to the volume widget (#5339)
+  * feat(theme): group palettes sharing a base in the palette picker
+  * fix(render): reapply window resizes once the EGL surface is current (#5403)
+  * fix(bar): resync pointer hover after layout (#5408)
+  * fix(doc): clarify uwsm WantedBy= target in systemd-service documentation (#5401)
+  * docs(hyprland): size the settings window relative to the monitor (#5404)
+  * add algorithm include to lib/render/backend/gles_texture_manager.cpp (#5405)
+  * feat(nix): support runtime dependencies for pinned plugins (#4935)
+  * Change star history link to noctalia.dev
+  * feat(templates): add Luciole palette template
+  * chore: README, logo at the top
+  * feat(context-menu): support compact menu layout (#5399)
+  * fix(tray): open the menu on left click when the item has no Activate (#5359)
+  * fix(scroll-view): scale the wheel step with viewport and grid rows
+  * fix(text): remove padding around middle ellipsis
+  * fix(sysmon): count only physical interfaces in the network total (#5328)
+  * fix(dock): activate the app's last used window on click (#5327)
+  * fix(dock): keep app order on dock reload during config changes (#5344)
+  * fix(docs): remove double title on Desktop Widgets page
+  * ui(theme): re-saturate the yellow a bit
+  * ui(theme): soften the default Noctalia palette
+  * fix(switcher): remove opening fade and prewarm blur
+  * feat(launcher): add Unicode characters to the emoji provider
+  * fix(compositors): use wlr minimize state on unrecognized compositors (#5363)
+  * chore(flake): update flake.lock
+  * feat(docs): derive plugin API release versions from tags and repair incomplete archives
+  * feat(ui): add ui.ring native circular progress control, also exposed to plugins
+  * fix(brightness): restart ddcutil discovery on request after retries run out (#5213)
+  * perf(pipewire): stop blocking startup on the first daemon sync (#5358)
+  * feat(settings): rework the list settings, with drag and drop and searchable entries (#5324)
+  * fix(codecs): return the oriented raster through NRVO to silence GCC 16 -Wfree-nonheap-object
+  * perf(icons): index theme directories and read GTK icon caches (#5347)
+  * feat(auth): move lock screen PAM into noctalia-pam-helper, add pam_service option (#4619)
+  * test(capture): encode thumbnail test pixels as little-endian wl_shm words
+  * feat(config): load system defaults from XDG_CONFIG_DIRS (#5334)
+  * feat(plugins): add noctalia.compositor.subscribe for in-process event streams
+  * perf(render): load Tabler categories only for the glyph picker
+  * perf(render): compile a single shape_distance copy in the rect shader
+  * core: split asset overrides into NOCTALIA_APP_ASSETS_DIR and NOCTALIA_LIBRARY_ASSETS_DIR
+
+-------------------------------------------------------------------
 Thu Nov 19 02:33:44 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Generate and install bash, fish and zsh completions from the built binary.
