@@ -79,17 +79,24 @@ cp %{SOURCE1} .
 %build
 %make_build -C src all _TELA_COMPILED=1 LDFLAGS="-pie"
 
-# Generate architecture-specific telarc and telastate snapshots
-%make_build telarc > telarc 2>/dev/null || :
-test -s telarc || printf "# Sample telarc configuration\nsystem localhost:\n" > telarc
+# telarc and telastate are snapshots of the resources of the machine they are
+# generated on (CPU count, memory, hugepages, ...), so they cannot be created
+# at build time and shipped.  Users generate their own with `make telarc` /
+# `make telastate`; ship static templates as examples.
+cat > telarc << 'EOF'
+# Sample telarc configuration
+system localhost:
+EOF
 
-%make_build telastate > telastate 2>/dev/null || :
-test -s telastate || printf "system localhost:\n  arch: \"%{_target_cpu}\"\n" > telastate
+cat > telastate << EOF
+system localhost:
+  arch: "%{_target_cpu}"
+EOF
 
 %check
 export COLOR=0
 
-# Validate generated telarc and telastate snapshots
+# Validate telarc and telastate templates
 test -s telarc
 test -s telastate
 ./src/tela format telarc >/dev/null

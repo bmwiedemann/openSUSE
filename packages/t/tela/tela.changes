@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 20 10:26:46 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Ship static telarc/telastate templates instead of snapshots of the
+  build host, which depended on CPU count, memory and hugepage setup.
+
+-------------------------------------------------------------------
 Mon Nov 16 11:58:41 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Implement hypervisor profiles in tela-s390x-tests.tar.gz:
