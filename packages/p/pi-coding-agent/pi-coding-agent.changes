@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov 20 11:53:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Vendored-dependency security refresh: undici 8.12.3 -> 8.12.4.
+  The packaged 1.5.2 pins undici 8.12.3; upstream 1.6.0
+  (published 2026-11-20) already moved to 8.12.4, but this refresh
+  keeps 1.5.2 and lifts only the vendored dependency.
+  * CVE-2026-120222: undici denial of service via unhandled
+    exception in cache-interceptor response replay (boo#1290296)
+  * CVE-2026-120415: undici cross-origin credential disclosure
+    via array-of-tuples headers bypassing redirect stripping
+    (boo#1290314)
+  * CVE-2026-120423: undici Subresource Integrity bypass via
+    whitespace in integrity metadata (boo#1290335)
+  * CVE-2026-116630: undici cross-user information disclosure
+    via cross-origin redirect revalidation (boo#1290347)
+  * CVE-2026-116592: undici cache poisoning and cross-user
+    disclosure via intermediate redirect hops (boo#1290361)
+  * CVE-2026-120474: undici cross-user cache disclosure via
+    same-origin redirect (boo#1290369)
+- Align package.json's undici pin with the vendored 8.12.4 so the
+  offline npm install does not re-resolve it.
+
+-------------------------------------------------------------------
 Wed Nov 11 20:00:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.5.2:

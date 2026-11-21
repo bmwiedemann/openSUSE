@@ -156,6 +156,10 @@ cp -p %{SOURCE10} npm-shrinkwrap.json
 # has nothing to reconcile.
 npm pkg delete devDependencies
 
+# The packaged 1.5.2 pins undici 8.12.3 (boo#1290296 & co.); pin the
+# vendored 8.12.4 here so the offline npm install does not re-resolve.
+npm pkg set dependencies.undici=8.12.4
+
 %build
 cd %{name}
 # --omit=optional: every optionalDependency in this tree is a per-architecture

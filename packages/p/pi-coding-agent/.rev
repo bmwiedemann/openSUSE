@@ -344,4 +344,12 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
     <comment>Update pi-coding-agent to 1.5.2: fork sessions whose folder moved, Continue/Fork/Cancel on missing dirs, /import and OAuth fixes.</comment>
     <requestid>1396961</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>7c0903b60e06399c2456455cc26ee2de</srcmd5>
+    <version>1.5.2</version>
+    <time>1795293960</time>
+    <user>dimstar_suse</user>
+    <comment>Vendored undici 8.12.4 security refresh, no version change: fixes six CVEs (boo#1290296, boo#1290314, boo#1290335, boo#1290347, boo#1290361, boo#1290369).</comment>
+    <requestid>1398981</requestid>
+  </revision>
 </revisionlist>
