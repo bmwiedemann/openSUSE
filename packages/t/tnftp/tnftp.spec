@@ -21,26 +21,24 @@ Version:        20260211
 Release:        0
 Summary:        Enhanced FTP Client
 License:        BSD-3-Clause
-Group:          Productivity/Networking/Ftp/Clients
 URL:            https://ftp.netbsd.org/pub/NetBSD/misc/tnftp/
 Source0:        https://ftp.netbsd.org/pub/NetBSD/misc/tnftp/%{name}-%{version}.tar.gz
 Source1:        https://ftp.netbsd.org/pub/NetBSD/misc/tnftp/%{name}-%{version}.tar.gz.asc
 Source2:        tnftp.keyring
+BuildRequires:  gcc
 BuildRequires:  libopenssl-devel >= 1.1
-BuildRequires:  libtool
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(ncurses)
-Requires(post): update-alternatives
 Conflicts:      ftp
 Provides:       lukemftp = 1.6
-Provides:       nkitb:%{_bindir}/ftp
 Obsoletes:      lukemftp <= 1.5
 
 %description
 %{name} is the FTP (File Transfer Protocol) client from NetBSD.  FTP is a widely
 used protocol for transferring files over the Internet and for archiving files.
-%{name} provides some advanced features beyond the Linux netkit ftp client, but
+%{name} provides some advanced features beyond the standard Linux FTP client, but
 maintains a similar user interface to the traditional ftp client.  It was
 formerly called lukemftp.
 
@@ -59,11 +57,6 @@ rm -rf libedit
 %make_install
 ln -sf %{_bindir}/%{name} %{buildroot}%{_bindir}/ftp
 ln -sf %{_mandir}/man1/%{name}.1%{?ext_man} %{buildroot}%{_mandir}/man1/ftp.1%{?ext_man}
-
-%post
-if [ "$1" = 0 ] ; then
-  update-alternatives --remove ftp %{_bindir}/%{name}
-fi
 
 %files
 %license COPYING

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 25 20:45:12 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Remove the leftover update-alternatives scriptlet and the
+  Requires(post) it needed: the %post snippet could never run
+  (its guard is never true in %post) and no alternative has been
+  registered for years; /usr/bin/ftp is a plain symlink and the
+  competing ftp package is excluded by the existing Conflicts
+  (leftovers of the bsc#1240102 migration)
+- Drop the nkitb:/usr/bin/ftp provides; nothing in the
+  distribution requires the legacy nkitb namespace anymore
+- Drop the unused libtool build requirement and the Group tag
+- Add gcc and make build requirements, used by the build but
+  previously undeclared
+- Reword the description to drop the netkit reference the
+  spellchecker flags
+
+-------------------------------------------------------------------
 Sun Apr 26 17:38:11 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Fix broken man page symlink (bsc#1260040). 
