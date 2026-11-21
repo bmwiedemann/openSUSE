@@ -242,8 +242,8 @@ License:        MIT
 Group:          System/Libraries
 
 %description -n libekmfweb1
-libekmfweb1 is a client library that provides access to IBM' Enterprise Key
-Management Foundation – Web Edition.0 EKMF Web provides efficient and
+libekmfweb1 is a client library that provides access to IBM Enterprise Key
+Management Foundation – Web Edition EKMF Web provides efficient and
 security-rich centralized key management for IBM z/OS data set encryption
 on IBM Z servers.
 
@@ -254,8 +254,8 @@ Group:          Development/Libraries/C and C++
 Requires:       libekmfweb1 = %{version}
 
 %description -n libekmfweb1-devel
-libekmfweb1 is a client library that provides access to IBM' Enterprise Key
-Management Foundation – Web Edition.0 EKMF Web provides efficient and
+libekmfweb1 is a client library that provides access to IBM Enterprise Key
+Management Foundation – Web Edition EKMF Web provides efficient and
 security-rich centralized key management for IBM z/OS data set encryption
 on IBM Z servers.
 
@@ -328,6 +328,9 @@ This package provides auxiliary data used by pvimg(genprotimg).
 
 %ifarch s390x
 cp -vi %{SOURCE22} CAUTION
+%else
+# Clear s390x-specific rpmlint filters on non-s390x (x86_64) to avoid unused-rpmlintrc-filter errors
+> %{_sourcedir}/s390-tools-rpmlintrc || :
 %endif
 
 ### *** s390x ************************************************************************* ###
@@ -444,9 +447,12 @@ install -D -m 755 %{SOURCE33} %{buildroot}%{_sbindir}/lgr_check
 install -D -m 644 %{SOURCE34} %{buildroot}%{_fillupdir}/sysconfig.virtsetup
 
 # Create rc symlinks in _sbindir
-for svc in appldata hsnc vmlogrdr xpram cio_ignore cpacfstatsd cpi cpuplugd dumpconf mon_fsstatd mon_procd virtsetup opticsmon zpcimon; do
+for svc in appldata hsnc vmlogrdr xpram cio_ignore cpacfstatsd cpi cpuplugd dumpconf mon_fsstatd mon_procd virtsetup zpcimon; do
     ln -s service %{buildroot}%{_sbindir}/rc${svc}
 done
+
+# Remove legacy opticsmon.service symlink (superseded by zpcimon)
+rm -f %{buildroot}%{_unitdir}/opticsmon.service
 
 install -D -m 755 %{SOURCE24} %{buildroot}%{_bindir}/cputype
 install -m 644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE25}
@@ -532,7 +538,7 @@ fi
 %{?regenerate_initrd_posttrans}
 
 %files
-# --- Documentation & Licenses ---
+%license LICENSE
 %doc README.md README.SUSE iucvterm/doc/ts-shell zpxe.rexx zipl.conf.sample
 
 # --- System Configuration (/etc) ---

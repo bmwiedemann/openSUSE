@@ -1341,4 +1341,41 @@ Build succeeded on IBS (in a home project).</comment>
     <comment>1</comment>
     <requestid>1394970</requestid>
   </revision>
+  <revision rev="126" vrev="3">
+    <srcmd5>e6ab5a30ec57d8ffc67fda2c309e319d</srcmd5>
+    <version>2.44.1</version>
+    <time>1795293935</time>
+    <user>dimstar_suse</user>
+    <comment>- include license
+- fix description typos
+
+- Update `s390-tools-rpmlintrc` (bsc#1290818):
+  * Remove the two stale filter lines:
+    - `statically-linked-binary /usr/lib/s390-tools/.*`
+    - `systemd-service-without-service_.* *@.service`
+  * Add filters for `tmpfile-not-in-filelist /var/log/ts-shell` and `call-to-mktemp`.
+- Amend `s390-tools.spec`:
+  * Remove legacy `opticsmon.service` unit symlink and `rcopticsmon` in %install
+    to complete the removal of the superseded opticsmon service.
+  * Clear `s390-tools-rpmlintrc` on non-s390x (x86_64) in %prep to avoid
+    `unused-rpmlintrc-filter` errors on architectures without s390x tools.
+- Re-vendor-ed vendor.tar.zst
+
+- Upgrade s390-tools to version 2.44.1
+  * Full Changelog: v2.44.0...v2.44.1
+    rust &gt;= 1.85.0 and cargo &gt;= 1.85.0 to safely align with MSRV.
+  * Added `Requires: %{name} = %{version}` in `chreipl-fcp-mpath subpackage`
+  * pvics: Fix virt-resize permission error
+  * s390-tools-pvebc-Log-services-to-journal-plus-console.patch
+  * s390-tools-pvebc-Log-services-to-journal-plus-console.patch
+  * zipl: Don't modify job-&gt;data.dump and job-&gt;data.mvdump sequentially
+  * Includes /proc/sysinfo fallback to prevent the qclib
+    &quot;Unable to open configuration, return_code =-2&quot; errors.
+  * zipl/boot: Fix stage3 secure boot trailer placement
+  * s390-tools-Remove-phmac_s390.patch
+  * s390-tools-hyptop-opts-Fix-long-command-line-option-abbreviations.patch
+  * zcrypt_cex4
+- Upgrade s390-tools to version 2.41.0 (jsc#PED-14586, jsc#PED-15488)</comment>
+    <requestid>1399518</requestid>
+  </revision>
 </revisionlist>

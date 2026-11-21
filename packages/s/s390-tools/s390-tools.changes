@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 20 17:41:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- include license
+- fix description typos
+
+-------------------------------------------------------------------
+Wed Nov 18 12:12:13 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Update `s390-tools-rpmlintrc` (bsc#1290818):
+  * Remove the two stale filter lines:
+    - `statically-linked-binary /usr/lib/s390-tools/.*`
+    - `systemd-service-without-service_.* *@.service`
+  * Add filters for `tmpfile-not-in-filelist /var/log/ts-shell` and `call-to-mktemp`.
+- Amend `s390-tools.spec`:
+  * Remove legacy `opticsmon.service` unit symlink and `rcopticsmon` in %install
+    to complete the removal of the superseded opticsmon service.
+  * Clear `s390-tools-rpmlintrc` on non-s390x (x86_64) in %prep to avoid
+    `unused-rpmlintrc-filter` errors on architectures without s390x tools.
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Wed Nov  4 13:05:37 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Modernize packaging for multi-arch and Immutable OS:
@@ -26,7 +47,7 @@ Wed Nov  4 13:05:37 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Tue Sep 22 07:36:27 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Upgrade s390-tools to version 2.44.1 
+- Upgrade s390-tools to version 2.44.1
   ( bsc#1273204, bsc#1273205, bsc#1273206, bsc#1273207, bsc#1275476 )
   For Linux kernel version: 7.2
   * Changes of existing tools:
@@ -79,7 +100,7 @@ Tue Sep 22 07:36:27 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
     - zkey: Harden KMS config directory handling against symlink attacks
     - zkey: Harden KMS plugin file handling against symlink attacks
     - zkey: Install initrd integration with the configured plugin directory
-  * Full Changelog: v2.44.0...v2.44.1 
+  * Full Changelog: v2.44.0...v2.44.1
       [https://github.com/ibm-s390-linux/s390-tools/compare/v2.44.0...v2.44.1]
 - Removed obsolete patches for Security vulnerabilities for zkey and friends
   * s390-tools-zkey-Harden-KMS-config-directory-handling.patch
@@ -113,7 +134,7 @@ Thu Aug  6 07:17:36 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
   * Removed dead BuildRequires: libica-devel-static.
   * Removed obsolete rm cleanups for lsmem and chmem.
   * Added version constraints to BuildRequires:
-    rust >= 1.85.0 and cargo >= 1.85.0 to safely align with MSRV. 
+    rust >= 1.85.0 and cargo >= 1.85.0 to safely align with MSRV.
 - Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
@@ -195,7 +216,7 @@ Wed Jul  1 11:05:41 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Ammended the .spec file for `chreipl_helper` (bsc#1266436)
   * Moved `chreipl_helper*` to the main package
-  * Added `Requires: %{name} = %{version}` in `chreipl-fcp-mpath subpackage` 
+  * Added `Requires: %{name} = %{version}` in `chreipl-fcp-mpath subpackage`
 - Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
@@ -213,16 +234,16 @@ Mon Jun 29 07:32:54 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 - Bug Fixes:
   * ebc: implement --version option for pvics
   * pvebc: Log services to journal+console
-  * pvics: Fix virt-resize permission error 
+  * pvics: Fix virt-resize permission error
 - Removed obsolete patch
-  * s390-tools-pvebc-Log-services-to-journal-plus-console.patch 
+  * s390-tools-pvebc-Log-services-to-journal-plus-console.patch
 - Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
 Mon Jun 22 15:29:47 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1268516)
-  * s390-tools-pvebc-Log-services-to-journal-plus-console.patch 
+  * s390-tools-pvebc-Log-services-to-journal-plus-console.patch
 - Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
@@ -241,7 +262,7 @@ Fri May 22 14:54:18 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
   * pv: Fix error description
   * pvebc: Fix dependency for non EBC guests
   * pvebc: Fix kernel module dependencies
-  * zipl: Don't modify job->data.dump and job->data.mvdump sequentially 
+  * zipl: Don't modify job->data.dump and job->data.mvdump sequentially
 - Added new (EBC) services in the .spec file
   * sel-ebc-boot-mount.service
   * sel-ebc-override-crypttab.service
@@ -253,8 +274,8 @@ Fri May 22 14:54:18 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 Tue May 12 09:52:10 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated read_values.c (bsc#1263041, bsc#1263992)
-  * Includes /proc/sysinfo fallback to prevent the qclib 
-    "Unable to open configuration, return_code =-2" errors. 
+  * Includes /proc/sysinfo fallback to prevent the qclib
+    "Unable to open configuration, return_code =-2" errors.
 - Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
@@ -284,7 +305,7 @@ Mon May  4 06:21:20 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 - Bug Fixes:
   * hyptop/opts: Fix long command line option abbreviations
   * libutil/util_autocomp: Fix default file completion
-  * zipl/boot: Fix stage3 secure boot trailer placement 
+  * zipl/boot: Fix stage3 secure boot trailer placement
 - Remove obsolete pacthes:
   * s390-tools-hyptop-opts-Replace-sort_field-option-with-sort.patch
   * s390-tools-hyptop-opts-Fix-long-command-line-option-abbreviations.patch
@@ -294,7 +315,7 @@ Mon May  4 06:21:20 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 Fri Apr 17 07:43:21 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch to remove phmac_s390 kernel module load from dracut
-  * s390-tools-Remove-phmac_s390.patch 
+  * s390-tools-Remove-phmac_s390.patch
 - Applied a modified patch (bsc#1262221)
   * s390-tools-combined.patch
 - Amended SUSE's 'pkey.conf'
@@ -311,7 +332,7 @@ Thu Apr  9 09:42:24 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied patches (bsc#1261772)
   * s390-tools-hyptop-opts-Replace-sort_field-option-with-sort.patch
-  * s390-tools-hyptop-opts-Fix-long-command-line-option-abbreviations.patch 
+  * s390-tools-hyptop-opts-Fix-long-command-line-option-abbreviations.patch
 - Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
@@ -338,7 +359,7 @@ Mon Mar  2 11:48:50 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
   * paes_s390
   * phmac_s390
   * zcrypt
-  * zcrypt_cex4 
+  * zcrypt_cex4
 - Added files (renamed from *.opensuse)
   * 59-graf.rules
   * dasd_configure
@@ -389,7 +410,7 @@ Fri Feb 20 09:42:02 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Wed Feb 18 11:59:43 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Upgrade s390-tools to version 2.41.0 (jsc#PED-14586, jsc#PED-15488) 
+- Upgrade s390-tools to version 2.41.0 (jsc#PED-14586, jsc#PED-15488)
 - Changes of existing tools:
   * chreipl: Make --bootparms work for ECKD re-IPL
   * cpacfstats: Add 'unauthorized' state to CPU-MF counters
@@ -423,14 +444,14 @@ Thu Feb 12 09:59:56 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
   * cputype
   * Renamed cputype.1 to cputype.8 and amended
   * Amended read_values.8
-- "Improved" the read_values.c: 
+- "Improved" the read_values.c:
   * Added functionalities for '-a' and '-L attributes'
 - Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
 Fri Feb  6 10:12:57 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Reworked and combined all s390-tools patches 
+- Reworked and combined all s390-tools patches
 - Applied new combined patches
   * s390-tools-dasdfmt-reworked.patch
   * s390-tools-combined.patch
@@ -511,7 +532,7 @@ Mon Jan  5 09:09:46 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Thu Oct 16 07:41:18 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Upgrade s390-tools to version 2.39 (jsc#PED-10303) 
+- Upgrade s390-tools to version 2.39 (jsc#PED-10303)
 - Changes of existing tools:
   * chpstat: Add options to select IEC units for scaling (SI units are default)
   * chzdev: Introduce --no-module-load option
@@ -554,14 +575,14 @@ Mon Sep 29 13:53:31 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 Thu Aug 21 12:44:20 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1248264)
-  * s390-tools-sles16sp0-chpstat-Fix-scaling-of-DPU-utilization-calculation.patch 
+  * s390-tools-sles16sp0-chpstat-Fix-scaling-of-DPU-utilization-calculation.patch
 - Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
 Mon Aug 11 06:47:00 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Amended the .spec file (bsc#1246792) 
-  * Changed '%{release}' to '%{rbrelease}' in "DISTRELEASE=" 
+- Amended the .spec file (bsc#1246792)
+  * Changed '%{release}' to '%{rbrelease}' in "DISTRELEASE="
     to remove embedded build counters from the binaries
 - Re-vendor-ed vendor.tar.zst
 
@@ -628,7 +649,7 @@ Mon Jun 30 09:17:50 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
     - pvsecret: Fix some edge cases for plaintext keys
     - zipl_helper.device-mapper: Fix imprecise is_device_mapper() predicate
     - zkey: Fix EP11 secure key reencipher function
-    - zpcictl: Fix command line parsing for invalid options 
+    - zpcictl: Fix command line parsing for invalid options
   * Re-vendored vendor.tar.zst
   * Amended the .spec file
   * Removed obsolete patches
@@ -672,7 +693,7 @@ Mon Feb 24 06:51:08 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Mon Feb 10 07:36:08 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Upgrade s390-tools to 2.37 (jsc#PED-9591, jsc#PED-10303, jesc#PED-11870 (jsc#IBM-1062)) 
+- Upgrade s390-tools to 2.37 (jsc#PED-9591, jsc#PED-10303, jesc#PED-11870 (jsc#IBM-1062))
   * Changes of existing tools:
     dbginfo.sh: Add details on CPU-measurement
     dbginfo.sh: Add new crypto command
@@ -782,7 +803,7 @@ Thu Jan  9 07:05:53 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
     ( jsc#IBM-1576, jsc#IBM-1577 )
   * s390-tools-pvimg-additional-01.patch
 - Renamed patches from - to
-  * s390-tools-01-opticsmon-Fix-runaway-loop-in-on_link_change.patch 
+  * s390-tools-01-opticsmon-Fix-runaway-loop-in-on_link_change.patch
       to
       s390-tools-Additional-update-01.patch
   * s390-tools-02-libzpci-opticsmon-Refactor-on_link_change-using-new.patch
@@ -796,15 +817,15 @@ Thu Jan  9 07:05:53 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Tue Jan  7 08:59:16 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Applied a patch for '--(enable|disable)-image-encryption' flags for 'pvimg create' (jsc#PED-11870) 
-  * s390-tools-03-rust-pvimg-Add-enable-disable-image-encryption-flags-to-pvimg-create.patch 
+- Applied a patch for '--(enable|disable)-image-encryption' flags for 'pvimg create' (jsc#PED-11870)
+  * s390-tools-03-rust-pvimg-Add-enable-disable-image-encryption-flags-to-pvimg-create.patch
 
 -------------------------------------------------------------------
 Tue Dec 31 09:59:27 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied patches (jsc#PED-9591, jsc#PED-10303)
-  * s390-tools-01-opticsmon-Fix-runaway-loop-in-on_link_change.patch 
-  * s390-tools-02-libzpci-opticsmon-Refactor-on_link_change-using-new.patch 
+  * s390-tools-01-opticsmon-Fix-runaway-loop-in-on_link_change.patch
+  * s390-tools-02-libzpci-opticsmon-Refactor-on_link_change-using-new.patch
 
 -------------------------------------------------------------------
 Mon Dec  9 09:49:52 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -850,7 +871,7 @@ Tue Nov  5 07:39:58 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
   * ctc_configure
   * dasd_configure
   * qeth_configure
-  * zfcp_host_configure 
+  * zfcp_host_configure
 
 -------------------------------------------------------------------
 Tue Oct  8 10:35:04 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -892,7 +913,7 @@ Mon Aug 26 09:17:17 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
   - Fix: s390-tools: Rust compilation errors (s390_pv_core), build fails with
     "error: unnecessary qualification"
 * Added BuildRequieres in the .spec file
-  - perl-Bootloader >= 0.4.15 
+  - perl-Bootloader >= 0.4.15
 
 -------------------------------------------------------------------
 Mon Aug 19 08:28:34 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -955,15 +976,15 @@ Mon Aug 19 08:28:34 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 Thu Jul 11 14:56:34 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a new patch (bsc#1227602)
-  * s390-tools-slfo-01-parse-ipl-device-for-activation.patch 
-- Removed the old 'initial' patch 
+  * s390-tools-slfo-01-parse-ipl-device-for-activation.patch
+- Removed the old 'initial' patch
   * s390-tools-sles15sp6-01-parse-ipl-device-for-activation.patch
 
 -------------------------------------------------------------------
 Thu Jun 20 13:58:08 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended read_values.c (bsc#1226609)
-  * Added print for 'qc_type_name', amended the layers 
+  * Added print for 'qc_type_name', amended the layers
 - Updated %description in the .spec file
 
 -------------------------------------------------------------------
@@ -977,32 +998,32 @@ Thu Apr 25 14:56:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 Thu Apr 18 11:05:53 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied an updated patch (bsc#1220949,bsc#1221873)
-  * s390-tools-sles15sp6-01-parse-ipl-device-for-activation.patch 
+  * s390-tools-sles15sp6-01-parse-ipl-device-for-activation.patch
 
 -------------------------------------------------------------------
 Tue Apr 16 16:55:05 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file for x86_64
-  * Recommends: s390-tools-genprotimg-data 
+  * Recommends: s390-tools-genprotimg-data
 
 -------------------------------------------------------------------
 Tue Apr 16 07:48:20 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file for s390-tools-genprotimg-data-*.noarch.rpm
   * Removed the dependency on it on x86_64 platform
-  * Updated the Summary and Description of the *.noarch.rpm (bsc#1222675) 
+  * Updated the Summary and Description of the *.noarch.rpm (bsc#1222675)
 
 -------------------------------------------------------------------
 Fri Apr 12 15:28:09 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated the .spec file to enable Secure Execution in the Cloud (bsc#1222675)
   * Creates a s390-tools-genprotimg-data-*.noarch.rpm package which includes
-    s390x bootload binaries for x86_64: 
+    s390x bootload binaries for x86_64:
     - /lib/s390-tools/stage3.bin
     - /usr/share/s390-tools/genprotimg/stage3a.bin
     - /usr/share/s390-tools/genprotimg/stage3b_reloc.bin
   * Excludes the above binaries from the (main) s390-tools-*.s390x.rpm
-  * Requires: s390-tools-genprotimg-data 
+  * Requires: s390-tools-genprotimg-data
 
 -------------------------------------------------------------------
 Thu Apr  4 03:51:55 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -1011,7 +1032,7 @@ Thu Apr  4 03:51:55 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
   * s390-tools-sles15sp5-01-rust-pv-support-Armonk-in-IBM-signing-key-subject.patch
   * s390-tools-sles15sp6-02-genprotimg-support-Armonk-in-IBM-signing-key-subject.patch
   * s390-tools-sles15sp6-03-libpv-support-Armonk-in-IBM-signing-key-subject.patch
-  * s390-tools-sles15sp6-04-pvattest-Fix-root-ca-parsing.patch 
+  * s390-tools-sles15sp6-04-pvattest-Fix-root-ca-parsing.patch
 
 -------------------------------------------------------------------
 Tue Apr  2 05:32:45 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -1022,29 +1043,29 @@ Tue Apr  2 05:32:45 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Fri Mar 15 16:45:58 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Applied a patch (bsc#1221072) 
+- Applied a patch (bsc#1221072)
   * s390-tools-sles15sp6-genprotimg-makefile.patch
 
 -------------------------------------------------------------------
 Tue Mar 12 08:46:19 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Amended the .spec file for x86_64 (jsc#PED-7135, jsc#IBM-1309) 
+- Amended the .spec file for x86_64 (jsc#PED-7135, jsc#IBM-1309)
 
 -------------------------------------------------------------------
 Wed Feb 21 17:02:55 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Applied a patch for kdump initrd (bsc#1219471) 
+- Applied a patch for kdump initrd (bsc#1219471)
   * s390-tools-sles15sp6-kdump-initrd-59-zfcp-compat-rules.patch
 
 -------------------------------------------------------------------
 Wed Feb 21 11:12:33 CET 2024 - ro@suse.de
 
-- Provide groups as required by RPM 4.19 
+- Provide groups as required by RPM 4.19
 
 -------------------------------------------------------------------
 Wed Feb  7 07:55:51 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Upgrade s390-tools to version 2.31 (jsc#PED-3275, jsc#PED-3223) 
+- Upgrade s390-tools to version 2.31 (jsc#PED-3275, jsc#PED-3223)
 - General:
   * common.mak: Set default C/C++ standard to gnu11/gnu++11
 - Add new tools / libraries:
@@ -1066,7 +1087,7 @@ Wed Feb  7 07:55:51 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Thu Feb  1 08:31:08 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Updated read_values.c (bsc#1219227) 
+- Updated read_values.c (bsc#1219227)
 
 -------------------------------------------------------------------
 Wed Jan 24 14:27:00 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -1077,14 +1098,14 @@ Wed Jan 24 14:27:00 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Sun Dec 17 05:48:56 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Updated the .spec file to use gcc13 (bsc#1217838) 
+- Updated the .spec file to use gcc13 (bsc#1217838)
 - Amended read_values for '-S' option (bsc#1217923)
 
 -------------------------------------------------------------------
 Mon Dec  4 13:34:09 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to version 2.30
-    (jsc#PED-5783, jsc#PED-6785, jsc#PED-7136, jsc#PED-6539, jsc#PED-4604, 
+    (jsc#PED-5783, jsc#PED-6785, jsc#PED-7136, jsc#PED-6539, jsc#PED-4604,
      jsc#PED-6649, jsc#PED-7138 )
 - Add new tools / libraries:
   * lspai: Tool to display PAI counter sets
@@ -1105,7 +1126,7 @@ Mon Dec  4 13:34:09 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 - Bug Fixes:
   * ap_tools/ap-check: handle get-attributes between pre and post event
   * libutil: fix util_file_read_*() using wrong format specifiers
-  * rust/pv: fix Invalid write of size  
+  * rust/pv: fix Invalid write of size
 - Amended the SUSE patches for version 2.30
 - Revendored vendor.tar.gz
 - Removed an obsolete patch
@@ -1117,17 +1138,17 @@ Fri Nov 24 07:51:10 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 - Provide s390-tools on x86_64 to enable Secure Execution in the Cloud
     (jsc#PED-578, jsc#PED-7136, and jsc#PED-7138)
   * Selected tools from the s390-tools package need to be made available on x86_64.
-    This will enable the integration of IBM Z machines running Secure Execution in a 
+    This will enable the integration of IBM Z machines running Secure Execution in a
     cloud environment where users don't necessarily need to have an s390x environment.
-    - genprotimg    - (for building secure images) 
-    - pvsecret      - 
+    - genprotimg    - (for building secure images)
+    - pvsecret      -
     - pvattest      - (for external attestation)
     - pvextract-hdr -
 
 -------------------------------------------------------------------
 Wed Nov 15 07:31:45 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Fixed a logic error in read_values.c 
+- Fixed a logic error in read_values.c
 
 -------------------------------------------------------------------
 Mon Nov 13 13:13:11 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -1273,7 +1294,7 @@ Mon Aug 21 13:29:47 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
   * s390-tools-sles15sp5-01-zdev-add-missing-label-in-the-udev-rules.patch
   * s390-tools-sles15sp5-01-zdev-add-proper-value-input-for-the-ZDEV_SITE_ID-key.patch
   * s390-tools-sles15sp5-02-zdev-use-rename-file-to-avoid-any-symlinks-created.patch
-  * s390-tools-sles15sp5-dasdfmt-Fall-back-to-full-format-if-space-release-fa.patch 
+  * s390-tools-sles15sp5-dasdfmt-Fall-back-to-full-format-if-space-release-fa.patch
 
 -------------------------------------------------------------------
 Thu May  4 11:06:54 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -1308,7 +1329,7 @@ Thu Mar 23 12:45:57 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 Mon Mar 13 10:56:44 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1209196)
-  * s390-tools-sles15sp5-lszcrypt-use-separate-index-for-inner-sub-device-loo.patch 
+  * s390-tools-sles15sp5-lszcrypt-use-separate-index-for-inner-sub-device-loo.patch
 
 -------------------------------------------------------------------
 Wed Mar  8 09:10:20 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -1348,8 +1369,8 @@ Thu Feb 16 16:24:33 UTC 2023 - José Gómez <jose.gomez@suse.com>
 -------------------------------------------------------------------
 Mon Feb  6 17:00:40 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Added patch (bsc#1207947) 
-  * s390-tools-sles15sp5-zkey-Support-EP11-host-library-version-4.patch 
+- Added patch (bsc#1207947)
+  * s390-tools-sles15sp5-zkey-Support-EP11-host-library-version-4.patch
 
 -------------------------------------------------------------------
 Wed Jan 11 15:39:38 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -1361,7 +1382,7 @@ Wed Jan 11 15:39:38 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 -------------------------------------------------------------------
 Tue Jan 10 08:22:05 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
-- Updated read_values.c for z16 machine type (bsc#1206832) 
+- Updated read_values.c for z16 machine type (bsc#1206832)
 
 -------------------------------------------------------------------
 Tue Dec 27 13:19:41 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
@@ -1540,13 +1561,13 @@ Mon Nov 28 14:26:18 UTC 2022 - Mark Post <mpost@suse.com>
   * Change BuildRequires for fuse-devel to fuse3-devel.
   * Remove obsolete BuildRequires for libpfm-devel
   * Add a BuildRequires for mdevctl and systemd-devel
-  * Added a %files entry for dir %{_prefix}/lib/dracut/modules.d/99ngdump  
+  * Added a %files entry for dir %{_prefix}/lib/dracut/modules.d/99ngdump
   * Added %config(noreplace) for the new file %{_sysconfdir}/ziplenv
   * Uncomment the %files entry for %{_mandir}/man7/chreipl-fcp-mpath.7%{?ext_man}
     Specifying ENABLE_DOC=1 is no longer needed for it to be generated.
   * Add %dir entries for
       %{_prefix}/lib/mdevctl,
-      %{_prefix}/lib/mdevctl/scripts.d, and 
+      %{_prefix}/lib/mdevctl/scripts.d, and
       %{_prefix}/lib/mdevctl/scripts.d/callouts
     NOTE that these directories do not belong to this package, but
     the mdevctl package has yet to be updated to claim them. So,
@@ -1619,9 +1640,9 @@ Thu May 26 17:03:32 UTC 2022 - Mark Post <mpost@suse.com>
 - Added s390-tools-sles15sp4-libseckey-Adapt-keymgmt_match-implementation-to-Open.patch
   for bsc#1199649. zkey: KMIP plugin fails to connection to KMIP server
   When a zkey key repository is bound to the KMIP plugin, and the
-  connection to the KMIP server is to be configired using command 
+  connection to the KMIP server is to be configired using command
   'zkey kms configure --kmip-server <server>', it fails to connect
-  to the specified KMIP server. 
+  to the specified KMIP server.
 - Added s390-tools-sles15sp4-genprotimg-boot-disable-Warray-bounds-for-now.patch
   to fix a build failure with gcc12. With gcc12, a "false positive"
   of "array subscript 0 is outside array bounds" is seen in
@@ -1653,20 +1674,20 @@ Mon Apr 11 21:11:48 UTC 2022 - Mark Post <mpost@suse.com>
   s390-tools-sles15sp4-libseckey-Fix-re-enciphering-of-EP11-secure-key.patch
   When re-enciphering the identity key and/or wrapping key of the
   zkey KMIP plugin via 'zkey kms reencipher', the operation
-  completes without an error, but the secure keys are left 
+  completes without an error, but the secure keys are left
   un-reenciphered.
 
 -------------------------------------------------------------------
 Fri Mar  4 13:55:43 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
-- install modprobe.conf files into %_modprobedir (bsc#1196275, jsc#SLE-20639) 
+- install modprobe.conf files into %_modprobedir (bsc#1196275, jsc#SLE-20639)
 
 -------------------------------------------------------------------
 Tue Feb 22 19:37:07 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Added s390-tools-sles15sp4-zdev-modify-the-lsblk-output-parser-in-lszdev.patch
   for bsc#1196255. Version 2.37+ of util-linux modified the output
-  characters of lsblk,which breaks the parser function. 
+  characters of lsblk,which breaks the parser function.
 - Added s390-tools-sles15sp4-zdev-Fix-path-resolution-for-multi-mount-point-file-.patch
   for bsc#1196254. Path resolution fails when a device provides
   multiple mount points such as, for example, when using btrfs
