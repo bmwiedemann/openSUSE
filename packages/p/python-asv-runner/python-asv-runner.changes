@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 20 20:36:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.2:
+  * Benchmark classes can now carry arbitrary user-defined
+    attributes, which are collected onto the benchmark instance
+    (#55, thanks @hominhquan). This unblocks `higher_is_better`
+    for `track_*` benchmarks in asv (asv#1621).
+
+-------------------------------------------------------------------
 Wed Sep  2 02:12:58 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.3.1:

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asv-runner
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Core Python benchmark code for ASV
 License:        BSD-3-Clause

@@ -54,4 +54,16 @@
 - Ship the license and README in the built packages.</comment>
     <requestid>1375260</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53902f33a4fe10760b065d39f447cbcb</srcmd5>
+    <version>0.3.2</version>
+    <time>1795294018</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.2:
+  * Benchmark classes can now carry arbitrary user-defined
+    attributes, which are collected onto the benchmark instance
+    (#55, thanks @hominhquan). This unblocks `higher_is_better`
+    for `track_*` benchmarks in asv (asv#1621).</comment>
+    <requestid>1399548</requestid>
+  </revision>
 </revisionlist>
