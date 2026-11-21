@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 19 19:42:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.39
+  * Changed some code in `DecomposeModuleViaCharPoly`,
+    `IsFiniteTypeAlgebra`
+  * Fixed bugs in `RightApproximationByAddM`
+
+-------------------------------------------------------------------
 Sat Oct 24 07:57:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Updated to release 1.38
