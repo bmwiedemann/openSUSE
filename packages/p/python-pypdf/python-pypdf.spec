@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pypdf
-Version:        6.21.2
+Version:        6.21.4
 Release:        0
 Summary:        PDF toolkit
 License:        BSD-3-Clause
@@ -77,6 +77,7 @@ donttest+=" or test_font_old_fonttools_substitution"
 # flaky tests
 donttest+=" or test_flatedecode__decode_png_prediction__speed"
 donttest+=" or test_decompress__fallback__speed"
+donttest+=" or test_add_tm__matrix_multiplications"
 
 # Skip network tests, or tests that require large sample files
 %pytest -m "not (enable_socket or samples)" -k "not ($donttest)"

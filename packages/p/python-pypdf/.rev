@@ -347,4 +347,24 @@
   * Declare official support for Python 3.15</comment>
     <requestid>1392657</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>337e1f1bac5eed0cdf6201f79cc2c357</srcmd5>
+    <version>6.21.4</version>
+    <time>1795293892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.21.4 (CVE-2026-119203, bsc#1288941, CVE-2026-119204, bsc#1288942,
+  CVE-2026-119205, bsc#1288943)
+  * SEC: Limit the number of copied page attributes during flattening
+  * SEC: Detect EOF when reading standard xref table trailer
+  * SEC: Fix loop detection when cloning DictionaryObject
+  6.21.3 (CVE-2026-119209, bsc#1288950, CVE-2026-119208, bsc#1288951,
+  CVE-2026-119207, bsc#1288952, CVE-2026-119206, bsc#1288944)
+  * SEC: Use the validated page count after decrypting a document
+  * SEC: Limit total number of cross-reference stream entries
+  * SEC: Avoid excessive error messages
+  * Read flat page label number trees once for all pages
+  * Revert: Reject unsupported key lengths in the /Encrypt dictionary
+</comment>
+    <requestid>1398661</requestid>
+  </revision>
 </revisionlist>
