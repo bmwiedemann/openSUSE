@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 20 20:35:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2026.11.16.0.37.44:
+  * DEP: upgrade GHA dependencies
+  * SEC/DEP: upgrade GHA dependencies depending on locked version
+    of `certifi`
+  * Bump GHA versions
+  * Drop Python 3.10, bump GHA versions again
+- update to 0.2026.10.20.13.3.2:
+  * DEP: simplify and un-expose dev-only dependencies
+  * SEC: auto-fix a possible template-injection target
+  * SEC: disable default gha permissions
+  * TST: add test for `Leap_Second.dat`
+  * REL: rewrite publishing workflow to use trusted publishers
+    instead of a long lived API token
+  * RFC: explicit allow credentials persistence
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2026.10.19.0.52.1...v0.2026.10.20.13.3.2
+
+-------------------------------------------------------------------
 Mon Jul 13 10:23:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2026.7.13.0.54.2:
