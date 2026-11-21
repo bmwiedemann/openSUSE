@@ -270,4 +270,12 @@
 - Update golang.org/x/net to v0.62.0 (forwarded request 1398329 from glaubitz)</comment>
     <requestid>1398501</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7862a8638d889d3e7f0cdd005614b914</srcmd5>
+    <version>10.34.2</version>
+    <time>1795293994</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1399514</requestid>
+  </revision>
 </revisionlist>

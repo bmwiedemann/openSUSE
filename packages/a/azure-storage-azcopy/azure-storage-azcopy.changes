@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 20 15:57:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix vendor.tar:
+  - was silently downgrading and removing several security
+    fixes claimed to be fixed in prior update
+
+-------------------------------------------------------------------
 Wed Nov 18 07:37:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 10.34.2
