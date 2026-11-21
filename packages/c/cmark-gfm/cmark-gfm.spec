@@ -17,26 +17,28 @@
 
 
 # Upstream bakes the full release string into the SONAME
-# (libcmark-gfm.so.0.29.0.gfm.13).  We keep parity with the upstream
+# (libcmark-gfm.so.0.29.0.gfm.14).  We keep parity with the upstream
 # soname (as Debian/Arch/Gentoo do).  Per the shared-library packaging
 # policy, the lib subpackage suffix reflects the FULL soname
-# (0_29_0_gfm_13), so that a future .gfm.NN soname bump renames the
+# (0_29_0_gfm_14), so that a future .gfm.NN soname bump renames the
 # package cleanly.  The alphabetic "gfm" component makes rpmlint's shlib
 # detector emit a spurious shlib-policy-missing-lib, which is filtered in
 # cmark-gfm.rpmlintrc.
-%define sover    0.29.0.gfm.13
-%define libcmark libcmark-gfm0_29_0_gfm_13
-%define libext   libcmark-gfm-extensions0_29_0_gfm_13
+%define sover    0.29.0.gfm.14
+%define libcmark libcmark-gfm0_29_0_gfm_14
+%define libext   libcmark-gfm-extensions0_29_0_gfm_14
 Name:           cmark-gfm
-Version:        0.29.0.gfm.13
+Version:        0.29.0.gfm.14
 Release:        0
 Summary:        GitHub's fork of cmark, a CommonMark parsing and rendering library
 License:        BSD-2-Clause AND MIT
 URL:            https://github.com/github/cmark-gfm
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
-# PATCH-FIX-UPSTREAM cmark-gfm-0.29.0.gfm.13-cmake4.patch gh#github/cmark-gfm#390 -- build with CMake 4 and switch the test suite to FindPython
-Patch0:         %{name}-%{version}-cmake4.patch
+# PATCH-FIX-UPSTREAM cmark-gfm-0.29.0.gfm.13-cmake4.patch gh#github/cmark-gfm#390 -- switch the test suite from removed FindPythonInterp to FindPython for CMake 4 (minimum part upstream in #383)
+Patch0:         cmark-gfm-0.29.0.gfm.13-cmake4.patch
+# PATCH-FIX-OPENSUSE cmark-gfm-footnote-label.patch -- copy raw footnote label bytes into owned storage; upstream #403 fixed the UAF but truncated labels at HTML/code inlines, breaking extensions Example 25
+Patch1:         cmark-gfm-footnote-label.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++

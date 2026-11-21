@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov 21 07:07:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.29.0.gfm.14, verified as upstream tag published
+  2026-11-18:
+  * Fix use-after-free in footnote reference parsing
+    (GHSA-84x9-qqwv-3w4q)
+  * Fix unsigned pointer overflow in autolink validate_protocol
+  * Raise CMake minimum to 3.5
+- Rename lib subpackages with the versioned soname:
+  libcmark-gfm0_29_0_gfm_14 and
+  libcmark-gfm-extensions0_29_0_gfm_14
+- Rebase cmark-gfm-0.29.0.gfm.13-cmake4.patch: drop cmake-minimum
+  hunk adopted upstream, keep FindPython test switch
+- Fix %check 2/13 failures (extensions Example 25): copy raw
+  footnote label bytes into owned storage via
+  cmark-gfm-footnote-label.patch (upstream #403 fixed the UAF but
+  truncated labels at HTML inlines)
+
+-------------------------------------------------------------------
 Sat Jun 27 00:00:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.29.0.gfm.13)

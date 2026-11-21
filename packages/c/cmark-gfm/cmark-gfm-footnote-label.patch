@@ -1,0 +1,81 @@
+Copy footnote reference labels from the raw source slice instead of
+rebuilding them from decoded inline nodes.  Upstream 0.29.0.gfm.14
+(PR github/cmark-gfm#403, GHSA-84x9-qqwv-3w4q) fixed the
+use-after-free by allocating a fresh buffer, but it concatenates only
+CMARK_NODE_TEXT fragments.  Any HTML/code inline inside the label
+(e.g. the "<script>" in test/extensions.txt Example 25 "Footnote
+reference labels are href escaped") truncates the label, while footnote
+definitions keep the raw bytes (src/blocks.c scan_footnote_definition),
+so the reference no longer matches and %check fails 2/13
+(extensions_executable, roundtrip_extensions_executable) with literal
+"Hello[^...]" output.  Copying byte offsets opener->position..initial_pos
+from subj->input into owned storage preserves the UAF fix, matches the
+definition handling, and restores bracket-inclusive source ranges.
+
+--- a/src/inlines.c
++++ b/src/inlines.c
+@@ -1255,24 +1255,49 @@
+ 
+       cmark_node *fnref = make_simple(subj->mem, CMARK_NODE_FOOTNOTE_REFERENCE);
+ 
+-      // Sometimes, the footnote reference text gets parsed into multiple nodes
+-      // (see longer comment below). Therefore, we iterate through the nodes,
+-      // copying the text fragments into a new string buffer named `fnref_buf`.
++      // Footnote definitions keep the raw label bytes (src/blocks.c:
++      // scan_footnote_definition + cmark_chunk_dup, no decoding).  Copy
++      // the raw source slice between "[^" and "]" into owned storage so
++      // the reference matches the definition byte for byte and cannot
++      // dangle (GHSA-84x9-qqwv-3w4q).  Do not rebuild from decoded
++      // inline nodes: that truncates at HTML/code inlines and alters
++      // entities/escapes, breaking test/extensions.txt Example 25.
++      // opener->position is just after "[", initial_pos just after "]".
+       cmark_strbuf fnref_buf = CMARK_BUF_INIT(subj->mem);
+-      cmark_node *current_node = opener->inl_text->next;
+-      fnref->start_line = current_node->start_line;
+-      fnref->start_column = current_node->start_column;
+-      // Don't copy the first character, which is '^'.
+-      cmark_strbuf_put(&fnref_buf, literal->data + 1, literal->len - 1);
+-      cmark_node *next_node = current_node->next;
+-      while (next_node && next_node->type == CMARK_NODE_TEXT) {
+-        current_node = next_node;
+-        cmark_strbuf_put(&fnref_buf, current_node->as.literal.data, current_node->as.literal.len);
+-        next_node = current_node->next;
++      // The caret marker is normally one byte "^", but may appear
++      // escaped ("\\^") or as an entity ("&#94;", "&#x5e;", ...) which
++      // still decodes to "^" above.  Skip exactly that marker.
++      bufsize_t caret_len = 1;
++      if (opener->position < subj->input.len) {
++        unsigned char c0 = subj->input.data[opener->position];
++        if (c0 == '^') {
++          caret_len = 1;
++        } else if (c0 == '\\' && opener->position + 1 < subj->input.len &&
++                   subj->input.data[opener->position + 1] == '^') {
++          caret_len = 2;
++        } else if (c0 == '&') {
++          bufsize_t i = opener->position;
++          while (i < subj->input.len && i < opener->position + 32 &&
++                 subj->input.data[i] != ';') {
++            i++;
++          }
++          if (i < subj->input.len && subj->input.data[i] == ';') {
++            caret_len = i - opener->position + 1;
++          }
++        }
++      }
++      bufsize_t label_start = opener->position + caret_len;
++      bufsize_t label_end = initial_pos - 1;
++      if (label_end > label_start) {
++        cmark_strbuf_put(&fnref_buf, subj->input.data + label_start,
++                         label_end - label_start);
+       }
+-      fnref->end_line = current_node->end_line;
+-      fnref->end_column = current_node->end_column;
+       fnref->as.literal = cmark_chunk_buf_detach(&fnref_buf);
++      fnref->start_line = fnref->end_line = subj->line;
++      fnref->start_column = opener->inl_text->start_column;
++      fnref->end_column = subj->pos + subj->column_offset + subj->block_offset;
++      cmark_node *current_node = opener->inl_text->next;
++      cmark_node *next_node;
+ 
+       // we then replace the opener with this new fnref node, the net effect
+       // being replacing the opening '[' text node with a `^footnote-ref]` node.

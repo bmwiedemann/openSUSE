@@ -7,4 +7,12 @@
     <comment>Rename shared-lib subpackages to the full soname (libcmark-gfm0_29_0_gfm_13 / libcmark-gfm-extensions0_29_0_gfm_13) per dimstar's review on sr#1362035 (soname libcmark-gfm.so.0.29.0.gfm.13). New package, no consumers; mupdf links pkgconfig(libcmark-gfm) so it's unaffected. Co-stage with mupdf sr#1362065 (depends on cmark-gfm).</comment>
     <requestid>1362421</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5cd2ef23cb93d1c21e5a25254c86cca1</srcmd5>
+    <version>0.29.0.gfm.14</version>
+    <time>1795294050</time>
+    <user>dimstar_suse</user>
+    <comment>Update cmark-gfm to 0.29.0.gfm.14: footnote UAF + autolink fixes, soname rename, raw-label %check fix</comment>
+    <requestid>1399606</requestid>
+  </revision>
 </revisionlist>

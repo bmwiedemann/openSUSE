@@ -1,5 +1,5 @@
 # Upstream bakes the full release string into the SONAME, so the shared
-# libraries carry libcmark-gfm.so.0.29.0.gfm.13 / libcmark-gfm-extensions.so.0.29.0.gfm.13.
+# libraries carry libcmark-gfm.so.0.29.0.gfm.14 / libcmark-gfm-extensions.so.0.29.0.gfm.14.
 # The alphabetic "gfm" component is not a numeric ELF soname version, so
 # rpmlint's shared-library detector fails to recognise the file as a
 # versioned library and spuriously reports shlib-policy-missing-lib for

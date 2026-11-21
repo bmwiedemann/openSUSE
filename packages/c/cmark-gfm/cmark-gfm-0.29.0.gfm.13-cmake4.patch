@@ -1,16 +1,11 @@
-Update the CMake files to version 4
+Switch the test suite from removed FindPythonInterp to FindPython for CMake 4
 
+Upstream adopted the cmake-minimum part (3.0 -> 3.5) in
+https://github.com/github/cmark-gfm/pull/383, so only the test-suite
+part is carried here.
 Patch submitted upstream, along with other improvements:
 https://github.com/github/cmark-gfm/pull/390
 
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -1,4 +1,4 @@
--cmake_minimum_required(VERSION 3.0)
-+cmake_minimum_required(VERSION 4.0)
- project(cmark-gfm)
- 
- set(PROJECT_VERSION_MAJOR 0)
 --- a/test/CMakeLists.txt
 +++ b/test/CMakeLists.txt
 @@ -4,9 +4,9 @@
