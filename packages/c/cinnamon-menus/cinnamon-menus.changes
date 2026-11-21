@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 20 18:06:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.8.0:
+  * entry-directories: skip entries whose desktop file id is not
+    valid UTF-8 (#85)
+  * Add stale issue workflow.
+  * stale: Add more options to inactivity days.
+  * stale.yml: Enable cron job.
+  * stale.yml: Remove leftover comment.
+
+-------------------------------------------------------------------
 Wed Mar 25 23:08:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.6.0:

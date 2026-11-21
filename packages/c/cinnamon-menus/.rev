@@ -186,4 +186,18 @@
   * no changelog available</comment>
     <requestid>1342643</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>32e984da6a07369ea6b4e7fd73741e3a</srcmd5>
+    <version>6.8.0</version>
+    <time>1795294004</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.8.0:
+  * entry-directories: skip entries whose desktop file id is not
+    valid UTF-8 (#85)
+  * Add stale issue workflow.
+  * stale: Add more options to inactivity days.
+  * stale.yml: Enable cron job.
+  * stale.yml: Remove leftover comment.</comment>
+    <requestid>1399526</requestid>
+  </revision>
 </revisionlist>

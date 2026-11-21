@@ -18,7 +18,7 @@
 
 %define         sover   0
 Name:           cinnamon-menus
-Version:        6.6.0
+Version:        6.8.0
 Release:        0
 Summary:        A menu system for the Cinnamon Desktop
 License:        LGPL-2.1-or-later
