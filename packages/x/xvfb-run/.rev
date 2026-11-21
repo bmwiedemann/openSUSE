@@ -64,4 +64,14 @@
   * fix syntax to parse for long options --error-file and --auth-file</comment>
     <requestid>1344078</requestid>
   </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>fd19c4151bd75f787fc58cd2d503e497</srcmd5>
+    <version>1.5.2</version>
+    <time>1795293911</time>
+    <user>dimstar_suse</user>
+    <comment>- updated xvfb-run.1.gz, xvfb-run.sh to upstream version
+
+- Add missing dependency on awk</comment>
+    <requestid>1398786</requestid>
+  </revision>
 </revisionlist>

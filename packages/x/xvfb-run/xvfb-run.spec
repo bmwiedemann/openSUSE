@@ -29,6 +29,7 @@ Source1:        https://manpages.debian.org/testing/xvfb/xvfb-run.1.en.gz#/xvfb-
 Patch0:         xvfb-run-mktemp.patch
 # https://bugzilla.opensuse.org/show_bug.cgi?id=1261252#c2
 Patch1:         xvfb-run-boo1261252.patch
+Requires:       awk
 Requires:       coreutils
 Requires:       util-linux
 Requires:       which
