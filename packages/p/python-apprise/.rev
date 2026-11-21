@@ -202,4 +202,41 @@
     send the notification.  Use `retry=X` on your Apprise URL</comment>
     <requestid>1359211</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3db2b2115c7c8e531f80fcc5d2f30b42</srcmd5>
+    <version>2.2.0</version>
+    <time>1795294033</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0 (GHSA-cfp4-m43r-v9q4):
+  * Add notification support for Groundmail, Infobip, CM.com,
+    Telesign, Gupshup, Kaleyra, KakaoTalk, xMatters,
+    Whapi.Cloud WhatsApp, FireHydrant Signals, Nostr, and
+    SMSTunnel
+  * Allow Apprise to work without markdown package installed
+  * Support blank data as input on incident reporting
+  * Add Bark subtitle, copy, action, archive, ttl, id and
+    delete support
+  * Keep CC display names in Postmark, Resend, and Groundmail
+    URLs
+  * Handle click v8.5 deprecation notice
+  * Fix rsyslog:// facility doubling in PRI value
+  * Make tag checks on services case-insensitive
+  * Fix d7sms:// batch=yes raising TypeError on failed send
+  * Fix reddit:// ignoring ad= and replies=
+  * Fix psafer:// ignoring priority=
+  * Fix xml:// ignoring GET params
+  * Fix burstsms:// ignoring validity= and rejecting uppercase
+    country=
+  * Fix lametric:// cloud mode not sending X-Access-Token
+  * Allow Zulip messages without a title
+  * IPv6 hardening and global TLS timeouts
+- update to 2.1.0:
+  * Add notification support for GoAlert, OneBot (QQ), AMQP
+    v0.9.1/v1.0, GitHub issues/discussions/PRs, Gorush, Better
+    Stack, incident.io, Squadcast, ilert, LFG Alarm, Zalo, and
+    Zoho Cliq
+  * Support Discord emoji overrides
+  * Accept semicolon between URLs in URL list</comment>
+    <requestid>1399557</requestid>
+  </revision>
 </revisionlist>

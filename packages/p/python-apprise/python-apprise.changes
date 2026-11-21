@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Fri Nov 20 21:09:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0 (GHSA-cfp4-m43r-v9q4):
+  * Add notification support for Groundmail, Infobip, CM.com,
+    Telesign, Gupshup, Kaleyra, KakaoTalk, xMatters,
+    Whapi.Cloud WhatsApp, FireHydrant Signals, Nostr, and
+    SMSTunnel
+  * Allow Apprise to work without markdown package installed
+  * Support blank data as input on incident reporting
+  * Add Bark subtitle, copy, action, archive, ttl, id and
+    delete support
+  * Keep CC display names in Postmark, Resend, and Groundmail
+    URLs
+  * Handle click v8.5 deprecation notice
+  * Fix rsyslog:// facility doubling in PRI value
+  * Make tag checks on services case-insensitive
+  * Fix d7sms:// batch=yes raising TypeError on failed send
+  * Fix reddit:// ignoring ad= and replies=
+  * Fix psafer:// ignoring priority=
+  * Fix xml:// ignoring GET params
+  * Fix burstsms:// ignoring validity= and rejecting uppercase
+    country=
+  * Fix lametric:// cloud mode not sending X-Access-Token
+  * Allow Zulip messages without a title
+  * IPv6 hardening and global TLS timeouts
+- update to 2.1.0:
+  * Add notification support for GoAlert, OneBot (QQ), AMQP
+    v0.9.1/v1.0, GitHub issues/discussions/PRs, Gorush, Better
+    Stack, incident.io, Squadcast, ilert, LFG Alarm, Zalo, and
+    Zoho Cliq
+  * Support Discord emoji overrides
+  * Accept semicolon between URLs in URL list
+  * Keep line breaks and indentation in HTML to text conversion
+  * Improve persistent storage namespaces path handling
+  * Make incident plugins consistent and allow PagerDuty,
+    PagerTree, and SIGNL4 to resolve alerts
+  * Preserve plugin ?tags= from URLs in YAML config
+  * Close MQTT connection when notifier is freed
+  * Matrix E2EE: stop publishing unused one-time keys and use
+    standard Base64 for attachment IV
+  * Hide sensitive tokens and passwords in privacy URLs for
+    matrix://, smpp://, and twilio://
+  * Preserve from=, flash=, and label= in seven:// URL
+  * Preserve from= sender address in Pingram and Mailgun URLs
+  * Preserve custom from= address and CC display names in email
+    URLs
+  * Preserve encoded slashes and escapes in URL paths
+  * Honor +Arg=Val and -Arg in ifttt:// URLs
+  * Fix email reply= failing after first recipient
+  * Fix SendPulse sending only last CC/BCC address
+  * Decommission Amazon Chime
+- update to 2.0.1:
+  * Support Nextcloud Talk bot authentication
+  * Add Telegram photo and video album support
+  * Rewrite spush:// for new Simplepush API with tasks and
+    attachments
+  * Escape unmatched markup characters for Telegram Markdown v1
+  * Matrix: accept HTTP 202 Accepted status code and preserve
+    title/body separation in rich notifications
+  * Fix HTML issue with Flock
+  * Fix v2 format conversion regression
+  * Run test suite in parallel with pytest-xdist
+  * Only load PyYAML when YAML configuration is used
+- update to 2.0.0:
+  * Breaking changes:
+    - notify() returns AppriseResult object instead of
+      True/False/None with CLI-aligned exit codes
+    - Services can support multiple body formats (auto-detected
+      or selected via ?format=)
+    - All exceptions consolidated under AppriseException family
+    - Rename APPRISE_CONFIG to APPRISE_CONFIG_PATH
+    - Remove deprecated email options use_pgp= and ?pgpkey=
+      (use pgp_mode= and ?pgppub=)
+    - Fail with error on invalid URL settings
+  * Add notification support for Delta Chat, WPUSH, YouLMK, and
+    Telnyx SMS
+  * Add YAML configuration template variables (${NAME})
+  * Add tag priorities and escalation (e.g. 2:alerts)
+  * Smarter retries tracking previously delivered endpoints
+  * Add execution and per-service timeouts (--limit,
+    --service-limit)
+  * Parallel delivery by default (--disable-async for serial)
+  * Add native async support via async_notify()
+  * Rework message overflow/split and HTML to Markdown
+    conversion
+  * Matrix: add opt-in automatic SAS verification
+  * Add macOS terminal-notifier support
+  * Secure logging improvements to prevent sensitive leaks
+    (CWE-312)
+  * Keep configuration ID out of apprise:// URL path
+  * Add multi-language support
+  * Fix DingTalk Markdown msgtype setting
+  * Fix OneSignal language= handling and target prefix doubling
+  * Fix SIGNL4 query parameters retention in url()
+  * Fix VAPID delivery endpoint
+  * Fix Fluxer self-hosted server URLs
+  * Fix ntfy attach= filename detection
+  * Fix compressed IPv6 address handling
+  * Fix YAML/config parsing issue
+  * Fix crash reading Amazon SES/SNS responses
+- update to 1.13.1:
+  * Add notification support for Signalgrid and Lauther
+  * Fix memory-based attachment handling
+  * Allow periods in Pingram API keys (JWT format)
+  * Fix intermittent Matrix test failures
+  * Support Python 3.13+
+- update to 1.13.0:
+  * Add notification support for Pinglet, Trigv, and Pingram
+  * Bark: add AES-GCM encryption
+  * Add Telegram rich message support
+  * Improve Matrix message splitting
+  * Preserve x/y coordinate of 0 in dbus/glib url()
+  * Allow safe RFC 3986 path characters unencoded
+  * Fix Splunk entity_id handling in URL
+  * Fix Microsoft Workflows CU-routed webhooks
+  * Fix failure with in-memory email attachments
+  * Decommission legacy NotificationApi service
+  * Add Italian translation
+- update to 1.12.0:
+  * Add notification support for Stackfield, PushWard,
+    MailerSend, Notifyer, 800.com, Kook, Serwer SMS, SMSC, and
+    Flowtriq
+  * Built-in HTML to Markdown support
+  * Add Discord templating and multi-attachment support
+  * Add RFC 2387 inline attachments to email://
+  * Add support for MS Teams user mentions
+  * Add same-level YAML indented URL configuration support
+  * XMPP SASL improvements and CLI debug output
+  * Fix Slack webhook botname and default identity behavior
+  * Fix OneSignal url() doubling @/# target prefixes on reload
+  * Verify SMTP TLS certificates for SMTPS and STARTTLS
+  * Fix name= support on http:// attachments
+  * Remove decommissioned Popcorn Notify plugin
+
+-------------------------------------------------------------------
 Sun Jun 14 09:10:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.0:
