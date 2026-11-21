@@ -320,4 +320,14 @@
     <comment></comment>
     <requestid>1150757</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7ea03864dc5da0bba70c6e9b0e0cc7f7</srcmd5>
+    <version>2.6.16</version>
+    <time>1795293881</time>
+    <user>dimstar_suse</user>
+    <comment>flex: use /usr/bin/gettext BuildRequires for distro bootstrap
+- Supersedes sr#1398140 (2.6.4-&gt;2.6.16, now with file dep).
+- Addresses dimstar comment: file dep takes gettext-runtime-mini.</comment>
+    <requestid>1398929</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Fri Nov 20 08:43:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Use /usr/bin/gettext BuildRequires for distro bootstrap: the file
+  dep resolves to gettext-runtime-mini, avoiding full gettext which
+  pulls in a systemd build chain
+
+-------------------------------------------------------------------
+Tue Nov 17 05:55:51 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to 2.6.16
+  * after input() or yyinput(), yytext ends at the end of the
+    token again, as in 2.6.4.
+  * yyFlexLexer has a new member, so C++ programs and any of their
+    libraries that include FlexLexer.h need to be rebuilt.
+  * yyless() now returns the right text and no longer writes a
+    stale character past the end of the token
+- Update to 2.6.15
+  * a program can define YY_BREAK again, as with 2.6.4
+  * a program can declare yyinput() itself again
+- Update to 2.6.14
+  * after yyless() gives text back, the scanner now decides whether
+    it is at the start of a line from the text it kept.
+  * yyinput() used to replace the characters it read with NUL
+    bytes, which broke buffers supplied with yy_scan_buffer().
+
+-------------------------------------------------------------------
+Sun Nov 15 06:50:57 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to 2.6.13
+  * scanners built with %array no longer read or write before the
+    start of the input buffer.
+  * scanners with very many rules, such as Doxygen’s code scanner,
+    build correctly again.
+  * fix test failure on i686
+- Drop flex-i686-test.patch, it is part of upstream
+
+-------------------------------------------------------------------
+Sat Nov 14 18:41:58 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to 2.6.12
+  * yyunput() is a real function again with its 2.6.4 signature, so
+    programs can declare it themselves
+  * Macros yybegin, yyecho, yystart, yyatbol and yysetbol removed,
+    so programs can use those names (e.g. GCC).
+  * C++ scanners with %option nodefault compile again
+  * yy_fatal_error() works again, and YY_BUF_SIZE/YY_READ_BUF_SIZE
+    are defined early again
+  * Unused backing-up variables are no longer declared, fixing
+    -Werror builds (e.g. Xen)
+  * make check no longer needs git
+- Update to 2.6.11
+  * C++ scanners now free every buffer left on the buffer stack
+    when destroyed, fixing a leak.
+  * Fixed scan_length test failures on aarch64
+- Update to 2.6.10
+  * Scanners compile again without BUFSIZ, e.g. freestanding builds
+    like GRUB; falls back to 8192
+- Update to 2.6.9
+  * 2.6.4 names work again: yy_flex_debug, yy_at_bol,
+    a user-defined YY_READ_BUF_SIZE and the FLEXINT_H guard.
+  * YY_BUFFER_STATE and yybuffer have separate guards again
+- Update to 2.6.8
+  * Flex builds again with --disable-nls
+- Update to 2.6.7
+  * Scanners compile again in strict ISO C modes (-std=c99)
+- Update to flex 2.6.6
+  * tools/bootstrap-flex now checks the GPG signature of the 2.6.5
+    tarball, not just its hash.
+  * Fall-through marker renamed to __fallthrough__, so
+    scanners compile again where a fallthrough macro
+    exists, e.g. Linux kernel
+
+-------------------------------------------------------------------
+Tue Nov 10 13:48:24 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to flex 2.6.5
+  * Multi-Language & C99 Back End: The new -e / --emit option
+    targets other languages and adds a reentrant-only C99 back end.
+  * Function-Style APIs: New functions (such as yybegin() and
+    yyecho()) and options (yydecl, bufsize) replace deprecated
+    C macros.
+  * New CLI Options: Added --backup-file, --noinput,
+    --noyyget_debug, and {no,}yy{get,set}_column.
+  * Build & Security: Added pkg-config (libfl.pc),
+    bootstrap-flex, signed GitHub releases, new
+    translations, and memory-safety fixes.
+- Add flex-i686-test.patch to fix tests for i686, upstreamed as
+  https://github.com/westes/flex/pull/838
+- Drop use-extensions.patch which is part of upstream
+- Remove README.SUSE, flex-old is gone for quite a while
+
+-------------------------------------------------------------------
 Mon Feb 26 08:37:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,7 +1,7 @@
 #
 # spec file for package flex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define somajor 2
 Name:           flex
-Version:        2.6.4
+Version:        2.6.16
 Release:        0
 Summary:        Fast Lexical Analyzer Generator
 License:        BSD-3-Clause
@@ -26,12 +26,13 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/westes/flex
 Source:         https://github.com/westes/flex/releases/download/v%{version}/flex-%{version}.tar.gz
 Source1:        lex-wrapper.sh
-Source2:        README.SUSE
 Source3:        baselibs.conf
-Patch0:         use-extensions.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
+# flex is in distro bootstrap: a file dep resolves to gettext-runtime-mini,
+# avoiding the full gettext package which pulls in a systemd build chain.
+BuildRequires:  /usr/bin/gettext
 BuildRequires:  help2man
 BuildRequires:  libtool
 BuildRequires:  m4
@@ -69,7 +70,6 @@ This package contains libraries for using flex.
 %autosetup -p1
 
 %build
-cp -a %{SOURCE2} .
 autoreconf -fi
 %configure \
   --docdir=%{_docdir}/%{name}
@@ -105,7 +105,7 @@ ln -s flex.1%{ext_man} %{buildroot}/%{_mandir}/man1/lex.1%{ext_man}
 
 %files -f %{name}.lang
 %license COPYING
-%doc AUTHORS ChangeLog NEWS ONEWS README.md THANKS README.SUSE
+%doc AUTHORS ChangeLog NEWS ONEWS README.md THANKS
 %exclude %_docdir/%{name}/COPYING
 %{_bindir}/flex
 %{_bindir}/flex++
@@ -119,6 +119,7 @@ ln -s flex.1%{ext_man} %{buildroot}/%{_mandir}/man1/lex.1%{ext_man}
 %doc AUTHORS ChangeLog NEWS ONEWS README.md THANKS
 %{_includedir}/FlexLexer.h
 %{_libdir}/libfl.so
+%{_libdir}/pkgconfig/libfl.pc
 
 %files -n libfl%{somajor}
 %license COPYING
