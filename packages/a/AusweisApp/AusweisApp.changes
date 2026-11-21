@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 20 18:08:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add fix-resource-path.patch to fix incorrect Qt resource path
+
+-------------------------------------------------------------------
 Wed Nov 18 09:02:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

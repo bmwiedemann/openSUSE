@@ -1,0 +1,81 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,10 +74,14 @@ if(NOT VENDOR)
+ endif()
+ message(STATUS "VENDOR: ${VENDOR}")
+ 
+-if(NOT VENDOR_PATH)
+-	set(VENDOR_PATH "${PROJECT_NAME}")
++if(NOT VENDOR_SETTINGS)
++	if(VENDOR)
++		set(VENDOR_SETTINGS "${VENDOR}")
++	else()
++		set(VENDOR_SETTINGS "${PROJECT_NAME}")
++	endif()
+ endif()
+-message(STATUS "VENDOR_PATH: ${VENDOR_PATH}")
++message(STATUS "VENDOR_SETTINGS: ${VENDOR_SETTINGS}")
+ 
+ if(VENDOR MATCHES "Governikus")
+ 	set(VENDOR_GOVERNIKUS TRUE)
+diff --git a/cmake/Install.cmake b/cmake/Install.cmake
+--- a/cmake/Install.cmake
++++ b/cmake/Install.cmake
+@@ -118,7 +118,7 @@ elseif(UNIX)
+ 		set(CMAKE_INSTALL_RPATH "\$ORIGIN")
+ 	endif()
+ 
+-	set(DEFAULT_FILE_DESTINATION ${CMAKE_INSTALL_DATADIR}/${VENDOR_PATH}/${PROJECT_NAME})
++	set(DEFAULT_FILE_DESTINATION ${CMAKE_INSTALL_DATADIR}/${VENDOR}/${PROJECT_NAME})
+ 
+ 	if(INTEGRATED_SDK AND NOT CONTAINER_SDK)
+ 		GET_PUBLIC_HEADER(AusweisAppBinary PUBLIC_HEADER)
+diff --git a/cmake/Packaging.cmake b/cmake/Packaging.cmake
+--- a/cmake/Packaging.cmake
++++ b/cmake/Packaging.cmake
+@@ -105,7 +105,7 @@ if(WIN32)
+ 		set(CPACK_WIX_UI_BANNER ${RESOURCES_DIR}/images/wix_banner.jpg)
+ 		set(CPACK_WIX_UI_DIALOG ${RESOURCES_DIR}/images/wix_dialog.jpg)
+ 		set(CPACK_WIX_EXTENSIONS WixToolset.Util.wixext WixToolset.Firewall.wixext)
+-		set(CPACK_WIX_BUILD_EXTRA_FLAGS -loc ${PACKAGING_DIR}/win/WIX.Texts.de-DE.wxl -loc ${PACKAGING_DIR}/win/WIX.Texts.en-US.wxl -d CPACK_PACKAGE_VENDOR_PATH=${VENDOR_PATH})
++		set(CPACK_WIX_BUILD_EXTRA_FLAGS -loc ${PACKAGING_DIR}/win/WIX.Texts.de-DE.wxl -loc ${PACKAGING_DIR}/win/WIX.Texts.en-US.wxl -d CPACK_PACKAGE_VENDOR_SETTINGS=${VENDOR_SETTINGS})
+ 		if(CMAKE_VERSION VERSION_LESS "4.1")
+ 			set(CPACK_WIX_BUILD_EXTRA_FLAGS -i ${CMAKE_BINARY_DIR}/_CPack_Packages/win64/WIX ${CPACK_WIX_BUILD_EXTRA_FLAGS})
+ 		endif()
+diff --git a/resources/packaging/win/WIX.template.in b/resources/packaging/win/WIX.template.in
+--- a/resources/packaging/win/WIX.template.in
++++ b/resources/packaging/win/WIX.template.in
+@@ -40,7 +40,7 @@
+ 
+         <WixVariable Id="WixUILicenseRtf" Value="$(var.CPACK_WIX_LICENSE_RTF)" />
+ 
+-        <WixVariable Id="CompanyRootKey" Value="Software\$(var.CPACK_PACKAGE_VENDOR_PATH)\AusweisApp2" /> <!-- use var.CPACK_PACKAGE_NAME after migrating to new registry key -->
++        <WixVariable Id="CompanyRootKey" Value="Software\$(var.CPACK_PACKAGE_VENDOR_SETTINGS)\AusweisApp2" /> <!-- use var.CPACK_PACKAGE_NAME after migrating to new registry key -->
+ 
+         <?ifdef CPACK_WIX_PRODUCT_ICON?>
+         <Property Id="ARPPRODUCTICON" Value="ProductIcon.ico" />
+diff --git a/src/settings/AbstractSettings.cpp b/src/settings/AbstractSettings.cpp
+--- a/src/settings/AbstractSettings.cpp
++++ b/src/settings/AbstractSettings.cpp
+@@ -29,7 +29,7 @@ QString AbstractSettings::getOrganizatio
+ 	return QCoreApplication::organizationDomain();
+ 
+ #else
+-	return QStringLiteral(VENDOR_PATH);
++	return QStringLiteral(VENDOR_SETTINGS);
+ 
+ #endif
+ }
+diff --git a/src/settings/CMakeLists.txt b/src/settings/CMakeLists.txt
+--- a/src/settings/CMakeLists.txt
++++ b/src/settings/CMakeLists.txt
+@@ -9,7 +9,7 @@
+ ADD_PLATFORM_LIBRARY(AusweisAppSettings)
+ 
+ target_link_libraries(AusweisAppSettings ${Qt}::Core ${Qt}::Network ${Qt}::Concurrent OpenSSL::Crypto AusweisAppGlobal AusweisAppCrypto)
+-target_compile_definitions(AusweisAppSettings PRIVATE VENDOR_PATH="${VENDOR_PATH}")
++target_compile_definitions(AusweisAppSettings PRIVATE VENDOR_SETTINGS="${VENDOR_SETTINGS}")
+ 
+ if(MACOS)
+ 	target_link_libraries(AusweisAppSettings ${OSX_APPKIT} ${OSX_SERVICEMANAGEMENT})
