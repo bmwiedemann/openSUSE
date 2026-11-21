@@ -1,0 +1,34 @@
+From 08c3a31c1881d7a16cc8be33a026cd7fe63a14d3 Mon Sep 17 00:00:00 2001
+From: Nageswara Soma <nsoma@cisco.com>
+Date: Wed, 22 Apr 2026 12:54:00 -0700
+Subject: [PATCH] bgpd: deep-copy inherited SoO from peer group
+Upstream: yes
+References: bsc#1290416,CVE-2026-120221,gh#FRRouting/frr#21685,gh#FRRouting/frr#24118
+
+Free a group member's existing SoO value and duplicate
+the peer group's value unless the member overrides it.
+This gives the member an independent allocation.
+
+Signed-off-by: Nageswara Soma <nsoma@cisco.com>
+
+diff --git a/bgpd/bgpd.c b/bgpd/bgpd.c
+index e6ea036d14..b79755424a 100644
+--- a/bgpd/bgpd.c
++++ b/bgpd/bgpd.c
+@@ -2430,8 +2430,11 @@ static void peer_group2peer_config_copy_af(struct peer_group *group,
+ 		PEER_ATTR_INHERIT(peer, group, allowas_in[afi][safi]);
+ 
+ 	/* soo */
+-	if (!CHECK_FLAG(pflags_ovrd, PEER_FLAG_SOO))
+-		PEER_ATTR_INHERIT(peer, group, soo[afi][safi]);
++	if (!CHECK_FLAG(pflags_ovrd, PEER_FLAG_SOO)) {
++		ecommunity_free(&peer->soo[afi][safi]);
++		if (group->conf->soo[afi][safi])
++			peer->soo[afi][safi] = ecommunity_dup(group->conf->soo[afi][safi]);
++	}
+ 
+ 	/* weight */
+ 	if (!CHECK_FLAG(pflags_ovrd, PEER_FLAG_WEIGHT))
+-- 
+2.51.0
+

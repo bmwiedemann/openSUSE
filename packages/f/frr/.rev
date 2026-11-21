@@ -467,4 +467,23 @@
     (bsc#1264051,CVE-2026-37459,gh#FRRouting/frr#21074)</comment>
     <requestid>1351832</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>231994a3b0fd84b0ddc99dfed8bf6c52</srcmd5>
+    <version>10.6.2</version>
+    <time>1795293970</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply fix for Send Hold Timer expiry bypassing the FSM:
+  - bgpd: recover from SendHoldTimer expiry instead of wedging the peer
+    (bsc#1290385,CVE-2026-120033,gh#FRRouting/frr#23945)
+    [+ 0004-bgpd-recover-from-SendHoldTimer-expiry-instead-of-we.patch]
+- Apply fix for a Denial of Service (DoS):
+  - bgpd: deep-copy inherited SoO from peer group
+    (bsc#1290416,CVE-2026-120221,gh#FRRouting/frr#21685)
+    [+ 0003-bgpd-deep-copy-inherited-SoO-from-peer-group.patch]
+- Update to frr-10.6.2 providing the following security fixes:
+  - bgpd: fix attr comparison when using attr_intern_reuse cache
+    (bsc#1290509,CVE-2026-129456,gh#FRRouting/frr#22008)
+  and many other bug fixes, see https://frrouting.org/release/10.6.2/</comment>
+    <requestid>1399447</requestid>
+  </revision>
 </revisionlist>
