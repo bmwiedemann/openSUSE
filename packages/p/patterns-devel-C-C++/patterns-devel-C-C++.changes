@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 31 09:37:31 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Set Version to 20261031.
+- Pattern Suggests were the DVD pull mechanism of 2008, but that mechanism is
+  dead: pattern Suggests land on no current install media, every product, so
+  dropping them changes the installed set not at all today.
+- Drop the dejagnu and expect Suggests: GCC testsuite tools (expect
+  stays in devel_tcl).
+- Add a no-binary filter at error level to the rpmlintrc.
+- Format with spec-cleaner 1.3.1: drop the Group tags, label the Recommends list
+  with a SECTION header, protect the gcc-c++ and libstdc++-devel Requires
+  comment group with SECTION markers, fix the copyright header, and sort in full
+  mode.
+
+-------------------------------------------------------------------
 Mon Aug 22 02:40:15 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add gcc-c++ as a hard requirement to not rely only on the
@@ -31,3 +46,4 @@ Mon Jul  3 12:15:39 UTC 2017 - tchvatal@suse.com
 Thu Mar 16 06:15:40 UTC 2017 - sflees@suse.de
 
 - Create new package from old unified patterns package
+

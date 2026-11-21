@@ -4,4 +4,5 @@
 
 addFilter("E: explicit-lib-dependency");
 addFilter("E: devel-dependency");
+addFilter("E: no-binary");
 

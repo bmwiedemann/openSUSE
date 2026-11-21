@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-devel-C-C++
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 %bcond_with betatest
-
 Name:           patterns-devel-C-C++
-Version:        20170319
+Version:        20261031
 Release:        0
 Summary:        Patterns for Installation (C/C++ devel pattern)
 License:        MIT
-Group:          Metapackages
 URL:            https://github.com/openSUSE/patterns
 Source0:        patterns-devel-C-C++-rpmlintrc
-
 BuildRequires:  patterns-rpm-macros
 BuildArch:      noarch
 
@@ -42,21 +39,16 @@ This particular package contains the C and C++ development patterns.
 %package devel_C_C++
 %pattern_development
 Summary:        C/C++ Development
-Group:          Metapackages
 Provides:       pattern() = devel_C_C++
 Provides:       pattern-icon() = pattern-c-devel
 Provides:       pattern-order() = 3240
 Provides:       pattern-visible()
 Requires:       pattern() = devel_basis
-
-#
-# Ensure openSUSE users will have a functional development environment.
-# Hard require gcc-c++ and libstdc++-devel as they are only soft required by
-# devel_basis Pattern.
-#
+# SECTION Ensure openSUSE users will have a functional development environment. Hard require gcc-c++ and libstdc++-devel as they are only soft required by devel_basis Pattern.
 Requires:       gcc-c++
 Requires:       libstdc++-devel
-
+# /SECTION
+# SECTION C/C++ development tools
 Recommends:     boost-devel
 Recommends:     boost-jam
 Recommends:     glibc-info
@@ -64,9 +56,7 @@ Recommends:     ltrace
 Recommends:     posix_cc
 Recommends:     swig
 Recommends:     valgrind
-# 403368
-Suggests:       dejagnu
-Suggests:       expect
+# /SECTION
 
 %description devel_C_C++
 Tools and libraries for software development using C/C++ and other derivative
