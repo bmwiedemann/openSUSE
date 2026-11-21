@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Mon Nov 16 18:38:47 UTC 2026 - Ricardo Branco <rbranco@suse.com>
+
+- Update to version 1.25.2:
+  * [release-1.25] Bump Skopeo to v1.25.2
+  * [release-1.25] Bump x/sys to v0.50.0
+- Drop upstreamed patches:
+  * 0001-CVE-2026-79699-archive-When-stripping-WhiteoutPrefix.patch
+  * 0002-CVE-2026-116585-cipher-cbc_hmac-don-t-panic-on-empty.patch
+  * 0003-CVE-2026-116586-json-limit-stack-depth.patch
+- Rename 0004-CVE-2026-116587-jwk-bound-RSA-modulus-size-and-rejec.patch
+  to 0001-CVE-2026-116587-jwk-bound-RSA-modulus-size-and-rejec.patch
+
+-------------------------------------------------------------------
+Sun Nov 15 20:45:14 UTC 2026 - Ricardo Branco <rbranco@suse.com>
+
+- Update to version 1.25.1:
+  * Release 1.25.1
+  * Update to c/storage 1.65.1, c/image 5.42.1
+  * Bump to Skopeo v1.25.0
+  * Vendor storage, image, common for Podman 6.2
+  * fix(deps): update module golang.org/x/term to v0.47.0
+  * fix(deps): update module go.podman.io/storage to v1.64.2
+  * chore(deps): update dependency podman-container-tools/automation to v20261006
+  * hack: fix validate-git-marks.sh never detecting conflict markers
+  * hack: fix man-page-checker synopsis check on non-GNU sed
+  * Update dependency podman-container-tools/automation to v20260930
+  * add SUPPORT.md, update CONTRIBUTING.md
+  * Update dependency golangci/golangci-lint to v2.14.0
+  * ci: install golangci-lint via golangci-lint-action
+  * Makefile: derive GOBIN from `go env GOPATH`
+  * integration: test --download-foreign-layers
+  * docs: document --download-foreign-layers
+  * cmd/skopeo: add --download-foreign-layers flag
+  * docs: update README repository links
+  * MAINTAINERS.md: move lsm5 to alumni
+  * Update common, image, and storage deps
+  * Update dependency ubuntu to v26
+  * packit: koji job target taken from rawhide config
+  * docs: add override-os and override-arch example to inspect --help
+  * ci: set predicate-quantifier on the path filter
+  * ci: drop build from doccheck
+  * README: state where skopeo officially comes from
+  * Update dependency podman-container-tools/automation to v20260916
+  * Update module golang.org/x/term to v0.46.0
+  * Update module google.golang.org/grpc to v1.83.2 [SECURITY]
+  * Update zizmorcore/zizmor-action action to v0.6.4
+  * Re-enable the default linter rejecting messages starting with upper case...
+  * Only call os.Exit once
+  * Change error reporting on invalid argument counts
+  * Change top-level errors from whole sentences
+  * Fix a pasto in an error message
+  * Write the ultimate error to stderr manually
+  * Replace logrus calls with slog
+  * Direct logrus output to slog
+  * Use new(value)
+  * Use errors.AsType
+  * Update to Go 1.26
+  * Update dependency podman-container-tools/automation to v20260902
+  * Update module google.golang.org/grpc to v1.83.1 [SECURITY]
+  * Update zizmorcore/zizmor-action action to v0.6.3
+  * Update dependency golangci/golangci-lint to v2.13.2
+  * Update module github.com/sirupsen/logrus to v1.10.2
+  * docs: mention --strip-removed-platforms under --multi-arch
+  * Update dependency golangci/golangci-lint to v2.13.1
+  * Update dependency golangci/golangci-lint to v2.13.0
+  * Silence golangci-lint on non-Sequoia runs
+  * Update dependency podman-container-tools/automation to v20260819
+  * Update module github.com/stretchr/testify to v1.12.1
+  * Update module github.com/sirupsen/logrus to v1.10.1
+  * Update common, image, and storage deps
+  * ci: don't cancel overlapping runs on main pushes
+  * Update module github.com/stretchr/testify to v1.12.0
+  * ci: pass lock workflow explicit secrets
+  * ci: add zizmor workflow
+  * Update module github.com/sirupsen/logrus to v1.10.0
+  * update Maintainers and Governance to link to community repo
+  * Update dependency podman-container-tools/automation to v20260811
+  * Update dorny/paths-filter action to v4.0.3
+  * link org wide LLM_POLICY
+  * packit: add fedora-45 to dist_git_branches
+  * packit: skip missing branched composes for Fedora tests
+  * ci: remove leftover Cirrus config
+  * Update github.com/opencontainers/image-spec digest to af26a05
+  * Bump Skopeo back to dev, 1.25.0-dev
+
+-------------------------------------------------------------------
 Tue Nov  3 14:20:01 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - When stripping WhiteoutPrefix, make sure the result is a proper basename

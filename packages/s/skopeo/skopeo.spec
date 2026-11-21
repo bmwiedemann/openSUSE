@@ -19,7 +19,7 @@
 
 %global project        github.com/podman-container-tools/skopeo
 Name:           skopeo
-Version:        1.24.0
+Version:        1.25.2
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
@@ -27,10 +27,7 @@ Group:          System/Management
 URL:            https://%{project}
 Source:         %{name}-%{version}.tar.xz
 Source1:        skopeo.rpmlintrc
-Patch0:         0001-CVE-2026-79699-archive-When-stripping-WhiteoutPrefix.patch
-Patch1:         0002-CVE-2026-116585-cipher-cbc_hmac-don-t-panic-on-empty.patch
-Patch2:         0003-CVE-2026-116586-json-limit-stack-depth.patch
-Patch3:         0004-CVE-2026-116587-jwk-bound-RSA-modulus-size-and-rejec.patch
+Patch0:         0001-CVE-2026-116587-jwk-bound-RSA-modulus-size-and-rejec.patch
 BuildRequires:  bash
 BuildRequires:  device-mapper-devel >= 1.2.68
 BuildRequires:  glib2-devel
