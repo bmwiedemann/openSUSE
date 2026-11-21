@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 20 11:37:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix build for SLFO
+
+-------------------------------------------------------------------
 Mon Aug  3 21:11:36 UTC 2026 - Matej Cepl <mcepl@suse.com>
 
 - Add use-evp-api.patch which replaces the deprecated OpenSSL 3.0
@@ -26,7 +31,7 @@ Fri Jun 12 10:13:38 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
   * config: enable KVM in embedded kernel
 
 - Update to 5.3.0
-  * Rebase to 6.12.76 and fix various vsock issues 
+  * Rebase to 6.12.76 and fix various vsock issues
 
 -------------------------------------------------------------------
 Tue Mar 10 07:35:03 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
@@ -67,7 +72,7 @@ Tue Nov 19 21:49:06 UTC 2024 - James Fehlig <jfehlig@suse.com>
   * bump max number of cpus to 16
   * sync config with 6.6.59
   * Rebase on a v6.6.59 kernel
-  
+
 -------------------------------------------------------------------
 Thu May 30 11:52:22 UTC 2024 - Dario Faggioli <dfaggioli@suse.com>
 
@@ -113,7 +118,7 @@ Tue Jan  3 10:41:29 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 -------------------------------------------------------------------
 Mon Dec  5 07:30:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add split-provides for libkrunfw-sev-devel 
+- add split-provides for libkrunfw-sev-devel
 
 -------------------------------------------------------------------
 Thu Sep 29 23:20:21 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
@@ -192,7 +197,7 @@ Fri Mar 19 02:12:53 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 -------------------------------------------------------------------
 Fri Mar 19 00:12:16 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
-- doesn't build on i586 so disable it 
+- doesn't build on i586 so disable it
 
 -------------------------------------------------------------------
 Mon Mar  8 11:48:35 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>

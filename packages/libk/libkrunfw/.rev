@@ -148,4 +148,16 @@ This version builds properly. Sorry for submitting one that did not (it was buil
     <comment>1</comment>
     <requestid>1375762</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>c871df9518b1041d81b2ed43b5504616</srcmd5>
+    <version>5.5.0</version>
+    <time>1795293946</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for SLFO
+
+  * Rebase to 6.12.76 and fix various vsock issues
+- add split-provides for libkrunfw-sev-devel
+- doesn't build on i586 so disable it</comment>
+    <requestid>1398972</requestid>
+  </revision>
 </revisionlist>

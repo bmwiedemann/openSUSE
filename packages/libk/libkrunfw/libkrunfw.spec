@@ -49,6 +49,7 @@ ExclusiveArch:  x86_64 aarch64
 BuildRequires:  gcc
 BuildRequires:  git-core
 BuildRequires:  openssl-devel
+BuildRequires:  python3
 BuildRequires:  python3-pyelftools
 # For building the embedded kernel, we need:
 BuildRequires:  bc
