@@ -1,6 +1,7 @@
 #
 # spec file for package python-rpm
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017 Neal Gompa <ngompa13@gmail.com>.
 #

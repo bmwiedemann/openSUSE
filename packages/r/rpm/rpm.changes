@@ -1,7 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov 12 10:26:45 CET 2026 - Michael Schroeder <mls@suse.de>
+
+- fix fapolicyd plugin EAGAIN busy loop
+  * new patch: fapolicyd_busyloop.diff
+- fix command injection in rpmbuild -t [bsc#1278428] [bsc#1278005]
+  [CVE-2026-84837] [CVE-2026-78367]
+  * new patch: rpmbuild_inj.diff
+- fix command injection in rpmuncompress [bsc#1278004] [bsc#1278426]
+  [CVE-2026-84233] [CVE-2026-84838]
+  * new patch: rpmuncompress_inj.diff
+- drop macro expansion from manifest parser [bsc#1282796]
+  [CVE-2026-95519]
+  * new patch: manifest_noexpand.diff
+- verify symlink size in cpio files [bsc#1283361] [CVE-2026-95520]
+  * new patch: cpio_symlinksize.diff
+- fix hex2binv memory overwrite with i18n string types
+  [bsc#1283733] [CVE-2026-103242]
+  * new patch: hex2binv.diff
+- fix rpmRelocateSrpmFileList expanding the basename of a file
+  [bsc#1282795] [CVE-2026-95521]
+  * new patch: relocationexpand.diff
+- fix rpmbuild not returning an error for missing sources/patches
+  [bsc#1275197]
+  * new patch: nopatcherror.diff
+
+-------------------------------------------------------------------
 Wed Aug 26 18:13:47 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
-- Don’t be dependent on python3-base, it is perfectly OK to use
+- Don't be dependent on python3-base, it is perfectly OK to use
   any Python interpreter for python-rpm-packaging.
 - Remove obsolete Python2-based removal of Python directories
   (why?)

@@ -1,0 +1,256 @@
+--- tools/CMakeLists.txt.orig	2026-11-12 10:00:15.794894475 +0000
++++ tools/CMakeLists.txt	2026-11-12 10:00:24.010883351 +0000
+@@ -11,7 +11,7 @@ add_executable(rpmqpack rpmqpack.c)
+ add_executable(rpmdeps rpmdeps.c)
+ add_executable(rpmgraph rpmgraph.c)
+ add_executable(rpmlua rpmlua.c)
+-add_executable(rpmuncompress rpmuncompress.c)
++add_executable(rpmuncompress rpmuncompress.c cliutils)
+ add_executable(rpmdump rpmdump.c)
+ 
+ target_link_libraries(rpmsign PRIVATE librpmsign)
+--- tools/rpmuncompress.c.orig	2026-11-12 10:00:15.806894459 +0000
++++ tools/rpmuncompress.c	2026-11-12 10:07:55.854271694 +0000
+@@ -12,6 +12,7 @@
+ #include <rpm/rpmcli.h>
+ #include <rpm/rpmstring.h>
+ 
++#include "cliutils.h"
+ #include "debug.h"
+ 
+ static int verbose = 0;
+@@ -34,7 +35,7 @@ static struct poptOption optionsTable[]
+     POPT_TABLEEND
+ };
+ 
+-struct archiveType_s {
++typedef const struct archiveType_s {
+     int compressed;
+     int extractable;
+     const char *cmd;
+@@ -42,7 +43,9 @@ struct archiveType_s {
+     const char *quiet;
+     const char *dest;
+     int setTZ;
+-} archiveTypes[] = {
++} archiveType;
++
++static archiveType const archiveTypes[] = {
+     { COMPRESSED_NOT,	0,	"%{__cat}" ,	"",		"", "", 0 },
+     { COMPRESSED_OTHER,	0,	"%{__gzip}",	"-dc",		"", "", 0 },
+     { COMPRESSED_BZIP2,	0,	"%{__bzip2}",	"-dc",		"", "", 0 },
+@@ -57,13 +60,13 @@ struct archiveType_s {
+     { -1,		0,	NULL,		NULL,		NULL, 0 },
+ };
+ 
+-static const struct archiveType_s *getArchiver(const char *fn)
++static archiveType *getArchiver(const char *fn)
+ {
+-    const struct archiveType_s *archiver = NULL;
++    archiveType *archiver = NULL;
+     rpmCompressedMagic compressed = COMPRESSED_NOT;
+ 
+     if (rpmFileIsCompressed(fn, &compressed) == 0) {
+-	for (const struct archiveType_s *at = archiveTypes; at->cmd; at++) {
++	for (archiveType *at = archiveTypes; at->cmd; at++) {
+ 	    if (compressed == at->compressed) {
+ 		archiver = at;
+ 		break;
+@@ -74,15 +77,14 @@ static const struct archiveType_s *getAr
+     return archiver;
+ }
+ 
+-static char *doUncompress(const char *fn)
++static char *doUncompress(archiveType *at, const char *arg)
+ {
+     char *cmd = NULL;
+-    const struct archiveType_s *at = getArchiver(fn);
+     if (at) {
+ 	cmd = rpmExpand(at->setTZ ? "TZ=UTC " : "",
+ 			at->cmd, " ", at->unpack, NULL);
+ 	/* path must not be expanded */
+-	cmd = rstrscat(&cmd, " ", fn, NULL);
++	cmd = rstrscat(&cmd, " ", arg, NULL);
+     }
+     return cmd;
+ }
+@@ -91,11 +93,11 @@ static char *doUncompress(const char *fn
+  * Detect if an archive has a single top level entry, and it's a directory.
+  *
+  * @param path	path of the archive
+- * @return	only top level directory (if any),
+- * 		NULL if it contains multiple top level entries or a single file
+- * 		or on archive error
++ * @return	1 if the archive has a single top level, directory entry,
++ * 		0 otherwise,
++ * 		-1 on archive error
+  */
+-static char * singleRoot(const char *path)
++static int singleRoot(const char *path)
+ {
+ 	struct archive *a;
+ 	struct archive_entry *entry;
+@@ -139,37 +141,31 @@ static char * singleRoot(const char *pat
+ 	    }
+ 	}
+ 
+-	rootName[rootLen - 1] = '\0';
+ 	ret = 1;
+ 
+ afree:
++	free(rootName);
+ 	r = archive_read_free(a);
+ 	if (r != ARCHIVE_OK)
+ 	    ret = -1;
+ 
+-	if (ret != 1)
+-	    rootName = _free(rootName);
+-
+-	return rootName;
++	return ret;
+ }
+ 
+-static char *doUntar(const char *fn)
++static char *doUntar(archiveType *at, int sr, const char *bn, const char *fn)
+ {
+-    const struct archiveType_s *at = NULL;
+     char *buf = NULL;
+     char *tar = NULL;
+     const char *taropts = verbose ? "-xvvof" : "-xof";
+     char *mkdir = NULL;
+     char *stripcd = NULL;
+ 
+-    if ((at = getArchiver(fn)) == NULL)
++    if (at == NULL)
+ 	goto exit;
+ 
+     int needtar = (at->extractable == 0);
+ 
+     if (dstpath) {
+-	char * sr = singleRoot(fn);
+-
+ 	/* if the archive has multiple entries, just extract it into the
+ 	 * specified destination path, otherwise also strip the first path
+ 	 * entry
+@@ -196,7 +192,6 @@ static char *doUntar(const char *fn)
+ 		rasprintf(&stripcd, "%s'%s'", at->dest, dstpath);
+ 	    }
+ 	}
+-	free(sr);
+     } else {
+ 	mkdir = xstrdup("");
+ 	stripcd = xstrdup("");
+@@ -209,30 +204,20 @@ static char *doUntar(const char *fn)
+ 			   at->cmd, " ", at->unpack, " ",
+ 			   verbose ? "" : at->quiet, NULL);
+ 	if (needtar) {
+-	    rasprintf(&buf, "%s %s '%s' | %s %s - %s", mkdir, zipper, fn, tar, taropts, stripcd);
++	    rasprintf(&buf, "%s %s %s | %s %s - %s", mkdir, zipper, fn, tar, taropts, stripcd);
+ 	} else if (at->compressed == COMPRESSED_GEM) {
+-	    char *tmp = xstrdup(fn);
+-	    const char *bn = basename(tmp);
+-	    size_t nvlen = strlen(bn) - 3;
+ 	    char *gem = rpmGetPath("%{__gem}", NULL);
+-	    char *gemspec = NULL;
+-	    char gemnameversion[nvlen];
+-
+-	    rstrlcpy(gemnameversion, bn, nvlen);
+-	    gemspec = rpmGetPath("", gemnameversion, ".gemspec", NULL);
+-
+-	    rasprintf(&buf, "%s '%s' && %s spec '%s' --ruby > '%s'",
+-			zipper, fn, gem, fn, gemspec);
++	    
++	    rasprintf(&buf, "%s %s && %s spec %s --ruby > %s.gemspec",
++			zipper, fn, gem, fn, bn);
+ 
+-	    free(gemspec);
+ 	    free(gem);
+-	    free(tmp);
+ 	} else {
+-	    rasprintf(&buf, "%s%s '%s' %s", mkdir, zipper, fn, stripcd);
++	    rasprintf(&buf, "%s%s %s %s", mkdir, zipper, fn, stripcd);
+ 	}
+ 	free(zipper);
+     } else {
+-	rasprintf(&buf, "%s %s %s '%s' %s", mkdir, tar, taropts, fn, stripcd);
++	rasprintf(&buf, "%s %s %s %s %s", mkdir, tar, taropts, fn, stripcd);
+     }
+ 
+ exit:
+@@ -247,7 +232,14 @@ int main(int argc, char *argv[])
+     int ec = EXIT_FAILURE;
+     poptContext optCon = NULL;
+     const char *arg = NULL;
++    char *arg_cpy = NULL;
++    const char *bnarg = "\"$1\"";
++    const char *fnarg = "\"$2\"";
+     char *cmd = NULL;
++    archiveType *at = NULL;
++    int sr = 0;
++    char *bn = NULL;
++    char *stem;
+ 
+     optCon = rpmcliInit(argc, argv, optionsTable);
+ 
+@@ -256,30 +248,56 @@ int main(int argc, char *argv[])
+ 	goto exit;
+     }
+ 
+-    cmd = extract ? doUntar(arg) : doUncompress(arg);
++    at = getArchiver(arg);
++
++    arg_cpy = xstrdup(arg);
++    bn = basename(arg_cpy);
++    if ((stem = strrchr(bn, '.')) != 0)
++	*stem = 0;
++
++    if (extract) {
++	if (dstpath)
++	    sr = singleRoot(arg);
++	cmd = doUntar(at, sr, bnarg, fnarg);
++    } else {
++	cmd = doUncompress(at, fnarg);
++    }
++    
+     if (cmd) {
+ 	FILE *inp = NULL;
+ 
+-	if (verbose || dryrun)
+-	    fprintf(stderr, "%s\n", cmd);
++	if (verbose || dryrun) {
++	    char *drybn = NULL;
++	    char *dryfn = NULL;
++	    char *drycmd = NULL;
++	    rasprintf(&drybn, "'%s'", bn);
++	    rasprintf(&dryfn, "'%s'", arg);
++	    drycmd = extract ? doUntar(at, sr, drybn, dryfn) :
++			       doUncompress(at, dryfn);
++	    fprintf(stderr, "%s\n", drycmd);
++	    free(drycmd);
++	    free(dryfn);
++	    free(drybn);
++	}
+ 
+ 	if (dryrun) {
+ 	    ec = EXIT_SUCCESS;
+ 	    goto exit;
+ 	}
+ 
+-	inp = popen(cmd, "r");
++	inp = rpopen(cmd, bn, arg, NULL);
+ 	if (inp) {
+ 	    int status, c;
+ 	    while ((c = fgetc(inp)) != EOF)
+ 		fputc(c, stdout);
+-	    status = pclose(inp);
++	    status = rpclose(inp);
+ 	    if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
+ 		ec = EXIT_SUCCESS;
+ 	}
+     }
+ 
+ exit:
++    free(arg_cpy);
+     free(cmd);
+     rpmcliFini(optCon);
+     return ec;

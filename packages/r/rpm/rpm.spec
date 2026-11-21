@@ -1,6 +1,7 @@
 #
 # spec file for package rpm
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -133,6 +134,14 @@ Patch161:       pgpreleasemtime.diff
 Patch162:       imaevmsignplugin.diff
 Patch163:       rpmuncompress.diff
 Patch164:       ndbharden.diff
+Patch165:       fapolicyd_busyloop.diff
+Patch166:       rpmbuild_inj.diff
+Patch167:       rpmuncompress_inj.diff
+Patch168:       manifest_noexpand.diff
+Patch169:       cpio_symlinksize.diff
+Patch170:       hex2binv.diff
+Patch171:       relocationexpand.diff
+Patch172:       nopatcherror.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 Requires:       (rpm-plugin-selinux if selinux-policy)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -291,7 +300,8 @@ rm -rf sqlite
 %patch -P 139
 %patch -P 141 -P 142
 %patch -P 150 -P 151 -P 154 -P 155 -P 156 -P 157 -P 158 -P 159
-%patch -P 160 -P 161 -P 162 -P 163 -P 164
+%patch -P 160 -P 161 -P 162 -P 163 -P 164 -P 165 -P 166 -P 167
+%patch -P 168 -P 169 -P 170 -P 171 -P 172
 
 %ifarch aarch64 ppc64le riscv64 loongarch64
 %patch -P 6464

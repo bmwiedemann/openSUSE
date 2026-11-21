@@ -1,0 +1,160 @@
+--- build/parseSpec.c.orig	2026-11-12 10:11:27.377993573 +0000
++++ build/parseSpec.c	2026-11-12 10:11:31.041988755 +0000
+@@ -1310,7 +1310,7 @@ static rpmSpec parseSpec(const char *spe
+     /* Set up a new Spec structure with no packages. */
+     spec = newSpec();
+ 
+-    spec->specFile = rpmGetPath(specFile, NULL);
++    spec->specFile = rpmCleanPath(xstrdup(specFile));
+     addMacro(spec->macros, "_specfile", NULL, spec->specFile, RMIL_SPEC);
+     pushOFI(spec, spec->specFile);
+     /* If explicit --buildroot was passed, grab hold of it */
+--- tools/cliutils.c.orig	2025-02-19 15:29:33.000000000 +0000
++++ tools/cliutils.c	2026-11-12 10:11:31.041988755 +0000
+@@ -11,6 +11,7 @@
+ #include "debug.h"
+ 
+ static pid_t pipeChild = 0;
++static pid_t rpopenChild = 0;
+ 
+ RPM_GNUC_NORETURN
+ void argerror(const char * desc)
+@@ -83,3 +84,64 @@ int finishPipe(void)
+     }
+     return rc;
+ }
++
++FILE* rpopen(const char *cmd, const char *arg, ...)
++{
++    FILE *fp = NULL;
++    int pipefd[2];
++    ARGV_t argv = NULL;
++    va_list ap;
++
++    if (pipe(pipefd) < 0)
++	return NULL;
++
++    if ((fp = fdopen(pipefd[0], "r")) == NULL) {
++	close(pipefd[0]);
++	close(pipefd[1]);
++	return NULL;
++    }
++
++    argvAdd(&argv, "/bin/sh");
++    argvAdd(&argv, "-c");
++    argvAdd(&argv, "--");
++    argvAdd(&argv, cmd);    /* User command */
++    argvAdd(&argv, "sh");   /* Shell name ($0) */
++
++    /* User positional parameters ($1, $2, ...) */
++    va_start(ap, arg);
++    for (const char *s = arg; s != NULL; s = va_arg(ap, const char *))
++	argvAdd(&argv, s);
++    va_end(ap);
++
++    if ((rpopenChild = fork()) == 0) {
++	dup2(pipefd[1], STDOUT_FILENO);
++	close(pipefd[1]);
++	close(pipefd[0]);
++	execv(argv[0], argv);
++	_exit(127);
++    } else if (rpopenChild == -1) {
++	fclose(fp);
++	fp = NULL;
++    }
++
++    close(pipefd[1]);
++    argvFree(argv);
++
++    return fp;
++}
++
++int rpclose(FILE *fp)
++{
++    int status = -1;
++    pid_t reaped;
++
++    fclose(fp);
++    do {
++	reaped = waitpid(rpopenChild, &status, 0);
++    } while (reaped == -1 && errno == EINTR);
++
++    if (reaped == -1)
++	return -1;
++
++    return status;
++}
+--- tools/cliutils.h.orig	2025-02-19 15:29:33.000000000 +0000
++++ tools/cliutils.h	2026-11-12 10:11:31.041988755 +0000
+@@ -26,6 +26,15 @@ int initPipe(void);
+ 
+ int finishPipe(void);
+ 
++/*
++ * A safe, read-only variant of popen(3) that passes untrusted input (args) as
++ * positional arguments to sh(1) where the command (cmd) can read them via $1,
++ * $2, and so on.
++ */
++FILE *rpopen(const char *cmd, const char *arg, ...) RPM_GNUC_NULL_TERMINATED;
++
++int rpclose(FILE *fp);
++
+ #ifdef __cplusplus
+ }
+ #endif
+--- tools/rpmbuild.c.orig	2025-02-19 15:29:33.000000000 +0000
++++ tools/rpmbuild.c	2026-11-12 10:12:30.257910884 +0000
+@@ -360,6 +360,8 @@ static char * getTarSpec(const char *arg
+ {
+     char *specFile = NULL;
+     char *specFinal = NULL;
++    char *specDir = NULL;
++    char *specBase = NULL;
+     const char **spec;
+     char tarbuf[BUFSIZ];
+     int gotspec = 0;
+@@ -375,11 +377,11 @@ static char * getTarSpec(const char *arg
+ 	char *cmd;
+ 	int specfiles = 0;
+ 
+-	cmd = rpmExpand("%{uncompress: ", arg, "} | ",
++	cmd = rpmExpand("%{uncompress: \"$1\" } | ",
+ 			"%{__tar} xOvof - --wildcards ", *spec,
+ 			" 2>&1 > ", specFile, NULL);
+ 
+-	if (!(fp = popen(cmd, "r"))) {
++	if (!(fp = rpopen(cmd, arg, NULL))) {
+ 	    rpmlog(RPMLOG_ERR, _("Failed to open tar pipe: %m\n"));
+ 	} else {
+ 	    char *fok;
+@@ -392,7 +394,7 @@ static char * getTarSpec(const char *arg
+ 		}
+ 		specfiles++;
+ 	    }
+-	    pclose(fp);
++	    rpclose(fp);
+ 	    gotspec = (specfiles == 1) && isSpecFile(specFile);
+ 	    if (specfiles > 1) {
+ 		rpmlog(RPMLOG_ERR, _("Found more than one spec file in %s\n"), arg);
+@@ -408,9 +410,11 @@ static char * getTarSpec(const char *arg
+     if (!gotspec) {
+     	rpmlog(RPMLOG_ERR, _("Failed to read spec file from %s\n"), arg);
+     } else {
++	specDir = rpmExpand("%{_specdir}", NULL);
++	specBase = basename(tarbuf);
+ 	/* remove trailing \n */
+-	tarbuf[strlen(tarbuf)-1] = '\0';
+-	specFinal = rpmExpand("%{_specdir}/%{basename:", tarbuf, "}", NULL);
++	specBase[strlen(specBase)-1] = '\0';
++	rasprintf(&specFinal, "%s/%s", specDir, specBase);
+ 	if (rename(specFile, specFinal)) {
+ 	    rpmlog(RPMLOG_ERR, _("Failed to rename %s to %s: %m\n"),
+ 		    specFile, specFinal);
+@@ -421,6 +425,7 @@ static char * getTarSpec(const char *arg
+ 
+ exit:
+     free(specFile);
++    free(specDir);
+     Fclose(fd);
+     return specFinal;
+ }
