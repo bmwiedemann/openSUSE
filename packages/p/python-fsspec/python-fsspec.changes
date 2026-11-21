@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 20 22:08:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.9.0:
+  * Add an adaptive readahead cache (#2093)
+  * Implement ``created`` and ``modified`` for ``SFTPFileSystem``
+  * Allow filesystem implementations to assign ``protocol`` per
+    instance (#2117)
+  * Delegate ``sizes`` and ``cat_ranges`` from ``DirFileSystem``
+    to the wrapped filesystem (#2142)
+  * Delegate ``invalidate_cache``, ``ukey`` and ``checksum`` from
+    ``DirFileSystem`` to the wrapped filesystem (#2144)
+  * Support negative offsets in ``TarFileSystem.cat_file`` (#2146)
+  * Mirror ``readinto`` from the PyArrow stream onto ``ArrowFile`` (#2111)
+  * Allow ``simplecache`` files to be removed by age using their
+    modification times (#2118)
+
+-------------------------------------------------------------------
 Fri Aug 21 20:07:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.7.0:
