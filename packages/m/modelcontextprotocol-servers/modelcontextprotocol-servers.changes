@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 21 07:09:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 2.5.0:
+  * mcp-server-filesystem 2.4.0: list directories in place so a
+    symlink swap cannot return entries from outside the allowed
+    directories (GHSA-rq2p-q7c4-6g27)
+  * mcp-server-everything 2.3.1: treat NAT64 addresses as the IPv4
+    address they carry in the private-address guard
+    (GHSA-38j4-j742-j7r3)
+  * mcp-server-memory 2.2.1: release held lock files on exit and
+    add opt-in write limits on graph size
+  * mcp-server-sequential-thinking 2.2.0: count header rows toward
+    the log box row cap
+  * Serve Streamable HTTP from every reference server
+
+-------------------------------------------------------------------
 Wed Nov 11 07:25:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package of the everything, filesystem, memory and

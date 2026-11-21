@@ -7,4 +7,12 @@
     <comment>New package: Model Context Protocol reference servers (everything, filesystem, memory, sequential-thinking)</comment>
     <requestid>1396855</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7e3ce7208523f1530744af0e47a8f96f</srcmd5>
+    <version>2.5.0</version>
+    <time>1795294067</time>
+    <user>dimstar_suse</user>
+    <comment>Update modelcontextprotocol-servers to 2.5.0: filesystem in-place fix, NAT64 guard, memory lock fix, Streamable HTTP.</comment>
+    <requestid>1399605</requestid>
+  </revision>
 </revisionlist>

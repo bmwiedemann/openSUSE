@@ -16,7 +16,7 @@
 %define appdir %{_datadir}/%{name}
 %define fast_uri_version 3.1.9
 Name:           modelcontextprotocol-servers
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Model Context Protocol reference servers
 # the MCP SDK inlines ajv and friends (MIT) and fast-uri (BSD-3-Clause), its docs are CC-BY-4.0;
