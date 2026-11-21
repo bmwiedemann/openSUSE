@@ -1482,4 +1482,41 @@
     <comment>1</comment>
     <requestid>1381106</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>39ec5030cd84171ccedf55710ac1d861</srcmd5>
+    <version>1.7.3+git55</version>
+    <time>1795293922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.3+git55:
+  * pam_setquota: try exact mnt_dir match first
+  * libpam_misc: reject NULL message and response pointers in misc_conv
+  * libpam_misc: fix binary response cleanup in misc_conv
+  * libpam_misc: introduce misc_conv regression tests
+  * pam_access: correctly handle IPv4-mapped IPv6 addresses
+  * Make the runtime state directory configurable and default to /run
+  * pam_listfile: add shorthand argument syntax
+  * pam_listfile: add list= option for inline comma-separated lists
+  * pam_listfile: add negation support with ! prefix in list files
+  * pam_listfile: add fnmatch pattern matching for list file entries
+  * libpam: add pam_modutil_user_in_group_nam_pat()
+  * libpam: extract getgrouplist_alloc() and rewrite checkgrouplist()
+  * pam_listfile: add item=home for matching user's home directory
+  * pam_listfile: strip whitespace and support comments in list files
+  * pam_listfile: factor out match_entry() and match_file()
+  * pam_listfile: deduplicate return value tests
+  * pam_userdb: do not read past datum buffers in the database dump
+  * libpamc: check every character of an agent id
+  * libpamc: avoid shadowing the caller's prompt in PAM_BP_FILL
+  * pam_userdb: fix key_only delimiter collision
+  * pam_faillock: document trusted tally directory requirement
+  * libpamc: validate agent reply size before use
+  * pam_access: handle last line with missing newline correct
+  * pam_faillock: eliminate waits in tst-pam_faillock-retval test
+  * libpam: match module callback type to public API
+  * po: update translations for pam_timestamp's wider age format
+  * pam_timestamp: don't truncate timestamp age in log messages
+  * pam_timestamp: avoid overflow when checking future timestamps
+  * pam_listfile: check for I/O errors after reading list file</comment>
+    <requestid>1398678</requestid>
+  </revision>
 </revisionlist>
