@@ -128,4 +128,41 @@
     * fix some doc typos &amp; warnings</comment>
     <requestid>1349125</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>75491a964e359c72a7b44fbd6fcbd92b</srcmd5>
+    <version>0.9.7</version>
+    <time>1795294007</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.7:
+  * #489: add infinite perspective projection helpers for LH/RH
+    and NO/ZO clip spaces (thanks to @Lephar)
+  * #450: add 2D affine post-transform helpers for translation,
+    rotation and scaling (thanks to @ATMI)
+  * #467: add mat3/mat4 texture-transform helpers
+  * #487: add `glm_vec2_swap()`, `glm_vec3_swap()` and
+    `glm_vec4_swap()` (thanks to @tayoky)
+  * #452: add tau-related mathematical constants (thanks to
+    @lazzy-cipher)
+  * #466: extend Apple SIMD integration helpers
+  * #483: add missing perspective-resize functions to the Call
+    API clipspace variants (thanks to @Lephar)
+  * ### Bug fixes and improvements
+  * #505: fix rotation-matrix generation from non-unit
+    quaternions (thanks to @snowyukitty)
+  * #504: preserve translation when applying `glm_spin()` (thanks
+    to @fhgffy)
+  * #496: fix AABB–sphere and AABB–circle intersection tests
+    below the minimum bounds (thanks to @94xhn)
+  * #501: fix the struct API's 2D AABB radius calculation (thanks
+    to @tooold2rock-n-roll)
+  * #492: stop Call API headers from automatically including the
+    inline API (thanks to @FunkyAss)
+  * #478: fix out-of-tree Autotools builds (thanks to @fd00)
+  * #476: fix double-promotion warnings in tests (thanks to
+    @aganm)
+  * #488: fix warnings when combining `-ffast-math` and `-Wextra`
+    (thanks to @lesleyrs)
+  * #499: fix integer-to-float conversion warnings (thanks to</comment>
+    <requestid>1399525</requestid>
+  </revision>
 </revisionlist>
