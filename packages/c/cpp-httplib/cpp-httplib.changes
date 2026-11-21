@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Nov 14 13:00:24 UTC 2026 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to 0.64.0:
+  * Reject CR/LF and control characters in the request target and
+    the chunk-size line, and reject invalid Content-Length values
+  * Reject ambiguous or invalid Host headers and bound the trailer
+    declaration set
+  * Write response headers defensively to prevent response
+    splitting
+  * Match certificate wildcards only in the leftmost label and use
+    the subjectAltName type in Mbed TLS hostname verification
+  * Headers, Params, FormFields and FormFiles now preserve
+    insertion order; iterators follow std::vector rules
+  * WebSocketClient::connect() returns httplib::ws::Result rather
+    than bool
+  * Add Server::CustomRoute(), set_static_file_compression() and a
+    WebSocket read timeout
+  * See https://github.com/yhirose/cpp-httplib/releases for details
+- Bump the shared library to the 0.64 soname (libcpp-httplib0_64)
+
+-------------------------------------------------------------------
 Thu Jul  2 17:21:58 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 0.49.0:
