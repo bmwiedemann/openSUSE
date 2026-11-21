@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-image
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  image
 Name:           octave-forge-%{octpkg}
-Version:        2.18.1
+Version:        2.20.1
 Release:        0
 Summary:        Image Processing for Octave
 License:        BSD-2-Clause AND GPL-3.0-or-later AND MIT
@@ -26,6 +26,7 @@ Group:          Productivity/Scientific/Math
 URL:            https://gnu-octave.github.io/packages/image
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
+BuildRequires:  gnuplot
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel >= 7.2.0
 Requires:       octave-cli >= 7.2.0

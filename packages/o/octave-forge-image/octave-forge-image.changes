@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Nov 18 18:41:10 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 2.20.1:
+  * Improve image spatial filters for higher-dimensional
+    inputs (bug #45088)
+  * edge: Allow binary input image for edge (bug #55432)
+  * mormxcorr2: re-write the code and optimize it to make it
+    compatible with MATLAB (bug #50151)
+- Update to version 2.20.0:
+  * Octave version 8.1.0 is now the minimum requirement, since
+    imtranslate uses interp2 which was fixed in this version
+  * imtranslate was re-written to be MATLAB compatible (bug #50257)
+    and the previous version was renamed to imtranslate_old
+  * bootstrap: use autoreconf instead of autoconf to generate
+    config.h.in automatically (bug #68028)
+  * Optimize __spatial_filtering__.cc for performance (bug #67989)
+  * Fix handling NaN values graycomatrix (bug #67905)
+  * imhist: fix the call to colorbar because of its API
+    change (bug #68089)
+- Update to version 2.18.2:
+  * Fix a bug in imtransform, which wasn't MATLAB compatible for
+    linear and cubic interpolation (bug #67682)
+  * Change #include <octave/lo-mappers.h> to #include <octave/mappers.h>
+    (bug #68028)
+  * Check explicitly if input is a string in bwconncomp.cc (bug #67895)
+- Add gnuplot build dependency required for tests
+
+-------------------------------------------------------------------
 Sat Sep  6 17:58:04 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.18.1:
