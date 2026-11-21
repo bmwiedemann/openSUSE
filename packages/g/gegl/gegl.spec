@@ -35,6 +35,8 @@ URL:            https://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source1:        normalize-gir.pl
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM gegl-CVE-2026-103641.patch bsc#1283808 sckang@suse.com -- libs/rgbe: fix #477 Segfault in rgbe_rgbe_to_float()
+Patch0:         gegl-CVE-2026-103641.patch
 
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc

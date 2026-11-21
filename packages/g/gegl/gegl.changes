@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 19 02:30:10 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- CVE-2026-103641: libs/rgbe: fix #477 Segfault in
+  rgbe_rgbe_to_float() (bsc#1283808)
+  * gegl-CVE-2026-103641.patch
+
+-------------------------------------------------------------------
 Mon Sep  7 15:57:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop gegl-CVE-2026-18300.patch: This was applied upstream several
