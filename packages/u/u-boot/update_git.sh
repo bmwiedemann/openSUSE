@@ -31,8 +31,8 @@ if [ -d "$GIT_LOCAL_TREE" ] || [ -L "$GIT_LOCAL_TREE" ]; then
     git clone -ls $GIT_LOCAL_TREE $GIT_DIR -b $GIT_BRANCH
     if ! (cd $GIT_LOCAL_TREE && git remote show upstream &>/dev/null); then
         echo "Remote for upstream git tree not found. Next time add remote" \
-             "named upstream for git://git.denx.de/u-boot.git and update"
-        (cd $GIT_DIR && git remote add upstream git://git.denx.de/u-boot.git)
+             "named upstream for https://git.u-boot-project.org/u-boot/u-boot.git and update"
+        (cd $GIT_DIR && git remote add upstream https://git.u-boot-project.org/u-boot/u-boot.git)
         (cd $GIT_DIR && git remote update)
    fi
 else
@@ -41,7 +41,7 @@ else
     echo "(For much faster processing, consider establishing a local git tree" \
          "at $GIT_LOCAL_TREE)"
     git clone $GIT_TREE $GIT_DIR -b $GIT_BRANCH
-    (cd $GIT_DIR && git remote add upstream git://git.denx.de/u-boot.git)
+    (cd $GIT_DIR && git remote add upstream https://git.u-boot-project.org/u-boot/u-boot.git)
     (cd $GIT_DIR && git remote update)
 fi
 (cd $GIT_DIR && git format-patch -N $GIT_UPSTREAM_TAG --suffix= -o $CMP_DIR >/dev/null)

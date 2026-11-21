@@ -187,7 +187,7 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "qemu-riscv64smodeacpi" || "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2" || "%target" == "microchipmpfsgeneric" || "%target" == "milkvduo" || "%target" == "beaglevfire"
+%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "qemu-riscv64smodeacpi" || "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2" || "%target" == "microchipmpfsgeneric" || "%target" == "milkvduo" || "%target" == "beaglevfire" || "%target" == "milkvduo256m"
 %define is_riscv64 1
 %if "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2"
 %define binext .itb
@@ -237,8 +237,9 @@ Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
 Group:          System/Boot
-URL:            http://www.denx.de/wiki/U-Boot
-Source:         https://github.com/u-boot/u-boot/archive/refs/tags/v%{archive_version}.tar.gz#/u-boot-%{archive_version}.tar.bz2
+URL:            https://u-boot-project.org/
+Source:         https://git.u-boot-project.org/u-boot/u-boot/-/releases/v%{archive_version}/downloads/u-boot-%{archive_version}.tar.bz2
+Source1:        https://git.u-boot-project.org/u-boot/u-boot/-/releases/v%{archive_version}/downloads/u-boot-%{archive_version}.tar.bz2.sig
 Source2:        arndale-bl1.img
 #Source3:        https://github.com/JeffyCN/rockchip_mirrors/blob/6186debcac95553f6b311cee10669e12c9c9963d/bin/rk35/rk3568_bl31_v1.28.elf?raw=true#/rk3568_bl31_v1.28.elf
 Source3:        rk3568_bl31_v1.28.elf
@@ -369,12 +370,12 @@ Obsoletes:      x-loader-%target
 Provides:       x-loader-%target
 %endif
 %if "%{name}" == "u-boot-am335xevm"
-# http://git.denx.de/?p=u-boot.git;a=commit;h=8fa7f65dd02c176ee6021eaf40114560b8954ba2
+# https://git.u-boot-project.org/u-boot/u-boot/-/commit/8fa7f65dd02c176ee6021eaf40114560b8954ba2
 Obsoletes:      am335x_boneblack
 Provides:       am335x_boneblack
 %endif
 %if "%{name}" == "u-boot-bananapim2plush3"
-# http://git.denx.de/?p=u-boot.git;a=commit;h=268ae6548779ccd8ba38ce39d43f41be7e0bc133
+# https://git.u-boot-project.org/u-boot/u-boot/-/commit/268ae6548779ccd8ba38ce39d43f41be7e0bc133
 Obsoletes:      Sinovoip_BPI_M2_Plus
 Provides:       Sinovoip_BPI_M2_Plus
 %endif
@@ -422,7 +423,7 @@ This package contains documentation for U-Boot firmware.
 %endif
 
 %prep
-%setup -q -n u-boot-%{archive_version}
+%setup -q -n u-boot-v%{archive_version}
 %autopatch -p1
 
 %build
