@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 20 07:50:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.3:
+  * Bugs fixed:
+    + Application mode strips escape characters in urls
+    + Trying to autofill a field without autofill data crashes
+    + Client certificate login fails with PIV smart cards: private
+      key is looked up by the certificate's label, not CKA_ID
+    + Fix crash when loading languages
+    + Bookmarks-dialog: Fix sorting in bookmark list box
+  * Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct 29 16:03:56 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 51.2:
