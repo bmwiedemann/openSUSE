@@ -20,7 +20,7 @@
 %define sover 1
 %define libname libze_intel_npu%{sover}
 Name:           linux-npu-driver
-Version:        1.38.0
+Version:        1.39.1
 Release:        0
 Summary:        Driver for Intel NPU device
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  libasan8
 BuildRequires:  libtsan2
 %endif
 BuildRequires:  pkgconfig(gtest)
-BuildRequires:  pkgconfig(level-zero)
+BuildRequires:  level-zero-devel
 BuildRequires:  pkgconfig(gmock)
 BuildRequires:  xz yaml-cpp-devel
 ExclusiveArch:  x86_64
