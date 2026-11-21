@@ -163,4 +163,13 @@ workaround was added, because the fix belongs in the test helper.</comment>
     <comment>Update to 0.7.1: rmcp 3.9.0 for RUSTSEC-2026-0462, named 410 preflight failures, re-vendored.</comment>
     <requestid>1397083</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>afc85a64b3e5c0a71849c8ba014c8aaa</srcmd5>
+    <version>0.8.0</version>
+    <time>1795294057</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.8.0: rmcp 3.10.0, chrono replaced by jiff, negative day counts refused, Quadlet unit added.
+- Fixes RUSTSEC-2026-0543 via the chrono to jiff switch.</comment>
+    <requestid>1399607</requestid>
+  </revision>
 </revisionlist>

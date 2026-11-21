@@ -17,15 +17,15 @@
 
 
 Name:           bugwarden
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        MCP server for Bugzilla with operator-controlled security guards
 # Apache-2.0 plus the vendored crates statically linked into the binary
 License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT AND Unicode-3.0
 URL:            https://github.com/plusky/bugwarden
 Source0:        %{name}-%{version}.tar.zst
-# cargo_vendor filter=true, minus Windows-only ring pregenerated/*-nasm.o, *-win32n.o and
-# aws-lc-sys builder/prebuilt-nasm/*.obj and their checksums; redo after every re-vendor
+# Source-Binary-Exception: vendor.tar.zst:vendor/ring-*/pregenerated/* -- other-platform: Windows objects for builds without nasm
+# Source-Binary-Exception: vendor.tar.zst:vendor/aws-lc-sys-*/builder/prebuilt-nasm/* -- other-platform: Windows objects for builds without nasm
 Source1:        vendor.tar.zst
 # %%check: reqwest refuses an empty CA store, though the tests only speak plain HTTP
 BuildRequires:  ca-certificates-mozilla
@@ -84,7 +84,7 @@ command line definition.
 rm -f rust-toolchain.toml
 
 %build
-%cargo_build
+%{cargo_build}
 
 %install
 install -D -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
@@ -105,7 +105,7 @@ install -D -m 0644 crates/%{name}/completions/%{name}.fish \
   %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %check
-%cargo_test
+%{cargo_test}
 
 %files
 %license LICENSE
