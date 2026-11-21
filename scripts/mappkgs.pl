@@ -31,12 +31,15 @@ sub get_md5($)
     next unless $a[1] eq $file;
     return $a[0];
   }
-  die "pre-computed MD5 value of $path not found"
+  #die "pre-computed MD5 value of $path not found"
+  print STDERR "pre-computed MD5 value of $path not found in scripts/mappkgs.pl\n";
+  return undef;
 }
 sub get_cid($)
 {
   my $path = shift;
   my $md5=get_md5($path);
+  if(not defined($md5)) {return undef}
   my %md5cid;
   tie(%md5cid, 'DB_File', "$ENV{HOME}/.cache/bmwiedemann-openSUSE-ipfs-md5-cid.dbm", O_RDWR|O_CREAT, 0666) or die "error opening DB: $!";
   my $cid=$md5cid{$md5};
@@ -56,6 +59,7 @@ sub make_ipfs_link($$)
   my ($in, $out) = @_;
   #print "would ipfs $in -> $out\n";
   my $cid = get_cid($in);
+  if(not defined($cid)) {return undef}
   symlink("/ipfs/$cid", $out);
 }
 
