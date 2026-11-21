@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 20 18:02:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.2
+  Fixes
+  * A __proto__ key in JSON input is now kept as a regular field
+    instead of being dropped, and walk and sortKeys keep it too
+    (#449).
+  * groupBy no longer drops items whose group is __proto__ (#448).
+    Block comments ending in **/ now close correctly (#445).
+  * zip() with no inputs returns [] instead of looping forever
+    (#442). Thanks @nk-batman21!
+  * Errors in YAML, TOML or XML input are printed to stderr instead
+    of stdout (#441).
+  * Arrays with holes keep their indexes in output: [1, , 3] prints
+    as [1,null,3] (#443).
+
+-------------------------------------------------------------------
 Sun Oct 25 08:36:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 40.0.1
