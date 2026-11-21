@@ -23,4 +23,22 @@
     <comment></comment>
     <requestid>1303566</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e74e614d7b507e38cc52d59b227ba52</srcmd5>
+    <version>2.4.1</version>
+    <time>1795294016</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.1:
+  * Fixed a crash when parsing ISO week dates with year `0000`
+    (e.g., `0000W06`). Previously, this segfaulted on Linux aarch64.
+  * Fixed the Windows ARM64 wheel build.
+  * Build and test all wheels in CI.
+  * Timestamps containing a null byte (`\x00`) now raise a
+    `ValueError` (#188). Previously, parsing stopped at the first
+    null byte and silently ignored everything after it.
+  * Dropped Python 3.7 support
+  * Added Python 3.15 support
+  * Added PyPy 3.12 support</comment>
+    <requestid>1399545</requestid>
+  </revision>
 </revisionlist>

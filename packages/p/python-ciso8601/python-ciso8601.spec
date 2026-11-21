@@ -1,7 +1,7 @@
 #
 # spec file for package python-ciso8601
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ciso8601
-Version:        2.3.3
+Version:        2.4.1
 Release:        0
 Summary:        Fast ISO8601 date time parser for Python written in C
 License:        MIT
