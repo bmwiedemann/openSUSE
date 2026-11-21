@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 20 05:38:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.8.2:
+  * Fixed a security vulnerability in the privacy plugin
+    (GHSA-wxw8-4jgj-q85j)
+
+-------------------------------------------------------------------
 Sat Nov  7 16:41:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.8.1:
