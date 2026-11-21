@@ -17,7 +17,7 @@
 
 
 Name:           dkms
-Version:        3.3.0
+Version:        3.4.4
 Release:        0
 Summary:        Dynamic Kernel Module Support Framework
 License:        GPL-2.0-only
@@ -26,6 +26,7 @@ URL:            https://github.com/dell/dkms
 Source0:        %{url}/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
 Source100:      %{name}.rpmlintrc
 BuildRequires:  make
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
 Requires:       bash > 1.99
 Requires:       cpio
@@ -34,13 +35,19 @@ Requires:       gawk
 Requires:       gcc
 Requires:       grep
 Requires:       gzip
-Requires:       kernel-syms
 Requires:       make
 Requires:       mktemp
 Requires:       modutils
 Requires:       sed
 Requires:       tar
 Requires:       zstd
+Requires:       (kernel-64kb-devel if kernel-64kb)
+Requires:       (kernel-azure-devel if kernel-azure)
+Requires:       (kernel-debug-devel if kernel-debug)
+Requires:       (kernel-default-devel if kernel-default)
+Requires:       (kernel-kvmsmall-devel if kernel-kvmsmall)
+Requires:       (kernel-nvidia64kb-devel if kernel-nvidia64kb)
+Requires:       (kernel-rt-devel if kernel-rt)
 Recommends:     openssl
 BuildArch:      noarch
 %systemd_requires
@@ -138,7 +145,7 @@ exit 0
 %{_localstatedir}/lib/%{name}
 %{_libexecdir}/%{name}
 %{_tmpfilesdir}/dkms.conf
-%{_mandir}/man8/dkms.8%{ext_man}
+%{_mandir}/man8/dkms.8%{?ext_man}
 %{_unitdir}/dkms.service
 # these dirs are for plugins - owned by other packages
 %dir %{_prefix}/lib/kernel/

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov 10 10:32:39 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 3.4.4
+  * Check for valid AUTOINSTALL values also in dkms_common.postinst.in
+  * Include missing path in broken module messages
+  * Fix mismatch on module names for updates
+- Update to version 3.4.3
+  * Fix formatting of the synopsis headers for mandoc
+- Update to version 3.4.2
+  * Use a generic missing kernel headers error message
+  * Adjust module location matches
+- Update to version 3.4.1
+  * Do not error when --rpm_safe_upgrade triggered correctly
+  * Add deferred logic for BUILD_DEPENDS
+- Update to version 3.4.0
+  * Fix typos in docs and scripts
+  * Continue on error
+  * Resolve in-tree certificates to absolute paths
+  * Add configuration option for enabling and disabling module signing
+  * Declare variables as local where needed
+  * Deprecate OBSOLETE_BY
+  * Adjust dkms match command parsing
+  * Allow patches, scripts and overrides in /etc/dkms
+
+-------------------------------------------------------------------
+Mon Nov  9 15:08:38 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Drop bogus dependency on kernel-syms
+
+-------------------------------------------------------------------
 Sat Jan  3 17:19:11 UTC 2026 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
 
 - Update to version 3.3.0
