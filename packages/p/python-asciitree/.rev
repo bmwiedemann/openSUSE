@@ -39,4 +39,25 @@
     <comment></comment>
     <requestid>1277195</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a42ba17f69eacfed15d6431a6359d5eb</srcmd5>
+    <version>1.0.0</version>
+    <time>1795294031</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * Configurable layout spaces through `BoxStyle.gfx[&quot;SPACE&quot;]`,
+    with an ordinary-space fallback for existing palettes.
+  * Declared the existing public API stable, without breaking
+    changes from 0.4.0.
+  * Nix builds, tests, docs, and direnv development shell.
+  * Ruff linting, treefmt formatting, and Nix-based GitHub CI.
+  * Moved setuptools configuration to `pyproject.toml`.
+  * Switched docs to Furo.
+  * Converted README and docs to Markdown with MyST.
+  * Python 2 compatibility; use `0.3.3` for Python 2.
+
+- The tests need pytest for discovery
+- switch to Github archive for tests gh#mbr/asciitree#16</comment>
+    <requestid>1399551</requestid>
+  </revision>
 </revisionlist>

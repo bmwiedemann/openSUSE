@@ -1,7 +1,7 @@
 #
 # spec file for package python-asciitree
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asciitree
-Version:        0.3.3
+Version:        1.0.0
 Release:        0
 Summary:        Python module to draw ASCII trees
 License:        MIT
@@ -28,7 +28,7 @@ URL:            https://github.com/mbr/asciitree
 Source:         https://github.com/mbr/asciitree/archive/%{version}.tar.gz#/asciitree-%{version}-gh.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,7 +53,7 @@ sed -i '1{/env python/ d}' asciitree/__init__.py
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/asciitree
 %{python_sitelib}/asciitree-%{version}*info

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 20 21:00:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Configurable layout spaces through `BoxStyle.gfx["SPACE"]`,
+    with an ordinary-space fallback for existing palettes.
+  * Declared the existing public API stable, without breaking
+    changes from 0.4.0.
+  * Nix builds, tests, docs, and direnv development shell.
+  * Ruff linting, treefmt formatting, and Nix-based GitHub CI.
+  * Moved setuptools configuration to `pyproject.toml`.
+  * Switched docs to Furo.
+  * Converted README and docs to Markdown with MyST.
+  * Python 2 compatibility; use `0.3.3` for Python 2.
+
+-------------------------------------------------------------------
 Tue May 13 14:15:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -11,7 +26,7 @@ Fri Mar 29 14:18:47 UTC 2024 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Mon Nov 23 23:06:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- The tests need pytest for discovery 
+- The tests need pytest for discovery
 
 -------------------------------------------------------------------
 Wed Oct 14 09:54:59 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
@@ -22,7 +37,7 @@ Wed Oct 14 09:54:59 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 Tue Oct 13 16:39:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - clean spec-file
-- switch to Github archive for tests gh#mbr/asciitree#16 
+- switch to Github archive for tests gh#mbr/asciitree#16
 
 -------------------------------------------------------------------
 Thu Jan 17 21:37:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
