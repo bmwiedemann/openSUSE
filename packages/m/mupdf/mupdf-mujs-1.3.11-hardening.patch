@@ -1,0 +1,190 @@
+Backport upstream mujs 1.3.11 hardening to the bundled thirdparty/mujs
+copy (which is verbatim upstream 1.3.10).
+
+The bundled thirdparty/mujs in mupdf 1.28.6 is byte-identical to the
+standalone mujs 1.3.10 tarball from mujs.com (jsarray.c md5
+15160a65518590fe2256f1c396b14e7e matches 1.3.11 as well, since
+jsarray.c did not change in 1.3.11). The 1.3.10 -> 1.3.11 delta is
+6 files (jsrun.c, jscompile.c, jsi.h, jsregexp.c, regexp.c, main.c);
+this backports the 5 security-relevant files and intentionally leaves
+out the main.c shell usage-message hunk (commit 01a75ff4, "-R/-M flags
+in usage"), which only fixes help text of the standalone mujs shell
+and is not compiled into libmupdf (the library builds thirdparty/mujs
+via one.c, which does not include main.c).
+
+Hunks, all verified against the mujs.com 1.3.11 tarball
+(sha256 456a395769daf110a30f9bf6f793044261e261481d5dca33b63cdc8714774ca4,
+md5 4f1bf51428bdea3175adbf63e55b693e; 1.3.10 sha256
+6e36c15dbb84ff859320297c900852f241b131a7b6ddaea669ac9a65bd75571c):
+
+- thirdparty/mujs/jsrun.c jsR_isindex: range-check-first. Check
+  v->u.number against 0..INT_MAX before casting to int, avoiding
+  undefined behavior on out-of-range doubles when testing whether a
+  value is a valid array index.
+  Upstream: codeberg.org/ccxvii/mujs commit 8a32c397
+  ("Fix undefined behavior casting out-of-range int to double").
+
+- thirdparty/mujs/jsrun.c jsR_unflattenarray: fix error recovery.
+  On exception, delete any array entries already migrated to the
+  property tree instead of NULLing obj->properties (which leaked and
+  left a NULL dereference later). Mark the loop index volatile.
+  Upstream: codeberg.org/ccxvii/mujs commit e744aaa1
+  ("Fix error in recovering from errors when unflattening simple
+  array").
+
+- thirdparty/mujs/jscompile.c stm->jumps handling (Bug 709757):
+  unlink each jump entry as it is freed so an exception from labelto()
+  cannot double-free the head of the list.
+  Upstream: codeberg.org/ccxvii/mujs commit aab59f2c
+  ("Bug 709757: Don't double free when labeljumps gets an exception").
+
+- thirdparty/mujs/jsi.h + jsregexp.c + regexp.c: regexp integer
+  hardening. Widen js_RegExp flags/last from unsigned short to int,
+  compare re->last as size_t against strlen(), and use size_t for the
+  regexp program-size computation (count()/n) so inputs longer than
+  64k cannot overflow into a negative "program too large" check.
+  Upstream: codeberg.org/ccxvii/mujs commits 4bff9635
+  ("Fix size_t to int implicit casts in regexp") and d0e82695
+  ("Fix integer overflow when regexp operates on strings longer
+  than 64k").
+
+After this backport the shipped library code (everything pulled in via
+thirdparty/mujs/one.c) is byte-equivalent to upstream mujs 1.3.11 in
+all security-relevant paths; only the standalone-shell usage text
+differs.
+
+--- a/thirdparty/mujs/jscompile.c
++++ b/thirdparty/mujs/jscompile.c
+@@ -802,9 +802,8 @@
+ 		if (jump->type == STM_CONTINUE)
+ 			labelto(J, F, jump->inst, caddr);
+ 		js_free(J, jump);
+-		jump = next;
++		stm->jumps = jump = next;
+ 	}
+-	stm->jumps = NULL;
+ }
+
+ static int isloop(enum js_AstType T)
+--- a/thirdparty/mujs/jsi.h
++++ b/thirdparty/mujs/jsi.h
+@@ -363,8 +363,8 @@
+ {
+ 	void *prog;
+ 	char *source;
+-	unsigned short flags;
+-	unsigned short last;
++	int flags;
++	int last;
+ };
+
+ struct js_Object
+--- a/thirdparty/mujs/jsregexp.c
++++ b/thirdparty/mujs/jsregexp.c
+@@ -60,7 +60,7 @@
+ 	haystack = text;
+ 	opts = 0;
+ 	if (re->flags & JS_REGEXP_G) {
+-		if (re->last > strlen(haystack)) {
++		if ((size_t)re->last > strlen(haystack)) {
+ 			re->last = 0;
+ 			js_pushnull(J);
+ 			return;
+@@ -112,7 +112,7 @@
+
+ 	opts = 0;
+ 	if (re->flags & JS_REGEXP_G) {
+-		if (re->last > strlen(text)) {
++		if ((size_t)re->last > strlen(text)) {
+ 			re->last = 0;
+ 			js_pushboolean(J, 0);
+ 			return;
+--- a/thirdparty/mujs/jsrun.c
++++ b/thirdparty/mujs/jsrun.c
+@@ -545,10 +545,13 @@
+ void jsR_unflattenarray(js_State *J, js_Object *obj) {
+ 	if (obj->type == JS_CARRAY && obj->u.a.simple) {
+ 		js_Property *ref;
+-		int i;
++		volatile int i;
++		int k;
+ 		char name[32];
+ 		if (js_try(J)) {
+-			obj->properties = NULL;
++			/* delete any array entries that were migrated to the property tree */
++			for (k = 0; k < i; ++k)
++				jsV_delproperty(J, obj, js_itoa(name, i));
+ 			js_throw(J);
+ 		}
+ 		for (i = 0; i < obj->u.a.flat_length; ++i) {
+@@ -1567,8 +1570,10 @@
+ {
+ 	js_Value *v = stackidx(J, idx);
+ 	if (v->t.type == JS_TNUMBER) {
+-		*k = v->u.number;
+-		return *k == v->u.number && *k >= 0;
++		if (v->u.number >= 0 && v->u.number <= INT_MAX) {
++			*k = v->u.number;
++			return *k == v->u.number;
++		}
+ 	}
+ 	return 0;
+ }
+--- a/thirdparty/mujs/regexp.c
++++ b/thirdparty/mujs/regexp.c
+@@ -50,6 +50,7 @@
+ };
+
+ struct cstate {
++	jmp_buf kaboom;
+ 	Reprog *prog;
+ 	Renode *pstart, *pend;
+
+@@ -64,7 +65,6 @@
+ 	int yymin, yymax;
+
+ 	const char *error;
+-	jmp_buf kaboom;
+
+ 	Reclass cclass[REG_MAXCLASS];
+ };
+@@ -659,9 +659,9 @@
+ 	Reinst *y;
+ };
+
+-static int count(struct cstate *g, Renode *node, int depth)
++static size_t count(struct cstate *g, Renode *node, int depth)
+ {
+-	int min, max, n;
++	size_t min, max, n;
+ 	if (!node) return 0;
+ 	if (++depth > REG_MAXREC) die(g, "stack overflow");
+ 	switch (node->type) {
+@@ -674,7 +674,7 @@
+ 		if (min == max) n = count(g, node->x, depth) * min;
+ 		else if (max < REPINF) n = count(g, node->x, depth) * max + (max - min);
+ 		else n = count(g, node->x, depth) * (min + 1) + 2;
+-		if (n < 0 || n > REG_MAXPROG) die(g, "program too large");
++		if (n > REG_MAXPROG) die(g, "program too large");
+ 		return n;
+ 	case P_PAR: return count(g, node->x, depth) + 2;
+ 	case P_PLA: return count(g, node->x, depth) + 2;
+@@ -900,7 +900,8 @@
+ 	struct cstate g;
+ 	Renode *node;
+ 	Reinst *split, *jump;
+-	int i, n;
++	int i;
++	size_t n;
+
+ 	g.pstart = NULL;
+ 	g.prog = NULL;
+@@ -952,7 +953,7 @@
+ #endif
+
+ 	n = 6 + count(&g, node, 0);
+-	if (n < 0 || n > REG_MAXPROG)
++	if (n > REG_MAXPROG)
+ 		die(&g, "program too large");
+
+ 	g.prog->nsub = g.nsub;

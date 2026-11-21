@@ -44,6 +44,9 @@ Patch1:         mupdf-system-cmark-gfm.patch
 # NULL list pointer after free (upstream Bug 709768, boo#1285930).
 # PATCH-FIX-UPSTREAM mupdf-709768-double-free.patch -- commit 3984925b660a
 Patch2:         mupdf-709768-double-free.patch
+# Backport mujs 1.3.11 security hardening to the bundled 1.3.10 copy.
+# PATCH-FIX-UPSTREAM mupdf-mujs-1.3.11-hardening.patch -- codeberg.org/ccxvii/mujs commits 8a32c397, e744aaa1, aab59f2c, 4bff9635, d0e82695
+Patch3:         mupdf-mujs-1.3.11-hardening.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -74,9 +77,9 @@ Provides:       bundled(freeglut-art) = 3.0.0
 Provides:       bundled(gumbo-parser) = 0.10.1
 Provides:       bundled(lcms2) = 2.19
 Provides:       bundled(lcms2-art) = 2.19
-# bundled mujs is verbatim upstream 1.3.10 (sort OOB fixed);
-# 1.3.11-only hardening, e.g. the jsR_isindex guard, is missing
-Provides:       bundled(mujs) = 1.3.10
+# bundled mujs is 1.3.10 plus the 1.3.11 security backport above;
+# shipped code via one.c is byte-equivalent to 1.3.11 (only shell main.c differs)
+Provides:       bundled(mujs) = 1.3.11
 
 %description
 MuPDF is a PDF and XPS viewer and parser/rendering library.

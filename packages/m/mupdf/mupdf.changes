@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 20 15:48:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Harden the bundled mujs copy (verbatim upstream 1.3.10) with the
+  security-relevant parts of upstream 1.3.11: range-check the
+  array-index conversion before the int cast, safe unflatten error
+  recovery, label-jump list handling, and regexp size arithmetic.
+  * mupdf-mujs-1.3.11-hardening.patch
+- Bump Provides: bundled(mujs) to 1.3.11; the shipped library code
+  (built via thirdparty/mujs/one.c) is now byte-equivalent
+  to 1.3.11 in all security-relevant paths (only the
+  standalone-shell usage text differs and is not shipped). No
+  version change: 1.28.6 is still the latest upstream release.
+
+-------------------------------------------------------------------
 Thu Nov 12 08:56:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - CVE-2026-110715: bundled mujs Array.prototype.sort heap
